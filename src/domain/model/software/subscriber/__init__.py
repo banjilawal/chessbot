@@ -1,4 +1,4 @@
-# src/dossier/model/software/subscriber/__init__.py
+# src/domain/model/software/subscriber/__init__.py
 
 """
 Module: domain.model.software.subscriber.__init__

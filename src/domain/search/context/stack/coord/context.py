@@ -1,4 +1,4 @@
-# src/domain/search/context/stack/coord/context.py.py
+# src/domain/search/context/stack/coord/context.py
 
 """
 Module: domain.search.context.stack.coord.context
@@ -19,26 +19,47 @@ class CoordSearchContext(StackSearchContext[Coord]):
     Role:
         -   Selection
         -   Routing mask
-        -   Data-Holder
 
     Responsibilities:
-        1.  Supply a Coord attribute-value search filter.
+        1.  Supply the criteria a CoordStackSearcher uses to find a hit.
 
     Attributes:
-            row: Optional[int]
-            column: Optional[int]
+        row: Optional[int]
+        column: Optional[int]
 
     Provides:
         -   to_dict() -> Dict[str, Any]
 
     Super Class:
-        Context
+        StackSearchContext
     """
-    row: Optional[int] = None
-    column: Optional[int] = None
+    _row: Optional[int]
+    _column: Optional[int]
+    
+    def __init__(
+            self,
+            row: Optional[int] | None = None,
+            column: Optional[int] | None = None,
+    ):
+        """
+        Args:
+            row: Optional[int]
+            column: Optional[int]
+        """
+        super().__init__(max_activated_filters=2)
+        self._row = row
+        self._column = column
+        
+    @property
+    def row(self) -> Optional[int]:
+        return self._row
+    
+    @property
+    def column(self) -> Optional[int]:
+        return self._column
 
     def to_dict(self) -> Dict[str, Any]:
         return {
-            "row": self.row,
-            "column": self.column,
+            "row": self._row,
+            "column": self._column,
         }

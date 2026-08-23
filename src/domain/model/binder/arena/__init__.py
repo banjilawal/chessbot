@@ -1,4 +1,4 @@
-# src/dossier/model/state/binder/arena/__init__.py
+# src/domain/model/state/binder/arena/__init__.py
 
 """
 Module: domain.model.state.binder.arena.__init__

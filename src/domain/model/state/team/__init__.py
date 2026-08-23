@@ -1,4 +1,4 @@
-# src/dossier/model/state/team/__init__.py
+# src/domain/model/state/team/__init__.py
 
 """
 Module: domain.model.state.team.__init__

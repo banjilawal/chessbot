@@ -1,4 +1,4 @@
-# src/dossier/model/rank/queen/dossier/model.py
+# src/domain/model/rank/queen/dossier/model.py
 
 """
 Module: domain.model.rank.queen.model

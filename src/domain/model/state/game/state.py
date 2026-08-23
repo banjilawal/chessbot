@@ -1,4 +1,4 @@
-# src/dossier/model/state/game/state.py
+# src/domain/model/state/game/state.py
 
 """
 Module: domain.model.state.game.state

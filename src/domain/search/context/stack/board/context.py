@@ -1,4 +1,4 @@
-# src/domain/search/context/stack/board/context.py.py
+# src/domain/search/context/stack/board/context.py
 
 """
 Module: domain.search.context.stack.board.context
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain import Board, StackSearchContext
+from domain import Arena, Board, StackSearchContext, Team
 
 
 class BoardSearchContext(StackSearchContext[Board]):
@@ -19,10 +19,9 @@ class BoardSearchContext(StackSearchContext[Board]):
     Role:
         -   Selection
         -   Routing mask
-        -   Data-Holder
 
     Responsibilities:
-        1.  Supply a Board attribute-value search filter.
+        1.  Supply the criteria a BoardStackSearcher uses to find a hit.
 
     Attributes:
         id: Optional[int]
@@ -33,14 +32,39 @@ class BoardSearchContext(StackSearchContext[Board]):
         -   to_dict() -> Dict[str, Any]
 
     Super Class:
-        Context
+        StackSearchContext
     """
-    arena: Optional[Arena] = None
-    team: Optional[Team] = None
+    _arena: Optional[Arena] = None
+    _team: Optional[Team] = None
     
-    def to_dict(self) -> dict:
+    def __init__(
+            self,
+            id: Optional[int] | None = None,
+            arena: Optional[Arena] | None = None,
+            team: Optional[Team] | None = None,
+    ):
+        """
+        Args:
+            id: Optional[int]
+            arena: Optional[Arena]
+            team: Optional[Team]
+        """
+        super().__init__(id=id)
+        self._arena = arena
+        self._team = team
+        
+    @property
+    def arena(self) -> Optional[Arena]:
+        return self._arena
+    
+    @property
+    def team(self) -> Optional[Team]:
+        return self._team
+    
+    @property
+    def to_dict(self) -> Dict[str, Any]:
         return {
             "id": self.id,
-            "arena": self.arena,
-            "team": self.team,
+            "arena": self._arena,
+            "team": self._team,
         }

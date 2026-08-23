@@ -1,4 +1,4 @@
-# src/domain/search/context/stack/game/context.py.py
+# src/domain/search/context/stack/game/context.py
 
 """
 Module: domain.search.context.stack.game.context
@@ -19,10 +19,9 @@ class ArenaSearchContext(StackSearchContext[Arena]):
     Role:
         -   Selection
         -   Routing mask
-        -   Data-Holder
 
     Responsibilities:
-        1.  Supply a Game attribute-value search filter.
+        1.  Supply the criteria a ArenaStackSearcher uses to find a hit.
 
     Attributes:
         id: Optional[int]
@@ -33,7 +32,7 @@ class ArenaSearchContext(StackSearchContext[Arena]):
         -   to_dict() -> Dict[str, Any]
 
     Super Class:
-        Context
+        StackSearchContext
     """
     player: Optional[Player] = None
     game: Optional[Game] = None

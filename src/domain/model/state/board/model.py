@@ -1,4 +1,4 @@
-# src/dossier/model/state/board/dossier/model/state.py
+# src/domain/model/state/board/dossier/model/state.py
 
 """
 Module: domain.model.state.board.model

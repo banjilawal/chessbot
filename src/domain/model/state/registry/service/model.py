@@ -1,4 +1,4 @@
-# src/dossier/model/state/registry/service.model.py
+# src/domain/model/state/registry/service.model.py
 
 """
 Module: domain.model.state.registry.service.model

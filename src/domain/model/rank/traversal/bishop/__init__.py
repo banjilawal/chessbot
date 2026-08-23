@@ -1,4 +1,4 @@
-# src/dossier/model/rank/bishop/__init__.py
+# src/domain/model/rank/bishop/__init__.py
 
 """
 Module: domain.model.rank.bishop.__init__

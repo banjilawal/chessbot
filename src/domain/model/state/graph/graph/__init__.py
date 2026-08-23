@@ -1,4 +1,4 @@
-# src/dossier/model/state/graph/graph/__init__.py
+# src/domain/model/state/graph/graph/__init__.py
 
 """
 Module: domain.model.state.graph.graph.__init__

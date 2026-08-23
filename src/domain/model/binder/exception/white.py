@@ -1,4 +1,4 @@
-# src/dossier/model/state/binder/exception/white.py
+# src/domain/model/state/binder/exception/white.py
 
 """
 Module: domain.model.state.binder.exception.white

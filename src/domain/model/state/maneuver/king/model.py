@@ -1,4 +1,4 @@
-# src/dossier/model/state/maneuver/king/dossier/model.py
+# src/domain/model/state/maneuver/king/dossier/model.py
 
 """
 Module: domain.model.state.maneuver.king.model

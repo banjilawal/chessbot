@@ -11,7 +11,6 @@ from __future__ import annotations
 
 from enum import Enum
 
-import setting
 from domain.model import Vector
 
 
@@ -52,13 +51,13 @@ class AxisTerminus(Enum):
         "north",
         Vector(
             x=0,
-            y=-setting.board.dimension.config.number_of_rows - 1,
+            y=-config.setting.board.dimension.config.number_of_rows - 1,
         )
     )
     EAST = (
         "east",
         Vector(
-            x=setting.board.dimension.config.number_of_columns - 1,
+            x=config.setting.board.dimension.config.number_of_columns - 1,
             y=0,
         )
     )
@@ -66,13 +65,13 @@ class AxisTerminus(Enum):
         "south",
         Vector(
             x=0,
-            y=setting.board.dimension.config.number_of_rows - 1,
+            y=config.setting.board.dimension.config.number_of_rows - 1,
         )
     )
     WEST = (
         "west",
         Vector(
-            x=setting.board.dimension.config.number_of_columns - 1,
+            x=config.setting.board.dimension.config.number_of_columns - 1,
             y=0,
         )
     )

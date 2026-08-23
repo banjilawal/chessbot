@@ -11,7 +11,6 @@ from __future__ import annotations
 
 from enum import Enum
 
-import setting
 from domain.model import Vector
 
 
@@ -54,20 +53,20 @@ class QuadrantTerminus(Enum):
     )
     NORTHEAST = (
         "northeast",
-        Vector(x=setting.board.dimension.config.number_of_columns - 1, y=0)
+        Vector(x=config.setting.board.dimension.config.number_of_columns - 1, y=0)
     )
     SOUTHEAST = (
         "southeast",
         Vector(
-            x=setting.board.dimension.config.number_of_columns - 1,
-            y=setting.board.dimension.config.number_of_rows - 1,
+            x=config.setting.board.dimension.config.number_of_columns - 1,
+            y=config.setting.board.dimension.config.number_of_rows - 1,
         )
     )
     SOUTHWEST = (
         "southwest",
         Vector(
             x=0,
-            y=setting.board.dimension.config.number_of_rows - 1,
+            y=config.setting.board.dimension.config.number_of_rows - 1,
         )
     )
     

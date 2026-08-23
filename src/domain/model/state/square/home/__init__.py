@@ -1,4 +1,4 @@
-# src/dossier/model/state/square/home/__init__.py
+# src/domain/model/state/square/home/__init__.py
 
 """
 Module: domain.model.state.square.home/__init__

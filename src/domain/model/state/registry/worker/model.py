@@ -1,4 +1,4 @@
-# src/dossier/model/state/registry/worker.model.py
+# src/domain/model/state/registry/worker.model.py
 
 """
 Module: domain.model.state.registry.worker.model

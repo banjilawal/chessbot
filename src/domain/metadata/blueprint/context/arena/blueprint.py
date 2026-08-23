@@ -13,7 +13,7 @@ from typing import Optional
 
 from err import ArenaContextNullException
 from domain.model import ArenaContext, Blueprint, Game, Player
-from setting import GameColor
+from config.setting import GameColor
 
 
 @dataclass

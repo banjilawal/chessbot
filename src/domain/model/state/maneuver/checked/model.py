@@ -1,4 +1,4 @@
-# src/dossier/model/state/path/dossier/model/state/checked.py
+# src/domain/model/state/path/dossier/model/state/checked.py
 
 """
 Module: domain.model.state.path.model.checked

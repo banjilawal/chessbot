@@ -1,4 +1,4 @@
-# src/dossier/model/state/binder/validation/validator.py
+# src/domain/model/state/binder/validation/validator.py
 
 """
 Module: domain.model.state.binder.validation.work

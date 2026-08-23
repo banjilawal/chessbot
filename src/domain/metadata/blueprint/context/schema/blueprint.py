@@ -14,7 +14,7 @@ from typing import Optional
 
 from err import SchemaContextNullException
 from domain.model import SchemaContext, Blueprint
-from setting import GameColor
+from config.setting import GameColor
 
 
 @dataclass

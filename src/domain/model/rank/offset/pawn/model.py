@@ -1,4 +1,4 @@
-# src/dossier/model/rank/pawn/__init__.py
+# src/domain/model/rank/pawn/__init__.py
 
 """
 Module: domain.model.rank.pawn.__init__

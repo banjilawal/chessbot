@@ -1,4 +1,4 @@
-# src/dossier/model/state/query/stack/team/dossier/model/state.py
+# src/domain/model/state/query/stack/team/dossier/model/state.py
 
 """
 Module: domain.model.state.query.stack.team.model

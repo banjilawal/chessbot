@@ -13,7 +13,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 from domain.model import Coord, HomeSquare, Rank, Team, TokenContext, Blueprint
-from setting import GameColor
+from config.setting import GameColor
 
 
 @dataclass

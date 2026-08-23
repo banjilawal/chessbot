@@ -1,4 +1,4 @@
-# src/dossier/model/state/attack/combatant/__init__.py
+# src/domain/model/state/attack/combatant/__init__.py
 
 """
 Module: domain.model.state.attack.combatant.__init__

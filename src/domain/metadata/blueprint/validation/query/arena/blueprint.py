@@ -14,7 +14,7 @@ from typing import Optional
 from domain.metadata.blueprint import QueryValidationBlueprint
 from err import ArenaNullException
 from domain.model import Arena, Game, Player
-from setting import GameColor
+from config.setting import GameColor
 
 
 @dataclass

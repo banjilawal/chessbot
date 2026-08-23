@@ -1,4 +1,4 @@
-# src/dossier/model/state/binder/binder.py
+# src/domain/model/state/binder/binder.py
 
 """
 Module: domain.model.state.binder.binder

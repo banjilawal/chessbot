@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from setting import BoardDimensionSetting, BoardProperty
+from config.setting import BoardDimensionSetting, BoardProperty
 from controller import WorkerRegistryController
 from toolkit import MathToolkit
 from result import ValidationResult

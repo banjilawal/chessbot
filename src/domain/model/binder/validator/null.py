@@ -1,4 +1,4 @@
-# src/dossier/model/state/binder/validation/null.py
+# src/domain/model/state/binder/validation/null.py
 
 """
 Module: domain.model.state.binder.validation.null

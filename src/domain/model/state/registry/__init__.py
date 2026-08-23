@@ -1,4 +1,4 @@
-# src/dossier/model/state/registry/__init__.py
+# src/domain/model/state/registry/__init__.py
 
 """
 Module: domain.model.state.registry.__init__

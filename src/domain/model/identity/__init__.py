@@ -1,4 +1,4 @@
-# src/dossier/model/identity/__init__.py
+# src/domain/model/identity/__init__.py
 
 """
 Module: domain.model.identity.__init__

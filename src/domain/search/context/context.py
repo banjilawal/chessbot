@@ -1,4 +1,4 @@
-# src/domain/search/context/context.py.py
+# src/domain/search/context/context.py
 
 """
 Module: domain.search.context.context
@@ -29,7 +29,7 @@ class SearchContext(DomainSearchObject, ABC, Generic[T]):
     Attributes:
         id: Optional[int]
         name: Optional[str]
-        max_activated_filters: Optional[int]
+        max_activated_filters: int
         
     Provides:
         -   to_dict() -> Dict[str, Any]
@@ -83,6 +83,6 @@ class SearchContext(DomainSearchObject, ABC, Generic[T]):
 
     @property
     @abstractmethod
-    def to_dict(self) -> dict:
+    def to_dict(self) -> Dict[str, Any]
         """Implementations must override."""
         pass

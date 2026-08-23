@@ -12,7 +12,7 @@ from enum import Enum
 
 from domain.model import Bishop, King, Knight, Pawn, Rank, Rook
 from domain.schema import Persona
-from setting import GameColor
+from config.setting import GameColor
 
 
 class Formation(Enum):

@@ -1,4 +1,4 @@
-# src/dossier/model/__init__.py
+# src/domain/model/__init__.py
 
 """
 Module: domain.model.__init__
@@ -19,6 +19,7 @@ from .rank import *
 from .scalar import *
 from .software import *
 from .state import *
+from .winner import *
 
 # Modules
 from .model import Model

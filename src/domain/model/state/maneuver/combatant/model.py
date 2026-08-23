@@ -1,4 +1,4 @@
-# src/dossier/model/state/maneuver/combatant/dossier/model.py
+# src/domain/model/state/maneuver/combatant/dossier/model.py
 
 """
 Module: domain.model.state.maneuver.combatant.model

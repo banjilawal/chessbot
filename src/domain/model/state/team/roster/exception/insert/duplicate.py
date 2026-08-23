@@ -1,4 +1,4 @@
-# src/dossier/model/state/team/roster/exception/insertion/duplicate.py
+# src/domain/model/state/team/roster/exception/insertion/duplicate.py
 
 """
 Module: domain.model.state.team.roster.exception.insertion.duplicate

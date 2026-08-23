@@ -1,4 +1,4 @@
-# src/dossier/model/state/token/combatant/__init__.py
+# src/domain/model/state/token/combatant/__init__.py
 
 """
 Module: domain.model.state.token.combatant.__init__

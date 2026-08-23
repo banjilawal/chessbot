@@ -10,7 +10,6 @@ version: 0.0.2
 from __future__ import annotations
 from typing import Any, Optional, cast
 
-import setting
 from assurance import PrimingValidator
 from err import (
     NegativeNumberException, NumberAboveBoundsException, NumberBelowBoundsException, NumberNullException,
@@ -58,7 +57,7 @@ class NumberValidator:
             self,
             candidate: Any,
             floor: int | None = 0,
-            ceiling: int | None = setting.board.dimension.config.board_size - 1,
+            ceiling: int | None = config.setting.board.dimension.config.board_size - 1,
     ) -> ValidationResult[int]:
         """
         Make sure an object is a number within bounds before use.

@@ -1,4 +1,4 @@
-# src/dossier/model/software/subscriber/dossier/model/software.py
+# src/domain/model/software/subscriber/dossier/model/software.py
 
 """
 Module: domain.model.software.subscriber.model

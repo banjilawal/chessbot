@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from domain.model import Persona, TokenContext
 from result import ValidationResult
-from setting import GameColor
+from config.setting import GameColor
 from toolkit import TokenToolkit
 from util import LoggingLevelRouter
 from assurance.validator import ContextValidator

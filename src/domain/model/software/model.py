@@ -1,4 +1,4 @@
-# src/dossier/model/software/dossier/model.py
+# src/domain/model/software/dossier/model.py
 
 """
 Module: domain.model.software.model

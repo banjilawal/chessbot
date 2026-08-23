@@ -1,4 +1,4 @@
-# src/dossier/model/state/player/human/__init__.py
+# src/domain/model/state/player/human/__init__.py
 
 """
 Module: domain.model.state.player.human.__init__

@@ -1,4 +1,4 @@
-# src/domain/search/context/chain/dossier/context.py.py
+# src/domain/search/context/chain/dossier/context.py
 
 """
 Module: domain.search.context.chain.dossier.context

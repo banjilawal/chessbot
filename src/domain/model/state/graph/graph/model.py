@@ -1,4 +1,4 @@
-# src/dossier/model/state/graph/edge/dossier/model/state.py
+# src/domain/model/state/graph/edge/dossier/model/state.py
 
 """
 Module: domain.model.state.graph.edge.model

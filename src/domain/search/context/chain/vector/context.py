@@ -1,4 +1,4 @@
-# src/domain/search/context/chain/vector/context.py.py
+# src/domain/search/context/chain/vector/context.py
 
 """
 Module: domain.search.context.chain.vector.context

@@ -1,4 +1,4 @@
-# src/dossier/model/state/square/state.py
+# src/domain/model/state/square/state.py
 
 """
 Module: domain.model.state.square.state

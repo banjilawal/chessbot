@@ -1,4 +1,4 @@
-# src/dossier/model/rank/traversal/__init__.py
+# src/domain/model/rank/traversal/__init__.py
 
 """
 Module: domain.model.rank.traversal.__init__

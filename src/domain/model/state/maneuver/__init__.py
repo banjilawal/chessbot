@@ -1,4 +1,4 @@
-# src/dossier/model/state/maneuver/__init__.py
+# src/domain/model/state/maneuver/__init__.py
 
 """
 Module: domain.model.state.maneuver.__init__

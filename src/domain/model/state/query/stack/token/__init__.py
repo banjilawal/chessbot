@@ -1,4 +1,4 @@
-# src/dossier/model/state/query/stack/token/__init__.py
+# src/domain/model/state/query/stack/token/__init__.py
 
 """
 Module: domain.model.state.query.stack.token.__init__

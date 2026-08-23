@@ -1,4 +1,4 @@
-# src/dossier/model/state/arena/__init__.py
+# src/domain/model/state/arena/__init__.py
 
 """
 Module: domain.model.state.arena.__init__

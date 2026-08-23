@@ -1,4 +1,4 @@
-# src/domain/search/context/stack/game/context.py.py
+# src/domain/search/context/stack/game/context.py
 
 """
 Module: domain.search.context.stack.game.context
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain import Game, StackSearchContext
+from domain import Arena, Game, Player, GameWinner, StackSearchContext
 
 
 class GameSearchContext(StackSearchContext[Game]):
@@ -19,32 +19,64 @@ class GameSearchContext(StackSearchContext[Game]):
     Role:
         -   Selection
         -   Routing mask
-        -   Data-Holder
 
     Responsibilities:
-        1.  Supply a Game attribute-value search filter.
+        1.  Supply the criteria a GameStackSearcher uses to find a hit.
 
     Attributes:
         id: Optional[int]
         arena: Optional[Arena]
         player: Optional[Player]
-        winner: Optional[Player]
+        winner: Optional[GameWinner]
 
     Provides:
         -   to_dict() -> Dict[str, Any]
 
     Super Class:
-        Context
+        StackSearchContext
     """
-    id: Optional[int] = None
-    arena: Optional[Arena] = None
-    player: Optional[Player] = None
-    winner: Optional[Square] = None
+    _id: Optional[int]
+    _arena: Optional[Arena]
+    _player: Optional[Player]
+    _winner: Optional[GameWinner]
     
+    def __init__(
+            self,
+            id: Optional[int] | None = None,
+            arena: Optional[Arena] | None = None,
+            player: Optional[Player] | None = None,
+            winner: Optional[GameWinner] | None = None,
+    ):
+        """
+        Args:
+            id: Optional[int]
+            arena: Optional[Arena]
+            player: Optional[Player]
+            winner: Optional[GameWinner]
+        """
+        super().__init__(id=id)
+        self._arena = arena
+        self._player = player
+        self._winner = winner
+        
+    @property
+    def arena(self) -> Optional[Arena]:
+        return self._arena
+    
+    @property
+    def player(self) -> Optional[Player]:
+        return self._player
+    
+    @property
+    def winner(self) -> Optional[GameWinner]:
+        return self._winner
+        
+    
+    @property
     def to_dict(self) -> Dict[str, Any]:
         return {
             "id": self.id,
-            "arena": self.arena,
-            "player": self.player,
-            "winner": self.winner,
+            "arena": self._arena,
+            "player": self._player,
+            "winner": self._winner,
         }

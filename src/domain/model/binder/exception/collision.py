@@ -1,4 +1,4 @@
-# src/dossier/model/state/binder/exception/collision.py
+# src/domain/model/state/binder/exception/collision.py
 
 """
 Module: domain.model.state.binder.exception.collision

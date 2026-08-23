@@ -14,7 +14,7 @@ from err import MaxNameLengthException, MinNameLengthException, NameValidatorExc
 
 from operation import StringValidator, Validator
 from result import ValidationResult
-from setting import StringProperty, StringPropertyTable
+from config.setting import StringProperty, StringPropertyTable
 from util import LoggingLevelRouter
 
 

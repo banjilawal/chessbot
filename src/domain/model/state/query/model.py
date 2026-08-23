@@ -1,4 +1,4 @@
-# src/dossier/model/state/query/py
+# src/domain/model/state/query/py
 
 """
 Module: domain.model.state.query.model

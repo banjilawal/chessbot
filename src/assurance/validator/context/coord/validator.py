@@ -13,7 +13,7 @@ from typing import Any, cast
 from err import CoordContextValidatorException
 from domain.model import CoordContext
 from result import ValidationResult
-from setting import BoardProperty
+from config.setting import BoardProperty
 from toolkit import CoordContextToolkit
 from util import LoggingLevelRouter
 

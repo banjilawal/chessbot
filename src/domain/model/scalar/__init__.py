@@ -1,4 +1,4 @@
-# src/dossier/model/scalar/__init__.py
+# src/domain/model/scalar/__init__.py
 
 """
 Module: domain.model.scalar.__init__

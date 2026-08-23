@@ -1,4 +1,4 @@
-# src/domain/search/context/graph/station/context.py.py
+# src/domain/search/context/graph/station/context.py
 
 """
 Module: domain.search.context.graph.station.context

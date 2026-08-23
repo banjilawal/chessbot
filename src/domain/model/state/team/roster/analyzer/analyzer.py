@@ -1,4 +1,4 @@
-# src/dossier/model/state/team/relation/roster/validator.py
+# src/domain/model/state/team/relation/roster/validator.py
 
 """
 Module: domain.model.state.team.relation.roster.analyzer

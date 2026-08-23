@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
+from config import GameColor
 from domain import Archetype, Board, Player, StackSearchContext, Team
 
 
@@ -19,10 +20,9 @@ class TeamSearchContext(StackSearchContext[Team]):
     Role:
         -   Selection
         -   Routing mask
-        -   Data-Holder
 
     Responsibilities:
-        1.  Supply a Team attribute-value search filter.
+        1.  Supply the criteria a TeamStackSearcher uses to find a hit.
 
     Attributes:
             id: Optional[int]
@@ -34,7 +34,7 @@ class TeamSearchContext(StackSearchContext[Team]):
         -   to_dict() -> Dict[str, Any]
 
     Super Class:
-        Context
+        StackSearchContext
     """
     _board: Optional[Board] = None
     _owner: Optional[Player] = None

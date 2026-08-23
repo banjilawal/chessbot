@@ -1,4 +1,4 @@
-# src/dossier/model/state/token/state/activity.py
+# src/domain/model/state/token/state/activity.py
 
 """
 Module: domain.model.state.token.state.activity

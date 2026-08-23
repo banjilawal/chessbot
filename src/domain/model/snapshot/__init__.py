@@ -1,4 +1,4 @@
-# src/dossier/model/state/snapshot/__init__.py
+# src/domain/model/state/snapshot/__init__.py
 
 """
 Module: domain.model.state.snapshot.__init__

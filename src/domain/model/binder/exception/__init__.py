@@ -1,4 +1,4 @@
-# src/dossier/model/state/binder/exception/__init__.py
+# src/domain/model/state/binder/exception/__init__.py
 
 """
 Module: domain.model.state.binder.exception.__init__

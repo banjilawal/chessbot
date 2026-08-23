@@ -1,4 +1,4 @@
-# src/dossier/model/dossier/__init__.py
+# src/domain/model/dossier/__init__.py
 
 """
 Module: domain.model.dossier.__init__

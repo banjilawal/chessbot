@@ -1,4 +1,4 @@
-# src/dossier/model/software/license/__init__.py
+# src/domain/model/software/license/__init__.py
 
 """
 Module: domain.model.software.license.__init__
