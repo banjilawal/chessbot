@@ -1,7 +1,7 @@
-# src/broadcast/observer/observer.py
+# src/transitbroadcast/observer/observer.py
 
 """
-Module: broadcast.observer.observer
+Module: transit.broadcast.observer.observer
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 
 
-from broadcast import Notifier
+from transit.broadcast import Notifier
 from domain.model import Notification
 from artifcat.result import DeletionResult, InsertionResult
 
