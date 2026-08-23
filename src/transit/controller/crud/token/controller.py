@@ -16,7 +16,7 @@ from domain.model import Token
 from operation.crud.delete.stack.popper import TokenPopper
 from operation.crud.insert.stack.pusher import TokenPusher
 from domain.exchange.request import CollectionDeletionRequest, PopRequest, TokenStackPushRequest, SearchRequest
-from result import DeletionResult, InsertionResult, SearchResult
+from artifcat.result import DeletionResult, InsertionResult, SearchResult
 from operation.crud.search import TokenSearcher
 from util import LoggingLevelRouter
 

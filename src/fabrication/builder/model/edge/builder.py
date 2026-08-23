@@ -15,7 +15,7 @@ from domain.metadata.blueprint import EdgeBlueprint
 from fabrication.builder import ModelBuilder
 from err import EdgeBuilderException
 from domain.model import Edge
-from result import BuildResult, MethodResultType
+from artifcat.result import BuildResult, MethodResultType
 from operation.toolkit import EdgeBuilderToolkit
 from util import LoggingLevelRouter
 

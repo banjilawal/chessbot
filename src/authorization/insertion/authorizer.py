@@ -14,7 +14,7 @@ from typing import Generic, TypeVar, cast
 
 from authorization import RequestAuthorizer
 from collection import DomainObjectCollection
-from report import AuthorizationDecision
+from artifcat.report import AuthorizationDecision
 from domain.exchange.request import InsertionRequest
 from operation.toolkit import InsertPermissionRuleset
 

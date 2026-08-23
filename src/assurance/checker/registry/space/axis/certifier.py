@@ -15,7 +15,7 @@ from domain.metadata.blueprint import AxisReservoirBlueprint
 from carrier import AxisReservoirCarrier
 from domain.model import Vector
 from assurance.checker import SpaceReservoirChecker
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from space import AxisReservoir
 from operation.toolkit import AxisReservoirToolkit
 from util import LoggingLevelRouter

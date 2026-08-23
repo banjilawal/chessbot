@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err.tester import DeletionRequestTesterException
-from result import MethodResultType
+from artifcat.result import MethodResultType
 
 
 

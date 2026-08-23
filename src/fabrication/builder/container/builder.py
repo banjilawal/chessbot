@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from fabrication.builder import Builder
-from result import BuildResult
+from artifcat.result import BuildResult
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Container")

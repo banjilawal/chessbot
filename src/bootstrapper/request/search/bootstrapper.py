@@ -14,7 +14,7 @@ from typing import Type
 from bootstrapper import RequestBootstrapper
 from err import SearchPermitterBootstrapperException, SearchRequestNullException
 from domain.exchange.request import SearchRequest
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from util import LoggingLevelRouter
 
 

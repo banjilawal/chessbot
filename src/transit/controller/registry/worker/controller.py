@@ -14,7 +14,7 @@ from transit.controller import Controller
 from domain.model import WorkerRegistry
 from operation.toolkit import WorkerRegistryToolkit
 from util import LoggingLevelRouter, singleton
-from result import InsertionResult, SearchResult
+from artifcat.result import InsertionResult, SearchResult
 from operation import Operator
 from err import OperationNullException, WorkerRegistryControllerException
 

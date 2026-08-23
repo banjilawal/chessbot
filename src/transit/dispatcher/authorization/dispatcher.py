@@ -13,9 +13,9 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from authorization import RequestAuthorizer
-from report import AuthorizationDecision
+from artifcat.report import AuthorizationDecision
 from domain.exchange.request import Request
-from result import Result
+from artifcat.result import Result
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Result")

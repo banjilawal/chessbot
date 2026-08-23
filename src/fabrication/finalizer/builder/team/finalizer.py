@@ -12,7 +12,7 @@ from __future__ import annotations
 from err import FinalizeTeamBuilderException
 from domain.model import Team
 from operation import BuilderFinalizer
-from result import BuildResult
+from artifcat.result import BuildResult
 from util import LoggingLevelRouter
 
 

@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from sensor.analyzer import Analyzer
 from domain.model import KingToken
-from report import TokenReadinessReport
-from result import AnalysisResult
+from artifcat.report import TokenReadinessReport
+from artifcat.result import AnalysisResult
 from util import LoggingLevelRouter
 
 

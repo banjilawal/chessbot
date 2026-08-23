@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Generic, TypeVar
 
 
-from report import CollisionReport
+from artifcat.report import CollisionReport
 from sensor import EnvironmentReporter
 from collection.stack import StackService
 from util import LoggingLevelRouter

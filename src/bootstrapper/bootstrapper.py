@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from abc import ABC, abstractmethod
 
-from result import Result
+from artifcat.result import Result
 from util import LoggingLevelRouter
 
 

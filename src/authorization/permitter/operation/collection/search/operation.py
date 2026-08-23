@@ -12,9 +12,9 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
-from authorization import OperationPermitter, SearchPermitter, SearchRequest
+from authorization import SearchPermitter, SearchRequest
 from operation import CrudOperator
-from result import SearchResult
+from artifcat.result import SearchResult
 from util import LoggingLevelRouter
 
 

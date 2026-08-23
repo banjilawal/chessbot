@@ -18,8 +18,8 @@ from transit.controller import WorkerRegistryController
 from err import TokenPlaceException
 from domain.model import PlaceState, HomeSquare, Token, TokenHomeClaimState
 from operation import Operator
-from report import HomeSquareClaimReport
-from result import MethodResultType, UpdateResult
+from artifcat.report import HomeSquareClaimReport
+from artifcat.result import MethodResultType, UpdateResult
 from util import LoggingLevelRouter
 
 

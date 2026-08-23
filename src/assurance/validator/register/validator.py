@@ -13,7 +13,7 @@ from abc import abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from assurance import RegisterIntegrityChecker
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from assurance.validator import Validator
 
 T = TypeVar("T", bound="Register")

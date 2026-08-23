@@ -15,8 +15,8 @@ from typing import cast
 from err import PawnPromoterException
 from domain.exchange.model import PawnToken, PromotionState, Rank
 from permitter import PromotionPermitter
-from report import PromotionRequestDecision
-from result import MethodResultType, UpdateResult
+from artifcat.report import PromotionRequestDecision
+from artifcat.result import MethodResultType, UpdateResult
 from util import LoggingLevelRouter
 
 

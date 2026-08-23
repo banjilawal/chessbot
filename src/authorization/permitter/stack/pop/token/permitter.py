@@ -14,7 +14,7 @@ from typing import Type
 from err import PoppingEmptyTokenStackException, TokenPopPermitterException, TokenStackNullException
 from domain.model import Token
 from authorization.permitter.stack import PopPermitter
-from report import PopApprovalReport
+from artifcat.report import PopApprovalReport
 from domain.exchange.request import PopRequest
 from collection.stack import TokenStackService
 from util import LoggingLevelRouter

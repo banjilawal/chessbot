@@ -14,7 +14,7 @@ from typing import Any, Generic, TypeVar, cast
 
 
 from assurance import ToggleIntegrityChecker
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from operation.toolkit import ToggleToolkit
 
 from assurance.validator import Validator

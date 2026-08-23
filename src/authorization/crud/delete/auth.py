@@ -14,7 +14,7 @@ from typing import Generic, TypeVar, cast
 
 from authorization import CrudAuthorizer
 from domain import DeleteRequest
-from report import AuthorizationDecision
+from artifcat.report import AuthorizationDecision
 from util import LoggingLevelRouter
 
 

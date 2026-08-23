@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from err import PoppingEmptyTokenStackException, TokenDeletePermitterException
-from report import DeletionApprovalReport
+from artifcat.report import DeletionApprovalReport
 from domain.exchange.request import CollectionDeletionRequest
 from collection.stack import TokenStackService
 from authorization.adjudicator import TokenDeletionRequestAdjudicator

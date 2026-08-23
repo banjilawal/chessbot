@@ -14,7 +14,7 @@ from typing import Any, Generic, TypeVar, cast
 
 from domain.metadata.blueprint import SpaceBlueprint
 from assurance.checker import Checker
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from operation.toolkit import SpaceToolkit
 from util import LoggingLevelRouter
 

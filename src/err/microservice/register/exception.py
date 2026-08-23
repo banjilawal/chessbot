@@ -11,10 +11,8 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from typing import Any, Optional
-
 from err import MicroserviceException
-from result import MethodResultType
+from artifcat.result import MethodResultType
 
 
 __all__ = [

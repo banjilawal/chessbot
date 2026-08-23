@@ -9,9 +9,6 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import Generic, TypeVar
-
 from authorization import ChainRequest, ChainRequestAdjudicator
 from collection import Chain
 
@@ -29,9 +26,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, Optional, TypeVar
 
-from assurance import PrimingValidator
-from authorization import RequestAdjudicator
-from report import AuthorizationDecision
+from artifcat.report import AuthorizationDecision
 from util import LoggingLevelRouter
 
 N = TypeVar("N", bound="Node")

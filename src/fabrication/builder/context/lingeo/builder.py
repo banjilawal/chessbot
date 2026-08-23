@@ -13,7 +13,7 @@ from typing import Optional
 from err import ExcessVectorToggleFlagsException, VectorContextBuilderException
 from integrity import Builder
 from domain.model import Coord, VectorToggle, Vector
-from result import BuildResult
+from artifcat.result import BuildResult
 from operation.toolkit import VectorContextToolkit
 
 class VectorContextBuilder(Builder[VectorToggle]):

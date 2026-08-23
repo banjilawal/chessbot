@@ -12,7 +12,7 @@ from __future__ import annotations
 from fabrication.assembler import SpaceReservoirAssembler
 from domain.metadata.blueprint import AxisReservoirBlueprint
 from topology.registry import AxisReservoir
-from result import BuildResult
+from artifcat.result import BuildResult
 from util import LoggingLevelRouter
 
 

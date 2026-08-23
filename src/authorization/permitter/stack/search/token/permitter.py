@@ -15,7 +15,7 @@ from domain.search.context import TokenSearchContext
 from err import TokenSearchPermitterException
 from domain.model import Token
 from authorization.permitter.stack import SearchPermitter
-from report import SearchApprovalReport
+from artifcat.report import SearchApprovalReport
 from domain.exchange.request import SearchRequest
 from collection.stack import TokenStackService
 from authorization.adjudicator import TokenSearchRequestAdjudicator

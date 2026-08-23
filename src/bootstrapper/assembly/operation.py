@@ -15,7 +15,7 @@ from typing import TypeVar
 from domain.metadata.blueprint import Blueprint
 from operation.toolkit import Toolkit
 from operation import Operator
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from util import LoggingLevelRouter
 
 T = TypeVar("T")

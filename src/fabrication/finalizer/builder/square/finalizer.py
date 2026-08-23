@@ -13,7 +13,7 @@ from transit.controller import WorkerRegistryController
 from err import FinalizeSquareBuilderException
 from fabrication.finalizer import BuilderFinalizer
 from domain.model import Square
-from result import BuildResult
+from artifcat.result import BuildResult
 from util import LoggingLevelRouter
 
 

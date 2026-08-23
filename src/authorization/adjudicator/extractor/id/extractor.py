@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import BlueprintIdValidatorException
 from microservice import IdentityService
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from util import IdFactory, LoggingLevelRouter
 
 

@@ -14,7 +14,7 @@ from typing import Generic, TypeVar
 
 
 from domain.metadata.blueprint import Blueprint
-from result import BuildResult
+from artifcat.result import BuildResult
 from operation.toolkit import BuilderToolkit
 from util import LoggingLevelRouter
 

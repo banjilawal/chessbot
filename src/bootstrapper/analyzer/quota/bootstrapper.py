@@ -14,8 +14,8 @@ from typing import Type
 from bootstrapper import AnalyzerBootstrapper, PrimingValidator
 from domain.search.context import TokenSearchContext
 from domain.model import Rank
-from report import RankQuotaReport
-from result import AnalysisResult, MethodResultType
+from artifcat.report import RankQuotaReport
+from artifcat.result import AnalysisResult, MethodResultType
 from collection.stack import TokenStackService
 from util import LoggingLevelRouter
 from assurance.validator import RankValidator

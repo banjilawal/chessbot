@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import List
 
 from domain.model import Notification
-from result import DeletionResult, InsertionResult
+from artifcat.result import DeletionResult, InsertionResult
 
 
 class Notifier:

@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 from typing import Any, Generic, TypeVar
 
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from operation.toolkit import ContextToolkit
 from util import LoggingLevelRouter
 from assurance.validator import Validator

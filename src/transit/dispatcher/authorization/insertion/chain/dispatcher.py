@@ -17,7 +17,7 @@ from collection import Chain
 from transit.dispatcher import InsertionDispatcher
 from domain.structure.node import Node
 
-from report import AuthorizationDecision
+from artifcat.report import AuthorizationDecision
 from domain.exchange.request import AddNodeRequest
 
 from util import LoggingLevelRouter

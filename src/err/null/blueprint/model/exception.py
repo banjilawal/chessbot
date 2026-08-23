@@ -13,7 +13,7 @@ from typing import Any, Optional
 
 
 from err import BlueprintNullException
-from result import MethodResultType
+from artifcat.result import MethodResultType
 
 
 __all__ = [

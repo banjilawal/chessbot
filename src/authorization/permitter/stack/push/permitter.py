@@ -10,7 +10,7 @@ version: 0.0.2
 from abc import abstractmethod
 
 from authorization.permitter.stack import OperationPermitter
-from report import PushApprovalReport
+from artifcat.report import PushApprovalReport
 from domain.exchange.request import TokenStackPushRequest
 from util import LoggingLevelRouter
 

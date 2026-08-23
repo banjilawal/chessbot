@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from result import MethodResultType
+from artifcat.result import MethodResultType
 
 
 

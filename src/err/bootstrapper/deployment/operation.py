@@ -18,8 +18,8 @@ from err import TokenDeploymentException
 from err.analyzer.claim.exist.exception import HomeSquareAlreadyClaimedException
 from domain.model import HomeSquare, Token
 from operation import Operator
-from report import TokenReadinessReport
-from result import MethodResultType, UpdateResult, ValidationResult
+from artifcat.report import TokenReadinessReport
+from artifcat.result import MethodResultType, UpdateResult, ValidationResult
 from util import LoggingLevelRouter
 
 

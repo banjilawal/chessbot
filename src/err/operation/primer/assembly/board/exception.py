@@ -13,7 +13,7 @@ from typing import Any, Optional
 
 
 from err import AssemblyPrimerException
-from result import MethodResultType
+from artifcat.result import MethodResultType
 
 
 __all__ = [

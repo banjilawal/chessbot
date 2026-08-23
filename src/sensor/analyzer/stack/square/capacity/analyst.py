@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from report.square.report import OpeningSquareAvailabilityReport
+from artifcat.report.square.report import OpeningSquareAvailabilityReport
 from system import ComputationResult, LoggingLevelRouter
 from logic.square import SquareStackService
 

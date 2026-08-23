@@ -14,7 +14,7 @@ from typing_extensions import TypeVar
 from err import (
     ExcessToggleActivationException, NullException, EntityCarrierValidatorException, NoActiveTogglesException
 )
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="EntityCarrier")

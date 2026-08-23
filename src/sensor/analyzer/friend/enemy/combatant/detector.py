@@ -12,8 +12,8 @@ from __future__ import annotations
 from sensor.analyzer import Analyzer
 from err import EnemyCombatantAnalyzerException, TokenNullException
 from domain.model import CombatantToken
-from report import FriendshipStatus
-from result import Result
+from artifcat.report import FriendshipStatus
+from artifcat.result import Result
 from operation.toolkit import TokenToolkit
 from util import LoggingLevelRouter
 from assurance.validator import TokenValidator

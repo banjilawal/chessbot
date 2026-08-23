@@ -15,7 +15,7 @@ from domain.metadata.blueprint import AxisReservoirBlueprint
 from fabrication.builder import SpaceReservoirBuilder
 from err import AxisReservoirBuilderException
 from topology.registry import AxisReservoir
-from result import BuildResult, MethodResultType
+from artifcat.result import BuildResult, MethodResultType
 from operation.toolkit import AxisReservoirBuilderToolkit
 from util import LoggingLevelRouter
 

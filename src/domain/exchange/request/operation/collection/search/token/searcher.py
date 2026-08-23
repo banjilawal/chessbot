@@ -12,7 +12,7 @@ from __future__ import annotations
 from err import TokenSearcherException
 from permitter import TokenSearchPermitter
 from domain.exchange.request import SearchRequest
-from result import SearchResult
+from artifcat.result import SearchResult
 from transit.router import TokenSearchRouter
 from util import LoggingLevelRouter
 

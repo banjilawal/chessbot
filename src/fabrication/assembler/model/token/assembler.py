@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from fabrication.assembler import ModelAssembler
 from domain.metadata.blueprint import TokenBlueprint
-from result import BuildResult
+from artifcat.result import BuildResult
 
 from util import LoggingLevelRouter
 from domain.model import CombatantToken, King, KingToken, Pawn, PawnToken, Token

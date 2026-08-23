@@ -14,7 +14,7 @@ from typing import Any, cast
 from err import TokenValidatorException
 from domain.model import Token
 from assurance import TokenIntegrityChecker
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from util import LoggingLevelRouter
 from assurance.validator import ModelValidator
 

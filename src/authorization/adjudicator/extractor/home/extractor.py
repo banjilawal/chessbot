@@ -14,7 +14,7 @@ from typing import cast
 from domain.metadata.blueprint import TokenBlueprint
 from err import BlueprintHomeSquareExtractorException
 from domain.model import Board, HomeSquare, Square
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from operation.toolkit import TokenToolkit
 from util import LoggingLevelRouter
 

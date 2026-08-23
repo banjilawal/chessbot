@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from domain.metadata.blueprint import SquareBlueprint
 from domain.model import HomeSquare, Square
-from result import BuildResult
+from artifcat.result import BuildResult
 from fabrication.assembler import ModelAssembler
 from util import LoggingLevelRouter
 

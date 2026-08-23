@@ -16,7 +16,7 @@ from err import TopologyGeneratorException, RecurrenceRegistryCollectionNullExce
 from geometry import RecurrenceRegistryCollection
 from topology import TransformerRunner
 
-from result import ComputationResult, MethodResultType
+from artifcat.result import ComputationResult, MethodResultType
 
 from topology import Topology
 from util import LoggingLevelRouter

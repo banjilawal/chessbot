@@ -15,7 +15,7 @@ from err import BoardTeamBinderNullException, BoardTeamBinderConsistencyCheckerE
 from domain.model import BoardBinder, Schema, Team
 from assurance.auditor import  ConsistencyAuditor
 from bootstrapper.consistency.binder.checker import SchemaHashtableConsistency
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from util import LoggingLevelRouter
 from operation.toolkit import BoardTeamBinderToolkit
 

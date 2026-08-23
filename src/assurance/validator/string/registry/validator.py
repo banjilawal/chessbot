@@ -16,7 +16,7 @@ from err import (
 )
 from operation import PrimingValidator, Validator
 from assurance.validator.string import NameValidator
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from util import LoggingLevelRouter
 
 

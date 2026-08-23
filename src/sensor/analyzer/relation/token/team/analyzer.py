@@ -14,8 +14,8 @@ from typing import cast
 from sensor.analyzer import RelationAnalyzer
 from err import TeamTokenRelationAnalysisException
 from domain.model import Team, Token, TokenContext
-from report import RelationReport
-from result import AnalysisResult, MethodResultType
+from artifcat.report import RelationReport
+from artifcat.result import AnalysisResult, MethodResultType
 from util import LoggingLevelRouter
 from assurance.validator import TeamValidator, TokenValidator
 

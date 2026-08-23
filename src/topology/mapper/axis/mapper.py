@@ -14,7 +14,7 @@ from typing import Generic, TypeVar, cast
 from err import AxisMappingFunctionException
 from topology.mapper import SpaceMappingFunction
 from domain.model import Vector
-from result import ComputationResult, MethodResultType
+from artifcat.result import ComputationResult, MethodResultType
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Axis")

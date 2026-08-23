@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, Optional, TypeVar
 
 from assurance import PrimingValidator
-from report import AuthorizationDecision
+from artifcat.report import AuthorizationDecision
 from util import LoggingLevelRouter
 
 

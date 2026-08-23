@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import OffsetPatternCarrierException
-from result import MethodResultType
+from artifcat.result import MethodResultType
 
 __all__ = [
     # ======================# KING_OFFSET_PATTERN_CARRIER_ERROR #======================#

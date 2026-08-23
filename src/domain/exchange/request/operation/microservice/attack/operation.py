@@ -14,8 +14,8 @@ from err import AttackDestinationEmptyException, AttackEventNullException, Attac
 from event import AttackEvent
 from domain.exchange.model import SquareState
 from operation import ManeuverLauncher
-from report import AttackApproval, ManeuverApproval
-from result import EventResult, MethodResultType
+from artifcat.report import AttackApproval, ManeuverApproval
+from artifcat.result import EventResult, MethodResultType
 from util import IdFactory, LoggingLevelRouter
 from assurance.validator import PrimingValidator
 

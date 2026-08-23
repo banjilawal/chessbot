@@ -15,7 +15,7 @@ from sensor.detector.token import TokenCollisionDetector
 from err import TokenAppendPermitterException
 from domain.model import Token
 from authorization.permitter.chain import AppendPermitter, RankSlotPermitter
-from report import AppendApprovalReport
+from artifcat.report import AppendApprovalReport
 from domain.exchange.request import AppendRequest, RankSlotRequest
 from chain import TokenChainService
 from authorization.adjudicator import TokenAppendRequestAdjudicator

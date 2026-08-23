@@ -17,7 +17,7 @@ from integrity import SchemaValidator, TeamValidator
 from microservice import BoardService, Microservice
 from domain.model import Board, BoardBinder, Schema, Team
 from operation import BoardTeamBinderValidator
-from result import AnalysisResult, SearchResult, UpdateResult
+from artifcat.result import AnalysisResult, SearchResult, UpdateResult
 from system import IdFactory, LoggingLevelRouter
 
 

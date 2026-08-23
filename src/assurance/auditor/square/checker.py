@@ -16,7 +16,7 @@ from err import SquareConsistencyAuditorException
 from domain.model import Square
 from chooser import SquareCarrier
 from assurance.checker import SquareRootCertifier
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from util import LoggingLevelRouter
 from assurance.auditor import  ConsistencyAuditor
 

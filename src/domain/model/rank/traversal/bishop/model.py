@@ -13,7 +13,7 @@ from domain.schema import Persona
 from err import BishopException
 from geometry import BishopSpanner
 from domain.model import TraversalRank
-from result import ComputationResult
+from artifcat.result import ComputationResult
 from util import LoggingLevelRouter
 
 

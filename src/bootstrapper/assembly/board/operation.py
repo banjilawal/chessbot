@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from transit.controller import WorkerRegistryController
 from operation.toolkit import BoardToolkit
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from domain.model import Board, BoardBlueprint
 from operation import AssemblyPrimer
 from err import PrimingBoardAssemblyException

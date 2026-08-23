@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from fabrication.builder import OffsetBuilder
 from topology.pattern import KnightSignature
-from result import BuildResult
+from artifcat.result import BuildResult
 from util import LoggingLevelRouter
 
 

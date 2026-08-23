@@ -14,7 +14,7 @@ from typing import Any, Generic, Optional, TypeVar
 
 from assurance import PrimingValidator
 from authorization import RequestAdjudicator
-from report import TokenRequestDecision
+from artifcat.report import TokenRequestDecision
 from util import LoggingLevelRouter
 
 

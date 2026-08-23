@@ -13,7 +13,7 @@ from abc import abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from domain.metadata.blueprint import Blueprint
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from assurance.checker import SpaceChecker
 from operation.toolkit import QuadrantToolkit
 

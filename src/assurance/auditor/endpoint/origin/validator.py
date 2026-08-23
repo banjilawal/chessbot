@@ -12,7 +12,7 @@ from __future__ import annotations
 from bootstrapper import OriginCertifierBootstrapper
 from err import TokenOriginCertifierException
 from domain.model import Square, Token
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from operation.toolkit import TokenEndpointRelationToolkit
 from util import LoggingLevelRouter
 

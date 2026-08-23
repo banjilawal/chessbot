@@ -13,8 +13,8 @@ from abc import ABC
 from typing import Generic, Optional, TypeVar
 
 from domain.metadata.blueprint import Blueprint
-from report import CollisionReport
-from result import AnalysisResult
+from artifcat.report import CollisionReport
+from artifcat.result import AnalysisResult
 from collection.stack import StackService
 from util import LoggingLevelRouter
 

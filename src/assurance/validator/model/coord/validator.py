@@ -14,7 +14,7 @@ from typing import Any, cast
 from err import CoordValidatorException
 from domain.model import Coord
 from assurance import CoordIntegrityChecker
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from util import LoggingLevelRouter
 from assurance.validator import ModelValidator
 

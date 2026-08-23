@@ -19,8 +19,8 @@ from authorization import (
 from err import PromotionRequestNullException
 from microservice import IdentityService
 from domain.model import Pawn
-from report import PromotionRequestDecision
-from result import MethodResultType
+from artifcat.report import PromotionRequestDecision
+from artifcat.result import MethodResultType
 from util import LoggingLevelRouter
 
 

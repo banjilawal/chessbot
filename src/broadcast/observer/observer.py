@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 
 from broadcast import Notifier
 from domain.model import Notification
-from result import DeletionResult, InsertionResult
+from artifcat.result import DeletionResult, InsertionResult
 
 
 class Observer(ABC):

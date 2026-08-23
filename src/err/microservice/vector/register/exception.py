@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 from err import MicroserviceException
-from result import MethodResultType
+from artifcat.result import MethodResultType
 
 
 # ======================# VECTOR_REGISTER_MICROSERVICE_FAILURE #======================#

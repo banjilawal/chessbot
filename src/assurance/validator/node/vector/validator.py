@@ -9,11 +9,10 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import abstractmethod
 from typing import Any, cast
 
 from assurance import NodeValidator, VectorNodeIntegrityChecker
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from util import LoggingLevelRouter
 
 

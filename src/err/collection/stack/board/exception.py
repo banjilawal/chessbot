@@ -18,7 +18,7 @@ __all__ = [
     "BoardStackServiceException",
 ]
 
-from result import MethodResultType
+from artifcat.result import MethodResultType
 
 
 # ======================# BOARD_STACK_SERVICE_ERROR #======================#

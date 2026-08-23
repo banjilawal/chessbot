@@ -15,7 +15,7 @@ from logic.coord import Coord
 
 from sensor.analyzer import TokenReadinessAnalyzer
 from err import DisabledTokenManeuverException
-from report import TokenReadinessReport
+from artifcat.report import TokenReadinessReport
 from system import DeletionResult, LoggingLevelRouter
 from domain.exchange.model.state.token import (
     InactiveTokenPoppingCoordException, MoveUndoLimitException, Token, TokenPopCoordException, TokenValidation,

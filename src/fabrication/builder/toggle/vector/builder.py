@@ -14,7 +14,7 @@ from typing import Optional, cast
 from domain.metadata.blueprint import VectorToggleBlueprint
 from fabrication.builder import ToggleBuilder
 from err import VectorToggleBuilderException
-from result import BuildResult, MethodResultType
+from artifcat.result import BuildResult, MethodResultType
 from domain.structure.toggle import CartesianToggle
 from operation.toolkit import VectorToggleBuilderToolkit
 from util import LoggingLevelRouter

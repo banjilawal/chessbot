@@ -15,7 +15,7 @@ from fabrication.builder import ContainerBuilder
 from collection import RegisterSet
 from domain.model import TargetVectorSet
 from domain.structure.register import VectorRegister
-from result import BuildResult
+from artifcat.result import BuildResult
 from util import IdFactory, LoggingLevelRouter
 
 T = TypeVar("T", bound="Register")

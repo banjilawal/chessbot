@@ -18,7 +18,7 @@ __all__ = [
     "CoordStackServiceException",
 ]
 
-from result import MethodResultType
+from artifcat.result import MethodResultType
 
 
 # ======================# COORD_STACK_SERVICE_ERROR #======================#

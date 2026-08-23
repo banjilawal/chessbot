@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from microservice import Microservice
 from domain.model import ServiceRegistry
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from util import LoggingLevelRouter
 from transit.controller import ServiceRegistryController
 from err import NewServiceRegistrationException, MicroserviceNullException, RegistryKeyCollisionException

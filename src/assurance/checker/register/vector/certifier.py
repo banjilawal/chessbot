@@ -15,7 +15,7 @@ from carrier import VectorRegisterCarrier
 from err import RegisterEmptyException, RegisterSetSizeException, VectorRegisterRootCheckerException
 from domain.model import Vector
 from domain.structure.register import VectorRegister
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from assurance.checker import Checker
 from operation.toolkit import VectorRegisterToolkit
 from util import LoggingLevelRouter

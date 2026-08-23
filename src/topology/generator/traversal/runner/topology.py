@@ -16,7 +16,7 @@ from err import TopologyGeneratorException
 from geometry import RecurrenceRegistry
 from math import VectorSequenceGenerator
 
-from result import ComputationResult, MethodResultType
+from artifcat.result import ComputationResult, MethodResultType
 from util import LoggingLevelRouter
 from assurance.validator import PrimingValidator
 

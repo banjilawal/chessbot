@@ -14,7 +14,7 @@ from err import PrimingRankAssemblyException
 from domain.model import Rank, RankBlueprint
 
 from operation import AssemblyPrimer
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from operation.toolkit import RankToolkit
 from util import LoggingLevelRouter
 

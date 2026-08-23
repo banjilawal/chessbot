@@ -14,7 +14,7 @@ from typing import Optional, cast
 from authorization import AddVectorNodeRequest
 from domain.structure.node import VectorNode
 from operation import AddNode
-from result import InsertionResult
+from artifcat.result import InsertionResult
 from util import LoggingLevelRouter
 
 

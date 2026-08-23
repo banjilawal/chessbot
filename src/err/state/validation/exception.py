@@ -18,7 +18,7 @@ __all__ = [
     "ValidatorException",
 ]
 
-from result import MethodResultType
+from artifcat.result import MethodResultType
 
 
 # ======================# VALIDATION_FAILURE #======================#

@@ -15,7 +15,7 @@ from domain.metadata.blueprint import BoardBlueprint
 from fabrication.builder import ModelBuilder
 from err import BoardBuilderException
 from domain.model import Board
-from result import BuildResult, MethodResultType
+from artifcat.result import BuildResult, MethodResultType
 from operation.toolkit import BoardBuilderToolkit
 from util import LoggingLevelRouter
 

@@ -12,9 +12,9 @@ from typing import Type
 
 from err import DeletionRequestNullException, DeletePermitterException
 from authorization.permitter.stack import OperationPermitter
-from report import DeletionApprovalReport
+from artifcat.report import DeletionApprovalReport
 from domain.exchange.request import CollectionDeletionRequest
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from util import LoggingLevelRouter
 
 

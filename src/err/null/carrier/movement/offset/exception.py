@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import MovementPatternCarrierNullException
-from result import MethodResultType
+from artifcat.result import MethodResultType
 
 __all__ = [
     # ======================# OFFSET_PATTERN_CARRIER_NULL_ERROR #======================#

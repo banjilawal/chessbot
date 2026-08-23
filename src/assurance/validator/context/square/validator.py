@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from domain.model import Formation, SquareContext, SquareState
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from operation.toolkit import SquareContextToolkit
 from util import LoggingLevelRouter
 from assurance.validator import ContextValidator

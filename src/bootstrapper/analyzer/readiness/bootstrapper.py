@@ -14,8 +14,8 @@ from typing import cast
 from bootstrapper import AnalyzerBootstrapper
 from err import ReadinessAnalyzerBootstrapperException
 from domain.model import CombatantToken, KingToken, Token
-from report import TokenReadinessReport
-from result import AnalysisResult
+from artifcat.report import TokenReadinessReport
+from artifcat.result import AnalysisResult
 from operation.toolkit import ReadinessAnalyzerBootstrapperToolkit
 from util import LoggingLevelRouter
 

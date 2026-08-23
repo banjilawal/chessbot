@@ -10,10 +10,10 @@ Version: 1.0.0
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Any, Generic, TypeVar
+from typing import TypeVar
 
-from result import Result
-from system import LoggingLevelRouter, TransactionResult
+from artifcat.result import Result
+from system import LoggingLevelRouter
 
 T = TypeVar("T")
 

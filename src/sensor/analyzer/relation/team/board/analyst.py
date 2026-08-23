@@ -11,11 +11,11 @@ from __future__ import annotations
 from typing import cast
 
 from domain.model import Board, Team
-from report import RelationReport
+from artifcat.report import RelationReport
 from sensor.analyzer import RelationAnalyzer
 from util import LoggingLevelRouter
 from err import BoardTeamRelationAnalysisException
-from result import AnalysisResult, MethodResultType
+from artifcat.result import AnalysisResult, MethodResultType
 from assurance.validator import BoardValidator, TeamValidator
 
 

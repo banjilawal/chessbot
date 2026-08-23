@@ -15,7 +15,7 @@ from typing import Generic, TypeVar, cast
 from authorization import StackPushPermitter, StackPushRequest
 from collection import StackService
 from operation import InsertOperation
-from result import InsertionResult
+from artifcat.result import InsertionResult
 from util import LoggingLevelRouter
 
 

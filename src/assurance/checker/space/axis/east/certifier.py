@@ -15,7 +15,7 @@ from domain.metadata.blueprint import EastAxisBlueprint
 from err import EastAxisCarrierNullException, EastAxisRootCheckerException
 from carrier import EastAxisCarrier
 from domain.model import Vector
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from assurance.checker import AxisRootChecker
 from space import EastAxis
 from operation.toolkit.geometry.space.axis import EastAxisToolkit

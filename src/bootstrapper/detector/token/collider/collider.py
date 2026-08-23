@@ -14,8 +14,8 @@ from domain.metadata.blueprint import TokenBlueprint
 from err import (
     OpeningSquareCollisionException,TokenIdCollisionException, TokenNameCollisionException
 )
-from report import CollisionReport
-from result import AnalysisResult
+from artifcat.report import CollisionReport
+from artifcat.result import AnalysisResult
 from collection.stack import TokenStackService
 from util import LoggingLevelRouter
 

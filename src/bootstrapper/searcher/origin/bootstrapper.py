@@ -16,8 +16,8 @@ from err import (
     TokenSearchResultEmptyException
 )
 from domain.model import SquareContext, Token
-from report import TokenReadinessReport
-from result import MethodResultType, SearchResult
+from artifcat.report import TokenReadinessReport
+from artifcat.result import MethodResultType, SearchResult
 from operation.crud.search import TokenOriginSearcher
 from util import LoggingLevelRouter
 

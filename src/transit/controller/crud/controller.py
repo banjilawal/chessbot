@@ -14,7 +14,7 @@ from typing import Generic, TypeVar
 
 from transit.controller import Controller
 from domain.exchange.request import CollectionDeletionRequest, PopRequest, TokenStackPushRequest
-from result import DeletionResult, InsertionResult, SearchResult
+from artifcat.result import DeletionResult, InsertionResult, SearchResult
 from util import LoggingLevelRouter
 
 T = TypeVar('T')

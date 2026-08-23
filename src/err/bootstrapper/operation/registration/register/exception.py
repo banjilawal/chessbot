@@ -18,7 +18,7 @@ __all__ = [
     "WorkerRegistrationException",
 ]
 
-from result import MethodResultType
+from artifcat.result import MethodResultType
 
 
 # ======================# WORKER_REGISTRATION_FAILURE #======================#

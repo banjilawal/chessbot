@@ -16,7 +16,7 @@ from fabrication.builder import RegisterBuilder, VectorToggleRegisterBuilder
 from selector import VectorToggle
 
 from operation.toolkit import VectorToggleToolkit
-from result import ComputationResult
+from artifcat.result import ComputationResult
 from util import LoggingLevelRouter
 
 

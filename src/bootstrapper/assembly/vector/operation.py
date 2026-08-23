@@ -12,7 +12,7 @@ from __future__ import annotations
 from config.setting import BoardDimensionSetting, BoardProperty
 from transit.controller import WorkerRegistryController
 from operation.toolkit import MathToolkit
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from domain.model import Vector, VectorBlueprint
 from operation import AssemblyPrimer
 from err import VectorAssemblyPrimerException

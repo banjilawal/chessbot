@@ -15,7 +15,7 @@ from sensor.detector.token import TokenCollisionDetector
 from err import TokenPushPermitterException
 from domain.model import Token
 from authorization.permitter.stack import StackPushPermitter, RankSlotPermitter
-from report import PushApprovalReport, AuthorizationDecision
+from artifcat.report import PushApprovalReport, AuthorizationDecision
 from domain.exchange.request import TokenStackPushRequest, RankSlotRequest
 from collection.stack import TokenStackService
 from authorization.adjudicator import TokenPushRequestAdjudicator

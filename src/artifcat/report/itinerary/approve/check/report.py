@@ -1,0 +1,65 @@
+# src/artifact/report/itinerary/approve/check/report.py
+
+"""
+Module: artfifact.report.itinerary.approve.check.report
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+from __future__ import annotations
+from dataclasses import dataclass
+from typing import Optional
+
+from domain.model import KingToken, Square, Team
+from artifcat.report import ItineraryApprovalReport
+
+
+@dataclass
+class KingAttackApproval(ItineraryApprovalReport):
+    """
+    Role:
+        -   Test results
+
+    Responsibilities:
+        1.  Details a token needs to check an  enemy king.
+        
+    Attributes:
+        id: int
+        origin: Square
+        recipient: Token
+        target_square: Square
+        enemy_king: KingToken
+        priority: int
+        
+        targeted_team: Team
+        attacking_team: Team
+        
+    Provides:
+
+    Super Class:
+        Report
+    """
+    target_square: Square
+    enemy_king: KingToken
+    priority: Optional[int] = None
+    
+    @property
+    def targeted_team(self) -> Team:
+        return self.enemy_king.team
+    
+    @property
+    def attacking_team(self) -> Team:
+        return self.recipient.team
+    
+    def __eq__(self, other):
+        if other is self: return True
+        if other is None: return False
+        if isinstance(other, KingAttackApproval):
+            return (
+                super().__eq__(other) and
+                self.priority == other.priority and
+                self.enemy_king == other.enemy_king and
+                self.target_square == other.target_square
+            )
+        return False

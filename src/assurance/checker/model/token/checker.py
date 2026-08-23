@@ -16,7 +16,7 @@ from domain.search.context import TokenHomeContext
 from err import FormationNullException, TokenIntegrityCheckerException
 from fabrication import TokenBlueprint
 from domain.model import HomeSquare, Team, Token
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from domain.schema import Formation
 from transit.carrier import TokenCarrier
 from util import LoggingLevelRouter

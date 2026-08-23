@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from domain import Request
-from report import AuthorizationDecision
+from artifcat.report import AuthorizationDecision
 from operation.toolkit import PermissionRuleset
 from util import LoggingLevelRouter
 

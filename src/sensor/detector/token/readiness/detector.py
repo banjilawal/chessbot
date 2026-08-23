@@ -12,8 +12,8 @@ from __future__ import annotations
 from bootstrapper import ReadinessAnalyzerBootstrapper
 from err import TokenReadinessAnalyzerException
 from domain.model import Token
-from report import TokenReadinessReport
-from result import AnalysisResult
+from artifcat.report import TokenReadinessReport
+from artifcat.result import AnalysisResult
 from util import LoggingLevelRouter
 
 

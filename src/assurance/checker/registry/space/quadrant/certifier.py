@@ -15,7 +15,7 @@ from domain.metadata.blueprint import QuadrantReservoirBlueprint
 from carrier import QuadrantReservoirCarrier
 from domain.model import Vector
 from assurance.checker import SpaceReservoirChecker
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from space import QuadrantReservoir
 from operation.toolkit import QuadrantReservoirToolkit
 from util import LoggingLevelRouter

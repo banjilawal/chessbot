@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Dict, Optional
 
 from domain import ChainSearchContext, Dossier, Square
-from report import AuthorizationDecision
+from artifcat.report import AuthorizationDecision
 
 
 class DossierNodeContext(ChainSearchContext[Dossier]):

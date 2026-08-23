@@ -14,7 +14,7 @@ from typing import Optional, cast
 from fabrication.builder import VectorValidator
 from domain.model import Vector
 from domain.structure.register import VectorRegister
-from result import BuildResult
+from artifcat.result import BuildResult
 from domain.schema import AxisTerminus
 from util import LoggingLevelRouter
 

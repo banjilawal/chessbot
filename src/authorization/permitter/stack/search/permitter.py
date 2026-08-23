@@ -10,7 +10,7 @@ version: 0.0.2
 from abc import abstractmethod
 
 from authorization.permitter.stack import OperationPermitter
-from report import SearchApprovalReport
+from artifcat.report import SearchApprovalReport
 from domain.exchange.request import SearchRequest
 from util import LoggingLevelRouter
 

@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from domain.model import SchemaService
 from system import LoggingLevelRouter, Validator
-from result.result.result import ValidationResult
+from artifcat.result import ValidationResult
 from domain.model.state.team import (
     BlackTeamHasWrongSchemaException, TeamBinder, TeamBinderNullException, TeamBinderValidatorException,
     TeamValidator, WhiteTeamHasWrongSchemaException

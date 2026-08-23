@@ -14,7 +14,7 @@ from typing import Any, Generic, Optional, TypeVar
 
 from assurance import PrimingValidator
 from authorization import RequestAdjudicator
-from report import StackOperationApprovalReport
+from artifcat.report import StackOperationApprovalReport
 
 from util import LoggingLevelRouter
 

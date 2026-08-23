@@ -13,12 +13,12 @@ from typing import List
 
 from domain.metadata.blueprint import PathBlueprint
 from transit.controller import WorkerRegistryController
-from report import CollisionReport
+from artifcat.report import CollisionReport
 from operation.toolkit import PathToolkit
 from operation.crud.search import SquareNotFoundException
 from operation import AssemblyPrimer
 from err import PathAssemblyPrimerException
-from result import AnalysisResult, SearchResult, ValidationResult
+from artifcat.result import AnalysisResult, SearchResult, ValidationResult
 from domain.model import HomeSquare, SquareContext, Path
 from util import IdFactory, LoggingLevelRouter
 

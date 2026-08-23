@@ -10,7 +10,7 @@ version: 0.0.2
 from abc import abstractmethod
 
 from authorization.permitter.chain import ChainOperationPermitter
-from report import CrudApprovalReport
+from artifcat.report import CrudApprovalReport
 from domain.exchange.request import CrudRequest
 from util import LoggingLevelRouter
 

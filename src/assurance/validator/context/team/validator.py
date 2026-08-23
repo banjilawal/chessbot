@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from domain.model import Schema, TeamContext
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from operation.toolkit import TeamContextToolkit
 from util import LoggingLevelRouter
 from err import SchemaNullException, TeamContextValidatorException, TeamContextValidationRouteException

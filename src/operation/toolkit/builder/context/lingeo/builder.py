@@ -13,7 +13,7 @@ from typing import Optional
 from err import ExcessVectorToggleFlagsException, VectorContextToolkitException
 from integrity import Toolkit
 from domain.model import Coord, VectorToggle, Vector
-from result import ToolkitResult
+from artifcat.result import ToolkitResult
 from operation.toolkit import VectorContextToolkit
 
 class VectorContextToolkit(Toolkit[VectorToggle]):

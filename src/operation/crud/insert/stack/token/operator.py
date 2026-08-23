@@ -16,7 +16,7 @@ from collection import TokenStackState
 from err import TokenStackPushException
 from domain.model import Token
 from operation import StackPop
-from result import InsertionResult, MethodResultType
+from artifcat.result import InsertionResult, MethodResultType
 from util import LoggingLevelRouter
 
 

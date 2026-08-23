@@ -12,9 +12,9 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, Optional, TypeVar
 
-from assurance import NodeValidator, PrimingValidator
+from assurance import NodeValidator
 from authorization import ChainAdjudicationBootstrapper, RequestAdjudicator
-from report import AuthorizationDecision
+from artifcat.report import AuthorizationDecision
 from util import LoggingLevelRouter
 
 N = TypeVar("N", bound="Node")

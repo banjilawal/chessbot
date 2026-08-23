@@ -1,0 +1,20 @@
+# src/artifact/logic/system/relation/debug/__init__.py
+
+"""
+Module: artfifact.logic.system.relation.debug.__init__
+Author: Banji Lawal
+Created: 2025-12-28
+version: 1.0.0
+"""
+
+# =========== SYSTEM.RELATION.EXCEPTION PACKAGE ===========#
+
+# Packages
+
+
+# Modules
+from .debug import RelationDebugException
+from .null import NoRelationException
+from .stale import StaleRelationException
+from .register import NotRegisteredException
+

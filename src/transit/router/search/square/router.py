@@ -14,7 +14,7 @@ from typing import List
 from err import SquareSearchException
 from domain.model import Board, Coord, Formation, HomeSquare, Square, SquareState, Token
 from domain.model import SquareQuery
-from result import SearchResult
+from artifcat.result import SearchResult
 from transit.router import SearchRouter
 from util import LoggingLevelRouter
 

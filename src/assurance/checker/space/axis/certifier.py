@@ -13,7 +13,7 @@ from abc import abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from assurance.checker import SpaceChecker
 from operation.toolkit import AxisToolkit
 from util import LoggingLevelRouter

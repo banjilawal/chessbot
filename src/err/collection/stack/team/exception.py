@@ -18,7 +18,7 @@ __all__ = [
     "TeamStackServiceException",
 ]
 
-from result import MethodResultType
+from artifcat.result import MethodResultType
 
 
 # ======================# TEAM_STACK_SERVICE_ERROR #======================#

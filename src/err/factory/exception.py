@@ -18,7 +18,7 @@ __all__ = [
     "FactoryException",
 ]
 
-from result import MethodResultType
+from artifcat.result import MethodResultType
 
 
 # ======================# FACTORY_ERROR #======================#

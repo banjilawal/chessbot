@@ -18,7 +18,7 @@ __all__ = [
     "HostageStackServiceException",
 ]
 
-from result import MethodResultType
+from artifcat.result import MethodResultType
 
 
 # ======================# HOSTAGE_STACK_SERVICE_ERROR #======================#

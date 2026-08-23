@@ -13,7 +13,7 @@ from transit.controller import WorkerRegistryController
 from err import PrimingTeamAssemblyException
 from domain.model import Board, Team, TeamBlueprint
 from operation import AssemblyPrimer
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from operation.toolkit import TeamToolkit
 from util import LoggingLevelRouter
 

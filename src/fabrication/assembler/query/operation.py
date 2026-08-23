@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from domain.model import Query
-from result import BuildResult
+from artifcat.result import BuildResult
 from fabrication.assembler import Assembler
 from util import LoggingLevelRouter
 

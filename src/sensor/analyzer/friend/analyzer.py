@@ -14,8 +14,8 @@ from typing import cast
 from sensor.analyzer import Analyzer, EnemyCombatantStatusDetector, EnemyKingStatusDetector
 from err import FriendshipAnalyzerException
 from domain.model import CombatantToken, KingToken, Token
-from report import FriendshipReport, FriendshipStatus
-from result import AnalysisResult
+from artifcat.report import FriendshipReport, FriendshipStatus
+from artifcat.result import AnalysisResult
 from util import LoggingLevelRouter
 from assurance.validator import TokenValidator
 

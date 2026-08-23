@@ -15,7 +15,7 @@ from domain.metadata.blueprint import SnapshotBlueprint
 from fabrication.builder import ModelBuilder
 from err import SnapshotBuilderException
 from domain.model import Snapshot
-from result import BuildResult, MethodResultType
+from artifcat.result import BuildResult, MethodResultType
 from operation.toolkit import SnapshotBuilderToolkit
 from util import LoggingLevelRouter
 

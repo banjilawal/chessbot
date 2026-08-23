@@ -12,8 +12,8 @@ from __future__ import annotations
 from sensor.analyzer import Analyzer
 from err import PromoteToKingException, PromoteToPawnException, PromotionLevelAnalyzerException
 from domain.model import King, Pawn, Rank
-from report import RankLevelApproval
-from result import AnalysisResult
+from artifcat.report import RankLevelApproval
+from artifcat.result import AnalysisResult
 from util import LoggingLevelRouter
 from assurance.validator import RankValidator
 

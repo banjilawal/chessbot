@@ -14,7 +14,7 @@ from typing import Optional, cast
 from domain.metadata.blueprint import SoutheastQuadrantBlueprint
 from fabrication.builder import QuadrantBuilder
 from err import SoutheastQuadrantBuilderException
-from result import BuildResult, MethodResultType
+from artifcat.result import BuildResult, MethodResultType
 from space import SoutheastQuadrant
 from operation.toolkit import SoutheastQuadrantBuilderToolkit
 from util import LoggingLevelRouter

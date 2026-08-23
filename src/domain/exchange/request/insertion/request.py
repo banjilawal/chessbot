@@ -14,7 +14,7 @@ from typing import Generic, TypeVar, cast
 
 from collection import DomainObjectCollection
 from domain.exchange.request import Request
-from result import InsertionResult
+from artifcat.result import InsertionResult
 
 T = TypeVar("T", bound="DomainObjectCollection")
 

@@ -13,8 +13,8 @@ from transit.controller import WorkerRegistryController
 from err import PrimingSquareAssemblyException
 from domain.model import Square, SquareBlueprint
 from operation import AssemblyPrimer
-from report import CollisionReport
-from result import AnalysisResult, ValidationResult
+from artifcat.report import CollisionReport
+from artifcat.result import AnalysisResult, ValidationResult
 from operation.toolkit import SquareToolkit
 from util import LoggingLevelRouter
 

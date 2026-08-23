@@ -12,7 +12,7 @@ from __future__ import annotations
 from fabrication.assembler import RegisterAssembler
 from domain.metadata.blueprint import VectorRegisterBlueprint
 from domain.structure.register import VectorRegister
-from result import BuildResult
+from artifcat.result import BuildResult
 from util import LoggingLevelRouter
 
 

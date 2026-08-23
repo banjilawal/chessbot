@@ -18,7 +18,7 @@ __all__ = [
     "RegistryOperationException",
 ]
 
-from result import MethodResultType
+from artifcat.result import MethodResultType
 
 
 # ======================# REGISTRY_OPERATION_FAILURE #======================#

@@ -9,12 +9,12 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
-from typing import Generic, Optional, TypeVar, cast
+from abc import abstractmethod
+from typing import Optional, cast
 
 from assurance import PrimingValidator
-from authorization import ComputationRequest, OperationPermitter
-from report import AuthorizationDecision
+from authorization import ComputationRequest
+from artifcat.report import AuthorizationDecision
 from util import LoggingLevelRouter
 
 

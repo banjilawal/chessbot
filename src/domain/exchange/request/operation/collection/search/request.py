@@ -16,7 +16,7 @@ from authorization import CollectionRequest
 from collection import StackService
 
 from domain.exchange.search.context import Context
-from result import SearchResult
+from artifcat.result import SearchResult
 
 
 T = TypeVar("T", bound="StateModel")

@@ -15,9 +15,9 @@ from typing import Generic, TypeVar, cast
 from authorization import InsertionRequestAuthorizer
 from collection import DomainObjectCollection
 from transit.dispatcher import AuthorizationDispatcher
-from report import AuthorizationDecision
+from artifcat.report import AuthorizationDecision
 from domain.exchange.request import InsertionRequest
-from result import InsertionResult
+from artifcat.result import InsertionResult
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="DomainObjectCollection")

@@ -14,7 +14,7 @@ from typing import Optional, cast
 from authorization import AddNodeRequestAuthorizer
 from collection import VectorChain
 from domain.structure.node import VectorNode
-from report import AuthorizationDecision
+from artifcat.report import AuthorizationDecision
 from domain.exchange.request import AddVectorNodeRequest
 from operation.toolkit import AddVectorNodeRequestToolkit
 from util import LoggingLevelRouter

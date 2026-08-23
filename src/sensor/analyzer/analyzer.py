@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import TypeVar
 
-from report import Report
-from result import AnalysisResult
+from artifcat.report import Report
+from artifcat.result import AnalysisResult
 from util import LoggingLevelRouter
 
 R = TypeVar("R", bound=Report)

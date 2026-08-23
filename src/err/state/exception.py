@@ -18,7 +18,7 @@ __all__ = [
     "StateException",
 ]
 
-from result import MethodResultType
+from artifcat.result import MethodResultType
 
 
 # ======================# STATE_ERROR #======================#

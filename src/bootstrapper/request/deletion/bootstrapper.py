@@ -14,7 +14,7 @@ from typing import Type
 from bootstrapper import RequestBootstrapper
 from err import DeletionRequestNullException, DeletionPermitterBootstrapperException
 from domain.exchange.request import CollectionDeletionRequest
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from util import LoggingLevelRouter
 
 

@@ -15,7 +15,7 @@ from sensor.detector import SquareCollider
 from err import SquarePushPermitterException
 from domain.model import Square
 from authorization.permitter.stack import StackPushPermitter
-from report import PushApprovalReport
+from artifcat.report import PushApprovalReport
 from domain.exchange.request import TokenStackPushRequest
 from collection.stack import SquareStackService
 from authorization.adjudicator import SquarePushRequestAdjudicator

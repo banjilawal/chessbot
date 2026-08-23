@@ -14,7 +14,7 @@ from typing import Optional, cast
 from domain.metadata.blueprint import NorthAxisBlueprint
 from fabrication.builder import AxisBuilder
 from err import NorthAxisBuilderException
-from result import BuildResult, MethodResultType
+from artifcat.result import BuildResult, MethodResultType
 from space import NorthAxis
 from operation.toolkit import NorthAxisBuilderToolkit
 from util import LoggingLevelRouter

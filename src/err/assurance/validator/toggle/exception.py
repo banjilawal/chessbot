@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 from err import ValidatorException
-from result import MethodResultType
+from artifcat.result import MethodResultType
 
 
 # ======================# TOGGLE_VALIDATOR_FAILURE #======================#

@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import SquareRegisterRootCheckerException
 from domain.structure.register import SquareRegister
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from assurance.checker import Checker
 from operation.toolkit import SquareRegisterToolkit
 from util import LoggingLevelRouter

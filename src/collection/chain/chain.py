@@ -15,7 +15,7 @@ from typing import Any, Generic, List, Optional, TypeVar, cast
 from assurance import NumberValidator
 from collection import DomainObjectCollection
 from domain import Node
-from result import BuildResult, DeletionResult, InsertionResult, SearchResult, ValidationResult
+from artifcat.result import BuildResult, DeletionResult, InsertionResult, SearchResult, ValidationResult
 from util import LoggingLevelRouter
 
 

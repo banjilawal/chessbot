@@ -14,7 +14,7 @@ from typing import Type
 from err import RemovepingEmptyTokenChainException, TokenRemovePermitterException, TokenChainNullException
 from domain.model import Token
 from authorization.permitter.chain import RemovePermitter
-from report import RemoveApprovalReport
+from artifcat.report import RemoveApprovalReport
 from domain.exchange.request import RemoveRequest
 from chain import TokenChainService
 from util import LoggingLevelRouter

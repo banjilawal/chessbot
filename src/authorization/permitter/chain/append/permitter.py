@@ -10,7 +10,7 @@ version: 0.0.2
 from abc import abstractmethod
 
 from authorization.permitter.chain import ChainOperationPermitter
-from report import AppendApprovalReport
+from artifcat.report import AppendApprovalReport
 from domain.exchange.request import AppendRequest
 from util import LoggingLevelRouter
 

@@ -12,8 +12,8 @@ from __future__ import annotations
 from bootstrapper import PrimingValidator
 from err import ManeuverException
 from err.null.event import ManeuverEventNullException
-from report import ManeuverApproval, ManeuverRequestDecision
-from result import TurnResult
+from artifcat.report import ManeuverApproval, ManeuverRequestDecision
+from artifcat.result import TurnResult
 from util import LoggingLevelRouter
 
 

@@ -15,8 +15,8 @@ from sensor.analyzer import Analyzer, TokenReadinessAnalyzer
 from err import PawnDoublePromotionException, PawnPromotionRowException, PromoteInactivePawnException
 from err.analyzer.promotion import PromotionApprovalManagerException
 from domain.model import PawnToken
-from report import PromotionApprovalManagerReport, TokenReadinessReport
-from result import AnalysisResult, MethodResultType
+from artifcat.report import PromotionApprovalManagerReport, TokenReadinessReport
+from artifcat.result import AnalysisResult, MethodResultType
 from util import LoggingLevelRouter
 from assurance.validator import TokenValidator
 

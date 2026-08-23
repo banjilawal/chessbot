@@ -20,8 +20,8 @@ from err import (
 )
 from domain.model import PawnToken
 from operation import PawnPromoter
-from report import TokenReadinessReport
-from result import MethodResultType, ValidationResult
+from artifcat.report import TokenReadinessReport
+from artifcat.result import MethodResultType, ValidationResult
 from util import LoggingLevelRouter
 
 

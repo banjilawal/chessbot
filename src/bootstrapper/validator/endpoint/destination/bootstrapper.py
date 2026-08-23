@@ -17,7 +17,7 @@ from err import (
     TokenAlreadyAtDestinationException
 )
 from domain.model import Square, Token
-from report import DestinationApprovalReport, RelationReport
+from artifcat.report import DestinationApprovalReport, RelationReport
 from util import LoggingLevelRouter
 
 

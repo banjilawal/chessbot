@@ -13,7 +13,7 @@ from transit.controller import WorkerRegistryController
 from err import FinalizeTokenBuilderException
 from domain.model import Token
 from operation import BuilderFinalizer, TokenAssembler
-from result import BuildResult
+from artifcat.result import BuildResult
 from util import LoggingLevelRouter
 
 

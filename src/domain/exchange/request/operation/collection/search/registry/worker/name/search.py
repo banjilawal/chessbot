@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import List
 
 from err import WorkerRegistryNameSearchException
-from result import SearchResult
+from artifcat.result import SearchResult
 from domain.exchange.model import WorkerRegistry
 from util import LoggingLevelRouter
 from transit.controller import WorkerRegistryController

@@ -18,7 +18,7 @@ __all__ = [
     "BuilderException",
 ]
 
-from result import MethodResultType
+from artifcat.result import MethodResultType
 
 
 # ======================# BUILDER_FAILURE #======================#

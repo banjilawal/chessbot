@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import PromoteToKingException, PromoteToPawnException, PromotionLevelAdjudicatorException
 from domain.model import King, Pawn, Rank
-from result import MethodResultType, ValidationResult
+from artifcat.result import MethodResultType, ValidationResult
 from authorization.adjudicator.token import RequestAdjudicator
 from util import LoggingLevelRouter
 from assurance.validator import RankValidator

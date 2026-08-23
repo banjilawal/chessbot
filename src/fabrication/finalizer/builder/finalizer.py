@@ -14,7 +14,7 @@ from typing import TypeVar
 
 from domain.model import Blueprint
 from operation import Finalizer
-from result import BuildResult
+from artifcat.result import BuildResult
 from util import LoggingLevelRouter
 
 T = TypeVar("T")

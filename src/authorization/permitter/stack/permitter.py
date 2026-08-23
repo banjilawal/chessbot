@@ -13,8 +13,8 @@ from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar, cast
 
 from assurance import PrimingValidator
-from authorization import OperationPermitter, Request, RequestAdjudicator, StackRequestAdjudicator
-from report import AuthorizationDecision
+from authorization import OperationPermitter, Request, StackRequestAdjudicator
+from artifcat.report import AuthorizationDecision
 from util import LoggingLevelRouter
 
 

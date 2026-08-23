@@ -14,7 +14,7 @@ from typing import Any, cast
 from err import PlayerValidatorException
 from domain.model import Player
 from assurance import PlayerIntegrityChecker
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from util import LoggingLevelRouter
 from assurance.validator import ModelValidator
 

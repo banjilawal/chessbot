@@ -12,7 +12,7 @@ from typing import Dict, List
 
 from transit.controller import WorkerRegistryController
 from err import WorkerRegistryDomainSearchException
-from result import SearchResult
+from artifcat.result import SearchResult
 from domain.exchange.model import WorkerRegistry
 from util import LoggingLevelRouter
 from operation import Operator, RegistryEntryNameValidator

@@ -19,7 +19,7 @@ __all__ = [
     "StaleLinkException",
 ]
 
-from result import MethodResultType
+from artifcat.result import MethodResultType
 
 
 # ======================# STALE_LINK_ERROR #======================#

@@ -15,7 +15,7 @@ from err import (
     NegativeNumberException, NumberAboveBoundsException, NumberBelowBoundsException, NumberNullException,
     NumberValidatorException
 )
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from util import LoggingLevelRouter
 
 

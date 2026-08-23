@@ -12,7 +12,7 @@ from __future__ import annotations
 from bootstrapper import TokenBuilderBootstrapper
 from err import TokenOriginSearcherException
 from domain.model import Token
-from result import MethodResultType, SearchResult
+from artifcat.result import MethodResultType, SearchResult
 from util import LoggingLevelRouter
 
 

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import AttackOffsetPatternBlueprintNullException
-from result import MethodResultType
+from artifcat.result import MethodResultType
 
 __all__ = [
     # ======================# DEVELOPED_ATTACK_OFFSET_PATTERN_BLUEPRINT_NULL_ERROR #======================#

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from domain.model import TeamBinderBinderBlueprint, BoardBinderBlueprint
 from operation import AssemblyPrimer
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from system import AssemblyResult, LoggingLevelRouter
 from domain.model import (
     TeamBinderBinder, TeamBinderBinderAssemblyException,

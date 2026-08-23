@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 
-from report import CollisionReport
+from artifcat.report import CollisionReport
 from sensor import Collider
 from collection.stack import TokenStackService
 from transit.carrier import TokenCarrier

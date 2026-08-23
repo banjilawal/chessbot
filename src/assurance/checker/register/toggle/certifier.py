@@ -17,7 +17,7 @@ from err import (
     VectorToggleRegisterMismatchException
 )
 from domain.structure.register import CartesianToggleRegister
-from result import MethodResultType, ValidationResult
+from artifcat.result import MethodResultType, ValidationResult
 from assurance.checker import Checker
 from domain.structure.toggle import CartesianToggle
 from operation.toolkit import VectorToggleRegisterToolkit

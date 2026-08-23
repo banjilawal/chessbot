@@ -16,8 +16,8 @@ from err import (
     SquareNameCollisionException
 )
 from domain.model import Square
-from report import CollisionReport
-from result import AnalysisResult
+from artifcat.report import CollisionReport
+from artifcat.result import AnalysisResult
 from collection.stack import SquareStackService
 from util import LoggingLevelRouter
 

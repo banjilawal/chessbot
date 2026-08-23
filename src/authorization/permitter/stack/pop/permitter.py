@@ -12,9 +12,9 @@ from typing import Type
 
 from err import PopRequestNullException, PopperPermitterException
 from authorization.permitter.stack import OperationPermitter
-from report import PopApprovalReport
+from artifcat.report import PopApprovalReport
 from domain.exchange.request import PopRequest
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from util import LoggingLevelRouter
 
 

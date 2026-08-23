@@ -13,7 +13,7 @@ from typing import Any, Optional, cast
 from err import CircularPathException, PathCheckerException
 from domain.model import Path
 from assurance.checker.model import ModelIntegrityChecker
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from operation.toolkit import PathToolkit
 from util import LoggingLevelRouter
 

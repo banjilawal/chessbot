@@ -12,7 +12,7 @@ from typing import Any, cast
 
 from err import CircularPathException, PathConsistencyAuditorException
 from domain.model import Path
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from operation.toolkit import PathToolkit
 from util import LoggingLevelRouter
 

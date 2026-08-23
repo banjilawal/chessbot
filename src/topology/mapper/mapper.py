@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar
 
 from domain.model import Vector
-from result import ComputationResult
+from artifcat.result import ComputationResult
 from operation.toolkit import MathToolkit
 from util import LoggingLevelRouter
 

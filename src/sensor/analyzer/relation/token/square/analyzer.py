@@ -14,8 +14,8 @@ from typing import cast
 from sensor.analyzer import RelationAnalyzer
 from err import SquareTokenRelationAnalyzerException
 from domain.model import Square, Token
-from report import RelationReport
-from result import AnalysisResult, MethodResultType
+from artifcat.report import RelationReport
+from artifcat.result import AnalysisResult, MethodResultType
 from util import LoggingLevelRouter
 from assurance.validator import SquareValidator, TokenValidator
 

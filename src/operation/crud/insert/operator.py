@@ -15,7 +15,7 @@ from typing import Generic, TypeVar, cast
 from authorization import InsertAuthorizer
 from domain import InsertRequest
 from operation import CrudOperator
-from result import InsertionResult
+from artifcat.result import InsertionResult
 from util import LoggingLevelRouter
 
 

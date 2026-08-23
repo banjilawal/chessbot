@@ -14,7 +14,7 @@ from typing import Generic, TypeVar, cast
 
 from domain.metadata.blueprint import SignatureBlueprint
 from fabrication.builder import Builder
-from result import BuildResult
+from artifcat.result import BuildResult
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Signature")

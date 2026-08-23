@@ -15,7 +15,7 @@ from assurance import ModelValidator
 from err import VectorValidatorException
 from assurance import VectorIntegrityChecker
 from domain.model import Vector
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from util import LoggingLevelRouter
 
 

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from domain.metadata.blueprint import NorthwestQuadrantBlueprint
 
-from result import BuildResult
+from artifcat.result import BuildResult
 from fabrication.assembler import QuadrantAssembler
 from assurance.checker import NorthwestQuadrant
 from util import  LoggingLevelRouter

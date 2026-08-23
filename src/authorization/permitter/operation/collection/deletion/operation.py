@@ -12,9 +12,9 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
-from authorization import CollectionDeletionRequest, OperationPermitter
+from authorization import CollectionDeletionRequest
 from operation import CrudOperator
-from result import DeletionResult
+from artifcat.result import DeletionResult
 from util import LoggingLevelRouter
 
 

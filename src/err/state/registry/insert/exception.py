@@ -18,7 +18,7 @@ __all__ = [
     "NewRegistrationException",
 ]
 
-from result import MethodResultType
+from artifcat.result import MethodResultType
 
 
 # ======================# NEW_REGISTRATION_ENTRY_FAILURE #======================#

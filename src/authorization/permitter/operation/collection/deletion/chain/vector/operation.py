@@ -14,7 +14,7 @@ from typing import Optional, cast
 from authorization import RemoveVectorNodeRequest
 from domain.structure.node import VectorNode
 from operation import RemoveNode
-from result import DeletionResult
+from artifcat.result import DeletionResult
 from util import LoggingLevelRouter
 
 

@@ -13,7 +13,7 @@ from typing import Any, Optional, cast
 
 from assurance import StackContextChecker, TokenValidationBundle
 from domain import TokenSearchContext
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from util import LoggingLevelRouter
 
 

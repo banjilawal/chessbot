@@ -13,7 +13,7 @@ from typing import List
 
 from domain.model import Token
 from domain.model import TeamQuery
-from result import SearchResult
+from artifcat.result import SearchResult
 from transit.router import SearchRouter
 from system import LoggingLevelRouter
 

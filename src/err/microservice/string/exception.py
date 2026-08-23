@@ -18,7 +18,7 @@ __all__ = [
 ]
 
 from err import MicroserviceException
-from result import MethodResultType
+from artifcat.result import MethodResultType
 
 
 # ======================# STRING_MICROSERVICE_FAILURE #======================#

@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import VectorRegisterValidatorException
 from domain.structure.register import VectorRegister
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from assurance import VectorRegisterIntegrityChecker
 from util import LoggingLevelRouter
 from assurance.validator import RegisterValidator

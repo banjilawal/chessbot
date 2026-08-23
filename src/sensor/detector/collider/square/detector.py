@@ -10,8 +10,8 @@ version: 0.0.2
 from __future__ import annotations
 
 
-from report import CollisionReport
-from result import AnalysisResult
+from artifcat.report import CollisionReport
+from artifcat.result import AnalysisResult
 from sensor import Collider
 from collection.stack import SquareStackService
 from transit.carrier import SquareCarrier

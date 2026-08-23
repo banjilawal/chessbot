@@ -15,7 +15,7 @@ from typing import Any, Type, cast
 from priming_validator import PrimingValidator, SearchRequestPriming_Validator
 from err import TokenSearchRequestAdjudicatorException, TokenStackNullException
 from domain.exchange.request import SearchRequest
-from result import MethodResultType, ValidationResult
+from artifcat.result import MethodResultType, ValidationResult
 from collection.stack import TokenStackService
 from authorization.adjudicator import SearchRequestAdjudicator
 from util import LoggingLevelRouter

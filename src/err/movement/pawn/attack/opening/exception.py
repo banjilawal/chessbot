@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import AttackOffsetPatternException
-from result import MethodResultType
+from artifcat.result import MethodResultType
 
 __all__ = [
     # ======================# OPENING_ATTACK_OFFSET_PATTERN_ERROR #======================#

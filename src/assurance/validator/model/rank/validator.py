@@ -14,7 +14,7 @@ from typing import Any, cast
 from err import RankValidatorException
 from domain.model import Rank
 from assurance import RankIntegrityChecker
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from util import LoggingLevelRouter
 from assurance.validator import ModelValidator
 

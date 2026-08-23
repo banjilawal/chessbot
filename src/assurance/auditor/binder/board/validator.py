@@ -13,7 +13,7 @@ from typing import Any, Dict, cast
 from err import BoardTeamBinderNullException, BoardTeamBinderConsistencyCheckerException
 from domain.model import BoardBinder
 from assurance.auditor import  ConsistencyAuditor
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from util import LoggingLevelRouter
 from operation.toolkit import BoardTeamBinderToolkit
 

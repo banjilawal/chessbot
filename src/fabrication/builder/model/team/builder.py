@@ -15,7 +15,7 @@ from domain.metadata.blueprint import TeamBlueprint
 from fabrication.builder import ModelBuilder
 from err import TeamBuilderException
 from domain.model import Team
-from result import BuildResult, MethodResultType
+from artifcat.result import BuildResult, MethodResultType
 from operation.toolkit import TeamBuilderToolkit
 from util import LoggingLevelRouter
 

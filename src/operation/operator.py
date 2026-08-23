@@ -14,7 +14,7 @@ from typing import Generic, TypeVar
 
 from authorization import RequestAuthorizer
 from domain import Request
-from result import Result
+from artifcat.result import Result
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Result")

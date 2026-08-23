@@ -14,7 +14,7 @@ from typing import Optional, cast
 from domain.metadata.blueprint import SouthAxisBlueprint
 from fabrication.builder import AxisBuilder
 from err import SouthAxisBuilderException
-from result import BuildResult, MethodResultType
+from artifcat.result import BuildResult, MethodResultType
 from space import SouthAxis
 from operation.toolkit import SouthAxisBuilderToolkit
 from util import LoggingLevelRouter

@@ -18,7 +18,7 @@ __all__ = [
     "ChainException",
 ]
 
-from result import MethodResultType
+from artifcat.result import MethodResultType
 
 
 # ======================# CHAIN_SERVICE_ERROR #======================#

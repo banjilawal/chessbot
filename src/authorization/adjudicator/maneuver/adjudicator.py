@@ -18,9 +18,9 @@ from err import (
 )
 from domain.model import Maneuver, Path, Square
 from domain.structure.register import SquareRegister
-from report import ManeuverRequestDecision
+from artifcat.report import ManeuverRequestDecision
 from domain.exchange.request import ManeuverRequest
-from result import MethodResultType
+from artifcat.result import MethodResultType
 from operation.toolkit import TokenManeuverToolkit
 from util import IdFactory, LoggingLevelRouter
 

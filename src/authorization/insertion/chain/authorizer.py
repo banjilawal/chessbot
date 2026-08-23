@@ -14,7 +14,7 @@ from typing import Generic, TypeVar, cast
 
 from authorization import InsertionRequestAuthorizer
 from domain.structure.node import Node
-from report import AuthorizationDecision
+from artifcat.report import AuthorizationDecision
 from domain.exchange.request import AddNodeRequest
 from operation.toolkit import AddNodeRequestToolkit
 from util import LoggingLevelRouter

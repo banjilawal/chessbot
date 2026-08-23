@@ -17,8 +17,8 @@ from err import (
 )
 from domain.model import Token
 from authorization.permitter import TokenManeuverPermitter
-from report import PopApprovalReport, TokenReadinessReport
-from result import AnalysisResult
+from artifcat.report import PopApprovalReport, TokenReadinessReport
+from artifcat.result import AnalysisResult
 from util import LoggingLevelRouter
 from assurance.validator import TokenValidator
 

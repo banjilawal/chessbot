@@ -18,8 +18,8 @@ from err import (
 )
 from domain.model import Itinerary, SquareContext
 from operation import AssemblyPrimer
-from report import RelationReport, TokenReadinessReport
-from result import MethodResultType, ValidationResult
+from artifcat.report import RelationReport, TokenReadinessReport
+from artifcat.result import MethodResultType, ValidationResult
 from operation.toolkit import ItineraryToolkit
 from util import LoggingLevelRouter
 

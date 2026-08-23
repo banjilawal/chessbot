@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from domain.model import Persona, TokenContext
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from config.setting import GameColor
 from operation.toolkit import TokenToolkit
 from util import LoggingLevelRouter

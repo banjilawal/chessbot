@@ -14,7 +14,7 @@ from domain.schema import Persona
 from err import RookException
 from geometry import RookSpanner
 from domain.model import Coord, TraversalRank
-from result import ComputationResult
+from artifcat.result import ComputationResult
 
 
 class Rook(TraversalRank):

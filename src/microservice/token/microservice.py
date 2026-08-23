@@ -13,7 +13,7 @@ from fabrication.builder import TokenBuilder
 from transit.controller import TokenController
 from microservice import CoordService
 from domain.model import Coord, Token
-from result import DeletionResult, InsertionResult
+from artifcat.result import DeletionResult, InsertionResult
 from util import IdFactory, LoggingLevelRouter
 from assurance.validator import TokenValidator
 

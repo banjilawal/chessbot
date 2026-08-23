@@ -14,7 +14,7 @@ from typing import Any, List, Optional, cast
 from domain.metadata.blueprint import SouthwestQuadrantBlueprint
 from carrier import SouthwestQuadrantCarrier
 from domain.model import Vector
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from assurance.checker import QuadrantRootChecker
 from space import SouthwestQuadrant
 from operation.toolkit import SouthwestQuadrantToolkit

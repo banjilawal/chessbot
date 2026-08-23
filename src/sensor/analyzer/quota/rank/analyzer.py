@@ -13,8 +13,8 @@ from sensor.analyzer import Analyzer
 from bootstrapper.analyzer.quota.bootstrapper import QuotaAnalyzerBootstrapper
 from err import RankQuotaAnalyzerException
 from domain.model import Rank
-from report import RankQuotaReport
-from result import AnalysisResult, MethodResultType
+from artifcat.report import RankQuotaReport
+from artifcat.result import AnalysisResult, MethodResultType
 from collection.stack import TokenStackService
 from util import LoggingLevelRouter
 

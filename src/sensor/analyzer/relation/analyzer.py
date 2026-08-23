@@ -12,8 +12,8 @@ from abc import abstractmethod
 from typing import Generic, TypeVar
 
 from sensor.analyzer import Analyzer
-from report import RelationReport
-from result import AnalysisResult
+from artifcat.report import RelationReport
+from artifcat.result import AnalysisResult
 from util import LoggingLevelRouter
 
 P = TypeVar("P")

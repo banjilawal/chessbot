@@ -12,8 +12,8 @@ from __future__ import annotations
 from abc import abstractmethod
 
 from bootstrapper import Bootstrapper
-from report import Report
-from result import AnalysisResult
+from artifcat.report import Report
+from artifcat.result import AnalysisResult
 from util import LoggingLevelRouter
 
 

@@ -13,7 +13,7 @@ from abc import abstractmethod
 from typing import Generic, TypeVar
 
 from bootstrapper import Bootstrapper
-from result import BuildResult
+from artifcat.result import BuildResult
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Model")

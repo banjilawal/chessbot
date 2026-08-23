@@ -13,7 +13,7 @@ from transit.controller import WorkerRegistryController
 from err import MaxNameLengthException, MinNameLengthException, NameValidatorException
 
 from operation import StringValidator, Validator
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from config.setting import StringProperty, StringPropertyTable
 from util import LoggingLevelRouter
 

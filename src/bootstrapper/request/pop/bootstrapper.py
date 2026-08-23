@@ -14,7 +14,7 @@ from typing import Type
 from bootstrapper import RequestBootstrapper
 from err import PopRequestNullException, PopPermitterBootstrapperException
 from domain.exchange.request import PopRequest
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from util import LoggingLevelRouter
 
 

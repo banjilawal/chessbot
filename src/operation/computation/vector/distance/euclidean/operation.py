@@ -12,7 +12,7 @@ from computation import sqrt
 from typing import Optional, cast
 
 from pipeline import ScalarBuilder
-from result import ComputationResult
+from artifcat.result import ComputationResult
 from util import LoggingLevelRouter
 from err import VectorEuclideanException
 from operation import VectorRegisterValidator

@@ -14,7 +14,7 @@ from transit.controller import Controller
 from domain.model import ServiceRegistry
 from operation.toolkit import ServiceRegistryToolkit
 from util import LoggingLevelRouter, singleton
-from result import InsertionResult, SearchResult
+from artifcat.result import InsertionResult, SearchResult
 from microservice import Microservice
 from err import MicroserviceNullException, ServiceRegistryControllerException
 

@@ -15,7 +15,7 @@ from domain.metadata.blueprint import SquareBlueprint
 from err import FormationNullException, SquareCheckerException, SquareCarrierNullException
 from domain.model import Board, Coord, HomeSquare, Square
 from carrier import SquareCarrier
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from domain.schema import Formation
 from operation.toolkit import SquareToolkit
 from util import LoggingLevelRouter

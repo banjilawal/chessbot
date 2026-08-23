@@ -13,7 +13,7 @@ from config.setting import BoardDimensionSetting, BoardProperty
 from transit.controller import WorkerRegistryController
 from err import PrimingCoordAssemblyException
 from operation.toolkit import CoordToolkit
-from result import ValidationResult
+from artifcat.result import ValidationResult
 from domain.model import Coord, CoordBlueprint
 from operation import AssemblyPrimer
 from util import LoggingLevelRouter

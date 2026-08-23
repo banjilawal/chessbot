@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import List
 
 from domain.model import Coord
-from result import SearchResult
+from artifcat.result import SearchResult
 from system import LoggingLevelRouter
 
 

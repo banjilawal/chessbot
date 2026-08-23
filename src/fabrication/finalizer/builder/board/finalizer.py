@@ -13,7 +13,7 @@ from transit.controller import WorkerRegistryController
 from err import FinalizeBoardBuilderException
 from domain.model import Board
 from operation import BuilderFinalizer
-from result import BuildResult
+from artifcat.result import BuildResult
 from util import LoggingLevelRouter
 
 

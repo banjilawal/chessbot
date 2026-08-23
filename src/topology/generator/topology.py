@@ -14,7 +14,7 @@ from typing import List, Optional, cast
 from collection import VectorSet
 from domain.model import Vector
 from topology.recurrence import Recurrence
-from result import ComputationResult
+from artifcat.result import ComputationResult
 
 from operation.toolkit import MathToolkit
 from util import LoggingLevelRouter
