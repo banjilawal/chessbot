@@ -51,7 +51,7 @@ class SoutheastQuadrantRootChecker(QuadrantRootChecker[SoutheastQuadrantBlueprin
     
     @property
     def toolkit(self) -> SoutheastQuadrantBundle:
-        return cast(SoutheastQuadrantToolkit, super().toolkit)
+        return cast(SoutheastQuadrantToolkit, super().ruleset)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[SoutheastQuadrant| SoutheastQuadrantBlueprint]:

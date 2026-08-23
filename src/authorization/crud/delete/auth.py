@@ -39,21 +39,22 @@ class DeleteAuthorizer(CrudAuthorizer[T], ABC, Generic[T]):
         CrudAuthorizer
     """
     
-    def __init__(self, toolkit: DeleteRequestToolkit[T]):
+    def __init__(self, ruleset: DeleteRequestToolkit[T]):
         """
         Args:
-             toolkit: DeleteRequestToolkit[T]
+             ruleset: DeleteRequestToolkit[T]
         """
-        super().__init__(toolkit=toolkit)
+        super().__init__(ruleset=ruleset)
         
     @property
-    def toolkit(self) -> DeleteRequestToolkit[T]:
-        return cast(DeleteRequestToolkit[T], super().toolkit)
+    def ruleset(self) -> DeleteRequestToolkit[T]:
+        return cast(DeleteRequestToolkit[T], super().ruleset)
     
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, request: T) -> AuthorizationDecision:
         """
+        Decide if a DeleteRequest satisfies permission requirements.
         Args:
             request: T
         Returns:

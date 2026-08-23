@@ -14,12 +14,12 @@ from typing import Generic, Type, TypeVar, cast
 from collection import DomainObjectCollection
 from err import CollectionNullException, RequestNullException
 from result import InsertionResult
-from toolkit import RequestToolkit
+from toolkit import PermissionRuleset
 
 T = TypeVar("T", bound="DomainObjectCollection")
 
 
-class InsertRequestToolkit(RequestToolkit[InsertionResult], Generic[T]):
+class InsertPermissionRuleset(PermissionRuleset[InsertionResult], Generic[T]):
     """
     Role:
         -   Dependency Management

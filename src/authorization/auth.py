@@ -14,7 +14,7 @@ from typing import Generic, TypeVar
 
 from domain import Request
 from report import AuthorizationDecision
-from toolkit import RequestToolkit
+from toolkit import PermissionRuleset
 from util import LoggingLevelRouter
 
 
@@ -37,23 +37,24 @@ class RequestAuthorizer(ABC, Generic[T]):
 
     Super Class:
     """
-    _toolkit: RequestToolkit[T]
+    _ruleset: PermissionRuleset[T]
     
-    def __init__(self, toolkit: RequestToolkit[T]):
+    def __init__(self, ruleset: PermissionRuleset[T]):
         """
         Args:
-            toolkit: RequestToolkit[T]
+            ruleset: RequestToolkit[T]
         """
-        self._toolkit = toolkit
+        self._ruleset = ruleset
         
     @property
-    def toolkit(self) -> RequestToolkit[T]:
-        return self._toolkit
+    def ruleset(self) -> PermissionRuleset[T]:
+        return self._ruleset
     
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, request: T) -> AuthorizationDecision:
         """
+        Decide if Request satisfies permission requirements.
         Args:
             request: T
         Returns:

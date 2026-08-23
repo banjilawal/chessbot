@@ -79,8 +79,8 @@ class VectorToggleValidator(ToggleValidator[CartesianToggle]):
         # Handle the case that, the validator is not primed.
         certification = self.integrity_checker.execute(
             candidate=candidate,
-            target_model=self.integrity_checker.toolkit.model,
-            context_null_exception=self.integrity_checker.toolkit.null_exception,
+            target_model=self.integrity_checker.ruleset.model,
+            context_null_exception=self.integrity_checker.ruleset.null_exception,
         )
         if certification.is_failure:
             # Send the exception chain on failure.

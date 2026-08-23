@@ -51,7 +51,7 @@ class WestAxisRootChecker(AxisRootChecker[WestAxisBlueprint]):
     
     @property
     def toolkit(self) -> WestAxisBundle:
-        return cast(WestAxisToolkit, super().toolkit)
+        return cast(WestAxisToolkit, super().ruleset)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[WestAxis| WestAxisBlueprint]:

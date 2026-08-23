@@ -9,16 +9,27 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from abc import ABC
 from dataclasses import dataclass
 from typing import Generic, Type, TypeVar
 
-from domain import Blueprint, DomainMetadata, DomainObject
-from domain.transit import EntityCarrier
+from domain import DomainObject
 
 T = TypeVar("T", bound="DomainObject")
 
 @dataclass
-class TypesManifest(DomainMetadata, Generic[T]):
+class DomainObjectAssociationManifest(ABC, Generic[T]):
+    """
+    Role:
+        -   Metadata
+
+    Responsibilities:
+        1. Catalog of data types associated with a domain object.
+
+    Attributes:
+        model: Type[T]
+    Provides:
+
+    Super Class:
+    """
     model: Type[T]
-    carrier: Type[EntityCarrier[T]]
-    blueprint: Type[Blueprint[T]]

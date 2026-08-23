@@ -14,12 +14,24 @@ from dataclasses import dataclass
 from typing import Generic, TypeVar
 
 from domain import DomainObject
-from err import BlueprintNullException, EntityCarrierNullException, ModelNullException
+from err import BlueprintNullException, EntityCarrierNullException, ModelNullException, NullException
 
 T = TypeVar("T", bound="DomainObject")
 
 @dataclass
-class NullRoster(ABC, Generic[T]):
-    model: ModelNullException
-    carrier: EntityCarrierNullException
-    blueprint: BlueprintNullException
+class NullExceptionRoster(ABC, Generic[T]):
+    """
+    Role:
+        -   Metadata
+
+    Responsibilities:
+        1. Catalog of NullExceptions associated with a DomainObject
+
+    Attributes:
+        model: NullException
+
+    Provides:
+
+    Super Class:
+    """
+    model: NullException

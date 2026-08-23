@@ -46,7 +46,7 @@ class AxisReservoirRootChecker(SpaceReservoirChecker[AxisReservoir]):
         
     @property
     def toolkit(self) -> AxisReservoirBundle:
-        return cast(AxisReservoirToolkit, super().toolkit)
+        return cast(AxisReservoirToolkit, super().ruleset)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate, Any) -> ValidationResult[AxisReservoir|AxisReservoirBlueprint]:

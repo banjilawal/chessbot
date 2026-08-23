@@ -15,7 +15,7 @@ from typing import Generic, TypeVar, cast
 from authorization import RequestAuthorizer
 from domain import CrudRequest
 from report import AuthorizationDecision
-from toolkit import RequestToolkit
+from toolkit import PermissionRuleset
 from util import LoggingLevelRouter
 
 
@@ -39,21 +39,22 @@ class CrudAuthorizer(RequestAuthorizer[T], ABC, Generic[T]):
     Super Class:
     """
     
-    def __init__(self, toolkit: RequestToolkit[T]):
+    def __init__(self, ruleset: PermissionRuleset[T]):
         """
         Args:
-            toolkit: CrudRequestToolkit[T]
+            ruleset: CrudRequestToolkit[T]
         """
-        super().__init__(toolkit=toolkit)
+        super().__init__(ruleset=ruleset)
         
     @property
-    def toolkit(self) -> RequestToolkit[T]:
-        return cast(RequestToolkit[T], super().toolkit)
+    def ruleset(self) -> PermissionRuleset[T]:
+        return cast(PermissionRuleset[T], super().ruleset)
     
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, request: T) -> AuthorizationDecision:
         """
+        Decide if CrudRequest satisfies permission requirements.
         Args:
             request: T
         Returns:

@@ -15,7 +15,7 @@ from typing import Generic, TypeVar, cast
 from authorization import CrudAuthorizer
 from domain import InsertRequest
 from report import AuthorizationDecision
-from toolkit import InsertRequestToolkit
+from toolkit import InsertPermissionRuleset
 from util import LoggingLevelRouter
 
 
@@ -40,21 +40,22 @@ class InsertAuthorizer(CrudAuthorizer[T], ABC, Generic[T]):
         CrudAuthorizer
     """
     
-    def __init__(self, toolkit: InsertRequestToolkit[T]):
+    def __init__(self, ruleset: InsertPermissionRuleset[T]):
         """
         Args:
-             toolkit: InsertRequestToolkit[T]
+             ruleset: InsertRequestToolkit[T]
         """
-        super().__init__(toolkit=toolkit)
+        super().__init__(ruleset=ruleset)
         
     @property
-    def toolkit(self) -> InsertRequestToolkit[T]:
-        return cast(InsertRequestToolkit[T], super().toolkit)
+    def ruleset(self) -> InsertPermissionRuleset[T]:
+        return cast(InsertPermissionRuleset[T], super().ruleset)
     
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, request: T) -> AuthorizationDecision:
         """
+        Decide if an InsertRequest satisfies permission requirements.
         Args:
             request: T
         Returns:

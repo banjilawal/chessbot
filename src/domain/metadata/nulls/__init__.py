@@ -10,9 +10,10 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.NULLS PACKAGE ===========#
 
 # Packages
+from .model import *
 from .node import *
-from .token import *
+from domain.metadata.nulls.model.token import *
 from .vector import *
 
 # Modules
-from roster import NullRoster
+from roster import NullExceptionRoster

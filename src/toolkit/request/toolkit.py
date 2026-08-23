@@ -20,7 +20,7 @@ T = TypeVar("T", bound="Result")
 
 
 
-class RequestToolkit(Toolkit, Generic[T]):
+class PermissionRuleset(Toolkit, Generic[T]):
     """
     Role:
         -   Dependency Management

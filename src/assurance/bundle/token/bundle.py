@@ -14,14 +14,14 @@ from typing import Any, Dict
 
 from assurance import TeamValidator, ValidationBundle
 from authorization import BlueprintHomeSquareExtractor, BlueprintRankExtractor
-from domain import Token, TokenNullRoster, TokenTypes
+from domain import Token, TokenNullExceptionRoster, TokenTypeFamily
 from sensor import TokenHomeReporter
 
 
 @dataclass
 class TokenValidationBundle(ValidationBundle[Token]):
-    types: TokenTypes = TokenTypes()
-    nulls: TokenNullRoster = TokenNullRoster()
+    types: TokenTypeFamily = TokenTypeFamily()
+    nulls: TokenNullExceptionRoster = TokenNullExceptionRoster()
     resources: Dict[str, Any] = field(
         default_factory=lambda: {
             "team_validator": TeamValidator(),

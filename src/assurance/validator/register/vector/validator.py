@@ -85,5 +85,5 @@ class VectorRegisterValidator(RegisterValidator[VectorRegister]):
             )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(
-            cast(self.integrity_checker.toolkit.model, certification.payload)
+            cast(self.integrity_checker.ruleset.model, certification.payload)
         )

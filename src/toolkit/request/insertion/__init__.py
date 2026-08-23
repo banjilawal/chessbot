@@ -13,4 +13,4 @@ version: 0.0.2
 from .chain import *
 
 # Modules
-from .toolkit import InsertRequestToolkit
+from .toolkit import InsertPermissionRuleset

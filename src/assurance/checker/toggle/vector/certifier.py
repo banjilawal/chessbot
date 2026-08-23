@@ -53,7 +53,7 @@ class VectorToggleRootChecker(ToggleChecker[CartesianToggle]):
     
     @property
     def toolkit(self) -> VectorToggleBundle:
-        return cast(VectorToggleToolkit, super().toolkit)
+        return cast(VectorToggleToolkit, super().ruleset)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate, Any) -> ValidationResult:

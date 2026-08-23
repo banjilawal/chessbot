@@ -15,6 +15,7 @@ from .model import *
 from .node import *
 from .register import *
 from .registry import *
+from .search import *
 from .space import *
 from .toggle import *
 

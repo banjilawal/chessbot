@@ -52,7 +52,7 @@ class EastAxisRootChecker(AxisRootChecker[EastAxis]):
     
     @property
     def toolkit(self) -> EastAxisBundle:
-        return cast(EastAxisToolkit, super().toolkit)
+        return cast(EastAxisToolkit, super().ruleset)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[EastAxis | EastAxisBlueprint]:

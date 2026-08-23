@@ -23,12 +23,12 @@ T = TypeVar("T", bound="Node")
 
 class AddNodeRequestAuthorizer(InsertionRequestAuthorizer, ABC, Generic[T]):
     
-    def __init__(self, toolkit: AddNodeRequestToolkit[T]):
-        super().__init__(toolkit=toolkit)
+    def __init__(self, ruleset: AddNodeRequestToolkit[T]):
+        super().__init__(ruleset=ruleset)
         
     @property
-    def toolkit(self) -> AddNodeRequestToolkit[T]:
-        return cast(AddNodeRequestToolkit[T], super().toolkit)
+    def ruleset(self) -> AddNodeRequestToolkit[T]:
+        return cast(AddNodeRequestToolkit[T], super().ruleset)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

@@ -13,4 +13,4 @@ version: 0.0.2
 from .insertion import *
 
 # Modules
-from .toolkit import RequestToolkit
+from .toolkit import PermissionRuleset

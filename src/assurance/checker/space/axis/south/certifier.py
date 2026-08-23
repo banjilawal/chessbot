@@ -51,7 +51,7 @@ class SouthAxisRootChecker(AxisRootChecker[SouthAxisBlueprint]):
     
     @property
     def toolkit(self) -> SouthAxisBundle:
-        return cast(SouthAxisToolkit, super().toolkit)
+        return cast(SouthAxisToolkit, super().ruleset)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[SouthAxis| SouthAxisBlueprint]:

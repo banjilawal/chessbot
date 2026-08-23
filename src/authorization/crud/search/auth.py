@@ -40,21 +40,22 @@ class SearchAuthorizer(CrudAuthorizer[T], ABC, Generic[T]):
         CrudAuthorizer
     """
     
-    def __init__(self, toolkit: SearchRequestToolkit[T]):
+    def __init__(self, ruleset: SearchRequestToolkit[T]):
         """
         Args:
-             toolkit: SearchRequestToolkit[T]
+             ruleset: SearchRequestToolkit[T]
         """
-        super().__init__(toolkit=toolkit)
+        super().__init__(ruleset=ruleset)
         
     @property
-    def toolkit(self) -> SearchRequestToolkit[T]:
-        return cast(SearchRequestToolkit[T], super().toolkit)
+    def ruleset(self) -> SearchRequestToolkit[T]:
+        return cast(SearchRequestToolkit[T], super().ruleset)
     
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, request: T) -> AuthorizationDecision:
         """
+        Decide if a SearchRequest satisfies permission requirements.
         Args:
             request: T
         Returns:

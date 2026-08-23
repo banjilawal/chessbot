@@ -48,7 +48,7 @@ class QuadrantRootChecker(SpaceChecker, Generic[T]):
     
     @property
     def toolkit(self) -> QuadrantToolkit[T]:
-        return cast(QuadrantToolkit[T], super().toolkit)
+        return cast(QuadrantToolkit[T], super().ruleset)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

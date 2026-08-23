@@ -46,7 +46,7 @@ class QuadrantReservoirRootChecker(SpaceReservoirChecker[QuadrantReservoir]):
         
     @property
     def toolkit(self) -> QuadrantReservoirBundle:
-        return cast(QuadrantReservoirToolkit, super().toolkit)
+        return cast(QuadrantReservoirToolkit, super().ruleset)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate, Any) -> ValidationResult[QuadrantReservoir|QuadrantReservoirBlueprint]:

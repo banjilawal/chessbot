@@ -52,7 +52,7 @@ class NorthAxisRootChecker(AxisRootChecker[NorthAxisBlueprint]):
     
     @property
     def toolkit(self) -> NorthAxisBundle:
-        return cast(NorthAxisToolkit, super().toolkit)
+        return cast(NorthAxisToolkit, super().ruleset)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[NorthAxis| NorthAxisBlueprint]:

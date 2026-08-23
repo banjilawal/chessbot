@@ -13,28 +13,29 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from assurance import IntegrityChecker
-from domain.model import Model
+from domain import Model
+
 
 T = TypeVar("T", bound="Model")
 
 
-class ModelIntegrityChecker(IntegrityChecker, Generic[T], ABC):
+class ModelIntegrityChecker(IntegrityChecker, ABC, Generic[T]):
     """
     Role
-        -   Validation Worker
-        -   Integrity Assurance
+        -   Integrity Assurance Worker
 
     Responsibilities:
-        1.  Ensures a DtoCarrier's data satisfies its model's type and integrity requirements.
-
+        1.  Check that a candidate is the right type of not-null EntityCarrier.
+        2.  Run safety checks on models and blueprints inside an EntityCarrier's payload.
 
     Attributes:
-        bundle: ValidationBundle[T]
+        bundle: ModelValidationBundle[T]
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[Blueprint[T]|T]:
 
     Super Class:
+        IntegrityChecker
     """
     
     

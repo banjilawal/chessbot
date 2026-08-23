@@ -47,7 +47,7 @@ class AxisRootChecker(SpaceChecker, Generic[T]):
     
     @property
     def toolkit(self) -> AxisToolkit[T]:
-        return cast(AxisToolkit[T], super().toolkit)
+        return cast(AxisToolkit[T], super().ruleset)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

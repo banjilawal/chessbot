@@ -52,7 +52,7 @@ class NortheastQuadrantRootChecker(QuadrantRootChecker[NortheastQuadrant]):
     
     @property
     def toolkit(self) -> NortheastQuadrantBundle:
-        return cast(NortheastQuadrantToolkit, super().toolkit)
+        return cast(NortheastQuadrantToolkit, super().ruleset)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[NortheastQuadrant | NortheastQuadrantBlueprint]:

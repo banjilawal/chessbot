@@ -14,15 +14,15 @@ from dataclasses import dataclass
 from typing import Any, Dict, Generic, TypeVar
 
 from assurance import PrimingValidator
-from domain import DomainObject, NullRoster, TypesManifest
+from domain import DomainObject, NullExceptionRoster, DomainObjectAssociationManifest
 from microservice import IdentityService
 
 T = TypeVar("T", bound="DomainObject")
 
 @dataclass
 class ValidationBundle(ABC, Generic[T]):
-    types: TypesManifest[T]
-    nulls: NullRoster[T]
+    types: DomainObjectAssociationManifest[T]
+    nulls: NullExceptionRoster[T]
     resources: Dict[str, Any]
     
     @property
