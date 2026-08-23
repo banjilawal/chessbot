@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from controller import BoardTeamBinderController
-from database import HostageDatabase, SquareDatabase
+from collection.database import HostageDatabase, SquareDatabase
 
 
 from domain.model import Arena, BoardState, StateModel

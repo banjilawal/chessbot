@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from database import TokenDatabase
+from collection.database import TokenDatabase
 from domain.model import Board, Player, StateModel, TeamState
 from domain.schema import Archetype
 

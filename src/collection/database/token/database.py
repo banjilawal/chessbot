@@ -1,7 +1,7 @@
-# src/database/token/database.py
+# src/collection/database/token/database.py
 
 """
-Module: .database.token.database
+Module: collection.database.token.database
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import List, Optional
 
 from sensor.analyzer import CollisionReport
-from database import Database
+from collection.database import Database
 from microservice import IdentityService, RankService, TokenService
 from domain.model import Rank, Token, TokenBlueprint
 from result import AnalysisResult, ComputationResult, DeletionResult

@@ -1,4 +1,4 @@
-# src/database/coord/database.py
+# src/collection/database/coord/database.py
 
 """
 Module: database.coord.database

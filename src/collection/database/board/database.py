@@ -1,4 +1,4 @@
-# src/database/board/database.py
+# src/collection/database/board/database.py
 
 """
 Module: database.board.database
@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from database import Database
+from collection.database import Database
 
 
 class BoardDatabase(Database[Board]):

@@ -1,4 +1,4 @@
-# src/database/player/database.py
+# src/collection/database/player/database.py
 
 """
 Module: database.player.database
@@ -8,12 +8,12 @@ version: 0.0.2
 """
 
 
-from typing import List, cast
+from typing import List
 
 from system import DeletionResult, InsertionResult, SearchResult, Database
-from database.agent import PlayerAgent, AgentContext, AgentContextService, AgentDataService, AgentService
+from collection.database import PlayerAgent, AgentContext, AgentContextService, AgentDataService, AgentService
 
-from database.player import Player
+from collection.database.player import Player
 
 
 class PlayerDatabase(Database[Player]):

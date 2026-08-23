@@ -1,4 +1,4 @@
-# src/database/square/database.py
+# src/collection/database/square/database.py
 
 """
 Module: database.square.database

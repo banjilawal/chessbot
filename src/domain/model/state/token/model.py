@@ -11,7 +11,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Optional
 
-from database import CoordDatabase
+from collection.database import CoordDatabase
 from domain.model import Coord, HomeSquare, KingToken, Rank, StateModel, Team, TokenActivityState, DeploymentState
 from domain.schema import Formation
 

@@ -1,4 +1,4 @@
-# src/database/database.py
+# src/collection/database/database.py
 
 """
 Module: database.database

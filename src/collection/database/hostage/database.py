@@ -1,4 +1,4 @@
-# src/database/hostage/database.py
+# src/collection/database/hostage/database.py
 
 """
 Module: database.hostage.database

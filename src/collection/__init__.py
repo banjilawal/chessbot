@@ -11,6 +11,7 @@ version: 0.0.2
 
 # Packages
 from .chain import *
+from .database import *
 from .sets import *
 from .stack import *
 from .tree import *

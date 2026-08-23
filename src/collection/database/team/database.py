@@ -1,7 +1,7 @@
-# src/database/team/database.py
+# src/collection/database/team/database.py
 
 """
-Module: .database.team.database
+Module: collection.database.team.database
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
