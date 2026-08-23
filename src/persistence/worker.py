@@ -12,5 +12,5 @@ from __future__ import annotations
 from abc import ABC
 
 
-class PersistenceOperator(ABC):
+class PersistenceWorker(ABC):
     pass
