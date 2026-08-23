@@ -9,9 +9,10 @@ version: 0.0.2
 from __future__ import annotations
 from typing import Generic, List, Optional, TypeVar, cast
 
+from domain import DomainObject
 from result import CrudResult, SearchState
 
-T = TypeVar("T")
+T = TypeVar("T", bound="DomainObject")
 
 
 class SearchResult(CrudResult[T], Generic[T]):

@@ -24,7 +24,7 @@ class Request(ABC, Generic[T]):
          -  Transport
 
      Responsibilities:
-         1. Transport information during the Operation lifecycle.
+         1. Transport data objects and other resources an Operation needs to run a job.
 
      Attributes:
          id: int

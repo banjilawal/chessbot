@@ -5,7 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/domain/exchange/request/crud/search/stack/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/exchange/request/crud/search/stack/token/request.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/exchange/request/crud/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/exchange/request/crud/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/exchange/request/crud/search/stack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/exchange/request/crud/search/stack/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/exchange/request/crud/search/stack/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/exchange/request/crud/search/stack/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/exchange/request/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/exchange/request/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/search/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/search/context/stack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/stack/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/search/context/stack/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/stack/arena/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/search/context/stack/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/stack/board/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/search/context/stack/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/stack/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/search/context/stack/edge/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/search/context/stack/edge/context.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/search/context/stack/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/stack/game/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/search/context/stack/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/stack/player/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/search/context/stack/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/stack/rank/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/search/context/stack/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/stack/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/search/context/stack/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/stack/team/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/search/context/stack/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/stack/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/persistence/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/result/crud/search/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/result/crud/search/result.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +62,69 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/.venv/.gitignore" root0="SKIP_INSPECTION" />
   </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0000013151092375" />
+      <entry key="S5" value="1.004683699144183" />
+      <entry key="S10" value="1.106253669387554" />
+      <entry key="S30" value="3.0696235136515186" />
+      <entry key="S60" value="7.002706400055247" />
+      <entry key="M2" value="13.631700657954031" />
+      <entry key="M5" value="27.76430721259999" />
+      <entry key="M10" value="47.04927583964828" />
+      <entry key="M15" value="68.05987869694981" />
+      <entry key="M30" value="125.24073906438439" />
+      <entry key="H1" value="189.9679879377656" />
+      <entry key="H2" value="240.3377242654852" />
+      <entry key="H4" value="271.99525493319777" />
+      <entry key="D1" value="302.42285702104493" />
+      <entry key="W1" value="308.04983284110835" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="1.3504483601058991E-279" />
+      <entry key="S5" value="2.8327173023546363E-112" />
+      <entry key="S10" value="1.6920817965791729E-56" />
+      <entry key="S30" value="3.129347686150418E-19" />
+      <entry key="S60" value="8.272956797195385E-10" />
+      <entry key="M2" value="4.7515822463776665E-5" />
+      <entry key="M5" value="0.03603372136564408" />
+      <entry key="M10" value="0.35449611232274125" />
+      <entry key="M15" value="0.7999024216790689" />
+      <entry key="M30" value="1.9142127109734954" />
+      <entry key="H1" value="3.0547156731262413" />
+      <entry key="H2" value="3.895053081944896" />
+      <entry key="H4" value="4.409293706617276" />
+      <entry key="D1" value="4.895729969112976" />
+      <entry key="W1" value="4.984954594726049" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="0.8888426811665702" />
+      <entry key="MS500" value="0.9767085289622274" />
+      <entry key="S2" value="0.9941268795841229" />
+      <entry key="S5" value="1.0023198292133833" />
+      <entry key="S10" value="1.1049443500094118" />
+      <entry key="S30" value="3.0681755762562926" />
+      <entry key="S60" value="7.000948512447719" />
+      <entry key="M2" value="13.629955127749302" />
+      <entry key="M5" value="27.795126721300466" />
+      <entry key="M10" value="47.38902597645338" />
+      <entry key="M15" value="68.83990519498923" />
+      <entry key="M30" value="127.13335063195188" />
+      <entry key="H1" value="193.00628912560347" />
+      <entry key="H2" value="244.22257681158015" />
+      <entry key="H4" value="276.3988507450412" />
+      <entry key="D1" value="307.3175443539832" />
+      <entry key="W1" value="313.03463606837033" />
+    </decayedShown>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -52,36 +136,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.__init__.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.node.executor&quot;: &quot;Run&quot;,
-    &quot;Python.notifier.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.ray.executor&quot;: &quot;Coverage&quot;,
-    &quot;Python.roster.executor&quot;: &quot;Run&quot;,
-    &quot;Python.stack.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/banji/PycharmProjects/chessbot/src/authorization/crud&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.__init__.executor": "Debug",
+    "Python.node.executor": "Run",
+    "Python.notifier.executor": "Debug",
+    "Python.ray.executor": "Coverage",
+    "Python.roster.executor": "Run",
+    "Python.stack.executor": "Debug",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/banji/PycharmProjects/chessbot/src/domain/exchange/request/crud/search/stack/token",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\domain\exchange\request\crud\search\stack\token" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\authorization\crud" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\authorization\crud\insert" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\domain\search\context" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\domain\search\context\chain" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\domain\search\context\stack" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\domain\search\context\stack" />
@@ -347,8 +436,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-PY-252.26199.168" />
-        <option value="bundled-python-sdk-b3d66beaba9a-c6efb3732140-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.26199.168" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-PY-262.9437.214" />
+        <option value="bundled-python-sdk-821f704e66d9-5bd6d13a2a75-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-262.9437.214" />
       </set>
     </attachedChunks>
   </component>
@@ -730,6 +819,7 @@
       <workItem from="1785366790867" duration="182641000" />
       <workItem from="1785958183827" duration="174661000" />
       <workItem from="1786522110280" duration="179726000" />
+      <workItem from="1787456783999" duration="4021000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1710,6 +1800,11 @@
           <url>file://$PROJECT_DIR$/src/authorization/crud/delete/auth.py</url>
           <line>11</line>
           <option name="timeStamp" value="383" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/result/crud/search/result.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="384" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

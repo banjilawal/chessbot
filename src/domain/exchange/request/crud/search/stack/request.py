@@ -3,7 +3,6 @@
 """
 Module: domain.exchange.request.crud.search.stack.request
 Author: Banji Lawal
-Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
@@ -24,7 +23,7 @@ class StackSearchRequest(SearchRequest, ABC, Generic[T]):
          -  Transport
 
      Responsibilities:
-         1. Transport information during the CrudOperation lifecycle.
+        1. Provide a collection and criteria a Searcher needs to run a job.
 
      Attributes:
          id: int

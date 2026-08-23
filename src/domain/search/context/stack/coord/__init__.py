@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from domain import CoordContext
+from .context import CoordSearchContext

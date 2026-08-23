@@ -12,7 +12,7 @@ version: 0.0.2
 # Packages
 from .chain import *
 from .graph import *
-from stack import *
+from .stack import *
 
 # Modules
 from .context import SearchContext

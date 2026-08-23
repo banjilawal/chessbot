@@ -27,7 +27,7 @@ class DeleteRequest(CrudRequest[DeletionResult], ABC, Generic[T]):
          -  Transport
 
      Responsibilities:
-         1. Transport information during the CrudOperation lifecycle.
+        1. Provide a collection and details about the item a Deleter needs to run a job.
 
      Attributes:
          id: int

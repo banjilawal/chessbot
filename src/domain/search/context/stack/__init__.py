@@ -13,7 +13,6 @@ version: 0.0.2
 from .arena import *
 from .board import *
 from .coord import *
-from .edge import *
 from .game import *
 from .player import *
 from .rank import *
@@ -22,4 +21,4 @@ from .token import *
 from .square import *
 
 # Modules
-from .context import StackStackSearchContext
+from .context import StackSearchContext

@@ -13,43 +13,45 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from collection import DomainObjectCollection
-from domain import DomainObject, Request
+from domain import Request
+
 from result import CrudResult
 
-T = TypeVar("T", bound="DomainObject")
+C = TypeVar("C", bound="DomainObjectCollection")
+R = TypeVar("R", bound="CrudResult")
 
 
-class CrudRequest(Request[CrudResult], ABC, Generic[T]):
+class CrudRequest(Request[R], ABC, Generic[C, R]):
     """
      Role:
          -  Messaging
          -  Transport
 
      Responsibilities:
-         1. Transport information during the CrudOperation lifecycle.
+        1. Transport the collection and other objects a CrudOperation needs to run a job.
 
      Attributes:
          id: int
-         collection: DomainObjectCollection[T]
+         collection: C
 
      Provides:
      
      Super Class:
         Request
      """
-    _collection: DomainObjectCollection[T]
+    _collection: C
     
-    def __init__(self, id: int, collection: DomainObjectCollection[T]):
+    def __init__(self, id: int, collection: C):
         """
         Args:
             id: int
-            collection: DomainObjectCollection[T]
+            collection: C
         """
         super().__init__(id)
         self._collection = collection
         
     @property
-    def collection(self) -> DomainObjectCollection[T]:
+    def collection(self) -> C:
         return self._collection
         
     

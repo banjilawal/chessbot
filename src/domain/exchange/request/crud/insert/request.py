@@ -27,7 +27,7 @@ class InsertRequest(CrudRequest[InsertionResult], ABC, Generic[T]):
          -  Transport
 
      Responsibilities:
-         1. Transport information during the CrudOperation lifecycle.
+        1. Provide a collection and the item an Inserter needs to run a job.
 
      Attributes:
          id: int

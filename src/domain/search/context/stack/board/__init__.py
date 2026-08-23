@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from domain import BoardContext
+from .context import BoardSearchContext
