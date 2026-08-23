@@ -5,201 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/authorization/crud/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/crud/auth.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/crud/delete/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/crud/delete/auth.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/crud/insert/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/crud/insert/auth.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/crud/search/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/crud/search/auth.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/authorizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/auth.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/insertion/authorizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/insertion/authorizer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/operation/collection/insertion/chain/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/operation/collection/insertion/chain/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/operation/collection/insertion/stack/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/operation/collection/insertion/stack/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/crud/token/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/crud/token/controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/delete/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/chain/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/delete/chain/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/chain/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/delete/chain/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/chain/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/delete/chain/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/chain/vector/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/delete/chain/vector/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/delete/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/stack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/delete/stack/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/stack/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/delete/stack/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/stack/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/delete/stack/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/deletion/stack/token/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/delete/stack/token/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insert/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/chain/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insert/chain/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/chain/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insert/chain/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/chain/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insert/chain/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/chain/vector/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insert/chain/vector/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insert/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/stack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insert/stack/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/stack/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insert/stack/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/stack/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insert/stack/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/insertion/stack/token/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insert/stack/token/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/arena/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/arena/builder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/arena/builder/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/arena/builder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/arena/builder/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/arena/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/arena/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/arena/finder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/arena/finder/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/arena/finder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/arena/finder/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/arena/finder/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/arena/finder/exception/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/arena/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/arena/service/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/arena/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/arena/service/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/board/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/board/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/board/finder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/board/finder/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/board/finder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/board/finder/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/board/finder/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/board/finder/exception/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/board/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/board/service/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/board/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/board/service/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/edge/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/edge/service/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/formation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/formation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/formation/lookup/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/formation/lookup/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/formation/lookup/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/formation/lookup/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/formation/lookup/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/formation/lookup/exception/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/formation/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/formation/service/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/formation/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/formation/service/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/game/finder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/game/finder/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/game/finder/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/game/finder/exception/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/game/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/game/service/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/graph/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/graph/service/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/hostage/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/hostage/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/hostage/finder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/hostage/finder/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/hostage/finder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/hostage/finder/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/hostage/finder/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/hostage/finder/exception/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/hostage/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/hostage/service/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/hostage/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/hostage/service/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/node/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/node/service/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/origin/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/origin/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/origin/searcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/origin/searcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/persona/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/persona/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/persona/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/persona/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/persona/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/persona/exception/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/persona/persona/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/persona/persona/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/persona/persona/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/persona/persona/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/persona/persona/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/persona/persona/exception/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/persona/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/persona/service/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/persona/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/persona/service/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/player/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/player/service/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/rank/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/rank/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/rank/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/rank/finder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/rank/finder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/rank/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/rank/search/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/rank/search/rank/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/rank/search/rank/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/rank/search/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/rank/search/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/registry/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/registry/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/registry/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/registry/service/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/registry/service/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/registry/service/search.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/registry/worker/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/registry/worker/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/registry/worker/domain/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/registry/worker/domain/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/registry/worker/domain/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/registry/worker/domain/search.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/registry/worker/name/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/registry/worker/name/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/registry/worker/name/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/registry/worker/name/search.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/key/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/key/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/key/lookup/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/key/lookup/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/key/lookup/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/key/lookup/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/key/lookup/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/key/lookup/exception/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/key/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/key/service/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/key/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/key/service/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/exception/anchor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/operation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/operation/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/operation/controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/operation/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/operation/validation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/operation/validation/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/operation/validation/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/operation/validation/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/operation/validation/exception/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/operation/validation/exception/debug/excess.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/operation/validation/exception/debug/excess.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/operation/validation/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/operation/validation/exception/debug/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/operation/validation/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/operation/validation/exception/debug/route.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/operation/validation/exception/debug/zero.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/operation/validation/exception/debug/zero.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/operation/validation/exception/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/operation/validation/exception/transaction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/operation/validation/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/operation/validation/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/operation/workers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/operation/workers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/context/service/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/host.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/host.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/model/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/model/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/model/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/model/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/model/exception/anchor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/model/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/model/exception/debug.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/model/query.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/model/query.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/service/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/service/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/service/exception/anchor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/service/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/service/operation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/service/operation/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/service/operation/controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/service/operation/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/service/operation/validation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/service/operation/validation/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/service/operation/validation/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/service/operation/validation/exception/candidate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/service/operation/validation/exception/candidate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/service/operation/validation/exception/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/service/operation/validation/exception/stack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/service/operation/validation/exception/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/service/operation/validation/exception/transaction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/service/operation/validation/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/service/operation/validation/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/service/operation/workers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/service/operation/workers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/query/service/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/route/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/route/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/route/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/route/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/route/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/route/exception/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/route/exception/debug/missing.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/route/exception/debug/missing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/route/exception/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/route/exception/transaction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/route/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/resource/route/router.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/service/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/service/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/snapshot/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/snapshot/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/snapshot/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/snapshot/service/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/snapshot/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/snapshot/service/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/snapshot/snapshot/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/snapshot/snapshot/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/square/finder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/square/finder/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/square/finder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/square/finder/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/square/finder/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/square/finder/exception/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/square/finder/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/square/finder/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/square/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/square/service/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/team/finder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/team/finder/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/team/finder/exception/debug/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/team/finder/exception/debug/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/token/resource/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/token/resource/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/token/resource/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/token/resource/context/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/token/resource/context/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/token/resource/context/service/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/token/resource/context/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/token/resource/context/service/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/token/resource/context/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/token/resource/context/service/exception/anchor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/token/resource/context/service/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/token/resource/context/service/operation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/token/resource/context/service/operation/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/token/resource/context/service/operation/controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/token/resource/context/service/operation/workers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/token/resource/context/service/operation/workers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/token/resource/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/token/resource/context/service/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/token/resource/host.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/token/resource/host.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/token/resource/query/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/token/resource/query/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/token/resource/query/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/token/resource/query/service/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/token/resource/query/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/token/resource/query/service/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/token/resource/query/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/token/resource/query/service/exception/anchor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/token/resource/query/service/operation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/token/resource/query/service/operation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/token/resource/query/service/operation/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/token/resource/query/service/operation/controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/token/resource/query/service/operation/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/token/resource/query/service/operation/validation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/token/resource/query/service/operation/validation/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/token/resource/query/service/operation/validation/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/token/resource/query/service/operation/validation/exception/candidate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/token/resource/query/service/operation/validation/exception/candidate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/token/resource/query/service/operation/validation/exception/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/token/resource/query/service/operation/validation/exception/transaction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/token/resource/query/service/operation/workers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/token/resource/query/service/operation/workers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/token/resource/query/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/token/resource/query/service/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/token/searcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/token/searcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/token/service/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/token/service/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/token/service/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/token/service/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/token/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/token/service/exception/anchor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/token/service/exception/exist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/token/service/exception/exist.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/token/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/token/service/service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/request/insertion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/request/insertion/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/request/insertion/chain/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/request/insertion/chain/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/toolkit/request/insertion/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/toolkit/request/insertion/toolkit.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -246,29 +52,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.__init__.executor": "Debug",
-    "Python.node.executor": "Run",
-    "Python.notifier.executor": "Debug",
-    "Python.ray.executor": "Coverage",
-    "Python.roster.executor": "Run",
-    "Python.stack.executor": "Debug",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/banji/PycharmProjects/chessbot/src/authorization/crud",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.__init__.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.node.executor&quot;: &quot;Run&quot;,
+    &quot;Python.notifier.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.ray.executor&quot;: &quot;Coverage&quot;,
+    &quot;Python.roster.executor&quot;: &quot;Run&quot;,
+    &quot;Python.stack.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/banji/PycharmProjects/chessbot/src/authorization/crud&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\authorization\crud" />
@@ -391,7 +197,9 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/model/dossier/__init__.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -413,8 +221,10 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
       <module name="" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
       <option name="SCRIPT_NAME" value="" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -437,7 +247,9 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/node/node.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -460,7 +272,9 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/ray/bounds/axis/ray.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -483,7 +297,9 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/assurance/manifest/roster/vector/roster.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -506,7 +322,9 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/stack/coord/stack.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -911,7 +729,7 @@
       <workItem from="1785354695376" duration="4352000" />
       <workItem from="1785366790867" duration="182641000" />
       <workItem from="1785958183827" duration="174661000" />
-      <workItem from="1786522110280" duration="177951000" />
+      <workItem from="1786522110280" duration="179726000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
