@@ -9,16 +9,12 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from typing import Any, Optional, cast
 
 from assurance import ModelIntegrityChecker, VectorValidationBundle
+from domain import Vector, VectorBlueprint, VectorCarrier
 from err import VectorIntegrityCheckerException
-from fabrication import VectorNodeBlueprint
-from domain.metadata.blueprint import VectorBlueprint
-from domain.model import Vector
-from domain.structure.node import VectorNode
 from result import ValidationResult
-from domain.transit import VectorCarrier
 from util import LoggingLevelRouter
 
 
@@ -31,7 +27,7 @@ class VectorIntegrityChecker(ModelIntegrityChecker[Vector]):
         -   Process Runner
 
     Responsibilities:
-        1.  Ensure a VectorBlueprint instance is certified safe, reliable and consistent before use.
+        1.  Ensure a VectorBlueprint instance is certified safe, reliable, and consistent before use.
 
     Attributes:
         bundle: Optional[VectorValidationToolkit]
@@ -55,7 +51,7 @@ class VectorIntegrityChecker(ModelIntegrityChecker[Vector]):
         return cast(VectorValidationBundle, super().bundle)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate, Any) -> ValidationResult[VectorNode|VectorNodeBlueprint]:
+    def execute(self, candidate: Any)-> ValidationResult[Vector|VectorBlueprint]:
         """
         Certify a candidate is either a Vector or its Blueprint that is safe to use.
 
@@ -78,7 +74,7 @@ class VectorIntegrityChecker(ModelIntegrityChecker[Vector]):
         carrier_validation = self.bundle.priming_validator.execute(
             candidate=candidate,
             target_model=self.bundle.types.carrier,
-            model_null_exception=self.bundle.nulls.carrier,
+            null_exception=self.bundle.nulls.carrier,
         )
         if carrier_validation.is_failure:
             # Send the exception chain on failure.

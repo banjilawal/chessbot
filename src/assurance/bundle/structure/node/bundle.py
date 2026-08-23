@@ -9,15 +9,34 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from abc import ABC
 from dataclasses import dataclass
-from typing import Any, Dict
+from typing import Generic, TypeVar
 
 from assurance import ValidationBundle
-from domain import Node, NodeNullRoster, NodeTypes
+from domain import Node
 
+T = TypeVar("T", bound="Node")
 
 @dataclass
-class NodeValidationBundle(ValidationBundle[Node]):
-    types: NodeTypes
-    nulls: NodeNullRoster
-    resources: Dict[str, Any]
+class NodeValidationBundle(ValidationBundle[T], ABC, Generic[T]):
+    """
+    Role:
+        -   Container
+
+    Responsibilities:
+        1.  Bundles types, null-exceptions, attribute-validators, and utilities NodeIntegrityChecker needs to
+            run safety checks on a validation candidate.
+
+    Attributes:
+        identity_service: IdentityService
+        priming_validator: PrimingValidator
+        types: VectorUnions
+        nulls: VectorNullExceptionRoster
+        number_validator: NumberValidator
+
+    Provides:
+
+    Super Class:
+        ValidationBundle
+    """

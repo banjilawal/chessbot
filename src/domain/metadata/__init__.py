@@ -12,7 +12,7 @@ version: 0.0.2
 # Packages
 from .blueprint import *
 from .nulls import *
-from .types import *
+from .unions import *
 
 # Modules
 from .metadata import DomainMetadata

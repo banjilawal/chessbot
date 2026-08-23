@@ -14,7 +14,7 @@ from dataclasses import dataclass
 from typing import Any, Dict, Generic, TypeVar
 
 from assurance import PrimingValidator
-from domain import DomainObject, NullExceptionRoster, DomainObjectAssociationManifest
+from domain import DomainObject, NullExceptionRoster, DomainObjectTypeUnions
 from microservice import IdentityService
 
 T = TypeVar("T", bound="DomainObject")
@@ -33,7 +33,7 @@ class ValidationBundle(ABC, Generic[T]):
         identity_service: IdentityService
         primin_validator: PrimingValidator
         
-        types: DomainObjectAssociationManifest[T]
+        types: DomainObjectUnions[T]
         nulls: NullExceptionRoster[T]
         
         resources: Dict[str, Any]
@@ -42,7 +42,7 @@ class ValidationBundle(ABC, Generic[T]):
 
     Super Class:
     """
-    types: DomainObjectAssociationManifest[T]
+    types: DomainObjectTypeUnions[T]
     nulls: NullExceptionRoster[T]
     resources: Dict[str, Any]
     

@@ -13,13 +13,34 @@ from dataclasses import dataclass, field
 from typing import Any, Dict
 
 from assurance import NodeValidationBundle, VectorValidator
-from domain import VectorNodeNullRoster, VectorNodeTypes
+from domain import VectorNode, VectorNodeTypeUnions, VectorNullExceptionRoster
 
 
 @dataclass
-class VectorNodeValidationBundle(NodeValidationBundle):
-    types: VectorNodeTypes
-    nulls: VectorNodeNullRoster
+class VectorNodeValidationBundle(NodeValidationBundle[VectorNode]):
+    """
+    Role:
+        -   Container
+
+    Responsibilities:
+        1.  Bundles types, null-exceptions, attribute-validators, and utilities VectorNodeIntegrityChecker 
+            needs to run safety checks on a validation candidate.
+
+    Attributes:
+        types: VectorNodeTypeUnions
+        nulls: VectorNullExceptionRoster
+        
+        vector_validator: VectorValidator
+        identity_service: IdentityService
+        priming_validator: PrimingValidator
+
+    Provides:
+
+    Super Class:
+        ValidationBundle
+    """
+    types: VectorNodeTypeUnions = VectorNodeTypeUnions()
+    nulls: VectorNullExceptionRoster = VectorNullExceptionRoster()
     resources: Dict[str, Any] = field(
         default_factory=lambda: {
             "vector_validator": VectorValidator(),

@@ -13,7 +13,7 @@ from dataclasses import dataclass, field
 from typing import Any, Dict
 
 from assurance import NumberValidator, ValidationBundle
-from domain import Vector, VectorAssociationManifest, VectorNullExceptionRoster
+from domain import Vector, VectorTypeUnions, VectorNullExceptionRoster
 
 
 @dataclass
@@ -27,18 +27,19 @@ class VectorValidationBundle(ValidationBundle[Vector]):
             run safety checks on a validation candidate. 
 
     Attributes:
+        types: VectorTypeUnions
+        nulls: VectorNullExceptionRoster
+        
+        number_validator: NumberValidator
         identity_service: IdentityService
         priming_validator: PrimingValidator
-        types: VectorAssociationManifest
-        nulls: VectorNullExceptionRoster
-        number_validator: NumberValidator
 
     Provides:
 
     Super Class:
         ValidationBundle
     """
-    types: VectorAssociationManifest = VectorAssociationManifest()
+    types: VectorTypeUnions = VectorTypeUnions()
     nulls: VectorNullExceptionRoster = VectorNullExceptionRoster()
     resources: Dict[str, Any] = field(
         default_factory=lambda: {

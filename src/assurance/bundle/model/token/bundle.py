@@ -13,7 +13,7 @@ from dataclasses import dataclass, field
 from typing import Any, Dict
 
 from assurance import NumberValidator, ValidationBundle
-from domain import Token, TokenAssociationManifest, TokenNullExceptionRoster
+from domain import Token, TokenTypeUnions, TokenNullExceptionRoster
 
 
 @dataclass
@@ -23,24 +23,26 @@ class TokenValidationBundle(ValidationBundle[Token]):
         -   Container
 
     Responsibilities:
-        1.  Bundles types, null-exceptions, attribute-validators, and utilities TokenIntegrityChecker needs to
-            run safety checks on a validation candidate. 
+        1.  Bundles types, null-exceptions, attribute-validators, and utilities TokenIntegrityChecker
+            needs to run safety checks on a validation candidate.
 
     Attributes:
-        identity_service: IdentityService
-        priming_validator: PrimingValidator
-        types: TokenAssociationManifest
+        types: TokenTypeUnions
         nulls: TokenNullExceptionRoster
+        
         team_validator: TeamValidator
         home_detector: TokenHomeReporter
         home_square_extractor: BlueprintHomeSquareExtractor
+        
+        identity_service: IdentityService
+        priming_validator: PrimingValidator
         
     Provides:
 
     Super Class:
         ValidationBundle
     """
-    types: TokenAssociationManifest = TokenAssociationManifest()
+    types: TokenTypeUnions = TokenTypeUnions()
     nulls: TokenNullExceptionRoster = TokenNullExceptionRoster()
     resources: Dict[str, Any] = field(
         default_factory=lambda: {
