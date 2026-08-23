@@ -17,7 +17,7 @@ from domain.model import Board, Coord, HomeSquare, Square
 from carrier import SquareCarrier
 from result import ValidationResult
 from domain.schema import Formation
-from toolkit import SquareToolkit
+from operation.toolkit import SquareToolkit
 from util import LoggingLevelRouter
 
 

@@ -15,7 +15,7 @@ from typing import Optional
 from fabrication.builder import RegisterBuilder, VectorToggleRegisterBuilder
 from selector import VectorToggle
 
-from toolkit import VectorToggleToolkit
+from operation.toolkit import VectorToggleToolkit
 from result import ComputationResult
 from util import LoggingLevelRouter
 

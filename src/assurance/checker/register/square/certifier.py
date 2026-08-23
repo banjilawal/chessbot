@@ -15,7 +15,7 @@ from err import SquareRegisterRootCheckerException
 from domain.structure.register import SquareRegister
 from result import ValidationResult
 from assurance.checker import Checker
-from toolkit import SquareRegisterToolkit
+from operation.toolkit import SquareRegisterToolkit
 from util import LoggingLevelRouter
 
 

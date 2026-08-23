@@ -14,4 +14,4 @@ from .chain import *
 from .stack import *
 
 # Modules
-from .operation import InsertOperation
+from .operator import Inserter

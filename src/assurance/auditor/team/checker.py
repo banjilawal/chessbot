@@ -10,9 +10,9 @@ version: 0.0.2
 from __future__ import annotations
 from typing import Any, cast
 
-from controller import WorkerRegistryController
+from transit.controller import WorkerRegistryController
 from domain.model import Team
-from toolkit import TeamToolkit
+from operation.toolkit import TeamToolkit
 from result import ValidationResult
 from util import LoggingLevelRouter
 from err import SchemaNullException, TeamNullException, TeamConsistencyAuditorException

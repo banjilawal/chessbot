@@ -1,4 +1,4 @@
-# src/operation/attack/operation.py
+# src/operation/attack/operator.py
 
 """
 Module: operation.attack.operation

@@ -16,7 +16,7 @@ from typing import Type
 from assurance import ToggleUnions
 from fabrication import VectorToggleBlueprint
 from domain.structure.toggle import CartesianToggle
-from domain.transit import VectorToggleCarrier
+from transit.carrier import VectorToggleCarrier
 
 
 @dataclass

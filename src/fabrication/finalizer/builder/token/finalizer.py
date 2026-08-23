@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from controller import WorkerRegistryController
+from transit.controller import WorkerRegistryController
 from err import FinalizeTokenBuilderException
 from domain.model import Token
 from operation import BuilderFinalizer, TokenAssembler

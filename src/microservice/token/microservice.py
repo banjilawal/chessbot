@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from fabrication.builder import TokenBuilder
-from controller import TokenController
+from transit.controller import TokenController
 from microservice import CoordService
 from domain.model import Coord, Token
 from result import DeletionResult, InsertionResult

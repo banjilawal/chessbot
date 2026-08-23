@@ -1,4 +1,4 @@
-# src/operation/square/entry/operation.py
+# src/operation/square/entry/operator.py
 
 """
 Module: operation.square.entry.operation

@@ -11,11 +11,11 @@ from __future__ import annotations
 from abc import abstractmethod
 
 from bootstrapper.bootstrapper import Bootstrapper
-from operation import Operation
+from operation import Operator
 from util import LoggingLevelRouter
 
 
-class OperationBootstrapper(Bootstrapper[Operation]):
+class OperationBootstrapper(Bootstrapper[Operator]):
     PACAKGE = "Operation"
     
     @classmethod

@@ -14,12 +14,12 @@ from typing import Generic, TypeVar, cast
 
 from authorization import OperationRequest
 from collection import DomainObjectCollection
-from operation import CrudOperation
+from operation import CrudOperator
 
 T = TypeVar("T", bound="Result")
 
 
-class CollectionRequest(OperationRequest[CrudOperation], ABC, Generic[T]):
+class CollectionRequest(OperationRequest[CrudOperator], ABC, Generic[T]):
     """
      Role:
          -  Messaging

@@ -15,7 +15,7 @@ from typing import Generic, TypeVar
 
 from domain.metadata.blueprint import Blueprint
 from result import BuildResult
-from toolkit import BuilderToolkit
+from operation.toolkit import BuilderToolkit
 from util import LoggingLevelRouter
 
 T = TypeVar("T")

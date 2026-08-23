@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from controller import WorkerRegistryController
+from transit.controller import WorkerRegistryController
 from err import SquareConsistencyAuditorException
 from domain.model import Square
 from chooser import SquareCarrier

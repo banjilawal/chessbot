@@ -17,7 +17,7 @@ from assurance.auditor import  ConsistencyAuditor
 from bootstrapper.consistency.binder.checker import SchemaHashtableConsistency
 from result import ValidationResult
 from util import LoggingLevelRouter
-from toolkit import BoardTeamBinderToolkit
+from operation.toolkit import BoardTeamBinderToolkit
 
 
 class BoardTeamBinderConsistencyAuditor(ConsistencyAuditor[BoardBinder]):

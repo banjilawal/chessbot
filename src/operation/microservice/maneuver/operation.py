@@ -1,4 +1,4 @@
-# src/operation/maneuver/operation.py
+# src/operation/maneuver/operator.py
 
 """
 Module: operation.maneuver.operation

@@ -1,4 +1,4 @@
-# src/operation/computation/vector/conversion/operation.py
+# src/operation/computation/vector/conversion/operator.py
 """
 Module: operation.computation.vector.conversion.operation
 Author: Banji Lawal

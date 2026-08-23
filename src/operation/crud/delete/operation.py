@@ -1,4 +1,4 @@
-# src/operation/crud/delete/operation.py
+# src/operation/crud/delete/operator.py
 
 """
 Module: operation.crud.delete.operation
@@ -14,14 +14,14 @@ from typing import Generic, TypeVar, cast
 
 from authorization import DeleteAuthorizer
 from domain import DeleteRequest
-from operation import CrudOperation
+from operation import CrudOperator
 from result import DeletionResult
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="DeleteRequest")
 
 
-class Delete(CrudOperation[T], ABC, Generic[T]):
+class Delete(CrudOperator[T], ABC, Generic[T]):
     """
     Role
         -   Worker

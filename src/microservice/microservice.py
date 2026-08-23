@@ -7,10 +7,10 @@ Created: 2026-04-03
 version: 0.0.2
 """
 
-from abc import ABC, abstractmethod
+from abc import ABC
 from typing import Generic, Optional, TypeVar
 
-from controller import Controller
+from transit.controller import Controller
 
 T = TypeVar("T", bound="StateModel")
 

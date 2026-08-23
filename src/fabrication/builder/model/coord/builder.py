@@ -16,7 +16,7 @@ from fabrication.builder import ModelBuilder
 from err import CoordBuilderException
 from domain.model import Coord
 from result import BuildResult, MethodResultType
-from toolkit import CoordBuilderToolkit
+from operation.toolkit import CoordBuilderToolkit
 from util import LoggingLevelRouter
 
 

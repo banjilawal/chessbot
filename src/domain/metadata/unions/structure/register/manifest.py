@@ -16,7 +16,7 @@ from typing import Type
 from assurance import UnionsManifest
 from fabrication import RegisterBlueprint
 from domain.structure.register import Register
-from domain.transit import RegisterCarrier
+from transit.carrier import RegisterCarrier
 
 
 @dataclass

@@ -13,12 +13,12 @@ from __future__ import annotations
 from domain.model import WorkerRegistry
 from result import ValidationResult
 from util import LoggingLevelRouter
-from controller import WorkerRegistryController
+from transit.controller import WorkerRegistryController
 from err import NewWorkerRegistrationException, OperationNullException, RegistryKeyCollisionException
-from operation import Primer, Operation, RegistryEntryNameValidator, PrimingValidator
+from operation import Primer, Operator, RegistryEntryNameValidator, PrimingValidator
 
 
-class PrimingWorkerRegistration(Primer[Operation]):
+class PrimingWorkerRegistration(Primer[Operator]):
     """
     Role
         -   Worker
@@ -47,12 +47,12 @@ class PrimingWorkerRegistration(Primer[Operation]):
     @LoggingLevelRouter.monitor
     def execute(
             cls,
-            worker: Operation,
+            worker: Operator,
             registry: WorkerRegistry,
             null_exception: OperationNullException | None = None,
             priming_validator: PrimingValidator | None = None,
             registry_entry_name_validator: RegistryEntryNameValidator| None = None,
-    ) -> ValidationResult[Operation]:
+    ) -> ValidationResult[Operator]:
         """
         validate a worker before adding it to WorkerRegistry.
         
@@ -86,7 +86,7 @@ class PrimingWorkerRegistration(Primer[Operation]):
         # Handle the case that, the worker is not a valid operation.
         worker_validation_result = priming_validator.execute(
             candidate=worker,
-            target_model=Operation,
+            target_model=Operator,
             null_exception=null_exception,
         )
         if worker_validation_result.is_failure:
@@ -140,9 +140,9 @@ class PrimingWorkerRegistration(Primer[Operation]):
     @LoggingLevelRouter.monitor
     def _name_collision_helper(
             cls,
-            target: Operation,
+            target: Operator,
             registry: WorkerRegistry,
-    ) -> ValidationResult[Operation]:
+    ) -> ValidationResult[Operator]:
         """
         Process the cases where the worker's operation_name has already been a key.
 

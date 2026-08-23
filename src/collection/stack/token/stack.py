@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Iterator, List, Optional
 
 from sensor.analyzer import CollisionAnalyzer
-from controller.stack.token.controller import TokenStackController
+from transit.controller.stack.token.controller import TokenStackController
 from err import TokenStackServiceException
 from microservice import TokenService
 from domain.model import Token, TokenContext, TokenQuery

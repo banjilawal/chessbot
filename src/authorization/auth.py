@@ -14,7 +14,7 @@ from typing import Generic, TypeVar
 
 from domain import Request
 from report import AuthorizationDecision
-from toolkit import PermissionRuleset
+from operation.toolkit import PermissionRuleset
 from util import LoggingLevelRouter
 
 

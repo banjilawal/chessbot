@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from controller import BoardTeamBinderController
+from transit.controller import BoardTeamBinderController
 from collection.database import HostageDatabase, SquareDatabase
 
 

@@ -17,13 +17,13 @@ from sensor.analyzer import TokenReadinessAnalyzer
 from err import TokenDeploymentException
 from err.analyzer.claim.exist.exception import HomeSquareAlreadyClaimedException
 from domain.model import HomeSquare, Token
-from operation import Operation
+from operation import Operator
 from report import TokenReadinessReport
 from result import MethodResultType, UpdateResult, ValidationResult
 from util import LoggingLevelRouter
 
 
-class TokenDeploymentPrimer(Operation[Token]):
+class TokenDeploymentPrimer(Operator[Token]):
     """
     Role:
         - Transaction Worker

@@ -18,7 +18,7 @@ from domain.model import Vector
 from result import ValidationResult
 from assurance.checker import AxisRootChecker
 from space import NorthAxis
-from toolkit.geometry.space.axis.north import NorthAxisToolkit
+from operation.toolkit.geometry.space.axis.north import NorthAxisToolkit
 from util import LoggingLevelRouter
 
 

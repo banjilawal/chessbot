@@ -14,7 +14,7 @@ from typing import Any, Generic, TypeVar, cast
 
 from assurance.checker import Checker
 from result import ValidationResult
-from toolkit import ToggleToolkit
+from operation.toolkit import ToggleToolkit
 from util import LoggingLevelRouter
 
 

@@ -10,8 +10,8 @@ version: 0.0.2
 from __future__ import annotations
 
 from config.setting import BoardDimensionSetting, BoardProperty
-from controller import WorkerRegistryController
-from toolkit import MathToolkit
+from transit.controller import WorkerRegistryController
+from operation.toolkit import MathToolkit
 from result import ValidationResult
 from domain.model import Vector, VectorBlueprint
 from operation import AssemblyPrimer

@@ -16,7 +16,7 @@ from fabrication.builder import SpaceReservoirBuilder
 from err import AxisReservoirBuilderException
 from topology.registry import AxisReservoir
 from result import BuildResult, MethodResultType
-from toolkit import AxisReservoirBuilderToolkit
+from operation.toolkit import AxisReservoirBuilderToolkit
 from util import LoggingLevelRouter
 
 

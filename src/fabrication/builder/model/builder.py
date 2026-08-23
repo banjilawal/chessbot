@@ -16,7 +16,7 @@ from domain.metadata.blueprint import ModelBlueprint
 from result import BuildResult
 from util import LoggingLevelRouter
 from fabrication.builder import Builder
-from toolkit import ModelBuilderToolkit
+from operation.toolkit import ModelBuilderToolkit
 
 T = TypeVar("T", bound="Model")
 

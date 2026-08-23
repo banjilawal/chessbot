@@ -16,7 +16,7 @@ from fabrication.builder import ModelBuilder
 from err import ArenaBuilderException
 from domain.model import Arena
 from result import BuildResult, MethodResultType
-from toolkit import ArenaBuilderToolkit
+from operation.toolkit import ArenaBuilderToolkit
 from util import LoggingLevelRouter
 
 

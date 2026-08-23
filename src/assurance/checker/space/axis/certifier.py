@@ -15,7 +15,7 @@ from typing import Any, Generic, TypeVar, cast
 
 from result import ValidationResult
 from assurance.checker import SpaceChecker
-from toolkit import AxisToolkit
+from operation.toolkit import AxisToolkit
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Axis")

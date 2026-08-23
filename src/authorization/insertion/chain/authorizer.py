@@ -16,7 +16,7 @@ from authorization import InsertionRequestAuthorizer
 from domain.structure.node import Node
 from report import AuthorizationDecision
 from domain.exchange.request import AddNodeRequest
-from toolkit import AddNodeRequestToolkit
+from operation.toolkit import AddNodeRequestToolkit
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Node")

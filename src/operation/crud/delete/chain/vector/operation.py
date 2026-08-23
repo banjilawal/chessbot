@@ -1,4 +1,4 @@
-# src/operation/crud/delete/chain/vector/operation.py
+# src/operation/crud/delete/chain/vector/operator.py
 
 """
 Module: operation.crud.delete.chain.vector.operation

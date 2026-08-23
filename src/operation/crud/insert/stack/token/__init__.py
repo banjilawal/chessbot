@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .operation import TokenStackPush
+from .operator import TokenPusher

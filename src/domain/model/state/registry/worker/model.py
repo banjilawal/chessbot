@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 from typing import Dict, List
 
-from operation import Operation
+from operation import Operator
 
 
 class WorkerRegistry:
@@ -36,7 +36,7 @@ class WorkerRegistry:
     """
     _invocation_counters: dict[str, int]
     _registration_counters: dict[str, int]
-    _entries: Dict[str, Dict[str, Operation]]
+    _entries: Dict[str, Dict[str, Operator]]
     
     def __init__(self):
         self._entries = {str: {}}
@@ -48,7 +48,7 @@ class WorkerRegistry:
         return list(self._entries.keys())
         
     @property
-    def entries(self) -> Dict[str, Dict[str, Operation]]:
+    def entries(self) -> Dict[str, Dict[str, Operator]]:
         return self._entries
     
     @property

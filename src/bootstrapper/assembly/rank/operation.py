@@ -9,13 +9,13 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from controller import WorkerRegistryController
+from transit.controller import WorkerRegistryController
 from err import PrimingRankAssemblyException
 from domain.model import Rank, RankBlueprint
 
 from operation import AssemblyPrimer
 from result import ValidationResult
-from toolkit import RankToolkit
+from operation.toolkit import RankToolkit
 from util import LoggingLevelRouter
 
 

@@ -15,7 +15,7 @@ from collection import VectorSet, VectorTree
 from err import TopologyGeneratorException, VectorSetNullException
 from domain.model import Vector
 from result import ComputationResult, MethodResultType
-from toolkit import MathToolkit
+from operation.toolkit import MathToolkit
 from topology import Topology
 from util import LoggingLevelRouter
 from assurance.validator import PrimingValidator

@@ -9,8 +9,8 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from controller import WorkerRegistryController
-from toolkit import BoardToolkit
+from transit.controller import WorkerRegistryController
+from operation.toolkit import BoardToolkit
 from result import ValidationResult
 from domain.model import Board, BoardBlueprint
 from operation import AssemblyPrimer

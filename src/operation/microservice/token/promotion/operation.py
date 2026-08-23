@@ -1,4 +1,4 @@
-# src/operation/promotion/operation.py
+# src/operation/promotion/operator.py
 
 """
 Module: operation.promotion.operation

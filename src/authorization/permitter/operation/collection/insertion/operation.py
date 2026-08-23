@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from authorization import CollectionInsertionRequest, OperationPermitter
-from operation import CrudOperation
+from operation import CrudOperator
 from result import InsertionResult
 from util import LoggingLevelRouter
 
@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="Collection")
 
 
-class CollectionInsertion(CrudOperation[InsertionResult], ABC, Generic[T]):
+class CollectionInsertion(CrudOperator[InsertionResult], ABC, Generic[T]):
     """
     Role
         -   Worker

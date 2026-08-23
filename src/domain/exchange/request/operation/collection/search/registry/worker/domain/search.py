@@ -10,15 +10,15 @@ version: 0.0.2
 from __future__ import annotations
 from typing import Dict, List
 
-from controller import WorkerRegistryController
+from transit.controller import WorkerRegistryController
 from err import WorkerRegistryDomainSearchException
 from result import SearchResult
 from domain.exchange.model import WorkerRegistry
 from util import LoggingLevelRouter
-from operation import Operation, RegistryEntryNameValidator
+from operation import Operator, RegistryEntryNameValidator
 
 
-class WorkerRegistryDomainSearch(Dict[str, Operation]):
+class WorkerRegistryDomainSearch(Dict[str, Operator]):
     """
     Role
         -   Search Worker
@@ -47,7 +47,7 @@ class WorkerRegistryDomainSearch(Dict[str, Operation]):
             name: str,
             registry: WorkerRegistry,
             key_name_validator: RegistryEntryNameValidator | None = None,
-    ) -> SearchResult[List[Dict[str, Operation]]]:
+    ) -> SearchResult[List[Dict[str, Operator]]]:
         """
         Search the WorkerRegistry for an operation.
 

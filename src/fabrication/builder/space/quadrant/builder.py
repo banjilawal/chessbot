@@ -15,7 +15,7 @@ from typing import Generic, TypeVar, cast
 from domain.metadata.blueprint import Blueprint
 from fabrication.builder import SpaceBuilder
 from result import BuildResult
-from toolkit import QuadrantBuilderToolkit
+from operation.toolkit import QuadrantBuilderToolkit
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="QuadrantSpace")

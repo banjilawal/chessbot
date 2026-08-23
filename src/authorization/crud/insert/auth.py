@@ -15,7 +15,7 @@ from typing import Generic, TypeVar, cast
 from authorization import CrudAuthorizer
 from domain import InsertRequest
 from report import AuthorizationDecision
-from toolkit import InsertPermissionRuleset
+from operation.toolkit import InsertPermissionRuleset
 from util import LoggingLevelRouter
 
 

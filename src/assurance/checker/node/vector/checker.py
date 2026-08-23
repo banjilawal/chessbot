@@ -15,7 +15,7 @@ from assurance import NodeIntegrityChecker, VectorNodeValidationBundle
 from fabrication import VectorNodeBlueprint
 from domain.structure.node import VectorNode
 from result import ValidationResult
-from domain.transit import VectorNodeCarrier
+from transit.carrier import VectorNodeCarrier
 from util import LoggingLevelRouter
 
 

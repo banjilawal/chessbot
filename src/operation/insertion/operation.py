@@ -1,4 +1,4 @@
-# src/operation/collection/operation.py
+# src/operation/collection/operator.py
 
 """
 Module: operation.collection.operation
@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 
-from operation import Operation
+from operation import Operator
 from result import InsertionResult
 from util import LoggingLevelRouter
 
@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="Collection")
 
 
-class InsertionOperation(Operation, ABC, Generic[T]):
+class InsertionOperation(Operator, ABC, Generic[T]):
     """
     Role
         -   Worker

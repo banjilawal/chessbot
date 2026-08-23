@@ -14,7 +14,7 @@ from err import CircularPathException, PathCheckerException
 from domain.model import Path
 from assurance.checker.model import ModelIntegrityChecker
 from result import ValidationResult
-from toolkit import PathToolkit
+from operation.toolkit import PathToolkit
 from util import LoggingLevelRouter
 
 

@@ -15,7 +15,7 @@ from typing import Generic, TypeVar, cast
 from authorization import CrudAuthorizer
 from domain import SearchRequest
 from report import AuthorizationDecision
-from toolkit import SearchRequestToolkit
+from operation.toolkit import SearchRequestToolkit
 from util import LoggingLevelRouter
 
 

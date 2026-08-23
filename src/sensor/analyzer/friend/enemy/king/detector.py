@@ -14,7 +14,7 @@ from err import EnemyKingAnalyzerException, TokenNullException
 from domain.model import KingToken
 from report import FriendshipStatus
 from result import Result
-from toolkit import TokenToolkit
+from operation.toolkit import TokenToolkit
 from util import LoggingLevelRouter
 from assurance.validator import TokenValidator
 

@@ -16,7 +16,7 @@ from collection import VectorChain
 from domain.structure.node import VectorNode
 from report import AuthorizationDecision
 from domain.exchange.request import AddVectorNodeRequest
-from toolkit import AddVectorNodeRequestToolkit
+from operation.toolkit import AddVectorNodeRequestToolkit
 from util import LoggingLevelRouter
 
 

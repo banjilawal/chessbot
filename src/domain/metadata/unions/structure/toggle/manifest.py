@@ -16,7 +16,7 @@ from typing import Type
 from assurance import UnionsManifest
 from fabrication import ToggleBlueprint
 from domain.structure.toggle import Toggle
-from domain.transit import ToggleCarrier
+from transit.carrier import ToggleCarrier
 
 
 @dataclass

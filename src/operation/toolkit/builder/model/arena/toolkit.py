@@ -1,0 +1,58 @@
+# src/operation/toolkit/builder/model/arena/toolkit.py
+
+"""
+Module: operation.toolkit.builder.model.arena.toolkit
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from typing import Optional, cast
+
+from fabrication.assembler import ArenaAssembler
+from domain.model import Arena
+from assurance.checker import ArenaRootCertifier
+from operation.toolkit.builder.model.arena.toolkit import ModelBuilderToolkit
+
+
+class ArenaBuilderToolkit(ModelBuilderToolkit[Arena]):
+    """
+    Role:
+        -   Dependency Management
+        
+    Responsibilities:
+        1.  Bundles ArenaBuilder dependencies.
+
+    Attributes:
+        assembler: Optional[ArenaAssembler]
+        root_certifier: Optional[ArenaRootCertifier]
+            
+    Provides:
+
+    Super Class:
+        ModelBuilderToolkit
+    """
+    
+    def __init__(
+            self,
+            assembler: Optional[ArenaAssembler] | None = ArenaAssembler(),
+            root_certifier: Optional[ArenaRootCertifier] |
+                            None = ArenaRootCertifier(),
+    ):
+        """
+        Args:
+            assembler: Optional[ArenaAssembler]
+            root_certifier: Optional[ArenaRootCertifier]
+        """
+        super().__init__(assembler=assembler, root_certifier=root_certifier)
+        
+    @property
+    def assembler(self) -> ArenaAssembler:
+        return cast(ArenaAssembler, super().assembler)
+    
+    @property
+    def root_certifier(self) -> ArenaRootCertifier:
+        return cast(ArenaRootCertifier, super().integrity_checker)
+    

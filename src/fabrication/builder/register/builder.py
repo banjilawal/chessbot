@@ -15,7 +15,7 @@ from typing import Generic, TypeVar, cast
 from domain.metadata.blueprint import RegisterBlueprint
 from fabrication.builder import Builder
 from result import BuildResult
-from toolkit import RegisterBuilderToolkit
+from operation.toolkit import RegisterBuilderToolkit
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Register")

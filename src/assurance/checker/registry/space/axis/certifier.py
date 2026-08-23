@@ -17,7 +17,7 @@ from domain.model import Vector
 from assurance.checker import SpaceReservoirChecker
 from result import ValidationResult
 from space import AxisReservoir
-from toolkit import AxisReservoirToolkit
+from operation.toolkit import AxisReservoirToolkit
 from util import LoggingLevelRouter
 
 

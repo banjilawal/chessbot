@@ -1,4 +1,4 @@
-# src/operation/crud/insert/chain/vector/operation.py
+# src/operation/crud/insert/chain/vector/operator.py
 
 """
 Module: operation.crud.insert.chain.vector.operation

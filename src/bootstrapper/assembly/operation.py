@@ -13,14 +13,14 @@ from abc import abstractmethod
 from typing import TypeVar
 
 from domain.metadata.blueprint import Blueprint
-from toolkit import Toolkit
-from operation import Operation
+from operation.toolkit import Toolkit
+from operation import Operator
 from result import ValidationResult
 from util import LoggingLevelRouter
 
 T = TypeVar("T")
 
-class AssemblyPrimer(Operation[T]):
+class AssemblyPrimer(Operator[T]):
     DOMAIN = "assembly_primer"
     
     @classmethod

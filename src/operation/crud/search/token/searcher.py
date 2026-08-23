@@ -13,7 +13,7 @@ from err import TokenSearcherException
 from authorization.permitter import TokenSearchPermitter
 from domain.exchange.request import SearchRequest
 from result import SearchResult
-from route import TokenSearchRouter
+from transit.router import TokenSearchRouter
 from util import LoggingLevelRouter
 
 

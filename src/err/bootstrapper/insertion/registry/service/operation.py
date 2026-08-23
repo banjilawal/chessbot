@@ -13,7 +13,7 @@ from microservice import Microservice
 from domain.model import ServiceRegistry
 from result import ValidationResult
 from util import LoggingLevelRouter
-from controller import ServiceRegistryController
+from transit.controller import ServiceRegistryController
 from err import NewServiceRegistrationException, MicroserviceNullException, RegistryKeyCollisionException
 from operation import Primer, RegistryEntryNameValidator, PrimingValidator
 

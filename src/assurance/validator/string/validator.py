@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from controller import WorkerRegistryController
+from transit.controller import WorkerRegistryController
 from err import StringEmptyException, StringValidatorException
 from err.null.string import StringNullException
 from operation import Validator

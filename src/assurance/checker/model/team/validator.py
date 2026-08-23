@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from domain.model import Team
-from toolkit import TeamToolkit
+from operation.toolkit import TeamToolkit
 
 
 class TeamIntegrityChecker(ModelIntegrityChecker[Team]):

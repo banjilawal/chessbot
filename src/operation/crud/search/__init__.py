@@ -28,4 +28,4 @@ from .square import *
 from .token import *
 
 # Modules
-from .operation import Search
+from .operator import Search

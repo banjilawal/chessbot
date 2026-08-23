@@ -16,7 +16,7 @@ from authorization import RequestAuthorizer
 from collection import DomainObjectCollection
 from report import AuthorizationDecision
 from domain.exchange.request import InsertionRequest
-from toolkit import InsertPermissionRuleset
+from operation.toolkit import InsertPermissionRuleset
 
 from util import LoggingLevelRouter
 

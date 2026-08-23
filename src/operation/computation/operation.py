@@ -1,4 +1,4 @@
-# src/operation/computation/operation.py
+# src/operation/computation/operator.py
 
 """
 Module: operation.computation.operation
@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from authorization import ComputationPermitter, ComputationRequest
-from operation import Operation
+from operation import Operator
 from result import ComputationResult
 from util import LoggingLevelRouter
 
@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T")
 
 
-class Computation(Operation[ComputationResult], ABC, Generic[T]):
+class Computation(Operator[ComputationResult], ABC, Generic[T]):
     """
     Role
         -   Worker

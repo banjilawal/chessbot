@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from authorization import OperationPermitter, SearchPermitter, SearchRequest
-from operation import CrudOperation
+from operation import CrudOperator
 from result import SearchResult
 from util import LoggingLevelRouter
 
@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="StackService")
 
 
-class CollectionSearch(CrudOperation[SearchResult], ABC, Generic[T]):
+class CollectionSearch(CrudOperator[SearchResult], ABC, Generic[T]):
     """
     Role
         -   Worker

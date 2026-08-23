@@ -14,13 +14,13 @@ from err import WorkerRegistryNameSearchException
 from result import SearchResult
 from domain.model import WorkerRegistry
 from util import LoggingLevelRouter
-from controller import WorkerRegistryController
-from operation import Operation, RegistryEntryNameValidator
+from transit.controller import WorkerRegistryController
+from operation import Operator, RegistryEntryNameValidator
 
 
 
 
-class WorkerRegistryNameSearch(Operation):
+class WorkerRegistryNameSearch(Operator):
     """
     Role
         -   Search Worker
@@ -50,7 +50,7 @@ class WorkerRegistryNameSearch(Operation):
             operation_name: str,
             registry: WorkerRegistry,
             key_name_validator: RegistryEntryNameValidator | None = None,
-    ) -> SearchResult[List[Operation]]:
+    ) -> SearchResult[List[Operator]]:
         """
         Search the WorkerRegistry for an operation.
         

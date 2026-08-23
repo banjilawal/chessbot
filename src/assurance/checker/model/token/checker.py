@@ -18,7 +18,7 @@ from fabrication import TokenBlueprint
 from domain.model import HomeSquare, Team, Token
 from result import ValidationResult
 from domain.schema import Formation
-from domain.transit import TokenCarrier
+from transit.carrier import TokenCarrier
 from util import LoggingLevelRouter
 
 

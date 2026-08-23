@@ -14,7 +14,7 @@ from typing import Generic, TypeVar
 
 
 from domain.model import Model
-from suite import OperationSuite, SensorSuite
+from operation.suite import OperationSuite, SensorSuite
 
 T = TypeVar("T", bound="Model")
 

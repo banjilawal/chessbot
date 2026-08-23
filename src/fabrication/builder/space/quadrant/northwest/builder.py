@@ -16,7 +16,7 @@ from fabrication.builder import QuadrantBuilder
 from err import NorthwestQuadrantBuilderException
 from result import BuildResult, MethodResultType
 from space import NorthwestQuadrant
-from toolkit import NorthwestQuadrantBuilderToolkit
+from operation.toolkit import NorthwestQuadrantBuilderToolkit
 from util import LoggingLevelRouter
 
 

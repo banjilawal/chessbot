@@ -1,4 +1,4 @@
-# src/operation/crud/delete/chain/operation.py
+# src/operation/crud/delete/chain/operator.py
 
 """
 Module: operation.crud.delete.chain.operation

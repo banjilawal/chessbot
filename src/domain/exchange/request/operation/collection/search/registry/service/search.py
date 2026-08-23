@@ -14,13 +14,13 @@ from err import ServiceRegistrySearchException
 from result import SearchResult
 from domain.exchange.model import ServiceRegistry
 from util import LoggingLevelRouter
-from controller import ServiceRegistryController
-from operation import Operation, RegistryEntryNameValidator
+from transit.controller import ServiceRegistryController
+from operation import Operator, RegistryEntryNameValidator
 
 
 
 
-class ServiceRegistrySearch(Operation):
+class ServiceRegistrySearch(Operator):
     """
     Role
         -   Search Service

@@ -16,7 +16,7 @@ from fabrication.builder import ModelBuilder
 from err import SnapshotBuilderException
 from domain.model import Snapshot
 from result import BuildResult, MethodResultType
-from toolkit import SnapshotBuilderToolkit
+from operation.toolkit import SnapshotBuilderToolkit
 from util import LoggingLevelRouter
 
 

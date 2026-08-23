@@ -15,7 +15,7 @@ from domain.model import BoardBinder
 from assurance.auditor import  ConsistencyAuditor
 from result import ValidationResult
 from util import LoggingLevelRouter
-from toolkit import BoardTeamBinderToolkit
+from operation.toolkit import BoardTeamBinderToolkit
 
 
 class BoardBinderConsistencyAuditor(ConsistencyAuditor[BoardBinder]):

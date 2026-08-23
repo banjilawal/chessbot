@@ -17,7 +17,6 @@ from .model import *
 from .schema import *
 from .search import *
 from .structure import *
-from .transit import *
 
 # Modules
 from .domain import DomainObject

@@ -16,7 +16,7 @@ from fabrication.builder import ModelBuilder
 from err import VectorBuilderException
 from domain.model import Vector
 from result import BuildResult, MethodResultType
-from toolkit import VectorBuilderToolkit
+from operation.toolkit import VectorBuilderToolkit
 from util import LoggingLevelRouter
 
 

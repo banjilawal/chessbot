@@ -13,7 +13,7 @@ from __future__ import annotations
 from report import CollisionReport
 from sensor import Collider
 from collection.stack import TokenStackService
-from domain.transit import TokenCarrier
+from transit.carrier import TokenCarrier
 from util import LoggingLevelRouter
 
 

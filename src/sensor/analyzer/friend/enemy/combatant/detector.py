@@ -14,7 +14,7 @@ from err import EnemyCombatantAnalyzerException, TokenNullException
 from domain.model import CombatantToken
 from report import FriendshipStatus
 from result import Result
-from toolkit import TokenToolkit
+from operation.toolkit import TokenToolkit
 from util import LoggingLevelRouter
 from assurance.validator import TokenValidator
 

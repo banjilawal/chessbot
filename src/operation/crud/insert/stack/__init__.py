@@ -13,4 +13,4 @@ version: 0.0.2
 from .token import *
 
 # Modules
-from .operation import StackPush
+from .operator import StackPusher

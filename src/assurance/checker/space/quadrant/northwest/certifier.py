@@ -18,7 +18,7 @@ from domain.model import Vector
 from result import ValidationResult
 from assurance.checker import QuadrantRootChecker
 from space import NorthwestQuadrant
-from toolkit.geometry.space.quadrant import NorthwestQuadrantToolkit
+from operation.toolkit.geometry.space.quadrant import NorthwestQuadrantToolkit
 from util import LoggingLevelRouter
 
 

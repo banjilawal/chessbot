@@ -1,4 +1,4 @@
-# src/operation/microservice/operation.py
+# src/operation/microservice/operator.py
 
 """
 Module: operation.microservice.operation

@@ -17,7 +17,7 @@ from domain.model import Vector
 from domain.structure.register import VectorRegister
 from result import ValidationResult
 from assurance.checker import Checker
-from toolkit import VectorRegisterToolkit
+from operation.toolkit import VectorRegisterToolkit
 from util import LoggingLevelRouter
 
 

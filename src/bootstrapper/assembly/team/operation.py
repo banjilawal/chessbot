@@ -9,12 +9,12 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from controller import WorkerRegistryController
+from transit.controller import WorkerRegistryController
 from err import PrimingTeamAssemblyException
 from domain.model import Board, Team, TeamBlueprint
 from operation import AssemblyPrimer
 from result import ValidationResult
-from toolkit import TeamToolkit
+from operation.toolkit import TeamToolkit
 from util import LoggingLevelRouter
 
 

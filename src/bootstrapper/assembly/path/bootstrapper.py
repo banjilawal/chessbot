@@ -12,9 +12,9 @@ from __future__ import annotations
 from typing import List
 
 from domain.metadata.blueprint import PathBlueprint
-from controller import WorkerRegistryController
+from transit.controller import WorkerRegistryController
 from report import CollisionReport
-from toolkit import PathToolkit
+from operation.toolkit import PathToolkit
 from operation.crud.search import SquareNotFoundException
 from operation import AssemblyPrimer
 from err import PathAssemblyPrimerException

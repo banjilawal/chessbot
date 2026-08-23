@@ -1,4 +1,4 @@
-# src/operation/microservice/operation.py
+# src/operation/microservice/operator.py
 
 """
 Module: operation.microservice.operation
@@ -13,13 +13,13 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from authorization import MicroservicePermitter, MicroserviceRequest
-from operation import Operation
+from operation import Operator
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Result")
 
 
-class MicroserviceOperation(Operation, ABC, Generic[T]):
+class MicroserviceOperation(Operator, ABC, Generic[T]):
     """
     Role
         -   Worker

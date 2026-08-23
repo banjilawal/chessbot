@@ -1,4 +1,4 @@
-# src/operation/computation/vector/product/operation.py
+# src/operation/computation/vector/product/operator.py
 
 """
 Module: operation.computation.vector.product.operation
@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from controller import WorkerRegistryController
+from transit.controller import WorkerRegistryController
 from result import ComputationResult
 from util import LoggingLevelRouter
 from err import ScalarProductException

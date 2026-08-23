@@ -17,7 +17,7 @@ from domain.model import (
     TeamBinderBinder, TeamBinderBinderAssemblyException,
     WhiteTeamBinderHasWrongSchemaException
 )
-from toolkit import TeamBinderBinderToolkit, TeamBinderToolkit
+from operation.toolkit import TeamBinderBinderToolkit, TeamBinderToolkit
 
 
 class TeamBinderBinderAssemblyPrimer(AssemblyPrimer[TeamBinderBinder]):

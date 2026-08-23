@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import cast
 
 from domain.metadata.blueprint import ItineraryBlueprint
-from controller import WorkerRegistryController
+from transit.controller import WorkerRegistryController
 from err import (
     DisabledTokenManeuverException, InconsistentStateException, ItineraryAssemblyPrimerException,
     SquareNotFoundSearchException, StaleTokenLinkException, TokenAlreadyAtDestinationException
@@ -20,7 +20,7 @@ from domain.model import Itinerary, SquareContext
 from operation import AssemblyPrimer
 from report import RelationReport, TokenReadinessReport
 from result import MethodResultType, ValidationResult
-from toolkit import ItineraryToolkit
+from operation.toolkit import ItineraryToolkit
 from util import LoggingLevelRouter
 
 

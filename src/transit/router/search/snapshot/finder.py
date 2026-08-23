@@ -1,0 +1,266 @@
+# src/logic/snapshot/transit/route/transit/route.py
+
+"""
+Module: logic.snapshot.route.route
+Author: Banji Lawal
+Created: 2025-10-03
+version: 1.0.0
+"""
+
+from typing import List
+
+from logic.team import Team
+from logic.agent import PlayerAgent
+from system import Finder, LoggingLevelRouter, SearchException, SearchResult
+from logic.snapshot import GameTimeline, NullGameTimelineException, Snapshot, SnapshotContext, SnapshotContextValidator
+
+
+
+
+class SnapshotFinder(Finder[Snapshot]):
+    """
+    Role:SearchRouter
+
+    Responsibilities:
+    1.  Search AgentStackService or Database objects for Agents with an attribute that matches the
+        target inside an SnapshotContext.
+    2.  Safely forward any errors encountered during a search to the caller.
+
+    Super Class:
+        *   SearchRouter
+
+    # PROVIDES:
+    SnapshotFinder:
+
+
+    # INHERITED ATTRIBUTES:
+    None
+    """
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def find(
+            cls,
+            dataset: GameTimeline,
+            context: SnapshotContext,
+            context_validator: SnapshotContextValidator = SnapshotContextValidator()
+    ) -> SearchResult[List[Snapshot]]:
+        """
+        # ACTION:
+        1.  Verify the collider_candidates is not null and contains only Snapshot objects,
+        2.  Use context_validator to certify the provided map.
+        3.  Call the route method which matches the attribute whose flag was raised.
+        4.  If the logic does not account for an Player attribute drop to the try-finally block.
+
+        # PARAMETERS:
+            *   collider_candidates (GameTimeline):
+            *   map: SnapshotContext
+            *   context_validator: SnapshotContextValidator
+
+        # RETURNS:
+        SearchResult[List[Snapshot]] containing either:
+                - On success:   List[snapshot] in the payload.
+                - On failure:   Exception.
+
+        Raises:
+            *   TypeError
+            *   NullGameTimelineException
+            *   SnapshotFinderException
+        """
+        method = "SnapshotFinder.find"
+        try:
+            # Don't want to run a search if the collider_candidates is null.
+            if dataset is None:
+                return SearchResult.failure(
+                    NullGameTimelineException(f"{method}: {NullGameTimelineException.MSG}")
+                )
+            # certify the map is safe.
+            validation_result = context_validator.execute(context)
+            if validation_result.is_failure:
+                return SearchResult.failure(validation_result.exception)
+            
+            # After checks are passed pick which route method to call.
+            if context.timestamp is not None:
+                return cls._find_by_timestamp(dataset, context.timestamp)
+            # Find by owner
+            if context.agent is not None:
+                return cls._find_by_agent(dataset, context.agent)
+            # Find by team
+            if context.team is not None:
+                return cls._find_by_team(dataset, context.team)
+            # Find by exception
+            if context.exception is not None:
+                return cls._find_by_exception(dataset, context.exception)
+            
+            # As a failsafe, if the none of the none of the cases are handled by the if blocks return failsafeBranchExPointException in the buildResult failure if a map path was missed.
+            SearchResult.failure(
+                FailsafeBranchExitPointException(f"{method}: {FailsafeBranchExitPointException.MSG}")
+            )
+        
+        # Finally, if some exception is not handled by the checks wrap it inside an SearchException
+        # then, return the exception chain inside a SearchResult.
+        except Exception as ex:
+            return SearchResult.failure(
+                SearchException(ex=ex, msg=f"{method}: {SearchException.MSG}")
+            )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _find_by_timestamp(cls, dataset: GameTimeline, timestamp: id) -> SearchResult[List[Snapshot]]:
+        """
+        # ACTION:
+        1.  Get the agents whose id matched the target.
+        2.  If no matches are found return an empty SearchResult.
+        3.  If exactly one match is found return a successful SearchResult with the single item in an array.
+        4.  If the route returns multiple unique hits there is a problem.
+
+        # PARAMETERS:
+            *   id (int)
+            *   collider_candidates (List[Snapshot])
+
+        # RETURNS:
+        SearchResult[List[Snapshot]] containing either:
+                - On success:   List[snapshot] in the payload.
+                - On failure:   Exception.
+
+        Raises:
+            *   SnapshotFinderException
+        """
+        method = "SnapshotFinder._find_by_timestamp"
+        try:
+            matches = [snapshot for snapshot in dataset.items if snapshot.timestamp == timestamp]
+            # There should be either no Agents with the id or one and only one Player will have that id.
+            if len(matches) == 0:
+                return SearchResult.empty()
+            # Relaxing the 0 <= match_count < 2 requirement for convenience. Will handle the
+            # inconsistency later.
+            if len(matches) >= 1:
+                return SearchResult.success(payload=matches)
+        
+        # Finally, if some exception is not handled by the checks wrap it inside an SearchException
+        # then, return the exception chain inside a SearchResult.
+        except Exception as ex:
+            return SearchResult.failure(
+                SearchException(ex=ex, msg=f"{method}: {SearchException.MSG}")
+            )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _find_by_agent(cls, dataset: GameTimeline, agent: PlayerAgent) -> SearchResult[List[Snapshot]]:
+        """
+        # ACTION:
+        1.  Get the agents whose agents are a case-insensitive. match for the target.
+        2.  If no matches are found return an empty SearchResult.
+        3.  If exactly one match is found return a successful SearchResult with the single item in an array.
+        4.  If the route returns multiple hits call _resolve_matching_ids.
+
+        # PARAMETERS:
+            *   owner (Player)
+            *   collider_candidates (GameTimeline)
+
+        # RETURNS:
+        SearchResult[List[Snapshot]] containing either:
+                - On success:   List[snapshot] in the payload.
+                - On failure:   Exception.
+
+        Raises:
+            *   SnapshotFinderException
+        """
+        method = "SnapshotFinder._find_by_team"
+        try:
+            # Players are unique the search should only produce one unique result.
+            matches = [snapshot for snapshot in dataset.items if agent in snapshot.arena.agents]
+            if len(matches) == 0:
+                return SearchResult.empty()
+            # Relaxing the 0 <= match_count < 2 requirement for convenience. Will handle the
+            # inconsistency later.
+            if len(matches) >= 1:
+                return SearchResult.success(payload=matches)
+        
+        # Finally, if some exception is not handled by the checks wrap it inside an SearchException
+        # then, return the exception chain inside a SearchResult.
+        except Exception as ex:
+            return SearchResult.failure(
+                SearchException(ex=ex, msg=f"{method}: {SearchException.MSG}")
+            )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _find_by_team(cls, dataset: GameTimeline, team: Team) -> SearchResult[List[Snapshot]]:
+        """
+        # ACTION:
+        1.  Get the owner whose team is a match for the target.
+        2.  If no matches are found return an empty SearchResult.
+        3.  If exactly one match is found return a successful SearchResult with the single item in an array.
+        4.  If multiple agents own the same target there is a problem.
+
+        # PARAMETERS:
+            *   team (Team)
+            *   collider_candidates (List[Snapshot])
+
+        # RETURNS:
+        SearchResult[List[Snapshot]] containing either:
+                - On success:   List[snapshot] in the payload.
+                - On failure:   Exception.
+
+        Raises:
+            *   SnapshotFinderException
+        """
+        method = "SnapshotFinder._find_by_team"
+        try:
+            # Players are unique the search should only produce one unique result.
+            matches = [snapshot for snapshot in dataset.items if team in snapshot.arena.team]
+            if len(matches) == 0:
+                return SearchResult.empty()
+            # Relaxing the 0 <= match_count < 2 requirement for convenience. Will handle the
+            # inconsistency later.
+            if len(matches) >= 1:
+                return SearchResult.success(payload=matches)
+        
+        # Finally, if some exception is not handled by the checks wrap it inside an SearchException
+        # then, return the exception chain inside a SearchResult.
+        except Exception as ex:
+            return SearchResult.failure(
+                SearchException(ex=ex, msg=f"{method}: {SearchException.MSG}")
+            )
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def _find_by_exception(cls, dataset: GameTimeline, exception) -> SearchResult[[PlayerAgent]]:
+        """
+        # ACTION:
+        1.  Get the agents whose agents are an agent_exception. match for the target.
+        2.  If no matches are found return an empty SearchResult.
+        3.  If exactly one match is found return a successful SearchResult with the single item in an array.
+        4.  If the route returns multiple hits call _resolve_matching_ids.
+
+        # PARAMETERS:
+            *   agent_exception (AgentException)
+            *   collider_candidates (List[Snapshot])
+
+        # RETURNS:
+        SearchResult[List[Snapshot]] containing either:
+                - On success:   List[snapshot] in the payload.
+                - On failure:   Exception.
+
+        Raises:
+            *   SnapshotFinderException
+        """
+        method = "SnapshotFinder._find_by_agent"
+        try:
+            matches = []
+            # Players are unique the search should only produce one unique result.
+            matches = [snapshot for snapshot in dataset.items if snapshot.exception == exception]
+            if len(matches) == 0:
+                return SearchResult.empty()
+            # Relaxing the 0 <= match_count < 2 requirement for convenience. Will handle the
+            # inconsistency later.
+            if len(matches) >= 1:
+                return SearchResult.success(payload=matches)
+            
+            # Finally, if some exception is not handled by the checks wrap it inside an SearchException
+            # then, return the exception chain inside a SearchResult.
+        except Exception as ex:
+            return SearchResult.failure(
+                SearchException(ex=ex, msg=f"{method}: {SearchException.MSG}")
+            )

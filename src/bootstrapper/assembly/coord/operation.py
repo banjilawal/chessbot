@@ -10,9 +10,9 @@ version: 0.0.2
 from __future__ import annotations
 
 from config.setting import BoardDimensionSetting, BoardProperty
-from controller import WorkerRegistryController
+from transit.controller import WorkerRegistryController
 from err import PrimingCoordAssemblyException
-from toolkit import CoordToolkit
+from operation.toolkit import CoordToolkit
 from result import ValidationResult
 from domain.model import Coord, CoordBlueprint
 from operation import AssemblyPrimer

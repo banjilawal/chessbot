@@ -16,7 +16,7 @@ from fabrication.builder import ModelBuilder
 from err import ScalarBuilderException
 from domain.model import Scalar
 from result import BuildResult, MethodResultType
-from toolkit import ScalarBuilderToolkit
+from operation.toolkit import ScalarBuilderToolkit
 from util import LoggingLevelRouter
 
 

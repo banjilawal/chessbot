@@ -16,7 +16,7 @@ from fabrication.builder import SpaceReservoirBuilder
 from err import QuadrantReservoirBuilderException
 from topology.registry import QuadrantReservoir
 from result import BuildResult, MethodResultType
-from toolkit import QuadrantReservoirBuilderToolkit
+from operation.toolkit import QuadrantReservoirBuilderToolkit
 from util import LoggingLevelRouter
 
 

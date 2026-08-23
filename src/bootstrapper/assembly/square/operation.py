@@ -9,13 +9,13 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from controller import WorkerRegistryController
+from transit.controller import WorkerRegistryController
 from err import PrimingSquareAssemblyException
 from domain.model import Square, SquareBlueprint
 from operation import AssemblyPrimer
 from report import CollisionReport
 from result import AnalysisResult, ValidationResult
-from toolkit import SquareToolkit
+from operation.toolkit import SquareToolkit
 from util import LoggingLevelRouter
 
 

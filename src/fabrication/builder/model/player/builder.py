@@ -16,7 +16,7 @@ from fabrication.builder import ModelBuilder
 from err import PlayerBuilderException
 from domain.model import Player
 from result import BuildResult, MethodResultType
-from toolkit import PlayerBuilderToolkit
+from operation.toolkit import PlayerBuilderToolkit
 from util import LoggingLevelRouter
 
 

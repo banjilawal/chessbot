@@ -20,7 +20,7 @@ from domain.structure.register import CartesianToggleRegister
 from result import MethodResultType, ValidationResult
 from assurance.checker import Checker
 from domain.structure.toggle import CartesianToggle
-from toolkit import VectorToggleRegisterToolkit
+from operation.toolkit import VectorToggleRegisterToolkit
 from util import LoggingLevelRouter
 
 

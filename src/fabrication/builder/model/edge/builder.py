@@ -16,7 +16,7 @@ from fabrication.builder import ModelBuilder
 from err import EdgeBuilderException
 from domain.model import Edge
 from result import BuildResult, MethodResultType
-from toolkit import EdgeBuilderToolkit
+from operation.toolkit import EdgeBuilderToolkit
 from util import LoggingLevelRouter
 
 

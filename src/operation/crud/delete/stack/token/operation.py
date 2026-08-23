@@ -1,4 +1,4 @@
-# src/operation/crud/delete/stack.token/operation.py
+# src/operation/crud/delete/stack.token/operator.py
 
 """
 Module: operation.crud.delete.stack.token.operation

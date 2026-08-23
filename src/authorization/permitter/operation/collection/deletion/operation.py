@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from authorization import CollectionDeletionRequest, OperationPermitter
-from operation import CrudOperation
+from operation import CrudOperator
 from result import DeletionResult
 from util import LoggingLevelRouter
 
@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="Collection")
 
 
-class CollectionDeletion(CrudOperation[DeletionResult], ABC, Generic[T]):
+class CollectionDeletion(CrudOperator[DeletionResult], ABC, Generic[T]):
     """
     Role
         -   Worker

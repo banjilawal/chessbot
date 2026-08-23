@@ -1,4 +1,4 @@
-# src/operation/computation/vector/distance/euclidean/operation.py
+# src/operation/computation/vector/distance/euclidean/operator.py
 
 """
 Module: operation.computation.vector.distance.euclidean.operation
