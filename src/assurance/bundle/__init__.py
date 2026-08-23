@@ -10,9 +10,8 @@ version: 0.0.2
 # =========== ASSURANCE.BUNDLE PACKAGE ===========#
 
 # Packages
-from .node import *
-from .token import *
-from .vector import *
+from .model import *
+from .structure import *
 
 # Module
 from .bundle import ValidationBundle

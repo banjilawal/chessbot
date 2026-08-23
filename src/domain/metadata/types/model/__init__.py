@@ -21,6 +21,7 @@ from .snapshot import *
 from .square import *
 from .team import *
 from .token import *
+from .vector import *
 
 # Modules
 from .manifest import ModelAssociationManifest

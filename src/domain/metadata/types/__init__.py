@@ -10,17 +10,8 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.TYPES PACKAGE ===========#
 
 # Packages
-
-from .node import *
-from .rank import *
 from .model import *
-from .register import *
-from .scalar import *
-from .square import *
-from .team import *
-from .toggle import *
-from domain.metadata.types.model.token import *
-from .vector import *
+from .structure import *
 
 # Modules
 from manifest import DomainObjectAssociationManifest

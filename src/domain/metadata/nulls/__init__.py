@@ -11,9 +11,7 @@ version: 0.0.2
 
 # Packages
 from .model import *
-from .node import *
-from domain.metadata.nulls.model.token import *
-from .vector import *
+from .structure import *
 
 # Modules
 from roster import NullExceptionRoster

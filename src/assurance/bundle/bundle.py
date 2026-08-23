@@ -21,6 +21,27 @@ T = TypeVar("T", bound="DomainObject")
 
 @dataclass
 class ValidationBundle(ABC, Generic[T]):
+    """
+    Role:
+        -   Container
+
+    Responsibilities:
+        1.  Bundles types, null-exceptions, attribute-validators, and utilities IntegrityChecker
+            needs to run safety checks on a validation candidate.
+
+    Attributes:
+        identity_service: IdentityService
+        primin_validator: PrimingValidator
+        
+        types: DomainObjectAssociationManifest[T]
+        nulls: NullExceptionRoster[T]
+        
+        resources: Dict[str, Any]
+
+    Provides:
+
+    Super Class:
+    """
     types: DomainObjectAssociationManifest[T]
     nulls: NullExceptionRoster[T]
     resources: Dict[str, Any]

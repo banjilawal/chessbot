@@ -14,7 +14,7 @@ from dataclasses import dataclass
 from typing import Generic, TypeVar
 
 from domain import DomainObject
-from err import BlueprintNullException, EntityCarrierNullException, ModelNullException, NullException
+from err import NullException
 
 T = TypeVar("T", bound="DomainObject")
 
