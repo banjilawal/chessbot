@@ -99,7 +99,7 @@ class VectorToggleRootChecker(ToggleChecker[CartesianToggle]):
         blueprint = cast(self.toolkit.blueprint_model, carrier)
         
         # Handle the case that neither option is enabled.
-        if blueprint.no_active_toggles:
+        if blueprint.no_active_filters:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorToggleRootCheckerException(
@@ -114,7 +114,7 @@ class VectorToggleRootChecker(ToggleChecker[CartesianToggle]):
                 )
             )
         # Handle the case that, both options are enabled.
-        if blueprint.excess_active_toggles:
+        if blueprint.excess_active_filters:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorToggleRootCheckerException(

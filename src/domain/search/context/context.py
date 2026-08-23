@@ -22,52 +22,40 @@ class SearchContext(DomainSearchObject, ABC, Generic[T]):
     Role:
         -   Selection
         -   Routing mask
-        -   Data-Holder
 
     Responsibilities:
-        1.  Supply an attribute-value tuple for selecting an execution path.
+        1.  Supply the criteria a Searcher uses to find a hit in a DomainObjectCollection.
                 
     Attributes:
         id: Optional[int]
         name: Optional[str]
-        max_enabled_toggles: Optional[int]
+        max_activated_filters: Optional[int]
         
     Provides:
         -   to_dict() -> Dict[str, Any]
         
     Super Class:
-    
-    Notes:
-        1.  Attribute is an entity's property.
-        2.  Attribute is routing key.
-        3.  Execution logic performed on attribute value.
-        
-        4.  Why Not Union:
-                Used optional attributes with null default values instead of a union type because:
-                    -   It's easier to extend
-                    -   Implementations can decide if context can be mutually exclusive or not.
-                    -   Unions are clunky if there are many attributes.
-                    -   Unions don't lower validation and build integrity overhead.
     """
     _id: Optional[int]
     _name: Optional[str]
-    _max_enabled_toggles: Optional[int]
+    _max_activated_filters: int
 
     def __init__(
+            self,
             id: Optional[int] | None = None,
             name: Optional[str] | None = None,
-            max_enabled_toggles: Optional[int] | None = None,
+            max_activated_filters: Optional[int] | None = None,
     ):
         """
         Args:
             id: Optional[int]
             name: Optional[str]
-            max_enabled_toggles: Optional[int]
+            max_activated_filters: Optional[int]
         """
         super().__init__()
         self._id = id
         self._name = name
-        self._max_enabled_toggles = max_enabled_toggles or 1
+        self._max_activated_filters = max_activated_filters or 1
 
     @property
     def id(self) -> Optional[int]:
@@ -78,19 +66,19 @@ class SearchContext(DomainSearchObject, ABC, Generic[T]):
         return self._name
     
     @property
-    def max_enabled_toggles(self) -> int:
-        return self._max_enabled_toggles
+    def max_activated_filters(self) -> int:
+        return self._max_activated_filters
     
     @property
-    def no_active_toggles(self) -> bool:
-        return self.active_toggles == 0
+    def no_active_filters(self) -> bool:
+        return self.activated_filters == 0
     
     @property
-    def excess_active_toggles(self) -> bool:
-        return self.active_toggles > self._max_enabled_toggles
+    def excess_active_filters(self) -> bool:
+        return self.activated_filters > self._max_activated_filters
     
     @property
-    def active_toggles(self) -> int:
+    def activated_filters(self) -> int:
         return len(self.to_dict)
 
     @property

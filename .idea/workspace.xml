@@ -5,28 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/domain/exchange/request/crud/search/stack/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/exchange/request/crud/search/stack/token/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/exchange/request/crud/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/exchange/request/crud/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/exchange/request/crud/search/stack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/exchange/request/crud/search/stack/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/exchange/request/crud/search/stack/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/exchange/request/crud/search/stack/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/exchange/request/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/exchange/request/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/stack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/stack/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/stack/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/stack/arena/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/stack/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/stack/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/stack/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/stack/coord/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/stack/edge/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/stack/edge/context.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/stack/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/stack/game/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/stack/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/stack/player/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/stack/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/stack/rank/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/stack/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/stack/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/stack/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/stack/team/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/search/context/stack/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/stack/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/persistence/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/persistence/worker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/result/crud/search/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/result/crud/search/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/toggle/vector/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/checker/toggle/vector/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/search/context/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context/context.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,59 +50,59 @@
     <decayedCancelled>
       <entry key="MS100" value="1.0" />
       <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0000013151092375" />
-      <entry key="S5" value="1.004683699144183" />
-      <entry key="S10" value="1.106253669387554" />
-      <entry key="S30" value="3.0696235136515186" />
-      <entry key="S60" value="7.002706400055247" />
-      <entry key="M2" value="13.631700657954031" />
-      <entry key="M5" value="27.76430721259999" />
-      <entry key="M10" value="47.04927583964828" />
-      <entry key="M15" value="68.05987869694981" />
-      <entry key="M30" value="125.24073906438439" />
-      <entry key="H1" value="189.9679879377656" />
-      <entry key="H2" value="240.3377242654852" />
-      <entry key="H4" value="271.99525493319777" />
-      <entry key="D1" value="302.42285702104493" />
-      <entry key="W1" value="308.04983284110835" />
+      <entry key="S2" value="1.0000007824489696" />
+      <entry key="S5" value="1.0036089628304592" />
+      <entry key="S10" value="1.0600746793257292" />
+      <entry key="S30" value="1.3950837460479282" />
+      <entry key="S60" value="1.7384905580749042" />
+      <entry key="M2" value="3.91773693548414" />
+      <entry key="M5" value="26.265510453800633" />
+      <entry key="M10" value="67.26544047349316" />
+      <entry key="M15" value="100.56572736357195" />
+      <entry key="M30" value="177.630404230784" />
+      <entry key="H1" value="270.5832596509577" />
+      <entry key="H2" value="351.389841707988" />
+      <entry key="H4" value="406.15180797615454" />
+      <entry key="D1" value="461.64240644040865" />
+      <entry key="W1" value="472.2068535057222" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="1.3504483601058991E-279" />
-      <entry key="S5" value="2.8327173023546363E-112" />
-      <entry key="S10" value="1.6920817965791729E-56" />
-      <entry key="S30" value="3.129347686150418E-19" />
-      <entry key="S60" value="8.272956797195385E-10" />
-      <entry key="M2" value="4.7515822463776665E-5" />
-      <entry key="M5" value="0.03603372136564408" />
-      <entry key="M10" value="0.35449611232274125" />
-      <entry key="M15" value="0.7999024216790689" />
-      <entry key="M30" value="1.9142127109734954" />
-      <entry key="H1" value="3.0547156731262413" />
-      <entry key="H2" value="3.895053081944896" />
-      <entry key="H4" value="4.409293706617276" />
-      <entry key="D1" value="4.895729969112976" />
-      <entry key="W1" value="4.984954594726049" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="3.498939074609761E-227" />
+      <entry key="S10" value="5.9468628945499906E-114" />
+      <entry key="S30" value="2.2083912054560338E-38" />
+      <entry key="S60" value="2.19771742613608E-19" />
+      <entry key="M2" value="7.744507393184481E-10" />
+      <entry key="M5" value="4.380980651015771E-4" />
+      <entry key="M10" value="0.03908792229569196" />
+      <entry key="M15" value="0.18393219400927233" />
+      <entry key="M30" value="0.917910981495984" />
+      <entry key="H1" value="2.1153195251862167" />
+      <entry key="H2" value="3.2412756984480917" />
+      <entry key="H4" value="4.022261710094682" />
+      <entry key="D1" value="4.821339031759584" />
+      <entry key="W1" value="4.974062497890346" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.8888426811665702" />
-      <entry key="MS500" value="0.9767085289622274" />
-      <entry key="S2" value="0.9941268795841229" />
-      <entry key="S5" value="1.0023198292133833" />
-      <entry key="S10" value="1.1049443500094118" />
-      <entry key="S30" value="3.0681755762562926" />
-      <entry key="S60" value="7.000948512447719" />
-      <entry key="M2" value="13.629955127749302" />
-      <entry key="M5" value="27.795126721300466" />
-      <entry key="M10" value="47.38902597645338" />
-      <entry key="M15" value="68.83990519498923" />
-      <entry key="M30" value="127.13335063195188" />
-      <entry key="H1" value="193.00628912560347" />
-      <entry key="H2" value="244.22257681158015" />
-      <entry key="H4" value="276.3988507450412" />
-      <entry key="D1" value="307.3175443539832" />
-      <entry key="W1" value="313.03463606837033" />
+      <entry key="MS100" value="0.9526379980439373" />
+      <entry key="MS500" value="0.9903428719330246" />
+      <entry key="S2" value="0.9975777055470195" />
+      <entry key="S5" value="1.0026350272201248" />
+      <entry key="S10" value="1.05955629075008" />
+      <entry key="S30" value="1.3948484100771619" />
+      <entry key="S60" value="1.7382938521396043" />
+      <entry key="M2" value="3.917136329524881" />
+      <entry key="M5" value="26.263399010502567" />
+      <entry key="M10" value="67.29955422453324" />
+      <entry key="M15" value="100.74192287697619" />
+      <entry key="M30" value="178.5356911168696" />
+      <entry key="H1" value="272.68585279303306" />
+      <entry key="H2" value="354.6218835941634" />
+      <entry key="H4" value="410.1684815917593" />
+      <entry key="D1" value="466.4626510605454" />
+      <entry key="W1" value="477.18075524286354" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -152,7 +132,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/banji/PycharmProjects/chessbot/src/domain/exchange/request/crud/search/stack/token",
+    "last_opened_file_path": "C:/Users/banji/PycharmProjects/chessbot/src/domain/exchange/request/crud/search/stack",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -166,11 +146,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\domain\exchange\request\crud\search\stack" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\domain\exchange\request\crud\search\stack\token" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\authorization\crud" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\authorization\crud\insert" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\domain\search\context" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\domain\search\context\chain" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\domain\search\context\stack" />
@@ -819,7 +799,7 @@
       <workItem from="1785366790867" duration="182641000" />
       <workItem from="1785958183827" duration="174661000" />
       <workItem from="1786522110280" duration="179726000" />
-      <workItem from="1787456783999" duration="4021000" />
+      <workItem from="1787456783999" duration="5984000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1778,7 +1758,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/domain/exchange/request/crud/delete/item/stack/request.py</url>
-          <line>11</line>
+          <line>10</line>
           <option name="timeStamp" value="377" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
