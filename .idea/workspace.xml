@@ -5,51 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/assurance/bundle/model/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/bundle/model/arena/bundle.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/bundle/model/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/bundle/model/board/bundle.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/bundle/model/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/bundle/model/coord/bundle.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/bundle/model/game/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/bundle/model/game/bundle.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/bundle/model/player/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/bundle/model/player/bundle.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/bundle/model/rank/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/bundle/model/rank/bundle.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/bundle/model/scalar/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/bundle/model/scalar/bundle.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/bundle/model/snapshot/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/bundle/model/snapshot/bundle.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/bundle/model/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/bundle/model/square/bundle.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/bundle/model/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/bundle/model/team/bundle.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/core/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/persistence.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/event/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/event/event.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/event/example.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/event/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/json/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/json/exporter.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/json/importer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/notification/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/notification/notification.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/pipeline/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/pipeline/pipeline.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/resolution/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/resolution/exception/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/resolution/exception/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/resolution/exception/failure/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/resolution/exception/failure/coord/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/resolution/exception/failure/coord/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/resolution/exception/failure/example.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/resolution/exception/failure/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/resolution/exception/failure/id/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/resolution/exception/failure/id/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/resolution/exception/failure/name/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/resolution/exception/failure/name/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/resolution/service.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/transaction/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/transaction/example.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/transaction/exception/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/transaction/exception/base.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/transaction/exception/failure.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/transaction/exception/timeout.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/transaction/result.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/transaction/state.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/transaction/timer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/transaction/transaction.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/transfer/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/transfer/exception/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/transfer/exception/route.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/transfer/exception/wrapper.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/transfer/result.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/transfer/state.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/system/transfer/transfer.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/bundle/model/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,61 +68,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.206995962666517" />
-      <entry key="MS500" value="2.84976383758495" />
-      <entry key="S2" value="8.751013751553648" />
-      <entry key="S5" value="19.51416264477857" />
-      <entry key="S10" value="30.56981260016319" />
-      <entry key="S30" value="46.14298653222212" />
-      <entry key="S60" value="52.3009260141372" />
-      <entry key="M2" value="55.92701589821223" />
-      <entry key="M5" value="58.96963573979419" />
-      <entry key="M10" value="72.84520960243812" />
-      <entry key="M15" value="97.34578912738888" />
-      <entry key="M30" value="171.10662917634951" />
-      <entry key="H1" value="301.95502854172406" />
-      <entry key="H2" value="567.016479621688" />
-      <entry key="H4" value="1055.1101617371248" />
-      <entry key="D1" value="2547.6010991958897" />
-      <entry key="W1" value="3106.7474797763693" />
+      <entry key="MS100" value="1.4784061226434144" />
+      <entry key="MS500" value="3.185376529419391" />
+      <entry key="S2" value="4.950773872929919" />
+      <entry key="S5" value="5.540114169792252" />
+      <entry key="S10" value="5.762722858735268" />
+      <entry key="S30" value="5.919213948174427" />
+      <entry key="S60" value="5.959391152356941" />
+      <entry key="M2" value="5.9805971111776275" />
+      <entry key="M5" value="6.9141515653981305" />
+      <entry key="M10" value="15.464333024429187" />
+      <entry key="M15" value="28.39177167843705" />
+      <entry key="M30" value="77.25519691861827" />
+      <entry key="H1" value="192.43924499332067" />
+      <entry key="H2" value="445.1905649344113" />
+      <entry key="H4" value="934.1518646124509" />
+      <entry key="D1" value="2550.267584741546" />
+      <entry key="W1" value="3186.2776277196704" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="7.73222280347359E-99" />
-      <entry key="MS500" value="2.5435740910054377E-20" />
-      <entry key="S2" value="1.9392014170633135E-5" />
-      <entry key="S5" value="0.024316937220738154" />
-      <entry key="S10" value="0.296492061331315" />
-      <entry key="S30" value="1.6598360725438062" />
-      <entry key="S60" value="2.5726840714918087" />
-      <entry key="M2" value="3.206667627063646" />
-      <entry key="M5" value="3.6628917984799987" />
-      <entry key="M10" value="3.921307087401121" />
-      <entry key="M15" value="4.254204641849643" />
-      <entry key="M30" value="5.707545546057645" />
-      <entry key="H1" value="9.353440173875681" />
-      <entry key="H2" value="16.507932009850204" />
-      <entry key="H4" value="30.786796305707842" />
-      <entry key="D1" value="86.92699367517862" />
-      <entry key="W1" value="110.34172017474111" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="1.4115958416552854E-308" />
+      <entry key="S5" value="1.0930747433320512E-123" />
+      <entry key="S10" value="4.672279953147583E-62" />
+      <entry key="S30" value="5.7164586201117446E-21" />
+      <entry key="S60" value="1.0692268965650482E-10" />
+      <entry key="M2" value="1.4623390577915537E-5" />
+      <entry key="M5" value="0.01773847663291824" />
+      <entry key="M10" value="0.2076045199806727" />
+      <entry key="M15" value="0.538246997908856" />
+      <entry key="M30" value="1.8874092868897097" />
+      <entry key="H1" value="5.220796860100668" />
+      <entry key="H2" value="12.26393630488189" />
+      <entry key="H4" value="26.50767341785585" />
+      <entry key="D1" value="85.7582514915568" />
+      <entry key="W1" value="111.75933517010722" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.932655502258023" />
-      <entry key="MS500" value="2.7134566956370576" />
-      <entry key="S2" value="8.654412120376609" />
-      <entry key="S5" value="19.452787319977812" />
-      <entry key="S10" value="30.778987620746612" />
-      <entry key="S30" value="47.72289429545319" />
-      <entry key="S60" value="54.81761739815258" />
-      <entry key="M2" value="59.10017667801545" />
-      <entry key="M5" value="62.61749066494706" />
-      <entry key="M10" value="76.75792105318008" />
-      <entry key="M15" value="101.59299364958359" />
-      <entry key="M30" value="176.80803264102533" />
-      <entry key="H1" value="311.3011975668383" />
-      <entry key="H2" value="583.5148303858737" />
-      <entry key="H4" value="1085.8843531450366" />
-      <entry key="D1" value="2634.5202889547845" />
-      <entry key="W1" value="3217.0877374132597" />
+      <entry key="MS100" value="1.3262439060012021" />
+      <entry key="MS500" value="3.0870293268723517" />
+      <entry key="S2" value="4.907467486089865" />
+      <entry key="S5" value="5.520294214514532" />
+      <entry key="S10" value="5.752341940529667" />
+      <entry key="S30" value="5.915643373603234" />
+      <entry key="S60" value="5.957591716026127" />
+      <entry key="M2" value="5.979708228155714" />
+      <entry key="M5" value="6.931431192680533" />
+      <entry key="M10" value="15.671217428338688" />
+      <entry key="M15" value="28.92897319324005" />
+      <entry key="M30" value="79.14071059329883" />
+      <entry key="H1" value="197.65642415843848" />
+      <entry key="H2" value="457.44797070584167" />
+      <entry key="H4" value="960.6492263857853" />
+      <entry key="D1" value="2636.0182776945107" />
+      <entry key="W1" value="3298.035502771788" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -159,46 +136,46 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.__init__.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.node.executor&quot;: &quot;Run&quot;,
-    &quot;Python.notifier.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.ray.executor&quot;: &quot;Coverage&quot;,
-    &quot;Python.roster.executor&quot;: &quot;Run&quot;,
-    &quot;Python.stack.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/banji/PycharmProjects/chessbot/src/assurance/bundle/model&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.__init__.executor": "Debug",
+    "Python.node.executor": "Run",
+    "Python.notifier.executor": "Debug",
+    "Python.ray.executor": "Coverage",
+    "Python.roster.executor": "Run",
+    "Python.stack.executor": "Debug",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/assurance/bundle/model",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assurance/bundle/model" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\assurance\bundle\model" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\domain\metadata\nulls\model" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\domain\metadata\types\model" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\assurance\checker\search\stack\token" />
-      <recent name="C:\Users\banji\PycharmProjects\chessbot\src\assurance\checker\search\model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/transit" />
       <recent name="$PROJECT_DIR$/src/artifcat" />
       <recent name="$PROJECT_DIR$/src/operation" />
-      <recent name="$PROJECT_DIR$/src/transit" />
       <recent name="$PROJECT_DIR$/src/collection" />
       <recent name="C:\Users\banji\PycharmProjects\chessbot\src\assurance\bundle\structure" />
     </key>

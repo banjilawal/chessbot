@@ -12,7 +12,6 @@ version: 0.0.2
 
 # Packages
 from .analyzer import *
-from .assembly import *
 from .detector import *
 from .insertion import *
 from .operation import *
