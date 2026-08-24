@@ -1,7 +1,7 @@
-# src/err/assurance/checker/crud/delete/exception.py
+# src/err/assurance/checker/crud/delete/chain/vector/exception.py
 
 """
-Module: err.assurance.checker.crud.delete.exception
+Module: err.assurance.checker.crud.delete.chain.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import CrudCheckerException
+from err import RemoveNodeCheckerException
 from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# DELETE_CHECKER_FAILURE #======================#
-    "DeleteCheckerException",
+    # ======================# REMOVE_VECTOR_NODE_CHECKER_FAILURE #======================#
+    "RemoveVectorNodeCheckerException",
 ]
 
-# ======================# DELETE_CHECKER_FAILURE #======================#
-class DeleteCheckerException(CrudCheckerException):
+# ======================# REMOVE_VECTOR_NODE_CHECKER_FAILURE #======================#
+class RemoveVectorNodeCheckerException(RemoveNodeCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a DeleteChecker failed.
+        1.  Indicating assurance by a RemoveVectorNodeChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class DeleteCheckerException(CrudCheckerException):
     Provides:
 
     Super Class:
-        CrudCheckerException
+        RemoveNodeCheckerException
     """
-    MSG = "DeleteChecker failure."
-    ERR_CODE = "DELETE_CHECKER_FAILURE"
+    MSG = "RemoveVectorNodeChecker failure."
+    ERR_CODE = "REMOVE_VECTOR_NODE_CHECKER_FAILURE"
     
     def __init__(
             self,

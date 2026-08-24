@@ -1,7 +1,7 @@
-# src/err/assurance/checker/crud/delete/exception.py
+# src/err/assurance/checker/crud/delete/chain/exception.py
 
 """
-Module: err.assurance.checker.crud.delete.exception
+Module: err.assurance.checker.crud.delete.chain.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import CrudCheckerException
+from err import DeleteCheckerException
 from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# DELETE_CHECKER_FAILURE #======================#
-    "DeleteCheckerException",
+    # ======================# REMOVE_NODE_CHECKER_FAILURE #======================#
+    "RemoveNodeCheckerException",
 ]
 
-# ======================# DELETE_CHECKER_FAILURE #======================#
-class DeleteCheckerException(CrudCheckerException):
+# ======================# REMOVE_NODE_CHECKER_FAILURE #======================#
+class RemoveNodeCheckerException(DeleteCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a DeleteChecker failed.
+        1.  Indicating assurance by a RemoveNodeChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class DeleteCheckerException(CrudCheckerException):
     Provides:
 
     Super Class:
-        CrudCheckerException
+        DeleteCheckerException
     """
-    MSG = "DeleteChecker failure."
-    ERR_CODE = "DELETE_CHECKER_FAILURE"
+    MSG = "RemoveNodeChecker failure."
+    ERR_CODE = "REMOVE_NODE_CHECKER_FAILURE"
     
     def __init__(
             self,

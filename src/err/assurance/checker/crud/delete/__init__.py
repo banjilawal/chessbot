@@ -14,3 +14,4 @@ from .chain import *
 from .stack import *
 
 # Modules
+from .exception import DeleteCheckerException
