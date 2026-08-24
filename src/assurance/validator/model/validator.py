@@ -46,13 +46,24 @@ class ModelValidator(Validator[Model]):
         """
         super().__init__(integrity_checker=integrity_checker)
 
+
     @property
     def integrity_checker(self) -> ModelIntegrityChecker:
         return cast(ModelIntegrityChecker, super().integrity_checker)
     
+    
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult:
+        """
+        Verify a candidate is an EntityCarrier whose payload is safe.
+        Args:
+            candidate: Any
+        Returns:
+            ValidationResult[T]
+        Raises:
+            ModelValidatorException
+        """
         pass
     
     

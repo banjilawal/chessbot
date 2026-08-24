@@ -59,6 +59,15 @@ class SearchContextValidator(Validator[T], ABC, Generic[T]):
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[T]:
+        """
+        Verify a candidate is a SearchContext safe.
+        Args:
+            candidate: Any
+        Returns:
+            ValidationResult[T]
+        Raises:
+            SearchContexValidatorException
+        """
         pass
     
     
