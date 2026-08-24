@@ -15,7 +15,7 @@ import config.setting.board.dimension.config
 from artifcat import ValidationResult
 from assurance import StackContextChecker, CoordValidationBundle
 from domain import CoordSearchContext
-from err import ZeroContextFlagsException
+from err import CoordContextCheckerException, ZeroContextFlagsException
 from util import LoggingLevelRouter
 
 
