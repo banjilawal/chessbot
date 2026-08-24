@@ -15,7 +15,7 @@ from typing import Optional
 from fabrication.builder import RegisterBuilder, VectorToggleRegisterBuilder
 from selector import VectorToggle
 
-from operation.toolkit import VectorToggleToolkit
+from operation.utility import VectorToggleUtility
 from artifcat import ComputationResult
 from util import LoggingLevelRouter
 
@@ -55,21 +55,21 @@ class AddVector(Computation[VectorToggle]):
     
     
     _register_builder: Optional[RegisterBuilder]
-    _vector_toggle_toolkit: Optional[VectorToggleToolkit]
+    _vector_toggle_utility: Optional[VectorToggleUtility]
     
     def __init__(
             self,
             register_builder: Optional[VectorToggleRegisterBuilder]
                               | None = VectorToggleRegisterBuilder(),
-            vector_toggle_toolkit: Optional[VectorToggleToolkit] | None = VectorToggleToolkit(),
+            vector_toggle_utility: Optional[VectorToggleUtility] | None = VectorToggleUtility(),
     ):
         """
         Args:
             register_builder: Optional[VectorToggleRegisterBuilder]
-            vector_toggle_toolkit: Optional[VectorToggleToolkit]
+            vector_toggle_utility: Optional[VectorToggleUtility]
         """
         self._register_builder = register_builder
-        self._vector_toggle_toolkit = vector_toggle_toolkit
+        self._vector_toggle_utility = vector_toggle_utility
         
     @LoggingLevelRouter.monitor
     def execute(
@@ -90,7 +90,7 @@ class AddVector(Computation[VectorToggle]):
         Args:
             scalar: Scalar,
             register: VectorRegister,
-            toolkit : VectorRegisterToolkit = VectorRegisterToolkit(),
+            utility : VectorRegisterUtility = VectorRegisterUtility(),
             register_validator: VectorRegisterValidator = VectorRegisterValidator(),
         Result:
             ComputationResult[Union[Vector, Coord]]:
@@ -101,13 +101,13 @@ class AddVector(Computation[VectorToggle]):
         
         register_build_result =
         for operand in [u, v]:
-            validation = self._vector_toggle_toolkit.v
+            validation = self._vector_toggle_utility.v
         
         if register_validator is None:
             register_validator = VectorRegisterValidator()
             
-        if operand_toolkit is None:
-            operand_toolkit = VectorToggleToolkit()
+        if operand_utility is None:
+            operand_utility = VectorToggleUtility()
             
         
         
@@ -130,7 +130,7 @@ class AddVector(Computation[VectorToggle]):
                 x=register.a.entity.x + register.b.entity.x,
                 y=register.a.entity.y + register.b.entity.y,
             )
-            build_result = operand_toolkit.vector_builder.execute(
+            build_result = operand_utility.vector_builder.execute(
                 blueprint=blueprint,
             )
         if register.category == RegisterContentType.COORD_REGISTER:
@@ -138,7 +138,7 @@ class AddVector(Computation[VectorToggle]):
                 row=register.a.entity.row + register.b.entity.row,
                 column=register.a.entity.column + register.b.entity.column,
             )
-            build_result = operand_toolkit.coord_builder.execute(
+            build_result = operand_utility.coord_builder.execute(
                 blueprint=blueprint,
             )
         # Handle the case that, the build did not produce a result.

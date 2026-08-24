@@ -21,7 +21,7 @@ from domain.structure.register import SquareRegister
 from artifcat.report import ManeuverRequestDecision
 from domain.exchange.request import ManeuverRequest
 from artifcat import MethodResultType
-from operation.toolkit import TokenManeuverToolkit
+from operation.utility import TokenManeuverUtility
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -36,22 +36,22 @@ class ManeuverRequestAdjudicator(RequestAdjudicator[ManeuverRequest]):
         1.  Run tests to see if permission can be granted to a TokenStackService to execute a deletion.
 
     Attributes:
-        toolkit: Optional[TokenManeuverToolkit]
+        utility: Optional[TokenManeuverUtility]
     Provides:
         -   def execute(self, candidate: Any) -> ManeuverApprovalReport:
 
     Super Class:
         Adjudicator
     """
-    _toolkit: Optional[TokenManeuverToolkit]
+    _utility: Optional[TokenManeuverUtility]
     
-    def __init__(self, toolkit: Optional[TokenManeuverToolkit] | None = None):
+    def __init__(self, utility: Optional[TokenManeuverUtility] | None = None):
         """
         Args:
-            toolkit: Optional[TokenManeuverToolkit]
+            utility: Optional[TokenManeuverUtility]
         """
         super().__init__()
-        self._toolkit = toolkit or TokenManeuverToolkit()
+        self._utility = utility or TokenManeuverUtility()
     
 
     @LoggingLevelRouter.monitor
@@ -96,7 +96,7 @@ class ManeuverRequestAdjudicator(RequestAdjudicator[ManeuverRequest]):
         request = cast(ManeuverRequest,bootstrap.payload)
         
         # Handle the case that, the token fails a validation check.
-        readiness_analysis = self._toolkit.readiness_analyzer.execute(
+        readiness_analysis = self._utility.readiness_analyzer.execute(
             subject=request.token
         )
         if readiness_analysis.is_failure:
@@ -111,7 +111,7 @@ class ManeuverRequestAdjudicator(RequestAdjudicator[ManeuverRequest]):
                     ex=readiness_analysis.exception,
                 )
             )
-        token_origin_search = self._toolkit.origin_searcher.execute(
+        token_origin_search = self._utility.origin_searcher.execute(
             target=request.token
         )
         # Handle the case that, the origin_searcher is not successful.
@@ -129,11 +129,11 @@ class ManeuverRequestAdjudicator(RequestAdjudicator[ManeuverRequest]):
             )
         origin = cast(Square, token_origin_search.payload[0])
         
-        destination_certification = self._toolkit.destination_certifier.execute(
+        destination_certification = self._utility.destination_certifier.execute(
             candidate_primary=request.destination,
             candidate_satellite=request.token,
-            token_validator=self._toolkit.token_validator,
-            square_validator=self._toolkit.square_validator,
+            token_validator=self._utility.token_validator,
+            square_validator=self._utility.square_validator,
         )
         # Handle the case that, the destination is not valid.
         if destination_certification.is_denied:

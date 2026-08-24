@@ -5,34 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/authorization/utility/crud/search/chain/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/utility/crud/search/chain/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/utility/crud/search/chain/team/utility.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/utility/crud/search/chain/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/utility/crud/search/chain/token/utility.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/utility/crud/search/chain/utility.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/utility.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/utility/crud/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/utility/crud/search/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/arena/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/arena/utility.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/arena/utility.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/board/utility.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/board/utility.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/coord/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/coord/utility.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/coord/utility.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/game/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/game/utility.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/game/utility.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/player/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/player/utility.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/player/utility.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/snapshot/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/snapshot/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/snapshot/utility.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/snapshot/utility.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/square/utility.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/square/utility.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/team/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/team/utility.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/team/utility.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/token/utility.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/utility/crud/search/stack/token/utility.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/crud/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/crud/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/crud/delete/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/crud/delete/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/crud/insert/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/crud/insert/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/crud/search/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/crud/search/auth.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/insertion/authorizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/insertion/authorizer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/insertion/chain/authorizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/insertion/chain/authorizer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/authorization/insertion/chain/vector/authorizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/insertion/chain/vector/authorizer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,59 +56,59 @@
     <decayedCancelled>
       <entry key="MS100" value="1.0" />
       <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0000000000816929" />
-      <entry key="S5" value="1.0000922303275868" />
-      <entry key="S10" value="1.009611327156431" />
-      <entry key="S30" value="1.2412858585657043" />
-      <entry key="S60" value="1.7497005034004092" />
-      <entry key="M2" value="3.7679335934341216" />
-      <entry key="M5" value="23.09321243301503" />
-      <entry key="M10" value="59.42571219043713" />
-      <entry key="M15" value="93.09439011784383" />
-      <entry key="M30" value="190.71114293523166" />
-      <entry key="H1" value="335.5641117959154" />
-      <entry key="H2" value="531.8784052502781" />
-      <entry key="H4" value="918.5221166995339" />
-      <entry key="D1" value="3367.8501526207665" />
-      <entry key="W1" value="4927.07832035697" />
+      <entry key="S2" value="1.000000000000007" />
+      <entry key="S5" value="1.000013405819599" />
+      <entry key="S10" value="1.0208637818493236" />
+      <entry key="S30" value="5.836440835771708" />
+      <entry key="S60" value="24.69540307844946" />
+      <entry key="M2" value="56.9888996557361" />
+      <entry key="M5" value="103.63277012499023" />
+      <entry key="M10" value="149.76464183731275" />
+      <entry key="M15" value="191.40415816430726" />
+      <entry key="M30" value="305.4999594438575" />
+      <entry key="H1" value="484.41503030541026" />
+      <entry key="H2" value="725.5139132214958" />
+      <entry key="H4" value="1139.3793347023588" />
+      <entry key="D1" value="3644.890855854596" />
+      <entry key="W1" value="5265.061763429635" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="3.429904898941707E-98" />
-      <entry key="S2" value="5.2461821557391215E-25" />
-      <entry key="S5" value="2.962239932082984E-10" />
-      <entry key="S10" value="2.9881588468627784E-5" />
-      <entry key="S30" value="0.0829645225432933" />
-      <entry key="S60" value="0.6469746431302241" />
-      <entry key="M2" value="1.885386073073413" />
-      <entry key="M5" value="3.719190532069269" />
-      <entry key="M10" value="4.844859738445186" />
-      <entry key="M15" value="5.605375515703546" />
-      <entry key="M30" value="7.8139711055630166" />
-      <entry key="H1" value="11.604807905671647" />
-      <entry key="H2" value="18.928106389929646" />
-      <entry key="H4" value="36.072139523512675" />
-      <entry key="D1" value="134.61038866182997" />
-      <entry key="W1" value="196.91852530514177" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="4.458417976848994E-83" />
+      <entry key="S5" value="1.1472876356845313E-33" />
+      <entry key="S10" value="3.387304132360222E-17" />
+      <entry key="S30" value="3.3475760890924595E-6" />
+      <entry key="S60" value="0.002133491179782807" />
+      <entry key="M2" value="0.06070771336356491" />
+      <entry key="M5" value="0.4906575290225542" />
+      <entry key="M10" value="1.1811417415364895" />
+      <entry key="M15" value="1.9131667640029688" />
+      <entry key="M30" value="4.278344225840467" />
+      <entry key="H1" value="8.599808044962511" />
+      <entry key="H2" value="16.39956208799845" />
+      <entry key="H4" value="33.52997217228373" />
+      <entry key="D1" value="133.65558619092795" />
+      <entry key="W1" value="198.29582665939606" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.8766057213160351" />
-      <entry key="MS500" value="0.974004268543241" />
-      <entry key="S2" value="0.9934367347553807" />
-      <entry key="S5" value="0.9974374457945449" />
-      <entry key="S10" value="1.006957555724241" />
-      <entry key="S30" value="1.306905784585509" />
-      <entry key="S60" value="2.3594266297277255" />
-      <entry key="M2" value="5.606057048379013" />
-      <entry key="M5" value="26.77457815175095" />
-      <entry key="M10" value="64.24433984032153" />
-      <entry key="M15" value="98.67772334402636" />
-      <entry key="M30" value="198.50343548953595" />
-      <entry key="H1" value="347.146228707329" />
-      <entry key="H2" value="550.7843971543543" />
-      <entry key="H4" value="954.5729327192604" />
-      <entry key="D1" value="3502.447830470973" />
-      <entry key="W1" value="5123.994177425709" />
+      <entry key="MS100" value="5.553882534353526E-7" />
+      <entry key="MS500" value="0.056094378166703845" />
+      <entry key="S2" value="0.4866646870791262" />
+      <entry key="S5" value="0.7497209930614627" />
+      <entry key="S10" value="0.8866833936051023" />
+      <entry key="S30" value="5.786697311506319" />
+      <entry key="S60" value="24.666635725293123" />
+      <entry key="M2" value="57.02681861636813" />
+      <entry key="M5" value="104.1030364842923" />
+      <entry key="M10" value="150.9272796057991" />
+      <entry key="M15" value="193.2998787358212" />
+      <entry key="M30" value="309.7608598774878" />
+      <entry key="H1" value="492.9955840884404" />
+      <entry key="H2" value="741.8932714328769" />
+      <entry key="H4" value="1172.8889300950611" />
+      <entry key="D1" value="3778.533713301909" />
+      <entry key="W1" value="5463.354887676941" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -159,7 +139,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/authorization/utility/crud/search",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/assurance/validator/search/stack",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -173,18 +153,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assurance/validator/search/stack" />
       <recent name="$PROJECT_DIR$/src/authorization/utility/crud/search" />
       <recent name="$PROJECT_DIR$/src/authorization/utility/crud/search/stack" />
       <recent name="$PROJECT_DIR$/src/authorization/utility/crud/search/coord" />
       <recent name="$PROJECT_DIR$/src/authorization/utility/crud" />
-      <recent name="$PROJECT_DIR$/src/operation/toolkit/request/crud" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assurance/validator/search/stack" />
       <recent name="$PROJECT_DIR$/src/authorization/utility/crud/search/stack" />
       <recent name="$PROJECT_DIR$/src/transit" />
       <recent name="$PROJECT_DIR$/src/artifcat" />
       <recent name="$PROJECT_DIR$/src/operation" />
-      <recent name="$PROJECT_DIR$/src/collection" />
     </key>
   </component>
   <component name="RunManager" selected="Python.checker">
@@ -978,7 +958,7 @@
           <option name="timeStamp" value="99" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/assurance/validator/context/token/exception/debug/zero.py</url>
+          <url>file://$PROJECT_DIR$/src/assurance/validator/search/stack/token/exception/debug/zero.py</url>
           <line>9</line>
           <option name="timeStamp" value="101" />
         </line-breakpoint>

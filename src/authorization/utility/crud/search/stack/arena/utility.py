@@ -21,7 +21,7 @@ from domain import ArenaSearchContext
 class ArenaStackSearchPermissionUtility(StackSearchPermissionUtility[ArenaSearchContext]):
     """
     Role:
-        -   Toolkit
+        -   Utility
 
     Responsibilities:
         1.  Bundles resources the ArenaSearchAuthorizer needs to evaluate a ArenaSearchRequest.

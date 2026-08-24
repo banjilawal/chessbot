@@ -12,10 +12,9 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
-from authorization import RequestAuthorizer
+from artifcat import AuthorizationDecision
+from authorization import CrudPermissionUtility, RequestAuthorizer
 from domain import CrudRequest
-from artifcat.report import AuthorizationDecision
-from operation.toolkit import PermissionRuleset
 from util import LoggingLevelRouter
 
 
@@ -31,7 +30,7 @@ class CrudAuthorizer(RequestAuthorizer[T], ABC, Generic[T]):
         1.  Check if a CrudRequest satisfies integrity and consistency requirements.
 
     Attributes:
-        toolkit: CrudRequestToolkit[T]
+        utility: CrudPermissionUtility[T]
 
     Provides:
         -   execute(self, request: T) -> AuthorizationDecision
@@ -39,16 +38,16 @@ class CrudAuthorizer(RequestAuthorizer[T], ABC, Generic[T]):
     Super Class:
     """
     
-    def __init__(self, utility: PermissionRuleset[T]):
+    def __init__(self, utility: CrudPermissionUtility[T]):
         """
         Args:
-            utility: CrudRequestToolkit[T]
+            utility: CrudPermissionUtility[T]
         """
         super().__init__(utility=utility)
         
     @property
-    def ruleset(self) -> PermissionRuleset[T]:
-        return cast(PermissionRuleset[T], super().ruleset)
+    def utility(self) -> CrudPermissionUtility[T]:
+        return cast(CrudPermissionUtility[T], super().utility)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

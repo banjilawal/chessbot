@@ -12,10 +12,9 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
-from authorization import CrudAuthorizer
+from artifcat import AuthorizationDecision
+from authorization import CrudAuthorizer, InsertPermissionUtility
 from domain import InsertRequest
-from artifcat.report import AuthorizationDecision
-from operation.toolkit import InsertPermissionRuleset
 from util import LoggingLevelRouter
 
 
@@ -31,7 +30,7 @@ class InsertAuthorizer(CrudAuthorizer[T], ABC, Generic[T]):
         1.  Check if an InsertRequest satisfies integrity and consistency requirements.
 
     Attributes:
-         toolkit: InsertRequestToolkit[T]
+         utility: InsertPermissionUtility[T]
 
     Provides:
         -   execute(self, request: T) -> AuthorizationDecision
@@ -40,16 +39,18 @@ class InsertAuthorizer(CrudAuthorizer[T], ABC, Generic[T]):
         CrudAuthorizer
     """
     
-    def __init__(self, utility: InsertPermissionRuleset[T]):
+    def __init__(self, utility: InsertPermissionUtility[T]):
         """
         Args:
-             utility: InsertRequestToolkit[T]
+             utility: InsertPermissionUtility[T]
         """
         super().__init__(utility=utility)
         
+        
     @property
-    def ruleset(self) -> InsertPermissionRuleset[T]:
-        return cast(InsertPermissionRuleset[T], super().ruleset)
+    def utility(self) -> InsertPermissionUtility[T]:
+        return cast(InsertPermissionUtility[T], super().utility)
+    
     
     @abstractmethod
     @LoggingLevelRouter.monitor

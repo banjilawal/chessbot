@@ -16,7 +16,7 @@ from authorization import RequestAuthorizer
 from collection import DomainObjectCollection
 from artifcat.report import AuthorizationDecision
 from domain.exchange.request import InsertionRequest
-from operation.toolkit import InsertPermissionRuleset
+from operation.utility import InsertPermissionUtility
 
 from util import LoggingLevelRouter
 
@@ -24,16 +24,16 @@ T = TypeVar("T", bound="DomainObjectCollection")
 
 class InsertionRequestAuthorizer(RequestAuthorizer[InsertionRequest], ABC, Generic[T]):
     
-    def __init__(self, utility: InsertPermissionRuleset[T]):
+    def __init__(self, utility: InsertPermissionUtility[T]):
         """
         Args:
-            utility: InsertionRequestToolkit[T]
+            utility: InsertionPermissionUtility[T]
         """
         super().__init__(utility=utility)
         
     @property
-    def ruleset(self) -> InsertPermissionRuleset[T]:
-        return cast(InsertPermissionRuleset, super().ruleset)
+    def utility(self) -> InsertPermissionUtility[T]:
+        return cast(InsertPermissionUtility, super().utility)
         
     @abstractmethod
     @LoggingLevelRouter.monitor

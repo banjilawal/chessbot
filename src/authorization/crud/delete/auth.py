@@ -12,9 +12,9 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
-from authorization import CrudAuthorizer
+from artifcat import AuthorizationDecision
+from authorization import CrudAuthorizer, DeletePermissionUtility
 from domain import DeleteRequest
-from artifcat.report import AuthorizationDecision
 from util import LoggingLevelRouter
 
 
@@ -30,7 +30,7 @@ class DeleteAuthorizer(CrudAuthorizer[T], ABC, Generic[T]):
         1.  Check if a DeleteRequest satisfies integrity and consistency requirements.
 
     Attributes:
-         toolkit: DeleteRequestToolkit[T]
+         utility: DeletePermissionUtility[T]
 
     Provides:
         -   execute(self, request: T) -> AuthorizationDecision
@@ -39,16 +39,18 @@ class DeleteAuthorizer(CrudAuthorizer[T], ABC, Generic[T]):
         CrudAuthorizer
     """
     
-    def __init__(self, utility: DeleteRequestToolkit[T]):
+    def __init__(self, utility: DeletePermissionUtility[T]):
         """
         Args:
-             utility: DeleteRequestToolkit[T]
+             utility: DeletePermissionUtility[T]
         """
         super().__init__(utility=utility)
         
+        
     @property
-    def ruleset(self) -> DeleteRequestToolkit[T]:
-        return cast(DeleteRequestToolkit[T], super().ruleset)
+    def utility(self) -> DeletePermissionUtility[T]:
+        return cast(DeletePermissionUtility[T], super().utility)
+    
     
     @abstractmethod
     @LoggingLevelRouter.monitor

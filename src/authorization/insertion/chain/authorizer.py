@@ -16,19 +16,19 @@ from authorization import InsertionRequestAuthorizer
 from domain.structure.node import Node
 from artifcat.report import AuthorizationDecision
 from domain.exchange.request import AddNodeRequest
-from operation.toolkit import AddNodeRequestToolkit
+from operation.utility import AddNodePermissionUtility
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Node")
 
 class AddNodeRequestAuthorizer(InsertionRequestAuthorizer, ABC, Generic[T]):
     
-    def __init__(self, utility: AddNodeRequestToolkit[T]):
+    def __init__(self, utility: AddNodePermissionUtility[T]):
         super().__init__(utility=utility)
         
     @property
-    def ruleset(self) -> AddNodeRequestToolkit[T]:
-        return cast(AddNodeRequestToolkit[T], super().ruleset)
+    def utility(self) -> AddNodePermissionUtility[T]:
+        return cast(AddNodePermissionUtility[T], super().utility)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

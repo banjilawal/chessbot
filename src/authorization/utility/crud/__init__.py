@@ -10,6 +10,8 @@ version: 0.0.2
 # =========== AUTHORIZATION.UTILITY.CRUD PACKAGE ===========#
 
 # Packages
+from .delete import *
+from .insert import *
 from .search import *
 
 # Modules

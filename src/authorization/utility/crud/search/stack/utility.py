@@ -24,7 +24,7 @@ T = TypeVar("T", bound="StackSearchContext")
 class StackSearchPermissionUtility(SearchPermissionUtility[T], ABC, Generic[T]):
     """
     Role:
-        -   Toolkit
+        -   Utility
 
     Responsibilities:
         1.  Bundles resources the SearchAuthorizer needs to evaluate a SearchRequest.

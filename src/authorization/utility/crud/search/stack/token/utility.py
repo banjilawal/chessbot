@@ -23,7 +23,7 @@ class TokenStackSearchPermissionUtility(
 ):
     """
     Role:
-        -   Toolkit
+        -   Utility
 
     Responsibilities:
         1.  Bundles resources the TokenSearchAuthorizer needs to evaluate a TokenSearchRequest.

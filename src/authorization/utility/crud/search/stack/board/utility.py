@@ -21,7 +21,7 @@ from domain import BoardSearchContext
 class BoardStackSearchPermissionUtility(StackSearchPermissionUtility[BoardSearchContext]):
     """
     Role:
-        -   Toolkit
+        -   Utility
 
     Responsibilities:
         1.  Bundles resources the BoardSearchAuthorizer needs to evaluate a BoardSearchRequest.

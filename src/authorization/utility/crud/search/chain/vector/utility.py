@@ -23,7 +23,7 @@ class VectorChainSearchPermissionUtility(
 ):
     """
     Role:
-        -   Toolkit
+        -   Utility
 
     Responsibilities:
         1.  Bundles resources the VectorNodeSearchAuthorizer needs to evaluate a

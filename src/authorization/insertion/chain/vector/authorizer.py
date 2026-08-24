@@ -16,7 +16,7 @@ from collection import VectorChain
 from domain.structure.node import VectorNode
 from artifcat.report import AuthorizationDecision
 from domain.exchange.request import AddVectorNodeRequest
-from operation.toolkit import AddVectorNodeRequestToolkit
+from operation.utility import AddVectorNodePermissionUtility
 from util import LoggingLevelRouter
 
 
@@ -25,17 +25,17 @@ class AddVectorNodeRequestAuthorizer(AddNodeRequestAuthorizer[VectorNode]):
     
     def __init__(
             self,
-            utility: Optional[AddVectorNodeRequestToolkit] | None = None,
+            utility: Optional[AddVectorNodePermissionUtility] | None = None,
     ):
         """
         Args:
-            utility: Optional[AddVectorNodeRequestToolkit]
+            utility: Optional[AddVectorNodePermissionUtility]
         """
-        super().__init__(utility=utility or AddVectorNodeRequestToolkit())
+        super().__init__(utility=utility or AddVectorNodePermissionUtility())
         
     @property
-    def ruleset(self) -> AddVectorNodeRequestToolkit:
-        return cast(AddVectorNodeRequestToolkit, super().ruleset)
+    def utility(self) -> AddVectorNodePermissionUtility:
+        return cast(AddVectorNodePermissionUtility, super().utility)
     
 
     
@@ -44,10 +44,10 @@ class AddVectorNodeRequestAuthorizer(AddNodeRequestAuthorizer[VectorNode]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the candidate is null or the wrong type
-        bootstrap = self.ruleset.priming_validator.execute(
+        bootstrap = self.utility.priming_validator.execute(
             candidate=candidate,
-            target_model=self.ruleset.request_type,
-            null_exception=self.ruleset.request_null_exception,
+            target_model=self.utility.request_type,
+            null_exception=self.utility.request_null_exception,
         )
         if bootstrap.is_failure:
             # Send an exception chain in the authorization denial.
@@ -63,10 +63,10 @@ class AddVectorNodeRequestAuthorizer(AddNodeRequestAuthorizer[VectorNode]):
         request = cast(AddVectorNodeRequest, bootstrap.payload)
         
         # Handle the case that, the collection is not the proper chain.
-        chain_validation = self.ruleset.priming_validator.execute(
+        chain_validation = self.utility.priming_validator.execute(
             candidate=request.chain,
-            target_model=self.ruleset.collection_type,
-            null_exception=self.ruleset.collection_null_exception,
+            target_model=self.utility.collection_type,
+            null_exception=self.utility.collection_null_exception,
         )
         if chain_validation.is_failure:
             # Send an exception chain in the authorization denial.
@@ -82,10 +82,10 @@ class AddVectorNodeRequestAuthorizer(AddNodeRequestAuthorizer[VectorNode]):
         chain = cast(VectorChain, chain_validation.payload)
         
         # Handle the case that, the node is either null or the wrong type.
-        node_validation = self.ruleset.priming_validator.execute(
+        node_validation = self.utility.priming_validator.execute(
             candidate=request.node,
-            target_model=self.ruleset.node_type,
-            null_exception=self.ruleset.node_null_exception,
+            target_model=self.utility.node_type,
+            null_exception=self.utility.node_null_exception,
         )
         if node_validation.is_failure:
             # Send an exception chain in the authorization denial.
@@ -100,7 +100,7 @@ class AddVectorNodeRequestAuthorizer(AddNodeRequestAuthorizer[VectorNode]):
             )
         
         node = cast(VectorNode, node_validation.payload)
-        vector_validation = self.ruleset.vector_validator.execute(node.payload)
+        vector_validation = self.utility.vector_validator.execute(node.payload)
         if vector_validation.is_failure:
             return AuthorizationDecision.deny(vector_validation.exception)
         

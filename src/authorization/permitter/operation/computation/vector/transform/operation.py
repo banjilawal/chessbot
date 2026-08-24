@@ -51,7 +51,7 @@ class VectorTransform(Computation[VectorToggle]):
     def execute(
             cls,
             context: VectorContext,
-            toolkit : VectorContextToolkit = VectorContextToolkit(),
+            utility : VectorContextUtility = VectorContextUtility(),
             context_validator: VectorContextValidator = VectorContextValidator(),
     ) -> ComputationResult[Any]:
         """
@@ -66,7 +66,7 @@ class VectorTransform(Computation[VectorToggle]):
             2.  Otherwise, send the success result.
         Args:
             context: AlgebraContext
-            toolkit : VectorContextToolkit
+            utility : VectorContextUtility
             context_validator: VectorContextValidator
         Result:
             ComputationResult[Union[Vector, Coord]]:
@@ -91,12 +91,12 @@ class VectorTransform(Computation[VectorToggle]):
         
         conversion_result = None
         if context.vector is not None:
-            conversion_result = toolkit.coord_service.builder.execute(
+            conversion_result = utility.coord_service.builder.execute(
                 row=context.vector.y,
                 column=context.vector.x,
             )
         if context.coord is not None:
-            conversion_result = toolkit.vector_service.builder.execute(
+            conversion_result = utility.vector_service.builder.execute(
                 row=context.vector.y,
                 column=context.vector.x,
             )

@@ -12,10 +12,9 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
-from authorization import CrudAuthorizer
+from artifcat import AuthorizationDecision
+from authorization import CrudAuthorizer, SearchPermissionUtility
 from domain import SearchRequest
-from artifcat.report import AuthorizationDecision
-from operation.toolkit import SearchRequestToolkit
 from util import LoggingLevelRouter
 
 
@@ -28,10 +27,10 @@ class SearchAuthorizer(CrudAuthorizer[T], ABC, Generic[T]):
         -   Authorization
 
     Responsibilities:
-        1.  Check if an SearchRequest satisfies integrity and consistency requirements.
+        1.  Check if a SearchRequest satisfies integrity and consistency requirements.
 
     Attributes:
-         toolkit: SearchRequestToolkit[T]
+         utility: SearchPermissionUtility[T]
 
     Provides:
         -   execute(self, request: T) -> AuthorizationDecision
@@ -40,16 +39,16 @@ class SearchAuthorizer(CrudAuthorizer[T], ABC, Generic[T]):
         CrudAuthorizer
     """
     
-    def __init__(self, utility: SearchRequestToolkit[T]):
+    def __init__(self, utility: SearchPermissionUtility[T]):
         """
         Args:
-             utility: SearchRequestToolkit[T]
+             utility: SearchPermissionUtility[T]
         """
         super().__init__(utility=utility)
         
     @property
-    def ruleset(self) -> con:
-        return cast(SearchRequestToolkit[T], super().ruleset)
+    def utility(self) -> SearchPermissionUtility[T]:
+        return cast(SearchPermissionUtility[T], super().utility)
     
     @abstractmethod
     @LoggingLevelRouter.monitor
