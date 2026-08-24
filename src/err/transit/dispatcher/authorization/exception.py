@@ -1,7 +1,7 @@
-# src/err/transit/exception.py
+# src/err/transit/dispatcher/exception.py
 
 """
-Module: err.transit.exception
+Module: err.transit.dispatcher.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ChessException
+from err import DispatcherException
 from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# TRANSIT_ERROR #======================#
-    "TransitObjectException",
+    # ======================# AUTHORIZATION_DISPATCHER_FAILURE #======================#
+    "AuthorizationDispatcherException",
 ]
 
-# ======================# TRANSIT_ERROR #======================#
-class TransitObjectException(ChessException):
+# ======================# AUTHORIZATION_DISPATCHER_FAILURE #======================#
+class AuthorizationDispatcherException(DispatcherException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a TransitObject encountered an error.
+        1.  Indicating an error prevented the AuthorizationDispatcher from working.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class TransitObjectException(ChessException):
     Provides:
 
     Super Class:
-        ChessException
+        DispatcherException
     """
-    MSG = "TransitObject error."
-    ERR_CODE = "TRANSIT_ERROR"
+    MSG = "AuthorizationDispatcher failure."
+    ERR_CODE = "AUTHORIZATION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

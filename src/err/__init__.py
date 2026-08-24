@@ -53,6 +53,7 @@ from .tester import *
 from .timeout import *
 from .toolkit import *
 from .transaction import *
+from .transit import *
 from .util import *
 
 # Modules

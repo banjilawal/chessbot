@@ -10,7 +10,7 @@ version: 1.0.0
 # =========== ERR.TRANSIT.DISPATCHER PACKAGE ===========#
 
 # Packages
-
+from .authorization import *
 
 # Modules
 from .exception import DispatcherException

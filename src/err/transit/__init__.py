@@ -13,4 +13,4 @@ version: 1.0.0
 from .dispatcher import *
 
 # Modules
-from .exception import TransitException
+from .exception import TransitObjectException
