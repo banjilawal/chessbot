@@ -14,7 +14,7 @@ from typing import Any, Optional, cast
 from assurance import ModelIntegrityChecker, VectorValidationBundle
 from domain import Vector, VectorBlueprint, VectorCarrier
 from err import VectorIntegrityCheckerException
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from util import LoggingLevelRouter
 
 

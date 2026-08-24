@@ -16,7 +16,7 @@ from err import TokenCollisionDetectorException
 from microservice import IdentityService
 from domain.model import Token
 from artifcat.report import CollisionReport
-from artifcat.result import AnalysisResult
+from artifcat import AnalysisResult
 from collection.stack import TokenStackService
 from util import LoggingLevelRouter
 from assurance.validator import PrimingValidator

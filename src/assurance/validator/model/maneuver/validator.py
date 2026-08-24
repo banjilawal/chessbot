@@ -14,7 +14,7 @@ from typing import Any, cast
 from err import ManeuverValidatorException
 from domain.model import Maneuver
 from assurance import ManeuverIntegrityChecker
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from assurance import ManeuverIntegrityChecker
 from util import LoggingLevelRouter
 

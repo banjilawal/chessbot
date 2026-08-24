@@ -14,7 +14,7 @@ from typing import Any, Dict, cast
 from err import BoardTeamBinderNullException, BoardTeamBinderValidatorException
 from domain.model import BoardBinder, Schema, Team
 from checker.validator.binder.validator import SchemaHashtableValidator
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from util import LoggingLevelRouter
 from assurance import BoardTeamBinderIntegrityChecker
 

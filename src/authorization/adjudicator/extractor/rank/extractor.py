@@ -15,7 +15,7 @@ from assurance import PrimingValidator
 from domain.metadata.blueprint import TokenBlueprint
 from err import BlueprintRankExtractorException, TokenBlueprintNullException
 from microservice import RankService
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from authorization.adjudicator import Extractor
 from util import LoggingLevelRouter
 

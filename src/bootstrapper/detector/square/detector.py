@@ -17,7 +17,7 @@ from err import (
 )
 from domain.model import Square
 from artifcat.report import CollisionReport
-from artifcat.result import AnalysisResult
+from artifcat import AnalysisResult
 from collection.stack import SquareStackService
 from util import LoggingLevelRouter
 

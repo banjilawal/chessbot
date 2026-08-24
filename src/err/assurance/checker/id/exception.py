@@ -12,16 +12,16 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import IntegrityCheckerException
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 
 
 __all__ = [
     # ======================# ID_INTEGRITY_CHECKER_FAILURE #======================#
-    "BlueprintIdValidatorException",
+    "BlueprintIdValidatorExceptionIntegrity",
 ]
 
 # ======================# ID_INTEGRITY_CHECKER_FAILURE #======================#
-class BlueprintIdValidatorException(IntegrityCheckerException):
+class BlueprintIdValidatorExceptionIntegrity(IntegrityCheckerException):
     """
     Role:
         -   Error Tracing

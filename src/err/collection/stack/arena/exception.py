@@ -18,7 +18,7 @@ __all__ = [
     "ArenaStackServiceException",
 ]
 
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 
 
 # ======================# ARENA_STACK_SERVICE_ERROR #======================#

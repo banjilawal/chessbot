@@ -20,7 +20,7 @@ from domain.model import Maneuver, Path, Square
 from domain.structure.register import SquareRegister
 from artifcat.report import ManeuverRequestDecision
 from domain.exchange.request import ManeuverRequest
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 from operation.toolkit import TokenManeuverToolkit
 from util import IdFactory, LoggingLevelRouter
 

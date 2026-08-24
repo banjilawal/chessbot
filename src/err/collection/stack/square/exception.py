@@ -18,7 +18,7 @@ __all__ = [
     "SquareStackServiceException",
 ]
 
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 
 
 # ======================# SQUARE_STACK_SERVICE_ERROR #======================#

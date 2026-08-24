@@ -12,7 +12,7 @@ from __future__ import annotations
 from domain.model import Graph, Player
 from operation import ManeuverLauncher
 from artifcat.report import ManeuverRequestDecision
-from artifcat.result import TurnResult
+from artifcat import TurnResult
 from util import LoggingLevelRouter
 
 

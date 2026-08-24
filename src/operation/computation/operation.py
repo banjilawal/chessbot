@@ -14,7 +14,7 @@ from typing import Generic, TypeVar, cast
 
 from authorization import ComputationPermitter, ComputationRequest
 from operation import Operator
-from artifcat.result import ComputationResult
+from artifcat import ComputationResult
 from util import LoggingLevelRouter
 
 

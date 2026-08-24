@@ -13,7 +13,7 @@ from typing import List
 
 from domain.model import Arena
 from domain.model import ArenaQuery
-from artifcat.result import SearchResult
+from artifcat import SearchResult
 from transit.router import Router
 from system import LoggingLevelRouter
 

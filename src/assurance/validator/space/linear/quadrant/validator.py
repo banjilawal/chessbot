@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from space import QuadrantTraversalPattern
 from util import LoggingLevelRouter
 from assurance.validator import LinearSpaceValidator

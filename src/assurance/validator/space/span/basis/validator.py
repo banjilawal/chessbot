@@ -13,7 +13,7 @@ from abc import abstractmethod
 from typing import Any, Generic
 from typing_extensions import TypeVar
 
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from assurance.validator import SpanValidator
 
 

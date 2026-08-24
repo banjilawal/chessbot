@@ -15,7 +15,7 @@ from domain.metadata.blueprint import NortheastQuadrantBlueprint
 from err import NortheastQuadrantCarrierNullException, NortheastQuadrantRootCheckerException
 from carrier import NortheastQuadrantCarrier
 from domain.model import Vector
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from assurance.checker import QuadrantRootChecker
 from space import NortheastQuadrant
 from operation.toolkit.geometry.space.quadrant.northeast import NortheastQuadrantToolkit

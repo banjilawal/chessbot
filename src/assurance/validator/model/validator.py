@@ -14,7 +14,7 @@ from typing import Any, cast
 
 from assurance import ModelIntegrityChecker, Validator
 from domain.model import Model
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from util import LoggingLevelRouter
 
 

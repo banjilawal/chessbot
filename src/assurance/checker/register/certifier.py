@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from assurance.checker import Checker
 from operation.toolkit import RegisterToolkit
 from util import LoggingLevelRouter

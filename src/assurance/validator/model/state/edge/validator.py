@@ -14,7 +14,7 @@ from typing import Any, cast
 from err import EdgeValidatorException
 from domain.model import Edge
 from assurance import EdgeIntegrityChecker
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from util import LoggingLevelRouter
 from assurance.validator import ModelValidator
 

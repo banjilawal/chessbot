@@ -13,7 +13,7 @@ from sensor.analyzer import Analyzer
 from err import EnemyKingAnalyzerException, TokenNullException
 from domain.model import KingToken
 from artifcat.report import FriendshipStatus
-from artifcat.result import Result
+from artifcat import Result
 from operation.toolkit import TokenToolkit
 from util import LoggingLevelRouter
 from assurance.validator import TokenValidator

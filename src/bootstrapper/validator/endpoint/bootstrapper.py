@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from bootstrapper import ValidatorBootstrapper
 from domain.model import Path, Square, Token
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from util import LoggingLevelRouter
 from assurance.validator import TokenDestinationCertifier, TokenOriginCertifier
 

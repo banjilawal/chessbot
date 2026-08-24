@@ -15,7 +15,7 @@ from typing import Generic, TypeVar, cast
 from authorization import CrudAuthorizer
 from domain import CrudRequest
 from operation import Operator
-from artifcat.result import CrudResult
+from artifcat import CrudResult
 from util import LoggingLevelRouter
 
 

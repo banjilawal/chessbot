@@ -18,7 +18,7 @@ __all__ = [
     "TokenStackServiceException",
 ]
 
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 
 
 # ======================# TOKEN_STACK_SERVICE_ERROR #======================#

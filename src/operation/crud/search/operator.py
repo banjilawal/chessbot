@@ -15,7 +15,7 @@ from typing import Generic, TypeVar, cast
 from authorization import SearchAuthorizer
 from domain import SearchRequest
 from operation import CrudOperator
-from artifcat.result import SearchResult
+from artifcat import SearchResult
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="SearchRequest")

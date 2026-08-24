@@ -14,7 +14,7 @@ from typing import Generic, TypeVar, cast
 
 
 from operation import Operator
-from artifcat.result import InsertionResult
+from artifcat import InsertionResult
 from util import LoggingLevelRouter
 
 

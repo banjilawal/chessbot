@@ -15,7 +15,7 @@ from bootstrapper import AnalyzerBootstrapper
 from err import ReadinessAnalyzerBootstrapperException
 from domain.model import CombatantToken, KingToken, Token
 from artifcat.report import TokenReadinessReport
-from artifcat.result import AnalysisResult
+from artifcat import AnalysisResult
 from operation.toolkit import ReadinessAnalyzerBootstrapperToolkit
 from util import LoggingLevelRouter
 

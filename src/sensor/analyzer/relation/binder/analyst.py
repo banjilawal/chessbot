@@ -18,7 +18,7 @@ from microservice import BoardService
 from domain.model import Board, BoardBinder
 from operation import BoardTeamBinderValidator
 from artifcat.report import RelationReport
-from artifcat.result import AnalysisResult
+from artifcat import AnalysisResult
 from system import LoggingLevelRouter
 
 

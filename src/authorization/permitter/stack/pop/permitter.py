@@ -14,7 +14,7 @@ from err import PopRequestNullException, PopperPermitterException
 from authorization.permitter.stack import OperationPermitter
 from artifcat.report import PopApprovalReport
 from domain.exchange.request import PopRequest
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from util import LoggingLevelRouter
 
 

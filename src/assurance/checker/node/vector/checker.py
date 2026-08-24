@@ -14,7 +14,7 @@ from typing import cast
 from assurance import NodeIntegrityChecker, VectorNodeValidationBundle
 from fabrication import VectorNodeBlueprint
 from domain.structure.node import VectorNode
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from transit.carrier import VectorNodeCarrier
 from util import LoggingLevelRouter
 

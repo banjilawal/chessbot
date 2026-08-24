@@ -15,7 +15,7 @@ from domain.metadata.blueprint import ScalarBlueprint
 from fabrication.builder import ModelBuilder
 from err import ScalarBuilderException
 from domain.model import Scalar
-from artifcat.result import BuildResult, MethodResultType
+from artifcat import BuildResult, MethodResultType
 from operation.toolkit import ScalarBuilderToolkit
 from util import LoggingLevelRouter
 

@@ -19,7 +19,7 @@ __all__ = [
     "ToolkitFactoryException",
 ]
 
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 
 # ======================# TOOLKIT_FACTORY_ERROR #======================#
 class ToolkitFactoryException(FactoryException):

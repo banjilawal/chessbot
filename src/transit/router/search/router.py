@@ -14,7 +14,7 @@ from typing import List, TypeVar, Generic
 
 from operation import Validator
 from domain.model import Query
-from artifcat.result import SearchResult
+from artifcat import SearchResult
 from transit.router import Router
 
 T = TypeVar("T")

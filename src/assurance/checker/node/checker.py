@@ -14,7 +14,7 @@ from typing import Any, cast
 
 from assurance import IntegrityChecker, NodeValidationBundle
 from domain.structure.node import Node
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from util import LoggingLevelRouter
 
 

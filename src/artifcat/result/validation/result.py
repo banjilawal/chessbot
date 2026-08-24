@@ -9,8 +9,8 @@ version: 0.0.2
 from __future__ import annotations
 from typing import Generic, Optional, TypeVar, cast
 
-from artifcat.result import Result
-from artifcat.result.validation import ValidationState
+from artifcat import Result
+from artifcat.validation import ValidationState
 
 T = TypeVar("T")
 

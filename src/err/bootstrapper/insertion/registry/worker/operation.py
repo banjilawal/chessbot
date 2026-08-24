@@ -11,7 +11,7 @@ from __future__ import annotations
 
 
 from domain.model import WorkerRegistry
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from util import LoggingLevelRouter
 from transit.controller import WorkerRegistryController
 from err import NewWorkerRegistrationException, OperationNullException, RegistryKeyCollisionException

@@ -13,7 +13,7 @@ from typing import List
 
 from domain.model import Token
 from domain.model import SquareQuery
-from artifcat.result import SearchResult
+from artifcat import SearchResult
 from system import LoggingLevelRouter
 
 

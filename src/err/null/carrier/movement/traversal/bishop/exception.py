@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import TraversalPatternCarrierNullException
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 
 __all__ = [
     # ======================# BISHOP_TRAVERSAL_PATTERN_CARRIER_NULL_ERROR #======================#

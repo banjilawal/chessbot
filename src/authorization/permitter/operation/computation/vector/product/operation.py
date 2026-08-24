@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from transit.controller import WorkerRegistryController
-from artifcat.result import ComputationResult
+from artifcat import ComputationResult
 from util import LoggingLevelRouter
 from err import ScalarProductException
 from domain.model import Coord, CoordBlueprint, OperandCategory, Vector, VectorBlueprint, VectorToggle, Scalar

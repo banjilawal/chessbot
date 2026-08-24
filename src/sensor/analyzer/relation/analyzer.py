@@ -13,7 +13,7 @@ from typing import Generic, TypeVar
 
 from sensor.analyzer import Analyzer
 from artifcat.report import RelationReport
-from artifcat.result import AnalysisResult
+from artifcat import AnalysisResult
 from util import LoggingLevelRouter
 
 P = TypeVar("P")

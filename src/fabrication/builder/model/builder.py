@@ -13,7 +13,7 @@ from abc import abstractmethod
 from typing import Generic, TypeVar, cast
 
 from domain.metadata.blueprint import ModelBlueprint
-from artifcat.result import BuildResult
+from artifcat import BuildResult
 from util import LoggingLevelRouter
 from fabrication.builder import Builder
 from operation.toolkit import ModelBuilderToolkit

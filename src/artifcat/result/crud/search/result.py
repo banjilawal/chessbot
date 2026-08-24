@@ -10,7 +10,7 @@ from __future__ import annotations
 from typing import Generic, List, Optional, TypeVar, cast
 
 from domain import DomainObject
-from artifcat.result import CrudResult, SearchState
+from artifcat import CrudResult, SearchState
 
 T = TypeVar("T", bound="DomainObject")
 

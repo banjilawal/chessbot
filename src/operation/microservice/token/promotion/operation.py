@@ -16,7 +16,7 @@ from err import PawnPromoterException
 from domain.model import PawnToken, PromotionState, Rank
 from authorization.permitter import PromotionPermitter
 from artifcat.report import PromotionRequestDecision
-from artifcat.result import MethodResultType, UpdateResult
+from artifcat import MethodResultType, UpdateResult
 from util import LoggingLevelRouter
 
 

@@ -16,7 +16,7 @@ from transit.controller.stack.token.controller import TokenStackController
 from err import TokenStackServiceException
 from microservice import TokenService
 from domain.model import Token, TokenContext, TokenQuery
-from artifcat.result import DeletionResult, InsertionResult, SearchResult
+from artifcat import DeletionResult, InsertionResult, SearchResult
 from collection.stack import StackService, TokenStackState
 from system import IdFactory, LoggingLevelRouter
 

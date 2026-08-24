@@ -14,7 +14,7 @@ from typing import Optional, Type, TypeVar, cast
 from collection import VectorSet, VectorTree
 from err import TopologyGeneratorException, VectorSetNullException
 from domain.model import Vector
-from artifcat.result import ComputationResult, MethodResultType
+from artifcat import ComputationResult, MethodResultType
 from operation.toolkit import MathToolkit
 from topology import Topology
 from util import LoggingLevelRouter

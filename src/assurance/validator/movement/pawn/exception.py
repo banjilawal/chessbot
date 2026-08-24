@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import OffsetPatternValidatorException
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 
 __all__ = [
     # ======================# PAWN_OFFSET_PATTERN_VALIDATOR_FAILURE #======================#

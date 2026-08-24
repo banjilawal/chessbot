@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from domain.metadata.blueprint import NortheastQuadrantBlueprint
 
-from artifcat.result import BuildResult
+from artifcat import BuildResult
 from fabrication.assembler import QuadrantAssembler
 from assurance.checker import NortheastQuadrant
 from util import  LoggingLevelRouter

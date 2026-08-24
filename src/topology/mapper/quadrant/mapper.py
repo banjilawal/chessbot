@@ -14,7 +14,7 @@ from typing import Generic, TypeVar, cast
 from err import QuadrantMappingFunctionException
 from topology.mapper import SpaceMappingFunction
 from domain.model import Vector
-from artifcat.result import ComputationResult, MethodResultType
+from artifcat import ComputationResult, MethodResultType
 
 from util import LoggingLevelRouter
 

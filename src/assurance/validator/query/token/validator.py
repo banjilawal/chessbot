@@ -15,7 +15,7 @@ from err import (
     TokenStackNullException
 )
 from domain.model import TokenQuery
-from artifcat.result import MethodResultType, ValidationResult
+from artifcat import MethodResultType, ValidationResult
 from collection.stack import TokenStackService
 from util import LoggingLevelRouter
 from assurance.validator import TokenContextValidator, PrimingValidator, Validator

@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 from typing import Generic, Optional, TypeVar, cast
 
-from artifcat.result import CrudResult, DeletionState
+from artifcat import CrudResult, DeletionState
 
 T = TypeVar("T")
 

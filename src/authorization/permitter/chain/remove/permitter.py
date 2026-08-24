@@ -14,7 +14,7 @@ from err import RemoveRequestNullException, RemoveperPermitterException
 from authorization.permitter.chain import ChainOperationPermitter
 from artifcat.report import RemoveApprovalReport
 from domain.exchange.request import RemoveRequest
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from util import LoggingLevelRouter
 
 

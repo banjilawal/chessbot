@@ -15,7 +15,7 @@ from artifcat.report import RelationReport
 from sensor.analyzer import RelationAnalyzer
 from util import LoggingLevelRouter
 from err import BoardTeamRelationAnalysisException
-from artifcat.result import AnalysisResult, MethodResultType
+from artifcat import AnalysisResult, MethodResultType
 from assurance.validator import BoardValidator, TeamValidator
 
 

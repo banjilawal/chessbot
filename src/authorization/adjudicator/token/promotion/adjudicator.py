@@ -20,7 +20,7 @@ from err import PromotionRequestNullException
 from microservice import IdentityService
 from domain.model import Pawn
 from artifcat.report import PromotionRequestDecision
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 from util import LoggingLevelRouter
 
 

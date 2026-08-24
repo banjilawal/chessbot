@@ -15,7 +15,7 @@ from domain.metadata.blueprint import VectorRegisterBlueprint
 from fabrication.builder import RegisterBuilder
 from err import VectorRegisterBuilderException
 from domain.structure.register import VectorRegister
-from artifcat.result import BuildResult, MethodResultType
+from artifcat import BuildResult, MethodResultType
 from util import LoggingLevelRouter
 
 

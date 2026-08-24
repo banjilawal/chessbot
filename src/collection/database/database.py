@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, List, Optional, TypeVar
 
 from microservice import Microservice
-from artifcat.result import DeletionResult, InsertionResult
+from artifcat import DeletionResult, InsertionResult
 from system import LoggingLevelRouter
 
 T = TypeVar("T")

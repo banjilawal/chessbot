@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from domain.structure.register import IdentityRegister
 from assurance.checker import Checker
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from operation.toolkit import IdentityRegisterToolkit
 from util import LoggingLevelRouter
 

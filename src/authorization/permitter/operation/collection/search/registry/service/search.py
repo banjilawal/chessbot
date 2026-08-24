@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import List
 
 from err import ServiceRegistrySearchException
-from artifcat.result import SearchResult
+from artifcat import SearchResult
 from domain.model import ServiceRegistry
 from util import LoggingLevelRouter
 from transit.controller import ServiceRegistryController

@@ -18,7 +18,7 @@ __all__ = [
     "NodeStackServiceException",
 ]
 
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 
 
 # ======================# NODE_STACK_SERVICE_ERROR #======================#

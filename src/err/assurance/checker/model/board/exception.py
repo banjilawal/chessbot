@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import ModelIntegrityCheckerException
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 
 
 __all__ = [
@@ -44,7 +44,7 @@ class BoardIntegrityCheckerException(ModelIntegrityCheckerException):
     Super Class:
         ModelIntegrityCheckerException
     """
-    MSG = "BoardIntegrityChecker failure."
+    MSG = "BoardChecker failure."
     ERR_CODE = "BOARD_INTEGRITY_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(

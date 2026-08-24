@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from domain.model import Vector
 from domain.structure.register import VectorRegister
-from artifcat.result import BuildResult
+from artifcat import BuildResult
 from domain.schema.terminus.quadrant import QuadrantTerminus
 from util import LoggingLevelRouter
 from assurance.validator import VectorValidator

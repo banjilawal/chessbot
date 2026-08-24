@@ -13,7 +13,7 @@ from typing import Generic, Type, TypeVar, cast
 
 from collection import DomainObjectCollection
 from err import CollectionNullException, RequestNullException
-from artifcat.result import InsertionResult
+from artifcat import InsertionResult
 from operation.toolkit import PermissionRuleset
 
 T = TypeVar("T", bound="DomainObjectCollection")

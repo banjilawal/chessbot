@@ -14,7 +14,7 @@ from typing import Any, List, cast
 from domain.metadata.blueprint import SouthAxisBlueprint
 from carrier import SouthAxisCarrier
 from domain.model import Vector
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from assurance.checker import AxisRootChecker
 from space import SouthAxis
 from operation.toolkit.geometry.space.axis import SouthAxisToolkit

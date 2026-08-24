@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import ToggleIntegrityCheckerException
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 
 
 __all__ = [
@@ -44,7 +44,7 @@ class GameToggleCheckerException(ToggleIntegrityCheckerException):
     Super Class:
         ToggleCheckerException
     """
-    MSG = "Game IntegrityChecker failure."
+    MSG = "GameChecker failure."
     ERR_CODE = "GAME_TOGGLE_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(

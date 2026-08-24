@@ -14,7 +14,7 @@ from typing import Generic, TypeVar, cast
 
 from collection import DomainObjectCollection
 from domain import CrudRequest, DomainObject, SearchContext
-from artifcat.result import SearchResult
+from artifcat import SearchResult
 
 
 T = TypeVar("T", bound="DomainObject")

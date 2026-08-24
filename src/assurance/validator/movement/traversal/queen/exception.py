@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import TraversalPatternValidatorException
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 
 __all__ = [
     # ======================# QUEEN_TRAVERSAL_PATTERN_VALIDATOR_FAILURE #======================#

@@ -15,7 +15,7 @@ from domain.metadata.blueprint import TokenBlueprint
 from fabrication.builder import ModelBuilder
 from err import TokenBuilderException
 from domain.model import Token
-from artifcat.result import BuildResult, MethodResultType
+from artifcat import BuildResult, MethodResultType
 from operation.toolkit import TokenBuilderToolkit
 from util import LoggingLevelRouter
 

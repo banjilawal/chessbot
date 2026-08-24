@@ -16,7 +16,7 @@ from priming_validator import DeletionRequestPriming_Validator, PrimingValidator
 from err import TokenStackNullException
 from microservice import IdentityService
 from domain.exchange.request import CollectionDeletionRequest
-from artifcat.result import MethodResultType, ValidationResult
+from artifcat import MethodResultType, ValidationResult
 from collection.stack import TokenStackService
 from authorization.adjudicator import DeletionRequestAdjudicator
 from util import LoggingLevelRouter

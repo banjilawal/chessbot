@@ -13,7 +13,7 @@ from typing import Any, cast
 from transit.controller import WorkerRegistryController
 from domain.model import Team
 from operation.toolkit import TeamToolkit
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from util import LoggingLevelRouter
 from err import SchemaNullException, TeamNullException, TeamConsistencyAuditorException
 from assurance.auditor import  ConsistencyAuditor

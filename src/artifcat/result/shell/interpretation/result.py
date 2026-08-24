@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from typing import Generic, Optional, TypeVar, cast
 
-from artifcat.result import InterpretationState, ShellResult
+from artifcat import InterpretationState, ShellResult
 
 T = TypeVar("T", bound="OperationRequest")
 

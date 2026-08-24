@@ -15,7 +15,7 @@ from err import (
     OpeningSquareCollisionException,TokenIdCollisionException, TokenNameCollisionException
 )
 from artifcat.report import CollisionReport
-from artifcat.result import AnalysisResult
+from artifcat import AnalysisResult
 from collection.stack import TokenStackService
 from util import LoggingLevelRouter
 

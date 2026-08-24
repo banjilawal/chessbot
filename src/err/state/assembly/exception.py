@@ -18,7 +18,7 @@ __all__ = [
     "AssemblyException",
 ]
 
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 
 
 # ======================# ASSEMBLY_FAILURE #======================#

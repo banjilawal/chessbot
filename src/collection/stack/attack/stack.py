@@ -17,7 +17,7 @@ from transit.controller import AttackStackOpsController
 from event import AttackEvent
 from microservice import IdentityService, AttackService
 from domain.model import Attack, AttackContext
-from artifcat.result import DeletionResult, InsertionResult, SearchResult
+from artifcat import DeletionResult, InsertionResult, SearchResult
 from collection.stack import StackService, AttackStackState
 from system import IdFactory, LoggingLevelRouter
 

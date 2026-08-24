@@ -19,7 +19,7 @@ from err import (
 )
 from microservice import IdentityService
 from domain.model import HomeSquare, SquareContext
-from artifcat.result import Result
+from artifcat import Result
 from util import LoggingLevelRouter
 from assurance.validator import BoardValidator, TokenValidator
 

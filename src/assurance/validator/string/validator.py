@@ -13,7 +13,7 @@ from transit.controller import WorkerRegistryController
 from err import StringEmptyException, StringValidatorException
 from err.null.string import StringNullException
 from operation import Validator
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from util import LoggingLevelRouter
 
 

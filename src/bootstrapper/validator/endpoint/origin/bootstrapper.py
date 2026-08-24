@@ -15,7 +15,7 @@ from bootstrapper import ValidatorBootstrapper
 from err import OriginCertifierBootstrapperException, TokenOriginRelationNullException
 from domain.model import Square, Token
 from artifcat.report import RelationReport
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from operation.toolkit import TokenEndpointRelationToolkit
 from util import LoggingLevelRouter
 

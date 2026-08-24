@@ -13,7 +13,7 @@ from abc import abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from assurance.checker import Checker
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from operation.toolkit import ToggleToolkit
 from util import LoggingLevelRouter
 

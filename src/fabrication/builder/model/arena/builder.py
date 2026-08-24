@@ -15,7 +15,7 @@ from domain.metadata.blueprint import ArenaBlueprint
 from fabrication.builder import ModelBuilder
 from err import ArenaBuilderException
 from domain.model import Arena
-from artifcat.result import BuildResult, MethodResultType
+from artifcat import BuildResult, MethodResultType
 from operation.toolkit import ArenaBuilderToolkit
 from util import LoggingLevelRouter
 

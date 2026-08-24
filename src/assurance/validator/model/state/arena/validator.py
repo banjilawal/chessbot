@@ -14,7 +14,7 @@ from typing import Any, cast
 from err import ArenaValidatorException
 from domain.model import Arena
 from assurance import ArenaIntegrityChecker
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from util import LoggingLevelRouter
 from assurance.validator import ModelValidator
 

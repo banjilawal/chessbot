@@ -14,7 +14,7 @@ from typing import Generic, Optional, TypeVar
 
 from domain.metadata.blueprint import Blueprint
 from artifcat.report import CollisionReport
-from artifcat.result import AnalysisResult
+from artifcat import AnalysisResult
 from collection.stack import StackService
 from util import LoggingLevelRouter
 

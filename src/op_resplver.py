@@ -10,7 +10,7 @@ from __future__ import annotations
 from enum import Enum
 from typing import Any, Union
 
-from artifcat.result import AnalysisResult, BuildResult, ComputationResult, DeletionResult, InsertionResult, Result, SearchResult
+from artifcat import AnalysisResult, BuildResult, ComputationResult, DeletionResult, InsertionResult, Result, SearchResult
 from util import logging
 
 

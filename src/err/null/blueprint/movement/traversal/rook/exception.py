@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import TraversalPatternBlueprintNullException
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 
 __all__ = [
     # ======================# ROOK_TRAVERSAL_PATTERN_BLUEPRINT_NULL_ERROR #======================#

@@ -15,7 +15,7 @@ from domain.metadata.blueprint import PlayerBlueprint
 from fabrication.builder import ModelBuilder
 from err import PlayerBuilderException
 from domain.model import Player
-from artifcat.result import BuildResult, MethodResultType
+from artifcat import BuildResult, MethodResultType
 from operation.toolkit import PlayerBuilderToolkit
 from util import LoggingLevelRouter
 

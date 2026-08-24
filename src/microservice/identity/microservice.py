@@ -13,7 +13,7 @@ from typing import Any, cast
 from domain.metadata.blueprint import Blueprint
 from err import IdentityServiceException
 from domain.model import IdentityRegister
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from authorization.adjudicator import BlueprintIdExtractor
 from util import IdFactory, LoggingLevelRouter
 from assurance.validator import IdentityRegisterCertifier, NameValidator, NumberValidator

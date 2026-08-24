@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from domain.metadata.blueprint import ScalarBlueprint
 from domain.model import Scalar
-from artifcat.result import BuildResult
+from artifcat import BuildResult
 from fabrication.assembler import ModelAssembler
 from util import LoggingLevelRouter
 

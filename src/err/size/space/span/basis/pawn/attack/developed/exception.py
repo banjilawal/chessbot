@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import AttackBasisSizeException
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 
 
 __all__ = [

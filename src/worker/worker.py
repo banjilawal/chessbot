@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import TypeVar
 
-from artifcat.result import Result
+from artifcat import Result
 from system import LoggingLevelRouter
 
 T = TypeVar("T")

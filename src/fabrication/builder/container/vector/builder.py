@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from fabrication.builder import ContainerBuilder
 from collection import VectorSet
-from artifcat.result import BuildResult
+from artifcat import BuildResult
 from util import LoggingLevelRouter
 from assurance.validator import VectorValidator
 

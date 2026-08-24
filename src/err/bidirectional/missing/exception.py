@@ -19,7 +19,7 @@ __all__ = [
     "MissingRegistrationException",
 ]
 
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 
 
 # ======================# MISSING_REGISTRATION_ERROR #======================#

@@ -15,7 +15,7 @@ from err import ManeuverPermitterException
 
 from artifcat.report import ManeuverRequestDecision
 from domain.exchange.request import ManeuverRequest
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 from authorization.adjudicator import ManeuverRequestAdjudicator
 from util import LoggingLevelRouter
 

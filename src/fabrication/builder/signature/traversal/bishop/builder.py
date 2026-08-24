@@ -14,7 +14,7 @@ from err.null.recurrence.group import BishopRecurrenceSeriesNullException
 from domain.model import Bishop
 from topology.pattern import TraversalTopologyGenerator, TraversalSignature
 from topology.recurrence import BishopRecurrenceRegistries
-from artifcat.result import ComputationResult
+from artifcat import ComputationResult
 from util import LoggingLevelRouter
 from assurance.validator import PrimingValidator
 

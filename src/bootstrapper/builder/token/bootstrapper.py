@@ -17,7 +17,7 @@ from err import (
 )
 from domain.model import SquareContext, Token
 from artifcat.report import TokenReadinessReport
-from artifcat.result import MethodResultType, SearchResult
+from artifcat import MethodResultType, SearchResult
 from operation.crud.search import TokenTokenBuilder
 from util import LoggingLevelRouter
 

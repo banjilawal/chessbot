@@ -14,7 +14,7 @@ from typing import Generic, TypeVar, cast
 
 from domain.metadata.blueprint import AxisBlueprint
 from fabrication.builder import SpaceBuilder
-from artifcat.result import BuildResult
+from artifcat import BuildResult
 from operation.toolkit import AxisBuilderToolkit
 from util import LoggingLevelRouter
 

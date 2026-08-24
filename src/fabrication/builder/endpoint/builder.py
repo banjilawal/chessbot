@@ -13,7 +13,7 @@ from typing import Generic, TypeVar
 
 from fabrication.builder import Builder
 from domain.structure.register import VectorRegister
-from artifcat.result import BuildResult
+from artifcat import BuildResult
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="TraversalPattern")

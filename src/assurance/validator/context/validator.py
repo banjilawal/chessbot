@@ -36,7 +36,7 @@ class ContextValidator(Validator[T], ABC, Generic[T]):
         integrity_checker: ContextIntegrityChecker[T]
         
     Provides:
-        -   execute(self, candidate: Any) -> ValidationResult
+        -   execute(self, candidate: Any) -> ValidationResult[T]
 
     Super Class:
         Validator

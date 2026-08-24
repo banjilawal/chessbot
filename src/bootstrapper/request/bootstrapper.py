@@ -10,7 +10,7 @@ version: 0.0.2
 from typing import Any, Type
 
 from err import NullException
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from util import LoggingLevelRouter
 from assurance.validator import PrimingValidator
 

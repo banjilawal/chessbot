@@ -18,7 +18,7 @@ from err import (
 )
 from domain.model import Coord, Vector
 from assurance.checker import ToggleChecker
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from domain.structure.toggle import CartesianToggle
 from operation.toolkit import VectorToggleToolkit
 from util import LoggingLevelRouter

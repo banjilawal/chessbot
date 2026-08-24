@@ -14,7 +14,7 @@ from typing import Any, Generic, TypeVar
 
 from assurance import SearchContextChecker
 from domain import StackSearchContext
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="StackSearchContext")

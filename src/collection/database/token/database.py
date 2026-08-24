@@ -14,7 +14,7 @@ from sensor.analyzer import CollisionReport
 from collection.database import Database
 from microservice import IdentityService, RankService, TokenService
 from domain.model import Rank, Token, TokenBlueprint
-from artifcat.result import AnalysisResult, ComputationResult, DeletionResult
+from artifcat import AnalysisResult, ComputationResult, DeletionResult
 from collection.stack import TokenStackService
 from system import IdFactory, LoggingLevelRouter
 

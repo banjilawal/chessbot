@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import IntegrityCheckerException
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 
 
 __all__ = [
@@ -44,7 +44,7 @@ class RegisterIntegrityCheckerException(IntegrityCheckerException):
     Super Class:
         CheckerException
     """
-    MSG = "Register IntegrityChecker failure."
+    MSG = "RegisterChecker failure."
     ERR_CODE = "REGISTER_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(

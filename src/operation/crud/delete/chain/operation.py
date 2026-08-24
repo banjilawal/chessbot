@@ -15,7 +15,7 @@ from typing import Generic, TypeVar, cast
 from authorization import RemoveNodeRequest
 from collection import Chain
 from operation import CollectionDeletion
-from artifcat.result import DeletionResult
+from artifcat import DeletionResult
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Node")

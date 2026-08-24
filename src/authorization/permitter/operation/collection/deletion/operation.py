@@ -14,7 +14,7 @@ from typing import Generic, TypeVar, cast
 
 from authorization import CollectionDeletionRequest
 from operation import CrudOperator
-from artifcat.result import DeletionResult
+from artifcat import DeletionResult
 from util import LoggingLevelRouter
 
 

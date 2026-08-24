@@ -14,6 +14,7 @@ from .excess import *
 from .id import *
 from .model import *
 from .register import *
+from .search import *
 from .space import *
 from .toggle import *
 from .zero import *

@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from domain.metadata.blueprint import ItineraryBlueprint
-from artifcat.result import BuildResult
+from artifcat import BuildResult
 from fabrication.assembler import Assembler
 from util import  LoggingLevelRouter
 from domain.model import Itinerary

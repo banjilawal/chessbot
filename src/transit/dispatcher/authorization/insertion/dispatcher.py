@@ -17,7 +17,7 @@ from collection import DomainObjectCollection
 from transit.dispatcher import AuthorizationDispatcher
 from artifcat.report import AuthorizationDecision
 from domain.exchange.request import InsertionRequest
-from artifcat.result import InsertionResult
+from artifcat import InsertionResult
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="DomainObjectCollection")

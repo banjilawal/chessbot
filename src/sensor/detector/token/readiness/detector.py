@@ -13,7 +13,7 @@ from bootstrapper import ReadinessAnalyzerBootstrapper
 from err import TokenReadinessAnalyzerException
 from domain.model import Token
 from artifcat.report import TokenReadinessReport
-from artifcat.result import AnalysisResult
+from artifcat import AnalysisResult
 from util import LoggingLevelRouter
 
 

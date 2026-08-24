@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import AssuranceException
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 
 
 __all__ = [
@@ -27,7 +27,7 @@ class IntegrityCheckerException(AssuranceException):
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by an IntegrityChecker failed.
+        1.  Indicating assurance by anIntegrityChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -44,7 +44,7 @@ class IntegrityCheckerException(AssuranceException):
     Super Class:
         AssuranceException
     """
-    MSG = "IntegrityChecker failure."
+    MSG = "Checker failure."
     ERR_CODE = "INTEGRITY_CHECKER_FAILURE"
     MTHD_RSLT_TYPE = MethodResultType.VALIDATION_RESULT
     

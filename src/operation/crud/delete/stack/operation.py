@@ -17,7 +17,7 @@ from authorization import StackPopRequest
 f
 from collection import StackService
 from operation import CollectionDeletion
-from artifcat.result import DeletionResult
+from artifcat import DeletionResult
 from util import LoggingLevelRouter
 
 

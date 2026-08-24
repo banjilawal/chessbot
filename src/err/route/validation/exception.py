@@ -18,7 +18,7 @@ __all__ = [
     "NoValidationRouteException",
 ]
 
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 
 
 # ======================# VALIDATION_ROUTE #======================#

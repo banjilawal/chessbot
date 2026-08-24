@@ -8,7 +8,7 @@ version: 0.0.2
 """
 from microservice import PersonaService
 from domain.model import Rank
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from system import LoggingLevelRouter
 
 # =========== RANK PACKAGE ===========#

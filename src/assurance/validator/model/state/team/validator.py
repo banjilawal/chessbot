@@ -14,7 +14,7 @@ from typing import Any, cast
 from err import TeamValidatorException
 from domain.model import Team
 from assurance import TeamIntegrityChecker
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from util import LoggingLevelRouter
 from assurance.validator import ModelValidator
 

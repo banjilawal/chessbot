@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 
 
 __all__ = [
@@ -44,7 +44,7 @@ class ArenaToggleCheckerException(ToggleCheckerException):
     Super Class:
         ToggleCheckerException
     """
-    MSG = "Arena IntegrityChecker failure."
+    MSG = "ArenaChecker failure."
     ERR_CODE = "ARENA_TOGGLE_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(

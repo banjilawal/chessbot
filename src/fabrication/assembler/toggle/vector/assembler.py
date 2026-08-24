@@ -12,7 +12,7 @@ from __future__ import annotations
 from fabrication.assembler import ToggleAssembler
 from domain.metadata.blueprint.toggle import VectorToggleBlueprint
 
-from artifcat.result import BuildResult
+from artifcat import BuildResult
 from domain.structure.toggle import CartesianToggle
 from util import LoggingLevelRouter
 

@@ -15,7 +15,7 @@ from domain.metadata.blueprint import GameBlueprint
 from fabrication.builder import ModelBuilder
 from err import GameBuilderException
 from domain.model import Game
-from artifcat.result import BuildResult, MethodResultType
+from artifcat import BuildResult, MethodResultType
 from operation.toolkit import GameBuilderToolkit
 from util import LoggingLevelRouter
 

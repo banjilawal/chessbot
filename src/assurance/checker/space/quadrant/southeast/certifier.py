@@ -14,7 +14,7 @@ from typing import Any, List, cast
 from domain.metadata.blueprint import SoutheastQuadrantBlueprint
 from carrier import SoutheastQuadrantCarrier
 from domain.model import Vector
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from assurance.checker import QuadrantRootChecker
 from space import SoutheastQuadrant
 from operation.toolkit.geometry.space.quadrant import SoutheastQuadrantToolkit

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import OffsetSignatureNullException
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 
 __all__ = [
     # ======================# KNIGHT_OFFSET_PATTERN_NULL_ERROR #======================#

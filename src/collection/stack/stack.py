@@ -15,7 +15,7 @@ from typing import Generic, Iterator, List, Optional, TypeVar
 
 from collection import DomainObjectCollection
 from microservice import IdentityService, Microservice
-from artifcat.result import DeletionResult, InsertionResult, SearchResult
+from artifcat import DeletionResult, InsertionResult, SearchResult
 
 
 T = TypeVar("T", bound="StateModel")

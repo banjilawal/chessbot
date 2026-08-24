@@ -12,7 +12,7 @@ from typing import Any, cast
 
 from err import CoordCheckerException
 from domain.model import CoordBlueprint
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from config.setting import BoardProperty
 from operation.toolkit import CoordBlueprintToolkit
 from util import LoggingLevelRouter

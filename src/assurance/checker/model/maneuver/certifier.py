@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import ManeuverCheckerException
 from domain.model import Maneuver
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from operation.toolkit import ManeuverToolkit
 from util import LoggingLevelRouter
 

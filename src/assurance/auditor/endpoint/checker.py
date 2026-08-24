@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from err import ManeuverEndpointConsistencyCheckerException
 from domain.model import Square, Token
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from util import LoggingLevelRouter
 from assurance.auditor import  TokenDestinationCertifier, TokenOriginCertifier
 

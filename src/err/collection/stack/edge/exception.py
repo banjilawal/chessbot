@@ -18,7 +18,7 @@ __all__ = [
     "EdgeStackServiceException",
 ]
 
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 
 
 # ======================# EDGE_STACK_SERVICE_ERROR #======================#

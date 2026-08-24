@@ -16,7 +16,7 @@ from err import PawnDoublePromotionException, PawnPromotionRowException, Promote
 from err.analyzer.promotion import PromotionApprovalManagerException
 from domain.model import PawnToken
 from artifcat.report import PromotionApprovalManagerReport, TokenReadinessReport
-from artifcat.result import AnalysisResult, MethodResultType
+from artifcat import AnalysisResult, MethodResultType
 from util import LoggingLevelRouter
 from assurance.validator import TokenValidator
 

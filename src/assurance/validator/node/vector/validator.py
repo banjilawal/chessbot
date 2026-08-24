@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from assurance import NodeValidator, VectorNodeIntegrityChecker
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from util import LoggingLevelRouter
 
 

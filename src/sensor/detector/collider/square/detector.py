@@ -11,7 +11,7 @@ from __future__ import annotations
 
 
 from artifcat.report import CollisionReport
-from artifcat.result import AnalysisResult
+from artifcat import AnalysisResult
 from sensor import Collider
 from collection.stack import SquareStackService
 from transit.carrier import SquareCarrier

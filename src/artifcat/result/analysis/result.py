@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional
 
 from artifcat.report import Report
-from artifcat.result import AnalysisState, Result
+from artifcat import AnalysisState, Result
 
 
 class AnalysisResult(Result[Report]):

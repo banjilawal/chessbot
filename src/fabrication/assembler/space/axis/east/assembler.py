@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from domain.metadata.blueprint import EastAxisBlueprint
 
-from artifcat.result import BuildResult
+from artifcat import BuildResult
 from fabrication.assembler import AxisAssembler
 from space import EastAxis
 from util import  LoggingLevelRouter

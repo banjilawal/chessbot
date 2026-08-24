@@ -18,7 +18,7 @@ __all__ = [
     "PalyerStackServiceException",
 ]
 
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 
 
 # ======================# PALYER_STACK_SERVICE_ERROR #======================#

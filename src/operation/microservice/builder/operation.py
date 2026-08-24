@@ -14,7 +14,7 @@ from typing import Generic, TypeVar, cast
 
 from authorization import MicroserviceRequest
 from microservice import Microservice
-from artifcat.result import BuildResult
+from artifcat import BuildResult
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="StateModel")

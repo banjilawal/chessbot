@@ -18,7 +18,7 @@ __all__ = [
     "ResultStackServiceException",
 ]
 
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 
 
 # ======================# RESULT_STACK_SERVICE_ERROR #======================#

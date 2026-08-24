@@ -11,9 +11,9 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from err import BlueprintIdValidatorException
+from err import BlueprintIdValidatorExceptionIntegrity
 from microservice import IdentityService
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -72,11 +72,11 @@ class BlueprintIdExtractor:
             if id_validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    BlueprintIdValidatorException(
+                    BlueprintIdValidatorExceptionIntegrity(
                         cls_mthd=method,
                         cls_name=self.__clas__.__name__,
-                        msg=BlueprintIdValidatorException.MSG,
-                        err_code=BlueprintIdValidatorException.ERR_CODE,
+                        msg=BlueprintIdValidatorExceptionIntegrity.MSG,
+                        err_code=BlueprintIdValidatorExceptionIntegrity.ERR_CODE,
                         ex=id_validation.exception,
                     )
                 )
@@ -90,11 +90,11 @@ class BlueprintIdExtractor:
         if model_name_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                BlueprintIdValidatorException(
+                BlueprintIdValidatorExceptionIntegrity(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=BlueprintIdValidatorException.MSG,
-                    err_code=BlueprintIdValidatorException.ERR_CODE,
+                    msg=BlueprintIdValidatorExceptionIntegrity.MSG,
+                    err_code=BlueprintIdValidatorExceptionIntegrity.ERR_CODE,
                     ex=model_name_validation_result.exception,
                 )
             )

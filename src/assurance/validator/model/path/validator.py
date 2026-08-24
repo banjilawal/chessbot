@@ -14,7 +14,7 @@ from typing import Any, cast
 from err import PathValidatorException
 from domain.model import Path
 from assurance import PathIntegrityChecker
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from util import LoggingLevelRouter
 from assurance.validator import ModelValidator
 

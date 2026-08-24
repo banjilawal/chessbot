@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import TypeVar
 
 from artifcat.report import Report
-from artifcat.result import AnalysisResult
+from artifcat import AnalysisResult
 from util import LoggingLevelRouter
 
 R = TypeVar("R", bound=Report)

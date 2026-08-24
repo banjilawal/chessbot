@@ -18,7 +18,7 @@ from err import (
 )
 from microservice import IdentityService
 from domain.model import Token
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from collection.stack import TokenStackService
 from util import LoggingLevelRouter
 from assurance.validator import TokenValidator, PrimingValidator

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from microservice import HostageService
 from domain.model import Hostage
-from artifcat.result import InsertionResult
+from artifcat import InsertionResult
 from operation.crud.search import HostageQueryService
 from util import LoggingLevelRouter
 

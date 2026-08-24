@@ -15,7 +15,7 @@ from event import AttackEvent
 from domain.exchange.model import SquareState
 from operation import ManeuverLauncher
 from artifcat.report import AttackApproval, ManeuverApproval
-from artifcat.result import EventResult, MethodResultType
+from artifcat import EventResult, MethodResultType
 from util import IdFactory, LoggingLevelRouter
 from assurance.validator import PrimingValidator
 

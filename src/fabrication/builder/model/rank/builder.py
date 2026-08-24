@@ -15,7 +15,7 @@ from domain.metadata.blueprint import RankBlueprint
 from fabrication.builder import ModelBuilder
 from err import RankBuilderException
 from domain.model import Rank
-from artifcat.result import BuildResult, MethodResultType
+from artifcat import BuildResult, MethodResultType
 from operation.toolkit import RankBuilderToolkit
 from util import LoggingLevelRouter
 

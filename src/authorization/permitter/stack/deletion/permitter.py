@@ -14,7 +14,7 @@ from err import DeletionRequestNullException, DeletePermitterException
 from authorization.permitter.stack import OperationPermitter
 from artifcat.report import DeletionApprovalReport
 from domain.exchange.request import CollectionDeletionRequest
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from util import LoggingLevelRouter
 
 

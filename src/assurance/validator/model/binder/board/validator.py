@@ -12,7 +12,7 @@ from typing import Any, Dict, cast
 
 from err import BoardTeamBinderNullException, BoardTeamBinderValidatorException
 from domain.model import BoardBinder
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from util import LoggingLevelRouter
 from assurance import BoardTeamBinderIntegrityChecker
 

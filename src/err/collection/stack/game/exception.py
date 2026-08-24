@@ -18,7 +18,7 @@ __all__ = [
     "GameStackServiceException",
 ]
 
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 
 
 # ======================# GAME_STACK_SERVICE_ERROR #======================#

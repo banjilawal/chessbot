@@ -14,7 +14,7 @@ from domain.schema import Persona
 from err import PawnException
 from geometry import CoordSpan, PawnSpanner
 from domain.model import OffsetRank, PawnToken
-from artifcat.result import ComputationResult
+from artifcat import ComputationResult
 from util import LoggingLevelRouter
 
 

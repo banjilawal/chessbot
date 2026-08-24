@@ -18,7 +18,7 @@ __all__ = [
     "ExecutionRouteException",
 ]
 
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 
 
 # ======================# EXECUTION_ROUTE_ERROR #======================#

@@ -13,7 +13,7 @@ from sensor.analyzer import Analyzer
 from err import PromoteToKingException, PromoteToPawnException, PromotionLevelAnalyzerException
 from domain.model import King, Pawn, Rank
 from artifcat.report import RankLevelApproval
-from artifcat.result import AnalysisResult
+from artifcat import AnalysisResult
 from util import LoggingLevelRouter
 from assurance.validator import RankValidator
 

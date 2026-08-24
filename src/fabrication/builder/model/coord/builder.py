@@ -15,7 +15,7 @@ from domain.metadata.blueprint import CoordBlueprint
 from fabrication.builder import ModelBuilder
 from err import CoordBuilderException
 from domain.model import Coord
-from artifcat.result import BuildResult, MethodResultType
+from artifcat import BuildResult, MethodResultType
 from operation.toolkit import CoordBuilderToolkit
 from util import LoggingLevelRouter
 

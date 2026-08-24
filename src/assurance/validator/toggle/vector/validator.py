@@ -13,7 +13,7 @@ from typing import Any, cast
 from assurance import ToggleValidator
 from err import VectorToggleValidatorException
 from assurance import VectorToggleIntegrityChecker
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from domain.structure.toggle import CartesianToggle
 from util import LoggingLevelRouter
 

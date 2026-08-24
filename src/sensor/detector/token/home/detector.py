@@ -15,7 +15,7 @@ from bootstrapper import HomeDetectorBootstrapper
 from domain.search.context import TokenHomeContext
 from err import HomeSquareDetectorException
 from domain.model import HomeSquare
-from artifcat.result import Result
+from artifcat import Result
 from sensor import TokenEnvironmentReporter
 from util import LoggingLevelRouter
 

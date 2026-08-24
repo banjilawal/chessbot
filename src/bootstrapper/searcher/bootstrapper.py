@@ -13,7 +13,7 @@ from abc import abstractmethod
 
 from bootstrapper import Bootstrapper
 from artifcat.report import Report
-from artifcat.result import AnalysisResult
+from artifcat import AnalysisResult
 from util import LoggingLevelRouter
 
 

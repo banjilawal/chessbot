@@ -14,7 +14,7 @@ from typing import List, Optional, cast
 from collection import Chain
 from err import SearchResultEmptyException
 from domain.structure.node import VectorNode
-from artifcat.result import DeletionResult, InsertionResult, SearchResult
+from artifcat import DeletionResult, InsertionResult, SearchResult
 from util import LoggingLevelRouter
 
 

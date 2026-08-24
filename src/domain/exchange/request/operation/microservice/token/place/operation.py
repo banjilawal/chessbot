@@ -19,7 +19,7 @@ from err import TokenPlaceException
 from domain.exchange.model import PlaceState, HomeSquare, Token, TokenHomeClaimState
 from operation import Operator
 from artifcat.report import HomeSquareClaimReport
-from artifcat.result import MethodResultType, UpdateResult
+from artifcat import MethodResultType, UpdateResult
 from util import LoggingLevelRouter
 
 

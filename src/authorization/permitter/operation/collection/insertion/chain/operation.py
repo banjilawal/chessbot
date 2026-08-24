@@ -15,7 +15,7 @@ from typing import Generic, TypeVar, cast
 from authorization import AddNodeRequest
 from collection import Chain
 from operation import InsertOperation
-from artifcat.result import InsertionResult
+from artifcat import InsertionResult
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Node")

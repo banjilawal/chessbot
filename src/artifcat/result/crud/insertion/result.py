@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 from typing import Optional, cast
 
-from artifcat.result import InsertionState
+from artifcat import InsertionState
 
 
 class InsertionResult(CrudResult[bool]):

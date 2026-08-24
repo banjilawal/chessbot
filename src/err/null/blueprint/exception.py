@@ -14,7 +14,7 @@ from typing import Any, Optional
 From Err Import BlueprintNullException
 From Result Import MethodResultType
 from err import NullException
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 
 
 __all__ = [

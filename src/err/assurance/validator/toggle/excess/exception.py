@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import EntityCarrierValidatorException
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 
 _all_ = [
     # ======================# EXCESSIVE_TOGGLE_ACTIVATION_ERROR #======================#

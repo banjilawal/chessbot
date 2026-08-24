@@ -14,7 +14,7 @@ from typing import List
 from err import TokenSearcherException, TokenSearchRouteException
 from domain.model import Coord, HomeSquare, Rank, Team, Token
 from domain.model import TokenQuery
-from artifcat.result import SearchResult
+from artifcat import SearchResult
 from transit.router import SearchRouter
 from system import LoggingLevelRouter
 

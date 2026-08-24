@@ -18,7 +18,7 @@ __all__ = [
     "BidirectionalRelationException",
 ]
 
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 
 
 # ======================# BIDIRECTIONAL_RELATION_ERROR #======================#

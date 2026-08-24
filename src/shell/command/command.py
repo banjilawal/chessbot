@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Any, Generic, TypeVar
 
-from artifcat.result import Result
+from artifcat import Result
 
 T = TypeVar("T", bound="Result")
 

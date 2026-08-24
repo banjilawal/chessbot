@@ -12,7 +12,7 @@ from __future__ import annotations
 from fabrication.assembler import RegisterAssembler
 from domain.metadata.blueprint import SquareRegisterBlueprint
 from domain.structure.register import SquareRegister
-from artifcat.result import BuildResult
+from artifcat import BuildResult
 from util import LoggingLevelRouter
 
 

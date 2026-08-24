@@ -16,11 +16,11 @@ from err import IntegrityCheckerException
 
 __all__ = [
     # ======================# BLUEPRINT_VALIDATION_PRIMING_FAILURE #======================#
-    "BlueprintValidationPrimingException",
+    "BlueprintValidationPrimingExceptionIntegrity",
 ]
 
 # ======================# BLUEPRINT_VALIDATION_PRIMING_FAILURE #======================#
-class BlueprintValidationPrimingException(IntegrityCheckerException):
+class BlueprintValidationPrimingExceptionIntegrity(IntegrityCheckerException):
     """
     Role:
         -   Error Tracing

@@ -13,7 +13,7 @@ from bootstrapper import PrimingValidator
 from err import ManeuverException
 from err.null.event import ManeuverEventNullException
 from artifcat.report import ManeuverApproval, ManeuverRequestDecision
-from artifcat.result import TurnResult
+from artifcat import TurnResult
 from util import LoggingLevelRouter
 
 

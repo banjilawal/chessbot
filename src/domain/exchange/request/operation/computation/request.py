@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from authorization import OperationRequest
-from artifcat.result import ComputationResult
+from artifcat import ComputationResult
 
 
 T = TypeVar("T", bound="ComputationOperation")

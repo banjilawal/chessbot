@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from domain.metadata.blueprint import RankBlueprint
 from domain.model import Bishop, King, Knight, Pawn, Queen, Rank, Rook
-from artifcat.result import BuildResult
+from artifcat import BuildResult
 from fabrication.assembler import ModelAssembler
 from domain.schema import Persona
 from util import LoggingLevelRouter

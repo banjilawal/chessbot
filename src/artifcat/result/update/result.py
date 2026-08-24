@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from domain.exchange.response import Response
-from artifcat.result import Result, UpdateState
+from artifcat import Result, UpdateState
 
 
 class UpdateResult(Result[Response]):

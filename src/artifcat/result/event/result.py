@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Optional
 
 from event import Event
-from artifcat.result import EventState, Result
+from artifcat import EventState, Result
 
 
 

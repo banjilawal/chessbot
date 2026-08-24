@@ -15,7 +15,7 @@ from typing import Generic, Optional, TypeVar, cast
 from fabrication.builder import Builder
 from domain.model import Vector
 
-from artifcat.result import BuildResult
+from artifcat import BuildResult
 from operation.toolkit import MathToolkit, SpaceBuilderToolkit
 from util import LoggingLevelRouter
 

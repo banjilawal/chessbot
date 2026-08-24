@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 from typing import Any, Type, TypeVar, cast
 
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from util import LoggingLevelRouter
 from err import NullException, PrimingException
 

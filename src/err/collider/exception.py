@@ -18,7 +18,7 @@ __all__ = [
     "ColliderException",
 ]
 
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 
 
 # ======================# COLLISION_OCCURRENCE #======================#

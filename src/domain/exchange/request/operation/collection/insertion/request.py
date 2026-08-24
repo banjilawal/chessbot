@@ -15,7 +15,7 @@ from typing import Generic, TypeVar, cast
 from authorization import CollectionRequest
 
 
-from artifcat.result import InsertionResult
+from artifcat import InsertionResult
 
 
 T = TypeVar("T", bound="Collection")

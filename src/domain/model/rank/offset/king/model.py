@@ -13,7 +13,7 @@ from domain.schema import Persona
 from err import KingException
 from geometry import KingSpanner
 from domain.model import Coord, OffsetRank
-from artifcat.result import ComputationResult
+from artifcat import ComputationResult
 from util import LoggingLevelRouter
 
 

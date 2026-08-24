@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from err import ToggleIntegrityCheckerException
-from artifcat.result import MethodResultType
+from artifcat import MethodResultType
 
 
 __all__ = [
@@ -44,7 +44,7 @@ class RankToggleCheckerException(ToggleIntegrityCheckerException):
     Super Class:
         ToggleCheckerException
     """
-    MSG = "Rank IntegrityChecker failure."
+    MSG = "RankChecker failure."
     ERR_CODE = "RANK_TOGGLE_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(

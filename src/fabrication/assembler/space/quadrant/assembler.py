@@ -14,7 +14,7 @@ from typing import Generic, TypeVar
 
 from fabrication.assembler import SpaceAssembler
 from domain.metadata.blueprint import QuadrantBlueprint
-from artifcat.result import BuildResult
+from artifcat import BuildResult
 from util import LoggingLevelRouter
 
 

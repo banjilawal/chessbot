@@ -14,7 +14,7 @@ from typing import Any
 from microservice import ArenaService, IdentityService
 from domain.model import Board
 from assurance.auditor import  ConsistencyAuditor
-from artifcat.result import ValidationResult
+from artifcat import ValidationResult
 from util import LoggingLevelRouter
 
 

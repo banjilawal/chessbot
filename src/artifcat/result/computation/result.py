@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 from typing import Generic, Optional, TypeVar, cast
 
-from artifcat.result import ComputationState, Result
+from artifcat import ComputationState, Result
 
 T = TypeVar("T")
 
