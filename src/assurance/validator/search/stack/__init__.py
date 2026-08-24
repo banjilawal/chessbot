@@ -1,14 +1,22 @@
-from .stack import *
+# src/assurance/validator/search/stack/__init__.py
+
+"""
+Module: .__init__
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+# =========== ASSURANCE.VALIDATOR.SEARCH.STACK PACKAGE ===========#
+
+# Packages
 from .arena import *
 from .board import *
 from .coord import *
 from .edge import *
-from .formation import *
 from .game import *
 from .home import *
-from .hostage import *
 from .node import *
-from .persona import *
 from .player import *
 from .rank import *
 from .square import *
@@ -16,4 +24,4 @@ from .team import *
 from .token import *
 
 # Module
-from .validator import StackSearchSearchValidator
+from .validator import StackSearchContextValidator

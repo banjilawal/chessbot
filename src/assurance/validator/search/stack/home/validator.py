@@ -21,10 +21,7 @@ from assurance.validator import StackSearchContextValidator
 class TokenHomeContextValidator(StackSearchContextValidator[TokenHomeContext]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -   Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a HomeContext instance is certified safe, reliable and consistent before use.

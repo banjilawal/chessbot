@@ -22,10 +22,7 @@ from assurance.validator import ModelValidator
 class ScalarValidator(ModelValidator[Scalar]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -   Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a Scalar instance is certified safe, reliable and consistent before use.

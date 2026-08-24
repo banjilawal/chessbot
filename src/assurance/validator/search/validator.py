@@ -24,14 +24,10 @@ T = TypeVar("T", bound="SearchContext")
 class SearchContextValidator(Validator[T], ABC, Generic[T]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -   Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a SearchContext instance is certified safe, reliable, 
-            and consistent before use.
+        1.  Ensure a SearchContext instance is safe before use.
 
     Attributes:
         integrity_checker: SearchContextChecker[T]
@@ -60,7 +56,7 @@ class SearchContextValidator(Validator[T], ABC, Generic[T]):
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[T]:
         """
-        Verify a candidate is a SearchContext safe.
+        Verify a candidate is a safe SearchContext.
         Args:
             candidate: Any
         Returns:

@@ -22,10 +22,7 @@ from assurance.validator import RegisterValidator
 class VectorRegisterValidator(RegisterValidator[VectorRegister]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -   Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a VectorRegister instance is certified safe, reliable and consistent before use.

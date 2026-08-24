@@ -22,10 +22,7 @@ from assurance.validator import ModelValidator
 class ArenaValidator(ModelValidator[Arena]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -   Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a Arena instance is certified safe, reliable and consistent before use.

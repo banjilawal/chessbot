@@ -22,10 +22,7 @@ from assurance.validator import ModelValidator
 class EdgeValidator(ModelValidator[Edge]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -   Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a Edge instance is certified safe, reliable and consistent before use.

@@ -25,10 +25,7 @@ from util import LoggingLevelRouter
 class SouthwestQuadrantRootChecker(QuadrantRootChecker[SouthwestQuadrantBlueprint]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -   Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a SouthwestQuadrants or their blueprints are certified safe, reliable and consistent

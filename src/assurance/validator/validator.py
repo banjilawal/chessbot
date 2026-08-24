@@ -23,10 +23,7 @@ T = TypeVar("T")
 class Validator(ABC, Generic[T]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -   Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure data-holders are safe before they are used or saved.

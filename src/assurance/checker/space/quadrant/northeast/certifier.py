@@ -25,10 +25,7 @@ from util import LoggingLevelRouter
 class NortheastQuadrantRootChecker(QuadrantRootChecker[NortheastQuadrant]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -   Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a NortheastQuadrantBlueprint instance is certified safe, reliable and consistent before use.

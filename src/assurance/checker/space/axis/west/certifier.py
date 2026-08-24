@@ -24,10 +24,7 @@ from util import LoggingLevelRouter
 class WestAxisRootChecker(AxisRootChecker[WestAxisBlueprint]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -   Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a WestAxisBlueprint instance is certified safe, reliable and consistent before use.

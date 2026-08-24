@@ -20,10 +20,7 @@ from util import LoggingLevelRouter
 class CoordContextValidator(StackSearchContextValidator[CoordSearchContext]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -   Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a CoordSearchContext instance is certified safe, reliable, and consistent before use.

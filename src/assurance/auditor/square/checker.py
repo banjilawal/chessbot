@@ -24,10 +24,7 @@ from assurance.auditor import  ConsistencyAuditor
 class SquareConsistencyAuditor(ConsistencyAuditor[Square]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -   Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a Square instance is certified safe, reliable and consistent before use.

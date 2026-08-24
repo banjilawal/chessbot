@@ -19,10 +19,7 @@ from util import LoggingLevelRouter
 class TokenConsistencyAuditor(ConsistencyAuditor[Token]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -   Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a Token instance is certified safe, reliable and consistent before use.

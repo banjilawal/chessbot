@@ -24,10 +24,7 @@ from util import LoggingLevelRouter
 class SquareIntegrityChecker(ModelIntegrityChecker[SquareBlueprint]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -   Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a SquareBlueprint instance is certified safe, reliable and consistent before use.

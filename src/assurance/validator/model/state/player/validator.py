@@ -22,10 +22,7 @@ from assurance.validator import ModelValidator
 class PlayerValidator(ModelValidator[Player]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -   Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a Player instance is certified safe, reliable and consistent before use.

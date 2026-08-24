@@ -21,10 +21,7 @@ from util import LoggingLevelRouter
 class SquareContextValidator(StackSearchContextValidator[SquareSearchContext]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -   Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a SquareSearchContext instance is certified safe, reliable, and consistent before use.

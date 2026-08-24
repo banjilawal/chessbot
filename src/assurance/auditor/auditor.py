@@ -22,10 +22,7 @@ T = TypeVar("T")
 class ConsistencyAuditor(ABC, Generic[T]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -   Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure an entity's relations are consistent.

@@ -22,10 +22,7 @@ from util import LoggingLevelRouter
 class NumberValidator:
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -   Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a number instance iss within bounds before use.

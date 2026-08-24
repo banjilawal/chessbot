@@ -17,10 +17,7 @@ from assurance import ModelValidator
 class StateModelValidator(ModelValidator, ABC):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -   Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a Vector instance is certified safe, reliable and consistent before use.

@@ -21,10 +21,7 @@ from util import LoggingLevelRouter
 class PathRootChecker(ModelIntegrityChecker[Path]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -   Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a Path instance is certified safe, reliable and consistent before use.

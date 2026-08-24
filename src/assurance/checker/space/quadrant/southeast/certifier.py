@@ -24,10 +24,7 @@ from util import LoggingLevelRouter
 class SoutheastQuadrantRootChecker(QuadrantRootChecker[SoutheastQuadrantBlueprint]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -   Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a SoutheastQuadrantBlueprint instance is certified safe, reliable and consistent before use.

@@ -24,10 +24,7 @@ from util import LoggingLevelRouter
 class SouthAxisRootChecker(AxisRootChecker[SouthAxisBlueprint]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -   Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a SouthAxisBlueprint instance is certified safe, reliable and consistent before use.

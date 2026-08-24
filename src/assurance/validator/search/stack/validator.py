@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import StackContextChecker, Validator
+from assurance import SearchContextValidator, StackContextChecker
 from domain import StackSearchContext
 from util import LoggingLevelRouter
 
@@ -24,14 +24,10 @@ T = TypeVar("T", bound="StackSearchContext")
 class StackSearchContextValidator(SearchContextValidator[T], ABC, Generic[T]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -   Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a StackSearchContext instance is certified safe, reliable, 
-            and consistent before use.
+        1.  Ensure a StackSearchContext instance is safe before use.
 
     Attributes:
         integrity_checker: StackContextChecker[T]
@@ -40,7 +36,7 @@ class StackSearchContextValidator(SearchContextValidator[T], ABC, Generic[T]):
         -   execute(self, candidate: Any) -> ValidationResult[T]
 
     Super Class:
-        Validator
+        SearchContextValidator
     """
     
     def __init__(self, integrity_checker: StackContextChecker[T]):
@@ -50,13 +46,24 @@ class StackSearchContextValidator(SearchContextValidator[T], ABC, Generic[T]):
         """
         super().__init__(integrity_checker=integrity_checker)
     
+    
     @property
     def integrity_checker(self) -> StackContextChecker[T]:
         return cast(StackContextChecker[T], super().integrity_checker)
     
+    
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[T]:
+        """
+        Verify a candidate is a safe StackSearchContext.
+        Args:
+            candidate: Any
+        Returns:
+            ValidationResult[T]
+        Raises:
+            StackSearchContexValidatorException
+        """
         pass
     
     

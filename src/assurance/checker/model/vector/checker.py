@@ -21,10 +21,7 @@ from util import LoggingLevelRouter
 class VectorIntegrityChecker(ModelIntegrityChecker[Vector]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -   Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a VectorBlueprint instance is certified safe, reliable, and consistent before use.

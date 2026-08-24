@@ -22,10 +22,7 @@ from assurance.validator import ModelValidator
 class CoordValidator(ModelValidator[Coord]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -   Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a Coord instance is certified safe, reliable and consistent before use.
