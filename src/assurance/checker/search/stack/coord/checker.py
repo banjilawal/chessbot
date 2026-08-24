@@ -1,7 +1,7 @@
-# src/assurance/checker/search/stack/checker.py
+# src/assurance/checker/search/stack/coord.checker.py
 
 """
-Module: assurance.checker.search.stack.checker
+Module: assurance.checker.search.stack.coord.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -15,7 +15,7 @@ import config.setting.board.dimension.config
 from artifcat import ValidationResult
 from assurance import StackContextChecker, CoordValidationBundle
 from domain import CoordSearchContext
-from err import CoordContextCheckerException, ZeroContextFlagsException
+from err import CoordContextCheckerException, ZeroCoordContextFlagsException
 from util import LoggingLevelRouter
 
 
@@ -41,9 +41,11 @@ class CoordContextChecker(StackContextChecker[CoordSearchContext]):
     def __init__(self, bundle: Optional[CoordValidationBundle] | None = None,):
         super().__init__(bundle=bundle or CoordValidationBundle())
         
+        
     @property
     def bundle(self) -> CoordValidationBundle:
         return cast(CoordValidationBundle, super().bundle)
+    
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[CoordSearchContext]:
@@ -63,10 +65,10 @@ class CoordContextChecker(StackContextChecker[CoordSearchContext]):
             ValidationResult[CoordSearchContext]
         Raises:
             CoordContextCheckerException
+            ZeroCoordContextFlagsException
         """
         method = f"{self.__class__.__name__}.execute"
 
-        
         # Handle the case that, the validator is not primed.
         priming_result = self.bundle.priming_validator.execute(
             candidate=candidate,
@@ -96,11 +98,11 @@ class CoordContextChecker(StackContextChecker[CoordSearchContext]):
                     cls_name=self.__class__.__name__,
                     msg=CoordContextCheckerException.MSG,
                     err_code=CoordContextCheckerException.ERR_CODE,
-                    ex=ZeroContextFlagsException(
+                    ex=ZeroCoordContextFlagsException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=ZeroContextFlagsException.MSG,
-                        err_code=ZeroContextFlagsException.ERR_CODE,
+                        msg=ZeroCoordContextFlagsException.MSG,
+                        err_code=ZeroCoordContextFlagsException.ERR_CODE,
                     )
                 )
             )        

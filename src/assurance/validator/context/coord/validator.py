@@ -10,15 +10,14 @@ version: 0.0.2
 from __future__ import annotations
 from typing import Any, cast
 
-from err import CoordContextValidatorException
-from domain.model import CoordContext
 from artifcat import ValidationResult
-from config.setting import BoardProperty
-from operation.toolkit import CoordContextToolkit
+from assurance import ContextValidator, CoordContextChecker
+from domain import CoordSearchContext
+from err import CoordContextValidatorException
 from util import LoggingLevelRouter
 
 
-class CoordContextValidator(ContextValidator[Coord]):
+class CoordContextValidator(ContextValidator[CoordSearchContext]):
     """
     Role
         -   Transaction Worker
@@ -27,58 +26,52 @@ class CoordContextValidator(ContextValidator[Coord]):
         -   Process Runner
 
     Responsibilities:
-        1.  Ensure a CoordContext instance is certified safe, reliable and consistent before use.
+        1.  Ensure a Context instance is certified safe, reliable, and consistent before use.
 
     Attributes:
+        integrity_checker: ContextIntegrityChecker[T]
 
     Provides:
-        -   def validate(
-                    candidate: Any,
-                    integrity_checker: CoordContextToolkit,
-            ) -> ValidationResult[Coord]:
+        -   execute(self, candidate: Any) -> ValidationResult[T]
 
     Super Class:
-        ContextValidator
+        Validator
     """
     
-    @classmethod
+    def __init__(self, integrity_checker: CoordContextChecker):
+        """
+        Args:
+            integrity_checker: CoordContextChecker
+        """
+        super().__init__(integrity_checker=integrity_checker)
+    
+    
+    @property
+    def integrity_checker(self) -> CoordContextChecker:
+        return cast(CoordContextChecker, super().integrity_checker)
+    
+    
     @LoggingLevelRouter.monitor
-    def validate(
-            cls,
-            candidate: Any,
-            integrity_checker: CoordContextToolkit | None = None,
-    ) -> ValidationResult[Coord]:
+    def execute(self, candidate: Any) -> ValidationResult[CoordSearchContext]:
         """
         Certify a candidate is a CoordContext that is safe to use.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if any of the following
-                occur
-                    -   The Validation is not primed.
-                    -   The enabled attribute fails a safety check.
+            1.  Send an exception chain in the ValidationResult if integrity_checker
+                returns a failure.
             2.  Otherwise, send the success result.
         Args:
-            candidate: Any,
-            integrity_checker: CoordContextToolkit,
+            candidate: Any
         Returns:
-            ValidationResult[Coord]
+            ValidationResult[CoordSearchContext]
         Raises:
             CoordContextValidatorException
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # --- Supply any missing dependencies. ---#
-        if toolkit is None:
-            toolkit = CoordContextToolkit()
-        
-        # Handle the case that, the validator is not primed.
-        priming_result = toolkit.context_priming_validator.execute(
-            candidate=candidate,
-            target_model=toolkit.context_model_type,
-            context_null_exception=toolkit.null_context_exception,
-            validator_checker=toolkit.coord_toolkit.priming_validator
-        )
-        if priming_result.is_failure:
+        # Handle the case that integrity_checker flags the candidate.
+        validation = self.integrity_checker.execute(candidate=candidate)
+        if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 CoordContextValidatorException(
@@ -86,31 +79,11 @@ class CoordContextValidator(ContextValidator[Coord]):
                     cls_name=self.__class__.__name__,
                     msg=CoordContextValidatorException.MSG,
                     err_code=CoordContextValidatorException.ERR_CODE,
-                    ex=priming_result.exception
+                    ex=validation.exception
                 )
             )
-        # --- Cast the candidate into SquareContext for routing attribute testing. ---#
-        context = cast(CoordContext, candidate)
-        
-        # Certification whichever attribute is enabled.
-        for attribute in [context.row, context.column]:
-            validation_result = toolkit.coord_toolkit.number_validator.execute(
-                candidate=attribute,
-                ceiling=BoardProperty.MAX_COLUMN_INDEX.value,
-                floor=0,
-            )
-            if validation_result.is_failure:
-                # Send the exception chain on failure.
-                return ValidationResult.failure(
-                    CoordContextValidatorException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=CoordContextValidatorException.MSG,
-                        err_code=CoordContextValidatorException.ERR_CODE,
-                        ex=validation_result.exception
-                    )
-                )
-        # --- Forward the work product to the caller. ---#
+        # --- Otherwise, cast and forward the work product to the caller. ---#
+        context = cast(CoordSearchContext, validation.payload)
         return ValidationResult.success(context)
 
         
