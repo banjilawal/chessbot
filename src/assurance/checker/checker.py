@@ -48,6 +48,7 @@ class IntegrityChecker(ABC, Generic[T]):
             bundle: ValidationBundle[T]
         """
         self._bundle = bundle
+     
         
     @property
     def bundle(self) -> ValidationBundle[T]:
@@ -55,7 +56,16 @@ class IntegrityChecker(ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult:
+    def execute(self, candidate: Any) -> ValidationResult[T]:
+        """
+        Verify the candidate is an EntityCarrier whose payload is safe.
+        Args:
+            candidate: Any
+        Returns:
+           ValidationResult[T]
+        Raises:
+            IntegrityCheckerException
+        """
         pass
     
     

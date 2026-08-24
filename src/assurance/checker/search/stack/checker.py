@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
-from assurance import SearchContextChecker
+from assurance import SearchContextChecker, ValidationBundle
 from domain import StackSearchContext
 from artifcat import ValidationResult
 from util import LoggingLevelRouter
@@ -30,7 +30,7 @@ class StackContextChecker(SearchContextChecker[T], ABC, Generic[T]):
         2.  Run safety checks on any StackSearchContex attributes that are enabled.
 
     Attributes:
-        bundle: SearchValidationBundle[T]
+        bundle: ValidationBundle[T]
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[T]:
@@ -38,6 +38,14 @@ class StackContextChecker(SearchContextChecker[T], ABC, Generic[T]):
     Super Class:
         SearchContextIntegrityChecker
     """
+    
+    def __init__(self, bundle: ValidationBundle[T]):
+        """
+        Args:
+            bundle: ValidationBundle[T]
+        """
+        super().__init__(bundle=bundle)
+    
     
     @abstractmethod
     @LoggingLevelRouter.monitor

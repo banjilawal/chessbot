@@ -1,30 +1,31 @@
-# src/assurance/validator/context/__init__.py
+# src/assurance/validator/search/__init__.py
 
 """
-Module: assurance.validator.context.__init__
+Module: assurance.validator.search.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ASSURANCE.VALIDATOR.CONTEXT PACKAGE ===========#
+# =========== ASSURANCE.VALIDATOR.SEARCH PACKAGE ===========#
 
 # Packages
-from .arena import *
-from .board import *
-from .coord import *
-from .edge import *
+from .stack import *
+from assurance.validator.search.stack.arena import *
+from assurance.validator.search.stack.board import *
+from assurance.validator.search.stack.coord import *
+from assurance.validator.search.stack.edge import *
 from .formation import *
-from .game import *
-from .home import *
+from assurance.validator.search.stack.game import *
+from assurance.validator.search.stack.home import *
 from .hostage import *
-from .node import *
+from assurance.validator.search.stack.node import *
 from .persona import *
-from .player import *
-from .rank import *
-from .square import *
-from .team import *
-from .token import *
+from assurance.validator.search.stack.player import *
+from assurance.validator.search.stack.rank import *
+from assurance.validator.search.stack.square import *
+from assurance.validator.search.stack.team import *
+from assurance.validator.search.stack.token import *
 
 # Module
-from .validator import StackSearchContextValidator
+from .validator import StackSearchSearchValidator
