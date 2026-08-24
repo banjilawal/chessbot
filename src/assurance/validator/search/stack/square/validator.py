@@ -1,7 +1,7 @@
-# src/assurance/validator/context/square/validator.py
+# src/assurance/validator/search/stack/square/validator.py
 
 """
-Module: assurance.validator.context.square.validator
+Module: assurance.validator.search.stack.square.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

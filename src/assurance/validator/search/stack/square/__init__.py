@@ -1,13 +1,13 @@
-# src/assurance/validator/context/square/__init__.py
+# src/assurance/validator/search/stack/square/__init__.py
 
 """
-Module: assurance.validator.context.square.__init__
+Module: assurance.validator.search.stack.square.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ASSURANCE.VALIDATOR.CONTEXT.SQUARE PACKAGE ===========#
+# =========== ASSURANCE.VALIDATOR.SEARCH.STACK.SQUARE PACKAGE ===========#
 
 # Packages
 

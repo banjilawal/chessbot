@@ -1,7 +1,7 @@
-# src/assurance/validator/context/arena/validator.py
+# src/assurance/validator/search/stack/arena/validator.py
 
 """
-Module: assurance.validator.context.arena.validator
+Module: assurance.validator.search.stack.arena.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

@@ -1,7 +1,7 @@
-# src/assurance/checker/search/chain/token/checker.py
+# src/assurance/checker/search/chain/vector/checker.py
 
 """
-Module: assurance.checker.search.chain.token.checker
+Module: assurance.checker.search.chain.vector.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,64 +11,62 @@ from __future__ import annotations
 
 from typing import Any, Optional, cast
 
-from assurance import ChainContextChecker, TokenValidationBundle
-from config import GameColor
-from domain import Persona, TokenSearchContext
 from artifcat import ValidationResult
-from err import (
-    ExcessTokenContextFlagsException, GameColorNullException, TokenContextCheckerException,
-    TokenContextValidationRouteException,
-    ZeroTokenContextFlagsException
-)
+from assurance import ChainContextChecker, VectorNodeValidationBundle
+from config import GameColor
+from domain import VectorNodeContext
+
 from util import LoggingLevelRouter
 
 
-class TokenContextChecker(ChainContextChecker[TokenSearchContext]):
+class VectorNodeContextChecker(
+    ChainContextChecker[VectorNodeContext]
+):
     """
     Role
         -   Integrity Assurance Worker
 
     Responsibilities:
-        1.  Check that a candidate is the right type of not-null TokenSearchContext.
-        2.  Run safety checks on any TokenSearchContext attributes that are enabled.
+        1.  Check that a candidate is the right type of not-null VectorNodeContext.
+        2.  Run safety checks on any VectorNodeContext attributes that are enabled.
 
     Attributes:
-        bundle: TokenValidationBundle
+        bundle: VectorNodeValidationBundle
 
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult[TokenSearchContext]:
+        -   def execute(candidate: Any) -> ValidationResult[VectorNodeContext]:
 
     Super Class:
         ChainSearchContextChecker
     """
     
-    def __init__(self, bundle: Optional[TokenValidationBundle] | None = None, ):
-        super().__init__(bundle=bundle or TokenValidationBundle())
+    def __init__(self, bundle: Optional[VectorNodeValidationBundle] | None = None, ):
+        super().__init__(bundle=bundle or VectorNodeValidationBundle())
     
     
     @property
-    def bundle(self) -> TokenValidationBundle:
-        return cast(TokenValidationBundle, super().bundle)
+    def bundle(self) -> VectorNodeValidationBundle:
+        return cast(VectorNodeValidationBundle, super().bundle)
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[TokenSearchContext]:
+    def execute(self, candidate: Any) -> ValidationResult[VectorNodeContext]:
         """
-        Certify a candidate is a TokenSearchContext that is safe to use.
+        Certify a candidate is a VectorNodeContext that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The candidate is not a TokenSearchContext.
+                    -   The candidate is not a VectorNodeContext.
                     -   The wrong number of search attributes is enabled.
                     -   An enabled search attribute fails a safety check.
             2.  Otherwise, send a TokeSearchContext in the success result.
         Args:
             candidate, Any
         Returns:
-            ValidationResult[TokenSearchContext]
+            ValidationResult[VectorNodeContext]
         Raises:
-            TokenContextCheckerException
+            VectorNodeContextCheckerException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -81,31 +79,31 @@ class TokenContextChecker(ChainContextChecker[TokenSearchContext]):
         if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenContextCheckerException(
+                VectorNodeContextCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenContextCheckerException.MSG,
-                    err_code=TokenContextCheckerException.ERR_CODE,
+                    msg=VectorNodeContextCheckerException.MSG,
+                    err_code=VectorNodeContextCheckerException.ERR_CODE,
                     ex=priming.exception
                 )
             )
-        # --- Cast the candidate into TokenContext for routing attribute testing ---#
-        context = cast(TokenSearchContext, priming.payload)
+        # --- Cast the candidate into VectorNodeContext for routing attribute testing ---#
+        context = cast(VectorNodeContext, priming.payload)
         
         # Handle the case that, no flags are enabled.
         if context.no_active_filters:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenContextCheckerException(
+                VectorNodeContextCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenContextCheckerException.MSG,
-                    err_code=TokenContextCheckerException.ERR_CODE,
-                    ex=ZeroTokenContextFlagsException(
+                    msg=VectorNodeContextCheckerException.MSG,
+                    err_code=VectorNodeContextCheckerException.ERR_CODE,
+                    ex=ZeroVectorNodeContextFlagsException(
                         cls_mthd = method,
                         cls_name = self.__class__.__name__,
-                        msg=ZeroTokenContextFlagsException.MSG,
-                        err_code=ZeroTokenContextFlagsException.ERR_CODE
+                        msg=ZeroVectorNodeContextFlagsException.MSG,
+                        err_code=ZeroVectorNodeContextFlagsException.ERR_CODE
                     )
                 )
             )
@@ -113,16 +111,16 @@ class TokenContextChecker(ChainContextChecker[TokenSearchContext]):
         if context.excess_active_filters:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenContextCheckerException(
+                VectorNodeContextCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenContextCheckerException.MSG,
-                    err_code=TokenContextCheckerException.ERR_CODE,
-                    ex=ExcessTokenContextFlagsException(
+                    msg=VectorNodeContextCheckerException.MSG,
+                    err_code=VectorNodeContextCheckerException.ERR_CODE,
+                    ex=ExcessVectorNodeContextFlagsException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=ExcessTokenContextFlagsException.MSG,
-                        err_code=ExcessTokenContextFlagsException.ERR_CODE
+                        msg=ExcessVectorNodeContextFlagsException.MSG,
+                        err_code=ExcessVectorNodeContextFlagsException.ERR_CODE
                     )
                 )
             )
@@ -135,11 +133,11 @@ class TokenContextChecker(ChainContextChecker[TokenSearchContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenContextCheckerException(
+                    VectorNodeContextCheckerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TokenContextCheckerException.MSG,
-                        err_code=TokenContextCheckerException.ERR_CODE,
+                        msg=VectorNodeContextCheckerException.MSG,
+                        err_code=VectorNodeContextCheckerException.ERR_CODE,
                         ex=validation.exception
                     )
                 )
@@ -154,11 +152,11 @@ class TokenContextChecker(ChainContextChecker[TokenSearchContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenContextCheckerException(
+                    VectorNodeContextCheckerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TokenContextCheckerException.MSG,
-                        err_code=TokenContextCheckerException.ERR_CODE,
+                        msg=VectorNodeContextCheckerException.MSG,
+                        err_code=VectorNodeContextCheckerException.ERR_CODE,
                         ex=validation.exception
                     )
                 )
@@ -173,11 +171,11 @@ class TokenContextChecker(ChainContextChecker[TokenSearchContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenContextCheckerException(
+                    VectorNodeContextCheckerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TokenContextCheckerException.MSG,
-                        err_code=TokenContextCheckerException.ERR_CODE,
+                        msg=VectorNodeContextCheckerException.MSG,
+                        err_code=VectorNodeContextCheckerException.ERR_CODE,
                         ex=validation.exception
                     )
                 )
@@ -192,11 +190,11 @@ class TokenContextChecker(ChainContextChecker[TokenSearchContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenContextCheckerException(
+                    VectorNodeContextCheckerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TokenContextCheckerException.MSG,
-                        err_code=TokenContextCheckerException.ERR_CODE,
+                        msg=VectorNodeContextCheckerException.MSG,
+                        err_code=VectorNodeContextCheckerException.ERR_CODE,
                         ex=validation.exception
                     )
                 )
@@ -211,11 +209,11 @@ class TokenContextChecker(ChainContextChecker[TokenSearchContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenContextCheckerException(
+                    VectorNodeContextCheckerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TokenContextCheckerException.MSG,
-                        err_code=TokenContextCheckerException.ERR_CODE,
+                        msg=VectorNodeContextCheckerException.MSG,
+                        err_code=VectorNodeContextCheckerException.ERR_CODE,
                         ex=validation.exception
                     )
                 )
@@ -230,11 +228,11 @@ class TokenContextChecker(ChainContextChecker[TokenSearchContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenContextCheckerException(
+                    VectorNodeContextCheckerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TokenContextCheckerException.MSG,
-                        err_code=TokenContextCheckerException.ERR_CODE,
+                        msg=VectorNodeContextCheckerException.MSG,
+                        err_code=VectorNodeContextCheckerException.ERR_CODE,
                         ex=validation.exception
                     )
                 )
@@ -251,11 +249,11 @@ class TokenContextChecker(ChainContextChecker[TokenSearchContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenContextCheckerException(
+                    VectorNodeContextCheckerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TokenContextCheckerException.MSG,
-                        err_code=TokenContextCheckerException.ERR_CODE,
+                        msg=VectorNodeContextCheckerException.MSG,
+                        err_code=VectorNodeContextCheckerException.ERR_CODE,
                         ex=validation.exception
                     )
                 )
@@ -272,11 +270,11 @@ class TokenContextChecker(ChainContextChecker[TokenSearchContext]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenContextCheckerException(
+                    VectorNodeContextCheckerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TokenContextCheckerException.MSG,
-                        err_code=TokenContextCheckerException.ERR_CODE,
+                        msg=VectorNodeContextCheckerException.MSG,
+                        err_code=VectorNodeContextCheckerException.ERR_CODE,
                         ex=validation.exception
                     )
                 )
@@ -285,14 +283,14 @@ class TokenContextChecker(ChainContextChecker[TokenSearchContext]):
         
         # Handle the case that, there is no validation logic for the attribute.
         return ValidationResult.failure(
-            TokenContextCheckerException(
+            VectorNodeContextCheckerException(
                 cls_mthd=method,
                 cls_name=self.__class__.__name__,
-                msg=TokenContextCheckerException.MSG,
-                err_code=TokenContextCheckerException.ERR_CODE,
-                ex=TokenContextValidationRouteException(
-                    msg=TokenContextValidationRouteException.MSG,
-                    err_code=TokenContextValidationRouteException.ERR_CODE,
+                msg=VectorNodeContextCheckerException.MSG,
+                err_code=VectorNodeContextCheckerException.ERR_CODE,
+                ex=VectorNodeContextValidationRouteException(
+                    msg=VectorNodeContextValidationRouteException.MSG,
+                    err_code=VectorNodeContextValidationRouteException.ERR_CODE,
                 )
             )
         )

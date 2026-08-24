@@ -1,16 +1,16 @@
-# src/assurance/checker/search/chain/token/__init__.py
+# src/assurance/checker/search/chain/vector/__init__.py
 
 """
-Module: assurance.checker.search.chain.token.__init__
+Module: assurance.checker.search.chain.vector.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ASSURANCE.CHECKER.SEARCH.CHAIN.TOKEN PACKAGE ===========#
+# =========== ASSURANCE.CHECKER.SEARCH.CHAIN.VECTOR PACKAGE ===========#
 
 # Packages
 
 
 # Module
-from .checker import TokenContextChecker
+from .checker import VectorNodeContextChecker

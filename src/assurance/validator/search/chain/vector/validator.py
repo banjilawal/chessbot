@@ -1,7 +1,7 @@
-# src/assurance/validator/context/vector/validator.py
+# src/assurance/validator/search/chain/vector/validator.py
 
 """
-Module: assurance.validator.context.vector.validator
+Module: assurance.validator.search.chain.vector.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

@@ -1,7 +1,7 @@
-# src/assurance/validator/context/board/validator.py
+# src/assurance/validator/search/stack/board/validator.py
 
 """
-Module: assurance.validator.context.board.validator
+Module: assurance.validator.search.stack.board.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
