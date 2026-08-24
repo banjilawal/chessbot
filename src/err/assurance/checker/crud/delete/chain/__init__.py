@@ -12,6 +12,7 @@ version: 0.0.2
 # Packages
 from .context import *
 from .dossier import *
+from .vector import *
 
 # Modules
 from .exception import RemoveNodeCheckerException

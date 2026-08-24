@@ -1,7 +1,7 @@
-# src/err/assurance/checker/crud/delete/stack/context/exception.py
+# src/err/assurance/checker/crud/delete/stack/player/exception.py
 
 """
-Module: err.assurance.checker.crud.delete.stack.context.exception
+Module: err.assurance.checker.crud.delete.stack.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# REMOVE_NODE_BY_CONTEXT_CHECKER_FAILURE #======================#
-    "PopByContextCheckerException",
+    # ======================# POP_PLAYER_CHECKER_FAILURE #======================#
+    "PopPlayerCheckerException",
 ]
 
-# ======================# REMOVE_NODE_BY_CONTEXT_CHECKER_FAILURE #======================#
-class PopByContextCheckerException(PopStackCheckerException):
+# ======================# POP_PLAYER_CHECKER_FAILURE #======================#
+class PopPlayerCheckerException(PopStackCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a PopByContextChecker failed.
+        1.  Indicating assurance by a PopPlayerChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class PopByContextCheckerException(PopStackCheckerException):
     Super Class:
         PopStackCheckerException
     """
-    MSG = "PopByContextChecker failure."
-    ERR_CODE = "REMOVE_NODE_BY_CONTEXT_CHECKER_FAILURE"
+    MSG = "PopPlayerChecker failure."
+    ERR_CODE = "POP_PLAYER_CHECKER_FAILURE"
     
     def __init__(
             self,
