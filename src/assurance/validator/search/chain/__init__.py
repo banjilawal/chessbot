@@ -10,18 +10,7 @@ version: 0.0.2
 # =========== ASSURANCE.VALIDATOR.SEARCH.CHAIN PACKAGE ===========#
 
 # Packages
-from .arena import *
-from .board import *
-from .coord import *
-from .edge import *
-from .game import *
-from .home import *
-from .node import *
-from .player import *
-from .rank import *
-from .square import *
-from .team import *
-from .token import *
+from .vector import *
 
 # Module
 from .validator import ChainSearchContextValidator

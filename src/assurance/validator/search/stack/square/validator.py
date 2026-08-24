@@ -24,7 +24,7 @@ class SquareContextValidator(StackSearchContextValidator[SquareSearchContext]):
         -   Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a SquareSearchContext instance is certified safe, reliable, and consistent before use.
+        1.  Ensure a SquareSearchContext instance is safe before use.
 
     Attributes:
         integrity_checker: SquareContextChecker

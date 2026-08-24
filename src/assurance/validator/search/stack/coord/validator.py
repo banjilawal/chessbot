@@ -23,7 +23,7 @@ class CoordContextValidator(StackSearchContextValidator[CoordSearchContext]):
         -   Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a CoordSearchContext instance is certified safe, reliable, and consistent before use.
+        1.  Ensure a CoordSearchContext instance is safe before use.
 
     Attributes:
         integrity_checker: CoordContextChecker

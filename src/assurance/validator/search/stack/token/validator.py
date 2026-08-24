@@ -24,7 +24,7 @@ class TokenContextValidator(StackSearchContextValidator[TokenSearchContext]):
         -   Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a TokenSearchContext instance is certified safe, reliable, and consistent before use.
+        1.  Ensure a TokenSearchContext instance is safe before use.
 
     Attributes:
         integrity_checker: TokenContextChecker

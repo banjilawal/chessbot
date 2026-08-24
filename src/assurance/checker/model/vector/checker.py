@@ -24,7 +24,7 @@ class VectorIntegrityChecker(ModelIntegrityChecker[Vector]):
         -   Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a VectorBlueprint instance is certified safe, reliable, and consistent before use.
+        1.  Ensure a VectorBlueprint instance is safe before use.
 
     Attributes:
         bundle: Optional[VectorValidationToolkit]

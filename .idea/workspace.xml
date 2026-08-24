@@ -5,17 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assurance/checker/search/chain/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/checker/search/chain/checker.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/checker/search/chain/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/checker/search/chain/coord/checker.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/checker/search/chain/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/checker/search/chain/square/checker.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/checker/search/chain/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/checker/search/chain/team/checker.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/checker/search/chain/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/checker/search/chain/token/checker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/checker/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/checker/search/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/chain/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/search/chain/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/chain/arena/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/chain/arena/validator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/chain/board/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/chain/board/validator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/chain/coord/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/chain/coord/validator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/chain/edge/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/chain/edge/validator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/chain/game/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/chain/game/validator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/chain/home/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/chain/home/validator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/chain/node/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/chain/node/validator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/chain/player/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/chain/player/validator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/chain/query/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/chain/rank/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/chain/rank/validator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/chain/square/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/chain/square/validator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/chain/team/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/chain/team/validator.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,61 +70,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.824787251404967E-4" />
-      <entry key="MS500" value="0.1969723321981561" />
-      <entry key="S2" value="1.0176395474166846" />
-      <entry key="S5" value="1.511818683222614" />
-      <entry key="S10" value="1.7492319636608347" />
-      <entry key="S30" value="5.705659364061729" />
-      <entry key="S60" value="19.6686487184422" />
-      <entry key="M2" value="41.49629870633974" />
-      <entry key="M5" value="69.59669032001409" />
-      <entry key="M10" value="106.22856632192914" />
-      <entry key="M15" value="151.41073609398805" />
-      <entry key="M30" value="292.8208891275776" />
-      <entry key="H1" value="526.3663135756748" />
-      <entry key="H2" value="839.6799807026449" />
-      <entry key="H4" value="1307.8603711349597" />
-      <entry key="D1" value="3907.0712144168615" />
-      <entry key="W1" value="5605.7442172420815" />
+      <entry key="MS100" value="1.2836848375986951" />
+      <entry key="MS500" value="2.6410649053333284" />
+      <entry key="S2" value="7.692149428482925" />
+      <entry key="S5" value="17.30015163321615" />
+      <entry key="S10" value="30.648507031738003" />
+      <entry key="S30" value="56.67573533556701" />
+      <entry key="S60" value="75.73778068613085" />
+      <entry key="M2" value="101.7209072486676" />
+      <entry key="M5" value="137.92604188647755" />
+      <entry key="M10" value="178.34663999341893" />
+      <entry key="M15" value="224.3986384040413" />
+      <entry key="M30" value="366.53899360016277" />
+      <entry key="H1" value="601.1061202192485" />
+      <entry key="H2" value="915.9565590105861" />
+      <entry key="H4" value="1385.4361745533572" />
+      <entry key="D1" value="3986.889424656401" />
+      <entry key="W1" value="5687.297667300614" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.000000106053241" />
-      <entry key="S60" value="1.0005604426254042" />
-      <entry key="M2" value="1.048924389230774" />
-      <entry key="M5" value="1.8398618051830669" />
-      <entry key="M10" value="3.4465996355493576" />
-      <entry key="M15" value="4.794080085678351" />
-      <entry key="M30" value="8.012716792810979" />
-      <entry key="H1" value="13.114969105780698" />
-      <entry key="H2" value="21.629479144796193" />
-      <entry key="H4" value="38.95156489090754" />
-      <entry key="D1" value="141.08150802155453" />
-      <entry key="W1" value="208.53843034175637" />
+      <entry key="MS100" value="3.688340456303017E-209" />
+      <entry key="MS500" value="2.0576248698420074E-42" />
+      <entry key="S2" value="3.787403272703327E-11" />
+      <entry key="S5" value="6.781669486420254E-5" />
+      <entry key="S10" value="0.008235089244458885" />
+      <entry key="S30" value="0.20194021581881422" />
+      <entry key="S60" value="0.44962941364689096" />
+      <entry key="M2" value="0.7031530681287051" />
+      <entry key="M5" value="1.567860723443039" />
+      <entry key="M10" value="3.1816468735068457" />
+      <entry key="M15" value="4.545127218831147" />
+      <entry key="M30" value="7.801896281493097" />
+      <entry key="H1" value="12.94128678950318" />
+      <entry key="H2" value="21.48578157061425" />
+      <entry key="H4" value="38.82195999334189" />
+      <entry key="D1" value="141.0031617640738" />
+      <entry key="W1" value="208.52188256677778" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.0022126967784452394" />
-      <entry key="MS500" value="0.3363059993999404" />
-      <entry key="S2" value="1.4754465331573416" />
-      <entry key="S5" value="2.224431864755871" />
-      <entry key="S10" value="2.589959031648277" />
-      <entry key="S30" value="6.64648774884307" />
-      <entry key="S60" value="20.63517465794323" />
-      <entry key="M2" value="42.52451795049149" />
-      <entry key="M5" value="71.422929642715" />
-      <entry key="M10" value="109.66332240681197" />
-      <entry key="M15" value="156.1933726652126" />
-      <entry key="M30" value="300.82145974823743" />
-      <entry key="H1" value="539.4665462007405" />
-      <entry key="H2" value="861.2921871994483" />
-      <entry key="H4" value="1346.7931823501215" />
-      <entry key="D1" value="4048.1400873168454" />
-      <entry key="W1" value="5814.2799213569415" />
+      <entry key="MS100" value="1.069468347399463" />
+      <entry key="MS500" value="2.5539772598065316" />
+      <entry key="S2" value="7.627766992539394" />
+      <entry key="S5" value="17.241693380224007" />
+      <entry key="S10" value="30.603933523304296" />
+      <entry key="S30" value="56.83506816385835" />
+      <entry key="S60" value="76.15374041930323" />
+      <entry key="M2" value="102.40005827245979" />
+      <entry key="M5" value="139.47799397503985" />
+      <entry key="M10" value="181.51515939996366" />
+      <entry key="M15" value="228.9314434001866" />
+      <entry key="M30" value="374.3283217320301" />
+      <entry key="H1" value="614.0324936307923" />
+      <entry key="H2" value="937.424996338609" />
+      <entry key="H4" value="1424.2393500168812" />
+      <entry key="D1" value="4127.879942762052" />
+      <entry key="W1" value="5895.816821634626" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{

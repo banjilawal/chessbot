@@ -23,7 +23,7 @@ class TeamContextValidator(StackSearchContextValidator[TeamSearchContext]):
         -   Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a TeamSearchContext instance is certified safe, reliable, and consistent before use.
+        1.  Ensure a TeamSearchContext instance is safe before use.
 
     Attributes:
         integrity_checker: TeamContextChecker
