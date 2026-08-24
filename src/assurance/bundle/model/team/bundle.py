@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any, Dict
 
-from assurance import NumberValidator, ValidationBundle
+from assurance import BoardValidator, PlayerValidator, ValidationBundle
 from domain import Team, TeamTypeUnions, TeamNullExceptionRoster
 
 
@@ -43,10 +43,15 @@ class TeamValidationBundle(ValidationBundle[Team]):
     nulls: TeamNullExceptionRoster = TeamNullExceptionRoster()
     resources: Dict[str, Any] = field(
         default_factory=lambda: {
-            "number_validator": NumberValidator(),
+            "owner_validator": PlayerValidator(),
+            "board_validator": BoardValidator(),
         }
     )
     
     @property
-    def number_validator(self) -> NumberValidator:
-        return self.resources["number_validator"]
+    def owner_validator(self) -> PlayerValidator:
+        return self.resources["owner_validator"]
+    
+    @property
+    def board_validator(self) -> BoardValidator:
+        return self.resources["board_validator"]

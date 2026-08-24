@@ -14,7 +14,6 @@ from err import EnemyKingAnalyzerException, TokenNullException
 from domain.model import KingToken
 from artifcat.report import FriendshipStatus
 from artifcat import Result
-from operation.toolkit import TokenToolkit
 from util import LoggingLevelRouter
 from assurance.validator import TokenValidator
 
@@ -48,7 +47,7 @@ class EnemyKingStatusDetector(Analyzer):
     def execute(
             cls,
             king: KingToken,
-            toolkit: TokenToolkit | None = None,
+            bundle: TokenValidationBundle | None = None,
             token_validator: TokenValidator | None = None,
     ) -> Result[FriendshipStatus]:
         """
@@ -79,7 +78,7 @@ class EnemyKingStatusDetector(Analyzer):
         
         validation_result = token_validator.execute(
                 candidate=king,
-                toolkit=toolkit,
+                bundle=bundle,
                 null_exception=TokenNullException(),
             )
         if validation_result.is_failure:

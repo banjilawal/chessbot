@@ -29,6 +29,7 @@ class TeamSearchContext(StackSearchContext[Team]):
             board: Optional[Board]
             owner: Optional[Player]
             color: Optional[GameColor]
+            archetype: Optional[Archetype]
 
     Provides:
         -   to_dict() -> Dict[str, Any]
@@ -55,7 +56,7 @@ class TeamSearchContext(StackSearchContext[Team]):
             board: Optional[Board]
             owner: Optional[Player]
             color: Optional[GameColor]
-            archetype: Optional[Archetype
+            archetype: Optional[Archetype]
         """
         super().__init__(id=id, name=None)
         self._board = board

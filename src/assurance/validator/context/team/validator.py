@@ -92,7 +92,7 @@ class TeamContextValidator(ContextValidator[Team]):
                 )
             )
         # --- Cast the candidate into TeamContext for routing attribute testing ---#
-        context = cast(TeamContext, candidate)
+        context = cast(TeamSearchContext, priming.payload)
         
         # Certification for the search-by-id target.
         if context.id is not None:

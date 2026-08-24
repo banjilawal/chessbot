@@ -86,7 +86,7 @@ class EdgeContextValidator(ContextValidator[Edge]):
                 )
             )
         # --- Cast the candidate into EdgeContext for additional tests. ---#
-        context = cast(EdgeContext, candidate)
+        context = cast(EdgeSearchContext, priming.payload)
         
         # Handle the case of searching with no attribute-value provided.
         flag_count = len(context.to_dict())

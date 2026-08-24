@@ -17,18 +17,18 @@ from err import ContextFlagCountException
 
 
 __all__ = [
-    # ======================# EXCESSIVE_ENABLED_CONTEXT_FLAG_ERROR #======================#
+    # ======================# EXCESSIVE_ENABLED_CONTEXT_FLAGS_ERROR #======================#
     "ExcessContextFlagsException",
 ]
 
-# ======================# EXCESSIVE_ENABLED_CONTEXT_FLAG_ERROR #======================#
+# ======================# EXCESSIVE_ENABLED_CONTEXT_FLAGS_ERROR #======================#
 class ExcessContextFlagsException(ContextFlagCountException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating too many SearchContext flag was enabled.
+        1.  Indicating too many SearchContext flags enabled.
 
     Attributes:
             msg: Optional[str]
@@ -46,7 +46,7 @@ class ExcessContextFlagsException(ContextFlagCountException):
         SearchContextFlagCountException
     """
     MSG = "Excessive ContextSearch flag was enabled."
-    ERR_CODE = "EXCESSIVE_ENABLED_CONTEXT_FLAG_ERROR"
+    ERR_CODE = "EXCESSIVE_ENABLED_CONTEXT_FLAGSERROR"
     
     def __init__(
             self,

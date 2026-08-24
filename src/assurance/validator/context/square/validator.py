@@ -95,7 +95,7 @@ class SquareContextValidator(ContextValidator[Square]):
                 )
             )
         # --- Cast the candidate into SquareContext for routing attribute testing. ---#
-        context = cast(SquareContext, candidate)
+        context = cast(SquareSearchContext, priming.payload)
         
         # Certification for the search-by-id target.
         if context.id is not None:

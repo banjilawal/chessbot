@@ -79,7 +79,7 @@ class PlayerContextValidator(ContextValidator[Player]):
             
             # After existence and type checks are successful cast the candidate into an PlayerContext
             # for additional tests.
-            context = cast(PlayerContext, candidate)
+            context = cast(PlayerSearchContext, priming.payload)
             
             # Handle the no map flag enabled case.
             if len(context.to_dict()) == 0:

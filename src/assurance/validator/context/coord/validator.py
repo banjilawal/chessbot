@@ -35,7 +35,7 @@ class CoordContextValidator(ContextValidator[CoordSearchContext]):
         -   execute(self, candidate: Any) -> ValidationResult[T]
 
     Super Class:
-        Validator
+        ContextValidator
     """
     
     def __init__(self, integrity_checker: CoordContextChecker):

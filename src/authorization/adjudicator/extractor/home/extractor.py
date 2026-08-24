@@ -11,11 +11,10 @@ from __future__ import annotations
 
 from typing import cast
 
-from domain.metadata.blueprint import TokenBlueprint
+from assurance import TokenValidationBundle
+from domain import Board, HomeSquare, Square, TokenBlueprint
 from err import BlueprintHomeSquareExtractorException
-from domain.model import Board, HomeSquare, Square
 from artifcat import ValidationResult
-from operation.toolkit import TokenToolkit
 from util import LoggingLevelRouter
 
 
@@ -33,7 +32,7 @@ class BlueprintHomeSquareExtractor:
 
 
     Attributes:
-        toolkit: TokenToolkit
+        bundle: TokenValidationBundle
 
     Provides:
         -   execute(self, blueprint: TokenBlueprint) -> ValidationResult
@@ -42,10 +41,10 @@ class BlueprintHomeSquareExtractor:
 
     Super Class:
     """
-    _toolkit: TokenToolkit
+    _bundle: TokenValidationBundle
     
-    def __init__(self, toolkit: TokenToolkit | None = TokenToolkit()):
-        self._toolkit = toolkit
+    def __init__(self, bundle: TokenValidationBundle | None = TokenValidationBundle()):
+        self._bundle = bundle
     
     @LoggingLevelRouter.monitor
     def execute(self, blueprint: TokenBlueprint) -> ValidationResult[HomeSquare]:
@@ -61,7 +60,7 @@ class BlueprintHomeSquareExtractor:
             4.  Send the success result from either route taken.
         Args:
             blueprint: TokenBlueprint
-            toolkit: TokenToolkit
+            bundle: TokenValidationBundle
         Returns:
             ValidationResult[HomeSquare]
         Raises:
@@ -74,7 +73,6 @@ class BlueprintHomeSquareExtractor:
             detection_result = self._find_on_board(
                 board=blueprint.team.board,
                 square_name=blueprint.formation.home_square_name,
-                home_square_detector=self._toolkit.home_square_detector,
             )
             # Handle the case that the _find_on_board raised an error.
             if detection_result.is_failure:
@@ -127,7 +125,7 @@ class BlueprintHomeSquareExtractor:
         method = f"{self.__class__.__name__}._find_on_board"
         
         # --- Run the home_square_detector. ---#
-        detection_result = self._toolkit.home_square_detector.execute(
+        detection_result = self._bundle.home_detector.execute(
             board=board,
             square_name=square_name,
         )
@@ -164,7 +162,7 @@ class BlueprintHomeSquareExtractor:
         method = f"{self.__class__.__name__}._validate_home_square"
         
         # Handle the case that, the square is flagged.
-        validation_result = self._toolkit.square_validator.execute(square)
+        validation_result = self._bundle.square_validator.execute(square)
         if validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

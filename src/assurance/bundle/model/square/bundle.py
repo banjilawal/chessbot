@@ -12,8 +12,9 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any, Dict
 
-from assurance import NumberValidator, ValidationBundle
+from assurance import BoardValidator, CoordValidator, TokenValidator, ValidationBundle
 from domain import Square, SquareTypeUnions, SquareNullExceptionRoster
+from sensor import SquareCollider
 
 
 @dataclass
@@ -30,9 +31,10 @@ class SquareValidationBundle(ValidationBundle[Square]):
         types: SquareTypeUnions
         nulls: SquareNullExceptionRoster
         
-        number_validator: NumberValidator
-        identity_service: IdentityService
-        priming_validator: PrimingValidator
+        token_validator: TokenValidator
+        board_validator: BoardValidator
+        coord_validator: CoordValidator
+        collision_detector: SquareCollider
 
     Provides:
 
@@ -43,10 +45,25 @@ class SquareValidationBundle(ValidationBundle[Square]):
     nulls: SquareNullExceptionRoster = SquareNullExceptionRoster()
     resources: Dict[str, Any] = field(
         default_factory=lambda: {
-            "number_validator": NumberValidator(),
+            "token_validator": TokenValidator(),
+            "board_validator": BoardValidator(),
+            "coord_validator": CoordValidator(),
+            "collision_detector": SquareCollider(),
         }
     )
     
     @property
-    def number_validator(self) -> NumberValidator:
-        return self.resources["number_validator"]
+    def token_validator(self) -> TokenValidator:
+        return self.resources["token_validator"]
+    
+    @property
+    def board_validator(self) -> BoardValidator:
+        return self.resources["board_validator"]
+    
+    @property
+    def coord_validator(self) -> CoordValidator:
+        return self.resources["coord_validator("]
+    
+    @property
+    def collision_detector(self) -> SquareCollider:
+        return self.resources["collision_detector"]

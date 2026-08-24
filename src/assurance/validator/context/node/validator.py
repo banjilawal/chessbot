@@ -85,7 +85,7 @@ class NodeContextValidator(ContextValidator[Node]):
                 )
             )
         # --- Cast the candidate into NodeContext for additional tests. ---#
-        context = cast(NodeContext, candidate)
+        context = cast(NodeSearchContext, priming.payload)
         
         # Handle the case of searching with no attribute-value provided.
         flag_count = len(context.to_dict())

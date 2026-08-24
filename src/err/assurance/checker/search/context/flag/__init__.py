@@ -10,7 +10,7 @@ version: 0.0.2
 # =========== ERR.ASSURANCE.CHECKER.SEARCH.CONTEXT.FLAG PACKAGE ===========#
 
 # Packages
-from .exception import *
+from .excess import *
 from .zero import *
 
 # Modules

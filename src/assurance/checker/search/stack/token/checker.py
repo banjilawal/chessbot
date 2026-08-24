@@ -1,7 +1,7 @@
-# src/assurance/checker/search/stack/checker.py
+# src/assurance/checker/search/stack/token/checker.py
 
 """
-Module: assurance.checker.search.stack.checker
+Module: assurance.checker.search.stack.token.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,8 +12,14 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from assurance import StackContextChecker, TokenValidationBundle
-from domain import TokenSearchContext
+from config import GameColor
+from domain import Persona, TokenSearchContext
 from artifcat import ValidationResult
+from err import (
+    ExcessTokenContextFlagsException, GameColorNullException, TokenContextCheckerException,
+    TokenContextValidationRouteException,
+    ZeroTokenContextFlagsException
+)
 from util import LoggingLevelRouter
 
 
@@ -39,9 +45,11 @@ class TokenContextChecker(StackContextChecker[TokenSearchContext]):
     def __init__(self, bundle: Optional[TokenValidationBundle] | None = None, ):
         super().__init__(bundle=bundle or TokenValidationBundle())
     
+    
     @property
     def bundle(self) -> TokenValidationBundle:
         return cast(TokenValidationBundle, super().bundle)
+    
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[TokenSearchContext]:
@@ -63,67 +71,76 @@ class TokenContextChecker(StackContextChecker[TokenSearchContext]):
             TokenContextCheckerException
         """
         method = f"{self.__class__.__name__}.execute"
-    
-        """
-        Certify a candidate is a TokenContext that is safe to use.
         
-        Action:
-            1.  Send an exception chain in the ValidationResult if any of the following
-                occur
-                    -   The Validation is not primed.
-                    -   The enabled attribute fails a safety check.
-                    -   There is no validation path for the attribute.
-            2.  Otherwise, send the success result.
-        Args:
-            candidate: Any,
-            integrity_checker: TokenToolkit,
-        Returns:
-            ValidationResult[Token]
-        Raises:
-            TokenContextValidatorException
-            TokenContextValidationRouteException
-        """
-        method = f"{self.__class__.__name__}.execute"
-        
-        # --- Supply any missing dependencies. ---#
-        if toolkit is None:
-            toolkit = TokenToolkit()
-        
-        # Handle the case that, the validator is not primed.
-        priming_result = toolkit.priming_validator.execute(
+        # Handle the case that, the candidate is null or the wrong type.
+        priming = self.bundle.priming_validator.execute(
             candidate=candidate,
-            target_model=candidate,
-            context_null_exception=TokenContext,
-            priming_validator=TokenContextNullException()
+            target_model=self.bundle.types.search_context,
+            null_exception=self.bundle.nulls.search_context
         )
-        if priming_result.is_failure:
+        if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenContextValidatorException(
+                TokenContextCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenContextValidatorException.MSG,
-                    err_code=TokenContextValidatorException.ERR_CODE,
-                    ex=priming_result.exception
+                    msg=TokenContextCheckerException.MSG,
+                    err_code=TokenContextCheckerException.ERR_CODE,
+                    ex=priming.exception
                 )
             )
         # --- Cast the candidate into TokenContext for routing attribute testing ---#
-        context = cast(TokenContext, candidate)
+        context = cast(TokenSearchContext, priming.payload)
         
-        # Certification for the search-by-id target.
-        if context.id is not None:
-            validation_result = toolkit.identity_service.validate_id(
-                candidate=context.id
+        # Handle the case that, no flags are enabled.
+        if context.no_active_filters:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenContextCheckerException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenContextCheckerException.MSG,
+                    err_code=TokenContextCheckerException.ERR_CODE,
+                    ex=ZeroTokenContextFlagsException(
+                        cls_mthd = method,
+                        cls_name = self.__class__.__name__,
+                        msg=ZeroTokenContextFlagsException.MSG,
+                        err_code=ZeroTokenContextFlagsException.ERR_CODE
+                    )
+                )
             )
-            if validation_result.is_failure:
-                # Send the exception chain on failure.
-                return ValidationResult.failure(
-                    TokenContextValidatorException(
+        # Handle the case that too many context flags are enabled.
+        if context.excess_active_filters:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenContextCheckerException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenContextCheckerException.MSG,
+                    err_code=TokenContextCheckerException.ERR_CODE,
+                    ex=ExcessTokenContextFlagsException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TokenContextValidatorException.MSG,
-                        err_code=TokenContextValidatorException.ERR_CODE,
-                        ex=validation_result.exception
+                        msg=ExcessTokenContextFlagsException.MSG,
+                        err_code=ExcessTokenContextFlagsException.ERR_CODE
+                    )
+                )
+            )
+            
+        # Certification for the search-by-id target.
+        if context.id is not None:
+            validation = self.bundle.identity_service.validate_id(
+                candidate=context.id
+            )
+            if validation.is_failure:
+                # Send the exception chain on failure.
+                return ValidationResult.failure(
+                    TokenContextCheckerException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=TokenContextCheckerException.MSG,
+                        err_code=TokenContextCheckerException.ERR_CODE,
+                        ex=validation.exception
                     )
                 )
             # On validation success forward the work product to the caller.
@@ -131,18 +148,18 @@ class TokenContextChecker(StackContextChecker[TokenSearchContext]):
         
         # Certification for the search-by-designation target.
         if context.name is not None:
-            validation_result = toolkit.identity_service.validate_name(
+            validation = self.bundle.identity_service.validate_name(
                 candidate=context.name
             )
-            if validation_result.is_failure:
+            if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenContextValidatorException(
+                    TokenContextCheckerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TokenContextValidatorException.MSG,
-                        err_code=TokenContextValidatorException.ERR_CODE,
-                        ex=validation_result.exception
+                        msg=TokenContextCheckerException.MSG,
+                        err_code=TokenContextCheckerException.ERR_CODE,
+                        ex=validation.exception
                     )
                 )
                 # On validation success forward the work product to the caller.
@@ -150,18 +167,18 @@ class TokenContextChecker(StackContextChecker[TokenSearchContext]):
         
         # Certification for the search-by-home_square target.
         if context.home_square is not None:
-            validation_result = toolkit.square_validator.execute(
+            validation = self.bundle.square_validator.execute(
                 candidate=context.home_square
             )
-            if validation_result.is_failure:
+            if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenContextValidatorException(
+                    TokenContextCheckerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TokenContextValidatorException.MSG,
-                        err_code=TokenContextValidatorException.ERR_CODE,
-                        ex=validation_result.exception
+                        msg=TokenContextCheckerException.MSG,
+                        err_code=TokenContextCheckerException.ERR_CODE,
+                        ex=validation.exception
                     )
                 )
                 # On validation success forward the work product to the caller.
@@ -169,18 +186,18 @@ class TokenContextChecker(StackContextChecker[TokenSearchContext]):
         
         # Certification for the search-by-coord target.
         if context.current_position is not None:
-            validation_result = toolkit.coord_validator.execute(
+            validation = self.bundle.coord_validator.execute(
                 candidate=context.current_position
             )
-            if validation_result.is_failure:
+            if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenContextValidatorException(
+                    TokenContextCheckerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TokenContextValidatorException.MSG,
-                        err_code=TokenContextValidatorException.ERR_CODE,
-                        ex=validation_result.exception
+                        msg=TokenContextCheckerException.MSG,
+                        err_code=TokenContextCheckerException.ERR_CODE,
+                        ex=validation.exception
                     )
                 )
                 # On validation success forward the work product to the caller.
@@ -188,37 +205,37 @@ class TokenContextChecker(StackContextChecker[TokenSearchContext]):
         
         # Certification for the search-by-team target.
         if context.team is not None:
-            validation_result = toolkit.team_validator.execute(
+            validation = self.bundle.team_validator.execute(
                 candidate=context.current_position
             )
-            if validation_result.is_failure:
+            if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenContextValidatorException(
+                    TokenContextCheckerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TokenContextValidatorException.MSG,
-                        err_code=TokenContextValidatorException.ERR_CODE,
-                        ex=validation_result.exception
+                        msg=TokenContextCheckerException.MSG,
+                        err_code=TokenContextCheckerException.ERR_CODE,
+                        ex=validation.exception
                     )
                 )
                 # On validation success forward the work product to the caller.
             return ValidationResult.success(context)
         
         # Certification for the search-by-rank target.
-        if context.rank_level is not None:
-            validation_result = toolkit.rank_service.validator.execute(
-                candidate=context.rank_level
+        if context.rank is not None:
+            validation = self.bundle.rank_service.validator.execute(
+                candidate=context.rank
             )
-            if validation_result.is_failure:
+            if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenContextValidatorException(
+                    TokenContextCheckerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TokenContextValidatorException.MSG,
-                        err_code=TokenContextValidatorException.ERR_CODE,
-                        ex=validation_result.exception
+                        msg=TokenContextCheckerException.MSG,
+                        err_code=TokenContextCheckerException.ERR_CODE,
+                        ex=validation.exception
                     )
                 )
                 # On validation success forward the work product to the caller.
@@ -226,20 +243,20 @@ class TokenContextChecker(StackContextChecker[TokenSearchContext]):
         
         # Certification for the search-by-color target.
         if context.color is not None:
-            validation_result = toolkit.priming_validator.execute(
+            validation = self.priming_validator.execute(
                 candidate=context.color,
                 model_type=GameColor,
                 null_exception=GameColorNullException()
             )
-            if validation_result.is_failure:
+            if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenContextValidatorException(
+                    TokenContextCheckerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TokenContextValidatorException.MSG,
-                        err_code=TokenContextValidatorException.ERR_CODE,
-                        ex=validation_result.exception
+                        msg=TokenContextCheckerException.MSG,
+                        err_code=TokenContextCheckerException.ERR_CODE,
+                        ex=validation.exception
                     )
                 )
                 # On validation success forward the work product to the caller.
@@ -247,20 +264,20 @@ class TokenContextChecker(StackContextChecker[TokenSearchContext]):
         
         # Certification for the search-by-ransom target.
         if context.ransom is not None:
-            validation_result = toolkit.number_validator.execute(
+            validation = self.bundle.number_validator.execute(
                 candidate=context.ransom,
                 floor=Persona.KING.ransom,
                 ceiling=Persona.QUEEN.ransom,
             )
-            if validation_result.is_failure:
+            if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenContextValidatorException(
+                    TokenContextCheckerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TokenContextValidatorException.MSG,
-                        err_code=TokenContextValidatorException.ERR_CODE,
-                        ex=validation_result.exception
+                        msg=TokenContextCheckerException.MSG,
+                        err_code=TokenContextCheckerException.ERR_CODE,
+                        ex=validation.exception
                     )
                 )
                 # On validation success forward the work product to the caller.
@@ -268,11 +285,11 @@ class TokenContextChecker(StackContextChecker[TokenSearchContext]):
         
         # Handle the case that, there is no validation logic for the attribute.
         return ValidationResult.failure(
-            TokenContextValidatorException(
+            TokenContextCheckerException(
                 cls_mthd=method,
                 cls_name=self.__class__.__name__,
-                msg=TokenContextValidatorException.MSG,
-                err_code=TokenContextValidatorException.ERR_CODE,
+                msg=TokenContextCheckerException.MSG,
+                err_code=TokenContextCheckerException.ERR_CODE,
                 ex=TokenContextValidationRouteException(
                     msg=TokenContextValidationRouteException.MSG,
                     err_code=TokenContextValidationRouteException.ERR_CODE,

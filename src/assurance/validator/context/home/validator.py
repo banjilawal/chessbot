@@ -91,7 +91,7 @@ class TokenHomeContextValidator(ContextValidator[TokenHomeContext]):
                 )
             )
         # --- Cast the candidate into HomeContext for routing attribute testing ---#
-        context = cast(TokenHomeContext, candidate)
+        context = cast(TokenHomeSearchContext, priming.payload)
         
         # Certification for the search-by-id target.
         if context.id is not None:
