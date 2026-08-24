@@ -12,19 +12,19 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Dict
 
-from assurance import ContextValidator, SquareContextValidator
-from authorization import SearchPermissionUtility
+from assurance import StackSearchContextValidator, SquareContextValidator
+from authorization import StackSearchPermissionUtility
 from domain import SquareSearchContext
 
 
 @dataclass
-class SquareSearchPermissionUtility(SearchPermissionUtility[SquareSearchContext]):
+class SquareStackSearchPermissionUtility(StackSearchPermissionUtility[SquareSearchContext]):
     """
     Role:
         -   Toolkit
 
     Responsibilities:
-        1.  Bundles resources the SquareSearchAuthorizer needs to evaluate a SquareSearchRequest..
+        1.  Bundles resources the SquareSearchAuthorizer needs to evaluate a SquareSearchRequest.
 
     Attributes:
         validator: Dict[str, ContextValidator]
@@ -33,9 +33,9 @@ class SquareSearchPermissionUtility(SearchPermissionUtility[SquareSearchContext]
     Provides:
 
     Super Class:
-        SearchPermissionUtility
+        StackSearchPermissionUtility
     """
-    validator: Dict[str, ContextValidator] = field(
+    validator: Dict[str, StackSearchContextValidator] = field(
         default_factory=lambda: {
             "square_context_validator": SquareContextValidator(),
         }

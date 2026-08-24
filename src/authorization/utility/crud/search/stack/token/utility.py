@@ -12,19 +12,21 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Dict
 
-from assurance import ContextValidator, TokenContextValidator
-from authorization import SearchPermissionUtility
+from assurance import StackSearchContextValidator, TokenContextValidator
+from authorization import StackSearchPermissionUtility
 from domain import TokenSearchContext
 
 
 @dataclass
-class TokenSearchPermissionUtility(SearchPermissionUtility[TokenSearchContext]):
+class TokenStackSearchPermissionUtility(
+    StackSearchPermissionUtility[TokenSearchContext]
+):
     """
     Role:
         -   Toolkit
 
     Responsibilities:
-        1.  Bundles resources the TokenSearchAuthorizer needs to evaluate a TokenSearchRequest..
+        1.  Bundles resources the TokenSearchAuthorizer needs to evaluate a TokenSearchRequest.
 
     Attributes:
         validator: Dict[str, ContextValidator]
@@ -33,9 +35,9 @@ class TokenSearchPermissionUtility(SearchPermissionUtility[TokenSearchContext]):
     Provides:
 
     Super Class:
-        SearchPermissionUtility
+        StackSearchPermissionUtility
     """
-    validator: Dict[str, ContextValidator] = field(
+    validator: Dict[str, StackSearchContextValidator] = field(
         default_factory=lambda: {
             "token_context_validator": TokenContextValidator(),
         }

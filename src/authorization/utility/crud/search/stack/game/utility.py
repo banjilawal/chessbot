@@ -12,19 +12,19 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Dict
 
-from assurance import ContextValidator, GameContextValidator
-from authorization import SearchPermissionUtility
+from assurance import StackSearchContextValidator, GameContextValidator
+from authorization import StackSearchPermissionUtility
 from domain import GameSearchContext
 
 
 @dataclass
-class GameSearchPermissionUtility(SearchPermissionUtility[GameSearchContext]):
+class GameStackSearchPermissionUtility(StackSearchPermissionUtility[GameSearchContext]):
     """
     Role:
         -   Toolkit
 
     Responsibilities:
-        1.  Bundles resources the GameSearchAuthorizer needs to evaluate a GameSearchRequest..
+        1.  Bundles resources the GameSearchAuthorizer needs to evaluate a GameSearchRequest.
 
     Attributes:
         validator: Dict[str, ContextValidator]
@@ -33,9 +33,9 @@ class GameSearchPermissionUtility(SearchPermissionUtility[GameSearchContext]):
     Provides:
 
     Super Class:
-        SearchPermissionUtility
+        StackSearchPermissionUtility
     """
-    validator: Dict[str, ContextValidator] = field(
+    validator: Dict[str, StackSearchContextValidator] = field(
         default_factory=lambda: {
             "game_context_validator": GameContextValidator(),
         }

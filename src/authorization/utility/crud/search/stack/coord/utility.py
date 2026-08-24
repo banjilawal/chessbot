@@ -12,19 +12,19 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Dict
 
-from assurance import ContextValidator, CoordContextValidator
-from authorization import SearchPermissionUtility
+from assurance import StackSearchContextValidator, CoordContextValidator
+from authorization import StackSearchPermissionUtility
 from domain import CoordSearchContext
 
 
 @dataclass
-class CoordSearchPermissionUtility(SearchPermissionUtility[CoordSearchContext]):
+class CoordStackSearchPermissionUtility(StackSearchPermissionUtility[CoordSearchContext]):
     """
     Role:
         -   Toolkit
 
     Responsibilities:
-        1.  Bundles resources the CoordSearchAuthorizer needs to evaluate a CoordSearchRequest..
+        1.  Bundles resources the CoordSearchAuthorizer needs to evaluate a CoordSearchRequest.
 
     Attributes:
         validator: Dict[str, ContextValidator]
@@ -33,9 +33,9 @@ class CoordSearchPermissionUtility(SearchPermissionUtility[CoordSearchContext]):
     Provides:
 
     Super Class:
-        SearchPermissionUtility
+        StackSearchPermissionUtility
     """
-    validator: Dict[str, ContextValidator] = field(
+    validator: Dict[str, StackSearchContextValidator] = field(
         default_factory=lambda: {
             "coord_context_validator": CoordContextValidator(),
         }

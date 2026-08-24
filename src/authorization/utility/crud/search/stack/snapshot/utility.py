@@ -12,19 +12,19 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Dict
 
-from assurance import ContextValidator, SnapshotContextValidator
-from authorization import SearchPermissionUtility
+from assurance import StackSearchContextValidator, SnapshotContextValidator
+from authorization import StackSearchPermissionUtility
 from domain import SnapshotSearchContext
 
 
 @dataclass
-class SnapshotSearchPermissionUtility(SearchPermissionUtility[SnapshotSearchContext]):
+class SnapshotStackSearchPermissionUtility(StackSearchPermissionUtility[SnapshotSearchContext]):
     """
     Role:
         -   Toolkit
 
     Responsibilities:
-        1.  Bundles resources the SnapshotSearchAuthorizer needs to evaluate a SnapshotSearchRequest..
+        1.  Bundles resources the SnapshotSearchAuthorizer needs to evaluate a SnapshotSearchRequest.
 
     Attributes:
         validator: Dict[str, ContextValidator]
@@ -33,9 +33,9 @@ class SnapshotSearchPermissionUtility(SearchPermissionUtility[SnapshotSearchCont
     Provides:
 
     Super Class:
-        SearchPermissionUtility
+        StackSearchPermissionUtility
     """
-    validator: Dict[str, ContextValidator] = field(
+    validator: Dict[str, StackSearchContextValidator] = field(
         default_factory=lambda: {
             "snapshot_context_validator": SnapshotContextValidator(),
         }

@@ -12,19 +12,19 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Dict
 
-from assurance import ContextValidator, TeamContextValidator
-from authorization import SearchPermissionUtility
+from assurance import StackSearchContextValidator, TeamContextValidator
+from authorization import StackSearchPermissionUtility
 from domain import TeamSearchContext
 
 
 @dataclass
-class TeamSearchPermissionUtility(SearchPermissionUtility[TeamSearchContext]):
+class TeamStackSearchPermissionUtility(StackSearchPermissionUtility[TeamSearchContext]):
     """
     Role:
         -   Toolkit
 
     Responsibilities:
-        1.  Bundles resources the TeamSearchAuthorizer needs to evaluate a TeamSearchRequest..
+        1.  Bundles resources the TeamSearchAuthorizer needs to evaluate a TeamSearchRequest.
 
     Attributes:
         validator: Dict[str, ContextValidator]
@@ -33,9 +33,9 @@ class TeamSearchPermissionUtility(SearchPermissionUtility[TeamSearchContext]):
     Provides:
 
     Super Class:
-        SearchPermissionUtility
+        StackSearchPermissionUtility
     """
-    validator: Dict[str, ContextValidator] = field(
+    validator: Dict[str, StackSearchContextValidator] = field(
         default_factory=lambda: {
             "team_context_validator": TeamContextValidator(),
         }

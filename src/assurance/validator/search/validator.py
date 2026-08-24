@@ -13,15 +13,15 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import SearchContextChecker, Validator
-from domain import SearchContext
+from assurance import StackSearchContextChecker, Validator
+from domain import StackSearchContext
 from util import LoggingLevelRouter
 
 
-T = TypeVar("T", bound="SearchContext")
+T = TypeVar("T", bound="StackSearchContext")
 
 
-class ContextValidator(Validator[T], ABC, Generic[T]):
+class StackSearchContextValidator(Validator[T], ABC, Generic[T]):
     """
     Role
         -   Transaction Worker
@@ -30,10 +30,11 @@ class ContextValidator(Validator[T], ABC, Generic[T]):
         -   Process Runner
 
     Responsibilities:
-        1.  Ensure a Context instance is certified safe, reliable, and consistent before use.
+        1.  Ensure a StackSearchContext instance is certified safe, reliable, 
+            and consistent before use.
 
     Attributes:
-        integrity_checker: ContextIntegrityChecker[T]
+        integrity_checker: StackSearchContextChecker[T]
         
     Provides:
         -   execute(self, candidate: Any) -> ValidationResult[T]
@@ -42,16 +43,16 @@ class ContextValidator(Validator[T], ABC, Generic[T]):
         Validator
     """
     
-    def __init__(self, integrity_checker: SearchContextChecker[T]):
+    def __init__(self, integrity_checker: StackSearchContextChecker[T]):
         """
         Args:
-            integrity_checker: SearchContextChecker
+            integrity_checker: StackSearchContextChecker
         """
         super().__init__(integrity_checker=integrity_checker)
     
     @property
-    def integrity_checker(self) -> SearchContextChecker[T]:
-        return cast(SearchContextChecker[T], super().integrity_checker)
+    def integrity_checker(self) -> StackSearchContextChecker[T]:
+        return cast(StackSearchContextChecker[T], super().integrity_checker)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

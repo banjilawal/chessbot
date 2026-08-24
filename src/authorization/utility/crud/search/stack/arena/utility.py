@@ -12,19 +12,19 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Dict
 
-from assurance import ContextValidator, ArenaContextValidator
-from authorization import SearchPermissionUtility
+from assurance import StackSearchContextValidator, ArenaContextValidator
+from authorization import StackSearchPermissionUtility
 from domain import ArenaSearchContext
 
 
 @dataclass
-class ArenaSearchPermissionUtility(SearchPermissionUtility[ArenaSearchContext]):
+class ArenaStackSearchPermissionUtility(StackSearchPermissionUtility[ArenaSearchContext]):
     """
     Role:
         -   Toolkit
 
     Responsibilities:
-        1.  Bundles resources the ArenaSearchAuthorizer needs to evaluate a ArenaSearchRequest..
+        1.  Bundles resources the ArenaSearchAuthorizer needs to evaluate a ArenaSearchRequest.
 
     Attributes:
         validator: Dict[str, ContextValidator]
@@ -33,9 +33,9 @@ class ArenaSearchPermissionUtility(SearchPermissionUtility[ArenaSearchContext]):
     Provides:
 
     Super Class:
-        SearchPermissionUtility
+        StackSearchPermissionUtility
     """
-    validator: Dict[str, ContextValidator] = field(
+    validator: Dict[str, StackSearchContextValidator] = field(
         default_factory=lambda: {
             "arena_context_validator": ArenaContextValidator(),
         }

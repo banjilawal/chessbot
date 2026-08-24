@@ -11,7 +11,7 @@ version: 0.0.2
 # =========== ASSURANCE.VALIDATOR PACKAGE ===========#
 
 # Packages
-from .context import *
+from .search import *
 from .model import *
 from .movement import *
 from .node import *

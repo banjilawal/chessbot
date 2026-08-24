@@ -27,4 +27,4 @@ from .team import *
 from .token import *
 
 # Module
-from .validator import ContextValidator
+from .validator import StackSearchContextValidator

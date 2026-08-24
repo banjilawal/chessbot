@@ -1,7 +1,7 @@
-# src/authorization/utility/crud/search/utility.py
+# src/authorization/utility/crud/search/stack/utility.py
 
 """
-Module: authorization.utility.crud.search.utility
+Module: authorization.utility.crud.search.stack.utility
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -14,14 +14,14 @@ from dataclasses import dataclass
 from typing import Dict, Generic, TypeVar
 
 from assurance import StackSearchContextValidator
-from authorization import CrudPermissionUtility
-from domain import SearchContext, SearchRequest
+from authorization import SearchPermissionUtility
+from domain import StackSearchContext
 
-T = TypeVar("T", bound="SearchContext")
+T = TypeVar("T", bound="StackSearchContext")
 
 
 @dataclass
-class SearchPermissionUtility(CrudPermissionUtility[SearchRequest], ABC, Generic[T]):
+class StackSearchPermissionUtility(SearchPermissionUtility[T], ABC, Generic[T]):
     """
     Role:
         -   Toolkit

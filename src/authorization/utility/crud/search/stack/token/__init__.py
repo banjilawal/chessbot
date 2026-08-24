@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .utility import TokenSearchPermissionUtility
+from .utility import TokenStackSearchPermissionUtility

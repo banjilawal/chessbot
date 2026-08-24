@@ -12,19 +12,19 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Dict
 
-from assurance import ContextValidator, BoardContextValidator
-from authorization import SearchPermissionUtility
+from assurance import StackSearchContextValidator, BoardContextValidator
+from authorization import StackSearchPermissionUtility
 from domain import BoardSearchContext
 
 
 @dataclass
-class BoardSearchPermissionUtility(SearchPermissionUtility[BoardSearchContext]):
+class BoardStackSearchPermissionUtility(StackSearchPermissionUtility[BoardSearchContext]):
     """
     Role:
         -   Toolkit
 
     Responsibilities:
-        1.  Bundles resources the BoardSearchAuthorizer needs to evaluate a BoardSearchRequest..
+        1.  Bundles resources the BoardSearchAuthorizer needs to evaluate a BoardSearchRequest.
 
     Attributes:
         validator: Dict[str, ContextValidator]
@@ -33,9 +33,9 @@ class BoardSearchPermissionUtility(SearchPermissionUtility[BoardSearchContext]):
     Provides:
 
     Super Class:
-        SearchPermissionUtility
+        StackSearchPermissionUtility
     """
-    validator: Dict[str, ContextValidator] = field(
+    validator: Dict[str, StackSearchContextValidator] = field(
         default_factory=lambda: {
             "board_context_validator": BoardContextValidator(),
         }

@@ -21,3 +21,4 @@ from .team import *
 from .token import *
 
 # Modules
+from .utility import StackSearchPermissionUtility

@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .utility import CoordSearchPermissionUtility
+from .utility import CoordStackSearchPermissionUtility

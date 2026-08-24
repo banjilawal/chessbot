@@ -15,10 +15,10 @@ from domain.search.context import TokenHomeContext
 from artifcat import ValidationResult
 from operation.toolkit import TokenHomeContextToolkit
 from util import LoggingLevelRouter
-from assurance.validator import ContextValidator
+from assurance.validator import StackSearchContextValidator
 
 
-class TokenHomeContextValidator(ContextValidator[TokenHomeContext]):
+class TokenHomeContextValidator(StackSearchContextValidator[TokenHomeContext]):
     """
     Role
         -   Transaction Worker

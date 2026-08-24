@@ -1,23 +1,24 @@
-# src/assurance/validator/context/coord/validator.py
+# src/assurance/validator/context/square/validator.py
 
 """
-Module: assurance.validator.context.coord.validator
+Module: assurance.validator.context.square.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
 from __future__ import annotations
-from typing import Any, Optional, cast
+
+from typing import Any, cast
 
 from artifcat import ValidationResult
-from assurance import ContextValidator, CoordContextChecker
-from domain import CoordSearchContext
-from err import CoordContextValidatorException
+from assurance import StackSearchContextValidator, SquareContextChecker
+from domain import SquareSearchContext
+from err import SquareContextValidatorException
 from util import LoggingLevelRouter
 
 
-class CoordContextValidator(ContextValidator[CoordSearchContext]):
+class SquareContextValidator(StackSearchContextValidator[SquareSearchContext]):
     """
     Role
         -   Transaction Worker
@@ -26,35 +27,35 @@ class CoordContextValidator(ContextValidator[CoordSearchContext]):
         -   Process Runner
 
     Responsibilities:
-        1.  Ensure a CoordSearchContext instance is certified safe, reliable, and consistent before use.
+        1.  Ensure a SquareSearchContext instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        integrity_checker: CoordContextChecker
+        integrity_checker: SquareContextChecker
 
     Provides:
-        -   execute(self, candidate: Any) -> ValidationResult[CoordSearchContext]
+        -   execute(self, candidate: Any) -> ValidationResult[SquareSearchContext]
 
     Super Class:
         ContextValidator
     """
     
-    def __init__(self, integrity_checker: Optional[CoordContextChecker] | None = None):
+    def __init__(self, integrity_checker: SquareContextChecker):
         """
         Args:
-            integrity_checker: Optional[CoordContextChecker]
+            integrity_checker: SquareContextChecker
         """
-        super().__init__(integrity_checker=integrity_checker or CoordContextChecker)
+        super().__init__(integrity_checker=integrity_checker)
     
     
     @property
-    def integrity_checker(self) -> CoordContextChecker:
-        return cast(CoordContextChecker, super().integrity_checker)
+    def integrity_checker(self) -> SquareContextChecker:
+        return cast(SquareContextChecker, super().integrity_checker)
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[CoordSearchContext]:
+    def execute(self, candidate: Any) -> ValidationResult[SquareSearchContext]:
         """
-        Certify a candidate is a CoordSearchContext that is safe to use.
+        Certify a candidate is a SquareContext that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if integrity_checker
@@ -63,9 +64,9 @@ class CoordContextValidator(ContextValidator[CoordSearchContext]):
         Args:
             candidate: Any
         Returns:
-            ValidationResult[CoordSearchContext]
+            ValidationResult[SquareSearchContext]
         Raises:
-            CoordContextValidatorException
+            SquareContextValidatorException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -74,19 +75,17 @@ class CoordContextValidator(ContextValidator[CoordSearchContext]):
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CoordContextValidatorException(
+                SquareContextValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CoordContextValidatorException.MSG,
-                    err_code=CoordContextValidatorException.ERR_CODE,
+                    msg=SquareContextValidatorException.MSG,
+                    err_code=SquareContextValidatorException.ERR_CODE,
                     ex=validation.exception
                 )
             )
         # --- Otherwise, cast and forward the work product to the caller. ---#
-        context = cast(CoordSearchContext, validation.payload)
+        context = cast(SquareSearchContext, validation.payload)
         return ValidationResult.success(context)
 
         
-
-
-
+    

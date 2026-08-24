@@ -1,24 +1,23 @@
-# src/assurance/validator/context/token/validator.py
+# src/assurance/validator/context/team/validator.py
 
 """
-Module: assurance.validator.context.token.validator
+Module: assurance.validator.context.team.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
 from __future__ import annotations
-
 from typing import Any, cast
 
 from artifcat import ValidationResult
-from assurance import ContextValidator, TokenContextChecker
-from domain import TokenSearchContext
-from err import TokenContextValidatorException
+from assurance import StackSearchContextValidator, TeamContextChecker
+from domain import TeamSearchContext
+from err import TeamContextValidatorException
 from util import LoggingLevelRouter
 
 
-class TokenContextValidator(ContextValidator[TokenSearchContext]):
+class TeamContextValidator(StackSearchContextValidator[TeamSearchContext]):
     """
     Role
         -   Transaction Worker
@@ -27,35 +26,33 @@ class TokenContextValidator(ContextValidator[TokenSearchContext]):
         -   Process Runner
 
     Responsibilities:
-        1.  Ensure a TokenSearchContext instance is certified safe, reliable, and consistent before use.
+        1.  Ensure a TeamSearchContext instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        integrity_checker: TokenContextChecker
+        integrity_checker: TeamContextChecker
 
     Provides:
-        -   execute(self, candidate: Any) -> ValidationResult[TokenSearchContext]
+        -   execute(self, candidate: Any) -> ValidationResult[TeamSearchContext]
 
     Super Class:
         ContextValidator
     """
     
-    def __init__(self, integrity_checker: TokenContextChecker):
+    def __init__(self, integrity_checker: TeamContextChecker):
         """
         Args:
-            integrity_checker: TokenContextChecker
+            integrity_checker: TeamContextChecker
         """
         super().__init__(integrity_checker=integrity_checker)
     
-    
     @property
-    def integrity_checker(self) -> TokenContextChecker:
-        return cast(TokenContextChecker, super().integrity_checker)
-    
+    def integrity_checker(self) -> TeamContextChecker:
+        return cast(TeamContextChecker, super().integrity_checker)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[TokenSearchContext]:
+    def execute(self, candidate: Any) -> ValidationResult[TeamSearchContext]:
         """
-        Certify a candidate is a TokenContext that is safe to use.
+        Certify a candidate is a TeamSearchContext that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if integrity_checker
@@ -64,9 +61,9 @@ class TokenContextValidator(ContextValidator[TokenSearchContext]):
         Args:
             candidate: Any
         Returns:
-            ValidationResult[TokenSearchContext]
+            ValidationResult[TeamSearchContext]
         Raises:
-            TokenContextValidatorException
+            TeamContextValidatorException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -75,17 +72,15 @@ class TokenContextValidator(ContextValidator[TokenSearchContext]):
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenContextValidatorException(
+                TeamContextValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenContextValidatorException.MSG,
-                    err_code=TokenContextValidatorException.ERR_CODE,
+                    msg=TeamContextValidatorException.MSG,
+                    err_code=TeamContextValidatorException.ERR_CODE,
                     ex=validation.exception
                 )
             )
         # --- Otherwise, cast and forward the work product to the caller. ---#
-        context = cast(TokenSearchContext, validation.payload)
+        context = cast(TeamSearchContext, validation.payload)
         return ValidationResult.success(context)
 
-        
-    
