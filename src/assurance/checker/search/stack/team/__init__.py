@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Module
-from .validator import TeamContextChecker
+from .checker import TeamContextChecker

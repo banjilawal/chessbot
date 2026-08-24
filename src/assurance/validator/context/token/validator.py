@@ -27,13 +27,13 @@ class TokenContextValidator(ContextValidator[TokenSearchContext]):
         -   Process Runner
 
     Responsibilities:
-        1.  Ensure a Context instance is certified safe, reliable, and consistent before use.
+        1.  Ensure a TokenSearchContext instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        integrity_checker: ContextIntegrityChecker[T]
+        integrity_checker: TokenContextChecker
 
     Provides:
-        -   execute(self, candidate: Any) -> ValidationResult[T]
+        -   execute(self, candidate: Any) -> ValidationResult[TokenSearchContext]
 
     Super Class:
         ContextValidator

@@ -8,18 +8,16 @@ version: 0.0.2
 """
 
 from __future__ import annotations
-
 from typing import Any, cast
 
-from domain.model import Schema, TeamContext
 from artifcat import ValidationResult
-from operation.toolkit import TeamContextToolkit
+from assurance import ContextValidator, TeamContextChecker
+from domain import TeamSearchContext
+from err import TeamContextValidatorException
 from util import LoggingLevelRouter
-from err import SchemaNullException, TeamContextValidatorException, TeamContextValidationRouteException
-from assurance.validator import ContextValidator
 
 
-class TeamContextValidator(ContextValidator[Team]):
+class TeamContextValidator(ContextValidator[TeamSearchContext]):
     """
     Role
         -   Transaction Worker
@@ -28,59 +26,50 @@ class TeamContextValidator(ContextValidator[Team]):
         -   Process Runner
 
     Responsibilities:
-        1.  Ensure a TeamContext instance is certified safe, reliable and consistent before use.
+        1.  Ensure a TeamSearchContext instance is certified safe, reliable, and consistent before use.
 
     Attributes:
+        integrity_checker: TeamContextChecker
 
     Provides:
-        -   def validate(
-                    candidate: Any,
-                    integrity_checker: TeamContextToolkit,
-            ) -> ValidationResult[Team]:
+        -   execute(self, candidate: Any) -> ValidationResult[TeamSearchContext]
 
     Super Class:
         ContextValidator
     """
-    @classmethod
-    @LoggingLevelRouter.monitor
-    def execute(
-            cls,
-            candidate: Any,
-            integrity_checker: TeamContextToolkit | None = None,
-    ) -> ValidationResult[Team]:
+    
+    def __init__(self, integrity_checker: TeamContextChecker):
         """
-        Certify a candidate is a TeamContext that is safe to use.
+        Args:
+            integrity_checker: TeamContextChecker
+        """
+        super().__init__(integrity_checker=integrity_checker)
+    
+    @property
+    def integrity_checker(self) -> TeamContextChecker:
+        return cast(TeamContextChecker, super().integrity_checker)
+    
+    @LoggingLevelRouter.monitor
+    def execute(self, candidate: Any) -> ValidationResult[TeamSearchContext]:
+        """
+        Certify a candidate is a TeamSearchContext that is safe to use.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if any of the following
-                occur
-                    -   The Validation is not primed.
-                    -   The enabled attribute fails a safety check.
-                    -   There is no validation path for the attribute.
+            1.  Send an exception chain in the ValidationResult if integrity_checker
+                returns a failure.
             2.  Otherwise, send the success result.
         Args:
-            candidate: Any,
-            integrity_checker: TeamContextToolkit,
+            candidate: Any
         Returns:
-            ValidationResult[Team]
+            ValidationResult[TeamSearchContext]
         Raises:
             TeamContextValidatorException
-            TeamContextValidationRouteException
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # --- Supply any missing dependencies. ---#
-        if toolkit is None:
-            toolkit = TeamContextToolkit()
-        
-        # Handle the case that, the validator is not primed.
-        priming_result = toolkit.context_priming_validator.execute(
-            candidate=candidate,
-            target_model=toolkit.context_model_type,
-            context_null_exception=toolkit.null_context_exception,
-            validator_checker=toolkit.team_toolkit.priming_validator
-        )
-        if priming_result.is_failure:
+        # Handle the case that integrity_checker flags the candidate.
+        validation = self.integrity_checker.execute(candidate=candidate)
+        if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TeamContextValidatorException(
@@ -88,101 +77,10 @@ class TeamContextValidator(ContextValidator[Team]):
                     cls_name=self.__class__.__name__,
                     msg=TeamContextValidatorException.MSG,
                     err_code=TeamContextValidatorException.ERR_CODE,
-                    ex=priming_result.exception
+                    ex=validation.exception
                 )
             )
-        # --- Cast the candidate into TeamContext for routing attribute testing ---#
-        context = cast(TeamSearchContext, priming.payload)
-        
-        # Certification for the search-by-id target.
-        if context.id is not None:
-            validation_result = toolkit.team_toolkit.identity_service.validate_id(
-                candidate=context.id
-            )
-            if validation_result.is_failure:
-                # Send the exception chain on failure.
-                return ValidationResult.failure(
-                    TeamContextValidatorException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=TeamContextValidatorException.MSG,
-                        err_code=TeamContextValidatorException.ERR_CODE,
-                        ex=validation_result.exception
-                    )
-                )
-            # On validation success forward the work product to the caller.
-            return ValidationResult.success(context)
-        
-        # Certification for the search-by-owner target.
-        if context.model_class is not None:
-            validation_result = toolkit.team_toolkit.player_validator.execute(
-                candidate=context.model_class
-            )
-            if validation_result.is_failure:
-                # Send the exception chain on failure.
-                return ValidationResult.failure(
-                    TeamContextValidatorException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=TeamContextValidatorException.MSG,
-                        err_code=TeamContextValidatorException.ERR_CODE,
-                        ex=validation_result.exception
-                    )
-                )
-            # On validation success forward the work product to the caller.
-            return ValidationResult.success(context)
-        
-        # Certification for the search-by-board target.
-        if context.board is not None:
-            validation_result = toolkit.team_toolkit.board_validator.execute(
-                candidate=context.board
-            )
-            if validation_result.is_failure:
-                if validation_result.is_failure:
-                    # Send the exception chain on failure.
-                    return ValidationResult.failure(
-                        TeamContextValidatorException(
-                            cls_mthd=method,
-                            cls_name=self.__class__.__name__,
-                            msg=TeamContextValidatorException.MSG,
-                            err_code=TeamContextValidatorException.ERR_CODE,
-                            ex=validation_result.exception
-                        )
-                    )
-                # On validation success forward the work product to the caller.
-                return ValidationResult.success(context)
-        
-        # Certification for the search-by-color target.
-        if context.schema is not None:
-            validation_result = toolkit.team_toolkit.priming_validator.execute(
-                candidate=context.schema,
-                model_type=Schema,
-                null_exception=SchemaNullException()
-            )
-            if validation_result.is_failure:
-                # Send the exception chain on failure.
-                return ValidationResult.failure(
-                    TeamContextValidatorException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=TeamContextValidatorException.MSG,
-                        err_code=TeamContextValidatorException.ERR_CODE,
-                        ex=validation_result.exception
-                    )
-                )
-                # On validation success forward the work product to the caller.
-            return ValidationResult.success(context)
-        
-        # Return the exception chain if there is no validation route for the context.
-        return ValidationResult.failure(
-            TeamContextValidatorException(
-                cls_mthd=method,
-                cls_name=self.__class__.__name__,
-                msg=TeamContextValidatorException.MSG,
-                err_code=TeamContextValidatorException.ERR_CODE,
-                ex=TeamContextValidationRouteException(
-                    msg=TeamContextValidationRouteException.MSG,
-                    err_code=TeamContextValidationRouteException.ERR_CODE,
-                )
-            )
-        )
+        # --- Otherwise, cast and forward the work product to the caller. ---#
+        context = cast(TeamSearchContext, validation.payload)
+        return ValidationResult.success(context)
+

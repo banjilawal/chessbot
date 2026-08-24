@@ -26,13 +26,13 @@ class CoordContextValidator(ContextValidator[CoordSearchContext]):
         -   Process Runner
 
     Responsibilities:
-        1.  Ensure a Context instance is certified safe, reliable, and consistent before use.
+        1.  Ensure a CoordSearchContext instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        integrity_checker: ContextIntegrityChecker[T]
+        integrity_checker: CoordContextChecker
 
     Provides:
-        -   execute(self, candidate: Any) -> ValidationResult[T]
+        -   execute(self, candidate: Any) -> ValidationResult[CoordSearchContext]
 
     Super Class:
         ContextValidator
@@ -54,7 +54,7 @@ class CoordContextValidator(ContextValidator[CoordSearchContext]):
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[CoordSearchContext]:
         """
-        Certify a candidate is a CoordContext that is safe to use.
+        Certify a candidate is a CoordSearchContext that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if integrity_checker
