@@ -13,7 +13,7 @@ version: 0.0.2
 from .coord import *
 from .square import *
 from .team import *
-from .token import *
+from .vector import *
 
 # Module
 from .checker import ChainContextChecker

@@ -11,7 +11,7 @@ version: 1.0.0
 
 # Packages
 from .analyzer import *
-from .array import *
+from err.assurance.array import *
 from .assurance import *
 from .bidirectional import *
 from .bootstrapper import *
@@ -24,7 +24,6 @@ from .controller import *
 from .detection import *
 from .domain import *
 from .duplicate import *
-from .empty import *
 from .factory import *
 from .full import *
 from .mapper import *
@@ -33,7 +32,7 @@ from .method import *
 from .microservice import *
 from .movement import *
 from .null import *
-from .number import *
+from err.assurance.number import *
 from .operand import *
 from .operation import *
 from .permitter import *
@@ -49,7 +48,7 @@ from .size import *
 from .space import *
 from err.collection.stack import *
 from .state import *
-from .string import *
+from err.assurance.string import *
 from .tester import *
 from .timeout import *
 from .toolkit import *
