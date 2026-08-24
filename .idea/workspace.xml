@@ -5,25 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/delete/stack/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/delete/stack/board/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/delete/stack/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/delete/stack/coord/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/delete/stack/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/delete/stack/game/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/delete/stack/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/delete/stack/player/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/delete/stack/snapshot/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/delete/stack/snapshot/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/delete/stack/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/delete/stack/square/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/delete/stack/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/delete/stack/team/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/delete/stack/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/delete/stack/token/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/chain/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/chain/dossier/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/chain/dossier/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/chain/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/chain/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/chain/vector/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/arena/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/board/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/context/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/context/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/coord/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/game/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/game/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/player/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/player/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/snapshot/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/snapshot/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/square/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/team/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/token/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/checker/crud/delete/stack/context/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/delete/stack/context/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/checker/crud/delete/stack/context/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/delete/stack/context/exception.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,61 +77,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.5481897991414868" />
-      <entry key="MS500" value="4.033029779529905" />
-      <entry key="S2" value="7.229783220787922" />
-      <entry key="S5" value="13.291762281204024" />
-      <entry key="S10" value="25.700633107223535" />
-      <entry key="S30" value="58.40321923305246" />
-      <entry key="S60" value="78.9474736390941" />
-      <entry key="M2" value="107.44112190799588" />
-      <entry key="M5" value="175.46680645823474" />
-      <entry key="M10" value="252.59184593358572" />
-      <entry key="M15" value="309.8176254136132" />
-      <entry key="M30" value="436.6583298835941" />
-      <entry key="H1" value="638.2547563394896" />
-      <entry key="H2" value="1009.8629615782007" />
-      <entry key="H4" value="1622.8586600876117" />
-      <entry key="D1" value="4661.030608500448" />
-      <entry key="W1" value="6742.283575461087" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.000000004503911" />
+      <entry key="S5" value="1.0006714538140462" />
+      <entry key="S10" value="1.0366253494511124" />
+      <entry key="S30" value="1.6356786917679527" />
+      <entry key="S60" value="3.0018050548578055" />
+      <entry key="M2" value="9.191377181193904" />
+      <entry key="M5" value="45.076758543385424" />
+      <entry key="M10" value="122.10770477568859" />
+      <entry key="M15" value="193.17514811890467" />
+      <entry key="M30" value="356.3708569828113" />
+      <entry key="H1" value="591.9811255555695" />
+      <entry key="H2" value="986.3466616860941" />
+      <entry key="H4" value="1618.0357031527615" />
+      <entry key="D1" value="4698.53479910431" />
+      <entry key="W1" value="6811.1093278926555" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="9.086488805706593E-113" />
-      <entry key="S5" value="2.1170405044169242E-45" />
-      <entry key="S10" value="6.39510009335858E-23" />
-      <entry key="S30" value="6.329386482908306E-8" />
-      <entry key="S60" value="3.7154395069577574E-4" />
-      <entry key="M2" value="0.03472165826535602" />
-      <entry key="M5" value="0.7269391691077859" />
-      <entry key="M10" value="2.3514242240001004" />
-      <entry key="M15" value="3.6693302333207694" />
-      <entry key="M30" value="6.386383428141181" />
-      <entry key="H1" value="10.601961156642055" />
-      <entry key="H2" value="19.048398152546394" />
-      <entry key="H4" value="36.37374490401144" />
-      <entry key="D1" value="146.56405731123087" />
-      <entry key="W1" value="226.94675413965" />
+      <entry key="MS500" value="2.4750063990129114E-308" />
+      <entry key="S2" value="1.9688536390912376E-77" />
+      <entry key="S5" value="3.1298758757941847E-31" />
+      <entry key="S10" value="7.940553734989072E-16" />
+      <entry key="S30" value="1.622581645923113E-5" />
+      <entry key="S60" value="0.006663188112297585" />
+      <entry key="M2" value="0.13946605825479336" />
+      <entry key="M5" value="0.9393729373494981" />
+      <entry key="M10" value="2.3159148491930495" />
+      <entry key="M15" value="3.618843106130416" />
+      <entry key="M30" value="6.698978594740946" />
+      <entry key="H1" value="11.3622297909715" />
+      <entry key="H2" value="20.06072446700329" />
+      <entry key="H4" value="37.49889831806824" />
+      <entry key="D1" value="148.31761328866978" />
+      <entry key="W1" value="229.6710443373805" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.2756434061469983" />
-      <entry key="MS500" value="3.884614636972782" />
-      <entry key="S2" value="7.160517871648587" />
-      <entry key="S5" value="13.23900929933087" />
-      <entry key="S10" value="25.64950443768753" />
-      <entry key="S30" value="58.36590134579707" />
-      <entry key="S60" value="78.92298196968285" />
-      <entry key="M2" value="107.45775508303034" />
-      <entry key="M5" value="176.17613911041227" />
-      <entry key="M10" value="254.92594815802684" />
-      <entry key="M15" value="313.4709469193009" />
-      <entry key="M30" value="443.0314673432614" />
-      <entry key="H1" value="648.8453133012828" />
-      <entry key="H2" value="1028.8995816474296" />
-      <entry key="H4" value="1659.2183882672239" />
-      <entry key="D1" value="4807.582451892823" />
-      <entry key="W1" value="6969.2275042945885" />
+      <entry key="MS100" value="0.9330329915368074" />
+      <entry key="MS500" value="0.9862327044933592" />
+      <entry key="S2" value="0.9965402673138748" />
+      <entry key="S5" value="0.9992850242865619" />
+      <entry key="S10" value="1.0359023153139637" />
+      <entry key="S30" value="1.635284223383089" />
+      <entry key="S60" value="3.0077508303184692" />
+      <entry key="M2" value="9.327638705088084" />
+      <entry key="M5" value="46.00783765635161" />
+      <entry key="M10" value="124.41244292663632" />
+      <entry key="M15" value="196.78197322015316" />
+      <entry key="M30" value="363.0580193061716" />
+      <entry key="H1" value="603.3323958855389" />
+      <entry key="H2" value="1006.3958777113044" />
+      <entry key="H4" value="1655.5208338079822" />
+      <entry key="D1" value="4846.840225721204" />
+      <entry key="W1" value="7040.777539501354" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -150,7 +162,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/assurance/checker/crud/delete/stack",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/assurance/checker/crud",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -164,11 +176,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/assurance/checker/crud" />
       <recent name="$PROJECT_DIR$/src/err/assurance/checker/crud/delete/stack" />
       <recent name="$PROJECT_DIR$/src/err/assurance/checker/crud/delete" />
       <recent name="$PROJECT_DIR$/src/err/assurance/checker/crud/delete/chain" />
       <recent name="$PROJECT_DIR$/src/err/assurance/checker/crud/delete/chain/context" />
-      <recent name="$PROJECT_DIR$/src/err/assurance/checker/crud" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/err/assurance" />
