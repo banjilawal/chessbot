@@ -1,7 +1,7 @@
-# src/err/assurance/checker/search/context/stack/team/exception.py
+# src/err/assurance/checker/crud/search/context/stack/team/exception.py
 
 """
-Module: err.assurance.checker.search.context.stack.team.exception
+Module: err.assurance.checker.crud.search.context.stack.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

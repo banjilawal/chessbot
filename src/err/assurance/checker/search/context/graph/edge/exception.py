@@ -1,7 +1,7 @@
-# src/err/assurance/checker/search/context/graph/edge/exception.py
+# src/err/assurance/checker/crud/search/context/graph/edge/exception.py
 
 """
-Module: err.assurance.checker.search.context.graph.edge.exception
+Module: err.assurance.checker.crud.search.context.graph.edge.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

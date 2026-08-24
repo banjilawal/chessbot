@@ -1,7 +1,7 @@
-# src/err/assurance/checker/search/context/stack/arena/exception.py
+# src/err/assurance/checker/crud/search/context/stack/arena/exception.py
 
 """
-Module: err.assurance.checker.search.context.stack.arena.exception
+Module: err.assurance.checker.crud.search.context.stack.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

@@ -1,7 +1,7 @@
-# src/err/assurance/checker/crud/search/context/flag/excess/token/exception.py
+# src/err/assurance/checker/crud/delete/exception.py
 
 """
-Module: err.assurance.checker.crud.search.context.flag.excess.token.exception
+Module: err.assurance.checker.crud.delete.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,24 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-
+from err import CrudCheckerException
 from artifcat import MethodResultType
-from err import ExcessContextFlagsException
 
 
 __all__ = [
-    # ======================# EXCESSIVE_TOKEN_CONTEXT_FLAGS_ENABLED #======================#
-    "ExcessTokenContextFlagsException",
+    # ======================# DELETE_CHECKER_FAILURE #======================#
+    "DeleteCheckerException",
 ]
 
-# ======================# EXCESSIVE_TOKEN_CONTEXT_FLAGS_ENABLED #======================#
-class ExcessTokenContextFlagsException(ExcessContextFlagsException):
+# ======================# DELETE_CHECKER_FAILURE #======================#
+class DeleteCheckerException(CrudCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating too many TokenSearchContext flags were enabled.
+        1.  Indicating assurance by a DeleteChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,10 +42,10 @@ class ExcessTokenContextFlagsException(ExcessContextFlagsException):
     Provides:
 
     Super Class:
-        SearchExcessContextFlagsException
+        CheckerException
     """
-    MSG = "Excessive TokenSearchContext flags enabled."
-    ERR_CODE = "EXCESSIVE_TOKEN_CONTEXT_FLAGS_ENABLED"
+    MSG = "DeleteChecker failure."
+    ERR_CODE = "DELETE_CHECKER_FAILURE"
     
     def __init__(
             self,

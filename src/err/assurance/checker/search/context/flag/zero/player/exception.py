@@ -1,7 +1,7 @@
-# src/err/assurance/checker/search/context/flag/zero/player/exception.py
+# src/err/assurance/checker/crud/search/context/flag/zero/player/exception.py
 
 """
-Module: err.assurance.checker.search.context.flag.zero.player.exception
+Module: err.assurance.checker.crud.search.context.flag.zero.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

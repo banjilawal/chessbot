@@ -1,7 +1,7 @@
-# src/err/assurance/checker/search/context/stack/game/exception.py
+# src/err/assurance/checker/crud/search/context/stack/game/exception.py
 
 """
-Module: err.assurance.checker.search.context.stack.game.exception
+Module: err.assurance.checker.crud.search.context.stack.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

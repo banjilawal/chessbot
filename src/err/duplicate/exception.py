@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ChessException
+from err import AssuranceException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# DUPLICATE_ITEM_ERROR #======================#
-class DuplicateItemException(ChessException):
+class DuplicateItemException(AssuranceException):
     """
     Role:
         -   Error Tracing

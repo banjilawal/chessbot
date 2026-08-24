@@ -1,7 +1,7 @@
-# src/err/assurance/checker/search/context/chain/exception.py
+# src/err/assurance/checker/crud/search/context/chain/exception.py
 
 """
-Module: err.assurance.checker.search.context.chain.exception
+Module: err.assurance.checker.crud.search.context.chain.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

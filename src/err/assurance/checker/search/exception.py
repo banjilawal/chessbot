@@ -1,7 +1,7 @@
-# src/err/assurance/checker/search/exception.py
+# src/err/assurance/checker/crud/search/exception.py
 
 """
-Module: err.assurance.checker.search.exception
+Module: err.assurance.checker.crud.search.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import IntegrityCheckerException
+from err import CrudCheckerException
 from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# SEARCH_INTEGRITY_CHECKER_FAILURE #======================#
+    # ======================# SEARCH_CHECKER_FAILURE #======================#
     "SearchCheckerException",
 ]
 
-# ======================# SEARCH_INTEGRITY_CHECKER_FAILURE #======================#
-class SearchCheckerException(IntegrityCheckerException):
+# ======================# SEARCH_CHECKER_FAILURE #======================#
+class SearchCheckerException(CrudCheckerException):
     """
     Role:
         -   Error Tracing
@@ -45,7 +45,7 @@ class SearchCheckerException(IntegrityCheckerException):
         CheckerException
     """
     MSG = "SearchChecker failure."
-    ERR_CODE = "SEARCH_INTEGRITY_CHECKER_FAILURE"
+    ERR_CODE = "SEARCH_CHECKER_FAILURE"
     
     def __init__(
             self,

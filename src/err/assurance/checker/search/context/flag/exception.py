@@ -1,7 +1,7 @@
-# src/err/assurance/checker/search/context/flag/exception.py
+# src/err/assurance/checker/crud/search/context/flag/exception.py
 
 """
-Module: err.assurance.checker.search.context.flag.exception
+Module: err.assurance.checker.crud.search.context.flag.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== ERR.ASSURANCE.CHECKER PACKAGE ===========#
 
 # Packages
+from .crud import *
 from .excess import *
 from .id import *
 from .model import *

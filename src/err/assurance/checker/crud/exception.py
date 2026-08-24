@@ -1,7 +1,7 @@
-# src/err/assurance/checker/crud/search/context/flag/excess/token/exception.py
+# src/err/assurance/checker/crud/exception.py
 
 """
-Module: err.assurance.checker.crud.search.context.flag.excess.token.exception
+Module: err.assurance.checker.crud.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,24 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-
+from err import IntegrityCheckerException
 from artifcat import MethodResultType
-from err import ExcessContextFlagsException
 
 
 __all__ = [
-    # ======================# EXCESSIVE_TOKEN_CONTEXT_FLAGS_ENABLED #======================#
-    "ExcessTokenContextFlagsException",
+    # ======================# CRUD_CHECKER_FAILURE #======================#
+    "CrudCheckerException",
 ]
 
-# ======================# EXCESSIVE_TOKEN_CONTEXT_FLAGS_ENABLED #======================#
-class ExcessTokenContextFlagsException(ExcessContextFlagsException):
+# ======================# CRUD_CHECKER_FAILURE #======================#
+class CrudCheckerException(IntegrityCheckerException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating too many TokenSearchContext flags were enabled.
+        1.  Indicating assurance by a CrudChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -43,10 +42,10 @@ class ExcessTokenContextFlagsException(ExcessContextFlagsException):
     Provides:
 
     Super Class:
-        SearchExcessContextFlagsException
+        CheckerException
     """
-    MSG = "Excessive TokenSearchContext flags enabled."
-    ERR_CODE = "EXCESSIVE_TOKEN_CONTEXT_FLAGS_ENABLED"
+    MSG = "CrudChecker failure."
+    ERR_CODE = "CRUD_CHECKER_FAILURE"
     
     def __init__(
             self,
