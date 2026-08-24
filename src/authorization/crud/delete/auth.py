@@ -39,12 +39,12 @@ class DeleteAuthorizer(CrudAuthorizer[T], ABC, Generic[T]):
         CrudAuthorizer
     """
     
-    def __init__(self, ruleset: DeleteRequestToolkit[T]):
+    def __init__(self, utility: DeleteRequestToolkit[T]):
         """
         Args:
-             ruleset: DeleteRequestToolkit[T]
+             utility: DeleteRequestToolkit[T]
         """
-        super().__init__(ruleset=ruleset)
+        super().__init__(utility=utility)
         
     @property
     def ruleset(self) -> DeleteRequestToolkit[T]:

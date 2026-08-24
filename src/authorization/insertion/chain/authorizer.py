@@ -23,8 +23,8 @@ T = TypeVar("T", bound="Node")
 
 class AddNodeRequestAuthorizer(InsertionRequestAuthorizer, ABC, Generic[T]):
     
-    def __init__(self, ruleset: AddNodeRequestToolkit[T]):
-        super().__init__(ruleset=ruleset)
+    def __init__(self, utility: AddNodeRequestToolkit[T]):
+        super().__init__(utility=utility)
         
     @property
     def ruleset(self) -> AddNodeRequestToolkit[T]:

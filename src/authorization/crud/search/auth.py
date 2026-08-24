@@ -40,15 +40,15 @@ class SearchAuthorizer(CrudAuthorizer[T], ABC, Generic[T]):
         CrudAuthorizer
     """
     
-    def __init__(self, ruleset: SearchRequestToolkit[T]):
+    def __init__(self, utility: SearchRequestToolkit[T]):
         """
         Args:
-             ruleset: SearchRequestToolkit[T]
+             utility: SearchRequestToolkit[T]
         """
-        super().__init__(ruleset=ruleset)
+        super().__init__(utility=utility)
         
     @property
-    def ruleset(self) -> SearchRequestToolkit[T]:
+    def ruleset(self) -> con:
         return cast(SearchRequestToolkit[T], super().ruleset)
     
     @abstractmethod

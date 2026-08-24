@@ -39,12 +39,12 @@ class CrudAuthorizer(RequestAuthorizer[T], ABC, Generic[T]):
     Super Class:
     """
     
-    def __init__(self, ruleset: PermissionRuleset[T]):
+    def __init__(self, utility: PermissionRuleset[T]):
         """
         Args:
-            ruleset: CrudRequestToolkit[T]
+            utility: CrudRequestToolkit[T]
         """
-        super().__init__(ruleset=ruleset)
+        super().__init__(utility=utility)
         
     @property
     def ruleset(self) -> PermissionRuleset[T]:

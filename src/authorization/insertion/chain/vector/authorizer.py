@@ -25,13 +25,13 @@ class AddVectorNodeRequestAuthorizer(AddNodeRequestAuthorizer[VectorNode]):
     
     def __init__(
             self,
-            ruleset: Optional[AddVectorNodeRequestToolkit] | None = None,
+            utility: Optional[AddVectorNodeRequestToolkit] | None = None,
     ):
         """
         Args:
-            ruleset: Optional[AddVectorNodeRequestToolkit]
+            utility: Optional[AddVectorNodeRequestToolkit]
         """
-        super().__init__(ruleset=ruleset or AddVectorNodeRequestToolkit())
+        super().__init__(utility=utility or AddVectorNodeRequestToolkit())
         
     @property
     def ruleset(self) -> AddVectorNodeRequestToolkit:

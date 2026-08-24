@@ -24,12 +24,12 @@ T = TypeVar("T", bound="DomainObjectCollection")
 
 class InsertionRequestAuthorizer(RequestAuthorizer[InsertionRequest], ABC, Generic[T]):
     
-    def __init__(self, ruleset: InsertPermissionRuleset[T]):
+    def __init__(self, utility: InsertPermissionRuleset[T]):
         """
         Args:
-            ruleset: InsertionRequestToolkit[T]
+            utility: InsertionRequestToolkit[T]
         """
-        super().__init__(ruleset=ruleset)
+        super().__init__(utility=utility)
         
     @property
     def ruleset(self) -> InsertPermissionRuleset[T]:

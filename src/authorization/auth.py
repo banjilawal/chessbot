@@ -12,11 +12,10 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
+from artifcat import AuthorizationDecision
+from authorization import PermissionUtility
 from domain import Request
-from artifcat.report import AuthorizationDecision
-from operation.toolkit import PermissionRuleset
 from util import LoggingLevelRouter
-
 
 T = TypeVar("T", bound="Request")
 
@@ -30,25 +29,25 @@ class RequestAuthorizer(ABC, Generic[T]):
         1.  Check if a Request satisfies integrity and consistency requirements.
 
     Attributes:
-        toolkit: RequestToolkit[T]
+        utility: PermissionUtility[T]
 
     Provides:
         -   execute(self, request: T) -> AuthorizationDecision
 
     Super Class:
     """
-    _ruleset: PermissionRuleset[T]
+    _utility: PermissionUtility[T]
     
-    def __init__(self, ruleset: PermissionRuleset[T]):
+    def __init__(self, utility: PermissionUtility[T]):
         """
         Args:
-            ruleset: RequestToolkit[T]
+            utility: PermissionUtility[T]
         """
-        self._ruleset = ruleset
+        self._utility = utility
         
     @property
-    def ruleset(self) -> PermissionRuleset[T]:
-        return self._ruleset
+    def utility(self) -> PermissionUtility[T]:
+        return self._utility
     
     @abstractmethod
     @LoggingLevelRouter.monitor
