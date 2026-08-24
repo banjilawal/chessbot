@@ -5,36 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/chain/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/chain/dossier/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/chain/dossier/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/chain/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/chain/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/chain/vector/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/arena/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/board/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/context/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/context/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/coord/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/game/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/player/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/snapshot/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/snapshot/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/square/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/team/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/checker/crud/insert/stack/token/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/transit/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/transit/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,61 +49,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.000000004503911" />
-      <entry key="S5" value="1.0006714538140462" />
-      <entry key="S10" value="1.0366253494511124" />
-      <entry key="S30" value="1.6356786917679527" />
-      <entry key="S60" value="3.0018050548578055" />
-      <entry key="M2" value="9.191377181193904" />
-      <entry key="M5" value="45.076758543385424" />
-      <entry key="M10" value="122.10770477568859" />
-      <entry key="M15" value="193.17514811890467" />
-      <entry key="M30" value="356.3708569828113" />
-      <entry key="H1" value="591.9811255555695" />
-      <entry key="H2" value="986.3466616860941" />
-      <entry key="H4" value="1618.0357031527615" />
-      <entry key="D1" value="4698.53479910431" />
-      <entry key="W1" value="6811.1093278926555" />
+      <entry key="MS100" value="1.0000000553003858" />
+      <entry key="MS500" value="1.0488319287546932" />
+      <entry key="S2" value="1.7955060441034998" />
+      <entry key="S5" value="2.58295896865934" />
+      <entry key="S10" value="3.1743946537017234" />
+      <entry key="S30" value="4.132349387994738" />
+      <entry key="S60" value="5.233253548162691" />
+      <entry key="M2" value="7.044610734463301" />
+      <entry key="M5" value="9.391554337784582" />
+      <entry key="M10" value="10.559473362775304" />
+      <entry key="M15" value="11.05713067920309" />
+      <entry key="M30" value="17.66257647072809" />
+      <entry key="H1" value="94.50027644363226" />
+      <entry key="H2" value="394.3532126677646" />
+      <entry key="H4" value="1043.5973738754876" />
+      <entry key="D1" value="4470.549537429417" />
+      <entry key="W1" value="6933.361288449896" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="2.4750063990129114E-308" />
-      <entry key="S2" value="1.9688536390912376E-77" />
-      <entry key="S5" value="3.1298758757941847E-31" />
-      <entry key="S10" value="7.940553734989072E-16" />
-      <entry key="S30" value="1.622581645923113E-5" />
-      <entry key="S60" value="0.006663188112297585" />
-      <entry key="M2" value="0.13946605825479336" />
-      <entry key="M5" value="0.9393729373494981" />
-      <entry key="M10" value="2.3159148491930495" />
-      <entry key="M15" value="3.618843106130416" />
-      <entry key="M30" value="6.698978594740946" />
-      <entry key="H1" value="11.3622297909715" />
-      <entry key="H2" value="20.06072446700329" />
-      <entry key="H4" value="37.49889831806824" />
-      <entry key="D1" value="148.31761328866978" />
-      <entry key="W1" value="229.6710443373805" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="1.1164105781117994E-124" />
+      <entry key="S60" value="1.7477961007794073E-62" />
+      <entry key="M2" value="2.258774480695133E-31" />
+      <entry key="M5" value="1.1391994921694713E-12" />
+      <entry key="M10" value="2.550371558527876E-6" />
+      <entry key="M15" value="3.8591382253351286E-4" />
+      <entry key="M30" value="0.06917813982588392" />
+      <entry key="H1" value="1.1546323284691467" />
+      <entry key="H2" value="6.394943111068217" />
+      <entry key="H4" value="21.17208090881935" />
+      <entry key="D1" value="134.83942781333" />
+      <entry key="W1" value="226.56635235546304" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9330329915368074" />
-      <entry key="MS500" value="0.9862327044933592" />
-      <entry key="S2" value="0.9965402673138748" />
-      <entry key="S5" value="0.9992850242865619" />
-      <entry key="S10" value="1.0359023153139637" />
-      <entry key="S30" value="1.635284223383089" />
-      <entry key="S60" value="3.0077508303184692" />
-      <entry key="M2" value="9.327638705088084" />
-      <entry key="M5" value="46.00783765635161" />
-      <entry key="M10" value="124.41244292663632" />
-      <entry key="M15" value="196.78197322015316" />
-      <entry key="M30" value="363.0580193061716" />
-      <entry key="H1" value="603.3323958855389" />
-      <entry key="H2" value="1006.3958777113044" />
-      <entry key="H4" value="1655.5208338079822" />
-      <entry key="D1" value="4846.840225721204" />
-      <entry key="W1" value="7040.777539501354" />
+      <entry key="MS100" value="0.8827030450989669" />
+      <entry key="MS500" value="1.022947419982717" />
+      <entry key="S2" value="1.784112351530531" />
+      <entry key="S5" value="2.5763628403776297" />
+      <entry key="S10" value="3.1702861274491565" />
+      <entry key="S30" value="4.130428302767225" />
+      <entry key="S60" value="5.231928768674512" />
+      <entry key="M2" value="7.043645654665512" />
+      <entry key="M5" value="9.391011722803004" />
+      <entry key="M10" value="10.559165702593026" />
+      <entry key="M15" value="11.057297901494938" />
+      <entry key="M30" value="17.73149069515767" />
+      <entry key="H1" value="95.65361009936852" />
+      <entry key="H2" value="400.74426760903805" />
+      <entry key="H4" value="1064.761502075114" />
+      <entry key="D1" value="4605.377840176706" />
+      <entry key="W1" value="7159.924839314268" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -162,7 +134,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/assurance/checker/crud",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/transit",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -176,18 +148,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/transit" />
       <recent name="$PROJECT_DIR$/src/err/assurance/checker/crud" />
       <recent name="$PROJECT_DIR$/src/err/assurance/checker/crud/delete/stack" />
       <recent name="$PROJECT_DIR$/src/err/assurance/checker/crud/delete" />
       <recent name="$PROJECT_DIR$/src/err/assurance/checker/crud/delete/chain" />
-      <recent name="$PROJECT_DIR$/src/err/assurance/checker/crud/delete/chain/context" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/assurance/checker/crud" />
       <recent name="$PROJECT_DIR$/src/err/assurance" />
       <recent name="$PROJECT_DIR$/src/assurance" />
       <recent name="$PROJECT_DIR$/src/assurance/validator/search/stack" />
       <recent name="$PROJECT_DIR$/src/authorization/utility/crud/search/stack" />
-      <recent name="$PROJECT_DIR$/src/transit" />
     </key>
   </component>
   <component name="RunManager" selected="Python.checker">
