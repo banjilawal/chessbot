@@ -15,7 +15,7 @@ from .excess import *
 from .id import *
 from .model import *
 from .register import *
-from .search import *
+from err.assurance.checker.crud.search import *
 from .space import *
 from .toggle import *
 from .zero import *
