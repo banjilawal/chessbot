@@ -1,7 +1,7 @@
-# src/authorization/utility/utility.py
+# src/authorization/utility/crud/utility.py
 
 """
-Module: authorization.utility.utility
+Module: authorization.utility.crud.utility
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -14,19 +14,21 @@ from dataclasses import dataclass
 from typing import Dict, Generic, TypeVar
 
 from assurance import Validator
-from domain import Request
+from authorization import PermissionUtility
+from domain import CrudRequest
 
-T = TypeVar("T", bound="Request")
+
+T = TypeVar("T", bound="CrudRequest")
 
 
 @dataclass
-class PermissionUtility(ABC, Generic[T]):
+class CrudPermissionUtility(PermissionUtility[T], ABC, Generic[T]):
     """
     Role:
         -   Toolkit
 
     Responsibilities:
-        1.  Bundles resources the Authorizer needs to evaluate a Request.
+        1.  Bundles resources the CrudAuthorizer needs to evaluate a CrudRequest.
 
     Attributes:
         validator: Dict[str, ContextValidator]

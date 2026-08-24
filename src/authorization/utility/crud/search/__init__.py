@@ -1,0 +1,19 @@
+# src/authorization/utility/crud/search/__init__.py
+
+"""
+Module: authorization.utility.crud.search.__init__
+Author: Banji Lawal
+Created: 2026-03-30
+version: 0.0.2
+"""
+
+# =========== AUTHORIZATION.UTILITY.CRUD.SEARCH PACKAGE ===========#
+
+# Packages
+from .coord import *
+from .square import *
+from .team import *
+from .token import *
+
+# Modules
+from .utility import SearchPermissionUtility

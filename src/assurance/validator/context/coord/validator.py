@@ -8,7 +8,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
-from typing import Any, cast
+from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import ContextValidator, CoordContextChecker
@@ -38,12 +38,12 @@ class CoordContextValidator(ContextValidator[CoordSearchContext]):
         ContextValidator
     """
     
-    def __init__(self, integrity_checker: CoordContextChecker):
+    def __init__(self, integrity_checker: Optional[CoordContextChecker] | None = None):
         """
         Args:
-            integrity_checker: CoordContextChecker
+            integrity_checker: Optional[CoordContextChecker]
         """
-        super().__init__(integrity_checker=integrity_checker)
+        super().__init__(integrity_checker=integrity_checker or CoordContextChecker)
     
     
     @property

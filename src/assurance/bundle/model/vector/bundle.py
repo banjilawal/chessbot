@@ -20,7 +20,7 @@ from domain import Vector, VectorTypeUnions, VectorNullExceptionRoster
 class VectorValidationBundle(ValidationBundle[Vector]):
     """
     Role:
-        -   Container
+        -   Toolkit
 
     Responsibilities:
         1.  Bundles types, null-exceptions, attribute-validators, and utilities VectorIntegrityChecker needs to

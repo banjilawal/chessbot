@@ -20,7 +20,7 @@ from domain import Team, TeamTypeUnions, TeamNullExceptionRoster
 class TeamValidationBundle(ValidationBundle[Team]):
     """
     Role:
-        -   Container
+        -   Toolkit
 
     Responsibilities:
         1.  Bundles types, null-exceptions, attribute-validators, and utilities TeamIntegrityChecker needs to

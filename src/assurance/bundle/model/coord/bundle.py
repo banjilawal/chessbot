@@ -20,7 +20,7 @@ from domain import Coord, CoordTypeUnions, CoordNullExceptionRoster
 class CoordValidationBundle(ValidationBundle[Coord]):
     """
     Role:
-        -   Container
+        -   Toolkit
 
     Responsibilities:
         1.  Bundles types, null-exceptions, attribute-validators, and utilities CoordIntegrityChecker needs to

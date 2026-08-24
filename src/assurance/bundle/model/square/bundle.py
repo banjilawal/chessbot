@@ -21,7 +21,7 @@ from sensor import SquareCollider
 class SquareValidationBundle(ValidationBundle[Square]):
     """
     Role:
-        -   Container
+        -   Toolkit
 
     Responsibilities:
         1.  Bundles types, null-exceptions, attribute-validators, and utilities SquareIntegrityChecker needs to

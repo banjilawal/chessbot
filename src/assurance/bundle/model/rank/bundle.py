@@ -20,7 +20,7 @@ from domain import Rank, RankTypeUnions, RankNullExceptionRoster
 class RankValidationBundle(ValidationBundle[Rank]):
     """
     Role:
-        -   Container
+        -   Toolkit
 
     Responsibilities:
         1.  Bundles types, null-exceptions, attribute-validators, and utilities RankIntegrityChecker needs to
