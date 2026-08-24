@@ -1,7 +1,7 @@
-# src/authorization/utility/crud/search/.coord.utility.py
+# src/authorization/utility/crud/search/stack/coord/utility.py
 
 """
-Module: authorization.utility.crud.search.coord.utility
+Module: authorization.utility.crud.search.stack.coord.utility
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -18,7 +18,7 @@ from domain import CoordSearchContext
 
 
 @dataclass
-class SearchPermissionUtility(SearchPermissionUtility[CoordSearchContext]):
+class CoordSearchPermissionUtility(SearchPermissionUtility[CoordSearchContext]):
     """
     Role:
         -   Toolkit
