@@ -8,16 +8,20 @@ version: 0.0.2
 """
 
 from __future__ import annotations
-from typing import Any, Generic, TypeVar
 
-from artifcat.result import ValidationResult
-from operation.toolkit import ContextToolkit
+from abc import ABC, abstractmethod
+from typing import Any, Generic, TypeVar, cast
+
+from artifcat import ValidationResult
+from assurance import SearchContextChecker, Validator
+from domain import SearchContext
 from util import LoggingLevelRouter
-from assurance.validator import Validator
 
-C = TypeVar("C", bound="Context")
 
-class ContextValidator(Validator, Generic[C]):
+T = TypeVar("T", bound="SearchContext")
+
+
+class ContextValidator(Validator[T], ABC, Generic[T]):
     """
     Role
         -   Transaction Worker
@@ -26,19 +30,32 @@ class ContextValidator(Validator, Generic[C]):
         -   Process Runner
 
     Responsibilities:
-        1.  Ensure a Context instance is certified safe, reliable and consistent before use.
+        1.  Ensure a Context instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-
+        integrity_checker: ContextIntegrityChecker[T]
+        
     Provides:
-        -   def validate(candidate: Any, integrity_checker: ContextToolkit[T],) -> ValidationResult[Context[T]]:
+        -   execute(self, candidate: Any) -> ValidationResult
 
     Super Class:
-        ContextValidator
+        Validator
     """
-    @classmethod
+    
+    def __init__(self, integrity_checker: SearchContextChecker[T]):
+        """
+        Args:
+            integrity_checker: SearchContextChecker
+        """
+        super().__init__(integrity_checker=integrity_checker)
+    
+    @property
+    def integrity_checker(self) -> SearchContextChecker[T]:
+        return cast(SearchContextChecker[T], super().integrity_checker)
+    
+    @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(cls, candidate: Any, integrity_checker: ContextToolkit[C], *args, **kwargs) -> ValidationResult:
+    def execute(self, candidate: Any) -> ValidationResult[T]:
         pass
-        
+    
     

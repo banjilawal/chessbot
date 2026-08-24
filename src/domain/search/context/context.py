@@ -9,7 +9,8 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Generic, Optional, TypeVar
+from ast import Dict
+from typing import Any, Generic, Optional, TypeVar
 from abc import ABC, abstractmethod
 
 from domain import DomainObject, DomainSearchObject
@@ -83,6 +84,6 @@ class SearchContext(DomainSearchObject, ABC, Generic[T]):
 
     @property
     @abstractmethod
-    def to_dict(self) -> Dict[str, Any]
+    def to_dict(self) -> Dict[str, Any]:
         """Implementations must override."""
         pass
