@@ -1,7 +1,7 @@
-# src/err/operation/vector/transform/operation.py
+# src/err/operator/vector/transform/operation.py
 
 """
-Module: err.operation.vector.transform.operation
+Module: err.operator.vector.transform.operation
 Author: Banji Lawal
 Created: 2026-04-07
 version: 1.0.0
@@ -17,11 +17,11 @@ __all__ = [
     "VectorTransformException",
 ]
 
-from err import VectorOperationException
+from err import VectorOperatorException
 
 
 # ======================# VECTOR_TRANSFORM_OPERATION_ERROR #======================#
-class VectorTransformException(VectorOperationException):
+class VectorTransformException(VectorOperatorException):
     """
     Role:
         -   Error Tracing

@@ -1,7 +1,7 @@
-# src/err/operation/primer/assembly/context/exception.py
+# src/err/operator/primer/assembly/context/exception.py
 
 """
-Module: err.operation.primer.assembly.context.arena.exception
+Module: err.operator.primer.assembly.context.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

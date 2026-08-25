@@ -1,13 +1,13 @@
-# src/err/operation/assembly/binder/node/__init__.py
+# src/err/operator/assembly/binder/node/__init__.py
 
 """
-Module: err.operation.assembly.binder.node.__init__
+Module: err.operator.assembly.binder.node.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# =========== ERR.OPERATION.ASSEMBLY.BINDER.NODE PACKAGE ===========#
+# =========== ERR.OPERATOR.ASSEMBLY.BINDER.NODE PACKAGE ===========#
 
 # Packages
 

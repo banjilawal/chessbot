@@ -1,7 +1,7 @@
-# src/err/operation/assembly/binder/node/exception.py
+# src/err/operator/assembly/binder/node/exception.py
 
 """
-Module: err.operation.assembly.binder.node.exception
+Module: err.operator.assembly.binder.node.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

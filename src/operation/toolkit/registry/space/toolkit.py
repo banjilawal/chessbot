@@ -15,7 +15,7 @@ from typing import Generic, Optional, Type, TypeVar, cast
 
 from domain.metadata.blueprint import SpaceReservoirBlueprint
 from carrier import SpaceReservoirCarrier
-from err.null.carrier.space.reservoir import SpaceReservoirNullException
+from err.null.transit.carrier.space.reservoir import SpaceReservoirNullException
 from operation.toolkit.registry.space.toolkit import MathToolkit, Toolkit
 
 T = TypeVar("T", bound="SpaceReservoir")

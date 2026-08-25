@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import OperationException
+from err import OperatorException
 
 __all__ = [
     # ======================# FINALIZATION_FAILURE #======================#
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# FINALIZATION_FAILURE #======================#
-class FinalizationException(OperationException):
+class FinalizationException(OperatorException):
     """
     Role:
         -   Error Tracing

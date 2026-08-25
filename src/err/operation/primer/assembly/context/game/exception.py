@@ -1,7 +1,7 @@
-# src/err/operation/primer/assembly/context/game/exception.py
+# src/err/operator/primer/assembly/context/game/exception.py
 
 """
-Module: err.operation.primer.assembly.context.game.exception
+Module: err.operator.primer.assembly.context.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

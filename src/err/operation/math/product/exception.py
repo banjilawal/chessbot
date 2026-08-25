@@ -1,7 +1,7 @@
-# src/err/operation/vector/product/operation.py
+# src/err/operator/vector/product/operation.py
 
 """
-Module: err.operation.vector.product.operation
+Module: err.operator.vector.product.operation
 Author: Banji Lawal
 Created: 2026-04-07
 version: 1.0.0
@@ -17,11 +17,11 @@ __all__ = [
     "ScalarProductException",
 ]
 
-from err import VectorOperationException
+from err import VectorOperatorException
 
 
 # ======================# SCALAR_PRODUCT_ERROR #======================#
-class ScalarProductException(VectorOperationException):
+class ScalarProductException(VectorOperatorException):
     """
     Role:
         -   Error Tracing

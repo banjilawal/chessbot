@@ -17,11 +17,11 @@ __all__ = [
     "VectorRegisterMismatchException",
 ]
 
-from err import VectorOperationException
+from err import VectorOperatorException
 
 
 # ======================# VECTOR_REGISTER_MISMATCH_ERROR #======================#
-class VectorRegisterMismatchException(VectorOperationException):
+class VectorRegisterMismatchException(VectorOperatorException):
     """
     Role:
         -   Error Tracing

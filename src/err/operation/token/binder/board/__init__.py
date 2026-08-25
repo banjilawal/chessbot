@@ -1,13 +1,13 @@
-# src/err/operation/token/binder/board/__init__.py
+# src/err/operator/token/binder/board/__init__.py
 
 """
-Module: err.operation.token.binder.board.__init__
+Module: err.operator.token.binder.board.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# =========== ERR.OPERATION.TOKEN.BINDER.BOARD PACKAGE ===========#
+# =========== ERR.OPERATOR.TOKEN.BINDER.BOARD PACKAGE ===========#
 
 # Packages
 

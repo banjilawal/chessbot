@@ -1,4 +1,4 @@
-# src/err/operation/primer/assembly/formation/exception.py
+# src/err/operator/primer/assembly/formation/exception.py
 
 """
 Module: err.priming.assembly.formation.exception

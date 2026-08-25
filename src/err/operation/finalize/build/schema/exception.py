@@ -1,4 +1,4 @@
-# src/err/operation/finalize/build/schema/exception.py
+# src/err/operator/finalize/build/schema/exception.py
 
 """
 Module: err.finalize.build.schema.exception

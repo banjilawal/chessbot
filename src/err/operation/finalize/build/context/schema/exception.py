@@ -1,7 +1,7 @@
-# src/err/operation/finalize/build/context/schema/exception.py
+# src/err/operator/finalize/build/context/schema/exception.py
 
 """
-Module: err.operation.finalize.build.context.schema.exception
+Module: err.operator.finalize.build.context.schema.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

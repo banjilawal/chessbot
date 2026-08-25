@@ -1,7 +1,7 @@
-# src/err/operation/assembly/assembly.py
+# src/err/operator/assembly/assembly.py
 
 """
-Module: err.operation.assembly.assembly
+Module: err.operator.assembly.assembly
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import OperationException
+from err import OperatorException
 
 __all__ = [
     # ======================# ASSEMBLY_FAILURE #======================#
@@ -22,7 +22,7 @@ from artifcat import MethodResultType
 
 
 # ======================# ASSEMBLY_FAILURE #======================#
-class AssemblyException(OperationException):
+class AssemblyException(OperatorException):
     """
     Role:
         -   Failure Tracing

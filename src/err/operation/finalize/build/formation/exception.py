@@ -1,4 +1,4 @@
-# src/err/operation/finalize/build/formation/exception.py
+# src/err/operator/finalize/build/formation/exception.py
 
 """
 Module: err.finalize.build.formation.exception

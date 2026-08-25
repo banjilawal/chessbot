@@ -1,13 +1,13 @@
-# src/err/operation/primer/assembly/formation/__init__.py
+# src/err/operator/primer/assembly/formation/__init__.py
 
 """
-Module: err.operation.primer.assembly.formation.__init__
+Module: err.operator.primer.assembly.formation.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.OPERATION.PRIMER.ASSEMBLY.FORMATION PACKAGE ===========#
+# ============ ERR.OPERATOR.PRIMER.ASSEMBLY.FORMATION PACKAGE ===========#
 
 # Packages
 

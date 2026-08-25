@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from typing import Any, Optional
-from err import TokenOperationException
+from err import TokenOperatorException
 
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# NODE_TOKEN_FAILURE #======================#
-class NodeTokenOperationException(TokenOperationException):
+class NodeTokenOperationException(TokenOperatorException):
     """
     Role:
         -   Error Tracing

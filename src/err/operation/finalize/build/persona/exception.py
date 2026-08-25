@@ -1,4 +1,4 @@
-# src/err/operation/finalize/build/persona/exception.py
+# src/err/operator/finalize/build/persona/exception.py
 
 """
 Module: err.finalize.build.persona.exception

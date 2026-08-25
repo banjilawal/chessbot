@@ -1,4 +1,4 @@
-# src/err/operation/primer/assembly/arena/__init__.py
+# src/err/operator/primer/assembly/arena/__init__.py
 
 """
 Module: err.priming.assembly.arena.__init__

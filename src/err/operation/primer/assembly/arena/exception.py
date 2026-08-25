@@ -1,4 +1,4 @@
-# src/err/operation/primer/assembly/arena/exception.py
+# src/err/operator/primer/assembly/arena/exception.py
 
 """
 Module: err.priming.assembly.arena.exception

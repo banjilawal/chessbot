@@ -10,7 +10,7 @@ from typing import Optional, Tuple, Type, cast
 
 from collection import VectorSet
 from err import BishopTraversalPatternException
-from err.null.recurrence.group import BishopRecurrenceSeriesNullException
+from err.null.topology.recurrence.group import BishopRecurrenceSeriesNullException
 from domain.model import Bishop
 from topology.pattern import TraversalTopologyGenerator, TraversalSignature
 from topology.recurrence import BishopRecurrenceRegistries

@@ -1,4 +1,4 @@
-# src/err/operation/primer/assembly/node/exception.py
+# src/err/operator/primer/assembly/node/exception.py
 
 """
 Module: err.priming.assembly.node.exception

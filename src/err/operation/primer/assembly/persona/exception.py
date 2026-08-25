@@ -1,4 +1,4 @@
-# src/err/operation/primer/assembly/persona/exception.py
+# src/err/operator/primer/assembly/persona/exception.py
 
 """
 Module: err.priming.assembly.persona.exception

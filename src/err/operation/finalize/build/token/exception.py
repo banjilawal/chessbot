@@ -1,7 +1,7 @@
-# src/err/operation/finalize/build/token/exception.py
+# src/err/operator/finalize/build/token/exception.py
 
 """
-Module: err.operation.finalize.build.build.token.exception
+Module: err.operator.finalize.build.build.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

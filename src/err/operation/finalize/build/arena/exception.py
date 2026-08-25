@@ -1,4 +1,4 @@
-# src/err/operation/finalize/build/arena/exception.py
+# src/err/operator/finalize/build/arena/exception.py
 
 """
 Module: err.finalize.build.arena.exception

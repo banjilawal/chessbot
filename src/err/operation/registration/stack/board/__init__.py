@@ -1,13 +1,13 @@
-# src/err/operation/registration/stack/board/__init__.py
+# src/err/operator/registration/stack/board/__init__.py
 
 """
-Module: err.operation.registration.stack.board.__init__
+Module: err.operator.registration.stack.board.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.OPERATION.REGISTRATION.STACK.BOARD PACKAGE ===========#
+# ============ ERR.OPERATOR.REGISTRATION.STACK.BOARD PACKAGE ===========#
 
 # Packages
 

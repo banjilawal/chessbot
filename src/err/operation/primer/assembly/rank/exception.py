@@ -1,4 +1,4 @@
-# src/err/operation/primer/assembly/rank/exception.py
+# src/err/operator/primer/assembly/rank/exception.py
 
 """
 Module: err.priming.assembly.rank.exception

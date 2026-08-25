@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# AUTHORIZATION_FAILURE #======================#
-    "AuthorizationException",
+    # ======================# REQUEST_AUTHORIZER_ISSUED_DENIAL #======================#
+    "RequestAuthorizerException",
 ]
 
-# ======================# AUTHORIZATION_FAILURE #======================#
-class AuthorizationException(ChessException):
+# ======================# REQUEST_AUTHORIZER_ISSUED_DENIAL #======================#
+class RequestAuthorizerException(ChessException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating an Authorization worker experienced an error.
+        1.  Indicating the reason a RequestAuthorizer denied a Request.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class AuthorizationException(ChessException):
     Super Class:
         ChessException
     """
-    MSG = "Authorization failure"
-    ERR_CODE = "AUTHORIZATION_FAILURE"
+    MSG = "RequestAuthorizer failure"
+    ERR_CODE = "REQUEST_AUTHORIZER_ISSUED_DENIAL"
     
     def __init__(
             self,

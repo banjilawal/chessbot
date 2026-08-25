@@ -1,4 +1,4 @@
-# src/err/operation/finalize/build/board/exception.py
+# src/err/operator/finalize/build/board/exception.py
 
 """
 Module: err.finalize.build.board.exception

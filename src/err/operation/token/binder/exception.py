@@ -1,7 +1,7 @@
-# src/err/operation/token/binder/exception.py
+# src/err/operator/token/binder/exception.py
 
 """
-Module: err.operation.token.binder.exception
+Module: err.operator.token.binder.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenOperatorException
 
 
 __all__ = [
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# BINDER_TOKEN_FAILURE #======================#
-class BinderTokenOperationException(TokenOperationException):
+class BinderTokenOperationException(TokenOperatorException):
     """
     Role:
         -   Error Tracing

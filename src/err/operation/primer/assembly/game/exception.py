@@ -1,4 +1,4 @@
-# src/err/operation/primer/assembly/game/exception.py
+# src/err/operator/primer/assembly/game/exception.py
 
 """
 Module: err.priming.assembly.game.exception

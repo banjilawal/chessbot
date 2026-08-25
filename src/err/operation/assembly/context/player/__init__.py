@@ -1,13 +1,13 @@
-# src/err/operation/assembly/context/player/__init__.py
+# src/err/operator/assembly/context/player/__init__.py
 
 """
-Module: err.operation.assembly.context.player.__init__
+Module: err.operator.assembly.context.player.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# =========== ERR.OPERATION.ASSEMBLY.CONTEXT.PLAYER PACKAGE ===========#
+# =========== ERR.OPERATOR.ASSEMBLY.CONTEXT.PLAYER PACKAGE ===========#
 
 # Packages
 

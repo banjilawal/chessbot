@@ -1,4 +1,4 @@
-# src/err/operation/finalize/build/edge/exception.py
+# src/err/operator/finalize/build/edge/exception.py
 
 """
 Module: err.finalize.build.edge.exception

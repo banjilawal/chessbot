@@ -1,7 +1,7 @@
-# src/err/operation/visit/stack/coord/exception.py
+# src/err/operator/visit/stack/coord/exception.py
 
 """
-Module: err.operation.visit.stack.coord.exception
+Module: err.operator.visit.stack.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

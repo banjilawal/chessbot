@@ -1,13 +1,13 @@
-# src/err/operation/visit/stack/snapshot/__init__.py
+# src/err/operator/visit/stack/snapshot/__init__.py
 
 """
-Module: err.operation.visit.stack.snapshot.__init__
+Module: err.operator.visit.stack.snapshot.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.OPERATION.VISIT.STACK.SNAPSHOT PACKAGE ===========#
+# ============ ERR.OPERATOR.VISIT.STACK.SNAPSHOT PACKAGE ===========#
 
 # Packages
 

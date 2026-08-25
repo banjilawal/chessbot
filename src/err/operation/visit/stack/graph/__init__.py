@@ -1,13 +1,13 @@
-# src/err/operation/visit/stack/graph/__init__.py
+# src/err/operator/visit/stack/graph/__init__.py
 
 """
-Module: err.operation.visit.stack.graph.__init__
+Module: err.operator.visit.stack.graph.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.OPERATION.VISIT.STACK.GRAPH PACKAGE ===========#
+# ============ ERR.OPERATOR.VISIT.STACK.GRAPH PACKAGE ===========#
 
 # Packages
 

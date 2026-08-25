@@ -1,13 +1,13 @@
-# src/err/operation/primer/assembly/board/__init__.py
+# src/err/operator/primer/assembly/board/__init__.py
 
 """
-Module: err.operation.primer.assembly.board.__init__
+Module: err.operator.primer.assembly.board.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.OPERATION.PRIMER.ASSEMBLY.BOARD PACKAGE ===========#
+# ============ ERR.OPERATOR.PRIMER.ASSEMBLY.BOARD PACKAGE ===========#
 
 # Packages
 

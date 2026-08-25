@@ -1,7 +1,7 @@
-# src/err/operation/primer/assembly/context/persona/exception.py
+# src/err/operator/primer/assembly/context/persona/exception.py
 
 """
-Module: err.operation.primer.assembly.context.persona.exception
+Module: err.operator.primer.assembly.context.persona.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

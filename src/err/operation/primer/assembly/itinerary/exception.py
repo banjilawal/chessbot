@@ -1,4 +1,4 @@
-# src/err/operation/primer/assembly/itinerary/exception.py
+# src/err/operator/primer/assembly/itinerary/exception.py
 
 """
 Module: err.priming.assembly.itinerary.exception

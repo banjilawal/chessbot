@@ -1,7 +1,7 @@
-# src/err/operation/assembly/context/Vector/exception.py
+# src/err/operator/assembly/context/Vector/exception.py
 
 """
-Module: err.operation.assembly.context.Vector.exception
+Module: err.operator.assembly.context.Vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

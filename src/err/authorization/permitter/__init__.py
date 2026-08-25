@@ -1,0 +1,22 @@
+# src/err/authorizerpermitter__init__.py
+
+"""
+Module: err.authorizer.permitter.__init__
+Author: Banji Lawal
+Created: 2026-04-07
+version: 1.0.0
+"""
+
+# =========== ERR.AUTHORIZER.PERMITTER PACKAGE ===========#
+
+# Packages
+from .delete import *
+from .maneuver import *
+from .pop import *
+from .promotion import *
+from .push import *
+from .search import *
+from .slot import *
+
+# Modules
+from .exception import PermitterException

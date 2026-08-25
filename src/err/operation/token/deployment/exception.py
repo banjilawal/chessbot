@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenOperatorException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# TOKEN_OPENING_DEPLOYMENT_FAILURE #======================#
-class TokenDeploymentException(TokenOperationException):
+class TokenDeploymentException(TokenOperatorException):
     """
     Role:
         -   Error Tracing

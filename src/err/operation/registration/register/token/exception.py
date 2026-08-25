@@ -1,7 +1,7 @@
-# src/err/operation/registration/register/token/exception.py
+# src/err/operator/registration/register/token/exception.py
 
 """
-Module: err.operation.registration.register.token.exception
+Module: err.operator.registration.register.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

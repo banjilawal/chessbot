@@ -1,7 +1,7 @@
-# src/err/operation/vector/euclidean/operation.py
+# src/err/operator/vector/euclidean/operation.py
 
 """
-Module: err.operation.vector.euclidean.operation
+Module: err.operator.vector.euclidean.operation
 Author: Banji Lawal
 Created: 2026-04-07
 version: 1.0.0
@@ -17,11 +17,11 @@ __all__ = [
     "VectorEuclideanException",
 ]
 
-from err import VectorOperationException
+from err import VectorOperatorException
 
 
 # ======================# EUCLIDEAN_DISTANCE_CALCULATION_ERROR #======================#
-class VectorEuclideanException(VectorOperationException):
+class VectorEuclideanException(VectorOperatorException):
     """
     Role:
         -   Error Tracing

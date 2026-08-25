@@ -1,13 +1,13 @@
-# src/err/operation/finalize/build/context/hostage/__init__.py
+# src/err/operator/finalize/build/context/hostage/__init__.py
 
 """
-Module: err.operation.finalize.build.context.hostage.__init__
+Module: err.operator.finalize.build.context.hostage.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# =========== ERR.OPERATION.FINALIZE.BUILD.CONTEXT.HOSTAGE PACKAGE ===========#
+# =========== ERR.OPERATOR.FINALIZE.BUILD.CONTEXT.HOSTAGE PACKAGE ===========#
 
 # Packages
 

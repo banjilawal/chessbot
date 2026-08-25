@@ -1,4 +1,4 @@
-# src/err/operation/primer/assembly/square/exception.py
+# src/err/operator/primer/assembly/square/exception.py
 
 """
 Module: err.priming.assembly.square.exception

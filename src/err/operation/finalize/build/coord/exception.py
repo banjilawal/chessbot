@@ -1,4 +1,4 @@
-# src/err/operation/finalize/build/coord/exception.py
+# src/err/operator/finalize/build/coord/exception.py
 
 """
 Module: err.finalize.build.coord.exception

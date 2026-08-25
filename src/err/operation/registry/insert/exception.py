@@ -1,7 +1,7 @@
-# src/err/operation/registry/insert/exception.py
+# src/err/operator/registry/insert/exception.py
 
 """
-Module: err.operation.registry.insert.exception
+Module: err.operator.registry.insert.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import RegistryOperationException
+from err import RegistryOperatorException
 
 __all__ = [
     # ======================# NEW_REGISTRATION_ENTRY_FAILURE #======================#
@@ -22,7 +22,7 @@ from artifcat import MethodResultType
 
 
 # ======================# NEW_REGISTRATION_ENTRY_FAILURE #======================#
-class NewRegistrationException(RegistryOperationException):
+class NewRegistrationException(RegistryOperatorException):
     """
     Role:
         -   Error Tracing

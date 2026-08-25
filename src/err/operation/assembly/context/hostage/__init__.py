@@ -1,13 +1,13 @@
-# src/err/operation/assembly/context/hostage/__init__.py
+# src/err/operator/assembly/context/hostage/__init__.py
 
 """
-Module: err.operation.assembly.context.hostage.__init__
+Module: err.operator.assembly.context.hostage.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# =========== ERR.OPERATION.ASSEMBLY.CONTEXT.HOSTAGE PACKAGE ===========#
+# =========== ERR.OPERATOR.ASSEMBLY.CONTEXT.HOSTAGE PACKAGE ===========#
 
 # Packages
 

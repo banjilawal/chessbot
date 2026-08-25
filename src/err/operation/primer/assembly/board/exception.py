@@ -1,4 +1,4 @@
-# src/err/operation/primer/assembly/board/exception.py
+# src/err/operator/primer/assembly/board/exception.py
 
 """
 Module: err.priming.assembly.board.exception

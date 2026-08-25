@@ -1,7 +1,7 @@
-# src/err/operation/maneuver/occupied/exception.py
+# src/err/operator/maneuver/occupied/exception.py
 
 """
-Module: err.operation.maneuver.occupied.exception
+Module: err.operator.maneuver.occupied.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

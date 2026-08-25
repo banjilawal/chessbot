@@ -1,13 +1,13 @@
-# src/err/operation/registration/stack/graph/__init__.py
+# src/err/operator/registration/stack/graph/__init__.py
 
 """
-Module: err.operation.registration.stack.graph.__init__
+Module: err.operator.registration.stack.graph.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.OPERATION.REGISTRATION.STACK.GRAPH PACKAGE ===========#
+# ============ ERR.OPERATOR.REGISTRATION.STACK.GRAPH PACKAGE ===========#
 
 # Packages
 

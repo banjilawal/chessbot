@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenOperatorException
 
 
 __all__ = [
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# FORMATION_TOKEN_FAILURE #======================#
-class FormationTokenOperationException(TokenOperationException):
+class FormationTokenOperationException(TokenOperatorException):
     """
     Role:
         -   Error Tracing

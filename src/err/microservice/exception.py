@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import OperationException
+from err import OperatorException
 
 __all__ = [
     # ======================# MICROSERVICE_FAILURE #======================#
@@ -22,7 +22,7 @@ from artifcat import MethodResultType
 
 
 # ======================# MICROSERVICE_FAILURE #======================#
-class MicroserviceException(OperationException):
+class MicroserviceException(OperatorException):
     """
     Role:
         -   Failure Tracing

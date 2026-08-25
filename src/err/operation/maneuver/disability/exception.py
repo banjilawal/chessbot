@@ -1,7 +1,7 @@
-# src/err/operation/maneuver/disability/exception.py
+# src/err/operator/maneuver/disability/exception.py
 
 """
-Module: err.operation.maneuver.disability.exception
+Module: err.operator.maneuver.disability.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

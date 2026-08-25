@@ -1,13 +1,13 @@
-# src/err/operation/visit/stack/board/__init__.py
+# src/err/operator/visit/stack/board/__init__.py
 
 """
-Module: err.operation.visit.stack.board.__init__
+Module: err.operator.visit.stack.board.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.OPERATION.VISIT.STACK.BOARD PACKAGE ===========#
+# ============ ERR.OPERATOR.VISIT.STACK.BOARD PACKAGE ===========#
 
 # Packages
 

@@ -1,7 +1,7 @@
-# src/err/operation/assembly/context/square/exception.py
+# src/err/operator/assembly/context/square/exception.py
 
 """
-Module: err.operation.assembly.context.square.exception
+Module: err.operator.assembly.context.square.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

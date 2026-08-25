@@ -1,4 +1,4 @@
-# src/err/operation/finalize/build/scalar/exception.py
+# src/err/operator/finalize/build/scalar/exception.py
 
 """
 Module: err.finalize.build.scalar.exception

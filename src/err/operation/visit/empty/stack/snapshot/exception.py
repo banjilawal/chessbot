@@ -1,7 +1,7 @@
-# src/err/operation/visit/empty/stack/snapshot/exception.py
+# src/err/operator/visit/empty/stack/snapshot/exception.py
 
 """
-Module: err.operation.visit.empty.stack.snapshot.exception
+Module: err.operator.visit.empty.stack.snapshot.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

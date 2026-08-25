@@ -1,13 +1,13 @@
-# src/err/operation/maneuver/disability/__init__.py
+# src/err/operator/maneuver/disability/__init__.py
 
 """
-Module: err.operation.maneuver.disability.__init__
+Module: err.operator.maneuver.disability.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.OPERATION.MANEUVER.DISABILITY PACKAGE ===========#
+# ============ ERR.OPERATOR.MANEUVER.DISABILITY PACKAGE ===========#
 
 # Packages
 

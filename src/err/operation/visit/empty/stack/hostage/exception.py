@@ -1,7 +1,7 @@
-# src/err/operation/visit/empty/stack/hostage/exception.py
+# src/err/operator/visit/empty/stack/hostage/exception.py
 
 """
-Module: err.operation.visit.empty.stack.hostage.exception
+Module: err.operator.visit.empty.stack.hostage.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

@@ -1,7 +1,7 @@
-# src/err/operation/assembly/context/board/exception.py
+# src/err/operator/assembly/context/board/exception.py
 
 """
-Module: err.operation.assembly.context.board.exception
+Module: err.operator.assembly.context.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

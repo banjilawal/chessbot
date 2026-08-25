@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import OperationException
+from err import OperatorException
 
 __all__ = [
     # ======================# COLLISION_OCCURRENCE #======================#
@@ -22,7 +22,7 @@ from artifcat import MethodResultType
 
 
 # ======================# COLLISION_OCCURRENCE #======================#
-class ColliderException(OperationException):
+class ColliderException(OperatorException):
     """
     Role:
         -   Error Tracing

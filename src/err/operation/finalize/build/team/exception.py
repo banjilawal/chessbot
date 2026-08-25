@@ -1,4 +1,4 @@
-# src/err/operation/finalize/build/team/exception.py
+# src/err/operator/finalize/build/team/exception.py
 
 """
 Module: err.finalize.build.team.exception

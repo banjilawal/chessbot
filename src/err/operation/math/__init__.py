@@ -1,7 +1,7 @@
-# src/err/operation/vector/__init__.py
+# src/err/operator/vector/__init__.py
 
 """
-Module: err.operation.vector.__init__
+Module: err.operator.vector.__init__
 Author: Banji Lawal
 Created: 2026-04-07
 version: 1.0.0
@@ -17,4 +17,4 @@ from .product import *
 from .addition import *
 
 # Modules
-from .exception import VectorOperationException
+from .exception import VectorOperatorException

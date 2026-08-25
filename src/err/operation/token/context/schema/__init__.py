@@ -1,13 +1,13 @@
-# src/err/operation/token/context/schema/__init__.py
+# src/err/operator/token/context/schema/__init__.py
 
 """
-Module: err.operation.token.context.schema.__init__
+Module: err.operator.token.context.schema.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# =========== ERR.OPERATION.TOKEN.CONTEXT.SCHEMA PACKAGE ===========#
+# =========== ERR.OPERATOR.TOKEN.CONTEXT.SCHEMA PACKAGE ===========#
 
 # Packages
 

@@ -1,13 +1,13 @@
-# src/err/operation/token/context/edge/__init__.py
+# src/err/operator/token/context/edge/__init__.py
 
 """
-Module: err.operation.token.context.edge.__init__
+Module: err.operator.token.context.edge.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# =========== ERR.OPERATION.TOKEN.CONTEXT.EDGE PACKAGE ===========#
+# =========== ERR.OPERATOR.TOKEN.CONTEXT.EDGE PACKAGE ===========#
 
 # Packages
 

@@ -1,7 +1,7 @@
-# src/err/operation/primer/assembly/context/player/exception.py
+# src/err/operator/primer/assembly/context/player/exception.py
 
 """
-Module: err.operation.primer.assembly.context.player.exception
+Module: err.operator.primer.assembly.context.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

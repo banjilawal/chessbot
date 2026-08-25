@@ -1,7 +1,7 @@
-# src/err/operation/registry/exception.py
+# src/err/operator/registry/exception.py
 
 """
-Module: err.operation.registry.exception
+Module: err.operator.registry.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import OperationException
+from err import OperatorException
 
 __all__ = [
     # ======================# REGISTRY_OPERATION_FAILURE #======================#
-    "RegistryOperationException",
+    "RegistryOperatorException",
 ]
 
 from artifcat import MethodResultType
 
 
 # ======================# REGISTRY_OPERATION_FAILURE #======================#
-class RegistryOperationException(OperationException):
+class RegistryOperatorException(OperatorException):
     """
     Role:
         -   Error Tracing

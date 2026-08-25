@@ -1,7 +1,7 @@
-# src/err/operation/vector/operation.py
+# src/err/operator/vector/operation.py
 
 """
-Module: err.operation.vector.operation
+Module: err.operator.vector.operation
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,15 +11,15 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import OperationException
+from err import OperatorException
 
 __all__ = [
     # ======================# VECTOR_OPERATION_ERROR #======================#
-    "VectorOperationException",
+    "VectorOperatorException",
 ]
 
 # ======================# VECTOR_OPERATION_ERROR #======================#
-class VectorOperationException(OperationException):
+class VectorOperatorException(OperatorException):
     """
     Role:
         -   Error Tracing

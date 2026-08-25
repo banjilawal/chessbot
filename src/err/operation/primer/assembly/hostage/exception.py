@@ -1,4 +1,4 @@
-# src/err/operation/primer/assembly/hostage/exception.py
+# src/err/operator/primer/assembly/hostage/exception.py
 
 """
 Module: err.priming.assembly.hostage.exception

@@ -1,7 +1,7 @@
-# src/err/operation/pop/token/exception.py
+# src/err/operator/pop/token/exception.py
 
 """
-Module: err.operation.pop.token.exception
+Module: err.operator.pop.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

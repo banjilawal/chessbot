@@ -1,7 +1,7 @@
-# src/err/operation/token/exception.py
+# src/err/operator/token/exception.py
 
 """
-Module: err.operation.token.exception
+Module: err.operator.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import OperationException
+from err import OperatorException
 from artifcat import MethodResultType
 
 
 __all__ = [
     # ======================# TOKEN_OPERATION_FAILURE #======================#
-    "TokenOperationException",
+    "TokenOperatorException",
 ]
 
 # ======================# TOKEN_OPERATION_FAILURE #======================#
-class TokenOperationException(OperationException):
+class TokenOperatorException(OperatorException):
     """
     Role:
         -   Failure Tracing

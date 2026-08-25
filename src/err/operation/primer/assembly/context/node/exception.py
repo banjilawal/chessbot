@@ -1,7 +1,7 @@
-# src/err/operation/primer/assembly/context/node/exception.py
+# src/err/operator/primer/assembly/context/node/exception.py
 
 """
-Module: err.operation.primer.assembly.context.node.exception
+Module: err.operator.primer.assembly.context.node.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

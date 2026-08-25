@@ -1,4 +1,4 @@
-# src/err/operation/finalize/build/node/exception.py
+# src/err/operator/finalize/build/node/exception.py
 
 """
 Module: err.finalize.build.node.exception

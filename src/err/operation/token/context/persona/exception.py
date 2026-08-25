@@ -1,7 +1,7 @@
-# src/err/operation/token/context/persona/exception.py
+# src/err/operator/token/context/persona/exception.py
 
 """
-Module: err.operation.token.context.persona.exception
+Module: err.operator.token.context.persona.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import TokenOperationException
+from err import TokenOperatorException
 
 
 __all__ = [

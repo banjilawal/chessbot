@@ -1,13 +1,13 @@
-# src/err/operation/token/__init__.py
+# src/err/operator/token/__init__.py
 
 """
-Module: err.operation.token.__init__
+Module: err.operator.token.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.OPERATION.TOKEN PACKAGE ===========#
+# ============ ERR.OPERATOR.TOKEN PACKAGE ===========#
 
 # Packages
 from .deployment import *
@@ -32,4 +32,4 @@ from .token import *
 from .vector import *
 
 # Modules
-from .exception import TokenOperationException
+from .exception import TokenOperatorException

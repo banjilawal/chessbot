@@ -1,7 +1,7 @@
-# src/err/operation/primer/assembly/exception.py
+# src/err/operator/primer/assembly/exception.py
 
 """
-Module: err.operation.primer.assembly.exception
+Module: err.operator.primer.assembly.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

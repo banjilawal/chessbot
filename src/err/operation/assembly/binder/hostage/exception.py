@@ -1,7 +1,7 @@
-# src/err/operation/assembly/binder/hostage/exception.py
+# src/err/operator/assembly/binder/hostage/exception.py
 
 """
-Module: err.operation.assembly.binder.hostage.exception
+Module: err.operator.assembly.binder.hostage.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

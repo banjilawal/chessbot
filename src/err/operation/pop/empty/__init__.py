@@ -1,13 +1,13 @@
-# src/err/operation/pop/empty/__init__.py
+# src/err/operator/pop/empty/__init__.py
 
 """
-Module: err.operation.pop.empty.__init__
+Module: err.operator.pop.empty.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.OPERATION.POP.EMPTY PACKAGE ===========#
+# ============ ERR.OPERATOR.POP.EMPTY PACKAGE ===========#
 
 # Packages
 from .token import *

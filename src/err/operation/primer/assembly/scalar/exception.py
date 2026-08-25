@@ -1,4 +1,4 @@
-# src/err/operation/primer/assembly/scalar/exception.py
+# src/err/operator/primer/assembly/scalar/exception.py
 
 """
 Module: err.priming.assembly.scalar.exception

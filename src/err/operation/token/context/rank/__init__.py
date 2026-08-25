@@ -1,13 +1,13 @@
-# src/err/operation/token/context/rank/__init__.py
+# src/err/operator/token/context/rank/__init__.py
 
 """
-Module: err.operation.token.context.rank.__init__
+Module: err.operator.token.context.rank.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# =========== ERR.OPERATION.TOKEN.CONTEXT.RANK PACKAGE ===========#
+# =========== ERR.OPERATOR.TOKEN.CONTEXT.RANK PACKAGE ===========#
 
 # Packages
 

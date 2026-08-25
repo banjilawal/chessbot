@@ -1,13 +1,13 @@
-# src/err/operation/pop/__init__.py
+# src/err/operator/pop/__init__.py
 
 """
-Module: err.operation.pop.__init__
+Module: err.operator.pop.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.OPERATION.POP PACKAGE ===========#
+# ============ ERR.OPERATOR.POP PACKAGE ===========#
 
 # Packages
 from .empty import *

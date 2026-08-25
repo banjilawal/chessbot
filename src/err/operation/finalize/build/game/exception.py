@@ -1,4 +1,4 @@
-# src/err/operation/finalize/build/game/exception.py
+# src/err/operator/finalize/build/game/exception.py
 
 """
 Module: err.finalize.build.game.exception

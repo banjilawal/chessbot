@@ -1,4 +1,4 @@
-# src/err/operation/primer/assembly/player/exception.py
+# src/err/operator/primer/assembly/player/exception.py
 
 """
 Module: err.priming.assembly.player.exception

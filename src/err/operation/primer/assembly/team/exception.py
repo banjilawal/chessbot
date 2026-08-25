@@ -1,4 +1,4 @@
-# src/err/operation/primer/assembly/team/exception.py
+# src/err/operator/primer/assembly/team/exception.py
 
 """
 Module: err.priming.assembly.team.exception

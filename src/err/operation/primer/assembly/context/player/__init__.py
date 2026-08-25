@@ -1,13 +1,13 @@
-# src/err/operation/primer/assembly/context/player/__init__.py
+# src/err/operator/primer/assembly/context/player/__init__.py
 
 """
-Module: err.operation.primer.assembly.context.player.__init__
+Module: err.operator.primer.assembly.context.player.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# =========== ERR.OPERATION.PRIMER.ASSEMBLY.CONTEXT.PLAYER PACKAGE ===========#
+# =========== ERR.OPERATOR.PRIMER.ASSEMBLY.CONTEXT.PLAYER PACKAGE ===========#
 
 # Packages
 

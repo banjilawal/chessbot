@@ -1,7 +1,7 @@
-# src/err/operation/vector/orange/operation.py
+# src/err/operator/vector/orange/operation.py
 
 """
-Module: err.operation.vector.orange.operation
+Module: err.operator.vector.orange.operation
 Author: Banji Lawal
 Created: 2026-04-07
 version: 1.0.0
@@ -17,11 +17,11 @@ __all__ = [
     "VectorAdditionException",
 ]
 
-from err import VectorOperationException
+from err import VectorOperatorException
 
 
 # ======================# VECTOR_ADDITION_ERROR #======================#
-class VectorAdditionException(VectorOperationException):
+class VectorAdditionException(VectorOperatorException):
     """
     Role:
         -   Error Tracing

@@ -1,7 +1,7 @@
-# src/err/operation/assembly/binder/edge/exception.py
+# src/err/operator/assembly/binder/edge/exception.py
 
 """
-Module: err.operation.assembly.binder.edge.exception
+Module: err.operator.assembly.binder.edge.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

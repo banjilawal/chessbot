@@ -1,7 +1,7 @@
-# src/err/operation/registration/stack/edge/exception.py
+# src/err/operator/registration/stack/edge/exception.py
 
 """
-Module: err.operation.registration.stack.edge.exception
+Module: err.operator.registration.stack.edge.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

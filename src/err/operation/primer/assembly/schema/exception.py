@@ -1,4 +1,4 @@
-# src/err/operation/primer/assembly/schema/exception.py
+# src/err/operator/primer/assembly/schema/exception.py
 
 """
 Module: err.priming.assembly.schema.exception

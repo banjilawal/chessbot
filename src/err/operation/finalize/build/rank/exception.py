@@ -1,4 +1,4 @@
-# src/err/operation/finalize/build/rank/exception.py
+# src/err/operator/finalize/build/rank/exception.py
 
 """
 Module: err.finalize.build.rank.exception

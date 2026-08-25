@@ -1,7 +1,7 @@
-# src/err/operation/visit/stack/game/exception.py
+# src/err/operator/visit/stack/game/exception.py
 
 """
-Module: err.operation.visit.stack.game.exception
+Module: err.operator.visit.stack.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

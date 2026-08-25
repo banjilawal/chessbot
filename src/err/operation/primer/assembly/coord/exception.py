@@ -1,4 +1,4 @@
-# src/err/operation/primer/assembly/coord/exception.py
+# src/err/operator/primer/assembly/coord/exception.py
 
 """
 Module: err.priming.assembly.coord.exception

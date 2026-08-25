@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import OperationException
+from err import OperatorException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# PRIMING_FAILURE #======================#
-class PrimingException(OperationException):
+class PrimingException(OperatorException):
     """
     Role:
         -   Error Tracing

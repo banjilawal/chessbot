@@ -1,7 +1,7 @@
-# src/err/operation/finalize/build/context/hostage/exception.py
+# src/err/operator/finalize/build/context/hostage/exception.py
 
 """
-Module: err.operation.finalize.build.context.hostage.exception
+Module: err.operator.finalize.build.context.hostage.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

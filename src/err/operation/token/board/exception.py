@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 
-from err import TokenOperationException
+from err import TokenOperatorException
 
 
 __all__ = [
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# BOARD_TOKEN_FAILURE #======================#
-class BoardTokenOperationException(TokenOperationException):
+class BoardTokenOperationException(TokenOperatorException):
     """
     Role:
         -   Error Tracing

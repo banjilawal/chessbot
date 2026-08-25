@@ -1,4 +1,4 @@
-# src/err/operation/finalize/build/hostage/exception.py
+# src/err/operator/finalize/build/hostage/exception.py
 
 """
 Module: err.finalize.build.hostage.exception

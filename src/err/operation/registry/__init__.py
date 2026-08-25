@@ -1,16 +1,16 @@
-# src/err/operation/registry/__init__.py
+# src/err/operator/registry/__init__.py
 
 """
-Module: err.operation.registry.__init__
+Module: err.operator.registry.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.OPERATION.REGISTRY PACKAGE ===========#
+# ============ ERR.OPERATOR.REGISTRY PACKAGE ===========#
 
 # Packages
 from .insert import *
 
 # Modules
-from .exception import RegistryOperationException
+from .exception import RegistryOperatorException

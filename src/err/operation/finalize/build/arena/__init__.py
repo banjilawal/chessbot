@@ -1,4 +1,4 @@
-# src/err/operation/finalize/build/arena/__init__.py
+# src/err/operator/finalize/build/arena/__init__.py
 
 """
 Module: err.finalize.build.arena.__init__

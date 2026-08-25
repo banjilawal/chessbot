@@ -1,4 +1,4 @@
-# src/err/operation/finalize/build/square/exception.py
+# src/err/operator/finalize/build/square/exception.py
 
 """
 Module: err.finalize.build.square.exception

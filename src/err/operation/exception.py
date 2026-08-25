@@ -1,7 +1,7 @@
-# src/err/operation/exception.py
+# src/err/operator/exception.py
 
 """
-Module: err.operation.exception
+Module: err.operator.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -17,11 +17,11 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# OPERATION_ERROR #======================#
-    "OperationException",
+    "OperatorException",
 ]
 
 # ======================# OPERATION_ERROR #======================#
-class OperationException(ChessException):
+class OperatorException(ChessException):
     """
     Role:
         -   Error Tracing

@@ -1,4 +1,4 @@
-# src/err/operation/finalize/build/vector/exception.py
+# src/err/operator/finalize/build/vector/exception.py
 
 """
 Module: err.finalize.build.vector.exception
