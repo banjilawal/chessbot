@@ -1,7 +1,7 @@
 # src/err/assurance/validator/structure/register/exception.py
 
 """
-Module: err.assurance.validator.structure.register.exception
+Module: err.assurance.validator.structure.egister.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -30,21 +30,21 @@ class RegisterValidatorException(StructureValidatorException):
         1.  Indicating assurance by a RegisterValidator failed.
 
     Attributes:
-        msg: Optional[str]
-        var: Optional[str]
-        val: Optional[Any]
-        ex: Optional[Exception]
-        cls_name: Optional[str]
-        cls_mthd: Optional[str]
-        err_code: Optional[str]
-        mthd_rslt_type: Optional[MethodResultType]
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
         StructureValidatorException
     """
-    MSG = "RegisterValidator failure."
+    MSG = "RegisterValidator failed."
     ERR_CODE = "REGISTER_VALIDATOR_FAILURE"
     
     def __init__(
@@ -71,6 +71,7 @@ class RegisterValidatorException(StructureValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.mthd_rslt_type
         super().__init__(
             ex=ex,
             msg=msg,

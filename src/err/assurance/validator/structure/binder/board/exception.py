@@ -1,7 +1,7 @@
-# src/err/assurance/validator/register/vector/exception.py
+# src/err/assurance/validator/structurebinder/board/exception.py
 
 """
-Module: err.assurance.validator.register.vector.exception
+Module: err.assurance.validator.structure.binder.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,41 +11,39 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import RegisterValidatorException
-from artifcat import MethodResultType
-
+from err import BinderValidatorException
 
 __all__ = [
-    # ======================# VECTOR_REGISTER_VALIDATOR_FAILURE #======================#
-    "VectorRegisterValidatorException",
+    # ======================# BOARD_TEAM_BINDER_VALIDATOR_FAILURE #======================#
+    "BoardTeamBinderValidatorException",
 ]
 
-# ======================# VECTOR_REGISTER_VALIDATOR_FAILURE #======================#
-class VectorRegisterValidatorException(RegisterValidatorException):
+# ======================# BOARD_TEAM_BINDER_VALIDATOR_FAILURE #======================#
+class BoardTeamBinderValidatorException(BinderValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a VectorRegisterValidator failed.
+        1.  Indicating assurance by a BoardTeamBinder validator failed.
 
     Attributes:
-            msg: Optional[str]
-            var: Optional[str]
-            val: Optional[Any]
-            ex: Optional[Exception]
-            cls_name: Optional[str]
-            cls_mthd: Optional[str]
-            err_code: Optional[str]
-            mthd_rslt_type: Optional[MethodResultType]
+        msg: Optional[str]
+        var: Optional[str]
+        val: Optional[Any]
+        ex: Optional[Exception]
+        cls_name: Optional[str]
+        cls_mthd: Optional[str]
+        err_code: Optional[str]
+        mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
-        RegisterValidatorException
+        BinderValidatorException
     """
-    MSG = "VectorRegisterValidator failed."
-    ERR_CODE = "VECTOR_REGISTER_VALIDATOR_FAILURE"
+    MSG = "BoardTeamBinder Validator failed."
+    ERR_CODE = "BOARD_TEAM_BINDER_VALIDATOR_FAILURE"
     
     def __init__(
             self,

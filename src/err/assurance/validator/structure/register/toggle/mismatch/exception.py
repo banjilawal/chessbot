@@ -1,7 +1,7 @@
-# src/err/assurance/validator/register/square/exception.py
+# src/err/assurance/validator/structure/register/vector_toggle/exception.py
 
 """
-Module: err.assurance.validator.register.square.exception
+Module: err.assurance.validator.structure.egister.vector_toggle.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import RegisterValidatorException
+from err import VectorToggleRegisterValidatorException
 from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# SQUARE_REGISTER_VALIDATOR_FAILURE #======================#
-    "SquareRegisterValidatorException",
+    # ======================# VECTOR_TOGGLE_REGISTER_MISMATCH_ERROR #======================#
+    "VectorToggleRegisterMismatchException",
 ]
 
-# ======================# SQUARE_REGISTER_VALIDATOR_FAILURE #======================#
-class SquareRegisterValidatorException(RegisterValidatorException):
+# ======================# VECTOR_TOGGLE_REGISTER_MISMATCH_ERROR #======================#
+class VectorToggleRegisterMismatchException(VectorToggleRegisterValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a SquareRegisterValidator failed.
+        1.  Indicating assurance by a VectorToggleRegister's a-b slots contain different types.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class SquareRegisterValidatorException(RegisterValidatorException):
     Provides:
 
     Super Class:
-        RegisterValidatorException
+        VectorToggleRegisterValidatorException
     """
-    MSG = "SquareRegisterValidator failed."
-    ERR_CODE = "SQUARE_REGISTER_VALIDATOR_FAILURE"
+    MSG = "VectorToggleRegister slots cannot hold different types."
+    ERR_CODE = "VECTOR_TOGGLE_REGISTER_MISMATCH_ERROR"
     
     def __init__(
             self,

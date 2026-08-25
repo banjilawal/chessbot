@@ -10,16 +10,14 @@ version: 0.0.2
 # ============ ERR.ASSURANCE.VALIDATOR PACKAGE ===========#
 
 # Packages
-from .binder import *
+from err.assurance.validator.structure.binder import *
 from .endpoint import *
 from .identity import *
 from .itinerary import *
 from .model import *
 from .number import *
-from .operand import *
 from .query import *
 from .recurrence import *
-from .register import *
 from .search import *
 from .space import *
 from .string import *

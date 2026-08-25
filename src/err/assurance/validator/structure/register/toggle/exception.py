@@ -1,7 +1,7 @@
-# src/err/assurance/validator/binder/exception.py
+# src/err/assurance/validator/structure/register/toggle/exception.py
 
 """
-Module: err.assurance.validator.binder.exception
+Module: err.assurance.validator.structure.egister.toggle.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,41 +11,41 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import RegisterValidatorException
 from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# BINDER_VALIDATOR_FAILURE #======================#
-    "BinderValidatorException",
+    # ======================# VECTOR_TOGGLE_REGISTER_VALIDATOR_FAILURE #======================#
+    "VectorToggleRegisterValidatorException",
 ]
 
-# ======================# BINDER_VALIDATOR_FAILURE #======================#
-class BinderValidatorException(ValidatorException):
+# ======================# VECTOR_TOGGLE_REGISTER_VALIDATOR_FAILURE #======================#
+class VectorToggleRegisterValidatorException(RegisterValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a BinderValidator failed.
+        1.  Indicating assurance by a VectorToggleRegisterValidator failed.
 
     Attributes:
-        msg: Optional[str]
-        var: Optional[str]
-        val: Optional[Any]
-        ex: Optional[Exception]
-        cls_name: Optional[str]
-        cls_mthd: Optional[str]
-        err_code: Optional[str]
-        mthd_rslt_type: Optional[MethodResultType]
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
-        ValidatorException
+        RegisterValidatorException
     """
-    MSG = "BinderValidator failed."
-    ERR_CODE = "BINDER_VALIDATOR_FAILURE"
+    MSG = "VectorToggleRegisterValidator failed."
+    ERR_CODE = "VECTOR_TOGGLE_REGISTER_VALIDATOR_FAILURE"
     
     def __init__(
             self,

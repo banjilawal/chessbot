@@ -1,7 +1,7 @@
-# src/err/assurance/validator/register/vector_toggle/exception.py
+# src/err/assurance/validator/structurebinder/exception.py
 
 """
-Module: err.assurance.validator.register.vector_toggle.exception
+Module: err.assurance.validator.structure.binder.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,41 +11,41 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import VectorToggleRegisterValidatorException
+from err import StructureValidatorException
 from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# VECTOR_TOGGLE_REGISTER_MISMATCH_ERROR #======================#
-    "VectorToggleRegisterMismatchException",
+    # ======================# BINDER_VALIDATOR_FAILURE #======================#
+    "BinderValidatorException",
 ]
 
-# ======================# VECTOR_TOGGLE_REGISTER_MISMATCH_ERROR #======================#
-class VectorToggleRegisterMismatchException(VectorToggleRegisterValidatorException):
+# ======================# BINDER_VALIDATOR_FAILURE #======================#
+class BinderValidatorException(StructureValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a VectorToggleRegister's a-b slots contain different types.
+        1.  Indicating assurance by a BinderValidator failed.
 
     Attributes:
-            msg: Optional[str]
-            var: Optional[str]
-            val: Optional[Any]
-            ex: Optional[Exception]
-            cls_name: Optional[str]
-            cls_mthd: Optional[str]
-            err_code: Optional[str]
-            mthd_rslt_type: Optional[MethodResultType]
+        msg: Optional[str]
+        var: Optional[str]
+        val: Optional[Any]
+        ex: Optional[Exception]
+        cls_name: Optional[str]
+        cls_mthd: Optional[str]
+        err_code: Optional[str]
+        mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
-        VectorToggleRegisterValidatorException
+        StructureValidatorException
     """
-    MSG = "VectorToggleRegister slots cannot hold different types."
-    ERR_CODE = "VECTOR_TOGGLE_REGISTER_MISMATCH_ERROR"
+    MSG = "BinderValidator failed."
+    ERR_CODE = "BINDER_VALIDATOR_FAILURE"
     
     def __init__(
             self,

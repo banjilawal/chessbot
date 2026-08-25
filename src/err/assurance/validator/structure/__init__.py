@@ -10,8 +10,10 @@ version: 0.0.2
 # ============ ERR.ASSURANCE.VALIDATOR.STRUCTURE PACKAGE ===========#
 
 # Packages
+from .binder import *
 from .node import *
 from .register import *
+from .toggle import *
 
 
 # Modules

@@ -1,7 +1,7 @@
-# src/err/assurance/validator/register/identity/exception.py
+# src/err/assurance/validator/structure/register/square/exception.py
 
 """
-Module: err.assurance.validator.register.identity.exception
+Module: err.assurance.validator.structure.egister.square.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# IDENTITY_REGISTER_VALIDATOR_FAILURE #======================#
-    "IdentityRegisterValidatorException",
+    # ======================# SQUARE_REGISTER_VALIDATOR_FAILURE #======================#
+    "SquareRegisterValidatorException",
 ]
 
-# ======================# IDENTITY_REGISTER_VALIDATOR_FAILURE #======================#
-class IdentityRegisterValidatorException(RegisterValidatorException):
+# ======================# SQUARE_REGISTER_VALIDATOR_FAILURE #======================#
+class SquareRegisterValidatorException(RegisterValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a VectorIdentityRegisterValidator failed.
+        1.  Indicating assurance by a SquareRegisterValidator failed.
 
     Attributes:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class IdentityRegisterValidatorException(RegisterValidatorException):
     Super Class:
         RegisterValidatorException
     """
-    MSG = "VectorIdentityRegisterValidator failed."
-    ERR_CODE = "IDENTITY_REGISTER_VALIDATOR_FAILURE"
+    MSG = "SquareRegisterValidator failed."
+    ERR_CODE = "SQUARE_REGISTER_VALIDATOR_FAILURE"
     
     def __init__(
             self,
