@@ -24,4 +24,4 @@ from .team import *
 from .token import *
 
 # Modules
-from .model import StateModel
+from .model import StateDataModelObject

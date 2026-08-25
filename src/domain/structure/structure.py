@@ -13,4 +13,17 @@ from abc import ABC
 
 
 class StructuralWrapper(ABC):
+    """
+    Role:
+        -   Structural Wrapper
+
+    Responsibility:
+        1.  Wraps DataModelObject giving it additional features.
+
+    Attributes:
+
+    Provides:
+
+    Super Class:
+    """
     pass

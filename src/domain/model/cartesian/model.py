@@ -9,10 +9,10 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from domain.model import Model
+from domain.model import DataModelObject
 
 
-class CartesianPoint(Model):
+class CartesianPoint(DataModelObject):
     """
     Role:
         -   Model

@@ -9,10 +9,10 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from domain.model import Model
+from domain.model import DataModelObject
 
 
-class Scalar(Model):
+class Scalar(DataModelObject):
     """
      Role:
          -  Data Holder

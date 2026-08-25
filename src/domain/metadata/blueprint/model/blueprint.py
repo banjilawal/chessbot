@@ -12,23 +12,22 @@ from typing import Optional, Type, cast
 
 from domain.metadata.blueprint import Blueprint
 from err import ModelNullException
-from domain.model import Model
+from domain.model import DataModelObject
 
 
-class ModelBlueprint(Blueprint[Model]):
+class ModelBlueprint(Blueprint[DataModelObject]):
     """
      Role:
-         -   Container
-         -   DTO
+         -   Metadata
 
      Responsibilities:
-         1.  Provides values for instantiating a Model object
-         2.  DTO
+         1.  Provide attribute-value tuples for hydrating a Model.
 
      Attributes:
-         model_class: Type[Model]
-         null_exception: Optional[ModelNullException]
-         
+         model_class: Type[T]
+         null_exception: StructureNullException
+         model_class_name: str
+
      Provides:
 
      Super Class:
@@ -37,7 +36,7 @@ class ModelBlueprint(Blueprint[Model]):
     
     def __init__(
             self,
-            model_class: Type[Model],
+            model_class: Type[DataModelObject],
             null_exception: Optional[ModelNullException] | None = ModelNullException(),
     ):
         """
@@ -51,8 +50,8 @@ class ModelBlueprint(Blueprint[Model]):
         )
     
     @property
-    def model_class(self) -> Type[Model]:
-        return cast(Type[Model], super().model_class)
+    def model_class(self) -> Type[DataModelObject]:
+        return cast(Type[DataModelObject], super().model_class)
     
     @property
     def null_exception(self) -> ModelNullException:

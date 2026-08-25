@@ -13,12 +13,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Generic, Optional, TypeVar
 
-from domain import Model, NullExceptionRoster
+from domain import DataModelObject, NullExceptionRoster
 from err import (
     BlueprintNullException, ContextNullException, EntityCarrierNullException, ModelNullException,
 )
 
-T = TypeVar("T", bound="Model")
+T = TypeVar("T", bound="DataModelObject")
 
 @dataclass
 class ModelNullExceptionRoster(NullExceptionRoster[T], Generic[T]):

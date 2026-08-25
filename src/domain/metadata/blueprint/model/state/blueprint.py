@@ -11,16 +11,15 @@ from __future__ import annotations
 from typing import Optional, Type, TypeVar, cast
 
 from domain.metadata.blueprint import ModelBlueprint
-from domain.model import Model, StateModel
+from domain.model import DataModelObject, StateDataModelObject
 
-T = TypeVar("T", bound="StateModel")
+T = TypeVar("T", bound="StateDataModelObject")
 
 
 class StateModelBlueprint(ModelBlueprint[[T]]):
     """
      Role:
-         -   Container
-         -   DTO
+         -   Metadata
 
      Responsibilities:
          1.  Provides values for instantiating a StateModel object.
@@ -39,7 +38,7 @@ class StateModelBlueprint(ModelBlueprint[[T]]):
     
     def __init__(
             self,
-            model_class: Type[StateModel[T]],
+            model_class: Type[StateDataModelObject[T]],
             id: Optional[int] | None = None,
     ):
         """
@@ -51,8 +50,8 @@ class StateModelBlueprint(ModelBlueprint[[T]]):
         self._id = id
     
     @property
-    def model_class(self) -> Type[Model[T]]:
-        return cast(Type[Model[T]], super().model_class)
+    def model_class(self) -> Type[DataModelObject[T]]:
+        return cast(Type[DataModelObject[T]], super().model_class)
     
     @property
     def id(self) -> Optional[int]:

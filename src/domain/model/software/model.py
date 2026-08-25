@@ -9,10 +9,10 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from domain.model import Model
+from domain.model import DataModelObject
 
 
-class SoftwareModel(Model):
+class SoftwareModel(DataModelObject):
     """
     Role:
         -   Softwareful Data Holder

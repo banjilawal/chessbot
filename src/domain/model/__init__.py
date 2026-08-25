@@ -21,4 +21,4 @@ from .state import *
 from .winner import *
 
 # Modules
-from .model import Model
+from .model import DataModelObject

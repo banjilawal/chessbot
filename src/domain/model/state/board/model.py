@@ -13,10 +13,10 @@ from transit.controller import BoardTeamBinderController
 from collection.database import HostageDatabase, SquareDatabase
 
 
-from domain.model import Arena, BoardState, StateModel
+from domain.model import Arena, BoardState, StateDataModelObject
 
 
-class Board(StateModel):
+class Board(StateDataModelObject):
     """
     Role:Data-Holder/Data Owner
   

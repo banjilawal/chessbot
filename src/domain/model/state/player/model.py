@@ -9,12 +9,12 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from domain.model import StateModel
+from domain.model import StateDataModelObject
 from artifcat.report import ManeuverRequestDecision
 from turn import TurnAdviser
 
 
-class Player(StateModel):
+class Player(StateDataModelObject):
     """
     Role:Controller
 

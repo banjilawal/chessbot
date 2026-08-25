@@ -12,10 +12,10 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from collection import StackService
-from domain import DeleteByIdRequest, StateModel
+from domain import DeleteByIdRequest, StateDataModelObject
 
 
-T = TypeVar("T", bound="StateModel")
+T = TypeVar("T", bound="StateDataModelObject")
 
 
 class PopStackByIdRequest(DeleteByIdRequest, ABC, Generic[T]):

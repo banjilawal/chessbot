@@ -13,12 +13,12 @@ from abc import abstractmethod
 from typing import Any, cast
 
 from assurance import ModelIntegrityChecker, Validator
-from domain.model import Model
+from domain.model import DataModelObject
 from artifcat import ValidationResult
 from util import LoggingLevelRouter
 
 
-class ModelValidator(Validator[Model]):
+class ModelValidator(Validator[DataModelObject]):
     """
     Role
         -   Transaction Worker

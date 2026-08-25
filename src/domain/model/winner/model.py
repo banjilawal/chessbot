@@ -9,10 +9,10 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from domain import Model, Player, Team
+from domain import DataModelObject, Player, Team
 
 
-class GameWinner(Model):
+class GameWinner(DataModelObject):
     _champion: Player
     _team: Team
     _loss: int

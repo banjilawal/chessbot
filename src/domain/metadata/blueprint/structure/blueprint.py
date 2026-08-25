@@ -21,17 +21,16 @@ T = TypeVar("T", bound="StructuralWrapper")
 class StructureBlueprint(Blueprint[T], ABC, Generic[T]):
     """
      Role:
-         -   Container
-         -   DTO
+         -   Metadata
 
      Responsibilities:
-         1.  Provides values for instantiating a Model object
-         2.  DTO
+         1.  Provide attribute-value tuples for hydrating a StructuralWrapper.
 
      Attributes:
          model_class: Type[T]
          null_exception: StructureNullException
-         
+         model_class_name: str
+
      Provides:
 
      Super Class:

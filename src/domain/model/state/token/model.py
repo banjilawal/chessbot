@@ -12,11 +12,11 @@ from abc import abstractmethod
 from typing import Optional
 
 from collection.database import CoordDatabase
-from domain.model import Coord, HomeSquare, KingToken, Rank, StateModel, Team, TokenActivityState, DeploymentState
+from domain.model import Coord, HomeSquare, KingToken, Rank, StateDataModelObject, Team, TokenActivityState, DeploymentState
 from domain.schema import Formation
 
 
-class Token(StateModel):
+class Token(StateDataModelObject):
     """
     Role:
         -   Stateful Data Holder

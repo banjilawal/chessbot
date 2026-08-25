@@ -10,11 +10,11 @@ version: 0.0.2
 from __future__ import annotations
 
 from microservice import CoordService, VectorService
-from domain.model import Model
+from domain.model import DataModelObject
 from domain.schema import Persona
 
 
-class Rank(Model):
+class Rank(DataModelObject):
     """
     Role:Computation
     

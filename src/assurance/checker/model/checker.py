@@ -13,10 +13,10 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from assurance import IntegrityChecker
-from domain import Model
+from domain import DataModelObject
 
 
-T = TypeVar("T", bound="Model")
+T = TypeVar("T", bound="DataModelObject")
 
 
 class ModelIntegrityChecker(IntegrityChecker, ABC, Generic[T]):

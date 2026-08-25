@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from typing import Generic, Optional, TypeVar
 
-from domain.model import ManeuverState, Path, StateModel
+from domain.model import ManeuverState, Path, StateDataModelObject
 
 T = TypeVar("T", bound="Token")
 
 
-class Maneuver(StateModel, Generic[T]):
+class Maneuver(StateDataModelObject, Generic[T]):
     """
     Role:
         -   Model

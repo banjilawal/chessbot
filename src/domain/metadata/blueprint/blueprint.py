@@ -13,7 +13,6 @@ from abc import ABC
 from typing import Generic, Type, TypeVar
 
 from domain import DomainMetadata, DomainObject
-from err import BlueprintNullException
 
 T = TypeVar("T", bound="DomainObject")
 
@@ -21,20 +20,20 @@ T = TypeVar("T", bound="DomainObject")
 class Blueprint(DomainMetadata, ABC, Generic[T]):
     """
      Role:
-         -   DTO
+         -   Metadata
 
      Responsibilities:
-         1.  Provides values for instantiating an object
+         1.  Provide attribute-value tuples for hydrating a DomainObject.
 
 
      Attributes:
          model_class: Type[T]
          null_exception: NullException
+         model_class_name: str
 
      Provides:
 
      Super Class:
-        Blueprint
      """
     _model_class: Type[T]
     _null_exception: DomainObjectNullException

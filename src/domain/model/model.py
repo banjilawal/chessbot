@@ -14,7 +14,7 @@ from abc import ABC
 from domain import DomainObject
 
 
-class Model(DomainObject, ABC):
+class DataModelObject(DomainObject, ABC):
     """
     Role:
         -   Data Holder

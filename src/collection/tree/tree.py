@@ -13,9 +13,9 @@ from abc import ABC
 from typing import Generic, List, TypeVar
 
 from collection import Chain
-from domain import Model
+from domain import DataModelObject
 
-T = TypeVar("T", bound="Model")
+T = TypeVar("T", bound="DataModelObject")
 
 class Tree(ABC, Generic[T]):
     """
