@@ -1,7 +1,7 @@
-# src/err/full/binder/exception.py
+# src/err/capacity/binder/exception.py
 
 """
-Module: err.full.binder.exception
+Module: err.capacity.binder.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

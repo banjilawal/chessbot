@@ -1,13 +1,13 @@
-# src/err/full/database/__init__.py
+# src/err/capacity/database/__init__.py
 
 """
-Module: err.full.database.__init__
+Module: err.capacity.database.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.FULL.DATABASE PACKAGE ===========#
+# ============ ERR.CAPACITY.DATABASE PACKAGE ===========#
 
 # Packages
 from .arena import *

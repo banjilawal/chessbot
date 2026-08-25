@@ -1,7 +1,7 @@
-# src/err/full/stack/game/exception.py
+# src/err/capacity/stack/game/exception.py
 
 """
-Module: err.full.stack.game.exception
+Module: err.capacity.stack.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StackFullException
+from err import StackCapacityException
 from artifcat import MethodResultType
 
 
 __all__ = [
     # ======================# GAME_STACK_FULL_ERROR #======================#
-    "GameStackFullException",
+    "GameStackCapacityException",
 ]
 
 # ======================# GAME_STACK_FULL_ERROR #======================#
-class GameStackFullException(StackFullException):
+class GameStackCapacityException(StackCapacityException):
     """
     Role:
         -   Error Tracing

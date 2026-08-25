@@ -1,7 +1,7 @@
-# src/err/full/query/formation/exception.py
+# src/err/capacity/query/formation/exception.py
 
 """
-Module: err.full.formation.exception
+Module: err.capacity.formation.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

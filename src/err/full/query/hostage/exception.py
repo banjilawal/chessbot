@@ -1,7 +1,7 @@
-# src/err/full/query/hostage/exception.py
+# src/err/capacity/query/hostage/exception.py
 
 """
-Module: err.full.hostage.exception
+Module: err.capacity.hostage.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

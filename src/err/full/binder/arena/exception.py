@@ -1,7 +1,7 @@
-# src/err/full/binder/arena/exception.py
+# src/err/capacity/binder/arena/exception.py
 
 """
-Module: err.full.binder.arena.exception
+Module: err.capacity.binder.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

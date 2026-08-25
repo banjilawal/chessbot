@@ -1,7 +1,7 @@
-# src/err/full/query/token/exception.py
+# src/err/capacity/query/token/exception.py
 
 """
-Module: err.full.token.exception
+Module: err.capacity.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

@@ -1,7 +1,7 @@
-# src/err/full/database/arena/exception.py
+# src/err/capacity/database/arena/exception.py
 
 """
-Module: err.full.database.arena.exception
+Module: err.capacity.database.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

@@ -1,7 +1,7 @@
-# src/err/full/stack/node/exception.py
+# src/err/capacity/stack/node/exception.py
 
 """
-Module: err.full.stack.node.exception
+Module: err.capacity.stack.node.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StackFullException
+from err import StackCapacityException
 from artifcat import MethodResultType
 
 
 __all__ = [
     # ======================# NODE_STACK_FULL_ERROR #======================#
-    "NodeStackFullException",
+    "NodeStackCapacityException",
 ]
 
 # ======================# NODE_STACK_FULL_ERROR #======================#
-class NodeStackFullException(StackFullException):
+class NodeStackCapacityException(StackCapacityException):
     """
     Role:
         -   Error Tracing

@@ -1,13 +1,13 @@
-# src/err/full/database/square/__init__.py
+# src/err/capacity/database/square/__init__.py
 
 """
-Module: err.full.database.square.__init__
+Module: err.capacity.database.square.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.FULL.DATABASE.SQUARE PACKAGE ===========#
+# ============ ERR.CAPACITY.DATABASE.SQUARE PACKAGE ===========#
 
 # Packages
 

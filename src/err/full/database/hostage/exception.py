@@ -1,7 +1,7 @@
-# src/err/full/database/hostage/exception.py
+# src/err/capacity/database/hostage/exception.py
 
 """
-Module: err.full.database.hostage.exception
+Module: err.capacity.database.hostage.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

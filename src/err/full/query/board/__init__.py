@@ -1,13 +1,13 @@
-# src/err/full/query/board/__init__.py
+# src/err/capacity/query/board/__init__.py
 
 """
-Module: err.full.board.__init__
+Module: err.capacity.board.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# =========== ERR.FULL.BOARD PACKAGE ===========#
+# =========== ERR.CAPACITY.BOARD PACKAGE ===========#
 
 # Packages
 

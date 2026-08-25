@@ -1,7 +1,7 @@
-# src/err/full/__init__.py
+# src/err/capacity/__init__.py
 
 """
-Module: err.full.exception
+Module: err.capacity.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -17,11 +17,11 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# CAPACITY_FULL_ERROR #======================#
-    "CapacityFullException",
+    "CapacityException",
 ]
 
 # ======================# CAPACITY_FULL_ERROR #======================#
-class CapacityFullException(ChessException):
+class CapacityException(ChessException):
     """
     Role:
         -   Error Tracing

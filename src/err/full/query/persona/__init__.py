@@ -1,13 +1,13 @@
-# src/err/full/query/persona/__init__.py
+# src/err/capacity/query/persona/__init__.py
 
 """
-Module: err.full.persona.__init__
+Module: err.capacity.persona.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# =========== ERR.FULL.PERSONA PACKAGE ===========#
+# =========== ERR.CAPACITY.PERSONA PACKAGE ===========#
 
 # Packages
 

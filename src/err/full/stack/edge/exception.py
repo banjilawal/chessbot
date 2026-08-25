@@ -1,7 +1,7 @@
-# src/err/full/stack/edge/exception.py
+# src/err/capacity/stack/edge/exception.py
 
 """
-Module: err.full.stack.edge.exception
+Module: err.capacity.stack.edge.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StackFullException
+from err import StackCapacityException
 from artifcat import MethodResultType
 
 
 __all__ = [
     # ======================# EDGE_STACK_FULL_ERROR #======================#
-    "EdgeStackFullException",
+    "EdgeStackCapacityException",
 ]
 
 # ======================# EDGE_STACK_FULL_ERROR #======================#
-class EdgeStackFullException(StackFullException):
+class EdgeStackCapacityException(StackCapacityException):
     """
     Role:
         -   Error Tracing

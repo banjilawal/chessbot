@@ -1,7 +1,7 @@
-# src/err/full/query/exception.py
+# src/err/capacity/query/exception.py
 
 """
-Module: err.full.exception
+Module: err.capacity.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

@@ -1,7 +1,7 @@
-# src/err/full/query/persona/exception.py
+# src/err/capacity/query/persona/exception.py
 
 """
-Module: err.full.persona.exception
+Module: err.capacity.persona.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

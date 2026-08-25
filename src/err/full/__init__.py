@@ -1,13 +1,13 @@
-# src/err/full/__init__.py
+# src/err/capacity/__init__.py
 
 """
-Module: err.full.__init__
+Module: err.capacity.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.FULL PACKAGE ===========#
+# ============ ERR.CAPACITY PACKAGE ===========#
 
 # Packages
 from .arena import *
@@ -20,4 +20,4 @@ from .square import *
 from .stack import *
 
 # Modules
-from .exception import CapacityFullException
+from .exception import CapacityException

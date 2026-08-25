@@ -1,13 +1,13 @@
-# src/err/full/query/__init__.py
+# src/err/capacity/query/__init__.py
 
 """
-Module: err.full.query.__init__
+Module: err.capacity.query.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# =========== ERR.FULL.QUERY PACKAGE ===========#
+# =========== ERR.CAPACITY.QUERY PACKAGE ===========#
 
 # Packages
 from .arena import *

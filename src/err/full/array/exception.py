@@ -1,7 +1,7 @@
-# src/err/full/array/exception.py
+# src/err/capacity/array/exception.py
 
 """
-Module: err.full.array.exception
+Module: err.capacity.array.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

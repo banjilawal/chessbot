@@ -1,7 +1,7 @@
-# src/err/full/stack/arena/exception.py
+# src/err/capacity/stack/arena/exception.py
 
 """
-Module: err.full.stack.arena.exception
+Module: err.capacity.stack.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StackFullException
+from err import StackCapacityException
 from artifcat import MethodResultType
 
 
 __all__ = [
     # ======================# ARENA_STACK_FULL_ERROR #======================#
-    "ArenaStackFullException",
+    "ArenaStackCapacityException",
 ]
 
 # ======================# ARENA_STACK_FULL_ERROR #======================#
-class ArenaStackFullException(StackFullException):
+class ArenaStackCapacityException(StackCapacityException):
     """
     Role:
         -   Error Tracing

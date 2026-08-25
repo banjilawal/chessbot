@@ -17,11 +17,14 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# NO_EXECUTION_ROUTE_ERROR #======================#
-    "MissingRouteException",
+    "MissingExecutionRouteException",
 ]
 
+from err import RouterException
+
+
 # ======================# NO_EXECUTION_ROUTE_ERROR #======================#
-class MissingRouteException(RouterException):
+class MissingExecutionRouteException(RouterException):
     """
     Role:
         -   Error Tracing

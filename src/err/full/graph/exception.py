@@ -1,7 +1,7 @@
-# src/err/full/graph/exception.py
+# src/err/capacity/graph/exception.py
 
 """
-Module: err.full.graph.exception
+Module: err.capacity.graph.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

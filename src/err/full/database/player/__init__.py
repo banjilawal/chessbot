@@ -1,13 +1,13 @@
-# src/err/full/database/player/__init__.py
+# src/err/capacity/database/player/__init__.py
 
 """
-Module: err.full.database.player.__init__
+Module: err.capacity.database.player.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.FULL.DATABASE.PLAYER PACKAGE ===========#
+# ============ ERR.CAPACITY.DATABASE.PLAYER PACKAGE ===========#
 
 # Packages
 

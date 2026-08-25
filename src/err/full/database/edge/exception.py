@@ -1,7 +1,7 @@
-# src/err/full/database/edge/exception.py
+# src/err/capacity/database/edge/exception.py
 
 """
-Module: err.full.database.edge.exception
+Module: err.capacity.database.edge.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

@@ -1,7 +1,7 @@
-# src/err/full/query/schema/exception.py
+# src/err/capacity/query/schema/exception.py
 
 """
-Module: err.full.schema.exception
+Module: err.capacity.schema.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

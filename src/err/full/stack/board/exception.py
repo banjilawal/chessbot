@@ -1,7 +1,7 @@
-# src/err/full/stack/board/exception.py
+# src/err/capacity/stack/board/exception.py
 
 """
-Module: err.full.stack.board.exception
+Module: err.capacity.stack.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StackFullException
+from err import StackCapacityException
 from artifcat import MethodResultType
 
 
 __all__ = [
     # ======================# BOARD_STACK_FULL_ERROR #======================#
-    "BoardStackFullException",
+    "BoardStackCapacityException",
 ]
 
 # ======================# BOARD_STACK_FULL_ERROR #======================#
-class BoardStackFullException(StackFullException):
+class BoardStackCapacityException(StackCapacityException):
     """
     Role:
         -   Error Tracing

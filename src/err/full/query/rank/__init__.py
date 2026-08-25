@@ -1,13 +1,13 @@
-# src/err/full/query/rank/__init__.py
+# src/err/capacity/query/rank/__init__.py
 
 """
-Module: err.full.rank.__init__
+Module: err.capacity.rank.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# =========== ERR.FULL.RANK PACKAGE ===========#
+# =========== ERR.CAPACITY.RANK PACKAGE ===========#
 
 # Packages
 

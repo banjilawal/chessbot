@@ -1,7 +1,7 @@
-# src/err/full/database/team/exception.py
+# src/err/capacity/database/team/exception.py
 
 """
-Module: err.full.database.team.exception
+Module: err.capacity.database.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

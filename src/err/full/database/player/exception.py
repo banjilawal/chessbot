@@ -1,7 +1,7 @@
-# src/err/full/database/player/exception.py
+# src/err/capacity/database/player/exception.py
 
 """
-Module: err.full.database.player.exception
+Module: err.capacity.database.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

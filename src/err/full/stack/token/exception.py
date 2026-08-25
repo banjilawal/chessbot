@@ -1,7 +1,7 @@
-# src/err/full/stack/token/exception.py
+# src/err/capacity/stack/token/exception.py
 
 """
-Module: err.full.stack.token.exception
+Module: err.capacity.stack.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StackFullException
+from err import StackCapacityException
 from artifcat import MethodResultType
 
 
 __all__ = [
     # ======================# TOKEN_STACK_FULL_ERROR #======================#
-    "TokenStackFullException",
+    "TokenStackCapacityException",
 ]
 
 # ======================# TOKEN_STACK_FULL_ERROR #======================#
-class TokenStackFullException(StackFullException):
+class TokenStackCapacityException(StackCapacityException):
     """
     Role:
         -   Error Tracing

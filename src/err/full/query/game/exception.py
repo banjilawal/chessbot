@@ -1,7 +1,7 @@
-# src/err/full/query/game/exception.py
+# src/err/capacity/query/game/exception.py
 
 """
-Module: err.full.game.exception
+Module: err.capacity.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

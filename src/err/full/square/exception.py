@@ -1,7 +1,7 @@
-# src/err/full/square/exception.py
+# src/err/capacity/square/exception.py
 
 """
-Module: err.full.square.exception
+Module: err.capacity.square.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

@@ -1,16 +1,16 @@
-# src/err/full/stack/node/__init__.py
+# src/err/capacity/stack/node/__init__.py
 
 """
-Module: err.full.stack.node.__init__
+Module: err.capacity.stack.node.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.FULL.STACK.NODE PACKAGE ===========#
+# ============ ERR.CAPACITY.STACK.NODE PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .exception import NodeStackFullException
+from .exception import NodeStackCapacityException

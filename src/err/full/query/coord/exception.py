@@ -1,7 +1,7 @@
-# src/err/full/query/coord/exception.py
+# src/err/capacity/query/coord/exception.py
 
 """
-Module: err.full.coord.exception
+Module: err.capacity.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
