@@ -22,6 +22,7 @@ from .recurrence import *
 from .register import *
 from .space import *
 from .string import *
+from .structure import *
 from .toggle import *
 
 # Modules

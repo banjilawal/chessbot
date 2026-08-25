@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from artifcat import ValidationResult
-from assurance import ChainSearchContextValidator
+from assurance import ChainSearchContextValidator, VectorNodeContextChecker
 from domain import VectorNodeContext
 
 from util import LoggingLevelRouter

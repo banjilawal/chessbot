@@ -1,7 +1,7 @@
-# src/err/empty/container/register/exception.py
+# src/err/assurancevalidator/structure/register/exception.py
 
 """
-Module: err.empty.container.register.exception
+Module: err.assurance.validator.structure.register.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ContainerValidatorException
+from err import StructureValidatorException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# REGISTER_SET_VALIDATOR_FAILURE #======================#
-class RegisterSetValidatorException(ContainerValidatorException):
+class RegisterSetValidatorException(StructureValidatorException):
     """
     Role:
         -   Error Tracing
@@ -42,7 +42,7 @@ class RegisterSetValidatorException(ContainerValidatorException):
     Provides:
 
     Super Class:
-        ContainerValidatorException
+        StructureValidatorException
     """
     MSG = "RegisterSet validation failure."
     ERR_CODE = "REGISTER_SET_VALIDATOR_FAILURE"

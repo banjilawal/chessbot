@@ -1,7 +1,7 @@
-# src/err/empty/container/exception.py
+# src/err/assurancevalidator/structure/vector/exception.py
 
 """
-Module: err.empty.container.exception
+Module: err.assurance.validator.structure.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import StructureValidatorException
 from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# CONTAINER_VALIDATOR_FAILURE #======================#
-    "ContainerValidatorException",
+    # ======================# VECTOR_SET_VALIDATOR_FAILURE #======================#
+    "VectorSetValidatorException",
 ]
 
-# ======================# CONTAINER_VALIDATOR_FAILURE #======================#
-class ContainerValidatorException(ValidatorException):
+# ======================# VECTOR_SET_VALIDATOR_FAILURE #======================#
+class VectorSetValidatorException(StructureValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a ContainerValidator failed.
+        1.  Indicating assurance by a VectorSetValidator failed.
 
     Attributes:
         msg: Optional[str]
@@ -38,14 +38,14 @@ class ContainerValidatorException(ValidatorException):
         cls_mthd: Optional[str]
         err_code: Optional[str]
         mthd_rslt_type: Optional[MethodResultType]
-        
+            
     Provides:
 
     Super Class:
-        ValidatorException
+        StructureValidatorException
     """
-    MSG = "Container validation failure."
-    ERR_CODE = "CONTAINER_VALIDATOR_FAILURE"
+    MSG = "VectorSet validation failure."
+    ERR_CODE = "VECTOR_SET_VALIDATOR_FAILURE"
     
     def __init__(
             self,
