@@ -1,7 +1,7 @@
-# src/err/assurance/validator/search/stack/node/exception.py
+# src/err/assurance/validator/search/stack/snapshot/exception.py
 
 """
-Module: err.assurance.validator.search.stack.node.exception
+Module: err.assurance.validator.search.stack.snapshot.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# NODE_CONTEXT_VALIDATOR_FAILURE #======================#
-    "NodeContextValidatorException",
+    # ======================# SNAPSHOT_CONTEXT_VALIDATOR_FAILURE #======================#
+    "SnapshotContextValidatorException",
 ]
 
-# ======================# NODE_CONTEXT_VALIDATOR_FAILURE #======================#
-class NodeContextValidatorException(StackContextValidatorException):
+# ======================# SNAPSHOT_CONTEXT_VALIDATOR_FAILURE #======================#
+class SnapshotContextValidatorException(StackContextValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a NodeContextValidator failed.
+        1.  Indicating assurance by a SnapshotContextValidator failed.
 
     Attributes:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class NodeContextValidatorException(StackContextValidatorException):
     Super Class:
         ContextValidatorException
     """
-    MSG = "NodeContextValidator failed."
-    ERR_CODE = "NODE_CONTEXT_VALIDATOR_FAILURE"
+    MSG = "SnapshotContextValidator failed."
+    ERR_CODE = "SNAPSHOT_CONTEXT_VALIDATOR_FAILURE"
     
     def __init__(
             self,

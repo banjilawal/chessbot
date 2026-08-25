@@ -1,7 +1,7 @@
-# src/err/assurance/validator/search/stack/edge/exception.py
+# src/err/assurance/validator/search/graph/station/exception.py
 
 """
-Module: err.assurance.validator.search.stack.edge.exception
+Module: err.assurance.validator.search.graph.station.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StackContextValidatorException
+from err import GraphContextValidatorException
 from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# EDGE_CONTEXT_VALIDATOR_FAILURE #======================#
-    "EdgeContextValidatorException",
+    # ======================# STATION_CONTEXT_VALIDATOR_FAILURE #======================#
+    "StationContextValidatorException",
 ]
 
-# ======================# EDGE_CONTEXT_VALIDATOR_FAILURE #======================#
-class EdgeContextValidatorException(StackContextValidatorException):
+# ======================# STATION_CONTEXT_VALIDATOR_FAILURE #======================#
+class StationContextValidatorException(GraphContextValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a EdgeContextValidator failed.
+        1.  Indicating assurance by a StationContextValidator failed.
 
     Attributes:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class EdgeContextValidatorException(StackContextValidatorException):
     Super Class:
         ContextValidatorException
     """
-    MSG = "EdgeContextValidator failed."
-    ERR_CODE = "EDGE_CONTEXT_VALIDATOR_FAILURE"
+    MSG = "StationContextValidator failed."
+    ERR_CODE = "STATION_CONTEXT_VALIDATOR_FAILURE"
     
     def __init__(
             self,

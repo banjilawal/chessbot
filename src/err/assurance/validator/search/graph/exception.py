@@ -1,7 +1,7 @@
-# src/err/assurance/validator/search/stack/rank/exception.py
+# src/err/assurance/validator/search/graph/exception.py
 
 """
-Module: err.assurance.validator.search.stack.rank.exception
+Module: err.assurance.validator.search.graph.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StackContextValidatorException
+from err import SearchContextValidatorException
 from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# RANK_CONTEXT_VALIDATOR_FAILURE #======================#
-    "RankContextValidatorException",
+    # ======================# GRAPH_CONTEXT_VALIDATOR_FAILURE #======================#
+    "GraphContextValidatorException",
 ]
 
-# ======================# RANK_CONTEXT_VALIDATOR_FAILURE #======================#
-class RankContextValidatorException(StackContextValidatorException):
+# ======================# GRAPH_CONTEXT_VALIDATOR_FAILURE #======================#
+class GraphContextValidatorException(SearchContextValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a RankContextValidator failed.
+        1.  Indicating assurance by a GraphContextValidator failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class RankContextValidatorException(StackContextValidatorException):
     Provides:
 
     Super Class:
-        ContextValidatorException
+        SearchContextValidatorException
     """
-    MSG = "RankContextValidator failed."
-    ERR_CODE = "RANK_CONTEXT_VALIDATOR_FAILURE"
+    MSG = "GraphContextValidator failed."
+    ERR_CODE = "GRAPH_CONTEXT_VALIDATOR_FAILURE"
     
     def __init__(
             self,

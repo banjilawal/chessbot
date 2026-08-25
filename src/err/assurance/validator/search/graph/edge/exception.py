@@ -1,7 +1,7 @@
-# src/err/assurance/validator/search/stack/hostage/exception.py
+# src/err/assurance/validator/search/graph/edge/exception.py
 
 """
-Module: err.assurance.validator.search.stack.hostage.exception
+Module: err.assurance.validator.search.graph.edge.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StackContextValidatorException
+from err import GraphContextValidatorException
 from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# HOSTAGE_CONTEXT_VALIDATOR_FAILURE #======================#
-    "HostageContextValidatorException",
+    # ======================# EDGE_CONTEXT_VALIDATOR_FAILURE #======================#
+    "EdgeContextValidatorException",
 ]
 
-# ======================# HOSTAGE_CONTEXT_VALIDATOR_FAILURE #======================#
-class HostageContextValidatorException(StackContextValidatorException):
+# ======================# EDGE_CONTEXT_VALIDATOR_FAILURE #======================#
+class EdgeContextValidatorException(GraphContextValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a HostageContextValidator failed.
+        1.  Indicating assurance by an EdgeContextValidator failed.
 
     Attributes:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class HostageContextValidatorException(StackContextValidatorException):
     Super Class:
         ContextValidatorException
     """
-    MSG = "HostageContextValidator failed."
-    ERR_CODE = "HOSTAGE_CONTEXT_VALIDATOR_FAILURE"
+    MSG = "EdgeContextValidator failed."
+    ERR_CODE = "EDGE_CONTEXT_VALIDATOR_FAILURE"
     
     def __init__(
             self,
