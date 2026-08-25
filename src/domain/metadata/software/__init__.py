@@ -13,6 +13,7 @@ version: 0.0.2
 from .application import *
 from .license import *
 from .subscriber import *
+from .version  import *
 
 # Modules
 from .metadata import SoftwareMetadata

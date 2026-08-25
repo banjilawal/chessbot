@@ -9,6 +9,8 @@ version: 0.0.2
 
 from typing import List, Optional
 
+from domain import SoftwareLicense
+
 
 class Subscriber:
     """
@@ -59,31 +61,3 @@ class Subscriber:
         self._last_name = last_name
         self._email = email
         self._licenses = licenses or []
-    
-    @property
-    def id(self) -> int:
-        return self._id
-    
-    @property
-    def arena(self) -> Arena:
-        return self._arena
-    
-    @property
-    def white_player(self) -> PlayerAgent:
-        return self._white_player
-    
-    @property
-    def black_player(self) -> PlayerAgent:
-        return self._black_player
-    
-    @property
-    def players(self) -> List[PlayerAgent]:
-        return [self._white_player, self._black_player]
-    
-    @property
-    def timeline(self) -> SubscriberTimeline:
-        return self._timeline
-    
-    @property
-    def previous_move(self) -> Optional[Snapshot]:
-        return self._timeline.previous_move()

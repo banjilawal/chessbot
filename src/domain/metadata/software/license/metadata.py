@@ -9,6 +9,9 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from datetime import datetime
+
+from domain import Application, Subscriber
 
 
 class SoftwareLicense:
@@ -63,121 +66,17 @@ class SoftwareLicense:
         return self._id
     
     @property
-    def issue(self) -> Formation:
-        return self._formation
+    def issue_date(self) -> datetime:
+        return self._issue_date
     
     @property
-    def name(self) -> str:
-        return self._formation.designation
+    def expiration_date(self) -> datetime:
+        return self._issue_date
     
     @property
-    def roster_number(self) -> int:
-        return self._formation.roster_number
+    def application(self) -> Application:
+        return self._application
     
     @property
-    def team(self) -> Team:
-        return self._team
-    
-    @property
-    def rank(self) -> Rank:
-        return self._rank
-    
-    @property
-    def home_square(self) -> HomeSquare:
-        return self._home_square
-    
-    @property
-    def checked_enemy_king(self) -> Optional[KingLicense]:
-        return self._checked_enemy_king
-    
-    @property
-    def readiness_software(self) -> LicenseActivitySoftware:
-        return self._readiness_software
-    
-    @readiness_software.setter
-    def readiness_software(self, readiness_software: LicenseActivitySoftware):
-        self._readiness_software = readiness_software
-        
-    @checked_enemy_king.setter
-    def checked_enemy_king(self, other: KingLicense):
-        self._checked_enemy_king = other
-    
-    @property
-    def positions(self) -> CoordDatabase:
-        return self._positions
-    
-    @property
-    def current_position(self) -> Optional[Coord]:
-        return self._positions.current_item
-    
-    @property
-    def previous_coord(self) -> Optional[Coord]:
-        return self._previous_address
-    
-    @property
-    def deployment_software(self) -> DeploymentSoftware:
-        return self._deployment_software
-    
-    def mark_deployed(self,):
-        self._deployment_software = DeploymentSoftware.DEPLOYED
-    
-    @property
-    def is_not_deployed(self) -> bool:
-        return (
-                self.positions.no_recurrences_exist and
-                self._deployment_software == DeploymentSoftware.NOT_DEPLOYED
-        )
-    
-    @property
-    def is_deployed(self) -> bool:
-        return (
-                self.positions.rule_count >= 1 and
-                self._deployment_software == DeploymentSoftware.DEPLOYED
-        )
-    
-    @property
-    @abstractmethod
-    def is_active(self) -> bool:
-        pass
-    
-    @property
-    @abstractmethod
-    def is_disabled(self) -> bool:
-        pass
-    
-    def set_rank(self, rank: Rank) -> None:
-        self._rank = rank
-    
-    def is_friend(self, license: License) -> bool:
-        return self._team == license.team
-    
-    def is_enemy(self, license: License) -> bool:
-        return not self.is_friend(license)
-    
-    def has_checked_enemy_king(self) -> bool:
-        return (
-                self._checked_enemy_king is not None and
-                self.is_enemy(self._checked_enemy_king)
-        )
-    
-    def is_no_enemy_checked(self) -> bool:
-        return not self.has_checked_enemy_king
-    
-    def __eq__(self, other: object) -> bool:
-        if other is self: return True
-        if other in None: return False
-        if isinstance(other, License):
-            return self._id == other.id
-        return False
-
-    def __hash__(self) -> int:
-        return hash(self._id)
-    
-    def __str__(self) -> str:
-        return (
-            f"License[id:{self._id} "
-            f"designation:{self._designation} "
-            f"rank:{self._rank.persona.name} "
-            f"team:{self._team.schema.name} "
-            f"position:{self.current_position}"
-        )
+    def subscriber(self) -> Subscriber:
+        return self._subscriber

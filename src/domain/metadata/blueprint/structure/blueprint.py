@@ -10,13 +10,12 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from ast import TypeVar
-from typing import Generic, Optional, Type, cast
+from typing import Generic, Type, TypeVar, cast
 
-from domain.metadata.blueprint import Blueprint
-from err import ModelNullException
+from domain import Blueprint, StructuralWrapper
 
 T = TypeVar("T", bound="StructuralWrapper")
+
 
 class StructureBlueprint(Blueprint[T], ABC, Generic[T]):
     """
@@ -51,6 +50,6 @@ class StructureBlueprint(Blueprint[T], ABC, Generic[T]):
     
     @property
     def null_exception(self) -> StructureNullException:
-        return cast(ModelNullException, super().null_exception)
+        return cast(StructureNullException, super().null_exception)
     
     

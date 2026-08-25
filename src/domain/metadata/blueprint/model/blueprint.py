@@ -8,14 +8,17 @@ version: 0.0.2
 """
 
 from __future__ import annotations
-from typing import Optional, Type, cast
 
-from domain.metadata.blueprint import Blueprint
+from abc import ABC
+from typing import Generic, Optional, Type, TypeVar, cast
+
+from domain import Blueprint, DataModelObject
 from err import ModelNullException
-from domain.model import DataModelObject
 
 
-class ModelBlueprint(Blueprint[DataModelObject]):
+T = TypeVar("T", bound="DataModelObject")
+
+class ModelBlueprint(Blueprint[T], ABC, Generic[T]):
     """
      Role:
          -   Metadata

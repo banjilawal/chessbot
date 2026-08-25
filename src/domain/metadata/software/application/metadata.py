@@ -9,64 +9,67 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from datetime import datetime
 
+from domain import SoftwareMetadata, VersionNumber
 
 
 class Application(SoftwareMetadata):
     """
     Role:
-        -   Softwareful Data Holder
+        -   Metadata
         
     Responsibilities:
-        1. Abstract representation of a chess piece.
+        1. Information about the application.
         
     Attributes:
         id: int
         title: str
-        version: int
-        release_date: datetime
-        license: SoftwareLicense
-        subscriber: Subscriber
+        version: VersionNumber
         
     Provides:
 
     Super Class:
-        SoftwareModel
+        SoftwareMetadata
     """
     _id: int
     _title: str
-    _version: int
+    _version: VersionNumber
     _release_date: datetime
-    _license: SoftwareLicense
-    _subscriber: Subscriber
 
     def __init__(
             self,
             id: int,
             title: str,
-            version: int,
+            version: VersionNumber,
             release_date: datetime,
-            license: SoftwareLicense,
-            subscriber: Subscriber,
     ):
         """
         Args:
             id: int
             title: str
-            version: int
-            release_date: datetime
-            license: SoftwareLicense
-            subscriber: Subscriber
+            version: VersionNumber
         """
         super().__init__()
         self._id = id
-        self._title: str
+        self._title = title
         self._version = version
         self._release_date = release_date
-        self._license: SoftwareLicense
-        self._subscriber = subscriber
     
     @property
     def id(self) -> int:
         return self._id
+    
+    @property
+    def title(self) -> str:
+        return self._title
+    
+    @property
+    def version(self) -> VersionNumber:
+        return self._version
+    
+    @property
+    def release_date(self) -> datetime:
+        return self._release_date
+    
     
