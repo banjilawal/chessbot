@@ -11,7 +11,7 @@ from typing import Any, cast
 
 from transit.controller import WorkerRegistryController
 from err import StringEmptyException, StringValidatorException
-from err.null.string import StringNullException
+from err.null.domain.primitive.string import StringNullException
 from operation import Validator
 from artifcat import ValidationResult
 from util import LoggingLevelRouter
