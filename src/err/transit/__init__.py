@@ -11,6 +11,7 @@ version: 1.0.0
 
 # Packages
 from .dispatcher import *
+from .router import *
 
 # Modules
 from .exception import TransitObjectException
