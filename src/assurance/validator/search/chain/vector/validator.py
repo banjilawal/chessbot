@@ -14,6 +14,7 @@ from typing import Any, cast
 from artifcat import ValidationResult
 from assurance import ChainSearchContextValidator, VectorNodeContextChecker
 from domain import VectorNodeContext
+from err import VectorNodeContextValidatorException
 
 from util import LoggingLevelRouter
 
