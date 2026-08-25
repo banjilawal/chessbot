@@ -1,13 +1,13 @@
-# src/err/null/model/binder/__init__.py
+# src/err/null/domain/model/binder/__init__.py
 
 """
-Module: err.null.binder.__init__
+Module: err.null.domain.binder.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# =========== ERR.NULL.BINDER PACKAGE ===========#
+# =========== ERR.NULL.DOMAIN.BINDER PACKAGE ===========#
 
 # Packages
 from .arena import *

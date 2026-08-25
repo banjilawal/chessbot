@@ -1,4 +1,4 @@
-# src/err/null/blueprint/space/reservoir/axis/exception.py
+# src/err/null/domain/blueprint/space/reservoir/axis/exception.py
 
 """
 Module: err.space.null.blueprint.reservoir.axis.exception

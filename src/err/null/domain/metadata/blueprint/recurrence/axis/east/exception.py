@@ -1,7 +1,7 @@
-# src/err/null/carrier/recurrence/quadrant/east/exception.py
+# src/err/null/domain/carrier/recurrence/quadrant/east/exception.py
 
 """
-Module: err.null.blueprint.recurrence.quadrant.east.exception
+Module: err.null.domain.blueprint.recurrence.quadrant.east.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

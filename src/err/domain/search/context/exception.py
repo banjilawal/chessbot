@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchObjectException
+from err import SearchDataObjectException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# CONTEXT_ERROR #======================#
-class ContextException(SearchObjectException):
+class ContextException(SearchDataObjectException):
     """
     Role:
         -   Error Tracing

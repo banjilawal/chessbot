@@ -1,7 +1,7 @@
-# src/err/null/blueprint/model/node/exception.py
+# src/err/null/domain/blueprint/model/node/exception.py
 
 """
-Module: err.null.blueprint.model.node.exception
+Module: err.null.domain.blueprint.model.node.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

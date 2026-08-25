@@ -1,7 +1,7 @@
-# src/err/null/toggle/vector/exception.py
+# src/err/null/domain/structure/toggle/vector/exception.py
 
 """
-Module: err.null.toggle.vector.exception
+Module: err.null.domain.structure.toggle.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

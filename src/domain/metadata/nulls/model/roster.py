@@ -15,7 +15,7 @@ from typing import Generic, Optional, TypeVar
 
 from domain import DataModelObject, NullExceptionRoster
 from err import (
-    BlueprintNullException, ContextNullException, EntityCarrierNullException, ModelNullException,
+    BlueprintNullException, StackContextNullException, EntityCarrierNullException, ModelNullException,
 )
 
 T = TypeVar("T", bound="DataModelObject")
@@ -43,4 +43,4 @@ class ModelNullExceptionRoster(NullExceptionRoster[T], Generic[T]):
     model: ModelNullException
     carrier: EntityCarrierNullException
     blueprint: BlueprintNullException
-    search_context: ContextNullException
+    search_context: StackContextNullException

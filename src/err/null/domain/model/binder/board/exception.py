@@ -1,7 +1,7 @@
-# src/err/null/model/binder/board/exception.py
+# src/err/null/domain/model/binder/board/exception.py
 
 """
-Module: err.null.binder.board.exception
+Module: err.null.domain.binder.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from domain.metadata.blueprint import Blueprint
-from err import ContextNullException
+from err import StackContextNullException
 from domain.model import Context
 
 
@@ -29,5 +29,5 @@ class ContextBlueprint(Blueprint[Context]):
     Super Class:
     """
     model_type = Context
-    null_exception = ContextNullException()
+    null_exception = StackContextNullException()
     context_validator_bootstrapper: ContextValidatorBootstrapper = ContextValidatorBootstrapper()

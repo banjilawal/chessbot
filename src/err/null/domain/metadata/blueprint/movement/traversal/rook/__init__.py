@@ -1,13 +1,13 @@
-# src/err/null/blueprint/movement/traversal/rook/__init__.py
+# src/err/null/domain/blueprint/movement/traversal/rook/__init__.py
 
 """
-Module: err.null.blueprint.movement.traversal.rook.__init__
+Module: err.null.domain.blueprint.movement.traversal.rook.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ERR.NULL.BLUEPRINT.MOVEMENT.TRAVERSAL.ROOK PACKAGE ===========#
+# =========== ERR.NULL.DOMAIN.BLUEPRINT.MOVEMENT.TRAVERSAL.ROOK PACKAGE ===========#
 
 # Packages
 

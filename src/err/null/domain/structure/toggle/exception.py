@@ -1,7 +1,7 @@
-# src/err/null/toggle/exception.py
+# src/err/null/domain/structure/toggle/exception.py
 
 """
-Module: err.null.toggle.exception
+Module: err.null.domain.structure.toggle.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import  NullException
+from err import StructureWrapperNullException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# TOGGLE_NULL_ERROR #======================#
-class ToggleNullException(NullException):
+class ToggleNullException(StructureWrapperNullException):
     """
     Role:
         -   Error Tracing
@@ -42,7 +42,7 @@ class ToggleNullException(NullException):
     Provides:
 
     Super Class:
-        ChessException
+        StructureWrapperNullException
     """
     MSG = "Toggle cannot be null."
     ERR_CODE = "TOGGLE_NULL_ERROR"

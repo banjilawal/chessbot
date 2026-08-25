@@ -1,7 +1,7 @@
-# src/err/null/blueprint/movement/offset/exception.py
+# src/err/null/domain/blueprint/movement/offset/exception.py
 
 """
-Module: err.null.blueprint.movement.offset.exception
+Module: err.null.domain.blueprint.movement.offset.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

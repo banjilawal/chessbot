@@ -1,7 +1,7 @@
-# src/err/null/model/coord/exception.py
+# src/err/null/domain/model/coord/exception.py
 
 """
-Module: err.null.coord.exception
+Module: err.null.domain.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

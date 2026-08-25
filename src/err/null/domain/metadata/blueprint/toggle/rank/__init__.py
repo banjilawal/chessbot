@@ -1,13 +1,13 @@
-# src/err/null/blueprint/toggle/rank/__init__.py
+# src/err/null/domain/blueprint/toggle/rank/__init__.py
 
 """
-Module: err.null.blueprint.toggle.rank.__init__
+Module: err.null.domain.blueprint.toggle.rank.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# =========== ERR.NULL.BLUEPRINT.TOGGLE.RANK PACKAGE ===========#
+# =========== ERR.NULL.DOMAIN.BLUEPRINT.TOGGLE.RANK PACKAGE ===========#
 
 # Packages
 

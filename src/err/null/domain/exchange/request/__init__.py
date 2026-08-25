@@ -1,13 +1,13 @@
-# src/err/null/request/__init__.py
+# src/err/null/domain/request/__init__.py
 
 """
-Module: err.null.request.__init__
+Module: err.null.domain.request.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.NULL.REQUEST PACKAGE ===========#
+# ============ ERR.NULL.DOMAIN.REQUEST PACKAGE ===========#
 
 # Packages
 from .deletion import *

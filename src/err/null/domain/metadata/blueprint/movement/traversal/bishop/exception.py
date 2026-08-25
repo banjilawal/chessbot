@@ -1,7 +1,7 @@
-# src/err/null/blueprint/movement/traversal/bishop/exception.py
+# src/err/null/domain/blueprint/movement/traversal/bishop/exception.py
 
 """
-Module: err.null.blueprint.movement.traversal.bishop.exception
+Module: err.null.domain.blueprint.movement.traversal.bishop.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

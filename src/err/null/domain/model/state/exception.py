@@ -1,7 +1,7 @@
-# src/err/null/model/state/exception.py
+# src/err/null/domain/model/state/exception.py
 
 """
-Module: err.null.model.state.exception
+Module: err.null.domain.model.state.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

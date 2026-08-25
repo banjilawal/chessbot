@@ -1,7 +1,7 @@
-# src/err/null/request/exception.py
+# src/err/null/domain/request/exception.py
 
 """
-Module: err.null.request.exception
+Module: err.null.domain.request.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

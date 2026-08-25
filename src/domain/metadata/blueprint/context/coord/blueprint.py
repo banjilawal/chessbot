@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from err import CoordContextNullException
+from err import CoordStackContextNullException
 from domain.model import CoordContext, Blueprint
 
 
@@ -20,5 +20,5 @@ from domain.model import CoordContext, Blueprint
 class CoordContextBlueprint(Blueprint[CoordContext]):
     row: Optional[int] = None
     column: Optional[int] = None
-    null_exception = CoordContextNullException()
+    null_exception = CoordStackContextNullException()
     model_type = CoordContext

@@ -1,7 +1,7 @@
-# src/err/null/blueprint/node/dossier/exception.py
+# src/err/null/domain/blueprint/node/dossier/exception.py
 
 """
-Module: err.null.blueprint.node.dossier.exception
+Module: err.null.domain.blueprint.node.dossier.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

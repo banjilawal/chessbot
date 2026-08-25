@@ -11,7 +11,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from err import ArenaContextNullException
+from err import ArenaStackContextNullException
 from domain.model import ArenaContext, Blueprint, Game, Player
 from config.setting import GameColor
 
@@ -23,5 +23,5 @@ class ArenaContextBlueprint(Blueprint[ArenaContext]):
     player: Optional[Player] = None
     game: Optional[Game] = None
     color: Optional[GameColor] = None
-    null_exception = ArenaContextNullException()
+    null_exception = ArenaStackContextNullException()
     model_type = ArenaContext

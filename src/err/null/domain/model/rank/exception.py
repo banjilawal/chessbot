@@ -1,7 +1,7 @@
-# src/err/null/model/rank/exception.py
+# src/err/null/domain/model/rank/exception.py
 
 """
-Module: err.null.rank.exception
+Module: err.null.domain.rank.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

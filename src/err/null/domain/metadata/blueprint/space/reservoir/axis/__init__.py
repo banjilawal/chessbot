@@ -1,4 +1,4 @@
-# src/err/null/blueprint/space/reservoir/axis/__init__.py
+# src/err/null/domain/blueprint/space/reservoir/axis/__init__.py
 
 """
 Module: err.space.null.blueprint.reservoir.axis.__init__

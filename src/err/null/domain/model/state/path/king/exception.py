@@ -1,7 +1,7 @@
-# src/err/null/model/state/path/king/exception.py
+# src/err/null/domain/model/state/path/king/exception.py
 
 """
-Module: err.null.model.state.king.exception
+Module: err.null.domain.model.state.king.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

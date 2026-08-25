@@ -1,13 +1,13 @@
-# src/err/null/carrier/recurrence/table/__init__.py
+# src/err/null/domain/carrier/recurrence/table/__init__.py
 
 """
-Module: err.null.blueprint.recurrence.table.__init__
+Module: err.null.domain.blueprint.recurrence.table.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ERR.NULL.BLUEPRINT.RECURRENCE.TABLE PACKAGE ===========#
+# =========== ERR.NULL.DOMAIN.BLUEPRINT.RECURRENCE.TABLE PACKAGE ===========#
 
 # Packages
 from .axis import *

@@ -1,4 +1,4 @@
-# src/err/null/blueprint/space/reservoir/__init__.py
+# src/err/null/domain/blueprint/space/reservoir/__init__.py
 
 """
 Module: err.space.null.blueprint.reservoir.__init__

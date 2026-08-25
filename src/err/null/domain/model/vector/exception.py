@@ -1,7 +1,7 @@
-# src/err/null/model/vector/exception.py
+# src/err/null/domain/model/vector/exception.py
 
 """
-Module: err.null.model.vector.exception
+Module: err.null.domain.model.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

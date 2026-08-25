@@ -1,13 +1,13 @@
-# src/err/null/blueprint/node/vector/__init__.py
+# src/err/null/domain/blueprint/node/vector/__init__.py
 
 """
-Module: err.null.blueprint.node.vector.__init__
+Module: err.null.domain.blueprint.node.vector.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# =========== ERR.NULL.BLUEPRINT.NODE PACKAGE ===========#
+# =========== ERR.NULL.DOMAIN.BLUEPRINT.NODE PACKAGE ===========#
 
 # Packages
 from .dossier import *

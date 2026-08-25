@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from err import FormationContextNullException
+from err import FormationStackContextNullException
 from domain.model import FormationContext, Blueprint, Game, Player
 
 
@@ -22,5 +22,5 @@ class FormationContextBlueprint(Blueprint[FormationContext]):
     name: Optional[str] = None,
     player: Optional[Player] = None,
     game: Optional[Game] = None,
-    null_exception = FormationContextNullException()
+    null_exception = FormationStackContextNullException()
     model_type = FormationContext

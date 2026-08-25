@@ -1,7 +1,7 @@
-# src/err/null/schema/exception.py
+# src/err/null/domain/schema/exception.py
 
 """
-Module: err.null.schema.exception
+Module: err.null.domain.schema.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

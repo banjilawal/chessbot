@@ -1,7 +1,7 @@
-# src/err/domain/graph/exception.py
+# src/err/domain/exchange/exception.py
 
 """
-Module: err.domain.graph.exception
+Module: err.domain.exchange.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

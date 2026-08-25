@@ -1,13 +1,13 @@
-# src/err/null/model/state/team/__init__.py
+# src/err/null/domain/model/state/team/__init__.py
 
 """
-Module: err.null.model.state.team.__init__
+Module: err.null.domain.model.state.team.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.NULL.MODEL.STATE.TEAM PACKAGE ===========#
+# ============ ERR.NULL.DOMAIN.MODEL.STATE.TEAM PACKAGE ===========#
 
 # Packages
 

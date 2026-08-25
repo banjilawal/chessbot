@@ -1,13 +1,13 @@
-# src/err/null/model/binder/board/__init__.py
+# src/err/null/domain/model/binder/board/__init__.py
 
 """
-Module: err.null.binder.board.__init__
+Module: err.null.domain.binder.board.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# =========== ERR.NULL.BINDER.BOARD PACKAGE ===========#
+# =========== ERR.NULL.DOMAIN.BINDER.BOARD PACKAGE ===========#
 
 # Packages
 

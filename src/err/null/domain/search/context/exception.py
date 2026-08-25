@@ -1,7 +1,7 @@
-# src/err/null/context/exception.py
+# src/err/null/domain/search/context/exception.py
 
 """
-Module: err.null.exception
+Module: err.null.domain.search.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import NullException
+from err import SearchDataObjectNullException
 from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# CONTEXT_NULL_ERROR #======================#
-    "ContextNullException",
+    # ======================# SEARCH_CONTEXT_NULL_ERROR #======================#
+    "SearchContextNullException",
 ]
 
-# ======================# CONTEXT_NULL_ERROR #======================#
-class ContextNullException(NullException):
+# ======================# SEARCH_CONTEXT_NULL_ERROR #======================#
+class SearchContextNullException(SearchDataObjectNullException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating a required ContextNull failed.
+        1.  Indicating a required SearchContextNull failed.
 
     Cannot Be Null.s:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class ContextNullException(NullException):
     Provides:
 
     Super Class:
-        NullException
+        SearchDataObjectNullException
     """
-    MSG = "context's cannot be null."
-    ERR_CODE = "CONTEXT_NULL_ERROR"
+    MSG = "SearchContextNull cannot be null."
+    ERR_CODE = "SEARCH_CONTEXT_NULL_ERROR"
     
     def __init__(
             self,

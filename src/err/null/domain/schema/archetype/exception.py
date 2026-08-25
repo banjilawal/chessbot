@@ -1,7 +1,7 @@
-# src/err/null/schema/archetype/exception.py
+# src/err/null/domain/schema/archetype/exception.py
 
 """
-Module: err.null.schema.archetype.exception
+Module: err.null.domain.schema.archetype.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

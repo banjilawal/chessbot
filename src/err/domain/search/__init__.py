@@ -13,4 +13,4 @@ version: 0.0.2
 from .context import *
 
 # Modules
-from .exception import SearchObjectException
+from .exception import SearchDataObjectException

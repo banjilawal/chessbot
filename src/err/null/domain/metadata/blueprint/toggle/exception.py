@@ -1,7 +1,7 @@
-# src/err/null/blueprint/toggle/exception.py
+# src/err/null/domain/blueprint/toggle/exception.py
 
 """
-Module: err.null.blueprint.toggle.exception
+Module: err.null.domain.blueprint.toggle.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

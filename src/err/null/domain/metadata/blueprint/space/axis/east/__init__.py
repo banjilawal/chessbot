@@ -1,13 +1,13 @@
-# src/err/null/blueprint/space/axis/east/__init__.py
+# src/err/null/domain/blueprint/space/axis/east/__init__.py
 
 """
-Module: err.null.blueprint.space.axis.east.__init__
+Module: err.null.domain.blueprint.space.axis.east.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.NULL.BLUEPRINT.SPACE.AXIS.EAST PACKAGE ===========#
+# ============ ERR.NULL.DOMAIN.BLUEPRINT.SPACE.AXIS.EAST PACKAGE ===========#
 
 # Packages
 

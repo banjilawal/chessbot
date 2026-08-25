@@ -15,7 +15,7 @@ from typing import Generic, Optional, TypeVar
 
 from domain import Node, NullExceptionRoster
 from err import (
-    BlueprintNullException, ContextNullException, EntityCarrierNullException, NodeBlueprintNullException,
+    BlueprintNullException, StackContextNullException, EntityCarrierNullException, NodeBlueprintNullException,
     NodeCarrierNullException, NodeNullException
 )
 
@@ -45,4 +45,4 @@ class NodeNullRoster(NullExceptionRoster[T], ABC, Generic[T]):
     model: NodeNullException
     carrier: EntityCarrierNullException
     blueprint: BlueprintNullException
-    search_context: Optional[ContextNullException] = None
+    search_context: Optional[StackContextNullException] = None

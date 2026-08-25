@@ -12,7 +12,7 @@ from typing import TypeVar
 
 from domain.metadata.blueprint import Blueprint
 from err import (
-    ContextNullException, QueryNullException, StackEmptyException, StackNullException
+    StackContextNullException, QueryNullException, StackEmptyException, StackNullException
 )
 from domain.model import Query
 from collection.stack import StackService
@@ -47,7 +47,7 @@ class QueryValidationBlueprint(Blueprint[T]):
     stack_model_type: StackService[T]
     stack_null_exception: StackNullException
     query_null_exception: QueryNullException
-    context_null_exception: ContextNullException
+    context_null_exception: StackContextNullException
     empty_stack_exception: StackEmptyException
     context_validator: StackSearchContextValidator[T]
     priming_validator: PrimingValidator = PrimingValidator()

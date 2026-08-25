@@ -1,7 +1,7 @@
-# src/err/null/blueprint/toggle/player/exception.py
+# src/err/null/domain/blueprint/toggle/player/exception.py
 
 """
-Module: err.null.blueprint.toggle.player.exception
+Module: err.null.domain.blueprint.toggle.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

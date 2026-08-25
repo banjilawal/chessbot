@@ -14,7 +14,7 @@ from dataclasses import dataclass
 
 from domain import ModelNullExceptionRoster, Token
 from err import (
-    TokenBlueprintNullException, TokenCarrierNullException, TokenContextNullException, TokenNullException
+    TokenBlueprintNullException, TokenCarrierNullException, TokenStackContextNullException, TokenNullException
 )
 
 
@@ -41,4 +41,4 @@ class TokenNullExceptionRoster(ModelNullExceptionRoster[Token]):
     model: TokenNullException = TokenNullException()
     carrier: TokenCarrierNullException = TokenCarrierNullException()
     blueprint: TokenBlueprintNullException = TokenBlueprintNullException()
-    search_context: TokenContextNullException = TokenContextNullException()
+    search_context: TokenStackContextNullException = TokenStackContextNullException()

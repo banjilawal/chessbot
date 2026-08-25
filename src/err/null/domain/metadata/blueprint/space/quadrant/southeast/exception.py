@@ -1,7 +1,7 @@
-# src/err/null/blueprint/space/quadrant/southeast/exception.py
+# src/err/null/domain/blueprint/space/quadrant/southeast/exception.py
 
 """
-Module: err.null.blueprint.space.quadrant.southeast.exception
+Module: err.null.domain.blueprint.space.quadrant.southeast.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

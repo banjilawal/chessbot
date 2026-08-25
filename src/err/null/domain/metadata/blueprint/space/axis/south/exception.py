@@ -1,7 +1,7 @@
-# src/err/null/blueprint/space/axis/south/exception.py
+# src/err/null/domain/blueprint/space/axis/south/exception.py
 
 """
-Module: err.null.blueprint.space.axis.south.exception
+Module: err.null.domain.blueprint.space.axis.south.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

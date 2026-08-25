@@ -1,13 +1,13 @@
-# src/err/null/model/state/path/attack/__init__.py
+# src/err/null/domain/model/state/path/attack/__init__.py
 
 """
-Module: err.null.model.state.attack.__init__
+Module: err.null.domain.model.state.attack.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# =========== ERR.NULL.MODEL.STATE.ATTACK PACKAGE ===========#
+# =========== ERR.NULL.DOMAIN.MODEL.STATE.ATTACK PACKAGE ===========#
 
 # Packages
 

@@ -17,11 +17,11 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# SEARCH_OBJECT_ERROR #======================#
-    "SearchObjectException",
+    "SearchDataObjectException",
 ]
 
 # ======================# SEARCH_OBJECT_ERROR #======================#
-class SearchObjectException(DomainObjectException):
+class SearchDataObjectException(DomainObjectException):
     """
     Role:
         -   Error Tracing

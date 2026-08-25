@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from err import PlayerContextNullException
+from err import PlayerStackContextNullException
 from domain.model import PlayerContext, Blueprint, Game, Team
 
 
@@ -44,5 +44,5 @@ class PlayerContextBlueprint(Blueprint[PlayerContext]):
     team: Optional[Team] = None
     game: Optional[Game] = None
     class_name: Optional[str] = None
-    null_exception = PlayerContextNullException()
+    null_exception = PlayerStackContextNullException()
     model_type = PlayerContext

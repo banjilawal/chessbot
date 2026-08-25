@@ -1,13 +1,13 @@
-# src/err/null/model/state/arena/__init__.py
+# src/err/null/domain/model/state/arena/__init__.py
 
 """
-Module: err.null.model.state.arena.__init__
+Module: err.null.domain.model.state.arena.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.NULL.MODEL.STATE.ARENA PACKAGE ===========#
+# ============ ERR.NULL.DOMAIN.MODEL.STATE.ARENA PACKAGE ===========#
 
 # Packages
 

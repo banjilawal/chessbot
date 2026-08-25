@@ -1,7 +1,7 @@
-# src/err/null/array/exception.py
+# src/err/null/domain/array/exception.py
 
 """
-Module: err.null.array.exception
+Module: err.null.domain.array.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

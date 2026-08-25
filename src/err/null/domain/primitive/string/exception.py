@@ -1,7 +1,7 @@
-# src/err/null/string/exception.py
+# src/err/null/domain/string/exception.py
 
 """
-Module: err.null.string.exception
+Module: err.null.domain.string.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

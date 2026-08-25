@@ -1,7 +1,7 @@
-# src/err/null/blueprint/model/arena/exception.py
+# src/err/null/domain/blueprint/model/arena/exception.py
 
 """
-Module: err.null.blueprint.model.arena.exception
+Module: err.null.domain.blueprint.model.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

@@ -1,7 +1,7 @@
-# src/err/null/blueprint/model/token/exception.py
+# src/err/null/domain/blueprint/model/token/exception.py
 
 """
-Module: err.null.blueprint.model.token.exception
+Module: err.null.domain.blueprint.model.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

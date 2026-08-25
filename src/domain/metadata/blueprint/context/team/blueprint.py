@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from err import TeamContextNullException
+from err import TeamStackContextNullException
 from domain.model import Board, Blueprint, Player, Schema, TeamContext, TeamState
 
 
@@ -44,5 +44,5 @@ class TeamContextBlueprint(Blueprint[TeamContext]):
     player: Optional[Player] = None | None
     state: Optional[TeamState] = None | None
     schema: Optional[Schema] = None | None
-    null_exception = TeamContextNullException()
+    null_exception = TeamStackContextNullException()
     context_model_type = TeamContext

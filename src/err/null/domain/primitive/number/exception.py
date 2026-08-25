@@ -1,7 +1,7 @@
-# src/err/null/number/exception.py
+# src/err/null/domain/number/exception.py
 
 """
-Module: err.null.number.exception
+Module: err.null.domain.number.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from err import PersonaContextNullException
+from err import PersonaStackContextNullException
 from domain.model import PersonaContext, Blueprint
 
 
@@ -22,5 +22,5 @@ class PersonaContextBlueprint(Blueprint[PersonaContext]):
     quota: Optional[int]
     ransom: Optional[int]
     designation: Optional[str]
-    null_exception = PersonaContextNullException()
+    null_exception = PersonaStackContextNullException()
     model_type = PersonaContext

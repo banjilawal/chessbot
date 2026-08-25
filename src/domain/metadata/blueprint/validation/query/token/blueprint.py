@@ -15,7 +15,7 @@ from collection.stack import TokenStackService
 from assurance.validator import TokenContextValidator
 from domain.metadata.blueprint import QueryValidationBlueprint
 from err import (
-    TokenContextNullException, TokenQueryNullException, TokenStackEmptyException, TokenStackNullException
+    TokenStackContextNullException, TokenQueryNullException, TokenStackEmptyException, TokenStackNullException
 )
 
 
@@ -49,7 +49,7 @@ class TokenQueryValidationBlueprint(QueryValidationBlueprint[Token]):
     query_null_exception = TokenQueryNullException()
     stack_null_exception = TokenStackNullException()
     empty_stack_exception = TokenStackEmptyException()
-    context_null_exception = TokenContextNullException()
+    context_null_exception = TokenStackContextNullException()
     context_validator = TokenContextValidator()
 
 

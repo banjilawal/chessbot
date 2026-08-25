@@ -1,7 +1,7 @@
-# src/err/null/model/scalar/exception.py
+# src/err/null/domain/model/scalar/exception.py
 
 """
-Module: err.null.scalar.exception
+Module: err.null.domain.scalar.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

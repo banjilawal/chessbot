@@ -1,13 +1,13 @@
-# src/err/null/blueprint/toggle/vector/__init__.py
+# src/err/null/domain/blueprint/toggle/vector/__init__.py
 
 """
-Module: err.null.blueprint.toggle.vector.__init__
+Module: err.null.domain.blueprint.toggle.vector.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# =========== ERR.NULL.BLUEPRINT.TOGGLE PACKAGE ===========#
+# =========== ERR.NULL.DOMAIN.BLUEPRINT.TOGGLE PACKAGE ===========#
 
 # Packages
 from .arena import *

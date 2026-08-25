@@ -1,7 +1,7 @@
-# src/err/null/blueprint/toggle/orientation/exception.py
+# src/err/null/domain/blueprint/toggle/orientation/exception.py
 
 """
-Module: err.null.blueprint.toggle.orientation.exception
+Module: err.null.domain.blueprint.toggle.orientation.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

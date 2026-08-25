@@ -1,13 +1,13 @@
-# src/err/domain/graph/response/__init__.py
+# src/err/domain/exchange/response/__init__.py
 
 """
-Module: err.domain.graph.response.__init__
+Module: err.domain.exchange.response.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.DOMAIN.GRAPH.RESPONSE PACKAGE ===========#
+# ============ ERR.DOMAIN.EXCHANGE.RESPONSE PACKAGE ===========#
 
 # Packages
 

@@ -1,13 +1,13 @@
-# src/err/null/number/__init__.py
+# src/err/null/domain/number/__init__.py
 
 """
-Module: err.null.number.__init__
+Module: err.null.domain.number.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.NULL.NUMBER PACKAGE ===========#
+# ============ ERR.NULL.DOMAIN.NUMBER PACKAGE ===========#
 
 # Packages
 

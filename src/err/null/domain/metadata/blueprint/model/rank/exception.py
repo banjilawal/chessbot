@@ -1,7 +1,7 @@
-# src/err/null/blueprint/model/rank/exception.py
+# src/err/null/domain/blueprint/model/rank/exception.py
 
 """
-Module: err.null.blueprint.model.rank.exception
+Module: err.null.domain.blueprint.model.rank.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

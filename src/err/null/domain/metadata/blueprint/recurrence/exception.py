@@ -1,7 +1,7 @@
-# src/err/null/carrier/recurrence/exception.py
+# src/err/null/domain/carrier/recurrence/exception.py
 
 """
-Module: err.null.blueprint.recurrence.exception
+Module: err.null.domain.blueprint.recurrence.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

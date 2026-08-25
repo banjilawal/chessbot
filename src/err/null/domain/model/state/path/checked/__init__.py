@@ -1,13 +1,13 @@
-# src/err/null/model/state/path/checked/__init__.py
+# src/err/null/domain/model/state/path/checked/__init__.py
 
 """
-Module: err.null.model.state.checked.__init__
+Module: err.null.domain.model.state.checked.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# =========== ERR.NULL.MODEL.STATE.CHECKED PACKAGE ===========#
+# =========== ERR.NULL.DOMAIN.MODEL.STATE.CHECKED PACKAGE ===========#
 
 # Packages
 

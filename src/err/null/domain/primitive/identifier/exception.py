@@ -1,7 +1,7 @@
-# src/err/null/identifier/exception.py
+# src/err/null/domain/identifier/exception.py
 
 """
-Module: err.null.identifier.exception
+Module: err.null.domain.identifier.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

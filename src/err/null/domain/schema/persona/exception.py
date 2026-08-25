@@ -1,7 +1,7 @@
-# src/err/null/persona/schema/exception.py
+# src/err/null/domain/persona/schema/exception.py
 
 """
-Module: err.null.persona.schema.exception
+Module: err.null.domain.persona.schema.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

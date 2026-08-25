@@ -1,13 +1,13 @@
-# src/err/null/identifier/__init__.py
+# src/err/null/domain/identifier/__init__.py
 
 """
-Module: err.null.identifier.__init__
+Module: err.null.domain.identifier.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.NULL.IDENTIFIER PACKAGE ===========#
+# ============ ERR.NULL.DOMAIN.IDENTIFIER PACKAGE ===========#
 
 # Packages
 

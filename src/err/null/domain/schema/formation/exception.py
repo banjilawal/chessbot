@@ -1,7 +1,7 @@
-# src/err/null/schema/formation/exception.py
+# src/err/null/domain/schema/formation/exception.py
 
 """
-Module: err.null.schema.formation.exception
+Module: err.null.domain.schema.formation.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

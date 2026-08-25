@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from err import RankContextNullException
+from err import RankStackContextNullException
 from domain.model import RankContext, Blueprint, Game, Player
 
 
@@ -42,6 +42,6 @@ class RankContextBlueprint(Blueprint[RankContext]):
     name: Optional[str] = None,
     player: Optional[Player] = None,
     game: Optional[Game] = None,
-    null_exception = RankContextNullException()
+    null_exception = RankStackContextNullException()
     model_type = RankContext
     

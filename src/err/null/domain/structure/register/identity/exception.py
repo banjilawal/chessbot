@@ -1,7 +1,7 @@
-# src/err/null/register/identity/exception.py
+# src/err/null/domain/structure/register/identity/exception.py
 
 """
-Module: err.null.register.identity.exception
+Module: err.null.domain.structure.register.identity.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

@@ -1,7 +1,7 @@
-# src/err/null/model/binder/arena/exception.py
+# src/err/null/domain/model/binder/arena/exception.py
 
 """
-Module: err.null.binder.arena.exception
+Module: err.null.domain.binder.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

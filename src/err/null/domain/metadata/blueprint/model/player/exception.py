@@ -1,7 +1,7 @@
-# src/err/null/blueprint/model/player/exception.py
+# src/err/null/domain/blueprint/model/player/exception.py
 
 """
-Module: err.null.blueprint.model.player.exception
+Module: err.null.domain.blueprint.model.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
