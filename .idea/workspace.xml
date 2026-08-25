@@ -5,23 +5,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/structure/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/structure/blueprint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/structure/roster.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/binder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/binder/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/binder/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/binder/arena/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/binder/arena/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/binder/arena/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/binder/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/binder/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/binder/board/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/binder/board/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/binder/board/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/binder/board/team/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/binder/board/team/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/binder/board/team/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/binder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/binder/exception/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/binder/exception/black.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/binder/exception/black.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/binder/exception/collision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/binder/exception/collision.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/binder/exception/white.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/binder/exception/white.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/binder/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/binder/structure.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/binder/validator/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/binder/validator/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/binder/validator/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/binder/validator/null.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/binder/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/binder/validator/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/binder/validator/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/binder/validator/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/binder/arena/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/binder/arena/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/container/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/sets/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/container/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/sets/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/container/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/sets/register/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/container/register/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/sets/register/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/container/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/sets/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/container/vector/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/sets/vector/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/node/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/structure/node/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/node/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/structure/node/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/node/dossier/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/structure/node/dossier/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/node/dossier/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/structure/node/dossier/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/node/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/structure/node/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/node/vector/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/structure/node/vector/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/structure/register/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/register/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/structure/register/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/register/identity/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/structure/register/identity/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/register/identity/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/structure/register/identity/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/register/number/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/structure/register/number/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/register/number/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/structure/register/number/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/register/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/structure/register/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/register/square/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/structure/register/square/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/register/toggle/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/structure/register/toggle/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/register/toggle/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/structure/register/toggle/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/register/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/structure/register/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/register/vector/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/structure/register/vector/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/toggle/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/structure/toggle/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/toggle/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/structure/toggle/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/toggle/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/structure/toggle/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/toggle/vector/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/structure/toggle/vector/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/model/roster.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/model/roster.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/structure/node/roster.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/structure/node/roster.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/structure/binder/validator/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/structure/binder/validator/null.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/structure/binder/validator/validator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/structure/binder/validator/wrapper.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/assembler/toggle/vector/assembler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/assembler/toggle/vector/assembler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/toggle/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/toggle/builder.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,61 +89,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0000000001653222" />
-      <entry key="S2" value="1.0035859141921988" />
-      <entry key="S5" value="1.106973564287485" />
-      <entry key="S10" value="1.366912843193642" />
-      <entry key="S30" value="2.036521687537212" />
-      <entry key="S60" value="2.537718316616508" />
-      <entry key="M2" value="6.2141969712384375" />
-      <entry key="M5" value="40.08883466887797" />
-      <entry key="M10" value="127.91112238705995" />
-      <entry key="M15" value="231.23117372818837" />
-      <entry key="M30" value="531.7477498468274" />
-      <entry key="H1" value="959.0765590772554" />
-      <entry key="H2" value="1441.132280806262" />
-      <entry key="H4" value="2057.2233695432215" />
-      <entry key="D1" value="5849.34110201975" />
-      <entry key="W1" value="9194.23561103031" />
+      <entry key="MS100" value="1.5041219035533182E-15" />
+      <entry key="MS500" value="0.0011501581830667203" />
+      <entry key="S2" value="0.34147923987532913" />
+      <entry key="S5" value="1.3707782524217713" />
+      <entry key="S10" value="2.367544788475515" />
+      <entry key="S30" value="4.262944515345571" />
+      <entry key="S60" value="5.7858344917917846" />
+      <entry key="M2" value="7.630310319318581" />
+      <entry key="M5" value="10.885786992181636" />
+      <entry key="M10" value="15.333988379132135" />
+      <entry key="M15" value="18.66443153693064" />
+      <entry key="M30" value="28.69070483203053" />
+      <entry key="H1" value="118.43311576829572" />
+      <entry key="H2" value="479.65311447922306" />
+      <entry key="H4" value="1194.5538104310167" />
+      <entry key="D1" value="5394.7413000888" />
+      <entry key="W1" value="9182.535022606924" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="5.496685354003084E-20" />
-      <entry key="MS500" value="1.4061128446647423E-4" />
-      <entry key="S2" value="0.108894274017782" />
-      <entry key="S5" value="0.41190969842143166" />
-      <entry key="S10" value="0.6418019152522308" />
-      <entry key="S30" value="0.8625828190725442" />
-      <entry key="S60" value="0.9303902630894102" />
-      <entry key="M2" value="1.038330509821202" />
-      <entry key="M5" value="1.90538871104721" />
-      <entry key="M10" value="3.641633797415096" />
-      <entry key="M15" value="5.1988607534350875" />
-      <entry key="M30" value="9.066290549876546" />
-      <entry key="H1" value="14.59217659197736" />
-      <entry key="H2" value="21.674159706215903" />
-      <entry key="H4" value="33.40722431194709" />
-      <entry key="D1" value="146.4785183122255" />
-      <entry key="W1" value="263.86724202547373" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000000000484763" />
+      <entry key="S2" value="1.0028619605152627" />
+      <entry key="S5" value="1.1283037679092878" />
+      <entry key="S10" value="1.5325588194376665" />
+      <entry key="S30" value="2.9527457968245576" />
+      <entry key="S60" value="4.0311572874427135" />
+      <entry key="M2" value="4.864211115912116" />
+      <entry key="M5" value="5.56258518952232" />
+      <entry key="M10" value="5.989699633622002" />
+      <entry key="M15" value="6.220653260711292" />
+      <entry key="M30" value="6.6224803540406" />
+      <entry key="H1" value="8.179162371396558" />
+      <entry key="H2" value="13.815770308823437" />
+      <entry key="H4" value="26.1084654311177" />
+      <entry key="D1" value="141.0317225991929" />
+      <entry key="W1" value="269.0088536562068" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="8.501470344688712E-4" />
-      <entry key="MS500" value="0.24316373706009725" />
-      <entry key="S2" value="0.7082951584331363" />
-      <entry key="S5" value="1.0658653994260994" />
-      <entry key="S10" value="1.599834215727685" />
-      <entry key="S30" value="2.6834526973618273" />
-      <entry key="S60" value="3.346224389742503" />
-      <entry key="M2" value="7.186439787099512" />
-      <entry key="M5" value="41.96067394195058" />
-      <entry key="M10" value="131.52725932747828" />
-      <entry key="M15" value="236.40646757071417" />
-      <entry key="M30" value="540.7932608024362" />
-      <entry key="H1" value="973.6521711814372" />
-      <entry key="H2" value="1462.7945913519225" />
-      <entry key="H4" value="2090.6214064675205" />
-      <entry key="D1" value="5995.809322618713" />
-      <entry key="W1" value="9458.099898149301" />
+      <entry key="MS100" value="1.6930686525373306E-5" />
+      <entry key="MS500" value="0.11211571890213586" />
+      <entry key="S2" value="0.8493377100999921" />
+      <entry key="S5" value="2.0451824900870386" />
+      <entry key="S10" value="3.4678221703099323" />
+      <entry key="S30" value="6.918922217375678" />
+      <entry key="S60" value="9.614125287285336" />
+      <entry key="M2" value="12.364291100322282" />
+      <entry key="M5" value="16.378484509908567" />
+      <entry key="M10" value="21.27670162935076" />
+      <entry key="M15" value="24.847640780927108" />
+      <entry key="M30" value="35.28924026003749" />
+      <entry key="H1" value="126.59700214361288" />
+      <entry key="H2" value="493.4577836324787" />
+      <entry key="H4" value="1220.6532502885912" />
+      <entry key="D1" value="5535.763008171443" />
+      <entry key="W1" value="9451.540860407064" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -148,7 +174,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/assurance/validator/toggle/cartesian",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/domain/metadata/blueprint/structure",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -162,18 +188,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/domain/metadata/blueprint/structure" />
+      <recent name="$PROJECT_DIR$/src/domain/metadata/blueprint/structure/node" />
+      <recent name="$PROJECT_DIR$/src/domain/metadata/nulls/structure" />
       <recent name="$PROJECT_DIR$/src/err/assurance/validator/toggle/cartesian" />
       <recent name="$PROJECT_DIR$/src/err/assurance/validator/search" />
-      <recent name="$PROJECT_DIR$/src/err/assurance/validator/search/chain" />
-      <recent name="$PROJECT_DIR$/src/err/assurance/validator" />
-      <recent name="$PROJECT_DIR$/src/err/assurance/checker/crud/search/context/flag/excess" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/domain/metadata/blueprint/structure" />
+      <recent name="$PROJECT_DIR$/src/domain/structure" />
       <recent name="$PROJECT_DIR$/src/err/assurance/primitve" />
       <recent name="$PROJECT_DIR$/src/err/assurance/validator/primitive" />
       <recent name="$PROJECT_DIR$/src/err/assurance/validator/structure" />
-      <recent name="$PROJECT_DIR$/src/err/assurance/validator" />
-      <recent name="$PROJECT_DIR$/src/err/assurance/validator/structure/node" />
     </key>
   </component>
   <component name="RunManager" selected="Python.checker">
@@ -1022,7 +1048,7 @@
           <option name="timeStamp" value="145" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/domain/model/binder/structure.py</url>
+          <url>file://$PROJECT_DIR$/src/domain/structure/binder/structure.py</url>
           <line>11</line>
           <option name="timeStamp" value="147" />
         </line-breakpoint>
@@ -1377,7 +1403,7 @@
           <option name="timeStamp" value="270" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/domain/metadata/blueprint/container/vector/blueprint.py</url>
+          <url>file://$PROJECT_DIR$/src/domain/metadata/blueprint/sets/vector/blueprint.py</url>
           <line>9</line>
           <option name="timeStamp" value="271" />
         </line-breakpoint>

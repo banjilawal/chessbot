@@ -1,7 +1,7 @@
-# src/domain/metadata/nulls/roster.py
+# src/domain/metadata/nulls/structure/roster.py
 
 """
-Module: domain.metadata.nulls.roster
+Module: domain.metadata.nulls.structure.roster
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -9,28 +9,25 @@ version: 0.0.2
 
 from __future__ import annotations
 
-
+from abc import ABC
 from dataclasses import dataclass
 from typing import Generic, Optional, TypeVar
 
-from domain import Model, NullExceptionRoster
-from err import (
-    BlueprintNullException, ContextNullException, EntityCarrierNullException, ModelNullException,
-)
+from domain import NullExceptionRoster, StructuralWrapper
 
-T = TypeVar("T", bound="Model")
+T = TypeVar("T", bound="StructuralWrapper")
 
 @dataclass
-class ModelNullExceptionRoster(NullExceptionRoster[T], Generic[T]):
+class NodeNullRoster(NullExceptionRoster[T], ABC, Generic[T]):
     """
     Role:
         -   Metadata
 
     Responsibilities:
-        1. Catalog of NullExceptions associated with a Model
+        1. Catalog of NullExceptions associated with a StructuralWrapper.
 
     Attributes:
-        model: ModelNullException
+        model: NodeNullException
         carrier: EntityCarrierNullException
         blueprint: BlueprintNullException
         search_context: ContextNullException
@@ -40,7 +37,7 @@ class ModelNullExceptionRoster(NullExceptionRoster[T], Generic[T]):
     Super Class:
         NullExceptionRoster
     """
-    model: ModelNullException
+    model: NodeNullException
     carrier: EntityCarrierNullException
     blueprint: BlueprintNullException
     search_context: ContextNullException

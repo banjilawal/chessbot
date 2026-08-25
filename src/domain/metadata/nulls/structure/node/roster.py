@@ -9,16 +9,40 @@ version: 0.0.2
 
 from __future__ import annotations
 
-
+from abc import ABC
 from dataclasses import dataclass
+from typing import Generic, Optional, TypeVar
 
-from assurance import NullRoster
-from err import NodeBlueprintNullException, NodeCarrierNullException, NodeNullException
-from domain.structure.node import Node
+from domain import Node, NullExceptionRoster
+from err import (
+    BlueprintNullException, ContextNullException, EntityCarrierNullException, NodeBlueprintNullException,
+    NodeCarrierNullException, NodeNullException
+)
 
+
+T = TypeVar("T", bound="Node")
 
 @dataclass
-class NodeNullRoster(NullRoster[Node]):
+class NodeNullRoster(NullExceptionRoster[T], ABC, Generic[T]):
+    """
+    Role:
+        -   Metadata
+
+    Responsibilities:
+        1. Catalog of NullExceptions associated with a Node
+
+    Attributes:
+        model: NodeNullException
+        carrier: EntityCarrierNullException
+        blueprint: BlueprintNullException
+        search_context: Optional[ContextNullException] = None
+
+    Provides:
+
+    Super Class:
+        NullExceptionRoster
+    """
     model: NodeNullException
-    carrier: NodeCarrierNullException
-    blueprint: NodeBlueprintNullException
+    carrier: EntityCarrierNullException
+    blueprint: BlueprintNullException
+    search_context: Optional[ContextNullException] = None

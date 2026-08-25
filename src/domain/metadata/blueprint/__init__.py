@@ -10,15 +10,15 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.BLUEPRINT PACKAGE ===========#
 
 # Packages
-from .container import *
+from .sets import *
 from .context import *
 from .model import *
-from .node import *
-from .register import *
+from domain.metadata.blueprint.structure.node import *
+from domain.metadata.blueprint.structure.register import *
 from .registry import *
 from .signature import *
 from .space import *
-from .toggle import *
+from domain.metadata.blueprint.structure.toggle import *
 from .validation import *
 
 # Modules

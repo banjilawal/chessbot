@@ -9,6 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from abc import ABC
 from typing import Generic, Type, TypeVar
 
 from domain import DomainMetadata, DomainObject
@@ -16,7 +17,8 @@ from err import BlueprintNullException
 
 T = TypeVar("T", bound="DomainObject")
 
-class Blueprint(DomainMetadata, Generic[T]):
+
+class Blueprint(DomainMetadata, ABC, Generic[T]):
     """
      Role:
          -   DTO
@@ -35,12 +37,12 @@ class Blueprint(DomainMetadata, Generic[T]):
         Blueprint
      """
     _model_class: Type[T]
-    _null_exception: BlueprintNullException
+    _null_exception: DomainObjectNullException
     
     def __init__(
             self,
             model_class: Type[T],
-            null_exception: BlueprintNullException
+            null_exception: DomainObjectNullException
     ):
         """
         Args:
@@ -55,9 +57,10 @@ class Blueprint(DomainMetadata, Generic[T]):
         return self._model_class
     
     @property
-    def model_class_name(self) -> str:
-        return self._model_class.__class__.__name__
+    def null_exception(self) -> DomainObjectNullException:
+        return  self._null_exception
     
     @property
-    def null_exception(self) -> BlueprintNullException:
-        return self._null_exception
+    def model_class_name(self) -> str:
+        return self._model_class.__class__.__name__
+
