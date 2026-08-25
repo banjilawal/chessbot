@@ -1,7 +1,7 @@
-# src/err/assurance/validator/string/registry/exception.py
+# src/err/assurance/validator/primitive/string/name/exception.py
 
 """
-Module: err.assurance.validator.string.registry.exception
+Module: err.assurance.validator.primitive.string.name.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# REGISTRY_ENTRY_KEY_STRING_VALIDATOR_FAILURE #======================#
-    "RegistryEntryKeyStringValidatorException",
+    # ======================# NAME_VALIDATOR_FAILURE #======================#
+    "NameValidatorException",
 ]
 
-# ======================# REGISTRY_ENTRY_KEY_STRING_VALIDATOR_FAILURE #======================#
-class RegistryEntryKeyStringValidatorException(ValidatorException):
+# ======================# NAME_VALIDATOR_FAILURE #======================#
+class NameValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a RegistryEntry key failed a String validation check.
+        1.  Indicating assurance by a NameValidator failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class RegistryEntryKeyStringValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "RegistryEntryKey is not a valid string."
-    ERR_CODE = "REGISTRY_ENTRY_KEY_STRING_VALIDATOR_FAILURE"
+    MSG = "NameValidator failed."
+    ERR_CODE = "NAME_VALIDATOR_FAILURE"
     
     def __init__(
             self,

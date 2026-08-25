@@ -1,7 +1,7 @@
-# src/err/assurance/validator/string/exception.py
+# src/err/assurance/validator/primitive/string/registry/exception.py
 
 """
-Module: err.assurance.validator.string.exception
+Module: err.assurance.validator.primitive.string.registry.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,24 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-
-__all__ = [
-    # ======================# STRING_VALIDATOR_FAILURE #======================#
-    "StringValidatorException",
-]
-
 from err import ValidatorException
 from artifcat import MethodResultType
 
 
-# ======================# STRING_VALIDATOR_FAILURE #======================#
-class StringValidatorException(ValidatorException):
+__all__ = [
+    # ======================# REGISTRY_ENTRY_KEY_STRING_VALIDATOR_FAILURE #======================#
+    "RegistryEntryKeyStringValidatorException",
+]
+
+# ======================# REGISTRY_ENTRY_KEY_STRING_VALIDATOR_FAILURE #======================#
+class RegistryEntryKeyStringValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a StringValidator failed.
+        1.  Indicating assurance by a RegistryEntry key failed a String validation check.
 
     Attributes:
         msg: Optional[str]
@@ -45,8 +44,8 @@ class StringValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "StringValidator failed."
-    ERR_CODE = "STRING_VALIDATOR_FAILURE"
+    MSG = "RegistryEntryKey is not a valid string."
+    ERR_CODE = "REGISTRY_ENTRY_KEY_STRING_VALIDATOR_FAILURE"
     
     def __init__(
             self,

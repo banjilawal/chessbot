@@ -1,7 +1,7 @@
-# src/err/assurance/validator/string/name/exception.py
+# src/err/assurance/validator/primitive/string/exception.py
 
 """
-Module: err.assurance.validator.string.name.exception
+Module: err.assurance.validator.primitive.string.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,24 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
+
+__all__ = [
+    # ======================# STRING_VALIDATOR_FAILURE #======================#
+    "StringValidatorException",
+]
+
 from err import ValidatorException
 from artifcat import MethodResultType
 
 
-__all__ = [
-    # ======================# NAME_VALIDATOR_FAILURE #======================#
-    "NameValidatorException",
-]
-
-# ======================# NAME_VALIDATOR_FAILURE #======================#
-class NameValidatorException(ValidatorException):
+# ======================# STRING_VALIDATOR_FAILURE #======================#
+class StringValidatorException(ValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a NameValidator failed.
+        1.  Indicating assurance by a StringValidator failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +45,8 @@ class NameValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "NameValidator failed."
-    ERR_CODE = "NAME_VALIDATOR_FAILURE"
+    MSG = "StringValidator failed."
+    ERR_CODE = "STRING_VALIDATOR_FAILURE"
     
     def __init__(
             self,

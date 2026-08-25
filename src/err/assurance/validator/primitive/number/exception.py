@@ -1,7 +1,7 @@
-# src/err/assurance/validator/number/exception.py
+# src/err/assurance/validator/primitive/number/exception.py
 
 """
-Module: err.assurance.validator.number.exception
+Module: err.assurance.validator.primitive.number.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
