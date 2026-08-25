@@ -24,7 +24,7 @@ from .register import *
 from .space import *
 from .string import *
 from .structure import *
-from .toggle import *
+from err.assurance.validator.structure.toggle import *
 from .transit import *
 
 # Modules
