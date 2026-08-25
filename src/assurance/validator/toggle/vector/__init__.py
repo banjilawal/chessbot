@@ -12,4 +12,4 @@ version: 0.0.2
 # Packages
 
 # Module
-from .validator import VectorToggleValidator
+from .validator import CartesianToggleValidator

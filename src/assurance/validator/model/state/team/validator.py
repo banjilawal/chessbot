@@ -45,7 +45,7 @@ class TeamValidator(ModelValidator[Team]):
         
     @property
     def integrity_checker(self) -> TeamIntegrityChecker:
-        return cast(TeamIntegrityChecker, self.integrity_checker)
+        return cast(TeamIntegrityChecker, super().integrity_checker)
     
 
     @LoggingLevelRouter.monitor

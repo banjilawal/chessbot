@@ -45,7 +45,7 @@ class NodeValidator(ModelValidator[Node]):
         
     @property
     def integrity_checker(self) -> NodeIntegrityChecker:
-        return cast(NodeIntegrityChecker, self.integrity_checker)
+        return cast(NodeIntegrityChecker, super().integrity_checker)
     
 
     @LoggingLevelRouter.monitor

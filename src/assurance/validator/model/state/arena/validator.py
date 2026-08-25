@@ -45,7 +45,7 @@ class ArenaValidator(ModelValidator[Arena]):
         
     @property
     def integrity_checker(self) -> ArenaIntegrityChecker:
-        return cast(ArenaIntegrityChecker, self.integrity_checker)
+        return cast(ArenaIntegrityChecker, super().integrity_checker)
     
 
     @LoggingLevelRouter.monitor

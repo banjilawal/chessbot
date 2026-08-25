@@ -45,7 +45,7 @@ class BoardValidator(ModelValidator[Board]):
         
     @property
     def integrity_checker(self) -> BoardIntegrityChecker:
-        return cast(BoardIntegrityChecker, self.integrity_checker)
+        return cast(BoardIntegrityChecker, super().integrity_checker)
     
 
     @LoggingLevelRouter.monitor

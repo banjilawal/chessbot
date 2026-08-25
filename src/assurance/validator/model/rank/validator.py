@@ -45,7 +45,7 @@ class RankValidator(ModelValidator[Rank]):
         
     @property
     def integrity_checker(self) -> RankIntegrityChecker:
-        return cast(RankIntegrityChecker, self.integrity_checker)
+        return cast(RankIntegrityChecker, super().integrity_checker)
     
 
     @LoggingLevelRouter.monitor

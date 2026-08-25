@@ -45,7 +45,7 @@ class PlayerValidator(ModelValidator[Player]):
         
     @property
     def integrity_checker(self) -> PlayerIntegrityChecker:
-        return cast(PlayerIntegrityChecker, self.integrity_checker)
+        return cast(PlayerIntegrityChecker, super().integrity_checker)
     
 
     @LoggingLevelRouter.monitor

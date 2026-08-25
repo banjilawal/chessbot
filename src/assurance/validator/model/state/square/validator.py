@@ -45,7 +45,7 @@ class SquareValidator(ModelValidator[Square]):
         
     @property
     def integrity_checker(self) -> SquareIntegrityChecker:
-        return cast(SquareIntegrityChecker, self.integrity_checker)
+        return cast(SquareIntegrityChecker, super().integrity_checker)
     
 
     @LoggingLevelRouter.monitor

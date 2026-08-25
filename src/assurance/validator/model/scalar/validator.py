@@ -45,7 +45,7 @@ class ScalarValidator(ModelValidator[Scalar]):
         
     @property
     def integrity_checker(self) -> ScalarIntegrityChecker:
-        return cast(ScalarIntegrityChecker, self.integrity_checker)
+        return cast(ScalarIntegrityChecker, super().integrity_checker)
     
 
     @LoggingLevelRouter.monitor

@@ -45,7 +45,7 @@ class PathValidator(ModelValidator[Path]):
         
     @property
     def integrity_checker(self) -> PathIntegrityChecker:
-        return cast(PathIntegrityChecker, self.integrity_checker)
+        return cast(PathIntegrityChecker, super().integrity_checker)
     
 
     @LoggingLevelRouter.monitor

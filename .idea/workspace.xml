@@ -5,45 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/validator/toggle/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/carrier/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/carrier/arena/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/carrier/arena/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/carrier/board/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/carrier/board/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/carrier/coord/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/carrier/coord/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/carrier/edge/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/carrier/edge/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/carrier/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/carrier/game/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/carrier/game/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/carrier/hostage/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/carrier/hostage/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/carrier/node/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/carrier/node/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/carrier/player/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/carrier/player/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/carrier/rank/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/carrier/rank/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/carrier/square/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/carrier/square/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/carrier/team/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/carrier/team/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/carrier/token/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/carrier/token/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/excess/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/excess/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/excess/orientation/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/excess/orientation/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/excess/vector/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/excess/vector/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/zero/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/zero/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/zero/orientation/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/zero/orientation/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/zero/vector/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/toggle/zero/vector/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/toggle/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/toggle/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/toggle/vector/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/toggle/vector/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/validator/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/suite/operation/toggle/vector/suite.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/suite/operation/toggle/vector/suite.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/register/toggle/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/register/toggle/toolkit.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,61 +51,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.4274293714757547" />
-      <entry key="MS500" value="4.3242158010809" />
-      <entry key="S2" value="10.59933623953566" />
-      <entry key="S5" value="20.914671838520594" />
-      <entry key="S10" value="37.128875750092554" />
-      <entry key="S30" value="76.94551648555783" />
-      <entry key="S60" value="101.20114912457716" />
-      <entry key="M2" value="128.34156658660035" />
-      <entry key="M5" value="218.23933005851174" />
-      <entry key="M10" value="359.4044725369875" />
-      <entry key="M15" value="456.17282276950795" />
-      <entry key="M30" value="633.9451810533166" />
-      <entry key="H1" value="847.4682956765319" />
-      <entry key="H2" value="1112.0924381183802" />
-      <entry key="H4" value="1580.1908585097897" />
-      <entry key="D1" value="5196.269749068991" />
-      <entry key="W1" value="8405.965249152563" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0000000000090463" />
+      <entry key="S10" value="1.0000046945173613" />
+      <entry key="S30" value="1.0489585304011557" />
+      <entry key="S60" value="2.5159326700577256" />
+      <entry key="M2" value="16.472483377559332" />
+      <entry key="M5" value="85.62513593969227" />
+      <entry key="M10" value="211.23007863750087" />
+      <entry key="M15" value="326.27247450998635" />
+      <entry key="M30" value="574.6464826716148" />
+      <entry key="H1" value="866.4845148137844" />
+      <entry key="H2" value="1195.3568013850447" />
+      <entry key="H4" value="1701.884643977716" />
+      <entry key="D1" value="5362.171900032448" />
+      <entry key="W1" value="8611.950507503685" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="1.5356309375238509E-207" />
-      <entry key="S2" value="3.1671115044765914E-52" />
-      <entry key="S5" value="3.792679822717888E-21" />
-      <entry key="S10" value="8.703743109767684E-11" />
-      <entry key="S30" value="7.360126406143003E-4" />
-      <entry key="S60" value="0.04574371302017845" />
-      <entry key="M2" value="0.41363904587403205" />
-      <entry key="M5" value="1.7603563938889997" />
-      <entry key="M10" value="3.170583813537272" />
-      <entry key="M15" value="4.225692829912413" />
-      <entry key="M30" value="6.795005670288103" />
-      <entry key="H1" value="10.32999603363127" />
-      <entry key="H2" value="15.285938286546731" />
-      <entry key="H4" value="25.79859193345236" />
-      <entry key="D1" value="137.9206363919809" />
-      <entry key="W1" value="252.02259738889134" />
+      <entry key="MS500" value="1.1294741606857128E-181" />
+      <entry key="S2" value="8.60012239305599E-46" />
+      <entry key="S5" value="1.4079913255831501E-18" />
+      <entry key="S10" value="1.6742542430583516E-9" />
+      <entry key="S30" value="0.0018839620120134676" />
+      <entry key="S60" value="0.06139772339267831" />
+      <entry key="M2" value="0.35496012020406414" />
+      <entry key="M5" value="1.2105140588149645" />
+      <entry key="M10" value="2.5083844515825295" />
+      <entry key="M15" value="3.7005619025752354" />
+      <entry key="M30" value="6.69857029162423" />
+      <entry key="H1" value="10.864276449564807" />
+      <entry key="H2" value="16.427877932024906" />
+      <entry key="H4" value="27.23602834219506" />
+      <entry key="D1" value="139.54819555621842" />
+      <entry key="W1" value="254.66428084609754" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.1819139534982717" />
-      <entry key="MS500" value="4.1721484494429175" />
-      <entry key="S2" value="10.508734220537086" />
-      <entry key="S5" value="20.84547249237952" />
-      <entry key="S10" value="37.0684880829366" />
-      <entry key="S30" value="76.9050566421977" />
-      <entry key="S60" value="101.21915386497157" />
-      <entry key="M2" value="128.73466198243696" />
-      <entry key="M5" value="219.9814269865193" />
-      <entry key="M10" value="362.55867752935427" />
-      <entry key="M15" value="460.38374969142353" />
-      <entry key="M30" value="640.7282907134028" />
-      <entry key="H1" value="857.7893073180087" />
-      <entry key="H2" value="1127.3718074156263" />
-      <entry key="H4" value="1605.9832190340157" />
-      <entry key="D1" value="5334.180508567881" />
-      <entry key="W1" value="8657.984984103747" />
+      <entry key="MS100" value="3.1712799371926016E-13" />
+      <entry key="MS500" value="0.0031640760688751786" />
+      <entry key="S2" value="0.23717107878511348" />
+      <entry key="S5" value="0.5623732977496269" />
+      <entry key="S10" value="0.7499202202987182" />
+      <entry key="S30" value="0.9592920500354469" />
+      <entry key="S60" value="2.5290848333896325" />
+      <entry key="M2" value="16.797835286958854" />
+      <entry key="M5" value="86.81119791441283" />
+      <entry key="M10" value="213.71511454063548" />
+      <entry key="M15" value="329.9513916278611" />
+      <entry key="M30" value="581.3276585085113" />
+      <entry key="H1" value="877.3360698881658" />
+      <entry key="H2" value="1211.7758483586515" />
+      <entry key="H4" value="1729.1132539014452" />
+      <entry key="D1" value="5501.710051468236" />
+      <entry key="W1" value="8866.611891987415" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -170,7 +136,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/assurance/validator/search",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/assurance/validator/toggle/cartesian",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -184,18 +150,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/assurance/validator/toggle/cartesian" />
       <recent name="$PROJECT_DIR$/src/err/assurance/validator/search" />
       <recent name="$PROJECT_DIR$/src/err/assurance/validator/search/chain" />
       <recent name="$PROJECT_DIR$/src/err/assurance/validator" />
       <recent name="$PROJECT_DIR$/src/err/assurance/checker/crud/search/context/flag/excess" />
-      <recent name="$PROJECT_DIR$/src/err/assurance/validator/structure/node" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/assurance/validator/structure" />
       <recent name="$PROJECT_DIR$/src/err/assurance/validator" />
       <recent name="$PROJECT_DIR$/src/err/assurance/validator/structure/node" />
       <recent name="$PROJECT_DIR$/src/err/assurance/checker/crud" />
       <recent name="$PROJECT_DIR$/src/err/assurance" />
-      <recent name="$PROJECT_DIR$/src/assurance" />
     </key>
   </component>
   <component name="RunManager" selected="Python.checker">
@@ -1324,12 +1290,12 @@
           <option name="timeStamp" value="243" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/err/assurance/validator/toggle/zero/__init__.py</url>
+          <url>file://$PROJECT_DIR$/src/err/assurance/validator/structure/toggle/zero/__init__.py</url>
           <line>11</line>
           <option name="timeStamp" value="245" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/err/assurance/validator/toggle/carrier/arena/exception.py</url>
+          <url>file://$PROJECT_DIR$/src/err/assurance/validator/structure/toggle/carrier/arena/exception.py</url>
           <line>9</line>
           <option name="timeStamp" value="247" />
         </line-breakpoint>

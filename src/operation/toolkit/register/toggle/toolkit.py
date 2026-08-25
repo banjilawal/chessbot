@@ -20,7 +20,7 @@ from err import (
 from domain.structure.register import CartesianToggleRegister
 from domain.structure.toggle import CartesianToggle
 from operation.toolkit.register.toggle.toolkit import RegisterToolkit
-from assurance.validator import VectorToggleValidator
+from assurance.validator import CartesianToggleValidator
 
 
 class VectorToggleRegisterToolkit(RegisterToolkit[CartesianToggle]):
@@ -62,4 +62,4 @@ class VectorToggleRegisterToolkit(RegisterToolkit[CartesianToggle]):
         VectorToggleRegisterBlueprintNullException()
     )
     
-    vector_toggle_validator: VectorToggleValidator = VectorToggleValidator()
+    vector_toggle_validator: CartesianToggleValidator = CartesianToggleValidator()

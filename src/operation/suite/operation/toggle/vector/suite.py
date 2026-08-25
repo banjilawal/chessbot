@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import VectorToggleValidator
+from assurance import CartesianToggleValidator
 from fabrication import VectorToggleBuilder
 from kit import ToggleOperationSuite, VectorToggleToolkit
 from domain.structure.toggle import CartesianToggle
@@ -41,7 +41,7 @@ class VectorToggleSuite(ToggleOperationSuite[CartesianToggle]):
             self,
             toolkit: Optional[VectorToggleToolkit] | None = None,
             builder: Optional[VectorToggleBuilder] | None = None,
-            validator: Optional[VectorToggleValidator] | None = None,
+            validator: Optional[CartesianToggleValidator] | None = None,
     ):
         """
         Args:
@@ -52,7 +52,7 @@ class VectorToggleSuite(ToggleOperationSuite[CartesianToggle]):
         super().__init__(
             toolkit=toolkit or VectorToggleToolkit(),
             builder=builder or VectorToggleBuilder(),
-            validator=validator or VectorToggleValidator(),
+            validator=validator or CartesianToggleValidator(),
         )
     
     @property
@@ -64,6 +64,6 @@ class VectorToggleSuite(ToggleOperationSuite[CartesianToggle]):
         return cast(VectorToggleBuilder, super().builder)
     
     @property
-    def validator(self) -> VectorToggleValidator:
-        return cast(VectorToggleValidator, super().validator)
+    def validator(self) -> CartesianToggleValidator:
+        return cast(CartesianToggleValidator, super().validator)
     

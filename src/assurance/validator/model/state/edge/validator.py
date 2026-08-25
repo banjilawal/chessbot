@@ -45,7 +45,7 @@ class EdgeValidator(ModelValidator[Edge]):
         
     @property
     def integrity_checker(self) -> EdgeIntegrityChecker:
-        return cast(EdgeIntegrityChecker, self.integrity_checker)
+        return cast(EdgeIntegrityChecker, super().integrity_checker)
     
 
     @LoggingLevelRouter.monitor

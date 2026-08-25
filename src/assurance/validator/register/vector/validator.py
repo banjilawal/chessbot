@@ -45,7 +45,7 @@ class VectorRegisterValidator(RegisterValidator[VectorRegister]):
         
     @property
     def integrity_checker(self) -> VectorRegisterIntegrityChecker:
-        return cast(VectorRegisterIntegrityChecker, self.integrity_checker)
+        return cast(VectorRegisterIntegrityChecker, super().integrity_checker)
     
 
     @LoggingLevelRouter.monitor

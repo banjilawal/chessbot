@@ -58,7 +58,7 @@ class ToggleValidator(Validator, Generic[T]):
     
     @property
     def integrity_checker(self) -> ToggleIntegrityChecker[T]:
-        return cast(ToggleIntegrityChecker[T], self.integrity_checker)
+        return cast(ToggleIntegrityChecker[T], super().integrity_checker)
     
        @abstractmethod
     @LoggingLevelRouter.monitor

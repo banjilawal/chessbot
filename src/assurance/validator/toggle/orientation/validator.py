@@ -48,7 +48,7 @@ class OrientationSelectorValidator(ModelValidator[OrientationToggle]):
         
     @property
     def integrity_checker(self) -> VectorToggleRegisterIntegrityChecker:
-        return cast(VectorToggleRegisterIntegrityChecker, self.integrity_checker)
+        return cast(VectorToggleRegisterIntegrityChecker, super().integrity_checker)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult:

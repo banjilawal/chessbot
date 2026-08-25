@@ -45,7 +45,7 @@ class TokenValidator(ModelValidator[Token]):
         
     @property
     def integrity_checker(self) -> TokenIntegrityChecker:
-        return cast(TokenIntegrityChecker, self.integrity_checker)
+        return cast(TokenIntegrityChecker, super().integrity_checker)
     
 
     @LoggingLevelRouter.monitor

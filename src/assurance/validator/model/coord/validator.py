@@ -45,7 +45,7 @@ class CoordValidator(ModelValidator[Coord]):
         
     @property
     def integrity_checker(self) -> CoordIntegrityChecker:
-        return cast(CoordIntegrityChecker, self.integrity_checker)
+        return cast(CoordIntegrityChecker, super().integrity_checker)
     
 
     @LoggingLevelRouter.monitor
