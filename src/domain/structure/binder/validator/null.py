@@ -1,7 +1,7 @@
-# src/domain/model/state/binder/validation/null.py
+# src/domain/structure/binder/validation/null.py
 
 """
-Module: domain.model.state.binder.validation.null
+Module: domain.structure.binder.validation.null
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -13,7 +13,7 @@ __all__ = [
 ]
 
 from system import NullException
-from domain.model.state.team import TeamBinderException
+from domain.structure.team import TeamBinderException
 
 
 # ======================# TEAM_BINDER_NULL_EXCEPTION EXCEPTION #======================#

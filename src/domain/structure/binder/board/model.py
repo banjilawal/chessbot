@@ -1,7 +1,7 @@
-# src/domain/model/state/binder/board/dossier/model/state.py
+# src/domain/structure/binder/board/dossier/model/state.py
 
 """
-Module: domain.model.state.binder.board.model
+Module: domain.structure.binder.board.model
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0

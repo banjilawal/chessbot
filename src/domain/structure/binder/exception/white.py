@@ -1,7 +1,7 @@
-# src/domain/model/state/binder/exception/white.py
+# src/domain/structure/binder/exception/white.py
 
 """
-Module: domain.model.state.binder.exception.white
+Module: domain.structure.binder.exception.white
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -12,7 +12,7 @@ __all__ = [
     "WhiteTeamHasWrongSchemaException",
 ]
 
-from domain.model.state.team import TeamBinderException
+from domain.structure.team import TeamBinderException
 
 
 # ======================# WHITE_TEAM_HAS_WRONG_SCHEMA EXCEPTION #======================#

@@ -1,7 +1,7 @@
-# src/domain/model/state/binder/board/team/dossier/model/state.py
+# src/domain/structure/binder/board/team/dossier/model/state.py
 
 """
-Module: domain.model.state.binder.board.team.model
+Module: domain.structure.binder.board.team.model
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Dict, List, Optional
 
 
-from domain.model.state.team import Team
+from domain.structure.team import Team
 from domain.model import Board, Schema
 from microservice import TeamService
 

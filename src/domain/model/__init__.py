@@ -10,7 +10,6 @@ version: 0.0.2
 # =========== DOMAIN.MODEL PACKAGE ===========#
 
 # Packages
-from .binder import *
 from .cartesian import *
 from .dossier import *
 from .identity import *

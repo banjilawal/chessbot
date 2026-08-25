@@ -1,7 +1,7 @@
-# src/domain/model/state/binder/exception/collision.py
+# src/domain/structure/binder/exception/collision.py
 
 """
-Module: domain.model.state.binder.exception.collision
+Module: domain.structure.binder.exception.collision
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -12,7 +12,7 @@ __all__ = [
     "TeamSchemaCollisionException",
 ]
 
-from domain.model.state.team import TeamBinderException
+from domain.structure.team import TeamBinderException
 
 
 # ======================# TEAM_BINDER_SCHEMA_COLLISION EXCEPTION #======================#

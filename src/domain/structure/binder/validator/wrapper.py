@@ -1,7 +1,7 @@
-# src/domain/model/state/binder/validation/validator.py
+# src/domain/structure/binder/validation/validator.py
 
 """
-Module: domain.model.state.binder.validation.work
+Module: domain.structure.binder.validation.work
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -12,7 +12,7 @@ __all__ = [
     "TeamBinderValidatorException",
 ]
 
-from domain.model.state.team import TeamBinderException
+from domain.structure.team import TeamBinderException
 from system import ValidatorException
 
 

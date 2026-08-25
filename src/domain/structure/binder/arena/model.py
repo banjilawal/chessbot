@@ -1,7 +1,7 @@
-# src/domain/model/state/binder/arena/dossier/model/state.py
+# src/domain/structure/binder/arena/dossier/model/state.py
 
 """
-Module: domain.model.state.binder.arena.model
+Module: domain.structure.binder.arena.model
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0

@@ -1,7 +1,7 @@
-# src/domain/model/state/binder/validation/validation.py
+# src/domain/structure/binder/validation/validation.py
 
 """
-Module: domain.model.state.binder.validation.validation
+Module: domain.structure.binder.validation.validation
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -14,7 +14,7 @@ from typing import Any, cast
 from domain.model import SchemaService
 from system import LoggingLevelRouter, Validator
 from artifcat import ValidationResult
-from domain.model.state.team import (
+from domain.structure.team import (
     BlackTeamHasWrongSchemaException, TeamBinder, TeamBinderNullException, TeamBinderValidatorException,
     TeamValidator, WhiteTeamHasWrongSchemaException
 )

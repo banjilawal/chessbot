@@ -1,7 +1,7 @@
-# src/domain/model/state/binder/binder.py
+# src/domain/structure/binder/binder.py
 
 """
-Module: domain.model.state.binder.binder
+Module: domain.structure.binder.binder
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -12,13 +12,14 @@ from __future__ import annotations
 from abc import ABC
 from typing import Dict, Generic, List, Optional, TypeVar
 
+from domain import StructuralWrapper
 from microservice import Microservice
 from domain.model import Schema
 
 P = TypeVar("P")
 S = TypeVar("S")
 
-class Binder(ABC, Generic[P, S]):
+class Binder(StructuralWrapper, ABC, Generic[P, S]):
     """
     Role:
         -   Model
