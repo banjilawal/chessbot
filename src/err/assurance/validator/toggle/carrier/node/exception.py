@@ -44,7 +44,7 @@ class NodeCarrierValidatorException(EntityCarrierValidatorException):
     Super Class:
         CarrierValidatorException
     """
-    MSG = "NodeCarrier validation failed."
+    MSG = "NodeCarrierValidator failed."
     ERR_CODE = "NODE_CARRIER_VALIDATOR_FAILURE"
     
     def __init__(

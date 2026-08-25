@@ -45,7 +45,7 @@ class EntityCarrierValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Toggle validation failed."
+    MSG = "ToggleValidator failed."
     ERR_CODE = "TOGGLE_VALIDATOR_FAILURE"
     
     def __init__(

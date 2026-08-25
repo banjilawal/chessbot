@@ -44,7 +44,7 @@ class VectorRegisterValidatorException(RegisterValidatorException):
     Super Class:
         RegisterValidatorException
     """
-    MSG = "VectorRegister validation failed."
+    MSG = "VectorRegisterValidator failed."
     ERR_CODE = "VECTOR_REGISTER_VALIDATOR_FAILURE"
     
     def __init__(

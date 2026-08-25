@@ -44,7 +44,7 @@ class HostageCarrierValidatorException(EntityCarrierValidatorException):
     Super Class:
         CarrierValidatorException
     """
-    MSG = "HostageCarrier validation failed."
+    MSG = "HostageCarrierValidator failed."
     ERR_CODE = "HOSTAGE_CARRIER_VALIDATOR_FAILURE"
     
     def __init__(

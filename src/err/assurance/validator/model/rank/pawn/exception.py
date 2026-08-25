@@ -42,7 +42,7 @@ class PawnValidatorException(RankValidatorException):
     Super Class:
         RankValidatorException
     """
-    MSG = "Pawn  validation failed."
+    MSG = "Pawn Validator failed."
     ERR_CODE = "PAWN_VALIDATOR_FAILURE"
     
     def __init__(

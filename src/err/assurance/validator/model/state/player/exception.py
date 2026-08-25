@@ -44,7 +44,7 @@ class PlayerValidatorException(StateModelValidatorException):
     Super Class:
         StateModelValidatorException
     """
-    MSG = "Player validation failed."
+    MSG = "PlayerValidator failed."
     ERR_CODE = "PLAYER_VALIDATOR_FAILURE"
     
     def __init__(

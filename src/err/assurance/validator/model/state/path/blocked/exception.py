@@ -44,7 +44,7 @@ class BlockedPathValidatorException(PathValidatorException):
     Super Class:
         PathValidatorException
     """
-    MSG = "Candidate did not pass an BlockedPath validation failed."
+    MSG = "Candidate did not pass an BlockedPathValidator failed."
     ERR_CODE = "BLOCKED_PATH_VALIDATOR_FAILURE"
     
     def __init__(

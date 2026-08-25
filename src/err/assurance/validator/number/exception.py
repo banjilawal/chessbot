@@ -44,7 +44,7 @@ class NumberValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Number validation failed."
+    MSG = "NumberValidator failed."
     ERR_CODE = "NUMBER_VALIDATOR_FAILURE"
     
     def __init__(

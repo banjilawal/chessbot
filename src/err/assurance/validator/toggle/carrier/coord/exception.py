@@ -44,7 +44,7 @@ class CoordCarrierValidatorException(EntityCarrierValidatorException):
     Super Class:
         CarrierValidatorException
     """
-    MSG = "CoordCarrier validation failed."
+    MSG = "CoordCarrierValidator failed."
     ERR_CODE = "COORD_CARRIER_VALIDATOR_FAILURE"
     
     def __init__(

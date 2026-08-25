@@ -44,7 +44,7 @@ class TeamCarrierValidatorException(EntityCarrierValidatorException):
     Super Class:
         CarrierValidatorException
     """
-    MSG = "TeamCarrier validation failed."
+    MSG = "TeamCarrierValidator failed."
     ERR_CODE = "TEAM_CARRIER_VALIDATOR_FAILURE"
     
     def __init__(

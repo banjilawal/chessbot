@@ -44,7 +44,7 @@ class TokenCarrierValidatorException(EntityCarrierValidatorException):
     Super Class:
         CarrierValidatorException
     """
-    MSG = "TokenCarrier validation failed."
+    MSG = "TokenCarrierValidator failed."
     ERR_CODE = "TOKEN_CARRIER_VALIDATOR_FAILURE"
     
     def __init__(

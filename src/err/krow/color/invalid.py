@@ -34,4 +34,4 @@ class InvalidGameColorException(GameColorException, ValidatorException):
     None
     """
     ERR_CODE = "GAME_COLOR_VALIDATION_EXCEPTION"
-    MSG = "GameColor validation failed."
+    MSG = "GameColorValidator failed."

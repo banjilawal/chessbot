@@ -44,7 +44,7 @@ class BinderValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Binder validation failed."
+    MSG = "BinderValidator failed."
     ERR_CODE = "BINDER_VALIDATOR_FAILURE"
     
     def __init__(

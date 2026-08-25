@@ -44,7 +44,7 @@ class BoardCarrierValidatorException(EntityCarrierValidatorException):
     Super Class:
         CarrierValidatorException
     """
-    MSG = "BoardCarrier validation failed."
+    MSG = "BoardCarrierValidator failed."
     ERR_CODE = "BOARD_CARRIER_VALIDATOR_FAILURE"
     
     def __init__(

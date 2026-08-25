@@ -44,7 +44,7 @@ class ManeuverValidatorException(StateModelValidatorException):
     Super Class:
         StateModelValidatorException
     """
-    MSG = "Maneuver validation failed."
+    MSG = "ManeuverValidator failed."
     ERR_CODE = "MANEUVER_VALIDATOR_FAILURE"
     
     def __init__(

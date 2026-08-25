@@ -44,7 +44,7 @@ class StateModelValidatorException(ModelValidatorException):
     Super Class:
         ModelValidatorException
     """
-    MSG = "Model validation failed."
+    MSG = "ModelValidator failed."
     ERR_CODE = "STATE_MODEL_VALIDATOR_FAILURE"
     
     def __init__(

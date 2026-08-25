@@ -44,7 +44,7 @@ class NodeValidatorException(StateModelValidatorException):
     Super Class:
         StateModelValidatorException
     """
-    MSG = "Node validation failed."
+    MSG = "NodeValidator failed."
     ERR_CODE = "NODE_VALIDATOR_FAILURE"
     
     def __init__(

@@ -44,7 +44,7 @@ class NameValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Name validation failed."
+    MSG = "NameValidator failed."
     ERR_CODE = "NAME_VALIDATOR_FAILURE"
     
     def __init__(

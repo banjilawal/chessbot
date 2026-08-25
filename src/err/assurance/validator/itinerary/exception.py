@@ -44,7 +44,7 @@ class ItineraryValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Itinerary validation failed."
+    MSG = "ItineraryValidator failed."
     ERR_CODE = "ITINERARY_VALIDATOR_FAILURE"
     
     def __init__(

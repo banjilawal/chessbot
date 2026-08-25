@@ -43,7 +43,7 @@ class ValidatorException(AssuranceException):
     Super Class:
         AssuranceException
     """
-    MSG = " validation failed."
+    MSG = "Validator failed."
     ERR_CODE = "VALIDATOR_FAILURE"
     MTHD_RSLT_TYPE = MethodResultType.VALIDATION_RESULT
     

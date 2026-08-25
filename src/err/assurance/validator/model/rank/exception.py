@@ -44,7 +44,7 @@ class RankValidatorException(ModelValidatorException):
     Super Class:
         ModelValidatorException
     """
-    MSG = "Rank validation failed."
+    MSG = "RankValidator failed."
     ERR_CODE = "RANK_VALIDATOR_FAILURE"
     
     def __init__(

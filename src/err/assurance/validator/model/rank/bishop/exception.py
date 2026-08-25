@@ -42,7 +42,7 @@ class BishopValidatorException(RankValidatorException):
     Super Class:
         RankValidatorException
     """
-    MSG = "Bishop  validation failed."
+    MSG = "Bishop Validator failed."
     ERR_CODE = "BISHOP_VALIDATOR_FAILURE"
     
     def __init__(

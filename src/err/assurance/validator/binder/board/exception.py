@@ -42,7 +42,7 @@ class BoardTeamBinderValidatorException(BinderValidatorException):
     Super Class:
         BinderValidatorException
     """
-    MSG = "BoardTeamBinder  validation failed."
+    MSG = "BoardTeamBinder Validator failed."
     ERR_CODE = "BOARD_TEAM_BINDER_VALIDATOR_FAILURE"
     
     def __init__(

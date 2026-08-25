@@ -44,7 +44,7 @@ class ScalarValidatorException(ModelValidatorException):
     Super Class:
         ModelValidatorException
     """
-    MSG = "Scalar validation failed."
+    MSG = "ScalarValidator failed."
     ERR_CODE = "SCALAR_VALIDATOR_FAILURE"
     
     def __init__(

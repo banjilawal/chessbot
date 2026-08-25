@@ -42,7 +42,7 @@ class KingValidatorException(RankValidatorException):
     Super Class:
         RankValidatorException
     """
-    MSG = "King  validation failed."
+    MSG = "King Validator failed."
     ERR_CODE = "KING_VALIDATOR_FAILURE"
     
     def __init__(

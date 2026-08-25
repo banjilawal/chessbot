@@ -44,7 +44,7 @@ class PathValidatorException(StateModelValidatorException):
     Super Class:
         StateModelValidatorException
     """
-    MSG = "Path validation failed."
+    MSG = "PathValidator failed."
     ERR_CODE = "PATH_VALIDATOR_FAILURE"
     
     def __init__(

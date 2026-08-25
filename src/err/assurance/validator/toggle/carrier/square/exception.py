@@ -44,7 +44,7 @@ class SquareCarrierValidatorException(EntityCarrierValidatorException):
     Super Class:
         CarrierValidatorException
     """
-    MSG = "SquareCarrier validation failed."
+    MSG = "SquareCarrierValidator failed."
     ERR_CODE = "SQUARE_CARRIER_VALIDATOR_FAILURE"
     
     def __init__(

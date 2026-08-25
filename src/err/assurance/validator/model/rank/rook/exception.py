@@ -42,7 +42,7 @@ class RookValidatorException(RankValidatorException):
     Super Class:
         RankValidatorException
     """
-    MSG = "Rook  validation failed."
+    MSG = "Rook Validator failed."
     ERR_CODE = "ROOK_VALIDATOR_FAILURE"
     
     def __init__(

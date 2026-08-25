@@ -42,7 +42,7 @@ class ArenaPlayerBinderValidatorException(BinderValidatorException):
     Super Class:
         BinderValidatorException
     """
-    MSG = "ArenaPlayerBinder  validation failed."
+    MSG = "ArenaPlayerBinder Validator failed."
     ERR_CODE = "ARENA_PLAYER_BINDER_VALIDATOR_FAILURE"
     
     def __init__(

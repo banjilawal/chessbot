@@ -44,7 +44,7 @@ class GameCarrierValidatorException(EntityCarrierValidatorException):
     Super Class:
         CarrierValidatorException
     """
-    MSG = "GameCarrier validation failed."
+    MSG = "GameCarrierValidator failed."
     ERR_CODE = "GAME_CARRIER_VALIDATOR_FAILURE"
     
     def __init__(

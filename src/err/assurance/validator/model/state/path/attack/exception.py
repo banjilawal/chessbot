@@ -44,7 +44,7 @@ class AttackPathValidatorException(PathValidatorException):
     Super Class:
         PathValidatorException
     """
-    MSG = "Candidate did not pass an AttackPath validation failed."
+    MSG = "Candidate did not pass an AttackPathValidator failed."
     ERR_CODE = "ATTACK_PATH_VALIDATOR_FAILURE"
     
     def __init__(

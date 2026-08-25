@@ -44,7 +44,7 @@ class RankCarrierValidatorException(EntityCarrierValidatorException):
     Super Class:
         CarrierValidatorException
     """
-    MSG = "RankCarrier validation failed."
+    MSG = "RankCarrierValidator failed."
     ERR_CODE = "RANK_CARRIER_VALIDATOR_FAILURE"
     
     def __init__(

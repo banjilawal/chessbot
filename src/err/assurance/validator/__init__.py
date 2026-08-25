@@ -11,6 +11,7 @@ version: 0.0.2
 
 # Packages
 from .binder import *
+from .search import *
 from .endpoint import *
 from .identity import *
 from .itinerary import *
@@ -24,6 +25,7 @@ from .space import *
 from .string import *
 from .structure import *
 from .toggle import *
+from .transit import *
 
 # Modules
 from .exception import ValidatorException

@@ -44,7 +44,7 @@ class QueryValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Query validation failed."
+    MSG = "QueryValidator failed."
     ERR_CODE = "QUERY_VALIDATOR_FAILURE"
     
     def __init__(

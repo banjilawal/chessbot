@@ -43,7 +43,7 @@ class VectorToggleValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "VectorToggle validation failed."
+    MSG = "VectorToggleValidator failed."
     ERR_CODE = "VECTOR_TOGGLE_VALIDATOR_FAILURE"
     
     def __init__(

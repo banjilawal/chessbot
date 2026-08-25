@@ -44,7 +44,7 @@ class EdgeValidatorException(StateModelValidatorException):
     Super Class:
         StateModelValidatorException
     """
-    MSG = "Edge validation failed."
+    MSG = "EdgeValidator failed."
     ERR_CODE = "EDGE_VALIDATOR_FAILURE"
     
     def __init__(

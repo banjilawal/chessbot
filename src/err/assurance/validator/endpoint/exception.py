@@ -44,7 +44,7 @@ class ManeuverEndpointValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "ManeuverEndpoint validation failed."
+    MSG = "ManeuverEndpointValidator failed."
     ERR_CODE = "MANEUVER_ENDPOINT_VALIDATOR_FAILURE"
     
     def __init__(

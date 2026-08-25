@@ -44,7 +44,7 @@ class EdgeCarrierValidatorException(EntityCarrierValidatorException):
     Super Class:
         CarrierValidatorException
     """
-    MSG = "EdgeCarrier validation failed."
+    MSG = "EdgeCarrierValidator failed."
     ERR_CODE = "EDGE_CARRIER_VALIDATOR_FAILURE"
     
     def __init__(

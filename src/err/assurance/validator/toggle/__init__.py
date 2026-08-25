@@ -11,7 +11,6 @@ version: 0.0.2
 
 # Packages
 from .carrier import *
-from .context import *
 from .excess import *
 from .zero import *
 

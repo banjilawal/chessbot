@@ -44,7 +44,7 @@ class VectorToggleRegisterValidatorException(RegisterValidatorException):
     Super Class:
         RegisterValidatorException
     """
-    MSG = "VectorToggleRegister validation failed."
+    MSG = "VectorToggleRegisterValidator failed."
     ERR_CODE = "VECTOR_TOGGLE_REGISTER_VALIDATOR_FAILURE"
     
     def __init__(

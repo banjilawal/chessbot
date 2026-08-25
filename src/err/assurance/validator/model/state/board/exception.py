@@ -44,7 +44,7 @@ class BoardValidatorException(StateModelValidatorException):
     Super Class:
         StateModelValidatorException
     """
-    MSG = "Board validation failed."
+    MSG = "BoardValidator failed."
     ERR_CODE = "BOARD_VALIDATOR_FAILURE"
     
     def __init__(

@@ -42,7 +42,7 @@ class KnightValidatorException(RankValidatorException):
     Super Class:
         RankValidatorException
     """
-    MSG = "Knight  validation failed."
+    MSG = "Knight Validator failed."
     ERR_CODE = "KNIGHT_VALIDATOR_FAILURE"
     
     def __init__(

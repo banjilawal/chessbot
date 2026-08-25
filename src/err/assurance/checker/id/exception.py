@@ -44,7 +44,7 @@ class BlueprintIdValidatorExceptionIntegrity(IntegrityCheckerException):
     Super Class:
         CheckerException
     """
-    MSG = "BlueprintId validation failed."
+    MSG = "BlueprintIdValidator failed."
     ERR_CODE = "BLUEPRINT_ID_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(

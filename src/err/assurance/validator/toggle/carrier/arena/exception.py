@@ -44,7 +44,7 @@ class ArenaCarrierValidatorException(EntityCarrierValidatorException):
     Super Class:
         CarrierValidatorException
     """
-    MSG = "ArenaCarrier validation failed."
+    MSG = "ArenaCarrierValidator failed."
     ERR_CODE = "ARENA_CARRIER_VALIDATOR_FAILURE"
     
     def __init__(

@@ -44,7 +44,7 @@ class IdentityRegisterValidatorException(RegisterValidatorException):
     Super Class:
         RegisterValidatorException
     """
-    MSG = "VectorIdentityRegister validation failed."
+    MSG = "VectorIdentityRegisterValidator failed."
     ERR_CODE = "IDENTITY_REGISTER_VALIDATOR_FAILURE"
     
     def __init__(

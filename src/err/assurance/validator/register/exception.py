@@ -44,7 +44,7 @@ class RegisterValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Register validation failed."
+    MSG = "RegisterValidator failed."
     ERR_CODE = "REGISTER_VALIDATOR_FAILURE"
     
     def __init__(

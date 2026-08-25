@@ -44,7 +44,7 @@ class CoordValidatorException(ModelValidatorException):
     Super Class:
         ModelValidatorException
     """
-    MSG = "Coord validation failed."
+    MSG = "CoordValidator failed."
     ERR_CODE = "COORD_VALIDATOR_FAILURE"
     
     def __init__(

@@ -42,7 +42,7 @@ class QueenValidatorException(RankValidatorException):
     Super Class:
         RankValidatorException
     """
-    MSG = "Queen  validation failed."
+    MSG = "Queen Validator failed."
     ERR_CODE = "QUEEN_VALIDATOR_FAILURE"
     
     def __init__(

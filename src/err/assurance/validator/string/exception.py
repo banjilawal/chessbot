@@ -45,7 +45,7 @@ class StringValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "String validation failed."
+    MSG = "StringValidator failed."
     ERR_CODE = "STRING_VALIDATOR_FAILURE"
     
     def __init__(

@@ -44,7 +44,7 @@ class GameValidatorException(StateModelValidatorException):
     Super Class:
         StateModelValidatorException
     """
-    MSG = "Game validation failed."
+    MSG = "GameValidator failed."
     ERR_CODE = "GAME_VALIDATOR_FAILURE"
     
     def __init__(

@@ -44,7 +44,7 @@ class SquareRegisterValidatorException(RegisterValidatorException):
     Super Class:
         RegisterValidatorException
     """
-    MSG = "SquareRegister validation failed."
+    MSG = "SquareRegisterValidator failed."
     ERR_CODE = "SQUARE_REGISTER_VALIDATOR_FAILURE"
     
     def __init__(

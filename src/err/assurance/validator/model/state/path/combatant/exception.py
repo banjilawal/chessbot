@@ -44,7 +44,7 @@ class CombatantPathValidatorException(PathValidatorException):
     Super Class:
         PathValidatorException
     """
-    MSG = "Candidate did not pass an CombatantPath validation failed."
+    MSG = "Candidate did not pass an CombatantPathValidator failed."
     ERR_CODE = "COMBATANT_PATH_VALIDATOR_FAILURE"
     
     def __init__(

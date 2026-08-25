@@ -44,7 +44,7 @@ class VectorValidatorException(ModelValidatorException):
     Super Class:
         ModelValidatorException
     """
-    MSG = "Vector validation failed."
+    MSG = "VectorValidator failed."
     ERR_CODE = "VECTOR_VALIDATOR_FAILURE"
     
     def __init__(

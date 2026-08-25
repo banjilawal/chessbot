@@ -44,7 +44,7 @@ class CheckedPathValidatorException(PathValidatorException):
     Super Class:
         PathValidatorException
     """
-    MSG = "Candidate did not pass an CheckedPath validation failed."
+    MSG = "Candidate did not pass an CheckedPathValidator failed."
     ERR_CODE = "CHECKED_PATH_VALIDATOR_FAILURE"
     
     def __init__(

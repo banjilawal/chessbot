@@ -44,7 +44,7 @@ class KingPathValidatorException(PathValidatorException):
     Super Class:
         PathValidatorException
     """
-    MSG = "Candidate did not pass an KingPath validation failed."
+    MSG = "Candidate did not pass an KingPathValidator failed."
     ERR_CODE = "KING_PATH_VALIDATOR_FAILURE"
     
     def __init__(

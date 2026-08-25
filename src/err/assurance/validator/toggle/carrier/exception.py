@@ -44,7 +44,7 @@ class EntityCarrierValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "Carrier validation failed."
+    MSG = "CarrierValidator failed."
     ERR_CODE = "CARRIER_VALIDATOR_FAILURE"
     
     def __init__(

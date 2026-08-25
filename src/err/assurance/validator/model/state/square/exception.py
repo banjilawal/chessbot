@@ -44,7 +44,7 @@ class SquareValidatorException(StateModelValidatorException):
     Super Class:
         StateModelValidatorException
     """
-    MSG = "Square validation failed."
+    MSG = "SquareValidator failed."
     ERR_CODE = "SQUARE_VALIDATOR_FAILURE"
     
     def __init__(

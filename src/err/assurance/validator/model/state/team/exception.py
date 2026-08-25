@@ -44,7 +44,7 @@ class TeamValidatorException(StateModelValidatorException):
     Super Class:
         StateModelValidatorException
     """
-    MSG = "Team validation failed."
+    MSG = "TeamValidator failed."
     ERR_CODE = "TEAM_VALIDATOR_FAILURE"
     
     def __init__(

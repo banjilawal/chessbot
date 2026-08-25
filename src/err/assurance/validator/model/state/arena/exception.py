@@ -44,7 +44,7 @@ class ArenaValidatorException(StateModelValidatorException):
     Super Class:
         StateModelValidatorException
     """
-    MSG = "Arena validation failed."
+    MSG = "ArenaValidator failed."
     ERR_CODE = "ARENA_VALIDATOR_FAILURE"
     
     def __init__(

@@ -44,7 +44,7 @@ class TokenValidatorException(StateModelValidatorException):
     Super Class:
         StateModelValidatorException
     """
-    MSG = "Token validation failed."
+    MSG = "TokenValidator failed."
     ERR_CODE = "TOKEN_VALIDATOR_FAILURE"
     
     def __init__(

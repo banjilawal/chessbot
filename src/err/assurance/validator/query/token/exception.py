@@ -44,7 +44,7 @@ class TokenQueryValidatorException(QueryValidatorException):
     Super Class:
         QueryValidatorException
     """
-    MSG = "TokenQuery validation failed."
+    MSG = "TokenQueryValidator failed."
     ERR_CODE = "TOKEN_QUERY_VALIDATOR_FAILURE"
     
     def __init__(
