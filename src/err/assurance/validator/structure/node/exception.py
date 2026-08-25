@@ -1,7 +1,7 @@
-# src/err/assurancevalidator/structure/vector/exception.py
+# src/err/assurance/validator/structure/exception.py
 
 """
-Module: err.assurance.validator.structure.vector.exception
+Module: err.assurance.validator.structure.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# VECTOR_SET_VALIDATOR_FAILURE #======================#
-    "VectorSetValidatorException",
+    # ======================# NODE_VALIDATOR_FAILURE #======================#
+    "NodeValidatorException",
 ]
 
-# ======================# VECTOR_SET_VALIDATOR_FAILURE #======================#
-class VectorSetValidatorException(StructureValidatorException):
+# ======================# NODE_VALIDATOR_FAILURE #======================#
+class NodeValidatorException(StructureValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a VectorSetValidator failed.
+        1.  Indicating assurance by a NodeValidator failed.
 
     Attributes:
         msg: Optional[str]
@@ -38,14 +38,14 @@ class VectorSetValidatorException(StructureValidatorException):
         cls_mthd: Optional[str]
         err_code: Optional[str]
         mthd_rslt_type: Optional[MethodResultType]
-            
+        
     Provides:
 
     Super Class:
-        StructureValidatorException
+         StructureValidatorException
     """
-    MSG = "VectorSet validation failure."
-    ERR_CODE = "VECTOR_SET_VALIDATOR_FAILURE"
+    MSG = "NodeValidator failure."
+    ERR_CODE = "NODE_VALIDATOR_FAILURE"
     
     def __init__(
             self,

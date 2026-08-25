@@ -1,4 +1,4 @@
-# src/err/assurancevalidator/structure/__init__.py
+# src/err/assurance/validator/structure/__init__.py
 
 """
 Module: err.assurance.validator.structure.__init__
@@ -10,7 +10,8 @@ version: 0.0.2
 # ============ ERR.ASSURANCE.VALIDATOR.STRUCTURE PACKAGE ===========#
 
 # Packages
-from .vector import *
+from .node import *
+from .register import *
 
 
 # Modules

@@ -1,4 +1,4 @@
-# src/err/assurancevalidator/structure/register/__init__.py
+# src/err/assurance/validator/structure/register/__init__.py
 
 """
 Module: err.assurance.validator.structure.register.__init__
@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .exception import RegisterSetValidatorException
+from .exception import RegisterValidatorException

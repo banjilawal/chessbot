@@ -1,4 +1,4 @@
-# src/err/assurancevalidator/structure/register/exception.py
+# src/err/assurance/validator/structure/register/exception.py
 
 """
 Module: err.assurance.validator.structure.register.exception
@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# REGISTER_SET_VALIDATOR_FAILURE #======================#
-    "RegisterSetValidatorException",
+    # ======================# REGISTER_VALIDATOR_FAILURE #======================#
+    "RegisterValidatorException",
 ]
 
-# ======================# REGISTER_SET_VALIDATOR_FAILURE #======================#
-class RegisterSetValidatorException(StructureValidatorException):
+# ======================# REGISTER_VALIDATOR_FAILURE #======================#
+class RegisterValidatorException(StructureValidatorException):
     """
     Role:
         -   Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a RegisterSetValidator failed.
+        1.  Indicating assurance by a RegisterValidator failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class RegisterSetValidatorException(StructureValidatorException):
     Super Class:
         StructureValidatorException
     """
-    MSG = "RegisterSet validation failure."
-    ERR_CODE = "REGISTER_SET_VALIDATOR_FAILURE"
+    MSG = "RegisterValidator failure."
+    ERR_CODE = "REGISTER_VALIDATOR_FAILURE"
     
     def __init__(
             self,
