@@ -1,7 +1,7 @@
-# src/domain/model/software/application/dossier/model/software.py
+# src/domain/metadata/software/application/metadata.py
 
 """
-Module: domain.model.software.application.model
+Module: domain.metadata.software.application.metdata
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,11 +9,10 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from domain.model import KingApplication, SoftwareModel, ApplicationActivitySoftware, DeploymentSoftware
-from domain.model.software.license import SoftwareLicense
 
 
-class Application(SoftwareModel):
+
+class Application(SoftwareMetadata):
     """
     Role:
         -   Softwareful Data Holder

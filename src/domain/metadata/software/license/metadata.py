@@ -1,7 +1,7 @@
-# src/domain/model/software/license/dossier/model/software.py
+# src/domain/metadata/software/license/metadata.py
 
 """
-Module: domain.model.software.license.model
+Module: domain.metadata.software.license.metadata
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

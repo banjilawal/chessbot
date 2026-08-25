@@ -1,19 +1,13 @@
-# src/domain/model/software/subscriber/dossier/model/software.py
+# src/domain/metadata/software/subscriber/metadata.py
 
 """
-Module: domain.model.software.subscriber.model
+Module: domain.metadata.software.subscriber.metdata
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
 from typing import List, Optional
-
-from domain.model import PlayerAgent
-from domain.model import Arena
-from domain.model.software.subscriber import Snapshot, SubscriberTimeline
-
-from domain.model.software.license import SoftwareLicense
 
 
 class Subscriber:
