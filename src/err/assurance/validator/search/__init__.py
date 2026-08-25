@@ -10,6 +10,7 @@ version: 0.0.2
 # ============ ERR.ASSURANCE.VALIDATOR.SEARCH PACKAGE ===========#
 
 # Packages
+from .chain import *
 from .stack import *
 
 # Modules
