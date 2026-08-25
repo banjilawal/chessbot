@@ -10,6 +10,7 @@ version: 0.0.2
 # ============ ERR.ASSURANCE.VALIDATOR.PRIMITIVE PACKAGE ===========#
 
 # Packages
+from .identity import *
 from .number import *
 from .string import *
 

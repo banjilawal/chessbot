@@ -5,16 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/validator/primitive/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/primitve/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/validator/primitive/identity/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/array/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitve/array/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/array/bounds/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitve/array/bounds/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/array/bounds/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitve/array/bounds/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/array/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitve/array/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/number/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitve/number/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/number/above/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitve/number/above/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/number/above/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitve/number/above/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/number/below/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitve/number/below/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/number/below/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitve/number/below/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/number/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitve/number/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/number/negative/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitve/number/negative/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/number/negative/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitve/number/negative/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/string/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitve/string/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/string/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitve/string/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/string/name/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitve/string/name/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/string/name/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitve/string/name/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/string/name/max/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitve/string/name/max/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/string/name/max/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitve/string/name/max/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/string/name/min/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitve/string/name/min/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/string/name/min/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitve/string/name/min/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/validator/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/number/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/validator/primitive/number/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/number/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/validator/primitive/number/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/string/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/validator/primitive/string/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/string/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/validator/primitive/string/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/string/name/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/validator/primitive/string/name/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/string/name/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/validator/primitive/string/name/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/string/registry/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/validator/primitive/string/registry/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/string/registry/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/validator/primitive/string/registry/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/identity/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/identity/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/validator/primitive/identity/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/primitive/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/validator/primitive/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,61 +74,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0002871075858988" />
-      <entry key="S2" value="1.2315008375522711" />
-      <entry key="S5" value="2.3177996911934176" />
-      <entry key="S10" value="3.5474722663094913" />
-      <entry key="S30" value="11.206520732357852" />
-      <entry key="S60" value="35.46327624509878" />
-      <entry key="M2" value="76.82796408357503" />
-      <entry key="M5" value="153.73348447790278" />
-      <entry key="M10" value="274.0895629415272" />
-      <entry key="M15" value="393.7034406641796" />
-      <entry key="M30" value="686.990592985726" />
-      <entry key="H1" value="1053.4906832282272" />
-      <entry key="H2" value="1455.132413538354" />
-      <entry key="H4" value="2010.029358291351" />
-      <entry key="D1" value="5726.730929561573" />
-      <entry key="W1" value="9019.367421251298" />
+      <entry key="MS100" value="7.326565901579444E-12" />
+      <entry key="MS500" value="0.0059289814569298965" />
+      <entry key="S2" value="0.27748852154703574" />
+      <entry key="S5" value="0.5988224521511484" />
+      <entry key="S10" value="0.7758003374226264" />
+      <entry key="S30" value="2.968475276823036" />
+      <entry key="S60" value="13.804939962915054" />
+      <entry key="M2" value="39.459076769636404" />
+      <entry key="M5" value="114.83468134885618" />
+      <entry key="M10" value="236.83783426544673" />
+      <entry key="M15" value="357.37525524056576" />
+      <entry key="M30" value="661.4434315546138" />
+      <entry key="H1" value="1050.9271158049046" />
+      <entry key="H2" value="1477.758560927353" />
+      <entry key="H4" value="2050.550940177754" />
+      <entry key="D1" value="5788.542898141288" />
+      <entry key="W1" value="9096.0526128285" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="1.3759229847916839E-134" />
-      <entry key="S2" value="5.638453479521168E-34" />
-      <entry key="S5" value="8.733681113056646E-14" />
-      <entry key="S10" value="4.98605784744299E-7" />
-      <entry key="S30" value="0.016384004365087492" />
-      <entry key="S60" value="0.22188842718729818" />
-      <entry key="M2" value="0.834860244862098" />
-      <entry key="M5" value="2.0570001414923675" />
-      <entry key="M10" value="3.3631815564545953" />
-      <entry key="M15" value="4.53321717575741" />
-      <entry key="M30" value="7.668919613954247" />
-      <entry key="H1" value="12.300110815239233" />
-      <entry key="H2" value="18.446038631049344" />
-      <entry key="H4" value="29.58855491606129" />
-      <entry key="D1" value="142.1517363605422" />
-      <entry key="W1" value="258.29995217707426" />
+      <entry key="MS100" value="1.0000881304440628" />
+      <entry key="MS500" value="1.154534407615119" />
+      <entry key="S2" value="1.6269837685858908" />
+      <entry key="S5" value="1.8296645218481977" />
+      <entry key="S10" value="1.9108592217506488" />
+      <entry key="S30" value="1.9693581001137663" />
+      <entry key="S60" value="1.9863731057362954" />
+      <entry key="M2" value="2.067731447036241" />
+      <entry key="M5" value="2.7834416125734665" />
+      <entry key="M10" value="4.078122842868263" />
+      <entry key="M15" value="5.289274615786593" />
+      <entry key="M30" value="8.533034597441885" />
+      <entry key="H1" value="13.352897747748605" />
+      <entry key="H2" value="19.72163335624042" />
+      <entry key="H4" value="31.001782396067288" />
+      <entry key="D1" value="143.6780116974344" />
+      <entry key="W1" value="260.1768071879074" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9659363289248456" />
-      <entry key="MS500" value="0.993164267443715" />
-      <entry key="S2" value="1.1857569773973056" />
-      <entry key="S5" value="2.2399707799262023" />
-      <entry key="S10" value="3.482149714434376" />
-      <entry key="S30" value="11.187782165361845" />
-      <entry key="S60" value="35.65284277659734" />
-      <entry key="M2" value="77.62700370421173" />
-      <entry key="M5" value="155.75701104042824" />
-      <entry key="M10" value="277.42356162326575" />
-      <entry key="M15" value="398.2100404371792" />
-      <entry key="M30" value="694.6379597597075" />
-      <entry key="H1" value="1065.7749046626577" />
-      <entry key="H2" value="1473.5675448457175" />
-      <entry key="H4" value="2039.6093541631478" />
-      <entry key="D1" value="5868.872454524215" />
-      <entry key="W1" value="9277.664442922478" />
+      <entry key="MS100" value="0.0980730123262423" />
+      <entry key="MS500" value="0.6414193782617702" />
+      <entry key="S2" value="1.4415890555211226" />
+      <entry key="S5" value="2.146148486469019" />
+      <entry key="S10" value="2.522104807026246" />
+      <entry key="S30" value="4.875848447344185" />
+      <entry key="S60" value="15.756611587208676" />
+      <entry key="M2" value="41.503782126104824" />
+      <entry key="M5" value="117.59619077078484" />
+      <entry key="M10" value="240.89305678322702" />
+      <entry key="M15" value="362.6419016411905" />
+      <entry key="M30" value="669.956411383699" />
+      <entry key="H1" value="1064.264491007044" />
+      <entry key="H2" value="1497.4692844345543" />
+      <entry key="H4" value="2081.544117196726" />
+      <entry key="D1" value="5932.2106963706265" />
+      <entry key="W1" value="9356.226485748344" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -162,11 +180,11 @@
       <recent name="$PROJECT_DIR$/src/err/assurance/checker/crud/search/context/flag/excess" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/assurance/primitve" />
       <recent name="$PROJECT_DIR$/src/err/assurance/validator/primitive" />
       <recent name="$PROJECT_DIR$/src/err/assurance/validator/structure" />
       <recent name="$PROJECT_DIR$/src/err/assurance/validator" />
       <recent name="$PROJECT_DIR$/src/err/assurance/validator/structure/node" />
-      <recent name="$PROJECT_DIR$/src/err/assurance/checker/crud" />
     </key>
   </component>
   <component name="RunManager" selected="Python.checker">

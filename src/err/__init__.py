@@ -11,7 +11,7 @@ version: 1.0.0
 
 # Packages
 from .analyzer import *
-from err.assurance.array import *
+from err.assurance.primitve.array import *
 from .assurance import *
 from .bidirectional import *
 from .bootstrapper import *
@@ -32,7 +32,7 @@ from .method import *
 from .microservice import *
 from .movement import *
 from .null import *
-from err.assurance.number import *
+from err.assurance.primitve.number import *
 from .operand import *
 from .operation import *
 from .permitter import *
