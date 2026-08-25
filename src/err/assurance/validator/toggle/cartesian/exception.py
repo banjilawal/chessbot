@@ -1,7 +1,7 @@
-# src/err/assurance/validator/toggle/zero/orientation/exception.py
+# src/err/assurance/validator/structure/toggle/cartrsian/exception.py
 
 """
-Module: err.assurance.validator.toggle.zero.orientation.exception
+Module: err.assurance.validator.structure.toggle.cartesian.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,21 +11,24 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ZeroToggleActivationException
 
-_all_ = [
-    # ======================# ZEROIVE_ORIENTATION_TOGGLE_ACTIVATION_ERROR #======================#
-    "ZeroToggleFlagsException",
+from err import ToggleValidatorException
+from artifcat import MethodResultType
+
+
+__all__ = [
+    # ======================# CARTESIAN_TOGGLE_VALIDATOR_FAILURE #======================#
+    "CartesianToggleValidatorException",
 ]
 
-# ======================# ZEROIVE_ORIENTATION_TOGGLE_ACTIVATION_ERROR #======================#
-class ZeroOrientationToggleActivationException(ZeroToggleActivationException):
+# ======================# CARTESIAN_TOGGLE_VALIDATOR_FAILURE #======================#
+class CartesianToggleValidatorException(ToggleValidatorException):
     """
     Role:
         -   Error Tracing
-        
+
     Responsibilities:
-        1.  Indicating that too many switches in an OrientationToggle are on.
+        1.  Indicating assurance by a CartesianToggleValidator failed.
 
     Attributes:
         msg: Optional[str]
@@ -35,14 +38,15 @@ class ZeroOrientationToggleActivationException(ZeroToggleActivationException):
         cls_name: Optional[str]
         cls_mthd: Optional[str]
         err_code: Optional[str]
-
+        mthd_rslt_type: Optional[MethodResultType]
+            
     Provides:
 
     Super Class:
-        ZeroTogglesException
+        ToggleValidatorException
     """
-    MSG = "Too many OrientationToggle switches are enabled."
-    ERR_CODE = "ZEROIVE_ORIENTATION_TOGGLE_ACTIVATION_ERROR"
+    MSG = "CartesianToggleValidator failed."
+    ERR_CODE = "CARTESIAN_TOGGLE_VALIDATOR_FAILURE"
     
     def __init__(
             self,

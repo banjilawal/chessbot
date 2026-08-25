@@ -1,7 +1,7 @@
-# src/err/assurance/validator/toggle/exception.py
+# src/err/assurance/validator/structure/toggle/exception.py
 
 """
-Module: err.assurance.validator.toggle.exception
+Module: err.assurance.validator.structure.toggle.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,17 +12,17 @@ from __future__ import annotations
 from typing import Any, Optional
 
 
-__all__ = [
-    # ======================# TOGGLE_VALIDATOR_FAILURE #======================#
-    "EntityCarrierValidatorException",
-]
-
-from err import ValidatorException
+from err import StructureValidatorException
 from artifcat import MethodResultType
 
 
+__all__ = [
+    # ======================# TOGGLE_VALIDATOR_FAILURE #======================#
+    "ToggleValidatorException",
+]
+
 # ======================# TOGGLE_VALIDATOR_FAILURE #======================#
-class EntityCarrierValidatorException(ValidatorException):
+class ToggleValidatorException(StructureValidatorException):
     """
     Role:
         -   Error Tracing
@@ -43,7 +43,7 @@ class EntityCarrierValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        StructureValidatorException
     """
     MSG = "ToggleValidator failed."
     ERR_CODE = "TOGGLE_VALIDATOR_FAILURE"
