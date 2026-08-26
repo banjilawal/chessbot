@@ -12,12 +12,13 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar
 
-from domain import DataModel, Structure
+from domain import Structure
+from domain import SearchableModel
 
-T = TypeVar("T", bound="DataModel")
+T = TypeVar("T", bound="SearchableModel")
 
 
-class Node(Structure, ABC, Generic[T]):
+class Node(Structure[T], ABC, Generic[T]):
     """
     Role:
         - Structural Wrapper
@@ -42,13 +43,13 @@ class Node(Structure, ABC, Generic[T]):
     
     def __init__(
             self,
-            payload: T,
+            payload: Optional[T],
             next: Optional[Node[T]] | None = None,
             previous: Optional[Node[T]] | None = None,
     ):
         """
         Args:
-            payload: T
+            payload: Optional[T],
             next: Optional[Node[T]]
             previous: Optional[Node[T]]
         """

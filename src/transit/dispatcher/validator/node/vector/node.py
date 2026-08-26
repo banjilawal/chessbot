@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from domain.model import Vector
-from domain.structure.node import Node
+from domain.structure.searchable.node import Node
 
 
 class VectorNode(Node[Vector]):

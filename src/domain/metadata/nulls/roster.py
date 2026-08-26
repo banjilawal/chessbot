@@ -13,10 +13,10 @@ from abc import ABC
 from dataclasses import dataclass
 from typing import Generic, TypeVar
 
-from domain import DomainObject
+from domain import DomainDataObject
 from err import NullException
 
-T = TypeVar("T", bound="DomainObject")
+T = TypeVar("T", bound="DomainDataObject")
 
 @dataclass
 class NullExceptionRoster(ABC, Generic[T]):

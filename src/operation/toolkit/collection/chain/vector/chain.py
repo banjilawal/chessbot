@@ -13,7 +13,7 @@ from typing import List, Optional, cast
 
 from collection import Chain
 from err import SearchResultEmptyException
-from domain.structure.node import VectorNode
+from domain.structure.searchable.node import VectorNode
 from artifcat import DeletionResult, InsertionResult, SearchResult
 from util import LoggingLevelRouter
 

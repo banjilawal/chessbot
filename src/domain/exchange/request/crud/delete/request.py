@@ -13,11 +13,11 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from collection import DomainObjectCollection
-from domain import CrudRequest, DomainObject
+from domain import CrudRequest, DomainDataObject
 from artifcat import DeletionResult
 
 
-T = TypeVar("T", bound="DomainObject")
+T = TypeVar("T", bound="DomainDataObject")
 
 
 class DeleteRequest(CrudRequest[DeletionResult], ABC, Generic[T]):

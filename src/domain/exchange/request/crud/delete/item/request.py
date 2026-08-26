@@ -13,10 +13,10 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from collection import DomainObjectCollection
-from domain import DeleteRequest, DomainObject
+from domain import DeleteRequest, DomainDataObject
 
 C = TypeVar("C", bound="DomainObjectCollection")
-T = TypeVar("T", bound="DomainObject")
+T = TypeVar("T", bound="DomainDataObject")
 
 
 class DeleteItemRequest(DeleteRequest, ABC, Generic[C, T]):

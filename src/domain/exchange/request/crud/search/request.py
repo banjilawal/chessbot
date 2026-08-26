@@ -13,11 +13,11 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from collection import DomainObjectCollection
-from domain import CrudRequest, DomainObject, SearchContext
+from domain import CrudRequest, DomainDataObject, SearchContext
 from artifcat import SearchResult
 
 
-T = TypeVar("T", bound="DomainObject")
+T = TypeVar("T", bound="DomainDataObject")
 
 
 class SearchRequest(CrudRequest[SearchResult], ABC, Generic[T]):

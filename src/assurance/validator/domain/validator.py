@@ -14,11 +14,11 @@ from typing import Any, Generic, TypeVar, cast
 
 from assurance import ValidationBundle, Validator
 from artifcat import ValidationResult
-from domain import DomainObject
+from domain import DomainDataObject
 from util import LoggingLevelRouter
 
 
-T = TypeVar("T", bound="DomainObject")
+T = TypeVar("T", bound="DomainDataObject")
 
 
 class DomainObjectValidator(Validator[T], ABC, Generic[T]):

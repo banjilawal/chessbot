@@ -7,7 +7,7 @@ Created: 2026-02-18
 version: 1.0.0
 """
 
-from domain.structure.node import NodeDebugException
+from domain.structure.searchable.node import NodeDebugException
 
 __all__ = [
     # ======================# ADDING_DUPLICATE_NODE EXCEPTION #======================#

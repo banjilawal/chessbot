@@ -13,9 +13,9 @@ from abc import ABC
 from dataclasses import dataclass
 from typing import Generic, Type, TypeVar
 
-from domain import DomainObject
+from domain import DomainDataObject
 
-T = TypeVar("T", bound="DomainObject")
+T = TypeVar("T", bound="DomainDataObject")
 
 @dataclass
 class DomainObjectTypeUnions(ABC, Generic[T]):

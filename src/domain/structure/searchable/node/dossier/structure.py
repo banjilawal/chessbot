@@ -1,7 +1,7 @@
-# src/domain/structure/node/dossier/structure.py
+# src/domain/structure/searchable/node/dossier/structure.py
 
 """
-Module: domain.structure.node.dossier.structure
+Module: domain.structure.searchable.node.dossier.structure
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

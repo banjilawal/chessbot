@@ -7,7 +7,7 @@ Created: 2026-02-19
 version: 1.0.0
 """
 
-from domain.structure.node import NodeException
+from domain.structure.searchable.node import NodeException
 from system import ContextException
 
 __all__ = [

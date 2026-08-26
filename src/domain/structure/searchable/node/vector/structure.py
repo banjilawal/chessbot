@@ -1,7 +1,7 @@
-# src/domain/structure/node/vector/structure.py
+# src/domain/structure/searchable/node/vector/structure.py
 
 """
-Module: domain.structure.node.vector.structure
+Module: domain.structure.searchable.node.vector.structure
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -20,12 +20,12 @@ class VectorNode(Node[Vector]):
         - Structural Wrapper
 
     Responsibilities:
-        1.  Encapsulate a Vector  payload with pointer references (next/previous) to
+        1.  Encapsulate a Vector payload with pointer references (next/previous) to
             enable doubly-linked traversal.
         2.  Provide type-safe accessors for payload inspection and node chaining.
 
     Attributes:
-        payload: Vector
+        payload: Optional[Vector]
         next: Optional[VectorNode]
         previous: Optional[VectorNode]
         
@@ -35,10 +35,20 @@ class VectorNode(Node[Vector]):
         Node
     """
     
-    def __init__(self, payload: Optional[Vector] | None = None):
-        super().__init__(payload=payload)
-        super().next = None
-        super.previous = None
+    def __init__(
+            self,
+            payload: Optional[Vector] | None = None,
+            next: Optional[VectorNode] | None = None,
+            previous: Optional[VectorNode] | None = None,
+    ):
+        """
+        Args:
+            payload: Optional[Vector]
+            next: Optional[VectorNode]
+            previous: Optional[VectorNode]
+        """
+        super().__init__(payload=payload, next=next, previous=previous)
+
         
     @property
     def payload(self) -> Optional[Vector]:

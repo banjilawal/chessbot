@@ -12,9 +12,9 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from domain import DomainObject
+from domain import DomainDataObject
 
-T = TypeVar("T", bound="DomainObject")
+T = TypeVar("T", bound="DomainDataObject")
 
 class DomainObjectCollection(ABC, Generic[T]):
     """

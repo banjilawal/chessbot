@@ -12,9 +12,9 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Type, TypeVar
 
-from domain import DomainMetadata, DomainObject
+from domain import DomainMetadata, DomainDataObject
 
-T = TypeVar("T", bound="DomainObject")
+T = TypeVar("T", bound="DomainDataObject")
 
 
 class Blueprint(DomainMetadata, ABC, Generic[T]):

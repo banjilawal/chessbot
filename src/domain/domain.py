@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 
 
-class DomainObject(ABC):
+class DomainDataObject(ABC):
     """
     Role:
         - Data Holder

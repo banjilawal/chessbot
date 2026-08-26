@@ -12,9 +12,9 @@ from __future__ import annotations
 from abc import ABC
 from typing import Dict, Generic, List, Optional, TypeVar
 
-from domain import DomainObject, Structure
+from domain import DomainDataObject, Structure
 
-T = TypeVar("T", bound="DomainObject")
+T = TypeVar("T", bound="DomainDataObject")
 
 
 class Register(Structure, ABC, Generic[T]):

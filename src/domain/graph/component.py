@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from abc import ABC
 
-from domain import DomainObject, Searchable
+from domain import DomainDataObject, Searchable
 
 
-class GraphComponent(DomainObject, Searchable, ABC):
+class GraphComponent(DomainDataObject, Searchable, ABC):
     pass

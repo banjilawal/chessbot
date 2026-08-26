@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from abc import ABC
 
-from domain import DomainObject
+from domain import DomainDataObject
 
 
-class DataModel(DomainObject, ABC):
+class DataModel(DomainDataObject, ABC):
     """
     Role:
         -  Data Holder

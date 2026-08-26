@@ -19,5 +19,5 @@ from .search import *
 from .structure import *
 
 # Modules
-from .domain import DomainObject
+from .domain import DomainDataObject
 from .interface import Searchable

@@ -10,11 +10,14 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
+from typing import Generic, TypeVar
 
-from domain import Searchable
+from domain import DomainDataObject
+
+T = TypeVar("T", bound="DomainDataObject")
 
 
-class Structure(Searchable, ABC):
+class Structure(ABC, Generic[T]):
     """
     Role:
         -  Structural

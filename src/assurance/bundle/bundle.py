@@ -14,10 +14,10 @@ from dataclasses import dataclass
 from typing import Any, Dict, Generic, TypeVar
 
 from assurance import PrimingValidator
-from domain import DomainObject, NullExceptionRoster, DomainObjectTypeUnions
+from domain import DomainDataObject, NullExceptionRoster, DomainObjectTypeUnions
 from microservice import IdentityService
 
-T = TypeVar("T", bound="DomainObject")
+T = TypeVar("T", bound="DomainDataObject")
 
 @dataclass
 class ValidationBundle(ABC, Generic[T]):

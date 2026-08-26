@@ -13,10 +13,10 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 
-from domain import DomainObject, Request
+from domain import DomainDataObject, Request
 from transit import EntityCarrier
 
-T = TypeVar("T", bound="DomainObject")
+T = TypeVar("T", bound="DomainDataObject")
 
 
 
