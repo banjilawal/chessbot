@@ -17,7 +17,7 @@ from sensor.analyzer import TokenReadinessAnalyzer
 from err import DisabledTokenManeuverException
 from artifcat.report import TokenReadinessReport
 from system import DeletionResult, LoggingLevelRouter
-from domain.model.state.token import (
+from domain.model.collectable.state import (
     InactiveTokenPoppingCoordException, MoveUndoLimitException, Token, TokenPopCoordException, TokenValidation,
     UnopenedTokenPoppingCoordException
 )

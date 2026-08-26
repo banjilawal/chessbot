@@ -17,7 +17,7 @@ from typing import List
 from transit.dispatcher.builder import Board
 from logic.square import Square
 from system import id_emitter
-from domain.model.state.token import Piece
+from domain.model.collectable.state import Piece
 from logic.engine.scout.report import ScoutReport
 
 

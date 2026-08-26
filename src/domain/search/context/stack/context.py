@@ -12,9 +12,9 @@ from __future__ import annotations
 from typing import Generic, TypeVar
 from abc import ABC
 
-from domain import DataModelObject, SearchContext
+from domain import DataModel, SearchContext
 
-T = TypeVar("T", bound="DataModelObject")
+T = TypeVar("T", bound="DataModel")
 
 
 class StackSearchContext(SearchContext, ABC, Generic[T]):

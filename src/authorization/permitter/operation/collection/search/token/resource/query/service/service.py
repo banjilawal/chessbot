@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from system import IntegrityMicroservice, IdFactory
-from domain.model.state.token import TokenQuery, TokenQueryBuilder, TokenQueryOpsController, TokenQueryValidator
+from domain.model.collectable.state import TokenQuery, TokenQueryBuilder, TokenQueryOpsController, TokenQueryValidator
 
 
 class TokenQueryService(IntegrityMicroservice[TokenQuery]):

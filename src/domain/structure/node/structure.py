@@ -12,9 +12,9 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar
 
-from domain import DataModelObject, StructuralWrapper
+from domain import DataModel, StructuralWrapper
 
-T = TypeVar("T", bound="DataModelObject")
+T = TypeVar("T", bound="DataModel")
 
 
 class Node(StructuralWrapper, ABC, Generic[T]):

@@ -15,7 +15,7 @@ from logic.square import (
     SquareStackTokenHandlerException,  Square, VisitDestinationNotFoundException, SquareService, SquareStackService
 )
 from system import DeletionResult, LoggingLevelRouter, UpdateResult, ValidationResult
-from domain.model.state.token import Token, TokenService
+from domain.model.collectable.state import Token, TokenService
 
 
 class SquareStackOccupationWorker(Worker):

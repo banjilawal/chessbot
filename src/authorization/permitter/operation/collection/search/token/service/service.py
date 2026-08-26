@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import List
 
 from system import LoggingLevelRouter, SearchMicroservice, SearchResult
-from domain.model.state.token import (
+from domain.model.collectable.state import (
     Token, TokenContextService, TokenQuery, TokenQueryService, TokenSearchResourceHost,
     TokenSearchRouter, TokenSearchServiceException
 )

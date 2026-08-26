@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from logic.coord import Coord, CoordService, DuplicateCoordPushException
 from system import InsertionResult, LoggingLevelRouter
-from domain.model.state.token import InactiveTokenPushingCoordException, Token, TokenPushCoordException, TokenValidation
+from domain.model.collectable.state import InactiveTokenPushingCoordException, Token, TokenPushCoordException, TokenValidation
 
 
 class TokenPushCoordProcess:

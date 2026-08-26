@@ -12,10 +12,10 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
-from domain import DataModelObject
+from domain import DataModel
 from fabrication import Builder
 
-T = TypeVar("T", bound="DataModelObject")
+T = TypeVar("T", bound="DataModel")
 
 
 class ModelBuildDispatcher(Builder[T], ABC, Generic[T]):

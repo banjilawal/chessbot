@@ -12,11 +12,11 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, Type, TypeVar, cast
 
-from domain import Blueprint, DataModelObject
+from domain import Blueprint, DataModel
 from err import ModelNullException
 
 
-T = TypeVar("T", bound="DataModelObject")
+T = TypeVar("T", bound="DataModel")
 
 class ModelBlueprint(Blueprint[T], ABC, Generic[T]):
     """
@@ -39,7 +39,7 @@ class ModelBlueprint(Blueprint[T], ABC, Generic[T]):
     
     def __init__(
             self,
-            model_class: Type[DataModelObject],
+            model_class: Type[DataModel],
             null_exception: Optional[ModelNullException] | None = ModelNullException(),
     ):
         """
@@ -53,8 +53,8 @@ class ModelBlueprint(Blueprint[T], ABC, Generic[T]):
         )
     
     @property
-    def model_class(self) -> Type[DataModelObject]:
-        return cast(Type[DataModelObject], super().model_class)
+    def model_class(self) -> Type[DataModel]:
+        return cast(Type[DataModel], super().model_class)
     
     @property
     def null_exception(self) -> ModelNullException:

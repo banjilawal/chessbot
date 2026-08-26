@@ -18,7 +18,7 @@ from microservice.edge import (
     EdgeContextBuildRouteException, ZeroEdgeContextFlagsException, EdgeContext, EdgeContextBuilderException,
     ArenaEdgeContextFlagsException
 )
-from domain.model.state.token import Token, TokenService
+from domain.model.collectable.state import Token, TokenService
 
 
 class EdgeContextBuilder(Builder[EdgeContext]):

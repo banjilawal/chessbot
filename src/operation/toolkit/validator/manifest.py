@@ -16,10 +16,10 @@ from assurance import PrimingValidator
 from err import BlueprintNullException, EntityCarrierNullException, ModelNullException
 from fabrication import Blueprint
 from microservice import IdentityService
-from domain.model import DataModelObject
+from domain.model import DataModel
 from transit.carrier import EntityCarrier
 
-T = TypeVar("T", bound="DataModelObject")
+T = TypeVar("T", bound="DataModel")
 
 
 class ModelManifest(ABC, Generic[T]):

@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from microservice import BoardService, IdentityService, PlayerService
-from domain.model.state.game import Game, GameToolkitException
+from domain.model.collectable.state.game import Game, GameToolkitException
 from system import Toolkit, ToolkitResult, LoggingLevelRouter
 
 

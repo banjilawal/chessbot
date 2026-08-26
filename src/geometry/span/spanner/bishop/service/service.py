@@ -18,7 +18,7 @@ from domain.structure.node import SquareNode, NodeBuilder
 from math.span import BishopSpanServiceException, BishopSpanner, CoordSpan, SpanMicroservice
 from geometry.square import Square, SquareContext, SquareDatabase
 from system import BuildResult, ComputationResult, IdFactory, LoggingLevelRouter
-from domain.model.state.token import Token, TokenService
+from domain.model.collectable.state import Token, TokenService
 from domain.model import VectorService
 
 

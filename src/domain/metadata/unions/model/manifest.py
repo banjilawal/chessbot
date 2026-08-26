@@ -13,9 +13,9 @@ from abc import ABC
 from dataclasses import dataclass
 from typing import Generic, Optional, Type, TypeVar
 
-from domain import Blueprint, EntityCarrier, DataModelObject, StackSearchContext, DomainObjectTypeUnions
+from domain import Blueprint, EntityCarrier, DataModel, StackSearchContext, DomainObjectTypeUnions
 
-T = TypeVar("T", bound="DataModelObject")
+T = TypeVar("T", bound="DataModel")
 
 @dataclass
 class ModelTypeUnions(DomainObjectTypeUnions[T], ABC, Generic[T]):

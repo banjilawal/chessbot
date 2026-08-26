@@ -12,7 +12,7 @@ __all__ = [
     "TeamBinderBuilderException",
 ]
 
-from domain.model.state.team import TeamBinderException
+from domain.model.collectable.state.team import TeamBinderException
 from system import BuilderException
 
 

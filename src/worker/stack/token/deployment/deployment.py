@@ -12,8 +12,8 @@ from __future__ import annotations
 from copy import deepcopy
 
 from system import LoggingLevelRouter, UpdateResult
-from domain.model.state.token import TokenStackService, TokenStackState
-from domain.model.state.token import (
+from domain.model.collectable.state import TokenStackService, TokenStackState
+from domain.model.collectable.state import (
     TokenStackAlreadyDeployedException,
     TokenStackDeploymentException
 )

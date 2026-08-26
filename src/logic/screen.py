@@ -17,7 +17,7 @@ from logic.rank.model.concrete.knight import Knight
 from logic.rank.model.concrete.king import King
 from logic.pawn import Pawn
 from logic.rank.model.concrete.queen import Queen
-from domain.model.state.token import Piece
+from domain.model.collectable.state import Piece
 
 if TYPE_CHECKING:
   from transit.dispatcher.builder import Board

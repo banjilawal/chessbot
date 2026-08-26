@@ -13,10 +13,10 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from assurance import Validator
-from domain import DataModelObject
+from domain import DataModel
 
 
-T = TypeVar("T", bound="DataModelObject")
+T = TypeVar("T", bound="DataModel")
 
 
 class ModelValidator(Validator, ABC, Generic[T]):

@@ -9,10 +9,10 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from domain.model import DataModelObject
+from domain.model import DataModel
 
 
-class Identity(DataModelObject):
+class Identity(DataModel):
     """
     Role:
         -   Model

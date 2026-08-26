@@ -1,4 +1,4 @@
-# src/domain/model/dossier/model.py
+# src/domain/model/model.py
 
 """
 Module: domain.model.model
@@ -14,7 +14,7 @@ from abc import ABC
 from domain import DomainObject
 
 
-class DataModelObject(DomainObject, ABC):
+class DataModel(DomainObject, ABC):
     """
     Role:
         -   Data Holder

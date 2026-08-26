@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import List
 
-from domain.model.state.token import CheckSquare, KingToken
+from domain.model.collectable.state import CheckSquare, KingToken
 
 
 class Checkmate:

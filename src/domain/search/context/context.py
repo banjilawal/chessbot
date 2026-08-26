@@ -13,12 +13,12 @@ from ast import Dict
 from typing import Any, Generic, Optional, TypeVar
 from abc import ABC, abstractmethod
 
-from domain import DomainObject, SearchDataObject
+from domain import Searchable
 
-T = TypeVar("T", bound="DomainObject")
+T = TypeVar("T", bound="Collectable")
 
 
-class SearchContext(SearchDataObject, ABC, Generic[T]):
+class SearchContext(ABC, Generic[T]):
     """
     Role:
         -   Selection

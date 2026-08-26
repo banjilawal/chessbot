@@ -11,8 +11,10 @@ from __future__ import annotations
 
 from abc import ABC
 
+from domain import Collectable
 
-class StructuralWrapper(ABC):
+
+class StructuralWrapper(Collectable, ABC):
     """
     Role:
         -   Structural Wrapper

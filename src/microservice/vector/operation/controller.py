@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 
-from domain.model.state.token import (
+from domain.model.collectable.state import (
     PawnPromoter, TokenBuilder, TokenPositionController, TokenDeployer,
     TokenReadinessAnalyzer, TokenValidator
 )

@@ -11,9 +11,9 @@ from __future__ import annotations
 from typing import Optional, Type, TypeVar, cast
 
 from domain.metadata.blueprint import ModelBlueprint
-from domain.model import DataModelObject, StateDataModelObject
+from domain.model import DataModel, StatefulModel
 
-T = TypeVar("T", bound="StateDataModelObject")
+T = TypeVar("T", bound="StatefulModel")
 
 
 class StateModelBlueprint(ModelBlueprint[[T]]):
@@ -38,7 +38,7 @@ class StateModelBlueprint(ModelBlueprint[[T]]):
     
     def __init__(
             self,
-            model_class: Type[StateDataModelObject[T]],
+            model_class: Type[StatefulModel[T]],
             id: Optional[int] | None = None,
     ):
         """
@@ -50,8 +50,8 @@ class StateModelBlueprint(ModelBlueprint[[T]]):
         self._id = id
     
     @property
-    def model_class(self) -> Type[DataModelObject[T]]:
-        return cast(Type[DataModelObject[T]], super().model_class)
+    def model_class(self) -> Type[DataModel[T]]:
+        return cast(Type[DataModel[T]], super().model_class)
     
     @property
     def id(self) -> Optional[int]:
