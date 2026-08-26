@@ -10,7 +10,9 @@ version: 0.0.2
 # =========== DOMAIN.SEARCH PACKAGE ===========#
 
 # Packages
-from .context import *
+from .chain import *
+from .graph import *
+from .stack import *
 
 # Modules
-from .interface import Searchable
+from  .context import SearchContext

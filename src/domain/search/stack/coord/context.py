@@ -1,0 +1,65 @@
+# src/domain/search/stack/coord/context.py
+
+"""
+Module: domain.search.stack.coord
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from typing import Any, Dict, Optional
+
+from domain import Coord, StackSearchContext
+
+
+class CoordSearchContext(StackSearchContext[Coord]):
+    """
+    Role:
+        -   Selection
+        -   Routing mask
+
+    Responsibilities:
+        1.  Supply the criteria a CoordStackSearcher uses to find a hit.
+
+    Attributes:
+        row: Optional[int]
+        column: Optional[int]
+
+    Provides:
+        -   to_dict() -> Dict[str, Any]
+
+    Super Class:
+        StackSearchContext
+    """
+    _row: Optional[int]
+    _column: Optional[int]
+    
+    def __init__(
+            self,
+            row: Optional[int] | None = None,
+            column: Optional[int] | None = None,
+    ):
+        """
+        Args:
+            row: Optional[int]
+            column: Optional[int]
+        """
+        super().__init__(max_activated_filters=2)
+        self._row = row
+        self._column = column
+        
+    @property
+    def row(self) -> Optional[int]:
+        return self._row
+    
+    @property
+    def column(self) -> Optional[int]:
+        return self._column
+
+    def to_dict(self) -> Dict[str, Any]:
+        return {
+            "row": self._row,
+            "column": self._column,
+        }
