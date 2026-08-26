@@ -205,8 +205,8 @@ class Token(StatefulModel):
     def __str__(self) -> str:
         return (
             f"Token[id:{self._id} "
-            f"designation:{self._designation} "
+            f"name:{self.name} "
             f"rank:{self._rank.persona.name} "
-            f"team:{self._team.schema.name} "
+            f"team:{self._team.archetype.name} "
             f"position:{self.current_position}"
         )

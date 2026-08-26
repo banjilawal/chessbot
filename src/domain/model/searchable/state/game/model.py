@@ -7,14 +7,12 @@ Created: 2026-04-03
 version: 0.0.2
 """
 
-from typing import List, Optional
+from typing import List
 
-from domain.model import PlayerAgent
-from domain.model import Arena
-from domain.model.searchable.state.game import Snapshot, GameTimeline
+from domain import Arena, Player, StatefulModel
 
 
-class Game(StateModel):
+class Game(StatefulModel):
     """
     Role:Controller
 
@@ -38,16 +36,16 @@ class Game(StateModel):
     """
     _id: int
     _arena: Arena
-    _white_player: PlayerAgent
-    _black_player: PlayerAgent
-    _timeline: GameTimeline
+    _white_player: Player
+    _black_player: Player
     
-    def __init__(self, id: int, white_player: PlayerAgent, black_player: PlayerAgent, arena: Arena):
+    def __init__(self, id: int, white_player: Player, black_player: Player, arena: Arena):
+        super().__init__()
         self._id = id
         self._arena = arena
         self._white_player = white_player
         self._black_player = black_player
-        self._timeline = GameTimeline()
+
     
     @property
     def id(self) -> int:
@@ -58,21 +56,13 @@ class Game(StateModel):
         return self._arena
     
     @property
-    def white_player(self) -> PlayerAgent:
+    def white_player(self) -> Player:
         return self._white_player
     
     @property
-    def black_player(self) -> PlayerAgent:
+    def black_player(self) -> Player:
         return self._black_player
     
     @property
-    def players(self) -> List[PlayerAgent]:
+    def players(self) -> List[Player]:
         return [self._white_player, self._black_player]
-    
-    @property
-    def timeline(self) -> GameTimeline:
-        return self._timeline
-    
-    @property
-    def previous_move(self) -> Optional[Snapshot]:
-        return self._timeline.previous_move()

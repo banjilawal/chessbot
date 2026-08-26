@@ -29,7 +29,7 @@ class TokenSearchContext(ModelSearchContext[Token]):
         rank: Optional[Rank]
         ransom: Optional[int]
         current_position:Optional[Coord]
-        designation: Optional[str]
+        name: Optional[str]
         color: Optional[GameColor]
         home_square: Optional[HomeSquare]
 
@@ -44,7 +44,7 @@ class TokenSearchContext(ModelSearchContext[Token]):
     _team: Optional[Team] | None = None
     _ransom: Optional[int] | None = None
     _color: Optional[GameColor] | None = None
-    _designation: Optional[str] | None = None
+    _name: Optional[str] | None = None
     _current_position: Optional[Coord] | None = None
     _home_square: Optional[HomeSquare] | None = None
     
@@ -55,7 +55,7 @@ class TokenSearchContext(ModelSearchContext[Token]):
             team: Optional[Team] | None = None,
             ransom: Optional[int] | None = None,
             color: Optional[GameColor] | None = None,
-            designation: Optional[str] | None = None,
+            name: Optional[str] | None = None,
             current_position: Optional[Coord] | None = None,
             home_square: Optional[HomeSquare] | None = None,
     ):
@@ -66,16 +66,16 @@ class TokenSearchContext(ModelSearchContext[Token]):
             rank: Optional[Rank]
             ransom: Optional[int]
             current_position:Optional[Coord]
-            designation: Optional[str]
+            name: Optional[str]
             color: Optional[GameColor]
             home_square: Optional[HomeSquare]
         """
-        super().__init__(id=id, name=designation)
+        super().__init__(id=id, name=name)
         self._rank = rank
         self._team = team
         self._ransom = ransom
         self._color = color
-        self._designation = designation
+        self._name = name
         self._home_square = home_square
         self._current_position = current_position
     
@@ -104,10 +104,6 @@ class TokenSearchContext(ModelSearchContext[Token]):
         return self._current_position
     
     @property
-    def designation(self) -> Optional[str]:
-        return self._designation
-    
-    @property
     def to_dict(self) -> Dict[str, Any]:
         return {
             "id": self.id,
@@ -115,7 +111,7 @@ class TokenSearchContext(ModelSearchContext[Token]):
             "rank": self._rank,
             "color": self._color,
             "ransom": self._ransom,
-            "designation": self._designation,
+            "name": self.name,
             "current_position": self._current_position,
             "home_square": self._home_square
         }

@@ -9,8 +9,8 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from ast import Dict
-from typing import Any, Generic, Optional, TypeVar
+
+from typing import Any, Dict, Generic, Optional, TypeVar
 from abc import ABC, abstractmethod
 
 from domain import Searchable
