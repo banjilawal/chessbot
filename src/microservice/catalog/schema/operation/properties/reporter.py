@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import List
 
-from fabrication.builder import Scalar
+from transit.dispatcher.builder import Scalar
 from domain.model import Schema
 from system import GameColor
 

@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2025-11-12
 version: 1.0.0
 """
-from fabrication.builder import Scalar, ScalarBuilder
+from transit.dispatcher.builder import Scalar, ScalarBuilder
 
 # src/logic/system/service/integrity/validator.py
 

@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import cast
 
 from logic.coord import Coord, CoordService
-from fabrication.builder import Scalar, ScalarService
+from transit.dispatcher.builder import Scalar, ScalarService
 from domain.model import Vector, VectorBuilder, VectorServiceException, VectorValidator
 from system import (
     BuildResult, ComputationResult, IdFactory, LoggingLevelRouter, Microservice, NumberValidator

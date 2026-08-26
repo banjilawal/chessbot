@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from detection import SquareCollisionDetector
-from fabrication.builder import SquareBuilder
+from transit.dispatcher.builder import SquareBuilder
 from assurance.validator import SquareValidator
 
 
