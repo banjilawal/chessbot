@@ -13,7 +13,7 @@ from domain.metadata.blueprint import SouthwestQuadrantBlueprint
 
 from artifcat import BuildResult
 from fabrication.builder import QuadrantBuilder
-from assurance.checker import SouthwestQuadrant
+from assurance.validator import SouthwestQuadrant
 from util import  LoggingLevelRouter
   
   

@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import StackSearchContextValidator, CoordContextChecker
+from assurance import StackSearchContextValidator, CoordContextValidator
 from domain import CoordSearchContext
 from err import CoordContextValidatorException
 from util import LoggingLevelRouter
@@ -35,17 +35,17 @@ class CoordContextValidator(StackSearchContextValidator[CoordSearchContext]):
         ContextValidator
     """
     
-    def __init__(self, integrity_checker: Optional[CoordContextChecker] | None = None):
+    def __init__(self, integrity_checker: Optional[CoordContextValidator] | None = None):
         """
         Args:
             integrity_checker: Optional[CoordContextChecker]
         """
-        super().__init__(integrity_checker=integrity_checker or CoordContextChecker)
+        super().__init__(integrity_checker=integrity_checker or CoordContextValidator)
     
     
     @property
-    def integrity_checker(self) -> CoordContextChecker:
-        return cast(CoordContextChecker, super().integrity_checker)
+    def integrity_checker(self) -> CoordContextValidator:
+        return cast(CoordContextValidator, super().integrity_checker)
     
     
     @LoggingLevelRouter.monitor

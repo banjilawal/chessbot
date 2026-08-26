@@ -13,7 +13,7 @@ from typing import cast
 
 from fabrication.builder import AxisReservoirAssembler
 from topology.registry import AxisReservoir
-from assurance.checker import AxisReservoirRootCertifier
+from assurance.validator import AxisReservoirRootCertifier
 from operation.toolkit.builder.registry.space.axis.toolkit import SpaceReservoirBuilderToolkit
 
 

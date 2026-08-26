@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from fabrication.builder import CoordRegisterAssembler
 from domain.structure.register import CoordRegister
-from assurance.checker import CoordRegisterRootCertifier
+from assurance.validator import CoordRegisterRootCertifier
 from operation.toolkit.builder.register.coord.toolkit import RegisterBuilderToolkit
 
 

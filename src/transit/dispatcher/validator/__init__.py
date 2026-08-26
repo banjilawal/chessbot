@@ -16,7 +16,6 @@ from .model import *
 from .movement import *
 from .node import *
 from .number import *
-from .priming import *
 from .query import *
 from .register import *
 from .space import *
@@ -24,4 +23,4 @@ from .string import *
 from .toggle import *
 
 # Module
-from .validator import ValidationDispatcher
+from .dispatcher import ValidationDispatcher

@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import SearchContextChecker, Validator
+from assurance import SearchContextValidator, Validator
 from domain import SearchContext
 from util import LoggingLevelRouter
 
@@ -39,7 +39,7 @@ class SearchContextValidator(Validator[T], ABC, Generic[T]):
         Validator
     """
     
-    def __init__(self, integrity_checker: SearchContextChecker[T]):
+    def __init__(self, integrity_checker: SearchContextValidator[T]):
         """
         Args:
             integrity_checker: SearchContextChecker
@@ -48,8 +48,8 @@ class SearchContextValidator(Validator[T], ABC, Generic[T]):
     
     
     @property
-    def integrity_checker(self) -> SearchContextChecker[T]:
-        return cast(SearchContextChecker[T], super().integrity_checker)
+    def integrity_checker(self) -> SearchContextValidator[T]:
+        return cast(SearchContextValidator[T], super().integrity_checker)
    
     
     @abstractmethod

@@ -14,4 +14,4 @@ from .orientation import *
 from .vector import *
 
 # Modules
-from .validator import ToggleValidationDispatcher
+from .dispatcher import ToggleValidationDispatcher

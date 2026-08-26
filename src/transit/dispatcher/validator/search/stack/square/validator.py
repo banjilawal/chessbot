@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from artifcat import ValidationResult
-from assurance import StackSearchContextValidator, SquareContextChecker
+from assurance import StackSearchContextValidator, SquareContextValidator
 from domain import SquareSearchContext
 from err import SquareContextValidatorException
 from util import LoggingLevelRouter
@@ -36,7 +36,7 @@ class SquareContextValidator(StackSearchContextValidator[SquareSearchContext]):
         ContextValidator
     """
     
-    def __init__(self, integrity_checker: SquareContextChecker):
+    def __init__(self, integrity_checker: SquareContextValidator):
         """
         Args:
             integrity_checker: SquareContextChecker
@@ -45,8 +45,8 @@ class SquareContextValidator(StackSearchContextValidator[SquareSearchContext]):
     
     
     @property
-    def integrity_checker(self) -> SquareContextChecker:
-        return cast(SquareContextChecker, super().integrity_checker)
+    def integrity_checker(self) -> SquareContextValidator:
+        return cast(SquareContextValidator, super().integrity_checker)
     
     
     @LoggingLevelRouter.monitor

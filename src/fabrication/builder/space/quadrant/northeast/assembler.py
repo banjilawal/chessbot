@@ -13,7 +13,7 @@ from domain.metadata.blueprint import NortheastQuadrantBlueprint
 
 from artifcat import BuildResult
 from fabrication.builder import QuadrantBuilder
-from assurance.checker import NortheastQuadrant
+from assurance.validator import NortheastQuadrant
 from util import  LoggingLevelRouter
   
   

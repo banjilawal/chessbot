@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import SearchContextValidator, ChainContextChecker
+from assurance import SearchContextValidator, ChainContextValidator
 from domain import ChainSearchContext
 from util import LoggingLevelRouter
 
@@ -39,7 +39,7 @@ class ChainSearchContextValidator(SearchContextValidator[T], ABC, Generic[T]):
         SearchContextValidator
     """
     
-    def __init__(self, integrity_checker: ChainContextChecker[T]):
+    def __init__(self, integrity_checker: ChainContextValidator[T]):
         """
         Args:
             integrity_checker: ChainContextChecker
@@ -48,8 +48,8 @@ class ChainSearchContextValidator(SearchContextValidator[T], ABC, Generic[T]):
     
     
     @property
-    def integrity_checker(self) -> ChainContextChecker[T]:
-        return cast(ChainContextChecker[T], super().integrity_checker)
+    def integrity_checker(self) -> ChainContextValidator[T]:
+        return cast(ChainContextValidator[T], super().integrity_checker)
     
     
     @abstractmethod

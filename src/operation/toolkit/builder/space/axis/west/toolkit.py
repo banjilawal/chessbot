@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from fabrication.builder import WestAxisAssembler
-from assurance.checker import WestAxisRootCertifier
+from assurance.validator import WestAxisRootCertifier
 from space import WestAxis
 from operation.toolkit.builder.space.axis.west.toolkit import AxisBuilderToolkit
 

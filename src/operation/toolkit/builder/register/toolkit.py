@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Generic, TypeVar, cast
 
 from fabrication.builder import RegisterBuilder
-from assurance.checker import RegisterCertifier
+from assurance.validator import RegisterCertifier
 from operation.toolkit.builder.register.toolkit import BuilderToolkit
 
 T = TypeVar("T", bound="Register")

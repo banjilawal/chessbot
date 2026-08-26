@@ -1,4 +1,4 @@
-# src/fabrication/builder/fabrication/builder.py
+# src/fabrication/builder/builder.py
 
 """
 Module: fabrication.builder.builder
@@ -14,7 +14,7 @@ from typing import Generic, TypeVar
 
 
 from artifcat import BuildResult
-from domain import BuildRequest
+from domain import Blueprint
 from fabrication import BuilderToolkit
 from util import LoggingLevelRouter
 
@@ -39,10 +39,26 @@ class Builder(ABC, Generic[T]):
     """
     _toolkit: BuilderToolkit
     
-    def __init__(self):
-        pass
+    def __init__(self, toolkit: BuilderToolkit[T]):
+        self._toolkit = toolkit
+        
+    
+    @property
+    def toolkit(self) -> BuilderToolkit[T]:
+        return self._toolkit
+    
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: BuildRequest[T],) -> BuildResult[T]:
+    def execute(self, blueprint: Blueprint[T],) -> BuildResult[T]:
+        """
+        Assemble an Object from the Blueprint's contents.
+
+        Args:
+            blueprint: Blueprint[T]
+        Returns:
+            BuildResult[T]
+        Raises:
+            BuilderException
+        """
         pass

@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import NodeValidatorException
 from domain.model import Node
-from assurance import NodeIntegrityChecker
+from assurance import NodeValidator
 from artifcat import ValidationResult
 from util import LoggingLevelRouter
 from transit.dispatcher.validator import ModelValidationDispatcher
@@ -39,13 +39,13 @@ class NodeValidationDispatcher(ModelValidationDispatcher[Node]):
     
     def __init__(
             self,
-            integrity_checker: NodeIntegrityChecker | None = NodeIntegrityChecker(),
+            integrity_checker: NodeValidator | None = NodeValidator(),
     ):
         super().__init__(integrity_checker=integrity_checker)
         
     @property
-    def integrity_checker(self) -> NodeIntegrityChecker:
-        return cast(NodeIntegrityChecker, super().integrity_checker)
+    def integrity_checker(self) -> NodeValidator:
+        return cast(NodeValidator, super().integrity_checker)
     
 
     @LoggingLevelRouter.monitor

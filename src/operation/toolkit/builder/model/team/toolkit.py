@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from fabrication.builder import TeamAssembler
 from domain.model import Team
-from assurance.checker import TeamRootCertifier
+from assurance.validator import TeamRootCertifier
 from operation.toolkit.builder.model.team.toolkit import ModelBuilderToolkit
 
 

@@ -14,6 +14,7 @@ from abc import ABC
 from typing import Generic, Optional, TypeVar
 
 from fabrication import BuildFinalizer
+from transit import ValidationDispatcher
 
 T = TypeVar("T")
 

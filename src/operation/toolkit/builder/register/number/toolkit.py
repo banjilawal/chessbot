@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from fabrication.builder import NumberRegisterAssembler
 from domain.structure.register import NumberRegister
-from assurance.checker import NumberRegisterRootCertifier
+from assurance.validator import NumberRegisterRootCertifier
 from operation.toolkit.builder.register.number.toolkit import RegisterBuilderToolkit
 
 

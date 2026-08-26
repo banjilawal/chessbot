@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Generic, TypeVar, cast
 
 from fabrication.builder import ToggleBuilder
-from assurance.checker import ToggleCertifier
+from assurance.validator import ToggleCertifier
 from operation.toolkit.builder.toggle.toolkit import BuilderToolkit
 
 T = TypeVar("T", bound="Toggle")

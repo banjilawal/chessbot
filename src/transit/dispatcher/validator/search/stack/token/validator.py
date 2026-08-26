@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from artifcat import ValidationResult
-from assurance import StackSearchContextValidator, TokenContextChecker
+from assurance import StackSearchContextValidator, TokenContextValidator
 from domain import TokenSearchContext
 from err import TokenContextValidatorException
 from util import LoggingLevelRouter
@@ -36,7 +36,7 @@ class TokenContextValidator(StackSearchContextValidator[TokenSearchContext]):
         ContextValidator
     """
     
-    def __init__(self, integrity_checker: TokenContextChecker):
+    def __init__(self, integrity_checker: TokenContextValidator):
         """
         Args:
             integrity_checker: TokenContextChecker
@@ -45,8 +45,8 @@ class TokenContextValidator(StackSearchContextValidator[TokenSearchContext]):
     
     
     @property
-    def integrity_checker(self) -> TokenContextChecker:
-        return cast(TokenContextChecker, super().integrity_checker)
+    def integrity_checker(self) -> TokenContextValidator:
+        return cast(TokenContextValidator, super().integrity_checker)
     
     
     @LoggingLevelRouter.monitor

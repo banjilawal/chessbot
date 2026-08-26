@@ -5,287 +5,201 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/fabrication/toolkit/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/binder/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/binder/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/binder/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/path/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/rank/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/scalar/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/state/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/state/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/state/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/state/edge/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/state/node/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/state/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/state/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/state/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/state/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/node/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/node/dossier/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/node/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/number/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/priming/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/query/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/query/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/register/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/register/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/chain/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/chain/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/edge/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/home/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/node/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/query/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/rank/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/rank/validator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/space/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/space/linear/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/space/linear/axis/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/space/linear/quadrant/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/space/span/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/space/span/basis/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/string/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/string/name/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/string/registry/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/toggle/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/toggle/orientation/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/toggle/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/edge/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/game/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/maneuver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/node/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/path/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/player/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/query/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/rank/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/search/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/search/chain/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/search/chain/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/search/stack/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/search/stack/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/search/stack/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/search/stack/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/search/stack/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/node/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/node/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/register/identity/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/register/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/register/toggle/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/register/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/toggle/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/validator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/validator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DOCS/chessbot_api_architecture_guide.md" beforeDir="false" afterPath="$PROJECT_DIR$/DOCS/chessbot_api_architecture_guide.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assurance/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/binder/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/binder/arena/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/binder/arena/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/binder/arena/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/binder/board/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/binder/board/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/binder/board/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/coord/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/coord/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/coord/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/maneuver/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/maneuver/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/maneuver/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/path/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/path/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/path/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/rank/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/rank/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/rank/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/scalar/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/scalar/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/scalar/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/state/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/state/arena/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/state/arena/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/state/arena/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/state/board/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/state/board/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/state/board/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/state/edge/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/state/edge/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/state/edge/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/state/node/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/state/node/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/state/node/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/state/player/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/state/player/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/state/player/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/state/square/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/state/square/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/state/square/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/state/team/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/state/team/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/state/team/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/state/token/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/state/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/state/token/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/state/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/state/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/vector/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/vector/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/vector/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/movement/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/movement/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/movement/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/movement/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/movement/offset/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/movement/offset/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/movement/offset/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/movement/offset/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/movement/offset/king/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/movement/offset/king/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/movement/offset/king/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/movement/offset/king/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/movement/offset/knight/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/movement/offset/knight/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/movement/offset/knight/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/movement/offset/knight/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/movement/pawn/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/movement/pawn/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/movement/pawn/attack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/movement/pawn/attack/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/movement/pawn/attack/developed/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/movement/pawn/attack/developed/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/movement/pawn/attack/developed/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/movement/pawn/attack/developed/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/movement/pawn/attack/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/movement/pawn/attack/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/movement/pawn/attack/opening/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/movement/pawn/attack/opening/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/movement/pawn/attack/opening/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/movement/pawn/attack/opening/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/movement/pawn/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/movement/pawn/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/movement/pawn/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/movement/pawn/maneuver/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/movement/pawn/maneuver/developed/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/movement/pawn/maneuver/developed/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/movement/pawn/maneuver/developed/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/movement/pawn/maneuver/developed/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/movement/pawn/maneuver/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/movement/pawn/maneuver/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/movement/pawn/maneuver/opening/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/movement/pawn/maneuver/opening/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/movement/pawn/maneuver/opening/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/movement/pawn/maneuver/opening/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/movement/traversal/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/movement/traversal/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/movement/traversal/bishop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/movement/traversal/bishop/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/movement/traversal/bishop/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/movement/traversal/bishop/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/movement/traversal/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/movement/traversal/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/movement/traversal/queen/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/movement/traversal/queen/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/movement/traversal/queen/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/movement/traversal/queen/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/movement/traversal/rook/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/movement/traversal/rook/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/movement/traversal/rook/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/movement/traversal/rook/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/node/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/node/dossier/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/node/dossier/node.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/node/dossier/node.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/node/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/node/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/node/vector/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/node/vector/node.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/node/vector/node.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/node/vector/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/node/vector/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/number/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/number/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/number/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/priming/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/priming/priming.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/priming/priming.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/query/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/query/token/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/query/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/query/token/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/query/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/query/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/register/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/register/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/register/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/register/vector/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/register/vector/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/register/vector/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/chain/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/chain/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/chain/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/chain/vector/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/chain/vector/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/chain/vector/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/stack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/stack/arena/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/stack/arena/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/arena/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/stack/board/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/stack/board/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/board/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/stack/coord/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/stack/coord/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/coord/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/stack/edge/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/stack/edge/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/edge/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/stack/game/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/stack/game/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/game/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/stack/home/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/stack/home/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/home/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/stack/node/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/stack/node/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/node/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/stack/player/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/stack/player/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/player/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/stack/query/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/toolkit/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/stack/rank/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/stack/rank/validator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/stack/square/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/stack/square/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/square/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/stack/team/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/stack/team/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/team/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/stack/token/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/stack/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/token/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/stack/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/search/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/space/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/space/linear/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/space/linear/axis/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/space/linear/axis/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/space/linear/axis/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/space/linear/quadrant/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/space/linear/quadrant/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/space/linear/quadrant/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/space/linear/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/space/linear/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/space/span/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/space/span/basis/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/space/span/basis/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/space/span/basis/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/space/span/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/space/span/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/space/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/space/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/string/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/string/name/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/string/name/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/string/name/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/string/registry/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/string/registry/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/string/registry/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/string/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/string/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/toggle/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/toggle/orientation/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/toggle/orientation/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/toggle/orientation/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/toggle/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/toggle/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/toggle/vector/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/toggle/vector/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/toggle/vector/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/adjudicator/stack/push/token/adjudicator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/adjudicator/stack/push/token/adjudicator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/adjudicator/stack/search/token/adjudicator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/adjudicator/stack/search/token/adjudicator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/adjudicator/token/promotion/rank/adjudicator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/adjudicator/token/promotion/rank/adjudicator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/maneuver/undo/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/maneuver/undo/permitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/operation/microservice/attack/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/operation/microservice/attack/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/operation/microservice/token/coord/pop/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/operation/microservice/token/coord/pop/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/slot/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/slot/permitter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrapper/analyzer/quota/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/analyzer/quota/bootstrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrapper/detector/home/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/detector/home/detector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrapper/detector/token/bootstrapper/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/detector/token/bootstrapper/bootstrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrapper/detector/token/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/detector/token/detector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrapper/operation/token/coord/pop/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/operation/token/coord/pop/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrapper/request/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/request/bootstrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrapper/validator/endpoint/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/validator/endpoint/bootstrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/exchange/request/operation/microservice/attack/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/exchange/request/operation/microservice/attack/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/exchange/request/operation/microservice/token/coord/pop/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/exchange/request/operation/microservice/token/coord/pop/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/validation/query/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/validation/query/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/validation/query/token/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/validation/query/token/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fabrication/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/auditor/square/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/auditor/square/checker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/bundle.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/bundle/bundle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/bootstrapper/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/bootstrapper/bootstrapper.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/model/arena/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/model/arena/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/arena/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/model/board/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/model/board/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/board/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/model/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/checker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/model/coord/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/model/coord/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/coord/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/model/edge/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/model/edge/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/edge/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/model/game/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/model/game/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/game/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/model/maneuver/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/model/maneuver/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/maneuver/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/model/node/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/model/node/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/node/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/model/path/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/model/path/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/path/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/model/player/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/model/player/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/player/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/model/query/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/model/rank/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/model/rank/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/rank/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/model/square/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/model/square/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/square/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/model/team/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/model/team/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/team/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/model/token/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/model/token/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/token/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/model/vector/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/model/vector/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/vector/checker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/node/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/node/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/node/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/node/vector/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/node/vector/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/node/vector/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/register/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/register/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/register/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/register/identity/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/register/identity/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/register/identity/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/register/square/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/register/square/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/register/square/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/register/toggle/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/register/toggle/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/register/toggle/vector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/register/vector/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/register/vector/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/register/vector/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/registry/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/registry/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/registry/space/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/registry/space/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/registry/space/axis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/registry/space/axis/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/registry/space/axis/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/registry/space/axis/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/registry/space/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/registry/space/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/registry/space/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/registry/space/quadrant/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/registry/space/quadrant/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/registry/space/quadrant/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/search/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/search/chain/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/search/chain/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/search/chain/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/search/chain/vector/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/search/chain/vector/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/search/chain/vector/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/search/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/search/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/search/stack/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/search/stack/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/search/stack/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/search/stack/coord/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/search/stack/coord/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/search/stack/coord/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/search/stack/square/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/search/stack/square/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/search/stack/square/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/search/stack/team/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/search/stack/team/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/search/stack/team/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/search/stack/token/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/search/stack/token/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/search/stack/token/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/space/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/space/axis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/axis/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/space/axis/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/axis/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/space/axis/east/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/axis/east/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/space/axis/east/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/axis/east/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/space/axis/north/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/axis/north/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/space/axis/north/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/axis/north/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/space/axis/south/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/axis/south/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/space/axis/south/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/axis/south/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/space/axis/west/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/axis/west/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/space/axis/west/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/axis/west/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/space/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/space/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/quadrant/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/space/quadrant/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/quadrant/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/space/quadrant/northeast/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/quadrant/northeast/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/space/quadrant/northeast/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/quadrant/northeast/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/space/quadrant/northwest/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/quadrant/northwest/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/space/quadrant/northwest/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/quadrant/northwest/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/space/quadrant/southeast/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/quadrant/southeast/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/space/quadrant/southeast/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/quadrant/southeast/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/space/quadrant/southwest/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/quadrant/southwest/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/space/quadrant/southwest/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/quadrant/southwest/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/toggle/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/toggle/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/toggle/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/toggle/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/toggle/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/checker/toggle/vector/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/toggle/vector/validator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fabrication/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fabrication/finalizer/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/finalizer/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fabrication/finalizer/finalizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/finalizer/finalizer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/microservice/attack/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/attack/microservice.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/microservice/identity/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/identity/microservice.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/microservice/square/operation/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/square/operation/controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/microservice/token/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/token/microservice.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/microservice/attack/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/microservice/attack/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/microservice/token/coord/pop/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/microservice/token/coord/pop/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/analyzer/bootstrapper/coord/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/analyzer/bootstrapper/coord/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/analyzer/bootstrapper/itinerary/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/analyzer/bootstrapper/itinerary/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/analyzer/bootstrapper/maneuver/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/analyzer/bootstrapper/maneuver/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/analyzer/bootstrapper/number/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/analyzer/bootstrapper/number/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/analyzer/bootstrapper/path/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/analyzer/bootstrapper/path/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/analyzer/bootstrapper/rank/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/analyzer/bootstrapper/rank/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/analyzer/bootstrapper/readiness/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/analyzer/bootstrapper/readiness/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/analyzer/bootstrapper/scalar/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/analyzer/bootstrapper/scalar/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/analyzer/bootstrapper/square/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/analyzer/bootstrapper/square/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/analyzer/bootstrapper/team/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/analyzer/bootstrapper/team/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/analyzer/bootstrapper/token/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/analyzer/bootstrapper/token/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/bootstrapper/detector/home/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/bootstrapper/detector/home/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/math/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/math/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/model/scalar/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/model/scalar/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/model/state/maneuver/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/model/state/maneuver/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/model/state/path/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/model/state/path/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/model/state/rank/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/model/state/rank/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/model/state/scalar/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/model/state/scalar/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/model/state/square/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/model/state/square/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/model/vector/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/model/vector/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/permitter/token/maneuver/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/permitter/token/maneuver/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/permitter/token/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/permitter/token/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/register/identity/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/register/identity/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/register/square/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/register/square/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/register/toggle/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/register/toggle/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/register/vector/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/register/vector/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/friend/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sensor/analyzer/friend/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/friend/enemy/combatant/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sensor/analyzer/friend/enemy/combatant/detector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/friend/enemy/king/detector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sensor/analyzer/friend/enemy/king/detector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/itinerary/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sensor/analyzer/itinerary/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/promotion/manager/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sensor/analyzer/promotion/manager/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/promotion/rank/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sensor/analyzer/promotion/rank/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/relation/team/board/analyst.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sensor/analyzer/relation/team/board/analyst.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/relation/token/square/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sensor/analyzer/relation/token/square/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sensor/analyzer/relation/token/team/analyzer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sensor/analyzer/relation/token/team/analyzer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/topology/generator/offset/topology.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology/generator/offset/topology.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/topology/generator/traversal/runner/topology.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology/generator/traversal/runner/topology.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/topology/generator/traversal/topology.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/topology/generator/traversal/topology.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/controller/model/token/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/controller/model/token/controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/container/vector/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/container/vector/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/endpoint/axis/west/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/endpoint/axis/west/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/endpoint/quadrant/northeast/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/endpoint/quadrant/northeast/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/endpoint/quadrant/northwest/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/endpoint/quadrant/northwest/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/endpoint/quadrant/southeast/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/endpoint/quadrant/southeast/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/endpoint/quadrant/southwest/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/endpoint/quadrant/southwest/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/signature/traversal/bishop/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/signature/traversal/bishop/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/space/axis/south/assembler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/space/axis/south/assembler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/space/axis/west/assembler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/space/axis/west/assembler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/space/quadrant/northeast/assembler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/space/quadrant/northeast/assembler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/space/quadrant/northwest/assembler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/space/quadrant/northwest/assembler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/space/quadrant/southeast/assembler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/space/quadrant/southeast/assembler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/space/quadrant/southwest/assembler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/space/quadrant/southwest/assembler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/toolkit/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/toolkit/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/context/square/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/context/square/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/model/arena/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/model/arena/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/model/board/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/model/board/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/model/coord/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/model/coord/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/model/player/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/model/player/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/model/rank/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/model/rank/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/model/scalar/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/model/scalar/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/model/square/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/model/square/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/model/team/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/model/team/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/model/token/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/model/token/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/model/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/model/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/model/vector/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/model/vector/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/register/coord/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/register/coord/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/register/number/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/register/number/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/register/toggle/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/register/toggle/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/register/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/register/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/register/vector/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/register/vector/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/registry/space/axis/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/registry/space/axis/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/registry/space/quadrant/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/registry/space/quadrant/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/registry/space/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/registry/space/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/space/axis/east/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/space/axis/east/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/space/axis/north/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/space/axis/north/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/space/axis/south/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/space/axis/south/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/space/axis/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/space/axis/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/space/axis/west/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/space/axis/west/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/space/quadrant/northeast/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/space/quadrant/northeast/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/space/quadrant/northwest/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/space/quadrant/northwest/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/space/quadrant/southeast/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/space/quadrant/southeast/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/space/quadrant/southwest/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/space/quadrant/southwest/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/space/quadrant/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/space/quadrant/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/space/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/space/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/toggle/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/toggle/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/toggle/vector/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/toggle/vector/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validator/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/state/node/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/state/node/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/state/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/state/token/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/vector/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/model/vector/dispatcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validator/node/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/node/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validator/priming/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/priming/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validator/priming/priming.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/priming/priming.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/chain/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/chain/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/chain/vector/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/chain/vector/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/coord/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/coord/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/square/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/square/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/team/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/team/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/token/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/stack/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/search/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validator/toggle/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/toggle/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validator/toggle/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/toggle/dispatcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validator/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/dispatcher.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -327,61 +241,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0000000268221476" />
-      <entry key="S5" value="1.0009362621088689" />
-      <entry key="S10" value="1.0306135279493602" />
-      <entry key="S30" value="1.377445469334858" />
-      <entry key="S60" value="2.114137394521987" />
-      <entry key="M2" value="3.880942629878999" />
-      <entry key="M5" value="17.7891586063883" />
-      <entry key="M10" value="62.179490959187824" />
-      <entry key="M15" value="110.67123972785555" />
-      <entry key="M30" value="224.96319667651025" />
-      <entry key="H1" value="346.54056089163834" />
-      <entry key="H2" value="450.4147875223378" />
-      <entry key="H4" value="643.0768558400014" />
-      <entry key="D1" value="4527.884139379798" />
-      <entry key="W1" value="10152.420249240802" />
+      <entry key="MS100" value="3.235788077369614E-54" />
+      <entry key="MS500" value="2.0044808540703532E-11" />
+      <entry key="S2" value="0.002244369340107677" />
+      <entry key="S5" value="0.11299968677502586" />
+      <entry key="S10" value="0.4726176433056529" />
+      <entry key="S30" value="1.8667590277868518" />
+      <entry key="S60" value="3.6609847287786557" />
+      <entry key="M2" value="6.199522013917818" />
+      <entry key="M5" value="11.14668641678985" />
+      <entry key="M10" value="18.012506376091448" />
+      <entry key="M15" value="28.297800362405464" />
+      <entry key="M30" value="91.24359896849968" />
+      <entry key="H1" value="249.3335137074236" />
+      <entry key="H2" value="461.2434973655894" />
+      <entry key="H4" value="738.043561570906" />
+      <entry key="D1" value="4623.436759105476" />
+      <entry key="W1" value="10396.409500450605" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="1.0062135854654069E-150" />
-      <entry key="S2" value="4.605219648254377E-38" />
-      <entry key="S5" value="1.7330943712646424E-15" />
-      <entry key="S10" value="5.870947545037622E-8" />
-      <entry key="S30" value="0.00616639091368836" />
-      <entry key="S60" value="0.11244133922230179" />
-      <entry key="M2" value="0.5643660486156264" />
-      <entry key="M5" value="2.6840840572192186" />
-      <entry key="M10" value="5.879115045472741" />
-      <entry key="M15" value="8.024580305284475" />
-      <entry key="M30" value="11.742472737779401" />
-      <entry key="H1" value="15.237462184445134" />
-      <entry key="H2" value="18.636716758080308" />
-      <entry key="H4" value="27.383861188032053" />
-      <entry key="D1" value="153.35997425986466" />
-      <entry key="W1" value="338.28612669371375" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0000001870853599" />
+      <entry key="S10" value="1.0004325506438427" />
+      <entry key="S30" value="1.078826465543992" />
+      <entry key="S60" value="1.3692567341928013" />
+      <entry key="M2" value="2.125677049660163" />
+      <entry key="M5" value="3.891493723878153" />
+      <entry key="M10" value="5.67547211320649" />
+      <entry key="M15" value="7.05443426710931" />
+      <entry key="M30" value="10.907916966043961" />
+      <entry key="H1" value="17.468047503342557" />
+      <entry key="H2" value="25.409408082756254" />
+      <entry key="H4" value="36.9317673353202" />
+      <entry key="D1" value="164.05684036015967" />
+      <entry key="W1" value="353.9948938886973" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9265880618903709" />
-      <entry key="MS500" value="0.9848664428955506" />
-      <entry key="S2" value="0.9961949748809381" />
-      <entry key="S5" value="0.9994114626336009" />
-      <entry key="S10" value="1.0298327197256265" />
-      <entry key="S30" value="1.3803715883211185" />
-      <entry key="S60" value="2.2129561855226227" />
-      <entry key="M2" value="4.421976705941606" />
-      <entry key="M5" value="20.43110645239011" />
-      <entry key="M10" value="68.00146433695257" />
-      <entry key="M15" value="118.63682700048648" />
-      <entry key="M30" value="236.65366243101374" />
-      <entry key="H1" value="361.73930530750204" />
-      <entry key="H2" value="469.02618441540756" />
-      <entry key="H4" value="670.444152028557" />
-      <entry key="D1" value="4681.2331249875" />
-      <entry key="W1" value="10490.702716775848" />
+      <entry key="MS100" value="7.951400805930575E-11" />
+      <entry key="MS500" value="0.009551877189047223" />
+      <entry key="S2" value="0.3148553548255834" />
+      <entry key="S5" value="0.7408253991472744" />
+      <entry key="S10" value="1.2645720562955696" />
+      <entry key="S30" value="2.8499737846901736" />
+      <entry key="S60" value="4.951057983013185" />
+      <entry key="M2" value="8.257623182350114" />
+      <entry key="M5" value="14.985083816505798" />
+      <entry key="M10" value="23.64497733667008" />
+      <entry key="M15" value="35.31486360573973" />
+      <entry key="M30" value="102.11931175339548" />
+      <entry key="H1" value="266.7711531328" />
+      <entry key="H2" value="486.6277543301599" />
+      <entry key="H4" value="774.9568766658651" />
+      <entry key="D1" value="4787.482025701311" />
+      <entry key="W1" value="10750.40060176417" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -412,7 +326,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/transit/dispatcher/builder/domain",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/assurance/validator/domain/structure",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -426,21 +340,21 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assurance/validator/domain/structure" />
+      <recent name="$PROJECT_DIR$/src/assurance/validator/domain" />
       <recent name="$PROJECT_DIR$/src/transit/dispatcher/builder/domain" />
       <recent name="$PROJECT_DIR$/src/domain/exchange/request/builder" />
       <recent name="$PROJECT_DIR$/src/err/null/domain/search/context/graph" />
-      <recent name="$PROJECT_DIR$/src/err/null/domain/search/context/chain" />
-      <recent name="$PROJECT_DIR$/src/err/null/domain/search/context/stack" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assurance/validator" />
+      <recent name="$PROJECT_DIR$/src/assurance/validator/domain" />
+      <recent name="$PROJECT_DIR$/src/assurance/validator/space" />
+      <recent name="$PROJECT_DIR$/src/assurance/validator/structure" />
       <recent name="$PROJECT_DIR$/src/transit/dispatcher" />
-      <recent name="$PROJECT_DIR$/src/err/null/domain/search/context/stack" />
-      <recent name="$PROJECT_DIR$/src/err/null/domain/structure/register" />
-      <recent name="$PROJECT_DIR$/src/err/authorization" />
-      <recent name="$PROJECT_DIR$/src/err/fabrication" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.checker">
+  <component name="RunManager" selected="Python.validator">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -687,9 +601,34 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="validator" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="chessbot" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/assurance/checker/search/stack/coord" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/assurance/checker/search/stack/coord/validator.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.checker" />
+        <item itemvalue="Python.validator" />
         <item itemvalue="Python.roster" />
         <item itemvalue="Python.node" />
         <item itemvalue="Python.__init__" />
@@ -1526,7 +1465,7 @@
           <option name="timeStamp" value="234" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/assurance/checker/register/toggle/certifier.py</url>
+          <url>file://$PROJECT_DIR$/src/assurance/validator/domain/structure/register/toggle/vector.py</url>
           <line>9</line>
           <option name="timeStamp" value="235" />
         </line-breakpoint>
@@ -1681,7 +1620,7 @@
           <option name="timeStamp" value="278" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/assurance/checker/toggle/certifier.py</url>
+          <url>file://$PROJECT_DIR$/src/assurance/validator/domain/structure/toggle/validator.py</url>
           <line>9</line>
           <option name="timeStamp" value="279" />
         </line-breakpoint>
@@ -1791,7 +1730,7 @@
           <option name="timeStamp" value="306" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/assurance/checker/space/axis/east/certifier.py</url>
+          <url>file://$PROJECT_DIR$/src/assurance/validator/space/axis/east/certifier.py</url>
           <line>9</line>
           <option name="timeStamp" value="307" />
         </line-breakpoint>
@@ -1851,7 +1790,7 @@
           <option name="timeStamp" value="323" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/assurance/checker/space/quadrant/southwest/certifier.py</url>
+          <url>file://$PROJECT_DIR$/src/assurance/validator/space/quadrant/southwest/certifier.py</url>
           <line>9</line>
           <option name="timeStamp" value="326" />
         </line-breakpoint>
@@ -2001,7 +1940,7 @@
           <option name="timeStamp" value="368" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/assurance/checker/node/checker.py</url>
+          <url>file://$PROJECT_DIR$/src/assurance/validator/domain/structure/node/validator.py</url>
           <line>11</line>
           <option name="timeStamp" value="369" />
         </line-breakpoint>
@@ -2076,12 +2015,12 @@
           <option name="timeStamp" value="385" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/assurance/checker/search/checker.py</url>
+          <url>file://$PROJECT_DIR$/src/assurance/validator/domain/search/validator.py</url>
           <line>11</line>
           <option name="timeStamp" value="386" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/assurance/checker/search/__init__.py</url>
+          <url>file://$PROJECT_DIR$/src/assurance/validator/domain/search/__init__.py</url>
           <line>13</line>
           <option name="timeStamp" value="387" />
         </line-breakpoint>
@@ -2134,6 +2073,21 @@
           <url>file://$PROJECT_DIR$/src/err/null/domain/structure/register/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="397" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/assurance/validator/domain/model/square/validator.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="398" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/assurance/validator/priming/priming.py</url>
+          <line>10</line>
+          <option name="timeStamp" value="399" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/assurance/validator/domain/structure/validator.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="400" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

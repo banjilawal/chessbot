@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Any, cast
 
-from assurance import NodeIntegrityChecker, Validator
+from assurance import NodeValidator, Validator
 from domain.structure.node import Node
 from artifcat import ValidationResult
 from util import LoggingLevelRouter
@@ -39,7 +39,7 @@ class NodeValidator(Validator[Node]):
         Validator
     """
     
-    def __init__(self, integrity_checker: NodeIntegrityChecker):
+    def __init__(self, integrity_checker: NodeValidator):
         """
         Args:
             integrity_checker: NodeIntegrityChecker
@@ -47,8 +47,8 @@ class NodeValidator(Validator[Node]):
         super().__init__(integrity_checker=integrity_checker)
     
     @property
-    def integrity_checker(self) -> NodeIntegrityChecker:
-        return cast(NodeIntegrityChecker, super().integrity_checker)
+    def integrity_checker(self) -> NodeValidator:
+        return cast(NodeValidator, super().integrity_checker)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

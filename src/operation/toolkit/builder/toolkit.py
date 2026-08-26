@@ -13,7 +13,7 @@ from typing import Dict, Generic, TypeVar
 
 from fabrication.builder import Builder
 
-from assurance.checker import Certifier
+from assurance.validator import Certifier
 from operation.toolkit.builder.toolkit import Toolkit
 
 T = TypeVar("T")

@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from fabrication.builder import VectorToggleRegisterAssembler
 from domain.structure.register import CartesianToggleRegister
-from assurance.checker import VectorToggleRegisterCertifier
+from assurance.validator import VectorToggleRegisterCertifier
 from operation.toolkit.builder.register.toggle.toolkit import RegisterBuilderToolkit
 
 

@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import SearchContextValidator, StackContextChecker
+from assurance import SearchContextValidator, StackContextValidator
 from domain import StackSearchContext
 from util import LoggingLevelRouter
 
@@ -39,7 +39,7 @@ class StackSearchContextValidator(SearchContextValidator[T], ABC, Generic[T]):
         SearchContextValidator
     """
     
-    def __init__(self, integrity_checker: StackContextChecker[T]):
+    def __init__(self, integrity_checker: StackContextValidator[T]):
         """
         Args:
             integrity_checker: StackContextChecker
@@ -48,8 +48,8 @@ class StackSearchContextValidator(SearchContextValidator[T], ABC, Generic[T]):
     
     
     @property
-    def integrity_checker(self) -> StackContextChecker[T]:
-        return cast(StackContextChecker[T], super().integrity_checker)
+    def integrity_checker(self) -> StackContextValidator[T]:
+        return cast(StackContextValidator[T], super().integrity_checker)
     
     
     @abstractmethod

@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from assurance import ModelValidator
 from err import VectorValidatorException
-from assurance import VectorIntegrityChecker
+from assurance import VectorIntegrityValidator
 from domain.model import Vector
 from artifcat import ValidationResult
 from util import LoggingLevelRouter
@@ -40,13 +40,13 @@ class VectorValidator(ModelValidator):
     
     def __init__(
             self,
-            integrity_checker: VectorIntegrityChecker | None = None,
+            integrity_checker: VectorIntegrityValidator | None = None,
     ):
-        super().__init__(integrity_checker=integrity_checker or VectorIntegrityChecker())
+        super().__init__(integrity_checker=integrity_checker or VectorIntegrityValidator())
         
     @property
-    def integrity_checker(self) -> VectorIntegrityChecker:
-        return cast(VectorIntegrityChecker, super().integrity_checker)
+    def integrity_checker(self) -> VectorIntegrityValidator:
+        return cast(VectorIntegrityValidator, super().integrity_checker)
     
 
     @LoggingLevelRouter.monitor

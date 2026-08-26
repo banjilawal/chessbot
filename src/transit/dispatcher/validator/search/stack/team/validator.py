@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from artifcat import ValidationResult
-from assurance import StackSearchContextValidator, TeamContextChecker
+from assurance import StackSearchContextValidator, TeamContextValidator
 from domain import TeamSearchContext
 from err import TeamContextValidatorException
 from util import LoggingLevelRouter
@@ -35,7 +35,7 @@ class TeamContextValidator(StackSearchContextValidator[TeamSearchContext]):
         ContextValidator
     """
     
-    def __init__(self, integrity_checker: TeamContextChecker):
+    def __init__(self, integrity_checker: TeamContextValidator):
         """
         Args:
             integrity_checker: TeamContextChecker
@@ -43,8 +43,8 @@ class TeamContextValidator(StackSearchContextValidator[TeamSearchContext]):
         super().__init__(integrity_checker=integrity_checker)
     
     @property
-    def integrity_checker(self) -> TeamContextChecker:
-        return cast(TeamContextChecker, super().integrity_checker)
+    def integrity_checker(self) -> TeamContextValidator:
+        return cast(TeamContextValidator, super().integrity_checker)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[TeamSearchContext]:

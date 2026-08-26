@@ -13,7 +13,7 @@ from domain.metadata.blueprint import WestAxisBlueprint
 
 from artifcat import BuildResult
 from fabrication.builder import AxisBuilder
-from assurance.checker import WestAxis
+from assurance.validator import WestAxis
 from util import  LoggingLevelRouter
   
   

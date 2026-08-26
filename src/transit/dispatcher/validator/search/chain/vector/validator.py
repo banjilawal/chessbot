@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from artifcat import ValidationResult
-from assurance import ChainSearchContextValidator, VectorNodeContextChecker
+from assurance import ChainSearchContextValidator, VectorNodeContextValidator
 from domain import VectorNodeContext
 from err import VectorNodeContextValidatorException
 
@@ -39,7 +39,7 @@ class VectorNodeContextValidator(
         ContextValidator
     """
     
-    def __init__(self, integrity_checker: VectorNodeContextChecker):
+    def __init__(self, integrity_checker: VectorNodeContextValidator):
         """
         Args:
             integrity_checker: VectorNodeContextChecker
@@ -48,8 +48,8 @@ class VectorNodeContextValidator(
     
     
     @property
-    def integrity_checker(self) -> VectorNodeContextChecker:
-        return cast(VectorNodeContextChecker, super().integrity_checker)
+    def integrity_checker(self) -> VectorNodeContextValidator:
+        return cast(VectorNodeContextValidator, super().integrity_checker)
     
     
     @LoggingLevelRouter.monitor

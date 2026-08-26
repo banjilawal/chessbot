@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from fabrication.builder import ScalarAssembler
 from domain.model import Scalar
-from assurance.checker import ScalarRootCertifier
+from assurance.validator import ScalarRootCertifier
 from operation.toolkit.builder.model.scalar.toolkit import ModelBuilderToolkit
 
 

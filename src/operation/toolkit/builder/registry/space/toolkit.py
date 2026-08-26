@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Generic, TypeVar, cast
 
 from fabrication.builder import SpaceReservoirBuilder
-from assurance.checker import SpaceReservoirCertifier
+from assurance.validator import SpaceReservoirCertifier
 
 from operation.toolkit.builder.registry.space.toolkit import BuilderToolkit
 

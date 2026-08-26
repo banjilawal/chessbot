@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from fabrication.builder import SquareAssembler
 from domain.model import Square
-from assurance.checker import SquareRootCertifier
+from assurance.validator import SquareRootCertifier
 from operation.toolkit.builder.model.square.toolkit import ModelBuilderToolkit
 
 

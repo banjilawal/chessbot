@@ -13,7 +13,7 @@ from typing import cast
 
 from fabrication.builder import QuadrantReservoirAssembler
 from topology.registry import QuadrantReservoir
-from assurance.checker import QuadrantReservoirRootCertifier
+from assurance.validator import QuadrantReservoirRootCertifier
 from operation.toolkit.builder.registry.space.quadrant.toolkit import SpaceReservoirBuilderToolkit
 
 

@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import TokenValidatorException
 from domain.model import Token
-from assurance import TokenIntegrityChecker
+from assurance import TokenValidator
 from artifcat import ValidationResult
 from util import LoggingLevelRouter
 from transit.dispatcher.validator import ModelValidationDispatcher
@@ -39,13 +39,13 @@ class TokenValidationDispatcher(ModelValidationDispatcher[Token]):
     
     def __init__(
             self,
-            integrity_checker: TokenIntegrityChecker | None = TokenIntegrityChecker(),
+            integrity_checker: TokenValidator | None = TokenValidator(),
     ):
         super().__init__(integrity_checker=integrity_checker)
         
     @property
-    def integrity_checker(self) -> TokenIntegrityChecker:
-        return cast(TokenIntegrityChecker, super().integrity_checker)
+    def integrity_checker(self) -> TokenValidator:
+        return cast(TokenValidator, super().integrity_checker)
     
 
     @LoggingLevelRouter.monitor

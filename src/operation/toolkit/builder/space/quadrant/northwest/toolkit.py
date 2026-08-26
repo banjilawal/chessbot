@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from fabrication.builder import NorthwestQuadrantAssembler
-from assurance.checker import NorthwestQuadrantRootCertifier
+from assurance.validator import NorthwestQuadrantRootCertifier
 from space import NorthwestQuadrant
 from operation.toolkit.builder.space.quadrant.northwest.toolkit import QuadrantBuilderToolkit
 

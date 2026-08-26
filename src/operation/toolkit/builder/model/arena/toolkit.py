@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from fabrication.builder import ArenaAssembler
 from domain.model import Arena
-from assurance.checker import ArenaRootCertifier
+from assurance.validator import ArenaRootCertifier
 from operation.toolkit.builder.model.arena.toolkit import ModelBuilderToolkit
 
 

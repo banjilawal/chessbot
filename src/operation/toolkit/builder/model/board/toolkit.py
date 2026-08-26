@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from fabrication.builder import BoardAssembler
 from domain.model import Board
-from assurance.checker import BoardRootCertifier
+from assurance.validator import BoardRootCertifier
 from operation.toolkit.builder.model.board.toolkit import ModelBuilderToolkit
 
 

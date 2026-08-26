@@ -13,3 +13,4 @@ version: 0.0.2
 from .node import *
 
 # Module
+from .bundle import StructureValidationBundle

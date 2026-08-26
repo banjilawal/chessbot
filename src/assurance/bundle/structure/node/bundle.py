@@ -13,13 +13,14 @@ from abc import ABC
 from dataclasses import dataclass
 from typing import Generic, TypeVar
 
-from assurance import ValidationBundle
+from assurance import StructureValidationBundle
 from domain import Node
 
 T = TypeVar("T", bound="Node")
 
+
 @dataclass
-class NodeValidationBundle(ValidationBundle[T], ABC, Generic[T]):
+class NodeValidationBundle(StructureValidationBundle[T], ABC, Generic[T]):
     """
     Role:
         -   Toolkit
@@ -38,5 +39,5 @@ class NodeValidationBundle(ValidationBundle[T], ABC, Generic[T]):
     Provides:
 
     Super Class:
-        ValidationBundle
+        StructureValidationBundle
     """

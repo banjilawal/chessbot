@@ -12,8 +12,9 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any, Dict
 
-from assurance import NodeValidationBundle, VectorValidator
+from assurance import NodeValidationBundle
 from domain import VectorNode, VectorNodeTypeUnions, VectorNullExceptionRoster
+from transit import VectorValidator
 
 
 @dataclass

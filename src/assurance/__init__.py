@@ -11,7 +11,7 @@ version: 0.0.2
 
 # Packages
 from .auditor import *
-from .checker import *
+from .validator import *
 from .bundle import *
 
 # Modules
