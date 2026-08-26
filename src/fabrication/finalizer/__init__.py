@@ -1,17 +1,17 @@
-# src/finalizer/__init__.py
+# src/fabrication/finalizer/__init__.py
 
 """
-Module: finalizer.__init__
+Module: fabrication.finalizer.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
 
-# =========== FINALIZER PACKAGE ===========#
+# =========== FABRICATION.FINALIZER PACKAGE ===========#
 
 # Packages
 from .builder import *
 
 # Modules
-from .finalizer import Finalizer
+from .finalizer import BuildFinalizer

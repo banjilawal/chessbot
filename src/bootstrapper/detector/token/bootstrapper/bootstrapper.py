@@ -21,7 +21,7 @@ from domain.model import Token
 from artifcat import ValidationResult
 from collection.stack import TokenStackService
 from util import LoggingLevelRouter
-from assurance.validator import TokenValidator, PrimingValidator
+from transit.dispatcher.validator import TokenValidationDispatcher, PrimingValidator
 
 
 class TokenCollisionBootstrapper:
@@ -154,7 +154,7 @@ class TokenCollisionBootstrapper:
     def _validate_target(
             cls,
             target: Token,
-            token_validator: TokenValidator,
+            token_validator: TokenValidationDispatcher,
     ) -> ValidationResult[TokenBlueprint]:
         method = f"{cls.__class__.__name__}._validate_target"
     

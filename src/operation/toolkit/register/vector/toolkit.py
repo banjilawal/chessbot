@@ -16,7 +16,7 @@ from carrier import VectorRegisterCarrier
 from err import VectorRegisterBlueprintNullException, VectorRegisterCarrierNullException, VectorRegisterNullException
 from domain.structure.register import VectorRegister
 from operation.toolkit.register.vector.toolkit import RegisterToolkit
-from assurance.validator import VectorValidator
+from transit.dispatcher.validator import VectorValidator
 
 
 class VectorRegisterToolkit(RegisterToolkit[VectorRegister]):

@@ -15,7 +15,7 @@ from domain.model import King, Pawn, Rank
 from artifcat.report import RankLevelApproval
 from artifcat import AnalysisResult
 from util import LoggingLevelRouter
-from assurance.validator import RankValidator
+from transit.dispatcher.validator import RankValidationDispatcher
 
 
 class PromotionRankAnalyzer(Analyzer):
@@ -46,7 +46,7 @@ class PromotionRankAnalyzer(Analyzer):
     def execute(
             cls,
             new_rank: Rank,
-            rank_validator: RankValidator | None = None,
+            rank_validator: RankValidationDispatcher | None = None,
     ) -> AnalysisResult[RankLevelApproval]:
         """
         Verify the pawn's new Rank is not Pawn or King..
@@ -71,7 +71,7 @@ class PromotionRankAnalyzer(Analyzer):
         
         # --- Supply any missing dependencies. ---#
         if rank_validator is None:
-            rank_validator = RankValidator()
+            rank_validator = RankValidationDispatcher()
             
         # Handle the case that, the candidate is flagged by the rank_validator.
         validation_result = rank_validator.execute(new_rank)

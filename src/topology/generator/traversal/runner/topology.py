@@ -18,7 +18,7 @@ from math import VectorSequenceGenerator
 
 from artifcat import ComputationResult, MethodResultType
 from util import LoggingLevelRouter
-from assurance.validator import PrimingValidator
+from transit.dispatcher.validator import PrimingValidator
 
 
 

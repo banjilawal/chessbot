@@ -18,7 +18,7 @@ from err import (
 )
 from domain.structure.register import SquareRegister
 from operation.toolkit.register.square.toolkit import RegisterToolkit
-from assurance.validator import SquareValidator
+from transit.dispatcher.validator import SquareValidationDispatcher
 
 
 class SquareRegisterToolkit(RegisterToolkit[SquareRegister]):
@@ -61,5 +61,5 @@ class SquareRegisterToolkit(RegisterToolkit[SquareRegister]):
         SquareRegisterBlueprintNullException()
     )
 
-    square_validator: SquareValidator = SquareValidator()
+    square_validator: SquareValidationDispatcher = SquareValidationDispatcher()
     

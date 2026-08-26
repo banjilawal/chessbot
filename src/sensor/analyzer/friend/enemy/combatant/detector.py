@@ -16,7 +16,7 @@ from artifcat.report import FriendshipStatus
 from artifcat import Result
 from operation.toolkit import TokenValidationBundle
 from util import LoggingLevelRouter
-from assurance.validator import TokenValidator
+from transit.dispatcher.validator import TokenValidationDispatcher
 
 
 class EnemyCombatantStatusDetector(Analyzer):
@@ -49,7 +49,7 @@ class EnemyCombatantStatusDetector(Analyzer):
             cls,
             combatant: CombatantToken,
             bundle: TokenValidationBundle | None = None,
-            token_validator: TokenValidator | None = None,
+            token_validator: TokenValidationDispatcher | None = None,
     ) -> Result[FriendshipStatus]:
         """
         Executes the deployment transaction.
@@ -75,7 +75,7 @@ class EnemyCombatantStatusDetector(Analyzer):
         
         # --- Supply any missing dependencies. ---#
         if token_validator is None:
-            token_validator = TokenValidator()
+            token_validator = TokenValidationDispatcher()
         
         validation_result = token_validator.execute(
                 candidate=combatant,

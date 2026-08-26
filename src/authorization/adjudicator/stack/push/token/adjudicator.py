@@ -19,7 +19,7 @@ from artifcat import MethodResultType, ValidationResult
 from collection.stack import TokenStackService
 from authorization.adjudicator import PushRequestAdjudicator
 from util import LoggingLevelRouter
-from assurance.validator import TokenValidator
+from transit.dispatcher.validator import TokenValidationDispatcher
 
 
 class TokenPushRequestAdjudicator(PushRequestAdjudicator):
@@ -41,13 +41,13 @@ class TokenPushRequestAdjudicator(PushRequestAdjudicator):
             
     Super Class:
     """
-    _item_validator: TokenValidator
+    _item_validator: TokenValidationDispatcher
     _priming_validator: PrimingValidator
     _priming_validator: PushRequestPriming_Validator
     
     def __init__(
             self,
-            item_validator: TokenValidator | None = TokenValidator(),
+            item_validator: TokenValidationDispatcher | None = TokenValidationDispatcher(),
             priming_validator: PrimingValidator | None = PrimingValidator(),
             priming_validator: PushRequestPriming_Validator | None = PushRequestPriming_Validator(),
     ):

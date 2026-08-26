@@ -15,7 +15,7 @@ from domain.metadata.blueprint import IdentityRegisterBlueprint
 from err import IdentityRegisterBlueprintNullException, IdentityRegisterNullException
 from  import IdentityRegister
 from operation.toolkit.register.identity.toolkit import RegisterToolkit
-from assurance.validator import NameValidator, NumberValidator
+from transit.dispatcher.validator import NameValidator, NumberValidator
 
 
 class IdentityRegisterToolkit(RegisterToolkit[IdentityRegister]):

@@ -21,7 +21,7 @@ from microservice import IdentityService
 from domain.model import HomeSquare, SquareContext
 from artifcat import Result
 from util import LoggingLevelRouter
-from assurance.validator import BoardValidator, TokenValidator
+from transit.dispatcher.validator import BoardValidationDispatcher, TokenValidationDispatcher
 
 
 class HomeDetectorBootstrapper(DetectorBootstrapper):
@@ -78,9 +78,9 @@ class HomeDetectorBootstrapper(DetectorBootstrapper):
         
         # --- Supply any missing dependencies. ---#
         if board_validator is None:
-            board_validator = BoardValidator()
+            board_validator = BoardValidationDispatcher()
         if token_validator is None:
-            token_validator = TokenValidator()
+            token_validator = TokenValidationDispatcher()
         if identity_service is None:
             identity_service = IdentityService()
         

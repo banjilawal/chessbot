@@ -18,7 +18,7 @@ from artifcat import ComputationResult, MethodResultType
 from operation.toolkit import MathToolkit
 from topology import Topology
 from util import LoggingLevelRouter
-from assurance.validator import PrimingValidator
+from transit.dispatcher.validator import PrimingValidator
 
 T = TypeVar("T", bound="OffsetRank")
 

@@ -12,7 +12,7 @@ from typing import Any, Type
 from err import NullException
 from artifcat import ValidationResult
 from util import LoggingLevelRouter
-from assurance.validator import PrimingValidator
+from transit.dispatcher.validator import PrimingValidator
 
 
 class RequestBootstrapper:

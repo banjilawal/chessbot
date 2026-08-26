@@ -16,7 +16,7 @@ from sensor.analyzer import RelationAnalyzer
 from util import LoggingLevelRouter
 from err import BoardTeamRelationAnalysisException
 from artifcat import AnalysisResult, MethodResultType
-from assurance.validator import BoardValidator, TeamValidator
+from transit.dispatcher.validator import BoardValidationDispatcher, TeamValidationDispatcher
 
 
 class BoardTeamRelationAnalyzer(RelationAnalyzer[Board, Team]):
@@ -48,8 +48,8 @@ class BoardTeamRelationAnalyzer(RelationAnalyzer[Board, Team]):
             cls,
             candidate_primary: Board,
             candidate_satellite: Team,
-            board_validator: BoardValidator | None = None,
-            team_validator: TeamValidator | None = None,
+            board_validator: BoardValidationDispatcher | None = None,
+            team_validator: TeamValidationDispatcher | None = None,
     ) -> AnalysisResult[RelationReport]:
         """
         Generate a report on the relationship between a board and team.
@@ -75,9 +75,9 @@ class BoardTeamRelationAnalyzer(RelationAnalyzer[Board, Team]):
         
         # --- Supply any missing dependencies. ---#
         if board_validator is None:
-            board_validator = BoardValidator()
+            board_validator = BoardValidationDispatcher()
         if team_validator is None:
-            team_validator = TeamValidator()
+            team_validator = TeamValidationDispatcher()
         
         # Handle the case that, the board is not certified as safe.
         board_validator_result = board_validator.execute(candidate_primary)

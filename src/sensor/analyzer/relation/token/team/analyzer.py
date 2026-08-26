@@ -17,7 +17,7 @@ from domain.model import Team, Token, TokenContext
 from artifcat.report import RelationReport
 from artifcat import AnalysisResult, MethodResultType
 from util import LoggingLevelRouter
-from assurance.validator import TeamValidator, TokenValidator
+from transit.dispatcher.validator import TeamValidationDispatcher, TokenValidationDispatcher
 
 
 class TeamTokenRelationAnalyzer(RelationAnalyzer[Team, Token]):
@@ -49,8 +49,8 @@ class TeamTokenRelationAnalyzer(RelationAnalyzer[Team, Token]):
             cls,
             candidate_primary: Team,
             candidate_satellite: Token,
-            team_validator: TeamValidator | None = None,
-            token_validator: TokenValidator | None = None,
+            team_validator: TeamValidationDispatcher | None = None,
+            token_validator: TokenValidationDispatcher | None = None,
     ) -> AnalysisResult[RelationReport]:
         """
         Generate a report on the relationship between a team and token.
@@ -76,9 +76,9 @@ class TeamTokenRelationAnalyzer(RelationAnalyzer[Team, Token]):
         
         # --- Supply any missing dependencies. ---#
         if team_validator is None:
-            team_validator = TeamValidator()
+            team_validator = TeamValidationDispatcher()
         if token_validator is None:
-            token_validator = TokenValidator()
+            token_validator = TokenValidationDispatcher()
         
         # Handle the case that, the team is not certified as safe.
         team_validation_result = team_validator.execute(candidate_primary)

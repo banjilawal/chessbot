@@ -13,7 +13,7 @@ from transit.dispatcher.builder import ContainerBuildDispatcher
 from collection import VectorSet
 from artifcat import BuildResult
 from util import LoggingLevelRouter
-from assurance.validator import VectorValidator
+from transit.dispatcher.validator import VectorValidator
 
 
 class VectorSetBuilder(ContainerBuildDispatcher[VectorSet]):

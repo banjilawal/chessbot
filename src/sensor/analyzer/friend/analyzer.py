@@ -17,7 +17,7 @@ from domain.model import CombatantToken, KingToken, Token
 from artifcat.report import FriendshipReport, FriendshipStatus
 from artifcat import AnalysisResult
 from util import LoggingLevelRouter
-from assurance.validator import TokenValidator
+from transit.dispatcher.validator import TokenValidationDispatcher
 
 
 class FriendshipAnalyzer(Analyzer):
@@ -54,7 +54,7 @@ class FriendshipAnalyzer(Analyzer):
             cls,
             hunter: Token,
             target: Token,
-            token_validator: TokenValidator | None = None,
+            token_validator: TokenValidationDispatcher | None = None,
             king_status_detector: EnemyKingStatusDetector | None = None,
             combatant_status_detector: EnemyCombatantStatusDetector | None = None,
     ) -> AnalysisResult[FriendshipReport]:
@@ -83,7 +83,7 @@ class FriendshipAnalyzer(Analyzer):
         
         # --- Supply any missing dependencies. ---#
         if token_validator is None:
-            token_validator = TokenValidator()
+            token_validator = TokenValidationDispatcher()
         if king_status_detector is None:
             king_status_detector = EnemyKingStatusDetector()
         if combatant_status_detector is None:
@@ -150,7 +150,7 @@ class FriendshipAnalyzer(Analyzer):
             cls,
             hunter: Token,
             king: KingToken,
-            token_validator: TokenValidator,
+            token_validator: TokenValidationDispatcher,
             king_status_detector: EnemyKingStatusDetector,
     ) -> AnalysisResult[FriendshipReport]:
         method = f"{cls.__name__}._process_enemy_king"
@@ -204,7 +204,7 @@ class FriendshipAnalyzer(Analyzer):
             cls,
             hunter: Token,
             combatant: CombatantToken,
-            token_validator: TokenValidator,
+            token_validator: TokenValidationDispatcher,
             combatant_status_detector: EnemyCombatantStatusDetector,
     ) -> AnalysisResult[FriendshipReport]:
         method = f"{cls.__name__}._process_enemy_combatant"

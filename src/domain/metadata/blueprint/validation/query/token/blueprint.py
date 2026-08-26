@@ -12,7 +12,7 @@ from dataclasses import dataclass
 
 from domain.model import Token, TokenQuery
 from collection.stack import TokenStackService
-from assurance.validator import TokenContextValidator
+from transit.dispatcher.validator import TokenContextValidator
 from domain.metadata.blueprint import QueryValidationBlueprint
 from err import (
     TokenStackContextNullException, TokenQueryNullException, TokenStackEmptyException, TokenStackNullException

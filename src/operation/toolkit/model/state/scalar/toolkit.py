@@ -13,7 +13,7 @@ from dataclasses import dataclass
 
 from domain.model import Scalar
 from operation.toolkit.model.state.scalar.toolkit import StateModelToolkit
-from assurance.validator import NumberValidator
+from transit.dispatcher.validator import NumberValidator
 
 
 @dataclass

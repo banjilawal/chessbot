@@ -18,7 +18,7 @@ from domain.model import PawnToken
 from artifcat.report import PromotionApprovalManagerReport, TokenReadinessReport
 from artifcat import AnalysisResult, MethodResultType
 from util import LoggingLevelRouter
-from assurance.validator import TokenValidator
+from transit.dispatcher.validator import TokenValidationDispatcher
 
 
 class PawnPromotionApprovalManager(Analyzer):
@@ -53,7 +53,7 @@ class PawnPromotionApprovalManager(Analyzer):
     def execute(
             cls,
             pawn: PawnToken,
-            token_validator: TokenValidator | None = None,
+            token_validator: TokenValidationDispatcher | None = None,
             token_freedom_analyzer: TokenReadinessAnalyzer | None = None,
     ) -> AnalysisResult[PromotionApprovalManagerReport]:
         """
@@ -89,7 +89,7 @@ class PawnPromotionApprovalManager(Analyzer):
         if token_freedom_analyzer is None:
             token_freedom_analyzer = TokenReadinessAnalyzer()
         if token_validator is None:
-            token_validator = TokenValidator()
+            token_validator = TokenValidationDispatcher()
             
         analysis_result = token_freedom_analyzer.execute(
             token=pawn,

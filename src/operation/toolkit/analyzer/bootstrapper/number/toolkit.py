@@ -10,7 +10,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 from operation.toolkit.analyzer.bootstrapper.number.toolkit import AnalyzerBootstrapperToolkit
-from assurance.validator import NumberValidator
+from transit.dispatcher.validator import NumberValidator
 
 @dataclass
 class NumberToolkit(AnalyzerBootstrapperToolkit[int]):

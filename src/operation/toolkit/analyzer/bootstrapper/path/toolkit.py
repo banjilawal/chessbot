@@ -13,7 +13,7 @@ from dataclasses import dataclass
 
 from err import PathNullException
 from sensor.analyzer import Path
-from assurance.validator import SquareValidator
+from transit.dispatcher.validator import SquareValidationDispatcher
 
 @dataclass
 class PathToolkit(AnalyzerToolkit):
@@ -36,7 +36,7 @@ class PathToolkit(AnalyzerToolkit):
     Super Class:
         Toolkit
     """
-    square_validator: SquareValidator = SquareValidator()
+    square_validator: SquareValidationDispatcher = SquareValidationDispatcher()
     null_exception: PathNullException = PathNullException()
     analyzer: Path = Path
 

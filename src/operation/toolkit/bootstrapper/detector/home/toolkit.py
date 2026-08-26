@@ -15,7 +15,7 @@ from bootstrapper import HomeDetectorBootstrapper
 from err import BoardValidatorException
 from microservice import IdentityService
 from operation.toolkit.bootstrapper.detector.home.toolkit import BootstrapperToolkit
-from assurance.validator import BoardValidator, TokenHomeContextValidator, TokenValidator
+from transit.dispatcher.validator import BoardValidationDispatcher, TokenHomeContextValidator, TokenValidationDispatcher
 
 
 @dataclass
@@ -40,7 +40,7 @@ class HomeDetectorBootstrapperToolkit(BootstrapperToolkit[HomeDetectorBootstrapp
     Super Class:
         DetectorBootstrapperToolkit
     """
-    board_validator: BoardValidator = BoardValidatorException()
-    token_validator: TokenValidator = TokenValidator()
+    board_validator: BoardValidationDispatcher = BoardValidatorException()
+    token_validator: TokenValidationDispatcher = TokenValidationDispatcher()
     identity_service: IdentityService = IdentityService()
     context_validator: TokenHomeContextValidator = TokenHomeContextValidator()

@@ -492,7 +492,7 @@ sequenceDiagram
 ```
 
 ### Builders versus Validators
-A `BuildPipeline` ensure objects are created correctly or not at all. An `Validator` ensures existing objects passes around
+A `BuildPipeline` ensure objects are created correctly or not at all. An `ValidationDispatcher` ensures existing objects passes around
 the system passed sanity checks.
 
       The build runs through all the checks on parameters and state to guarantee only a valid `Piece` is
@@ -524,7 +524,7 @@ sequenceDiagram
 ```
 
 ### See Also:
- - `Validator`: Used for validating existing objects
+ - `ValidationDispatcher`: Used for validating existing objects
  - `BuildResult[`T`]`: Return type containing the built `T` or exception information
 
 
@@ -593,7 +593,7 @@ Do not import the terminal package. This will be messy and difficult to keep tra
 
 ##### SEE ALSO
 `ValidationResult`, `TransactionResult`, `BuildResult`, `SearchResult`, `Transaction`, `Event`,
-`BuildPipeline`, `Validator`, `Search`
+`BuildPipeline`, `ValidationDispatcher`, `Search`
 
 ### Search
 #### Search Results

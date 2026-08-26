@@ -13,7 +13,7 @@ from dataclasses import dataclass
 
 from detection import SquareCollisionDetector
 from transit.dispatcher.builder import SquareBuilder
-from assurance.validator import SquareValidator
+from transit.dispatcher.validator import SquareValidationDispatcher
 
 
 @dataclass
@@ -38,6 +38,6 @@ class SquareOpsController:
     Parent:
     """
     builder: SquareBuilder
-    validator: SquareValidator
+    validator: SquareValidationDispatcher
     visitation_controller: VisitationController
     collision_detector: SquareCollisionDetector

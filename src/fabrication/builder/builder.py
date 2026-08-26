@@ -12,8 +12,10 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from domain.metadata.blueprint import Blueprint
+
 from artifcat import BuildResult
+from domain import BuildRequest
+from fabrication import BuilderToolkit
 from util import LoggingLevelRouter
 
 
@@ -28,17 +30,19 @@ class Builder(ABC, Generic[T]):
         1.  Create an object from the safe blueprint.
 
     Attributes:
+        toolit: BuildRequest[T]
 
     Provides:
         -   def execute(blueprint: Blueprint[T]) -> BuildResult[T]
 
     Super Class:
     """
+    _toolkit: BuilderToolkit
     
     def __init__(self):
         pass
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, blueprint: Blueprint[T],) -> BuildResult[T]:
+    def execute(self, request: BuildRequest[T],) -> BuildResult[T]:
         pass

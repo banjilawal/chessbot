@@ -15,7 +15,7 @@ from domain.model import KingToken
 from artifcat.report import FriendshipStatus
 from artifcat import Result
 from util import LoggingLevelRouter
-from assurance.validator import TokenValidator
+from transit.dispatcher.validator import TokenValidationDispatcher
 
 
 class EnemyKingStatusDetector(Analyzer):
@@ -48,7 +48,7 @@ class EnemyKingStatusDetector(Analyzer):
             cls,
             king: KingToken,
             bundle: TokenValidationBundle | None = None,
-            token_validator: TokenValidator | None = None,
+            token_validator: TokenValidationDispatcher | None = None,
     ) -> Result[FriendshipStatus]:
         """
         Executes the deployment transaction.
@@ -74,7 +74,7 @@ class EnemyKingStatusDetector(Analyzer):
         
         # --- Supply any missing dependencies. ---#
         if token_validator is None:
-            token_validator = TokenValidator()
+            token_validator = TokenValidationDispatcher()
         
         validation_result = token_validator.execute(
                 candidate=king,

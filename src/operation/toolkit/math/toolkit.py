@@ -14,7 +14,7 @@ from dataclasses import dataclass
 from operation import AddVector, EuclideanDistance, ScalarProduct, VectorTransform
 from operation.suite import CoordOperationSuite, ScalarOperationSuite, VectorOperationSuite
 from operation.toolkit.math.toolkit import Toolkit
-from assurance.validator import NumberValidator
+from transit.dispatcher.validator import NumberValidator
 
 
 @dataclass

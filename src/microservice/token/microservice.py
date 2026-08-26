@@ -15,7 +15,7 @@ from microservice import CoordService
 from domain.model import Coord, Token
 from artifcat import DeletionResult, InsertionResult
 from util import IdFactory, LoggingLevelRouter
-from assurance.validator import TokenValidator
+from transit.dispatcher.validator import TokenValidationDispatcher
 
 
 class TokenService(Microservice[Token]):
@@ -92,7 +92,7 @@ class TokenService(Microservice[Token]):
         return self._controller.builder
     
     @property
-    def validator(self) -> TokenValidator:
+    def validator(self) -> TokenValidationDispatcher:
         return self._controller.validator
     
     @LoggingLevelRouter.monitor

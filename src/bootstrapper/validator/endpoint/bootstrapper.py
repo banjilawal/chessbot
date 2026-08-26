@@ -13,7 +13,7 @@ from bootstrapper import ValidatorBootstrapper
 from domain.model import Path, Square, Token
 from artifcat import ValidationResult
 from util import LoggingLevelRouter
-from assurance.validator import TokenDestinationCertifier, TokenOriginCertifier
+from transit.dispatcher.validator import TokenDestinationCertifier, TokenOriginCertifier
 
 
 class EndpointCertifierBootstrapper(ValidatorBootstrapper):

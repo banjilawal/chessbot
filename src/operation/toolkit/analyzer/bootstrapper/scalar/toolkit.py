@@ -13,7 +13,7 @@ from dataclasses import dataclass
 
 from sensor.analyzer import Scalar
 from operation.toolkit.analyzer.bootstrapper.scalar.toolkit import AnalyzerBootstrapperToolkit
-from assurance.validator import NumberValidator
+from transit.dispatcher.validator import NumberValidator
 
 
 @dataclass

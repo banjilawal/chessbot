@@ -19,7 +19,7 @@ from sensor.detector import SquareCollider
 from err import SquareBlueprintNullException, SquareNullException
 from domain.model import Square
 from operation.toolkit.model.state.square.toolkit import StateModelToolkit
-from assurance.validator import BoardValidator, CoordValidator, TokenValidator
+from transit.dispatcher.validator import BoardValidationDispatcher, CoordValidationDispatcher, TokenValidationDispatcher
 
 
 @dataclass
@@ -59,9 +59,9 @@ class SquareToolkit(StateModelToolkit[Square]):
     null_exception: SquareNullException = SquareNullException()
     blueprint_null_exception: SquareBlueprintNullException = SquareBlueprintNullException()
     
-    token_validator: TokenValidator = TokenValidator()
-    board_validator: BoardValidator = BoardValidator()
-    coord_validator: CoordValidator = CoordValidator()
+    token_validator: TokenValidationDispatcher = TokenValidationDispatcher()
+    board_validator: BoardValidationDispatcher = BoardValidationDispatcher()
+    coord_validator: CoordValidationDispatcher = CoordValidationDispatcher()
     priming_validator: PrimingValidator = PrimingValidator()
     collision_detector: SquareCollider = SquareCollider()
 

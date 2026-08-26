@@ -16,7 +16,7 @@ from transit.dispatcher.builder import TokenBuilder
 from detection import TokenHomeDetector, TokenCollisionDetector
 from operation import TokenHomePlacer, TokenPositionController
 from operation.microservice.token import PawnPromoter
-from assurance.validator import TokenValidator
+from transit.dispatcher.validator import TokenValidationDispatcher
 
 
 @dataclass
@@ -43,7 +43,7 @@ class TokenController:
     Parent:
     """
     builder: TokenBuilder
-    validator: TokenValidator
+    validator: TokenValidationDispatcher
     promoter: PawnPromoter
     home_placer: TokenHomePlacer
     friendship_analyzer: FriendshipAnalyzer

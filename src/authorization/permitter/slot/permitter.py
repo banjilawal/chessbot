@@ -17,7 +17,7 @@ from authorization.permitter import OperationPermitter
 from artifcat.report import RankQuotaReport, RankSlotApprovalReport
 from domain.exchange.request import RankSlotRequest
 from util import LoggingLevelRouter
-from assurance.validator import RankValidator
+from transit.dispatcher.validator import RankValidationDispatcher
 
 
 class RankSlotPermitter(OperationPermitter):
@@ -40,13 +40,13 @@ class RankSlotPermitter(OperationPermitter):
 
     Super Class:
     """
-    _rank_validator: RankValidator
+    _rank_validator: RankValidationDispatcher
     _slot_analyzer: RankQuotaAnalyzer
     _priming_validator: PrimingValidator
     
     def __init__(
             self,
-            rank_validator: RankValidator | None = RankValidator(),
+            rank_validator: RankValidationDispatcher | None = RankValidationDispatcher(),
             slot_analyzer: RankQuotaAnalyzer | None = RankQuotaAnalyzer(),
             priming_validator: PrimingValidator | None = PrimingValidator(),
     ):

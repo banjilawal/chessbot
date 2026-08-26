@@ -15,9 +15,9 @@ from detection import TokenHomeDetector
 from err import TokenNullException
 from microservice import RankService
 from sensor.analyzer import Token
-from assurance.validator import (
-    BlueprintHomeSquareExtractor, BlueprintRankExtractor, CoordValidator, NumberValidator,
-    SquareValidator, TeamValidator
+from transit.dispatcher.validator import (
+    BlueprintHomeSquareExtractor, BlueprintRankExtractor, CoordValidationDispatcher, NumberValidator,
+    SquareValidationDispatcher, TeamValidationDispatcher
 )
 
 
@@ -51,9 +51,9 @@ class TokenToolkit(AnalyzerToolkit):
         Toolkit
     """
     home_square_detector: TokenHomeDetector = TokenHomeDetector()
-    square_validator: SquareValidator = SquareValidator()
-    coord_validator: CoordValidator = CoordValidator()
-    team_validator: TeamValidator = TeamValidator()
+    square_validator: SquareValidationDispatcher = SquareValidationDispatcher()
+    coord_validator: CoordValidationDispatcher = CoordValidationDispatcher()
+    team_validator: TeamValidationDispatcher = TeamValidationDispatcher()
     rank_service: RankService = RankService()
     number_validator: NumberValidator = NumberValidator()
     blueprint_rank_processor: BlueprintRankExtractor = BlueprintRankExtractor()

@@ -13,7 +13,7 @@ from err import ItineraryNullException
 from sensor.analyzer import Itinerary
 from operation.toolkit.analyzer.bootstrapper.itinerary.toolkit import AnalyzerBootstrapperToolkit
 from sensor.analyzer import SquareTokenRelationAnalyzer, TokenReadinessAnalyzer
-from assurance.validator import SquareValidator, TokenValidator, PrimingValidator
+from transit.dispatcher.validator import SquareValidationDispatcher, TokenValidationDispatcher, PrimingValidator
 
 
 class ItineraryToolkit(AnalyzerBootstrapperToolkit[Itinerary]):
@@ -41,8 +41,8 @@ class ItineraryToolkit(AnalyzerBootstrapperToolkit[Itinerary]):
          Toolkit
      """
     analyzer_type: Itinerary
-    token_validator: TokenValidator = TokenValidator()
-    square_validator: SquareValidator = SquareValidator()
+    token_validator: TokenValidationDispatcher = TokenValidationDispatcher()
+    square_validator: SquareValidationDispatcher = SquareValidationDispatcher()
     priming_validator: PrimingValidator = PrimingValidator()
     null_exception: ItineraryNullException = ItineraryNullException()
     token_freedom_analyzer: TokenReadinessAnalyzer = TokenReadinessAnalyzer()

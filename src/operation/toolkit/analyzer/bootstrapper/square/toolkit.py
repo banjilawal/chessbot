@@ -15,7 +15,7 @@ from detection import SquareCollisionDetector
 from microservice import FormationService, IdentityService
 from sensor.analyzer import Square
 from operation.toolkit.analyzer.bootstrapper.square.toolkit import AnalyzerBootstrapperToolkit
-from assurance.validator import BoardValidator, CoordValidator, TokenValidator, PrimingValidator
+from transit.dispatcher.validator import BoardValidationDispatcher, CoordValidationDispatcher, TokenValidationDispatcher, PrimingValidator
 
 
 @dataclass
@@ -48,8 +48,8 @@ class SquareToolkit(AnalyzerBootstrapperToolkit[Square]):
         Toolkit
     """
     DEPENDENCIES =[
-        BoardValidator,
-        CoordValidator,
+        BoardValidationDispatcher,
+        CoordValidationDispatcher,
         SquareCollisionDetector,
         PrimingValidator,
     ]
@@ -58,9 +58,9 @@ class SquareToolkit(AnalyzerBootstrapperToolkit[Square]):
         IdentityService,
         FormationService,
     ]
-    token_validator: TokenValidator = TokenValidator()
-    board_validator: BoardValidator = BoardValidator()
-    coord_validator: CoordValidator = CoordValidator()
+    token_validator: TokenValidationDispatcher = TokenValidationDispatcher()
+    board_validator: BoardValidationDispatcher = BoardValidationDispatcher()
+    coord_validator: CoordValidationDispatcher = CoordValidationDispatcher()
     identity_service: IdentityService = IdentityService()
     formation_service: FormationService = FormationService()
     priming_validator: PrimingValidator = PrimingValidator()

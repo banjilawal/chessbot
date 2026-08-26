@@ -12,7 +12,7 @@ from __future__ import annotations
 from bootstrapper import CombatantReadinessAnalyzer, KingReadinessAnalyzer, ReadinessAnalyzerBootstrapper
 from err import TokenValidatorException
 from operation.toolkit.analyzer.bootstrapper.readiness.toolkit import AnalyzerBootstrapperToolkit
-from assurance.validator import TokenValidator
+from transit.dispatcher.validator import TokenValidationDispatcher
 
 
 class ReadinessAnalyzerBootstrapperToolkit(
@@ -38,7 +38,7 @@ class ReadinessAnalyzerBootstrapperToolkit(
         AnalyzerBootstrapperToolkit
     """
 
-    token_validator: TokenValidator = TokenValidatorException()
+    token_validator: TokenValidationDispatcher = TokenValidatorException()
     king_readiness_analyzer: KingReadinessAnalyzer  = KingReadinessAnalyzer()
     combatant_readiness_analyzer: (
         CombatantReadinessAnalyzer

@@ -16,7 +16,7 @@ from err import (
 )
 from domain.model import Query
 from collection.stack import StackService
-from assurance.validator import StackSearchContextValidator, PrimingValidator
+from transit.dispatcher.validator import StackSearchContextValidator, PrimingValidator
 
 T = TypeVar("T")
 

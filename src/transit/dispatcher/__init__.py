@@ -13,6 +13,7 @@ version: 0.0.2
 from .authorization import *
 from .builder import *
 from .statement import *
+from .validator import *
 
 # Modules
 from .dispatcher import Dispatcher

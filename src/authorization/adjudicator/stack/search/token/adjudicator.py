@@ -19,7 +19,7 @@ from artifcat import MethodResultType, ValidationResult
 from collection.stack import TokenStackService
 from authorization.adjudicator import SearchRequestAdjudicator
 from util import LoggingLevelRouter
-from assurance.validator import TokenContextValidator
+from transit.dispatcher.validator import TokenContextValidator
 
 
 class TokenSearchRequestAdjudicator(SearchRequestAdjudicator):

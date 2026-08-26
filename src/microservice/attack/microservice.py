@@ -14,7 +14,7 @@ from abc import abstractmethod
 from event import AttackEvent
 from microservice import Microservice
 from util import IdFactory
-from assurance.validator import Validator
+from transit.dispatcher.validator import ValidationDispatcher
 
 
 class AttackEventService(Microservice[AttackEvent]):
@@ -63,7 +63,7 @@ class AttackEventService(Microservice[AttackEvent]):
     
     @property
     @abstractmethod
-    def validator(self) -> Validator[AttackEvent]:
+    def validator(self) -> ValidationDispatcher[AttackEvent]:
         pass
     
     # @property

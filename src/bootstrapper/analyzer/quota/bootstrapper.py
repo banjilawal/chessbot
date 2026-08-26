@@ -18,7 +18,7 @@ from artifcat.report import RankQuotaReport
 from artifcat import AnalysisResult, MethodResultType
 from collection.stack import TokenStackService
 from util import LoggingLevelRouter
-from assurance.validator import RankValidator
+from transit.dispatcher.validator import RankValidationDispatcher
 
 
 class QuotaAnalyzerBootstrapper(AnalyzerBootstrapper):
@@ -44,7 +44,7 @@ class QuotaAnalyzerBootstrapper(AnalyzerBootstrapper):
     Super:
     """
     _priming_validator: PrimingValidator | None = PrimingValidator()
-    _rank_validator: RankValidator | None = RankValidator()
+    _rank_validator: RankValidationDispatcher | None = RankValidationDispatcher()
  
     @LoggingLevelRouter.monitor
     def execute(self, rank: Rank, token_stack: TokenStackService) -> AnalysisResult[RankQuotaReport]:

@@ -17,7 +17,7 @@ from carrier import ScalarCarrier
 from err import ScalarBlueprintNullException, ScalarCarrierNullException, ScalarNullException
 from domain.model import Scalar
 from operation.toolkit.model.scalar.toolkit import ModelToolkit
-from assurance.validator import NumberValidator
+from transit.dispatcher.validator import NumberValidator
 
 
 @dataclass

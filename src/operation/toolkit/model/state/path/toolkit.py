@@ -15,7 +15,7 @@ from typing import Type
 from err import PathNullException
 from domain.model import Path
 from operation.toolkit.model.state.path.toolkit import StateModelToolkit
-from assurance.validator import SquareValidator
+from transit.dispatcher.validator import SquareValidationDispatcher
 
 @dataclass
 class PathToolkit(StateModelToolkit):
@@ -38,7 +38,7 @@ class PathToolkit(StateModelToolkit):
     Super Class:
        ModelToolkit
     """
-    square_validator: SquareValidator = SquareValidator()
+    square_validator: SquareValidationDispatcher = SquareValidationDispatcher()
     null_exception: PathNullException = PathNullException()
     model: Type[Path] = Path
 

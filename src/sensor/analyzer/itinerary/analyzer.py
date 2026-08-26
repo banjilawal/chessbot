@@ -12,7 +12,7 @@ from typing import cast
 
 
 from util import LoggingLevelRouter
-from assurance.validator import ItineraryValidator
+from transit.dispatcher.validator import ItineraryValidator
 from err import ItineraryAnalyzerException
 from artifcat import AnalysisResult, MethodResultType
 from domain.model import CombatantToken, Itinerary, KingToken

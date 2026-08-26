@@ -16,7 +16,7 @@ from domain.model import King, Pawn, Rank
 from artifcat import MethodResultType, ValidationResult
 from authorization.adjudicator.token import RequestAdjudicator
 from util import LoggingLevelRouter
-from assurance.validator import RankValidator
+from transit.dispatcher.validator import RankValidationDispatcher
 
 
 class PromotionLevelRequestAdjudicator(RequestAdjudicator):
@@ -36,11 +36,11 @@ class PromotionLevelRequestAdjudicator(RequestAdjudicator):
             
     Super Class:
     """
-    _validator: RankValidator
+    _validator: RankValidationDispatcher
     
     def __init__(
             self,
-            validator: RankValidator | None = RankValidator(),
+            validator: RankValidationDispatcher | None = RankValidationDispatcher(),
     ):
         """
         Args:

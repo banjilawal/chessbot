@@ -21,7 +21,7 @@ from domain.exchange.model.state.token import (
     InactiveTokenPoppingCoordException, MoveUndoLimitException, Token, TokenPopCoordException, TokenValidation,
     UnopenedTokenPoppingCoordException
 )
-from assurance.validator import TokenValidator
+from transit.dispatcher.validator import TokenValidationDispatcher
 
 
 class TokenPositionPopper:
@@ -50,7 +50,7 @@ class TokenPositionPopper:
     def execute(
             cls,
             token: Token,
-            token_validator: TokenValidator | None = None,
+            token_validator: TokenValidationDispatcher | None = None,
             readiness_analyzer: TokenReadinessAnalyzer | None = None,
     ) -> DeletionResult[Coord]:
         """

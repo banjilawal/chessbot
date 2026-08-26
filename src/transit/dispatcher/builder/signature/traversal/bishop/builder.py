@@ -16,7 +16,7 @@ from topology.pattern import TraversalTopologyGenerator, TraversalSignature
 from topology.recurrence import BishopRecurrenceRegistries
 from artifcat import ComputationResult
 from util import LoggingLevelRouter
-from assurance.validator import PrimingValidator
+from transit.dispatcher.validator import PrimingValidator
 
 
 class BishopPattern(TraversalSignature[Bishop]):

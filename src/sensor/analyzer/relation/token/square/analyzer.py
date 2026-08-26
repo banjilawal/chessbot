@@ -17,7 +17,7 @@ from domain.model import Square, Token
 from artifcat.report import RelationReport
 from artifcat import AnalysisResult, MethodResultType
 from util import LoggingLevelRouter
-from assurance.validator import SquareValidator, TokenValidator
+from transit.dispatcher.validator import SquareValidationDispatcher, TokenValidationDispatcher
 
 
 class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
@@ -49,8 +49,8 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
             cls,
             candidate_primary: Square,
             candidate_satellite: Token,
-            token_validator: TokenValidator | None = None,
-            square_validator: SquareValidator | None = None,
+            token_validator: TokenValidationDispatcher | None = None,
+            square_validator: SquareValidationDispatcher | None = None,
     ) -> AnalysisResult[RelationReport]:
         """
         Generate a report on the relationship between a square and token.
@@ -76,9 +76,9 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
         
         # --- Supply any missing dependencies. ---#
         if token_validator is None:
-            token_validator = TokenValidator()
+            token_validator = TokenValidationDispatcher()
         if square_validator is None:
-            square_validator = SquareValidator()
+            square_validator = SquareValidationDispatcher()
         
         # Handle the case that, the square is not certified as safe.
         square_validation_result = square_validator.execute(candidate_primary)

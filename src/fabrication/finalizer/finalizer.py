@@ -1,7 +1,7 @@
-# src/finalizer/finalizer.py
+# src/fabrication/finalizer/finalizer.py
 
 """
-Module: finalizer.finalizer
+Module: fabrication.finalizer.finalizer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,16 +9,21 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import abstractmethod
+from abc import ABC, abstractmethod
+from typing import Generic, TypeVar
 
+from artifcat import BuildResult
 from util import LoggingLevelRouter
 
 
-class Finalizer:
+T = TypeVar("T")
+
+
+class BuildFinalizer(ABC, Generic[T]):
     
-    @classmethod
+
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(cls, *args, **kwargs) -> Result:
+    def execute(self, item: T) -> BuildResult[T]:
         pass

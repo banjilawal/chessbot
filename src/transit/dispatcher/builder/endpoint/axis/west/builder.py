@@ -19,7 +19,7 @@ from domain.schema import AxisTerminus
 from space import WestTraversalPattern
 from operation.toolkit import MathToolkit
 from util import LoggingLevelRouter
-from assurance.validator import VectorValidator
+from transit.dispatcher.validator import VectorValidator
 
 
 class WestAxisEndpointBuilder(AxisEndpointBuilder[WestTraversalPattern]):

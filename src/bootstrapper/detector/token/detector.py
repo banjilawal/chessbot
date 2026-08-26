@@ -19,7 +19,7 @@ from artifcat.report import CollisionReport
 from artifcat import AnalysisResult
 from collection.stack import TokenStackService
 from util import LoggingLevelRouter
-from assurance.validator import PrimingValidator
+from transit.dispatcher.validator import PrimingValidator
 
 
 class TokenCollisionDetectorBootstrapper(Detector[Token]):

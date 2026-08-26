@@ -15,7 +15,7 @@ from microservice import IdentityService, Microservice
 from sensor.analyzer import Rank
 from operation.toolkit.analyzer.bootstrapper.rank.toolkit import AnalyzerBootstrapperToolkit
 from operation import Operator
-from assurance.validator import PrimingValidator
+from transit.dispatcher.validator import PrimingValidator
 
 
 class RankToolkit(AnalyzerBootstrapperToolkit[Rank]):

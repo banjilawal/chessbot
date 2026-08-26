@@ -20,7 +20,7 @@ from authorization.permitter import TokenManeuverPermitter
 from artifcat.report import PopApprovalReport, TokenReadinessReport
 from artifcat import AnalysisResult
 from util import LoggingLevelRouter
-from assurance.validator import TokenValidator
+from transit.dispatcher.validator import TokenValidationDispatcher
 
 
 class TokenUndoMovePermitter(TokenManeuverPermitter):
@@ -50,7 +50,7 @@ class TokenUndoMovePermitter(TokenManeuverPermitter):
     def run(
             cls,
             requestor: Token,
-            token_validator: TokenValidator | None = None,
+            token_validator: TokenValidationDispatcher | None = None,
             readiness_analyzer: TokenReadinessAnalyzer | None = None,
     ) -> AnalysisResult[PopApprovalReport]:
         """
@@ -78,7 +78,7 @@ class TokenUndoMovePermitter(TokenManeuverPermitter):
         
         # --- Supply missing dependencies. ---#
         if token_validator is None:
-            token_validator = TokenValidator()
+            token_validator = TokenValidationDispatcher()
         if readiness_analyzer is None:
             readiness_analyzer = TokenReadinessAnalyzer()
             
