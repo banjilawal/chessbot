@@ -16,7 +16,6 @@ from .path import *
 from .rank import *
 from .scalar import *
 from .searchable import *
-from .winner import *
 
 # Modules
 from .model import DataModel

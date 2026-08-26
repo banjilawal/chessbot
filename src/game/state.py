@@ -10,7 +10,7 @@ version: 0.0.2
 from enum import Enum, auto
 
 
-class GameState(Enum):
+class PlayState(Enum):
     """
     Role: Lifecycle State, Transition State,
 

@@ -1,7 +1,7 @@
-# src/domain/model/winner/model.py
+# src/game/winner/game.py
 
 """
-Module: domain.model.winner.model
+Module: game.winner.game
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,12 +9,14 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from domain import DataModel, Player, Team
+from abc import abstractmethod
+
+from domain import DataModel, Game, Player, Team
 
 
-class GameWinner(DataModel):
+class GameWinner:
+    _game: Game
     _champion: Player
-    _team: Team
     _loss: int
     _prize: int
     _total_score: int
@@ -57,3 +59,7 @@ class GameWinner(DataModel):
     @property
     def total_score(self) -> int:
         return self._total_score
+    
+    @property
+    def winning_team(self) -> Team:
+        return None
