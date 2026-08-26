@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from domain.model.collectable.state import Token
+from domain.model.searchable.state import Token
 from system import DeletionResult, LoggingLevelRouter
 from logic.square import (
     DepartingEmptySquareException, Square, SquareDepartureException, SquareValidator

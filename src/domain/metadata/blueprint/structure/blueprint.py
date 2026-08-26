@@ -12,9 +12,9 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Type, TypeVar, cast
 
-from domain import Blueprint, StructuralWrapper
+from domain import Blueprint, Structure
 
-T = TypeVar("T", bound="StructuralWrapper")
+T = TypeVar("T", bound="Structure")
 
 
 class StructureBlueprint(Blueprint[T], ABC, Generic[T]):

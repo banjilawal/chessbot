@@ -1,13 +1,13 @@
-# src/domain/structures/register/number/__init__.py
+# src/domain/structure/register/number/__init__.py
 
 """
-Module: domain.structures.register.number.__init__
+Module: domain.structure.register.number.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== DOMAIN.STRUCTURES.REGISTER.NUMBER PACKAGE ===========#
+# =========== DOMAIN.STRUCTURE.REGISTER.NUMBER PACKAGE ===========#
 
 # Packages
 

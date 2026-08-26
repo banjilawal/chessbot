@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 
-from domain.model.collectable.state.game import Game, GameService
+from domain.model.searchable.state.game import Game, GameService
 from logic.team import Team, TeamService
 from system import Toolkit, ToolkitResult, ExecutionRouteException, IdentityService, LoggingLevelRouter
 from logic.agent import (

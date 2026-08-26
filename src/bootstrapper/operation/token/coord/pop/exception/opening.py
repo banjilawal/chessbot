@@ -15,7 +15,7 @@ __all__ = [
     "UnopenedTokenPoppingCoordException",
 ]
 
-from domain.model.collectable.state import TokenDebugException
+from domain.model.searchable.state import TokenDebugException
 
 
 # ======================# UNOPENED__TOKEN_POPPING_COORD_EXCEPTION  #======================#

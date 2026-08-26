@@ -13,11 +13,11 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
 from assurance import SearchContextValidator, ValidationBundle
-from domain import StackSearchContext
+from domain import ModelSearchContext
 from artifcat import ValidationResult
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="StackSearchContext")
+T = TypeVar("T", bound="ModelSearchContext")
 
 
 class StackContextValidator(SearchContextValidator[T], ABC, Generic[T]):
@@ -49,7 +49,7 @@ class StackContextValidator(SearchContextValidator[T], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[StackSearchContext]:
+    def execute(self, candidate: Any) -> ValidationResult[ModelSearchContext]:
         """
         Certify a candidate is a StackSearchContext that is safe to use.
         Args:

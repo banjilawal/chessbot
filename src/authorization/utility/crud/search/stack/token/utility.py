@@ -14,12 +14,12 @@ from typing import Dict
 
 from assurance import StackSearchContextValidator, TokenContextValidator
 from authorization import StackSearchPermissionUtility
-from domain import TokenSearchContext
+from domain import TokenSearchSearchContext
 
 
 @dataclass
 class TokenStackSearchPermissionUtility(
-    StackSearchPermissionUtility[TokenSearchContext]
+    StackSearchPermissionUtility[TokenSearchSearchContext]
 ):
     """
     Role:

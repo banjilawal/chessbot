@@ -15,7 +15,7 @@ from domain.model import CoordService
 from math.span import CoordSpan, SpanGraphHandler, SpanServiceException, Spanner
 from domain.model import VectorService
 from geometry.square import SquareDatabase
-from domain.model.collectable.state import Token, TokenService
+from domain.model.searchable.state import Token, TokenService
 from system import ComputationResult, IdFactory, IdentityService, LoggingLevelRouter, Microservice
 
 class SpanMicroservice(Microservice[CoordSpan]):

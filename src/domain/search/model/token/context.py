@@ -1,7 +1,7 @@
-# src/domain/search/stack/token/context.py
+# src/domain/search/model/token/context.py
 
 """
-Module: domain.search.stack.token
+Module: domain.search.model.token
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -21,7 +21,7 @@ class TokenSearchContext(ModelSearchContext[Token]):
         - Option Selector
 
     Responsibilities:
-        1.  Supply the criteria a TokenStackSearcher uses to find a hit.
+        1.  Supply the criteria a TokenModelSearcher uses to find a hit.
 
     Attributes:
         id: Optional[int]
@@ -37,7 +37,7 @@ class TokenSearchContext(ModelSearchContext[Token]):
         -   to_dict() -> Dict[str, Any]
 
     Super Class:
-        StackSearchContext[
+        ModelSearchContext[
     """
     _id: Optional[int] | None = None
     _rank: Optional[Rank] | None = None

@@ -1,7 +1,7 @@
-# src/domain/search/stack/coord/context.py
+# src/domain/search/model/coord/context.py
 
 """
-Module: domain.search.stack.coord
+Module: domain.search.model.coord
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -20,7 +20,7 @@ class CoordSearchContext(ModelSearchContext[Coord]):
         - Option Selector
 
     Responsibilities:
-        1.  Supply the criteria a CoordStackSearcher uses to find a hit.
+        1.  Supply the criteria a CoordModelSearcher uses to find a hit.
 
     Attributes:
         row: Optional[int]
@@ -30,7 +30,7 @@ class CoordSearchContext(ModelSearchContext[Coord]):
         -   to_dict() -> Dict[str, Any]
 
     Super Class:
-        StackSearchContext
+        ModelSearchContext
     """
     _row: Optional[int]
     _column: Optional[int]

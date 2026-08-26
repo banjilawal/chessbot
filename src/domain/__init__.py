@@ -20,4 +20,4 @@ from .structure import *
 
 # Modules
 from .domain import DomainObject
-from .interface import Collectable
+from .interface import Searchable

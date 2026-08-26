@@ -13,12 +13,12 @@ from typing import Any, cast
 
 from artifcat import ValidationResult
 from assurance import StackSearchContextValidator, SquareContextValidator
-from domain import SquareSearchContext
+from domain import SquareSearchSearchContext
 from err import SquareContextValidatorException
 from util import LoggingLevelRouter
 
 
-class SquareContextValidator(StackSearchContextValidator[SquareSearchContext]):
+class SquareContextValidator(StackSearchContextValidator[SquareSearchSearchContext]):
     """
     Role
         -   Integrity, Consistency Maintenance
@@ -50,7 +50,7 @@ class SquareContextValidator(StackSearchContextValidator[SquareSearchContext]):
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[SquareSearchContext]:
+    def execute(self, candidate: Any) -> ValidationResult[SquareSearchSearchContext]:
         """
         Certify a candidate is a SquareContext that is safe to use.
 
@@ -81,7 +81,7 @@ class SquareContextValidator(StackSearchContextValidator[SquareSearchContext]):
                 )
             )
         # --- Otherwise, cast and forward the work product to the caller. ---#
-        context = cast(SquareSearchContext, validation.payload)
+        context = cast(SquareSearchSearchContext, validation.payload)
         return ValidationResult.success(context)
 
         

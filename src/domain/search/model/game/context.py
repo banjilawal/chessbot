@@ -1,7 +1,7 @@
-# src/domain/search/stack/game/context.py
+# src/domain/search/model/game/context.py
 
 """
-Module: domain.search.stack.game
+Module: domain.search.model.game
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -20,7 +20,7 @@ class GameSearchContext(ModelSearchContext[Game]):
         - Option Selector
 
     Responsibilities:
-        1.  Supply the criteria a GameStackSearcher uses to find a hit.
+        1.  Supply the criteria a GameModelSearcher uses to find a hit.
 
     Attributes:
         id: Optional[int]
@@ -32,7 +32,7 @@ class GameSearchContext(ModelSearchContext[Game]):
         -   to_dict() -> Dict[str, Any]
 
     Super Class:
-        StackSearchContext
+        ModelSearchContext
     """
     _id: Optional[int]
     _arena: Optional[Arena]

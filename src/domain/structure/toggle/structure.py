@@ -12,11 +12,11 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Any, Dict, Generic, TypeVar
 
-from domain import DomainObject, StructuralWrapper
+from domain import DomainObject, Structure
 
 T = TypeVar("T", bound="DomainObject")
 
-class Toggle(StructuralWrapper, Generic[T]):
+class Toggle(Structure, Generic[T]):
     _max_enabled_toggles: int
     
     def __init(self, max_enabled_toggles: int | None = 1):

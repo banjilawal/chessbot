@@ -14,11 +14,11 @@ from typing import Dict
 
 from assurance import StackSearchContextValidator, CoordContextValidator
 from authorization import StackSearchPermissionUtility
-from domain import CoordSearchContext
+from domain import CoordSearchSearchContext
 
 
 @dataclass
-class CoordStackSearchPermissionUtility(StackSearchPermissionUtility[CoordSearchContext]):
+class CoordStackSearchPermissionUtility(StackSearchPermissionUtility[CoordSearchSearchContext]):
     """
     Role:
         -   Utility

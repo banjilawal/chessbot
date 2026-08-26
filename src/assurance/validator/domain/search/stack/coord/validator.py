@@ -14,12 +14,12 @@ from typing import Any, Optional, cast
 import config.setting.board.dimension.config
 from artifcat import ValidationResult
 from assurance import StackContextValidator, CoordValidationBundle
-from domain import CoordSearchContext
+from domain import CoordSearchSearchContext
 from err import CoordContextCheckerException, ZeroCoordContextFlagsException
 from util import LoggingLevelRouter
 
 
-class CoordContextValidator(StackContextValidator[CoordSearchContext]):
+class CoordContextValidator(StackContextValidator[CoordSearchSearchContext]):
     """
     Role
         -   Integrity Assurance Worker
@@ -48,7 +48,7 @@ class CoordContextValidator(StackContextValidator[CoordSearchContext]):
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[CoordSearchContext]:
+    def execute(self, candidate: Any) -> ValidationResult[CoordSearchSearchContext]:
         """
         Certify a candidate is a CoordSearchContext that is safe to use.
 
@@ -87,7 +87,7 @@ class CoordContextValidator(StackContextValidator[CoordSearchContext]):
                 )
             )
         # --- Cast the candidate into SquareContext for routing attribute testing. ---#
-        context = cast(CoordSearchContext, candidate)
+        context = cast(CoordSearchSearchContext, candidate)
         
         # Handle the case that none of the filters are enabled.
         if context.has_no_active_context:

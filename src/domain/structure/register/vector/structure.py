@@ -1,7 +1,7 @@
-# src/domain/structures/register/vector/structure.py
+# src/domain/structure/register/vector/structure.py
 
 """
-Module: domain.structures.register.vector.structure
+Module: domain.structure.register.vector.structure
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

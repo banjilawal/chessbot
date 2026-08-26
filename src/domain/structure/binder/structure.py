@@ -12,14 +12,14 @@ from __future__ import annotations
 from abc import ABC
 from typing import Dict, Generic, List, Optional, TypeVar
 
-from domain import StructuralWrapper
+from domain import Structure
 from microservice import Microservice
 from domain.model import Schema
 
 P = TypeVar("P")
 S = TypeVar("S")
 
-class Binder(StructuralWrapper, ABC, Generic[P, S]):
+class Binder(Structure, ABC, Generic[P, S]):
     """
     Role:
         -   Model

@@ -1,7 +1,7 @@
-# src/domain/search/stack/team/context.py
+# src/domain/search/model/team/context.py
 
 """
-Module: domain.search.stack.team
+Module: domain.search.model.team
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -21,7 +21,7 @@ class TeamSearchContext(ModelSearchContext[Team]):
         - Option Selector
 
     Responsibilities:
-        1.  Supply the criteria a TeamStackSearcher uses to find a hit.
+        1.  Supply the criteria a TeamModelSearcher uses to find a hit.
 
     Attributes:
             id: Optional[int]
@@ -34,7 +34,7 @@ class TeamSearchContext(ModelSearchContext[Team]):
         -   to_dict() -> Dict[str, Any]
 
     Super Class:
-        StackSearchContext
+        ModelSearchContext
     """
     _board: Optional[Board] = None
     _owner: Optional[Player] = None

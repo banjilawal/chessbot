@@ -1,7 +1,7 @@
-# src/domain/structures/toggle/orientation/toggle.py
+# src/domain/structure/toggle/orientation/toggle.py
 
 """
-Module: domain.structures.toggle.orientation.toggle
+Module: domain.structure.toggle.orientation.toggle
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -18,8 +18,7 @@ from domain.schema import AxisOrientation, QuadrantOrientation
 class OrientationToggle(Toggle):
     """
     Role:
-        -   Selection
-        -   Routing mask
+        - Option Selector
         -   Data-Holder
 
     Responsibilities:

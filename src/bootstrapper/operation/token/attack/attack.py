@@ -17,7 +17,7 @@ from util import LoggingLevelRouter
 from logic.square import Square, SquareDatabase
 from system import RelationReport
 from domain.model import HostageService
-from domain.model.collectable.state import CombatantReadinessEnum, KingToken, Token, DeploymentState, TokenService
+from domain.model.searchable.state import CombatantReadinessEnum, KingToken, Token, DeploymentState, TokenService
 
 
 class Attack:

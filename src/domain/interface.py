@@ -12,14 +12,14 @@ from __future__ import annotations
 from abc import ABC
 
 
-class Collectable(ABC):
+class Searchable(ABC):
     """
     Role:
         - Interface
 
     Responsibility:
-        1.  Tags a DomainObject that can be in a collection.
-        2.  Collectable DomainObject is searchable.
+        1.  Tags an object that has a set of attributes that can identify a unique instance
+            in a collection.
 
     Attributes:
 

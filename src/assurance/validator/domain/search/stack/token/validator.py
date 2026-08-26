@@ -13,7 +13,7 @@ from typing import Any, Optional, cast
 
 from assurance import StackContextValidator, TokenValidationBundle
 from config import GameColor
-from domain import Persona, TokenSearchContext
+from domain import Persona, TokenSearchSearchContext
 from artifcat import ValidationResult
 from err import (
     ExcessTokenContextFlagsException, GameColorNullException, TokenContextCheckerException,
@@ -23,7 +23,7 @@ from err import (
 from util import LoggingLevelRouter
 
 
-class TokenContextValidator(StackContextValidator[TokenSearchContext]):
+class TokenContextValidator(StackContextValidator[TokenSearchSearchContext]):
     """
     Role
         -   Integrity Assurance Worker
@@ -52,7 +52,7 @@ class TokenContextValidator(StackContextValidator[TokenSearchContext]):
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[TokenSearchContext]:
+    def execute(self, candidate: Any) -> ValidationResult[TokenSearchSearchContext]:
         """
         Certify a candidate is a TokenSearchContext that is safe to use.
 
@@ -90,7 +90,7 @@ class TokenContextValidator(StackContextValidator[TokenSearchContext]):
                 )
             )
         # --- Cast the candidate into TokenContext for routing attribute testing ---#
-        context = cast(TokenSearchContext, priming.payload)
+        context = cast(TokenSearchSearchContext, priming.payload)
         
         # Handle the case that, no flags are enabled.
         if context.has_no_active_context:

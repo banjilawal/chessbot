@@ -10,12 +10,12 @@ version: 0.0.2
 # =========== DOMAIN.MODEL PACKAGE ===========#
 
 # Packages
-from .collectable import *
 from .dossier import *
 from .identity import *
 from .path import *
 from .rank import *
 from .scalar import *
+from .searchable import *
 from .winner import *
 
 # Modules

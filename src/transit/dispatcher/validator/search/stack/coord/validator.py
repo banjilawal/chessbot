@@ -12,12 +12,12 @@ from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import StackSearchContextValidator, CoordContextValidator
-from domain import CoordSearchContext
+from domain import CoordSearchSearchContext
 from err import CoordContextValidatorException
 from util import LoggingLevelRouter
 
 
-class CoordContextValidator(StackSearchContextValidator[CoordSearchContext]):
+class CoordContextValidator(StackSearchContextValidator[CoordSearchSearchContext]):
     """
     Role
         -   Integrity, Consistency Maintenance
@@ -49,7 +49,7 @@ class CoordContextValidator(StackSearchContextValidator[CoordSearchContext]):
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[CoordSearchContext]:
+    def execute(self, candidate: Any) -> ValidationResult[CoordSearchSearchContext]:
         """
         Certify a candidate is a CoordSearchContext that is safe to use.
 
@@ -80,7 +80,7 @@ class CoordContextValidator(StackSearchContextValidator[CoordSearchContext]):
                 )
             )
         # --- Otherwise, cast and forward the work product to the caller. ---#
-        context = cast(CoordSearchContext, validation.payload)
+        context = cast(CoordSearchSearchContext, validation.payload)
         return ValidationResult.success(context)
 
         

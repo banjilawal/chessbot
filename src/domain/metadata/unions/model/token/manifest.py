@@ -13,7 +13,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Type
 
-from domain import ModelTypeUnions, Token, TokenBlueprint, TokenCarrier, TokenSearchContext
+from domain import ModelTypeUnions, Token, TokenBlueprint, TokenCarrier, TokenSearchSearchContext
 
 
 @dataclass
@@ -39,4 +39,4 @@ class TokenTypeUnions(ModelTypeUnions[Token]):
     model: Type[Token] = Token
     carrier: Type[TokenCarrier] = TokenCarrier
     blueprint: Type[TokenBlueprint] = TokenBlueprint
-    search_context: Type[TokenSearchContext] = TokenSearchContext
+    search_context: Type[TokenSearchSearchContext] = TokenSearchSearchContext

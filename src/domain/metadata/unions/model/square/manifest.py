@@ -13,7 +13,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Type
 
-from domain import ModelTypeUnions, Square, SquareBlueprint, SquareCarrier, SquareSearchContext
+from domain import ModelTypeUnions, Square, SquareBlueprint, SquareCarrier, SquareSearchSearchContext
 
 
 @dataclass
@@ -39,4 +39,4 @@ class SquareTypeUnions(ModelTypeUnions[Square]):
     model: Type[Square] = Square
     carrier: Type[SquareCarrier] = SquareCarrier
     blueprint: Type[SquareBlueprint] = SquareBlueprint
-    search_context: Type[SquareSearchContext] = SquareSearchContext
+    search_context: Type[SquareSearchSearchContext] = SquareSearchSearchContext

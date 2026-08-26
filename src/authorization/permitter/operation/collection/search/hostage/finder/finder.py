@@ -16,7 +16,7 @@ from domain.model import (
     HostageSearchNullDatasetException, HostageSearchPayloadTypeException,
     HostageSearchRouteException
 )
-from domain.model.collectable.state import CombatantToken, Token
+from domain.model.searchable.state import CombatantToken, Token
 
 
 class HostageFinder(DataFinder[Hostage]):

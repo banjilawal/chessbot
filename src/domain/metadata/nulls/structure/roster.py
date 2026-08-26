@@ -13,9 +13,9 @@ from abc import ABC
 from dataclasses import dataclass
 from typing import Generic, Optional, TypeVar
 
-from domain import NullExceptionRoster, StructuralWrapper
+from domain import NullExceptionRoster, Structure
 
-T = TypeVar("T", bound="StructuralWrapper")
+T = TypeVar("T", bound="Structure")
 
 @dataclass
 class NodeNullRoster(NullExceptionRoster[T], ABC, Generic[T]):

@@ -1,7 +1,7 @@
-# src/domain/structures/register/structure.py
+# src/domain/structure/register/structure.py
 
 """
-Module: domain.structures.register.structure
+Module: domain.structure.register.structure
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,12 +12,12 @@ from __future__ import annotations
 from abc import ABC
 from typing import Dict, Generic, List, Optional, TypeVar
 
-from domain import DomainObject, StructuralWrapper
+from domain import DomainObject, Structure
 
 T = TypeVar("T", bound="DomainObject")
 
 
-class Register(StructuralWrapper, ABC, Generic[T]):
+class Register(Structure, ABC, Generic[T]):
     """
     Role:
         -   Addressing

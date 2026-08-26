@@ -13,7 +13,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Type
 
-from domain import ModelTypeUnions, Player, PlayerBlueprint, PlayerCarrier, PlayerSearchContext
+from domain import ModelTypeUnions, Player, PlayerBlueprint, PlayerCarrier, PlayerSearchSearchContext
 
 
 @dataclass
@@ -39,4 +39,4 @@ class PlayerTypeUnions(ModelTypeUnions[Player]):
     model: Type[Player] = Player
     carrier: Type[PlayerCarrier] = PlayerCarrier
     blueprint: Type[PlayerBlueprint] = PlayerBlueprint
-    search_context: Type[PlayerSearchContext] = PlayerSearchContext
+    search_context: Type[PlayerSearchSearchContext] = PlayerSearchSearchContext

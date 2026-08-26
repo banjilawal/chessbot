@@ -13,12 +13,12 @@ from typing import Any, cast
 
 from artifcat import ValidationResult
 from assurance import StackSearchContextValidator, TokenContextValidator
-from domain import TokenSearchContext
+from domain import TokenSearchSearchContext
 from err import TokenContextValidatorException
 from util import LoggingLevelRouter
 
 
-class TokenContextValidator(StackSearchContextValidator[TokenSearchContext]):
+class TokenContextValidator(StackSearchContextValidator[TokenSearchSearchContext]):
     """
     Role
         -   Integrity, Consistency Maintenance
@@ -50,7 +50,7 @@ class TokenContextValidator(StackSearchContextValidator[TokenSearchContext]):
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[TokenSearchContext]:
+    def execute(self, candidate: Any) -> ValidationResult[TokenSearchSearchContext]:
         """
         Certify a candidate is a TokenContext that is safe to use.
 
@@ -81,7 +81,7 @@ class TokenContextValidator(StackSearchContextValidator[TokenSearchContext]):
                 )
             )
         # --- Otherwise, cast and forward the work product to the caller. ---#
-        context = cast(TokenSearchContext, validation.payload)
+        context = cast(TokenSearchSearchContext, validation.payload)
         return ValidationResult.success(context)
 
         

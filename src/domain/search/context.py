@@ -13,16 +13,15 @@ from ast import Dict
 from typing import Any, Generic, Optional, TypeVar
 from abc import ABC, abstractmethod
 
-from domain import Collectable
+from domain import Searchable
 
-T = TypeVar("T", bound="Collectable")
+T = TypeVar("T", bound="Searchable")
 
 
 class SearchContext(ABC, Generic[T]):
     """
     Role:
-        -   Selection
-        -   Routing mask
+        - Option Selector
 
     Responsibilities:
         1.  Supply the criteria a Searcher uses to find a hit in a DomainObjectCollection.

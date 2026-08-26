@@ -3,7 +3,7 @@ from typing import List
 from logic.square import Square
 from system import id_emitter
 from logic.coord import Coord
-from domain.model.collectable.state import Discovery
+from domain.model.searchable.state import Discovery
 
 from logic.engine.scout.report import ScoutReport
 from logic.engine.analyze.scout_report_analysis import ScoutReportAnalysis

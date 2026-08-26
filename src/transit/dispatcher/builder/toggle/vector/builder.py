@@ -23,8 +23,7 @@ from util import LoggingLevelRouter
 class VectorToggleBuilder(ToggleBuildDispatcher[CartesianToggle]):
     """
     Role:
-        -   Selection
-        -   Routing mask
+        - Option Selector
         -   Data-Holder
 
     Responsibilities:

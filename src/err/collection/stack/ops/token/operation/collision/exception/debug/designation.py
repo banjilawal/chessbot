@@ -16,7 +16,7 @@ __all__ = [
     "TokenDesignationCollisionException",
 ]
 
-from domain.model.collectable.state import TokenDebugException
+from domain.model.searchable.state import TokenDebugException
 
 
 # ======================# TOKEN_DESIGNATION_COLLISION EXCEPTION #======================#

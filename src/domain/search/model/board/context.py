@@ -1,7 +1,7 @@
-# src/domain/search/stack/board/context.py
+# src/domain/search/model/board/context.py
 
 """
-Module: domain.search.stack.board
+Module: domain.search.model.board
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -20,7 +20,7 @@ class BoardSearchContext(ModelSearchContext[Board]):
         - Option Selector
 
     Responsibilities:
-        1.  Supply the criteria a BoardStackSearcher uses to find a hit.
+        1.  Supply the criteria a BoardModelSearcher uses to find a hit.
 
     Attributes:
         id: Optional[int]
@@ -31,7 +31,7 @@ class BoardSearchContext(ModelSearchContext[Board]):
         -   to_dict() -> Dict[str, Any]
 
     Super Class:
-        StackSearchContext
+        ModelSearchContext
     """
     _arena: Optional[Arena] = None
     _team: Optional[Team] = None

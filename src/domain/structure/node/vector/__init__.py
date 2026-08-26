@@ -1,13 +1,13 @@
-# src/domain/structures/node/vector/__init__.py
+# src/domain/structure/node/vector/__init__.py
 
 """
-Module: domain.structures.node.vector.__init__
+Module: domain.structure.node.vector.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== DOMAIN.STRUCTURES.NODE.VECTOR PACKAGE ===========#
+# =========== DOMAIN.STRUCTURE.NODE.VECTOR PACKAGE ===========#
 
 # Packages
 

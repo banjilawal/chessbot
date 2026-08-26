@@ -13,9 +13,9 @@ from abc import ABC
 from dataclasses import dataclass
 from typing import Generic, Optional, Type, TypeVar
 
-from domain import Blueprint, DomainObjectTypeUnions, EntityCarrier, SearchContext, StructuralWrapper
+from domain import Blueprint, DomainObjectTypeUnions, EntityCarrier, SearchContext, Structure
 
-T = TypeVar("T", bound="StructuralWrapper")
+T = TypeVar("T", bound="Structure")
 
 @dataclass
 class StructureTypeUnions(DomainObjectTypeUnions[T], ABC, Generic[T]):

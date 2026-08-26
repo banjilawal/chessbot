@@ -15,7 +15,7 @@ __all__ = [
     "TokenNotFoundException",
 ]
 
-from domain.model.collectable.state import TokenDebugException
+from domain.model.searchable.state import TokenDebugException
 
 # ======================# TOKEN_NOT_FOUND_EXCEPTION #======================#
 class TokenNotFoundException(TokenDebugException):

@@ -16,8 +16,8 @@ from shell import ArgumentCountException, ArgumentTypeException, NullArgumentsEx
 from shell.token import DeployTokenCommand, PromotePawnCommand, TokenCommand, ValidateTokenCommand
 from shell.token.service.build import BuildTokenCommand
 from system import IdentityService, LoggingLevelRouter, Router, ValidationResult
-from domain.model.collectable.state import TokenCommandTable, TokenService, TokenServiceMenuException
-from domain.model.collectable.state import TokenCommandNotFoundException
+from domain.model.searchable.state import TokenCommandTable, TokenService, TokenServiceMenuException
+from domain.model.searchable.state import TokenCommandNotFoundException
 
 
 class TokenServiceMenu(Router[TokenService]):

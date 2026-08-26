@@ -1,8 +1,8 @@
 from typing import List
 
 from logic.square import Square
-from domain.model.collectable.state import Discovery
-from domain.model.collectable.state import Piece
+from domain.model.searchable.state import Discovery
+from domain.model.searchable.state import Piece
 
 
 class ScoutReportAnalysis:

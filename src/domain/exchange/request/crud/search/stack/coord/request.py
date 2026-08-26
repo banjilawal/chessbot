@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from collection import CoordStackService
-from domain import StackSearchRequest, Coord, CoordSearchContext
+from domain import StackSearchRequest, Coord, CoordSearchSearchContext
 
 
 class CoordSearchRequest(StackSearchRequest[Coord]):
@@ -35,7 +35,7 @@ class CoordSearchRequest(StackSearchRequest[Coord]):
         StackSearchRequest[
      """
     
-    def __init__(self, id: int, context: CoordSearchContext, stack: CoordStackService):
+    def __init__(self, id: int, context: CoordSearchSearchContext, stack: CoordStackService):
         """
         Args:
             id: int
@@ -45,8 +45,8 @@ class CoordSearchRequest(StackSearchRequest[Coord]):
         super().__init__(id=id, context=context, stack=stack)
         
     @property
-    def context(self) -> CoordSearchContext:
-        return cast(CoordSearchContext, super().context)
+    def context(self) -> CoordSearchSearchContext:
+        return cast(CoordSearchSearchContext, super().context)
         
     @property
     def stack(self) -> CoordStackService:

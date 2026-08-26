@@ -1,7 +1,7 @@
-# src/domain/search/stack/context.py
+# src/domain/search/model/context.py
 
 """
-Module: domain.search.stack
+Module: domain.search.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,9 +12,9 @@ from __future__ import annotations
 from typing import Generic, TypeVar
 from abc import ABC
 
-from domain import CollectableModel, SearchContext
+from domain import SearchableModel, SearchContext
 
-T = TypeVar("T", bound="CollectableModel")
+T = TypeVar("T", bound="SearchableModel")
 
 
 class ModelSearchContext(SearchContext[T], ABC, Generic[T]):
@@ -23,7 +23,7 @@ class ModelSearchContext(SearchContext[T], ABC, Generic[T]):
         - Option Selector
 
     Responsibilities:
-        1.  Supply the criteria a StackSearcher uses to find a hit in a StackService.
+        1.  Supply the criteria a ModelSearcher uses to find a hit.
 
     Attributes:
         id: Optional[int]
@@ -31,9 +31,10 @@ class ModelSearchContext(SearchContext[T], ABC, Generic[T]):
         max_activated_filters: int
 
     Provides:
-        -   to_dict() -> Dict[str, Any]
+        -   def to_dict() -> Dict[str, Any]
 
     Super Class:
         SearchContext
     """
     pass
+    

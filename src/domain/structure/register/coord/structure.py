@@ -1,7 +1,7 @@
-# src/domain/structures/register/coord/structure.py
+# src/domain/structure/register/coord/structure.py
 
 """
-Module: domain.structures.register.coord.register
+Module: domain.structure.register.coord.register
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

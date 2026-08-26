@@ -1,7 +1,7 @@
-# src/domain/structures/toggle/vector/toggle.py
+# src/domain/structure/toggle/vector/toggle.py
 
 """
-Module: domain.structures.toggle.vector.toggle
+Module: domain.structure.toggle.vector.toggle
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -16,8 +16,7 @@ from domain import Cartesian, Toggle, Vector
 class CartesianToggle(Toggle[Cartesian]):
     """
     Role:
-        -   Selection
-        -   Routing mask
+        - Option Selector
         -   Data-Holder
 
     Responsibilities:

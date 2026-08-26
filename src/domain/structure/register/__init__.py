@@ -1,13 +1,13 @@
-# src/domain/structures/register/__init__.py
+# src/domain/structure/register/__init__.py
 
 """
-Module: domain.structures.register.__init__
+Module: domain.structure.register.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== DOMAIN.STRUCTURES.REGISTER PACKAGE ===========#
+# =========== DOMAIN.STRUCTURE.REGISTER PACKAGE ===========#
 
 # Packages
 from .toggle import *

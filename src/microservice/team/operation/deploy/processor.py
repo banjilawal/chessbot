@@ -13,7 +13,7 @@ from typing import List
 
 from system import DeletionResult, LoggingLevelRouter
 from logic.team import Team
-from domain.model.collectable.state import Token
+from domain.model.searchable.state import Token
 
 
 class TeamDeployer:

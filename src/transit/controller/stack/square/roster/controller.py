@@ -16,7 +16,7 @@ from logic.square import (
     SquareStackService, UnderstrengthRosterDeploymentException,
 )
 from logic.team import Team, TeamService
-from domain.model.collectable.state import Token, TokenContext, TokenNotFoundException
+from domain.model.searchable.state import Token, TokenContext, TokenNotFoundException
 from system import LoggingLevelRouter, SearchResult, UpdateResult
 
 class SquareStackRosterHandler:

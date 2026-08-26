@@ -14,11 +14,11 @@ from typing import Dict
 
 from assurance import StackSearchContextValidator, BoardContextValidator
 from authorization import StackSearchPermissionUtility
-from domain import BoardSearchContext
+from domain import BoardSearchSearchContext
 
 
 @dataclass
-class BoardStackSearchPermissionUtility(StackSearchPermissionUtility[BoardSearchContext]):
+class BoardStackSearchPermissionUtility(StackSearchPermissionUtility[BoardSearchSearchContext]):
     """
     Role:
         -   Utility

@@ -15,7 +15,7 @@ __all__ = [
     "InactiveTokenPoppingCoordException",
 ]
 
-from domain.model.collectable.state import TokenDebugException
+from domain.model.searchable.state import TokenDebugException
 
 
 # ======================# INACTIVE_TOKEN_UNDO_COORD_POP_EXCEPTION  #======================#

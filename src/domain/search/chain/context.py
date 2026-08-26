@@ -13,15 +13,15 @@ from typing import Generic, Optional, TypeVar
 from abc import ABC
 
 from domain import Node, SearchContext
+from domain import Structure
 
-T = TypeVar("T", bound="Node")
+T = TypeVar("T", bound="Structure")
 
 
 class ChainSearchContext(SearchContext, ABC, Generic[T]):
     """
     Role:
-        -   Selection
-        -   Routing mask
+        - Option Selector
         -   Data-Holder
 
     Responsibilities:

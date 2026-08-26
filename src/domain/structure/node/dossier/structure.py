@@ -1,7 +1,7 @@
-# src/domain/structures/node/dossier/structure.py
+# src/domain/structure/node/dossier/structure.py
 
 """
-Module: domain.structures.node.dossier.structure
+Module: domain.structure.node.dossier.structure
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -67,7 +67,7 @@ class DossierNode(Node[Dossier]):
             return False
         if isinstance(other, DossierNode):
             node = cast(DossierNode, other)
-            return self.payload == domain.structures.node.payload
+            return self.payload == domain.structure.node.payload
         return False
     
     

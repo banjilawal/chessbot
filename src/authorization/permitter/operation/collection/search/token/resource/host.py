@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from domain.model.collectable.state import TokenContextService, TokenQueryService, TokenSearchRouter
+from domain.model.searchable.state import TokenContextService, TokenQueryService, TokenSearchRouter
 
 
 class TokenSearchResourceHost:

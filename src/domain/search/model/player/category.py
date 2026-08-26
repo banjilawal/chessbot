@@ -1,7 +1,7 @@
-# src/domain/search/stack/player/category.py
+# src/domain/search/model/player/category.py
 
 """
-Module: domain.search.stack.player.category
+Module: domain.search.model.player.category
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

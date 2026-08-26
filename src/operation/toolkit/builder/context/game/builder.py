@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from logic.agent import PlayerAgent, AgentService
 from system import Toolkit, ToolkitResult, ExecutionRouteException, IdentityService, LoggingLevelRouter
-from domain.model.collectable.state.game import (
+from domain.model.searchable.state.game import (
     GameContext, GameContextToolkitException, ZeroGameContextFlagsException, ArenaGameContextFlagsException
 )
 

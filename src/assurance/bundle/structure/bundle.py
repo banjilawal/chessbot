@@ -15,10 +15,10 @@ from typing import Any, Dict, Generic, TypeVar
 
 from assurance import ValidationBundle
 from domain import  NullExceptionRoster, DomainObjectTypeUnions
-from domain import StructuralWrapper
+from domain import Structure
 
 
-T = TypeVar("T", bound="StructuralWrapper")
+T = TypeVar("T", bound="Structure")
 
 
 @dataclass

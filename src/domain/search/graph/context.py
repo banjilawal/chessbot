@@ -21,8 +21,7 @@ T = TypeVar("T", bound="GraphComponent")
 class GraphSearchContext(SearchContext, ABC, Generic[T]):
     """
     Role:
-        -   Selection
-        -   Routing mask
+        - Option Selector
         -   Data-Holder
 
     Responsibilities:

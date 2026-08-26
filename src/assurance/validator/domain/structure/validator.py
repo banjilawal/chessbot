@@ -14,11 +14,11 @@ from typing import Any, Generic, TypeVar, cast
 
 from assurance import DomainObjectValidator, StructureValidationBundle, ValidationBundle
 from artifcat import ValidationResult
-from domain import Blueprint, StructuralWrapper
+from domain import Blueprint, Structure
 from util import LoggingLevelRouter
 
 
-T = TypeVar("T", bound="StructuralWrapper")
+T = TypeVar("T", bound="Structure")
 
 
 class StructureValidator(DomainObjectValidator[T], ABC, Generic[T]):

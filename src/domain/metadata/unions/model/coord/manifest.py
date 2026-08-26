@@ -13,7 +13,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Type
 
-from domain import ModelTypeUnions, Coord, CoordBlueprint, CoordCarrier, CoordSearchContext
+from domain import ModelTypeUnions, Coord, CoordBlueprint, CoordCarrier, CoordSearchSearchContext
 
 
 @dataclass
@@ -39,4 +39,4 @@ class CoordTypeUnions(ModelTypeUnions[Coord]):
     model: Type[Coord] = Coord
     carrier: Type[CoordCarrier] = CoordCarrier
     blueprint: Type[CoordBlueprint] = CoordBlueprint
-    search_context: Type[CoordSearchContext] = CoordSearchContext
+    search_context: Type[CoordSearchSearchContext] = CoordSearchSearchContext

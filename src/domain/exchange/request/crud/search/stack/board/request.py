@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from collection import BoardStackService
-from domain import StackSearchRequest, Board, BoardSearchContext
+from domain import StackSearchRequest, Board, BoardSearchSearchContext
 
 
 class BoardSearchRequest(StackSearchRequest[Board]):
@@ -35,7 +35,7 @@ class BoardSearchRequest(StackSearchRequest[Board]):
         StackSearchRequest[
      """
     
-    def __init__(self, id: int, context: BoardSearchContext, stack: BoardStackService):
+    def __init__(self, id: int, context: BoardSearchSearchContext, stack: BoardStackService):
         """
         Args:
             id: int
@@ -45,8 +45,8 @@ class BoardSearchRequest(StackSearchRequest[Board]):
         super().__init__(id=id, context=context, stack=stack)
         
     @property
-    def context(self) -> BoardSearchContext:
-        return cast(BoardSearchContext, super().context)
+    def context(self) -> BoardSearchSearchContext:
+        return cast(BoardSearchSearchContext, super().context)
         
     @property
     def stack(self) -> BoardStackService:

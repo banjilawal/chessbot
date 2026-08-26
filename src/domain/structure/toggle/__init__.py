@@ -1,13 +1,13 @@
-# src/domain/structures/toggle/__init__.py
+# src/domain/structure/toggle/__init__.py
 
 """
-Module: domain.structures.toggle.__init__
+Module: domain.structure.toggle.__init__
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
 """
 
-# =========== DOMAIN.STRUCTURES.TOGGLE PACKAGE ===========#
+# =========== DOMAIN.STRUCTURE.TOGGLE PACKAGE ===========#
 
 # Packages
 from .cartesian import *

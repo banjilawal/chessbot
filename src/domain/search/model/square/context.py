@@ -1,7 +1,7 @@
-# src/domain/search/stack/square/context.py
+# src/domain/search/model/square/context.py
 
 """
-Module: domain.search.stack.square
+Module: domain.search.model.square
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -20,7 +20,7 @@ class SquareSearchContext(ModelSearchContext[Square]):
         - Option Selector
 
     Responsibilities:
-        1.  Supply the criteria a SquareStackSearcher uses to find a hit.
+        1.  Supply the criteria a SquareModelSearcher uses to find a hit.
 
     Attributes:
         id: Optional[int]
@@ -35,7 +35,7 @@ class SquareSearchContext(ModelSearchContext[Square]):
         -   to_dict() -> Dict[str, Any]
 
     Super Class:
-        StackSearchContext
+        ModelSearchContext
     """
     _board: Optional[Board]
     _coord: Optional[Coord]

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Dict, List
 
-from domain.model.collectable.state import PawnToken
+from domain.model.searchable.state import PawnToken
 from system import ComputationResult
 from domain.model import Coord, CoordService
 from domain.model import Vector, VectorService

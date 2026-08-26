@@ -14,11 +14,11 @@ from typing import Dict
 
 from assurance import StackSearchContextValidator, SquareContextValidator
 from authorization import StackSearchPermissionUtility
-from domain import SquareSearchContext
+from domain import SquareSearchSearchContext
 
 
 @dataclass
-class SquareStackSearchPermissionUtility(StackSearchPermissionUtility[SquareSearchContext]):
+class SquareStackSearchPermissionUtility(StackSearchPermissionUtility[SquareSearchSearchContext]):
     """
     Role:
         -   Utility

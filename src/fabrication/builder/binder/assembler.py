@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from domain.metadata.blueprint import BoardBinderBlueprint
 from system import BuildResult, Builder, LoggingLevelRouter
-from domain.model.collectable.state.team import (
+from domain.model.searchable.state.team import (
     BlackTeamHasWrongSchemaException, TeamBinder, TeamBinderBuilderException,
     TeamSchemaCollisionException, WhiteTeamHasWrongSchemaException
 )

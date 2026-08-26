@@ -12,12 +12,12 @@ from typing import Any, cast
 
 from artifcat import ValidationResult
 from assurance import StackSearchContextValidator, TeamContextValidator
-from domain import TeamSearchContext
+from domain import TeamSearchSearchContext
 from err import TeamContextValidatorException
 from util import LoggingLevelRouter
 
 
-class TeamContextValidator(StackSearchContextValidator[TeamSearchContext]):
+class TeamContextValidator(StackSearchContextValidator[TeamSearchSearchContext]):
     """
     Role
         -   Integrity, Consistency Maintenance
@@ -47,7 +47,7 @@ class TeamContextValidator(StackSearchContextValidator[TeamSearchContext]):
         return cast(TeamContextValidator, super().integrity_checker)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[TeamSearchContext]:
+    def execute(self, candidate: Any) -> ValidationResult[TeamSearchSearchContext]:
         """
         Certify a candidate is a TeamSearchContext that is safe to use.
 
@@ -78,6 +78,6 @@ class TeamContextValidator(StackSearchContextValidator[TeamSearchContext]):
                 )
             )
         # --- Otherwise, cast and forward the work product to the caller. ---#
-        context = cast(TeamSearchContext, validation.payload)
+        context = cast(TeamSearchSearchContext, validation.payload)
         return ValidationResult.success(context)
 

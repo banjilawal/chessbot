@@ -13,7 +13,7 @@ from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import StackContextValidator, TeamValidationBundle
-from domain import Archetype, TeamSearchContext
+from domain import Archetype, TeamSearchSearchContext
 from err import (
     ExcessTeamContextFlagsException, GameColorNullException, TeamContextCheckerException,
     TeamContextValidationRouteException, ZeroTeamContextFlagsException
@@ -21,7 +21,7 @@ from err import (
 from util import LoggingLevelRouter
 
 
-class TeamContextValidator(StackContextValidator[TeamSearchContext]):
+class TeamContextValidator(StackContextValidator[TeamSearchSearchContext]):
     """
     Role
         -   Integrity Assurance Worker
@@ -50,7 +50,7 @@ class TeamContextValidator(StackContextValidator[TeamSearchContext]):
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[TeamSearchContext]:
+    def execute(self, candidate: Any) -> ValidationResult[TeamSearchSearchContext]:
         """
         Certify a candidate is a TeamSearchContext that is safe to use.
 
@@ -88,7 +88,7 @@ class TeamContextValidator(StackContextValidator[TeamSearchContext]):
                 )
             )
         # --- Cast the candidate into TeamContext for routing attribute testing ---#
-        context = cast(TeamSearchContext, priming.payload)
+        context = cast(TeamSearchSearchContext, priming.payload)
         
         # Handle the case that, no flags are enabled.
         if context.has_no_active_context:

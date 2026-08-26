@@ -1,7 +1,7 @@
-# src/domain/structures/structure.py
+# src/domain/structure/structure.py
 
 """
-Module: domain.structures.structure
+Module: domain.structure.structure
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -11,16 +11,16 @@ from __future__ import annotations
 
 from abc import ABC
 
-from domain import Collectable
+from domain import Searchable
 
 
-class StructuralWrapper(Collectable, ABC):
+class Structure(Searchable, ABC):
     """
     Role:
-        -   Structural Wrapper
+        -   Structural
 
     Responsibility:
-        1.  Wraps DataModelObject giving it additional features.
+        1.  Provides structure and additional capabilities to a pure data object.
 
     Attributes:
 

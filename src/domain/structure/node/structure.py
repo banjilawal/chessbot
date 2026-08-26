@@ -1,7 +1,7 @@
-# src/domain/structures/node/structure.py
+# src/domain/structure/node/structure.py
 
 """
-Module: domain.structures.node.structure
+Module: domain.structure.node.structure
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,12 +12,12 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar
 
-from domain import DataModel, StructuralWrapper
+from domain import DataModel, Structure
 
 T = TypeVar("T", bound="DataModel")
 
 
-class Node(StructuralWrapper, ABC, Generic[T]):
+class Node(Structure, ABC, Generic[T]):
     """
     Role:
         - Structural Wrapper

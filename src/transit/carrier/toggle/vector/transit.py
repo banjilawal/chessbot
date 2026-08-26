@@ -18,8 +18,7 @@ from transit.structure.toggle import CartesianToggle
 class VectorToggleCarrier(ToggleCarrier[CartesianToggle]):
     """
     Role:
-        -   Selection
-        -   Routing mask
+        - Option Selector
         -   Data-Holder
 
     Responsibilities:

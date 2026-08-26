@@ -14,11 +14,11 @@ from typing import Dict
 
 from assurance import StackSearchContextValidator, TeamContextValidator
 from authorization import StackSearchPermissionUtility
-from domain import TeamSearchContext
+from domain import TeamSearchSearchContext
 
 
 @dataclass
-class TeamStackSearchPermissionUtility(StackSearchPermissionUtility[TeamSearchContext]):
+class TeamStackSearchPermissionUtility(StackSearchPermissionUtility[TeamSearchSearchContext]):
     """
     Role:
         -   Utility

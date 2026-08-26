@@ -13,7 +13,7 @@ from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import SquareValidationBundle, StackContextValidator
-from domain import SquareSearchContext
+from domain import SquareSearchSearchContext
 from err import (
     ExcessSquareContextFlagsException, SquareContextCheckerException, SquareContextValidationRouteException,
     ZeroSquareContextFlagsException
@@ -21,7 +21,7 @@ from err import (
 from util import LoggingLevelRouter
 
 
-class SquareContextValidator(StackContextValidator[SquareSearchContext]):
+class SquareContextValidator(StackContextValidator[SquareSearchSearchContext]):
     """
     Role
         -   Integrity Assurance Worker
@@ -50,7 +50,7 @@ class SquareContextValidator(StackContextValidator[SquareSearchContext]):
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[SquareSearchContext]:
+    def execute(self, candidate: Any) -> ValidationResult[SquareSearchSearchContext]:
         """
         Certify a candidate is a SquareSearchContext that is safe to use.
 
@@ -88,7 +88,7 @@ class SquareContextValidator(StackContextValidator[SquareSearchContext]):
                 )
             )
         # --- Cast the candidate into SquareContext for routing attribute testing ---#
-        context = cast(SquareSearchContext, priming.payload)
+        context = cast(SquareSearchSearchContext, priming.payload)
         
         # Handle the case that, no flags are enabled.
         if context.has_no_active_context:

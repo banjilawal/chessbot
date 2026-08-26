@@ -1,7 +1,7 @@
-# src/domain/search/stack/player/context.py
+# src/domain/search/model/player/context.py
 
 """
-Module: domain.search.stack.player
+Module: domain.search.model.player
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -20,7 +20,7 @@ class PlayerSearchContext(ModelSearchContext[Player]):
         - Option Selector
 
     Responsibilities:
-        1.  Supply the criteria a PlayerStackSearcher uses to find a hit.
+        1.  Supply the criteria a PlayerModelSearcher uses to find a hit.
 
     Attributes:
         id: Optional[id]
@@ -33,7 +33,7 @@ class PlayerSearchContext(ModelSearchContext[Player]):
         -   to_dict() -> Dict[str, Any]
 
     Super Class:
-        StackSearchContext
+        ModelSearchContext
     """
     _id: Optional[int]
     _name: Optional[str]

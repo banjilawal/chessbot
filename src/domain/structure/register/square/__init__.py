@@ -1,13 +1,13 @@
-# src/domain/structures/register/square/__init__.py
+# src/domain/structure/register/square/__init__.py
 
 """
-Module: domain.structures.register.square.__init__
+Module: domain.structure.register.square.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== DOMAIN.STRUCTURES.REGISTER.SQUARE PACKAGE ===========#
+# =========== DOMAIN.STRUCTURE.REGISTER.SQUARE PACKAGE ===========#
 
 # Packages
 
