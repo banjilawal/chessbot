@@ -11,14 +11,13 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain import Board, Coord, SquareState, StackSearchContext, Square, Token
+from domain import Board, Coord, SquareState, ModelSearchContext, Square, Token
 
 
-class SquareSearchContext(StackSearchContext[Square]):
+class SquareSearchContext(ModelSearchContext[Square]):
     """
     Role:
-        -   Selection
-        -   Routing mask
+        - Option Selector
 
     Responsibilities:
         1.  Supply the criteria a SquareStackSearcher uses to find a hit.

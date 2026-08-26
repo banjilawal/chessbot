@@ -12,16 +12,15 @@ from __future__ import annotations
 from typing import Generic, TypeVar
 from abc import ABC
 
-from domain import DataModel, SearchContext
+from domain import CollectableModel, SearchContext
 
-T = TypeVar("T", bound="DataModel")
+T = TypeVar("T", bound="CollectableModel")
 
 
-class StackSearchContext(SearchContext, ABC, Generic[T]):
+class ModelSearchContext(SearchContext[T], ABC, Generic[T]):
     """
     Role:
-        -   Selection
-        -   Routing mask
+        - Option Selector
 
     Responsibilities:
         1.  Supply the criteria a StackSearcher uses to find a hit in a StackService.

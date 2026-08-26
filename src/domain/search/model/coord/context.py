@@ -11,14 +11,13 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain import Coord, StackSearchContext
+from domain import Coord, ModelSearchContext
 
 
-class CoordSearchContext(StackSearchContext[Coord]):
+class CoordSearchContext(ModelSearchContext[Coord]):
     """
     Role:
-        -   Selection
-        -   Routing mask
+        - Option Selector
 
     Responsibilities:
         1.  Supply the criteria a CoordStackSearcher uses to find a hit.

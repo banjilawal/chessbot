@@ -11,14 +11,13 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain import Arena, Board, StackSearchContext, Team
+from domain import Arena, Board, ModelSearchContext, Team
 
 
-class BoardSearchContext(StackSearchContext[Board]):
+class BoardSearchContext(ModelSearchContext[Board]):
     """
     Role:
-        -   Selection
-        -   Routing mask
+        - Option Selector
 
     Responsibilities:
         1.  Supply the criteria a BoardStackSearcher uses to find a hit.

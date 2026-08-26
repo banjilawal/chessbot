@@ -12,14 +12,13 @@ from __future__ import annotations
 from typing import Any, Dict, Optional
 
 from config import GameColor
-from domain import Archetype, Board, Player, StackSearchContext, Team
+from domain import Archetype, Board, Player, ModelSearchContext, Team
 
 
-class TeamSearchContext(StackSearchContext[Team]):
+class TeamSearchContext(ModelSearchContext[Team]):
     """
     Role:
-        -   Selection
-        -   Routing mask
+        - Option Selector
 
     Responsibilities:
         1.  Supply the criteria a TeamStackSearcher uses to find a hit.

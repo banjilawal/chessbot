@@ -20,4 +20,4 @@ from .token import *
 from .square import *
 
 # Modules
-from  .context import StackSearchContext
+from  .context import ModelSearchContext

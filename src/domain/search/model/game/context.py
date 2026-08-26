@@ -11,14 +11,13 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain import Arena, Game, Player, GameWinner, StackSearchContext
+from domain import Arena, Game, Player, GameWinner, ModelSearchContext
 
 
-class GameSearchContext(StackSearchContext[Game]):
+class GameSearchContext(ModelSearchContext[Game]):
     """
     Role:
-        -   Selection
-        -   Routing mask
+        - Option Selector
 
     Responsibilities:
         1.  Supply the criteria a GameStackSearcher uses to find a hit.

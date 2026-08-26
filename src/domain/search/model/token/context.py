@@ -12,14 +12,13 @@ from __future__ import annotations
 from typing import Any, Dict, Optional
 
 from config import GameColor
-from domain import Coord, HomeSquare, Rank, StackSearchContext, Team, Token
+from domain import Coord, HomeSquare, Rank, ModelSearchContext, Team, Token
 
 
-class TokenSearchContext(StackSearchContext[Token]):
+class TokenSearchContext(ModelSearchContext[Token]):
     """
     Role:
-        -   Selection
-        -   Routing mask
+        - Option Selector
 
     Responsibilities:
         1.  Supply the criteria a TokenStackSearcher uses to find a hit.
