@@ -13,7 +13,7 @@ from abc import abstractmethod
 from typing import Generic, TypeVar, cast
 
 from domain.metadata.blueprint import AxisBlueprint
-from transit.dispatcher.builder import SpaceBuilder
+from transit.dispatcher.builder import SpaceBuildDispatcher
 from artifcat import BuildResult
 from operation.toolkit import AxisBuilderToolkit
 from util import LoggingLevelRouter
@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="Axis")
 
 
-class AxisBuilder(SpaceBuilder, Generic[T]):
+class AxisBuilder(SpaceBuildDispatcher, Generic[T]):
 
     
     def __init__(self, builder_toolkit: AxisBuilderToolkit[T]):

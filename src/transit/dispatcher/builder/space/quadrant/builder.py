@@ -13,7 +13,7 @@ from abc import abstractmethod
 from typing import Generic, TypeVar, cast
 
 from domain.metadata.blueprint import Blueprint
-from transit.dispatcher.builder import SpaceBuilder
+from transit.dispatcher.builder import SpaceBuildDispatcher
 from artifcat import BuildResult
 from operation.toolkit import QuadrantBuilderToolkit
 from util import LoggingLevelRouter
@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="QuadrantSpace")
 
 
-class QuadrantBuilder(SpaceBuilder, Generic[T]):
+class QuadrantBuilder(SpaceBuildDispatcher, Generic[T]):
 
     
     def __init__(self, builder_toolkit: QuadrantBuilderToolkit[T]):

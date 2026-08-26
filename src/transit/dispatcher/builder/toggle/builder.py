@@ -14,7 +14,7 @@ from typing import Generic, TypeVar, cast
 
 
 from domain.metadata.blueprint.structure.toggle import ToggleBlueprint
-from transit.dispatcher.builder import Builder
+from transit.dispatcher.builder import BuildDispatcher
 from artifcat import BuildResult
 from operation.toolkit import BuilderToolkit, ToggleBuilderToolkit
 from util import LoggingLevelRouter
@@ -22,7 +22,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="Toggle")
 
 
-class ToggleBuilder(Builder, Generic[T]):
+class ToggleBuildDispatcher(BuildDispatcher, Generic[T]):
     """
     Role
         -   Build Pipeline

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Generic, TypeVar, cast
 
-from fabrication.assembler import RegisterAssembler
+from fabrication.builder import RegisterBuilder
 from assurance.checker import RegisterCertifier
 from operation.toolkit.builder.register.toolkit import BuilderToolkit
 
@@ -37,7 +37,7 @@ class RegisterBuilderToolkit(BuilderToolkit, Generic[T]):
     
     def __init__(
             self,
-            assembler: [RegisterAssembler[T]],
+            assembler: [RegisterBuilder[T]],
             root_certifier: [RegisterCertifier[T]],
     ):
         """
@@ -49,8 +49,8 @@ class RegisterBuilderToolkit(BuilderToolkit, Generic[T]):
 
         
     @property
-    def assembler(self) -> [RegisterAssembler[T]]:
-        return cast([RegisterAssembler[T]], super()._assembler)
+    def assembler(self) -> [RegisterBuilder[T]]:
+        return cast([RegisterBuilder[T]], super()._assembler)
         
     @property
     def root_certifier(self) -> [RegisterCertifier[T]]:

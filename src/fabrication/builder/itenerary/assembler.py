@@ -1,0 +1,47 @@
+# src/fabrication/builder/itinerary/fabrication/builder.py
+
+"""
+Module: fabrication.builder.itinerary.builder
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from domain.metadata.blueprint import ItineraryBlueprint
+from artifcat import BuildResult
+from fabrication.builder import Builder
+from util import  LoggingLevelRouter
+from domain.model import Itinerary
+
+class ItineraryBuilder(Builder[Itinerary]):
+    NAME = "itinerary_builder"
+    
+    
+    @LoggingLevelRouter.monitor
+    def execute(self, blueprint: ItineraryBlueprint,) -> BuildResult[Itinerary]:
+        """
+        Assemble the appropriate Itinerary.
+
+        Args:
+            blueprint: ItineraryBlueprint
+        Returns:
+            BuildResult[Itinerary]
+        Raises:
+        """
+        method = f"{self.__class__.__name__}.execute"
+        return BuildResult.success(
+            Itinerary(
+                id=blueprint.id,
+                source=blueprint.source,
+                token=blueprint.token,
+                destination=blueprint.destination,
+            )
+        )
+    
+    
+    
+
+        
+        

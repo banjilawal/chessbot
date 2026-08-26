@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Generic, TypeVar, cast
 
-from fabrication.assembler import ModelAssembler
+from fabrication.builder import ModelBuilder
 from assurance.checker import ModelIntegrityChecker
 from operation.toolkit.builder.model.toolkit import BuilderToolkit
 
@@ -37,7 +37,7 @@ class ModelBuilderToolkit(BuilderToolkit, Generic[T]):
     
     def __init__(
             self,
-            assembler: [ModelAssembler[T]],
+            assembler: [ModelBuilder[T]],
             root_certifier: [ModelIntegrityChecker[T]],
     ):
         """
@@ -49,8 +49,8 @@ class ModelBuilderToolkit(BuilderToolkit, Generic[T]):
 
         
     @property
-    def assembler(self) -> [ModelAssembler[T]]:
-        return cast([ModelAssembler[T]], super()._assembler)
+    def assembler(self) -> [ModelBuilder[T]]:
+        return cast([ModelBuilder[T]], super()._assembler)
         
     @property
     def root_certifier(self) -> [ModelIntegrityChecker[T]]:

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from fabrication.assembler import SouthAxisAssembler
+from fabrication.builder import SouthAxisAssembler
 from assurance.checker import SouthAxisRootCertifier
 from space import SouthAxis
 from operation.toolkit.builder.space.axis.south.toolkit import AxisBuilderToolkit

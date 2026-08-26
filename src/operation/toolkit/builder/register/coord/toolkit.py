@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from fabrication.assembler import CoordRegisterAssembler
+from fabrication.builder import CoordRegisterAssembler
 from domain.structure.register import CoordRegister
 from assurance.checker import CoordRegisterRootCertifier
 from operation.toolkit.builder.register.coord.toolkit import RegisterBuilderToolkit

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Generic, TypeVar, cast
 
-from fabrication.assembler import AxisAssembler
+from fabrication.builder import AxisAssembler
 from assurance.checker import AxisRootCertifier
 from operation.toolkit.builder.space.axis.toolkit import SpaceBuilderToolkit
 

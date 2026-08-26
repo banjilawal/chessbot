@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from fabrication.assembler import VectorAssembler
+from fabrication.builder import VectorAssembler
 from domain.model import Vector
 from assurance.checker import VectorIntegrityChecker
 from operation.toolkit.builder.model.vector.toolkit import ModelBuilderToolkit

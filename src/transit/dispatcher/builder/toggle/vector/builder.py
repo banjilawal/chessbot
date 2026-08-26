@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from domain.metadata.blueprint import VectorToggleBlueprint
-from transit.dispatcher.builder import ToggleBuilder
+from transit.dispatcher.builder import ToggleBuildDispatcher
 from err import VectorToggleBuilderException
 from artifcat import BuildResult, MethodResultType
 from domain.structure.toggle import CartesianToggle
@@ -20,7 +20,7 @@ from operation.toolkit import VectorToggleBuilderToolkit
 from util import LoggingLevelRouter
 
 
-class VectorToggleBuilder(ToggleBuilder[CartesianToggle]):
+class VectorToggleBuilder(ToggleBuildDispatcher[CartesianToggle]):
     """
     Role:
         -   Selection

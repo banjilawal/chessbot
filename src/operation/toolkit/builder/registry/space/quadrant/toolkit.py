@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from fabrication.assembler import QuadrantReservoirAssembler
+from fabrication.builder import QuadrantReservoirAssembler
 from topology.registry import QuadrantReservoir
 from assurance.checker import QuadrantReservoirRootCertifier
 from operation.toolkit.builder.registry.space.quadrant.toolkit import SpaceReservoirBuilderToolkit

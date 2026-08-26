@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Generic, TypeVar, cast
 
-from fabrication.assembler import ToggleAssembler
+from fabrication.builder import ToggleBuilder
 from assurance.checker import ToggleCertifier
 from operation.toolkit.builder.toggle.toolkit import BuilderToolkit
 
@@ -37,7 +37,7 @@ class ToggleBuilderToolkit(BuilderToolkit, Generic[T]):
     
     def __init__(
             self,
-            assembler: [ToggleAssembler[T]],
+            assembler: [ToggleBuilder[T]],
             root_certifier: [ToggleCertifier[T]],
     ):
         """
@@ -49,8 +49,8 @@ class ToggleBuilderToolkit(BuilderToolkit, Generic[T]):
 
         
     @property
-    def assembler(self) -> [ToggleAssembler[T]]:
-        return cast([ToggleAssembler[T]], super()._assembler)
+    def assembler(self) -> [ToggleBuilder[T]]:
+        return cast([ToggleBuilder[T]], super()._assembler)
         
     @property
     def root_certifier(self) -> [ToggleCertifier[T]]:

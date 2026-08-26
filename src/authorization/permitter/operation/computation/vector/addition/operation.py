@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional
 
 
-from transit.dispatcher.builder import RegisterBuilder, VectorToggleRegisterBuilder
+from transit.dispatcher.builder import RegisterBuildDispatcher, VectorToggleRegisterBuilder
 from selector import VectorToggle
 
 from operation.utility import VectorToggleUtility
@@ -54,7 +54,7 @@ class AddVector(Computation[VectorToggle]):
         pass
     
     
-    _register_builder: Optional[RegisterBuilder]
+    _register_builder: Optional[RegisterBuildDispatcher]
     _vector_toggle_utility: Optional[VectorToggleUtility]
     
     def __init__(

@@ -12,13 +12,13 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-from transit.dispatcher.builder import Builder
+from transit.dispatcher.builder import BuildDispatcher
 from artifcat import BuildResult
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Container")
 
-class ContainerBuilder(Builder[ABC, Generic[T]]):
+class ContainerBuildDispatcher(BuildDispatcher[ABC, Generic[T]]):
     
 
     

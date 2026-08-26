@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from fabrication.assembler import PlayerAssembler
+from fabrication.builder import PlayerAssembler
 from domain.model import Player
 from assurance.checker import PlayerRootCertifier
 from operation.toolkit.builder.model.player.toolkit import ModelBuilderToolkit

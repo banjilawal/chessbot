@@ -13,4 +13,4 @@ version: 0.0.2
 from .vector import *
 
 # Modules
-from .builder import ToggleBuilder
+from .builder import ToggleBuildDispatcher

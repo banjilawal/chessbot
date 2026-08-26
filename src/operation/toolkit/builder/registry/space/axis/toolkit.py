@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from fabrication.assembler import AxisReservoirAssembler
+from fabrication.builder import AxisReservoirAssembler
 from topology.registry import AxisReservoir
 from assurance.checker import AxisReservoirRootCertifier
 from operation.toolkit.builder.registry.space.axis.toolkit import SpaceReservoirBuilderToolkit

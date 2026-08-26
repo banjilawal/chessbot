@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Generic, Optional, TypeVar, cast
 
-from transit.dispatcher.builder import Builder
+from transit.dispatcher.builder import BuildDispatcher
 from domain.model import Vector
 
 from artifcat import BuildResult
@@ -22,7 +22,7 @@ from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Space")
 
-class SpaceBuilder(Builder, Generic[T]):
+class SpaceBuildDispatcher(BuildDispatcher, Generic[T]):
     _math_toolkit: MathToolkit
     
     def __init__(

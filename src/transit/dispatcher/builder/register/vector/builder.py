@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing import cast
 
 from domain.metadata.blueprint import VectorRegisterBlueprint
-from transit.dispatcher.builder import RegisterBuilder
+from transit.dispatcher.builder import RegisterBuildDispatcher
 from err import VectorRegisterBuilderException
 from domain.structure.register import VectorRegister
 from artifcat import BuildResult, MethodResultType
 from util import LoggingLevelRouter
 
 
-class VectorRegisterBuilder(RegisterBuilder[VectorRegister]):
+class VectorRegisterBuilder(RegisterBuildDispatcher[VectorRegister]):
     """
     Role
         -   Build Pipeline

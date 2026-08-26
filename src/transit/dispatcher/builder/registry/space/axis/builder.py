@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from domain.metadata.blueprint import AxisReservoirBlueprint
-from transit.dispatcher.builder import SpaceReservoirBuilder
+from transit.dispatcher.builder import SpaceReservoirBuildDispatcher
 from err import AxisReservoirBuilderException
 from topology.registry import AxisReservoir
 from artifcat import BuildResult, MethodResultType
@@ -20,7 +20,7 @@ from operation.toolkit import AxisReservoirBuilderToolkit
 from util import LoggingLevelRouter
 
 
-class AxisReservoirBuilder(SpaceReservoirBuilder[AxisReservoir]):
+class AxisReservoirBuilder(SpaceReservoirBuildDispatcher[AxisReservoir]):
     """
     Role
         -   Build Pipeline

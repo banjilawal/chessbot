@@ -13,4 +13,4 @@ version: 0.0.2
 from .axis import *
 
 # Modules
-from .builder import SpaceReservoirBuilder
+from .builder import SpaceReservoirBuildDispatcher

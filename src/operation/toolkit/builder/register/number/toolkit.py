@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from fabrication.assembler import NumberRegisterAssembler
+from fabrication.builder import NumberRegisterAssembler
 from domain.structure.register import NumberRegister
 from assurance.checker import NumberRegisterRootCertifier
 from operation.toolkit.builder.register.number.toolkit import RegisterBuilderToolkit

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import List, TypeVar
 
-from transit.dispatcher.builder import ContainerBuilder
+from transit.dispatcher.builder import ContainerBuildDispatcher
 from collection import RegisterSet
 from domain.model import TargetVectorSet
 from domain.structure.register import VectorRegister
@@ -20,7 +20,7 @@ from util import IdFactory, LoggingLevelRouter
 
 T = TypeVar("T", bound="Register")
 
-class RegisterSetBuilder(ContainerBuilder[RegisterSet]):
+class RegisterSetBuilder(ContainerBuildDispatcher[RegisterSet]):
     
     _target_vector_set: TargetVectorSet
     # _validator: TargetSetValidator

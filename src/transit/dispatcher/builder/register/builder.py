@@ -13,7 +13,7 @@ from abc import abstractmethod
 from typing import Generic, TypeVar, cast
 
 from domain.metadata.blueprint import RegisterBlueprint
-from transit.dispatcher.builder import Builder
+from transit.dispatcher.builder import BuildDispatcher
 from artifcat import BuildResult
 from operation.toolkit import RegisterBuilderToolkit
 from util import LoggingLevelRouter
@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="Register")
 
 
-class RegisterBuilder(Builder, Generic[T]):
+class RegisterBuildDispatcher(BuildDispatcher, Generic[T]):
     """
     Role
         -   Build Pipeline

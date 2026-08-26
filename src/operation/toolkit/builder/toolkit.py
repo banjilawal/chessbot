@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Dict, Generic, TypeVar
 
-from fabrication.assembler import Assembler
+from fabrication.builder import Builder
 
 from assurance.checker import Certifier
 from operation.toolkit.builder.toolkit import Toolkit
@@ -36,10 +36,10 @@ class BuilderToolkit(Toolkit, Generic[T]):
         Toolkit
     """
     _entry: Dict[str, Any] = {}
-    _assembler: Assembler[T]
+    _assembler: Builder[T]
     _root_certifier: Certifier[T]
     
-    def __init__(self, assembler: Assembler[T], root_certifier: Certifier[T], ):
+    def __init__(self, assembler: Builder[T], root_certifier: Certifier[T], ):
         """
         Args:
             assembler: Assembler[T],
@@ -54,7 +54,7 @@ class BuilderToolkit(Toolkit, Generic[T]):
         self._root_certifier = root_certifier
         
     @property
-    def assembler(self) -> Assembler[T]:
+    def assembler(self) -> Builder[T]:
         return self._assembler
     
     @property

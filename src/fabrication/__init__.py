@@ -10,7 +10,7 @@ version: 0.0.2
 # =========== FABRICATION PACKAGE ===========#
 
 # Packages
-from .assembler import *
+from .builder import *
 from .factory import *
 from .finalizer import *
 

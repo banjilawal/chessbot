@@ -15,5 +15,5 @@ from .toggle import *
 from .vector import *
 
 # Modules
-from .builder import RegisterBuilder
+from .builder import RegisterBuildDispatcher
 

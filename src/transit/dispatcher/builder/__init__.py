@@ -23,4 +23,4 @@ from .space import *
 from .toggle import *
 
 # Modules
-from .builder import Builder
+from .dispatcher import BuildDispatcher

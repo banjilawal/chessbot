@@ -14,4 +14,4 @@ from .register import *
 from .vector import *
 
 # Modules
-from .builder import ContainerBuilder
+from .builder import ContainerBuildDispatcher

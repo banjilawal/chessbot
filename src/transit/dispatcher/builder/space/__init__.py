@@ -15,4 +15,4 @@ from .quadrant import *
 
 
 # Modules
-from .builder import SpaceBuilder
+from .builder import SpaceBuildDispatcher
