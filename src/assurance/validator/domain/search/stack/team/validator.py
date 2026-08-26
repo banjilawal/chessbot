@@ -91,7 +91,7 @@ class TeamContextValidator(StackContextValidator[TeamSearchContext]):
         context = cast(TeamSearchContext, priming.payload)
         
         # Handle the case that, no flags are enabled.
-        if context.no_active_filters:
+        if context.has_no_active_context:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TeamContextCheckerException(
@@ -108,7 +108,7 @@ class TeamContextValidator(StackContextValidator[TeamSearchContext]):
                 )
             )
         # Handle the case that too many context flags are enabled.
-        if context.excess_active_filters:
+        if context.has_excessive_active_contexts:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TeamContextCheckerException(

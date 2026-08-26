@@ -13,7 +13,7 @@ from ast import Dict
 from typing import Any, Generic, Optional, TypeVar
 from abc import ABC, abstractmethod
 
-from domain import Searchable
+from domain import Collectable
 
 T = TypeVar("T", bound="Collectable")
 
@@ -30,7 +30,7 @@ class SearchContext(ABC, Generic[T]):
     Attributes:
         id: Optional[int]
         name: Optional[str]
-        max_activated_filters: int
+        max_activated_contexts: int
         
     Provides:
         -   to_dict() -> Dict[str, Any]
@@ -39,24 +39,24 @@ class SearchContext(ABC, Generic[T]):
     """
     _id: Optional[int]
     _name: Optional[str]
-    _max_activated_filters: int
+    _max_activated_contexts: int
 
     def __init__(
             self,
             id: Optional[int] | None = None,
             name: Optional[str] | None = None,
-            max_activated_filters: Optional[int] | None = None,
+            max_activated_contexts: Optional[int] | None = None,
     ):
         """
         Args:
             id: Optional[int]
             name: Optional[str]
-            max_activated_filters: Optional[int]
+            max_activated_contexts: Optional[int]
         """
         super().__init__()
         self._id = id
         self._name = name
-        self._max_activated_filters = max_activated_filters or 1
+        self._max_activated_contexts = max_activated_contexts or 1
 
     @property
     def id(self) -> Optional[int]:
@@ -67,19 +67,19 @@ class SearchContext(ABC, Generic[T]):
         return self._name
     
     @property
-    def max_activated_filters(self) -> int:
-        return self._max_activated_filters
+    def max_activated_contexts(self) -> int:
+        return self._max_activated_contexts
     
     @property
-    def no_active_filters(self) -> bool:
-        return self.activated_filters == 0
+    def has_no_active_context(self) -> bool:
+        return self.active_context_count == 0
     
     @property
-    def excess_active_filters(self) -> bool:
-        return self.activated_filters > self._max_activated_filters
+    def has_excessive_active_contexts(self) -> bool:
+        return self.active_context_count > self._max_activated_contexts
     
     @property
-    def activated_filters(self) -> int:
+    def active_context_count(self) -> int:
         return len(self.to_dict)
 
     @property
