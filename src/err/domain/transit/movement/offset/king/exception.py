@@ -24,7 +24,7 @@ __all__ = [
 class KingOffsetPatternCarrierException(OffsetPatternCarrierException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a KingOffsetPatternCarrier experienced an error.

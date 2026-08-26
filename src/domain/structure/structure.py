@@ -17,7 +17,7 @@ from domain import Searchable
 class Structure(Searchable, ABC):
     """
     Role:
-        -   Structural
+        -  Structural
 
     Responsibility:
         1.  Provides structure and additional capabilities to a pure data object.

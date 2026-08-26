@@ -27,7 +27,7 @@ from err import QueryStackEmptyException
 class TokenQueryStackEmptyException(QueryStackEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required TokenQuery's target stack is empty.

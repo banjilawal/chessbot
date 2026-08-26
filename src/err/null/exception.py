@@ -24,7 +24,7 @@ __all__ = [
 class NullException(ChessException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required object is null.

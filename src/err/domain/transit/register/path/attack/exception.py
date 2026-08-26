@@ -24,7 +24,7 @@ __all__ = [
 class AttackPathRegisterCarrierException(PathException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a AttackPathRegisterCarrier encountered an error.

@@ -23,7 +23,7 @@ __all__ = [
 class ScalarSearchRouteException(SearchRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that one of Scalar search routes is missing.

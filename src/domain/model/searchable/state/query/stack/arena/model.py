@@ -17,9 +17,9 @@ from domain.model import StackQuery
 class ArenaQuery(StackQuery[Arena]):
     """
     Role:
-        -   Model
-        -   Search
-        -   Stateless Data-Holder
+        -  Model
+        -  Search
+        -  Stateless Data-Holder
 
     Responsibilities:
         1.  A list of arenas to search with context.

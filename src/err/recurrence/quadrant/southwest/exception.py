@@ -24,7 +24,7 @@ __all__ = [
 class SouthwestQuadrantRecurrenceException(QuadrantRecurrenceException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a SouthwestQuadrantRecurrence encountered an error.

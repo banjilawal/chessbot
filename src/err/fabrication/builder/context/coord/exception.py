@@ -26,7 +26,7 @@ from err import ContextBuilderException
 class CoordContextBuilderException(ContextBuilderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a CoordContext build failed.

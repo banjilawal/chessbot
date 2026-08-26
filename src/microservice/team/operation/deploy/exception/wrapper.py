@@ -22,9 +22,9 @@ from system import DeletionException
 class DeployTeamException(DeletionException):
     """
      Role:
-        -   Worker Method Identification
-        -   Exception Chain Layer 1,
-        -   Exception Messaging
+        -  Worker Method Identification
+        -  Exception Chain Layer 1,
+        -  Exception Messaging
 
     Responsibilities:
         1.  Indicate that, the team deployment exception was aborted by an error.

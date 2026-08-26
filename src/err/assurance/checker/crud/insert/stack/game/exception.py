@@ -24,7 +24,7 @@ __all__ = [
 class GameStackPushChecker(StackPushChecker):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a PushGameChecker failed.

@@ -22,7 +22,7 @@ from transit.dispatcher.validator import ModelValidationDispatcher
 class EdgeValidationDispatcher(ModelValidationDispatcher[Edge]):
     """
     Role
-        -   Integrity, Consistency Maintenance
+        -  Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a Edge instance is certified safe, reliable and consistent before use.
@@ -31,7 +31,7 @@ class EdgeValidationDispatcher(ModelValidationDispatcher[Edge]):
         integrity_checker: EdgeIntegrityChecker
 
     Provides:
-        -   execute(candidate: Any) -> ValidationResult
+        -  execute(candidate: Any) -> ValidationResult
 
     Super Class:
         ModelValidator

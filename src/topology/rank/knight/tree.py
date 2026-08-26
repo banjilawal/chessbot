@@ -16,7 +16,7 @@ from tree import Topology, VectorTree
 class KnightTopology(Topology[Knight]):
     """
     Role:
-        -   Data Holder
+        -  Data Holder
 
     Responsibilities:
         1.  Positions projected from a Knight's signature.

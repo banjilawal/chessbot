@@ -26,7 +26,7 @@ from err import BinderBuilderException
 class NodeBinderBuilderException(BinderBuilderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a NodeBinder build failed.

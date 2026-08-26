@@ -22,9 +22,9 @@ from system import DebugException
 class TokenQueryStackEmptyException(DebugException):
     """
     Role:
-        -   Error Variable Identifier
-        -   Exception Chain Layer 2,
-        -   Exception Messaging
+        -  Error Variable Identifier
+        -  Exception Chain Layer 2,
+        -  Exception Messaging
 
     Responsibilities:
         1.  Indicate that the TokenQuery validation failed because the schema is empty.

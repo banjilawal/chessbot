@@ -23,7 +23,7 @@ __all__ = [
 class CoordException(ToolkitException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Coord encountered an error.

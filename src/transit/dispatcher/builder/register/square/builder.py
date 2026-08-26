@@ -19,10 +19,10 @@ from util import LoggingLevelRouter
 class SquareRegisterBuilder(RegisterBuildDispatcher[SquareRegister]):
     """
     Role
-        -   Build Pipeline
-        -   Integrity Management
-        -   Consistency Assurance
-        -   Workflow Owner
+        -  Build Pipeline
+        -  Integrity Management
+        -  Consistency Assurance
+        -  Workflow Owner
 
    Responsibilities:
         1.  Ensure a new SquareRegister instance is born safe and reliable.
@@ -31,7 +31,7 @@ class SquareRegisterBuilder(RegisterBuildDispatcher[SquareRegister]):
             builder_toolkit: [RegisterBuilderToolkit[T]]
 
     Provides:
-        -   def execute(self, blueprint: RegisterBlueprint[T]) -> BuildResult[Register]
+        -  def execute(self, blueprint: RegisterBlueprint[T]) -> BuildResult[Register]
 
      Super Class:
          Builder

@@ -21,8 +21,8 @@ from util import LoggingLevelRouter
 class EastAxisEndpointBuilder:
     """
     Role:
-        -   Builder
-        -   Integrity Management
+        -  Builder
+        -  Integrity Management
 
     Responsibilities:
         1.  Create a VectoRegister for an Axis endpoints.
@@ -31,7 +31,7 @@ class EastAxisEndpointBuilder:
         origin: Vector
         
     Provides:
-        -   def execute() -> BuildResult[VectorRegister]
+        -  def execute() -> BuildResult[VectorRegister]
 
     Super Class:
     """

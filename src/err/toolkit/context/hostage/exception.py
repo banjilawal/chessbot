@@ -24,7 +24,7 @@ __all__ = [
 class HostageContextException(ContextException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a HostageContext encountered an error.

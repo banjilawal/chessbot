@@ -23,7 +23,7 @@ __all__ = [
 class KnightException(RankException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Knight encountered an error.

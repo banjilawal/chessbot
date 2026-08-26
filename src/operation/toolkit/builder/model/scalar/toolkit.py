@@ -20,7 +20,7 @@ from operation.toolkit.builder.model.scalar.toolkit import ModelBuilderToolkit
 class ScalarBuilderToolkit(ModelBuilderToolkit[Scalar]):
     """
     Role:
-        -   Dependency Management
+        -  Dependency Management
         
     Responsibilities:
         1.  Bundles ScalarBuilder dependencies.

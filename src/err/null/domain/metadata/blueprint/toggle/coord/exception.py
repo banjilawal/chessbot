@@ -24,7 +24,7 @@ __all__ = [
 class CoordToggleBlueprintNullException(ToggleBlueprintNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required CoordBlueprint is null.

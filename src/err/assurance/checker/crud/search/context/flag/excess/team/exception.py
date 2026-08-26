@@ -25,7 +25,7 @@ __all__ = [
 class ExcessTeamContextFlagsException(ExcessContextFlagsException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating too many TeamSearchContext flags were enabled.

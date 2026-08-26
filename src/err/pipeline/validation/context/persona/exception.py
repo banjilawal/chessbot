@@ -22,7 +22,7 @@ __all__ = [
 class PersonaContextValidationPipelineException(ContextValidationPipelineException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an error occurred in an PersonaContextValidationPipeline.

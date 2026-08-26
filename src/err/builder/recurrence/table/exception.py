@@ -24,7 +24,7 @@ __all__ = [
 class RecurrenceTableException(RecurrenceBuilderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a RecurrenceTable is null.

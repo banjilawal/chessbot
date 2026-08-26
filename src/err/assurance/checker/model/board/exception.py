@@ -24,7 +24,7 @@ __all__ = [
 class BoardIntegrityCheckerException(ModelIntegrityCheckerException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a BoardIntegrityChecker failed.

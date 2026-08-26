@@ -24,7 +24,7 @@ __all__ = [
 class TokenDeleterException(DeleterException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a TokenDeleter did not complete its task.

@@ -23,7 +23,7 @@ __all__ = [
 class ArenaPlayerBinderConsistencyAuditorException(BinderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a ArenaPlayerBinderConsistencyAuditor failed.

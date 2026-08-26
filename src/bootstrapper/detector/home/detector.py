@@ -36,7 +36,7 @@ class HomeDetectorBootstrapper(DetectorBootstrapper):
     Attributes:
     
     Provides:
-        -   execute(
+        -  execute(
                     token: Token,
                     token_validator: TokenFreedomAnalyzer,
             ) -> Result[HomeSquareClaimReport]
@@ -56,9 +56,9 @@ class HomeDetectorBootstrapper(DetectorBootstrapper):
         
         Action:
             1.  Send an exception chain in the Result if any of the conditions occur.
-                    -   The token is not safe.
-                    -   The search for the home square is not completed.
-                    -   The home square was not found.
+                    -  The token is not safe.
+                    -  The search for the home square is not completed.
+                    -  The home square was not found.
             2.  Otherwise, send the success result.
         Args:
             token: Optional[Token]

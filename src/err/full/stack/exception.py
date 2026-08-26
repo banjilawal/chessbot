@@ -24,7 +24,7 @@ __all__ = [
 class StackCapacityException(CapacityException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Stack is full.

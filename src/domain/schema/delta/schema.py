@@ -17,8 +17,8 @@ from domain.model import Vector
 class AxisDelta(Enum):
     """
     Role:
-        -   Configuration Table
-        -   Metadata Set
+        -  Configuration Table
+        -  Metadata Set
 
 
     Responsibilities:

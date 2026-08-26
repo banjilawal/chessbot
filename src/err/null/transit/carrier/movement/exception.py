@@ -24,7 +24,7 @@ __all__ = [
 class MovementPatternCarrierNullException(CarrierNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required MovementPatternCarrier is null.

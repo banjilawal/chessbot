@@ -19,7 +19,7 @@ T = TypeVar("T", bound="StatefulModel")
 class StateModelBlueprint(ModelBlueprint[[T]]):
     """
      Role:
-         -   Metadata
+         -  Metadata
 
      Responsibilities:
          1.  Provides values for instantiating a StateModel object.

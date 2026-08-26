@@ -26,7 +26,7 @@ from err import ContextTokenOperationException
 class TeamContextTokenOperationException(ContextTokenOperationException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a TeamContext tokenfailed.

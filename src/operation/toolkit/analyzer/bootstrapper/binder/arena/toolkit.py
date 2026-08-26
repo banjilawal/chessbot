@@ -17,7 +17,7 @@ from operation.toolkit.analyzer.bootstrapper.binder.arena.toolkit import Analyze
 class ArenaPlayerBinderToolkit(AnalyzerBootstrapperToolkit[ArenaBinder]):
     """
     Role:
-        -   Container
+        -  Container
 
     Responsibilities:
         1.  Collection of workers and services that are required for ArenaPlayerBinder tasks.

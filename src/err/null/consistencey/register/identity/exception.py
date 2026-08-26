@@ -24,7 +24,7 @@ __all__ = [
 class VectorIdentityRegisterConsistencyCheckerNullException(RegisterException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required VectorIdentityRegisterConsistencyChecker is null.

@@ -24,7 +24,7 @@ __all__ = [
 class AttackPathConsistencyCheckerNullException(PathException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required AttackPathConsistencyChecker is null.

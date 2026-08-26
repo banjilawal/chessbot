@@ -23,7 +23,7 @@ __all__ = [
 class SchemaSearchRouteException(SearchRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that one of Schema search routes is missing.

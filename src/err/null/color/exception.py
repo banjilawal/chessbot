@@ -23,7 +23,7 @@ __all__ = [
 class GameColorNullException(NullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required GameColor is null.

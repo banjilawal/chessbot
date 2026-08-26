@@ -23,7 +23,7 @@ __all__ = [
 class PawnTokenConsistencyCheckerNullException(TokenException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required PawnTokenConsistencyChecker is null.

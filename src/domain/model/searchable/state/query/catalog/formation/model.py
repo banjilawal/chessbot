@@ -17,9 +17,9 @@ from domain.model import Formation, FormationContext
 class FormationQuery(CatalogQuery[Formation]):
     """
     Role:
-        -   Model
-        -   Search
-        -   Stateless Data-Holder
+        -  Model
+        -  Search
+        -  Stateless Data-Holder
 
     Responsibilities:
         1.  A list of formations to search with context.

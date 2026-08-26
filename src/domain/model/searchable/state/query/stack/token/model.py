@@ -18,9 +18,9 @@ from collection.stack import TokenStackService
 class TokenQuery(StackQuery[Token]):
     """
     Role:
-        -   Model
-        -   Search
-        -   Stateless Data-Holder
+        -  Model
+        -  Search
+        -  Stateless Data-Holder
 
     Responsibilities:
         1.  A list of tokens to search with context.

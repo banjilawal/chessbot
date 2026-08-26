@@ -23,7 +23,7 @@ __all__ = [
 class StringException(ControllerException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a String is violating restrictions.

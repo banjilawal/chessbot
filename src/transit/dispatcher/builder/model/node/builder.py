@@ -23,10 +23,10 @@ from util import LoggingLevelRouter
 class NodeBuilder(ModelBuilder[Node]):
     """
     Role
-        -   Build Pipeline
-        -   Integrity Management
-        -   Consistency Assurance
-        -   Workflow Owner
+        -  Build Pipeline
+        -  Integrity Management
+        -  Consistency Assurance
+        -  Workflow Owner
 
    Responsibilities:
         1.  Ensure a new Node instance is born safe and reliable.
@@ -35,7 +35,7 @@ class NodeBuilder(ModelBuilder[Node]):
             builder_toolkit: Optional[NodeBuilderToolkit]
 
     Provides:
-        -   def execute(self, blueprint: NodeBlueprint) -> BuildResult[Node]
+        -  def execute(self, blueprint: NodeBlueprint) -> BuildResult[Node]
 
      Super Class:
          ModelBuilder
@@ -63,8 +63,8 @@ class NodeBuilder(ModelBuilder[Node]):
 
         Action:
             1.  Send an exception chain in the BuildResult if either
-                    -   The NodeBlueprint object is flagged unsafe.
-                    -   The assembler does not return a product.
+                    -  The NodeBlueprint object is flagged unsafe.
+                    -  The assembler does not return a product.
             2.  Otherwise, cast the assembler product as a Node then, send in the success result,
         Args:
             blueprint: NodeBlueprint

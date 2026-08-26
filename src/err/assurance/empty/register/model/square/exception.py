@@ -24,7 +24,7 @@ __all__ = [
 class SquareRegisterEmptyException(ModelRegisterEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required SquareRegister is empty.

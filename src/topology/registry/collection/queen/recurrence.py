@@ -18,8 +18,8 @@ from topology.registry.collection import RecurrenceRegistryCollection
 class QueenRecurrenceRegistries(RecurrenceRegistryCollection[Queen]):
     """
     Role:
-        -   Data Holder
-        -   Iterator
+        -  Data Holder
+        -  Iterator
 
     Responsibilities:
         1.  Stores collections of recurrence registries VectorTransformers iterate over to derives

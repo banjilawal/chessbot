@@ -23,9 +23,9 @@ T = TypeVar("T", bound="Register")
 class RegisterValidator(Validator, Generic[T]):
     """
     Role
-        -   Validator
-        -   Integrity Assurance
-        -   Consistency Assurance
+        -  Validator
+        -  Integrity Assurance
+        -  Consistency Assurance
 
     Responsibilities:
         1.  Runs integrity checks on an object or its blueprint before they are used.b
@@ -35,7 +35,7 @@ class RegisterValidator(Validator, Generic[T]):
         bundle: RegisterToolkit
 
     Provides:
-        -   def execute(self, candidate: Any,) -> ValidationResult[T]
+        -  def execute(self, candidate: Any,) -> ValidationResult[T]
 
     Super Class:
         RootChecker

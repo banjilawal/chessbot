@@ -24,7 +24,7 @@ __all__ = [
 class SquareRegisterException(RegisterException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a SquareRegister encountered an error.

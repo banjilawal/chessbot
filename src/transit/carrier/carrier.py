@@ -21,7 +21,7 @@ T = TypeVar("T")
 class EntityCarrier(ABC, Generic[T]):
     """
     Role:
-        -   Boundary Carrier
+        -  Boundary Carrier
 
     Responsibilities:
         1.  Transport either a hydrated Object or its Blueprint across validation and other
@@ -38,7 +38,7 @@ class EntityCarrier(ABC, Generic[T]):
         size: int
 
     Provides:
-        -   extract_blueprint() -> Optional[Blueprint[T]]
+        -  extract_blueprint() -> Optional[Blueprint[T]]
 
     Super Class:
     """

@@ -22,7 +22,7 @@ __all__ = [
 class QueryFullException(FullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required QueryFull failed.

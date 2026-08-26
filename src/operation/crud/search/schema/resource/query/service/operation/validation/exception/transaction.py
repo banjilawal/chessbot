@@ -22,9 +22,9 @@ from system import ValidatorException
 class SchemaQueryValidatorException(ValidatorException):
     """
     Role:
-        -   Worker Method Identification
-        -   Exception Chain Layer 1,
-        -   Exception Messaging
+        -  Worker Method Identification
+        -  Exception Chain Layer 1,
+        -  Exception Messaging
 
     Responsibilities:
         1.  Indicate that one of the SchemaQuery's params failed a safety test.

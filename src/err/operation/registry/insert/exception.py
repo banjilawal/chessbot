@@ -25,7 +25,7 @@ from artifcat import MethodResultType
 class NewRegistrationException(RegistryOperatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating adding a new entry into a registry failed.

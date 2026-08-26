@@ -24,7 +24,7 @@ __all__ = [
 class TokenHomeSquareContextException(ContextException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a TokenHomeSquareContext encountered an error.

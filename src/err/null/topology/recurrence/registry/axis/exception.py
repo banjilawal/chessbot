@@ -24,7 +24,7 @@ __all__ = [
 class AxisRecurrenceRegistryNullException(RecurrenceRegistryNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required AxisRecurrenceTable is null.

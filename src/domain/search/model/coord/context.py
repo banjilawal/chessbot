@@ -27,7 +27,7 @@ class CoordSearchContext(ModelSearchContext[Coord]):
         column: Optional[int]
 
     Provides:
-        -   to_dict() -> Dict[str, Any]
+        -  to_dict() -> Dict[str, Any]
 
     Super Class:
         ModelSearchContext

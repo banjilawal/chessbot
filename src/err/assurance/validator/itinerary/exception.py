@@ -24,7 +24,7 @@ __all__ = [
 class ItineraryValidatorException(ValidatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a ItineraryValidator failed.

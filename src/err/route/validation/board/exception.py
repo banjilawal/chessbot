@@ -24,7 +24,7 @@ __all__ = [
 class BoardNoValidationRouteException(NoValidationRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that one of Board validation routes is missing.

@@ -24,7 +24,7 @@ __all__ = [
 class BoardAssemblyException(AssemblyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Board assembly failed.

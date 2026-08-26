@@ -24,7 +24,7 @@ __all__ = [
 class BoardBuilderException(BuilderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Board build failed.

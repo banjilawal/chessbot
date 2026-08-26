@@ -19,8 +19,8 @@ T = TypeVar("T")
 class Router(ABC, Generic[T]):
     """
     Role
-        -   Transaction Worker
-        -   Routing
+        -  Transaction Worker
+        -  Routing
 
     Responsibilities:
         1.  Ensure data-holders are safe before they are used or saved.
@@ -28,7 +28,7 @@ class Router(ABC, Generic[T]):
     Attributes:
 
     Provides:
-        -   route(*args, **kwargs) -> Any
+        -  route(*args, **kwargs) -> Any
 
     super Class:
     """

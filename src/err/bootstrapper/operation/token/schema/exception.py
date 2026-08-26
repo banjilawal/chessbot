@@ -23,7 +23,7 @@ __all__ = [
 class SchemaTokenOperationBootstrapperException(TokenOperationBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Schema tokenfailed.

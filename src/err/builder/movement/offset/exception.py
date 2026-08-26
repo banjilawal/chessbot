@@ -24,7 +24,7 @@ __all__ = [
 class OffsetPatternBuilderException(MovementPatternBuilderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required OffsetPatternBuilder failed.

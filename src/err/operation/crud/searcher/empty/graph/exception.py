@@ -24,7 +24,7 @@ __all__ = [
 class GraphSearchResultEmptyException(SearchResultEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a GraphSearcher did not find the required item.

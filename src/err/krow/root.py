@@ -21,14 +21,14 @@ from system import ChessException
 class WorkException(ChessException):
     """
     Role:
-        -   Process Identifier
-        -   Exception Chain Layer 1
-        -   Exception Messaging
+        -  Process Identifier
+        -  Exception Chain Layer 1
+        -  Exception Messaging
 
     Responsibilities:
         1.  Abstract exception for Work subclasses which indicating
-                -   The work
-                -   It's method
+                -  The work
+                -  It's method
             that produced an exception instead of a payload in it's result.
     
     Naming Convention:

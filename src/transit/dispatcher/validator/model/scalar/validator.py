@@ -22,7 +22,7 @@ from transit.dispatcher.validator import ModelValidationDispatcher
 class ScalarValidationDispatcher(ModelValidationDispatcher[Scalar]):
     """
     Role
-        -   Integrity, Consistency Maintenance
+        -  Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a Scalar instance is certified safe, reliable and consistent before use.
@@ -31,7 +31,7 @@ class ScalarValidationDispatcher(ModelValidationDispatcher[Scalar]):
         integrity_checker: ScalarIntegrityChecker
 
     Provides:
-        -   execute(candidate: Any) -> ValidationResult
+        -  execute(candidate: Any) -> ValidationResult
 
     Super Class:
         ModelValidator

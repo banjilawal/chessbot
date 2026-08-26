@@ -19,7 +19,7 @@ from domain.schema import Formation
 class Token(StatefulModel):
     """
     Role:
-        -   Stateful Data Holder
+        -  Stateful Data Holder
         
     Responsibilities:
         1. Abstract representation of a chess piece.

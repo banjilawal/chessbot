@@ -23,7 +23,7 @@ __all__ = [
 class SoutheastQuadrantBuilderException(QuadrantSpaceBuilderException):
     """
     Role:
-        -   Failure Tracing
+        -  Failure Tracing
 
     Responsibilities:
         1.  Indicating a SoutheastQuadrantBuilder failed.

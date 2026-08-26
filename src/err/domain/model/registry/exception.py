@@ -24,7 +24,7 @@ __all__ = [
 class RegistryException(ModelException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Registry encountered an error.

@@ -25,7 +25,7 @@ from err import BlueprintNullException
 class RankBlueprintNullException(BlueprintNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required RankBlueprint is null.

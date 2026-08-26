@@ -26,7 +26,7 @@ from err import BinderBuilderBootstrapperException
 class PersonaBinderBuilderBootstrapperException(BinderBuilderBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a PersonaBinderBuilderBootstrapper was aborted by an exception.

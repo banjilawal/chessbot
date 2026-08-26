@@ -24,7 +24,7 @@ from util import LoggingLevelRouter
 class SoutheastQuadrantRootChecker(QuadrantRootChecker[SoutheastQuadrantBlueprint]):
     """
     Role
-        -   Integrity, Consistency Maintenance
+        -  Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a SoutheastQuadrantBlueprint instance is certified safe, reliable and consistent before use.
@@ -33,7 +33,7 @@ class SoutheastQuadrantRootChecker(QuadrantRootChecker[SoutheastQuadrantBlueprin
         bundle: SoutheastQuadrantToolkit
 
     Provides:
-        -   execute(self, candidate: Any) -> ValidationResult:
+        -  execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
         IntegrityChecker
@@ -58,8 +58,8 @@ class SoutheastQuadrantRootChecker(QuadrantRootChecker[SoutheastQuadrantBlueprin
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The validation_priming fails.
-                    -   Either the board, owner or id get flagged unsafe.
+                    -  The validation_priming fails.
+                    -  Either the board, owner or id get flagged unsafe.
             2.  Otherwise, send the success result.
         Args:
             candidate: Any,

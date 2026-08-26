@@ -16,7 +16,7 @@ from space.quadrant.space import Space
 class Quadrant(Space):
     """
     Role:
-        -   Definition
+        -  Definition
 
     Responsibilities:
         1.  A diagonal line whose root is the Space's origin.

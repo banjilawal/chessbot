@@ -23,7 +23,7 @@ __all__ = [
 class HostageTokenOperationException(TokenOperatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Hostage tokenfailed.

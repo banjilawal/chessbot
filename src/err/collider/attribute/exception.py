@@ -24,7 +24,7 @@ __all__ = [
 class AttributeCollisionException(ColliderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that two entities share an attribute that should be unique.

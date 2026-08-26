@@ -38,7 +38,7 @@ class TokenPositionPopper:
     Attributes:
 
     Provides:
-            -   execute(
+            -  execute(
                         token: Token,
                         token_validator: TokenValidator = TokenValidator(),
                 ) -> DeletionResult[Coord]

@@ -20,8 +20,8 @@ from transit.structure.register import IdentityRegister
 class IdentityRegisterCarrier(RegisterCarrier[IdentityRegister]):
     """
     Role:
-        -   Addressing
-        -   Data-Holder
+        -  Addressing
+        -  Data-Holder
     
     Responsibilities:
         1.  Entity for transporting either an IdentityRegister or IdentityRegisterBlueprint

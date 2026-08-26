@@ -24,7 +24,7 @@ __all__ = [
 class CollisionBootstrapperException(BootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a token hit the collision attractor.

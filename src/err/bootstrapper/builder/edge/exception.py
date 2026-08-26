@@ -24,7 +24,7 @@ __all__ = [
 class EdgeBuilderBootstrapperException(BuilderBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an EdgeBuilderBootstrapper was aborted by an exception.

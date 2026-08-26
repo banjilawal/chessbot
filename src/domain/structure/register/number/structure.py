@@ -17,8 +17,8 @@ from domain import Register
 class NumberRegister(Register[int]):
     """
     Role:
-        -   Model
-        -   Data Holder
+        -  Model
+        -  Data Holder
 
     Responsibilities:
         1.  Contains the endpoints of a journey.

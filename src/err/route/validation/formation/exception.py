@@ -23,7 +23,7 @@ __all__ = [
 class FormationNoValidationRouteException(NoValidationRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that one of Formation validation routes is missing.

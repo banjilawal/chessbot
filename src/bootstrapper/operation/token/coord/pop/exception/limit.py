@@ -22,10 +22,10 @@ from domain.model.searchable.state import TokenDebugException
 class MoveUndoLimitException(TokenDebugException):
     """
     Role:
-        -   Debug targeting information
-        -   Error Variable Identifier
-        -   Exception Chain Layer 2
-        -   Exception Messaging
+        -  Debug targeting information
+        -  Error Variable Identifier
+        -  Exception Chain Layer 2
+        -  Exception Messaging
 
     Responsibilities:
         1.  Indicate a token tried to undo mre than one move.

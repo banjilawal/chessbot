@@ -23,8 +23,8 @@ from domain.model.searchable.state import TokenCommandNotFoundException
 class TokenServiceMenu(Router[TokenService]):
     """
     Role
-        -   Transaction Worker
-        -   Routing
+        -  Transaction Worker
+        -  Routing
 
     Responsibilities:
         1.  Ensure data-holders are safe before they are used or saved.
@@ -32,7 +32,7 @@ class TokenServiceMenu(Router[TokenService]):
     Attributes:
 
     Provides:
-        -   route(op_name: str) -> Result
+        -  route(op_name: str) -> Result
 
     super Class:
     """

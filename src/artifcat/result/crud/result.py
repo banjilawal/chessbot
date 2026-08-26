@@ -20,8 +20,8 @@ T = TypeVar("T")
 class CrudResult(Result, ABC, Generic[T]):
     """
     Role:
-        -   Data Transport
-        -   Error Transport
+        -  Data Transport
+        -  Error Transport
   
     Responsibilities:
         1.  Hold the product of some work.
@@ -33,8 +33,8 @@ class CrudResult(Result, ABC, Generic[T]):
         is_failure: bool
 
     Provides:
-        -   def success(payload: T) -> Result
-        -   def failure(exception: Exception) -> Result
+        -  def success(payload: T) -> Result
+        -  def failure(exception: Exception) -> Result
         
     Super Class:
         Result

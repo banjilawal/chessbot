@@ -19,9 +19,9 @@ E = TypeVar("E", bound="Enum")
 class CatalogService(ABC, Generic[E]):
     """
     Role:
-        -   Data layer
-        -   Microservice API
-        -   Interface
+        -  Data layer
+        -  Microservice API
+        -  Interface
 
     Responsibilities:
         1.  Extracts, manipulates consults unique invariant tuples which

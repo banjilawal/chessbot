@@ -25,7 +25,7 @@ __all__ = [
 class SouthAxisMappingFunctionException(AxisMappingFunctionException):
     """
     Role:
-        -   Failure Tracing
+        -  Failure Tracing
 
     Responsibilities:
         1.  Indicating an SouthAxisMappingFunction did not complete its task.

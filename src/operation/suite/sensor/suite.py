@@ -20,8 +20,8 @@ T = TypeVar("T", bound="StateModel")
 class SensorSuite(Suite, Generic[T]):
     """
     Role:
-        -   Dependency Container
-        -   Dynamic Dependency Provider
+        -  Dependency Container
+        -  Dynamic Dependency Provider
         
     Responsibilities:
         1.  Contains the operations that can be performed on a model.
@@ -35,7 +35,7 @@ class SensorSuite(Suite, Generic[T]):
         Toolkit
         
     Notes:
-        -   Suite for an empty class which makes managing toolkits easier.
-        -   Any toolkits for a suite should be a Suite subclass.
+        -  Suite for an empty class which makes managing toolkits easier.
+        -  Any toolkits for a suite should be a Suite subclass.
     """
     

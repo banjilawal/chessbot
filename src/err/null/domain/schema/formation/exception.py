@@ -24,7 +24,7 @@ __all__ = [
 class FormationNullException(SchemaNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required Formation is null.

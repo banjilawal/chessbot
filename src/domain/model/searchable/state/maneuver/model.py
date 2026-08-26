@@ -19,8 +19,8 @@ T = TypeVar("T", bound="Token")
 class Maneuver(StatefulModel, Generic[T]):
     """
     Role:
-        -   Model
-        -   Data Holder
+        -  Model
+        -  Data Holder
 
     Responsibilities:
         1.  Gives details about a Token's journey along a path.

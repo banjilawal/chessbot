@@ -24,7 +24,7 @@ __all__ = [
 class EdgeSearcherException(SearcherException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a EdgeSearcher from

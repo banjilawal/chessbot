@@ -20,7 +20,7 @@ from util import LoggingLevelRouter
 class PathConsistency:
     """
     Role
-        -   Integrity, Consistency Maintenance
+        -  Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a Path instance is certified safe, reliable and consistent before use.
@@ -28,7 +28,7 @@ class PathConsistency:
     Attributes:
 
     Provides:
-        -   def consistencyChecker(
+        -  def consistencyChecker(
                     cls,
                     candidate,
                     identity_service: IdentityService,
@@ -53,11 +53,11 @@ class PathConsistency:
 
         Action:
             1.  Send an exception chain in the ValidationResult any of the cases occur:
-                    -   Candidate is null
-                    -   It's not a Path.
+                    -  Candidate is null
+                    -  It's not a Path.
                     _   An id check fails.
-                    -   Either the origin or destination are not safe square.
-                    -   The origin and destination are the same.
+                    -  Either the origin or destination are not safe square.
+                    -  The origin and destination are the same.
             2.  Otherwise, send the success result.
         Args:
             candidate: Any

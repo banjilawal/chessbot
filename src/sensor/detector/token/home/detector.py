@@ -32,7 +32,7 @@ class TokenHomeReporter(TokenEnvironmentReporter):
     Attributes:
     
     Provides:
-        -   execute(
+        -  execute(
                     token: Token,
                     token_validator: TokenFreedomAnalyzer,
             ) -> Result[HomeSquareClaimReport]

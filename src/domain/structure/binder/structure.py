@@ -22,8 +22,8 @@ S = TypeVar("S")
 class Binder(Structure, ABC, Generic[P, S]):
     """
     Role:
-        -   Model
-        -   Stateless Data-Holder
+        -  Model
+        -  Stateless Data-Holder
         
     Responsibility:
         1.  Separates responsibilities of managing the satellites bound to a primary entity.
@@ -50,10 +50,10 @@ class Binder(Structure, ABC, Generic[P, S]):
     
     Binder Implementations:
         Must satisfy at least one of these requirements.
-            -   Schemas are a natural, unique attribute of every satellite.
-            -   The primary has only two satellites which ae both required for the primary's
+            -  Schemas are a natural, unique attribute of every satellite.
+            -  The primary has only two satellites which ae both required for the primary's
                 operations.
-            -   If primary's satellites do not have an organic schema attribute. It has a transitive
+            -  If primary's satellites do not have an organic schema attribute. It has a transitive
                 link to the Schema catalog through one its fields.
     """
     _id: int

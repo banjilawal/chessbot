@@ -22,7 +22,7 @@ _all_ = [
 class ExcessTeamBlueprintFlagsException(ExcessBlueprintFlagsException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicatings that more than one TeamBlueprint option was enabled.

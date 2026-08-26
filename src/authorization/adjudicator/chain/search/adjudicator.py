@@ -36,9 +36,9 @@ R = TypeVar("R", bound="ChainSearchRequest")
 class ChainSearchRequestAdjudicator(ChainRequestAdjudicator, Generic[N, R]):
     """
     Role:
-        -   Permission Authorization
-        -   Checklist Runner
-        -   Integrity Maintenance
+        -  Permission Authorization
+        -  Checklist Runner
+        -  Integrity Maintenance
         _   Consistency Assurance
 
     Responsibilities:
@@ -49,7 +49,7 @@ class ChainSearchRequestAdjudicator(ChainRequestAdjudicator, Generic[N, R]):
         priming_validator: Optional[PrimingValidator]
 
     Provides:
-        -    def execute(self, candidate: Any) -> RequestDecision
+        -   def execute(self, candidate: Any) -> RequestDecision
 
     Super Class:
         ChainRequestAdjudicator

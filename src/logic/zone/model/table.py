@@ -18,8 +18,8 @@ from logic.zone.model import Zone
 class ZoneTable:
     """
     Role:
-        -   Addressing
-        -   Data-Holder
+        -  Addressing
+        -  Data-Holder
 
     Responsibilities:
         1.  Provide global, low-level addressing squares and tokens on the board.
@@ -29,7 +29,7 @@ class ZoneTable:
         schema: Schema
 
     Provides:
-        -   def opposite(zone: Zone) -> Zone:
+        -  def opposite(zone: Zone) -> Zone:
 
     Super Class:
         Enum

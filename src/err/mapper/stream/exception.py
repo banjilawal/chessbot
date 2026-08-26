@@ -25,7 +25,7 @@ __all__ = [
 class MappingFunctionStreamException(MappingFunctionException):
     """
     Role:
-        -   Failure Tracing
+        -  Failure Tracing
 
     Responsibilities:
         1.  Indicating a MappingFunctionStream encountered an error.

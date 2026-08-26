@@ -23,7 +23,7 @@ T = TypeVar("T", bound="Request")
 class RequestAuthorizer(ABC, Generic[T]):
     """
     Role
-        -   Authorization
+        -  Authorization
 
     Responsibilities:
         1.  Check if a Request satisfies integrity and consistency requirements.
@@ -32,7 +32,7 @@ class RequestAuthorizer(ABC, Generic[T]):
         utility: PermissionUtility[T]
 
     Provides:
-        -   execute(self, request: T) -> AuthorizationDecision
+        -  execute(self, request: T) -> AuthorizationDecision
 
     Super Class:
     """

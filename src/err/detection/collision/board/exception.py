@@ -24,7 +24,7 @@ __all__ = [
 class BoardCollisionDetectorException(CollisionDetectorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a BoardCollision step failed.

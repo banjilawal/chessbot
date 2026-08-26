@@ -14,8 +14,8 @@ from domain.exchange.model import SchemaQuery, SchemaQueryBuilder, SchemaQueryOp
 class SchemaQueryService(IntegrityMicroservice[SchemaQuery]):
     """
     Role:
-        -   Microservice API
-        -   Stateless Integrity Lifecycle Manager
+        -  Microservice API
+        -  Stateless Integrity Lifecycle Manager
 
     Responsibilities:
         1.  Mutates SchemaQuery instances

@@ -21,10 +21,10 @@ from transit.dispatcher.validator import RankValidationDispatcher
 class PromotionRankAnalyzer(Analyzer):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Validation Process Owner
+        -  Transaction Worker
+        -  Integrity Maintenance
+        -  Consistency Assurance
+        -  Validation Process Owner
 
     Responsibilities:
         1.  Perform safety and bounds checks on a pawn's requested new rank.
@@ -32,7 +32,7 @@ class PromotionRankAnalyzer(Analyzer):
     Attributes:
 
     Properties:
-        -   def analyze(
+        -  def analyze(
                     new_rank: Rank,
                     rank_validator: RankValidator,
             ) -> AnalysisResult[PromotionLevelReport]:
@@ -54,8 +54,8 @@ class PromotionRankAnalyzer(Analyzer):
         Action:
             1.  Send an exception in the AnalysisResult any of these
                 conditions occur.
-                    -   Is flagged by rank_validator
-                    -   The new rank is either Pawn or King.
+                    -  Is flagged by rank_validator
+                    -  The new rank is either Pawn or King.
             3.  Otherwise, Send the success result.
         Args:
             new_rank: Rank

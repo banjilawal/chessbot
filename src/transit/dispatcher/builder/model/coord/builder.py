@@ -23,10 +23,10 @@ from util import LoggingLevelRouter
 class CoordBuilder(ModelBuilder[Coord]):
     """
     Role
-        -   Build Pipeline
-        -   Integrity Management
-        -   Consistency Assurance
-        -   Workflow Owner
+        -  Build Pipeline
+        -  Integrity Management
+        -  Consistency Assurance
+        -  Workflow Owner
 
    Responsibilities:
         1.  Ensure a new Coord instance is born safe and reliable.
@@ -35,7 +35,7 @@ class CoordBuilder(ModelBuilder[Coord]):
             builder_toolkit: Optional[CoordBuilderToolkit]
 
     Provides:
-        -   def execute(self, blueprint: CoordBlueprint) -> BuildResult[Coord]
+        -  def execute(self, blueprint: CoordBlueprint) -> BuildResult[Coord]
 
      Super Class:
          ModelBuilder
@@ -63,8 +63,8 @@ class CoordBuilder(ModelBuilder[Coord]):
 
         Action:
             1.  Send an exception chain in the BuildResult if either
-                    -   The CoordBlueprint object is flagged unsafe.
-                    -   The assembler does not return a product.
+                    -  The CoordBlueprint object is flagged unsafe.
+                    -  The assembler does not return a product.
             2.  Otherwise, cast the assembler product as a Coord then, send in the success result,
         Args:
             blueprint: CoordBlueprint

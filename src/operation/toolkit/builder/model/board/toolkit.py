@@ -20,7 +20,7 @@ from operation.toolkit.builder.model.board.toolkit import ModelBuilderToolkit
 class BoardBuilderToolkit(ModelBuilderToolkit[Board]):
     """
     Role:
-        -   Dependency Management
+        -  Dependency Management
         
     Responsibilities:
         1.  Bundles BoardBuilder dependencies.

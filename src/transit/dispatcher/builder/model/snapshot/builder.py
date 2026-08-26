@@ -23,10 +23,10 @@ from util import LoggingLevelRouter
 class SnapshotBuilder(ModelBuilder[Snapshot]):
     """
     Role
-        -   Build Pipeline
-        -   Integrity Management
-        -   Consistency Assurance
-        -   Workflow Owner
+        -  Build Pipeline
+        -  Integrity Management
+        -  Consistency Assurance
+        -  Workflow Owner
 
    Responsibilities:
         1.  Ensure a new Snapshot instance is born safe and reliable.
@@ -35,7 +35,7 @@ class SnapshotBuilder(ModelBuilder[Snapshot]):
             builder_toolkit: Optional[SnapshotBuilderToolkit]
 
     Provides:
-        -   def execute(self, blueprint: SnapshotBlueprint) -> BuildResult[Snapshot]
+        -  def execute(self, blueprint: SnapshotBlueprint) -> BuildResult[Snapshot]
 
      Super Class:
          ModelBuilder
@@ -63,8 +63,8 @@ class SnapshotBuilder(ModelBuilder[Snapshot]):
 
         Action:
             1.  Send an exception chain in the BuildResult if either
-                    -   The SnapshotBlueprint object is flagged unsafe.
-                    -   The assembler does not return a product.
+                    -  The SnapshotBlueprint object is flagged unsafe.
+                    -  The assembler does not return a product.
             2.  Otherwise, cast the assembler product as a Snapshot then, send in the success result,
         Args:
             blueprint: SnapshotBlueprint

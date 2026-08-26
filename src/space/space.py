@@ -17,7 +17,7 @@ from domain.model import Vector
 class Space(ABC):
     """
     Role:
-        -   Data Holder
+        -  Data Holder
 
     Responsibilities:
         1.  Define a 2D space bounded an origin and terminus.

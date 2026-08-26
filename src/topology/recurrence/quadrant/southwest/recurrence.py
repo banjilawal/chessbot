@@ -19,8 +19,8 @@ from topology.space import SouthwestQuadrant
 class SouthwestQuadrantRecurrence(QuadrantRecurrence[SouthwestQuadrant]):
     """
     Role:
-        -   Computation
-        -   Iterator
+        -  Computation
+        -  Iterator
 
     Responsibilities:
         1.  Provide a recurrence relation for iterating to the next SouthwestQuadrant vector.

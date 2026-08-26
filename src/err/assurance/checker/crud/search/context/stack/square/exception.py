@@ -27,7 +27,7 @@ from err import StackContextCheckerException
 class SquareContextCheckerException(StackContextCheckerException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a SquareContextChecker failed.

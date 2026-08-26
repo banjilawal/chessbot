@@ -26,7 +26,7 @@ from err import ContextNoValidationRouteException
 class RankContextValidationRouteException(ContextNoValidationRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that one of RankContext validation routes is missing.

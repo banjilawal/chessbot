@@ -23,7 +23,7 @@ class ModelSearchContext(SearchContext[T], ABC, Generic[T]):
         - Option Selector
 
     Responsibilities:
-        1.  Supply the criteria a ModelSearcher uses to find a hit.
+        1.  Supply an attribute-value tuple used to search a StackService.
 
     Attributes:
         id: Optional[int]
@@ -31,7 +31,7 @@ class ModelSearchContext(SearchContext[T], ABC, Generic[T]):
         max_activated_filters: int
 
     Provides:
-        -   def to_dict() -> Dict[str, Any]
+        -  def to_dict() -> Dict[str, Any]
 
     Super Class:
         SearchContext

@@ -22,7 +22,7 @@ from operation.toolkit import AddNodeRequestToolkit
 class AddVectorNodeRequestToolkit(AddNodeRequestToolkit[VectorNode]):
     """
     Role:
-        -   Dependency Management
+        -  Dependency Management
         
     Responsibilities:
         1.  Aggregates workers and services a model requires for its tasks.

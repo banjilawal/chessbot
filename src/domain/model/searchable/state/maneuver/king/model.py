@@ -17,8 +17,8 @@ from domain.model import King, KingManeuverWarning, KingToken, Maneuver, Path
 class KingManeuver(Maneuver[King]):
     """
     Role:
-        -   Model
-        -   Data Holder
+        -  Model
+        -  Data Holder
 
     Responsibilities:
         1.  Provide information about a path a KingToken might follow.

@@ -24,7 +24,7 @@ __all__ = [
 class KingTokenException(TokenException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a KingToken encountered an error.

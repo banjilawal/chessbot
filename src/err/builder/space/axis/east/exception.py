@@ -23,7 +23,7 @@ __all__ = [
 class EastAxisBuilderException(AxisBuilderException):
     """
     Role:
-        -   Failure Tracing
+        -  Failure Tracing
 
     Responsibilities:
         1.  Indicating a EastAxisBuilder failed.

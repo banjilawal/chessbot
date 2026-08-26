@@ -24,7 +24,7 @@ __all__ = [
 class VectorBuilderException(ModelBuilderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a VectorBuilder failed.

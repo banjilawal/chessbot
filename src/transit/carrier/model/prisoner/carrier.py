@@ -19,8 +19,8 @@ from carrier import ModelCarrier
 class PrisonerCarrier(ModelCarrier[Prisoner]):
     """
     Role:
-        -   Addressing
-        -   Data-Holder
+        -  Addressing
+        -  Data-Holder
     
     Responsibilities:
         1.  Entity for transporting either a Prisoner or PrisonerBlueprint

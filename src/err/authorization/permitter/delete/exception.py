@@ -24,7 +24,7 @@ __all__ = [
 class DeletePermitterException(PermitterException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a DeletePermitter did not approve the request.

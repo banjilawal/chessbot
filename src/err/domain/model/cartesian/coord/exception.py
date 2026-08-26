@@ -24,7 +24,7 @@ __all__ = [
 class CoordException(CartesianPointException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Coord encountered an error.

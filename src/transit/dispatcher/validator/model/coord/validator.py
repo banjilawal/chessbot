@@ -22,7 +22,7 @@ from transit.dispatcher.validator import ModelValidationDispatcher
 class CoordValidationDispatcher(ModelValidationDispatcher[Coord]):
     """
     Role
-        -   Integrity, Consistency Maintenance
+        -  Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a Coord instance is certified safe, reliable and consistent before use.
@@ -31,7 +31,7 @@ class CoordValidationDispatcher(ModelValidationDispatcher[Coord]):
         integrity_checker: CoordIntegrityChecker
 
     Provides:
-        -   execute(candidate: Any) -> ValidationResult
+        -  execute(candidate: Any) -> ValidationResult
 
     Super Class:
         ModelValidator

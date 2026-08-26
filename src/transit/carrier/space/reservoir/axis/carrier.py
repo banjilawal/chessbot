@@ -19,12 +19,12 @@ from space import AxisReservoir
 class AxisReservoirCarrier(SpaceReservoirCarrier[AxisReservoir]):
     """
     Role:
-        -   Data Transport
+        -  Data Transport
 
     Responsibilities:
         1.  Transport either:
-            -   a AxisReservoir
-            -   a AxisReservoirReservoirBlueprint
+            -  a AxisReservoir
+            -  a AxisReservoirReservoirBlueprint
 
     Attributes:
         is_carrying_model: bool
@@ -35,7 +35,7 @@ class AxisReservoirCarrier(SpaceReservoirCarrier[AxisReservoir]):
         entity: [AxisReservoir| AxisReservoirReservoirBlueprint | None]
 
     Provides:
-        -   def extract_blueprint() -> Optional[AxisReservoirBlueprint]
+        -  def extract_blueprint() -> Optional[AxisReservoirBlueprint]
 
     Super Class:
         SpaceReservoirCarrier

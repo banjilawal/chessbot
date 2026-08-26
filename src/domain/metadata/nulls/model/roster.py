@@ -24,7 +24,7 @@ T = TypeVar("T", bound="DataModel")
 class ModelNullExceptionRoster(NullExceptionRoster[T], Generic[T]):
     """
     Role:
-        -   Metadata
+        -  Metadata
 
     Responsibilities:
         1. Catalog of NullExceptions associated with a Model

@@ -28,8 +28,8 @@ class SquareStackPopper:
     Attributes:
     
     Provides:
-        -   pop() -> DeletionResult[Square]
-        -   delete_by_id(id: int, identity_service: IdentityService) -> DeletionResult[Square]
+        -  pop() -> DeletionResult[Square]
+        -  delete_by_id(id: int, identity_service: IdentityService) -> DeletionResult[Square]
         
     Super:
     """

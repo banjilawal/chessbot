@@ -23,10 +23,10 @@ from util import LoggingLevelRouter
 class QuadrantReservoirBuilder(SpaceReservoirBuildDispatcher[QuadrantReservoir]):
     """
     Role
-        -   Build Pipeline
-        -   Integrity Management
-        -   Consistency Assurance
-        -   Workflow Owner
+        -  Build Pipeline
+        -  Integrity Management
+        -  Consistency Assurance
+        -  Workflow Owner
 
    Responsibilities:
         1.  Ensure a new Quadrant instance is born safe and reliable.
@@ -35,7 +35,7 @@ class QuadrantReservoirBuilder(SpaceReservoirBuildDispatcher[QuadrantReservoir])
             builder_toolkit: Optional[QuadrantReservoirBuilderToolkit]
 
     Provides:
-        -   def execute(self, blueprint: QuadrantReservoirBlueprint) -> BuildResult[Quadrant]
+        -  def execute(self, blueprint: QuadrantReservoirBlueprint) -> BuildResult[Quadrant]
 
      Super Class:
          ModelBuilder
@@ -64,8 +64,8 @@ class QuadrantReservoirBuilder(SpaceReservoirBuildDispatcher[QuadrantReservoir])
 
         Action:
             1.  Send an exception chain in the BuildResult if either
-                    -   The QuadrantReservoirBlueprint object is flagged unsafe.
-                    -   The assembler does not return a product.
+                    -  The QuadrantReservoirBlueprint object is flagged unsafe.
+                    -  The assembler does not return a product.
             2.  Otherwise, cast the assembler product as a Quadrant then, send in the success result,
         Args:
             blueprint: QuadrantReservoirBlueprint

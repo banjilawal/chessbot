@@ -24,7 +24,7 @@ __all__ = [
 class EntityCarrierException(DomainObjectException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an EntityCarrier encountered an error.

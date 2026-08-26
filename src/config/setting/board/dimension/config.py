@@ -35,7 +35,7 @@ number_of_columns = board_size
 class BoardDimensionProperty:
     """
     Role
-        -   Property Settings
+        -  Property Settings
   
     Responsibilities:
         1.  Default Board properties.

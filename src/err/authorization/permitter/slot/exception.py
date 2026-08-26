@@ -24,7 +24,7 @@ __all__ = [
 class RankSlotPermitterException(PermitterException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicatings the RankSlotPermitter did not grant a Token a slot

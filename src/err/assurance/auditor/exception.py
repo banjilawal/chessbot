@@ -24,7 +24,7 @@ __all__ = [
 class ConsistencyAuditorException(AssuranceException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a ConsistencyAuditor failed.

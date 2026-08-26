@@ -24,7 +24,7 @@ __all__ = [
 class PlayerContextBuilderBootstrapperException(ContextBuilderBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a PlayerContextBuilderBootstrapper was aborted by an exception.

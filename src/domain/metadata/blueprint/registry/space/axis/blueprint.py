@@ -22,7 +22,7 @@ from topology.registry import AxisReservoir
 class AxisReservoirBlueprint(SpaceReservoirBlueprint[AxisReservoir]):
     """
      Role:
-         -   DTO
+         -  DTO
 
      Responsibilities:
          1.  Provides values for instantiating an AxisReservoir object.

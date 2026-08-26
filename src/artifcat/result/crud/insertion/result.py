@@ -16,8 +16,8 @@ from artifcat import InsertionState
 class InsertionResult(CrudResult[bool]):
     """
     Role:
-        -   Data Transport
-        -   Error Transport
+        -  Data Transport
+        -  Error Transport
 
     Responsibilities:
         1.  Contains the outcome of an insertion.
@@ -31,9 +31,9 @@ class InsertionResult(CrudResult[bool]):
         is_failure: bool
 
     Provides:
-        -   def success(payload: T) -> InsertionResu[T]
-        -   def failure(exception: Exception) -> InsertionResu[T]
-        -   def timed_out(exception: Exception) -> InsertionResult[T]
+        -  def success(payload: T) -> InsertionResu[T]
+        -  def failure(exception: Exception) -> InsertionResu[T]
+        -  def timed_out(exception: Exception) -> InsertionResult[T]
 
     Super Class:
         Result

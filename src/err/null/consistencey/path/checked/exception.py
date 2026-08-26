@@ -24,7 +24,7 @@ __all__ = [
 class CheckedPathConsistencyCheckerNullException(PathException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required CheckedPathConsistencyChecker is null.

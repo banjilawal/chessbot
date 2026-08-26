@@ -24,9 +24,9 @@ from topology.space import (
 class QuadrantMappingFunctionStream(SpaceMapFunctionStream[Quadrant]):
     """
     Role:
-        -   Data Holder
-        -   Factory
-        -   Switcher
+        -  Data Holder
+        -  Factory
+        -  Switcher
 
     Responsibilities:
         1.  QuadrantMappingFunction factory whose products don't need down-casting before use.

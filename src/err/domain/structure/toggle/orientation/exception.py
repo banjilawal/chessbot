@@ -24,7 +24,7 @@ __all__ = [
 class OrientationToggleException(ToggleException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an OrientationToggle encountered an error.

@@ -22,9 +22,9 @@ from domain.model.searchable.state import TokenDebugException
 class TokenStackAlreadyDeployedException(TokenDebugException):
     """
     Role:
-        -   Error Variable Identifier
-        -   Exception Chain Layer 2
-        -   Exception Messaging
+        -  Error Variable Identifier
+        -  Exception Chain Layer 2
+        -  Exception Messaging
 
     Responsibilities:
         1.  Indicating a token_stack has already been deployed on the board.

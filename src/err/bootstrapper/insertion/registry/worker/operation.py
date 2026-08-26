@@ -21,7 +21,7 @@ from operation import Primer, Operator, RegistryEntryNameValidator, PrimingValid
 class PrimingWorkerRegistration(Primer[Operator]):
     """
     Role
-        -   Worker
+        -  Worker
 
     Responsibilities:
         1.  Validate a worker is a safe Operation before adding to the WorkerRegistry.
@@ -30,7 +30,7 @@ class PrimingWorkerRegistration(Primer[Operator]):
     Attributes:
 
     Provides:
-        -   def execute(
+        -  def execute(
                 worker: Operation,
                 registry: WorkerRegistry,
                 null_exception: OperationNullException,
@@ -58,9 +58,9 @@ class PrimingWorkerRegistration(Primer[Operator]):
         
         Action:
             1.  Send an exception chain in the ValidationResult if either condition occurs.
-                    -   The worker is not an Operation.
-                    -   Either, worker.DOMAIN or worker.NAME are not safe Strings.
-                    -   The worker's name has already been used in the domain.
+                    -  The worker is not an Operation.
+                    -  Either, worker.DOMAIN or worker.NAME are not safe Strings.
+                    -  The worker's name has already been used in the domain.
             2.  Otherwise, send the success result.
         Args:
             worker: Operation

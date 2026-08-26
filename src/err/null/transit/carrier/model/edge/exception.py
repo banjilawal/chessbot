@@ -24,7 +24,7 @@ __all__ = [
 class EdgeCarrierNullException(ModelCarrierNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required EdgeCarrierToggle is null.

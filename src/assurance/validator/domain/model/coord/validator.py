@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 class CoordValidator(ModelValidator[Coord]):
     """
     Role
-        -   Integrity, Consistency Maintenance
+        -  Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a CoordBlueprint instance is certified safe, reliable and consistent before use.
@@ -29,7 +29,7 @@ class CoordValidator(ModelValidator[Coord]):
     Attributes:
 
     Provides:
-        -   def validate(
+        -  def validate(
                     candidate: Any,
                     bundle: CoordBlueprintToolkit,
             ) -> ValidationResult[Coord]:
@@ -51,8 +51,8 @@ class CoordValidator(ModelValidator[Coord]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The Validation is not primed.
-                    -   The enabled attribute fails a safety check.
+                    -  The Validation is not primed.
+                    -  The enabled attribute fails a safety check.
             2.  Otherwise, send the success result.
         Args:
             candidate: Any,

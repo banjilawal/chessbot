@@ -24,7 +24,7 @@ __all__ = [
 class CheckSearcherException(SearcherException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a CheckSearcher from

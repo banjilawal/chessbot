@@ -24,7 +24,7 @@ __all__ = [
 class RankAlreadyQuotaedException(RankQuotaAnalyzerException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an opening square has already been quotaed.

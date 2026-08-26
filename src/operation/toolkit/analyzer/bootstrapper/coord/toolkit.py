@@ -19,7 +19,7 @@ from transit.dispatcher.validator import NumberValidator, PrimingValidator
 class CoordToolkit(AnalyzerBootstrapperToolkit[Coord]):
     """
     Role:
-        -   Dependency Management
+        -  Dependency Management
 
     Responsibilities:
         1.  Aggregates workers and services a Coord requires for its tasks.
@@ -34,7 +34,7 @@ class CoordToolkit(AnalyzerBootstrapperToolkit[Coord]):
         priming_validator: PrimingValidator
 
     Provides:
-        -   def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
+        -  def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
         
     Super Class:
         Toolkit

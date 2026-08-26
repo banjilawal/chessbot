@@ -23,7 +23,7 @@ __all__ = [
 class ArenaNullException(StateModelNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required Arena is null.

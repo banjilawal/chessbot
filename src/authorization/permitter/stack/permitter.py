@@ -24,8 +24,8 @@ T = TypeVar("T", bound="StackRequest")
 class StackOperationPermitter(OperationPermitter, ABC, Generic[T]):
     """
     Role:
-        -   Permission Authorization
-        -   Integrity Maintenance
+        -  Permission Authorization
+        -  Integrity Maintenance
         _   Consistency Assurance
 
     Responsibilities:
@@ -39,7 +39,7 @@ class StackOperationPermitter(OperationPermitter, ABC, Generic[T]):
             priming_validator: Optional[PrimingValidator]
         
     Provides:
-        -    def execute(self, request: T) -> RequestDecision
+        -   def execute(self, request: T) -> RequestDecision
 
     Super Class:
         OperationPermitter

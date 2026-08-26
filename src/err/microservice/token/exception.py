@@ -24,7 +24,7 @@ __all__ = [
 class TokenMicroserviceException(MicroserviceException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a TokenMicroservice failed.

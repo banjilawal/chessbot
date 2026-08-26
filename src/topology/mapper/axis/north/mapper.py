@@ -19,7 +19,7 @@ from topology.space import NorthAxis
 class NorthAxisMapFunction(AxisMappingFunction[NorthAxis]):
     """
     Role:
-        -   Computation
+        -  Computation
 
     Responsibilities:
         Define delta_vector for getting the next vector on north of origin.

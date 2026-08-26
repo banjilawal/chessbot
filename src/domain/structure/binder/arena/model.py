@@ -17,8 +17,8 @@ from domain.model import Binder, Arena, Board, Schema, Player
 class ArenaBinder(Binder[Arena, Player]):
     """
     Role:
-        -   Model
-        -   Stateless Data-Holder
+        -  Model
+        -  Stateless Data-Holder
 
     Responsibility:
         1.  Separates responsibilities of managing players bound to a arena.

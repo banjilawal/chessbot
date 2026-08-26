@@ -24,7 +24,7 @@ __all__ = [
 class SearchDataObjectException(DomainObjectException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a SearchObject encountered an error.

@@ -21,7 +21,7 @@ T = TypeVar("T", bound="Structure")
 class StructureTypeUnions(DomainObjectTypeUnions[T], ABC, Generic[T]):
     """
     Role:
-        -   Metadata
+        -  Metadata
 
     Responsibilities:
         1. Catalog of data unions a Structure uses in the domain.

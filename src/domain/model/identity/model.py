@@ -15,8 +15,8 @@ from domain.model import DataModel
 class Identity(DataModel):
     """
     Role:
-        -   Model
-        -   Data Holder
+        -  Model
+        -  Data Holder
 
     Responsibilities:
         1.  Contains the id and name for an identity.

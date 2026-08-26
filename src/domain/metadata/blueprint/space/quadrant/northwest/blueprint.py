@@ -20,7 +20,7 @@ from space import NorthwestQuadrant
 class NorthwestQuadrantBlueprint(QuadrantBlueprint[NorthwestQuadrant]):
     """
      Role:
-         -   DTO
+         -  DTO
 
      Responsibilities:
          1.  Provides values for instantiating a NorthwestQuadrant.

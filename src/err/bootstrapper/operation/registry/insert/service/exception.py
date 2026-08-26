@@ -22,7 +22,7 @@ __all__ = [
 class NewServiceRegistrationException(NewRegistrationException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating adding a new operation to the ServiceRegistry failed.

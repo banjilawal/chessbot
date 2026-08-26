@@ -20,8 +20,8 @@ from topology.space import NorthwestQuadrant
 class NorthwestQuadrantRecurrence(QuadrantRecurrence[NorthwestQuadrant]):
     """
     Role:
-        -   Computation
-        -   Iterator
+        -  Computation
+        -  Iterator
 
     Responsibilities:
         1.  Provide a recurrence relation for iterating to the next NorthwestQuadrant vector.

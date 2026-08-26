@@ -32,7 +32,7 @@ class CoordStackPush:
     Attributes:
 
     Provides:
-        -   execute(
+        -  execute(
                     cls,
                     coord: Coord,
                     coord_stack: CoordStackService,
@@ -51,9 +51,9 @@ class CoordStackPush:
         """
         Action:
             1.  Return a failure result containing an exception chain if
-                    -   The coord is not safe.
-                    -   One of its properties already in use.
-                    -   The CoordStackService cannot support another coord.
+                    -  The coord is not safe.
+                    -  One of its properties already in use.
+                    -  The CoordStackService cannot support another coord.
             2.  If none of the failure conditions are met insert the coord and send the success result.
         Args:
            coord: Coord

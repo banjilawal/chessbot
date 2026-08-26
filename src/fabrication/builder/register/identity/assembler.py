@@ -20,7 +20,7 @@ from util import LoggingLevelRouter
 class IdentityRegisterBuilder(RegisterBuilder[IdentityRegister]):
     """
     Role
-        -   Builder
+        -  Builder
 
     Responsibilities:
         1.  Create an IdentityRegister instance from the safe blueprint.
@@ -28,7 +28,7 @@ class IdentityRegisterBuilder(RegisterBuilder[IdentityRegister]):
     Attributes:
 
     Provides:
-        -   def execute(self, blueprint: IdentityRegisterBlueprint,) -> BuildResult[IdentityRegister]
+        -  def execute(self, blueprint: IdentityRegisterBlueprint,) -> BuildResult[IdentityRegister]
 
     Super Class:
         RegisterBuilder

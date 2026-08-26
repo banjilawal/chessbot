@@ -20,7 +20,7 @@ T = TypeVar("T", bound="Axis")
 class AxisCarrier(SpaceCarrier, ABC, Generic[T]):
     """
     Role:
-        -   Data Transport
+        -  Data Transport
 
     Responsibilities:
         1.  Transports either a Space or its Blueprint.
@@ -36,7 +36,7 @@ class AxisCarrier(SpaceCarrier, ABC, Generic[T]):
         size: int
 
     Provides:
-        -   extract_blueprint() -> Optional[Blueprint[T]]
+        -  extract_blueprint() -> Optional[Blueprint[T]]
 
     Super Class:
        EntityCarrier

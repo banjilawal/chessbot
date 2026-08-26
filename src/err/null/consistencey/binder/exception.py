@@ -24,7 +24,7 @@ __all__ = [
 class BinderConsistencyCheckerNullException(ConsistencyCheckerNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required BinderConsistencyChecker is null.

@@ -33,14 +33,14 @@ class TokenCollisionDetectorBootstrapper(Detector[Token]):
          
      Attributes:
      Provides:
-         -   detect(
+         -  detect(
                     cls,
                     target: Token,
                     token_stack: TokenStackService,
             ) -> CollisionReport
             
      Super:
-        -   CollisionDetector[T]
+        -  CollisionDetector[T]
     """
     _collider: TokenCollider
     _identity_service: IdentityService

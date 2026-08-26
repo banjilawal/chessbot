@@ -21,7 +21,7 @@ from domain import ArenaDeleteContext
 class ArenaStackDeletePermissionUtility(StackDeletePermissionUtility[ArenaDeleteContext]):
     """
     Role:
-        -   Utility
+        -  Utility
 
     Responsibilities:
         1.  Bundles resources the ArenaDeleteAuthorizer needs to evaluate a ArenaDeleteRequest.

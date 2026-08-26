@@ -22,7 +22,7 @@ from util import LoggingLevelRouter
 class CoordContextValidator(StackContextValidator[CoordSearchSearchContext]):
     """
     Role
-        -   Integrity Assurance Worker
+        -  Integrity Assurance Worker
 
     Responsibilities:
         1.  Check that a candidate is the right type of not-null CoordSearchContext.
@@ -32,7 +32,7 @@ class CoordContextValidator(StackContextValidator[CoordSearchSearchContext]):
         bundle: CoordValidationBundle
 
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult[CoordSearchContext]:
+        -  def execute(candidate: Any) -> ValidationResult[CoordSearchContext]:
 
     Super Class:
         StackSearchContextChecker
@@ -55,9 +55,9 @@ class CoordContextValidator(StackContextValidator[CoordSearchSearchContext]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The candidate is not a CoordSearchContext.
-                    -   The wrong number of search attributes is enabled.
-                    -   An enabled search attribute fails a safety check.
+                    -  The candidate is not a CoordSearchContext.
+                    -  The wrong number of search attributes is enabled.
+                    -  An enabled search attribute fails a safety check.
             2.  Otherwise, send a TokeSearchContext in the success result.
         Args:
             candidate, Any

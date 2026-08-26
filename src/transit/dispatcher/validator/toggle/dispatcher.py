@@ -26,10 +26,10 @@ T = TypeVar("T", bound="Toggle")
 class ToggleValidationDispatcher(ValidationDispatcher, Generic[T]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Validation Process Owner
+        -  Transaction Worker
+        -  Integrity Maintenance
+        -  Consistency Assurance
+        -  Validation Process Owner
 
     Responsibilities:
         1.  Ensure a Operand instance is certified safe, reliable and consistent before use.
@@ -38,7 +38,7 @@ class ToggleValidationDispatcher(ValidationDispatcher, Generic[T]):
         integrity_checker: OperandToolkit
 
     Provides:
-        -   execute(self, candidate: Any) -> ValidationResult
+        -  execute(self, candidate: Any) -> ValidationResult
 
     Super Class:
         OperandValidator

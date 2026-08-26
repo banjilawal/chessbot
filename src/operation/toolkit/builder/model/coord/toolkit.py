@@ -20,7 +20,7 @@ from operation.toolkit.builder.model.coord.toolkit import ModelBuilderToolkit
 class CoordBuilderToolkit(ModelBuilderToolkit[Coord]):
     """
     Role:
-        -   Dependency Management
+        -  Dependency Management
         
     Responsibilities:
         1.  Bundles CoordBuilder dependencies.

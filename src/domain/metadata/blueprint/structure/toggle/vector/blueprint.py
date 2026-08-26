@@ -20,7 +20,7 @@ from domain.structure.toggle import CartesianToggle
 class VectorToggleBlueprint(ToggleBlueprint[CartesianToggle]):
     """
     Role:
-        -   Container
+        -  Container
     
     Responsibilities:
         1.  Provides values for instantiating a VectorToggle object.

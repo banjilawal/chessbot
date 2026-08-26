@@ -20,7 +20,7 @@ from domain import ModelTypeUnions, Arena, ArenaBlueprint, ArenaCarrier, ArenaSe
 class ArenaTypeUnions(ModelTypeUnions[Arena]):
     """
     Role:
-        -   Metadata
+        -  Metadata
 
     Responsibilities:
         1. Catalog of data unions a Arena uses in the domain.

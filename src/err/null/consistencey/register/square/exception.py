@@ -24,7 +24,7 @@ __all__ = [
 class SquareRegisterConsistencyCheckerNullException(RegisterException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required SquareRegisterConsistencyChecker is null.

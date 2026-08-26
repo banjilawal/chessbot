@@ -24,7 +24,7 @@ __all__ = [
 class TraversalPatternCarrierException(MovementPatternCarrierException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a TraversalPatternCarrier experienced an error.

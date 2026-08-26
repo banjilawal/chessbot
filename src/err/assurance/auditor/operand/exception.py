@@ -25,7 +25,7 @@ __all__ = [
 class VectorToggleConsistencyAuditorException(ConsistencyAuditorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a VectorToggleConsistencyAuditor failed.

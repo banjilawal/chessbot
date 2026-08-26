@@ -26,7 +26,7 @@ from err import ContextNoValidationRouteException
 class EdgeContextValidationRouteException(ContextNoValidationRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that one of EdgeContext validation routes is missing.

@@ -17,9 +17,9 @@ from topology.space import Axis, EastAxis, NorthAxis, SouthAxis, SpaceReservoir,
 class AxisReservoir(SpaceReservoir[Axis]):
     """
     Role:
-        -   Selection
-        -   Iterator
-        -   Routing Mask
+        -  Selection
+        -  Iterator
+        -  Routing Mask
 
     Responsibilities:
         1.  Implement SpaceReservoir for type-preserving iteration through an origin's axes.
@@ -42,7 +42,7 @@ class AxisReservoir(SpaceReservoir[Axis]):
         SpaceReservoir
         
     Note:
-        -   When the iterator is used, each item it produces must be cast to the correct type.
+        -  When the iterator is used, each item it produces must be cast to the correct type.
     """
     
     _reservoir: Dict[str, Axis]

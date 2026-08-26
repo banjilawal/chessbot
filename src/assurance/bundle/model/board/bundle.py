@@ -20,7 +20,7 @@ from domain import Board, BoardTypeUnions, BoardNullExceptionRoster
 class BoardValidationBundle(ValidationBundle[Board]):
     """
     Role:
-        -   Toolkit
+        -  Toolkit
 
     Responsibilities:
         1.  Bundles types, null-exceptions, attribute-validators, and utilities BoardIntegrityChecker needs to

@@ -17,8 +17,8 @@ from logic.coord import ConvertVectorException, Coord, CoordService
 class ConvertVectorToCoordTransaction:
     """
     Role:
-        -   Worker
-        -   Computation
+        -  Worker
+        -  Computation
 
     Responsibilities:
         1.  Add a Vector to a Coord.
@@ -26,7 +26,7 @@ class ConvertVectorToCoordTransaction:
     Attributes:
         
     Properties:
-        -   compute(
+        -  compute(
                     vector: Vector,
                     coord_service: CoordService,
                     vector_service: VectorService,
@@ -45,8 +45,8 @@ class ConvertVectorToCoordTransaction:
         """
         Action:
             1.  Send an exception chain in the ComputationResult if:
-                    -   The vector does not pass a validation check.
-                    -   Build a Coord from the vectors components is unsuccessful.
+                    -  The vector does not pass a validation check.
+                    -  Build a Coord from the vectors components is unsuccessful.
             2.  Otherwise, send the success result.
         Args:
             vector: Vector

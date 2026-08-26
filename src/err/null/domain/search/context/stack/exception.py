@@ -24,7 +24,7 @@ __all__ = [
 class StackContextNullException(SearchContextNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required StackContextNullException failed.

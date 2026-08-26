@@ -24,7 +24,7 @@ __all__ = [
 class KingTokenConsistencyAuditorException(TokenException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a KingTokenConsistencyAuditor failed.

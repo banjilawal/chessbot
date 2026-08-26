@@ -21,9 +21,9 @@ from system import ComputationException
 class CoordMultiplicationException(ComputationException):
     """
     Role:
-        -   Worker Method Identifier
-        -   Exception Chain Layer 1,
-        -   Exception Messaging
+        -  Worker Method Identifier
+        -  Exception Chain Layer 1,
+        -  Exception Messaging
 
     Responsibilities:
         1.  Indicate a CoordMultiplicationProcess was not completed.

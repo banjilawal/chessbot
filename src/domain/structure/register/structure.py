@@ -20,8 +20,8 @@ T = TypeVar("T", bound="DomainObject")
 class Register(Structure, ABC, Generic[T]):
     """
     Role:
-        -   Addressing
-        -   Data-Holder
+        -  Addressing
+        -  Data-Holder
   
     Responsibilities:
         1.  Contains a pair used in a binary operation whose operands must have

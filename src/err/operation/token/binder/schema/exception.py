@@ -26,7 +26,7 @@ from err import BinderTokenOperationException
 class SchemaBinderTokenOperationException(BinderTokenOperationException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a SchemaBinder tokenfailed.

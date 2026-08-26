@@ -23,7 +23,7 @@ from util import LoggingLevelRouter
 class TokenStackPop(StackPop[Token]):
     """
     Role
-        -   Worker
+        -  Worker
 
     Responsibilities:
         1.  Add an item to the TokenStackService
@@ -32,7 +32,7 @@ class TokenStackPop(StackPop[Token]):
         permitter: TokenStackPopPermitter
         
     Provides:
-        -   def execute(request: TokenStackPopPermitter) -> DeletionResult
+        -  def execute(request: TokenStackPopPermitter) -> DeletionResult
 
     Super Class:
         StackPop

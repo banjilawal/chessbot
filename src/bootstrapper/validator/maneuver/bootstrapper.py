@@ -14,8 +14,8 @@ from __future__ import annotations
 class ManeuverValidatorBootstrapper(ValidatorBootstrapper):
     """
     Role:
-        -   Analysis Factory
-        -   Consistency maintenance
+        -  Analysis Factory
+        -  Consistency maintenance
 
 
     Responsibilities:
@@ -25,7 +25,7 @@ class ManeuverValidatorBootstrapper(ValidatorBootstrapper):
     Attributes:
 
     Provides:
-        -   validator(
+        -  validator(
                     token: Token,
                     token_validator: TokenValidator,
             ) -> ValidationResult[TokenFreedomReport]
@@ -48,8 +48,8 @@ class ManeuverValidatorBootstrapper(ValidatorBootstrapper):
             1.  If the token fails, its certification, send an exception chain in the
                 RelationReport.
             2.  Otherwise, decide if the token is actionable based on.
-                    -   if it has been deployed.
-                    -   It has not been captured or checkmated.
+                    -  if it has been deployed.
+                    -  It has not been captured or checkmated.
             3.  Send the success result.
 
         Args:

@@ -17,8 +17,8 @@ from domain.schema import Archetype
 class Team(StatefulModel):
     """
     Role:
-        -   Model
-        -   Stateless Data-Holder
+        -  Model
+        -  Stateless Data-Holder
         
     Responsibilities:
         1.   Manages tokens assigned to a Team.
@@ -32,9 +32,9 @@ class Team(StatefulModel):
         roster: TokenDatabase
         
     Provides:
-        -   def is_ready_to_play() -> bool
-        -   def is_waiting_to_play() -> bool
-        -   def is_not_ready_to_play() -> bool
+        -  def is_ready_to_play() -> bool
+        -  def is_waiting_to_play() -> bool
+        -  def is_not_ready_to_play() -> bool
         
     Super Class
     """

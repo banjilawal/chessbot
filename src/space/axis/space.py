@@ -16,7 +16,7 @@ from space.axis.space import Space
 class Axis(Space):
     """
     Role:
-        -   Definition
+        -  Definition
 
     Responsibilities:
         1.  A horizontal or vertical line whose root is the Space's origin.

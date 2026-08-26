@@ -24,7 +24,7 @@ T = TypeVar("T")
 class Builder(ABC, Generic[T]):
     """
     Role
-        -   Builder
+        -  Builder
 
     Responsibilities:
         1.  Create an object from the safe blueprint.
@@ -33,7 +33,7 @@ class Builder(ABC, Generic[T]):
         toolit: BuildRequest[T]
 
     Provides:
-        -   def execute(blueprint: Blueprint[T]) -> BuildResult[T]
+        -  def execute(blueprint: Blueprint[T]) -> BuildResult[T]
 
     Super Class:
     """

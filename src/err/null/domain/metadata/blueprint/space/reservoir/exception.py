@@ -23,7 +23,7 @@ __all__ = [
 class SpaceReservoirNullException(SpaceBlueprintNullException):
     """
     Role:
-        -   Failure Tracing
+        -  Failure Tracing
 
     Responsibilities:
         1.  Indicating a required SpaceReservoirBlueprint is null.

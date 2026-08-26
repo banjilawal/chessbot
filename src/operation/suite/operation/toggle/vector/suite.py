@@ -20,8 +20,8 @@ from domain.structure.toggle import CartesianToggle
 class VectorToggleSuite(ToggleOperationSuite[CartesianToggle]):
     """
     Role:
-        -   Dependency Container
-        -   Dynamic Dependency Provider
+        -  Dependency Container
+        -  Dynamic Dependency Provider
 
     Responsibilities:
         1.  Contains the operations that can be performed on a VectorToggle.

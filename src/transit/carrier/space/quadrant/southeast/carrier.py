@@ -19,7 +19,7 @@ from space import SoutheastQuadrant
 class SoutheastQuadrantCarrier(SpaceCarrier[SoutheastQuadrant]):
     """
     Role:
-        -   Data Transport
+        -  Data Transport
 
     Responsibilities:
         2.  Transports either a SoutheastQuadrant or its Blueprint.
@@ -29,7 +29,7 @@ class SoutheastQuadrantCarrier(SpaceCarrier[SoutheastQuadrant]):
         blueprint: Optional[SoutheastQuadrantBlueprint]
 
     Provides:
-        -   extract_blueprint() -> Optional[SoutheastQuadrantBlueprint]
+        -  extract_blueprint() -> Optional[SoutheastQuadrantBlueprint]
 
     Super Class:
         ModelCarrier

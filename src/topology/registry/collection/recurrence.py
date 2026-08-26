@@ -20,8 +20,8 @@ T = TypeVar("T", bound="TraversalRank")
 class RecurrenceRegistryCollection(ABC, Generic[T]):
     """
     Role:
-        -   Data Holder
-        -   Iterator
+        -  Data Holder
+        -  Iterator
 
     Responsibilities:
         1.  Stores collections of recurrence registries VectorTransformers iterate over.

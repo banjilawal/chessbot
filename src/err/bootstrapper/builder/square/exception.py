@@ -24,7 +24,7 @@ __all__ = [
 class SquareBuilderBootstrapperException(BuilderBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a SquareBuilderBootstrapper was aborted by an exception.

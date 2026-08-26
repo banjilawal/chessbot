@@ -24,7 +24,7 @@ __all__ = [
 class RookMovementSetEmptyException(MovementVectorSetEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required RookMovementSet is empty.

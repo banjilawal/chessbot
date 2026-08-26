@@ -24,9 +24,9 @@ from util import LoggingLevelRouter
 class AxisReservoirRootChecker(SpaceReservoirChecker[AxisReservoir]):
     """
     Role
-        -   Validator
-        -   Integrity Assurance
-        -   Consistency Assurance
+        -  Validator
+        -  Integrity Assurance
+        -  Consistency Assurance
 
     Responsibilities:
         1.  Runs integrity checks on Spaces and SpaceBlueprints before they are used.
@@ -36,7 +36,7 @@ class AxisReservoirRootChecker(SpaceReservoirChecker[AxisReservoir]):
         bundle: SpaceToolkit
 
     Provides:
-        -   def execute(candidate: Any, bundle: SpaceToolkit,) -> ValidationResult[Blueprint[T]]:
+        -  def execute(candidate: Any, bundle: SpaceToolkit,) -> ValidationResult[Blueprint[T]]:
 
     Super Class:
     """
@@ -56,9 +56,9 @@ class AxisReservoirRootChecker(SpaceReservoirChecker[AxisReservoir]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The candidate is not a AxisReservoirDtoCarrier.
-                    -   The candidate is an empty AxisReservoirDtoCarrier.
-                    -   Either the board, team, formation, rank or id get flagged unsafe.
+                    -  The candidate is not a AxisReservoirDtoCarrier.
+                    -  The candidate is an empty AxisReservoirDtoCarrier.
+                    -  Either the board, team, formation, rank or id get flagged unsafe.
             2.  For a model_carrier send a AxisReservoir in the success result. Otherwise, send 
                 the AxisReservoirBlueprint.
         Args:

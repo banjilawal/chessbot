@@ -23,7 +23,7 @@ __all__ = [
 class AxisReservoirNullException(SpaceReservoirNullException):
     """
     Role:
-        -   Failure Tracing
+        -  Failure Tracing
 
     Responsibilities:
         1.  Indicating a required AxisReservoirBlueprint is null.

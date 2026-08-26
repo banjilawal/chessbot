@@ -35,7 +35,7 @@ class QuotaAnalyzerBootstrapper(AnalyzerBootstrapper):
     Attributes:
 
     Provides:
-        -   execute(
+        -  execute(
                     rank: Rank,
                     token_stack: TokenStackService,
                     rank_service: RankService = RankService(),
@@ -53,8 +53,8 @@ class QuotaAnalyzerBootstrapper(AnalyzerBootstrapper):
         
         Actions:
             1.  Send an exception chain in the AnalysisResult if:
-                    -   The rank does not pass a validation check.
-                    -   The rank search fails.
+                    -  The rank does not pass a validation check.
+                    -  The rank search fails.
             2.  Otherwise, send the success result.
         Args:
             rank: Rank

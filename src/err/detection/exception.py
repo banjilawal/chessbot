@@ -23,7 +23,7 @@ __all__ = [
 class DetectorException(ChessException):
     """
     Role:
-        -   Failure Tracing
+        -  Failure Tracing
 
     Responsibilities:
         1.  Indicating a detector from completing the task.

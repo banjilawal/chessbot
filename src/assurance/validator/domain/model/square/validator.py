@@ -19,7 +19,7 @@ from util import LoggingLevelRouter
 class SquareValidator(ModelValidator[SquareBlueprint]):
     """
     Role
-        -   Integrity, Consistency Maintenance
+        -  Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a SquareBlueprint instance is certified safe, reliable and consistent before use.
@@ -28,7 +28,7 @@ class SquareValidator(ModelValidator[SquareBlueprint]):
         bundle: SquareToolkit
 
     Provides:
-        -   execute(self, candidate: Any) -> ValidationResult:
+        -  execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
         IntegrityChecker
@@ -56,8 +56,8 @@ class SquareValidator(ModelValidator[SquareBlueprint]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The validation_priming fails.
-                    -   Either the board, owner or id get flagged unsafe.
+                    -  The validation_priming fails.
+                    -  Either the board, owner or id get flagged unsafe.
             2.  Otherwise, send the success result.
         Args:
             candidate: Any,

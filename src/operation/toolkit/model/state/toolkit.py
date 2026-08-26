@@ -22,7 +22,7 @@ T = TypeVar("T", bound="StateModel")
 class StateModelToolkit(ModelToolkit, Generic[T]):
     """
     Role:
-        -   Dependency Management
+        -  Dependency Management
 
     Responsibilities:
         1.  Aggregates workers and services a stateful model requires for its tasks.
@@ -48,8 +48,8 @@ class StateModelToolkit(ModelToolkit, Generic[T]):
        ModelToolkit
 
     Notes:
-        -   ModelToolkit for an empty class which makes managing toolkits easier.
-        -   Any toolkits for a model should be a ModelToolkit subclass.
+        -  ModelToolkit for an empty class which makes managing toolkits easier.
+        -  Any toolkits for a model should be a ModelToolkit subclass.
     """
     model: Type[T]
     carrier_model: Type[EntityCarrier[T]]

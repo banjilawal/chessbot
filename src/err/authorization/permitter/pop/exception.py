@@ -24,7 +24,7 @@ __all__ = [
 class PopperPermitterException(PermitterException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a PopperPermitter did not approve the request.

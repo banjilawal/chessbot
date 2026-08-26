@@ -21,10 +21,10 @@ from util import LoggingLevelRouter
 class ManeuverValidator(ModelValidator[Maneuver]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Validation Process Owner
+        -  Transaction Worker
+        -  Integrity Maintenance
+        -  Consistency Assurance
+        -  Validation Process Owner
 
     Responsibilities:
         1.  Ensure a Maneuver instance is certified safe, reliable and consistent before use.
@@ -32,7 +32,7 @@ class ManeuverValidator(ModelValidator[Maneuver]):
     Attributes:
 
     Provides:
-        -   def validate(
+        -  def validate(
                     candidate: Any,
                     bundle: ManeuverToolkit,
             ) -> ValidationResult[Maneuver]:
@@ -60,11 +60,11 @@ class ManeuverValidator(ModelValidator[Maneuver]):
 
         Action:
             1.  Send an exception chan in the validation result if any of the following occur:
-                    -   The candidate is either null or the wrong type.
-                    -   The maneuver's token in not valid.
-                    -   The maneuver's path gets flagged.
-                    -   The token is not at the origin.
-                    -   The destination contains the token.
+                    -  The candidate is either null or the wrong type.
+                    -  The maneuver's token in not valid.
+                    -  The maneuver's path gets flagged.
+                    -  The token is not at the origin.
+                    -  The destination contains the token.
             2.  Otherwise, send the success result.
         Args:
             candidate: Any

@@ -18,8 +18,8 @@ from artifcat import Result, UpdateState
 class UpdateResult(Result[Response]):
     """
     Role:
-        -   Data Transport
-        -   Error Transport
+        -  Data Transport
+        -  Error Transport
 
     Responsibilities:
         1.  Contains the outcome of an update
@@ -34,10 +34,10 @@ class UpdateResult(Result[Response]):
         is_empty: bool
 
     Provides:
-        -   def empty() -> SearchResult[T]:
-        -   def success(payload: T) -> Result[T]
-        -   def failure(exception: Exception) -> Result[T]
-        -   def timed_out(cls, exception: Exception) -> SearchResult[T]:
+        -  def empty() -> SearchResult[T]:
+        -  def success(payload: T) -> Result[T]
+        -  def failure(exception: Exception) -> Result[T]
+        -  def timed_out(cls, exception: Exception) -> SearchResult[T]:
 
     Super Class:
         Result

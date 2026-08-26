@@ -24,7 +24,7 @@ __all__ = [
 class SquareCollisionDetectorException(DetectorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a SquareCollisionDetector experienced an error that prevented

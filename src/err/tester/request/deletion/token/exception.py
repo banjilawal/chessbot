@@ -25,7 +25,7 @@ __all__ = [
 class TokenDeletionRequestTesterException(DeletionRequestTesterException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a TokenStackDeletionTester encountered an error.

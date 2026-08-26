@@ -25,7 +25,7 @@ __all__ = [
 class MappingFunctionException(ChessException):
     """
     Role:
-        -   Failure Tracing
+        -  Failure Tracing
 
     Responsibilities:
         1.  Indicating a MappingFunction did not complete its task.

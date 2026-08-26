@@ -20,7 +20,7 @@ from util import  LoggingLevelRouter
 class SoutheastQuadrantBuilder(QuadrantBuilder[SoutheastQuadrant]):
     """
     Role
-        -   Builder
+        -  Builder
 
     Responsibilities:
         1.  Create a SoutheastQuadrant instance from the safe blueprint.
@@ -28,7 +28,7 @@ class SoutheastQuadrantBuilder(QuadrantBuilder[SoutheastQuadrant]):
     Attributes:
 
     Provides:
-        -   def execute(self, blueprint: SoutheastQuadrantBlueprint,) -> BuildResult[SoutheastQuadrant]
+        -  def execute(self, blueprint: SoutheastQuadrantBlueprint,) -> BuildResult[SoutheastQuadrant]
 
     Super Class:
         QuadrantBuilder

@@ -20,7 +20,7 @@ from space import EastAxis
 class EastAxisBlueprint(AxisBlueprint[EastAxis]):
     """
      Role:
-         -   DTO
+         -  DTO
 
      Responsibilities:
          1.  Provides values for instantiating a EastAxis.

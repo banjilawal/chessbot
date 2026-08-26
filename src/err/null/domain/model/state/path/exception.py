@@ -24,7 +24,7 @@ __all__ = [
 class PathNullException(StateModelNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required Path is null.

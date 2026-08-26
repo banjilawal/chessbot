@@ -24,7 +24,7 @@ __all__ = [
 class PawnPromoterException(TokenOperatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a pawn from being promoted.

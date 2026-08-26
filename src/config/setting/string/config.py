@@ -27,7 +27,7 @@ MAX_LENGTH = 40
 class StringPropertyTable:
     """
     Role
-        -   Property Settings
+        -  Property Settings
   
     Responsibilities:
         1.  Default lengths of Strings.

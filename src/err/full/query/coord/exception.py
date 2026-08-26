@@ -25,7 +25,7 @@ from err import QueryFullException
 class CoordQueryFullException(QueryFullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required CoordQuery is full.

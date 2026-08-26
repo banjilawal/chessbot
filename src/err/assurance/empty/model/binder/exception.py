@@ -24,7 +24,7 @@ __all__ = [
 class BinderEmptyException(ModelEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required Binder is empty.

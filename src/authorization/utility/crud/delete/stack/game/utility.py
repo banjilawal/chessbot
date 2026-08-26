@@ -21,7 +21,7 @@ from domain import GameDeleteContext
 class GameStackDeletePermissionUtility(StackDeletePermissionUtility[GameDeleteContext]):
     """
     Role:
-        -   Utility
+        -  Utility
 
     Responsibilities:
         1.  Bundles resources the GameDeleteAuthorizer needs to evaluate a GameDeleteRequest.

@@ -16,7 +16,7 @@ from bootstrapper.validator.priming import PrimingValidator
 class BoardTeamBinderToolkit(AnalyzerToolkit):
     """
     Role:
-        -   Container
+        -  Container
 
     Responsibilities:
         1.  Collection of workers and services that are required for BoardTeamBinder tasks.

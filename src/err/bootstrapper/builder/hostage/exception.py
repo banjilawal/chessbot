@@ -24,7 +24,7 @@ __all__ = [
 class HostageBuilderBootstrapperException(BuilderBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a HostageBuilderBootstrapper was aborted by an exception.

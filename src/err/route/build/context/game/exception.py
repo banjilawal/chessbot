@@ -26,7 +26,7 @@ from err import ContextBuildRouteException
 class GameContextBuildRouteException(ContextBuildRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that one of GameContext build routes is missing.

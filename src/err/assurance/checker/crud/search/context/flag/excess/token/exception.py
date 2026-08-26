@@ -25,7 +25,7 @@ __all__ = [
 class ExcessTokenContextFlagsException(ExcessContextFlagsException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating too many TokenSearchContext flags were enabled.

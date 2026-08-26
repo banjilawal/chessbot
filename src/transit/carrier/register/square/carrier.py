@@ -20,8 +20,8 @@ from transit.structure.register import SquareRegister
 class SquareRegisterCarrier(EntityCarrier[SquareRegister]):
     """
     Role:
-        -   Addressing
-        -   Data-Holder
+        -  Addressing
+        -  Data-Holder
     
     Responsibilities:
         1.  Entity for transporting either an SquareRegister or SquareRegisterBlueprint

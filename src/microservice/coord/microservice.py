@@ -16,10 +16,10 @@ from domain.model import Coord
 class CoordService(Microservice[Coord]):
     """
     Role:
-        -   API
-        -   Stateless microservice
-        -   Lifecycle Manager
-        -   Operations Provider
+        -  API
+        -  Stateless microservice
+        -  Lifecycle Manager
+        -  Operations Provider
 
     Responsibilities:
         1.  Baremetal service request API for Coord operations.
@@ -36,21 +36,21 @@ class CoordService(Microservice[Coord]):
 
     Provides:
     
-        -   euclidean_distance(u: Coord, v: Coord) -> ComputationResult[int]
+        -  euclidean_distance(u: Coord, v: Coord) -> ComputationResult[int]
         
-        -   add_to_coord(
+        -  add_to_coord(
                     coord: Optional[Coord],
                     operand: Union[Vector, Coord],
                     vector_service: VectorService,
             ) -> ComputationResult[Coord]
 
-        -   multiply_by_scalar(
+        -  multiply_by_scalar(
                     coord: Coord,
                     scalar: Scalar,
                     scalar_service: ScalarService,
             ) -> ComputationResult[Coord]
 
-        -   convert_vector_to_coord(
+        -  convert_vector_to_coord(
                     self,
                     vector: Vector,
                     vector_service: VectorService = VectorService()
@@ -100,9 +100,9 @@ class CoordService(Microservice[Coord]):
         
         Actions:
             1.  Send an exception chain in the ComputationResult if either:
-                    -   The coord is unsafe.
-                    -   The operand is unsafe.
-                    -   Their summation is not computed.
+                    -  The coord is unsafe.
+                    -  The operand is unsafe.
+                    -  Their summation is not computed.
             2.  Otherwise, send the success result.
         Args:
             coord: [Coord]
@@ -147,9 +147,9 @@ class CoordService(Microservice[Coord]):
 
         Actions:
             1.  Send an exception chain in the ComputationResult if either:
-                    -   The coord is unsafe.
-                    -   The scalar is unsafe.
-                    -   Their product is not computed.
+                    -  The coord is unsafe.
+                    -  The scalar is unsafe.
+                    -  Their product is not computed.
             2.  Otherwise, send the success result.
         Args:
             coord: [Coord]
@@ -189,8 +189,8 @@ class CoordService(Microservice[Coord]):
 
         Actions:
             1.  Send an exception chain in the ComputationResult if either:
-                    -   A coord is unsafe.
-                    -   Their distance is not computed.
+                    -  A coord is unsafe.
+                    -  Their distance is not computed.
             2.  Otherwise, send the success result.
         Args:
             u: Coord
@@ -232,8 +232,8 @@ class CoordService(Microservice[Coord]):
 
         Actions:
             1.  Send an exception chain in the ComputationResult if either:
-                    -   The vector is unsafe.
-                    -   A coord cannot be built from the vector's components.
+                    -  The vector is unsafe.
+                    -  A coord cannot be built from the vector's components.
             2.  Otherwise, send the success result.
         Args:
             vector: Vector,

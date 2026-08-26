@@ -24,7 +24,7 @@ class VectorNodeContextValidator(
 ):
     """
     Role
-        -   Integrity, Consistency Maintenance
+        -  Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a VectorNodeContext instance is safe before use.
@@ -33,7 +33,7 @@ class VectorNodeContextValidator(
         integrity_checker: VectorNodeContextChecker
 
     Provides:
-        -   execute(self, candidate: Any) -> ValidationResult[VectorNodeContext]
+        -  execute(self, candidate: Any) -> ValidationResult[VectorNodeContext]
 
     Super Class:
         ContextValidator

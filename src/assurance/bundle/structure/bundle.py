@@ -25,7 +25,7 @@ T = TypeVar("T", bound="Structure")
 class StructureValidationBundle(ValidationBundle[T], ABC, Generic[T]):
     """
     Role:
-        -   Toolkit
+        -  Toolkit
 
     Responsibilities:
         1.  Bundles types, null-exceptions, attribute-validators, and utilities IntegrityChecker

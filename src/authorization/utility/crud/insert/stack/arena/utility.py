@@ -21,7 +21,7 @@ from domain import ArenaInsertContext
 class ArenaStackInsertPermissionUtility(StackInsertPermissionUtility[ArenaInsertContext]):
     """
     Role:
-        -   Utility
+        -  Utility
 
     Responsibilities:
         1.  Bundles resources the ArenaInsertAuthorizer needs to evaluate a ArenaInsertRequest.

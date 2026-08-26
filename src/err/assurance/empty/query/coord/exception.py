@@ -25,7 +25,7 @@ from err import QueryStackEmptyException
 class CoordQueryStackEmptyException(QueryStackEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required CoordQuery's target stack is empty.

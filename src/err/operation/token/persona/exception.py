@@ -23,7 +23,7 @@ __all__ = [
 class PersonaTokenOperationException(TokenOperatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that n Persona tokenfailed.

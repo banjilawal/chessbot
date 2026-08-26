@@ -20,7 +20,7 @@ from operation.toolkit.builder.register.toggle.toolkit import RegisterBuilderToo
 class VectorToggleRegisterBuilderToolkit(RegisterBuilderToolkit[CartesianToggleRegister]):
     """
     Role:
-        -   Dependency Management
+        -  Dependency Management
         
     Responsibilities:
         1.  Bundles VectorToggleRegisterRegisterBuilder dependencies.

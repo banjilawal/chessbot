@@ -19,7 +19,7 @@ from domain.structure.node import Node
 class NodeBlueprint(Blueprint[Node]):
     """
      Role:
-         -   DTO
+         -  DTO
 
      Responsibilities:
          1.  Provides values for instantiating a Node object

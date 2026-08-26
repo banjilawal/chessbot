@@ -24,9 +24,9 @@ from util import LoggingLevelRouter
 class DestinationCertifierBootstrapper:
     """
     Role
-        -   Validation Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
+        -  Validation Worker
+        -  Integrity Maintenance
+        -  Consistency Assurance
 
     Responsibilities:
         1.  Verify a Token does not have either a partial or full bidirectional relation
@@ -37,7 +37,7 @@ class DestinationCertifierBootstrapper:
         relation_analyzer: Optional[SquareTokenRelationAnalyzer]
         
     Provides:
-        -   ddef execute(self,) -> ValidationResult[Square]:
+        -  ddef execute(self,) -> ValidationResult[Square]:
 
     Super Class:
     """
@@ -58,9 +58,9 @@ class DestinationCertifierBootstrapper:
 
         Action:
             1.  Send an exception chan in the validation result if either:
-                    -   The relation analysis is not completed.
-                    -   The token is either fully or partially bound to the destination.
-                    -   The destination is occupied by a friend.
+                    -  The relation analysis is not completed.
+                    -  The token is either fully or partially bound to the destination.
+                    -  The destination is occupied by a friend.
             2.  Otherwise, send the success result.
         Args:
             token: Token

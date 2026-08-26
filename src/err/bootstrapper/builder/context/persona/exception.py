@@ -24,7 +24,7 @@ __all__ = [
 class PersonaContextBuilderBootstrapperException(ContextBuilderBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a PersonaContextBuilderBootstrapper was aborted by an exception.

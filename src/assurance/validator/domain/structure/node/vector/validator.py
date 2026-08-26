@@ -22,10 +22,10 @@ from util import LoggingLevelRouter
 class VectorNodeIntegrityChecker(NodeValidator):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Validation Process Owner
+        -  Transaction Worker
+        -  Integrity Maintenance
+        -  Consistency Assurance
+        -  Validation Process Owner
 
     Responsibilities:
         1.  Ensure a Node instance is certified safe, reliable and consistent before use.
@@ -34,7 +34,7 @@ class VectorNodeIntegrityChecker(NodeValidator):
         bundle: VectorNodeValidationBundle
 
     Provides:
-        -   execute(self, candidate: Any) -> ValidationResult
+        -  execute(self, candidate: Any) -> ValidationResult
 
     Super Class:
         IntegrityChecker
@@ -59,9 +59,9 @@ class VectorNodeIntegrityChecker(NodeValidator):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The candidate is not a VectorDtoCarrier.
-                    -   The candidate is an empty VectorDtoCarrier.
-                    -   Either the board, team, formation, rank or id get flagged unsafe.
+                    -  The candidate is not a VectorDtoCarrier.
+                    -  The candidate is an empty VectorDtoCarrier.
+                    -  Either the board, team, formation, rank or id get flagged unsafe.
             2.  For a model_carrier send a Vector in the success result. Otherwise, send a TokeBlueprint.
         Args:
             candidate, Any

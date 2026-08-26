@@ -23,8 +23,8 @@ class TokenDatabase(Database[Token]):
     """
     Role:
         _   Frontend
-        -   Interface
-        -   Data Protection
+        -  Interface
+        -  Data Protection
 
     Responsibilities:
         1.  Encapsulates StackService.
@@ -40,14 +40,14 @@ class TokenDatabase(Database[Token]):
         integrity_service: Microservice[T]
 
     Provides:
-        -   iterator() ->: iter
-        -   insert(item: T) -> InsertionResult:
-        -   delete_by_id(id: int) -> DeletionResult[T]:
-        -   search(context: Context[T]) -> SearchResult[List[T]]
+        -  iterator() ->: iter
+        -  insert(item: T) -> InsertionResult:
+        -  delete_by_id(id: int) -> DeletionResult[T]:
+        -  search(context: Context[T]) -> SearchResult[List[T]]
     ""
     Role:
-        -   Repo interface.
-        -   Data Protection layer.
+        -  Repo interface.
+        -  Data Protection layer.
 
     Responsibilities:
         1.  Protects TokenStackService data from direct access.
@@ -70,15 +70,15 @@ class TokenDatabase(Database[Token]):
         integrity_service: TokenService
 
     Provides:
-        -   insert(token: Token) -> InsertionResult[bool]
-        -   search(context: TokenContext) -> SearchResult[List[Token]]
+        -  insert(token: Token) -> InsertionResult[bool]
+        -  search(context: TokenContext) -> SearchResult[List[Token]]
         
-        -   rank_quota_report(
+        -  rank_quota_report(
                     rank: Rank,
                     rank_service: RankService = RankService(),
             ) -> ComputationResult[RankQuotaReport]
             
-        -   delete_by_id(
+        -  delete_by_id(
                     id: int,
                     identity_service: IdentityService,
             ) -> DeletionResult

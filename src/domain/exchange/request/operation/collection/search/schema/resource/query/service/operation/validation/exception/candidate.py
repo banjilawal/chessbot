@@ -21,9 +21,9 @@ from system import NullException
 class SchemaQueryNullException(NullException):
     """
     Role:
-        -   Exception Chain Layer 2
-        -   Error Variable Identifier
-        -   Debugging Metadata provider
+        -  Exception Chain Layer 2
+        -  Error Variable Identifier
+        -  Debugging Metadata provider
 
     Responsibilities:
         1.  Indicate a client got null instead of a List[Schema].

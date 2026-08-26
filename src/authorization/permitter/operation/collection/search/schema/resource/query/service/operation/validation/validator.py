@@ -20,9 +20,9 @@ from domain.model import (
 class SchemaQueryValidator(Validator[SchemaQuery]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Process Runner
+        -  Transaction Worker
+        -  Integrity Maintenance
+        -  Process Runner
 
     Responsibilities:
         1.  Ensure a SchemaQuery instance is certified safe, reliable and consistent before use.
@@ -30,7 +30,7 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
     Attributes:
 
     Provides:
-        -   def validate(
+        -  def validate(
                 rank: Any
                 workers: SchemaQueryIntegrityWorkers
             ) -> ValidationResult[SchemaQuery]:
@@ -51,9 +51,9 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
 
         Action:
             1.  Send an exception chain in the ValidationResult if either:
-                    -   The rank is null.
-                    -   The rank is not a SchemaQuery.
-                    -   Any integrity worker raises a failed test.
+                    -  The rank is null.
+                    -  The rank is not a SchemaQuery.
+                    -  Any integrity worker raises a failed test.
             2.  Otherwise, send the success result.
         Args:
             candidate: Any

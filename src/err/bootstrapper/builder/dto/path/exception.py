@@ -24,7 +24,7 @@ __all__ = [
 class TokenPathDtoBuilderBootstrapperException(DtoBuilderBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a PathDtoBuilderBootstrapper was aborted by an exception.

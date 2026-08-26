@@ -20,7 +20,7 @@ from util import LoggingLevelRouter
 class VectorToggleBuilder(ToggleBuilder[CartesianToggle]):
     """
     Role
-        -   Builder
+        -  Builder
 
     Responsibilities:
         1.  Create a VectorToggle instance from the safe blueprint.
@@ -28,7 +28,7 @@ class VectorToggleBuilder(ToggleBuilder[CartesianToggle]):
     Attributes:
 
     Provides:
-        -   def execute(self, blueprint: VectorToggleBlueprint,) -> BuildResult[VectorToggle]
+        -  def execute(self, blueprint: VectorToggleBlueprint,) -> BuildResult[VectorToggle]
 
     Super Class:
         ToggleBuilder

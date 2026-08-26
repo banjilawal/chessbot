@@ -24,7 +24,7 @@ __all__ = [
 class EastQuadrantRecurrenceValidatorException(QuadrantRecurrenceValidatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a EastQuadrantRecurrenceValidator failed.

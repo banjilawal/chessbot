@@ -26,7 +26,7 @@ from err import ContextTokenOperationException
 class RankContextTokenOperationException(ContextTokenOperationException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a RankContext tokenfailed.

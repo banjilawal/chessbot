@@ -23,7 +23,7 @@ __all__ = [
 class ScalarBuildRouteException(BuildRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that one of Scalar build routes is missing.

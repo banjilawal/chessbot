@@ -18,9 +18,9 @@ from collection.stack import TeamStackService
 class TeamQuery(StackQuery[Team]):
     """
     Role:
-        -   Model
-        -   Search
-        -   Stateless Data-Holder
+        -  Model
+        -  Search
+        -  Stateless Data-Holder
 
     Responsibilities:
         1.  A list of teams to search with context.

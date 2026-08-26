@@ -22,9 +22,9 @@ from system import RelationAnalysisException
 class TokenCollisionDetectionException(RelationAnalysisException):
     """
     Role: 
-        -   Error Variable Identifier
-        -   Exception Chain Layer 2
-        -   Exception Messaging
+        -  Error Variable Identifier
+        -  Exception Chain Layer 2
+        -  Exception Messaging
 
     Responsibilities:
         1.  Indicating that the TokenCollisionAnalyst encountered an error. It did not run the collision tests.

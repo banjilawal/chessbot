@@ -24,7 +24,7 @@ __all__ = [
 class StepperException(SchemaException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Stepper encountered an error.

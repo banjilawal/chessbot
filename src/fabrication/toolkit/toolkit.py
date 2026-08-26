@@ -22,7 +22,7 @@ T = TypeVar("T")
 class BuilderToolkit(ABC, Generic[T]):
     """
     Role
-        -   Toolkit
+        -  Toolkit
 
     Responsibilities:
         1.  Provides validators and other resources Builder requires to complete its task.

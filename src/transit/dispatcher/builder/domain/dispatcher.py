@@ -24,10 +24,10 @@ T = TypeVar("T")
 class DomainObjectBuildDispatcher(BuildDispatcher[T], ABC, Generic[T]):
     """
     Role
-        -   Build Pipeline
-        -   Integrity Management
-        -   Consistency Assurance
-        -   Workflow Owner
+        -  Build Pipeline
+        -  Integrity Management
+        -  Consistency Assurance
+        -  Workflow Owner
     
     Responsibilities:
         1.  Ensure a new T instance is born safe and reliable.
@@ -36,7 +36,7 @@ class DomainObjectBuildDispatcher(BuildDispatcher[T], ABC, Generic[T]):
         builder_toolkit: BuilderToolkit[T]
     
     Provides:
-        -   def execute(self, blueprint: Blueprint[T]) -> BuildResult[T]
+        -  def execute(self, blueprint: Blueprint[T]) -> BuildResult[T]
     
     Super Class:
     """

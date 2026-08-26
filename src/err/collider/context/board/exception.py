@@ -26,7 +26,7 @@ from err import ContextColliderException
 class BoardContextCollisionException(ContextColliderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a BoardContextCollision step failed.

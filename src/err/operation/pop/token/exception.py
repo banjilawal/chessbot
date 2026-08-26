@@ -24,7 +24,7 @@ __all__ = [
 class TokenStackPopException(PopperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a TokenPopper did not complete its task.

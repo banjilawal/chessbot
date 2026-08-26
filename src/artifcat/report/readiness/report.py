@@ -19,7 +19,7 @@ from artifcat.report import ReadinessState, Report
 class TokenReadinessReport(Report):
     """
     Role:
-        -   Test results
+        -  Test results
 
     Responsibilities:
         1.  Presents the results of testing if a Token can be used in the game.
@@ -35,10 +35,10 @@ class TokenReadinessReport(Report):
         is_not_deployed: bool
         
     Provides:
-        -   def free(token: Token) -> TokenFreedomReport:
-        -   def not_deployed(token: Token) -> TokenFreedomReport:
-        -   def captured(token: CombatantToken) -> TokenFreedomReport:
-        -   def checkmated(token: KingToken) -> TokenFreedomReport:
+        -  def free(token: Token) -> TokenFreedomReport:
+        -  def not_deployed(token: Token) -> TokenFreedomReport:
+        -  def captured(token: CombatantToken) -> TokenFreedomReport:
+        -  def checkmated(token: KingToken) -> TokenFreedomReport:
 
     Super Class:
         Report

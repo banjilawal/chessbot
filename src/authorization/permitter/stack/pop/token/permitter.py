@@ -23,9 +23,9 @@ from util import LoggingLevelRouter
 class TokenPopPermitter(PopPermitter[Token]):
     """
     Role:
-        -   Request Analyzer
-        -   Rights Granter
-        -   Consistency, Integrity Maintenance
+        -  Request Analyzer
+        -  Rights Granter
+        -  Consistency, Integrity Maintenance
 
     Responsibilities:
         1.  Evaluate if a TokenStack popping request can be granted.
@@ -34,7 +34,7 @@ class TokenPopPermitter(PopPermitter[Token]):
         priming_validator: PrimingValidator
 
     Provides:
-        -   run(self, request: PopRequest,) -> PopApprovalReport:
+        -  run(self, request: PopRequest,) -> PopApprovalReport:
 
     Super Class:
         PopPermitter
@@ -47,9 +47,9 @@ class TokenPopPermitter(PopPermitter[Token]):
         
         Action:
             1.  Deny the request if any of the following occur.
-                    -   The request cannot be bootstrapped.
-                    -   The request does not contain a TokenStackService.
-                    -   The TokenStack is empty.
+                    -  The request cannot be bootstrapped.
+                    -  The request does not contain a TokenStackService.
+                    -  The TokenStack is empty.
             2.  Otherwise, approve the request.
         Args:
             request: PopRequest

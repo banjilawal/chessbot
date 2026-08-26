@@ -21,7 +21,7 @@ from domain import BoardInsertContext
 class BoardStackInsertPermissionUtility(StackInsertPermissionUtility[BoardInsertContext]):
     """
     Role:
-        -   Utility
+        -  Utility
 
     Responsibilities:
         1.  Bundles resources the BoardInsertAuthorizer needs to evaluate a BoardInsertRequest.

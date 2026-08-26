@@ -23,7 +23,7 @@ __all__ = [
 class AxisNullException(SpaceNullException):
     """
     Role:
-        -   Failure Tracing
+        -  Failure Tracing
 
     Responsibilities:
         1.  Indicating a required Axis is null.

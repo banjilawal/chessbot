@@ -36,7 +36,7 @@ class TokenBuilderBootstrapper(SearcherBootstrapper[TokenOriginSearcher]):
     Attributes:
 
     Provides:
-        -   execute(
+        -  execute(
                     token: Token,
                     readiness_analyzer: TokenReadinessAnalyzer,
             ) -> SearchResult
@@ -56,11 +56,11 @@ class TokenBuilderBootstrapper(SearcherBootstrapper[TokenOriginSearcher]):
 
         Action:
             1.  Return a failure result containing an exception chain if either:
-                    -   The token's readiness analysis is not completed.
-                    -   The square search is not completed.
-                    -   The token is disabled.
-                    -   The token is not found on the board.
-                    -   The search result indicates the token occupies more than one square.
+                    -  The token's readiness analysis is not completed.
+                    -  The square search is not completed.
+                    -  The token is disabled.
+                    -  The token is not found on the board.
+                    -  The search result indicates the token occupies more than one square.
             2.  Otherwise, send the success result.
         Args:
             target: Token,

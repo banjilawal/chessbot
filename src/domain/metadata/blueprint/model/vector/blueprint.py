@@ -22,8 +22,8 @@ from domain.model import Vector
 class VectorBlueprint(ModelBlueprint[Vector]):
     """
     Role:
-        -   Container
-        -   DTO
+        -  Container
+        -  DTO
 
     Responsibilities:
         1.  Provides values for instantiating a Vector object.

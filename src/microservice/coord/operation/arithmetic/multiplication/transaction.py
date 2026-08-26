@@ -16,8 +16,8 @@ from logic.coord import Coord, CoordMultiplicationException, CoordService
 class MultiplyCoordTransaction:
     """
     Role:
-        -   Worker
-        -   Computation
+        -  Worker
+        -  Computation
 
     Responsibilities:
         1.  ComputationWorker the product of a Coord and a Scalar.
@@ -25,7 +25,7 @@ class MultiplyCoordTransaction:
     Attributes:
         
     Properties:
-        -   compute(
+        -  compute(
                     coord: Coord,
                     scalar: Scalar,
                     coord_service: CoordService,
@@ -46,9 +46,9 @@ class MultiplyCoordTransaction:
         """
         Action:
             1.  Send an exception chain in the ComputationResult if:
-                -   The coord does not pass a validation check.
-                -   The scalar does not pass a validation check.
-                -   Their product does not satisfy the constraints of the Coord.
+                -  The coord does not pass a validation check.
+                -  The scalar does not pass a validation check.
+                -  Their product does not satisfy the constraints of the Coord.
             2.  Otherwise, send the success result.
         Args:
             coord: Coord

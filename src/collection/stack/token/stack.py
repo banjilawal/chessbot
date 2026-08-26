@@ -24,11 +24,11 @@ from system import IdFactory, LoggingLevelRouter
 class TokenStackService(StackService[Token]):
     """
     Role:
-        -   API
-        -   ACID compliance
-        -   Stateful microservice
-        -   Stateful CRUD Controller
-        -   Operations Provider
+        -  API
+        -  ACID compliance
+        -  Stateful microservice
+        -  Stateful CRUD Controller
+        -  Operations Provider
 
     Responsibilities:
         1.  Baremetal service request API for Token collections.
@@ -52,15 +52,15 @@ class TokenStackService(StackService[Token]):
         controller: TokenStackOpsController
 
     Provides:
-        -   is_empty() -> bool
-        -   is_being_deployed() -> bool
-        -   is_deployed_on_board() -> bool
-        -   pop() -> DeletionResult[Token]
-        -   push(item: Token) -> InsertionResult
-        -   is_ready_for_deployment() -> bool
-        -   is_getting_ready_for_deployment() -> bool
-        -   delete_by_id(id: int) -> DeletionResult[Token]
-        -   context(context: Context[Token]) -> SearchResult[List[Token]]
+        -  is_empty() -> bool
+        -  is_being_deployed() -> bool
+        -  is_deployed_on_board() -> bool
+        -  pop() -> DeletionResult[Token]
+        -  push(item: Token) -> InsertionResult
+        -  is_ready_for_deployment() -> bool
+        -  is_getting_ready_for_deployment() -> bool
+        -  delete_by_id(id: int) -> DeletionResult[Token]
+        -  context(context: Context[Token]) -> SearchResult[List[Token]]
 
     Super Class:
         StackService

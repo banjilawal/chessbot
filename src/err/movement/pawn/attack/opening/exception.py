@@ -24,7 +24,7 @@ __all__ = [
 class OpeningAttackOffsetPatternException(AttackOffsetPatternException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an error occurred in an OpeningAttackOffsetPattern instance.

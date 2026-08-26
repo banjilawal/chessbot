@@ -16,9 +16,9 @@ from domain.schema import Formation
 class HomeSquare(Square):
     """
     Role:
-        -   Model
-        -   Addressing
-        -   Stateful Data Holder
+        -  Model
+        -  Addressing
+        -  Stateful Data Holder
 
     Responsibilities:
         1.  Square Which a token claims before it can make its home move.
@@ -33,8 +33,8 @@ class HomeSquare(Square):
         occupant: Optional[Token]
         
     Provides:
-        -   def is_empty() -> bool
-        -   def is_occupied() -> bool
+        -  def is_empty() -> bool
+        -  def is_occupied() -> bool
 
     Super Class:
         Square

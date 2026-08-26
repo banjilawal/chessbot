@@ -23,10 +23,10 @@ from system import (
 class CoordContextBuilder(Builder[CoordContext]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Build Process Owner
+        -  Transaction Worker
+        -  Integrity Maintenance
+        -  Consistency Assurance
+        -  Build Process Owner
 
    Responsibilities:
         1.  Ensure a new Token instance is born safe and reliable.
@@ -34,7 +34,7 @@ class CoordContextBuilder(Builder[CoordContext]):
      Attributes:
 
     Provides:
-        -   def execute(
+        -  def execute(
                     owner: Team,
                     id: int = IdFactory,
                     formation: Formation,
@@ -60,8 +60,8 @@ class CoordContextBuilder(Builder[CoordContext]):
 
         Action:
             1.  Send an exception chain in the BuildResult if either:
-                    -   The row
-                    -   The column
+                    -  The row
+                    -  The column
                 fail its validation checks.
             2.  Otherwise, build the CoordContext then, send the success reult.
         Args:

@@ -24,7 +24,7 @@ T = TypeVar("T", bound="StackService")
 class CollectionSearch(CrudOperator[SearchResult], ABC, Generic[T]):
     """
     Role
-        -   Worker
+        -  Worker
 
     Responsibilities:
         1.  Execute a task on a Collection that produces a SearchResult.
@@ -33,7 +33,7 @@ class CollectionSearch(CrudOperator[SearchResult], ABC, Generic[T]):
         permitter: SearchPermitter[T]
         
     Provides:
-        -   def execute(request: SearchRequest[T]) -> SearchResult
+        -  def execute(request: SearchRequest[T]) -> SearchResult
 
     Super Class:
         CollectionOperation

@@ -18,8 +18,8 @@ T = TypeVar("T")
 class ValidationResult(Result[T], Generic[T]):
     """
     Role:
-        -   Data Transport
-        -   Error Transport
+        -  Data Transport
+        -  Error Transport
 
     Responsibilities:
         1.  Contains the outcome of a validation transaction.
@@ -33,9 +33,9 @@ class ValidationResult(Result[T], Generic[T]):
         is_failure: bool
 
     Provides:
-        -   def success(payload: T) -> DeletionResult[T]
-        -   def failure(exception: Exception) -> DeletionResult[T]
-        -   def timed_out(exception: Exception) -> ValidationResult[T]:
+        -  def success(payload: T) -> DeletionResult[T]
+        -  def failure(exception: Exception) -> DeletionResult[T]
+        -  def timed_out(exception: Exception) -> ValidationResult[T]:
 
     Super Class:
         Result

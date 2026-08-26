@@ -23,7 +23,7 @@ __all__ = [
 class FormationTokenOperationException(TokenOperatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Formation tokenfailed.

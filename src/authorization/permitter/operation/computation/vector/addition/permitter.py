@@ -23,8 +23,8 @@ from util import LoggingLevelRouter
 class AddVectorPermitter(ComputationPermitter[VectorToggle]):
     """
     Role:
-        -   Permission Authorization
-        -   Integrity Maintenance
+        -  Permission Authorization
+        -  Integrity Maintenance
         _   Consistency Assurance
 
     Responsibilities:
@@ -38,7 +38,7 @@ class AddVectorPermitter(ComputationPermitter[VectorToggle]):
         priming_validator: PrimingValidator
         
     Provides:
-        -    def execute(self, AddVectorRequest) -> RequestDecision
+        -   def execute(self, AddVectorRequest) -> RequestDecision
 
     Super Class:
         ComputationPermitter

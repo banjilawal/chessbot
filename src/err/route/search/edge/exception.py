@@ -23,7 +23,7 @@ __all__ = [
 class EdgeSearchRouteException(SearchRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that one of Edge search routes is missing.

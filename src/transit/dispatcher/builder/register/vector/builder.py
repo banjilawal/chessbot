@@ -22,10 +22,10 @@ from util import LoggingLevelRouter
 class VectorRegisterBuilder(RegisterBuildDispatcher[VectorRegister]):
     """
     Role
-        -   Build Pipeline
-        -   Integrity Management
-        -   Consistency Assurance
-        -   Workflow Owner
+        -  Build Pipeline
+        -  Integrity Management
+        -  Consistency Assurance
+        -  Workflow Owner
 
    Responsibilities:
         1.  Ensure a new Register instance is born safe and reliable.
@@ -34,7 +34,7 @@ class VectorRegisterBuilder(RegisterBuildDispatcher[VectorRegister]):
             builder_toolkit: VectorRegisterBuilderToolkit
 
     Provides:
-        -   def execute(self, blueprint: RegisterVectorRegisteBlueprint) -> BuildResult[Register]
+        -  def execute(self, blueprint: RegisterVectorRegisteBlueprint) -> BuildResult[Register]
 
      Super Class:
          RegisterBuilder
@@ -61,8 +61,8 @@ class VectorRegisterBuilder(RegisterBuildDispatcher[VectorRegister]):
 
         Action:
             1.  Send an exception chain in the BuildResult if either
-                    -   The bootstrap is not successful.
-                    -   The assembler does not return a product.
+                    -  The bootstrap is not successful.
+                    -  The assembler does not return a product.
             2.  Otherwise, cast the assemble product then, send in the success result,
         Args:
             blueprint: VectorRegisterBlueprint

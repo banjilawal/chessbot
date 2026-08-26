@@ -18,12 +18,12 @@ from topology.space import SouthwestQuadrant
 class SouthwestQuadrantMappingFunction(QuadrantMappingFunction[SouthwestQuadrant]):
     """
     Role:
-        -   Computation
+        -  Computation
 
     Responsibilities:
         Define x_step and slope for getting the next vector southwest of origin.
-            -   x_step = -1,
-            -   slope = 1
+            -  x_step = -1,
+            -  slope = 1
             
     Attributes:
         x_step: int = QuadrantStepFunction.SOUTHWEST.x_step,

@@ -21,10 +21,10 @@ from util import LoggingLevelRouter
 class BlueprintHomeSquareExtractor:
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -  Transaction Worker
+        -  Integrity Maintenance
+        -  Consistency Assurance
+        -  Process Runner
 
     Responsibilities:
         1.  Validate a TokenBlueprint's home_square if it exists. Otherwise, find it using
@@ -35,9 +35,9 @@ class BlueprintHomeSquareExtractor:
         bundle: TokenValidationBundle
 
     Provides:
-        -   execute(self, blueprint: TokenBlueprint) -> ValidationResult
-        -   _find_on_board(self, board: Board, square_name: str,) -> ValidationResult
-        -   _validate_home_square(self, square: Square,) -> ValidationResult
+        -  execute(self, blueprint: TokenBlueprint) -> ValidationResult
+        -  _find_on_board(self, board: Board, square_name: str,) -> ValidationResult
+        -  _validate_home_square(self, square: Square,) -> ValidationResult
 
     Super Class:
     """
@@ -53,9 +53,9 @@ class BlueprintHomeSquareExtractor:
 
         Action:
             1.  If the blueprint's home_square is null:
-                    -   Detect it using the blueprint's formation and board.
+                    -  Detect it using the blueprint's formation and board.
             2.  If the blueprint's home_square exists:
-                    -   Validate it.
+                    -  Validate it.
             3.  Send an exception chain in the ValidationResult if either route fails.
             4.  Send the success result from either route taken.
         Args:
@@ -149,8 +149,8 @@ class BlueprintHomeSquareExtractor:
 
         Action:
             1.  Send an exception chain in the ValidationResult if any following occurs:
-                    -   square is not validated.
-                    -   It's not a HomeSquare.
+                    -  square is not validated.
+                    -  It's not a HomeSquare.
             2.  Otherwise, Send the success result.
         Args:
             square: Square,

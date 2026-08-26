@@ -21,7 +21,7 @@ from transit.dispatcher.validator import NumberValidator
 class MathToolkit(Toolkit):
     """
     Role:
-        -   Container
+        -  Container
     
     Responsibilities:
         1.  Collection of suites and operations for vector algebra.
@@ -39,7 +39,7 @@ class MathToolkit(Toolkit):
          Toolkit
          
     Notes:
-        -   VectorAlgebraToolkit does not extend ModelOperationSuite because an OperationSuite needs a Type.
+        -  VectorAlgebraToolkit does not extend ModelOperationSuite because an OperationSuite needs a Type.
      """
     coord: CoordOperationSuite = CoordOperationSuite()
     scalar: ScalarOperationSuite = ScalarOperationSuite()

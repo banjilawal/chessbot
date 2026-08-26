@@ -24,7 +24,7 @@ __all__ = [
 class ArenaSearchHitConflictException(SearchHitConflictException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an ArenaSearcher returned multiple hits for an item which should be unique.

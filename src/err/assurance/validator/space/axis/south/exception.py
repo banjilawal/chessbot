@@ -23,7 +23,7 @@ __all__ = [
 class SouthAxisValidatorException(AxisValidatorException):
     """
     Role:
-        -   Failure Tracing
+        -  Failure Tracing
 
     Responsibilities:
         1.  Indicating a SouthAxisValidator failed.

@@ -21,7 +21,7 @@ from domain import SnapshotSearchContext
 class SnapshotStackSearchPermissionUtility(StackSearchPermissionUtility[SnapshotSearchContext]):
     """
     Role:
-        -   Utility
+        -  Utility
 
     Responsibilities:
         1.  Bundles resources the SnapshotSearchAuthorizer needs to evaluate a SnapshotSearchRequest.

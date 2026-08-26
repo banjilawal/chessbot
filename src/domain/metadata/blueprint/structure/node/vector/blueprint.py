@@ -20,7 +20,7 @@ from domain.structure.node import VectorNode
 class VectorNodeBlueprint(NodeBlueprint):
     """
      Role:
-         -   DTO
+         -  DTO
 
      Responsibilities:
          1.  Provides values for instantiating a VectorNode object

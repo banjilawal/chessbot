@@ -1,7 +1,7 @@
 # src/domain/search/context.py
 
 """
-Module: domain.search
+Module: domain.search.context
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -24,7 +24,7 @@ class SearchContext(ABC, Generic[T]):
         - Option Selector
 
     Responsibilities:
-        1.  Supply the criteria a Searcher uses to find a hit in a DomainObjectCollection.
+        1.  Supply an attribute-value tuple used to search a DomainObjectCollection.
                 
     Attributes:
         id: Optional[int]
@@ -32,7 +32,7 @@ class SearchContext(ABC, Generic[T]):
         max_activated_contexts: int
         
     Provides:
-        -   to_dict() -> Dict[str, Any]
+        -  to_dict() -> Dict[str, Any]
         
     Super Class:
     """

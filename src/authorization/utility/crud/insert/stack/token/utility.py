@@ -23,7 +23,7 @@ class TokenStackInsertPermissionUtility(
 ):
     """
     Role:
-        -   Utility
+        -  Utility
 
     Responsibilities:
         1.  Bundles resources the TokenInsertAuthorizer needs to evaluate a TokenInsertRequest.

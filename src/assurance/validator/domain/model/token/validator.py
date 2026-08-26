@@ -25,8 +25,8 @@ from util import LoggingLevelRouter
 class TokenValidator(ModelValidator[Token]):
     """
     Role
-        -   Integrity Maintenance
-        -   Consistency Assurance
+        -  Integrity Maintenance
+        -  Consistency Assurance
 
 
     Responsibilities:
@@ -36,7 +36,7 @@ class TokenValidator(ModelValidator[Token]):
         bundle: Optional[TokenValidationToolkit]
 
     Provides:
-        -   execute(self, candidate: Any) -> ValidationResult:
+        -  execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
         IntegrityChecker
@@ -62,9 +62,9 @@ class TokenValidator(ModelValidator[Token]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The candidate is not a TokenDtoCarrier.
-                    -   The candidate is an empty TokenDtoCarrier.
-                    -   Either the board, team, formation, rank or id get flagged unsafe.
+                    -  The candidate is not a TokenDtoCarrier.
+                    -  The candidate is an empty TokenDtoCarrier.
+                    -  Either the board, team, formation, rank or id get flagged unsafe.
             2.  For a model_carrier send a Token in the success result. Otherwise, send a TokeBlueprint.
         Args:
             candidate, Any

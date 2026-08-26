@@ -21,9 +21,9 @@ T = TypeVar("T", bound="Space")
 class RecurrenceRegistry(ABC, Generic[T]):
     """
     Role:
-        -   Data Holder
-        -   Factory
-        -   Switcher
+        -  Data Holder
+        -  Factory
+        -  Switcher
 
     Responsibilities:
         1.  Create an immuregistry set of recurrence relations for batch vector transformations in a space.

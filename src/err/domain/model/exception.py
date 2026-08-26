@@ -24,7 +24,7 @@ __all__ = [
 class ModelException(DomainObjectException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Model encountered an error.

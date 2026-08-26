@@ -24,7 +24,7 @@ __all__ = [
 class DuplicateItemException(AssuranceException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an item already exists in the context which, is usually a collection.

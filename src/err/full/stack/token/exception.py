@@ -24,7 +24,7 @@ __all__ = [
 class TokenStackCapacityException(StackCapacityException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a TokenStack is full.

@@ -26,7 +26,7 @@ from err import ContextBuilderException
 class ArenaContextBuilderException(ContextBuilderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a ArenaContext build failed.

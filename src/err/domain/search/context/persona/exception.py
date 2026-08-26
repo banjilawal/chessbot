@@ -24,7 +24,7 @@ __all__ = [
 class PersonaContextException(ContextException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a PersonaContext encountered an error.

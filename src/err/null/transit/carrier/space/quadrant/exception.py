@@ -23,7 +23,7 @@ __all__ = [
 class QuadrantCarrierNullException(SpaceCarrierNullException):
     """
     Role:
-        -   Failure Tracing
+        -  Failure Tracing
 
     Responsibilities:
         1.  Indicating a required QuadrantSpace.

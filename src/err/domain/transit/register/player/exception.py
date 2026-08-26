@@ -24,7 +24,7 @@ __all__ = [
 class PlayerRegisterCarrierException(RegisterCarrierException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a PlayerRegisterCarrier encountered an error.

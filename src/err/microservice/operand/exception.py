@@ -23,7 +23,7 @@ __all__ = [
 class VectorToggleMicroserviceException(MicroserviceException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a candidate did not pass a VectorToggleMicroservice failed.

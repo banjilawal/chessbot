@@ -22,7 +22,7 @@ __all__ = [
 class ArenaCarrierNullException(ModelCarrierNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an ArenaCarrierToggle is null.

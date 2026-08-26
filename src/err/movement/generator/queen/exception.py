@@ -24,7 +24,7 @@ __all__ = [
 class QueenTopologyGeneratorException(TopologyGeneratorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a QueenPatternGenerator did not complete its task.

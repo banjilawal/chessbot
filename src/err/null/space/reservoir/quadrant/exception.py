@@ -23,7 +23,7 @@ __all__ = [
 class QuadrantReservoirNullException(SpaceReservoirNullException):
     """
     Role:
-        -   Failure Tracing
+        -  Failure Tracing
 
     Responsibilities:
         1.  Indicating a required QuadrantReservoir is null.

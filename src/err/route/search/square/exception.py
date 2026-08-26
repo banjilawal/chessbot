@@ -23,7 +23,7 @@ __all__ = [
 class SquareSearchRouteException(SearchRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that one of Square search routes is missing.

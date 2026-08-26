@@ -23,7 +23,7 @@ __all__ = [
 class TeamBuildRouteException(BuildRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that one of Team build routes is missing.

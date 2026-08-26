@@ -24,7 +24,7 @@ __all__ = [
 class RegisterSetException(CollectionException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a RegisterSet encountered an error.

@@ -22,7 +22,7 @@ __all__ = [
 class PrimingBoardContextAssemblyException(PrimingContextAssemblyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a BoardContextAssembly priming step failed.

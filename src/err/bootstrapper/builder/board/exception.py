@@ -25,7 +25,7 @@ __all__ = [
 class BoardBuilderBootstrapperException(BuilderBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a BoardBuilderBootstrapper was aborted by an exception.

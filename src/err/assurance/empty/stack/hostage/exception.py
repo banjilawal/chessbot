@@ -22,7 +22,7 @@ __all__ = [
 class HostageStackEmptyException(StackEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required HostageStack is empty.

@@ -24,7 +24,7 @@ T = TypeVar("T", bound="DeleteRequest")
 class Delete(CrudOperator[T], ABC, Generic[T]):
     """
     Role
-        -   Worker
+        -  Worker
 
     Responsibilities:
         1.  Process an DeleteRequest.
@@ -33,7 +33,7 @@ class Delete(CrudOperator[T], ABC, Generic[T]):
         authorizer: DeleteAuthorizer[T]
 
     Provides:
-        -   def execute(self, request: T) -> DeletionResult
+        -  def execute(self, request: T) -> DeletionResult
 
     Super Class:
         CrudOperation

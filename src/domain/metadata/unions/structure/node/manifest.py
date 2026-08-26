@@ -22,7 +22,7 @@ T = TypeVar("T", bound="Node")
 class NodeTypeUnions(StructureTypeUnions[T], ABC, Generic[T]):
     """
     Role:
-        -   Metadata
+        -  Metadata
 
     Responsibilities:
         1. Catalog of data unions a Node uses in the domain.

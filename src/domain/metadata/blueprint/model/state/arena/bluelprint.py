@@ -21,8 +21,8 @@ from domain.model import Arena, Game
 class ArenaBlueprint(StateModelBlueprint[Arena]):
     """
     Role:
-        -   Container
-        -   DTO
+        -  Container
+        -  DTO
     
     Responsibilities:
         1.  Provides values for instantiating a Arena object.

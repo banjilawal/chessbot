@@ -24,9 +24,9 @@ T = TypeVar("T", bound="DomainObject")
 class DomainObjectValidator(Validator[T], ABC, Generic[T]):
     """
     Role
-        -   Validator
-        -   Integrity Assurance
-        -   Consistency Assurance
+        -  Validator
+        -  Integrity Assurance
+        -  Consistency Assurance
 
     Responsibilities:
         1.  Run integrity checks on an object or its blueprint encapsulated inside their
@@ -38,7 +38,7 @@ class DomainObjectValidator(Validator[T], ABC, Generic[T]):
         bundle: ValidationBundle[T]
 
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult[Blueprint[T]|T]:
+        -  def execute(candidate: Any) -> ValidationResult[Blueprint[T]|T]:
 
     Super Class:
     """

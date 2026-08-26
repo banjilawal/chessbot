@@ -22,7 +22,7 @@ __all__ = [
 class EdgeStackPushException(StackPushException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that pushing onto a EdgeStack failed.

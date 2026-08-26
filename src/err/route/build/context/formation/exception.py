@@ -26,7 +26,7 @@ from err import ContextBuildRouteException
 class FormationContextBuildRouteException(ContextBuildRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that one of FormationContext build routes is missing.

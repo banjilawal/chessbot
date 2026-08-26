@@ -24,7 +24,7 @@ __all__ = [
 class ManeuverDestinationAnalyzerException(AnalyzerBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a ReadinessAnalyzerBootstrapper from

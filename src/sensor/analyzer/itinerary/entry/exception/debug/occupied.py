@@ -22,9 +22,9 @@ from logic.square import SquareDebugException
 class SquareOccupiedException(SquareDebugException):
     """
     Role:
-        -   Error Variable Identifier
-        -   Exception Chain Layer 2
-        -   Exception Messaging
+        -  Error Variable Identifier
+        -  Exception Chain Layer 2
+        -  Exception Messaging
 
     Responsibilities:
         1.  Indicate a square entry failed the square was already occupied

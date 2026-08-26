@@ -19,7 +19,7 @@ __all__ = [
 class BoardTeamBinderModelNullException(BinderModelNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required BoardTeamBinder is null.

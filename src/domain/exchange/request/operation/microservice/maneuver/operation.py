@@ -33,7 +33,7 @@ class ManeuverLauncher:
     Attributes:
     
     Provides:
-        -   execute(
+        -  execute(
                     token: Token,
                     square: Square,
                     token_freedom_analyzer: TokenFreedomAnalyzer,
@@ -50,12 +50,12 @@ class ManeuverLauncher:
         """
         Action:
             1.  Send the original square along with an exception chain in the validation result if:
-                    -   The square or token are insecure.
-                    -   The token is disabled
-                    -   The token belongs to a different board.
-                    -   The new token is being deployed to the wrong square.
-                    -   The square is already occupied.
-                    -   The square accepts the token but the token cannot update its position.
+                    -  The square or token are insecure.
+                    -  The token is disabled
+                    -  The token belongs to a different board.
+                    -  The new token is being deployed to the wrong square.
+                    -  The square is already occupied.
+                    -  The square accepts the token but the token cannot update its position.
             2.  Otherwise, each updates its state.
             3.  Send the success result.
         Args:

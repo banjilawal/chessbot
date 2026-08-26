@@ -26,7 +26,7 @@ from err import PrimingContextAssemblyException
 class PrimingSquareContextAssemblyException(PrimingContextAssemblyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a SquareContextAssembly priming step failed.

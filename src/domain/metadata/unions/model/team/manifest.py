@@ -20,7 +20,7 @@ from domain import ModelTypeUnions, Team, TeamBlueprint, TeamCarrier, TeamSearch
 class TeamTypeUnions(ModelTypeUnions[Team]):
     """
     Role:
-        -   Metadata
+        -  Metadata
 
     Responsibilities:
         1. Catalog of data unions a Team uses in the domain.

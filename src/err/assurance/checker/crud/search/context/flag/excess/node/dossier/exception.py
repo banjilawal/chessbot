@@ -27,7 +27,7 @@ class ExcessDossierNodeContextFlagsException(
 ):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating too many DossierNodeSearchContext flags were enabled.

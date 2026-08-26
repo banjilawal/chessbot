@@ -26,7 +26,7 @@ from err import FinalizeContextBuilderException
 class FinalizeSquareContextBuilderException(FinalizeContextBuilderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that finalizing a SquareContextBuild failed.

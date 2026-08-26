@@ -18,8 +18,8 @@ from domain.model import Coord, Vector
 class VectorSet(SetCollection[Vector]):
     """
     Role:
-        -   Data Holder
-        -   Data protection
+        -  Data Holder
+        -  Data protection
 
     Responsibilities:
         1.  Immutable unordered set of vectors.

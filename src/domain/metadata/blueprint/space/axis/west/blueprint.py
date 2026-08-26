@@ -20,7 +20,7 @@ from space import WestAxis
 class WestAxisBlueprint(AxisBlueprint[WestAxis]):
     """
      Role:
-         -   DTO
+         -  DTO
 
      Responsibilities:
          1.  Provides values for instantiating a WestAxis.

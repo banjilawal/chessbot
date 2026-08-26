@@ -42,9 +42,9 @@ class SquareStackPushException(InsertionException):
     """
     """
     Role:
-        -   Worker Method Identification
-        -   Exception Chain Layer 1
-        -   Exception Messaging
+        -  Worker Method Identification
+        -  Exception Chain Layer 1
+        -  Exception Messaging
 
     Responsibilities:
         1.  Indicate that pushing a square on to the schema failed.

@@ -20,7 +20,7 @@ from operation.toolkit.builder.space.axis.east.toolkit import AxisBuilderToolkit
 class EastAxisBuilderToolkit(AxisBuilderToolkit[EastAxis]):
     """
     Role:
-        -   Dependency Management
+        -  Dependency Management
         
     Responsibilities:
         1.  Bundles EastAxisBuilder dependencies.

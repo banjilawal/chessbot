@@ -23,7 +23,7 @@ __all__ = [
 class OpeningSquareConsistencyCheckerNullException(SquareException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an OpeningSquareConsistencyChecker is null.

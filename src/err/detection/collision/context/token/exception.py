@@ -26,7 +26,7 @@ from err import ContextCollisionDetectorException
 class TokenContextCollisionException(ContextCollisionDetectorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a TokenContextCollision step failed.

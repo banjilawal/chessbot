@@ -24,7 +24,7 @@ __all__ = [
 class RegisterSetEmptyException(ContainerEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required RegisterSet is empty.

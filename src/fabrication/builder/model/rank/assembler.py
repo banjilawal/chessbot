@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 class RankBuilder(ModelBuilder[Rank]):
     """
     Role
-        -   Builder
+        -  Builder
 
     Responsibilities:
         1.  Create a Rank instance from the safe blueprint.
@@ -29,7 +29,7 @@ class RankBuilder(ModelBuilder[Rank]):
     Attributes:
 
     Provides:
-        -   def execute(self, blueprint: RankBlueprint,) -> BuildResult[Rank]
+        -  def execute(self, blueprint: RankBlueprint,) -> BuildResult[Rank]
 
     Super Class:
         ModelBuilder

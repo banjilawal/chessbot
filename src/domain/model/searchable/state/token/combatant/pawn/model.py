@@ -19,7 +19,7 @@ from domain.model.searchable.state.token import CombatantToken, PromotionState
 class PawnToken(CombatantToken):
     """
     Role:
-        -   Stateful Data Holder
+        -  Stateful Data Holder
 
     Responsibilities:
         1.  Promotable combatant.
@@ -51,7 +51,7 @@ class PawnToken(CombatantToken):
         is_promoted: bool
         
     Provides:
-        -   set_new_rank(new_rank: Rank):
+        -  set_new_rank(new_rank: Rank):
         
     Super Class:
         CombatantToken

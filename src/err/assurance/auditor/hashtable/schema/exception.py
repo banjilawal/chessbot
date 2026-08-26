@@ -23,7 +23,7 @@ __all__ = [
 class SchemaHashtableConsistencyAuditorException(HashtableException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a SchemaHashtableConsistencyAuditor failed.

@@ -18,7 +18,7 @@ from domain.model import Coord
 class CoordBuilder(ModelBuilder[Coord]):
     """
     Role
-        -   Builder
+        -  Builder
 
     Responsibilities:
         1.  Create a Coord instance from the safe blueprint.
@@ -26,7 +26,7 @@ class CoordBuilder(ModelBuilder[Coord]):
     Attributes:
 
     Provides:
-        -   def execute(self, blueprint: CoordBlueprint,) -> BuildResult[Coord]
+        -  def execute(self, blueprint: CoordBlueprint,) -> BuildResult[Coord]
 
     Super Class:
         ModelBuilder

@@ -24,7 +24,7 @@ __all__ = [
 class TokenAlreadyAtDestinationException(ValidatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Token is already at its destination.

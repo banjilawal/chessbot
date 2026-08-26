@@ -24,7 +24,7 @@ __all__ = [
 class SchemaContextException(ContextException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a SchemaContext encountered an error.

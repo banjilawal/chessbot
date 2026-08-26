@@ -24,7 +24,7 @@ __all__ = [
 class NorthwestQuadrantCheckerException(QuadrantCheckerException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by an NorthwestQuadrantSChecker failed.

@@ -23,7 +23,7 @@ T = TypeVar("T", bound="Register")
 class RegisterBuilder(Builder, Generic[T]):
     """
     Role
-        -   Builder
+        -  Builder
 
     Responsibilities:
         1.  Create a Register instance from the safe blueprint.
@@ -31,7 +31,7 @@ class RegisterBuilder(Builder, Generic[T]):
     Attributes:
 
     Provides:
-        -   def execute(self, blueprint: RegisterBlueprint[T],) -> BuildResult[T]
+        -  def execute(self, blueprint: RegisterBlueprint[T],) -> BuildResult[T]
 
     Super Class:
         Builder

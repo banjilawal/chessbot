@@ -26,7 +26,7 @@ class ChainSearchPermissionUtility(
 ):
     """
     Role:
-        -   Utility
+        -  Utility
 
     Responsibilities:
         1.  Bundles resources the SearchAuthorizer needs to evaluate a SearchRequest.

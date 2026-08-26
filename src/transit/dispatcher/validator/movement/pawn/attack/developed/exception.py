@@ -23,7 +23,7 @@ __all__ = [
 class DevelopedAttackOffsetPatternValidatorException(AttackOffsetPatternValidatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicate an error occurred in an DevelopedAttackOffsetPatternValidator failed.

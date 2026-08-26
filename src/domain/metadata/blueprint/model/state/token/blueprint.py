@@ -19,8 +19,8 @@ from domain.schema import Formation
 class TokenBlueprint(StateModelBlueprint[Token]):
     """
     Role:
-        -   Container
-        -   DTO
+        -  Container
+        -  DTO
         
     Responsibilities:
         1.  Provides values for instantiating a Token object.

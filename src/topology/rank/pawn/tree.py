@@ -18,7 +18,7 @@ from tree import Topology, VectorTree
 class PawnTopology(Topology[Pawn], ABC):
     """
     Role:
-        -   Data Holder
+        -  Data Holder
 
     Responsibilities:
         1.  Positions a projected from a Pawn's signature.

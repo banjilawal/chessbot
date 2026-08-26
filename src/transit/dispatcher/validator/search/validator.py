@@ -24,7 +24,7 @@ T = TypeVar("T", bound="SearchContext")
 class SearchContextValidator(Validator[T], ABC, Generic[T]):
     """
     Role
-        -   Integrity, Consistency Maintenance
+        -  Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a SearchContext instance is safe before use.
@@ -33,7 +33,7 @@ class SearchContextValidator(Validator[T], ABC, Generic[T]):
         integrity_checker: SearchContextChecker[T]
         
     Provides:
-        -   execute(self, candidate: Any) -> ValidationResult[T]
+        -  execute(self, candidate: Any) -> ValidationResult[T]
 
     Super Class:
         Validator

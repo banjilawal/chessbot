@@ -26,7 +26,7 @@ from err import BinderTokenOperationException
 class BoardBinderTokenOperationException(BinderTokenOperationException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a BoardBinder tokenfailed.

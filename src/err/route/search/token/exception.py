@@ -23,7 +23,7 @@ __all__ = [
 class TokenSearchRouteException(SearchRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Token search routes is missing.

@@ -25,7 +25,7 @@ class VectorNodeContextValidator(
 ):
     """
     Role
-        -   Integrity Assurance Worker
+        -  Integrity Assurance Worker
 
     Responsibilities:
         1.  Check that a candidate is the right type of not-null VectorNodeContext.
@@ -35,7 +35,7 @@ class VectorNodeContextValidator(
         bundle: VectorNodeValidationBundle
 
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult[VectorNodeContext]:
+        -  def execute(candidate: Any) -> ValidationResult[VectorNodeContext]:
 
     Super Class:
         ChainSearchContextChecker
@@ -58,9 +58,9 @@ class VectorNodeContextValidator(
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The candidate is not a VectorNodeContext.
-                    -   The wrong number of search attributes is enabled.
-                    -   An enabled search attribute fails a safety check.
+                    -  The candidate is not a VectorNodeContext.
+                    -  The wrong number of search attributes is enabled.
+                    -  An enabled search attribute fails a safety check.
             2.  Otherwise, send a TokeSearchContext in the success result.
         Args:
             candidate, Any

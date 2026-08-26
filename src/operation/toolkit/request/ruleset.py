@@ -23,7 +23,7 @@ T = TypeVar("T", bound="Result")
 class PermissionRuleset(ABC, Generic[T]):
     """
     Role:
-        -   Dependency Management
+        -  Dependency Management
         
     Responsibilities:
         1.  Aggregates workers and services a model requires for its tasks.

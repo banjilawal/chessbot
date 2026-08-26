@@ -30,7 +30,7 @@ class OffsetRank(Rank, ABC):
         vector_service: VectorService
 
     Provides:
-        -   dict span_dict(self) -> ComputationResult[Dict[str, CoordSpan]]:
+        -  dict span_dict(self) -> ComputationResult[Dict[str, CoordSpan]]:
         
     Super Class:
         Model

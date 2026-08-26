@@ -23,7 +23,7 @@ T = TypeVar("T", bound="Space")
 class SpaceBuilder(Builder, Generic[T]):
     """
     Role
-        -   Builder
+        -  Builder
 
     Responsibilities:
         1.  Create a Space instance from the safe blueprint.
@@ -31,7 +31,7 @@ class SpaceBuilder(Builder, Generic[T]):
     Attributes:
 
     Provides:
-        -   def execute(self, blueprint: SpaceBlueprint,) -> BuildResult[Space]
+        -  def execute(self, blueprint: SpaceBlueprint,) -> BuildResult[Space]
 
     Super Class:
         Builder

@@ -24,7 +24,7 @@ __all__ = [
 class NodeStackCapacityException(StackCapacityException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a NodeStack is full.

@@ -21,9 +21,9 @@ from util import LoggingLevelRouter
 class DeleterPermitter(OperationPermitter):
     """
     Role:
-        -   Request Analyzer
-        -   Rights Granter
-        -   Consistency, Integrity Maintenance
+        -  Request Analyzer
+        -  Rights Granter
+        -  Consistency, Integrity Maintenance
 
     Responsibilities:
         1.  Evaluate if permission to remove a stack member can be granted.
@@ -31,7 +31,7 @@ class DeleterPermitter(OperationPermitter):
     Attributes:
 
     Provides:
-        -   run(self, request: DeletionRequest,) -> DeletionApprovalReport:
+        -  run(self, request: DeletionRequest,) -> DeletionApprovalReport:
 
     Super Class:
         Permitter
@@ -49,8 +49,8 @@ class DeleterPermitter(OperationPermitter):
 
         Action:
             1.  Send an exception chain in the ValidationResult if the request is either
-                    -   Null
-                    -   Not a PopRequest.
+                    -  Null
+                    -  Not a PopRequest.
             2.  Otherwise, send the success
         Args:
             request

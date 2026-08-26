@@ -19,8 +19,8 @@ from carrier import ModelCarrier
 class PlayerCarrier(ModelCarrier[Player]):
     """
     Role:
-        -   Addressing
-        -   Data-Holder
+        -  Addressing
+        -  Data-Holder
     
     Responsibilities:
         1.  Entity for transporting either a Player or PlayerBlueprint

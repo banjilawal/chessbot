@@ -24,7 +24,7 @@ __all__ = [
 class ArchetypeException(SchemaException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Archetype encountered an error.

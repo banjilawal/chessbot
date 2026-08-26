@@ -24,7 +24,7 @@ __all__ = [
 class KingMovementSetEmptyException(MovementVectorSetEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required KingMovementSet is empty.

@@ -23,7 +23,7 @@ __all__ = [
 class SquareException(ToolkitException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Square encountered an error.

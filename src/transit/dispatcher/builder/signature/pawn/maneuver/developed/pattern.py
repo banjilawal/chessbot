@@ -18,8 +18,8 @@ from topology.pattern import ManeuverOffsetPattern
 class DevelopedManeuverOffsetPattern(ManeuverOffsetPattern):
     """
     Role:
-        -   Data Holder
-        -   Immutability
+        -  Data Holder
+        -  Immutability
 
     Responsibilities:
         1.  Determine potential destinations from a developed Pawn's current position.

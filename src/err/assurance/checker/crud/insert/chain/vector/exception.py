@@ -24,7 +24,7 @@ __all__ = [
 class AddVectorNodeCheckerException(AddNodeCheckerException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by an AddVectorNodeChecker failed.

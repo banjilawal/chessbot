@@ -17,8 +17,8 @@ T = TypeVar("T")
 class ComputationResult(Result[T], Generic[T]):
     """
     Role:
-        -   Data Transport
-        -   Error Transport
+        -  Data Transport
+        -  Error Transport
 
     Responsibilities:
         1.  Contains outcome of a compute transaction.
@@ -32,9 +32,9 @@ class ComputationResult(Result[T], Generic[T]):
         is_failure: bool
 
     Provides:
-        -   def success(payload: T) -> ComputationResult
-        -   def failure(exception: Exception) -> ComputationResult
-        -   def timed_out(exception: Exception) -> ComputationResult
+        -  def success(payload: T) -> ComputationResult
+        -  def failure(exception: Exception) -> ComputationResult
+        -  def timed_out(exception: Exception) -> ComputationResult
         
     Super Class:
         Result

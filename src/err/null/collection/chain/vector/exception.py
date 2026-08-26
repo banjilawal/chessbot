@@ -24,7 +24,7 @@ __all__ = [
 class VectorChainNullException(ChainNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required VectorChain is null.

@@ -20,7 +20,7 @@ from config.setting import FontProperty
 class FontPropertyTable:
     """
     Role
-        -   Property Settings
+        -  Property Settings
 
     Responsibilities:
         1.  Default frame size.

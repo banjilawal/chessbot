@@ -23,7 +23,7 @@ __all__ = [
 class SoutheastQuadrantCarrierNullException(QuadrantCarrierNullException):
     """
     Role:
-        -   Failure Tracing
+        -  Failure Tracing
 
     Responsibilities:
         1.  Indicating a required SoutheastQuadrant is null.

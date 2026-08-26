@@ -12,7 +12,7 @@ from enum import Enum, auto
 class DeploymentState(Enum):
     """
     Role:
-        -   State
+        -  State
 
     Responsibilities:
         1.  Describes Token's relationship with the Board.

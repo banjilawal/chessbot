@@ -12,10 +12,10 @@ from __future__ import annotations
 class HostageContextToolkit(Toolkit[HostageContext]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Toolkit Process Owner
+        -  Transaction Worker
+        -  Integrity Maintenance
+        -  Consistency Assurance
+        -  Toolkit Process Owner
 
    Responsibilities:
         1.  Ensure a new Token instance is born safe and reliable.
@@ -23,7 +23,7 @@ class HostageContextToolkit(Toolkit[HostageContext]):
      Attributes:
 
     Provides:
-        -   def execute(
+        -  def execute(
                     owner: Team,
                     id: int = IdFactory,
                     formation: Formation,

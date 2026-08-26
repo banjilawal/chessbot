@@ -24,7 +24,7 @@ __all__ = [
 class VectorNodeException(NodeException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a VectorNode encountered an error.

@@ -23,8 +23,8 @@ from util import LoggingLevelRouter
 class ReadinessAnalyzerBootstrapper(AnalyzerBootstrapper):
     """
     Role:
-        -   Analysis Factory
-        -   Consistency maintenance
+        -  Analysis Factory
+        -  Consistency maintenance
 
 
     Responsibilities:
@@ -34,7 +34,7 @@ class ReadinessAnalyzerBootstrapper(AnalyzerBootstrapper):
     Attributes:
 
     Provides:
-        -   execute(
+        -  execute(
                     token: Token,
                     token_validator: TokenValidator,
             ) -> AnalysisResult[TokenFreedomReport]
@@ -57,8 +57,8 @@ class ReadinessAnalyzerBootstrapper(AnalyzerBootstrapper):
             1.  If the token fails, its certification, send an exception chain in the
                 RelationReport.
             2.  Otherwise, decide if the token is actionable based on.
-                    -   if it has been deployed.
-                    -   It has not been captured or checkmated.
+                    -  if it has been deployed.
+                    -  It has not been captured or checkmated.
             3.  Send the success result.
 
         Args:

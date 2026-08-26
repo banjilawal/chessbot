@@ -16,8 +16,8 @@ from microservice import Microservice
 class ServiceRegistry:
     """
     Role
-        -   Controller
-        -   Publisher
+        -  Controller
+        -  Publisher
     
     Responsibilities:
         1.  Dynamic, entry and removal of public microservices available for building toolkits.
@@ -29,7 +29,7 @@ class ServiceRegistry:
         items: Dict[str, Dict[str, Microservice]]
     
     Provides:
-        -   def domains(self) -> List[str]:
+        -  def domains(self) -> List[str]:
     
     Super Class:
         Model

@@ -19,8 +19,8 @@ from domain.model import Node, Square
 class NodeBlueprint(StateModelBlueprint[Node]):
     """
     Role:
-        -   Container
-        -   DTO
+        -  Container
+        -  DTO
         
     Responsibilities:
         1.  Provides values for instantiating a Node object.

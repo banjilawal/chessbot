@@ -22,7 +22,7 @@ from transit.dispatcher.validator import ModelValidationDispatcher
 class BoardValidationDispatcher(ModelValidationDispatcher[Board]):
     """
     Role
-        -   Integrity, Consistency Maintenance
+        -  Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a Board instance is certified safe, reliable and consistent before use.
@@ -31,7 +31,7 @@ class BoardValidationDispatcher(ModelValidationDispatcher[Board]):
         integrity_checker: BoardIntegrityChecker
 
     Provides:
-        -   execute(candidate: Any) -> ValidationResult
+        -  execute(candidate: Any) -> ValidationResult
 
     Super Class:
         ModelValidator

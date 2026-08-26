@@ -50,8 +50,8 @@ class TokenSearchRouter(SearchRouter[Token]):
         
         Action:
             1.  Send an exception chain in the SearchResult if either:
-                    -   The params check fails.
-                    -   There is no search logic for the context
+                    -  The params check fails.
+                    -  There is no search logic for the context
             2.  Otherwise, send the success result.
         Args:
             query: TokenQuery,

@@ -24,7 +24,7 @@ __all__ = [
 class EdgeMicroserviceException(MicroserviceException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an EdgeMicroservice failed.

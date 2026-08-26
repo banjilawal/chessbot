@@ -23,7 +23,7 @@ __all__ = [
 class ChessException(Exception):
     """
     Role:
-        -   Exception
+        -  Exception
 
     Responsibilities:
         1.  Parent of exceptions in the application.

@@ -24,7 +24,7 @@ __all__ = [
 class SquareTokenRelationAnalyzerException(RelationAnalyzerException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a token-square relation analyzer from completing.

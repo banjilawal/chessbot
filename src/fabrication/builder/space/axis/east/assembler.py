@@ -20,7 +20,7 @@ from util import  LoggingLevelRouter
 class EastAxisBuilder(AxisBuilder[EastAxis]):
     """
     Role
-        -   Builder
+        -  Builder
 
     Responsibilities:
         1.  Create a EastAxis instance from the safe blueprint.
@@ -28,7 +28,7 @@ class EastAxisBuilder(AxisBuilder[EastAxis]):
     Attributes:
 
     Provides:
-        -   def execute(self, blueprint: EastAxisBlueprint,) -> BuildResult[EastAxis]
+        -  def execute(self, blueprint: EastAxisBlueprint,) -> BuildResult[EastAxis]
 
     Super Class:
         AxisBuilder

@@ -24,7 +24,7 @@ __all__ = [
 class InsertionRequestNullException(RequestNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required InsertionRequest was null.

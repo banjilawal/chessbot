@@ -24,7 +24,7 @@ __all__ = [
 class ArenaPlayerBinderEmptyException(BinderEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required ArenaPlayerBinder is empty.

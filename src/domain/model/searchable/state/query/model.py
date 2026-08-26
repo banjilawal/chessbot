@@ -21,9 +21,9 @@ T = TypeVar("T")
 class Query(ABC, Generic[T]):
     """
     Role:
-        -   Model
-        -   Search
-        -   Stateless Data-Holder
+        -  Model
+        -  Search
+        -  Stateless Data-Holder
 
     Responsibilities:
         1.  Platform primitive to build Query APIs

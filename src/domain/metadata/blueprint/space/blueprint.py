@@ -22,7 +22,7 @@ T = TypeVar("T", bound="Space")
 class SpaceBlueprint(Blueprint, ABC, Generic[T]):
     """
      Role:
-         -   DTO
+         -  DTO
 
      Responsibilities:
          1.  Provides values for instantiating a Space object

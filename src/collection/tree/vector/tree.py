@@ -19,8 +19,8 @@ from domain import Vector, VectorNode
 class VectorTree(Tree[Vector]):
     """
     Role:
-        -   Data Holder
-        -   Data protection
+        -  Data Holder
+        -  Data protection
 
     Responsibilities:
         1.  Immutable unordered set of vectors.

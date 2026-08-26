@@ -23,10 +23,10 @@ from util import LoggingLevelRouter
 class ArenaBuilder(ModelBuilder[Arena]):
     """
     Role
-        -   Build Pipeline
-        -   Integrity Management
-        -   Consistency Assurance
-        -   Workflow Owner
+        -  Build Pipeline
+        -  Integrity Management
+        -  Consistency Assurance
+        -  Workflow Owner
 
    Responsibilities:
         1.  Ensure a new Arena instance is born safe and reliable.
@@ -35,7 +35,7 @@ class ArenaBuilder(ModelBuilder[Arena]):
             builder_toolkit: Optional[ArenaBuilderToolkit]
 
     Provides:
-        -   def execute(self, blueprint: ArenaBlueprint) -> BuildResult[Arena]
+        -  def execute(self, blueprint: ArenaBlueprint) -> BuildResult[Arena]
 
      Super Class:
          ModelBuilder
@@ -63,8 +63,8 @@ class ArenaBuilder(ModelBuilder[Arena]):
 
         Action:
             1.  Send an exception chain in the BuildResult if either
-                    -   The ArenaBlueprint object is flagged unsafe.
-                    -   The assembler does not return a product.
+                    -  The ArenaBlueprint object is flagged unsafe.
+                    -  The assembler does not return a product.
             2.  Otherwise, cast the assembler product as a Arena then, send in the success result,
         Args:
             blueprint: ArenaBlueprint

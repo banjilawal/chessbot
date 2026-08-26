@@ -22,7 +22,7 @@ __all__ = [
 class ArenaDeletionPipelineException(DeletionPipelineException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an error occurred in a ArenaDeletionPipeline.

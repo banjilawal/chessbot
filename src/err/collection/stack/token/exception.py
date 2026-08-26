@@ -25,7 +25,7 @@ from artifcat import MethodResultType
 class TokenStackServiceException(StackServiceException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a TokenStackService encountered an error.

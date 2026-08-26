@@ -18,8 +18,8 @@ from topology.pattern import PawnAttackSignature
 class DevelopedPawnAttackPattern(PawnAttackSignature):
     """
     Role:
-        -   Data Holder
-        -   Immutability
+        -  Data Holder
+        -  Immutability
 
     Responsibilities:
         1.  Determine potential attack destinations from a developed Pawn's current position.

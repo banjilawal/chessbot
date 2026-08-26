@@ -21,7 +21,7 @@ from operation import Primer, RegistryEntryNameValidator, PrimingValidator
 class PrimingServiceRegistration(Primer[Microservice]):
     """
     Role
-        -   Service
+        -  Service
 
     Responsibilities:
         1.  Validate a service is a safe Microservice before adding to the ServiceRegistry.
@@ -29,7 +29,7 @@ class PrimingServiceRegistration(Primer[Microservice]):
     Attributes:
 
     Provides:
-        -   def execute(
+        -  def execute(
                 service: Microservice,
                 registry: ServiceRegistry,
                 null_exception: MicroserviceNullException,
@@ -57,9 +57,9 @@ class PrimingServiceRegistration(Primer[Microservice]):
         
         Action:
             1.  Send an exception chain in the ValidationResult if either condition occurs.
-                    -   The service is not an Microservice.
-                    -   Either, service.DOMAIN or service.NAME are not safe Strings.
-                    -   The service's name has already been used in the domain.
+                    -  The service is not an Microservice.
+                    -  Either, service.DOMAIN or service.NAME are not safe Strings.
+                    -  The service's name has already been used in the domain.
             2.  Otherwise, send the success result.
         Args:
             service: Microservice

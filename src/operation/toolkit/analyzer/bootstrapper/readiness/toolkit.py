@@ -20,7 +20,7 @@ class ReadinessAnalyzerBootstrapperToolkit(
 ):
     """
     Role:
-        -   Container
+        -  Container
 
     Responsibilities:
         1.  Collection of workers and services that are required for

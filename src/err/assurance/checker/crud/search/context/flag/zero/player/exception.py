@@ -25,7 +25,7 @@ __all__ = [
 class ZeroPlayerContextFlagsException(ZeroContextFlagsException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating no PlayerSearchContext flags were enabled.

@@ -24,7 +24,7 @@ __all__ = [
 class GameStackCapacityException(StackCapacityException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a GameStack is full.

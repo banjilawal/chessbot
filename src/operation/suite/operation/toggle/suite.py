@@ -21,8 +21,8 @@ T = TypeVar("T", bound="Toggle")
 class ToggleOperationSuite(OperationSuite, Generic[T]):
     """
     Role:
-        -   Dependency Container
-        -   Dynamic Dependency Provider
+        -  Dependency Container
+        -  Dynamic Dependency Provider
 
     Responsibilities:
         1.  Contains the operations that can be performed on a Toggle.

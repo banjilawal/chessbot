@@ -19,7 +19,7 @@ from artifcat.report import ItineraryApprovalReport
 class KingAttackApproval(ItineraryApprovalReport):
     """
     Role:
-        -   Test results
+        -  Test results
 
     Responsibilities:
         1.  Details a token needs to check an  enemy king.

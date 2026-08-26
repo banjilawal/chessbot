@@ -21,8 +21,8 @@ T = TypeVar("T", bound="Axis")
 class AxisRecurrence(Recurrence, Generic[T]):
     """
     Role:
-        -   Computation
-        -   Iterator
+        -  Computation
+        -  Iterator
 
     Responsibilities:
         1.  Provide a recurrence relation for iterating to the next Axis vector

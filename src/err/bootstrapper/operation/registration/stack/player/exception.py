@@ -22,7 +22,7 @@ __all__ = [
 class PlayerStackRegistrationException(StackRegistrationException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that registrationing onto a PlayerStack failed.

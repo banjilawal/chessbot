@@ -24,7 +24,7 @@ __all__ = [
 class OpeningManeuverMovementSetEmptyException(ManeuverMovementSetEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required OpeningManeuverMovementSet is empty.

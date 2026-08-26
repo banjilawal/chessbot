@@ -16,8 +16,8 @@ from system import QueryService, IdFactory, LoggingLevelRouter, SearchResult
 class CoordQueryService(QueryService[Coord]):
     """
     Role:
-        -   API
-        -   Search Microservice,
+        -  API
+        -  Search Microservice,
 
     Responsibilities:
         1.  Public facing API for querying square collections.
@@ -29,7 +29,7 @@ class CoordQueryService(QueryService[Coord]):
         context_service: IntegrityMicroservice[Context[T]]
 
     Provides:
-        -   execute(schema: List[T], context: Context[T]) -> SearchResult[List[T]]
+        -  execute(schema: List[T], context: Context[T]) -> SearchResult[List[T]]
 
     Super Class:
         Microservice

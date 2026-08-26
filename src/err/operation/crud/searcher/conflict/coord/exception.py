@@ -24,7 +24,7 @@ __all__ = [
 class CoordSearchHitConflictException(SearchHitConflictException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a CoordSearcher returned multiple hits for an item which should be unique.

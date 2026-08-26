@@ -18,7 +18,7 @@ from dataclasses import dataclass, field
 class CaptionTextSetting:
     """
     Role
-        -   Property Settings
+        -  Property Settings
 
     Responsibilities:
         1.  Default square pixel size settings.

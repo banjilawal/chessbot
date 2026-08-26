@@ -19,8 +19,8 @@ from transit.graph import Edge
 class EdgeCarrier(ModelCarrier[Edge]):
     """
     Role:
-        -   Addressing
-        -   Data-Holder
+        -  Addressing
+        -  Data-Holder
     
     Responsibilities:
         1.  Entity for transporting either a Edge or EdgeBlueprint

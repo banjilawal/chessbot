@@ -23,7 +23,7 @@ __all__ = [
 class RookException(RankException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Rook encountered an error.

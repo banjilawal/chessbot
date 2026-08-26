@@ -22,7 +22,7 @@ __all__ = [
 class NodeBuilderException(BuilderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Node build failed.

@@ -26,7 +26,7 @@ from err import ContextNoValidationRouteException
 class HostageContextValidationRouteException(ContextNoValidationRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that one of HostageContext validation routes is missing.

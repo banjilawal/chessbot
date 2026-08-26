@@ -24,7 +24,7 @@ __all__ = [
 class ScalarConsistencyCheckerNullException(ConsistencyCheckerNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required ScalarConsistencyChecker is null.

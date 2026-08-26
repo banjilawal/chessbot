@@ -24,7 +24,7 @@ __all__ = [
 class TokenCoordCollisionException(CoordCollisionException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that two tokens share a coord that should be unique.

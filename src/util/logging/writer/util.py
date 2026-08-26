@@ -17,8 +17,8 @@ T = TypeVar('V')
 class LogWriter:
     """
     Role
-        -   Reporting
-        -   Logging
+        -  Reporting
+        -  Logging
 
     Responsibilities:
         1.  Centralizing logger access for info and error reporting.
@@ -26,11 +26,11 @@ class LogWriter:
     Attributes:
 
     Provides:
-        -   def resolve_context_info(context: Any, function: Optional[Callable]) -> Dict[str, str]:
-        -   def get_logger_for_context(context: Any) -> logging.Logger:
-        -   def log_info(context: Any, msg: str) -> None:
+        -  def resolve_context_info(context: Any, function: Optional[Callable]) -> Dict[str, str]:
+        -  def get_logger_for_context(context: Any) -> logging.Logger:
+        -  def log_info(context: Any, msg: str) -> None:
         
-        -   def log_exception(
+        -  def log_exception(
                 context: Any,
                 exception: Exception,
                 function: Optional[Callable]

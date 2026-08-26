@@ -24,7 +24,7 @@ __all__ = [
 class PawnOffsetPatternCarrierException(OffsetPatternCarrierException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a PawnOffsetPatternCarrier experienced an error.

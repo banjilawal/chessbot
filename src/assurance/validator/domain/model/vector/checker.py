@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 class VectorIntegrityValidator(ModelValidator[Vector]):
     """
     Role
-        -   Integrity, Consistency Maintenance
+        -  Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a VectorBlueprint instance is safe before use.
@@ -30,7 +30,7 @@ class VectorIntegrityValidator(ModelValidator[Vector]):
         bundle: Optional[VectorValidationToolkit]
 
     Provides:
-        -   execute(self, candidate: Any) -> ValidationResult[Vector|VectorBlueprint]:
+        -  execute(self, candidate: Any) -> ValidationResult[Vector|VectorBlueprint]:
 
     Super Class:
         IntegrityChecker
@@ -55,9 +55,9 @@ class VectorIntegrityValidator(ModelValidator[Vector]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The candidate is not a VectorDtoCarrier.
-                    -   The candidate is an empty VectorDtoCarrier.
-                    -   Either the board, team, formation, rank or id get flagged unsafe.
+                    -  The candidate is not a VectorDtoCarrier.
+                    -  The candidate is an empty VectorDtoCarrier.
+                    -  Either the board, team, formation, rank or id get flagged unsafe.
             2.  For a model_carrier send a Vector in the success result. Otherwise, send a TokeBlueprint.
         Args:
             candidate, Any

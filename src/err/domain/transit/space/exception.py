@@ -23,7 +23,7 @@ __all__ = [
 class SpaceCarrierException(EntityCarrierException):
     """
     Role:
-        -   Failure Tracing
+        -  Failure Tracing
 
     Responsibilities:
         1.  Indicating a SpaceCarrier experienced an error.

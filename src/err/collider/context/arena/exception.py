@@ -26,7 +26,7 @@ from err import ContextColliderException
 class ArenaContextCollisionException(ContextColliderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a ArenaContextCollision step failed.

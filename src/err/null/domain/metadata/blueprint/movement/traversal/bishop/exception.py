@@ -24,7 +24,7 @@ __all__ = [
 class BishopTraversalPatternBlueprintNullException(TraversalPatternBlueprintNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required BishopTraversalPatternBlueprint is null.

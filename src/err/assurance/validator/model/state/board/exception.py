@@ -24,7 +24,7 @@ __all__ = [
 class BoardValidatorException(StateModelValidatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a BoardValidator failed.

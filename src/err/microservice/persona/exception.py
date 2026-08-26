@@ -24,7 +24,7 @@ __all__ = [
 class PersonaMicroserviceException(MicroserviceException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that n PersonaMicroservice failed.

@@ -26,7 +26,7 @@ from err import FinalizeContextBuilderException
 class FinalizeTeamContextBuilderException(FinalizeContextBuilderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that finalizing a TeamContextBuild failed.

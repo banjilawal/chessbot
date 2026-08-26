@@ -24,7 +24,7 @@ __all__ = [
 class BlockedPathConsistencyCheckerNullException(PathException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required path's destination is occupied by a friendly Token.

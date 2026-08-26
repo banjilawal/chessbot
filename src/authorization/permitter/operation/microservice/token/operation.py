@@ -22,7 +22,7 @@ T = TypeVar("T", bound="Result")
 class MicroserviceOperation(Operator, ABC, Generic[T]):
     """
     Role
-        -   Worker
+        -  Worker
 
     Responsibilities:
         1.  Execute a task on a Microservice that produces either an Insertion, Deletion, Update
@@ -32,7 +32,7 @@ class MicroserviceOperation(Operator, ABC, Generic[T]):
         permitter: MicroserviceOperationPermitter[T]
 
     Provides:
-        -   def execute(request: MicroserviceRequest[T]) -> T
+        -  def execute(request: MicroserviceRequest[T]) -> T
 
     Super Class:
         Operation

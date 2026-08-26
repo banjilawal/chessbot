@@ -23,7 +23,7 @@ __all__ = [
 class IdentifierException(UtilException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating there is an Identifier error.

@@ -24,7 +24,7 @@ __all__ = [
 class VectorIdentityRegisterConsistencyAuditorException(RegisterException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a VectorIdentityRegisterConsistencyAuditor failed.

@@ -24,7 +24,7 @@ __all__ = [
 class ArenaConsistencyCheckerNullException(ConsistencyCheckerNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required ArenaConsistencyChecker is null.

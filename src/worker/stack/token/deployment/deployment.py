@@ -31,8 +31,8 @@ class TokenStackDeployment:
             1.  Create a container for tokens that have been deployed.
             2.  Process the schema's members in a loop.
             3.  If a token's deployment fails:
-                    -   Undo all the previous deployments.
-                    -   Send an exception chain the deletion result.
+                    -  Undo all the previous deployments.
+                    -  Send an exception chain the deletion result.
             4.  Otherwise, empty the schema and send the success result.
         Args:
             token_stack: TokenStack

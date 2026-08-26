@@ -24,7 +24,7 @@ __all__ = [
 class CapacityException(ChessException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a container or resource is full.

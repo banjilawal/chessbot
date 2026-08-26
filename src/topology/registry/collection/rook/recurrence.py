@@ -20,8 +20,8 @@ from topology.registry.collection import RecurrenceRegistryCollection
 class RookRecurrenceRegistries(RecurrenceRegistryCollection[Rook]):
     """
     Role:
-        -   Data Holder
-        -   Iterator
+        -  Data Holder
+        -  Iterator
 
     Responsibilities:
         1.  Stores collections of recurrence registries VectorTransformers iterate over to derives

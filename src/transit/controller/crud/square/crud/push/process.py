@@ -31,7 +31,7 @@ class SquareStackPush:
     Attributes:
 
     Provides:
-        -   push(
+        -  push(
                     cls,
                     square: Square,
                     square_stack: SquareStackService,

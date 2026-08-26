@@ -22,7 +22,7 @@ from transit.dispatcher.validator import RegisterValidationDispatcher
 class VectorRegisterValidator(RegisterValidationDispatcher[VectorRegister]):
     """
     Role
-        -   Integrity, Consistency Maintenance
+        -  Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a VectorRegister instance is certified safe, reliable and consistent before use.
@@ -31,7 +31,7 @@ class VectorRegisterValidator(RegisterValidationDispatcher[VectorRegister]):
         integrity_checker: VectorRegisterIntegrityChecker
 
     Provides:
-        -   execute(candidate: Any) -> ValidationResult{VectorRegister]
+        -  execute(candidate: Any) -> ValidationResult{VectorRegister]
 
     Super Class:
         RegisterValidator

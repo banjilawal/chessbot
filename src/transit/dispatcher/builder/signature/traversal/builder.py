@@ -20,7 +20,7 @@ T = TypeVar("T", bound="TraversalSignature")
 class TraversalBuilder(SignatureBuilder, ABC, Generic[T]):
     """
     Role:
-        -   Iteration
+        -  Iteration
 
 
     Responsibilities:

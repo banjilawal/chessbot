@@ -16,10 +16,8 @@ from domain import GraphSearchContext, Node, Station
 
 class StationNodeContext(GraphSearchContext[Station]):
         """
-        Role:
-            -   Selection
-            -   Routing mask
-            -   Data-Holder
+    Role:
+        - Option Selector
     
         Responsibilities:
             1.  Supply a Station attribute-value search filter.
@@ -29,7 +27,7 @@ class StationNodeContext(GraphSearchContext[Station]):
             priority: Optional[int]
     
         Provides:
-            -   to_dict() -> Dict[str, Any]
+            -  to_dict() -> Dict[str, Any]
     
         Super Class:
             Context

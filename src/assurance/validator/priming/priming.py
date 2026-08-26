@@ -21,10 +21,10 @@ T = TypeVar("T")
 class PrimingValidator:
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Priming
+        -  Transaction Worker
+        -  Integrity Maintenance
+        -  Consistency Assurance
+        -  Priming
 
     Responsibilities:
         1.  Bootstrapping a priming by running existence and type checks.
@@ -33,7 +33,7 @@ class PrimingValidator:
     Attributes:
 
     Provides:
-        -   validate(
+        -  validate(
                     candidate: Any,
                     target_model: Type[T],
                     null_exception: NullException,
@@ -57,8 +57,8 @@ class PrimingValidator:
 
         Action:
             1.  Send an exception chain in the ValidationResult any of the cases occur:
-                    -   Candidate is null
-                    -   It's not an instance of target_model
+                    -  Candidate is null
+                    -  It's not an instance of target_model
             2.  Otherwise, send the success result.
         Args:
             candidate: Any

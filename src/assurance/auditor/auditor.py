@@ -22,7 +22,7 @@ T = TypeVar("T")
 class ConsistencyAuditor(ABC, Generic[T]):
     """
     Role
-        -   Integrity, Consistency Maintenance
+        -  Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure an entity's relations are consistent.
@@ -30,7 +30,7 @@ class ConsistencyAuditor(ABC, Generic[T]):
     Attributes:
     
     Provides:
-        -   def execute(item: T) -> ValidationResult[T]:
+        -  def execute(item: T) -> ValidationResult[T]:
         
     super Class:
     """

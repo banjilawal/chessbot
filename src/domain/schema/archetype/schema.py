@@ -17,8 +17,8 @@ from config.setting import GameColor
 class Archetype(Enum):
     """
     Role:
-        -   Configuration Table
-        -   Metadata Set
+        -  Configuration Table
+        -  Metadata Set
         
     Responsibilities:
         1.  Provides table of metadata used for building Team objects.

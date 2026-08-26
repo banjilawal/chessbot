@@ -19,7 +19,7 @@ from domain.schema import Archetype
 class TeamBlueprint(StateModelBlueprint[Team]):
     """
     Role:
-        -   Container
+        -  Container
 
     Responsibilities:
         1.  Provides values for instantiating a Team object.

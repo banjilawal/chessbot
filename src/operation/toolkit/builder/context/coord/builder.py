@@ -23,10 +23,10 @@ from system import (
 class CoordContextToolkit(Toolkit[CoordContext]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Toolkit Process Owner
+        -  Transaction Worker
+        -  Integrity Maintenance
+        -  Consistency Assurance
+        -  Toolkit Process Owner
 
    Responsibilities:
         1.  Ensure a new Token instance is born safe and reliable.
@@ -34,7 +34,7 @@ class CoordContextToolkit(Toolkit[CoordContext]):
      Attributes:
 
     Provides:
-        -   def execute(
+        -  def execute(
                     owner: Team,
                     id: int = IdFactory,
                     formation: Formation,
@@ -60,8 +60,8 @@ class CoordContextToolkit(Toolkit[CoordContext]):
 
         Action:
             1.  Send an exception chain in the ToolkitResult if either:
-                    -   The row
-                    -   The column
+                    -  The row
+                    -  The column
                 fail its validation checks.
             2.  Otherwise, toolkit the CoordContext then, send the success reult.
         Args:

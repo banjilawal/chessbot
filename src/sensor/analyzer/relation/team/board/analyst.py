@@ -31,7 +31,7 @@ class BoardTeamRelationAnalyzer(RelationAnalyzer[Board, Team]):
     Attributes:
 
     Provides:
-        -   analyze(
+        -  analyze(
                     candidate_primary: Board,
                     candidate_satellite: Team,
                     board_validator: BoardValidator = BoardValidator(),
@@ -58,8 +58,8 @@ class BoardTeamRelationAnalyzer(RelationAnalyzer[Board, Team]):
             1.  Send an exception chain in the AnalysisResult if either candidate is flagged by
                 a validator.
             2.  Otherwise, test that
-                    -   The board contains the team.
-                    -   The team belongs to the board.
+                    -  The board contains the team.
+                    -  The team belongs to the board.
             3.  Then, send the test results in the success result.
         Args:
             candidate_primary: Board

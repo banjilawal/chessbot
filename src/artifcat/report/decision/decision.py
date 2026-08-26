@@ -18,7 +18,7 @@ from domain.exchange.request import Request
 class AuthorizationDecision(Report):
     """
     Role:
-        -   Test results
+        -  Test results
 
     Responsibilities:
         1.  Give details about an operationOperation decision.
@@ -29,8 +29,8 @@ class AuthorizationDecision(Report):
         exception: Optional[Exception]
         
     Provides:
-        -   def approve(request: Request) -> RequestDecision
-        -   def deny(exception: Exception) -> RequestDecision
+        -  def approve(request: Request) -> RequestDecision
+        -  def deny(exception: Exception) -> RequestDecision
 
     Super Class:
         Report

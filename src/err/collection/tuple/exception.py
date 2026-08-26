@@ -24,7 +24,7 @@ __all__ = [
 class TupleException(CollectionException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a TupleSet encountered an error.

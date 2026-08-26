@@ -23,7 +23,7 @@ __all__ = [
 class PlayerSearchRouteException(SearchRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that one of Player search routes is missing.

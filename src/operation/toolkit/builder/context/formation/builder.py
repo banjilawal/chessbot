@@ -21,10 +21,10 @@ from system import ToolkitResult, Toolkit, GameColor, GameColorValidator, Identi
 class FormationContextToolkit(Toolkit[FormationKey]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Toolkit Process Owner
+        -  Transaction Worker
+        -  Integrity Maintenance
+        -  Consistency Assurance
+        -  Toolkit Process Owner
 
    Responsibilities:
         1.  Ensure a new Token instance is born safe and reliable.
@@ -32,7 +32,7 @@ class FormationContextToolkit(Toolkit[FormationKey]):
      Attributes:
 
     Provides:
-        -   def execute(
+        -  def execute(
                     owner: Team,
                     id: int = IdFactory,
                     formation: Formation,

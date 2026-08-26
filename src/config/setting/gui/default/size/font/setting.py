@@ -20,7 +20,7 @@ from config.setting import TextFunctionProperty
 class DefaultFontSizeSetting:
     """
     Role
-        -   Property Settings
+        -  Property Settings
 
     Responsibilities:
         1.  Default font size settings..

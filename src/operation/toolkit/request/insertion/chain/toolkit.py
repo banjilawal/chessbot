@@ -24,7 +24,7 @@ T = TypeVar("T", bound="Node")
 class AddNodeRequestToolkit(InsertPermissionRuleset[Chain], Generic[T]):
     """
     Role:
-        -   Dependency Management
+        -  Dependency Management
         
     Responsibilities:
         1.  Aggregates workers and services a model requires for its tasks.

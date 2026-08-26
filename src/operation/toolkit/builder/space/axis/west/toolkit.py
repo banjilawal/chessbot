@@ -20,7 +20,7 @@ from operation.toolkit.builder.space.axis.west.toolkit import AxisBuilderToolkit
 class WestAxisBuilderToolkit(AxisBuilderToolkit[WestAxis]):
     """
     Role:
-        -   Dependency Management
+        -  Dependency Management
         
     Responsibilities:
         1.  Bundles WestAxisBuilder dependencies.

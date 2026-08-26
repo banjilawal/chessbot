@@ -21,10 +21,10 @@ from transit.dispatcher.validator import TokenValidationDispatcher
 class TokenService(Microservice[Token]):
     """
         Role:
-        -   API
-        -   Lifecycle Manager
-        -   Operations Provider
-        -   Stateless microservice
+        -  API
+        -  Lifecycle Manager
+        -  Operations Provider
+        -  Stateless microservice
         
     Responsibilities:
         1.  Baremetal service request API for Token operations.
@@ -40,22 +40,22 @@ class TokenService(Microservice[Token]):
         controller: TokenOpsController
 
     Provides:
-        -   pop_coord_from_token(token) -> DeletionResult[Coord]
+        -  pop_coord_from_token(token) -> DeletionResult[Coord]
         
-        -   push_coord_to_token(
+        -  push_coord_to_token(
                     token: Token,
                     coord: Coord,
                     coord_service: CoordService = CoordService()
             ) -> InsertionResult
             
-        -   promote_pawn(
+        -  promote_pawn(
                     rank: Rank,
                     pawn_token: PawnToken,
                     rank_service: RankService = RankService(),
                     schema_service: SchemaService = SchemaService(),
             ) -> UpdateResult[PawnToken]
             
-        -   promote_pawn(
+        -  promote_pawn(
                     rank: Rank,
                     pawn_token: PawnToken,
                     rank_service: RankService = RankService(),

@@ -29,7 +29,7 @@ class PromotionRequest(TokenServiceRequest):
          promotion_level: Rank
 
      Provides:
-        -   def request(id: int, pawn: PawnToken, promotion_level: Rank) -> PromotionRequest:
+        -  def request(id: int, pawn: PawnToken, promotion_level: Rank) -> PromotionRequest:
 
      Super Class:
         Request

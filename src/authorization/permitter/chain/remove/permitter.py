@@ -21,9 +21,9 @@ from util import LoggingLevelRouter
 class RemovePermitter(ChainOperationPermitter):
     """
     Role:
-        -   Request Analyzer
-        -   Rights Granter
-        -   Consistency, Integrity Maintenance
+        -  Request Analyzer
+        -  Rights Granter
+        -  Consistency, Integrity Maintenance
 
     Responsibilities:
         1.  Evaluate if a chain removeping request can be granted.
@@ -32,7 +32,7 @@ class RemovePermitter(ChainOperationPermitter):
         priming_validator: PrimingValidator
 
     Provides:
-        -   run(self, request: RemoveRequest,) -> RemoveApprovalReport:
+        -  run(self, request: RemoveRequest,) -> RemoveApprovalReport:
 
     Super Class:
         Permitter
@@ -50,8 +50,8 @@ class RemovePermitter(ChainOperationPermitter):
 
         Action:
             1.  Send an exception chain in the ValidationResult if the request is either
-                    -   Null
-                    -   Not a RemoveRequest.
+                    -  Null
+                    -  Not a RemoveRequest.
             2.  Otherwise, send the success
         Args:
             request

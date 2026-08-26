@@ -20,7 +20,7 @@ from util import  LoggingLevelRouter
 class NorthwestQuadrantBuilder(QuadrantBuilder[NorthwestQuadrant]):
     """
     Role
-        -   Builder
+        -  Builder
 
     Responsibilities:
         1.  Create a NorthwestQuadrant instance from the safe blueprint.
@@ -28,7 +28,7 @@ class NorthwestQuadrantBuilder(QuadrantBuilder[NorthwestQuadrant]):
     Attributes:
 
     Provides:
-        -   def execute(self, blueprint: NorthwestQuadrantBlueprint,) -> BuildResult[NorthwestQuadrant]
+        -  def execute(self, blueprint: NorthwestQuadrantBlueprint,) -> BuildResult[NorthwestQuadrant]
 
     Super Class:
         QuadrantBuilder

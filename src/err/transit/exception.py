@@ -24,7 +24,7 @@ __all__ = [
 class TransitObjectException(ChessException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a TransitObject encountered an error.

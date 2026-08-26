@@ -23,7 +23,7 @@ __all__ = [
 class ArenaFullException(FullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required Arena is full.

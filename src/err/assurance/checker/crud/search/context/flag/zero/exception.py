@@ -25,7 +25,7 @@ __all__ = [
 class ZeroContextFlagsException(ContextFlagCountException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating no SearchContext flag was enabled.

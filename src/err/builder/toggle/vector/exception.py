@@ -24,7 +24,7 @@ __all__ = [
 class VectorToggleBuilderException(ToggleBuilderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a VectorToggleBuilder failure.

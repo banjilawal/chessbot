@@ -25,7 +25,7 @@ from util import LoggingLevelRouter
 class SouthwestQuadrantRootChecker(QuadrantRootChecker[SouthwestQuadrantBlueprint]):
     """
     Role
-        -   Integrity, Consistency Maintenance
+        -  Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a SouthwestQuadrants or their blueprints are certified safe, reliable and consistent
@@ -35,7 +35,7 @@ class SouthwestQuadrantRootChecker(QuadrantRootChecker[SouthwestQuadrantBlueprin
         bundle: SouthwestQuadrantToolkit
 
     Provides:
-        -   def execute(self, candidate: Any) -> ValidationResult[SouthwestQuadrant|SouthwestQuadrantBlueprint]:
+        -  def execute(self, candidate: Any) -> ValidationResult[SouthwestQuadrant|SouthwestQuadrantBlueprint]:
 
     Super Class:
         RootChecker
@@ -60,8 +60,8 @@ class SouthwestQuadrantRootChecker(QuadrantRootChecker[SouthwestQuadrantBlueprin
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The validation_priming fails.
-                    -   Either the board, owner or id get flagged unsafe.
+                    -  The validation_priming fails.
+                    -  Either the board, owner or id get flagged unsafe.
             2.  Otherwise, send the success result.
         Args:
             candidate: Any,

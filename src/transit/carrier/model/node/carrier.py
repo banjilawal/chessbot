@@ -20,8 +20,8 @@ from transit.structure.node import SquareNode
 class NodeCarrier(ModelCarrier[SquareNode]):
     """
     Role:
-        -   Addressing
-        -   Data-Holder
+        -  Addressing
+        -  Data-Holder
     
     Responsibilities:
         1.  Entity for transporting either a Node or NodeBlueprint

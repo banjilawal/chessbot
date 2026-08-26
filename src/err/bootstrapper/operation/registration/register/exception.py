@@ -25,7 +25,7 @@ from artifcat import MethodResultType
 class WorkerRegistrationException(RegistrationException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that registering a worker failed.

@@ -23,7 +23,7 @@ __all__ = [
 class PawnException(RankException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Pawn encountered an error.

@@ -24,7 +24,7 @@ __all__ = [
 class FriendshipAnalyzerException(AnalyzerException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a FriendshipAnalyzer was aborted by an exception.

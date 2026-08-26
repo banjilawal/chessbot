@@ -23,7 +23,7 @@ __all__ = [
 class EastAxisCarrierNullException(AxisCarrierNullException):
     """
     Role:
-        -   Failure Tracing
+        -  Failure Tracing
 
     Responsibilities:
         1.  Indicating a required EastAxis is null.

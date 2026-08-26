@@ -24,7 +24,7 @@ __all__ = [
 class ManeuverRequestAdjudicatorException(RequestTesterException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a ManeuverRequestTester failed.

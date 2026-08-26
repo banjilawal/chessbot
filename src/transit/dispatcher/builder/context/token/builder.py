@@ -13,10 +13,10 @@ from __future__ import annotations
 class TokenContextBuilder(Builder[TokenContext]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Build Process Owner
+        -  Transaction Worker
+        -  Integrity Maintenance
+        -  Consistency Assurance
+        -  Build Process Owner
 
    Responsibilities:
         1.  Ensure a new Token instance is born safe and reliable.
@@ -24,7 +24,7 @@ class TokenContextBuilder(Builder[TokenContext]):
      Attributes:
 
     Provides:
-        -   def execute(
+        -  def execute(
                     owner: Team,
                     id: int = IdFactory,
                     formation: Formation,
@@ -57,10 +57,10 @@ class TokenContextBuilder(Builder[TokenContext]):
         Action:
             1.  Send an exception chain in the BuildResult if any of the following
                 occur
-                    -   No optional param is enabled.
-                    -   More than one optional param is enabled.
-                    -   The enabled attribute fails a validation test.
-                    -   There is no build logic for the enabled attribute.
+                    -  No optional param is enabled.
+                    -  More than one optional param is enabled.
+                    -  The enabled attribute fails a validation test.
+                    -  There is no build logic for the enabled attribute.
             2.  Otherwise, build the TokenContext then, send the success result.
         Args:
             id: Optional[int]

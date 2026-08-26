@@ -25,7 +25,7 @@ from err import QueryStackEmptyException
 class PersonaQueryStackEmptyException(QueryStackEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required PersonaQuery's target stack is empty.

@@ -18,7 +18,7 @@ from transit.carrier import EntityCarrier
 class NodeCarrier(EntityCarrier[Node], ABC):
     """
     Role:
-        -   Boundary Carrier
+        -  Boundary Carrier
 
     Responsibilities:
         1.  Transport either a hydrated Node or its Blueprint across validation and other processing
@@ -35,7 +35,7 @@ class NodeCarrier(EntityCarrier[Node], ABC):
         size: int
 
     Provides:
-        -   extract_blueprint() -> Optional[Blueprint[T]]
+        -  extract_blueprint() -> Optional[Blueprint[T]]
 
     Super Class:
         EntityCarrier

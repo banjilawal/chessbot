@@ -22,7 +22,7 @@ from transit.dispatcher.validator import ModelValidationDispatcher
 class TeamValidationDispatcher(ModelValidationDispatcher[Team]):
     """
     Role
-        -   Integrity, Consistency Maintenance
+        -  Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a Team instance is certified safe, reliable and consistent before use.
@@ -31,7 +31,7 @@ class TeamValidationDispatcher(ModelValidationDispatcher[Team]):
         integrity_checker: TeamIntegrityChecker
 
     Provides:
-        -   execute(candidate: Any) -> ValidationResult
+        -  execute(candidate: Any) -> ValidationResult
 
     Super Class:
         ModelValidator

@@ -23,7 +23,7 @@ from operation import Operator, RegistryEntryNameValidator
 class ServiceRegistrySearch(Operator):
     """
     Role
-        -   Search Service
+        -  Search Service
 
     Responsibilities:
         1.  Search the ServiceRegistry for an operation.
@@ -31,7 +31,7 @@ class ServiceRegistrySearch(Operator):
     Attributes:
 
     Provides:
-        -   def execute(
+        -  def execute(
                     domain: str,
                     operation_name: str,
                     registry: ServiceRegistry,

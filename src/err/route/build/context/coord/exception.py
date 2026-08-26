@@ -26,7 +26,7 @@ from err import ContextBuildRouteException
 class CoordContextBuildRouteException(ContextBuildRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that one of CoordContext build routes is missing.

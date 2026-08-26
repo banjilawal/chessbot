@@ -17,8 +17,8 @@ from assurance import ModelValidator
 class TeamValidator(ModelValidator[Team]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
+        -  Transaction Worker
+        -  Integrity Maintenance
 
     Responsibilities:
         1.  Ensure a TeamBlueprint instance is certified safe, reliable and consistent before use.
@@ -27,7 +27,7 @@ class TeamValidator(ModelValidator[Team]):
         bundle: TeamToolkit
 
     Provides:
-        -   execute(candidate) -> ValidationResult
+        -  execute(candidate) -> ValidationResult
 
     Super Class:
         IntegrityChecker
@@ -48,8 +48,8 @@ class TeamValidator(ModelValidator[Team]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The validation_priming fails.
-                    -   Either the board, owner or id get flagged unsafe.
+                    -  The validation_priming fails.
+                    -  Either the board, owner or id get flagged unsafe.
             2.  Otherwise, send the success result.
         Args:
             candidate: Any,

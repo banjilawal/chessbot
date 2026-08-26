@@ -22,7 +22,7 @@ class SouthwestQuadrantBuilderToolkit(
 ):
     """
     Role:
-        -   Dependency Management
+        -  Dependency Management
         
     Responsibilities:
         1.  Bundles SouthwestQuadrantBuilder dependencies.

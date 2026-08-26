@@ -25,7 +25,7 @@ from err import QueryStackEmptyException
 class RankQueryStackEmptyException(QueryStackEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required RankQuery's target stack is empty.

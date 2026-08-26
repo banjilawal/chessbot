@@ -16,9 +16,9 @@ from microservice import CatalogService
 class SchemaService(CatalogService[Schema]):
     """
     Role:
-        -   Data layer
-        -   Microservice API
-        -   Interface
+        -  Data layer
+        -  Microservice API
+        -  Interface
 
     Responsibilities:
         1.  Adds functionality to the Schema table with without tight coupling

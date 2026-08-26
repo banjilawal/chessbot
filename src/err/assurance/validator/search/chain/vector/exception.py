@@ -24,7 +24,7 @@ __all__ = [
 class VectorNodeContextValidatorException(ChainContextValidatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a VectorNodeContextValidator failed.

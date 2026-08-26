@@ -21,9 +21,9 @@ from system import DebugException
 class SchemaQueryDebugException(DebugException):
     """
     Role:
-        -   Exception Chain Layer 2
-        -   Error Variable Identifier
-        -   Debugging Metadata provider
+        -  Exception Chain Layer 2
+        -  Error Variable Identifier
+        -  Debugging Metadata provider
 
     Responsibilities:
         1.  Record the condition that fired a SchemaQuery variable's error state.

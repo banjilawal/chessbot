@@ -25,7 +25,7 @@ from err import QueryStackEmptyException
 class GameQueryStackEmptyException(QueryStackEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required GameQuery's target stack is empty.

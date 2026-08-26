@@ -20,8 +20,8 @@ from transit.structure.toggle import CartesianToggle
 class VectorToggleRegisterCarrier(RegisterCarrier[CartesianToggle]):
     """
     Role:
-        -   Addressing
-        -   Data-Holder
+        -  Addressing
+        -  Data-Holder
     
     Responsibilities:
         1.  Entity for transporting either an VectorToggleRegister or VectorToggleRegisterBlueprint

@@ -24,7 +24,7 @@ T = TypeVar("T", bound="SearchRequest")
 class SearchAuthorizer(CrudAuthorizer[T], ABC, Generic[T]):
     """
     Role
-        -   Authorization
+        -  Authorization
 
     Responsibilities:
         1.  Check if a SearchRequest satisfies integrity and consistency requirements.
@@ -33,7 +33,7 @@ class SearchAuthorizer(CrudAuthorizer[T], ABC, Generic[T]):
          utility: SearchPermissionUtility[T]
 
     Provides:
-        -   execute(self, request: T) -> AuthorizationDecision
+        -  execute(self, request: T) -> AuthorizationDecision
 
     Super Class:
         CrudAuthorizer

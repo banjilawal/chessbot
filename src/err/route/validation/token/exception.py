@@ -23,7 +23,7 @@ __all__ = [
 class TokenNoValidationRouteException(NoValidationRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Token validation routes is missing.

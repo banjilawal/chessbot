@@ -24,7 +24,7 @@ __all__ = [
 class QuadrantRecurrenceTableException(RecurrenceTableException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a QuadrantRecurrenceTable is null.

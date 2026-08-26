@@ -24,7 +24,7 @@ __all__ = [
 class SquareCoordCollisionException(CoordCollisionException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that two squares share a coord that should be unique.

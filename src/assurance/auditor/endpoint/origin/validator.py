@@ -20,9 +20,9 @@ from util import LoggingLevelRouter
 class TokenOriginCertifier:
     """
     Role
-        -   Validation Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
+        -  Validation Worker
+        -  Integrity Maintenance
+        -  Consistency Assurance
 
     Responsibilities:
         1.  Verify a Token has a fully bidirectional relation with the Square it wants
@@ -31,7 +31,7 @@ class TokenOriginCertifier:
     Attributes:
 
     Provides:
-        -   def validate(
+        -  def validate(
                     token: Token,
                     origin: Square,
                     toolkit: TokenEndpointRelationToolkit

@@ -19,7 +19,7 @@ from util import LoggingLevelRouter
 class TokenConsistencyAuditor(ConsistencyAuditor[Token]):
     """
     Role
-        -   Integrity, Consistency Maintenance
+        -  Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a Token instance is certified safe, reliable and consistent before use.
@@ -27,7 +27,7 @@ class TokenConsistencyAuditor(ConsistencyAuditor[Token]):
     Attributes:
     
     Provides:
-        -    execute(item: Token) -> ValidationResult[Token]
+        -   execute(item: Token) -> ValidationResult[Token]
 
     Super Class:
         Consistency
@@ -44,11 +44,11 @@ class TokenConsistencyAuditor(ConsistencyAuditor[Token]):
 
         Action:
             1.  Send an exception chain in the ValidationResult any of the cases occur:
-                    -   Candidate is null
-                    -   It's not a number.
+                    -  Candidate is null
+                    -  It's not a number.
                     _   A Team check fails
-                    -   A Rank check fails
-                    -   Identity check fails
+                    -  A Rank check fails
+                    -  Identity check fails
             2.  Otherwise, send the success result.
         Args:
             item: Token

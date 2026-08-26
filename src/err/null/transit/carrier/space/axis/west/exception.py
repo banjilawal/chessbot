@@ -23,7 +23,7 @@ __all__ = [
 class WestAxisCarrierNullException(AxisCarrierNullException):
     """
     Role:
-        -   Failure Tracing
+        -  Failure Tracing
 
     Responsibilities:
         1.  Indicating a required WestAxis is null.

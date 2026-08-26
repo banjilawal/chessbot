@@ -27,7 +27,7 @@ class ExcessStationContextFlagsException(
 ):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating  too many StationSearchContext flags were enabled.

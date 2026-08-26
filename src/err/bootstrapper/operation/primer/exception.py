@@ -24,7 +24,7 @@ __all__ = [
 class PrimingException(OperationBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a priming step failed.

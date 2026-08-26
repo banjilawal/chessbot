@@ -28,7 +28,7 @@ class ArenaSearchContext(ModelSearchContext[Arena]):
         player: Optional[Player]
 
     Provides:
-        -   to_dict() -> Dict[str, Any]
+        -  to_dict() -> Dict[str, Any]
 
     Super Class:
         ModelSearchContext

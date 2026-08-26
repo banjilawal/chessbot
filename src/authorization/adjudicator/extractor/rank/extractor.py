@@ -23,10 +23,10 @@ from util import LoggingLevelRouter
 class BlueprintRankExtractor(Extractor):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -  Transaction Worker
+        -  Integrity Maintenance
+        -  Consistency Assurance
+        -  Process Runner
 
     Responsibilities:
         1.  Validate a TokenBlueprint's rank if it exists. Otherwise, find it using
@@ -37,7 +37,7 @@ class BlueprintRankExtractor(Extractor):
         rank_service: RankService
 
     Provides:
-        -   execute(self, blueprint: TokenBlueprint) -> ValidationResult
+        -  execute(self, blueprint: TokenBlueprint) -> ValidationResult
 
     Super Class:
     """

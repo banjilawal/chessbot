@@ -28,7 +28,7 @@ class SquareStackCapacityAnalyst:
     Attributes:
 
     Provides:
-        -   analyze(
+        -  analyze(
                     square_stack: SquareStackService,
             ) -> ComputationResult[SquareStackCapacityReport]
 

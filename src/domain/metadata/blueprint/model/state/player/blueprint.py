@@ -21,8 +21,8 @@ from domain.model import Player
 class PlayerBlueprint(StateModelBlueprint[Player]):
     """
     Role:
-        -   Container
-        -   DTO
+        -  Container
+        -  DTO
 
     Responsibilities:
         1.  Provides values for instantiating a Player object.

@@ -23,7 +23,7 @@ __all__ = [
 class ValidatorException(AssuranceException):
     """
     Role:
-        -   Failure Tracing
+        -  Failure Tracing
 
     Responsibilities:
         1.  Indicating assurance by a Validator failed.

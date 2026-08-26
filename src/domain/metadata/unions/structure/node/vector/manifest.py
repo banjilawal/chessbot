@@ -20,7 +20,7 @@ from domain import NodeTypeUnions, SearchContext, VectorNode, VectorNodeBlueprin
 class VectorNodeTypeUnions(NodeTypeUnions[VectorNode]):
     """
     Role:
-        -   Metadata
+        -  Metadata
 
     Responsibilities:
         1. Catalog of data unions a Node uses in the domain.

@@ -24,7 +24,7 @@ __all__ = [
 class CartesianToggleException(RegisterException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a VectorToggleRegister encountered an error.

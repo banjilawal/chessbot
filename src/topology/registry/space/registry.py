@@ -20,9 +20,9 @@ T = TypeVar("T", bound="Space")
 class SpaceReservoir(ABC, Generic[T]):
     """
     Role:
-        -   Selection
-        -   Iterator
-        -   Routing Mask
+        -  Selection
+        -  Iterator
+        -  Routing Mask
 
     Responsibilities:
         1.  Interface for implementing an iterator that preserves type when looping through

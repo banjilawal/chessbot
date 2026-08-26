@@ -24,7 +24,7 @@ __all__ = [
 class MissingRegistrationWithSquareException(MissingRegistrationException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a satellite has not registered its association with its Square.

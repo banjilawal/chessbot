@@ -25,10 +25,10 @@ T = TypeVar("T", bound="Toggle")
 class ToggleBuildDispatcher(BuildDispatcher, Generic[T]):
     """
     Role
-        -   Build Pipeline
-        -   Integrity Management
-        -   Consistency Assurance
-        -   Workflow Owner
+        -  Build Pipeline
+        -  Integrity Management
+        -  Consistency Assurance
+        -  Workflow Owner
 
    Responsibilities:
         1.  Ensure a new Toggle instance is born safe and reliable.
@@ -37,7 +37,7 @@ class ToggleBuildDispatcher(BuildDispatcher, Generic[T]):
             builder_toolkit: [ToggleBuilderToolkit[T]]
 
     Provides:
-        -   def execute(self, blueprint: ToggleBlueprint[T]) -> BuildResult[T]
+        -  def execute(self, blueprint: ToggleBlueprint[T]) -> BuildResult[T]
 
      Super Class:
          Builder

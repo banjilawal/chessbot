@@ -24,7 +24,7 @@ __all__ = [
 class TokenException(ModelException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Token encountered an error.

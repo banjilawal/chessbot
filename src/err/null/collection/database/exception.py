@@ -24,7 +24,7 @@ __all__ = [
 class DatabaseNullException(NullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required Database is null.

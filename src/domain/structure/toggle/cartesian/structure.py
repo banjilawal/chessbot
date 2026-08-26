@@ -17,12 +17,11 @@ class CartesianToggle(Toggle[Cartesian]):
     """
     Role:
         - Option Selector
-        -   Data-Holder
 
     Responsibilities:
         1.  Picks selector a
-                -   Cartesian: Geometric quantity
-                -   Vector: Linear Vector
+                -  Cartesian: Geometric quantity
+                -  Vector: Linear Vector
             as an selector for multiplication, conversion or simple addition.
 
     Attributes:
@@ -34,8 +33,8 @@ class CartesianToggle(Toggle[Cartesian]):
 
     Provides:
         
-        -   equal_vector_points(point: Point) -> bool
-        -   equal_cartesian_points(self, point: Point) -> bool
+        -  equal_vector_points(point: Point) -> bool
+        -  equal_cartesian_points(self, point: Point) -> bool
         
     Super Class:
         Toggle

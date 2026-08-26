@@ -36,7 +36,7 @@ class RankSlotPermitter(OperationPermitter):
         priming_validator: PrimingValidator
 
     Provides:
-        -   execute(request: RankSlotRequest) -> RankSlotApprovalReport
+        -  execute(request: RankSlotRequest) -> RankSlotApprovalReport
 
     Super Class:
     """
@@ -66,13 +66,13 @@ class RankSlotPermitter(OperationPermitter):
         """
         Action:
             1.  Return a failure result containing an exception chain if either:
-                    -   The collision_detector
-                    -   The rank_slot_analyzer
+                    -  The collision_detector
+                    -  The rank_slot_analyzer
                 do not complete their work.
             2.  Otherwise, send a push denial if
-                    -   The RankStack is full.
-                    -   The item collides with an existing stack member.
-                    -   The slot for the rank's rank is full.
+                    -  The RankStack is full.
+                    -  The item collides with an existing stack member.
+                    -  The slot for the rank's rank is full.
             3.  Send an approval if all the tests are passed.
         Args:
             request: RankSlotRequest

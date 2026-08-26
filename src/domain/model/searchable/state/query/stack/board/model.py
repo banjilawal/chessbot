@@ -19,9 +19,9 @@ from collection.stack import BoardStackService
 class BoardQuery(StackQuery[Board]):
     """
     Role:
-        -   Model
-        -   Search
-        -   Stateless Data-Holder
+        -  Model
+        -  Search
+        -  Stateless Data-Holder
 
     Responsibilities:
         1.  A list of boards to search with context.

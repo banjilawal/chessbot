@@ -26,7 +26,7 @@ from transit.dispatcher.validator import CartesianToggleValidator
 class VectorToggleRegisterToolkit(RegisterToolkit[CartesianToggle]):
     """
     Role:
-        -   Container
+        -  Container
 
     Responsibilities:
         1.  Collection of workers and services that are required for VectorToggleRegister tasks.

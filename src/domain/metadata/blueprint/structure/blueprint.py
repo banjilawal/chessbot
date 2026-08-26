@@ -20,7 +20,7 @@ T = TypeVar("T", bound="Structure")
 class StructureBlueprint(Blueprint[T], ABC, Generic[T]):
     """
      Role:
-         -   Metadata
+         -  Metadata
 
      Responsibilities:
          1.  Provide attribute-value tuples for hydrating a StructuralWrapper.

@@ -24,7 +24,7 @@ T = TypeVar("T", bound="Axis")
 class AxisBuilder(SpaceBuilder, Generic[T]):
     """
     Role
-        -   Builder
+        -  Builder
 
     Responsibilities:
         1.  Create a Axis instance from the safe blueprint.
@@ -32,7 +32,7 @@ class AxisBuilder(SpaceBuilder, Generic[T]):
     Attributes:
 
     Provides:
-        -   def execute(self, blueprint: AxisBlueprint,) -> BuildResult[Axis]
+        -  def execute(self, blueprint: AxisBlueprint,) -> BuildResult[Axis]
 
     Super Class:
         Builder

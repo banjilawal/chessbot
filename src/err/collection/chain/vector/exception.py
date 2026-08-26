@@ -23,7 +23,7 @@ __all__ = [
 class VectorChainException(ChainException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a VectorChain encountered an error.

@@ -25,7 +25,7 @@ __all__ = [
 class TokenPopRequestTesterException(TesterException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a TokenStackPopTester encountered an error.

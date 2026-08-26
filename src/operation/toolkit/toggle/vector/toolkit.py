@@ -24,7 +24,7 @@ from operation.toolkit.toggle.vector.toolkit import ToggleToolkit
 class VectorToggleToolkit(ToggleToolkit[CartesianToggle]):
     """
     Role:
-        -   Container
+        -  Container
 
     Responsibilities:
         1.  Collection of workers and validators that are required for CartesianVector tasks.

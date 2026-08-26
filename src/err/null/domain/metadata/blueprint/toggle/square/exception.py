@@ -24,7 +24,7 @@ __all__ = [
 class SquareToggleBlueprintNullException(ToggleBlueprintNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required SquareBlueprint is null.

@@ -18,7 +18,7 @@ from space.quadrant.northwest.space import Quadrant
 class NorthwestQuadrant(Quadrant):
     """
     Role:
-        -   Data Holder
+        -  Data Holder
 
     Responsibilities:
         1.  Quadrant bounded between U(x_i, y_i) <= V(0, 0).

@@ -24,7 +24,7 @@ __all__ = [
 class PushRequestNullException(RequestNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required PushRequest was null.

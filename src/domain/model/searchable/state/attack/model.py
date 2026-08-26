@@ -19,8 +19,8 @@ T = TypeVar("T", bound="Token")
 class Attack(StatefulModel, Generic[T]):
     """
     Role:
-        -   Model
-        -   Data Holder
+        -  Model
+        -  Data Holder
 
     Responsibilities:
         1.  Details about an attack.
@@ -32,7 +32,7 @@ class Attack(StatefulModel, Generic[T]):
         attacker_benefit: Optional[int]
 
     Provides:
-        -   are_attacking_same_victim(attack: Attack) -> bool
+        -  are_attacking_same_victim(attack: Attack) -> bool
         
     Super Class:
         Model

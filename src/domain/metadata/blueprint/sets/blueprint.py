@@ -19,7 +19,7 @@ from err import ContainerNullException, TupleNullException
 class ContainerBlueprint(Blueprint[Container]):
     """
      Role:
-         -   Metadata
+         -  Metadata
 
      Responsibilities:
          1.  Provides values for instantiating a Container object

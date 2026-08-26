@@ -25,7 +25,7 @@ __all__ = [
 class ZeroVectorContextFlagsException(ZeroContextFlagsException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating no VectorSearchContext flags were enabled.

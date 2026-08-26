@@ -23,7 +23,7 @@ __all__ = [
 class FinalizeScalarBuilderException(FinalizeBuilderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that finalizing a ScalarBuild failed.

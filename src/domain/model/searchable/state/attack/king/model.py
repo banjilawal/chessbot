@@ -16,8 +16,8 @@ from domain.model import Attack, KingAttackState, KingToken, Maneuver, Token
 class AttackKing(Attack[KingToken]):
     """
     Role:
-        -   Model
-        -   Data Holder
+        -  Model
+        -  Data Holder
 
     Responsibilities:
         1.  Provide information about a Path which might be used to attack

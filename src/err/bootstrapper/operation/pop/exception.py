@@ -24,7 +24,7 @@ __all__ = [
 class PopperException(OperationBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a StackPopper failed.

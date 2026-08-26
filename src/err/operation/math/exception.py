@@ -22,7 +22,7 @@ __all__ = [
 class VectorOperatorException(OperatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a VectorOperation from completing their task.

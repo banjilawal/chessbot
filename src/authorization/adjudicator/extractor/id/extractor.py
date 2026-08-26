@@ -20,10 +20,10 @@ from util import IdFactory, LoggingLevelRouter
 class BlueprintIdExtractor:
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -  Transaction Worker
+        -  Integrity Maintenance
+        -  Consistency Assurance
+        -  Process Runner
 
     Responsibilities:
         1.  Validate a Blueprint's id if one is present. Otherwise, generate a unique one for
@@ -33,7 +33,7 @@ class BlueprintIdExtractor:
         identity_service: IdetntiyService
         
     Provides:
-        -   execute(candidate: Any, model_name: str) -> ValidationResult:
+        -  execute(candidate: Any, model_name: str) -> ValidationResult:
 
     Super Class:
         Adjudicator
@@ -50,11 +50,11 @@ class BlueprintIdExtractor:
 
         Action:
             1.  If the candidate is not null:
-                    -   Send an exception chain in the ValidationResult when its not an int.
-                    -   Otherwise, send the success result.
+                    -  Send an exception chain in the ValidationResult when its not an int.
+                    -  Otherwise, send the success result.
             2.  If the candidate is null:
-                    -   Send an exception chain in the ValidationResult if the model_name is not a string.
-                    -   Otherwise, generate a unique id for the next model instance.
+                    -  Send an exception chain in the ValidationResult if the model_name is not a string.
+                    -  Otherwise, generate a unique id for the next model instance.
         Args:
             candidate: Any
             model_name: str

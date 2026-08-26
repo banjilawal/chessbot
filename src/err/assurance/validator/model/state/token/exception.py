@@ -24,7 +24,7 @@ __all__ = [
 class TokenValidatorException(StateModelValidatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a TokenValidator failed.

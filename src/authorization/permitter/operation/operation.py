@@ -20,7 +20,7 @@ T = TypeVar("T", bound="Result")
 class Operation(ABC, Generic[T]):
     """
     Role
-        -   Worker
+        -  Worker
 
     Responsibilities:
         1.  Execute a task that produces a Result.
@@ -29,7 +29,7 @@ class Operation(ABC, Generic[T]):
         permitter: OperationPermitter[T]
         
     Provides:
-        -   def execute(request: OperationRequest[T]) -> T
+        -  def execute(request: OperationRequest[T]) -> T
 
     Super Class:
     """

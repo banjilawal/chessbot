@@ -25,7 +25,7 @@ T = TypeVar("T", bound="CrudResult")
 class CrudOperator(Operator[T], ABC, Generic[T]):
     """
     Role
-        -   Worker
+        -  Worker
 
     Responsibilities:
         1.  Process a CrudRequest.
@@ -34,7 +34,7 @@ class CrudOperator(Operator[T], ABC, Generic[T]):
         authorizer: CrudAuthorizer[T]
         
     Provides:
-        -   def execute(request: CrudRequest[T]) -> T
+        -  def execute(request: CrudRequest[T]) -> T
 
     Super Class:
         Operation

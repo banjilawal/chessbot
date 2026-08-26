@@ -23,7 +23,7 @@ __all__ = [
 class QuadrantValidatorException(SpaceValidatorException):
     """
     Role:
-        -   Failure Tracing
+        -  Failure Tracing
 
     Responsibilities:
         1.  Indicating a QuadrantSpaceValidator failed.

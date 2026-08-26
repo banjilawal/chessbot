@@ -24,7 +24,7 @@ __all__ = [
 class SearchContextNullException(SearchDataObjectNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required SearchContextNull failed.

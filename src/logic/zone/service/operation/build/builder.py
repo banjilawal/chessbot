@@ -17,10 +17,10 @@ from system import Builder, BuildResult, GameColor, LoggingLevelRouter
 class ZoneBuilder(Builder[Zone]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -  Transaction Worker
+        -  Integrity Maintenance
+        -  Consistency Assurance
+        -  Process Runner
 
     Responsibilities:
         1.  Zone creation process owner.
@@ -30,7 +30,7 @@ class ZoneBuilder(Builder[Zone]):
      Attributes:
      
     Provides:
-        -   execute(
+        -  execute(
                     row: int,
                     column: int,
                     number_validation: NumberValidator,
@@ -51,8 +51,8 @@ class ZoneBuilder(Builder[Zone]):
         
         Action:
             1.  Send an exception chain in the BuildResult if either:
-                    -   The row
-                    -   The column
+                    -  The row
+                    -  The column
                 are fail its validation checks.
             2.  Otherwise, build the Zone then, send the success reult.
         Args:

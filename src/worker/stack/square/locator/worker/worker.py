@@ -32,7 +32,7 @@ class OpeningSquareLocator(Worker):
     Attributes:
 
     Provides:
-        -   execute(
+        -  execute(
                     cls,
                     square: Square,
                     square_stack: SquareStackService,

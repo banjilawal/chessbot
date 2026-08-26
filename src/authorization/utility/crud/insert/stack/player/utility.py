@@ -21,7 +21,7 @@ from domain import SquareInsertContext
 class SquareStackInsertPermissionUtility(StackInsertPermissionUtility[SquareInsertContext]):
     """
     Role:
-        -   Utility
+        -  Utility
 
     Responsibilities:
         1.  Bundles resources the SquareInsertAuthorizer needs to evaluate a SquareInsertRequest.

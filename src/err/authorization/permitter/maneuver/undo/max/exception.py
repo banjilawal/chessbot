@@ -24,7 +24,7 @@ __all__ = [
 class MaxMoveUndoException(TokenUndoMovePermitterException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Token move tried to undo more than one move during a

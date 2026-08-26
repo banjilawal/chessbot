@@ -20,7 +20,7 @@ from space import SouthAxis
 class SouthAxisBlueprint(AxisBlueprint[SouthAxis]):
     """
      Role:
-         -   DTO
+         -  DTO
 
      Responsibilities:
          1.  Provides values for instantiating a SouthAxis.

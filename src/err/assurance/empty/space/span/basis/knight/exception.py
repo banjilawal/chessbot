@@ -24,7 +24,7 @@ __all__ = [
 class KnightBasisEmptyException(BasisEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required KnightBasis is empty.

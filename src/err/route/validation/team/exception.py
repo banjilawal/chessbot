@@ -23,7 +23,7 @@ __all__ = [
 class TeamNoValidationRouteException(NoValidationRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that one of Team validation routes is missing.

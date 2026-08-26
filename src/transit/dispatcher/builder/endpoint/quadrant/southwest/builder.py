@@ -22,8 +22,8 @@ from transit.dispatcher.validator import VectorValidator
 class SouthwestQuadrantEndpointBuilder:
     """
     Role:
-        -   Builder
-        -   Integrity Management
+        -  Builder
+        -  Integrity Management
 
     Responsibilities:
         1.  Create a VectorRegister for the quadrant southwest of the origin.
@@ -34,7 +34,7 @@ class SouthwestQuadrantEndpointBuilder:
         vector_validator: Optional[VectorValidator]
         
     Provides:
-        -   def execute() -> BuildResult[VectorRegister]
+        -  def execute() -> BuildResult[VectorRegister]
 
     Super Class:
     """

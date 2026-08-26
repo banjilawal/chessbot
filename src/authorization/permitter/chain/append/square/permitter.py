@@ -38,7 +38,7 @@ class SquareAppendPermitter(AppendPermitter[Square]):
         request_adjudicator: SquareAppendRequestAdjudicator
 
     Provides:
-        -   execute(request: AppendRequest) -> AppendApprovalReport
+        -  execute(request: AppendRequest) -> AppendApprovalReport
 
     Super Class:
         AppendPermitter
@@ -66,13 +66,13 @@ class SquareAppendPermitter(AppendPermitter[Square]):
         """
         Action:
             1.  Return a failure result containing an exception chain if either:
-                    -   The collision_detector
-                    -   The rank_quota_analyzer
+                    -  The collision_detector
+                    -  The rank_quota_analyzer
                 do not complete their work.
             2.  Otherwise, send a append denial if
-                    -   The SquareChain is full.
-                    -   The item collides with an existing chain member.
-                    -   The quota for the square's rank is full.
+                    -  The SquareChain is full.
+                    -  The item collides with an existing chain member.
+                    -  The quota for the square's rank is full.
             3.  Send an approval if all the tests are passed.
         Args:
             request: AppendRequest

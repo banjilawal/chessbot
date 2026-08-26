@@ -22,7 +22,7 @@ from transit.dispatcher.validator import ModelValidationDispatcher
 class SquareValidationDispatcher(ModelValidationDispatcher[Square]):
     """
     Role
-        -   Integrity, Consistency Maintenance
+        -  Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a Square instance is certified safe, reliable and consistent before use.
@@ -31,7 +31,7 @@ class SquareValidationDispatcher(ModelValidationDispatcher[Square]):
         integrity_checker: SquareIntegrityChecker
 
     Provides:
-        -   execute(candidate: Any) -> ValidationResult
+        -  execute(candidate: Any) -> ValidationResult
 
     Super Class:
         ModelValidator

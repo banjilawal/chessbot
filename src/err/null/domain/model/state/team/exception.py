@@ -24,7 +24,7 @@ __all__ = [
 class TeamNullException(StateModelNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required Team is null.

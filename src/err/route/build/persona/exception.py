@@ -23,7 +23,7 @@ __all__ = [
 class PersonaBuildRouteException(BuildRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that n Persona build routes is missing.

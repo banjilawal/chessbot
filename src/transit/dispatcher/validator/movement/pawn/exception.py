@@ -23,7 +23,7 @@ __all__ = [
 class PawnOffsetPatternValidatorException(OffsetPatternValidatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicate a required PawnOffsetPatternValidator failed.

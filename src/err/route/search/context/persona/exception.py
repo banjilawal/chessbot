@@ -26,7 +26,7 @@ from err import ContextSearchRouteException
 class PersonaContextSearchRouteException(ContextSearchRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that one of PersonaContext search routes is missing.

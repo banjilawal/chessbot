@@ -22,8 +22,8 @@ from system import AnchorException
 class ZoneException(AnchorException):
     """
     Role:
-        -   Exception Chain Layer 0
-        -   Exception coverage target
+        -  Exception Chain Layer 0
+        -  Exception coverage target
 
     Responsibilities:
         1.  Anchors Zone debug (layer-2) information.

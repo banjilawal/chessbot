@@ -22,7 +22,7 @@ __all__ = [
 class GraphStackRegistrationException(StackRegistrationException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that registrationing onto a GraphStack failed.

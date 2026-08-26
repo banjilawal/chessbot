@@ -18,9 +18,9 @@ from domain.model import CatalogQuery
 class PersonaQuery(CatalogQuery[Persona]):
     """
     Role:
-        -   Model
-        -   Search
-        -   Stateless Data-Holder
+        -  Model
+        -  Search
+        -  Stateless Data-Holder
 
     Responsibilities:
         1.  A list of personas to search with context.

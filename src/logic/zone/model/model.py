@@ -18,8 +18,8 @@ from system import GameColor
 class Zone(Enum):
     """
     Role:
-        -   Addressing
-        -   Data-Holder
+        -  Addressing
+        -  Data-Holder
   
     Responsibilities:
         1.  Provide global, low-level addressing squares and tokens on the board.
@@ -29,7 +29,7 @@ class Zone(Enum):
         schema: Schema
         
     Provides:
-        -   def opposite(zone: Zone) -> Zone:
+        -  def opposite(zone: Zone) -> Zone:
     
     Super Class:
         Enum

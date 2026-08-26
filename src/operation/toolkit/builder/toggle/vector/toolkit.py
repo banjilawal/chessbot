@@ -20,7 +20,7 @@ from operation.toolkit.builder.toggle.vector.toolkit import ToggleBuilderToolkit
 class VectorToggleBuilderToolkit(ToggleBuilderToolkit[CartesianToggle]):
     """
     Role:
-        -   Dependency Management
+        -  Dependency Management
         
     Responsibilities:
         1.  Bundles VectorToggleBuilderToolkit dependencies.

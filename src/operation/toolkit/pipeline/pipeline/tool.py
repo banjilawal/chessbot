@@ -17,7 +17,7 @@ from system import IdentityService, NumberValidator
 class SquareTool:
     """
     Role:
-        -   Container
+        -  Container
 
     Responsibilities:
         1.  Reduces the declarations of common security resources in Vector, Coord,

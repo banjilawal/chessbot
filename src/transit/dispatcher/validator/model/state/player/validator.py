@@ -22,7 +22,7 @@ from transit.dispatcher.validator import ModelValidationDispatcher
 class PlayerValidationDispatcher(ModelValidationDispatcher[Player]):
     """
     Role
-        -   Integrity, Consistency Maintenance
+        -  Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a Player instance is certified safe, reliable and consistent before use.
@@ -31,7 +31,7 @@ class PlayerValidationDispatcher(ModelValidationDispatcher[Player]):
         integrity_checker: PlayerIntegrityChecker
 
     Provides:
-        -   execute(candidate: Any) -> ValidationResult
+        -  execute(candidate: Any) -> ValidationResult
 
     Super Class:
         ModelValidator

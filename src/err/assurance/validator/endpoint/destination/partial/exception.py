@@ -24,7 +24,7 @@ __all__ = [
 class PartialTokenDestinationRelationException(ValidatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Token and its destination have a either a missing registration

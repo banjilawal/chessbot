@@ -31,7 +31,7 @@ class RelationAnalyzer(Analyzer[RelationReport], Generic[P, S]):
     Attributes:
 
     Provides:
-        -   analyze(
+        -  analyze(
                     candidate_primary: P,
                     candidate_satellite: S,
                     *args,

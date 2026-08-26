@@ -25,7 +25,7 @@ __all__ = [
 class ExcessCoordContextFlagsException(ExcessContextFlagsException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating too many CoordSearchContext flags were enabled.

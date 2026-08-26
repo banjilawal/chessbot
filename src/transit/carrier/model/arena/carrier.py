@@ -19,8 +19,8 @@ from carrier import ModelCarrier
 class ArenaCarrier(ModelCarrier[Arena]):
     """
     Role:
-        -   Addressing
-        -   Data-Holder
+        -  Addressing
+        -  Data-Holder
     
     Responsibilities:
         1.  Entity for transporting either a Arena or ArenaBlueprint

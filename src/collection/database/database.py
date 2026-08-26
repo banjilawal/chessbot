@@ -23,8 +23,8 @@ class Database(ABC, Generic[T]):
     """
     Role:
         _   Frontend
-        -   Interface
-        -   Data Protection
+        -  Interface
+        -  Data Protection
 
     Responsibilities:
         1.  Encapsulates StackService.
@@ -40,10 +40,10 @@ class Database(ABC, Generic[T]):
         integrity_service: Microservice[T]
 
     Provides:
-        -   iterator() ->: iter
-        -   insert(item: T) -> InsertionResult:
-        -   delete_by_id(id: int) -> DeletionResult[T]:
-        -   search(context: Context[T]) -> SearchResult[List[T]]
+        -  iterator() ->: iter
+        -  insert(item: T) -> InsertionResult:
+        -  delete_by_id(id: int) -> DeletionResult[T]:
+        -  search(context: Context[T]) -> SearchResult[List[T]]
     Super:
     """
     _id: id

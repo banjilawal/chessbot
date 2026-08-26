@@ -18,9 +18,9 @@ from domain.model import StackQuery
 class HostageQuery(StackQuery[Hostage]):
     """
     Role:
-        -   Model
-        -   Search
-        -   Stateless Data-Holder
+        -  Model
+        -  Search
+        -  Stateless Data-Holder
 
     Responsibilities:
         1.  A list of hostages to search with context.

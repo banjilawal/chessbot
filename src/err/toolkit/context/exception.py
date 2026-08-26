@@ -23,7 +23,7 @@ __all__ = [
 class ContextException(ToolkitException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a ContextNull failed.

@@ -23,7 +23,7 @@ __all__ = [
 class EmptyRankStackDeletionException(EmptyStackDeletionException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicatings that popping An RankStack failed because it was empty.

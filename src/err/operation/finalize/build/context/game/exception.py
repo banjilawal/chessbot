@@ -22,7 +22,7 @@ __all__ = [
 class FinalizeGameContextBuilderException(FinalizeContextBuilderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that finalizing a GameContextBuild failed.

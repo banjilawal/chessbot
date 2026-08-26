@@ -23,8 +23,8 @@ from util import LoggingLevelRouter
 class EuclideanDistancePermitter(ComputationPermitter[VectorToggle]):
     """
     Role:
-        -   Permission Authorization
-        -   Integrity Maintenance
+        -  Permission Authorization
+        -  Integrity Maintenance
         _   Consistency Assurance
 
     Responsibilities:
@@ -38,7 +38,7 @@ class EuclideanDistancePermitter(ComputationPermitter[VectorToggle]):
         priming_validator: PrimingValidator
         
     Provides:
-        -    def execute(self, EuclideanDistanceRequest) -> RequestDecision
+        -   def execute(self, EuclideanDistanceRequest) -> RequestDecision
 
     Super Class:
         ComputationPermitter

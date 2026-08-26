@@ -24,7 +24,7 @@ __all__ = [
 class TeamContextBuilderBootstrapperException(ContextBuilderBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a TeamContextBuilderBootstrapper was aborted by an exception.

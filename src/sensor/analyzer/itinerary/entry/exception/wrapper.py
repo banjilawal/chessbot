@@ -21,9 +21,9 @@ from system import UpdateException
 class SquareEntryException(UpdateException):
     """
     Role:
-        -   Worker Method Identifier
-        -   Exception Chain Layer 1,
-        -   Exception Messaging
+        -  Worker Method Identifier
+        -  Exception Chain Layer 1,
+        -  Exception Messaging
 
     Responsibilities:
         1.  Indicate a SquareEntryProcess was not completed.

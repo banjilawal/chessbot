@@ -17,7 +17,7 @@ from space.axis.north.space import Axis
 class NorthAxis(Axis):
     """
     Role:
-        -   Data Holder
+        -  Data Holder
 
     Responsibilities:
         1.  Axis bounded between U(x_i, y_i) <= V(x_i, 0).

@@ -24,7 +24,7 @@ __all__ = [
 class PushRequestTesterException(RequestTesterException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a PushRequestTester failed.

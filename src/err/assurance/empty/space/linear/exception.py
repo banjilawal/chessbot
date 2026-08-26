@@ -24,7 +24,7 @@ __all__ = [
 class LinearSpaceEmptyException(SpaceEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required LinearSpace is empty.

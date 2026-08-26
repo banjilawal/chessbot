@@ -26,7 +26,7 @@ T = TypeVar("T", bound="OffsetRank")
 class OffsetTopologyGenerator:
     """
     Role:
-        -   Computation
+        -  Computation
 
     Responsibilities:
         1.  Generate a Bishop's diagonal traversal basiss.
@@ -72,8 +72,8 @@ class OffsetTopologyGenerator:
 
         Action:
             1.  Send an exception chain in the ComputationResult if either.
-                    -   The recurrence_table fails a validation check,
-                    -   A computation fails.
+                    -  The recurrence_table fails a validation check,
+                    -  A computation fails.
             2.  Otherwise, send the solutions in the success result.
         Args:
              basis: OffsetTopologyBasis

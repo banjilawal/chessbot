@@ -24,7 +24,7 @@ __all__ = [
 class RegisterSetBuilderException(ContainerBuilderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a RegisterSetBuilderExceptio failed.

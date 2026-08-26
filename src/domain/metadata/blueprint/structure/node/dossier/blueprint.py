@@ -20,7 +20,7 @@ from domain.structure.node import DossierNode
 class DossierNodeBlueprint(NodeBlueprint):
     """
      Role:
-         -   DTO
+         -  DTO
 
      Responsibilities:
          1.  Provides values for instantiating a DossierNode object

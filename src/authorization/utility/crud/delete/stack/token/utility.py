@@ -23,7 +23,7 @@ class TokenStackDeletePermissionUtility(
 ):
     """
     Role:
-        -   Utility
+        -  Utility
 
     Responsibilities:
         1.  Bundles resources the TokenDeleteAuthorizer needs to evaluate a TokenDeleteRequest.

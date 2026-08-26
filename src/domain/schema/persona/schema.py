@@ -18,8 +18,8 @@ from domain.model import Vector
 class Persona(Enum):
     """
     Role:
-        -   Configuration Table
-        -   Metadata Set
+        -  Configuration Table
+        -  Metadata Set
         
 
     Responsibilities:

@@ -16,8 +16,8 @@ from operation import Operator
 class WorkerRegistry:
     """
     Role
-        -   Controller
-        -   Publisher
+        -  Controller
+        -  Publisher
     
     Responsibilities:
         1.  Dynamic, entry and removal of public operations available for building toolkits.
@@ -29,7 +29,7 @@ class WorkerRegistry:
         items: Dict[str, Dict[str, Operation]]
     
     Provides:
-        -   def domains(self) -> List[str]:
+        -  def domains(self) -> List[str]:
     
     Super Class:
         Model

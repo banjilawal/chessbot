@@ -23,10 +23,10 @@ from util import LoggingLevelRouter
 class ScalarBuilder(ModelBuilder[Scalar]):
     """
     Role
-        -   Build Pipeline
-        -   Integrity Management
-        -   Consistency Assurance
-        -   Workflow Owner
+        -  Build Pipeline
+        -  Integrity Management
+        -  Consistency Assurance
+        -  Workflow Owner
 
    Responsibilities:
         1.  Ensure a new Scalar instance is born safe and reliable.
@@ -35,7 +35,7 @@ class ScalarBuilder(ModelBuilder[Scalar]):
             builder_toolkit: Optional[ScalarBuilderToolkit]
 
     Provides:
-        -   def execute(self, blueprint: ScalarBlueprint) -> BuildResult[Scalar]
+        -  def execute(self, blueprint: ScalarBlueprint) -> BuildResult[Scalar]
 
      Super Class:
          ModelBuilder
@@ -63,8 +63,8 @@ class ScalarBuilder(ModelBuilder[Scalar]):
 
         Action:
             1.  Send an exception chain in the BuildResult if either
-                    -   The ScalarBlueprint object is flagged unsafe.
-                    -   The assembler does not return a product.
+                    -  The ScalarBlueprint object is flagged unsafe.
+                    -  The assembler does not return a product.
             2.  Otherwise, cast the assembler product as a Scalar then, send in the success result,
         Args:
             blueprint: ScalarBlueprint

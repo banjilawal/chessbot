@@ -22,10 +22,10 @@ from util import LoggingLevelRouter
 class SquareRegisterValidator(Validator[SquareRegister]):
     """
     Role
-        -   Transaction Worker
-        -   Operation Maintenance
-        -   Consistency Assurance
-        -   Validation Process Owner
+        -  Transaction Worker
+        -  Operation Maintenance
+        -  Consistency Assurance
+        -  Validation Process Owner
 
     Responsibilities:
         1.  Ensure a VectorRegister instance is certified safe, reliable and consistent
@@ -34,7 +34,7 @@ class SquareRegisterValidator(Validator[SquareRegister]):
     Attributes:
         bundle: SquareRegisterToolkit   
     Properties:
-        -   execute(candidate: Any,) -> ValidationResult
+        -  execute(candidate: Any,) -> ValidationResult
 
     Super Class:
         IntegrityChecker
@@ -57,9 +57,9 @@ class SquareRegisterValidator(Validator[SquareRegister]):
         Action:
             1.  Send an exception in the ValidationResult any of these
                 conditions occur.
-                    -   Validator priming fails.
-                    -   The vectorRegister's payload is flagged unsafe.
-                    -   There is a mismatch between the contexts.
+                    -  Validator priming fails.
+                    -  The vectorRegister's payload is flagged unsafe.
+                    -  There is a mismatch between the contexts.
             3.  Otherwise, Send the success result.
         Args:
             candidate: Any

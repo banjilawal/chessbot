@@ -23,7 +23,7 @@ T = TypeVar("T", bound="Quadrant")
 class QuadrantBlueprint(SpaceBlueprint, ABC, Generic[T]):
     """
      Role:
-         -   DTO
+         -  DTO
 
      Responsibilities:
          1.  Provides values for instantiating an Quadrant.

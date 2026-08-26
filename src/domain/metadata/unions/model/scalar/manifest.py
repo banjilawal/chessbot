@@ -20,7 +20,7 @@ from domain import ModelTypeUnions, Scalar, ScalarBlueprint, ScalarCarrier
 class ScalarTypeUnions(ModelTypeUnions[Scalar]):
     """
     Role:
-        -   Metadata
+        -  Metadata
 
     Responsibilities:
         1. Catalog of data unions a Scalar uses in the domain.

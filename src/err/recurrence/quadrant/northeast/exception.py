@@ -24,7 +24,7 @@ __all__ = [
 class NortheastQuadrantRecurrenceException(QuadrantRecurrenceException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a NortheastQuadrantRecurrence encountered an error.

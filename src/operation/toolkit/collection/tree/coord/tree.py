@@ -19,8 +19,8 @@ from tree import Tree
 class CoordTree(Tree[Coord]):
     """
     Role:
-        -   Data Holder
-        -   Data protection
+        -  Data Holder
+        -  Data protection
 
     Responsibilities:
         1.  Immutable unordered set of coords.

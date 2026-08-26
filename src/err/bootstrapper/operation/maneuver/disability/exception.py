@@ -24,7 +24,7 @@ __all__ = [
 class DisabledTokenManeuverException(ManeuverException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a token cannot maneuver because its either not on the board or checkmated..

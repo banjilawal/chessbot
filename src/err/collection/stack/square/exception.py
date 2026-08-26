@@ -25,7 +25,7 @@ from artifcat import MethodResultType
 class SquareStackServiceException(StackServiceException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a SquareStackService encountered an error.

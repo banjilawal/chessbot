@@ -22,9 +22,9 @@ from logic.square import SquareDebugException
 class SquareVisitorDisabledException(SquareDebugException):
     """
     Role:
-        -   Error Variable Identifier
-        -   Exception Chain Layer 2
-        -   Exception Messaging
+        -  Error Variable Identifier
+        -  Exception Chain Layer 2
+        -  Exception Messaging
 
     Responsibilities:
         1.  Indicate a square entry failed because the visitor had been disabled.

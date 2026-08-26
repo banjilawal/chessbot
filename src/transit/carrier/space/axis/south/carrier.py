@@ -19,7 +19,7 @@ from space import SoouthAxis
 class SoouthAxisCarrier(SpaceCarrier[SoouthAxis]):
     """
     Role:
-        -   Data Transport
+        -  Data Transport
 
     Responsibilities:
         2.  Transports either a SoouthAxis or its Blueprint.
@@ -29,7 +29,7 @@ class SoouthAxisCarrier(SpaceCarrier[SoouthAxis]):
         blueprint: Optional[SoouthAxisBlueprint]
 
     Provides:
-        -   extract_blueprint() -> Optional[SoouthAxisBlueprint]
+        -  extract_blueprint() -> Optional[SoouthAxisBlueprint]
 
     Super Class:
         ModelCarrier

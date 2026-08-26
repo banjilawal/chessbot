@@ -23,7 +23,7 @@ __all__ = [
 class SchemaColliderBootstrapperException(ColliderBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a SchemaCollision step failed.

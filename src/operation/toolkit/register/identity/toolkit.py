@@ -21,7 +21,7 @@ from transit.dispatcher.validator import NameValidator, NumberValidator
 class IdentityRegisterToolkit(RegisterToolkit[IdentityRegister]):
     """
     Role:
-        -   Container
+        -  Container
 
     Responsibilities:
         1.  Collection of workers and services that are required for IdentityRegister tasks.

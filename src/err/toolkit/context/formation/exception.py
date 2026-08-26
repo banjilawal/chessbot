@@ -24,7 +24,7 @@ __all__ = [
 class FormationContextException(ContextException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a FormationContext encountered an error.

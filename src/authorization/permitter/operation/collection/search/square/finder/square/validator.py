@@ -28,7 +28,7 @@ class SquareListValidator(Validator[List[Square]]):
     Attributes:
 
     Provides:
-        -   validate(
+        -  validate(
                     rank: Any,
                     board_service: BoardService = BoardService(),
                     coord_service: CoordService = CoordService(),
@@ -47,19 +47,19 @@ class SquareListValidator(Validator[List[Square]]):
 
         Args:
             1.  Send an exception chain in the ValidationResult if:
-                    -   The rank is null
-                    -   Is not a List.
-                    -   Is an empty list.
-                    -   If the first item is not a Square.
+                    -  The rank is null
+                    -  Is not a List.
+                    -  Is an empty list.
+                    -  If the first item is not a Square.
             2.  Otherwise, send the success result.
         # Args:
             rank: Any
         # RETURNS:
             ValidationResult[List[Square]]
         Raises:
-            -   TypeError
-            -   SquareDataSourceNullException
-            -   SquareDataSourceEmptyException
+            -  TypeError
+            -  SquareDataSourceNullException
+            -  SquareDataSourceEmptyException
         """
         method = f"{cls.__name__}.validate_dataset"
         # Handle the nonexistence case.

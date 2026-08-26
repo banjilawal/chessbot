@@ -18,7 +18,7 @@ from space.quadrant.northeast.space import Quadrant
 class NortheastQuadrant(Quadrant):
     """
     Role:
-        -   Data Holder
+        -  Data Holder
 
     Responsibilities:
         1.  Quadrant bounded between U(x_i, y_i) <= V(num_columns - 1 , 0).

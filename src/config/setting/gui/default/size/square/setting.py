@@ -20,7 +20,7 @@ from config.setting.gui.default.size.square.property import SquareProperty
 class DefaultSquareSizeSetting:
     """
     Role
-        -   Property Settings
+        -  Property Settings
 
     Responsibilities:
         1.  Default square pixel size settings.

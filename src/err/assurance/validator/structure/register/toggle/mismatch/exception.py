@@ -24,7 +24,7 @@ __all__ = [
 class VectorToggleRegisterMismatchException(VectorToggleRegisterValidatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a VectorToggleRegister's a-b slots contain different types.

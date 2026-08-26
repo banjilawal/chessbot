@@ -23,7 +23,7 @@ __all__ = [
 class PersonaNoValidationRouteException(NoValidationRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that n Persona validation routes is missing.

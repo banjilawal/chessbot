@@ -23,7 +23,7 @@ T = TypeVar("T", bound="ModelSearchContext")
 class StackContextValidator(SearchContextValidator[T], ABC, Generic[T]):
     """
     Role
-        -   Integrity Assurance Worker
+        -  Integrity Assurance Worker
 
     Responsibilities:
         1.  Check that a candidate is the right type of not-null StackSearchContext.
@@ -33,7 +33,7 @@ class StackContextValidator(SearchContextValidator[T], ABC, Generic[T]):
         bundle: ValidationBundle[T]
 
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult[T]:
+        -  def execute(candidate: Any) -> ValidationResult[T]:
 
     Super Class:
         SearchContextIntegrityChecker

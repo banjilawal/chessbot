@@ -24,7 +24,7 @@ from operation.toolkit.geometry.space.quadrant.southeast.toolkit import Quadrant
 class SoutheastQuadrantToolkit(QuadrantToolkit[SoutheastQuadrant]):
     """
     Role:
-        -   Container
+        -  Container
 
     Responsibilities:
         1.  Collection of workers and validators that are required for CartesianSpace tasks.

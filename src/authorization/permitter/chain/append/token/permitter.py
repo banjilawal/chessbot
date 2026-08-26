@@ -38,7 +38,7 @@ class TokenAppendPermitter(AppendPermitter[Token]):
         request_adjudicator: TokenAppendRequestAdjudicator
 
     Provides:
-        -   execute(request: AppendRequest) -> AppendApprovalReport
+        -  execute(request: AppendRequest) -> AppendApprovalReport
 
     Super Class:
         AppendPermitter
@@ -70,13 +70,13 @@ class TokenAppendPermitter(AppendPermitter[Token]):
         """
         Action:
             1.  Return a failure result containing an exception chain if either:
-                    -   The collision_detector
-                    -   The rank_quota_analyzer
+                    -  The collision_detector
+                    -  The rank_quota_analyzer
                 do not complete their work.
             2.  Otherwise, send a append denial if
-                    -   The TokenChain is full.
-                    -   The item collides with an existing chain member.
-                    -   The quota for the token's rank is full.
+                    -  The TokenChain is full.
+                    -  The item collides with an existing chain member.
+                    -  The quota for the token's rank is full.
             3.  Send an approval if all the tests are passed.
         Args:
             request: AppendRequest

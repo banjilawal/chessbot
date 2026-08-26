@@ -24,7 +24,7 @@ T = TypeVar("T", bound="ModelSearchContext")
 class StackSearchContextValidator(SearchContextValidator[T], ABC, Generic[T]):
     """
     Role
-        -   Integrity, Consistency Maintenance
+        -  Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a StackSearchContext instance is safe before use.
@@ -33,7 +33,7 @@ class StackSearchContextValidator(SearchContextValidator[T], ABC, Generic[T]):
         integrity_checker: StackContextChecker[T]
         
     Provides:
-        -   execute(self, candidate: Any) -> ValidationResult[T]
+        -  execute(self, candidate: Any) -> ValidationResult[T]
 
     Super Class:
         SearchContextValidator

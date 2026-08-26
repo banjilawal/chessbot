@@ -17,7 +17,7 @@ from operation.toolkit.analyzer.bootstrapper.toolkit import AnalyzerToolkit
 class AnalyzerBootstrapperToolkit(AnalyzerToolkit):
     """
     Role:
-        -   Dependency Management
+        -  Dependency Management
 
     Responsibilities:
         1.  Aggregates workers and services a bootstrapperful analyzer requires for its tasks.
@@ -35,15 +35,15 @@ class AnalyzerBootstrapperToolkit(AnalyzerToolkit):
         _items: Dict[str, Any]
 
     Provides:
-        -   def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
-        -   def _resolve_service_dependencies() -> SearchResult[List[Dict[str, Microservice]]]:
-        -   def _resolve_dependencies(self) -> SearchResult[List[Dict[str, Operation]]]
+        -  def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
+        -  def _resolve_service_dependencies() -> SearchResult[List[Dict[str, Microservice]]]:
+        -  def _resolve_dependencies(self) -> SearchResult[List[Dict[str, Operation]]]
 
     Super Class:
         Toolkit
 
     Notes:
-        -   AnalyzerToolkit for an empty class which makes managing toolkits easier.
-        -   Any toolkits for a analyzer should be a AnalyzerToolkit subclass.
+        -  AnalyzerToolkit for an empty class which makes managing toolkits easier.
+        -  Any toolkits for a analyzer should be a AnalyzerToolkit subclass.
     """
 

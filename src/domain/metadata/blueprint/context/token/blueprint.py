@@ -20,7 +20,7 @@ from config.setting import GameColor
 class TokenContextBlueprint(Blueprint[TokenContext]):
     """
     Role:
-        -   Container
+        -  Container
 
     Responsibilities:
         1.  Provides values for instantiating a TokenContext instance.

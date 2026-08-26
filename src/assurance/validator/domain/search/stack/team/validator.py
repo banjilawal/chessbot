@@ -24,7 +24,7 @@ from util import LoggingLevelRouter
 class TeamContextValidator(StackContextValidator[TeamSearchSearchContext]):
     """
     Role
-        -   Integrity Assurance Worker
+        -  Integrity Assurance Worker
 
     Responsibilities:
         1.  Check that a candidate is the right type of not-null TeamSearchContext.
@@ -34,7 +34,7 @@ class TeamContextValidator(StackContextValidator[TeamSearchSearchContext]):
         bundle: TeamValidationBundle
 
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult[TeamSearchContext]:
+        -  def execute(candidate: Any) -> ValidationResult[TeamSearchContext]:
 
     Super Class:
         StackSearchContextChecker
@@ -57,9 +57,9 @@ class TeamContextValidator(StackContextValidator[TeamSearchSearchContext]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The candidate is not a TeamSearchContext.
-                    -   The wrong number of search attributes is enabled.
-                    -   An enabled search attribute fails a safety check.
+                    -  The candidate is not a TeamSearchContext.
+                    -  The wrong number of search attributes is enabled.
+                    -  An enabled search attribute fails a safety check.
             2.  Otherwise, send a TokeSearchContext in the success result.
         Args:
             candidate, Any

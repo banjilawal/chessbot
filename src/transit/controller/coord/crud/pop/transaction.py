@@ -28,7 +28,7 @@ class CoordStackPop:
     Attributes:
     
     Provides:
-        -   execute(coord_stack: CoordStackService) -> DeletionResult[Coord]
+        -  execute(coord_stack: CoordStackService) -> DeletionResult[Coord]
         
     Super:
     """

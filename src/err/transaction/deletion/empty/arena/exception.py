@@ -23,7 +23,7 @@ __all__ = [
 class EmptyArenaStackDeletionException(EmptyStackDeletionException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicatings that popping An ArenaStack failed because it was empty.

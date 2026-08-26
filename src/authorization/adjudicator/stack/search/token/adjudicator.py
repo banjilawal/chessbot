@@ -25,8 +25,8 @@ from transit.dispatcher.validator import TokenContextValidator
 class TokenSearchRequestAdjudicator(SearchRequestAdjudicator):
     """
     Role:
-        -   Helper
-        -   Test Runner
+        -  Helper
+        -  Test Runner
         
     Responsibilities:
         1.  Check if the subject is a search that can be promoted.
@@ -37,7 +37,7 @@ class TokenSearchRequestAdjudicator(SearchRequestAdjudicator):
         carrier_validator: SearchPermitterPriming_Validator
           
     Provides:
-        -   def execute(self, subject: Any) -> ValidationResult:
+        -  def execute(self, subject: Any) -> ValidationResult:
             
     Super Class:
     """
@@ -69,10 +69,10 @@ class TokenSearchRequestAdjudicator(SearchRequestAdjudicator):
         
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following occur:
-                    -   The subject is flagged unsafe.
-                    -   The subject is not a free search.
-                    -   The search has already been promoted.
-                    -   Is not on its enemy's rank_row.
+                    -  The subject is flagged unsafe.
+                    -  The subject is not a free search.
+                    -  The search has already been promoted.
+                    -  Is not on its enemy's rank_row.
             2.  Otherwise, Send the success result.
         Args:
             candidate: Any

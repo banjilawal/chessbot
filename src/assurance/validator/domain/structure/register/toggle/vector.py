@@ -29,8 +29,8 @@ class VectorToggleRegisterValidator(
 ):
     """
     Role
-        -   Integrity Maintenance
-        -   Consistency Assurance
+        -  Integrity Maintenance
+        -  Consistency Assurance
 
 
     Responsibilities:
@@ -41,7 +41,7 @@ class VectorToggleRegisterValidator(
         bundle: Optional[VectorToggleRegisterToolkit]
 
     Provides:
-        -   execute(self, candidate: Any) -> ValidationResult:
+        -  execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
         IntegrityChecker
@@ -69,9 +69,9 @@ class VectorToggleRegisterValidator(
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The candidate is not a VectorToggleRegisterDtoCarrier.
-                    -   The candidate is an empty VectorToggleRegisterDtoCarrier.
-                    -   Either the board, team, formation, rank or id get flagged unsafe.
+                    -  The candidate is not a VectorToggleRegisterDtoCarrier.
+                    -  The candidate is an empty VectorToggleRegisterDtoCarrier.
+                    -  Either the board, team, formation, rank or id get flagged unsafe.
             2.  For a model_carrier send a VectorToggleRegister in the success result. Otherwise, send a TokeBlueprint.
         Args:
             candidate, Any

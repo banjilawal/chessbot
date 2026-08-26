@@ -24,7 +24,7 @@ T = TypeVar("T", bound="Collection")
 class CollectionInsertion(CrudOperator[InsertionResult], ABC, Generic[T]):
     """
     Role
-        -   Worker
+        -  Worker
 
     Responsibilities:
         1.  Execute a task on a Collection that produces an InsertionResult.
@@ -33,7 +33,7 @@ class CollectionInsertion(CrudOperator[InsertionResult], ABC, Generic[T]):
         permitter: CollectionInsertionPermitter[T]
         
     Provides:
-        -   def execute(request: InsertionRequest[T]) -> InsertionResult
+        -  def execute(request: InsertionRequest[T]) -> InsertionResult
 
     Super Class:
         CollectionOperation

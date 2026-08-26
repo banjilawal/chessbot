@@ -21,9 +21,9 @@ from topology.space import Axis, AxisReservoir, EastAxis, NorthAxis, SouthAxis, 
 class AxisMappingFunctionStream(SpaceMapFunctionStream[Axis]):
     """
     Role:
-        -   Data Holder
-        -   Factory
-        -   Switcher
+        -  Data Holder
+        -  Factory
+        -  Switcher
 
     Responsibilities:
         1.  AxisMappingFunction factory whose products don't need down-casting before use.

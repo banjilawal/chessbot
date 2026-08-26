@@ -20,8 +20,8 @@ from domain.model import Edge, Node
 class EdgeBlueprint(StateModelBlueprint[Edge]):
     """
     Role:
-        -   Container
-        -   DTO
+        -  Container
+        -  DTO
         
     Responsibilities:
         1.  Provides values for instantiating a Edge object.

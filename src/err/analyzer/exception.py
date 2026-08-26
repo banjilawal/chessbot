@@ -23,7 +23,7 @@ __all__ = [
 class AnalyzerException(ChessException):
     """
     Role:
-        -   Failure Tracing
+        -  Failure Tracing
 
     Responsibilities:
         1.  Indicating a analyzer from completing the task.

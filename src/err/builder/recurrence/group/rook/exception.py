@@ -24,7 +24,7 @@ __all__ = [
 class RookRecurrenceSeriesBuilderException(RecurrenceTableGroupBuilderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a RookRecurrenceSeriesBuilder failed.

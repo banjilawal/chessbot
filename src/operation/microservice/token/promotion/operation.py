@@ -23,10 +23,10 @@ from util import LoggingLevelRouter
 class PawnPromoter:
     """
     Role:
-        -   Transaction Worker
-        -   Consistency
-        -   Integrity Maintenance
-        -   Process Runner
+        -  Transaction Worker
+        -  Consistency
+        -  Integrity Maintenance
+        -  Process Runner
         
     Responsibilities:
         1.  Pawn promotion exception owner.
@@ -36,7 +36,7 @@ class PawnPromoter:
     Attributes:
     
     Provides:
-        -   execute(
+        -  execute(
                     rank: Rank,
                     pawn: PawnToken,
                     permitter: PromotionPermitter,
@@ -58,12 +58,12 @@ class PawnPromoter:
         
         Action:
             1.  Send the unmodified pawn along with an exception chain in the UpdateResult if:
-                    -   The promotion_approval_manager sends a denial report.
-                    -   The promotion_rank_analyzer approves the new rank.
+                    -  The promotion_approval_manager sends a denial report.
+                    -  The promotion_rank_analyzer approves the new rank.
             2.  Otherwise:
-                    -   Make a deepcopy of pawn to pre_update_pawn.
-                    -   Elevate the pawn to its new rank.
-                    -   Update pawn.PromotionState
+                    -  Make a deepcopy of pawn to pre_update_pawn.
+                    -  Elevate the pawn to its new rank.
+                    -  Update pawn.PromotionState
             3.  Send the success result containing, the finished work product.
         Args:
             rank: Rank

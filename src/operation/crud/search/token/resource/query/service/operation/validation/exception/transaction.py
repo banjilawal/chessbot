@@ -22,9 +22,9 @@ from system import ValidatorException
 class TokenQueryValidatorException(ValidatorException):
     """
     Role:
-        -   Worker Method Identification
-        -   Exception Chain Layer 1,
-        -   Exception Messaging
+        -  Worker Method Identification
+        -  Exception Chain Layer 1,
+        -  Exception Messaging
 
     Responsibilities:
         1.  Indicate that one of the TokenQuery's params failed a safety test.

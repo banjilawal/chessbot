@@ -31,7 +31,7 @@ class TeamSearchContext(ModelSearchContext[Team]):
             archetype: Optional[Archetype]
 
     Provides:
-        -   to_dict() -> Dict[str, Any]
+        -  to_dict() -> Dict[str, Any]
 
     Super Class:
         ModelSearchContext

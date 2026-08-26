@@ -24,7 +24,7 @@ __all__ = [
 class TraversalSignatureNullException(SignatureNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required TraversalPattern is null.

@@ -24,7 +24,7 @@ __all__ = [
 class PusherException(CrudOperatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a push operation failed.

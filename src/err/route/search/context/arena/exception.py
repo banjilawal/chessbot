@@ -26,7 +26,7 @@ from err import ContextSearchRouteException
 class ArenaContextSearchRouteException(ContextSearchRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that one of ArenaContext search routes is missing.

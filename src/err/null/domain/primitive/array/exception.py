@@ -24,7 +24,7 @@ __all__ = [
 class ListNullException(NullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required List is null.

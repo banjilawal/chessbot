@@ -19,7 +19,7 @@ from util import  LoggingLevelRouter
 class VectorBuilder(ModelBuilder[Vector]):
     """
     Role
-        -   Builder
+        -  Builder
 
     Responsibilities:
         1.  Create a Vector instance from the safe blueprint.
@@ -27,7 +27,7 @@ class VectorBuilder(ModelBuilder[Vector]):
     Attributes:
 
     Provides:
-        -   def execute(self, blueprint: VectorBlueprint,) -> BuildResult[Vector]
+        -  def execute(self, blueprint: VectorBlueprint,) -> BuildResult[Vector]
 
     Super Class:
         ModelBuilder

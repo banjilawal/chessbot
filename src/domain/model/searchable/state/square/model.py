@@ -16,9 +16,9 @@ from domain.model import Board, Coord, SquareState, StatefulModel, Token
 class Square(StatefulModel):
     """
     Role:
-        -   Model
-        -   Addressing
-        -   Stateful Data Holder
+        -  Model
+        -  Addressing
+        -  Stateful Data Holder
 
     Responsibilities:
         1.  Maps a Coord to a nameable, occupyable board location.
@@ -34,8 +34,8 @@ class Square(StatefulModel):
         occupant: Optional[Token]
         
     Provides:
-        -   def is_empty() -> bool
-        -   def is_occupied() -> bool
+        -  def is_empty() -> bool
+        -  def is_occupied() -> bool
 
     Super Class:
         Model

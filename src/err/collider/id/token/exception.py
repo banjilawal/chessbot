@@ -22,7 +22,7 @@ __all__ = [
 class TokenIdCollisionException(IdColliderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a token is already using the id.

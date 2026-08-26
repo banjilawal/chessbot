@@ -20,7 +20,7 @@ from config.setting import GameColor
 class DefaultGameColorSetting:
     """
     Role
-        -   Property Settings
+        -  Property Settings
 
     Responsibilities:
         1.  Default colors of board elements.

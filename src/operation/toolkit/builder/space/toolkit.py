@@ -21,7 +21,7 @@ T = TypeVar("T", bound="Space")
 class SpaceBuilderToolkit(BuilderToolkit, Generic[T]):
     """
     Role:
-        -   Dependency Management
+        -  Dependency Management
         
     Responsibilities:
         1.  Bundles SpaceBuilder dependencies.

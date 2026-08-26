@@ -24,7 +24,7 @@ T = TypeVar("T", bound="DeleteRequest")
 class DeleteAuthorizer(CrudAuthorizer[T], ABC, Generic[T]):
     """
     Role
-        -   Authorization
+        -  Authorization
 
     Responsibilities:
         1.  Check if a DeleteRequest satisfies integrity and consistency requirements.
@@ -33,7 +33,7 @@ class DeleteAuthorizer(CrudAuthorizer[T], ABC, Generic[T]):
          utility: DeletePermissionUtility[T]
 
     Provides:
-        -   execute(self, request: T) -> AuthorizationDecision
+        -  execute(self, request: T) -> AuthorizationDecision
 
     Super Class:
         CrudAuthorizer

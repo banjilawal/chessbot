@@ -17,7 +17,7 @@ from domain.model import DataModel, Square
 class Dossier(DataModel):
     """]
     Role:
-        -   Data Holder
+        -  Data Holder
         
     Responsibilities:
         1.  A Node's payload.

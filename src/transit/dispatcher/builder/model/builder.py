@@ -21,10 +21,10 @@ T = TypeVar("T", bound="DataModel")
 class ModelBuildDispatcher(Builder[T], ABC, Generic[T]):
     """
     Role
-        -   Build Pipeline
-        -   Integrity Management
-        -   Consistency Assurance
-        -   Workflow Owner
+        -  Build Pipeline
+        -  Integrity Management
+        -  Consistency Assurance
+        -  Workflow Owner
 
    Responsibilities:
         1.  Ensure a new Model instance is born safe and reliable.
@@ -33,7 +33,7 @@ class ModelBuildDispatcher(Builder[T], ABC, Generic[T]):
             builder_toolkit: ModelBuilderToolkit[T]
 
     Provides:
-        -   def execute(self, blueprint: ModelBlueprint[T]) -> BuildResult[T]
+        -  def execute(self, blueprint: ModelBlueprint[T]) -> BuildResult[T]
 
      Super Class:
          Builder

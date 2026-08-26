@@ -24,7 +24,7 @@ __all__ = [
 class BasisEmptyException(SpanEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required BasisSet is empty.

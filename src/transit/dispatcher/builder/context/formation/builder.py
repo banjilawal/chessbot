@@ -21,10 +21,10 @@ from system import BuildResult, Builder, GameColor, GameColorValidator, Identity
 class FormationContextBuilder(Builder[FormationKey]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Build Process Owner
+        -  Transaction Worker
+        -  Integrity Maintenance
+        -  Consistency Assurance
+        -  Build Process Owner
 
    Responsibilities:
         1.  Ensure a new Token instance is born safe and reliable.
@@ -32,7 +32,7 @@ class FormationContextBuilder(Builder[FormationKey]):
      Attributes:
 
     Provides:
-        -   def execute(
+        -  def execute(
                     owner: Team,
                     id: int = IdFactory,
                     formation: Formation,

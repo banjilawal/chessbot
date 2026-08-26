@@ -23,7 +23,7 @@ __all__ = [
 class SquareTokenOperationBootstrapperException(TokenOperationBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Square tokenfailed.

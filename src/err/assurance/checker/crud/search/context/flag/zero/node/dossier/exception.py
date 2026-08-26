@@ -27,7 +27,7 @@ class ZeroDossierNodeContextFlagsException(
 ):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating no DossierNodeSearchContext flags were enabled.

@@ -22,7 +22,7 @@ __all__ = [
 class StackPushException(PusherException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that pushing onto a Stack failed.

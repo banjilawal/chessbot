@@ -22,7 +22,7 @@ from transit.dispatcher.validator import ModelValidationDispatcher
 class RankValidationDispatcher(ModelValidationDispatcher[Rank]):
     """
     Role
-        -   Integrity, Consistency Maintenance
+        -  Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a Rank instance is certified safe, reliable and consistent before use.
@@ -31,7 +31,7 @@ class RankValidationDispatcher(ModelValidationDispatcher[Rank]):
         integrity_checker: RankIntegrityChecker
 
     Provides:
-        -   execute(candidate: Any) -> ValidationResult
+        -  execute(candidate: Any) -> ValidationResult
 
     Super Class:
         ModelValidator

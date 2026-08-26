@@ -26,7 +26,7 @@ from err import ContextTokenOperationBootstrapperException
 class BoardContextTokenOperationBootstrapperException(ContextTokenOperationBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a BoardContext tokenfailed.

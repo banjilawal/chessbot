@@ -24,7 +24,7 @@ __all__ = [
 class TimeoutException(ChessException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
     
     Responsibilities:
         1.  Indicating a task failed because one of its calls timed out.

@@ -22,7 +22,7 @@ from transit.dispatcher.validator import ModelValidationDispatcher
 class TokenValidationDispatcher(ModelValidationDispatcher[Token]):
     """
     Role
-        -   Integrity, Consistency Maintenance
+        -  Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a Token instance is certified safe, reliable and consistent before use.
@@ -31,7 +31,7 @@ class TokenValidationDispatcher(ModelValidationDispatcher[Token]):
         integrity_checker: TokenIntegrityChecker
 
     Provides:
-        -   execute(candidate: Any) -> ValidationResult
+        -  execute(candidate: Any) -> ValidationResult
 
     Super Class:
         ModelValidator

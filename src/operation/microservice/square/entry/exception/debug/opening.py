@@ -22,9 +22,9 @@ from logic.square import SquareDebugException
 class WrongOpeningSquareException(SquareDebugException):
     """
     Role:
-        -   Error Variable Identifier
-        -   Exception Chain Layer 2
-        -   Exception Messaging
+        -  Error Variable Identifier
+        -  Exception Chain Layer 2
+        -  Exception Messaging
 
     Responsibilities:
         1.  Indicate a square entry failed because a token tried deploying to the

@@ -26,7 +26,7 @@ from err import ContextSearchRouteException
 class AlgebraContextSearchRouteException(ContextSearchRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that one of AlgebraContext search routes is missing.

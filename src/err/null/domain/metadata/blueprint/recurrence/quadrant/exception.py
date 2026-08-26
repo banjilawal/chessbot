@@ -24,7 +24,7 @@ __all__ = [
 class QuadrantRecurrenceBlueprintNullException(RecurrenceBlueprintNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required QuadrantRecurrenceBlueprint is null.

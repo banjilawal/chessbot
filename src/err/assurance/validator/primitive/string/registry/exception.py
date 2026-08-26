@@ -24,7 +24,7 @@ __all__ = [
 class RegistryEntryKeyStringValidatorException(ValidatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a RegistryEntry key failed a String validation check.

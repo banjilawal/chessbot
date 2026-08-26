@@ -33,7 +33,7 @@ class TokenDeletionPermitter:
         request_adjudicator: TokenDeletionRequestAdjudicator
 
     Provides:
-        -   run(item_id: int, stack: TokenStackService) -> DeletionApprovalReport:
+        -  run(item_id: int, stack: TokenStackService) -> DeletionApprovalReport:
 
     Super Class:
         DeletionPermitter
@@ -49,13 +49,13 @@ class TokenDeletionPermitter:
         """
         Action:
             1.  Return a failure result containing an exception chain if either:
-                    -   The collision_detector
-                    -   The rank_quota_analyzer
+                    -  The collision_detector
+                    -  The rank_quota_analyzer
                 do not complete their work.
             2.  Otherwise, send a deletion denial if
-                    -   The TokenStack is full.
-                    -   The item collides with an existing stack member.
-                    -   The quota for the token's rank is full.
+                    -  The TokenStack is full.
+                    -  The item collides with an existing stack member.
+                    -  The quota for the token's rank is full.
             3.  Send an approval if all the tests are passed.
         Args:
             request: DeletionRequest

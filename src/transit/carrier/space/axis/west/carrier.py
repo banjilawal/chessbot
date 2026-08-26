@@ -19,7 +19,7 @@ from space import WestAxis
 class WestAxisCarrier(SpaceCarrier[WestAxis]):
     """
     Role:
-        -   Data Transport
+        -  Data Transport
 
     Responsibilities:
         2.  Transports either a WestAxis or its Blueprint.
@@ -29,7 +29,7 @@ class WestAxisCarrier(SpaceCarrier[WestAxis]):
         blueprint: Optional[WestAxisBlueprint]
 
     Provides:
-        -   extract_blueprint() -> Optional[WestAxisBlueprint]
+        -  extract_blueprint() -> Optional[WestAxisBlueprint]
 
     Super Class:
         ModelCarrier

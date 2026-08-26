@@ -23,7 +23,7 @@ __all__ = [
 class HostageColliderException(ColliderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a HostageCollision step failed.

@@ -24,7 +24,7 @@ __all__ = [
 class PawnOffsetPatternBlueprintNullException(OffsetPatternBlueprintNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required PawnOffsetPatternBlueprint is null.

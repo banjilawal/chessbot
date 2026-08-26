@@ -24,7 +24,7 @@ __all__ = [
 class SquareIdCollisionException(IdCollisionException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that two squares share an id that should be unique.

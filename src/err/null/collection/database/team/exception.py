@@ -22,7 +22,7 @@ __all__ = [
 class TeamDatabaseNullException(DatabaseNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required TeamDatabase is null.

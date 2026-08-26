@@ -26,7 +26,7 @@ from transit.dispatcher.validator import (
 class ManeuverToolkit(PermitterToolkit):
     """
     Role:
-        -   Dependency Management
+        -  Dependency Management
 
     Responsibilities:
         1.  Bundles dependencies a worker needs to complete its task.
@@ -46,7 +46,7 @@ class ManeuverToolkit(PermitterToolkit):
         identity_service: IdentityService
 
     Provides:
-        -   def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
+        -  def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
 
     Super Class:
         Toolkit

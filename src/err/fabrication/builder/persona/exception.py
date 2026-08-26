@@ -23,7 +23,7 @@ __all__ = [
 class PersonaBuilderException(BuilderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that n Persona build failed.

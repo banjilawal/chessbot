@@ -26,7 +26,7 @@ from err import ContextSearchRouteException
 class SchemaContextSearchRouteException(ContextSearchRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that one of SchemaContext search routes is missing.

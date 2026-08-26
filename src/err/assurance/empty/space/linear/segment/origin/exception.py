@@ -24,7 +24,7 @@ __all__ = [
 class LineSegmentOriginEmptyException(LineSegmentEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a LineSegment has an empty origin.

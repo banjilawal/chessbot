@@ -24,7 +24,7 @@ __all__ = [
 class TokenPopPermitterException(PopperPermitterException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a TokenPopperPermitter did not approve the request.

@@ -23,7 +23,7 @@ __all__ = [
 class EmptyBoardStackDeletionException(EmptyStackDeletionException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicatings that popping An BoardStack failed because it was empty.

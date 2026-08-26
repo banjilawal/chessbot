@@ -24,7 +24,7 @@ __all__ = [
 class NorthwestQuadrantRecurrenceValidatorException(QuadrantRecurrenceValidatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a NorthwestQuadrantRecurrenceValidator failed.

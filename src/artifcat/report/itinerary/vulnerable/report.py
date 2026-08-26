@@ -19,7 +19,7 @@ from artifcat.report import ItineraryReport
 class ItineraryVulnerabilityReport(ItineraryReport):
     """
     Role:
-        -   Test results
+        -  Test results
 
     Responsibilities:
         1.  Provide details about a destination the enemy can attack.

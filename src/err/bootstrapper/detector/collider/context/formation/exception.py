@@ -26,7 +26,7 @@ from err import ContextColliderBootstrapperException
 class FormationContextCollisionException(ContextColliderBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a FormationContextCollision step failed.

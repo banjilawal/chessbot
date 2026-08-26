@@ -24,7 +24,7 @@ __all__ = [
 class VectorToggleBlueprintNullException(ToggleBlueprintNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required vectorBlueprint is null.

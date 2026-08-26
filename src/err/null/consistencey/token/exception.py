@@ -24,7 +24,7 @@ __all__ = [
 class TokenConsistencyCheckerNullException(ConsistencyCheckerNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required TokenConsistencyChecker is null.

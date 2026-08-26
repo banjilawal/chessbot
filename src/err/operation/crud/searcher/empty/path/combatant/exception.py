@@ -24,7 +24,7 @@ __all__ = [
 class CombatantPathSearchResultEmptyException(PathSearchResultEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an CombatantPathSearcher did not find the required item.

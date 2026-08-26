@@ -23,9 +23,9 @@ from util import LoggingLevelRouter
 class TokenRemovePermitter(RemovePermitter[Token]):
     """
     Role:
-        -   Request Analyzer
-        -   Rights Granter
-        -   Consistency, Integrity Maintenance
+        -  Request Analyzer
+        -  Rights Granter
+        -  Consistency, Integrity Maintenance
 
     Responsibilities:
         1.  Evaluate if a TokenChain removeping request can be granted.
@@ -34,7 +34,7 @@ class TokenRemovePermitter(RemovePermitter[Token]):
         priming_validator: PrimingValidator
 
     Provides:
-        -   run(self, request: RemoveRequest,) -> RemoveApprovalReport:
+        -  run(self, request: RemoveRequest,) -> RemoveApprovalReport:
 
     Super Class:
         RemovePermitter
@@ -47,9 +47,9 @@ class TokenRemovePermitter(RemovePermitter[Token]):
         
         Action:
             1.  Deny the request if any of the following occur.
-                    -   The request cannot be bootstrapped.
-                    -   The request does not contain a TokenChainService.
-                    -   The TokenChain is empty.
+                    -  The request cannot be bootstrapped.
+                    -  The request does not contain a TokenChainService.
+                    -  The TokenChain is empty.
             2.  Otherwise, approve the request.
         Args:
             request: RemoveRequest

@@ -24,10 +24,10 @@ T = TypeVar("T", bound="Register")
 class RegisterBuildDispatcher(BuildDispatcher, Generic[T]):
     """
     Role
-        -   Build Pipeline
-        -   Integrity Management
-        -   Consistency Assurance
-        -   Workflow Owner
+        -  Build Pipeline
+        -  Integrity Management
+        -  Consistency Assurance
+        -  Workflow Owner
 
    Responsibilities:
         1.  Ensure a new Register instance is born safe and reliable.
@@ -36,7 +36,7 @@ class RegisterBuildDispatcher(BuildDispatcher, Generic[T]):
             builder_toolkit: [RegisterBuilderToolkit[T]]
 
     Provides:
-        -   def execute(self, blueprint: RegisterBlueprint[T]) -> BuildResult[Register]
+        -  def execute(self, blueprint: RegisterBlueprint[T]) -> BuildResult[Register]
 
      Super Class:
          Builder

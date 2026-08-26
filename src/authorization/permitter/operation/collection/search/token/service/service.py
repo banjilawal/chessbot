@@ -20,9 +20,9 @@ from domain.model.searchable.state import (
 class TokenSearchService(SearchMicroservice[Token]):
     """
     Role:
-        -   API
-        -   Stateless microservice
-        -   Operations Provider
+        -  API
+        -  Stateless microservice
+        -  Operations Provider
 
     Responsibilities:
         1.  Baremetal microservice for querying Tokens.

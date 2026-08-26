@@ -19,12 +19,12 @@ from space import QuadrantReservoir
 class QuadrantReservoirCarrier(SpaceReservoirCarrier[QuadrantReservoir]):
     """
     Role:
-        -   Data Transport
+        -  Data Transport
 
     Responsibilities:
         1.  Transport either:
-            -   a QuadrantReservoir
-            -   a QuadrantReservoirReservoirBlueprint
+            -  a QuadrantReservoir
+            -  a QuadrantReservoirReservoirBlueprint
 
     Attributes:
         is_carrying_model: bool
@@ -35,7 +35,7 @@ class QuadrantReservoirCarrier(SpaceReservoirCarrier[QuadrantReservoir]):
         entity: [QuadrantReservoir| QuadrantReservoirReservoirBlueprint | None]
 
     Provides:
-        -   def extract_blueprint() -> Optional[QuadrantReservoirBlueprint]
+        -  def extract_blueprint() -> Optional[QuadrantReservoirBlueprint]
 
     Super Class:
         SpaceReservoirCarrier

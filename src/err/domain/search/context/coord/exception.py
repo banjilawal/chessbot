@@ -24,7 +24,7 @@ __all__ = [
 class CoordContextException(ContextException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a CoordContext encountered an error.

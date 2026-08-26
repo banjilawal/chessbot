@@ -25,7 +25,7 @@ from err import QueryFullException
 class FormationQueryFullException(QueryFullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required FormationQuery is full.

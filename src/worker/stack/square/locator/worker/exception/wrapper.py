@@ -22,9 +22,9 @@ from system import SearchException
 class OpeningSquareDiscoveryException(SearchException):
     """
      Role:
-        -   Worker Method Identification
-        -   Exception Chain Layer 1,
-        -   Exception Messaging
+        -  Worker Method Identification
+        -  Exception Chain Layer 1,
+        -  Exception Messaging
 
     Responsibilities:
         1.  Indicate that, the opening square discovery exception was aborted by an error.

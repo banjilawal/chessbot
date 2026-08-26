@@ -20,10 +20,10 @@ from util import LoggingLevelRouter
 class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Validation Process Owner
+        -  Transaction Worker
+        -  Integrity Maintenance
+        -  Consistency Assurance
+        -  Validation Process Owner
 
     Responsibilities:
         1.  Ensure a CartesianToggle instance is certified safe, reliable and consistent
@@ -33,7 +33,7 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
         carrier_validator: CartesianToggleRegisterIntegrityChecker
 
     Properties:
-        -   def validate(
+        -  def validate(
                     candidate: Any,
                     toolkit : CartesianToggleToolkit,
             ) -> ValidationResult[CartesianToggle]:
@@ -60,9 +60,9 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
         Action:
             1.  Send an exception in the ValidationResult any of these
                 conditions occur.
-                    -   candidate is null.
-                    -   It's not a CartesianToggle.
-                    -   The cartesianToggle's payload is flagged unsafe.
+                    -  candidate is null.
+                    -  It's not a CartesianToggle.
+                    -  The cartesianToggle's payload is flagged unsafe.
             3.  Otherwise, Send the success result.
         Args:
             candidate: Any

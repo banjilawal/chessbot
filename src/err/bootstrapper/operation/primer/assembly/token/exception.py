@@ -21,7 +21,7 @@ __all__ = [
 class TokenAssemblyPrimerException(AssemblyPrimerException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a TokenAssemblyPriming step failed.

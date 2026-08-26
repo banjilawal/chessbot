@@ -34,7 +34,7 @@ class BoardTeamBinderRelationAnalyzer(RelationAnalyzer[Board, BoardBinder]):
     Attributes:
 
     Provides:
-        -   analyze(
+        -  analyze(
                     candidate_primary: Board,
                     candidate_satellite: Binder,
                     board_validator: BoardValidator = BoardValidator(),
@@ -59,10 +59,10 @@ class BoardTeamBinderRelationAnalyzer(RelationAnalyzer[Board, BoardBinder]):
         Action:
             1.  Send an AnalyzerFailure exception if either rank cannot be validated.
             2.  Otherwise, send the success result which can be:
-                    -   No relation between them.
-                    -   Board has expired link to binder.
-                    -   Binder has not registered with board.
-                    -   They have a fully bidirectional relation.
+                    -  No relation between them.
+                    -  Board has expired link to binder.
+                    -  Binder has not registered with board.
+                    -  They have a fully bidirectional relation.
         Args::
             candidate_primary: Board
             candidate_satellite: Binder

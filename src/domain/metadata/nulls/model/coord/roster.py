@@ -22,7 +22,7 @@ from err import (
 class CoordNullExceptionRoster(ModelNullExceptionRoster[Coord]):
     """
     Role:
-        -   Metadata
+        -  Metadata
 
     Responsibilities:
         1. Catalog of NullExceptions associated with a Coord.

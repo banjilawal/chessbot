@@ -25,7 +25,7 @@ __all__ = [
 class ContextFlagCountException(ContextCheckerException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating the number of enabled search flags caused an error.

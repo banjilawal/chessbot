@@ -23,7 +23,7 @@ __all__ = [
 class BoardTeamBinderConsistencyCheckerNullException(BinderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required BoardTeamBinderConsistencyChecker is null.

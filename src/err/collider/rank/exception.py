@@ -23,7 +23,7 @@ __all__ = [
 class RankColliderException(ColliderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a RankCollision step failed.

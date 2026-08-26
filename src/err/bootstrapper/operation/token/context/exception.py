@@ -23,7 +23,7 @@ __all__ = [
 class ContextTokenOperationBootstrapperException(TokenOperationBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a ContextTokenfailed.

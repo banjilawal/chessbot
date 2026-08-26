@@ -23,7 +23,7 @@ __all__ = [
 class RankAssemblyException(AssemblyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Rank assembly failed.

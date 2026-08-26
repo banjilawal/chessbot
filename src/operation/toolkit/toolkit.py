@@ -18,7 +18,7 @@ from transit.dispatcher.validator import PrimingValidator
 class Toolkit:
     """
     Role:
-        -   Dependency Management
+        -  Dependency Management
         
     Responsibilities:
         1.  Bundles dependencies a worker needs to complete its task.

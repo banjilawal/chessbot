@@ -24,7 +24,7 @@ __all__ = [
 class TokenDeploymentException(TokenOperationBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Token getting deployed to its opening square.

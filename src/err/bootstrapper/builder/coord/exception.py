@@ -24,7 +24,7 @@ __all__ = [
 class CoordBuilderBootstrapperException(BuilderBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a CoordBuilderBootstrapper was aborted by an exception.

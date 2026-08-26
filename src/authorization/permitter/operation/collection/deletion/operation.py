@@ -24,7 +24,7 @@ T = TypeVar("T", bound="Collection")
 class CollectionDeletion(CrudOperator[DeletionResult], ABC, Generic[T]):
     """
     Role
-        -   Worker
+        -  Worker
 
     Responsibilities:
         1.  Execute a task on a Collection that produces an DeletionResult.
@@ -33,7 +33,7 @@ class CollectionDeletion(CrudOperator[DeletionResult], ABC, Generic[T]):
         permitter: DeletionPermitter[T]
         
     Provides:
-        -   def execute(request: DeletionRequest[T]) -> DeletionResult
+        -  def execute(request: DeletionRequest[T]) -> DeletionResult
 
     Super Class:
         CollectionOperation

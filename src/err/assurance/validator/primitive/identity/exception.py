@@ -24,7 +24,7 @@ __all__ = [
 class IdentityValidatorException(ValidatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an IdentityValidator failed.

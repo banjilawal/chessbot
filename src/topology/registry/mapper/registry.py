@@ -19,9 +19,9 @@ T = TypeVar("T", bound="SpaceReservoir")
 class SpaceMapFunctionStream(ABC, Generic[T]):
     """
     Role:
-        -   Data Holder
-        -   Factory
-        -   Switcher
+        -  Data Holder
+        -  Factory
+        -  Switcher
 
     Responsibilities:
         1.  Produce the set of all mapping functions for with the correct downcast.
@@ -32,10 +32,10 @@ class SpaceMapFunctionStream(ABC, Generic[T]):
         space_reservoir: T
 
     Provides:
-        -   @abstractmethod def stream_size() -> in
-        -   @abstractmethod def streams_are_empty() -> bool
-        -   @abstractmethod def streams_are_not_empty() -> bool
-        -   @abstractmethod def type_mapper_dict() -> Dict[Type[T], SpaceMappingFunction[T]]
+        -  @abstractmethod def stream_size() -> in
+        -  @abstractmethod def streams_are_empty() -> bool
+        -  @abstractmethod def streams_are_not_empty() -> bool
+        -  @abstractmethod def type_mapper_dict() -> Dict[Type[T], SpaceMappingFunction[T]]
 
     Super Class:
     """

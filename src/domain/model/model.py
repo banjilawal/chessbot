@@ -17,7 +17,7 @@ from domain import DomainObject
 class DataModel(DomainObject, ABC):
     """
     Role:
-        -   Data Holder
+        -  Data Holder
 
     Responsibilities:
         1. Represent an item that has properties.

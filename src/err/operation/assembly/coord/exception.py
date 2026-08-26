@@ -23,7 +23,7 @@ __all__ = [
 class CoordAssemblyException(AssemblyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Coord assembly failed.

@@ -19,12 +19,11 @@ class VectorToggleCarrier(ToggleCarrier[CartesianToggle]):
     """
     Role:
         - Option Selector
-        -   Data-Holder
 
     Responsibilities:
         1.  Picks toggle a
-                -   Coord: Geometric quantity
-                -   Vector: Linear Vector
+                -  Coord: Geometric quantity
+                -  Vector: Linear Vector
             as an toggle for multiplication, conversion or simple addition.
 
     Attributes:
@@ -36,7 +35,7 @@ class VectorToggleCarrier(ToggleCarrier[CartesianToggle]):
 
     Provides:
         
-        -   _equal_vector_points(point: Point) -> bool
+        -  _equal_vector_points(point: Point) -> bool
         -  _equal_coord_points(self, point: Point) -> bool
     Super Class:
         Toggle

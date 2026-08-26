@@ -22,7 +22,7 @@ T = TypeVar("T", bound="SpaceReservoir")
 class SpaceReservoirBuilderToolkit(BuilderToolkit, Generic[T]):
     """
     Role:
-        -   Dependency Management
+        -  Dependency Management
         
     Responsibilities:
         1.  Bundles SpaceReservoirBuilder dependencies.

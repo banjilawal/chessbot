@@ -22,7 +22,7 @@ __all__ = [
 class BoardUpdatePipelineException(UpdatePipelineException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an error occurred in a BoardUpdatePipeline.

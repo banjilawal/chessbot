@@ -17,7 +17,7 @@ from domain.model import Blueprint, Board, Schema, BoardBinder
 class BoardBinderBlueprint(ModelBlueprint[BoardBinder]):
     """
     Role:
-        -   Container
+        -  Container
 
     Responsibilities:
         1.  Provides values for instantiating a BoardTeamBinder object.

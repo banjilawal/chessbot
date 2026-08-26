@@ -20,8 +20,8 @@ from domain.model import Arena, Board
 class BoardBlueprint(StateModelBlueprint[Board]):
     """
     Role:
-        -   Container
-        -   DTO
+        -  Container
+        -  DTO
         
     Responsibilities:
         1.  Provides values for instantiating a Board object.

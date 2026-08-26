@@ -24,7 +24,7 @@ __all__ = [
 class ScalarModelNullException(ModelNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required Scalar is null.

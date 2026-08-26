@@ -24,7 +24,7 @@ __all__ = [
 class DuplicateCoordException(DuplicateItemException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Coord already exists in the operating context so, trying

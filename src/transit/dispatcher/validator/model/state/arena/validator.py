@@ -22,7 +22,7 @@ from transit.dispatcher.validator import ModelValidationDispatcher
 class ArenaValidationDispatcher(ModelValidationDispatcher[Arena]):
     """
     Role
-        -   Integrity, Consistency Maintenance
+        -  Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a Arena instance is certified safe, reliable and consistent before use.
@@ -31,7 +31,7 @@ class ArenaValidationDispatcher(ModelValidationDispatcher[Arena]):
         integrity_checker: ArenaIntegrityChecker
 
     Provides:
-        -   execute(candidate: Any) -> ValidationResult
+        -  execute(candidate: Any) -> ValidationResult
 
     Super Class:
         ModelValidator

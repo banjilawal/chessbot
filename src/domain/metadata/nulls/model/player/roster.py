@@ -22,7 +22,7 @@ from err import (
 class PlayerNullExceptionRoster(ModelNullExceptionRoster[Player]):
     """
     Role:
-        -   Metadata
+        -  Metadata
 
     Responsibilities:
         1. Catalog of NullExceptions associated with a Player.

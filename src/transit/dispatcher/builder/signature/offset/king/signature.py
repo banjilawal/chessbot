@@ -18,8 +18,8 @@ from topology.pattern import OffsetSignature
 class KingOffsetPattern(OffsetSignature[King]):
     """
     Role:
-        -   Data Holder
-        -   Immutability
+        -  Data Holder
+        -  Immutability
         
     Responsibilities:
         1.  Determine potential destinations from KingToken's current position.

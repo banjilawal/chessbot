@@ -22,7 +22,7 @@ __all__ = [
 class PrimingFormationContextAssemblyException(PrimingContextAssemblyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a FormationContextAssembly priming step failed.

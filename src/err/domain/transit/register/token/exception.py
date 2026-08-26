@@ -24,7 +24,7 @@ __all__ = [
 class TokenRegisterCarrierException(RegisterCarrierException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a TokenRegisterCarrier encountered an error.

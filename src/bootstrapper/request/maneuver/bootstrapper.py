@@ -29,7 +29,7 @@ class ManeuverRequestBootstrapper(RequestBootstrapper):
     Attributes:
 
     Provides:
-        -   bootstrap_request(self, request) -> ValidationResult:
+        -  bootstrap_request(self, request) -> ValidationResult:
 
     Super Class:
         Permitter
@@ -45,8 +45,8 @@ class ManeuverRequestBootstrapper(RequestBootstrapper):
 
         Action:
             1.  Send an exception chain in the ValidationResult if the request is either
-                    -   Null
-                    -   Not a ManeuverRequest.
+                    -  Null
+                    -  Not a ManeuverRequest.
             2.  Otherwise, send the success
         Args:
             request

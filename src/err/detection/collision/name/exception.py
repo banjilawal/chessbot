@@ -22,7 +22,7 @@ __all__ = [
 class NameCollisionDetectorException(CollisionDetectorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a name collision occurred

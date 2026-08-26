@@ -25,7 +25,7 @@ from artifcat import MethodResultType
 class RegistryOperationBootstrapperException(OperationBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Registry operation failed.

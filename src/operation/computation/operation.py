@@ -24,7 +24,7 @@ T = TypeVar("T")
 class Computation(Operator[ComputationResult], ABC, Generic[T]):
     """
     Role
-        -   Worker
+        -  Worker
 
     Responsibilities:
         1.  Execute a task that produces a ComputationResult on success.
@@ -33,7 +33,7 @@ class Computation(Operator[ComputationResult], ABC, Generic[T]):
         permitter: ComputationPermitter
 
     Provides:
-        -   execute(request: ComputationRequest) -> ComputationResult
+        -  execute(request: ComputationRequest) -> ComputationResult
 
     Super Class:
         Operation

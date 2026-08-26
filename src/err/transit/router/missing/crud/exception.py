@@ -24,7 +24,7 @@ __all__ = [
 class CrudMissingRouterException(MissingRouterException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an error prevented the CrudMissingRouter from working.

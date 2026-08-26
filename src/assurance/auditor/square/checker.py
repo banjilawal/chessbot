@@ -24,7 +24,7 @@ from assurance.auditor import  ConsistencyAuditor
 class SquareConsistencyAuditor(ConsistencyAuditor[Square]):
     """
     Role
-        -   Integrity, Consistency Maintenance
+        -  Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a Square instance is certified safe, reliable and consistent before use.
@@ -32,7 +32,7 @@ class SquareConsistencyAuditor(ConsistencyAuditor[Square]):
     Attributes:
         root_certifier: SquareRootCertifier
     Provides:
-        -   def validate(candidate: Any, toolkit: SquareToolkit) -> ValidationResult[Square]:
+        -  def validate(candidate: Any, toolkit: SquareToolkit) -> ValidationResult[Square]:
 
     Super Class:
         ConsistencyChecker
@@ -60,10 +60,10 @@ class SquareConsistencyAuditor(ConsistencyAuditor[Square]):
 
         Action:
             1.  Send an exception chain in the ValidationResult any of the cases occur:
-                    -   Candidate either null or not a Square
+                    -  Candidate either null or not a Square
                     _   Coord check fails
-                    -   A Board check fails
-                    -   Identity check fails
+                    -  A Board check fails
+                    -  Identity check fails
             2.  Otherwise, send the success result.
         Args:
             candidate: Any
@@ -118,8 +118,8 @@ class SquareConsistencyAuditor(ConsistencyAuditor[Square]):
         
         Action:
             1.  Send an exception chain in the ValidationResult If:
-                    -   The board is not safe.
-                    -   The square and the board do not have bidirectional relationship.
+                    -  The board is not safe.
+                    -  The square and the board do not have bidirectional relationship.
             2.  Otherwise, send the success result.
         Args:
             square: Square
@@ -227,8 +227,8 @@ class SquareConsistencyAuditor(ConsistencyAuditor[Square]):
         
         Action:
             1.  Send an exception chain in the ValidationResult if:
-                    -   The rank is null.
-                    -   The rank has the wrong type.
+                    -  The rank is null.
+                    -  The rank has the wrong type.
             2.  Otherwise, send the success result.
         Args:
             candidate: Any

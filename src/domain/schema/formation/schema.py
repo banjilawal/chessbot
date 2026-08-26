@@ -18,8 +18,8 @@ from config.setting import GameColor
 class Formation(Enum):
     """
     Role:
-        -   Configuration Table
-        -   Metadata Set
+        -  Configuration Table
+        -  Metadata Set
 
     Responsibilities:
         1.  Supply parameters to Token builders and factories.

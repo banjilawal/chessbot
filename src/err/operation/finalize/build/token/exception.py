@@ -21,7 +21,7 @@ __all__ = [
 class FinalizeTokenBuilderException(FinalizeBuilderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that finalizing a TokenBuildFinalize step failed.

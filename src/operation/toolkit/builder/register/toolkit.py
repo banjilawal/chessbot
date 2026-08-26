@@ -20,7 +20,7 @@ T = TypeVar("T", bound="Register")
 class RegisterBuilderToolkit(BuilderToolkit, Generic[T]):
     """
     Role:
-        -   Dependency Management
+        -  Dependency Management
         
     Responsibilities:
         1.  Bundles RegisterBuilder dependencies.

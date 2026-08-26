@@ -19,7 +19,7 @@ from transit.carrier import ModelCarrier
 class TeamCarrier(ModelCarrier):
     """
     Role:
-        -   Boundary Carrier
+        -  Boundary Carrier
 
     Responsibilities:
         1.  Transport either a hydrated Team or its Blueprint across validation and other
@@ -30,7 +30,7 @@ class TeamCarrier(ModelCarrier):
         blueprint: Optional[TeamBlueprint]
 
     Provides:
-        -   extract_blueprint() -> Optional[TeamBlueprint]
+        -  extract_blueprint() -> Optional[TeamBlueprint]
 
     Super Class:
         ModelCarrier

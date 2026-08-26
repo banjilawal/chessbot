@@ -24,7 +24,7 @@ __all__ = [
 class QueryStackEmptyException(EmptyItemException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required Query's target Stack is empty.

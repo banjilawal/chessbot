@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 class RemoveVectorNode(RemoveNode[VectorNode]):
     """
     Role
-        -   Worker
+        -  Worker
 
     Responsibilities:
         1.  Add an item to a VectorNodeChain.
@@ -30,7 +30,7 @@ class RemoveVectorNode(RemoveNode[VectorNode]):
         permitter: RemoveVectorNodePermitter
 
     Provides:
-        -   def execute(request: RemoveVectorNodeRequest) -> DeletionResult
+        -  def execute(request: RemoveVectorNodeRequest) -> DeletionResult
 
     Super Class:
         RemoveNode

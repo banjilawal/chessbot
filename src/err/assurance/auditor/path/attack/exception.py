@@ -24,7 +24,7 @@ __all__ = [
 class AttackPathConsistencyAuditorException(PathException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a AttackPathConsistencyAuditor failed.

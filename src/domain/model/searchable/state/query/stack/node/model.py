@@ -19,9 +19,9 @@ from collection.stack import VertexStackService
 class NodeQuery(StackQuery[Node]):
     """
     Role:
-        -   Model
-        -   Search
-        -   Stateless Data-Holder
+        -  Model
+        -  Search
+        -  Stateless Data-Holder
 
     Responsibilities:
         1.  A list of nodes to search with context.

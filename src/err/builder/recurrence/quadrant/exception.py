@@ -24,7 +24,7 @@ __all__ = [
 class QuadrantRecurrenceBuilderException(RecurrenceBuilderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a QuadrantRecurrenceBuilder failed.

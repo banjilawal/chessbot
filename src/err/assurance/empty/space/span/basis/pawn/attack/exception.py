@@ -24,7 +24,7 @@ __all__ = [
 class AttackBasisEmptyException(PawnBasisEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required AttackBasisSet is empty.

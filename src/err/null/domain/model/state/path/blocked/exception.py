@@ -24,7 +24,7 @@ __all__ = [
 class BlockedPathNullException(PathNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required BlockedPath is null.

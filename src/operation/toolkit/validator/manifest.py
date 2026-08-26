@@ -25,7 +25,7 @@ T = TypeVar("T", bound="DataModel")
 class ModelManifest(ABC, Generic[T]):
     """
     Role:
-        -   Dependency Manager
+        -  Dependency Manager
 
     Responsibilities:
         1.  Bundles a Model's validation dependencies.

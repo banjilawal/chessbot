@@ -24,7 +24,7 @@ from operation.toolkit.geometry.space.axis.west.toolkit import AxisToolkit
 class WestAxisToolkit(AxisToolkit[WestAxis]):
     """
     Role:
-        -   Container
+        -  Container
 
     Responsibilities:
         1.  Collection of workers and validators that are required for CartesianSpace tasks.

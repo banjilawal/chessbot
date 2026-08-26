@@ -20,8 +20,8 @@ from topology.space import WestAxis
 class WestAxisRecurrence(AxisRecurrence[WestAxis]):
     """
     Role:
-        -   Computation
-        -   Iterator
+        -  Computation
+        -  Iterator
 
     Responsibilities:
         1.  Provide a recurrence relation for iterating to the next WestAxis vector.

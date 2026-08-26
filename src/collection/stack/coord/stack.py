@@ -16,11 +16,11 @@ from collection.stack import StackService
 class CoordStackService(StackService[Coord]):
     """
     Role:
-        -   API
-        -   ACID compliance
-        -   Stateful microservice
-        -   Stateful CRUD Controller
-        -   Operations Provider
+        -  API
+        -  ACID compliance
+        -  Stateful microservice
+        -  Stateful CRUD Controller
+        -  Operations Provider
 
     Responsibilities:
         1.  Baremetal service request API for Coord collections.
@@ -44,9 +44,9 @@ class CoordStackService(StackService[Coord]):
         ops_controller: CoordStackOpsController
 
     Provides:
-        -   pop() -> DeletionResult[Coord]
-        -   push(item: Coord) -> InsertionResult
-        -   context(context: Context[Coord]) -> SearchResult[List[Coord]]
+        -  pop() -> DeletionResult[Coord]
+        -  push(item: Coord) -> InsertionResult
+        -  context(context: Context[Coord]) -> SearchResult[List[Coord]]
 
     Super Class:
         StackService
@@ -181,8 +181,8 @@ class CoordStackService(StackService[Coord]):
 
         Actions:
             1.  Send an exception chain in the ComputationResult if either:
-                    -   The vector is unsafe.
-                    -   A coord cannot be built from the vector's components.
+                    -  The vector is unsafe.
+                    -  A coord cannot be built from the vector's components.
             2.  Otherwise, send the success result.
         Args:
             context: CoordContext

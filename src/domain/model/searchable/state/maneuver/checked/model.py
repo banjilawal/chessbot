@@ -16,8 +16,8 @@ from domain.model import KingToken, Maneuver, Square, Token
 class CheckedManeuver(Maneuver):
     """
     Role:
-        -   Model
-        -   Data Holder
+        -  Model
+        -  Data Holder
 
     Responsibilities:
         1.  Provide information about a check made to a king.

@@ -24,7 +24,7 @@ __all__ = [
 class NorthQuadrantRecurrenceNullException(QuadrantRecurrenceNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required NorthQuadrantRecurrence is null.

@@ -24,7 +24,7 @@ __all__ = [
 class NodeContextBuilderBootstrapperException(ContextBuilderBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a NodeContextBuilderBootstrapper was aborted by an exception.

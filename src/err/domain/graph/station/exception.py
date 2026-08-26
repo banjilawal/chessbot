@@ -24,7 +24,7 @@ __all__ = [
 class StationException(GraphComponentException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an Station encountered an error.

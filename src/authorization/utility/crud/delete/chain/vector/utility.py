@@ -23,7 +23,7 @@ class VectorChainDeletePermissionUtility(
 ):
     """
     Role:
-        -   Utility
+        -  Utility
 
     Responsibilities:
         1.  Bundles resources the VectorNodeDeleteAuthorizer needs to evaluate a

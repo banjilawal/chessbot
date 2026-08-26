@@ -20,8 +20,8 @@ from domain.structure.register import SquareRegister
 class Path(DataModel):
     """
     Role:
-        -   Model
-        -   Stateful Data Holder
+        -  Model
+        -  Stateful Data Holder
 
     Responsibilities:
         1.  Adds a label and cost to a SquareRegister.

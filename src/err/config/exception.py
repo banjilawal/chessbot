@@ -22,7 +22,7 @@ __all__ = [
 class ConfigException(ChessException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating there is a Config error.

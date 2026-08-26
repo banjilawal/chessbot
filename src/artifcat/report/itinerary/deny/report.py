@@ -19,7 +19,7 @@ from artifcat.report import ItineraryReport
 class ItineraryDenialReport(ItineraryReport):
     """
     Role:
-        -   Test results
+        -  Test results
 
     Responsibilities:
         1.  Details about why a token was denied permission to occupy a square.

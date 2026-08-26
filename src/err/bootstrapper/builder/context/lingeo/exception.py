@@ -22,7 +22,7 @@ __all__ = [
 class VectorContextBuilderBootstrapperException(ContextBuilderBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a VectorContextBuilderBootstrapper was aborted by an exception.

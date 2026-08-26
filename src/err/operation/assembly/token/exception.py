@@ -23,7 +23,7 @@ __all__ = [
 class TokenAssemblyException(AssemblyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Token assembly failed.

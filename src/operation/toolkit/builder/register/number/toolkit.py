@@ -20,7 +20,7 @@ from operation.toolkit.builder.register.number.toolkit import RegisterBuilderToo
 class NumberRegisterBuilderToolkit(RegisterBuilderToolkit[NumberRegister]):
     """
     Role:
-        -   Dependency Management
+        -  Dependency Management
         
     Responsibilities:
         1.  Bundles NumberRegisterRegisterBuilder dependencies.

@@ -24,7 +24,7 @@ from util import LoggingLevelRouter
 class SquareContextValidator(StackContextValidator[SquareSearchSearchContext]):
     """
     Role
-        -   Integrity Assurance Worker
+        -  Integrity Assurance Worker
 
     Responsibilities:
         1.  Check that a candidate is the right type of not-null SquareSearchContext.
@@ -34,7 +34,7 @@ class SquareContextValidator(StackContextValidator[SquareSearchSearchContext]):
         bundle: SquareValidationBundle
 
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult[SquareSearchContext]:
+        -  def execute(candidate: Any) -> ValidationResult[SquareSearchContext]:
 
     Super Class:
         StackSearchContextChecker
@@ -57,9 +57,9 @@ class SquareContextValidator(StackContextValidator[SquareSearchSearchContext]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The candidate is not a SquareSearchContext.
-                    -   The wrong number of search attributes is enabled.
-                    -   An enabled search attribute fails a safety check.
+                    -  The candidate is not a SquareSearchContext.
+                    -  The wrong number of search attributes is enabled.
+                    -  An enabled search attribute fails a safety check.
             2.  Otherwise, send a TokeSearchContext in the success result.
         Args:
             candidate, Any

@@ -20,7 +20,7 @@ from operation.toolkit.builder.model.rank.toolkit import ModelBuilderToolkit
 class RankBuilderToolkit(ModelBuilderToolkit[Rank]):
     """
     Role:
-        -   Dependency Management
+        -  Dependency Management
         
     Responsibilities:
         1.  Bundles RankBuilder dependencies.

@@ -24,7 +24,7 @@ __all__ = [
 class RankQuotaAnalyzerException(AnalyzerException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an error occurred during a TokenStack's rank quota analysis.

@@ -20,8 +20,8 @@ from topology.space import EastAxis
 class EastAxisRecurrence(AxisRecurrence[EastAxis]):
     """
     Role:
-        -   Computation
-        -   Iterator
+        -  Computation
+        -  Iterator
 
     Responsibilities:
         1.  Provide a recurrence relation for iterating to the next EastAxis vector.

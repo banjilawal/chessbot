@@ -20,7 +20,7 @@ from artifcat.report.friend.state import FriendshipStatus
 class FriendshipReport(Report):
     """
     Role:
-        -   Test results
+        -  Test results
 
     Responsibilities:
         1.  Present information about the friendship between a Token pair.

@@ -24,7 +24,7 @@ from err.analyzer.relation import RelationAnalyzerException
 class BoardBinderAnalyzerAnalyzerException(RelationAnalyzerException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a BoardBinderRelations analyzer from completing.

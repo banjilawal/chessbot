@@ -20,8 +20,8 @@ T = TypeVar("T", bound="DataModel")
 class Tree(ABC, Generic[T]):
     """
     Role:
-        -   Data Holder
-        -   Data protection
+        -  Data Holder
+        -  Data protection
         
     Responsibilities:
         1.  Immutable unordered set of items.

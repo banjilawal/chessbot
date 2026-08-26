@@ -24,7 +24,7 @@ __all__ = [
 class VectorSetCarrierNullException(ContainerCarrierNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required VectorSetCarrierToggle is null.

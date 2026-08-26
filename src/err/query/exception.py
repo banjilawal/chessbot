@@ -24,7 +24,7 @@ __all__ = [
 class QueryException(ChessException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
     
     Responsibilities:
         1.  Indicating a query encountered an error.

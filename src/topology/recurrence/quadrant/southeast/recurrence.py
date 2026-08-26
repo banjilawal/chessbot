@@ -20,8 +20,8 @@ from topology.space import SoutheastQuadrant
 class SoutheastQuadrantRecurrence(QuadrantRecurrence[SoutheastQuadrant]):
     """
     Role:
-        -   Computation
-        -   Iterator
+        -  Computation
+        -  Iterator
 
     Responsibilities:
         1.  Provide a recurrence relation for iterating to the next SoutheastQuadrant vector.

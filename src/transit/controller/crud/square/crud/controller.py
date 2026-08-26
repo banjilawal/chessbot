@@ -25,7 +25,7 @@ class SquareStackCrudController:
         pusher: SquareStackServicePusher
 
     Provides:
-        -   push(
+        -  push(
                     square: Square,
                     square_stack: SquareStackService,
                     rank_quota_analyzer: SquareStackCapacityAnalysis = SquareStackCapacityAnalysis(),

@@ -18,10 +18,10 @@ from transit.dispatcher.validator import ModelValidationDispatcher
 class OrientationSelectorValidationDispatcher(ModelValidationDispatcher[OrientationToggle]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Validation Process Owner
+        -  Transaction Worker
+        -  Integrity Maintenance
+        -  Consistency Assurance
+        -  Validation Process Owner
 
     Responsibilities:
         1.  Ensure a OrientationOperand instance is certified safe, reliable and consistent
@@ -31,7 +31,7 @@ class OrientationSelectorValidationDispatcher(ModelValidationDispatcher[Orientat
         carrier_validator: VectorToggleRegisterIntegrityChecker
 
     Properties:
-        -   def validate(
+        -  def validate(
                     candidate: Any,
                     toolkit : OrientationOperandToolkit,
             ) -> ValidationResult[OrientationOperand]:
@@ -58,9 +58,9 @@ class OrientationSelectorValidationDispatcher(ModelValidationDispatcher[Orientat
         Action:
             1.  Send an exception in the ValidationResult any of these
                 conditions occur.
-                    -   candidate is null.
-                    -   It's not a OrientationOperand.
-                    -   The orientationOperand's payload is flagged unsafe.
+                    -  candidate is null.
+                    -  It's not a OrientationOperand.
+                    -  The orientationOperand's payload is flagged unsafe.
             3.  Otherwise, Send the success result.
         Args:
             candidate: Any

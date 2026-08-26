@@ -21,7 +21,7 @@ T = TypeVar("T", bound="DataModel")
 class ModelTypeUnions(DomainObjectTypeUnions[T], ABC, Generic[T]):
     """
     Role:
-        -   Metadata
+        -  Metadata
 
     Responsibilities:
         1. Catalog of data unions a Model uses in the domain.

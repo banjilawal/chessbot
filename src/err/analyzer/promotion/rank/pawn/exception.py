@@ -24,7 +24,7 @@ __all__ = [
 class PromoteToPawnException(PromotionLevelAnalyzerException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an attempt to promote a pawn to Pawn rank occurred.

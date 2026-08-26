@@ -24,9 +24,9 @@ T = TypeVar("T", bound="Structure")
 class StructureValidator(DomainObjectValidator[T], ABC, Generic[T]):
     """
     Role
-        -   Validator
-        -   Integrity Assurance
-        -   Consistency Assurance
+        -  Validator
+        -  Integrity Assurance
+        -  Consistency Assurance
 
     Responsibilities:
         1.  Run integrity checks on an object or its blueprint encapsulated inside their
@@ -38,7 +38,7 @@ class StructureValidator(DomainObjectValidator[T], ABC, Generic[T]):
         bundle: StructureValidationBundle[T]
 
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult[Blueprint[T]|T]:
+        -  def execute(candidate: Any) -> ValidationResult[Blueprint[T]|T]:
 
     Super Class:
     """

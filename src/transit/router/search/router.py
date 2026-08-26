@@ -23,19 +23,19 @@ T = TypeVar("T")
 class SearchRouter(Router, Generic[T]):
     """
     Role
-        -   Routing
-        -   Stateless Search Engine
+        -  Routing
+        -  Stateless Search Engine
 
    Responsibilities:
         1.  Process a search query which contains:
-                -   The dataset
-                -   Search criteria
+                -  The dataset
+                -  Search criteria
         2.  Authoritative single-source-of-truth for search results.
 
     Attributes:
 
     Provides:
-        -   def route(
+        -  def route(
                     query: Query[T],
                     query_validator: Validator[Query[T]]
             ) -> SearchResult[List[T]]

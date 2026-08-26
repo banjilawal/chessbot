@@ -26,7 +26,7 @@ from err import BinderBuilderException
 class SquareBinderBuilderException(BinderBuilderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a SquareBinder build failed.

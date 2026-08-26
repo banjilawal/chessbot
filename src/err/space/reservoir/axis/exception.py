@@ -23,7 +23,7 @@ __all__ = [
 class AxisReservoirException(SpaceReservoirException):
     """
     Role:
-        -   Failure Tracing
+        -  Failure Tracing
 
     Responsibilities:
         1.  Indicating an error occurred in an AxisReservoir instance.

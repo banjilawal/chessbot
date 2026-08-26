@@ -21,9 +21,9 @@ from system import ComputationException
 class EuclideanDistanceException(ComputationException):
     """
     Role:
-        -   Worker Method Identifier
-        -   Exception Chain Layer 1,
-        -   Exception Messaging
+        -  Worker Method Identifier
+        -  Exception Chain Layer 1,
+        -  Exception Messaging
 
     Responsibilities:
         1.  Indicate a EuclideanDistanceProcess was not completed.

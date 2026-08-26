@@ -20,7 +20,7 @@ from domain import ModelTypeUnions, Rank, RankBlueprint, RankCarrier, RankSearch
 class RankTypeUnions(ModelTypeUnions[Rank]):
     """
     Role:
-        -   Metadata
+        -  Metadata
 
     Responsibilities:
         1. Catalog of data unions a Rank uses in the domain.

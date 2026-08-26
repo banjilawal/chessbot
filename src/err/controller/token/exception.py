@@ -23,7 +23,7 @@ __all__ = [
 class TokenException(ControllerException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Token encountered an error.

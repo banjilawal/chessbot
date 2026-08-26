@@ -25,8 +25,8 @@ from transit.dispatcher.validator import VectorValidator
 class WestAxisEndpointBuilder(AxisEndpointBuilder[WestTraversalPattern]):
     """
     Role:
-        -   Builder
-        -   Integrity Management
+        -  Builder
+        -  Integrity Management
 
     Responsibilities:
         1.  Create a VectoRegister for an Axis endpoints.
@@ -36,7 +36,7 @@ class WestAxisEndpointBuilder(AxisEndpointBuilder[WestTraversalPattern]):
         vector_validator: Optional[VectorValidator]
 
     Provides:
-        -   def execute(origin: Vector) -> BuildResult[VectorRegister]
+        -  def execute(origin: Vector) -> BuildResult[VectorRegister]
 
     Super Class:
     """

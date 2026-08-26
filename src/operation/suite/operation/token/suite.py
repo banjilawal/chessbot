@@ -19,8 +19,8 @@ from operation import PawnPromoter
 class TokenOperationSuite(OperationSuite[Token]):
     """
     Role:
-        -   Dependency Container
-        -   Dynamic Dependency Provider
+        -  Dependency Container
+        -  Dynamic Dependency Provider
 
     Responsibilities:
         1.  Contains the operations that can be performed on a Token.
@@ -36,8 +36,8 @@ class TokenOperationSuite(OperationSuite[Token]):
         Suite
 
     Notes:
-        -   Suite for an empty class which makes managing toolkits easier.
-        -   Any toolkits for a suite should be a Suite subclass.
+        -  Suite for an empty class which makes managing toolkits easier.
+        -  Any toolkits for a suite should be a Suite subclass.
     """
     toolkit: TokenToolkit = TokenToolkit()
     builder: TokenBuilder = TokenBuilder()

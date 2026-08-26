@@ -23,7 +23,7 @@ __all__ = [
 class ArenaPlayerBinderException(BinderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a ArenaPlayerBinder encountered an error.

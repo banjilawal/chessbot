@@ -29,7 +29,7 @@ class PushRequestBootstrapper(RequestBootstrapper):
     Attributes:
 
     Provides:
-        -   bootstrap_request(self, request) -> ValidationResult:
+        -  bootstrap_request(self, request) -> ValidationResult:
 
     Super Class:
         Permitter
@@ -45,8 +45,8 @@ class PushRequestBootstrapper(RequestBootstrapper):
 
         Action:
             1.  Send an exception chain in the ValidationResult if the request is either
-                    -   Null
-                    -   Not a PushRequest.
+                    -  Null
+                    -  Not a PushRequest.
             2.  Otherwise, send the success
         Args:
             request

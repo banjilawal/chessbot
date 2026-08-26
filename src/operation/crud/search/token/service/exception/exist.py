@@ -21,8 +21,8 @@ from domain.model.searchable.state import TokenDebugException
 class TokenNotFoundException(TokenDebugException):
     """
     Role:
-        -   Exception Chain Layer 0
-        -   Exception coverage target
+        -  Exception Chain Layer 0
+        -  Exception coverage target
     
     Responsibilities:
         1.  Indicate that no token was found.

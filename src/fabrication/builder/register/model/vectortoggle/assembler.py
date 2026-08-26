@@ -21,7 +21,7 @@ class VectorToggleRegisterBuilder(
 ):
     """
     Role
-        -   Builder
+        -  Builder
 
     Responsibilities:
         1.  Create a VectorToggleRegister instance from the safe blueprint.
@@ -29,7 +29,7 @@ class VectorToggleRegisterBuilder(
     Attributes:
 
     Provides:
-        -   def execute(
+        -  def execute(
                     blueprint: VectorToggleRegisterBlueprint,
             ) -> BuildResult[VectorToggleRegister]
 

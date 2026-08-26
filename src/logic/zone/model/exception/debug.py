@@ -21,9 +21,9 @@ from system import DebugException
 class ZoneDebugException(DebugException):
     """
     Role:
-        -   Exception Chain Layer 2
-        -   Error Variable Identifier
-        -   Debugging Metadata provider
+        -  Exception Chain Layer 2
+        -  Error Variable Identifier
+        -  Debugging Metadata provider
 
     Responsibilities:
         1.  Record the condition that fired a variable's error state. a Zone instance into its  error state.

@@ -22,7 +22,7 @@ from util import LoggingLevelRouter
 class NumberValidator:
     """
     Role
-        -   Integrity, Consistency Maintenance
+        -  Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a number instance iss within bounds before use.
@@ -30,7 +30,7 @@ class NumberValidator:
     Attributes:
 
     Provides:
-        -   def validate(
+        -  def validate(
                     candidate: Any,
                     floor: int = 0,
                     ceiling: int = BOARD_DIMENSION,
@@ -61,8 +61,8 @@ class NumberValidator:
         
         Action:
             1.  Send an exception in the Validation result if any of these conditions occur
-                    -   Not null
-                    -   int between floor and ceiling
+                    -  Not null
+                    -  int between floor and ceiling
         Args:
             candidate: Any
             floor: int

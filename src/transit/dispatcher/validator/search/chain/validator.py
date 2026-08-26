@@ -24,7 +24,7 @@ T = TypeVar("T", bound="ChainSearchContext")
 class ChainSearchContextValidator(SearchContextValidator[T], ABC, Generic[T]):
     """
     Role
-        -   Integrity, Consistency Maintenance
+        -  Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a ChainSearchContext instance is safe before use.
@@ -33,7 +33,7 @@ class ChainSearchContextValidator(SearchContextValidator[T], ABC, Generic[T]):
         integrity_checker: ChainContextChecker[T]
         
     Provides:
-        -   execute(self, candidate: Any) -> ValidationResult[T]
+        -  execute(self, candidate: Any) -> ValidationResult[T]
 
     Super Class:
         SearchContextValidator

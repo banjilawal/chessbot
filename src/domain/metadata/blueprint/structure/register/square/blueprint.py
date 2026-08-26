@@ -20,7 +20,7 @@ from domain.structure.register import SquareRegister
 class SquareRegisterBlueprint(RegisterBlueprint[SquareRegister]):
     """
     Role:
-        -   Container
+        -  Container
 
     Responsibilities:
         1.  Provides values for instantiating a SquareRegister object.

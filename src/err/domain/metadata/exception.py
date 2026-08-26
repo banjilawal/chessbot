@@ -24,7 +24,7 @@ __all__ = [
 class DomainMetadataException(DomainObjectException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating DomainMetadata encountered an error.

@@ -16,7 +16,7 @@ from operation.toolkit.model.state.node.toolkit import StateModelToolkit
 class NodeToolkit(StateModelToolkit[Node]):
     """
     Role:
-        -   Container
+        -  Container
 
     Responsibilities:
         1.  Collection of workers and services that are required for Arena tasks.
@@ -26,7 +26,7 @@ class NodeToolkit(StateModelToolkit[Node]):
      Attributes:
 
     Provides:
-        -   def execute(
+        -  def execute(
                     owner: Team,
                     id: int = IdFactory,
                     formation: Formation,

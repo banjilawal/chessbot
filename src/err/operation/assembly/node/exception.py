@@ -22,7 +22,7 @@ __all__ = [
 class NodeAssemblyException(AssemblyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Node assembly failed.

@@ -17,7 +17,7 @@ from domain.model import Context
 class ContextBlueprint(Blueprint[Context]):
     """
     Role:
-        -   Container
+        -  Container
     
     Responsibilities:
         1.  Provides values for instantiating a T object.

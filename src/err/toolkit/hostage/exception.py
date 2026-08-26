@@ -23,7 +23,7 @@ __all__ = [
 class HostageException(ToolkitException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Hostage encountered an error.

@@ -21,8 +21,8 @@ from util import LoggingLevelRouter
 class TokenReadinessAnalyzer(Analyzer):
     """
     Role:
-        -   Analysis Factory
-        -   Consistency maintenance
+        -  Analysis Factory
+        -  Consistency maintenance
         
     Responsibilities:
         1.  Analyze a token's aliveness before its used in the brought into play.
@@ -32,7 +32,7 @@ class TokenReadinessAnalyzer(Analyzer):
         carrier_validator: ReadinessAnalyzerBootstrapper
         
     Provides:
-        -   execute(token: Token,) -> AnalysisResult
+        -  execute(token: Token,) -> AnalysisResult
             
     Parent:
         Analyzer
@@ -59,8 +59,8 @@ class TokenReadinessAnalyzer(Analyzer):
             1.  If the token fails, its certification, send an exception chain in the
                 RelationReport.
             2.  Otherwise, decide if the token is actionable based on.
-                    -   if it has been deployed.
-                    -   It has not been captured or checkmated.
+                    -  if it has been deployed.
+                    -  It has not been captured or checkmated.
             3.  Send the success result.
         
         Args:

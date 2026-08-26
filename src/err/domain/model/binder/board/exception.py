@@ -23,7 +23,7 @@ __all__ = [
 class BoardTeamBinderException(BinderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a BoardTeamBinder encountered an error.

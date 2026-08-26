@@ -26,7 +26,7 @@ from err import BinderTokenOperationBootstrapperException
 class PersonaBinderTokenOperationBootstrapperException(BinderTokenOperationBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a PersonaBinder tokenfailed.

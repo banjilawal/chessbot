@@ -26,7 +26,7 @@ from err import ContextAssemblyException
 class PersonaContextAssemblyException(ContextAssemblyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a PersonaContext assembly failed.

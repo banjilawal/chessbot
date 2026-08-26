@@ -24,7 +24,7 @@ __all__ = [
 class ColliderBootstrapperException(DetectorBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a detector experienced an error that prevented it was aborted by an exception.

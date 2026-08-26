@@ -16,10 +16,8 @@ from domain import GraphSearchContext, Edge, Station
 
 class EdgeSearchContext(GraphSearchContext[Edge]):
         """
-        Role:
-            -   Selection
-            -   Routing mask
-            -   Data-Holder
+    Role:
+        - Option Selector
     
         Responsibilities:
             1.  Supply an Edge attribute-value search filter.
@@ -33,7 +31,7 @@ class EdgeSearchContext(GraphSearchContext[Edge]):
             heuristic: Optional[int]
     
         Provides:
-            -   to_dict() -> Dict[str, Any]
+            -  to_dict() -> Dict[str, Any]
     
         Super Class:
             Context

@@ -24,7 +24,7 @@ __all__ = [
 class TokenOriginRelationNullException(RelationNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required TokenOriginRelation is null. This means the square

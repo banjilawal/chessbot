@@ -25,7 +25,7 @@ __all__ = [
 class ZeroBoardContextFlagsException(ZeroContextFlagsException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating no BoardSearchContext flags were enabled.

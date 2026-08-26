@@ -24,7 +24,7 @@ __all__ = [
 class TeamCarrierException(ModelCarrierException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a TeamCarrier encountered an error.

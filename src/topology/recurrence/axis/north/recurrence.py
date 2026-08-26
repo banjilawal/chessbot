@@ -20,8 +20,8 @@ from topology.space import NorthAxis
 class NorthAxisRecurrence(AxisRecurrence[NorthAxis]):
     """
     Role:
-        -   Computation
-        -   Iterator
+        -  Computation
+        -  Iterator
 
     Responsibilities:
         1.  Provide a recurrence relation for iterating to the next NorthAxis vector.

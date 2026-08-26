@@ -23,7 +23,7 @@ class VectorChainInsertPermissionUtility(
 ):
     """
     Role:
-        -   Utility
+        -  Utility
 
     Responsibilities:
         1.  Bundles resources the VectorNodeInsertAuthorizer needs to evaluate a

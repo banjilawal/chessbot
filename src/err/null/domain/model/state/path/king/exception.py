@@ -24,7 +24,7 @@ __all__ = [
 class KingPathNullException(PathNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required KingPath is null.

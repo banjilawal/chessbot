@@ -24,7 +24,7 @@ __all__ = [
 class ContextException(SearchDataObjectException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Context encountered an error.

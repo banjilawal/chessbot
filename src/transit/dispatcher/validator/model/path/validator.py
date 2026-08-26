@@ -22,7 +22,7 @@ from transit.dispatcher.validator import ModelValidationDispatcher
 class PathValidationDispatcher(ModelValidationDispatcher[Path]):
     """
     Role
-        -   Integrity, Consistency Maintenance
+        -  Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a Path instance is certified safe, reliable and consistent before use.
@@ -31,7 +31,7 @@ class PathValidationDispatcher(ModelValidationDispatcher[Path]):
         integrity_checker: PathIntegrityChecker
 
     Provides:
-        -   execute(candidate: Any) -> ValidationResult
+        -  execute(candidate: Any) -> ValidationResult
 
     Super Class:
         ModelValidator

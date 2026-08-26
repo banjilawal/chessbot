@@ -24,7 +24,7 @@ __all__ = [
 class PrimingSquareAssemblyException(AssemblyPrimerException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a SquareAssembly priming step failed.

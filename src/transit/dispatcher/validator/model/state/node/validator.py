@@ -22,7 +22,7 @@ from transit.dispatcher.validator import ModelValidationDispatcher
 class NodeValidationDispatcher(ModelValidationDispatcher[Node]):
     """
     Role
-        -   Integrity, Consistency Maintenance
+        -  Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a Node instance is certified safe, reliable and consistent before use.
@@ -31,7 +31,7 @@ class NodeValidationDispatcher(ModelValidationDispatcher[Node]):
         integrity_checker: NodeIntegrityChecker
 
     Provides:
-        -   execute(candidate: Any) -> ValidationResult
+        -  execute(candidate: Any) -> ValidationResult
 
     Super Class:
         ModelValidator

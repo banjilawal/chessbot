@@ -16,8 +16,8 @@ from domain import CartesianToggle, Register
 
 class CartesianToggleRegister(Register[CartesianToggle]):
     """
-        -   Model
-        -   Data Holder
+        -  Model
+        -  Data Holder
 
     Responsibilities:
         1.  Contains VectorToggles passed for Vector Algebra

@@ -23,7 +23,7 @@ __all__ = [
 class RegistryKeyCollisionException(RegistryKeyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a name has already been used as a Registry key.

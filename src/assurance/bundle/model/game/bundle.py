@@ -20,7 +20,7 @@ from domain import Game, GameTypeUnions, GameNullExceptionRoster
 class GameValidationBundle(ValidationBundle[Game]):
     """
     Role:
-        -   Toolkit
+        -  Toolkit
 
     Responsibilities:
         1.  Bundles types, null-exceptions, attribute-validators, and utilities GameIntegrityChecker needs to

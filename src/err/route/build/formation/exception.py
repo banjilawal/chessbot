@@ -23,7 +23,7 @@ __all__ = [
 class FormationBuildRouteException(BuildRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that one of Formation build routes is missing.

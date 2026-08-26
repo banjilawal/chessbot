@@ -19,7 +19,7 @@ from domain.structure.register import IdentityRegister
 class IdentityRegisterBlueprint(RegisterBlueprint[IdentityRegister]):
     """
     Role:
-        -   Container
+        -  Container
 
     Responsibilities:
         1.  Provides values for instantiating a IdentityRegister object.

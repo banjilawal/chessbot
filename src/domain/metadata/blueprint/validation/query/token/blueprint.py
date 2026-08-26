@@ -24,7 +24,7 @@ from err import (
 class TokenQueryValidationBlueprint(QueryValidationBlueprint[Token]):
     """
     Role:
-        -   Container
+        -  Container
 
     Responsibilities:
         1.  Provides values for instantiating a TokenValidation instance.

@@ -24,7 +24,7 @@ __all__ = [
 class CrudAuthorizationRouterException(AuthorizationRouterException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an error prevented the CrudAuthorizationRouter from working.

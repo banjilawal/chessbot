@@ -18,7 +18,7 @@ from artifcat.report import ItineraryDenialReport
 class BlockingReport(ItineraryDenialReport):
     """
     Role:
-        -   Test results
+        -  Test results
 
     Responsibilities:
         1.  Provide details about a itinerary that was blocked by a friendly already in the destination.

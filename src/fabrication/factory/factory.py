@@ -21,10 +21,10 @@ T = TypeVar("T")
 class Factory(ABC, Generic[T]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -  Transaction Worker
+        -  Integrity Maintenance
+        -  Consistency Assurance
+        -  Process Runner
 
     Responsibilities:
         1.  Creation process owners.
@@ -34,7 +34,7 @@ class Factory(ABC, Generic[T]):
     Attributes:
 
     Provides:
-        -   execute(*args, **kwargs) -> BuildResult[T]
+        -  execute(*args, **kwargs) -> BuildResult[T]
         
     Super Class:
     """

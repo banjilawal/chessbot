@@ -18,8 +18,8 @@ T = TypeVar("T")
 class DeletionResult(CrudResult[T], Generic[T]):
     """
     Role:
-        -   Data Transport
-        -   Error Transport
+        -  Data Transport
+        -  Error Transport
 
     Responsibilities:
         1.  Contains the outcome of a deletion.
@@ -34,10 +34,10 @@ class DeletionResult(CrudResult[T], Generic[T]):
         is_nothing_to_delete: bool
 
     Provides:
-        -   def success(payload: T) -> DeletionResu[T]
-        -   def failure(exception: Exception) -> DeletionResu[T]
-        -   def timed_out(exception: Exception) -> DeletionResult
-        -   def nothing_to_delete() -> DeletionResult
+        -  def success(payload: T) -> DeletionResu[T]
+        -  def failure(exception: Exception) -> DeletionResu[T]
+        -  def timed_out(exception: Exception) -> DeletionResult
+        -  def nothing_to_delete() -> DeletionResult
 
     Super Class:
         Result

@@ -20,7 +20,7 @@ from config.setting.gui.default.size.window.property import WindowProperty
 class DefaultWindowSizeSetting:
     """
     Role
-        -   Property Settings
+        -  Property Settings
 
     Responsibilities:
         1.  Default window size.

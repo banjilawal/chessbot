@@ -24,7 +24,7 @@ __all__ = [
 class DtoBuilderBootstrapperException(BuilderBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a DtoBuilderBootstrapper was aborted by an exception.

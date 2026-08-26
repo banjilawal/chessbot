@@ -18,8 +18,8 @@ from microservice import TeamService
 class BoardTeamBinder:
     """
     Role:
-        -   Model
-        -   Stateless Data-Holder
+        -  Model
+        -  Stateless Data-Holder
         
     Responsibility:
         1.  Performs integrity and consistency checks of the board's teams.

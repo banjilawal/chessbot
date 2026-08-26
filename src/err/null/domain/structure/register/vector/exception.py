@@ -24,7 +24,7 @@ __all__ = [
 class VectorRegisterNullException(ModelRegisterNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required VectorRegister is null.

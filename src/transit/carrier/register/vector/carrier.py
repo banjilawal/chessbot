@@ -19,8 +19,8 @@ from transit.structure.register import VectorRegister
 class VectorRegisterCarrier(EntityCarrier[VectorRegister]):
     """
     Role:
-        -   Addressing
-        -   Data-Holder
+        -  Addressing
+        -  Data-Holder
     
     Responsibilities:
         1.  Entity for transporting either an VectorRegister or VectorRegisterBlueprint

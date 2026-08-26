@@ -24,7 +24,7 @@ __all__ = [
 class NodeValidatorException(StateModelValidatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a NodeValidator failed.

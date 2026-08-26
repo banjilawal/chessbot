@@ -15,8 +15,8 @@ from typing import Any
 class VectorTransform(Computation[VectorToggle]):
     """
     Role:
-        -   Operation
-        -   Transformer
+        -  Operation
+        -  Transformer
 
     Responsibilities:
         1.  Bidirectional Coord<->Vector converter.
@@ -25,7 +25,7 @@ class VectorTransform(Computation[VectorToggle]):
             permitter: Optional[VectorTransformPermitter]
             
     Provides:
-        -   def execute(self, request: VectorTransformRequest) -> ComputationResult[VectorToggle]
+        -  def execute(self, request: VectorTransformRequest) -> ComputationResult[VectorToggle]
 
     Super Class:
         Computation
@@ -60,9 +60,9 @@ class VectorTransform(Computation[VectorToggle]):
         Action:
             1.  Send an exception chain in the ComputationResult if any of
                 these conditions occur
-                    -   The operand is null
-                    -   The operand is flagged unsafe.
-                    -   Building the other type fails.
+                    -  The operand is null
+                    -  The operand is flagged unsafe.
+                    -  Building the other type fails.
             2.  Otherwise, send the success result.
         Args:
             context: AlgebraContext

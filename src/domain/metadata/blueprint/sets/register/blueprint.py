@@ -20,8 +20,8 @@ from domain.structure.register import Register
 class RegisterSetBlueprint(ContainerBlueprint[Register]):
     """
     Role:
-        -   Container
-        -   DTO
+        -  Container
+        -  DTO
         
     Responsibilities:
         1.  Provides values for instantiating a Register object.

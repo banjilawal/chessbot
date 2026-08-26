@@ -33,7 +33,7 @@ class EnemyKingStatusDetector(Analyzer):
     Attributes:
     
     Provides:
-        -   execute(
+        -  execute(
                     token: Token,
                     token_validator: TokenFreedomAnalyzer,
             ) -> Result[FriendshipReport]
@@ -55,10 +55,10 @@ class EnemyKingStatusDetector(Analyzer):
         
         Action:
             1.  Send an exception chain in the Result if any of the conditions occur.
-                        -   The token fails a freedom check.
-                        -   The opening square is not found in the token's board.
-                        -   Searching the board is fails.
-                        -   square has already been friended.
+                        -  The token fails a freedom check.
+                        -  The opening square is not found in the token's board.
+                        -  Searching the board is fails.
+                        -  square has already been friended.
             2.  Otherwise, send the success result.
         Args:
             token: Token

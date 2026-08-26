@@ -26,7 +26,7 @@ from err import BinderBuilderBootstrapperException
 class BoardBinderBuilderBootstrapperException(BinderBuilderBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a BoardBinderBuilderBootstrapper was aborted by an exception.

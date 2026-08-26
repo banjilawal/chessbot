@@ -17,7 +17,7 @@ from operation.toolkit.analyzer.bootstrapper.hostage.toolkit import AnalyzerBoot
 class HostageToolkit(AnalyzerBootstrapperToolkit[Hostage]):
     """
     Role:
-        -   Container
+        -  Container
 
     Responsibilities:
         1.  Collection of workers and services that are required for Arena tasks.

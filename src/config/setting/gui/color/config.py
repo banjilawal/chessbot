@@ -13,7 +13,7 @@ from enum import Enum
 class GameColor(Enum):
     """
     Role
-        -   Property Settings
+        -  Property Settings
   
     Responsibilities:
         1.  Defines all colors available in application.

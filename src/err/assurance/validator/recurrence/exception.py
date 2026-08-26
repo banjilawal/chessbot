@@ -24,7 +24,7 @@ __all__ = [
 class RecurrenceValidatorException(ValidatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a RecurrenceValidator failed.

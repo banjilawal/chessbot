@@ -24,7 +24,7 @@ __all__ = [
 class SquareVisitException(OperationBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a square visit failed.

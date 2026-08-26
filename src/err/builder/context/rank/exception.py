@@ -24,7 +24,7 @@ __all__ = [
 class RankContextBuilderException(ContextBuilderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a RankContextBuilder failed.

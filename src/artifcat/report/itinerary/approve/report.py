@@ -20,7 +20,7 @@ from artifcat.report import ItineraryReport
 class ItineraryApprovalReport(ABC, ItineraryReport):
     """
     Role:
-        -   Test results
+        -  Test results
 
     Responsibilities:
         1.  Details a token needs to visit a Square.

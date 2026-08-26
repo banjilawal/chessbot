@@ -23,7 +23,7 @@ __all__ = [
 class TeamTokenOperationBootstrapperException(TokenOperationBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Team tokenfailed.

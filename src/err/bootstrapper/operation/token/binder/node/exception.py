@@ -26,7 +26,7 @@ from err import BinderTokenOperationBootstrapperException
 class NodeBinderTokenOperationBootstrapperException(BinderTokenOperationBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a NodeBinder tokenfailed.

@@ -38,7 +38,7 @@ class ManeuverRequestAdjudicator(RequestAdjudicator[ManeuverRequest]):
     Attributes:
         utility: Optional[TokenManeuverUtility]
     Provides:
-        -   def execute(self, candidate: Any) -> ManeuverApprovalReport:
+        -  def execute(self, candidate: Any) -> ManeuverApprovalReport:
 
     Super Class:
         Adjudicator
@@ -59,12 +59,12 @@ class ManeuverRequestAdjudicator(RequestAdjudicator[ManeuverRequest]):
         """
         Action:
             1.  Return a denial report containing an exception chain if any of the following occur:
-                    -   The candidate is null
-                    -   The candidate is not a ManeuverRequest
-                    -   The token in the request is not actionable.
-                    -   Searching the token's square fails.
-                    -   The destination is not approved.
-                    -   The destination and the origin are the same.
+                    -  The candidate is null
+                    -  The candidate is not a ManeuverRequest
+                    -  The token in the request is not actionable.
+                    -  Searching the token's square fails.
+                    -  The destination is not approved.
+                    -  The destination and the origin are the same.
             2.  Otherwise, send an approval report.
         Args:
             candidate: Any

@@ -20,7 +20,7 @@ T = TypeVar("T", bound="Axis")
 class AxisBuilderToolkit(SpaceBuilderToolkit, Generic[T]):
     """
     Role:
-        -   Dependency Management
+        -  Dependency Management
         
     Responsibilities:
         1.  Bundles AxisBuilder dependencies.

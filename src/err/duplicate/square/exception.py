@@ -24,7 +24,7 @@ __all__ = [
 class DuplicateSquareException(DuplicateItemException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Square already exists in the operating context so, trying

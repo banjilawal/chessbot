@@ -23,7 +23,7 @@ T = TypeVar("T", bound="Result")
 class CollectionOperation(Operator, ABC, Generic[T]):
     """
     Role
-        -   Worker
+        -  Worker
 
     Responsibilities:
         1.  Execute a task on a Collection that produces either an Insertion, Deletion, Update
@@ -33,7 +33,7 @@ class CollectionOperation(Operator, ABC, Generic[T]):
         permitter: CollectionOperationPermitter[T]
         
     Provides:
-        -   def execute(request: CollectionRequest[T]) -> T
+        -  def execute(request: CollectionRequest[T]) -> T
 
     Super Class:
         Operation

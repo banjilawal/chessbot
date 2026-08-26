@@ -23,10 +23,10 @@ from util import LoggingLevelRouter
 class AxisReservoirBuilder(SpaceReservoirBuildDispatcher[AxisReservoir]):
     """
     Role
-        -   Build Pipeline
-        -   Integrity Management
-        -   Consistency Assurance
-        -   Workflow Owner
+        -  Build Pipeline
+        -  Integrity Management
+        -  Consistency Assurance
+        -  Workflow Owner
 
    Responsibilities:
         1.  Ensure a new Axis instance is born safe and reliable.
@@ -35,7 +35,7 @@ class AxisReservoirBuilder(SpaceReservoirBuildDispatcher[AxisReservoir]):
             builder_toolkit: Optional[AxisReservoirBuilderToolkit]
 
     Provides:
-        -   def execute(self, blueprint: AxisReservoirBlueprint) -> BuildResult[Axis]
+        -  def execute(self, blueprint: AxisReservoirBlueprint) -> BuildResult[Axis]
 
      Super Class:
          ModelBuilder
@@ -64,8 +64,8 @@ class AxisReservoirBuilder(SpaceReservoirBuildDispatcher[AxisReservoir]):
 
         Action:
             1.  Send an exception chain in the BuildResult if either
-                    -   The AxisReservoirBlueprint object is flagged unsafe.
-                    -   The assembler does not return a product.
+                    -  The AxisReservoirBlueprint object is flagged unsafe.
+                    -  The assembler does not return a product.
             2.  Otherwise, cast the assembler product as a Axis then, send in the success result,
         Args:
             blueprint: AxisReservoirBlueprint

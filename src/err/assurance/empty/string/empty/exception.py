@@ -24,7 +24,7 @@ __all__ = [
 class EmptyStringException(EmptyItemException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a String is empty (zero length).

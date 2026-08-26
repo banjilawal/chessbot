@@ -23,7 +23,7 @@ __all__ = [
 class SpaceReservoirNullException(SpaceContainerNullException):
     """
     Role:
-        -   Failure Tracing
+        -  Failure Tracing
 
     Responsibilities:
         1.  Indicating a required SpaceReservoirContainer is null.

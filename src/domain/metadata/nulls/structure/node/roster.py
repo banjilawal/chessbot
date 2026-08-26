@@ -26,7 +26,7 @@ T = TypeVar("T", bound="Node")
 class NodeNullRoster(NullExceptionRoster[T], ABC, Generic[T]):
     """
     Role:
-        -   Metadata
+        -  Metadata
 
     Responsibilities:
         1. Catalog of NullExceptions associated with a Node

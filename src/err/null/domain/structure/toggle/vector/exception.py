@@ -24,7 +24,7 @@ __all__ = [
 class VectorToggleNullException(ToggleNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an VectorToggle is null.

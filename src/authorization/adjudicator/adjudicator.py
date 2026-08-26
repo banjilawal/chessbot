@@ -22,9 +22,9 @@ T = TypeVar("T", bound="Request")
 class RequestAdjudicator(ABC, Generic[T]):
     """
     Role:
-        -   Permission Authorization
-        -   Checklist Runner
-        -   Integrity Maintenance
+        -  Permission Authorization
+        -  Checklist Runner
+        -  Integrity Maintenance
         _   Consistency Assurance
 
     Responsibilities:
@@ -34,7 +34,7 @@ class RequestAdjudicator(ABC, Generic[T]):
         priming_validator: PrimingValidator
 
     Provides:
-        -    def execute(self, candidate: Any) -> RequestDecision
+        -   def execute(self, candidate: Any) -> RequestDecision
 
     Super Class:
     """

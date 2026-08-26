@@ -24,7 +24,7 @@ T = TypeVar("T", bound="SearchRequest")
 class Search(CrudOperator[T], ABC, Generic[T]):
     """
     Role
-        -   Worker
+        -  Worker
 
     Responsibilities:
         1.  Process an SearchRequest.
@@ -33,7 +33,7 @@ class Search(CrudOperator[T], ABC, Generic[T]):
         authorizer: SearchAuthorizer[T]
 
     Provides:
-        -   def execute(self, request: T) -> SearchionResult
+        -  def execute(self, request: T) -> SearchionResult
 
     Super Class:
         CrudOperation

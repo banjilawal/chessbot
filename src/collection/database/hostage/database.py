@@ -20,8 +20,8 @@ class HostageDatabase(Database[Hostage]):
     """
     Role:
         _   Frontend
-        -   Interface
-        -   Data Protection
+        -  Interface
+        -  Data Protection
 
     Responsibilities:
         1.  Encapsulates StackService.
@@ -37,10 +37,10 @@ class HostageDatabase(Database[Hostage]):
         integrity_service: Microservice[T]
 
     Provides:
-        -   iterator() ->: iter
-        -   insert(item: T) -> InsertionResult:
-        -   delete_by_id(id: int) -> DeletionResult[T]:
-        -   search(context: Context[T]) -> SearchResult[List[T]]
+        -  iterator() ->: iter
+        -  insert(item: T) -> InsertionResult:
+        -  delete_by_id(id: int) -> DeletionResult[T]:
+        -  search(context: Context[T]) -> SearchResult[List[T]]
     """
     """
     Role:Unique Data Stack, Search Microservice, CRUD Controller, Encapsulation, API layer.

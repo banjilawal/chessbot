@@ -23,7 +23,7 @@ __all__ = [
 class PawnTokenConsistencyAuditorException(TokenException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a PawnTokenConsistencyAuditor failed.

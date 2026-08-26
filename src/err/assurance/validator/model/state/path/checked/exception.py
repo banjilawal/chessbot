@@ -24,7 +24,7 @@ __all__ = [
 class CheckedPathValidatorException(PathValidatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a CheckedPathValidator failed.

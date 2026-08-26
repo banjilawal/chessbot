@@ -25,7 +25,7 @@ from artifcat import MethodResultType
 class AssemblyException(OperationBootstrapperException):
     """
     Role:
-        -   Failure Tracing
+        -  Failure Tracing
 
     Responsibilities:
         1.  Indicating a assembly from completing.

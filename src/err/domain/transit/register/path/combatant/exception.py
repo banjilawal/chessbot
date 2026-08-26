@@ -24,7 +24,7 @@ __all__ = [
 class CombatantPathRegisterCarrierException(PathException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a CombatantPathRegisterCarrier encountered an error.

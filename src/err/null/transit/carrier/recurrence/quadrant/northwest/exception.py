@@ -24,7 +24,7 @@ __all__ = [
 class NorthwestQuadrantRecurrenceCarrierNullException(QuadrantRecurrenceCarrierNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required NorthwestQuadrantRecurrenceCarrier is null.

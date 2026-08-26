@@ -25,7 +25,7 @@ __all__ = [
 class IdentityRegisterCheckerException(RegisterIntegrityCheckerException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a VectorIdentityRegisterCertifier failed.

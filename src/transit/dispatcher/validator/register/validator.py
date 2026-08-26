@@ -21,10 +21,10 @@ T = TypeVar("T", bound="Register")
 class RegisterValidationDispatcher(ValidationDispatcher, Generic[T]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Validation Process Owner
+        -  Transaction Worker
+        -  Integrity Maintenance
+        -  Consistency Assurance
+        -  Validation Process Owner
 
     Responsibilities:
         1.  Ensure a Model instance is certified safe, reliable and consistent before use.
@@ -33,7 +33,7 @@ class RegisterValidationDispatcher(ValidationDispatcher, Generic[T]):
         integrity_checker: RegisterIntegrityChecker[T]
         
     Provides:
-        -   execute(self, candidate: Any) -> ValidationResult
+        -  execute(self, candidate: Any) -> ValidationResult
 
     Super Class:
         Validator

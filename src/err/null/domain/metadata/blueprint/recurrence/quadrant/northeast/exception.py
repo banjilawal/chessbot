@@ -24,7 +24,7 @@ __all__ = [
 class NortheastQuadrantRecurrenceBlueprintNullException(QuadrantRecurrenceBlueprintNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required NortheastQuadrantRecurrenceBlueprint is null.

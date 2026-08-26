@@ -22,7 +22,7 @@ __all__ = [
 class PrimingArenaAssemblyException(AssemblyPrimerException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an ArenaAssembly priming step failed.

@@ -20,7 +20,7 @@ from operation.crud.search.token.searcher import TokenSearcher
 class TokenStackController:
     """
     Role:
-        -   Operations Controller
+        -  Operations Controller
 
     Responsibilities:
         1.  Provide a single entry point for transactions TokenStackService operates.

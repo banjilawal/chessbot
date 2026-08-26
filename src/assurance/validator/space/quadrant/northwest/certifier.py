@@ -25,7 +25,7 @@ from util import LoggingLevelRouter
 class NorthwestQuadrantRootChecker(QuadrantRootChecker[NorthwestQuadrantBlueprint]):
     """
     Role
-        -   Integrity, Consistency Maintenance
+        -  Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a NorthwestQuadrantBlueprint instance is certified safe, reliable and consistent before use.
@@ -34,7 +34,7 @@ class NorthwestQuadrantRootChecker(QuadrantRootChecker[NorthwestQuadrantBlueprin
         bundle: NorthwestQuadrantToolkit
 
     Provides:
-        -   execute(self, candidate: Any) -> ValidationResult:
+        -  execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
         IntegrityChecker
@@ -59,8 +59,8 @@ class NorthwestQuadrantRootChecker(QuadrantRootChecker[NorthwestQuadrantBlueprin
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The validation_priming fails.
-                    -   Either the board, owner or id get flagged unsafe.
+                    -  The validation_priming fails.
+                    -  Either the board, owner or id get flagged unsafe.
             2.  Otherwise, send the success result.
         Args:
             candidate: Any,

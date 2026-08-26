@@ -20,7 +20,7 @@ P = TypeVar("P", bound=OperationPermitter)
 class PermitterToolkit(Toolkit[OperationPermitter, Generic[P]]):
     """
     Role:
-        -   Dependency Management
+        -  Dependency Management
         
     Responsibilities:
         1.  Aggregates workers and services a permitter requires for its tasks.
@@ -38,14 +38,14 @@ class PermitterToolkit(Toolkit[OperationPermitter, Generic[P]]):
         _items: Dict[str, Any]
     
     Provides:
-        -   def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
-        -   def _resolve_service_dependencies() -> SearchResult[List[Dict[str, Microservice]]]:
-        -   def _resolve_dependencies(self) -> SearchResult[List[Dict[str, Operation]]]
+        -  def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
+        -  def _resolve_service_dependencies() -> SearchResult[List[Dict[str, Microservice]]]:
+        -  def _resolve_dependencies(self) -> SearchResult[List[Dict[str, Operation]]]
         
     Super Class:
         Toolkit
         
     Notes:
-        -   PermitterToolkit for an empty class which makes managing toolkits easier.
-        -   Any toolkits for a permitter should be a PermitterToolkit subclass.
+        -  PermitterToolkit for an empty class which makes managing toolkits easier.
+        -  Any toolkits for a permitter should be a PermitterToolkit subclass.
     """

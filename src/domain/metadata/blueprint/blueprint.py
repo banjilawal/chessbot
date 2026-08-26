@@ -20,7 +20,7 @@ T = TypeVar("T", bound="DomainObject")
 class Blueprint(DomainMetadata, ABC, Generic[T]):
     """
      Role:
-         -   Metadata
+         -  Metadata
 
      Responsibilities:
          1.  Provide attribute-value tuples for hydrating a DomainObject.

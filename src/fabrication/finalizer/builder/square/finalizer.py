@@ -20,10 +20,10 @@ from util import LoggingLevelRouter
 class SquareBuilderFinalizer(BuilderFinalizer[Square]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Build Process Owner
+        -  Transaction Worker
+        -  Integrity Maintenance
+        -  Consistency Assurance
+        -  Build Process Owner
 
    Responsibilities:
         1.  Ensure a new Square instance is born safe and reliable.
@@ -31,7 +31,7 @@ class SquareBuilderFinalizer(BuilderFinalizer[Square]):
      Attributes:
 
     Provides:
-        -   def execute(product: Square, ) -> BuildResult[Square]:
+        -  def execute(product: Square, ) -> BuildResult[Square]:
 
      Super Class:
          Builder

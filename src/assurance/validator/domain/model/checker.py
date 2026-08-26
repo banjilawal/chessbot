@@ -22,7 +22,7 @@ T = TypeVar("T", bound="DataModel")
 class ModelValidator(Validator, ABC, Generic[T]):
     """
     Role
-        -   Integrity Assurance Worker
+        -  Integrity Assurance Worker
 
     Responsibilities:
         1.  Check that a candidate is the right type of not-null EntityCarrier.
@@ -32,7 +32,7 @@ class ModelValidator(Validator, ABC, Generic[T]):
         bundle: ModelValidationBundle[T]
 
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult[Blueprint[T]|T]:
+        -  def execute(candidate: Any) -> ValidationResult[Blueprint[T]|T]:
 
     Super Class:
         IntegrityChecker

@@ -16,8 +16,8 @@ from domain.model import Attack, CombatantAttackState, CombatantToken, Maneuver,
 class AttackCombatant(Attack[CombatantToken]):
     """
     Role:
-        -   Model
-        -   Data Holder
+        -  Model
+        -  Data Holder
 
     Responsibilities:
         1.  Provide information about a Path which might be used to attack

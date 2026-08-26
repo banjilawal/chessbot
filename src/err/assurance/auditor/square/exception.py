@@ -24,7 +24,7 @@ __all__ = [
 class SquareConsistencyAuditorException(ConsistencyAuditorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a SquareConsistencyAuditor failed.

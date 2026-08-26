@@ -15,21 +15,21 @@ from domain import CartesianPoint
 class Vector(CartesianPoint):
     """
     Role:
-        -   CartesianPoint
-        -   Stateless Data-Holder
+        -  CartesianPoint
+        -  Stateless Data-Holder
     
     About:
         Consider,
             1.  A Token travels on the X,Y plane.
-                    -   abs(delta_x - delta_y) > 0
+                    -  abs(delta_x - delta_y) > 0
             2.  Let the series of be
-                    -   Coords = C(x0, y0), C(x1, y1), ., C(x_n-1, y_n-1), C(xn, yn)
+                    -  Coords = C(x0, y0), C(x1, y1), ., C(x_n-1, y_n-1), C(xn, yn)
             3.  Let
-                    -   x_i = x_(i-1) + delta_x,
-                    -   y_j = y_(j-1) - delta_y
+                    -  x_i = x_(i-1) + delta_x,
+                    -  y_j = y_(j-1) - delta_y
             4.  Therefore,
-                    -   x_n = x_0 + delta_x * (n-1),
-                    -   y_n = y_0 - delta_y * (n-1)
+                    -  x_n = x_0 + delta_x * (n-1),
+                    -  y_n = y_0 - delta_y * (n-1)
             5.  delta_x = N and delta_y = M.
             6.  We see iterating through a series of Coords requires the vector;
                     V(delta_x, delta_y).

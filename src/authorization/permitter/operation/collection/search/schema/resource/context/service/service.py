@@ -13,8 +13,8 @@ from system import IntegrityMicroservice, IdFactory
 class SchemaContextService(IntegrityMicroservice[SchemaContext]):
     """
     Role:
-        -   Microservice API
-        -   Stateless Integrity Lifecycle Manager
+        -  Microservice API
+        -  Stateless Integrity Lifecycle Manager
 
     Responsibilities:
         1.  Mutates SchemaContext instances

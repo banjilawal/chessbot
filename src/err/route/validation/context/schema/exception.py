@@ -26,7 +26,7 @@ from err import ContextNoValidationRouteException
 class SchemaContextValidationRouteException(ContextNoValidationRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that one of SchemaContext validation routes is missing.

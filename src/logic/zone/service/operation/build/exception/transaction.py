@@ -21,9 +21,9 @@ from system import BuilderException
 class ZoneBuilderException(BuilderException):
     """
     Role:
-        -   Worker Method Identifier
-        -   Exception Chain Layer 1,
-        -   Exception Messaging
+        -  Worker Method Identifier
+        -  Exception Chain Layer 1,
+        -  Exception Messaging
 
     Responsibilities:
         1.  Indicate the ZoneBuildProcess was not completed.

@@ -23,8 +23,8 @@ from util import LoggingLevelRouter
 class SouthwestQuadrantBuilder(QuadrantBuilder[SouthwestQuadrant]):
     """
     Role:
-        -   Builder
-        -   Integrity Management
+        -  Builder
+        -  Integrity Management
 
     Responsibilities:
         1.  Create an EastAxis from the origin.
@@ -33,7 +33,7 @@ class SouthwestQuadrantBuilder(QuadrantBuilder[SouthwestQuadrant]):
             builder_toolkit: Optional[SouthwestQuadrantBuilderToolkit]
 
     Provides:
-        -   def execute(origin: Vector) -> BuildResult[EastAxis]
+        -  def execute(origin: Vector) -> BuildResult[EastAxis]
 
     Super Class:
         QuadrantBuilder
@@ -59,8 +59,8 @@ class SouthwestQuadrantBuilder(QuadrantBuilder[SouthwestQuadrant]):
 
         Action:
             1.  Send an exception chain in the BuildResult if either
-                    -   The blueprint is flagged unsafe.
-                    -   The assembler does not return a product.
+                    -  The blueprint is flagged unsafe.
+                    -  The assembler does not return a product.
             2.  Otherwise, cast the assembler product as a SouthwestQuadrant then,
                 send in the success result,
         Args:

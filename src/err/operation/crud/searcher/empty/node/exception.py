@@ -24,7 +24,7 @@ __all__ = [
 class NodeSearchResultEmptyException(SearchResultEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a NodeSearcher did not find the required item.

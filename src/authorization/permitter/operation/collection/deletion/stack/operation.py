@@ -27,7 +27,7 @@ T = TypeVar("T", bound="StateModel")
 class StackPop(CollectionDeletion[StackService], ABC, Generic[T]):
     """
     Role
-        -   Worker
+        -  Worker
 
     Responsibilities:
         1.  Remove a T instance out of the StackService[T].
@@ -36,7 +36,7 @@ class StackPop(CollectionDeletion[StackService], ABC, Generic[T]):
         permitter: PopStackPermitter[T]
         
     Provides:
-        -   def execute(request: PopStackRequest[T]) -> DeletionResult[T]
+        -  def execute(request: PopStackRequest[T]) -> DeletionResult[T]
 
     Super Class:
         CollectionDeletion

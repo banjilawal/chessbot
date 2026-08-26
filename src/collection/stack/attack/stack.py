@@ -25,11 +25,11 @@ from system import IdFactory, LoggingLevelRouter
 class AttackStackService(StackService[AttackEvent]):
     """
     Role:
-        -   API
-        -   ACID compliance
-        -   Stateful microservice
-        -   Stateful CRUD Controller
-        -   Operations Provider
+        -  API
+        -  ACID compliance
+        -  Stateful microservice
+        -  Stateful CRUD Controller
+        -  Operations Provider
 
     Responsibilities:
         1.  Baremetal service request API for Attack collections.
@@ -53,15 +53,15 @@ class AttackStackService(StackService[AttackEvent]):
         ops_controller: AttackStackOpsController
 
     Provides:
-        -   is_empty() -> bool
-        -   is_being_deployed() -> bool
-        -   is_deployed_on_board() -> bool
-        -   pop() -> DeletionResult[AttackEvent]
-        -   push(item: Attack) -> InsertionResult
-        -   is_ready_for_deployment() -> bool
-        -   is_getting_ready_for_deployment() -> bool
-        -   delete_by_id(id: int) -> DeletionResult[AttackEvent]
-        -   context(context: Context[AttackEvent]) -> SearchResult[List[AttackEvent]]
+        -  is_empty() -> bool
+        -  is_being_deployed() -> bool
+        -  is_deployed_on_board() -> bool
+        -  pop() -> DeletionResult[AttackEvent]
+        -  push(item: Attack) -> InsertionResult
+        -  is_ready_for_deployment() -> bool
+        -  is_getting_ready_for_deployment() -> bool
+        -  delete_by_id(id: int) -> DeletionResult[AttackEvent]
+        -  context(context: Context[AttackEvent]) -> SearchResult[List[AttackEvent]]
 
     Super Class:
         StackService

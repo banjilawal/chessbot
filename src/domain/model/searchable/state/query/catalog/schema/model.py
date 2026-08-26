@@ -18,9 +18,9 @@ from domain.model import CatalogQuery
 class SchemaQuery(CatalogQuery[Schema]):
     """
     Role:
-        -   Model
-        -   Search
-        -   Stateless Data-Holder
+        -  Model
+        -  Search
+        -  Stateless Data-Holder
 
     Responsibilities:
         1.  A list of schemas to search with context.

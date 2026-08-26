@@ -21,7 +21,7 @@ T = TypeVar("T", bound="Register")
 class RegisterBlueprint(Blueprint, Generic[T]):
     """
     Role:
-    -   Container
+    -  Container
     
     Responsibilities:
         1.  Provides values for instantiating a Register object.

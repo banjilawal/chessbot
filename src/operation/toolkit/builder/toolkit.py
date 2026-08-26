@@ -21,7 +21,7 @@ T = TypeVar("T")
 class BuilderToolkit(Toolkit, Generic[T]):
     """
     Role:
-        -   Dependency Management
+        -  Dependency Management
         
     Responsibilities:
         1.  Bundles Builder dependencies.

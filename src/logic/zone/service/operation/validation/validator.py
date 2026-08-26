@@ -19,10 +19,10 @@ from system import (
 class ZoneValidator(Validator[Zone]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -  Transaction Worker
+        -  Integrity Maintenance
+        -  Consistency Assurance
+        -  Process Runner
 
     Responsibilities:
         1.  Ensure a Zone instance is certified safe, reliable and consistent before use.
@@ -30,7 +30,7 @@ class ZoneValidator(Validator[Zone]):
     Attributes:
     
     Provides:
-       -    execute(
+       -   execute(
                     rank: Any,
                     number_validation: NumberValidator,
             ) -> ValidationResult[Zone]
@@ -51,9 +51,9 @@ class ZoneValidator(Validator[Zone]):
         
         Action:
             1.  Send an exception chain in the ValidationResult if
-                    -   the rank does not exist.
-                    -   the rank is not a Zone.
-                    -   the row or column is not between [0-7] inclusive.
+                    -  the rank does not exist.
+                    -  the rank is not a Zone.
+                    -  the row or column is not between [0-7] inclusive.
             2.  Otherwise, after the rank is cast to a Zone, send the success result.
         Args:
             candidate: Any

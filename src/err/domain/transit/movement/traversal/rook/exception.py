@@ -24,7 +24,7 @@ __all__ = [
 class RookTraversalPatternCarrierException(TraversalPatternCarrierException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a RookTraversalPatternCarrier experienced an error.

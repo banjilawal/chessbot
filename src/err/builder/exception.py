@@ -25,7 +25,7 @@ __all__ = [
 class BuilderException(ChessException):
     """
     Role:
-        -   Failure Tracing
+        -  Failure Tracing
 
     Responsibilities:
         1.  Indicating a build from completing.

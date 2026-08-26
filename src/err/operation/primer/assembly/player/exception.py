@@ -24,7 +24,7 @@ __all__ = [
 class PrimingPlayerAssemblyException(AssemblyPrimerException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a PlayerAssembly priming step failed.

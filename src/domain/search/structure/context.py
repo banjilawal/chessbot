@@ -1,7 +1,7 @@
-# src/domain/search/chain/context.py
+# src/domain/search/structure/context.py
 
 """
-Module: domain.search.chain
+Module: domain.search.structure.context
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,26 +12,25 @@ from __future__ import annotations
 from typing import Generic, Optional, TypeVar
 from abc import ABC
 
-from domain import Node, SearchContext
+from domain import SearchContext
 from domain import Structure
 
 T = TypeVar("T", bound="Structure")
 
 
-class ChainSearchContext(SearchContext, ABC, Generic[T]):
+class StructureSearchContext(SearchContext[T], ABC, Generic[T]):
     """
     Role:
         - Option Selector
-        -   Data-Holder
 
     Responsibilities:
-        1.  Supply an attribute-value tuple for selecting an execution path.
+        1.  Supply an attribute-value tuple used to search a collection.
                 
     Attributes:
         offset Optional[int]
         
     Provides:
-        -   to_dict() -> Dict[str, Any]
+        -  to_dict() -> Dict[str, Any]
         
     Super Class:
     
@@ -42,10 +41,10 @@ class ChainSearchContext(SearchContext, ABC, Generic[T]):
         
         4.  Why Not Union:
                 Used optional attributes with null default values instead of a union type because:
-                    -   It's easier to extend
-                    -   Implementations can decide if context can be mutually exclusive or not.
-                    -   Unions are clunky if there are many attributes.
-                    -   Unions don't lower validation and build integrity overhead.
+                    -  It's easier to extend
+                    -  Implementations can decide if context can be mutually exclusive or not.
+                    -  Unions are clunky if there are many attributes.
+                    -  Unions don't lower validation and build integrity overhead.
     """
     _offset: Optional[int]
     

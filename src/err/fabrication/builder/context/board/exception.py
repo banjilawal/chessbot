@@ -26,7 +26,7 @@ from err import ContextBuilderException
 class BoardContextBuilderException(ContextBuilderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a BoardContext build failed.

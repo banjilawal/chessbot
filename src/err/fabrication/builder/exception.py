@@ -23,7 +23,7 @@ __all__ = [
 class BuilderException(FabricationException):
     """
     Role:
-        -   Failure Tracing
+        -  Failure Tracing
 
     Responsibilities:
         1.  Indicating a Builder did not create a product.

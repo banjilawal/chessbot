@@ -20,9 +20,9 @@ from domain.model import (
 class SchemaLookupService(SearchMicroservice[Schema]):
     """
     Role:
-        -   API
-        -   Stateless microservice
-        -   Operations Provider
+        -  API
+        -  Stateless microservice
+        -  Operations Provider
 
     Responsibilities:
         1.  Baremetal microservice for querying Schemas.

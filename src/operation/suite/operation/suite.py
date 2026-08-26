@@ -22,8 +22,8 @@ T = TypeVar("T", bound="Model")
 class OperationSuite(Suite, Generic[T]):
     """
     Role:
-        -   Dependency Container
-        -   Dynamic Dependency Provider
+        -  Dependency Container
+        -  Dynamic Dependency Provider
 
     Responsibilities:
         1.  Contains the operations that can be performed on a model.
@@ -38,8 +38,8 @@ class OperationSuite(Suite, Generic[T]):
     Super Class:
 
     Notes:
-        -   Suite for an empty class which makes managing toolkits easier.
-        -   Any toolkits for a suite should be a Suite subclass.
+        -  Suite for an empty class which makes managing toolkits easier.
+        -  Any toolkits for a suite should be a Suite subclass.
     """
     _builder: Builder[T]
     _validator: Validator[T]

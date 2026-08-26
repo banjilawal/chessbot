@@ -20,7 +20,7 @@ T = TypeVar("T", bound="Model")
 class ModelToolkit(Toolkit, Generic[T]):
     """
     Role:
-        -   Dependency Management
+        -  Dependency Management
         
     Responsibilities:
         1.  Aggregates workers and services a model requires for its tasks.

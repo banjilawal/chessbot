@@ -17,8 +17,8 @@ from logic.coord import Coord, EuclideanDistanceException, CoordService
 class EuclideanDistance:
     """
     Role:
-        -   Worker
-        -   Computation
+        -  Worker
+        -  Computation
 
     Responsibilities:
         1.  ComputationWorker the Euclidean distance between two Coords.
@@ -26,7 +26,7 @@ class EuclideanDistance:
     Attributes:
         
     Properties:
-        -   def compute(
+        -  def compute(
                     u: Coord,
                     v: Coord,
                     coord_service: CoordService,
@@ -45,9 +45,9 @@ class EuclideanDistance:
         """
         Action:
             1.  Send an exception chain in the ComputationResult if:
-                -   The coord does not pass a validation check.
-                -   The scalar does not pass a validation check.
-                -   Their product does not satisfy the constraints of the Coord.
+                -  The coord does not pass a validation check.
+                -  The scalar does not pass a validation check.
+                -  Their product does not satisfy the constraints of the Coord.
             2.  Otherwise, send the success result.
         Args:
             u: Coord,

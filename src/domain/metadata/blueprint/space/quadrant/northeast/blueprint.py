@@ -20,7 +20,7 @@ from space import NortheastQuadrant
 class NortheastQuadrantBlueprint(QuadrantBlueprint[NortheastQuadrant]):
     """
      Role:
-         -   DTO
+         -  DTO
 
      Responsibilities:
          1.  Provides values for instantiating a NortheastQuadrant.

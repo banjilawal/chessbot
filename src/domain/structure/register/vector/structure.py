@@ -17,8 +17,8 @@ from domain import Register, Vector
 class VectorRegister(Register[Vector]):
     """
     Role:
-        -   Model
-        -   Data Holder
+        -  Model
+        -  Data Holder
 
     Responsibilities:
         1.  Contains the endpoints of a journey.

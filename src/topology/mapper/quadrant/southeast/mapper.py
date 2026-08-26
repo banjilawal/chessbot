@@ -18,12 +18,12 @@ from topology.space import SoutheastQuadrant
 class SoutheastQuadrantMappingFunction(QuadrantMappingFunction[SoutheastQuadrant]):
     """
     Role:
-        -   Computation
+        -  Computation
 
     Responsibilities:
         Define x_step and slope for getting the next vector southeast of origin.
-            -   x_step = -1,
-            -   slope = 1
+            -  x_step = -1,
+            -  slope = 1
             
     Attributes:
         x_step: int = QuadrantStepFunction.SOUTHEAST.x_step,

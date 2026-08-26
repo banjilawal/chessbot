@@ -24,7 +24,7 @@ __all__ = [
 class BinderModelNullException(ModelNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required Binder wass.

@@ -24,7 +24,7 @@ __all__ = [
 class RegistryEntryKeyStringMicroserviceException(MicroserviceException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a candidate did not pass a RegistryEntry key failed a String microservice check.

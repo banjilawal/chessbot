@@ -20,7 +20,7 @@ from space import NorthAxis
 class NorthAxisBlueprint(AxisBlueprint[NorthAxis]):
     """
      Role:
-         -   DTO
+         -  DTO
 
      Responsibilities:
          1.  Provides values for instantiating a NorthAxis.

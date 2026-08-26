@@ -23,7 +23,7 @@ from util import LoggingLevelRouter
 class VectorValidator(ModelValidator):
     """
     Role
-        -   Integrity, Consistency Maintenance
+        -  Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a Vector instance is certified safe, reliable and consistent before use.
@@ -32,7 +32,7 @@ class VectorValidator(ModelValidator):
         integrity_checker: VectorIntegrityChecker
 
     Provides:
-        -   execute(candidate: Any) -> ValidationResult
+        -  execute(candidate: Any) -> ValidationResult
 
     Super Class:
         ModelValidator

@@ -23,7 +23,7 @@ __all__ = [
 class AxisCarrierException(SpaceCarrierException):
     """
     Role:
-        -   Failure Tracing
+        -  Failure Tracing
 
     Responsibilities:
         1.  Indicating a AxisCarrier experienced an error.

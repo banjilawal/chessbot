@@ -24,7 +24,7 @@ __all__ = [
 class TokenDeletePermitterException(DeletePermitterException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a TokenDeletePermitter did not approve the request.

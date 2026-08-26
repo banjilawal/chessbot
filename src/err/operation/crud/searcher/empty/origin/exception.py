@@ -24,7 +24,7 @@ __all__ = [
 class TokenOriginSearchResultEmptyException(SearchResultEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a TokenOriginSearcher did not find the required item.

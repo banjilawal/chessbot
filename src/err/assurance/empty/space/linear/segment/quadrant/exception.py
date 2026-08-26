@@ -24,7 +24,7 @@ __all__ = [
 class QuadrantLineSegmentEmptyException(LineSegmentEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an Quadrant has an empty segment field.

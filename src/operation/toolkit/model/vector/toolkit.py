@@ -25,7 +25,7 @@ from transit.carrier import VectorCarrier
 class VectorToolkit(ModelToolkit[Vector]):
     """
     Role:
-        -   Container
+        -  Container
     
     Responsibilities:
         1.  Collection of workers and services that are required for Vector tasks.

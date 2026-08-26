@@ -21,9 +21,9 @@ from domain.model import Vector
 class AxisRecurrenceRegistry(RecurrenceRegistry[Axis]):
     """
     Role:
-        -   Data Holder
-        -   Factory
-        -   Switcher
+        -  Data Holder
+        -  Factory
+        -  Switcher
 
     Responsibilities:
         1.  Create an immuregistry set of recurrence relations for batch vector transformations across all axes.

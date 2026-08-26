@@ -24,7 +24,7 @@ __all__ = [
 class ArenaIdCollisionException(IdCollisionException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that two arenas share an id that should be unique.

@@ -28,8 +28,8 @@ from util import LoggingLevelRouter
 class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
     """
     Role
-        -   Integrity Maintenance
-        -   Consistency Assurance
+        -  Integrity Maintenance
+        -  Consistency Assurance
 
 
     Responsibilities:
@@ -39,7 +39,7 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
         bundle: VectorToggleToolkit
 
     Provides:
-        -   execute(self, candidate: Any) -> ValidationResult:
+        -  execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
         IntegrityChecker
@@ -64,9 +64,9 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The candidate is not a VectorToggleDtoCarrier.
-                    -   The candidate is an empty VectorToggleDtoCarrier.
-                    -   Either the board, team, formation, rank or id get flagged unsafe.
+                    -  The candidate is not a VectorToggleDtoCarrier.
+                    -  The candidate is an empty VectorToggleDtoCarrier.
+                    -  Either the board, team, formation, rank or id get flagged unsafe.
             2.  For a model_carrier send a VectorToggle in the success result. Otherwise, send a TokeBlueprint.
         Args:
             candidate, Any

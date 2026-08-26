@@ -19,8 +19,8 @@ from domain.schema import Persona
 class RankBlueprint(ModelBlueprint[Rank]):
     """
     Role:
-        -   Container
-        -   DTO
+        -  Container
+        -  DTO
         
     Responsibilities:
         1.  Provides values for instantiating a Rank object.

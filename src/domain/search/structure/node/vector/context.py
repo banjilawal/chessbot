@@ -1,7 +1,7 @@
-# src/domain/search/chain/vector/context.py
+# src/domain/search/structure/node/vector/context.py
 
 """
-Module: domain.search.chain.vector
+Module: domain.search.structure.node.vector.context
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,28 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain import ChainSearchContext, Vector
+from domain import NodeSearchContext, VectorNode
 
 
-class VectorNodeContext(ChainSearchContext[Vector]):
+class VectorNodeContext(NodeSearchContext[VectorNode]):
         """
         Role:
-            -   Selection
-            -   Routing mask
-            -   Data-Holder
+            - Option Selector
     
         Responsibilities:
-            1.  Supply a Vector attribute-value search filter.
+            1.  Supply a Node attribute-value tuple used to search a NodeChain.
     
         Attributes:
             x: Optional[int]
             y: Optional[int]
     
         Provides:
-            -   to_dict() -> Dict[str, Any]
+            - to_dict() -> Dict[str, Any]
     
         Super Class:
-            Context
+            NodeSearchContext
         """
         _x: Optional[int]
         _y: Optional[int]

@@ -24,7 +24,7 @@ __all__ = [
 class GameContextException(ContextException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a GameContext encountered an error.

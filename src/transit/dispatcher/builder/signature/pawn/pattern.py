@@ -19,8 +19,8 @@ from topology.pattern import OffsetSignature
 class PawnOffsetPattern(ABC, OffsetSignature[Pawn]):
     """
     Role:
-        -   Data Holder
-        -   Immutability
+        -  Data Holder
+        -  Immutability
 
     Responsibilities:
         1.  Determine potential destinations from PawnToken's current position.

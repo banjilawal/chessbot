@@ -18,8 +18,8 @@ from topology.pattern import PawnSignature
 class ManeuverSignature(ABC, PawnSignature):
     """
     Role:
-        -   Computation Worker
-        -   Integrity Management
+        -  Computation Worker
+        -  Integrity Management
 
     Responsibilities:
         1.  Prevent ArrayIndexOutOfManeuver errors by calculating the last point in the direction

@@ -18,7 +18,7 @@ from system import Toolkit, ToolkitResult, LoggingLevelRouter, NumberValidator
 class EdgeToolkit(AnalyzerBootstrapperToolkit[Edge]):
     """
      Role:
-        -   Container
+        -  Container
 
     Responsibilities:
         1.  Collection of workers and services that are required for Arena tasks.

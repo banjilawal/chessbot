@@ -16,7 +16,7 @@ from operation.toolkit.analyzer.bootstrapper.player.toolkit import AnalyzerBoots
 class PlayerToolkit(AnalyzerBootstrapperToolkit[Player]):
     """
     Role:
-        -   Container
+        -  Container
     
     Responsibilities:
         1.  Collection of workers and services that are required for Arena tasks.

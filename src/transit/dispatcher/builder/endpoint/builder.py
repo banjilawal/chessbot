@@ -18,10 +18,10 @@ T = TypeVar("T", bound="TraversalPattern")
 class EndpointBuilder(Builder, Generic[T]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Build Process Owner
+        -  Transaction Worker
+        -  Integrity Maintenance
+        -  Consistency Assurance
+        -  Build Process Owner
 
    Responsibilities:
         1.  Ensure a new Edge instance is born safe and reliable.

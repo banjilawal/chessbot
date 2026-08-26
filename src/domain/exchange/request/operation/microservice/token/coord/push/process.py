@@ -29,7 +29,7 @@ class TokenPushCoordProcess:
     Attributes:
 
     Provides:
-            -   execute(
+            -  execute(
                         cls,
                         token: Token,
                         coord: Coord,

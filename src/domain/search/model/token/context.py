@@ -34,7 +34,7 @@ class TokenSearchContext(ModelSearchContext[Token]):
         home_square: Optional[HomeSquare]
 
     Provides:
-        -   to_dict() -> Dict[str, Any]
+        -  to_dict() -> Dict[str, Any]
 
     Super Class:
         ModelSearchContext[

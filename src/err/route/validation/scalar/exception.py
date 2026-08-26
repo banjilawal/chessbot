@@ -23,7 +23,7 @@ __all__ = [
 class ScalarNoValidationRouteException(NoValidationRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that one of Scalar validation routes is missing.

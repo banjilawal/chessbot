@@ -24,7 +24,7 @@ __all__ = [
 class ListEmptyException(EmptyItemException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required List is empty.

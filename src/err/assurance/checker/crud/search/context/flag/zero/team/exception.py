@@ -25,7 +25,7 @@ __all__ = [
 class ZeroTeamContextFlagsException(ZeroContextFlagsException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating no TeamSearchContext flags were enabled.

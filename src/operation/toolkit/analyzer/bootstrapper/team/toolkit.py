@@ -18,7 +18,7 @@ from transit.dispatcher.validator import BoardValidationDispatcher, PlayerValida
 class TeamToolkit(AnalyzerBootstrapperToolkit[Team]):
     """
     Role:
-        -   Dependency Management
+        -  Dependency Management
 
     Responsibilities:
         1.  Aggregates workers and services a Team requires for its tasks.
@@ -35,7 +35,7 @@ class TeamToolkit(AnalyzerBootstrapperToolkit[Team]):
         priming_validator: PrimingValidator
 
     Provides:
-        -   def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
+        -  def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
 
     Super Class:
         Toolkit

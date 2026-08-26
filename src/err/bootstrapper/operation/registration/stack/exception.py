@@ -22,7 +22,7 @@ __all__ = [
 class StackRegistrationException(RegistrationException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that registrationing onto a Stack failed.

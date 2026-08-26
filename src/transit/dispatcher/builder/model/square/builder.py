@@ -23,10 +23,10 @@ from util import LoggingLevelRouter
 class SquareBuilder(ModelBuilder[Square]):
     """
     Role
-        -   Build Pipeline
-        -   Integrity Management
-        -   Consistency Assurance
-        -   Workflow Owner
+        -  Build Pipeline
+        -  Integrity Management
+        -  Consistency Assurance
+        -  Workflow Owner
 
    Responsibilities:
         1.  Ensure a new Square instance is born safe and reliable.
@@ -35,7 +35,7 @@ class SquareBuilder(ModelBuilder[Square]):
             builder_toolkit: Optional[SquareBuilderToolkit]
 
     Provides:
-        -   def execute(self, blueprint: SquareBlueprint) -> BuildResult[Square]
+        -  def execute(self, blueprint: SquareBlueprint) -> BuildResult[Square]
 
      Super Class:
          ModelBuilder
@@ -63,8 +63,8 @@ class SquareBuilder(ModelBuilder[Square]):
 
         Action:
             1.  Send an exception chain in the BuildResult if either
-                    -   The SquareBlueprint object is flagged unsafe.
-                    -   The assembler does not return a product.
+                    -  The SquareBlueprint object is flagged unsafe.
+                    -  The assembler does not return a product.
             2.  Otherwise, cast the assembler product as a Square then, send in the success result,
         Args:
             blueprint: SquareBlueprint

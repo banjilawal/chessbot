@@ -24,7 +24,7 @@ __all__ = [
 class NodeNullException(StateModelNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required Node is null.

@@ -22,10 +22,10 @@ from assurance import BoardTeamBinderIntegrityChecker
 class BoardTeamBinderValidator(ModelValidator[BoardBinder]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Validation Process Owner
+        -  Transaction Worker
+        -  Integrity Maintenance
+        -  Consistency Assurance
+        -  Validation Process Owner
 
     Responsibilities:
         1.  Ensure a BoardTeamBinder instance is certified safe, reliable and consistent
@@ -34,7 +34,7 @@ class BoardTeamBinderValidator(ModelValidator[BoardBinder]):
     Attributes:
 
     Properties:
-        -   def validate(
+        -  def validate(
                     candidate: Any,
                     integrityChecker : BoardTeamBinderToolSe,
             ) -> ValidationResult[BoardTeamBinder]:
@@ -56,9 +56,9 @@ class BoardTeamBinderValidator(ModelValidator[BoardBinder]):
         Action:
             1.  Send an exception in the ValidationResult any of these
                 conditions occur.
-                    -   candidate is null.
-                    -   It's not a BoardTeamBinder.
-                    -   The boardTeamBinder's payload is flagged unsafe.
+                    -  candidate is null.
+                    -  It's not a BoardTeamBinder.
+                    -  The boardTeamBinder's payload is flagged unsafe.
             3.  Otherwise, Send the success result.
         Args:
             candidate: Any

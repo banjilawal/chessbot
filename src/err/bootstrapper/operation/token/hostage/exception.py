@@ -23,7 +23,7 @@ __all__ = [
 class HostageTokenOperationBootstrapperException(TokenOperationBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Hostage tokenfailed.

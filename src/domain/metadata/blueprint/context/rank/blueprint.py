@@ -20,7 +20,7 @@ from domain.model import RankContext, Blueprint, Game, Player
 class RankContextBlueprint(Blueprint[RankContext]):
     """
     Role:
-        -   Container
+        -  Container
 
     Responsibilities:
         1.  Provides values for instantiating a RankContext instance.

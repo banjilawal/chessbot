@@ -24,10 +24,10 @@ from __future__ import annotations
 class RankPersonaValidator(Validator[Rank]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Process Runner
+        -  Transaction Worker
+        -  Integrity Maintenance
+        -  Consistency Assurance
+        -  Process Runner
 
     Responsibilities:
         1.  Ensure a Rank has the correct persona.
@@ -35,7 +35,7 @@ class RankPersonaValidator(Validator[Rank]):
     Attributes:
 
     Provides:
-        -   def validate(
+        -  def validate(
                     cls,
                     rank: Any,
                     persona_service: PersonaService,
@@ -45,25 +45,25 @@ class RankPersonaValidator(Validator[Rank]):
         Validator
         
     Notes:
-        -   Assumes the rank param has already been validated. Should only
+        -  Assumes the rank param has already been validated. Should only
             be called inside RankValidator.
             
         IntegrityWorker Responsibilities:
-            -   IntegrityWorkers are validators and external services and validators.
-            -   IntegrityWorkers simplify and modularize dependency management.
-            -   They decrease the number of imports.
-            -   Simplify Builder/Validator entry point signatures.
-            -   This is too large for a simple RankIntegrityWorker.
-            -   Single files
+            -  IntegrityWorkers are validators and external services and validators.
+            -  IntegrityWorkers simplify and modularize dependency management.
+            -  They decrease the number of imports.
+            -  Simplify Builder/Validator entry point signatures.
+            -  This is too large for a simple RankIntegrityWorker.
+            -  Single files
             
         RankPersonaValidator is Not an IntegrityWorker:
-            -   RankPersonaValidator lives inside the *.rank.validator package.
-            -   Highly cohesive with RankValidator.
-            -   Don't want any cyclic dependencies with RankTool.persona_service.
-            -   Requires its package.
+            -  RankPersonaValidator lives inside the *.rank.validator package.
+            -  Highly cohesive with RankValidator.
+            -  Don't want any cyclic dependencies with RankTool.persona_service.
+            -  Requires its package.
         
         Contractors:
-            -   If I need to writer other validators for ranks I'put them all in a contractors
+            -  If I need to writer other validators for ranks I'put them all in a contractors
                 package.
     """
     
@@ -79,9 +79,9 @@ class RankPersonaValidator(Validator[Rank]):
 
         Action:
             1.  Send an exception chain in the ValidationResult
-                    -   the candidate does not exist.
-                    -   the candidate is not a Rank.
-                    -   Any integrity worker raises a failed test.
+                    -  the candidate does not exist.
+                    -  the candidate is not a Rank.
+                    -  Any integrity worker raises a failed test.
             2.  Otherwise, after the candidate is cast to a Rank, send the success result.
         Args:
             rank: Any

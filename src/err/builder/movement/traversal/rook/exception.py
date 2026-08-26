@@ -24,7 +24,7 @@ __all__ = [
 class RookTraversalPatternBuilderException(TraversalPatternBuilderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required RookTraversalPatternBuilder failed.

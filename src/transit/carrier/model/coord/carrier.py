@@ -19,7 +19,7 @@ from carrier import ModelCarrier
 class CoordCarrier(ModelCarrier[Coord]):
     """
     Role:
-        -   Data Transport
+        -  Data Transport
 
     Responsibilities:
         2.  Transports either a Coord or its Blueprint.
@@ -34,7 +34,7 @@ class CoordCarrier(ModelCarrier[Coord]):
         size: int
 
     Provides:
-        -   extract_blueprint() -> Optional[CoordBlueprint]
+        -  extract_blueprint() -> Optional[CoordBlueprint]
 
     Super Class:
         ModelCarrier

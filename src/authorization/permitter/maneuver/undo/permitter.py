@@ -35,7 +35,7 @@ class TokenUndoMovePermitter(TokenManeuverPermitter):
     Attributes:
 
     Provides:
-        -   def execute(
+        -  def execute(
                     cls,
                     token: Token,
                     token_validator: TokenValidator | None = None,
@@ -58,10 +58,10 @@ class TokenUndoMovePermitter(TokenManeuverPermitter):
 
         Action:
             1.  Send an exception chain in the AnalysisResult if:
-                    -   The readiness_analyzer aborts.
+                    -  The readiness_analyzer aborts.
             2.  Deny UndoMove permission if any of the following occur.
-                    -   The token is not free.
-                    -   It has already undone one move during its turn.
+                    -  The token is not free.
+                    -  It has already undone one move during its turn.
             3.  If none of the conditions in (2) apply approve the request.
         Args:
             requestor: Token,

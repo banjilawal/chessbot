@@ -24,7 +24,7 @@ __all__ = [
 class RankQuotaFullException(TokenStackPushException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that pushing onto a TokenStack failed because theere were no openings for the token's rank.

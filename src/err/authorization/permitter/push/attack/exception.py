@@ -24,7 +24,7 @@ __all__ = [
 class AttackPushPermitterException(PusherPermitterException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a AttackPushPermitter did not approve the request.

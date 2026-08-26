@@ -26,7 +26,7 @@ from err import BinderBuilderBootstrapperException
 class EdgeBinderBuilderBootstrapperException(BinderBuilderBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a EdgeBinderBuilderBootstrapper was aborted by an exception.

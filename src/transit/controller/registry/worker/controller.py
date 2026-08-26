@@ -23,9 +23,9 @@ from err import OperationNullException, WorkerRegistryControllerException
 class WorkerRegistryController(Controller[WorkerRegistry]):
     """
     Role
-        -   Controller
-        -   Integrity Maintenance
-        -   Consistency Assurance
+        -  Controller
+        -  Integrity Maintenance
+        -  Consistency Assurance
     
     Responsibilities:
         1.  Ensure WorkerRegistry stays consistent during and after operations.
@@ -35,10 +35,10 @@ class WorkerRegistryController(Controller[WorkerRegistry]):
         toolkit: WorkerRegistryToolkit
     
     Provides:
-        -   def find_worker(domain: str, operation_name: str) -> SearchResult[List[Operation]]:
-        -   def domain_workers(domain: str) -> SearchResult[List[dict[str, Operation]]]:
+        -  def find_worker(domain: str, operation_name: str) -> SearchResult[List[Operation]]:
+        -  def domain_workers(domain: str) -> SearchResult[List[dict[str, Operation]]]:
         
-        -   def register_worker(
+        -  def register_worker(
                     worker: Operation,
                     null_exception: OperationNullException,
             ) -> InsertionResult:
@@ -83,8 +83,8 @@ class WorkerRegistryController(Controller[WorkerRegistry]):
         
         Action:
             1.  Send an exception chain in the InsertionResult if any of the following occur.
-                    -   worker is flagged unsafe.
-                    -   Writing the worker into the registry raises an error.
+                    -  worker is flagged unsafe.
+                    -  Writing the worker into the registry raises an error.
             2.  Otherwise, add the entry to the registry and return a success result.
         Args:
             worker: Operation

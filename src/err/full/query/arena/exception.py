@@ -25,7 +25,7 @@ from err import QueryFullException
 class ArenaQueryFullException(QueryFullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required ArenaQuery is full.

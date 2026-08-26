@@ -19,8 +19,8 @@ from domain.structure.register import SquareRegister
 class SquareRegisterSuite(RegisterOperationSuite[SquareRegister]):
     """
     Role:
-        -   Dependency Container
-        -   Dynamic Dependency Provider
+        -  Dependency Container
+        -  Dynamic Dependency Provider
 
     Responsibilities:
         1.  Contains the operations that can be performed on a SquareRegister.

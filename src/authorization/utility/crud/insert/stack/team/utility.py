@@ -21,7 +21,7 @@ from domain import TeamInsertContext
 class TeamStackInsertPermissionUtility(StackInsertPermissionUtility[TeamInsertContext]):
     """
     Role:
-        -   Utility
+        -  Utility
 
     Responsibilities:
         1.  Bundles resources the TeamInsertAuthorizer needs to evaluate a TeamInsertRequest.

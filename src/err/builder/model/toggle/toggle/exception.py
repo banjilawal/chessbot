@@ -24,7 +24,7 @@ __all__ = [
 class VectorToggleRegisterBuilderException(RegisterBuilderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a VectorToggleRegisterBuilder failure.

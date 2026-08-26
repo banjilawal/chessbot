@@ -24,7 +24,7 @@ __all__ = [
 class TargetVectorSetEmptyException(SpaceEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required TargetVectorSet is empty.

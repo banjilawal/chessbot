@@ -24,7 +24,7 @@ __all__ = [
 class ManeuverOffsetPatternCarrierNullException(PawnOffsetPatternCarrierNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an error occurred in an ManeuverOffsetPatternCarrier is null.

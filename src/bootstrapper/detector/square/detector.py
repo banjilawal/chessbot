@@ -33,14 +33,14 @@ class SquareColliderBootstrapper(DetectorBootstrapper[Square]):
          
      Attributes:
      Provides:
-         -   detect(
+         -  detect(
                     cls,
                     target: Square,
                     square_stack: SquareStackService,
             ) -> CollisionReport
             
      Super:
-        -   Detector[T]
+        -  Detector[T]
     """
     
     @classmethod

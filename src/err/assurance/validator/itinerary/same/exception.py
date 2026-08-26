@@ -24,7 +24,7 @@ __all__ = [
 class ItinerarySourceEqualsDestinationException(ItineraryValidatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an Itinerary's source and destination are the same.

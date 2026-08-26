@@ -23,7 +23,7 @@ __all__ = [
 class SchemaException(ToolkitException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Schema encountered an error.

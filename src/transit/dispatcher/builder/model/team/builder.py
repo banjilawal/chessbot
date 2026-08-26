@@ -23,10 +23,10 @@ from util import LoggingLevelRouter
 class TeamBuilder(ModelBuilder[Team]):
     """
     Role
-        -   Build Pipeline
-        -   Integrity Management
-        -   Consistency Assurance
-        -   Workflow Owner
+        -  Build Pipeline
+        -  Integrity Management
+        -  Consistency Assurance
+        -  Workflow Owner
 
    Responsibilities:
         1.  Ensure a new Team instance is born safe and reliable.
@@ -35,7 +35,7 @@ class TeamBuilder(ModelBuilder[Team]):
             builder_toolkit: Optional[TeamBuilderToolkit]
 
     Provides:
-        -   def execute(self, blueprint: TeamBlueprint) -> BuildResult[Team]
+        -  def execute(self, blueprint: TeamBlueprint) -> BuildResult[Team]
 
      Super Class:
          ModelBuilder
@@ -63,8 +63,8 @@ class TeamBuilder(ModelBuilder[Team]):
 
         Action:
             1.  Send an exception chain in the BuildResult if either
-                    -   The TeamBlueprint object is flagged unsafe.
-                    -   The assembler does not return a product.
+                    -  The TeamBlueprint object is flagged unsafe.
+                    -  The assembler does not return a product.
             2.  Otherwise, cast the assembler product as a Team then, send in the success result,
         Args:
             blueprint: TeamBlueprint

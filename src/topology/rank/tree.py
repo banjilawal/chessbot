@@ -19,7 +19,7 @@ T = TypeVar("T")
 class Topology(ABC, Generic[T]):
     """
     Role:
-        -   Data Holder
+        -  Data Holder
 
     Responsibilities:
         1.  Positions a projected from a Rank's signature.

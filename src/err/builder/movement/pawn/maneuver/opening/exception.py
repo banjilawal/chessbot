@@ -24,7 +24,7 @@ __all__ = [
 class OpeningManeuverOffsetPatternBuilderException(ManeuverOffsetPatternBuilderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an error occurred in an OpeningManeuverOffsetPatternBuilder failed.

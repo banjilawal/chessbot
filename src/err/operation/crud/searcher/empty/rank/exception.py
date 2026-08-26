@@ -24,7 +24,7 @@ __all__ = [
 class RankSearchResultEmptyException(SearchResultEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a RankSearcher did not find the required item.

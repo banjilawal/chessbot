@@ -23,11 +23,11 @@ T = TypeVar("T", bound="StateModel")
 class StackService(DomainObjectCollection, ABC, Generic[T]):
     """
     Role:
-        -   Data layer
-        -   CRUD controller.
-        -   ACID compliance.
-        -   Microservice API
-        -   Interface
+        -  Data layer
+        -  CRUD controller.
+        -  ACID compliance.
+        -  Microservice API
+        -  Interface
 
     Responsibilities:
         1.  Preserve consistency during updates and deletes.
@@ -39,19 +39,19 @@ class StackService(DomainObjectCollection, ABC, Generic[T]):
         schema: str
 
     Provides:
-        -   id: int
-        -   schema: str
-        -   items() -> List[T]
-        -   size() -> int
-        -   iterator() -> Iterator[T]
-        -   is_empty() -> bool
-        -   current_item(self) -> T
-        -   integrity_service() -> Microservice[T]
-        -   context_service(self) -> QueryService[T]
-        -   push(item: T) -> InsertionResult
-        -   pop() -> DeletionResult[T]
-        -   delete_by_id(id: int) -> DeletionResult[T]
-        -   context(collider_candidates: List[T], context: Context[T]) -> SearchResult[List[T]]
+        -  id: int
+        -  schema: str
+        -  items() -> List[T]
+        -  size() -> int
+        -  iterator() -> Iterator[T]
+        -  is_empty() -> bool
+        -  current_item(self) -> T
+        -  integrity_service() -> Microservice[T]
+        -  context_service(self) -> QueryService[T]
+        -  push(item: T) -> InsertionResult
+        -  pop() -> DeletionResult[T]
+        -  delete_by_id(id: int) -> DeletionResult[T]
+        -  context(collider_candidates: List[T], context: Context[T]) -> SearchResult[List[T]]
 
     Super class:
     """

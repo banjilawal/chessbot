@@ -25,7 +25,7 @@ __all__ = [
 class ExcessScalarContextFlagsException(ExcessContextFlagsException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating too many ScalarSearchContext flags were enabled.

@@ -23,7 +23,7 @@ __all__ = [
 class FormationColliderBootstrapperException(ColliderBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a FormationCollision step failed.

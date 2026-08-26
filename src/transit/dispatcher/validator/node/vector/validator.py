@@ -19,10 +19,10 @@ from util import LoggingLevelRouter
 class VectorNodeValidator(NodeValidator):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Validation Process Owner
+        -  Transaction Worker
+        -  Integrity Maintenance
+        -  Consistency Assurance
+        -  Validation Process Owner
 
     Responsibilities:
         1.  Ensure a Node instance is certified safe, reliable and consistent before use.
@@ -31,7 +31,7 @@ class VectorNodeValidator(NodeValidator):
         integrity_checker: VectorNodeIntegrityChecker
 
     Provides:
-        -   execute(self, candidate: Any) -> ValidationResult
+        -  execute(self, candidate: Any) -> ValidationResult
 
     Super Class:
         Validator

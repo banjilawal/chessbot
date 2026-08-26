@@ -23,7 +23,7 @@ __all__ = [
 class VectorBuildRouteException(BuildRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Vector build routes is missing.

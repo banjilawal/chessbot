@@ -22,7 +22,7 @@ from err import (
 class RankNullExceptionRoster(ModelNullExceptionRoster[Rank]):
     """
     Role:
-        -   Metadata
+        -  Metadata
 
     Responsibilities:
         1. Catalog of NullExceptions associated with a Rank.

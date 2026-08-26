@@ -23,7 +23,7 @@ __all__ = [
 class PrimingNodeAssemblyException(AssemblyPrimerException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a NodeAssembly priming step failed.

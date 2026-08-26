@@ -22,7 +22,7 @@ __all__ = [
 class ArenaAssemblyException(AssemblyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an Arena assembly failed.

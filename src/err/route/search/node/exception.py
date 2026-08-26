@@ -22,7 +22,7 @@ __all__ = [
 class NodeSearchRouteException(SearchRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that one of Node search routes is missing.

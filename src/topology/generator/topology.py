@@ -23,19 +23,19 @@ from util import LoggingLevelRouter
 class VectorSequenceGenerator:
     """
     Role:
-        -   Computation
-        -   Integrity Assurance
+        -  Computation
+        -  Integrity Assurance
 
     Responsibilities:
         Define x_step and slope for getting the next vector northeast of origin.
-            -   x_step = -1,
-            -   slope = 1
+            -  x_step = -1,
+            -  slope = 1
 
     Attributes:
         math: Optional[MathToolkit]
 
     Provides:
-        -   def execute(specification: Recurrence) -> ComputationResult[VectorSet]
+        -  def execute(specification: Recurrence) -> ComputationResult[VectorSet]
         
     Super Class:
         QuadrantMapFunction

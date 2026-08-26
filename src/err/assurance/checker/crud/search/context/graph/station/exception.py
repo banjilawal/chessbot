@@ -27,7 +27,7 @@ from err import GraphContextCheckerException
 class StationContextCheckerException(GraphContextCheckerException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a StationContextChecker failed.

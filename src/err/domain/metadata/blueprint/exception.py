@@ -24,7 +24,7 @@ __all__ = [
 class BlueprintException(DomainMetadataException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating Blueprint encountered an error.

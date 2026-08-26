@@ -20,7 +20,7 @@ from domain.structure.register import VectorRegister
 class VectorRegisterBlueprint(RegisterBlueprint[VectorRegister]):
     """
     Role:
-        -   Container
+        -  Container
 
     Responsibilities:
         1.  Provides values for instantiating a VectorRegister object.

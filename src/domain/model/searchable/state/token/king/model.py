@@ -17,7 +17,7 @@ from util import IdFactory
 class KingToken(Token):
     """
     Role:
-        -   Stateful Data-Holder
+        -  Stateful Data-Holder
 
     Responsibilities:
         1. Token that can be checkmated not captured.

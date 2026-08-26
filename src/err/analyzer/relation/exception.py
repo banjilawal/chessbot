@@ -24,7 +24,7 @@ __all__ = [
 class RelationAnalyzerException(AnalyzerException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a relation analyzer from completing.

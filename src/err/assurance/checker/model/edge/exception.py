@@ -24,7 +24,7 @@ __all__ = [
 class EdgeIntegrityCheckerException(ModelIntegrityCheckerException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a EdgeIntegrityChecker failed.

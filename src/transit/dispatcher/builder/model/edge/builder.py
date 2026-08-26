@@ -23,10 +23,10 @@ from util import LoggingLevelRouter
 class EdgeBuilder(ModelBuilder[Edge]):
     """
     Role
-        -   Build Pipeline
-        -   Integrity Management
-        -   Consistency Assurance
-        -   Workflow Owner
+        -  Build Pipeline
+        -  Integrity Management
+        -  Consistency Assurance
+        -  Workflow Owner
 
    Responsibilities:
         1.  Ensure a new Edge instance is born safe and reliable.
@@ -35,7 +35,7 @@ class EdgeBuilder(ModelBuilder[Edge]):
             builder_toolkit: Optional[EdgeBuilderToolkit]
 
     Provides:
-        -   def execute(self, blueprint: EdgeBlueprint) -> BuildResult[Edge]
+        -  def execute(self, blueprint: EdgeBlueprint) -> BuildResult[Edge]
 
      Super Class:
          ModelBuilder
@@ -63,8 +63,8 @@ class EdgeBuilder(ModelBuilder[Edge]):
 
         Action:
             1.  Send an exception chain in the BuildResult if either
-                    -   The EdgeBlueprint object is flagged unsafe.
-                    -   The assembler does not return a product.
+                    -  The EdgeBlueprint object is flagged unsafe.
+                    -  The assembler does not return a product.
             2.  Otherwise, cast the assembler product as a Edge then, send in the success result,
         Args:
             blueprint: EdgeBlueprint

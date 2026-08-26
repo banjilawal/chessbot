@@ -24,7 +24,7 @@ __all__ = [
 class BoardSearchRouteException(SearchRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that one of Board search routes is missing.

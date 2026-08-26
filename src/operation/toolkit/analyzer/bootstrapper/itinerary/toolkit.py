@@ -19,7 +19,7 @@ from transit.dispatcher.validator import SquareValidationDispatcher, TokenValida
 class ItineraryToolkit(AnalyzerBootstrapperToolkit[Itinerary]):
     """
     Role:
-        -   Container
+        -  Container
 
     Responsibilities:
         1.  Collection of workers and services that are required for Arena tasks.

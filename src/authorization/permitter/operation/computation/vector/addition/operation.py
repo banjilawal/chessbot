@@ -23,7 +23,7 @@ from util import LoggingLevelRouter
 class AddVector(Computation[VectorToggle]):
     """
     Role:
-        -   Computation
+        -  Computation
 
     Responsibilities:
         1.  Compute the contents of a VectorRegister to each other producing either a new Vector or a Coord.
@@ -32,7 +32,7 @@ class AddVector(Computation[VectorToggle]):
             permitter: Optional[AddVectorPermitter]
             
     Provides:
-        -   def execute(self, request: AddVectorRequest) -> ComputationResult[VectorToggle]
+        -  def execute(self, request: AddVectorRequest) -> ComputationResult[VectorToggle]
 
     Super Class:
         Computation
@@ -83,9 +83,9 @@ class AddVector(Computation[VectorToggle]):
         Action:
             1.  Send an exception chain in the ComputationResult if any of
                 these conditions occur
-                    -   The operand is null
-                    -   The operand is flagged unsafe.
-                    -   Building the other type fails.
+                    -  The operand is null
+                    -  The operand is flagged unsafe.
+                    -  Building the other type fails.
             2.  Otherwise, send the success result.
         Args:
             scalar: Scalar,

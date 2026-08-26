@@ -23,7 +23,7 @@ __all__ = [
 class ScalarColliderException(ColliderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a ScalarCollision step failed.

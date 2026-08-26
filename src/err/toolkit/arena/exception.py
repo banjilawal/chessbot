@@ -22,7 +22,7 @@ __all__ = [
 class ArenaException(ToolkitException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an Arena encountered an error.

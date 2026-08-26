@@ -18,7 +18,7 @@ from domain.model import Blueprint, Arena, Schema, ArenaBinder
 class ArenaBinderBlueprint(ModelBlueprint[ArenaBinder]):
     """
     Role:
-        -   Container
+        -  Container
 
     Responsibilities:
         1.  Provides values for instantiating an ArenaBinderBlueprint object.

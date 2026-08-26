@@ -17,9 +17,9 @@ from domain.model import Square
 class SquareService(Microservice[Square]):
     """
     Role:
-        -   API Layer
-        -   Microservice Worker
-        -   Integrity Lifecycle Manager
+        -  API Layer
+        -  Microservice Worker
+        -  Integrity Lifecycle Manager
      
     Responsibilities:
         1.  Microservice for all Square operations.
@@ -33,13 +33,13 @@ class SquareService(Microservice[Square]):
         controller: SquareBuilder
 
     Provides:
-        -   begin_square_visit(
+        -  begin_square_visit(
                     square: Square,
                     visitor: Token,
                     token_service: TokenService = TokenService(),
             ) -> UpdateResult[Square]
             
-        -   end_square_visit(square: Square) -> DeletionResult[Token]
+        -  end_square_visit(square: Square) -> DeletionResult[Token]
             
             
     Super Class:

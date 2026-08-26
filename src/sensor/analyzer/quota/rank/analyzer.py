@@ -34,7 +34,7 @@ class RankQuotaAnalyzer(Analyzer):
         carrier_validator: QuotaAnalyzerBootstrapper
 
     Provides:
-        -   execute(rank: Rank, token_stack: TokenStackService,) -> AnalysisResult[RankQuotaReport]
+        -  execute(rank: Rank, token_stack: TokenStackService,) -> AnalysisResult[RankQuotaReport]
 
     Super:
         Analyzer
@@ -56,8 +56,8 @@ class RankQuotaAnalyzer(Analyzer):
         
         Actions:
             1.  Send an exception chain in the AnalysisResult if:
-                    -   The rank does not pass a validation check.
-                    -   The rank search fails.
+                    -  The rank does not pass a validation check.
+                    -  The rank search fails.
             2.  Otherwise, send the success result.
         Args:
             rank: Rank

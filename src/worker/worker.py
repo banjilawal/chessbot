@@ -20,8 +20,8 @@ T = TypeVar("T")
 class Worker(ABC,):
     """
     Role
-        -   Worker
-        -   Stateless
+        -  Worker
+        -  Stateless
 
     Responsibilities:
         1.  Execute a job on a Data-Holder that produces a TransactionResult.
@@ -29,7 +29,7 @@ class Worker(ABC,):
     Attributes:
 
     Provides:
-        -   work(*args, **kwargs) -> Result[Any]
+        -  work(*args, **kwargs) -> Result[Any]
 
     super Class:
     """

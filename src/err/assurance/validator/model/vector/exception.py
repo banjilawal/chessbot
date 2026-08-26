@@ -24,7 +24,7 @@ __all__ = [
 class VectorValidatorException(ModelValidatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a VectorValidator failed.

@@ -24,7 +24,7 @@ __all__ = [
 class OpeningSquareCollisionException(TokenCollisionException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that two tokens share an opening square that should be unique.

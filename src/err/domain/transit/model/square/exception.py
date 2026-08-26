@@ -24,7 +24,7 @@ __all__ = [
 class SquareCarrierException(ModelCarrierException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a SquareCarrier encountered an error.

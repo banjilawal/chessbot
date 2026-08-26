@@ -24,7 +24,7 @@ __all__ = [
 class SoutheastQuadrantRecurrenceCarrierNullException(QuadrantRecurrenceCarrierNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required SoutheastQuadrantRecurrenceCarrier is null.

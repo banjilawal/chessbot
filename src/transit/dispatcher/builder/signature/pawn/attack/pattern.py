@@ -16,8 +16,8 @@ from topology.pattern import PawnSignature
 class AttackSignature(PawnSignature):
     """
     Role:
-        -   Data Holder
-        -   Immutability
+        -  Data Holder
+        -  Immutability
 
     Responsibilities:
         1.  Determine potential attack destinations from PawnToken's current position.

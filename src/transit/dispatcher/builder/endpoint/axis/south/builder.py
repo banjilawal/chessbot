@@ -23,8 +23,8 @@ from util import LoggingLevelRouter
 class SouthAxisEndpointBuilder:
     """
     Role:
-        -   Builder
-        -   Integrity Management
+        -  Builder
+        -  Integrity Management
 
     Responsibilities:
         1.  Create a VectoRegister for an Axis endpoints.
@@ -35,7 +35,7 @@ class SouthAxisEndpointBuilder:
         vector_validator: Optional[VectorValidator]
 
     Provides:
-        -   def execute() -> BuildResult[VectorRegister]
+        -  def execute() -> BuildResult[VectorRegister]
 
     Super Class:
     """

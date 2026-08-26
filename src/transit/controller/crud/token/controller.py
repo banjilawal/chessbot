@@ -24,7 +24,7 @@ from util import LoggingLevelRouter
 class TokenCrudController(CrudController[Token]):
     """
     Role:
-        -   CRUD controller
+        -  CRUD controller
 
     Responsibilities:
         1.  Oversees all CRUD operations on a TokenStack
@@ -36,9 +36,9 @@ class TokenCrudController(CrudController[Token]):
         searcher: TokenSearcher
 
     Provides:
-        -   delete(request: DeletionRequest) -> DeletionResult[Token]:
-        -   pop(request: PopRequest) -> DeletionResult[Token]:
-        -   push(request: PushRequest) -> InsertionResult:
+        -  delete(request: DeletionRequest) -> DeletionResult[Token]:
+        -  pop(request: PopRequest) -> DeletionResult[Token]:
+        -  push(request: PushRequest) -> InsertionResult:
 
     Super Class:
         CrudController

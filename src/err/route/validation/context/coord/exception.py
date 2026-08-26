@@ -26,7 +26,7 @@ from err import ContextNoValidationRouteException
 class CoordContextValidationRouteException(ContextNoValidationRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that one of CoordContext validation routes is missing.

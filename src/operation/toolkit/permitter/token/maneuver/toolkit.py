@@ -21,7 +21,7 @@ from transit.dispatcher.validator import SquareValidationDispatcher, TokenValida
 class TokenManeuverToolkit(PermitterToolkit):
     """
     Role:
-        -   Dependency Management
+        -  Dependency Management
 
     Responsibilities:
         1.  Aggregates workers and services TokenManeuverPermitter requires for its tasks.

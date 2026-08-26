@@ -19,7 +19,7 @@ from carrier import ModelCarrier
 class SquareCarrier(ModelCarrier[Square]):
     """
     Role:
-        -   Data Transport
+        -  Data Transport
 
     Responsibilities:
         2.  Transports either a Square or its Blueprint.
@@ -35,7 +35,7 @@ class SquareCarrier(ModelCarrier[Square]):
         size: int
 
     Provides:
-        -   extract_blueprint() -> Optional[SquareBlueprint]
+        -  extract_blueprint() -> Optional[SquareBlueprint]
 
     Super Class:
         ModelCarrier

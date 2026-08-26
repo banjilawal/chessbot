@@ -20,7 +20,7 @@ from artifcat.report.promotion.manager.state import PromotionDecision
 class PromotionApprovalManagerReport(Report):
     """
     Role:
-        -   Test results
+        -  Test results
 
     Responsibilities:
         1.  Presents a token's promotion on an opening square.
@@ -35,8 +35,8 @@ class PromotionApprovalManagerReport(Report):
         is_denied: bool
         
     Provides:
-        -   def approve_promotion(cls, pawn: PawnToken) -> PromotionApprovalManagerReport:
-        -   def deny_promotion(cls, exception: Exception) -> PromotionApprovalManagerReport:
+        -  def approve_promotion(cls, pawn: PawnToken) -> PromotionApprovalManagerReport:
+        -  def deny_promotion(cls, exception: Exception) -> PromotionApprovalManagerReport:
     Super Class:
         Report
     """

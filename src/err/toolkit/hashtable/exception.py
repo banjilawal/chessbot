@@ -23,7 +23,7 @@ __all__ = [
 class HashtableException(ToolkitException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Hashtable encountered an error.

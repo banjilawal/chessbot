@@ -24,7 +24,7 @@ from err import VectorOperatorException
 class VectorAdditionException(VectorOperatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an error occurred using vector addition

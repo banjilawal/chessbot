@@ -25,7 +25,7 @@ __all__ = [
 class PromotionLevelTesterException(TesterException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a PromotionLevelTester encountered an error.

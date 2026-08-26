@@ -19,8 +19,8 @@ from carrier import ModelCarrier
 class ScalarCarrier(ModelCarrier[Scalar]):
     """
     Role:
-        -   Addressing
-        -   Data-Holder
+        -  Addressing
+        -  Data-Holder
     
     Responsibilities:
         1.  Entity for transporting either a Scalar or ScalarBlueprint

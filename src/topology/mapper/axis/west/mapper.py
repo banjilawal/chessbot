@@ -19,7 +19,7 @@ from topology.space import WestAxis
 class WestAxisMapFunction(AxisMappingFunction[WestAxis]):
     """
     Role:
-        -   Computation
+        -  Computation
 
     Responsibilities:
         Define delta_vector for getting the next vector on west of origin.

@@ -23,7 +23,7 @@ __all__ = [
 class SchemaHashtableException(HashtableException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a SchemaHashtable encountered an error.

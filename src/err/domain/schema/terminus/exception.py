@@ -24,7 +24,7 @@ __all__ = [
 class TerminusException(SchemaException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Terminus encountered an error.

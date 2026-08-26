@@ -24,7 +24,7 @@ __all__ = [
 class EdgeCarrierException(ModelCarrierException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a EdgeCarrier encountered an error.

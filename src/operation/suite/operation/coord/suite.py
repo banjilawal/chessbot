@@ -20,8 +20,8 @@ from domain.model import Coord
 class CoordOperationSuite(OperationSuite[Coord]):
     """
     Role:
-        -   Dependency Container
-        -   Dynamic Dependency Provider
+        -  Dependency Container
+        -  Dynamic Dependency Provider
 
     Responsibilities:
         1.  Contains the operations that can be performed on a Coord.
@@ -37,8 +37,8 @@ class CoordOperationSuite(OperationSuite[Coord]):
         OperationSuite
 
     Notes:
-        -   Suite for an empty class which makes managing toolkits easier.
-        -   Any toolkits for a suite should be a Suite subclass.
+        -  Suite for an empty class which makes managing toolkits easier.
+        -  Any toolkits for a suite should be a Suite subclass.
     """
     
     def __init__(

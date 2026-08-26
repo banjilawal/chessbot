@@ -26,7 +26,7 @@ from err import BinderBuilderBootstrapperException
 class TokenBinderBuilderBootstrapperException(BinderBuilderBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a TokenBinderBuilderBootstrapper was aborted by an exception.

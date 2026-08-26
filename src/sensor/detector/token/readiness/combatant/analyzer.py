@@ -19,8 +19,8 @@ from util import LoggingLevelRouter
 class CombatantReadinessAnalyzer(Analyzer):
     """
     Role:
-        -   Analysis Factory
-        -   Consistency maintenance
+        -  Analysis Factory
+        -  Consistency maintenance
 
 
     Responsibilities:
@@ -31,7 +31,7 @@ class CombatantReadinessAnalyzer(Analyzer):
     Attributes:
 
     Provides:
-        -   def execute(
+        -  def execute(
                     subject: CombatantToken,
             ) -> AnalysisResult[TokenReadinessReport]
     Parent:
@@ -52,7 +52,7 @@ class CombatantReadinessAnalyzer(Analyzer):
               AnalysisResult[TokenFreedomReport]
         Raises:
         Notes:
-            -   Performs no integrity checks should not be called directly.
+            -  Performs no integrity checks should not be called directly.
         """
         method = f"{cls.__name__}.analyze"
         

@@ -24,7 +24,7 @@ __all__ = [
 class OpeningManeuverBasisEmptyException(ManeuverBasisEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required OpeningManeuverBasis is empty.

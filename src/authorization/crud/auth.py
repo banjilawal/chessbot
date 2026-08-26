@@ -24,7 +24,7 @@ T = TypeVar("T", bound="CrudRequest")
 class CrudAuthorizer(RequestAuthorizer[T], ABC, Generic[T]):
     """
     Role
-        -   Authorization
+        -  Authorization
 
     Responsibilities:
         1.  Check if a CrudRequest satisfies integrity and consistency requirements.
@@ -33,7 +33,7 @@ class CrudAuthorizer(RequestAuthorizer[T], ABC, Generic[T]):
         utility: CrudPermissionUtility[T]
 
     Provides:
-        -   execute(self, request: T) -> AuthorizationDecision
+        -  execute(self, request: T) -> AuthorizationDecision
 
     Super Class:
     """

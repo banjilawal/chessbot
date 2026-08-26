@@ -19,7 +19,7 @@ from system import GameColorValidator, IdentityService, NumberValidator
 class TokenContextIntegrityWorkers:
     """
     Role:
-        -   Container
+        -  Container
 
     Responsibilities:
         1.  Reduces the number params in TokenContext Builder and Validator entry points.

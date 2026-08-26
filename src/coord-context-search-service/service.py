@@ -18,8 +18,8 @@ from logic.coord import (
 class CoordContextService(IntegrityMicroservice[CoordContext]):
     """
     Role:
-        -   Microservice API
-        -   Stateless Integrity Lifecycle Manager
+        -  Microservice API
+        -  Stateless Integrity Lifecycle Manager
 
     Responsibilities:
         1.  Mutates CoordContext instances

@@ -19,9 +19,9 @@ from topology.space import (
 class QuadrantReservoir(SpaceReservoir[Quadrant]):
     """
     Role:
-        -   Selection
-        -   Iterator
-        -   Routing Mask
+        -  Selection
+        -  Iterator
+        -  Routing Mask
 
     Responsibilities:
         1.  Implement SpaceReservoir for type-preserving iteration through an origin's quadrants.

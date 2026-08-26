@@ -24,7 +24,7 @@ __all__ = [
 class RecurrenceBlueprintNullException(ChessException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required RecurrenceBlueprint is null.

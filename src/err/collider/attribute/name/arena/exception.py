@@ -24,7 +24,7 @@ __all__ = [
 class ArenaNameCollisionException(NameCollisionException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that two arenas share an name that should be unique.

@@ -23,10 +23,10 @@ from util import LoggingLevelRouter
 class TokenBuilder(ModelBuilder[Token]):
     """
     Role
-        -   Build Pipeline
-        -   Integrity Management
-        -   Consistency Assurance
-        -   Workflow Owner
+        -  Build Pipeline
+        -  Integrity Management
+        -  Consistency Assurance
+        -  Workflow Owner
 
    Responsibilities:
         1.  Ensure a new Token instance is born safe and reliable.
@@ -35,7 +35,7 @@ class TokenBuilder(ModelBuilder[Token]):
             builder_toolkit: Optional[TokenBuilderToolkit]
 
     Provides:
-        -   def execute(self, blueprint: TokenBlueprint) -> BuildResult[Token]
+        -  def execute(self, blueprint: TokenBlueprint) -> BuildResult[Token]
 
      Super Class:
          ModelBuilder
@@ -64,8 +64,8 @@ class TokenBuilder(ModelBuilder[Token]):
 
         Action:
             1.  Send an exception chain in the BuildResult if either
-                    -   The TokenBlueprint object is flagged unsafe.
-                    -   The assembler does not return a product.
+                    -  The TokenBlueprint object is flagged unsafe.
+                    -  The assembler does not return a product.
             2.  Otherwise, cast the assembler product as a Token then, send in the success result,
         Args:
             blueprint: TokenBlueprint

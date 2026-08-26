@@ -26,7 +26,7 @@ from err import BinderTokenOperationException
 class HostageBinderTokenOperationException(BinderTokenOperationException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a HostageBinder tokenfailed.

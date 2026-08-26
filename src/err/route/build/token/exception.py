@@ -23,7 +23,7 @@ __all__ = [
 class TokenBuildRouteException(BuildRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Token build routes is missing.

@@ -23,10 +23,10 @@ from util import LoggingLevelRouter
 class BoardBuilder(ModelBuilder[Board]):
     """
     Role
-        -   Build Pipeline
-        -   Integrity Management
-        -   Consistency Assurance
-        -   Workflow Owner
+        -  Build Pipeline
+        -  Integrity Management
+        -  Consistency Assurance
+        -  Workflow Owner
 
    Responsibilities:
         1.  Ensure a new Board instance is born safe and reliable.
@@ -35,7 +35,7 @@ class BoardBuilder(ModelBuilder[Board]):
             builder_toolkit: Optional[BoardBuilderToolkit]
 
     Provides:
-        -   def execute(self, blueprint: BoardBlueprint) -> BuildResult[Board]
+        -  def execute(self, blueprint: BoardBlueprint) -> BuildResult[Board]
 
      Super Class:
          ModelBuilder
@@ -63,8 +63,8 @@ class BoardBuilder(ModelBuilder[Board]):
 
         Action:
             1.  Send an exception chain in the BuildResult if either
-                    -   The BoardBlueprint object is flagged unsafe.
-                    -   The assembler does not return a product.
+                    -  The BoardBlueprint object is flagged unsafe.
+                    -  The assembler does not return a product.
             2.  Otherwise, cast the assembler product as a Board then, send in the success result,
         Args:
             blueprint: BoardBlueprint

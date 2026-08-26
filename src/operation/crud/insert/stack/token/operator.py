@@ -23,7 +23,7 @@ from util import LoggingLevelRouter
 class TokenPusher(StackPop[Token]):
     """
     Role
-        -   Worker
+        -  Worker
 
     Responsibilities:
         1.  Add an item to the TokenStackService
@@ -32,7 +32,7 @@ class TokenPusher(StackPop[Token]):
         permitter: TokenStackPushPermitter
         
     Provides:
-        -   def execute(request: TokenStackPushPermitter) -> InsertionResult
+        -  def execute(request: TokenStackPushPermitter) -> InsertionResult
 
     Super Class:
         StackPush

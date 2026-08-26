@@ -26,7 +26,7 @@ from err import BinderBuilderException
 class BoardBinderBuilderException(BinderBuilderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a BoardBinder build failed.

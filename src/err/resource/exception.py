@@ -22,7 +22,7 @@ __all__ = [
 class ResourceAvailabilityException(ChessException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an unavailable resource kept a task from completing. .

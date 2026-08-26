@@ -24,7 +24,7 @@ __all__ = [
 class StaleSquareLinkException(StaleLinkException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a primary has an expired link to a former satellite Square.

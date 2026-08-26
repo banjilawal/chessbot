@@ -24,9 +24,9 @@ from transit.dispatcher.validator import TokenContextValidator, PrimingValidator
 class TokenQueryValidationDispatcher(ValidationDispatcher[TokenQuery]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Process Runner
+        -  Transaction Worker
+        -  Integrity Maintenance
+        -  Process Runner
 
     Responsibilities:
         1.  Ensure a TokenQuery instance is certified safe, reliable and consistent before use.
@@ -34,7 +34,7 @@ class TokenQueryValidationDispatcher(ValidationDispatcher[TokenQuery]):
     Attributes:
 
     Provides:
-        -   validate(
+        -  validate(
                     rank: Any
                     context_validator: TokenContextValidator,
             ) -> ValidationResult[int]
@@ -56,11 +56,11 @@ class TokenQueryValidationDispatcher(ValidationDispatcher[TokenQuery]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 conditions occur:
-                    -   The rank is null
-                    -   The rank is not a TokenQuery
-                    -   The context fails a safety check.
-                    -   The schema is null.
-                    -   The schema's type is not ist[Token]
+                    -  The rank is null
+                    -  The rank is not a TokenQuery
+                    -  The context fails a safety check.
+                    -  The schema is null.
+                    -  The schema's type is not ist[Token]
             2.  Otherwise, send the success result.
         Args:
             candidate: Any

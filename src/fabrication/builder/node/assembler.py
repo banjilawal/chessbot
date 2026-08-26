@@ -19,7 +19,7 @@ from util import LoggingLevelRouter
 class NodeTreeBuilder(Builder[SquareNode]):
     """
     Role
-        -   Builder
+        -  Builder
 
     Responsibilities:
         1.  Create an object from the safe blueprint.
@@ -27,7 +27,7 @@ class NodeTreeBuilder(Builder[SquareNode]):
     Attributes:
 
     Provides:
-        -   def execute(blueprint: Blueprint[T]) -> BuildResult[T]
+        -  def execute(blueprint: Blueprint[T]) -> BuildResult[T]
 
     Super Class:
     """

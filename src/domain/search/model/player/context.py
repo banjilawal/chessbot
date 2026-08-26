@@ -30,7 +30,7 @@ class PlayerSearchContext(ModelSearchContext[Player]):
         player_category: Optional[str]
 
     Provides:
-        -   to_dict() -> Dict[str, Any]
+        -  to_dict() -> Dict[str, Any]
 
     Super Class:
         ModelSearchContext

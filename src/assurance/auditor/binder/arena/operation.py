@@ -23,10 +23,10 @@ from operation.toolkit import BoardTeamBinderToolkit
 class BoardTeamBinderConsistencyAuditor(ConsistencyAuditor[BoardBinder]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Validation Process Owner
+        -  Transaction Worker
+        -  Integrity Maintenance
+        -  Consistency Assurance
+        -  Validation Process Owner
 
     Responsibilities:
         1.  Ensure a BoardTeamBinder instance is certified safe, reliable and consistent
@@ -35,7 +35,7 @@ class BoardTeamBinderConsistencyAuditor(ConsistencyAuditor[BoardBinder]):
     Attributes:
 
     Properties:
-        -   def validate(
+        -  def validate(
                     candidate: Any,
                     toolkit : BoardTeamBinderToolSe,
             ) -> ValidationResult[BoardTeamBinder]:
@@ -57,9 +57,9 @@ class BoardTeamBinderConsistencyAuditor(ConsistencyAuditor[BoardBinder]):
         Action:
             1.  Send an exception in the ValidationResult any of these
                 conditions occur.
-                    -   candidate is null.
-                    -   It's not a BoardTeamBinder.
-                    -   The boardTeamBinder's payload is flagged unsafe.
+                    -  candidate is null.
+                    -  It's not a BoardTeamBinder.
+                    -  The boardTeamBinder's payload is flagged unsafe.
             3.  Otherwise, Send the success result.
         Args:
             candidate: Any

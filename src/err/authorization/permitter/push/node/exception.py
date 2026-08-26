@@ -24,7 +24,7 @@ __all__ = [
 class NodePushPermitterException(PusherPermitterException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a NodePushPermitter did not approve the request.

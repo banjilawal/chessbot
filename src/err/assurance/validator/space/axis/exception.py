@@ -23,7 +23,7 @@ __all__ = [
 class AxisValidatorException(SpaceValidatorException):
     """
     Role:
-        -   Failure Tracing
+        -  Failure Tracing
 
     Responsibilities:
         1.  Indicating a AxisValidator failed.

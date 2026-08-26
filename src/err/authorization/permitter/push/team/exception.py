@@ -24,7 +24,7 @@ __all__ = [
 class TeamPushPermitterException(PusherPermitterException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a TeamPushPermitter did not approve the request.

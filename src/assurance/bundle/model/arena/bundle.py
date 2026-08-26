@@ -20,7 +20,7 @@ from domain import Arena, ArenaTypeUnions, ArenaNullExceptionRoster
 class ArenaValidationBundle(ValidationBundle[Arena]):
     """
     Role:
-        -   Toolkit
+        -  Toolkit
 
     Responsibilities:
         1.  Bundles types, null-exceptions, attribute-validators, and utilities ArenaIntegrityChecker needs to

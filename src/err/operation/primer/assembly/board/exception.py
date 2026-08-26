@@ -25,7 +25,7 @@ __all__ = [
 class PrimingBoardAssemblyException(AssemblyPrimerException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a BoardAssembly priming step failed.

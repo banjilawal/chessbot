@@ -24,7 +24,7 @@ __all__ = [
 class VectorToggleRegisterEmptyException(ModelRegisterEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required VectorToggleRegister is empty.

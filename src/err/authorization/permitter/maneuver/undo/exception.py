@@ -24,7 +24,7 @@ __all__ = [
 class TokenUndoMovePermitterException(ManeuverPermitterException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a TokenUndoMovePermitter from

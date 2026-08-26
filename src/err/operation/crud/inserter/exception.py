@@ -24,7 +24,7 @@ __all__ = [
 class InserterException(CrudOperatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Inserter was aborted by an exception.

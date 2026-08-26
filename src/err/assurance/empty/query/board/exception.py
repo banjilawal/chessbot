@@ -25,7 +25,7 @@ from err import QueryStackEmptyException
 class BoardQueryStackEmptyException(QueryStackEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required BoardQuery's target stack is empty.

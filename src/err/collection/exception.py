@@ -24,7 +24,7 @@ __all__ = [
 class CollectionException(ChessException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Collection encountered an error.

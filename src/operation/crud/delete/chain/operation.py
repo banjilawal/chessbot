@@ -24,7 +24,7 @@ T = TypeVar("T", bound="Node")
 class RemoveNode(CollectionDeletion[Chain], ABC, Generic[T]):
     """
     Role
-        -   Worker
+        -  Worker
 
     Responsibilities:
         1.  Remove a Node from a Chain.
@@ -33,7 +33,7 @@ class RemoveNode(CollectionDeletion[Chain], ABC, Generic[T]):
         permitter: RemoveNodePermitter[T]
 
     Provides:
-        -   def execute(request: AddNodeRequest) -> DeletionResult
+        -  def execute(request: AddNodeRequest) -> DeletionResult
 
     Super Class:
         DeletionOperation

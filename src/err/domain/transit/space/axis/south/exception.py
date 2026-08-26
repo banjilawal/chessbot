@@ -23,7 +23,7 @@ __all__ = [
 class SouthAxisCarrierException(AxisCarrierException):
     """
     Role:
-        -   Failure Tracing
+        -  Failure Tracing
 
     Responsibilities:
         1.  Indicating a SouthAxisCarrier experienced an error.

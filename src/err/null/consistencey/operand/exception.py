@@ -25,7 +25,7 @@ __all__ = [
 class VectorToggleConsistencyCheckerNullException(ConsistencyCheckerNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required VectorToggleConsistencyChecker is null.

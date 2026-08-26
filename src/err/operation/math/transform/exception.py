@@ -24,7 +24,7 @@ from err import VectorOperatorException
 class VectorTransformException(VectorOperatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an error occurred during VectorTransform operation.

@@ -20,7 +20,7 @@ from operation.toolkit.builder.registry.space.axis.toolkit import SpaceReservoir
 class AxisReservoirBuilderToolkit(SpaceReservoirBuilderToolkit[AxisReservoir]):
     """
     Role:
-        -   Dependency Management
+        -  Dependency Management
         
     Responsibilities:
         1.  Bundles AxisReservoirBuilder dependencies.

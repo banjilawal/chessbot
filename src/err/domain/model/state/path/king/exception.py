@@ -24,7 +24,7 @@ __all__ = [
 class KingPathException(PathException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a KingPath encountered an error.

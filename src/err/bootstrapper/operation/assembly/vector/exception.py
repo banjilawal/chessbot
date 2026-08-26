@@ -23,7 +23,7 @@ __all__ = [
 class VectorAssemblyException(AssemblyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Vector assembly failed.

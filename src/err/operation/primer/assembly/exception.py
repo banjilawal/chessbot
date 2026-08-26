@@ -24,7 +24,7 @@ __all__ = [
 class AssemblyPrimerException(PrimingException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an AssemblyPrimer failed.

@@ -38,7 +38,7 @@ class TokenHomePlacer(Operator[Token]):
     Attributes:
     
     Provides:
-        -   execute(
+        -  execute(
                     token: Token,
                     home_square_claim_analyzer: HomeSquareClaimAnalyzer,
             ) -> UpdateResult[Token]
@@ -59,12 +59,12 @@ class TokenHomePlacer(Operator[Token]):
         
         Action:
             1.  Send the unmodified token along with an exception chain in the UpdateResult if either
-                    -   HomeSquare claim analysis fails.
-                    -   Square visitation fails.
+                    -  HomeSquare claim analysis fails.
+                    -  Square visitation fails.
             2.  Otherwise:
-                    -   Deepcopy of token to pre_update_token.
-                    -   Ensure the token's state is deployed.
-                    -   Ensure the opening square is marked as claimed.
+                    -  Deepcopy of token to pre_update_token.
+                    -  Ensure the token's state is deployed.
+                    -  Ensure the opening square is marked as claimed.
             3.  Send the success result containing, the finished work product.
         Args:
             token: Token

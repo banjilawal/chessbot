@@ -24,9 +24,9 @@ T = TypeVar("T", bound="Toggle")
 class ToggleValidator(Validator, Generic[T]):
     """
     Role
-        -   Validator
-        -   Integrity Assurance
-        -   Consistency Assurance
+        -  Validator
+        -  Integrity Assurance
+        -  Consistency Assurance
 
     Responsibilities:
         1.  Runs integrity checks on Toggles and ToggleBlueprints before they are used.
@@ -36,7 +36,7 @@ class ToggleValidator(Validator, Generic[T]):
         bundle: ToggleToolkit
 
     Provides:
-        -   def validate(candidate: Any, bundle: ToggleToolkit,) -> ValidationResult[Blueprint[T]]:
+        -  def validate(candidate: Any, bundle: ToggleToolkit,) -> ValidationResult[Blueprint[T]]:
 
     Super Class:
     """

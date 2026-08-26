@@ -24,7 +24,7 @@ __all__ = [
 class QueenRecurrenceSeriesBuilderException(RecurrenceTableGroupBuilderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a QueenRecurrenceSeriesBuilder failed.

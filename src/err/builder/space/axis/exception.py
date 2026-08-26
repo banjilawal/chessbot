@@ -23,7 +23,7 @@ __all__ = [
 class AxisBuilderException(SpaceBuilderException):
     """
     Role:
-        -   Failure Tracing
+        -  Failure Tracing
 
     Responsibilities:
         1.  Indicating a AxisBuilder failed.

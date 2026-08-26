@@ -21,8 +21,8 @@ from system import ServiceException
 class TokenSearchServiceException(ServiceException):
     """
     Role:
-        -   Exception Chain Layer 0
-        -   Exception coverage target
+        -  Exception Chain Layer 0
+        -  Exception coverage target
 
     Responsibilities:
         1.  Anchors TokenSearchService debug (layer-2) information.

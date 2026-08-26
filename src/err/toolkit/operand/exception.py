@@ -24,7 +24,7 @@ __all__ = [
 class VectorToggleException(ToolkitException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a VectorToggle encountered an error.

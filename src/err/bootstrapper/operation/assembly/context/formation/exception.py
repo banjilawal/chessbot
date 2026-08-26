@@ -26,7 +26,7 @@ from err import ContextAssemblyException
 class FormationContextAssemblyException(ContextAssemblyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a FormationContext assembly failed.

@@ -21,7 +21,7 @@ from operation.toolkit.registry.space.quadrant.toolkit import MathToolkit, Space
 class QuadrantReservoirToolkit(SpaceReservoirToolkit[Quadrant]):
     """
     Role:
-        -   Container
+        -  Container
 
     Responsibilities:
         1.  Collection of workers and validators that are required for CartesianSpace tasks.

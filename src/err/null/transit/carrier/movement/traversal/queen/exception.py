@@ -24,7 +24,7 @@ __all__ = [
 class QueenTraversalPatternCarrierNullException(TraversalPatternCarrierNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required QueenTraversalPatternCarrier is null.

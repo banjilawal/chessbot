@@ -24,7 +24,7 @@ __all__ = [
 class TokenCarrierException(ModelCarrierException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a TokenCarrier encountered an error.

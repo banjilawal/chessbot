@@ -23,7 +23,7 @@ __all__ = [
 class SpaceValidatorException(ValidatorException):
     """
     Role:
-        -   Failure Tracing
+        -  Failure Tracing
 
     Responsibilities:
         1.  Indicating a SpaceValidator failed.

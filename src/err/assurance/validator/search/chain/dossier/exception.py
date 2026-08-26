@@ -24,7 +24,7 @@ __all__ = [
 class DossierNodeContextValidatorException(ChainContextValidatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a DossierNodeContextValidator failed.

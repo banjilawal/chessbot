@@ -24,7 +24,7 @@ __all__ = [
 class BlockedPathValidatorException(PathValidatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a BlockedPathValidator failed.

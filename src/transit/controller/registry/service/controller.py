@@ -23,9 +23,9 @@ from err import MicroserviceNullException, ServiceRegistryControllerException
 class ServiceRegistryController(Controller[ServiceRegistry]):
     """
     Role
-        -   Controller
-        -   Integrity Maintenance
-        -   Consistency Assurance
+        -  Controller
+        -  Integrity Maintenance
+        -  Consistency Assurance
     
     Responsibilities:
         1.  Ensure ServiceRegistry stays consistent during and after microservices.
@@ -35,9 +35,9 @@ class ServiceRegistryController(Controller[ServiceRegistry]):
         toolkit: ServiceRegistryToolkit
     
     Provides:
-        -   def find_service(service_name: str) -> SearchResult[List[Microservice]]:
+        -  def find_service(service_name: str) -> SearchResult[List[Microservice]]:
         
-        -   def register_service(
+        -  def register_service(
                     service: Microservice,
                     null_exception: MicroserviceNullException,
             ) -> InsertionResult:
@@ -75,8 +75,8 @@ class ServiceRegistryController(Controller[ServiceRegistry]):
         
         Action:
             1.  Send an exception chain in the InsertionResult if any of the following occur.
-                    -   service is flagged unsafe.
-                    -   Writing the service into the registry raises an error.
+                    -  service is flagged unsafe.
+                    -  Writing the service into the registry raises an error.
             2.  Otherwise, add the entry to the registry and return a success result.
         Args:
             service: Microservice

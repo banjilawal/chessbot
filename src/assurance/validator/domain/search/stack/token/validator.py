@@ -26,7 +26,7 @@ from util import LoggingLevelRouter
 class TokenContextValidator(StackContextValidator[TokenSearchSearchContext]):
     """
     Role
-        -   Integrity Assurance Worker
+        -  Integrity Assurance Worker
 
     Responsibilities:
         1.  Check that a candidate is the right type of not-null TokenSearchContext.
@@ -36,7 +36,7 @@ class TokenContextValidator(StackContextValidator[TokenSearchSearchContext]):
         bundle: TokenValidationBundle
 
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult[TokenSearchContext]:
+        -  def execute(candidate: Any) -> ValidationResult[TokenSearchContext]:
 
     Super Class:
         StackSearchContextChecker
@@ -59,9 +59,9 @@ class TokenContextValidator(StackContextValidator[TokenSearchSearchContext]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The candidate is not a TokenSearchContext.
-                    -   The wrong number of search attributes is enabled.
-                    -   An enabled search attribute fails a safety check.
+                    -  The candidate is not a TokenSearchContext.
+                    -  The wrong number of search attributes is enabled.
+                    -  An enabled search attribute fails a safety check.
             2.  Otherwise, send a TokeSearchContext in the success result.
         Args:
             candidate, Any

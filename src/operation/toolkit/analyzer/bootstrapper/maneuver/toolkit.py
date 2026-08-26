@@ -28,7 +28,7 @@ from transit.dispatcher.validator import TokenOriginCertifier
 class ManeuverToolkit(AnalyzerBootstrapperToolkit[Maneuver]):
     """
     Role:
-        -   Dependency Management
+        -  Dependency Management
 
     Responsibilities:
         1.  Aggregates workers and services a Maneuver object requires for its tasks.
@@ -52,7 +52,7 @@ class ManeuverToolkit(AnalyzerBootstrapperToolkit[Maneuver]):
         analyzer: Maneuver
 
     Provides:
-        -   def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
+        -  def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
 
     Super Class:
         Toolkit

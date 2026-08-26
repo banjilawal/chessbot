@@ -30,7 +30,7 @@ class SquareDepartureProcess:
     Attributes:
 
     Provides:
-        -   execute(
+        -  execute(
                     square: Square,
                     square_validator: SquareValidator,
             ) -> DeletionResult[Token]
@@ -50,11 +50,11 @@ class SquareDepartureProcess:
 
         Action:
             1.  Send  an exception chain in the DeletionResult if:
-                    -   The square does not pass a validation check.
-                    -   The square is empty.
+                    -  The square does not pass a validation check.
+                    -  The square is empty.
             2.  Otherwise:
-                    -   Store the occupant before setting square.occupant null.
-                    -   Update the state to empty
+                    -  Store the occupant before setting square.occupant null.
+                    -  Update the state to empty
             3.  Send the success result.
         Args:
             square: Square

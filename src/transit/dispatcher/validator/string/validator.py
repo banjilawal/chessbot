@@ -20,10 +20,10 @@ from util import LoggingLevelRouter
 class StringValidator(Validator[str]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Validation Process Owner
+        -  Transaction Worker
+        -  Integrity Maintenance
+        -  Consistency Assurance
+        -  Validation Process Owner
 
     Responsibilities:
         1.  Ensure a String instance is certified safe, reliable and consistent before use.
@@ -31,7 +31,7 @@ class StringValidator(Validator[str]):
     Attributes:
 
     Provides:
-       -    execute(
+       -   execute(
                     rank: Any,
                     number_validation: NumberValidator,
             ) -> ValidationResult[String]
@@ -49,9 +49,9 @@ class StringValidator(Validator[str]):
 
         Action:
             1.  Send an exception chain in the ValidationResult if
-                    -   the rank does not exist.
-                    -   the rank is not a String.
-                    -   the row or column is not between [0-7] inclusive.
+                    -  the rank does not exist.
+                    -  the rank is not a String.
+                    -  the row or column is not between [0-7] inclusive.
             2.  Otherwise, after the rank is cast to a String, send the success result.
         Args:
             candidate: Any

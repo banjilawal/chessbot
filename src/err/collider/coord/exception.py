@@ -22,7 +22,7 @@ __all__ = [
 class CoordColliderException(ColliderException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a coord collision occurred

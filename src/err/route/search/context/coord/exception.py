@@ -26,7 +26,7 @@ from err import ContextSearchRouteException
 class CoordContextSearchRouteException(ContextSearchRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that one of CoordContext search routes is missing.

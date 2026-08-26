@@ -21,9 +21,9 @@ from util import LoggingLevelRouter
 class PromotionPermitter(OperationPermitter):
     """
     Role:
-        -   Request Analyzer
-        -   Rights Granter
-        -   Consistency, Integrity Maintenance
+        -  Request Analyzer
+        -  Rights Granter
+        -  Consistency, Integrity Maintenance
 
     Responsibilities:
         1.  Evaluate if promotion request can be granted.
@@ -32,7 +32,7 @@ class PromotionPermitter(OperationPermitter):
         carrier_validator: PromotionRequestAdjudicator
         
     Provides:
-        -   run(self, request: PromotionRequest) -> PromotionApprovalReport
+        -  run(self, request: PromotionRequest) -> PromotionApprovalReport
         
     Super Class:
         Permitter

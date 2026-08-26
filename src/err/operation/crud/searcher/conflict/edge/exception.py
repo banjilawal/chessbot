@@ -24,7 +24,7 @@ __all__ = [
 class EdgeSearchHitConflictException(SearchHitConflictException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a EdgeSearcher returned multiple hits for an item which should be unique.

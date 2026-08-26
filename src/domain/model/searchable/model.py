@@ -17,7 +17,7 @@ from domain import Searchable, DataModel
 class SearchableModel(DataModel, Searchable, ABC):
     """
     Role:
-        -   Data Holder
+        -  Data Holder
 
     Responsibilities:
         1. DataModel that implements the Searchable interface

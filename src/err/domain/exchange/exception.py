@@ -24,7 +24,7 @@ __all__ = [
 class ExchangeObjectException(DomainObjectException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating either a Request or a Response encountered an error.

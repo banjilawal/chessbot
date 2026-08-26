@@ -24,7 +24,7 @@ __all__ = [
 class EnemyKingAnalyzerException(AnalyzerException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an EnemyKingAnalyzer was aborted by an exception.

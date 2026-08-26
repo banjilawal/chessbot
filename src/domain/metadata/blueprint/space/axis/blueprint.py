@@ -20,7 +20,7 @@ T = TypeVar("T", bound="Axis")
 class AxisBlueprint(SpaceBlueprint, Generic[T]):
     """
      Role:
-         -   DTO
+         -  DTO
 
      Responsibilities:
          1.  Provides values for instantiating an Axis.

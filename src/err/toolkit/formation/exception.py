@@ -23,7 +23,7 @@ __all__ = [
 class FormationException(ToolkitException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Formation encountered an error.

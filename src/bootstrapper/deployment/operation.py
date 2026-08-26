@@ -38,7 +38,7 @@ class TokenDeploymentPrimer(Operator[Token]):
     Attributes:
     
     Provides:
-        -   execute(
+        -  execute(
                     token: Token,
                     token_validator: TokenValidator,
             ) -> UpdateResult[Token]

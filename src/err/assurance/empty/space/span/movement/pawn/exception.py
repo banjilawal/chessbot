@@ -24,7 +24,7 @@ __all__ = [
 class PawnMovementSetEmptyException(MovementVectorSetEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required PawnMovementSet is empty.

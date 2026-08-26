@@ -23,7 +23,7 @@ T = TypeVar("T", bound="StateModel")
 class MicroserviceBuilder(Microservice[BuildResult], ABC, Generic[T]):
     """
     Role
-        -   Worker
+        -  Worker
 
     Responsibilities:
         1.  Execute a task on a Microservice that produces either an Build, Deletion, Update
@@ -33,7 +33,7 @@ class MicroserviceBuilder(Microservice[BuildResult], ABC, Generic[T]):
         permitter: MicroserviceOperationPermitter[T]
 
     Provides:
-        -   def execute(request: MicroserviceRequest[T]) -> T
+        -  def execute(request: MicroserviceRequest[T]) -> T
 
     Super Class:
         Operation

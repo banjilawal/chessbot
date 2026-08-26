@@ -24,7 +24,7 @@ __all__ = [
 class SearchDataObjectNullException(DomainObjectNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required SearchDataObject is null.

@@ -24,7 +24,7 @@ __all__ = [
 class FormationContextBuilderBootstrapperException(ContextBuilderBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a FormationContextBuilderBootstrapper was aborted by an exception.

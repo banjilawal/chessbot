@@ -25,7 +25,7 @@ __all__ = [
 class NodeBlueprintNullException(BlueprintNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required NodeBlueprint is null.

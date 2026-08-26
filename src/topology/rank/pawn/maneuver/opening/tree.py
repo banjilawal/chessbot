@@ -14,7 +14,7 @@ from tree import ManeuverTopology, VectorTree
 class OpeningManeuverTopology(ManeuverTopology):
     """
     Role:
-        -   Data Holder
+        -  Data Holder
 
     Responsibilities:
         1.  Positions projected from an OpeningPawn's ManeuverSignature.

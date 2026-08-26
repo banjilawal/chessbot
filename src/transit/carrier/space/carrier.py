@@ -19,12 +19,12 @@ T = TypeVar("T", bound="Space")
 class SpaceCarrier(EntityCarrier, Generic[T], ABC):
     """
     Role:
-        -   Data Transport
+        -  Data Transport
 
     Responsibilities:
         1.  Transport either:
-            -   a Space[T]
-            -   a SpaceBlueprint[T]
+            -  a Space[T]
+            -  a SpaceBlueprint[T]
 
     Attributes:
         is_carrying_model: bool
@@ -35,7 +35,7 @@ class SpaceCarrier(EntityCarrier, Generic[T], ABC):
         entity: [Space[T]| SpaceBlueprint[T] | None]
 
     Provides:
-        -   def extract_blueprint() -> Optional[SpaceBlueprint[T]]
+        -  def extract_blueprint() -> Optional[SpaceBlueprint[T]]
 
     Super Class:
         EntityCarrier

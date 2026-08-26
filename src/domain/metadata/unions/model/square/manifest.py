@@ -20,7 +20,7 @@ from domain import ModelTypeUnions, Square, SquareBlueprint, SquareCarrier, Squa
 class SquareTypeUnions(ModelTypeUnions[Square]):
     """
     Role:
-        -   Metadata
+        -  Metadata
 
     Responsibilities:
         1. Catalog of data unions a Square uses in the domain.

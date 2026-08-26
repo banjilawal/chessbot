@@ -24,7 +24,7 @@ __all__ = [
 class ManeuverMovementSetEmptyException(PawnMovementSetEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required ManeuverMovementSet is empty.

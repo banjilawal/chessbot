@@ -23,7 +23,7 @@ __all__ = [
 class RankSearchRouteException(SearchRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that one of Rank search routes is missing.

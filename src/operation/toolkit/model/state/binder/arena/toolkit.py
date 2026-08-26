@@ -17,7 +17,7 @@ from operation.toolkit.model.state.binder.arena.toolkit import StateModelToolkit
 class ArenaPlayerBinderToolkit(StateModelToolkit[ArenaBinder]):
     """
     Role:
-        -   Container
+        -  Container
 
     Responsibilities:
         1.  Collection of workers and services that are required for ArenaPlayerBinder tasks.

@@ -26,7 +26,7 @@ from err import ContextSearchRouteException
 class FormationContextSearchRouteException(ContextSearchRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that one of FormationContext search routes is missing.

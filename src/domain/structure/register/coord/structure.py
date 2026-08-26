@@ -17,8 +17,8 @@ from domain import Coord, Register
 class CoordRegister(Register[Coord]):
     """
     Role:
-        -   Model
-        -   Data Holder
+        -  Model
+        -  Data Holder
 
     Responsibilities:
         1.  Contains the endpoints of a journey.

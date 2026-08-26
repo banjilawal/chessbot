@@ -27,7 +27,7 @@ from err import ChainContextCheckerException
 class VectorNodeCheckerException(ChainContextCheckerException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a VectorNodeChecker failed.

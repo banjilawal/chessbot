@@ -20,7 +20,7 @@ from domain import ModelTypeUnions, Board, BoardBlueprint, BoardCarrier, BoardSe
 class BoardTypeUnions(ModelTypeUnions[Board]):
     """
     Role:
-        -   Metadata
+        -  Metadata
 
     Responsibilities:
         1. Catalog of data unions a Board uses in the domain.

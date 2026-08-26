@@ -24,7 +24,7 @@ __all__ = [
 class GameNullException(StateModelNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required Game is null.

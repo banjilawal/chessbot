@@ -22,7 +22,7 @@ __all__ = [
 class VectorContextTokenOperationBootstrapperException(ContextTokenOperationBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a VectorContext tokenfailed.

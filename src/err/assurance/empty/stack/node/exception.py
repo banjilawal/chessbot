@@ -22,7 +22,7 @@ __all__ = [
 class NodeStackEmptyException(StackEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required NodeStack is empty.

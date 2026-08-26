@@ -24,7 +24,7 @@ __all__ = [
 class DevelopedAttackOffsetPatternCarrierNullException(AttackOffsetPatternCarrierNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating an error occurred in an DevelopedAttackOffsetPatternCarrier is null.

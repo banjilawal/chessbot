@@ -21,9 +21,9 @@ from util import LoggingLevelRouter
 class PopPermitter(OperationPermitter):
     """
     Role:
-        -   Request Analyzer
-        -   Rights Granter
-        -   Consistency, Integrity Maintenance
+        -  Request Analyzer
+        -  Rights Granter
+        -  Consistency, Integrity Maintenance
 
     Responsibilities:
         1.  Evaluate if a stack popping request can be granted.
@@ -32,7 +32,7 @@ class PopPermitter(OperationPermitter):
         priming_validator: PrimingValidator
 
     Provides:
-        -   run(self, request: PopRequest,) -> PopApprovalReport:
+        -  run(self, request: PopRequest,) -> PopApprovalReport:
 
     Super Class:
         Permitter
@@ -50,8 +50,8 @@ class PopPermitter(OperationPermitter):
 
         Action:
             1.  Send an exception chain in the ValidationResult if the request is either
-                    -   Null
-                    -   Not a PopRequest.
+                    -  Null
+                    -  Not a PopRequest.
             2.  Otherwise, send the success
         Args:
             request

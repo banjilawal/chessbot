@@ -24,7 +24,7 @@ __all__ = [
 class AttackPathValidatorException(PathValidatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a candidate did not pass an AttackPathValidator failed.

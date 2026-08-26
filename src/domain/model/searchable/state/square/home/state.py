@@ -13,7 +13,7 @@ from enum import Enum, auto
 class TokenHomeClaimState(Enum):
     """
     Role:
-        -   State Descriptor
+        -  State Descriptor
 
     Responsibilities:
         1.  Indicates if the square can be visited.

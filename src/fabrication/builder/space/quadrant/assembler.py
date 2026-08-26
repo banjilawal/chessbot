@@ -23,7 +23,7 @@ T = TypeVar("T", bound="Axis")
 class QuadrantBuilder(SpaceBuilder, Generic[T]):
     """
     Role
-        -   Builder
+        -  Builder
 
     Responsibilities:
         1.  Create a Quadrant instance from the safe blueprint.
@@ -31,7 +31,7 @@ class QuadrantBuilder(SpaceBuilder, Generic[T]):
     Attributes:
 
     Provides:
-        -   def execute(self, blueprint: QuadrantBlueprint,) -> BuildResult[Quadrant]
+        -  def execute(self, blueprint: QuadrantBlueprint,) -> BuildResult[Quadrant]
 
     Super Class:
         Builder

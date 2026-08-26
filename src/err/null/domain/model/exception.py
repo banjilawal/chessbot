@@ -24,7 +24,7 @@ __all__ = [
 class ModelNullException(NullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required Model is null.

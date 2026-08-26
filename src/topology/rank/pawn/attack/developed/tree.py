@@ -14,7 +14,7 @@ from tree import AttackTopology, VectorTree
 class DevelopedAttackTopology(AttackTopology):
     """
     Role:
-        -   Data Holder
+        -  Data Holder
 
     Responsibilities:
         1.  Positions projected from a DevelopedPawn's AttackSignature.

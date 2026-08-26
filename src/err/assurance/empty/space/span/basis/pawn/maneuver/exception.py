@@ -24,7 +24,7 @@ __all__ = [
 class ManeuverBasisEmptyException(PawnBasisEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required ManeuverBasisSet is empty.

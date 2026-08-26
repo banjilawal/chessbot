@@ -26,7 +26,7 @@ from err import ContextSearchRouteException
 class TokenContextSearchRouteException(ContextSearchRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that one of TokenContext search routes is missing.

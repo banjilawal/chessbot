@@ -24,7 +24,7 @@ __all__ = [
 class EdgeContextException(ContextException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a EdgeContext encountered an error.

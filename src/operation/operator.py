@@ -22,8 +22,8 @@ T = TypeVar("T", bound="Result")
 class Operator(ABC, Generic[T]):
     """
     Role
-        -   Worker
-        -   Result Producer
+        -  Worker
+        -  Result Producer
 
     Responsibilities:
         1.  Execute a task that produces a Result.
@@ -32,7 +32,7 @@ class Operator(ABC, Generic[T]):
         authorizer: RequestAuthorizer[T]
         
     Provides:
-        -   def execute(request: Request[T]) -> T
+        -  def execute(request: Request[T]) -> T
 
     Super Class:
     """

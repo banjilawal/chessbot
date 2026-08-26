@@ -24,7 +24,7 @@ __all__ = [
 class SearchResultEmptyException(SearcherException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Searcher did not find a required item.

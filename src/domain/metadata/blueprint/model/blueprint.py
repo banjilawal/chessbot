@@ -21,7 +21,7 @@ T = TypeVar("T", bound="DataModel")
 class ModelBlueprint(Blueprint[T], ABC, Generic[T]):
     """
      Role:
-         -   Metadata
+         -  Metadata
 
      Responsibilities:
          1.  Provide attribute-value tuples for hydrating a Model.

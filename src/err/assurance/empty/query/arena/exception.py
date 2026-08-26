@@ -25,7 +25,7 @@ from err import QueryStackEmptyException
 class ArenaQueryStackEmptyException(QueryStackEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required ArenaQuery's target stack is empty.

@@ -24,7 +24,7 @@ __all__ = [
 class SearchHitConflictException(SearcherException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Searcher returned multiple hits for an item which should be unique.

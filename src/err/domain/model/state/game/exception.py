@@ -24,7 +24,7 @@ __all__ = [
 class GameException(ModelException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a Game encountered an error.

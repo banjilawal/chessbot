@@ -20,7 +20,7 @@ from operation.toolkit.builder.model.token.toolkit import ModelBuilderToolkit
 class TokenBuilderToolkit(ModelBuilderToolkit[Token]):
     """
     Role:
-        -   Dependency Management
+        -  Dependency Management
         
     Responsibilities:
         1.  Bundles TokenBuilder dependencies.

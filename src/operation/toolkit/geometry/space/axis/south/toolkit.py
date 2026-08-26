@@ -24,7 +24,7 @@ from operation.toolkit.geometry.space.axis.south.toolkit import AxisToolkit
 class SouthAxisToolkit(AxisToolkit[SouthAxis]):
     """
     Role:
-        -   Container
+        -  Container
 
     Responsibilities:
         1.  Collection of workers and validators that are required for CartesianSpace tasks.

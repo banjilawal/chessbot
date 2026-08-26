@@ -21,7 +21,7 @@ from domain import TeamSearchSearchContext
 class TeamStackSearchPermissionUtility(StackSearchPermissionUtility[TeamSearchSearchContext]):
     """
     Role:
-        -   Utility
+        -  Utility
 
     Responsibilities:
         1.  Bundles resources the TeamSearchAuthorizer needs to evaluate a TeamSearchRequest.

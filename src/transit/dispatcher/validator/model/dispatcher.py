@@ -22,10 +22,10 @@ from util import LoggingLevelRouter
 class ModelValidationDispatcher(ValidationDispatcher[DataModel]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
-        -   Validation Process Owner
+        -  Transaction Worker
+        -  Integrity Maintenance
+        -  Consistency Assurance
+        -  Validation Process Owner
 
     Responsibilities:
         1.  Ensure a Model instance is certified safe, reliable and consistent before use.
@@ -34,7 +34,7 @@ class ModelValidationDispatcher(ValidationDispatcher[DataModel]):
         integrity_checker: ModelIntegrityChecker
         
     Provides:
-        -   execute(self, candidate: Any) -> ValidationResult
+        -  execute(self, candidate: Any) -> ValidationResult
 
     Super Class:
         Validator

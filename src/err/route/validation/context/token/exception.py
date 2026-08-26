@@ -26,7 +26,7 @@ from err import ContextNoValidationRouteException
 class TokenContextValidationRouteException(ContextNoValidationRouteException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating that one of TokenContext validation routes is missing.

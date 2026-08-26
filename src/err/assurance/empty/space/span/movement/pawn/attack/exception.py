@@ -24,7 +24,7 @@ __all__ = [
 class AttackMovementSetEmptyException(PawnMovementSetEmptyException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required AttackMovementSet is empty.

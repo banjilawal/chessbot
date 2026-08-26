@@ -19,8 +19,8 @@ from domain.structure.register import SquareRegister
 class PathBlueprint(ModelBlueprint[Path]):
     """
     Role:
-        -   Container
-        -   DTO
+        -  Container
+        -  DTO
         
     Responsibilities:
         1.  Provides values for instantiating a Path object.

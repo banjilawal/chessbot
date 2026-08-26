@@ -19,7 +19,7 @@ from artifcat.report import ItineraryApprovalReport
 class ManeuverApproval(ItineraryApprovalReport):
     """
     Role:
-        -   Test results
+        -  Test results
 
     Responsibilities:
         1.  Details an empty square a token can occupy.

@@ -31,7 +31,7 @@ class TokenDeploymentWorker(Worker):
     Attributes:
 
     Provides:
-        -   deployment(
+        -  deployment(
                     cls,
                     square: Square,
                     square_stack: SquareStackService,

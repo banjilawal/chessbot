@@ -24,7 +24,7 @@ __all__ = [
 class PlayerBlueprintNullException(ModelBlueprintNullException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a required PlayerBlueprint is null.

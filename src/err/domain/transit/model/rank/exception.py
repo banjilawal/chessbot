@@ -24,7 +24,7 @@ __all__ = [
 class RankCarrierException(ModelCarrierException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a RankCarrier encountered an error.

@@ -25,7 +25,7 @@ __all__ = [
 class ZeroTokenContextFlagsException(ZeroContextFlagsException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating no TokenSearchContext flags were enabled.

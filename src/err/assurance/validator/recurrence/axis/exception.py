@@ -24,7 +24,7 @@ __all__ = [
 class QuadrantRecurrenceValidatorException(RecurrenceValidatorException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a QuadrantRecurrenceValidator failed.

@@ -20,7 +20,7 @@ from util import LoggingLevelRouter
 class TeamContextValidator(StackSearchContextValidator[TeamSearchSearchContext]):
     """
     Role
-        -   Integrity, Consistency Maintenance
+        -  Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a TeamSearchContext instance is safe before use.
@@ -29,7 +29,7 @@ class TeamContextValidator(StackSearchContextValidator[TeamSearchSearchContext])
         integrity_checker: TeamContextChecker
 
     Provides:
-        -   execute(self, candidate: Any) -> ValidationResult[TeamSearchContext]
+        -  execute(self, candidate: Any) -> ValidationResult[TeamSearchContext]
 
     Super Class:
         ContextValidator

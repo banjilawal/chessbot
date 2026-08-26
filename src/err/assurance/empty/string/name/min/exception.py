@@ -22,7 +22,7 @@ __all__ = [
 class MinNameLengthException(NameException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a name is too short.

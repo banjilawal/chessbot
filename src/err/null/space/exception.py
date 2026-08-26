@@ -23,7 +23,7 @@ __all__ = [
 class SpaceNullException(NullException):
     """
     Role:
-        -   Failure Tracing
+        -  Failure Tracing
 
     Responsibilities:
         1.  Indicating a required Space is null.

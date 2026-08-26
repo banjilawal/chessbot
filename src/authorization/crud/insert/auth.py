@@ -24,7 +24,7 @@ T = TypeVar("T", bound="InsertRequest")
 class InsertAuthorizer(CrudAuthorizer[T], ABC, Generic[T]):
     """
     Role
-        -   Authorization
+        -  Authorization
 
     Responsibilities:
         1.  Check if an InsertRequest satisfies integrity and consistency requirements.
@@ -33,7 +33,7 @@ class InsertAuthorizer(CrudAuthorizer[T], ABC, Generic[T]):
          utility: InsertPermissionUtility[T]
 
     Provides:
-        -   execute(self, request: T) -> AuthorizationDecision
+        -  execute(self, request: T) -> AuthorizationDecision
 
     Super Class:
         CrudAuthorizer

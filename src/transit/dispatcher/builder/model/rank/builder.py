@@ -23,10 +23,10 @@ from util import LoggingLevelRouter
 class RankBuilder(ModelBuilder[Rank]):
     """
     Role
-        -   Build Pipeline
-        -   Integrity Management
-        -   Consistency Assurance
-        -   Workflow Owner
+        -  Build Pipeline
+        -  Integrity Management
+        -  Consistency Assurance
+        -  Workflow Owner
 
    Responsibilities:
         1.  Ensure a new Rank instance is born safe and reliable.
@@ -35,7 +35,7 @@ class RankBuilder(ModelBuilder[Rank]):
             builder_toolkit: Optional[RankBuilderToolkit]
 
     Provides:
-        -   def execute(self, blueprint: RankBlueprint) -> BuildResult[Rank]
+        -  def execute(self, blueprint: RankBlueprint) -> BuildResult[Rank]
 
      Super Class:
          ModelBuilder
@@ -63,8 +63,8 @@ class RankBuilder(ModelBuilder[Rank]):
 
         Action:
             1.  Send an exception chain in the BuildResult if either
-                    -   The RankBlueprint object is flagged unsafe.
-                    -   The assembler does not return a product.
+                    -  The RankBlueprint object is flagged unsafe.
+                    -  The assembler does not return a product.
             2.  Otherwise, cast the assembler product as a Rank then, send in the success result,
         Args:
             blueprint: RankBlueprint

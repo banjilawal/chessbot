@@ -36,7 +36,7 @@ class LaunchAttack:
     Attributes:
     
     Provides:
-        -   execute(
+        -  execute(
                     token: Token,
                     square: Square,
                     token_freedom_analyzer: TokenFreedomAnalyzer,
@@ -51,12 +51,12 @@ class LaunchAttack:
         """
         Action:
             1.  Send the original square along with an exception chain in the validation result if:
-                    -   The square or token are insecure.
-                    -   The token is disabled
-                    -   The token belongs to a different board.
-                    -   The new token is being deployed to the wrong square.
-                    -   The square is already occupied.
-                    -   The square accepts the token but the token cannot update its position.
+                    -  The square or token are insecure.
+                    -  The token is disabled
+                    -  The token belongs to a different board.
+                    -  The new token is being deployed to the wrong square.
+                    -  The square is already occupied.
+                    -  The square accepts the token but the token cannot update its position.
             2.  Otherwise, each updates its state.
             3.  Send the success result.
         Args:
@@ -150,9 +150,9 @@ class LaunchAttack:
             1.  Send the square and an exception chain in the UpdateResult if:
                     - Pushing the square's coord onto the token's schema fails.
             2.  Otherwise, after:
-                    -   The square makes the token its occupant
-                    -   The token updates its position
-                    -   Each updates its state.
+                    -  The square makes the token its occupant
+                    -  The token updates its position
+                    -  Each updates its state.
             3.  Send the success result.
         Args:
             traveller: Token

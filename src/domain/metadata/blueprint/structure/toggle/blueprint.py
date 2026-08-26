@@ -20,7 +20,7 @@ from domain.structure.toggle import Toggle
 class ToggleBlueprint(Blueprint[Toggle]):
     """
     Role:
-        -   Container
+        -  Container
     
     Responsibilities:
         1.  Provides values for instantiating a B object.

@@ -19,7 +19,7 @@ from domain.model import Rank
 class RankLevelApproval(Report):
     """
     Role:
-        -   Test results
+        -  Test results
 
     Responsibilities:
         1.  Presents a token's promotion on an opening square.
@@ -33,8 +33,8 @@ class RankLevelApproval(Report):
         is_denied: bool
 
     Provides:
-        -   def approve(new_rank: Rank) -> RankElevationReport:
-        -   def deny(exception: Exception) -> RankElevationReport:
+        -  def approve(new_rank: Rank) -> RankElevationReport:
+        -  def deny(exception: Exception) -> RankElevationReport:
         
     Super Class:
         Report

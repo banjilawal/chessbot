@@ -23,7 +23,7 @@ __all__ = [
 class NodeBuilderBootstrapperException(BuilderBootstrapperException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating a NodeBuilderBootstrapper was aborted by an exception.

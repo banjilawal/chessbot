@@ -23,7 +23,7 @@ T = TypeVar("T", bound="Model")
 class ModelBuilder(Builder, Generic[T]):
     """
     Role
-        -   Builder
+        -  Builder
 
     Responsibilities:
         1.  Create a Model instance from the safe blueprint.
@@ -31,7 +31,7 @@ class ModelBuilder(Builder, Generic[T]):
     Attributes:
 
     Provides:
-        -   def execute(self, blueprint: ModelBlueprint,) -> BuildResult[Model]
+        -  def execute(self, blueprint: ModelBlueprint,) -> BuildResult[Model]
 
     Super Class:
         Builder

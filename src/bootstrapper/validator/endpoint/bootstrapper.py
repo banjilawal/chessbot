@@ -19,9 +19,9 @@ from transit.dispatcher.validator import TokenDestinationCertifier, TokenOriginC
 class EndpointCertifierBootstrapper(ValidatorBootstrapper):
     """
     Role
-        -   Validation Worker
-        -   Integrity Maintenance
-        -   Consistency Assurance
+        -  Validation Worker
+        -  Integrity Maintenance
+        -  Consistency Assurance
 
     Responsibilities:
         1.  Consolidates both relationship tests for a Token and the endpoints at the
@@ -30,7 +30,7 @@ class EndpointCertifierBootstrapper(ValidatorBootstrapper):
     Attributes:
 
     Provides:
-        -   def execute(
+        -  def execute(
                     token: Token,
                     destination: Square,
                     toolkit: TokenEndpointRelationToolkit,
@@ -56,8 +56,8 @@ class EndpointCertifierBootstrapper(ValidatorBootstrapper):
 
         Action:
             1.  Send an exception chan in the validation result if either:
-                    -   The relation analysis is not completed.
-                    -   The token is either fully or partially bound to the destination.
+                    -  The relation analysis is not completed.
+                    -  The token is either fully or partially bound to the destination.
             2.  Otherwise, Send the number two in the success result indicating two checks were passed.
         Args:
             token: Token

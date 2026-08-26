@@ -36,14 +36,14 @@ class TokenCollisionBootstrapper:
      Attributes:
      
      Provides:
-         -   detect(
+         -  detect(
                     cls,
                     target: Token,
                     token_stack: TokenStackService,
             ) -> CollisionReport
             
      Super:
-        -   CollisionAnalyst[T]
+        -  CollisionAnalyst[T]
     """
     
     @classmethod

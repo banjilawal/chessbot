@@ -24,7 +24,7 @@ __all__ = [
 class GraphComponentException(DomainObjectException):
     """
     Role:
-        -   Error Tracing
+        -  Error Tracing
 
     Responsibilities:
         1.  Indicating GraphComponent encountered an error.
