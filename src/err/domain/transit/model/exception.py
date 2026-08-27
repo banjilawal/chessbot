@@ -24,7 +24,7 @@ __all__ = [
 class ModelCarrierException(ChessException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a ModelCarrier encountered an error.

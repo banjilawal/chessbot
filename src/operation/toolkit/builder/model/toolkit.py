@@ -20,7 +20,7 @@ T = TypeVar("T", bound="Model")
 class ModelBuilderToolkit(BuilderToolkit, Generic[T]):
     """
     Role:
-        -  Dependency Management
+        - Dependency Management
         
     Responsibilities:
         1.  Bundles ModelBuilder dependencies.

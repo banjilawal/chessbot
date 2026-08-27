@@ -16,7 +16,7 @@ from collection import Chain
 class TrimByOffsetRequest(ChainOffsetRequest):
     """
     Role:
-        -  Request
+        - Request
     
     Responsibilities:
         1. Carry information for modifying a Chain by an offset.

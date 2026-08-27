@@ -22,7 +22,7 @@ from logic.square import SquareDebugException
 class SquareOccupiedException(SquareDebugException):
     """
     Role:
-        -  Error Variable Identifier
+        - Error Variable Identifier
         -  Exception Chain Layer 2
         -  Exception Messaging
 

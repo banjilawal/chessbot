@@ -22,7 +22,7 @@ from system import  ExcessContextFlagsException
 class ExcessSchemaContextFlagsException(ExcessContextFlagsException):
     """
     Role:
-        -  Exception Chain Layer 2
+        - Exception Chain Layer 2
         -  Error Variable Identifier
         -  Debugging Metadata provider
 

@@ -24,7 +24,7 @@ __all__ = [
 class RankCarrierNullException(ModelCarrierNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required RankCarrierToggle is null.

@@ -1,4 +1,4 @@
-# src/node/dossier/node.py
+# src/structure/node/dossier/structure/node.py
 
 """
 Module: node.dossier.node

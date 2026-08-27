@@ -20,7 +20,7 @@ from domain.model import Edge, Node
 class EdgeBlueprint(StateModelBlueprint[Edge]):
     """
     Role:
-        -  Container
+        - Container
         -  DTO
         
     Responsibilities:

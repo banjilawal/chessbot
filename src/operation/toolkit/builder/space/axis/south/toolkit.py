@@ -20,7 +20,7 @@ from operation.toolkit.builder.space.axis.south.toolkit import AxisBuilderToolki
 class SouthAxisBuilderToolkit(AxisBuilderToolkit[SouthAxis]):
     """
     Role:
-        -  Dependency Management
+        - Dependency Management
         
     Responsibilities:
         1.  Bundles SouthAxisBuilder dependencies.

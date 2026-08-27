@@ -24,7 +24,7 @@ __all__ = [
 class StructureWrapperNullException(DomainObjectNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required StructureWrapper is null.

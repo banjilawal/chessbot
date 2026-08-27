@@ -26,7 +26,7 @@ from err import ContextNoValidationRouteException
 class FormationContextValidationRouteException(ContextNoValidationRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of FormationContext validation routes is missing.

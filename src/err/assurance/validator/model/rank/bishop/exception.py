@@ -22,7 +22,7 @@ __all__ = [
 class BishopValidatorException(RankValidatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a Bishop validator failed.

@@ -22,7 +22,7 @@ _all_ = [
 class ExcessBlueprintFlagsException(BlueprintException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
         
     Responsibilities:
         1.  Indicating that no Checker failed.s were enabled.

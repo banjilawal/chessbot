@@ -26,7 +26,7 @@ from err import ContextNoValidationRouteException
 class ArenaContextValidationRouteException(ContextNoValidationRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of ArenaContext validation routes is missing.

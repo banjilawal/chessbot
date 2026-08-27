@@ -24,7 +24,7 @@ __all__ = [
 class QueenRecurrenceSeriesValidatorException(RecurrenceTableGroupValidatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a QueenRecurrenceSeriesValidator failed.

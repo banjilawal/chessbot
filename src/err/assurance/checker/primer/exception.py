@@ -23,7 +23,7 @@ __all__ = [
 class BlueprintValidationPrimingExceptionIntegrity(IntegrityCheckerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a BlueprintValidation failed during its priming phase.

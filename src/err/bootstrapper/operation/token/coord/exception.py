@@ -23,7 +23,7 @@ __all__ = [
 class CoordTokenOperationBootstrapperException(TokenOperationBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Coord tokenfailed.

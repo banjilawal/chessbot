@@ -24,7 +24,7 @@ __all__ = [
 class BishopMovementSetEmptyException(MovementVectorSetEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required BishopMovementSet is empty.

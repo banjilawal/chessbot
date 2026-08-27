@@ -24,7 +24,7 @@ __all__ = [
 class BinderBuilderBootstrapperException(BuilderBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a BinderBuilderBootstrapper was aborted by an exception.

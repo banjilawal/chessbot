@@ -21,7 +21,7 @@ T = TypeVar("T", bound="ChainSearchRequest")
 class VectorNodeSearchRequestAdjudicator(ChainSearchRequestAdjudicator[VectorNodeSearchRequest]):
     """
     Role:
-        -  Permission Authorization
+        - Permission Authorization
         -  Checklist Runner
         -  Integrity Maintenance
         _   Consistency Assurance
@@ -96,7 +96,7 @@ class VectorNodeSearchRequestAdjudicator(ChainSearchRequestAdjudicator[VectorNod
 class VectorNodeSearchRequest(ChainSearchRequest[VectorNode]):
     """
     Role:
-        -  Request
+        - Request
 
     Responsibilities:
         1. Carry information to find a VectorNode in the a VectorChain.

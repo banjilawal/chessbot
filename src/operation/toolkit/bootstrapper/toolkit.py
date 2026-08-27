@@ -21,7 +21,7 @@ T = TypeVar("T", bound="Bootstrapper")
 class BootstrapperToolkit(Toolkit, Generic[T]):
     """
     Role:
-        -  Dependency Management
+        - Dependency Management
         
     Responsibilities:
         1.  Aggregates workers and services a carrier_validator requires for its tasks.

@@ -24,7 +24,7 @@ __all__ = [
 class PrimingEdgeAssemblyException(AssemblyPrimerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an EdgeAssembly priming step failed.

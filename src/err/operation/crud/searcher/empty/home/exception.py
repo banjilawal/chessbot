@@ -24,7 +24,7 @@ __all__ = [
 class HomeSquareSearchResultEmptyException(SearchResultEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a HomeSquareDetector did not find the required item.

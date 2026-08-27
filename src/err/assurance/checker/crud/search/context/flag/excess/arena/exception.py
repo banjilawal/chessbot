@@ -25,7 +25,7 @@ __all__ = [
 class ExcessArenaContextFlagsException(ExcessContextFlagsException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating too many ArenaSearchContext flags were enabled.

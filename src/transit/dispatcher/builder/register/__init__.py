@@ -1,4 +1,4 @@
-# src/transit/dispatcher/builder/register/__init__.py
+# src/transit/dispatcher/builder/structure/register/__init__.py
 
 """
 Module: transit.dispatcher.builder.register.__init__

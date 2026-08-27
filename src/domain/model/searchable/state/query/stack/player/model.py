@@ -18,7 +18,7 @@ from domain.model import StackQuery
 class PlayerQuery(StackQuery[Player]):
     """
     Role:
-        -  Model
+        - Model
         -  Search
         -  Stateless Data-Holder
 

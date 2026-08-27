@@ -27,7 +27,7 @@ from err import StackContextCheckerException
 class ArenaContextCheckerException(StackContextCheckerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a ArenaContextChecker failed.

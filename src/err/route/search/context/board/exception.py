@@ -26,7 +26,7 @@ from err import ContextSearchRouteException
 class BoardContextSearchRouteException(ContextSearchRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of BoardContext search routes is missing.

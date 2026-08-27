@@ -22,7 +22,7 @@ __all__ = [
 class HostageDatabaseEmptyException(DatabaseEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required HostageDatabase is empty.

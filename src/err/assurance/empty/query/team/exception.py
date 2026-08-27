@@ -25,7 +25,7 @@ from err import QueryStackEmptyException
 class TeamQueryStackEmptyException(QueryStackEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required TeamQuery's target stack is empty.

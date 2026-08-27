@@ -24,7 +24,7 @@ __all__ = [
 class VectorSetNullException(CollectionNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required VectorSet is null.

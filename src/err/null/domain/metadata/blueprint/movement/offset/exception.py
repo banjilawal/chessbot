@@ -24,7 +24,7 @@ __all__ = [
 class OffsetPatternBlueprintNullException(MovementPatternBlueprintNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required OffsetPatternBlueprint is null.

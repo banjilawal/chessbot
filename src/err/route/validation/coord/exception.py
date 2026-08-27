@@ -23,7 +23,7 @@ __all__ = [
 class CoordNoValidationRouteException(NoValidationRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of Coord validation routes is missing.

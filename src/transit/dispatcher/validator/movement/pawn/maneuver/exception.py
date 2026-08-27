@@ -23,7 +23,7 @@ __all__ = [
 class ManeuverOffsetPatternValidatorException(PawnOffsetPatternValidatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicate an error occurred in an ManeuverOffsetPatternValidator failed.

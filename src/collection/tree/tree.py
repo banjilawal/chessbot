@@ -13,14 +13,14 @@ from abc import ABC
 from typing import Generic, List, TypeVar
 
 from collection import Chain
-from domain import DataModel
+from domain import Model
 
-T = TypeVar("T", bound="DataModel")
+T = TypeVar("T", bound="Model")
 
 class Tree(ABC, Generic[T]):
     """
     Role:
-        -  Data Holder
+        - Data Holder
         -  Data protection
         
     Responsibilities:

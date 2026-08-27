@@ -26,7 +26,7 @@ from err import BinderBuilderException
 class ArenaBinderBuilderException(BinderBuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a ArenaBinderBuilder failed.

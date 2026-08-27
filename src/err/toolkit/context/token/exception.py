@@ -24,7 +24,7 @@ __all__ = [
 class TokenContextException(ContextException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a TokenContext encountered an error.

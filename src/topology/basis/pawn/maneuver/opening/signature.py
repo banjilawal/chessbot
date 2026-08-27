@@ -17,7 +17,7 @@ from basis import PawnManeuverBasis
 class OpeningPawnManeuverBasis(PawnManeuverBasis):
     """
     Role:
-        -  Data Holder
+        - Data Holder
 
     Responsibilities:
         1.  Constraints or that are used to generate a RankTree for Opening maneuvering Pawns.

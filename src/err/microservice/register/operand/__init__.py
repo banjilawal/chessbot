@@ -13,4 +13,4 @@ version: 0.0.2
 from .mismatch import *
 
 # Modules
-from .exception import VectorToggleRegisterMicroserviceException
+from .exception import CartesianToggleRegisterMicroserviceException

@@ -19,7 +19,7 @@ T = TypeVar("T", bound="DomainDataObject")
 class SearchableStructure(Structure[T], Searchable, ABC, Generic[T]):
     """
     Role:
-        -  Structural
+        - Structural
 
     Responsibility:
         1.  Makes a Structure searchable.

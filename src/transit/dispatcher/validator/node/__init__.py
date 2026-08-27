@@ -1,4 +1,4 @@
-# src/transit/dispatcher/validator/node/__init__.py
+# src/transit/dispatcher/validator/structure/node/__init__.py
 
 """
 Module: transit.dispatcher.validator.node.__init__

@@ -26,7 +26,7 @@ from err import ContextNoValidationRouteException
 class GameContextValidationRouteException(ContextNoValidationRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of GameContext validation routes is missing.

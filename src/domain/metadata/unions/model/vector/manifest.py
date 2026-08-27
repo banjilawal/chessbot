@@ -20,7 +20,7 @@ from domain import ModelTypeUnions, Vector, VectorBlueprint, VectorCarrier
 class VectorTypeUnions(ModelTypeUnions[Vector]):
     """
     Role:
-        -  Metadata
+        - Metadata
 
     Responsibilities:
         1. Catalog of data unions a Vector uses in the domain.

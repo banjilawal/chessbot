@@ -26,7 +26,7 @@ from err import ContextNoValidationRouteException
 class PersonaContextValidationRouteException(ContextNoValidationRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of PersonaContext validation routes is missing.

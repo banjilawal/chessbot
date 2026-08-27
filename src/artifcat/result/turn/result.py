@@ -19,7 +19,7 @@ T = TypeVar("T", Maneuver, Attack)
 class TurnResult(Result[T], Generic[T]):
     """
     Role:
-        -  Data Transport
+        - Data Transport
         -  Error Transport
 
     Responsibilities:

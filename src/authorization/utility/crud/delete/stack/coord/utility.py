@@ -21,7 +21,7 @@ from domain import CoordDeleteContext
 class CoordStackDeletePermissionUtility(StackDeletePermissionUtility[CoordDeleteContext]):
     """
     Role:
-        -  Utility
+        - Utility
 
     Responsibilities:
         1.  Bundles resources the CoordDeleteAuthorizer needs to evaluate a CoordDeleteRequest.

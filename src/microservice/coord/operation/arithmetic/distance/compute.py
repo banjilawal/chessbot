@@ -17,7 +17,7 @@ from logic.coord import Coord, EuclideanDistanceException, CoordService
 class EuclideanDistance:
     """
     Role:
-        -  Worker
+        - Worker
         -  Computation
 
     Responsibilities:

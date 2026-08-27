@@ -24,7 +24,7 @@ __all__ = [
 class VectorSetException(CollectionException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a VectorSet encountered an error.

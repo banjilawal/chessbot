@@ -25,7 +25,7 @@ class NorthEastQuadrantBuilder(
 ):
     """
     Role:
-        -  Builder
+        - Builder
         -  Integrity Management
 
     Responsibilities:

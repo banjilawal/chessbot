@@ -19,7 +19,7 @@ from carrier import ModelCarrier
 class PrisonerCarrier(ModelCarrier[Prisoner]):
     """
     Role:
-        -  Addressing
+        - Addressing
         -  Data-Holder
     
     Responsibilities:

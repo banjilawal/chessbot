@@ -25,7 +25,7 @@ __all__ = [
 class SoutheastQuadrantMappingFunctionException(QuadrantMappingFunctionException):
     """
     Role:
-        -  Failure Tracing
+        - Failure Tracing
 
     Responsibilities:
         1.  Indicating an SoutheastQuadrantMappingFunction did not complete its task.

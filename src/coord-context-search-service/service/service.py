@@ -16,7 +16,7 @@ from system import QueryService, IdFactory, LoggingLevelRouter, SearchResult
 class CoordQueryService(QueryService[Coord]):
     """
     Role:
-        -  API
+        - API
         -  Search Microservice,
 
     Responsibilities:

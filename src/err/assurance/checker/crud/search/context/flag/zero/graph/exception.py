@@ -25,7 +25,7 @@ __all__ = [
 class ZeroGraphContextFlagsException(ZeroContextFlagsException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating no SearchContext flags were enabled.

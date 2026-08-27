@@ -22,7 +22,7 @@ __all__ = [
 class PawnValidatorException(RankValidatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a Pawn validator failed.

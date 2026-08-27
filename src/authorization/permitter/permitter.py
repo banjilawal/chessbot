@@ -24,7 +24,7 @@ T = TypeVar("T", bound="Result")
 class OperationPermitter(ABC, Generic[T]):
     """
     Role:
-        -  Permission Authorization
+        - Permission Authorization
         -  Integrity Maintenance
         _   Consistency Assurance
 

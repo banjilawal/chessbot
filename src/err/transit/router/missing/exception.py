@@ -27,7 +27,7 @@ from err import RouterException
 class MissingExecutionRouteException(RouterException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required execution path does not exist.

@@ -18,7 +18,7 @@ from artifcat.report import RelationState, Report
 class RelationReport(Report):
     """
     Role:
-        -  Test results
+        - Test results
 
     Responsibilities:
         1.  Presents the results of testing if two entities have a bidirectional relationship.

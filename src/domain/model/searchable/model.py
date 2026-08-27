@@ -11,13 +11,13 @@ from __future__ import annotations
 
 from abc import ABC
 
-from domain import Searchable, DataModel
+from domain import Searchable, Model
 
 
-class SearchableModel(DataModel, Searchable, ABC):
+class SearchableModel(Model, Searchable, ABC):
     """
     Role:
-        -  Data Holder
+        - Data Holder
 
     Responsibilities:
         1. DataModel that implements the Searchable interface

@@ -17,7 +17,7 @@ from domain import Register, Square
 class SquareRegister(Register[Square]):
     """
     Role:
-        -  Model
+        - Model
         -  Data Holder
 
     Responsibilities:

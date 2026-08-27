@@ -22,7 +22,7 @@ __all__ = [
 class ConsistencyCheckerNullException(NullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required ConsistencyChecker is null.

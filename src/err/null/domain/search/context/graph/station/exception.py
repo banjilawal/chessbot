@@ -25,7 +25,7 @@ __all__ = [
 class StationContextNullException(GraphContextNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required StationContext is null.

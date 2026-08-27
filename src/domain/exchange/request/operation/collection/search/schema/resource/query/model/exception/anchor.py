@@ -22,7 +22,7 @@ from system import AnchorException
 class SchemaQueryException(AnchorException):
     """
     Role:
-        -  Exception Chain Layer 0
+        - Exception Chain Layer 0
         -  Exception coverage target
 
     Responsibilities:

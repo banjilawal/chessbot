@@ -26,7 +26,7 @@ T = TypeVar("T", bound="OffsetRank")
 class OffsetTopologyGenerator:
     """
     Role:
-        -  Computation
+        - Computation
 
     Responsibilities:
         1.  Generate a Bishop's diagonal traversal basiss.

@@ -24,7 +24,7 @@ __all__ = [
 class ArenaBoardRelationAnalyzerException(RelationAnalyzerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a board-arena relation analyzer from completing.

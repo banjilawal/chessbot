@@ -22,7 +22,7 @@ __all__ = [
 class IdColliderBootstrapperException(ColliderBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an id collision occured

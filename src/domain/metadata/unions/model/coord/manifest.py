@@ -20,7 +20,7 @@ from domain import ModelTypeUnions, Coord, CoordBlueprint, CoordCarrier, CoordSe
 class CoordTypeUnions(ModelTypeUnions[Coord]):
     """
     Role:
-        -  Metadata
+        - Metadata
 
     Responsibilities:
         1. Catalog of data unions a Coord uses in the domain.

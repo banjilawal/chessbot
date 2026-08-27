@@ -22,7 +22,7 @@ T = TypeVar("T", bound="DomainObjectCollection")
 class InsertPermissionRuleset(PermissionRuleset[InsertionResult], Generic[T]):
     """
     Role:
-        -  Dependency Management
+        - Dependency Management
         
     Responsibilities:
         1.  Aggregates workers and services a model requires for its tasks.

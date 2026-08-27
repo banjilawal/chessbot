@@ -21,7 +21,7 @@ from domain import CoordSearchSearchContext
 class CoordStackSearchPermissionUtility(StackSearchPermissionUtility[CoordSearchSearchContext]):
     """
     Role:
-        -  Utility
+        - Utility
 
     Responsibilities:
         1.  Bundles resources the CoordSearchAuthorizer needs to evaluate a CoordSearchRequest.

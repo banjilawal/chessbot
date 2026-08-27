@@ -22,7 +22,7 @@ T = TypeVar("T", bound="Node")
 class RemoveNodeRequest(ChainNodeRequest, ABC, Generic[T]):
     """
     Role:
-        -  Request
+        - Request
 
     Responsibilities:
         1. Carry Node information for removing a Node from a Chain.

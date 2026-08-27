@@ -16,7 +16,7 @@ from domain.model import Attack, KingAttackState, KingToken, Maneuver, Token
 class AttackKing(Attack[KingToken]):
     """
     Role:
-        -  Model
+        - Model
         -  Data Holder
 
     Responsibilities:

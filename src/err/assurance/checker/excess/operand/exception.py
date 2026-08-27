@@ -15,17 +15,17 @@ from err import ExcessBlueprintFlagsException
 
 _all_ = [
     # ======================# EXCESS_VECTOR_TOGGLE_FLAGS_FAILURE #======================#
-    "ExcessVectorToggleFlagsException",
+    "ExcessCartesianToggleFlagsException",
 ]
 
 # ======================# EXCESS_VECTOR_TOGGLE_FLAGS_FAILURE #======================#
-class ExcessVectorToggleFlagsException(ExcessBlueprintFlagsException):
+class ExcessCartesianToggleFlagsException(ExcessBlueprintFlagsException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
-        1.  Indicatings that more than one VectorToggle option was enabled.
+        1.  Indicatings that more than one CartesianToggle option was enabled.
 
     Attributes:
         msg: Optional[str]
@@ -41,7 +41,7 @@ class ExcessVectorToggleFlagsException(ExcessBlueprintFlagsException):
     Super Class:
         ExcessBlueprintFlagsException
     """
-    MSG = "More than one VectorToggle attribute enabled."
+    MSG = "More than one CartesianToggle attribute enabled."
     ERR_CODE = "EXCESS_VECTOR_TOGGLE_FLAGS_FAILURE"
     
     def __init__(

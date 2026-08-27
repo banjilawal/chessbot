@@ -22,7 +22,7 @@ from system import DebugException
 class SchemaQueryStackEmptyException(DebugException):
     """
     Role:
-        -  Error Variable Identifier
+        - Error Variable Identifier
         -  Exception Chain Layer 2,
         -  Exception Messaging
 

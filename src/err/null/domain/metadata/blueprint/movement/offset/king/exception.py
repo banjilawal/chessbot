@@ -24,7 +24,7 @@ __all__ = [
 class KingOffsetPatternBlueprintNullException(OffsetPatternBlueprintNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required KingOffsetPatternBlueprint is null.

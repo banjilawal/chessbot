@@ -20,7 +20,7 @@ from domain.model.searchable.state import (
 class TokenSearchService(SearchMicroservice[Token]):
     """
     Role:
-        -  API
+        - API
         -  Stateless microservice
         -  Operations Provider
 

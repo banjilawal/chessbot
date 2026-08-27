@@ -24,7 +24,7 @@ __all__ = [
 class FormationAssemblyPrimerException(AssemblyPrimerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a FormationAssembly priming step failed.

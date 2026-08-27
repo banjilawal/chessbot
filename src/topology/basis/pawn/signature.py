@@ -19,7 +19,7 @@ from basis import OffsetTopologyBasis
 class PawnBasis(ABC, OffsetTopologyBasis[Pawn]):
     """
     Role:
-        -  Data Holder
+        - Data Holder
 
     Responsibilities:
         1.  Constraints or that are used to generate a RankTree for King

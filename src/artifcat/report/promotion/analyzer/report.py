@@ -19,7 +19,7 @@ from domain.model import Rank
 class RankLevelApproval(Report):
     """
     Role:
-        -  Test results
+        - Test results
 
     Responsibilities:
         1.  Presents a token's promotion on an opening square.

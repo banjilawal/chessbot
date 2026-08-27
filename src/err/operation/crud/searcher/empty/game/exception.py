@@ -24,7 +24,7 @@ __all__ = [
 class GameSearchResultEmptyException(SearchResultEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a GameSearcher did not find the required item.

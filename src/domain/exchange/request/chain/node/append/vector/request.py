@@ -19,7 +19,7 @@ from domain.exchange.structures.node import VectorNode
 class AppendVectorNodeRequest(AppendNodeRequest[VectorNode]):
     """
     Role:
-        -  Request
+        - Request
 
     Responsibilities:
         1. Carry Node information for appending a Node to a Chain.

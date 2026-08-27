@@ -23,7 +23,7 @@ __all__ = [
 class EdgeBuilderException(BuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an Edge build failed.

@@ -25,7 +25,7 @@ from artifcat import MethodResultType
 class ColliderException(OperatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an item collided with the attractor.

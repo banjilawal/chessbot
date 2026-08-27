@@ -26,7 +26,7 @@ from err import ContextColliderBootstrapperException
 class CoordContextCollisionException(ContextColliderBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a CoordContextCollision step failed.

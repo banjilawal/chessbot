@@ -26,7 +26,7 @@ from err import ContextSearchRouteException
 class NodeContextSearchRouteException(ContextSearchRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of NodeContext search routes is missing.

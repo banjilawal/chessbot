@@ -26,7 +26,7 @@ from err import BinderAssemblyException
 class PlayerBinderAssemblyException(BinderAssemblyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a PlayerBinder assembly failed.

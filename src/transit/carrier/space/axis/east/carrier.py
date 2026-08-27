@@ -19,7 +19,7 @@ from space import EastAxis
 class EastAxisCarrier(SpaceCarrier[EastAxis]):
     """
     Role:
-        -  Data Transport
+        - Data Transport
 
     Responsibilities:
         2.  Transports either a EastAxis or its Blueprint.

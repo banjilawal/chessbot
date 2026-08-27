@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from abc import abstractmethod
 
-from domain import DataModel, Game, Player, Team
+from domain import Model, Game, Player, Team
 
 
 class GameWinner:

@@ -20,7 +20,7 @@ from domain import Snapshot, SnapshotTypeUnions, SnapshotNullExceptionRoster
 class SnapshotValidationBundle(ValidationBundle[Snapshot]):
     """
     Role:
-        -  Toolkit
+        - Toolkit
 
     Responsibilities:
         1.  Bundles types, null-exceptions, attribute-validators, and utilities SnapshotIntegrityChecker needs to

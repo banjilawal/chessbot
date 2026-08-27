@@ -24,7 +24,7 @@ __all__ = [
 class AttackPathMicroserviceException(PathMicroserviceException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a candidate did not pass an AttackPathMicroservice failed.

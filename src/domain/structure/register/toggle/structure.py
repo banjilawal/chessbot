@@ -20,16 +20,16 @@ class CartesianToggleRegister(Register[CartesianToggle]):
         -  Data Holder
 
     Responsibilities:
-        1.  Contains VectorToggles passed for Vector Algebra
+        1.  Contains CartesianToggles passed for Vector Algebra
 
     Attributes:
-        a: VectorToggle
-        b: VectorToggle
+        a: CartesianToggle
+        b: CartesianToggle
 
         is_vector_register:bool
         is_coord_register: bool
-        to_list: List[Vectortoggle]
-        to_dict: Dict[str, Vectortoggle]
+        to_list: List[CartesianToggle]
+        to_dict: Dict[str, CartesianToggle]
 
     Super Class:
         Register
@@ -42,8 +42,8 @@ class CartesianToggleRegister(Register[CartesianToggle]):
     ):
         """
         Args:
-            u: VectorToggle
-            v: VectorToggle
+            u: CartesianToggle
+            v: CartesianToggle
         """
         super().__init__(a=u, b=v)
     

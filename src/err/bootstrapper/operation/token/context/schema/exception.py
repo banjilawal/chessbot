@@ -26,7 +26,7 @@ from err import ContextTokenOperationBootstrapperException
 class SchemaContextTokenOperationBootstrapperException(ContextTokenOperationBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a SchemaContext tokenfailed.

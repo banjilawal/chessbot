@@ -1,4 +1,4 @@
-# src/space/dispatcher/builder/register/__init__.py
+# src/space/dispatcher/builder/structure/register/__init__.py
 
 """
 Module: space.builder.register.__init__

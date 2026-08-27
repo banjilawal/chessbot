@@ -23,7 +23,7 @@ __all__ = [
 class SquareNoValidationRouteException(NoValidationRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of Square validation routes is missing.

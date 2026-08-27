@@ -24,7 +24,7 @@ __all__ = [
 class OffsetSignatureNullException(SignatureNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required OffsetPattern is null.

@@ -26,7 +26,7 @@ from err import ContextSearchRouteException
 class PlayerContextSearchRouteException(ContextSearchRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of PlayerContext search routes is missing.

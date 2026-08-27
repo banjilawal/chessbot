@@ -24,7 +24,7 @@ __all__ = [
 class PoppingEmptyTokenStackException(PoppingEmptyStackException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that popping a TokenStack failed because it was empty.

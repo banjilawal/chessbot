@@ -1,4 +1,4 @@
-# src/transit/dispatcher/authorization/insertion/node/dispatcher.py
+# src/transit/dispatcher/authorization/insertion/structure/node/dispatcher.py
 
 """
 Module: transit.dispatcher.authorization.insertion.node.dispatcher

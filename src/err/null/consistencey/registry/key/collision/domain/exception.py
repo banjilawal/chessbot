@@ -23,7 +23,7 @@ __all__ = [
 class RegistryDomainKeyCollisionConsistencyCheckerNullException(RegistryKeyCollisionException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required name has already been used as a RegistryDomainKey.

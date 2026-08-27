@@ -20,7 +20,7 @@ from operation.toolkit.builder.model.team.toolkit import ModelBuilderToolkit
 class TeamBuilderToolkit(ModelBuilderToolkit[Team]):
     """
     Role:
-        -  Dependency Management
+        - Dependency Management
         
     Responsibilities:
         1.  Bundles TeamBuilder dependencies.

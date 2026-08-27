@@ -14,7 +14,7 @@ from domain.exchange.model.state.token import TokenQuery, TokenQueryBuilder, Tok
 class TokenQueryService(IntegrityMicroservice[TokenQuery]):
     """
     Role:
-        -  Microservice API
+        - Microservice API
         -  Stateless Integrity Lifecycle Manager
 
     Responsibilities:

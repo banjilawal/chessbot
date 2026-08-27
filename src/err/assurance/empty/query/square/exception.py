@@ -25,7 +25,7 @@ from err import QueryStackEmptyException
 class SquareQueryStackEmptyException(QueryStackEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required SquareQuery's target stack is empty.

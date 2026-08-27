@@ -11,17 +11,17 @@ from __future__ import annotations
 from typing import cast
 
 from assurance import ToggleValidator
-from domain.metadata.blueprint import VectorToggleBlueprint
-from carrier import VectorToggleCarrier
+from domain.metadata.blueprint import CartesianToggleBlueprint
+from carrier import CartesianToggleCarrier
 from err import (
     ExcessToggleActivationException, NoActiveTogglesException, NoValidationRouteException,
-    VectorToggleRootCheckerException
+    CartesianToggleRootCheckerException
 )
 from domain.model import Coord, Vector
 from assurance.validator import ToggleChecker
 from artifcat import ValidationResult
 from domain.structure.toggle import CartesianToggle
-from operation.toolkit import VectorToggleToolkit
+from operation.toolkit import CartesianToggleToolkit
 from util import LoggingLevelRouter
 
 
@@ -33,10 +33,10 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
 
 
     Responsibilities:
-        1.  Ensure a VectorToggleBlueprint instance is certified safe, reliable and consistent before use.
+        1.  Ensure a CartesianToggleBlueprint instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        bundle: VectorToggleToolkit
+        bundle: CartesianToggleToolkit
 
     Provides:
         -  execute(self, candidate: Any) -> ValidationResult:
@@ -45,36 +45,36 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
         IntegrityChecker
     """
     
-    def __init__(self, bundle: VectorToggleToolkit | None = VectorToggleToolkit()):
+    def __init__(self, bundle: CartesianToggleToolkit | None = CartesianToggleToolkit()):
         """
         Args:
-            bundle: VectorToggleToolkit
+            bundle: CartesianToggleToolkit
         """
         super().__init__(bundle=bundle)
     
     @property
-    def toolkit(self) -> VectorToggleBundle:
-        return cast(VectorToggleToolkit, super().ruleset)
+    def toolkit(self) -> CartesianToggleBundle:
+        return cast(CartesianToggleToolkit, super().ruleset)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate, Any) -> ValidationResult:
         """
-        Certify a candidate is a VectorToggleBlueprint that is safe to use.
+        Certify a candidate is a CartesianToggleBlueprint that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -  The candidate is not a VectorToggleDtoCarrier.
-                    -  The candidate is an empty VectorToggleDtoCarrier.
+                    -  The candidate is not a CartesianToggleDtoCarrier.
+                    -  The candidate is an empty CartesianToggleDtoCarrier.
                     -  Either the board, team, formation, rank or id get flagged unsafe.
-            2.  For a model_carrier send a VectorToggle in the success result. Otherwise, send a TokeBlueprint.
+            2.  For a model_carrier send a CartesianToggle in the success result. Otherwise, send a TokeBlueprint.
         Args:
             candidate, Any
         Returns:
             ValidationResult
         Raises:
-            VectorToggleCheckerException
-            VectorToggleDtoCarrierNullException
+            CartesianToggleCheckerException
+            CartesianToggleDtoCarrierNullException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -86,28 +86,28 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorToggleRootCheckerException(
+                CartesianToggleRootCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorToggleRootCheckerException.MSG,
-                    err_code=VectorToggleRootCheckerException.ERR_CODE,
+                    msg=CartesianToggleRootCheckerException.MSG,
+                    err_code=CartesianToggleRootCheckerException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
         carrier = cast(self.toolkit.carrier_model, carrier_validation.payload)
         
-        # --- Cast the candidate into a VectorToggleBlueprint for additional tests. ---#
+        # --- Cast the candidate into a CartesianToggleBlueprint for additional tests. ---#
         blueprint = cast(self.toolkit.blueprint_model, carrier)
         
         # Handle the case that neither option is enabled.
         if blueprint.has_no_active_context:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorToggleRootCheckerException(
+                CartesianToggleRootCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorToggleRootCheckerException.MSG,
-                    err_code=VectorToggleRootCheckerException.ERR_CODE,
+                    msg=CartesianToggleRootCheckerException.MSG,
+                    err_code=CartesianToggleRootCheckerException.ERR_CODE,
                     ex=NoActiveTogglesException(
                         msg=NoActiveTogglesException.MSG,
                         err_code=NoActiveTogglesException.ERR_CODE,
@@ -118,11 +118,11 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
         if blueprint.has_excessive_active_contexts:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorToggleRootCheckerException(
+                CartesianToggleRootCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorToggleRootCheckerException.MSG,
-                    err_code=VectorToggleRootCheckerException.ERR_CODE,
+                    msg=CartesianToggleRootCheckerException.MSG,
+                    err_code=CartesianToggleRootCheckerException.ERR_CODE,
                     ex=ExcessToggleActivationException(
                         msg=ExcessToggleActivationException.MSG,
                         err_code=ExcessToggleActivationException.ERR_CODE,
@@ -144,11 +144,11 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorToggleRootCheckerException(
+                CartesianToggleRootCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorToggleRootCheckerException.MSG,
-                    err_code=VectorToggleRootCheckerException.ERR_CODE,
+                    msg=CartesianToggleRootCheckerException.MSG,
+                    err_code=CartesianToggleRootCheckerException.ERR_CODE,
                     ex=validation.exception
                 )
             )
@@ -162,24 +162,24 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
         )
         
         
-    def _process_model_carrier(self, item) -> VectorToggleCarrier:
+    def _process_model_carrier(self, item) -> CartesianToggleCarrier:
         if isinstance(item, Coord):
             coord = cast(Coord, item)
-            return VectorToggleCarrier(
+            return CartesianToggleCarrier(
                 model=CartesianToggle(coord=coord)
             )
         vector = cast(Vector, item)
-        return VectorToggleCarrier(
+        return CartesianToggleCarrier(
             model=CartesianToggle(vector=vector)
         )
     
-    def _process_blueprint_carrier(self, item) -> VectorToggleCarrier:
+    def _process_blueprint_carrier(self, item) -> CartesianToggleCarrier:
         if isinstance(item, Coord):
             coord = cast(Coord, item)
-            return VectorToggleCarrier(
-                blueprint=VectorToggleBlueprint(coord=coord)
+            return CartesianToggleCarrier(
+                blueprint=CartesianToggleBlueprint(coord=coord)
             )
         vector = cast(Vector, item)
-        return VectorToggleCarrier(
-            blueprint=VectorToggleBlueprint(vector=vector)
+        return CartesianToggleCarrier(
+            blueprint=CartesianToggleBlueprint(vector=vector)
         )

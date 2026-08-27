@@ -24,7 +24,7 @@ __all__ = [
 class DisabledPawnConsistencyAuditorException(DisabledTokenException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an attempt was made to use a disabled pawn.

@@ -18,7 +18,7 @@ from microservice import TeamService
 class BoardTeamBinder:
     """
     Role:
-        -  Model
+        - Model
         -  Stateless Data-Holder
         
     Responsibility:

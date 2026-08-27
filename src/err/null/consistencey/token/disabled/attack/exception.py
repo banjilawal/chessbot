@@ -24,7 +24,7 @@ __all__ = [
 class DisabledTokenLaunchAttackConsistencyCheckerNullException(DisabledTokenException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required disabled token tried making an attack.

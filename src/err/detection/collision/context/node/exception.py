@@ -26,7 +26,7 @@ from err import ContextCollisionDetectorException
 class NodeContextCollisionException(ContextCollisionDetectorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a NodeContextCollision step failed.

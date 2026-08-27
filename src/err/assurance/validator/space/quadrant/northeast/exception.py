@@ -23,7 +23,7 @@ __all__ = [
 class NortheastQuadrantValidatorException(QuadrantValidatorException):
     """
     Role:
-        -  Failure Tracing
+        - Failure Tracing
 
     Responsibilities:
         1.  Indicating a NortheastQuadrantValidator failed.

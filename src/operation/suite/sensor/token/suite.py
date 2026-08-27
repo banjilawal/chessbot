@@ -19,7 +19,7 @@ from sensor import FriendshipAnalyzer, TokenCollider, TokenHomeReporter, TokenRe
 class TokenSensorSuite(SensorSuite[Token]):
     """
     Role:
-        -  Dependency Container
+        - Dependency Container
         -  Dynamic Dependency Provider
 
     Responsibilities:

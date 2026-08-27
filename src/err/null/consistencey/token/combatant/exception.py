@@ -24,7 +24,7 @@ __all__ = [
 class CombatantTokenConsistencyCheckerNullException(TokenException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required CombatantTokenConsistencyChecker is null.

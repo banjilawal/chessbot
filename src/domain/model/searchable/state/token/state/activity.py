@@ -13,7 +13,7 @@ from enum import Enum, auto
 class TokenActivityState(Enum):
     """
     Role:
-        -  State
+        - State
     
     Responsibilities:
         1.  Describes Token activity states

@@ -19,7 +19,7 @@ from topology import TraversalTopologyBasis
 class BishopTopologyBasis(TraversalTopologyBasis[Bishop]):
     """
     Role:
-        -  Data Holder
+        - Data Holder
 
     Responsibilities:
         1.  Constraints that generate a BishopVectorSpan.

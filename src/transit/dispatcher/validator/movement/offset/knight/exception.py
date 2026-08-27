@@ -23,7 +23,7 @@ __all__ = [
 class KnightOffsetPatternValidatorException(OffsetPatternValidatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicate a required KnightOffsetPatternValidator failed.

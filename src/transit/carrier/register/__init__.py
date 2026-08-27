@@ -1,18 +1,17 @@
-# src/transit/carrier/register/__init__.py
+# src/transit/carrier/structure/register/__init__.py
 
 """
-Module: transit.carrier.register.__init__
+Module: transit.carrier.structure.register.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== TRANSIT.CARRIER.REGISTER PACKAGE ===========#
+# =========== TRANSIT.CARRIER.STRUCTURE.REGISTER PACKAGE ===========#
 
 # Packages
-from .identity import *
 from .square import *
-from .toggle import *
+from .cartesian import *
 from .vector import *
 
 

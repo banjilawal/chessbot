@@ -26,7 +26,7 @@ class ChainInsertPermissionUtility(
 ):
     """
     Role:
-        -  Utility
+        - Utility
 
     Responsibilities:
         1.  Bundles resources the InsertAuthorizer needs to evaluate a InsertRequest.

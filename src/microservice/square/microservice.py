@@ -17,7 +17,7 @@ from domain.model import Square
 class SquareService(Microservice[Square]):
     """
     Role:
-        -  API Layer
+        - API Layer
         -  Microservice Worker
         -  Integrity Lifecycle Manager
      

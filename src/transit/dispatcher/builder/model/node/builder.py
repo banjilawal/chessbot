@@ -1,4 +1,4 @@
-# src/transit/dispatcher/builder/model/node/dispatcher/builder.py
+# src/transit/dispatcher/builder/model/structure/node/dispatcher/builder.py
 
 """
 Module: transit.dispatcher.builder.model.node.builder

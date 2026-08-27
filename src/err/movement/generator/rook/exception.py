@@ -24,7 +24,7 @@ __all__ = [
 class RookTopologyGeneratorException(TopologyGeneratorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a RookPatternGenerator did not complete its task.

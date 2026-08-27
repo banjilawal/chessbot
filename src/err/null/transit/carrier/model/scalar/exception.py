@@ -24,7 +24,7 @@ __all__ = [
 class ScalarCarrierNullException(ModelCarrierNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required ScalarCarrierToggle is null.

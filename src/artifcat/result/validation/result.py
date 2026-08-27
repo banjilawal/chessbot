@@ -18,7 +18,7 @@ T = TypeVar("T")
 class ValidationResult(Result[T], Generic[T]):
     """
     Role:
-        -  Data Transport
+        - Data Transport
         -  Error Transport
 
     Responsibilities:

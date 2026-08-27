@@ -23,7 +23,7 @@ __all__ = [
 class NorthwestQuadrantCarrierException(QuadrantSpaceCarrierException):
     """
     Role:
-        -  Failure Tracing
+        - Failure Tracing
 
     Responsibilities:
         1.  Indicating a NorthwestQuadrantCarrier experienced an error.

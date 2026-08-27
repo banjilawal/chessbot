@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== DOMAIN.STRUCTURE.REGISTER.VECTORTOGGLE PACKAGE ===========#
+# =========== DOMAIN.STRUCTURE.REGISTER.CARTESIANTOGGLE PACKAGE ===========#
 
 # Packages
 

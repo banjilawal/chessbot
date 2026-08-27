@@ -20,7 +20,7 @@ from operation.toolkit.builder.model.player.toolkit import ModelBuilderToolkit
 class PlayerBuilderToolkit(ModelBuilderToolkit[Player]):
     """
     Role:
-        -  Dependency Management
+        - Dependency Management
         
     Responsibilities:
         1.  Bundles PlayerBuilder dependencies.

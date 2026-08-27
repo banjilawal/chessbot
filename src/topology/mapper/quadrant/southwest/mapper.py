@@ -18,7 +18,7 @@ from topology.space import SouthwestQuadrant
 class SouthwestQuadrantMappingFunction(QuadrantMappingFunction[SouthwestQuadrant]):
     """
     Role:
-        -  Computation
+        - Computation
 
     Responsibilities:
         Define x_step and slope for getting the next vector southwest of origin.

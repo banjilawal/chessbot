@@ -24,7 +24,7 @@ T = TypeVar("T", bound="StackDeleteContext")
 class StackDeletePermissionUtility(DeletePermissionUtility[T], ABC, Generic[T]):
     """
     Role:
-        -  Utility
+        - Utility
 
     Responsibilities:
         1.  Bundles resources the DeleteAuthorizer needs to evaluate a DeleteRequest.

@@ -24,7 +24,7 @@ __all__ = [
 class DossierNodeCarrierNullException(NodeCarrierNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required DossierNodeCarrier is null.

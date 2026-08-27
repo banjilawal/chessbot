@@ -24,7 +24,7 @@ __all__ = [
 class BlockedPathSearcherException(PathSearcherException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an BlockedPathSearcher from

@@ -1,7 +1,7 @@
-# src/transit/carrier/node/carrier.py
+# src/transit/carrier/structure/node/carrier.py
 
 """
-Module: transit.carrier.node.carrier
+Module: transit.carrier.structure.node.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -20,7 +20,7 @@ from transit.structure.node import SquareNode
 class NodeCarrier(ModelCarrier[SquareNode]):
     """
     Role:
-        -  Addressing
+        - Addressing
         -  Data-Holder
     
     Responsibilities:

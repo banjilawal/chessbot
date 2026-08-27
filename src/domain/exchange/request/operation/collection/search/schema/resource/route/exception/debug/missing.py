@@ -20,7 +20,7 @@ from domain.exchange.model import SchemaDebugException
 class MissingSchemaSearchRouteException(SchemaDebugException):
     """
     Role:
-        -  Error Variable Identifier
+        - Error Variable Identifier
         -  Exception Chain Layer 2,
         -  Exception Messaging
 

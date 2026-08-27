@@ -23,7 +23,7 @@ from .square import *
 from .team import *
 from .token import *
 from .vector import *
-from .vectortoggle import *
+from .cartesianToggle import *
 
 # Modules
 from .exception import ModelCarrierException

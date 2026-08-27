@@ -1,4 +1,4 @@
-# src/logic/node/context/transit/route/__init__.py
+# src/logic/structure/node/context/transit/route/__init__.py
 
 """
 Module: logic.node.context.route.__init__

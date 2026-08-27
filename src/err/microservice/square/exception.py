@@ -24,7 +24,7 @@ __all__ = [
 class SquareMicroserviceException(MicroserviceException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a candidate did not pass a SquareMicroservice failed.

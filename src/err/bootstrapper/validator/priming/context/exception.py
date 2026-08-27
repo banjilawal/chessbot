@@ -24,7 +24,7 @@ __all__ = [
 class ToggleValidatorException(ValidatorBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a PrimingContextValidator encountered an error.

@@ -24,7 +24,7 @@ __all__ = [
 class PersonaAssemblyPrimerException(AssemblyPrimerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that n PersonaAssembly priming step failed.

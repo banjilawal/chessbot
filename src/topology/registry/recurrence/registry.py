@@ -21,7 +21,7 @@ T = TypeVar("T", bound="Space")
 class RecurrenceRegistry(ABC, Generic[T]):
     """
     Role:
-        -  Data Holder
+        - Data Holder
         -  Factory
         -  Switcher
 

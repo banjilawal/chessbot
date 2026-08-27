@@ -24,7 +24,7 @@ __all__ = [
 class TeamConsistencyAuditorException(ConsistencyAuditorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a TeamConsistencyAuditor failed.

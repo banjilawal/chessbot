@@ -24,7 +24,7 @@ __all__ = [
 class ArenaBuilderException(ModelBuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an ArenaBuilder failed.

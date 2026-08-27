@@ -23,7 +23,7 @@ __all__ = [
 class OffsetPatternValidatorException(MovementPatternValidatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicate a required OffsetPatternValidator failed.

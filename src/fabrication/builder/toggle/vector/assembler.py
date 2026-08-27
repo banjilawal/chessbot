@@ -10,25 +10,25 @@ version: 0.0.2
 from __future__ import annotations
 
 from fabrication.builder import ToggleBuilder
-from domain.metadata.blueprint.structure.toggle import VectorToggleBlueprint
+from domain.metadata.blueprint.structure.toggle import CartesianToggleBlueprint
 
 from artifcat import BuildResult
 from domain.structure.toggle import CartesianToggle
 from util import LoggingLevelRouter
 
 
-class VectorToggleBuilder(ToggleBuilder[CartesianToggle]):
+class CartesianToggleBuilder(ToggleBuilder[CartesianToggle]):
     """
     Role
         -  Builder
 
     Responsibilities:
-        1.  Create a VectorToggle instance from the safe blueprint.
+        1.  Create a CartesianToggle instance from the safe blueprint.
 
     Attributes:
 
     Provides:
-        -  def execute(self, blueprint: VectorToggleBlueprint,) -> BuildResult[VectorToggle]
+        -  def execute(self, blueprint: CartesianToggleBlueprint,) -> BuildResult[CartesianToggle]
 
     Super Class:
         ToggleBuilder
@@ -38,20 +38,20 @@ class VectorToggleBuilder(ToggleBuilder[CartesianToggle]):
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, blueprint: VectorToggleBlueprint,) -> BuildResult[CartesianToggle]:
+    def execute(self, blueprint: CartesianToggleBlueprint,) -> BuildResult[CartesianToggle]:
         """
-        Assemble a VectorToggle from the Blueprint's contents.
+        Assemble a CartesianToggle from the Blueprint's contents.
 
         Args:
-            blueprint: VectorToggleBlueprint
+            blueprint: CartesianToggleBlueprint
         Returns:
-            BuildResult[VectorToggle]
+            BuildResult[CartesianToggle]
         Raises:
         """
         method = f"{self.__class__.__name__}.execute"
         
         return BuildResult.success(
-            VectorToggleBlueprint(coord=blueprint.coord, vector=blueprint.vector)
+            CartesianToggleBlueprint(coord=blueprint.coord, vector=blueprint.vector)
         )
     
         

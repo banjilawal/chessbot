@@ -23,7 +23,7 @@ __all__ = [
 class SouthwestQuadrantValidatorException(QuadrantValidatorException):
     """
     Role:
-        -  Failure Tracing
+        - Failure Tracing
 
     Responsibilities:
         1.  Indicating a SouthwestQuadrantValidator failed.

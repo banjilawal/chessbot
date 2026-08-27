@@ -22,7 +22,7 @@ __all__ = [
 class FinalizeBoardContextBuilderException(FinalizeContextBuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that finalizing a BoardContextBuild failed.

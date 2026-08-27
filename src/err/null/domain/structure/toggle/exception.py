@@ -24,7 +24,7 @@ __all__ = [
 class ToggleNullException(StructureWrapperNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required Toggle is null.

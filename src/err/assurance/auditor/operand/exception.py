@@ -17,18 +17,18 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# VECTOR_TOGGLE_CONSISTENCY_AUDITOR_FAILURE #======================#
-    "VectorToggleConsistencyAuditorException",
+    "CartesianToggleConsistencyAuditorException",
 ]
 
 
 # ======================# VECTOR_TOGGLE_CONSISTENCY_AUDITOR_FAILURE #======================#
-class VectorToggleConsistencyAuditorException(ConsistencyAuditorException):
+class CartesianToggleConsistencyAuditorException(ConsistencyAuditorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
-        1.  Indicating a VectorToggleConsistencyAuditor failed.
+        1.  Indicating a CartesianToggleConsistencyAuditor failed.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class VectorToggleConsistencyAuditorException(ConsistencyAuditorException):
     Super Class:
         ConsistencyAuditorException
     """
-    MSG = "VectorToggle consistency error."
+    MSG = "CartesianToggle consistency error."
     ERR_CODE = "VECTOR_TOGGLE_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(

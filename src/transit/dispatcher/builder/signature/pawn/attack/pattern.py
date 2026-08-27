@@ -16,7 +16,7 @@ from topology.pattern import PawnSignature
 class AttackSignature(PawnSignature):
     """
     Role:
-        -  Data Holder
+        - Data Holder
         -  Immutability
 
     Responsibilities:

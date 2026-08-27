@@ -24,7 +24,7 @@ __all__ = [
 class QueenTraversalSignatureNullException(TraversalSignatureNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required QueenTraversalPattern is null.

@@ -20,7 +20,7 @@ from operation.toolkit.builder.register.coord.toolkit import RegisterBuilderTool
 class CoordRegisterBuilderToolkit(RegisterBuilderToolkit[CoordRegister]):
     """
     Role:
-        -  Dependency Management
+        - Dependency Management
         
     Responsibilities:
         1.  Bundles CoordRegisterRegisterBuilder dependencies.

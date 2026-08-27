@@ -19,7 +19,7 @@ from collection.stack import CoordStackService
 class CoordQuery(StackQuery[Coord]):
     """
     Role:
-        -  Model
+        - Model
         -  Search
         -  Stateless Data-Holder
 

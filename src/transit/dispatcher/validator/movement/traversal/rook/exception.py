@@ -23,7 +23,7 @@ __all__ = [
 class RookTraversalPatternValidatorException(TraversalPatternValidatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicate a required RookTraversalPatternValidator failed.

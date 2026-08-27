@@ -26,7 +26,7 @@ from err import ContextTokenOperationBootstrapperException
 class RankContextTokenOperationBootstrapperException(ContextTokenOperationBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a RankContext tokenfailed.

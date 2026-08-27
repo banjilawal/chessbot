@@ -24,7 +24,7 @@ __all__ = [
 class GraphEmptyException(EmptyItemException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required Graph is empty.

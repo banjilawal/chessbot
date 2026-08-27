@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Optional
 
-from domain.model import DataModel, Square
+from domain.model import Model, Square
 
 
-class Dossier(DataModel):
+class Dossier(Model):
     """]
     Role:
         -  Data Holder

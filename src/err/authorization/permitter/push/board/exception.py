@@ -24,7 +24,7 @@ __all__ = [
 class BoardPushPermitterException(PusherPermitterException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a BoardPushPermitter did not approve the request.

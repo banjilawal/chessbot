@@ -24,7 +24,7 @@ __all__ = [
 class NodeSearcherException(SearcherException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a NodeSearcher from

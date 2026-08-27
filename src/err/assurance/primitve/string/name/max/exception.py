@@ -23,7 +23,7 @@ __all__ = [
 class MaxNameLengthException(NameException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a name is too long.

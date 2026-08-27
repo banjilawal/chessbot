@@ -26,7 +26,7 @@ from err import ContextAssemblyException
 class RankContextAssemblyException(ContextAssemblyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a RankContext assembly failed.

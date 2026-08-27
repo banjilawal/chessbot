@@ -28,7 +28,7 @@ from util import LoggingLevelRouter
 class PromotionPawnRequestAdjudicator(TokenRequestAdjudicator[PawnPromoter]):
     """
     Role:
-        -  Helper
+        - Helper
         -  Test Runner
         
     Responsibilities:

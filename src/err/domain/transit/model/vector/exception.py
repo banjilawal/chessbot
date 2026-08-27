@@ -24,7 +24,7 @@ __all__ = [
 class VectorCarrierException(ModelCarrierException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a VectorCarrier encountered an error.

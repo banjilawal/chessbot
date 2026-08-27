@@ -26,7 +26,7 @@ from err import ContextBuildRouteException
 class NodeContextBuildRouteException(ContextBuildRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of NodeContext build routes is missing.

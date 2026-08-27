@@ -20,7 +20,7 @@ T = TypeVar("T", bound="DomainDataObject")
 class Structure(ABC, Generic[T]):
     """
     Role:
-        -  Structural
+        - Structural
 
     Responsibility:
         1.  Provides structure and additional capabilities to a pure data object.

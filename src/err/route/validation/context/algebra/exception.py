@@ -26,7 +26,7 @@ from err import ContextNoValidationRouteException
 class AlgebraContextValidationRouteException(ContextNoValidationRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of AlgebraContext validation routes is missing.

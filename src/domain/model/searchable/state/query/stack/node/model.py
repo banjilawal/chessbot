@@ -19,7 +19,7 @@ from collection.stack import VertexStackService
 class NodeQuery(StackQuery[Node]):
     """
     Role:
-        -  Model
+        - Model
         -  Search
         -  Stateless Data-Holder
 

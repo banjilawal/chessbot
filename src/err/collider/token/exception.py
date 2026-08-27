@@ -24,7 +24,7 @@ __all__ = [
 class TokenColliderException(ColliderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a token hit the collision attractor.

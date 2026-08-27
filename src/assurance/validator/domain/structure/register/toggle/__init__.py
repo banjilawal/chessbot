@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .checker import VectorToggleRegisterChecker
+from .checker import CartesianToggleRegisterChecker

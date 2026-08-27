@@ -24,7 +24,7 @@ __all__ = [
 class TokenContextValidatorException(StackContextValidatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a TokenContextValidator failed.

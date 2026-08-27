@@ -18,7 +18,7 @@ from artifcat import Result, UpdateState
 class UpdateResult(Result[Response]):
     """
     Role:
-        -  Data Transport
+        - Data Transport
         -  Error Transport
 
     Responsibilities:

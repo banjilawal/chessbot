@@ -24,7 +24,7 @@ __all__ = [
 class SouthwestQuadrantRecurrenceValidatorException(QuadrantRecurrenceValidatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a SouthwestQuadrantRecurrenceValidator failed.

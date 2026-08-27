@@ -23,7 +23,7 @@ __all__ = [
 class BinderBuilderException(BuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a BinderBuild failed.

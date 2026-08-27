@@ -23,7 +23,7 @@ T = TypeVar("T", bound="Axis")
 class AxisRootChecker(SpaceChecker, Generic[T]):
     """
     Role:
-        -  Definition
+        - Definition
 
     Responsibilities:
         1.  A horizontal or vertical line whose root is the Space's origin.

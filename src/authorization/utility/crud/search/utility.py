@@ -24,7 +24,7 @@ T = TypeVar("T", bound="SearchContext")
 class SearchPermissionUtility(CrudPermissionUtility[SearchRequest], ABC, Generic[T]):
     """
     Role:
-        -  Utility
+        - Utility
 
     Responsibilities:
         1.  Bundles resources the SearchAuthorizer needs to evaluate a SearchRequest.

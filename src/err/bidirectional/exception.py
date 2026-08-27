@@ -25,7 +25,7 @@ from artifcat import MethodResultType
 class BidirectionalRelationException(ChessException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an error related to bidirectional relation  occurred.

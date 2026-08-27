@@ -24,7 +24,7 @@ __all__ = [
 class CombatantTokenConsistencyAuditorException(TokenException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a CombatantTokenConsistencyAuditor failed.

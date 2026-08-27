@@ -21,7 +21,7 @@ from topology.space import SouthAxis
 class SouthAxisRecurrence(AxisRecurrence[SouthAxis]):
     """
     Role:
-        -  Computation
+        - Computation
         -  Iterator
 
     Responsibilities:

@@ -26,7 +26,7 @@ from transit.dispatcher.validator import (
 class ManeuverToolkit(PermitterToolkit):
     """
     Role:
-        -  Dependency Management
+        - Dependency Management
 
     Responsibilities:
         1.  Bundles dependencies a worker needs to complete its task.

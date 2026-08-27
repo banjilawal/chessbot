@@ -16,7 +16,7 @@ from collection.stack import StackService
 class CoordStackService(StackService[Coord]):
     """
     Role:
-        -  API
+        - API
         -  ACID compliance
         -  Stateful microservice
         -  Stateful CRUD Controller

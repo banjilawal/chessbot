@@ -24,7 +24,7 @@ __all__ = [
 class PopCoordCheckerException(PopStackCheckerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a PopCoordChecker failed.

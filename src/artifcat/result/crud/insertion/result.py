@@ -16,7 +16,7 @@ from artifcat import InsertionState
 class InsertionResult(CrudResult[bool]):
     """
     Role:
-        -  Data Transport
+        - Data Transport
         -  Error Transport
 
     Responsibilities:

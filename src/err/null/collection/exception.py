@@ -24,7 +24,7 @@ __all__ = [
 class CollectionNullException(NullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required Collection is null.

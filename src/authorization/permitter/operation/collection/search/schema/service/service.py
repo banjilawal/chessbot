@@ -20,7 +20,7 @@ from domain.model import (
 class SchemaLookupService(SearchMicroservice[Schema]):
     """
     Role:
-        -  API
+        - API
         -  Stateless microservice
         -  Operations Provider
 

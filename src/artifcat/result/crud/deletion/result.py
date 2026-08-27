@@ -18,7 +18,7 @@ T = TypeVar("T")
 class DeletionResult(CrudResult[T], Generic[T]):
     """
     Role:
-        -  Data Transport
+        - Data Transport
         -  Error Transport
 
     Responsibilities:

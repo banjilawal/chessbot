@@ -24,7 +24,7 @@ __all__ = [
 class AttackPathNullException(PathNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required AttackPath is null.

@@ -17,17 +17,17 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# VECTOR_TOGGLE_REGISTER_EMPTY_ERROR #======================#
-    "VectorToggleRegisterEmptyException",
+    "CartesianToggleRegisterEmptyException",
 ]
 
 # ======================# VECTOR_TOGGLE_REGISTER_EMPTY_ERROR #======================#
-class VectorToggleRegisterEmptyException(ModelRegisterEmptyException):
+class CartesianToggleRegisterEmptyException(ModelRegisterEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required VectorToggleRegister is empty.
+        1.  Indicating a required CartesianToggleRegister is empty.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class VectorToggleRegisterEmptyException(ModelRegisterEmptyException):
     Super Class:
         ModelRegisterEmptyException
     """
-    MSG = "VectorToggleRegister cannot be empty."
+    MSG = "CartesianToggleRegister cannot be empty."
     ERR_CODE = "VECTOR_TOGGLE_REGISTER_EMPTY_ERROR"
     
     def __init__(

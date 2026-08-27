@@ -24,7 +24,7 @@ __all__ = [
 class DeletionRequestNullException(RequestNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required DeletionRequest was null.

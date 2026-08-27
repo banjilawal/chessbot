@@ -21,7 +21,7 @@ __all__ = [
 class FinalizeBuilderException(FinalizationException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that finalizing a Finalize step failed.

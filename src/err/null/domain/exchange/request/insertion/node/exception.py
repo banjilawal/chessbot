@@ -24,7 +24,7 @@ __all__ = [
 class AddNodeRequestNullException(InsertionRequestNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required AddNodeRequest was null.

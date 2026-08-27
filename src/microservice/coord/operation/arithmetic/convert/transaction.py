@@ -17,7 +17,7 @@ from logic.coord import ConvertVectorException, Coord, CoordService
 class ConvertVectorToCoordTransaction:
     """
     Role:
-        -  Worker
+        - Worker
         -  Computation
 
     Responsibilities:

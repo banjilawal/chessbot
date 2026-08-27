@@ -22,7 +22,7 @@ __all__ = [
 class RankContextValidationPipelineException(ContextValidationPipelineException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an error occurred in an RankContextValidationPipeline.

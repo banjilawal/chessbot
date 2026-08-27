@@ -23,7 +23,7 @@ T = TypeVar("T", bound="Node")
 class NodeValidationBundle(StructureValidationBundle[T], ABC, Generic[T]):
     """
     Role:
-        -  Toolkit
+        - Toolkit
 
     Responsibilities:
         1.  Bundles types, null-exceptions, attribute-validators, and utilities NodeIntegrityChecker needs to

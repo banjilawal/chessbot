@@ -24,7 +24,7 @@ __all__ = [
 class GameSearchHitConflictException(SearchHitConflictException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a GameSearcher returned multiple hits for an item which should be unique.

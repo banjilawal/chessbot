@@ -25,7 +25,7 @@ T = TypeVar("T", bound="CrudRequest")
 class CrudPermissionUtility(PermissionUtility[T], ABC, Generic[T]):
     """
     Role:
-        -  Utility
+        - Utility
 
     Responsibilities:
         1.  Bundles resources the CrudAuthorizer needs to evaluate a CrudRequest.

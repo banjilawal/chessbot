@@ -22,7 +22,7 @@ __all__ = [
 class VectorBinderTokenOperationException(BinderTokenOperationException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a VectorBinder tokenfailed.

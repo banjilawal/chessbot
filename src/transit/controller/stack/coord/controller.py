@@ -15,7 +15,7 @@ from logic.coord import CoordQueryService, CoordService, CoordStackCrudControlle
 class CoordStackOpsController:
     """
     Role:
-        -  Operations Controller
+        - Operations Controller
 
     Responsibilities:
         1.  Provide a single entry point for transactions CoordStackService operates.

@@ -24,7 +24,7 @@ __all__ = [
 class TeamToggleBlueprintNullException(ToggleBlueprintNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required TeamBlueprint is null.

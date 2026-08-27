@@ -24,10 +24,10 @@ __all__ = [
 class CartesianToggleException(RegisterException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
-        1.  Indicating a VectorToggleRegister encountered an error.
+        1.  Indicating a CartesianToggleRegister encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class CartesianToggleException(RegisterException):
     Super Class:
         RegisterException
     """
-    MSG = "VectorToggleRegister error."
+    MSG = "CartesianToggleRegister error."
     ERR_CODE = "CARTESIAN_REGISTER_ERROR"
     
     def __init__(

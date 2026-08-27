@@ -24,7 +24,7 @@ __all__ = [
 class BishopTopologyGeneratorException(TopologyGeneratorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a BishopPatternGenerator did not complete its task.

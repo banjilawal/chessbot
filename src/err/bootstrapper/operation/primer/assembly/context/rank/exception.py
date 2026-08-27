@@ -26,7 +26,7 @@ from err import PrimingContextAssemblyException
 class PrimingRankContextAssemblyException(PrimingContextAssemblyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a RankContextAssembly priming step failed.

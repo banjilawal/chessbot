@@ -24,7 +24,7 @@ __all__ = [
 class SquareRegisterCarrierNullException(RegisterCarrierNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required SquareRegisterCarrierToggle is null.

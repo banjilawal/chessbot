@@ -17,7 +17,7 @@ from system import LoggingLevelRouter
 class GameToolkit(AnalyzerBootstrapperToolkit[Game]):
     """
     Role:
-        -  Container
+        - Container
         
     Responsibilities:
         1.  Collection of workers and services that are required for Board tasks.

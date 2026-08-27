@@ -24,7 +24,7 @@ __all__ = [
 class ManeuverDestinationOccupiedException(ManeuverException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a token cannot maneuver because its destination is occupied.

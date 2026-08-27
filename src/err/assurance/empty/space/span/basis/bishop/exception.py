@@ -24,7 +24,7 @@ __all__ = [
 class BishopBasisEmptyException(BasisEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required BishopBasis is empty.

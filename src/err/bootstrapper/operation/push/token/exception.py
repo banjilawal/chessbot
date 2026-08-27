@@ -24,7 +24,7 @@ __all__ = [
 class TokenPusherException(PusherException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that pushing onto a TokenStack failed.

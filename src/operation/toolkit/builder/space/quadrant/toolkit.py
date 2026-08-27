@@ -20,7 +20,7 @@ T = TypeVar("T", bound="Quadrant")
 class QuadrantBuilderToolkit(SpaceBuilderToolkit, Generic[T]):
     """
     Role:
-        -  Dependency Management
+        - Dependency Management
         
     Responsibilities:
         1.  Bundles QuadrantBuilder dependencies.

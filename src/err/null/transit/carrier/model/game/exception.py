@@ -24,7 +24,7 @@ __all__ = [
 class GameCarrierNullException(ModelCarrierNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required GameCarrierToggle is null.

@@ -24,7 +24,7 @@ __all__ = [
 class SquareStackCapacityException(StackCapacityException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a SquareStack is full.

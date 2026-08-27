@@ -24,7 +24,7 @@ __all__ = [
 class CircularPathCarrierException(PathException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a path's origin and destination are the same.

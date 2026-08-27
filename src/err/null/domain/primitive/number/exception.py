@@ -24,7 +24,7 @@ __all__ = [
 class NumberNullException(NullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required number is null.

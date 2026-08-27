@@ -1,4 +1,4 @@
-# src/transit/dispatcher/validator/model/register/operand/validator.py
+# src/transit/dispatcher/validator/model/structure/register/operand/validator.py
 
 """
 Module: transit.dispatcher.validator.model.register.operand.validator
@@ -28,7 +28,7 @@ class OrientationSelectorValidationDispatcher(ModelValidationDispatcher[Orientat
             before use.
 
     Attributes:
-        carrier_validator: VectorToggleRegisterIntegrityChecker
+        carrier_validator: CartesianToggleRegisterIntegrityChecker
 
     Properties:
         -  def validate(
@@ -42,13 +42,13 @@ class OrientationSelectorValidationDispatcher(ModelValidationDispatcher[Orientat
     
     def __init__(
             self,
-            integrity_checker: VectorToggleRegisterIntegrityChecker | None = VectorToggleRegisterIntegrityChecker(),
+            integrity_checker: CartesianToggleRegisterIntegrityChecker | None = CartesianToggleRegisterIntegrityChecker(),
     ):
         super().__init__(integrity_checker=integrity_checker)
         
     @property
-    def integrity_checker(self) -> VectorToggleRegisterIntegrityChecker:
-        return cast(VectorToggleRegisterIntegrityChecker, super().integrity_checker)
+    def integrity_checker(self) -> CartesianToggleRegisterIntegrityChecker:
+        return cast(CartesianToggleRegisterIntegrityChecker, super().integrity_checker)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult:

@@ -26,7 +26,7 @@ from err import ContextBuildRouteException
 class ArenaContextBuildRouteException(ContextBuildRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of ArenaContext build routes is missing.

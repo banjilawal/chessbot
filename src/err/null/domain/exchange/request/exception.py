@@ -24,7 +24,7 @@ __all__ = [
 class RequestNullException(NullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that n Request is null.

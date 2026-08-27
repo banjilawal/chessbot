@@ -18,7 +18,7 @@ from logic.zone.model import Zone
 class ZoneTable:
     """
     Role:
-        -  Addressing
+        - Addressing
         -  Data-Holder
 
     Responsibilities:

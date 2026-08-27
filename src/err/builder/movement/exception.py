@@ -24,7 +24,7 @@ __all__ = [
 class MovementPatternBuilderException(BuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required MovementPatternBuilder failed.

@@ -25,7 +25,7 @@ from err import QueryFullException
 class NodeQueryFullException(QueryFullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required NodeQuery is full.

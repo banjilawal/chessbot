@@ -20,10 +20,10 @@ from util import LoggingLevelRouter
 
 
 
-class AddVectorPermitter(ComputationPermitter[VectorToggle]):
+class AddVectorPermitter(ComputationPermitter[CartesianToggle]):
     """
     Role:
-        -  Permission Authorization
+        - Permission Authorization
         -  Integrity Maintenance
         _   Consistency Assurance
 

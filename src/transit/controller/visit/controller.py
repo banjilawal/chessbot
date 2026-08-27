@@ -15,7 +15,7 @@ from transit.controller import Controller
 class VisitationController(Controller):
     """
     Role:
-        -  Lifecycle Management
+        - Lifecycle Management
         -  Controller
 
     Responsibilities:

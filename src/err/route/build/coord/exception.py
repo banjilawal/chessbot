@@ -23,7 +23,7 @@ __all__ = [
 class CoordBuildRouteException(BuildRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of Coord build routes is missing.

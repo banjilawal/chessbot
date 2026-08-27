@@ -27,7 +27,7 @@ from err import StackContextCheckerException
 class VectorContextCheckerException(StackContextCheckerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a VectorContextChecker failed.

@@ -20,7 +20,7 @@ from domain import Player, PlayerTypeUnions, PlayerNullExceptionRoster
 class PlayerValidationBundle(ValidationBundle[Player]):
     """
     Role:
-        -  Toolkit
+        - Toolkit
 
     Responsibilities:
         1.  Bundles types, null-exceptions, attribute-validators, and utilities PlayerIntegrityChecker needs to

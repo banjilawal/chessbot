@@ -24,7 +24,7 @@ __all__ = [
 class RookTraversalSignatureNullException(TraversalSignatureNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required RookTraversalPattern is null.

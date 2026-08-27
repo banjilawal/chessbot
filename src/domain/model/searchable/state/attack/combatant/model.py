@@ -16,7 +16,7 @@ from domain.model import Attack, CombatantAttackState, CombatantToken, Maneuver,
 class AttackCombatant(Attack[CombatantToken]):
     """
     Role:
-        -  Model
+        - Model
         -  Data Holder
 
     Responsibilities:

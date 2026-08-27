@@ -25,7 +25,7 @@ __all__ = [
 class ToggleBlueprintNullException(BlueprintNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required Blueprint is null.

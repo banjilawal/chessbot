@@ -25,7 +25,7 @@ __all__ = [
 class ExcessNodeContextFlagsException(ExcessContextFlagsException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating too many NodeSearchContext flags were enabled.

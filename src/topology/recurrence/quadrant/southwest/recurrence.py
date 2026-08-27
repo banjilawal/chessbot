@@ -19,7 +19,7 @@ from topology.space import SouthwestQuadrant
 class SouthwestQuadrantRecurrence(QuadrantRecurrence[SouthwestQuadrant]):
     """
     Role:
-        -  Computation
+        - Computation
         -  Iterator
 
     Responsibilities:

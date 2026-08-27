@@ -19,7 +19,7 @@ T = TypeVar("T", bound="Space")
 class Recurrence(ABC, Generic[T]):
     """
     Role:
-        -  Computation
+        - Computation
         -  Iterator
 
     Responsibilities:

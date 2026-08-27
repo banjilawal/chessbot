@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 class EastAxisEndpointBuilder:
     """
     Role:
-        -  Builder
+        - Builder
         -  Integrity Management
 
     Responsibilities:

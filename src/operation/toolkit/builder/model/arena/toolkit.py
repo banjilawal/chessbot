@@ -20,7 +20,7 @@ from operation.toolkit.builder.model.arena.toolkit import ModelBuilderToolkit
 class ArenaBuilderToolkit(ModelBuilderToolkit[Arena]):
     """
     Role:
-        -  Dependency Management
+        - Dependency Management
         
     Responsibilities:
         1.  Bundles ArenaBuilder dependencies.

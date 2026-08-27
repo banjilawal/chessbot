@@ -24,7 +24,7 @@ __all__ = [
 class VectorNodeNullException(NodeNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required VectorNode is null.

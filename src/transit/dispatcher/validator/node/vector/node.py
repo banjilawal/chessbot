@@ -1,4 +1,4 @@
-# src/node/vector/node.py
+# src/structure/node/vector/structure/node.py
 
 """
 Module: node.vector.node

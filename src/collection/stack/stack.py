@@ -23,7 +23,7 @@ T = TypeVar("T", bound="StateModel")
 class StackService(DomainObjectCollection, ABC, Generic[T]):
     """
     Role:
-        -  Data layer
+        - Data layer
         -  CRUD controller.
         -  ACID compliance.
         -  Microservice API

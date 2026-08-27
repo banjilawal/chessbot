@@ -22,7 +22,7 @@ E = TypeVar("E", bound=Enum)
 class CatalogQuery(Query, Generic[E]):
     """
     Role:
-        -  Model
+        - Model
         -  Stateless Data-Holder
         -  Messaging
 

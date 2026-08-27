@@ -23,7 +23,7 @@ T = TypeVar("T", bound="Space")
 class SpaceMappingFunction(ABC, Generic[T]):
     """
     Role:
-        -  Computation
+        - Computation
 
     Responsibilities:
         1.  Stepping function which gives the next vector in a Space.

@@ -26,7 +26,7 @@ from err import BinderTokenOperationBootstrapperException
 class GameBinderTokenOperationBootstrapperException(BinderTokenOperationBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a GameBinder tokenfailed.

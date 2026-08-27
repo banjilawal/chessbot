@@ -23,7 +23,7 @@ __all__ = [
 class EmptyTeamStackDeletionException(EmptyStackDeletionException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicatings that popping An TeamStack failed because it was empty.

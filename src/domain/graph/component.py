@@ -10,9 +10,12 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
+from typing import TypeVar
 
-from domain import DomainDataObject, Searchable
+from domain import Searchable
+
+T = TypeVar("T", bound="StatefulModel")
 
 
-class GraphComponent(DomainDataObject, Searchable, ABC):
+class GraphComponent(ABC,  Searchable):
     pass

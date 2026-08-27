@@ -18,7 +18,7 @@ from domain.model import Blueprint, Scalar
 class ScalarBlueprint(ModelBlueprint[Scalar]):
     """
     Role:
-        -  Container
+        - Container
 
     Responsibilities:
         1.  Provides magnitude value for instantiating a Scalar object.

@@ -22,7 +22,7 @@ __all__ = [
 class ArenaPlayerBinderValidatorException(BinderValidatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a ArenaPlayerBinder validator failed.

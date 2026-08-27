@@ -25,7 +25,7 @@ __all__ = [
 class ExcessGameContextFlagsException(ExcessContextFlagsException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating too many GameSearchContext flags were enabled.

@@ -22,7 +22,7 @@ __all__ = [
 class BoardDatabaseFullException(DatabaseFullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required BoardDatabase is full.

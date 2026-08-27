@@ -24,7 +24,7 @@ __all__ = [
 class KnightOffsetSignatureNullException(OffsetSignatureNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required KnightOffsetPattern is null.

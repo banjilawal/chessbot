@@ -24,7 +24,7 @@ __all__ = [
 class KingPathSearcherException(PathSearcherException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an KingPathSearcher from

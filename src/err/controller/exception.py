@@ -22,7 +22,7 @@ __all__ = [
 class ControllerException(ChessException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a  encountered an error.

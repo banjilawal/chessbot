@@ -24,7 +24,7 @@ __all__ = [
 class PathException(ModelException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Path encountered an error.

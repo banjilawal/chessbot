@@ -24,7 +24,7 @@ __all__ = [
 class CartesianPointException(ModelException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a CartesianPoint encountered an error.

@@ -24,7 +24,7 @@ __all__ = [
 class PersonaNullException(SchemaNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that n Persona is null.

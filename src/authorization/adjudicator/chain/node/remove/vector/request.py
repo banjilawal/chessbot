@@ -19,7 +19,7 @@ from domain.structure.searchable.node import VectorNode
 class RemoveVectorNodeRequest(RemoveNodeRequest[VectorNode]):
     """
     Role:
-        -  Request
+        - Request
 
     Responsibilities:
         1. Carry information about which node to remove from a VectorChain.

@@ -24,7 +24,7 @@ __all__ = [
 class QuadrantEmptyException(LinearSpaceEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required Quadrant is empty.

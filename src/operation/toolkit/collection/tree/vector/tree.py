@@ -19,7 +19,7 @@ from tree import CoordTree, Tree
 class VectorTree(Tree[Vector]):
     """
     Role:
-        -  Data Holder
+        - Data Holder
         -  Data protection
 
     Responsibilities:

@@ -25,7 +25,7 @@ __all__ = [
 class VectorNodeContextNullException(ChainContextNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required VectorNodeContext is null.

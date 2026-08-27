@@ -24,7 +24,7 @@ __all__ = [
 class LineSegmentEmptyException(LinearSpaceEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required LineSegment's endpoints are empty.

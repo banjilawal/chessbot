@@ -26,7 +26,7 @@ from err import BinderBuilderBootstrapperException
 class GameBinderBuilderBootstrapperException(BinderBuilderBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a GameBinderBuilderBootstrapper was aborted by an exception.

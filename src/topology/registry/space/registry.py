@@ -20,7 +20,7 @@ T = TypeVar("T", bound="Space")
 class SpaceReservoir(ABC, Generic[T]):
     """
     Role:
-        -  Selection
+        - Selection
         -  Iterator
         -  Routing Mask
 

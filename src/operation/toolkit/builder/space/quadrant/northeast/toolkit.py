@@ -20,7 +20,7 @@ from operation.toolkit.builder.space.quadrant.northeast.toolkit import QuadrantB
 class NortheastQuadrantBuilderToolkit(QuadrantBuilderToolkit[NortheastQuadrant]):
     """
     Role:
-        -  Dependency Management
+        - Dependency Management
         
     Responsibilities:
         1.  Bundles NortheastQuadrantBuilder dependencies.

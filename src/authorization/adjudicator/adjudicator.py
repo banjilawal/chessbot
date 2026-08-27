@@ -22,7 +22,7 @@ T = TypeVar("T", bound="Request")
 class RequestAdjudicator(ABC, Generic[T]):
     """
     Role:
-        -  Permission Authorization
+        - Permission Authorization
         -  Checklist Runner
         -  Integrity Maintenance
         _   Consistency Assurance

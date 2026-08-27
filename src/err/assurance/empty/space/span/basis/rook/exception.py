@@ -24,7 +24,7 @@ __all__ = [
 class RookBasisEmptyException(BasisEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required RookBasis is empty.

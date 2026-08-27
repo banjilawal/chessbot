@@ -20,7 +20,7 @@ P = TypeVar("P", bound=OperationPermitter)
 class PermitterToolkit(Toolkit[OperationPermitter, Generic[P]]):
     """
     Role:
-        -  Dependency Management
+        - Dependency Management
         
     Responsibilities:
         1.  Aggregates workers and services a permitter requires for its tasks.

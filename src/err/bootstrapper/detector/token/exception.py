@@ -24,7 +24,7 @@ __all__ = [
 class TokenCollisionDetectorBootstrapperException(DetectorBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a TokenCollision step failed.

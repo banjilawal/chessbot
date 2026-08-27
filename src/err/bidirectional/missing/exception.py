@@ -26,7 +26,7 @@ from artifcat import MethodResultType
 class MissingRegistrationException(BidirectionalRelationException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that the satellite (many-side) has not registered with its primary (one-side).

@@ -22,7 +22,7 @@ from transit.dispatcher.validator import RankValidationDispatcher
 class PromotionLevelRequestAdjudicator(RequestAdjudicator):
     """
     Role:
-        -  Helper
+        - Helper
         -  Test Runner
         
     Responsibilities:

@@ -24,7 +24,7 @@ __all__ = [
 class CoordBlueprintNullException(ModelBlueprintNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required CoordBlueprint is null.

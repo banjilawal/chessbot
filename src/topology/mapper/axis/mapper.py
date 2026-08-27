@@ -22,7 +22,7 @@ T = TypeVar("T", bound="Axis")
 class AxisMappingFunction(SpaceMappingFunction, Generic[T]):
     """
     Role:
-        -  Computation
+        - Computation
 
     Responsibilities:
         1.  Get the next vector, V, after U in Axis Space, by addition of a delta_vector

@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 class DeleterPermitter(OperationPermitter):
     """
     Role:
-        -  Request Analyzer
+        - Request Analyzer
         -  Rights Granter
         -  Consistency, Integrity Maintenance
 

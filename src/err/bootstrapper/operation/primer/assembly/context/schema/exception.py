@@ -26,7 +26,7 @@ from err import PrimingContextAssemblyException
 class PrimingSchemaContextAssemblyException(PrimingContextAssemblyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a SchemaContextAssembly priming step failed.

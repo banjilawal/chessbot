@@ -22,7 +22,7 @@ __all__ = [
 class VisitpingGraphStackException(VisitpingStackException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that visitping a GraphStack failed.

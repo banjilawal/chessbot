@@ -24,7 +24,7 @@ T = TypeVar("T", bound="DeleteContext")
 class DeletePermissionUtility(CrudPermissionUtility[DeleteRequest], ABC, Generic[T]):
     """
     Role:
-        -  Utility
+        - Utility
 
     Responsibilities:
         1.  Bundles resources the DeleteAuthorizer needs to evaluate a DeleteRequest.

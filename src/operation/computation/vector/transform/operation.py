@@ -12,10 +12,10 @@ from typing import Any
 
 
 
-class VectorTransform(Computation[VectorToggle]):
+class VectorTransform(Computation[CartesianToggle]):
     """
     Role:
-        -  Operation
+        - Operation
         -  Transformer
 
     Responsibilities:
@@ -25,7 +25,7 @@ class VectorTransform(Computation[VectorToggle]):
             permitter: Optional[VectorTransformPermitter]
             
     Provides:
-        -  def execute(self, request: VectorTransformRequest) -> ComputationResult[VectorToggle]
+        -  def execute(self, request: VectorTransformRequest) -> ComputationResult[CartesianToggle]
 
     Super Class:
         Computation
@@ -43,7 +43,7 @@ class VectorTransform(Computation[VectorToggle]):
         return cast(VectorTransformPermitter, super().permitter)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: VectorTransformRequest) -> ComputationResult[VectorToggle]:
+    def execute(self, request: VectorTransformRequest) -> ComputationResult[CartesianToggle]:
         pass
     
     @classmethod

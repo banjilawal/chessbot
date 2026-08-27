@@ -1,7 +1,7 @@
-# src/transit/carrier/register/point/carrier.py
+# src/transit/carrier/structure/register/point/carrier.py
 
 """
-Module: transit.carrier.register.point.carrier
+Module: transit.carrier.structure.register.point.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,24 +11,22 @@ from __future__ import annotations
 
 from typing import Optional
 
-from transit.metadata.blueprint import VectorToggleRegisterBlueprint
-from carrier import RegisterCarrier
-from transit.structure.register import CartesianToggleRegister
-from transit.structure.toggle import CartesianToggle
+from domain import CartesianToggle
+from transit import RegisterCarrier
 
 
-class VectorToggleRegisterCarrier(RegisterCarrier[CartesianToggle]):
+class CartesianToggleRegisterCarrier(RegisterCarrier[CartesianToggle]):
     """
     Role:
-        -  Addressing
+        - Addressing
         -  Data-Holder
     
     Responsibilities:
-        1.  Entity for transporting either an VectorToggleRegister or VectorToggleRegisterBlueprint
+        1.  Entity for transporting either a CartesianToggleRegister or CartesianToggleRegisterBlueprint
     
     Attributes:
-        model: Optional[VectorToggleRegister]
-        blueprint: Optional[VectorToggleRegisterBlueprint]
+        model: Optional[CartesianToggleRegister]
+        blueprint: Optional[CartesianToggleRegisterBlueprint]
         is_model_carrier: bool
         is_blueprint_carrier: bool
         has_overflow: bool
@@ -44,7 +42,7 @@ class VectorToggleRegisterCarrier(RegisterCarrier[CartesianToggle]):
             self,
             model: Optional[CartesianToggleRegister] |
                    None = None,
-            blueprint: Optional[VectorToggleRegisterBlueprint] |
+            blueprint: Optional[CartesianToggleRegisterBlueprint] |
                        None = None,
     ):
         """
@@ -57,7 +55,7 @@ class VectorToggleRegisterCarrier(RegisterCarrier[CartesianToggle]):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> [CartesianToggleRegister | VectorToggleRegisterBlueprint | None]:
+    def entity(self) -> [CartesianToggleRegister | CartesianToggleRegisterBlueprint | None]:
         if self.is_not_carrying_anything:
             return None
         if self.is_carrying_model:
@@ -76,13 +74,13 @@ class VectorToggleRegisterCarrier(RegisterCarrier[CartesianToggle]):
     def is_carrying_blueprint(self) -> bool:
         return not (
                 self.is_carrying_model and
-                isinstance(self._blueprint, VectorToggleRegisterBlueprint)
+                isinstance(self._blueprint, CartesianToggleRegisterBlueprint)
         )
     
-    def extract_blueprint(self) -> Optional[VectorToggleRegisterBlueprint]:
+    def extract_blueprint(self) -> Optional[CartesianToggleRegisterBlueprint]:
         if self.is_not_carrying_anything: return None
         if self.is_carrying_blueprint: return self._blueprint
-        return VectorToggleRegisterBlueprint(
+        return CartesianToggleRegisterBlueprint(
             u=self._model.a,
             v=self._model.b,
         )

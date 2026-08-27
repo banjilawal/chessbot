@@ -24,7 +24,7 @@ __all__ = [
 class ArchetypeNullException(SchemaNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required Archetype is null.

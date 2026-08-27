@@ -17,7 +17,7 @@ from basis import PawnAttackBasis
 class OpeningPawnAttackBasis(PawnAttackBasis):
     """
     Role:
-        -  Data Holder
+        - Data Holder
 
     Responsibilities:
         1.  Constraints or that are used to generate a RankTree for Opening attacking Pawns.

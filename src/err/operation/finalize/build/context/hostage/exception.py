@@ -22,7 +22,7 @@ __all__ = [
 class FinalizeHostageContextBuilderException(FinalizeContextBuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that finalizing a HostageContextBuild failed.

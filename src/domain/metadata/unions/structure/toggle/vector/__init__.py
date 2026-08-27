@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .manifest import VectorToggleUnions
+from .manifest import CartesianToggleUnions

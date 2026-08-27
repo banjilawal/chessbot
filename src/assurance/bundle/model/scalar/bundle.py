@@ -20,7 +20,7 @@ from domain import Scalar, ScalarTypeUnions, ScalarNullExceptionRoster
 class ScalarValidationBundle(ValidationBundle[Scalar]):
     """
     Role:
-        -  Toolkit
+        - Toolkit
 
     Responsibilities:
         1.  Bundles types, null-exceptions, attribute-validators, and utilities ScalarIntegrityChecker needs to

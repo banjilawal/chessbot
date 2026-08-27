@@ -17,18 +17,18 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# VECTOR_TOGGLE_CONSISTENCY_CHECKER_NULL_ERROR #======================#
-    "VectorToggleConsistencyCheckerNullException",
+    "CartesianToggleConsistencyCheckerNullException",
 ]
 
 
 # ======================# VECTOR_TOGGLE_CONSISTENCY_CHECKER_NULL_ERROR #======================#
-class VectorToggleConsistencyCheckerNullException(ConsistencyCheckerNullException):
+class CartesianToggleConsistencyCheckerNullException(ConsistencyCheckerNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required VectorToggleConsistencyChecker is null.
+        1.  Indicating a required CartesianToggleConsistencyChecker is null.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class VectorToggleConsistencyCheckerNullException(ConsistencyCheckerNullExceptio
     Super Class:
         ConsistencyCheckerNullException
     """
-    MSG = "VectorToggleConsistencyChecker cannot be null."
+    MSG = "CartesianToggleConsistencyChecker cannot be null."
     ERR_CODE = "VECTOR_TOGGLE_CONSISTENCY_CHECKER_NULL_ERROR"
     
     def __init__(

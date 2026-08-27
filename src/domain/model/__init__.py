@@ -18,4 +18,4 @@ from .scalar import *
 from .searchable import *
 
 # Modules
-from .model import DataModel
+from .model import Model

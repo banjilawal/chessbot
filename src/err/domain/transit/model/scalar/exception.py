@@ -24,7 +24,7 @@ __all__ = [
 class ScalarCarrierException(ModelCarrierException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a ScalarCarrier encountered an error.

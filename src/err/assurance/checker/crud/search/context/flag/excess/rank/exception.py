@@ -25,7 +25,7 @@ __all__ = [
 class ExcessRankContextFlagsException(ExcessContextFlagsException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating too many RankSearchContext flags were enabled.

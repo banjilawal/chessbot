@@ -26,7 +26,7 @@ from err import ContextBuilderException
 class NodeContextBuilderException(ContextBuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a NodeContext build failed.

@@ -23,7 +23,7 @@ __all__ = [
 class TokenTokenOperationException(TokenOperatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Token tokenfailed.

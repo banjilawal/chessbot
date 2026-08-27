@@ -16,10 +16,10 @@ from transit.dispatcher.validator import NumberValidator
 class NumberToolkit(AnalyzerBootstrapperToolkit[int]):
     """
     Role:
-        -  Container
+        - Container
 
     Responsibilities:
-        1.  Collection of workers and services that are required for VectorToggle tasks.
+        1.  Collection of workers and services that are required for CartesianToggle tasks.
         2.  Simplifies entry points.
         3.  No logic in the Toolkit.
 

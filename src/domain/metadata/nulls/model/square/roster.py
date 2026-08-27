@@ -22,7 +22,7 @@ from err import (
 class SquareNullExceptionRoster(ModelNullExceptionRoster[Square]):
     """
     Role:
-        -  Metadata
+        - Metadata
 
     Responsibilities:
         1. Catalog of NullExceptions associated with a Square.

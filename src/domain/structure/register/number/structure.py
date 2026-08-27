@@ -17,7 +17,7 @@ from domain import Register
 class NumberRegister(Register[int]):
     """
     Role:
-        -  Model
+        - Model
         -  Data Holder
 
     Responsibilities:

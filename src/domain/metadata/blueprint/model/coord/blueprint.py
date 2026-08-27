@@ -18,7 +18,7 @@ from domain.model import Coord
 class CoordBlueprint(ModelBlueprint[Coord]):
     """
     Role:
-        -  Container
+        - Container
 
     Responsibilities:
         1.  Provides values for instantiating a Coord object.

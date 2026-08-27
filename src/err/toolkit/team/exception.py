@@ -23,7 +23,7 @@ __all__ = [
 class TeamException(ToolkitException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Team encountered an error.

@@ -22,7 +22,7 @@ from transit.dispatcher.validator import VectorValidator
 class VectorRegisterToolkit(RegisterToolkit[VectorRegister]):
     """
     Role:
-        -  Container
+        - Container
 
     Responsibilities:
         1.  Collection of workers and services that are required for VectorRegister tasks.

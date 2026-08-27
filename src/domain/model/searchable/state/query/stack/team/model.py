@@ -18,7 +18,7 @@ from collection.stack import TeamStackService
 class TeamQuery(StackQuery[Team]):
     """
     Role:
-        -  Model
+        - Model
         -  Search
         -  Stateless Data-Holder
 

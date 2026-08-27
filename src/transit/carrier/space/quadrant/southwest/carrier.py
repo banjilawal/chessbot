@@ -19,7 +19,7 @@ from space import SouthwestQuadrant
 class SouthwestQuadrantCarrier(SpaceCarrier[SouthwestQuadrant]):
     """
     Role:
-        -  Data Transport
+        - Data Transport
 
     Responsibilities:
         2.  Transports either a SouthwestQuadrant or its Blueprint.

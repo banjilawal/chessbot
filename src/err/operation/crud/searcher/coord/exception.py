@@ -24,7 +24,7 @@ __all__ = [
 class CoordSearcherException(SearcherException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a CoordSearcher from

@@ -20,7 +20,7 @@ from domain.model import Vector
 class VectorSetBlueprint(ContainerBlueprint[Vector]):
     """
     Role:
-        -  Container
+        - Container
         -  DTO
 
     Responsibilities:

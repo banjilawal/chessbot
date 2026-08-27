@@ -24,7 +24,7 @@ __all__ = [
 class NumberRegisterEmptyException(ModelRegisterEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required NumberRegister is empty.

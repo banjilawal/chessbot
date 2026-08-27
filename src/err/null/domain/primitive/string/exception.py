@@ -24,7 +24,7 @@ __all__ = [
 class StringNullException(NullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required String is null.

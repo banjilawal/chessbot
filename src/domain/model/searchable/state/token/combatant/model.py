@@ -19,7 +19,7 @@ from domain.model.searchable.state.token import Token, DeploymentState, TokenAct
 class CombatantToken(Token):
     """
     Role:
-        -  Stateful Data Holder
+        - Stateful Data Holder
 
     Responsibilities:
         1.  Capturable Token.

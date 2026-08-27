@@ -18,17 +18,17 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# TOGGLE_REGISTER_INTEGRITY_CHECKER_FAILURE #======================#
-    "VectorToggleRegisterCertifierException",
+    "CartesianToggleRegisterCertifierException",
 ]
 
 # ======================# TOGGLE_REGISTER_INTEGRITY_CHECKER_FAILURE #======================#
-class VectorToggleRegisterCertifierException(RegisterIntegrityCheckerException):
+class CartesianToggleRegisterCertifierException(RegisterIntegrityCheckerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a VectorToggleRegisterCertifier failed.
+        1.  Indicating assurance by a CartesianToggleRegisterCertifier failed.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class VectorToggleRegisterCertifierException(RegisterIntegrityCheckerException):
     Super Class:
         RegisterCheckerException
     """
-    MSG = "VectorToggleRegisterCertifier failure."
+    MSG = "CartesianToggleRegisterCertifier failure."
     ERR_CODE = "TOGGLE_REGISTER_INTEGRITY_CHECKER_FAILURE"
     
     def __init__(

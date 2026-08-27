@@ -24,7 +24,7 @@ __all__ = [
 class KnightOffsetPatternBuilderException(OffsetPatternBuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required KnightOffsetPatternBuilder failed.

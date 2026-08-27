@@ -21,7 +21,7 @@ T = TypeVar("T", bound="Axis")
 class AxisRecurrence(Recurrence, Generic[T]):
     """
     Role:
-        -  Computation
+        - Computation
         -  Iterator
 
     Responsibilities:

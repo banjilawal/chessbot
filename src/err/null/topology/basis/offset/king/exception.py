@@ -24,7 +24,7 @@ __all__ = [
 class KingOffsetSignatureNullException(OffsetSignatureNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required KingOffsetPattern is null.

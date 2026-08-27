@@ -20,7 +20,7 @@ from domain.model import Path, Maneuver, Token
 class ManeuverBlueprint(StateModelBlueprint[Maneuver]):
     """
     Role:
-        -  Container
+        - Container
 
     Responsibilities:
         1.  Provides values for instantiating a Maneuver object.

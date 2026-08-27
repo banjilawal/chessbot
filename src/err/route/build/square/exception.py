@@ -23,7 +23,7 @@ __all__ = [
 class SquareBuildRouteException(BuildRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of Square build routes is missing.

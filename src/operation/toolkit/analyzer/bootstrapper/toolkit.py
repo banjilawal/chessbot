@@ -17,7 +17,7 @@ from operation.toolkit.analyzer.bootstrapper.toolkit import AnalyzerToolkit
 class AnalyzerBootstrapperToolkit(AnalyzerToolkit):
     """
     Role:
-        -  Dependency Management
+        - Dependency Management
 
     Responsibilities:
         1.  Aggregates workers and services a bootstrapperful analyzer requires for its tasks.

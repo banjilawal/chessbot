@@ -24,7 +24,7 @@ __all__ = [
 class GameIntegrityCheckerException(ModelIntegrityCheckerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a GameIntegrityChecker failed.

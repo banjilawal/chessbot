@@ -25,7 +25,7 @@ from transit.dispatcher.validator import PrimingValidator
 class TransformerRunner:
     """
     Role:
-        -  Computation
+        - Computation
 
     Responsibilities:
         1.  Generate a Bishop's diagonal traversal basiss.

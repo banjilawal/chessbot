@@ -24,7 +24,7 @@ from err import VectorOperationBootstrapperException
 class VectorEuclideanException(VectorOperationBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an error aborted the Euclidean distance calculation.

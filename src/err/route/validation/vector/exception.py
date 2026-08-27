@@ -23,7 +23,7 @@ __all__ = [
 class VectorNoValidationRouteException(NoValidationRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Vector validation routes is missing.

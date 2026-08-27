@@ -24,7 +24,7 @@ __all__ = [
 class CoordStackCapacityException(StackCapacityException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a CoordStack is full.

@@ -23,7 +23,7 @@ __all__ = [
 class OpeningSquareConsistencyAuditorException(SquareException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an OpeningSquareConsistencyAuditor failed.

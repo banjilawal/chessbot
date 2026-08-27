@@ -20,7 +20,7 @@ from domain.model import Coord
 class CoordOperationSuite(OperationSuite[Coord]):
     """
     Role:
-        -  Dependency Container
+        - Dependency Container
         -  Dynamic Dependency Provider
 
     Responsibilities:

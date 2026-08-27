@@ -23,7 +23,7 @@ from util import LoggingLevelRouter
 class PawnPromoter:
     """
     Role:
-        -  Transaction Worker
+        - Transaction Worker
         -  Consistency
         -  Integrity Maintenance
         -  Process Runner

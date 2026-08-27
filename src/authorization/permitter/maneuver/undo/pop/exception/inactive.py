@@ -22,7 +22,7 @@ from domain.model.searchable.state import TokenDebugException
 class InactiveTokenPoppingCoordException(TokenDebugException):
     """
     Role:
-        -  Error Variable Identifier
+        - Error Variable Identifier
         -  Exception Chain Layer 2
         -  Exception Messaging
 

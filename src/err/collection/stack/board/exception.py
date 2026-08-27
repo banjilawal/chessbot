@@ -25,7 +25,7 @@ from artifcat import MethodResultType
 class BoardStackServiceException(StackServiceException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a BoardStackService encountered an error.

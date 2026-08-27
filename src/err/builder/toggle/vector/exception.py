@@ -17,17 +17,17 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# VECTOR_TOGGLE_BUILDER_FAILURE #======================#
-    "VectorToggleBuilderException",
+    "CartesianToggleBuilderException",
 ]
 
 # ======================# VECTOR_TOGGLE_BUILDER_FAILURE #======================#
-class VectorToggleBuilderException(ToggleBuilderException):
+class CartesianToggleBuilderException(ToggleBuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
-        1.  Indicating a VectorToggleBuilder failure.
+        1.  Indicating a CartesianToggleBuilder failure.
 
     Attributes:
             msg: Optional[str]
@@ -44,7 +44,7 @@ class VectorToggleBuilderException(ToggleBuilderException):
     Super Class:
         ToggleBuilderException
     """
-    MSG = "VectorToggleBuilder failure."
+    MSG = "CartesianToggleBuilder failure."
     ERR_CODE = "VECTOR_TOGGLE_BUILDER_FAILURE"
     
     def __init__(

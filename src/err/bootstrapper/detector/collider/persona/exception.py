@@ -23,7 +23,7 @@ __all__ = [
 class PersonaColliderBootstrapperException(ColliderBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that n PersonaCollision step failed.

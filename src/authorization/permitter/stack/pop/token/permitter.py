@@ -23,7 +23,7 @@ from util import LoggingLevelRouter
 class TokenPopPermitter(PopPermitter[Token]):
     """
     Role:
-        -  Request Analyzer
+        - Request Analyzer
         -  Rights Granter
         -  Consistency, Integrity Maintenance
 

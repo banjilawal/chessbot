@@ -24,7 +24,7 @@ __all__ = [
 class CoordCollisionException(AttributeCollisionException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that two instances of a class do not have unique coords.

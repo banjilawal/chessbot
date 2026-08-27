@@ -16,7 +16,7 @@ from operation.toolkit.analyzer.bootstrapper.node.toolkit import AnalyzerBootstr
 class NodeToolkit(AnalyzerBootstrapperToolkit[Node]):
     """
     Role:
-        -  Container
+        - Container
 
     Responsibilities:
         1.  Collection of workers and services that are required for Arena tasks.

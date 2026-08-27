@@ -23,7 +23,7 @@ __all__ = [
 class GameBuildRouteException(BuildRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of Game build routes is missing.

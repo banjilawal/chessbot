@@ -1,4 +1,4 @@
-# src/transit/dispatcher/validator/model/register/operand/validator.py
+# src/transit/dispatcher/validator/model/structure/register/operand/validator.py
 
 """
 Module: transit.dispatcher.validator.model.register.operand.validator

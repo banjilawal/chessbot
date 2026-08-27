@@ -23,7 +23,7 @@ from util import LoggingLevelRouter
 class ReadinessAnalyzerBootstrapper(AnalyzerBootstrapper):
     """
     Role:
-        -  Analysis Factory
+        - Analysis Factory
         -  Consistency maintenance
 
 

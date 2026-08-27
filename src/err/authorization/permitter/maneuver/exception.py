@@ -24,7 +24,7 @@ __all__ = [
 class ManeuverPermitterException(PermitterException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a ManeuverPermitter was aborted by an exception.

@@ -17,7 +17,7 @@ from domain import Register, Vector
 class VectorRegister(Register[Vector]):
     """
     Role:
-        -  Model
+        - Model
         -  Data Holder
 
     Responsibilities:

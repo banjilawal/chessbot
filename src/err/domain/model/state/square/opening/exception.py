@@ -23,7 +23,7 @@ __all__ = [
 class OpeningSquareException(SquareException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an OpeningSquare encountered an error.

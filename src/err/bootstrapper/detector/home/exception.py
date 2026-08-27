@@ -24,7 +24,7 @@ __all__ = [
 class HomeDetectorBootstrapperException(DetectorBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a HomeDetectorBootstrapper encountered an error.

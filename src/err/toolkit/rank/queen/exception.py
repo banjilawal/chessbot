@@ -23,7 +23,7 @@ __all__ = [
 class QueenException(RankException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Queen encountered an error.

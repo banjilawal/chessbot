@@ -23,7 +23,7 @@ T = TypeVar("T", bound="DomainDataObject")
 class ValidationBundle(ABC, Generic[T]):
     """
     Role:
-        -  Toolkit
+        - Toolkit
 
     Responsibilities:
         1.  Bundles types, null-exceptions, attribute-validators, and utilities IntegrityChecker

@@ -24,7 +24,7 @@ __all__ = [
 class NodeException(StructuralWrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Node encountered an error.

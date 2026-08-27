@@ -26,7 +26,7 @@ from err import ContextBuilderException
 class FormationContextBuilderException(ContextBuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a FormationContext build failed.

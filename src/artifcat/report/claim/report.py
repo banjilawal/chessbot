@@ -20,7 +20,7 @@ from artifcat.report.claim.state import ClaimPermission
 class HomeSquareClaimReport(Report):
     """
     Role:
-        -  Test results
+        - Test results
 
     Responsibilities:
         1.  Presents a token's claim on an opening square.

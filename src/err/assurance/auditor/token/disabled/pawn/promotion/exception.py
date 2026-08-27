@@ -24,7 +24,7 @@ __all__ = [
 class DisabledPawnPromotionConsistencyAuditorException(DisabledPawnException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an attempt to promote a disabled pawn occurred.

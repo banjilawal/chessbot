@@ -22,7 +22,7 @@ __all__ = [
 class NumberException(ChessException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a number does not meet requirements..

@@ -23,7 +23,7 @@ __all__ = [
 class ArenaPlayerBinderConsistencyCheckerNullException(BinderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required ArenaPlayerBinderConsistencyChecker is null.

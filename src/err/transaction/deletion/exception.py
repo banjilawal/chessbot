@@ -22,7 +22,7 @@ __all__ = [
 class DeletionException(TransactionException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         Indicatings that an error prevented a deletion from completing.

@@ -22,7 +22,7 @@ T = TypeVar("T", bound="DomainDataObject")
 class NullExceptionRoster(ABC, Generic[T]):
     """
     Role:
-        -  Metadata
+        - Metadata
 
     Responsibilities:
         1. Catalog of NullExceptions associated with a DomainObject

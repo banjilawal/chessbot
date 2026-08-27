@@ -24,7 +24,7 @@ __all__ = [
 class PrimingRankAssemblyException(AssemblyPrimerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a RankAssembly priming step failed.

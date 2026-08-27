@@ -19,7 +19,7 @@ from carrier import ModelCarrier
 class ArenaCarrier(ModelCarrier[Arena]):
     """
     Role:
-        -  Addressing
+        - Addressing
         -  Data-Holder
     
     Responsibilities:

@@ -38,7 +38,7 @@ class CoordDatabase(Database[Coord]):
         -  search(context: Context[T]) -> SearchResult[List[T]]
     """
     Role:
-        -  Repo interface.
+        - Repo interface.
         -  Data Protection layer.
 
     Responsibilities:

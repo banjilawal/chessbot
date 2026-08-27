@@ -24,7 +24,7 @@ __all__ = [
 class DuplicateNodeException(DuplicateItemException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Node already exists in the operating context so, trying

@@ -17,7 +17,7 @@ from domain.model import CombatantManeuverWarning, CombatantToken, Maneuver, Pat
 class CombatantManeuver(Maneuver[CombatantToken]):
     """
     Role:
-        -  Model
+        - Model
         -  Data Holder
 
     Responsibilities:

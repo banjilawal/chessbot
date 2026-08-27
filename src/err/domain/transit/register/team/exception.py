@@ -24,7 +24,7 @@ __all__ = [
 class TeamRegisterCarrierException(RegisterCarrierException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a TeamRegisterCarrier encountered an error.

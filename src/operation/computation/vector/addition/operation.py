@@ -12,18 +12,18 @@ from __future__ import annotations
 from typing import Optional
 
 
-from transit.dispatcher.builder import RegisterBuildDispatcher, VectorToggleRegisterBuilder
-from selector import VectorToggle
+from transit.dispatcher.builder import RegisterBuildDispatcher, CartesianToggleRegisterBuilder
+from selector import CartesianToggle
 
-from operation.toolkit import VectorToggleToolkit
+from operation.toolkit import CartesianToggleToolkit
 from artifcat import ComputationResult
 from util import LoggingLevelRouter
 
 
-class AddVector(Computation[VectorToggle]):
+class AddVector(Computation[CartesianToggle]):
     """
     Role:
-        -  Computation
+        - Computation
 
     Responsibilities:
         1.  Compute the contents of a VectorRegister to each other producing either a new Vector or a Coord.
@@ -32,7 +32,7 @@ class AddVector(Computation[VectorToggle]):
             permitter: Optional[AddVectorPermitter]
             
     Provides:
-        -  def execute(self, request: AddVectorRequest) -> ComputationResult[VectorToggle]
+        -  def execute(self, request: AddVectorRequest) -> ComputationResult[CartesianToggle]
 
     Super Class:
         Computation
@@ -50,23 +50,23 @@ class AddVector(Computation[VectorToggle]):
         return cast(AddVectorPermitter, super().permitter)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: AddVectorRequest) -> ComputationResult[VectorToggle]:
+    def execute(self, request: AddVectorRequest) -> ComputationResult[CartesianToggle]:
         pass
     
     
     _register_builder: Optional[RegisterBuildDispatcher]
-    _vector_toggle_toolkit: Optional[VectorToggleToolkit]
+    _vector_toggle_toolkit: Optional[CartesianToggleToolkit]
     
     def __init__(
             self,
-            register_builder: Optional[VectorToggleRegisterBuilder]
-                              | None = VectorToggleRegisterBuilder(),
-            vector_toggle_toolkit: Optional[VectorToggleToolkit] | None = VectorToggleToolkit(),
+            register_builder: Optional[CartesianToggleRegisterBuilder]
+                              | None = CartesianToggleRegisterBuilder(),
+            vector_toggle_toolkit: Optional[CartesianToggleToolkit] | None = CartesianToggleToolkit(),
     ):
         """
         Args:
-            register_builder: Optional[VectorToggleRegisterBuilder]
-            vector_toggle_toolkit: Optional[VectorToggleToolkit]
+            register_builder: Optional[CartesianToggleRegisterBuilder]
+            vector_toggle_toolkit: Optional[CartesianToggleToolkit]
         """
         self._register_builder = register_builder
         self._vector_toggle_toolkit = vector_toggle_toolkit
@@ -74,9 +74,9 @@ class AddVector(Computation[VectorToggle]):
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            u: VectorToggle,
-            v: VectorToggle,
-    ) -> ComputationResult[VectorToggle]:
+            u: CartesianToggle,
+            v: CartesianToggle,
+    ) -> ComputationResult[CartesianToggle]:
         """
         Add the contents of a VectorRegister to each other.
         
@@ -107,7 +107,7 @@ class AddVector(Computation[VectorToggle]):
             register_validator = VectorRegisterValidator()
             
         if operand_toolkit is None:
-            operand_toolkit = VectorToggleToolkit()
+            operand_toolkit = CartesianToggleToolkit()
             
         
         

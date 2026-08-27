@@ -23,7 +23,7 @@ __all__ = [
 class PlayerException(ToolkitException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Player encountered an error.

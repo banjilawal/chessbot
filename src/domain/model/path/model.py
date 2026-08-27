@@ -12,15 +12,15 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from domain.model import DataModel
+from domain.model import Model
 from domain.structure.register import SquareRegister
 
 
 @dataclass
-class Path(DataModel):
+class Path(Model):
     """
     Role:
-        -  Model
+        - Model
         -  Stateful Data Holder
 
     Responsibilities:

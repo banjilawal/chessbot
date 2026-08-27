@@ -24,7 +24,7 @@ __all__ = [
 class DuplicateArenaException(DuplicateItemException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Arena already exists in the operating context so, trying

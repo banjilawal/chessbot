@@ -19,7 +19,7 @@ from domain.model import StackQuery
 class GameQuery(StackQuery[Game]):
     """
     Role:
-        -  Model
+        - Model
         -  Search
         -  Stateless Data-Holder
 

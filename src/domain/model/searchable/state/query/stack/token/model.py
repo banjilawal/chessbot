@@ -18,7 +18,7 @@ from collection.stack import TokenStackService
 class TokenQuery(StackQuery[Token]):
     """
     Role:
-        -  Model
+        - Model
         -  Search
         -  Stateless Data-Holder
 

@@ -23,7 +23,7 @@ __all__ = [
 class EmptyEdgeStackDeletionException(EmptyStackDeletionException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicatings that popping An EdgeStack failed because it was empty.

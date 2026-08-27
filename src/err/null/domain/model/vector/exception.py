@@ -24,7 +24,7 @@ __all__ = [
 class VectorNullException(ModelNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required Vector is null.

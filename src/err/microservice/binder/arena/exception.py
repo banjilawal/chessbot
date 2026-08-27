@@ -22,7 +22,7 @@ __all__ = [
 class ArenaPlayerBinderMicroserviceException(BinderMicroserviceException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a candidate did not pass a ArenaPlayerBinder microservice failed.

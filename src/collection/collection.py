@@ -19,7 +19,7 @@ T = TypeVar("T", bound="DomainDataObject")
 class DomainObjectCollection(ABC, Generic[T]):
     """
     Role:
-        -  Data Holder
+        - Data Holder
         -  Data protection
         
     Responsibilities:

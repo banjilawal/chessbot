@@ -25,7 +25,7 @@ __all__ = [
 class ZeroSquareContextFlagsException(ZeroContextFlagsException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating no SquareSearchContext flags were enabled.

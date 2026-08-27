@@ -24,7 +24,7 @@ __all__ = [
 class HostageAssemblyPrimerException(AssemblyPrimerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a HostageAssembly priming step failed.

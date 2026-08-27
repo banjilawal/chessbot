@@ -26,7 +26,7 @@ from err import ContextColliderBootstrapperException
 class PlayerContextCollisionException(ContextColliderBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a PlayerContextCollision step failed.

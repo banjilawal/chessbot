@@ -26,7 +26,7 @@ from err import ContextSearchRouteException
 class TeamContextSearchRouteException(ContextSearchRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of TeamContext search routes is missing.

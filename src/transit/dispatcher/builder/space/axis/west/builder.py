@@ -23,7 +23,7 @@ from util import LoggingLevelRouter
 class WestAxisBuilder(AxisBuilder[WestAxis]):
     """
     Role:
-        -  Builder
+        - Builder
         -  Integrity Management
 
     Responsibilities:

@@ -23,7 +23,7 @@ __all__ = [
 class HumanPlayerConsistencyAuditorException(PlayerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a HumanPlayerConsistencyAuditor failed.

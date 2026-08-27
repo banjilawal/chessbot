@@ -14,6 +14,6 @@ from .coord import *
 from .number import *
 from .square import *
 from .vector import *
-from .vectortoggle import *
+from .cartesianToggle import *
 
 # Modules

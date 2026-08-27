@@ -26,7 +26,7 @@ from err import ContextColliderException
 class EdgeContextCollisionException(ContextColliderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a EdgeContextCollision step failed.

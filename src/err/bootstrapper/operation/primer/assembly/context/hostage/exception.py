@@ -22,7 +22,7 @@ __all__ = [
 class PrimingHostageContextAssemblyException(PrimingContextAssemblyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a HostageContextAssembly priming step failed.

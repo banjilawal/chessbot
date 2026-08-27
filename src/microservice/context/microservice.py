@@ -18,7 +18,7 @@ from system import IdFactory
 class ContextService(Microservice[Context]):
     """
     Role:
-        -  API
+        - API
         -  Stateless microservice
         -  Lifecycle Manager
         -  Operations Provider

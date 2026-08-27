@@ -18,7 +18,7 @@ from domain.model import CatalogQuery
 class SchemaQuery(CatalogQuery[Schema]):
     """
     Role:
-        -  Model
+        - Model
         -  Search
         -  Stateless Data-Holder
 

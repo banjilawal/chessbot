@@ -24,7 +24,7 @@ __all__ = [
 class TokenNullException(StateModelNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required Token is null.

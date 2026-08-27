@@ -24,7 +24,7 @@ __all__ = [
 class CoordBuilderException(ModelBuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a CoordBuilder failed.

@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .blueprint import VectorToggleBlueprint
+from .blueprint import CartesianToggleBlueprint

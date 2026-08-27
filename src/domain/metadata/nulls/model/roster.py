@@ -13,18 +13,18 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Generic, Optional, TypeVar
 
-from domain import DataModel, NullExceptionRoster
+from domain import Model, NullExceptionRoster
 from err import (
     BlueprintNullException, StackContextNullException, EntityCarrierNullException, ModelNullException,
 )
 
-T = TypeVar("T", bound="DataModel")
+T = TypeVar("T", bound="Model")
 
 @dataclass
 class ModelNullExceptionRoster(NullExceptionRoster[T], Generic[T]):
     """
     Role:
-        -  Metadata
+        - Metadata
 
     Responsibilities:
         1. Catalog of NullExceptions associated with a Model

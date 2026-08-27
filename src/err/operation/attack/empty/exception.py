@@ -24,7 +24,7 @@ __all__ = [
 class AttackDestinationEmptyException(AttackException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a token cannot attack because its destination is empty.

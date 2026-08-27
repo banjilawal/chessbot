@@ -22,7 +22,7 @@ __all__ = [
 class PersonaContextBuildPipelineException(ContextBuildPipelineException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an error occurred in an PersonaContextBuildPipeline.

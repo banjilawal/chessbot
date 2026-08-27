@@ -16,7 +16,7 @@ from tree import Topology, VectorTree
 class BishopTopology(Topology[Bishop]):
     """
     Role:
-        -  Data Holder
+        - Data Holder
 
     Responsibilities:
         1.  Positions projected from a Bishop's signature.

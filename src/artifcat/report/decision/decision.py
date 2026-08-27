@@ -18,7 +18,7 @@ from domain.exchange.request import Request
 class AuthorizationDecision(Report):
     """
     Role:
-        -  Test results
+        - Test results
 
     Responsibilities:
         1.  Give details about an operationOperation decision.

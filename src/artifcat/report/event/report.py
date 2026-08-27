@@ -20,7 +20,7 @@ from artifcat.report.event.state import EventPermission
 class EventTransitionReport(Report):
     """
     Role:
-        -  Test results
+        - Test results
 
     Responsibilities:
         1.  Presents a token's event on an opening square.

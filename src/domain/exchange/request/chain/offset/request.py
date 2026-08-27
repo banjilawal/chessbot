@@ -17,7 +17,7 @@ from collection import Chain
 class ChainOffsetRequest(ChainRequest):
     """
     Role:
-        -  Request
+        - Request
 
     Responsibilities:
         1. Carry information for modifying a Chain by an offset.

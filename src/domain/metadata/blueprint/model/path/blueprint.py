@@ -19,7 +19,7 @@ from domain.structure.register import SquareRegister
 class PathBlueprint(ModelBlueprint[Path]):
     """
     Role:
-        -  Container
+        - Container
         -  DTO
         
     Responsibilities:

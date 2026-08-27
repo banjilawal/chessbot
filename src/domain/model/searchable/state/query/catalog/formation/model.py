@@ -17,7 +17,7 @@ from domain.model import Formation, FormationContext
 class FormationQuery(CatalogQuery[Formation]):
     """
     Role:
-        -  Model
+        - Model
         -  Search
         -  Stateless Data-Holder
 

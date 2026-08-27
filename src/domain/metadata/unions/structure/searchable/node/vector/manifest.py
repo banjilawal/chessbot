@@ -1,7 +1,7 @@
-# src/domain/metadata/unions/structurenode/vector/manifest.py
+# src/domain/metadata/unions/structure/searchable/node/vector/manifest.py
 
 """
-Module: domain.metadata.unions.structure.node.vector.manifest
+Module: domain.metadata.unions.structure.searchable.node.vector.manifest
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -13,14 +13,14 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional, Type
 
-from domain import NodeTypeUnions, SearchContext, VectorNode, VectorNodeBlueprint, VectorNodeCarrier
+from domain import NodeTypeUnions, SearchContext, VectorNode, VectorNodeBlueprint
 
 
 @dataclass
 class VectorNodeTypeUnions(NodeTypeUnions[VectorNode]):
     """
     Role:
-        -  Metadata
+        - Metadata
 
     Responsibilities:
         1. Catalog of data unions a Node uses in the domain.

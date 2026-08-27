@@ -15,7 +15,7 @@ from operation import TokenPositionPopper, TokenPushCoordProcess
 class TokenPositionController:
     """
     Role:
-        -  CRUD controller
+        - CRUD controller
         -  Consistency provider
         -  Integrity lifecycle manager
         

@@ -24,7 +24,7 @@ __all__ = [
 class SquareContextBuilderException(ContextBuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a SquareContextBuilder failed.

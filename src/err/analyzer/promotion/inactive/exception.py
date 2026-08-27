@@ -24,7 +24,7 @@ __all__ = [
 class PromoteInactivePawnException(AnalyzerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an attempt was made to promote an inactive pawn.

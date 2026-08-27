@@ -15,7 +15,7 @@ from operation.toolkit.bootstrapper.detector.toolkit import BootstrapperToolkit
 class DetectorBootstrapperToolkit(BootstrapperToolkit):
     """
     Role:
-        -  Dependency Management
+        - Dependency Management
 
     Responsibilities:
         1.  Aggregates workers and services a bootstrapperful carrier_validator requires for its tasks.

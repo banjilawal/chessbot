@@ -24,7 +24,7 @@ __all__ = [
 class TokenReadinessAnalyzerException(AnalyzerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a TokenReadinessAnalyzer from completing

@@ -25,7 +25,7 @@ from artifcat import MethodResultType
 class PalyerStackServiceException(StackServiceException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a PalyerStackService encountered an error.

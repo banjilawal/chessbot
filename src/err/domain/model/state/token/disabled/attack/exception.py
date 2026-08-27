@@ -24,7 +24,7 @@ __all__ = [
 class DisabledTokenLaunchAttackException(DisabledTokenException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a disabled token tried making an attack.

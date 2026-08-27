@@ -24,7 +24,7 @@ __all__ = [
 class ArenaContextException(ContextException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a ArenaContext encountered an error.

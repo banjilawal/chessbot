@@ -24,7 +24,7 @@ __all__ = [
 class ManeuverRequestNullException(RequestNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required ManeuverRequest was null.

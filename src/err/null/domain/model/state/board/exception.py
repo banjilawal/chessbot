@@ -24,7 +24,7 @@ __all__ = [
 class BoardNullException(StateModelNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required Board is null.

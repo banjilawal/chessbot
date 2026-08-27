@@ -25,7 +25,7 @@ from err import QueryStackEmptyException
 class NodeQueryStackEmptyException(QueryStackEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required NodeQuery's target stack is empty.

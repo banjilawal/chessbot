@@ -24,7 +24,7 @@ __all__ = [
 class StructuralWrapperException(DomainObjectException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an StructuralWrapper encountered an error.

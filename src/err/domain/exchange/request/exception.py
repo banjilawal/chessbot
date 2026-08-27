@@ -24,7 +24,7 @@ __all__ = [
 class RequestException(ExchangeObjectException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an Request encountered an error.

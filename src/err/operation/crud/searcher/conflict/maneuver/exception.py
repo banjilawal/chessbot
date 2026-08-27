@@ -24,7 +24,7 @@ __all__ = [
 class ManeuverSearchHitConflictException(SearchHitConflictException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a ManeuverSearcher returned multiple hits for an item which should be unique.

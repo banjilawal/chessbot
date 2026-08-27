@@ -20,7 +20,7 @@ from operation.toolkit.builder.context.square.toolkit import ModelBuilderToolkit
 class VectorBuilderToolkit(ModelBuilderToolkit[Vector]):
     """
     Role:
-        -  Dependency Management
+        - Dependency Management
         
     Responsibilities:
         1.  Bundles VectorBuilder dependencies.

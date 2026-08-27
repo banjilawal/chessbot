@@ -22,7 +22,7 @@ from domain.model import RegisterContentType, Scalar, ScalarBlueprint, PointRegi
 class EuclideanDistance(Computation[Scalar]):
     """
     Role:
-        -  Operation
+        - Operation
         -  Computation
 
     Responsibilities:
@@ -74,7 +74,7 @@ class EuclideanDistance(Computation[Scalar]):
         Args:
             register: VectorRegister
             register_validator: VectorRegisterValidator
-            operand_utility: VectorToggleUtility
+            operand_utility: CartesianToggleUtility
             scalar_build_pipeline: ScalarBuilder
         Result:
             ComputationResult[Scalar]:

@@ -26,7 +26,7 @@ from err import ContextNoValidationRouteException
 class SquareContextValidationRouteException(ContextNoValidationRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of SquareContext validation routes is missing.

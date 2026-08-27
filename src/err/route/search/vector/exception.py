@@ -23,7 +23,7 @@ __all__ = [
 class VectorSearchRouteException(SearchRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Vector search routes is missing.

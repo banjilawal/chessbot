@@ -22,7 +22,7 @@ __all__ = [
 class SnapshotStackEmptyException(StackEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required SnapshotStack is empty.

@@ -24,7 +24,7 @@ __all__ = [
 class PermitterException(AuthorizerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a permitter from completing its

@@ -22,7 +22,7 @@ __all__ = [
 class SquareContextBuildPipelineException(ContextBuildPipelineException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an error occurred in an SquareContextBuildPipeline.

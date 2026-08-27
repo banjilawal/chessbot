@@ -1,7 +1,7 @@
-# src/fabrication/builder/register/model/vectorToggleRegister/fabrication/builder.py
+# src/fabrication/builder/register/model/cartesianToggleRegister/fabrication/builder.py
 
 """
-Module: fabrication.builder.register.model.vectorToggleRegister.builder
+Module: fabrication.builder.register.model.cartesianToggleRegister.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -10,13 +10,13 @@ version: 0.0.2
 from __future__ import annotations
 
 from fabrication.builder import RegisterBuilder
-from domain.metadata.blueprint import VectorToggleRegisterBlueprint
+from domain.metadata.blueprint import CartesianToggleRegisterBlueprint
 from domain.structure.register import CartesianToggleRegister
 from artifcat import BuildResult
 from util import LoggingLevelRouter
 
 
-class VectorToggleRegisterBuilder(
+class CartesianToggleRegisterBuilder(
     RegisterBuilder[CartesianToggleRegister]
 ):
     """
@@ -24,14 +24,14 @@ class VectorToggleRegisterBuilder(
         -  Builder
 
     Responsibilities:
-        1.  Create a VectorToggleRegister instance from the safe blueprint.
+        1.  Create a CartesianToggleRegister instance from the safe blueprint.
 
     Attributes:
 
     Provides:
         -  def execute(
-                    blueprint: VectorToggleRegisterBlueprint,
-            ) -> BuildResult[VectorToggleRegister]
+                    blueprint: CartesianToggleRegisterBlueprint,
+            ) -> BuildResult[CartesianToggleRegister]
 
     Super Class:
         RegisterBuilder
@@ -40,15 +40,15 @@ class VectorToggleRegisterBuilder(
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            blueprint: VectorToggleRegisterBlueprint,
+            blueprint: CartesianToggleRegisterBlueprint,
     ) -> BuildResult[CartesianToggleRegister]:
         """
-        Assemble a VectorToggleRegister from the Blueprint's contents.
+        Assemble a CartesianToggleRegister from the Blueprint's contents.
 
         Args:
-            blueprint: VectorToggleRegisterBlueprint
+            blueprint: CartesianToggleRegisterBlueprint
         Returns:
-            BuildResult[VectorToggleRegister]
+            BuildResult[CartesianToggleRegister]
         Raises:
         """
         method = f"{self.__class__.__name__}.validate"

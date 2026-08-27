@@ -24,7 +24,7 @@ __all__ = [
 class DuplicatePlayerException(DuplicateItemException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Player already exists in the operating context so, trying

@@ -22,7 +22,7 @@ __all__ = [
 class ArenaSearchRouteException(SearchRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of Arena search routes is missing.

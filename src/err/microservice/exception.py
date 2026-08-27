@@ -25,7 +25,7 @@ from artifcat import MethodResultType
 class MicroserviceException(OperatorException):
     """
     Role:
-        -  Failure Tracing
+        - Failure Tracing
 
     Responsibilities:
         1.  Indicating a candidate did not pass a Microservice failed.

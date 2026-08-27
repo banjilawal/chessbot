@@ -25,7 +25,7 @@ from system import IdFactory, LoggingLevelRouter
 class AttackStackService(StackService[AttackEvent]):
     """
     Role:
-        -  API
+        - API
         -  ACID compliance
         -  Stateful microservice
         -  Stateful CRUD Controller

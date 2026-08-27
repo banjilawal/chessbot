@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .suite import VectorToggleSuite
+from .suite import CartesianToggleSuite

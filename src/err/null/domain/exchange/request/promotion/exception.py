@@ -24,7 +24,7 @@ __all__ = [
 class PromotionRequestNullException(RequestNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required PromotionRequest was null.

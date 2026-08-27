@@ -24,7 +24,7 @@ __all__ = [
 class QueenTraversalPatternBlueprintNullException(TraversalPatternBlueprintNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required QueenTraversalPatternBlueprint is null.

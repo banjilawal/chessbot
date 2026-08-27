@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .builder import VectorToggleBuilder
+from .builder import CartesianToggleBuilder

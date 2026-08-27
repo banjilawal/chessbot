@@ -16,7 +16,7 @@ from tree import Topology, VectorTree
 class QueenTopology(Topology[Queen]):
     """
     Role:
-        -  Data Holder
+        - Data Holder
 
     Responsibilities:
         1.  Positions projected from a Queen's signature.

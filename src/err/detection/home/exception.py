@@ -24,7 +24,7 @@ __all__ = [
 class HomeSquareDetectorException(DetectorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a HomeSquareDetector encountered an error.

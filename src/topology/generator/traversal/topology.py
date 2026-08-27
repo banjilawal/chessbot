@@ -27,7 +27,7 @@ T = TypeVar("T", bound="TraversalRank")
 class TraversalTopologyGenerator:
     """
     Role:
-        -  Computation
+        - Computation
 
     Responsibilities:
         1.  Generate a Bishop's diagonal traversal basiss.

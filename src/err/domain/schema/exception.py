@@ -24,7 +24,7 @@ __all__ = [
 class SchemaException(DomainObjectException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Schema encountered an error.

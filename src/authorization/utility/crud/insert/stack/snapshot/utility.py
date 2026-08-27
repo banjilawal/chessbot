@@ -21,7 +21,7 @@ from domain import SnapshotInsertContext
 class SnapshotStackInsertPermissionUtility(StackInsertPermissionUtility[SnapshotInsertContext]):
     """
     Role:
-        -  Utility
+        - Utility
 
     Responsibilities:
         1.  Bundles resources the SnapshotInsertAuthorizer needs to evaluate a SnapshotInsertRequest.

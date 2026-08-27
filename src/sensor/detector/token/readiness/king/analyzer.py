@@ -19,7 +19,7 @@ from util import LoggingLevelRouter
 class KingReadinessAnalyzer(Analyzer):
     """
     Role:
-        -  Analysis Factory
+        - Analysis Factory
         -  Consistency maintenance
 
 

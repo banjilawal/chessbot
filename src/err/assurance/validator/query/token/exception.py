@@ -24,7 +24,7 @@ __all__ = [
 class TokenQueryValidatorException(QueryValidatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a TokenQueryValidator failed.

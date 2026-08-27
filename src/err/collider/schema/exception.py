@@ -23,7 +23,7 @@ __all__ = [
 class SchemaColliderException(ColliderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a SchemaCollision step failed.

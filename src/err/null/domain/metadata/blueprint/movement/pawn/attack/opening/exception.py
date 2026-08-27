@@ -24,7 +24,7 @@ __all__ = [
 class OpeningAttackOffsetPatternBlueprintNullException(AttackOffsetPatternBlueprintNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an error occurred in an OpeningAttackOffsetPatternBlueprint is null.

@@ -23,7 +23,7 @@ __all__ = [
 class EmptyStackDeletionException(DeletionException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         Indicatings that a deletion failed because the stack is empty.

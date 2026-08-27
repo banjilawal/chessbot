@@ -24,7 +24,7 @@ __all__ = [
 class ManeuverSearchResultEmptyException(SearchResultEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a ManeuverSearcher did not find the required item.

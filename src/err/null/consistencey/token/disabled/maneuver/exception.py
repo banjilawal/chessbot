@@ -24,7 +24,7 @@ __all__ = [
 class DisabledTokenManeuverConsistencyCheckerNullException(DisabledTokenException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that moving a disabled token was attempted.

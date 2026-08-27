@@ -24,7 +24,7 @@ __all__ = [
 class PawnPromotionRowException(AnalyzerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a pawn was not promoted because it was not on its enemy's

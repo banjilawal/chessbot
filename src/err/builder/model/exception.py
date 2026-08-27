@@ -25,7 +25,7 @@ __all__ = [
 class ModelBuilderException(BuilderException):
     """
     Role:
-        -  Failure Tracing
+        - Failure Tracing
 
     Responsibilities:
         1.  Indicating a ModelBuilder did not complete its task..

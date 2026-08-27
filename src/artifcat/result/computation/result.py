@@ -17,7 +17,7 @@ T = TypeVar("T")
 class ComputationResult(Result[T], Generic[T]):
     """
     Role:
-        -  Data Transport
+        - Data Transport
         -  Error Transport
 
     Responsibilities:

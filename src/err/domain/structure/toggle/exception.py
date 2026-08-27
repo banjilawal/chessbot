@@ -24,7 +24,7 @@ __all__ = [
 class ToggleException(StructuralWrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Toggle encountered an error.

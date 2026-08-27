@@ -24,7 +24,7 @@ __all__ = [
 class QueenRecurrenceSeriesNullException(RecurrenceRegistryCollectionNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required QueenRecurrenceSeries is null.

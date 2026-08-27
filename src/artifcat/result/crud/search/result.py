@@ -18,7 +18,7 @@ T = TypeVar("T", bound="DomainDataObject")
 class SearchResult(CrudResult[T], Generic[T]):
     """
     Role:
-        -  Data Transport
+        - Data Transport
         -  Error Transport
 
     Responsibilities:

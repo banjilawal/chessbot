@@ -23,7 +23,7 @@ T = TypeVar("T", bound="Model")
 class Suite(ABC):
     """
     Role:
-        -  Dependency Container
+        - Dependency Container
         -  Dynamic Dependency Provider
         
     Responsibilities:

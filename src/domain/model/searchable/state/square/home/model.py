@@ -16,7 +16,7 @@ from domain.schema import Formation
 class HomeSquare(Square):
     """
     Role:
-        -  Model
+        - Model
         -  Addressing
         -  Stateful Data Holder
 

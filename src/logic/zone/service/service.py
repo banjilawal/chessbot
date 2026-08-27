@@ -16,7 +16,7 @@ from logic.zone import Zone, ZoneBuilder, ZoneOpsController, ZoneTable, ZoneVali
 class ZoneService(IntegrityMicroservice[Zone]):
     """
     Role:
-        -  API
+        - API
         -  Stateless microservice
         -  Lifecycle Manager
         -  Operations Provider

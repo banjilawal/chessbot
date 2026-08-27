@@ -23,7 +23,7 @@ __all__ = [
 class SpaceReservoirBuilderException(BuilderException):
     """
     Role:
-        -  Failure Tracing
+        - Failure Tracing
 
     Responsibilities:
         1.  Indicating a SpaceReservoirBuilder failed.

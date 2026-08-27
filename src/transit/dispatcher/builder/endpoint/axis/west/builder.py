@@ -25,7 +25,7 @@ from transit.dispatcher.validator import VectorValidator
 class WestAxisEndpointBuilder(AxisEndpointBuilder[WestTraversalPattern]):
     """
     Role:
-        -  Builder
+        - Builder
         -  Integrity Management
 
     Responsibilities:

@@ -24,7 +24,7 @@ from err import VectorOperatorException
 class VectorRegisterMismatchException(VectorOperatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an binary operation failed because the operands do

@@ -24,7 +24,7 @@ from util import LoggingLevelRouter
 class TokenCrudController(CrudController[Token]):
     """
     Role:
-        -  CRUD controller
+        - CRUD controller
 
     Responsibilities:
         1.  Oversees all CRUD operations on a TokenStack

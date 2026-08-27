@@ -23,7 +23,7 @@ __all__ = [
 class NortheastQuadrantNullException(QuadrantNullException):
     """
     Role:
-        -  Failure Tracing
+        - Failure Tracing
 
     Responsibilities:
         1.  Indicating a required NortheastQuadrant Is Null.

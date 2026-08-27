@@ -25,7 +25,7 @@ from artifcat import MethodResultType
 class ResultStackServiceException(StackServiceException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a ResultStackService encountered an error.

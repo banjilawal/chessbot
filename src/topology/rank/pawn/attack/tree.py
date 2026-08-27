@@ -15,7 +15,7 @@ from tree import PawnTopology, VectorTree
 class AttackTopology(PawnTopology):
     """
     Role:
-        -  Data Holder
+        - Data Holder
 
     Responsibilities:
         1.  Positions a projected from a Pawn's AttackSignature.

@@ -1,4 +1,4 @@
-# src/transit/dispatcher/validator/search/stack/node/__init__.py
+# src/transit/dispatcher/validator/search/stack/structure/node/__init__.py
 
 """
 Module: transit.dispatcher.validator.search.stack.node.__init__

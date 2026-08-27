@@ -23,7 +23,7 @@ __all__ = [
 class NorthAxisNullException(AxisNullException):
     """
     Role:
-        -  Failure Tracing
+        - Failure Tracing
 
     Responsibilities:
         1.  Indicating a required NorthAxis Is Null.

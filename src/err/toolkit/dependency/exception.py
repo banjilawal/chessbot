@@ -22,7 +22,7 @@ __all__ = [
 class EmptyDependencyListException(ToolkitException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Toolkit's operation list is empty.

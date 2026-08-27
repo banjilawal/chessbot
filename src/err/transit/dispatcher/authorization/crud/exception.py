@@ -24,7 +24,7 @@ __all__ = [
 class CrudAuthorizationDispatcherException(AuthorizationDispatcherException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an error prevented the CrudAuthorizationDispatcher from working.

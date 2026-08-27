@@ -25,7 +25,7 @@ from artifcat import MethodResultType
 class ExecutionRouteException(ChessException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
     
     Responsibilities:
         1.  Indicating an execution route was missing from the logic.

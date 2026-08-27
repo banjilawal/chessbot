@@ -24,7 +24,7 @@ __all__ = [
 class SquareSearchHitConflictException(SearchHitConflictException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a SquareSearcher returned multiple hits for an item which should be unique.

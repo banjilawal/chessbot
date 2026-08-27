@@ -15,7 +15,7 @@ from domain.exchange.model import SchemaContextValidator, SchemaValidator
 class SchemaQueryIntegrityWorkers:
     """
     Role:
-        -  Container
+        - Container
 
     Responsibilities:
         1.  Reduces the number params in SchemaQuery Builder and Validator entry points.

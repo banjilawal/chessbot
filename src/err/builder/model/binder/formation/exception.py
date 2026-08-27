@@ -26,7 +26,7 @@ from err import BinderBuilderException
 class FormationBinderBuilderException(BinderBuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a FormationBinderBuilder failed.

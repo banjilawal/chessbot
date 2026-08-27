@@ -18,7 +18,7 @@ from artifcat.report import ItineraryDenialReport
 class KingSafetyViolation(ItineraryDenialReport):
     """
     Role:
-        -  Test results
+        - Test results
 
     Responsibilities:
         1.  Provide details an itinerary that was denied because it would put a King in in check.

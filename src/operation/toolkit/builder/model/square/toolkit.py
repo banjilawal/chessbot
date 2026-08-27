@@ -20,7 +20,7 @@ from operation.toolkit.builder.model.square.toolkit import ModelBuilderToolkit
 class SquareBuilderToolkit(ModelBuilderToolkit[Square]):
     """
     Role:
-        -  Dependency Management
+        - Dependency Management
         
     Responsibilities:
         1.  Bundles SquareBuilder dependencies.

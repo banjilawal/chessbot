@@ -21,7 +21,7 @@ from transit.carrier import TokenCarrier
 class TokenValidatorToolkit(ModelManifest[Token]):
     """
     Role:
-        -  Dependency Manager
+        - Dependency Manager
 
     Responsibilities:
         1.  Bundles Token validation dependencies.

@@ -16,7 +16,7 @@ from collection import Chain
 class TrimTailByOffsetRequest(ChainOffsetRequest):
     """
     Role:
-        -  Request
+        - Request
         -  Data Transport
     
     Responsibilities:

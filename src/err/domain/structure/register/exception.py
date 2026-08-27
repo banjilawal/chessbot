@@ -24,7 +24,7 @@ __all__ = [
 class RegisterException(StructuralWrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Register encountered an error.

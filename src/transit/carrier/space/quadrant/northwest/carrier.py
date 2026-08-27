@@ -19,7 +19,7 @@ from space import NorthwestQuadrant
 class NorthwestQuadrantCarrier(SpaceCarrier[NorthwestQuadrant]):
     """
     Role:
-        -  Data Transport
+        - Data Transport
 
     Responsibilities:
         2.  Transports either a NorthwestQuadrant or its Blueprint.

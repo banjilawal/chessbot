@@ -24,7 +24,7 @@ __all__ = [
 class SearchRequestNullException(RequestNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required SearchRequest was null.

@@ -26,7 +26,7 @@ from err import BinderBuilderException
 class HostageBinderBuilderException(BinderBuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a HostageBinder build failed.

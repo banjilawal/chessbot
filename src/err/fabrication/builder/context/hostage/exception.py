@@ -26,7 +26,7 @@ from err import ContextBuilderException
 class HostageContextBuilderException(ContextBuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a HostageContext build failed.

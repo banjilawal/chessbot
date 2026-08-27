@@ -24,7 +24,7 @@ __all__ = [
 class VectorNodeBlueprintNullException(NodeBlueprintNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required VectorNodeBlueprint is null.

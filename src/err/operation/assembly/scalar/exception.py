@@ -23,7 +23,7 @@ __all__ = [
 class ScalarAssemblyException(AssemblyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Scalar assembly failed.

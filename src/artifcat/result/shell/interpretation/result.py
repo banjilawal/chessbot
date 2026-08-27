@@ -19,7 +19,7 @@ T = TypeVar("T", bound="OperationRequest")
 class InterpretationResult(ShellResult[T], Generic[T]):
     """
     Role:
-        -  Data Transport
+        - Data Transport
         -  Error Transport
 
     Responsibilities:

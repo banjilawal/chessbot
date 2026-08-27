@@ -24,7 +24,7 @@ from transit.dispatcher.validator import SquareValidationDispatcher
 class SquareRegisterToolkit(RegisterToolkit[SquareRegister]):
     """
     Role:
-        -  Container
+        - Container
 
     Responsibilities:
         1.  Collection of workers and services that are required for SquareRegister tasks.

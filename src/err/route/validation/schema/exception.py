@@ -23,7 +23,7 @@ __all__ = [
 class SchemaNoValidationRouteException(NoValidationRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of Schema validation routes is missing.

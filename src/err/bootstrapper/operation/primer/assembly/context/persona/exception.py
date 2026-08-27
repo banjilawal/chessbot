@@ -22,7 +22,7 @@ __all__ = [
 class PrimersonaContextAssemblyException(PrimingContextAssemblyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a PersonaContextAssembly priming step failed.

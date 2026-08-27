@@ -24,7 +24,7 @@ __all__ = [
 class RookTraversalPatternBlueprintNullException(TraversalPatternBlueprintNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required RookTraversalPatternBlueprint is null.

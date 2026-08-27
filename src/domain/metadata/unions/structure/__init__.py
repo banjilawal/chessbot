@@ -10,8 +10,7 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.UNIONS.STRUCTURE PACKAGE ===========#
 
 # Packages
-from .node import *
-from .register import *
+from .searchable import *
 from .toggle import *
 
 # Modules

@@ -23,7 +23,7 @@ __all__ = [
 class HumanPlayerConsistencyCheckerNullException(PlayerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required HumanPlayerConsistencyChecker is null.

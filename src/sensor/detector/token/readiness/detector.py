@@ -20,7 +20,7 @@ from util import LoggingLevelRouter
 class TokenReadinessReporter(TokenEnvironmentReporter):
     """
     Role:
-        -  Analysis Factory
+        - Analysis Factory
         -  Consistency maintenance
         
 

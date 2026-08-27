@@ -20,7 +20,7 @@ T = TypeVar("T", bound="Toggle")
 class ToggleBuilderToolkit(BuilderToolkit, Generic[T]):
     """
     Role:
-        -  Dependency Management
+        - Dependency Management
         
     Responsibilities:
         1.  Bundles ToggleBuilder dependencies.

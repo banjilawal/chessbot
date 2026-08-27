@@ -24,7 +24,7 @@ __all__ = [
 class OffsetPatternCarrierException(MovementPatternCarrierException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a OffsetPatternCarrier experienced an error.

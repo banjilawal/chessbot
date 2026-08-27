@@ -24,7 +24,7 @@ __all__ = [
 class KingOffsetPatternException(OffsetPatternException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an error occurred in a KingOffsetPattern instance.

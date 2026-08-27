@@ -19,7 +19,7 @@ T = TypeVar("T", bound="Quadrant")
 class QuadrantCarrier(SpaceCarrier, ABC, Generic[T]):
     """
     Role:
-        -  Data Transport
+        - Data Transport
 
     Responsibilities:
         1.  Transports either a Space or its Blueprint.

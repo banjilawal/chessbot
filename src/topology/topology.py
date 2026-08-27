@@ -19,7 +19,7 @@ T = TypeVar("T", bound="Rank")
 class Topology(ABC, Generic[T]):
     """
     Role:
-        -  Data Holder
+        - Data Holder
         
     Responsibilities:
         1.  Immutable unordered set of items.

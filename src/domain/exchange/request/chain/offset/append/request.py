@@ -16,7 +16,7 @@ from collection import Chain
 class AppendByOffsetRequest(ChainOffsetRequest):
     """
     Role:
-        -  Request
+        - Request
     
     Responsibilities:
         1. Carry information for adding a Node to a Chain by an offset.

@@ -16,7 +16,7 @@ from topology import Topology
 class RookTopology(Topology[Rook]):
     """
     Role:
-        -  Data Holder
+        - Data Holder
 
     Responsibilities:
         1.  Positions projected from a Rook's signature.

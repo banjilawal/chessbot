@@ -25,7 +25,7 @@ from transit.dispatcher.validator import TokenValidationDispatcher
 class TokenPushRequestAdjudicator(PushRequestAdjudicator):
     """
     Role:
-        -  Helper
+        - Helper
         -  Test Runner
         
     Responsibilities:

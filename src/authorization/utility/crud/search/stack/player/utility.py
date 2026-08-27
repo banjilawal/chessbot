@@ -21,7 +21,7 @@ from domain import SquareSearchSearchContext
 class SquareStackSearchPermissionUtility(StackSearchPermissionUtility[SquareSearchSearchContext]):
     """
     Role:
-        -  Utility
+        - Utility
 
     Responsibilities:
         1.  Bundles resources the SquareSearchAuthorizer needs to evaluate a SquareSearchRequest.

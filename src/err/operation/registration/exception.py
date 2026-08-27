@@ -24,7 +24,7 @@ __all__ = [
 class RegistrationException(OperatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a registration operation failed.

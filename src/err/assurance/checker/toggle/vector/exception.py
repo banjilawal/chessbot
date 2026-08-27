@@ -17,17 +17,17 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# VECTOR_TOGGLE_INTEGRITY_CHECKER_FAILURE #======================#
-    "VectorToggleCheckerException",
+    "CartesianToggleCheckerException",
 ]
 
 # ======================# VECTOR_TOGGLE_INTEGRITY_CHECKER_FAILURE #======================#
-class VectorToggleCheckerException(ToggleIntegrityCheckerException):
+class CartesianToggleCheckerException(ToggleIntegrityCheckerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a VectorToggleChecker failed.
+        1.  Indicating assurance by a CartesianToggleChecker failed.
 
     Attributes:
             msg: Optional[str]

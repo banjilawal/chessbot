@@ -24,7 +24,7 @@ __all__ = [
 class DuplicateEdgeException(DuplicateItemException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Edge already exists in the operating context so, trying

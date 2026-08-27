@@ -22,7 +22,7 @@ __all__ = [
 class PlayerDatabaseEmptyException(DatabaseEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required PlayerDatabase is empty.

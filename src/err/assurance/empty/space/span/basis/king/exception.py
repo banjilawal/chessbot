@@ -24,7 +24,7 @@ __all__ = [
 class KingBasisEmptyException(BasisEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required KingBasis is empty.

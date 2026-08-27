@@ -23,7 +23,7 @@ __all__ = [
 class MachinePlayerRegisterCarrierException(PlayerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a MachinePlayerRegisterCarrier encountered an error.

@@ -22,7 +22,7 @@ S = TypeVar("S")
 class Binder(Structure, ABC, Generic[P, S]):
     """
     Role:
-        -  Model
+        - Model
         -  Stateless Data-Holder
         
     Responsibility:

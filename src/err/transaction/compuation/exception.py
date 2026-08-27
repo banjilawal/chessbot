@@ -22,7 +22,7 @@ __all__ = [
 class ComputationTransactionException(TransactionException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         Indicatings that an error prevented a computation from completing.

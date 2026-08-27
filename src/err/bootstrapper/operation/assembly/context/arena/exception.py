@@ -26,7 +26,7 @@ from err import ContextAssemblyException
 class ArenaContextAssemblyException(ContextAssemblyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a ArenaContext assembly failed.

@@ -23,7 +23,7 @@ __all__ = [
 class DossierChainException(ChainException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a DossierChain encountered an error.

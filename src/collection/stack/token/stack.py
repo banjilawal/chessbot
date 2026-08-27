@@ -24,7 +24,7 @@ from system import IdFactory, LoggingLevelRouter
 class TokenStackService(StackService[Token]):
     """
     Role:
-        -  API
+        - API
         -  ACID compliance
         -  Stateful microservice
         -  Stateful CRUD Controller

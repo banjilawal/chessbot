@@ -10,21 +10,21 @@ version: 0.0.2
 from __future__ import annotations
 from typing import List, Optional, cast
 
-from domain.metadata.blueprint import VectorToggleRegisterBlueprint
-from carrier import VectorToggleRegisterCarrier
+from domain.metadata.blueprint import CartesianToggleRegisterBlueprint
+from carrier import CartesianToggleRegisterCarrier
 from err import (
-    RegisterEmptyException, RegisterSizeException, VectorToggleRegisterCheckerException,
-    VectorToggleRegisterMismatchException
+    RegisterEmptyException, RegisterSizeException, CartesianToggleRegisterCheckerException,
+    CartesianToggleRegisterMismatchException
 )
 from domain.structure.register import CartesianToggleRegister
 from artifcat import MethodResultType, ValidationResult
 from assurance.validator import Validator
 from domain.structure.toggle import CartesianToggle
-from operation.toolkit import VectorToggleRegisterToolkit
+from operation.toolkit import CartesianToggleRegisterToolkit
 from util import LoggingLevelRouter
 
 
-class VectorToggleRegisterValidator(
+class CartesianToggleRegisterValidator(
     Validator[CartesianToggleRegister]
 ):
     """
@@ -34,11 +34,11 @@ class VectorToggleRegisterValidator(
 
 
     Responsibilities:
-        1.  Ensure a VectorToggleRegisterBlueprint instance is certified safe,
+        1.  Ensure a CartesianToggleRegisterBlueprint instance is certified safe,
             reliable and consistent before use.
 
     Attributes:
-        bundle: Optional[VectorToggleRegisterToolkit]
+        bundle: Optional[CartesianToggleRegisterToolkit]
 
     Provides:
         -  execute(self, candidate: Any) -> ValidationResult:
@@ -49,36 +49,36 @@ class VectorToggleRegisterValidator(
     
     def __init__(
             self,
-            bundle: Optional[VectorToggleRegisterToolkit] |None = VectorToggleRegisterToolkit()
+            bundle: Optional[CartesianToggleRegisterToolkit] |None = CartesianToggleRegisterToolkit()
     ):
         """
         Args:
-            bundle: Optional[VectorToggleRegisterToolkit]
+            bundle: Optional[CartesianToggleRegisterToolkit]
         """
         super().__init__(bundle=bundle)
     
     @property
-    def toolkit(self) -> VectorToggleRegisterBundle:
-        return cast(VectorToggleRegisterToolkit, super().bundle)
+    def toolkit(self) -> CartesianToggleRegisterBundle:
+        return cast(CartesianToggleRegisterToolkit, super().bundle)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate, Any) -> ValidationResult[CartesianToggleRegister]:
         """
-        Certify a candidate is a VectorToggleRegisterBlueprint that is safe to use.
+        Certify a candidate is a CartesianToggleRegisterBlueprint that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -  The candidate is not a VectorToggleRegisterDtoCarrier.
-                    -  The candidate is an empty VectorToggleRegisterDtoCarrier.
+                    -  The candidate is not a CartesianToggleRegisterDtoCarrier.
+                    -  The candidate is an empty CartesianToggleRegisterDtoCarrier.
                     -  Either the board, team, formation, rank or id get flagged unsafe.
-            2.  For a model_carrier send a VectorToggleRegister in the success result. Otherwise, send a TokeBlueprint.
+            2.  For a model_carrier send a CartesianToggleRegister in the success result. Otherwise, send a TokeBlueprint.
         Args:
             candidate, Any
         Returns:
             ValidationResult
         Raises:
-            VectorToggleRegisterCheckerException
+            CartesianToggleRegisterCheckerException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -90,11 +90,11 @@ class VectorToggleRegisterValidator(
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorToggleRegisterCheckerException(
+                CartesianToggleRegisterCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorToggleRegisterCheckerException.MSG,
-                    err_code=VectorToggleRegisterCheckerException.ERR_CODE,
+                    msg=CartesianToggleRegisterCheckerException.MSG,
+                    err_code=CartesianToggleRegisterCheckerException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -108,11 +108,11 @@ class VectorToggleRegisterValidator(
         if blueprint.is_blank:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorToggleRegisterCheckerException(
+                CartesianToggleRegisterCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorToggleRegisterCheckerException.MSG,
-                    err_code=VectorToggleRegisterCheckerException.ERR_CODE,
+                    msg=CartesianToggleRegisterCheckerException.MSG,
+                    err_code=CartesianToggleRegisterCheckerException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
                     ex=RegisterEmptyException(
                         cls_mthd=method,
@@ -125,11 +125,11 @@ class VectorToggleRegisterValidator(
         if blueprint.is_wrong_size:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorToggleRegisterCheckerException(
+                CartesianToggleRegisterCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorToggleRegisterCheckerException.MSG,
-                    err_code=VectorToggleRegisterCheckerException.ERR_CODE,
+                    msg=CartesianToggleRegisterCheckerException.MSG,
+                    err_code=CartesianToggleRegisterCheckerException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
                     ex=RegisterSizeException(
                         cls_mthd=method,
@@ -142,17 +142,17 @@ class VectorToggleRegisterValidator(
         if blueprint.toggles_are_different_types:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorToggleRegisterCheckerException(
+                CartesianToggleRegisterCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorToggleRegisterCheckerException.MSG,
-                    err_code=VectorToggleRegisterCheckerException.ERR_CODE,
+                    msg=CartesianToggleRegisterCheckerException.MSG,
+                    err_code=CartesianToggleRegisterCheckerException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
-                    ex=VectorToggleRegisterMismatchException(
+                    ex=CartesianToggleRegisterMismatchException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=VectorToggleRegisterMismatchException.MSG,
-                        err_code=VectorToggleRegisterMismatchException.ERR_CODE,
+                        msg=CartesianToggleRegisterMismatchException.MSG,
+                        err_code=CartesianToggleRegisterMismatchException.ERR_CODE,
                     )
                 )
             )
@@ -164,11 +164,11 @@ class VectorToggleRegisterValidator(
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    VectorToggleRegisterCheckerException(
+                    CartesianToggleRegisterCheckerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=VectorToggleRegisterCheckerException.MSG,
-                        err_code=VectorToggleRegisterCheckerException.ERR_CODE,
+                        msg=CartesianToggleRegisterCheckerException.MSG,
+                        err_code=CartesianToggleRegisterCheckerException.ERR_CODE,
                         ex=validation.exception,
                     )
                 )
@@ -180,13 +180,13 @@ class VectorToggleRegisterValidator(
         
         if carrier.is_carrying_model:
             return ValidationResult.success(
-                VectorToggleRegisterCarrier(
+                CartesianToggleRegisterCarrier(
                     model=CartesianToggleRegister(u=u, v=v)
                 )
             )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(
-            VectorToggleRegisterCarrier(
-                blueprint=VectorToggleRegisterBlueprint(u=u, v=v)
+            CartesianToggleRegisterCarrier(
+                blueprint=CartesianToggleRegisterBlueprint(u=u, v=v)
             )
         )

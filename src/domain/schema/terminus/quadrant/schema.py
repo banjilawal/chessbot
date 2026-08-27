@@ -17,7 +17,7 @@ from domain.model import Vector
 class QuadrantTerminus(Enum):
     """
     Role:
-        -  Configuration Table
+        - Configuration Table
         -  Metadata Set
 
 

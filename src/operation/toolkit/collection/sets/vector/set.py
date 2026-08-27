@@ -18,7 +18,7 @@ from domain.model import Coord, Vector
 class VectorSet(SetCollection[Vector]):
     """
     Role:
-        -  Data Holder
+        - Data Holder
         -  Data protection
 
     Responsibilities:

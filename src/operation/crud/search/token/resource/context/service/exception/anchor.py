@@ -22,7 +22,7 @@ from system import ServiceException
 class TokenContextServiceException(ServiceException):
     """
     Role:
-        -  Exception Chain Layer 0
+        - Exception Chain Layer 0
         -  Exception coverage target
 
     Responsibilities:

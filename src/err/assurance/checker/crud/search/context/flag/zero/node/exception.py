@@ -25,7 +25,7 @@ __all__ = [
 class ZeroNodeContextFlagsException(ZeroContextFlagsException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating no NodeSearchContext flags were enabled.

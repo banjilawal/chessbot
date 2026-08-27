@@ -13,10 +13,10 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 
-from domain.model import DataModel
+from domain.model import Model
 from operation.suite import OperationSuite, SensorSuite
 
-T = TypeVar("T", bound="DataModel")
+T = TypeVar("T", bound="Model")
 
 class Registry(ABC, Generic[T]):
     _operations: OperationSuite

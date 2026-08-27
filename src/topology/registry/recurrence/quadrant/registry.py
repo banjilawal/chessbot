@@ -22,7 +22,7 @@ from domain.model import Vector
 class QuadrantRecurrenceRegistry(RecurrenceRegistry[Quadrant]):
     """
     Role:
-        -  Data Holder
+        - Data Holder
         -  Factory
         -  Switcher
 

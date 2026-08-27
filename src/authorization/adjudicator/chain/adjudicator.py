@@ -24,7 +24,7 @@ T = TypeVar("R", bound="ChainRequest")
 class ChainRequestAdjudicator(RequestAdjudicator, ABC, Generic[N, R]):
     """
     Role:
-        -  Permission Authorization
+        - Permission Authorization
         -  Checklist Runner
         -  Integrity Maintenance
         _   Consistency Assurance

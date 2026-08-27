@@ -22,7 +22,7 @@ __all__ = [
 class SquareOccupiedException(SquareVisitException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Square visitation failed because the destination was already occupied.

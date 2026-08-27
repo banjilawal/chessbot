@@ -22,7 +22,7 @@ __all__ = [
 class SquareFullException(FullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required Square is full.

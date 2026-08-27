@@ -19,7 +19,7 @@ from carrier import ModelCarrier
 class ScalarCarrier(ModelCarrier[Scalar]):
     """
     Role:
-        -  Addressing
+        - Addressing
         -  Data-Holder
     
     Responsibilities:

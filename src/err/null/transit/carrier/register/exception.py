@@ -24,7 +24,7 @@ __all__ = [
 class RegisterCarrierNullException(EntityCarrierNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required RegisterCarrierToggle is null.

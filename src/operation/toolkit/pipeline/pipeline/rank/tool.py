@@ -18,7 +18,7 @@ from operation.toolkit import toolkit
 class Ranktoolkit(toolkit[Rank]):
     """
     Role:
-        -  Container
+        - Container
 
     Responsibilities:
         1.  Reduces the number params in SchemaContext Builder and Validator entry points.

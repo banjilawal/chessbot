@@ -24,7 +24,7 @@ __all__ = [
 class ArenaException(ModelException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Arena encountered an error.

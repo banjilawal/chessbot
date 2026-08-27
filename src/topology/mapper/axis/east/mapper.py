@@ -19,7 +19,7 @@ from topology.space import EastAxis
 class EastAxisMapFunction(AxisMappingFunction[EastAxis]):
     """
     Role:
-        -  Computation
+        - Computation
 
     Responsibilities:
         Define delta_vector for getting the next vector on east of origin.

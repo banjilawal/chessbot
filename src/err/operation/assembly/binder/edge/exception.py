@@ -26,7 +26,7 @@ from err import BinderAssemblyException
 class EdgeBinderAssemblyException(BinderAssemblyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a EdgeBinder assembly failed.

@@ -18,7 +18,7 @@ from domain.model import CatalogQuery
 class PersonaQuery(CatalogQuery[Persona]):
     """
     Role:
-        -  Model
+        - Model
         -  Search
         -  Stateless Data-Holder
 

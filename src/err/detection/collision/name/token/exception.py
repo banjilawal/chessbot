@@ -22,7 +22,7 @@ __all__ = [
 class TokenDesignationCollisionException(NameCollisionDetectorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a token is already using the designation.

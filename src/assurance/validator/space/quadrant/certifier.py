@@ -24,7 +24,7 @@ T = TypeVar("T", bound="Quadrant")
 class QuadrantRootChecker(SpaceChecker, Generic[T]):
     """
     Role:
-        -  Definition
+        - Definition
 
     Responsibilities:
         1.  A horizontal or vertical line whose root is the Space's origin.

@@ -22,7 +22,7 @@ __all__ = [
 class VectorBinderBuilderException(BinderBuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a VectorBinderBuilder failed.

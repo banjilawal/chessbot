@@ -23,7 +23,7 @@ __all__ = [
 class WorkerOpNameColliderBootstrapperException(ColliderBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating two different workers have the same WorkerRegistry key.

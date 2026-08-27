@@ -25,7 +25,7 @@ __all__ = [
 class GameStackContextNullException(StackContextNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required GameContext is null.

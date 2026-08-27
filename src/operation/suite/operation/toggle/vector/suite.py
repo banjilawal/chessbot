@@ -12,24 +12,24 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assurance import CartesianToggleValidator
-from fabrication import VectorToggleBuilder
-from kit import ToggleOperationSuite, VectorToggleToolkit
+from fabrication import CartesianToggleBuilder
+from kit import ToggleOperationSuite, CartesianToggleToolkit
 from domain.structure.toggle import CartesianToggle
 
 
-class VectorToggleSuite(ToggleOperationSuite[CartesianToggle]):
+class CartesianToggleSuite(ToggleOperationSuite[CartesianToggle]):
     """
     Role:
-        -  Dependency Container
+        - Dependency Container
         -  Dynamic Dependency Provider
 
     Responsibilities:
-        1.  Contains the operations that can be performed on a VectorToggle.
+        1.  Contains the operations that can be performed on a CartesianToggle.
 
     Attributes:
-        toolkit: Optional[VectorToggleToolkit]
-        builder: Optional[VectorToggleBuilder]
-        validator: Optional[VectorToggleValidator]
+        toolkit: Optional[CartesianToggleToolkit]
+        builder: Optional[CartesianToggleBuilder]
+        validator: Optional[CartesianToggleValidator]
 
     Provides:
 
@@ -39,29 +39,29 @@ class VectorToggleSuite(ToggleOperationSuite[CartesianToggle]):
 
     def __init__(
             self,
-            toolkit: Optional[VectorToggleToolkit] | None = None,
-            builder: Optional[VectorToggleBuilder] | None = None,
+            toolkit: Optional[CartesianToggleToolkit] | None = None,
+            builder: Optional[CartesianToggleBuilder] | None = None,
             validator: Optional[CartesianToggleValidator] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[VectorToggleToolkit]
-            builder: Optional[VectorToggleBuilder]
-            validator: Optional[VectorToggleValidator]
+            toolkit: Optional[CartesianToggleToolkit]
+            builder: Optional[CartesianToggleBuilder]
+            validator: Optional[CartesianToggleValidator]
         """
         super().__init__(
-            toolkit=toolkit or VectorToggleToolkit(),
-            builder=builder or VectorToggleBuilder(),
+            toolkit=toolkit or CartesianToggleToolkit(),
+            builder=builder or CartesianToggleBuilder(),
             validator=validator or CartesianToggleValidator(),
         )
     
     @property
-    def toolkit(self) -> VectorToggleToolkit:
-        return cast(VectorToggleToolkit, super().bundle)
+    def toolkit(self) -> CartesianToggleToolkit:
+        return cast(CartesianToggleToolkit, super().bundle)
     
     @property
-    def builder(self) -> VectorToggleBuilder:
-        return cast(VectorToggleBuilder, super().builder)
+    def builder(self) -> CartesianToggleBuilder:
+        return cast(CartesianToggleBuilder, super().builder)
     
     @property
     def validator(self) -> CartesianToggleValidator:

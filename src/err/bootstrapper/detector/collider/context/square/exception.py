@@ -26,7 +26,7 @@ from err import ContextColliderBootstrapperException
 class SquareContextCollisionException(ContextColliderBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a SquareContextCollision step failed.

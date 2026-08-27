@@ -24,7 +24,7 @@ __all__ = [
 class EdgeValidatorException(StateModelValidatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an EdgeValidator failed.

@@ -17,7 +17,7 @@ from domain.model import Binder, Board, Schema, Team
 class BoardBinder(Binder[Board, Team]):
     """
     Role:
-        -  Model
+        - Model
         -  Stateless Data-Holder
 
     Responsibility:

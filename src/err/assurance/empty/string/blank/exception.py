@@ -23,7 +23,7 @@ __all__ = [
 class BlankStringException(EmptyItemException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a String is only whitespace.

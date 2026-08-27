@@ -14,12 +14,12 @@ from typing import Any, cast
 
 
 from artifcat import ValidationResult
-from domain import DataModel
+from domain import Model
 from transit import ValidationDispatcher
 from util import LoggingLevelRouter
 
 
-class ModelValidationDispatcher(ValidationDispatcher[DataModel]):
+class ModelValidationDispatcher(ValidationDispatcher[Model]):
     """
     Role
         -  Transaction Worker

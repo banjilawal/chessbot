@@ -18,7 +18,7 @@ from artifcat import EventState, Result
 class EventResult(Result[Event]):
     """
     Role:
-        -  Data Transport
+        - Data Transport
         -  Error Transport
 
     Responsibilities:

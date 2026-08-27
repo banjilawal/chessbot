@@ -17,7 +17,7 @@ from topology.pattern import PawnAttackSignature
 class OpeningPawnAttackPattern(PawnAttackSignature):
     """
     Role:
-        -  Data Holder
+        - Data Holder
         -  Immutability
 
     Responsibilities:

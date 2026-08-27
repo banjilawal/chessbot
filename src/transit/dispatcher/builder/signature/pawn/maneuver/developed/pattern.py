@@ -18,7 +18,7 @@ from topology.pattern import ManeuverOffsetPattern
 class DevelopedManeuverOffsetPattern(ManeuverOffsetPattern):
     """
     Role:
-        -  Data Holder
+        - Data Holder
         -  Immutability
 
     Responsibilities:

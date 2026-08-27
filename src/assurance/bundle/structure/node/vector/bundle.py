@@ -21,7 +21,7 @@ from transit import VectorValidator
 class VectorNodeValidationBundle(NodeValidationBundle[VectorNode]):
     """
     Role:
-        -  Toolkit
+        - Toolkit
 
     Responsibilities:
         1.  Bundles types, null-exceptions, attribute-validators, and utilities VectorNodeIntegrityChecker 

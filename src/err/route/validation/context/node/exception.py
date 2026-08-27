@@ -26,7 +26,7 @@ from err import ContextNoValidationRouteException
 class NodeContextValidationRouteException(ContextNoValidationRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of NodeContext validation routes is missing.

@@ -23,7 +23,7 @@ __all__ = [
 class PawnTokenException(TokenException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a PawnToken encountered an error.

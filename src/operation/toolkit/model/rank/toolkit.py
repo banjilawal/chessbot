@@ -23,7 +23,7 @@ from operation.toolkit.model.rank.toolkit import ModelToolkit
 class RankToolkit(ModelToolkit[Rank]):
     """
     Role:
-        -  Container
+        - Container
     
     Responsibilities:
         1.  Collection of workers and services that are required for Rank tasks.

@@ -15,7 +15,7 @@ from domain import CartesianPoint
 class Vector(CartesianPoint):
     """
     Role:
-        -  CartesianPoint
+        - CartesianPoint
         -  Stateless Data-Holder
     
     About:

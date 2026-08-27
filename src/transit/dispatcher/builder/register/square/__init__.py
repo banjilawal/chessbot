@@ -1,4 +1,4 @@
-# src/transit/dispatcher/builder/register/square/__init__.py
+# src/transit/dispatcher/builder/structure/register/square/__init__.py
 
 """
 Module: transit.dispatcher.builder.register.square.__init__

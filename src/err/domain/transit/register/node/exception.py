@@ -24,7 +24,7 @@ __all__ = [
 class NodeRegisterCarrierException(RegisterCarrierException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a NodeRegisterCarrier encountered an error.

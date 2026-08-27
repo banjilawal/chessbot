@@ -24,7 +24,7 @@ __all__ = [
 class DuplicatePrisonerException(DuplicateItemException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Prisoner already exists in the operating context so, trying

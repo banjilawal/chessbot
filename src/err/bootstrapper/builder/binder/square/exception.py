@@ -26,7 +26,7 @@ from err import BinderBuilderBootstrapperException
 class SquareBinderBuilderBootstrapperException(BinderBuilderBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a SquareBinderBuilderBootstrapper was aborted by an exception.

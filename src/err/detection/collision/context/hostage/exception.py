@@ -26,7 +26,7 @@ from err import ContextCollisionDetectorException
 class HostageContextCollisionException(ContextCollisionDetectorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a HostageContextCollision step failed.

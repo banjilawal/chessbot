@@ -24,7 +24,7 @@ __all__ = [
 class OriginCertifierBootstrapperException(ValidatorBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an OriginCertifierBootstrapper

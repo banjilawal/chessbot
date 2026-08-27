@@ -25,7 +25,7 @@ from err import QueryStackEmptyException
 class FormationQueryStackEmptyException(QueryStackEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required FormationQuery's target stack is empty.

@@ -20,7 +20,7 @@ from domain.model import Player, Blueprint, Game, Team
 class PlayerQueryValidationBlueprint(QueryValidationBlueprint[Player]):
     """
     Role:
-        -  Container
+        - Container
 
     Responsibilities:
         1.  Provides values for instantiating a PlayerValidation instance.

@@ -18,7 +18,7 @@ from system import GameColor
 class Zone(Enum):
     """
     Role:
-        -  Addressing
+        - Addressing
         -  Data-Holder
   
     Responsibilities:

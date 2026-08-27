@@ -18,7 +18,7 @@ T = TypeVar("T", bound="StateModel")
 class Microservice(ABC, Generic[T]):
     """
     Role:
-        -  API
+        - API
         -  Lifecycle Manager
         -  Operations Provider
         -  Stateless Microservice

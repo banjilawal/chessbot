@@ -21,7 +21,7 @@ from domain import CoordInsertContext
 class CoordStackInsertPermissionUtility(StackInsertPermissionUtility[CoordInsertContext]):
     """
     Role:
-        -  Utility
+        - Utility
 
     Responsibilities:
         1.  Bundles resources the CoordInsertAuthorizer needs to evaluate a CoordInsertRequest.

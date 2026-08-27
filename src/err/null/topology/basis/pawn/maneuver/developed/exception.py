@@ -24,7 +24,7 @@ __all__ = [
 class DevelopedManeuverOffsetPatternNullException(ManeuverOffsetPatternNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an error occurred in an DevelopedManeuverOffsetPattern is null.

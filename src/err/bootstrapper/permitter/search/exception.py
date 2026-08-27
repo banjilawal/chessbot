@@ -24,7 +24,7 @@ __all__ = [
 class SearchPermitterBootstrapperException(BootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a SearchPermitterBootstrapper from

@@ -24,7 +24,7 @@ __all__ = [
 class ItineraryMicroserviceException(MicroserviceException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a ItineraryMicroservice failed.

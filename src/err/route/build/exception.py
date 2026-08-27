@@ -22,7 +22,7 @@ __all__ = [
 class BuildRouteException(ExecutionRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of  build routes is missing.

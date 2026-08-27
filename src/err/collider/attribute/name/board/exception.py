@@ -24,7 +24,7 @@ __all__ = [
 class BoardNameCollisionException(NameCollisionException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that two boards share an name that should be unique.

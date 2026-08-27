@@ -23,7 +23,7 @@ __all__ = [
 class NumberAboveBoundsException(NumberException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a number is above the ceiling.

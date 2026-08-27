@@ -21,7 +21,7 @@ from domain import TeamDeleteContext
 class TeamStackDeletePermissionUtility(StackDeletePermissionUtility[TeamDeleteContext]):
     """
     Role:
-        -  Utility
+        - Utility
 
     Responsibilities:
         1.  Bundles resources the TeamDeleteAuthorizer needs to evaluate a TeamDeleteRequest.

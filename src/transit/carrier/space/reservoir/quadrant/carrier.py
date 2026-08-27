@@ -19,7 +19,7 @@ from space import QuadrantReservoir
 class QuadrantReservoirCarrier(SpaceReservoirCarrier[QuadrantReservoir]):
     """
     Role:
-        -  Data Transport
+        - Data Transport
 
     Responsibilities:
         1.  Transport either:

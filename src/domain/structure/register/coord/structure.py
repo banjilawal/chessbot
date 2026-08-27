@@ -17,7 +17,7 @@ from domain import Coord, Register
 class CoordRegister(Register[Coord]):
     """
     Role:
-        -  Model
+        - Model
         -  Data Holder
 
     Responsibilities:

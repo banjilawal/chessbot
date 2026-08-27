@@ -21,7 +21,7 @@ from domain.model import Arena, Game
 class ArenaBlueprint(StateModelBlueprint[Arena]):
     """
     Role:
-        -  Container
+        - Container
         -  DTO
     
     Responsibilities:

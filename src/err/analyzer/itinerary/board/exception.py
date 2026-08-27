@@ -24,7 +24,7 @@ __all__ = [
 class SquareVisitorBoardException(ItineraryAnalyzerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a square entry failed because the visitor belonged to a different board.

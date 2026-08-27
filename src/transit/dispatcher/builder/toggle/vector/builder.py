@@ -11,16 +11,16 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain.metadata.blueprint import VectorToggleBlueprint
+from domain.metadata.blueprint import CartesianToggleBlueprint
 from transit.dispatcher.builder import ToggleBuildDispatcher
-from err import VectorToggleBuilderException
+from err import CartesianToggleBuilderException
 from artifcat import BuildResult, MethodResultType
 from domain.structure.toggle import CartesianToggle
-from operation.toolkit import VectorToggleBuilderToolkit
+from operation.toolkit import CartesianToggleBuilderToolkit
 from util import LoggingLevelRouter
 
 
-class VectorToggleBuilder(ToggleBuildDispatcher[CartesianToggle]):
+class CartesianToggleBuilder(ToggleBuildDispatcher[CartesianToggle]):
     """
     Role:
         - Option Selector
@@ -32,7 +32,7 @@ class VectorToggleBuilder(ToggleBuildDispatcher[CartesianToggle]):
             as an toggle for multiplication, conversion or simple addition.
 
     Attributes:
-        builder_toolkit: Optional[VectorToggleBuilderToolkit]
+        builder_toolkit: Optional[CartesianToggleBuilderToolkit]
 
     Provides:
         
@@ -42,24 +42,24 @@ class VectorToggleBuilder(ToggleBuildDispatcher[CartesianToggle]):
         ToggleBuilder
     """
     
-    def __init__(self, builder_toolkit: Optional[VectorToggleBuilderToolkit] |
-                                        None = VectorToggleBuilderToolkit()
+    def __init__(self, builder_toolkit: Optional[CartesianToggleBuilderToolkit] |
+                                        None = CartesianToggleBuilderToolkit()
     ):
         """
         Args:
-            builder_toolkit: Optional[VectorToggleBuilderToolkit]
+            builder_toolkit: Optional[CartesianToggleBuilderToolkit]
         """
         super().__init__(builder_toolkit=builder_toolkit)
         
     @property
-    def builder_toolkit(self) -> VectorToggleBuilderToolkit:
-        return cast(VectorToggleBuilderToolkit, super().assembler)
+    def builder_toolkit(self) -> CartesianToggleBuilderToolkit:
+        return cast(CartesianToggleBuilderToolkit, super().assembler)
         
     
     @LoggingLevelRouter.monitor
-    def execute(self, blueprint: VectorToggleBlueprint,) -> BuildResult[CartesianToggle]:
+    def execute(self, blueprint: CartesianToggleBlueprint,) -> BuildResult[CartesianToggle]:
         """
-        Build a safe VectorToggle.
+        Build a safe CartesianToggle.
 
         Action:
             1.  Send an exception chain in the BuildResult if either
@@ -67,11 +67,11 @@ class VectorToggleBuilder(ToggleBuildDispatcher[CartesianToggle]):
                     -  The assembler does not return a product.
             2.  Otherwise, cast the assemble product then, send in the success result,
         Args:
-            blueprint: VectorToggleBlueprint
+            blueprint: CartesianToggleBlueprint
         Returns:
-            BuildResult[VectorToggle]
+            BuildResult[CartesianToggle]
         Raises:
-            VectorToggleBuilderException
+            CartesianToggleBuilderException
         """
         method = f"{self.__class__.__name__}.build"
         
@@ -80,27 +80,27 @@ class VectorToggleBuilder(ToggleBuildDispatcher[CartesianToggle]):
         if blueprint_validation.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                VectorToggleBuilderException(
+                CartesianToggleBuilderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorToggleBuilderException.MSG,
-                    err_code=VectorToggleBuilderException.ERR_CODE,
+                    msg=CartesianToggleBuilderException.MSG,
+                    err_code=CartesianToggleBuilderException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.BUILD_RESULT,
                     ex=blueprint_validation.exception
                 )
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.builder_toolkit.assembler.execute(
-            blueprint=cast(VectorToggleBlueprint, blueprint_validation.payload)
+            blueprint=cast(CartesianToggleBlueprint, blueprint_validation.payload)
         )
         if assembly.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                VectorToggleBuilderException(
+                CartesianToggleBuilderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorToggleBuilderException.MSG,
-                    err_code=VectorToggleBuilderException.ERR_CODE,
+                    msg=CartesianToggleBuilderException.MSG,
+                    err_code=CartesianToggleBuilderException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.BUILD_RESULT,
                     ex=assembly.exception
                 )

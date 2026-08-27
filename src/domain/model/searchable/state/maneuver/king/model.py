@@ -17,7 +17,7 @@ from domain.model import King, KingManeuverWarning, KingToken, Maneuver, Path
 class KingManeuver(Maneuver[King]):
     """
     Role:
-        -  Model
+        - Model
         -  Data Holder
 
     Responsibilities:

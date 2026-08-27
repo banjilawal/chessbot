@@ -22,7 +22,7 @@ from system import ValidatorException
 class TokenQueryValidatorException(ValidatorException):
     """
     Role:
-        -  Worker Method Identification
+        - Worker Method Identification
         -  Exception Chain Layer 1,
         -  Exception Messaging
 

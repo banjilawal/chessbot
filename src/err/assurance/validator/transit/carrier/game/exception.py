@@ -24,7 +24,7 @@ __all__ = [
 class GameCarrierValidatorException(EntityCarrierValidatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a GameCarrierValidator failed.

@@ -20,7 +20,7 @@ from topology.registry.collection import RecurrenceRegistryCollection
 class RookRecurrenceRegistries(RecurrenceRegistryCollection[Rook]):
     """
     Role:
-        -  Data Holder
+        - Data Holder
         -  Iterator
 
     Responsibilities:

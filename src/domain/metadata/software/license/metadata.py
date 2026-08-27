@@ -17,7 +17,7 @@ from domain import Application, Subscriber
 class SoftwareLicense:
     """
     Role:
-        -  Softwareful Data Holder
+        - Softwareful Data Holder
         
     Responsibilities:
         1. Abstract representation of a chess piece.

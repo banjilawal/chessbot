@@ -24,7 +24,7 @@ __all__ = [
 class VectorIdentityRegisterBuilderException(RegisterBuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a VectorIdentityRegisterBuilder failure.

@@ -24,7 +24,7 @@ __all__ = [
 class KnightOffsetPatternCarrierNullException(OffsetPatternCarrierNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required KnightOffsetPatternCarrier is null.

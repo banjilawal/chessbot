@@ -24,7 +24,7 @@ __all__ = [
 class CheckedPathSearchHitConflictException(PathSearchHitConflictException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an CheckedPathSearcher returned multiple hits for an item which should be unique.

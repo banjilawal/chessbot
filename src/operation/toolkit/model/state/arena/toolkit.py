@@ -17,7 +17,7 @@ from operation.toolkit.model.state.arena.toolkit import StateModelToolkit
 class ArenaToolkit(StateModelToolkit[Arena]):
     """
     Role:
-        -  Container
+        - Container
 
     Responsibilities:
         1.  Collection of workers and services that are required for Arena tasks.

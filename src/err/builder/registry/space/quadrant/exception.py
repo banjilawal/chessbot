@@ -23,7 +23,7 @@ __all__ = [
 class QuadrantReservoirBuilderException(SpaceReservoirBuilderException):
     """
     Role:
-        -  Failure Tracing
+        - Failure Tracing
 
     Responsibilities:
         1.  Indicating a QuadrantReservoirBuilder failed.

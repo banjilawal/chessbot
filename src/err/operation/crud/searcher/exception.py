@@ -24,7 +24,7 @@ __all__ = [
 class SearcherException(CrudOperatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Searcher was aborted by an exception.

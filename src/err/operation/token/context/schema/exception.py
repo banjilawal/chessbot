@@ -26,7 +26,7 @@ from err import ContextTokenOperationException
 class SchemaContextTokenOperationException(ContextTokenOperationException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a SchemaContext tokenfailed.

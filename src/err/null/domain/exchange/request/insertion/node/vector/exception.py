@@ -24,7 +24,7 @@ __all__ = [
 class AddVectorNodeRequestNullException(AddNodeRequestNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required AddVectorNodeRequest was null.

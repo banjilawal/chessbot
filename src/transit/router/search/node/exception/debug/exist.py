@@ -1,4 +1,4 @@
-# src/logic/node/context/transit/route/exception/debug/exist.py
+# src/logic/structure/node/context/transit/route/exception/debug/exist.py
 
 """
 Module: logic.node.context.route.exception.debug.exist

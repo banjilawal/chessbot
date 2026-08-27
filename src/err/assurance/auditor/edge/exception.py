@@ -24,7 +24,7 @@ __all__ = [
 class EdgeConsistencyAuditorException(ConsistencyAuditorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a EdgeConsistencyAuditor failed.

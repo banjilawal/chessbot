@@ -21,7 +21,7 @@ from system import ServiceException
 class TokenSearchServiceException(ServiceException):
     """
     Role:
-        -  Exception Chain Layer 0
+        - Exception Chain Layer 0
         -  Exception coverage target
 
     Responsibilities:

@@ -23,7 +23,7 @@ __all__ = [
 class ContextColliderException(ColliderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a ContextCollision failed.

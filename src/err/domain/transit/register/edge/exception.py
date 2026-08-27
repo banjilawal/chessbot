@@ -24,7 +24,7 @@ __all__ = [
 class EdgeRegisterCarrierException(RegisterCarrierException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a EdgeRegisterCarrier encountered an error.

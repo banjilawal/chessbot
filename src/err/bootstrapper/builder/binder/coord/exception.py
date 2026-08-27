@@ -26,7 +26,7 @@ from err import BinderBuilderBootstrapperException
 class CoordBinderBuilderBootstrapperException(BinderBuilderBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a CoordBinderBuilderBootstrapper was aborted by an exception.

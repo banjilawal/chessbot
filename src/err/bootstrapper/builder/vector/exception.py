@@ -24,7 +24,7 @@ __all__ = [
 class VectorBuilderBootstrapperException(BuilderBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a VectorBuilderBootstrapper was aborted by an exception.

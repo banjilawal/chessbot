@@ -20,7 +20,7 @@ from topology.space import NortheastQuadrant
 class NortheastQuadrantRecurrence(QuadrantRecurrence[NortheastQuadrant]):
     """
     Role:
-        -  Computation
+        - Computation
         -  Iterator
 
     Responsibilities:

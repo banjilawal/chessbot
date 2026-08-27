@@ -25,7 +25,7 @@ __all__ = [
 class ExcessContextFlagsException(ContextFlagCountException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating too many SearchContext flags enabled.

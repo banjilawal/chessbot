@@ -24,7 +24,7 @@ from transit.dispatcher.validator import TokenValidationDispatcher
 class PawnPromotionApprovalManager(Analyzer):
     """
     Role:
-        -  Transaction Worker
+        - Transaction Worker
         -  Consistency
         -  Integrity Maintenance
         -  Process Runner

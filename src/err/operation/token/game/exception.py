@@ -23,7 +23,7 @@ __all__ = [
 class GameTokenOperationException(TokenOperatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Game tokenfailed.

@@ -23,7 +23,7 @@ __all__ = [
 class TokenBuilderException(BuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Token build failed.

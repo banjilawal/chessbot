@@ -24,7 +24,7 @@ __all__ = [
 class PathSearchResultEmptyException(SearchResultEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a PathSearcher did not find the required item.

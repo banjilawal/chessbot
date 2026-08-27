@@ -24,7 +24,7 @@ __all__ = [
 class TokenNameCollisionException(NameCollisionException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that two tokens share an name that should be unique.

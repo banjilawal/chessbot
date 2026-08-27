@@ -23,7 +23,7 @@ __all__ = [
 class RankException(ToolkitException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Rank encountered an error.

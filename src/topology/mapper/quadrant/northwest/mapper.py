@@ -18,7 +18,7 @@ from topology.space import NorthwestQuadrant
 class NorthwestQuadrantMappingFunction(QuadrantMappingFunction[NorthwestQuadrant]):
     """
     Role:
-        -  Computation
+        - Computation
 
     Responsibilities:
         Define x_step and slope for getting the next vector northwest of origin.

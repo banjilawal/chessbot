@@ -22,7 +22,7 @@ __all__ = [
 class GameStackEmptyException(StackEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required GameStack is empty.

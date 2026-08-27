@@ -18,7 +18,7 @@ from domain.schema import Offset
 class KingTopologyBasis(OffsetTopologyBasis[King]):
     """
     Role:
-        -  Data Holder
+        - Data Holder
 
     Responsibilities:
         1.  Constraints or that are used to generate a RankTree for King

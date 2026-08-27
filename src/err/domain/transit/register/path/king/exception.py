@@ -24,7 +24,7 @@ __all__ = [
 class KingPathRegisterCarrierException(PathException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a KingPathRegisterCarrier encountered an error.

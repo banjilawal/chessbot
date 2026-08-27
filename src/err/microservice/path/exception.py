@@ -24,7 +24,7 @@ __all__ = [
 class PathMicroserviceException(MicroserviceException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a candidate did not pass a PathMicroservice check.

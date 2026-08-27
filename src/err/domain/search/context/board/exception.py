@@ -24,7 +24,7 @@ __all__ = [
 class BoardContextException(ContextException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a BoardContext encountered an error.

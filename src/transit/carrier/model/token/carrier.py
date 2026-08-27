@@ -19,7 +19,7 @@ from transit.carrier import ModelCarrier
 class TokenCarrier(ModelCarrier[Token]):
     """
     Role:
-        -  Boundary Carrier
+        - Boundary Carrier
 
     Responsibilities:
         1.  Transport either a hydrated Token or its Blueprint across validation and other

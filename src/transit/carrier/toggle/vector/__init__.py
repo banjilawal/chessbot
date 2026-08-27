@@ -1,16 +1,16 @@
-# src/transit/carrier/toggle/vector/__init__.py
+# src/transit/carrier/structure/toggle/vector/__init__.py
 
 """
-Module: transit.carrier.toggle.vector.__init__
+Module: transit.carrier.structure.toggle.vector.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== TRANSIT.CARRIER.TOGGLE.VECTOR PACKAGE ===========#
+# =========== TRANSIT.CARRIER.STRUCTURE.TOGGLE.VECTOR PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .carrier import VectorToggleCarrier
+from .carrier import CartesianToggleCarrier

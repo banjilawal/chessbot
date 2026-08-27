@@ -24,7 +24,7 @@ __all__ = [
 class RegisterConsistencyCheckerNullException(ConsistencyCheckerNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required RegisterConsistencyChecker is null.

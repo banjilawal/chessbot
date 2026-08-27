@@ -17,18 +17,18 @@ from domain.model import Coord, Vector
 from domain.structure.toggle import CartesianToggle
 
 
-class VectorToggleBlueprint(ToggleBlueprint[CartesianToggle]):
+class CartesianToggleBlueprint(ToggleBlueprint[CartesianToggle]):
     """
     Role:
-        -  Container
+        - Container
     
     Responsibilities:
-        1.  Provides values for instantiating a VectorToggle object.
+        1.  Provides values for instantiating a CartesianToggle object.
     
     Attributes:
         vector: Optional[Vector]
         coord: Optional[Coord]
-        model_class: Type[VectorToggle]
+        model_class: Type[CartesianToggle]
     
     Provides:
     
@@ -48,7 +48,7 @@ class VectorToggleBlueprint(ToggleBlueprint[CartesianToggle]):
         Args:
             vector: Optional[Vector]
             coord: Optional[Coord]
-            model_class: Type[VectorToggle]
+            model_class: Type[CartesianToggle]
         """
         super().__init__(model_class=model_class)
         self._coord = coord

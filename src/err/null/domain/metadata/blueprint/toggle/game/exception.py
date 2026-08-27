@@ -24,7 +24,7 @@ __all__ = [
 class GameToggleBlueprintNullException(ToggleBlueprintNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required GameBlueprint is null.

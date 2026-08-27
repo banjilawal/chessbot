@@ -24,7 +24,7 @@ __all__ = [
 class TeamContextException(ContextException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a TeamContext encountered an error.

@@ -25,7 +25,7 @@ __all__ = [
 class TokenStackContextNullException(StackContextNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required TokenContext is null.

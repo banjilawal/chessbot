@@ -24,7 +24,7 @@ __all__ = [
 class MethodImplementationException(ChessException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a call was made to an abstract method that the subclass does not implement.

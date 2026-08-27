@@ -22,7 +22,7 @@ _all_ = [
 class ExcessSquareBlueprintFlagsException(ExcessBlueprintFlagsException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicatings that more than one SquareBlueprint option was enabled.

@@ -26,7 +26,7 @@ from err import BinderTokenOperationBootstrapperException
 class CoordBinderTokenOperationBootstrapperException(BinderTokenOperationBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a CoordBinder tokenfailed.

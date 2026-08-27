@@ -24,7 +24,7 @@ __all__ = [
 class CoordRegisterNullException(ModelRegisterNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required CoordRegister is null.

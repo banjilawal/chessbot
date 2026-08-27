@@ -22,7 +22,7 @@ __all__ = [
 class SquareNameCollisionException(NameColliderBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a square is already using the name.

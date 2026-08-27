@@ -18,7 +18,7 @@ from domain.structure.register import Register
 class RegisterSet(SetCollection[Register]):
     """
     Role:
-        -  Data Holder
+        - Data Holder
         
     Responsibilities:
         1.  A bag of registers whose order is not guaranteed.

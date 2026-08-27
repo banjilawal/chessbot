@@ -15,7 +15,7 @@ from enum import Enum
 class QuadrantStepFunction(Enum):
     """
     Role:
-        -  Configuration Table
+        - Configuration Table
         -  Metadata Set
 
 

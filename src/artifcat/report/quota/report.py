@@ -18,7 +18,7 @@ from artifcat.report import Report
 class RankQuotaReport(Report):
     """
     Role:
-        -  Test results
+        - Test results
 
     Responsibilities:
         1.  Indicate the number of slots available for a Rank in a TokenStack.

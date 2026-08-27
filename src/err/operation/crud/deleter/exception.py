@@ -24,7 +24,7 @@ __all__ = [
 class DeleterException(CrudOperatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Deleter was aborted by an exception.

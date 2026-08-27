@@ -22,7 +22,7 @@ __all__ = [
 class ArenaNoValidationRouteException(NoValidationRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of Arena validation routes is missing.

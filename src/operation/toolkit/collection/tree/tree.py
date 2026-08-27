@@ -34,7 +34,7 @@ T = TypeVar("T", bound="Tree")
 class TreeToolkit(CollectionToolkit, ABC, Generic[T]):
     """
     Role:
-        -  Dependency Management
+        - Dependency Management
 
     Responsibilities:
         1.  Bundles dependencies a Collection worker needs to complete its task.
@@ -69,7 +69,7 @@ T = TypeVar("T")
 class Tree(Collection, ABC, Generic[T]):
     """
     Role:
-        -  Data Holder
+        - Data Holder
         -  Data protection
         
     Responsibilities:

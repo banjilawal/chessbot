@@ -21,7 +21,7 @@ T = TypeVar("T", bound="TraversalRank")
 class TraversalTopologyBasis(TopologyBasis, Generic[T]):
     """
     Role:
-        -  Data Holder
+        - Data Holder
 
 
     Responsibilities:

@@ -21,7 +21,7 @@ T = TypeVar("T", bound="DomainDataObject")
 class DomainObjectTypeUnions(ABC, Generic[T]):
     """
     Role:
-        -  Metadata
+        - Metadata
 
     Responsibilities:
         1. Catalog of data unions associated with a domain object.

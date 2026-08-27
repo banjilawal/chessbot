@@ -19,7 +19,7 @@ from artifcat.report import ReadinessState, Report
 class TokenReadinessReport(Report):
     """
     Role:
-        -  Test results
+        - Test results
 
     Responsibilities:
         1.  Presents the results of testing if a Token can be used in the game.

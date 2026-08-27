@@ -24,7 +24,7 @@ __all__ = [
 class DuplicateTokenException(DuplicateItemException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Token already exists in the operating context so, trying

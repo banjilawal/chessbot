@@ -25,7 +25,7 @@ from artifcat import MethodResultType
 class GameStackServiceException(StackServiceException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a GameStackService encountered an error.

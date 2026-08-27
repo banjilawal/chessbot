@@ -17,7 +17,7 @@ from topology.space import Axis, EastAxis, NorthAxis, SouthAxis, SpaceReservoir,
 class AxisReservoir(SpaceReservoir[Axis]):
     """
     Role:
-        -  Selection
+        - Selection
         -  Iterator
         -  Routing Mask
 

@@ -21,7 +21,7 @@ from transit.dispatcher.validator import NumberValidator
 class MathToolkit(Toolkit):
     """
     Role:
-        -  Container
+        - Container
     
     Responsibilities:
         1.  Collection of suites and operations for vector algebra.

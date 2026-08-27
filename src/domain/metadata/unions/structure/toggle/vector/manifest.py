@@ -14,13 +14,13 @@ from dataclasses import dataclass
 from typing import Type
 
 from assurance import ToggleUnions
-from fabrication import VectorToggleBlueprint
+from fabrication import CartesianToggleBlueprint
 from domain.structure.toggle import CartesianToggle
-from transit.carrier import VectorToggleCarrier
+from transit.carrier import CartesianToggleCarrier
 
 
 @dataclass
-class VectorToggleUnions(ToggleUnions):
+class CartesianToggleUnions(ToggleUnions):
     model: Type[CartesianToggle] = CartesianToggle
-    carrier: Type[VectorToggleCarrier] = VectorToggleCarrier
-    blueprint: Type[VectorToggleBlueprint] = VectorToggleBlueprint
+    carrier: Type[CartesianToggleCarrier] = CartesianToggleCarrier
+    blueprint: Type[CartesianToggleBlueprint] = CartesianToggleBlueprint

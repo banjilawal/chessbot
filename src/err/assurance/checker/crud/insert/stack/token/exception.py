@@ -24,7 +24,7 @@ __all__ = [
 class TokenStackPushChecker(StackPushChecker):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a PushTokenChecker failed.

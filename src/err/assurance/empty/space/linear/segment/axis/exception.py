@@ -24,7 +24,7 @@ __all__ = [
 class AxisLineSegmentEmptyException(LineSegmentEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an Axis has an empty segment field.

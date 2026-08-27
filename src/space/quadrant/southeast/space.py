@@ -17,7 +17,7 @@ from space.quadrant.southeast.space import Quadrant
 class SoutheastQuadrant(Quadrant):
     """
     Role:
-        -  Data Holder
+        - Data Holder
 
     Responsibilities:
         1.  Quadrant bounded between U(x_i, y_i) <= V(num_columns - 1, num_rows - 1).

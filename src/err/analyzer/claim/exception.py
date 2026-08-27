@@ -24,7 +24,7 @@ __all__ = [
 class HomeSquareClaimAnalyzerException(AnalyzerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an error occurred during a home square claim analysis.

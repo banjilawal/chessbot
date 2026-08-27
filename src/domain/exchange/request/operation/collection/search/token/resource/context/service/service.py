@@ -14,7 +14,7 @@ from domain.exchange.model.state.token import TokenContext, TokenContextBuilder,
 class TokenContextService(IntegrityMicroservice[TokenContext]):
     """
     Role:
-        -  Microservice API
+        - Microservice API
         -  Stateless Integrity Lifecycle Manager
 
     Responsibilities:

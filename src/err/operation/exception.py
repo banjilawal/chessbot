@@ -24,7 +24,7 @@ __all__ = [
 class OperatorException(ChessException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a operation from completing the task.

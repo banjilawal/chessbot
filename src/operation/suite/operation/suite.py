@@ -22,7 +22,7 @@ T = TypeVar("T", bound="Model")
 class OperationSuite(Suite, Generic[T]):
     """
     Role:
-        -  Dependency Container
+        - Dependency Container
         -  Dynamic Dependency Provider
 
     Responsibilities:

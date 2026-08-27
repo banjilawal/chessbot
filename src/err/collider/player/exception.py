@@ -23,7 +23,7 @@ __all__ = [
 class PlayerColliderException(ColliderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a PlayerCollision step failed.

@@ -23,7 +23,7 @@ __all__ = [
 class NorthwestQuadrantCarrierNullException(QuadrantCarrierNullException):
     """
     Role:
-        -  Failure Tracing
+        - Failure Tracing
 
     Responsibilities:
         1.  Indicating a required NorthwestQuadrant is null.

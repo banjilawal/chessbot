@@ -24,7 +24,7 @@ T = TypeVar("T", bound="InsertContext")
 class InsertPermissionUtility(CrudPermissionUtility[InsertRequest], ABC, Generic[T]):
     """
     Role:
-        -  Utility
+        - Utility
 
     Responsibilities:
         1.  Bundles resources the InsertAuthorizer needs to evaluate a InsertRequest.

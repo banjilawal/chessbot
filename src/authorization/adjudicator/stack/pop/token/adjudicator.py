@@ -24,7 +24,7 @@ from util import LoggingLevelRouter
 class TokenPopRequestAdjudicator(PopRequestAdjudicator):
     """
     Role:
-        -  Helper
+        - Helper
         -  Test Runner
         
     Responsibilities:

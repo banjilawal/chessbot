@@ -21,7 +21,7 @@ T = TypeVar("T", bound="Collection")
 class CollectionToolkit(Toolkit, ABC, Generic[T]):
     """
     Role:
-        -  Dependency Management
+        - Dependency Management
 
     Responsibilities:
         1.  Bundles dependencies a Collection worker needs to complete its task.

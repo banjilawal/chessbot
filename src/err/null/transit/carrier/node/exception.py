@@ -24,7 +24,7 @@ __all__ = [
 class NodeCarrierNullException(EntityCarrierNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required NodeCarrier is null.

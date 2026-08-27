@@ -20,7 +20,7 @@ from domain import ModelTypeUnions, Token, TokenBlueprint, TokenCarrier, TokenSe
 class TokenTypeUnions(ModelTypeUnions[Token]):
     """
     Role:
-        -  Metadata
+        - Metadata
 
     Responsibilities:
         1. Catalog of data unions a Token uses in the domain.

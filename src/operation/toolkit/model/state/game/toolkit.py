@@ -17,7 +17,7 @@ from system import Toolkit, ToolkitResult, LoggingLevelRouter
 class GameToolkit(StateModelToolkit[Game]):
     """
     Role:
-        -  Container
+        - Container
         
     Responsibilities:
         1.  Collection of workers and services that are required for Board tasks.

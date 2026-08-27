@@ -24,7 +24,7 @@ __all__ = [
 class ItineraryAnalyzerException(AnalyzerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an error occurred during an itinerary analysis.

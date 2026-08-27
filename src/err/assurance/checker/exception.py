@@ -24,7 +24,7 @@ __all__ = [
 class IntegrityCheckerException(AssuranceException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by anIntegrityChecker failed.

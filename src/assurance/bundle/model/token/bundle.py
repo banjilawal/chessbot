@@ -20,7 +20,7 @@ from domain import Token, TokenTypeUnions, TokenNullExceptionRoster
 class TokenValidationBundle(ValidationBundle[Token]):
     """
     Role:
-        -  Toolkit
+        - Toolkit
 
     Responsibilities:
         1.  Bundles types, null-exceptions, attribute-validators, and utilities TokenIntegrityChecker

@@ -21,7 +21,7 @@ from domain import SnapshotDeleteContext
 class SnapshotStackDeletePermissionUtility(StackDeletePermissionUtility[SnapshotDeleteContext]):
     """
     Role:
-        -  Utility
+        - Utility
 
     Responsibilities:
         1.  Bundles resources the SnapshotDeleteAuthorizer needs to evaluate a SnapshotDeleteRequest.

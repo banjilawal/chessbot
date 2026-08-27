@@ -21,7 +21,7 @@ from system import ChessException
 class WorkException(ChessException):
     """
     Role:
-        -  Process Identifier
+        - Process Identifier
         -  Exception Chain Layer 1
         -  Exception Messaging
 

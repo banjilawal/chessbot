@@ -26,7 +26,7 @@ from err import ContextCollisionDetectorException
 class TeamContextCollisionException(ContextCollisionDetectorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a TeamContextCollision step failed.

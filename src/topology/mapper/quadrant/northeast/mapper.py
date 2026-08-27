@@ -18,7 +18,7 @@ from topology.space import NortheastQuadrant
 class NortheastQuadrantMappingFunction(QuadrantMappingFunction[NortheastQuadrant]):
     """
     Role:
-        -  Computation
+        - Computation
         -  Integrity Assurance
 
     Responsibilities:

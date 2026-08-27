@@ -25,7 +25,7 @@ __all__ = [
 class ZeroRankContextFlagsException(ZeroContextFlagsException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating no RankSearchContext flags were enabled.

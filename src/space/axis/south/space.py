@@ -18,7 +18,7 @@ from space.axis.south.space import Axis
 class SouthAxis(Axis):
     """
     Role:
-        -  Data Holder
+        - Data Holder
 
     Responsibilities:
         1.  Axis bounded between U(x_i, y_i) <= V(x_i, num_rows - 1).

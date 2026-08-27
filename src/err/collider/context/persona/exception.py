@@ -26,7 +26,7 @@ from err import ContextColliderException
 class PersonaContextCollisionException(ContextColliderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a PersonaContextCollision step failed.

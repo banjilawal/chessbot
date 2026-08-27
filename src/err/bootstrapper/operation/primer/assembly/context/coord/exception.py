@@ -22,7 +22,7 @@ __all__ = [
 class PrimingCoordContextAssemblyException(PrimingContextAssemblyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a CoordContextAssembly priming step failed.

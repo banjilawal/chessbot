@@ -24,7 +24,7 @@ __all__ = [
 class BlockedPathSearchResultEmptyException(PathSearchResultEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an BlockedPathSearcher did not find the required item.

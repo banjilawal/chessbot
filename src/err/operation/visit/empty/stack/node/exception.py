@@ -22,7 +22,7 @@ __all__ = [
 class VisitpingEmptyArenaStackException(VisitpingEmptyStackException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that visitpingEmpty a ArenaStack failed.

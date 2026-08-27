@@ -27,7 +27,7 @@ from util import LoggingLevelRouter
 class PromotionRequestAdjudicator(RequestAdjudicator[PromotionRequest]):
     """
     Role:
-        -  Helper
+        - Helper
         -  Test Runner
         
     Responsibilities:

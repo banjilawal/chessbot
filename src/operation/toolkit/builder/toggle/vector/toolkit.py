@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from fabrication.builder import  VectorToggleAssembler
-from assurance.validator import VectorToggleRootCertifier
+from fabrication.builder import  CartesianToggleAssembler
+from assurance.validator import CartesianToggleRootCertifier
 from domain.structure.toggle import CartesianToggle
 from operation.toolkit.builder.toggle.vector.toolkit import ToggleBuilderToolkit
 
 
-class VectorToggleBuilderToolkit(ToggleBuilderToolkit[CartesianToggle]):
+class CartesianToggleBuilderToolkit(ToggleBuilderToolkit[CartesianToggle]):
     """
     Role:
-        -  Dependency Management
+        - Dependency Management
         
     Responsibilities:
-        1.  Bundles VectorToggleBuilderToolkit dependencies.
+        1.  Bundles CartesianToggleBuilderToolkit dependencies.
 
     Attributes:
-        assembler: Optional[VectorToggleAssembler]
-        root_certifier: Optional[VectorToggleRootCertifier]
+        assembler: Optional[CartesianToggleAssembler]
+        root_certifier: Optional[CartesianToggleRootCertifier]
             
     Provides:
 
@@ -37,22 +37,22 @@ class VectorToggleBuilderToolkit(ToggleBuilderToolkit[CartesianToggle]):
     
     def __init__(
             self,
-            assembler: Optional[VectorToggleAssembler] | None = VectorToggleAssembler(),
-            root_certifier: Optional[VectorToggleRootCertifier] |
-                            None = VectorToggleRootCertifier(),
+            assembler: Optional[CartesianToggleAssembler] | None = CartesianToggleAssembler(),
+            root_certifier: Optional[CartesianToggleRootCertifier] |
+                            None = CartesianToggleRootCertifier(),
     ):
         """
         Args:
-            assembler: Optional[VectorToggleAssembler]
-            root_certifier: Optional[VectorToggleRootCertifier]
+            assembler: Optional[CartesianToggleAssembler]
+            root_certifier: Optional[CartesianToggleRootCertifier]
         """
         super().__init__(assembler=assembler, root_certifier=root_certifier)
         
     @property
-    def assembler(self) -> VectorToggleAssembler:
-        return cast(VectorToggleAssembler, super().assembler)
+    def assembler(self) -> CartesianToggleAssembler:
+        return cast(CartesianToggleAssembler, super().assembler)
     
     @property
-    def root_certifier(self) -> VectorToggleRootCertifier:
-        return cast(VectorToggleRootCertifier, super().integrity_checker)
+    def root_certifier(self) -> CartesianToggleRootCertifier:
+        return cast(CartesianToggleRootCertifier, super().integrity_checker)
     

@@ -26,7 +26,7 @@ from err import ContextBuildRouteException
 class EdgeContextBuildRouteException(ContextBuildRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of EdgeContext build routes is missing.

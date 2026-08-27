@@ -16,4 +16,4 @@ from .software import *
 from .unions import *
 
 # Modules
-from .metadata import DomainMetadata
+from .manifest import DomainMetadata

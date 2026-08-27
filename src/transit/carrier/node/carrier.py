@@ -1,7 +1,7 @@
-# src/transit/carrier/node/carrier.py
+# src/transit/carrier/structure/node/carrier.py
 
 """
-Module: transit.carrier.node.carrier
+Module: transit.carrier.structure.node.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -10,15 +10,16 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
+from typing import Generic, TypeVar
 
-from transit.structure.node import Node
-from transit.carrier import EntityCarrier
+from transit import StructureCarrier
 
+T = TypeVar("T", bound="Node")
 
-class NodeCarrier(EntityCarrier[Node], ABC):
+class NodeCarrier(StructureCarrier[T], ABC, Generic[T]):
     """
     Role:
-        -  Boundary Carrier
+        - Boundary Carrier
 
     Responsibilities:
         1.  Transport either a hydrated Node or its Blueprint across validation and other processing
@@ -38,7 +39,7 @@ class NodeCarrier(EntityCarrier[Node], ABC):
         -  extract_blueprint() -> Optional[Blueprint[T]]
 
     Super Class:
-        EntityCarrier
+        StructureCarrier
     """
     def __init__(self):
         super().__init__()

@@ -22,7 +22,7 @@ from system import OperationException
 class RelationAnalystException(OperationException):
     """
     Role:
-        -  Worker Method Identification
+        - Worker Method Identification
         -  Exception Chain Layer 1,
         -  Exception Messaging
 

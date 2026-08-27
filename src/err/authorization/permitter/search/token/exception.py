@@ -24,7 +24,7 @@ __all__ = [
 class TokenSearchPermitterException(SearcherPermitterException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a TokenSearchPermitter did not approve the request.

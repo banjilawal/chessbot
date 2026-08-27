@@ -26,7 +26,7 @@ from err import PrimingContextAssemblyException
 class PrimingTeamContextAssemblyException(PrimingContextAssemblyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a TeamContextAssembly priming step failed.

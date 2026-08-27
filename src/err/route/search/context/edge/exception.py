@@ -26,7 +26,7 @@ from err import ContextSearchRouteException
 class EdgeContextSearchRouteException(ContextSearchRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of EdgeContext search routes is missing.

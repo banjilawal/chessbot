@@ -24,7 +24,7 @@ __all__ = [
 class PrimingValidatorException(ValidatorBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a PrimingValidator encountered an error.

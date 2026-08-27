@@ -24,7 +24,7 @@ __all__ = [
 class EdgeBuilderException(ModelBuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an EdgeBuilder failed.

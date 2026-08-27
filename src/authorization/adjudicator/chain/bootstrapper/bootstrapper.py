@@ -20,7 +20,7 @@ from util import LoggingLevelRouter
 class ChainAdjudicationBootstrapper:
     """
     Role:
-        -  Permission Authorization
+        - Permission Authorization
         -  Checklist Runner
         -  Integrity Maintenance
         _   Consistency Assurance

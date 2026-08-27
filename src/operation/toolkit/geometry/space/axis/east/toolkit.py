@@ -24,7 +24,7 @@ from operation.toolkit.geometry.space.axis.east.toolkit import AxisToolkit
 class EastAxisToolkit(AxisToolkit[EastAxis]):
     """
     Role:
-        -  Container
+        - Container
 
     Responsibilities:
         1.  Collection of workers and validators that are required for CartesianSpace tasks.

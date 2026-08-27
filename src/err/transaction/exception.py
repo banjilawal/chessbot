@@ -24,7 +24,7 @@ from err import ChessException
 class TransactionException(ChessException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Identifies which WorkerClass method the error was caught.

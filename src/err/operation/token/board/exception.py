@@ -24,7 +24,7 @@ __all__ = [
 class BoardTokenOperationException(TokenOperatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Board tokenfailed.

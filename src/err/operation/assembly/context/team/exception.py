@@ -26,7 +26,7 @@ from err import ContextAssemblyException
 class TeamContextAssemblyException(ContextAssemblyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a TeamContext assembly failed.

@@ -20,7 +20,7 @@ from domain.model import Board, Coord, Formation, SquareContext, Blueprint, Squa
 class SquareContextBlueprint(Blueprint[SquareContext]):
     """
     Role:
-        -  Container
+        - Container
 
     Responsibilities:
         1.  Provides values for instantiating a SquareContext instance.

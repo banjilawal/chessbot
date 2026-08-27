@@ -22,7 +22,7 @@ T = TypeVar("T")
 class StackQuery(Query[T]):
     """
     Role:
-        -  Model
+        - Model
         -  Search
         -  Stateless Data-Holder
 

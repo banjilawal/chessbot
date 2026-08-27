@@ -26,7 +26,7 @@ from err import ContextBuildRouteException
 class TeamContextBuildRouteException(ContextBuildRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of TeamContext build routes is missing.

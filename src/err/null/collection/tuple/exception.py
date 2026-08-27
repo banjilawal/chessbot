@@ -24,7 +24,7 @@ __all__ = [
 class TupleNullException(CollectionNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required Tuple is null.

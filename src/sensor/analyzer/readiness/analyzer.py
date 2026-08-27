@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 class TokenReadinessAnalyzer(Analyzer):
     """
     Role:
-        -  Analysis Factory
+        - Analysis Factory
         -  Consistency maintenance
         
     Responsibilities:

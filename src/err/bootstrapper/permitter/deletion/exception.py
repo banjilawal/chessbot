@@ -24,7 +24,7 @@ __all__ = [
 class DeletionPermitterBootstrapperException(BootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a DeletionPermitterBootstrapper from

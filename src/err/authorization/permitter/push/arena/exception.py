@@ -24,7 +24,7 @@ __all__ = [
 class ArenaPushPermitterException(PusherPermitterException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a ArenaPushPermitter did not approve the request.

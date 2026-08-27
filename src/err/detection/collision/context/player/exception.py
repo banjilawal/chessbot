@@ -26,7 +26,7 @@ from err import ContextCollisionDetectorException
 class PlayerContextCollisionException(ContextCollisionDetectorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a PlayerContextCollision step failed.

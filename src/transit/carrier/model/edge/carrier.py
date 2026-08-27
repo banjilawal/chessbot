@@ -19,7 +19,7 @@ from transit.graph import Edge
 class EdgeCarrier(ModelCarrier[Edge]):
     """
     Role:
-        -  Addressing
+        - Addressing
         -  Data-Holder
     
     Responsibilities:

@@ -20,7 +20,7 @@ T = TypeVar("T")
 class AnalyzerToolkit(Toolkit[T]):
     """
     Role:
-        -  Dependency Management
+        - Dependency Management
         
     Responsibilities:
         1.  Aggregates workers and services a analyzer requires for its tasks.

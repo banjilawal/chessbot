@@ -19,7 +19,7 @@ from space import NorthAxis
 class NorthAxisCarrier(SpaceCarrier[NorthAxis]):
     """
     Role:
-        -  Data Transport
+        - Data Transport
 
     Responsibilities:
         2.  Transports either a NorthAxis or its Blueprint.

@@ -21,7 +21,7 @@ from domain import SquareDeleteContext
 class SquareStackDeletePermissionUtility(StackDeletePermissionUtility[SquareDeleteContext]):
     """
     Role:
-        -  Utility
+        - Utility
 
     Responsibilities:
         1.  Bundles resources the SquareDeleteAuthorizer needs to evaluate a SquareDeleteRequest.

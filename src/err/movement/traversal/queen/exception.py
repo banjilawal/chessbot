@@ -24,7 +24,7 @@ __all__ = [
 class QueenTraversalPatternException(TraversalPatternException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an error occurred in a QueenTraversalPattern instance.

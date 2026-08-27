@@ -23,7 +23,7 @@ __all__ = [
 class TeamCollisionDetectorException(CollisionDetectorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a TeamCollision step failed.

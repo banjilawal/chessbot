@@ -24,7 +24,7 @@ __all__ = [
 class StateModelValidatorException(ModelValidatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a ModelValidator failed.

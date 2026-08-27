@@ -24,7 +24,7 @@ __all__ = [
 class VectorIdentityRegisterMismatchException(VectorIdentityRegisterBuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a VectorIdentityRegister's a-b slots contain different types.

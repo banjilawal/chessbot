@@ -19,7 +19,7 @@ from carrier import ModelCarrier
 class PlayerCarrier(ModelCarrier[Player]):
     """
     Role:
-        -  Addressing
+        - Addressing
         -  Data-Holder
     
     Responsibilities:

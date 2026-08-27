@@ -13,15 +13,15 @@ from abc import ABC
 from dataclasses import dataclass
 from typing import Generic, Optional, Type, TypeVar
 
-from domain import Blueprint, EntityCarrier, DataModel, ModelSearchContext, DomainObjectTypeUnions
+from domain import Blueprint, EntityCarrier, Model, ModelSearchContext, DomainObjectTypeUnions
 
-T = TypeVar("T", bound="DataModel")
+T = TypeVar("T", bound="Model")
 
 @dataclass
 class ModelTypeUnions(DomainObjectTypeUnions[T], ABC, Generic[T]):
     """
     Role:
-        -  Metadata
+        - Metadata
 
     Responsibilities:
         1. Catalog of data unions a Model uses in the domain.

@@ -22,7 +22,7 @@ from err import (
 class BoardNullExceptionRoster(ModelNullExceptionRoster[Board]):
     """
     Role:
-        -  Metadata
+        - Metadata
 
     Responsibilities:
         1. Catalog of NullExceptions associated with a Board.

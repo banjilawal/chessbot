@@ -24,7 +24,7 @@ __all__ = [
 class NodeCarrierException(ModelCarrierException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a NodeCarrier encountered an error.

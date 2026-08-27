@@ -21,7 +21,7 @@ from domain.model import Player
 class PlayerBlueprint(StateModelBlueprint[Player]):
     """
     Role:
-        -  Container
+        - Container
         -  DTO
 
     Responsibilities:

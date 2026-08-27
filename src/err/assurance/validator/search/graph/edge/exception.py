@@ -24,7 +24,7 @@ __all__ = [
 class EdgeContextValidatorException(GraphContextValidatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by an EdgeContextValidator failed.

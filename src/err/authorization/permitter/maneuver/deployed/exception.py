@@ -24,7 +24,7 @@ __all__ = [
 class MoveUndeployedTokenException(TokenUndoMovePermitterException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an attempt was made to move a token which has not

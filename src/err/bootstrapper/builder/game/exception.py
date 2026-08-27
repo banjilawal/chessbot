@@ -24,7 +24,7 @@ __all__ = [
 class GameBuilderBootstrapperException(BuilderBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a GameBuilderBootstrapper was aborted by an exception.

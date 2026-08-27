@@ -18,7 +18,7 @@ from domain.model import StackQuery
 class HostageQuery(StackQuery[Hostage]):
     """
     Role:
-        -  Model
+        - Model
         -  Search
         -  Stateless Data-Holder
 

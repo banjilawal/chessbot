@@ -18,7 +18,7 @@ from collection.stack import SquareStackService
 class SquareQuery(StackQuery[Square]):
     """
     Role:
-        -  Model
+        - Model
         -  Search
         -  Stateless Data-Holder
 

@@ -23,7 +23,7 @@ __all__ = [
 class SchemaHashtableConsistencyCheckerNullException(HashtableException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required SchemaHashtableConsistencyChecker is null.

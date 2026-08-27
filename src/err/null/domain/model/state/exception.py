@@ -24,7 +24,7 @@ __all__ = [
 class StateModelNullException(ModelNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required StateModel is null.

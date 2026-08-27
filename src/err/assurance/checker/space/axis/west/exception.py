@@ -24,7 +24,7 @@ __all__ = [
 class WestAxisCheckerException(AxisCheckerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by an WestAxisSChecker failed.

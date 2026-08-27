@@ -20,7 +20,7 @@ T = TypeVar("T", bound="StateModel")
 class SensorSuite(Suite, Generic[T]):
     """
     Role:
-        -  Dependency Container
+        - Dependency Container
         -  Dynamic Dependency Provider
         
     Responsibilities:

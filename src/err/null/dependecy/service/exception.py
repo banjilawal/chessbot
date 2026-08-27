@@ -23,7 +23,7 @@ __all__ = [
 class ServiceListNullException(DependencyListNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an ServiceListNullException is null.

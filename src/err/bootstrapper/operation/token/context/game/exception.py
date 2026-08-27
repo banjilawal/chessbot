@@ -26,7 +26,7 @@ from err import ContextTokenOperationBootstrapperException
 class GameContextTokenOperationBootstrapperException(ContextTokenOperationBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a GameContext tokenfailed.

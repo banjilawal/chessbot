@@ -20,7 +20,7 @@ from operation.toolkit.builder.space.quadrant.southeast.toolkit import QuadrantB
 class SoutheastQuadrantBuilderToolkit(QuadrantBuilderToolkit[SoutheastQuadrant]):
     """
     Role:
-        -  Dependency Management
+        - Dependency Management
         
     Responsibilities:
         1.  Bundles SoutheastQuadrantBuilder dependencies.

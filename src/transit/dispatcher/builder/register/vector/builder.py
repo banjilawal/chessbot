@@ -1,4 +1,4 @@
-# src/transit/dispatcher/builder/register/vector/dispatcher/builder.py
+# src/transit/dispatcher/builder/structure/register/vector/dispatcher/builder.py
 
 """
 Module: transit.dispatcher.builder.register.vector.builder

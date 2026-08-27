@@ -20,7 +20,7 @@ from domain.model import Board, Coord, Formation, Square, Blueprint, SquareState
 class SquareQueryValidationBlueprint(QueryValidationBlueprint[Square]):
     """
     Role:
-        -  Container
+        - Container
 
     Responsibilities:
         1.  Provides values for instantiating a SquareValidation instance.

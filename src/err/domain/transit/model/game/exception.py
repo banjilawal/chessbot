@@ -24,7 +24,7 @@ __all__ = [
 class GameCarrierException(ModelCarrierException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a GameCarrier encountered an error.

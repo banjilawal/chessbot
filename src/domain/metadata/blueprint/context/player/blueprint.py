@@ -20,7 +20,7 @@ from domain.model import PlayerContext, Blueprint, Game, Team
 class PlayerContextBlueprint(Blueprint[PlayerContext]):
     """
     Role:
-        -  Container
+        - Container
 
     Responsibilities:
         1.  Provides values for instantiating a PlayerContext instance.

@@ -19,7 +19,7 @@ from topology.space import SouthAxis
 class SouthAxisMapFunction(AxisMappingFunction[SouthAxis]):
     """
     Role:
-        -  Computation
+        - Computation
 
     Responsibilities:
         Define delta_vector for getting the next vector on south of origin.

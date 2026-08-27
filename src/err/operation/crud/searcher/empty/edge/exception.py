@@ -24,7 +24,7 @@ __all__ = [
 class EdgeSearchResultEmptyException(SearchResultEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a EdgeSearcher did not find the required item.

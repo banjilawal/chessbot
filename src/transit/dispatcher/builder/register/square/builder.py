@@ -1,4 +1,4 @@
-# src/transit/dispatcher/builder/register/square/dispatcher/builder.py
+# src/transit/dispatcher/builder/structure/register/square/dispatcher/builder.py
 
 """
 Module: transit.dispatcher.builder.register.square.builder

@@ -15,7 +15,7 @@ from logic.coord import CoordQueryService, CoordStackPop, CoordStackPush
 class CoordStackCrudController:
     """
     Role:
-        -  CRUD controller
+        - CRUD controller
         -  Consistency provider
         -  Integrity lifecycle manager
 

@@ -1,4 +1,4 @@
-# src/logic/node/context/transit/route/exception/debug/__init__.py
+# src/logic/structure/node/context/transit/route/exception/debug/__init__.py
 """
 Module: logic.node.context.route.exception.debug.__init__
 Author: Banji Lawal

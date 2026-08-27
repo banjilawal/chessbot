@@ -1,4 +1,4 @@
-# src/transit/dispatcher/validator/register/vector/__init__.py
+# src/transit/dispatcher/validator/structure/register/vector/__init__.py
 
 """
 Module: transit.dispatcher.validator.register.vector.__init__

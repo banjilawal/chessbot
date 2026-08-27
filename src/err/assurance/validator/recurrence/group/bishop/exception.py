@@ -24,7 +24,7 @@ __all__ = [
 class BishopRecurrenceSeriesValidatorException(RecurrenceTableGroupValidatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a BishopRecurrenceSeriesValidator failed.

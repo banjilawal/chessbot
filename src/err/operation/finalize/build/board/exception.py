@@ -24,7 +24,7 @@ __all__ = [
 class FinalizeBoardBuilderException(FinalizeBuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that finalizing a BoardBuild failed.

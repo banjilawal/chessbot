@@ -24,7 +24,7 @@ __all__ = [
 class PawnOffsetPatternBuilderException(OffsetPatternBuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required PawnOffsetPatternBuilder failed.

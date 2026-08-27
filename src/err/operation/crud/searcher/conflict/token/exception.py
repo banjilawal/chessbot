@@ -24,7 +24,7 @@ __all__ = [
 class TokenSearchHitConflictException(SearchHitConflictException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a TokenSearcher returned multiple hits for an item which should be unique.

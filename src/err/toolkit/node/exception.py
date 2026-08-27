@@ -23,7 +23,7 @@ __all__ = [
 class NodeException(ToolkitException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Node encountered an error.

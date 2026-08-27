@@ -20,7 +20,7 @@ from artifcat.report import CollisionState, Report
 class CollisionReport(Report):
     """
     Role:
-        -  Test results
+        - Test results
 
     Responsibilities:
         1.  Presents the results of a attribute collision tests.

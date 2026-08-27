@@ -17,7 +17,7 @@ from domain import DomainMetadata
 class SoftwareMetadata(DomainMetadata, ABC):
     """
     Role:
-        -  Metdata
+        - Metdata
 
     Responsibilities:
         1. Provide information about the application.

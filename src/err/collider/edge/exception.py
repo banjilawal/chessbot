@@ -23,7 +23,7 @@ __all__ = [
 class EdgeColliderException(ColliderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an EdgeCollision step failed.

@@ -22,7 +22,7 @@ from domain.exchange.model.state.token import TokenDebugException
 class InactiveTokenPoppingCoordException(TokenDebugException):
     """
     Role:
-        -  Error Variable Identifier
+        - Error Variable Identifier
         -  Exception Chain Layer 2
         -  Exception Messaging
 

@@ -25,7 +25,7 @@ __all__ = [
 class NorthwestQuadrantMappingFunctionException(QuadrantMappingFunctionException):
     """
     Role:
-        -  Failure Tracing
+        - Failure Tracing
 
     Responsibilities:
         1.  Indicating an NorthwestQuadrantMappingFunction did not complete its task.

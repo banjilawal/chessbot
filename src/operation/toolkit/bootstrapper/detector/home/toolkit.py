@@ -22,7 +22,7 @@ from transit.dispatcher.validator import BoardValidationDispatcher, TokenHomeCon
 class HomeDetectorBootstrapperToolkit(BootstrapperToolkit[HomeDetectorBootstrapper]):
     """
     Role:
-        -  Dependency Management
+        - Dependency Management
 
     Responsibilities:
         1.  Bundles dependencies a worker needs to complete its task.

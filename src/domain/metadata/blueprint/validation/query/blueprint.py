@@ -23,7 +23,7 @@ T = TypeVar("T")
 class QueryValidationBlueprint(Blueprint[T]):
     """
     Role:
-        -  Container
+        - Container
     
     Responsibilities:
         1.  Satisfy dependencies StackQueryValidator needs for determining if a candidate is

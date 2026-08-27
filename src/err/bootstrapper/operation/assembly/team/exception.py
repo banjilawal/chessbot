@@ -23,7 +23,7 @@ __all__ = [
 class TeamAssemblyException(AssemblyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Team assembly failed.

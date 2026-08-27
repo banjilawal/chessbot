@@ -19,7 +19,7 @@ T = TypeVar("T")
 class SetCollection(DomainObjectCollection, ABC, Generic[T]):
     """
     Role:
-        -  Data Holder
+        - Data Holder
         -  Data protection
         
     Responsibilities:

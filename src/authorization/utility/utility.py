@@ -23,7 +23,7 @@ T = TypeVar("T", bound="Request")
 class PermissionUtility(ABC, Generic[T]):
     """
     Role:
-        -  Utility
+        - Utility
 
     Responsibilities:
         1.  Bundles resources the Authorizer needs to evaluate a Request.

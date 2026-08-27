@@ -18,7 +18,7 @@ from artifcat import AnalysisState, Result
 class AnalysisResult(Result[Report]):
     """
     Role:
-        -  Data Transport
+        - Data Transport
         -  Error Transport
 
     Responsibilities:

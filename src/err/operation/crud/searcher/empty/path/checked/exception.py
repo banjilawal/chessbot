@@ -24,7 +24,7 @@ __all__ = [
 class CheckedPathSearchResultEmptyException(PathSearchResultEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an CheckedPathSearcher did not find the required item.

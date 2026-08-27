@@ -16,7 +16,7 @@ from domain.model import Board, Coord, SquareState, StatefulModel, Token
 class Square(StatefulModel):
     """
     Role:
-        -  Model
+        - Model
         -  Addressing
         -  Stateful Data Holder
 

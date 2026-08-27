@@ -1,7 +1,7 @@
-# src/domain/metadata/unions/structurenode/manifest.py
+# src/domain/metadata/unions/structure/searchable/node/manifest.py
 
 """
-Module: domain.metadata.unions.structure.node.manifest
+Module: domain.metadata.unions.structure.searchable.node.manifest
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -11,18 +11,19 @@ from __future__ import annotations
 
 from abc import ABC
 from dataclasses import dataclass
-from typing import Generic, Optional, Type, TypeVar
+from typing import Generic, Type, TypeVar
 
-from domain import Blueprint, StructureTypeUnions, EntityCarrier, Node, SearchContext
+from domain import Blueprint, Node, NodeSearchContext, SearchableStructureTypeUnions
+from transit import EntityCarrier
 
 T = TypeVar("T", bound="Node")
 
 
 @dataclass
-class NodeTypeUnions(StructureTypeUnions[T], ABC, Generic[T]):
+class NodeTypeUnions(SearchableStructureTypeUnions[T], ABC, Generic[T]):
     """
     Role:
-        -  Metadata
+        - Metadata
 
     Responsibilities:
         1. Catalog of data unions a Node uses in the domain.
@@ -31,13 +32,13 @@ class NodeTypeUnions(StructureTypeUnions[T], ABC, Generic[T]):
         node: Type[T]
         carrier: Type[EntityCarrier[T]]
         blueprint: Type[Blueprint[T]]
-        search_context: Optional[SearchContext[T]]
+        search_context: NodeSearchContext[T]
     Provides:
 
     Super Class:
-        DomainObjectManifest
+        SearchableStructureTypeUnions
     """
     node: Type[T]
     carrier: Type[EntityCarrier[T]]
     blueprint: Type[Blueprint[T]]
-    search_context: Optional[SearchContext[T]] = None
+    search_context: NodeSearchContext[T]

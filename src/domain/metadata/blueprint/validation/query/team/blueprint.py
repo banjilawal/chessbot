@@ -21,7 +21,7 @@ from domain.model import Board, Player, Schema, Team, TeamValidation, TeamState
 class TeamQueryValidationBlueprint(QueryValidationBlueprint[Team]):
     """
     Role:
-        -  Container
+        - Container
 
     Responsibilities:
         1.  Provides values for instantiating a TeamValidation instance.

@@ -23,7 +23,7 @@ __all__ = [
 class GameColorException(ConfigException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating there is a GameColor error.

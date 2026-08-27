@@ -20,7 +20,7 @@ from domain import ModelTypeUnions, Player, PlayerBlueprint, PlayerCarrier, Play
 class PlayerTypeUnions(ModelTypeUnions[Player]):
     """
     Role:
-        -  Metadata
+        - Metadata
 
     Responsibilities:
         1. Catalog of data unions a Player uses in the domain.

@@ -20,7 +20,7 @@ T = TypeVar("T", bound="Command")
 class ShellResult(Result, ABC, Generic[T]):
     """
     Role:
-        -  Data Transport
+        - Data Transport
         -  Error Transport
   
     Responsibilities:

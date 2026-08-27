@@ -24,7 +24,7 @@ __all__ = [
 class CartesianToggleCarrierException(ToggleCarrierException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a CartesianToggle encountered an error.

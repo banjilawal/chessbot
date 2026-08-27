@@ -25,7 +25,7 @@ __all__ = [
 class ExcessBoardContextFlagsException(ExcessContextFlagsException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating too many BoardSearchContext flags were enabled.

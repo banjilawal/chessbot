@@ -18,7 +18,7 @@ from space.axis.east.space import Axis
 class EastAxis(Axis):
     """
     Role:
-        -  Data Holder
+        - Data Holder
 
     Responsibilities:
         1.  Axis bounded between U(x_i, y_i) <= V(num_columns - 1, y_i).

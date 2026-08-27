@@ -24,7 +24,7 @@ __all__ = [
 class AssuranceException(ChessException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an Assurance worker experienced an error.

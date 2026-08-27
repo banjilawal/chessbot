@@ -24,7 +24,7 @@ __all__ = [
 class IdentifierNullException(NullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required Identifier is null.

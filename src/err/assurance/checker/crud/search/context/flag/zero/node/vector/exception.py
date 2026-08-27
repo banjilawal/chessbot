@@ -27,7 +27,7 @@ class ZeroVectorNodeContextFlagsException(
 ):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating no VectorNodeSearchContext flags were enabled.

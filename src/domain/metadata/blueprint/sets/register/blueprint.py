@@ -20,7 +20,7 @@ from domain.structure.register import Register
 class RegisterSetBlueprint(ContainerBlueprint[Register]):
     """
     Role:
-        -  Container
+        - Container
         -  DTO
         
     Responsibilities:

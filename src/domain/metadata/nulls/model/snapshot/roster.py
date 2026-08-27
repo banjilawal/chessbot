@@ -22,7 +22,7 @@ from err import (
 class SnapshotNullExceptionRoster(ModelNullExceptionRoster[Snapshot]):
     """
     Role:
-        -  Metadata
+        - Metadata
 
     Responsibilities:
         1. Catalog of NullExceptions associated with a Snapshot.

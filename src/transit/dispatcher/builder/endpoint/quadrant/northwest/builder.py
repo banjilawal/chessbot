@@ -23,7 +23,7 @@ from transit.dispatcher.validator import VectorValidator
 class NorthwestQuadrantEndpointBuilder:
     """
     Role:
-        -  Builder
+        - Builder
         -  Integrity Management
 
     Responsibilities:

@@ -24,7 +24,7 @@ __all__ = [
 class RegisterBuilderException(BuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a RegisterBuilder failure.

@@ -21,7 +21,7 @@ T = TypeVar("T")
 class Query(ABC, Generic[T]):
     """
     Role:
-        -  Model
+        - Model
         -  Search
         -  Stateless Data-Holder
 

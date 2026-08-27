@@ -25,7 +25,7 @@ from err import QueryNullException
 class BoardQueryNullException(QueryNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required BoardQuery is null.

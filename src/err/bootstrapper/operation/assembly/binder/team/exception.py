@@ -26,7 +26,7 @@ from err import BinderAssemblyException
 class TeamBinderAssemblyException(BinderAssemblyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a TeamBinder assembly failed.

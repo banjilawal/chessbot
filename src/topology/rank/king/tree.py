@@ -16,7 +16,7 @@ from tree import Topology, VectorTree
 class KingTopology(Topology[King]):
     """
     Role:
-        -  Data Holder
+        - Data Holder
 
     Responsibilities:
         1.  Positions projected from a King's signature.

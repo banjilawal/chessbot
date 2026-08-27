@@ -17,14 +17,14 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# VECTOR_BLUEPRINT_NULL_ERROR #======================#
-    "VectorToggleBlueprintNullException",
+    "CartesianToggleBlueprintNullException",
 ]
 
 # ======================# VECTOR_BLUEPRINT_NULL_ERROR #======================#
-class VectorToggleBlueprintNullException(ToggleBlueprintNullException):
+class CartesianToggleBlueprintNullException(ToggleBlueprintNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required vectorBlueprint is null.

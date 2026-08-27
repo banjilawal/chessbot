@@ -26,7 +26,7 @@ from err import BinderBuilderBootstrapperException
 class SchemaBinderBuilderBootstrapperException(BinderBuilderBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a SchemaBinderBuilderBootstrapper was aborted by an exception.

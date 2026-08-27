@@ -25,7 +25,7 @@ from system import ServiceException
 class SchemaContextServiceException(ServiceException):
     """
     Role:
-        -  Exception Chain Layer 0
+        - Exception Chain Layer 0
         -  Exception coverage target
 
     Responsibilities:

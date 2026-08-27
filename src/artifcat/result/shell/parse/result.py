@@ -17,7 +17,7 @@ from shell import Command
 class ParseResult(ShellResult[Command]):
     """
     Role:
-        -  Data Transport
+        - Data Transport
         -  Error Transport
 
     Responsibilities:

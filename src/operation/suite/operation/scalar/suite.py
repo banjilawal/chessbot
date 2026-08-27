@@ -20,7 +20,7 @@ from domain.model import Scalar
 class ScalarOperationSuite(OperationSuite[Scalar]):
     """
     Role:
-        -  Dependency Container
+        - Dependency Container
         -  Dynamic Dependency Provider
 
     Responsibilities:

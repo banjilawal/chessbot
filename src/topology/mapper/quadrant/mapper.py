@@ -23,7 +23,7 @@ T = TypeVar("T", bound="QuadrantSpace")
 class QuadrantMappingFunction(SpaceMappingFunction, Generic[T]):
     """
     Role:
-        -  Computation
+        - Computation
 
     Responsibilities:
         1.  Get the next vector, V, after U in Quadrant Space, using the linear functions:

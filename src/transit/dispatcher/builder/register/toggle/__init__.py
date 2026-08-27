@@ -1,4 +1,4 @@
-# src/transit/dispatcher/builder/register/toggle/__init__.py
+# src/transit/dispatcher/builder/structure/register/toggle/__init__.py
 
 """
 Module: transit.dispatcher.builder.register.toggle.__init__
@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .builder import VectorToggleRegisterBuilder
+from .builder import CartesianToggleRegisterBuilder

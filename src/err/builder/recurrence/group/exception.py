@@ -24,7 +24,7 @@ __all__ = [
 class RecurrenceTableGroupBuilderException(RecurrenceBuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a RecurrenceTableGroupBuilder failed.

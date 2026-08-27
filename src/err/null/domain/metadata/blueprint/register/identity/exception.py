@@ -24,7 +24,7 @@ __all__ = [
 class IdentityRegisterBlueprintNullException(RegisterBlueprintNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required IdentityRegister is null.

@@ -26,7 +26,7 @@ from err import ContextNoValidationRouteException
 class TeamContextValidationRouteException(ContextNoValidationRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of TeamContext validation routes is missing.

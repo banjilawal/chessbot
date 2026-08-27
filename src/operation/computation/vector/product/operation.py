@@ -13,16 +13,16 @@ from transit.controller import WorkerRegistryController
 from artifcat import ComputationResult
 from util import LoggingLevelRouter
 from err import ScalarProductException
-from domain.model import Coord, CoordBlueprint, OperandCategory, Vector, VectorBlueprint, VectorToggle, Scalar
+from domain.model import Coord, CoordBlueprint, OperandCategory, Vector, VectorBlueprint, CartesianToggle, Scalar
 from pipeline import CoordBuildPipeline, VectorBuildPipeline
 
-from operation import ScalarValidator, VectorToggleValidator
+from operation import ScalarValidator, CartesianToggleValidator
 
 
-class ScalarProduct(Computation[VectorToggle]):
+class ScalarProduct(Computation[CartesianToggle]):
     """
     Role:
-        -  Operation
+        - Operation
         -  Computation
 
     Responsibilities:
@@ -32,7 +32,7 @@ class ScalarProduct(Computation[VectorToggle]):
             permitter: Optional[ScalarProductPermitter]
             
     Provides:
-        -  def execute(self, request: ScalarProductRequest) -> ComputationResult[VectorToggle]
+        -  def execute(self, request: ScalarProductRequest) -> ComputationResult[CartesianToggle]
 
     Super Class:
         Computation
@@ -50,7 +50,7 @@ class ScalarProduct(Computation[VectorToggle]):
         return cast(ScalarProductPermitter, super().permitter)
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: ScalarProductRequest) -> ComputationResult[VectorToggle]:
+    def execute(self, request: ScalarProductRequest) -> ComputationResult[CartesianToggle]:
         pass
     
     @classmethod
@@ -58,9 +58,9 @@ class ScalarProduct(Computation[VectorToggle]):
     def execute(
             cls,
             scalar: Scalar,
-            operand: VectorToggle,
+            operand: CartesianToggle,
             scalar_validator: ScalarValidator | None = None,
-            operand_validator: VectorToggleValidator | None = None,
+            operand_validator: CartesianToggleValidator | None = None,
             vector_build_pipeline: VectorBuildPipeline | None = None,
             coord_build_pipeline: CoordBuildPipeline | None = None,
     ) -> ComputationResult[Vector|Coord]:
@@ -76,9 +76,9 @@ class ScalarProduct(Computation[VectorToggle]):
             2.  Otherwise, send the success result.
         Args:
             scalar: Scalar,
-            operand: VectorToggle
+            operand: CartesianToggle
             scalar_validator: ScalarValidator
-            operand_validator: VectorToggleValidator
+            operand_validator: CartesianToggleValidator
         Result:
             ComputationResult[Union[Vector, Coord]]:
         Raises:
@@ -89,7 +89,7 @@ class ScalarProduct(Computation[VectorToggle]):
         if scalar_validator is None:
             scalar_validator = ScalarValidator()
         if operand_validator is None:
-            operand_validator = VectorToggleValidator()
+            operand_validator = CartesianToggleValidator()
         if vector_build_pipeline is None:
             vector_build_pipeline = VectorBuildPipeline()
         if coord_build_pipeline is None:

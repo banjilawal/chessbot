@@ -26,7 +26,7 @@ from err import BinderBuilderBootstrapperException
 class ArenaBinderBuilderBootstrapperException(BinderBuilderBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a ArenaBinderBuilderBootstrapper was aborted by an exception.

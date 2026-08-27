@@ -24,7 +24,7 @@ __all__ = [
 class RecurrenceBuilderException(BuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a RecurrenceBuilder failed.

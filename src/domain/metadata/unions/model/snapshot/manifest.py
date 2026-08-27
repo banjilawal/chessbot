@@ -20,7 +20,7 @@ from domain import ModelTypeUnions, Snapshot, SnapshotBlueprint, SnapshotCarrier
 class SnapshotTypeUnions(ModelTypeUnions[Snapshot]):
     """
     Role:
-        -  Metadata
+        - Metadata
 
     Responsibilities:
         1. Catalog of data unions a Snapshot uses in the domain.

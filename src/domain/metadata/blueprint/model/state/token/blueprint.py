@@ -19,7 +19,7 @@ from domain.schema import Formation
 class TokenBlueprint(StateModelBlueprint[Token]):
     """
     Role:
-        -  Container
+        - Container
         -  DTO
         
     Responsibilities:

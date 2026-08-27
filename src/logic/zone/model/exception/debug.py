@@ -21,7 +21,7 @@ from system import DebugException
 class ZoneDebugException(DebugException):
     """
     Role:
-        -  Exception Chain Layer 2
+        - Exception Chain Layer 2
         -  Error Variable Identifier
         -  Debugging Metadata provider
 

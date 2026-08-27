@@ -26,7 +26,7 @@ from err import BinderBuilderBootstrapperException
 class RankBinderBuilderBootstrapperException(BinderBuilderBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a RankBinderBuilderBootstrapper was aborted by an exception.

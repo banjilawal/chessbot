@@ -26,7 +26,7 @@ from err import ContextBuilderException
 class GameContextBuilderException(ContextBuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a GameContext build failed.

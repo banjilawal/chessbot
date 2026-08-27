@@ -26,7 +26,7 @@ from err import PrimingContextAssemblyException
 class PrimingTokenContextAssemblyException(PrimingContextAssemblyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a TokenContextAssembly priming step failed.

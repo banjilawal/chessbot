@@ -24,7 +24,7 @@ __all__ = [
 class DuplicateBoardException(DuplicateItemException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Board already exists in the operating context so, trying

@@ -16,7 +16,7 @@ from microservice import CatalogService
 class SchemaService(CatalogService[Schema]):
     """
     Role:
-        -  Data layer
+        - Data layer
         -  Microservice API
         -  Interface
 

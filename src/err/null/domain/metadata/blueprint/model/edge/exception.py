@@ -24,7 +24,7 @@ __all__ = [
 class EdgeBlueprintNullException(ModelBlueprintNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required EdgeBlueprint is null.

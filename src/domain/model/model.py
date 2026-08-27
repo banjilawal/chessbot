@@ -14,10 +14,10 @@ from abc import ABC
 from domain import DomainDataObject
 
 
-class DataModel(DomainDataObject, ABC):
+class Model(DomainDataObject, ABC):
     """
     Role:
-        -  Data Holder
+        - Data Holder
 
     Responsibilities:
         1. Represent an item that has properties.

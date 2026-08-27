@@ -25,7 +25,7 @@ __all__ = [
 class ExcessSquareContextFlagsException(ExcessContextFlagsException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating too many SquareSearchContext flags were enabled.

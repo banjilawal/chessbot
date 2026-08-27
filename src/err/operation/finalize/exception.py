@@ -22,7 +22,7 @@ __all__ = [
 class FinalizationException(OperatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that finalizing a finalization step failed.

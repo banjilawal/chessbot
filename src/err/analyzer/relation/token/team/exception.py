@@ -24,7 +24,7 @@ __all__ = [
 class TeamTokenRelationAnalyzerException(RelationAnalyzerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a token-team relation analyzer from completing.

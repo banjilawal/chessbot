@@ -22,7 +22,7 @@ __all__ = [
 class ServiceRegistryControllerException(RegistryControllerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a ServiceRegistry encountered an error.

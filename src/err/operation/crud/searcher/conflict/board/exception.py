@@ -24,7 +24,7 @@ __all__ = [
 class BoardSearchHitConflictException(SearchHitConflictException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a BoardSearcher returned multiple hits for an item which should be unique.

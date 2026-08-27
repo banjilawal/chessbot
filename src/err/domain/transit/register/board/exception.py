@@ -24,7 +24,7 @@ __all__ = [
 class BoardRegisterCarrierException(RegisterCarrierException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a BoardRegisterCarrier encountered an error.

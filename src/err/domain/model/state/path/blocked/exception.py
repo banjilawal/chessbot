@@ -24,7 +24,7 @@ __all__ = [
 class BlockedPathException(PathException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a path's destination is occupied by a friendly Token.

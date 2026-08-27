@@ -20,7 +20,7 @@ from topology.space import WestAxis
 class WestAxisRecurrence(AxisRecurrence[WestAxis]):
     """
     Role:
-        -  Computation
+        - Computation
         -  Iterator
 
     Responsibilities:

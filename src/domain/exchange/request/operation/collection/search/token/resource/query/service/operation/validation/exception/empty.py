@@ -22,7 +22,7 @@ from system import DebugException
 class TokenQueryStackEmptyException(DebugException):
     """
     Role:
-        -  Error Variable Identifier
+        - Error Variable Identifier
         -  Exception Chain Layer 2,
         -  Exception Messaging
 

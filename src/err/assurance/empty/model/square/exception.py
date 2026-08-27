@@ -24,7 +24,7 @@ __all__ = [
 class SquareEmptyException(ModelEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required Square is empty.

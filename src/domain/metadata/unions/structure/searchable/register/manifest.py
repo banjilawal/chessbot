@@ -1,7 +1,7 @@
 # src/domain/metadata/unions/structureregister/manifest.py
 
 """
-Module: domain.metadata.unions.structure.register.manifest
+Module: domain.metadata.unions.structure.searchable.register.manifest
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

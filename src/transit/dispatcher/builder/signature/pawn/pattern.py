@@ -19,7 +19,7 @@ from topology.pattern import OffsetSignature
 class PawnOffsetPattern(ABC, OffsetSignature[Pawn]):
     """
     Role:
-        -  Data Holder
+        - Data Holder
         -  Immutability
 
     Responsibilities:

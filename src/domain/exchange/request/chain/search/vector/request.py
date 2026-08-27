@@ -19,7 +19,7 @@ from domain.exchange.structures.node import VectorNode
 class VectorNodeSearchRequest(ChainSearchRequest[VectorNode]):
     """
     Role:
-        -  Request
+        - Request
 
     Responsibilities:
         1. Carry information to find a VectorNode in the a VectorChain.

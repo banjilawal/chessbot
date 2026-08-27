@@ -10,13 +10,13 @@ version: 0.0.2
 from __future__ import annotations
 from typing import Optional
 
-from err import ExcessVectorToggleFlagsException, VectorContextToolkitException
+from err import ExcessCartesianToggleFlagsException, VectorContextToolkitException
 from integrity import Toolkit
-from domain.model import Coord, VectorToggle, Vector
+from domain.model import Coord, CartesianToggle, Vector
 from artifcat import ToolkitResult
 from operation.toolkit import VectorContextToolkit
 
-class VectorContextToolkit(Toolkit[VectorToggle]):
+class VectorContextToolkit(Toolkit[CartesianToggle]):
     """
     Role
         -  Transaction Worker
@@ -45,7 +45,7 @@ class VectorContextToolkit(Toolkit[VectorToggle]):
             coord: Optional[Coord] = None,
             vector: Optional[Vector] = None,
             toolkit : VectorContextToolkit = VectorContextToolkit()
-    ) -> ToolkitResult[VectorToggle]:
+    ) -> ToolkitResult[CartesianToggle]:
         """
         Toolkit a safe VectorContext.
 
@@ -99,9 +99,9 @@ class VectorContextToolkit(Toolkit[VectorToggle]):
                     cls_name=cls.__name__,
                     msg=VectorContextToolkitException.MSG,
                     err_code=VectorContextToolkitException.ERR_CODE,
-                    ex=ExcessVectorToggleFlagsException(
-                        msg=ExcessVectorToggleFlagsException.MSG,
-                        err_code=ExcessVectorToggleFlagsException.ERR_CODE,
+                    ex=ExcessCartesianToggleFlagsException(
+                        msg=ExcessCartesianToggleFlagsException.MSG,
+                        err_code=ExcessCartesianToggleFlagsException.ERR_CODE,
                     )
                 )
             )
@@ -119,14 +119,14 @@ class VectorContextToolkit(Toolkit[VectorToggle]):
                         cls_name=cls.__name__,
                         msg=VectorContextToolkitException.MSG,
                         err_code=VectorContextToolkitException.ERR_CODE,
-                        ex=ExcessVectorToggleFlagsException(
-                            msg=ExcessVectorToggleFlagsException.MSG,
-                            err_code=ExcessVectorToggleFlagsException.ERR_CODE,
+                        ex=ExcessCartesianToggleFlagsException(
+                            msg=ExcessCartesianToggleFlagsException.MSG,
+                            err_code=ExcessCartesianToggleFlagsException.ERR_CODE,
                         )
                     )
                 )
             # On Toolkit success, forward the work product.
-            return ToolkitResult.success(VectorToggle(coord=coord))
+            return ToolkitResult.success(CartesianToggle(coord=coord))
         
         # Deal with the alternate case.
         toolkit_result = toolkit.vector_service.execute.execute(vector)
@@ -142,5 +142,5 @@ class VectorContextToolkit(Toolkit[VectorToggle]):
                 )
             )
         # --- Forward the work product to the caller ---#
-        return ToolkitResult.success(VectorToggle(vector=vector))
+        return ToolkitResult.success(CartesianToggle(vector=vector))
             

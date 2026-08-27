@@ -21,7 +21,7 @@ from system import DebugException
 class TokenVisitHandlerDebugException(DebugException):
     """
     Role:
-        -  Capture Error Variable State
+        - Capture Error Variable State
         -  Exception Chain Layer 2
         -  Exception Messaging
 

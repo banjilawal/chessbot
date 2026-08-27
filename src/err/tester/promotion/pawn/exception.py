@@ -25,7 +25,7 @@ __all__ = [
 class PromotionPawnAdjudicatorException(TesterException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a PawnPromotionTester encountered an error..

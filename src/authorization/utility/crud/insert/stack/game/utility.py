@@ -21,7 +21,7 @@ from domain import GameInsertContext
 class GameStackInsertPermissionUtility(StackInsertPermissionUtility[GameInsertContext]):
     """
     Role:
-        -  Utility
+        - Utility
 
     Responsibilities:
         1.  Bundles resources the GameInsertAuthorizer needs to evaluate a GameInsertRequest.

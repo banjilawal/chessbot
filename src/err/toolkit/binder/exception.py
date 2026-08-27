@@ -23,7 +23,7 @@ __all__ = [
 class BinderException(ToolkitException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Binder encountered an error.

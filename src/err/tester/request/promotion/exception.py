@@ -24,7 +24,7 @@ __all__ = [
 class PromotionRequestTesterException(RequestTesterException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a PromotionRequestTester failed.

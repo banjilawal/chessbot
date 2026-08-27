@@ -23,7 +23,7 @@ __all__ = [
 class ArrayIndexOutsideBoundsException(ArrayException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a List is out of bounds

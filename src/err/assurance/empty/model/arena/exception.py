@@ -24,7 +24,7 @@ __all__ = [
 class ArenaEmptyException(ModelEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required Arena is empty.

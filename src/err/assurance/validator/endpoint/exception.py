@@ -24,7 +24,7 @@ __all__ = [
 class ManeuverEndpointValidatorException(ValidatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a ManeuverEndpointValidator failed.

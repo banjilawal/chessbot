@@ -24,7 +24,7 @@ __all__ = [
 class TokenCollisionDetectorException(DetectorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a TokenCollision step failed.

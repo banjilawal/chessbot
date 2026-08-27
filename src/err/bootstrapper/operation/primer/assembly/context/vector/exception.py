@@ -22,7 +22,7 @@ __all__ = [
 class PrimingVectorContextAssemblyException(PrimingContextAssemblyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a VectorContextAssembly priming step failed.

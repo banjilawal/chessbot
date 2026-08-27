@@ -25,7 +25,7 @@ from artifcat import MethodResultType
 class CoordStackServiceException(StackServiceException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a CoordStackService encountered an error.

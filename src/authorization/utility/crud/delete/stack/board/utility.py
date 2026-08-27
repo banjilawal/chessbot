@@ -21,7 +21,7 @@ from domain import BoardDeleteContext
 class BoardStackDeletePermissionUtility(StackDeletePermissionUtility[BoardDeleteContext]):
     """
     Role:
-        -  Utility
+        - Utility
 
     Responsibilities:
         1.  Bundles resources the BoardDeleteAuthorizer needs to evaluate a BoardDeleteRequest.

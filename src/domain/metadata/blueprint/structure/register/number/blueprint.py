@@ -19,7 +19,7 @@ from domain.structure.register import NumberRegister
 class NumberRegisterBlueprint(RegisterBlueprint[NumberRegister]):
     """
     Role:
-        -  Container
+        - Container
 
     Responsibilities:
         1.  Provides values for instantiating a NumberRegister object.

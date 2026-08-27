@@ -20,7 +20,7 @@ from operation.toolkit.builder.space.axis.north.toolkit import AxisBuilderToolki
 class NorthAxisBuilderToolkit(AxisBuilderToolkit[NorthAxis]):
     """
     Role:
-        -  Dependency Management
+        - Dependency Management
         
     Responsibilities:
         1.  Bundles NorthAxisBuilder dependencies.

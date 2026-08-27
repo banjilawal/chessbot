@@ -24,7 +24,7 @@ __all__ = [
 class AttackException(OperatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an attack failed.

@@ -20,7 +20,7 @@ from domain.model import Vector
 class VectorOperationSuite(OperationSuite[Vector]):
     """
     Role:
-        -  Dependency Container
+        - Dependency Container
         -  Dynamic Dependency Provider
 
     Responsibilities:

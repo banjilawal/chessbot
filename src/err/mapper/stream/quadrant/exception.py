@@ -25,7 +25,7 @@ __all__ = [
 class QuadrantMappingFunctionStreamException(MappingFunctionException):
     """
     Role:
-        -  Failure Tracing
+        - Failure Tracing
 
     Responsibilities:
         1.  Indicating a QuadrantMappingFunctionStream encountered an error.

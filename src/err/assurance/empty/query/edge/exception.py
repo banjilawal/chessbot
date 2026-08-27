@@ -25,7 +25,7 @@ from err import QueryStackEmptyException
 class EdgeQueryStackEmptyException(QueryStackEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required EdgeQuery's target stack is empty.

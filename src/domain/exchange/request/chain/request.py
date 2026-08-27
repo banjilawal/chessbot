@@ -18,7 +18,7 @@ from collection import Chain
 class ChainRequest(Request):
     """
     Role:
-        -  Request
+        - Request
     
     Responsibilities:
         1. Carry information running a Chain operation.

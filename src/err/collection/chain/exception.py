@@ -25,7 +25,7 @@ from artifcat import MethodResultType
 class ChainException(CollectionException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Chain encountered an error.

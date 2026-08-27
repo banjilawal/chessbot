@@ -1,7 +1,7 @@
-# src/transit/carrier/toggle/vector/toggle.py
+# src/transit/carrier/structure/toggle/vector/toggle.py
 
 """
-Module: transit.carrier.toggle.vector.toggle
+Module: transit.carrier.structure.toggle.vector.toggle
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -10,12 +10,12 @@ version: 0.0.2
 from __future__ import annotations
 from typing import Any, Dict, Optional
 
-from transit.metadata.blueprint import VectorToggleBlueprint
-from transit.carrier.toggle import ToggleCarrier
+from transit.metadata.blueprint import CartesianToggleBlueprint
+from transit.carrier.structure.toggle import ToggleCarrier
 from transit.structure.toggle import CartesianToggle
 
 
-class VectorToggleCarrier(ToggleCarrier[CartesianToggle]):
+class CartesianToggleCarrier(ToggleCarrier[CartesianToggle]):
     """
     Role:
         - Option Selector
@@ -41,24 +41,24 @@ class VectorToggleCarrier(ToggleCarrier[CartesianToggle]):
         Toggle
     """
     _model: Optional[CartesianToggle]
-    _blueprint: Optional[VectorToggleBlueprint]
+    _blueprint: Optional[CartesianToggleBlueprint]
     
     def __init__(
             self,
             model: Optional[CartesianToggle] | None = None,
-            blueprint: Optional[VectorToggleBlueprint] | None = None,
+            blueprint: Optional[CartesianToggleBlueprint] | None = None,
     ):
         """
         Args:
-            model: Optional[VectorToggle] | None = None,
-            blueprint: Optional[VectorToggleBlueprint]
+            model: Optional[CartesianToggle] | None = None,
+            blueprint: Optional[CartesianToggleBlueprint]
         """
         super().__init__()
         self._model = model
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> [CartesianToggle | VectorToggleBlueprint | None]:
+    def entity(self) -> [CartesianToggle | CartesianToggleBlueprint | None]:
         if self.is_not_carrying_anything:
             return None
         if self.is_carrying_model:
@@ -77,17 +77,17 @@ class VectorToggleCarrier(ToggleCarrier[CartesianToggle]):
     def is_carrying_blueprint(self) -> bool:
         return (
                 not self.is_carrying_model and
-                isinstance(self._blueprint, VectorToggleBlueprint)
+                isinstance(self._blueprint, CartesianToggleBlueprint)
         )
     
-    def extract_blueprint(self) -> Optional[VectorToggleBlueprint]:
+    def extract_blueprint(self) -> Optional[CartesianToggleBlueprint]:
         if self.is_not_carrying_anything:
             return None
         if self.is_carrying_blueprint:
             return self._blueprint
         if self._model.switched_coord_on:
-            return VectorToggleBlueprint(coord=self._model.entity)
-        return VectorToggleBlueprint(vector=self._model.entity)
+            return CartesianToggleBlueprint(coord=self._model.entity)
+        return CartesianToggleBlueprint(vector=self._model.entity)
     
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -106,7 +106,7 @@ class VectorToggleCarrier(ToggleCarrier[CartesianToggle]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, VectorToggleCarrier):
+        if isinstance(other, CartesianToggleCarrier):
             return self.entity == other.entity
         return False
     

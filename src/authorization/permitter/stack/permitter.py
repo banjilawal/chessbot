@@ -24,7 +24,7 @@ T = TypeVar("T", bound="StackRequest")
 class StackOperationPermitter(OperationPermitter, ABC, Generic[T]):
     """
     Role:
-        -  Permission Authorization
+        - Permission Authorization
         -  Integrity Maintenance
         _   Consistency Assurance
 

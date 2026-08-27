@@ -24,7 +24,7 @@ __all__ = [
 class TopologyGeneratorException(MovementPatternException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a PatternGenerator did not complete its task.

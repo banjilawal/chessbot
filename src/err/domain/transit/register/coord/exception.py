@@ -24,7 +24,7 @@ __all__ = [
 class CoordRegisterCarrierException(RegisterCarrierException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a CoordRegisterCarrier encountered an error.

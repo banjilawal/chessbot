@@ -24,7 +24,7 @@ __all__ = [
 class DeltaException(SchemaException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Delta encountered an error.

@@ -24,7 +24,7 @@ __all__ = [
 class SquareNameCollisionException(NameCollisionException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that two squares share an name that should be unique.

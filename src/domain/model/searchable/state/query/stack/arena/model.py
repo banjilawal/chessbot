@@ -17,7 +17,7 @@ from domain.model import StackQuery
 class ArenaQuery(StackQuery[Arena]):
     """
     Role:
-        -  Model
+        - Model
         -  Search
         -  Stateless Data-Holder
 

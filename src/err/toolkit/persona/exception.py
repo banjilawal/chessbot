@@ -23,7 +23,7 @@ __all__ = [
 class PersonaException(ToolkitException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that n Persona encountered an error.

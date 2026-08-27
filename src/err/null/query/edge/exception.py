@@ -25,7 +25,7 @@ from err import QueryNullException
 class EdgeQueryNullException(QueryNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required EdgeQuery is null.

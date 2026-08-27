@@ -20,7 +20,7 @@ T = TypeVar("T", bound="DomainDataObject")
 class Register(Structure, ABC, Generic[T]):
     """
     Role:
-        -  Addressing
+        - Addressing
         -  Data-Holder
   
     Responsibilities:

@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import VectorToggleRegisterBuilderException
+from err import CartesianToggleRegisterBuilderException
 from artifcat import MethodResultType
 
 
 __all__ = [
     # ======================# VECTOR_TOGGLE_REGISTER_MISMATCH_ERROR #======================#
-    "VectorToggleRegisterMismatchException",
+    "CartesianToggleRegisterMismatchException",
 ]
 
 # ======================# VECTOR_TOGGLE_REGISTER_MISMATCH_ERROR #======================#
-class VectorToggleRegisterMismatchException(VectorToggleRegisterBuilderException):
+class CartesianToggleRegisterMismatchException(CartesianToggleRegisterBuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
-        1.  Indicating a VectorToggleRegister's a-b slots contain different types.
+        1.  Indicating a CartesianToggleRegister's a-b slots contain different types.
 
     Attributes:
             msg: Optional[str]
@@ -42,9 +42,9 @@ class VectorToggleRegisterMismatchException(VectorToggleRegisterBuilderException
     Provides:
 
     Super Class:
-        VectorToggleRegisterBuilderException
+        CartesianToggleRegisterBuilderException
     """
-    MSG = "VectorToggleRegister slots cannot hold different types."
+    MSG = "CartesianToggleRegister slots cannot hold different types."
     ERR_CODE = "VECTOR_TOGGLE_REGISTER_MISMATCH_ERROR"
     
     def __init__(

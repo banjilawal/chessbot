@@ -24,7 +24,7 @@ __all__ = [
 class PromotionPermitterException(PermitterException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a PromotionPermitter did not approve a request.

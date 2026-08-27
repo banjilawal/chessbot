@@ -26,7 +26,7 @@ from err import BinderBuilderException
 class RankBinderBuilderException(BinderBuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a RankBinderBuilder failed.

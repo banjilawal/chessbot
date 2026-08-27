@@ -23,7 +23,7 @@ __all__ = [
 class EmptyGraphStackDeletionException(EmptyStackDeletionException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicatings that popping An GraphStack failed because it was empty.

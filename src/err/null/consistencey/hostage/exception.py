@@ -24,7 +24,7 @@ __all__ = [
 class HostageConsistencyCheckerNullException(ConsistencyCheckerNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required HostageConsistencyChecker is null.

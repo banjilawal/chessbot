@@ -26,7 +26,7 @@ from err import ContextTokenOperationBootstrapperException
 class HostageContextTokenOperationBootstrapperException(ContextTokenOperationBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a HostageContext tokenfailed.

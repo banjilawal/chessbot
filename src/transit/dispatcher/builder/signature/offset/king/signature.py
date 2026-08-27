@@ -18,7 +18,7 @@ from topology.pattern import OffsetSignature
 class KingOffsetPattern(OffsetSignature[King]):
     """
     Role:
-        -  Data Holder
+        - Data Holder
         -  Immutability
         
     Responsibilities:

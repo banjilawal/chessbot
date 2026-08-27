@@ -19,7 +19,7 @@ from domain import Vector, VectorNode
 class VectorTree(Tree[Vector]):
     """
     Role:
-        -  Data Holder
+        - Data Holder
         -  Data protection
 
     Responsibilities:

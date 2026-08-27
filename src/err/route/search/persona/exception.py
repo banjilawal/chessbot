@@ -23,7 +23,7 @@ __all__ = [
 class PersonaSearchRouteException(SearchRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that n Persona search routes is missing.

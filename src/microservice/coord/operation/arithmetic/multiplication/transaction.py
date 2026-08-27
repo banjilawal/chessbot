@@ -16,7 +16,7 @@ from logic.coord import Coord, CoordMultiplicationException, CoordService
 class MultiplyCoordTransaction:
     """
     Role:
-        -  Worker
+        - Worker
         -  Computation
 
     Responsibilities:

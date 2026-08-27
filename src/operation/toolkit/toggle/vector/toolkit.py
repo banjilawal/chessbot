@@ -12,19 +12,19 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Type
 
-from domain.metadata.blueprint import VectorToggleBlueprint
-from carrier.toggle.vector.carrier import VectorToggleCarrier
-from err import VectorToggleBlueprintNullException, VectorToggleCarrierNullException, VectorToggleNullException
+from domain.metadata.blueprint import CartesianToggleBlueprint
+from carrier.toggle.vector.carrier import CartesianToggleCarrier
+from err import CartesianToggleBlueprintNullException, CartesianToggleCarrierNullException, CartesianToggleNullException
 from operation.suite import  CoordOperationSuite, VectorOperationSuite
 from domain.structure.toggle import CartesianToggle
 from operation.toolkit.toggle.vector.toolkit import ToggleToolkit
 
 
 @dataclass
-class VectorToggleToolkit(ToggleToolkit[CartesianToggle]):
+class CartesianToggleToolkit(ToggleToolkit[CartesianToggle]):
     """
     Role:
-        -  Container
+        - Container
 
     Responsibilities:
         1.  Collection of workers and validators that are required for CartesianVector tasks.
@@ -32,11 +32,11 @@ class VectorToggleToolkit(ToggleToolkit[CartesianToggle]):
         3.  No logic in the Toolkit.
 
     Attributes:
-        model: Type[VectorToggle]
-        blueprint_toggle: VectorToggleBlueprint
+        model: Type[CartesianToggle]
+        blueprint_toggle: CartesianToggleBlueprint
         
-        null_exception: VectorToggleNullException
-        blueprint_null_exception: VectorToggleBlueprintNullException
+        null_exception: CartesianToggleNullException
+        blueprint_null_exception: CartesianToggleBlueprintNullException
         coord: CoordOperationSuite
         vector: VectorOperationSuite
 
@@ -48,21 +48,21 @@ class VectorToggleToolkit(ToggleToolkit[CartesianToggle]):
     model: Type[CartesianToggle] = (
         CartesianToggle
     )
-    blueprint_model: Type[VectorToggleBlueprint] = (
-        VectorToggleBlueprint
+    blueprint_model: Type[CartesianToggleBlueprint] = (
+        CartesianToggleBlueprint
     )
-    carrier_model = Type[VectorToggleCarrier] = (
-        VectorToggleCarrier
+    carrier_model = Type[CartesianToggleCarrier] = (
+        CartesianToggleCarrier
     )
     
-    null_exception: VectorToggleNullException = (
-        VectorToggleNullException()
+    null_exception: CartesianToggleNullException = (
+        CartesianToggleNullException()
     )
-    carrier_null_exception: VectorToggleCarrierNullException = (
-        VectorToggleCarrierNullException()
+    carrier_null_exception: CartesianToggleCarrierNullException = (
+        CartesianToggleCarrierNullException()
     )
-    blueprint_null_exception: VectorToggleBlueprintNullException = (
-        VectorToggleBlueprintNullException()
+    blueprint_null_exception: CartesianToggleBlueprintNullException = (
+        CartesianToggleBlueprintNullException()
     )
     
     coord: CoordOperationSuite = CoordOperationSuite()

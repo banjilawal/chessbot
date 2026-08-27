@@ -21,7 +21,7 @@ from domain.model import Vector
 class AxisRecurrenceRegistry(RecurrenceRegistry[Axis]):
     """
     Role:
-        -  Data Holder
+        - Data Holder
         -  Factory
         -  Switcher
 

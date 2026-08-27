@@ -18,7 +18,7 @@ from config.setting import GameColor
 class Formation(Enum):
     """
     Role:
-        -  Configuration Table
+        - Configuration Table
         -  Metadata Set
 
     Responsibilities:

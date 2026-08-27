@@ -21,7 +21,7 @@ T = TypeVar("T", bound="Quadrant")
 class QuadrantRecurrence(Recurrence, Generic[T]):
     """
     Role:
-        -  Computation
+        - Computation
         -  Iterator
 
     Responsibilities:

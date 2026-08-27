@@ -20,7 +20,7 @@ from domain.model import Rank, Blueprint, Game, Player
 class RankQueryValidationBlueprint(QueryValidationBlueprint[Rank]):
     """
     Role:
-        -  Container
+        - Container
 
     Responsibilities:
         1.  Provides values for instantiating a RankValidation instance.

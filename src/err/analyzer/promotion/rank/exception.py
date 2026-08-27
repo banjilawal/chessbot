@@ -24,7 +24,7 @@ __all__ = [
 class PromotionLevelAnalyzerException(AnalyzerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a rank elevation check was not passed.

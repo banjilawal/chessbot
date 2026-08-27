@@ -23,7 +23,7 @@ from util import LoggingLevelRouter
 class SouthAxisEndpointBuilder:
     """
     Role:
-        -  Builder
+        - Builder
         -  Integrity Management
 
     Responsibilities:

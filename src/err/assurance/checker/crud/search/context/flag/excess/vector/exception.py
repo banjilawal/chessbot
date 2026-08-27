@@ -25,7 +25,7 @@ __all__ = [
 class ExcessVectorContextFlagsException(ExcessContextFlagsException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating too many VectorSearchContext flags were enabled.

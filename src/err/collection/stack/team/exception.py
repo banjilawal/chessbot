@@ -25,7 +25,7 @@ from artifcat import MethodResultType
 class TeamStackServiceException(StackServiceException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a TeamStackService encountered an error.

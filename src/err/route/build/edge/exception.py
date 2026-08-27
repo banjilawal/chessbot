@@ -23,7 +23,7 @@ __all__ = [
 class EdgeBuildRouteException(BuildRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of Edge build routes is missing.

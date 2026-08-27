@@ -26,7 +26,7 @@ from err import ContextBuilderException
 class TeamContextBuilderException(ContextBuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a TeamContext build failed.

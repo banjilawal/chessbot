@@ -24,7 +24,7 @@ __all__ = [
 class EdgeException(ModelException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Edge encountered an error.

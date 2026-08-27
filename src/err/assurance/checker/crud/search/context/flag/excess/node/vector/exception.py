@@ -27,7 +27,7 @@ class ExcessVectorNodeContextFlagsException(
 ):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating too many VectorNodeSearchContext flags were enabled.

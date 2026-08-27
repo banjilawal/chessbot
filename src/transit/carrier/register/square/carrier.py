@@ -1,7 +1,7 @@
-# src/transit/carrier/register/square/carrier.py
+# src/transit/carrier/structure/register/square/carrier.py
 
 """
-Module: transit.carrier.register.square.carrier
+Module: transit.carrier.structure.register.square.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -20,7 +20,7 @@ from transit.structure.register import SquareRegister
 class SquareRegisterCarrier(EntityCarrier[SquareRegister]):
     """
     Role:
-        -  Addressing
+        - Addressing
         -  Data-Holder
     
     Responsibilities:

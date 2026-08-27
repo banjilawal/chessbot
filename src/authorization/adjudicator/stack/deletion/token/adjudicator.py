@@ -25,7 +25,7 @@ from util import LoggingLevelRouter
 class TokenDeletionRequestAdjudicator(DeletionRequestAdjudicator):
     """
     Role:
-        -  Helper
+        - Helper
         -  Test Runner
         
     Responsibilities:

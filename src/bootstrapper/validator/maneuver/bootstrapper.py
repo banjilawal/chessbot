@@ -14,7 +14,7 @@ from __future__ import annotations
 class ManeuverValidatorBootstrapper(ValidatorBootstrapper):
     """
     Role:
-        -  Analysis Factory
+        - Analysis Factory
         -  Consistency maintenance
 
 

@@ -23,7 +23,7 @@ __all__ = [
 class SpaceBlueprintNullException(BlueprintNullException):
     """
     Role:
-        -  Failure Tracing
+        - Failure Tracing
 
     Responsibilities:
         1.  Indicating a required Space.

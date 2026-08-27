@@ -23,7 +23,7 @@ __all__ = [
 class DuplicateCoordPushException(DuplicateItemException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that pushing a duplicate item onto the CoordStack failed.

@@ -22,7 +22,7 @@ __all__ = [
 class EdgeDatabaseEmptyException(DatabaseEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required EdgeDatabase is empty.

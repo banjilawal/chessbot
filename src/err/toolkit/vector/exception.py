@@ -23,7 +23,7 @@ __all__ = [
 class VectorException(ToolkitException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Vector encountered an error.

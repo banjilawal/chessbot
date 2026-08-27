@@ -22,7 +22,7 @@ __all__ = [
 class NodeDeletionPipelineException(DeletionPipelineException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an error occurred in a NodeDeletionPipeline.

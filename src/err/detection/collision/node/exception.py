@@ -22,7 +22,7 @@ __all__ = [
 class NodeCollisionDetectorException(CollisionDetectorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a NodeCollision step failed.

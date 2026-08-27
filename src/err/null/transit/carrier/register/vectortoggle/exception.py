@@ -17,17 +17,17 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# VECTOR_TOGGLE_REGISTER_CARRIER_NULL_ERROR #======================#
-    "VectorToggleRegisterCarrierNullException",
+    "CartesianToggleRegisterCarrierNullException",
 ]
 
 # ======================# VECTOR_TOGGLE_REGISTER_CARRIER_NULL_ERROR #======================#
-class VectorToggleRegisterCarrierNullException(RegisterCarrierNullException):
+class CartesianToggleRegisterCarrierNullException(RegisterCarrierNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required VectorToggleRegisterCarrierToggle is null.
+        1.  Indicating a required CartesianToggleRegisterCarrierToggle is null.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class VectorToggleRegisterCarrierNullException(RegisterCarrierNullException):
     Super Class:
         RegisterCarrierNullException
     """
-    MSG = "VectorToggleRegisterCarrierToggle cannot be null."
+    MSG = "CartesianToggleRegisterCarrierToggle cannot be null."
     ERR_CODE= "VECTOR_TOGGLE_REGISTER_CARRIER_NULL_ERROR"
     
     def __init__(

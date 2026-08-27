@@ -12,7 +12,8 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-from carrier import EntityCarrier
+from domain import Model
+from transit import EntityCarrier
 
 T = TypeVar("T", bound="Model")
 
@@ -20,10 +21,10 @@ T = TypeVar("T", bound="Model")
 class ModelCarrier(EntityCarrier, ABC, Generic[T]):
     """
     Role:
-        -  Boundary Carrier
+        - Boundary Carrier
 
     Responsibilities:
-        1.  Transport either a hydrated transit Model or its Blueprint across validation and
+        1.  Transport either a hydrated Model or its Blueprint across validation and
             other processing boundaries
 
     Attributes:

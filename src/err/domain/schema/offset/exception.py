@@ -24,7 +24,7 @@ __all__ = [
 class OffsetException(SchemaException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Offset encountered an error.

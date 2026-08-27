@@ -24,7 +24,7 @@ __all__ = [
 class TupleEmptyException(ContainerEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required Tuple is empty.

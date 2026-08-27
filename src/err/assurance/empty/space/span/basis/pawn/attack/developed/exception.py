@@ -24,7 +24,7 @@ __all__ = [
 class DevelopedAttackBasisEmptyException(AttackBasisEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required DevelopedAttackBasis is empty.

@@ -25,7 +25,7 @@ __all__ = [
 class SquareStackContextNullException(StackContextNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required SquareContext is null.

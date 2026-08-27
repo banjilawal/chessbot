@@ -24,7 +24,7 @@ __all__ = [
 class CoordCarrierNullException(ModelCarrierNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required CoordCarrierToggle is null.

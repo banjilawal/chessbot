@@ -36,7 +36,7 @@ R = TypeVar("R", bound="ChainSearchRequest")
 class ChainSearchRequestAdjudicator(ChainRequestAdjudicator, Generic[N, R]):
     """
     Role:
-        -  Permission Authorization
+        - Permission Authorization
         -  Checklist Runner
         -  Integrity Maintenance
         _   Consistency Assurance
@@ -90,7 +90,7 @@ T = TypeVar("T", bound="Node")
 class ChainSearchRequest(ChainRequest, ABC, Generic[T]):
     """
     Role:
-        -  Request
+        - Request
 
     Responsibilities:
         1. Carry information for firing a Node search in a Chain.

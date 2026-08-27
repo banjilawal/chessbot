@@ -25,7 +25,7 @@ from err import QueryStackEmptyException
 class SchemaQueryStackEmptyException(QueryStackEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required SchemaQuery's target stack is empty.

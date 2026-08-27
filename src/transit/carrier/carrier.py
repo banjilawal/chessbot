@@ -14,14 +14,14 @@ from abc import ABC, abstractmethod
 
 from typing import Generic, Optional, TypeVar
 
-from fabrication import Blueprint
+from domain import Blueprint
 
 T = TypeVar("T")
 
 class EntityCarrier(ABC, Generic[T]):
     """
     Role:
-        -  Boundary Carrier
+        - Boundary Carrier
 
     Responsibilities:
         1.  Transport either a hydrated Object or its Blueprint across validation and other

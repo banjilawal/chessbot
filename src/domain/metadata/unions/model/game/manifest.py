@@ -20,7 +20,7 @@ from domain import ModelTypeUnions, Game, GameBlueprint, GameCarrier, GameSearch
 class GameTypeUnions(ModelTypeUnions[Game]):
     """
     Role:
-        -  Metadata
+        - Metadata
 
     Responsibilities:
         1. Catalog of data unions a Game uses in the domain.

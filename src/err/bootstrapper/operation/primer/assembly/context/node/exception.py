@@ -22,7 +22,7 @@ __all__ = [
 class PrimingNodeContextAssemblyException(PrimingContextAssemblyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a NodeContextAssembly priming step failed.

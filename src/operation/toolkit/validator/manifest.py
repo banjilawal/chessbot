@@ -16,16 +16,16 @@ from assurance import PrimingValidator
 from err import BlueprintNullException, EntityCarrierNullException, ModelNullException
 from fabrication import Blueprint
 from microservice import IdentityService
-from domain.model import DataModel
+from domain.model import Model
 from transit.carrier import EntityCarrier
 
-T = TypeVar("T", bound="DataModel")
+T = TypeVar("T", bound="Model")
 
 
 class ModelManifest(ABC, Generic[T]):
     """
     Role:
-        -  Dependency Manager
+        - Dependency Manager
 
     Responsibilities:
         1.  Bundles a Model's validation dependencies.

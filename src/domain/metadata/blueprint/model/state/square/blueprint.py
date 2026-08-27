@@ -19,7 +19,7 @@ from domain.schema import Formation
 class SquareBlueprint(StateModelBlueprint[Square]):
     """
     Role:
-        -  Container
+        - Container
 
     Responsibilities:
         1.  Provides values for instantiating a Square object.

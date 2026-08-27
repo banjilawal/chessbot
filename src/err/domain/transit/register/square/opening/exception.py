@@ -23,7 +23,7 @@ __all__ = [
 class OpeningSquareRegisterCarrierException(SquareException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an OpeningSquareRegisterCarrier encountered an error.

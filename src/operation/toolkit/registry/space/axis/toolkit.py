@@ -22,7 +22,7 @@ from operation.toolkit.registry.space.axis.toolkit import MathToolkit, SpaceRese
 class AxisReservoirToolkit(SpaceReservoirToolkit[Axis]):
     """
     Role:
-        -  Container
+        - Container
 
     Responsibilities:
         1.  Collection of workers and validators that are required for CartesianSpace tasks.

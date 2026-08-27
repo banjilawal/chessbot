@@ -24,7 +24,7 @@ __all__ = [
 class CircularPathConsistencyCheckerNullException(PathException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required path's origin and destination are the same.

@@ -24,7 +24,7 @@ __all__ = [
 class PlayerBuilderException(ModelBuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a PlayerBuilder failed.

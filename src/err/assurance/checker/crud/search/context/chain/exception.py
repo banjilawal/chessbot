@@ -25,7 +25,7 @@ __all__ = [
 class ChainContextCheckerException(ContextCheckerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a ChainContextChecker failed.

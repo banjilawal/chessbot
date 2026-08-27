@@ -23,7 +23,7 @@ __all__ = [
 class FormationBuilderException(BuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Formation build failed.

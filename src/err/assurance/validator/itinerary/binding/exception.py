@@ -24,7 +24,7 @@ __all__ = [
 class ItineraryConsistencyException(ItineraryValidatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an Itinerary's token has an inconsistency with either the source or destination.

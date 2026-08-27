@@ -22,7 +22,7 @@ __all__ = [
 class VisitpingStackException(SquareVisitException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that visitping a Stack failed.

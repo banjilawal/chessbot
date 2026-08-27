@@ -24,7 +24,7 @@ __all__ = [
 class OpeningAttackMovementSetEmptyException(AttackMovementSetEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required OpeningAttackMovementSet is empty.

@@ -19,7 +19,7 @@ from carrier import ModelCarrier
 class SquareCarrier(ModelCarrier[Square]):
     """
     Role:
-        -  Data Transport
+        - Data Transport
 
     Responsibilities:
         2.  Transports either a Square or its Blueprint.

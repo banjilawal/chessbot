@@ -24,7 +24,7 @@ __all__ = [
 class CoordSearchResultEmptyException(SearchResultEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a CoordSearcher did not find the required item.

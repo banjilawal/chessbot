@@ -22,7 +22,7 @@ from system import AnchorException
 class TokenServiceMenuException(AnchorException):
     """
     Role:
-        -  Exception Chain Layer 0
+        - Exception Chain Layer 0
         -  Exception coverage target
 
     Responsibilities:

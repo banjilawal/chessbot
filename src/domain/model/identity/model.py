@@ -9,13 +9,13 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from domain.model import DataModel
+from domain.model import Model
 
 
-class Identity(DataModel):
+class Identity(Model):
     """
     Role:
-        -  Model
+        - Model
         -  Data Holder
 
     Responsibilities:

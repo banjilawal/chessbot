@@ -22,7 +22,7 @@ from util import LoggingLevelRouter
 class NorthAxisEndpointBuilder:
     """
     Role:
-        -  Builder
+        - Builder
         -  Integrity Management
 
     Responsibilities:

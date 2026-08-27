@@ -22,7 +22,7 @@ from transit.dispatcher.validator import VectorValidator
 class SoutheastQuadrantEndpointBuilder:
     """
     Role:
-        -  Builder
+        - Builder
         -  Integrity Management
 
     Responsibilities:

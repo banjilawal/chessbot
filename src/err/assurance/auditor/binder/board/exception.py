@@ -23,7 +23,7 @@ __all__ = [
 class BoardTeamBinderConsistencyAuditorException(BinderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a BoardTeamBinderConsistencyAuditor failed.

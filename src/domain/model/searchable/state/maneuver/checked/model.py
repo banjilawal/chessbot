@@ -16,7 +16,7 @@ from domain.model import KingToken, Maneuver, Square, Token
 class CheckedManeuver(Maneuver):
     """
     Role:
-        -  Model
+        - Model
         -  Data Holder
 
     Responsibilities:

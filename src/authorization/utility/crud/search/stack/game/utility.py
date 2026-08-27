@@ -21,7 +21,7 @@ from domain import GameSearchSearchContext
 class GameStackSearchPermissionUtility(StackSearchPermissionUtility[GameSearchSearchContext]):
     """
     Role:
-        -  Utility
+        - Utility
 
     Responsibilities:
         1.  Bundles resources the GameSearchAuthorizer needs to evaluate a GameSearchRequest.

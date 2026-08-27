@@ -24,7 +24,7 @@ __all__ = [
 class BidirectionalSourceTokenRelationException(ItineraryConsistencyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an Itinerary's token does not have a fully bidirectional relation with its source.

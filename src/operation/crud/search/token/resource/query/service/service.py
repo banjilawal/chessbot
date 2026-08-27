@@ -14,7 +14,7 @@ from domain.model.searchable.state import TokenQuery, TokenQueryBuilder, TokenQu
 class TokenQueryService(IntegrityMicroservice[TokenQuery]):
     """
     Role:
-        -  Microservice API
+        - Microservice API
         -  Stateless Integrity Lifecycle Manager
 
     Responsibilities:

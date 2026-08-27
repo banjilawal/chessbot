@@ -20,7 +20,7 @@ from topology.registry.collection import RecurrenceRegistryCollection
 class BishopRecurrenceRegistries(RecurrenceRegistryCollection[Bishop]):
     """
     Role:
-        -  Data Holder
+        - Data Holder
         -  Iterator
 
     Responsibilities:

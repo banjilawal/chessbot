@@ -20,7 +20,7 @@ T = TypeVar("T", bound="TraversalRank")
 class RecurrenceRegistryCollection(ABC, Generic[T]):
     """
     Role:
-        -  Data Holder
+        - Data Holder
         -  Iterator
 
     Responsibilities:

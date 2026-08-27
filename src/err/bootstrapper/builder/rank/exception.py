@@ -24,7 +24,7 @@ __all__ = [
 class RankBuilderBootstrapperException(BuilderBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a RankBuilderBootstrapper was aborted by an exception.

@@ -23,7 +23,7 @@ __all__ = [
 class SchemaBuildRouteException(BuildRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of Schema build routes is missing.

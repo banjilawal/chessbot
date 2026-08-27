@@ -23,7 +23,7 @@ __all__ = [
 class KingException(RankException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a King encountered an error.

@@ -26,7 +26,7 @@ from err import BinderTokenOperationException
 class CoordBinderTokenOperationException(BinderTokenOperationException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a CoordBinder tokenfailed.

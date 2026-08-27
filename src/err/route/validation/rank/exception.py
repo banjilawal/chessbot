@@ -23,7 +23,7 @@ __all__ = [
 class RankNoValidationRouteException(NoValidationRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of Rank validation routes is missing.

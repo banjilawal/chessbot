@@ -1,7 +1,7 @@
-# src/transit/carrier/register/vector/carrier.py
+# src/transit/carrier/structure/register/vector/carrier.py
 
 """
-Module: transit.carrier.register.vector.carrier
+Module: transit.carrier.structure.register.vector.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -19,7 +19,7 @@ from transit.structure.register import VectorRegister
 class VectorRegisterCarrier(EntityCarrier[VectorRegister]):
     """
     Role:
-        -  Addressing
+        - Addressing
         -  Data-Holder
     
     Responsibilities:

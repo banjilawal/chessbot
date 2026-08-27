@@ -25,7 +25,7 @@ from artifcat import MethodResultType
 class StringValidatorException(ValidatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a StringValidator failed.

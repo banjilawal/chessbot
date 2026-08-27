@@ -23,7 +23,7 @@ __all__ = [
 class SpaceReservoirException(SpaceException):
     """
     Role:
-        -  Failure Tracing
+        - Failure Tracing
 
     Responsibilities:
         1.  Indicating an error occurred in a SpaceReservoir instance.

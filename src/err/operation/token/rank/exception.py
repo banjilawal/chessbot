@@ -23,7 +23,7 @@ __all__ = [
 class RankTokenOperationException(TokenOperatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Rank tokenfailed.

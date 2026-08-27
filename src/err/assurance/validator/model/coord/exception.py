@@ -24,7 +24,7 @@ __all__ = [
 class CoordValidatorException(ModelValidatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a CoordValidator failed.

@@ -26,7 +26,7 @@ from err import ContextBuildRouteException
 class BoardContextBuildRouteException(ContextBuildRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of BoardContext build routes is missing.

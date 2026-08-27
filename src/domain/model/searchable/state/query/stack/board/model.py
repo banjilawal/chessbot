@@ -19,7 +19,7 @@ from collection.stack import BoardStackService
 class BoardQuery(StackQuery[Board]):
     """
     Role:
-        -  Model
+        - Model
         -  Search
         -  Stateless Data-Holder
 

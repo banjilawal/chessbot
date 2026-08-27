@@ -24,7 +24,7 @@ __all__ = [
 class PoppingEmptyStackException(PopperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that popping a stack failed because it was empty.

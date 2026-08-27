@@ -24,7 +24,7 @@ __all__ = [
 class DevelopedManeuverBasisEmptyException(ManeuverBasisEmptyException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required DevelopedManeuverBasis is empty.

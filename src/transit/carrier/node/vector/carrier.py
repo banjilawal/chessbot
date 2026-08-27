@@ -1,7 +1,7 @@
-# src/transit/carrier/node/vector/carrier.py
+# src/transit/carrier/structure/node/vector/carrier.py
 
 """
-Module: transit.carrier.node.vector.carrier
+Module: transit.carrier.structure.node.vector.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -19,7 +19,7 @@ from transit.carrier import NodeCarrier
 class VectorNodeCarrier(NodeCarrier):
     """
     Role:
-        -  Boundary Carrier
+        - Boundary Carrier
 
     Responsibilities:
         1.  Transport either a hydrated VectorNode or its Blueprint across validation and other processing

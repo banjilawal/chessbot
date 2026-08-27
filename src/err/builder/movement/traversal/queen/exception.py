@@ -24,7 +24,7 @@ __all__ = [
 class QueenTraversalPatternBuilderException(TraversalPatternBuilderException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required QueenTraversalPatternBuilder failed.

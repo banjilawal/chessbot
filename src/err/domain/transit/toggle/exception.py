@@ -24,7 +24,7 @@ __all__ = [
 class ToggleCarrierException(EntityCarrierException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Toggle encountered an error.

@@ -25,7 +25,7 @@ from artifcat import MethodResultType
 class NoValidationRouteException(ExecutionRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of  validation routes is missing.

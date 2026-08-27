@@ -14,6 +14,7 @@ from .model import *
 from .node import *
 from .register import *
 from .space import *
+from .structure import *
 from .toggle import *
 
 # Modules

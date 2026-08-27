@@ -24,7 +24,7 @@ from operation.toolkit.geometry.space.quadrant.northeast.toolkit import Quadrant
 class NortheastQuadrantToolkit(QuadrantToolkit[NortheastQuadrant]):
     """
     Role:
-        -  Container
+        - Container
 
     Responsibilities:
         1.  Collection of workers and validators that are required for CartesianSpace tasks.

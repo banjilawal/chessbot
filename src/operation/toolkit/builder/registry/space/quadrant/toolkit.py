@@ -20,7 +20,7 @@ from operation.toolkit.builder.registry.space.quadrant.toolkit import SpaceReser
 class QuadrantReservoirBuilderToolkit(SpaceReservoirBuilderToolkit[QuadrantReservoir]):
     """
     Role:
-        -  Dependency Management
+        - Dependency Management
         
     Responsibilities:
         1.  Bundles QuadrantReservoirBuilder dependencies.

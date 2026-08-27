@@ -23,7 +23,7 @@ __all__ = [
 class EmptyHostageStackDeletionException(EmptyStackDeletionException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicatings that popping An HostageStack failed because it was empty.

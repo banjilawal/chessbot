@@ -24,7 +24,7 @@ __all__ = [
 class BishopTraversalPatternCarrierException(TraversalPatternCarrierException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a BishopTraversalPatternCarrier experienced an error.

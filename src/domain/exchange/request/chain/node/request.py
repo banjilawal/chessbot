@@ -22,7 +22,7 @@ T = TypeVar("T", bound="Node")
 class ChainNodeRequest(ChainRequest, ABC, Generic[T]):
     """
     Role:
-        -  Request
+        - Request
 
     Responsibilities:
         1. Carry Node information for a Chain's CRUD operation.

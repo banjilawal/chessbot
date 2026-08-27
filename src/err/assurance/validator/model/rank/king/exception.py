@@ -22,7 +22,7 @@ __all__ = [
 class KingValidatorException(RankValidatorException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a King validator failed.

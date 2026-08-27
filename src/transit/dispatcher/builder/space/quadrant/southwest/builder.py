@@ -23,7 +23,7 @@ from util import LoggingLevelRouter
 class SouthwestQuadrantBuilder(QuadrantBuilder[SouthwestQuadrant]):
     """
     Role:
-        -  Builder
+        - Builder
         -  Integrity Management
 
     Responsibilities:

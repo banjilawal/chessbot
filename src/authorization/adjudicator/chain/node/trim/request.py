@@ -23,7 +23,7 @@ T = TypeVar("T", bound="Node")
 class ChainTrimByNodeRequest(ChainNodeRequest, ABC, Generic[T]):
     """
     Role:
-        -  Request
+        - Request
     
     Responsibilities:
         1. Carry information for trimming a Chain by a target Node.

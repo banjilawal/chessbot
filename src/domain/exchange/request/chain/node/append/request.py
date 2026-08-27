@@ -22,7 +22,7 @@ T = TypeVar("T", bound="Node")
 class AppendNodeRequest(ChainNodeRequest, ABC, Generic[T]):
     """
     Role:
-        -  Request
+        - Request
 
     Responsibilities:
         1. Carry Node information for appending a Node to a Chain.

@@ -23,7 +23,7 @@ __all__ = [
 class SouthwestQuadrantNullException(QuadrantNullException):
     """
     Role:
-        -  Failure Tracing
+        - Failure Tracing
 
     Responsibilities:
         1.  Indicating a required SouthwestQuadrant Is Null.

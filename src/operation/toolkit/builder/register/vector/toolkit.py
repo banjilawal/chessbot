@@ -20,7 +20,7 @@ from operation.toolkit.builder.register.vector.toolkit import RegisterBuilderToo
 class VectorRegisterBuilderToolkit(RegisterBuilderToolkit[VectorRegister]):
     """
     Role:
-        -  Dependency Management
+        - Dependency Management
         
     Responsibilities:
         1.  Bundles VectorRegisterRegisterBuilder dependencies.

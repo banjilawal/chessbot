@@ -24,7 +24,7 @@ __all__ = [
 class SearcherPermitterException(PermitterException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a SearchPermitter did not approve the request.

@@ -24,10 +24,10 @@ __all__ = [
 class CartesianToggleRegisterCarrierException(RegisterCarrierException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
-        1.  Indicating a VectorToggleRegisterCarrier encountered an error.
+        1.  Indicating a CartesianToggleRegisterCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class CartesianToggleRegisterCarrierException(RegisterCarrierException):
     Super Class:
         RegisterCarrierException
     """
-    MSG = "VectorToggleRegisterCarrier error."
+    MSG = "CartesianToggleRegisterCarrier error."
     ERR_CODE = "CARTESIAN_REGISTER_CARRIER_ERROR"
     
     def __init__(

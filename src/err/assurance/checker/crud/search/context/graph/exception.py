@@ -25,7 +25,7 @@ __all__ = [
 class GraphContextCheckerException(ContextCheckerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a GraphContextChecker failed.

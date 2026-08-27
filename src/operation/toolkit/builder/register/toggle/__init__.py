@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .toolkit import VectorToggleRegisterBuilderToolkit
+from .toolkit import CartesianToggleRegisterBuilderToolkit

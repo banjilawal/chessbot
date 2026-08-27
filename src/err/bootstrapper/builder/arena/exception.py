@@ -24,7 +24,7 @@ __all__ = [
 class ArenaBuilderBootstrapperException(BuilderBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an ArenaBuilderBootstrapper was aborted by an exception.

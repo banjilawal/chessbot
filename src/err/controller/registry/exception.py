@@ -23,7 +23,7 @@ __all__ = [
 class RegistryControllerException(ControllerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Registry encountered an error.

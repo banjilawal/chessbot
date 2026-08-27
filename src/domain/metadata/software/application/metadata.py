@@ -17,7 +17,7 @@ from domain import SoftwareMetadata, VersionNumber
 class Application(SoftwareMetadata):
     """
     Role:
-        -  Metadata
+        - Metadata
         
     Responsibilities:
         1. Information about the application.

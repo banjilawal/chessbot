@@ -18,7 +18,7 @@ T = TypeVar("T")
 class SearchService(ABC, Generic[T]):
     """
     Role:
-        -  API
+        - API
         -  Lifecycle Manager
         -  Stateless microservice
         -  Operations Provider

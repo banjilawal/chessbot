@@ -26,7 +26,7 @@ from err import ContextColliderBootstrapperException
 class HostageContextCollisionException(ContextColliderBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a HostageContextCollision step failed.

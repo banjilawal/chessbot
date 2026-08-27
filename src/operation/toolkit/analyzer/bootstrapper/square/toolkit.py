@@ -22,7 +22,7 @@ from transit.dispatcher.validator import BoardValidationDispatcher, CoordValidat
 class SquareToolkit(AnalyzerBootstrapperToolkit[Square]):
     """
     Role:
-        -  Dependency Management
+        - Dependency Management
 
     Responsibilities:
         1.  Aggregates workers and services a Square requires for its tasks.

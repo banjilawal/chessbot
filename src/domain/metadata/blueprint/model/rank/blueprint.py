@@ -19,7 +19,7 @@ from domain.schema import Persona
 class RankBlueprint(ModelBlueprint[Rank]):
     """
     Role:
-        -  Container
+        - Container
         -  DTO
         
     Responsibilities:

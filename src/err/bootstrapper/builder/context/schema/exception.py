@@ -24,7 +24,7 @@ __all__ = [
 class SchemaContextBuilderBootstrapperException(ContextBuilderBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a SchemaContextBuilderBootstrapper was aborted by an exception.

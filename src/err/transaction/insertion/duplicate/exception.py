@@ -23,7 +23,7 @@ __all__ = [
 class DuplicateStackPushException(InsertionException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         Indicating that pushing a duplicate item onto the stack failed.

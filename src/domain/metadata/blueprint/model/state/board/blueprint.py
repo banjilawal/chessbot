@@ -20,7 +20,7 @@ from domain.model import Arena, Board
 class BoardBlueprint(StateModelBlueprint[Board]):
     """
     Role:
-        -  Container
+        - Container
         -  DTO
         
     Responsibilities:

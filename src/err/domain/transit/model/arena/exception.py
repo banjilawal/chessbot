@@ -22,7 +22,7 @@ __all__ = [
 class ArenaCarrierException(ModelCarrierException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating an ArenaCarrier encountered an error.

@@ -23,7 +23,7 @@ __all__ = [
 class HostageNoValidationRouteException(NoValidationRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of Hostage validation routes is missing.

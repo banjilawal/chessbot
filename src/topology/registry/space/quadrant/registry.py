@@ -19,7 +19,7 @@ from topology.space import (
 class QuadrantReservoir(SpaceReservoir[Quadrant]):
     """
     Role:
-        -  Selection
+        - Selection
         -  Iterator
         -  Routing Mask
 

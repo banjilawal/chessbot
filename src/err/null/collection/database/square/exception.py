@@ -22,7 +22,7 @@ __all__ = [
 class SquareDatabaseNullException(DatabaseNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required SquareDatabase is null.

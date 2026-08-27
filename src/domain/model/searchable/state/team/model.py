@@ -17,7 +17,7 @@ from domain.schema import Archetype
 class Team(StatefulModel):
     """
     Role:
-        -  Model
+        - Model
         -  Stateless Data-Holder
         
     Responsibilities:

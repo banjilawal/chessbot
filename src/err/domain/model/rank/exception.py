@@ -24,7 +24,7 @@ __all__ = [
 class RankException(ModelException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Rank encountered an error.

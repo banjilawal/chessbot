@@ -23,7 +23,7 @@ from util import LoggingLevelRouter
 class VectorSequenceGenerator:
     """
     Role:
-        -  Computation
+        - Computation
         -  Integrity Assurance
 
     Responsibilities:

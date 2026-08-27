@@ -22,7 +22,7 @@ from domain.model import Vector
 class VectorBlueprint(ModelBlueprint[Vector]):
     """
     Role:
-        -  Container
+        - Container
         -  DTO
 
     Responsibilities:

@@ -25,7 +25,7 @@ __all__ = [
 class TokenPushRequestTesterException(TesterException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a TokenStackPushTester encountered an error.

@@ -24,7 +24,7 @@ T = TypeVar("T", bound="Toggle")
 class ToggleToolkit(Toolkit, Generic[T]):
     """
     Role:
-        -  Container
+        - Container
 
     Responsibilities:
         1.  Collection of workers and validators that are required for CartesianVector tasks.

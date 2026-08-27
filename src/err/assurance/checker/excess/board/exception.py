@@ -22,7 +22,7 @@ _all_ = [
 class ExcessBoardBlueprintFlagsException(ExcessBlueprintFlagsException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicatings that more than one BoardBlueprint option was enabled.

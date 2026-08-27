@@ -27,7 +27,7 @@ from err import ChainContextCheckerException
 class DossierNodeCheckerException(ChainContextCheckerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating assurance by a DossierNodeChecker failed.

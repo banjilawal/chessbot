@@ -22,7 +22,7 @@ __all__ = [
 class WorkerRegistryControllerException(RegistryControllerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a WorkerRegistry encountered an error.

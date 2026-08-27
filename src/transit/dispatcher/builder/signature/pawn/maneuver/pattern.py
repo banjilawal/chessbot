@@ -18,7 +18,7 @@ from topology.pattern import PawnSignature
 class ManeuverSignature(ABC, PawnSignature):
     """
     Role:
-        -  Computation Worker
+        - Computation Worker
         -  Integrity Management
 
     Responsibilities:

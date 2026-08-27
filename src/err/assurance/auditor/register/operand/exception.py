@@ -17,17 +17,17 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# VECTOR_TOGGLE_REGISTER_CONSISTENCY_AUDITOR_FAILURE #======================#
-    "VectorToggleRegisterConsistencyAuditorException",
+    "CartesianToggleRegisterConsistencyAuditorException",
 ]
 
 # ======================# VECTOR_TOGGLE_REGISTER_CONSISTENCY_AUDITOR_FAILURE #======================#
-class VectorToggleRegisterConsistencyAuditorException(RegisterException):
+class CartesianToggleRegisterConsistencyAuditorException(RegisterException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
-        1.  Indicating a VectorToggleRegisterConsistencyAuditor failed.
+        1.  Indicating a CartesianToggleRegisterConsistencyAuditor failed.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class VectorToggleRegisterConsistencyAuditorException(RegisterException):
     Super Class:
         RegisterException
     """
-    MSG = "VectorToggleRegister consistency error."
+    MSG = "CartesianToggleRegister consistency error."
     ERR_CODE = "VECTOR_TOGGLE_REGISTER_CONSISTENCY_AUDITOR_FAILURE"
     
     def __init__(

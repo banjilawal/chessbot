@@ -24,7 +24,7 @@ __all__ = [
 class OrientationException(SchemaException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a Orientation encountered an error.

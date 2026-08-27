@@ -1,7 +1,7 @@
-# src/transit/carrier/node/dossier/carrier.py
+# src/transit/carrier/structure/node/dossier/carrier.py
 
 """
-Module: transit.carrier.node.dossier.carrier
+Module: transit.carrier.structure.node.dossier.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -19,7 +19,7 @@ from transit.carrier import NodeCarrier
 class DossierNodeCarrier(NodeCarrier):
     """
     Role:
-        -  Boundary Carrier
+        - Boundary Carrier
 
     Responsibilities:
         1.  Transport either a hydrated DossierNode or its Blueprint across validation and

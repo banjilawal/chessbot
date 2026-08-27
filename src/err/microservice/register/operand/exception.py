@@ -17,17 +17,17 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# VECTOR_TOGGLE_REGISTER_MICROSERVICE_FAILURE #======================#
-    "VectorToggleRegisterMicroserviceException",
+    "CartesianToggleRegisterMicroserviceException",
 ]
 
 # ======================# VECTOR_TOGGLE_REGISTER_MICROSERVICE_FAILURE #======================#
-class VectorToggleRegisterMicroserviceException(RegisterMicroserviceException):
+class CartesianToggleRegisterMicroserviceException(RegisterMicroserviceException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate did not pass a VectorToggleRegisterMicroservice failed.
+        1.  Indicating a candidate did not pass a CartesianToggleRegisterMicroservice failed.
 
     Attributes:
             msg: Optional[str]
@@ -44,7 +44,7 @@ class VectorToggleRegisterMicroserviceException(RegisterMicroserviceException):
     Super Class:
         RegisterMicroserviceException
     """
-    MSG = "VectorToggleRegisterMicroservice failure."
+    MSG = "CartesianToggleRegisterMicroservice failure."
     ERR_CODE = "VECTOR_TOGGLE_REGISTER_MICROSERVICE_FAILURE"
     
     def __init__(

@@ -19,7 +19,7 @@ T = TypeVar("T", bound="Token")
 class Attack(StatefulModel, Generic[T]):
     """
     Role:
-        -  Model
+        - Model
         -  Data Holder
 
     Responsibilities:

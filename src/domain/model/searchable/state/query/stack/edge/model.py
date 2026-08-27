@@ -19,7 +19,7 @@ from collection.stack import EdgeStackService
 class EdgeQuery(StackQuery[Edge]):
     """
     Role:
-        -  Model
+        - Model
         -  Search
         -  Stateless Data-Holder
 

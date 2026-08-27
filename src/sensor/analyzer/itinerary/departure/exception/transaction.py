@@ -21,7 +21,7 @@ from system import DeletionException
 class SquareDepartureException(DeletionException):
     """
     Role:
-        -  Worker Method Identifier
+        - Worker Method Identifier
         -  Exception Chain Layer 1,
         -  Exception Messaging
 

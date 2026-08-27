@@ -22,7 +22,7 @@ _all_ = [
 class ExcessFormationBlueprintFlagsException(ExcessBlueprintFlagsException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicatings that more than one FormationBlueprint option was enabled.

@@ -22,7 +22,7 @@ __all__ = [
 class TeamStackNullException(StackNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required TeamStack is null.

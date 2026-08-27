@@ -19,7 +19,7 @@ from domain.model import StackQuery
 class RankQuery(StackQuery[Rank]):
     """
     Role:
-        -  Model
+        - Model
         -  Search
         -  Stateless Data-Holder
 

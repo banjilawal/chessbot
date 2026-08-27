@@ -19,7 +19,7 @@ T = TypeVar("T", bound="Space")
 class SpaceCarrier(EntityCarrier, Generic[T], ABC):
     """
     Role:
-        -  Data Transport
+        - Data Transport
 
     Responsibilities:
         1.  Transport either:

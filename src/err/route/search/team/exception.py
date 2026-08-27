@@ -23,7 +23,7 @@ __all__ = [
 class TeamSearchRouteException(SearchRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of Team search routes is missing.

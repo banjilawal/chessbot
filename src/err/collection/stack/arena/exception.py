@@ -25,7 +25,7 @@ from artifcat import MethodResultType
 class ArenaStackServiceException(StackServiceException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a ArenaStackService encountered an error.

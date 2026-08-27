@@ -16,7 +16,7 @@ from domain.model import Coord
 class CoordService(Microservice[Coord]):
     """
     Role:
-        -  API
+        - API
         -  Stateless microservice
         -  Lifecycle Manager
         -  Operations Provider

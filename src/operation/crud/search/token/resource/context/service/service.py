@@ -14,7 +14,7 @@ from domain.model.searchable.state import TokenContext, TokenContextBuilder, Tok
 class TokenContextService(IntegrityMicroservice[TokenContext]):
     """
     Role:
-        -  Microservice API
+        - Microservice API
         -  Stateless Integrity Lifecycle Manager
 
     Responsibilities:

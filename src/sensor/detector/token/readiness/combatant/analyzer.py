@@ -19,7 +19,7 @@ from util import LoggingLevelRouter
 class CombatantReadinessAnalyzer(Analyzer):
     """
     Role:
-        -  Analysis Factory
+        - Analysis Factory
         -  Consistency maintenance
 
 

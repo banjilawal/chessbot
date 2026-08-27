@@ -11,9 +11,10 @@ from __future__ import annotations
 
 from abc import ABC
 from dataclasses import dataclass
-from typing import Generic, Optional, Type, TypeVar
+from typing import Generic, Type, TypeVar
 
-from domain import Blueprint, DomainObjectTypeUnions, EntityCarrier, SearchContext, Structure
+from domain import Blueprint, DomainObjectTypeUnions, Structure
+from transit import EntityCarrier
 
 T = TypeVar("T", bound="Structure")
 
@@ -21,7 +22,7 @@ T = TypeVar("T", bound="Structure")
 class StructureTypeUnions(DomainObjectTypeUnions[T], ABC, Generic[T]):
     """
     Role:
-        -  Metadata
+        - Metadata
 
     Responsibilities:
         1. Catalog of data unions a Structure uses in the domain.
@@ -30,13 +31,11 @@ class StructureTypeUnions(DomainObjectTypeUnions[T], ABC, Generic[T]):
         structure: Type[T]
         carrier: Type[EntityCarrier[T]]
         blueprint: Type[Blueprint[T]]
-        search_context: Optional[StackSearchContext[T]]
     Provides:
 
     Super Class:
-        DomainObjectUnions
+        DomainObjectTypeUnions
     """
     structure: Type[T]
     carrier: Type[EntityCarrier[T]]
     blueprint: Type[Blueprint[T]]
-    search_context: Optional[SearchContext[T]] = None

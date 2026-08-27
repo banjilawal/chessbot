@@ -23,7 +23,7 @@ from util import LoggingLevelRouter
 class TokenRemovePermitter(RemovePermitter[Token]):
     """
     Role:
-        -  Request Analyzer
+        - Request Analyzer
         -  Rights Granter
         -  Consistency, Integrity Maintenance
 

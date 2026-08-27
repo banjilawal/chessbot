@@ -1,7 +1,7 @@
-# src/transit/carrier/register/carrier.py
+# src/transit/carrier/structure/register/carrier.py
 
 """
-Module: transit.carrier.register.carrier
+Module: transit.carrier.structure.register.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,11 +11,39 @@ from __future__ import annotations
 
 from abc import ABC
 
-from carrier import EntityCarrier
-from transit.structure.register import Register
+from typing import Generic, TypeVar
 
+from domain import Register
+from transit import StructureCarrier
 
-class RegisterCarrier(EntityCarrier[Register], ABC):
+T = TypeVar("T", bound="Register")
+
+class RegisterCarrier(StructureCarrier[T], ABC, Generic[T]):
+    """
+    Role:
+        - Boundary Carrier
+
+    Responsibilities:
+        1.  Transport either a hydrated Node or its Blueprint across validation and other processing
+            boundaries.
+
+    Attributes:
+        is_model_carrier: bool
+        is_blueprint_carrier: bool
+        
+        entity: [T | Blueprint[T]]
+        is_empty: bool
+        has_overflow: bool
+        to_dict: Dict[str, Any]
+        size: int
+
+    Provides:
+        -  extract_blueprint() -> Optional[Blueprint[T]]
+
+    Super Class:
+        StructureCarrier
+    """
+    
     def __init__(self):
         super().__init__()
 

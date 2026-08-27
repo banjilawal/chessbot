@@ -18,7 +18,7 @@ from topology.registry.collection import RecurrenceRegistryCollection
 class QueenRecurrenceRegistries(RecurrenceRegistryCollection[Queen]):
     """
     Role:
-        -  Data Holder
+        - Data Holder
         -  Iterator
 
     Responsibilities:

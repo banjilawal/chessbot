@@ -24,7 +24,7 @@ __all__ = [
 class TokenContextBuilderBootstrapperException(ContextBuilderBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a TokenContextBuilderBootstrapper was aborted by an exception.

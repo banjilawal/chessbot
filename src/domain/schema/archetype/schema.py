@@ -17,7 +17,7 @@ from config.setting import GameColor
 class Archetype(Enum):
     """
     Role:
-        -  Configuration Table
+        - Configuration Table
         -  Metadata Set
         
     Responsibilities:

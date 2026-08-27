@@ -19,7 +19,7 @@ from domain.model import Node, Square
 class NodeBlueprint(StateModelBlueprint[Node]):
     """
     Role:
-        -  Container
+        - Container
         -  DTO
         
     Responsibilities:

@@ -24,7 +24,7 @@ __all__ = [
 class ScalarBuilderBootstrapperException(BuilderBootstrapperException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a ScalarBuilderBootstrapper was aborted by an exception.

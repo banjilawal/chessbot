@@ -19,7 +19,7 @@ E = TypeVar("E", bound="Enum")
 class CatalogService(ABC, Generic[E]):
     """
     Role:
-        -  Data layer
+        - Data layer
         -  Microservice API
         -  Interface
 

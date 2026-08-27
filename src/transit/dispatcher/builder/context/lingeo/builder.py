@@ -10,13 +10,13 @@ version: 0.0.2
 from __future__ import annotations
 from typing import Optional
 
-from err import ExcessVectorToggleFlagsException, VectorContextBuilderException
+from err import ExcessCartesianToggleFlagsException, VectorContextBuilderException
 from integrity import Builder
-from domain.model import Coord, VectorToggle, Vector
+from domain.model import Coord, CartesianToggle, Vector
 from artifcat import BuildResult
 from operation.toolkit import VectorContextToolkit
 
-class VectorContextBuilder(Builder[VectorToggle]):
+class VectorContextBuilder(Builder[CartesianToggle]):
     """
     Role
         -  Transaction Worker
@@ -45,7 +45,7 @@ class VectorContextBuilder(Builder[VectorToggle]):
             coord: Optional[Coord] = None,
             vector: Optional[Vector] = None,
             toolkit : VectorContextToolkit = VectorContextToolkit()
-    ) -> BuildResult[VectorToggle]:
+    ) -> BuildResult[CartesianToggle]:
         """
         Build a safe VectorContext.
 
@@ -99,9 +99,9 @@ class VectorContextBuilder(Builder[VectorToggle]):
                     cls_name=cls.__name__,
                     msg=VectorContextBuilderException.MSG,
                     err_code=VectorContextBuilderException.ERR_CODE,
-                    ex=ExcessVectorToggleFlagsException(
-                        msg=ExcessVectorToggleFlagsException.MSG,
-                        err_code=ExcessVectorToggleFlagsException.ERR_CODE,
+                    ex=ExcessCartesianToggleFlagsException(
+                        msg=ExcessCartesianToggleFlagsException.MSG,
+                        err_code=ExcessCartesianToggleFlagsException.ERR_CODE,
                     )
                 )
             )
@@ -119,14 +119,14 @@ class VectorContextBuilder(Builder[VectorToggle]):
                         cls_name=cls.__name__,
                         msg=VectorContextBuilderException.MSG,
                         err_code=VectorContextBuilderException.ERR_CODE,
-                        ex=ExcessVectorToggleFlagsException(
-                            msg=ExcessVectorToggleFlagsException.MSG,
-                            err_code=ExcessVectorToggleFlagsException.ERR_CODE,
+                        ex=ExcessCartesianToggleFlagsException(
+                            msg=ExcessCartesianToggleFlagsException.MSG,
+                            err_code=ExcessCartesianToggleFlagsException.ERR_CODE,
                         )
                     )
                 )
             # On Build success, forward the work product.
-            return BuildResult.success(VectorToggle(coord=coord))
+            return BuildResult.success(CartesianToggle(coord=coord))
         
         # Deal with the alternate case.
         build_result = toolkit.vector_service.execute.execute(vector)
@@ -142,5 +142,5 @@ class VectorContextBuilder(Builder[VectorToggle]):
                 )
             )
         # --- Forward the work product to the caller ---#
-        return BuildResult.success(VectorToggle(vector=vector))
+        return BuildResult.success(CartesianToggle(vector=vector))
             

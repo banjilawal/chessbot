@@ -19,7 +19,7 @@ from space import NortheastQuadrant
 class NortheastQuadrantCarrier(SpaceCarrier[NortheastQuadrant]):
     """
     Role:
-        -  Data Transport
+        - Data Transport
 
     Responsibilities:
         2.  Transports either a NortheastQuadrant or its Blueprint.

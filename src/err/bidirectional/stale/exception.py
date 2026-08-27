@@ -26,7 +26,7 @@ from artifcat import MethodResultType
 class StaleLinkException(BidirectionalRelationException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that the primary (one side) has a stale link to a satellite (many side).

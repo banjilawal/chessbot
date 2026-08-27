@@ -19,7 +19,7 @@ from space import AxisReservoir
 class AxisReservoirCarrier(SpaceReservoirCarrier[AxisReservoir]):
     """
     Role:
-        -  Data Transport
+        - Data Transport
 
     Responsibilities:
         1.  Transport either:

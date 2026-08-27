@@ -19,7 +19,7 @@ from carrier import ModelCarrier
 class RankCarrier(ModelCarrier[Rank]):
     """
     Role:
-        -  Addressing
+        - Addressing
         -  Data-Holder
     
     Responsibilities:

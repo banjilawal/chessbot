@@ -24,7 +24,7 @@ from topology.space import (
 class QuadrantMappingFunctionStream(SpaceMapFunctionStream[Quadrant]):
     """
     Role:
-        -  Data Holder
+        - Data Holder
         -  Factory
         -  Switcher
 

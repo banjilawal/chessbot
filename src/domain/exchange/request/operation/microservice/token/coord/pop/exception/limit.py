@@ -22,7 +22,7 @@ from domain.exchange.model.state.token import TokenDebugException
 class MoveUndoLimitException(TokenDebugException):
     """
     Role:
-        -  Debug targeting information
+        - Debug targeting information
         -  Error Variable Identifier
         -  Exception Chain Layer 2
         -  Exception Messaging

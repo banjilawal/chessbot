@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 class RemovePermitter(ChainOperationPermitter):
     """
     Role:
-        -  Request Analyzer
+        - Request Analyzer
         -  Rights Granter
         -  Consistency, Integrity Maintenance
 

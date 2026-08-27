@@ -23,7 +23,7 @@ __all__ = [
 class HumanPlayerRegisterCarrierException(PlayerException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a HumanPlayerRegisterCarrier encountered an error.

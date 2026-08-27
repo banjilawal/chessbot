@@ -26,7 +26,7 @@ from err import ContextBuildRouteException
 class RankContextBuildRouteException(ContextBuildRouteException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating that one of RankContext build routes is missing.

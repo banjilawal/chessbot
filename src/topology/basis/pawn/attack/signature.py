@@ -18,7 +18,7 @@ from basis import PawnBasis
 class PawnAttackBasis(PawnBasis, ABC):
     """
     Role:
-        -  Data Holder
+        - Data Holder
 
     Responsibilities:
         1.  Constraints or that are used to generate a RankTree for Attacking Pawns

@@ -28,7 +28,7 @@ from transit.dispatcher.validator import TokenOriginCertifier
 class ManeuverToolkit(AnalyzerBootstrapperToolkit[Maneuver]):
     """
     Role:
-        -  Dependency Management
+        - Dependency Management
 
     Responsibilities:
         1.  Aggregates workers and services a Maneuver object requires for its tasks.

@@ -20,10 +20,10 @@ from util import LoggingLevelRouter
 
 
 
-class EuclideanDistancePermitter(ComputationPermitter[VectorToggle]):
+class EuclideanDistancePermitter(ComputationPermitter[CartesianToggle]):
     """
     Role:
-        -  Permission Authorization
+        - Permission Authorization
         -  Integrity Maintenance
         _   Consistency Assurance
 

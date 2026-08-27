@@ -24,7 +24,7 @@ __all__ = [
 class HashtableConsistencyCheckerNullException(ConsistencyCheckerNullException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a required HashtableConsistencyChecker is null.

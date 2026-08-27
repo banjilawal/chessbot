@@ -24,7 +24,7 @@ __all__ = [
 class HostageMicroserviceException(MicroserviceException):
     """
     Role:
-        -  Error Tracing
+        - Error Tracing
 
     Responsibilities:
         1.  Indicating a candidate did not pass a HostageMicroservice failed.
