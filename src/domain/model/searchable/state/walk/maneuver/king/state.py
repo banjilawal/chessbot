@@ -1,7 +1,7 @@
-# src/domain/model/searchable/state/maneuver/state.py
+# src/domain/model/searchable/maneuver/state.py
 
 """
-Module: domain.model.searchable.state.walk.maneuver.state
+Module: domain.model.searchable.walk.maneuver.state
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

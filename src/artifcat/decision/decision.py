@@ -69,11 +69,4 @@ class Decision(ABC, Generic[T]):
     def is_denied(self) -> bool:
         return not self.is_granted
     
-    @classmethod
-    def deny(cls, exception: Exception) -> Decision:
-        return cls(
-            exception=exception,
-            permission=Permission.DENIED
-        )
-    
     

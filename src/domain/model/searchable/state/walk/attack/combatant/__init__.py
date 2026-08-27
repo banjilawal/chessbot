@@ -1,13 +1,13 @@
-# src/domain/model/searchable/state/attack/combatant/__init__.py
+# src/domain/model/searchable/attack/combatant/__init__.py
 
 """
-Module: domain.model.searchable.state.walk.attack.combatant.__init__
+Module: domain.model.searchable.walk.attack.combatant.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== DOMAIN.MODEL.SEARCHABLE.STATE.WALK.ATTACK.COMBATANT PACKAGE ===========#
+# =========== DOMAIN.MODEL.SEARCHABLE.WALK.ATTACK.COMBATANT PACKAGE ===========#
 
 # Packages
 

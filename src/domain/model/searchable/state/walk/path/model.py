@@ -1,7 +1,7 @@
-# src/domain/model/searchable/state/walk/path/model.py
+# src/domain/model/searchable/walk/path/model.py
 
 """
-Module: domain.model.searchable.state.walk.path.model
+Module: domain.model.searchable.walk.path.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,11 +12,11 @@ from __future__ import annotations
 
 from typing import Optional
 
-from domain import StatefulModel, SquareRegister
+from domain import SearchableModel, SquareRegister
 
 
 
-class Path(StatefulModel):
+class Path(SearchableModel):
     """
     Role:
         - Model
@@ -28,33 +28,28 @@ class Path(StatefulModel):
 
     Attributes:
         endpoints: SquareRegister
-        cost: Optional[int]
         id: Optional[int]
 
     Provides:
 
     Super Class:
-        Walk
+        SearchableModel
     """
     _endpoints: SquareRegister
     _label: Optional[int]
-    _cost: Optional[int]
     
     def __init__(
             self,
             endpoints: SquareRegister,
             label: Optional[int] | None = None,
-            cost: Optional[int] | None = None,
     ):
         """
         Attributes:
             endpoints: SquareRegister
-            cost: Optional[int]
             label: Optional[int]
         """
         super().__init__()
         self._label = label
-        self._cost = cost
         self._endpoints = endpoints
         
         
@@ -65,10 +60,6 @@ class Path(StatefulModel):
     @property
     def label(self) -> Optional[int]:
         return self._label
-    
-    @property
-    def cost(self) -> Optional[int]:
-        return self._cost
     
     def __eq__(self, other):
         if other is self:

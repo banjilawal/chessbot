@@ -1,7 +1,7 @@
-# src/domain/model/searchable/state/attack/combatant/dossier/model.py
+# src/domain/model/searchable/attack/combatant/dossier/model.py
 
 """
-Module: domain.model.searchable.state.walk.attack.combatant.model
+Module: domain.model.searchable.walk.attack.combatant.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

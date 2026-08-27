@@ -1,7 +1,7 @@
-# src/domain/model/searchable/state/attack/dossier/model.py
+# src/domain/model/searchable/attack/dossier/model.py
 
 """
-Module: domain.model.searchable.state.walk.attack.model
+Module: domain.model.searchable.walk.attack.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from typing import Generic, Optional, TypeVar
 
-from domain.model import Maneuver, StatefulModel
+
 
 
 T = TypeVar("T", bound="Token")
 
-class Attack(StatefulModel, Generic[T]):
+class Attack(SearchableModel, ABC, Generic[T]):
     """
     Role:
         - Model

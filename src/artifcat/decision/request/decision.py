@@ -1,7 +1,7 @@
-# src/artifact/decision/decision.py
+# src/artifact/decision/request/decision.py
 
 """
-Module: artfifact.decision.decision
+Module: artfifact.decision.request.decision
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -24,24 +24,22 @@ class RequestDecision(Decision):
         1.  Report if an Authorizer grants a Request.
 
     Attributes:
+        request: Request
         permission: Permission
-        request: Optional[Request]
         exception: Optional[Exception]
-        is_denied: bool
-        is_granted
 
     Provides:
-        - def grant(request: T) -> RequestDecision
+        - def grant(request: Request) -> RequestDecision
+        - def deny(request: Request, exception: Exception) -> RequestDecision
 
     Super Class:
     """
     _request: Request
-
     
     def __init__(
             self,
+            request: Request,
             permission: Permission,
-            request: Optional[Request] | None = None,
             exception: Optional[Exception] | None = None,
     ):
         """
@@ -54,28 +52,20 @@ class RequestDecision(Decision):
         self._request = request
     
     @property
-    def request(self) -> Optional[Request]:
+    def request(self) -> Request:
         return self._request
-    
-    @property
-    def permission(self) -> Permission:
-        return self._permission
-    
-    @property
-    def is_denied(self) -> bool:
-        return self._request is None and super().is_denied
-    
-    @property
-    def is_granted(self) -> bool:
-        return  self._request is not None and super().is_granted
     
     @classmethod
     def grant(cls, request: Request) -> RequestDecision:
-        return cls(request=request, permission =Permission.GRANTED)
+        return cls(request=request, permission=Permission.GRANTED)
     
     @classmethod
-    def deny(cls, exception: Exception) -> RequestDecision:
-        return cast(RequestDecision, super().deny(exception))
+    def deny(cls, request: Request, exception: Exception) -> RequestDecision:
+        return cls(
+            request=request,
+            exception=exception,
+            permission=Permission.Denied,
+        )
 
     
     

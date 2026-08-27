@@ -1,7 +1,7 @@
-# src/domain/model/searchable/state/walk/model/searchable/state/maneuver.py
+# src/domain/model/searchable/walk/model/searchable/maneuver.py
 
 """
-Module: domain.model.searchable.state.walk.model.maneuver
+Module: domain.model.searchable.walk.model.maneuver
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,15 +9,12 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import Generic, Optional, TypeVar
+from typing import Optional
 
-from domain import Token
-
-T = TypeVar("T", bound="Token")
+from domain import Path, SearchableModel, Token
 
 
-class Maneuver(ABC, Generic[T]):
+class Maneuver(SearchableModel):
     """
     Role:
         - Model
@@ -27,79 +24,61 @@ class Maneuver(ABC, Generic[T]):
         1.  Gives details about a Token's journey along a path.
 
     Attributes:
-        id: int
-        token: T
         path: Path
-        state: ManeuverState
+        benefit: int
+        traveller: Token
+        attack: Optional[Attack]
 
     Provides:
 
     Super Class:
-        Model
+        SearchableModel
     """
-    _id: int
-    _token: T
     _path: Path
-    _state: ManeuverState
+    _benefit: int
+    _traveller: Token
+    _attack: Optional[Attack]
+
     
     def __init__(
             self,
-            id: int,
-            token: T,
             path: Path,
+            traveller: Token,
+            benefit: Optional[int] | None = 0,
+            attack: Optional[Attack] | None = None,
     ):
         """
         Args:
-            id: int
-            token: T
             path: Path
+            traveller: Token
         """
-        self._token = token
         self._path = path
-        self._id = id
-        self._state = ManeuverState.NOT_COMPLETED
+        self._benefit = benefit
+        self._traveller = traveller
+        self._attack = attack
+
     
     @property
-    def id(self) -> Optional[int]:
-        return self._id
-    
-    @property
-    def token(self) -> T:
-        return self._token
+    def traveller(self) -> Token:
+        return self._traveller
     
     @property
     def path(self) -> Path:
         return self._path
     
     @property
-    def state(self) -> ManeuverState:
-        return self._state
-    
-    @state.setter
-    def state(self, other: ManeuverState):
-        self._state = other
-    
+    def benefit(self) -> int:
+        return self._benefit
+        
     @property
-    def is_completed(self) -> bool:
-        return (
-                self._path.endpoints.origin.occupant != self._token and
-                self._path.endpoints.destination.occupant == self._token and
-                self._state == ManeuverState.COMPLETED
-        )
-    
-    @property
-    def is_not_completed(self) -> bool:
-        return not self.is_completed
+    def attack(self) -> Optional:
+        return self._attack
     
     def __eq__(self, other):
         if other == self: return True
         if other is None: return False
         if isinstance(other, Maneuver):
-            return self.id == other.id
+            return self._traveller == other.traveller and self._path == other.path
         return False
-        
-        
-    def is_same_path(self, maneuver: Maneuver):
-        return self._path == maneuver.path
         
     
