@@ -42,20 +42,20 @@ class AttackKing(Attack[KingToken]):
             id: int,
             maneuver: Maneuver,
             victim: KingToken,
-            attacker_benefit: Optional[int] | None,
+            attacker_reward: Optional[int] | None,
     ):
         """
         Args:
             id: int
             victim: KingToken
             maneuver: Maneuver
-            attacker_benefit: Optional[int]
+            attacker_reward: Optional[int]
         """
         super().__init__(
             id=id,
             victim=victim,
             maneuver=maneuver,
-            attacker_benefit=attacker_benefit
+            attacker_reward=attacker_reward
         )
         self._attack_state = KingAttackState.ATTACK_NOT_COMPLETED
     

@@ -10,7 +10,7 @@ version: 0.0.2
 # =========== DOMAIN.MODEL.SEARCHABLE.WALK.ATTACK PACKAGE ===========#
 
 # Packages
-from .combatant import *
+from .kill import *
 from .king import *
 
 # Modules
