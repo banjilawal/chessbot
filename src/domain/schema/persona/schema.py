@@ -9,6 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
+import sys
 from enum import Enum
 from typing import List, Optional
 
@@ -81,7 +82,7 @@ class Persona(Enum):
               ]
     )
     KING = (
-        "K", 1, 0,
+        "K", 1, sys.maxsize,
         [
             Vector(1, 0), Vector(-1, 0), Vector(0, 1), Vector(1, 1), Vector(-1, 1),
             Vector(-1, -1), Vector(1, -1)
