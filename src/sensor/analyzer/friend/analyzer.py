@@ -35,7 +35,7 @@ class FriendshipAnalyzer(Analyzer):
     Attributes:
     
     Provides:
-        -  def execute(
+        - def execute(
                     cls,
                     hunter: Token,
                     target: Token,

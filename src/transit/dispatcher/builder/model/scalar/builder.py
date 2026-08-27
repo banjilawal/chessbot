@@ -35,7 +35,7 @@ class ScalarBuilder(ModelBuilder[Scalar]):
             builder_toolkit: Optional[ScalarBuilderToolkit]
 
     Provides:
-        -  def execute(self, blueprint: ScalarBlueprint) -> BuildResult[Scalar]
+        - def execute(self, blueprint: ScalarBlueprint) -> BuildResult[Scalar]
 
      Super Class:
          ModelBuilder

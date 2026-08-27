@@ -36,7 +36,7 @@ class Validator(ABC, Generic[T]):
         bundle: ValidationBundle[T]
 
     Provides:
-        -  def execute(candidate: Any) -> ValidationResult[Blueprint[T]|T]:
+        - def execute(candidate: Any) -> ValidationResult[Blueprint[T]|T]:
 
     Super Class:
     """

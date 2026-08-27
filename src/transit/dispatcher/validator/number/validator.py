@@ -8,6 +8,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from typing import Any, Optional, cast
 
 from assurance import PrimingValidator
@@ -30,7 +31,7 @@ class NumberValidator:
     Attributes:
 
     Provides:
-        -  def validate(
+        - def validate(
                     candidate: Any,
                     floor: int = 0,
                     ceiling: int = BOARD_DIMENSION,

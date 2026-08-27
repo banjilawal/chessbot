@@ -32,7 +32,7 @@ class Operator(ABC, Generic[T]):
         authorizer: RequestAuthorizer[T]
         
     Provides:
-        -  def execute(request: Request[T]) -> T
+        - def execute(request: Request[T]) -> T
 
     Super Class:
     """

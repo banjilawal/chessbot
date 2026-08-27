@@ -33,7 +33,7 @@ class RemoveNode(CollectionDeletion[Chain], ABC, Generic[T]):
         permitter: RemoveNodePermitter[T]
 
     Provides:
-        -  def execute(request: AddNodeRequest) -> DeletionResult
+        - def execute(request: AddNodeRequest) -> DeletionResult
 
     Super Class:
         DeletionOperation

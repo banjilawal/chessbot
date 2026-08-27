@@ -8,6 +8,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from typing import Any, cast
 
 from transit.controller import WorkerRegistryController
@@ -30,7 +31,7 @@ class TeamConsistencyAuditor(ConsistencyAuditor[Team]):
     Attributes:
 
     Provides:
-        -  def validate(candidate: Any, toolkit: TeamToolkit) -> ValidationResult[Team]:
+        - def validate(candidate: Any, toolkit: TeamToolkit) -> ValidationResult[Team]:
 
     Super Class:
         Consistency

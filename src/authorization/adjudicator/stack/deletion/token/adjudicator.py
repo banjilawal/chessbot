@@ -37,7 +37,7 @@ class TokenDeletionRequestAdjudicator(DeletionRequestAdjudicator):
         carrier_validator: DeletionPermitterPriming_Validator
           
     Provides:
-        -  def execute(self, subject: Any) -> ValidationResult:
+        - def execute(self, subject: Any) -> ValidationResult:
             
     Super Class:
     """

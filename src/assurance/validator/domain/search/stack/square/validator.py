@@ -34,7 +34,7 @@ class SquareContextValidator(StackContextValidator[SquareSearchSearchContext]):
         bundle: SquareValidationBundle
 
     Provides:
-        -  def execute(candidate: Any) -> ValidationResult[SquareSearchContext]:
+        - def execute(candidate: Any) -> ValidationResult[SquareSearchContext]:
 
     Super Class:
         StackSearchContextChecker

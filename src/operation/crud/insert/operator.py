@@ -34,7 +34,7 @@ class Inserter(CrudOperator[T], ABC, Generic[T]):
         authorizer: InsertAuthorizer[T]
 
     Provides:
-        -  def execute(self, request: T) -> InsertionResult
+        - def execute(self, request: T) -> InsertionResult
 
     Super Class:
         CrudOperation

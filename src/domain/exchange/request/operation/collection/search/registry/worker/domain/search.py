@@ -8,6 +8,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from typing import Dict, List
 
 from transit.controller import WorkerRegistryController
@@ -29,7 +30,7 @@ class WorkerRegistryDomainSearch(Dict[str, Operator]):
     Attributes:
 
     Provides:
-        -  def execute(
+        - def execute(
                     domain: str,
                     registry: WorkerRegistry,
                     key_name_validator: RegistryEntryNameValidator,

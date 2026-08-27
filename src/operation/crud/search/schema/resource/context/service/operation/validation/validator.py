@@ -8,6 +8,7 @@ version: 1.0.0
 """
 
 from __future__ import annotations
+
 from typing import Any, cast
 
 
@@ -31,7 +32,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
     Attributes:
 
     Provides:
-        -  def validate(
+        - def validate(
                     rank: Any,
                     workers: SchemaContextIntegrityWorkers,
             ) -> BuildResult[SchemaContext]:

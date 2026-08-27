@@ -31,7 +31,7 @@ class KingReadinessAnalyzer(Analyzer):
     Attributes:
 
     Provides:
-        -  def execute(
+        - def execute(
                     subject: KingToken,
             ) -> AnalysisResult[TokenReadinessReport]
     Parent:

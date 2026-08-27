@@ -7,6 +7,7 @@ Created: 2025-09-11
 """
 
 from __future__ import annotations
+
 from typing import Any, List, cast
 
 from logic.square import (

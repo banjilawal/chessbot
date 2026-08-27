@@ -31,7 +31,7 @@ class ModelSearchContext(SearchContext[T], ABC, Generic[T]):
         max_activated_filters: int
 
     Provides:
-        -  def to_dict() -> Dict[str, Any]
+        - def to_dict() -> Dict[str, Any]
 
     Super Class:
         SearchContext

@@ -35,7 +35,7 @@ class NodeContextBuilder(Builder[NodeContext]):
      Attributes:
 
     Provides:
-        -  def execute(
+        - def execute(
                     owner: Team,
                     id: int = IdFactory,
                     formation: Formation,

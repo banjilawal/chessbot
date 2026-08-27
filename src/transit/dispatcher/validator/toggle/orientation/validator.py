@@ -8,6 +8,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from typing import Any, cast
 
 from selector import OrientationToggle
@@ -31,7 +32,7 @@ class OrientationSelectorValidationDispatcher(ModelValidationDispatcher[Orientat
         carrier_validator: CartesianToggleRegisterIntegrityChecker
 
     Properties:
-        -  def validate(
+        - def validate(
                     candidate: Any,
                     toolkit : OrientationOperandToolkit,
             ) -> ValidationResult[OrientationOperand]:

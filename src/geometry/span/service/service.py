@@ -8,6 +8,7 @@ version: 1.0.0
 """
 
 from __future__ import annotations
+
 from abc import abstractmethod
 
 from graph.domain.graph import Graph

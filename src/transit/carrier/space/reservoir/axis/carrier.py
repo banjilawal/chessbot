@@ -35,7 +35,7 @@ class AxisReservoirCarrier(SpaceReservoirCarrier[AxisReservoir]):
         entity: [AxisReservoir| AxisReservoirReservoirBlueprint | None]
 
     Provides:
-        -  def extract_blueprint() -> Optional[AxisReservoirBlueprint]
+        - def extract_blueprint() -> Optional[AxisReservoirBlueprint]
 
     Super Class:
         SpaceReservoirCarrier

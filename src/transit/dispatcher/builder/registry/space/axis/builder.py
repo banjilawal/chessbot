@@ -35,7 +35,7 @@ class AxisReservoirBuilder(SpaceReservoirBuildDispatcher[AxisReservoir]):
             builder_toolkit: Optional[AxisReservoirBuilderToolkit]
 
     Provides:
-        -  def execute(self, blueprint: AxisReservoirBlueprint) -> BuildResult[Axis]
+        - def execute(self, blueprint: AxisReservoirBlueprint) -> BuildResult[Axis]
 
      Super Class:
          ModelBuilder

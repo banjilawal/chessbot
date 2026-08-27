@@ -28,7 +28,7 @@ class NorthAxisBuilder(AxisBuilder[NorthAxis]):
     Attributes:
 
     Provides:
-        -  def execute(self, blueprint: NorthAxisBlueprint,) -> BuildResult[NorthAxis]
+        - def execute(self, blueprint: NorthAxisBlueprint,) -> BuildResult[NorthAxis]
 
     Super Class:
         AxisBuilder

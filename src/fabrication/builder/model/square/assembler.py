@@ -27,7 +27,7 @@ class SquareBuilder(ModelBuilder[Square]):
     Attributes:
 
     Provides:
-        -  def execute(self, blueprint: VectorBlueprint,) -> BuildResult[Vector]
+        - def execute(self, blueprint: VectorBlueprint,) -> BuildResult[Vector]
 
     Super Class:
         ModelBuilder

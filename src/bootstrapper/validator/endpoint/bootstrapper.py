@@ -30,7 +30,7 @@ class EndpointCertifierBootstrapper(ValidatorBootstrapper):
     Attributes:
 
     Provides:
-        -  def execute(
+        - def execute(
                     token: Token,
                     destination: Square,
                     toolkit: TokenEndpointRelationToolkit,

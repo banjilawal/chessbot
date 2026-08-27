@@ -8,6 +8,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from typing import Optional, cast
 
 from artifcat import InsertionState
@@ -31,9 +32,9 @@ class InsertionResult(CrudResult[bool]):
         is_failure: bool
 
     Provides:
-        -  def success(payload: T) -> InsertionResu[T]
-        -  def failure(exception: Exception) -> InsertionResu[T]
-        -  def timed_out(exception: Exception) -> InsertionResult[T]
+        - def success(payload: T) -> InsertionResu[T]
+        - def failure(exception: Exception) -> InsertionResu[T]
+        - def timed_out(exception: Exception) -> InsertionResult[T]
 
     Super Class:
         Result

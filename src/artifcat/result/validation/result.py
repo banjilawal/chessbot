@@ -7,6 +7,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import Result
@@ -33,9 +34,9 @@ class ValidationResult(Result[T], Generic[T]):
         is_failure: bool
 
     Provides:
-        -  def success(payload: T) -> DeletionResult[T]
-        -  def failure(exception: Exception) -> DeletionResult[T]
-        -  def timed_out(exception: Exception) -> ValidationResult[T]:
+        - def success(payload: T) -> DeletionResult[T]
+        - def failure(exception: Exception) -> DeletionResult[T]
+        - def timed_out(exception: Exception) -> ValidationResult[T]:
 
     Super Class:
         Result

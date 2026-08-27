@@ -32,7 +32,7 @@ class SquareConsistencyAuditor(ConsistencyAuditor[Square]):
     Attributes:
         root_certifier: SquareRootCertifier
     Provides:
-        -  def validate(candidate: Any, toolkit: SquareToolkit) -> ValidationResult[Square]:
+        - def validate(candidate: Any, toolkit: SquareToolkit) -> ValidationResult[Square]:
 
     Super Class:
         ConsistencyChecker

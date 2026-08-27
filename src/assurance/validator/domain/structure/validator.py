@@ -38,7 +38,7 @@ class StructureValidator(DomainObjectValidator[T], ABC, Generic[T]):
         bundle: StructureValidationBundle[T]
 
     Provides:
-        -  def execute(candidate: Any) -> ValidationResult[Blueprint[T]|T]:
+        - def execute(candidate: Any) -> ValidationResult[Blueprint[T]|T]:
 
     Super Class:
     """

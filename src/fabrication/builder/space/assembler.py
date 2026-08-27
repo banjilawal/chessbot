@@ -31,7 +31,7 @@ class SpaceBuilder(Builder, Generic[T]):
     Attributes:
 
     Provides:
-        -  def execute(self, blueprint: SpaceBlueprint,) -> BuildResult[Space]
+        - def execute(self, blueprint: SpaceBlueprint,) -> BuildResult[Space]
 
     Super Class:
         Builder

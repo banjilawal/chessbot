@@ -35,7 +35,7 @@ class ArenaBuilder(ModelBuilder[Arena]):
             builder_toolkit: Optional[ArenaBuilderToolkit]
 
     Provides:
-        -  def execute(self, blueprint: ArenaBlueprint) -> BuildResult[Arena]
+        - def execute(self, blueprint: ArenaBlueprint) -> BuildResult[Arena]
 
      Super Class:
          ModelBuilder

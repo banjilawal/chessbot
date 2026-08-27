@@ -30,7 +30,7 @@ class PrimingWorkerRegistration(Primer[Operator]):
     Attributes:
 
     Provides:
-        -  def execute(
+        - def execute(
                 worker: Operation,
                 registry: WorkerRegistry,
                 null_exception: OperationNullException,

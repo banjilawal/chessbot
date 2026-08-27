@@ -33,7 +33,7 @@ class Builder(ABC, Generic[T]):
         toolit: BuildRequest[T]
 
     Provides:
-        -  def execute(blueprint: Blueprint[T]) -> BuildResult[T]
+        - def execute(blueprint: Blueprint[T]) -> BuildResult[T]
 
     Super Class:
     """

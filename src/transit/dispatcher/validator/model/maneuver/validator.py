@@ -33,7 +33,7 @@ class ManeuverValidator:
     Attributes:
 
     Provides:
-        -  def validate(
+        - def validate(
                     candidate: Any,
                     integrity_checker: ManeuverIntegrityChecker,
             ) -> ValidationResult[Maneuver]:

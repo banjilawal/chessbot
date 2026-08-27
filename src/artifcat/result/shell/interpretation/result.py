@@ -35,10 +35,10 @@ class InterpretationResult(ShellResult[T], Generic[T]):
         is_nothing_to_interpret: bool
 
     Provides:
-        -  def success(payload: T) -> InterpretationResu[T]
-        -  def failure(exception: Exception) -> InterpretationResu[T]
-        -  def timed_out(exception: Exception) -> InterpretationResult
-        -  def nothing_to_interpret() -> InterpretationResult
+        - def success(payload: T) -> InterpretationResu[T]
+        - def failure(exception: Exception) -> InterpretationResu[T]
+        - def timed_out(exception: Exception) -> InterpretationResult
+        - def nothing_to_interpret() -> InterpretationResult
 
     Super Class:
         Result

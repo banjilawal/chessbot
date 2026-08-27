@@ -8,6 +8,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from enum import Enum
 
 from domain.model import Bishop, King, Knight, Pawn, Rank, Rook

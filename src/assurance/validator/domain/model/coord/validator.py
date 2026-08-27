@@ -8,6 +8,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from typing import Any, cast
 
 from err import CoordCheckerException
@@ -29,7 +30,7 @@ class CoordValidator(ModelValidator[Coord]):
     Attributes:
 
     Provides:
-        -  def validate(
+        - def validate(
                     candidate: Any,
                     bundle: CoordBlueprintToolkit,
             ) -> ValidationResult[Coord]:

@@ -35,7 +35,7 @@ class NodeBuilder(ModelBuilder[Node]):
             builder_toolkit: Optional[NodeBuilderToolkit]
 
     Provides:
-        -  def execute(self, blueprint: NodeBlueprint) -> BuildResult[Node]
+        - def execute(self, blueprint: NodeBlueprint) -> BuildResult[Node]
 
      Super Class:
          ModelBuilder

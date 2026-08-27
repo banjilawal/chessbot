@@ -8,6 +8,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from typing import Dict, List
 
 from operation import Operator
@@ -29,7 +30,7 @@ class WorkerRegistry:
         items: Dict[str, Dict[str, Operation]]
     
     Provides:
-        -  def domains(self) -> List[str]:
+        - def domains(self) -> List[str]:
     
     Super Class:
         Model

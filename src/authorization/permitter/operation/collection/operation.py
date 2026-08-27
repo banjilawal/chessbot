@@ -33,7 +33,7 @@ class CollectionOperation(Operator, ABC, Generic[T]):
         permitter: CollectionOperationPermitter[T]
         
     Provides:
-        -  def execute(request: CollectionRequest[T]) -> T
+        - def execute(request: CollectionRequest[T]) -> T
 
     Super Class:
         Operation

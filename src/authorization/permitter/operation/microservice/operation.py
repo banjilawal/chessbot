@@ -32,7 +32,7 @@ class MicroserviceOperation(Operator, ABC, Generic[T]):
         permitter: MicroservicePermitter[T]
 
     Provides:
-        -  def execute(request: MicroserviceRequest[T]) -> T
+        - def execute(request: MicroserviceRequest[T]) -> T
 
     Super Class:
         Operation

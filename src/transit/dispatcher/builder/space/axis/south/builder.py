@@ -33,7 +33,7 @@ class SouthAxisBuilder(AxisBuilder[SouthAxis]):
             builder_toolkit: Optional[SouthAxisBuilderToolkit]
 
     Provides:
-        -  def execute(origin: Vector) -> BuildResult[EastAxis]
+        - def execute(origin: Vector) -> BuildResult[EastAxis]
 
     Super Class:
         AxisBuilder

@@ -32,7 +32,7 @@ class ScalarProduct(Computation[CartesianToggle]):
             permitter: Optional[ScalarProductPermitter]
             
     Provides:
-        -  def execute(self, request: ScalarProductRequest) -> ComputationResult[CartesianToggle]
+        - def execute(self, request: ScalarProductRequest) -> ComputationResult[CartesianToggle]
 
     Super Class:
         Computation

@@ -33,7 +33,7 @@ class ValidationDispatcher(Dispatcher, ABC, Generic[T]):
         integrity_checker: IntegrityChecker[T]
     
     Provides:
-        -  def execute(candidate: Any) -> ValidationResult[T]
+        - def execute(candidate: Any) -> ValidationResult[T]
         
     super Class:
     """

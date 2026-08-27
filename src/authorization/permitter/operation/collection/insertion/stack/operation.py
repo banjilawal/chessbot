@@ -34,7 +34,7 @@ class StackPush(InsertOperation[StackService], ABC, Generic[T]):
         permitter: PushPermitter[T]
         
     Provides:
-        -  def execute(request: InsertionRequest[T]) -> InsertionResult
+        - def execute(request: InsertionRequest[T]) -> InsertionResult
 
     Super Class:
         InsertionOperation

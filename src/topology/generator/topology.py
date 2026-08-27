@@ -35,7 +35,7 @@ class VectorSequenceGenerator:
         math: Optional[MathToolkit]
 
     Provides:
-        -  def execute(specification: Recurrence) -> ComputationResult[VectorSet]
+        - def execute(specification: Recurrence) -> ComputationResult[VectorSet]
         
     Super Class:
         QuadrantMapFunction

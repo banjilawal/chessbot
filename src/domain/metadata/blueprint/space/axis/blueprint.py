@@ -8,6 +8,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from typing import Generic, List, Optional, Type, TypeVar, cast
 
 from domain.metadata.blueprint import SpaceBlueprint

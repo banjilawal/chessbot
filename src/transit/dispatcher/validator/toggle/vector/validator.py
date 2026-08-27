@@ -8,6 +8,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from typing import Any, cast
 
 from artifcat import ValidationResult
@@ -33,7 +34,7 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
         carrier_validator: CartesianToggleRegisterIntegrityChecker
 
     Properties:
-        -  def validate(
+        - def validate(
                     candidate: Any,
                     toolkit : CartesianToggleToolkit,
             ) -> ValidationResult[CartesianToggle]:

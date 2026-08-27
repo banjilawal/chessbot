@@ -30,7 +30,7 @@ class TokenDestinationCertifier:
     Attributes:
 
     Provides:
-        -  def validate(
+        - def validate(
                     token: Token,
                     square: Square,
                     carrier_validator: DestinationCertifierBootstrapper,

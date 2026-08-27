@@ -33,7 +33,7 @@ class Delete(CrudOperator[T], ABC, Generic[T]):
         authorizer: DeleteAuthorizer[T]
 
     Provides:
-        -  def execute(self, request: T) -> DeletionResult
+        - def execute(self, request: T) -> DeletionResult
 
     Super Class:
         CrudOperation

@@ -31,7 +31,7 @@ class CombatantReadinessAnalyzer(Analyzer):
     Attributes:
 
     Provides:
-        -  def execute(
+        - def execute(
                     subject: CombatantToken,
             ) -> AnalysisResult[TokenReadinessReport]
     Parent:

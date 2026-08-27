@@ -8,6 +8,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from dataclasses import dataclass
 from typing import Optional
 
@@ -35,10 +36,10 @@ class TokenReadinessReport(Report):
         is_not_deployed: bool
         
     Provides:
-        -  def free(token: Token) -> TokenFreedomReport:
-        -  def not_deployed(token: Token) -> TokenFreedomReport:
-        -  def captured(token: CombatantToken) -> TokenFreedomReport:
-        -  def checkmated(token: KingToken) -> TokenFreedomReport:
+        - def free(token: Token) -> TokenFreedomReport:
+        - def not_deployed(token: Token) -> TokenFreedomReport:
+        - def captured(token: CombatantToken) -> TokenFreedomReport:
+        - def checkmated(token: KingToken) -> TokenFreedomReport:
 
     Super Class:
         Report

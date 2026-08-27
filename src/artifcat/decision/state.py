@@ -1,7 +1,7 @@
-# src/artifact/report/decision/state/_state.py
+# src/artifact/decision/state/_state.py
 
 """
-Module: artfifact.report.decision.state._state
+Module: artfifact.decision.state._state
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

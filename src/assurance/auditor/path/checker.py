@@ -8,6 +8,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from typing import Any, cast
 
 from err import CircularPathException, PathConsistencyAuditorException
@@ -28,7 +29,7 @@ class PathConsistency:
     Attributes:
 
     Provides:
-        -  def consistencyChecker(
+        - def consistencyChecker(
                     cls,
                     candidate,
                     identity_service: IdentityService,

@@ -29,7 +29,7 @@ class RankBuilder(ModelBuilder[Rank]):
     Attributes:
 
     Provides:
-        -  def execute(self, blueprint: RankBlueprint,) -> BuildResult[Rank]
+        - def execute(self, blueprint: RankBlueprint,) -> BuildResult[Rank]
 
     Super Class:
         ModelBuilder

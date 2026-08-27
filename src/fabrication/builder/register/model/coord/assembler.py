@@ -31,7 +31,7 @@ class CoordRegisterBuilder(RegisterBuilder[CoordRegister]):
      Attributes:
 
     Provides:
-        -  def execute(blueprint: CoordRegisterBlueprint,) -> ValidationResult[CoordRegisterBlueprint]
+        - def execute(blueprint: CoordRegisterBlueprint,) -> ValidationResult[CoordRegisterBlueprint]
 
      Super Class:
         RegisterBuilder

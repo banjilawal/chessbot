@@ -29,7 +29,7 @@ class Operation(ABC, Generic[T]):
         permitter: OperationPermitter[T]
         
     Provides:
-        -  def execute(request: OperationRequest[T]) -> T
+        - def execute(request: OperationRequest[T]) -> T
 
     Super Class:
     """

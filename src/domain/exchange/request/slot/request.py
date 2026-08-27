@@ -30,7 +30,7 @@ class RankSlotRequest(Request):
         token_stack: TokenStackService
 
      Provides:
-        -  def request(id: int, rank: int, token_stack: TokenStackService) -> RankSlotRequest:
+        - def request(id: int, rank: int, token_stack: TokenStackService) -> RankSlotRequest:
 
      Super Class:
         Request

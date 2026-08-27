@@ -35,7 +35,7 @@ class TokenPopRequestAdjudicator(PopRequestAdjudicator):
         carrier_validator: PopPermitterPriming_Validator
           
     Provides:
-        -  def execute(self, subject: Any) -> ValidationResult:
+        - def execute(self, subject: Any) -> ValidationResult:
             
     Super Class:
     """

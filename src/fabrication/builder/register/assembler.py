@@ -31,7 +31,7 @@ class RegisterBuilder(Builder, Generic[T]):
     Attributes:
 
     Provides:
-        -  def execute(self, blueprint: RegisterBlueprint[T],) -> BuildResult[T]
+        - def execute(self, blueprint: RegisterBlueprint[T],) -> BuildResult[T]
 
     Super Class:
         Builder

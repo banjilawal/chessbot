@@ -30,7 +30,7 @@ class SquareRegisterBuilder(RegisterBuilder[SquareRegister]):
      Attributes:
 
     Provides:
-        -  def execute(
+        - def execute(
                     blueprint: SquareRegisterBlueprint,
             ) -> ValidationResult[SquareRegisterBlueprint]
 

@@ -30,7 +30,7 @@ class AddVectorNode(AddNode[VectorNode]):
         permitter: AddVectorNodePermitter
 
     Provides:
-        -  def execute(request: AddVectorNodeRequest) -> InsertionResult
+        - def execute(request: AddVectorNodeRequest) -> InsertionResult
 
     Super Class:
         AddChainNode

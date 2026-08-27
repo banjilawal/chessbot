@@ -27,7 +27,7 @@ class TokenBuilder(ModelBuilder[Token]):
     Attributes:
 
     Provides:
-        -  def execute(self, blueprint: TokenBlueprint,) -> BuildResult[Token]
+        - def execute(self, blueprint: TokenBlueprint,) -> BuildResult[Token]
 
     Super Class:
         ModelBuilder

@@ -29,7 +29,7 @@ class EndpointBuilder(Builder, Generic[T]):
     Attributes:
 
     Provides:
-         -  def execute(self,*args, **kwargs) -> BuildResult[VectorRegister]
+         - def execute(self,*args, **kwargs) -> BuildResult[VectorRegister]
          
      Super Class:
          Builder

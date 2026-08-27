@@ -34,7 +34,7 @@ class BoardTeamBinderValidator(ModelValidator[BoardBinder]):
     Attributes:
 
     Properties:
-        -  def validate(
+        - def validate(
                     candidate: Any,
                     integrityChecker : BoardTeamBinderToolSe,
             ) -> ValidationResult[BoardTeamBinder]:

@@ -35,7 +35,7 @@ class SnapshotBuilder(ModelBuilder[Snapshot]):
             builder_toolkit: Optional[SnapshotBuilderToolkit]
 
     Provides:
-        -  def execute(self, blueprint: SnapshotBlueprint) -> BuildResult[Snapshot]
+        - def execute(self, blueprint: SnapshotBlueprint) -> BuildResult[Snapshot]
 
      Super Class:
          ModelBuilder

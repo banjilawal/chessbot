@@ -8,6 +8,7 @@ version: 1.0.0
 """
 
 from __future__ import annotations
+
 from typing import List
 
 from system import LoggingLevelRouter, SearchMicroservice, SearchResult
@@ -33,7 +34,7 @@ class SchemaLookupService(SearchMicroservice[Schema]):
         resource_host: SchemaSearchResourceHost
 
     Provides:
-        -  def search(context: SchemaQuery) -> SearchResult[List[Schema]]
+        - def search(context: SchemaQuery) -> SearchResult[List[Schema]]
 
     Super Class:
         SearchMicroservice

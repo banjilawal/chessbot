@@ -32,7 +32,7 @@ class PromotionRankAnalyzer(Analyzer):
     Attributes:
 
     Properties:
-        -  def analyze(
+        - def analyze(
                     new_rank: Rank,
                     rank_validator: RankValidator,
             ) -> AnalysisResult[PromotionLevelReport]:

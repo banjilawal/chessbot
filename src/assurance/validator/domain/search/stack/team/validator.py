@@ -34,7 +34,7 @@ class TeamContextValidator(StackContextValidator[TeamSearchSearchContext]):
         bundle: TeamValidationBundle
 
     Provides:
-        -  def execute(candidate: Any) -> ValidationResult[TeamSearchContext]:
+        - def execute(candidate: Any) -> ValidationResult[TeamSearchContext]:
 
     Super Class:
         StackSearchContextChecker

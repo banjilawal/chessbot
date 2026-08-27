@@ -29,7 +29,7 @@ class ManeuverRequest(Request):
          destination: Square
 
      Provides:
-        -  def request(id: int, token: Token, destination: Square) -> ManeuverRequest:
+        - def request(id: int, token: Token, destination: Square) -> ManeuverRequest:
 
      Super Class:
         Request

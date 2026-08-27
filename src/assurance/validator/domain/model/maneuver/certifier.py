@@ -32,7 +32,7 @@ class ManeuverValidator(ModelValidator[Maneuver]):
     Attributes:
 
     Provides:
-        -  def validate(
+        - def validate(
                     candidate: Any,
                     bundle: ManeuverToolkit,
             ) -> ValidationResult[Maneuver]:

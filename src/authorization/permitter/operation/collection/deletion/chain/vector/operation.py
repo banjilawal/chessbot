@@ -30,7 +30,7 @@ class RemoveVectorNode(RemoveNode[VectorNode]):
         permitter: RemoveVectorNodePermitter
 
     Provides:
-        -  def execute(request: RemoveVectorNodeRequest) -> DeletionResult
+        - def execute(request: RemoveVectorNodeRequest) -> DeletionResult
 
     Super Class:
         RemoveNode

@@ -7,6 +7,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from typing import Any
 
 
@@ -25,7 +26,7 @@ class VectorTransform(Computation[CartesianToggle]):
             permitter: Optional[VectorTransformPermitter]
             
     Provides:
-        -  def execute(self, request: VectorTransformRequest) -> ComputationResult[CartesianToggle]
+        - def execute(self, request: VectorTransformRequest) -> ComputationResult[CartesianToggle]
 
     Super Class:
         Computation

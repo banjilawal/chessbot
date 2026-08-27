@@ -29,7 +29,7 @@ class PrimingServiceRegistration(Primer[Microservice]):
     Attributes:
 
     Provides:
-        -  def execute(
+        - def execute(
                 service: Microservice,
                 registry: ServiceRegistry,
                 null_exception: MicroserviceNullException,

@@ -34,7 +34,7 @@ class VectorRegisterBuilder(RegisterBuildDispatcher[VectorRegister]):
             builder_toolkit: Optional[VectorRegisterBuilderToolkit]
 
     Provides:
-        -  def execute(self, blueprint: RegisterVectorRegisteBlueprint) -> BuildResult[Register]
+        - def execute(self, blueprint: RegisterVectorRegisteBlueprint) -> BuildResult[Register]
 
      Super Class:
          Builder

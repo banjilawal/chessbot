@@ -35,7 +35,7 @@ class SpaceCarrier(EntityCarrier, Generic[T], ABC):
         entity: [Space[T]| SpaceBlueprint[T] | None]
 
     Provides:
-        -  def extract_blueprint() -> Optional[SpaceBlueprint[T]]
+        - def extract_blueprint() -> Optional[SpaceBlueprint[T]]
 
     Super Class:
         EntityCarrier

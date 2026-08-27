@@ -33,7 +33,7 @@ class CollectionDeletion(CrudOperator[DeletionResult], ABC, Generic[T]):
         permitter: DeletionPermitter[T]
         
     Provides:
-        -  def execute(request: DeletionRequest[T]) -> DeletionResult
+        - def execute(request: DeletionRequest[T]) -> DeletionResult
 
     Super Class:
         CollectionOperation

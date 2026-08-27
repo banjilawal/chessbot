@@ -36,7 +36,7 @@ class BuildDispatcher(Dispatcher, ABC, Generic[T]):
         builder_toolkit: BuilderToolkit[T]
     
     Provides:
-        -  def execute(self, blueprint: Blueprint[T]) -> BuildResult[T]
+        - def execute(self, blueprint: Blueprint[T]) -> BuildResult[T]
     
     Super Class:
     """

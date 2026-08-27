@@ -30,7 +30,7 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
     Attributes:
 
     Provides:
-        -  def validate(
+        - def validate(
                 rank: Any
                 workers: SchemaQueryIntegrityWorkers
             ) -> ValidationResult[SchemaQuery]:

@@ -38,14 +38,14 @@ class CollisionReport(Report):
         
     Provides:
         
-        -  def collision_occurred(
+        - def collision_occurred(
                     colliding_variable: str,
                     collision_value: Any,
                     collider: Any,
                     exception: Exception
             ) -> CollisionReport
             
-        -  def no_collision_occurred(
+        - def no_collision_occurred(
                     colliding_variable: str,
                     collision_value: Any,
                     collider: Any,

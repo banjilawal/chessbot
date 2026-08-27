@@ -27,7 +27,7 @@ class VectorRegisterBuilder(RegisterBuilder[VectorRegister]):
     Attributes:
 
     Provides:
-        -  def execute(self, blueprint: VectorRegisterBlueprint,) -> BuildResult[VectorRegister]
+        - def execute(self, blueprint: VectorRegisterBlueprint,) -> BuildResult[VectorRegister]
 
     Super Class:
         RegisterBuilder

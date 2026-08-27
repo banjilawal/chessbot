@@ -33,7 +33,7 @@ class AddNode(InsertOperation[Chain], ABC, Generic[T]):
         permitter: AddNodePermitter[T]
 
     Provides:
-        -  def execute(request: AddNodeRequest) -> InsertionResult
+        - def execute(request: AddNodeRequest) -> InsertionResult
 
     Super Class:
         InsertionOperation

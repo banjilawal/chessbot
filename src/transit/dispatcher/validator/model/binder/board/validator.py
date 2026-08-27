@@ -8,6 +8,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from typing import Any, Dict, cast
 
 from err import BoardTeamBinderNullException, BoardTeamBinderValidatorException
@@ -32,7 +33,7 @@ class BoardBinderValidator(ModelValidator[BoardBinder]):
     Attributes:
 
     Properties:
-        -  def validate(
+        - def validate(
                     candidate: Any,
                     integrityChecker : BoardTeamBinderIntegrityChecker,
             ) -> ValidationResult[BoardTeamBinder]:

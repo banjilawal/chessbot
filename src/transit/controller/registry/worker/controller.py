@@ -8,6 +8,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from typing import Dict, List
 
 from transit.controller import Controller
@@ -35,10 +36,10 @@ class WorkerRegistryController(Controller[WorkerRegistry]):
         toolkit: WorkerRegistryToolkit
     
     Provides:
-        -  def find_worker(domain: str, operation_name: str) -> SearchResult[List[Operation]]:
-        -  def domain_workers(domain: str) -> SearchResult[List[dict[str, Operation]]]:
+        - def find_worker(domain: str, operation_name: str) -> SearchResult[List[Operation]]:
+        - def domain_workers(domain: str) -> SearchResult[List[dict[str, Operation]]]:
         
-        -  def register_worker(
+        - def register_worker(
                     worker: Operation,
                     null_exception: OperationNullException,
             ) -> InsertionResult:

@@ -8,6 +8,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from typing import Optional
 
 from err import ExcessCartesianToggleFlagsException, VectorContextBuilderException
@@ -30,7 +31,7 @@ class VectorContextBuilder(Builder[CartesianToggle]):
     Attributes:
 
     Provides:
-        -  def build(
+        - def build(
                     coord: Optional[Coord] = None,
                     vector: Optional[Vector] = None,
                     toolkit : VectorContextToolkit

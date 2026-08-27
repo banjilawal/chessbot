@@ -28,7 +28,7 @@ class NorthwestQuadrantBuilder(QuadrantBuilder[NorthwestQuadrant]):
     Attributes:
 
     Provides:
-        -  def execute(self, blueprint: NorthwestQuadrantBlueprint,) -> BuildResult[NorthwestQuadrant]
+        - def execute(self, blueprint: NorthwestQuadrantBlueprint,) -> BuildResult[NorthwestQuadrant]
 
     Super Class:
         QuadrantBuilder

@@ -34,7 +34,7 @@ class InsertionOperation(Operator, ABC, Generic[T]):
         authorizer: CollectionOperationAuthorizer[T]
         
     Provides:
-        -  def execute(request: CollectionRequest[T]) -> T
+        - def execute(request: CollectionRequest[T]) -> T
 
     Super Class:
         Operation

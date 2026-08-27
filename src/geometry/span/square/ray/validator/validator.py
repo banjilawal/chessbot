@@ -8,6 +8,7 @@ version: 1.0.0
 """
 
 from __future__ import annotations
+
 from typing import Any, List, cast
 
 from geometry.square import SquareValidator

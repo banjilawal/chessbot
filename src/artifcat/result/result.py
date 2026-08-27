@@ -31,8 +31,8 @@ class Result(Generic[T]):
         is_failure: bool
 
     Provides:
-        -  def success(payload: T) -> Result
-        -  def failure(exception: Exception) -> Result
+        - def success(payload: T) -> Result
+        - def failure(exception: Exception) -> Result
         
     Super Class:
     """

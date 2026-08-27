@@ -8,6 +8,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from dataclasses import dataclass
 
 from sensor.analyzer import Coord
@@ -34,7 +35,7 @@ class CoordToolkit(AnalyzerBootstrapperToolkit[Coord]):
         priming_validator: PrimingValidator
 
     Provides:
-        -  def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
+        - def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
         
     Super Class:
         Toolkit

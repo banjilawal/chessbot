@@ -7,6 +7,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from typing import Generic, Optional, TypeVar, cast
 
 from domain.model import Attack, Maneuver
@@ -34,9 +35,9 @@ class TurnResult(Result[T], Generic[T]):
         is_failure: bool
 
     Provides:
-        -  def success(payload: T) -> DeletionResult[T]
-        -  def failure(exception: Exception) -> DeletionResult[T]
-        -  def timed_out(exception: Exception) -> ManeuverResult[T]:
+        - def success(payload: T) -> DeletionResult[T]
+        - def failure(exception: Exception) -> DeletionResult[T]
+        - def timed_out(exception: Exception) -> ManeuverResult[T]:
 
     Super Class:
         Result

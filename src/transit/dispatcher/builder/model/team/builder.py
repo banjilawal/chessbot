@@ -35,7 +35,7 @@ class TeamBuilder(ModelBuilder[Team]):
             builder_toolkit: Optional[TeamBuilderToolkit]
 
     Provides:
-        -  def execute(self, blueprint: TeamBlueprint) -> BuildResult[Team]
+        - def execute(self, blueprint: TeamBlueprint) -> BuildResult[Team]
 
      Super Class:
          ModelBuilder

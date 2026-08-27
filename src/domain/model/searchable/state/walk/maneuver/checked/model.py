@@ -8,6 +8,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from typing import Optional
 
 from domain.model import KingToken, Maneuver, Square, Token

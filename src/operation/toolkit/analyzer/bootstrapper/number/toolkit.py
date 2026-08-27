@@ -7,6 +7,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from dataclasses import dataclass
 
 from operation.toolkit.analyzer.bootstrapper.number.toolkit import AnalyzerBootstrapperToolkit

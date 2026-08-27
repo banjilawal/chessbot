@@ -35,7 +35,7 @@ class SpaceReservoirCarrier(EntityCarrier, Generic[T], ABC):
         entity: [SpaceReservoir[T]| SpaceReservoirReservoirBlueprint[T] | None]
 
     Provides:
-        -  def extract_blueprint() -> Optional[SpaceReservoirBlueprint[T]]
+        - def extract_blueprint() -> Optional[SpaceReservoirBlueprint[T]]
 
     Super Class:
         EntityCarrier

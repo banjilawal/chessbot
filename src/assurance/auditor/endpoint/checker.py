@@ -31,7 +31,7 @@ class ManeuverEndpointConsistency:
     Attributes:
 
     Provides:
-        -  def execute(
+        - def execute(
                     token: Token,
                     destination: Square,
                     toolkit: TokenEndpointRelationToolkit,

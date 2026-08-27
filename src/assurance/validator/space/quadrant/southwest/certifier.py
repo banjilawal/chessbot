@@ -35,7 +35,7 @@ class SouthwestQuadrantRootChecker(QuadrantRootChecker[SouthwestQuadrantBlueprin
         bundle: SouthwestQuadrantToolkit
 
     Provides:
-        -  def execute(self, candidate: Any) -> ValidationResult[SouthwestQuadrant|SouthwestQuadrantBlueprint]:
+        - def execute(self, candidate: Any) -> ValidationResult[SouthwestQuadrant|SouthwestQuadrantBlueprint]:
 
     Super Class:
         RootChecker

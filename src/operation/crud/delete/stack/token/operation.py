@@ -32,7 +32,7 @@ class TokenStackPop(StackPop[Token]):
         permitter: TokenStackPopPermitter
         
     Provides:
-        -  def execute(request: TokenStackPopPermitter) -> DeletionResult
+        - def execute(request: TokenStackPopPermitter) -> DeletionResult
 
     Super Class:
         StackPop

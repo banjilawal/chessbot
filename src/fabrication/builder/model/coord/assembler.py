@@ -26,7 +26,7 @@ class CoordBuilder(ModelBuilder[Coord]):
     Attributes:
 
     Provides:
-        -  def execute(self, blueprint: CoordBlueprint,) -> BuildResult[Coord]
+        - def execute(self, blueprint: CoordBlueprint,) -> BuildResult[Coord]
 
     Super Class:
         ModelBuilder

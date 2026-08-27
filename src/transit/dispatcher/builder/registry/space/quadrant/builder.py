@@ -35,7 +35,7 @@ class QuadrantReservoirBuilder(SpaceReservoirBuildDispatcher[QuadrantReservoir])
             builder_toolkit: Optional[QuadrantReservoirBuilderToolkit]
 
     Provides:
-        -  def execute(self, blueprint: QuadrantReservoirBlueprint) -> BuildResult[Quadrant]
+        - def execute(self, blueprint: QuadrantReservoirBlueprint) -> BuildResult[Quadrant]
 
      Super Class:
          ModelBuilder

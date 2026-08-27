@@ -34,10 +34,10 @@ class RelationReport(Report):
         fully_exists: bool
 
     Provides:
-        -  def no_relation(cls) -> RelationReport:
-        -  def registration_missing(cls, satellite: Any) -> RelationReport:
-        -  def stale_link(cls, primary: Any) -> RelationReport:
-        -  def bidirectional(cls, primary: Any, satellite: Any) -> RelationReport
+        - def no_relation(cls) -> RelationReport:
+        - def registration_missing(cls, satellite: Any) -> RelationReport:
+        - def stale_link(cls, primary: Any) -> RelationReport:
+        - def bidirectional(cls, primary: Any, satellite: Any) -> RelationReport
 
     Super Class:
         Report

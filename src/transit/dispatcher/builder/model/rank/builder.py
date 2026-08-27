@@ -35,7 +35,7 @@ class RankBuilder(ModelBuilder[Rank]):
             builder_toolkit: Optional[RankBuilderToolkit]
 
     Provides:
-        -  def execute(self, blueprint: RankBlueprint) -> BuildResult[Rank]
+        - def execute(self, blueprint: RankBlueprint) -> BuildResult[Rank]
 
      Super Class:
          ModelBuilder

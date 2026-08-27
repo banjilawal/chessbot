@@ -35,7 +35,7 @@ class QuadrantReservoirCarrier(SpaceReservoirCarrier[QuadrantReservoir]):
         entity: [QuadrantReservoir| QuadrantReservoirReservoirBlueprint | None]
 
     Provides:
-        -  def extract_blueprint() -> Optional[QuadrantReservoirBlueprint]
+        - def extract_blueprint() -> Optional[QuadrantReservoirBlueprint]
 
     Super Class:
         SpaceReservoirCarrier

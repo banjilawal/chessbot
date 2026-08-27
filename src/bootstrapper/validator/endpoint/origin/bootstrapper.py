@@ -34,7 +34,7 @@ class OriginCertifierBootstrapper(ValidatorBootstrapper):
     Attributes:
 
     Provides:
-        -  def validate(
+        - def validate(
                     token: Token,
                     origin: Square,
                     toolkit: TokenEndpointRelationToolkit,

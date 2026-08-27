@@ -33,7 +33,7 @@ class CollectionSearch(CrudOperator[SearchResult], ABC, Generic[T]):
         permitter: SearchPermitter[T]
         
     Provides:
-        -  def execute(request: SearchRequest[T]) -> SearchResult
+        - def execute(request: SearchRequest[T]) -> SearchResult
 
     Super Class:
         CollectionOperation

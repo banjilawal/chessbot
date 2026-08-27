@@ -8,6 +8,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from copy import deepcopy
 
 from err import AttackDestinationEmptyException, AttackEventNullException, AttackException

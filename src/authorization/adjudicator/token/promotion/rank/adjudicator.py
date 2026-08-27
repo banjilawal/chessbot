@@ -32,7 +32,7 @@ class PromotionLevelRequestAdjudicator(RequestAdjudicator):
         validator: RankValidator
           
     Provides:
-        -  def execute(self, subject: Any) -> ValidationResult:
+        - def execute(self, subject: Any) -> ValidationResult:
             
     Super Class:
     """

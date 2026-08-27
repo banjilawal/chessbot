@@ -8,6 +8,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from typing import Dict
 
 from microservice import Microservice
@@ -29,7 +30,7 @@ class ServiceRegistry:
         items: Dict[str, Dict[str, Microservice]]
     
     Provides:
-        -  def domains(self) -> List[str]:
+        - def domains(self) -> List[str]:
     
     Super Class:
         Model

@@ -35,7 +35,7 @@ class EdgeBuilder(ModelBuilder[Edge]):
             builder_toolkit: Optional[EdgeBuilderToolkit]
 
     Provides:
-        -  def execute(self, blueprint: EdgeBlueprint) -> BuildResult[Edge]
+        - def execute(self, blueprint: EdgeBlueprint) -> BuildResult[Edge]
 
      Super Class:
          ModelBuilder

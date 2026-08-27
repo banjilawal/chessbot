@@ -8,6 +8,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from computation import sqrt
 from typing import Optional, cast
 
@@ -32,7 +33,7 @@ class EuclideanDistance(Computation[Scalar]):
             permitter: Optional[EuclideanDistancePermitter]
             
     Provides:
-        -  def execute(self, request: EuclideanDistanceRequest) -> ComputationResult[Scalar]
+        - def execute(self, request: EuclideanDistanceRequest) -> ComputationResult[Scalar]
 
     Super Class:
         Computation

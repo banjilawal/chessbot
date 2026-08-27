@@ -8,6 +8,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from typing import Optional
 
 from logic.board import Board, BoardService
@@ -35,7 +36,7 @@ class EdgeContextToolkit(Toolkit[EdgeContext]):
      Attributes:
 
     Provides:
-        -  def execute(
+        - def execute(
                     owner: Team,
                     id: int = IdFactory,
                     formation: Formation,

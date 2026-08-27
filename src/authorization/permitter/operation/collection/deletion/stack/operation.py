@@ -36,7 +36,7 @@ class StackPop(CollectionDeletion[StackService], ABC, Generic[T]):
         permitter: PopStackPermitter[T]
         
     Provides:
-        -  def execute(request: PopStackRequest[T]) -> DeletionResult[T]
+        - def execute(request: PopStackRequest[T]) -> DeletionResult[T]
 
     Super Class:
         CollectionDeletion

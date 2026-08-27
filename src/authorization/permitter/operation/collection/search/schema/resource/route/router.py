@@ -8,6 +8,7 @@ version: 1.0.0
 """
 
 from __future__ import annotations
+
 from typing import List, Type
 
 from system import GameColor, LoggingLevelRouter, SearchResult, SearchRouter

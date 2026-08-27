@@ -31,7 +31,7 @@ class NumberRegisterBuilder(RegisterBuilder[NumberRegister]):
      Attributes:
 
     Provides:
-        -  def execute(
+        - def execute(
                     blueprint: NumberRegisterBlueprint,
             ) -> ValidationResult[NumberRegisterBlueprint]
 

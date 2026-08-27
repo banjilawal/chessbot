@@ -33,7 +33,7 @@ class SouthwestQuadrantBuilder(QuadrantBuilder[SouthwestQuadrant]):
             builder_toolkit: Optional[SouthwestQuadrantBuilderToolkit]
 
     Provides:
-        -  def execute(origin: Vector) -> BuildResult[EastAxis]
+        - def execute(origin: Vector) -> BuildResult[EastAxis]
 
     Super Class:
         QuadrantBuilder

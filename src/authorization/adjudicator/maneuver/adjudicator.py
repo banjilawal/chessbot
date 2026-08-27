@@ -38,7 +38,7 @@ class ManeuverRequestAdjudicator(RequestAdjudicator[ManeuverRequest]):
     Attributes:
         utility: Optional[TokenManeuverUtility]
     Provides:
-        -  def execute(self, candidate: Any) -> ManeuverApprovalReport:
+        - def execute(self, candidate: Any) -> ManeuverApprovalReport:
 
     Super Class:
         Adjudicator

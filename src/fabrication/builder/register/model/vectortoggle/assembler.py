@@ -29,7 +29,7 @@ class CartesianToggleRegisterBuilder(
     Attributes:
 
     Provides:
-        -  def execute(
+        - def execute(
                     blueprint: CartesianToggleRegisterBlueprint,
             ) -> BuildResult[CartesianToggleRegister]
 

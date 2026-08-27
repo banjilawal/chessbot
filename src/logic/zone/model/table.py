@@ -29,7 +29,7 @@ class ZoneTable:
         schema: Schema
 
     Provides:
-        -  def opposite(zone: Zone) -> Zone:
+        - def opposite(zone: Zone) -> Zone:
 
     Super Class:
         Enum

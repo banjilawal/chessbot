@@ -35,7 +35,7 @@ class TeamToolkit(AnalyzerBootstrapperToolkit[Team]):
         priming_validator: PrimingValidator
 
     Provides:
-        -  def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
+        - def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
 
     Super Class:
         Toolkit

@@ -33,7 +33,7 @@ class SearchContextValidator(Validator, ABC, Generic[T]):
         bundle: ValidationBundle[T]
 
     Provides:
-        -  def execute(candidate: Any) -> ValidationResult[T]:
+        - def execute(candidate: Any) -> ValidationResult[T]:
 
     Super Class:
         IntegrityChecker

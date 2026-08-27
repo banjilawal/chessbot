@@ -28,7 +28,7 @@ class IdentityRegisterBuilder(RegisterBuilder[IdentityRegister]):
     Attributes:
 
     Provides:
-        -  def execute(self, blueprint: IdentityRegisterBlueprint,) -> BuildResult[IdentityRegister]
+        - def execute(self, blueprint: IdentityRegisterBlueprint,) -> BuildResult[IdentityRegister]
 
     Super Class:
         RegisterBuilder

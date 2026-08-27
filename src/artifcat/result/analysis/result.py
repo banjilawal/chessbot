@@ -36,11 +36,11 @@ class AnalysisResult(Result[Report]):
         is_failure: bool
 
     Provides:
-        -  def completed(cls, payload: Report) -> AnalysisResult
-        -  def aborted(cls, exception: Exception) -> AnalysisResult
-        -  def timed_out(cls, exception: Exception) -> AnalysisResult
-        -  def failure(cls, exception: Exception) -> AnalysisResult
-        -  def success(payload: Report) -> AnalysisResult
+        - def completed(cls, payload: Report) -> AnalysisResult
+        - def aborted(cls, exception: Exception) -> AnalysisResult
+        - def timed_out(cls, exception: Exception) -> AnalysisResult
+        - def failure(cls, exception: Exception) -> AnalysisResult
+        - def success(payload: Report) -> AnalysisResult
 
     Super Class:
         Result

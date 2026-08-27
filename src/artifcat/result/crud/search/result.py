@@ -7,6 +7,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from typing import Generic, List, Optional, TypeVar, cast
 
 from domain import DomainDataObject
@@ -34,10 +35,10 @@ class SearchResult(CrudResult[T], Generic[T]):
         is_empty: bool
 
     Provides:
-        -  def empty() -> SearchResult[T]:
-        -  def success(payload: T) -> Result[T]
-        -  def failure(exception: Exception) -> Result[T]
-        -  def timed_out(cls, exception: Exception) -> SearchResult[T]:
+        - def empty() -> SearchResult[T]:
+        - def success(payload: T) -> Result[T]
+        - def failure(exception: Exception) -> Result[T]
+        - def timed_out(cls, exception: Exception) -> SearchResult[T]:
 
     Super Class:
         Result

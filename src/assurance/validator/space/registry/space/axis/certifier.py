@@ -36,7 +36,7 @@ class AxisReservoirRootChecker(SpaceReservoirChecker[AxisReservoir]):
         bundle: SpaceToolkit
 
     Provides:
-        -  def execute(candidate: Any, bundle: SpaceToolkit,) -> ValidationResult[Blueprint[T]]:
+        - def execute(candidate: Any, bundle: SpaceToolkit,) -> ValidationResult[Blueprint[T]]:
 
     Super Class:
     """

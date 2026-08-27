@@ -31,7 +31,7 @@ class ModelBuilder(Builder, Generic[T]):
     Attributes:
 
     Provides:
-        -  def execute(self, blueprint: ModelBlueprint,) -> BuildResult[Model]
+        - def execute(self, blueprint: ModelBlueprint,) -> BuildResult[Model]
 
     Super Class:
         Builder

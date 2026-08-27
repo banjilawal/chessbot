@@ -35,7 +35,7 @@ class SouthAxisEndpointBuilder:
         vector_validator: Optional[VectorValidator]
 
     Provides:
-        -  def execute() -> BuildResult[VectorRegister]
+        - def execute() -> BuildResult[VectorRegister]
 
     Super Class:
     """

@@ -32,7 +32,7 @@ class AxisBuilder(SpaceBuilder, Generic[T]):
     Attributes:
 
     Provides:
-        -  def execute(self, blueprint: AxisBlueprint,) -> BuildResult[Axis]
+        - def execute(self, blueprint: AxisBlueprint,) -> BuildResult[Axis]
 
     Super Class:
         Builder

@@ -31,7 +31,7 @@ class SquareRegisterBuilder(RegisterBuildDispatcher[SquareRegister]):
             builder_toolkit: [RegisterBuilderToolkit[T]]
 
     Provides:
-        -  def execute(self, blueprint: RegisterBlueprint[T]) -> BuildResult[Register]
+        - def execute(self, blueprint: RegisterBlueprint[T]) -> BuildResult[Register]
 
      Super Class:
          Builder

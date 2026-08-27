@@ -33,7 +33,7 @@ class CollectionInsertion(CrudOperator[InsertionResult], ABC, Generic[T]):
         permitter: CollectionInsertionPermitter[T]
         
     Provides:
-        -  def execute(request: InsertionRequest[T]) -> InsertionResult
+        - def execute(request: InsertionRequest[T]) -> InsertionResult
 
     Super Class:
         CollectionOperation

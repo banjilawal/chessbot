@@ -30,7 +30,7 @@ class ConsistencyAuditor(ABC, Generic[T]):
     Attributes:
     
     Provides:
-        -  def execute(item: T) -> ValidationResult[T]:
+        - def execute(item: T) -> ValidationResult[T]:
         
     super Class:
     """

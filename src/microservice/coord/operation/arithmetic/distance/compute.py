@@ -26,7 +26,7 @@ class EuclideanDistance:
     Attributes:
         
     Properties:
-        -  def compute(
+        - def compute(
                     u: Coord,
                     v: Coord,
                     coord_service: CoordService,

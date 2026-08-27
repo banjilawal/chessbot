@@ -35,7 +35,7 @@ class SearchRouter(Router, Generic[T]):
     Attributes:
 
     Provides:
-        -  def route(
+        - def route(
                     query: Query[T],
                     query_validator: Validator[Query[T]]
             ) -> SearchResult[List[T]]

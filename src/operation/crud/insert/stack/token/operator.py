@@ -32,7 +32,7 @@ class TokenPusher(StackPop[Token]):
         permitter: TokenStackPushPermitter
         
     Provides:
-        -  def execute(request: TokenStackPushPermitter) -> InsertionResult
+        - def execute(request: TokenStackPushPermitter) -> InsertionResult
 
     Super Class:
         StackPush

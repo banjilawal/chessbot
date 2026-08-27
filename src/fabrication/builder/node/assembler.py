@@ -27,7 +27,7 @@ class NodeTreeBuilder(Builder[SquareNode]):
     Attributes:
 
     Provides:
-        -  def execute(blueprint: Blueprint[T]) -> BuildResult[T]
+        - def execute(blueprint: Blueprint[T]) -> BuildResult[T]
 
     Super Class:
     """

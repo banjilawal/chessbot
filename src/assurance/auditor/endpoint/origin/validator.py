@@ -31,7 +31,7 @@ class TokenOriginCertifier:
     Attributes:
 
     Provides:
-        -  def validate(
+        - def validate(
                     token: Token,
                     origin: Square,
                     toolkit: TokenEndpointRelationToolkit

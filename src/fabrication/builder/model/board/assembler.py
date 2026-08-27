@@ -28,7 +28,7 @@ class BoardBuilder(ModelBuilder[Board]):
     Attributes:
 
     Provides:
-        -  def execute(self, blueprint: BoardBlueprint,) -> BuildResult[Board]
+        - def execute(self, blueprint: BoardBlueprint,) -> BuildResult[Board]
 
     Super Class:
         ModelBuilder

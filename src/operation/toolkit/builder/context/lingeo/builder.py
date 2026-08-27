@@ -8,6 +8,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from typing import Optional
 
 from err import ExcessCartesianToggleFlagsException, VectorContextToolkitException
@@ -30,7 +31,7 @@ class VectorContextToolkit(Toolkit[CartesianToggle]):
     Attributes:
 
     Provides:
-        -  def __init__(
+        - def __init__(
                     coord: Optional[Coord] = None,
                     vector: Optional[Vector] = None,
                     toolkit : VectorContextToolkit

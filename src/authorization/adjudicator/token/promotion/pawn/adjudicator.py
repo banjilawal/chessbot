@@ -38,7 +38,7 @@ class PromotionPawnRequestAdjudicator(TokenRequestAdjudicator[PawnPromoter]):
         readiness_analyzer: TokenReadinessAnalyzer
           
     Provides:
-        -  def execute(self, subject: Any) -> ValidationResult:
+        - def execute(self, subject: Any) -> ValidationResult:
             
     Super Class:
         TokenAdjudicator

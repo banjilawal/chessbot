@@ -35,7 +35,7 @@ class BoardBuilder(ModelBuilder[Board]):
             builder_toolkit: Optional[BoardBuilderToolkit]
 
     Provides:
-        -  def execute(self, blueprint: BoardBlueprint) -> BuildResult[Board]
+        - def execute(self, blueprint: BoardBlueprint) -> BuildResult[Board]
 
      Super Class:
          ModelBuilder

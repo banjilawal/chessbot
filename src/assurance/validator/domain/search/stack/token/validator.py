@@ -36,7 +36,7 @@ class TokenContextValidator(StackContextValidator[TokenSearchSearchContext]):
         bundle: TokenValidationBundle
 
     Provides:
-        -  def execute(candidate: Any) -> ValidationResult[TokenSearchContext]:
+        - def execute(candidate: Any) -> ValidationResult[TokenSearchContext]:
 
     Super Class:
         StackSearchContextChecker

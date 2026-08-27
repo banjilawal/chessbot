@@ -33,7 +33,7 @@ class Search(CrudOperator[T], ABC, Generic[T]):
         authorizer: SearchAuthorizer[T]
 
     Provides:
-        -  def execute(self, request: T) -> SearchionResult
+        - def execute(self, request: T) -> SearchionResult
 
     Super Class:
         CrudOperation

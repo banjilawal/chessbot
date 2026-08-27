@@ -8,6 +8,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from typing import Any, Optional, cast
 
 from err import CircularPathException, PathCheckerException
@@ -30,7 +31,7 @@ class PathRootValidator(ModelValidator[Path]):
         bundle: Optional[PathToolkit]
         
     Provides:
-        -  def execute(candidate: Any,) -> ValidationResult[Path]
+        - def execute(candidate: Any,) -> ValidationResult[Path]
 
     Super Class:
         ModelChecker

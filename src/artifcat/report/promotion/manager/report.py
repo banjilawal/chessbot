@@ -8,6 +8,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from dataclasses import dataclass
 from typing import Optional
 
@@ -35,8 +36,8 @@ class PromotionApprovalManagerReport(Report):
         is_denied: bool
         
     Provides:
-        -  def approve_promotion(cls, pawn: PawnToken) -> PromotionApprovalManagerReport:
-        -  def deny_promotion(cls, exception: Exception) -> PromotionApprovalManagerReport:
+        - def approve_promotion(cls, pawn: PawnToken) -> PromotionApprovalManagerReport:
+        - def deny_promotion(cls, exception: Exception) -> PromotionApprovalManagerReport:
     Super Class:
         Report
     """

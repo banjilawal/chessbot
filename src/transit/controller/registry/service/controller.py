@@ -8,6 +8,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from typing import List
 
 from transit.controller import Controller
@@ -35,9 +36,9 @@ class ServiceRegistryController(Controller[ServiceRegistry]):
         toolkit: ServiceRegistryToolkit
     
     Provides:
-        -  def find_service(service_name: str) -> SearchResult[List[Microservice]]:
+        - def find_service(service_name: str) -> SearchResult[List[Microservice]]:
         
-        -  def register_service(
+        - def register_service(
                     service: Microservice,
                     null_exception: MicroserviceNullException,
             ) -> InsertionResult:

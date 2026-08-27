@@ -29,7 +29,7 @@ class TokenHomeContextValidator(StackSearchContextValidator[TokenHomeContext]):
     Attributes:
 
     Provides:
-        -  def validate(
+        - def validate(
                     candidate: Any,
                     integrity_checker: HomeToolkit,
             ) -> ValidationResult[Home]:

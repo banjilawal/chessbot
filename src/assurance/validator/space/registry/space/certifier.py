@@ -37,7 +37,7 @@ class SpaceReservoirValidator(Validator, ABC, Generic[T]):
         bundle: SpaceToolkit
 
     Provides:
-        -  def execute(candidate: Any, bundle: SpaceToolkit,) -> ValidationResult[Blueprint[T]]:
+        - def execute(candidate: Any, bundle: SpaceToolkit,) -> ValidationResult[Blueprint[T]]:
 
     Super Class:
     """

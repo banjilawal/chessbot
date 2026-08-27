@@ -31,7 +31,7 @@ class SquareBuilderFinalizer(BuilderFinalizer[Square]):
      Attributes:
 
     Provides:
-        -  def execute(product: Square, ) -> BuildResult[Square]:
+        - def execute(product: Square, ) -> BuildResult[Square]:
 
      Super Class:
          Builder

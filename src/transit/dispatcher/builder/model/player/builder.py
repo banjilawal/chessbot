@@ -35,7 +35,7 @@ class PlayerBuilder(ModelBuilder[Player]):
             builder_toolkit: Optional[PlayerBuilderToolkit]
 
     Provides:
-        -  def execute(self, blueprint: PlayerBlueprint) -> BuildResult[Player]
+        - def execute(self, blueprint: PlayerBlueprint) -> BuildResult[Player]
 
      Super Class:
          ModelBuilder

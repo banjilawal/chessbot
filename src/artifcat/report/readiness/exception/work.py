@@ -8,6 +8,7 @@ Version: 1.0.0
 """
 
 from __future__ import annotations
+
 from typing import Optional
 
 

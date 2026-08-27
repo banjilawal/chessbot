@@ -34,7 +34,7 @@ class TokenManeuverPermitter:
          adjudicator: Optional[ManeuverRequestAdjudicator]
 
     Provides:
-        -  def execute(request: ManeuverRequest) -> ManeuverApprovalReport
+        - def execute(request: ManeuverRequest) -> ManeuverApprovalReport
 
     Super Class:
         Permitter

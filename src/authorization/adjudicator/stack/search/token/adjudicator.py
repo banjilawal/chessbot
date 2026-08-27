@@ -37,7 +37,7 @@ class TokenSearchRequestAdjudicator(SearchRequestAdjudicator):
         carrier_validator: SearchPermitterPriming_Validator
           
     Provides:
-        -  def execute(self, subject: Any) -> ValidationResult:
+        - def execute(self, subject: Any) -> ValidationResult:
             
     Super Class:
     """

@@ -8,6 +8,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from itertools import count
 from threading import Lock
 from typing import Type, TypeVar

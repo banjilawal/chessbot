@@ -35,7 +35,7 @@ class TokenBuilder(ModelBuilder[Token]):
             builder_toolkit: Optional[TokenBuilderToolkit]
 
     Provides:
-        -  def execute(self, blueprint: TokenBlueprint) -> BuildResult[Token]
+        - def execute(self, blueprint: TokenBlueprint) -> BuildResult[Token]
 
      Super Class:
          ModelBuilder

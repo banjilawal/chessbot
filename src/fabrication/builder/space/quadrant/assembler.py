@@ -31,7 +31,7 @@ class QuadrantBuilder(SpaceBuilder, Generic[T]):
     Attributes:
 
     Provides:
-        -  def execute(self, blueprint: QuadrantBlueprint,) -> BuildResult[Quadrant]
+        - def execute(self, blueprint: QuadrantBlueprint,) -> BuildResult[Quadrant]
 
     Super Class:
         Builder

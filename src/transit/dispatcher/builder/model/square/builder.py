@@ -35,7 +35,7 @@ class SquareBuilder(ModelBuilder[Square]):
             builder_toolkit: Optional[SquareBuilderToolkit]
 
     Provides:
-        -  def execute(self, blueprint: SquareBlueprint) -> BuildResult[Square]
+        - def execute(self, blueprint: SquareBlueprint) -> BuildResult[Square]
 
      Super Class:
          ModelBuilder

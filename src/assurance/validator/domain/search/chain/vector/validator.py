@@ -35,7 +35,7 @@ class VectorNodeContextValidator(
         bundle: VectorNodeValidationBundle
 
     Provides:
-        -  def execute(candidate: Any) -> ValidationResult[VectorNodeContext]:
+        - def execute(candidate: Any) -> ValidationResult[VectorNodeContext]:
 
     Super Class:
         ChainSearchContextChecker

@@ -35,7 +35,7 @@ class GameBuilder(ModelBuilder[Game]):
             builder_toolkit: Optional[GameBuilderToolkit]
 
     Provides:
-        -  def execute(self, blueprint: GameBlueprint) -> BuildResult[Game]
+        - def execute(self, blueprint: GameBlueprint) -> BuildResult[Game]
 
      Super Class:
          ModelBuilder

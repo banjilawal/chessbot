@@ -32,7 +32,7 @@ class AddVector(Computation[CartesianToggle]):
             permitter: Optional[AddVectorPermitter]
             
     Provides:
-        -  def execute(self, request: AddVectorRequest) -> ComputationResult[CartesianToggle]
+        - def execute(self, request: AddVectorRequest) -> ComputationResult[CartesianToggle]
 
     Super Class:
         Computation

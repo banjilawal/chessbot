@@ -31,7 +31,7 @@ class EastAxisEndpointBuilder:
         origin: Vector
         
     Provides:
-        -  def execute() -> BuildResult[VectorRegister]
+        - def execute() -> BuildResult[VectorRegister]
 
     Super Class:
     """

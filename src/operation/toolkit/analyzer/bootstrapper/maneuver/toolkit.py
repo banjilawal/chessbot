@@ -52,7 +52,7 @@ class ManeuverToolkit(AnalyzerBootstrapperToolkit[Maneuver]):
         analyzer: Maneuver
 
     Provides:
-        -  def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
+        - def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
 
     Super Class:
         Toolkit

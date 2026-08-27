@@ -8,6 +8,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import CrudResult, DeletionState
@@ -34,10 +35,10 @@ class DeletionResult(CrudResult[T], Generic[T]):
         is_nothing_to_delete: bool
 
     Provides:
-        -  def success(payload: T) -> DeletionResu[T]
-        -  def failure(exception: Exception) -> DeletionResu[T]
-        -  def timed_out(exception: Exception) -> DeletionResult
-        -  def nothing_to_delete() -> DeletionResult
+        - def success(payload: T) -> DeletionResu[T]
+        - def failure(exception: Exception) -> DeletionResu[T]
+        - def timed_out(exception: Exception) -> DeletionResult
+        - def nothing_to_delete() -> DeletionResult
 
     Super Class:
         Result

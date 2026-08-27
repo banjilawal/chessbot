@@ -35,7 +35,7 @@ class RankPersonaValidator(Validator[Rank]):
     Attributes:
 
     Provides:
-        -  def validate(
+        - def validate(
                     cls,
                     rank: Any,
                     persona_service: PersonaService,

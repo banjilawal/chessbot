@@ -27,7 +27,7 @@ class StackPushPermitter(OperationPermitter):
     Attributes:
 
     Provides:
-        -  def execute(cls, requestor: T, *args, **kwargs) -> AnalysisResult
+        - def execute(cls, requestor: T, *args, **kwargs) -> AnalysisResult
 
     Super Class:
         Permitter

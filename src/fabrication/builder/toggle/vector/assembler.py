@@ -28,7 +28,7 @@ class CartesianToggleBuilder(ToggleBuilder[CartesianToggle]):
     Attributes:
 
     Provides:
-        -  def execute(self, blueprint: CartesianToggleBlueprint,) -> BuildResult[CartesianToggle]
+        - def execute(self, blueprint: CartesianToggleBlueprint,) -> BuildResult[CartesianToggle]
 
     Super Class:
         ToggleBuilder

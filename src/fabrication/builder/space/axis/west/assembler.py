@@ -28,7 +28,7 @@ class WestAxisBuilder(AxisBuilder[WestAxis]):
     Attributes:
 
     Provides:
-        -  def execute(self, blueprint: WestAxisBlueprint,) -> BuildResult[WestAxis]
+        - def execute(self, blueprint: WestAxisBlueprint,) -> BuildResult[WestAxis]
 
     Super Class:
         AxisBuilder

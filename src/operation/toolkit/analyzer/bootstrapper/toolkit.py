@@ -35,9 +35,9 @@ class AnalyzerBootstrapperToolkit(AnalyzerToolkit):
         _items: Dict[str, Any]
 
     Provides:
-        -  def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
-        -  def _resolve_service_dependencies() -> SearchResult[List[Dict[str, Microservice]]]:
-        -  def _resolve_dependencies(self) -> SearchResult[List[Dict[str, Operation]]]
+        - def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
+        - def _resolve_service_dependencies() -> SearchResult[List[Dict[str, Microservice]]]:
+        - def _resolve_dependencies(self) -> SearchResult[List[Dict[str, Operation]]]
 
     Super Class:
         Toolkit

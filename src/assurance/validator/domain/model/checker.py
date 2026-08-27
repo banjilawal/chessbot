@@ -32,7 +32,7 @@ class ModelValidator(Validator, ABC, Generic[T]):
         bundle: ModelValidationBundle[T]
 
     Provides:
-        -  def execute(candidate: Any) -> ValidationResult[Blueprint[T]|T]:
+        - def execute(candidate: Any) -> ValidationResult[Blueprint[T]|T]:
 
     Super Class:
         IntegrityChecker

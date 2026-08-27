@@ -36,7 +36,7 @@ class WestAxisEndpointBuilder(AxisEndpointBuilder[WestTraversalPattern]):
         vector_validator: Optional[VectorValidator]
 
     Provides:
-        -  def execute(origin: Vector) -> BuildResult[VectorRegister]
+        - def execute(origin: Vector) -> BuildResult[VectorRegister]
 
     Super Class:
     """

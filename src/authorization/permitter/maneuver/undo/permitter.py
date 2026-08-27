@@ -35,7 +35,7 @@ class TokenUndoMovePermitter(TokenManeuverPermitter):
     Attributes:
 
     Provides:
-        -  def execute(
+        - def execute(
                     cls,
                     token: Token,
                     token_validator: TokenValidator | None = None,

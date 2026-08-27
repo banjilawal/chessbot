@@ -37,7 +37,7 @@ class ToggleBuildDispatcher(BuildDispatcher, Generic[T]):
             builder_toolkit: [ToggleBuilderToolkit[T]]
 
     Provides:
-        -  def execute(self, blueprint: ToggleBlueprint[T]) -> BuildResult[T]
+        - def execute(self, blueprint: ToggleBlueprint[T]) -> BuildResult[T]
 
      Super Class:
          Builder

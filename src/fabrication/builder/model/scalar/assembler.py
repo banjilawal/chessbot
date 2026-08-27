@@ -28,7 +28,7 @@ class ScalarBuilder(ModelBuilder[Scalar]):
     Attributes:
     
     Provides:
-        -  def execute(self, blueprint: ScalarBlueprint,) -> BuildResult[Scalar]
+        - def execute(self, blueprint: ScalarBlueprint,) -> BuildResult[Scalar]
     
     Super Class:
         ModelBuilder

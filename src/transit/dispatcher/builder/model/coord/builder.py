@@ -35,7 +35,7 @@ class CoordBuilder(ModelBuilder[Coord]):
             builder_toolkit: Optional[CoordBuilderToolkit]
 
     Provides:
-        -  def execute(self, blueprint: CoordBlueprint) -> BuildResult[Coord]
+        - def execute(self, blueprint: CoordBlueprint) -> BuildResult[Coord]
 
      Super Class:
          ModelBuilder

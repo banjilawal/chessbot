@@ -8,6 +8,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from typing import List
 
 from err import WorkerRegistryNameSearchException
@@ -31,7 +32,7 @@ class WorkerRegistryNameSearch(Operator):
     Attributes:
 
     Provides:
-        -  def execute(
+        - def execute(
                     domain: str,
                     operation_name: str,
                     registry: WorkerRegistry,

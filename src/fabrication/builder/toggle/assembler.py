@@ -31,7 +31,7 @@ class ToggleBuilder(Builder, Generic[T]):
     Attributes:
 
     Provides:
-        -  def execute(self, blueprint: ToggleBlueprint,) -> BuildResult[Toggle]
+        - def execute(self, blueprint: ToggleBlueprint,) -> BuildResult[Toggle]
 
     Super Class:
          Builder

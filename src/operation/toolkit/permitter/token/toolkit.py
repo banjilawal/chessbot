@@ -46,7 +46,7 @@ class ManeuverToolkit(PermitterToolkit):
         identity_service: IdentityService
 
     Provides:
-        -  def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
+        - def resolve_dependencies(s -> SearchResult[List[Dict[str, Any]]]:
 
     Super Class:
         Toolkit

@@ -33,7 +33,7 @@ class NorthAxisBuilder(AxisBuilder[NorthAxis]):
             builder_toolkit: Optional[NorthAxisBuilderToolkit]
 
     Provides:
-        -  def execute(origin: Vector) -> BuildResult[EastAxis]
+        - def execute(origin: Vector) -> BuildResult[EastAxis]
 
     Super Class:
         AxisBuilder

@@ -8,6 +8,7 @@ version: 0.0.2
 """
 
 from __future__ import annotations
+
 from typing import Optional
 
 from domain.model import Board, Coord, SquareState, StatefulModel, Token
@@ -34,8 +35,8 @@ class Square(StatefulModel):
         occupant: Optional[Token]
         
     Provides:
-        -  def is_empty() -> bool
-        -  def is_occupied() -> bool
+        - def is_empty() -> bool
+        - def is_occupied() -> bool
 
     Super Class:
         Model

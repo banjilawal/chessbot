@@ -35,7 +35,7 @@ class VectorBuilder(ModelBuilder[Vector]):
             builder_toolkit: Optional[VectorBuilderToolkit]
 
     Provides:
-        -  def execute(self, blueprint: VectorBlueprint) -> BuildResult[Vector]
+        - def execute(self, blueprint: VectorBlueprint) -> BuildResult[Vector]
 
      Super Class:
          ModelBuilder
