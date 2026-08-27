@@ -1,4 +1,4 @@
-# src/domain/model/searchable/attack/kill/__init__.py
+# src/domain/model/searchable/walk/attack/kill/__init__.py
 
 """
 Module: domain.model.searchable.walk.attack.kill.__init__

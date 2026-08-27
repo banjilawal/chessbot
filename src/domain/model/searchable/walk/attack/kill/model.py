@@ -1,7 +1,7 @@
-# src/domain/model/searchable/attack/kill/model.py
+# src/domain/model/searchable/walk/attack/kill/model.py
 
 """
-Module: domain.model.searchable.walk.attack.kill.model_
+Module: domain.model.searchable.walk.attack.kill.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

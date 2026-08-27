@@ -96,6 +96,8 @@ class Token(StatefulModel):
     def formation(self) -> Formation:
         return self._formation
     
+    
+    
     @property
     def name(self) -> str:
         return self._formation.designation
