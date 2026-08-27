@@ -1,4 +1,4 @@
-# src/domain/model/state/arena/__init__.py
+# src/domain/model/searchable/state/arena/__init__.py
 
 """
 Module: domain.model.searchable.state.arena.__init__

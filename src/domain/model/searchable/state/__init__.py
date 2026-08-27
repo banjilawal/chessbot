@@ -1,4 +1,4 @@
-# src/domain/model/state/__init__.py
+# src/domain/model/searchable/state/__init__.py
 
 """
 Module: domain.model.searchable.state.__init__
@@ -11,11 +11,8 @@ version: 0.0.2
 
 # Packages
 from .arena import *
-from .attack import *
 from .board import *
 from .game import *
-from .graph import *
-from .maneuver import *
 from .player import *
 from .query import *
 from .registry import *

@@ -1,4 +1,4 @@
-# src/domain/model/state/team/roster/exception/insertion/validator.py
+# src/domain/model/searchable/state/team/roster/exception/insertion/validator.py
 
 """
 Module: domain.model.searchable.state.team.roster.exception.insertion.work

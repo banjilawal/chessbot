@@ -1,4 +1,4 @@
-# src/domain/model/state/team/roster/util/util.py
+# src/domain/model/searchable/state/team/roster/util/util.py
 
 """
 Module: domain.model.searchable.state.team.roster.util.util

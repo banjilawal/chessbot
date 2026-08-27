@@ -1,4 +1,4 @@
-# src/domain/model/state/token/__init__.py
+# src/domain/model/searchable/state/token/__init__.py
 
 """
 Module: domain.model.searchable.state.token.__init__

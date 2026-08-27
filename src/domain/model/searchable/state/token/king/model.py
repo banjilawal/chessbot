@@ -1,4 +1,4 @@
-# src/domain/model/state/token/king/dossier/model/state.py
+# src/domain/model/searchable/state/token/king/dossier/model/searchable/state.py
 
 """
 Module: domain.model.searchable.state.token.king.model

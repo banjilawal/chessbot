@@ -1,4 +1,4 @@
-# src/domain/model/state/player/__init__.py
+# src/domain/model/searchable/state/player/__init__.py
 
 """
 Module: domain.model.searchable.state.player.__init__

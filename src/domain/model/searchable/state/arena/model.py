@@ -1,4 +1,4 @@
-# src/domain/model/state/arena/dossier/model.py
+# src/domain/model/searchable/state/arena/dossier/model.py
 
 """
 Module: domain.model.searchable.state.arena.model

@@ -1,4 +1,4 @@
-# src/domain/model/state/team/__init__.py
+# src/domain/model/searchable/state/team/__init__.py
 
 """
 Module: domain.model.searchable.state.team.__init__

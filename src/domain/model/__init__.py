@@ -11,8 +11,8 @@ version: 0.0.2
 
 # Packages
 from .dossier import *
-from .identity import *
-from .path import *
+from domain.model.searchable.identity import *
+from domain.model.searchable.state.walk.path import *
 from .rank import *
 from .scalar import *
 from .searchable import *

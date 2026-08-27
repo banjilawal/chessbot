@@ -21,11 +21,15 @@ class Register(Structure, ABC, Generic[T]):
     """
     Role:
         - Addressing
-        -  Data-Holder
+        - Data-Holder
   
     Responsibilities:
         1.  Contains a pair used in a binary operation whose operands must have
             the same type.
+        2.  Centralizes tests for
+                - uniqueness
+                - nulls
+                - size
         
     Attributes:
         a: T
@@ -37,7 +41,7 @@ class Register(Structure, ABC, Generic[T]):
     Provides:
     
     Super Class:
-        Model
+        Structure
     """
     _a: T
     _b: T

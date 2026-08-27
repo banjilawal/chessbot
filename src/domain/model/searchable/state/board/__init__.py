@@ -1,4 +1,4 @@
-# src/domain/model/state/board/__init__.py
+# src/domain/model/searchable/state/board/__init__.py
 
 """
 Module: domain.model.searchable.state.board.__init__

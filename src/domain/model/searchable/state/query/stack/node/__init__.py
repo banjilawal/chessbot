@@ -1,4 +1,4 @@
-# src/domain/model/state/query/stack/node/__init__.py
+# src/domain/model/searchable/state/query/stack/node/__init__.py
 
 """
 Module: domain.model.searchable.state.query.stack.node.__init__

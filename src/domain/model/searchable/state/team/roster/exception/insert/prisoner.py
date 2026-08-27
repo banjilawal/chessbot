@@ -1,4 +1,4 @@
-# src/domain/model/state/team/roster/exception/insertion/captured.py
+# src/domain/model/searchable/state/team/roster/exception/insertion/captured.py
 
 """
 Module: domain.model.searchable.state.team.roster.exception.insertion.captured

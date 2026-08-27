@@ -1,4 +1,4 @@
-# src/domain/model/state/token/state/board.py
+# src/domain/model/searchable/state/token/state/board.py
 
 """
 Module: domain.model.searchable.state.token.state.board

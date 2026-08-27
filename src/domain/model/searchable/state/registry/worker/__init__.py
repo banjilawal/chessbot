@@ -1,4 +1,4 @@
-# src/domain/model/state/registry/worker/__init__.py
+# src/domain/model/searchable/state/registry/worker/__init__.py
 
 """
 Module: domain.model.searchable.state.registry.worker.__init__

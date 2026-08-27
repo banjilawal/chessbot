@@ -1,4 +1,4 @@
-# src/domain/model/state/team/roster/exception/insertion/full.py
+# src/domain/model/searchable/state/team/roster/exception/insertion/full.py
 
 """
 Module: domain.model.searchable.state.team.roster.exception.insertion.full

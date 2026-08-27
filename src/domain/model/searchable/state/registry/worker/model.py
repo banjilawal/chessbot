@@ -1,4 +1,4 @@
-# src/domain/model/state/registry/worker.model.py
+# src/domain/model/searchable/state/registry/worker.model.py
 
 """
 Module: domain.model.searchable.state.registry.worker.model

@@ -1,4 +1,4 @@
-# src/domain/model/state/player/human/__init__.py
+# src/domain/model/searchable/state/player/human/__init__.py
 
 """
 Module: domain.model.searchable.state.player.human.__init__

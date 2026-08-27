@@ -1,4 +1,4 @@
-# src/domain/model/state/team/roster/exception/super.py
+# src/domain/model/searchable/state/team/roster/exception/super.py
 
 """
 Module: domain.model.searchable.state.team.roster.exception.super

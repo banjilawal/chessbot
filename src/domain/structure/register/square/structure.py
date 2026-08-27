@@ -45,7 +45,7 @@ class SquareRegister(Register[Square]):
     
     @property
     def a(self) -> Square:
-        return cast(Square, self.a)
+        return cast(Square, super().a)
     
     @property
     def b(self) -> Square:
@@ -83,7 +83,7 @@ class SquareRegister(Register[Square]):
         if other is None: return False
         if isinstance(other, SquareRegister):
             return (
-                    self._origin == other.origin and
-                    self._destination == other.destination
+                    self.origin == other.origin and
+                    self.destination == other.destination
             )
     
