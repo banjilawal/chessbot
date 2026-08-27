@@ -58,6 +58,10 @@ class Rank(Model):
     def persona(self) -> Persona:
         return self._persona
     
+    @property
+    def ransom(self) -> int:
+        return self._persona.ransom
+    
     @abstractmethod
     @LoggingLevelRouter.monitor
     def span_dict(self) -> ComputationResult[Dict[str, CoordSpan]]:

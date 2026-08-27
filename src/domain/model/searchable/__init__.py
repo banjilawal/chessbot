@@ -11,7 +11,9 @@ version: 0.0.2
 
 # Packages
 from .cartesian import *
+from .identity import *
 from .state import *
+from .walk import *
 
 # Modules
 from .model import SearchableModel
