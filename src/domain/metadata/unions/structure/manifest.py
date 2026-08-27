@@ -14,7 +14,7 @@ from dataclasses import dataclass
 from typing import Generic, Type, TypeVar
 
 from domain import Blueprint, DomainObjectTypeUnions, Structure
-from transit import EntityCarrier
+from transit import StructureCarrier
 
 T = TypeVar("T", bound="Structure")
 
@@ -29,7 +29,7 @@ class StructureTypeUnions(DomainObjectTypeUnions[T], ABC, Generic[T]):
 
     Attributes:
         structure: Type[T]
-        carrier: Type[EntityCarrier[T]]
+        carrier: Type[StructureCarrier[T]]
         blueprint: Type[Blueprint[T]]
     Provides:
 
@@ -37,5 +37,5 @@ class StructureTypeUnions(DomainObjectTypeUnions[T], ABC, Generic[T]):
         DomainObjectTypeUnions
     """
     structure: Type[T]
-    carrier: Type[EntityCarrier[T]]
+    carrier: Type[StructureCarrier[T]]
     blueprint: Type[Blueprint[T]]
