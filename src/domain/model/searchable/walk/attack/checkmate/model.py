@@ -1,7 +1,7 @@
-# src/domain/model/searchable/walk/attack/check/model.py
+# src/domain/model/searchable/walk/attack/checkmate/model.py
 
 """
-Module: domain.model.searchable.walk.attack.check.model
+Module: domain.model.searchable.walk.attack.checkmate.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -15,7 +15,7 @@ from typing import cast
 from domain import Attack, KingToken, Maneuver, Token
 
 
-class CheckEnemyKing(Attack):
+class CheckmateEnemyKing(Attack):
     """
     Role:
         - Model
@@ -25,9 +25,9 @@ class CheckEnemyKing(Attack):
         1.  Store details about attacking an enemy KingToken
 
     Attributes:
-        checker: Token
+        victor: Token
         maneuver: Maneuver
-        enemy_king: KingToken
+        defeated_king: KingToken
 
     Provides:
 
@@ -37,41 +37,41 @@ class CheckEnemyKing(Attack):
     
     def __init__(
             self,
-            checker: Token,
+            victor: Token,
             maneuver: Maneuver,
-            enemy_king: KingToken,
+            defeated_king: KingToken,
     ):
         """
         Args:
-            checker: Token
+            victor: Token
             maneuver: Maneuver
-            enemy_king: KingToken
+            defeated_king: KingToken
         """
         super().__init__(
-            victim=enemy_king,
-            attacker=checker,
+            victim=defeated_king,
+            attacker=victor,
             maneuver=maneuver,
-            attacker_reward=enemy_king.rank.ransom
+            attacker_reward=defeated_king.rank.ransom
         )
 
     @property
-    def checker(self) -> Token:
+    def victor(self) -> Token:
         return super().attacker
         
     @property
-    def enemy_king(self) -> KingToken:
+    def defeated_king(self) -> KingToken:
         return cast(KingToken, super().victim)
     
     @property
     def victim(self) -> KingToken:
-        return self.enemy_king
+        return self.defeated_king
     
     def __eq__(self, other) -> bool:
         if other is None:
             return False
         if other == self:
             return True
-        if isinstance(other, CheckEnemyKing):
+        if isinstance(other, CheckmateEnemyKing):
             return super().__eq__(other)
         return False
         

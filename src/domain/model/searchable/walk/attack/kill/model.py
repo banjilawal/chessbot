@@ -70,7 +70,7 @@ class KillEnemyCombatant(Attack):
             return False
         if other == self:
             return True
-        if isinstance(other, CombatantToken):
+        if isinstance(other, KillEnemyCombatant):
             return super().__eq__(other)
         return False
         
