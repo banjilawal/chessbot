@@ -17,7 +17,7 @@ from err import (
     RegisterEmptyException, RegisterSizeException, CartesianToggleRegisterCheckerException,
     CartesianToggleRegisterMismatchException
 )
-from domain.structure.searchable.register import CartesianToggleRegister
+from domain.structure.register import CartesianToggleRegister
 from artifcat import MethodResultType, ValidationResult
 from assurance.validator import Validator
 from domain.structure.toggle import CartesianToggle

@@ -18,8 +18,8 @@ from domain.model import Blueprint, Arena, Schema, ArenaBinder
 @dataclass
 class ArenaBinderBlueprint(ModelBlueprint[ArenaBinder]):
     """
-    Role:
-        - Container
+     Role:
+        1.  Metadata
 
     Responsibilities:
         1.  Provides values for hydrating an ArenaBinderBlueprint object.

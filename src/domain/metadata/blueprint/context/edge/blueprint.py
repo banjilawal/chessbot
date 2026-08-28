@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from err import EdgeStackContextNullException
+from err import EdgeSearchContextNullException
 from domain.model import EdgeContext, Blueprint, Node
 
 
@@ -24,5 +24,5 @@ class EdgeContextBlueprint(Blueprint[EdgeContext]):
     weight: Optional[int] = None
     distance: Optional[int] = None
     heuristic: Optional[int] = None
-    domain_null_exception = EdgeStackContextNullException()
+    domain_null_exception = EdgeSearchContextNullException()
     model_type = EdgeContext

@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StackContextNullException
+from err import SearchContextNullException
 from artifcat import MethodResultType
 
 
 
 __all__ = [
     # ======================# GAME_CONTEXT_NULL_ERROR #======================#
-    "GameStackContextNullException",
+    "GameSearchContextNullException",
 ]
 
 # ======================# GAME_CONTEXT_NULL_ERROR #======================#
-class GameStackContextNullException(StackContextNullException):
+class GameSearchContextNullException(SearchContextNullException):
     """
     Role:
         - Error Tracing
@@ -43,7 +43,7 @@ class GameStackContextNullException(StackContextNullException):
     Provides:
 
     Super Class:
-        StackContextNullException
+        SearchContextNullException
     """
     MSG = "GameContext cannot be null."
     ERR_CODE = "GAME_CONTEXT_NULL_ERROR"

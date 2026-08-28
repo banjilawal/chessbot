@@ -91,7 +91,7 @@ __all__ = [
 ]
 
 from system import SearchException
-from domain.structure.searchable.node import NodeException
+from domain.structure.node import NodeException
 
 
 # ======================# NODE_SEARCH_FAILURE #======================#

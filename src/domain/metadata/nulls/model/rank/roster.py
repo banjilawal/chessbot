@@ -14,7 +14,7 @@ from dataclasses import dataclass
 
 from domain import ModelNullExceptionRoster, Rank
 from err import (
-    RankBlueprintNullException, RankCarrierNullException, RankStackContextNullException, RankNullException
+    RankBlueprintNullException, RankCarrierNullException, RankSearchContextNullException, RankNullException
 )
 
 
@@ -41,4 +41,4 @@ class RankNullExceptionRoster(ModelNullExceptionRoster[Rank]):
     model: RankNullException = RankNullException()
     carrier: RankCarrierNullException = RankCarrierNullException()
     blueprint: RankBlueprintNullException = RankBlueprintNullException()
-    search_context: RankStackContextNullException = RankStackContextNullException()
+    search_context: RankSearchContextNullException = RankSearchContextNullException()

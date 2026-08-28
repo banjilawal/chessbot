@@ -13,13 +13,13 @@ from typing import Any, Optional, cast
 
 import config.setting.board.dimension.config
 from artifcat import ValidationResult
-from assurance import StackContextValidator, CoordValidationBundle
+from assurance import SearchContextValidator, CoordValidationBundle
 from domain import CoordSearchSearchContext
 from err import CoordContextCheckerException, ZeroCoordContextFlagsException
 from util import LoggingLevelRouter
 
 
-class CoordContextValidator(StackContextValidator[CoordSearchSearchContext]):
+class CoordContextValidator(SearchContextValidator[CoordSearchSearchContext]):
     """
     Role
         -  Integrity Assurance Worker

@@ -17,11 +17,11 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# COORD_NULL_ERROR #======================#
-    "CoordModelNullException",
+    "CoordNullException",
 ]
 
 # ======================# COORD_NULL_ERROR #======================#
-class CoordModelNullException(ModelNullException):
+class CoordNullException(ModelNullException):
     """
     Role:
         - Error Tracing

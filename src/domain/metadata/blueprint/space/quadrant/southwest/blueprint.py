@@ -20,7 +20,7 @@ from space import SouthwestQuadrant
 class SouthwestQuadrantBlueprint(QuadrantBlueprint[SouthwestQuadrant]):
     """
      Role:
-         -  DTO
+        1.  Metadata
 
      Responsibilities:
          1.  Provides values for hydrating a SouthwestQuadrant.

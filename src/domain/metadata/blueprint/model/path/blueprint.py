@@ -13,13 +13,13 @@ from typing import Optional, Type, cast
 
 from domain.metadata.blueprint import ModelBlueprint
 from domain.model import Path
-from domain.structure.searchable.register import SquareRegister
+from domain.structure.register import SquareRegister
 
 
 class PathBlueprint(ModelBlueprint[Path]):
     """
-    Role:
-        - Container
+     Role:
+        1.  Metadata
         -  DTO
         
     Responsibilities:

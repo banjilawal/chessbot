@@ -13,7 +13,7 @@ from typing import cast
 
 from assurance import NodeValidator, VectorNodeValidationBundle
 from fabrication import VectorNodeBlueprint
-from domain.structure.searchable.node import VectorNode
+from domain.structure.node import VectorNode
 from artifcat import ValidationResult
 from transit.carrier import VectorNodeCarrier
 from util import LoggingLevelRouter

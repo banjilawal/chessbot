@@ -21,4 +21,4 @@ from .team import *
 from .token import *
 
 # Modules
-from .exception import StackContextNullException
+from .exception import SearchContextNullException

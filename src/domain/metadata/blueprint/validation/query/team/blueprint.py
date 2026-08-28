@@ -20,8 +20,8 @@ from domain.model import Board, Player, Schema, Team, TeamValidation, TeamState
 @dataclass
 class TeamQueryValidationBlueprint(QueryValidationBlueprint[Team]):
     """
-    Role:
-        - Container
+     Role:
+        1.  Metadata
 
     Responsibilities:
         1.  Provides values for hydrating a TeamValidation instance.

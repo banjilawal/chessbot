@@ -16,7 +16,7 @@ from carrier import SquareRegisterCarrier
 from err import (
     SquareRegisterBlueprintNullException, SquareRegisterCarrierNullException, SquareRegisterNullException
 )
-from domain.structure.searchable.register import SquareRegister
+from domain.structure.register import SquareRegister
 from operation.toolkit.register.square.toolkit import RegisterToolkit
 from transit.dispatcher.validator import SquareValidationDispatcher
 

@@ -20,7 +20,7 @@ from space import EastAxis
 class EastAxisBlueprint(AxisBlueprint[EastAxis]):
     """
      Role:
-         -  DTO
+        1.  Metadata
 
      Responsibilities:
          1.  Provides values for hydrating a EastAxis.

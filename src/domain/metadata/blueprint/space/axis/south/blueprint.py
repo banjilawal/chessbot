@@ -20,7 +20,7 @@ from space import SouthAxis
 class SouthAxisBlueprint(AxisBlueprint[SouthAxis]):
     """
      Role:
-         -  DTO
+        1.  Metadata
 
      Responsibilities:
          1.  Provides values for hydrating a SouthAxis.

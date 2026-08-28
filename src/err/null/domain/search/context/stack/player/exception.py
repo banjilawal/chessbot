@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StackContextNullException
+from err import SearchContextNullException
 from artifcat import MethodResultType
 
 
 
 __all__ = [
     # ======================# PLAYER_CONTEXT_NULL_ERROR #======================#
-    "PlayerStackContextNullException",
+    "PlayerSearchContextNullException",
 ]
 
 # ======================# PLAYER_CONTEXT_NULL_ERROR #======================#
-class PlayerStackContextNullException(StackContextNullException):
+class PlayerSearchContextNullException(SearchContextNullException):
     """
     Role:
         - Error Tracing
@@ -43,7 +43,7 @@ class PlayerStackContextNullException(StackContextNullException):
     Provides:
 
     Super Class:
-        StackContextNullException
+        SearchContextNullException
     """
     MSG = "PlayerContext cannot be null."
     ERR_CODE = "PLAYER_CONTEXT_NULL_ERROR"

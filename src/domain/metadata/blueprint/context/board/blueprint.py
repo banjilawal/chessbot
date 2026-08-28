@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from err import BoardStackContextNullException
+from err import BoardSearchContextNullException
 from domain.model import Arena, BoardContext, Blueprint, Team
 
 
@@ -21,5 +21,5 @@ class BoardContextBlueprint(Blueprint[BoardContext]):
     id: Optional[int] = None
     arena: Optional[Arena] = None
     team: Optional[Team] = None
-    domain_null_exception = BoardStackContextNullException()
+    domain_null_exception = BoardSearchContextNullException()
     model_type = BoardContext

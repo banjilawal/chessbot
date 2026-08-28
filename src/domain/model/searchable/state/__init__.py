@@ -21,4 +21,4 @@ from .team import *
 from .token import *
 
 # Modules
-from .model import StatefulModel
+from .model import StateModel

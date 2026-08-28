@@ -18,8 +18,8 @@ from domain.model import Blueprint, Scalar
 @dataclass
 class ScalarBlueprint(ModelBlueprint[Scalar]):
     """
-    Role:
-        - Container
+     Role:
+        1.  Metadata
 
     Responsibilities:
         1.  Provides magnitude value for hydrating a Scalar object.

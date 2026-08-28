@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import SearchContextValidator, StackContextValidator
+from assurance import SearchContextValidator, SearchContextValidator
 from domain import ModelSearchContext
 from util import LoggingLevelRouter
 
@@ -30,7 +30,7 @@ class StackSearchContextValidator(SearchContextValidator[T], ABC, Generic[T]):
         1.  Ensure a StackSearchContext instance is safe before use.
 
     Attributes:
-        integrity_checker: StackContextChecker[T]
+        integrity_checker: SearchContextChecker[T]
         
     Provides:
         -  execute(self, candidate: Any) -> ValidationResult[T]
@@ -39,17 +39,17 @@ class StackSearchContextValidator(SearchContextValidator[T], ABC, Generic[T]):
         SearchContextValidator
     """
     
-    def __init__(self, integrity_checker: StackContextValidator[T]):
+    def __init__(self, integrity_checker: SearchContextValidator[T]):
         """
         Args:
-            integrity_checker: StackContextChecker
+            integrity_checker: SearchContextChecker
         """
         super().__init__(integrity_checker=integrity_checker)
     
     
     @property
-    def integrity_checker(self) -> StackContextValidator[T]:
-        return cast(StackContextValidator[T], super().integrity_checker)
+    def integrity_checker(self) -> SearchContextValidator[T]:
+        return cast(SearchContextValidator[T], super().integrity_checker)
     
     
     @abstractmethod

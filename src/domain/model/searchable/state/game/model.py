@@ -9,10 +9,10 @@ version: 0.0.2
 
 from typing import List
 
-from domain import Arena, Player, StatefulModel
+from domain import Arena, Player, StateModel
 
 
-class Game(StatefulModel):
+class Game(StateModel):
     """
     Role:Controller
 

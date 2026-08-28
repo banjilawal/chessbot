@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StackContextNullException
+from err import SearchContextNullException
 from artifcat import MethodResultType
 
 
 
 __all__ = [
     # ======================# TOKEN_CONTEXT_NULL_ERROR #======================#
-    "TokenStackContextNullException",
+    "TokenSearchContextNullException",
 ]
 
 # ======================# TOKEN_CONTEXT_NULL_ERROR #======================#
-class TokenStackContextNullException(StackContextNullException):
+class TokenSearchContextNullException(SearchContextNullException):
     """
     Role:
         - Error Tracing
@@ -43,7 +43,7 @@ class TokenStackContextNullException(StackContextNullException):
     Provides:
 
     Super Class:
-        StackContextNullException
+        SearchContextNullException
     """
     MSG = "TokenContext cannot be null."
     ERR_CODE = "TOKEN_CONTEXT_NULL_ERROR"

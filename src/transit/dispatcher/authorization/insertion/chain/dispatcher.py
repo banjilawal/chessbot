@@ -15,7 +15,7 @@ from typing import Generic, TypeVar, cast
 from authorization import AddNodeRequestAuthorizer
 from collection import Chain
 from transit.dispatcher import InsertionDispatcher
-from domain.structure.searchable.node import Node
+from domain.structure.node import Node
 
 from artifcat.report import AuthorizationDecision
 from domain.exchange.request import AddNodeRequest

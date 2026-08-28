@@ -12,9 +12,9 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from collection import StackService
-from domain import DeleteItemRequest, StatefulModel
+from domain import DeleteItemRequest, StateModel
 
-T = TypeVar("T", bound="StatefulModel")
+T = TypeVar("T", bound="StateModel")
 
 class DeleteStackItemRequest(DeleteItemRequest, ABC, Generic[T]):
     """

@@ -15,7 +15,7 @@ from domain.metadata.blueprint import VectorRegisterBlueprint
 from carrier import VectorRegisterCarrier
 from err import RegisterEmptyException, RegisterSetSizeException, VectorRegisterRootCheckerException
 from domain.model import Vector
-from domain.structure.searchable.register import VectorRegister
+from domain.structure.register import VectorRegister
 from artifcat import ValidationResult
 from assurance.validator import Validator
 from operation.toolkit import VectorRegisterToolkit

@@ -20,11 +20,11 @@ __all__ = [
     "ScalarContextCheckerException",
 ]
 
-from err import StackContextCheckerException
+from err import SearchContextCheckerException
 
 
 # ======================# SCALAR_CONTEXT_CHECKER_FAILURE #======================#
-class ScalarContextCheckerException(StackContextCheckerException):
+class ScalarContextCheckerException(SearchContextCheckerException):
     """
     Role:
         - Error Tracing
@@ -45,7 +45,7 @@ class ScalarContextCheckerException(StackContextCheckerException):
     Provides:
 
     Super Class:
-        StackContextCheckerException
+        SearchContextCheckerException
     """
     MSG = "ScalarContextChecker failure."
     ERR_CODE = "SCALAR_CONTEXT_CHECKER_FAILURE"

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from system import QueryService, id_emitter
-from domain.structure.searchable.node import NodeContext, NodeContextBuilder, NodeContextValidator, NodeFinder
+from domain.structure.node import NodeContext, NodeContextBuilder, NodeContextValidator, NodeFinder
 
 
 class NodeQueryService(QueryService[NodeContext]):

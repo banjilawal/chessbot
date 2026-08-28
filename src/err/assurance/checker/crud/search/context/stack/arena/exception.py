@@ -20,11 +20,11 @@ __all__ = [
     "ArenaContextCheckerException",
 ]
 
-from err import StackContextCheckerException
+from err import SearchContextCheckerException
 
 
 # ======================# ARENA_CONTEXT_CHECKER_FAILURE #======================#
-class ArenaContextCheckerException(StackContextCheckerException):
+class ArenaContextCheckerException(SearchContextCheckerException):
     """
     Role:
         - Error Tracing
@@ -45,7 +45,7 @@ class ArenaContextCheckerException(StackContextCheckerException):
     Provides:
 
     Super Class:
-        StackContextCheckerException
+        SearchContextCheckerException
     """
     MSG = "ArenaContextChecker failure."
     ERR_CODE = "ARENA_CONTEXT_CHECKER_FAILURE"

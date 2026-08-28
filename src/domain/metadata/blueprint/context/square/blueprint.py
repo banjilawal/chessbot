@@ -12,15 +12,15 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from err import SquareStackContextNullException
+from err import SquareSearchContextNullException
 from domain.model import Board, Coord, Formation, SquareContext, Blueprint, SquareState, Token
 
 
 @dataclass
 class SquareContextBlueprint(Blueprint[SquareContext]):
     """
-    Role:
-        - Container
+     Role:
+        1.  Metadata
 
     Responsibilities:
         1.  Provides values for hydrating a SquareContext instance.
@@ -46,5 +46,5 @@ class SquareContextBlueprint(Blueprint[SquareContext]):
     occupant: Optional[Token] = None
     state: Optional[SquareState] = None
     formation: Optional[Formation] = None
-    domain_null_exception = SquareStackContextNullException()
+    domain_null_exception = SquareSearchContextNullException()
     context_model_type = SquareContext

@@ -10,7 +10,8 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.BLUEPRINT PACKAGE ===========#
 
 # Packages
-from .searchable import *
+from .node import *
+from .register import *
 from .toggle import *
 
 # Modules

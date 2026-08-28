@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StackContextValidatorException
+from err import SearchContextValidatorException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# COORD_CONTEXT_VALIDATOR_FAILURE #======================#
-class CoordContextValidatorException(StackContextValidatorException):
+class CoordContextValidatorException(SearchContextValidatorException):
     """
     Role:
         - Error Tracing

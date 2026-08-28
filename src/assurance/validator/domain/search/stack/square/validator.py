@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import SquareValidationBundle, StackContextValidator
+from assurance import SquareValidationBundle, SearchContextValidator
 from domain import SquareSearchSearchContext
 from err import (
     ExcessSquareContextFlagsException, SquareContextCheckerException, SquareContextValidationRouteException,
@@ -21,7 +21,7 @@ from err import (
 from util import LoggingLevelRouter
 
 
-class SquareContextValidator(StackContextValidator[SquareSearchSearchContext]):
+class SquareContextValidator(SearchContextValidator[SquareSearchSearchContext]):
     """
     Role
         -  Integrity Assurance Worker

@@ -12,13 +12,14 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from err import CoordStackContextNullException
-from domain.model import CoordContext, Blueprint
+from domain import Blueprint, CoordSearchContext
+from err import CoordSearchContextNullException
+
 
 
 @dataclass
-class CoordContextBlueprint(Blueprint[CoordContext]):
+class CoordSearchContextBlueprint(Blueprint[CoordSearchContext]):
     row: Optional[int] = None
     column: Optional[int] = None
-    domain_null_exception = CoordStackContextNullException()
-    model_type = CoordContext
+    domain_null_exception = CoordSearchContextNullException()
+    model_type = CoordSearchContext

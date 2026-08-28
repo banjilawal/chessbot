@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StackContextValidatorException
+from err import SearchContextValidatorException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# BOARD_CONTEXT_VALIDATOR_FAILURE #======================#
-class BoardContextValidatorException(StackContextValidatorException):
+class BoardContextValidatorException(SearchContextValidatorException):
     """
     Role:
         - Error Tracing

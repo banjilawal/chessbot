@@ -12,15 +12,15 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from err import RankStackContextNullException
+from err import RankSearchContextNullException
 from domain.model import RankContext, Blueprint, Game, Player
 
 
 @dataclass
 class RankContextBlueprint(Blueprint[RankContext]):
     """
-    Role:
-        - Container
+     Role:
+        1.  Metadata
 
     Responsibilities:
         1.  Provides values for hydrating a RankContext instance.
@@ -42,6 +42,6 @@ class RankContextBlueprint(Blueprint[RankContext]):
     name: Optional[str] = None,
     player: Optional[Player] = None,
     game: Optional[Game] = None,
-    domain_null_exception = RankStackContextNullException()
+    domain_null_exception = RankSearchContextNullException()
     model_type = RankContext
     

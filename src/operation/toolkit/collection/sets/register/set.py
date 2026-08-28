@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Iterator, Optional, Tuple, cast
 
 from collection import SetCollection
-from domain.structure.searchable.register import Register
+from domain.structure.register import Register
 
 
 class RegisterSet(SetCollection[Register]):

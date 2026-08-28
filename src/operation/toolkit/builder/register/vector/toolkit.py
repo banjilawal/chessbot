@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from fabrication.builder import VectorRegisterAssembler
-from domain.structure.searchable.register import VectorRegister
+from domain.structure.register import VectorRegister
 from assurance.validator import VectorRegisterCertifier
 from operation.toolkit.builder.register.vector.toolkit import RegisterBuilderToolkit
 

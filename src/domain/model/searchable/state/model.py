@@ -12,7 +12,7 @@ from __future__ import annotations
 from domain import SearchableModel
 
 
-class StatefulModel(SearchableModel):
+class StateModel(SearchableModel):
     """
     Role:
         - Stateful Model

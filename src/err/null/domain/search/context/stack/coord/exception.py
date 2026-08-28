@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StackContextNullException
+from err import SearchContextNullException
 from artifcat import MethodResultType
 
 
 
 __all__ = [
     # ======================# COORD_CONTEXT_NULL_ERROR #======================#
-    "CoordStackContextNullException",
+    "CoordSearchContextNullException",
 ]
 
 # ======================# COORD_CONTEXT_NULL_ERROR #======================#
-class CoordStackContextNullException(StackContextNullException):
+class CoordSearchContextNullException(SearchContextNullException):
     """
     Role:
         - Error Tracing
@@ -43,7 +43,7 @@ class CoordStackContextNullException(StackContextNullException):
     Provides:
 
     Super Class:
-        StackContextNullException
+        SearchContextNullException
     """
     MSG = "CoordContext cannot be null."
     ERR_CODE = "COORD_CONTEXT_NULL_ERROR"

@@ -14,7 +14,7 @@ from typing import List, TypeVar
 from transit.dispatcher.builder import ContainerBuildDispatcher
 from collection import RegisterSet
 from domain.model import TargetVectorSet
-from domain.structure.searchable.register import VectorRegister
+from domain.structure.register import VectorRegister
 from artifcat import BuildResult
 from util import IdFactory, LoggingLevelRouter
 

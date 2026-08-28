@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from transit.dispatcher.builder.endpoint.axis.builder import AxisEndpointBuilder
 from domain.model import Vector
-from domain.structure.searchable.register import VectorRegister
+from domain.structure.register import VectorRegister
 from artifcat import BuildResult, ComputationResult
 from domain.schema import AxisTerminus
 from space import WestTraversalPattern

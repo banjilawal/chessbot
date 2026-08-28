@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from domain.model import Vector
-from domain.structure.searchable.register import VectorRegister
+from domain.structure.register import VectorRegister
 from artifcat import BuildResult
 from domain.schema.terminus.quadrant import QuadrantTerminus
 from util import LoggingLevelRouter

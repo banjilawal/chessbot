@@ -14,7 +14,7 @@ from dataclasses import dataclass
 
 from domain import ModelNullExceptionRoster, Square
 from err import (
-    SquareBlueprintNullException, SquareCarrierNullException, SquareStackContextNullException, SquareNullException
+    SquareBlueprintNullException, SquareCarrierNullException, SquareSearchContextNullException, SquareNullException
 )
 
 
@@ -41,4 +41,4 @@ class SquareNullExceptionRoster(ModelNullExceptionRoster[Square]):
     model: SquareNullException = SquareNullException()
     carrier: SquareCarrierNullException = SquareCarrierNullException()
     blueprint: SquareBlueprintNullException = SquareBlueprintNullException()
-    search_context: SquareStackContextNullException = SquareStackContextNullException()
+    search_context: SquareSearchContextNullException = SquareSearchContextNullException()

@@ -24,7 +24,7 @@ T = TypeVar("T", bound="SpaceReservoir")
 class SpaceReservoirBlueprint(Blueprint, ABC, Generic[T]):
     """
      Role:
-         -  DTO
+        1.  Metadata
 
      Responsibilities:
          1.  Provides values for hydrating a SpaceReservoir.

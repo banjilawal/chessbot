@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, Optional, Type, TypeVar, cast
+from typing import Generic, Type, TypeVar, cast
 
 from domain import Blueprint, Model
 from err import ModelNullException
@@ -21,7 +21,7 @@ T = TypeVar("T", bound="Model")
 class ModelBlueprint(Blueprint[T], ABC, Generic[T]):
     """
      Role:
-         -  Metadata
+        1.  Metadata
 
      Responsibilities:
          1.  Provide attributes for hydrating a Model.
@@ -29,7 +29,6 @@ class ModelBlueprint(Blueprint[T], ABC, Generic[T]):
      Attributes:
          domain_class: Type[T]
          domain_null_exception: StructureNullException
-         domain_class_name: str
 
      Provides:
 
@@ -40,12 +39,12 @@ class ModelBlueprint(Blueprint[T], ABC, Generic[T]):
     def __init__(
             self,
             domain_class: Type[Model],
-            domain_null_exception: Optional[ModelNullException] | None = ModelNullException(),
+            domain_null_exception: ModelNullException,
     ):
         """
         Args:
-            domain_class: Type[Model[T]]
-            domain_null_exception: Optional[ModelNullException]
+            domain_class: Type[T]
+            domain_null_exception: ModelNullException
         """
         super().__init__(
             domain_class=domain_class,
@@ -53,8 +52,8 @@ class ModelBlueprint(Blueprint[T], ABC, Generic[T]):
         )
     
     @property
-    def domain_class(self) -> Type[Model]:
-        return cast(Type[Model], super().domain_class)
+    def domain_class(self) -> Type[T]:
+        return cast(Type[T], super().domain_class)
     
     @property
     def domain_null_exception(self) -> ModelNullException:

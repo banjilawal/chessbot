@@ -22,7 +22,7 @@ T = TypeVar("T", bound="Space")
 class SpaceBlueprint(Blueprint, ABC, Generic[T]):
     """
      Role:
-         -  DTO
+        1.  Metadata
 
      Responsibilities:
          1.  Provides values for hydrating a Space object

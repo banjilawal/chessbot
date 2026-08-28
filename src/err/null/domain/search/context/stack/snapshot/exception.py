@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StackContextNullException
+from err import SearchContextNullException
 from artifcat import MethodResultType
 
 
 
 __all__ = [
     # ======================# SNAPSHOT_CONTEXT_NULL_ERROR #======================#
-    "SnapshotStackContextNullException",
+    "SnapshotSearchContextNullException",
 ]
 
 # ======================# SNAPSHOT_CONTEXT_NULL_ERROR #======================#
-class SnapshotStackContextNullException(StackContextNullException):
+class SnapshotSearchContextNullException(SearchContextNullException):
     """
     Role:
         - Error Tracing
@@ -43,7 +43,7 @@ class SnapshotStackContextNullException(StackContextNullException):
     Provides:
 
     Super Class:
-        StackContextNullException
+        SearchContextNullException
     """
     MSG = "SnapshotContext cannot be null."
     ERR_CODE = "SNAPSHOT_CONTEXT_NULL_ERROR"

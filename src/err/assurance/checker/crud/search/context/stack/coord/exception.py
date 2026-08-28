@@ -20,11 +20,11 @@ __all__ = [
     "CoordContextCheckerException",
 ]
 
-from err import StackContextCheckerException
+from err import SearchContextCheckerException
 
 
 # ======================# COORD_CONTEXT_CHECKER_FAILURE #======================#
-class CoordContextCheckerException(StackContextCheckerException):
+class CoordContextCheckerException(SearchContextCheckerException):
     """
     Role:
         - Error Tracing
@@ -45,7 +45,7 @@ class CoordContextCheckerException(StackContextCheckerException):
     Provides:
 
     Super Class:
-        StackContextCheckerException
+        SearchContextCheckerException
     """
     MSG = "CoordContextChecker failure."
     ERR_CODE = "COORD_CONTEXT_CHECKER_FAILURE"

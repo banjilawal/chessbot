@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StackContextNullException
+from err import SearchContextNullException
 from artifcat import MethodResultType
 
 
 
 __all__ = [
     # ======================# BOARD_CONTEXT_NULL_ERROR #======================#
-    "BoardStackContextNullException",
+    "BoardSearchContextNullException",
 ]
 
 # ======================# BOARD_CONTEXT_NULL_ERROR #======================#
-class BoardStackContextNullException(StackContextNullException):
+class BoardSearchContextNullException(SearchContextNullException):
     """
     Role:
         - Error Tracing
@@ -43,7 +43,7 @@ class BoardStackContextNullException(StackContextNullException):
     Provides:
 
     Super Class:
-        StackContextNullException
+        SearchContextNullException
     """
     MSG = "BoardContext cannot be null."
     ERR_CODE = "BOARD_CONTEXT_NULL_ERROR"

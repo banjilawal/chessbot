@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from fabrication.builder import CartesianToggleRegisterAssembler
-from domain.structure.searchable.register import CartesianToggleRegister
+from domain.structure.register import CartesianToggleRegister
 from assurance.validator import CartesianToggleRegisterCertifier
 from operation.toolkit.builder.register.toggle.toolkit import RegisterBuilderToolkit
 

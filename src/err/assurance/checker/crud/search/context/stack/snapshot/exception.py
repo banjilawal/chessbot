@@ -20,11 +20,11 @@ __all__ = [
     "SnapshotContextCheckerException",
 ]
 
-from err import StackContextCheckerException
+from err import SearchContextCheckerException
 
 
 # ======================# SNAPSHOT_CONTEXT_CHECKER_FAILURE #======================#
-class SnapshotContextCheckerException(StackContextCheckerException):
+class SnapshotContextCheckerException(SearchContextCheckerException):
     """
     Role:
         - Error Tracing
@@ -45,7 +45,7 @@ class SnapshotContextCheckerException(StackContextCheckerException):
     Provides:
 
     Super Class:
-        StackContextCheckerException
+        SearchContextCheckerException
     """
     MSG = "SnapshotContextChecker failure."
     ERR_CODE = "SNAPSHOT_CONTEXT_CHECKER_FAILURE"

@@ -19,8 +19,8 @@ from domain.model import Player, Blueprint, Game, Team
 @dataclass
 class PlayerQueryValidationBlueprint(QueryValidationBlueprint[Player]):
     """
-    Role:
-        - Container
+     Role:
+        1.  Metadata
 
     Responsibilities:
         1.  Provides values for hydrating a PlayerValidation instance.

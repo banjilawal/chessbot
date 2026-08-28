@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import StackContextValidator, TeamValidationBundle
+from assurance import SearchContextValidator, TeamValidationBundle
 from domain import Archetype, TeamSearchSearchContext
 from err import (
     ExcessTeamContextFlagsException, GameColorNullException, TeamContextCheckerException,
@@ -21,7 +21,7 @@ from err import (
 from util import LoggingLevelRouter
 
 
-class TeamContextValidator(StackContextValidator[TeamSearchSearchContext]):
+class TeamContextValidator(SearchContextValidator[TeamSearchSearchContext]):
     """
     Role
         -  Integrity Assurance Worker

@@ -20,7 +20,7 @@ from space import SoutheastQuadrant
 class SoutheastQuadrantBlueprint(QuadrantBlueprint[SoutheastQuadrant]):
     """
      Role:
-         -  DTO
+        1.  Metadata
 
      Responsibilities:
          1.  Provides values for hydrating a SoutheastQuadrant.

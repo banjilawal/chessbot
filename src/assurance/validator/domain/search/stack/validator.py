@@ -20,7 +20,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="ModelSearchContext")
 
 
-class StackContextValidator(SearchContextValidator[T], ABC, Generic[T]):
+class SearchContextValidator(SearchContextValidator[T], ABC, Generic[T]):
     """
     Role
         -  Integrity Assurance Worker
@@ -57,7 +57,7 @@ class StackContextValidator(SearchContextValidator[T], ABC, Generic[T]):
         Returns:
             ValidationResult[StackSearchContext]
         Raises:
-            StackContextCheckerException
+            SearchContextCheckerException
         """
         pass
     

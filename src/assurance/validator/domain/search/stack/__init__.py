@@ -16,4 +16,4 @@ from .team import *
 from .token import *
 
 # Module
-from .validator import StackContextValidator
+from .validator import SearchContextValidator

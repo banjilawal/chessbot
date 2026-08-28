@@ -11,7 +11,8 @@ version: 0.0.2
 
 # Packages
 from .binder import *
-from .searchable import *
+from .node import *
+from .register import *
 from .toggle import *
 
 # Modules

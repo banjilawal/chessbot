@@ -21,10 +21,10 @@ T = TypeVar("T", bound="Structure")
 class StructureBlueprint(Blueprint[T], ABC, Generic[T]):
     """
      Role:
-         -  Metadata
+        1.  Metadata
 
      Responsibilities:
-         1.  Provide attributes for hydrating a Structure .
+         1.  Provide attributes for hydrating a Structure.
 
      Attributes:
          domain_class: Type[T]

@@ -12,9 +12,9 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from collection import StackService
-from domain import InsertRequest, StatefulModel
+from domain import InsertRequest, StateModel
 
-T = TypeVar("T", bound="StatefulModel")
+T = TypeVar("T", bound="StateModel")
 
 class StackPushRequest(InsertRequest, ABC, Generic[T]):
     """

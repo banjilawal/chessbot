@@ -14,7 +14,7 @@ from typing import Optional, cast
 from domain.metadata.blueprint import VectorRegisterBlueprint
 from transit.dispatcher.builder import RegisterBuildDispatcher
 from err import VectorRegisterBuilderException
-from domain.structure.searchable.register import VectorRegister
+from domain.structure.register import VectorRegister
 from artifcat import BuildResult, MethodResultType
 from util import LoggingLevelRouter
 

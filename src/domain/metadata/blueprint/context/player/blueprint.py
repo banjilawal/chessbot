@@ -12,15 +12,15 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from err import PlayerStackContextNullException
+from err import PlayerSearchContextNullException
 from domain.model import PlayerContext, Blueprint, Game, Team
 
 
 @dataclass
 class PlayerContextBlueprint(Blueprint[PlayerContext]):
     """
-    Role:
-        - Container
+     Role:
+        1.  Metadata
 
     Responsibilities:
         1.  Provides values for hydrating a PlayerContext instance.
@@ -44,5 +44,5 @@ class PlayerContextBlueprint(Blueprint[PlayerContext]):
     team: Optional[Team] = None
     game: Optional[Game] = None
     class_name: Optional[str] = None
-    domain_null_exception = PlayerStackContextNullException()
+    domain_null_exception = PlayerSearchContextNullException()
     model_type = PlayerContext

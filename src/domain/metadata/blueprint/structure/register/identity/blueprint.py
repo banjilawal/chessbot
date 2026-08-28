@@ -1,0 +1,71 @@
+# src/domain/metadata/blueprint/structure/register/identity/blueprint.py
+
+"""
+Module: domain.metadata.blueprint.structure.register.identity.blueprint.structure
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+from __future__ import  annotations
+
+from typing import Type, cast
+
+from domain.metadata.blueprint.structure import RegisterBlueprint
+from err import IdentityRegisterNullException
+from domain.structure.register import IdentityRegister
+
+
+class IdentityRegisterBlueprint(RegisterBlueprint[IdentityRegister]):
+    """
+     Role:
+        1.  Metadata
+
+    Responsibilities:
+        1.  Provides values for hydrating a IdentityRegister object.
+
+    Attributes:
+        id: int
+        name: str
+        domain_class: Type[IdentityRegister]
+        domain_null_exception: IdentityRegisterNullException
+    Provides:
+
+    Super Class:
+        RegisterBlueprint
+    """
+    
+    def __init__(
+            self,
+            id: int,
+            name: str,
+            domain_class: Type[IdentityRegister] = IdentityRegister,
+            domain_null_exception: IdentityRegisterNullException |
+                            None = IdentityRegisterNullException(),
+    ):
+        """
+        Args:
+            id: int
+            name: str
+            domain_class: Type[IdentityRegister]
+            domain_null_exception: IdentityRegisterNullException
+        """
+        super().__init__(
+            a=id,
+            b=name,
+            domain_class=domain_class,
+            domain_null_exception=domain_null_exception,
+        )
+    
+    @property
+    def domain_class(self) -> Type[IdentityRegister]:
+        return cast(Type[IdentityRegister], super().domain_class)
+    
+    @property
+    def id(self) -> int:
+        return cast(int, self.a)
+    
+    @property
+    def name(self) -> str:
+        return cast(str, self.b)
+

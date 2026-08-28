@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Dict, List
 
-from domain.structure.searchable.node import SquareNode
+from domain.structure.node import SquareNode
 from graph.domain.graph import Graph
 from microservice.edge import Edge, EdgeBuilder, PushingEdgeException
 from system import BuildResult, InsertionResult, LoggingLevelRouter

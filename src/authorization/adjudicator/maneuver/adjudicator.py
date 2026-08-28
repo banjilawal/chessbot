@@ -17,7 +17,7 @@ from err import (
     ManeuverRequestAdjudicatorException
 )
 from domain.model import Maneuver, Path, Square
-from domain.structure.searchable.register import SquareRegister
+from domain.structure.register import SquareRegister
 from artifcat.report import ManeuverRequestDecision
 from domain.exchange.request import ManeuverRequest
 from artifcat import MethodResultType

@@ -10,11 +10,11 @@ version: 0.0.2
 from __future__ import annotations
 
 from collection.database import TokenDatabase
-from domain.model import Board, Player, StatefulModel, TeamState
+from domain.model import Board, Player, StateModel, TeamState
 from domain.schema import Archetype
 
 
-class Team(StatefulModel):
+class Team(StateModel):
     """
     Role:
         - Model

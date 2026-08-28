@@ -19,8 +19,8 @@ from domain.model import Rank, Blueprint, Game, Player
 @dataclass
 class RankQueryValidationBlueprint(QueryValidationBlueprint[Rank]):
     """
-    Role:
-        - Container
+     Role:
+        1.  Metadata
 
     Responsibilities:
         1.  Provides values for hydrating a RankValidation instance.

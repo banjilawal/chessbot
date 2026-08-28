@@ -17,17 +17,17 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# STACK_STACK_SEARCH_CONTEXT_NULL_ERROR #======================#
-    "StackContextNullException",
+    "SearchContextNullException",
 ]
 
 # ======================# STACK_STACK_SEARCH_CONTEXT_NULL_ERROR #======================#
-class StackContextNullException(SearchContextNullException):
+class SearchContextNullException(SearchContextNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required StackContextNullException failed.
+        1.  Indicating a required SearchContextNullException failed.
 
     Cannot Be Null.s:
             msg: Optional[str]
@@ -44,7 +44,7 @@ class StackContextNullException(SearchContextNullException):
     Super Class:
         SearchContextNullException
     """
-    MSG = "StackContextNullException cannot be null."
+    MSG = "SearchContextNullException cannot be null."
     ERR_CODE = "STACK_STACK_SEARCH_CONTEXT_NULL_ERROR"
     
     def __init__(

@@ -21,7 +21,7 @@ from space import Quadrant, QuadrantReservoir
 class QuadrantReservoirBlueprint(SpaceReservoirBlueprint[Quadrant]):
     """
      Role:
-         -  DTO
+        1.  Metadata
 
      Responsibilities:
          1.  Provides values for hydrating a QuadrantReservoir object.

@@ -14,7 +14,7 @@ from typing import Optional, cast
 from transit.dispatcher.builder import VectorValidator
 from err import SouthAxisEndPointBuilderException
 from domain.model import Vector
-from domain.structure.searchable.register import VectorRegister
+from domain.structure.register import VectorRegister
 from artifcat import BuildResult
 from domain.schema.terminus.axis import AxisTerminus
 from util import LoggingLevelRouter

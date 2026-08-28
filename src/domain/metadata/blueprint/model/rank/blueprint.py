@@ -18,8 +18,8 @@ from domain.schema import Persona
 
 class RankBlueprint(ModelBlueprint[Rank]):
     """
-    Role:
-        - Container
+     Role:
+        1.  Metadata
         -  DTO
         
     Responsibilities:

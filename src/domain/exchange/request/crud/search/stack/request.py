@@ -12,9 +12,9 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from collection import StackService
-from domain import SearchContext, SearchRequest, StatefulModel
+from domain import SearchContext, SearchRequest, StateModel
 
-T = TypeVar("T", bound="StatefulModel")
+T = TypeVar("T", bound="StateModel")
 
 class StackSearchRequest(SearchRequest, ABC, Generic[T]):
     """

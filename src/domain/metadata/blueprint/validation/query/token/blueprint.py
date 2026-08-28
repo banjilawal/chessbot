@@ -16,7 +16,7 @@ from collection.stack import TokenStackService
 from transit.dispatcher.validator import TokenContextValidator
 from domain.metadata.blueprint import QueryValidationBlueprint
 from err import (
-    TokenStackContextNullException, TokenQueryNullException, TokenStackEmptyException, TokenStackNullException
+    TokenSearchContextNullException, TokenQueryNullException, TokenStackEmptyException, TokenStackNullException
 )
 
 
@@ -24,8 +24,8 @@ from err import (
 @dataclass
 class TokenQueryValidationBlueprint(QueryValidationBlueprint[Token]):
     """
-    Role:
-        - Container
+     Role:
+        1.  Metadata
 
     Responsibilities:
         1.  Provides values for hydrating a TokenValidation instance.
@@ -50,7 +50,7 @@ class TokenQueryValidationBlueprint(QueryValidationBlueprint[Token]):
     query_domain_null_exception = TokenQueryNullException()
     stack_domain_null_exception = TokenStackNullException()
     empty_stack_exception = TokenStackEmptyException()
-    context_domain_null_exception = TokenStackContextNullException()
+    context_domain_null_exception = TokenSearchContextNullException()
     context_validator = TokenContextValidator()
 
 

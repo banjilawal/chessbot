@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StackContextNullException
+from err import SearchContextNullException
 from artifcat import MethodResultType
 
 
 
 __all__ = [
     # ======================# ARENA_CONTEXT_NULL_ERROR #======================#
-    "ArenaStackContextNullException",
+    "ArenaSearchContextNullException",
 ]
 
 # ======================# ARENA_CONTEXT_NULL_ERROR #======================#
-class ArenaStackContextNullException(StackContextNullException):
+class ArenaSearchContextNullException(SearchContextNullException):
     """
     Role:
         - Error Tracing
@@ -43,7 +43,7 @@ class ArenaStackContextNullException(StackContextNullException):
     Provides:
 
     Super Class:
-        StackContextNullException
+        SearchContextNullException
     """
     MSG = "ArenaContext cannot be null."
     ERR_CODE = "ARENA_CONTEXT_NULL_ERROR"

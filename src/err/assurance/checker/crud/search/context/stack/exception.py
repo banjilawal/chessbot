@@ -18,17 +18,17 @@ from err import ContextCheckerException
 
 __all__ = [
     # ======================# STACK_CONTEXT_CHECKER_FAILURE #======================#
-    "StackContextCheckerException",
+    "SearchContextCheckerException",
 ]
 
 # ======================# STACK_CONTEXT_CHECKER_FAILURE #======================#
-class StackContextCheckerException(ContextCheckerException):
+class SearchContextCheckerException(ContextCheckerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a StackContextChecker failed.
+        1.  Indicating assurance by a SearchContextChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class StackContextCheckerException(ContextCheckerException):
     Super Class:
         SearchContextCheckerException
     """
-    MSG = "StackContextChecker failure."
+    MSG = "SearchContextChecker failure."
     ERR_CODE = "STACK_CONTEXT_CHECKER_FAILURE"
     
     def __init__(

@@ -17,17 +17,17 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# STACK_CONTEXT_VALIDATOR_FAILURE #======================#
-    "StackContextValidatorException",
+    "SearchContextValidatorException",
 ]
 
 # ======================# STACK_CONTEXT_VALIDATOR_FAILURE #======================#
-class StackContextValidatorException(SearchContextValidatorException):
+class SearchContextValidatorException(SearchContextValidatorException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a StackContextValidator failed.
+        1.  Indicating assurance by a SearchContextValidator failed.
 
     Attributes:
             msg: Optional[str]
@@ -44,7 +44,7 @@ class StackContextValidatorException(SearchContextValidatorException):
     Super Class:
         SearchContextValidatorException
     """
-    MSG = "StackContextValidator failed."
+    MSG = "SearchContextValidator failed."
     ERR_CODE = "STACK_CONTEXT_VALIDATOR_FAILURE"
     
     def __init__(

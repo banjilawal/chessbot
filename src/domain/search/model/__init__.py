@@ -18,6 +18,7 @@ from .player import *
 from .team import *
 from .token import *
 from .square import *
+from .vector import *
 
 # Modules
 from  .context import ModelSearchContext

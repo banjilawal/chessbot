@@ -11,11 +11,10 @@ version: 0.0.2
 
 # Packages
 from .binder import *
-from .coord import *
+from .path import *
 from .rank import *
 from .scalar import *
-from .state import *
-from .vector import *
+from .searchable import *
 
 # Modules
 from .blueprint import ModelBlueprint

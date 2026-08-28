@@ -12,9 +12,9 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-from domain import DomainDataObject
+from domain import SearchableModel
 
-T = TypeVar("T", bound="DomainDataObject")
+T = TypeVar("T", bound="SearchableModel")
 
 
 class Structure(ABC, Generic[T]):

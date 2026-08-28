@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from err import VectorRegisterValidatorException
-from domain.structure.searchable.register import VectorRegister
+from domain.structure.register import VectorRegister
 from artifcat import ValidationResult
 from assurance import VectorRegisterIntegrityChecker
 from util import LoggingLevelRouter

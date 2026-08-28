@@ -9,15 +9,15 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from domain.metadata.blueprint import Blueprint
-from err import StackContextNullException
-from domain.model import Context
+from domain import Blueprint, SearchContext
+from err import SearchContextNullException
 
 
-class ContextBlueprint(Blueprint[Context]):
+
+class ContextBlueprint(Blueprint[SearchContext]):
     """
-    Role:
-        - Container
+     Role:
+        1.  Metadata
     
     Responsibilities:
         1.  Provides values for hydrating a T object.
@@ -28,6 +28,6 @@ class ContextBlueprint(Blueprint[Context]):
     
     Super Class:
     """
-    model_type = Context
-    domain_null_exception = StackContextNullException()
+    model_type = SearchContext
+    domain_null_exception = SearchContextNullException()
     context_validator_bootstrapper: ContextValidatorBootstrapper = ContextValidatorBootstrapper()

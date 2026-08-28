@@ -20,11 +20,11 @@ __all__ = [
     "PlayerContextCheckerException",
 ]
 
-from err import StackContextCheckerException
+from err import SearchContextCheckerException
 
 
 # ======================# PLAYER_CONTEXT_CHECKER_FAILURE #======================#
-class PlayerContextCheckerException(StackContextCheckerException):
+class PlayerContextCheckerException(SearchContextCheckerException):
     """
     Role:
         - Error Tracing
@@ -45,7 +45,7 @@ class PlayerContextCheckerException(StackContextCheckerException):
     Provides:
 
     Super Class:
-        StackContextCheckerException
+        SearchContextCheckerException
     """
     MSG = "PlayerContextChecker failure."
     ERR_CODE = "PLAYER_CONTEXT_CHECKER_FAILURE"

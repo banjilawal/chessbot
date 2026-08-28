@@ -20,8 +20,8 @@ T = TypeVar("T", bound="SearchableModel")
 
 class ToggleBlueprint(StructureBlueprint[Toggle], ABC, Generic[T]):
     """
-    Role:
-        - Container
+     Role:
+        1.  Metadata
     
     Responsibilities:
         1.  Provides values for hydrating a Toggle.

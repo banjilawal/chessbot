@@ -19,8 +19,8 @@ from config.setting import GameColor
 @dataclass
 class TokenContextBlueprint(Blueprint[TokenContext]):
     """
-    Role:
-        - Container
+     Role:
+        1.  Metadata
 
     Responsibilities:
         1.  Provides values for hydrating a TokenContext instance.

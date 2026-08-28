@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from err import GameStackContextNullException
+from err import GameSearchContextNullException
 from domain.model import Blueprint, Game, GameContext, Player
 
 
@@ -22,5 +22,5 @@ class GameContextBlueprint(Blueprint[GameContext]):
     name: Optional[str] = None,
     player: Optional[Player] = None,
     game: Optional[Game] = None,
-    domain_null_exception = GameStackContextNullException()
+    domain_null_exception = GameSearchContextNullException()
     model_type = GameContext

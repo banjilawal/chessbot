@@ -20,7 +20,7 @@ from space import NorthAxis
 class NorthAxisBlueprint(AxisBlueprint[NorthAxis]):
     """
      Role:
-         -  DTO
+        1.  Metadata
 
      Responsibilities:
          1.  Provides values for hydrating a NorthAxis.

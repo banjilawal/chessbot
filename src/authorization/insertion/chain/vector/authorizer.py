@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from authorization import AddNodeRequestAuthorizer
 from collection import VectorChain
-from domain.structure.searchable.node import VectorNode
+from domain.structure.node import VectorNode
 from artifcat.report import AuthorizationDecision
 from domain.exchange.request import AddVectorNodeRequest
 from operation.utility import AddVectorNodePermissionUtility

@@ -19,8 +19,8 @@ from domain.model import Vector
 
 class VectorSetBlueprint(ContainerBlueprint[Vector]):
     """
-    Role:
-        - Container
+     Role:
+        1.  Metadata
         -  DTO
 
     Responsibilities:

@@ -20,7 +20,7 @@ from space import WestAxis
 class WestAxisBlueprint(AxisBlueprint[WestAxis]):
     """
      Role:
-         -  DTO
+        1.  Metadata
 
      Responsibilities:
          1.  Provides values for hydrating a WestAxis.

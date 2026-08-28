@@ -19,8 +19,8 @@ from domain.model import Board, Coord, Formation, Square, Blueprint, SquareState
 @dataclass
 class SquareQueryValidationBlueprint(QueryValidationBlueprint[Square]):
     """
-    Role:
-        - Container
+     Role:
+        1.  Metadata
 
     Responsibilities:
         1.  Provides values for hydrating a SquareValidation instance.

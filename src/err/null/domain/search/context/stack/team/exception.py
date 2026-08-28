@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StackContextNullException
+from err import SearchContextNullException
 from artifcat import MethodResultType
 
 
 
 __all__ = [
     # ======================# TEAM_CONTEXT_NULL_ERROR #======================#
-    "TeamStackContextNullException",
+    "TeamSearchContextNullException",
 ]
 
 # ======================# TEAM_CONTEXT_NULL_ERROR #======================#
-class TeamStackContextNullException(StackContextNullException):
+class TeamSearchContextNullException(SearchContextNullException):
     """
     Role:
         - Error Tracing
@@ -43,7 +43,7 @@ class TeamStackContextNullException(StackContextNullException):
     Provides:
 
     Super Class:
-        StackContextNullException
+        SearchContextNullException
     """
     MSG = "TeamContext cannot be null."
     ERR_CODE = "TEAM_CONTEXT_NULL_ERROR"

@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Optional
 
-from domain.model import Board, Coord, SquareState, StatefulModel, Token
+from domain.model import Board, Coord, SquareState, StateModel, Token
 
 
-class Square(StatefulModel):
+class Square(StateModel):
     """
     Role:
         - Model

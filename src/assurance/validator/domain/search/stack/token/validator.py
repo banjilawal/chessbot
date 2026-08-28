@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional, cast
 
-from assurance import StackContextValidator, TokenValidationBundle
+from assurance import SearchContextValidator, TokenValidationBundle
 from config import GameColor
 from domain import Persona, TokenSearchSearchContext
 from artifcat import ValidationResult
@@ -23,7 +23,7 @@ from err import (
 from util import LoggingLevelRouter
 
 
-class TokenContextValidator(StackContextValidator[TokenSearchSearchContext]):
+class TokenContextValidator(SearchContextValidator[TokenSearchSearchContext]):
     """
     Role
         -  Integrity Assurance Worker

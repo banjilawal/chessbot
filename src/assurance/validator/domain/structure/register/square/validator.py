@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from err import SquareRegisterRootCheckerException
-from domain.structure.searchable.register import SquareRegister
+from domain.structure.register import SquareRegister
 from artifcat import ValidationResult
 from assurance.validator import Validator
 from operation.toolkit import SquareRegisterToolkit

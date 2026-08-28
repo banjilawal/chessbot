@@ -21,7 +21,7 @@ T = TypeVar("T", bound="Axis")
 class AxisBlueprint(SpaceBlueprint, Generic[T]):
     """
      Role:
-         -  DTO
+        1.  Metadata
 
      Responsibilities:
          1.  Provides values for hydrating an Axis.

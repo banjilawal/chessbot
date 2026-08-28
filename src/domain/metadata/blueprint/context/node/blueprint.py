@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional
 
-from err import NodeStackContextNullException
+from err import NodeSearchContextNullException
 from domain.model import DiscoveryStatus, Node, NodeContext, Blueprint, Square
 
 
@@ -22,5 +22,5 @@ class NodeContextBlueprint(Blueprint[NodeContext]):
     square: Optional[Square] = None
     predecessor: Optional[Node] = None
     discovery_status: Optional[DiscoveryStatus] = None
-    domain_null_exception = NodeStackContextNullException()
+    domain_null_exception = NodeSearchContextNullException()
     model_type = NodeContext

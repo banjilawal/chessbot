@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StackContextValidatorException
+from err import SearchContextValidatorException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# PLAYER_CONTEXT_VALIDATOR_FAILURE #======================#
-class PlayerContextValidatorException(StackContextValidatorException):
+class PlayerContextValidatorException(SearchContextValidatorException):
     """
     Role:
         - Error Tracing

@@ -14,7 +14,7 @@ from dataclasses import dataclass
 
 from domain import ModelNullExceptionRoster, Coord
 from err import (
-    CoordBlueprintNullException, CoordCarrierNullException, CoordStackContextNullException, CoordNullException
+    CoordBlueprintNullException, CoordCarrierNullException, CoordSearchContextNullException, CoordNullException
 )
 
 
@@ -41,4 +41,4 @@ class CoordNullExceptionRoster(ModelNullExceptionRoster[Coord]):
     model: CoordNullException = CoordNullException()
     carrier: CoordCarrierNullException = CoordCarrierNullException()
     blueprint: CoordBlueprintNullException = CoordBlueprintNullException()
-    search_context: CoordStackContextNullException = CoordStackContextNullException()
+    search_context: CoordSearchContextNullException = CoordSearchContextNullException()

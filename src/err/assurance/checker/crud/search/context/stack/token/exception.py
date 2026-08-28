@@ -20,11 +20,11 @@ __all__ = [
     "TokenContextCheckerException",
 ]
 
-from err import StackContextCheckerException
+from err import SearchContextCheckerException
 
 
 # ======================# TOKEN_CONTEXT_CHECKER_FAILURE #======================#
-class TokenContextCheckerException(StackContextCheckerException):
+class TokenContextCheckerException(SearchContextCheckerException):
     """
     Role:
         - Error Tracing
@@ -45,7 +45,7 @@ class TokenContextCheckerException(StackContextCheckerException):
     Provides:
 
     Super Class:
-        StackContextCheckerException
+        SearchContextCheckerException
     """
     MSG = "TokenContextChecker failure."
     ERR_CODE = "TOKEN_CONTEXT_CHECKER_FAILURE"

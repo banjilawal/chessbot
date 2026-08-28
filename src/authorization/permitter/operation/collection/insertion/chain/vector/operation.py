@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from authorization import AddVectorNodeRequest
-from domain.structure.searchable.node import VectorNode
+from domain.structure.node import VectorNode
 from operation import AddNode
 from artifcat import InsertionResult
 from util import LoggingLevelRouter

@@ -17,8 +17,8 @@ from domain.model import Blueprint, Board, Schema, BoardBinder
 @dataclass
 class BoardBinderBlueprint(ModelBlueprint[BoardBinder]):
     """
-    Role:
-        - Container
+     Role:
+        1.  Metadata
 
     Responsibilities:
         1.  Provides values for hydrating a BoardTeamBinder object.

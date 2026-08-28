@@ -14,7 +14,7 @@ from dataclasses import dataclass
 
 from domain import ModelNullExceptionRoster, Board
 from err import (
-    BoardBlueprintNullException, BoardCarrierNullException, BoardStackContextNullException, BoardNullException
+    BoardBlueprintNullException, BoardCarrierNullException, BoardSearchContextNullException, BoardNullException
 )
 
 
@@ -41,4 +41,4 @@ class BoardNullExceptionRoster(ModelNullExceptionRoster[Board]):
     model: BoardNullException = BoardNullException()
     carrier: BoardCarrierNullException = BoardCarrierNullException()
     blueprint: BoardBlueprintNullException = BoardBlueprintNullException()
-    search_context: BoardStackContextNullException = BoardStackContextNullException()
+    search_context: BoardSearchContextNullException = BoardSearchContextNullException()

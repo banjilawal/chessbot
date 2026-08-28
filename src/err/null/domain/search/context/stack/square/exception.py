@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StackContextNullException
+from err import SearchContextNullException
 from artifcat import MethodResultType
 
 
 
 __all__ = [
     # ======================# SQUARE_CONTEXT_NULL_ERROR #======================#
-    "SquareStackContextNullException",
+    "SquareSearchContextNullException",
 ]
 
 # ======================# SQUARE_CONTEXT_NULL_ERROR #======================#
-class SquareStackContextNullException(StackContextNullException):
+class SquareSearchContextNullException(SearchContextNullException):
     """
     Role:
         - Error Tracing
@@ -43,7 +43,7 @@ class SquareStackContextNullException(StackContextNullException):
     Provides:
 
     Super Class:
-        StackContextNullException
+        SearchContextNullException
     """
     MSG = "SquareContext cannot be null."
     ERR_CODE = "SQUARE_CONTEXT_NULL_ERROR"

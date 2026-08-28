@@ -10,10 +10,10 @@ version: 1.0.0
 from __future__ import annotations
 
 
-from domain.model import ArenaBinder, StatefulModel
+from domain.model import ArenaBinder, StateModel
 
 
-class Arena(StatefulModel):
+class Arena(StateModel):
     _id: int
     _arena_player_binder: ArenaBinder
     
