@@ -22,13 +22,13 @@ class SquareBlueprint(StateModelBlueprint[Square]):
         - Container
 
     Responsibilities:
-        1.  Provides values for instantiating a Square object.
+        1.  Provides values for hydrating a Square object.
 
     Attributes:
         board: Board,
         coord: Coord
         formation Optional[Formation]
-        model_class: Type[Square]
+        domain_class: Type[Square]
         
     Provides:
 
@@ -47,7 +47,7 @@ class SquareBlueprint(StateModelBlueprint[Square]):
             coord: Coord,
             id: Optional[int] | None = None,
             formation: Optional[Formation] | None = None,
-            model_class: Type[Square] = Square,
+            domain_class: Type[Square] = Square,
     ):
         """
         Args:
@@ -55,17 +55,17 @@ class SquareBlueprint(StateModelBlueprint[Square]):
             board: Board
             coord: Coord
             formation: OptionalFormation
-            model_class: Type[Square] = Type[Square]            
+            domain_class: Type[Square] = Type[Square]
         """
-        super().__init__(id=id, model_class=model_class)
+        super().__init__(id=id, domain_class=domain_class)
         self._name = name
         self._board = board
         self._coord = coord
         self._formation = formation
     
     @property
-    def model_class(self) -> Type[Square]:
-        return cast(Type[Square], super().model_class)
+    def domain_class(self) -> Type[Square]:
+        return cast(Type[Square], super().domain_class)
     
     @property
     def name(self) -> str:

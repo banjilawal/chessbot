@@ -24,13 +24,13 @@ class QuadrantReservoirBlueprint(SpaceReservoirBlueprint[Quadrant]):
          -  DTO
 
      Responsibilities:
-         1.  Provides values for instantiating a QuadrantReservoir object.
+         1.  Provides values for hydrating a QuadrantReservoir object.
 
      Attributes:
         origin: Vector,
         terminus: Optional[Vector] | None = None,
-        model_class: Type[QuadrantReservoir] = QuadrantReservoir,
-        null_exception: Optional[QuadrantReservoirNullException]
+        domain_class: Type[QuadrantReservoir] = QuadrantReservoir,
+        domain_null_exception: Optional[QuadrantReservoirNullException]
 
      Provides:
 
@@ -41,25 +41,25 @@ class QuadrantReservoirBlueprint(SpaceReservoirBlueprint[Quadrant]):
     def __init__(
             self,
             origin: Vector,
-            model_class: Type[QuadrantReservoir] = QuadrantReservoir,
-            null_exception: Optional[QuadrantReservoirNullException] | None = None,
+            domain_class: Type[QuadrantReservoir] = QuadrantReservoir,
+            domain_null_exception: Optional[QuadrantReservoirNullException] | None = None,
     ):
         """
         Args:
             origin: Vector,
-            model_class: Type[QuadrantReservoir] = QuadrantReservoir,
-            null_exception: Optional[QuadrantReservoirNullException]
+            domain_class: Type[QuadrantReservoir] = QuadrantReservoir,
+            domain_null_exception: Optional[QuadrantReservoirNullException]
         """
         super().__init__(
             origin=origin,
-            model_class=model_class,
-            null_exception=null_exception or QuadrantReservoirNullException(),
+            domain_class=domain_class,
+            domain_null_exception=domain_null_exception or QuadrantReservoirNullException(),
         )
     
     @property
-    def model_class(self) -> Type[QuadrantReservoir]:
-        return cast(Type[QuadrantReservoir], super().model_class)
+    def domain_class(self) -> Type[QuadrantReservoir]:
+        return cast(Type[QuadrantReservoir], super().domain_class)
     
     @property
-    def null_exception(self) -> QuadrantReservoirNullException:
-        return cast(QuadrantReservoirNullException, super().null_exception)
+    def domain_null_exception(self) -> QuadrantReservoirNullException:
+        return cast(QuadrantReservoirNullException, super().domain_null_exception)

@@ -1,4 +1,4 @@
-# src/domain/metadata/blueprint/structure/blueprint.py
+# src/domain/metadata/blueprint/structure/searchable/blueprint.py
 
 """
 Module: domain.metadata.blueprint.structure.blueprint
@@ -13,12 +13,11 @@ from abc import ABC
 from typing import Generic, Type, TypeVar, cast
 
 from domain import Blueprint, Structure
-from err import StructureNullException
 
 T = TypeVar("T", bound="Structure")
 
 
-class StructureBlueprint(Blueprint[T], ABC, Generic[T]):
+class SearchableStructureBlueprint(StructureBlueprint[T], ABC, Generic[T]):
     """
      Role:
          -  Metadata
@@ -29,6 +28,7 @@ class StructureBlueprint(Blueprint[T], ABC, Generic[T]):
      Attributes:
          domain_class: Type[T]
          domain_null_exception: StructureNullException
+         domain_class_name: str
 
      Provides:
 
@@ -36,20 +36,13 @@ class StructureBlueprint(Blueprint[T], ABC, Generic[T]):
         Blueprint
      """
     
-    def __init__(
-            self,
-            domain_class: Type[T],
-            domain_null_exception: StructureNullException ,
-    ):
+    def __init__(self, domain_class: Type[T], domain_null_exception: StructureNullException,):
         """
         Args:
             domain_class: Type[[T]
             domain_null_exception: StructureNullException
         """
-        super().__init__(
-            domain_class=domain_class,
-            domain_null_exception=domain_null_exception,
-        )
+        super().__init__(domain_class=domain_class, domain_null_exception=domain_null_exception)
     
     @property
     def domain_class(self) -> Type[T]:

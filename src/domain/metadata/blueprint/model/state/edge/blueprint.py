@@ -25,7 +25,7 @@ class EdgeBlueprint(StateModelBlueprint[Edge]):
         -  DTO
         
     Responsibilities:
-        1.  Provides values for instantiating a Edge object.
+        1.  Provides values for hydrating a Edge object.
 
     Attributes:
         square: Square
@@ -45,7 +45,7 @@ class EdgeBlueprint(StateModelBlueprint[Edge]):
         distance: int
         weight: Optional[int]
         heuristic: Optional[int]
-        null_exception: EdgeNullException
+        domain_null_exception: EdgeNullException
         owner: Edge
         owner_name: str
     """
@@ -55,6 +55,6 @@ class EdgeBlueprint(StateModelBlueprint[Edge]):
     distance: int
     weight: Optional[int]
     heuristic: Optional[int]
-    null_exception: EdgeNullException = EdgeNullException()
-    model_class: Edge = Type[Edge]
+    domain_null_exception: EdgeNullException = EdgeNullException()
+    domain_class: Edge = Type[Edge]
     owner_name: str = type(owner).__name__

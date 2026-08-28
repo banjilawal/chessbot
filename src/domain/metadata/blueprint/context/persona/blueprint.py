@@ -22,5 +22,5 @@ class PersonaContextBlueprint(Blueprint[PersonaContext]):
     quota: Optional[int]
     ransom: Optional[int]
     designation: Optional[str]
-    null_exception = PersonaStackContextNullException()
+    domain_null_exception = PersonaStackContextNullException()
     model_type = PersonaContext

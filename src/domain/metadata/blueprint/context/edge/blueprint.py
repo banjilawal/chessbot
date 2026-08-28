@@ -24,5 +24,5 @@ class EdgeContextBlueprint(Blueprint[EdgeContext]):
     weight: Optional[int] = None
     distance: Optional[int] = None
     heuristic: Optional[int] = None
-    null_exception = EdgeStackContextNullException()
+    domain_null_exception = EdgeStackContextNullException()
     model_type = EdgeContext

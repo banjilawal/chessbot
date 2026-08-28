@@ -1,7 +1,7 @@
-# src/domain/metadata/blueprint/structure/toggle/vector/blueprint.py
+# src/domain/metadata/blueprint/structure/toggle/cartesian/blueprint.py
 
 """
-Module: domain.metadata.blueprint.structure.toggle.vector.blueprint.structure
+Module: domain.metadata.blueprint.structure.toggle.cartesian.blueprint.structure
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from domain.metadata.blueprint.structure import ToggleBlueprint
-from domain.model import Coord, Vector
+from domain.model import Coord, Cartesian
 from domain.structure.toggle import CartesianToggle
 
 
@@ -23,48 +23,48 @@ class CartesianToggleBlueprint(ToggleBlueprint[CartesianToggle]):
         - Container
     
     Responsibilities:
-        1.  Provides values for instantiating a CartesianToggle object.
+        1.  Provides values for hydrating a CartesianToggle object.
     
     Attributes:
-        vector: Optional[Vector]
+        cartesian: Optional[Cartesian]
         coord: Optional[Coord]
-        model_class: Type[CartesianToggle]
+        domain_class: Type[CartesianToggle]
     
     Provides:
     
     Super Class:
         ToggleBlueprint
     """
-    _vector: Optional[Vector]
+    _cartesian: Optional[Cartesian]
     _coord: Optional[Coord]
     
     def __init__(
             self,
             coord: Optional[Coord] | None = None,
-            vector: Optional[Vector] | None = None,
-            model_class: Type[CartesianToggle] = CartesianToggle,
+            cartesian: Optional[Cartesian] | None = None,
+            domain_class: Type[CartesianToggle] = CartesianToggle,
     ):
         """
         Args:
-            vector: Optional[Vector]
+            cartesian: Optional[Cartesian]
             coord: Optional[Coord]
-            model_class: Type[CartesianToggle]
+            domain_class: Type[CartesianToggle]
         """
-        super().__init__(model_class=model_class)
+        super().__init__(domain_class=domain_class)
         self._coord = coord
-        self._vector = vector
+        self._cartesian = cartesian
     
     @property
-    def model_class(self) -> Type[CartesianToggle]:
-        return cast(Type[CartesianToggle], super().model_class)
+    def domain_class(self) -> Type[CartesianToggle]:
+        return cast(Type[CartesianToggle], super().domain_class)
     
     @property
     def coord(self) -> Optional[Coord]:
         return self._coord
     
     @property
-    def vector(self) -> Optional[Vector]:
-        return self._vector
+    def cartesian(self) -> Optional[Cartesian]:
+        return self._cartesian
     
     @property
     def excess_active_toggles(self) -> bool:
@@ -76,20 +76,20 @@ class CartesianToggleBlueprint(ToggleBlueprint[CartesianToggle]):
     
     @property
     def enabled_toggles_count(self) -> int:
-        return len([self._coord, self._vector])
+        return len([self._coord, self._cartesian])
     
     @property
-    def for_vector_toggle(self) -> bool:
+    def for_cartesian_toggle(self) -> bool:
         return (
-            self._vector is not None and
+            self._cartesian is not None and
             self._coord is None and
-            isinstance(self._vector, Vector)
+            isinstance(self._cartesian, Cartesian)
         )
     
     @property
     def for_coord_toggle(self) -> bool:
         return (
-                not self.for_vector_toggle and
+                not self.for_cartesian_toggle and
                 isinstance(self._coord, Coord)
         )
     

@@ -17,11 +17,11 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# STRUCTURE_WRAPPER_WRAPPERNULL_ERROR #======================#
-    "StructureWrapperNullException",
+    "StructureNullException",
 ]
 
 # ======================# STRUCTURE_WRAPPER_WRAPPERNULL_ERROR #======================#
-class StructureWrapperNullException(DomainObjectNullException):
+class StructureNullException(DomainObjectNullException):
     """
     Role:
         - Error Tracing

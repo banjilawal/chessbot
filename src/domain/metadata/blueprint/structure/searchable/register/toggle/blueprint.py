@@ -25,13 +25,13 @@ class CartesianToggleRegisterBlueprint(
         - Container
     
     Responsibilities:
-        1.  Provides values for instantiating a CartesianToggle object.
+        1.  Provides values for hydrating a CartesianToggle object.
     
     Attributes:
         a: CartesianToggle
         b: CartesianToggle
-        model_class: Optional[Type[CartesianToggleRegister]]
-        null_exception: Optional[CartesianToggleRegisterNullException]
+        domain_class: Optional[Type[CartesianToggleRegister]]
+        domain_null_exception: Optional[CartesianToggleRegisterNullException]
     
     Provides:
     
@@ -43,32 +43,32 @@ class CartesianToggleRegisterBlueprint(
             self,
             u: CartesianToggle,
             v: CartesianToggle,
-            model_class: Optional[Type[CartesianToggleRegister]]
+            domain_class: Optional[Type[CartesianToggleRegister]]
                          | None = CartesianToggleRegister,
-            null_exception: Optional[CartesianToggleRegisterNullException] |
+            domain_null_exception: Optional[CartesianToggleRegisterNullException] |
                             None = CartesianToggleRegisterNullException(),
     ):
         """
         Args:
             u: CartesianToggle
             v: CartesianToggle
-            model_class: Optional[Type[CartesianToggleRegister]]
-            null_exception: Optional[CartesianToggleRegisterNullException]
+            domain_class: Optional[Type[CartesianToggleRegister]]
+            domain_null_exception: Optional[CartesianToggleRegisterNullException]
         """
         super().__init__(
             a=u,
             b=v,
-            model_class=model_class,
-            null_exception=null_exception
+            domain_class=domain_class,
+            domain_null_exception=domain_null_exception
         )
     
     @property
-    def model_class(self) -> Type[CartesianToggle]:
-        return cast(Type[CartesianToggle], super().model_class)
+    def domain_class(self) -> Type[CartesianToggle]:
+        return cast(Type[CartesianToggle], super().domain_class)
     
     @property
-    def null_exception(self) -> CartesianToggleRegisterNullException:
-        return cast(CartesianToggleRegisterNullException, super().null_exception)
+    def domain_null_exception(self) -> CartesianToggleRegisterNullException:
+        return cast(CartesianToggleRegisterNullException, super().domain_null_exception)
     
     @property
     def u(self) -> CartesianToggle:

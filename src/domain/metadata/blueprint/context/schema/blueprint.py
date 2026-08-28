@@ -22,5 +22,5 @@ class SchemaContextBlueprint(Blueprint[SchemaContext]):
     
     name: Optional[str] | None = None
     color: Optional[GameColor] | None = None
-    null_exception = SchemaStackContextNullException()
+    domain_null_exception = SchemaStackContextNullException()
     model_type = SchemaContext

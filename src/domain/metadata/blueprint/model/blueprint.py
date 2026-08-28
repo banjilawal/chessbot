@@ -24,12 +24,12 @@ class ModelBlueprint(Blueprint[T], ABC, Generic[T]):
          -  Metadata
 
      Responsibilities:
-         1.  Provide attribute-value tuples for hydrating a Model.
+         1.  Provide attributes for hydrating a Model.
 
      Attributes:
-         model_class: Type[T]
-         null_exception: StructureNullException
-         model_class_name: str
+         domain_class: Type[T]
+         domain_null_exception: StructureNullException
+         domain_class_name: str
 
      Provides:
 
@@ -39,25 +39,25 @@ class ModelBlueprint(Blueprint[T], ABC, Generic[T]):
     
     def __init__(
             self,
-            model_class: Type[Model],
-            null_exception: Optional[ModelNullException] | None = ModelNullException(),
+            domain_class: Type[Model],
+            domain_null_exception: Optional[ModelNullException] | None = ModelNullException(),
     ):
         """
         Args:
-            model_class: Type[Model[T]]
-            null_exception: Optional[ModelNullException]
+            domain_class: Type[Model[T]]
+            domain_null_exception: Optional[ModelNullException]
         """
         super().__init__(
-            model_class=model_class,
-            null_exception=null_exception
+            domain_class=domain_class,
+            domain_null_exception=domain_null_exception
         )
     
     @property
-    def model_class(self) -> Type[Model]:
-        return cast(Type[Model], super().model_class)
+    def domain_class(self) -> Type[Model]:
+        return cast(Type[Model], super().domain_class)
     
     @property
-    def null_exception(self) -> ModelNullException:
-        return cast(ModelNullException, super().null_exception)
+    def domain_null_exception(self) -> ModelNullException:
+        return cast(ModelNullException, super().domain_null_exception)
     
     

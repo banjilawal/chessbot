@@ -25,13 +25,13 @@ class AxisReservoirBlueprint(SpaceReservoirBlueprint[AxisReservoir]):
          -  DTO
 
      Responsibilities:
-         1.  Provides values for instantiating an AxisReservoir object.
+         1.  Provides values for hydrating an AxisReservoir object.
 
      Attributes:
         origin: Vector,
         terminus: Optional[Vector] | None = None,
-        model_class: Type[AxisReservoir] = AxisReservoir,
-        null_exception: Optional[AxisReservoirNullException]
+        domain_class: Type[AxisReservoir] = AxisReservoir,
+        domain_null_exception: Optional[AxisReservoirNullException]
 
      Provides:
 
@@ -43,27 +43,27 @@ class AxisReservoirBlueprint(SpaceReservoirBlueprint[AxisReservoir]):
             self,
             origin: Vector,
             terminus: Optional[Vector] | None = None,
-            model_class: Type[AxisReservoir] = AxisReservoir,
-            null_exception: Optional[AxisReservoirNullException] | None = None,
+            domain_class: Type[AxisReservoir] = AxisReservoir,
+            domain_null_exception: Optional[AxisReservoirNullException] | None = None,
     ):
         """
         Args:
             origin: Vector,
             terminus: Optional[Vector] | None = None,
-            model_class: Type[AxisReservoir] = AxisReservoir,
-            null_exception: Optional[AxisReservoirNullException]
+            domain_class: Type[AxisReservoir] = AxisReservoir,
+            domain_null_exception: Optional[AxisReservoirNullException]
         """
         super().__init__(
             origin=origin,
             terminus=terminus,
-            model_class=model_class,
-            null_exception=null_exception or AxisReservoirNullException(),
+            domain_class=domain_class,
+            domain_null_exception=domain_null_exception or AxisReservoirNullException(),
         )
     
     @property
     def space_class(self) -> Type[AxisReservoir]:
-        return cast(Type[AxisReservoir], super().model_class)
+        return cast(Type[AxisReservoir], super().domain_class)
     
     @property
-    def null_exception(self) -> AxisReservoirNullException:
-        return cast(AxisReservoirNullException, super().null_exception)
+    def domain_null_exception(self) -> AxisReservoirNullException:
+        return cast(AxisReservoirNullException, super().domain_null_exception)

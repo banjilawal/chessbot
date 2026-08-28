@@ -33,9 +33,9 @@ class QueryValidationBlueprint(Blueprint[T]):
     Attributes:
         query_model_type: Query
         stack_model_type: StackService
-        stack_null_exception: StackNullException
-        query_null_exception: QueryNullException
-        context_null_exception: ContextNullException
+        stack_domain_null_exception: StackNullException
+        query_domain_null_exception: QueryNullException
+        context_domain_null_exception: ContextNullException
         empty_stack_exception: StackEmptyException
         context_validator: ContextValidator
         priming_validator: ValidatorPrimer
@@ -46,9 +46,9 @@ class QueryValidationBlueprint(Blueprint[T]):
     """
     query_model_type: Query[T]
     stack_model_type: StackService[T]
-    stack_null_exception: StackNullException
-    query_null_exception: QueryNullException
-    context_null_exception: StackContextNullException
+    stack_domain_null_exception: StackNullException
+    query_domain_null_exception: QueryNullException
+    context_domain_null_exception: StackContextNullException
     empty_stack_exception: StackEmptyException
     context_validator: StackSearchContextValidator[T]
     priming_validator: PrimingValidator = PrimingValidator()

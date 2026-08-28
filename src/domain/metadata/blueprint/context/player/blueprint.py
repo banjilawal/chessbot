@@ -23,7 +23,7 @@ class PlayerContextBlueprint(Blueprint[PlayerContext]):
         - Container
 
     Responsibilities:
-        1.  Provides values for instantiating a PlayerContext instance.
+        1.  Provides values for hydrating a PlayerContext instance.
 
     Attributes:
         id: Optional[id]
@@ -31,7 +31,7 @@ class PlayerContextBlueprint(Blueprint[PlayerContext]):
         team: Optional[Team]
         game: Optional[Game]
         class_name: Optional[str]
-        null_exception = PlayerContextNullException
+        domain_null_exception = PlayerContextNullException
         model_type = PlayerContext
 
     Provides:
@@ -44,5 +44,5 @@ class PlayerContextBlueprint(Blueprint[PlayerContext]):
     team: Optional[Team] = None
     game: Optional[Game] = None
     class_name: Optional[str] = None
-    null_exception = PlayerStackContextNullException()
+    domain_null_exception = PlayerStackContextNullException()
     model_type = PlayerContext

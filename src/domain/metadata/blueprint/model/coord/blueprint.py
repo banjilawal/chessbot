@@ -21,7 +21,7 @@ class CoordBlueprint(ModelBlueprint[Coord]):
         - Container
 
     Responsibilities:
-        1.  Provides values for instantiating a Coord object.
+        1.  Provides values for hydrating a Coord object.
 
     Attributes:
         row: int
@@ -39,21 +39,21 @@ class CoordBlueprint(ModelBlueprint[Coord]):
             self,
             row: int,
             column: int,
-            model_class: Type[Coord] = Coord,
+            domain_class: Type[Coord] = Coord,
     ):
         """
         Args:
             row: int
             column: int
-            model_class: Type[Coord]
+            domain_class: Type[Coord]
         """
-        super().__init__(model_class=model_class)
+        super().__init__(domain_class=domain_class)
         self._row = row
         self._column = column
         
     @property
-    def model_class(self) -> Type[Coord]:
-        return cast(Type[Coord], super().model_class)
+    def domain_class(self) -> Type[Coord]:
+        return cast(Type[Coord], super().domain_class)
     
     @property
     def row(self) -> int:

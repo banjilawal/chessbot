@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StructureWrapperNullException
+from err import StructureNullException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# NODE_NULL_ERROR #======================#
-class NodeNullException(StructureWrapperNullException):
+class NodeNullException(StructureNullException):
     """
     Role:
         - Error Tracing

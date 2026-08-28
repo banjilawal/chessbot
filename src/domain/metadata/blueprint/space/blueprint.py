@@ -25,12 +25,12 @@ class SpaceBlueprint(Blueprint, ABC, Generic[T]):
          -  DTO
 
      Responsibilities:
-         1.  Provides values for instantiating a Space object
+         1.  Provides values for hydrating a Space object
          2.  DTO
 
      Attributes:
-         model_class: Type[T]
-         null_exception: Optional[SpaceNullException]
+         domain_class: Type[T]
+         domain_null_exception: Optional[SpaceNullException]
          
      Provides:
 
@@ -44,17 +44,17 @@ class SpaceBlueprint(Blueprint, ABC, Generic[T]):
             self,
             origin: Vector,
             terminus: Vector,
-            model_class: Type[T],
-            null_exception: SpaceNullException,
+            domain_class: Type[T],
+            domain_null_exception: SpaceNullException,
     ):
         """
         Args:
             origin: Vector
-            model_class: Type[Space[T]]
+            domain_class: Type[Space[T]]
             terminus: Optional[Vector]
-            null_exception: SpaceNullException
+            domain_null_exception: SpaceNullException
         """
-        super().__init__(model_class=model_class, null_exception=null_exception)
+        super().__init__(domain_class=domain_class, domain_null_exception=domain_null_exception)
         self._origin = origin
         self._terminus = terminus
         
@@ -68,11 +68,11 @@ class SpaceBlueprint(Blueprint, ABC, Generic[T]):
 
     @property
     def space_class(self) -> Type[T]:
-        return cast(Type[T], super().model_class)
+        return cast(Type[T], super().domain_class)
     
     @property
-    def null_exception(self) -> SpaceNullException:
-        return cast(SpaceNullException, super().null_exception)
+    def domain_null_exception(self) -> SpaceNullException:
+        return cast(SpaceNullException, super().domain_null_exception)
     
     @property
     def endpoints_to_list(self) -> List[Vector]:

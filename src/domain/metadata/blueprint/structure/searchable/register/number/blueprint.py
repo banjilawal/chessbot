@@ -22,13 +22,13 @@ class NumberRegisterBlueprint(RegisterBlueprint[NumberRegister]):
         - Container
 
     Responsibilities:
-        1.  Provides values for instantiating a NumberRegister object.
+        1.  Provides values for hydrating a NumberRegister object.
 
     Attributes:
         origin: Number
         destination: Number
-        model_class: Type[NumberRegister]
-        null_exception: Optional[NumberRegisterNullException]
+        domain_class: Type[NumberRegister]
+        domain_null_exception: Optional[NumberRegisterNullException]
 
     Provides:
 
@@ -40,22 +40,22 @@ class NumberRegisterBlueprint(RegisterBlueprint[NumberRegister]):
             self,
             a: int,
             b: int,
-            model_class: Type[NumberRegister] = NumberRegister,
-            null_exception: Optional[NumberRegisterNullException] |
+            domain_class: Type[NumberRegister] = NumberRegister,
+            domain_null_exception: Optional[NumberRegisterNullException] |
                             None = NumberRegisterNullException(),
     ):
         """
         Args:
             a: int
             b: int
-            model_class: Type[NumberRegister]
-            null_exception: Optional[NumberRegisterNullException]
+            domain_class: Type[NumberRegister]
+            domain_null_exception: Optional[NumberRegisterNullException]
         """
-        super().__init__(a=a, b=b, model_class=model_class, null_exception=null_exception)
+        super().__init__(a=a, b=b, domain_class=domain_class, domain_null_exception=domain_null_exception)
     
     @property
-    def model_class(self) -> Type[NumberRegister]:
-        return cast(Type[NumberRegister], super().model_class)
+    def domain_class(self) -> Type[NumberRegister]:
+        return cast(Type[NumberRegister], super().domain_class)
     
     @property
     def a(self) -> int:
@@ -66,5 +66,5 @@ class NumberRegisterBlueprint(RegisterBlueprint[NumberRegister]):
         return cast(int, self.b)
     
     @property
-    def null_exception(self) -> NumberRegisterNullException:
-        return cast(NumberRegisterNullException, super().null_exception)
+    def domain_null_exception(self) -> NumberRegisterNullException:
+        return cast(NumberRegisterNullException, super().domain_null_exception)

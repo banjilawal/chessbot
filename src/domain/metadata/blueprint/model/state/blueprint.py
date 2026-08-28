@@ -23,12 +23,12 @@ class StateModelBlueprint(ModelBlueprint[[T]]):
          -  Metadata
 
      Responsibilities:
-         1.  Provides values for instantiating a StateModel object.
+         1.  Provides values for hydrating a StateModel object.
          2.  DTO
 
      Attributes:
          id: Optional[int]
-         model_class: Type[StateModel[T]]
+         domain_class: Type[StateModel[T]]
          
      Provides:
 
@@ -39,20 +39,20 @@ class StateModelBlueprint(ModelBlueprint[[T]]):
     
     def __init__(
             self,
-            model_class: Type[StatefulModel[T]],
+            domain_class: Type[StatefulModel[T]],
             id: Optional[int] | None = None,
     ):
         """
         Args:
-            model_class: Type[Model[T]]
+            domain_class: Type[Model[T]]
         
         """
-        super().__init__(model_class=model_class,)
+        super().__init__(domain_class=domain_class, )
         self._id = id
     
     @property
-    def model_class(self) -> Type[Model[T]]:
-        return cast(Type[Model[T]], super().model_class)
+    def domain_class(self) -> Type[Model[T]]:
+        return cast(Type[Model[T]], super().domain_class)
     
     @property
     def id(self) -> Optional[int]:

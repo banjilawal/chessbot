@@ -24,11 +24,11 @@ class NodeBlueprint(Blueprint[T], ABC, Generic[T]):
          -  DTO
 
      Responsibilities:
-         1.  Provides values for instantiating a Node object
+         1.  Provides values for hydrating a Node object
 
      Attributes:
-         model_class: Type[Node]
-         null_exception: Optional[NodeNullException]
+         domain_class: Type[T]
+         domain_null_exception: Optional[NodeNullException]
 
      Provides:
 
@@ -36,18 +36,18 @@ class NodeBlueprint(Blueprint[T], ABC, Generic[T]):
         Blueprint
      """
     
-    def __init__(self, model_class: Type[T], null_exception: NodeNullException,):
+    def __init__(self, domain_class: Type[T], domain_null_exception: NodeNullException, ):
         """
         Args:
-            model_class: Type[Node]
-            null_exception: Optional[NodeModelNullException]
+            domain_class: Type[Node]
+            domain_null_exception: Optional[NodeModelNullException]
         """
-        super().__init__(model_class=model_class, null_exception=null_exception)
+        super().__init__(domain_class=domain_class, domain_null_exception=domain_null_exception)
         
     @property
-    def model_class(self) -> Type[T]:
-        return cast(Type[T], super()._model_class)
+    def domain_class(self) -> Type[T]:
+        return cast(Type[T], super()._domain_class)
     
     @property
-    def null_exception(self) -> NodeNullException:
-        return cast(NodeNullException, super().null_exception)
+    def domain_null_exception(self) -> NodeNullException:
+        return cast(NodeNullException, super().domain_null_exception)

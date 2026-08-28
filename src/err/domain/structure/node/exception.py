@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StructuralWrapperException
+from err import StructureException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# NODE_ERROR #======================#
-class NodeException(StructuralWrapperException):
+class NodeException(StructureException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class NodeException(StructuralWrapperException):
     Provides:
 
     Super Class:
-        StructuralWrapperException
+        StructureException
     """
     MSG = "Node error."
     ERR_CODE = "NODE_ERROR"

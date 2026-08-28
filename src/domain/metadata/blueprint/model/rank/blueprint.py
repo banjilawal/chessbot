@@ -23,7 +23,7 @@ class RankBlueprint(ModelBlueprint[Rank]):
         -  DTO
         
     Responsibilities:
-        1.  Provides values for instantiating a Rank object.
+        1.  Provides values for hydrating a Rank object.
         2.  DTO
         
     Attributes:
@@ -39,19 +39,19 @@ class RankBlueprint(ModelBlueprint[Rank]):
     def __init__(
             self,
             persona: Persona,
-            model_class: Type[Rank] = Rank,
+            domain_class: Type[Rank] = Rank,
     ):
         """
         Args:
             persona: Persona
-            model_class: Type[Rank]
+            domain_class: Type[Rank]
         """
-        super().__init__(model_class=model_class)
+        super().__init__(domain_class=domain_class)
         self._persona = persona
         
     @property
-    def model_class(self) -> Type[Rank]:
-        return cast(Type[Rank], super().model_class)
+    def domain_class(self) -> Type[Rank]:
+        return cast(Type[Rank], super().domain_class)
     
     @property
     def persona(self) -> Persona:

@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# ENTITY_CARRIER_ERROR #======================#
-    "StructuralWrapperException",
+    # ======================# STRUCTURE_ERROR #======================#
+    "StructureException",
 ]
 
-# ======================# ENTITY_CARRIER_ERROR #======================#
-class StructuralWrapperException(DomainObjectException):
+# ======================# STRUCTURE_ERROR #======================#
+class StructureException(DomainObjectException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an StructuralWrapper encountered an error.
+        1.  Indicating a Structure encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class StructuralWrapperException(DomainObjectException):
     Super Class:
         DomainObjectException
     """
-    MSG = "StructuralWrapper error."
-    ERR_CODE = "ENTITY_CARRIER_ERROR"
+    MSG = "Structure error."
+    ERR_CODE = "STRUCTURE_ERROR"
     
     def __init__(
             self,

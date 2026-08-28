@@ -20,7 +20,7 @@ class ContextBlueprint(Blueprint[Context]):
         - Container
     
     Responsibilities:
-        1.  Provides values for instantiating a T object.
+        1.  Provides values for hydrating a T object.
     
     Attributes:
     
@@ -29,5 +29,5 @@ class ContextBlueprint(Blueprint[Context]):
     Super Class:
     """
     model_type = Context
-    null_exception = StackContextNullException()
+    domain_null_exception = StackContextNullException()
     context_validator_bootstrapper: ContextValidatorBootstrapper = ContextValidatorBootstrapper()

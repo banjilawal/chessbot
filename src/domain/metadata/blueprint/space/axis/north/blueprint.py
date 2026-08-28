@@ -23,13 +23,13 @@ class NorthAxisBlueprint(AxisBlueprint[NorthAxis]):
          -  DTO
 
      Responsibilities:
-         1.  Provides values for instantiating a NorthAxis.
+         1.  Provides values for hydrating a NorthAxis.
 
 
      Attributes:
         origin: Vector
-        model_class: Type[NorthAxis]
-        null_exception: Optional[NorthAxisNullException]
+        domain_class: Type[NorthAxis]
+        domain_null_exception: Optional[NorthAxisNullException]
 
      Provides:
 
@@ -41,27 +41,27 @@ class NorthAxisBlueprint(AxisBlueprint[NorthAxis]):
             self,
             origin: Vector,
             terminus: Optional[Vector] | None = None,
-            model_class: Type[NorthAxis] = NorthAxis,
-            null_exception: Optional[NorthAxisNullException] | None = None,
+            domain_class: Type[NorthAxis] = NorthAxis,
+            domain_null_exception: Optional[NorthAxisNullException] | None = None,
     ):
         """
         Args:
             origin: Vector
             terminus: Optional[Vector]
-            model_class: Type[NorthAxis]
-            null_exception: Optional[NorthAxisNullException]
+            domain_class: Type[NorthAxis]
+            domain_null_exception: Optional[NorthAxisNullException]
         """
         super().__init__(
             origin=origin,
             terminus=terminus,
-            model_class=model_class,
-            null_exception=null_exception or NorthAxisNullException(),
+            domain_class=domain_class,
+            domain_null_exception=domain_null_exception or NorthAxisNullException(),
         )
     
     @property
-    def model_class(self) -> Type[NorthAxis]:
-        return cast(Type[NorthAxis], super().model_class)
+    def domain_class(self) -> Type[NorthAxis]:
+        return cast(Type[NorthAxis], super().domain_class)
     
     @property
-    def null_exception(self) -> NorthAxisNullException:
-        return cast(NorthAxisNullException, super().null_exception)
+    def domain_null_exception(self) -> NorthAxisNullException:
+        return cast(NorthAxisNullException, super().domain_null_exception)

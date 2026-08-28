@@ -156,7 +156,7 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
 
             # Validation subflow for owner SnapshotContexts.
             if context.plyer is not None:
-                validation = player_service.execute.search_service(candidate=context.model_class)
+                validation = player_service.execute.search_service(candidate=context.domain_class)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
                 # On validation success return the player_SnapshotContext in the ValidationResult

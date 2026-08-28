@@ -22,13 +22,13 @@ class IdentityRegisterBlueprint(RegisterBlueprint[IdentityRegister]):
         - Container
 
     Responsibilities:
-        1.  Provides values for instantiating a IdentityRegister object.
+        1.  Provides values for hydrating a IdentityRegister object.
 
     Attributes:
         id: int
         name: str
-        model_class: Type[IdentityRegister]
-        null_exception: IdentityRegisterNullException
+        domain_class: Type[IdentityRegister]
+        domain_null_exception: IdentityRegisterNullException
     Provides:
 
     Super Class:
@@ -39,27 +39,27 @@ class IdentityRegisterBlueprint(RegisterBlueprint[IdentityRegister]):
             self,
             id: int,
             name: str,
-            model_class: Type[IdentityRegister] = IdentityRegister,
-            null_exception: IdentityRegisterNullException |
+            domain_class: Type[IdentityRegister] = IdentityRegister,
+            domain_null_exception: IdentityRegisterNullException |
                             None = IdentityRegisterNullException(),
     ):
         """
         Args:
             id: int
             name: str
-            model_class: Type[IdentityRegister]
-            null_exception: IdentityRegisterNullException
+            domain_class: Type[IdentityRegister]
+            domain_null_exception: IdentityRegisterNullException
         """
         super().__init__(
             a=id,
             b=name,
-            model_class=model_class,
-            null_exception=null_exception,
+            domain_class=domain_class,
+            domain_null_exception=domain_null_exception,
         )
     
     @property
-    def model_class(self) -> Type[IdentityRegister]:
-        return cast(Type[IdentityRegister], super().model_class)
+    def domain_class(self) -> Type[IdentityRegister]:
+        return cast(Type[IdentityRegister], super().domain_class)
     
     @property
     def id(self) -> int:

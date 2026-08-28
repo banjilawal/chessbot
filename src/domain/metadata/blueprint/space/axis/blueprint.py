@@ -24,12 +24,12 @@ class AxisBlueprint(SpaceBlueprint, Generic[T]):
          -  DTO
 
      Responsibilities:
-         1.  Provides values for instantiating an Axis.
+         1.  Provides values for hydrating an Axis.
 
      Attributes:
         origin: Vector
-        model_class: Type[Axis]
-        null_exception: Optional[AxisNullException]
+        domain_class: Type[Axis]
+        domain_null_exception: Optional[AxisNullException]
          
      Provides:
 
@@ -40,31 +40,31 @@ class AxisBlueprint(SpaceBlueprint, Generic[T]):
     def __init__(
             self,
             origin: Vector,
-            model_class: Type[T],
+            domain_class: Type[T],
             terminus: Optional[Vector] | None = None,
-            null_exception: Optional[AxisNullException] | None = AxisNullException(),
+            domain_null_exception: Optional[AxisNullException] | None = AxisNullException(),
     ):
         """
         Args:
             origin: Vector
             terminus: Optional[Vector]
-            model_class: Type[Axis]
-            null_exception: Optional[AxisNullException]
+            domain_class: Type[Axis]
+            domain_null_exception: Optional[AxisNullException]
         """
         super().__init__(
             origin=origin,
             terminus=terminus,
-            model_class=model_class,
-            null_exception=null_exception
+            domain_class=domain_class,
+            domain_null_exception=domain_null_exception
         )
 
     @property
-    def model_class(self) -> Type[T]:
-        return cast(Type[T], super().model_class)
+    def domain_class(self) -> Type[T]:
+        return cast(Type[T], super().domain_class)
     
     @property
-    def null_exception(self) -> AxisNullException:
-        return cast(AxisNullException, super().null_exception)
+    def domain_null_exception(self) -> AxisNullException:
+        return cast(AxisNullException, super().domain_null_exception)
     
     @property
     def endpoints_to_list(self) -> List[Vector]:

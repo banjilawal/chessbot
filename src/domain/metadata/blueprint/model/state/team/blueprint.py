@@ -22,13 +22,13 @@ class TeamBlueprint(StateModelBlueprint[Team]):
         - Container
 
     Responsibilities:
-        1.  Provides values for instantiating a Team object.
+        1.  Provides values for hydrating a Team object.
 
     Attributes:
         board: Board,
         owner: Player
         archetype: Archetype
-        model_class: Type[Team]
+        domain_class: Type[Team]
         
     Provides:
 
@@ -45,23 +45,23 @@ class TeamBlueprint(StateModelBlueprint[Team]):
             owner: Player,
             archetype: Archetype,
             id: Optional[int] | None = None,
-            model_class: Type[Team] = Team,
+            domain_class: Type[Team] = Team,
     ):
         """
         Args:
             board: Board
             owner: Player
             archetype: Archetype,
-            model_class: Type[Team] = Type[Team]            
+            domain_class: Type[Team] = Type[Team]
         """
-        super().__init__(id=id, model_class=model_class)
+        super().__init__(id=id, domain_class=domain_class)
         self._board = board
         self._owner = owner
         self._archetype = archetype
         
     @property
-    def model_class(self) -> Type[Team]:
-        return cast(Type[Team], super().model_class)
+    def domain_class(self) -> Type[Team]:
+        return cast(Type[Team], super().domain_class)
     
     @property
     def board(self) -> Board:

@@ -23,7 +23,7 @@ class TokenContextBlueprint(Blueprint[TokenContext]):
         - Container
 
     Responsibilities:
-        1.  Provides values for instantiating a TokenContext instance.
+        1.  Provides values for hydrating a TokenContext instance.
 
     Attributes:
         rank: Optional[Rank]
@@ -33,7 +33,7 @@ class TokenContextBlueprint(Blueprint[TokenContext]):
         designation: Optional[str]
         current_position: Optional[Coord]
         home_square: Optional[OpeningSquare]
-        null_exception = TokenContextNullException()
+        domain_null_exception = TokenContextNullException()
         model_type = TokenContext
 
     Provides:

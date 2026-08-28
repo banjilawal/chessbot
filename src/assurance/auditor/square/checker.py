@@ -76,7 +76,7 @@ class SquareConsistencyAuditor(ConsistencyAuditor[Square]):
         
         bootstrap = self.root_certifier.bundle.priming_consistency.execute(
             target_model=self.root_certifier.bundle.model,
-            model_null_exception=self.root_certifier.bundle.null_exception,
+            model_null_exception=self.root_certifier.bundle.domain_null_exception,
         )
         if bootstrap.is_failure:
             # Send the exception chain on failure.

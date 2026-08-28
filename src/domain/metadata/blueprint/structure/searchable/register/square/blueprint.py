@@ -23,13 +23,13 @@ class SquareRegisterBlueprint(RegisterBlueprint[SquareRegister]):
         - Container
 
     Responsibilities:
-        1.  Provides values for instantiating a SquareRegister object.
+        1.  Provides values for hydrating a SquareRegister object.
 
     Attributes:
         origin: Square
         destination: Square
-        model_class: Type[SquareRegister]
-        null_exception: Optional[SquareRegisterNullException]
+        domain_class: Type[SquareRegister]
+        domain_null_exception: Optional[SquareRegisterNullException]
 
     Provides:
 
@@ -41,27 +41,27 @@ class SquareRegisterBlueprint(RegisterBlueprint[SquareRegister]):
             self,
             origin: Square,
             destination: Square,
-            model_class: Type[SquareRegister] = SquareRegister,
-            null_exception: Optional[SquareRegisterNullException] |
+            domain_class: Type[SquareRegister] = SquareRegister,
+            domain_null_exception: Optional[SquareRegisterNullException] |
                             None = SquareRegisterNullException(),
     ):
         """
         Args:
             origin: Square
             destination: Square
-            model_class: Type[SquareRegister]
-            null_exception: Optional[SquareRegisterNullException]
+            domain_class: Type[SquareRegister]
+            domain_null_exception: Optional[SquareRegisterNullException]
         """
         super().__init__(
             a=origin,
             b=destination,
-            model_class=model_class,
-            null_exception=null_exception,
+            domain_class=domain_class,
+            domain_null_exception=domain_null_exception,
         )
     
     @property
-    def model_class(self) -> Type[SquareRegister]:
-        return cast(Type[SquareRegister], super().model_class)
+    def domain_class(self) -> Type[SquareRegister]:
+        return cast(Type[SquareRegister], super().domain_class)
     
     @property
     def origin(self) -> Square:
@@ -80,5 +80,5 @@ class SquareRegisterBlueprint(RegisterBlueprint[SquareRegister]):
         return cast(Square, self.b)
     
     @property
-    def null_exception(self) -> RegisterNullException:
-        return cast(SquareRegisterNullException, super().null_exception)
+    def domain_null_exception(self) -> RegisterNullException:
+        return cast(SquareRegisterNullException, super().domain_null_exception)

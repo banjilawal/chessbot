@@ -10,7 +10,7 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.BLUEPRINT.STRUCTURE.TOGGLE PACKAGE ===========#
 
 # Packages
-from .vector import *
+from .cartesian import *
 
 # Modules
 from .blueprint import ToggleBlueprint

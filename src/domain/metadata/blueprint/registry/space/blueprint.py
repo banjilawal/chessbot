@@ -27,11 +27,11 @@ class SpaceReservoirBlueprint(Blueprint, ABC, Generic[T]):
          -  DTO
 
      Responsibilities:
-         1.  Provides values for instantiating a SpaceReservoir.
+         1.  Provides values for hydrating a SpaceReservoir.
 
      Attributes:
          space_class: Type[Space]
-         null_exception: Optional[SpaceReservoirNullException]
+         domain_null_exception: Optional[SpaceReservoirNullException]
 
      Provides:
 
@@ -45,27 +45,27 @@ class SpaceReservoirBlueprint(Blueprint, ABC, Generic[T]):
             self,
             origin: Vector,
             terminus: Optional[Vector] | None = None,
-            null_exception: Optional[SpaceReservoirNullException] | None = None,
-            model_class: Type[SpaceReservoir] = SpaceReservoir,
+            domain_null_exception: Optional[SpaceReservoirNullException] | None = None,
+            domain_class: Type[SpaceReservoir] = SpaceReservoir,
     ):
         """
         Args:
             origin: Vector
-            model_class: Type[Space[T]]
+            domain_class: Type[Space[T]]
             terminus: Optional[Vector]
-            null_exception: SpaceReservoirNullException
+            domain_null_exception: SpaceReservoirNullException
         """
-        super().__init__(model_class=model_class, null_exception=null_exception)
+        super().__init__(domain_class=domain_class, domain_null_exception=domain_null_exception)
         self._origin = origin
         self._terminus = terminus
     
     @property
     def space_class(self) -> Type[T]:
-        return cast(Type[T], super().model_class)
+        return cast(Type[T], super().domain_class)
     
     @property
-    def null_exception(self) -> SpaceReservoirNullException:
-        return cast(SpaceReservoirNullException, super().null_exception)
+    def domain_null_exception(self) -> SpaceReservoirNullException:
+        return cast(SpaceReservoirNullException, super().domain_null_exception)
     
     @property
     def origin(self) -> Vector:

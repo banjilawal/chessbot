@@ -15,4 +15,4 @@ from .register import *
 from .toggle import *
 
 # Modules
-from .exception import StructureWrapperNullException
+from .exception import StructureNullException

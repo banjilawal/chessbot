@@ -23,14 +23,14 @@ class RankContextBlueprint(Blueprint[RankContext]):
         - Container
 
     Responsibilities:
-        1.  Provides values for instantiating a RankContext instance.
+        1.  Provides values for hydrating a RankContext instance.
 
     Attributes:
         id: Optional[int]
         name: Optional[str]
         player: Optional[Player]
         game: Optional[Game]
-        null_exception = RankContextNullException
+        domain_null_exception = RankContextNullException
         model_type = RankContext
 
     Provides:
@@ -42,6 +42,6 @@ class RankContextBlueprint(Blueprint[RankContext]):
     name: Optional[str] = None,
     player: Optional[Player] = None,
     game: Optional[Game] = None,
-    null_exception = RankStackContextNullException()
+    domain_null_exception = RankStackContextNullException()
     model_type = RankContext
     

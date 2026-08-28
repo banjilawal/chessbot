@@ -13,12 +13,10 @@ version: 0.0.2
 from .sets import *
 from .context import *
 from .model import *
-from domain.metadata.blueprint.structure.searchable.node import *
-from domain.metadata.blueprint.structure.searchable.register import *
 from .registry import *
 from .signature import *
 from .space import *
-from domain.metadata.blueprint.structure.toggle import *
+from .structure import *
 from .validation import *
 
 # Modules

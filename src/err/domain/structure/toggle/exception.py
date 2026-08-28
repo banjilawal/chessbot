@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StructuralWrapperException
+from err import StructureException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# TOGGLE_ERROR #======================#
-class ToggleException(StructuralWrapperException):
+class ToggleException(StructureException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class ToggleException(StructuralWrapperException):
     Provides:
 
     Super Class:
-        StructuralWrapperException
+        StructureException
     """
     MSG = "Toggle error."
     ERR_CODE = "TOGGLE_ERROR"

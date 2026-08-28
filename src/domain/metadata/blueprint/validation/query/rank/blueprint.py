@@ -23,14 +23,14 @@ class RankQueryValidationBlueprint(QueryValidationBlueprint[Rank]):
         - Container
 
     Responsibilities:
-        1.  Provides values for instantiating a RankValidation instance.
+        1.  Provides values for hydrating a RankValidation instance.
 
     Attributes:
         id: Optional[int]
         name: Optional[str]
         player: Optional[Player]
         game: Optional[Game]
-        null_exception = RankNullException
+        domain_null_exception = RankNullException
         model_type = RankValidation
 
     Provides:
@@ -42,6 +42,6 @@ class RankQueryValidationBlueprint(QueryValidationBlueprint[Rank]):
     name: Optional[str] = None,
     player: Optional[Player] = None,
     game: Optional[Game] = None,
-    null_exception = RankNullException()
+    domain_null_exception = RankNullException()
     model_type = RankValidation
     

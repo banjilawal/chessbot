@@ -21,7 +21,7 @@ class BoardBinderBlueprint(ModelBlueprint[BoardBinder]):
         - Container
 
     Responsibilities:
-        1.  Provides values for instantiating a BoardTeamBinder object.
+        1.  Provides values for hydrating a BoardTeamBinder object.
 
     Attributes:
         id: Optional[int]
@@ -29,7 +29,7 @@ class BoardBinderBlueprint(ModelBlueprint[BoardBinder]):
         schema: Schema
         model_type: Orange
         team_service: TeamService
-        null_exception: OrangeNullException
+        domain_null_exception: OrangeNullException
         
     Provides:
 
@@ -41,6 +41,6 @@ class BoardBinderBlueprint(ModelBlueprint[BoardBinder]):
     id: Optional[int] | None = None
     model_type: Orange = Orange
     team_service: team_Service | None = PlayerService()
-    null_exception: OrangeNullException = OrangeNullException()
+    domain_null_exception: OrangeNullException = OrangeNullException()
     
 

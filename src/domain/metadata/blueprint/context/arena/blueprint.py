@@ -24,5 +24,5 @@ class ArenaContextBlueprint(Blueprint[ArenaContext]):
     player: Optional[Player] = None
     game: Optional[Game] = None
     color: Optional[GameColor] = None
-    null_exception = ArenaStackContextNullException()
+    domain_null_exception = ArenaStackContextNullException()
     model_type = ArenaContext

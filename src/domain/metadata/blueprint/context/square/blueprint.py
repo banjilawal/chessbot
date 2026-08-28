@@ -23,7 +23,7 @@ class SquareContextBlueprint(Blueprint[SquareContext]):
         - Container
 
     Responsibilities:
-        1.  Provides values for instantiating a SquareContext instance.
+        1.  Provides values for hydrating a SquareContext instance.
 
     Attributes:
         id: Optional[int]
@@ -32,7 +32,7 @@ class SquareContextBlueprint(Blueprint[SquareContext]):
         occupant: Optional[Token]
         state: Optional[State]
         formation: Optional[Formation]
-        null_exception: TamContextNullException
+        domain_null_exception: TamContextNullException
         context_model_type = SquareContext
 
     Provides:
@@ -46,5 +46,5 @@ class SquareContextBlueprint(Blueprint[SquareContext]):
     occupant: Optional[Token] = None
     state: Optional[SquareState] = None
     formation: Optional[Formation] = None
-    null_exception = SquareStackContextNullException()
+    domain_null_exception = SquareStackContextNullException()
     context_model_type = SquareContext

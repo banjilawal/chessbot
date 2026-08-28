@@ -23,13 +23,13 @@ class EastAxisBlueprint(AxisBlueprint[EastAxis]):
          -  DTO
 
      Responsibilities:
-         1.  Provides values for instantiating a EastAxis.
+         1.  Provides values for hydrating a EastAxis.
 
 
      Attributes:
         origin: Vector
-        model_class: Type[EastAxis]
-        null_exception: Optional[EastAxisNullException]
+        domain_class: Type[EastAxis]
+        domain_null_exception: Optional[EastAxisNullException]
 
      Provides:
 
@@ -41,26 +41,26 @@ class EastAxisBlueprint(AxisBlueprint[EastAxis]):
             self,
             origin: Vector,
             terminus: Optional[Vector] | None = None,
-            model_class: Type[EastAxis] = EastAxis,
-            null_exception: Optional[EastAxisNullException] | None = None,
+            domain_class: Type[EastAxis] = EastAxis,
+            domain_null_exception: Optional[EastAxisNullException] | None = None,
     ):
         """
         Args:
             origin: Vector
             terminus: Optional[Vector]
-            model_class: Type[EastAxis]
-            null_exception: Optional[EastAxisNullException]
+            domain_class: Type[EastAxis]
+            domain_null_exception: Optional[EastAxisNullException]
         """
         super().__init__(
             origin=origin,
-            model_class=model_class,
-            null_exception=null_exception or EastAxisNullException(),
+            domain_class=domain_class,
+            domain_null_exception=domain_null_exception or EastAxisNullException(),
         )
     
     @property
-    def model_class(self) -> Type[EastAxis]:
-        return cast(Type[EastAxis], super().model_class)
+    def domain_class(self) -> Type[EastAxis]:
+        return cast(Type[EastAxis], super().domain_class)
     
     @property
-    def null_exception(self) -> EastAxisNullException:
-        return cast(EastAxisNullException, super().null_exception)
+    def domain_null_exception(self) -> EastAxisNullException:
+        return cast(EastAxisNullException, super().domain_null_exception)

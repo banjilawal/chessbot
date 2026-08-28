@@ -22,5 +22,5 @@ class NodeQueryValidationBlueprint(QueryValidationBlueprint[Node]):
     square: Optional[Square] = None
     predecessor: Optional[Node] = None
     discovery_status: Optional[DiscoveryStatus] = None
-    null_exception = NodeNullException()
+    domain_null_exception = NodeNullException()
     model_type = NodeValidation

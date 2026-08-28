@@ -23,13 +23,13 @@ class NorthwestQuadrantBlueprint(QuadrantBlueprint[NorthwestQuadrant]):
          -  DTO
 
      Responsibilities:
-         1.  Provides values for instantiating a NorthwestQuadrant.
+         1.  Provides values for hydrating a NorthwestQuadrant.
 
 
      Attributes:
         origin: Vector
-        model_class: Type[NorthwestQuadrant]
-        null_exception: Optional[NorthwestQuadrantNullException]
+        domain_class: Type[NorthwestQuadrant]
+        domain_null_exception: Optional[NorthwestQuadrantNullException]
 
      Provides:
 
@@ -40,25 +40,25 @@ class NorthwestQuadrantBlueprint(QuadrantBlueprint[NorthwestQuadrant]):
     def __init__(
             self,
             origin: Vector,
-            model_class: Type[NorthwestQuadrant] = NorthwestQuadrant,
-            null_exception: Optional[NorthwestQuadrantNullException] | None = None,
+            domain_class: Type[NorthwestQuadrant] = NorthwestQuadrant,
+            domain_null_exception: Optional[NorthwestQuadrantNullException] | None = None,
     ):
         """
         Args:
             origin: Vector
-            model_class: Type[NorthwestQuadrant]
-            null_exception: Optional[NorthwestQuadrantNullException]
+            domain_class: Type[NorthwestQuadrant]
+            domain_null_exception: Optional[NorthwestQuadrantNullException]
         """
         super().__init__(
             origin=origin,
-            model_class=model_class,
-            null_exception=null_exception or NorthwestQuadrantNullException(),
+            domain_class=domain_class,
+            domain_null_exception=domain_null_exception or NorthwestQuadrantNullException(),
         )
     
     @property
-    def model_class(self) -> Type[NorthwestQuadrant]:
-        return cast(Type[NorthwestQuadrant], super().model_class)
+    def domain_class(self) -> Type[NorthwestQuadrant]:
+        return cast(Type[NorthwestQuadrant], super().domain_class)
     
     @property
-    def null_exception(self) -> NorthwestQuadrantNullException:
-        return cast(NorthwestQuadrantNullException, super().null_exception)
+    def domain_null_exception(self) -> NorthwestQuadrantNullException:
+        return cast(NorthwestQuadrantNullException, super().domain_null_exception)

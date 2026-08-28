@@ -22,5 +22,5 @@ class FormationContextBlueprint(Blueprint[FormationContext]):
     name: Optional[str] = None,
     player: Optional[Player] = None,
     game: Optional[Game] = None,
-    null_exception = FormationStackContextNullException()
+    domain_null_exception = FormationStackContextNullException()
     model_type = FormationContext

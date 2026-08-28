@@ -24,13 +24,13 @@ class RegisterSetBlueprint(ContainerBlueprint[Register]):
         -  DTO
         
     Responsibilities:
-        1.  Provides values for instantiating a Register object.
+        1.  Provides values for hydrating a Register object.
         2.  DTO
     
     Attributes:
         items: Tuple[Register, ...],
         container_class: Type[RegisterSet],
-        null_exception: RegisterSetNullException
+        domain_null_exception: RegisterSetNullException
     
     Provides:
     
@@ -42,18 +42,18 @@ class RegisterSetBlueprint(ContainerBlueprint[Register]):
             self,
             entries: Tuple[Register],
             container_class: Type[RegisterSet] = RegisterSet,
-            null_exception: RegisterSetNullException | None = RegisterSetNullException(),
+            domain_null_exception: RegisterSetNullException | None = RegisterSetNullException(),
     ):
         """
         Args:
             entries: Tuple[Register],
             container_class: Type[RegisterSet],
-            null_exception: RegisterSetNullException
+            domain_null_exception: RegisterSetNullException
         """
         super().__init__(
             entries=entries,
             container_class=container_class,
-            null_exception=null_exception,
+            domain_null_exception=domain_null_exception,
         )
         
     @property
@@ -65,5 +65,5 @@ class RegisterSetBlueprint(ContainerBlueprint[Register]):
         return cast(RegisterSet, self.container_class)
     
     @property
-    def null_exception(self) -> RegisterSetNullException:
-        return cast(RegisterSetNullException, super().null_exception)
+    def domain_null_exception(self) -> RegisterSetNullException:
+        return cast(RegisterSetNullException, super().domain_null_exception)

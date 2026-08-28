@@ -12,9 +12,10 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Type, TypeVar
 
-from domain import DomainMetadata, DomainDataObject
+from domain import DomainMetadata
+from err import NullException
 
-T = TypeVar("T", bound="DomainDataObject")
+T = TypeVar("T")
 
 
 class Blueprint(DomainMetadata, ABC, Generic[T]):
@@ -23,43 +24,43 @@ class Blueprint(DomainMetadata, ABC, Generic[T]):
          -  Metadata
 
      Responsibilities:
-         1.  Provide attribute-value tuples for hydrating a DomainObject.
+         1.  Provide attributes for hydrating a DomainObject.
 
 
      Attributes:
-         model_class: Type[T]
-         null_exception: NullException
-         model_class_name: str
+        domain_class: Type[T]
+        domain_class_mane: str
+        domain_null_exception: NullException
 
      Provides:
 
      Super Class:
      """
-    _model_class: Type[T]
-    _null_exception: DomainObjectNullException
+    _domain_class: Type[T]
+    _domain_null_exception: NullException
     
     def __init__(
             self,
-            model_class: Type[T],
-            null_exception: DomainObjectNullException
+            domain_class: Type[T],
+            domain_null_exception: NullException
     ):
         """
         Args:
-            model_class: Type[T]
-            null_exception: NullException
+            domain_class: Type[T]
+            domain_null_exception: NullException
         """
-        self._model_class = model_class
-        self._null_exception = null_exception
+        self._domain_class = domain_class
+        self._domain_null_exception = domain_null_exception
     
     @property
-    def model_class(self) -> Type[T]:
-        return self._model_class
+    def domain_class(self) -> Type[T]:
+        return self._domain_class
     
     @property
-    def null_exception(self) -> DomainObjectNullException:
-        return  self._null_exception
+    def domain_null_exception(self) -> NullException:
+        return  self._domain_null_exception
     
     @property
-    def model_class_name(self) -> str:
-        return self._model_class.__class__.__name__
+    def domain_class_name(self) -> str:
+        return self._domain_class.__class__.__name__
 

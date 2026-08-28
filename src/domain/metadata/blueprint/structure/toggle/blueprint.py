@@ -9,74 +9,64 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import abstractmethod
-from typing import Optional, Type, cast
+from abc import ABC
+from typing import Generic, Type, TypeVar, cast
 
-from domain.metadata.blueprint.structure import Blueprint
+from domain import SearchableModel, StructureBlueprint, Toggle
 from err import ToggleNullException
-from domain.structure.toggle import Toggle
+
+T = TypeVar("T", bound="SearchableModel")
 
 
-class ToggleBlueprint(Blueprint[Toggle]):
+class ToggleBlueprint(StructureBlueprint[Toggle], ABC, Generic[T]):
     """
     Role:
         - Container
     
     Responsibilities:
-        1.  Provides values for instantiating a B object.
+        1.  Provides values for hydrating a Toggle.
     
     Attributes:
-        model_class: Type[Toggle]
-        null_exception: Optional[ToggleNullException]
-        max_enabled_toggles: Optional[int]
+        domain_class: Type[Toggle]
+        domain_null_exception: Optional[ToggleNullException]
+        payload_blueprint:Type[T]
     
     Provides:
     
     Super Class:
-        Blueprint
+        StructureBlueprint[Toggle]
     """
-    _max_enabled_toggles: int
+    _payload_blueprint: T
+    
     
     def __init__(
             self,
-            model_class: Type[Toggle] = Toggle,
-            null_exception: Optional[ToggleNullException] | None = ToggleNullException(),
-            max_enabled_toggles: Optional[int] | None = 1,
+            domain_class: Type[Toggle],
+            domain_null_exception: ToggleNullException,
+            payload_blueprint: T,
     ):
         """
         Args:
-            model_class: Type[Toggle]
-            null_exception: Optional[ToggleNullException]
-            max_enabled_toggles: Optional[int]
+            domain_class: Type[Toggle]
+            domain_null_exception: Optional[ToggleNullException]
+            payload_blueprint:Type[T]
         """
-        super().__init__(model_class=model_class, null_exception=null_exception)
-        self._max_enabled_toggles = max_enabled_toggles
+        super().__init__(
+            domain_class=domain_class,
+            domain_null_exception=domain_null_exception,
+        )
+        self._payload_blueprint = payload_blueprint
     
     @property
-    def model_class(self) -> Type[Toggle]:
-        return cast(Type[Toggle], super().model_class)
+    def domain_class(self) -> Type[Toggle]:
+        return cast(Type[Toggle], super().domain_class)
     
     @property
-    def null_exception(self) -> ToggleNullException:
-        return cast(ToggleNullException, super().null_exception)
+    def domain_null_exception(self) -> ToggleNullException:
+        return cast(ToggleNullException, super().domain_null_exception)
     
     @property
-    def max_enabled_toggles(self) -> int:
-        return self._max_enabled_toggles
-    
-    @property
-    @abstractmethod
-    def excess_active_toggles(self) -> bool:
-        pass
-    
-    @property
-    @abstractmethod
-    def no_active_toggles(self) -> bool:
-        pass
-    
-    @property
-    @abstractmethod
-    def enabled_toggles_count(self) -> int:
-        pass
+    def payload_blueprint(self) -> T:
+        return self._payload_blueprint
     
     

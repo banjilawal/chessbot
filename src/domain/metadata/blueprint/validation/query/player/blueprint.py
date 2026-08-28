@@ -23,7 +23,7 @@ class PlayerQueryValidationBlueprint(QueryValidationBlueprint[Player]):
         - Container
 
     Responsibilities:
-        1.  Provides values for instantiating a PlayerValidation instance.
+        1.  Provides values for hydrating a PlayerValidation instance.
 
     Attributes:
         id: Optional[id]
@@ -31,7 +31,7 @@ class PlayerQueryValidationBlueprint(QueryValidationBlueprint[Player]):
         team: Optional[Team]
         game: Optional[Game]
         class_name: Optional[str]
-        null_exception = PlayerNullException
+        domain_null_exception = PlayerNullException
         model_type = PlayerValidation
 
     Provides:
@@ -44,5 +44,5 @@ class PlayerQueryValidationBlueprint(QueryValidationBlueprint[Player]):
     team: Optional[Team] = None
     game: Optional[Game] = None
     class_name: Optional[str] = None
-    null_exception = PlayerNullException()
+    domain_null_exception = PlayerNullException()
     model_type = PlayerValidation

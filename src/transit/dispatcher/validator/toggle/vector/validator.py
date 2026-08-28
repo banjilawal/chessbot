@@ -79,7 +79,7 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
         certification = self.integrity_checker.execute(
             candidate=candidate,
             target_model=self.integrity_checker.ruleset.model,
-            context_null_exception=self.integrity_checker.ruleset.null_exception,
+            context_null_exception=self.integrity_checker.ruleset.domain_null_exception,
         )
         if certification.is_failure:
             # Send the exception chain on failure.

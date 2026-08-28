@@ -24,7 +24,7 @@ class TeamQueryValidationBlueprint(QueryValidationBlueprint[Team]):
         - Container
 
     Responsibilities:
-        1.  Provides values for instantiating a TeamValidation instance.
+        1.  Provides values for hydrating a TeamValidation instance.
 
     Attributes:
         id: Optional[int]
@@ -32,7 +32,7 @@ class TeamQueryValidationBlueprint(QueryValidationBlueprint[Team]):
         player: Optional[Player]
         state: Optional[TeamState]
         schema: Optional[Schema]
-        null_exception: TamNullException
+        domain_null_exception: TamNullException
         validation_model_type = TeamValidation
 
     Provides:
@@ -45,5 +45,5 @@ class TeamQueryValidationBlueprint(QueryValidationBlueprint[Team]):
     player: Optional[Player] = None | None
     state: Optional[TeamState] = None | None
     schema: Optional[Schema] = None | None
-    null_exception = TeamNullException()
+    domain_null_exception = TeamNullException()
     validation_model_type = TeamValidation

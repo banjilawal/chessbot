@@ -23,13 +23,13 @@ class SouthAxisBlueprint(AxisBlueprint[SouthAxis]):
          -  DTO
 
      Responsibilities:
-         1.  Provides values for instantiating a SouthAxis.
+         1.  Provides values for hydrating a SouthAxis.
 
 
      Attributes:
         origin: Vector
-        model_class: Type[SouthAxis]
-        null_exception: Optional[SouthAxisNullException]
+        domain_class: Type[SouthAxis]
+        domain_null_exception: Optional[SouthAxisNullException]
 
      Provides:
 
@@ -41,27 +41,27 @@ class SouthAxisBlueprint(AxisBlueprint[SouthAxis]):
             self,
             origin: Vector,
             terminus: Optional[Vector] | None = None,
-            model_class: Type[SouthAxis] = SouthAxis,
-            null_exception: Optional[SouthAxisNullException] | None = None,
+            domain_class: Type[SouthAxis] = SouthAxis,
+            domain_null_exception: Optional[SouthAxisNullException] | None = None,
     ):
         """
         Args:
             origin: Vector
             terminus: Optional[Vector]
-            model_class: Type[WestAxis]
-            null_exception: Optional[WestAxisNullException]
+            domain_class: Type[WestAxis]
+            domain_null_exception: Optional[WestAxisNullException]
         """
         super().__init__(
             origin=origin,
             terminus=terminus,
-            model_class=model_class,
-            null_exception=null_exception or SouthAxisNullException(),
+            domain_class=domain_class,
+            domain_null_exception=domain_null_exception or SouthAxisNullException(),
         )
     
     @property
-    def model_class(self) -> Type[SouthAxis]:
-        return cast(Type[SouthAxis], super().model_class)
+    def domain_class(self) -> Type[SouthAxis]:
+        return cast(Type[SouthAxis], super().domain_class)
     
     @property
-    def null_exception(self) -> SouthAxisNullException:
-        return cast(SouthAxisNullException, super().null_exception)
+    def domain_null_exception(self) -> SouthAxisNullException:
+        return cast(SouthAxisNullException, super().domain_null_exception)

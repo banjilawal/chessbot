@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StructuralWrapperException
+from err import StructureException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# REGISTER_ERROR #======================#
-class RegisterException(StructuralWrapperException):
+class RegisterException(StructureException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class RegisterException(StructuralWrapperException):
     Provides:
 
     Super Class:
-        StructuralWrapperException
+        StructureException
     """
     MSG = "Register error."
     ERR_CODE = "REGISTER_ERROR"

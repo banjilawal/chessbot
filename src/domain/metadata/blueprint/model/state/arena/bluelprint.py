@@ -25,7 +25,7 @@ class ArenaBlueprint(StateModelBlueprint[Arena]):
         -  DTO
     
     Responsibilities:
-        1.  Provides values for instantiating a Arena object.
+        1.  Provides values for hydrating a Arena object.
     
     Attributes:
         id: Optional[int]
@@ -38,7 +38,7 @@ class ArenaBlueprint(StateModelBlueprint[Arena]):
     """
     game: Game
     id: Optional[int] | None = None
-    null_exception: ArenaNullException = ArenaNullException()
-    model_class: Arena = Type[Arena]
+    domain_null_exception: ArenaNullException = ArenaNullException()
+    domain_class: Arena = Type[Arena]
     owner_name: str = type(owner).__name__
 

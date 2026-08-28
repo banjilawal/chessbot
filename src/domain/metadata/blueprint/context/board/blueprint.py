@@ -21,5 +21,5 @@ class BoardContextBlueprint(Blueprint[BoardContext]):
     id: Optional[int] = None
     arena: Optional[Arena] = None
     team: Optional[Team] = None
-    null_exception = BoardStackContextNullException()
+    domain_null_exception = BoardStackContextNullException()
     model_type = BoardContext

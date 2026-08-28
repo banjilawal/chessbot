@@ -23,13 +23,13 @@ class VectorRegisterBlueprint(RegisterBlueprint[VectorRegister]):
         - Container
 
     Responsibilities:
-        1.  Provides values for instantiating a VectorRegister object.
+        1.  Provides values for hydrating a VectorRegister object.
 
     Attributes:
         u: Vector
         v: Vector
-        model_class: Type[VectorRegister]
-        null_exception: Optional[VectorRegisterNullException]
+        domain_class: Type[VectorRegister]
+        domain_null_exception: Optional[VectorRegisterNullException]
 
     Provides:
 
@@ -41,27 +41,27 @@ class VectorRegisterBlueprint(RegisterBlueprint[VectorRegister]):
             self,
             u: Vector,
             v: Vector,
-            model_class: Type[VectorRegister] = VectorRegister,
-            null_exception: Optional[VectorRegisterNullException] |
+            domain_class: Type[VectorRegister] = VectorRegister,
+            domain_null_exception: Optional[VectorRegisterNullException] |
                             None = VectorRegisterNullException(),
     ):
         """
         Args:
             u: Vector
             v: Vector
-            model_class: Type[VectorRegister]
-            null_exception: Optional[VectorRegisterNullException]
+            domain_class: Type[VectorRegister]
+            domain_null_exception: Optional[VectorRegisterNullException]
         """
         super().__init__(
             a=u,
             b=v,
-            model_class=model_class,
-            null_exception=null_exception,
+            domain_class=domain_class,
+            domain_null_exception=domain_null_exception,
         )
     
     @property
-    def model_class(self) -> Type[VectorRegister]:
-        return cast(Type[VectorRegister], super().model_class)
+    def domain_class(self) -> Type[VectorRegister]:
+        return cast(Type[VectorRegister], super().domain_class)
     
     @property
     def u(self) -> Vector:
@@ -80,8 +80,8 @@ class VectorRegisterBlueprint(RegisterBlueprint[VectorRegister]):
         return self.v
     
     @property
-    def null_exception(self) -> RegisterNullException:
-        return cast(VectorRegisterNullException, super().null_exception)
+    def domain_null_exception(self) -> RegisterNullException:
+        return cast(VectorRegisterNullException, super().domain_null_exception)
     #
     # @property
     # def is_empty(self) -> bool:

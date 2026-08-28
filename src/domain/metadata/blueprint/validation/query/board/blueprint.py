@@ -21,5 +21,5 @@ class BoardQueryValidationBlueprint(QueryValidationBlueprint[Board]):
     id: Optional[int] = None
     arena: Optional[Arena] = None
     team: Optional[Team] = None
-    null_exception = BoardNullException()
+    domain_null_exception = BoardNullException()
     model_type = BoardValidation

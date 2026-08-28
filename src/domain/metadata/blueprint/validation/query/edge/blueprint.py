@@ -24,5 +24,5 @@ class EdgeQueryValidationBlueprint(QueryValidationBlueprint[Edge]):
     weight: Optional[int] = None
     distance: Optional[int] = None
     heuristic: Optional[int] = None
-    null_exception = EdgeNullException()
+    domain_null_exception = EdgeNullException()
     model_type = EdgeValidation

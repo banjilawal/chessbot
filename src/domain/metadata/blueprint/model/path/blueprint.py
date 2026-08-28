@@ -23,14 +23,14 @@ class PathBlueprint(ModelBlueprint[Path]):
         -  DTO
         
     Responsibilities:
-        1.  Provides values for instantiating a Path object.
+        1.  Provides values for hydrating a Path object.
         2.  DTO
         
     Attributes:
         id: int
         endpoints: SquareRegister
         cost: Optional[Cost]
-        model_class: Type[Path]
+        domain_class: Type[Path]
         
     Provides:
 
@@ -46,23 +46,23 @@ class PathBlueprint(ModelBlueprint[Path]):
             endpoints: SquareRegister,
             id: Optional[int] | None = None,
             cost: Optional[int] | None = None,
-            model_class: Type[Path] = Path,
+            domain_class: Type[Path] = Path,
     ):
         """
         Args:
             endpoints: SquareRegister
             id: Optional[int]
             cost: Optional[int]
-            model_class: Type[Path]
+            domain_class: Type[Path]
         """
-        super().__init__(model_class=model_class)
+        super().__init__(domain_class=domain_class)
         self._id = id
         self._cost = cost
         self._endpoints = endpoints
         
     @property
-    def model_class(self) -> Type[Path]:
-        return cast(Type[Path], super().model_class)
+    def domain_class(self) -> Type[Path]:
+        return cast(Type[Path], super().domain_class)
     
     @property
     def id(self) -> int:

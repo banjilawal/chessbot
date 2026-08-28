@@ -22,5 +22,5 @@ class HostageContextBlueprint(Blueprint[HostageContext]):
     name: Optional[str] = None,
     player: Optional[Player] = None,
     game: Optional[Game] = None,
-    null_exception = HostageStackContextNullException()
+    domain_null_exception = HostageStackContextNullException()
     model_type = HostageContext

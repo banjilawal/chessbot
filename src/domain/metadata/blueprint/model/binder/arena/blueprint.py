@@ -22,14 +22,14 @@ class ArenaBinderBlueprint(ModelBlueprint[ArenaBinder]):
         - Container
 
     Responsibilities:
-        1.  Provides values for instantiating an ArenaBinderBlueprint object.
+        1.  Provides values for hydrating an ArenaBinderBlueprint object.
 
     Attributes:
         id: Optional[int]
         arena: Arena
         schema: Schema
         player_service: PlayerService
-        null_exception: AreaBinderNullException
+        domain_null_exception: AreaBinderNullException
         model_type: AreaBinder
         
     Provides:
@@ -41,7 +41,7 @@ class ArenaBinderBlueprint(ModelBlueprint[ArenaBinder]):
     schema: Schema
     id: Optional[int] | None = None
     player_service: PlayerService | None = PlayerService()
-    null_exception: AreaBinderNullException = AreaBinderNullException()
+    domain_null_exception: AreaBinderNullException = AreaBinderNullException()
     model_type: AreaBinder = AreaBinder
     
 

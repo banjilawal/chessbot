@@ -22,5 +22,5 @@ class SchemaQueryValidationBlueprint(QueryValidationBlueprint[Schema]):
     
     name: Optional[str] | None = None
     color: Optional[GameColor] | None = None
-    null_exception = SchemaNullException()
+    domain_null_exception = SchemaNullException()
     model_type = SchemaValidation

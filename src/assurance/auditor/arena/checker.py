@@ -117,7 +117,7 @@ class ArenaConsistencyChecker(ConsistencyChecker[Arena]):
                     ArenaTeamColorCollisionException(f"{method}: {ArenaTeamColorCollisionException.MSG}")
                 )
             
-            if arena.black_team.model_class == arena.white_team.model_class:
+            if arena.black_team.domain_class == arena.white_team.domain_class:
                 return ValidationResult.failure(
                     ArenaTeamPlayerCollisionException(f"{method}: {ArenaTeamPlayerCollisionException.MSG}")
                 )

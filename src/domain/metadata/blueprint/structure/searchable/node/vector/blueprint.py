@@ -17,39 +17,39 @@ from domain.model import Vector
 from domain.structure.searchable.node import VectorNode
 
 
-class VectorNodeBlueprint(NodeBlueprint):
+class VectorNodeBlueprint(NodeBlueprint[Vector]):
     """
      Role:
          -  DTO
 
      Responsibilities:
-         1.  Provides values for instantiating a VectorNode object
+         1.  Provides values for hydrating a VectorNode object
 
      Attributes:
         vector: Vector
-        model_class: Type[VectorNode]
-        null_exception: Optional[VectorNodeNullException]
+        domain_class: Type[VectorNode]
+        domain_null_exception: Optional[VectorNodeNullException]
 
      Provides:
 
      Super Class:
         NodeBlueprint
      """
-    _vector: Vector
+    _vector: VectorBlueprint
     
     def __init__(
             self,
             vector: Vector,
-            model_class: Type[VectorNode] = VectorNode,
-            null_exception: Optional[VectorNodeNullException] | None = None,
+            domain_class: Type[VectorNode] = VectorNode,
+            domain_null_exception: Optional[VectorNodeNullException] | None = None,
     ):
         """
         Args:
             vector: Vector
-            model_class: Type[VectorNode]
-            null_exception: Optional[VectorNodeNullException]
+            domain_class: Type[VectorNode]
+            domain_null_exception: Optional[VectorNodeNullException]
         """
-        super().__init__(model_class=model_class, null_exception=null_exception or VectorNodeNullException())
+        super().__init__(domain_class=domain_class, domain_null_exception=domain_null_exception or VectorNodeNullException())
         self._vector = vector
         
     @property
@@ -57,9 +57,9 @@ class VectorNodeBlueprint(NodeBlueprint):
         return self._vector
  
     @property
-    def model_class(self) -> Type[VectorNode]:
-        return cast(Type[VectorNode], super().model_class)
+    def domain_class(self) -> Type[VectorNode]:
+        return cast(Type[VectorNode], super().domain_class)
     
     @property
-    def null_exception(self) -> VectorNodeNullException:
-        return cast(VectorNodeNullException, super().null_exception)
+    def domain_null_exception(self) -> VectorNodeNullException:
+        return cast(VectorNodeNullException, super().domain_null_exception)

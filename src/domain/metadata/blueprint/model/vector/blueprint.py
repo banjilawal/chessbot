@@ -26,14 +26,14 @@ class VectorBlueprint(ModelBlueprint[Vector]):
         -  DTO
 
     Responsibilities:
-        1.  Provides values for instantiating a Vector object.
+        1.  Provides values for hydrating a Vector object.
         2.  DTO
 
     Attributes:
         x: int
         y: int
-        model_class: Type[Vector]
-        null_exception: Optional[VectorModelNullException]
+        domain_class: Type[Vector]
+        domain_null_exception: Optional[VectorModelNullException]
             
     Provides:
 
@@ -47,27 +47,27 @@ class VectorBlueprint(ModelBlueprint[Vector]):
             self,
             x: int,
             y: int,
-            model_class: Type[Vector] = Vector,
-            null_exception: Optional[VectorNullException] | None = None,
+            domain_class: Type[Vector] = Vector,
+            domain_null_exception: Optional[VectorNullException] | None = None,
     ):
         """
         Args:
             x: int
             y: int
-            model_class: Type[Vector]
-            null_exception: Optional[VectorModelNullException]
+            domain_class: Type[Vector]
+            domain_null_exception: Optional[VectorModelNullException]
         """
-        super().__init__(model_class=model_class, null_exception=null_exception or VectorNullException())
+        super().__init__(domain_class=domain_class, domain_null_exception=domain_null_exception or VectorNullException())
         self._x = x
         self._y = y
         
     @property
-    def model_class(self) -> Type[Vector]:
-        return cast(type[Vector], super()._model_class)
+    def domain_class(self) -> Type[Vector]:
+        return cast(type[Vector], super()._domain_class)
     
     @property
-    def null_exception(self) -> VectorNullException:
-        return cast(VectorNullException, super().null_exception)
+    def domain_null_exception(self) -> VectorNullException:
+        return cast(VectorNullException, super().domain_null_exception)
     
     @property
     def x(self) -> int:

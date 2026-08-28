@@ -76,7 +76,7 @@ class ManeuverValidator:
         validator_priming_result = integrityChecker.priming_validator.execute(
             candidate=candidate,
             target_model=integrityChecker.model,
-            null_exception=integrityChecker.null_exception,
+            null_exception=integrityChecker.domain_null_exception,
         )
         if validator_priming_result.is_failure:
             # Send the exception chain on failure.

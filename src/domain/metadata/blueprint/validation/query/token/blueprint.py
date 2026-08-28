@@ -28,15 +28,15 @@ class TokenQueryValidationBlueprint(QueryValidationBlueprint[Token]):
         - Container
 
     Responsibilities:
-        1.  Provides values for instantiating a TokenValidation instance.
+        1.  Provides values for hydrating a TokenValidation instance.
 
     Attributes:
         query_model_type: TokenQuery
         stack_model_type: TokenStackService
-        stack_null_exception: TokenStackNullException
-        query_null_exception: TokenQueryNullException
+        stack_domain_null_exception: TokenStackNullException
+        query_domain_null_exception: TokenQueryNullException
         empty_stack_exception: TokenStackEmptyException
-        context_null_exception: TokenContextNullException
+        context_domain_null_exception: TokenContextNullException
         context_validator: TokenContextValidator
         priming_validator: ValidatorPrimer
 
@@ -47,10 +47,10 @@ class TokenQueryValidationBlueprint(QueryValidationBlueprint[Token]):
     """
     query_model_type = TokenQuery
     stack_model_type = TokenStackService
-    query_null_exception = TokenQueryNullException()
-    stack_null_exception = TokenStackNullException()
+    query_domain_null_exception = TokenQueryNullException()
+    stack_domain_null_exception = TokenStackNullException()
     empty_stack_exception = TokenStackEmptyException()
-    context_null_exception = TokenStackContextNullException()
+    context_domain_null_exception = TokenStackContextNullException()
     context_validator = TokenContextValidator()
 
 

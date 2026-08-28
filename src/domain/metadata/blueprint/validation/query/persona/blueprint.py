@@ -22,5 +22,5 @@ class PersonaQueryValidationBlueprint(QueryValidationBlueprint[Persona]):
     quota: Optional[int]
     ransom: Optional[int]
     designation: Optional[str]
-    null_exception = PersonaNullException()
+    domain_null_exception = PersonaNullException()
     model_type = PersonaValidation

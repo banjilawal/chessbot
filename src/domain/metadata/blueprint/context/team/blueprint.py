@@ -23,7 +23,7 @@ class TeamContextBlueprint(Blueprint[TeamContext]):
         - Container
 
     Responsibilities:
-        1.  Provides values for instantiating a TeamContext instance.
+        1.  Provides values for hydrating a TeamContext instance.
 
     Attributes:
         id: Optional[int]
@@ -31,7 +31,7 @@ class TeamContextBlueprint(Blueprint[TeamContext]):
         player: Optional[Player]
         state: Optional[TeamState]
         schema: Optional[Schema]
-        null_exception: TamContextNullException
+        domain_null_exception: TamContextNullException
         context_model_type = TeamContext
 
     Provides:
@@ -44,5 +44,5 @@ class TeamContextBlueprint(Blueprint[TeamContext]):
     player: Optional[Player] = None | None
     state: Optional[TeamState] = None | None
     schema: Optional[Schema] = None | None
-    null_exception = TeamStackContextNullException()
+    domain_null_exception = TeamStackContextNullException()
     context_model_type = TeamContext

@@ -24,7 +24,7 @@ class NodeBlueprint(StateModelBlueprint[Node]):
         -  DTO
         
     Responsibilities:
-        1.  Provides values for instantiating a Node object.
+        1.  Provides values for hydrating a Node object.
 
     Attributes:
         square: Square
@@ -42,7 +42,7 @@ class NodeBlueprint(StateModelBlueprint[Node]):
         square: Square
         predecessor: Optional[Node]
         id: Optional[int]
-        null_exception: NodeNullException
+        domain_null_exception: NodeNullException
         owner: Node
         owner_name: str
     """
@@ -50,6 +50,6 @@ class NodeBlueprint(StateModelBlueprint[Node]):
     square: Square
     predecessor: Optional[Node]
     id: Optional[int] | None = None
-    null_exception: NodeNullException = NodeNullException()
-    model_class: Node = Type[Node]
+    domain_null_exception: NodeNullException = NodeNullException()
+    domain_class: Node = Type[Node]
     owner_name: str = type(owner).__name__

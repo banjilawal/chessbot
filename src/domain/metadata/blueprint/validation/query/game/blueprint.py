@@ -22,5 +22,5 @@ class GameQueryValidationBlueprint(QueryValidationBlueprint[Game]):
     name: Optional[str] = None,
     player: Optional[Player] = None,
     game: Optional[Game] = None,
-    null_exception = GameNullException()
+    domain_null_exception = GameNullException()
     model_type = GameValidation

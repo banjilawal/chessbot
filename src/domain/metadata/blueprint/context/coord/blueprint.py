@@ -20,5 +20,5 @@ from domain.model import CoordContext, Blueprint
 class CoordContextBlueprint(Blueprint[CoordContext]):
     row: Optional[int] = None
     column: Optional[int] = None
-    null_exception = CoordStackContextNullException()
+    domain_null_exception = CoordStackContextNullException()
     model_type = CoordContext

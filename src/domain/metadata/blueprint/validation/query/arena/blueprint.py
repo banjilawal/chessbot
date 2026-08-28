@@ -25,5 +25,5 @@ class ArenaQueryValidationBlueprint(QueryValidationBlueprint[Arena]):
     player: Optional[Player] = None
     game: Optional[Game] = None
     color: Optional[GameColor] = None
-    null_exception = ArenaNullException()
+    domain_null_exception = ArenaNullException()
     model_type = Arena

@@ -25,7 +25,7 @@ class BoardBlueprint(StateModelBlueprint[Board]):
         -  DTO
         
     Responsibilities:
-        1.  Provides values for instantiating a Board object.
+        1.  Provides values for hydrating a Board object.
     
     Attributes:
         id: Optional[int]
@@ -38,8 +38,8 @@ class BoardBlueprint(StateModelBlueprint[Board]):
     """
     arena: Arena
     id: Optional[int] = None
-    null_exception: BoardNullException = BoardNullException()
-    model_class: Board = Type[Board]
+    domain_null_exception: BoardNullException = BoardNullException()
+    domain_class: Board = Type[Board]
     owner_name: str = type(owner).__name__
     
 

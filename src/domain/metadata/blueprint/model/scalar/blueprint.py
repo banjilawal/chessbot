@@ -22,18 +22,18 @@ class ScalarBlueprint(ModelBlueprint[Scalar]):
         - Container
 
     Responsibilities:
-        1.  Provides magnitude value for instantiating a Scalar object.
+        1.  Provides magnitude value for hydrating a Scalar object.
 
     Attributes:
         magnitude: int
         model_type: Scalar
-        null_exception: ScalarNullException
+        domain_null_exception: ScalarNullException
     Provides:
 
      Super Class:
         ModelBlueprint
      """
     magnitude: int
-    null_exception: ScalarNullException = ScalarNullException()
+    domain_null_exception: ScalarNullException = ScalarNullException()
     owner: Scalar = Type[Scalar]
     owner_name: str = type(owner).__name__

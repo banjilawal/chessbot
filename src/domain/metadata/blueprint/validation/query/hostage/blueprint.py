@@ -22,5 +22,5 @@ class HostageQueryValidationBlueprint(QueryValidationBlueprint[Hostage]):
     name: Optional[str] = None,
     player: Optional[Player] = None,
     game: Optional[Game] = None,
-    null_exception = HostageNullException()
+    domain_null_exception = HostageNullException()
     model_type = HostageValidation

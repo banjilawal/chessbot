@@ -26,7 +26,7 @@ class PlayerBlueprint(StateModelBlueprint[Player]):
         -  DTO
 
     Responsibilities:
-        1.  Provides values for instantiating a Player object.
+        1.  Provides values for hydrating a Player object.
 
     Attributes:
         id: Optional[int]
@@ -41,6 +41,6 @@ class PlayerBlueprint(StateModelBlueprint[Player]):
     name: Optional[str] = None
     engine: Optional[Engine] = None
     id: Optional[int] = None
-    null_exception: PlayerNullException = PlayerNullException()
-    model_class: Player = Type[Player]
+    domain_null_exception: PlayerNullException = PlayerNullException()
+    domain_class: Player = Type[Player]
     owner_name: str = type(owner).__name__

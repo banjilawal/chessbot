@@ -24,13 +24,13 @@ class ManeuverBlueprint(StateModelBlueprint[Maneuver]):
         - Container
 
     Responsibilities:
-        1.  Provides values for instantiating a Maneuver object.
+        1.  Provides values for hydrating a Maneuver object.
 
     Attributes:
         path: Path
         token: Token
         id: Optional[int]
-        null_exception: ManeuverNullException
+        domain_null_exception: ManeuverNullException
         model_type: Maneuver
         
     Provides:
@@ -41,6 +41,6 @@ class ManeuverBlueprint(StateModelBlueprint[Maneuver]):
     path: Path
     token: Token
     id: Optional[int] | None = None
-    null_exception: ManeuverNullException = ManeuverNullException()
-    model_class: Maneuver = Type[Maneuver]
+    domain_null_exception: ManeuverNullException = ManeuverNullException()
+    domain_class: Maneuver = Type[Maneuver]
     owner_name: str = type(owner).__name__

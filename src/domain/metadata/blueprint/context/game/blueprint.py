@@ -22,5 +22,5 @@ class GameContextBlueprint(Blueprint[GameContext]):
     name: Optional[str] = None,
     player: Optional[Player] = None,
     game: Optional[Game] = None,
-    null_exception = GameStackContextNullException()
+    domain_null_exception = GameStackContextNullException()
     model_type = GameContext

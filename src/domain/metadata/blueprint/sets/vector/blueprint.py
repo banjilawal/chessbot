@@ -24,13 +24,13 @@ class VectorSetBlueprint(ContainerBlueprint[Vector]):
         -  DTO
 
     Responsibilities:
-        1.  Provides values for instantiating a Vector object.
+        1.  Provides values for hydrating a Vector object.
         2.  DTO
 
     Attributes:
         items: Tuple[Vector, ...],
         container_class: Type[VectorSet],
-        null_exception: VectorSetNullException
+        domain_null_exception: VectorSetNullException
             
     Provides:
 
@@ -42,18 +42,18 @@ class VectorSetBlueprint(ContainerBlueprint[Vector]):
             self,
             entries: Tuple[Vector],
             container_class: Type[VectorSet] = VectorSet,
-            null_exception: VectorSetNullException | None = VectorSetNullException(),
+            domain_null_exception: VectorSetNullException | None = VectorSetNullException(),
     ):
         """
         Args:
             entries: Tuple[Vector, ...],
             container_class: Type[VectorSet],
-            null_exception: VectorSetNullException
+            domain_null_exception: VectorSetNullException
         """
         super().__init__(
             entries=entries,
             container_class=container_class,
-            null_exception=null_exception,
+            domain_null_exception=domain_null_exception,
         )
         
     @property
@@ -65,5 +65,5 @@ class VectorSetBlueprint(ContainerBlueprint[Vector]):
         return cast(VectorSet, self.container_class)
     
     @property
-    def null_exception(self) -> VectorSetNullException:
-        return cast(VectorSetNullException, super().null_exception)
+    def domain_null_exception(self) -> VectorSetNullException:
+        return cast(VectorSetNullException, super().domain_null_exception)

@@ -23,13 +23,13 @@ class WestAxisBlueprint(AxisBlueprint[WestAxis]):
          -  DTO
 
      Responsibilities:
-         1.  Provides values for instantiating a WestAxis.
+         1.  Provides values for hydrating a WestAxis.
 
 
      Attributes:
         origin: Vector
-        model_class: Type[WestAxis]
-        null_exception: Optional[WestAxisNullException]
+        domain_class: Type[WestAxis]
+        domain_null_exception: Optional[WestAxisNullException]
 
      Provides:
 
@@ -41,27 +41,27 @@ class WestAxisBlueprint(AxisBlueprint[WestAxis]):
             self,
             origin: Vector,
             terminus: Optional[Vector] | None = None,
-            model_class: Type[WestAxis] = WestAxis,
-            null_exception: Optional[WestAxisNullException] | None = None,
+            domain_class: Type[WestAxis] = WestAxis,
+            domain_null_exception: Optional[WestAxisNullException] | None = None,
     ):
         """
         Args:
             origin: Vector
             terminus: Optional[Vector]
-            model_class: Type[WestAxis]
-            null_exception: Optional[WestAxisNullException]
+            domain_class: Type[WestAxis]
+            domain_null_exception: Optional[WestAxisNullException]
         """
         super().__init__(
             origin=origin,
             terminus=terminus,
-            model_class=model_class,
-            null_exception=null_exception or WestAxisNullException(),
+            domain_class=domain_class,
+            domain_null_exception=domain_null_exception or WestAxisNullException(),
         )
     
     @property
-    def model_class(self) -> Type[WestAxis]:
-        return cast(Type[WestAxis], super().model_class)
+    def domain_class(self) -> Type[WestAxis]:
+        return cast(Type[WestAxis], super().domain_class)
     
     @property
-    def null_exception(self) -> WestAxisNullException:
-        return cast(WestAxisNullException, super().null_exception)
+    def domain_null_exception(self) -> WestAxisNullException:
+        return cast(WestAxisNullException, super().domain_null_exception)

@@ -24,7 +24,7 @@ class NodeNullRoster(NullExceptionRoster[T], ABC, Generic[T]):
         - Metadata
 
     Responsibilities:
-        1. Catalog of NullExceptions associated with a StructuralWrapper.
+        1. Catalog of NullExceptions associated with a Structure .
 
     Attributes:
         model: NodeNullException

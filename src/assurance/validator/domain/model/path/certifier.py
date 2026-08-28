@@ -77,7 +77,7 @@ class PathRootValidator(ModelValidator[Path]):
         checker_priming_result = self.bundle.priming_validator.execute(
             candidate=candidate,
             target_model=self.bundle.model,
-            null_exception=self.bundle.null_exception,
+            null_exception=self.bundle.domain_null_exception,
         )
         if checker_priming_result.is_failure:
             # Send the exception chain on failure.

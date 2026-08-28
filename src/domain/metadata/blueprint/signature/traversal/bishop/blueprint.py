@@ -22,28 +22,28 @@ class BishopSignatureBlueprint(TraversalSignatureBlueprint[BishopSignature]):
     def __init__(
             self,
             recurrence_sets: BishopRecurrenceRegistries,
-            null_exception: Optional[BishopSignatureNullException],
-            model_class: Type[BishopSignature] = BishopSignature,
+            domain_null_exception: Optional[BishopSignatureNullException],
+            domain_class: Type[BishopSignature] = BishopSignature,
     ):
         """
         Args:
             recurrence_sets: BishopRecurrenceSets,
-            null_exception: Optional[BishopSignatureNullException],
-            model_class: Type[BishopSignature] = BishopSignature,
+            domain_null_exception: Optional[BishopSignatureNullException],
+            domain_class: Type[BishopSignature] = BishopSignature,
         """
         super().__init__(
-            model_class=model_class,
+            domain_class=domain_class,
             recurrence_sets=recurrence_sets,
-            null_exception=null_exception or BishopSignatureNullException(),
+            domain_null_exception=domain_null_exception or BishopSignatureNullException(),
         )
         
     @property
-    def model_class(self) -> Type[BishopSignature]:
-        return cast(Type[BishopSignature], super().model_class)
+    def domain_class(self) -> Type[BishopSignature]:
+        return cast(Type[BishopSignature], super().domain_class)
     
     @property
-    def null_exception(self) -> BishopSignatureNullException:
-        return cast(BishopSignatureNullException, super()._null_exception)
+    def domain_null_exception(self) -> BishopSignatureNullException:
+        return cast(BishopSignatureNullException, super()._domain_null_exception)
     
     @property
     def recurrence_sets(self) -> BishopRecurrenceRegistries:

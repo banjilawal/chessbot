@@ -26,12 +26,12 @@ class QuadrantBlueprint(SpaceBlueprint, ABC, Generic[T]):
          -  DTO
 
      Responsibilities:
-         1.  Provides values for instantiating an Quadrant.
+         1.  Provides values for hydrating an Quadrant.
 
      Attributes:
         origin: Vector
-        model_class: Type[QuadrantSpace]
-        null_exception: Optional[QuadrantNullException]
+        domain_class: Type[QuadrantSpace]
+        domain_null_exception: Optional[QuadrantNullException]
          
      Provides:
 
@@ -43,25 +43,25 @@ class QuadrantBlueprint(SpaceBlueprint, ABC, Generic[T]):
     def __init__(
             self,
             origin: Vector,
-            null_exception: QuadrantNullException,
-            model_class: Type[T] = T,
+            domain_null_exception: QuadrantNullException,
+            domain_class: Type[T] = T,
             terminus: Optional[Vector] | None = None,
     ):
         """
         Args:
             origin: Vector
-            model_class: Type[QuadrantSpace]
-            null_exception: Optional[QuadrantNullException]
+            domain_class: Type[QuadrantSpace]
+            domain_null_exception: Optional[QuadrantNullException]
         """
-        super().__init__(origin=origin, terminus=terminus, model_class=model_class, null_exception=null_exception)
+        super().__init__(origin=origin, terminus=terminus, domain_class=domain_class, domain_null_exception=domain_null_exception)
 
     @property
-    def model_class(self) -> Type[T]:
-        return cast(Type[T], super().model_class)
+    def domain_class(self) -> Type[T]:
+        return cast(Type[T], super().domain_class)
     
     @property
-    def null_exception(self) -> QuadrantNullException:
-        return cast(QuadrantNullException, super().null_exception)
+    def domain_null_exception(self) -> QuadrantNullException:
+        return cast(QuadrantNullException, super().domain_null_exception)
 
     
 

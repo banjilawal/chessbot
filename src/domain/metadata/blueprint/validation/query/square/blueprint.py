@@ -23,7 +23,7 @@ class SquareQueryValidationBlueprint(QueryValidationBlueprint[Square]):
         - Container
 
     Responsibilities:
-        1.  Provides values for instantiating a SquareValidation instance.
+        1.  Provides values for hydrating a SquareValidation instance.
 
     Attributes:
         id: Optional[int]
@@ -32,7 +32,7 @@ class SquareQueryValidationBlueprint(QueryValidationBlueprint[Square]):
         occupant: Optional[Token]
         state: Optional[State]
         formation: Optional[Formation]
-        null_exception: TamNullException
+        domain_null_exception: TamNullException
         validation_model_type = SquareValidation
 
     Provides:
@@ -46,5 +46,5 @@ class SquareQueryValidationBlueprint(QueryValidationBlueprint[Square]):
     occupant: Optional[Token] = None
     state: Optional[SquareState] = None
     formation: Optional[Formation] = None
-    null_exception = SquareNullException()
+    domain_null_exception = SquareNullException()
     validation_model_type = SquareValidation

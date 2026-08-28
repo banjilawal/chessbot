@@ -23,7 +23,7 @@ class TokenBlueprint(StateModelBlueprint[Token]):
         -  DTO
         
     Responsibilities:
-        1.  Provides values for instantiating a Token object.
+        1.  Provides values for hydrating a Token object.
         2.  DTO
         
     Attributes:
@@ -31,7 +31,7 @@ class TokenBlueprint(StateModelBlueprint[Token]):
         formation: Formation
         rank: Optional[Rank]
         home_square: Optional[HomeSquare]
-        model_class: Type[Token]
+        domain_class: Type[Token]
         
     Provides:
 
@@ -46,7 +46,7 @@ class TokenBlueprint(StateModelBlueprint[Token]):
             id: Optional[int] | None = None,
             rank: Optional[Rank] | None = None,
             home_square: Optional[HomeSquare] | None = None,
-            model_class: Type[Token] = Token,
+            domain_class: Type[Token] = Token,
     ):
         """
         Args:
@@ -55,17 +55,17 @@ class TokenBlueprint(StateModelBlueprint[Token]):
             id: Optional[int]
             rank: Optional[Rank]
             home_square: Optional[HomeSquare]
-            model_class: Type[Token] = Type[Token]
+            domain_class: Type[Token] = Type[Token]
         """
-        super().__init__(model_class=model_class, id=id)
+        super().__init__(domain_class=domain_class, id=id)
         self._team = team
         self._rank = rank
         self._formation = formation
         self._home_square = home_square
         
     @property
-    def model_class(self) -> Type[Token]:
-        return cast(Type[Token], super().model_class)
+    def domain_class(self) -> Type[Token]:
+        return cast(Type[Token], super().domain_class)
     
     @property
     def team(self) -> Team:

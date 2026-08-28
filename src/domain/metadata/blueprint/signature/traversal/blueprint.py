@@ -23,20 +23,20 @@ class TraversalSignatureBlueprint(SignatureBlueprint, ABC, Generic[T]):
     
     def __init__(
             self,
-            model_class: Type[T],
-            null_exception: TraversalSignatureNullException,
+            domain_class: Type[T],
+            domain_null_exception: TraversalSignatureNullException,
             recurrence_sets: RecurrenceRegistryCollection[T],
     ):
-        super().__init__(model_class=model_class, null_exception=null_exception)
+        super().__init__(domain_class=domain_class, domain_null_exception=domain_null_exception)
         self._recurrence_set = recurrence_sets
         
     @property
-    def model_class(self) -> Type[T]:
-        return cast(Type[T], super().model_class)
+    def domain_class(self) -> Type[T]:
+        return cast(Type[T], super().domain_class)
     
     @property
-    def null_exception(self) -> TraversalSignatureNullException:
-        return cast(TraversalSignatureNullException, super().null_exception)
+    def domain_null_exception(self) -> TraversalSignatureNullException:
+        return cast(TraversalSignatureNullException, super().domain_null_exception)
         
     @property
     def recurrence_sets(self) -> RecurrenceRegistryCollection[T]:

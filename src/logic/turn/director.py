@@ -17,8 +17,8 @@ class TurnDirector:
     def issue_turn_marker(self, game: Game, player_color: GameColor) -> Marker:
         player = None
         if player_color == GameColor.WHITE:
-            player = game.arena.white_team.model_class
+            player = game.arena.white_team.domain_class
         else:
-            player = game.arena.black_team.model_class
+            player = game.arena.black_team.domain_class
         self._marker.current_holder(player)
         return self._marker

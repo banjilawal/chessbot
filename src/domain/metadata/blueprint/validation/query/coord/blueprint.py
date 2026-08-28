@@ -20,5 +20,5 @@ from domain.model import Coord, Blueprint
 class CoordQueryValidationBlueprint(QueryValidationBlueprint[Coord]):
     row: Optional[int] = None
     column: Optional[int] = None
-    null_exception = CoordNullException()
+    domain_null_exception = CoordNullException()
     model_type = CoordValidation

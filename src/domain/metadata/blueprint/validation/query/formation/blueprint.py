@@ -22,5 +22,5 @@ class FormationQueryValidationBlueprint(QueryValidationBlueprint[Formation]):
     name: Optional[str] = None,
     player: Optional[Player] = None,
     game: Optional[Game] = None,
-    null_exception = FormationNullException()
+    domain_null_exception = FormationNullException()
     model_type = FormationValidation

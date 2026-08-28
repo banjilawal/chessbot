@@ -24,13 +24,13 @@ class RegisterBlueprint(Blueprint, Generic[T]):
     -  Container
     
     Responsibilities:
-        1.  Provides values for instantiating a Register object.
+        1.  Provides values for hydrating a Register object.
     
     Attributes:
         a: Any
         b: Any
         model_type: Type[Register]
-        null_exception: RegisterNullException
+        domain_null_exception: RegisterNullException
     
     Provides:
     
@@ -42,28 +42,28 @@ class RegisterBlueprint(Blueprint, Generic[T]):
             self,
             a: Any,
             b: Any,
-            model_class: Type[Register] = Register,
-            null_exception: RegisterNullException | None = RegisterNullException(),
+            domain_class: Type[Register] = Register,
+            domain_null_exception: RegisterNullException | None = RegisterNullException(),
     ):
         """
         Args:
             a: Any
             b: Any
-            model_class: Type[Register]
-            null_exception: RegisterNullException
+            domain_class: Type[Register]
+            domain_null_exception: RegisterNullException
         """
-        super().__init__(model_class=model_class, null_exception=null_exception)
+        super().__init__(domain_class=domain_class, domain_null_exception=domain_null_exception)
         self._a = a
         self._b = b
         
     
     @property
-    def model_class(self) -> Type[Register]:
-        return cast(Type[Register], super().model_class)
+    def domain_class(self) -> Type[Register]:
+        return cast(Type[Register], super().domain_class)
     
     @property
-    def null_exception(self) -> RegisterNullException:
-        return cast(RegisterNullException, super().null_exception)
+    def domain_null_exception(self) -> RegisterNullException:
+        return cast(RegisterNullException, super().domain_null_exception)
     
     @property
     def a(self) -> Any:

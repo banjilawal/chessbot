@@ -22,5 +22,5 @@ class NodeContextBlueprint(Blueprint[NodeContext]):
     square: Optional[Square] = None
     predecessor: Optional[Node] = None
     discovery_status: Optional[DiscoveryStatus] = None
-    null_exception = NodeStackContextNullException()
+    domain_null_exception = NodeStackContextNullException()
     model_type = NodeContext
