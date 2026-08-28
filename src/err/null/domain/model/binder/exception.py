@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# BINDER_NULL_ERROR #======================#
-class BinderModelNullException(ModelNullException):
+class BinderNullException(ModelNullException):
     """
     Role:
         - Error Tracing

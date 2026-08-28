@@ -17,11 +17,11 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# RANK_NULL_ERROR #======================#
-    "RankModelNullException",
+    "RankNullException",
 ]
 
 # ======================# RANK_NULL_ERROR #======================#
-class RankModelNullException(ModelNullException):
+class RankNullException(ModelNullException):
     """
     Role:
         - Error Tracing

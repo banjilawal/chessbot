@@ -20,7 +20,6 @@ class PathBlueprint(ModelBlueprint[Path]):
     """
      Role:
         1.  Metadata
-        -  DTO
         
     Responsibilities:
         1.  Provides values for hydrating a Path object.

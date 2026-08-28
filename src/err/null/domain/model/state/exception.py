@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# STATE_MODEL_NULL_ERROR #======================#
-class StateModelNullException(ModelNullException):
+class StateNullException(ModelNullException):
     """
     Role:
         - Error Tracing

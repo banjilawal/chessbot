@@ -22,7 +22,6 @@ class ArenaBlueprint(StateModelBlueprint[Arena]):
     """
      Role:
         1.  Metadata
-        -  DTO
     
     Responsibilities:
         1.  Provides values for hydrating a Arena object.

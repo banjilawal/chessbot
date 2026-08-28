@@ -23,7 +23,6 @@ class PlayerBlueprint(StateModelBlueprint[Player]):
     """
      Role:
         1.  Metadata
-        -  DTO
 
     Responsibilities:
         1.  Provides values for hydrating a Player object.

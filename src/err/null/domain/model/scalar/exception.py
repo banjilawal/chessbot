@@ -17,11 +17,11 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# SCALAR_NULL_ERROR #======================#
-    "ScalarModelNullException",
+    "ScalarNullException",
 ]
 
 # ======================# SCALAR_NULL_ERROR #======================#
-class ScalarModelNullException(ModelNullException):
+class ScalarNullException(ModelNullException):
     """
     Role:
         - Error Tracing

@@ -9,18 +9,16 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Type, cast
+from typing import Optional, Type, cast
 
-from domain.metadata.blueprint import ModelBlueprint
-from domain.model import Rank
-from domain.schema import Persona
+from domain import ModelBlueprint, Persona, Rank
+from err import RankNullException
 
 
 class RankBlueprint(ModelBlueprint[Rank]):
     """
      Role:
         1.  Metadata
-        -  DTO
         
     Responsibilities:
         1.  Provides values for hydrating a Rank object.
@@ -39,23 +37,35 @@ class RankBlueprint(ModelBlueprint[Rank]):
     def __init__(
             self,
             persona: Persona,
-            domain_class: Type[Rank] = Rank,
+            domain_class: Optional[Type[Rank]] | None = None,
+            domain_null_exception: Optional[RankNullException] | None = None,
     ):
         """
         Args:
             persona: Persona
-            domain_class: Type[Rank]
+            domain_class: Optional[Type[Rank]]
+            domain_null_exception: Optional[RankNullException]
         """
-        super().__init__(domain_class=domain_class)
+        super().__init__(
+            domain_class=domain_class or Type[Rank],
+            domain_null_exception=domain_null_exception or RankNullException(),
+        )
         self._persona = persona
-        
+    
+    @property
+    def persona(self) -> Persona:
+        return self._persona
+
+    
     @property
     def domain_class(self) -> Type[Rank]:
         return cast(Type[Rank], super().domain_class)
     
     @property
-    def persona(self) -> Persona:
-        return self._persona
+    def domain_null_exception(self) -> RankNullException:
+        return cast(RankNullException, super().domain_null_exception)
+    
+
 
     
     

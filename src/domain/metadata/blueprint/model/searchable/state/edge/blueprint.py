@@ -22,7 +22,6 @@ class EdgeBlueprint(StateModelBlueprint[Edge]):
     """
      Role:
         1.  Metadata
-        -  DTO
         
     Responsibilities:
         1.  Provides values for hydrating a Edge object.

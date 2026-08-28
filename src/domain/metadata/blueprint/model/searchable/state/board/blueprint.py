@@ -22,7 +22,6 @@ class BoardBlueprint(StateModelBlueprint[Board]):
     """
      Role:
         1.  Metadata
-        -  DTO
         
     Responsibilities:
         1.  Provides values for hydrating a Board object.
