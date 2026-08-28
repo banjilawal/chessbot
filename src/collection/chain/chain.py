@@ -22,7 +22,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="Node")
 
 
-class Chain(DomainObjectCollection, ABC, Generic[T]):
+class Chain(DomainObjectCollection[T], ABC, Generic[T]):
     _number_validator: NumberValidator
     _iterator: ChainIterator
     
@@ -254,12 +254,12 @@ class ChainIterator:
     
     @property
     def has_next(self,) -> bool:
-        return self._cursor.next is None
+        return self._cursor.next is not None
     
     def next(self) -> Node:
-        if self.has_next():
+        if self.has_next:
             next_node = self._cursor.next
-            self._cursor = self._cursor.next
+            self._cursor = next_node
             return self._cursor.next
         else:
             return self._cursor

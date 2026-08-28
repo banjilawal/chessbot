@@ -88,7 +88,7 @@ class TokenDeploymentWorker(Worker):
                     )
                 )
             )
-        if square_stack.is_full:
+        if square_stack.has_both_slots_occupied:
             # Return the exception chain on failure
             return InsertionResult.failure(
                 SquareStackDeployException(
@@ -158,7 +158,7 @@ class TokenDeploymentWorker(Worker):
         # Deploy the square onto the schema
         square_stack.items.append(square)
         # Maintain state.
-        if square_stack.is_full:
+        if square_stack.has_both_slots_occupied:
             square_stack.state = SquareStackState.READY_FOR_DEPLOYMENT
         
         # --- Send the work product ---#

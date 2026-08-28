@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from fabrication.builder import RegisterBuilder
 from domain.metadata.blueprint import VectorRegisterBlueprint
-from domain.structure.register import VectorRegister
+from domain.structure.searchable.register import VectorRegister
 from artifcat import BuildResult
 from util import LoggingLevelRouter
 

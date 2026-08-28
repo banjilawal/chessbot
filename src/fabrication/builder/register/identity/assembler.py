@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from fabrication.builder import RegisterBuilder
 from domain.metadata.blueprint import IdentityRegisterBlueprint
-from domain.structure.register import IdentityRegister
+from domain.structure.searchable.register import IdentityRegister
 from artifcat import BuildResult
 from util import LoggingLevelRouter
 

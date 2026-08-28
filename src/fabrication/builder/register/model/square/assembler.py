@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from fabrication.builder import RegisterBuilder
 from domain.metadata.blueprint import SquareRegisterBlueprint
-from domain.structure.register import SquareRegister
+from domain.structure.searchable.register import SquareRegister
 from artifcat import BuildResult
 from util import LoggingLevelRouter
 

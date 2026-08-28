@@ -111,7 +111,7 @@ class SquareDatabase(Database[Square]):
     
     @property
     def is_full(self) -> bool:
-        return self._stack_service.is_full
+        return self._stack_service.has_both_slots_occupied
     
     @property
     def is_empty(self) -> bool:

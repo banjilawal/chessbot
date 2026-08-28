@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from transit.dispatcher.builder import VectorValidator
 from domain.model import Vector
-from domain.structure.register import VectorRegister
+from domain.structure.searchable.register import VectorRegister
 from artifcat import BuildResult
 from domain.schema import AxisTerminus
 from util import LoggingLevelRouter

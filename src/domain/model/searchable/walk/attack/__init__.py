@@ -10,8 +10,9 @@ version: 0.0.2
 # =========== DOMAIN.MODEL.SEARCHABLE.WALK.ATTACK PACKAGE ===========#
 
 # Packages
+from .check import *
+from .checkmate import *
 from .kill import *
-from .king import *
 
 # Modules
 from .model import Attack

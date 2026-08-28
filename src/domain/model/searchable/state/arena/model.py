@@ -35,7 +35,7 @@ class Arena(StatefulModel):
     
     @property
     def arena_is_full(self) -> bool:
-        return self._arena_player_binder.is_full
+        return self._arena_player_binder.has_both_slots_occupied
     
     @property
     def arena_is_empty(self) -> bool:

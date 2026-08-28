@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Generic, TypeVar
 
 from transit.dispatcher.builder.endpoint import EndpointBuilder
-from domain.structure.register import VectorRegister
+from domain.structure.searchable.register import VectorRegister
 from artifcat import BuildResult
 from util import LoggingLevelRouter
 

@@ -14,4 +14,4 @@ from .arena import *
 from .board import *
 
 # Modules
-from .structure import Binder
+from .structure import ColorBinder

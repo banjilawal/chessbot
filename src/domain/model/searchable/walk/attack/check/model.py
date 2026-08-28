@@ -22,7 +22,7 @@ class CheckEnemyKing(Attack):
         -  Data Holder
 
     Responsibilities:
-        1.  Store details about attacking an enemy KingToken
+        1.  Store details about checking a King.
 
     Attributes:
         checker: Token

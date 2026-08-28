@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from fabrication.builder import RegisterBuilder
 from domain.metadata.blueprint import CartesianToggleRegisterBlueprint
-from domain.structure.register import CartesianToggleRegister
+from domain.structure.searchable.register import CartesianToggleRegister
 from artifcat import BuildResult
 from util import LoggingLevelRouter
 

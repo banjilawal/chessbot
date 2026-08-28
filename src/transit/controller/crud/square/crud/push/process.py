@@ -75,7 +75,7 @@ class SquareStackPush:
         method =  f"{cls.__name__}.push"
         
         # Handle the case that, the list is full.
-        if square_stack.is_full:
+        if square_stack.has_both_slots_occupied:
             # Return the exception chain on failure
             return InsertionResult.failure(
                 SquareStackPushException(
@@ -145,7 +145,7 @@ class SquareStackPush:
         # Push the square onto the schema
         square_stack.items.append(square)
         # Maintain state.
-        if square_stack.is_full:
+        if square_stack.has_both_slots_occupied:
             square_stack.state = SquareStackState.READY_FOR_DEPLOYMENT
         
         # --- Send the work product ---#

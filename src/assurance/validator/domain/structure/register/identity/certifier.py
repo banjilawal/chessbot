@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 
-from domain.structure.register import IdentityRegister
+from domain.structure.searchable.register import IdentityRegister
 from assurance.validator import Validator
 from artifcat import ValidationResult
 from operation.toolkit import IdentityRegisterToolkit

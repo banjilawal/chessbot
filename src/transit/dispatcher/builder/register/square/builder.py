@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from transit.dispatcher.builder import RegisterBuildDispatcher
-from domain.structure.register import SquareRegister
+from domain.structure.searchable.register import SquareRegister
 from util import LoggingLevelRouter
 
 

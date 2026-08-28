@@ -14,7 +14,7 @@ from typing import Type
 from domain.metadata.blueprint import VectorRegisterBlueprint
 from carrier import VectorRegisterCarrier
 from err import VectorRegisterBlueprintNullException, VectorRegisterCarrierNullException, VectorRegisterNullException
-from domain.structure.register import VectorRegister
+from domain.structure.searchable.register import VectorRegister
 from operation.toolkit.register.vector.toolkit import RegisterToolkit
 from transit.dispatcher.validator import VectorValidator
 

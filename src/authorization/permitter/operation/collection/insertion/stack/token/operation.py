@@ -84,7 +84,7 @@ class TokenStackPush(StackPop[Token]):
         # Otherwise, complete the push steps.
         req.stack.items.append(req.item)
         # Maintain state.
-        if req.stack.is_full:
+        if req.stack.has_both_slots_occupied:
             req.stack.state = TokenStackState.READY_FOR_DEPLOYMENT
         
         # --- Send the work product ---#

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from fabrication.builder import NumberRegisterAssembler
-from domain.structure.register import NumberRegister
+from domain.structure.searchable.register import NumberRegister
 from assurance.validator import NumberRegisterRootCertifier
 from operation.toolkit.builder.register.number.toolkit import RegisterBuilderToolkit
 

@@ -153,7 +153,7 @@ class OpeningSquareLocator(Worker):
         # Execute the square onto the schema
         square_stack.items.append(square)
         # Maintain state.
-        if square_stack.is_full:
+        if square_stack.has_both_slots_occupied:
             square_stack.state = SquareStackState.READY_FOR_EXECUTEMENT
         
         # --- Send the work product ---#

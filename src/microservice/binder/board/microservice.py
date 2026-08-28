@@ -190,7 +190,7 @@ class BoardTeamBinderService(Microservice[BoardBinder]):
                 )
             )
         # Handle the case that, the binder is already full.
-        if binder.is_full:
+        if binder.has_both_slots_occupied:
             # Return the exception chain on failure
             return UpdateResult.update_failure(
                 original=binder,

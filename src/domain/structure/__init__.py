@@ -10,7 +10,6 @@ version: 0.0.2
 # =========== DOMAIN.STRUCTURE PACKAGE ===========#
 
 # Packages
-from .register import *
 from .searchable import *
 from .toggle import *
 

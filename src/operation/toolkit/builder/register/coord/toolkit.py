@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from fabrication.builder import CoordRegisterAssembler
-from domain.structure.register import CoordRegister
+from domain.structure.searchable.register import CoordRegister
 from assurance.validator import CoordRegisterRootCertifier
 from operation.toolkit.builder.register.coord.toolkit import RegisterBuilderToolkit
 

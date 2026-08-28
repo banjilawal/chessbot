@@ -9,11 +9,6 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from typing import Dict
-
-from microservice import PlayerService
-from domain.model import Binder, Arena, Board, Schema, Player
-
 
 class ArenaBinder(Binder[Arena, Player]):
     """
@@ -28,10 +23,10 @@ class ArenaBinder(Binder[Arena, Player]):
         id: int
         primary: Arena
         satellite_list: List[Player]
-        schema_list: List[Schema]
+        archetype_list: List[Archetype]
         white_satellite: Optional[Player]
         black_satellite: Optional[Player]
-        satellite_table: Dict[Schema, S]
+        satellite_table: Dict[Archetype, S]
         satellite_service: Microservice[Player]
         board: Board
 
@@ -54,7 +49,7 @@ class ArenaBinder(Binder[Arena, Player]):
             arena: Arena,
             board: Board,
             satellite_service: PlayerService,
-            satellite_table: Dict[Schema, Player],
+            satellite_table: Dict[Archetype, Player],
     ):
         """
         Args:

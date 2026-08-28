@@ -13,7 +13,7 @@ from typing import Optional, Type, cast
 
 from domain.metadata.blueprint import ModelBlueprint
 from domain.model import Path
-from domain.structure.register import SquareRegister
+from domain.structure.searchable.register import SquareRegister
 
 
 class PathBlueprint(ModelBlueprint[Path]):

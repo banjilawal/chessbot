@@ -22,7 +22,7 @@ class CheckmateEnemyKing(Attack):
         -  Data Holder
 
     Responsibilities:
-        1.  Store details about attacking an enemy KingToken
+        1.  Store details about checkmating an enemy KingToken.
 
     Attributes:
         victor: Token
