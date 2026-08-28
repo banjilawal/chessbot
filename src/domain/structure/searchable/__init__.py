@@ -10,7 +10,6 @@ version: 0.0.2
 # =========== DOMAIN.STRUCTURE.SEARCHABLE PACKAGE ===========#
 
 # Packages
-from .binder import *
 from .node import *
 
 # Modules

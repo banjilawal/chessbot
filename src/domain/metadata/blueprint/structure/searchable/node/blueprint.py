@@ -9,14 +9,16 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Type, cast
+from abc import ABC
+from typing import Generic, Type, TypeVar, cast
 
+from domain import Blueprint, Node
 from err import NodeNullException
-from fabrication import Blueprint
-from domain.structure.searchable.node import Node
+
+T = TypeVar("T", bound="Node")
 
 
-class NodeBlueprint(Blueprint[Node]):
+class NodeBlueprint(Blueprint[T], ABC, Generic[T]):
     """
      Role:
          -  DTO
@@ -34,7 +36,7 @@ class NodeBlueprint(Blueprint[Node]):
         Blueprint
      """
     
-    def __init__(self, model_class: Type[Node], null_exception: NodeNullException,):
+    def __init__(self, model_class: Type[T], null_exception: NodeNullException,):
         """
         Args:
             model_class: Type[Node]
@@ -43,8 +45,8 @@ class NodeBlueprint(Blueprint[Node]):
         super().__init__(model_class=model_class, null_exception=null_exception)
         
     @property
-    def model_class(self) -> Type[Node]:
-        return cast(Type[Node], super()._model_class)
+    def model_class(self) -> Type[T]:
+        return cast(Type[T], super()._model_class)
     
     @property
     def null_exception(self) -> NodeNullException:

@@ -11,6 +11,5 @@ version: 1.0.0
 
 # Packages
 
-
 # Modules
-from .model import ArenaBinder
+from .structure import ArenaPlayerColorBinder
