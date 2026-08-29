@@ -38,7 +38,6 @@ class GameBlueprint(StateModelBlueprint[Game]):
         StateModelBlueprint
      """
     _arena: Arena
-    _captured_tokens: List[Attack]
     
     def __init__(
             self,

@@ -16,6 +16,7 @@ from .attack import *
 from .board import *
 from .coord import *
 from .edge import *
+from .game import *
 from .maneuver import *
 from .path import *
 from .player import *

@@ -1,7 +1,7 @@
-# src/err/microservice/board/exception.py
+# src/err/microservice/station/exception.py
 
 """
-Module: err.microservice.board.exception
+Module: err.microservice.station.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# BOARD_MICROSERVICE_FAILURE #======================#
-    "BoardMicroserviceException",
+    # ======================# STATION_MICROSERVICE_FAILURE #======================#
+    "StationMicroserviceException",
 ]
 
-# ======================# BOARD_MICROSERVICE_FAILURE #======================#
-class BoardMicroserviceException(MicroserviceException):
+# ======================# STATION_MICROSERVICE_FAILURE #======================#
+class StationMicroserviceException(MicroserviceException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a candidate did not pass a BoardMicroservice failed.
+        1.  Indicating a candidate did not pass a StationMicroservice failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class BoardMicroserviceException(MicroserviceException):
     Super Class:
         MicroserviceException
     """
-    MSG = "BoardMicroservice failure."
-    ERR_CODE = "BOARD_MICROSERVICE_FAILURE"
+    MSG = "StationMicroservice failure."
+    ERR_CODE = "STATION_MICROSERVICE_FAILURE"
     
     def __init__(
             self,
