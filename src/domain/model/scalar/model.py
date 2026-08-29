@@ -1,4 +1,4 @@
-# src/domain/model/scalar/dossier/model/state.py
+# src/domain/model/scalar/model.py/state.py
 
 """
 Module: domain.model.scalar.model

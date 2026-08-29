@@ -1,4 +1,4 @@
-# src/domain/model/searchable/state/player/dossier/model/searchable/state/owner.py
+# src/domain/model/searchable/state/player/model/searchable/model.py/owner.py
 
 """
 Module: domain.model.searchable.state.player.model.owner

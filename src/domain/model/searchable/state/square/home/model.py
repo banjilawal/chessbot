@@ -1,7 +1,7 @@
-# src/domain/model/searchable/state/square/home/dossier/model/searchable/state.py
+# src/domain/model/searchable/state/square/home/model/searchable/model.py.py
 
 """
-Module: domain.model.searchable.state.square.home/dossier/model/searchable/state
+Module: domain.model.searchable.state.square.home/model/searchable/model.py
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

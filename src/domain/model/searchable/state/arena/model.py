@@ -9,37 +9,69 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from domain import ArenaPlayerColorBinder, Board, StateModel
+from domain import ArenaPlayerColorBinder, Board, Game, StateModel
 
 
 class Arena(StateModel):
+    """
+    Role:Data-Holder/Data Owner
+
+    Responsibilities:
+        1.  Player's interact with the Board through the Arena during Game lifeycle.
+
+    Attributes:
+        id: int
+        board: Board
+        player_binder: ArenaPlayerColorBinder
+
+    Super Class:
+        StateModel
+    """
     _id: int
+    _game: Game
     _board: Board
-    _arena_player_binder: ArenaPlayerColorBinder
+    _player_binder: ArenaPlayerColorBinder
     
-    def __init__(self, id: int, arena_player_binder: ArenaPlayerColorBinder):
-        self._id = id
-        self._arena_player_binder = arena_player_binder
+    def __init__(self, id: int, game: Game, board: Board, player_binder: ArenaPlayerColorBinder):
+        """
+        Args:
+            id: int
+            game: Game
+            board: Board
+            player_binder: ArenaPlayerColorBinder
+        """
+        super().__init__(id=id)
+        self.game = game
+        self._board = board
+        self._player_binder = player_binder
     
     @property
     def id(self) -> int:
         return self._id
     
     @property
-    def binder(self) ->ArenaPlayerColorBinder:
-        return self._arena_player_binder
+    def game(self) -> Game:
+        return self._game
+        
+    @property
+    def board(self) -> Board:
+        return self._board
+    
+    @property
+    def player_binder(self) ->ArenaPlayerColorBinder:
+        return self._player_binder
 
     @property
     def arena_has_board(self) -> bool:
-        return self._arena_player_binder.board_exists
+        return self._player_binder.board_exists
     
     @property
     def arena_is_full(self) -> bool:
-        return self._arena_player_binder.has_both_slots_occupied
+        return self._player_binder.has_both_slots_occupied
     
     @property
     def arena_is_empty(self) -> bool:
-        return self._board is None and self._arena_player_binder is None
+        return self._board is None and self._player_binder is None
     
     def __eq__(self, other: object) -> bool:
         if other is self: return True

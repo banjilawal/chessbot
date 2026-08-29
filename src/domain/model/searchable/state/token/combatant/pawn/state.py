@@ -1,4 +1,4 @@
-# src/domain/model/searchable/state/token/dossier/model/searchable/state/concrete/combatant/pawn_token/state.py
+# src/domain/model/searchable/state/token/model/searchable/model.py/concrete/combatant/pawn_token/state.py
 
 """
 Module: domain.model.searchable.state.token.model.concrete.combatant.pawn_token.state

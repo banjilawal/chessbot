@@ -1,4 +1,4 @@
-# src/domain/model/searchable/attack/dossier/model.py
+# src/domain/model/searchable/walk/attack/model.py.py
 
 """
 Module: domain.model.searchable.walk.attack.model

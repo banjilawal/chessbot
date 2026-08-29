@@ -14,6 +14,7 @@ from .sets import *
 from .context import *
 from .model import *
 from .registry import *
+from .search import *
 from .signature import *
 from .space import *
 from .structure import *

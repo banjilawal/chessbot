@@ -1,4 +1,4 @@
-# src/domain/model/searchable/state/query/stack/hostage/dossier/model/searchable/state.py
+# src/domain/model/searchable/state/query/stack/hostage/model/searchable/model.py.py
 
 """
 Module: domain.model.searchable.state.query.stack.hostage.model
