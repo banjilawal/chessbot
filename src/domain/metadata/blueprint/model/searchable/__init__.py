@@ -10,9 +10,9 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.BLUEPRINT.MODEL.SEARCHABLE.STATE PACKAGE ===========#
 
 # Packages
-
 from .cartesian import *
 from .state import *
+from .walk import *
 
 # Modules
 from .blueprint import SearchableModelBlueprint

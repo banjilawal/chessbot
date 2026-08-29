@@ -10,7 +10,7 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.BLUEPRINT.MODEL PACKAGE ===========#
 
 # Packages
-from .path import *
+from domain.metadata.blueprint.model.searchable.walk.path import *
 from .rank import *
 from .scalar import *
 from .searchable import *

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from domain import Path, SearchableModel, Token
+from domain import Attack, Path, SearchableModel, Token
 
 
 class Maneuver(SearchableModel):
@@ -71,7 +71,7 @@ class Maneuver(SearchableModel):
         return self._benefit
         
     @property
-    def attack(self) -> Optional:
+    def attack(self) -> Optional[Attack]:
         return self._attack
     
     def __eq__(self, other):
