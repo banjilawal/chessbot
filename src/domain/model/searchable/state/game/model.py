@@ -1,10 +1,10 @@
-# src/domain/model/searchable/state/game/dossier/model/searchable/state.py
+# src/domain/model/searchable/state/arena/model.py
 
 """
-Module: domain.model.searchable.state.game.model
+Module: domain.model.searchable.state.arena.model
 Author: Banji Lawal
-Created: 2026-04-03
-version: 0.0.2
+Created: 2025-02-08
+version: 1.0.0
 """
 
 from typing import List

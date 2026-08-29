@@ -45,7 +45,7 @@ class Token(StateModel):
     Provides:
 
     Super Class:
-        Model
+        StateModel
     """
     _id: int
     _team: Team

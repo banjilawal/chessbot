@@ -28,7 +28,7 @@ class Identity(Model):
     Provides:
 
     Super Class:
-        Model
+        SearchableModel
     """
     
     def __init__(self, id: int, name: str,):

@@ -1,4 +1,4 @@
-# src/domain/model/searchable/state/board/dossier/model/searchable/state.py
+# src/domain/model/searchable/state/board/model.py
 
 """
 Module: domain.model.searchable.state.board.model
@@ -9,11 +9,10 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from transit.controller import BoardTeamBinderController
-from collection.database import HostageDatabase, SquareDatabase
+from typing import Optional
 
-
-from domain.model import Arena, BoardState, StateModel
+from collection import AttackDatabase, ManeuverDatabase, SquareDatabase, TokenDatabase
+from domain import Arena, BoardState, BoardTeamColorBinder, StateModel
 
 
 class Board(StateModel):
@@ -25,30 +24,52 @@ class Board(StateModel):
     
     Attributes:
         id: int
-        biard: Board
-        binder_controller: ArenaBinderController
+        arena: Arena
+        squares: SquareDatabase
+        maneuver_log: ManeuverDatabase
+        attack_records: AttackDatabase
+        captured_tokens: TokenDatabase
+        team_binder: BoardTeamColorBinder
         
     Super Class:
-        Model
+        StateModel
     """
     _id: int
     _arena: Arena
     _state: BoardState
     _squares: SquareDatabase
-    _hostage_database: HostageDatabase
-    _binder_controller: BoardTeamBinderController
+    _maneuver_log: ManeuverDatabase
+    _attack_records: AttackDatabase
+    _captured_tokens: TokenDatabase
+    _team_binder: BoardTeamColorBinder
 
-    def __init__(self, id: int, arena: Arena,):
+    def __init__(
+            self,
+            id: int,
+            arena: Arena,
+            team_binder: BoardTeamColorBinder,
+            squares: Optional[SquareDatabase] | None = None,
+            maneuver_log: Optional[ManeuverDatabase] | None = None,
+            attack_records: Optional[AttackDatabase] | None = None,
+            captured_tokens: Optional[TokenDatabase] | None = None,
+    ):
         """
         Args:
             id: int
             arena: Arena
+            team_binder: BoardTeamColorBinder
+            squares: Optional[SquareDatabase]
+            maneuver_log: Optional[ManeuverDatabase]
+            attack_records: Optional[AttackDatabase]
+            captured_tokens: Optional[TokenDatabase]
         """
-        self._id = id
+        super().__init__(id=id)
         self._arena = arena
-        self._squares = SquareDatabase()
-        self._hostage_database = HostageDatabase()
-        self._binder_controller = BoardTeamBinderController()
+        self._team_binder = team_binder
+        self._squares = squares or SquareDatabase()
+        self._maneuver_log = maneuver_log or ManeuverDatabase()
+        self._attack_records = attack_records or AttackDatabase()
+        self._captured_tokens = captured_tokens or TokenDatabase()
         self._state = BoardState.IS_EMPTY
     
     @property
@@ -72,12 +93,12 @@ class Board(StateModel):
         return self._squares
     
     @property
-    def binder_controller(self) -> BoardTeamBinderController:
-        return self._binder_controller
+    def team_binder(self) -> BoardTeamColorBinder:
+        return self._team_binder
     
     @property
-    def hostage_database(self) -> HostageDatabase:
-        return self._hostage_database
+    def maneuver_log(self) -> ManeuverDatabase:
+        return self._maneuver_log
     
     def __eq__(self, other):
         if other is self: return True

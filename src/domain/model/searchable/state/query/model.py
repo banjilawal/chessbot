@@ -34,7 +34,7 @@ class Query(ABC, Generic[T]):
     Provides:
 
     Super Class:
-        Model
+        StateModel
     """
     context: Context[T]
     

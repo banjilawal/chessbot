@@ -26,7 +26,7 @@ class StateModel(SearchableModel):
     Provides:
 
     Super Class:
-        SearchableModel
+        StateModel
     """
     _id: int
     

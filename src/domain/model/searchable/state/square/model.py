@@ -39,7 +39,7 @@ class Square(StateModel):
         - def is_occupied() -> bool
 
     Super Class:
-        Model
+        StateModel
     """
     _id: int
     _name: str

@@ -1,4 +1,4 @@
-# src/domain/model/searchable/state/arena/dossier/model.py
+# src/domain/model/searchable/state/arena/model.py
 
 """
 Module: domain.model.searchable.state.arena.model
@@ -9,15 +9,15 @@ version: 1.0.0
 
 from __future__ import annotations
 
-
-from domain.model import ArenaBinder, StateModel
+from domain import ArenaPlayerColorBinder, Board, StateModel
 
 
 class Arena(StateModel):
     _id: int
-    _arena_player_binder: ArenaBinder
+    _board: Board
+    _arena_player_binder: ArenaPlayerColorBinder
     
-    def __init__(self, id: int, arena_player_binder: ArenaBinder):
+    def __init__(self, id: int, arena_player_binder: ArenaPlayerColorBinder):
         self._id = id
         self._arena_player_binder = arena_player_binder
     
@@ -26,7 +26,7 @@ class Arena(StateModel):
         return self._id
     
     @property
-    def binder(self) ->ArenaBinder:
+    def binder(self) ->ArenaPlayerColorBinder:
         return self._arena_player_binder
 
     @property

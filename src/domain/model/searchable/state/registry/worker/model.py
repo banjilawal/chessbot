@@ -33,7 +33,7 @@ class WorkerRegistry:
         - def domains(self) -> List[str]:
     
     Super Class:
-        Model
+        StateModel
     """
     _invocation_counters: dict[str, int]
     _registration_counters: dict[str, int]
