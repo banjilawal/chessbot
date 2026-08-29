@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .bluelprint import  ArenaBlueprint
+from .blueprint import  ArenaBlueprint

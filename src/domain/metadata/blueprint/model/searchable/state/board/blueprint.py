@@ -30,7 +30,7 @@ class BoardBlueprint(StateModelBlueprint[Board]):
         team_binder: BoardTeamColorBinder
         
         domain_class: Type[Board]
-        search_context_class: BoardSearchContext
+        search_context_class: Type[BoardSearchContext]
         domain_null_exception: BoardNullException
 
      Provides:
@@ -45,25 +45,25 @@ class BoardBlueprint(StateModelBlueprint[Board]):
             self,
             squares: SquareDatabase,
             team_binder: BoardTeamColorBinder,
-            domain_class: Type[Board],
-            search_context_class: Type[BoardSearchContext],
-            domain_null_exception: BoardNullException,
+            domain_class: Optional[Type[Board]] | None = None,
+            search_context_class: Optional[Type[BoardSearchContext]] | None = None,
+            domain_null_exception: Optional[BoardNullException] | None = None,
             id: Optional[int] | None = None,
     ):
         """
         Args:
-            domain_class: Type[Board]
-            search_context_class: BoardSearchContext
-            domain_null_exception: BoardNullException
+            domain_class: Optional[Type[Board]]
+            search_context_class: Optional[Type[BoardSearchContext]]
+            domain_null_exception: Optional[BoardNullException]
             id: Optional[int]
             squares: SquareDatabase
             team_binder: BoardTeamColorBinder
         """
         super().__init__(
             id=id,
-            domain_class=domain_class,
-            search_context_class=search_context_class,
-            domain_null_exception=domain_null_exception,
+            domain_class=domain_class or Type[Board],
+            search_context_class=search_context_class or Type[BoardSearchContext],
+            domain_null_exception=domain_null_exception or BoardNullException(),
         )
         self._squares = squares
         self._team_binder = team_binder

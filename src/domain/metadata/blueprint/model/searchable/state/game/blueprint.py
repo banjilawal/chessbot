@@ -29,7 +29,7 @@ class GameBlueprint(StateModelBlueprint[Game]):
         captures: List[Attack]
         
         domain_class: Type[Game]
-        search_context_class: GameSearchContext
+        search_context_class: Type[GameSearchContext]
         domain_null_exception: GameNullException
 
      Provides:
@@ -44,25 +44,25 @@ class GameBlueprint(StateModelBlueprint[Game]):
             self,
             arena: Arena,
             captured_tokens: List[Attack],
-            domain_class: Type[Game],
-            search_context_class: Type[GameSearchContext],
-            domain_null_exception: GameNullException,
+            domain_class: Optional[Type[Game]] | None = None,
+            search_context_class: Optional[Type[GameSearchContext]] | None = None,
+            domain_null_exception: Optional[GameNullException] | None = None,
             id: Optional[int] | None = None,
     ):
         """
         Args:
-            domain_class: Type[Game]
-            search_context_class: GameSearchContext
-            domain_null_exception: GameNullException
+            domain_class: Optional[Type[Game]]
+            search_context_class: Optional[Type[GameSearchContext]]
+            domain_null_exception: Optional[GameNullException]
             id: Optional[int]
             arena: Arena
             captured_tokens: List[Attack]
         """
         super().__init__(
             id=id,
-            domain_class=domain_class,
-            search_context_class=search_context_class,
-            domain_null_exception=domain_null_exception,
+            domain_class=domain_class or Type[Game],
+            search_context_class=search_context_class or Type[GameSearchContext],
+            domain_null_exception=domain_null_exception or GameNullException(),
         )
         self._arena = arena
         self._captured_tokens = captured_tokens

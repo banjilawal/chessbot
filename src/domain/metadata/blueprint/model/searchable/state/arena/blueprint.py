@@ -29,7 +29,7 @@ class ArenaBlueprint(StateModelBlueprint[Arena]):
         player_binder: ArenaPlayerColorBinder
         
         domain_class: Type[Arena]
-        search_context_class: ArenaSearchContext
+        search_context_class: Type[ArenaSearchContext]
         domain_null_exception: ArenaNullException
 
      Provides:
@@ -44,25 +44,25 @@ class ArenaBlueprint(StateModelBlueprint[Arena]):
             self,
             board: Board,
             player_binder: ArenaPlayerColorBinder,
-            domain_class: Type[Arena],
-            search_context_class: Type[ArenaSearchContext],
-            domain_null_exception: ArenaNullException,
+            domain_class: Optional[Type[Arena]] | None = None,
+            search_context_class: Optional[Type[ArenaSearchContext]] | None = None,
+            domain_null_exception: Optional[ArenaNullException] | None = None,
             id: Optional[int] | None = None,
     ):
         """
         Args:
-            domain_class: Type[Arena]
-            search_context_class: ArenaSearchContext
-            domain_null_exception: ArenaNullException
+            domain_class: Optional[Type[Arena]] | None = None,
+            search_context_class: Optional[Type[ArenaSearchContext]] | None = None,
+            domain_null_exception: Optional[ArenaNullException] | None = None,
             id: Optional[int]
             board: Board
             player_binder: ArenaPlayerColorBinder
         """
         super().__init__(
             id=id,
-            domain_class=domain_class,
-            search_context_class=search_context_class,
-            domain_null_exception=domain_null_exception,
+            domain_class=domain_class or Type[Arena],
+            search_context_class=search_context_class or Type[ArenaSearchContext],
+            domain_null_exception=domain_null_exception or ArenaNullException(),
         )
         self._board = board
         self._player_binder = player_binder

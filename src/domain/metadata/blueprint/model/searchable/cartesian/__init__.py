@@ -14,4 +14,4 @@ from .coord import *
 from .vector import *
 
 # Modules
-from .bluelprint import  CartesianBlueprint
+from .blueprint import  CartesianBlueprint

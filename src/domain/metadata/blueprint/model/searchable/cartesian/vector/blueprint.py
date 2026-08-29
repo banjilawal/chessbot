@@ -58,8 +58,8 @@ class VectorBlueprint(CartesianBlueprint[Vector]):
             search_context_class: Optional[Type[VectorSearchContext]]
         """
         super().__init__(
-            domain_class=domain_class or Vector,
-            search_context_class=search_context_class or VectorSearchContext,
+            domain_class=domain_class or Type[Vector],
+            search_context_class=search_context_class or Type[VectorSearchContext],
             domain_null_exception=domain_null_exception or VectorNullException(),
         )
         self._x = x
