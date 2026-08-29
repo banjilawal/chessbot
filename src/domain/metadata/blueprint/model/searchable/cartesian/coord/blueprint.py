@@ -26,13 +26,14 @@ class CoordBlueprint(CartesianBlueprint[Coord]):
     Attributes:
         row: int
         column: int
-        domain_class: Optional[Type[Coord]]
-        domain_null_exception: Optional[CoordNullException]
+        domain_class: Type[Coord]
+        domain_null_exception: CoordNullException
+        search_context_class: Type[CoordSearchContext]
         
     Provides:
 
      Super Class:
-        ModelBlueprint
+        CartesianBlueprint
      """
     _row: int
     _column: int

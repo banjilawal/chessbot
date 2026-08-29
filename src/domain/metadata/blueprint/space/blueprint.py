@@ -26,7 +26,7 @@ class SpaceBlueprint(Blueprint, ABC, Generic[T]):
 
      Responsibilities:
          1.  Provides values for hydrating a Space object
-         2.  DTO
+ 
 
      Attributes:
          domain_class: Type[T]

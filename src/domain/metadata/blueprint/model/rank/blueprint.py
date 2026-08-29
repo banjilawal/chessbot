@@ -22,7 +22,7 @@ class RankBlueprint(ModelBlueprint[Rank]):
         
     Responsibilities:
         1.  Provides values for hydrating a Rank object.
-        2.  DTO
+
         
     Attributes:
         persona: Persona

@@ -24,7 +24,7 @@ class VectorBlueprint(CartesianBlueprint[Vector]):
 
     Responsibilities:
         1.  Provides values for hydrating a Vector object.
-        2.  DTO
+
 
     Attributes:
         domain_class: Type[Vector]

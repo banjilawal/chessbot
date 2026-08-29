@@ -23,7 +23,7 @@ class ContainerBlueprint(Blueprint[Container]):
 
      Responsibilities:
          1.  Provides values for hydrating a Container object
-         2.  DTO
+ 
 
      Attributes:
         container_class: Type[Container]

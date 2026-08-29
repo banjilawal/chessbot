@@ -10,7 +10,6 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.BLUEPRINT.MODEL PACKAGE ===========#
 
 # Packages
-from .binder import *
 from .path import *
 from .rank import *
 from .scalar import *

@@ -1,7 +1,7 @@
-# src/domain/metadata/blueprint/model/binder/blueprint.py
+# src/domain/metadata/blueprint/structure/binder/blueprint.py
 
 """
-Module: domain.metadata.blueprint.model.binder.blueprint
+Module: domain.metadata.blueprint.structure.binder.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,22 +9,21 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+
 from typing import Optional
 
-from domain.model import Blueprint, Board, Schema, BoardBinder
+from domain import BoardTeamColorBinder, StructureBlueprint
 
-@dataclass
-class BoardBinderBlueprint(ModelBlueprint[BoardBinder]):
+
+class BoardBinderBlueprint(StructureBlueprint[BoardTeamColorBinder]):
     """
      Role:
         1.  Metadata
 
     Responsibilities:
-        1.  Provides values for hydrating a BoardTeamBinder object.
+        1.  Provides values for hydrating a BoardTeamColorBinder object.
 
     Attributes:
-        id: Optional[int]
         board: Board
         schema: Schema
         model_type: Orange
@@ -34,7 +33,7 @@ class BoardBinderBlueprint(ModelBlueprint[BoardBinder]):
     Provides:
 
     Super Class:
-        Blueprint
+       StructureBlueprint
     """
     board: Board
     schema: Schema

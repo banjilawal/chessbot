@@ -23,7 +23,7 @@ class TokenBlueprint(StateModelBlueprint[Token]):
         
     Responsibilities:
         1.  Provides values for hydrating a Token object.
-        2.  DTO
+
         
     Attributes:
         team: Team,

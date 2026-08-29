@@ -24,7 +24,7 @@ class RegisterSetBlueprint(ContainerBlueprint[Register]):
         
     Responsibilities:
         1.  Provides values for hydrating a Register object.
-        2.  DTO
+
     
     Attributes:
         items: Tuple[Register, ...],

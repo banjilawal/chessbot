@@ -25,8 +25,7 @@ class CartesianBlueprint(SearchableModelBlueprint[T], ABC, Generic[T]):
 
      Responsibilities:
          1.  Provides values for hydrating a StateModel object.
-         2.  DTO
-
+ 
      Attributes:
          search_context_class: Type[SearchContext[T]]
 
@@ -61,7 +60,3 @@ class CartesianBlueprint(SearchableModelBlueprint[T], ABC, Generic[T]):
     @property
     def search_context_class(self) -> Type[SearchContext[T]]:
         return self._search_context_class
-    
-    @property
-    def domain_null_exception(self) -> ModelNullException:
-        return cast(ModelNullException, super().domain_null_exception)

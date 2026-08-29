@@ -24,7 +24,7 @@ class VectorSetBlueprint(ContainerBlueprint[Vector]):
 
     Responsibilities:
         1.  Provides values for hydrating a Vector object.
-        2.  DTO
+
 
     Attributes:
         items: Tuple[Vector, ...],
