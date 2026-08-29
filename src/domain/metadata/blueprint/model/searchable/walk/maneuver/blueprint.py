@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import Attack, Maneuver, Path, SearchableModelBlueprint, Token
+from domain import Attack, Maneuver, ManeuverSearchContext, Path, SearchableModelBlueprint, Token
 from err import ManeuverNullException
 
 
@@ -58,9 +58,10 @@ class ManeuverBlueprint(SearchableModelBlueprint[Maneuver]):
             domain_class: Optional[Type[Maneuver]]
             search_context_class: Optional[Type[ManeuverSearchContext]]
             domain_null_exception: Optional[ManeuverNullException]
-            id: Optional[int]
-            squares: SquareDatabase
-            team_binder: ManeuverTeamColorBinder
+            path: Path
+            benefit: int
+            traveller: Token
+            attack: Optional[Attack]
         """
         super().__init__(
             domain_class=domain_class or Type[Maneuver],

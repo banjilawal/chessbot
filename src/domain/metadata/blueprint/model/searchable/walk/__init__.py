@@ -10,17 +10,8 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.BLUEPRINT.MODEL.SEARCHABLE.WALK PACKAGE ===========#
 
 # Packages
-
-from .arena import *
-from .board import *
-from .edge import *
 from .maneuver import *
-from .node import *
-from .player import *
-from .square import *
-from .team import *
-from .token import *
+from .path import *
 
 
 # Modules
-from .blueprint import WalkModelBlueprint

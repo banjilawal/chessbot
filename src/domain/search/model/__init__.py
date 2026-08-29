@@ -14,6 +14,8 @@ from .arena import *
 from .board import *
 from .coord import *
 from .game import *
+from .maneuver import *
+from .path import *
 from .player import *
 from .team import *
 from .token import *

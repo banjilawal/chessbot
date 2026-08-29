@@ -1,7 +1,7 @@
-# src/domain/search/model/maneuver/context.py
+# src/domain/search/model/path/context.py
 
 """
-Module: domain.search.model.maneuver
+Module: domain.search.model.path
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,22 +11,22 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain import Arena, Maneuver, Player, ManeuverWinner, ModelSearchContext
+from domain import Arena, Path, Player, PathWinner, ModelSearchContext
 
 
-class ManeuverSearchContext(ModelSearchContext[Maneuver]):
+class PathSearchContext(ModelSearchContext[Path]):
     """
     Role:
         - Option Selector
 
     Responsibilities:
-        1.  Supply the criteria a ManeuverModelSearcher uses to find a hit.
+        1.  Supply the criteria a PathModelSearcher uses to find a hit.
 
     Attributes:
         id: Optional[int]
         arena: Optional[Arena]
         player: Optional[Player]
-        winner: Optional[ManeuverWinner]
+        winner: Optional[PathWinner]
 
     Provides:
         -  to_dict() -> Dict[str, Any]
@@ -37,21 +37,21 @@ class ManeuverSearchContext(ModelSearchContext[Maneuver]):
     _id: Optional[int]
     _arena: Optional[Arena]
     _player: Optional[Player]
-    _winner: Optional[ManeuverWinner]
+    _winner: Optional[PathWinner]
     
     def __init__(
             self,
             id: Optional[int] | None = None,
             arena: Optional[Arena] | None = None,
             player: Optional[Player] | None = None,
-            winner: Optional[ManeuverWinner] | None = None,
+            winner: Optional[PathWinner] | None = None,
     ):
         """
         Args:
             id: Optional[int]
             arena: Optional[Arena]
             player: Optional[Player]
-            winner: Optional[ManeuverWinner]
+            winner: Optional[PathWinner]
         """
         super().__init__(id=id)
         self._arena = arena
@@ -67,7 +67,7 @@ class ManeuverSearchContext(ModelSearchContext[Maneuver]):
         return self._player
     
     @property
-    def winner(self) -> Optional[ManeuverWinner]:
+    def winner(self) -> Optional[PathWinner]:
         return self._winner
         
     

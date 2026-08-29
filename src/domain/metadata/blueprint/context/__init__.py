@@ -14,13 +14,12 @@ from .arena import *
 from .board import *
 from .coord import *
 from .edge import *
-from .formation import *
-from .hostage import *
+from .game import *
+from .maneuver import *
 from .node import *
-from .persona import *
+from .path import *
 from .player import *
 from .rank import *
-from .schema import *
 from .square import *
 from .team import *
 from .token import *

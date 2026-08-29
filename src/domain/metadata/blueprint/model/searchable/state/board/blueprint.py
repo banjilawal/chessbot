@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from collection import SquareDatabase
+from collection import AttackDatabase, ManeuverDatabase, SquareDatabase, TokenDatabase
 from domain import Board, BoardSearchContext, BoardTeamColorBinder, StateModelBlueprint
 from err import BoardNullException
 
@@ -27,6 +27,9 @@ class BoardBlueprint(StateModelBlueprint[Board]):
      Attributes:
         id: Optional[int]
         squares: SquareDatabase
+        maneuver_log: ManeuverDatabase
+        attack_records: AttackDatabase
+        captured_tokens: TokenDatabase
         team_binder: BoardTeamColorBinder
         
         domain_class: Type[Board]
@@ -39,6 +42,9 @@ class BoardBlueprint(StateModelBlueprint[Board]):
         StateModelBlueprint
      """
     _squares: SquareDatabase
+    _maneuver_log: ManeuverDatabase
+    _attack_records: AttackDatabase
+    _captured_tokens: TokenDatabase
     _team_binder: BoardTeamColorBinder
     
     def __init__(
@@ -49,15 +55,22 @@ class BoardBlueprint(StateModelBlueprint[Board]):
             search_context_class: Optional[Type[BoardSearchContext]] | None = None,
             domain_null_exception: Optional[BoardNullException] | None = None,
             id: Optional[int] | None = None,
+            maneuver_log: Optional[ManeuverDatabase] | None = None,
+            attack_records: Optional[AttackDatabase] | None = None,
+            captured_tokens: Optional[TokenDatabase] | None = None,
     ):
         """
         Args:
+            squares: SquareDatabase
+            team_binder: BoardTeamColorBinder
             domain_class: Optional[Type[Board]]
             search_context_class: Optional[Type[BoardSearchContext]]
             domain_null_exception: Optional[BoardNullException]
+            
+            maneuver_log: Optional[ManeuverDatabase]
+            attack_records: Optional[AttackDatabase]
+            captured_tokens: Optional[TokenDatabase]
             id: Optional[int]
-            squares: SquareDatabase
-            team_binder: BoardTeamColorBinder
         """
         super().__init__(
             id=id,
@@ -67,6 +80,9 @@ class BoardBlueprint(StateModelBlueprint[Board]):
         )
         self._squares = squares
         self._team_binder = team_binder
+        self._maneuver_log = maneuver_log
+        self._attack_records = attack_records
+        self._captured_tokens = captured_tokens
     
     @property
     def domain_class(self) -> Type[Board]:
@@ -83,6 +99,18 @@ class BoardBlueprint(StateModelBlueprint[Board]):
     @property
     def squares(self) -> SquareDatabase:
         return self._squares
+    
+    @property
+    def maneuver_log(self) -> ManeuverDatabase:
+        return self._maneuver_log
+    
+    @property
+    def attack_records(self) -> AttackDatabase:
+        return self._attack_records
+    
+    @property
+    def captured_tokens(self) -> TokenDatabase:
+        return self._captured_tokens
     
     @property
     def team_binder(self) -> BoardTeamColorBinder:
