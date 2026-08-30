@@ -13,7 +13,7 @@ from typing import Any, Dict, Optional, Type, cast
 
 from config import GameColor
 from domain import CoordSearchContext, Board, Game, ContextBlueprint, Player
-from err import CoordSearchContextNullException
+from err import CoordContextNullException
 
 
 class CoordContextBlueprint(ModelContextBlueprint[CoordSearchContext]):
@@ -26,7 +26,7 @@ class CoordContextBlueprint(ModelContextBlueprint[CoordSearchContext]):
          
      Attributes:
         domain_class: Type[CoordSearchContext]
-        domain_null_exception: CoordSearchContextNullException
+        domain_null_exception: CoordContextNullException
         id: Optional[int]
         game: Optional[Game]
         board: Optional[Board]
@@ -47,7 +47,7 @@ class CoordContextBlueprint(ModelContextBlueprint[CoordSearchContext]):
     def __init__(
             self,
             domain_class: Optional[Type[CoordSearchContext]] | None = None,
-            domain_null_exception: Optional[CoordSearchContextNullException] | None = None,
+            domain_null_exception: Optional[CoordContextNullException] | None = None,
             id: Optional[int] | None = None,
             game: Optional[Game] | None = None,
             board: Optional[Board] | None = None,
@@ -57,7 +57,7 @@ class CoordContextBlueprint(ModelContextBlueprint[CoordSearchContext]):
         """
         Args:
             domain_class: Type[CoordSearchContext]
-            domain_null_exception: CoordSearchContextNullException
+            domain_null_exception: CoordContextNullException
             game: Optional[Game]
             board: Optional[Board]
             player: Optional[Player]
@@ -66,7 +66,7 @@ class CoordContextBlueprint(ModelContextBlueprint[CoordSearchContext]):
         super().__init__(
             id=id,
             domain_class=domain_class or Type[CoordSearchContext],
-            domain_null_exception=domain_null_exception or CoordSearchContextNullException(),
+            domain_null_exception=domain_null_exception or CoordContextNullException(),
         )
         self._game = game
         self._board = board
@@ -78,8 +78,8 @@ class CoordContextBlueprint(ModelContextBlueprint[CoordSearchContext]):
         return cast(Type[CoordSearchContext], super().domain_class)
     
     @property
-    def domain_null_exception(self) -> CoordSearchContextNullException:
-        return  cast(CoordSearchContextNullException, super()._domain_null_exception)
+    def domain_null_exception(self) -> CoordContextNullException:
+        return  cast(CoordContextNullException, super()._domain_null_exception)
     
     @property
     def game(self) -> Optional[Game]:

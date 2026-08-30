@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchContextNullException
+from err import ContextNullException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# GRAPH_GRAPH_CONTEXT_NULL_ERROR #======================#
-class GraphContextNullException(SearchContextNullException):
+class GraphContextNullException(ContextNullException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class GraphContextNullException(SearchContextNullException):
     Provides:
 
     Super Class:
-        SearchContextNullException
+        ContextNullException
     """
     MSG = "GraphContext Cannot be null."
     ERR_CODE = "GRAPH_GRAPH_CONTEXT_NULL_ERROR"

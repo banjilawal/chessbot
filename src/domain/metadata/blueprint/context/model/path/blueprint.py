@@ -13,7 +13,7 @@ from typing import Any, Dict, Optional, Type, cast
 
 from config import GameColor
 from domain import PathSearchContext, Board, Game, ContextBlueprint, Player
-from err import PathSearchContextNullException
+from err import PathContextNullException
 
 
 class PathContextBlueprint(ModelContextBlueprint[PathSearchContext]):
@@ -26,7 +26,7 @@ class PathContextBlueprint(ModelContextBlueprint[PathSearchContext]):
          
      Attributes:
         domain_class: Type[PathSearchContext]
-        domain_null_exception: PathSearchContextNullException
+        domain_null_exception: PathContextNullException
         id: Optional[int]
         game: Optional[Game]
         board: Optional[Board]
@@ -47,7 +47,7 @@ class PathContextBlueprint(ModelContextBlueprint[PathSearchContext]):
     def __init__(
             self,
             domain_class: Optional[Type[PathSearchContext]] | None = None,
-            domain_null_exception: Optional[PathSearchContextNullException] | None = None,
+            domain_null_exception: Optional[PathContextNullException] | None = None,
             id: Optional[int] | None = None,
             game: Optional[Game] | None = None,
             board: Optional[Board] | None = None,
@@ -57,7 +57,7 @@ class PathContextBlueprint(ModelContextBlueprint[PathSearchContext]):
         """
         Args:
             domain_class: Type[PathSearchContext]
-            domain_null_exception: PathSearchContextNullException
+            domain_null_exception: PathContextNullException
             game: Optional[Game]
             board: Optional[Board]
             player: Optional[Player]
@@ -66,7 +66,7 @@ class PathContextBlueprint(ModelContextBlueprint[PathSearchContext]):
         super().__init__(
             id=id,
             domain_class=domain_class or Type[PathSearchContext],
-            domain_null_exception=domain_null_exception or PathSearchContextNullException(),
+            domain_null_exception=domain_null_exception or PathContextNullException(),
         )
         self._game = game
         self._board = board
@@ -78,8 +78,8 @@ class PathContextBlueprint(ModelContextBlueprint[PathSearchContext]):
         return cast(Type[PathSearchContext], super().domain_class)
     
     @property
-    def domain_null_exception(self) -> PathSearchContextNullException:
-        return  cast(PathSearchContextNullException, super()._domain_null_exception)
+    def domain_null_exception(self) -> PathContextNullException:
+        return  cast(PathContextNullException, super()._domain_null_exception)
     
     @property
     def game(self) -> Optional[Game]:

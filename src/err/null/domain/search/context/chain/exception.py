@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchContextNullException
+from err import ContextNullException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# CHAIN_CHAIN_CONTEXT_NULL_ERROR #======================#
-class ChainContextNullException(SearchContextNullException):
+class ChainContextNullException(ContextNullException):
     """
     Role:
         - Error Tracing

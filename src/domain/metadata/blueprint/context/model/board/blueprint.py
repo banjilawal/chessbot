@@ -13,7 +13,7 @@ from typing import Any, Dict, Optional, Type, cast
 
 from config import GameColor
 from domain import Arena, BoardSearchContext, ContextBlueprint, Team
-from err import BoardSearchContextNullException
+from err import BoardContextNullException
 
 
 class BoardContextBlueprint(ModelContextBlueprint[BoardSearchContext]):
@@ -26,7 +26,7 @@ class BoardContextBlueprint(ModelContextBlueprint[BoardSearchContext]):
          
      Attributes:
         domain_class: Type[BoardSearchContext]
-        domain_null_exception: BoardSearchContextNullException
+        domain_null_exception: BoardContextNullException
         id: Optional[int]
         arena: Optional[Arena]
         board: Optional[Board]
@@ -38,7 +38,6 @@ class BoardContextBlueprint(ModelContextBlueprint[BoardSearchContext]):
      Super Class:
         ModelContextBlueprint
      """
-
     _arena: Optional[Arena]
     _team: Optional[Team]
     _color: Optional[GameColor]
@@ -46,7 +45,7 @@ class BoardContextBlueprint(ModelContextBlueprint[BoardSearchContext]):
     def __init__(
             self,
             domain_class: Optional[Type[BoardSearchContext]] | None = None,
-            domain_null_exception: Optional[BoardSearchContextNullException] | None = None,
+            domain_null_exception: Optional[BoardContextNullException] | None = None,
             id: Optional[int] | None = None,
             arena: Optional[Arena] | None = None,
             team: Optional[Team] | None = None,
@@ -55,7 +54,7 @@ class BoardContextBlueprint(ModelContextBlueprint[BoardSearchContext]):
         """
         Args:
             domain_class: Type[BoardSearchContext]
-            domain_null_exception: BoardSearchContextNullException
+            domain_null_exception: BoardContextNullException
             arena: Optional[Arena]
             team: Optional[Team]
             color: Optional[GameColor]
@@ -63,7 +62,7 @@ class BoardContextBlueprint(ModelContextBlueprint[BoardSearchContext]):
         super().__init__(
             id=id,
             domain_class=domain_class or Type[BoardSearchContext],
-            domain_null_exception=domain_null_exception or BoardSearchContextNullException(),
+            domain_null_exception=domain_null_exception or BoardContextNullException(),
         )
         self._arena = arena
         self._color = color
@@ -74,8 +73,8 @@ class BoardContextBlueprint(ModelContextBlueprint[BoardSearchContext]):
         return cast(Type[BoardSearchContext], super().domain_class)
     
     @property
-    def domain_null_exception(self) -> BoardSearchContextNullException:
-        return  cast(BoardSearchContextNullException, super()._domain_null_exception)
+    def domain_null_exception(self) -> BoardContextNullException:
+        return  cast(BoardContextNullException, super()._domain_null_exception)
     
     @property
     def arena(self) -> Optional[Arena]:

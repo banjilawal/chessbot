@@ -14,7 +14,7 @@ from dataclasses import dataclass
 
 from domain import ModelNullExceptionRoster, Team
 from err import (
-    TeamBlueprintNullException, TeamCarrierNullException, TeamSearchContextNullException, TeamNullException
+    TeamBlueprintNullException, TeamCarrierNullException, TeamContextNullException, TeamNullException
 )
 
 
@@ -41,4 +41,4 @@ class TeamNullExceptionRoster(ModelNullExceptionRoster[Team]):
     model: TeamNullException = TeamNullException()
     carrier: TeamCarrierNullException = TeamCarrierNullException()
     blueprint: TeamBlueprintNullException = TeamBlueprintNullException()
-    search_context: TeamSearchContextNullException = TeamSearchContextNullException()
+    search_context: TeamContextNullException = TeamContextNullException()

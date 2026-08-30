@@ -17,11 +17,11 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# SEARCH_CONTEXT_NULL_ERROR #======================#
-    "SearchContextNullException",
+    "ContextNullException",
 ]
 
 # ======================# SEARCH_CONTEXT_NULL_ERROR #======================#
-class SearchContextNullException(SearchDataObjectNullException):
+class ContextNullException(SearchDataObjectNullException):
     """
     Role:
         - Error Tracing

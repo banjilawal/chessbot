@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchContextNullException
+from err import ContextNullException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================#  MODEL_CONTEXT_NULL_ERROR #======================#
-class ModelContextNullException(SearchContextNullException):
+class ModelContextNullException(ContextNullException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class ModelContextNullException(SearchContextNullException):
     Provides:
 
     Super Class:
-        SearchContextNullException
+        ContextNullException
     """
     MSG = "ModelContext Cannot be null."
     ERR_CODE = " MODEL_CONTEXT_NULL_ERROR"

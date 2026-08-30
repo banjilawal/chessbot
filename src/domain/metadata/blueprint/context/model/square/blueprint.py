@@ -13,7 +13,7 @@ from typing import Any, Dict, Optional, Type, cast
 
 from config import GameColor
 from domain import SquareSearchContext, Board, Game, ContextBlueprint, Player
-from err import SquareSearchContextNullException
+from err import SquareContextNullException
 
 
 class SquareContextBlueprint(ModelContextBlueprint[SquareSearchContext]):
@@ -26,7 +26,7 @@ class SquareContextBlueprint(ModelContextBlueprint[SquareSearchContext]):
          
      Attributes:
         domain_class: Type[SquareSearchContext]
-        domain_null_exception: SquareSearchContextNullException
+        domain_null_exception: SquareContextNullException
         id: Optional[int]
         game: Optional[Game]
         board: Optional[Board]
@@ -47,7 +47,7 @@ class SquareContextBlueprint(ModelContextBlueprint[SquareSearchContext]):
     def __init__(
             self,
             domain_class: Optional[Type[SquareSearchContext]] | None = None,
-            domain_null_exception: Optional[SquareSearchContextNullException] | None = None,
+            domain_null_exception: Optional[SquareContextNullException] | None = None,
             id: Optional[int] | None = None,
             game: Optional[Game] | None = None,
             board: Optional[Board] | None = None,
@@ -57,7 +57,7 @@ class SquareContextBlueprint(ModelContextBlueprint[SquareSearchContext]):
         """
         Args:
             domain_class: Type[SquareSearchContext]
-            domain_null_exception: SquareSearchContextNullException
+            domain_null_exception: SquareContextNullException
             game: Optional[Game]
             board: Optional[Board]
             player: Optional[Player]
@@ -66,7 +66,7 @@ class SquareContextBlueprint(ModelContextBlueprint[SquareSearchContext]):
         super().__init__(
             id=id,
             domain_class=domain_class or Type[SquareSearchContext],
-            domain_null_exception=domain_null_exception or SquareSearchContextNullException(),
+            domain_null_exception=domain_null_exception or SquareContextNullException(),
         )
         self._game = game
         self._board = board
@@ -78,8 +78,8 @@ class SquareContextBlueprint(ModelContextBlueprint[SquareSearchContext]):
         return cast(Type[SquareSearchContext], super().domain_class)
     
     @property
-    def domain_null_exception(self) -> SquareSearchContextNullException:
-        return  cast(SquareSearchContextNullException, super()._domain_null_exception)
+    def domain_null_exception(self) -> SquareContextNullException:
+        return  cast(SquareContextNullException, super()._domain_null_exception)
     
     @property
     def game(self) -> Optional[Game]:

@@ -15,4 +15,4 @@ from .graph import *
 from .model import *
 
 # Modules
-from .exception import SearchContextNullException
+from .exception import ContextNullException

@@ -13,7 +13,7 @@ from typing import Any, Dict, Optional, Type, cast
 
 from config import GameColor
 from domain import KillSearchContext, Board, Game, ContextBlueprint, Player
-from err import KillSearchContextNullException
+from err import KillContextNullException
 
 
 class KillContextBlueprint(ModelContextBlueprint[KillSearchContext]):
@@ -26,7 +26,7 @@ class KillContextBlueprint(ModelContextBlueprint[KillSearchContext]):
          
      Attributes:
         domain_class: Type[KillSearchContext]
-        domain_null_exception: KillSearchContextNullException
+        domain_null_exception: KillContextNullException
         id: Optional[int]
         game: Optional[Game]
         board: Optional[Board]
@@ -47,7 +47,7 @@ class KillContextBlueprint(ModelContextBlueprint[KillSearchContext]):
     def __init__(
             self,
             domain_class: Optional[Type[KillSearchContext]] | None = None,
-            domain_null_exception: Optional[KillSearchContextNullException] | None = None,
+            domain_null_exception: Optional[KillContextNullException] | None = None,
             id: Optional[int] | None = None,
             game: Optional[Game] | None = None,
             board: Optional[Board] | None = None,
@@ -57,7 +57,7 @@ class KillContextBlueprint(ModelContextBlueprint[KillSearchContext]):
         """
         Args:
             domain_class: Type[KillSearchContext]
-            domain_null_exception: KillSearchContextNullException
+            domain_null_exception: KillContextNullException
             game: Optional[Game]
             board: Optional[Board]
             player: Optional[Player]
@@ -66,7 +66,7 @@ class KillContextBlueprint(ModelContextBlueprint[KillSearchContext]):
         super().__init__(
             id=id,
             domain_class=domain_class or Type[KillSearchContext],
-            domain_null_exception=domain_null_exception or KillSearchContextNullException(),
+            domain_null_exception=domain_null_exception or KillContextNullException(),
         )
         self._game = game
         self._board = board
@@ -78,8 +78,8 @@ class KillContextBlueprint(ModelContextBlueprint[KillSearchContext]):
         return cast(Type[KillSearchContext], super().domain_class)
     
     @property
-    def domain_null_exception(self) -> KillSearchContextNullException:
-        return  cast(KillSearchContextNullException, super()._domain_null_exception)
+    def domain_null_exception(self) -> KillContextNullException:
+        return  cast(KillContextNullException, super()._domain_null_exception)
     
     @property
     def game(self) -> Optional[Game]:

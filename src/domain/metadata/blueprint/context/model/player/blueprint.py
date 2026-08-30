@@ -13,7 +13,7 @@ from typing import Any, Dict, Optional, Type, cast
 
 from config import GameColor
 from domain import PlayerSearchContext, Board, Game, ContextBlueprint, Player
-from err import PlayerSearchContextNullException
+from err import PlayerContextNullException
 
 
 class PlayerContextBlueprint(ModelContextBlueprint[PlayerSearchContext]):
@@ -26,7 +26,7 @@ class PlayerContextBlueprint(ModelContextBlueprint[PlayerSearchContext]):
          
      Attributes:
         domain_class: Type[PlayerSearchContext]
-        domain_null_exception: PlayerSearchContextNullException
+        domain_null_exception: PlayerContextNullException
         id: Optional[int]
         game: Optional[Game]
         board: Optional[Board]
@@ -47,7 +47,7 @@ class PlayerContextBlueprint(ModelContextBlueprint[PlayerSearchContext]):
     def __init__(
             self,
             domain_class: Optional[Type[PlayerSearchContext]] | None = None,
-            domain_null_exception: Optional[PlayerSearchContextNullException] | None = None,
+            domain_null_exception: Optional[PlayerContextNullException] | None = None,
             id: Optional[int] | None = None,
             game: Optional[Game] | None = None,
             board: Optional[Board] | None = None,
@@ -57,7 +57,7 @@ class PlayerContextBlueprint(ModelContextBlueprint[PlayerSearchContext]):
         """
         Args:
             domain_class: Type[PlayerSearchContext]
-            domain_null_exception: PlayerSearchContextNullException
+            domain_null_exception: PlayerContextNullException
             game: Optional[Game]
             board: Optional[Board]
             player: Optional[Player]
@@ -66,7 +66,7 @@ class PlayerContextBlueprint(ModelContextBlueprint[PlayerSearchContext]):
         super().__init__(
             id=id,
             domain_class=domain_class or Type[PlayerSearchContext],
-            domain_null_exception=domain_null_exception or PlayerSearchContextNullException(),
+            domain_null_exception=domain_null_exception or PlayerContextNullException(),
         )
         self._game = game
         self._board = board
@@ -78,8 +78,8 @@ class PlayerContextBlueprint(ModelContextBlueprint[PlayerSearchContext]):
         return cast(Type[PlayerSearchContext], super().domain_class)
     
     @property
-    def domain_null_exception(self) -> PlayerSearchContextNullException:
-        return  cast(PlayerSearchContextNullException, super()._domain_null_exception)
+    def domain_null_exception(self) -> PlayerContextNullException:
+        return  cast(PlayerContextNullException, super()._domain_null_exception)
     
     @property
     def game(self) -> Optional[Game]:

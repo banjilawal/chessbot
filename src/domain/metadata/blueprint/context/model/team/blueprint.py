@@ -13,7 +13,7 @@ from typing import Any, Dict, Optional, Type, cast
 
 from config import GameColor
 from domain import TeamSearchContext, Board, Game, ContextBlueprint, Player
-from err import TeamSearchContextNullException
+from err import TeamContextNullException
 
 
 class TeamContextBlueprint(ModelContextBlueprint[TeamSearchContext]):
@@ -26,7 +26,7 @@ class TeamContextBlueprint(ModelContextBlueprint[TeamSearchContext]):
          
      Attributes:
         domain_class: Type[TeamSearchContext]
-        domain_null_exception: TeamSearchContextNullException
+        domain_null_exception: TeamContextNullException
         id: Optional[int]
         game: Optional[Game]
         board: Optional[Board]
@@ -47,7 +47,7 @@ class TeamContextBlueprint(ModelContextBlueprint[TeamSearchContext]):
     def __init__(
             self,
             domain_class: Optional[Type[TeamSearchContext]] | None = None,
-            domain_null_exception: Optional[TeamSearchContextNullException] | None = None,
+            domain_null_exception: Optional[TeamContextNullException] | None = None,
             id: Optional[int] | None = None,
             game: Optional[Game] | None = None,
             board: Optional[Board] | None = None,
@@ -57,7 +57,7 @@ class TeamContextBlueprint(ModelContextBlueprint[TeamSearchContext]):
         """
         Args:
             domain_class: Type[TeamSearchContext]
-            domain_null_exception: TeamSearchContextNullException
+            domain_null_exception: TeamContextNullException
             game: Optional[Game]
             board: Optional[Board]
             player: Optional[Player]
@@ -66,7 +66,7 @@ class TeamContextBlueprint(ModelContextBlueprint[TeamSearchContext]):
         super().__init__(
             id=id,
             domain_class=domain_class or Type[TeamSearchContext],
-            domain_null_exception=domain_null_exception or TeamSearchContextNullException(),
+            domain_null_exception=domain_null_exception or TeamContextNullException(),
         )
         self._game = game
         self._board = board
@@ -78,8 +78,8 @@ class TeamContextBlueprint(ModelContextBlueprint[TeamSearchContext]):
         return cast(Type[TeamSearchContext], super().domain_class)
     
     @property
-    def domain_null_exception(self) -> TeamSearchContextNullException:
-        return  cast(TeamSearchContextNullException, super()._domain_null_exception)
+    def domain_null_exception(self) -> TeamContextNullException:
+        return  cast(TeamContextNullException, super()._domain_null_exception)
     
     @property
     def game(self) -> Optional[Game]:

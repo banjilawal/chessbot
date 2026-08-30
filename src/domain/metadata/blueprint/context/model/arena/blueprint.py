@@ -13,7 +13,7 @@ from typing import Any, Dict, Optional, Type, cast
 
 from config import GameColor
 from domain import ArenaSearchContext, Board, Game, ModelContextBlueprint, Player
-from err import ArenaSearchContextNullException
+from err import ArenaContextNullException
 
 
 class ArenaContextBlueprint(ModelContextBlueprint[ArenaSearchContext]):
@@ -26,7 +26,7 @@ class ArenaContextBlueprint(ModelContextBlueprint[ArenaSearchContext]):
          
      Attributes:
         domain_class: Type[ArenaSearchContext]
-        domain_null_exception: ArenaSearchContextNullException
+        domain_null_exception: ArenaContextNullException
         id: Optional[int]
         game: Optional[Game]
         board: Optional[Board]
@@ -47,7 +47,7 @@ class ArenaContextBlueprint(ModelContextBlueprint[ArenaSearchContext]):
     def __init__(
             self,
             domain_class: Optional[Type[ArenaSearchContext]] | None = None,
-            domain_null_exception: Optional[ArenaSearchContextNullException] | None = None,
+            domain_null_exception: Optional[ArenaContextNullException] | None = None,
             id: Optional[int] | None = None,
             game: Optional[Game] | None = None,
             board: Optional[Board] | None = None,
@@ -57,7 +57,7 @@ class ArenaContextBlueprint(ModelContextBlueprint[ArenaSearchContext]):
         """
         Args:
             domain_class: Type[ArenaSearchContext]
-            domain_null_exception: ArenaSearchContextNullException
+            domain_null_exception: ArenaContextNullException
             game: Optional[Game]
             board: Optional[Board]
             player: Optional[Player]
@@ -66,7 +66,7 @@ class ArenaContextBlueprint(ModelContextBlueprint[ArenaSearchContext]):
         super().__init__(
             id=id,
             domain_class=domain_class or Type[ArenaSearchContext],
-            domain_null_exception=domain_null_exception or ArenaSearchContextNullException(),
+            domain_null_exception=domain_null_exception or ArenaContextNullException(),
         )
         self._game = game
         self._board = board
@@ -78,8 +78,8 @@ class ArenaContextBlueprint(ModelContextBlueprint[ArenaSearchContext]):
         return cast(Type[ArenaSearchContext], super().domain_class)
     
     @property
-    def domain_null_exception(self) -> ArenaSearchContextNullException:
-        return  cast(ArenaSearchContextNullException, super()._domain_null_exception)
+    def domain_null_exception(self) -> ArenaContextNullException:
+        return  cast(ArenaContextNullException, super()._domain_null_exception)
     
     @property
     def game(self) -> Optional[Game]:

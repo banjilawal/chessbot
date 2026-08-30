@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Dict, Generic, Optional, Type, TypeVar, cast
 
 from domain import Blueprint, SearchContext
-from err import SearchContextNullException
+from err import ContextNullException
 
 T = TypeVar("T", bound="SearchContext")
 
@@ -28,7 +28,7 @@ class ContextBlueprint(Blueprint[T], ABC, Generic[T]):
          
      Attributes:
         domain_class: Type[T]
-        domain_null_exception: SearchContextNullException
+        domain_null_exception: ContextNullException
 
      Provides:
 
@@ -42,7 +42,7 @@ class ContextBlueprint(Blueprint[T], ABC, Generic[T]):
     def __init__(
             self,
             domain_class: Type[T],
-            domain_null_exception: SearchContextNullException,
+            domain_null_exception: ContextNullException,
             id: Optional[int] | None = None,
             name: Optional[str] | None = None,
             max_size: Optional[int] | None = None,
@@ -50,7 +50,7 @@ class ContextBlueprint(Blueprint[T], ABC, Generic[T]):
         """
         Args:
             domain_class: Type[T]
-            domain_null_exception: SearchContextNullException
+            domain_null_exception: ContextNullException
             id: Optional[int]
             name: Optional[str]
             max_size: Optional[int]
@@ -69,8 +69,8 @@ class ContextBlueprint(Blueprint[T], ABC, Generic[T]):
         return cast(Type[T], super().domain_class)
     
     @property
-    def domain_null_exception(self) -> SearchContextNullException:
-        return  cast(SearchContextNullException, super()._domain_null_exception)
+    def domain_null_exception(self) -> ContextNullException:
+        return  cast(ContextNullException, super()._domain_null_exception)
     
     @property
     def id(self) -> Optional[int]:
