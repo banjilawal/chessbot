@@ -24,31 +24,31 @@ class TeamContext(ModelContext[Team]):
         1.  Supply TeamSearcher with targeting criteria.
 
     Attributes:
-            id: Optional[int]
-            board: Optional[Board]
-            owner: Optional[Player]
-            state: Optional[TeamState]
-            color: Optional[GameColor]
-            archetype: Optional[Archetype]
+        id: Optional[int]
+        board: Optional[Board]
+        owner: Optional[Player]
+        state: Optional[TeamState]
+        color: Optional[GameColor]
+        archetype: Optional[Archetype]
 
     Provides:
-        -  to_dict() -> Dict[str, Any]
+        -  def to_dict() -> Dict[str, Any]
 
     Super Class:
         ModelContext
     """
-    _board: Optional[Board] = None
-    _owner: Optional[Player] = None
-    _state: Optional[TeamState]
-    _color: Optional[GameColor] = None
-    _archetype: Optional[Archetype] = None
+    _board: Optional[Board]
+    _owner: Optional[Player]
+    _state: Optional[GameState]
+    _color: Optional[GameColor]
+    _archetype: Optional[Archetype]
     
     def __init__(
             self,
             id: Optional[int] | None = None,
             board: Optional[Board] | None = None,
             owner: Optional[Player] | None = None,
-            state: Optional[TeamState] | None = None,
+            state: Optional[GameState] | None = None,
             color: Optional[GameColor] | None = None,
             archetype: Optional[Archetype] | None = None,
     ):
