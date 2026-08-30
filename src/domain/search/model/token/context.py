@@ -62,12 +62,12 @@ class TokenContext(ModelContext[Token]):
         """
         Args:
             id: Optional[int]
+            name: Optional[str]
             team: Optional[Team]
             rank: Optional[Rank]
             ransom: Optional[int]
-            current_position:Optional[Coord]
-            name: Optional[str]
             color: Optional[GameColor]
+            current_position:Optional[Coord]
             home_square: Optional[HomeSquare]
         """
         super().__init__(id=id, name=name)
