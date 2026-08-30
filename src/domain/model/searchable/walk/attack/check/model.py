@@ -25,7 +25,7 @@ class CheckEnemyKing(Attack):
         1.  Store details about checking a King.
 
     Attributes:
-        checker: Token
+        attacker: Token
         maneuver: Maneuver
         enemy_king: KingToken
 
@@ -37,25 +37,25 @@ class CheckEnemyKing(Attack):
     
     def __init__(
             self,
-            checker: Token,
+            attacker: Token,
             maneuver: Maneuver,
             enemy_king: KingToken,
     ):
         """
         Args:
-            checker: Token
+            attacker: Token
             maneuver: Maneuver
             enemy_king: KingToken
         """
         super().__init__(
             victim=enemy_king,
-            attacker=checker,
+            attacker=attacker,
             maneuver=maneuver,
             attacker_reward=enemy_king.rank.ransom
         )
 
     @property
-    def checker(self) -> Token:
+    def attacker(self) -> Token:
         return super().attacker
         
     @property

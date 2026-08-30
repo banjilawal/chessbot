@@ -32,6 +32,7 @@ class CoordContext(ModelContext[Coord]):
     Super Class:
         ModelContext
     """
+    
     _row: Optional[int]
     _column: Optional[int]
     
@@ -39,13 +40,15 @@ class CoordContext(ModelContext[Coord]):
             self,
             row: Optional[int] | None = None,
             column: Optional[int] | None = None,
+            max_size: int = 2
     ):
         """
         Args:
             row: Optional[int]
             column: Optional[int]
+            max_size: Optional[int]
         """
-        super().__init__(max_size=2)
+        super().__init__(max_size=max_size)
         self._row = row
         self._column = column
         

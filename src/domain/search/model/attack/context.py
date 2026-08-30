@@ -1,7 +1,7 @@
-# src/domain/metadata/blueprint/context/model/attack/blueprint.py
+# srcdomain/search/model/attack/context.py
 
 """
-Module: domain.metadata.blueprint.context.model.attack.blueprint
+Module: domain.search.model.attack.context
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,13 +9,12 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, Dict, Optional, Type, cast
+from typing import Any, Dict, Optional
 
-from domain import AttackContext, KingToken, Maneuver, ModelContextBlueprint, Token
-from err import AttackContextNullException
+from domain import Attack, KingToken, Maneuver, ModelContext, Token
 
 
-class AttackContextBlueprint(ModelContextBlueprint[AttackContext]):
+class AttackContext(ModelContext[Attack]):
     """
      Role:
         1.  Metadata
@@ -24,20 +23,18 @@ class AttackContextBlueprint(ModelContextBlueprint[AttackContext]):
          1.  Provide attributes for hydrating an AttackContext.
          
      Attributes:
+        victor: Optional[Token]
         attacker: Optional[Token]
         maneuver: Optional[Maneuver]
         attacker_reward: Optional[int]
         mated_king: Optional[KingToken]
         checked_king: Optional[KingToken]
         killed_enemy_combatant: Optional[Token]
-        
-        domain_class: Type[AttackContext]
-        domain_null_exception: AttackContextNullException
 
      Provides:
 
      Super Class:
-        ModelContextBlueprint
+        ModelContext
      """
 
     _attacker: Optional[Token]
@@ -50,18 +47,18 @@ class AttackContextBlueprint(ModelContextBlueprint[AttackContext]):
     def __init__(
             self,
             id: Optional[int] | None = None,
+            victor: Optional[Token] | None = None,
             attacker: Optional[Token] | None = None,
             maneuver: Optional[Maneuver] | None = None,
             attacker_reward: Optional[int] | None = None,
             mated_king: Optional[KingToken] | None = None,
             checked_king: Optional[KingToken] | None = None,
             killed_enemy_combatant: Optional[Token] | None = None,
-            domain_class: Optional[Type[AttackContext]] | None = None,
-            domain_null_exception: Optional[AttackContextNullException] | None = None,
     ):
         """
         Args:
             id: Optional[int]
+            victor: Optional[Token]
             attacker: Optional[Token]
             maneuver: Optional[Maneuver]
             attacker_reward: Optional[int]
@@ -71,11 +68,8 @@ class AttackContextBlueprint(ModelContextBlueprint[AttackContext]):
             domain_null_exception: AttackContextNullException
             killed_enemy_combatant: Optional[Token]
         """
-        super().__init__(
-            id=id,
-            domain_class=domain_class or Type[AttackContext],
-            domain_null_exception=domain_null_exception or AttackContextNullException(),
-        )
+        super().__init__(id=id,)
+        self._victor = victor
         self._attacker = attacker
         self._maneuver = maneuver
         self._mated_king = mated_king
@@ -83,13 +77,10 @@ class AttackContextBlueprint(ModelContextBlueprint[AttackContext]):
         self._attacker_reward = attacker_reward
         self._killed_enemy_combatant = killed_enemy_combatant
     
-    @property
-    def domain_class(self) -> Type[AttackContext]:
-        return cast(Type[AttackContext], super().domain_class)
     
     @property
-    def domain_null_exception(self) -> AttackContextNullException:
-        return  cast(AttackContextNullException, super().domain_null_exception)
+    def victor(self) -> Optional[Token]:
+        return self._victor
     
     
     @property
@@ -131,11 +122,12 @@ class AttackContextBlueprint(ModelContextBlueprint[AttackContext]):
     def to_dict(self) -> Dict[str, Any]:
         return {
             "id": self.id,
+            "victor": self._victor,
             "attacker": self._attacker,
             "maneuver": self._maneuver,
             "mated_king": self._mated_king,
             "checked_king": self._checked_king,
-            "attacker_reward": self._attacker_reward,
+            "attacker_reward": self._attack_reward,
             "killed_enemy_combatant": self._killed_enemy_combatant,
         }
     

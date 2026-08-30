@@ -15,7 +15,7 @@ from typing import cast
 from domain import Attack, KingToken, Maneuver, Token
 
 
-class CheckmateEnemyKing(Attack):
+class MateEnemyKing(Attack):
     """
     Role:
         - Model
@@ -27,7 +27,7 @@ class CheckmateEnemyKing(Attack):
     Attributes:
         victor: Token
         maneuver: Maneuver
-        defeated_king: KingToken
+        mated_king: KingToken
 
     Provides:
 
@@ -39,39 +39,38 @@ class CheckmateEnemyKing(Attack):
             self,
             victor: Token,
             maneuver: Maneuver,
-            defeated_king: KingToken,
+            mated_king: KingToken,
     ):
         """
         Args:
             victor: Token
             maneuver: Maneuver
-            defeated_king: KingToken
+            mated_king: KingToken
         """
         super().__init__(
-            victim=defeated_king,
+            victim=mated_king,
             attacker=victor,
             maneuver=maneuver,
-            attacker_reward=defeated_king.rank.ransom
+            attacker_reward=mated_king.rank.ransom
         )
-
-    @property
-    def victor(self) -> Token:
-        return super().attacker
+        
         
     @property
-    def defeated_king(self) -> KingToken:
+    def mated_king(self) -> KingToken:
         return cast(KingToken, super().victim)
+    
     
     @property
     def victim(self) -> KingToken:
-        return self.defeated_king
+        return self.mated_king
+    
     
     def __eq__(self, other) -> bool:
         if other is None:
             return False
         if other == self:
             return True
-        if isinstance(other, CheckmateEnemyKing):
+        if isinstance(other, MateEnemyKing):
             return super().__eq__(other)
         return False
         

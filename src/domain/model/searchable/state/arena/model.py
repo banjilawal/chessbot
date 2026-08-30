@@ -32,7 +32,13 @@ class Arena(StateModel):
     _board: Board
     _player_binder: ArenaPlayerColorBinder
     
-    def __init__(self, id: int, game: Game, board: Board, player_binder: ArenaPlayerColorBinder):
+    def __init__(
+            self,
+            id: int,
+            game: Game,
+            board: Board,
+            player_binder: ArenaPlayerColorBinder,
+    ):
         """
         Args:
             id: int
@@ -41,7 +47,7 @@ class Arena(StateModel):
             player_binder: ArenaPlayerColorBinder
         """
         super().__init__(id=id)
-        self.game = game
+        self._game = game
         self._board = board
         self._player_binder = player_binder
     

@@ -5,8 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/domain/search/model/attack/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/search/model/attack/context.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/context/model/token/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/context/model/token/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/context/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/context/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/context/model/attack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/context/model/attack/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/context/model/attack/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/context/model/attack/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/context/model/attack/check/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/context/model/attack/check/blueprint.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/context/model/attack/kill/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/context/model/attack/kill/blueprint.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/context/model/attack/mate/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/context/model/attack/mate/blueprint.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/context/model/cartesian/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/context/model/cartesian/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/arena/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/arena/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/check/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/check/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/checkmate/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/checkmate/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/checkmate/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/checkmate/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/kill/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/kill/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/kill/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/kill/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/search/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/search/model/arena/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/model/arena/context.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/search/model/coord/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/model/coord/context.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,61 +68,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000000230826092" />
-      <entry key="MS500" value="1.0696817139244064" />
-      <entry key="S2" value="3.2979404324987813" />
-      <entry key="S5" value="7.340439113487776" />
-      <entry key="S10" value="13.607594932865487" />
-      <entry key="S30" value="34.08437334600127" />
-      <entry key="S60" value="58.9567803954587" />
-      <entry key="M2" value="88.21175586161232" />
-      <entry key="M5" value="129.95555606784762" />
-      <entry key="M10" value="181.47109601008427" />
-      <entry key="M15" value="231.85083010289947" />
-      <entry key="M30" value="379.288983670889" />
-      <entry key="H1" value="650.4322452890681" />
-      <entry key="H2" value="1024.063116697402" />
-      <entry key="H4" value="1471.0937353506085" />
-      <entry key="D1" value="4437.907307470483" />
-      <entry key="W1" value="15587.371419108873" />
+      <entry key="MS100" value="1.0000000000012685" />
+      <entry key="MS500" value="1.004175041621928" />
+      <entry key="S2" value="1.2658601536252119" />
+      <entry key="S5" value="1.7970556278255043" />
+      <entry key="S10" value="2.8487804856745305" />
+      <entry key="S30" value="7.292862680431552" />
+      <entry key="S60" value="10.5363503481955" />
+      <entry key="M2" value="12.90875068922109" />
+      <entry key="M5" value="14.746598840177583" />
+      <entry key="M10" value="17.971922567429317" />
+      <entry key="M15" value="24.636521090717192" />
+      <entry key="M30" value="53.694248695468424" />
+      <entry key="H1" value="130.1118228252538" />
+      <entry key="H2" value="364.602991381503" />
+      <entry key="H4" value="860.1211841505833" />
+      <entry key="D1" value="4128.246885667336" />
+      <entry key="W1" value="15546.632272233352" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="2.1392381650968804E-96" />
-      <entry key="S2" value="1.2094146031824575E-24" />
-      <entry key="S5" value="2.7489963932499684E-10" />
-      <entry key="S10" value="1.8556042342432088E-5" />
-      <entry key="S30" value="0.04304281623092648" />
-      <entry key="S60" value="0.3439349742093367" />
-      <entry key="M2" value="1.066158689247991" />
-      <entry key="M5" value="2.699156403733167" />
-      <entry key="M10" value="4.561514348348109" />
-      <entry key="M15" value="6.2298049271688045" />
-      <entry key="M30" value="10.497862998074453" />
-      <entry key="H1" value="15.978168418924303" />
-      <entry key="H2" value="21.812693413166308" />
-      <entry key="H4" value="29.346497420096206" />
-      <entry key="D1" value="128.33590442408712" />
-      <entry key="W1" value="514.7125445085892" />
+      <entry key="MS100" value="9.476008328967276E-163" />
+      <entry key="MS500" value="3.9384477367920185E-33" />
+      <entry key="S2" value="7.921934945656453E-9" />
+      <entry key="S5" value="5.748208448698703E-4" />
+      <entry key="S10" value="0.023975421682837422" />
+      <entry key="S30" value="0.28835141357536" />
+      <entry key="S60" value="0.5369836250533037" />
+      <entry key="M2" value="0.7327920161986855" />
+      <entry key="M5" value="0.8905031001907587" />
+      <entry key="M10" value="1.1561780934858858" />
+      <entry key="M15" value="1.6620067376525456" />
+      <entry key="M30" value="3.581911687778442" />
+      <entry key="H1" value="7.132972962546391" />
+      <entry key="H2" value="13.71955711134052" />
+      <entry key="H4" value="24.540994894543143" />
+      <entry key="D1" value="125.8205104613" />
+      <entry key="W1" value="518.9261625309092" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="6.77423725526387E-5" />
-      <entry key="MS500" value="0.2135872059210987" />
-      <entry key="S2" value="2.8969828816693903" />
-      <entry key="S5" value="7.146045107163391" />
-      <entry key="S10" value="13.496817025074483" />
-      <entry key="S30" value="34.065759270561735" />
-      <entry key="S60" value="59.222651070879735" />
-      <entry key="M2" value="89.17836712845211" />
-      <entry key="M5" value="132.5538089668973" />
-      <entry key="M10" value="185.94827787907835" />
-      <entry key="M15" value="238.00671065680942" />
-      <entry key="M30" value="389.72990829713353" />
-      <entry key="H1" value="666.3689360466917" />
-      <entry key="H2" value="1045.8462989344205" />
-      <entry key="H4" value="1500.4177196549074" />
-      <entry key="D1" value="4566.226158415707" />
-      <entry key="W1" value="16102.076186739603" />
+      <entry key="MS100" value="0.004016069635375257" />
+      <entry key="MS500" value="0.3318538746780777" />
+      <entry key="S2" value="0.8793485163300616" />
+      <entry key="S5" value="1.5167175936648432" />
+      <entry key="S10" value="2.647052634398681" />
+      <entry key="S30" value="7.398984665130293" />
+      <entry key="S60" value="10.943228026367239" />
+      <entry key="M2" value="13.562130901537921" />
+      <entry key="M5" value="15.600796657173138" />
+      <entry key="M10" value="19.10489237253492" />
+      <entry key="M15" value="26.275901612587973" />
+      <entry key="M30" value="57.2502435886875" />
+      <entry key="H1" value="137.2177650524331" />
+      <entry key="H2" value="378.29726600001464" />
+      <entry key="H4" value="884.639855685778" />
+      <entry key="D1" value="4254.049970111859" />
+      <entry key="W1" value="16065.550433963663" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -116,42 +136,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.__init__.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.checker.executor&quot;: &quot;Run&quot;,
-    &quot;Python.node.executor&quot;: &quot;Run&quot;,
-    &quot;Python.notifier.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.ray.executor&quot;: &quot;Coverage&quot;,
-    &quot;Python.roster.executor&quot;: &quot;Run&quot;,
-    &quot;Python.stack.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/griot/PycharmProjects/chessbot/src/err/null/domain/search/context/model&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.__init__.executor": "Debug",
+    "Python.checker.executor": "Run",
+    "Python.node.executor": "Run",
+    "Python.notifier.executor": "Debug",
+    "Python.ray.executor": "Coverage",
+    "Python.roster.executor": "Run",
+    "Python.stack.executor": "Debug",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/domain/search/model",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/domain/search/model" />
+      <recent name="$PROJECT_DIR$/src/domain/metadata/blueprint/context/model/attack" />
       <recent name="$PROJECT_DIR$/src/err/null/domain/search/context/model" />
       <recent name="$PROJECT_DIR$/src/domain/metadata/blueprint/context/model" />
       <recent name="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/attack" />
-      <recent name="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model" />
-      <recent name="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/cartesian" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model" />
@@ -834,7 +854,7 @@
       <workItem from="1785958183827" duration="174661000" />
       <workItem from="1786522110280" duration="179726000" />
       <workItem from="1787456783999" duration="30897000" />
-      <workItem from="1787812398225" duration="118056000" />
+      <workItem from="1787812398225" duration="126585000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1950,6 +1970,11 @@
           <url>file://$PROJECT_DIR$/src/domain/search/context.py</url>
           <line>39</line>
           <option name="timeStamp" value="415" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/domain/model/searchable/walk/attack/checkmate/model.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="416" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
