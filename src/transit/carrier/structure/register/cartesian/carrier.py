@@ -56,7 +56,7 @@ class CartesianToggleRegisterCarrier(RegisterCarrier[CartesianToggle]):
     
     @property
     def entity(self) -> [CartesianToggleRegister | CartesianToggleRegisterBlueprint | None]:
-        if self.is_not_carrying_anything:
+        if self.is_empty:
             return None
         if self.is_carrying_model:
             return self._model
@@ -78,7 +78,7 @@ class CartesianToggleRegisterCarrier(RegisterCarrier[CartesianToggle]):
         )
     
     def extract_blueprint(self) -> Optional[CartesianToggleRegisterBlueprint]:
-        if self.is_not_carrying_anything: return None
+        if self.is_empty: return None
         if self.is_carrying_blueprint: return self._blueprint
         return CartesianToggleRegisterBlueprint(
             u=self._model.a,
@@ -86,12 +86,12 @@ class CartesianToggleRegisterCarrier(RegisterCarrier[CartesianToggle]):
         )
         
     @property
-    def is_not_carrying_anything(self) -> bool:
+    def is_empty(self) -> bool:
         return self._model is None and self._blueprint is None
     
     @property
-    def is_carrying_too_much(self) -> bool:
-        return not self.is_not_carrying_anything
+    def exceeds_capacity(self) -> bool:
+        return not self.is_empty
 
     def __eq__(self, other):
         if other is self: return True

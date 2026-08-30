@@ -22,11 +22,10 @@ T = TypeVar("T")
 class StructureCarrier(EntityCarrier[T], ABC, Generic[T]):
     """
     Role:
-        - Boundary Carrier
+        - Boundary Carrier Interface
 
     Responsibilities:
-        1.  Transport either a hydrated Structure or its Blueprint across validation and other
-            processing boundaries.
+        1.  Transport a hydrated Structure or its Blueprint across processing boundaries.
 
     Attributes:
         is_model_carrier: bool

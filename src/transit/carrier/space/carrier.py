@@ -29,8 +29,8 @@ class SpaceCarrier(EntityCarrier, Generic[T], ABC):
     Attributes:
         is_carrying_model: bool
         is_carrying_blueprint: bool
-        is_not_carrying_anything: bool
-        is_carrying_too_much: bool
+        is_empty: bool
+        exceeds_capacity: bool
 
         entity: [Space[T]| SpaceBlueprint[T] | None]
 

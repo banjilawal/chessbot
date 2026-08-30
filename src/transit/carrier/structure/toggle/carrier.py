@@ -22,10 +22,10 @@ T = TypeVar("T", bound="Toggle")
 class ToggleCarrier(StructureCarrier[T], ABC, Generic[T]):
     """
     Role:
-        - Boundary Carrier
+        - Boundary Carrier Interface
 
     Responsibilities:
-        1.  Transport either a hydrated Toggle or its Blueprint across validation and other processing
+        1.  Transport a hydrated Toggle or its Blueprint across validation and other processing
             boundaries.
 
     Attributes:

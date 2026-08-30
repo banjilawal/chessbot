@@ -18,14 +18,13 @@ from transit import EntityCarrier
 T = TypeVar("T", bound="Model")
 
 
-class ModelCarrier(EntityCarrier, ABC, Generic[T]):
+class ModelCarrier(EntityCarrier[T], ABC, Generic[T]):
     """
     Role:
-        - Boundary Carrier
+        - Boundary Carrier Interface
 
     Responsibilities:
-        1.  Transport either a hydrated Model or its Blueprint across validation and
-            other processing boundaries
+        1.  Transport a hydrated Model or its Blueprint across processing boundaries.
 
     Attributes:
         is_model_carrier: bool

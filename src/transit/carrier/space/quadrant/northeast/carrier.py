@@ -70,7 +70,7 @@ class NortheastQuadrantCarrier(SpaceCarrier[NortheastQuadrant]):
         )
 
     def extract_blueprint(self) -> Optional[NortheastQuadrantBlueprint]:
-        if self.is_not_carrying_anything: return None
+        if self.is_empty: return None
         if self.is_carrying_blueprint: return self._blueprint
         return NortheastQuadrantBlueprint(
             origin=self._model.origin,
@@ -78,12 +78,12 @@ class NortheastQuadrantCarrier(SpaceCarrier[NortheastQuadrant]):
         )
         
     @property
-    def is_not_carrying_anything(self) -> bool:
+    def is_empty(self) -> bool:
         return self._model is None and self._blueprint is None
     
     @property
-    def is_carrying_too_much(self) -> bool:
-        return not self.is_not_carrying_anything
+    def exceeds_capacity(self) -> bool:
+        return not self.is_empty
 
     def __eq__(self, other):
         if other is self: return True

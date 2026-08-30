@@ -21,10 +21,10 @@ T = TypeVar("T", bound="Register")
 class RegisterCarrier(StructureCarrier[T], ABC, Generic[T]):
     """
     Role:
-        - Boundary Carrier
+        - Boundary Carrier Interface
 
     Responsibilities:
-        1.  Transport either a hydrated Node or its Blueprint across validation and other processing
+        1.  Transport a hydrated Node or its Blueprint across validation and other processing
             boundaries.
 
     Attributes:

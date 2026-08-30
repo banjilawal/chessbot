@@ -21,11 +21,10 @@ T = TypeVar("T")
 class EntityCarrier(ABC, Generic[T]):
     """
     Role:
-        - Boundary Carrier
+        - Boundary Carrier Interface Interface
 
     Responsibilities:
-        1.  Transport either a hydrated Object or its Blueprint across validation and other
-            processing boundaries.
+        1.  Transport a hydrated Object or its Blueprint across processing boundaries.
 
     Attributes:
         is_model_carrier: bool
@@ -63,12 +62,12 @@ class EntityCarrier(ABC, Generic[T]):
     
     @property
     @abstractmethod
-    def is_not_carrying_anything(self) -> bool:
+    def is_empty(self) -> bool:
         pass
     
     @property
     @abstractmethod
-    def is_carrying_too_much(self) -> bool:
+    def exceeds_capacity(self) -> bool:
         pass
     
     @abstractmethod

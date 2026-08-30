@@ -89,7 +89,7 @@ class SouthwestQuadrantRootChecker(QuadrantRootChecker[SouthwestQuadrantBlueprin
                 )
             )
         carrier = cast(SouthwestQuadrantCarrier, carrier_validation.payload)
-        if carrier.is_not_carrying_anything:
+        if carrier.is_empty:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 SouthwestQuadrantRootCheckerException(
