@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# GRAPH_GRAPH_SEARCH_CONTEXT_NULL_ERROR #======================#
+    # ======================# GRAPH_GRAPH_CONTEXT_NULL_ERROR #======================#
     "GraphContextNullException",
 ]
 
-# ======================# GRAPH_GRAPH_SEARCH_CONTEXT_NULL_ERROR #======================#
+# ======================# GRAPH_GRAPH_CONTEXT_NULL_ERROR #======================#
 class GraphContextNullException(SearchContextNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required GraphContextNullException failed.
+        1.  Indicating a required GraphContext is null.
 
     Cannot Be Null.s:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class GraphContextNullException(SearchContextNullException):
     Super Class:
         SearchContextNullException
     """
-    MSG = "GraphContextNullException cannot be null."
-    ERR_CODE = "GRAPH_GRAPH_SEARCH_CONTEXT_NULL_ERROR"
+    MSG = "GraphContext Cannot be null."
+    ERR_CODE = "GRAPH_GRAPH_CONTEXT_NULL_ERROR"
     
     def __init__(
             self,

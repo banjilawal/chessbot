@@ -12,7 +12,7 @@ version: 0.0.2
 # Packages
 from .chain import *
 from .graph import *
-from .stack import *
+from .model import *
 
 # Modules
 from .exception import SearchContextNullException

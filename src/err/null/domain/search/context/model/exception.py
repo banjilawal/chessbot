@@ -1,7 +1,7 @@
-# src/err/null/domain/search/context/stack/exception.py
+# src/err/null/domain/search/context/model/exception.py
 
 """
-Module: null.domain.search.context.stack.exception
+Module: null.domain.search.context.model.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# STACK_STACK_SEARCH_CONTEXT_NULL_ERROR #======================#
-    "SearchContextNullException",
+    # ======================#  MODEL_CONTEXT_NULL_ERROR #======================#
+    "ModelContextNullException",
 ]
 
-# ======================# STACK_STACK_SEARCH_CONTEXT_NULL_ERROR #======================#
-class SearchContextNullException(SearchContextNullException):
+# ======================#  MODEL_CONTEXT_NULL_ERROR #======================#
+class ModelContextNullException(SearchContextNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required SearchContextNullException failed.
+        1.  Indicating a required ModelContext is null.
 
     Cannot Be Null.s:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class SearchContextNullException(SearchContextNullException):
     Super Class:
         SearchContextNullException
     """
-    MSG = "SearchContextNullException cannot be null."
-    ERR_CODE = "STACK_STACK_SEARCH_CONTEXT_NULL_ERROR"
+    MSG = "ModelContext Cannot be null."
+    ERR_CODE = " MODEL_CONTEXT_NULL_ERROR"
     
     def __init__(
             self,

@@ -1,7 +1,7 @@
-# src/domain/metadata/blueprint/search/model/player/blueprint.py
+# src/domain/metadata/blueprint/context/model/player/blueprint.py
 
 """
-Module: domain.metadata.blueprint.search.model.player.blueprint
+Module: domain.metadata.blueprint.context.model.player.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -16,7 +16,7 @@ from domain import PlayerSearchContext, Board, Game, ContextBlueprint, Player
 from err import PlayerSearchContextNullException
 
 
-class PlayerContextBlueprint(ContextBlueprint[PlayerSearchContext]):
+class PlayerContextBlueprint(ModelContextBlueprint[PlayerSearchContext]):
     """
      Role:
         1.  Metadata
@@ -36,7 +36,7 @@ class PlayerContextBlueprint(ContextBlueprint[PlayerSearchContext]):
      Provides:
 
      Super Class:
-        SearchContextBlueprint
+        ModelContextBlueprint
      """
 
     _game: Optional[Game]

@@ -1,7 +1,7 @@
-#  src/domain/metadata/blueprint/searchgraph/station/context.py
+#  src/domain/metadata/blueprint/context/graph/station/context.py
 
 """
-Module: domain.metadata.blueprint.search.graph.station
+Module: domain.metadata.blueprint.context.graph.station
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

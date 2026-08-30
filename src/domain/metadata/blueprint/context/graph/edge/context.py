@@ -1,7 +1,7 @@
-#  src/domain/metadata/blueprint/searchgraph/edge/context.py
+#  src/domain/metadata/blueprint/context/graph/edge/context.py
 
 """
-Module: domain.metadata.blueprint.search.graph.edge
+Module: domain.metadata.blueprint.context.graph.edge
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

@@ -1,13 +1,13 @@
-# src/err/null/domain/search/context/stack/__init__.py
+# src/err/null/domain/search/context/model/__init__.py
 
 """
-Module: err.null.domain.search.context.stack.__init__
+Module: err.null.domain.search.context.model.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# =========== ERR.NULL.DOMAIN.SEARCH.CONTEXT.STACK PACKAGE ===========#
+# =========== ERR.NULL.DOMAIN.SEARCH.CONTEXT.MODEL PACKAGE ===========#
 
 # Packages
 from .arena import *
@@ -21,4 +21,4 @@ from .team import *
 from .token import *
 
 # Modules
-from .exception import SearchContextNullException
+from .exception import ModelContextNullException

@@ -1,7 +1,7 @@
-# src/domain/metadata/blueprint/search/model/token/blueprint.py
+# src/domain/metadata/blueprint/context/model/token/blueprint.py
 
 """
-Module: domain.metadata.blueprint.search.model.token.blueprint
+Module: domain.metadata.blueprint.context.model.token.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -16,7 +16,7 @@ from domain import TokenSearchContext, Board, Game, ContextBlueprint, Player
 from err import TokenSearchContextNullException
 
 
-class TokenContextBlueprint(ContextBlueprint[TokenSearchContext]):
+class TokenContextBlueprint(ModelContextBlueprint[TokenSearchContext]):
     """
      Role:
         1.  Metadata
@@ -36,7 +36,7 @@ class TokenContextBlueprint(ContextBlueprint[TokenSearchContext]):
      Provides:
 
      Super Class:
-        SearchContextBlueprint
+        ModelContextBlueprint
      """
 
     _game: Optional[Game]

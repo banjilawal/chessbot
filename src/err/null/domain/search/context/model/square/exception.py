@@ -1,7 +1,7 @@
-# src/err/null/domain/search/context/stack/arena/exception.py
+# src/err/null/domain/search/context/model/square/exception.py
 
 """
-Module: null.domain.search.context.stack.arena.exception
+Module: null.domain.search.context.model.square.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,24 +11,24 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchContextNullException
+from err import ModelContextNullException
 from artifcat import MethodResultType
 
 
 
 __all__ = [
-    # ======================# ARENA_CONTEXT_NULL_ERROR #======================#
-    "ArenaSearchContextNullException",
+    # ======================# SQUARE_CONTEXT_NULL_ERROR #======================#
+    "SquareContextNullException",
 ]
 
-# ======================# ARENA_CONTEXT_NULL_ERROR #======================#
-class ArenaSearchContextNullException(SearchContextNullException):
+# ======================# SQUARE_CONTEXT_NULL_ERROR #======================#
+class SquareContextNullException(ModelContextNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required ArenaContext is null.
+        1.  Indicating a required SquareContext is null.
 
     Cannot Be Null.s:
             msg: Optional[str]
@@ -43,10 +43,10 @@ class ArenaSearchContextNullException(SearchContextNullException):
     Provides:
 
     Super Class:
-        SearchContextNullException
+        ModelContextNullException
     """
-    MSG = "ArenaContext cannot be null."
-    ERR_CODE = "ARENA_CONTEXT_NULL_ERROR"
+    MSG = "SquareContext cannot be null."
+    ERR_CODE = "SQUARE_CONTEXT_NULL_ERROR"
     
     def __init__(
             self,

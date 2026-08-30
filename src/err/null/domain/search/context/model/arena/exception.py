@@ -1,7 +1,7 @@
-# src/err/null/domain/search/context/stack/player/exception.py
+# src/err/null/domain/search/context/model/arena/exception.py
 
 """
-Module: null.domain.search.context.stack.player.exception
+Module: null.domain.search.context.model.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,24 +11,24 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchContextNullException
+from err import ModelContextNullException
 from artifcat import MethodResultType
 
 
 
 __all__ = [
-    # ======================# PLAYER_CONTEXT_NULL_ERROR #======================#
-    "PlayerSearchContextNullException",
+    # ======================# ARENA_CONTEXT_NULL_ERROR #======================#
+    "ArenaContextNullException",
 ]
 
-# ======================# PLAYER_CONTEXT_NULL_ERROR #======================#
-class PlayerSearchContextNullException(SearchContextNullException):
+# ======================# ARENA_CONTEXT_NULL_ERROR #======================#
+class ArenaContextNullException(ModelContextNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required PlayerContext is null.
+        1.  Indicating a required ArenaContext is null.
 
     Cannot Be Null.s:
             msg: Optional[str]
@@ -43,10 +43,10 @@ class PlayerSearchContextNullException(SearchContextNullException):
     Provides:
 
     Super Class:
-        SearchContextNullException
+        ModelContextNullException
     """
-    MSG = "PlayerContext cannot be null."
-    ERR_CODE = "PLAYER_CONTEXT_NULL_ERROR"
+    MSG = "ArenaContext cannot be null."
+    ERR_CODE = "ARENA_CONTEXT_NULL_ERROR"
     
     def __init__(
             self,

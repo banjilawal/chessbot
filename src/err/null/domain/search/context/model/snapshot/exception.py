@@ -1,7 +1,7 @@
-# src/err/null/domain/search/context/stack/team/exception.py
+# src/err/null/domain/search/context/model/snapshot/exception.py
 
 """
-Module: null.domain.search.context.stack.team.exception
+Module: null.domain.search.context.model.snapshot.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,24 +11,24 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchContextNullException
+from err import ModelContextNullException
 from artifcat import MethodResultType
 
 
 
 __all__ = [
-    # ======================# TEAM_CONTEXT_NULL_ERROR #======================#
-    "TeamSearchContextNullException",
+    # ======================# SNAPSHOT_CONTEXT_NULL_ERROR #======================#
+    "SnapshotContextNullException",
 ]
 
-# ======================# TEAM_CONTEXT_NULL_ERROR #======================#
-class TeamSearchContextNullException(SearchContextNullException):
+# ======================# SNAPSHOT_CONTEXT_NULL_ERROR #======================#
+class SnapshotContextNullException(ModelContextNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required TeamContext is null.
+        1.  Indicating a required SnapshotContext is null.
 
     Cannot Be Null.s:
             msg: Optional[str]
@@ -43,10 +43,10 @@ class TeamSearchContextNullException(SearchContextNullException):
     Provides:
 
     Super Class:
-        SearchContextNullException
+        ModelContextNullException
     """
-    MSG = "TeamContext cannot be null."
-    ERR_CODE = "TEAM_CONTEXT_NULL_ERROR"
+    MSG = "SnapshotContext cannot be null."
+    ERR_CODE = "SNAPSHOT_CONTEXT_NULL_ERROR"
     
     def __init__(
             self,

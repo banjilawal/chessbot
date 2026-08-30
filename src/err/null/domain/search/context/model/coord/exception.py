@@ -1,7 +1,7 @@
-# src/err/null/domain/search/context/stack/snapshot/exception.py
+# src/err/null/domain/search/context/model/coord/exception.py
 
 """
-Module: null.domain.search.context.stack.snapshot.exception
+Module: null.domain.search.context.model.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,24 +11,24 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchContextNullException
+from err import ModelContextNullException
 from artifcat import MethodResultType
 
 
 
 __all__ = [
-    # ======================# SNAPSHOT_CONTEXT_NULL_ERROR #======================#
-    "SnapshotSearchContextNullException",
+    # ======================# COORD_CONTEXT_NULL_ERROR #======================#
+    "CoordContextNullException",
 ]
 
-# ======================# SNAPSHOT_CONTEXT_NULL_ERROR #======================#
-class SnapshotSearchContextNullException(SearchContextNullException):
+# ======================# COORD_CONTEXT_NULL_ERROR #======================#
+class CoordContextNullException(ModelContextNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required SnapshotContext is null.
+        1.  Indicating a required CoordContext is null.
 
     Cannot Be Null.s:
             msg: Optional[str]
@@ -43,10 +43,10 @@ class SnapshotSearchContextNullException(SearchContextNullException):
     Provides:
 
     Super Class:
-        SearchContextNullException
+        ModelContextNullException
     """
-    MSG = "SnapshotContext cannot be null."
-    ERR_CODE = "SNAPSHOT_CONTEXT_NULL_ERROR"
+    MSG = "CoordContext cannot be null."
+    ERR_CODE = "COORD_CONTEXT_NULL_ERROR"
     
     def __init__(
             self,

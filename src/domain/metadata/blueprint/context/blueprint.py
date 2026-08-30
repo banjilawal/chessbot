@@ -1,7 +1,7 @@
-# src/domain/metadata/blueprint/search/blueprint.py
+# src/domain/metadata/blueprint/context/blueprint.py
 
 """
-Module: domain.metadata.blueprint.search.blueprint
+Module: domain.metadata.blueprint.context.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

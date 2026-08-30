@@ -1,7 +1,7 @@
-# src/err/null/domain/search/context/stack/game/exception.py
+# src/err/null/domain/search/context/model/token/exception.py
 
 """
-Module: null.domain.search.context.stack.game.exception
+Module: null.domain.search.context.model.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,24 +11,24 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchContextNullException
+from err import ModelContextNullException
 from artifcat import MethodResultType
 
 
 
 __all__ = [
-    # ======================# GAME_CONTEXT_NULL_ERROR #======================#
-    "GameSearchContextNullException",
+    # ======================# TOKEN_CONTEXT_NULL_ERROR #======================#
+    "TokenContextNullException",
 ]
 
-# ======================# GAME_CONTEXT_NULL_ERROR #======================#
-class GameSearchContextNullException(SearchContextNullException):
+# ======================# TOKEN_CONTEXT_NULL_ERROR #======================#
+class TokenContextNullException(ModelContextNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required GameContext is null.
+        1.  Indicating a required TokenContext is null.
 
     Cannot Be Null.s:
             msg: Optional[str]
@@ -43,10 +43,10 @@ class GameSearchContextNullException(SearchContextNullException):
     Provides:
 
     Super Class:
-        SearchContextNullException
+        ModelContextNullException
     """
-    MSG = "GameContext cannot be null."
-    ERR_CODE = "GAME_CONTEXT_NULL_ERROR"
+    MSG = "TokenContext cannot be null."
+    ERR_CODE = "TOKEN_CONTEXT_NULL_ERROR"
     
     def __init__(
             self,

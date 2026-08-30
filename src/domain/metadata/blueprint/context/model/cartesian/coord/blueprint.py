@@ -1,7 +1,7 @@
-# src/domain/metadata/blueprint/search/model/cartesian/coord/blueprint.py
+# src/domain/metadata/blueprint/context/model/cartesian/coord/blueprint.py
 
 """
-Module: domain.metadata.blueprint.search.model.cartesian.coord.blueprint
+Module: domain.metadata.blueprint.context.model.cartesian.coord.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -16,7 +16,7 @@ from domain import CoordSearchContext, Board, Game, ContextBlueprint, Player
 from err import CoordSearchContextNullException
 
 
-class CoordContextBlueprint(ContextBlueprint[CoordSearchContext]):
+class CoordContextBlueprint(ModelContextBlueprint[CoordSearchContext]):
     """
      Role:
         1.  Metadata
@@ -36,7 +36,7 @@ class CoordContextBlueprint(ContextBlueprint[CoordSearchContext]):
      Provides:
 
      Super Class:
-        SearchContextBlueprint
+        ModelContextBlueprint
      """
 
     _game: Optional[Game]

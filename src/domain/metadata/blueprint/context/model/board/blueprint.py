@@ -1,7 +1,7 @@
-# src/domain/metadata/blueprint/search/model/board/blueprint.py
+# src/domain/metadata/blueprint/context/model/board/blueprint.py
 
 """
-Module: domain.metadata.blueprint.search.model.board.blueprint
+Module: domain.metadata.blueprint.context.model.board.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,11 +12,11 @@ from __future__ import annotations
 from typing import Any, Dict, Optional, Type, cast
 
 from config import GameColor
-from domain import BoardSearchContext, Board, Game, ContextBlueprint, Player
+from domain import Arena, BoardSearchContext, ContextBlueprint, Team
 from err import BoardSearchContextNullException
 
 
-class BoardContextBlueprint(ContextBlueprint[BoardSearchContext]):
+class BoardContextBlueprint(ModelContextBlueprint[BoardSearchContext]):
     """
      Role:
         1.  Metadata
@@ -28,20 +28,19 @@ class BoardContextBlueprint(ContextBlueprint[BoardSearchContext]):
         domain_class: Type[BoardSearchContext]
         domain_null_exception: BoardSearchContextNullException
         id: Optional[int]
-        game: Optional[Game]
+        arena: Optional[Arena]
         board: Optional[Board]
-        player: Optional[Player]
+        team: Optional[Team]
         color: Optional[GameColor]
 
      Provides:
 
      Super Class:
-        SearchContextBlueprint
+        ModelContextBlueprint
      """
 
-    _game: Optional[Game]
-    _board: Optional[Board]
-    _player: Optional[Player]
+    _arena: Optional[Arena]
+    _team: Optional[Team]
     _color: Optional[GameColor]
     
     def __init__(
@@ -49,18 +48,16 @@ class BoardContextBlueprint(ContextBlueprint[BoardSearchContext]):
             domain_class: Optional[Type[BoardSearchContext]] | None = None,
             domain_null_exception: Optional[BoardSearchContextNullException] | None = None,
             id: Optional[int] | None = None,
-            game: Optional[Game] | None = None,
-            board: Optional[Board] | None = None,
-            player: Optional[Player] | None = None,
+            arena: Optional[Arena] | None = None,
+            team: Optional[Team] | None = None,
             color: Optional[GameColor] | None = None,
     ):
         """
         Args:
             domain_class: Type[BoardSearchContext]
             domain_null_exception: BoardSearchContextNullException
-            game: Optional[Game]
-            board: Optional[Board]
-            player: Optional[Player]
+            arena: Optional[Arena]
+            team: Optional[Team]
             color: Optional[GameColor]
         """
         super().__init__(
@@ -68,10 +65,9 @@ class BoardContextBlueprint(ContextBlueprint[BoardSearchContext]):
             domain_class=domain_class or Type[BoardSearchContext],
             domain_null_exception=domain_null_exception or BoardSearchContextNullException(),
         )
-        self._game = game
-        self._board = board
+        self._arena = arena
         self._color = color
-        self._player = player
+        self._team = team
     
     @property
     def domain_class(self) -> Type[BoardSearchContext]:
@@ -82,16 +78,12 @@ class BoardContextBlueprint(ContextBlueprint[BoardSearchContext]):
         return  cast(BoardSearchContextNullException, super()._domain_null_exception)
     
     @property
-    def game(self) -> Optional[Game]:
-        return self._game
+    def arena(self) -> Optional[Arena]:
+        return self._arena
     
     @property
-    def player(self) -> Optional[Player]:
-        return self._player
-    
-    @property
-    def board(self) -> Optional[Board]:
-        return self._board
+    def team(self) -> Optional[Team]:
+        return self._team
     
     @property
     def color(self) -> Optional[GameColor]:
@@ -101,9 +93,8 @@ class BoardContextBlueprint(ContextBlueprint[BoardSearchContext]):
     def to_dict(self) -> Dict[str, Any]:
         return {
             "id": self.id,
-            "game": self._game,
-            "board": self._board,
-            "player": self._player,
+            "arena": self._arena,
+            "team": self._team,
             "color": self._color,
         }
     

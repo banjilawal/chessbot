@@ -1,7 +1,7 @@
-# src/domain/metadata/blueprint/search/model/arena/blueprint.py
+# src/domain/metadata/blueprint/context/model/arena/blueprint.py
 
 """
-Module: domain.metadata.blueprint.search.model.arena.blueprint
+Module: domain.metadata.blueprint.context.model.arena.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,11 +12,11 @@ from __future__ import annotations
 from typing import Any, Dict, Optional, Type, cast
 
 from config import GameColor
-from domain import ArenaSearchContext, Board, Game, ContextBlueprint, Player
+from domain import ArenaSearchContext, Board, Game, ModelContextBlueprint, Player
 from err import ArenaSearchContextNullException
 
 
-class ArenaContextBlueprint(ContextBlueprint[ArenaSearchContext]):
+class ArenaContextBlueprint(ModelContextBlueprint[ArenaSearchContext]):
     """
      Role:
         1.  Metadata
@@ -36,7 +36,7 @@ class ArenaContextBlueprint(ContextBlueprint[ArenaSearchContext]):
      Provides:
 
      Super Class:
-        SearchContextBlueprint
+        ModelContextBlueprint
      """
 
     _game: Optional[Game]

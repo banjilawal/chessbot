@@ -1,7 +1,7 @@
-# src/domain/metadata/blueprint/search/model/path/blueprint.py
+# src/domain/metadata/blueprint/context/model/path/blueprint.py
 
 """
-Module: domain.metadata.blueprint.search.model.path.blueprint
+Module: domain.metadata.blueprint.context.model.path.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -16,7 +16,7 @@ from domain import PathSearchContext, Board, Game, ContextBlueprint, Player
 from err import PathSearchContextNullException
 
 
-class PathContextBlueprint(ContextBlueprint[PathSearchContext]):
+class PathContextBlueprint(ModelContextBlueprint[PathSearchContext]):
     """
      Role:
         1.  Metadata
@@ -36,7 +36,7 @@ class PathContextBlueprint(ContextBlueprint[PathSearchContext]):
      Provides:
 
      Super Class:
-        SearchContextBlueprint
+        ModelContextBlueprint
      """
 
     _game: Optional[Game]

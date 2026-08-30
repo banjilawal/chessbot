@@ -1,7 +1,7 @@
-# src/err/null/domain/search/context/stack/square/exception.py
+# src/err/null/domain/search/context/model/player/exception.py
 
 """
-Module: null.domain.search.context.stack.square.exception
+Module: null.domain.search.context.model.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,24 +11,24 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchContextNullException
+from err import ModelContextNullException
 from artifcat import MethodResultType
 
 
 
 __all__ = [
-    # ======================# SQUARE_CONTEXT_NULL_ERROR #======================#
-    "SquareSearchContextNullException",
+    # ======================# PLAYER_CONTEXT_NULL_ERROR #======================#
+    "PlayerContextNullException",
 ]
 
-# ======================# SQUARE_CONTEXT_NULL_ERROR #======================#
-class SquareSearchContextNullException(SearchContextNullException):
+# ======================# PLAYER_CONTEXT_NULL_ERROR #======================#
+class PlayerContextNullException(ModelContextNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required SquareContext is null.
+        1.  Indicating a required PlayerContext is null.
 
     Cannot Be Null.s:
             msg: Optional[str]
@@ -43,10 +43,10 @@ class SquareSearchContextNullException(SearchContextNullException):
     Provides:
 
     Super Class:
-        SearchContextNullException
+        ModelContextNullException
     """
-    MSG = "SquareContext cannot be null."
-    ERR_CODE = "SQUARE_CONTEXT_NULL_ERROR"
+    MSG = "PlayerContext cannot be null."
+    ERR_CODE = "PLAYER_CONTEXT_NULL_ERROR"
     
     def __init__(
             self,

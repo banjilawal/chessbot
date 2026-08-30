@@ -1,7 +1,7 @@
-# src/domain/metadata/blueprint/search/model/square/blueprint.py
+# src/domain/metadata/blueprint/context/model/square/blueprint.py
 
 """
-Module: domain.metadata.blueprint.search.model.square.blueprint
+Module: domain.metadata.blueprint.context.model.square.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -16,7 +16,7 @@ from domain import SquareSearchContext, Board, Game, ContextBlueprint, Player
 from err import SquareSearchContextNullException
 
 
-class SquareContextBlueprint(ContextBlueprint[SquareSearchContext]):
+class SquareContextBlueprint(ModelContextBlueprint[SquareSearchContext]):
     """
      Role:
         1.  Metadata
@@ -36,7 +36,7 @@ class SquareContextBlueprint(ContextBlueprint[SquareSearchContext]):
      Provides:
 
      Super Class:
-        SearchContextBlueprint
+        ModelContextBlueprint
      """
 
     _game: Optional[Game]

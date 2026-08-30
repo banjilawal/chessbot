@@ -1,7 +1,7 @@
-# src/err/null/domain/search/context/stack/board/exception.py
+# src/err/null/domain/search/context/model/board/exception.py
 
 """
-Module: null.domain.search.context.stack.board.exception
+Module: null.domain.search.context.model.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchContextNullException
+from err import ModelContextNullException
 from artifcat import MethodResultType
 
 
 
 __all__ = [
     # ======================# BOARD_CONTEXT_NULL_ERROR #======================#
-    "BoardSearchContextNullException",
+    "BoardContextNullException",
 ]
 
 # ======================# BOARD_CONTEXT_NULL_ERROR #======================#
-class BoardSearchContextNullException(SearchContextNullException):
+class BoardContextNullException(ModelContextNullException):
     """
     Role:
         - Error Tracing
@@ -43,7 +43,7 @@ class BoardSearchContextNullException(SearchContextNullException):
     Provides:
 
     Super Class:
-        SearchContextNullException
+        ModelContextNullException
     """
     MSG = "BoardContext cannot be null."
     ERR_CODE = "BOARD_CONTEXT_NULL_ERROR"

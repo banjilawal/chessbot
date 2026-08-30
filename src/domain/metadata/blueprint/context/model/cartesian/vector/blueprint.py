@@ -1,7 +1,7 @@
-# src/domain/metadata/blueprint/search/model/cartesian/vector/blueprint.py
+# src/domain/metadata/blueprint/context/model/cartesian/vector/blueprint.py
 
 """
-Module: domain.metadata.blueprint.search.model.cartesian.vector.blueprint
+Module: domain.metadata.blueprint.context.model.cartesian.vector.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -16,7 +16,7 @@ from domain import VectorSearchContext, Board, Game, ContextBlueprint, Player
 from err import VectorSearchContextNullException
 
 
-class VectorContextBlueprint(ContextBlueprint[VectorSearchContext]):
+class VectorContextBlueprint(ModelContextBlueprint[VectorSearchContext]):
     """
      Role:
         1.  Metadata
@@ -36,7 +36,7 @@ class VectorContextBlueprint(ContextBlueprint[VectorSearchContext]):
      Provides:
 
      Super Class:
-        SearchContextBlueprint
+        ModelContextBlueprint
      """
 
     _game: Optional[Game]

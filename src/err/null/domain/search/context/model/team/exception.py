@@ -1,7 +1,7 @@
-# src/err/null/domain/search/context/stack/coord/exception.py
+# src/err/null/domain/search/context/model/team/exception.py
 
 """
-Module: null.domain.search.context.stack.coord.exception
+Module: null.domain.search.context.model.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,24 +11,24 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchContextNullException
+from err import ModelContextNullException
 from artifcat import MethodResultType
 
 
 
 __all__ = [
-    # ======================# COORD_CONTEXT_NULL_ERROR #======================#
-    "CoordSearchContextNullException",
+    # ======================# TEAM_CONTEXT_NULL_ERROR #======================#
+    "TeamContextNullException",
 ]
 
-# ======================# COORD_CONTEXT_NULL_ERROR #======================#
-class CoordSearchContextNullException(SearchContextNullException):
+# ======================# TEAM_CONTEXT_NULL_ERROR #======================#
+class TeamContextNullException(ModelContextNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required CoordContext is null.
+        1.  Indicating a required TeamContext is null.
 
     Cannot Be Null.s:
             msg: Optional[str]
@@ -43,10 +43,10 @@ class CoordSearchContextNullException(SearchContextNullException):
     Provides:
 
     Super Class:
-        SearchContextNullException
+        ModelContextNullException
     """
-    MSG = "CoordContext cannot be null."
-    ERR_CODE = "COORD_CONTEXT_NULL_ERROR"
+    MSG = "TeamContext cannot be null."
+    ERR_CODE = "TEAM_CONTEXT_NULL_ERROR"
     
     def __init__(
             self,

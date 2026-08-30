@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# CHAIN_CHAIN_SEARCH_CONTEXT_NULL_ERROR #======================#
+    # ======================# CHAIN_CHAIN_CONTEXT_NULL_ERROR #======================#
     "ChainContextNullException",
 ]
 
-# ======================# CHAIN_CHAIN_SEARCH_CONTEXT_NULL_ERROR #======================#
+# ======================# CHAIN_CHAIN_CONTEXT_NULL_ERROR #======================#
 class ChainContextNullException(SearchContextNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required ChainContextNullException failed.
+        1.  Indicating a required ChainContext is null.
 
     Cannot Be Null.s:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class ChainContextNullException(SearchContextNullException):
     Super Class:
         ContextNullException
     """
-    MSG = "ChainContextNullException cannot be null."
-    ERR_CODE = "CHAIN_CHAIN_SEARCH_CONTEXT_NULL_ERROR"
+    MSG = "ChainContext Cannot be null."
+    ERR_CODE = "CHAIN_CHAIN_CONTEXT_NULL_ERROR"
     
     def __init__(
             self,

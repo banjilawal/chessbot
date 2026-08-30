@@ -1,13 +1,13 @@
-# src/domain/metadata/blueprint/search/model/team/__init__.py
+# src/domain/metadata/blueprint/context/model/team/__init__.py
 
 """
-Module: domain.metadata.blueprint.search.model.team.__init__
+Module: domain.metadata.blueprint.context.model.team.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== DOMAIN.METADATA.BLUEPRINT.SEARCH.MODEL.TEAM PACKAGE ===========#
+# =========== DOMAIN.METADATA.BLUEPRINT.CONTEXT.MODEL.TEAM PACKAGE ===========#
 
 # Packages
 
