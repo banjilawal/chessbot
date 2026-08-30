@@ -93,3 +93,6 @@ class Game(StateModel):
         if isinstance(other, Game):
             return self.id == other.id
         return False
+    
+    def __hash__(self) -> int:
+        return super().__hash__(self)
