@@ -92,7 +92,7 @@ class VectorNodeContextValidator(
         context = cast(VectorNodeContext, priming.payload)
         
         # Handle the case that, no flags are enabled.
-        if context.has_no_active_context:
+        if context.is_empty:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorNodeContextCheckerException(
@@ -109,7 +109,7 @@ class VectorNodeContextValidator(
                 )
             )
         # Handle the case that too many context flags are enabled.
-        if context.has_excessive_active_contexts:
+        if context.is_above_max_size:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorNodeContextCheckerException(

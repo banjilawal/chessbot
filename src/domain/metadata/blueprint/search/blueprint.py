@@ -9,8 +9,8 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import Generic, Optional, Type, TypeVar, cast
+from abc import ABC, abstractmethod
+from typing import Any, Dict, Generic, Optional, Type, TypeVar, cast
 
 from domain import Blueprint, SearchContext
 from err import SearchContextNullException
@@ -37,6 +37,7 @@ class SearchContextBlueprint(Blueprint[T], ABC, Generic[T]):
      """
     _id: Optional[int]
     _name: Optional[str]
+    _max_size: Optional[int]
     
     def __init__(
             self,
@@ -44,11 +45,15 @@ class SearchContextBlueprint(Blueprint[T], ABC, Generic[T]):
             domain_null_exception: SearchContextNullException,
             id: Optional[int] | None = None,
             name: Optional[str] | None = None,
+            max_size: Optional[int] | None = None,
     ):
         """
         Args:
             domain_class: Type[T]
             domain_null_exception: SearchContextNullException
+            id: Optional[int]
+            name: Optional[str]
+            max_size: Optional[int]
         """
         super().__init__(
             domain_class=domain_class,
@@ -56,6 +61,7 @@ class SearchContextBlueprint(Blueprint[T], ABC, Generic[T]):
         )
         self._id = id
         self._name = name
+        self._max_size = max_size or 1
         
     
     @property
@@ -73,5 +79,18 @@ class SearchContextBlueprint(Blueprint[T], ABC, Generic[T]):
     @property
     def name(self) -> Optional[str]:
         return self._name
+    
+    @property
+    def max_size(self) -> int:
+        return self._max_size
+    
+    @property
+    def size(self) -> int:
+        return len(self.to_dict)
+    
+    @property
+    @abstractmethod
+    def to_dict(self) -> Dict[str, Any]:
+        pass
 
 

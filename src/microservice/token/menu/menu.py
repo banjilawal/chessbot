@@ -162,7 +162,7 @@ class TokenServiceMenu(Router[TokenService]):
         cipher = self._commands.entry[token_command.name]
         
         # Handle the case that, the number of params is wrong.
-        if token_command.parameters.count != cipher.parameters.count:
+        if token_command.parameters.size != cipher.parameters.size:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenServiceMenuException(

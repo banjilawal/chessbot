@@ -90,7 +90,7 @@ class CoordContextValidator(SearchContextValidator[CoordSearchSearchContext]):
         context = cast(CoordSearchSearchContext, candidate)
         
         # Handle the case that none of the filters are enabled.
-        if context.has_no_active_context:
+        if context.is_empty:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 CoordContextCheckerException(

@@ -45,7 +45,7 @@ class CoordSearchContext(ModelSearchContext[Coord]):
             row: Optional[int]
             column: Optional[int]
         """
-        super().__init__(max_activated_filters=2)
+        super().__init__(max_size=2)
         self._row = row
         self._column = column
         

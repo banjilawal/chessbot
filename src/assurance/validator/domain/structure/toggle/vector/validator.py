@@ -101,7 +101,7 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
         blueprint = cast(self.toolkit.blueprint_model, carrier)
         
         # Handle the case that neither option is enabled.
-        if blueprint.has_no_active_context:
+        if blueprint.is_empty:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 CartesianToggleRootCheckerException(
@@ -116,7 +116,7 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
                 )
             )
         # Handle the case that, both options are enabled.
-        if blueprint.has_excessive_active_contexts:
+        if blueprint.is_above_max_size:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 CartesianToggleRootCheckerException(

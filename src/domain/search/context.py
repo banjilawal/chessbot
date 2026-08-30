@@ -29,33 +29,33 @@ class SearchContext(ABC, Generic[T]):
     Attributes:
         id: Optional[int]
         name: Optional[str]
-        max_activated_contexts: int
+        max_size: int
         
     Provides:
-        -  to_dict() -> Dict[str, Any]
+        - def to_dict() -> Dict[str, Any]
         
     Super Class:
     """
     _id: Optional[int]
     _name: Optional[str]
-    _max_activated_contexts: int
+    _max_size: int
 
     def __init__(
             self,
             id: Optional[int] | None = None,
             name: Optional[str] | None = None,
-            max_activated_contexts: Optional[int] | None = None,
+            max_size: Optional[int] | None = None,
     ):
         """
         Args:
             id: Optional[int]
             name: Optional[str]
-            max_activated_contexts: Optional[int]
+            max_size: Optional[int]
         """
         super().__init__()
         self._id = id
         self._name = name
-        self._max_activated_contexts = max_activated_contexts or 1
+        self._max_size = max_size or 1
 
     @property
     def id(self) -> Optional[int]:
@@ -66,19 +66,19 @@ class SearchContext(ABC, Generic[T]):
         return self._name
     
     @property
-    def max_activated_contexts(self) -> int:
-        return self._max_activated_contexts
+    def max_size(self) -> int:
+        return self._max_size
     
     @property
-    def has_no_active_context(self) -> bool:
-        return self.active_context_count == 0
+    def is_empty(self) -> bool:
+        return self.size == 0
     
     @property
-    def has_excessive_active_contexts(self) -> bool:
-        return self.active_context_count > self._max_activated_contexts
+    def is_above_max_size(self) -> bool:
+        return self.size > self._max_size
     
     @property
-    def active_context_count(self) -> int:
+    def size(self) -> int:
         return len(self.to_dict)
 
     @property

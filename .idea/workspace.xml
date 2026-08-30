@@ -5,82 +5,77 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/arena/blueprint.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/arena/context.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/blueprint.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/board/context.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/coord/context.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/game/context.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/graph/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/graph/context.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/graph/edge/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/graph/edge/context.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/graph/station/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/graph/station/context.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/maneuver/context.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/path/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/path/context.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/player/category.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/player/context.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/square/context.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/team/context.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/token/context.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/vector/context.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/attack/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/attack/check/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/attack/check/blueprint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/attack/kill/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/attack/kill/blueprint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/attack/mate/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/attack/mate/blueprint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/board/blueprint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/cartesian/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/cartesian/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/cartesian/coord/blueprint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/cartesian/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/cartesian/vector/blueprint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/game/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/game/blueprint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/maneuver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/maneuver/blueprint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/path/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/path/blueprint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/player/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/player/blueprint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/square/blueprint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/team/blueprint.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/token/blueprint.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/rank/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/rank/blueprint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/scalar/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/scalar/blueprint.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/rank/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/rank/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/rank/offset/king/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/rank/offset/king/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/rank/offset/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/rank/offset/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/rank/traversal/bishop/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/rank/traversal/bishop/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/rank/traversal/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/rank/traversal/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/rank/traversal/queen/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/rank/traversal/queen/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/rank/traversal/rook/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/rank/traversal/rook/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/scalar/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/scalar/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/identity/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/identity/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/arena/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/arena/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/player/human/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/player/human/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/player/machine/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/player/machine/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/player/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/player/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/query/catalog/formation/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/query/catalog/formation/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/query/catalog/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/query/catalog/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/query/catalog/persona/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/query/catalog/persona/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/query/catalog/schema/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/query/catalog/schema/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/arena/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/arena/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/board/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/board/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/coord/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/coord/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/edge/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/edge/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/game/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/game/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/hostage/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/hostage/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/node/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/node/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/player/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/player/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/rank/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/rank/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/square/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/square/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/team/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/team/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/token/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/query/stack/token/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/square/home/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/square/home/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/square/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/square/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/team/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/team/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/token/combatant/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/token/combatant/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/token/combatant/pawn/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/token/combatant/pawn/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/token/combatant/pawn/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/token/combatant/pawn/state.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/token/king/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/token/king/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/token/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/token/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/search/chain/vector/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/search/chain/vector/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/search/stack/coord/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/search/stack/coord/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/search/stack/square/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/search/stack/square/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/search/stack/team/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/search/stack/team/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/search/stack/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/search/stack/token/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/structure/toggle/vector/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/toggle/vector/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/arena/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/arena/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/arena/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/arena/context.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/board/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/board/context.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/coord/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/coord/context.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/game/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/game/context.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/graph/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/graph/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/graph/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/graph/context.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/graph/edge/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/graph/edge/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/graph/edge/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/graph/edge/context.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/graph/station/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/graph/station/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/graph/station/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/graph/station/context.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/maneuver/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/maneuver/context.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/path/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/path/context.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/player/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/player/category.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/player/context.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/square/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/square/context.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/team/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/team/context.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/token/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/token/context.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/vector/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/search/vector/context.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/search/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/context.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/search/model/coord/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/search/model/coord/context.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/token/menu/menu.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/token/menu/menu.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,61 +117,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.000000000193091" />
-      <entry key="MS500" value="1.011406500090409" />
-      <entry key="S2" value="1.3287038482072107" />
-      <entry key="S5" value="1.7556147535927473" />
-      <entry key="S10" value="2.412548637554899" />
-      <entry key="S30" value="6.2057151925173955" />
-      <entry key="S60" value="11.24219876582779" />
-      <entry key="M2" value="19.690969140818606" />
-      <entry key="M5" value="41.09515904489695" />
-      <entry key="M10" value="63.74410216608487" />
-      <entry key="M15" value="80.75670256026447" />
-      <entry key="M30" value="124.56621044018183" />
-      <entry key="H1" value="210.39897565226514" />
-      <entry key="H2" value="387.1342610468577" />
-      <entry key="H4" value="698.9985764212341" />
-      <entry key="D1" value="3523.38094702273" />
-      <entry key="W1" value="14250.103119714444" />
+      <entry key="MS100" value="1.0000000000003422" />
+      <entry key="MS500" value="1.003212695580908" />
+      <entry key="S2" value="1.2380784295737912" />
+      <entry key="S5" value="1.567857589350889" />
+      <entry key="S10" value="1.8185026797273522" />
+      <entry key="S30" value="2.316954750340739" />
+      <entry key="S60" value="2.594625241166071" />
+      <entry key="M2" value="2.8993337650605655" />
+      <entry key="M5" value="6.222367240310455" />
+      <entry key="M10" value="19.617150615067477" />
+      <entry key="M15" value="34.5254503214073" />
+      <entry key="M30" value="67.24030219288773" />
+      <entry key="H1" value="100.55443264274182" />
+      <entry key="H2" value="164.84748472317784" />
+      <entry key="H4" value="376.2765487998432" />
+      <entry key="D1" value="3117.8465898073755" />
+      <entry key="W1" value="14098.72352343823" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.622077607932285E-30" />
-      <entry key="MS500" value="1.1015756459747162E-6" />
-      <entry key="S2" value="0.03239690940686627" />
-      <entry key="S5" value="0.25363047355842677" />
-      <entry key="S10" value="0.5036173880620354" />
-      <entry key="S30" value="0.7956100103352821" />
-      <entry key="S60" value="0.8919697362217475" />
-      <entry key="M2" value="0.9444418388710101" />
-      <entry key="M5" value="0.9799946766935598" />
-      <entry key="M10" value="1.0407913595967913" />
-      <entry key="M15" value="1.1475293152448975" />
-      <entry key="M30" value="1.6503711811805595" />
-      <entry key="H1" value="3.346015211108385" />
-      <entry key="H2" value="8.613853290676596" />
-      <entry key="H4" value="19.07955667225189" />
-      <entry key="D1" value="130.165201130709" />
-      <entry key="W1" value="502.8154769550941" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="1.0253351991043347E-249" />
+      <entry key="S5" value="2.5376683109773333E-100" />
+      <entry key="S10" value="1.6155850434947717E-50" />
+      <entry key="S30" value="3.160962835973286E-17" />
+      <entry key="S60" value="8.591418953077872E-9" />
+      <entry key="M2" value="1.8606837561625734E-4" />
+      <entry key="M5" value="0.08945285262090091" />
+      <entry key="M10" value="0.7263270067872339" />
+      <entry key="M15" value="1.4655319099308006" />
+      <entry key="M30" value="2.9627290607364047" />
+      <entry key="H1" value="4.243466385235114" />
+      <entry key="H2" value="5.820939961394573" />
+      <entry key="H4" value="11.279006707015244" />
+      <entry key="D1" value="112.60429077997685" />
+      <entry key="W1" value="494.71969329235526" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.1840837087385798E-7" />
-      <entry key="MS500" value="0.04859937912093216" />
-      <entry key="S2" value="0.752052475648053" />
-      <entry key="S5" value="1.5692777310026278" />
-      <entry key="S10" value="2.5596665728958263" />
-      <entry key="S30" value="6.74300102074202" />
-      <entry key="S60" value="11.92750537899324" />
-      <entry key="M2" value="20.463779500796974" />
-      <entry key="M5" value="41.931394898708895" />
-      <entry key="M10" value="64.67380521589874" />
-      <entry key="M15" value="81.81169728422894" />
-      <entry key="M30" value="126.14864462535954" />
-      <entry key="H1" value="213.69523947490444" />
-      <entry key="H2" value="395.7119121630343" />
-      <entry key="H4" value="718.0516914623332" />
-      <entry key="D1" value="3653.5285605279587" />
-      <entry key="W1" value="14752.911113811024" />
+      <entry key="MS100" value="0.9330329915371289" />
+      <entry key="MS500" value="0.9894055654166257" />
+      <entry key="S2" value="1.2338772450927886" />
+      <entry key="S5" value="1.5657654824491058" />
+      <entry key="S10" value="1.8173087470847389" />
+      <entry key="S30" value="2.316468714658364" />
+      <entry key="S60" value="2.59432804306195" />
+      <entry key="M2" value="2.8987471101527875" />
+      <entry key="M5" value="6.304325345955358" />
+      <entry key="M10" value="20.322350884011993" />
+      <entry key="M15" value="35.96431203881622" />
+      <entry key="M30" value="70.1770805353672" />
+      <entry key="H1" value="104.77912008693023" />
+      <entry key="H2" value="170.65379296845148" />
+      <entry key="H4" value="387.5409041659803" />
+      <entry key="D1" value="3230.435088420183" />
+      <entry key="W1" value="14593.435736719426" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -190,49 +185,49 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.__init__.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.checker.executor&quot;: &quot;Run&quot;,
-    &quot;Python.node.executor&quot;: &quot;Run&quot;,
-    &quot;Python.notifier.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.ray.executor&quot;: &quot;Coverage&quot;,
-    &quot;Python.roster.executor&quot;: &quot;Run&quot;,
-    &quot;Python.stack.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/griot/PycharmProjects/chessbot/src/domain/metadata/blueprint/search/model/arena&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.__init__.executor": "Debug",
+    "Python.checker.executor": "Run",
+    "Python.node.executor": "Run",
+    "Python.notifier.executor": "Debug",
+    "Python.ray.executor": "Coverage",
+    "Python.roster.executor": "Run",
+    "Python.stack.executor": "Debug",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/domain/metadata/blueprint/search/model/attack",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/attack" />
+      <recent name="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model" />
+      <recent name="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/cartesian" />
       <recent name="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model/arena" />
       <recent name="$PROJECT_DIR$/src/domain/metadata/blueprint/search" />
-      <recent name="$PROJECT_DIR$/src/domain/metadata/blueprint" />
-      <recent name="$PROJECT_DIR$/src/collection/database" />
-      <recent name="$PROJECT_DIR$/src/collection/stack" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model" />
       <recent name="$PROJECT_DIR$/src/domain/metadata/blueprint/search" />
       <recent name="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/walk" />
       <recent name="$PROJECT_DIR$/src/domain/metadata/blueprint/structure" />
       <recent name="$PROJECT_DIR$/src/domain/structure" />
-      <recent name="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable" />
     </key>
   </component>
   <component name="RunManager" selected="Python.validator">
@@ -908,7 +903,7 @@
       <workItem from="1785958183827" duration="174661000" />
       <workItem from="1786522110280" duration="179726000" />
       <workItem from="1787456783999" duration="30897000" />
-      <workItem from="1787812398225" duration="97492000" />
+      <workItem from="1787812398225" duration="104193000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -2019,6 +2014,11 @@
           <url>file://$PROJECT_DIR$/src/collection/stack/__init__.py</url>
           <line>14</line>
           <option name="timeStamp" value="413" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/domain/search/context.py</url>
+          <line>39</line>
+          <option name="timeStamp" value="415" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
