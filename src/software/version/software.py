@@ -1,7 +1,7 @@
-# src/domain/metadata/software/version/metadata.py
+# src/software/version/metadata.py
 
 """
-Module: domain.metadata.software.version.metdata
+Module: software.version.metdata
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
