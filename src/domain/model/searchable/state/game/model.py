@@ -9,7 +9,8 @@ version: 1.0.0
 
 from typing import List, Optional
 
-from domain import Arena, GameState, MateEnemyKing, Player, StateModel
+from domain import Arena, Championship, GameState, MateEnemyKing, Player, StateModel
+from game import GameWin
 
 
 class Game(StateModel):
@@ -39,6 +40,7 @@ class Game(StateModel):
     _white_player: Player
     _black_player: Player
     _state: GameState
+    _win: Optional[GameWin]
     
     
     def __init__(
@@ -48,17 +50,12 @@ class Game(StateModel):
             black_player: Player,
             arena: Arena
     ):
-        super().__init__()
-        self._id = id
+        super().__init__(id=id)
         self._arena = arena
         self._state = GameState.NEW
         self._white_player = white_player
         self._black_player = black_player
-
-    
-    @property
-    def id(self) -> int:
-        return self._id
+        self._win = None
     
     @property
     def arena(self) -> Arena:
@@ -85,5 +82,14 @@ class Game(StateModel):
         self._state = other
     
     @property
-    def check_mate(self) -> Optional[MateEnemyKing]:
-        return None
+    def win(self) -> Optional[GameWin]:
+        return self._win
+    
+    def __eq__(self, other) -> bool:
+        if other is self:
+            return True
+        if other is None:
+            return False
+        if isinstance(other, Game):
+            return self.id == other.id
+        return False
