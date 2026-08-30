@@ -12,7 +12,9 @@ from __future__ import annotations
 from typing import Any, Dict, Optional, Type, cast
 
 from config import GameColor
-from domain import Coord, Formation, HomeSquare, ModelContextBlueprint, Rank, Team, TokenActivityState, TokenContext
+from domain import (
+    Coord, Formation, HomeSquare, ModelContextBlueprint, Rank, Team, TokenActivityState, TokenContext
+)
 from err import TokenContextNullException
 
 

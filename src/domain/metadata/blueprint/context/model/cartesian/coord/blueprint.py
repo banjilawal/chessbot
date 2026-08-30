@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Dict, Optional, Type, cast
 
 from config import GameColor
-from domain import CoordContext, Board, Game, ContextBlueprint, Player
+from domain import CoordContext, Board, Game, ContextBlueprint, ModelContextBlueprint, Player
 from err import CoordContextNullException
 
 
