@@ -13,12 +13,12 @@ from typing import Generic, Optional, TypeVar
 from abc import ABC
 
 from domain import GraphComponent
-from domain import Node, SearchContext
+from domain import Node, Context
 
 T = TypeVar("T", bound="GraphComponent")
 
 
-class GraphSearchContext(SearchContext, ABC, Generic[T]):
+class GraphContext(Context, ABC, Generic[T]):
     """
     Role:
         - Option Selector

@@ -23,4 +23,4 @@ from .square import *
 from .vector import *
 
 # Modules
-from  .context import ModelSearchContext
+from  .context import ModelContext

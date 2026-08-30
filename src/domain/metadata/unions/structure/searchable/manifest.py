@@ -13,7 +13,7 @@ from abc import ABC
 from dataclasses import dataclass
 from typing import Generic, Optional, Type, TypeVar
 
-from domain import Blueprint, SearchContext, SearchableStructure, StructureSearchContext, StructureTypeUnions
+from domain import Blueprint, Context, SearchableStructure, StructureContext, StructureTypeUnions
 from transit import StructureCarrier
 
 T = TypeVar("T", bound="SearchableStructure")
@@ -41,4 +41,4 @@ class SearchableStructureTypeUnions(StructureTypeUnions[T], ABC, Generic[T]):
     structure: Type[T]
     carrier: Type[StructureCarrier[T]]
     blueprint: Type[Blueprint[T]]
-    search_context: StructureSearchContext[T]
+    search_context: StructureContext[T]

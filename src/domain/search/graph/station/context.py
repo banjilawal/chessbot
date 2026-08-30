@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain import GraphSearchContext, Node, Station
+from domain import GraphContext, Node, Station
 
 
-class StationNodeContext(GraphSearchContext[Station]):
+class StationNodeContext(GraphContext[Station]):
         """
     Role:
         - Option Selector

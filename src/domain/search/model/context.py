@@ -12,12 +12,12 @@ from __future__ import annotations
 from typing import Generic, TypeVar
 from abc import ABC
 
-from domain import SearchableModel, SearchContext
+from domain import SearchableModel, Context
 
 T = TypeVar("T", bound="SearchableModel")
 
 
-class ModelSearchContext(SearchContext[T], ABC, Generic[T]):
+class ModelContext(Context[T], ABC, Generic[T]):
     """
     Role:
         - Option Selector

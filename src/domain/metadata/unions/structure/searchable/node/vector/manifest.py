@@ -13,7 +13,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Optional, Type
 
-from domain import NodeTypeUnions, SearchContext, VectorNode, VectorNodeBlueprint
+from domain import NodeTypeUnions, Context, VectorNode, VectorNodeBlueprint
 
 
 @dataclass
@@ -39,4 +39,4 @@ class VectorNodeTypeUnions(NodeTypeUnions[VectorNode]):
     model: Type[VectorNode] = VectorNode
     carrier: Type[VectorNodeCarrier] = VectorNodeCarrier
     blueprint: Type[VectorNodeBlueprint] = VectorNodeBlueprint
-    search_context: Optional[SearchContext] = None
+    search_context: Optional[Context] = None

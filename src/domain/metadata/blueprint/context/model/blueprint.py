@@ -12,10 +12,10 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, Type, TypeVar, cast
 
-from domain import ContextBlueprint, ModelSearchContext
+from domain import ContextBlueprint, ModelContext
 from err import ModelContextNullException
 
-T = TypeVar("T", bound="ModelSearchContext")
+T = TypeVar("T", bound="ModelContext")
 
 
 class ModelContextBlueprint(ContextBlueprint[T], ABC, Generic[T]):

@@ -18,7 +18,7 @@ from domain import Searchable
 T = TypeVar("T", bound="Searchable")
 
 
-class SearchContext(ABC, Generic[T]):
+class Context(ABC, Generic[T]):
     """
     Role:
         - Option Selector

@@ -13,4 +13,4 @@ version: 0.0.2
 from .node import *
 
 # Modules
-from  .context import StructureSearchContext
+from  .context import StructureContext

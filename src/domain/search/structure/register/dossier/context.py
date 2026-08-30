@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain import StructureSearchContext, Dossier, Square, Token
+from domain import StructureContext, Dossier, Square, Token
 from artifcat.report import AuthorizationDecision
 
 
-class DossierNodeContext(StructureSearchContext[Dossier]):
+class DossierNodeContext(StructureContext[Dossier]):
     """
     Role:
         - Option Selector

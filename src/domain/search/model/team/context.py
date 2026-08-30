@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Any, Dict, Optional
 
 from config import GameColor
-from domain import Archetype, Board, Player, ModelSearchContext, Team
+from domain import Archetype, Board, Player, ModelContext, Team
 
 
-class TeamSearchContext(ModelSearchContext[Team]):
+class TeamSearchContext(ModelContext[Team]):
     """
     Role:
         - Option Selector

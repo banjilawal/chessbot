@@ -12,7 +12,7 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from collection import StackService
-from domain import SearchContext, SearchRequest, StateModel
+from domain import Context, SearchRequest, StateModel
 
 T = TypeVar("T", bound="StateModel")
 
@@ -36,7 +36,7 @@ class StackSearchRequest(SearchRequest, ABC, Generic[T]):
         SearchRequest
      """
     
-    def __init__(self, id: int, context: SearchContext[T], stack: StackService[T]):
+    def __init__(self, id: int, context: Context[T], stack: StackService[T]):
         """
         Args:
             id: int
@@ -46,8 +46,8 @@ class StackSearchRequest(SearchRequest, ABC, Generic[T]):
         super().__init__(id=id, context=context, collection=stack)
         
     @property
-    def context(self) -> SearchContext[T]:
-        return cast(SearchContext[T], super().context)
+    def context(self) -> Context[T]:
+        return cast(Context[T], super().context)
         
     @property
     def stack(self) -> StackService[T]:

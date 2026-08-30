@@ -14,10 +14,10 @@ from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
 from assurance import Validator, ValidationBundle
-from domain import SearchContext
+from domain import Context
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="SearchContext")
+T = TypeVar("T", bound="Context")
 
 
 class SearchContextValidator(Validator, ABC, Generic[T]):

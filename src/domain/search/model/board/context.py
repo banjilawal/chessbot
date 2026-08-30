@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain import Arena, Board, ModelSearchContext, Team
+from domain import Arena, Board, ModelContext, Team
 
 
-class BoardSearchContext(ModelSearchContext[Board]):
+class BoardSearchContext(ModelContext[Board]):
     """
     Role:
         - Option Selector

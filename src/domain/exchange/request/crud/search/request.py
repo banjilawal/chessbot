@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from collection import DomainObjectCollection
-from domain import CrudRequest, DomainDataObject, SearchContext
+from domain import CrudRequest, DomainDataObject, Context
 from artifcat import SearchResult
 
 
@@ -39,9 +39,9 @@ class SearchRequest(CrudRequest[SearchResult], ABC, Generic[T]):
      Super Class:
         CrudRequest
      """
-    _context: SearchContext[T]
+    _context: Context[T]
     
-    def __init__(self, id: int, context: SearchContext[T], collection: DomainObjectCollection[T]):
+    def __init__(self, id: int, context: Context[T], collection: DomainObjectCollection[T]):
         """
         Args:
             id: int
@@ -52,7 +52,7 @@ class SearchRequest(CrudRequest[SearchResult], ABC, Generic[T]):
         self._context = context
     
     @property
-    def context(self) -> SearchContext[T]:
+    def context(self) -> Context[T]:
         return self._context
     
     def __eq__(self, other):

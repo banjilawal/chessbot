@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Type, TypeVar, cast
 
-from domain import CartesianPoint, SearchContext, SearchableModelBlueprint
+from domain import CartesianPoint, Context, SearchableModelBlueprint
 from err import ModelNullException
 
 T = TypeVar("T", bound="CartesianPoint")
@@ -38,7 +38,7 @@ class CartesianBlueprint(SearchableModelBlueprint[T], ABC, Generic[T]):
     def __init__(
             self,
             domain_class: Type[T],
-            search_context_class: Type[SearchContext[T]],
+            search_context_class: Type[Context[T]],
             domain_null_exception: ModelNullException,
     ):
         """
@@ -58,5 +58,5 @@ class CartesianBlueprint(SearchableModelBlueprint[T], ABC, Generic[T]):
         return cast(Type[T], super().domain_class)
     
     @property
-    def search_context_class(self) -> Type[SearchContext[T]]:
+    def search_context_class(self) -> Type[Context[T]]:
         return self._search_context_class

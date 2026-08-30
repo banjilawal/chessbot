@@ -15,9 +15,9 @@ from typing import Dict, Generic, TypeVar
 
 from assurance import StackSearchContextValidator
 from authorization import CrudPermissionUtility
-from domain import SearchContext, SearchRequest
+from domain import Context, SearchRequest
 
-T = TypeVar("T", bound="SearchContext")
+T = TypeVar("T", bound="Context")
 
 
 @dataclass

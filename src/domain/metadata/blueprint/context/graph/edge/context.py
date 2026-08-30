@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain import GraphSearchContext, Edge, Station
+from domain import GraphContext, Edge, Station
 
 
-class EdgeSearchContext(GraphSearchContext[Edge]):
+class EdgeSearchContext(GraphContext[Edge]):
         """
     Role:
         - Option Selector

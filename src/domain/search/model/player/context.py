@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain import Game, Player, PlayerCategory, ModelSearchContext, Team
+from domain import Game, Player, PlayerCategory, ModelContext, Team
 
 
-class PlayerSearchContext(ModelSearchContext[Player]):
+class PlayerSearchContext(ModelContext[Player]):
     """
     Role:
         - Option Selector

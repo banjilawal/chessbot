@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, Type, TypeVar, cast
 
-from domain import SearchContext, SearchableModelBlueprint, WalkModel
+from domain import Context, SearchableModelBlueprint, WalkModel
 from err import ModelNullException
 
 T = TypeVar("T", bound="WalkModel")
@@ -41,7 +41,7 @@ class WalkModelBlueprint(SearchableModelBlueprint[T], ABC, Generic[T]):
     def __init__(
             self,
             domain_class: Type[T],
-            search_context_class: Type[SearchContext[T]],
+            search_context_class: Type[Context[T]],
             domain_null_exception: ModelNullException,
             id: Optional[int] | None = None,
     ):
@@ -64,8 +64,8 @@ class WalkModelBlueprint(SearchableModelBlueprint[T], ABC, Generic[T]):
         return cast(Type[T], super().domain_class)
     
     @property
-    def search_context_class(self) -> Type[SearchContext[T]]:
-        return cast(Type[SearchContext[T]], super().search_context_class)
+    def search_context_class(self) -> Type[Context[T]]:
+        return cast(Type[Context[T]], super().search_context_class)
     
     @property
     def domain_null_exception(self) -> ModelNullException:

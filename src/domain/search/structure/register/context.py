@@ -13,12 +13,12 @@ from typing import Generic, Optional, TypeVar
 from abc import ABC
 
 
-from domain import Structure, StructureSearchContext
+from domain import Structure, StructureContext
 
 T = TypeVar("T", bound="Structure")
 
 
-class NodeSearchContext(StructureSearchContext[T], ABC, Generic[T]):
+class NodeSearchContext(StructureContext[T], ABC, Generic[T]):
     """
     Role:
         - Option Selector

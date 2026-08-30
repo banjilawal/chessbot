@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Any, Dict, Optional
 
 from config import GameColor
-from domain import Coord, HomeSquare, Rank, ModelSearchContext, Team, Token
+from domain import Coord, HomeSquare, Rank, ModelContext, Team, Token
 
 
-class TokenSearchContext(ModelSearchContext[Token]):
+class TokenSearchContext(ModelContext[Token]):
     """
     Role:
         - Option Selector

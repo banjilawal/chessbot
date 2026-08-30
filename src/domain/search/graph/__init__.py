@@ -14,4 +14,4 @@ from .edge import *
 from .station import *
 
 # Modules
-from  .context import GraphSearchContext
+from  .context import GraphContext

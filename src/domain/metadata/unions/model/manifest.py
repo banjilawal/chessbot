@@ -13,7 +13,7 @@ from abc import ABC
 from dataclasses import dataclass
 from typing import Generic, Optional, Type, TypeVar
 
-from domain import Blueprint, EntityCarrier, Model, ModelSearchContext, DomainObjectTypeUnions
+from domain import Blueprint, EntityCarrier, Model, ModelContext, DomainObjectTypeUnions
 
 T = TypeVar("T", bound="Model")
 
@@ -39,4 +39,4 @@ class ModelTypeUnions(DomainObjectTypeUnions[T], ABC, Generic[T]):
     model: Type[T]
     carrier: Type[EntityCarrier[T]]
     blueprint: Type[Blueprint[T]]
-    search_context: Optional[ModelSearchContext[T]] = None
+    search_context: Optional[ModelContext[T]] = None

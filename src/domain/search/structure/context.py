@@ -12,13 +12,13 @@ from __future__ import annotations
 from typing import Generic, Optional, TypeVar
 from abc import ABC
 
-from domain import SearchContext
+from domain import Context
 from domain import Structure
 
 T = TypeVar("T", bound="Structure")
 
 
-class StructureSearchContext(SearchContext[T], ABC, Generic[T]):
+class StructureContext(Context[T], ABC, Generic[T]):
     """
     Role:
         - Option Selector

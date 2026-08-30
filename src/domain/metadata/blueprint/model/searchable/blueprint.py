@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Type, TypeVar, cast
 
-from domain import ModelBlueprint, SearchContext, SearchableModel
+from domain import ModelBlueprint, Context, SearchableModel
 from err import ModelNullException
 
 T = TypeVar("T", bound="SearchableModel")
@@ -35,12 +35,12 @@ class SearchableModelBlueprint(ModelBlueprint[T], ABC, Generic[T]):
      Super Class:
         ModelBlueprint
      """
-    _search_context_class: Type[SearchContext[T]]
+    _search_context_class: Type[Context[T]]
     
     def __init__(
             self,
             domain_class: Type[T],
-            search_context_class: Type[SearchContext[T]],
+            search_context_class: Type[Context[T]],
             domain_null_exception: ModelNullException,
     ):
         """
@@ -60,7 +60,7 @@ class SearchableModelBlueprint(ModelBlueprint[T], ABC, Generic[T]):
         return cast(Type[T], super().domain_class)
     
     @property
-    def search_context_class(self) -> Type[SearchContext[T]]:
+    def search_context_class(self) -> Type[Context[T]]:
         return self._search_context_class
     
 
