@@ -20,7 +20,7 @@ class AttackContext(ModelContext[Attack]):
         1.  Metadata
 
      Responsibilities:
-         1.  Provide attributes for hydrating an AttackContext.
+        1.  Supply AttackSearcher with targeting criteria.
          
      Attributes:
         victor: Optional[Token]

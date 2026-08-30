@@ -11,8 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional, Type, cast
 
-from config import GameColor
-from domain import PlayerContext, Board, Game, ContextBlueprint, Player
+from domain import Game, ModelContextBlueprint, PlayerCategory, PlayerContext, Team
 from err import PlayerContextNullException
 
 
@@ -25,53 +24,66 @@ class PlayerContextBlueprint(ModelContextBlueprint[PlayerContext]):
          1.  Provide attributes for hydrating an PlayerContext.
          
      Attributes:
+        id: Optional[id]
+        name: Optional[str]
+        game: Optional[Game]
+        wins: Option[bool]
+        losses: Optional[bool]
+        current_team: Optional[Team]
+        player_category: Optional[PlayerCategory]
+        
         domain_class: Type[PlayerContext]
         domain_null_exception: PlayerContextNullException
-        id: Optional[int]
-        game: Optional[Game]
-        board: Optional[Board]
-        player: Optional[Player]
-        color: Optional[GameColor]
 
      Provides:
 
      Super Class:
         ModelContextBlueprint
      """
-
+    
+    _id: Optional[int]
+    _name: Optional[str]
     _game: Optional[Game]
-    _board: Optional[Board]
-    _player: Optional[Player]
-    _color: Optional[GameColor]
+    _wins: Optional[bool]
+    _losses: Optional[bool]
+    _current_team: Optional[Team]
     
     def __init__(
             self,
+            id: Optional[int] | None = None,
+            name: Optional[str] | None = None,
+            game: Optional[Game] | None = None,
+            wins: Optional[bool] | None = None,
+            losses: Optional[bool] | None = None,
+            current_team: Optional[Team] | None = None,
+            player_category: Optional[PlayerCategory] | None = None,
             domain_class: Optional[Type[PlayerContext]] | None = None,
             domain_null_exception: Optional[PlayerContextNullException] | None = None,
-            id: Optional[int] | None = None,
-            game: Optional[Game] | None = None,
-            board: Optional[Board] | None = None,
-            player: Optional[Player] | None = None,
-            color: Optional[GameColor] | None = None,
     ):
         """
         Args:
+            id: Optional[int]
+            name: Optional[str]
+            team: Optional[Team]
+            game: Optional[Game]
+            wins: Optional[bool]
+            losses: Optional[bool]
+            current_team: Optional[Team]
+            player_category: Optional[PlayerCategory]
             domain_class: Type[PlayerContext]
             domain_null_exception: PlayerContextNullException
-            game: Optional[Game]
-            board: Optional[Board]
-            player: Optional[Player]
-            color: Optional[GameColor]
         """
         super().__init__(
             id=id,
+            name=name,
             domain_class=domain_class or Type[PlayerContext],
             domain_null_exception=domain_null_exception or PlayerContextNullException(),
         )
         self._game = game
-        self._board = board
-        self._color = color
-        self._player = player
+        self._wins = wins
+        self._losses = losses
+        self._current_team = current_team
+        self._player_category = player_category
     
     @property
     def domain_class(self) -> Type[PlayerContext]:
@@ -86,25 +98,31 @@ class PlayerContextBlueprint(ModelContextBlueprint[PlayerContext]):
         return self._game
     
     @property
-    def player(self) -> Optional[Player]:
-        return self._player
+    def wins(self) -> Optional[bool]:
+        return self._wins
     
     @property
-    def board(self) -> Optional[Board]:
-        return self._board
+    def losses(self) -> Optional[bool]:
+        return self._losses
     
     @property
-    def color(self) -> Optional[GameColor]:
-        return self._color
+    def current_team(self) -> Optional[Team]:
+        return self._current_team
+    
+    @property
+    def player_category(self) -> Optional[PlayerCategory]:
+        return self._player_category
     
     @property
     def to_dict(self) -> Dict[str, Any]:
         return {
             "id": self.id,
+            "name": self.name,
             "game": self._game,
-            "board": self._board,
-            "player": self._player,
-            "color": self._color,
+            "wins": self._wins,
+            "losses": self._losses,
+            "current_team": self._current_team,
+            "player_category": self._player_category,
         }
     
     

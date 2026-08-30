@@ -36,6 +36,7 @@ class Attack(SearchableModel, ABC,):
     Super Class:
         SearchableModel
     """
+    _id: int
     _victim: Token
     _attacker: Token
     _maneuver: Maneuver
@@ -43,6 +44,7 @@ class Attack(SearchableModel, ABC,):
     
     def __init__(
             self,
+            id: int,
             victim: Token,
             attacker: Token,
             maneuver: Maneuver,
@@ -55,10 +57,15 @@ class Attack(SearchableModel, ABC,):
             maneuver: Maneuver
             attacker_reward: Optional[int]
         """
+        self._id = id
         self._victim = victim
         self._attacker = attacker
         self._maneuver = maneuver
         self._attacker_reward = attacker_reward or victim.rank.ransom
+        
+    @property
+    def id(self) -> int:
+        return self._id
     
     @property
     def victim(self) -> Token:
@@ -90,8 +97,9 @@ class Attack(SearchableModel, ABC,):
             return True
         if isinstance(other, Attack):
             return (
-                    self._attacker == other.attacker and
-                    self._victim == other.victim
+                self.id == other.id and
+                self._attacker == other.attacker and
+                self._victim == other.victim
             )
         return False
     

@@ -1,7 +1,7 @@
 # src/domain/search/model/team/context.py
 
 """
-Module: domain.search.model.team
+Module: domain.search.model.team.context
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Dict, Optional
 
 from config import GameColor
-from domain import Archetype, Board, Player, ModelContext, Team
+from domain import Archetype, Board, GameState, Player, ModelContext, Team, TeamState
 
 
 class TeamContext(ModelContext[Team]):
@@ -21,12 +21,13 @@ class TeamContext(ModelContext[Team]):
         - Option Selector
 
     Responsibilities:
-        1.  Supply the criteria a TeamModelSearcher uses to find a hit.
+        1.  Supply TeamSearcher with targeting criteria.
 
     Attributes:
             id: Optional[int]
             board: Optional[Board]
             owner: Optional[Player]
+            state: Optional[TeamState]
             color: Optional[GameColor]
             archetype: Optional[Archetype]
 
@@ -38,6 +39,7 @@ class TeamContext(ModelContext[Team]):
     """
     _board: Optional[Board] = None
     _owner: Optional[Player] = None
+    _state: Optional[TeamState]
     _color: Optional[GameColor] = None
     _archetype: Optional[Archetype] = None
     
@@ -46,6 +48,7 @@ class TeamContext(ModelContext[Team]):
             id: Optional[int] | None = None,
             board: Optional[Board] | None = None,
             owner: Optional[Player] | None = None,
+            state: Optional[TeamState] | None = None,
             color: Optional[GameColor] | None = None,
             archetype: Optional[Archetype] | None = None,
     ):
@@ -54,12 +57,14 @@ class TeamContext(ModelContext[Team]):
             id: Optional[int]
             board: Optional[Board]
             owner: Optional[Player]
+            state: Optional[TeamState]
             color: Optional[GameColor]
             archetype: Optional[Archetype]
         """
         super().__init__(id=id, name=None)
         self._board = board
         self._owner = owner
+        self._state = state
         self._color = color
         self._archetype = archetype
     
@@ -76,6 +81,10 @@ class TeamContext(ModelContext[Team]):
         return self._color
     
     @property
+    def state(self) -> Optional[GameState]:
+        return self._state
+    
+    @property
     def archetype(self) -> Optional[Archetype]:
         return self._archetype
     
@@ -83,8 +92,9 @@ class TeamContext(ModelContext[Team]):
     def to_dict(self) -> Dict[str, Any]:
         return {
             "id": self.id,
-            "board": self.board,
-            "owner": self.owner,
-            "color": self.color,
-            "archetype": self.archetype,
+            "board": self._board,
+            "owner": self._owner,
+            "stat": self._state,
+            "color": self._color,
+            "archetype": self._archetype,
         }

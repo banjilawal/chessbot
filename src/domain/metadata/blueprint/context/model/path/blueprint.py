@@ -49,7 +49,6 @@ class PathContextBlueprint(ModelContextBlueprint[PathContext]):
             destination: Optional[Square] | None = None,
             domain_class: Optional[Type[PathContext]] | None = None,
             domain_null_exception: Optional[PathContextNullException] | None = None,
-
     ):
         """
         Args:

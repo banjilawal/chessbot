@@ -1,7 +1,7 @@
 # src/domain/search/model/game/context.py
 
 """
-Module: domain.search.model.game
+Module: domain.search.model.game.context
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -22,7 +22,7 @@ class GameContext(ModelContext[Game]):
         - Option Selector
 
     Responsibilities:
-        1.  Supply the criteria a GameModelSearcher uses to find a hit.
+        1.  Supply GameSearcher with targeting criteria.
 
     Attributes:
         id: Optional[int]

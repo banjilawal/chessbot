@@ -1,7 +1,7 @@
 # src/domain/search/model/square/context.py
 
 """
-Module: domain.search.model.square
+Module: domain.search.model.square.comtext
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -20,7 +20,7 @@ class SquareContext(ModelContext[Square]):
         - Option Selector
 
     Responsibilities:
-        1.  Supply the criteria a SquareModelSearcher uses to find a hit.
+        1.  Supply SquareSearcher with targeting criteria.
 
     Attributes:
         id: Optional[int]

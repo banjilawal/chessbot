@@ -1,7 +1,7 @@
 # src/domain/search/model/path/context.py
 
 """
-Module: domain.search.model.path
+Module: domain.search.model.path.context
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain import Arena, Path, Player, PathWinner, ModelContext
+from domain import ModelContext, Path, Square
 
 
 class PathContext(ModelContext[Path]):
@@ -20,62 +20,57 @@ class PathContext(ModelContext[Path]):
         - Option Selector
 
     Responsibilities:
-        1.  Supply the criteria a PathModelSearcher uses to find a hit.
+        1.  Supply PathSearcher with targeting criteria.
 
     Attributes:
-        id: Optional[int]
-        arena: Optional[Arena]
-        player: Optional[Player]
-        winner: Optional[PathWinner]
+        label: Optional[int]
+        origin: Optional[Square]
+        destination: Optional[Square]
 
     Provides:
-        -  to_dict() -> Dict[str, Any]
+        -  def to_dict() -> Dict[str, Any]
 
     Super Class:
         ModelContext
     """
-    _id: Optional[int]
-    _arena: Optional[Arena]
-    _player: Optional[Player]
-    _winner: Optional[PathWinner]
+    
+    _label: Optional[int]
+    _origin: Optional[Square]
+    _destination: Optional[Square]
     
     def __init__(
             self,
-            id: Optional[int] | None = None,
-            arena: Optional[Arena] | None = None,
-            player: Optional[Player] | None = None,
-            winner: Optional[PathWinner] | None = None,
+            label: Optional[int] | None = None,
+            origin: Optional[Square] | None = None,
+            destination: Optional[Square] | None = None,
     ):
         """
         Args:
-            id: Optional[int]
-            arena: Optional[Arena]
-            player: Optional[Player]
-            winner: Optional[PathWinner]
+            label: Optional[int]
+            origin: Optional[Square]
+            destination: Optional[Square]n
         """
-        super().__init__(id=id)
-        self._arena = arena
-        self._player = player
-        self._winner = winner
-        
-    @property
-    def arena(self) -> Optional[Arena]:
-        return self._arena
+        super().__init__()
+        self._label = label
+        self._origin = origin
+        self._destination = destination
     
     @property
-    def player(self) -> Optional[Player]:
-        return self._player
+    def label(self) -> Optional[int]:
+        return self._label
     
     @property
-    def winner(self) -> Optional[PathWinner]:
-        return self._winner
-        
+    def origin(self) -> Optional[Square]:
+        return self._origin
+    
+    @property
+    def destination(self) -> Optional[Square]:
+        return self._destination
     
     @property
     def to_dict(self) -> Dict[str, Any]:
         return {
-            "id": self.id,
-            "arena": self._arena,
-            "player": self._player,
-            "winner": self._winner,
+            "label": self._label,
+            "origin": self._origin,
+            "destination": self._destination,
         }

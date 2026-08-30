@@ -38,6 +38,7 @@ class ManeuverBlueprint(SearchableModelBlueprint[Maneuver]):
      Super Class:
         SearchableModelBlueprint
      """
+    
     _path: Path
     _benefit: int
     _traveller: Token

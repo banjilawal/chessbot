@@ -45,9 +45,9 @@ class Team(StateModel):
     _id: int
     _board: Board
     _owner: Player
+    _state: TeamState
     _archetype: Archetype
     _roster: TokenDatabase
-    _state: TeamState
     _check_event_log: CheckChain
 
     def __init__(

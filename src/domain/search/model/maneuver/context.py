@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain import Arena, Maneuver, Player, ManeuverWinner, ModelContext
+from domain import Attack, Maneuver, ModelContext, Path, Token
 
 
 class ManeuverContext(ModelContext[Maneuver]):
@@ -20,13 +20,13 @@ class ManeuverContext(ModelContext[Maneuver]):
         - Option Selector
 
     Responsibilities:
-        1.  Supply the criteria a ManeuverModelSearcher uses to find a hit.
+        1.  Supply ManeuverSearcher with targeting criteria.
 
     Attributes:
-        id: Optional[int]
-        arena: Optional[Arena]
-        player: Optional[Player]
-        winner: Optional[ManeuverWinner]
+        path: Optional[Path]
+        attack: Optional[Attack]
+        traveller: Optional[Token]
+        benefit: Optional[PathBenefit]
 
     Provides:
         -  to_dict() -> Dict[str, Any]
@@ -34,48 +34,53 @@ class ManeuverContext(ModelContext[Maneuver]):
     Super Class:
         ModelContext
     """
-    _id: Optional[int]
-    _arena: Optional[Arena]
-    _player: Optional[Player]
-    _winner: Optional[ManeuverWinner]
+    
+    _path: Optional[Path]
+    _benefit: Optional[int]
+    _attack: Optional[Attack]
+    _traveller: Optional[Token]
     
     def __init__(
             self,
-            id: Optional[int] | None = None,
-            arena: Optional[Arena] | None = None,
-            player: Optional[Player] | None = None,
-            winner: Optional[ManeuverWinner] | None = None,
+            path: Optional[Path] | None = None,
+            benefit: Optional[int] | None = None,
+            attack: Optional[Attack] | None = None,
+            traveller: Optional[Token] | None = None,
     ):
         """
         Args:
-            id: Optional[int]
-            arena: Optional[Arena]
-            player: Optional[Player]
-            winner: Optional[ManeuverWinner]
+            path: Optional[Path]
+            attack: Optional[Attack]
+            traveller: Optional[Token]
+            benefit: Optional[PathBenefit]
         """
-        super().__init__(id=id)
-        self._arena = arena
-        self._player = player
-        self._winner = winner
-        
-    @property
-    def arena(self) -> Optional[Arena]:
-        return self._arena
+        super().__init__()
+        self._path = path
+        self._attack = attack
+        self._benefit = benefit
+        self._traveller = traveller
     
     @property
-    def player(self) -> Optional[Player]:
-        return self._player
+    def path(self) -> Optional[Path]:
+        return self._path
     
     @property
-    def winner(self) -> Optional[ManeuverWinner]:
-        return self._winner
-        
+    def benefit(self) -> Optional[int]:
+        return self._benefit
+    
+    @property
+    def attack(self) -> Optional[Attack]:
+        return self._attack
+    
+    @property
+    def traveller(self) -> Optional[Token]:
+        return self._traveller
     
     @property
     def to_dict(self) -> Dict[str, Any]:
         return {
-            "id": self.id,
-            "arena": self._arena,
-            "player": self._player,
-            "winner": self._winner,
+            "path": self._path,
+            "attack": self._attack,
+            "benefit": self._benefit,
+            "traveller": self._traveller,
         }

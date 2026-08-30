@@ -21,7 +21,7 @@ class BoardContext(ModelContext[Board]):
         - Option Selector
 
     Responsibilities:
-        1.  Supply BoardSearcher with argeting criteria.
+        1.  Supply BoardSearcher with targeting criteria.
 
     Attributes:
         id: Optional[int]
