@@ -1,7 +1,7 @@
-# src/domain/search/model/game/context.py
+# src/domain/search/model/arena/context.py
 
 """
-Module: domain.search.model.game
+Module: domain.search.model.arena.context
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -21,7 +21,7 @@ class ArenaContext(ModelContext[Arena]):
         - Option Selector
 
     Responsibilities:
-        1.  Supply ArenaSearcher a target criteria.
+        1.  Supply ArenaSearcher with targeting criteria.
 
     Attributes:
         id: Optional[int]

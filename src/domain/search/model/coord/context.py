@@ -1,7 +1,7 @@
 # src/domain/search/model/coord/context.py
 
 """
-Module: domain.search.model.coord
+Module: domain.search.model.coord.context
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -20,7 +20,7 @@ class CoordContext(ModelContext[Coord]):
         - Option Selector
 
     Responsibilities:
-        1.  Supply the criteria a CoordModelSearcher uses to find a hit.
+        1.  Supply CoordSearcher with targeting criteria.
 
     Attributes:
         row: Optional[int]

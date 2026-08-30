@@ -102,8 +102,8 @@ class TokenSearchRouter(SearchRouter[Token]):
             if context.domain_class is not None:
                 return cls._find_by_player(dataset, context.domain_class)
             # Entry point into searching by team's color.
-            if context.color is not None:
-                return cls._find_by_color(dataset=dataset, team=context.color)
+            if context.team_color is not None:
+                return cls._find_by_color(dataset=dataset, team=context.team_color)
             
             # The default path is only reached when a context.key does not have a search route. Return
             # the exception chain.
@@ -209,7 +209,7 @@ class TokenSearchRouter(SearchRouter[Token]):
                 *   TeamSearchException
             """
             method = "TeamFinder._find_by_color"
-            matches = [team for team in dataset if team.schema.color == color]
+            matches = [team for team in dataset if team.schema.team_color == color]
             # Handle the nothing found case.
             if len(matches) == 0:
                 return SearchResult.empty()

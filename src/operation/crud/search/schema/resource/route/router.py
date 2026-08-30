@@ -88,7 +88,7 @@ class SchemaSearchRouter(SearchRouter[Schema]):
                 name=query.context.name,
             )
         # schema.color search entry point
-        if query.context.color is not None:
+        if query.context.team_color is not None:
             return cls._find_by_name(
                 catalog=query.catalog,
                 color=query.context.name,
@@ -152,7 +152,7 @@ class SchemaSearchRouter(SearchRouter[Schema]):
             SearchResult[List[Schema]]
         Raises
         """
-        matches = [entry for entry in catalog if entry.color == color]
+        matches = [entry for entry in catalog if entry.team_color == color]
         # Handle the nothing found case.
         if len(matches) == 0:
             return SearchResult.empty()

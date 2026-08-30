@@ -1,7 +1,7 @@
 # src/domain/search/model/maneuver/context.py
 
 """
-Module: domain.search.model.maneuver
+Module: domain.search.model.maneuver.context
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

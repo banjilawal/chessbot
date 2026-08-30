@@ -91,7 +91,7 @@ class RosterUtil:
             )
         # --- Get the formations for the team by its color. ---#
         formation_lookup_result = self._formation_service.lookup_formation(
-            super_key=FormationKey(color=team.schema.color)
+            super_key=FormationKey(color=team.schema.team_color)
         )
         
         # Handle the case that, the formation lookup was not completed.

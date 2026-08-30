@@ -28,12 +28,11 @@ class GameState(Enum):
     None
     """
     NEW = auto(),
-    STARTED = auto(),
     FINISHED = auto(),
     SAVED = auto(),
     ABORTED = auto(),
     TIED = auto(),
-    WON = auto(),
+    WINNER_EXISTS = auto(),
     FAILURE = auto(),
     ROLLED_BACK = auto(),
     

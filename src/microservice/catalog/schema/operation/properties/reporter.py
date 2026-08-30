@@ -37,7 +37,7 @@ class SchemaPropertyValuesReporter:
     
     @property
     def colors(self) -> List[GameColor]:
-        return [entry.color for entry in Schema]
+        return [entry.team_color for entry in Schema]
     
     @property
     def names(self) -> List[str]:

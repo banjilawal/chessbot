@@ -275,9 +275,9 @@ class SchemaContextValidator(Validator[SchemaContext]):
             return ValidationResult.success(context)
         
         # Certification for the search-by-color target.
-        if context.color is not None:
+        if context.team_color is not None:
             validation_result = workers.color_validator.execute(
-                candidate=context.color
+                candidate=context.team_color
             )
             if validation_result.is_failure:
                 # Send the exception chain on failure.

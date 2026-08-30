@@ -7,9 +7,9 @@ Created: 2025-02-08
 version: 1.0.0
 """
 
-from typing import List
+from typing import List, Optional
 
-from domain import Arena, Player, StateModel
+from domain import Arena, GameState, MateEnemyKing, Player, StateModel
 
 
 class Game(StateModel):
@@ -38,11 +38,20 @@ class Game(StateModel):
     _arena: Arena
     _white_player: Player
     _black_player: Player
+    _state: GameState
     
-    def __init__(self, id: int, white_player: Player, black_player: Player, arena: Arena):
+    
+    def __init__(
+            self,
+            id: int,
+            white_player: Player,
+            black_player: Player,
+            arena: Arena
+    ):
         super().__init__()
         self._id = id
         self._arena = arena
+        self._state = GameState.NEW
         self._white_player = white_player
         self._black_player = black_player
 
@@ -66,3 +75,15 @@ class Game(StateModel):
     @property
     def players(self) -> List[Player]:
         return [self._white_player, self._black_player]
+    
+    @property
+    def state(self) -> GameState:
+        return self._state
+    
+    @state.setter
+    def state(self, other: GameState):
+        self._state = other
+    
+    @property
+    def check_mate(self) -> Optional[MateEnemyKing]:
+        return None

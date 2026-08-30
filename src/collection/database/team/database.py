@@ -206,7 +206,7 @@ class TeamDatabase(Database[Team]):
         """Convenience method which turns a common search into a dynamic property"""
         method = "TeamDatabase.white_teams"
         # Use color from the schema incase team color is changed from GameColor.BLACK
-        result = self.data_service.search_service(context=TeamContext(color=Schema.WHITE.color))
+        result = self.data_service.search_service(context=TeamContext(color=Schema.WHITE.team_color))
         if result.is_failure:
             # Handle the failure case by wrapping the debugging exception then sending in the SearchResult.
             return SearchResult.failure(
@@ -224,7 +224,7 @@ class TeamDatabase(Database[Team]):
         """Convenience method which turns a common search into a dynamic property"""
         method = "TeamDatabase.black_teams"
         # Use color from the schema incase team color is changed from GameColor.BLACK
-        result = self.data_service.search_service(context=TeamContext(color=Schema.BLACK.color))
+        result = self.data_service.search_service(context=TeamContext(color=Schema.BLACK.team_color))
         if result.is_failure:
             # Handle the failure case by wrapping the debugging exception then sending in the SearchResult.
             return SearchResult.failure(

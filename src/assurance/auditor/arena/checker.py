@@ -112,7 +112,7 @@ class ArenaConsistencyChecker(ConsistencyChecker[Arena]):
                     ArenaTeamDuplicationException(f"{method}: {ArenaTeamDuplicationException.MSG}")
                 )
             
-            if arena.black_team.schema.color == arena.white_team.schema.color:
+            if arena.black_team.schema.team_color == arena.white_team.schema.team_color:
                 return ValidationResult.failure(
                     ArenaTeamColorCollisionException(f"{method}: {ArenaTeamColorCollisionException.MSG}")
                 )

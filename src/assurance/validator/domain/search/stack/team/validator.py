@@ -185,9 +185,9 @@ class TeamContextValidator(ContextValidator[TeamSearchContext]):
                 return ValidationResult.success(context)
         
         # Certification for the search-by-color target.
-        if context.color is not None:
+        if context.team_color is not None:
             validation_result = self.bundle.priming_validator.execute(
-                candidate=context.color,
+                candidate=context.team_color,
                 model_type=GameColor,
                 null_exception=GameColorNullException,
             )

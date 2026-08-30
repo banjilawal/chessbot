@@ -65,7 +65,7 @@ class FormationService(HashService[Formation]):
     @classmethod
     def formation_colors(cls) -> List[GameColor]:
         """Color of the piece assigned the formation."""
-        return [entry.color for entry in Formation]
+        return [entry.team_color for entry in Formation]
     
     @classmethod
     def formation_designations(cls) -> List[str]:

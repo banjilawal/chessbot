@@ -101,8 +101,8 @@ class TokenSearchRouter(SearchRouter[Token]):
             if context.domain_class is not None:
                 return cls._find_by_player(dataset, context.domain_class)
             # Entry point into searching by square's color.
-            if context.color is not None:
-                return cls._find_by_color(dataset=dataset, square=context.color)
+            if context.team_color is not None:
+                return cls._find_by_color(dataset=dataset, square=context.team_color)
             
             # The default path is only reached when a context.key does not have a search route. Return
             # the exception chain.
@@ -208,7 +208,7 @@ class TokenSearchRouter(SearchRouter[Token]):
                 *   SquareSearchException
             """
             method = "SquareFinder._find_by_color"
-            matches = [square for square in dataset if square.schema.color == color]
+            matches = [square for square in dataset if square.schema.team_color == color]
             # Handle the nothing found case.
             if len(matches) == 0:
                 return SearchResult.empty()

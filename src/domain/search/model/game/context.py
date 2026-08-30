@@ -11,7 +11,8 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain import Arena, Game, Player, GameWinner, ModelContext
+from domain import Arena, Game, GameState, Player, ModelContext
+from game.state import GameState
 
 
 class GameContext(ModelContext[Game]):
@@ -26,7 +27,7 @@ class GameContext(ModelContext[Game]):
         id: Optional[int]
         arena: Optional[Arena]
         player: Optional[Player]
-        winner: Optional[GameWinner]
+        state: Optional[GameState]
 
     Provides:
         -  to_dict() -> Dict[str, Any]
@@ -37,26 +38,27 @@ class GameContext(ModelContext[Game]):
     _id: Optional[int]
     _arena: Optional[Arena]
     _player: Optional[Player]
-    _winner: Optional[GameWinner]
+    _state: Optional[GameState]
+    _state: Optional[GameState]
     
     def __init__(
             self,
             id: Optional[int] | None = None,
             arena: Optional[Arena] | None = None,
             player: Optional[Player] | None = None,
-            winner: Optional[GameWinner] | None = None,
+            state: Optional[GameState] | None = None,
     ):
         """
         Args:
             id: Optional[int]
             arena: Optional[Arena]
             player: Optional[Player]
-            winner: Optional[GameWinner]
+            state: Optional[GameState]
         """
         super().__init__(id=id)
         self._arena = arena
         self._player = player
-        self._winner = winner
+        self._state = state
         
     @property
     def arena(self) -> Optional[Arena]:
@@ -67,8 +69,8 @@ class GameContext(ModelContext[Game]):
         return self._player
     
     @property
-    def winner(self) -> Optional[GameWinner]:
-        return self._winner
+    def state(self) -> Optional[GameState]:
+        return self._state
         
     
     @property
@@ -77,5 +79,5 @@ class GameContext(ModelContext[Game]):
             "id": self.id,
             "arena": self._arena,
             "player": self._player,
-            "winner": self._winner,
+            "state": self._state,
         }

@@ -84,8 +84,8 @@ class FormationLookupProcess(HashLookupProcess[Formation]):
         if super_key.home_square_name is not None:
             return cls._by_square_name(square=super_key.home_square_name)
         # Entry point into forward lookups by color.
-        if super_key.color is not None:
-            return cls._by_color(color=super_key.color)
+        if super_key.team_color is not None:
+            return cls._by_color(color=super_key.team_color)
         # Entry point into forward lookups by persona.
         if super_key.persona is not None:
             return cls._by_persona(persona=super_key.persona)
@@ -178,7 +178,7 @@ class FormationLookupProcess(HashLookupProcess[Formation]):
             *   FormationLookupFailedException
         """
         method = "FormationLookupProcess._by_color"
-        matches = [entry for entry in Formation if entry.color == color]
+        matches = [entry for entry in Formation if entry.team_color == color]
         
         # Finding at least one match is success.
         if len(matches) >= 1:

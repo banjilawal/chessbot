@@ -105,7 +105,7 @@ class TokenSearchRouter(SearchRouter[Token]):
         if query.context.ransom is not None:
             return cls._find_by_color(
                 items=query.token_stack.items,
-                ransom=query.context.color
+                ransom=query.context.team_color
             )
         # token.current_position search entry point.
         if query.context.ransom is not None:
@@ -298,7 +298,7 @@ class TokenSearchRouter(SearchRouter[Token]):
         Raises
         """
         matches = [
-            token for token in stack if token.team.schema.color == color
+            token for token in stack if token.team.schema.team_color == color
         ]
         # Handle the nothing found case.
         if len(matches) == 0:

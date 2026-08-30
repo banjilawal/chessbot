@@ -29,7 +29,7 @@ class ArenaContextBlueprint(ModelContextBlueprint[ArenaContext]):
         game: Optional[Game]
         board: Optional[Board]
         player: Optional[Player]
-        color: Optional[GameColor]
+        player_color: Optional[GameColor]
         
         domain_class: Type[ArenaContext]
         domain_null_exception: ArenaContextNullException
@@ -43,7 +43,7 @@ class ArenaContextBlueprint(ModelContextBlueprint[ArenaContext]):
     _game: Optional[Game]
     _board: Optional[Board]
     _player: Optional[Player]
-    _color: Optional[GameColor]
+    _player_color: Optional[GameColor]
     
     def __init__(
             self,
@@ -51,7 +51,7 @@ class ArenaContextBlueprint(ModelContextBlueprint[ArenaContext]):
             game: Optional[Game] | None = None,
             board: Optional[Board] | None = None,
             player: Optional[Player] | None = None,
-            color: Optional[GameColor] | None = None,
+            player_color: Optional[GameColor] | None = None,
             domain_class: Optional[Type[ArenaContext]] | None = None,
             domain_null_exception: Optional[ArenaContextNullException] | None = None,
     ):
@@ -60,8 +60,7 @@ class ArenaContextBlueprint(ModelContextBlueprint[ArenaContext]):
             game: Optional[Game]
             board: Optional[Board]
             player: Optional[Player]
-            color: Optional[GameColor]
-            
+            player_color: Optional[GameColor]
             domain_class: Type[ArenaContext]
             domain_null_exception: ArenaContextNullException
         """
@@ -72,8 +71,9 @@ class ArenaContextBlueprint(ModelContextBlueprint[ArenaContext]):
         )
         self._game = game
         self._board = board
-        self._color = color
         self._player = player
+        self._player_color = player_color
+
     
     @property
     def domain_class(self) -> Type[ArenaContext]:
@@ -96,8 +96,8 @@ class ArenaContextBlueprint(ModelContextBlueprint[ArenaContext]):
         return self._board
     
     @property
-    def color(self) -> Optional[GameColor]:
-        return self._color
+    def player_color(self) -> Optional[GameColor]:
+        return self._player_color
     
     @property
     def to_dict(self) -> Dict[str, Any]:
@@ -106,7 +106,7 @@ class ArenaContextBlueprint(ModelContextBlueprint[ArenaContext]):
             "game": self._game,
             "board": self._board,
             "player": self._player,
-            "color": self._color,
+            "player_color": self._player_color,
         }
     
     
