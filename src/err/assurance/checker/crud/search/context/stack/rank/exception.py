@@ -20,11 +20,11 @@ __all__ = [
     "RankContextCheckerException",
 ]
 
-from err import SearchContextCheckerException
+from err import ContextCheckerException
 
 
 # ======================# RANK_CONTEXT_CHECKER_FAILURE #======================#
-class RankContextCheckerException(SearchContextCheckerException):
+class RankContextCheckerException(ContextCheckerException):
     """
     Role:
         - Error Tracing
@@ -45,7 +45,7 @@ class RankContextCheckerException(SearchContextCheckerException):
     Provides:
 
     Super Class:
-        SearchContextCheckerException
+        ContextCheckerException
     """
     MSG = "RankContextChecker failure."
     ERR_CODE = "RANK_CONTEXT_CHECKER_FAILURE"

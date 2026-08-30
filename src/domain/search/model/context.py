@@ -34,7 +34,7 @@ class ModelContext(Context[T], ABC, Generic[T]):
         - def to_dict() -> Dict[str, Any]
 
     Super Class:
-        SearchContext
+        Context
     """
     pass
     

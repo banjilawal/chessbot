@@ -92,7 +92,7 @@ class ItineraryAnalyzer:
         if itinerary.destination.no_recurrences_exist:
             return AnalysisResult.completed(
                 ManeuverApproval(
-                    recipient=itinerary.token,
+                    recipient=itinerary.traveller,
                     origin=itinerary.source,
                     destination=itinerary.destination,
                 )
@@ -122,11 +122,11 @@ class ItineraryAnalyzer:
         
         destination_occupant = itinerary.destination.occupant
         # --- If the occupant is a friend send a BlockingReport. ---#
-        if itinerary.token.is_friend(destination_occupant):
+        if itinerary.traveller.is_friend(destination_occupant):
             return AnalysisResult.completed(
                 BlockingReport(
                     id=itinerary.id,
-                    recipient=itinerary.token,
+                    recipient=itinerary.traveller,
                     origin=itinerary.source,
                     blocked_destination=itinerary.destination,
                     friendly=destination_occupant,
@@ -160,7 +160,7 @@ class ItineraryAnalyzer:
             return AnalysisResult.completed(
                 AttackApproval(
                     id=itinerary.id,
-                    recipient=itinerary.token,
+                    recipient=itinerary.traveller,
                     origin=itinerary.source,
                     target_square=itinerary.destination,
                     enemy_combatant=cast(CombatantToken, enemy),
@@ -170,7 +170,7 @@ class ItineraryAnalyzer:
         return AnalysisResult.completed(
             KingAttackApproval(
                 id=itinerary.id,
-                recipient=itinerary.token,
+                recipient=itinerary.traveller,
                 origin=itinerary.source,
                 target_square=itinerary.destination,
                 enemy_king=cast(KingToken, enemy),

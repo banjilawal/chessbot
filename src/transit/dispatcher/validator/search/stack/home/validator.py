@@ -15,10 +15,10 @@ from domain.search.context import TokenHomeContext
 from artifcat import ValidationResult
 from operation.toolkit import TokenHomeContextToolkit
 from util import LoggingLevelRouter
-from transit.dispatcher.validator import StackSearchContextValidator
+from transit.dispatcher.validator import StackContextValidator
 
 
-class TokenHomeContextValidator(StackSearchContextValidator[TokenHomeContext]):
+class TokenHomeContextValidator(StackContextValidator[TokenHomeContext]):
     """
     Role
         -  Integrity, Consistency Maintenance
@@ -88,7 +88,7 @@ class TokenHomeContextValidator(StackSearchContextValidator[TokenHomeContext]):
                 )
             )
         # --- Cast the candidate into HomeContext for routing attribute testing ---#
-        context = cast(TokenHomeSearchContext, priming.payload)
+        context = cast(TokenHomeContext, priming.payload)
         
         # Certification for the search-by-id target.
         if context.id is not None:

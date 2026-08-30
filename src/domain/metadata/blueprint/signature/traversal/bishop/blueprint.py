@@ -43,7 +43,7 @@ class BishopSignatureBlueprint(TraversalSignatureBlueprint[BishopSignature]):
     
     @property
     def domain_null_exception(self) -> BishopSignatureNullException:
-        return cast(BishopSignatureNullException, super()._domain_null_exception)
+        return cast(BishopSignatureNullException, super().domain_null_exception)
     
     @property
     def recurrence_sets(self) -> BishopRecurrenceRegistries:

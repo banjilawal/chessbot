@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import SearchContextValidator, SearchContextValidator
+from assurance import ContextValidator, ContextValidator
 from domain import ModelContext
 from util import LoggingLevelRouter
 
@@ -21,42 +21,42 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="ModelContext")
 
 
-class StackSearchContextValidator(SearchContextValidator[T], ABC, Generic[T]):
+class StackContextValidator(ContextValidator[T], ABC, Generic[T]):
     """
     Role
         -  Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a StackSearchContext instance is safe before use.
+        1.  Ensure a StackContext instance is safe before use.
 
     Attributes:
-        integrity_checker: SearchContextChecker[T]
+        integrity_checker: ContextChecker[T]
         
     Provides:
         -  execute(self, candidate: Any) -> ValidationResult[T]
 
     Super Class:
-        SearchContextValidator
+        ContextValidator
     """
     
-    def __init__(self, integrity_checker: SearchContextValidator[T]):
+    def __init__(self, integrity_checker: ContextValidator[T]):
         """
         Args:
-            integrity_checker: SearchContextChecker
+            integrity_checker: ContextChecker
         """
         super().__init__(integrity_checker=integrity_checker)
     
     
     @property
-    def integrity_checker(self) -> SearchContextValidator[T]:
-        return cast(SearchContextValidator[T], super().integrity_checker)
+    def integrity_checker(self) -> ContextValidator[T]:
+        return cast(ContextValidator[T], super().integrity_checker)
     
     
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[T]:
         """
-        Verify a candidate is a safe StackSearchContext.
+        Verify a candidate is a safe StackContext.
         Args:
             candidate: Any
         Returns:

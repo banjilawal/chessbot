@@ -28,7 +28,7 @@ class ZeroVectorContextFlagsException(ZeroContextFlagsException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating no VectorSearchContext flags were enabled.
+        1.  Indicating no VectorContext flags were enabled.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class ZeroVectorContextFlagsException(ZeroContextFlagsException):
     Super Class:
         SearchZeroContextFlagsException
     """
-    MSG = "No VectorSearchContext flag enabled."
+    MSG = "No VectorContext flag enabled."
     ERR_CODE = "NO_VECTOR_CONTEXT_FLAG_ENABLED"
     
     def __init__(

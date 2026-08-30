@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import CartesianBlueprint, Vector, VectorSearchContext
+from domain import CartesianBlueprint, Vector, VectorContext
 from err import VectorNullException
 
 
@@ -28,7 +28,7 @@ class VectorBlueprint(CartesianBlueprint[Vector]):
 
     Attributes:
         domain_class: Type[Vector]
-        search_context_class: Type[VectorSearchContext]
+        search_context_class: Type[VectorContext]
         domain_null_exception: VectorModelNullException
         x: int
         y: int
@@ -47,7 +47,7 @@ class VectorBlueprint(CartesianBlueprint[Vector]):
             y: int,
             domain_class: Optional[Type[Vector]] | None = None,
             domain_null_exception: Optional[VectorNullException] | None = None,
-            search_context_class: Optional[Type[VectorSearchContext]] | None = None,
+            search_context_class: Optional[Type[VectorContext]] | None = None,
     ):
         """
         Args:
@@ -55,11 +55,11 @@ class VectorBlueprint(CartesianBlueprint[Vector]):
             y: int
             domain_class: Optional[Type[Vector]]
             domain_null_exception: Optional[VectorModelNullException]
-            search_context_class: Optional[Type[VectorSearchContext]]
+            search_context_class: Optional[Type[VectorContext]]
         """
         super().__init__(
             domain_class=domain_class or Type[Vector],
-            search_context_class=search_context_class or Type[VectorSearchContext],
+            search_context_class=search_context_class or Type[VectorContext],
             domain_null_exception=domain_null_exception or VectorNullException(),
         )
         self._x = x
@@ -70,8 +70,8 @@ class VectorBlueprint(CartesianBlueprint[Vector]):
         return cast(type[Vector], super()._domain_class)
     
     @property
-    def search_context_class(self) -> Type[VectorSearchContext]:
-        return cast(Type[VectorSearchContext], super().search_context_class)
+    def search_context_class(self) -> Type[VectorContext]:
+        return cast(Type[VectorContext], super().search_context_class)
     
     @property
     def domain_null_exception(self) -> VectorNullException:

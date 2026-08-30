@@ -31,7 +31,7 @@ class SearchRequest(CrudRequest[SearchResult], ABC, Generic[T]):
 
      Attributes:
          id: int
-         context: SearchContext[T]
+         context: Context[T]
          collection: DomainObjectCollection[T]
 
      Provides:
@@ -45,7 +45,7 @@ class SearchRequest(CrudRequest[SearchResult], ABC, Generic[T]):
         """
         Args:
             id: int
-            context: SearchContext[T]
+            context: Context[T]
             collection: DomainObjectCollection[T]
         """
         super().__init__(id=id, collection=collection)

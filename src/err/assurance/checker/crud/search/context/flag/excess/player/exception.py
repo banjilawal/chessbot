@@ -28,7 +28,7 @@ class ExcessPlayerContextFlagsException(ExcessContextFlagsException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating too many PlayerSearchContext flags were enabled.
+        1.  Indicating too many PlayerContext flags were enabled.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class ExcessPlayerContextFlagsException(ExcessContextFlagsException):
     Super Class:
         SearchExcessContextFlagsException
     """
-    MSG = "Excessive PlayerSearchContext flags enabled."
+    MSG = "Excessive PlayerContext flags enabled."
     ERR_CODE = "EXCESSIVE_PLAYER_CONTEXT_FLAGS_ENABLED"
     
     def __init__(

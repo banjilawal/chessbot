@@ -12,20 +12,20 @@ from __future__ import annotations
 from typing import Any, Dict, Optional, Type, cast
 
 from config import GameColor
-from domain import TeamSearchContext, Board, Game, ContextBlueprint, Player
+from domain import TeamContext, Board, Game, ContextBlueprint, Player
 from err import TeamContextNullException
 
 
-class TeamContextBlueprint(ModelContextBlueprint[TeamSearchContext]):
+class TeamContextBlueprint(ModelContextBlueprint[TeamContext]):
     """
      Role:
         1.  Metadata
 
      Responsibilities:
-         1.  Provide attributes for hydrating an TeamSearchContext.
+         1.  Provide attributes for hydrating an TeamContext.
          
      Attributes:
-        domain_class: Type[TeamSearchContext]
+        domain_class: Type[TeamContext]
         domain_null_exception: TeamContextNullException
         id: Optional[int]
         game: Optional[Game]
@@ -46,7 +46,7 @@ class TeamContextBlueprint(ModelContextBlueprint[TeamSearchContext]):
     
     def __init__(
             self,
-            domain_class: Optional[Type[TeamSearchContext]] | None = None,
+            domain_class: Optional[Type[TeamContext]] | None = None,
             domain_null_exception: Optional[TeamContextNullException] | None = None,
             id: Optional[int] | None = None,
             game: Optional[Game] | None = None,
@@ -56,7 +56,7 @@ class TeamContextBlueprint(ModelContextBlueprint[TeamSearchContext]):
     ):
         """
         Args:
-            domain_class: Type[TeamSearchContext]
+            domain_class: Type[TeamContext]
             domain_null_exception: TeamContextNullException
             game: Optional[Game]
             board: Optional[Board]
@@ -65,7 +65,7 @@ class TeamContextBlueprint(ModelContextBlueprint[TeamSearchContext]):
         """
         super().__init__(
             id=id,
-            domain_class=domain_class or Type[TeamSearchContext],
+            domain_class=domain_class or Type[TeamContext],
             domain_null_exception=domain_null_exception or TeamContextNullException(),
         )
         self._game = game
@@ -74,12 +74,12 @@ class TeamContextBlueprint(ModelContextBlueprint[TeamSearchContext]):
         self._player = player
     
     @property
-    def domain_class(self) -> Type[TeamSearchContext]:
-        return cast(Type[TeamSearchContext], super().domain_class)
+    def domain_class(self) -> Type[TeamContext]:
+        return cast(Type[TeamContext], super().domain_class)
     
     @property
     def domain_null_exception(self) -> TeamContextNullException:
-        return  cast(TeamContextNullException, super()._domain_null_exception)
+        return  cast(TeamContextNullException, super().domain_null_exception)
     
     @property
     def game(self) -> Optional[Game]:

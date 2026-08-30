@@ -14,4 +14,4 @@ from .chain import *
 from .stack import *
 
 # Module
-from .validator import SearchContextValidator
+from .validator import ContextValidator

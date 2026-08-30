@@ -28,7 +28,7 @@ class ExcessVectorContextFlagsException(ExcessContextFlagsException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating too many VectorSearchContext flags were enabled.
+        1.  Indicating too many VectorContext flags were enabled.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class ExcessVectorContextFlagsException(ExcessContextFlagsException):
     Super Class:
         SearchExcessContextFlagsException
     """
-    MSG = "Excessive VectorSearchContext flags enabled."
+    MSG = "Excessive VectorContext flags enabled."
     ERR_CODE = "EXCESSIVE_VECTOR_CONTEXT_FLAGS_ENABLED"
     
     def __init__(

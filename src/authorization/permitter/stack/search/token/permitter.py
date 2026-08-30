@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from domain.search.context import TokenSearchContext
+from domain.search.context import TokenContext
 from err import TokenSearchPermitterException
 from domain.model import Token
 from authorization.permitter.stack import SearchPermitter
@@ -92,7 +92,7 @@ class TokenSearchPermitter(SearchPermitter[Token]):
                 )
             )
 
-        context = cast(TokenSearchContext, request.context)
+        context = cast(TokenContext, request.context)
         stack = cast(TokenStackService, request.stack)
 
         # Forward the permission approval.

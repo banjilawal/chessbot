@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from collection import GameStackService
-from domain import StackSearchRequest, Game, GameSearchSearchContext
+from domain import StackSearchRequest, Game, GameSearchContext
 
 
 class GameSearchRequest(StackSearchRequest[Game]):
@@ -26,7 +26,7 @@ class GameSearchRequest(StackSearchRequest[Game]):
 
      Attributes:
         id: int
-        context: GameSearchContext
+        context: GameContext
         stack: GameStackService
 
      Provides:
@@ -35,18 +35,18 @@ class GameSearchRequest(StackSearchRequest[Game]):
         StackSearchRequest[
      """
     
-    def __init__(self, id: int, context: GameSearchSearchContext, stack: GameStackService):
+    def __init__(self, id: int, context: GameSearchContext, stack: GameStackService):
         """
         Args:
             id: int
-            context: GameSearchContext
+            context: GameContext
             stack: GameStackService
         """
         super().__init__(id=id, context=context, stack=stack)
         
     @property
-    def context(self) -> GameSearchSearchContext:
-        return cast(GameSearchSearchContext, super().context)
+    def context(self) -> GameSearchContext:
+        return cast(GameSearchContext, super().context)
         
     @property
     def stack(self) -> GameStackService:

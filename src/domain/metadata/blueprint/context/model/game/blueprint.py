@@ -11,27 +11,25 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional, Type, cast
 
-from config import GameColor
-from domain import GameSearchContext, Board, Game, ContextBlueprint, Player
+from domain import Arena, GameContext, ModelContextBlueprint, Player
 from err import GameContextNullException
 
 
-class GameContextBlueprint(ModelContextBlueprint[GameSearchContext]):
+class GameContextBlueprint(ModelContextBlueprint[GameContext]):
     """
      Role:
         1.  Metadata
 
      Responsibilities:
-         1.  Provide attributes for hydrating an GameSearchContext.
+         1.  Provide attributes for hydrating a GameContext.
          
      Attributes:
-        domain_class: Type[GameSearchContext]
-        domain_null_exception: GameContextNullException
         id: Optional[int]
-        game: Optional[Game]
-        board: Optional[Board]
+        arena: Optional[Arena]
         player: Optional[Player]
-        color: Optional[GameColor]
+        
+        domain_class: Type[GameContext]
+        domain_null_exception: GameContextNullException
 
      Provides:
 
@@ -39,72 +37,54 @@ class GameContextBlueprint(ModelContextBlueprint[GameSearchContext]):
         ModelContextBlueprint
      """
 
-    _game: Optional[Game]
-    _board: Optional[Board]
+    _arena: Optional[Arena]
     _player: Optional[Player]
-    _color: Optional[GameColor]
     
     def __init__(
             self,
-            domain_class: Optional[Type[GameSearchContext]] | None = None,
-            domain_null_exception: Optional[GameContextNullException] | None = None,
             id: Optional[int] | None = None,
-            game: Optional[Game] | None = None,
-            board: Optional[Board] | None = None,
+            arena: Optional[Arena] | None = None,
             player: Optional[Player] | None = None,
-            color: Optional[GameColor] | None = None,
+            domain_class: Optional[Type[GameContext]] | None = None,
+            domain_null_exception: Optional[GameContextNullException] | None = None,
     ):
         """
         Args:
-            domain_class: Type[GameSearchContext]
-            domain_null_exception: GameContextNullException
-            game: Optional[Game]
-            board: Optional[Board]
+            arena: Optional[Arena]
             player: Optional[Player]
-            color: Optional[GameColor]
+            domain_class: Type[GameContext]
+            domain_null_exception: GameContextNullException
         """
         super().__init__(
             id=id,
-            domain_class=domain_class or Type[GameSearchContext],
+            domain_class=domain_class or Type[GameContext],
             domain_null_exception=domain_null_exception or GameContextNullException(),
         )
-        self._game = game
-        self._board = board
-        self._color = color
+        self._arena = arena
         self._player = player
     
     @property
-    def domain_class(self) -> Type[GameSearchContext]:
-        return cast(Type[GameSearchContext], super().domain_class)
+    def domain_class(self) -> Type[GameContext]:
+        return cast(Type[GameContext], super().domain_class)
     
     @property
     def domain_null_exception(self) -> GameContextNullException:
-        return  cast(GameContextNullException, super()._domain_null_exception)
-    
-    @property
-    def game(self) -> Optional[Game]:
-        return self._game
+        return  cast(GameContextNullException, super().domain_null_exception)
     
     @property
     def player(self) -> Optional[Player]:
         return self._player
     
     @property
-    def board(self) -> Optional[Board]:
-        return self._board
-    
-    @property
-    def color(self) -> Optional[GameColor]:
-        return self._color
+    def arena(self) -> Optional[Arena]:
+        return self._arena
     
     @property
     def to_dict(self) -> Dict[str, Any]:
         return {
             "id": self.id,
-            "game": self._game,
-            "board": self._board,
+            "arena": self._arena,
             "player": self._player,
-            "color": self._color,
         }
     
     

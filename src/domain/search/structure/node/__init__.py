@@ -14,4 +14,4 @@ from .dossier import *
 from .vector import *
 
 # Modules
-from .context import NodeSearchContext
+from .context import NodeContext

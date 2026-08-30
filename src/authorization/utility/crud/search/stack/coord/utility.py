@@ -12,13 +12,13 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Dict
 
-from assurance import StackSearchContextValidator, CoordContextValidator
+from assurance import StackContextValidator, CoordContextValidator
 from authorization import StackSearchPermissionUtility
-from domain import CoordSearchSearchContext
+from domain import CoordSearchContext
 
 
 @dataclass
-class CoordStackSearchPermissionUtility(StackSearchPermissionUtility[CoordSearchSearchContext]):
+class CoordStackSearchPermissionUtility(StackSearchPermissionUtility[CoordSearchContext]):
     """
     Role:
         - Utility
@@ -35,7 +35,7 @@ class CoordStackSearchPermissionUtility(StackSearchPermissionUtility[CoordSearch
     Super Class:
         StackSearchPermissionUtility
     """
-    validator: Dict[str, StackSearchContextValidator] = field(
+    validator: Dict[str, StackContextValidator] = field(
         default_factory=lambda: {
             "coord_context_validator": CoordContextValidator(),
         }

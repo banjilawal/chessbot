@@ -13,20 +13,20 @@ from logic.coord import Coord, CoordValidator
 from logic.rank import Queen, RankSpec
 from system import BuildResult, Builder, IdValidator, LoggingLevelRouter, NameValidator
 from logic.neighbor import (
-    VisitationSearchContext, ArenaVisitationSearchParamsException, ZeroVisitationSearchParamsException, VisitationInvalidRankNameParamException,
+    VisitationContext, ArenaVisitationSearchParamsException, ZeroVisitationSearchParamsException, VisitationInvalidRankNameParamException,
 )
 
-class VisitationSearchContextBuilder(Builder[VisitationSearchContext]):
+class VisitationContextBuilder(Builder[VisitationContext]):
     """iece
     Role:Builder, Data Integrity And Reliability Guarantor implementation
 
     Responsibilities:
-    1. Process and validate parameters for creating `VisitationSearchContext` instances.
-    2. Create new `VisitationSearchContext` objects if parameters meet specifications.
+    1. Process and validate parameters for creating `VisitationContext` instances.
+    2. Create new `VisitationContext` objects if parameters meet specifications.
     2. Report errors and return `BuildResult` with error details.
 
     # PROVIDES:
-    `BuildResult`: Return type containing the built `VisitationSearchContext` or error information.
+    `BuildResult`: Return type containing the built `VisitationContext` or error information.
 
     # ATTRIBUTES:
     None
@@ -43,7 +43,7 @@ class VisitationSearchContextBuilder(Builder[VisitationSearchContext]):
         team_name: Optional[str] = None,
         rank_name: Optional[Rank] = None,
         position: Optional[Coord] = None,
-    ) -> BuildResult[VisitationSearchContext]:
+    ) -> BuildResult[VisitationContext]:
         """
         ACTION:
         PARAMETERS:
@@ -51,7 +51,7 @@ class VisitationSearchContextBuilder(Builder[VisitationSearchContext]):
         RAISES:
         MethodNameException wraps
         """
-        method = "VisitationSearchContextBuilder.build"
+        method = "VisitationContextBuilder.build"
 
         try:
             params = [name, ransom, piece_id, team_id, team_name, rank_name, position]
@@ -103,7 +103,7 @@ class VisitationSearchContextBuilder(Builder[VisitationSearchContext]):
                     return BuildResult.failure(position_validation.exception)
 
             return BuildResult.success(
-                VisitationSearchContext(
+                VisitationContext(
                     name=name,
                     ransom=ransom,
                     piece_id=piece_id,

@@ -12,20 +12,20 @@ from __future__ import annotations
 from typing import Any, Dict, Optional, Type, cast
 
 from config import GameColor
-from domain import CheckSearchContext, Board, Game, ContextBlueprint, Player
+from domain import CheckContext, Board, Game, ContextBlueprint, Player
 from err import CheckContextNullException
 
 
-class CheckContextBlueprint(ModelContextBlueprint[CheckSearchContext]):
+class CheckContextBlueprint(ModelContextBlueprint[CheckContext]):
     """
      Role:
         1.  Metadata
 
      Responsibilities:
-         1.  Provide attributes for hydrating an CheckSearchContext.
+         1.  Provide attributes for hydrating an CheckContext.
          
      Attributes:
-        domain_class: Type[CheckSearchContext]
+        domain_class: Type[CheckContext]
         domain_null_exception: CheckContextNullException
         id: Optional[int]
         game: Optional[Game]
@@ -46,7 +46,7 @@ class CheckContextBlueprint(ModelContextBlueprint[CheckSearchContext]):
     
     def __init__(
             self,
-            domain_class: Optional[Type[CheckSearchContext]] | None = None,
+            domain_class: Optional[Type[CheckContext]] | None = None,
             domain_null_exception: Optional[CheckContextNullException] | None = None,
             id: Optional[int] | None = None,
             game: Optional[Game] | None = None,
@@ -56,7 +56,7 @@ class CheckContextBlueprint(ModelContextBlueprint[CheckSearchContext]):
     ):
         """
         Args:
-            domain_class: Type[CheckSearchContext]
+            domain_class: Type[CheckContext]
             domain_null_exception: CheckContextNullException
             game: Optional[Game]
             board: Optional[Board]
@@ -65,7 +65,7 @@ class CheckContextBlueprint(ModelContextBlueprint[CheckSearchContext]):
         """
         super().__init__(
             id=id,
-            domain_class=domain_class or Type[CheckSearchContext],
+            domain_class=domain_class or Type[CheckContext],
             domain_null_exception=domain_null_exception or CheckContextNullException(),
         )
         self._game = game
@@ -74,12 +74,12 @@ class CheckContextBlueprint(ModelContextBlueprint[CheckSearchContext]):
         self._player = player
     
     @property
-    def domain_class(self) -> Type[CheckSearchContext]:
-        return cast(Type[CheckSearchContext], super().domain_class)
+    def domain_class(self) -> Type[CheckContext]:
+        return cast(Type[CheckContext], super().domain_class)
     
     @property
     def domain_null_exception(self) -> CheckContextNullException:
-        return  cast(CheckContextNullException, super()._domain_null_exception)
+        return  cast(CheckContextNullException, super().domain_null_exception)
     
     @property
     def game(self) -> Optional[Game]:

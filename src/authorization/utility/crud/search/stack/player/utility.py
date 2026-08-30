@@ -12,13 +12,13 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Dict
 
-from assurance import StackSearchContextValidator, SquareContextValidator
+from assurance import StackContextValidator, SquareContextValidator
 from authorization import StackSearchPermissionUtility
-from domain import SquareSearchSearchContext
+from domain import SquareSearchContext
 
 
 @dataclass
-class SquareStackSearchPermissionUtility(StackSearchPermissionUtility[SquareSearchSearchContext]):
+class SquareStackSearchPermissionUtility(StackSearchPermissionUtility[SquareSearchContext]):
     """
     Role:
         - Utility
@@ -35,7 +35,7 @@ class SquareStackSearchPermissionUtility(StackSearchPermissionUtility[SquareSear
     Super Class:
         StackSearchPermissionUtility
     """
-    validator: Dict[str, StackSearchContextValidator] = field(
+    validator: Dict[str, StackContextValidator] = field(
         default_factory=lambda: {
             "square_context_validator": SquareContextValidator(),
         }

@@ -12,20 +12,20 @@ from __future__ import annotations
 from typing import Any, Dict, Optional, Type, cast
 
 from config import GameColor
-from domain import VectorSearchContext, Board, Game, ContextBlueprint, Player
+from domain import VectorContext, Board, Game, ContextBlueprint, Player
 from err import VectorContextNullException
 
 
-class VectorContextBlueprint(ModelContextBlueprint[VectorSearchContext]):
+class VectorContextBlueprint(ModelContextBlueprint[VectorContext]):
     """
      Role:
         1.  Metadata
 
      Responsibilities:
-         1.  Provide attributes for hydrating an VectorSearchContext.
+         1.  Provide attributes for hydrating an VectorContext.
          
      Attributes:
-        domain_class: Type[VectorSearchContext]
+        domain_class: Type[VectorContext]
         domain_null_exception: VectorContextNullException
         id: Optional[int]
         game: Optional[Game]
@@ -46,7 +46,7 @@ class VectorContextBlueprint(ModelContextBlueprint[VectorSearchContext]):
     
     def __init__(
             self,
-            domain_class: Optional[Type[VectorSearchContext]] | None = None,
+            domain_class: Optional[Type[VectorContext]] | None = None,
             domain_null_exception: Optional[VectorContextNullException] | None = None,
             id: Optional[int] | None = None,
             game: Optional[Game] | None = None,
@@ -56,7 +56,7 @@ class VectorContextBlueprint(ModelContextBlueprint[VectorSearchContext]):
     ):
         """
         Args:
-            domain_class: Type[VectorSearchContext]
+            domain_class: Type[VectorContext]
             domain_null_exception: VectorContextNullException
             game: Optional[Game]
             board: Optional[Board]
@@ -65,7 +65,7 @@ class VectorContextBlueprint(ModelContextBlueprint[VectorSearchContext]):
         """
         super().__init__(
             id=id,
-            domain_class=domain_class or Type[VectorSearchContext],
+            domain_class=domain_class or Type[VectorContext],
             domain_null_exception=domain_null_exception or VectorContextNullException(),
         )
         self._game = game
@@ -74,12 +74,12 @@ class VectorContextBlueprint(ModelContextBlueprint[VectorSearchContext]):
         self._player = player
     
     @property
-    def domain_class(self) -> Type[VectorSearchContext]:
-        return cast(Type[VectorSearchContext], super().domain_class)
+    def domain_class(self) -> Type[VectorContext]:
+        return cast(Type[VectorContext], super().domain_class)
     
     @property
     def domain_null_exception(self) -> VectorContextNullException:
-        return  cast(VectorContextNullException, super()._domain_null_exception)
+        return  cast(VectorContextNullException, super().domain_null_exception)
     
     @property
     def game(self) -> Optional[Game]:

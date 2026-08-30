@@ -16,17 +16,17 @@ from system import (
     IdValidator, NameValidator, Builder, BuildResult,
     MutuallyExclusiveParamsException, AllParamsSetNullException, LoggingLevelRouter
 )
-from logic.team.search.context.context import ProjectionSearchContext
+from logic.team.search.context.context import ProjectionContext
 
 
-class ProjectionSearchContextBuilder(Builder[ProjectionSearchContext]):
+class ProjectionContextBuilder(Builder[ProjectionContext]):
     """"""
 
     @classmethod
     @LoggingLevelRouter.monitor
-    def build (cls, id: Optional[int], name: Optional[str], coord: Optional[Coord]) -> BuildResult[ProjectionSearchContext]:
+    def build (cls, id: Optional[int], name: Optional[str], coord: Optional[Coord]) -> BuildResult[ProjectionContext]:
         """"""
-        method = "ProjectionSearchContextBuilder.build"
+        method = "ProjectionContextBuilder.build"
         try:
             params = [id, name, coord]
             param_count = sum(bool(p) for p in params)
@@ -47,7 +47,7 @@ class ProjectionSearchContextBuilder(Builder[ProjectionSearchContext]):
                 id_validation = Idvalidator.execute(id)
                 if not id_validation.is_success():
                     return BuildResult(exception=id_validation.exception)
-                return BuildResult(payload=ProjectionSearchContext(id=id_validation.payload))
+                return BuildResult(payload=ProjectionContext(id=id_validation.payload))
 
             if coord is not None:
                 coord_validation =Coordvalidator.execute(coord)
@@ -56,12 +56,12 @@ class ProjectionSearchContextBuilder(Builder[ProjectionSearchContext]):
                             f"{method}: {RosterNumberOutOfBoundsException.MSG}"
                         )
                     )
-                return BuildResult(payload=ProjectionSearchContext(coord=coord))
+                return BuildResult(payload=ProjectionContext(coord=coord))
 
             if name is not None:
                 name_validation = Namevalidator.execute(name)
                 if not name_validation.is_success():
                     return BuildResult(exception=name_validation.exception)
-                return BuildResult(payload=ProjectionSearchContext(name=name))
+                return BuildResult(payload=ProjectionContext(name=name))
         except Exception as e:
             return BuildResult(exception=e)

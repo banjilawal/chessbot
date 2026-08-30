@@ -12,20 +12,20 @@ from __future__ import annotations
 from typing import Any, Dict, Optional, Type, cast
 
 from config import GameColor
-from domain import TokenSearchContext, Board, Game, ContextBlueprint, Player
+from domain import TokenContext, Board, Game, ContextBlueprint, Player
 from err import TokenContextNullException
 
 
-class TokenContextBlueprint(ModelContextBlueprint[TokenSearchContext]):
+class TokenContextBlueprint(ModelContextBlueprint[TokenContext]):
     """
      Role:
         1.  Metadata
 
      Responsibilities:
-         1.  Provide attributes for hydrating an TokenSearchContext.
+         1.  Provide attributes for hydrating an TokenContext.
          
      Attributes:
-        domain_class: Type[TokenSearchContext]
+        domain_class: Type[TokenContext]
         domain_null_exception: TokenContextNullException
         id: Optional[int]
         game: Optional[Game]
@@ -46,7 +46,7 @@ class TokenContextBlueprint(ModelContextBlueprint[TokenSearchContext]):
     
     def __init__(
             self,
-            domain_class: Optional[Type[TokenSearchContext]] | None = None,
+            domain_class: Optional[Type[TokenContext]] | None = None,
             domain_null_exception: Optional[TokenContextNullException] | None = None,
             id: Optional[int] | None = None,
             game: Optional[Game] | None = None,
@@ -56,7 +56,7 @@ class TokenContextBlueprint(ModelContextBlueprint[TokenSearchContext]):
     ):
         """
         Args:
-            domain_class: Type[TokenSearchContext]
+            domain_class: Type[TokenContext]
             domain_null_exception: TokenContextNullException
             game: Optional[Game]
             board: Optional[Board]
@@ -65,7 +65,7 @@ class TokenContextBlueprint(ModelContextBlueprint[TokenSearchContext]):
         """
         super().__init__(
             id=id,
-            domain_class=domain_class or Type[TokenSearchContext],
+            domain_class=domain_class or Type[TokenContext],
             domain_null_exception=domain_null_exception or TokenContextNullException(),
         )
         self._game = game
@@ -74,12 +74,12 @@ class TokenContextBlueprint(ModelContextBlueprint[TokenSearchContext]):
         self._player = player
     
     @property
-    def domain_class(self) -> Type[TokenSearchContext]:
-        return cast(Type[TokenSearchContext], super().domain_class)
+    def domain_class(self) -> Type[TokenContext]:
+        return cast(Type[TokenContext], super().domain_class)
     
     @property
     def domain_null_exception(self) -> TokenContextNullException:
-        return  cast(TokenContextNullException, super()._domain_null_exception)
+        return  cast(TokenContextNullException, super().domain_null_exception)
     
     @property
     def game(self) -> Optional[Game]:

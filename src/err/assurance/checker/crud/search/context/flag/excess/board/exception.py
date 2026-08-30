@@ -28,7 +28,7 @@ class ExcessBoardContextFlagsException(ExcessContextFlagsException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating too many BoardSearchContext flags were enabled.
+        1.  Indicating too many BoardContext flags were enabled.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class ExcessBoardContextFlagsException(ExcessContextFlagsException):
     Super Class:
         SearchExcessContextFlagsException
     """
-    MSG = "Excessive BoardSearchContext flags enabled."
+    MSG = "Excessive BoardContext flags enabled."
     ERR_CODE = "EXCESSIVE_BOARD_CONTEXT_FLAGS_ENABLED"
     
     def __init__(

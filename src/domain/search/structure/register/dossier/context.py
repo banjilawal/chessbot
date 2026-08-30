@@ -34,7 +34,7 @@ class DossierNodeContext(StructureContext[Dossier]):
         - to_dict() -> Dict[str, Any]
 
     Super Class:
-        NodeSearchContext
+        NodeContext
     """
     _token: Optional[Token]
     _source: Optional[Square]

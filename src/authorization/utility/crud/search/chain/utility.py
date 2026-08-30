@@ -13,11 +13,11 @@ from abc import ABC
 from dataclasses import dataclass
 from typing import Dict, Generic, TypeVar
 
-from assurance import StackSearchContextValidator
+from assurance import StackContextValidator
 from authorization import SearchPermissionUtility
-from domain import ChainSearchContext
+from domain import ChainContext
 
-T = TypeVar("T", bound="ChainSearchContext")
+T = TypeVar("T", bound="ChainContext")
 
 
 @dataclass
@@ -39,5 +39,5 @@ class ChainSearchPermissionUtility(
     Super Class:
         CrudPermissionUtility
     """
-    validator: Dict[str, StackSearchContextValidator[T]]
+    validator: Dict[str, StackContextValidator[T]]
     

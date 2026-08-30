@@ -12,7 +12,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Dict
 
-from assurance import StackSearchContextValidator
+from assurance import StackContextValidator
 from authorization import ChainSearchPermissionUtility
 from domain import VectorNodeContext
 
@@ -38,7 +38,7 @@ class VectorChainSearchPermissionUtility(
     Super Class:
         ChainSearchPermissionUtility
     """
-    validator: Dict[str, StackSearchContextValidator] = field(
+    validator: Dict[str, StackContextValidator] = field(
         default_factory=lambda: {
             "vector_node_context_validator": VectorNodeContextValidator(),
         }

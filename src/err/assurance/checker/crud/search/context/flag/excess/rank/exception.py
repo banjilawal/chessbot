@@ -28,7 +28,7 @@ class ExcessRankContextFlagsException(ExcessContextFlagsException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating too many RankSearchContext flags were enabled.
+        1.  Indicating too many RankContext flags were enabled.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class ExcessRankContextFlagsException(ExcessContextFlagsException):
     Super Class:
         SearchExcessContextFlagsException
     """
-    MSG = "Excessive RankSearchContext flags enabled."
+    MSG = "Excessive RankContext flags enabled."
     ERR_CODE = "EXCESSIVE_RANK_CONTEXT_FLAGS_ENABLED"
     
     def __init__(

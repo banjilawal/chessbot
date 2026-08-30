@@ -31,7 +31,7 @@ class SearchableStructureTypeUnions(StructureTypeUnions[T], ABC, Generic[T]):
         structure: Type[T]
         carrier: Type[StructureCarrier[T]]
         blueprint: Type[Blueprint[T]]
-        search_context: StructureSearchContext[T]
+        search_context: StructureContext[T]
         
     Provides:
 

@@ -12,25 +12,25 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import StackSearchContextValidator, CoordContextValidator
-from domain import CoordSearchSearchContext
+from assurance import StackContextValidator, CoordContextValidator
+from domain import CoordSearchContext
 from err import CoordContextValidatorException
 from util import LoggingLevelRouter
 
 
-class CoordContextValidator(StackSearchContextValidator[CoordSearchSearchContext]):
+class CoordContextValidator(StackContextValidator[CoordSearchContext]):
     """
     Role
         -  Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a CoordSearchContext instance is safe before use.
+        1.  Ensure a CoordContext instance is safe before use.
 
     Attributes:
         integrity_checker: CoordContextChecker
 
     Provides:
-        -  execute(self, candidate: Any) -> ValidationResult[CoordSearchContext]
+        -  execute(self, candidate: Any) -> ValidationResult[CoordContext]
 
     Super Class:
         ContextValidator
@@ -50,9 +50,9 @@ class CoordContextValidator(StackSearchContextValidator[CoordSearchSearchContext
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[CoordSearchSearchContext]:
+    def execute(self, candidate: Any) -> ValidationResult[CoordSearchContext]:
         """
-        Certify a candidate is a CoordSearchContext that is safe to use.
+        Certify a candidate is a CoordContext that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if integrity_checker
@@ -61,7 +61,7 @@ class CoordContextValidator(StackSearchContextValidator[CoordSearchSearchContext
         Args:
             candidate: Any
         Returns:
-            ValidationResult[CoordSearchContext]
+            ValidationResult[CoordContext]
         Raises:
             CoordContextValidatorException
         """
@@ -81,7 +81,7 @@ class CoordContextValidator(StackSearchContextValidator[CoordSearchSearchContext
                 )
             )
         # --- Otherwise, cast and forward the work product to the caller. ---#
-        context = cast(CoordSearchSearchContext, validation.payload)
+        context = cast(CoordSearchContext, validation.payload)
         return ValidationResult.success(context)
 
         

@@ -14,4 +14,4 @@ version: 0.0.2
 
 # Modules
 from .category import PlayerCategory
-from  .context import PlayerSearchContext
+from  .context import PlayerContext

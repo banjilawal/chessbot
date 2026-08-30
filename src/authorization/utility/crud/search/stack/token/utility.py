@@ -12,14 +12,14 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Dict
 
-from assurance import StackSearchContextValidator, TokenContextValidator
+from assurance import StackContextValidator, TokenContextValidator
 from authorization import StackSearchPermissionUtility
-from domain import TokenSearchSearchContext
+from domain import TokenSearchContext
 
 
 @dataclass
 class TokenStackSearchPermissionUtility(
-    StackSearchPermissionUtility[TokenSearchSearchContext]
+    StackSearchPermissionUtility[TokenSearchContext]
 ):
     """
     Role:
@@ -37,7 +37,7 @@ class TokenStackSearchPermissionUtility(
     Super Class:
         StackSearchPermissionUtility
     """
-    validator: Dict[str, StackSearchContextValidator] = field(
+    validator: Dict[str, StackContextValidator] = field(
         default_factory=lambda: {
             "token_context_validator": TokenContextValidator(),
         }

@@ -30,7 +30,7 @@ class ExcessStationContextFlagsException(
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating  too many StationSearchContext flags were enabled.
+        1.  Indicating  too many StationContext flags were enabled.
 
     Attributes:
             msg: Optional[str]
@@ -47,7 +47,7 @@ class ExcessStationContextFlagsException(
     Super Class:
         SearchExcessGraphContextFlagsException
     """
-    MSG = "Excess StationSearchContext flags enabled."
+    MSG = "Excess StationContext flags enabled."
     ERR_CODE = "EXCESS_STATION_CONTEXT_FLAGS_ENABLED"
     
     def __init__(

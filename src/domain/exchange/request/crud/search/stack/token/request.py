@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from collection import TokenStackService
-from domain import StackSearchRequest, Token, TokenSearchSearchContext
+from domain import StackSearchRequest, Token, TokenSearchContext
 
 
 class TokenSearchRequest(StackSearchRequest[Token]):
@@ -26,7 +26,7 @@ class TokenSearchRequest(StackSearchRequest[Token]):
 
      Attributes:
         id: int
-        context: TokenSearchContext
+        context: TokenContext
         stack: TokenStackService
 
      Provides:
@@ -35,18 +35,18 @@ class TokenSearchRequest(StackSearchRequest[Token]):
         StackSearchRequest[
      """
     
-    def __init__(self, id: int, context: TokenSearchSearchContext, stack: TokenStackService):
+    def __init__(self, id: int, context: TokenSearchContext, stack: TokenStackService):
         """
         Args:
             id: int
-            context: TokenSearchContext
+            context: TokenContext
             stack: TokenStackService
         """
         super().__init__(id=id, context=context, stack=stack)
         
     @property
-    def context(self) -> TokenSearchSearchContext:
-        return cast(TokenSearchSearchContext, super().context)
+    def context(self) -> TokenSearchContext:
+        return cast(TokenSearchContext, super().context)
         
     @property
     def stack(self) -> TokenStackService:

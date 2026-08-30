@@ -24,7 +24,7 @@ class ContextBlueprint(Blueprint[T], ABC, Generic[T]):
         1.  Metadata
 
      Responsibilities:
-         1.  Provide attributes for hydrating a SearchContext.
+         1.  Provide attributes for hydrating a Context.
          
      Attributes:
         domain_class: Type[T]
@@ -70,7 +70,7 @@ class ContextBlueprint(Blueprint[T], ABC, Generic[T]):
     
     @property
     def domain_null_exception(self) -> ContextNullException:
-        return  cast(ContextNullException, super()._domain_null_exception)
+        return  cast(ContextNullException, super().domain_null_exception)
     
     @property
     def id(self) -> Optional[int]:

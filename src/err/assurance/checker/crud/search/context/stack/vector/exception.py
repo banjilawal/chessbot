@@ -20,11 +20,11 @@ __all__ = [
     "VectorContextCheckerException",
 ]
 
-from err import SearchContextCheckerException
+from err import ContextCheckerException
 
 
 # ======================# VECTOR_CONTEXT_CHECKER_FAILURE #======================#
-class VectorContextCheckerException(SearchContextCheckerException):
+class VectorContextCheckerException(ContextCheckerException):
     """
     Role:
         - Error Tracing
@@ -45,7 +45,7 @@ class VectorContextCheckerException(SearchContextCheckerException):
     Provides:
 
     Super Class:
-        SearchContextCheckerException
+        ContextCheckerException
     """
     MSG = "VectorContextChecker failure."
     ERR_CODE = "VECTOR_CONTEXT_CHECKER_FAILURE"

@@ -80,7 +80,7 @@ class ArenaContextBuilder(Builder[ArenaContext]):
             *   ArenaContextBuilderException
             *   ExcessArenaContextFlagsException
         """
-        method = "ArenaSearchContextBuilder.build"
+        method = "ArenaContextBuilder.build"
         try:
             # Count how many optional parameters are not-null. One param needs to be not-null.
             params = [id, name, team, game, variety, ]

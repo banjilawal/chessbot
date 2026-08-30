@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from artifcat import ValidationResult
-from assurance import ChainSearchContextValidator, VectorNodeContextValidator
+from assurance import ChainContextValidator, VectorNodeContextValidator
 from domain import VectorNodeContext
 from err import VectorNodeContextValidatorException
 
@@ -20,7 +20,7 @@ from util import LoggingLevelRouter
 
 
 class VectorNodeContextValidator(
-    ChainSearchContextValidator[VectorNodeContext]
+    ChainContextValidator[VectorNodeContext]
 ):
     """
     Role

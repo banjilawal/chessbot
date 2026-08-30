@@ -12,13 +12,13 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Dict
 
-from assurance import StackSearchContextValidator, ArenaContextValidator
+from assurance import StackContextValidator, ArenaContextValidator
 from authorization import StackSearchPermissionUtility
-from domain import ArenaSearchSearchContext
+from domain import ArenaSearchContext
 
 
 @dataclass
-class ArenaStackSearchPermissionUtility(StackSearchPermissionUtility[ArenaSearchSearchContext]):
+class ArenaStackSearchPermissionUtility(StackSearchPermissionUtility[ArenaSearchContext]):
     """
     Role:
         - Utility
@@ -35,7 +35,7 @@ class ArenaStackSearchPermissionUtility(StackSearchPermissionUtility[ArenaSearch
     Super Class:
         StackSearchPermissionUtility
     """
-    validator: Dict[str, StackSearchContextValidator] = field(
+    validator: Dict[str, StackContextValidator] = field(
         default_factory=lambda: {
             "arena_context_validator": ArenaContextValidator(),
         }

@@ -28,7 +28,7 @@ class ExcessCoordContextFlagsException(ExcessContextFlagsException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating too many CoordSearchContext flags were enabled.
+        1.  Indicating too many CoordContext flags were enabled.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class ExcessCoordContextFlagsException(ExcessContextFlagsException):
     Super Class:
         SearchExcessContextFlagsException
     """
-    MSG = "Excessive CoordSearchContext flags enabled."
+    MSG = "Excessive CoordContext flags enabled."
     ERR_CODE = "EXCESSIVE_COORD_CONTEXT_FLAGS_ENABLED"
     
     def __init__(

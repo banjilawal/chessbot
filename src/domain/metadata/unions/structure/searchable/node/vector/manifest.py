@@ -29,7 +29,7 @@ class VectorNodeTypeUnions(NodeTypeUnions[VectorNode]):
         model: Type[VectorNode] = VectorNode
         carrier: Type[VectorNodeCarrier] = VectorNodeCarrier
         blueprint: Type[VectorNodeBlueprint] = VectorNodeBlueprint
-        search_context: Optional[SearchContext] = None
+        search_context: Optional[Context] = None
         
     Provides:
 

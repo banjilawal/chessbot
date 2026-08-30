@@ -14,7 +14,7 @@ from typing import Any, Dict, Optional
 from domain import Board, Coord, SquareState, ModelContext, Square, Token
 
 
-class SquareSearchContext(ModelContext[Square]):
+class SquareContext(ModelContext[Square]):
     """
     Role:
         - Option Selector
@@ -35,7 +35,7 @@ class SquareSearchContext(ModelContext[Square]):
         -  to_dict() -> Dict[str, Any]
 
     Super Class:
-        ModelSearchContext
+        ModelContext
     """
     _board: Optional[Board]
     _coord: Optional[Coord]

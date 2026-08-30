@@ -80,7 +80,7 @@ class GameContextBuilder(Builder[GameContext]):
             *   GameContextBuilderException
             *   ArenaGameContextFlagsException
         """
-        method = "GameSearchContextBuilder.build"
+        method = "GameContextBuilder.build"
         try:
             # Count how many optional parameters are not-null. One param needs to be not-null.
             params = [id, agent,]

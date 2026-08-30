@@ -28,7 +28,7 @@ class ZeroBoardContextFlagsException(ZeroContextFlagsException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating no BoardSearchContext flags were enabled.
+        1.  Indicating no BoardContext flags were enabled.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class ZeroBoardContextFlagsException(ZeroContextFlagsException):
     Super Class:
         SearchZeroContextFlagsException
     """
-    MSG = "No BoardSearchContext flag enabled."
+    MSG = "No BoardContext flag enabled."
     ERR_CODE = "NO_BOARD_CONTEXT_FLAG_ENABLED"
     
     def __init__(

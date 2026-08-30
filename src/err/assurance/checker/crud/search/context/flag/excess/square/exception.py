@@ -28,7 +28,7 @@ class ExcessSquareContextFlagsException(ExcessContextFlagsException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating too many SquareSearchContext flags were enabled.
+        1.  Indicating too many SquareContext flags were enabled.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class ExcessSquareContextFlagsException(ExcessContextFlagsException):
     Super Class:
         SearchExcessContextFlagsException
     """
-    MSG = "Excessive SquareSearchContext flags enabled."
+    MSG = "Excessive SquareContext flags enabled."
     ERR_CODE = "EXCESSIVE_SQUARE_CONTEXT_FLAGS_ENABLED"
     
     def __init__(

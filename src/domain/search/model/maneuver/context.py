@@ -14,7 +14,7 @@ from typing import Any, Dict, Optional
 from domain import Arena, Maneuver, Player, ManeuverWinner, ModelContext
 
 
-class ManeuverSearchContext(ModelContext[Maneuver]):
+class ManeuverContext(ModelContext[Maneuver]):
     """
     Role:
         - Option Selector
@@ -32,7 +32,7 @@ class ManeuverSearchContext(ModelContext[Maneuver]):
         -  to_dict() -> Dict[str, Any]
 
     Super Class:
-        ModelSearchContext
+        ModelContext
     """
     _id: Optional[int]
     _arena: Optional[Arena]

@@ -8,6 +8,6 @@ version: 1.0.0
 """
 
 from .exception import *
-from .context import ProjectionSearchContext
-from .builder import ProjectionSearchContextBuilder
-from .validator import ProjectionSearchContextValidator
+from .context import ProjectionContext
+from .builder import ProjectionContextBuilder
+from .validator import ProjectionContextValidator

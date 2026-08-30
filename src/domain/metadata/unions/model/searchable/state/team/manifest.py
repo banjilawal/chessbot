@@ -13,7 +13,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Type
 
-from domain import ModelTypeUnions, Team, TeamBlueprint, TeamCarrier, TeamSearchSearchContext
+from domain import ModelTypeUnions, Team, TeamBlueprint, TeamCarrier, TeamSearchContext
 
 
 @dataclass
@@ -29,7 +29,7 @@ class TeamTypeUnions(ModelTypeUnions[Team]):
         model: Type[Team] = Team
         carrier: Type[TeamCarrier] = TeamCarrier
         blueprint: Type[TeamBlueprint] = TeamBlueprint
-        search_context: Type[TeamSearchContext] = TeamSearchContext
+        search_context: Type[TeamContext] = TeamContext
     
     Provides:
 
@@ -39,4 +39,4 @@ class TeamTypeUnions(ModelTypeUnions[Team]):
     model: Type[Team] = Team
     carrier: Type[TeamCarrier] = TeamCarrier
     blueprint: Type[TeamBlueprint] = TeamBlueprint
-    search_context: Type[TeamSearchSearchContext] = TeamSearchSearchContext
+    search_context: Type[TeamSearchContext] = TeamSearchContext

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import List, Optional, Type, cast
 
-from domain import Arena, Attack, Game, GameSearchContext, StateModelBlueprint
+from domain import Arena, Attack, Game, GameContext, StateModelBlueprint
 from err import GameNullException
 
 
@@ -29,7 +29,7 @@ class GameBlueprint(StateModelBlueprint[Game]):
         captures: List[Attack]
         
         domain_class: Type[Game]
-        search_context_class: Type[GameSearchContext]
+        search_context_class: Type[GameContext]
         domain_null_exception: GameNullException
 
      Provides:
@@ -44,14 +44,14 @@ class GameBlueprint(StateModelBlueprint[Game]):
             arena: Arena,
             captured_tokens: List[Attack],
             domain_class: Optional[Type[Game]] | None = None,
-            search_context_class: Optional[Type[GameSearchContext]] | None = None,
+            search_context_class: Optional[Type[GameContext]] | None = None,
             domain_null_exception: Optional[GameNullException] | None = None,
             id: Optional[int] | None = None,
     ):
         """
         Args:
             domain_class: Optional[Type[Game]]
-            search_context_class: Optional[Type[GameSearchContext]]
+            search_context_class: Optional[Type[GameContext]]
             domain_null_exception: Optional[GameNullException]
             id: Optional[int]
             arena: Arena
@@ -60,7 +60,7 @@ class GameBlueprint(StateModelBlueprint[Game]):
         super().__init__(
             id=id,
             domain_class=domain_class or Type[Game],
-            search_context_class=search_context_class or Type[GameSearchContext],
+            search_context_class=search_context_class or Type[GameContext],
             domain_null_exception=domain_null_exception or GameNullException(),
         )
         self._arena = arena
@@ -71,8 +71,8 @@ class GameBlueprint(StateModelBlueprint[Game]):
         return cast(Type[Game], super().domain_class)
     
     @property
-    def search_context_class(self) -> Type[GameSearchContext]:
-        return cast(Type[GameSearchContext], super().search_context_class)
+    def search_context_class(self) -> Type[GameContext]:
+        return cast(Type[GameContext], super().search_context_class)
     
     @property
     def domain_null_exception(self) -> GameNullException:

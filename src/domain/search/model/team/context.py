@@ -15,7 +15,7 @@ from config import GameColor
 from domain import Archetype, Board, Player, ModelContext, Team
 
 
-class TeamSearchContext(ModelContext[Team]):
+class TeamContext(ModelContext[Team]):
     """
     Role:
         - Option Selector
@@ -34,7 +34,7 @@ class TeamSearchContext(ModelContext[Team]):
         -  to_dict() -> Dict[str, Any]
 
     Super Class:
-        ModelSearchContext
+        ModelContext
     """
     _board: Optional[Board] = None
     _owner: Optional[Player] = None

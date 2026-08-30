@@ -27,7 +27,7 @@ class ContextNullException(SearchDataObjectNullException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required SearchContextNull failed.
+        1.  Indicating a required ContextNull failed.
 
     Cannot Be Null.s:
             msg: Optional[str]
@@ -44,7 +44,7 @@ class ContextNullException(SearchDataObjectNullException):
     Super Class:
         SearchDataObjectNullException
     """
-    MSG = "SearchContextNull cannot be null."
+    MSG = "ContextNull cannot be null."
     ERR_CODE = "SEARCH_CONTEXT_NULL_ERROR"
     
     def __init__(

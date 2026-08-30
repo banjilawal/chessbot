@@ -15,7 +15,7 @@ from config import GameColor
 from domain import Coord, HomeSquare, Rank, ModelContext, Team, Token
 
 
-class TokenSearchContext(ModelContext[Token]):
+class TokenContext(ModelContext[Token]):
     """
     Role:
         - Option Selector
@@ -37,7 +37,7 @@ class TokenSearchContext(ModelContext[Token]):
         -  to_dict() -> Dict[str, Any]
 
     Super Class:
-        ModelSearchContext[
+        ModelContext[
     """
     _id: Optional[int] | None = None
     _rank: Optional[Rank] | None = None

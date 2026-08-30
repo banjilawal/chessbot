@@ -13,7 +13,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Type
 
-from domain import ModelTypeUnions, Board, BoardBlueprint, BoardCarrier, BoardSearchSearchContext
+from domain import ModelTypeUnions, Board, BoardBlueprint, BoardCarrier, BoardSearchContext
 
 
 @dataclass
@@ -29,7 +29,7 @@ class BoardTypeUnions(ModelTypeUnions[Board]):
         model: Type[Board] = Board
         carrier: Type[BoardCarrier] = BoardCarrier
         blueprint: Type[BoardBlueprint] = BoardBlueprint
-        search_context: Type[BoardSearchContext] = BoardSearchContext
+        search_context: Type[BoardContext] = BoardContext
     
     Provides:
 
@@ -39,4 +39,4 @@ class BoardTypeUnions(ModelTypeUnions[Board]):
     model: Type[Board] = Board
     carrier: Type[BoardCarrier] = BoardCarrier
     blueprint: Type[BoardBlueprint] = BoardBlueprint
-    search_context: Type[BoardSearchSearchContext] = BoardSearchSearchContext
+    search_context: Type[BoardSearchContext] = BoardSearchContext

@@ -20,13 +20,13 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="Context")
 
 
-class SearchContextValidator(Validator, ABC, Generic[T]):
+class ContextValidator(Validator, ABC, Generic[T]):
     """
     Role
         -  Integrity Assurance Worker
 
     Responsibilities:
-        1.  Check that a candidate is the right type of not-null SearchContext.
+        1.  Check that a candidate is the right type of not-null Context.
         2.  Run safety checks on any SearchContex attributes that are enabled.
 
     Attributes:
@@ -51,13 +51,13 @@ class SearchContextValidator(Validator, ABC, Generic[T]):
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[T]:
         """
-        Verify the candidate is a SearchContext safe to use.
+        Verify the candidate is a Context safe to use.
         Args:
             candidate: Any
         Returns:
            ValidationResult[T]
         Raises:
-            SearchContextCheckerException
+            ContextCheckerException
         """
         pass
     

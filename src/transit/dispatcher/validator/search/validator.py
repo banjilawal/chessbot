@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import SearchContextValidator, Validator
+from assurance import ContextValidator, Validator
 from domain import Context
 from util import LoggingLevelRouter
 
@@ -21,16 +21,16 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="Context")
 
 
-class SearchContextValidator(Validator[T], ABC, Generic[T]):
+class ContextValidator(Validator[T], ABC, Generic[T]):
     """
     Role
         -  Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a SearchContext instance is safe before use.
+        1.  Ensure a Context instance is safe before use.
 
     Attributes:
-        integrity_checker: SearchContextChecker[T]
+        integrity_checker: ContextChecker[T]
         
     Provides:
         -  execute(self, candidate: Any) -> ValidationResult[T]
@@ -39,24 +39,24 @@ class SearchContextValidator(Validator[T], ABC, Generic[T]):
         Validator
     """
     
-    def __init__(self, integrity_checker: SearchContextValidator[T]):
+    def __init__(self, integrity_checker: ContextValidator[T]):
         """
         Args:
-            integrity_checker: SearchContextChecker
+            integrity_checker: ContextChecker
         """
         super().__init__(integrity_checker=integrity_checker)
     
     
     @property
-    def integrity_checker(self) -> SearchContextValidator[T]:
-        return cast(SearchContextValidator[T], super().integrity_checker)
+    def integrity_checker(self) -> ContextValidator[T]:
+        return cast(ContextValidator[T], super().integrity_checker)
    
     
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[T]:
         """
-        Verify a candidate is a safe SearchContext.
+        Verify a candidate is a safe Context.
         Args:
             candidate: Any
         Returns:

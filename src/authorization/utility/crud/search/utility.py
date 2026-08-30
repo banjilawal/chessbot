@@ -13,7 +13,7 @@ from abc import ABC
 from dataclasses import dataclass
 from typing import Dict, Generic, TypeVar
 
-from assurance import StackSearchContextValidator
+from assurance import StackContextValidator
 from authorization import CrudPermissionUtility
 from domain import Context, SearchRequest
 
@@ -37,5 +37,5 @@ class SearchPermissionUtility(CrudPermissionUtility[SearchRequest], ABC, Generic
     Super Class:
         CrudPermissionUtility
     """
-    validator: Dict[str, StackSearchContextValidator[T]]
+    validator: Dict[str, StackContextValidator[T]]
     

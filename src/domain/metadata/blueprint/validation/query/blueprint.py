@@ -17,7 +17,7 @@ from err import (
 )
 from domain.model import Query
 from collection.stack import StackService
-from transit.dispatcher.validator import StackSearchContextValidator, PrimingValidator
+from transit.dispatcher.validator import StackContextValidator, PrimingValidator
 
 T = TypeVar("T")
 
@@ -50,5 +50,5 @@ class QueryValidationBlueprint(Blueprint[T]):
     query_domain_null_exception: QueryNullException
     context_domain_null_exception: ContextNullException
     empty_stack_exception: StackEmptyException
-    context_validator: StackSearchContextValidator[T]
+    context_validator: StackContextValidator[T]
     priming_validator: PrimingValidator = PrimingValidator()

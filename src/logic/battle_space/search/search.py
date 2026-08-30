@@ -6,7 +6,7 @@ Author: Banji Lawal
 Created: 2025-10-27
 version: 1.0.0
 """
-from logic.battle_space import Projection, ProjectionSearchContext, WhiteTeamProjectionFinder
+from logic.battle_space import Projection, ProjectionContext, WhiteTeamProjectionFinder
 from logic.battle_space.service import ProjectionService
 from system import LoggingLevelRouter, SearchResult
 from logic.team import TeamSchema
@@ -20,7 +20,7 @@ class ProjectionSearch:
             cls,
             schema: TeamSchema,
             data_owner: ProjectionService,
-            search_context: ProjectionSearchContext
+            search_context: ProjectionContext
     ) -> SearchResult[Projection]:
         
         if schema == TeamSchema.WHITE:

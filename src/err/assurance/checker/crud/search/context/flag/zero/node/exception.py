@@ -28,7 +28,7 @@ class ZeroNodeContextFlagsException(ZeroContextFlagsException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating no NodeSearchContext flags were enabled.
+        1.  Indicating no NodeContext flags were enabled.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class ZeroNodeContextFlagsException(ZeroContextFlagsException):
     Super Class:
         SearchZeroContextFlagsException
     """
-    MSG = "Zero NodeSearchContext flags enabled."
+    MSG = "Zero NodeContext flags enabled."
     ERR_CODE = "ZERO_NODE_CONTEXT_FLAGS_ENABLED"
     
     def __init__(

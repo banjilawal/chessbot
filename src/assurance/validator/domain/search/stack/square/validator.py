@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import SquareValidationBundle, SearchContextValidator
-from domain import SquareSearchSearchContext
+from assurance import SquareValidationBundle, ContextValidator
+from domain import SquareSearchContext
 from err import (
     ExcessSquareContextFlagsException, SquareContextCheckerException, SquareContextValidationRouteException,
     ZeroSquareContextFlagsException
@@ -21,23 +21,23 @@ from err import (
 from util import LoggingLevelRouter
 
 
-class SquareContextValidator(SearchContextValidator[SquareSearchSearchContext]):
+class SquareContextValidator(ContextValidator[SquareSearchContext]):
     """
     Role
         -  Integrity Assurance Worker
 
     Responsibilities:
-        1.  Check that a candidate is the right type of not-null SquareSearchContext.
-        2.  Run safety checks on any SquareSearchContext attributes that are enabled.
+        1.  Check that a candidate is the right type of not-null SquareContext.
+        2.  Run safety checks on any SquareContext attributes that are enabled.
 
     Attributes:
         bundle: SquareValidationBundle
 
     Provides:
-        - def execute(candidate: Any) -> ValidationResult[SquareSearchContext]:
+        - def execute(candidate: Any) -> ValidationResult[SquareContext]:
 
     Super Class:
-        StackSearchContextChecker
+        StackContextChecker
     """
     
     def __init__(self, bundle: Optional[SquareValidationBundle] | None = None, ):
@@ -50,21 +50,21 @@ class SquareContextValidator(SearchContextValidator[SquareSearchSearchContext]):
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[SquareSearchSearchContext]:
+    def execute(self, candidate: Any) -> ValidationResult[SquareSearchContext]:
         """
-        Certify a candidate is a SquareSearchContext that is safe to use.
+        Certify a candidate is a SquareContext that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -  The candidate is not a SquareSearchContext.
+                    -  The candidate is not a SquareContext.
                     -  The wrong number of search attributes is enabled.
                     -  An enabled search attribute fails a safety check.
-            2.  Otherwise, send a TokeSearchContext in the success result.
+            2.  Otherwise, send a TokeContext in the success result.
         Args:
             candidate, Any
         Returns:
-            ValidationResult[SquareSearchContext]
+            ValidationResult[SquareContext]
         Raises:
             SquareContextCheckerException
         """
@@ -88,7 +88,7 @@ class SquareContextValidator(SearchContextValidator[SquareSearchSearchContext]):
                 )
             )
         # --- Cast the candidate into SquareContext for routing attribute testing ---#
-        context = cast(SquareSearchSearchContext, priming.payload)
+        context = cast(SquareSearchContext, priming.payload)
         
         # Handle the case that, no flags are enabled.
         if context.is_empty:

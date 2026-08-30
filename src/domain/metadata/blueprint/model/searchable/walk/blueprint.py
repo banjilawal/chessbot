@@ -48,7 +48,7 @@ class WalkModelBlueprint(SearchableModelBlueprint[T], ABC, Generic[T]):
         """
         Args:
             domain_class: Type[T]
-            search_context_class: SearchContext[T]
+            search_context_class: Context[T]
             domain_null_exception: ModelNullException
             id: Optional[int]
         """

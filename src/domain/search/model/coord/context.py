@@ -14,7 +14,7 @@ from typing import Any, Dict, Optional
 from domain import Coord, ModelContext
 
 
-class CoordSearchContext(ModelContext[Coord]):
+class CoordContext(ModelContext[Coord]):
     """
     Role:
         - Option Selector
@@ -30,7 +30,7 @@ class CoordSearchContext(ModelContext[Coord]):
         -  to_dict() -> Dict[str, Any]
 
     Super Class:
-        ModelSearchContext
+        ModelContext
     """
     _row: Optional[int]
     _column: Optional[int]

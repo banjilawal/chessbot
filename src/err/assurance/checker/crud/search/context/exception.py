@@ -27,7 +27,7 @@ class ContextCheckerException(SearchCheckerException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a SearchContextChecker failed.
+        1.  Indicating assurance by a ContextChecker failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,9 +42,9 @@ class ContextCheckerException(SearchCheckerException):
     Provides:
 
     Super Class:
-        SearchContextChecker
+        ContextChecker
     """
-    MSG = "SearchContextChecker failure."
+    MSG = "ContextChecker failure."
     ERR_CODE = "CONTEXT_CHECKER_FAILURE"
     
     def __init__(

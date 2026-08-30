@@ -28,7 +28,7 @@ class ZeroArenaContextFlagsException(ZeroContextFlagsException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating no ArenaSearchContext flags were enabled.
+        1.  Indicating no ArenaContext flags were enabled.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class ZeroArenaContextFlagsException(ZeroContextFlagsException):
     Super Class:
         SearchZeroContextFlagsException
     """
-    MSG = "No ArenaSearchContext flag enabled."
+    MSG = "No ArenaContext flag enabled."
     ERR_CODE = "NO_ARENA_CONTEXT_FLAG_ENABLED"
     
     def __init__(

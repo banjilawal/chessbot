@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import Board, Coord, Formation, Square, SquareSearchContext, StateModelBlueprint
+from domain import Board, Coord, Formation, Square, SquareContext, StateModelBlueprint
 from err import SquareNullException
 
 
@@ -31,7 +31,7 @@ class SquareBlueprint(StateModelBlueprint[Square]):
         formation: Optional[Formation]
 
         domain_class: Type[Square]
-        search_context_class: Type[SquareSearchContext]
+        search_context_class: Type[SquareContext]
         domain_null_exception: SquareNullException
 
      Provides:
@@ -50,7 +50,7 @@ class SquareBlueprint(StateModelBlueprint[Square]):
             board: Board,
             coord: Coord,
             domain_class: Optional[Type[Square]] | None = None,
-            search_context_class: Optional[Type[SquareSearchContext]] | None = None,
+            search_context_class: Optional[Type[SquareContext]] | None = None,
             domain_null_exception: Optional[SquareNullException] | None = None,
             formation: Optional[Formation] | None = None,
             id: Optional[int] | None = None,
@@ -58,7 +58,7 @@ class SquareBlueprint(StateModelBlueprint[Square]):
         """
         Args:
             domain_class: Optional[Type[Square]]
-            search_context_class: Optional[Type[SquareSearchContext]]
+            search_context_class: Optional[Type[SquareContext]]
             domain_null_exception: Optional[SquareNullException]
             id: Optional[int]
             name: str
@@ -69,7 +69,7 @@ class SquareBlueprint(StateModelBlueprint[Square]):
         super().__init__(
             id=id,
             domain_class=domain_class or Type[Square],
-            search_context_class=search_context_class or Type[SquareSearchContext],
+            search_context_class=search_context_class or Type[SquareContext],
             domain_null_exception=domain_null_exception or SquareNullException(),
         )
         self._name = name
@@ -82,8 +82,8 @@ class SquareBlueprint(StateModelBlueprint[Square]):
         return cast(Type[Square], super().domain_class)
     
     @property
-    def search_context_class(self) -> Type[SquareSearchContext]:
-        return cast(Type[SquareSearchContext], super().search_context_class)
+    def search_context_class(self) -> Type[SquareContext]:
+        return cast(Type[SquareContext], super().search_context_class)
     
     @property
     def domain_null_exception(self) -> SquareNullException:

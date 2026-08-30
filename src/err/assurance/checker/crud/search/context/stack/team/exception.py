@@ -20,11 +20,11 @@ __all__ = [
     "TeamContextCheckerException",
 ]
 
-from err import SearchContextCheckerException
+from err import ContextCheckerException
 
 
 # ======================# TEAM_CONTEXT_CHECKER_FAILURE #======================#
-class TeamContextCheckerException(SearchContextCheckerException):
+class TeamContextCheckerException(ContextCheckerException):
     """
     Role:
         - Error Tracing
@@ -45,7 +45,7 @@ class TeamContextCheckerException(SearchContextCheckerException):
     Provides:
 
     Super Class:
-        SearchContextCheckerException
+        ContextCheckerException
     """
     MSG = "TeamContextChecker failure."
     ERR_CODE = "TEAM_CONTEXT_CHECKER_FAILURE"

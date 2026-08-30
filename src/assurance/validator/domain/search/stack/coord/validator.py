@@ -13,29 +13,29 @@ from typing import Any, Optional, cast
 
 import config.setting.board.dimension.config
 from artifcat import ValidationResult
-from assurance import SearchContextValidator, CoordValidationBundle
-from domain import CoordSearchSearchContext
+from assurance import ContextValidator, CoordValidationBundle
+from domain import CoordSearchContext
 from err import CoordContextCheckerException, ZeroCoordContextFlagsException
 from util import LoggingLevelRouter
 
 
-class CoordContextValidator(SearchContextValidator[CoordSearchSearchContext]):
+class CoordContextValidator(ContextValidator[CoordSearchContext]):
     """
     Role
         -  Integrity Assurance Worker
 
     Responsibilities:
-        1.  Check that a candidate is the right type of not-null CoordSearchContext.
-        2.  Run safety checks on any CoordSearchContext attributes that are enabled.
+        1.  Check that a candidate is the right type of not-null CoordContext.
+        2.  Run safety checks on any CoordContext attributes that are enabled.
 
     Attributes:
         bundle: CoordValidationBundle
 
     Provides:
-        - def execute(candidate: Any) -> ValidationResult[CoordSearchContext]:
+        - def execute(candidate: Any) -> ValidationResult[CoordContext]:
 
     Super Class:
-        StackSearchContextChecker
+        StackContextChecker
     """
     
     def __init__(self, bundle: Optional[CoordValidationBundle] | None = None,):
@@ -48,21 +48,21 @@ class CoordContextValidator(SearchContextValidator[CoordSearchSearchContext]):
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[CoordSearchSearchContext]:
+    def execute(self, candidate: Any) -> ValidationResult[CoordSearchContext]:
         """
-        Certify a candidate is a CoordSearchContext that is safe to use.
+        Certify a candidate is a CoordContext that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -  The candidate is not a CoordSearchContext.
+                    -  The candidate is not a CoordContext.
                     -  The wrong number of search attributes is enabled.
                     -  An enabled search attribute fails a safety check.
-            2.  Otherwise, send a TokeSearchContext in the success result.
+            2.  Otherwise, send a TokeContext in the success result.
         Args:
             candidate, Any
         Returns:
-            ValidationResult[CoordSearchContext]
+            ValidationResult[CoordContext]
         Raises:
             CoordContextCheckerException
             ZeroCoordContextFlagsException
@@ -87,7 +87,7 @@ class CoordContextValidator(SearchContextValidator[CoordSearchSearchContext]):
                 )
             )
         # --- Cast the candidate into SquareContext for routing attribute testing. ---#
-        context = cast(CoordSearchSearchContext, candidate)
+        context = cast(CoordSearchContext, candidate)
         
         # Handle the case that none of the filters are enabled.
         if context.is_empty:

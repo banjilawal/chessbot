@@ -28,7 +28,7 @@ class ExcessScalarContextFlagsException(ExcessContextFlagsException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating too many ScalarSearchContext flags were enabled.
+        1.  Indicating too many ScalarContext flags were enabled.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class ExcessScalarContextFlagsException(ExcessContextFlagsException):
     Super Class:
         SearchExcessContextFlagsException
     """
-    MSG = "Excessive ScalarSearchContext flags enabled."
+    MSG = "Excessive ScalarContext flags enabled."
     ERR_CODE = "EXCESSIVE_SCALAR_CONTEXT_FLAGS_ENABLED"
     
     def __init__(

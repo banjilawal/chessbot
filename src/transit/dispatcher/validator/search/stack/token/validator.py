@@ -12,25 +12,25 @@ from __future__ import annotations
 from typing import Any, cast
 
 from artifcat import ValidationResult
-from assurance import StackSearchContextValidator, TokenContextValidator
-from domain import TokenSearchSearchContext
+from assurance import StackContextValidator, TokenContextValidator
+from domain import TokenSearchContext
 from err import TokenContextValidatorException
 from util import LoggingLevelRouter
 
 
-class TokenContextValidator(StackSearchContextValidator[TokenSearchSearchContext]):
+class TokenContextValidator(StackContextValidator[TokenSearchContext]):
     """
     Role
         -  Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a TokenSearchContext instance is safe before use.
+        1.  Ensure a TokenContext instance is safe before use.
 
     Attributes:
         integrity_checker: TokenContextChecker
 
     Provides:
-        -  execute(self, candidate: Any) -> ValidationResult[TokenSearchContext]
+        -  execute(self, candidate: Any) -> ValidationResult[TokenContext]
 
     Super Class:
         ContextValidator
@@ -50,7 +50,7 @@ class TokenContextValidator(StackSearchContextValidator[TokenSearchSearchContext
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[TokenSearchSearchContext]:
+    def execute(self, candidate: Any) -> ValidationResult[TokenSearchContext]:
         """
         Certify a candidate is a TokenContext that is safe to use.
 
@@ -61,7 +61,7 @@ class TokenContextValidator(StackSearchContextValidator[TokenSearchSearchContext
         Args:
             candidate: Any
         Returns:
-            ValidationResult[TokenSearchContext]
+            ValidationResult[TokenContext]
         Raises:
             TokenContextValidatorException
         """
@@ -81,7 +81,7 @@ class TokenContextValidator(StackSearchContextValidator[TokenSearchSearchContext
                 )
             )
         # --- Otherwise, cast and forward the work product to the caller. ---#
-        context = cast(TokenSearchSearchContext, validation.payload)
+        context = cast(TokenSearchContext, validation.payload)
         return ValidationResult.success(context)
 
         

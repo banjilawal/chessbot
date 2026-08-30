@@ -28,7 +28,7 @@ class ExcessNodeContextFlagsException(ExcessContextFlagsException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating too many NodeSearchContext flags were enabled.
+        1.  Indicating too many NodeContext flags were enabled.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class ExcessNodeContextFlagsException(ExcessContextFlagsException):
     Super Class:
         SearchExcessContextFlagsException
     """
-    MSG = "Excessive NodeSearchContext flags enabled."
+    MSG = "Excessive NodeContext flags enabled."
     ERR_CODE = "EXCESSIVE_NODE_CONTEXT_FLAGS_ENABLED"
     
     def __init__(

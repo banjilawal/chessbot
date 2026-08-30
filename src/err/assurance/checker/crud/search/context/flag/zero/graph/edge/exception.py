@@ -30,7 +30,7 @@ class ZeroEdgeContextFlagsException(
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating no EdgeSearchContext flags were enabled.
+        1.  Indicating no EdgeContext flags were enabled.
 
     Attributes:
             msg: Optional[str]
@@ -47,7 +47,7 @@ class ZeroEdgeContextFlagsException(
     Super Class:
         SearchZeroGraphContextFlagsException
     """
-    MSG = "Zero EdgeSearchContext flags enabled."
+    MSG = "Zero EdgeContext flags enabled."
     ERR_CODE = "ZERO_EDGE_CONTEXT_FLAGS_ENABLED"
     
     def __init__(

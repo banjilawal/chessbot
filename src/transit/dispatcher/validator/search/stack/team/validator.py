@@ -12,25 +12,25 @@ from __future__ import annotations
 from typing import Any, cast
 
 from artifcat import ValidationResult
-from assurance import StackSearchContextValidator, TeamContextValidator
-from domain import TeamSearchSearchContext
+from assurance import StackContextValidator, TeamContextValidator
+from domain import TeamSearchContext
 from err import TeamContextValidatorException
 from util import LoggingLevelRouter
 
 
-class TeamContextValidator(StackSearchContextValidator[TeamSearchSearchContext]):
+class TeamContextValidator(StackContextValidator[TeamSearchContext]):
     """
     Role
         -  Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a TeamSearchContext instance is safe before use.
+        1.  Ensure a TeamContext instance is safe before use.
 
     Attributes:
         integrity_checker: TeamContextChecker
 
     Provides:
-        -  execute(self, candidate: Any) -> ValidationResult[TeamSearchContext]
+        -  execute(self, candidate: Any) -> ValidationResult[TeamContext]
 
     Super Class:
         ContextValidator
@@ -48,9 +48,9 @@ class TeamContextValidator(StackSearchContextValidator[TeamSearchSearchContext])
         return cast(TeamContextValidator, super().integrity_checker)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[TeamSearchSearchContext]:
+    def execute(self, candidate: Any) -> ValidationResult[TeamSearchContext]:
         """
-        Certify a candidate is a TeamSearchContext that is safe to use.
+        Certify a candidate is a TeamContext that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if integrity_checker
@@ -59,7 +59,7 @@ class TeamContextValidator(StackSearchContextValidator[TeamSearchSearchContext])
         Args:
             candidate: Any
         Returns:
-            ValidationResult[TeamSearchContext]
+            ValidationResult[TeamContext]
         Raises:
             TeamContextValidatorException
         """
@@ -79,6 +79,6 @@ class TeamContextValidator(StackSearchContextValidator[TeamSearchSearchContext])
                 )
             )
         # --- Otherwise, cast and forward the work product to the caller. ---#
-        context = cast(TeamSearchSearchContext, validation.payload)
+        context = cast(TeamSearchContext, validation.payload)
         return ValidationResult.success(context)
 

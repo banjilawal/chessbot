@@ -10,91 +10,91 @@ version: 1.0.0
 from system import ContextException, NullException, BuilderException, ValidatorException
 
 __all__ = [
-    'VisitationSearchContextException',
+    'VisitationContextException',
 
     #======= SEARCH_CONTEXT VALIDATION EXCEPTION =======#
-    'NullVisitationSearchContextException',
-    'InvalidVisitationSearchContextException',
+    'NullVisitationContextException',
+    'InvalidVisitationContextException',
     'ZeroVisitationSearchParamsException',
     'ArenaVisitationSearchParamsException',
     'VisitationRansomParamBoundsException',
     'VisitationInvalidRankNameParamException',
 
     #======= SEARCH_CONTEXT BUILD EXCEPTION =======#
-    'VisitationSearchContextBuilderException',
+    'VisitationContextBuilderException',
 ]
 
 
-class VisitationSearchContextException(ContextException):
+class VisitationContextException(ContextException):
     """
-    Super class for exception raised by VisitationSearchContext objects. DO NOT
+    Super class for exception raised by VisitationContext objects. DO NOT
     USE DIRECTLY. Subclasses give more useful debugging msgs.
     """
     ERR_CODE = "VISITATION_SEARCH_CONTEXT_EXCEPTION"
-    MSG = "VisitationSearchContext raised an exception."
+    MSG = "VisitationContext raised an exception."
 
 
 # #======================#   SEARCH_CONTEXT VALIDATION EXCEPTION #======================#
-class NullVisitationSearchContextException(VisitationSearchContextException, NullException):
+class NullVisitationContextException(VisitationContextException, NullException):
     """
-    Raised if an entity, method, or operation requires team_name visitationSearchContext but
+    Raised if an entity, method, or operation requires team_name visitationContext but
     gets validation instead.
     """
     ERR_CODE = "NULL_SEARCH_VISITATION_CONTEXT_EXCEPTION"
-    MSG = "VisitationSearchContext cannot be validation"
+    MSG = "VisitationContext cannot be validation"
 
 
-class InvalidVisitationSearchContextException(VisitationSearchContextException, ValidatorException):
+class InvalidVisitationContextException(VisitationContextException, ValidatorException):
     """
-    Raised by visitationSearchContextBValidator if visitationSearchContext fails sanity checks. Exists primarily to
-    catch all exception raised validating an existing visitationSearchContext
+    Raised by visitationContextBValidator if visitationContext fails sanity checks. Exists primarily to
+    catch all exception raised validating an existing visitationContext
     """
     ERR_CODE = "VISITATION_SEARCH_CONTEXT_VALIDATION_EXCEPTION"
-    MSG = "VisitationSearchContext validation failed."
+    MSG = "VisitationContext validation failed."
 
 
-class ZeroVisitationSearchParamsException(VisitationSearchContextException):
+class ZeroVisitationSearchParamsException(VisitationContextException):
     """
-    Raised if all VisitationSearchContext params are set validation.
+    Raised if all VisitationContext params are set validation.
     """
     ERR_CODE = "ZERO_VISITATION_SEARCH_PARAMS_EXCEPTION"
     MSG = (
-        "A VisitationSearchContext cannot have no params selected. Pick one param to run a searcher."
+        "A VisitationContext cannot have no params selected. Pick one param to run a searcher."
     )
 
-class ArenaVisitationSearchParamsException(VisitationSearchContextException):
+class ArenaVisitationSearchParamsException(VisitationContextException):
     """
-    Raised if more than one VisitationSearchContext param is set validation.
+    Raised if more than one VisitationContext param is set validation.
     """
     ERR_CODE = "TOO_MANY_VISITATION_SEARCH_PARAMS_EXCEPTION"
     MSG = (
-        "More than one VisitationSearchContext param was set. If more than one param is set a searcher cannot be run."
+        "More than one VisitationContext param was set. If more than one param is set a searcher cannot be run."
     )
 
-class VisitationRansomParamBoundsException(VisitationSearchContextException):
+class VisitationRansomParamBoundsException(VisitationContextException):
   """
   If the old_search map is out of bounds there might be other problems.
   Instead of running team_name old_search that won'rank produce team_name notification, raise this
   error.
   """
   ERR_CODE = "VISITATION_SEARCH_CONTEXT_RANSOM_BOUNDS_EXCEPTION"
-  MSG = "The visitor_ransom is out of bounds. It cannot be used in VisitationSearchContext."
+  MSG = "The visitor_ransom is out of bounds. It cannot be used in VisitationContext."
 
-class VisitationInvalidRankNameParamException(VisitationSearchContextException):
+class VisitationInvalidRankNameParamException(VisitationContextException):
   """
   If the old_search map is out of bounds there might be other problems.
   Instead of running team_name old_search that won'rank produce team_name notification, raise this
   error.
   """
   ERR_CODE = "VISITATION_SEARCH_CONTEXT_RANK_NAME_EXCEPTION"
-  MSG = "The bounds visitor_name is not recognized. It cannot be used in VisitationSearchContext."
+  MSG = "The bounds visitor_name is not recognized. It cannot be used in VisitationContext."
 
 
 # #======================#   PIECE_SEARCH_CONTEXT BUILD EXCEPTION #======================#
-class VisitationSearchContextBuilderException(VisitationSearchContextException, BuilderException):
+class VisitationContextBuilderException(VisitationContextException, BuilderException):
     """
-    Raised when VisitationSearchContextBuilder encounters an error while building team_name team_name.
-    Exists primarily to catch all exception raised build team_name new visitationSearchContext
+    Raised when VisitationContextBuilder encounters an error while building team_name team_name.
+    Exists primarily to catch all exception raised build team_name new visitationContext
     """
     ERR_CODE = "VISITATION_SEARCH_CONTEXT_BUILD_FAILED"
-    MSG = "VisitationSearchContext build failed."
+    MSG = "VisitationContext build failed."

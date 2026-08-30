@@ -28,7 +28,7 @@ class ExcessTeamContextFlagsException(ExcessContextFlagsException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating too many TeamSearchContext flags were enabled.
+        1.  Indicating too many TeamContext flags were enabled.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class ExcessTeamContextFlagsException(ExcessContextFlagsException):
     Super Class:
         SearchExcessContextFlagsException
     """
-    MSG = "Excessive TeamSearchContext flags enabled."
+    MSG = "Excessive TeamContext flags enabled."
     ERR_CODE = "EXCESSIVE_TEAM_CONTEXT_FLAGS_ENABLED"
     
     def __init__(

@@ -12,48 +12,50 @@ from __future__ import annotations
 from typing import Any, Dict, Optional, Type, cast
 
 from config import GameColor
-from domain import Arena, BoardSearchContext, ContextBlueprint, Team
+from domain import Arena, BoardContext, ModelContextBlueprint, Team
 from err import BoardContextNullException
 
 
-class BoardContextBlueprint(ModelContextBlueprint[BoardSearchContext]):
+class BoardContextBlueprint(ModelContextBlueprint[BoardContext]):
     """
      Role:
         1.  Metadata
 
      Responsibilities:
-         1.  Provide attributes for hydrating an BoardSearchContext.
+         1.  Provide attributes for hydrating a BoardContext.
          
      Attributes:
-        domain_class: Type[BoardSearchContext]
-        domain_null_exception: BoardContextNullException
         id: Optional[int]
+        team: Optional[Team]
         arena: Optional[Arena]
         board: Optional[Board]
-        team: Optional[Team]
         color: Optional[GameColor]
+        
+        domain_class: Type[BoardContext]
+        domain_null_exception: BoardContextNullException
 
      Provides:
 
      Super Class:
         ModelContextBlueprint
      """
-    _arena: Optional[Arena]
+    
     _team: Optional[Team]
+    _arena: Optional[Arena]
     _color: Optional[GameColor]
     
     def __init__(
             self,
-            domain_class: Optional[Type[BoardSearchContext]] | None = None,
-            domain_null_exception: Optional[BoardContextNullException] | None = None,
             id: Optional[int] | None = None,
-            arena: Optional[Arena] | None = None,
             team: Optional[Team] | None = None,
+            arena: Optional[Arena] | None = None,
             color: Optional[GameColor] | None = None,
+            domain_class: Optional[Type[BoardContext]] | None = None,
+            domain_null_exception: Optional[BoardContextNullException] | None = None,
     ):
         """
         Args:
-            domain_class: Type[BoardSearchContext]
+            domain_class: Type[BoardContext]
             domain_null_exception: BoardContextNullException
             arena: Optional[Arena]
             team: Optional[Team]
@@ -61,7 +63,7 @@ class BoardContextBlueprint(ModelContextBlueprint[BoardSearchContext]):
         """
         super().__init__(
             id=id,
-            domain_class=domain_class or Type[BoardSearchContext],
+            domain_class=domain_class or Type[BoardContext],
             domain_null_exception=domain_null_exception or BoardContextNullException(),
         )
         self._arena = arena
@@ -69,12 +71,12 @@ class BoardContextBlueprint(ModelContextBlueprint[BoardSearchContext]):
         self._team = team
     
     @property
-    def domain_class(self) -> Type[BoardSearchContext]:
-        return cast(Type[BoardSearchContext], super().domain_class)
+    def domain_class(self) -> Type[BoardContext]:
+        return cast(Type[BoardContext], super().domain_class)
     
     @property
     def domain_null_exception(self) -> BoardContextNullException:
-        return  cast(BoardContextNullException, super()._domain_null_exception)
+        return  cast(BoardContextNullException, super().domain_null_exception)
     
     @property
     def arena(self) -> Optional[Arena]:

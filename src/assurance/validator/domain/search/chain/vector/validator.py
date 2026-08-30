@@ -38,7 +38,7 @@ class VectorNodeContextValidator(
         - def execute(candidate: Any) -> ValidationResult[VectorNodeContext]:
 
     Super Class:
-        ChainSearchContextChecker
+        ChainContextChecker
     """
     
     def __init__(self, bundle: Optional[VectorNodeValidationBundle] | None = None, ):
@@ -61,7 +61,7 @@ class VectorNodeContextValidator(
                     -  The candidate is not a VectorNodeContext.
                     -  The wrong number of search attributes is enabled.
                     -  An enabled search attribute fails a safety check.
-            2.  Otherwise, send a TokeSearchContext in the success result.
+            2.  Otherwise, send a TokeContext in the success result.
         Args:
             candidate, Any
         Returns:

@@ -14,7 +14,7 @@ from typing import Any, Dict, Optional
 from domain import Arena, Path, Player, PathWinner, ModelContext
 
 
-class PathSearchContext(ModelContext[Path]):
+class PathContext(ModelContext[Path]):
     """
     Role:
         - Option Selector
@@ -32,7 +32,7 @@ class PathSearchContext(ModelContext[Path]):
         -  to_dict() -> Dict[str, Any]
 
     Super Class:
-        ModelSearchContext
+        ModelContext
     """
     _id: Optional[int]
     _arena: Optional[Arena]

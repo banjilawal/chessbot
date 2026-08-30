@@ -30,7 +30,7 @@ class ZeroStationContextFlagsException(
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating no StationSearchContext flags were enabled.
+        1.  Indicating no StationContext flags were enabled.
 
     Attributes:
             msg: Optional[str]
@@ -47,7 +47,7 @@ class ZeroStationContextFlagsException(
     Super Class:
         SearchZeroGraphContextFlagsException
     """
-    MSG = "Zero StationSearchContext flags enabled."
+    MSG = "Zero StationContext flags enabled."
     ERR_CODE = "ZERO_STATION_CONTEXT_FLAGS_ENABLED"
     
     def __init__(

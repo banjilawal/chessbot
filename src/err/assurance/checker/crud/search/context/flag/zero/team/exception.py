@@ -28,7 +28,7 @@ class ZeroTeamContextFlagsException(ZeroContextFlagsException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating no TeamSearchContext flags were enabled.
+        1.  Indicating no TeamContext flags were enabled.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class ZeroTeamContextFlagsException(ZeroContextFlagsException):
     Super Class:
         SearchZeroContextFlagsException
     """
-    MSG = "No TeamSearchContext flag enabled."
+    MSG = "No TeamContext flag enabled."
     ERR_CODE = "NO_TEAM_CONTEXT_FLAG_ENABLED"
     
     def __init__(

@@ -35,7 +35,7 @@ class ItineraryBuilder(Builder[Itinerary]):
             Itinerary(
                 id=blueprint.id,
                 source=blueprint.source,
-                token=blueprint.token,
+                token=blueprint.traveller,
                 destination=blueprint.destination,
             )
         )

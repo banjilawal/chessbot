@@ -28,7 +28,7 @@ class ZeroContextFlagsException(ContextFlagCountException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating no SearchContext flag was enabled.
+        1.  Indicating no Context flag was enabled.
 
     Attributes:
             msg: Optional[str]
@@ -43,7 +43,7 @@ class ZeroContextFlagsException(ContextFlagCountException):
     Provides:
 
     Super Class:
-        SearchContextFlagCountException
+        ContextFlagCountException
     """
     MSG = "No ContextSearch flag was enabled."
     ERR_CODE = "NO_ENABLED_CONTEXT_FLAG_ERROR"

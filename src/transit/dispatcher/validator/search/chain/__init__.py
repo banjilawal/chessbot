@@ -13,4 +13,4 @@ version: 0.0.2
 from .vector import *
 
 # Module
-from .validator import ChainSearchContextValidator
+from .validator import ChainContextValidator

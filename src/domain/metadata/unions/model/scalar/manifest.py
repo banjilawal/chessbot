@@ -29,7 +29,7 @@ class ScalarTypeUnions(ModelTypeUnions[Scalar]):
         model: Type[Scalar] = Scalar
         carrier: Type[ScalarCarrier] = ScalarCarrier
         blueprint: Type[ScalarBlueprint] = ScalarBlueprint
-        search_context: Type[ScalarSearchContext] = ScalarSearchContext
+        search_context: Type[ScalarContext] = ScalarContext
     
     Provides:
 

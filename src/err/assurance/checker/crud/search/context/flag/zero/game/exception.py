@@ -28,7 +28,7 @@ class ZeroGameContextFlagsException(ZeroContextFlagsException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating no GameSearchContext flags were enabled.
+        1.  Indicating no GameContext flags were enabled.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class ZeroGameContextFlagsException(ZeroContextFlagsException):
     Super Class:
         SearchZeroContextFlagsException
     """
-    MSG = "No GameSearchContext flag enabled."
+    MSG = "No GameContext flag enabled."
     ERR_CODE = "NO_GAME_CONTEXT_FLAG_ENABLED"
     
     def __init__(

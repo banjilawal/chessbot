@@ -9,6 +9,6 @@ version: 1.0.0
 
 from .exception import *
 
-from .context import VisitationSearchContext
-from .builder import VisitationSearchContextBuilder
+from .context import VisitationContext
+from .builder import VisitationContextBuilder
 from .validator import *

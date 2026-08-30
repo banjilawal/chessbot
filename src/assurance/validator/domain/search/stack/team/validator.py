@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import SearchContextValidator, TeamValidationBundle
-from domain import Archetype, TeamSearchSearchContext
+from assurance import ContextValidator, TeamValidationBundle
+from domain import Archetype, TeamSearchContext
 from err import (
     ExcessTeamContextFlagsException, GameColorNullException, TeamContextCheckerException,
     TeamContextValidationRouteException, ZeroTeamContextFlagsException
@@ -21,23 +21,23 @@ from err import (
 from util import LoggingLevelRouter
 
 
-class TeamContextValidator(SearchContextValidator[TeamSearchSearchContext]):
+class TeamContextValidator(ContextValidator[TeamSearchContext]):
     """
     Role
         -  Integrity Assurance Worker
 
     Responsibilities:
-        1.  Check that a candidate is the right type of not-null TeamSearchContext.
-        2.  Run safety checks on any TeamSearchContext attributes that are enabled.
+        1.  Check that a candidate is the right type of not-null TeamContext.
+        2.  Run safety checks on any TeamContext attributes that are enabled.
 
     Attributes:
         bundle: TeamValidationBundle
 
     Provides:
-        - def execute(candidate: Any) -> ValidationResult[TeamSearchContext]:
+        - def execute(candidate: Any) -> ValidationResult[TeamContext]:
 
     Super Class:
-        StackSearchContextChecker
+        StackContextChecker
     """
     
     def __init__(self, bundle: Optional[TeamValidationBundle] | None = None, ):
@@ -50,21 +50,21 @@ class TeamContextValidator(SearchContextValidator[TeamSearchSearchContext]):
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[TeamSearchSearchContext]:
+    def execute(self, candidate: Any) -> ValidationResult[TeamSearchContext]:
         """
-        Certify a candidate is a TeamSearchContext that is safe to use.
+        Certify a candidate is a TeamContext that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -  The candidate is not a TeamSearchContext.
+                    -  The candidate is not a TeamContext.
                     -  The wrong number of search attributes is enabled.
                     -  An enabled search attribute fails a safety check.
-            2.  Otherwise, send a TokeSearchContext in the success result.
+            2.  Otherwise, send a TokeContext in the success result.
         Args:
             candidate, Any
         Returns:
-            ValidationResult[TeamSearchContext]
+            ValidationResult[TeamContext]
         Raises:
             TeamContextCheckerException
         """
@@ -88,7 +88,7 @@ class TeamContextValidator(SearchContextValidator[TeamSearchSearchContext]):
                 )
             )
         # --- Cast the candidate into TeamContext for routing attribute testing ---#
-        context = cast(TeamSearchSearchContext, priming.payload)
+        context = cast(TeamSearchContext, priming.payload)
         
         # Handle the case that, no flags are enabled.
         if context.is_empty:

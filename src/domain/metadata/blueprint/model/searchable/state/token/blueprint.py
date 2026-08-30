@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import Formation, HomeSquare, Rank, StateModelBlueprint, Team, Token, TokenSearchContext
+from domain import Formation, HomeSquare, Rank, StateModelBlueprint, Team, Token, TokenContext
 from err import TokenNullException
 
 
@@ -30,7 +30,7 @@ class TokenBlueprint(StateModelBlueprint[Token]):
         id: Optional[int]
 
         domain_class: Type[Token]
-        search_context_class: Type[TokenSearchContext]
+        search_context_class: Type[TokenContext]
         domain_null_exception: TokenNullException
 
      Provides:
@@ -48,7 +48,7 @@ class TokenBlueprint(StateModelBlueprint[Token]):
             team: Team,
             formation: Formation,
             domain_class: Optional[Type[Token]] | None = None,
-            search_context_class: Optional[Type[TokenSearchContext]] | None = None,
+            search_context_class: Optional[Type[TokenContext]] | None = None,
             domain_null_exception: Optional[TokenNullException] | None = None,
             id: Optional[int] | None = None,
             rank: Optional[Rank] | None = None,
@@ -57,7 +57,7 @@ class TokenBlueprint(StateModelBlueprint[Token]):
         """
         Args:
             domain_class: Optional[Type[Token]]
-            search_context_class: Optional[Type[TokenSearchContext]]
+            search_context_class: Optional[Type[TokenContext]]
             domain_null_exception: Optional[TokenNullException]
             id: Optional[int]
             team: Team,
@@ -67,7 +67,7 @@ class TokenBlueprint(StateModelBlueprint[Token]):
         super().__init__(
             id=id,
             domain_class=domain_class or Type[Token],
-            search_context_class=search_context_class or Type[TokenSearchContext],
+            search_context_class=search_context_class or Type[TokenContext],
             domain_null_exception=domain_null_exception or TokenNullException(),
         )
         self._team = team
@@ -80,8 +80,8 @@ class TokenBlueprint(StateModelBlueprint[Token]):
         return cast(Type[Token], super().domain_class)
     
     @property
-    def search_context_class(self) -> Type[TokenSearchContext]:
-        return cast(Type[TokenSearchContext], super().search_context_class)
+    def search_context_class(self) -> Type[TokenContext]:
+        return cast(Type[TokenContext], super().search_context_class)
     
     @property
     def domain_null_exception(self) -> TokenNullException:

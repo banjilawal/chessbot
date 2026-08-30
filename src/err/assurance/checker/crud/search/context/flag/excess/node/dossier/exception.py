@@ -30,7 +30,7 @@ class ExcessDossierNodeContextFlagsException(
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating too many DossierNodeSearchContext flags were enabled.
+        1.  Indicating too many DossierNodeContext flags were enabled.
 
     Attributes:
             msg: Optional[str]
@@ -47,7 +47,7 @@ class ExcessDossierNodeContextFlagsException(
     Super Class:
         SearchExcessNodeContextFlagsException
     """
-    MSG = "Excessive DossierNodeSearchContext flags enabled."
+    MSG = "Excessive DossierNodeContext flags enabled."
     ERR_CODE = "EXCESSIVE_DOSSIER_NODE_CONTEXT_FLAGS_ENABLED"
     
     def __init__(

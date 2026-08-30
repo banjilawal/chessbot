@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
-from assurance import SearchContextValidator, ValidationBundle
+from assurance import ContextValidator, ValidationBundle
 from domain import ModelContext
 from artifcat import ValidationResult
 from util import LoggingLevelRouter
@@ -20,13 +20,13 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="ModelContext")
 
 
-class SearchContextValidator(SearchContextValidator[T], ABC, Generic[T]):
+class ContextValidator(ContextValidator[T], ABC, Generic[T]):
     """
     Role
         -  Integrity Assurance Worker
 
     Responsibilities:
-        1.  Check that a candidate is the right type of not-null StackSearchContext.
+        1.  Check that a candidate is the right type of not-null StackContext.
         2.  Run safety checks on any StackSearchContex attributes that are enabled.
 
     Attributes:
@@ -36,7 +36,7 @@ class SearchContextValidator(SearchContextValidator[T], ABC, Generic[T]):
         - def execute(candidate: Any) -> ValidationResult[T]:
 
     Super Class:
-        SearchContextIntegrityChecker
+        ContextIntegrityChecker
     """
     
     def __init__(self, bundle: ValidationBundle[T]):
@@ -51,13 +51,13 @@ class SearchContextValidator(SearchContextValidator[T], ABC, Generic[T]):
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[ModelContext]:
         """
-        Certify a candidate is a StackSearchContext that is safe to use.
+        Certify a candidate is a StackContext that is safe to use.
         Args:
             candidate, Any
         Returns:
-            ValidationResult[StackSearchContext]
+            ValidationResult[StackContext]
         Raises:
-            SearchContextCheckerException
+            ContextCheckerException
         """
         pass
     

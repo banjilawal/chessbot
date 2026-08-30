@@ -10,34 +10,34 @@ version: 1.0.0
 from typing import Any, cast
 
 from system import LoggingLevelRouter, ValidationResult, Validator
-from logic.battle_space.search.search import ProjectionSearchContext
+from logic.battle_space.search.search import ProjectionContext
 
 
-class ProjectionSearchContextValidator(Validator[ProjectionSearchContext]):
+class ProjectionContextValidator(Validator[ProjectionContext]):
     """"""
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any) -> ValidationResult[ProjectionSearchContext]:
+    def validate(cls, candidate: Any) -> ValidationResult[ProjectionContext]:
         """"""
-        method = "ProjectionSearchContextValidator.execute"
+        method = "ProjectionContextValidator.execute"
         
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullProjectionSearchContextException(
-                        f"{method}: {NullProjectionSearchContextException.MSG}"
+                    NullProjectionContextException(
+                        f"{method}: {NullProjectionContextException.MSG}"
                     )
                 )
             
-            if not isinstance(candidate, ProjectionSearchContext):
+            if not isinstance(candidate, ProjectionContext):
                 return ValidationResult.failure(
                     TypeError(
-                        f"{method}: Expected ProjectionSearchContext, got {type(candidate).__name__}"
+                        f"{method}: Expected ProjectionContext, got {type(candidate).__name__}"
                     )
                 )
             
-            search_context = cast(ProjectionSearchContext, candidate)
+            search_context = cast(ProjectionContext, candidate)
             
             return ValidationResult.success(search_context)
         

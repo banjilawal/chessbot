@@ -14,7 +14,7 @@ from typing import Any, Dict, Optional
 from domain import GraphContext, Edge, Station
 
 
-class EdgeSearchContext(GraphContext[Edge]):
+class EdgeContext(GraphContext[Edge]):
         """
     Role:
         - Option Selector

@@ -30,7 +30,7 @@ class ZeroVectorNodeContextFlagsException(
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating no VectorNodeSearchContext flags were enabled.
+        1.  Indicating no VectorNodeContext flags were enabled.
 
     Attributes:
             msg: Optional[str]
@@ -47,7 +47,7 @@ class ZeroVectorNodeContextFlagsException(
     Super Class:
         SearchZeroNodeContextFlagsException
     """
-    MSG = "Zero VectorNodeSearchContext flags enabled."
+    MSG = "Zero VectorNodeContext flags enabled."
     ERR_CODE = "ZERO_VECTOR_NODE_CONTEXT_FLAGS_ENABLED"
     
     def __init__(

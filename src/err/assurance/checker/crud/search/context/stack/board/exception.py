@@ -20,11 +20,11 @@ __all__ = [
     "BoardContextCheckerException",
 ]
 
-from err import SearchContextCheckerException
+from err import ContextCheckerException
 
 
 # ======================# BOARD_CONTEXT_CHECKER_FAILURE #======================#
-class BoardContextCheckerException(SearchContextCheckerException):
+class BoardContextCheckerException(ContextCheckerException):
     """
     Role:
         - Error Tracing
@@ -45,7 +45,7 @@ class BoardContextCheckerException(SearchContextCheckerException):
     Provides:
 
     Super Class:
-        SearchContextCheckerException
+        ContextCheckerException
     """
     MSG = "BoardContextChecker failure."
     ERR_CODE = "BOARD_CONTEXT_CHECKER_FAILURE"

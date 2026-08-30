@@ -13,7 +13,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Type
 
-from domain import ModelTypeUnions, Rank, RankBlueprint, RankCarrier, RankSearchContext
+from domain import ModelTypeUnions, Rank, RankBlueprint, RankCarrier, RankContext
 
 
 @dataclass
@@ -29,7 +29,7 @@ class RankTypeUnions(ModelTypeUnions[Rank]):
         model: Type[Rank] = Rank
         carrier: Type[RankCarrier] = RankCarrier
         blueprint: Type[RankBlueprint] = RankBlueprint
-        search_context: Type[RankSearchContext] = RankSearchContext
+        search_context: Type[RankContext] = RankContext
     
     Provides:
 
@@ -39,4 +39,4 @@ class RankTypeUnions(ModelTypeUnions[Rank]):
     model: Type[Rank] = Rank
     carrier: Type[RankCarrier] = RankCarrier
     blueprint: Type[RankBlueprint] = RankBlueprint
-    search_context: Type[RankSearchContext] = RankSearchContext
+    search_context: Type[RankContext] = RankContext

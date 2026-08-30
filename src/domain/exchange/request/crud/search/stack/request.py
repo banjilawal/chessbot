@@ -27,7 +27,7 @@ class StackSearchRequest(SearchRequest, ABC, Generic[T]):
 
      Attributes:
          id: int
-         context: SearchContext[T]
+         context: Context[T]
          collection: StackService[T]
 
      Provides:
@@ -40,7 +40,7 @@ class StackSearchRequest(SearchRequest, ABC, Generic[T]):
         """
         Args:
             id: int
-            context: SearchContext[T]
+            context: Context[T]
             stack: StackService[T]
         """
         super().__init__(id=id, context=context, collection=stack)

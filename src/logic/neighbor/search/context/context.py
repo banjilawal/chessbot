@@ -11,20 +11,20 @@ from typing import Optional
 
 from logic.coord import Coord
 from logic.rank import Rank
-from system import SearchContext
+from system import Context
 
 
-class VisitationSearchContext(SearchContext):
+class VisitationContext(Context):
     """
   Role:Builder, Data Integrity And Reliability Guarantor implementation
 
   Responsibilities:
-  1. Process and validate parameters for creating `DiscoverySearchContext` instances.
-  2. Create new `DiscoverySearchContext` objects if parameters meet specifications.
+  1. Process and validate parameters for creating `DiscoveryContext` instances.
+  2. Create new `DiscoveryContext` objects if parameters meet specifications.
   2. Report errors and return `BuildResult` with error details.
 
   # PROVIDES:
-  `BuildResult`: Return type containing the built `DiscoverySearchContext` or error information.
+  `BuildResult`: Return type containing the built `DiscoveryContext` or error information.
 
   # ATTRIBUTES:
   None

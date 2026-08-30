@@ -103,7 +103,7 @@ class ManeuverLauncher:
         
         maneuver = report.maneuver
 
-        token = report.maneuver.token
+        token = report.maneuver.traveller
         maneuver.path.endpoints.destination.occupant = token
         maneuver.path.endpoints.destination.state = SquareState.OCCUPIED
         

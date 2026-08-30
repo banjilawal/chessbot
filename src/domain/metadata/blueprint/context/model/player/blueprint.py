@@ -12,20 +12,20 @@ from __future__ import annotations
 from typing import Any, Dict, Optional, Type, cast
 
 from config import GameColor
-from domain import PlayerSearchContext, Board, Game, ContextBlueprint, Player
+from domain import PlayerContext, Board, Game, ContextBlueprint, Player
 from err import PlayerContextNullException
 
 
-class PlayerContextBlueprint(ModelContextBlueprint[PlayerSearchContext]):
+class PlayerContextBlueprint(ModelContextBlueprint[PlayerContext]):
     """
      Role:
         1.  Metadata
 
      Responsibilities:
-         1.  Provide attributes for hydrating an PlayerSearchContext.
+         1.  Provide attributes for hydrating an PlayerContext.
          
      Attributes:
-        domain_class: Type[PlayerSearchContext]
+        domain_class: Type[PlayerContext]
         domain_null_exception: PlayerContextNullException
         id: Optional[int]
         game: Optional[Game]
@@ -46,7 +46,7 @@ class PlayerContextBlueprint(ModelContextBlueprint[PlayerSearchContext]):
     
     def __init__(
             self,
-            domain_class: Optional[Type[PlayerSearchContext]] | None = None,
+            domain_class: Optional[Type[PlayerContext]] | None = None,
             domain_null_exception: Optional[PlayerContextNullException] | None = None,
             id: Optional[int] | None = None,
             game: Optional[Game] | None = None,
@@ -56,7 +56,7 @@ class PlayerContextBlueprint(ModelContextBlueprint[PlayerSearchContext]):
     ):
         """
         Args:
-            domain_class: Type[PlayerSearchContext]
+            domain_class: Type[PlayerContext]
             domain_null_exception: PlayerContextNullException
             game: Optional[Game]
             board: Optional[Board]
@@ -65,7 +65,7 @@ class PlayerContextBlueprint(ModelContextBlueprint[PlayerSearchContext]):
         """
         super().__init__(
             id=id,
-            domain_class=domain_class or Type[PlayerSearchContext],
+            domain_class=domain_class or Type[PlayerContext],
             domain_null_exception=domain_null_exception or PlayerContextNullException(),
         )
         self._game = game
@@ -74,12 +74,12 @@ class PlayerContextBlueprint(ModelContextBlueprint[PlayerSearchContext]):
         self._player = player
     
     @property
-    def domain_class(self) -> Type[PlayerSearchContext]:
-        return cast(Type[PlayerSearchContext], super().domain_class)
+    def domain_class(self) -> Type[PlayerContext]:
+        return cast(Type[PlayerContext], super().domain_class)
     
     @property
     def domain_null_exception(self) -> PlayerContextNullException:
-        return  cast(PlayerContextNullException, super()._domain_null_exception)
+        return  cast(PlayerContextNullException, super().domain_null_exception)
     
     @property
     def game(self) -> Optional[Game]:

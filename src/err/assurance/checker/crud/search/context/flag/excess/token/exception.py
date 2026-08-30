@@ -28,7 +28,7 @@ class ExcessTokenContextFlagsException(ExcessContextFlagsException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating too many TokenSearchContext flags were enabled.
+        1.  Indicating too many TokenContext flags were enabled.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class ExcessTokenContextFlagsException(ExcessContextFlagsException):
     Super Class:
         SearchExcessContextFlagsException
     """
-    MSG = "Excessive TokenSearchContext flags enabled."
+    MSG = "Excessive TokenContext flags enabled."
     ERR_CODE = "EXCESSIVE_TOKEN_CONTEXT_FLAGS_ENABLED"
     
     def __init__(

@@ -77,7 +77,7 @@ class TeamContextBuilder(Builder[TeamContext]):
             *   TeamContextBuilderException
             *   ArenaTeamContextFlagsException
         """
-        method = "PieceSearchContextBuilder.build"
+        method = "PieceContextBuilder.build"
         
         # --- Count how many optional parameters are not-null. only one should be not null. ---#
         params = [id, name, arena, player, color]

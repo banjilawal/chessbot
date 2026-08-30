@@ -28,7 +28,7 @@ class ZeroCoordContextFlagsException(ZeroContextFlagsException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating no CoordSearchContext flags were enabled.
+        1.  Indicating no CoordContext flags were enabled.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class ZeroCoordContextFlagsException(ZeroContextFlagsException):
     Super Class:
         SearchZeroContextFlagsException
     """
-    MSG = "No CoordSearchContext flag enabled."
+    MSG = "No CoordContext flag enabled."
     ERR_CODE = "NO_COORD_CONTEXT_FLAG_ENABLED"
     
     def __init__(

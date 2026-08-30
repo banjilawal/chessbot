@@ -14,7 +14,7 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# SEARCH_CONTEXT_VALIDATOR_FAILURE #======================#
-    "SearchContextValidatorException",
+    "ContextValidatorException",
 ]
 
 from err import ValidatorException
@@ -22,13 +22,13 @@ from artifcat import MethodResultType
 
 
 # ======================# SEARCH_CONTEXT_VALIDATOR_FAILURE #======================#
-class SearchContextValidatorException(ValidatorException):
+class ContextValidatorException(ValidatorException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a SearchContextValidator failed.
+        1.  Indicating assurance by a ContextValidator failed.
 
     Attributes:
         msg: Optional[str]
@@ -45,7 +45,7 @@ class SearchContextValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "SearchContextValidator failed."
+    MSG = "ContextValidator failed."
     ERR_CODE = "SEARCH_CONTEXT_VALIDATOR_FAILURE"
     
     def __init__(

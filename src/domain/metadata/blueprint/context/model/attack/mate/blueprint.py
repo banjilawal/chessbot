@@ -12,20 +12,20 @@ from __future__ import annotations
 from typing import Any, Dict, Optional, Type, cast
 
 from config import GameColor
-from domain import MateSearchContext, Board, Game, ContextBlueprint, Player
+from domain import MateContext, Board, Game, ContextBlueprint, Player
 from err import MateContextNullException
 
 
-class MateContextBlueprint(ModelContextBlueprint[MateSearchContext]):
+class MateContextBlueprint(ModelContextBlueprint[MateContext]):
     """
      Role:
         1.  Metadata
 
      Responsibilities:
-         1.  Provide attributes for hydrating an MateSearchContext.
+         1.  Provide attributes for hydrating an MateContext.
          
      Attributes:
-        domain_class: Type[MateSearchContext]
+        domain_class: Type[MateContext]
         domain_null_exception: MateContextNullException
         id: Optional[int]
         game: Optional[Game]
@@ -46,7 +46,7 @@ class MateContextBlueprint(ModelContextBlueprint[MateSearchContext]):
     
     def __init__(
             self,
-            domain_class: Optional[Type[MateSearchContext]] | None = None,
+            domain_class: Optional[Type[MateContext]] | None = None,
             domain_null_exception: Optional[MateContextNullException] | None = None,
             id: Optional[int] | None = None,
             game: Optional[Game] | None = None,
@@ -56,7 +56,7 @@ class MateContextBlueprint(ModelContextBlueprint[MateSearchContext]):
     ):
         """
         Args:
-            domain_class: Type[MateSearchContext]
+            domain_class: Type[MateContext]
             domain_null_exception: MateContextNullException
             game: Optional[Game]
             board: Optional[Board]
@@ -65,7 +65,7 @@ class MateContextBlueprint(ModelContextBlueprint[MateSearchContext]):
         """
         super().__init__(
             id=id,
-            domain_class=domain_class or Type[MateSearchContext],
+            domain_class=domain_class or Type[MateContext],
             domain_null_exception=domain_null_exception or MateContextNullException(),
         )
         self._game = game
@@ -74,12 +74,12 @@ class MateContextBlueprint(ModelContextBlueprint[MateSearchContext]):
         self._player = player
     
     @property
-    def domain_class(self) -> Type[MateSearchContext]:
-        return cast(Type[MateSearchContext], super().domain_class)
+    def domain_class(self) -> Type[MateContext]:
+        return cast(Type[MateContext], super().domain_class)
     
     @property
     def domain_null_exception(self) -> MateContextNullException:
-        return  cast(MateContextNullException, super()._domain_null_exception)
+        return  cast(MateContextNullException, super().domain_null_exception)
     
     @property
     def game(self) -> Optional[Game]:

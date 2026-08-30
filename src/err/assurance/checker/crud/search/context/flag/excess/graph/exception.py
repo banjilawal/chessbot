@@ -28,7 +28,7 @@ class ExcessGraphContextFlagsException(ExcessContextFlagsException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating  too many SearchContext flags were enabled.
+        1.  Indicating  too many Context flags were enabled.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class ExcessGraphContextFlagsException(ExcessContextFlagsException):
     Super Class:
         SearchExcessContextFlagsException
     """
-    MSG = "Excess SearchContext flags enabled."
+    MSG = "Excess Context flags enabled."
     ERR_CODE = "EXCESS_GRAPH_CONTEXT_FLAGS_ENABLED"
     
     def __init__(

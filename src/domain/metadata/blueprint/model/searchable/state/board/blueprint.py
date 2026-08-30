@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from collection import AttackDatabase, ManeuverDatabase, SquareDatabase, TokenDatabase
-from domain import Board, BoardSearchContext, BoardTeamColorBinder, StateModelBlueprint
+from domain import Board, BoardContext, BoardTeamColorBinder, StateModelBlueprint
 from err import BoardNullException
 
 
@@ -33,7 +33,7 @@ class BoardBlueprint(StateModelBlueprint[Board]):
         team_binder: BoardTeamColorBinder
         
         domain_class: Type[Board]
-        search_context_class: Type[BoardSearchContext]
+        search_context_class: Type[BoardContext]
         domain_null_exception: BoardNullException
 
      Provides:
@@ -52,7 +52,7 @@ class BoardBlueprint(StateModelBlueprint[Board]):
             squares: SquareDatabase,
             team_binder: BoardTeamColorBinder,
             domain_class: Optional[Type[Board]] | None = None,
-            search_context_class: Optional[Type[BoardSearchContext]] | None = None,
+            search_context_class: Optional[Type[BoardContext]] | None = None,
             domain_null_exception: Optional[BoardNullException] | None = None,
             id: Optional[int] | None = None,
             maneuver_log: Optional[ManeuverDatabase] | None = None,
@@ -64,7 +64,7 @@ class BoardBlueprint(StateModelBlueprint[Board]):
             squares: SquareDatabase
             team_binder: BoardTeamColorBinder
             domain_class: Optional[Type[Board]]
-            search_context_class: Optional[Type[BoardSearchContext]]
+            search_context_class: Optional[Type[BoardContext]]
             domain_null_exception: Optional[BoardNullException]
             
             maneuver_log: Optional[ManeuverDatabase]
@@ -75,7 +75,7 @@ class BoardBlueprint(StateModelBlueprint[Board]):
         super().__init__(
             id=id,
             domain_class=domain_class or Type[Board],
-            search_context_class=search_context_class or Type[BoardSearchContext],
+            search_context_class=search_context_class or Type[BoardContext],
             domain_null_exception=domain_null_exception or BoardNullException(),
         )
         self._squares = squares
@@ -89,8 +89,8 @@ class BoardBlueprint(StateModelBlueprint[Board]):
         return cast(Type[Board], super().domain_class)
     
     @property
-    def search_context_class(self) -> Type[BoardSearchContext]:
-        return cast(Type[BoardSearchContext], super().search_context_class)
+    def search_context_class(self) -> Type[BoardContext]:
+        return cast(Type[BoardContext], super().search_context_class)
     
     @property
     def domain_null_exception(self) -> BoardNullException:

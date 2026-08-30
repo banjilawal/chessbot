@@ -28,7 +28,7 @@ class ZeroScalarContextFlagsException(ZeroContextFlagsException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating no ScalarSearchContext flags were enabled.
+        1.  Indicating no ScalarContext flags were enabled.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class ZeroScalarContextFlagsException(ZeroContextFlagsException):
     Super Class:
         SearchZeroContextFlagsException
     """
-    MSG = "No ScalarSearchContext flag enabled."
+    MSG = "No ScalarContext flag enabled."
     ERR_CODE = "NO_SCALAR_CONTEXT_FLAG_ENABLED"
     
     def __init__(

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import Arena, ArenaPlayerColorBinder, ArenaSearchContext, Board, StateModelBlueprint
+from domain import Arena, ArenaPlayerColorBinder, ArenaContext, Board, StateModelBlueprint
 from err import ArenaNullException
 
 
@@ -29,7 +29,7 @@ class ArenaBlueprint(StateModelBlueprint[Arena]):
         player_binder: ArenaPlayerColorBinder
         
         domain_class: Type[Arena]
-        search_context_class: Type[ArenaSearchContext]
+        search_context_class: Type[ArenaContext]
         domain_null_exception: ArenaNullException
 
      Provides:
@@ -45,14 +45,14 @@ class ArenaBlueprint(StateModelBlueprint[Arena]):
             board: Board,
             player_binder: ArenaPlayerColorBinder,
             domain_class: Optional[Type[Arena]] | None = None,
-            search_context_class: Optional[Type[ArenaSearchContext]] | None = None,
+            search_context_class: Optional[Type[ArenaContext]] | None = None,
             domain_null_exception: Optional[ArenaNullException] | None = None,
             id: Optional[int] | None = None,
     ):
         """
         Args:
             domain_class: Optional[Type[Arena]] | None = None,
-            search_context_class: Optional[Type[ArenaSearchContext]] | None = None,
+            search_context_class: Optional[Type[ArenaContext]] | None = None,
             domain_null_exception: Optional[ArenaNullException] | None = None,
             id: Optional[int]
             board: Board
@@ -61,7 +61,7 @@ class ArenaBlueprint(StateModelBlueprint[Arena]):
         super().__init__(
             id=id,
             domain_class=domain_class or Type[Arena],
-            search_context_class=search_context_class or Type[ArenaSearchContext],
+            search_context_class=search_context_class or Type[ArenaContext],
             domain_null_exception=domain_null_exception or ArenaNullException(),
         )
         self._board = board
@@ -72,8 +72,8 @@ class ArenaBlueprint(StateModelBlueprint[Arena]):
         return cast(Type[Arena], super().domain_class)
     
     @property
-    def search_context_class(self) -> Type[ArenaSearchContext]:
-        return cast(Type[ArenaSearchContext], super().search_context_class)
+    def search_context_class(self) -> Type[ArenaContext]:
+        return cast(Type[ArenaContext], super().search_context_class)
     
     @property
     def domain_null_exception(self) -> ArenaNullException:

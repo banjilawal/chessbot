@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from collection import ArenaStackService
-from domain import StackSearchRequest, Arena, ArenaSearchSearchContext
+from domain import StackSearchRequest, Arena, ArenaSearchContext
 
 
 class ArenaSearchRequest(StackSearchRequest[Arena]):
@@ -26,7 +26,7 @@ class ArenaSearchRequest(StackSearchRequest[Arena]):
 
      Attributes:
         id: int
-        context: ArenaSearchContext
+        context: ArenaContext
         stack: ArenaStackService
 
      Provides:
@@ -35,18 +35,18 @@ class ArenaSearchRequest(StackSearchRequest[Arena]):
         StackSearchRequest[
      """
     
-    def __init__(self, id: int, context: ArenaSearchSearchContext, stack: ArenaStackService):
+    def __init__(self, id: int, context: ArenaSearchContext, stack: ArenaStackService):
         """
         Args:
             id: int
-            context: ArenaSearchContext
+            context: ArenaContext
             stack: ArenaStackService
         """
         super().__init__(id=id, context=context, stack=stack)
         
     @property
-    def context(self) -> ArenaSearchSearchContext:
-        return cast(ArenaSearchSearchContext, super().context)
+    def context(self) -> ArenaSearchContext:
+        return cast(ArenaSearchContext, super().context)
         
     @property
     def stack(self) -> ArenaStackService:

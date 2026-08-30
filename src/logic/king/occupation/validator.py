@@ -196,7 +196,7 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #     actor_square_search = BoardSearch.searcher(
 #       board=map.board,
 #       data_source=BoardDatasource.SQUARE,
-#       map=BoardSearchcontext(point=travel.traveler.current_position)
+#       map=BoardContext(point=travel.traveler.current_position)
 #     )
 #
 #     if not actor_square_search.is_success():
@@ -209,7 +209,7 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #     destination_search = BoardSearch.searcher(
 #       board=map.board,
 #       data_source=BoardDatasource.SQUARE,
-#       map=BoardSearchcontext(travel.enemy_square.visitor_id)
+#       map=BoardContext(travel.enemy_square.visitor_id)
 #     )
 #     if not destination_search.is_success():
 #       return TransactionResult(

@@ -81,7 +81,7 @@ class BoardContextValidator(ContextValidator[Board]):
                 )
             )
         # --- Cast the candidate into BoardContext for additional tests. ---#
-        context = cast(BoardSearchContext, priming.payload)
+        context = cast(BoardContext, priming.payload)
         
         # Handle the case of searching with no attribute-value provided.
         flag_count = len(context.to_dict())

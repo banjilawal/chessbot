@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchContextValidatorException
+from err import ContextValidatorException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# SNAPSHOT_CONTEXT_VALIDATOR_FAILURE #======================#
-class SnapshotContextValidatorException(SearchContextValidatorException):
+class SnapshotContextValidatorException(ContextValidatorException):
     """
     Role:
         - Error Tracing

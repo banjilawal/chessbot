@@ -18,7 +18,7 @@ from domain import Structure, StructureContext
 T = TypeVar("T", bound="Structure")
 
 
-class NodeSearchContext(StructureContext[T], ABC, Generic[T]):
+class NodeContext(StructureContext[T], ABC, Generic[T]):
     """
     Role:
         - Option Selector
@@ -33,7 +33,7 @@ class NodeSearchContext(StructureContext[T], ABC, Generic[T]):
         - to_dict() -> Dict[str, Any]
         
     Super Class:
-        SearchContext
+        Context
     """
     _offset: Optional[int]
     

@@ -80,7 +80,7 @@ class GameContextToolkit(Toolkit[GameContext]):
             *   GameContextToolkitException
             *   ArenaGameContextFlagsException
         """
-        method = "GameSearchContextTooltoolkit"
+        method = "GameContextTooltoolkit"
         try:
             # Count how many optional parameters are not-null. One param needs to be not-null.
             params = [id, agent,]

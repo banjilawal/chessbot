@@ -14,7 +14,7 @@ from typing import Any, Dict, Optional
 from domain import Game, Player, PlayerCategory, ModelContext, Team
 
 
-class PlayerSearchContext(ModelContext[Player]):
+class PlayerContext(ModelContext[Player]):
     """
     Role:
         - Option Selector
@@ -33,7 +33,7 @@ class PlayerSearchContext(ModelContext[Player]):
         -  to_dict() -> Dict[str, Any]
 
     Super Class:
-        ModelSearchContext
+        ModelContext
     """
     _id: Optional[int]
     _name: Optional[str]

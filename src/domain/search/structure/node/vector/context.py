@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain import NodeSearchContext, VectorNode
+from domain import NodeContext, VectorNode
 
 
-class VectorNodeContext(NodeSearchContext[VectorNode]):
+class VectorNodeContext(NodeContext[VectorNode]):
         """
         Role:
             - Option Selector
@@ -30,7 +30,7 @@ class VectorNodeContext(NodeSearchContext[VectorNode]):
             - to_dict() -> Dict[str, Any]
     
         Super Class:
-            NodeSearchContext
+            NodeContext
         """
         _x: Optional[int]
         _y: Optional[int]

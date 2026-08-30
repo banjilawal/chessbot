@@ -12,25 +12,25 @@ from __future__ import annotations
 from typing import Any, cast
 
 from artifcat import ValidationResult
-from assurance import StackSearchContextValidator, SquareContextValidator
-from domain import SquareSearchSearchContext
+from assurance import StackContextValidator, SquareContextValidator
+from domain import SquareSearchContext
 from err import SquareContextValidatorException
 from util import LoggingLevelRouter
 
 
-class SquareContextValidator(StackSearchContextValidator[SquareSearchSearchContext]):
+class SquareContextValidator(StackContextValidator[SquareSearchContext]):
     """
     Role
         -  Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a SquareSearchContext instance is safe before use.
+        1.  Ensure a SquareContext instance is safe before use.
 
     Attributes:
         integrity_checker: SquareContextChecker
 
     Provides:
-        -  execute(self, candidate: Any) -> ValidationResult[SquareSearchContext]
+        -  execute(self, candidate: Any) -> ValidationResult[SquareContext]
 
     Super Class:
         ContextValidator
@@ -50,7 +50,7 @@ class SquareContextValidator(StackSearchContextValidator[SquareSearchSearchConte
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[SquareSearchSearchContext]:
+    def execute(self, candidate: Any) -> ValidationResult[SquareSearchContext]:
         """
         Certify a candidate is a SquareContext that is safe to use.
 
@@ -61,7 +61,7 @@ class SquareContextValidator(StackSearchContextValidator[SquareSearchSearchConte
         Args:
             candidate: Any
         Returns:
-            ValidationResult[SquareSearchContext]
+            ValidationResult[SquareContext]
         Raises:
             SquareContextValidatorException
         """
@@ -81,7 +81,7 @@ class SquareContextValidator(StackSearchContextValidator[SquareSearchSearchConte
                 )
             )
         # --- Otherwise, cast and forward the work product to the caller. ---#
-        context = cast(SquareSearchSearchContext, validation.payload)
+        context = cast(SquareSearchContext, validation.payload)
         return ValidationResult.success(context)
 
         

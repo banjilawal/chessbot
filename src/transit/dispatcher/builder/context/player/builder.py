@@ -90,7 +90,7 @@ class PlayerContextBuilder(Builder[PlayerContextBuilder]):
             *   PlayerContextBuilderBuilderException
             *   ArenaPlayerContextBuilderFlagsException
         """
-        method = "AgentSearchContextBuilder.build"
+        method = "AgentContextBuilder.build"
         try:
             # Count how many optional parameters are not-null. One param needs to be not-null.
             params = [id, name, team, game, variety,]

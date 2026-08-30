@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from  .context import SquareSearchContext
+from  .context import SquareContext

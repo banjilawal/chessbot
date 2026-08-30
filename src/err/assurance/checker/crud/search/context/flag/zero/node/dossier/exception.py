@@ -30,7 +30,7 @@ class ZeroDossierNodeContextFlagsException(
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating no DossierNodeSearchContext flags were enabled.
+        1.  Indicating no DossierNodeContext flags were enabled.
 
     Attributes:
             msg: Optional[str]
@@ -47,7 +47,7 @@ class ZeroDossierNodeContextFlagsException(
     Super Class:
         SearchZeroNodeContextFlagsException
     """
-    MSG = "Zero DossierNodeSearchContext flags enabled."
+    MSG = "Zero DossierNodeContext flags enabled."
     ERR_CODE = "ZERO_DOSSIER_NODE_CONTEXT_FLAGS_ENABLED"
     
     def __init__(

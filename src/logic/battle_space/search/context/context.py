@@ -10,10 +10,10 @@ version: 1.0.0
 from typing import Optional
 
 from logic.coord import Coord
-from system import SearchContext
+from system import Context
 
 
-class ProjectionSearchContext(SearchContext):
+class ProjectionContext(Context):
     """"""
     
     @property

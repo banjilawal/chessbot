@@ -30,7 +30,7 @@ class ExcessEdgeContextFlagsException(
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating  too many EdgeSearchContext flags were enabled.
+        1.  Indicating  too many EdgeContext flags were enabled.
 
     Attributes:
             msg: Optional[str]
@@ -47,7 +47,7 @@ class ExcessEdgeContextFlagsException(
     Super Class:
         SearchExcessGraphContextFlagsException
     """
-    MSG = "Excess EdgeSearchContext flags enabled."
+    MSG = "Excess EdgeContext flags enabled."
     ERR_CODE = "EXCESS_EDGE_CONTEXT_FLAGS_ENABLED"
     
     def __init__(

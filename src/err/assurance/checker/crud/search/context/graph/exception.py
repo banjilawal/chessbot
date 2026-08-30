@@ -43,7 +43,7 @@ class GraphContextCheckerException(ContextCheckerException):
     Provides:
 
     Super Class:
-        SearchContextCheckerException
+        ContextCheckerException
     """
     MSG = "GraphContextChecker failure."
     ERR_CODE = "GRAPH_CONTEXT_CHECKER_FAILURE"

@@ -14,7 +14,7 @@ from typing import Any, Dict, Optional
 from domain import Arena, Game, Player, ModelContext
 
 
-class ArenaSearchContext(ModelContext[Arena]):
+class ArenaContext(ModelContext[Arena]):
     """
     Role:
         - Option Selector
@@ -31,7 +31,7 @@ class ArenaSearchContext(ModelContext[Arena]):
         -  to_dict() -> Dict[str, Any]
 
     Super Class:
-        ModelSearchContext
+        ModelContext
     """
     player: Optional[Player] = None
     game: Optional[Game] = None

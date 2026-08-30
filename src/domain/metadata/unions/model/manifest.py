@@ -30,7 +30,7 @@ class ModelTypeUnions(DomainObjectTypeUnions[T], ABC, Generic[T]):
         model: Type[T]
         carrier: Type[EntityCarrier[T]]
         blueprint: Type[Blueprint[T]]
-        search_context: Optional[StackSearchContext[T]]
+        search_context: Optional[StackContext[T]]
     Provides:
 
     Super Class:

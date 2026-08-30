@@ -13,22 +13,22 @@ from logic.coord import CoordValidator
 from logic.rank import Bishop, King, Knight, Pawn, Queen, Rank, RankSpec, Rook
 from system import IdValidator, LoggingLevelRouter, NameValidator, Validator, ValidationResult
 from logic.piece import (
-    DomainSearchContext, InvalidDomainSearchContextException, NullDomainSearchContextException,
+    DomainContext, InvalidDomainContextException, NullDomainContextException,
     ArenaDomainSearchParamsException, ZeroDomainSearchParamsException, DomainInvalidRankNameParamException
 )
 
 
-class DomainSearchContextValidator(Validator[DomainSearchContext]):
+class DomainContextValidator(Validator[DomainContext]):
     """
      Role:Validation, Data Integrity Guarantor, Security., Data Integrity
   
     Responsibilities:
-    1. Process and validate parameters for creating `DomainSearchContext` instances.
-    2. Create new `DomainSearchContext` objects if parameters meet specifications.
+    1. Process and validate parameters for creating `DomainContext` instances.
+    2. Create new `DomainContext` objects if parameters meet specifications.
     2. Report errors and return `BuildResult` with error details.
   
     # PROVIDES:
-    `BuildResult`: Return type containing the built `DomainSearchContext` or error information.
+    `BuildResult`: Return type containing the built `DomainContext` or error information.
   
     # ATTRIBUTES:
     None
@@ -36,24 +36,24 @@ class DomainSearchContextValidator(Validator[DomainSearchContext]):
     
     @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: T) -> ValidationResult[DomainSearchContext]:
+    def validate(cls, candidate: T) -> ValidationResult[DomainContext]:
         """"""
-        method = "DomainSearchContextValidator.execute"
+        method = "DomainContextValidator.execute"
         
         try:
             if candidate is None:
                 return ValidationResult.failure(
-                    NullDomainSearchContextException(f"{method} {NullDomainSearchContextException.MSG}")
+                    NullDomainContextException(f"{method} {NullDomainContextException.MSG}")
                 )
             
-            if not isinstance(candidate, DomainSearchContext):
+            if not isinstance(candidate, DomainContext):
                 return ValidationResult.failure(
                     TypeError(
-                        f"{method} Expected domainSearchContext DomainSearchContext, got {type(candidate).__name__}"
+                        f"{method} Expected domainContext DomainContext, got {type(candidate).__name__}"
                         )
                 )
             
-            search_context = cast(DomainSearchContext, candidate)
+            search_context = cast(DomainContext, candidate)
             
             if len(search_context.to_dict()) == 0:
                 return ValidationResult.failure(
@@ -63,7 +63,7 @@ class DomainSearchContextValidator(Validator[DomainSearchContext]):
             if len(search_context.to_dict()) > 1:
                 return ValidationResult.failure(
                     ArenaDomainSearchParamsException(
-                        f"{method} {InvalidDomainSearchContextException.MSG}"
+                        f"{method} {InvalidDomainContextException.MSG}"
                         )
                 )
             

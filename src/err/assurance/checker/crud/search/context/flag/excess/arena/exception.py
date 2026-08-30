@@ -28,7 +28,7 @@ class ExcessArenaContextFlagsException(ExcessContextFlagsException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating too many ArenaSearchContext flags were enabled.
+        1.  Indicating too many ArenaContext flags were enabled.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class ExcessArenaContextFlagsException(ExcessContextFlagsException):
     Super Class:
         SearchExcessContextFlagsException
     """
-    MSG = "Excessive ArenaSearchContext flags enabled."
+    MSG = "Excessive ArenaContext flags enabled."
     ERR_CODE = "EXCESSIVE_ARENA_CONTEXT_FLAGS_ENABLED"
     
     def __init__(

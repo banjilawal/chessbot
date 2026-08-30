@@ -12,13 +12,13 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Dict
 
-from assurance import StackSearchContextValidator, TeamContextValidator
+from assurance import StackContextValidator, TeamContextValidator
 from authorization import StackSearchPermissionUtility
-from domain import TeamSearchSearchContext
+from domain import TeamSearchContext
 
 
 @dataclass
-class TeamStackSearchPermissionUtility(StackSearchPermissionUtility[TeamSearchSearchContext]):
+class TeamStackSearchPermissionUtility(StackSearchPermissionUtility[TeamSearchContext]):
     """
     Role:
         - Utility
@@ -35,7 +35,7 @@ class TeamStackSearchPermissionUtility(StackSearchPermissionUtility[TeamSearchSe
     Super Class:
         StackSearchPermissionUtility
     """
-    validator: Dict[str, StackSearchContextValidator] = field(
+    validator: Dict[str, StackContextValidator] = field(
         default_factory=lambda: {
             "team_context_validator": TeamContextValidator(),
         }

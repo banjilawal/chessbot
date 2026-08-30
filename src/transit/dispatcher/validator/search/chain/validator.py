@@ -13,21 +13,21 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import SearchContextValidator, ChainContextValidator
-from domain import ChainSearchContext
+from assurance import ContextValidator, ChainContextValidator
+from domain import ChainContext
 from util import LoggingLevelRouter
 
 
-T = TypeVar("T", bound="ChainSearchContext")
+T = TypeVar("T", bound="ChainContext")
 
 
-class ChainSearchContextValidator(SearchContextValidator[T], ABC, Generic[T]):
+class ChainContextValidator(ContextValidator[T], ABC, Generic[T]):
     """
     Role
         -  Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a ChainSearchContext instance is safe before use.
+        1.  Ensure a ChainContext instance is safe before use.
 
     Attributes:
         integrity_checker: ChainContextChecker[T]
@@ -36,7 +36,7 @@ class ChainSearchContextValidator(SearchContextValidator[T], ABC, Generic[T]):
         -  execute(self, candidate: Any) -> ValidationResult[T]
 
     Super Class:
-        SearchContextValidator
+        ContextValidator
     """
     
     def __init__(self, integrity_checker: ChainContextValidator[T]):
@@ -56,7 +56,7 @@ class ChainSearchContextValidator(SearchContextValidator[T], ABC, Generic[T]):
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[T]:
         """
-        Verify a candidate is a safe ChainSearchContext.
+        Verify a candidate is a safe ChainContext.
         Args:
             candidate: Any
         Returns:

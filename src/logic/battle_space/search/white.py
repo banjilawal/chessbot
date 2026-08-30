@@ -54,11 +54,11 @@ From `logic.owner`:
 
 from typing import List
 
-from logic.battle_space import Projection, ProjectionSearchContext
+from logic.battle_space import Projection, ProjectionContext
 from logic.battle_space.service import ProjectionService
 from logic.coord import Coord
 from logic.piece import Piece
-from logic.board import Board, BoardContext, BoardSearchContextValidator, BoardValidator
+from logic.board import Board, BoardContext, BoardContextValidator, BoardValidator
 from system import (
     Finder, SearchResult, LoggingLevelRouter, PieceSearchNameCollisionException, PieceSearchCoordCollisionException,
     PieceSearchIdCollisionException
@@ -70,7 +70,7 @@ class WhiteTeamProjectionFinder(Finder[ProjectionService, Projection]):
 
     @classmethod
     @LoggingLevelRouter.monitor
-    def search(cls, service: ProjectionService, search_context: ProjectionSearchContext) -> SearchResult[List[Projection]]:
+    def search(cls, service: ProjectionService, search_context: ProjectionContext) -> SearchResult[List[Projection]]:
         """"""
         method = "WhiteTeamProjectionFinder.searcher"
 
@@ -78,7 +78,7 @@ class WhiteTeamProjectionFinder(Finder[ProjectionService, Projection]):
         if service_validation.is_failure():
             return SearchResult(exception=service_validation.exception)
 
-        search_context_validation = BoardSearchContextValidator.search_service(search_context)
+        search_context_validation = BoardContextValidator.search_service(search_context)
         if search_context_validation.is_failure():
             return SearchResult(exception=search_context_validation.exception)
 

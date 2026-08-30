@@ -77,7 +77,7 @@ class TeamContextToolkit(Toolkit[TeamContext]):
             *   TeamContextToolkitException
             *   ArenaTeamContextFlagsException
         """
-        method = "PieceSearchContextTooltoolkit"
+        method = "PieceContextTooltoolkit"
         
         # --- Count how many optional parameters are not-null. only one should be not null. ---#
         params = [id, name, arena, player, color]

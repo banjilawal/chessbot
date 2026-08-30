@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from collection import SquareStackService
-from domain import StackSearchRequest, Square, SquareSearchSearchContext
+from domain import StackSearchRequest, Square, SquareSearchContext
 
 
 class SquareSearchRequest(StackSearchRequest[Square]):
@@ -26,7 +26,7 @@ class SquareSearchRequest(StackSearchRequest[Square]):
 
      Attributes:
         id: int
-        context: SquareSearchContext
+        context: SquareContext
         stack: SquareStackService
 
      Provides:
@@ -35,18 +35,18 @@ class SquareSearchRequest(StackSearchRequest[Square]):
         StackSearchRequest[
      """
     
-    def __init__(self, id: int, context: SquareSearchSearchContext, stack: SquareStackService):
+    def __init__(self, id: int, context: SquareSearchContext, stack: SquareStackService):
         """
         Args:
             id: int
-            context: SquareSearchContext
+            context: SquareContext
             stack: SquareStackService
         """
         super().__init__(id=id, context=context, stack=stack)
         
     @property
-    def context(self) -> SquareSearchSearchContext:
-        return cast(SquareSearchSearchContext, super().context)
+    def context(self) -> SquareSearchContext:
+        return cast(SquareSearchContext, super().context)
         
     @property
     def stack(self) -> SquareStackService:

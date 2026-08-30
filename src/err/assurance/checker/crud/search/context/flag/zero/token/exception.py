@@ -28,7 +28,7 @@ class ZeroTokenContextFlagsException(ZeroContextFlagsException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating no TokenSearchContext flags were enabled.
+        1.  Indicating no TokenContext flags were enabled.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class ZeroTokenContextFlagsException(ZeroContextFlagsException):
     Super Class:
         SearchZeroContextFlagsException
     """
-    MSG = "No TokenSearchContext flag enabled."
+    MSG = "No TokenContext flag enabled."
     ERR_CODE = "NO_TOKEN_CONTEXT_FLAG_ENABLED"
     
     def __init__(

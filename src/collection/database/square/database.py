@@ -150,7 +150,7 @@ class SquareDatabase(Database[Square]):
         method = "SquareDatabase.add_occupant_to_square"
         
         # --- Handoff the responsibility for the occupation to stack_service. ---#
-        occupation_update_result = self._stack_service.handler.token.occupy_stack_square(
+        occupation_update_result = self._stack_service.handler.traveller.occupy_stack_square(
             token=token,
             square=square,
             token_service=token_service,

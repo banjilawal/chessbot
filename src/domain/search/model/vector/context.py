@@ -14,7 +14,7 @@ from typing import Any, Dict, Optional
 from domain import Vector, ModelContext
 
 
-class VectorSearchContext(ModelContext[Vector]):
+class VectorContext(ModelContext[Vector]):
     """
     Role:
         - Option Selector
@@ -30,7 +30,7 @@ class VectorSearchContext(ModelContext[Vector]):
         -  to_dict() -> Dict[str, Any]
 
     Super Class:
-        ModelSearchContext
+        ModelContext
     """
     _x: Optional[int]
     _y: Optional[int]

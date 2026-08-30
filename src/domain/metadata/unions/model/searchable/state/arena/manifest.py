@@ -13,7 +13,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Type
 
-from domain import ModelTypeUnions, Arena, ArenaBlueprint, ArenaCarrier, ArenaSearchSearchContext
+from domain import ModelTypeUnions, Arena, ArenaBlueprint, ArenaCarrier, ArenaSearchContext
 
 
 @dataclass
@@ -29,7 +29,7 @@ class ArenaTypeUnions(ModelTypeUnions[Arena]):
         model: Type[Arena] = Arena
         carrier: Type[ArenaCarrier] = ArenaCarrier
         blueprint: Type[ArenaBlueprint] = ArenaBlueprint
-        search_context: Type[ArenaSearchContext] = ArenaSearchContext
+        search_context: Type[ArenaContext] = ArenaContext
     
     Provides:
 
@@ -39,4 +39,4 @@ class ArenaTypeUnions(ModelTypeUnions[Arena]):
     model: Type[Arena] = Arena
     carrier: Type[ArenaCarrier] = ArenaCarrier
     blueprint: Type[ArenaBlueprint] = ArenaBlueprint
-    search_context: Type[ArenaSearchSearchContext] = ArenaSearchSearchContext
+    search_context: Type[ArenaSearchContext] = ArenaSearchContext

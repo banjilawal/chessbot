@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from collection import RankStackService
-from domain import StackSearchRequest, Rank, RankSearchContext
+from domain import StackSearchRequest, Rank, RankContext
 
 
 class RankSearchRequest(StackSearchRequest[Rank]):
@@ -26,7 +26,7 @@ class RankSearchRequest(StackSearchRequest[Rank]):
 
      Attributes:
         id: int
-        context: RankSearchContext
+        context: RankContext
         stack: RankStackService
 
      Provides:
@@ -35,18 +35,18 @@ class RankSearchRequest(StackSearchRequest[Rank]):
         StackSearchRequest[
      """
     
-    def __init__(self, id: int, context: RankSearchContext, stack: RankStackService):
+    def __init__(self, id: int, context: RankContext, stack: RankStackService):
         """
         Args:
             id: int
-            context: RankSearchContext
+            context: RankContext
             stack: RankStackService
         """
         super().__init__(id=id, context=context, stack=stack)
         
     @property
-    def context(self) -> RankSearchContext:
-        return cast(RankSearchContext, super().context)
+    def context(self) -> RankContext:
+        return cast(RankContext, super().context)
         
     @property
     def stack(self) -> RankStackService:

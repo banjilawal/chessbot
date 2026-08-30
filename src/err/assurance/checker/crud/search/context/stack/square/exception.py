@@ -20,11 +20,11 @@ __all__ = [
     "SquareContextCheckerException",
 ]
 
-from err import SearchContextCheckerException
+from err import ContextCheckerException
 
 
 # ======================# SQUARE_CONTEXT_CHECKER_FAILURE #======================#
-class SquareContextCheckerException(SearchContextCheckerException):
+class SquareContextCheckerException(ContextCheckerException):
     """
     Role:
         - Error Tracing
@@ -45,7 +45,7 @@ class SquareContextCheckerException(SearchContextCheckerException):
     Provides:
 
     Super Class:
-        SearchContextCheckerException
+        ContextCheckerException
     """
     MSG = "SquareContextChecker failure."
     ERR_CODE = "SQUARE_CONTEXT_CHECKER_FAILURE"

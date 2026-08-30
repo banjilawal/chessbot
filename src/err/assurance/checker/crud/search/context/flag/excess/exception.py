@@ -28,7 +28,7 @@ class ExcessContextFlagsException(ContextFlagCountException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating too many SearchContext flags enabled.
+        1.  Indicating too many Context flags enabled.
 
     Attributes:
             msg: Optional[str]
@@ -43,7 +43,7 @@ class ExcessContextFlagsException(ContextFlagCountException):
     Provides:
 
     Super Class:
-        SearchContextFlagCountException
+        ContextFlagCountException
     """
     MSG = "Excessive ContextSearch flag was enabled."
     ERR_CODE = "EXCESSIVE_ENABLED_CONTEXT_FLAGSERROR"

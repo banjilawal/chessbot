@@ -28,7 +28,7 @@ class ZeroGraphContextFlagsException(ZeroContextFlagsException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating no SearchContext flags were enabled.
+        1.  Indicating no Context flags were enabled.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class ZeroGraphContextFlagsException(ZeroContextFlagsException):
     Super Class:
         SearchZeroContextFlagsException
     """
-    MSG = "Zero SearchContext flags enabled."
+    MSG = "Zero Context flags enabled."
     ERR_CODE = "ZERO_GRAPH_CONTEXT_FLAGS_ENABLED"
     
     def __init__(

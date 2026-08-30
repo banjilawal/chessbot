@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchContextValidatorException
+from err import ContextValidatorException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# CHAIN_CONTEXT_VALIDATOR_FAILURE #======================#
-class ChainContextValidatorException(SearchContextValidatorException):
+class ChainContextValidatorException(ContextValidatorException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class ChainContextValidatorException(SearchContextValidatorException):
     Provides:
 
     Super Class:
-        SearchContextValidatorException
+        ContextValidatorException
     """
     MSG = "ChainContextValidator failed."
     ERR_CODE = "CHAIN_CONTEXT_VALIDATOR_FAILURE"

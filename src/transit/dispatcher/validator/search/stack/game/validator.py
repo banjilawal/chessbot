@@ -78,7 +78,7 @@ class GameContextValidator(ContextValidator[Game]):
                     TypeError(f"{method}: Expected GameContext, got {type(candidate).__name__} instead.")
                 )
             # After existence and type checks cast the rank for further processing.
-            context = cast(GameSearchContext, priming.payload)
+            context = cast(GameContext, priming.payload)
             
             # Handle the case that, no attribute-value tuple is enabled.
             if len(context.to_dict()) == 0:

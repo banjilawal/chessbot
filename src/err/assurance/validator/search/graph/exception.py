@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchContextValidatorException
+from err import ContextValidatorException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# GRAPH_CONTEXT_VALIDATOR_FAILURE #======================#
-class GraphContextValidatorException(SearchContextValidatorException):
+class GraphContextValidatorException(ContextValidatorException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class GraphContextValidatorException(SearchContextValidatorException):
     Provides:
 
     Super Class:
-        SearchContextValidatorException
+        ContextValidatorException
     """
     MSG = "GraphContextValidator failed."
     ERR_CODE = "GRAPH_CONTEXT_VALIDATOR_FAILURE"

@@ -43,7 +43,7 @@ class ContextFlagCountException(ContextCheckerException):
     Provides:
 
     Super Class:
-        SearchContextCheckerException
+        ContextCheckerException
     """
     MSG = "Enabled flags count out of bounds."
     ERR_CODE = "CONTEXT_FLAG_COUNT_ERROR"

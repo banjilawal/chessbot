@@ -12,20 +12,20 @@ from __future__ import annotations
 from typing import Any, Dict, Optional, Type, cast
 
 from config import GameColor
-from domain import PathSearchContext, Board, Game, ContextBlueprint, Player
+from domain import PathContext, Board, Game, ContextBlueprint, Player
 from err import PathContextNullException
 
 
-class PathContextBlueprint(ModelContextBlueprint[PathSearchContext]):
+class PathContextBlueprint(ModelContextBlueprint[PathContext]):
     """
      Role:
         1.  Metadata
 
      Responsibilities:
-         1.  Provide attributes for hydrating an PathSearchContext.
+         1.  Provide attributes for hydrating an PathContext.
          
      Attributes:
-        domain_class: Type[PathSearchContext]
+        domain_class: Type[PathContext]
         domain_null_exception: PathContextNullException
         id: Optional[int]
         game: Optional[Game]
@@ -46,7 +46,7 @@ class PathContextBlueprint(ModelContextBlueprint[PathSearchContext]):
     
     def __init__(
             self,
-            domain_class: Optional[Type[PathSearchContext]] | None = None,
+            domain_class: Optional[Type[PathContext]] | None = None,
             domain_null_exception: Optional[PathContextNullException] | None = None,
             id: Optional[int] | None = None,
             game: Optional[Game] | None = None,
@@ -56,7 +56,7 @@ class PathContextBlueprint(ModelContextBlueprint[PathSearchContext]):
     ):
         """
         Args:
-            domain_class: Type[PathSearchContext]
+            domain_class: Type[PathContext]
             domain_null_exception: PathContextNullException
             game: Optional[Game]
             board: Optional[Board]
@@ -65,7 +65,7 @@ class PathContextBlueprint(ModelContextBlueprint[PathSearchContext]):
         """
         super().__init__(
             id=id,
-            domain_class=domain_class or Type[PathSearchContext],
+            domain_class=domain_class or Type[PathContext],
             domain_null_exception=domain_null_exception or PathContextNullException(),
         )
         self._game = game
@@ -74,12 +74,12 @@ class PathContextBlueprint(ModelContextBlueprint[PathSearchContext]):
         self._player = player
     
     @property
-    def domain_class(self) -> Type[PathSearchContext]:
-        return cast(Type[PathSearchContext], super().domain_class)
+    def domain_class(self) -> Type[PathContext]:
+        return cast(Type[PathContext], super().domain_class)
     
     @property
     def domain_null_exception(self) -> PathContextNullException:
-        return  cast(PathContextNullException, super()._domain_null_exception)
+        return  cast(PathContextNullException, super().domain_null_exception)
     
     @property
     def game(self) -> Optional[Game]:

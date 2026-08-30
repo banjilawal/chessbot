@@ -28,7 +28,7 @@ class SearchableModelBlueprint(ModelBlueprint[T], ABC, Generic[T]):
  
 
      Attributes:
-         search_context_class: Type[SearchContext[T]]
+         search_context_class: Type[Context[T]]
          
      Provides:
 
@@ -46,7 +46,7 @@ class SearchableModelBlueprint(ModelBlueprint[T], ABC, Generic[T]):
         """
         Args:
             domain_class: Type[Model[T]]
-            search_context_class: Type[SearchContext[T]]
+            search_context_class: Type[Context[T]]
             domain_null_exception:ModelNullException
         """
         super().__init__(

@@ -30,7 +30,7 @@ class ExcessVectorNodeContextFlagsException(
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating too many VectorNodeSearchContext flags were enabled.
+        1.  Indicating too many VectorNodeContext flags were enabled.
 
     Attributes:
             msg: Optional[str]
@@ -47,7 +47,7 @@ class ExcessVectorNodeContextFlagsException(
     Super Class:
         SearchExcessNodeContextFlagsException
     """
-    MSG = "Excessive VectorNodeSearchContext flags enabled."
+    MSG = "Excessive VectorNodeContext flags enabled."
     ERR_CODE = "EXCESSIVE_VECTOR_NODE_CONTEXT_FLAGS_ENABLED"
     
     def __init__(

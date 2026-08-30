@@ -90,7 +90,7 @@ class PlayerContextToolkit(Toolkit[PlayerContextToolkit]):
             *   PlayerContextToolkitToolkitException
             *   ArenaPlayerContextToolkitFlagsException
         """
-        method = "AgentSearchContextTooltoolkit"
+        method = "AgentContextTooltoolkit"
         try:
             # Count how many optional parameters are not-null. One param needs to be not-null.
             params = [id, name, team, game, variety,]

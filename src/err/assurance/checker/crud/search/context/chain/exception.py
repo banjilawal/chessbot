@@ -43,7 +43,7 @@ class ChainContextCheckerException(ContextCheckerException):
     Provides:
 
     Super Class:
-        SearchContextCheckerException
+        ContextCheckerException
     """
     MSG = "ChainContextChecker failure."
     ERR_CODE = "CHAIN_CONTEXT_CHECKER_FAILURE"

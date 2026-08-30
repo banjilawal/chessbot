@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from collection import TeamStackService
-from domain import StackSearchRequest, Team, TeamSearchSearchContext
+from domain import StackSearchRequest, Team, TeamSearchContext
 
 
 class TeamSearchRequest(StackSearchRequest[Team]):
@@ -26,7 +26,7 @@ class TeamSearchRequest(StackSearchRequest[Team]):
 
      Attributes:
         id: int
-        context: TeamSearchContext
+        context: TeamContext
         stack: TeamStackService
 
      Provides:
@@ -35,18 +35,18 @@ class TeamSearchRequest(StackSearchRequest[Team]):
         StackSearchRequest[
      """
     
-    def __init__(self, id: int, context: TeamSearchSearchContext, stack: TeamStackService):
+    def __init__(self, id: int, context: TeamSearchContext, stack: TeamStackService):
         """
         Args:
             id: int
-            context: TeamSearchContext
+            context: TeamContext
             stack: TeamStackService
         """
         super().__init__(id=id, context=context, stack=stack)
         
     @property
-    def context(self) -> TeamSearchSearchContext:
-        return cast(TeamSearchSearchContext, super().context)
+    def context(self) -> TeamSearchContext:
+        return cast(TeamSearchContext, super().context)
         
     @property
     def stack(self) -> TeamStackService:

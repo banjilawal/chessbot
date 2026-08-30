@@ -23,4 +23,4 @@ from .token import *
 from .vector import *
 
 # Modules
-from .exception import SearchContextCheckerException
+from .exception import ContextCheckerException

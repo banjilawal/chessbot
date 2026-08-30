@@ -12,13 +12,13 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Dict
 
-from assurance import StackSearchContextValidator, SnapshotContextValidator
+from assurance import StackContextValidator, SnapshotContextValidator
 from authorization import StackSearchPermissionUtility
-from domain import SnapshotSearchContext
+from domain import SnapshotContext
 
 
 @dataclass
-class SnapshotStackSearchPermissionUtility(StackSearchPermissionUtility[SnapshotSearchContext]):
+class SnapshotStackSearchPermissionUtility(StackSearchPermissionUtility[SnapshotContext]):
     """
     Role:
         - Utility
@@ -35,7 +35,7 @@ class SnapshotStackSearchPermissionUtility(StackSearchPermissionUtility[Snapshot
     Super Class:
         StackSearchPermissionUtility
     """
-    validator: Dict[str, StackSearchContextValidator] = field(
+    validator: Dict[str, StackContextValidator] = field(
         default_factory=lambda: {
             "snapshot_context_validator": SnapshotContextValidator(),
         }

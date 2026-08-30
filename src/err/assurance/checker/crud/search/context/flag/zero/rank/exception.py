@@ -28,7 +28,7 @@ class ZeroRankContextFlagsException(ZeroContextFlagsException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating no RankSearchContext flags were enabled.
+        1.  Indicating no RankContext flags were enabled.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class ZeroRankContextFlagsException(ZeroContextFlagsException):
     Super Class:
         SearchZeroContextFlagsException
     """
-    MSG = "No RankSearchContext flag enabled."
+    MSG = "No RankContext flag enabled."
     ERR_CODE = "NO_RANK_CONTEXT_FLAG_ENABLED"
     
     def __init__(

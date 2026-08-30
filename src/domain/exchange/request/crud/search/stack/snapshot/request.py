@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from collection import SnapshotStackService
-from domain import StackSearchRequest, Snapshot, SnapshotSearchContext
+from domain import StackSearchRequest, Snapshot, SnapshotContext
 
 
 class SnapshotSearchRequest(StackSearchRequest[Snapshot]):
@@ -26,7 +26,7 @@ class SnapshotSearchRequest(StackSearchRequest[Snapshot]):
 
      Attributes:
         id: int
-        context: SnapshotSearchContext
+        context: SnapshotContext
         stack: SnapshotStackService
 
      Provides:
@@ -35,18 +35,18 @@ class SnapshotSearchRequest(StackSearchRequest[Snapshot]):
         StackSearchRequest[
      """
     
-    def __init__(self, id: int, context: SnapshotSearchContext, stack: SnapshotStackService):
+    def __init__(self, id: int, context: SnapshotContext, stack: SnapshotStackService):
         """
         Args:
             id: int
-            context: SnapshotSearchContext
+            context: SnapshotContext
             stack: SnapshotStackService
         """
         super().__init__(id=id, context=context, stack=stack)
         
     @property
-    def context(self) -> SnapshotSearchContext:
-        return cast(SnapshotSearchContext, super().context)
+    def context(self) -> SnapshotContext:
+        return cast(SnapshotContext, super().context)
         
     @property
     def stack(self) -> SnapshotStackService:

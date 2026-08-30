@@ -13,7 +13,7 @@ from abc import ABC
 from dataclasses import dataclass
 from typing import Generic, Type, TypeVar
 
-from domain import Blueprint, Node, NodeSearchContext, SearchableStructureTypeUnions
+from domain import Blueprint, Node, NodeContext, SearchableStructureTypeUnions
 from transit import EntityCarrier
 
 T = TypeVar("T", bound="Node")
@@ -32,7 +32,7 @@ class NodeTypeUnions(SearchableStructureTypeUnions[T], ABC, Generic[T]):
         node: Type[T]
         carrier: Type[EntityCarrier[T]]
         blueprint: Type[Blueprint[T]]
-        search_context: NodeSearchContext[T]
+        search_context: NodeContext[T]
     Provides:
 
     Super Class:
@@ -41,4 +41,4 @@ class NodeTypeUnions(SearchableStructureTypeUnions[T], ABC, Generic[T]):
     node: Type[T]
     carrier: Type[EntityCarrier[T]]
     blueprint: Type[Blueprint[T]]
-    search_context: NodeSearchContext[T]
+    search_context: NodeContext[T]

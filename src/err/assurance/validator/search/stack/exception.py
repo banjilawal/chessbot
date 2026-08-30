@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchContextValidatorException
+from err import ContextValidatorException
 from artifcat import MethodResultType
 
 
 __all__ = [
     # ======================# STACK_CONTEXT_VALIDATOR_FAILURE #======================#
-    "SearchContextValidatorException",
+    "ContextValidatorException",
 ]
 
 # ======================# STACK_CONTEXT_VALIDATOR_FAILURE #======================#
-class SearchContextValidatorException(SearchContextValidatorException):
+class ContextValidatorException(ContextValidatorException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a SearchContextValidator failed.
+        1.  Indicating assurance by a ContextValidator failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,9 +42,9 @@ class SearchContextValidatorException(SearchContextValidatorException):
     Provides:
 
     Super Class:
-        SearchContextValidatorException
+        ContextValidatorException
     """
-    MSG = "SearchContextValidator failed."
+    MSG = "ContextValidator failed."
     ERR_CODE = "STACK_CONTEXT_VALIDATOR_FAILURE"
     
     def __init__(
