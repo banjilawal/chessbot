@@ -1,4 +1,4 @@
-# src/domain/model/searchable/state/query/stack/square/model/searchable/model.py.py
+# src/domain/model/searchable/state/query/stack/square/model.py
 
 """
 Module: domain.model.searchable.state.query.stack.square.model

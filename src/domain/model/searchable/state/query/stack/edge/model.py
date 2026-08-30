@@ -1,4 +1,4 @@
-# src/domain/model/searchable/state/query/stack/edge/model/searchable/model.py.py
+# src/domain/model/searchable/state/query/stack/edge/model.py
 
 """
 Module: domain.model.searchable.state.query.stack.edge.model

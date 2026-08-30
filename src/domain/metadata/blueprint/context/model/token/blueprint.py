@@ -46,17 +46,16 @@ class TokenContextBlueprint(ModelContextBlueprint[TokenContext]):
      Super Class:
         ModelContextBlueprint
      """
-    
-    _id: Optional[int] | None = None
-    _name: Optional[str] | None = None
-    _rank: Optional[Rank] | None = None
-    _team: Optional[Team] | None = None
-    _ransom: Optional[int] | None = None
+    _id: Optional[int]
+    _name: Optional[str]
+    _rank: Optional[Rank]
+    _team: Optional[Team]
+    _ransom: Optional[int]
+    _color: Optional[GameColor]
     _formation: Optional[Formation]
-    _color: Optional[GameColor] | None = None
-    _current_position: Optional[Coord] | None = None
-    _home_square: Optional[HomeSquare] | None = None
-    _activity_state: Optional[TokenActivityState] | None = None
+    _current_position: Optional[Coord]
+    _home_square: Optional[HomeSquare]
+    _activity_state: Optional[TokenActivityState]
     
     def __init__(
             self,

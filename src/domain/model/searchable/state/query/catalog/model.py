@@ -1,4 +1,4 @@
-# src/domain/model/searchable/state/query/catalog/model/searchable/model.py.py
+# src/domain/model/searchable/state/query/catalog/model.py
 
 """
 Module: domain.model.searchable.state.query.catalog.model
