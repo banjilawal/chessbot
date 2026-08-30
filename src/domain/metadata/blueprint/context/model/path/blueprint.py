@@ -11,8 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional, Type, cast
 
-from config import GameColor
-from domain import PathContext, Board, Game, ContextBlueprint, Player
+from domain import ModelContextBlueprint, PathContext, Square
 from err import PathContextNullException
 
 
@@ -22,16 +21,15 @@ class PathContextBlueprint(ModelContextBlueprint[PathContext]):
         1.  Metadata
 
      Responsibilities:
-         1.  Provide attributes for hydrating an PathContext.
+         1.  Provide attributes for hydrating a PathContext.
          
      Attributes:
+        label: Optional[int]
+        origin: Optional[Square]
+        destination: Optional[Square]
+        
         domain_class: Type[PathContext]
         domain_null_exception: PathContextNullException
-        id: Optional[int]
-        game: Optional[Game]
-        board: Optional[Board]
-        player: Optional[Player]
-        color: Optional[GameColor]
 
      Provides:
 
@@ -39,72 +37,69 @@ class PathContextBlueprint(ModelContextBlueprint[PathContext]):
         ModelContextBlueprint
      """
 
-    _game: Optional[Game]
-    _board: Optional[Board]
-    _player: Optional[Player]
-    _color: Optional[GameColor]
+    _label: Optional[int]
+    _origin: Optional[Square]
+    _destination: Optional[Square]
+    
     
     def __init__(
             self,
+            label: Optional[int] | None = None,
+            origin: Optional[Square] | None = None,
+            destination: Optional[Square] | None = None,
             domain_class: Optional[Type[PathContext]] | None = None,
             domain_null_exception: Optional[PathContextNullException] | None = None,
-            id: Optional[int] | None = None,
-            game: Optional[Game] | None = None,
-            board: Optional[Board] | None = None,
-            player: Optional[Player] | None = None,
-            color: Optional[GameColor] | None = None,
+
     ):
         """
         Args:
+            label: Optional[int]
+            origin: Optional[Square]
+            destination: Optional[Square]
             domain_class: Type[PathContext]
             domain_null_exception: PathContextNullException
-            game: Optional[Game]
-            board: Optional[Board]
-            player: Optional[Player]
-            color: Optional[GameColor]
         """
         super().__init__(
             id=id,
             domain_class=domain_class or Type[PathContext],
             domain_null_exception=domain_null_exception or PathContextNullException(),
         )
-        self._game = game
-        self._board = board
-        self._color = color
-        self._player = player
+        self._label = label
+        self._origin = origin
+        self._destination = destination
+
     
     @property
     def domain_class(self) -> Type[PathContext]:
         return cast(Type[PathContext], super().domain_class)
     
+    
     @property
     def domain_null_exception(self) -> PathContextNullException:
         return  cast(PathContextNullException, super().domain_null_exception)
     
-    @property
-    def game(self) -> Optional[Game]:
-        return self._game
     
     @property
-    def player(self) -> Optional[Player]:
-        return self._player
+    def label(self) -> Optional[int]:
+        return self._label
+    
     
     @property
-    def board(self) -> Optional[Board]:
-        return self._board
+    def origin(self) -> Optional[Square]:
+        return self._origin
+    
     
     @property
-    def color(self) -> Optional[GameColor]:
-        return self._color
+    def destination(self) -> Optional[Square]:
+        return self._destination
+    
     
     @property
     def to_dict(self) -> Dict[str, Any]:
         return {
-            "id": self.id,
-            "game": self._game,
-            "board": self._board,
-            "player": self._player,
-            "color": self._color,
+            "label": self._label,
+            "origin": self._origin,
+            "destination": self._destination,
         }
     
     

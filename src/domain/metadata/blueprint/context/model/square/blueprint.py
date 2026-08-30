@@ -11,8 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional, Type, cast
 
-from config import GameColor
-from domain import SquareContext, Board, Game, ContextBlueprint, Player
+from domain import Board, Coord, ModelContextBlueprint, SquareContext, SquareState, SquareType, Token
 from err import SquareContextNullException
 
 
@@ -22,89 +21,115 @@ class SquareContextBlueprint(ModelContextBlueprint[SquareContext]):
         1.  Metadata
 
      Responsibilities:
-         1.  Provide attributes for hydrating an SquareContext.
+         1.  Provide attributes for hydrating a SquareContext.
          
      Attributes:
+        id: Optional[int]
+        id: Optional[str]
+        board: Optional[Board]
+        coord: Optional[Coord]
+        occupant: Optional[Token]
+        state: Optional[SquareState]
+        square_type: Optional[SquareType]
+        
         domain_class: Type[SquareContext]
         domain_null_exception: SquareContextNullException
-        id: Optional[int]
-        game: Optional[Game]
-        board: Optional[Board]
-        player: Optional[Player]
-        color: Optional[GameColor]
 
      Provides:
 
      Super Class:
         ModelContextBlueprint
      """
-
-    _game: Optional[Game]
     _board: Optional[Board]
-    _player: Optional[Player]
-    _color: Optional[GameColor]
+    _coord: Optional[Coord]
+    _occupant: Optional[Token]
+    _state: Optional[SquareState]
+    _square_type: Optional[SquareType]
+    
     
     def __init__(
             self,
+            id: Optional[int] | None = None,
+            name: Optional[str] | None = None,
+            board: Optional[Board] | None = None,
+            coord: Optional[Coord] | None = None,
+            occupant: Optional[Token] | None = None,
+            state: Optional[SquareState] | None = None,
+            square_type: Optional[SquareType] | None = None,
             domain_class: Optional[Type[SquareContext]] | None = None,
             domain_null_exception: Optional[SquareContextNullException] | None = None,
-            id: Optional[int] | None = None,
-            game: Optional[Game] | None = None,
-            board: Optional[Board] | None = None,
-            player: Optional[Player] | None = None,
-            color: Optional[GameColor] | None = None,
     ):
         """
         Args:
+            id: Optional[id]
+            name: Optional[str]
+            board: Optional[Board]
+            coord: Optional[Coord]
+            occupant: Optional[Token]
+            state: Optional[SquareState]
+            square_type: Optional[SquareType]
             domain_class: Type[SquareContext]
             domain_null_exception: SquareContextNullException
-            game: Optional[Game]
-            board: Optional[Board]
-            player: Optional[Player]
-            color: Optional[GameColor]
+
         """
         super().__init__(
             id=id,
+            name=name,
             domain_class=domain_class or Type[SquareContext],
             domain_null_exception=domain_null_exception or SquareContextNullException(),
         )
-        self._game = game
+        self._coord = coord
         self._board = board
-        self._color = color
-        self._player = player
+        self._state = state
+        self._occupant = occupant
+        self._square_type = square_type
+
     
     @property
     def domain_class(self) -> Type[SquareContext]:
         return cast(Type[SquareContext], super().domain_class)
     
+    
     @property
     def domain_null_exception(self) -> SquareContextNullException:
         return  cast(SquareContextNullException, super().domain_null_exception)
     
+
     @property
-    def game(self) -> Optional[Game]:
-        return self._game
+    def coord(self) -> Optional[Coord]:
+        return self._coord
     
-    @property
-    def player(self) -> Optional[Player]:
-        return self._player
     
     @property
     def board(self) -> Optional[Board]:
         return self._board
     
-    @property
-    def color(self) -> Optional[GameColor]:
-        return self._color
     
+    @property
+    def occupant(self) -> Optional[Token]:
+        return self._occupant
+    
+    
+    @property
+    def state(self) -> Optional[SquareState]:
+        return self._state
+    
+    
+    @property
+    def square_type(self)-> Optional[SquareType]:
+        return self._square_type
+    
+        
     @property
     def to_dict(self) -> Dict[str, Any]:
         return {
             "id": self.id,
-            "game": self._game,
+            "name": self.name,
             "board": self._board,
-            "player": self._player,
-            "color": self._color,
+            "coord": self._coord,
+            "state": self._state,
+            "occupant": self._occupant,
+            "square_type": self._square_type,
         }
     
     
@@ -113,3 +138,4 @@ class SquareContextBlueprint(ModelContextBlueprint[SquareContext]):
     
 
 
+ 

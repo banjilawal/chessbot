@@ -13,4 +13,5 @@ version: 0.0.2
 
 
 # Modules
+from .category import SquareType
 from  .context import SquareContext

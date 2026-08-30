@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain import Board, Coord, SquareState, ModelContext, Square, Token
+from domain import Board, Coord, SquareState, ModelContext, Square, SquareType, Token
 
 
 class SquareContext(ModelContext[Square]):
@@ -29,7 +29,7 @@ class SquareContext(ModelContext[Square]):
         coord: Optional[Coord]
         occupant: Optional[Token]
         state: Optional[SquareState]
-        home_square_type: Optional[bool]
+        square_type: Optional[SquareType]
             
     Provides:
         -  to_dict() -> Dict[str, Any]
@@ -41,7 +41,7 @@ class SquareContext(ModelContext[Square]):
     _coord: Optional[Coord]
     _occupant: Optional[Token]
     _state: Optional[SquareState]
-    _home_square_type: Optional[bool]
+    _square_type: Optional[SquareType]
     
     def __init__(
             self,
@@ -51,7 +51,7 @@ class SquareContext(ModelContext[Square]):
             coord: Optional[Coord] | None = None,
             occupant: Optional[Token] | None = None,
             state: Optional[SquareState] | None = None,
-            home_square_type: Optional[bool] | None = None,
+            square_type: Optional[SquareType] | None = None,
     ):
         """
         Args:
@@ -61,14 +61,14 @@ class SquareContext(ModelContext[Square]):
             coord: Optional[Coord]
             occupant: Optional[Token]
             state: Optional[SquareState]
-            home_square_type: Optional[bool]
+            square_type: Optional[SquareType]
         """
         super().__init__(id=id, name=name)
         self._board = board
         self._coord = coord
-        self._occupant = occupant
         self._state = state
-        self._home_square_type = home_square_type
+        self._occupant = occupant
+        self._square_type = square_type
     
     @property
     def board(self) -> Optional[Board]:
@@ -87,17 +87,17 @@ class SquareContext(ModelContext[Square]):
         return self._state
     
     @property
-    def home_square_type(self) -> Optional[bool]:
-        return self._home_square_type
+    def square_type(self) -> Optional[SquareType]:
+        return self._square_type
     
     @property
     def to_dict(self) -> Dict[str, Any]:
         return {
             "id": self.id,
             "name": self.name,
-            "board": self.board,
-            "coord": self.coord,
-            "occupant": self.occupant,
-            "state": self.state,
-            "home_square_type": self.home_square_type,
+            "board": self._board,
+            "coord": self._coord,
+            "state": self._state,
+            "occupant": self._occupant,
+            "square_type": self._square_type,
         }
