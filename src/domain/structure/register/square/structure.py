@@ -44,20 +44,20 @@ class SquareRegister(Register[Square]):
         super().__init__(a=origin, b=destination)
     
     @property
-    def a(self) -> Square:
-        return cast(Square, super().a)
-    
-    @property
-    def b(self) -> Square:
-        return cast(Square, super().b)
-    
-    @property
     def origin(self) -> Square:
         return cast(Square, super().a)
     
     @property
+    def a(self) -> Square:
+        return self.origin
+    
+    @property
     def destination(self) -> Square:
-        return cast(Square, self.b)
+        return cast(Square, super().b)
+    
+    @property
+    def b(self) -> Square:
+        return self.destination
 
     @property
     def origin_is_destination(self) -> bool:

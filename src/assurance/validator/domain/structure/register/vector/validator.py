@@ -114,7 +114,7 @@ class VectorRegisterValidator(Validator[VectorRegister]):
                 )
             )
         # Handle the case that, one slot is empty.
-        if blueprint.is_wrong_size:
+        if blueprint.is_half_full:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorRegisterRootCheckerException(

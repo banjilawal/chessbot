@@ -1,7 +1,7 @@
-# src/game/winner/game.py
+# src/game/winner/report.py
 
 """
-Module: game.winner.game
+Module: game.winner.report
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,57 +9,75 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import abstractmethod
-
-from domain import Model, Game, Player, Team
+from domain import Championship, Player, Team
+from game import Checkmate
 
 
 class GameWinner:
-    _game: Game
-    _champion: Player
-    _loss: int
-    _prize: int
-    _total_score: int
+    """
+    Role:
+        - Reporting
+
+    Responsibilities:
+        1.  Details about  the winner and their checkmate moves.
+        
+    Attributes:
+        checkmate: Checkmate
+        championship: Championship
+        winner_has_right_team: bool
+        winner_has_wrong_team: bool
+        
+    Provides:
+
+    Super Class:
+    """
+    _checkmate: Checkmate
+    _championship: Championship
     
-    def __init__(self,
-            champion: Player,
-            team: Team,
-            loss: int,
-            prize: int,
+    def __init__(
+            self,
+            checkmate: Checkmate,
+            championship: Championship,
     ):
         """
         Args:
-            champion: Player
-            team: Team
-            loss: int
-            prize: int
+            checkmate: Checkmate
+            championship: Championship
         """
-        self._champion = champion
-        self._team = team
-        self._loss = loss
-        self._prize = prize
-        self._total_score = self._prize - self._loss
+        self._checkmate = checkmate
+        self._championship = championship
         
     @property
-    def champion(self) -> Player:
-        return self._champion
+    def checkmate(self) -> Checkmate:
+        return self._checkmate
     
     @property
-    def team(self) -> Team:
-        return self._team
+    def championship(self) -> Championship:
+        return self._championship
     
     @property
-    def loss(self) -> int:
-        return self._loss
+    def winner(self) -> Player:
+        if self.winner_has_right_team:
+            return self._championship.winner
+        return self._checkmate.winner
     
     @property
-    def prize(self) -> int:
-        return self._prize
+    def winner_has_right_team(self) -> bool:
+        return self._championship.winner == self._checkmate.winner
     
     @property
-    def total_score(self) -> int:
-        return self._total_score
+    def winner_has_wrong_team(self) -> bool:
+        return not self.winner_has_right_team
     
     @property
     def winning_team(self) -> Team:
-        return None
+        return self.checkmate.attacker.team.owner
+    
+    @property
+    def loosing_team(self) -> Team:
+        return self._checkmate.mated_king.team
+    
+    @property
+    def looser_has_right_team(self) -> bool:
+        return self._championship.looser == self.loosing_team.owner
+    

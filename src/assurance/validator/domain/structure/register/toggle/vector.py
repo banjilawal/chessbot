@@ -123,7 +123,7 @@ class CartesianToggleRegisterValidator(
                     )
                 )
             )
-        if blueprint.is_wrong_size:
+        if blueprint.is_half_full:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 CartesianToggleRegisterCheckerException(

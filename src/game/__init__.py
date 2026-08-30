@@ -10,7 +10,9 @@ version: 0.0.2
 # =========== GAME PACKAGE ===========#
 
 # Packages
+from .checkmate import *
 from .snapshot import *
 from .turn import *
+from .winner import *
 
 # Modules

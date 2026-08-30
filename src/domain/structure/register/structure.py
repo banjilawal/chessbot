@@ -76,22 +76,23 @@ class Register(Structure, ABC, Generic[T]):
     
     @property
     def to_dict(self) -> Dict[str, T]:
-        return {"a": self._a, "v": self._b}
+        return {"a": self._a, "b": self._b}
+    
+    @property
+    def size(self) -> int:
+        return len(self.to_list)
     
     @property
     def is_empty(self) -> bool:
         return self.size == 0
     
     @property
-    def is_right_size(self) -> bool:
+    def is_full(self) -> bool:
         return self.size == 2
     
     @property
-    def is_wrong_size(self) -> bool:
+    def is_half_full(self) -> bool:
         return not (
-                self.is_empty and self.is_right_size
+                self.is_empty and self.is_full
         )
     
-    @property
-    def size(self) -> int:
-        return len(self.to_list)

@@ -13,6 +13,7 @@ version: 0.0.2
 from .toggle import *
 from .coord import *
 from .number import *
+from .player import *
 from .square import *
 from .vector import *
 

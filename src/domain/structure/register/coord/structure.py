@@ -26,16 +26,14 @@ class CoordRegister(Register[Coord]):
     Attributes:
         origin: Coord
         terminus: Coord
-        origin_is_terminus: bool
-        origin_is_not_terminus: bool
+        origin_same_as_terminus: bool
+        origin_differs_from_terminus: bool
             
     Provides:
 
     Super Class:
         Register
     """
-    _origin: Coord
-    _terminus: Coord
     
     def __init__(self, origin: Coord, terminus: Coord,):
         """
@@ -47,19 +45,27 @@ class CoordRegister(Register[Coord]):
         
     @property
     def origin(self) -> Coord:
-        return cast(Coord, self.a)
+        return cast(Coord, super().a)
+    
+    @property
+    def a(self) -> Coord:
+        return self.origin
     
     @property
     def terminus(self) -> Coord:
-        return cast(Coord, self.b)
+        return cast(Coord, super().b)
+    
+    @property
+    def b(self) -> Coord:
+        return self.terminus
 
     @property
-    def origin_is_terminus(self) -> bool:
+    def origin_same_as_terminus(self) -> bool:
         return self.origin == self.terminus
     
     @property
-    def origin_is_not_terminus(self) -> bool:
-        return not self.origin_is_terminus
+    def origin_differs_from_terminus(self) -> bool:
+        return not self.origin_same_as_terminus
     
     @property
     def to_list(self) -> List[Coord]:

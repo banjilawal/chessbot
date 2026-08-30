@@ -45,11 +45,11 @@ class NumberRegister(Register[int]):
         
     @property
     def a(self) -> int:
-        return cast(int, self.a)
+        return cast(int, super().a)
     
     @property
     def b(self) -> int:
-        return cast(int, self.b)
+        return cast(int, super().b)
 
     @property
     def a_is_b(self) -> bool:

@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== COLLECTION.CHAIN PACKAGE ===========#
 
 # Packages
+from .check import *
 from .vector import *
 
 # Modules

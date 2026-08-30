@@ -45,11 +45,19 @@ class VectorRegister(Register[Vector]):
         
     @property
     def u(self) -> Vector:
-        return cast(Vector, self.a)
+        return cast(Vector, super().a)
+    
+    @property
+    def a(self) -> Vector:
+        return self.u
     
     @property
     def v(self) -> Vector:
-        return cast(Vector, self.b)
+        return cast(Vector, super().b)
+    
+    @property
+    def b(self) -> Vector:
+        return self.v
 
     @property
     def u_is_v(self) -> bool:
