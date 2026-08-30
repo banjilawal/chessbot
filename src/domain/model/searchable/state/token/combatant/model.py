@@ -82,7 +82,7 @@ class CombatantToken(Token):
     def is_active(self) -> bool:
         return (
                 self._captor is None and
-                self._readiness_state == TokenActivityState.FREE and
+                self._activity_state == TokenActivityState.FREE and
                 self._deployment_state == DeploymentState.DEPLOYED
         )
     
@@ -92,9 +92,9 @@ class CombatantToken(Token):
                 self._captor is not None and
                 self.deployment_state == DeploymentState.DEPLOYED and
                 (
-                        self._readiness_state == TokenActivityState.CAPTURE_ACTIVATED or
-                        self.readiness_state == TokenActivityState.HOSTAGE_CREATED or
-                        self._readiness_state == TokenActivityState.HOSTAGE_IN_DATABASE
+                        self._activity_state == TokenActivityState.CAPTURE_ACTIVATED or
+                        self.activity_state == TokenActivityState.HOSTAGE_CREATED or
+                        self._activity_state == TokenActivityState.HOSTAGE_IN_DATABASE
                 )
         )
     
@@ -108,7 +108,7 @@ class CombatantToken(Token):
         return (
                 self._captor is not None and
                 self.deployment_state == DeploymentState.DEPLOYED and
-                self.readiness_state == TokenActivityState.CAPTURE_ACTIVATED
+                self.activity_state == TokenActivityState.CAPTURE_ACTIVATED
         )
     
     @property
@@ -116,7 +116,7 @@ class CombatantToken(Token):
         return (
                 self._captor is not None and
                 self.deployment_state == DeploymentState.REMOVED_FROM_BOARD and
-                self.readiness_state == TokenActivityState.HOSTAGE_CREATED
+                self.activity_state == TokenActivityState.HOSTAGE_CREATED
         )
     
     @property
@@ -124,7 +124,7 @@ class CombatantToken(Token):
         return (
                 self._captor is not None and
                 self.deployment_state == DeploymentState.REMOVED_FROM_BOARD and
-                self.readiness_state == TokenActivityState.HOSTAGE_IN_DATABASE
+                self.activity_state == TokenActivityState.HOSTAGE_IN_DATABASE
         )
     
     @property

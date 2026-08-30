@@ -56,7 +56,7 @@ class Token(StateModel):
     _current_position: Optional[Coord]
     _previous_address: Optional[Coord]
     _deployment_state: DeploymentState
-    _readiness_state: TokenActivityState
+    _activity_state: TokenActivityState
     _checked_enemy_king: Optional[KingToken]
 
     def __init__(
@@ -85,7 +85,7 @@ class Token(StateModel):
         self._current_position = self._positions.current_item
         self._previous_address = self._positions.previous_coord
         self._deployment_state = DeploymentState.NOT_DEPLOYED
-        self._readiness_state = TokenActivityState.NOT_INITIALIZED
+        self._activity_state = TokenActivityState.NOT_INITIALIZED
         self._checked_enemy_king = None
     
     @property
@@ -95,7 +95,6 @@ class Token(StateModel):
     @property
     def formation(self) -> Formation:
         return self._formation
-    
     
     
     @property
@@ -123,12 +122,12 @@ class Token(StateModel):
         return self._checked_enemy_king
     
     @property
-    def readiness_state(self) -> TokenActivityState:
-        return self._readiness_state
+    def activity_state(self) -> TokenActivityState:
+        return self._activity_state
     
-    @readiness_state.setter
-    def readiness_state(self, readiness_state: TokenActivityState):
-        self._readiness_state = readiness_state
+    @activity_state.setter
+    def activity_state(self, readiness_state: TokenActivityState):
+        self._activity_state = readiness_state
         
     @checked_enemy_king.setter
     def checked_enemy_king(self, other: KingToken):
