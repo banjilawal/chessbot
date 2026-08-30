@@ -1,7 +1,7 @@
-# src/transit/carrier/token/carrier.py
+# src/transit/carrier/model/mode/token/carrier.py
 
 """
-Module: transit.carrier.token.carrier
+Module: transit.carrier.model.model.token.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,9 +11,8 @@ from __future__ import annotations
 
 from typing import Optional
 
-from fabrication import TokenBlueprint
-from transit.model import Token
-from transit.carrier import ModelCarrier
+from domain import Token, TokenBlueprint
+from transit import ModelCarrier
 
 
 class TokenCarrier(ModelCarrier[Token]):
@@ -22,24 +21,23 @@ class TokenCarrier(ModelCarrier[Token]):
         - Boundary Carrier Interface
 
     Responsibilities:
-        1.  Transport a hydrated Token or its Blueprint across validation and other
-            processing boundaries
+        1.  Transport a hydrated Token or its Blueprint across processing boundaries.
 
     Attributes:
-        entity: Token|TokenBlueprint
+        size: int
         is_empty: bool
-        has_overflow: bool
+        over_capacity: bool
         is_model_carrier: bool
         is_blueprint_carrier: bool
-        to_dict: Dict[str, Any]
-        size: int
+        entity: [Token|TokenBlueprint]
 
     Provides:
-        -  extract_blueprint() -> Optional[TokenBlueprint]
+        - def extract_blueprint() -> Optional[TokenBlueprint]
 
     Super Class:
         ModelCarrier
     """
+    
     _model: Optional[Token]
     _blueprint: Optional[TokenBlueprint]
     
@@ -76,11 +74,22 @@ class TokenCarrier(ModelCarrier[Token]):
     @property
     def is_carrying_blueprint(self) -> bool:
         return (
-                self._model is not None and
-                self._blueprint is None and
-                isinstance(self._model, TokenBlueprint)
+                not self.is_carrying_model and
+                isinstance(self._blueprint, TokenBlueprint)
         )
-
+    
+    @property
+    def size(self) -> int:
+        return len([self._model, self._blueprint])
+    
+    @property
+    def is_empty(self) -> bool:
+        return self.size == 0
+    
+    @property
+    def over_capacity(self) -> bool:
+        return self.size > 1
+    
     def extract_blueprint(self) -> Optional[TokenBlueprint]:
         if self.is_empty: return None
         if self.is_carrying_blueprint: return self._blueprint
@@ -91,14 +100,6 @@ class TokenCarrier(ModelCarrier[Token]):
             formation=self._model.formation,
             home_square=self._model.home_square,
         )
-    
-    @property
-    def is_empty(self) -> bool:
-        return self._model is None and self._blueprint is None
-    
-    @property
-    def exceeds_capacity(self) -> bool:
-        return not self.is_empty
 
     def __eq__(self, other):
         if other is self: return True
@@ -106,7 +107,5 @@ class TokenCarrier(ModelCarrier[Token]):
         if isinstance(other, TokenCarrier):
             return self.entity == other.entity
         return False
-    
-    def __hash__(self):
-        return hash(self.entity)
+
 

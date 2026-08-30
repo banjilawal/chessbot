@@ -30,7 +30,7 @@ class AxisReservoirCarrier(SpaceReservoirCarrier[AxisReservoir]):
         is_carrying_model: bool
         is_carrying_blueprint: bool
         is_empty: bool
-        exceeds_capacity: bool
+        over_capacity: bool
         
         entity: [AxisReservoir| AxisReservoirReservoirBlueprint | None]
 
@@ -81,7 +81,7 @@ class AxisReservoirCarrier(SpaceReservoirCarrier[AxisReservoir]):
         return self._model is None and self._blueprint is None
     
     @property
-    def exceeds_capacity(self) -> bool:
+    def over_capacity(self) -> bool:
         return not self.is_empty
     
     def extract_blueprint(self) -> Optional[AxisReservoirBlueprint]:

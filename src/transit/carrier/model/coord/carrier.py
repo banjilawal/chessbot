@@ -1,7 +1,7 @@
-# src/transit/carrier/coord/carrier.py
+# src/transit/carrier/model/mode/coord/carrier.py
 
 """
-Module: transit.carrier.coord.carrier
+Module: transit.carrier.model.model.coord.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,34 +11,33 @@ from __future__ import annotations
 
 from typing import Optional
 
-from transit.metadata.blueprint import CoordBlueprint
-from transit.model import Coord
-from carrier import ModelCarrier
+from domain import Coord, CoordBlueprint
+from transit import ModelCarrier
 
 
 class CoordCarrier(ModelCarrier[Coord]):
     """
     Role:
-        - Data Transport
+        - Boundary Carrier Interface
 
     Responsibilities:
-        2.  Transports either a Coord or its Blueprint.
+        1.  Transport a hydrated Coord or its Blueprint across processing boundaries.
 
     Attributes:
-        entity: [Coord|CoordBlueprint]
+        size: int
         is_empty: bool
-        has_overflow: bool
+        over_capacity: bool
         is_model_carrier: bool
         is_blueprint_carrier: bool
-        to_dict: Dict[str, Any]
-        size: int
+        entity: [Coord|CoordBlueprint]
 
     Provides:
-        -  extract_blueprint() -> Optional[CoordBlueprint]
+        - def extract_blueprint() -> Optional[CoordBlueprint]
 
     Super Class:
         ModelCarrier
     """
+    
     _model: Optional[Coord]
     _blueprint: Optional[CoordBlueprint]
     
@@ -57,8 +56,12 @@ class CoordCarrier(ModelCarrier[Coord]):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> [Coord | CoordBlueprint]:
-        return self._model or self._blueprint
+    def entity(self) -> Optional[Coord | CoordBlueprint]:
+        if self.is_empty:
+            return None
+        if self.is_carrying_model:
+            return self._model
+        return self._blueprint
     
     @property
     def is_carrying_model(self) -> bool:
@@ -71,11 +74,22 @@ class CoordCarrier(ModelCarrier[Coord]):
     @property
     def is_carrying_blueprint(self) -> bool:
         return (
-                self._model is not None and
-                self._blueprint is None and
-                isinstance(self._model, CoordBlueprint)
+                not self.is_carrying_model and
+                isinstance(self._blueprint, CoordBlueprint)
         )
-
+    
+    @property
+    def size(self) -> int:
+        return len([self._model, self._blueprint])
+    
+    @property
+    def is_empty(self) -> bool:
+        return self.size == 0
+    
+    @property
+    def over_capacity(self) -> bool:
+        return self.size > 1
+    
     def extract_blueprint(self) -> Optional[CoordBlueprint]:
         if self.is_empty: return None
         if self.is_carrying_blueprint: return self._blueprint
@@ -84,38 +98,10 @@ class CoordCarrier(ModelCarrier[Coord]):
             column=self._model.column,
         )
 
-    
-    @property
-    def is_empty(self) -> bool:
-        return len(self.to_dict) == 0
-    
-    @property
-    def is_full(self) -> bool:
-        return len(self.to_dict) == 1
-    
-    @property
-    def is_empty(self) -> bool:
-        return len(self.to_dict) >= 2
-    
-    @property
-    def size(self) -> int:
-        return len(self.to_dict)
-        
-    @property
-    def is_empty(self) -> bool:
-        return self._model is None and self._blueprint is None
-    
-    @property
-    def exceeds_capacity(self) -> bool:
-        return not self.is_empty
-
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
         if isinstance(other, CoordCarrier):
             return self.entity == other.entity
         return False
-    
-    def __hash__(self):
-        return hash(self.entity)
 

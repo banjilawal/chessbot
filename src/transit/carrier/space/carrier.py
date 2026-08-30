@@ -30,7 +30,7 @@ class SpaceCarrier(EntityCarrier, Generic[T], ABC):
         is_carrying_model: bool
         is_carrying_blueprint: bool
         is_empty: bool
-        exceeds_capacity: bool
+        over_capacity: bool
 
         entity: [Space[T]| SpaceBlueprint[T] | None]
 

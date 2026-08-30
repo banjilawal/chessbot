@@ -1,7 +1,7 @@
-# src/transit/carrier/arena/carrier.py
+# src/transit/carrier/model/mode/arena/carrier.py
 
 """
-Module: transit.carrier.arena.carrier
+Module: transit.carrier.model.model.arena.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,33 +11,33 @@ from __future__ import annotations
 
 from typing import Optional
 
-from transit.metadata.blueprint import ArenaBlueprint
-from transit.model import Arena
-from carrier import ModelCarrier
+from domain import Arena, ArenaBlueprint
+from transit import ModelCarrier
 
 
 class ArenaCarrier(ModelCarrier[Arena]):
     """
     Role:
-        - Addressing
-        -  Data-Holder
-    
+        - Boundary Carrier Interface
+
     Responsibilities:
-        1.  Entity for transporting either a Arena or ArenaBlueprint
-    
+        1.  Transport a hydrated Arena or its Blueprint across processing boundaries.
+
     Attributes:
-        model: Optional[Arena]
-        blueprint: Optional[ArenaBlueprint]
+        size: int
+        is_empty: bool
+        over_capacity: bool
         is_model_carrier: bool
         is_blueprint_carrier: bool
-        has_overflow: bool
-        is_empty: bool
-    
+        entity: [Arena|ArenaBlueprint]
+
     Provides:
-    
+        - def extract_blueprint() -> Optional[ArenaBlueprint]
+
     Super Class:
         ModelCarrier
     """
+    
     _model: Optional[Arena]
     _blueprint: Optional[ArenaBlueprint]
     
@@ -56,8 +56,12 @@ class ArenaCarrier(ModelCarrier[Arena]):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> [Arena | ArenaBlueprint]:
-        return self._model or self._blueprint
+    def entity(self) -> Optional[Arena | ArenaBlueprint]:
+        if self.is_empty:
+            return None
+        if self.is_carrying_model:
+            return self._model
+        return self._blueprint
     
     @property
     def is_carrying_model(self) -> bool:
@@ -73,14 +77,18 @@ class ArenaCarrier(ModelCarrier[Arena]):
                 not self.is_carrying_model and
                 isinstance(self._blueprint, ArenaBlueprint)
         )
-        
-    @property
-    def is_empty(self) -> bool:
-        return self._model is None and self._blueprint is None
     
     @property
-    def exceeds_capacity(self) -> bool:
-        return not self.is_empty
+    def size(self) -> int:
+        return len([self._model, self._blueprint])
+    
+    @property
+    def is_empty(self) -> bool:
+        return self.size == 0
+    
+    @property
+    def over_capacity(self) -> bool:
+        return self.size > 1
 
     def __eq__(self, other):
         if other is self: return True
@@ -88,7 +96,4 @@ class ArenaCarrier(ModelCarrier[Arena]):
         if isinstance(other, ArenaCarrier):
             return self.entity == other.entity
         return False
-    
-    def __hash__(self):
-        return hash(self.entity)
 

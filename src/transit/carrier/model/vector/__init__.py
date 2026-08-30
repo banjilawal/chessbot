@@ -1,13 +1,13 @@
-# src/transit/carrier/vector/__init__.py
+# src/transit/carrier/model/model.vector/__init__.py
 
 """
-Module: transit.carrier.vector.__init__
+Module: transit.carrier.model.model.vector.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== TRANSIT.CARRIER.VECTOR PACKAGE ===========#
+# =========== TRANSIT.CARRIER.MODEL.MODEL.VECTOR PACKAGE ===========#
 
 # Packages
 

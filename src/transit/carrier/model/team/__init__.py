@@ -1,13 +1,13 @@
-# src/transit/carrier/team/__init__.py
+# src/transit/carrier/model/team/__init__.py
 
 """
-Module: transit.carrier.team.__init__
+Module: transit.carrier.model.team.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== TRANSIT.CARRIER.TEAM PACKAGE ===========#
+# =========== TRANSIT.CARRIER.MODEL.TEAM PACKAGE ===========#
 
 # Packages
 

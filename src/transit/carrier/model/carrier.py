@@ -1,7 +1,7 @@
-# src/transit/carrier/carrier.py
+# src/transit/carrier/model/orange/carrier.py
 
 """
-Module: transit.carrier.carrier
+Module: transit.carrier.model..orange.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,11 +9,6 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import Generic, TypeVar
-
-from domain import Model
-from transit import EntityCarrier
 
 T = TypeVar("T", bound="Model")
 
@@ -27,21 +22,22 @@ class ModelCarrier(EntityCarrier[T], ABC, Generic[T]):
         1.  Transport a hydrated Model or its Blueprint across processing boundaries.
 
     Attributes:
-        is_model_carrier: bool
-        is_blueprint_carrier: bool
-        
-        entity: [T | Blueprint[T]]
-        is_empty: bool
-        has_overflow: bool
-        to_dict: Dict[str, Any]
         size: int
 
+        is_empty: bool
+        over_capacity: bool
+        is_model_carrier: bool
+        is_blueprint_carrier: bool
+        entity: [T | Blueprint[T]]
+
+
     Provides:
-        -  extract_blueprint() -> Optional[Blueprint[T]]
+        - def extract_blueprint() -> Optional[Blueprint[T]]
 
     Super Class:
-        Toggle
+        EntityCarrier
     """
+    
     def __init__(self):
         super().__init__()
 

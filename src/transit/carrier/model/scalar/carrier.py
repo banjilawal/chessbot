@@ -1,7 +1,7 @@
-# src/transit/carrier/scalar/carrier.py
+# src/transit/carrier/model/mode/scalar/carrier.py
 
 """
-Module: transit.carrier.scalar.carrier
+Module: transit.carrier.model.model.scalar.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,33 +11,33 @@ from __future__ import annotations
 
 from typing import Optional
 
-from transit.metadata.blueprint import ScalarBlueprint
-from transit.model import Scalar
-from carrier import ModelCarrier
+from domain import Scalar, ScalarBlueprint
+from transit import ModelCarrier
 
 
 class ScalarCarrier(ModelCarrier[Scalar]):
     """
     Role:
-        - Addressing
-        -  Data-Holder
-    
+        - Boundary Carrier Interface
+
     Responsibilities:
-        1.  Entity for transporting either a Scalar or ScalarBlueprint
-    
+        1.  Transport a hydrated Scalar or its Blueprint across processing boundaries.
+
     Attributes:
-        model: Optional[Scalar]
-        blueprint: Optional[ScalarBlueprint]
+        size: int
+        is_empty: bool
+        over_capacity: bool
         is_model_carrier: bool
         is_blueprint_carrier: bool
-        has_overflow: bool
-        is_empty: bool
-    
+        entity: [Scalar|ScalarBlueprint]
+
     Provides:
-    
+        - def extract_blueprint() -> Optional[ScalarBlueprint]
+
     Super Class:
         ModelCarrier
     """
+    
     _model: Optional[Scalar]
     _blueprint: Optional[ScalarBlueprint]
     
@@ -56,7 +56,7 @@ class ScalarCarrier(ModelCarrier[Scalar]):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> [Scalar | ScalarBlueprint | None]:
+    def entity(self) -> Optional[Scalar | ScalarBlueprint]:
         if self.is_empty:
             return None
         if self.is_carrying_model:
@@ -74,10 +74,21 @@ class ScalarCarrier(ModelCarrier[Scalar]):
     @property
     def is_carrying_blueprint(self) -> bool:
         return (
-                self._model is not None and
-                self._blueprint is None and
-                isinstance(self._model, ScalarBlueprint)
+                not self.is_carrying_model and
+                isinstance(self._blueprint, ScalarBlueprint)
         )
+    
+    @property
+    def size(self) -> int:
+        return len([self._model, self._blueprint])
+    
+    @property
+    def is_empty(self) -> bool:
+        return self.size == 0
+    
+    @property
+    def over_capacity(self) -> bool:
+        return self.size > 1
     
     def extract_blueprint(self) -> Optional[ScalarBlueprint]:
         if self.is_empty: return None
@@ -85,14 +96,6 @@ class ScalarCarrier(ModelCarrier[Scalar]):
         return ScalarBlueprint(
              magnitude=self._model.magnitude,
         )
-        
-    @property
-    def is_empty(self) -> bool:
-        return self._model is None and self._blueprint is None
-    
-    @property
-    def exceeds_capacity(self) -> bool:
-        return not self.is_empty
 
     def __eq__(self, other):
         if other is self: return True

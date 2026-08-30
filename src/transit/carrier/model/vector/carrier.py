@@ -1,7 +1,7 @@
-# src/transit/carrier/vector/carrier.py
+# src/transit/carrier/model/mode/vector/carrier.py
 
 """
-Module: transit.carrier.vector.carrier
+Module: transit.carrier.model.model.vector.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,33 +11,33 @@ from __future__ import annotations
 
 from typing import Optional
 
-from transit.metadata.blueprint import VectorBlueprint
-from transit.model import Vector
-from transit.carrier import ModelCarrier
+from domain import Vector, VectorBlueprint
+from transit import ModelCarrier
 
 
-class VectorCarrier(ModelCarrier):
+class VectorCarrier(ModelCarrier[Vector]):
     """
     Role:
         - Boundary Carrier Interface
 
     Responsibilities:
-        1.  Transport a hydrated Vector or its Blueprint across validation and other
-            processing boundaries
-    
+        1.  Transport a hydrated Vector or its Blueprint across processing boundaries.
+
     Attributes:
-        model: Optional[Vector]
-        blueprint: Optional[VectorBlueprint]
+        size: int
+        is_empty: bool
+        over_capacity: bool
         is_model_carrier: bool
         is_blueprint_carrier: bool
-        has_overflow: bool
-        is_empty: bool
-    
+        entity: [Vector|VectorBlueprint]
+
     Provides:
-    
+        - def extract_blueprint() -> Optional[VectorBlueprint]
+
     Super Class:
         ModelCarrier
     """
+    
     _model: Optional[Vector]
     _blueprint: Optional[VectorBlueprint]
     
@@ -56,8 +56,12 @@ class VectorCarrier(ModelCarrier):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> Vector|VectorBlueprint:
-        return self._model or self._blueprint
+    def entity(self) -> Optional[Vector|VectorBlueprint]:
+        if self.is_empty:
+            return None
+        if self.is_carrying_model:
+            return self._model
+        return self._blueprint
     
     @property
     def is_carrying_model(self) -> bool:
@@ -75,13 +79,17 @@ class VectorCarrier(ModelCarrier):
         )
     
     @property
-    def is_empty(self) -> bool:
-        return self._model is not None and self._blueprint is not None
+    def size(self) -> int:
+        return len([self._model, self._blueprint])
     
     @property
-    def exceeds_capacity(self) -> bool:
-        return not self.is_empty
+    def is_empty(self) -> bool:
+        return self.size == 0
     
+    @property
+    def over_capacity(self) -> bool:
+        return self.size > 1
+     
     def extract_blueprint(self) -> Optional[VectorBlueprint]:
         if self.is_empty: return None
         if self.is_carrying_blueprint: return self._blueprint

@@ -33,7 +33,7 @@ class RegisterCarrier(StructureCarrier[T], ABC, Generic[T]):
         
         entity: [T | Blueprint[T]]
         is_empty: bool
-        has_overflow: bool
+        over_capacity: bool
         to_dict: Dict[str, Any]
         size: int
 

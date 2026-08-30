@@ -1,7 +1,7 @@
-# src/transit/carrier/square/carrier.py
+# src/transit/carrier/model/mode/square/carrier.py
 
 """
-Module: transit.carrier.square.carrier
+Module: transit.carrier.model.model.square.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,37 +9,35 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from typing import Optional
 
-from transit.metadata.blueprint import SquareBlueprint
-from transit.model import HomeSquare, Square
-from carrier import ModelCarrier
+from domain import Square, SquareBlueprint
+from transit import ModelCarrier
 
 
 class SquareCarrier(ModelCarrier[Square]):
     """
     Role:
-        - Data Transport
+        - Boundary Carrier Interface
 
     Responsibilities:
-        2.  Transports either a Square or its Blueprint.
+        1.  Transport a hydrated Square or its Blueprint across processing boundaries.
 
     Attributes:
-        entity: [Square|SquareBlueprint]
+        size: int
+        is_empty: bool
+        over_capacity: bool
         is_model_carrier: bool
         is_blueprint_carrier: bool
-        
-        is_empty: bool
-        has_overflow: bool
-        to_dict: Dict[str, Any]
-        size: int
+        entity: [Square|SquareBlueprint]
 
     Provides:
-        -  extract_blueprint() -> Optional[SquareBlueprint]
+        - def extract_blueprint() -> Optional[SquareBlueprint]
 
     Super Class:
         ModelCarrier
     """
+    
     _model: Optional[Square]
     _blueprint: Optional[SquareBlueprint]
     
@@ -58,7 +56,7 @@ class SquareCarrier(ModelCarrier[Square]):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> [Square | SquareBlueprint | None]:
+    def entity(self) -> Optional[Square | SquareBlueprint]:
         if self.is_empty:
             return None
         if self.is_carrying_model:
@@ -74,20 +72,31 @@ class SquareCarrier(ModelCarrier[Square]):
         )
     
     @property
+    def is_carrying_blueprint(self) -> bool:
+        return (
+                not self.is_carrying_model and
+                isinstance(self._blueprint, SquareBlueprint)
+        )
+    
+    @property
+    def size(self) -> int:
+        return len([self._model, self._blueprint])
+    
+    @property
+    def is_empty(self) -> bool:
+        return self.size == 0
+    
+    @property
+    def over_capacity(self) -> bool:
+        return self.size > 1
+    
+    @property
     def is_home_square_carrier(self) -> bool:
         return (
                 self.is_carrying_model and
                 isinstance(self._model, HomeSquare)
         )
-    
-    @property
-    def is_carrying_blueprint(self) -> bool:
-        return (
-                self._model is not None and
-                self._blueprint is None and
-                isinstance(self._model, SquareBlueprint)
-        )
-    
+
     def extract_blueprint(self) -> Optional[SquareBlueprint]:
         if self.is_empty: return None
         if self.is_carrying_blueprint: return self._blueprint
@@ -104,14 +113,6 @@ class SquareCarrier(ModelCarrier[Square]):
             board=self._model.board,
             coord=self._model.coord,
         )
-    
-    @property
-    def is_empty(self) -> bool:
-        return self._model is None and self._blueprint is None
-    
-    @property
-    def exceeds_capacity(self) -> bool:
-        return not self.is_empty
 
     def __eq__(self, other):
         if other is self: return True

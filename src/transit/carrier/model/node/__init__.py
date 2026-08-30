@@ -1,13 +1,13 @@
-# src/transit/carrier/structure/node/__init__.py
+# src/transit/carrier/model/structure/node/__init__.py
 
 """
-Module: transit.carrier.structure.node.__init__
+Module: transit.carrier.model.structure.node.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== TRANSIT.CARRIER.STRUCTURE.NODE PACKAGE ===========#
+# =========== TRANSIT.CARRIER.MODEL.STRUCTURE.NODE PACKAGE ===========#
 
 # Packages
 

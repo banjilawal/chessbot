@@ -82,7 +82,7 @@ class EastAxisCarrier(SpaceCarrier[EastAxis]):
         return self._model is None and self._blueprint is None
     
     @property
-    def exceeds_capacity(self) -> bool:
+    def over_capacity(self) -> bool:
         return not self.is_empty
 
     def __eq__(self, other):
