@@ -9,16 +9,13 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Type
+from typing import Optional, Type, cast
 
-from domain.metadata.blueprint import StateModelBlueprint
-from engine import Engine
+from domain import Player, StateModelBlueprint
 from err import PlayerNullException
-from domain.model import Player
+from game import GameAdviser
 
 
-@dataclass
 class PlayerBlueprint(StateModelBlueprint[Player]):
     """
      Role:
@@ -28,18 +25,57 @@ class PlayerBlueprint(StateModelBlueprint[Player]):
         1.  Provides values for hydrating a Player object.
 
     Attributes:
-        id: Optional[int]
         name: str
-        engine: Engine
+        id: Optional[int]        
+        adviser: Optional[GameAdviser]
+        
+        domain_class: Type[Player]
+        search_context_class: Type[PlayerContext]
+        domain_null_exception: PlayerNullException
 
     Provides:
 
      Super Class:
         StateModelBlueprint
      """
-    name: Optional[str] = None
-    engine: Optional[Engine] = None
-    id: Optional[int] = None
-    domain_null_exception: PlayerNullException = PlayerNullException()
-    domain_class: Player = Type[Player]
-    owner_name: str = type(owner).__name__
+    _name: str
+    _adviser: Optional[GameAdviser]
+    
+    def __init__(self,
+            name: str,
+            adviser: Optional[GameAdviser] | None = None,
+            domain_class: Optional[Type[Player]] | None = None,
+            domain_null_exception: Optional[PlayerNullException] | None = None,
+            id: Optional[int] | None = None,
+        ):
+        """
+        Args:
+            name: str,
+            adviser: Optional[GameAdviser]
+            domain_class: Optional[Type[Player]]
+            domain_null_exception: Optional[PlayerNullException]
+            id: Optional[int]
+        """
+        super().__init__(
+            id=id,
+            domain_class=domain_class or Type[Player],
+            domain_null_exception=domain_null_exception or PlayerNullException(),
+        )
+        self._name = name
+        self._adviser = adviser
+        
+    @property
+    def name(self) -> str:
+        return self._name
+    
+    @property
+    def adviser(self) -> Optional[GameAdviser]:
+        return self._adviser
+        
+    @property
+    def domain_class(self) -> Type[Player]:
+        return cast(Type[Player], super().domain_class)
+    
+    @property
+    def domain_null_exception(self) -> PlayerNullException:
+        return cast(PlayerNullException, super().domain_null_exception)

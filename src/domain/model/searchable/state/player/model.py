@@ -22,7 +22,7 @@ class Player(StateModel, ABC):
          -  Data Holder
 
      Responsibilities:
-        2.  Direct a Team's pieces that are in an Arena's Board
+        2.  Direct a Team's pieces that are in an Arena's Board during a Game.
 
      Attributes:
          id: int

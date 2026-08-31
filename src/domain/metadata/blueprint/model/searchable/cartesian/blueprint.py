@@ -27,7 +27,6 @@ class CartesianBlueprint(SearchableModelBlueprint[T], ABC, Generic[T]):
          1.  Provides values for hydrating a StateModel object.
  
      Attributes:
-         search_context_class: Type[Context[T]]
 
      Provides:
 
@@ -38,13 +37,11 @@ class CartesianBlueprint(SearchableModelBlueprint[T], ABC, Generic[T]):
     def __init__(
             self,
             domain_class: Type[T],
-            search_context_class: Type[Context[T]],
             domain_null_exception: ModelNullException,
     ):
         """
         Args:
             domain_class: Type[Model[T]]
-            search_context_class: Type[Context[T]]
             domain_null_exception:ModelNullException
         """
         super().__init__(

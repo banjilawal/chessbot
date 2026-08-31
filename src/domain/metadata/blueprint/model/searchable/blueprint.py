@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Type, TypeVar, cast
 
-from domain import ModelBlueprint, Context, SearchableModel
+from domain import ModelBlueprint, SearchableModel
 from err import ModelNullException
 
 T = TypeVar("T", bound="SearchableModel")
@@ -24,44 +24,34 @@ class SearchableModelBlueprint(ModelBlueprint[T], ABC, Generic[T]):
         1.  Metadata
 
      Responsibilities:
-         1.  Provides values for hydrating a StateModel object.
+         1.  Provides values for hydrating a SearchableModel object.
  
-
      Attributes:
-         search_context_class: Type[Context[T]]
          
      Provides:
 
      Super Class:
         ModelBlueprint
      """
-    _search_context_class: Type[Context[T]]
     
     def __init__(
             self,
             domain_class: Type[T],
-            search_context_class: Type[Context[T]],
             domain_null_exception: ModelNullException,
     ):
         """
         Args:
             domain_class: Type[Model[T]]
-            search_context_class: Type[Context[T]]
             domain_null_exception:ModelNullException
         """
         super().__init__(
             domain_class=domain_class,
             domain_null_exception=domain_null_exception,
         )
-        self._search_context_class = search_context_class
     
     @property
     def domain_class(self) -> Type[T]:
         return cast(Type[T], super().domain_class)
-    
-    @property
-    def search_context_class(self) -> Type[Context[T]]:
-        return self._search_context_class
     
 
         
