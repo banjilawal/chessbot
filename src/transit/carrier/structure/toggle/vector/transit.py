@@ -101,7 +101,7 @@ class CartesianToggleCarrier(ToggleCarrier[CartesianToggle]):
         return self._model is None and self._blueprint is None
     
     @property
-    def over_capacity(self) -> bool:
+    def is_over_capacity(self) -> bool:
         return not self.is_empty
 
     def __eq__(self, other):

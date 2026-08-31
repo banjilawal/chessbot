@@ -30,7 +30,7 @@ class QuadrantReservoirCarrier(SpaceReservoirCarrier[QuadrantReservoir]):
         is_carrying_model: bool
         is_carrying_blueprint: bool
         is_empty: bool
-        over_capacity: bool
+        is_over_capacity: bool
         
         entity: [QuadrantReservoir| QuadrantReservoirReservoirBlueprint | None]
 
@@ -81,7 +81,7 @@ class QuadrantReservoirCarrier(SpaceReservoirCarrier[QuadrantReservoir]):
         return self._model is None and self._blueprint is None
     
     @property
-    def over_capacity(self) -> bool:
+    def is_over_capacity(self) -> bool:
         return not self.is_empty
     
     def extract_blueprint(self) -> Optional[QuadrantReservoirBlueprint]:

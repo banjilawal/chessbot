@@ -1,7 +1,7 @@
-# src/transit/carrier/model/mode/arena/carrier.py
+# src/transit/carrier/model/arena/carrier.py
 
 """
-Module: transit.carrier.model.model.arena.carrier
+Module: transit.carrier.model.arena.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Optional, cast
 
 from domain import Arena, ArenaBlueprint
 from transit import ModelCarrier
@@ -26,7 +26,7 @@ class ArenaCarrier(ModelCarrier[Arena]):
     Attributes:
         size: int
         is_empty: bool
-        over_capacity: bool
+        is_over_capacity: bool
         is_model_carrier: bool
         is_blueprint_carrier: bool
         entity: [Arena|ArenaBlueprint]
@@ -56,7 +56,7 @@ class ArenaCarrier(ModelCarrier[Arena]):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> Optional[Arena | ArenaBlueprint]:
+    def entity(self) -> Optional[Arena|ArenaBlueprint]:
         if self.is_empty:
             return None
         if self.is_carrying_model:
@@ -87,13 +87,18 @@ class ArenaCarrier(ModelCarrier[Arena]):
         return self.size == 0
     
     @property
-    def over_capacity(self) -> bool:
+    def is_over_capacity(self) -> bool:
         return self.size > 1
-
-    def __eq__(self, other):
-        if other is self: return True
-        if other is None: return False
-        if isinstance(other, ArenaCarrier):
-            return self.entity == other.entity
-        return False
+    
+    def extract_blueprint(self) -> Optional[ArenaBlueprint]:
+        if self.is_empty: return None
+        if self.is_carrying_blueprint: return self._blueprint
+        
+        model = cast(Arena, self._model)
+        return ArenaBlueprint(
+            id=model.id,
+            game=model.game,
+            board=model.board,
+            player_binder=model.player_binder,
+        )
 

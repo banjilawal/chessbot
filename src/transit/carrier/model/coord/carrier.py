@@ -1,7 +1,7 @@
-# src/transit/carrier/model/mode/coord/carrier.py
+# src/transit/carrier/model/coord/carrier.py
 
 """
-Module: transit.carrier.model.model.coord.carrier
+Module: transit.carrier.model.coord.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Optional, cast
 
 from domain import Coord, CoordBlueprint
 from transit import ModelCarrier
@@ -26,7 +26,7 @@ class CoordCarrier(ModelCarrier[Coord]):
     Attributes:
         size: int
         is_empty: bool
-        over_capacity: bool
+        is_over_capacity: bool
         is_model_carrier: bool
         is_blueprint_carrier: bool
         entity: [Coord|CoordBlueprint]
@@ -87,15 +87,17 @@ class CoordCarrier(ModelCarrier[Coord]):
         return self.size == 0
     
     @property
-    def over_capacity(self) -> bool:
+    def is_over_capacity(self) -> bool:
         return self.size > 1
     
     def extract_blueprint(self) -> Optional[CoordBlueprint]:
         if self.is_empty: return None
         if self.is_carrying_blueprint: return self._blueprint
+        
+        model = cast(Coord, self._model)
         return CoordBlueprint(
-            row=self._model.row,
-            column=self._model.column,
+            row=model.row,
+            column=model.column,
         )
 
     def __eq__(self, other):

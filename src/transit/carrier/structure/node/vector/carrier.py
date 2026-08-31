@@ -30,7 +30,7 @@ class VectorNodeCarrier(NodeCarrier):
         blueprint: Optional[VectorNodeBlueprint]
         is_model_carrier: bool
         is_blueprint_carrier: bool
-        over_capacity: bool
+        is_over_capacity: bool
         is_empty: bool
     
     Provides:
@@ -83,7 +83,7 @@ class VectorNodeCarrier(NodeCarrier):
         return self._model is not None and self._blueprint is not None
     
     @property
-    def over_capacity(self) -> bool:
+    def is_over_capacity(self) -> bool:
         return not self.is_empty
     
     def extract_blueprint(self) -> Optional[VectorNodeBlueprint]:

@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
+from collection import CoordDatabase
 from domain import Formation, HomeSquare, Rank, StateModelBlueprint, Team, Token, TokenContext
 from err import TokenNullException
 
@@ -27,10 +28,10 @@ class TokenBlueprint(StateModelBlueprint[Token]):
         team: Team,
         formation: Formation
         rank: Optional[Rank]
+        positions: Optional[CoordDatabase]
         id: Optional[int]
 
         domain_class: Type[Token]
-        search_context_class: Type[TokenContext]
         domain_null_exception: TokenNullException
 
      Provides:
@@ -42,50 +43,40 @@ class TokenBlueprint(StateModelBlueprint[Token]):
     _rank: Optional[Rank]
     _formation: Formation
     _home_square: Optional[HomeSquare]
+    _positions: Optional[CoordDatabase]
+
     
     def __init__(
             self,
             team: Team,
             formation: Formation,
-            domain_class: Optional[Type[Token]] | None = None,
-            search_context_class: Optional[Type[TokenContext]] | None = None,
-            domain_null_exception: Optional[TokenNullException] | None = None,
-            id: Optional[int] | None = None,
             rank: Optional[Rank] | None = None,
             home_square: Optional[HomeSquare] | None = None,
+            positions: Optional[CoordDatabase] | None = None,
+            domain_class: Optional[Type[Token]] | None = None,
+            domain_null_exception: Optional[TokenNullException] | None = None,
+            id: Optional[int] | None = None,
     ):
         """
         Args:
-            domain_class: Optional[Type[Token]]
-            search_context_class: Optional[Type[TokenContext]]
-            domain_null_exception: Optional[TokenNullException]
-            id: Optional[int]
             team: Team,
             formation: Formation
             rank: Optional[Rank]
+            positions: Optional[CoordDatabase]
+            domain_class: Optional[Type[Token]]
+            domain_null_exception: Optional[TokenNullException]
+            id: Optional[int]
         """
         super().__init__(
             id=id,
             domain_class=domain_class or Type[Token],
-            search_context_class=search_context_class or Type[TokenContext],
             domain_null_exception=domain_null_exception or TokenNullException(),
         )
         self._team = team
         self._rank = rank
         self._formation = formation
         self._home_square = home_square
-    
-    @property
-    def domain_class(self) -> Type[Token]:
-        return cast(Type[Token], super().domain_class)
-    
-    @property
-    def search_context_class(self) -> Type[TokenContext]:
-        return cast(Type[TokenContext], super().search_context_class)
-    
-    @property
-    def domain_null_exception(self) -> TokenNullException:
-        return cast(TokenNullException, super().domain_null_exception)
+        self._positions = positions or CoordDatabase()
     
     @property
     def team(self) -> Team:
@@ -103,6 +94,19 @@ class TokenBlueprint(StateModelBlueprint[Token]):
     def home_square(self) -> Optional[HomeSquare]:
         return self._home_square
     
+    @property
+    def positions(self) -> CoordDatabase:
+        return self._positions
+    
+    @property
+    def domain_class(self) -> Type[Token]:
+        return cast(Type[Token], super().domain_class)
+    
+    @property
+    def domain_null_exception(self) -> TokenNullException:
+        return cast(TokenNullException, super().domain_null_exception)
+    
+
 
         
         

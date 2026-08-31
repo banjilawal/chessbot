@@ -1,7 +1,7 @@
-# src/transit/carrier/model/mode/square/carrier.py
+# src/transit/carrier/model/square/carrier.py
 
 """
-Module: transit.carrier.model.model.square.carrier
+Module: transit.carrier.model.square.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,9 +9,9 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Optional, cast
 
-from domain import Square, SquareBlueprint
+from domain import HomeSquare, Square, SquareBlueprint
 from transit import ModelCarrier
 
 
@@ -26,7 +26,7 @@ class SquareCarrier(ModelCarrier[Square]):
     Attributes:
         size: int
         is_empty: bool
-        over_capacity: bool
+        is_over_capacity: bool
         is_model_carrier: bool
         is_blueprint_carrier: bool
         entity: [Square|SquareBlueprint]
@@ -87,7 +87,7 @@ class SquareCarrier(ModelCarrier[Square]):
         return self.size == 0
     
     @property
-    def over_capacity(self) -> bool:
+    def is_over_capacity(self) -> bool:
         return self.size > 1
     
     @property
@@ -104,22 +104,18 @@ class SquareCarrier(ModelCarrier[Square]):
             home_square = cast(HomeSquare, self._model)
             return SquareBlueprint(
                 id=home_square.id,
+                name=home_square.name,
                 board=home_square.board,
                 coord=home_square.coord,
+                occupant=home_square.occupant,
                 formation=home_square.formation,
             )
+        model = cast(Square, self._model)
         return SquareBlueprint(
-            id=self._model.id,
-            board=self._model.board,
-            coord=self._model.coord,
+            id=model.id,
+            name=model.name,
+            board=model.board,
+            coord=model.coord,
+            occupant=model.occupant,
         )
 
-    def __eq__(self, other):
-        if other is self: return True
-        if other is None: return False
-        if isinstance(other, SquareCarrier):
-            return self.entity == other.entity
-        return False
-    
-    def __hash__(self):
-        return hash(self.entity)

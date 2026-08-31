@@ -30,7 +30,7 @@ class QuadrantCarrier(SpaceCarrier, ABC, Generic[T]):
         
         entity: [T | Blueprint[T]]
         is_empty: bool
-        over_capacity: bool
+        is_over_capacity: bool
         to_dict: Dict[str, Any]
         size: int
 

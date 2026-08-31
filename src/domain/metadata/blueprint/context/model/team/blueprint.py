@@ -51,8 +51,9 @@ class TeamContextBlueprint(ModelContextBlueprint[TeamContext]):
             self,
             id: Optional[int] | None = None,
             board: Optional[Board] | None = None,
-            player: Optional[Player] | None = None,
+            owner: Optional[Player] | None = None,
             state: Optional[TeamState] | None = None,
+            color: Optional[GameColor] | None = None,
             archetype: Optional[Archetype] | None = None,
             domain_class: Optional[Type[TeamContext]] | None = None,
             domain_null_exception: Optional[TeamContextNullException] | None = None,
@@ -78,14 +79,6 @@ class TeamContextBlueprint(ModelContextBlueprint[TeamContext]):
         self._state = state
         self._color = color
         self._archetype = archetype
-
-    @property
-    def domain_class(self) -> Type[TeamContext]:
-        return cast(Type[TeamContext], super().domain_class)
-    
-    @property
-    def domain_null_exception(self) -> TeamContextNullException:
-        return  cast(TeamContextNullException, super().domain_null_exception)
     
     @property
     def board(self) -> Optional[Board]:
@@ -106,6 +99,14 @@ class TeamContextBlueprint(ModelContextBlueprint[TeamContext]):
     @property
     def archetype(self) -> Optional[Archetype]:
         return self._archetype
+
+    @property
+    def domain_class(self) -> Type[TeamContext]:
+        return cast(Type[TeamContext], super().domain_class)
+    
+    @property
+    def domain_null_exception(self) -> TeamContextNullException:
+        return  cast(TeamContextNullException, super().domain_null_exception)
     
     @property
     def to_dict(self) -> Dict[str, Any]:

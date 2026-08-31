@@ -1,7 +1,7 @@
-# src/transit/carrier/model/orange/carrier.py
+# src/transit/carrier/model/carrier.py
 
 """
-Module: transit.carrier.model..orange.carrier
+Module: transit.carrier.model.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,6 +9,12 @@ version: 0.0.2
 
 from __future__ import annotations
 
+
+from abc import ABC
+from typing import Generic, TypeVar
+
+from domain import Model
+from transit import EntityCarrier
 
 T = TypeVar("T", bound="Model")
 
@@ -23,12 +29,11 @@ class ModelCarrier(EntityCarrier[T], ABC, Generic[T]):
 
     Attributes:
         size: int
-
         is_empty: bool
-        over_capacity: bool
+        is_over_capacity: bool
         is_model_carrier: bool
         is_blueprint_carrier: bool
-        entity: [T | Blueprint[T]]
+        entity: [T|Blueprint[T]]
 
 
     Provides:

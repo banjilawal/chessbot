@@ -29,7 +29,7 @@ class CartesianToggleRegisterCarrier(RegisterCarrier[CartesianToggle]):
         blueprint: Optional[CartesianToggleRegisterBlueprint]
         is_model_carrier: bool
         is_blueprint_carrier: bool
-        over_capacity: bool
+        is_over_capacity: bool
         is_empty: bool
     
     Provides:
@@ -90,7 +90,7 @@ class CartesianToggleRegisterCarrier(RegisterCarrier[CartesianToggle]):
         return self._model is None and self._blueprint is None
     
     @property
-    def over_capacity(self) -> bool:
+    def is_over_capacity(self) -> bool:
         return not self.is_empty
 
     def __eq__(self, other):

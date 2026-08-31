@@ -1,7 +1,7 @@
-# src/transit/carrier/model/mode/board/carrier.py
+# src/transit/carrier/model/board/carrier.py
 
 """
-Module: transit.carrier.model.model.board.carrier
+Module: transit.carrier.model.board.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Optional, cast
 
 from domain import Board, BoardBlueprint
 from transit import ModelCarrier
@@ -26,7 +26,7 @@ class BoardCarrier(ModelCarrier[Board]):
     Attributes:
         size: int
         is_empty: bool
-        over_capacity: bool
+        is_over_capacity: bool
         is_model_carrier: bool
         is_blueprint_carrier: bool
         entity: [Board|BoardBlueprint]
@@ -56,7 +56,7 @@ class BoardCarrier(ModelCarrier[Board]):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> Optional[Board | BoardBlueprint]:
+    def entity(self) -> Optional[Board|BoardBlueprint]:
         if self.is_empty:
             return None
         if self.is_carrying_model:
@@ -87,13 +87,21 @@ class BoardCarrier(ModelCarrier[Board]):
         return self.size == 0
     
     @property
-    def over_capacity(self) -> bool:
+    def is_over_capacity(self) -> bool:
         return self.size > 1
     
-    def __eq__(self, other):
-        if other is self: return True
-        if other is None: return False
-        if isinstance(other, BoardCarrier):
-            return self.entity == other.entity
-        return False
+    def extract_blueprint(self) -> Optional[BoardBlueprint]:
+        if self.is_empty: return None
+        if self.is_carrying_blueprint: return self._blueprint
+        
+        model = cast(Board, self._model)
+        return BoardBlueprint(
+            id=model.id,
+            arena=model.arena,
+            squares=model.squares,
+            maneuver_log=model.maneuver_log,
+            attack_records=model.attack_records,
+            captured_tokens=model.captured_tokens,
+            team_binder=model.team_binder,
+        )
 

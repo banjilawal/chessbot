@@ -9,11 +9,10 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from collection import CheckChain
-from collection.database import TokenDatabase
-from domain.model import Board, Player, StateModel, TeamState
-from domain.schema import Archetype
-from logic.checking import CheckingException
+from typing import Optional
+
+from collection import CheckChain, TokenDatabase
+from domain import Archetype, Board, Player, StateModel, TeamState
 
 
 class Team(StateModel):
@@ -56,6 +55,7 @@ class Team(StateModel):
             board: Board,
             owner: Player,
             archetype: Archetype,
+            roster: Optional[TokenDatabase] | None = None,
     ):
         """
         Args:
@@ -63,7 +63,7 @@ class Team(StateModel):
             board: Board
             owner: Player
             archetype: Archetype
-
+            roster: Optional[TokenDatabase]
         """
         super().__init__()
         self._id = id
@@ -71,7 +71,7 @@ class Team(StateModel):
         self._archetype = archetype
         self._owner = owner
         self._state = TeamState.NOT_READY_TO_PLAY
-        self._roster = TokenDatabase()
+        self._roster = roster or TokenDatabase()
         self._check_event_log = CheckChain(team=self)
     
     @property

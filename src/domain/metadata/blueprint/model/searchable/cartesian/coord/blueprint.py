@@ -28,7 +28,6 @@ class CoordBlueprint(CartesianBlueprint[Coord]):
         column: int
         domain_class: Type[Coord]
         domain_null_exception: CoordNullException
-        search_context_class: Type[CoordContext]
         
     Provides:
 
@@ -44,7 +43,6 @@ class CoordBlueprint(CartesianBlueprint[Coord]):
             column: int,
             domain_class: Optional[Type[Coord]] | None = None,
             domain_null_exception: Optional[CoordNullException]| None = None,
-            search_context_class: Optional[Type[CoordContext]] | None = None,
     ):
         """
         Args:
@@ -56,22 +54,9 @@ class CoordBlueprint(CartesianBlueprint[Coord]):
         super().__init__(
             domain_class=domain_class or Type[Coord],
             domain_null_exception=domain_null_exception or CoordNullException(),
-            search_context_class=search_context_class or Type[CoordContext],
         )
         self._row = row
         self._column = column
-        
-    @property
-    def domain_class(self) -> Type[Coord]:
-        return cast(Type[Coord], super().domain_class)
-    
-    @property
-    def search_context_class(self) -> Type[CoordContext]:
-        return cast(Type[CoordContext], super().search_context_class)
-    
-    @property
-    def domain_null_exception(self) -> CoordNullException:
-        return cast(CoordNullException, super().domain_null_exception)
     
     @property
     def row(self) -> int:
@@ -80,3 +65,11 @@ class CoordBlueprint(CartesianBlueprint[Coord]):
     @property
     def column(self) -> int:
         return self._column
+        
+    @property
+    def domain_class(self) -> Type[Coord]:
+        return cast(Type[Coord], super().domain_class)
+    
+    @property
+    def domain_null_exception(self) -> CoordNullException:
+        return cast(CoordNullException, super().domain_null_exception)

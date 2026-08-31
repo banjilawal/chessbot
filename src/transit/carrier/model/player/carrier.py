@@ -1,7 +1,7 @@
-# src/transit/carrier/model/mode/player/carrier.py
+# src/transit/carrier/model/player/carrier.py
 
 """
-Module: transit.carrier.model.model.player.carrier
+Module: transit.carrier.model.player.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -26,7 +26,7 @@ class PlayerCarrier(ModelCarrier[Player]):
     Attributes:
         size: int
         is_empty: bool
-        over_capacity: bool
+        is_over_capacity: bool
         is_model_carrier: bool
         is_blueprint_carrier: bool
         entity: [Player|PlayerBlueprint]
@@ -87,14 +87,12 @@ class PlayerCarrier(ModelCarrier[Player]):
         return self.size == 0
     
     @property
-    def over_capacity(self) -> bool:
+    def is_over_capacity(self) -> bool:
         return self.size > 1
     
-    def __eq__(self, other):
-        if other is self: return True
-        if other is None: return False
-        if isinstance(other, PlayerCarrier):
-            return self.entity == other.entity
-        return False
+    
+    
+    
+
 
 

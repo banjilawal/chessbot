@@ -30,7 +30,7 @@ class EntityCarrier(ABC, Generic[T]):
         size: int
         
         is_empty: bool
-        over_capacity: bool
+        is_over_capacity: bool
         is_model_carrier: bool
         is_blueprint_carrier: bool
         entity: [T | Blueprint[T]]
@@ -72,7 +72,7 @@ class EntityCarrier(ABC, Generic[T]):
     
     @property
     @abstractmethod
-    def over_capacity(self) -> bool:
+    def is_over_capacity(self) -> bool:
         pass
     
     @abstractmethod

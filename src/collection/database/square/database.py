@@ -9,7 +9,14 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from microservice import SquareService
+from typing import Optional
+
+from artifcat import DeletionResult, InsertionResult
+from collection import Database, SquareStackService
+from collection.database.database import T
+from domain import Square
+from microservice import Microservice, SquareService
+from util import IdFactory
 
 
 class SquareDatabase(Database[Square]):
@@ -73,15 +80,29 @@ class SquareDatabase(Database[Square]):
     # INHERITED METHODS:
     None
     """
-    SERVICE_NAME = "SquareDatabase"
-    _token_map: Dict[Token, Square]
+    
+    @property
+    def microservice(self) -> Microservice[T]:
+        pass
+    
+    @property
+    def iterator(self) -> iter:
+        pass
+    
+    def insert(self, item: T) -> InsertionResult:
+        pass
+    
+    def delete_by_id(self, id: int) -> DeletionResult[T]:
+        pass
+    
+    _SERVICE_NAME = "SquareDatabase"
     _stack_service: SquareStackService
 
     def __init__(
             self,
-            stack_service: SquareStackService,
-            id: int = IdFactory.next_id(class_name="SquareDatabase"),
-            name: str = SERVICE_NAME,
+            id: Optional[int] | None = None,
+            name: Optional[str] | None = None,
+            stack_service: Optional[SquareStackService] | None = None,
     ):
         """
         Args:
@@ -89,9 +110,12 @@ class SquareDatabase(Database[Square]):
             name: str
             stack_service: SquareStackService
         """
-        super().__init__(id=id, name=name)
+        super().__init__(
+            name=name or self._SERVICE_NAME,
+            id=id or IdFactory.next_id(class_name="SquareDatabase"),
+        )
         self._token_map = {}
-        self._stack_service = stack_service
+        self._stack_service = stack_service or SquareStackService()
 
     @property
     def integrity_service(self) -> SquareService:

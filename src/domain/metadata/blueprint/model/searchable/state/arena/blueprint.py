@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import Arena, ArenaPlayerColorBinder, ArenaContext, Board, StateModelBlueprint
+from domain import Arena, ArenaPlayerColorBinder, ArenaContext, Board, Game, StateModelBlueprint
 from err import ArenaNullException
 
 
@@ -37,11 +37,13 @@ class ArenaBlueprint(StateModelBlueprint[Arena]):
      Super Class:
         StateModelBlueprint
      """
+    _game: Game
     _board: Board
     _player_binder: ArenaPlayerColorBinder
     
     def __init__(
             self,
+            game: Game,
             board: Board,
             player_binder: ArenaPlayerColorBinder,
             domain_class: Optional[Type[Arena]] | None = None,
@@ -55,6 +57,7 @@ class ArenaBlueprint(StateModelBlueprint[Arena]):
             search_context_class: Optional[Type[ArenaContext]] | None = None,
             domain_null_exception: Optional[ArenaNullException] | None = None,
             id: Optional[int]
+            game: Game
             board: Board
             player_binder: ArenaPlayerColorBinder
         """
@@ -64,8 +67,21 @@ class ArenaBlueprint(StateModelBlueprint[Arena]):
             search_context_class=search_context_class or Type[ArenaContext],
             domain_null_exception=domain_null_exception or ArenaNullException(),
         )
+        self._game = game
         self._board = board
         self._player_binder = player_binder
+    
+    @property
+    def game(self) -> Game:
+        return self._game
+    
+    @property
+    def board(self) -> Board:
+        return self._board
+    
+    @property
+    def player_binder(self) -> ArenaPlayerColorBinder:
+        return self._player_binder
     
     @property
     def domain_class(self) -> Type[Arena]:
@@ -79,10 +95,4 @@ class ArenaBlueprint(StateModelBlueprint[Arena]):
     def domain_null_exception(self) -> ArenaNullException:
         return cast(ArenaNullException, super().domain_null_exception)
     
-    @property
-    def board(self) -> Board:
-        return self._board
-    
-    @property
-    def player_binder(self) -> ArenaPlayerColorBinder:
-        return self._player_binder
+

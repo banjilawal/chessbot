@@ -66,6 +66,7 @@ class Token(StateModel):
             team: Team,
             formation: Formation,
             home_square: HomeSquare,
+            positions: Optional[CoordDatabase] | None = None,
     ):
         """
         Args:
@@ -80,13 +81,13 @@ class Token(StateModel):
         self._team = team
         self._rank = rank
         self._formation = formation
-        self._positions = CoordDatabase()
         self._home_square = home_square
         self._current_position = self._positions.current_item
         self._previous_address = self._positions.previous_coord
         self._deployment_state = DeploymentState.NOT_DEPLOYED
         self._activity_state = TokenActivityState.NOT_INITIALIZED
         self._checked_enemy_king = None
+        self._positions = positions or CoordDatabase()
     
     @property
     def id(self) -> int:
