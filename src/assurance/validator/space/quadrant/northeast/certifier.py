@@ -17,7 +17,7 @@ from carrier import NortheastQuadrantCarrier
 from domain.model import Vector
 from artifcat import ValidationResult
 from assurance.validator import QuadrantRootChecker
-from space import NortheastQuadrant
+from surface.space import NortheastQuadrant
 from operation.toolkit.geometry.space.quadrant.northeast import NortheastQuadrantToolkit
 from util import LoggingLevelRouter
 

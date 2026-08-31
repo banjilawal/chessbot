@@ -13,8 +13,8 @@ from typing import Optional, Type, cast
 
 from domain.metadata.blueprint import TraversalSignatureBlueprint
 from err import BishopSignatureNullException
-from topology.pattern import BishopSignature
-from topology.recurrence import BishopRecurrenceRegistries
+from surface.topology import BishopSignature
+from surface.topology import BishopRecurrenceRegistries
 
 
 class BishopSignatureBlueprint(TraversalSignatureBlueprint[BishopSignature]):

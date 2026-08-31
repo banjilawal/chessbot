@@ -13,7 +13,7 @@ from typing import Optional
 
 from transit.metadata.blueprint import SouthwestQuadrantBlueprint
 from carrier import SpaceCarrier
-from space import SouthwestQuadrant
+from surface.space import SouthwestQuadrant
 
 
 class SouthwestQuadrantCarrier(SpaceCarrier[SouthwestQuadrant]):

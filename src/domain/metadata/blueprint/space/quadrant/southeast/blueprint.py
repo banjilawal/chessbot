@@ -14,7 +14,7 @@ from typing import Optional, Type, cast
 from domain.metadata.blueprint import QuadrantBlueprint
 from err import SoutheastQuadrantNullException
 from domain.model import Vector
-from space import SoutheastQuadrant
+from surface.space import SoutheastQuadrant
 
 
 class SoutheastQuadrantBlueprint(QuadrantBlueprint[SoutheastQuadrant]):

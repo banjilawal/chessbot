@@ -13,7 +13,7 @@ from abc import ABC
 
 from collection import VectorSet
 from domain.model import Pawn
-from topology.pattern import OffsetSignature
+from surface.topology import OffsetSignature
 
 
 class PawnOffsetPattern(ABC, OffsetSignature[Pawn]):

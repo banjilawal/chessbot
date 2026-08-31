@@ -17,7 +17,7 @@ from carrier import EastAxisCarrier
 from domain.model import Vector
 from artifcat import ValidationResult
 from assurance.validator import AxisRootChecker
-from space import EastAxis
+from surface.space import EastAxis
 from operation.toolkit.geometry.space.axis import EastAxisToolkit
 from util import LoggingLevelRouter
 

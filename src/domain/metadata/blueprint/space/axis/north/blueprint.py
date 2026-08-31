@@ -14,7 +14,7 @@ from typing import Optional, Type, cast
 from domain.metadata.blueprint import AxisBlueprint
 from err import NorthAxisNullException
 from domain.model import Vector
-from space import NorthAxis
+from surface.space import NorthAxis
 
 
 class NorthAxisBlueprint(AxisBlueprint[NorthAxis]):

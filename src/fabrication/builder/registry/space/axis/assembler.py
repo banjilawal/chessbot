@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from fabrication.builder import SpaceReservoirBuilder
 from domain.metadata.blueprint import AxisReservoirBlueprint
-from topology.registry import AxisReservoir
+from surface.topology import AxisReservoir
 from artifcat import BuildResult
 from util import LoggingLevelRouter
 

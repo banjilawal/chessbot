@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from collection import VectorSet
 from domain.schema import Offset
-from topology.pattern import ManeuverOffsetPattern
+from surface.topology import ManeuverOffsetPattern
 
 
 class OpeningManeuverOffsetPattern(ManeuverOffsetPattern):

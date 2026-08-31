@@ -15,7 +15,7 @@ from domain.metadata.blueprint import EastAxisBlueprint
 from transit.dispatcher.builder import AxisBuilder
 from err import EastAxisBuilderException
 from artifcat import BuildResult, MethodResultType
-from space import EastAxis
+from surface.space import EastAxis
 from operation.toolkit import EastAxisBuilderToolkit
 from util import LoggingLevelRouter
 

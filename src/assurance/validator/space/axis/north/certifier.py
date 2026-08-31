@@ -17,7 +17,7 @@ from err import NorthAxisCarrierNullException, NorthAxisRootCheckerException
 from domain.model import Vector
 from artifcat import ValidationResult
 from assurance.validator import AxisRootChecker
-from space import NorthAxis
+from surface.space import NorthAxis
 from operation.toolkit.geometry.space.axis.north import NorthAxisToolkit
 from util import LoggingLevelRouter
 

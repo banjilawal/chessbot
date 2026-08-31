@@ -16,7 +16,7 @@ from carrier import AxisReservoirCarrier
 from domain.model import Vector
 from assurance.validator import SpaceReservoirChecker
 from artifcat import ValidationResult
-from space import AxisReservoir
+from surface.space import AxisReservoir
 from operation.toolkit import AxisReservoirToolkit
 from util import LoggingLevelRouter
 

@@ -13,7 +13,7 @@ from typing import Optional
 
 from transit.metadata.blueprint import WestAxisBlueprint
 from carrier import SpaceCarrier
-from space import WestAxis
+from surface.space import WestAxis
 
 
 class WestAxisCarrier(SpaceCarrier[WestAxis]):

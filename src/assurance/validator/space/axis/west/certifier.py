@@ -16,7 +16,7 @@ from carrier import WestAxisCarrier
 from domain.model import Vector
 from artifcat import ValidationResult
 from assurance.validator import AxisRootChecker
-from space import WestAxis
+from surface.space import WestAxis
 from operation.toolkit.geometry.space.axis.west import WestAxisToolkit
 from util import LoggingLevelRouter
 

@@ -16,7 +16,7 @@ from typing import Type
 from domain.metadata.blueprint.space import SouthAxisBlueprint
 from carrier import SouthAxisCarrier
 from err import SouthAxisBlueprintNullException, SouthAxisCarrierNullException, SouthAxisNullException
-from space import SouthAxis
+from surface.space import SouthAxis
 from operation.toolkit.geometry.space.axis.south.toolkit import AxisToolkit
 
 

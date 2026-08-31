@@ -13,7 +13,7 @@ from typing import Optional
 
 from transit.metadata.blueprint import NortheastQuadrantBlueprint
 from carrier import SpaceCarrier
-from space import NortheastQuadrant
+from surface.space import NortheastQuadrant
 
 
 class NortheastQuadrantCarrier(SpaceCarrier[NortheastQuadrant]):

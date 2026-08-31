@@ -15,7 +15,7 @@ from domain.metadata.blueprint import SouthwestQuadrantBlueprint
 from transit.dispatcher.builder import QuadrantBuilder
 from err import SouthwestQuadrantBuilderException
 from artifcat import BuildResult, MethodResultType
-from space import SouthwestQuadrant
+from surface.space import SouthwestQuadrant
 from operation.toolkit import SouthwestQuadrantBuilderToolkit
 from util import LoggingLevelRouter
 

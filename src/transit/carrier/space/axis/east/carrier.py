@@ -13,7 +13,7 @@ from typing import Optional
 
 from transit.metadata.blueprint import EastAxisBlueprint
 from carrier import SpaceCarrier
-from space import EastAxis
+from surface.space import EastAxis
 
 
 class EastAxisCarrier(SpaceCarrier[EastAxis]):

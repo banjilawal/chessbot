@@ -13,7 +13,7 @@ from typing import Optional
 
 from transit.metadata.blueprint import AxisReservoirBlueprint
 from carrier import SpaceReservoirCarrier
-from space import AxisReservoir
+from surface.space import AxisReservoir
 
 
 class AxisReservoirCarrier(SpaceReservoirCarrier[AxisReservoir]):

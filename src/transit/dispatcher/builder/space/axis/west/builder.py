@@ -15,7 +15,7 @@ from domain.metadata.blueprint import WestAxisBlueprint
 from transit.dispatcher.builder import AxisBuilder
 from err import WestAxisBuilderException
 from artifcat import BuildResult, MethodResultType
-from space import WestAxis
+from surface.space import WestAxis
 from operation.toolkit import WestAxisBuilderToolkit
 from util import LoggingLevelRouter
 

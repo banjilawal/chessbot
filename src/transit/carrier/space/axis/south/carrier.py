@@ -13,7 +13,7 @@ from typing import Optional
 
 from transit.metadata.blueprint import SoouthAxisBlueprint
 from carrier import SpaceCarrier
-from space import SoouthAxis
+from surface.space import SoouthAxis
 
 
 class SoouthAxisCarrier(SpaceCarrier[SoouthAxis]):

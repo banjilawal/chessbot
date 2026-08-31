@@ -15,7 +15,7 @@ from domain.metadata.blueprint import SpaceReservoirBlueprint
 from err import QuadrantReservoirNullException
 
 from domain.model import Vector
-from space import Quadrant, QuadrantReservoir
+from surface.space import Quadrant, QuadrantReservoir
 
 
 class QuadrantReservoirBlueprint(SpaceReservoirBlueprint[Quadrant]):

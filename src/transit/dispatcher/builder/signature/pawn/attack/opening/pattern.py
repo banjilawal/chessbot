@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from collection import VectorSet
 from domain.schema import Offset
-from topology.pattern import PawnAttackSignature
+from surface.topology import PawnAttackSignature
 
 
 class OpeningPawnAttackPattern(PawnAttackSignature):

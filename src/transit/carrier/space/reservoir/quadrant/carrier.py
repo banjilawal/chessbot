@@ -13,7 +13,7 @@ from typing import Optional
 
 from transit.metadata.blueprint import QuadrantReservoirBlueprint
 from carrier import SpaceReservoirCarrier
-from space import QuadrantReservoir
+from surface.space import QuadrantReservoir
 
 
 class QuadrantReservoirCarrier(SpaceReservoirCarrier[QuadrantReservoir]):

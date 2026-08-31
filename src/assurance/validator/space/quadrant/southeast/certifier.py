@@ -16,7 +16,7 @@ from carrier import SoutheastQuadrantCarrier
 from domain.model import Vector
 from artifcat import ValidationResult
 from assurance.validator import QuadrantRootChecker
-from space import SoutheastQuadrant
+from surface.space import SoutheastQuadrant
 from operation.toolkit.geometry.space.quadrant import SoutheastQuadrantToolkit
 from util import LoggingLevelRouter
 

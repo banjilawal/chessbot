@@ -16,7 +16,7 @@ from domain.metadata.blueprint import Blueprint
 from err import SpaceReservoirNullException
 from domain.model import Vector
 
-from space import SpaceReservoir
+from surface.space import SpaceReservoir
 
 T = TypeVar("T", bound="SpaceReservoir")
 

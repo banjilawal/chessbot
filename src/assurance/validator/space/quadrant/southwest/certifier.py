@@ -16,7 +16,7 @@ from carrier import SouthwestQuadrantCarrier
 from domain.model import Vector
 from artifcat import ValidationResult
 from assurance.validator import QuadrantRootChecker
-from space import SouthwestQuadrant
+from surface.space import SouthwestQuadrant
 from operation.toolkit import SouthwestQuadrantToolkit
 
 from util import LoggingLevelRouter

@@ -17,7 +17,7 @@ from err import NorthwestQuadrantCarrierNullException, NorthwestQuadrantRootChec
 from domain.model import Vector
 from artifcat import ValidationResult
 from assurance.validator import QuadrantRootChecker
-from space import NorthwestQuadrant
+from surface.space import NorthwestQuadrant
 from operation.toolkit.geometry.space.quadrant import NorthwestQuadrantToolkit
 from util import LoggingLevelRouter
 

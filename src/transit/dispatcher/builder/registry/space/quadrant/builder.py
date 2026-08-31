@@ -14,7 +14,7 @@ from typing import Optional, cast
 from domain.metadata.blueprint import QuadrantReservoirBlueprint
 from transit.dispatcher.builder import SpaceReservoirBuildDispatcher
 from err import QuadrantReservoirBuilderException
-from topology.registry import QuadrantReservoir
+from surface.topology import QuadrantReservoir
 from artifcat import BuildResult, MethodResultType
 from operation.toolkit import QuadrantReservoirBuilderToolkit
 from util import LoggingLevelRouter

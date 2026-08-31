@@ -15,7 +15,7 @@ from domain.metadata.blueprint import SpaceReservoirBlueprint
 from err import AxisReservoirNullException
 
 from domain.model import Vector
-from topology.registry import AxisReservoir
+from surface.topology import AxisReservoir
 
 
 

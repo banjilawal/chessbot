@@ -1,0 +1,41 @@
+# src/topology/mapper/axis/east/mapper.py
+
+"""
+Module: topology.mapper.axis.east.mapper
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from surface.topology.mapper import AxisMappingFunction
+from domain.model import Vector
+from domain.schema import AxisDelta
+from surface.topology import EastAxis
+
+
+
+class EastAxisMapFunction(AxisMappingFunction[EastAxis]):
+    """
+    Role:
+        - Computation
+
+    Responsibilities:
+        Define delta_vector for getting the next vector on east of origin.
+            
+    Attributes:
+        delta: Vector = AxisMapFunction.EAST.vecto
+
+    Provides:
+
+    Super Class:
+        AxisMapFunction
+    """
+    
+    def __init__(self, delta: Vector = AxisDelta.EAST.vector):
+        """
+        Args:
+            delta: Vector = AxisMapFunction.EAST.vector
+        """
+        super().__init__(delta=delta)

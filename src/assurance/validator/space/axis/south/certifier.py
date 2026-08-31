@@ -16,7 +16,7 @@ from carrier import SouthAxisCarrier
 from domain.model import Vector
 from artifcat import ValidationResult
 from assurance.validator import AxisRootChecker
-from space import SouthAxis
+from surface.space import SouthAxis
 from operation.toolkit.geometry.space.axis import SouthAxisToolkit
 from util import LoggingLevelRouter
 

@@ -16,7 +16,7 @@ from domain.model import Vector
 from domain.structure.register import VectorRegister
 from artifcat import BuildResult, ComputationResult
 from domain.schema import AxisTerminus
-from space import WestTraversalPattern
+from surface.space import WestTraversalPattern
 from operation.toolkit import MathToolkit
 from util import LoggingLevelRouter
 from transit.dispatcher.validator import VectorValidator

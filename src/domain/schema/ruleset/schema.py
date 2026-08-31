@@ -12,7 +12,7 @@ from __future__ import annotations
 from enum import Enum
 from typing import Dict
 
-from topology.pattern import TraversalSignature
+from surface.topology import TraversalSignature
 
 
 class Ruleset(Enum):

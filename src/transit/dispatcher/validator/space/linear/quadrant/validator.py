@@ -13,7 +13,7 @@ from __future__ import annotations
 from typing import Any
 
 from artifcat import ValidationResult
-from space import QuadrantTraversalPattern
+from surface.space import QuadrantTraversalPattern
 from util import LoggingLevelRouter
 from transit.dispatcher.validator import LinearSpaceValidator
 

@@ -16,7 +16,7 @@ from typing import Type
 from domain.metadata.blueprint.space.quadrant.southeast import SoutheastQuadrantBlueprint
 from carrier import SoutheastQuadrantCarrier
 from err import SoutheastQuadrantBlueprintNullException, SoutheastQuadrantCarrierNullException, SoutheastQuadrantNullException
-from space import SoutheastQuadrant
+from surface.space import SoutheastQuadrant
 from operation.toolkit.geometry.space.quadrant.southeast.toolkit import QuadrantToolkit
 
 

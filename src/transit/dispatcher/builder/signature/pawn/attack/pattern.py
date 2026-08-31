@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from collection import VectorSet
-from topology.pattern import PawnSignature
+from surface.topology import PawnSignature
 
 
 class AttackSignature(PawnSignature):

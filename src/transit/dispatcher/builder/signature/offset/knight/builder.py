@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from transit.dispatcher.builder import OffsetBuilder
-from topology.pattern import KnightSignature
+from surface.topology import KnightSignature
 from artifcat import BuildResult
 from util import LoggingLevelRouter
 

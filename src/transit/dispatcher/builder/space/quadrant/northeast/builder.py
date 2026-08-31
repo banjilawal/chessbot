@@ -15,7 +15,7 @@ from domain.metadata.blueprint import NortheastQuadrantBlueprint
 from transit.dispatcher.builder import QuadrantBuilder
 from err import NortheastQuadrantBuilderException
 from artifcat import BuildResult, MethodResultType
-from space import NortheastQuadrant
+from surface.space import NortheastQuadrant
 from operation.toolkit import NortheastQuadrantBuilderToolkit
 from util import LoggingLevelRouter
 

@@ -13,7 +13,7 @@ from domain.metadata.blueprint import EastAxisBlueprint
 
 from artifcat import BuildResult
 from fabrication.builder import AxisBuilder
-from space import EastAxis
+from surface.space import EastAxis
 from util import  LoggingLevelRouter
   
   

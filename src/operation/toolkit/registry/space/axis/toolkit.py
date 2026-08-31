@@ -14,8 +14,8 @@ from typing import Optional, Type, cast
 from domain.metadata.blueprint import AxisReservoirBlueprint
 from carrier import AxisReservoirCarrier
 from err import AxisReservoirNullException, SpaceReservoirNullException
-from topology.registry import AxisReservoir
-from space import Axis
+from surface.topology import AxisReservoir
+from surface.space import Axis
 from operation.toolkit.registry.space.axis.toolkit import MathToolkit, SpaceReservoirToolkit
 
 

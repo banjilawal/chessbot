@@ -15,7 +15,7 @@ from domain.metadata.blueprint import NorthAxisBlueprint
 from transit.dispatcher.builder import AxisBuilder
 from err import NorthAxisBuilderException
 from artifcat import BuildResult, MethodResultType
-from space import NorthAxis
+from surface.space import NorthAxis
 from operation.toolkit import NorthAxisBuilderToolkit
 from util import LoggingLevelRouter
 

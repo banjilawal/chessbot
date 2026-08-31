@@ -14,7 +14,7 @@ from typing import Generic, Type, TypeVar, cast
 
 from domain.metadata.blueprint import SignatureBlueprint
 from err import TraversalSignatureNullException
-from topology.recurrence import RecurrenceRegistryCollection
+from surface.topology import RecurrenceRegistryCollection
 
 T = TypeVar("T", bound="TraversalSignature")
 

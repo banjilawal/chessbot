@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from fabrication.builder import NorthwestQuadrantAssembler
 from assurance.validator import NorthwestQuadrantRootCertifier
-from space import NorthwestQuadrant
+from surface.space import NorthwestQuadrant
 from operation.toolkit.builder.space.quadrant.northwest.toolkit import QuadrantBuilderToolkit
 
 

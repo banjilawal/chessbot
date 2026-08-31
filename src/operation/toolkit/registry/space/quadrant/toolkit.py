@@ -14,7 +14,7 @@ from typing import Optional, Type, cast
 from domain.metadata.blueprint import QuadrantReservoirBlueprint
 from carrier import QuadrantReservoirCarrier
 from err import QuadrantReservoirNullException, SpaceReservoirNullException
-from space import Quadrant, QuadrantReservoir
+from surface.space import Quadrant, QuadrantReservoir
 from operation.toolkit.registry.space.quadrant.toolkit import MathToolkit, SpaceReservoirToolkit
 
 
