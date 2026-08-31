@@ -11,7 +11,6 @@ version: 0.0.2
 
 # Packages
 from .coord import *
-from .edge import *
 from .node import *
 from .player import *
 from .prisoner import *

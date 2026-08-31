@@ -5,56 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/collection/database/square/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/database/square/database.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/context/model/team/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/context/model/team/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/cartesian/coord/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/cartesian/coord/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/state/arena/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/state/arena/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/state/board/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/state/board/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/state/square/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/state/square/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/state/team/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/state/team/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/state/token/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/state/token/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/team/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/team/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/token/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/token/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/model/arena/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/model/arena/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/model/board/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/model/board/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/model/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/model/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/model/coord/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/model/coord/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/model/edge/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/model/edge/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/model/node/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/model/node/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/model/player/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/model/player/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/model/rank/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/model/rank/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/model/scalar/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/model/scalar/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/model/square/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/model/square/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/model/team/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/model/team/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/model/token/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/model/token/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/model/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/model/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/model/vector/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/model/vector/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/space/axis/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/space/axis/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/space/axis/east/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/space/axis/east/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/space/axis/north/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/space/axis/north/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/space/axis/south/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/space/axis/south/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/space/axis/west/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/space/axis/west/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/space/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/space/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/space/quadrant/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/space/quadrant/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/space/quadrant/northeast/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/space/quadrant/northeast/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/space/quadrant/northwest/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/space/quadrant/northwest/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/space/quadrant/southeast/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/space/quadrant/southeast/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/space/quadrant/southwest/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/space/quadrant/southwest/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/space/reservoir/axis/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/space/reservoir/axis/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/space/reservoir/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/space/reservoir/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/space/reservoir/quadrant/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/space/reservoir/quadrant/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/structure/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/node/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/structure/node/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/node/dossier/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/structure/node/dossier/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/node/vector/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/structure/node/vector/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/register/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/structure/register/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/register/cartesian/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/structure/register/cartesian/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/register/square/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/structure/register/square/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/register/vector/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/structure/register/vector/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/toggle/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/structure/toggle/carrier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/toggle/vector/transit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/structure/toggle/vector/transit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/carrier/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/carrier/model/edge/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/carrier/model/edge/carrier.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/carrier/model/node/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/carrier/model/node/carrier.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/carrier.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/node/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/node/carrier.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/node/dossier/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/node/dossier/carrier.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/node/vector/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/node/vector/carrier.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/register/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/register/carrier.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/register/cartesian/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/register/cartesian/carrier.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/register/square/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/register/square/carrier.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/register/vector/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/register/vector/carrier.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/toggle/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/toggle/carrier.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/toggle/vector/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/toggle/vector/transit.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,61 +71,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000006885190942" />
-      <entry key="MS500" value="1.0585575904450313" />
-      <entry key="S2" value="1.4949326184219671" />
-      <entry key="S5" value="1.9008021919228528" />
-      <entry key="S10" value="2.4370133139650747" />
-      <entry key="S30" value="3.7250886108028056" />
-      <entry key="S60" value="5.627832786659977" />
-      <entry key="M2" value="9.892830427856634" />
-      <entry key="M5" value="20.35417469508629" />
-      <entry key="M10" value="38.60151408034452" />
-      <entry key="M15" value="59.56197421414251" />
-      <entry key="M30" value="122.57946715651147" />
-      <entry key="H1" value="232.22471780562623" />
-      <entry key="H2" value="431.55998675051944" />
-      <entry key="H4" value="863.4169377414091" />
-      <entry key="D1" value="4597.0955995745" />
-      <entry key="W1" value="17005.65691506462" />
+      <entry key="MS100" value="1.1843270338733396" />
+      <entry key="MS500" value="1.985264713052873" />
+      <entry key="S2" value="5.951718511296374" />
+      <entry key="S5" value="16.04324041134382" />
+      <entry key="S10" value="31.046736387944236" />
+      <entry key="S30" value="76.40564625097488" />
+      <entry key="S60" value="119.8721991265405" />
+      <entry key="M2" value="162.11817267929996" />
+      <entry key="M5" value="205.76654399186424" />
+      <entry key="M10" value="236.89136250102467" />
+      <entry key="M15" value="261.6218411078904" />
+      <entry key="M30" value="328.38269302261716" />
+      <entry key="H1" value="441.1688459602082" />
+      <entry key="H2" value="642.9043148691759" />
+      <entry key="H4" value="1075.3151509900379" />
+      <entry key="D1" value="4811.433111690129" />
+      <entry key="W1" value="17227.415498488976" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="1.6353360182601333E-117" />
-      <entry key="S2" value="6.359189260694259E-30" />
-      <entry key="S5" value="2.0958524286403972E-12" />
-      <entry key="S10" value="1.447706071418289E-6" />
-      <entry key="S30" value="0.011367904482654853" />
-      <entry key="S60" value="0.11507842524810041" />
-      <entry key="M2" value="0.4541625626790058" />
-      <entry key="M5" value="1.7141284710226816" />
-      <entry key="M10" value="4.497154584108553" />
-      <entry key="M15" value="7.311780740088417" />
-      <entry key="M30" value="13.488496895379173" />
-      <entry key="H1" value="19.989940193005484" />
-      <entry key="H2" value="28.154516129066963" />
-      <entry key="H4" value="44.63889701754755" />
-      <entry key="D1" value="170.6196542164882" />
-      <entry key="W1" value="595.406004098008" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="1.894494333268674E-93" />
+      <entry key="S5" value="8.146992644859662E-38" />
+      <entry key="S10" value="2.8542940208543807E-19" />
+      <entry key="S30" value="6.61637105682157E-7" />
+      <entry key="S60" value="8.779375590372779E-4" />
+      <entry key="M2" value="0.039668537676471806" />
+      <entry key="M5" value="0.646453531319383" />
+      <entry key="M10" value="2.7617527048379706" />
+      <entry key="M15" value="5.28268207100692" />
+      <entry key="M30" value="11.465136076110642" />
+      <entry key="H1" value="18.429744881132564" />
+      <entry key="H2" value="27.033481646883608" />
+      <entry key="H4" value="43.74117168848754" />
+      <entry key="D1" value="170.04291851325314" />
+      <entry key="W1" value="595.1180700891034" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="6.67903876829499E-5" />
-      <entry key="MS500" value="0.14984311814293266" />
-      <entry key="S2" value="0.8669303566245102" />
-      <entry key="S5" value="1.5404480835218057" />
-      <entry key="S10" value="2.2273626749345077" />
-      <entry key="S30" value="3.653754549526787" />
-      <entry key="S60" value="5.685904804047801" />
-      <entry key="M2" value="10.295077379868104" />
-      <entry key="M5" value="22.016559797673274" />
-      <entry key="M10" value="43.03760826399017" />
-      <entry key="M15" value="66.80603183697029" />
-      <entry key="M30" value="135.99856550022588" />
-      <entry key="H1" value="252.157163537113" />
-      <entry key="H2" value="459.67126145774057" />
-      <entry key="H4" value="908.0205436010308" />
-      <entry key="D1" value="4767.691873324427" />
-      <entry key="W1" value="17601.05327765407" />
+      <entry key="MS100" value="0.9832471485795051" />
+      <entry key="MS500" value="1.9122780258089027" />
+      <entry key="S2" value="5.898584950084074" />
+      <entry key="S5" value="15.98927434020284" />
+      <entry key="S10" value="30.996031289084268" />
+      <entry key="S30" value="76.36513656015161" />
+      <entry key="S60" value="119.84114228549372" />
+      <entry key="M2" value="162.13220845561264" />
+      <entry key="M5" value="206.38314572703297" />
+      <entry key="M10" value="239.6100599342052" />
+      <entry key="M15" value="266.85179634631635" />
+      <entry key="M30" value="339.7868939282025" />
+      <entry key="H1" value="459.5445980054445" />
+      <entry key="H2" value="669.8957808401667" />
+      <entry key="H4" value="1119.0214924645697" />
+      <entry key="D1" value="4981.452687193609" />
+      <entry key="W1" value="17822.523925790094" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -202,11 +177,11 @@
       <recent name="$PROJECT_DIR$/src/domain/structure/register" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/transit/carrier/graph" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/game" />
       <recent name="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model" />
       <recent name="$PROJECT_DIR$/src/domain/metadata/blueprint/search" />
-      <recent name="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/walk" />
     </key>
   </component>
   <component name="RunManager" selected="Python.validator">
@@ -882,7 +857,7 @@
       <workItem from="1785958183827" duration="174661000" />
       <workItem from="1786522110280" duration="179726000" />
       <workItem from="1787456783999" duration="30897000" />
-      <workItem from="1787812398225" duration="162694000" />
+      <workItem from="1787812398225" duration="166286000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
