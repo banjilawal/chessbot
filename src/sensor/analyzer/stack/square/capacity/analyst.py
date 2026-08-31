@@ -88,6 +88,6 @@ class SquareStackCapacityAnalyst:
         return ComputationResult.success(
             OpeningSquareAvailabilityReport(
                 rank=rank,
-                number_of_openings=rank.persona.quota - len(rank_search_result.payload),
+                number_of_openings=rank.magnitude.quota - len(rank_search_result.payload),
             )
         )

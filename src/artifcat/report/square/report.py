@@ -47,7 +47,7 @@ class OpeningSquareAvailabilityReport:
     
     @property
     def openings_exist(self) -> bool:
-        return self._rank.persona.quota - self._number_of_openings > 0
+        return self._rank.magnitude.quota - self._number_of_openings > 0
     
     @property
     def rank_is_full(self) -> bool:

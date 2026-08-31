@@ -78,7 +78,7 @@ class PawnToken(CombatantToken):
         super().__init__(
             id=id,
             team=team,
-            rank=Pawn(formation.persona),
+            rank=Pawn(formation.magnitude),
             formation=formation,
             home_square=home_square,
         )

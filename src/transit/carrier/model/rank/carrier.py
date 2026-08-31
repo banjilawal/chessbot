@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import Rank, RankBlueprint
+from domain import Rank
 from transit import ModelCarrier
 
 
@@ -96,5 +96,5 @@ class RankCarrier(ModelCarrier[Rank]):
         
         model = cast(Type[self._model], self._model)
         return RankBlueprint(
-            persona=model.persona,
+            persona=model.magnitude,
         )

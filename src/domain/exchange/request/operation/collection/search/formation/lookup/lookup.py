@@ -87,8 +87,8 @@ class FormationLookupProcess(HashLookupProcess[Formation]):
         if super_key.team_color is not None:
             return cls._by_color(color=super_key.team_color)
         # Entry point into forward lookups by persona.
-        if super_key.persona is not None:
-            return cls._by_persona(persona=super_key.persona)
+        if super_key.magnitude is not None:
+            return cls._by_persona(persona=super_key.magnitude)
         
         # The default path is only reached when a super_key.attribute does not have a lookup route. Return
         # the exception chain.
@@ -209,7 +209,7 @@ class FormationLookupProcess(HashLookupProcess[Formation]):
             *   FormationLookupFailedException
         """
         method = "FormationLookupProcess._by_color"
-        matches = [entry for entry in Formation if entry.persona == persona]
+        matches = [entry for entry in Formation if entry.magnitude == persona]
         
         # Finding at least one match is success.
         if len(matches) >= 1:
