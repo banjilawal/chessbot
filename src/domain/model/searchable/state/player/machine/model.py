@@ -9,62 +9,41 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from engine import Engine
-from domain.model import Player
+from domain import Player
+from game import GameAdviser
 
 
 class MachinePlayer(Player):
     """
-    Role:Controller
+     Role:
+         -  Data Holder
 
-    Responsibilities:
-    1.  Forward requests and commands from a Machine owner to the Game model.
+     Responsibilities:
+        1.  Machine player can only execute GameAdviser recommendations about moves.
 
-    Super Class:
-        *   Player
+     Attributes:
+         id: int
+         name: str
+         adviser: GameAdviser
 
-    Provides:
+     Provides:
 
-    # LOCAL ATTRIBUTES:
-        *   engine_service (EngineService)
+     Super Class:
+        Player
+     """
     
-    # INHERITED ATTRIBUTES:
-        *   See Player class for inherited attributes.
-    """
-    _engine_service: EngineService
-    
-    def machine(
-            self,
-            id: int,
-            name: str,
-            engine: Engine,
-            teams: UniqueTeamDataService = UniqueTeamDataService(),
-    ):
+    def __init__(self, id: int, name: str, adviser: GameAdviser):
         """
-        # ACTION:
-            Constructor
-        # PARAMETERS:
-            *   id (nt)
-            *   schema (str)
-            *   games (UniqueGameDataService)
-            *   teams (TeamDatabase)
-            *   engine_service (EngineService)
-        # RETURNS:
-            None
-        Raises:
-            None
+        Args:
+            id: int
+            name: str
+            adviser: Optional[GameAdviser]
         """
-        super().__init__(id=id, name=name, teams=teams)
-        self._engine_service = engine_service
-    
-    @property
-    def engine_service(self) -> EngineService:
-        return self._engine_service
+        super().__init__(id=id, name=name, adviser=adviser)
     
     def __eq__(self, other):
-        if super().__eq__(other):
-            if isinstance(other, MachinePlayer): return True
+        if other is self: return True
+        if other is None: return False
+        if isinstance(other, MachinePlayer):
+            return self.id == other.id
         return False
-    
-    def __hash__(self):
-        return super.__hash__()

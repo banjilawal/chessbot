@@ -14,7 +14,7 @@ from graph import Graph
 from util import LoggingLevelRouter
 
 
-class TurnAdviser:
+class GameAdviser:
     
     
     @LoggingLevelRouter.monitor

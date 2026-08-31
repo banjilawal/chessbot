@@ -10,10 +10,8 @@ version: 0.0.2
 # =========== TRANSIT.CARRIER PACKAGE ===========#
 
 # Packages
-from .context import *
 from .model import *
-from .space import *
-from .structure import *
+
 
 # Modules
 from .carrier import EntityCarrier

@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Optional, cast
 
 from domain import Player, PlayerBlueprint
 from transit import ModelCarrier
@@ -90,7 +90,14 @@ class PlayerCarrier(ModelCarrier[Player]):
     def is_over_capacity(self) -> bool:
         return self.size > 1
     
-    
+    def extract_blueprint(self) -> Optional[PlayerBlueprint]:
+        if self.is_empty: return None
+        if self.is_carrying_blueprint: return self._blueprint
+        
+        model = cast(Player, self._model)
+        return PlayerBlueprint(
+            id
+        )
     
     
 

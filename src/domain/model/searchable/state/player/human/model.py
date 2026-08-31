@@ -9,55 +9,46 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from domain.model import Player
+from typing import Optional
+
+from domain import Player
+from game import GameAdviser
 
 
 class HumanPlayer(Player):
     """
-    Role:Controller
+     Role:
+         -  Data Holder
 
-    Responsibilities:
-    1.  Forward requests and commands from a Human owner to the Game model.
-    2.  Forward movement commands from the person playing to their pieces on the Board.
-    
-    Super Class:
-        *   Player
+     Responsibilities:
+        1.  Create, play, save, or terminate a Game.
+        2.  Direct a Team's pieces that are in an Arena's Board.
+        3.  Can seek advice on moves.
+        4.  Can look up their previous games.
 
-    Provides:
+     Attributes:
+         id: int
+         name: str
+         adviser: Optional[GameAdviser]
 
+     Provides:
+
+     Super Class:
+        Player
+     """
     
-    # INHERITED ATTRIBUTES:
-        *   See Player class for inherited attributes.
-    """
-    
-    def __init__(
-            self,
-            id: int,
-            name: str,
-            teams: UniqueTeamDataService = UniqueTeamDataService(),
-    ):
+    def player(self, id: int, name: str, adviser: Optional[GameAdviser] | None = None, ):
         """
-        # ACTION:
-        Constructor
-
-        # PARAMETERS:
-            *   id (nt)
-            *   schema (str)
-            *   games (UniqueGameDataService)
-            *   teams (TeamDatabase)
-
-        # RETURNS:
-        None
-
-        Raises:
+        Args:
+            id: int
+            name: str
+            adviser: Optional[GameAdviser]
         """
-        super().__init__(id=id, name=name, games=games, teams=teams)
+        super().__init__(id=id, name=name, adviser=adviser)
     
     def __eq__(self, other):
-        if super().__eq__(other):
-            if isinstance(other, HumanPlayer):
-                return True
+        if other is self: return True
+        if other is None: return False
+        if isinstance(other, HumanPlayer):
+            return self.id == other.id
         return False
-    
-    def __hash__(self):
-        return hash(self.id)

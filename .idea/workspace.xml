@@ -5,31 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/model/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/model/edge/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/model/edge/carrier.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/model/node/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/model/node/carrier.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/carrier.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/node/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/node/carrier.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/node/dossier/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/node/dossier/carrier.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/node/vector/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/node/vector/carrier.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/register/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/register/carrier.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/register/cartesian/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/register/cartesian/carrier.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/register/square/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/register/square/carrier.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/register/vector/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/register/vector/carrier.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/toggle/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/toggle/carrier.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/toggle/vector/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/carrier/structure/toggle/vector/transit.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/carrier/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,61 +48,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.1843270338733396" />
-      <entry key="MS500" value="1.985264713052873" />
-      <entry key="S2" value="5.951718511296374" />
-      <entry key="S5" value="16.04324041134382" />
-      <entry key="S10" value="31.046736387944236" />
-      <entry key="S30" value="76.40564625097488" />
-      <entry key="S60" value="119.8721991265405" />
-      <entry key="M2" value="162.11817267929996" />
-      <entry key="M5" value="205.76654399186424" />
-      <entry key="M10" value="236.89136250102467" />
-      <entry key="M15" value="261.6218411078904" />
-      <entry key="M30" value="328.38269302261716" />
-      <entry key="H1" value="441.1688459602082" />
-      <entry key="H2" value="642.9043148691759" />
-      <entry key="H4" value="1075.3151509900379" />
-      <entry key="D1" value="4811.433111690129" />
-      <entry key="W1" value="17227.415498488976" />
+      <entry key="MS100" value="1.6899158273109458" />
+      <entry key="MS500" value="4.095213562610251" />
+      <entry key="S2" value="10.317977205672376" />
+      <entry key="S5" value="18.525715387428743" />
+      <entry key="S10" value="27.01725333952551" />
+      <entry key="S30" value="46.1930240708785" />
+      <entry key="S60" value="65.22828115808576" />
+      <entry key="M2" value="90.73872192308723" />
+      <entry key="M5" value="156.1090091906234" />
+      <entry key="M10" value="218.70361725713303" />
+      <entry key="M15" value="250.3843170133499" />
+      <entry key="M30" value="295.92512723759336" />
+      <entry key="H1" value="373.7301887069714" />
+      <entry key="H2" value="564.2250439689329" />
+      <entry key="H4" value="987.3153509886539" />
+      <entry key="D1" value="4767.853883493908" />
+      <entry key="W1" value="17364.173324785777" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="1.894494333268674E-93" />
-      <entry key="S5" value="8.146992644859662E-38" />
-      <entry key="S10" value="2.8542940208543807E-19" />
-      <entry key="S30" value="6.61637105682157E-7" />
-      <entry key="S60" value="8.779375590372779E-4" />
-      <entry key="M2" value="0.039668537676471806" />
-      <entry key="M5" value="0.646453531319383" />
-      <entry key="M10" value="2.7617527048379706" />
-      <entry key="M15" value="5.28268207100692" />
-      <entry key="M30" value="11.465136076110642" />
-      <entry key="H1" value="18.429744881132564" />
-      <entry key="H2" value="27.033481646883608" />
-      <entry key="H4" value="43.74117168848754" />
-      <entry key="D1" value="170.04291851325314" />
-      <entry key="W1" value="595.1180700891034" />
+      <entry key="MS500" value="1.3701769247512423E-72" />
+      <entry key="S2" value="1.839658087884438E-18" />
+      <entry key="S5" value="1.5810929527857843E-7" />
+      <entry key="S10" value="7.65955588815348E-4" />
+      <entry key="S30" value="0.22841910638245613" />
+      <entry key="S60" value="0.9547076212229155" />
+      <entry key="M2" value="1.9535857733798465" />
+      <entry key="M5" value="3.0028731884977553" />
+      <entry key="M10" value="3.465736276426744" />
+      <entry key="M15" value="3.637263440041135" />
+      <entry key="M30" value="4.03087939558403" />
+      <entry key="H1" value="6.444288804131557" />
+      <entry key="H2" value="13.985976640838254" />
+      <entry key="H4" value="30.624220109399857" />
+      <entry key="D1" value="160.55850602322442" />
+      <entry key="W1" value="592.1367422930242" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9832471485795051" />
-      <entry key="MS500" value="1.9122780258089027" />
-      <entry key="S2" value="5.898584950084074" />
-      <entry key="S5" value="15.98927434020284" />
-      <entry key="S10" value="30.996031289084268" />
-      <entry key="S30" value="76.36513656015161" />
-      <entry key="S60" value="119.84114228549372" />
-      <entry key="M2" value="162.13220845561264" />
-      <entry key="M5" value="206.38314572703297" />
-      <entry key="M10" value="239.6100599342052" />
-      <entry key="M15" value="266.85179634631635" />
-      <entry key="M30" value="339.7868939282025" />
-      <entry key="H1" value="459.5445980054445" />
-      <entry key="H2" value="669.8957808401667" />
-      <entry key="H4" value="1119.0214924645697" />
-      <entry key="D1" value="4981.452687193609" />
-      <entry key="W1" value="17822.523925790094" />
+      <entry key="MS100" value="1.4797775055155076" />
+      <entry key="MS500" value="3.977276229608045" />
+      <entry key="S2" value="10.240903887879307" />
+      <entry key="S5" value="18.47249990668891" />
+      <entry key="S10" value="26.98027593270898" />
+      <entry key="S30" value="46.39337078865497" />
+      <entry key="S60" value="66.15284024644949" />
+      <entry key="M2" value="92.66581423283372" />
+      <entry key="M5" value="159.09423741013282" />
+      <entry key="M10" value="222.1580264779652" />
+      <entry key="M15" value="254.0132374958617" />
+      <entry key="M30" value="299.95022487059543" />
+      <entry key="H1" value="380.1645938494788" />
+      <entry key="H2" value="578.1941676751525" />
+      <entry key="H4" value="1017.9177131155168" />
+      <entry key="D1" value="4928.39078929814" />
+      <entry key="W1" value="17956.30052197343" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -164,7 +141,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.editor",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -177,11 +154,11 @@
       <recent name="$PROJECT_DIR$/src/domain/structure/register" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/surface" />
       <recent name="$PROJECT_DIR$/src/transit/carrier/graph" />
       <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/game" />
       <recent name="$PROJECT_DIR$/src/domain/metadata/blueprint/search/model" />
-      <recent name="$PROJECT_DIR$/src/domain/metadata/blueprint/search" />
     </key>
   </component>
   <component name="RunManager" selected="Python.validator">
@@ -857,7 +834,7 @@
       <workItem from="1785958183827" duration="174661000" />
       <workItem from="1786522110280" duration="179726000" />
       <workItem from="1787456783999" duration="30897000" />
-      <workItem from="1787812398225" duration="166286000" />
+      <workItem from="1787812398225" duration="167754000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1350,7 +1327,7 @@
           <option name="timeStamp" value="247" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/space/traversal/endpoint/quadrant/ray.py</url>
+          <url>file://$PROJECT_DIR$/src/surface/space/traversal/endpoint/quadrant/ray.py</url>
           <line>9</line>
           <option name="timeStamp" value="250" />
         </line-breakpoint>
@@ -1380,12 +1357,12 @@
           <option name="timeStamp" value="256" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/space/traversal/endpoint/linear/__init__.py</url>
+          <url>file://$PROJECT_DIR$/src/surface/space/traversal/endpoint/linear/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="257" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/space/pawn/attack/__init__.py</url>
+          <url>file://$PROJECT_DIR$/src/surface/space/pawn/attack/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="260" />
         </line-breakpoint>
@@ -1395,7 +1372,7 @@
           <option name="timeStamp" value="262" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/space/transformer/axis/transformer.py</url>
+          <url>file://$PROJECT_DIR$/src/surface/space/transformer/axis/transformer.py</url>
           <line>9</line>
           <option name="timeStamp" value="266" />
         </line-breakpoint>
@@ -1430,12 +1407,12 @@
           <option name="timeStamp" value="273" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/space/offset/__init__.py</url>
+          <url>file://$PROJECT_DIR$/src/surface/space/offset/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="274" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/space/stepper/axis/north/linear.py</url>
+          <url>file://$PROJECT_DIR$/src/surface/space/stepper/axis/north/linear.py</url>
           <line>9</line>
           <option name="timeStamp" value="275" />
         </line-breakpoint>
@@ -1535,22 +1512,22 @@
           <option name="timeStamp" value="297" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/space/pawn/maneuver/developed/space.py</url>
+          <url>file://$PROJECT_DIR$/src/surface/space/pawn/maneuver/developed/space.py</url>
           <line>9</line>
           <option name="timeStamp" value="298" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/space/pawn/maneuver/opening/space.py</url>
+          <url>file://$PROJECT_DIR$/src/surface/space/pawn/maneuver/opening/space.py</url>
           <line>17</line>
           <option name="timeStamp" value="299" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/topology/mapper/quadrant/northeast/mapper.py</url>
+          <url>file://$PROJECT_DIR$/src/surface/topology/mapper/quadrant/northeast/mapper.py</url>
           <line>9</line>
           <option name="timeStamp" value="301" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/topology/recurrence/axis/west/recurrence.py</url>
+          <url>file://$PROJECT_DIR$/src/surface/topology/recurrence/axis/west/recurrence.py</url>
           <line>9</line>
           <option name="timeStamp" value="302" />
         </line-breakpoint>
@@ -1565,17 +1542,17 @@
           <option name="timeStamp" value="307" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/topology/registry/space/quadrant/registry.py</url>
+          <url>file://$PROJECT_DIR$/src/surface/topology/registry/space/quadrant/registry.py</url>
           <line>88</line>
           <option name="timeStamp" value="310" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/topology/recurrence/quadrant/northeast/recurrence.py</url>
+          <url>file://$PROJECT_DIR$/src/surface/topology/recurrence/quadrant/northeast/recurrence.py</url>
           <line>9</line>
           <option name="timeStamp" value="311" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/topology/basis/pawn/maneuver/signature.py</url>
+          <url>file://$PROJECT_DIR$/src/surface/topology/basis/pawn/maneuver/signature.py</url>
           <line>9</line>
           <option name="timeStamp" value="313" />
         </line-breakpoint>
@@ -1590,7 +1567,7 @@
           <option name="timeStamp" value="315" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/topology/rank/pawn/attack/opening/tree.py</url>
+          <url>file://$PROJECT_DIR$/src/surface/topology/rank/pawn/attack/opening/tree.py</url>
           <line>8</line>
           <option name="timeStamp" value="317" />
         </line-breakpoint>
@@ -1600,7 +1577,7 @@
           <option name="timeStamp" value="318" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/topology/basis/pawn/signature.py</url>
+          <url>file://$PROJECT_DIR$/src/surface/topology/basis/pawn/signature.py</url>
           <line>9</line>
           <option name="timeStamp" value="319" />
         </line-breakpoint>
@@ -1610,7 +1587,7 @@
           <option name="timeStamp" value="321" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/space/quadrant/northwest/space.py</url>
+          <url>file://$PROJECT_DIR$/src/surface/space/quadrant/northwest/space.py</url>
           <line>9</line>
           <option name="timeStamp" value="322" />
         </line-breakpoint>
@@ -1635,17 +1612,17 @@
           <option name="timeStamp" value="329" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/topology/mapper/axis/mapper.py</url>
+          <url>file://$PROJECT_DIR$/src/surface/topology/mapper/axis/mapper.py</url>
           <line>9</line>
           <option name="timeStamp" value="331" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/topology/mapper/axis/north/mapper.py</url>
+          <url>file://$PROJECT_DIR$/src/surface/topology/mapper/axis/north/mapper.py</url>
           <line>9</line>
           <option name="timeStamp" value="332" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/topology/recurrence/quadrant/__init__.py</url>
+          <url>file://$PROJECT_DIR$/src/surface/topology/recurrence/quadrant/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="333" />
         </line-breakpoint>

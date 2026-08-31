@@ -100,10 +100,3 @@ class CoordCarrier(ModelCarrier[Coord]):
             column=model.column,
         )
 
-    def __eq__(self, other):
-        if other is self: return True
-        if other is None: return False
-        if isinstance(other, CoordCarrier):
-            return self.entity == other.entity
-        return False
-
