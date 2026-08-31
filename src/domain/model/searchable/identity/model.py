@@ -16,7 +16,7 @@ class Identity(Model):
     """
     Role:
         - Model
-        -  Data Holder
+        - Data Holder
 
     Responsibilities:
         1.  Contains the id and name for an identity.

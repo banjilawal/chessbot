@@ -18,7 +18,7 @@ class Maneuver(SearchableModel):
     """
     Role:
         - Model
-        -  Data Holder
+        - Data Holder
 
     Responsibilities:
         1.  Gives details about a Token's journey along a path.

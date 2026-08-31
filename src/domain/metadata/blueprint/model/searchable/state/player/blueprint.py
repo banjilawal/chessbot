@@ -26,7 +26,6 @@ class PlayerBlueprint(StateModelBlueprint[Player]):
 
     Attributes:
         name: str
-        player_category: PlayerCategory
         adviser: Optional[GameAdviser]
         id: Optional[int]
         
@@ -41,11 +40,9 @@ class PlayerBlueprint(StateModelBlueprint[Player]):
      """
     _name: str
     _adviser: Optional[GameAdviser]
-    _player_category: PlayerCategory
     
     def __init__(self,
             name: str,
-            player_category: PlayerCategory,
             adviser: Optional[GameAdviser] | None = None,
             domain_class: Optional[Type[Player]] | None = None,
             domain_null_exception: Optional[PlayerNullException] | None = None,
@@ -54,7 +51,6 @@ class PlayerBlueprint(StateModelBlueprint[Player]):
         """
         Args:
             name: str
-            player_category: PlayerCategory
             adviser: Optional[GameAdviser]
             domain_class: Optional[Type[Player]]
             domain_null_exception: Optional[PlayerNullException]
@@ -67,7 +63,6 @@ class PlayerBlueprint(StateModelBlueprint[Player]):
         )
         self._name = name
         self._adviser = adviser
-        self._player_category = player_category
         
     @property
     def name(self) -> str:
@@ -76,11 +71,7 @@ class PlayerBlueprint(StateModelBlueprint[Player]):
     @property
     def adviser(self) -> Optional[GameAdviser]:
         return self._adviser
-    
-    @property
-    def player_category(self) -> PlayerCategory:
-        return self._player_category
-        
+
     @property
     def domain_class(self) -> Type[Player]:
         return cast(Type[Player], super().domain_class)

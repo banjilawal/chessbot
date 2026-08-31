@@ -15,8 +15,7 @@ from domain import Model
 class Scalar(Model):
     """
      Role:
-         -  Data Holder
-         -
+         - Data Holder
 
      Responsibilities:
         1.  A 1-D quantity.

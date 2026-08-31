@@ -19,7 +19,7 @@ from game import GameAdviser
 class Player(StateModel, ABC):
     """
      Role:
-         -  Data Holder
+         - Data Holder
 
      Responsibilities:
         2.  Direct a Team's pieces that are in an Arena's Board during a Game.

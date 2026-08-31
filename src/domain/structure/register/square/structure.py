@@ -18,7 +18,7 @@ class SquareRegister(Register[Square]):
     """
     Role:
         - Model
-        -  Data Holder
+        - Data Holder
 
     Responsibilities:
         1.  Contains the endpoints of a journey.

@@ -96,7 +96,9 @@ class PlayerCarrier(ModelCarrier[Player]):
         
         model = cast(Player, self._model)
         return PlayerBlueprint(
-            id
+            id=model.id,
+            name=model.name,
+            adviser=model.adviser,
         )
     
     

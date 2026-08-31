@@ -19,7 +19,7 @@ class MateEnemyKing(Attack):
     """
     Role:
         - Model
-        -  Data Holder
+        - Data Holder
 
     Responsibilities:
         1.  Store details about checkmating an enemy KingToken.

@@ -19,7 +19,7 @@ class CheckEnemyKing(Attack):
     """
     Role:
         - Model
-        -  Data Holder
+        - Data Holder
 
     Responsibilities:
         1.  Store details about checking a King.

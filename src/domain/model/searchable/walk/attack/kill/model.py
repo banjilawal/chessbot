@@ -19,7 +19,7 @@ class AttackEnemyCombatant(Attack):
     """
     Role:
         - Model
-        -  Data Holder
+        - Data Holder
 
     Responsibilities:
         1.  Store details about attacking an enemy CombatantToken

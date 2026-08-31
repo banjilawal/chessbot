@@ -19,7 +19,7 @@ class Attack(SearchableModel, ABC,):
     """
     Role:
         - Model
-        -  Data Holder
+        - Data Holder
 
     Responsibilities:
         1.  Details about an attack.

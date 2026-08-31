@@ -18,7 +18,7 @@ class VectorRegister(Register[Vector]):
     """
     Role:
         - Model
-        -  Data Holder
+        - Data Holder
 
     Responsibilities:
         1.  Contains the endpoints of a journey.

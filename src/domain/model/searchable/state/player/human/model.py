@@ -18,7 +18,7 @@ from game import GameAdviser
 class HumanPlayer(Player):
     """
      Role:
-         -  Data Holder
+         - Data Holder
 
      Responsibilities:
         1.  Create, play, save, or terminate a Game.

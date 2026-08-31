@@ -16,7 +16,7 @@ from game import GameAdviser
 class MachinePlayer(Player):
     """
      Role:
-         -  Data Holder
+         - Data Holder
 
      Responsibilities:
         1.  Machine player can only execute GameAdviser recommendations about moves.
