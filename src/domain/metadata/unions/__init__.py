@@ -10,8 +10,7 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.UNIONS PACKAGE ===========#
 
 # Packages
-from .model import *
-from .structure import *
+
 
 # Modules
 from manifest import DomainObjectTypeUnions

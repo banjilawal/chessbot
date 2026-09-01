@@ -1,16 +1,16 @@
-# src/domain/metadata/unions/model/scalar/__init__.py
+# src/domain/metadata/unions/scalar/__init__.py
 
 """
-Module: domain.metadata.unions.model.scalar.__init__
+Module: domain.metadata.unions.scalar.__init__
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
 """
 
-# =========== DOMAIN.METADATA.UNIONS.MODEL.SCALAR PACKAGE ===========#
+# =========== DOMAIN.METADATA.UNIONS.SCALAR PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .manifest import ScalarTypeUnions
+from .types import ScalarTypeUnions
