@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Bishop, BishopBlueprint, Rank
+from domain import Queen, QueenBlueprint, Rank
 from transit import RankCarrier
 
 
-class BishopCarrier(RankCarrier[Bishop]):
+class QueenCarrier(RankCarrier[Queen]):
     """
     Role:
         - Boundary Carrier Interface
 
     Responsibilities:
-        1.  Transport a hydrated Bishop or its Blueprint across processing boundaries.
+        1.  Transport a hydrated Queen or its Blueprint across processing boundaries.
 
     Attributes:
         size: int
@@ -29,34 +29,34 @@ class BishopCarrier(RankCarrier[Bishop]):
         is_over_capacity: bool
         is_model_carrier: bool
         is_blueprint_carrier: bool
-        entity: [Rank|BishopBlueprint]
+        entity: [Rank|QueenBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[BishopBlueprint]
+        - def extract_blueprint() -> Optional[QueenBlueprint]
 
     Super Class:
         ModelCarrier
     """
     
-    _model: Optional[Bishop]
-    _blueprint: Optional[BishopBlueprint]
+    _model: Optional[Queen]
+    _blueprint: Optional[QueenBlueprint]
     
     def __init__(
             self,
-            model: Optional[Bishop] | None = None,
-            blueprint: Optional[BishopBlueprint] | None = None,
+            model: Optional[Queen] | None = None,
+            blueprint: Optional[QueenBlueprint] | None = None,
     ):
         """
         Args:
             model: Optional[Rank]
-            blueprint: Optional[BishopBlueprint]
+            blueprint: Optional[QueenBlueprint]
         """
         super().__init__()
         self._model = model
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> Optional[Rank|BishopBlueprint]:
+    def entity(self) -> Optional[Rank|QueenBlueprint]:
         if self.is_empty:
             return None
         if self.is_carrying_model:
@@ -75,7 +75,7 @@ class BishopCarrier(RankCarrier[Bishop]):
     def is_carrying_blueprint(self) -> bool:
         return (
                 not self.is_carrying_model and
-                isinstance(self._blueprint, BishopBlueprint)
+                isinstance(self._blueprint, QueenBlueprint)
         )
     
     @property
@@ -90,11 +90,11 @@ class BishopCarrier(RankCarrier[Bishop]):
     def is_over_capacity(self) -> bool:
         return self.size > 1
     
-    def extract_blueprint(self) -> Optional[BishopBlueprint]:
+    def extract_blueprint(self) -> Optional[QueenBlueprint]:
         if self.is_empty: return None
         if self.is_carrying_blueprint: return self._blueprint
         
-        model = cast(Bishop, self._model)
-        return BishopBlueprint(
+        model = cast(Queen, self._model)
+        return QueenBlueprint(
             persona=model.persona,
         )
