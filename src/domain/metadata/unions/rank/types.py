@@ -9,34 +9,32 @@ version: 0.0.2
 
 from __future__ import annotations
 
-
 from dataclasses import dataclass
 from typing import Type
 
-from domain import ModelTypeUnions, Rank
+from domain import Rank, RankBlueprint, TypeUnion
+from transit import RankCarrier
 
 
 @dataclass
-class RankTypeUnions(ModelTypeUnions[Rank]):
+class RankTypeUnion(TypeUnion[Rank]):
     """
     Role:
         - Metadata
 
     Responsibilities:
-        1. Catalog of data unions a Rank uses in the domain.
+        1. Catalog of data unions an Rank uses in the domain.
 
     Attributes:
         model: Type[Rank] = Rank
         carrier: Type[RankCarrier] = RankCarrier
         blueprint: Type[RankBlueprint] = RankBlueprint
-        search_context: Type[RankContext] = RankContext
     
     Provides:
 
     Super Class:
-        ModelManifest
+        TypeUnion
     """
     model: Type[Rank] = Rank
     carrier: Type[RankCarrier] = RankCarrier
     blueprint: Type[RankBlueprint] = RankBlueprint
-    search_context: Type[RankContext] = RankContext

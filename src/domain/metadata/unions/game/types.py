@@ -10,18 +10,20 @@ version: 0.0.2
 from __future__ import annotations
 
 from dataclasses import dataclass
+from typing import Type
 
-from domain import Game, ModelTypeUnions
+from domain import Game, GameBlueprint, TypeUnion
+from transit import GameCarrier
 
 
 @dataclass
-class GameTypeUnions(ModelTypeUnions[Game]):
+class GameTypeUnion(TypeUnion[Game]):
     """
     Role:
         - Metadata
 
     Responsibilities:
-        1. Catalog of data unions a Game uses in the domain.
+        1. Catalog of data unions an Game uses in the domain.
 
     Attributes:
         model: Type[Game] = Game
@@ -31,7 +33,7 @@ class GameTypeUnions(ModelTypeUnions[Game]):
     Provides:
 
     Super Class:
-        ModelManifest
+        TypeUnion
     """
     model: Type[Game] = Game
     carrier: Type[GameCarrier] = GameCarrier

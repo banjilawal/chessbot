@@ -18,7 +18,7 @@ from domain import DomainDataObject
 T = TypeVar("T", bound="DomainDataObject")
 
 @dataclass
-class DomainObjectTypeUnions(ABC, Generic[T]):
+class TypeUnion(ABC, Generic[T]):
     """
     Role:
         - Metadata

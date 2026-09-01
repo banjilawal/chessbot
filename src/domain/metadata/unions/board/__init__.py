@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .types import BoardTypeUnions
+from .types import BoardTypeUnion

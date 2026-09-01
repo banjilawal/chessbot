@@ -1,16 +1,16 @@
-# src/domain/metadata/unions/token/__init__.py
+# src/domain/metadata/unions/arena/__init__.py
 
 """
-Module: domain.metadata.unions.token.__init__
+Module: domain.metadata.unions.arena.__init__
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
 """
 
-# =========== DOMAIN.METADATA.UNIONS.TOKEN PACKAGE ===========#
+# =========== DOMAIN.METADATA.UNIONS.ARENA PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .types import TokenTypeUnions
+from .types import ArenaTypeUnion

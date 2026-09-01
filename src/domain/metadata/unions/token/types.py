@@ -1,7 +1,7 @@
-# src/domain/metadata/unions/token/manifest.py
+# src/domain/metadata/unions/arena/manifest.py
 
 """
-Module: domain.metadata.unions.token.manifest
+Module: domain.metadata.unions.arena.manifest
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -9,33 +9,32 @@ version: 0.0.2
 
 from __future__ import annotations
 
-
 from dataclasses import dataclass
 from typing import Type
 
-from domain import ModelTypeUnions, Token, TokenBlueprint, TokenCarrier, TokenSearchContext
+from domain import Arena, ArenaBlueprint, TypeUnion
+from transit import ArenaCarrier
 
 
 @dataclass
-class TokenTypeUnions(ModelTypeUnions[Token]):
+class ArenaTypeUnion(TypeUnion[Arena]):
     """
     Role:
         - Metadata
 
     Responsibilities:
-        1. Catalog of data unions a Token uses in the domain.
+        1. Catalog of data unions an Arena uses in the domain.
 
     Attributes:
-        model: Type[Token] = Token
-        carrier: Type[TokenCarrier] = TokenCarrier
-        blueprint: Type[TokenBlueprint] = TokenBlueprint
-        search_context: Type[TokenContext] = TokenContext
+        model: Type[Arena] = Arena
+        carrier: Type[ArenaCarrier] = ArenaCarrier
+        blueprint: Type[ArenaBlueprint] = ArenaBlueprint
     
     Provides:
 
     Super Class:
-        ModelManifest
+        TypeUnion
     """
-    model: Type[Token] = Token
-    carrier: Type[TokenCarrier] = TokenCarrier
-    blueprint: Type[TokenBlueprint] = TokenBlueprint
+    model: Type[Arena] = Arena
+    carrier: Type[ArenaCarrier] = ArenaCarrier
+    blueprint: Type[ArenaBlueprint] = ArenaBlueprint

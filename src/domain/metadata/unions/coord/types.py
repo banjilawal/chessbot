@@ -9,34 +9,32 @@ version: 0.0.2
 
 from __future__ import annotations
 
-
 from dataclasses import dataclass
 from typing import Type
 
-from domain import ModelTypeUnions, Coord, CoordBlueprint, CoordCarrier, CoordSearchContext
+from domain import Coord, CoordBlueprint, TypeUnion
+from transit import CoordCarrier
 
 
 @dataclass
-class CoordTypeUnions(ModelTypeUnions[Coord]):
+class CoordTypeUnion(TypeUnion[Coord]):
     """
     Role:
         - Metadata
 
     Responsibilities:
-        1. Catalog of data unions a Coord uses in the domain.
+        1. Catalog of data unions an Coord uses in the domain.
 
     Attributes:
         model: Type[Coord] = Coord
         carrier: Type[CoordCarrier] = CoordCarrier
         blueprint: Type[CoordBlueprint] = CoordBlueprint
-        search_context: Type[CoordContext] = CoordContext
     
     Provides:
 
     Super Class:
-        ModelManifest
+        TypeUnion
     """
     model: Type[Coord] = Coord
     carrier: Type[CoordCarrier] = CoordCarrier
     blueprint: Type[CoordBlueprint] = CoordBlueprint
-    search_context: Type[CoordSearchContext] = CoordSearchContext

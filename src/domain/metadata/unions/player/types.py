@@ -9,22 +9,21 @@ version: 0.0.2
 
 from __future__ import annotations
 
-
 from dataclasses import dataclass
 from typing import Type
 
-from domain import ModelTypeUnions, Player, PlayerBlueprint
+from domain import Player, PlayerBlueprint, TypeUnion
 from transit import PlayerCarrier
 
 
 @dataclass
-class PlayerTypeUnions(ModelTypeUnions[Player]):
+class PlayerTypeUnion(TypeUnion[Player]):
     """
     Role:
         - Metadata
 
     Responsibilities:
-        1. Catalog of data unions a Player uses in the domain.
+        1. Catalog of data unions an Player uses in the domain.
 
     Attributes:
         model: Type[Player] = Player
@@ -34,7 +33,7 @@ class PlayerTypeUnions(ModelTypeUnions[Player]):
     Provides:
 
     Super Class:
-        ModelManifest
+        TypeUnion
     """
     model: Type[Player] = Player
     carrier: Type[PlayerCarrier] = PlayerCarrier

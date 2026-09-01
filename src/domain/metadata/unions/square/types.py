@@ -9,22 +9,21 @@ version: 0.0.2
 
 from __future__ import annotations
 
-
 from dataclasses import dataclass
 from typing import Type
 
-from domain import ModelTypeUnions, Square, SquareBlueprint
+from domain import Square, SquareBlueprint, TypeUnion
 from transit import SquareCarrier
 
 
 @dataclass
-class SquareTypeUnions(ModelTypeUnions[Square]):
+class SquareTypeUnion(TypeUnion[Square]):
     """
     Role:
         - Metadata
 
     Responsibilities:
-        1. Catalog of data unions a Square uses in the domain.
+        1. Catalog of data unions an Square uses in the domain.
 
     Attributes:
         model: Type[Square] = Square
@@ -34,7 +33,7 @@ class SquareTypeUnions(ModelTypeUnions[Square]):
     Provides:
 
     Super Class:
-        ModelManifest
+        TypeUnion
     """
     model: Type[Square] = Square
     carrier: Type[SquareCarrier] = SquareCarrier

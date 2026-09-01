@@ -9,32 +9,31 @@ version: 0.0.2
 
 from __future__ import annotations
 
-
 from dataclasses import dataclass
 from typing import Type
 
-from domain import ModelTypeUnions, Board, BoardBlueprint, BoardCarrier, BoardSearchContext
+from domain import Board, BoardBlueprint, TypeUnion
+from transit import BoardCarrier
 
 
 @dataclass
-class BoardTypeUnions(ModelTypeUnions[Board]):
+class BoardTypeUnion(TypeUnion[Board]):
     """
     Role:
         - Metadata
 
     Responsibilities:
-        1. Catalog of data unions a Board uses in the domain.
+        1. Catalog of data unions an Board uses in the domain.
 
     Attributes:
         model: Type[Board] = Board
         carrier: Type[BoardCarrier] = BoardCarrier
         blueprint: Type[BoardBlueprint] = BoardBlueprint
-        search_context: Type[BoardContext] = BoardContext
     
     Provides:
 
     Super Class:
-        ModelManifest
+        TypeUnion
     """
     model: Type[Board] = Board
     carrier: Type[BoardCarrier] = BoardCarrier

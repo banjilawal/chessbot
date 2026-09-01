@@ -9,22 +9,21 @@ version: 0.0.2
 
 from __future__ import annotations
 
-
 from dataclasses import dataclass
 from typing import Type
 
-from domain import ModelTypeUnions, Team, TeamBlueprint
+from domain import Team, TeamBlueprint, TypeUnion
 from transit import TeamCarrier
 
 
 @dataclass
-class TeamTypeUnions(ModelTypeUnions[Team]):
+class TeamTypeUnion(TypeUnion[Team]):
     """
     Role:
         - Metadata
 
     Responsibilities:
-        1. Catalog of data unions a Team uses in the domain.
+        1. Catalog of data unions an Team uses in the domain.
 
     Attributes:
         model: Type[Team] = Team
@@ -34,7 +33,7 @@ class TeamTypeUnions(ModelTypeUnions[Team]):
     Provides:
 
     Super Class:
-        ModelManifest
+        TypeUnion
     """
     model: Type[Team] = Team
     carrier: Type[TeamCarrier] = TeamCarrier
