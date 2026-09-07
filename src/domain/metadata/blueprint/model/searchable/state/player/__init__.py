@@ -10,7 +10,7 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.BLUEPRINT.MODEL.SEARCHABLE.STATE.PLAYER PACKAGE ===========#
 
 # Packages
-
+from .human import HumanBlueprint
 
 # Modules
 from .blueprint import  PlayerBlueprint

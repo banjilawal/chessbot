@@ -10,7 +10,8 @@ version: 0.0.2
 # ============ ERR.NULL.DOMAIN.MODEL.STATE.PLAYER PACKAGE ===========#
 
 # Packages
-
+from .human import *
+from .machine import *
 
 # Modules
 from .exception import PlayerNullException

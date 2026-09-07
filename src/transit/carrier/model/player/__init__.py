@@ -10,7 +10,8 @@ version: 0.0.2
 # =========== TRANSIT.CARRIER.MODEL.PLAYER PACKAGE ===========#
 
 # Packages
-
+from .human import *
+from .machine import *
 
 # Modules
 from .carrier import PlayerCarrier

@@ -11,9 +11,12 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import Player, PlayerCategory, StateModelBlueprint
+from domain import Player,  StateModelBlueprint
 from err import PlayerNullException
 from game import GameAdviser
+
+
+
 
 
 class PlayerBlueprint(StateModelBlueprint[Player]):
