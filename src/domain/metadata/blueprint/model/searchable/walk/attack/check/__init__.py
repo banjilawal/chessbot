@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .model import CheckEnemyKing
+from .blueprint import CheckEnemyBlueprint

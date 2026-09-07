@@ -1,7 +1,7 @@
-# src/domain/model/searchable/walk/attack/kill/__init__.py
+# src/domain/model/searchable/walk/attack/kill/model.py
 
 """
-Module: domain.model.searchable.walk.attack.kill.__init__
+Module: domain.model.searchable.walk.attack.kill.model_
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .model import AttackEnemyCombatant
+from .blueprint import KillEnemyBlueprint

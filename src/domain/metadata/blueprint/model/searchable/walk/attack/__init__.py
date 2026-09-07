@@ -11,7 +11,7 @@ version: 0.0.2
 
 # Packages
 from .check import *
-from .checkmate import *
+from .mate import *
 from .kill import *
 
 # Modules

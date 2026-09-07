@@ -39,19 +39,19 @@ class CheckEnemyKing(Attack):
             self,
             attacker: Token,
             maneuver: Maneuver,
-            enemy_king: KingToken,
+            checked_king: KingToken,
     ):
         """
         Args:
             attacker: Token
             maneuver: Maneuver
-            enemy_king: KingToken
+            checked_king: KingToken
         """
         super().__init__(
-            victim=enemy_king,
+            victim=checked_king,
             attacker=attacker,
             maneuver=maneuver,
-            attacker_reward=enemy_king.rank.ransom
+            attacker_reward=checked_king.rank.ransom
         )
 
     @property
@@ -59,12 +59,12 @@ class CheckEnemyKing(Attack):
         return super().attacker
         
     @property
-    def enemy_king(self) -> KingToken:
+    def checked_king(self) -> KingToken:
         return cast(KingToken, super().victim)
     
     @property
     def victim(self) -> KingToken:
-        return self.enemy_king
+        return self.checked_king
     
     def __eq__(self, other) -> bool:
         if other is None:

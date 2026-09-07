@@ -9,12 +9,14 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from abc import ABC
 from typing import Optional, Type, cast
 
 from domain import Attack, Maneuver, SearchableModelBlueprint, Token
+from err import AttackNullException
 
 
-class AttackBlueprint(SearchableModelBlueprint[Attack]):
+class AttackBlueprint(SearchableModelBlueprint[Attack], ABC):
     """
      Role:
         1.  Metadata
