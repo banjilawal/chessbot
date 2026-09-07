@@ -10,11 +10,9 @@ version: 0.0.2
 # =========== ERR.NULL.DOMAIN.MODEL.WALK.ATTACK PACKAGE ===========#
 
 # Packages
-from .attack import *
-from .blocked import *
-from .checked import *
-from .combatant import *
-from .king import *
+from .check import *
+from .kill import *
+from .mate import *
 
 # Modules
 from .exception import AttackNullException

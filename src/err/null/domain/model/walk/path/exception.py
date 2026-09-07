@@ -1,7 +1,7 @@
-# src/err/null/domain/model/state/path/exception.py
+# src/err/null/domain/model/walk/path/exception.py
 
 """
-Module: err.null.domain.model.state.exception
+Module: err.null.domain.model.walk.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StateModelNullException
+from err import ModelNullException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# PATH_NULL_ERROR #======================#
-class PathNullException(StateModelNullException):
+class PathNullException(ModelNullException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class PathNullException(StateModelNullException):
     Provides:
 
     Super Class:
-        StateModelNullException
+        ModelNullException
     """
     MSG = "Path cannot be null."
     ERR_CODE = "PATH_NULL_ERROR"

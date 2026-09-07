@@ -1,7 +1,7 @@
-# src/err/null/domain/model/state/path/combatant/exception.py
+# src/err/null/domain/model/walk/maneuver/exception.py
 
 """
-Module: err.null.domain.model.state.combatant.exception
+Module: err.null.domain.model.walk.maneuver.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,25 +11,25 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import PathNullException
+from err import ModelNullException
 from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# COMBATANT_PATH_NULL_ERROR #======================#
-    "CombatantPathNullException",
+    # ======================# MANEUVER_NULL_ERROR #======================#
+    "ManeuverNullException",
 ]
 
-# ======================# COMBATANT_PATH_NULL_ERROR #======================#
-class CombatantPathNullException(PathNullException):
+# ======================# MANEUVER_NULL_ERROR #======================#
+class ManeuverNullException(ModelNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required CombatantPath is null.
+        1.  Indicating a required Maneuver is null.
 
-    Cannot Be Null.s:
+    Attributes:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -38,14 +38,13 @@ class CombatantPathNullException(PathNullException):
             cls_mthd: Optional[str]
             err_code: Optional[str]
             mthd_rslt_type: Optional[MethodResultType]
-            
     Provides:
 
     Super Class:
-        PathNullException
+        ModelNullException
     """
-    MSG = "CombatantPath cannot be null."
-    ERR_CODE = "COMBATANT_PATH_NULL_ERROR"
+    MSG = "Maneuver cannot be null."
+    ERR_CODE = "MANEUVER_NULL_ERROR"
     
     def __init__(
             self,
