@@ -9,14 +9,15 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from abc import ABC
 from typing import Optional, Type, cast
 
 from collection import CoordDatabase
-from domain import Formation, HomeSquare, Rank, StateModelBlueprint, Team, Token, TokenContext
+from domain import Formation, HomeSquare, Rank, StateModelBlueprint, Team, Token
 from err import TokenNullException
 
 
-class TokenBlueprint(StateModelBlueprint[Token]):
+class TokenBlueprint(StateModelBlueprint[Token], ABC):
     """
      Role:
         1.  Metadata

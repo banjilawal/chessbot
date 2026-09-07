@@ -1,7 +1,7 @@
-# src/domain/metadata/unions/player/vector/types.py
+# src/domain/metadata/unions/player/machine/types.py
 
 """
-Module: domain.metadata.unions.player.vector.types
+Module: domain.metadata.unions.player.machine.types
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -12,22 +12,22 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import PlayerTypeUnion, Vector, VectorBlueprint
-from transit import VectorCarrier
+from domain import MachineBlueprint, MachinePlayer, PlayerTypeUnion
+from transit import MachineCarrier
 
 
-class VectorTypeUnion(PlayerTypeUnion[Vector]):
+class MachineTypeUnion(PlayerTypeUnion[MachinePlayer]):
     """
     Role:
         - Metadata
 
     Responsibilities:
-        1. Catalog of types associated with building and validating a Vector.
+        1. Catalog of types associated with building and validating a MachinePlayer.
 
     Attributes:
-        model: Type[Vector]
-        carrier: Type[VectorCarrier]
-        blueprint: Type[VectorBlueprint]
+        model: Type[MachinePlayer]
+        carrier: Type[MachineCarrier]
+        blueprint: Type[MachineBlueprint]
 
     Provides:
 
@@ -37,30 +37,30 @@ class VectorTypeUnion(PlayerTypeUnion[Vector]):
     
     def __init__(
             self, 
-            model: Optional[Type[Vector]] | None = None,
-            carrier: Optional[Type[VectorCarrier]] | None = None, 
-            blueprint: Optional[Type[VectorBlueprint]] | None = None,
+            model: Optional[Type[MachinePlayer]] | None = None,
+            carrier: Optional[Type[MachineCarrier]] | None = None, 
+            blueprint: Optional[Type[MachineBlueprint]] | None = None,
     ):
         """
         Args:
-            model: Optional[Type[Vector]]
-            carrier: Optional[Type[VectorCarrier]]
-            blueprint: Optional[Type[VectorBlueprint]]
+            model: Optional[Type[MachinePlayer]]
+            carrier: Optional[Type[MachineCarrier]
+            blueprint: Optional[Type[MachineBlueprint] 
         """
         super().__init__(
-            model=model or Vector, 
-            carrier=carrier or VectorCarrier, 
-            blueprint=blueprint or VectorBlueprint
+            model=model or MachinePlayer,
+            carrier=carrier or MachineCarrier, 
+            blueprint=blueprint or MachineBlueprint
         )
     
     @property
-    def model(self) -> Type[Vector]:
-        return cast(Type[Vector], super().model)
+    def model(self) -> Type[MachinePlayer]:
+        return cast(Type[MachinePlayer], super().model)
     
     @property
-    def carrier(self) -> Type[VectorCarrier]:
-        return cast(Type[VectorCarrier], super().carrier)
+    def carrier(self) -> Type[MachineCarrier]:
+        return cast(Type[MachineCarrier], super().carrier)
     
     @property
-    def blueprint(self) -> Type[VectorBlueprint]:
-        return cast(Type[VectorBlueprint], super().blueprint)
+    def blueprint(self) -> Type[MachineBlueprint]:
+        return cast(Type[MachineBlueprint], super().blueprint)

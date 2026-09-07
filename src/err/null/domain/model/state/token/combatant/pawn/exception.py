@@ -1,7 +1,7 @@
-# src/err/null/domain/model/state/square/home/exception.py
+# src/err/null/domain/model/state/token/combatant/exception.py
 
 """
-Module: err.null.domain.model.state.square.home.exception
+Module: err.null.domain.model.state.token.combatant.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SquareNullException
+from err import CombatantNullException
 from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# HOME_SQUARE_NULL_ERROR #======================#
-    "HomeSquareNullException",
+    # ======================# PAWN_TOKEN_NULL_ERROR #======================#
+    "PawnTokenNullException",
 ]
 
-# ======================# HOME_SQUARE_NULL_ERROR #======================#
-class HomeSquareNullException(SquareNullException):
+# ======================# PAWN_TOKEN_NULL_ERROR #======================#
+class PawnTokenNullException(CombatantNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required HomeSquare is null.
+        1.  Indicating a required PawnToken is null.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class HomeSquareNullException(SquareNullException):
     Provides:
 
     Super Class:
-        SquareNullException
+        CombatantNullException
     """
-    MSG = "HomeSquare cannot be null."
-    ERR_CODE = "HOME_SQUARE_NULL_ERROR"
+    MSG = "PawnToken cannot be null."
+    ERR_CODE = "PAWN_TOKEN_NULL_ERROR"
     
     def __init__(
             self,
@@ -59,18 +59,18 @@ class HomeSquareNullException(SquareNullException):
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-        args:
-            Msg: Optional[str]
-            Var: Optional[str]
-            val: Optional[any]
+        Args:
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
             ex: Optional[Exception]
-            cls_name: Optional[Str]
+            cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
-            mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        MTHD_RSLT_TYPE = MTHD_RSLT_TYPE or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,

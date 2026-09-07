@@ -12,9 +12,8 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import HumanPlayer, PlayerTypeUnion
-
-
+from domain import HumanBlueprint, HumanPlayer, PlayerTypeUnion
+from transit import HumanCarrier
 
 
 class HumanTypeUnion(PlayerTypeUnion[HumanPlayer]):

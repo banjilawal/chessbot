@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from domain import Board, Coord, Formation, HomeSquare, SquareBlueprint, Token
-from err import SquareNullException
+from err import HomeSquareNullException
 
 
 class HomeSquareBlueprint(SquareBlueprint):
@@ -24,15 +24,10 @@ class HomeSquareBlueprint(SquareBlueprint):
          1.  Provides values for hydrating a HomeSquare object.
 
      Attributes:
-        id: Optional[int]
-        name: str
-        board: Board
-        coord: Coord
         formation: Formation
-        occupant: Optional[Token]
 
         domain_class: Type[HomeSquare]
-        domain_null_exception: SquareNullException
+        domain_null_exception: HomeSquareNullException
 
      Provides:
 
@@ -49,7 +44,7 @@ class HomeSquareBlueprint(SquareBlueprint):
             formation: Formation,
             occupant: Optional[Token] | None = None,
             domain_class: Optional[Type[HomeSquare]] | None = None,
-            domain_null_exception: Optional[SquareNullException] | None = None,
+            domain_null_exception: Optional[HomeSquareNullException] | None = None,
             id: Optional[int] | None = None,
     ):
         """
@@ -60,7 +55,7 @@ class HomeSquareBlueprint(SquareBlueprint):
             occupant: Optional[Token]
             formation: Optional[Formation]
             domain_class: Optional[Type[Square]]
-            domain_null_exception: Optional[SquareNullException]
+            domain_null_exception: Optional[HomeSquareNullException]
             id: Optional[int]
         """
         super().__init__(
@@ -70,7 +65,7 @@ class HomeSquareBlueprint(SquareBlueprint):
             coord=coord,
             occupant=occupant,
             domain_class=domain_class or Type[HomeSquare],
-            domain_null_exception=domain_null_exception or SquareNullException(),
+            domain_null_exception=domain_null_exception or HomeSquareNullException(),
         )
         self._formation = formation
     
@@ -99,8 +94,8 @@ class HomeSquareBlueprint(SquareBlueprint):
         return cast(Type[HomeSquare], super().domain_class)
     
     @property
-    def domain_null_exception(self) -> SquareNullException:
-        return cast(SquareNullException, super().domain_null_exception)
+    def domain_null_exception(self) -> HomeSquareNullException:
+        return cast(HomeSquareNullException, super().domain_null_exception)
     
     @property
     def is_home_square_blueprint(self) -> bool:
