@@ -16,6 +16,7 @@ from .rank import *
 from .scalar import *
 from .state import *
 from .vector import *
+from .walk import *
 
 # Modules
 from .exception import ModelNullException
