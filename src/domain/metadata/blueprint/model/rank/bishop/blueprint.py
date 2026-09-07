@@ -24,7 +24,7 @@ class BishopBlueprint(RankBlueprint[Bishop]):
         1.  Provides values for hydrating a Bishop object.
 
     Attributes:
-        persona: Persona
+        persona: Persona.BISHOP
         domain_class: Type[Bishop]
         domain_null_exception: BishopNullException
         
@@ -33,29 +33,26 @@ class BishopBlueprint(RankBlueprint[Bishop]):
      Super Class:
         RankBlueprintNullException
      """
-    _persona: Persona
     
     def __init__(
             self,
-            persona: Persona,
+            persona: Optional[Persona] | None = None,
             domain_class: Optional[Type[Bishop]] | None = None,
             domain_null_exception: Optional[BishopNullException]| None = None,
     ):
         """
         Args:
-            persona: Persona
+            persona: Persona.BISHOP
             domain_class: Optional[Type[Bishop]]
             domain_null_exception: Optional[BishopNullException]
         """
         super().__init__(
+            persona=persona or Persona.BISHOP,
             domain_class=domain_class or Type[Bishop],
             domain_null_exception=domain_null_exception or BishopNullException(),
         )
         self._persona = persona
     
-    @property
-    def persona(self) -> Persona:
-        return self._persona
         
     @property
     def domain_class(self) -> Type[Bishop]:

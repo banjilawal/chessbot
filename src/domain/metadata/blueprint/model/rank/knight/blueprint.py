@@ -24,7 +24,7 @@ class KnightBlueprint(RankBlueprint[Knight]):
         1.  Provides values for hydrating a Knight object.
 
     Attributes:
-        persona: Persona
+        persona: Persona.KNIGHT
         domain_class: Type[Knight]
         domain_null_exception: KnightNullException
         
@@ -33,29 +33,26 @@ class KnightBlueprint(RankBlueprint[Knight]):
      Super Class:
         RankBlueprintNullException
      """
-    _persona: Persona
     
     def __init__(
             self,
-            persona: Persona,
+            persona: Optional[Persona] | None = None,
             domain_class: Optional[Type[Knight]] | None = None,
             domain_null_exception: Optional[KnightNullException]| None = None,
     ):
         """
         Args:
-            persona: Persona
+            persona: Persona.KNIGHT
             domain_class: Optional[Type[Knight]]
             domain_null_exception: Optional[KnightNullException]
         """
         super().__init__(
+            persona=persona or Persona.KNIGHT,
             domain_class=domain_class or Type[Knight],
             domain_null_exception=domain_null_exception or KnightNullException(),
         )
         self._persona = persona
     
-    @property
-    def persona(self) -> Persona:
-        return self._persona
         
     @property
     def domain_class(self) -> Type[Knight]:

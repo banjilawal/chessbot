@@ -38,8 +38,8 @@ class RankBlueprint(ModelBlueprint[Rank]):
     def __init__(
             self,
             persona: Persona,
-            domain_class: Optional[Type[Rank]] | None = None,
-            domain_null_exception: Optional[RankNullException]| None = None,
+            domain_class: Type[Rank],
+            domain_null_exception: RankNullException,
     ):
         """
         Args:
@@ -48,8 +48,8 @@ class RankBlueprint(ModelBlueprint[Rank]):
             domain_null_exception: Optional[RankNullException]
         """
         super().__init__(
-            domain_class=domain_class or Type[Rank],
-            domain_null_exception=domain_null_exception or RankNullException(),
+            domain_class=domain_class,
+            domain_null_exception=domain_null_exception,
         )
         self._persona = persona
     

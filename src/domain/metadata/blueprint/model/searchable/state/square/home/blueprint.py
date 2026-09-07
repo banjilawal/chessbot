@@ -1,7 +1,7 @@
-# src/domain/metadata/blueprint/model/searchable/state/square/blueprint.py
+# src/domain/metadata/blueprint/model/searchable/state/square/home/blueprint.py
 
 """
-Module: domain.metadata.blueprint.model.searchable.state.square.blueprint
+Module: domain.metadata.blueprint.model.searchable.state.square.home.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,45 +11,44 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import Board, Coord, Square, StateModelBlueprint, Token
+from domain import Board, Coord, Formation, HomeSquare, SquareBlueprint, Token
 from err import SquareNullException
 
 
-class SquareBlueprint(StateModelBlueprint[Square]):
+class HomeSquareBlueprint(SquareBlueprint):
     """
      Role:
         1.  Metadata
 
      Responsibilities:
-         1.  Provides values for hydrating a Square object.
+         1.  Provides values for hydrating a HomeSquare object.
 
      Attributes:
         id: Optional[int]
         name: str
         board: Board
         coord: Coord
+        formation: Formation
         occupant: Optional[Token]
 
-        domain_class: Type[Square]
+        domain_class: Type[HomeSquare]
         domain_null_exception: SquareNullException
 
      Provides:
 
      Super Class:
-        StateModelBlueprint
+        SquareBlueprint
      """
-    _name: str
-    _board: Board
-    _coord: Coord
-    _occupant: Optional[Token]
+    _formation: Formation
     
     def __init__(
             self,
             name: str,
             board: Board,
             coord: Coord,
+            formation: Formation,
             occupant: Optional[Token] | None = None,
-            domain_class: Optional[Type[Square]] | None = None,
+            domain_class: Optional[Type[HomeSquare]] | None = None,
             domain_null_exception: Optional[SquareNullException] | None = None,
             id: Optional[int] | None = None,
     ):
@@ -59,19 +58,21 @@ class SquareBlueprint(StateModelBlueprint[Square]):
             board: Board
             coord: Coord
             occupant: Optional[Token]
+            formation: Optional[Formation]
             domain_class: Optional[Type[Square]]
             domain_null_exception: Optional[SquareNullException]
             id: Optional[int]
         """
         super().__init__(
             id=id,
-            domain_class=domain_class or Type[Square],
+            name=name,
+            board=board,
+            coord=coord,
+            occupant=occupant,
+            domain_class=domain_class or Type[HomeSquare],
             domain_null_exception=domain_null_exception or SquareNullException(),
         )
-        self._name = name
-        self._board = board
-        self._coord = coord
-        self._occupant = occupant
+        self._formation = formation
     
     @property
     def name(self) -> str:
@@ -90,9 +91,20 @@ class SquareBlueprint(StateModelBlueprint[Square]):
         return self._occupant
     
     @property
-    def domain_class(self) -> Type[Square]:
-        return cast(Type[Square], super().domain_class)
+    def formation(self) -> Formation:
+        return self._formation
+    
+    @property
+    def domain_class(self) -> Type[HomeSquare]:
+        return cast(Type[HomeSquare], super().domain_class)
     
     @property
     def domain_null_exception(self) -> SquareNullException:
         return cast(SquareNullException, super().domain_null_exception)
+    
+    @property
+    def is_home_square_blueprint(self) -> bool:
+        return (
+                isinstance(self, HomeSquareBlueprint) and
+                self._formation is not None
+        )

@@ -24,7 +24,7 @@ class KingBlueprint(RankBlueprint[King]):
         1.  Provides values for hydrating a King object.
 
     Attributes:
-        persona: Persona
+        persona: Persona.KING
         domain_class: Type[King]
         domain_null_exception: KingNullException
         
@@ -33,29 +33,26 @@ class KingBlueprint(RankBlueprint[King]):
      Super Class:
         RankBlueprintNullException
      """
-    _persona: Persona
     
     def __init__(
             self,
-            persona: Persona,
+            persona: Optional[Persona] | None = None,
             domain_class: Optional[Type[King]] | None = None,
             domain_null_exception: Optional[KingNullException]| None = None,
     ):
         """
         Args:
-            persona: Persona
+            persona: Persona.KING
             domain_class: Optional[Type[King]]
             domain_null_exception: Optional[KingNullException]
         """
         super().__init__(
+            persona=persona or Persona.KING,
             domain_class=domain_class or Type[King],
             domain_null_exception=domain_null_exception or KingNullException(),
         )
         self._persona = persona
     
-    @property
-    def persona(self) -> Persona:
-        return self._persona
         
     @property
     def domain_class(self) -> Type[King]:

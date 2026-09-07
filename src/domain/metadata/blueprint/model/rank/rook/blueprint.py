@@ -24,7 +24,7 @@ class RookBlueprint(RankBlueprint[Rook]):
         1.  Provides values for hydrating a Rook object.
 
     Attributes:
-        persona: Persona
+        persona: Persona.ROOK
         domain_class: Type[Rook]
         domain_null_exception: RookNullException
         
@@ -33,29 +33,26 @@ class RookBlueprint(RankBlueprint[Rook]):
      Super Class:
         RankBlueprintNullException
      """
-    _persona: Persona
     
     def __init__(
             self,
-            persona: Persona,
+            persona: Optional[Persona] | None = None,
             domain_class: Optional[Type[Rook]] | None = None,
             domain_null_exception: Optional[RookNullException]| None = None,
     ):
         """
         Args:
-            persona: Persona
+            persona: Persona.ROOK
             domain_class: Optional[Type[Rook]]
             domain_null_exception: Optional[RookNullException]
         """
         super().__init__(
+            persona=persona or Persona.ROOK,
             domain_class=domain_class or Type[Rook],
             domain_null_exception=domain_null_exception or RookNullException(),
         )
         self._persona = persona
     
-    @property
-    def persona(self) -> Persona:
-        return self._persona
         
     @property
     def domain_class(self) -> Type[Rook]:
