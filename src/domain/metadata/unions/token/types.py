@@ -9,14 +9,14 @@ version: 0.0.2
 
 from __future__ import annotations
 
-
+from abc import ABC
 from typing import Optional, Type, cast
 
 from domain import Token, TokenBlueprint, TypeUnion
 from transit import TokenCarrier
 
 
-class TokenTypeUnion(TypeUnion[Token]):
+class TokenTypeUnion(TypeUnion[Token], ABC):
     """
     Role:
         - Metadata

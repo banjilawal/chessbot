@@ -10,7 +10,8 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.UNIONS.TOKEN PACKAGE ===========#
 
 # Packages
-
+from .combatant import *
+from .king import *
 
 # Modules
 from .types import TokenTypeUnion

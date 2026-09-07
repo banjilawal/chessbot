@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from collection import CoordDatabase
-from domain import CombatantToken, Formation, HomeSquare, Rank, Team, TokenBlueprint
+from domain import CombatantToken, Formation, HomeSquare, Rank, Team, Token, TokenBlueprint
 from err import CombatantNullException
 
 
@@ -28,6 +28,7 @@ class CombatantBlueprint(TokenBlueprint):
         team: Team,
         formation: Formation
         rank: Optional[Rank]
+        captor: Optional[Token]
         positions: Optional[CoordDatabase]
         id: Optional[int]
 
@@ -39,6 +40,7 @@ class CombatantBlueprint(TokenBlueprint):
      Super Class:
         TokenBlueprint
      """
+    _captor: Optional[Token]
 
     
     def __init__(
@@ -46,6 +48,7 @@ class CombatantBlueprint(TokenBlueprint):
             team: Team,
             formation: Formation,
             rank: Optional[Rank] | None = None,
+            captor: Optional[Token] | None = None,
             home_square: Optional[HomeSquare] | None = None,
             positions: Optional[CoordDatabase] | None = None,
             domain_class: Optional[Type[CombatantToken]] | None = None,
@@ -57,6 +60,7 @@ class CombatantBlueprint(TokenBlueprint):
             team: Team,
             formation: Formation
             rank: Optional[Rank]
+            captor: Optional[Token]
             positions: Optional[CoordDatabase]
             domain_class: Optional[Type[CombatantToken]]
             domain_null_exception: Optional[CombatantNullException]
@@ -72,6 +76,11 @@ class CombatantBlueprint(TokenBlueprint):
             domain_class=domain_class or Type[CombatantToken],
             domain_null_exception=domain_null_exception or CombatantNullException(),
         )
+        self._captor = captor
+        
+    @property
+    def captor(self) -> Optional[Token]:
+        return self._captor
     
     @property
     def domain_class(self) -> Type[CombatantToken]:
@@ -80,6 +89,14 @@ class CombatantBlueprint(TokenBlueprint):
     @property
     def domain_null_exception(self) -> CombatantNullException:
         return cast(CombatantNullException, super().domain_null_exception)
+    
+    @property
+    def is_captured(self) -> bool:
+        return self._captor is not None
+    
+    @property
+    def is_not_captured(self) -> bool:
+        return not self.is_captured
     
 
 

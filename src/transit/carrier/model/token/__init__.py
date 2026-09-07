@@ -10,7 +10,7 @@ version: 0.0.2
 # =========== TRANSIT.CARRIER.MODEL.TOKEN PACKAGE ===========#
 
 # Packages
-
+from .combatant import *
 
 # Modules
 from .carrier import TokenCarrier

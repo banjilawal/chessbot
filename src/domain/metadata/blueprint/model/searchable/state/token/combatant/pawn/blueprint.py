@@ -12,8 +12,9 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from collection import CoordDatabase
-from domain import Formation, HomeSquare, PawnToken, Rank, Team, CombatantBlueprint
+from domain import Formation, HomeSquare, PawnToken, Rank, Team, CombatantBlueprint, Token
 from err import PawnTokenNullException
+
 
 
 class PawnTokenBlueprint(CombatantBlueprint):
@@ -41,6 +42,7 @@ class PawnTokenBlueprint(CombatantBlueprint):
             formation: Formation,
             rank: Optional[Rank] | None = None,
             previous_rank: Optional[Rank] | None = None,
+            captor: Optional[Token] | None = None,
             home_square: Optional[HomeSquare] | None = None,
             positions: Optional[CoordDatabase] | None = None,
             domain_class: Optional[Type[PawnToken]] | None = None,
@@ -61,6 +63,7 @@ class PawnTokenBlueprint(CombatantBlueprint):
             id=id,
             team=team,
             rank=rank,
+            captor=captor,
             formation=formation,
             positions=positions,
             home_square=home_square,
@@ -80,6 +83,14 @@ class PawnTokenBlueprint(CombatantBlueprint):
     @property
     def domain_null_exception(self) -> PawnTokenNullException:
         return cast(PawnTokenNullException, super().domain_null_exception)
+    
+    @property
+    def is_promoted(self) -> bool:
+        return self._previous_rank is not None
+    
+    @property
+    def is_not_promoted(self) -> bool:
+        return not self.is_promoted
     
 
 

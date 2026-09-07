@@ -9,9 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-
-from domain.model import DeploymentState, Formation, King, HomeSquare, Team, Token, TokenActivityState
-from util import IdFactory
+from domain import DeploymentState, Formation, HomeSquare, Team, Token, TokenActivityState
 
 
 class KingToken(Token):
@@ -46,6 +44,8 @@ class KingToken(Token):
     Super Class:
         Token
     """
+    _check_count: int
+    
 
     def __init__(
             self,
@@ -64,10 +64,19 @@ class KingToken(Token):
         super().__init__(
             id=id,
             team=team,
-            rank=King(id=IdFactory.next_id(class_name="King")),
+            rank=King(),
             formation=formation,
             home_square=home_square,
         )
+        self._check_count = 0
+        
+    @property
+    def check_count(self) -> int:
+        return self._check_count
+    
+    @check_count.setter
+    def check_count(self, update):
+        self._check_count = update
      
     @property
     def is_in_check(self) -> bool:
@@ -86,7 +95,10 @@ class KingToken(Token):
     @property
     def is_active(self) -> bool:
         return (
-                (TokenActivityState.FREE or TokenActivityState.IN_CHECK) and
+                (
+                        self.activity_state == TokenActivityState.FREE or
+                        self.activity_state == TokenActivityState.IN_CHECK
+                ) and
                 self.deployment_state == DeploymentState.DEPLOYED
         )
     

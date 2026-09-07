@@ -11,6 +11,7 @@ version: 0.0.2
 
 # Packages
 from .combatant import *
+from .king import *
 
 # Modules
 from .blueprint import TokenBlueprint

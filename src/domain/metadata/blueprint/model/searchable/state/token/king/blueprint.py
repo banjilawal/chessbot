@@ -39,6 +39,7 @@ class KingTokenBlueprint(TokenBlueprint):
      Super Class:
         TokenBlueprint
      """
+    _check_count: Optional[int]
 
     
     def __init__(
@@ -51,6 +52,7 @@ class KingTokenBlueprint(TokenBlueprint):
             domain_class: Optional[Type[KingToken]] | None = None,
             domain_null_exception: Optional[KingTokenNullException] | None = None,
             id: Optional[int] | None = None,
+            check_count: Optional[int] | None = None,
     ):
         """
         Args:
@@ -61,6 +63,7 @@ class KingTokenBlueprint(TokenBlueprint):
             domain_class: Optional[Type[KingToken]]
             domain_null_exception: Optional[KingTokenNullException]
             id: Optional[int]
+            check_count: Optional[int]
         """
         super().__init__(
             id=id,
@@ -72,6 +75,11 @@ class KingTokenBlueprint(TokenBlueprint):
             domain_class=domain_class or Type[KingToken],
             domain_null_exception=domain_null_exception or KingTokenNullException(),
         )
+        self._check_count = check_count or 0
+        
+    @property
+    def check_count(self) -> int:
+        return self._check_count
     
     @property
     def domain_class(self) -> Type[KingToken]:
