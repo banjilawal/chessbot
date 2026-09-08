@@ -11,8 +11,10 @@ version: 0.0.2
 
 # Packages
 from .blueprint import *
+from .manifest import *
 from .nulls import *
 from .unions import *
 
+
 # Modules
-from .manifest import DomainMetadata
+from .metadata import DomainMetadata

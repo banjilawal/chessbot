@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from domain import AttackNullGroup
 from err import (
-    KillAttackNullException, KillBlueprintNullException, KillCarrierNullException, KillCarrierNullException
+    KillAttackNullException, KillBlueprintNullException, KillCarrierNullException
 )
 
 
