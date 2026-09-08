@@ -10,6 +10,8 @@ version: 0.0.2
 # ============ ERR.NULL.TRANSIT.CARRIER.MODEL.TOKEN PACKAGE ===========#
 
 # Packages
+from .combatant import *
+from .king import *
 
 
 # Modules

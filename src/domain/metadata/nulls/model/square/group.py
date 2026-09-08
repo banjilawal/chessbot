@@ -9,6 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from abc import ABC
 from typing import Optional, cast
 
 from domain import NullExceptionGroup
