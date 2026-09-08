@@ -11,17 +11,19 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import RankNullGroup
-from err import PawnBlueprintNullException, PawnCarrierNullException, PawnNullException
+from domain import Pawn, RankNullGroup
+from err import (
+    PawnBlueprintNullException, PawnCarrierNullException, PawnNullException
+)
 
 
-class PawnNullGroup(RankNullGroup):
+class PawnNullGroup(RankNullGroup[Pawn]):
     """
     Role:
         - Metadata
 
     Responsibilities:
-        1. Catalog of NullExceptions associated with a PawnRank's integrity cycle.
+        1. Catalog of NullExceptions associated with a Pawn's integrity cycle.
 
     Attributes:
         model: PawnNullException

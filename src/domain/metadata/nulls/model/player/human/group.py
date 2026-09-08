@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import PlayerNullGroup
+from domain import HumanPlayer, PlayerNullGroup
 from err import HumanBlueprintNullException, HumanCarrierNullException, HumanNullException
 
 
-class HumanNullGroup(PlayerNullGroup):
+class HumanNullGroup(PlayerNullGroup[HumanPlayer]):
     """
     Role:
         - Metadata

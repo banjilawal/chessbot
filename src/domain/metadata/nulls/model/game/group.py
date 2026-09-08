@@ -11,19 +11,19 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import NullExceptionGroup
+from domain import Game, NullExceptionGroup
 from err import (
     GameBlueprintNullException, GameCarrierNullException, GameNullException
 )
 
 
-class GameNullGroup(NullExceptionGroup):
+class GameNullGroup(NullExceptionGroup[Game]):
     """
     Role:
         - Metadata
 
     Responsibilities:
-        1. Catalog of NullExceptions associated with an Game's integrity cycle.
+        1. Catalog of NullExceptions associated with a Game's integrity cycle.
 
     Attributes:
         model: GameNullException

@@ -10,21 +10,22 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Optional, cast
+from typing import Generic, Optional, TypeVar, cast
 
-from domain import NullExceptionGroup
+from domain import NullExceptionGroup, Player
 from err import (
     PlayerBlueprintNullException, PlayerCarrierNullException, PlayerNullException
 )
 
+T = TypeVar("T", bound="Player")
 
-class PlayerNullGroup(NullExceptionGroup, ABC):
+class PlayerNullGroup(NullExceptionGroup[T], ABC, Generic[T]):
     """
     Role:
         - Metadata
 
     Responsibilities:
-        1. Catalog of NullExceptions associated with an Player's integrity cycle.
+        1. Catalog of NullExceptions associated with a Player's integrity cycle.
 
     Attributes:
         model: PlayerNullException

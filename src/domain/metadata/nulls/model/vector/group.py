@@ -11,19 +11,19 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import NullExceptionGroup
+from domain import NullExceptionGroup, Vector
 from err import (
     VectorBlueprintNullException, VectorCarrierNullException, VectorNullException
 )
 
 
-class VectorNullGroup(NullExceptionGroup):
+class VectorNullGroup(NullExceptionGroup[Vector]):
     """
     Role:
         - Metadata
 
     Responsibilities:
-        1. Catalog of NullExceptions associated with an Vector's integrity cycle.
+        1. Catalog of NullExceptions associated with a Vector's integrity cycle.
 
     Attributes:
         model: VectorNullException

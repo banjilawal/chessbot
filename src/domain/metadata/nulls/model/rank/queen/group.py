@@ -11,17 +11,19 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import RankNullGroup
-from err import QueenBlueprintNullException, QueenCarrierNullException, QueenNullException
+from domain import Queen, RankNullGroup
+from err import (
+    QueenBlueprintNullException, QueenCarrierNullException, QueenNullException
+)
 
 
-class QueenNullGroup(RankNullGroup):
+class QueenNullGroup(RankNullGroup[Queen]):
     """
     Role:
         - Metadata
 
     Responsibilities:
-        1. Catalog of NullExceptions associated with a QueenRank's integrity cycle.
+        1. Catalog of NullExceptions associated with a Queen's integrity cycle.
 
     Attributes:
         model: QueenNullException

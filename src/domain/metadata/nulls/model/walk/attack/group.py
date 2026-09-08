@@ -9,13 +9,17 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from abc import ABC
+from typing import Generic, Optional, TypeVar, cast
 
-from domain import NullExceptionGroup
-from err import AttackBlueprintNullException, AttackCarrierNullException, AttackNullException
+from domain import Attack, NullExceptionGroup
+from err import (
+    AttackBlueprintNullException, AttackCarrierNullException, AttackNullException
+)
 
+T = TypeVar("T", bound="Attack")
 
-class AttackNullGroup(NullExceptionGroup):
+class AttackNullGroup(NullExceptionGroup[T], ABC, Generic[T]):
     """
     Role:
         - Metadata

@@ -11,17 +11,19 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import RankNullGroup
-from err import BishopBlueprintNullException, BishopCarrierNullException, BishopNullException
+from domain import Bishop, RankNullGroup
+from err import (
+    BishopBlueprintNullException, BishopCarrierNullException, BishopNullException
+)
 
 
-class BishopNullGroup(RankNullGroup):
+class BishopNullGroup(RankNullGroup[Bishop]):
     """
     Role:
         - Metadata
 
     Responsibilities:
-        1. Catalog of NullExceptions associated with a BishopRank's integrity cycle.
+        1. Catalog of NullExceptions associated with a Bishop's integrity cycle.
 
     Attributes:
         model: BishopNullException

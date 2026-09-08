@@ -11,11 +11,13 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import TokenNullGroup
-from err import KingTokenBlueprintNullException, KingTokenCarrierNullException, KingTokenNullException
+from domain import KingToken, TokenNullGroup
+from err import (
+    KingTokenBlueprintNullException, KingTokenCarrierNullException, KingTokenNullException
+)
 
 
-class KingTokenNullGroup(TokenNullGroup):
+class KingTokenNullGroup(TokenNullGroup[KingToken]):
     """
     Role:
         - Metadata

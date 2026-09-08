@@ -10,15 +10,16 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Optional, cast
+from typing import Generic, Optional, TypeVar, cast
 
-from domain import NullExceptionGroup
+from domain import NullExceptionGroup, Token
 from err import (
     TokenBlueprintNullException, TokenCarrierNullException, TokenNullException
 )
 
+T = TypeVar("T", bound="Token")
 
-class TokenNullGroup(NullExceptionGroup, ABC):
+class TokenNullGroup(NullExceptionGroup[T], ABC, Generic[T]):
     """
     Role:
         - Metadata

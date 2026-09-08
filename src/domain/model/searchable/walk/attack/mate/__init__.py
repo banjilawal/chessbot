@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .model import MateEnemyKing
+from .model import CheckmateKing

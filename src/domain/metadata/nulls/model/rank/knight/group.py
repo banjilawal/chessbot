@@ -11,17 +11,19 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import RankNullGroup
-from err import KnightBlueprintNullException, KnightCarrierNullException, KnightNullException
+from domain import Knight, RankNullGroup
+from err import (
+    KnightBlueprintNullException, KnightCarrierNullException, KnightNullException
+)
 
 
-class KnightNullGroup(RankNullGroup):
+class KnightNullGroup(RankNullGroup[Knight]):
     """
     Role:
         - Metadata
 
     Responsibilities:
-        1. Catalog of NullExceptions associated with a KnightRank's integrity cycle.
+        1. Catalog of NullExceptions associated with a Knight's integrity cycle.
 
     Attributes:
         model: KnightNullException

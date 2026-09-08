@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import AttackBlueprint, CheckEnemyKing, KingToken, Maneuver, Token
+from domain import AttackBlueprint, CheckKing, KingToken, Maneuver, Token
 from err import CheckAttackNullException
 
 
@@ -44,7 +44,7 @@ class CheckEnemyBlueprint(AttackBlueprint):
             attacker: Token,
             maneuver: Maneuver,
             checked_king: KingToken,
-            domain_class: Optional[Type[CheckEnemyKing]] | None = None,
+            domain_class: Optional[Type[CheckKing]] | None = None,
             domain_null_exception: Optional[CheckAttackNullException] | None = None,
             attacker_reward: Optional[int] | None = None,
             id: Optional[int] | None = None,
@@ -65,7 +65,7 @@ class CheckEnemyBlueprint(AttackBlueprint):
             maneuver=maneuver,
             victim=checked_king,
             attacker_reward=attacker_reward,
-            domain_class=domain_class or CheckEnemyKing,
+            domain_class=domain_class or CheckKing,
             domain_null_exception=domain_null_exception or CheckAttackNullException(),
         )
     
@@ -79,8 +79,8 @@ class CheckEnemyBlueprint(AttackBlueprint):
     
     
     @property
-    def domain_class(self) -> Type[CheckEnemyKing]:
-        return cast(Type[CheckEnemyKing], super().domain_class)
+    def domain_class(self) -> Type[CheckKing]:
+        return cast(Type[CheckKing], super().domain_class)
     
     
     @property

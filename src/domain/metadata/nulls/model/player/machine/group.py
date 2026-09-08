@@ -11,11 +11,13 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import PlayerNullGroup
-from err import MachineBlueprintNullException, MachineCarrierNullException, MachineNullException
+from domain import MachinePlayer, PlayerNullGroup
+from err import (
+    MachineBlueprintNullException, MachineCarrierNullException, MachineNullException
+)
 
 
-class MachineNullGroup(PlayerNullGroup):
+class MachineNullGroup(PlayerNullGroup[MachinePlayer]):
     """
     Role:
         - Metadata

@@ -6,7 +6,43 @@
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/walk/attack/check/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/walk/attack/check/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/walk/attack/kill/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/walk/attack/kill/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/walk/attack/mate/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/walk/attack/mate/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/model/arena/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/model/arena/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/model/board/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/model/board/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/model/coord/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/model/coord/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/model/game/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/model/game/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/model/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/model/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/model/player/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/model/player/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/model/player/human/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/model/player/human/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/model/player/machine/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/model/player/machine/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/model/rank/bishop/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/model/rank/bishop/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/model/rank/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/model/rank/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/model/rank/king/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/model/rank/king/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/model/rank/knight/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/model/rank/knight/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/model/rank/pawn/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/model/rank/pawn/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/model/rank/queen/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/model/rank/queen/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/model/rank/rook/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/model/rank/rook/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/model/square/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/model/square/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/model/square/home/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/model/square/home/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/model/team/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/model/team/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/model/vector/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/model/vector/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/model/walk/attack/check/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/model/walk/attack/check/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/model/walk/attack/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/model/walk/attack/group.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/model/walk/attack/kill/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/model/walk/attack/kill/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/model/walk/attack/mate/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/model/walk/attack/mate/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/model/walk/maneuver/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/model/walk/maneuver/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/model/walk/path/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/model/walk/path/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/game/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/game/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/check/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/check/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/check/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/check/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/kill/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/kill/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/kill/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/kill/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/mate/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/mate/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/mate/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/mate/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/structure/node/check/structure.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/structure/node/check/structure.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/transit/carrier/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/model/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,61 +84,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000021472197462" />
-      <entry key="MS500" value="1.1778300648558728" />
-      <entry key="S2" value="4.05164229218385" />
-      <entry key="S5" value="10.025426142647085" />
-      <entry key="S10" value="17.38054592782231" />
-      <entry key="S30" value="31.579941579666233" />
-      <entry key="S60" value="38.66932649427778" />
-      <entry key="M2" value="43.53591448987208" />
-      <entry key="M5" value="48.57595992163119" />
-      <entry key="M10" value="53.265273614514655" />
-      <entry key="M15" value="58.27663271484525" />
-      <entry key="M30" value="83.50019697362457" />
-      <entry key="H1" value="143.49452311016566" />
-      <entry key="H2" value="239.46464558590688" />
-      <entry key="H4" value="417.5217848998707" />
-      <entry key="D1" value="3027.459277231881" />
-      <entry key="W1" value="17507.97866165727" />
+      <entry key="MS100" value="1.0000000000030171" />
+      <entry key="MS500" value="1.0049649675366172" />
+      <entry key="S2" value="1.2661666442612902" />
+      <entry key="S5" value="1.6435816790062237" />
+      <entry key="S10" value="2.0021421294667343" />
+      <entry key="S30" value="2.5332118466781828" />
+      <entry key="S60" value="2.78501872631192" />
+      <entry key="M2" value="3.459655240370578" />
+      <entry key="M5" value="8.029286567137213" />
+      <entry key="M10" value="17.16008541970201" />
+      <entry key="M15" value="25.01262363830137" />
+      <entry key="M30" value="44.47730958592921" />
+      <entry key="H1" value="80.19449583123796" />
+      <entry key="H2" value="147.49915052860177" />
+      <entry key="H4" value="296.2432888326636" />
+      <entry key="D1" value="2722.895953751832" />
+      <entry key="W1" value="17265.981054106902" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="7.239716902958575E-140" />
-      <entry key="S5" value="2.207438605944893E-56" />
-      <entry key="S10" value="1.4857451349221713E-28" />
-      <entry key="S30" value="5.296408074038599E-10" />
-      <entry key="S60" value="2.301400805222535E-5" />
-      <entry key="M2" value="0.00481724205203572" />
-      <entry key="M5" value="0.15534626076144803" />
-      <entry key="M10" value="0.8150946496500243" />
-      <entry key="M15" value="1.6149952547179007" />
-      <entry key="M30" value="3.6367990991238064" />
-      <entry key="H1" value="6.3305919954683825" />
-      <entry key="H2" value="11.04036133949641" />
-      <entry key="H4" value="22.50674298758209" />
-      <entry key="D1" value="152.58383102471456" />
-      <entry key="W1" value="670.4466920046989" />
+      <entry key="MS100" value="6.331505374254427E-48" />
+      <entry key="MS500" value="3.6333011471373204E-10" />
+      <entry key="S2" value="0.004365915732012829" />
+      <entry key="S5" value="0.11377062387436794" />
+      <entry key="S10" value="0.33729901256084127" />
+      <entry key="S30" value="0.6961607583838747" />
+      <entry key="S60" value="0.8421808397824352" />
+      <entry key="M2" value="1.0097923161761662" />
+      <entry key="M5" value="1.4889715697349772" />
+      <entry key="M10" value="1.9803203597070114" />
+      <entry key="M15" value="2.2617522369667444" />
+      <entry key="M30" value="3.1630733502725565" />
+      <entry key="H1" value="5.827124301113032" />
+      <entry key="H2" value="10.821223538387121" />
+      <entry key="H4" value="20.565415428712083" />
+      <entry key="D1" value="144.40085813310773" />
+      <entry key="W1" value="671.2384418629534" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.8408982609804252" />
-      <entry key="MS500" value="1.1387595152986747" />
-      <entry key="S2" value="4.019251293745848" />
-      <entry key="S5" value="9.994566968372713" />
-      <entry key="S10" value="17.354369638581527" />
-      <entry key="S30" value="31.561682819864213" />
-      <entry key="S60" value="38.65308511361483" />
-      <entry key="M2" value="43.527799650806294" />
-      <entry key="M5" value="48.72287640485458" />
-      <entry key="M10" value="54.07338626805909" />
-      <entry key="M15" value="59.88477638056077" />
-      <entry key="M30" value="87.12967617401502" />
-      <entry key="H1" value="149.81769343658078" />
-      <entry key="H2" value="250.49735886570784" />
-      <entry key="H4" value="440.01911362067733" />
-      <entry key="D1" value="3180.02835925211" />
-      <entry key="W1" value="18178.41519386311" />
+      <entry key="MS100" value="0.9460576467285101" />
+      <entry key="MS500" value="0.9939015883816592" />
+      <entry key="S2" value="1.263261253001135" />
+      <entry key="S5" value="1.682046594006206" />
+      <entry key="S10" value="2.2011749195667987" />
+      <entry key="S30" value="3.1175729899817437" />
+      <entry key="S60" value="3.5561970386719524" />
+      <entry key="M2" value="4.4197868513074" />
+      <entry key="M5" value="9.464164350623957" />
+      <entry key="M10" value="19.081729692975724" />
+      <entry key="M15" value="27.218436268276367" />
+      <entry key="M30" value="47.59603775693513" />
+      <entry key="H1" value="85.98993531694441" />
+      <entry key="H2" value="158.2990264183481" />
+      <entry key="H4" value="316.7934845537913" />
+      <entry key="D1" value="2867.282158673372" />
+      <entry key="W1" value="17937.209250938395" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -836,7 +872,7 @@
       <workItem from="1787456783999" duration="30897000" />
       <workItem from="1787812398225" duration="195474000" />
       <workItem from="1788709512302" duration="4064000" />
-      <workItem from="1788782347688" duration="56792000" />
+      <workItem from="1788782347688" duration="62222000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

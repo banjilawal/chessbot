@@ -9,16 +9,15 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
 from typing import Optional, cast
 
-from domain import NullExceptionGroup
+from domain import NullExceptionGroup, Square
 from err import (
     SquareBlueprintNullException, SquareCarrierNullException, SquareNullException
 )
 
 
-class SquareNullGroup(NullExceptionGroup):
+class SquareNullGroup(NullExceptionGroup[Square]):
     """
     Role:
         - Metadata

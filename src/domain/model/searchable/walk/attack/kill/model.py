@@ -15,7 +15,7 @@ from typing import Optional, cast
 from domain import Attack, CombatantToken, Maneuver, Token
 
 
-class AttackEnemyCombatant(Attack):
+class KillCombatant(Attack):
     """
     Role:
         - Model
@@ -70,7 +70,7 @@ class AttackEnemyCombatant(Attack):
             return False
         if other == self:
             return True
-        if isinstance(other, AttackEnemyCombatant):
+        if isinstance(other, KillCombatant):
             return super().__eq__(other)
         return False
         

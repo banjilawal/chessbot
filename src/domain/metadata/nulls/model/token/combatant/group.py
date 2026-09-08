@@ -11,11 +11,13 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import TokenNullGroup
-from err import CombatantBlueprintNullException, CombatantCarrierNullException, CombatantNullException
+from domain import CombatantToken, TokenNullGroup
+from err import (
+    CombatantBlueprintNullException, CombatantCarrierNullException, CombatantNullException
+)
 
 
-class CombatantNullGroup(TokenNullGroup):
+class CombatantNullGroup(TokenNullGroup[CombatantToken]):
     """
     Role:
         - Metadata

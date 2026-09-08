@@ -11,17 +11,19 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import RankNullGroup
-from err import RookBlueprintNullException, RookCarrierNullException, RookNullException
+from domain import RankNullGroup, Rook
+from err import (
+    RookBlueprintNullException, RookCarrierNullException, RookNullException
+)
 
 
-class RookNullGroup(RankNullGroup):
+class RookNullGroup(RankNullGroup[Rook]):
     """
     Role:
         - Metadata
 
     Responsibilities:
-        1. Catalog of NullExceptions associated with a RookRank's integrity cycle.
+        1. Catalog of NullExceptions associated with a Rook's integrity cycle.
 
     Attributes:
         model: RookNullException

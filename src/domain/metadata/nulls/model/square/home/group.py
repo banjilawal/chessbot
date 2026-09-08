@@ -12,7 +12,9 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from domain import SquareNullGroup
-from err import HomeSquareBlueprintNullException, HomeSquareCarrierNullException, HomeSquareNullException
+from err import (
+    HomeSquareBlueprintNullException, HomeSquareCarrierNullException, HomeSquareNullException
+)
 
 
 class HomeSquareNullGroup(SquareNullGroup):

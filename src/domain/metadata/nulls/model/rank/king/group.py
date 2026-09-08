@@ -11,17 +11,19 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import RankNullGroup
-from err import KingBlueprintNullException, KingCarrierNullException, KingNullException
+from domain import King, RankNullGroup
+from err import (
+    KingBlueprintNullException, KingCarrierNullException, KingNullException
+)
 
 
-class KingNullGroup(RankNullGroup):
+class KingNullGroup(RankNullGroup[King]):
     """
     Role:
         - Metadata
 
     Responsibilities:
-        1. Catalog of NullExceptions associated with a KingRank's integrity cycle.
+        1. Catalog of NullExceptions associated with a King's integrity cycle.
 
     Attributes:
         model: KingNullException

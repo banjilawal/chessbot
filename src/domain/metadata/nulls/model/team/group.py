@@ -11,13 +11,13 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import NullExceptionGroup
+from domain import NullExceptionGroup, Team
 from err import (
     TeamBlueprintNullException, TeamCarrierNullException, TeamNullException
 )
 
 
-class TeamNullGroup(NullExceptionGroup):
+class TeamNullGroup(NullExceptionGroup[Team]):
     """
     Role:
         - Metadata

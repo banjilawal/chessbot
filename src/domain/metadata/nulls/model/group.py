@@ -9,12 +9,15 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from abc import ABC
+from typing import Generic, TypeVar
 
-
+from domain import Model
 from err import BlueprintNullException, EntityCarrierNullException, ModelNullException
 
+T = TypeVar("T", bound="Model")
 
-class NullExceptionGroup:
+class NullExceptionGroup(ABC, Generic[T]):
     """
     Role:
         - Metadata

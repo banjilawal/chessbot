@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import List, Optional
 
-from domain import Arena, Championship, GameState, MateEnemyKing, Player, StateModel
+from domain import Arena, Championship, GameState, CheckmateKing, Player, StateModel
 from game import GameWin
 
 

@@ -15,7 +15,7 @@ from typing import cast
 from domain import Attack, KingToken, Maneuver, Token
 
 
-class CheckEnemyKing(Attack):
+class CheckKing(Attack):
     """
     Role:
         - Model
@@ -71,7 +71,7 @@ class CheckEnemyKing(Attack):
             return False
         if other == self:
             return True
-        if isinstance(other, CheckEnemyKing):
+        if isinstance(other, CheckKing):
             return super().__eq__(other)
         return False
         
