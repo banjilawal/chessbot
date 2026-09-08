@@ -1,7 +1,7 @@
-# src/err/null/carrier/toggle/vector_toggle/exception.py
+# src/err/null/transit/carrier/toggle/vector_toggle/exception.py
 
 """
-Module: err.null.carrier.toggle.vector_toggle.exception
+Module: err.null.transit.carrier.toggle.vector_toggle.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -27,7 +27,7 @@ class CartesianToggleCarrierNullException(ToggleCarrierNullException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required CartesianToggleCarrierToggle is null.
+        1.  Indicating a required CartesianToggleCarrier is null.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class CartesianToggleCarrierNullException(ToggleCarrierNullException):
     Super Class:
         ToggleCarrierException
     """
-    MSG = "CartesianToggleCarrierToggle cannot be null."
+    MSG = "CartesianToggleCarrier cannot be null."
     ERR_CODE = "VECTOR_TOGGLE_CARRIER_NULL_ERROR"
     
     def __init__(

@@ -26,9 +26,9 @@ class PathBlueprint(SearchableModelBlueprint[Path]):
      Attributes:
         endpoints: SquareRegister
         domain_class: Optional[Type[Path]]
-        search_context_class: Type[PathContext]
         domain_null_exception: Optional[PathNullException]
         label: Optional[int]
+        
      Provides:
 
      Super Class:
@@ -41,38 +41,22 @@ class PathBlueprint(SearchableModelBlueprint[Path]):
             self,
             endpoints: SquareRegister,
             domain_class: Optional[Type[Path]] | None = None,
-            search_context_class: Optional[Type[PathContext]] | None = None,
             domain_null_exception: Optional[PathNullException] | None = None,
             label: Optional[int] | None = None,
     ):
         """
         Args:
+            endpoints: SquareRegister
             domain_class: Optional[Type[Path]]
-            search_context_class: Optional[Type[PathContext]]
             domain_null_exception: Optional[PathNullException]
-            id: Optional[int]
-            squares: SquareDatabase
-            team_binder: PathTeamColorBinder
+            label: Optional[int]
         """
         super().__init__(
             domain_class=domain_class or Type[Path],
-            search_context_class=search_context_class or Type[PathContext],
             domain_null_exception=domain_null_exception or PathNullException(),
         )
         self._label = label
         self._endpoints = endpoints
-    
-    @property
-    def domain_class(self) -> Type[Path]:
-        return cast(Type[Path], super().domain_class)
-    
-    @property
-    def search_context_class(self) -> Type[PathContext]:
-        return cast(Type[PathContext], super().search_context_class)
-    
-    @property
-    def domain_null_exception(self) -> PathNullException:
-        return cast(PathNullException, super().domain_null_exception)
     
     @property
     def label(self) -> Optional[int]:
@@ -81,6 +65,15 @@ class PathBlueprint(SearchableModelBlueprint[Path]):
     @property
     def endpoints(self) -> SquareRegister:
         return self._endpoints
+    
+    @property
+    def domain_class(self) -> Type[Path]:
+        return cast(Type[Path], super().domain_class)
+    
+    @property
+    def domain_null_exception(self) -> PathNullException:
+        return cast(PathNullException, super().domain_null_exception)
+
 
 
 

@@ -1,7 +1,7 @@
-# src/err/null/carrier/model/player/exception.py
+# src/err/null/transit/carrier/model/player/exception.py
 
 """
-Module: err.null.carrier.model.player.exception
+Module: err.null.transit.carrier.model.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -27,7 +27,7 @@ class PlayerCarrierNullException(ModelCarrierNullException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required PlayerCarrierToggle is null.
+        1.  Indicating a required PlayerCarrier is null.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class PlayerCarrierNullException(ModelCarrierNullException):
     Super Class:
         ModelCarrierException
     """
-    MSG = "PlayerCarrierToggle cannot be null."
+    MSG = "PlayerCarrier cannot be null."
     ERR_CODE = "PLAYER_CARRIER_NULL_ERROR"
     
     def __init__(

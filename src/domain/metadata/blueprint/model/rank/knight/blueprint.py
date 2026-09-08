@@ -15,7 +15,7 @@ from domain import Knight, Persona, RankBlueprint
 from err import KnightNullException
 
 
-class KnightBlueprint(RankBlueprint[Knight]):
+class KnightBlueprint(RankBlueprint):
     """
      Role:
         1.  Metadata

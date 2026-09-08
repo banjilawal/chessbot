@@ -1,7 +1,7 @@
-# src/err/null/carrier/movement/traversal/queen/exception.py
+# src/err/null/transit/carrier/movement/traversal/queen/exception.py
 
 """
-Module: err.null.carrier.movement.traversal.queen.exception
+Module: err.null.transit.carrier.movement.traversal.queen.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

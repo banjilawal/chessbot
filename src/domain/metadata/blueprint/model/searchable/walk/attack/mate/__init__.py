@@ -1,7 +1,7 @@
 # src/domain/model/searchable/walk/attack/mate/model.py
 
 """
-Module: domain.model.searchable.walk.attack.mate.model_
+Module: domain.model.searchable.walk.attack.mate.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

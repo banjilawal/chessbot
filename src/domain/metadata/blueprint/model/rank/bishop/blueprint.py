@@ -15,24 +15,24 @@ from domain import Bishop, Persona, RankBlueprint
 from err import BishopNullException
 
 
-class BishopBlueprint(RankBlueprint[Bishop]):
+class BishopBlueprint(RankBlueprint):
     """
-     Role:
+    Role:
         1.  Metadata
-
+    
     Responsibilities:
         1.  Provides values for hydrating a Bishop object.
-
+    
     Attributes:
         persona: Persona.BISHOP
         domain_class: Type[Bishop]
         domain_null_exception: BishopNullException
-        
+    
     Provides:
-
-     Super Class:
+    
+    Super Class:
         RankBlueprintNullException
-     """
+    """
     
     def __init__(
             self,
@@ -52,7 +52,6 @@ class BishopBlueprint(RankBlueprint[Bishop]):
             domain_null_exception=domain_null_exception or BishopNullException(),
         )
         self._persona = persona
-    
         
     @property
     def domain_class(self) -> Type[Bishop]:

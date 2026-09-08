@@ -1,7 +1,7 @@
-# src/err/null/carrier/register/identity/exception.py
+# src/err/null/transit/carrier/register/identity/exception.py
 
 """
-Module: err.null.carrier.register.identity.exception
+Module: err.null.transit.carrier.register.identity.exception
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -27,7 +27,7 @@ class IdentityRegisterCarrierNullException(RegisterCarrierNullException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required IdentityRegisterCarrierToggle is null.
+        1.  Indicating a required IdentityRegisterCarrier is null.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class IdentityRegisterCarrierNullException(RegisterCarrierNullException):
     Super Class:
         RegisterCarrierNullException
     """
-    MSG = "IdentityRegisterCarrierToggle cannot be null."
+    MSG = "IdentityRegisterCarrier cannot be null."
     ERR_CODE= "IDENTITY_REGISTER_CARRIER_NULL_ERROR"
     
     def __init__(

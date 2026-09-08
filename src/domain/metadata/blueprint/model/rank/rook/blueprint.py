@@ -15,7 +15,7 @@ from domain import Rook, Persona, RankBlueprint
 from err import RookNullException
 
 
-class RookBlueprint(RankBlueprint[Rook]):
+class RookBlueprint(RankBlueprint):
     """
      Role:
         1.  Metadata

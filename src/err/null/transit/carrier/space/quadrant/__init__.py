@@ -1,13 +1,13 @@
-# src/err/null/carrier/space/quadrant/__init__.py
+# src/err/null/transit/carrier/space/quadrant/__init__.py
 
 """
-Module: err.null.carrier.space.Quadrant is null.__init__
+Module: err.null.transit.carrier.space.Quadrant is null.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.NULL.CARRIER.SPACE.QUADRANT PACKAGE ===========#
+# ============ ERR.NULL.TRANSIT.CARRIER.SPACE.QUADRANT PACKAGE ===========#
 
 # Packages
 from .northeast import *

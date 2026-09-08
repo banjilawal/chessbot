@@ -1,13 +1,13 @@
-# src/err/null/carrier/model/__init__.py
+# src/err/null/transit/carrier/model/__init__.py
 
 """
-Module: err.null.carrier.model.__init__
+Module: err.null.transit.carrier.model.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.NULL.CARRIER.MODEL PACKAGE ===========#
+# ============ ERR.NULL.TRANSIT.CARRIER.MODEL PACKAGE ===========#
 
 # Packages
 from .arena import *

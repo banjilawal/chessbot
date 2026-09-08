@@ -9,13 +9,14 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, Type, cast
+from abc import ABC
+from typing import Type, cast
 
 from domain import ModelBlueprint, Persona, Rank
 from err import RankNullException
 
 
-class RankBlueprint(ModelBlueprint[Rank]):
+class RankBlueprint(ModelBlueprint[Rank], ABC):
     """
      Role:
         1.  Metadata

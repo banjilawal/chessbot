@@ -1,7 +1,7 @@
-# src/err/null/carrier/model/team/exception.py
+# src/err/null/transit/carrier/model/team/exception.py
 
 """
-Module: err.null.carrier.model.team.exception
+Module: err.null.transit.carrier.model.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -27,7 +27,7 @@ class TeamCarrierNullException(ModelCarrierNullException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required TeamCarrierToggle is null.
+        1.  Indicating a required TeamCarrier is null.
 
     Attributes:
             msg: Optional[str]
@@ -44,7 +44,7 @@ class TeamCarrierNullException(ModelCarrierNullException):
     Super Class:
         ModelCarrierException
     """
-    MSG = "TeamCarrierToggle cannot be null."
+    MSG = "TeamCarrier cannot be null."
     ERR_CODE = "TEAM_CARRIER_NULL_ERROR"
     
     def __init__(

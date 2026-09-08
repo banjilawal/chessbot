@@ -1,13 +1,13 @@
-# src/err/null/carrier/model/path/__init__.py
+# src/err/null/transit/carrier/model/path/__init__.py
 
 """
-Module: err.null.carrier.model.path.__init__
+Module: err.null.transit.carrier.model.path.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.NULL.CARRIER.MODEL.PATH PACKAGE ===========#
+# ============ ERR.NULL.TRANSIT.CARRIER.MODEL.PATH PACKAGE ===========#
 
 # Packages
 

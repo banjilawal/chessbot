@@ -1,7 +1,7 @@
-# src/err/null/carrier/model/edge/exception.py
+# src/err/null/transit/carrier/model/edge/exception.py
 
 """
-Module: err.null.carrier.model.edge.exception
+Module: err.null.transit.carrier.model.edge.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -27,7 +27,7 @@ class EdgeCarrierNullException(ModelCarrierNullException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required EdgeCarrierToggle is null.
+        1.  Indicating a required EdgeCarrier is null.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class EdgeCarrierNullException(ModelCarrierNullException):
     Super Class:
         ModelCarrierException
     """
-    MSG = "EdgeCarrierToggle cannot be null."
+    MSG = "EdgeCarrier cannot be null."
     ERR_CODE = "EDGE_CARRIER_NULL_ERROR"
     
     def __init__(

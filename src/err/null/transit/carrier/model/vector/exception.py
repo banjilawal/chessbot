@@ -1,7 +1,7 @@
-# src/err/null/carrier/model/vector/exception.py
+# src/err/null/transit/carrier/model/vector/exception.py
 
 """
-Module: err.null.carrier.model.vector.exception
+Module: err.null.transit.carrier.model.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -27,7 +27,7 @@ class VectorCarrierNullException(ModelCarrierNullException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required VectorCarrierToggle is null.
+        1.  Indicating a required VectorCarrier is null.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class VectorCarrierNullException(ModelCarrierNullException):
     Super Class:
         ModelCarrierException
     """
-    MSG = "VectorCarrierToggle cannot be null."
+    MSG = "VectorCarrier cannot be null."
     ERR_CODE = "VECTOR_CARRIER_NULL_ERROR"
     
     def __init__(

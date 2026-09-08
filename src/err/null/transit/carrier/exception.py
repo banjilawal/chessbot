@@ -1,7 +1,7 @@
-# src/err/null/carrier/exception.py
+# src/err/null/transit/carrier/exception.py
 
 """
-Module: err.null.carrier.exception
+Module: err.null.transit.carrier.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -27,7 +27,7 @@ class EntityCarrierNullException(NullException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an CarrierToggle is null.
+        1.  Indicating an Carrier is null.
 
     Attributes:
             msg: Optional[str]
@@ -44,7 +44,7 @@ class EntityCarrierNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = "CarrierToggle cannot be null."
+    MSG = "Carrier cannot be null."
     ERR_CODE = "ENTITY_CARRIER_NULL_ERROR"
     
     def __init__(

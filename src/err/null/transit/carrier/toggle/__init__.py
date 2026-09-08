@@ -1,13 +1,13 @@
-# src/err/null/carrier/toggle/__init__.py
+# src/err/null/transit/carrier/toggle/__init__.py
 
 """
-Module: err.null.carrier.toggle.__init__
+Module: err.null.transit.carrier.toggle.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.NULL.CARRIER.TOGGLE PACKAGE ===========#
+# ============ ERR.NULL.TRANSIT.CARRIER.TOGGLE PACKAGE ===========#
 
 # Packages
 from .vector import *

@@ -1,7 +1,7 @@
-# src/err/null/carrier/register/vector/exception.py
+# src/err/null/transit/carrier/register/vector/exception.py
 
 """
-Module: err.null.carrier.register.vector.exception
+Module: err.null.transit.carrier.register.vector.exception
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -27,7 +27,7 @@ class VectorRegisterCarrierNullException(RegisterCarrierNullException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required VectorRegisterCarrierToggle is null.
+        1.  Indicating a required VectorRegisterCarrier is null.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class VectorRegisterCarrierNullException(RegisterCarrierNullException):
     Super Class:
         RegisterCarrierNullException
     """
-    MSG = "VectorRegisterCarrierToggle cannot be null."
+    MSG = "VectorRegisterCarrier cannot be null."
     ERR_CODE= "VECTOR_REGISTER_CARRIER_NULL_ERROR"
     
     def __init__(

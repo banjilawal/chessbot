@@ -1,7 +1,7 @@
-# src/err/null/carrier/register/exception.py
+# src/err/null/transit/carrier/register/exception.py
 
 """
-Module: err.null.carrier.register.exception
+Module: err.null.transit.carrier.register.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -27,7 +27,7 @@ class RegisterCarrierNullException(EntityCarrierNullException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required RegisterCarrierToggle is null.
+        1.  Indicating a required RegisterCarrier is null.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class RegisterCarrierNullException(EntityCarrierNullException):
     Super Class:
         CarrierNullException
     """
-    MSG = "RegisterCarrierToggle cannot be null."
+    MSG = "RegisterCarrier cannot be null."
     ERR_CODE= "REGISTER_CARRIER_NULL_ERROR"
     
     def __init__(

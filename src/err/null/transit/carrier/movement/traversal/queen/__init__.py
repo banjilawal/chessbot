@@ -1,13 +1,13 @@
-# src/err/null/carrier/movement/traversal/queen/__init__.py
+# src/err/null/transit/carrier/movement/traversal/queen/__init__.py
 
 """
-Module: err.null.carrier.movement.traversal.queen.__init__
+Module: err.null.transit.carrier.movement.traversal.queen.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ERR.NULL.CARRIER.MOVEMENT.TRAVERSAL.QUEEN PACKAGE ===========#
+# =========== ERR.NULL.TRANSIT.CARRIER.MOVEMENT.TRAVERSAL.QUEEN PACKAGE ===========#
 
 # Packages
 

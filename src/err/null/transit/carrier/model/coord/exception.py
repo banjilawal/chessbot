@@ -1,7 +1,7 @@
-# src/err/null/carrier/model/coord/exception.py
+# src/err/null/transit/carrier/model/coord/exception.py
 
 """
-Module: err.null.carrier.model.coord.exception
+Module: err.null.transit.carrier.model.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -27,7 +27,7 @@ class CoordCarrierNullException(ModelCarrierNullException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required CoordCarrierToggle is null.
+        1.  Indicating a required CoordCarrier is null.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class CoordCarrierNullException(ModelCarrierNullException):
     Super Class:
         ModelCarrierException
     """
-    MSG = "CoordCarrierToggle cannot be null."
+    MSG = "CoordCarrier cannot be null."
     ERR_CODE = "COORD_CARRIER_NULL_ERROR"
     
     def __init__(

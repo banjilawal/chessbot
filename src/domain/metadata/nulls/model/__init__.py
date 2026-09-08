@@ -24,4 +24,4 @@ from .token import *
 from .vector import *
 
 # Modules
-from roster import ModelNullExceptionRoster
+from group import NullExceptionGroup

@@ -1,7 +1,7 @@
-# src/err/null/carrier/model/token/exception.py
+# src/err/null/transit/carrier/model/token/exception.py
 
 """
-Module: err.null.carrier.model.token.exception
+Module: err.null.transit.carrier.model.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -27,7 +27,7 @@ class TokenCarrierNullException(ModelCarrierNullException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required TokenCarrierToggle is null.
+        1.  Indicating a required TokenCarrier is null.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class TokenCarrierNullException(ModelCarrierNullException):
     Super Class:
         ModelCarrierException
     """
-    MSG = "TokenCarrierToggle cannot be null."
+    MSG = "TokenCarrier cannot be null."
     ERR_CODE = "TOKEN_CARRIER_NULL_ERROR"
     
     def __init__(

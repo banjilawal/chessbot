@@ -21,7 +21,7 @@ class KillEnemyBlueprint(AttackBlueprint):
         1.  Metadata
 
      Responsibilities:
-        1.  Provides values for hydrating a AttackEnemyCombatant object.
+        1.  Provides values for hydrating an AttackEnemyCombatant object.
 
      Attributes:
         attacker: Token

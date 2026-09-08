@@ -1,7 +1,7 @@
-# src/err/null/carrier/container/exception.py
+# src/err/null/transit/carrier/container/exception.py
 
 """
-Module: err.null.carrier.container.exception
+Module: err.null.transit.carrier.container.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -27,7 +27,7 @@ class ContainerCarrierNullException(EntityCarrierNullException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required ContainerCarrierToggle is null.
+        1.  Indicating a required ContainerCarrier is null.
 
     Attributes:
             msg: Optional[str]
@@ -44,7 +44,7 @@ class ContainerCarrierNullException(EntityCarrierNullException):
     Super Class:
         EntityCarrierNullException
     """
-    MSG = "ContainerCarrierToggle cannot be null."
+    MSG = "ContainerCarrier cannot be null."
     ERR_CODE = "CONTAINER_CARRIER_NULL_ERROR"
     
     def __init__(

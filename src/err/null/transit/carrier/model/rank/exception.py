@@ -1,7 +1,7 @@
-# src/err/null/carrier/model/rank/exception.py
+# src/err/null/transit/carrier/model/rank/exception.py
 
 """
-Module: err.null.carrier.model.rank.exception
+Module: err.null.transit.carrier.model.rank.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -27,7 +27,7 @@ class RankCarrierNullException(ModelCarrierNullException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required RankCarrierToggle is null.
+        1.  Indicating a required RankCarrier is null.
 
     Attributes:
         msg: Optional[str]
@@ -38,13 +38,13 @@ class RankCarrierNullException(ModelCarrierNullException):
         cls_mthd: Optional[str]
         err_code: Optional[str]
         mthd_rslt_type: Optional[MethodResultType]
-            
+        
     Provides:
 
     Super Class:
         ModelCarrierException
     """
-    MSG = "RankCarrierToggle cannot be null."
+    MSG = "RankCarrier cannot be null."
     ERR_CODE = "RANK_CARRIER_NULL_ERROR"
     
     def __init__(

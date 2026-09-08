@@ -1,13 +1,13 @@
-# src/err/null/carrier/model/game/__init__.py
+# src/err/null/transit/carrier/model/game/__init__.py
 
 """
-Module: err.null.carrier.model.game.__init__
+Module: err.null.transit.carrier.model.game.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.NULL.CARRIER.MODEL.GAME PACKAGE ===========#
+# ============ ERR.NULL.TRANSIT.CARRIER.MODEL.GAME PACKAGE ===========#
 
 # Packages
 

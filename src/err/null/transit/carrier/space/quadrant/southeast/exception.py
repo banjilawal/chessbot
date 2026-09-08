@@ -1,7 +1,7 @@
-# src/err/null/carrier/space/quadrant/southeast/exception.py
+# src/err/null/transit/carrier/space/quadrant/southeast/exception.py
 
 """
-Module: err.null.carrier.space.Quadrant is null.southeast.exception
+Module: err.null.transit.carrier.space.Quadrant is null.southeast.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

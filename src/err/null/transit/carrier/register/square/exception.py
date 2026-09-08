@@ -1,7 +1,7 @@
-# src/err/null/carrier/register/square/exception.py
+# src/err/null/transit/carrier/register/square/exception.py
 
 """
-Module: err.null.carrier.register.square.exception
+Module: err.null.transit.carrier.register.square.exception
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -27,7 +27,7 @@ class SquareRegisterCarrierNullException(RegisterCarrierNullException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required SquareRegisterCarrierToggle is null.
+        1.  Indicating a required SquareRegisterCarrier is null.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class SquareRegisterCarrierNullException(RegisterCarrierNullException):
     Super Class:
         RegisterCarrierNullException
     """
-    MSG = "SquareRegisterCarrierToggle cannot be null."
+    MSG = "SquareRegisterCarrier cannot be null."
     ERR_CODE= "SQUARE_REGISTER_CARRIER_NULL_ERROR"
     
     def __init__(

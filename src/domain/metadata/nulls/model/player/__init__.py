@@ -10,7 +10,9 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.NULLS.MODEL.PLAYER PACKAGE ===========#
 
 # Packages
+from .human import *
+from .machine import *
 
 
 # Modules
-from .roster import PlayerNullExceptionRoster
+from .group import PlayerNullGroup

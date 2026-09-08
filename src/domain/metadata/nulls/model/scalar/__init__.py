@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .roster import ScalarNullExceptionRoster
+from .group import ScalarNullGroup

@@ -1,7 +1,7 @@
-# src/err/null/carrier/model/path/exception.py
+# src/err/null/transit/carrier/model/path/exception.py
 
 """
-Module: err.null.carrier.model.path.exception
+Module: err.null.transit.carrier.model.path.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -27,7 +27,7 @@ class PathCarrierNullException(ModelCarrierNullException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required PathCarrierToggle is null.
+        1.  Indicating a required PathCarrier is null.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class PathCarrierNullException(ModelCarrierNullException):
     Super Class:
         ModelCarrierException
     """
-    MSG = "PathCarrierToggle cannot be null."
+    MSG = "PathCarrier cannot be null."
     ERR_CODE = "PATH_CARRIER_NULL_ERROR"
     
     def __init__(

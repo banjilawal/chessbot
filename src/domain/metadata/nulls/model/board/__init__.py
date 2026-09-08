@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .roster import BoardNullExceptionRoster
+from .group import BoardNullGroup

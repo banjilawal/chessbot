@@ -15,7 +15,7 @@ from domain import Queen, Persona, RankBlueprint
 from err import QueenNullException
 
 
-class QueenBlueprint(RankBlueprint[Queen]):
+class QueenBlueprint(RankBlueprint):
     """
      Role:
         1.  Metadata

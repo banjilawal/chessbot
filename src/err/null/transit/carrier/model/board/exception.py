@@ -1,7 +1,7 @@
-# src/err/null/carrier/model/board/exception.py
+# src/err/null/transit/carrier/model/board/exception.py
 
 """
-Module: err.null.carrier.model.board.exception
+Module: err.null.transit.carrier.model.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -27,7 +27,7 @@ class BoardCarrierNullException(ModelCarrierNullException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required BoardCarrierToggle is null.
+        1.  Indicating a required BoardCarrier is null.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class BoardCarrierNullException(ModelCarrierNullException):
     Super Class:
         ModelCarrierException
     """
-    MSG = "BoardCarrierToggle cannot be null."
+    MSG = "BoardCarrier cannot be null."
     ERR_CODE = "BOARD_CARRIER_NULL_ERROR"
     
     def __init__(

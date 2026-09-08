@@ -1,7 +1,7 @@
-# src/err/null/carrier/space/axis/exception.py
+# src/err/null/transit/carrier/space/axis/exception.py
 
 """
-Module: err.null.carrier.space.Axis is null.exception
+Module: err.null.transit.carrier.space.Axis is null.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

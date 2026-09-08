@@ -1,7 +1,7 @@
-# src/err/null/carrier/container/vectorset/exception.py
+# src/err/null/transit/carrier/container/vectorset/exception.py
 
 """
-Module: err.null.carrier.container.vectorset.exception
+Module: err.null.transit.carrier.container.vectorset.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -27,7 +27,7 @@ class VectorSetCarrierNullException(ContainerCarrierNullException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required VectorSetCarrierToggle is null.
+        1.  Indicating a required VectorSetCarrier is null.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class VectorSetCarrierNullException(ContainerCarrierNullException):
     Super Class:
         ToggleCarrierException
     """
-    MSG = "VectorSetCarrierToggle cannot be null."
+    MSG = "VectorSetCarrier cannot be null."
     ERR_CODE = "VECTOR_SET_CARRIER_NULL_ERROR"
     
     def __init__(

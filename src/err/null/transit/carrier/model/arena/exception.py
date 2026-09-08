@@ -1,7 +1,7 @@
-# src/err/null/carrier/model/arena/exception.py
+# src/err/null/transit/carrier/model/arena/exception.py
 
 """
-Module: err.null.carrier.model.arena.exception
+Module: err.null.transit.carrier.model.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -25,7 +25,7 @@ class ArenaCarrierNullException(ModelCarrierNullException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an ArenaCarrierToggle is null.
+        1.  Indicating an ArenaCarrier is null.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class ArenaCarrierNullException(ModelCarrierNullException):
     Super Class:
         ModelCarrierException
     """
-    MSG = "ArenaCarrierToggle cannot be null."
+    MSG = "ArenaCarrier cannot be null."
     ERR_CODE = "ARENA_CARRIER_NULL_ERROR"
     
     def __init__(

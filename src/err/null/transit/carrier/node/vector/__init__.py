@@ -1,13 +1,13 @@
-# src/err/null/carrier/node/vector/__init__.py
+# src/err/null/transit/carrier/node/vector/__init__.py
 
 """
-Module: err.null.carrier.node.vector.__init__
+Module: err.null.transit.carrier.node.vector.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.NULL.CARRIER.NODE.VECTOR PACKAGE ===========#
+# ============ ERR.NULL.TRANSIT.CARRIER.NODE.VECTOR PACKAGE ===========#
 
 # Packages
 

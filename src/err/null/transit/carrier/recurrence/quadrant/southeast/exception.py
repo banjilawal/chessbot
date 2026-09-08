@@ -1,7 +1,7 @@
-# src/err/null/carrier/recurrence/quadrant/southeast/exception.py
+# src/err/null/transit/carrier/recurrence/quadrant/southeast/exception.py
 
 """
-Module: err.null.carrier.recurrence.quadrant.southeast.exception
+Module: err.null.transit.carrier.recurrence.quadrant.southeast.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

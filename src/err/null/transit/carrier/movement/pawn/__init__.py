@@ -1,13 +1,13 @@
-# src/err/null/carrier/movement/pawn/__init__.py
+# src/err/null/transit/carrier/movement/pawn/__init__.py
 
 """
-Module: err.null.carrier.movement.pawn.__init__
+Module: err.null.transit.carrier.movement.pawn.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ERR.NULL.CARRIER.MOVEMENT.PAWN PACKAGE ===========#
+# =========== ERR.NULL.TRANSIT.CARRIER.MOVEMENT.PAWN PACKAGE ===========#
 
 # Packages
 from .attack import *

@@ -1,13 +1,13 @@
-# src/err/null/carrier/movement/offset/__init__.py
+# src/err/null/transit/carrier/movement/offset/__init__.py
 
 """
-Module: err.null.carrier.movement.offset.__init__
+Module: err.null.transit.carrier.movement.offset.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ERR.NULL.CARRIER.MOVEMENT.OFFSET PACKAGE ===========#
+# =========== ERR.NULL.TRANSIT.CARRIER.MOVEMENT.OFFSET PACKAGE ===========#
 
 # Packages
 from .king import *
