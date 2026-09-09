@@ -9,15 +9,12 @@ version: 1.0.0
 
 from typing import Any, cast
 
-from transit.controller import WorkerRegistryController
-from err import StringEmptyException, StringValidatorException
-from err.null.domain.primitive.string import StringNullException
-from operation import Validator
 from artifcat import ValidationResult
+from err import StringValidatorException
 from util import LoggingLevelRouter
 
 
-class StringValidator(Validator[str]):
+class StringValidator:
     """
     Role
         -  Transaction Worker
@@ -37,13 +34,10 @@ class StringValidator(Validator[str]):
             ) -> ValidationResult[String]
 
     Super Class:
-        Validator
     """
-    OPERATION_NAME = "text_validator"
     
-    @classmethod
     @LoggingLevelRouter.monitor
-    def validate(cls, candidate: Any) -> ValidationResult[str]:
+    def validate(self, candidate: Any) -> ValidationResult[str]:
         """
         Verify the object is a String that is safe to use.
 

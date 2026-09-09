@@ -1,7 +1,7 @@
-# src/assurance/validator/priming/validator.py
+# src/assurance/primitive/validator.py
 
 """
-Module: assurance.validator.priming.validator
+Module: assurance.primitive.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -44,11 +44,10 @@ class PrimingValidator:
         Validator
     """
 
-    
-    @classmethod
+
     @LoggingLevelRouter.monitor
     def execute(
-            cls,
+            self,
             candidate: Any,
             target_model: Type[T],
             null_exception: NullException,
@@ -71,7 +70,7 @@ class PrimingValidator:
             TypeError
             ValidationPrimingException
         """
-        method = f"{cls.__class__.__name__}.validate"
+        method = f"{self.__class__.__name__}.validate"
         
         # Handle the nonexistence case.
         if candidate is None:
@@ -79,7 +78,7 @@ class PrimingValidator:
             return ValidationResult.failure(
                 PrimingException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     var="candidate_expected_type",
                     val=target_model.__name__,
                     msg=PrimingException.MSG,
@@ -93,7 +92,7 @@ class PrimingValidator:
             return ValidationResult.failure(
                 PrimingException(
                     cls_mthd=method,
-                    cls_name=cls.__name__,
+                    cls_name=self.__class__.__name__,
                     msg=PrimingException.MSG,
                     err_code=PrimingException.ERR_CODE,
                     ex=TypeError(

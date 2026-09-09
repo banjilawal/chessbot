@@ -15,11 +15,9 @@ from .search import *
 from .model import *
 from .movement import *
 from .node import *
-from .number import *
 from .query import *
 from .register import *
 from .space import *
-from .string import *
 from .toggle import *
 
 # Module

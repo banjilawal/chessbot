@@ -13,7 +13,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar
 
-from assurance import PrimingValidator
+from assurance import NumberValidator, PrimingValidator
 from domain import Model
 from microservice import IdentityService
 
@@ -30,6 +30,7 @@ class HelperTable(ABC, Generic[T]):
 
     Attributes:
         identity_service: IdentityService
+        number_validator: NumberValidator
         primin_validator: PrimingValidator
 
     Provides:
@@ -37,24 +38,32 @@ class HelperTable(ABC, Generic[T]):
     Super Class:
     """
     _identity_service: IdentityService
+    _number_validator: NumberValidator
     _priming_validator: PrimingValidator
     
     def __init__(
             self,
             identity_service: Optional[IdentityService] | None = None,
+            number_validator: Optional[NumberValidator] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
     ):
         """
         Args:
             identity_service: Optional[IdentityService]
+            number_validator: Optional[NumberValidator]
             priming_validator: Optional[PrimingValidator]
         """
         self._identity_service = identity_service or IdentityService()
+        self._number_validator = number_validator or NumberValidator()
         self._priming_validator = priming_validator or PrimingValidator()
     
     @property
     def identity_service(self) -> IdentityService:
         return self._identity_service
+    
+    @property
+    def number_validator(self) -> NumberValidator:
+        return self._number_validator
     
     @property
     def priming_validator(self) -> PrimingValidator:

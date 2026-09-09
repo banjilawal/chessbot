@@ -1,7 +1,7 @@
-# src/transit/dispatcher/validator/string/registry/validator.py
+# src/assurance/primitive/string/registry/validator.py
 
 """
-Module: transit.dispatcher.validator.string.registry.validator
+Module: assurance.primitive.string.registry.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -16,7 +16,7 @@ from err import (
     EmptyListException, ListNullException, RegistryEntryKeyStringValidatorException, StringValidatorException
 )
 from operation import PrimingValidator, Validator
-from transit.dispatcher.validator.string import NameValidator
+from assurance.primitive.string import NameValidator
 from artifcat import ValidationResult
 from util import LoggingLevelRouter
 
