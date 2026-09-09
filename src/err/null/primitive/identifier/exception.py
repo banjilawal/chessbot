@@ -1,7 +1,7 @@
-# src/err/null/domain/string/exception.py
+# src/err/null/primitive/identifier/exception.py
 
 """
-Module: err.null.domain.string.exception
+Module: err.null.primitive.identifier.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# STRING_NULL_ERROR #======================#
-    "StringNullException",
+    # ======================# IDENTIFIER_NULL_ERROR #======================#
+    "IdentifierNullException",
 ]
 
-# ======================# STRING_NULL_ERROR #======================#
-class StringNullException(NullException):
+# ======================# IDENTIFIER_NULL_ERROR #======================#
+class IdentifierNullException(NullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required String is null.
+        1.  Indicating a required Identifier is null.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class StringNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = "String cannot be null."
-    ERR_CODE = "STRING_NULL_ERROR"
+    MSG = "Identifier cannot be null."
+    ERR_CODE = "IDENTIFIER_NULL_ERROR"
     
     def __init__(
             self,

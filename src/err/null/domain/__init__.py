@@ -13,7 +13,6 @@ version: 0.0.2
 from .exchange import *
 from .metadata import *
 from .model import *
-from .primitive import *
 from .schema import *
 from .search import *
 from .structure import *

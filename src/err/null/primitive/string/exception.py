@@ -1,7 +1,7 @@
-# src/err/null/domain/number/exception.py
+# src/err/null/primitive/string/exception.py
 
 """
-Module: err.null.domain.number.exception
+Module: err.null.primitive.string.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# NUMBER_NULL_ERROR #======================#
-    "NumberNullException",
+    # ======================# STRING_NULL_ERROR #======================#
+    "StringNullException",
 ]
 
-# ======================# NUMBER_NULL_ERROR #======================#
-class NumberNullException(NullException):
+# ======================# STRING_NULL_ERROR #======================#
+class StringNullException(NullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required number is null.
+        1.  Indicating a required String is null.
 
     Attributes:
         msg: Optional[str]
@@ -38,14 +38,14 @@ class NumberNullException(NullException):
         cls_mthd: Optional[str]
         err_code: Optional[str]
         mthd_rslt_type: Optional[MethodResultType]
-            
+        
     Provides:
 
     Super Class:
         NullException
     """
-    MSG = "Number cannot be null."
-    ERR_CODE = "NUMBER_NULL_ERROR"
+    MSG = "String cannot be null."
+    ERR_CODE = "STRING_NULL_ERROR"
     
     def __init__(
             self,

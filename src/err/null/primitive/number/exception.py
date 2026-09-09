@@ -1,7 +1,7 @@
-# src/err/null/domain/identifier/exception.py
+# src/err/null/primitive/number/exception.py
 
 """
-Module: err.null.domain.identifier.exception
+Module: err.null.primitive.number.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# IDENTIFIER_NULL_ERROR #======================#
-    "IdentifierNullException",
+    # ======================# NUMBER_NULL_ERROR #======================#
+    "NumberNullException",
 ]
 
-# ======================# IDENTIFIER_NULL_ERROR #======================#
-class IdentifierNullException(NullException):
+# ======================# NUMBER_NULL_ERROR #======================#
+class NumberNullException(NullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required Identifier is null.
+        1.  Indicating a required number is null.
 
     Attributes:
         msg: Optional[str]
@@ -38,14 +38,14 @@ class IdentifierNullException(NullException):
         cls_mthd: Optional[str]
         err_code: Optional[str]
         mthd_rslt_type: Optional[MethodResultType]
-        
+            
     Provides:
 
     Super Class:
         NullException
     """
-    MSG = "Identifier cannot be null."
-    ERR_CODE = "IDENTIFIER_NULL_ERROR"
+    MSG = "Number cannot be null."
+    ERR_CODE = "NUMBER_NULL_ERROR"
     
     def __init__(
             self,

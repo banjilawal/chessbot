@@ -105,7 +105,3 @@ class StringValidator:
             )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(text)
-
-
-# --- FINALLY: REGISTER THE OPERATION ---#
-WorkerRegistryController.register_worker(worker=StringValidator)

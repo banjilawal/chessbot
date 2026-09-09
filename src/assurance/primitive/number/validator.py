@@ -11,9 +11,10 @@ from __future__ import annotations
 
 from typing import Any, Optional, cast
 
+import config
 from assurance import PrimingValidator
 from err import (
-    NegativeNumberException, NumberAboveBoundsException, NumberBelowBoundsException, NumberNullException,
+    NegativeNumberException, NumberAboveBoundsException, NumberBelowBoundsException,
     NumberValidatorException
 )
 from artifcat import ValidationResult
