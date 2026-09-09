@@ -22,11 +22,11 @@ class ArenaValidationToolkit(ModelValidationToolkit[Arena]):
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for attribute validators and type metadata.
+        1.  Single source of truth for Arena attribute validators and type metadata.
 
     Attributes:
-        helper: HelperTable[T]
-        metadata: ObjectManifest[T]
+        helper: Optional[ArenaManifest]
+        metadata: Optional[ArenaHelperTable]
 
     Provides:
 
