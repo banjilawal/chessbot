@@ -13,10 +13,10 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from domain import KingTokenBlueprint, KingToken, TokenTypeUnion
-from transit import KingTokenCarrier
 
 
-class KingTokenUnion(TokenTypeUnion):
+
+class KingTokenUnion(TokenTypeUnion[KingToken]):
     """
     Role:
         - Metadata

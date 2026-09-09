@@ -9,20 +9,21 @@ version: 0.0.2
 
 from __future__ import annotations
 
-
-from typing import Optional, Type, cast
+from abc import ABC
+from typing import Generic, Optional, Type, TypeVar, cast
 
 from domain import Rank, RankBlueprint, TypeUnion
 from transit import RankCarrier
 
+T = TypeVar("T", bound="Rank")
 
-class RankTypeUnion(TypeUnion[Rank]):
+class RankTypeUnion(TypeUnion[T], ABC, Generic[T]):
     """
     Role:
         - Metadata
 
     Responsibilities:
-        1. Catalog of types associated with building and validating an Rank.
+        1. Catalog of types associated with building and validating a Rank.
 
     Attributes:
         model: Type[Rank]
@@ -34,33 +35,4 @@ class RankTypeUnion(TypeUnion[Rank]):
     Super Class:
         TypeUnion
     """
-    
-    def __init__(
-            self, 
-            model: Optional[Type[Rank]] | None = None,
-            carrier: Optional[Type[RankCarrier]] | None = None, 
-            blueprint: Optional[Type[RankBlueprint]] | None = None,
-    ):
-        """
-        Args:
-            model: Optional[Type[Rank]]
-            carrier: Optional[Type[RankCarrier]
-            blueprint: Optional[Type[RankBlueprint] 
-        """
-        super().__init__(
-            model=model or Rank, 
-            carrier=carrier or RankCarrier, 
-            blueprint=blueprint or RankBlueprint
-        )
-    
-    @property
-    def model(self) -> Type[Rank]:
-        return cast(Type[Rank], super().model)
-    
-    @property
-    def carrier(self) -> Type[RankCarrier]:
-        return cast(Type[RankCarrier], super().carrier)
-    
-    @property
-    def blueprint(self) -> Type[RankBlueprint]:
-        return cast(Type[RankBlueprint], super().blueprint)
+    pass

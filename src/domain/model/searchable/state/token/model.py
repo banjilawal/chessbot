@@ -49,7 +49,6 @@ class Token(StateModel):
     """
     _id: int
     _team: Team
-    _rank: Rank
     _formation: Formation
     _positions: CoordDatabase
     _home_square: HomeSquare
@@ -62,7 +61,6 @@ class Token(StateModel):
     def __init__(
             self,
             id: int,
-            rank: Rank,
             team: Team,
             formation: Formation,
             home_square: HomeSquare,
@@ -72,14 +70,13 @@ class Token(StateModel):
         Args:
             id: int
             team: Team
-            rank: Rank
             formation: Formation
             home_square: OpeningSquare
         """
         super().__init__()
         self._id = id
         self._team = team
-        self._rank = rank
+        self._rank = formation.rank
         self._formation = formation
         self._home_square = home_square
         self._current_position = self._positions.current_item

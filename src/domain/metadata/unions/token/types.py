@@ -10,57 +10,25 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Optional, Type, cast
+from typing import Generic, TypeVar
 
-from domain import Token, TokenBlueprint, TypeUnion
-from transit import TokenCarrier
+from domain import Token, TypeUnion
 
+T = TypeVar("T", bound="Token")
 
-class TokenTypeUnion(TypeUnion[Token], ABC):
+class TokenTypeUnion(TypeUnion[T], ABC, Generic[T]):
     """
     Role:
         - Metadata
 
     Responsibilities:
-        1. Catalog of types associated with building and validating an Token.
+        1. Catalog of types associated with building and validating a Token.
 
     Attributes:
-        model: Type[Token]
-        carrier: Type[TokenCarrier]
-        blueprint: Type[TokenBlueprint]
 
     Provides:
 
     Super Class:
         TypeUnion
     """
-    
-    def __init__(
-            self, 
-            model: Optional[Type[Token]] | None = None,
-            carrier: Optional[Type[TokenCarrier]] | None = None, 
-            blueprint: Optional[Type[TokenBlueprint]] | None = None,
-    ):
-        """
-        Args:
-            model: Optional[Type[Token]]
-            carrier: Optional[Type[TokenCarrier]
-            blueprint: Optional[Type[TokenBlueprint] 
-        """
-        super().__init__(
-            model=model or Token, 
-            carrier=carrier or TokenCarrier, 
-            blueprint=blueprint or TokenBlueprint
-        )
-    
-    @property
-    def model(self) -> Type[Token]:
-        return cast(Type[Token], super().model)
-    
-    @property
-    def carrier(self) -> Type[TokenCarrier]:
-        return cast(Type[TokenCarrier], super().carrier)
-    
-    @property
-    def blueprint(self) -> Type[TokenBlueprint]:
-        return cast(Type[TokenBlueprint], super().blueprint)
+    pass

@@ -15,7 +15,7 @@ from domain import KingToken, KingTokenBlueprint
 from transit import TokenCarrier
 
 
-class KingTokenCarrier(TokenCarrier):
+class KingTokenCarrier(TokenCarrier[KingToken]):
     """
     Role:
         - Boundary Carrier Interface

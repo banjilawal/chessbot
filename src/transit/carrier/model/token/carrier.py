@@ -9,11 +9,12 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, Type, cast
+from typing import Optional, Type, TypeVar, cast
 
 from domain import Token, TokenBlueprint
 from transit import ModelCarrier
 
+T = TypeVar("T", bound="Model")
 
 class TokenCarrier(ModelCarrier[Token]):
     """
@@ -37,71 +38,72 @@ class TokenCarrier(ModelCarrier[Token]):
     Super Class:
         ModelCarrier
     """
-    
-    _model: Optional[Token]
-    _blueprint: Optional[TokenBlueprint]
-    
-    def __init__(
-            self,
-            model: Optional[Token] | None = None,
-            blueprint: Optional[TokenBlueprint] | None = None,
-    ):
-        """
-        Args:
-            model: Optional[Token]
-            blueprint: Optional[TokenBlueprint]
-        """
-        super().__init__()
-        self._model = model
-        self._blueprint = blueprint
-    
-    @property
-    def entity(self) -> Optional[Token | TokenBlueprint]:
-        if self.is_empty:
-            return None
-        if self.is_carrying_model:
-            return self._model
-        return self._blueprint
-    
-    @property
-    def is_carrying_model(self) -> bool:
-        return (
-                self._model is not None and
-                self._blueprint is None and
-                isinstance(self._model, Token)
-        )
-    
-    @property
-    def is_carrying_blueprint(self) -> bool:
-        return (
-                not self.is_carrying_model and
-                isinstance(self._blueprint, TokenBlueprint)
-        )
-    
-    @property
-    def size(self) -> int:
-        return len([self._model, self._blueprint])
-    
-    @property
-    def is_empty(self) -> bool:
-        return self.size == 0
-    
-    @property
-    def is_over_capacity(self) -> bool:
-        return self.size > 1
-    
-    def extract_blueprint(self) -> Optional[TokenBlueprint]:
-        if self.is_empty: return None
-        if self.is_carrying_blueprint: return self._blueprint
-        
-        model = cast(Type[self._model], self._model)
-        return TokenBlueprint(
-            id=model.id,
-            team=model.team,
-            rank=model.rank,
-            formation=model.formation,
-            positions=model.positions,
-            home_square=model.home_square,
-        )
+    pass
+    #
+    # _model: Optional[Token]
+    # _blueprint: Optional[TokenBlueprint]
+    #
+    # def __init__(
+    #         self,
+    #         model: Optional[Token] | None = None,
+    #         blueprint: Optional[TokenBlueprint] | None = None,
+    # ):
+    #     """
+    #     Args:
+    #         model: Optional[Token]
+    #         blueprint: Optional[TokenBlueprint]
+    #     """
+    #     super().__init__()
+    #     self._model = model
+    #     self._blueprint = blueprint
+    #
+    # @property
+    # def entity(self) -> Optional[Token | TokenBlueprint]:
+    #     if self.is_empty:
+    #         return None
+    #     if self.is_carrying_model:
+    #         return self._model
+    #     return self._blueprint
+    #
+    # @property
+    # def is_carrying_model(self) -> bool:
+    #     return (
+    #             self._model is not None and
+    #             self._blueprint is None and
+    #             isinstance(self._model, Token)
+    #     )
+    #
+    # @property
+    # def is_carrying_blueprint(self) -> bool:
+    #     return (
+    #             not self.is_carrying_model and
+    #             isinstance(self._blueprint, TokenBlueprint)
+    #     )
+    #
+    # @property
+    # def size(self) -> int:
+    #     return len([self._model, self._blueprint])
+    #
+    # @property
+    # def is_empty(self) -> bool:
+    #     return self.size == 0
+    #
+    # @property
+    # def is_over_capacity(self) -> bool:
+    #     return self.size > 1
+    #
+    # def extract_blueprint(self) -> Optional[TokenBlueprint]:
+    #     if self.is_empty: return None
+    #     if self.is_carrying_blueprint: return self._blueprint
+    #
+    #     model = cast(Type[self._model], self._model)
+    #     return TokenBlueprint(
+    #         id=model.id,
+    #         team=model.team,
+    #         rank=model.rank,
+    #         formation=model.formation,
+    #         positions=model.positions,
+    #         home_square=model.home_square,
+    #     )
 
 
