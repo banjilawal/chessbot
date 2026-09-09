@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .checker import RankChecker
+from .validator import RankValidator

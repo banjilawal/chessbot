@@ -1,7 +1,7 @@
-# src/assurance/validator/domain/structure/node/checker.py
+# src/assurance/validator/domain/structure/node/validator.py
 
 """
-Module: assurance.validator.domain.node.checker
+Module: assurance.validator.domain.node.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -36,7 +36,7 @@ class NodeValidator(Validator[Node]):
         -  execute(self, candidate: Any) -> ValidationResult
 
     Super Class:
-        IntegrityChecker
+        IntegrityValidator
     """
     
     def __init__(self, bundle: NodeValidationBundle):

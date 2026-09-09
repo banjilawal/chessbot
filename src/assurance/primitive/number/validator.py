@@ -15,7 +15,7 @@ import config
 from assurance import PrimingValidator
 from err import (
     NegativeNumberException, NumberAboveBoundsException, NumberBelowBoundsException,
-    NumberValidatorException
+    NumberNullException, NumberValidatorException
 )
 from artifcat import ValidationResult
 from util import LoggingLevelRouter

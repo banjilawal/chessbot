@@ -5,9 +5,146 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/assurance/attribute/model/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/attribute/model/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/attribute/model/arena/table.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/attribute/model/attack/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/attribute/model/attack/table.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/attribute/model/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/attribute/model/board/table.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/attribute/model/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/attribute/model/coord/table.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/attribute/model/game/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/attribute/model/game/table.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/attribute/model/maneuver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/attribute/model/maneuver/table.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/attribute/model/path/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/attribute/model/path/table.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/attribute/model/player/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/attribute/model/player/table.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/attribute/model/rank/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/attribute/model/rank/table.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/attribute/model/scalar/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/attribute/model/scalar/table.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/attribute/model/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/attribute/model/square/table.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/attribute/model/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/attribute/model/team/table.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/attribute/model/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/attribute/model/token/table.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/attribute/model/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/attribute/model/vector/table.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/toolkit/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/toolkit/model/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/toolkit/structure/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/toolkit/structure/node/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/toolkit/structure/node/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/primitve/string/blank/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/primitve/string/empty/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/attribute/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/table.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/attribute/table.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/bundle.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/toolkit/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/toolkit/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/model/arena/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/model/arena/bundle.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/toolkit/model/arena/bundle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/model/board/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/model/board/bundle.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/model/bundle.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/toolkit/model/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/model/coord/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/model/coord/bundle.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/model/game/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/model/game/bundle.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/model/player/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/model/player/bundle.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/model/rank/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/model/rank/bundle.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/model/scalar/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/model/scalar/bundle.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/model/snapshot/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/model/snapshot/bundle.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/model/square/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/model/square/bundle.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/model/team/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/model/team/bundle.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/model/token/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/model/token/bundle.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/model/vector/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/model/vector/bundle.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/structure/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/structure/bundle.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/toolkit/structure/bundle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/structure/node/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/structure/node/bundle.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/toolkit/structure/node/bundle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/structure/node/vector/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/bundle/structure/node/vector/bundle.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/toolkit/structure/node/vector/bundle.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assurance/primitive/number/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/primitive/number/validator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assurance/primitive/string/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/primitive/string/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/domain/primitive/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/primitive/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/model/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/arena/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/model/arena/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/arena/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/model/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/board/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/model/board/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/board/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/model/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/model/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/model/coord/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/coord/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/model/edge/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/edge/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/model/edge/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/edge/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/model/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/game/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/model/game/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/game/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/model/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/maneuver/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/model/maneuver/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/maneuver/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/model/node/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/node/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/model/node/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/node/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/model/path/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/path/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/model/path/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/path/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/model/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/player/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/model/player/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/player/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/model/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/rank/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/model/rank/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/rank/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/model/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/model/square/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/square/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/model/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/team/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/model/team/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/team/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/model/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/token/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/model/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/model/vector/checker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/model/vector/checker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/structure/node/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/node/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/structure/node/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/node/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/structure/node/vector/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/node/vector/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/structure/register/identity/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/register/identity/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/structure/register/identity/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/register/identity/certifier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/structure/register/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/register/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/structure/register/square/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/register/square/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/structure/register/toggle/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/register/toggle/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/structure/register/toggle/vector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/register/toggle/vector.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/structure/register/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/register/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/structure/register/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/register/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/structure/register/vector/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/register/vector/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/structure/toggle/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/toggle/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/structure/toggle/vector/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/toggle/vector/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/structure/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/primitve/string/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitve/string/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/primitve/string/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitve/string/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/primitve/string/name/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitve/string/name/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/primitve/string/name/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitve/string/name/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/primitve/string/name/max/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitve/string/name/max/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/primitve/string/name/max/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitve/string/name/max/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/primitve/string/name/min/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitve/string/name/min/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/primitve/string/name/min/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitve/string/name/min/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/controller/string/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/controller/string/blank/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/controller/string/blank/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitve/string/blank/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/controller/string/empty/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/controller/string/empty/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitve/string/empty/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/controller/string/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/controller/string/name/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/controller/string/name/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/controller/string/name/max/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/controller/string/name/max/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/controller/string/name/min/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/controller/string/name/min/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,61 +186,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.8262891660507647" />
-      <entry key="MS500" value="3.683282075050512" />
-      <entry key="S2" value="9.707440157488112" />
-      <entry key="S5" value="16.442062495030974" />
-      <entry key="S10" value="24.635910963761" />
-      <entry key="S30" value="61.67853776074721" />
-      <entry key="S60" value="108.20924490524317" />
-      <entry key="M2" value="161.1036884501475" />
-      <entry key="M5" value="217.38559878132062" />
-      <entry key="M10" value="259.21878226458114" />
-      <entry key="M15" value="292.6392128269556" />
-      <entry key="M30" value="365.1846521862092" />
-      <entry key="H1" value="449.2560529855944" />
-      <entry key="H2" value="530.8972132769454" />
-      <entry key="H4" value="609.0886424436046" />
-      <entry key="D1" value="2231.864722381038" />
-      <entry key="W1" value="16642.779410232528" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0007125211825822" />
+      <entry key="S2" value="1.2631326165250056" />
+      <entry key="S5" value="1.9720878361408691" />
+      <entry key="S10" value="3.021155591155536" />
+      <entry key="S30" value="7.307155177239447" />
+      <entry key="S60" value="11.407280042910642" />
+      <entry key="M2" value="15.89089927632381" />
+      <entry key="M5" value="22.471152634781582" />
+      <entry key="M10" value="30.579040169973794" />
+      <entry key="M15" value="40.92545792073905" />
+      <entry key="M30" value="95.69717420025013" />
+      <entry key="H1" value="236.21755927062435" />
+      <entry key="H2" value="435.48446276794107" />
+      <entry key="H4" value="630.733811167926" />
+      <entry key="D1" value="2338.5734732017513" />
+      <entry key="W1" value="16745.239368978007" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="1.8032747706414396E-188" />
-      <entry key="S2" value="1.2732673289442963E-47" />
-      <entry key="S5" value="2.3471512636825856E-19" />
-      <entry key="S10" value="6.680895209841468E-10" />
-      <entry key="S30" value="0.001380161559046021" />
-      <entry key="S60" value="0.05357084905454748" />
-      <entry key="M2" value="0.3711817139748002" />
-      <entry key="M5" value="1.654247912346877" />
-      <entry key="M10" value="4.617751187865149" />
-      <entry key="M15" value="7.882615557374018" />
-      <entry key="M30" value="15.465704691852052" />
-      <entry key="H1" value="23.9171152824021" />
-      <entry key="H2" value="33.98986127092422" />
-      <entry key="H4" value="47.7607299085146" />
-      <entry key="D1" value="156.18014631923322" />
-      <entry key="W1" value="703.7919775790991" />
+      <entry key="MS500" value="2.627664929781007E-309" />
+      <entry key="S2" value="7.15966160402571E-78" />
+      <entry key="S5" value="1.3866207449181422E-31" />
+      <entry key="S10" value="3.7303814674304076E-16" />
+      <entry key="S30" value="8.579285381271683E-6" />
+      <entry key="S60" value="0.0043466272426673554" />
+      <entry key="M2" value="0.11012919877134361" />
+      <entry key="M5" value="0.9203236652371128" />
+      <entry key="M10" value="2.933167229918747" />
+      <entry key="M15" value="5.70632723556457" />
+      <entry key="M30" value="15.53203385768169" />
+      <entry key="H1" value="32.7130532589681" />
+      <entry key="H2" value="54.47365679390343" />
+      <entry key="H4" value="78.44677757379172" />
+      <entry key="D1" value="199.23894783550602" />
+      <entry key="W1" value="751.0811233220543" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.6039724390156023" />
-      <entry key="MS500" value="3.5741198691536518" />
-      <entry key="S2" value="9.606884905822747" />
-      <entry key="S5" value="16.371286065397545" />
-      <entry key="S10" value="24.584212266898728" />
-      <entry key="S30" value="61.63878704301601" />
-      <entry key="S60" value="108.2220359624523" />
-      <entry key="M2" value="161.43148976132863" />
-      <entry key="M5" value="219.00153807074716" />
-      <entry key="M10" value="263.80192517909956" />
-      <entry key="M15" value="300.48798614083756" />
-      <entry key="M30" value="380.6187953102507" />
-      <entry key="H1" value="473.14554003899235" />
-      <entry key="H2" value="564.8650722334269" />
-      <entry key="H4" value="656.8331618757624" />
-      <entry key="D1" value="2388.032515786532" />
-      <entry key="W1" value="17346.56127524581" />
+      <entry key="MS100" value="0.8526348917679567" />
+      <entry key="MS500" value="0.9693049245501179" />
+      <entry key="S2" value="1.2522763426242771" />
+      <entry key="S5" value="1.964574275154778" />
+      <entry key="S10" value="3.015384318955578" />
+      <entry key="S30" value="7.302330797787557" />
+      <entry key="S60" value="11.40774688613637" />
+      <entry key="M2" value="15.996600082994929" />
+      <entry key="M5" value="23.382100565273912" />
+      <entry key="M10" value="33.49742333502405" />
+      <entry key="M15" value="46.61298152257481" />
+      <entry key="M30" value="111.20402755048065" />
+      <entry key="H1" value="268.9027340048824" />
+      <entry key="H2" value="489.93254948148723" />
+      <entry key="H4" value="709.1605094040787" />
+      <entry key="D1" value="2537.7991023021336" />
+      <entry key="W1" value="17496.310220512234" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -134,7 +271,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/assurance/bundle/model",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/assurance/attribute/model",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -148,18 +285,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assurance/attribute/model" />
+      <recent name="$PROJECT_DIR$/src/assurance/attribute" />
+      <recent name="$PROJECT_DIR$/src/assurance/attribute/arena" />
       <recent name="$PROJECT_DIR$/src/assurance/bundle/model" />
       <recent name="$PROJECT_DIR$/src/domain/metadata/unions/rank" />
-      <recent name="$PROJECT_DIR$/src/domain/metadata/manifest" />
-      <recent name="$PROJECT_DIR$/src/domain/metadata" />
-      <recent name="$PROJECT_DIR$/src/domain/metadata/manifest/arena" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assurance/attribute/model" />
+      <recent name="$PROJECT_DIR$/src/err/assurance/primitve" />
+      <recent name="$PROJECT_DIR$/src/err/null" />
       <recent name="$PROJECT_DIR$/src/assurance/primitive" />
       <recent name="$PROJECT_DIR$/src/assurance/validator" />
-      <recent name="$PROJECT_DIR$/src/assurance" />
-      <recent name="$PROJECT_DIR$/src/domain/metadata/manifest/rank" />
-      <recent name="$PROJECT_DIR$/src/domain/metadata/manifest/cartesian" />
     </key>
   </component>
   <component name="RunManager" selected="Python.validator">
@@ -838,7 +975,7 @@
       <workItem from="1787812398225" duration="195474000" />
       <workItem from="1788709512302" duration="4064000" />
       <workItem from="1788782347688" duration="75617000" />
-      <workItem from="1788969937518" duration="8313000" />
+      <workItem from="1788969937518" duration="14948000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -2001,11 +2138,6 @@
           <option name="timeStamp" value="430" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/err/null/__init__.py</url>
-          <line>12</line>
-          <option name="timeStamp" value="431" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/domain/metadata/nulls/model/player/human/group.py</url>
           <line>11</line>
           <option name="timeStamp" value="432" />
@@ -2024,6 +2156,16 @@
           <url>file://$PROJECT_DIR$/src/domain/metadata/nulls/model/walk/maneuver/group.py</url>
           <line>11</line>
           <option name="timeStamp" value="435" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/err/controller/__init__.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="436" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/assurance/toolkit/model/__init__.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="437" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,7 +1,7 @@
-# src/assurance/validator/domain/structure/register/assurance/checker.py
+# src/assurance/validator/domain/structure/register/assurance/validator.py
 
 """
-Module: assurance.validator.domain.register/assurance/checker.checker
+Module: assurance.validator.domain.register/assurance/validator.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -38,7 +38,7 @@ class RegisterValidator(Validator, Generic[T]):
         - def execute(self, candidate: Any,) -> ValidationResult[T]
 
     Super Class:
-        RootChecker
+        RootValidator
     """
 
     

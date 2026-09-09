@@ -1,7 +1,7 @@
-# src/root/toggle/vector/assurance/checker.py
+# src/root/toggle/vector/assurance/validator.py
 
 """
-Module: root.toggle.vector.checker
+Module: root.toggle.vector.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -16,10 +16,10 @@ from domain.metadata.blueprint import CartesianToggleBlueprint
 from carrier import CartesianToggleCarrier
 from err import (
     ExcessToggleActivationException, NoActiveTogglesException, NoValidationRouteException,
-    CartesianToggleRootCheckerException
+    CartesianToggleRootValidatorException
 )
 from domain.model import Coord, Vector
-from assurance.validator import ToggleChecker
+from assurance.validator import ToggleValidator
 from artifcat import ValidationResult
 from domain.structure.toggle import CartesianToggle
 from operation.toolkit import CartesianToggleToolkit
@@ -43,7 +43,7 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
         -  execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
-        IntegrityChecker
+        IntegrityValidator
     """
     
     def __init__(self, bundle: CartesianToggleToolkit | None = CartesianToggleToolkit()):
@@ -74,7 +74,7 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
         Returns:
             ValidationResult
         Raises:
-            CartesianToggleCheckerException
+            CartesianToggleValidatorException
             CartesianToggleDtoCarrierNullException
         """
         method = f"{self.__class__.__name__}.execute"
@@ -87,11 +87,11 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CartesianToggleRootCheckerException(
+                CartesianToggleRootValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CartesianToggleRootCheckerException.MSG,
-                    err_code=CartesianToggleRootCheckerException.ERR_CODE,
+                    msg=CartesianToggleRootValidatorException.MSG,
+                    err_code=CartesianToggleRootValidatorException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -104,11 +104,11 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
         if blueprint.is_empty:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CartesianToggleRootCheckerException(
+                CartesianToggleRootValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CartesianToggleRootCheckerException.MSG,
-                    err_code=CartesianToggleRootCheckerException.ERR_CODE,
+                    msg=CartesianToggleRootValidatorException.MSG,
+                    err_code=CartesianToggleRootValidatorException.ERR_CODE,
                     ex=NoActiveTogglesException(
                         msg=NoActiveTogglesException.MSG,
                         err_code=NoActiveTogglesException.ERR_CODE,
@@ -119,11 +119,11 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
         if blueprint.is_above_max_size:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CartesianToggleRootCheckerException(
+                CartesianToggleRootValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CartesianToggleRootCheckerException.MSG,
-                    err_code=CartesianToggleRootCheckerException.ERR_CODE,
+                    msg=CartesianToggleRootValidatorException.MSG,
+                    err_code=CartesianToggleRootValidatorException.ERR_CODE,
                     ex=ExcessToggleActivationException(
                         msg=ExcessToggleActivationException.MSG,
                         err_code=ExcessToggleActivationException.ERR_CODE,
@@ -145,11 +145,11 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CartesianToggleRootCheckerException(
+                CartesianToggleRootValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CartesianToggleRootCheckerException.MSG,
-                    err_code=CartesianToggleRootCheckerException.ERR_CODE,
+                    msg=CartesianToggleRootValidatorException.MSG,
+                    err_code=CartesianToggleRootValidatorException.ERR_CODE,
                     ex=validation.exception
                 )
             )

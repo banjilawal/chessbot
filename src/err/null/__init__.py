@@ -18,6 +18,7 @@ from .dependecy import *
 from .domain import *
 from .microservice import *
 from .operation import *
+from .primitive import *
 from .query import *
 from .relation import *
 from .space import *

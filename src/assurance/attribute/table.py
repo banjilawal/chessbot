@@ -1,7 +1,7 @@
-# src/assurance/attrribute/handler.py
+# src/assurance/attrribute/table.py
 
 """
-Module: assurance.attrribute.handler
+Module: assurance.attrribute.table
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -20,13 +20,13 @@ from microservice import IdentityService
 T = TypeVar("T", bound="Model")
 
 
-class HelperTable(ABC, Generic[T]):
+class AttributeHelperTable(ABC, Generic[T]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Bundles validators a Model needs for its attributes.
+        1.  Bundles validators a Model needs for its primitive and upstream relational partners attributes.
 
     Attributes:
         identity_service: IdentityService

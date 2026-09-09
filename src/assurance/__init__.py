@@ -13,7 +13,7 @@ version: 0.0.2
 from .auditor import *
 from .attribute import *
 from .primitive import *
+from .toolkit import *
 from .validator import *
-from .bundle import *
 
 # Modules

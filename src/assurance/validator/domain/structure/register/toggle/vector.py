@@ -14,7 +14,7 @@ from typing import List, Optional, cast
 from domain.metadata.blueprint import CartesianToggleRegisterBlueprint
 from carrier import CartesianToggleRegisterCarrier
 from err import (
-    RegisterEmptyException, RegisterSizeException, CartesianToggleRegisterCheckerException,
+    RegisterEmptyException, RegisterSizeException, CartesianToggleRegisterValidatorException,
     CartesianToggleRegisterMismatchException
 )
 from domain.structure.register import CartesianToggleRegister
@@ -45,7 +45,7 @@ class CartesianToggleRegisterValidator(
         -  execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
-        IntegrityChecker
+        IntegrityValidator
     """
     
     def __init__(
@@ -79,7 +79,7 @@ class CartesianToggleRegisterValidator(
         Returns:
             ValidationResult
         Raises:
-            CartesianToggleRegisterCheckerException
+            CartesianToggleRegisterValidatorException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -91,11 +91,11 @@ class CartesianToggleRegisterValidator(
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CartesianToggleRegisterCheckerException(
+                CartesianToggleRegisterValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CartesianToggleRegisterCheckerException.MSG,
-                    err_code=CartesianToggleRegisterCheckerException.ERR_CODE,
+                    msg=CartesianToggleRegisterValidatorException.MSG,
+                    err_code=CartesianToggleRegisterValidatorException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -109,11 +109,11 @@ class CartesianToggleRegisterValidator(
         if blueprint.is_blank:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CartesianToggleRegisterCheckerException(
+                CartesianToggleRegisterValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CartesianToggleRegisterCheckerException.MSG,
-                    err_code=CartesianToggleRegisterCheckerException.ERR_CODE,
+                    msg=CartesianToggleRegisterValidatorException.MSG,
+                    err_code=CartesianToggleRegisterValidatorException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
                     ex=RegisterEmptyException(
                         cls_mthd=method,
@@ -126,11 +126,11 @@ class CartesianToggleRegisterValidator(
         if blueprint.is_half_full:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CartesianToggleRegisterCheckerException(
+                CartesianToggleRegisterValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CartesianToggleRegisterCheckerException.MSG,
-                    err_code=CartesianToggleRegisterCheckerException.ERR_CODE,
+                    msg=CartesianToggleRegisterValidatorException.MSG,
+                    err_code=CartesianToggleRegisterValidatorException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
                     ex=RegisterSizeException(
                         cls_mthd=method,
@@ -143,11 +143,11 @@ class CartesianToggleRegisterValidator(
         if blueprint.toggles_are_different_types:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CartesianToggleRegisterCheckerException(
+                CartesianToggleRegisterValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CartesianToggleRegisterCheckerException.MSG,
-                    err_code=CartesianToggleRegisterCheckerException.ERR_CODE,
+                    msg=CartesianToggleRegisterValidatorException.MSG,
+                    err_code=CartesianToggleRegisterValidatorException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.VALIDATION_RESULT,
                     ex=CartesianToggleRegisterMismatchException(
                         cls_mthd=method,
@@ -165,11 +165,11 @@ class CartesianToggleRegisterValidator(
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    CartesianToggleRegisterCheckerException(
+                    CartesianToggleRegisterValidatorException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=CartesianToggleRegisterCheckerException.MSG,
-                        err_code=CartesianToggleRegisterCheckerException.ERR_CODE,
+                        msg=CartesianToggleRegisterValidatorException.MSG,
+                        err_code=CartesianToggleRegisterValidatorException.ERR_CODE,
                         ex=validation.exception,
                     )
                 )

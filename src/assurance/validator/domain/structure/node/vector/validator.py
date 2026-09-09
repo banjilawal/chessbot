@@ -1,7 +1,7 @@
-# src/assurance/validator/domain/structure/node/checker.py
+# src/assurance/validator/domain/structure/node/validator.py
 
 """
-Module: assurance.validator.domain.node.checker
+Module: assurance.validator.domain.node.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -19,7 +19,7 @@ from transit.carrier import VectorNodeCarrier
 from util import LoggingLevelRouter
 
 
-class VectorNodeIntegrityChecker(NodeValidator):
+class VectorNodeIntegrityValidator(NodeValidator):
     """
     Role
         -  Transaction Worker
@@ -37,13 +37,13 @@ class VectorNodeIntegrityChecker(NodeValidator):
         -  execute(self, candidate: Any) -> ValidationResult
 
     Super Class:
-        IntegrityChecker
+        IntegrityValidator
     """
     
     def __init__(self, bundle: VectorNodeValidationBundle):
         """
         Args:
-            bundle: VectorNodeIntegrityChecker
+            bundle: VectorNodeIntegrityValidator
         """
         super().__init__(bundle=bundle)
     
@@ -68,7 +68,7 @@ class VectorNodeIntegrityChecker(NodeValidator):
         Returns:
             ValidationResult[VectorNode|VectorNodeBlueprint]
         Raises:
-            VectorNodeIntegrityCheckerException
+            VectorNodeIntegrityValidatorException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -80,11 +80,11 @@ class VectorNodeIntegrityChecker(NodeValidator):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorNodeIntegrityCheckerException(
+                VectorNodeIntegrityValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorNodeIntegrityCheckerException.MSG,
-                    err_code=VectorNodeIntegrityCheckerException.ERR_CODE,
+                    msg=VectorNodeIntegrityValidatorException.MSG,
+                    err_code=VectorNodeIntegrityValidatorException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -99,11 +99,11 @@ class VectorNodeIntegrityChecker(NodeValidator):
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorNodeIntegrityCheckerException(
+                VectorNodeIntegrityValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorNodeIntegrityCheckerException.MSG,
-                    err_code=VectorNodeIntegrityCheckerException.ERR_CODE,
+                    msg=VectorNodeIntegrityValidatorException.MSG,
+                    err_code=VectorNodeIntegrityValidatorException.ERR_CODE,
                     ex=validation.exception,
                 )
             )

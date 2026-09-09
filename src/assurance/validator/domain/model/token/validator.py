@@ -1,7 +1,7 @@
-# src/assurance/validator/domain/model/token/checker.py
+# src/assurance/validator/domain/model/token/validator.py
 
 """
-Module: assurance.validator.domain.model.token.checker
+Module: assurance.validator.domain.model.token.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.2
@@ -13,7 +13,7 @@ from typing import Optional, Type, cast
 
 from assurance import ModelValidator, TokenValidationBundle
 from domain.search.context import TokenHomeContext
-from err import FormationNullException, TokenIntegrityCheckerException
+from err import FormationNullException, TokenIntegrityValidatorException
 from fabrication import TokenBlueprint
 from domain.model import HomeSquare, Team, Token
 from artifcat import ValidationResult
@@ -39,7 +39,7 @@ class TokenValidator(ModelValidator[Token]):
         -  execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
-        IntegrityChecker
+        IntegrityValidator
     """
     
     def __init__(self, bundle: Optional[TokenValidationBundle] | None = None):
@@ -71,7 +71,7 @@ class TokenValidator(ModelValidator[Token]):
         Returns:
             ValidationResult
         Raises:
-            TokenCheckerException
+            TokenValidatorException
             TokenDtoCarrierNullException
         """
         method = f"{self.__class__.__name__}.execute"
@@ -84,11 +84,11 @@ class TokenValidator(ModelValidator[Token]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenIntegrityCheckerException(
+                TokenIntegrityValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenIntegrityCheckerException.MSG,
-                    err_code=TokenIntegrityCheckerException.ERR_CODE,
+                    msg=TokenIntegrityValidatorException.MSG,
+                    err_code=TokenIntegrityValidatorException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -105,26 +105,26 @@ class TokenValidator(ModelValidator[Token]):
         if id_test.is_failure:
         # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenIntegrityCheckerException(
+                TokenIntegrityValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenIntegrityCheckerException.MSG,
-                    err_code=TokenIntegrityCheckerException.ERR_CODE,
+                    msg=TokenIntegrityValidatorException.MSG,
+                    err_code=TokenIntegrityValidatorException.ERR_CODE,
                     ex=id_test.exception,
                 )
             )
         # Handle the case that, the team does not pass a validation check.
-        team_test = self.bundle.team_checker.execute(
+        team_test = self.bundle.team_validator.execute(
             candidate=blueprint.team
         )
         if team_test.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenIntegrityCheckerException(
+                TokenIntegrityValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenIntegrityCheckerException.MSG,
-                    err_code=TokenIntegrityCheckerException.ERR_CODE,
+                    msg=TokenIntegrityValidatorException.MSG,
+                    err_code=TokenIntegrityValidatorException.ERR_CODE,
                     ex=team_test.exception,
                 )
             )
@@ -137,11 +137,11 @@ class TokenValidator(ModelValidator[Token]):
         if formation_test.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenIntegrityCheckerException(
+                TokenIntegrityValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenIntegrityCheckerException.MSG,
-                    err_code=TokenIntegrityCheckerException.ERR_CODE,
+                    msg=TokenIntegrityValidatorException.MSG,
+                    err_code=TokenIntegrityValidatorException.ERR_CODE,
                     ex=formation_test.exception,
                 )
             )
@@ -155,11 +155,11 @@ class TokenValidator(ModelValidator[Token]):
         if home_detection.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenIntegrityCheckerException(
+                TokenIntegrityValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenIntegrityCheckerException.MSG,
-                    err_code=TokenIntegrityCheckerException.ERR_CODE,
+                    msg=TokenIntegrityValidatorException.MSG,
+                    err_code=TokenIntegrityValidatorException.ERR_CODE,
                     ex=home_detection.exception,
                 )
             )
@@ -171,11 +171,11 @@ class TokenValidator(ModelValidator[Token]):
         if rank_derivation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenIntegrityCheckerException(
+                TokenIntegrityValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenIntegrityCheckerException.MSG,
-                    err_code=TokenIntegrityCheckerException.ERR_CODE,
+                    msg=TokenIntegrityValidatorException.MSG,
+                    err_code=TokenIntegrityValidatorException.ERR_CODE,
                     ex=rank_derivation.exception,
                 )
             )

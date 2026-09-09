@@ -1,7 +1,7 @@
 # src/assurance/validator/domain/model/square/assurance/validator/domain/model.py
 
 """
-Module: assurance.validator.domain.model.square.checker
+Module: assurance.validator.domain.model.square.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -31,7 +31,7 @@ class SquareValidator(ModelValidator[SquareBlueprint]):
         -  execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
-        IntegrityChecker
+        IntegrityValidator
     """
     
     def __init__(
@@ -64,7 +64,7 @@ class SquareValidator(ModelValidator[SquareBlueprint]):
         Returns:
             ValidationResult
         Raises:
-            SquareCheckerException
+            SquareValidatorException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -76,11 +76,11 @@ class SquareValidator(ModelValidator[SquareBlueprint]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareCheckerException(
+                SquareValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SquareCheckerException.MSG,
-                    err_code=SquareCheckerException.ERR_CODE,
+                    msg=SquareValidatorException.MSG,
+                    err_code=SquareValidatorException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -88,11 +88,11 @@ class SquareValidator(ModelValidator[SquareBlueprint]):
         if carrier.is_empty:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareCheckerException(
+                SquareValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SquareCheckerException.MSG,
-                    err_code=SquareCheckerException.ERR_CODE,
+                    msg=SquareValidatorException.MSG,
+                    err_code=SquareValidatorException.ERR_CODE,
                     ex=SquareCarrierNullException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -112,11 +112,11 @@ class SquareValidator(ModelValidator[SquareBlueprint]):
         if id_test.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareCheckerException(
+                SquareValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SquareCheckerException.MSG,
-                    err_code=SquareCheckerException.ERR_CODE,
+                    msg=SquareValidatorException.MSG,
+                    err_code=SquareValidatorException.ERR_CODE,
                     ex=id_test.exception,
                 )
             )
@@ -126,37 +126,37 @@ class SquareValidator(ModelValidator[SquareBlueprint]):
         if name_test.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareCheckerException(
+                SquareValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SquareCheckerException.MSG,
-                    err_code=SquareCheckerException.ERR_CODE,
+                    msg=SquareValidatorException.MSG,
+                    err_code=SquareValidatorException.ERR_CODE,
                     ex=name_test.exception,
                 )
             )
         # Handle the case that, square.coord is not safe.
-        coord_test = self.toolkit.coord_checker.execute(blueprint.coord)
+        coord_test = self.toolkit.coord_validator.execute(blueprint.coord)
         if coord_test.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareCheckerException(
+                SquareValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SquareCheckerException.MSG,
-                    err_code=SquareCheckerException.ERR_CODE,
+                    msg=SquareValidatorException.MSG,
+                    err_code=SquareValidatorException.ERR_CODE,
                     ex=coord_test.exception,
                 )
             )
         # Handle the case that, square.board does not pass a validation check.
-        board_test = self.toolkit.board_checker.execute(blueprint.board)
+        board_test = self.toolkit.board_validator.execute(blueprint.board)
         if board_test.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareCheckerException(
+                SquareValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SquareCheckerException.MSG,
-                    err_code=SquareCheckerException.ERR_CODE,
+                    msg=SquareValidatorException.MSG,
+                    err_code=SquareValidatorException.ERR_CODE,
                     ex=board_test.exception,
                 )
             )
@@ -171,11 +171,11 @@ class SquareValidator(ModelValidator[SquareBlueprint]):
             if formation_test.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    SquareCheckerException(
+                    SquareValidatorException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=SquareCheckerException.MSG,
-                        err_code=SquareCheckerException.ERR_CODE,
+                        msg=SquareValidatorException.MSG,
+                        err_code=SquareValidatorException.ERR_CODE,
                         ex=formation_test.exception,
                     )
                 )

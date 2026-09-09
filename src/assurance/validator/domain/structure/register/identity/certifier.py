@@ -38,7 +38,7 @@ class IdentityRegisterValidator(Validator[IdentityRegister]):
         -  execute(candidate: Any,) -> ValidationResult
 
     Super Class:
-        IntegrityChecker
+        IntegrityValidator
     """
     def __init__(
             self, 
@@ -67,7 +67,7 @@ class IdentityRegisterValidator(Validator[IdentityRegister]):
         Returns:
             ValidationResult[VectorRegister]
         Raises:
-            IdentityRegisterCheckerException
+            IdentityRegisterValidatorException
             IdentityRegisterMismatchException
         """
         method = f"{self.__class__.__name__}.execute"
@@ -81,11 +81,11 @@ class IdentityRegisterValidator(Validator[IdentityRegister]):
         if validator_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                IdentityRegisterCheckerException(
+                IdentityRegisterValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=IdentityRegisterCheckerException.MSG,
-                    err_code=IdentityRegisterCheckerException.ERR_CODE,
+                    msg=IdentityRegisterValidatorException.MSG,
+                    err_code=IdentityRegisterValidatorException.ERR_CODE,
                     ex=validator_priming_result.exception,
                 )
             )
@@ -97,11 +97,11 @@ class IdentityRegisterValidator(Validator[IdentityRegister]):
         if validator_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                IdentityRegisterCheckerException(
+                IdentityRegisterValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=IdentityRegisterCheckerException.MSG,
-                    err_code=IdentityRegisterCheckerException.ERR_CODE,
+                    msg=IdentityRegisterValidatorException.MSG,
+                    err_code=IdentityRegisterValidatorException.ERR_CODE,
                     ex=id_validation_result.exception,
                 )
             )
@@ -110,11 +110,11 @@ class IdentityRegisterValidator(Validator[IdentityRegister]):
         if validator_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                IdentityRegisterCheckerException(
+                IdentityRegisterValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=IdentityRegisterCheckerException.MSG,
-                    err_code=IdentityRegisterCheckerException.ERR_CODE,
+                    msg=IdentityRegisterValidatorException.MSG,
+                    err_code=IdentityRegisterValidatorException.ERR_CODE,
                     ex=name_validation_result.exception,
                 )
             )

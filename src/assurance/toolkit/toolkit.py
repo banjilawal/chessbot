@@ -1,0 +1,55 @@
+# src/assurance/toolkit/toolkit.py
+
+"""
+Module: assurance.toolkit.toolkit
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from abc import ABC
+from dataclasses import dataclass
+from typing import Any, Dict, Generic, TypeVar
+
+from assurance import PrimingValidator
+from domain import DomainDataObject, NullExceptionRoster, DomainObjectTypeUnions
+from microservice import IdentityService
+
+T = TypeVar("T", bound="DomainDataObject")
+
+@dataclass
+class ValidationToolkit(ABC, Generic[T]):
+    """
+    Role:
+        - Toolkit
+
+    Responsibilities:
+        1.  Toolkits types, null-exceptions, attribute-validators, and utilities IntegrityChecker
+            needs to run safety checks on a validation candidate.
+
+    Attributes:
+        identity_service: IdentityService
+        primin_validator: PrimingValidator
+        
+        types: DomainObjectUnions[T]
+        nulls: NullExceptionRoster[T]
+        
+        resources: Dict[str, Any]
+
+    Provides:
+
+    Super Class:
+    """
+    types: DomainObjectTypeUnions[T]
+    nulls: NullExceptionRoster[T]
+    resources: Dict[str, Any]
+    
+    @property
+    def identity_service(self) -> IdentityService:
+        return self.resources["identity_service"]
+    
+    @property
+    def priming_validator(self) -> PrimingValidator:
+        return self.resources["priming_validator"]

@@ -1,7 +1,7 @@
-# src/assurance/validator/domain/model/coord/checker.py
+# src/assurance/validator/domain/model/coord/validator.py
 
 """
-Module: assurance.validator.domain.model.coord.checker
+Module: assurance.validator.domain.model.coord.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from err import CoordCheckerException
+from err import CoordValidatorException
 from domain.model import CoordBlueprint
 from artifcat import ValidationResult
 from config.setting import BoardProperty
@@ -36,7 +36,7 @@ class CoordValidator(ModelValidator[Coord]):
             ) -> ValidationResult[Coord]:
 
     Super Class:
-        IntegrityChecker
+        IntegrityValidator
     """
     
     @classmethod
@@ -61,7 +61,7 @@ class CoordValidator(ModelValidator[Coord]):
         Returns:
             ValidationResult[Coord]
         Raises:
-            CoordCheckerException
+            CoordValidatorException
         """
         method = f"{cls.__name__}.validate"
         
@@ -69,21 +69,21 @@ class CoordValidator(ModelValidator[Coord]):
         if toolkit is None:
             toolkit = CoordBlueprintToolkit()
         
-        # Handle the case that, the checker is not primed.
+        # Handle the case that, the validator is not primed.
         priming_result = toolkit.blueprint_priming_validator.execute(
             candidate=candidate,
             blueprint_model=toolkit.blueprint_model_type,
             blueprint_null_exception=toolkit.null_blueprint_exception,
-            checker_bootstrapper=toolkit.coord_toolkit.priming_validator
+            validator_bootstrapper=toolkit.coord_toolkit.priming_validator
         )
         if priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CoordCheckerException(
+                CoordValidatorException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=CoordCheckerException.MSG,
-                    err_code=CoordCheckerException.ERR_CODE,
+                    msg=CoordValidatorException.MSG,
+                    err_code=CoordValidatorException.ERR_CODE,
                     ex=priming_result.exception
                 )
             )
@@ -92,7 +92,7 @@ class CoordValidator(ModelValidator[Coord]):
         
         # Certification whichever attribute is enabled.
         for attribute in [blueprint.row, blueprint.column]:
-            validation_result = toolkit.coord_toolkit.number_checker.execute(
+            validation_result = toolkit.coord_toolkit.number_validator.execute(
                 candidate=attribute,
                 ceiling=BoardProperty.MAX_COLUMN_INDEX.value,
                 floor=0,
@@ -100,11 +100,11 @@ class CoordValidator(ModelValidator[Coord]):
             if validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    CoordCheckerException(
+                    CoordValidatorException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=CoordCheckerException.MSG,
-                        err_code=CoordCheckerException.ERR_CODE,
+                        msg=CoordValidatorException.MSG,
+                        err_code=CoordValidatorException.ERR_CODE,
                         ex=validation_result.exception
                     )
                 )

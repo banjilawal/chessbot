@@ -13,7 +13,7 @@ from typing import List, cast
 
 from domain.metadata.blueprint import VectorRegisterBlueprint
 from carrier import VectorRegisterCarrier
-from err import RegisterEmptyException, RegisterSetSizeException, VectorRegisterRootCheckerException
+from err import RegisterEmptyException, RegisterSetSizeException, VectorRegisterRootValidatorException
 from domain.model import Vector
 from domain.structure.register import VectorRegister
 from artifcat import ValidationResult
@@ -39,7 +39,7 @@ class VectorRegisterValidator(Validator[VectorRegister]):
         -  execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
-        IntegrityChecker
+        IntegrityValidator
     """
     
     def __init__(self, bundle: VectorRegisterToolkit | None = VectorRegisterToolkit()):
@@ -71,7 +71,7 @@ class VectorRegisterValidator(Validator[VectorRegister]):
         Returns:
             ValidationResult
         Raises:
-            VectorRegisterCheckerException
+            VectorRegisterValidatorException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -83,11 +83,11 @@ class VectorRegisterValidator(Validator[VectorRegister]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorRegisterRootCheckerException(
+                VectorRegisterRootValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorRegisterRootCheckerException.MSG,
-                    err_code=VectorRegisterRootCheckerException.ERR_CODE,
+                    msg=VectorRegisterRootValidatorException.MSG,
+                    err_code=VectorRegisterRootValidatorException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -100,11 +100,11 @@ class VectorRegisterValidator(Validator[VectorRegister]):
         if blueprint.is_blank:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorRegisterRootCheckerException(
+                VectorRegisterRootValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorRegisterRootCheckerException.MSG,
-                    err_code=VectorRegisterRootCheckerException.ERR_CODE,
+                    msg=VectorRegisterRootValidatorException.MSG,
+                    err_code=VectorRegisterRootValidatorException.ERR_CODE,
                     ex=RegisterEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -117,11 +117,11 @@ class VectorRegisterValidator(Validator[VectorRegister]):
         if blueprint.is_half_full:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorRegisterRootCheckerException(
+                VectorRegisterRootValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorRegisterRootCheckerException.MSG,
-                    err_code=VectorRegisterRootCheckerException.ERR_CODE,
+                    msg=VectorRegisterRootValidatorException.MSG,
+                    err_code=VectorRegisterRootValidatorException.ERR_CODE,
                     ex=RegisterSetSizeException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -137,11 +137,11 @@ class VectorRegisterValidator(Validator[VectorRegister]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    VectorRegisterRootCheckerException(
+                    VectorRegisterRootValidatorException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=VectorRegisterRootCheckerException.MSG,
-                        err_code=VectorRegisterRootCheckerException.ERR_CODE,
+                        msg=VectorRegisterRootValidatorException.MSG,
+                        err_code=VectorRegisterRootValidatorException.ERR_CODE,
                         ex=validation.exception
                     )
                 )

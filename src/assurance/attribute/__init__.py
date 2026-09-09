@@ -10,7 +10,7 @@ version: 0.0.2
 # =========== ASSURANCE.ATTRRIBUTE PACKAGE ===========#
 
 # Packages
-
+from .model import *
 
 # Module
-from .table import HelperTable
+from .table import AttributeHelperTable

@@ -1,7 +1,7 @@
-# src/assurance/validator/domain/model/game/checker.py
+# src/assurance/validator/domain/model/game/validator.py
 
 """
-Module: assurance.validator.domain.model.game.checker
+Module: assurance.validator.domain.model.game.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -19,10 +19,10 @@ class GameValidator(ModelValidator[Game]):
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
-        *   Checker
+        *   Validator
 
     # PROVIDES:
-        * GameChecker
+        * GameValidator
 
     
     # INHERITED ATTRIBUTES:
@@ -40,7 +40,7 @@ class GameValidator(ModelValidator[Game]):
         """
         # ACTION:
             1.  Confirm that only one in the (id, owner) tuple is not null.
-            2.  Certify the not-null attribute is safe using the appropriate entity_service and checker.
+            2.  Certify the not-null attribute is safe using the appropriate entity_service and validator.
             3.  If any check fais return a BuildResult containing the exception raised by the failure.
             4.  On success send the verified GameBlueprint in a ValidationResult.
 
@@ -65,7 +65,7 @@ class GameValidator(ModelValidator[Game]):
             *   ArenaGameBlueprintFlagsException
             *   InvalidGameBlueprintException
         """
-        method = "GameChecker.execute"
+        method = "GameValidator.execute"
         try:
             # Handle the case that, the rank does not exist.
             if candidate is None:
@@ -109,7 +109,7 @@ class GameValidator(ModelValidator[Game]):
             if blueprint.id is not None:
                 validation = identity_service.validate_id(candidate=blueprint.id)
                 if validation.is_failure:
-                    return ValidationResult.failure(modelIntegrityChecker.exception)
+                    return ValidationResult.failure(modelIntegrityValidator.exception)
                 # On validation success return the id_game_blueprint in a ValidationResult.
                 return ValidationResult.success(blueprint)
             
@@ -117,7 +117,7 @@ class GameValidator(ModelValidator[Game]):
             if blueprint.agent is not None:
                 validation = agent_service.execute.search_service(candidate=blueprint.agent)
                 if validation.is_failure:
-                    return ValidationResult.failure(modelIntegrityChecker.exception)
+                    return ValidationResult.failure(modelIntegrityValidator.exception)
                 # On validation success return the agent_game_blueprint in a ValidationResult.
                 return ValidationResult.success(blueprint)
             

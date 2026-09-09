@@ -17,6 +17,7 @@ from .edge import *
 from .game import *
 from .maneuver import *
 from .node import *
+from .path import *
 from .player import *
 from .rank import *
 from .square import *
@@ -25,4 +26,4 @@ from .token import *
 from .vector import *
 
 # Module
-from .checker import ModelValidator
+from .validator import ModelValidator

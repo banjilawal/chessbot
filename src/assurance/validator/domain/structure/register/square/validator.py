@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from err import SquareRegisterRootCheckerException
+from err import SquareRegisterRootValidatorException
 from domain.structure.register import SquareRegister
 from artifcat import ValidationResult
 from assurance.validator import Validator
@@ -37,7 +37,7 @@ class SquareRegisterValidator(Validator[SquareRegister]):
         -  execute(candidate: Any,) -> ValidationResult
 
     Super Class:
-        IntegrityChecker
+        IntegrityValidator
     """
     def __init__(
             self, 
@@ -66,7 +66,7 @@ class SquareRegisterValidator(Validator[SquareRegister]):
         Returns:
             ValidationResult[VectorRegister]
         Raises:
-            SquareRegisterRootCheckerException
+            SquareRegisterRootValidatorException
             SquareRegisterMismatchException
         """
         method = f"{self.__class__.__name__}.execute"
@@ -80,11 +80,11 @@ class SquareRegisterValidator(Validator[SquareRegister]):
         if validator_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareRegisterRootCheckerException(
+                SquareRegisterRootValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SquareRegisterRootCheckerException.MSG,
-                    err_code=SquareRegisterRootCheckerException.ERR_CODE,
+                    msg=SquareRegisterRootValidatorException.MSG,
+                    err_code=SquareRegisterRootValidatorException.ERR_CODE,
                     ex=validator_priming_result.exception,
                 )
             )
@@ -97,11 +97,11 @@ class SquareRegisterValidator(Validator[SquareRegister]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    SquareRegisterRootCheckerException(
+                    SquareRegisterRootValidatorException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=SquareRegisterRootCheckerException.MSG,
-                        err_code=SquareRegisterRootCheckerException.ERR_CODE,
+                        msg=SquareRegisterRootValidatorException.MSG,
+                        err_code=SquareRegisterRootValidatorException.ERR_CODE,
                         ex=validation.exception,
                     )
                 )

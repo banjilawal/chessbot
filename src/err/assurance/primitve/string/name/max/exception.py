@@ -1,7 +1,7 @@
 # src/err/assurance/primitive/string/name/max/exception.py
 
 """
-Module: errassurance.primitive.string.name.max.exception
+Module: err.assurance.primitive.string.name.max.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

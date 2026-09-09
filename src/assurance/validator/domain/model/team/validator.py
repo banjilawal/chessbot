@@ -1,7 +1,7 @@
-# src/assurance/validator/domain/model/team/checker.py
+# src/assurance/validator/domain/model/team/validator.py
 
 """
-Module: assurance.validator.domain.model.team.checker
+Module: assurance.validator.domain.model.team.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -30,7 +30,7 @@ class TeamValidator(ModelValidator[Team]):
         -  execute(candidate) -> ValidationResult
 
     Super Class:
-        IntegrityChecker
+        IntegrityValidator
     """
     
     def __init__(self, bundle: TeamToolkit | None = TeamToolkit()):
@@ -56,11 +56,11 @@ class TeamValidator(ModelValidator[Team]):
         Returns:
             ValidationResult
         Raises:
-            TeamCheckerException
+            TeamValidatorException
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the checker is not primed.
+        # Handle the case that, the validator is not primed.
         priming_result = self.toolkit.priming_validator.execute(
             candidate=candidate,
             blueprint_model=self.toolkit.blueprint_model,
@@ -69,11 +69,11 @@ class TeamValidator(ModelValidator[Team]):
         if priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamCheckerException(
+                TeamValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamCheckerException.MSG,
-                    err_code=TeamCheckerException.ERR_CODE,
+                    msg=TeamValidatorException.MSG,
+                    err_code=TeamValidatorException.ERR_CODE,
                     ex=priming_result.exception
                 )
             )
@@ -81,43 +81,43 @@ class TeamValidator(ModelValidator[Team]):
         blueprint = cast(TeamBlueprint, candidate)
         
         # Handle the case that, the blueprint's id does not pass.
-        id_validation_result = self.toolkit.blueprint_id_checker.execute(
+        id_validation_result = self.toolkit.blueprint_id_validator.execute(
             candidate=blueprint.id,
         )
         if id_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamCheckerException(
+                TeamValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamCheckerException.MSG,
-                    err_code=TeamCheckerException.ERR_CODE,
+                    msg=TeamValidatorException.MSG,
+                    err_code=TeamValidatorException.ERR_CODE,
                     ex=id_validation_result.exception
                 )
             )
         # Handle the case that, the owner gets flagged.
-        owner_validation_result = self.toolkit.player_checker.execute(blueprint.owner)
+        owner_validation_result = self.toolkit.player_validator.execute(blueprint.owner)
         if owner_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamCheckerException(
+                TeamValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamCheckerException.MSG,
-                    err_code=TeamCheckerException.ERR_CODE,
+                    msg=TeamValidatorException.MSG,
+                    err_code=TeamValidatorException.ERR_CODE,
                     ex=owner_validation_result.exception
                 )
             )
         # Handle the case that, the board is not safe.
-        board_validation_result = self.toolkit.board_checker.excute(blueprint.board)
+        board_validation_result = self.toolkit.board_validator.excute(blueprint.board)
         if board_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamCheckerException(
+                TeamValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamCheckerException.MSG,
-                    err_code=TeamCheckerException.ERR_CODE,
+                    msg=TeamValidatorException.MSG,
+                    err_code=TeamValidatorException.ERR_CODE,
                     ex=owner_validation_result.exception
                 )
             )
@@ -130,11 +130,11 @@ class TeamValidator(ModelValidator[Team]):
         if schema_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamCheckerException(
+                TeamValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamCheckerException.MSG,
-                    err_code=TeamCheckerException.ERR_CODE,
+                    msg=TeamValidatorException.MSG,
+                    err_code=TeamValidatorException.ERR_CODE,
                     ex=owner_validation_result.exception
                 )
             )

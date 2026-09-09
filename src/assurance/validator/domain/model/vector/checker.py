@@ -1,7 +1,7 @@
-# src/assurance/validator/domain/model/vector/checker.py
+# src/assurance/validator/domain/model/vector/validator.py
 
 """
-Module: assurance.validator.domain.model.vector.checker
+Module: assurance.validator.domain.model.vector.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from typing import Any, Optional, cast
 
 from assurance import ModelValidator, VectorValidationBundle
 from domain import Vector, VectorBlueprint, VectorCarrier
-from err import VectorIntegrityCheckerException
+from err import VectorIntegrityValidatorException
 from artifcat import ValidationResult
 from util import LoggingLevelRouter
 
@@ -33,7 +33,7 @@ class VectorIntegrityValidator(ModelValidator[Vector]):
         -  execute(self, candidate: Any) -> ValidationResult[Vector|VectorBlueprint]:
 
     Super Class:
-        IntegrityChecker
+        IntegrityValidator
     """
     
     def __init__(self, bundle: Optional[VectorValidationBundle] | None = None):
@@ -64,7 +64,7 @@ class VectorIntegrityValidator(ModelValidator[Vector]):
         Returns:
             ValidationResult[Vector|VectorBlueprint]
         Raises:
-            VectorIntegrityCheckerException
+            VectorIntegrityValidatorException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -76,11 +76,11 @@ class VectorIntegrityValidator(ModelValidator[Vector]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorIntegrityCheckerException(
+                VectorIntegrityValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorIntegrityCheckerException.MSG,
-                    err_code=VectorIntegrityCheckerException.ERR_CODE,
+                    msg=VectorIntegrityValidatorException.MSG,
+                    err_code=VectorIntegrityValidatorException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -96,11 +96,11 @@ class VectorIntegrityValidator(ModelValidator[Vector]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    VectorIntegrityCheckerException(
+                    VectorIntegrityValidatorException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=VectorIntegrityCheckerException.MSG,
-                        err_code=VectorIntegrityCheckerException.ERR_CODE,
+                        msg=VectorIntegrityValidatorException.MSG,
+                        err_code=VectorIntegrityValidatorException.ERR_CODE,
                         ex=validation.exception,
                     )
                 )

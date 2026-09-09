@@ -1,7 +1,7 @@
-# src/assurance/validator/domain/model/board/checker.py
+# src/assurance/validator/domain/model/board/validator.py
 
 """
-Module: assurance.validator.domain.model.board.checker
+Module: assurance.validator.domain.model.board.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -19,7 +19,7 @@ class BoardValidator(ModelValidator[Board]):
     2.  If verification fails indicate the reason in an exception returned to the caller.
 
     Super Class:
-        *   Checker
+        *   Validator
 
     Provides:
 
@@ -58,16 +58,16 @@ class BoardValidator(ModelValidator[Board]):
             *   ZeroBoardBlueprintFlagsException
             *   ArenaBoardBlueprintFlagsException
             *   BoardBlueprintValidationRouteException
-            *   BoardCheckerException
+            *   BoardValidatorException
         """
-        method = "BoardChecker.execute"
+        method = "BoardValidator.execute"
         
         # Handle the nonexistence case.
         if candidate is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                BoardCheckerException(
-                    msg=f"{method}: {BoardCheckerException.MSG}",
+                BoardValidatorException(
+                    msg=f"{method}: {BoardValidatorException.MSG}",
                     ex=NullBoardBlueprintException(f"{method}: {NullBoardBlueprintException.MSG}")
                 )
             )
@@ -75,8 +75,8 @@ class BoardValidator(ModelValidator[Board]):
         if not isinstance(candidate, BoardBlueprint):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                BoardCheckerException(
-                    msg=f"{method}: {BoardCheckerException.MSG}",
+                BoardValidatorException(
+                    msg=f"{method}: {BoardValidatorException.MSG}",
                     ex=TypeError(f"{method}: Was expecting a BoardBlueprint, got {type(candidate).__name__} instead.")
                 )
             )
@@ -88,8 +88,8 @@ class BoardValidator(ModelValidator[Board]):
         if flag_count == 0:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                BoardCheckerException(
-                    msg=f"{method}: {BoardCheckerException.MSG}",
+                BoardValidatorException(
+                    msg=f"{method}: {BoardValidatorException.MSG}",
                     ex=ZeroBoardBlueprintFlagsException(f"{method}: {ZeroBoardBlueprintFlagsException.MSG}")
                 )
             )
@@ -97,8 +97,8 @@ class BoardValidator(ModelValidator[Board]):
         if flag_count > 1:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                BoardCheckerException(
-                    msg=f"{method}: {BoardCheckerException.MSG}",
+                BoardValidatorException(
+                    msg=f"{method}: {BoardValidatorException.MSG}",
                     ex=ArenaBoardBlueprintFlagsException(
                         f"{method}: {ArenaBoardBlueprintFlagsException.MSG}"
                     )
@@ -112,9 +112,9 @@ class BoardValidator(ModelValidator[Board]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    BoardCheckerException(
-                        msg=f"{method}: {BoardCheckerException.MSG}",
-                        ex=checker.exception
+                    BoardValidatorException(
+                        msg=f"{method}: {BoardValidatorException.MSG}",
+                        ex=validator.exception
                     )
                 )
             # On certification success return the id_BoardBlueprint in the ValidationResult.
@@ -126,9 +126,9 @@ class BoardValidator(ModelValidator[Board]):
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    BoardCheckerException(
-                        msg=f"{method}: {BoardCheckerException.MSG}",
-                        ex=checker.exception
+                    BoardValidatorException(
+                        msg=f"{method}: {BoardValidatorException.MSG}",
+                        ex=validator.exception
                     )
                 )
             # On certification success return the arena_BoardBlueprint in the ValidationResult.
@@ -136,8 +136,8 @@ class BoardValidator(ModelValidator[Board]):
         
         # Return the exception chain if there is no validation route for the blueprint.
         return ValidationResult.failure(
-            BoardCheckerException(
-                msg=f"{method}: {BoardCheckerException.MSG}",
+            BoardValidatorException(
+                msg=f"{method}: {BoardValidatorException.MSG}",
                 ex=BoardBlueprintValidationRouteException(
                     f"{method}: {BoardBlueprintValidationRouteException.MSG}"
                 )

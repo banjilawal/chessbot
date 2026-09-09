@@ -1,7 +1,7 @@
 # src/err/assurance/primitive/string/name/min/exception.py
 
 """
-Module: errassurance.primitive.string.name.min.exception
+Module: err.assurance.primitive.string.name.min.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

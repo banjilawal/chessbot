@@ -1,7 +1,7 @@
 # src/err/assurance/primitive/string/exception.py
 
 """
-Module: errassurance.primitive.string.exception
+Module: err.assurance.primitive.string.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -37,7 +37,7 @@ class StringException(AssuranceException):
         cls_mthd: Optional[str]
         err_code: Optional[str]
         mthd_rslt_type: Optional[MethodResultType]
-        
+            
     Provides:
 
     Super Class:
