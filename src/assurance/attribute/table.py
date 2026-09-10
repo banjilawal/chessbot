@@ -14,6 +14,7 @@ from abc import ABC
 from typing import Generic, Optional, TypeVar
 
 from assurance import NumberValidator, PrimingValidator
+from authorization import BlueprintIdExtractor
 from domain import Model
 from microservice import IdentityService
 
@@ -40,22 +41,26 @@ class AttributeHelperTable(ABC, Generic[T]):
     _identity_service: IdentityService
     _number_validator: NumberValidator
     _priming_validator: PrimingValidator
+    _blueprint_id_extractor: BlueprintIdExtractor
     
     def __init__(
             self,
             identity_service: Optional[IdentityService] | None = None,
             number_validator: Optional[NumberValidator] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
+            blueprint_id_extractor: Optional[BlueprintIdExtractor] | None = None,
     ):
         """
         Args:
             identity_service: Optional[IdentityService]
             number_validator: Optional[NumberValidator]
             priming_validator: Optional[PrimingValidator]
+            blueprint_id_extractor: Optional[BlueprintIdExtractor]
         """
         self._identity_service = identity_service or IdentityService()
         self._number_validator = number_validator or NumberValidator()
         self._priming_validator = priming_validator or PrimingValidator()
+        self._blueprint_id_extractor = blueprint_id_extractor or BlueprintIdExtractor()
     
     @property
     def identity_service(self) -> IdentityService:
@@ -68,3 +73,7 @@ class AttributeHelperTable(ABC, Generic[T]):
     @property
     def priming_validator(self) -> PrimingValidator:
         return self._priming_validator
+    
+    @property
+    def blueprint_id_extractor(self) -> BlueprintIdExtractor:
+        return self._blueprint_id_extractor

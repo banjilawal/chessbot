@@ -31,22 +31,18 @@ class IdentityService:
         1.  Bundles id, name verification, 
 
     Attributes:
-        number_validator: NumberValidator
         name_validator: NameValidator
-        blueprint_id_extractor: BlueprintIdExtractor
-        identity_register_certifier: IdentityRegisterCertifier
+        number_validator: NumberValidator
 
     Provides:
         - next_id(cls, class_name: str) -> int
         - validate_id(candidate: Any) -> ValidationResult
         - validate_name(candidate: Any) -> ValidationResult:
-        - validate_blueprint_id(blueprint: Blueprint, model_name: str)-> ValidationResult
 
     Super Class:
     """
     _name_validator: NameValidator
     _number_validator: NumberValidator
-    _blueprint_id_extractor: BlueprintIdExtractor
     
     def __init__(
             self,
@@ -63,7 +59,6 @@ class IdentityService:
         self._name_validator=name_validator or NameValidator()
         self._number_validator = number_validator or NumberValidator()
         self._blueprint_id_extractor = blueprint_id_extractor or BlueprintIdExtractor()
-        self._identity_register_certifier = identity_register_certifier
     
     @LoggingLevelRouter.monitor
     def next_id(self, class_name: str) -> int:

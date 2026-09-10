@@ -16,7 +16,7 @@ from assurance import (
     AttributeHelperTable, BoardValidator, RankValidator, SquareValidator, TeamValidator,
     PrimingValidator
 )
-from authorization import HomeSquareExtractor
+from authorization import BlueprintIdExtractor, HomeSquareExtractor
 from domain import Token
 from microservice import IdentityService
 
@@ -57,6 +57,7 @@ class TokenHelperTable(AttributeHelperTable[Token]):
             identity_service: Optional[IdentityService] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
             home_extractor: Optional[HomeSquareExtractor] | None = None,
+            blueprint_id_extractor: Optional[BlueprintIdExtractor] | None = None,
     ):
         """
         Args:
@@ -67,10 +68,12 @@ class TokenHelperTable(AttributeHelperTable[Token]):
             identity_service: Optional[IdentityService]
             priming_validator: Optional[PrimingValidator]
             home_extractor: Optional[HomeSquareExtractor]
+            blueprint_id_extractor: Optional[BlueprintIdExtractor]
         """
         super().__init__(
             identity_service=identity_service,
             priming_validator=priming_validator,
+            blueprint_id_extractor=blueprint_id_extractor,
         )
         self._team_validator = team_validator or TeamValidator()
         self._rank_validator = rank_validator or RankValidator()

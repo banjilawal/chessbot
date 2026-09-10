@@ -5,76 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/model/token/table.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/attribute/model/token/table.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/search/chain/vector/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/search/chain/vector/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/search/stack/coord/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/search/stack/coord/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/search/stack/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/search/stack/token/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/domain/structure/register/toggle/vector.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/domain/structure/register/toggle/vector.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/coord/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/coord/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/game/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/game/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/maneuver/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/maneuver/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/node/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/node/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/path/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/path/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/player/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/player/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/square/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/square/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/team/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/team/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/space/registry/space/axis/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/registry/space/axis/certifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/space/registry/space/quadrant/certifier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/space/registry/space/quadrant/certifier.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/adjudicator/extractor/home/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/adjudicator/extractor/home/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/adjudicator/extractor/home/extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/adjudicator/extractor/home/extractor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/authorization/adjudicator/extractor/id/extractor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/adjudicator/extractor/id/extractor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/operation/collection/deletion/stack/token/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/operation/collection/deletion/stack/token/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/operation/collection/insertion/stack/token/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/operation/collection/insertion/stack/token/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/operation/collection/search/schema/key/lookup/lookup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/operation/collection/search/schema/key/lookup/lookup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/operation/collection/search/schema/resource/context/service/operation/validation/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/operation/collection/search/schema/resource/context/service/operation/validation/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/operation/microservice/attack/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/operation/microservice/attack/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/operation/microservice/maneuver/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/operation/microservice/maneuver/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/operation/microservice/square/departure/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/operation/microservice/square/departure/worker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/operation/microservice/square/entry/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/operation/microservice/square/entry/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bootstrapper/detector/token/bootstrapper/bootstrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/bootstrapper/detector/token/bootstrapper/bootstrapper.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/collection/stack/arena/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/arena/stack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/collection/stack/result/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/collection/stack/result/stack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/exchange/request/operation/collection/search/arena/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/exchange/request/operation/collection/search/arena/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/exchange/request/operation/collection/search/persona/lookup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/exchange/request/operation/collection/search/persona/lookup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/exchange/request/operation/collection/search/persona/persona/lookup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/exchange/request/operation/collection/search/persona/persona/lookup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/exchange/request/operation/microservice/attack/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/exchange/request/operation/microservice/attack/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/exchange/request/operation/microservice/maneuver/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/exchange/request/operation/microservice/maneuver/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/exchange/request/operation/microservice/square/departure/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/exchange/request/operation/microservice/square/departure/worker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/exchange/request/operation/microservice/square/entry/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/exchange/request/operation/microservice/square/entry/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/checker/id/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/checker/id/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/checker/id/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/checker/id/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/microservice/coord/operation/arithmetic/multiplication/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/coord/operation/arithmetic/multiplication/transaction.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/formation/lookup/lookup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/formation/lookup/lookup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/schema/key/lookup/lookup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/schema/key/lookup/lookup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/search/snapshot/snapshot/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/search/snapshot/snapshot/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/analyzer/bootstrapper/token/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/analyzer/bootstrapper/token/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/context/coord/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/context/coord/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/context/edge/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/context/edge/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/context/game/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/context/game/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/context/hostage/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/context/hostage/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/context/node/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/context/node/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/context/player/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/context/player/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/context/schema/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/context/schema/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/context/square/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/context/square/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/context/team/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/context/team/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/builder/context/token/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/builder/context/token/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/toolkit/validator/token/manifest.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/toolkit/validator/token/manifest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/surface/topology/generator/offset/topology.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/generator/offset/topology.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/surface/topology/generator/topology.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/surface/topology/generator/topology.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/context/formation/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/context/formation/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/context/hostage/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/context/hostage/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/context/player/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/context/player/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/context/schema/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/context/schema/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/context/snapshot/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/context/snapshot/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/context/square/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/context/square/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/model/arena/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/model/arena/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/model/board/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/model/board/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/model/coord/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/model/coord/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/model/player/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/model/player/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/model/scalar/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/model/scalar/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/model/snapshot/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/model/snapshot/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/model/square/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/model/square/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/builder/registry/space/axis/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/builder/registry/space/axis/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/microservice/identity/microservice.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/microservice/identity/microservice.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,60 +49,60 @@
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
       <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0000001458093684" />
-      <entry key="S5" value="1.0039014165621047" />
-      <entry key="S10" value="1.1431154902324323" />
-      <entry key="S30" value="3.471779549631736" />
-      <entry key="S60" value="8.205542890745585" />
-      <entry key="M2" value="17.18081615020688" />
-      <entry key="M5" value="36.811768897399524" />
-      <entry key="M10" value="56.10376050985879" />
-      <entry key="M15" value="72.28286798959813" />
-      <entry key="M30" value="122.09601444869674" />
-      <entry key="H1" value="203.08641654099478" />
-      <entry key="H2" value="367.1248061558945" />
-      <entry key="H4" value="767.3567677440677" />
-      <entry key="D1" value="3430.881150331252" />
-      <entry key="W1" value="18088.109568186508" />
+      <entry key="MS500" value="1.00000395477114" />
+      <entry key="S2" value="1.04748971019349" />
+      <entry key="S5" value="1.3876623477231342" />
+      <entry key="S10" value="1.9548048424863733" />
+      <entry key="S30" value="3.7802493738588776" />
+      <entry key="S60" value="7.564639575956255" />
+      <entry key="M2" value="21.153054434436026" />
+      <entry key="M5" value="58.88672560483093" />
+      <entry key="M10" value="99.52028681948389" />
+      <entry key="M15" value="126.23397666427175" />
+      <entry key="M30" value="178.55489926820357" />
+      <entry key="H1" value="260.3556279348851" />
+      <entry key="H2" value="420.9515045926788" />
+      <entry key="H4" value="800.3455956660961" />
+      <entry key="D1" value="3503.865479529145" />
+      <entry key="W1" value="18199.503061061536" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="1.529172252063171E-73" />
-      <entry key="S2" value="6.253496158174052E-19" />
-      <entry key="S5" value="5.334915884284758E-8" />
-      <entry key="S10" value="2.818883639493425E-4" />
-      <entry key="S30" value="0.14059083402439815" />
-      <entry key="S60" value="0.8152467817854139" />
-      <entry key="M2" value="2.4044786126921682" />
-      <entry key="M5" value="5.980360413448724" />
-      <entry key="M10" value="8.996886050546648" />
-      <entry key="M15" value="10.785924261355698" />
-      <entry key="M30" value="14.296170072115254" />
-      <entry key="H1" value="18.843492771072654" />
-      <entry key="H2" value="29.791507856867593" />
-      <entry key="H4" value="57.840814755295945" />
-      <entry key="D1" value="250.50117034966877" />
-      <entry key="W1" value="858.245439817903" />
+      <entry key="MS100" value="6.101997955229186E-10" />
+      <entry key="MS500" value="0.015152329427536108" />
+      <entry key="S2" value="0.5141238290581253" />
+      <entry key="S5" value="1.1743484832543434" />
+      <entry key="S10" value="1.7774120301123495" />
+      <entry key="S30" value="3.125209909615316" />
+      <entry key="S60" value="3.8799378776743043" />
+      <entry key="M2" value="4.390867130573184" />
+      <entry key="M5" value="5.193432716676604" />
+      <entry key="M10" value="7.278887862570681" />
+      <entry key="M15" value="9.425571846990128" />
+      <entry key="M30" value="14.701157178493155" />
+      <entry key="H1" value="22.479615525958767" />
+      <entry key="H2" value="35.37552723127272" />
+      <entry key="H4" value="63.20573003269132" />
+      <entry key="D1" value="259.6560231207463" />
+      <entry key="W1" value="873.4084717249326" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.5540979458128975E-138" />
-      <entry key="MS500" value="2.874552819655329E-28" />
-      <entry key="S2" value="2.2263464773682485E-7" />
-      <entry key="S5" value="0.004967853350748438" />
-      <entry key="S10" value="0.17161749251992897" />
-      <entry key="S30" value="2.8444248514330512" />
-      <entry key="S60" value="8.400409619059051" />
-      <entry key="M2" value="19.101088311954133" />
-      <entry key="M5" value="42.47379971407393" />
-      <entry key="M10" value="64.89101619629938" />
-      <entry key="M15" value="82.90702327095903" />
-      <entry key="M30" value="136.28329159346237" />
-      <entry key="H1" value="221.8538938511451" />
-      <entry key="H2" value="396.8583181860319" />
-      <entry key="H4" value="825.1492574946533" />
-      <entry key="D1" value="3681.3580072566474" />
-      <entry key="W1" value="18946.342707772616" />
+      <entry key="MS100" value="6.6417741710906165E-6" />
+      <entry key="MS500" value="0.09558642283185612" />
+      <entry key="S2" value="0.8931930541310658" />
+      <entry key="S5" value="2.032934901592945" />
+      <entry key="S10" value="3.294244925500348" />
+      <entry key="S30" value="6.603866789436761" />
+      <entry key="S60" value="11.24549100481822" />
+      <entry key="M2" value="25.423656206938002" />
+      <entry key="M5" value="64.00257938110333" />
+      <entry key="M10" value="106.72427289507851" />
+      <entry key="M15" value="135.58651017432882" />
+      <entry key="M30" value="193.18931078757532" />
+      <entry key="H1" value="282.77512407372734" />
+      <entry key="H2" value="456.27376450963794" />
+      <entry key="H4" value="863.5040218406771" />
+      <entry key="D1" value="3763.4963804564854" />
+      <entry key="W1" value="19072.899036266903" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -905,7 +837,7 @@
       <workItem from="1787812398225" duration="195474000" />
       <workItem from="1788709512302" duration="4064000" />
       <workItem from="1788782347688" duration="75617000" />
-      <workItem from="1788969937518" duration="54073000" />
+      <workItem from="1788969937518" duration="56644000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1321,11 +1253,6 @@
           <url>file://$PROJECT_DIR$/src/authorization/adjudicator/stack/search/token/adjudicator.py</url>
           <line>10</line>
           <option name="timeStamp" value="228" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/authorization/adjudicator/extractor/id/extractor.py</url>
-          <line>106</line>
-          <option name="timeStamp" value="229" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/err/microservice/__init__.py</url>

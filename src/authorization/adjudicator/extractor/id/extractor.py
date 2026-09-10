@@ -32,7 +32,8 @@ class BlueprintIdExtractor:
             the Blueprint's class.
 
     Attributes:
-        priming_validator: IdetntiyService
+        identity_service: IdentityService
+        priming_validator: PrimingValidator
         
     Provides:
         - execute(candidate: Any, model_name: str) -> ValidationResult:
@@ -48,6 +49,11 @@ class BlueprintIdExtractor:
             identity_service: Optional[IdentityService] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
     ):
+        """
+        Args:
+            identity_service: Optional[IdentityService],
+            priming_validator: Optional[PrimingValidator]
+        """
         self._identity_service = identity_service or IdentityService()
         self._priming_validator = priming_validator or PrimingValidator()
     
@@ -116,7 +122,7 @@ class BlueprintIdExtractor:
         
         # --- If the candidate_id is null send a new one to the caller. ---#
         if candidate_id is None:
-            id = IdFactory.next_id(class_name=blueprint_owner_name)
+            id = self._identity_service.next_id(blueprint_owner_name)
             return ValidationResult.success(id)
         
         # --- Otherwise, process the existing id. ---#
