@@ -35,7 +35,7 @@ class VectorValidator(ModelValidator[Vector]):
         - def execute(self, candidate: Any) ->ValidationResult[VectorCarrier]:
 
     Super Class:
-        Validator
+        ModelValidator
     """
     
     def __init__(

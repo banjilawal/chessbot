@@ -18,6 +18,7 @@ from .pop import *
 from .push import *
 from .search import *
 from .slot import *
+from .validation import *
 
 # Modules
 from .exception import RequestNullException
