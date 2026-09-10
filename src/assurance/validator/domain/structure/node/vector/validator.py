@@ -74,8 +74,8 @@ class VectorNodeValidator(NodeValidator):
         
         carrier_validation = self.toolkit.priming_validator.execute(
             candidate=candidate,
-            target_model=self.toolkit.types.carrier,
-            model_null_exception=self.toolkit.nulls.carrier,
+            target_model=self.toolkit.types.item,
+            model_null_exception=self.toolkit.nulls.item,
         )
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
@@ -89,7 +89,7 @@ class VectorNodeValidator(NodeValidator):
                 )
             )
         # --- Cast the candidate into VectorNodeCarrier for additional testing ---#
-        carrier = cast(self.toolkit.types.carrier, carrier_validation.payload)
+        carrier = cast(self.toolkit.types.item, carrier_validation.payload)
         
         # --- Cast the candidate into a VectorBlueprint for additional tests. ---#
         blueprint = carrier.extract_blueprint()

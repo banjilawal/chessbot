@@ -1,7 +1,7 @@
-# src/domain/exchange/request/validation/request.py
+# src/domain/exchange/request/validation/model/request.py
 
 """
-Module: domain.exchange.request.validation.request
+Module: domain.exchange.request.validation.model.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,14 +12,13 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from domain import Request
+from domain import Model, ValidationRequest
 from transit import EntityCarrier
 
-T = TypeVar("T")
+T = TypeVar("T", bound="Model")
 
 
-
-class ValidationRequest(Request[T], ABC, Generic[T]):
+class ModelValidationRequest(ValidationRequest[T], ABC, Generic[T]):
     """
      Role:
          - Messaging
@@ -30,25 +29,31 @@ class ValidationRequest(Request[T], ABC, Generic[T]):
 
      Attributes:
          id: int
-         carriert: EntityCarrier[T]
+         carriery: EntityCarrier[T]
 
      Provides:
      
      Super Class:
         Request
      """
+    _item: EntityCarrier[T]
     
-    def __init__(self, id: int):
+    def __init__(self, id: int, item: EntityCarrier[T]):
         """
         Args:
             id: int
+            item: EntityCarrier[T]
         """
         super().__init__(id=id)
-        
+        self._item = item
+    
+    @property
+    def item(self) -> EntityCarrier[T]:
+        return self._item
     
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, ValidationRequest):
+        if isinstance(other, ModelValidationRequest):
             return self.id == other.id
         return False

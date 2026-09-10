@@ -10,7 +10,7 @@ version: 0.0.2
 # =========== DOMAIN.EXCHANGE.REQUEST.VALIDATION PACKAGE ===========#
 
 # Packages
-
+from .model import *
 
 # Modules
 from .request import ValidationRequest

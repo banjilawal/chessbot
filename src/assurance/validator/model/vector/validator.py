@@ -9,12 +9,13 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, Optional, Type, cast
+from typing import Optional, Type, cast
 
 from artifcat import ValidationResult
 from assurance import ModelValidator, VectorValidationToolkit
-from domain import Vector, VectorBlueprint
+from domain import Vector, VectorBlueprint, VectorValidationRequest
 from err import VectorValidatorException
+from err.null.domain.exchange.request import RequestNullException
 from transit import VectorCarrier
 from util import LoggingLevelRouter
 
@@ -37,7 +38,10 @@ class VectorValidator(ModelValidator[Vector]):
         Validator
     """
     
-    def __init__(self, toolkit: Optional[VectorValidationToolkit] | None = None):
+    def __init__(
+            self,
+            toolkit: Optional[VectorValidationToolkit] | None = None,
+    ):
         """
         Args:
             toolkit: Optional[VectorValidationToolkit]
@@ -46,10 +50,16 @@ class VectorValidator(ModelValidator[Vector]):
     
     @property
     def toolkit(self) -> VectorValidationToolkit:
-        return cast(VectorValidationToolkit, super().toolkit)
+        return cast(
+            VectorValidationToolkit,
+            super().toolkit,
+        )
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[VectorCarrier]:
+    def execute(
+            self,
+            request: VectorValidationRequest
+    ) -> ValidationResult[VectorCarrier]:
         """
         Certify a candidate is a VectorCarrier whose payload is either a Vector
         or a Blueprint that is safe to use.
@@ -71,8 +81,29 @@ class VectorValidator(ModelValidator[Vector]):
         """
         method = f"{self.__class__.__name__}.execute"
         
+        # Handle the case that, the request is null or the wrong type.
+        priming_validation = self.toolkit.helper.priming_validator.execute(
+            candidate=request,
+            target_model=VectorValidationRequest,
+            null_exception=RequestNullException(),
+        )
+        if priming_validation.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                VectorValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=VectorValidatorException.MSG,
+                    err_code=VectorValidatorException.ERR_CODE,
+                    ex=priming_validation.exception,
+                )
+            )
+        # --- Cast the priming_validator payload for additional tests. ---#
+        safe_request = cast(VectorValidationRequest, priming_validation.payload)
+        
+        # Handle the case that the request payload is null or the wrong type.
         carrier_validation = self.toolkit.helper.priming_validator.execute(
-            candidate=candidate,
+            candidate=safe_request.item,
             target_model=self.toolkit.metadata.types.carrier,
             null_exception=self.toolkit.metadata.nulls.carrier,
         )
@@ -87,11 +118,12 @@ class VectorValidator(ModelValidator[Vector]):
                     ex=carrier_validation.exception,
                 )
             )
+        # --- Cast the carrier_validation payload for additional tests. ---#
         carrier = cast(
             Type[self.toolkit.metadata.types.carrier],
             carrier_validation.payload,
         )
-        # --- Cast the candidate into a VectorBlueprint for additional tests. ---#
+        # --- Extract the blueprint to verify the attributes. ---#
         blueprint = carrier.extract_blueprint()
         
         # Handle the case that any vector component in the blueprint is flagged.

@@ -79,7 +79,7 @@ class TokenValidator(ModelValidator[Token]):
         carrier_validation = self.toolkit.helper.priming_validator.execute(
             candidate=candidate,
             target_model=self.toolkit.metadata.types.model,
-            model_null_exception=self.toolkit.nulls.carrier,
+            model_null_exception=self.toolkit.nulls.item,
         )
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
