@@ -15,9 +15,8 @@ from typing import Generic, Type, TypeVar, cast
 from domain import Blueprint, CartesianPoint, TypeUnion
 from transit import EntityCarrier
 
-
-
 T = TypeVar("T", bound="CartesianPoint")
+
 
 class CartesianTypeUnion(TypeUnion[T], ABC, Generic[T]):
     """
@@ -37,21 +36,4 @@ class CartesianTypeUnion(TypeUnion[T], ABC, Generic[T]):
     Super Class:
         TypeUnion
     """
-    
-    def __init__(
-            self, 
-            model: Type[T],
-            carrier: Type[EntityCarrier[T]], 
-            blueprint: Type[Blueprint[T]],
-    ):
-        """
-        Args:
-            model: Type[T]
-            carrier: Type[EntityCarrier[T]]
-            blueprint: Type[Blueprint[T]] 
-        """
-        super().__init__(model=model, carrier=carrier, blueprint=blueprint)
-    
-    @property
-    def model(self) -> Type[T]:
-        return cast(Type[T], super().model)
+    pass

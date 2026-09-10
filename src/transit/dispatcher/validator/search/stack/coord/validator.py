@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 class CoordContextValidator(StackContextValidator[CoordSearchContext]):
     """
     Role
-        -  Integrity, Consistency Maintenance
+        - Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a CoordContext instance is safe before use.
@@ -30,7 +30,7 @@ class CoordContextValidator(StackContextValidator[CoordSearchContext]):
         integrity_checker: CoordContextChecker
 
     Provides:
-        -  execute(self, candidate: Any) -> ValidationResult[CoordContext]
+        - execute(self, candidate: Any) -> ValidationResult[CoordContext]
 
     Super Class:
         ContextValidator

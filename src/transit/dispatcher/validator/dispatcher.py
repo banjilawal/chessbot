@@ -24,7 +24,7 @@ T = TypeVar("T")
 class ValidationDispatcher(Dispatcher, ABC, Generic[T]):
     """
     Role
-        -  Integrity, Consistency Maintenance
+        - Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure data-holders are safe before they are used or saved.

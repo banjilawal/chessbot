@@ -24,7 +24,7 @@ class WestAxisBuilder(AxisBuilder[WestAxis]):
     """
     Role:
         - Builder
-        -  Integrity Management
+        - Integrity Management
 
     Responsibilities:
         1.  Create an EastAxis from the origin.
@@ -59,8 +59,8 @@ class WestAxisBuilder(AxisBuilder[WestAxis]):
 
         Action:
             1.  Send an exception chain in the BuildResult if either
-                    -  The blueprint is flagged unsafe.
-                    -  The assembler does not return a product.
+                    - The blueprint is flagged unsafe.
+                    - The assembler does not return a product.
             2.  Otherwise, cast the assembler product as a WestAxis then,
                 send in the success result,
         Args:

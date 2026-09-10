@@ -45,8 +45,10 @@ class SquareValidationToolkit(ModelValidationToolkit[Square]):
             helper: Optional[SquareManifest]
             metadata: Optional[SquareHelperTable]
         """
-        self._helper = helper or SquareHelperTable()
-        self._metadata = metadata or SquareManifest()
+        super().__init__(
+            helper=helper or SquareHelperTable(),
+            metadata=metadata or SquareManifest(),
+        )
     
     @property
     def helper(self) -> SquareHelperTable:

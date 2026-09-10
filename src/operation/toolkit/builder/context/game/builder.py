@@ -21,10 +21,10 @@ from domain.model.searchable.state.game import (
 class GameContextToolkit(Toolkit[GameContext]):
     """
     Role
-        -  Transaction Worker
-        -  Integrity Maintenance
-        -  Consistency Assurance
-        -  Toolkit Process Owner
+        - Transaction Worker
+        - Integrity Maintenance
+        - Consistency Assurance
+        - Toolkit Process Owner
 
    Responsibilities:
         1.  Ensure a new Token instance is born safe and reliable.

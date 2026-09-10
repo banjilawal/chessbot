@@ -19,7 +19,7 @@ from domain.exchange.model import Token
 class TokenStackPopRequest(StackPopRequest[Token]):
     """
      Role:
-         -  Messaging
+         - Messaging
 
      Responsibilities:
          1. Transport job information throughout the TokenPop lifecycle

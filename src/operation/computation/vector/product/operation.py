@@ -23,7 +23,7 @@ class ScalarProduct(Computation[CartesianToggle]):
     """
     Role:
         - Operation
-        -  Computation
+        - Computation
 
     Responsibilities:
         1.  Multiply a Vector or Coord by a Scalar.
@@ -70,9 +70,9 @@ class ScalarProduct(Computation[CartesianToggle]):
         Action:
             1.  Send an exception chain in the ComputationResult if any of
                 these conditions occur
-                    -  The operand is null
-                    -  The operand is flagged unsafe.
-                    -  Building the other type fails.
+                    - The operand is null
+                    - The operand is flagged unsafe.
+                    - Building the other type fails.
             2.  Otherwise, send the success result.
         Args:
             scalar: Scalar,

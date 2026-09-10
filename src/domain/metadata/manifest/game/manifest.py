@@ -48,9 +48,9 @@ class GameManifest(ObjectManifest[Game]):
         )
         
     @property
-    def type_union(self) -> GameTypeUnion:
-        return cast(GameTypeUnion, super().type_union)
+    def types(self) -> GameTypeUnion:
+        return cast(GameTypeUnion, super().types)
     
     @property
-    def null_group(self) -> GameNullGroup:
-        return cast(GameNullGroup, super().null_group)
+    def nulls(self) -> GameNullGroup:
+        return cast(GameNullGroup, super().nulls)

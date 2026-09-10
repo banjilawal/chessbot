@@ -20,8 +20,8 @@ class SquareQuery(StackQuery[Square]):
     """
     Role:
         - Model
-        -  Search
-        -  Stateless Data-Holder
+        - Search
+        - Stateless Data-Holder
 
     Responsibilities:
         1.  A list of squares to search with context.

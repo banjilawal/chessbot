@@ -48,9 +48,9 @@ class PawnManifest(RankManifest[Pawn]):
         )
         
     @property
-    def type_union(self) -> PawnTypeUnion:
-        return cast(PawnTypeUnion, super().type_union)
+    def types(self) -> PawnTypeUnion:
+        return cast(PawnTypeUnion, super().types)
     
     @property
-    def null_group(self) -> PawnNullGroup:
-        return cast(PawnNullGroup, super().null_group)
+    def nulls(self) -> PawnNullGroup:
+        return cast(PawnNullGroup, super().nulls)

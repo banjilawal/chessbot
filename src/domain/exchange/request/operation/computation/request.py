@@ -22,7 +22,7 @@ T = TypeVar("T", bound="ComputationOperation")
 class ComputationRequest(OperationRequest[ComputationResult], ABC, Generic[T]):
     """
      Role:
-         -  Messaging
+         - Messaging
 
      Responsibilities:
          1. Transport job information through a ComputationOperation lifecycle.

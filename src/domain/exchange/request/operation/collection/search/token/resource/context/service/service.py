@@ -15,7 +15,7 @@ class TokenContextService(IntegrityMicroservice[TokenContext]):
     """
     Role:
         - Microservice API
-        -  Stateless Integrity Lifecycle Manager
+        - Stateless Integrity Lifecycle Manager
 
     Responsibilities:
         1.  Mutates TokenContext instances

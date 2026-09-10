@@ -19,9 +19,9 @@ class SearchService(ABC, Generic[T]):
     """
     Role:
         - API
-        -  Lifecycle Manager
-        -  Stateless microservice
-        -  Operations Provider
+        - Lifecycle Manager
+        - Stateless microservice
+        - Operations Provider
         
     The Search Lifecycle:
         1.  Build a Context of the targeted attributes for an entity.
@@ -40,7 +40,7 @@ class SearchService(ABC, Generic[T]):
         context_service: IntegrityMicroservice[Context[T]]
         
     Provides:
-        -  search(context: Query[T]) -> List[SearchResult[T]]
+        - search(context: Query[T]) -> List[SearchResult[T]]
         
     Super Class:
         Microservice

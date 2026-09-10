@@ -21,7 +21,7 @@ class TurnResult(Result[T], Generic[T]):
     """
     Role:
         - Data Transport
-        -  Error Transport
+        - Error Transport
 
     Responsibilities:
         1.  Contains the outcome of a maneuver transaction.

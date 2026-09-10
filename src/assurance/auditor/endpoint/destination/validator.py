@@ -19,9 +19,9 @@ from util import LoggingLevelRouter
 class TokenDestinationCertifier:
     """
     Role
-        -  Validation Worker
-        -  Integrity Maintenance
-        -  Consistency Assurance
+        - Validation Worker
+        - Integrity Maintenance
+        - Consistency Assurance
 
     Responsibilities:
         1.  Certifies a token can end its maneuver at the destination.
@@ -53,8 +53,8 @@ class TokenDestinationCertifier:
 
         Action:
             1.  Send an exception chan in the validation result if either:
-                    -  The relation analysis is not completed.
-                    -  The token is either fully or partially bound to the destination.
+                    - The relation analysis is not completed.
+                    - The token is either fully or partially bound to the destination.
             2.  Otherwise, send the success result.
         Args:
             token: Token

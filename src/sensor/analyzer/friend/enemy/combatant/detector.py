@@ -14,7 +14,7 @@ from err import EnemyCombatantAnalyzerException, TokenNullException
 from domain.model import CombatantToken
 from artifcat.report import FriendshipStatus
 from artifcat import Result
-from operation.toolkit import TokenValidationBundle
+from operation.toolkit import TokenValidationToolkit
 from util import LoggingLevelRouter
 from transit.dispatcher.validator import TokenValidationDispatcher
 
@@ -34,7 +34,7 @@ class EnemyCombatantStatusDetector(Analyzer):
     Attributes:
     
     Provides:
-        -  execute(
+        - execute(
                     token: Token,
                     token_validator: TokenFreedomAnalyzer,
             ) -> Result[FriendshipReport]
@@ -48,7 +48,7 @@ class EnemyCombatantStatusDetector(Analyzer):
     def execute(
             cls,
             combatant: CombatantToken,
-            bundle: TokenValidationBundle | None = None,
+            bundle: TokenValidationToolkit | None = None,
             token_validator: TokenValidationDispatcher | None = None,
     ) -> Result[FriendshipStatus]:
         """
@@ -56,10 +56,10 @@ class EnemyCombatantStatusDetector(Analyzer):
         
         Action:
             1.  Send an exception chain in the Result if any of the conditions occur.
-                        -  The token fails a freedom check.
-                        -  The opening square is not found in the token's board.
-                        -  Searching the board is fails.
-                        -  square has already been friended.
+                        - The token fails a freedom check.
+                        - The opening square is not found in the token's board.
+                        - Searching the board is fails.
+                        - square has already been friended.
             2.  Otherwise, send the success result.
         Args:
             token: Token

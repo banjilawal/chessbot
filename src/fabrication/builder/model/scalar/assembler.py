@@ -20,7 +20,7 @@ from util import LoggingLevelRouter
 class ScalarBuilder(ModelBuilder[Scalar]):
     """
     Role
-        -  Builder
+        - Builder
     
     Responsibilities:
         1.  Create a Scalar instance from the safe blueprint.

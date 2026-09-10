@@ -24,7 +24,7 @@ from operation import Operator, RegistryEntryNameValidator
 class ServiceRegistrySearch(Operator):
     """
     Role
-        -  Search Service
+        - Search Service
 
     Responsibilities:
         1.  Search the ServiceRegistry for an operation.

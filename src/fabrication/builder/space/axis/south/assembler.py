@@ -20,7 +20,7 @@ from util import  LoggingLevelRouter
 class SouthAxisBuilder(AxisBuilder[SouthAxis]):
     """
     Role
-        -  Builder
+        - Builder
 
     Responsibilities:
         1.  Create a SouthAxis instance from the safe blueprint.

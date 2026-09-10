@@ -25,8 +25,8 @@ class ChainRequestAdjudicator(RequestAdjudicator, ABC, Generic[N, R]):
     """
     Role:
         - Permission Authorization
-        -  Checklist Runner
-        -  Integrity Maintenance
+        - Checklist Runner
+        - Integrity Maintenance
         _   Consistency Assurance
 
     Responsibilities:
@@ -37,7 +37,7 @@ class ChainRequestAdjudicator(RequestAdjudicator, ABC, Generic[N, R]):
         bootstrapper: Optional[ChainAdjudicationBootstrapper]
 
     Provides:
-        -   def execute(self, candidate: Any) -> RequestDecision
+        -  def execute(self, candidate: Any) -> RequestDecision
 
     Super Class:
         RequestAdjudicator

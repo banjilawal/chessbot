@@ -24,7 +24,7 @@ class EuclideanDistancePermitter(ComputationPermitter[CartesianToggle]):
     """
     Role:
         - Permission Authorization
-        -  Integrity Maintenance
+        - Integrity Maintenance
         _   Consistency Assurance
 
     Responsibilities:
@@ -38,7 +38,7 @@ class EuclideanDistancePermitter(ComputationPermitter[CartesianToggle]):
         priming_validator: PrimingValidator
         
     Provides:
-        -   def execute(self, EuclideanDistanceRequest) -> RequestDecision
+        -  def execute(self, EuclideanDistanceRequest) -> RequestDecision
 
     Super Class:
         ComputationPermitter

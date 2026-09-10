@@ -27,7 +27,7 @@ T = TypeVar("T", bound="StateModel")
 class StackPop(CollectionDeletion[StackService], ABC, Generic[T]):
     """
     Role
-        -  Worker
+        - Worker
 
     Responsibilities:
         1.  Remove a T instance out of the StackService[T].

@@ -19,7 +19,7 @@ class BoardTeamColorBinder(ColorBinder[Board, Team]):
     """
     Role:
         - Model
-        -  Stateless Data-Holder
+        - Stateless Data-Holder
 
     Responsibility:
         1.  Maps the Team correctly to its color slot on the Board.

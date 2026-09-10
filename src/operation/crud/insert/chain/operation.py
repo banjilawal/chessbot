@@ -24,7 +24,7 @@ T = TypeVar("T", bound="Node")
 class AddNode(InsertOperation[Chain], ABC, Generic[T]):
     """
     Role
-        -  Worker
+        - Worker
 
     Responsibilities:
         1.  Add a node to a Chain.

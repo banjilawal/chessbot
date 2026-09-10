@@ -24,8 +24,8 @@ R = TypeVar("R", bound="CrudResult")
 class CrudRequest(Request[R], ABC, Generic[C, R]):
     """
      Role:
-         -  Messaging
-         -  Transport
+         - Messaging
+         - Transport
 
      Responsibilities:
         1. Transport the collection and other objects a CrudOperation needs to run a job.

@@ -23,13 +23,13 @@ class CatalogQuery(Query, Generic[E]):
     """
     Role:
         - Model
-        -  Stateless Data-Holder
-        -  Messaging
+        - Stateless Data-Holder
+        - Messaging
 
     Responsibilities:
         1.  Contains
-                -  The ConfigTable, EnumTable of entity keys.
-                -  The criteria for searching the EnumTable
+                - The ConfigTable, EnumTable of entity keys.
+                - The criteria for searching the EnumTable
         2.  Delivers it's contents to SearchRouter[E]
 
 

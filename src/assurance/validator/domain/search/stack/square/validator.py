@@ -1,7 +1,7 @@
-# src/assurance/validator/domain/search/stack/square/checker.py
+# src/assurance/validator/search/stack/square/checker.py
 
 """
-Module: assurance.validator.domain.search.stack.square.checker
+Module: assurance.validator.search.stack.square.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import SquareValidationBundle, ContextValidator
+from assurance import SquareValidationToolkit, ContextValidator
 from domain import SquareSearchContext
 from err import (
     ExcessSquareContextFlagsException, SquareContextCheckerException, SquareContextValidationRouteException,
@@ -24,14 +24,14 @@ from util import LoggingLevelRouter
 class SquareContextValidator(ContextValidator[SquareSearchContext]):
     """
     Role
-        -  Integrity Assurance Worker
+        - Integrity Assurance Worker
 
     Responsibilities:
         1.  Check that a candidate is the right type of not-null SquareContext.
         2.  Run safety checks on any SquareContext attributes that are enabled.
 
     Attributes:
-        bundle: SquareValidationBundle
+        toolkit: SquareValidationToolkit
 
     Provides:
         - def execute(candidate: Any) -> ValidationResult[SquareContext]:
@@ -40,13 +40,13 @@ class SquareContextValidator(ContextValidator[SquareSearchContext]):
         StackContextChecker
     """
     
-    def __init__(self, bundle: Optional[SquareValidationBundle] | None = None, ):
-        super().__init__(bundle=bundle or SquareValidationBundle())
+    def __init__(self, toolkit: Optional[SquareValidationToolkit] | None = None, ):
+        super().__init__(toolkit=toolkit or SquareValidationToolkit())
     
     
     @property
-    def bundle(self) -> SquareValidationBundle:
-        return cast(SquareValidationBundle, super().bundle)
+    def toolkit(self) -> SquareValidationToolkit:
+        return cast(SquareValidationToolkit, super().toolkit)
     
     
     @LoggingLevelRouter.monitor
@@ -57,9 +57,9 @@ class SquareContextValidator(ContextValidator[SquareSearchContext]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -  The candidate is not a SquareContext.
-                    -  The wrong number of search attributes is enabled.
-                    -  An enabled search attribute fails a safety check.
+                    - The candidate is not a SquareContext.
+                    - The wrong number of search attributes is enabled.
+                    - An enabled search attribute fails a safety check.
             2.  Otherwise, send a TokeContext in the success result.
         Args:
             candidate, Any
@@ -71,10 +71,10 @@ class SquareContextValidator(ContextValidator[SquareSearchContext]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the validator is not primed.
-        priming = self.bundle.priming_validator.execute(
+        priming = self.toolkit.priming_validator.execute(
             candidate=candidate,
-            target_model=self.bundle.types.search_context,
-            null_exception=self.bundle.nulls.search_context,
+            target_model=self.toolkit.types.search_context,
+            null_exception=self.toolkit.nulls.search_context,
         )
         if priming.is_failure:
             # Send the exception chain on failure.
@@ -128,7 +128,7 @@ class SquareContextValidator(ContextValidator[SquareSearchContext]):
         
         # Certification for the search-by-id target.
         if context.id is not None:
-            validation_result = self.bundle.identity_service.validate_id(
+            validation_result = self.toolkit.identity_service.validate_id(
                 candidate=context.id
             )
             if validation_result.is_failure:
@@ -147,7 +147,7 @@ class SquareContextValidator(ContextValidator[SquareSearchContext]):
         
         # Certification for the search-by-schema target.
         if context.name is not None:
-            validation_result = self.bundle.identity_service.validate_name(
+            validation_result = self.toolkit.identity_service.validate_name(
                 candidate=context.name
             )
             if validation_result.is_failure:
@@ -166,7 +166,7 @@ class SquareContextValidator(ContextValidator[SquareSearchContext]):
         
         # Certification for the search-by-coord target.
         if context.coord is not None:
-            validation_result = self.bundle.coord_validator.execute(
+            validation_result = self.toolkit.coord_validator.execute(
                 candidate=context.coord
             )
             if validation_result.is_failure:
@@ -185,7 +185,7 @@ class SquareContextValidator(ContextValidator[SquareSearchContext]):
         
         # Certification for the search-by-board target.
         if context.board is not None:
-            validation_result = self.bundle.board_validator.execute(
+            validation_result = self.toolkit.board_validator.execute(
                 candidate=context.board
             )
             if validation_result.is_failure:
@@ -204,7 +204,7 @@ class SquareContextValidator(ContextValidator[SquareSearchContext]):
         
         # Certification for the search-by-occupant target.
         if context.occupant is not None:
-            validation_result = self.bundle.token_validator.execute(
+            validation_result = self.toolkit.token_validator.execute(
                 candidate=context.occupant
             )
             if validation_result.is_failure:
@@ -223,7 +223,7 @@ class SquareContextValidator(ContextValidator[SquareSearchContext]):
         
         # Certification for the search-by-state.
         if context.state is not None:
-            validation_result = self.bundle.priming_validator.execute(
+            validation_result = self.toolkit.priming_validator.execute(
                 candidate=context.state,
                 model_type=SquareState,
                 null_exception=SquareStateNullException()
@@ -244,7 +244,7 @@ class SquareContextValidator(ContextValidator[SquareSearchContext]):
         
         # Certification for the search-by-formation.
         if context.home_square_type is not None:
-            validation_result = self.bundle.priming_validator.execute(
+            validation_result = self.toolkit.priming_validator.execute(
                 candidate=context.home_square_type,
                 model_type=bool,
                 null_exception=NullException()

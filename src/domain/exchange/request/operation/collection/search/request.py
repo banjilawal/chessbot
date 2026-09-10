@@ -25,7 +25,7 @@ T = TypeVar("T", bound="StateModel")
 class SearchRequest(CollectionRequest[SearchResult], ABC, Generic[T]):
     """
      Role:
-         -  Messaging
+         - Messaging
 
      Responsibilities:
          1. Transport job information throughout the SearchOperation lifecycle.

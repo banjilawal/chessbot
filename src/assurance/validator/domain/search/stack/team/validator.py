@@ -1,7 +1,7 @@
-# src/assurance/validator/domain/search/stack/team/checker.py
+# src/assurance/validator/search/stack/team/checker.py
 
 """
-Module: assurance.validator.domain.search.stack.team.checker
+Module: assurance.validator.search.stack.team.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ContextValidator, TeamValidationBundle
+from assurance import ContextValidator, TeamValidationToolkit
 from domain import Archetype, TeamSearchContext
 from err import (
     ExcessTeamContextFlagsException, GameColorNullException, TeamContextCheckerException,
@@ -24,14 +24,14 @@ from util import LoggingLevelRouter
 class TeamContextValidator(ContextValidator[TeamSearchContext]):
     """
     Role
-        -  Integrity Assurance Worker
+        - Integrity Assurance Worker
 
     Responsibilities:
         1.  Check that a candidate is the right type of not-null TeamContext.
         2.  Run safety checks on any TeamContext attributes that are enabled.
 
     Attributes:
-        bundle: TeamValidationBundle
+        toolkit: TeamValidationToolkit
 
     Provides:
         - def execute(candidate: Any) -> ValidationResult[TeamContext]:
@@ -40,13 +40,13 @@ class TeamContextValidator(ContextValidator[TeamSearchContext]):
         StackContextChecker
     """
     
-    def __init__(self, bundle: Optional[TeamValidationBundle] | None = None, ):
-        super().__init__(bundle=bundle or TeamValidationBundle())
+    def __init__(self, toolkit: Optional[TeamValidationToolkit] | None = None, ):
+        super().__init__(toolkit=toolkit or TeamValidationToolkit())
     
     
     @property
-    def bundle(self) -> TeamValidationBundle:
-        return cast(TeamValidationBundle, super().bundle)
+    def toolkit(self) -> TeamValidationToolkit:
+        return cast(TeamValidationToolkit, super().toolkit)
     
     
     @LoggingLevelRouter.monitor
@@ -57,9 +57,9 @@ class TeamContextValidator(ContextValidator[TeamSearchContext]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -  The candidate is not a TeamContext.
-                    -  The wrong number of search attributes is enabled.
-                    -  An enabled search attribute fails a safety check.
+                    - The candidate is not a TeamContext.
+                    - The wrong number of search attributes is enabled.
+                    - An enabled search attribute fails a safety check.
             2.  Otherwise, send a TokeContext in the success result.
         Args:
             candidate, Any
@@ -71,10 +71,10 @@ class TeamContextValidator(ContextValidator[TeamSearchContext]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the validator is not primed.
-        priming = self.bundle.priming_validator.execute(
+        priming = self.toolkit.priming_validator.execute(
             candidate=candidate,
-            target_model=self.bundle.types.search_context,
-            null_exception=self.bundle.nulls.search_context,
+            target_model=self.toolkit.types.search_context,
+            null_exception=self.toolkit.nulls.search_context,
         )
         if priming.is_failure:
             # Send the exception chain on failure.
@@ -128,7 +128,7 @@ class TeamContextValidator(ContextValidator[TeamSearchContext]):
         
         # Certification for the search-by-id target.
         if context.id is not None:
-            validation_result = self.bundle.identity_service.validate_id(
+            validation_result = self.toolkit.identity_service.validate_id(
                 candidate=context.id
             )
             if validation_result.is_failure:
@@ -147,7 +147,7 @@ class TeamContextValidator(ContextValidator[TeamSearchContext]):
         
         # Certification for the search-by-owner target.
         if context.owner is not None:
-            validation_result = self.bundle.owner_validator.execute(
+            validation_result = self.toolkit.owner_validator.execute(
                 candidate=context.owner
             )
             if validation_result.is_failure:
@@ -166,7 +166,7 @@ class TeamContextValidator(ContextValidator[TeamSearchContext]):
         
         # Certification for the search-by-board target.
         if context.board is not None:
-            validation_result = self.bundle.board_validator.execute(
+            validation_result = self.toolkit.board_validator.execute(
                 candidate=context.board
             )
             if validation_result.is_failure:
@@ -186,7 +186,7 @@ class TeamContextValidator(ContextValidator[TeamSearchContext]):
         
         # Certification for the search-by-color target.
         if context.team_color is not None:
-            validation_result = self.bundle.priming_validator.execute(
+            validation_result = self.toolkit.priming_validator.execute(
                 candidate=context.team_color,
                 model_type=GameColor,
                 null_exception=GameColorNullException,
@@ -207,7 +207,7 @@ class TeamContextValidator(ContextValidator[TeamSearchContext]):
         
         # Certification for the search-by-archetype target.
         if context.archetype is not None:
-            validation_result = self.bundle.priming_validator.execute(
+            validation_result = self.toolkit.priming_validator.execute(
                 candidate=context.archetype,
                 model_type=Archetype,
                 null_exception=ArchetypeNullException,

@@ -20,8 +20,8 @@ class EdgeQuery(StackQuery[Edge]):
     """
     Role:
         - Model
-        -  Search
-        -  Stateless Data-Holder
+        - Search
+        - Stateless Data-Holder
 
     Responsibilities:
         1.  A list of edges to search with context.

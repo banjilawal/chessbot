@@ -23,10 +23,10 @@ from util import LoggingLevelRouter
 class PlayerBuilder(ModelBuilder[Player]):
     """
     Role
-        -  Build Pipeline
-        -  Integrity Management
-        -  Consistency Assurance
-        -  Workflow Owner
+        - Build Pipeline
+        - Integrity Management
+        - Consistency Assurance
+        - Workflow Owner
 
    Responsibilities:
         1.  Ensure a new Player instance is born safe and reliable.
@@ -63,8 +63,8 @@ class PlayerBuilder(ModelBuilder[Player]):
 
         Action:
             1.  Send an exception chain in the BuildResult if either
-                    -  The PlayerBlueprint object is flagged unsafe.
-                    -  The assembler does not return a product.
+                    - The PlayerBlueprint object is flagged unsafe.
+                    - The assembler does not return a product.
             2.  Otherwise, cast the assembler product as a Player then, send in the success result,
         Args:
             blueprint: PlayerBlueprint

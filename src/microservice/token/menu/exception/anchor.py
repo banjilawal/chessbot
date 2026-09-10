@@ -24,7 +24,7 @@ class TokenServiceMenuException(AnchorException):
     """
     Role:
         - Exception Chain Layer 0
-        -  Exception coverage target
+        - Exception coverage target
 
     Responsibilities:
         1.  Anchors TokenServiceMenu debug (layer-2) information.

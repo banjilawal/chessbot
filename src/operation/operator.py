@@ -22,8 +22,8 @@ T = TypeVar("T", bound="Result")
 class Operator(ABC, Generic[T]):
     """
     Role
-        -  Worker
-        -  Result Producer
+        - Worker
+        - Result Producer
 
     Responsibilities:
         1.  Execute a task that produces a Result.

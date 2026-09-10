@@ -48,9 +48,9 @@ class TeamManifest(ObjectManifest[Team]):
         )
         
     @property
-    def type_union(self) -> TeamTypeUnion:
-        return cast(TeamTypeUnion, super().type_union)
+    def types(self) -> TeamTypeUnion:
+        return cast(TeamTypeUnion, super().types)
     
     @property
-    def null_group(self) -> TeamNullGroup:
-        return cast(TeamNullGroup, super().null_group)
+    def nulls(self) -> TeamNullGroup:
+        return cast(TeamNullGroup, super().nulls)

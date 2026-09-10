@@ -24,7 +24,7 @@ class EuclideanDistance(Computation[Scalar]):
     """
     Role:
         - Operation
-        -  Computation
+        - Computation
 
     Responsibilities:
         1.  Compute the Euclidean distance between the register's contents.
@@ -68,9 +68,9 @@ class EuclideanDistance(Computation[Scalar]):
         Action:
             1.  Send an exception chain in the ComputationResult if any of
                 these conditions occur
-                    -  The operand is null
-                    -  The operand is flagged unsafe.
-                    -  Building the other type fails.
+                    - The operand is null
+                    - The operand is flagged unsafe.
+                    - Building the other type fails.
             2.  Otherwise, send the success result.
         Args:
             register: VectorRegister

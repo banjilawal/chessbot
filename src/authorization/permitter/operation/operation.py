@@ -20,7 +20,7 @@ T = TypeVar("T", bound="Result")
 class Operation(ABC, Generic[T]):
     """
     Role
-        -  Worker
+        - Worker
 
     Responsibilities:
         1.  Execute a task that produces a Result.

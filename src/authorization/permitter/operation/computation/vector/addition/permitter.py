@@ -24,7 +24,7 @@ class AddVectorPermitter(ComputationPermitter[CartesianToggle]):
     """
     Role:
         - Permission Authorization
-        -  Integrity Maintenance
+        - Integrity Maintenance
         _   Consistency Assurance
 
     Responsibilities:
@@ -38,7 +38,7 @@ class AddVectorPermitter(ComputationPermitter[CartesianToggle]):
         priming_validator: PrimingValidator
         
     Provides:
-        -   def execute(self, AddVectorRequest) -> RequestDecision
+        -  def execute(self, AddVectorRequest) -> RequestDecision
 
     Super Class:
         ComputationPermitter

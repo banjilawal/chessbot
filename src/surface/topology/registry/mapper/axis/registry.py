@@ -22,8 +22,8 @@ class AxisMappingFunctionStream(SpaceMapFunctionStream[Axis]):
     """
     Role:
         - Data Holder
-        -  Factory
-        -  Switcher
+        - Factory
+        - Switcher
 
     Responsibilities:
         1.  AxisMappingFunction factory whose products don't need down-casting before use.

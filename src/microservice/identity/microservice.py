@@ -23,10 +23,10 @@ from transit.dispatcher.validator import IdentityRegisterCertifier, NameValidato
 class IdentityService:
     """
         Role:
-        -  API
-        -  Lifecycle Manager
-        -  Operations Provider
-        -  Stateless microservice
+        - API
+        - Lifecycle Manager
+        - Operations Provider
+        - Stateless microservice
 
     Responsibilities:
         1.  Bundles id, name verification, 
@@ -38,10 +38,10 @@ class IdentityService:
         identity_register_certifier: IdentityRegisterCertifier
 
     Provides:
-        -  next_id(cls, class_name: str) -> int
-        -  validate_id(candidate: Any) -> ValidationResult
-        -  validate_name(candidate: Any) -> ValidationResult:
-        -  validate_blueprint_id(blueprint: Blueprint, model_name: str)-> ValidationResult
+        - next_id(cls, class_name: str) -> int
+        - validate_id(candidate: Any) -> ValidationResult
+        - validate_name(candidate: Any) -> ValidationResult:
+        - validate_blueprint_id(blueprint: Blueprint, model_name: str)-> ValidationResult
 
     Super Class:
     """

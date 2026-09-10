@@ -19,7 +19,7 @@ class OpeningManeuverOffsetPattern(ManeuverOffsetPattern):
     """
     Role:
         - Data Holder
-        -  Immutability
+        - Immutability
 
     Responsibilities:
         1.  Determine potential destinations from an opening Pawn's current position.

@@ -20,8 +20,8 @@ class RankQuery(StackQuery[Rank]):
     """
     Role:
         - Model
-        -  Search
-        -  Stateless Data-Holder
+        - Search
+        - Stateless Data-Holder
 
     Responsibilities:
         1.  A list of ranks to search with context.

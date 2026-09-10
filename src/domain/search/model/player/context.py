@@ -32,7 +32,7 @@ class PlayerContext(ModelContext[Player]):
         player_category: Optional[PlayerCategory]
 
     Provides:
-        -  def to_dict() -> Dict[str, Any]
+        - def to_dict() -> Dict[str, Any]
 
     Super Class:
         ModelContext

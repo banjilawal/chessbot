@@ -48,9 +48,9 @@ class KnightManifest(RankManifest[Knight]):
         )
         
     @property
-    def type_union(self) -> KnightTypeUnion:
-        return cast(KnightTypeUnion, super().type_union)
+    def types(self) -> KnightTypeUnion:
+        return cast(KnightTypeUnion, super().types)
     
     @property
-    def null_group(self) -> KnightNullGroup:
-        return cast(KnightNullGroup, super().null_group)
+    def nulls(self) -> KnightNullGroup:
+        return cast(KnightNullGroup, super().nulls)

@@ -20,7 +20,7 @@ from domain.exchange.model import Token
 class TokenServiceRequest(MicroserviceRequest[Token]):
     """
      Role:
-         -  Messaging
+         - Messaging
 
      Responsibilities:
          1. Transport job information to a worker.

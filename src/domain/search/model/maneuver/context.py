@@ -29,7 +29,7 @@ class ManeuverContext(ModelContext[Maneuver]):
         benefit: Optional[PathBenefit]
 
     Provides:
-        -  to_dict() -> Dict[str, Any]
+        - to_dict() -> Dict[str, Any]
 
     Super Class:
         ModelContext

@@ -29,32 +29,32 @@ from util import LoggingLevelRouter
 class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
     """
     Role
-        -  Integrity Maintenance
-        -  Consistency Assurance
+        - Integrity Maintenance
+        - Consistency Assurance
 
 
     Responsibilities:
         1.  Ensure a CartesianToggleBlueprint instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        bundle: CartesianToggleToolkit
+        toolkit: CartesianToggleToolkit
 
     Provides:
-        -  execute(self, candidate: Any) -> ValidationResult:
+        - execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
-        IntegrityValidator
+        Validator
     """
     
-    def __init__(self, bundle: CartesianToggleToolkit | None = CartesianToggleToolkit()):
+    def __init__(self, toolkit: CartesianToggleToolkit | None = CartesianToggleToolkit()):
         """
         Args:
-            bundle: CartesianToggleToolkit
+            toolkit: CartesianToggleToolkit
         """
-        super().__init__(bundle=bundle)
+        super().__init__(toolkit=toolkit)
     
     @property
-    def toolkit(self) -> CartesianToggleBundle:
+    def toolkit(self) -> CartesianToggleToolkit:
         return cast(CartesianToggleToolkit, super().ruleset)
     
     @LoggingLevelRouter.monitor
@@ -65,9 +65,9 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -  The candidate is not a CartesianToggleDtoCarrier.
-                    -  The candidate is an empty CartesianToggleDtoCarrier.
-                    -  Either the board, team, formation, rank or id get flagged unsafe.
+                    - The candidate is not a CartesianToggleCarrier.
+                    - The candidate is an empty CartesianToggleCarrier.
+                    - Either the board, team, formation, rank or id get flagged unsafe.
             2.  For a model_carrier send a CartesianToggle in the success result. Otherwise, send a TokeBlueprint.
         Args:
             candidate, Any
@@ -75,7 +75,7 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
             ValidationResult
         Raises:
             CartesianToggleValidatorException
-            CartesianToggleDtoCarrierNullException
+            CartesianToggleCarrierNullException
         """
         method = f"{self.__class__.__name__}.execute"
         

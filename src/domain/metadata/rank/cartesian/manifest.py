@@ -48,9 +48,9 @@ class CartesianManifest(ObjectManifest[Cartesian]):
         )
         
     @property
-    def type_union(self) -> CartesianTypeUnion:
-        return cast(CartesianTypeUnion, super().type_union)
+    def types(self) -> CartesianTypeUnion:
+        return cast(CartesianTypeUnion, super().types)
     
     @property
-    def null_group(self) -> CartesianNullGroup:
-        return cast(CartesianNullGroup, super().null_group)
+    def nulls(self) -> CartesianNullGroup:
+        return cast(CartesianNullGroup, super().nulls)

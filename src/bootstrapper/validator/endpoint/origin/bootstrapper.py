@@ -23,9 +23,9 @@ from util import LoggingLevelRouter
 class OriginCertifierBootstrapper(ValidatorBootstrapper):
     """
     Role
-        -  Validation Worker
-        -  Integrity Maintenance
-        -  Consistency Assurance
+        - Validation Worker
+        - Integrity Maintenance
+        - Consistency Assurance
 
     Responsibilities:
         1.  Verify a Token has a fully bidirectional relation with the Square it wants
@@ -57,8 +57,8 @@ class OriginCertifierBootstrapper(ValidatorBootstrapper):
 
         Action:
             1.  Send an exception chan in the validation result if any of the following occur.:
-                    -  The relation analysis is not completed.
-                    -  The relationship between the token and origin is not fully bidirectional.
+                    - The relation analysis is not completed.
+                    - The relationship between the token and origin is not fully bidirectional.
             2.  Otherwise, send the success result.
         Args:
             token: Token

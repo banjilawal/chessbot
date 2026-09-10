@@ -48,8 +48,8 @@ class StateModelToolkit(ModelToolkit, Generic[T]):
        ModelToolkit
 
     Notes:
-        -  ModelToolkit for an empty class which makes managing toolkits easier.
-        -  Any toolkits for a model should be a ModelToolkit subclass.
+        - ModelToolkit for an empty class which makes managing toolkits easier.
+        - Any toolkits for a model should be a ModelToolkit subclass.
     """
     model: Type[T]
     carrier_model: Type[EntityCarrier[T]]

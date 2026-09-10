@@ -21,7 +21,7 @@ from transit.dispatcher.validator import StackContextValidator
 class TokenHomeContextValidator(StackContextValidator[TokenHomeContext]):
     """
     Role
-        -  Integrity, Consistency Maintenance
+        - Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a HomeContext instance is certified safe, reliable and consistent before use.
@@ -50,9 +50,9 @@ class TokenHomeContextValidator(StackContextValidator[TokenHomeContext]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -  The Validation is not primed.
-                    -  The enabled attribute fails a safety check.
-                    -  There is no validation path for the attribute.
+                    - The Validation is not primed.
+                    - The enabled attribute fails a safety check.
+                    - There is no validation path for the attribute.
             2.  Otherwise, send the success result.
         Args:
             candidate: Any,

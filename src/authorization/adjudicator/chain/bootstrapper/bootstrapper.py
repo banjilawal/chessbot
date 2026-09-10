@@ -21,8 +21,8 @@ class ChainAdjudicationBootstrapper:
     """
     Role:
         - Permission Authorization
-        -  Checklist Runner
-        -  Integrity Maintenance
+        - Checklist Runner
+        - Integrity Maintenance
         _   Consistency Assurance
 
     Responsibilities:
@@ -32,7 +32,7 @@ class ChainAdjudicationBootstrapper:
         priming_validator: PrimingValidator
 
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult[Request]
+        -  def execute(candidate: Any) -> ValidationResult[Request]
 
     Super Class:
     """

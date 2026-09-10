@@ -23,7 +23,7 @@ class PromotionLevelRequestAdjudicator(RequestAdjudicator):
     """
     Role:
         - Helper
-        -  Test Runner
+        - Test Runner
         
     Responsibilities:
         1.  Check if the subject is a valid promotion level
@@ -56,8 +56,8 @@ class PromotionLevelRequestAdjudicator(RequestAdjudicator):
         
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following occur:
-                    -  The subject is flagged unsafe.
-                    -  the elevation is to either Pawn or King.
+                    - The subject is flagged unsafe.
+                    - the elevation is to either Pawn or King.
             2.  Otherwise, Send the success result.
         Args:
             subject: Any

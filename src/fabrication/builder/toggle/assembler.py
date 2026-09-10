@@ -23,7 +23,7 @@ T = TypeVar("T", bound="Toggle")
 class ToggleBuilder(Builder, Generic[T]):
     """
     Role
-        -  Builder
+        - Builder
 
     Responsibilities:
         1.  Create a Toggle instance from the safe blueprint.

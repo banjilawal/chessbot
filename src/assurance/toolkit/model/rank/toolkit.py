@@ -45,8 +45,10 @@ class RankValidationToolkit(ModelValidationToolkit[Rank]):
             helper: Optional[RankManifest]
             metadata: Optional[RankHelperTable]
         """
-        self._helper = helper or RankHelperTable()
-        self._metadata = metadata or RankManifest()
+        super().__init__(
+            helper=helper or RankHelperTable(),
+            metadata=metadata or RankManifest(),
+        )
     
     @property
     def helper(self) -> RankHelperTable:

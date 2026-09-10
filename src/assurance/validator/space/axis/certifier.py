@@ -38,12 +38,12 @@ class AxisRootChecker(SpaceChecker, Generic[T]):
         SpaceRootChecker
     """
 
-    def __init__(self, bundle: AxisToolkit[T]):
+    def __init__(self, toolkit: AxisToolkit[T]):
         """
         Args:
-            bundle: AxisToolkit[T]
+            toolkit: AxisToolkit[T]
         """
-        super().__init__(bundle=bundle)
+        super().__init__(toolkit=toolkit)
     
     @property
     def toolkit(self) -> AxisToolkit[T]:

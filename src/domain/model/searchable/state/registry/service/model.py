@@ -17,8 +17,8 @@ from microservice import Microservice
 class ServiceRegistry:
     """
     Role
-        -  Controller
-        -  Publisher
+        - Controller
+        - Publisher
     
     Responsibilities:
         1.  Dynamic, entry and removal of public microservices available for building toolkits.

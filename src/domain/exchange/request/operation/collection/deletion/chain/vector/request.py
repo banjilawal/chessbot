@@ -19,7 +19,7 @@ from domain.exchange.structures.node import VectorNode
 class VectorAddNodeRequest(AddNodeRequest[VectorNode]):
     """
      Role:
-         -  Messaging
+         - Messaging
 
      Responsibilities:
          1. Transport job information throughout the VectorPop lifecycle

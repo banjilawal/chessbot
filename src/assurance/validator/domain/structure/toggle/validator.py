@@ -1,7 +1,7 @@
-# src/assurance/validator/domain/structure/root.py
+# src/assurance/validator/structure/root.py
 
 """
-Module: assurance.validator.domain.validator
+Module: assurance.validator.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -24,29 +24,29 @@ T = TypeVar("T", bound="Toggle")
 class ToggleValidator(Validator, Generic[T]):
     """
     Role
-        -  Validator
-        -  Integrity Assurance
-        -  Consistency Assurance
+        - Validator
+        - Integrity Assurance
+        - Consistency Assurance
 
     Responsibilities:
         1.  Runs integrity checks on Toggles and ToggleBlueprints before they are used.
         2.  Pluggable validation module.
 
     Attributes:
-        bundle: ToggleToolkit
+        toolkit: ToggleToolkit
 
     Provides:
-        - def validate(candidate: Any, bundle: ToggleToolkit,) -> ValidationResult[Blueprint[T]]:
+        - def validate(candidate: Any, toolkit: ToggleToolkit,) -> ValidationResult[Blueprint[T]]:
 
     Super Class:
     """
 
-    def __init__(self, bundle: ToggleToolkit[T],):
-        super().__init__(bundle=bundle)
+    def __init__(self, toolkit: ToggleToolkit[T],):
+        super().__init__(toolkit=toolkit)
         
     @property
     def toolkit(self) -> ToggleToolkit[T]:
-        return cast(ToggleToolkit[T], super().bundle)
+        return cast(ToggleToolkit[T], super().toolkit)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

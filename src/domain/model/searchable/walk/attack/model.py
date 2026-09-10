@@ -31,7 +31,7 @@ class Attack(SearchableModel, ABC,):
         attacker_reward: int
 
     Provides:
-        -  def are_attacking_same_victim(attack: Attack) -> bool
+        - def are_attacking_same_victim(attack: Attack) -> bool
         
     Super Class:
         SearchableModel

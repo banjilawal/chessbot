@@ -14,10 +14,10 @@ from __future__ import annotations
 class SnapshotContextToolkit(Toolkit[SnapshotContext]):
     """
     Role
-        -  Transaction Worker
-        -  Integrity Maintenance
-        -  Consistency Assurance
-        -  Toolkit Process Owner
+        - Transaction Worker
+        - Integrity Maintenance
+        - Consistency Assurance
+        - Toolkit Process Owner
 
    Responsibilities:
         1.  Ensure a new Token instance is born safe and reliable.

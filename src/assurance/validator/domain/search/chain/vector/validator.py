@@ -1,7 +1,7 @@
-# src/assurance/validator/domain/search/chain/vector/checker.py
+# src/assurance/validator/search/chain/vector/checker.py
 
 """
-Module: assurance.validator.domain.search.chain.vector.checker
+Module: assurance.validator.search.chain.vector.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ChainContextValidator, VectorNodeValidationBundle
+from assurance import ChainContextValidator, VectorNodeValidationToolkit
 from config import GameColor
 from domain import VectorNodeContext
 from err import ExcessVectorNodeContextFlagsException, ZeroVectorNodeContextFlagsException
@@ -25,14 +25,14 @@ class VectorNodeContextValidator(
 ):
     """
     Role
-        -  Integrity Assurance Worker
+        - Integrity Assurance Worker
 
     Responsibilities:
         1.  Check that a candidate is the right type of not-null VectorNodeContext.
         2.  Run safety checks on any VectorNodeContext attributes that are enabled.
 
     Attributes:
-        bundle: VectorNodeValidationBundle
+        toolkit: VectorNodeValidationToolkit
 
     Provides:
         - def execute(candidate: Any) -> ValidationResult[VectorNodeContext]:
@@ -41,13 +41,13 @@ class VectorNodeContextValidator(
         ChainContextChecker
     """
     
-    def __init__(self, bundle: Optional[VectorNodeValidationBundle] | None = None, ):
-        super().__init__(bundle=bundle or VectorNodeValidationBundle())
+    def __init__(self, toolkit: Optional[VectorNodeValidationToolkit] | None = None, ):
+        super().__init__(toolkit=toolkit or VectorNodeValidationToolkit())
     
     
     @property
-    def bundle(self) -> VectorNodeValidationBundle:
-        return cast(VectorNodeValidationBundle, super().bundle)
+    def toolkit(self) -> VectorNodeValidationToolkit:
+        return cast(VectorNodeValidationToolkit, super().toolkit)
     
     
     @LoggingLevelRouter.monitor
@@ -58,9 +58,9 @@ class VectorNodeContextValidator(
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -  The candidate is not a VectorNodeContext.
-                    -  The wrong number of search attributes is enabled.
-                    -  An enabled search attribute fails a safety check.
+                    - The candidate is not a VectorNodeContext.
+                    - The wrong number of search attributes is enabled.
+                    - An enabled search attribute fails a safety check.
             2.  Otherwise, send a TokeContext in the success result.
         Args:
             candidate, Any
@@ -72,10 +72,10 @@ class VectorNodeContextValidator(
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that, the candidate is null or the wrong type.
-        priming = self.bundle.priming_validator.execute(
+        priming = self.toolkit.priming_validator.execute(
             candidate=candidate,
-            target_model=self.bundle.types.search_context,
-            null_exception=self.bundle.nulls.search_context
+            target_model=self.toolkit.types.search_context,
+            null_exception=self.toolkit.nulls.search_context
         )
         if priming.is_failure:
             # Send the exception chain on failure.
@@ -128,7 +128,7 @@ class VectorNodeContextValidator(
             
         # Certification for the search-by-id target.
         if context.id is not None:
-            validation = self.bundle.identity_service.validate_id(
+            validation = self.toolkit.identity_service.validate_id(
                 candidate=context.id
             )
             if validation.is_failure:
@@ -147,7 +147,7 @@ class VectorNodeContextValidator(
         
         # Certification for the search-by-designation target.
         if context.name is not None:
-            validation = self.bundle.identity_service.validate_name(
+            validation = self.toolkit.identity_service.validate_name(
                 candidate=context.name
             )
             if validation.is_failure:
@@ -166,7 +166,7 @@ class VectorNodeContextValidator(
         
         # Certification for the search-by-home_square target.
         if context.home_square is not None:
-            validation = self.bundle.square_validator.execute(
+            validation = self.toolkit.square_validator.execute(
                 candidate=context.home_square
             )
             if validation.is_failure:
@@ -185,7 +185,7 @@ class VectorNodeContextValidator(
         
         # Certification for the search-by-coord target.
         if context.current_position is not None:
-            validation = self.bundle.coord_validator.execute(
+            validation = self.toolkit.coord_validator.execute(
                 candidate=context.current_position
             )
             if validation.is_failure:
@@ -204,7 +204,7 @@ class VectorNodeContextValidator(
         
         # Certification for the search-by-team target.
         if context.team is not None:
-            validation = self.bundle.team_validator.execute(
+            validation = self.toolkit.team_validator.execute(
                 candidate=context.current_position
             )
             if validation.is_failure:
@@ -223,7 +223,7 @@ class VectorNodeContextValidator(
         
         # Certification for the search-by-rank target.
         if context.rank is not None:
-            validation = self.bundle.rank_service.validator.execute(
+            validation = self.toolkit.rank_service.validator.execute(
                 candidate=context.rank
             )
             if validation.is_failure:
@@ -263,7 +263,7 @@ class VectorNodeContextValidator(
         
         # Certification for the search-by-ransom target.
         if context.ransom is not None:
-            validation = self.bundle.number_validator.execute(
+            validation = self.toolkit.helper.number_validator.execute(
                 candidate=context.ransom,
                 floor=Persona.KING.ransom,
                 ceiling=Persona.QUEEN.ransom,

@@ -19,7 +19,7 @@ class ArenaPlayerColorBinder(ColorBinder[Arena, Player]):
     """
     Role:
         - Model
-        -  Stateless Data-Holder
+        - Stateless Data-Holder
 
     Responsibility:
         1.  Maps the Player correctly to its color slot on the Arena.

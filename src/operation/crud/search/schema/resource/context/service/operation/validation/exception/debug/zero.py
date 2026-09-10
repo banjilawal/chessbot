@@ -24,8 +24,8 @@ class ZeroSchemaContextFlagsException(ZeroContextFlagsException):
     """
     Role:
         - Exception Chain Layer 2
-        -  Error Variable Identifier
-        -  Debugging Metadata provider
+        - Error Variable Identifier
+        - Debugging Metadata provider
 
     Responsibilities:
         1.  Indicate that no SchemaContext work was not completed because

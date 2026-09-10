@@ -22,7 +22,7 @@ class SouthAxisRecurrence(AxisRecurrence[SouthAxis]):
     """
     Role:
         - Computation
-        -  Iterator
+        - Iterator
 
     Responsibilities:
         1.  Provide a recurrence relation for iterating to the next SouthAxis vector.

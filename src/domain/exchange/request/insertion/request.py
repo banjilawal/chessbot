@@ -22,8 +22,8 @@ T = TypeVar("T", bound="DomainObjectCollection")
 class InsertionRequest(Request[InsertionResult], ABC, Generic[T]):
     """
      Role:
-         -  Messaging
-         -  Transport
+         - Messaging
+         - Transport
 
      Responsibilities:
          1. Transport information during the InsertionOperation lifecycle.

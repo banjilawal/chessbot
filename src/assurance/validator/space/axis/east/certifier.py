@@ -25,30 +25,30 @@ from util import LoggingLevelRouter
 class EastAxisRootChecker(AxisRootChecker[EastAxis]):
     """
     Role
-        -  Integrity, Consistency Maintenance
+        - Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a EastAxisBlueprint instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        bundle: EastAxisToolkit
+        toolkit: EastAxisToolkit
 
     Provides:
-        -  execute(self, candidate: Any) -> ValidationResult:
+        - execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
         IntegrityChecker
     """
     
-    def __init__(self, bundle: EastAxisToolkit | None = EastAxisToolkit()):
+    def __init__(self, toolkit: EastAxisToolkit | None = EastAxisToolkit()):
         """
         Args:
-            bundle: EastAxisToolkit
+            toolkit: EastAxisToolkit
         """
-        super().__init__(bundle=bundle)
+        super().__init__(toolkit=toolkit)
     
     @property
-    def toolkit(self) -> EastAxisBundle:
+    def toolkit(self) -> EastAxisToolkit:
         return cast(EastAxisToolkit, super().ruleset)
     
     @LoggingLevelRouter.monitor
@@ -59,8 +59,8 @@ class EastAxisRootChecker(AxisRootChecker[EastAxis]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -  The validation_priming fails.
-                    -  Either the board, owner or id get flagged unsafe.
+                    - The validation_priming fails.
+                    - Either the board, owner or id get flagged unsafe.
             2.  Otherwise, send the success result.
         Args:
             candidate: Any,

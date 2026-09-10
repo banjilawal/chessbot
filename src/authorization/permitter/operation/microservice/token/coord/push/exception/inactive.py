@@ -24,8 +24,8 @@ class InactiveTokenPushingCoordException(TokenDebugException):
     """
     Role:
         - Error Variable Identifier
-        -  Exception Chain Layer 2
-        -  Exception Messaging
+        - Exception Chain Layer 2
+        - Exception Messaging
 
     Responsibilities:
         1.  Indicate an inactive Token tried to add a new position.

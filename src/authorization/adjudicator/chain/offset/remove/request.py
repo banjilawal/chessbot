@@ -17,7 +17,7 @@ class RemoveByOffsetRequest(ChainOffsetRequest):
     """
     Role:
         - Request
-        -  Data Transport
+        - Data Transport
     
     Responsibilities:
         1. Carry information for removing a Node from a Chain at an offset.

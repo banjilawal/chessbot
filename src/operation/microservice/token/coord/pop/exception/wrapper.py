@@ -23,8 +23,8 @@ class TokenPopCoordException(DeletionException):
     """
     Role:
         - Worker Method Identification
-        -  Exception Chain Layer 1
-        -  Exception Messaging
+        - Exception Chain Layer 1
+        - Exception Messaging
 
     Responsibilities:
         1.  Indicate that the TokenPopCoord exception was aborted.

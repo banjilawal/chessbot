@@ -16,8 +16,8 @@ class CoordStackCrudController:
     """
     Role:
         - CRUD controller
-        -  Consistency provider
-        -  Integrity lifecycle manager
+        - Consistency provider
+        - Integrity lifecycle manager
 
     Responsibilities:
         1.  Manage insertion/deletion operations for CoordStackService.

@@ -23,8 +23,8 @@ class OrientationToggle(Toggle):
 
     Responsibilities:
         1.  Picks toggle a
-                -  Coord: Geometric quantity
-                -  Orientation: Linear Orientation
+                - Coord: Geometric quantity
+                - Orientation: Linear Orientation
             as an toggle for multiplication, conversion or simple addition.
 
     Attributes:
@@ -36,8 +36,8 @@ class OrientationToggle(Toggle):
 
     Provides:
         
-        -  _equal_orientation_points(point: Point) -> bool
-        -  _equal_axis_toggles(self, point: Point) -> bool
+        - _equal_orientation_points(point: Point) -> bool
+        - _equal_axis_toggles(self, point: Point) -> bool
     Super Class:
         Toggle
     """

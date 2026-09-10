@@ -21,8 +21,8 @@ T = TypeVar("T", bound="DomainObjectCollection")
 class DeleteByIdRequest(DeleteRequest, ABC, Generic[T]):
     """
      Role:
-         -  Messaging
-         -  Transport
+         - Messaging
+         - Transport
 
      Responsibilities:
          1. Transport information during the CrudOperation lifecycle.

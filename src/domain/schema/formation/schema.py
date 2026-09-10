@@ -20,7 +20,7 @@ class Formation(Enum):
     """
     Role:
         - Configuration Table
-        -  Metadata Set
+        - Metadata Set
 
     Responsibilities:
         1.  Supply parameters to Token builders and factories.

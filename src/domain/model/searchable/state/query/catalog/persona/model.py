@@ -19,8 +19,8 @@ class PersonaQuery(CatalogQuery[Persona]):
     """
     Role:
         - Model
-        -  Search
-        -  Stateless Data-Holder
+        - Search
+        - Stateless Data-Holder
 
     Responsibilities:
         1.  A list of personas to search with context.

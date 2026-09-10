@@ -20,8 +20,8 @@ class GameQuery(StackQuery[Game]):
     """
     Role:
         - Model
-        -  Search
-        -  Stateless Data-Holder
+        - Search
+        - Stateless Data-Holder
 
     Responsibilities:
         1.  A list of games to search with context.

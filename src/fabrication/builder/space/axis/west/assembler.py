@@ -20,7 +20,7 @@ from util import  LoggingLevelRouter
 class WestAxisBuilder(AxisBuilder[WestAxis]):
     """
     Role
-        -  Builder
+        - Builder
 
     Responsibilities:
         1.  Create a WestAxis instance from the safe blueprint.

@@ -19,7 +19,7 @@ class DevelopedManeuverOffsetPattern(ManeuverOffsetPattern):
     """
     Role:
         - Data Holder
-        -  Immutability
+        - Immutability
 
     Responsibilities:
         1.  Determine potential destinations from a developed Pawn's current position.

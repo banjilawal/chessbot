@@ -20,8 +20,8 @@ class TeamQuery(StackQuery[Team]):
     """
     Role:
         - Model
-        -  Search
-        -  Stateless Data-Holder
+        - Search
+        - Stateless Data-Holder
 
     Responsibilities:
         1.  A list of teams to search with context.

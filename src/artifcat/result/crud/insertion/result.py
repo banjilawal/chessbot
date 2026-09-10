@@ -18,7 +18,7 @@ class InsertionResult(CrudResult[bool]):
     """
     Role:
         - Data Transport
-        -  Error Transport
+        - Error Transport
 
     Responsibilities:
         1.  Contains the outcome of an insertion.

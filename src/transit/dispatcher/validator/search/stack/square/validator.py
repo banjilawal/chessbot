@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 class SquareContextValidator(StackContextValidator[SquareSearchContext]):
     """
     Role
-        -  Integrity, Consistency Maintenance
+        - Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a SquareContext instance is safe before use.
@@ -30,7 +30,7 @@ class SquareContextValidator(StackContextValidator[SquareSearchContext]):
         integrity_checker: SquareContextChecker
 
     Provides:
-        -  execute(self, candidate: Any) -> ValidationResult[SquareContext]
+        - execute(self, candidate: Any) -> ValidationResult[SquareContext]
 
     Super Class:
         ContextValidator

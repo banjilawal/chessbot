@@ -24,8 +24,8 @@ class TokenCommandNotFoundException(TokenCommandDebugException):
     """
     Role:
         - Exception Chain Layer 2
-        -  Error Variable Identifier
-        -  Debugging Metadata provider
+        - Error Variable Identifier
+        - Debugging Metadata provider
 
     Responsibilities:
         1.  Indicate that the Command does not exist in the TokenCommand set.

@@ -27,7 +27,7 @@ class VectorContext(ModelContext[Vector]):
         x: Optional[int]
 
     Provides:
-        -  to_dict() -> Dict[str, Any]
+        - to_dict() -> Dict[str, Any]
 
     Super Class:
         ModelContext

@@ -22,7 +22,7 @@ class ToggleOperationSuite(OperationSuite, Generic[T]):
     """
     Role:
         - Dependency Container
-        -  Dynamic Dependency Provider
+        - Dynamic Dependency Provider
 
     Responsibilities:
         1.  Contains the operations that can be performed on a Toggle.

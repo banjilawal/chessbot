@@ -19,8 +19,8 @@ class PlayerQuery(StackQuery[Player]):
     """
     Role:
         - Model
-        -  Search
-        -  Stateless Data-Holder
+        - Search
+        - Stateless Data-Holder
 
     Responsibilities:
         1.  A list of players to search with context.

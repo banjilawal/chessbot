@@ -20,7 +20,7 @@ from util import  LoggingLevelRouter
 class SouthwestQuadrantBuilder(QuadrantBuilder[SouthwestQuadrant]):
     """
     Role
-        -  Builder
+        - Builder
 
     Responsibilities:
         1.  Create a SouthwestQuadrant instance from the safe blueprint.

@@ -15,7 +15,7 @@ class TokenQueryService(IntegrityMicroservice[TokenQuery]):
     """
     Role:
         - Microservice API
-        -  Stateless Integrity Lifecycle Manager
+        - Stateless Integrity Lifecycle Manager
 
     Responsibilities:
         1.  Mutates TokenQuery instances

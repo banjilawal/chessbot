@@ -18,7 +18,7 @@ from authorization import VectorComputationRequest
 class VectorAdditionRequest(VectorComputationRequest):
     """
      Role:
-         -  Messaging
+         - Messaging
 
      Responsibilities:
          1. Transport job information to execute an operation

@@ -21,8 +21,8 @@ class SpaceReservoir(ABC, Generic[T]):
     """
     Role:
         - Selection
-        -  Iterator
-        -  Routing Mask
+        - Iterator
+        - Routing Mask
 
     Responsibilities:
         1.  Interface for implementing an iterator that preserves type when looping through

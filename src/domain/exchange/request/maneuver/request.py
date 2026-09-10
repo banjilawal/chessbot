@@ -17,8 +17,8 @@ from domain.exchange.request.maneuver.request import Request
 class ManeuverRequest(Request):
     """
      Role:
-         -  Messaging
-         -  Data Transport
+         - Messaging
+         - Data Transport
 
      Responsibilities:
         1.  Provide information the ManeuverPermitter needs to approve a Token's journey.

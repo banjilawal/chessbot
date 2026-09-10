@@ -22,7 +22,7 @@ T = TypeVar("T", bound="StateModel")
 class StackPopRequest(CollectionDeletionRequest[StackService], ABC, Generic[T]):
     """
      Role:
-         -  Messaging
+         - Messaging
 
      Responsibilities:
          1. Transport job information throughout the StackPop lifecycle.

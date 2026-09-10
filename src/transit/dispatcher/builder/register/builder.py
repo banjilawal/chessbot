@@ -24,10 +24,10 @@ T = TypeVar("T", bound="Register")
 class RegisterBuildDispatcher(BuildDispatcher, Generic[T]):
     """
     Role
-        -  Build Pipeline
-        -  Integrity Management
-        -  Consistency Assurance
-        -  Workflow Owner
+        - Build Pipeline
+        - Integrity Management
+        - Consistency Assurance
+        - Workflow Owner
 
    Responsibilities:
         1.  Ensure a new Register instance is born safe and reliable.

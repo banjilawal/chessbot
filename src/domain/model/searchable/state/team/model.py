@@ -19,7 +19,7 @@ class Team(StateModel):
     """
     Role:
         - Model
-        -  Stateless Data-Holder
+        - Stateless Data-Holder
         
     Responsibilities:
         1.   Manages tokens assigned to a Team.

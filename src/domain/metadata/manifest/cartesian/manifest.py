@@ -9,48 +9,28 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from abc import ABC
+from typing import Generic, Optional, TypeVar, cast
 
-from domain import Cartesian, CartesianNullGroup, CartesianTypeUnion, ObjectManifest
+from domain import ObjectManifest
 
+T = TypeVar("T", bound="CartesianPoint")
 
-class CartesianManifest(ObjectManifest[Cartesian]):
+class CartesianManifest(ObjectManifest[T], ABC, Generic[T]):
     """
-     Role:
+    Role:
         1.  Metadata
-
-     Responsibilities:
-         1.  Aggregates NullExceptions and TypeUnions for an Cartesian's security lifecycle.
-
-     Attributes:
-        type_union: CartesianTypeUnion
-        null_group: CartesianNullGroup
-
-     Provides:
-
-     Super Class:
+    
+    Responsibilities:
+        1.  Aggregates NullExceptions and TypeUnions for a CartesianPoint's security lifecycle.
+    
+    Attributes:
+        type_union: TypeUnion[T]
+        null_group: NullGroup[T]
+    
+    Provides:
+    
+    Super Class:
         ObjectManifest
-     """
-    
-    def __init__(
-            self,
-            type_union: Optional[CartesianTypeUnion] | None = None,
-            null_group: Optional[CartesianNullGroup] | None = None,
-    ):
-        """
-        Args:
-            type_union: Optional[CartesianTypeUnion]
-            null_group: Optional[CartesianNullGroup]
-        """
-        super().__init__(
-            type_union=type_union or CartesianTypeUnion(),
-            null_group=null_group or CartesianNullGroup(),
-        )
-        
-    @property
-    def type_union(self) -> CartesianTypeUnion:
-        return cast(CartesianTypeUnion, super().type_union)
-    
-    @property
-    def null_group(self) -> CartesianNullGroup:
-        return cast(CartesianNullGroup, super().null_group)
+    """
+    pass

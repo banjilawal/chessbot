@@ -24,8 +24,8 @@ class TokenServiceMenuDebuException(DebugException):
     """
     Role:
         - Exception Chain Layer 2
-        -  Error Variable Identifier
-        -  Debugging Metadata provider
+        - Error Variable Identifier
+        - Debugging Metadata provider
 
     Responsibilities:
         1.  Record the condition that fired a variable's error state. a TokenServiceMenu instance into its  error state.

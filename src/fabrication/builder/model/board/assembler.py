@@ -20,7 +20,7 @@ from util import LoggingLevelRouter
 class BoardBuilder(ModelBuilder[Board]):
     """
     Role
-        -  Builder
+        - Builder
 
     Responsibilities:
         1.  Create a Board instance from the safe blueprint.

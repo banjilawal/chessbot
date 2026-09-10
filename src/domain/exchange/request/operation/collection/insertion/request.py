@@ -24,7 +24,7 @@ T = TypeVar("T", bound="Collection")
 class CollectionInsertionRequest(CollectionRequest[InsertionResult], ABC, Generic[T]):
     """
      Role:
-         -  Messaging
+         - Messaging
 
      Responsibilities:
          1. Transport job information throughout the InsertionOperation lifecycle.

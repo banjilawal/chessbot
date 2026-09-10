@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Vector, VectorNullGroup, VectorTypeUnion, ObjectManifest
+from domain import CartesianManifest, Vector, VectorNullGroup, VectorTypeUnion
 
 
-class VectorManifest(ObjectManifest[Vector]):
+class VectorManifest(CartesianManifest[Vector]):
     """
      Role:
         1.  Metadata
@@ -48,9 +48,9 @@ class VectorManifest(ObjectManifest[Vector]):
         )
         
     @property
-    def type_union(self) -> VectorTypeUnion:
-        return cast(VectorTypeUnion, super().type_union)
+    def types(self) -> VectorTypeUnion:
+        return cast(VectorTypeUnion, super().types)
     
     @property
-    def null_group(self) -> VectorNullGroup:
-        return cast(VectorNullGroup, super().null_group)
+    def nulls(self) -> VectorNullGroup:
+        return cast(VectorNullGroup, super().nulls)

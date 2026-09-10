@@ -20,7 +20,7 @@ class EventResult(Result[Event]):
     """
     Role:
         - Data Transport
-        -  Error Transport
+        - Error Transport
 
     Responsibilities:
         1.  Contains outcome of a event transaction.

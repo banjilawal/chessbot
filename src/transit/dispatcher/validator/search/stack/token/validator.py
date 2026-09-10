@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 class TokenContextValidator(StackContextValidator[TokenSearchContext]):
     """
     Role
-        -  Integrity, Consistency Maintenance
+        - Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a TokenContext instance is safe before use.
@@ -30,7 +30,7 @@ class TokenContextValidator(StackContextValidator[TokenSearchContext]):
         integrity_checker: TokenContextChecker
 
     Provides:
-        -  execute(self, candidate: Any) -> ValidationResult[TokenContext]
+        - execute(self, candidate: Any) -> ValidationResult[TokenContext]
 
     Super Class:
         ContextValidator

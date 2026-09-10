@@ -1,7 +1,7 @@
-# src/assurance/validator/domain/structure/validatror.py
+# src/assurance/validator/structure/validatror.py
 
 """
-Module: assurance.validator.domain.structure.validator
+Module: assurance.validator.structure.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import Validator, ValidationBundle
+from assurance import Validator, ValidationToolkit
 from domain import Context
 from util import LoggingLevelRouter
 
@@ -23,14 +23,14 @@ T = TypeVar("T", bound="Context")
 class ContextValidator(Validator, ABC, Generic[T]):
     """
     Role
-        -  Integrity Assurance Worker
+        - Integrity Assurance Worker
 
     Responsibilities:
         1.  Check that a candidate is the right type of not-null Context.
         2.  Run safety checks on any SearchContex attributes that are enabled.
 
     Attributes:
-        bundle: ValidationBundle[T]
+        toolkit: ValidationToolkit[T]
 
     Provides:
         - def execute(candidate: Any) -> ValidationResult[T]:
@@ -39,12 +39,12 @@ class ContextValidator(Validator, ABC, Generic[T]):
         IntegrityChecker
     """
     
-    def __init__(self, bundle: ValidationBundle[T]):
+    def __init__(self, toolkit: ValidationToolkit[T]):
         """
         Args:
-            bundle: ValidationBundle[T]
+            toolkit: ValidationToolkit[T]
         """
-        super().__init__(bundle=bundle)
+        super().__init__(toolkit=toolkit)
     
     
     @abstractmethod

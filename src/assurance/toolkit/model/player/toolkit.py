@@ -45,8 +45,10 @@ class PlayerValidationToolkit(ModelValidationToolkit[Player]):
             helper: Optional[PlayerManifest]
             metadata: Optional[PlayerHelperTable]
         """
-        self._helper = helper or PlayerHelperTable()
-        self._metadata = metadata or PlayerManifest()
+        super().__init__(
+            helper=helper or PlayerHelperTable(),
+            metadata=metadata or PlayerManifest(),
+        )
     
     @property
     def helper(self) -> PlayerHelperTable:

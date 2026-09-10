@@ -48,9 +48,9 @@ class BoardManifest(ObjectManifest[Board]):
         )
         
     @property
-    def type_union(self) -> BoardTypeUnion:
-        return cast(BoardTypeUnion, super().type_union)
+    def types(self) -> BoardTypeUnion:
+        return cast(BoardTypeUnion, super().types)
     
     @property
-    def null_group(self) -> BoardNullGroup:
-        return cast(BoardNullGroup, super().null_group)
+    def nulls(self) -> BoardNullGroup:
+        return cast(BoardNullGroup, super().nulls)

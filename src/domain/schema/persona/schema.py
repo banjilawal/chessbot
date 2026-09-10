@@ -20,7 +20,7 @@ class Persona(Enum):
     """
     Role:
         - Configuration Table
-        -  Metadata Set
+        - Metadata Set
         
 
     Responsibilities:

@@ -22,8 +22,8 @@ class VectorNodeSearchRequestAdjudicator(ChainSearchRequestAdjudicator[VectorNod
     """
     Role:
         - Permission Authorization
-        -  Checklist Runner
-        -  Integrity Maintenance
+        - Checklist Runner
+        - Integrity Maintenance
         _   Consistency Assurance
 
     Responsibilities:
@@ -34,7 +34,7 @@ class VectorNodeSearchRequestAdjudicator(ChainSearchRequestAdjudicator[VectorNod
         priming_validator: Optional[PrimingValidator]
 
     Provides:
-        -   def execute(self, candidate: Any) -> RequestDecision
+        -  def execute(self, candidate: Any) -> RequestDecision
 
     Super Class:
         ChainSearchRequestAdjudicator

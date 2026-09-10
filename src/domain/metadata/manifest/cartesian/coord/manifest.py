@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Coord, CoordNullGroup, CoordTypeUnion, ObjectManifest
+from domain import Coord, CoordNullGroup, CoordTypeUnion, CartesianManifest
 
 
-class CoordManifest(ObjectManifest[Coord]):
+class CoordManifest(CartesianManifest[Coord]):
     """
      Role:
         1.  Metadata
@@ -29,7 +29,7 @@ class CoordManifest(ObjectManifest[Coord]):
      Provides:
 
      Super Class:
-        ObjectManifest
+        CartesianManifest
      """
     
     def __init__(
@@ -48,9 +48,9 @@ class CoordManifest(ObjectManifest[Coord]):
         )
         
     @property
-    def type_union(self) -> CoordTypeUnion:
-        return cast(CoordTypeUnion, super().type_union)
+    def types(self) -> CoordTypeUnion:
+        return cast(CoordTypeUnion, super().types)
     
     @property
-    def null_group(self) -> CoordNullGroup:
-        return cast(CoordNullGroup, super().null_group)
+    def nulls(self) -> CoordNullGroup:
+        return cast(CoordNullGroup, super().nulls)

@@ -16,7 +16,7 @@ from domain import CartesianToggle, Register
 
 class CartesianToggleRegister(Register[CartesianToggle]):
     """
-        -  Model
+        - Model
         - Data Holder
 
     Responsibilities:

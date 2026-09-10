@@ -25,7 +25,7 @@ T = TypeVar("T", bound="CrudResult")
 class CrudOperator(Operator[T], ABC, Generic[T]):
     """
     Role
-        -  Worker
+        - Worker
 
     Responsibilities:
         1.  Process a CrudRequest.

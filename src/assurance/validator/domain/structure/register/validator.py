@@ -1,7 +1,7 @@
-# src/assurance/validator/domain/structure/register/assurance/validator.py
+# src/assurance/validator/structure/register/assurance/validator.py
 
 """
-Module: assurance.validator.domain.register/assurance/validator.validator
+Module: assurance.validator.register/assurance/validator.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -23,16 +23,16 @@ T = TypeVar("T", bound="Register")
 class RegisterValidator(Validator, Generic[T]):
     """
     Role
-        -  Validator
-        -  Integrity Assurance
-        -  Consistency Assurance
+        - Validator
+        - Integrity Assurance
+        - Consistency Assurance
 
     Responsibilities:
         1.  Runs integrity checks on an object or its blueprint before they are used.b
         3.  Pluggable validation module.
 
     Attributes:
-        bundle: RegisterToolkit
+        toolkit: RegisterToolkit
 
     Provides:
         - def execute(self, candidate: Any,) -> ValidationResult[T]
@@ -42,12 +42,12 @@ class RegisterValidator(Validator, Generic[T]):
     """
 
     
-    def __init__(self, bundle: RegisterToolkit[T]):
-        super().__init__(bundle=bundle)
+    def __init__(self, toolkit: RegisterToolkit[T]):
+        super().__init__(toolkit=toolkit)
         
     @property
     def toolkit(self) -> RegisterToolkit[T]:
-        return  cast(RegisterToolkit, super().bundle)
+        return  cast(RegisterToolkit, super().toolkit)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

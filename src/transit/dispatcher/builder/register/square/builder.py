@@ -19,10 +19,10 @@ from util import LoggingLevelRouter
 class SquareRegisterBuilder(RegisterBuildDispatcher[SquareRegister]):
     """
     Role
-        -  Build Pipeline
-        -  Integrity Management
-        -  Consistency Assurance
-        -  Workflow Owner
+        - Build Pipeline
+        - Integrity Management
+        - Consistency Assurance
+        - Workflow Owner
 
    Responsibilities:
         1.  Ensure a new SquareRegister instance is born safe and reliable.

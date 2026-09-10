@@ -48,9 +48,9 @@ class SquareManifest(ObjectManifest[Square]):
         )
         
     @property
-    def type_union(self) -> SquareTypeUnion:
-        return cast(SquareTypeUnion, super().type_union)
+    def types(self) -> SquareTypeUnion:
+        return cast(SquareTypeUnion, super().types)
     
     @property
-    def null_group(self) -> SquareNullGroup:
-        return cast(SquareNullGroup, super().null_group)
+    def nulls(self) -> SquareNullGroup:
+        return cast(SquareNullGroup, super().nulls)

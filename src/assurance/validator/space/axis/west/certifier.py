@@ -24,30 +24,30 @@ from util import LoggingLevelRouter
 class WestAxisRootChecker(AxisRootChecker[WestAxisBlueprint]):
     """
     Role
-        -  Integrity, Consistency Maintenance
+        - Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a WestAxisBlueprint instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        bundle: WestAxisToolkit
+        toolkit: WestAxisToolkit
 
     Provides:
-        -  execute(self, candidate: Any) -> ValidationResult:
+        - execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
         IntegrityChecker
     """
     
-    def __init__(self, bundle: WestAxisToolkit | None = WestAxisToolkit()):
+    def __init__(self, toolkit: WestAxisToolkit | None = WestAxisToolkit()):
         """
         Args:
-            bundle: WestAxisToolkit
+            toolkit: WestAxisToolkit
         """
-        super().__init__(bundle=bundle)
+        super().__init__(toolkit=toolkit)
     
     @property
-    def toolkit(self) -> WestAxisBundle:
+    def toolkit(self) -> WestAxisToolkit:
         return cast(WestAxisToolkit, super().ruleset)
     
     @LoggingLevelRouter.monitor
@@ -58,8 +58,8 @@ class WestAxisRootChecker(AxisRootChecker[WestAxisBlueprint]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -  The validation_priming fails.
-                    -  Either the board, owner or id get flagged unsafe.
+                    - The validation_priming fails.
+                    - Either the board, owner or id get flagged unsafe.
             2.  Otherwise, send the success result.
         Args:
             candidate: Any,

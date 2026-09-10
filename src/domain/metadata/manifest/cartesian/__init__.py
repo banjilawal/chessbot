@@ -10,7 +10,8 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.MANIFEST.CARTESIAN PACKAGE ===========#
 
 # Packages
-
+from .coord import *
+from .vector import *
 
 # Modules
 from .manifest import CartesianManifest

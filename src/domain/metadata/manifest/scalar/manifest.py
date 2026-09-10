@@ -48,9 +48,9 @@ class ScalarManifest(ObjectManifest[Scalar]):
         )
         
     @property
-    def type_union(self) -> ScalarTypeUnion:
-        return cast(ScalarTypeUnion, super().type_union)
+    def types(self) -> ScalarTypeUnion:
+        return cast(ScalarTypeUnion, super().types)
     
     @property
-    def null_group(self) -> ScalarNullGroup:
-        return cast(ScalarNullGroup, super().null_group)
+    def nulls(self) -> ScalarNullGroup:
+        return cast(ScalarNullGroup, super().nulls)

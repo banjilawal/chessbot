@@ -1,13 +1,13 @@
-# src/assurance/validator/domain/structure/toggle/__init__.py
+# src/assurance/validator/structure/toggle/__init__.py
 
 """
-Module: assurance.validator.domain.toggle.__init__
+Module: assurance.validator.toggle.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ASSURANCE.VALIDATOR.DOMAIN.TOGGLE PACKAGE ===========#
+# =========== ASSURANCE.VALIDATOR.TOGGLE PACKAGE ===========#
 
 # Packages
 from .vector import *

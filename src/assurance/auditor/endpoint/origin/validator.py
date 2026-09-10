@@ -20,9 +20,9 @@ from util import LoggingLevelRouter
 class TokenOriginCertifier:
     """
     Role
-        -  Validation Worker
-        -  Integrity Maintenance
-        -  Consistency Assurance
+        - Validation Worker
+        - Integrity Maintenance
+        - Consistency Assurance
 
     Responsibilities:
         1.  Verify a Token has a fully bidirectional relation with the Square it wants

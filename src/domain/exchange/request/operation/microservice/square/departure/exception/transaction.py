@@ -23,8 +23,8 @@ class SquareDepartureException(DeletionException):
     """
     Role:
         - Worker Method Identifier
-        -  Exception Chain Layer 1,
-        -  Exception Messaging
+        - Exception Chain Layer 1,
+        - Exception Messaging
 
     Responsibilities:
         1.  Indicate a SquareDepartureProcess was not completed.

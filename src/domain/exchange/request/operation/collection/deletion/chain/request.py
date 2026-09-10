@@ -21,7 +21,7 @@ T = TypeVar("T", bound="Node")
 class AddNodeRequest(CollectionDeletionRequest[Chain], ABC, Generic[T]):
     """
      Role:
-         -  Messaging
+         - Messaging
 
      Responsibilities:
          1. Transport job information throughout the ChainPop lifecycle.

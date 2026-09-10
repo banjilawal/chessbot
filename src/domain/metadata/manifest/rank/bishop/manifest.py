@@ -48,9 +48,9 @@ class BishopManifest(RankManifest[Bishop]):
         )
         
     @property
-    def type_union(self) -> BishopTypeUnion:
-        return cast(BishopTypeUnion, super().type_union)
+    def types(self) -> BishopTypeUnion:
+        return cast(BishopTypeUnion, super().types)
     
     @property
-    def null_group(self) -> BishopNullGroup:
-        return cast(BishopNullGroup, super().null_group)
+    def nulls(self) -> BishopNullGroup:
+        return cast(BishopNullGroup, super().nulls)

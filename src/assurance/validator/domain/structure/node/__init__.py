@@ -1,13 +1,13 @@
-# src/assurance/validator/domain/structure/node/__init__.py
+# src/assurance/validator/structure/node/__init__.py
 
 """
-Module: assurance.validator.domain.node.__init__
+Module: assurance.validator.node.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ASSURANCE.VALIDATOR.DOMAIN.NODE PACKAGE ===========#
+# =========== ASSURANCE.VALIDATOR.NODE PACKAGE ===========#
 
 # Packages
 from .dossier import *

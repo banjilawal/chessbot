@@ -19,7 +19,7 @@ class ManeuverSignature(ABC, PawnSignature):
     """
     Role:
         - Computation Worker
-        -  Integrity Management
+        - Integrity Management
 
     Responsibilities:
         1.  Prevent ArrayIndexOutOfManeuver errors by calculating the last point in the direction

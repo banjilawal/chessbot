@@ -20,7 +20,7 @@ class CoordTree(Tree[Coord]):
     """
     Role:
         - Data Holder
-        -  Data protection
+        - Data protection
 
     Responsibilities:
         1.  Immutable unordered set of coords.

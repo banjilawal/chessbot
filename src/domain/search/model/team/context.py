@@ -32,7 +32,7 @@ class TeamContext(ModelContext[Team]):
         archetype: Optional[Archetype]
 
     Provides:
-        -  def to_dict() -> Dict[str, Any]
+        - def to_dict() -> Dict[str, Any]
 
     Super Class:
         ModelContext

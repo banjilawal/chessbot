@@ -18,7 +18,7 @@ class EuclideanDistance:
     """
     Role:
         - Worker
-        -  Computation
+        - Computation
 
     Responsibilities:
         1.  ComputationWorker the Euclidean distance between two Coords.
@@ -45,9 +45,9 @@ class EuclideanDistance:
         """
         Action:
             1.  Send an exception chain in the ComputationResult if:
-                -  The coord does not pass a validation check.
-                -  The scalar does not pass a validation check.
-                -  Their product does not satisfy the constraints of the Coord.
+                - The coord does not pass a validation check.
+                - The scalar does not pass a validation check.
+                - Their product does not satisfy the constraints of the Coord.
             2.  Otherwise, send the success result.
         Args:
             u: Coord,

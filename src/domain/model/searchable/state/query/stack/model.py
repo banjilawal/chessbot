@@ -23,13 +23,13 @@ class StackQuery(Query[T]):
     """
     Role:
         - Model
-        -  Search
-        -  Stateless Data-Holder
+        - Search
+        - Stateless Data-Holder
 
     Responsibilities:
         1.  Contains
-                -  The entity Stac[T]
-                -  The criteria for searching the list
+                - The entity Stac[T]
+                - The criteria for searching the list
         2.  Delivers it's contents to SearchRouter[T]
 
 

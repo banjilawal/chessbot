@@ -1,7 +1,7 @@
-# src/assurance/validator/domain/structure/node/validator.py
+# src/assurance/validator/structure/node/validator.py
 
 """
-Module: assurance.validator.domain.node.validator
+Module: assurance.validator.node.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Any, cast
 
-from assurance import Validator, NodeValidationBundle
+from assurance import Validator, NodeValidationToolkit
 from domain.structure.node import Node
 from artifcat import ValidationResult
 from util import LoggingLevelRouter
@@ -21,34 +21,34 @@ from util import LoggingLevelRouter
 class NodeValidator(Validator[Node]):
     """
     Role
-        -  Transaction Worker
-        -  Integrity Maintenance
-        -  Consistency Assurance
-        -  Validation Process Owner
+        - Transaction Worker
+        - Integrity Maintenance
+        - Consistency Assurance
+        - Validation Process Owner
 
     Responsibilities:
         1.  Ensure a Node instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        bundle: NodeValidatorBundle
+        toolkit: NodeValidatorToolkit
 
     Provides:
-        -  execute(self, candidate: Any) -> ValidationResult
+        - execute(self, candidate: Any) -> ValidationResult
 
     Super Class:
-        IntegrityValidator
+        Validator
     """
     
-    def __init__(self, bundle: NodeValidationBundle):
+    def __init__(self, toolkit: NodeValidationToolkit):
         """
         Args:
-            bundle: NodeValidatorBundle
+            toolkit: NodeValidatorToolkit
         """
-        super().__init__(bundle=bundle)
+        super().__init__(toolkit=toolkit)
     
     @property
-    def bundle(self) -> NodeValidationBundle:
-        return cast(NodeValidationBundle, super().bundle)
+    def toolkit(self) -> NodeValidationToolkit:
+        return cast(NodeValidationToolkit, super().toolkit)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

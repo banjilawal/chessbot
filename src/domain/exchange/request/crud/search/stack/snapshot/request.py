@@ -18,8 +18,8 @@ from domain import StackSearchRequest, Snapshot, SnapshotContext
 class SnapshotSearchRequest(StackSearchRequest[Snapshot]):
     """
      Role:
-         -  Messaging
-         -  Transport
+         - Messaging
+         - Transport
 
      Responsibilities:
         1. Provide a SnapshotStackService and criteria a SnapshotSearcher needs to run a job.

@@ -45,8 +45,10 @@ class TeamValidationToolkit(ModelValidationToolkit[Team]):
             helper: Optional[TeamManifest]
             metadata: Optional[TeamHelperTable]
         """
-        self._helper = helper or TeamHelperTable()
-        self._metadata = metadata or TeamManifest()
+        super().__init__(
+            helper=helper or TeamHelperTable(),
+            metadata=metadata or TeamManifest(),
+        )
     
     @property
     def helper(self) -> TeamHelperTable:

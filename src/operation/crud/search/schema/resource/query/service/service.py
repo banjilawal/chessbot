@@ -15,7 +15,7 @@ class SchemaQueryService(IntegrityMicroservice[SchemaQuery]):
     """
     Role:
         - Microservice API
-        -  Stateless Integrity Lifecycle Manager
+        - Stateless Integrity Lifecycle Manager
 
     Responsibilities:
         1.  Mutates SchemaQuery instances

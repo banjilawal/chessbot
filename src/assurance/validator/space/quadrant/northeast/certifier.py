@@ -25,30 +25,30 @@ from util import LoggingLevelRouter
 class NortheastQuadrantRootChecker(QuadrantRootChecker[NortheastQuadrant]):
     """
     Role
-        -  Integrity, Consistency Maintenance
+        - Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a NortheastQuadrantBlueprint instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        bundle: NortheastQuadrantToolkit
+        toolkit: NortheastQuadrantToolkit
 
     Provides:
-        -  execute(self, candidate: Any) -> ValidationResult:
+        - execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
         IntegrityChecker
     """
     
-    def __init__(self, bundle: NortheastQuadrantToolkit | None = NortheastQuadrantToolkit()):
+    def __init__(self, toolkit: NortheastQuadrantToolkit | None = NortheastQuadrantToolkit()):
         """
         Args:
-            bundle: NortheastQuadrantToolkit
+            toolkit: NortheastQuadrantToolkit
         """
-        super().__init__(bundle=bundle)
+        super().__init__(toolkit=toolkit)
     
     @property
-    def toolkit(self) -> NortheastQuadrantBundle:
+    def toolkit(self) -> NortheastQuadrantToolkit:
         return cast(NortheastQuadrantToolkit, super().ruleset)
     
     @LoggingLevelRouter.monitor
@@ -59,8 +59,8 @@ class NortheastQuadrantRootChecker(QuadrantRootChecker[NortheastQuadrant]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -  The validation_priming fails.
-                    -  Either the board, owner or id get flagged unsafe.
+                    - The validation_priming fails.
+                    - Either the board, owner or id get flagged unsafe.
             2.  Otherwise, send the success result.
         Args:
             candidate: Any,

@@ -20,8 +20,8 @@ class CoordQuery(StackQuery[Coord]):
     """
     Role:
         - Model
-        -  Search
-        -  Stateless Data-Holder
+        - Search
+        - Stateless Data-Holder
 
     Responsibilities:
         1.  A list of coords to search with context.

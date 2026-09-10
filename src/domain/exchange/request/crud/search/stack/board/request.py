@@ -18,8 +18,8 @@ from domain import StackSearchRequest, Board, BoardSearchContext
 class BoardSearchRequest(StackSearchRequest[Board]):
     """
      Role:
-         -  Messaging
-         -  Transport
+         - Messaging
+         - Transport
 
      Responsibilities:
         1. Provide a BoardStackService and criteria a BoardSearcher needs to run a job.

@@ -39,12 +39,12 @@ class QuadrantRootChecker(SpaceChecker, Generic[T]):
         SpaceRootChecker
     """
 
-    def __init__(self, bundle: QuadrantToolkit[T]):
+    def __init__(self, toolkit: QuadrantToolkit[T]):
         """
         Args:
-            bundle: QuadrantToolkit[T]
+            toolkit: QuadrantToolkit[T]
         """
-        super().__init__(bundle=bundle)
+        super().__init__(toolkit=toolkit)
     
     @property
     def toolkit(self) -> QuadrantToolkit[T]:

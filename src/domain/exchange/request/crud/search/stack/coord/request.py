@@ -18,8 +18,8 @@ from domain import StackSearchRequest, Coord, CoordSearchContext
 class CoordSearchRequest(StackSearchRequest[Coord]):
     """
      Role:
-         -  Messaging
-         -  Transport
+         - Messaging
+         - Transport
 
      Responsibilities:
         1. Provide a CoordStackService and criteria a CoordSearcher needs to run a job.

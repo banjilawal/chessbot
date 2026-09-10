@@ -17,8 +17,8 @@ from domain.exchange.model import PawnToken, Rank
 class PromotionRequest(TokenServiceRequest):
     """
      Role:
-         -  Messaging
-         -  Data Transport
+         - Messaging
+         - Data Transport
 
      Responsibilities:
         1.  Provide information the PromotionPermitter needs to elevate a pawn's rank.

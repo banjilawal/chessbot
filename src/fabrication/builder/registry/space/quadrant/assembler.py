@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 class QuadrantReservoirBuilder(SpaceReservoirBuilder[QuadrantReservoir]):
     """
     Role
-        -  Builder
+        - Builder
 
     Responsibilities:
         1.  Create a SpaceReservoir instance from the safe blueprint.

@@ -48,9 +48,9 @@ class CoordManifest(ObjectManifest[Coord]):
         )
         
     @property
-    def type_union(self) -> CoordTypeUnion:
-        return cast(CoordTypeUnion, super().type_union)
+    def types(self) -> CoordTypeUnion:
+        return cast(CoordTypeUnion, super().types)
     
     @property
-    def null_group(self) -> CoordNullGroup:
-        return cast(CoordNullGroup, super().null_group)
+    def nulls(self) -> CoordNullGroup:
+        return cast(CoordNullGroup, super().nulls)

@@ -39,7 +39,7 @@ class MathToolkit(Toolkit):
          Toolkit
          
     Notes:
-        -  VectorAlgebraToolkit does not extend ModelOperationSuite because an OperationSuite needs a Type.
+        - VectorAlgebraToolkit does not extend ModelOperationSuite because an OperationSuite needs a Type.
      """
     coord: CoordOperationSuite = CoordOperationSuite()
     scalar: ScalarOperationSuite = ScalarOperationSuite()

@@ -17,8 +17,8 @@ from operation import Operator
 class WorkerRegistry:
     """
     Role
-        -  Controller
-        -  Publisher
+        - Controller
+        - Publisher
     
     Responsibilities:
         1.  Dynamic, entry and removal of public operations available for building toolkits.

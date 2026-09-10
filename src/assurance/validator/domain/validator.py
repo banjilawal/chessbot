@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
-from assurance import ValidationBundle, Validator
+from assurance import ValidationToolkit, Validator
 from artifcat import ValidationResult
 from domain import DomainDataObject
 from util import LoggingLevelRouter
@@ -24,9 +24,9 @@ T = TypeVar("T", bound="DomainDataObject")
 class DomainObjectValidator(Validator[T], ABC, Generic[T]):
     """
     Role
-        -  Validator
-        -  Integrity Assurance
-        -  Consistency Assurance
+        - Validator
+        - Integrity Assurance
+        - Consistency Assurance
 
     Responsibilities:
         1.  Run integrity checks on an object or its blueprint encapsulated inside their
@@ -35,27 +35,27 @@ class DomainObjectValidator(Validator[T], ABC, Generic[T]):
         3.  Pluggable validation module.
 
     Attributes:
-        bundle: ValidationBundle[T]
+        toolkit: ValidationToolkit[T]
 
     Provides:
         - def execute(candidate: Any) -> ValidationResult[Blueprint[T]|T]:
 
     Super Class:
     """
-    _bundle: ValidationBundle[T]
+    _toolkit: ValidationToolkit[T]
     
     
-    def __init__(self, bundle: ValidationBundle[T]):
+    def __init__(self, toolkit: ValidationToolkit[T]):
         """
         Args:
-            bundle: ValidationBundle[T]
+            toolkit: ValidationToolkit[T]
         """
-        super().__init__(bundle=bundle)
+        super().__init__(toolkit=toolkit)
         
         
     @property
-    def bundle(self) -> ValidationBundle[T]:
-        return cast(ValidationBundle, super().bundle)
+    def toolkit(self) -> ValidationToolkit[T]:
+        return cast(ValidationToolkit, super().toolkit)
     
     @abstractmethod
     @LoggingLevelRouter.monitor
@@ -67,7 +67,7 @@ class DomainObjectValidator(Validator[T], ABC, Generic[T]):
         Returns:
            ValidationResult[T]
         Raises:
-            IntegrityCheckerException
+            ValidatorException
         """
         pass
     

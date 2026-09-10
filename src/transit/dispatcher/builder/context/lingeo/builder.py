@@ -20,10 +20,10 @@ from operation.toolkit import VectorContextToolkit
 class VectorContextBuilder(Builder[CartesianToggle]):
     """
     Role
-        -  Transaction Worker
-        -  Integrity Maintenance
-        -  Consistency Assurance
-        -  Build Process Owner
+        - Transaction Worker
+        - Integrity Maintenance
+        - Consistency Assurance
+        - Build Process Owner
 
    Responsibilities:
         1.  Ensure a new VectorContext instance is born safe and reliable.
@@ -52,9 +52,9 @@ class VectorContextBuilder(Builder[CartesianToggle]):
 
         Action:
             1.  Send an exception in the BuildResult any of these conditions occur.
-                    -  Both options are enabled.
-                    -  Neither option is enabled.
-                    -  Whichever attribute is set gets flgged by its validator.
+                    - Both options are enabled.
+                    - Neither option is enabled.
+                    - Whichever attribute is set gets flgged by its validator.
             2.  Otherwise, build the VectorContext.
             3.  Send the success result.
         Args:

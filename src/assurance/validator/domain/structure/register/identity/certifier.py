@@ -1,7 +1,7 @@
-# src/assurance/validator/domain/structure/register/identity/validator.py
+# src/assurance/validator/structure/register/identity/validator.py
 
 """
-Module: assurance.validator.domain.register.identity.validator
+Module: assurance.validator.register.identity.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -23,32 +23,32 @@ from util import LoggingLevelRouter
 class IdentityRegisterValidator(Validator[IdentityRegister]):
     """
     Role
-        -  Transaction Worker
-        -  Operation Maintenance
-        -  Consistency Assurance
-        -  Validation Process Owner
+        - Transaction Worker
+        - Operation Maintenance
+        - Consistency Assurance
+        - Validation Process Owner
 
     Responsibilities:
         1.  Ensure a VectorRegister instance is certified safe, reliable and consistent
             before use in a binary arithmetic operation.
 
     Attributes:
-        bundle: IdentityRegisterToolkit   
+        toolkit: IdentityRegisterToolkit   
     Properties:
-        -  execute(candidate: Any,) -> ValidationResult
+        - execute(candidate: Any,) -> ValidationResult
 
     Super Class:
-        IntegrityValidator
+        Validator
     """
     def __init__(
             self, 
-            bundle: IdentityRegisterToolkit | None = IdentityRegisterToolkit()
+            toolkit: IdentityRegisterToolkit | None = IdentityRegisterToolkit()
     ):
-        super().__init__(bundle=bundle)
+        super().__init__(toolkit=toolkit)
         
     @property
-    def toolkit(self) -> IdentityRegisterBundle:
-        return cast(IdentityRegisterToolkit, super().bundle)
+    def toolkit(self) -> IdentityRegisterToolkit:
+        return cast(IdentityRegisterToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any,) -> ValidationResult:
@@ -58,9 +58,9 @@ class IdentityRegisterValidator(Validator[IdentityRegister]):
         Action:
             1.  Send an exception in the ValidationResult any of these
                 conditions occur.
-                    -  Validator priming fails.
-                    -  The vectorRegister's payload is flagged unsafe.
-                    -  There is a mismatch between the contexts.
+                    - Validator priming fails.
+                    - The vectorRegister's payload is flagged unsafe.
+                    - There is a mismatch between the contexts.
             3.  Otherwise, Send the success result.
         Args:
             candidate: Any
@@ -93,7 +93,7 @@ class IdentityRegisterValidator(Validator[IdentityRegister]):
         blueprint = cast(self.toolkit.blueprint_model, candidate)
         
         # Handle the case that, the id is not safe.
-        id_validation_result = self.toolkit.number_validator.execute(blueprint.id)
+        id_validation_result = self.toolkit.helper.number_validator.execute(blueprint.id)
         if validator_priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

@@ -19,7 +19,7 @@ class CoordContextService(IntegrityMicroservice[CoordContext]):
     """
     Role:
         - Microservice API
-        -  Stateless Integrity Lifecycle Manager
+        - Stateless Integrity Lifecycle Manager
 
     Responsibilities:
         1.  Mutates CoordContext instances

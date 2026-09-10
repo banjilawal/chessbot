@@ -48,9 +48,9 @@ class TokenManifest(ObjectManifest[Token]):
         )
         
     @property
-    def type_union(self) -> TokenTypeUnion:
-        return cast(TokenTypeUnion, super().type_union)
+    def types(self) -> TokenTypeUnion:
+        return cast(TokenTypeUnion, super().types)
     
     @property
-    def null_group(self) -> TokenNullGroup:
-        return cast(TokenNullGroup, super().null_group)
+    def nulls(self) -> TokenNullGroup:
+        return cast(TokenNullGroup, super().nulls)

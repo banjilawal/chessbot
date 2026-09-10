@@ -20,7 +20,7 @@ class Path(SearchableModel):
     """
     Role:
         - Model
-        -  Searchableful Data Holder
+        - Searchableful Data Holder
 
     Responsibilities:
         1.  Adds a label and cost to a SquareRegister.

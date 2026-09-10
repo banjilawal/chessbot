@@ -11,7 +11,6 @@ version: 0.0.2
 
 # Packages
 
-from .model import *
 from .search import *
 from .structure import *
 

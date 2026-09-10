@@ -23,10 +23,10 @@ from util import LoggingLevelRouter
 class VectorBuilder(ModelBuilder[Vector]):
     """
     Role
-        -  Build Pipeline
-        -  Integrity Management
-        -  Consistency Assurance
-        -  Workflow Owner
+        - Build Pipeline
+        - Integrity Management
+        - Consistency Assurance
+        - Workflow Owner
 
    Responsibilities:
         1.  Ensure a new Vector instance is born safe and reliable.
@@ -63,8 +63,8 @@ class VectorBuilder(ModelBuilder[Vector]):
 
         Action:
             1.  Send an exception chain in the BuildResult if either
-                    -  The VectorBlueprint object is flagged unsafe.
-                    -  The assembler does not return a product.
+                    - The VectorBlueprint object is flagged unsafe.
+                    - The assembler does not return a product.
             2.  Otherwise, cast the assembler product as a Vector then, send in the success result,
         Args:
             blueprint: VectorBlueprint

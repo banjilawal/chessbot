@@ -22,7 +22,7 @@ class EastAxisEndpointBuilder:
     """
     Role:
         - Builder
-        -  Integrity Management
+        - Integrity Management
 
     Responsibilities:
         1.  Create a VectoRegister for an Axis endpoints.

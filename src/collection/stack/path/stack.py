@@ -26,10 +26,10 @@ class PathStackService(StackService[PathEvent]):
     """
     Role:
         - API
-        -  ACID compliance
-        -  Stateful microservice
-        -  Stateful CRUD Controller
-        -  Operations Provider
+        - ACID compliance
+        - Stateful microservice
+        - Stateful CRUD Controller
+        - Operations Provider
 
     Responsibilities:
         1.  Baremetal service request API for Path collections.
@@ -53,15 +53,15 @@ class PathStackService(StackService[PathEvent]):
         ops_controller: PathStackOpsController
 
     Provides:
-        -  is_empty() -> bool
-        -  is_being_deployed() -> bool
-        -  is_deployed_on_board() -> bool
-        -  pop() -> DeletionResult[PathEvent]
-        -  push(item: Path) -> InsertionResult
-        -  is_ready_for_deployment() -> bool
-        -  is_getting_ready_for_deployment() -> bool
-        -  delete_by_id(id: int) -> DeletionResult[PathEvent]
-        -  context(context: Context[PathEvent]) -> SearchResult[List[PathEvent]]
+        - is_empty() -> bool
+        - is_being_deployed() -> bool
+        - is_deployed_on_board() -> bool
+        - pop() -> DeletionResult[PathEvent]
+        - push(item: Path) -> InsertionResult
+        - is_ready_for_deployment() -> bool
+        - is_getting_ready_for_deployment() -> bool
+        - delete_by_id(id: int) -> DeletionResult[PathEvent]
+        - context(context: Context[PathEvent]) -> SearchResult[List[PathEvent]]
 
     Super Class:
         StackService

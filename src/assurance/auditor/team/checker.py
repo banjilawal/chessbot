@@ -23,7 +23,7 @@ from assurance.auditor import  ConsistencyAuditor
 class TeamConsistencyAuditor(ConsistencyAuditor[Team]):
     """
     Role
-        -  Integrity, Consistency Maintenance
+        - Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a Team instance is certified safe, reliable and consistent before use.
@@ -50,11 +50,11 @@ class TeamConsistencyAuditor(ConsistencyAuditor[Team]):
 
         Action:
             1.  Send an exception chain in the ValidationResult any of the cases occur:
-                    -  Candidate is null
-                    -  It's not a number.
+                    - Candidate is null
+                    - It's not a number.
                     _   A Team check fails
-                    -  A Rank check fails
-                    -  Identity check fails
+                    - A Rank check fails
+                    - Identity check fails
             2.  Otherwise, send the success result.
         Args:
             candidate: Any

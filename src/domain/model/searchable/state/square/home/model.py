@@ -17,8 +17,8 @@ class HomeSquare(Square):
     """
     Role:
         - Model
-        -  Addressing
-        -  Stateful Data Holder
+        - Addressing
+        - Stateful Data Holder
 
     Responsibilities:
         1.  Square Which a token claims before it can make its home move.

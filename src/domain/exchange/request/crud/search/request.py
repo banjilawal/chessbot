@@ -23,8 +23,8 @@ T = TypeVar("T", bound="DomainDataObject")
 class SearchRequest(CrudRequest[SearchResult], ABC, Generic[T]):
     """
      Role:
-         -  Messaging
-         -  Transport
+         - Messaging
+         - Transport
 
      Responsibilities:
          1. Transport information during the CrudOperation lifecycle.

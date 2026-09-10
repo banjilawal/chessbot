@@ -20,7 +20,7 @@ class PawnOffsetPattern(ABC, OffsetSignature[Pawn]):
     """
     Role:
         - Data Holder
-        -  Immutability
+        - Immutability
 
     Responsibilities:
         1.  Determine potential destinations from PawnToken's current position.

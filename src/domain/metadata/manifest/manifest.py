@@ -50,9 +50,9 @@ class ObjectManifest(ABC, Generic[T]):
         self._null_group = null_group
         
     @property
-    def type_union(self) -> TypeUnion[T]:
+    def types(self) -> TypeUnion[T]:
         return self._type_union
     
     @property
-    def null_group(self) -> NullExceptionGroup:
+    def nulls(self) -> NullExceptionGroup:
         return self._null_group

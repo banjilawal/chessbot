@@ -26,8 +26,8 @@ class AxisMappingFunction(SpaceMappingFunction, Generic[T]):
 
     Responsibilities:
         1.  Get the next vector, V, after U in Axis Space, by addition of a delta_vector
-                -  V.x = U.x + delta.x
-                -  V.y = U.x + delta.y
+                - V.x = U.x + delta.x
+                - V.y = U.x + delta.y
 
     Attributes:
         delta: Vector

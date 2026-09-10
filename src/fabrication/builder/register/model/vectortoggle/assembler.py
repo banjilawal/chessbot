@@ -21,7 +21,7 @@ class CartesianToggleRegisterBuilder(
 ):
     """
     Role
-        -  Builder
+        - Builder
 
     Responsibilities:
         1.  Create a CartesianToggleRegister instance from the safe blueprint.

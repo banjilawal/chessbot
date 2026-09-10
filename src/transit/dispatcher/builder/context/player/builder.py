@@ -23,10 +23,10 @@ from logic.agent import (
 class PlayerContextBuilder(Builder[PlayerContextBuilder]):
     """
     Role
-        -  Transaction Worker
-        -  Integrity Maintenance
-        -  Consistency Assurance
-        -  Build Process Owner
+        - Transaction Worker
+        - Integrity Maintenance
+        - Consistency Assurance
+        - Build Process Owner
 
    Responsibilities:
         1.  Ensure a new Token instance is born safe and reliable.

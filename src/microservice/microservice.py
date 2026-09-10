@@ -19,9 +19,9 @@ class Microservice(ABC, Generic[T]):
     """
     Role:
         - API
-        -  Lifecycle Manager
-        -  Operations Provider
-        -  Stateless Microservice
+        - Lifecycle Manager
+        - Operations Provider
+        - Stateless Microservice
         
     About:
         Avoids casting an entity's builders and validators by making them abstract

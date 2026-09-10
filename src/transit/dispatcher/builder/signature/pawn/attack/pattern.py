@@ -17,7 +17,7 @@ class AttackSignature(PawnSignature):
     """
     Role:
         - Data Holder
-        -  Immutability
+        - Immutability
 
     Responsibilities:
         1.  Determine potential attack destinations from PawnToken's current position.

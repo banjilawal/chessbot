@@ -25,7 +25,7 @@ class TokenPopRequestAdjudicator(PopRequestAdjudicator):
     """
     Role:
         - Helper
-        -  Test Runner
+        - Test Runner
         
     Responsibilities:
         1.  Check if the subject is a pop that can be promoted.
@@ -63,10 +63,10 @@ class TokenPopRequestAdjudicator(PopRequestAdjudicator):
         
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following occur:
-                    -  The subject is flagged unsafe.
-                    -  The subject is not a free pop.
-                    -  The pop has already been promoted.
-                    -  Is not on its enemy's rank_row.
+                    - The subject is flagged unsafe.
+                    - The subject is not a free pop.
+                    - The pop has already been promoted.
+                    - Is not on its enemy's rank_row.
             2.  Otherwise, Send the success result.
         Args:
             candidate: Any

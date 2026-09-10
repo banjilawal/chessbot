@@ -24,8 +24,8 @@ class SchemaQueryStackEmptyException(DebugException):
     """
     Role:
         - Error Variable Identifier
-        -  Exception Chain Layer 2,
-        -  Exception Messaging
+        - Exception Chain Layer 2,
+        - Exception Messaging
 
     Responsibilities:
         1.  Indicate that the SchemaQuery validation failed because the schema is empty.

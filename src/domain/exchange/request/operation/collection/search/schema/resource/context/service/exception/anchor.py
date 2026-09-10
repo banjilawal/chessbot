@@ -28,7 +28,7 @@ class SchemaContextServiceException(ServiceException):
     """
     Role:
         - Exception Chain Layer 0
-        -  Exception coverage target
+        - Exception coverage target
 
     Responsibilities:
         1.  Anchors SchemaContextService debug (layer-2) information.

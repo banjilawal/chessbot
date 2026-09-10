@@ -28,7 +28,7 @@ class PathContext(ModelContext[Path]):
         destination: Optional[Square]
 
     Provides:
-        -  def to_dict() -> Dict[str, Any]
+        - def to_dict() -> Dict[str, Any]
 
     Super Class:
         ModelContext

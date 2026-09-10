@@ -52,7 +52,7 @@ class PawnToken(CombatantToken):
         is_promoted: bool
         
     Provides:
-        -  set_new_rank(new_rank: Rank):
+        - set_new_rank(new_rank: Rank):
         
     Super Class:
         CombatantToken

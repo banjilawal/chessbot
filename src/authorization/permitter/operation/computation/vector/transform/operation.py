@@ -17,7 +17,7 @@ class VectorTransform(Computation[CartesianToggle]):
     """
     Role:
         - Operation
-        -  Transformer
+        - Transformer
 
     Responsibilities:
         1.  Bidirectional Coord<->Vector converter.
@@ -61,9 +61,9 @@ class VectorTransform(Computation[CartesianToggle]):
         Action:
             1.  Send an exception chain in the ComputationResult if any of
                 these conditions occur
-                    -  The operand is null
-                    -  The operand is flagged unsafe.
-                    -  Building the other type fails.
+                    - The operand is null
+                    - The operand is flagged unsafe.
+                    - Building the other type fails.
             2.  Otherwise, send the success result.
         Args:
             context: AlgebraContext

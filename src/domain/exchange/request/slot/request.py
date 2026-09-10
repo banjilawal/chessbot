@@ -17,8 +17,8 @@ from collection.stack import TokenStackService
 class RankSlotRequest(Request):
     """
      Role:
-         -  Messaging
-         -  Data Transport
+         - Messaging
+         - Data Transport
 
      Responsibilities:
         1.  Provide information the SlotPermitter needs to approve or deny removing an item

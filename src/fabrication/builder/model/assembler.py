@@ -23,7 +23,7 @@ T = TypeVar("T", bound="Model")
 class ModelBuilder(Builder, Generic[T]):
     """
     Role
-        -  Builder
+        - Builder
 
     Responsibilities:
         1.  Create a Model instance from the safe blueprint.

@@ -21,7 +21,7 @@ class EastAxisRecurrence(AxisRecurrence[EastAxis]):
     """
     Role:
         - Computation
-        -  Iterator
+        - Iterator
 
     Responsibilities:
         1.  Provide a recurrence relation for iterating to the next EastAxis vector.

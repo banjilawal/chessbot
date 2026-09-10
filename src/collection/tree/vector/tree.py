@@ -20,7 +20,7 @@ class VectorTree(Tree[Vector]):
     """
     Role:
         - Data Holder
-        -  Data protection
+        - Data protection
 
     Responsibilities:
         1.  Immutable unordered set of vectors.

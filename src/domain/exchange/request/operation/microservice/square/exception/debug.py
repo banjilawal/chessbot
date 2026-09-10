@@ -23,8 +23,8 @@ class TokenVisitHandlerDebugException(DebugException):
     """
     Role:
         - Capture Error Variable State
-        -  Exception Chain Layer 2
-        -  Exception Messaging
+        - Exception Chain Layer 2
+        - Exception Messaging
 
     Responsibilities:
         1.  Produce the:

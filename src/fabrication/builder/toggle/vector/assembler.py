@@ -20,7 +20,7 @@ from util import LoggingLevelRouter
 class CartesianToggleBuilder(ToggleBuilder[CartesianToggle]):
     """
     Role
-        -  Builder
+        - Builder
 
     Responsibilities:
         1.  Create a CartesianToggle instance from the safe blueprint.

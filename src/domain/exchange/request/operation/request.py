@@ -20,7 +20,7 @@ T = TypeVar("T", bound="Operation")
 class OldRequest(Request, ABC, Generic[T]):
     """
      Role:
-         -  Messaging
+         - Messaging
 
      Responsibilities:
          1. Transport job information throughout the Operation lifecycle.

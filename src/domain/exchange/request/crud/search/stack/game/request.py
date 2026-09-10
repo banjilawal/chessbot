@@ -18,8 +18,8 @@ from domain import StackSearchRequest, Game, GameSearchContext
 class GameSearchRequest(StackSearchRequest[Game]):
     """
      Role:
-         -  Messaging
-         -  Transport
+         - Messaging
+         - Transport
 
      Responsibilities:
         1. Provide a GameStackService and criteria a GameSearcher needs to run a job.

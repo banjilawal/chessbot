@@ -48,9 +48,9 @@ class KingManifest(RankManifest[King]):
         )
         
     @property
-    def type_union(self) -> KingTypeUnion:
-        return cast(KingTypeUnion, super().type_union)
+    def types(self) -> KingTypeUnion:
+        return cast(KingTypeUnion, super().types)
     
     @property
-    def null_group(self) -> KingNullGroup:
-        return cast(KingNullGroup, super().null_group)
+    def nulls(self) -> KingNullGroup:
+        return cast(KingNullGroup, super().nulls)

@@ -21,10 +21,10 @@ from domain.model import (
 class SchemaContextValidator(Validator[SchemaContext]):
     """
     Role
-        -  Transaction Worker
-        -  Integrity Maintenance
-        -  Consistency Assurance
-        -  Process Runner
+        - Transaction Worker
+        - Integrity Maintenance
+        - Consistency Assurance
+        - Process Runner
 
     Responsibilities:
         1.  Ensure a SchemaContext instance is certified safe, reliable and consistent before use.
@@ -53,12 +53,12 @@ class SchemaContextValidator(Validator[SchemaContext]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -  The rank is null.
-                    -  The rank is not a SchemaContext.
-                    -  It has no attributes enabled.
-                    -  It has more than one attribute enabled.
-                    -  The enabled attribute fails a safety check.
-                    -  There is no validation path for the attribute.
+                    - The rank is null.
+                    - The rank is not a SchemaContext.
+                    - It has no attributes enabled.
+                    - It has more than one attribute enabled.
+                    - The enabled attribute fails a safety check.
+                    - There is no validation path for the attribute.
             2.  Otherwise, send the success result.
         Args:
             candidate: Any,

@@ -32,7 +32,7 @@ class SquareContext(ModelContext[Square]):
         square_type: Optional[SquareType]
             
     Provides:
-        -  to_dict() -> Dict[str, Any]
+        - to_dict() -> Dict[str, Any]
 
     Super Class:
         ModelContext

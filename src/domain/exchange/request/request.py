@@ -20,8 +20,8 @@ T = TypeVar("T", bound="Result")
 class Request(ABC, Generic[T]):
     """
      Role:
-         -  Messaging
-         -  Transport
+         - Messaging
+         - Transport
 
      Responsibilities:
          1. Transport data objects and other resources an Operation needs to run a job.

@@ -19,7 +19,7 @@ class Zone(Enum):
     """
     Role:
         - Addressing
-        -  Data-Holder
+        - Data-Holder
   
     Responsibilities:
         1.  Provide global, low-level addressing squares and tokens on the board.

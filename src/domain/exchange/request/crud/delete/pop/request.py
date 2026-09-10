@@ -20,8 +20,8 @@ T = TypeVar("T", bound="StateModel")
 class PopStackRequest(DeleteItemRequest, ABC, Generic[T]):
     """
      Role:
-         -  Messaging
-         -  Transport
+         - Messaging
+         - Transport
 
      Responsibilities:
          1. Transport information during the CrudOperation lifecycle.

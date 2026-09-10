@@ -18,8 +18,8 @@ from domain import StackSearchRequest, Rank, RankContext
 class RankSearchRequest(StackSearchRequest[Rank]):
     """
      Role:
-         -  Messaging
-         -  Transport
+         - Messaging
+         - Transport
 
      Responsibilities:
         1. Provide a RankStackService and criteria a RankSearcher needs to run a job.

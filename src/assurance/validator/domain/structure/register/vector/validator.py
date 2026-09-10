@@ -1,7 +1,7 @@
-# src/assurance/validator/domain/structure/register/carrier/validator.py
+# src/assurance/validator/structure/register/carrier/validator.py
 
 """
-Module: assurance.validator.domain.register.carrier.validator
+Module: assurance.validator.register.carrier.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -25,33 +25,33 @@ from util import LoggingLevelRouter
 class VectorRegisterValidator(Validator[VectorRegister]):
     """
     Role
-        -  Integrity Maintenance
-        -  Consistency Assurance
+        - Integrity Maintenance
+        - Consistency Assurance
 
 
     Responsibilities:
         1.  Ensure a VectorRegisterBlueprint instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        bundle: VectorRegisterToolkit
+        toolkit: VectorRegisterToolkit
 
     Provides:
-        -  execute(self, candidate: Any) -> ValidationResult:
+        - execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
-        IntegrityValidator
+        Validator
     """
     
-    def __init__(self, bundle: VectorRegisterToolkit | None = VectorRegisterToolkit()):
+    def __init__(self, toolkit: VectorRegisterToolkit | None = VectorRegisterToolkit()):
         """
         Args:
-            bundle: VectorRegisterToolkit
+            toolkit: VectorRegisterToolkit
         """
-        super().__init__(bundle=bundle)
+        super().__init__(toolkit=toolkit)
     
     @property
-    def toolkit(self) -> VectorRegisterBundle:
-        return cast(VectorRegisterToolkit, super().bundle)
+    def toolkit(self) -> VectorRegisterToolkit:
+        return cast(VectorRegisterToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate, Any) -> ValidationResult[VectorRegister|VectorRegisterBlueprint]:
@@ -61,9 +61,9 @@ class VectorRegisterValidator(Validator[VectorRegister]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -  The candidate is not a VectorRegisterDtoCarrier.
-                    -  The candidate is an empty VectorRegisterDtoCarrier.
-                    -  Either the board, team, formation, rank or id get flagged unsafe.
+                    - The candidate is not a VectorRegisterCarrier.
+                    - The candidate is an empty VectorRegisterCarrier.
+                    - Either the board, team, formation, rank or id get flagged unsafe.
             2.  For a model_carrier send a VectorRegister in the success result. Otherwise, send
                 the VectorRegisterBlueprint.
         Args:

@@ -25,7 +25,7 @@ class CollectionPermitter(OperationPermitter, ABC, Generic[T]):
     """
     Role:
         - Permission Authorization
-        -  Integrity Maintenance
+        - Integrity Maintenance
         _   Consistency Assurance
 
     Responsibilities:
@@ -38,7 +38,7 @@ class CollectionPermitter(OperationPermitter, ABC, Generic[T]):
         priming_validator: PrimingValidator
         
     Provides:
-        -   def execute(self, request: Request) -> RequestDecision
+        -  def execute(self, request: Request) -> RequestDecision
 
     Super Class:
     """

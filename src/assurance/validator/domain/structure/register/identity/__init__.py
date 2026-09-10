@@ -1,13 +1,13 @@
-# src/assurance/validator/domain/structure/register/identity/__init__.py
+# src/assurance/validator/structure/register/identity/__init__.py
 
 """
-Module: assurance.validator.domain.register.identity.__init__
+Module: assurance.validator.register.identity.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ASSURANCE.VALIDATOR.DOMAIN.REGISTER.IDENTITY PACKAGE ===========#
+# =========== ASSURANCE.VALIDATOR.REGISTER.IDENTITY PACKAGE ===========#
 
 # Packages
 

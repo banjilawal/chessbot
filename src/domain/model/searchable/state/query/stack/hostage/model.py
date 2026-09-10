@@ -19,8 +19,8 @@ class HostageQuery(StackQuery[Hostage]):
     """
     Role:
         - Model
-        -  Search
-        -  Stateless Data-Holder
+        - Search
+        - Stateless Data-Holder
 
     Responsibilities:
         1.  A list of hostages to search with context.

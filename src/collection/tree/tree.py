@@ -21,7 +21,7 @@ class Tree(ABC, Generic[T]):
     """
     Role:
         - Data Holder
-        -  Data protection
+        - Data protection
         
     Responsibilities:
         1.  Immutable unordered set of items.

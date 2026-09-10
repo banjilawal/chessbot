@@ -21,7 +21,7 @@ T = TypeVar("T", bound="Result")
 class VectorComputationRequest(ComputationRequest):
     """
      Role:
-         -  Messaging
+         - Messaging
 
      Responsibilities:
          1. Transport job information to execute an operation

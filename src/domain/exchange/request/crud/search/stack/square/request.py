@@ -18,8 +18,8 @@ from domain import StackSearchRequest, Square, SquareSearchContext
 class SquareSearchRequest(StackSearchRequest[Square]):
     """
      Role:
-         -  Messaging
-         -  Transport
+         - Messaging
+         - Transport
 
      Responsibilities:
         1. Provide a SquareStackService and criteria a SquareSearcher needs to run a job.

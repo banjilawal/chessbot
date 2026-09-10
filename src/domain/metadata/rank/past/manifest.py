@@ -48,9 +48,9 @@ class ArenaManifest(ObjectManifest[Arena]):
         )
         
     @property
-    def type_union(self) -> ArenaTypeUnion:
-        return cast(ArenaTypeUnion, super().type_union)
+    def types(self) -> ArenaTypeUnion:
+        return cast(ArenaTypeUnion, super().types)
     
     @property
-    def null_group(self) -> ArenaNullGroup:
-        return cast(ArenaNullGroup, super().null_group)
+    def nulls(self) -> ArenaNullGroup:
+        return cast(ArenaNullGroup, super().nulls)

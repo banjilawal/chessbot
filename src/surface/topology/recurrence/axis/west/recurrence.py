@@ -21,7 +21,7 @@ class WestAxisRecurrence(AxisRecurrence[WestAxis]):
     """
     Role:
         - Computation
-        -  Iterator
+        - Iterator
 
     Responsibilities:
         1.  Provide a recurrence relation for iterating to the next WestAxis vector.

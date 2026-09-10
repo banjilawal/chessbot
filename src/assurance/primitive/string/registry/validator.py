@@ -24,10 +24,10 @@ from util import LoggingLevelRouter
 class RegistryEntryNameValidator(Validator):
     """
     Role
-        -  Transaction Worker
-        -  Integrity Maintenance
-        -  Consistency Assurance
-        -  Validation Process Owner
+        - Transaction Worker
+        - Integrity Maintenance
+        - Consistency Assurance
+        - Validation Process Owner
 
     Responsibilities:
         1.  Ensure registry entry names and domains are valida strings.
@@ -35,7 +35,7 @@ class RegistryEntryNameValidator(Validator):
     Attributes:
 
     Provides:
-       -   execute(
+       -  execute(
                 candidates: List[str],
                 name_validator: NameValidator,
                 priming_validator: PrimingValidator,
@@ -58,9 +58,9 @@ class RegistryEntryNameValidator(Validator):
 
         Action:
             1.  Send an exception chain in the ValidationResult if ay of the following occur
-                    -  The candidates is not a List or its empty.
-                    -  The names are not in a List.
-                    -  Any name in the list fails string validator.
+                    - The candidates is not a List or its empty.
+                    - The names are not in a List.
+                    - Any name in the list fails string validator.
             2.  Otherwise, send the success result.
         Args:
             candidates: List[str]

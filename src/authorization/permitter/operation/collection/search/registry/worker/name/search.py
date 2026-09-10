@@ -24,7 +24,7 @@ from operation import Operator, RegistryEntryNameValidator
 class WorkerRegistryNameSearch(Operator):
     """
     Role
-        -  Search Worker
+        - Search Worker
 
     Responsibilities:
         1.  Search the WorkerRegistry for an operation.
@@ -60,8 +60,8 @@ class WorkerRegistryNameSearch(Operator):
                 or the name is not a valid String.
             2.  Otherwise, search the WorkerRegistry for the operation. If either of the following occurs,
                 send an empty SearchResult:
-                    -  The domain does not exist.
-                    -  The operation does not exist in the domain.
+                    - The domain does not exist.
+                    - The operation does not exist in the domain.
                 Else, send the operation in a SearchResult.
         Args:
             domain: str

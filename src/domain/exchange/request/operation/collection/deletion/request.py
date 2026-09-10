@@ -22,7 +22,7 @@ C = TypeVar("C", bound="Collection")
 class CollectionDeletionRequest(CollectionRequest[CollectionDeletion], ABC, Generic[T]):
     """
      Role:
-         -  Messaging
+         - Messaging
 
      Responsibilities:
          1. Transport job information throughout the DeletionOperation lifecycle.

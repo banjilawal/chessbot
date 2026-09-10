@@ -17,7 +17,7 @@ class TrimHeadByOffsetRequest(ChainOffsetRequest):
     """
     Role:
         - Request
-        -  Data Transport
+        - Data Transport
     
     Responsibilities:
         1. Carry information for running a ChainTrimByHead operation.

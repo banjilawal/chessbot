@@ -24,7 +24,7 @@ class Suite(ABC):
     """
     Role:
         - Dependency Container
-        -  Dynamic Dependency Provider
+        - Dynamic Dependency Provider
         
     Responsibilities:
 
@@ -35,6 +35,6 @@ class Suite(ABC):
     Super Class:
         
     Notes:
-        -  Suite for an empty class which makes managing toolkits easier.
-        -  Any toolkits for a suite should be a Suite subclass.
+        - Suite for an empty class which makes managing toolkits easier.
+        - Any toolkits for a suite should be a Suite subclass.
     """

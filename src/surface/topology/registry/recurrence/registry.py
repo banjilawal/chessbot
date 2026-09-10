@@ -22,8 +22,8 @@ class RecurrenceRegistry(ABC, Generic[T]):
     """
     Role:
         - Data Holder
-        -  Factory
-        -  Switcher
+        - Factory
+        - Switcher
 
     Responsibilities:
         1.  Create an immuregistry set of recurrence relations for batch vector transformations in a space.

@@ -24,7 +24,7 @@ T = TypeVar("T", bound="DeleteRequest")
 class Delete(CrudOperator[T], ABC, Generic[T]):
     """
     Role
-        -  Worker
+        - Worker
 
     Responsibilities:
         1.  Process an DeleteRequest.

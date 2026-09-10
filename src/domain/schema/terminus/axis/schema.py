@@ -18,7 +18,7 @@ class AxisTerminus(Enum):
     """
     Role:
         - Configuration Table
-        -  Metadata Set
+        - Metadata Set
 
 
     Responsibilities:

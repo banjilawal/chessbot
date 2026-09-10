@@ -36,9 +36,9 @@ class TokenCrudController(CrudController[Token]):
         searcher: TokenSearcher
 
     Provides:
-        -  delete(request: DeletionRequest) -> DeletionResult[Token]:
-        -  pop(request: PopRequest) -> DeletionResult[Token]:
-        -  push(request: PushRequest) -> InsertionResult:
+        - delete(request: DeletionRequest) -> DeletionResult[Token]:
+        - pop(request: PopRequest) -> DeletionResult[Token]:
+        - push(request: PushRequest) -> InsertionResult:
 
     Super Class:
         CrudController

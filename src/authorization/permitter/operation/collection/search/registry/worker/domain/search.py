@@ -22,7 +22,7 @@ from operation import Operator, RegistryEntryNameValidator
 class WorkerRegistryDomainSearch(Dict[str, Operator]):
     """
     Role
-        -  Search Worker
+        - Search Worker
 
     Responsibilities:
         1.  Search the WorkerRegistry for items in a domain.
@@ -55,8 +55,8 @@ class WorkerRegistryDomainSearch(Dict[str, Operator]):
         Action:
             1.  Send an exception chain in the SearchResult if the name is not a valid String.
             2.  Otherwise, search the WorkerRegistry for the domain.
-                    -  If the domain does not exist, send an empty SearchResult.
-                    -  Else, send the domain's items in a SearchResult.
+                    - If the domain does not exist, send an empty SearchResult.
+                    - Else, send the domain's items in a SearchResult.
         Args:
             name: str
             registry: WorkerRegistry   

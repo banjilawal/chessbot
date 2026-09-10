@@ -48,9 +48,9 @@ class RookManifest(RankManifest[Rook]):
         )
         
     @property
-    def type_union(self) -> RookTypeUnion:
-        return cast(RookTypeUnion, super().type_union)
+    def types(self) -> RookTypeUnion:
+        return cast(RookTypeUnion, super().types)
     
     @property
-    def null_group(self) -> RookNullGroup:
-        return cast(RookNullGroup, super().null_group)
+    def nulls(self) -> RookNullGroup:
+        return cast(RookNullGroup, super().nulls)

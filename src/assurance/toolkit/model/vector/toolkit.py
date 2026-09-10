@@ -15,7 +15,6 @@ from assurance import VectorHelperTable, ModelValidationToolkit
 from domain import Vector, VectorManifest
 
 
-
 class VectorValidationToolkit(ModelValidationToolkit[Vector]):
     """
     Role:
@@ -45,8 +44,11 @@ class VectorValidationToolkit(ModelValidationToolkit[Vector]):
             helper: Optional[VectorManifest]
             metadata: Optional[VectorHelperTable]
         """
-        self._helper = helper or VectorHelperTable()
-        self._metadata = metadata or VectorManifest()
+        super().__init__(
+            helper = helper or VectorHelperTable(),
+            metadata = metadata or VectorManifest(),
+        )
+
     
     @property
     def helper(self) -> VectorHelperTable:

@@ -45,8 +45,10 @@ class ScalarValidationToolkit(ModelValidationToolkit[Scalar]):
             helper: Optional[ScalarManifest]
             metadata: Optional[ScalarHelperTable]
         """
-        self._helper = helper or ScalarHelperTable()
-        self._metadata = metadata or ScalarManifest()
+        super().__init__(
+            helper=helper or ScalarHelperTable(),
+            metadata=metadata or ScalarManifest(),
+        )
     
     @property
     def helper(self) -> ScalarHelperTable:

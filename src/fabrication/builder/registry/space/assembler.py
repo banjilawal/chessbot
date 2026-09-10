@@ -23,7 +23,7 @@ T = TypeVar("T", bound="SpaceReservoir")
 class SpaceReservoirBuilder(Builder, ABC, Generic[T]):
     """
     Role
-        -  Builder
+        - Builder
 
     Responsibilities:
         1.  Create a SpaceReservoir instance from the safe blueprint.

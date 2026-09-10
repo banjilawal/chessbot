@@ -18,8 +18,8 @@ from domain import StackSearchRequest, Player, PlayerSearchContext
 class PlayerSearchRequest(StackSearchRequest[Player]):
     """
      Role:
-         -  Messaging
-         -  Transport
+         - Messaging
+         - Transport
 
      Responsibilities:
         1. Provide a PlayerStackService and criteria a PlayerSearcher needs to run a job.

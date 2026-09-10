@@ -46,6 +46,6 @@ class PermitterToolkit(Toolkit[OperationPermitter, Generic[P]]):
         Toolkit
         
     Notes:
-        -  PermitterToolkit for an empty class which makes managing toolkits easier.
-        -  Any toolkits for a permitter should be a PermitterToolkit subclass.
+        - PermitterToolkit for an empty class which makes managing toolkits easier.
+        - Any toolkits for a permitter should be a PermitterToolkit subclass.
     """

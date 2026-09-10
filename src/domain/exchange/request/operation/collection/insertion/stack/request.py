@@ -22,7 +22,7 @@ T = TypeVar("T", bound="StateModel")
 class StackPushRequest(CollectionInsertionRequest[StackService], ABC, Generic[T]):
     """
      Role:
-         -  Messaging
+         - Messaging
 
      Responsibilities:
          1. Transport job information throughout the StackPush lifecycle.

@@ -27,8 +27,8 @@ class CartesianToggleBuilder(ToggleBuildDispatcher[CartesianToggle]):
 
     Responsibilities:
         1.  Picks toggle a
-                -  Coord: Geometric quantity
-                -  Vector: Linear Vector
+                - Coord: Geometric quantity
+                - Vector: Linear Vector
             as an toggle for multiplication, conversion or simple addition.
 
     Attributes:
@@ -36,8 +36,8 @@ class CartesianToggleBuilder(ToggleBuildDispatcher[CartesianToggle]):
 
     Provides:
         
-        -  _equal_vector_points(point: Point) -> bool
-        -  _equal_coord_points(self, point: Point) -> bool
+        - _equal_vector_points(point: Point) -> bool
+        - _equal_coord_points(self, point: Point) -> bool
     Super Class:
         ToggleBuilder
     """
@@ -63,8 +63,8 @@ class CartesianToggleBuilder(ToggleBuildDispatcher[CartesianToggle]):
 
         Action:
             1.  Send an exception chain in the BuildResult if either
-                    -  The bootstrap is not successful.
-                    -  The assembler does not return a product.
+                    - The bootstrap is not successful.
+                    - The assembler does not return a product.
             2.  Otherwise, cast the assemble product then, send in the success result,
         Args:
             blueprint: CartesianToggleBlueprint

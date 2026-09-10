@@ -1,7 +1,7 @@
-# src/assurance/validator/domain/structure/register/square/validator.py
+# src/assurance/validator/structure/register/square/validator.py
 
 """
-Module: assurance.validator.domain.register.square.validator
+Module: assurance.validator.register.square.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -22,32 +22,32 @@ from util import LoggingLevelRouter
 class SquareRegisterValidator(Validator[SquareRegister]):
     """
     Role
-        -  Transaction Worker
-        -  Operation Maintenance
-        -  Consistency Assurance
-        -  Validation Process Owner
+        - Transaction Worker
+        - Operation Maintenance
+        - Consistency Assurance
+        - Validation Process Owner
 
     Responsibilities:
         1.  Ensure a VectorRegister instance is certified safe, reliable and consistent
             before use in a binary arithmetic operation.
 
     Attributes:
-        bundle: SquareRegisterToolkit   
+        toolkit: SquareRegisterToolkit   
     Properties:
-        -  execute(candidate: Any,) -> ValidationResult
+        - execute(candidate: Any,) -> ValidationResult
 
     Super Class:
-        IntegrityValidator
+        Validator
     """
     def __init__(
             self, 
-            bundle: SquareRegisterToolkit | None = SquareRegisterToolkit()
+            toolkit: SquareRegisterToolkit | None = SquareRegisterToolkit()
     ):
-        super().__init__(bundle=bundle)
+        super().__init__(toolkit=toolkit)
         
     @property
-    def toolkit(self) -> SquareRegisterBundle:
-        return cast(SquareRegisterToolkit, super().bundle)
+    def toolkit(self) -> SquareRegisterToolkit:
+        return cast(SquareRegisterToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any,) -> ValidationResult[SquareRegister]:
@@ -57,9 +57,9 @@ class SquareRegisterValidator(Validator[SquareRegister]):
         Action:
             1.  Send an exception in the ValidationResult any of these
                 conditions occur.
-                    -  Validator priming fails.
-                    -  The vectorRegister's payload is flagged unsafe.
-                    -  There is a mismatch between the contexts.
+                    - Validator priming fails.
+                    - The vectorRegister's payload is flagged unsafe.
+                    - There is a mismatch between the contexts.
             3.  Otherwise, Send the success result.
         Args:
             candidate: Any

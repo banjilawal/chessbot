@@ -18,8 +18,8 @@ from domain import StackSearchRequest, Token, TokenSearchContext
 class TokenSearchRequest(StackSearchRequest[Token]):
     """
      Role:
-         -  Messaging
-         -  Transport
+         - Messaging
+         - Transport
 
      Responsibilities:
         1. Provide a TokenStackService and criteria a TokenSearcher needs to run a job.

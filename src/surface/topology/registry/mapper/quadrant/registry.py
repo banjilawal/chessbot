@@ -25,8 +25,8 @@ class QuadrantMappingFunctionStream(SpaceMapFunctionStream[Quadrant]):
     """
     Role:
         - Data Holder
-        -  Factory
-        -  Switcher
+        - Factory
+        - Switcher
 
     Responsibilities:
         1.  QuadrantMappingFunction factory whose products don't need down-casting before use.

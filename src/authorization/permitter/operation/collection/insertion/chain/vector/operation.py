@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 class AddVectorNode(AddNode[VectorNode]):
     """
     Role
-        -  Worker
+        - Worker
 
     Responsibilities:
         1.  Add an item to a VectorNodeChain.

@@ -19,8 +19,8 @@ class SchemaQuery(CatalogQuery[Schema]):
     """
     Role:
         - Model
-        -  Search
-        -  Stateless Data-Holder
+        - Search
+        - Stateless Data-Holder
 
     Responsibilities:
         1.  A list of schemas to search with context.

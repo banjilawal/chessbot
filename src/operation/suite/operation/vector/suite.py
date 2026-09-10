@@ -21,7 +21,7 @@ class VectorOperationSuite(OperationSuite[Vector]):
     """
     Role:
         - Dependency Container
-        -  Dynamic Dependency Provider
+        - Dynamic Dependency Provider
 
     Responsibilities:
         1.  Contains the operations that can be performed on a Vector.
@@ -37,8 +37,8 @@ class VectorOperationSuite(OperationSuite[Vector]):
         OperationSuite
 
     Notes:
-        -  Suite for an empty class which makes managing toolkits easier.
-        -  Any toolkits for a suite should be a Suite subclass.
+        - Suite for an empty class which makes managing toolkits easier.
+        - Any toolkits for a suite should be a Suite subclass.
     """
     
     def __init__(

@@ -19,12 +19,12 @@ class NortheastQuadrantMappingFunction(QuadrantMappingFunction[NortheastQuadrant
     """
     Role:
         - Computation
-        -  Integrity Assurance
+        - Integrity Assurance
 
     Responsibilities:
         Define x_step and slope for getting the next vector northeast of origin.
-            -  x_step = -1,
-            -  slope = 1
+            - x_step = -1,
+            - slope = 1
             
     Attributes:
         x_step: int = QuadrantStepFunction.NORTHEAST.x_step,

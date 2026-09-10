@@ -41,7 +41,7 @@ class DetectorBootstrapperToolkit(BootstrapperToolkit):
         Toolkit
 
     Notes:
-        -  BootstrapperToolkit for an empty class which makes managing toolkits easier.
-        -  Any toolkits for a carrier_validator should be a BootstrapperToolkit subclass.
+        - BootstrapperToolkit for an empty class which makes managing toolkits easier.
+        - Any toolkits for a carrier_validator should be a BootstrapperToolkit subclass.
     """
 

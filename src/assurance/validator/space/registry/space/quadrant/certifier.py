@@ -24,28 +24,28 @@ from util import LoggingLevelRouter
 class QuadrantReservoirRootChecker(SpaceReservoirChecker[QuadrantReservoir]):
     """
     Role
-        -  Validator
-        -  Integrity Assurance
-        -  Consistency Assurance
+        - Validator
+        - Integrity Assurance
+        - Consistency Assurance
 
     Responsibilities:
         1.  Runs integrity checks on Spaces and SpaceBlueprints before they are used.
         2.  Pluggable validation module.
 
     Attributes:
-        bundle: SpaceToolkit
+        toolkit: SpaceToolkit
 
     Provides:
-        - def execute(candidate: Any, bundle: SpaceToolkit,) -> ValidationResult[Blueprint[T]]:
+        - def execute(candidate: Any, toolkit: SpaceToolkit,) -> ValidationResult[Blueprint[T]]:
 
     Super Class:
     """
 
-    def __init__(self, bundle: Optional[QuadrantReservoirToolkit] | None = None):
-        super().__init__(bundle=bundle or QuadrantReservoirToolkit())
+    def __init__(self, toolkit: Optional[QuadrantReservoirToolkit] | None = None):
+        super().__init__(toolkit=toolkit or QuadrantReservoirToolkit())
         
     @property
-    def toolkit(self) -> QuadrantReservoirBundle:
+    def toolkit(self) -> QuadrantReservoirToolkit:
         return cast(QuadrantReservoirToolkit, super().ruleset)
     
     @LoggingLevelRouter.monitor
@@ -56,9 +56,9 @@ class QuadrantReservoirRootChecker(SpaceReservoirChecker[QuadrantReservoir]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -  The candidate is not a QuadrantReservoirDtoCarrier.
-                    -  The candidate is an empty QuadrantReservoirDtoCarrier.
-                    -  Either the board, team, formation, rank or id get flagged unsafe.
+                    - The candidate is not a QuadrantReservoirCarrier.
+                    - The candidate is an empty QuadrantReservoirCarrier.
+                    - Either the board, team, formation, rank or id get flagged unsafe.
             2.  For a model_carrier send a QuadrantReservoir in the success result. Otherwise, send 
                 the QuadrantReservoirBlueprint.
         Args:

@@ -18,7 +18,7 @@ class OpeningPawnAttackPattern(PawnAttackSignature):
     """
     Role:
         - Data Holder
-        -  Immutability
+        - Immutability
 
     Responsibilities:
         1.  Determine potential attack destinations from an opening Pawn's current position.

@@ -21,7 +21,7 @@ class BishopRecurrenceRegistries(RecurrenceRegistryCollection[Bishop]):
     """
     Role:
         - Data Holder
-        -  Iterator
+        - Iterator
 
     Responsibilities:
         1.  Stores collections of recurrence registries VectorTransformers iterate over to derives

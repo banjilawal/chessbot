@@ -22,7 +22,7 @@ T = TypeVar("T", bound="Result")
 class MicroserviceRequest(OperationRequest[MicroserviceOperation], ABC, Generic[T]):
     """
      Role:
-         -  Messaging
+         - Messaging
 
      Responsibilities:
          1. Transport job information throughout the MicroserviceOperation lifecycle.

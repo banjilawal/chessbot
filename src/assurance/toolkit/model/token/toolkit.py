@@ -45,8 +45,11 @@ class TokenValidationToolkit(ModelValidationToolkit[Token]):
             helper: Optional[TokenManifest]
             metadata: Optional[TokenHelperTable]
         """
-        self._helper = helper or TokenHelperTable()
-        self._metadata = metadata or TokenManifest()
+        super().__init__(
+            helper = helper or TokenHelperTable(),
+            metadata = metadata or TokenManifest(),
+        )
+
     
     @property
     def helper(self) -> TokenHelperTable:

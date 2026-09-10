@@ -22,7 +22,7 @@ T = TypeVar("T", bound="Result")
 class CollectionRequest(OperationRequest[CrudOperator], ABC, Generic[T]):
     """
      Role:
-         -  Messaging
+         - Messaging
 
      Responsibilities:
          1. Transport job information throughout the CollectionOperation lifecycle.

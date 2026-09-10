@@ -17,8 +17,8 @@ T = TypeVar('V')
 class LogWriter:
     """
     Role
-        -  Reporting
-        -  Logging
+        - Reporting
+        - Logging
 
     Responsibilities:
         1.  Centralizing logger access for info and error reporting.

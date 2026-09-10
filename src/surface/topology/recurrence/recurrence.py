@@ -20,7 +20,7 @@ class Recurrence(ABC, Generic[T]):
     """
     Role:
         - Computation
-        -  Iterator
+        - Iterator
 
     Responsibilities:
         1.  Provide a recurrence relation for iterating to the next Vector in a Space.

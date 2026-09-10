@@ -1,7 +1,7 @@
-# src/assurance/validator/domain/structure/register/toggle/validator.py
+# src/assurance/validator/structure/register/toggle/validator.py
 
 """
-Module: assurance.validator.domain.register.toggle.validator
+Module: assurance.validator.register.toggle.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -30,8 +30,8 @@ class CartesianToggleRegisterValidator(
 ):
     """
     Role
-        -  Integrity Maintenance
-        -  Consistency Assurance
+        - Integrity Maintenance
+        - Consistency Assurance
 
 
     Responsibilities:
@@ -39,28 +39,28 @@ class CartesianToggleRegisterValidator(
             reliable and consistent before use.
 
     Attributes:
-        bundle: Optional[CartesianToggleRegisterToolkit]
+        toolkit: Optional[CartesianToggleRegisterToolkit]
 
     Provides:
-        -  execute(self, candidate: Any) -> ValidationResult:
+        - execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
-        IntegrityValidator
+        Validator
     """
     
     def __init__(
             self,
-            bundle: Optional[CartesianToggleRegisterToolkit] |None = CartesianToggleRegisterToolkit()
+            toolkit: Optional[CartesianToggleRegisterToolkit] |None = CartesianToggleRegisterToolkit()
     ):
         """
         Args:
-            bundle: Optional[CartesianToggleRegisterToolkit]
+            toolkit: Optional[CartesianToggleRegisterToolkit]
         """
-        super().__init__(bundle=bundle)
+        super().__init__(toolkit=toolkit)
     
     @property
-    def toolkit(self) -> CartesianToggleRegisterBundle:
-        return cast(CartesianToggleRegisterToolkit, super().bundle)
+    def toolkit(self) -> CartesianToggleRegisterToolkit:
+        return cast(CartesianToggleRegisterToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate, Any) -> ValidationResult[CartesianToggleRegister]:
@@ -70,9 +70,9 @@ class CartesianToggleRegisterValidator(
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -  The candidate is not a CartesianToggleRegisterDtoCarrier.
-                    -  The candidate is an empty CartesianToggleRegisterDtoCarrier.
-                    -  Either the board, team, formation, rank or id get flagged unsafe.
+                    - The candidate is not a CartesianToggleRegisterCarrier.
+                    - The candidate is an empty CartesianToggleRegisterCarrier.
+                    - Either the board, team, formation, rank or id get flagged unsafe.
             2.  For a model_carrier send a CartesianToggleRegister in the success result. Otherwise, send a TokeBlueprint.
         Args:
             candidate, Any

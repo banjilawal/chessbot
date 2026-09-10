@@ -30,7 +30,7 @@ class StructureContext(Context[T], ABC, Generic[T]):
         offset Optional[int]
         
     Provides:
-        -  to_dict() -> Dict[str, Any]
+        - to_dict() -> Dict[str, Any]
         
     Super Class:
     
@@ -41,10 +41,10 @@ class StructureContext(Context[T], ABC, Generic[T]):
         
         4.  Why Not Union:
                 Used optional attributes with null default values instead of a union type because:
-                    -  It's easier to extend
-                    -  Implementations can decide if context can be mutually exclusive or not.
-                    -  Unions are clunky if there are many attributes.
-                    -  Unions don't lower validation and build integrity overhead.
+                    - It's easier to extend
+                    - Implementations can decide if context can be mutually exclusive or not.
+                    - Unions are clunky if there are many attributes.
+                    - Unions don't lower validation and build integrity overhead.
     """
     _offset: Optional[int]
     

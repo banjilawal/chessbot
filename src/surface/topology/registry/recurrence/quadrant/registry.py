@@ -23,8 +23,8 @@ class QuadrantRecurrenceRegistry(RecurrenceRegistry[Quadrant]):
     """
     Role:
         - Data Holder
-        -  Factory
-        -  Switcher
+        - Factory
+        - Switcher
 
     Responsibilities:
         1.  Create an immuregistry set of recurrence relations for batch vector transformations across all axes.

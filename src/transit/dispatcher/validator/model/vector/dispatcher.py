@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from assurance import ModelValidator
 from err import VectorValidatorException
-from assurance import VectorIntegrityValidator
+from assurance import VectorValidator
 from domain.model import Vector
 from artifcat import ValidationResult
 from util import LoggingLevelRouter
@@ -23,7 +23,7 @@ from util import LoggingLevelRouter
 class VectorValidator(ModelValidator):
     """
     Role
-        -  Integrity, Consistency Maintenance
+        - Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a Vector instance is certified safe, reliable and consistent before use.
@@ -32,7 +32,7 @@ class VectorValidator(ModelValidator):
         integrity_checker: VectorIntegrityChecker
 
     Provides:
-        -  execute(candidate: Any) -> ValidationResult
+        - execute(candidate: Any) -> ValidationResult
 
     Super Class:
         ModelValidator
@@ -40,13 +40,13 @@ class VectorValidator(ModelValidator):
     
     def __init__(
             self,
-            integrity_checker: VectorIntegrityValidator | None = None,
+            integrity_checker: VectorValidator | None = None,
     ):
-        super().__init__(integrity_checker=integrity_checker or VectorIntegrityValidator())
+        super().__init__(integrity_checker=integrity_checker or VectorValidator())
         
     @property
-    def integrity_checker(self) -> VectorIntegrityValidator:
-        return cast(VectorIntegrityValidator, super().integrity_checker)
+    def integrity_checker(self) -> VectorValidator:
+        return cast(VectorValidator, super().integrity_checker)
     
 
     @LoggingLevelRouter.monitor

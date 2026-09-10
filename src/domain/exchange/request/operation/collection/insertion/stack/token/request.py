@@ -19,7 +19,7 @@ from domain.exchange.model import Token
 class TokenStackPushRequest(StackPushRequest[Token]):
     """
      Role:
-         -  Messaging
+         - Messaging
 
      Responsibilities:
          1. Transport job information throughout the TokenPush lifecycle

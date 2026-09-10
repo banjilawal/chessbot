@@ -22,7 +22,7 @@ class ColorBinder(Structure, ABC, Generic[P, S]):
     """
     Role:
         - Model
-        -  Stateless Data-Holder
+        - Stateless Data-Holder
         
     Responsibility:
         1.  Ensure the two satellites are correctly mapped to a GameColor when the Primary
@@ -30,8 +30,8 @@ class ColorBinder(Structure, ABC, Generic[P, S]):
         2.  Simplify satellite selection without having to know any details other than
             the satellite's GameColor.
         3.  Guarantee consistency between:
-                -   The primary and its satellites.
-                -   Between the satellites.
+                -  The primary and its satellites.
+                -  Between the satellites.
         
     Attributes:
         id: int
@@ -53,10 +53,10 @@ class ColorBinder(Structure, ABC, Generic[P, S]):
     
     Binder Implementations:
         Must satisfy at least one of these requirements.
-            -  Archetypes are a natural, unique attribute of every satellite.
-            -  The primary has only two satellites which ae both required for the primary's
+            - Archetypes are a natural, unique attribute of every satellite.
+            - The primary has only two satellites which ae both required for the primary's
                 operations.
-            -  If primary's satellites do not have an organic archetype attribute. It has a transitive
+            - If primary's satellites do not have an organic archetype attribute. It has a transitive
                 link to the Archetype catalog through one its fields.
     """
     _id: int

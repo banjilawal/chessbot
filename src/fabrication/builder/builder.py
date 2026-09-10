@@ -24,7 +24,7 @@ T = TypeVar("T")
 class Builder(ABC, Generic[T]):
     """
     Role
-        -  Builder
+        - Builder
 
     Responsibilities:
         1.  Create an object from the safe blueprint.

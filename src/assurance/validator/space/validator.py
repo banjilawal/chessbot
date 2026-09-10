@@ -25,29 +25,29 @@ T = TypeVar("T", bound="Space")
 class SpaceValidator(Validator, Generic[T]):
     """
     Role
-        -  Validator
-        -  Integrity Assurance
-        -  Consistency Assurance
+        - Validator
+        - Integrity Assurance
+        - Consistency Assurance
 
     Responsibilities:
         1.  Runs integrity checks on Spaces and SpaceBlueprints before they are used.
         2.  Pluggable validation module.
 
     Attributes:
-        bundle: SpaceToolkit
+        toolkit: SpaceToolkit
 
     Provides:
-        - def execute(candidate: Any, bundle: SpaceToolkit,) -> ValidationResult[Blueprint[T]]:
+        - def execute(candidate: Any, toolkit: SpaceToolkit,) -> ValidationResult[Blueprint[T]]:
 
     Super Class:
     """
 
-    def __init__(self, bundle: SpaceToolkit[T],):
-        super().__init__(bundle=bundle)
+    def __init__(self, toolkit: SpaceToolkit[T],):
+        super().__init__(toolkit=toolkit)
         
     @property
     def toolkit(self) -> SpaceToolkit[T]:
-        return cast(SpaceToolkit[T], super().bundle)
+        return cast(SpaceToolkit[T], super().toolkit)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

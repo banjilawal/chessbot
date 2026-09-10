@@ -20,8 +20,8 @@ class TokenQuery(StackQuery[Token]):
     """
     Role:
         - Model
-        -  Search
-        -  Stateless Data-Holder
+        - Search
+        - Stateless Data-Holder
 
     Responsibilities:
         1.  A list of tokens to search with context.

@@ -20,7 +20,7 @@ from util import LoggingLevelRouter
 class AxisReservoirBuilder(SpaceReservoirBuilder[AxisReservoir]):
     """
     Role
-        -  Builder
+        - Builder
 
     Responsibilities:
         1.  Create a SpaceReservoir instance from the safe blueprint.

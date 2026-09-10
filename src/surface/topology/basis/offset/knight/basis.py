@@ -19,7 +19,7 @@ class KnightTopologyBasis(OffsetTopologyBasis[Knight]):
     """
     Role:
         - Data Holder
-        -  Immutability
+        - Immutability
 
     Responsibilities:
         1.  Determine potential destinations from a Knight's current position.

@@ -33,7 +33,7 @@ class TokenCollider:
          
      Attributes:
      Provides:
-         -  detect(
+         - detect(
                     cls,
                     target: Token,
                     token_stack: TokenStackService,

@@ -18,8 +18,8 @@ class Square(StateModel):
     """
     Role:
         - Model
-        -  Addressing
-        -  Stateful Data Holder
+        - Addressing
+        - Stateful Data Holder
 
     Responsibilities:
         1.  Maps a Coord to a nameable, occupyable board location.

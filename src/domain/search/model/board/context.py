@@ -31,7 +31,7 @@ class BoardContext(ModelContext[Board]):
         team_color: Optional[GameColor]
 
     Provides:
-        -  to_dict() -> Dict[str, Any]
+        - to_dict() -> Dict[str, Any]
 
     Super Class:
         ModelContext

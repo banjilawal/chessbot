@@ -46,6 +46,6 @@ class AnalyzerToolkit(Toolkit[T]):
         Toolkit
         
     Notes:
-        -  AnalyzerToolkit for an empty class which makes managing toolkits easier.
-        -  Any toolkits for a analyzer should be a AnalyzerToolkit subclass.
+        - AnalyzerToolkit for an empty class which makes managing toolkits easier.
+        - Any toolkits for a analyzer should be a AnalyzerToolkit subclass.
     """

@@ -19,7 +19,7 @@ class Result(Generic[T]):
     """
     Role:
         - Data Transport
-        -  Error Transport
+        - Error Transport
   
     Responsibilities:
         1.  Hold the product of some work.

@@ -1,7 +1,7 @@
-# src/assurance/validator/domain/search/stack/coord.checker.py
+# src/assurance/validator/search/stack/coord.checker.py
 
 """
-Module: assurance.validator.domain.search.stack.coord.checker
+Module: assurance.validator.search.stack.coord.checker
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from typing import Any, Optional, cast
 
 import config.setting.board.dimension.config
 from artifcat import ValidationResult
-from assurance import ContextValidator, CoordValidationBundle
+from assurance import ContextValidator, CoordValidationToolkit
 from domain import CoordSearchContext
 from err import CoordContextCheckerException, ZeroCoordContextFlagsException
 from util import LoggingLevelRouter
@@ -22,14 +22,14 @@ from util import LoggingLevelRouter
 class CoordContextValidator(ContextValidator[CoordSearchContext]):
     """
     Role
-        -  Integrity Assurance Worker
+        - Integrity Assurance Worker
 
     Responsibilities:
         1.  Check that a candidate is the right type of not-null CoordContext.
         2.  Run safety checks on any CoordContext attributes that are enabled.
 
     Attributes:
-        bundle: CoordValidationBundle
+        toolkit: CoordValidationToolkit
 
     Provides:
         - def execute(candidate: Any) -> ValidationResult[CoordContext]:
@@ -38,13 +38,13 @@ class CoordContextValidator(ContextValidator[CoordSearchContext]):
         StackContextChecker
     """
     
-    def __init__(self, bundle: Optional[CoordValidationBundle] | None = None,):
-        super().__init__(bundle=bundle or CoordValidationBundle())
+    def __init__(self, toolkit: Optional[CoordValidationToolkit] | None = None,):
+        super().__init__(toolkit=toolkit or CoordValidationToolkit())
         
         
     @property
-    def bundle(self) -> CoordValidationBundle:
-        return cast(CoordValidationBundle, super().bundle)
+    def toolkit(self) -> CoordValidationToolkit:
+        return cast(CoordValidationToolkit, super().toolkit)
     
     
     @LoggingLevelRouter.monitor
@@ -55,9 +55,9 @@ class CoordContextValidator(ContextValidator[CoordSearchContext]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -  The candidate is not a CoordContext.
-                    -  The wrong number of search attributes is enabled.
-                    -  An enabled search attribute fails a safety check.
+                    - The candidate is not a CoordContext.
+                    - The wrong number of search attributes is enabled.
+                    - An enabled search attribute fails a safety check.
             2.  Otherwise, send a TokeContext in the success result.
         Args:
             candidate, Any
@@ -70,10 +70,10 @@ class CoordContextValidator(ContextValidator[CoordSearchContext]):
         method = f"{self.__class__.__name__}.execute"
 
         # Handle the case that, the validator is not primed.
-        priming_result = self.bundle.priming_validator.execute(
+        priming_result = self.toolkit.priming_validator.execute(
             candidate=candidate,
-            target_model=self.bundle.types.search_context,
-            null_exception=self.bundle.nulls.search_context,
+            target_model=self.toolkit.types.search_context,
+            null_exception=self.toolkit.nulls.search_context,
         )
         if priming_result.is_failure:
             # Send the exception chain on failure.
@@ -108,7 +108,7 @@ class CoordContextValidator(ContextValidator[CoordSearchContext]):
             )        
         # Certification whichever attribute is enabled.
         for attribute in [context.row, context.column]:
-            validation = self.bundle.number_validator.execute(
+            validation = self.toolkit.helper.number_validator.execute(
                 candidate=attribute,
                 floor=0,
                 ceiling=config.setting.board.dimension.config.board_size - 1,

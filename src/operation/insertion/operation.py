@@ -24,7 +24,7 @@ T = TypeVar("T", bound="Collection")
 class InsertionOperation(Operator, ABC, Generic[T]):
     """
     Role
-        -  Worker
+        - Worker
 
     Responsibilities:
         1.  Execute a task on a Collection that produces either an Insertion, Deletion, Update

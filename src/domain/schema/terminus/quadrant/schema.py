@@ -18,7 +18,7 @@ class QuadrantTerminus(Enum):
     """
     Role:
         - Configuration Table
-        -  Metadata Set
+        - Metadata Set
 
 
     Responsibilities:

@@ -16,8 +16,8 @@ class TokenPositionController:
     """
     Role:
         - CRUD controller
-        -  Consistency provider
-        -  Integrity lifecycle manager
+        - Consistency provider
+        - Integrity lifecycle manager
         
     Responsibilities:
         1.  Maintain integrity of a token's position schema during pushes and pops.

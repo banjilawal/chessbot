@@ -38,7 +38,7 @@ class ItineraryAnalyzer:
     Attributes:
     
     Provides:
-        -  execute(
+        - execute(
                 itinerary: Itinerary,
                 itinerary_validator: ItineraryValidator,
             ) -> AnalysisResult[ItineraryReport]:
@@ -57,10 +57,10 @@ class ItineraryAnalyzer:
         Action:
             1.  Send an exception chain in the validation result if the itinerary is flagged.
             2.  Otherwise, the analyzer produces one of the following products;
-                    -  A ManeuverItineraryApproval
-                    -  A BlockingReport
-                    -  An AttackApprovalReport
-                    -  A KingAttackApproval
+                    - A ManeuverItineraryApproval
+                    - A BlockingReport
+                    - An AttackApprovalReport
+                    - A KingAttackApproval
         Args:
             itinerary: Itinerary,
             itinerary_validator: ItineraryValidator

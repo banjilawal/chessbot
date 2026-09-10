@@ -19,7 +19,7 @@ class VectorSet(SetCollection[Vector]):
     """
     Role:
         - Data Holder
-        -  Data protection
+        - Data protection
 
     Responsibilities:
         1.  Immutable unordered set of vectors.

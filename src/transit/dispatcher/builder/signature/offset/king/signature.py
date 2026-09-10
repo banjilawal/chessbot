@@ -19,7 +19,7 @@ class KingOffsetPattern(OffsetSignature[King]):
     """
     Role:
         - Data Holder
-        -  Immutability
+        - Immutability
         
     Responsibilities:
         1.  Determine potential destinations from KingToken's current position.

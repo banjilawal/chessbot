@@ -25,14 +25,14 @@ from util import LoggingLevelRouter
 class SouthwestQuadrantRootChecker(QuadrantRootChecker[SouthwestQuadrantBlueprint]):
     """
     Role
-        -  Integrity, Consistency Maintenance
+        - Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a SouthwestQuadrants or their blueprints are certified safe, reliable and consistent
             before use.
 
     Attributes:
-        bundle: SouthwestQuadrantToolkit
+        toolkit: SouthwestQuadrantToolkit
 
     Provides:
         - def execute(self, candidate: Any) -> ValidationResult[SouthwestQuadrant|SouthwestQuadrantBlueprint]:
@@ -41,15 +41,15 @@ class SouthwestQuadrantRootChecker(QuadrantRootChecker[SouthwestQuadrantBlueprin
         RootChecker
     """
     
-    def __init__(self, bundle: Optional[SouthwestQuadrantToolkit]| None = None):
+    def __init__(self, toolkit: Optional[SouthwestQuadrantToolkit]| None = None):
         """
         Args:
-            bundle: SouthwestQuadrantToolkit
+            toolkit: SouthwestQuadrantToolkit
         """
-        super().__init__(bundle=bundle or SouthwestQuadrantToolkit())
+        super().__init__(toolkit=toolkit or SouthwestQuadrantToolkit())
     
     @property
-    def toolkit(self) -> SouthwestQuadrantBundle:
+    def toolkit(self) -> SouthwestQuadrantToolkit:
         return cast(SouthwestQuadrantToolkit, super().ruleset)
     
     @LoggingLevelRouter.monitor
@@ -60,8 +60,8 @@ class SouthwestQuadrantRootChecker(QuadrantRootChecker[SouthwestQuadrantBlueprin
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -  The validation_priming fails.
-                    -  Either the board, owner or id get flagged unsafe.
+                    - The validation_priming fails.
+                    - Either the board, owner or id get flagged unsafe.
             2.  Otherwise, send the success result.
         Args:
             candidate: Any,

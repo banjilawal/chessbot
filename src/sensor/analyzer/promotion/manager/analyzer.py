@@ -25,9 +25,9 @@ class PawnPromotionApprovalManager(Analyzer):
     """
     Role:
         - Transaction Worker
-        -  Consistency
-        -  Integrity Maintenance
-        -  Process Runner
+        - Consistency
+        - Integrity Maintenance
+        - Process Runner
         
     Responsibilities:
         1.  Pawn promotion exception owner.
@@ -37,7 +37,7 @@ class PawnPromotionApprovalManager(Analyzer):
     Attributes:
     
     Provides:
-        -  execute(
+        - execute(
                     rank: Rank,
                     pawn_token: PawnToken,
                     rank_service: RankService,

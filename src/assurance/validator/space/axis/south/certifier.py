@@ -24,30 +24,30 @@ from util import LoggingLevelRouter
 class SouthAxisRootChecker(AxisRootChecker[SouthAxisBlueprint]):
     """
     Role
-        -  Integrity, Consistency Maintenance
+        - Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a SouthAxisBlueprint instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        bundle: SouthAxisToolkit
+        toolkit: SouthAxisToolkit
 
     Provides:
-        -  execute(self, candidate: Any) -> ValidationResult:
+        - execute(self, candidate: Any) -> ValidationResult:
 
     Super Class:
         IntegrityChecker
     """
     
-    def __init__(self, bundle: SouthAxisToolkit | None = SouthAxisToolkit()):
+    def __init__(self, toolkit: SouthAxisToolkit | None = SouthAxisToolkit()):
         """
         Args:
-            bundle: SouthAxisToolkit
+            toolkit: SouthAxisToolkit
         """
-        super().__init__(bundle=bundle)
+        super().__init__(toolkit=toolkit)
     
     @property
-    def toolkit(self) -> SouthAxisBundle:
+    def toolkit(self) -> SouthAxisToolkit:
         return cast(SouthAxisToolkit, super().ruleset)
     
     @LoggingLevelRouter.monitor
@@ -58,8 +58,8 @@ class SouthAxisRootChecker(AxisRootChecker[SouthAxisBlueprint]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -  The validation_priming fails.
-                    -  Either the board, owner or id get flagged unsafe.
+                    - The validation_priming fails.
+                    - Either the board, owner or id get flagged unsafe.
             2.  Otherwise, send the success result.
         Args:
             candidate: Any,

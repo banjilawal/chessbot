@@ -32,7 +32,7 @@ class GameContext(ModelContext[Game]):
         state: Optional[GameState]
 
     Provides:
-        -  to_dict() -> Dict[str, Any]
+        - to_dict() -> Dict[str, Any]
 
     Super Class:
         ModelContext

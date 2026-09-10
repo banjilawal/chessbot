@@ -19,7 +19,7 @@ class DevelopedPawnAttackPattern(PawnAttackSignature):
     """
     Role:
         - Data Holder
-        -  Immutability
+        - Immutability
 
     Responsibilities:
         1.  Determine potential attack destinations from a developed Pawn's current position.

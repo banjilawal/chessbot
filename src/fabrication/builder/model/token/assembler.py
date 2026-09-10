@@ -19,7 +19,7 @@ from domain.model import CombatantToken, King, KingToken, Pawn, PawnToken, Token
 class TokenBuilder(ModelBuilder[Token]):
     """
     Role
-        -  Builder
+        - Builder
 
     Responsibilities:
         1.  Create a Token instance from the safe blueprint.

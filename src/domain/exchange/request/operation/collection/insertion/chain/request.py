@@ -22,7 +22,7 @@ T = TypeVar("T", bound="Node")
 class AddNodeRequest(InsertionRequest[Chain], ABC, Generic[T]):
     """
      Role:
-         -  Messaging
+         - Messaging
 
      Responsibilities:
          1. Transport job information throughout the AddChainNode lifecycle.

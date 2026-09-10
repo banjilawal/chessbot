@@ -20,7 +20,7 @@ class KingReadinessAnalyzer(Analyzer):
     """
     Role:
         - Analysis Factory
-        -  Consistency maintenance
+        - Consistency maintenance
 
 
     Responsibilities:
@@ -52,7 +52,7 @@ class KingReadinessAnalyzer(Analyzer):
               AnalysisResult[TokenFreedomReport]
         Raises:
         Notes:
-            -  Performs no integrity checks should not be called directly.
+            - Performs no integrity checks should not be called directly.
         """
         method = f"{cls.__name__}.analyze"
         

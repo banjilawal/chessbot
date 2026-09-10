@@ -24,7 +24,7 @@ T = TypeVar("T", bound="Context")
 class ContextValidator(Validator[T], ABC, Generic[T]):
     """
     Role
-        -  Integrity, Consistency Maintenance
+        - Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Ensure a Context instance is safe before use.
@@ -33,7 +33,7 @@ class ContextValidator(Validator[T], ABC, Generic[T]):
         integrity_checker: ContextChecker[T]
         
     Provides:
-        -  execute(self, candidate: Any) -> ValidationResult[T]
+        - execute(self, candidate: Any) -> ValidationResult[T]
 
     Super Class:
         Validator

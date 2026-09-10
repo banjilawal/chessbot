@@ -23,7 +23,7 @@ class SoutheastQuadrantEndpointBuilder:
     """
     Role:
         - Builder
-        -  Integrity Management
+        - Integrity Management
 
     Responsibilities:
         1.  Create a VectorRegister for the quadrant southeast of the origin.

@@ -16,13 +16,13 @@ class VisitationController(Controller):
     """
     Role:
         - Lifecycle Management
-        -  Controller
+        - Controller
 
     Responsibilities:
         1.  Owner of complete SquareVisitation lifecycle.
         2.  Provides single entry point to the processes for
-                -  SquareEntry
-                -  SquareDeparture
+                - SquareEntry
+                - SquareDeparture
     Attributes:
         entry_process: SquareEntryProcess
         departure_process: SquareDepartureProcess

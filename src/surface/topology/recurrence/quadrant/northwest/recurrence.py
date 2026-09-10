@@ -21,7 +21,7 @@ class NorthwestQuadrantRecurrence(QuadrantRecurrence[NorthwestQuadrant]):
     """
     Role:
         - Computation
-        -  Iterator
+        - Iterator
 
     Responsibilities:
         1.  Provide a recurrence relation for iterating to the next NorthwestQuadrant vector.

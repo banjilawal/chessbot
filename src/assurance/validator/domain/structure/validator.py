@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
-from assurance import DomainObjectValidator, StructureValidationBundle, ValidationBundle
+from assurance import DomainObjectValidator, StructureValidationToolkit, ValidationToolkit
 from artifcat import ValidationResult
 from domain import Blueprint, Structure
 from util import LoggingLevelRouter
@@ -24,9 +24,9 @@ T = TypeVar("T", bound="Structure")
 class StructureValidator(DomainObjectValidator[T], ABC, Generic[T]):
     """
     Role
-        -  Validator
-        -  Integrity Assurance
-        -  Consistency Assurance
+        - Validator
+        - Integrity Assurance
+        - Consistency Assurance
 
     Responsibilities:
         1.  Run integrity checks on an object or its blueprint encapsulated inside their
@@ -35,7 +35,7 @@ class StructureValidator(DomainObjectValidator[T], ABC, Generic[T]):
         3.  Pluggable validation module.
 
     Attributes:
-        bundle: StructureValidationBundle[T]
+        toolkit: StructureValidationToolkit[T]
 
     Provides:
         - def execute(candidate: Any) -> ValidationResult[Blueprint[T]|T]:
@@ -43,12 +43,12 @@ class StructureValidator(DomainObjectValidator[T], ABC, Generic[T]):
     Super Class:
     """
     
-    def __init__(self, bundle: ValidationBundle[T]):
+    def __init__(self, toolkit: ValidationToolkit[T]):
         """
         Args:
-            bundle: StructureValidationBundle[T]
+            toolkit: StructureValidationToolkit[T]
         """
-        super().__init__(bundle=bundle)
+        super().__init__(toolkit=toolkit)
     
     |
     @abstractmethod
