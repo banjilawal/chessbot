@@ -11,14 +11,9 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from detection import TokenHomeDetector
-from err import TokenNullException
+from authorization import BlueprintHomeSquareExtractor, BlueprintRankExtractor
 from microservice import RankService
-from sensor.analyzer import Token
-from transit.dispatcher.validator import (
-    BlueprintHomeSquareExtractor, BlueprintRankExtractor, CoordValidationDispatcher, NumberValidator,
-    SquareValidationDispatcher, TeamValidationDispatcher
-)
+from operation import AnalyzerToolkit
 
 
 @dataclass

@@ -112,7 +112,7 @@ class FormationService(HashService[Formation]):
         """
         method = "FormationService.get_team_square"
         
-        # Handle the case that, the team does not get certfied safe.
+        # Handle the case that the team does not get certfied safe.
         team_validation = team_service.execute.execute(candidate=team)
         # Send the exception chain on failure.
         if team_validation.is_failure:
@@ -123,7 +123,7 @@ class FormationService(HashService[Formation]):
                 )
             )
         formation_search_result = self.lookup_formation(super_key=FormationKey(designation=token_designation))
-        # Handle the case that, the search fails.
+        # Handle the case that the search fails.
         if formation_search_result.is_failure:
             # Send the exception chain on failure.
             return SearchResult.failure(
@@ -134,7 +134,7 @@ class FormationService(HashService[Formation]):
             )
         formation = formation_search_result.payload[0]
         square_search_result = team.squares.search_service(context=SquareContext(name=formation.home_square_name))
-        # Handle the case that, the square search fails.
+        # Handle the case that the square search fails.
         if square_search_result.is_failure:
             # Send the exception chain on failure.
             return SearchResult.failure(
@@ -143,7 +143,7 @@ class FormationService(HashService[Formation]):
                     ex=square_search_result.exception
                 )
             )
-        # Handle the case that, no square was found.
+        # Handle the case that no square was found.
         if square_search_result.no_recurrences_exist:
             # Send the exception chain on failure.
             return SearchResult.failure(
@@ -162,7 +162,7 @@ class FormationService(HashService[Formation]):
         # for formation in Formation:
         #     square_search = team.squares.search(context=SquareContext(schema=formation.square_name))
         #
-        #     # Handle the case that, no item with the denomination is found.
+        #     # Handle the case that no item with the denomination is found.
         #     if square_search.is_empty:
         #         # Send the exception chain on failure.
         #         return SearchResult.failure(

@@ -105,7 +105,7 @@ class PromotionRequestAdjudicator(RequestAdjudicator[PromotionRequest]):
             )
         request = cast(PromotionRequest, bootstrap.payload)
         
-        # handle the case that, of a malformed request id.
+        # handle the case that of a malformed request id.
         id_validation = self._identity_service.validate_id(request.id)
         if id_validation.is_failure:
             # Send the exception chain in the result.
@@ -119,7 +119,7 @@ class PromotionRequestAdjudicator(RequestAdjudicator[PromotionRequest]):
                     ex=id_validation.exception
                 )
             )
-        # Handle the case that, the subject is not a pawn.
+        # Handle the case that the subject is not a pawn.
         pawn_test = self._pawn_adjudicator.execute(candidate=request.candidate)
         if pawn_test.is_failure:
             # Send the exception chain in the result.
@@ -135,7 +135,7 @@ class PromotionRequestAdjudicator(RequestAdjudicator[PromotionRequest]):
             )
         pawn = cast(Pawn, pawn_test.payload)
         
-        # Handle the case that, the promotion rank is wrong.
+        # Handle the case that the promotion rank is wrong.
         rank_test = self._promotion_level_adjudicator.execute(request.rank_level)
         if rank_test.is_failure:
             # Send the exception chain in the permission denial.

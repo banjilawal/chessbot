@@ -171,7 +171,7 @@ class ManeuverStackService(StackService[ManeuverEvent]):
         # --- Handoff request fulfilment to the ops_controller. ---#
         request_result = self._ops_controller.crud.pop.execute()
         
-        # Handle the case that, the request was not fulfilled.
+        # Handle the case that the request was not fulfilled.
         if request_result.is_failure:
             # Send the exception chain on failure.
             return DeletionResult.failure(
@@ -210,7 +210,7 @@ class ManeuverStackService(StackService[ManeuverEvent]):
             rank_quota_analyzer=self._ops_controller.rank_quota_analyzer,
             maneuver_collision_detector=self._ops_controller.collision_detector
         )
-        # Handle the case that, the request was not fulfilled.
+        # Handle the case that the request was not fulfilled.
         if request_result.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -255,7 +255,7 @@ class ManeuverStackService(StackService[ManeuverEvent]):
             id=id,
             identity_service=identity_service
         )
-        # Handle the case that, the request was not completed
+        # Handle the case that the request was not completed
         if request_result.is_failure:
             # Send the exception chain on failure.
             return DeletionResult.failure(
@@ -290,7 +290,7 @@ class ManeuverStackService(StackService[ManeuverEvent]):
         # --- Handoff request fulfilment to the ops_controller. ---#
         request_result = self._ops_controller.crud.query.execute(context=context)
         
-        # Handle the case that, the request was not fulfilled.
+        # Handle the case that the request was not fulfilled.
         if request_result.is_failure:
             # Send the exception chain on failure.
             return SearchResult.failure(

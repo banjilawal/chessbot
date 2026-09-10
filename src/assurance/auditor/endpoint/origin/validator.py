@@ -75,7 +75,7 @@ class TokenOriginCertifier:
         if bootstrapper is None:
             bootstrapper = OriginCertifierBootstrapper()
             
-        # Handle the case that, the Token has a different origin.
+        # Handle the case that the Token has a different origin.
         validation_result = bootstrapper.execute(
             token=token,
             origin=origin,

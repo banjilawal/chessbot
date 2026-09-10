@@ -179,7 +179,7 @@ class SquareDatabase(Database[Square]):
             square=square,
             token_service=token_service,
         )
-        # Handle the case that, the occupation was aborted.
+        # Handle the case that the occupation was aborted.
         if occupation_update_result.is_failure:
             # Encapsulate occupation_update_result.{original, exception} in exception chain returned on failure.
             return UpdateResult.update_failure(
@@ -217,7 +217,7 @@ class SquareDatabase(Database[Square]):
         occupant_removal_result = self._stack_service.util.occupation_service.remove_occupant_from_stack(
             token=occupant
         )
-        # Handle the case that, the eviction was aborted.
+        # Handle the case that the eviction was aborted.
         if occupant_removal_result.is_failure:
             # Send the exception chain on failure.
             return DeletionResult.failure(
@@ -252,7 +252,7 @@ class SquareDatabase(Database[Square]):
         # --- Handoff square insertion responsibility to stack_service. ---#
         square_insertion_result = self._stack_service.push(square=square)
         
-        # Handle the case that, the square insertion was aborted.
+        # Handle the case that the square insertion was aborted.
         if square_insertion_result.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -283,7 +283,7 @@ class SquareDatabase(Database[Square]):
         # --- Handoff square insertion responsibility to stack_service. ---#
         query_result = self._stack_service.execute(context=context)
         
-        # Handle the case that, the context was aborted.
+        # Handle the case that the context was aborted.
         if query_result.is_failure:
             # Send the exception chain on failure.
             return SearchResult.failure(

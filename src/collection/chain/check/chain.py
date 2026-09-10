@@ -46,7 +46,7 @@ class CheckChain(Chain[CheckNode]):
     def get_at_offset(self, index: int) -> SearchResult[List[CheckNode]]:
         method = f"{self.__class__.__name__}.get_by_index"
         
-        # Handle the case that, the index is not a safe number.
+        # Handle the case that the index is not a safe number.
         search = super().get_at_offset(index)
         # Send the exception in the result.
         if search.is_failure:
@@ -71,7 +71,7 @@ class CheckChain(Chain[CheckNode]):
         # Hand off get the node to the finder
         search = self.get_at_offset(offset)
         
-        # Handle the case that, the search fails.
+        # Handle the case that the search fails.
         if search.is_failure:
             # Send the exception in the result.
             return DeletionResult.failure(

@@ -70,7 +70,7 @@ class PromotionLevelRequestAdjudicator(RequestAdjudicator):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the request is malformed
+        # Handle the case that the request is malformed
         validation_result = self._validator.execute(candidate=subject)
         if validation_result.is_failure:
             # Send the exception chain in the result.
@@ -86,7 +86,7 @@ class PromotionLevelRequestAdjudicator(RequestAdjudicator):
             )
         rank = cast(Rank, subject)
 
-        # Handle the case that, the higher rank is a King's.
+        # Handle the case that the higher rank is a King's.
         if isinstance(rank, King):
             # Send the exception chain in the result.
             return ValidationResult.failure(
@@ -104,7 +104,7 @@ class PromotionLevelRequestAdjudicator(RequestAdjudicator):
                     ),
                 )
             )
-        # Handle the case that, the new rank is still a Rank's.
+        # Handle the case that the new rank is still a Rank's.
         if isinstance(rank, Pawn):
             # Send the exception chain in the result.
             return ValidationResult.failure(

@@ -68,7 +68,7 @@ class CoordSearchRouter(StackSearchRouter[Coord]):
         """
         method = "CoordSearchRouter.find"
         
-        # Handle the case that, the collider_candidates is null.
+        # Handle the case that the collider_candidates is null.
         if dataset is None:
             # Send the exception chain on failure.
             return SearchResult.failure(
@@ -77,7 +77,7 @@ class CoordSearchRouter(StackSearchRouter[Coord]):
                     ex=CoordDatasetNullException(f"{method}: {CoordDatasetNullException.MSG}")
                 )
             )
-        # Handle the case that, the collider_candidates is of the wrong type.
+        # Handle the case that the collider_candidates is of the wrong type.
         if not isinstance(dataset, List):
             # Send the exception chain on failure.
             return SearchResult.failure(
@@ -86,7 +86,7 @@ class CoordSearchRouter(StackSearchRouter[Coord]):
                     ex=CoordSearchPayloadTypeException(f"{method}: {CoordSearchPayloadTypeException.MSG}")
                 )
             )
-        # handle the case that, context fails integrity tests.
+        # handle the case that context fails integrity tests.
         context_validation = context_validator.search_service(context)
         if context_validation.is_failure:
             # Send the exception chain on failure.

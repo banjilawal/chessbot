@@ -70,7 +70,7 @@ class TokenDeploymentWorker(Worker):
         """
         method =  f"{cls.__name__}.execute"
         
-        # Handle the case that, the token does not pass a validation check.
+        # Handle the case that the token does not pass a validation check.
         token_validation_result = token_service.execute.search_service(token)
         if token_validation_result.is_failure:
             # Return the exception chain on failure
@@ -108,7 +108,7 @@ class TokenDeploymentWorker(Worker):
             target=square,
             collider_candidates=square_stack.items,
         )
-        # Handle the case that, the either a collision was detected or square wis not safe.
+        # Handle the case that the either a collision was detected or square wis not safe.
         if not collision_detection_result.is_no_collisions:
             # Return the exception chain on failure
             return InsertionResult.failure(
@@ -126,7 +126,7 @@ class TokenDeploymentWorker(Worker):
             square_stack=square_stack,
             rank_service=rank_service,
         )
-        # Handle the case that, the request was not completed.
+        # Handle the case that the request was not completed.
         if rank_quota_report.is_failure:
             # Return the exception chain on failure
             return InsertionResult.failure(
@@ -138,7 +138,7 @@ class TokenDeploymentWorker(Worker):
                     ex=rank_quota_report.exception
                 )
             )
-        # Handle the case that, there's no open slots for the square's rank.
+        # Handle the case that there's no open slots for the square's rank.
         if rank_quota_report.payload.rank_is_full:
             # Return the exception chain on failure
             return InsertionResult.failure(
@@ -175,7 +175,7 @@ class TokenDeploymentWorker(Worker):
     ):
         method = f"{cls.__name__}._run_token_tests"
         
-        # Handle the case that, the token does not pass a validation check.
+        # Handle the case that the token does not pass a validation check.
         token_validation_result = token_service.execute.search_service(token)
         if token_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -189,7 +189,7 @@ class TokenDeploymentWorker(Worker):
                     ex=token_validation_result.exception
                 )
             )
-        # Handle the case that, the token has already been deployed.
+        # Handle the case that the token has already been deployed.
         if token.is_deployed:
             # Send the exception chain on failure.
             return ValidationResult.failure(

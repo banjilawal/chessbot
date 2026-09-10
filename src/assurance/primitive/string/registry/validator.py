@@ -87,7 +87,7 @@ class RegistryEntryNameValidator(Validator):
             target_model=List[str],
             null_exception=ListNullException()
         )
-        # Handle the case that, the candidate is not a List.
+        # Handle the case that the candidate is not a List.
         if list_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -102,7 +102,7 @@ class RegistryEntryNameValidator(Validator):
         # --- Cast the candidate into a Team for additional tests ---#
         names = cast(List[str], candidates)
         
-        # Handle the case that, there are no names in the list.
+        # Handle the case that there are no names in the list.
         if len(names) == 0:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -119,7 +119,7 @@ class RegistryEntryNameValidator(Validator):
                     )
                 )
             )
-        # Handle the case that, any name in the list cannot be used as Registry key.
+        # Handle the case that any name in the list cannot be used as Registry key.
         for name in names:
             name_validation_result = name_validator.execute(name)
             # Send the exception chain on failure.

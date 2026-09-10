@@ -67,12 +67,12 @@ class GameValidator(ModelValidator[Game]):
         """
         method = "GameValidator.execute"
         try:
-            # Handle the case that, the rank does not exist.
+            # Handle the case that the rank does not exist.
             if candidate is None:
                 return ValidationResult.failure(
                     NullGameBlueprintException(f"{method}: {NullGameBlueprintException.MSG}")
                 )
-            # Handle the case that, the rank is not a GameBlueprint.
+            # Handle the case that the rank is not a GameBlueprint.
             if not isinstance(candidate, GameBlueprint):
                 return ValidationResult.failure(
                     TypeError(f"{method}: Expected GameBlueprint, got {type(candidate).__name__} instead.")
@@ -80,12 +80,12 @@ class GameValidator(ModelValidator[Game]):
             # After existence and type checks cast the rank for further processing.
             blueprint = cast(GameBlueprint, candidate)
             
-            # Handle the case that, no attribute-value tuple is enabled.
+            # Handle the case that no attribute-value tuple is enabled.
             if len(blueprint.to_dict()) == 0:
                 return ValidationResult.failure(
                     ZeroGameBlueprintFlagsException(f"{method}: {ZeroGameBlueprintFlagsException.MSG}")
                 )
-            # Handle the case that, more than one attribute-value tuple is enabled.
+            # Handle the case that more than one attribute-value tuple is enabled.
             if len(blueprint.to_dict()) == 0:
                 return ValidationResult.failure(
                     ArenaGameBlueprintFlagsException(f"{method}: {ArenaGameBlueprintFlagsException.MSG}")

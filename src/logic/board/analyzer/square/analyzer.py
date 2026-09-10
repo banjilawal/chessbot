@@ -67,7 +67,7 @@ class BoardSquareRelationAnalysis(RelationAnalysis[Board, Square]):
         """
         method = f"{cls.__name__}.analyze"
         
-        # Handle the case that, the board is not secure.
+        # Handle the case that the board is not secure.
         board_validator = board_validator.execute(candidate_primary)
         if board_validation.is_failure:
             # Send the exception chain on failure.
@@ -81,7 +81,7 @@ class BoardSquareRelationAnalysis(RelationAnalysis[Board, Square]):
         # Just incase things aren't Liskovian on the candidate_primary, cast the validation payload instead,
         board = cast(Board, board_validator.payload)
         
-        # Handle the case that, the square is unsecure.
+        # Handle the case that the square is unsecure.
         square_validation = square_service.execute.execute(candidate_satellite)
         if square_validation.is_failure:
             # Send the exception chain on failure.
@@ -98,7 +98,7 @@ class BoardSquareRelationAnalysis(RelationAnalysis[Board, Square]):
         # --- Search the board's squares for the satellite-rank. ---#
         square_search = board.squares.execute(context=SquareContext(id=square.id))
         
-        # Handle the case that, the search was aborted.
+        # Handle the case that the search was aborted.
         if square_search.is_failure:
             # Send the exception chain on failure.
             return RelationReport.failure(
@@ -109,7 +109,7 @@ class BoardSquareRelationAnalysis(RelationAnalysis[Board, Square]):
                 )
             )
         # --- Route between the possible outcomes. ---#
-        # Handle the case that, the square belongs to a different board.
+        # Handle the case that the square belongs to a different board.
         if board != square.board and square_search.no_recurrences_exist:
             return RelationReport.no_relation()
         

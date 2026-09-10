@@ -117,7 +117,7 @@ class ManeuverDatabase(Database[Maneuver]):
         
         # --- To assure uniqueness the member_service has to conduct a search. The maneuver should be validated first. ---#
         
-        # Handle the case that, the maneuveris not safe.
+        # Handle the case that the maneuveris not safe.
         validation = self.microservice.execute.execute(candidate=maneuver)
         if validation.is_failure:
             # Send the exception chain on failure.
@@ -133,7 +133,7 @@ class ManeuverDatabase(Database[Maneuver]):
         # --- KingCheckRecord if the maneuver is already in the collider_candidates before adding it. ---#
         search_result = self.search_maneuvers(context=ManeuverContext(id=maneuver.id))
         
-        # Handle the case that, the search is not completed.
+        # Handle the case that the search is not completed.
         if search_result.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -145,7 +145,7 @@ class ManeuverDatabase(Database[Maneuver]):
                     )
                 )
             )
-        # Handle the case that, the maneuver is already in the collider_candidates.
+        # Handle the case that the maneuver is already in the collider_candidates.
         if search_result.is_success:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -160,7 +160,7 @@ class ManeuverDatabase(Database[Maneuver]):
         # --- Use _maneuver_database_core.insert_maneuver because order does not matter for the maneuver access. ---#
         insertion_result = self._maneuver_database_core.insert_maneuver(maneuver=maneuver)
         
-        # Handle the case that, the insertion is not completed.
+        # Handle the case that the insertion is not completed.
         if insertion_result.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -199,7 +199,7 @@ class ManeuverDatabase(Database[Maneuver]):
         # --- Handoff the search responsibility to _maneuver_database_core. ---#
         search_result = self._maneuver_database_core.maneuver_context_service.finder.route(context=context)
         
-        # Handle the case that, the search is not completed.
+        # Handle the case that the search is not completed.
         if search_result.is_failure:
             # Send the exception chain on failure.
             return SearchResult.failure(

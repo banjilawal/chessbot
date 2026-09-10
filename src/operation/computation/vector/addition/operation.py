@@ -111,7 +111,7 @@ class AddVector(Computation[CartesianToggle]):
             
         
         
-        # Handle the case that, the register is not valid for addition.
+        # Handle the case that the register is not valid for addition.
         register_validation_result = register_validator.execute(register)
         if register_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -141,7 +141,7 @@ class AddVector(Computation[CartesianToggle]):
             build_result = operand_toolkit.coord_builder.execute(
                 blueprint=blueprint,
             )
-        # Handle the case that, the build did not produce a result.
+        # Handle the case that the build did not produce a result.
         if build_result.is_failure:
             # Send the exception chain on failure.
             return ComputationResult.failure(

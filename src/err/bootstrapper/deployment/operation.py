@@ -87,7 +87,7 @@ class TokenDeploymentPrimer(Operator[Token]):
         if token_freedom_analyzer is None:
             token_freedom_analyzer = TokenReadinessAnalyzer()
         
-        # Handle the case that, the token is not safe.
+        # Handle the case that the token is not safe.
         deployment_analysis_result = token_freedom_analyzer.execute(token)
         if deployment_analysis_result.is_failure:
             # Send the exception chain on failure.
@@ -102,7 +102,7 @@ class TokenDeploymentPrimer(Operator[Token]):
                 )
             )
         report = cast(TokenReadinessReport, deployment_analysis_result.payload)
-        # Handle the case that, the token has already been deployed.
+        # Handle the case that the token has already been deployed.
         if report.token_is_deployed:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
@@ -118,7 +118,7 @@ class TokenDeploymentPrimer(Operator[Token]):
                     ),
                 )
             )
-        # Handle the case that, an home_square test fails.
+        # Handle the case that an home_square test fails.
         home_square_search_result = cls._run_home_square_tests(token)
         if home_square_search_result.is_failure:
             # Send the exception chain on failure.
@@ -143,7 +143,7 @@ class TokenDeploymentPrimer(Operator[Token]):
             square_service=token.team.board.squares.service,
             home_square=cast(HomeSquare, home_square_search_result.payload[0]),
         )
-        # Handle the case that, the visitation transaction fails.
+        # Handle the case that the visitation transaction fails.
         if update_result.is_failure:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
@@ -188,7 +188,7 @@ class TokenDeploymentPrimer(Operator[Token]):
         home_square_search_result = token.team.board.squares.search(
             context=SquareContext(name=token.home_square_name)
         )
-        # Handle the case that, the search fails.
+        # Handle the case that the search fails.
         if home_square_search_result.is_failure:
             # Send the exception chain on failure.
             return SearchResult.failure(
@@ -201,7 +201,7 @@ class TokenDeploymentPrimer(Operator[Token]):
                     ex=home_square_search_result.exception,
                 )
             )
-        # Handle the case that, the token's square is not found.
+        # Handle the case that the token's square is not found.
         if home_square_search_result.no_recurrences_exist:
             # Send the exception chain on failure.
             return SearchResult.failure(
@@ -292,7 +292,7 @@ class TokenDeploymentPrimer(Operator[Token]):
                     ex=visitation_result.exception,
                 )
             )
-        # Handle the case that, the token is not the square's visitor.
+        # Handle the case that the token is not the square's visitor.
         if home_square.occupant != token:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
@@ -309,7 +309,7 @@ class TokenDeploymentPrimer(Operator[Token]):
                     )
                 )
             )
-        # Handle the case that, the token's current position is not the square's
+        # Handle the case that the token's current position is not the square's
         if home_square.coord != token.current_position:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(

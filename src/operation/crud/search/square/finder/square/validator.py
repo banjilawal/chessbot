@@ -97,7 +97,7 @@ class SquareListValidator(Validator[List[Square]]):
         # --- Cast the candidate into a List for additional tests. ---#
         square_list = cast(List, candidate)
         
-        # Handle the case that, the list is empty
+        # Handle the case that the list is empty
         if len(square_list) == 0:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -113,7 +113,7 @@ class SquareListValidator(Validator[List[Square]]):
                     )
                 )
             )
-        # Handle the case that, the list does not contain squares.
+        # Handle the case that the list does not contain squares.
         if not isinstance(square_list[0], Square):
             # Send the exception chain on failure.
             return ValidationResult.failure(

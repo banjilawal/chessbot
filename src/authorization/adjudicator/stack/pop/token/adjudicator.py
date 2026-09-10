@@ -77,7 +77,7 @@ class TokenPopRequestAdjudicator(PopRequestAdjudicator):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the PopRequest is not bootstrapped successfully.
+        # Handle the case that the PopRequest is not bootstrapped successfully.
         bootstrap = self._priming_validator.execute(candidate)
         if bootstrap.is_failure:
             # Send the exception chain in the result.
@@ -92,7 +92,7 @@ class TokenPopRequestAdjudicator(PopRequestAdjudicator):
                 )
             )
         request = cast(PopRequest, bootstrap.payload)
-        # Handle the case that, the request contains a malformed stack.
+        # Handle the case that the request contains a malformed stack.
         stack_test = self._priming_validator.execute(
             candidate=request.stack,
             target_model=Type[TokenStackService],

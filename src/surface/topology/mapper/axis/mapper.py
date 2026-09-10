@@ -73,7 +73,7 @@ class AxisMappingFunction(SpaceMappingFunction, Generic[T]):
         """
         method = f"{self.__class__.__name__}.next"
         
-        # Handle the case that, the argument is not safe to use.
+        # Handle the case that the argument is not safe to use.
         validation = self.math.vector.validator.execute(vector)
         if validation.is_failure:
             # Send an exception chain in the result.
@@ -94,7 +94,7 @@ class AxisMappingFunction(SpaceMappingFunction, Generic[T]):
             u=current,
             v=self._delta,
         )
-        # Handle the case that, the addition does not produce a result.
+        # Handle the case that the addition does not produce a result.
         if addition.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(

@@ -80,7 +80,7 @@ class TeamTokenRelationAnalyzer(RelationAnalyzer[Team, Token]):
         if token_validator is None:
             token_validator = TokenValidationDispatcher()
         
-        # Handle the case that, the team is not certified as safe.
+        # Handle the case that the team is not certified as safe.
         team_validation_result = team_validator.execute(candidate_primary)
         if team_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -97,7 +97,7 @@ class TeamTokenRelationAnalyzer(RelationAnalyzer[Team, Token]):
         # Just incase things aren't Liskovian on the candidate_primary, cast the validation payload instead,
         team = cast(Team, team_validation_result.payload)
         
-        # Handle the case that, the token is not certified as safe.
+        # Handle the case that the token is not certified as safe.
         token_validation_result = token_validator.execute(candidate_satellite)
         if token_validation_result.is_failure:
             # Send the exception chain on failure.

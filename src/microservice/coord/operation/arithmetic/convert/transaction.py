@@ -59,7 +59,7 @@ class ConvertVectorToCoordTransaction:
         """
         method = f"{cls.__name__}.execute"
         
-        # Handle the case that, the vector does not pass a validation check.
+        # Handle the case that the vector does not pass a validation check.
         vector_validation_result = vector_service.execute.execute(vector)
         if vector_validation_result.is_failure:
             # Return exception chain on failure.
@@ -79,7 +79,7 @@ class ConvertVectorToCoordTransaction:
             row=vector.y,
             column=vector.x
         )
-        # Handle the case that, the product does not satisfy integrity requirements
+        # Handle the case that the product does not satisfy integrity requirements
         if conversion_result.is_failure:
             # Return exception chain on failure.
             return ComputationResult.failure(

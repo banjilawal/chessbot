@@ -80,7 +80,7 @@ class VectorValidator(ModelValidator[Vector]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the request is null or the wrong type.
+        # Handle the case that the request is null or the wrong type.
         priming_validation = self.toolkit.helper.priming_validator.execute(
             candidate=request,
             target_model=VectorValidationRequest,

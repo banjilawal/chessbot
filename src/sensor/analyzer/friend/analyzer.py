@@ -160,7 +160,7 @@ class FriendshipAnalyzer(Analyzer):
             token_validator=token_validator,
         )
         
-        # Handle the case that, the king's friendship status cannot be detected.
+        # Handle the case that the king's friendship status cannot be detected.
         if enemy_king_status_detection.is_failure:
             # Send the exception chain on failure.
             return AnalysisResult.failure(
@@ -214,7 +214,7 @@ class FriendshipAnalyzer(Analyzer):
             token_validator=token_validator,
         )
         
-        # Handle the case that, the king's friendship status cannot be detected.
+        # Handle the case that the king's friendship status cannot be detected.
         if enemy_combatant_status_detection.is_failure:
             # Send the exception chain on failure.
             return AnalysisResult.failure(

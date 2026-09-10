@@ -88,7 +88,7 @@ class HomeDetectorBootstrapper(DetectorBootstrapper):
         params = [token, square_name]
         param_count = sum(bool(p) for p in params)
         
-        # Handle the case that, all the optional params are null.
+        # Handle the case that all the optional params are null.
         if param_count == 0:
             # Send the exception chain on failure.
             return Result.failure(
@@ -105,7 +105,7 @@ class HomeDetectorBootstrapper(DetectorBootstrapper):
                     ),
                 )
             )
-        # Handle the case that, the enabled param is not the token.
+        # Handle the case that the enabled param is not the token.
         if param_count > 1 and token is None:
             # Send the exception chain on failure.
             return Result.failure(
@@ -122,7 +122,7 @@ class HomeDetectorBootstrapper(DetectorBootstrapper):
                     ),
                 )
             )
-        # Handle the case that, two params are enabled and one is the token.
+        # Handle the case that two params are enabled and one is the token.
         if param_count > 1 and square_name is None or board is None:
             # Send the exception chain on failure.
             return Result.failure(
@@ -173,7 +173,7 @@ class HomeDetectorBootstrapper(DetectorBootstrapper):
             # --- Perform analysis to see if the token is free. ---#
             token_validation_result = token_validator.execute(token)
             
-            # Handle the case that, the analysis is not completed.
+            # Handle the case that the analysis is not completed.
             if token_validation_result.is_failure:
                 # Send the exception chain on failure.
                 return Result.failure(
@@ -192,7 +192,7 @@ class HomeDetectorBootstrapper(DetectorBootstrapper):
             
         # --- Search for the token's opening square. ---#
         home_search_result = board.squares.search(context=SquareContext(name=square_name))
-        # Handle the case that, searching for the opening square is not completed.
+        # Handle the case that searching for the opening square is not completed.
         if home_search_result.is_failure:
             # Send the exception chain on failure.
             return Result.failure(
@@ -204,7 +204,7 @@ class HomeDetectorBootstrapper(DetectorBootstrapper):
                     ex=home_search_result.exception,
                 )
             )
-        # Handle the case that, the opening square is not found.
+        # Handle the case that the opening square is not found.
         if home_search_result.no_recurrences_exist:
             # Send the exception chain on failure.
             return Result.failure(

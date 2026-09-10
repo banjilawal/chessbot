@@ -71,7 +71,7 @@ class VectorNodeContextValidator(
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the candidate is null or the wrong type.
+        # Handle the case that the candidate is null or the wrong type.
         priming = self.toolkit.priming_validator.execute(
             candidate=candidate,
             target_model=self.toolkit.types.search_context,
@@ -91,7 +91,7 @@ class VectorNodeContextValidator(
         # --- Cast the candidate into VectorNodeContext for routing attribute testing ---#
         context = cast(VectorNodeContext, priming.payload)
         
-        # Handle the case that, no flags are enabled.
+        # Handle the case that no flags are enabled.
         if context.is_empty:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -282,7 +282,7 @@ class VectorNodeContextValidator(
                 # On validation success forward the work product to the caller.
             return ValidationResult.success(context)
         
-        # Handle the case that, there is no validation logic for the attribute.
+        # Handle the case that there is no validation logic for the attribute.
         return ValidationResult.failure(
             VectorNodeContextCheckerException(
                 cls_mthd=method,

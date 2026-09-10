@@ -117,7 +117,7 @@ class StationDatabase(Database[Station]):
         
         # --- To assure uniqueness the member_service has to conduct a search. The station should be validated first. ---#
         
-        # Handle the case that, the stationis not safe.
+        # Handle the case that the stationis not safe.
         validation = self.microservice.execute.execute(candidate=station)
         if validation.is_failure:
             # Send the exception chain on failure.
@@ -133,7 +133,7 @@ class StationDatabase(Database[Station]):
         # --- KingCheckRecord if the station is already in the collider_candidates before adding it. ---#
         search_result = self.search_stations(context=StationContext(id=station.id))
         
-        # Handle the case that, the search is not completed.
+        # Handle the case that the search is not completed.
         if search_result.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -145,7 +145,7 @@ class StationDatabase(Database[Station]):
                     )
                 )
             )
-        # Handle the case that, the station is already in the collider_candidates.
+        # Handle the case that the station is already in the collider_candidates.
         if search_result.is_success:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -160,7 +160,7 @@ class StationDatabase(Database[Station]):
         # --- Use _station_database_core.insert_station because order does not matter for the station access. ---#
         insertion_result = self._station_database_core.insert_station(station=station)
         
-        # Handle the case that, the insertion is not completed.
+        # Handle the case that the insertion is not completed.
         if insertion_result.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -199,7 +199,7 @@ class StationDatabase(Database[Station]):
         # --- Handoff the search responsibility to _station_database_core. ---#
         search_result = self._station_database_core.station_context_service.finder.route(context=context)
         
-        # Handle the case that, the search is not completed.
+        # Handle the case that the search is not completed.
         if search_result.is_failure:
             # Send the exception chain on failure.
             return SearchResult.failure(

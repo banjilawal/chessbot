@@ -90,7 +90,7 @@ class QueryValidationDispatcher(ValidationDispatcher[Query]):
         # --- Cast the candidate into Query for additional tests. ---#
         query = cast(blueprint.query_model_type, candidate)
         
-        # Handle the case that, the
+        # Handle the case that the
         datasource_validation_result = cls._datasource_validator(
             query=query,
             blueprint=blueprint
@@ -106,7 +106,7 @@ class QueryValidationDispatcher(ValidationDispatcher[Query]):
                     ex=datasource_validation_result.exception,
                 )
             )
-        # Handle the case that, the context is flagged.
+        # Handle the case that the context is flagged.
         context_validation_result = blueprint.context_validator.execute(query.context)
         if context_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -147,7 +147,7 @@ class QueryValidationDispatcher(ValidationDispatcher[Query]):
     ) -> ValidationResult[StackQuery]:
         method = f"{self.__class__.__name__}._stack_query_validator"
         
-        # Handle the case that, the stack is flagged.
+        # Handle the case that the stack is flagged.
         stack_validation_result = blueprint.priming_validator.execute(
             candidate=query.stack,
             target_model=blueprint.stack_model_type,
@@ -164,7 +164,7 @@ class QueryValidationDispatcher(ValidationDispatcher[Query]):
                     ex=stack_validation_result.exception
                 )
             )
-        # Handle the case that, stack is empty.
+        # Handle the case that stack is empty.
         if query.stack.is_empty:
             # Send the exception chain on failure.
             return ValidationResult.failure(

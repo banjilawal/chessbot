@@ -76,7 +76,7 @@ class VectorTransform(Computation[CartesianToggle]):
         """
         method = f"{cls.__name__}.work"
         
-        # Handle the case that, the validator flags the context.
+        # Handle the case that the validator flags the context.
         context_validation_result = context_validator.execute(context)
         if context_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -101,7 +101,7 @@ class VectorTransform(Computation[CartesianToggle]):
                 row=context.vector.y,
                 column=context.vector.x,
             )
-        # Handle the case that, the conversion did not work.
+        # Handle the case that the conversion did not work.
         if conversion_result.is_failure:
             # Send the exception chain on failure.
             return ComputationResult.failure(

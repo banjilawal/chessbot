@@ -116,7 +116,7 @@ class TraversalTopologyGenerator:
                 registry_class=registry_class,
                 recurrence_registry=registry_dict[registry_class],
             )
-            # Handle the case that, a solution is not computed.
+            # Handle the case that a solution is not computed.
             if computation.is_failure:
                 # Send an exception chain in the result.
                 return ComputationResult.failure(

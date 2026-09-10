@@ -121,7 +121,7 @@ class SquareStackPopper:
                     )
                 )
             )
-        # Handle the case that, the idis not safe.
+        # Handle the case that the idis not safe.
         id_validation_result = identity_service.validate_id(candidate=id)
         if id_validation_result.is_failure:
             # Send the exception chain on failure.

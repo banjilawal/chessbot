@@ -80,7 +80,7 @@ class TokenValidator(ModelValidator[Token]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the request is null or the wrong type.
+        # Handle the case that the request is null or the wrong type.
         priming_validation = self.toolkit.helper.priming_validator.execute(
             candidate=request,
             target_model=TokenValidationRequest,
@@ -119,13 +119,31 @@ class TokenValidator(ModelValidator[Token]):
             )
         # --- Cast the carrier_validation payload for additional tests. ---#
         carrier = cast(
-            self.toolkit.metadata.types.carrier,
+            TokenCarrier,
             carrier_validation.payload,
         )
         # --- Extract the blueprint to verify the attributes. ---#
         blueprint = carrier.extract_blueprint()
         
-        # Handle the case that, any id in the blueprint is flagged.
+        # Handle the case that there is no blueprint.
+        if blueprint is None:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
+                    ex=EmptyTokenCarrierException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=EmptyTokenCarrierException.MSG,
+                        err_code=EmptyTokenCarrierException.ERR_CODE,
+                    ),
+                )
+            )
+        
+        # Handle the case that any id in the blueprint is flagged.
         id_test = self.toolkit.helper.identity_service.validate_blueprint_id(
             owner_blueprint=blueprint,
             owner_name=blueprint.domain_class_name,
@@ -141,7 +159,7 @@ class TokenValidator(ModelValidator[Token]):
                     ex=id_test.exception,
                 )
             )
-        # Handle the case that, the team does not pass a validation check.
+        # Handle the case that the team does not pass a validation check.
         team_test = self.toolkit.helper.team_validator.execute(
             candidate=blueprint.team
         )
@@ -156,7 +174,7 @@ class TokenValidator(ModelValidator[Token]):
                     ex=team_test.exception,
                 )
             )
-        # Handle the case that, the formation does not pass a validation check.
+        # Handle the case that the formation does not pass a validation check.
         formation_test = self.toolkit.helper.priming_validator.execute(
             candidate=blueprint.formation,
             target_model=Formation,
@@ -173,7 +191,7 @@ class TokenValidator(ModelValidator[Token]):
                     ex=formation_test.exception,
                 )
             )
-        # Handle the case that, the home_square gets flagged.
+        # Handle the case that the home_square gets flagged.
         home_detection = self.toolkit.home_detector.execute(
             context=TokenHomeContext(
                 board=blueprint.team.board,
@@ -191,23 +209,24 @@ class TokenValidator(ModelValidator[Token]):
                     ex=home_detection.exception,
                 )
             )
-        # Handle the case that, the rank is not safe to use.
-        if blueprint.is_
-        rank_derivation = self.toolkit.rank_extractor.execute(
-            blueprint=blueprint,
-            toolkit=self.toolkit,
-        )
-        if rank_derivation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                TokenValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=TokenValidatorException.MSG,
-                    err_code=TokenValidatorException.ERR_CODE,
-                    ex=rank_derivation.exception,
-                )
-            )
+        # Handle the case that the rank is not safe to use.
+        rank = None
+        if blueprint.is_pawn_token_blueprint:
+            if blueprint.rank != blueprint.formation.rank:
+                rank = blueprint.formation.rank
+                rank_validation = self.toolkit.helper.rank_validator.execute(rank)
+                if rank_validation.is_failure:
+                    # Send the exception chain on failure.
+                    return ValidationResult.failure(
+                        TokenValidatorException(
+                            cls_mthd=method,
+                            cls_name=self.__class__.__name__,
+                            msg=TokenValidatorException.MSG,
+                            err_code=TokenValidatorException.ERR_CODE,
+                            ex=rank_detection.exception,
+                        )
+                    )
+
         # --- Extract and cast payloads of the validation results. ---#
         id = cast(int, id_test.payload)
         team = cast(Team, team_test.payload)

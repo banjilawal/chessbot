@@ -44,7 +44,7 @@ class SquareBuilderFinalizer(BuilderFinalizer[Square]):
         method = f"{cls.__name__}.execute"
         board = product.board
         insertion_result = board.squares.insert(item=product)
-       # Handle the case that, the square is not successfully registered with its board.
+       # Handle the case that the square is not successfully registered with its board.
         if insertion_result.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

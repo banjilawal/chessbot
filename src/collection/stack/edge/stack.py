@@ -109,7 +109,7 @@ class EdgeStackService(StackService[Edge]):
         """
         method = "EdgeStack.push"
         
-        # Handle the case that, the item is unsafe.
+        # Handle the case that the item is unsafe.
         validation = self.integrity_service.execute.execute(candidate=item)
         if validation.is_failure:
             # Send the exception chain on failure.
@@ -122,7 +122,7 @@ class EdgeStackService(StackService[Edge]):
                     )
                 )
             )
-        # Handle the case that, the edge is already in the list.
+        # Handle the case that the edge is already in the list.
         if item in self._stack:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -157,7 +157,7 @@ class EdgeStackService(StackService[Edge]):
         """
         method = "EdgeStack.pop"
         
-        # Handle the case that, there are no edges in the schema.
+        # Handle the case that there are no edges in the schema.
         if self.is_empty:
             # Send the exception chain on failure.
             return DeletionResult.failure(
@@ -202,7 +202,7 @@ class EdgeStackService(StackService[Edge]):
         """
         method = "EdgeStack.delete_by_label"
         
-        # Handle the case that, there are no items in the list.
+        # Handle the case that there are no items in the list.
         if self.is_empty:
             # Send the exception chain on failure.
             return DeletionResult.failure(
@@ -216,7 +216,7 @@ class EdgeStackService(StackService[Edge]):
                     )
                 )
             )
-        # Handle the case that, the labelis not safe.
+        # Handle the case that the labelis not safe.
         validation = identity_service.validate_id(candidate=label)
         if validation.is_failure:
             # Send the exception chain on failure.
@@ -267,7 +267,7 @@ class EdgeStackService(StackService[Edge]):
         # --- Handoff the search responsibility to _context_service. ---#
         query_result = self._context_service.finder.route(dataset=self._stack, context=context)
         
-        # Handle the case that, the search is not completed.
+        # Handle the case that the search is not completed.
         if query_result.is_failure:
             # Send the exception chain on failure.
             return SearchResult.failure(

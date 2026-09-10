@@ -74,7 +74,7 @@ class SquareStackPush:
         """
         method =  f"{cls.__name__}.push"
         
-        # Handle the case that, the list is full.
+        # Handle the case that the list is full.
         if square_stack.has_both_slots_occupied:
             # Return the exception chain on failure
             return InsertionResult.failure(
@@ -95,7 +95,7 @@ class SquareStackPush:
             attractor=square,
             dataset=square_stack.items,
         )
-        # Handle the case that, the either a collision was detected or square wis not safe.
+        # Handle the case that the either a collision was detected or square wis not safe.
         if not collision_detection_result.is_no_collisions:
             # Return the exception chain on failure
             return InsertionResult.failure(
@@ -113,7 +113,7 @@ class SquareStackPush:
             square_stack=square_stack,
             rank_service=rank_service,
         )
-        # Handle the case that, the request was not completed.
+        # Handle the case that the request was not completed.
         if rank_quota_report.is_failure:
             # Return the exception chain on failure
             return InsertionResult.failure(
@@ -125,7 +125,7 @@ class SquareStackPush:
                     ex=rank_quota_report.exception
                 )
             )
-        # Handle the case that, there's no open slots for the square's rank.
+        # Handle the case that there's no open slots for the square's rank.
         if rank_quota_report.payload.rank_is_full:
             # Return the exception chain on failure
             return InsertionResult.failure(

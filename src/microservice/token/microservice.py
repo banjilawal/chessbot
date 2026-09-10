@@ -116,7 +116,7 @@ class TokenService(Microservice[Token]):
             target=token,
             token_validation=self.validator,
         )
-        # Handle the case that, the request was not completed.
+        # Handle the case that the request was not completed.
         if popping_coord_result.is_failure:
             # Send the exception chain on failure.
             return DeletionResult.failure(
@@ -164,7 +164,7 @@ class TokenService(Microservice[Token]):
             coord_service=coord_service,
             token_validation=self.validator,
         )
-        # Handle the case that, the request was not completed.
+        # Handle the case that the request was not completed.
         if insertion_result.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -214,7 +214,7 @@ class TokenService(Microservice[Token]):
             schema_service=schema_service,
             token_validation=self.validator,
         )
-        # Handle the case that, the request was not completed.
+        # Handle the case that the request was not completed.
         if promotion_result.is_failure:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
@@ -255,7 +255,7 @@ class TokenService(Microservice[Token]):
             token=token,
             token_validation=self.validator,
         )
-        # Handle the case that, the request was not completed.
+        # Handle the case that the request was not completed.
         if deployment_result.is_failure:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(

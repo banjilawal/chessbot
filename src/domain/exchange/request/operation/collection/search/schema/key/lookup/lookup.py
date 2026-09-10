@@ -59,7 +59,7 @@ class SchemaLookupProcess(HashLookupProcess[Schema]):
         """
         method = "SchemaLookupProcess.context"
 
-        # Handle the case that, the Key fails validation.
+        # Handle the case that the Key fails validation.
         validation = super_key_validator.execute(candidate=super_key)
         if validation.is_failure:
             # Send the exception chain on failure.

@@ -82,9 +82,9 @@ class SquareEntry:
         if token_freedom_analyzer is None:
             token_freedom_analyzer = TokenFreedomAnalyzer()
             
-        # Handle the case that, the
+        # Handle the case that the
         
-        # Handle the case that, the square does not pass a security test.
+        # Handle the case that the square does not pass a security test.
         square_security_test_result = cls._run_square_tests(
             square=square,
             square_validator=square_validator
@@ -92,7 +92,7 @@ class SquareEntry:
         if square_security_test_result.is_failure:
             return square_security_test_result
         
-        # Handle the case that, the token does not pass a security test.
+        # Handle the case that the token does not pass a security test.
         token_security_test_result = cls._run_token_tests(
             token=token,
             square=square,
@@ -101,7 +101,7 @@ class SquareEntry:
         if token_security_test_result.is_failure:
             return token_security_test_result
     
-        # Handle the case that, an unformed token is trying to entry from the wrong square.
+        # Handle the case that an unformed token is trying to entry from the wrong square.
         deployment_test_result = cls._run_deployment_tests(
             square=square,
             token=token
@@ -143,7 +143,7 @@ class SquareEntry:
         # --- Push the square's coord onto the schema. ---#
         coord_insertion_result = token.positions.push(square.coord)
         
-        # Handle the case that, the push failed
+        # Handle the case that the push failed
         if coord_insertion_result.is_failure:
             # Rollback the square.
             square.occupant = None
@@ -196,7 +196,7 @@ class SquareEntry:
         """
         method = f"{cls.__module__}._run_token_tests"
         
-        # Handle the case that, the tokenis not safe.
+        # Handle the case that the tokenis not safe.
         token_validation_result = token_freedom_analyzer.execute.search_service(candidate=token)
         if token_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -211,7 +211,7 @@ class SquareEntry:
                     ex=token_validation_result.exception,
                 )
             )
-        # Handle the case that, the token belongs to a different board
+        # Handle the case that the token belongs to a different board
         if token.team.board != square.board:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
@@ -228,7 +228,7 @@ class SquareEntry:
                     )
                 )
             )
-        # Handle the case that, the occupant is disabled
+        # Handle the case that the occupant is disabled
         if token.is_disabled:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
@@ -274,7 +274,7 @@ class SquareEntry:
         """
         method = f"{cls.__module__}._run_square_tests"
         
-        # Handle the case that, the squareis not safe.
+        # Handle the case that the squareis not safe.
         square_validation_result = square_validator.execute(square)
         if square_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -289,7 +289,7 @@ class SquareEntry:
                     ex=square_validation_result.exception,
                 )
             )
-        # Handle the case that, the square is already occupied.
+        # Handle the case that the square is already occupied.
         if square.is_occupied:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
@@ -339,7 +339,7 @@ class SquareEntry:
         if token.is_deployed:
             return UpdateResult.update_success(original=square, updated=square)
         
-        # Handle the case that, the token should open on a different square.
+        # Handle the case that the token should open on a different square.
         if square.name.upper() != token.home_square_name.upper():
             # Send the exception chain on failure.
             return UpdateResult.update_failure(

@@ -10,10 +10,9 @@ version: 0.0.2
 from __future__ import annotations
 
 from assurance import TokenValidator
-from fabrication import TokenBuilder
-from kit import OperationSuite, TokenSensorSuite, TokenToolkit
-from domain.model import Token
-from operation import PawnPromoter
+from domain import Token
+from operation import OperationSuite, TokenSensorSuite, TokenToolkit
+from transit import TokenBuilder
 
 
 class TokenOperationSuite(OperationSuite[Token]):

@@ -73,7 +73,7 @@ class PromotionRankAnalyzer(Analyzer):
         if rank_validator is None:
             rank_validator = RankValidationDispatcher()
             
-        # Handle the case that, the candidate is flagged by the rank_validator.
+        # Handle the case that the candidate is flagged by the rank_validator.
         validation_result = rank_validator.execute(new_rank)
         if validation_result.is_failure:
             # Send the exception chain on failure.
@@ -86,7 +86,7 @@ class PromotionRankAnalyzer(Analyzer):
                     ex=validation_result.exception,
                 )
             )
-        # Handle the case that, the higher rank is a King's.
+        # Handle the case that the higher rank is a King's.
         if isinstance(new_rank, King):
             # Send the exception chain on failure.
             return AnalysisResult.completed(
@@ -97,7 +97,7 @@ class PromotionRankAnalyzer(Analyzer):
                     ),
                 )
             )
-        # Handle the case that, the new rank is still a Pawn's.
+        # Handle the case that the new rank is still a Pawn's.
         if isinstance(new_rank, Pawn):
             # Send the exception chain on failure.
             return AnalysisResult.completed(

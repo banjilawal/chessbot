@@ -117,7 +117,7 @@ class ArenaDatabase(Database[Arena]):
         
         # --- To assure uniqueness the member_service has to conduct a search. The arena should be validated first. ---#
         
-        # Handle the case that, the arenais not safe.
+        # Handle the case that the arenais not safe.
         validation = self.microservice.execute.execute(candidate=arena)
         if validation.is_failure:
             # Send the exception chain on failure.
@@ -133,7 +133,7 @@ class ArenaDatabase(Database[Arena]):
         # --- KingCheckRecord if the arena is already in the collider_candidates before adding it. ---#
         search_result = self.search_arenas(context=ArenaContext(id=arena.id))
         
-        # Handle the case that, the search is not completed.
+        # Handle the case that the search is not completed.
         if search_result.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -145,7 +145,7 @@ class ArenaDatabase(Database[Arena]):
                     )
                 )
             )
-        # Handle the case that, the arena is already in the collider_candidates.
+        # Handle the case that the arena is already in the collider_candidates.
         if search_result.is_success:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -160,7 +160,7 @@ class ArenaDatabase(Database[Arena]):
         # --- Use _arena_database_core.insert_arena because order does not matter for the arena access. ---#
         insertion_result = self._arena_database_core.insert_arena(arena=arena)
         
-        # Handle the case that, the insertion is not completed.
+        # Handle the case that the insertion is not completed.
         if insertion_result.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -199,7 +199,7 @@ class ArenaDatabase(Database[Arena]):
         # --- Handoff the search responsibility to _arena_database_core. ---#
         search_result = self._arena_database_core.arena_context_service.finder.route(context=context)
         
-        # Handle the case that, the search is not completed.
+        # Handle the case that the search is not completed.
         if search_result.is_failure:
             # Send the exception chain on failure.
             return SearchResult.failure(

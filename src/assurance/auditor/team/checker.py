@@ -70,7 +70,7 @@ class TeamConsistencyAuditor(ConsistencyAuditor[Team]):
         if toolkit is None:
             toolkit = TeamToolkit()
         
-        # Handle the case that, the consistency is not primed.
+        # Handle the case that the consistency is not primed.
         consistency_priming_result = toolkit.priming_consistency.execute(
             candidate=candidate,
             target_model=Team,
@@ -90,7 +90,7 @@ class TeamConsistencyAuditor(ConsistencyAuditor[Team]):
         # --- Cast the candidate into a Team for additional tests ---#
         team = cast(Team, candidate)
         
-        # Handle the case that, team.id does not pass a validation check.
+        # Handle the case that team.id does not pass a validation check.
         id_validation_result = toolkit.helper.identity_service.validate_id(candidate=team.id)
         if id_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -103,7 +103,7 @@ class TeamConsistencyAuditor(ConsistencyAuditor[Team]):
                     ex=id_validation_result.exception,
                 )
             )
-        # Handle the case that, team.schema does not pass a validation check.
+        # Handle the case that team.schema does not pass a validation check.
         schema_validation_result = toolkit.priming_consistency.execute(
             candidate=candidate,
             target_model=Schema,
@@ -120,7 +120,7 @@ class TeamConsistencyAuditor(ConsistencyAuditor[Team]):
                     ex=schema_validation_result.exception,
                 )
             )
-        # Handle the case that, team.owner does not pass a validation check.
+        # Handle the case that team.owner does not pass a validation check.
         owner_validation_result = toolkit.owner_consistency.execute(team.owner)
         if owner_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -133,7 +133,7 @@ class TeamConsistencyAuditor(ConsistencyAuditor[Team]):
                     ex=owner_validation_result.exception,
                 )
             )
-        # Handle the case that, team.board does not pass a validation check.
+        # Handle the case that team.board does not pass a validation check.
         board_consistency_result = toolkit.board_consistency.execute(team.board)
         if board_consistency_result.is_failure:
             # Send the exception chain on failure.

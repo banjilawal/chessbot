@@ -58,7 +58,7 @@ class NodeToolkit(AnalyzerBootstrapperToolkit[Node]):
         """
         method = "NodeTooltoolkit"
         
-        # Handle the case that, the square does not pass a validation check.
+        # Handle the case that the square does not pass a validation check.
         validation_result = square_validator.execute(square)
         if validation_result.is_failure:
             # Send the exception chain on failure.

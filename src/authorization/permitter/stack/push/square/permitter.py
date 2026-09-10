@@ -84,7 +84,7 @@ class SquareStackPushPermitter(StackPushPermitter[Square]):
         """
         method =  f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the request is not bootstrapped successfully.
+        # Handle the case that the request is not bootstrapped successfully.
         bootstrap = self._request_adjudicator.execute(candidate=request)
         if bootstrap.is_failure:
             # Send an exception chain in the permission denial.
@@ -101,7 +101,7 @@ class SquareStackPushPermitter(StackPushPermitter[Square]):
         square = cast(Square, request.item)
         stack = cast(SquareStackService, request.stack)
         
-        # Handle the case that, square conflicts with a current stack member.
+        # Handle the case that square conflicts with a current stack member.
         report = self._collision_detector.execute(attractor=square, stream=stack)
         if report.collision_exists:
             PushApprovalReport.deny(

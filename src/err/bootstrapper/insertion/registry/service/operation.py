@@ -82,7 +82,7 @@ class PrimingServiceRegistration(Primer[Microservice]):
         if registry_entry_name_validator is None:
             registry_entry_name_validator = RegistryEntryNameValidator()
         
-        # Handle the case that, the service is not a valid microservice.
+        # Handle the case that the service is not a valid microservice.
         service_validation_result = priming_validator.execute(
             candidate=service,
             target_model=Microservice,
@@ -99,7 +99,7 @@ class PrimingServiceRegistration(Primer[Microservice]):
                     ex=service_validation_result.exception,
                 )
             )
-        # Handle the case that, either the service's domain or name are not good strings.
+        # Handle the case that either the service's domain or name are not good strings.
         key_validation_result = registry_entry_name_validator.execute(
             candidates=[service.NAME],
             priming_validator=priming_validator,
@@ -115,7 +115,7 @@ class PrimingServiceRegistration(Primer[Microservice]):
                     ex=key_validation_result.exception,
                 )
             )
-        # Handle the case that, the service's name has already been used in the domain.
+        # Handle the case that the service's name has already been used in the domain.
         if service.NAME in registry.entries.keys():
             name_collision_result = cls._name_collision_helper(
                 target=service,
@@ -162,7 +162,7 @@ class PrimingServiceRegistration(Primer[Microservice]):
         # Search for the registry using the service's domain and name.
         registered_service = registry.entries[target.NAME]
         
-        # Handle the case that, the registered_service's type differs from the target's
+        # Handle the case that the registered_service's type differs from the target's
         if not isinstance(type(registered_service), type(target)):
             # Send the exception chain on failure.
             return ValidationResult.failure(

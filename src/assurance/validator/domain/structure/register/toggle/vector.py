@@ -157,7 +157,7 @@ class CartesianToggleRegisterValidator(
                     )
                 )
             )
-        # Handle the case that, either slot is not safe.
+        # Handle the case that either slot is not safe.
         toggles: List[CartesianToggle] = []
         
         for item in [blueprint.a, blueprint.b]:

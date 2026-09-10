@@ -95,7 +95,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
         ]
         param_count = sum(bool(p) for p in params)
         
-        # Handle the case that, all the optional params are null.
+        # Handle the case that all the optional params are null.
         if param_count == 0:
             # Send the exception chain on failure.
             return ToolkitResult.failure(
@@ -112,7 +112,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
                     )
                 )
             )
-        # Handle the case that, more than one optional param is not-null.
+        # Handle the case that more than one optional param is not-null.
         if param_count > 1:
             # Send the exception chain on failure.
             return ToolkitResult.failure(
@@ -287,7 +287,7 @@ class TokenContextToolkit(Toolkit[TokenContext]):
             # On validation success forward the work product to the caller.
             return ToolkitResult.success(TokenContext(ransom=ransom))
         
-        # Handle the case that, there was no toolkit route for the attribute
+        # Handle the case that there was no toolkit route for the attribute
         return ToolkitResult.failure(
             TokenContextToolkitException(
                 cls_mthd=method,

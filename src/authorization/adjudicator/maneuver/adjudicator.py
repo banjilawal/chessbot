@@ -95,7 +95,7 @@ class ManeuverRequestAdjudicator(RequestAdjudicator[ManeuverRequest]):
             )
         request = cast(ManeuverRequest,bootstrap.payload)
         
-        # Handle the case that, the token fails a validation check.
+        # Handle the case that the token fails a validation check.
         readiness_analysis = self._utility.readiness_analyzer.execute(
             subject=request.token
         )
@@ -114,7 +114,7 @@ class ManeuverRequestAdjudicator(RequestAdjudicator[ManeuverRequest]):
         token_origin_search = self._utility.origin_searcher.execute(
             target=request.token
         )
-        # Handle the case that, the origin_searcher is not successful.
+        # Handle the case that the origin_searcher is not successful.
         if token_origin_search.is_failure:
             # Return the exception chain on failure
             return ManeuverRequestDecision.deny(
@@ -135,7 +135,7 @@ class ManeuverRequestAdjudicator(RequestAdjudicator[ManeuverRequest]):
             token_validator=self._utility.token_validator,
             square_validator=self._utility.square_validator,
         )
-        # Handle the case that, the destination is not valid.
+        # Handle the case that the destination is not valid.
         if destination_certification.is_denied:
             # Return the exception chain on failure
             return ManeuverRequestDecision.deny(
@@ -148,7 +148,7 @@ class ManeuverRequestAdjudicator(RequestAdjudicator[ManeuverRequest]):
                     ex=destination_certification.exception,
                 )
             )
-        # Handle the case that, the origin and destination are the same.
+        # Handle the case that the origin and destination are the same.
         if origin == request.destination:
             # Return the exception chain on failure
             return ManeuverRequestDecision.deny(

@@ -71,7 +71,7 @@ class TokenPushCoordProcess:
         """
         method = "TokenService.execute_to_token"
         
-        # Handle the case that, the token does not pass a validation check.
+        # Handle the case that the token does not pass a validation check.
         token_validation_result = token_validator.execute(token)
         if token_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -86,7 +86,7 @@ class TokenPushCoordProcess:
                     ex=token_validation_result.exception
                 )
             )
-        # Handle the case that, token is not active
+        # Handle the case that token is not active
         if not token.is_active:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -105,7 +105,7 @@ class TokenPushCoordProcess:
                     )
                 )
             )
-        # Handle the case that, the coord does not pass a validation check.
+        # Handle the case that the coord does not pass a validation check.
         coord_validation_result = coord_service.execute.execute(coord)
         if coord_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -120,7 +120,7 @@ class TokenPushCoordProcess:
                     ex=coord_validation_result.exception
                 )
             )
-        # Handle the case that, the token is already at the destination coord.
+        # Handle the case that the token is already at the destination coord.
         if token.current_position == coord:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -146,7 +146,7 @@ class TokenPushCoordProcess:
         # Run the insertion request.
         coord_insertion_result = token.positions.push(coord)
         
-        # Handle the case that, the request was not completed.
+        # Handle the case that the request was not completed.
         if coord_insertion_result.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(

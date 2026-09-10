@@ -93,7 +93,7 @@ class SquareRayValidator(Validator[SquareRay]):
         # --- Cast candidate to a SquareRay for additional tests. ---#
         square_ray = cast(SquareRay, candidate)
         
-        # Handle the case that, the origin does not pass square safety checks.
+        # Handle the case that the origin does not pass square safety checks.
         origin_validation_result = square_validator.execute(candidate=square_ray.origin)
         if origin_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -107,7 +107,7 @@ class SquareRayValidator(Validator[SquareRay]):
                     ex=origin_validation_result.exception
                 )
             )
-        # Handle the case that, the members are null
+        # Handle the case that the members are null
         if square_ray.items is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -126,7 +126,7 @@ class SquareRayValidator(Validator[SquareRay]):
                     )
                 )
             )
-        # Handle the case that, ray.members is null.
+        # Handle the case that ray.members is null.
         if not isinstance(square_ray.items, List):
             # Send the exception chain on failure.
             wrong_type = type(square_ray.items).__name__

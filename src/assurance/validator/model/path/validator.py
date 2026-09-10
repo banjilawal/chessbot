@@ -73,7 +73,7 @@ class PathValidator(ModelValidator[Path]):
         
 
         
-        # Handle the case that, the validator is not primed.
+        # Handle the case that the validator is not primed.
         validator_priming_result = self.toolkit.helper.priming_validator.execute(
             candidate=candidate,
             target_model=self.toolkit.model,
@@ -93,7 +93,7 @@ class PathValidator(ModelValidator[Path]):
         # --- Cast the candidate into a Path for additional tests. ---#
         path = cast(Path, candidate)
         
-        # Handle the case that, the path's id gets flagged.
+        # Handle the case that the path's id gets flagged.
         id_validation = self.toolkit.helper.identity_service.validate_id(path.id)
         if id_validation.is_failure:
             # Send the exception chain on failure.
@@ -120,7 +120,7 @@ class PathValidator(ModelValidator[Path]):
                         ex=square_validation_result.exception,
                     )
                 )
-        # Handle the case that, the origin and the destination are the same.
+        # Handle the case that the origin and the destination are the same.
         if path.endpoints.origin_is_destination:
             # Send the exception chain on failure.
             return ValidationResult.failure(

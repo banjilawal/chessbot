@@ -69,7 +69,7 @@ class TokenHomeContextValidator(StackContextValidator[TokenHomeContext]):
         if toolkit is None:
             toolkit = TokenHomeContextToolkit
         
-        # Handle the case that, the validator is not primed.
+        # Handle the case that the validator is not primed.
         priming_result = toolkit.priming_validator.execute(
             candidate=candidate,
             target_model=candidate,
@@ -246,7 +246,7 @@ class TokenHomeContextValidator(StackContextValidator[TokenHomeContext]):
                 # On validation success forward the work product to the caller.
             return ValidationResult.success(context)
         
-        # Handle the case that, there is no validation logic for the attribute.
+        # Handle the case that there is no validation logic for the attribute.
         return ValidationResult.failure(
             HomeContextValidatorException(
                 cls_mthd=method,

@@ -83,7 +83,7 @@ class OriginCertifierBootstrapper(ValidatorBootstrapper):
             token_validator=toolkit.token_validator,
             square_validator=toolkit.square_validator,
         )
-        # Handle the case that, the relation_analysis is not completed.
+        # Handle the case that the relation_analysis is not completed.
         if relation_analysis_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -98,7 +98,7 @@ class OriginCertifierBootstrapper(ValidatorBootstrapper):
         # --- Extract the relation report for additional tests. ---#
         relation = cast(RelationReport, relation_analysis_result.payload)
         
-        # Handle the case that, the token and the origin aren't fully bidirectional.
+        # Handle the case that the token and the origin aren't fully bidirectional.
         if not relation.fully_exists:
             # Send the exception chain on failure.
             return ValidationResult.failure(

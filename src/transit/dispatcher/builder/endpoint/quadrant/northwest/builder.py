@@ -82,7 +82,7 @@ class NorthwestQuadrantEndpointBuilder:
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the origin is not safe to use.
+        # Handle the case that the origin is not safe to use.
         validation = self._vector_validator.execute(
             self._origin
         )

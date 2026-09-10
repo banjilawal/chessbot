@@ -126,7 +126,7 @@ class Chain(DomainObjectCollection[T], ABC, Generic[T]):
         # Hand off get the node to the finder
         search = self.get_at_offset(offset)
         
-        # Handle the case that, the search fails.
+        # Handle the case that the search fails.
         if search.is_failure:
             # Send the exception in the result.
             return DeletionResult.failure(
@@ -157,7 +157,7 @@ class Chain(DomainObjectCollection[T], ABC, Generic[T]):
         method = f"{self.__class__.__name__}.execute"
         
         validation = self.offset_validator(offset)
-        # Handle the case that, the search fails.
+        # Handle the case that the search fails.
         if valdation.is_failure:
             # Send the exception in the result.
             return BuildResult.failure(
@@ -184,7 +184,7 @@ class Chain(DomainObjectCollection[T], ABC, Generic[T]):
         method = f"{self.__class__.__name__}.execute"
         
         validation = self.offset_validator(offset)
-        # Handle the case that, the search fails.
+        # Handle the case that the search fails.
         if validation.is_failure:
             # Send the exception in the result.
             return BuildResult.failure(
@@ -224,7 +224,7 @@ class Chain(DomainObjectCollection[T], ABC, Generic[T]):
             )
         offset = cast(int, candidate)
         
-        # Handle the case that, the index is out of bounds.
+        # Handle the case that the index is out of bounds.
         if abs(offset) >= self.size:
             # Send the exception in the result.
             return ValidationResult.failure(

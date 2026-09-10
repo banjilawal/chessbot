@@ -100,7 +100,7 @@ class ResultStackService(StackService[Result]):
         """
         method = "ResultStack.push"
         
-        # Handle the case that, the result is unsafe.
+        # Handle the case that the result is unsafe.
         validation = self.integrity_service.execute.execute(candidate=item)
         if validation.is_failure:
             # Send the exception chain on failure.
@@ -113,7 +113,7 @@ class ResultStackService(StackService[Result]):
                     )
                 )
             )
-        # Handle the case that, the result is already present in the schema.
+        # Handle the case that the result is already present in the schema.
         if item in self._stack:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -150,7 +150,7 @@ class ResultStackService(StackService[Result]):
         """
         method = "ResultStack.pop"
         
-        # Handle the case that, there are no items in the list.
+        # Handle the case that there are no items in the list.
         if self.is_empty:
             # Send the exception chain on failure.
             return DeletionResult.failure(
@@ -190,7 +190,7 @@ class ResultStackService(StackService[Result]):
         """
         method = "ResultStack.delete_by_id"
         
-        # Handle the case that, there are no items in the list.
+        # Handle the case that there are no items in the list.
         if self.is_empty:
             # Send the exception chain on failure.
             return DeletionResult.failure(
@@ -204,7 +204,7 @@ class ResultStackService(StackService[Result]):
                     )
                 )
             )
-        # Handle the case that, the idis not safe.
+        # Handle the case that the idis not safe.
         validation = identity_service.validate_id(candidate=id)
         if validation.is_failure:
             # Send the exception chain on failure.
@@ -220,7 +220,7 @@ class ResultStackService(StackService[Result]):
         # --- Search the list for an item with target id. ---#
         for item in self._stack:
             if item.id == id:
-                # Handle the case that, the match is the wrong type.
+                # Handle the case that the match is the wrong type.
                 if not isinstance(item, Result):
                     # Send the exception chain on failure.
                     return DeletionResult.failure(
@@ -268,7 +268,7 @@ class ResultStackService(StackService[Result]):
         # --- Handoff the search responsibility to _stack_service. ---#
         query_result = self._context_service.finder.find(dataset=self._stack, context=context)
         
-        # Handle the case that, the search is not completed.
+        # Handle the case that the search is not completed.
         if query_result.is_failure:
             # Send the exception chain on failure.
             return SearchResult.failure(
@@ -305,7 +305,7 @@ class ResultStackService(StackService[Result]):
         # --- Handoff the search responsibility to _stack_service. ---#
         query_result = self._context_service.finder.find(dataset=self._stack, context=context)
         
-        # Handle the case that, the search is not completed.
+        # Handle the case that the search is not completed.
         if query_result.is_failure:
             # Send the exception chain on failure.
             return SearchResult.failure(

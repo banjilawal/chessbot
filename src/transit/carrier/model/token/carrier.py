@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, Type, TypeVar, cast
 
-from domain import KingToken, PawnToken, Token, TokenBlueprint
+from domain import KingToken, Model, PawnToken, Token, TokenBlueprint
 from transit import ModelCarrier
 
 T = TypeVar("T", bound="Model")

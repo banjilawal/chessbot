@@ -9,15 +9,14 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, cast
+from typing import Any, Optional, cast
 
-from domain.metadata.blueprint import Blueprint
-from err import IdentityServiceException
-from domain.model import IdentityRegister
 from artifcat import ValidationResult
-from authorization.adjudicator import BlueprintIdExtractor
+from assurance import NameValidator, NumberValidator
+from authorization import BlueprintIdExtractor
+from domain import Blueprint, IdentityRegister
+from err import IdentityServiceException
 from util import IdFactory, LoggingLevelRouter
-from transit.dispatcher.validator import IdentityRegisterCertifier, NameValidator, NumberValidator
 
 
 class IdentityService:
@@ -45,28 +44,25 @@ class IdentityService:
 
     Super Class:
     """
-    _number_validator: NumberValidator
     _name_validator: NameValidator
+    _number_validator: NumberValidator
     _blueprint_id_extractor: BlueprintIdExtractor
-    _identity_register_certifier: IdentityRegisterCertifier
     
     def __init__(
             self,
-            number_validator: NumberValidator | None = NumberValidator(),
-            name_validator: NameValidator | None = NameValidator(),
-            blueprint_id_extractor: BlueprintIdExtractor | None = BlueprintIdExtractor(),
-            identity_register_certifier: IdentityRegisterCertifier | None = IdentityRegisterRootCertifier()
+            name_validator: Optional[NameValidator] | None = None,
+            number_validator: Optional[NumberValidator] | None = None,
+            blueprint_id_extractor: Optional[BlueprintIdExtractor] | None = None,
     ):
         """
         Args:
-            number_validator: NumberValidator
-            name_validator: NameValidator
-            blueprint_id_extractor: BlueprintIdExtractor
-            identity_register_certifier: IdentityRegisterCertifier
+            name_validator: Optional[NameValidator] | None = None,
+            number_validator: Optional[NumberValidator] | None = None,
+            blueprint_id_extractor: Optional[BlueprintIdExtractor
         """
-        self._number_validator=number_validator
-        self._name_validator=name_validator
-        self._blueprint_id_extractor = blueprint_id_extractor
+        self._name_validator=name_validator or NameValidator()
+        self._number_validator = number_validator or NumberValidator()
+        self._blueprint_id_extractor = blueprint_id_extractor or BlueprintIdExtractor()
         self._identity_register_certifier = identity_register_certifier
     
     @LoggingLevelRouter.monitor
@@ -82,7 +78,7 @@ class IdentityService:
         return IdFactory.next_id(class_name=class_name)
       
     @LoggingLevelRouter.monitor
-    def validate_id(self, candidate: Any) -> ValidationResult:
+    def validate_id(self, candidate: Any) -> ValidationResult[int]:
         """
         Verify that an id is safe to use.
         Action:
@@ -97,9 +93,9 @@ class IdentityService:
         """
         method = f"{self.__class__.__name__}.execute_id"
         
-        # Handle the case that, the id is not safe to use.
-        validation_result = self._number_validator.execute(candidate)
-        if validation_result.is_failure:
+        # Handle the case that the id is not safe to use.
+        validation = self._number_validator.execute(candidate)
+        if validation.is_failure:
             # Send the exception chain in the result.
             return ValidationResult.failure(
                 IdentityServiceException(
@@ -107,7 +103,7 @@ class IdentityService:
                     cls_name=self.__class__.__name__,
                     msg=IdentityServiceException.MSG,
                     err_code=IdentityServiceException.ERR_CODE,
-                    ex=validation_result.exception
+                    ex=validation.exception
                 )
             )
         # --- Forward the work product. ---#
@@ -129,9 +125,9 @@ class IdentityService:
         """
         method = f"{self.__class__.__name__}.execute_name"
         
-        # Handle the case that, the id is not safe to use.
-        validation_result = self._name_validator.execute(candidate)
-        if validation_result.is_failure:
+        # Handle the case that the id is not safe to use.
+        validation = self._name_validator.execute(candidate)
+        if validation.is_failure:
             # Send the exception chain in the result.
             return ValidationResult.failure(
                 IdentityServiceException(
@@ -139,14 +135,18 @@ class IdentityService:
                     cls_name=self.__class__.__name__,
                     msg=IdentityServiceException.MSG,
                     err_code=IdentityServiceException.ERR_CODE,
-                    ex=validation_result.exception
+                    ex=validation.exception
                 )
             )
         # --- Forward the work product. ---#
         return ValidationResult.success(cast(str, candidate))
     
     @LoggingLevelRouter.monitor
-    def validate_blueprint_id(self, owner_blueprint: Blueprint, owner_name: str, ) -> ValidationResult:
+    def validate_blueprint_id(
+            self,
+            owner_blueprint: Blueprint,
+            owner_name: str,
+    ) -> ValidationResult:
         """
         Verify that blueprint contains an id that's safe for its owning model.
         Action:
@@ -162,12 +162,11 @@ class IdentityService:
         """
         method = f"{self.__name__}.validate_blueprint_id"
         
-        # Handle the case that, the class_name is flagged unsafe.
-        validation_result = self._blueprint_id_extractor.execute(
-            blueprint=owner_blueprint,
-            model_name=owner_name,
+        # Handle the case that the class_name is flagged unsafe.
+        name_validation = self._name_validator.execute(
+            candidate=owner_blueprint.domain_class_name,
         )
-        if validation_result.is_failure:
+        if name_validation.is_failure:
             # Send the exception chain in the result.
             return ValidationResult.failure(
                 IdentityServiceException(
@@ -175,15 +174,15 @@ class IdentityService:
                     cls_name=self.__class__.__name__,
                     msg=IdentityServiceException.MSG,
                     err_code=IdentityServiceException.ERR_CODE,
-                    ex=validation_result.exception
+                    ex=name_validation.exception
                 )
             )
         # --- Otherwise, directly forward the work product. ---#
-        return validation_result
+        return validation
 
         
     @LoggingLevelRouter.monitor
-    def validate_identity_register(self, candidate: Any) -> ValidationResult:
+    def validate_identity(self, id_candidate: Any, name_candidate: Any) -> ValidationResult:
         """
         Verify the name and id obey the rules.
         
@@ -200,9 +199,9 @@ class IdentityService:
         """
         method = f"{self.__class__.__name__}.validate_identity_register"
         
-        # Handle the case that, the id gets flagged.
-        validation_result = self._identity_register_certifier.execute(candidate=candidate)
-        if validation_result.is_failure:
+        # Handle the case that the id gets flagged.
+        id_validation = self.validate_id(candidate=id_candidate)
+        if id_validation.is_failure:
             # Send the exception chain on failure.
             ValidationResult.failure(
                 IdentityServiceException(
@@ -210,8 +209,23 @@ class IdentityService:
                     cls_name=self.__class__.__name__,
                     msg=IdentityServiceException.MSG,
                     err_code=IdentityServiceException.ERR_CODE,
-                    ex=validation_result.exception
+                    ex=id_validation.exception
                 )
             )
+        id = cast(int, id_validation.payload)
+        name_validation = self.validate_name(candidate=name_candidate)
+        if name_validation.is_failure:
+            # Send the exception chain on failure.
+            ValidationResult.failure(
+                IdentityServiceException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=IdentityServiceException.MSG,
+                    err_code=IdentityServiceException.ERR_CODE,
+                    ex=name_validation.exception
+                )
+            )
+        name = cast(str, name_validation.payload)
+        identity_register = IdentityRegister(id=id, name=name)
         # --- Forward the work product to the caller. ---#
-        return ValidationResult.success(cast(IdentityRegister, candidate))
+        return ValidationResult.success(identity_register)

@@ -100,7 +100,7 @@ class BoardConsistencyAuditor(ConsistencyAuditor[Board]):
                     ex=id_validation.exception
                 )
             )
-        # Handle the case that, board.arena integrity verification and the arena-board relation fails.
+        # Handle the case that board.arena integrity verification and the arena-board relation fails.
         arena_verification = cls._validate_arena(board=board, arena_service=arena_service)
         if arena_verification.is_failure:
             # Send the exception chain on failure.
@@ -138,7 +138,7 @@ class BoardConsistencyAuditor(ConsistencyAuditor[Board]):
             candidate_primary=board.arena,
             candidate_satellite=board,
         )
-        # Handle the case that, there is a direct failure of analyzer.
+        # Handle the case that there is a direct failure of analyzer.
         if relation_analysis.is_failure:
             # Send the exception chain on failure.
             return ValidationResult(
@@ -147,7 +147,7 @@ class BoardConsistencyAuditor(ConsistencyAuditor[Board]):
                     ex=relation_analysis.exception
                 )
             )
-        # Handle the case that, the board belongs to a different board.
+        # Handle the case that the board belongs to a different board.
         if relation_analysis.does_not_exist:
             # Send the exception chain on failure.
             return ValidationResult(
@@ -158,7 +158,7 @@ class BoardConsistencyAuditor(ConsistencyAuditor[Board]):
                     )
                 )
             )
-        # Handle the case that, the board has not been added to the board's boards.
+        # Handle the case that the board has not been added to the board's boards.
         if relation_analysis.partially_exists:
             # Send the exception chain on failure.
             return ValidationResult(

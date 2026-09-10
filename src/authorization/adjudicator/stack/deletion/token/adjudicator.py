@@ -87,7 +87,7 @@ class TokenDeletionRequestAdjudicator(DeletionRequestAdjudicator):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the DeletionRequest is not bootstrapped successfully.
+        # Handle the case that the DeletionRequest is not bootstrapped successfully.
         bootstrap = self._priming_validator.execute(candidate)
         if bootstrap.is_failure:
             # Send the exception chain in the result.
@@ -102,7 +102,7 @@ class TokenDeletionRequestAdjudicator(DeletionRequestAdjudicator):
                 )
             )
         request = cast(CollectionDeletionRequest, bootstrap.payload)
-        # handle the case that, the item is not a safe token.
+        # handle the case that the item is not a safe token.
         id_test = self._identity_service.validate_id(request.item_id)
         if id_test.is_failure:
             # Send the exception chain in the result.
@@ -116,7 +116,7 @@ class TokenDeletionRequestAdjudicator(DeletionRequestAdjudicator):
                     ex=id_test.exception
                 )
             )
-        # Handle the case that, the request contains a malformed stack.
+        # Handle the case that the request contains a malformed stack.
         stack_test = self._priming_validator.execute(
             candidate=request.stack,
             target_model=Type[TokenStackService],

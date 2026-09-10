@@ -86,7 +86,7 @@ class TokenUndoMovePermitter(TokenManeuverPermitter):
             token=requestor,
             token_validator=token_validator
         )
-        # Handle the case that, the analyzer aborts.
+        # Handle the case that the analyzer aborts.
         if readiness_analysis_result.is_failure:
             # Send the exception chain on failure.
             return AnalysisResult.aborted(
@@ -99,7 +99,7 @@ class TokenUndoMovePermitter(TokenManeuverPermitter):
                 )
             )
         report = cast(TokenReadinessReport, readiness_analysis_result.payload)
-        # Handle the case that, the token is not actionable.
+        # Handle the case that the token is not actionable.
         if report.token_is_not_ready:
             # Send the exception chain on failure.
             return AnalysisResult.completed(
@@ -118,7 +118,7 @@ class TokenUndoMovePermitter(TokenManeuverPermitter):
                     )
                 )
             )
-        # Handle the case that, an attempt is made to undo more than one turn.
+        # Handle the case that an attempt is made to undo more than one turn.
         if requestor.previous_coord == requestor.current_position:
             # Send the exception chain on failure.
             return AnalysisResult.completed(

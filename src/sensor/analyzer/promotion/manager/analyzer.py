@@ -95,7 +95,7 @@ class PawnPromotionApprovalManager(Analyzer):
             token=pawn,
             token_validator=token_validator
         )
-        # Handle the case that, the freedom analysis is not completed.
+        # Handle the case that the freedom analysis is not completed.
         if analysis_result.is_failure:
             # Send the exception chain on failure.
             return AnalysisResult.failure(
@@ -110,7 +110,7 @@ class PawnPromotionApprovalManager(Analyzer):
             )
         report = cast(TokenReadinessReport, analysis_result.payload)
         
-        # Handle the case that, the token is not free.
+        # Handle the case that the token is not free.
         if report.token_is_not_ready:
             # Send the exception chain on failure.
             return AnalysisResult.completed(
@@ -123,7 +123,7 @@ class PawnPromotionApprovalManager(Analyzer):
                     )
                 )
             )
-        # Handle the case that, the token is not a PawnToken.
+        # Handle the case that the token is not a PawnToken.
         if not isinstance(pawn, PawnToken):
             return AnalysisResult.completed(
                 PromotionApprovalManagerReport.deny_promotion(
@@ -133,7 +133,7 @@ class PawnPromotionApprovalManager(Analyzer):
                     )
                 )
             )
-        # Handle the case that, the pawn_token has already been promoted.
+        # Handle the case that the pawn_token has already been promoted.
         if pawn.is_promoted:
             return AnalysisResult.completed(
                 PromotionApprovalManagerReport.deny_promotion(
@@ -145,7 +145,7 @@ class PawnPromotionApprovalManager(Analyzer):
                     )
                 )
             )
-        # Handle the case that, the is not on its promotion row..
+        # Handle the case that the is not on its promotion row..
         if pawn.current_position.row != pawn.team.enemy_rank_row:
             return AnalysisResult.completed(
                 PromotionApprovalManagerReport.deny_promotion(

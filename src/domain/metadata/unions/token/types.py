@@ -48,7 +48,7 @@ class TokenTypeUnion(TypeUnion[Token]):
         """
         super().__init__(
             model=model or Token,
-            carrier=carrier or TokenCarrier,
+            carrier=carrier or Type[TokenCarrier],
             blueprint=blueprint or TokenBlueprint,
         )
     

@@ -86,7 +86,7 @@ class BoardService(Microservice[Board]):
     ) -> InsertionResult:
         method = "BoardService.forma_team_on_board"
         
-        # Handle the case that, the team does not pass a validation check.
+        # Handle the case that the team does not pass a validation check.
         team_validation = team_service.execute(candidate=team)
         if team_validation.is_failure:
             # Send the exception chain on failure.
@@ -96,7 +96,7 @@ class BoardService(Microservice[Board]):
                     ex=team_validation.exception
                 ),
             )
-        # Handle the case that, the team belongs on a different board.
+        # Handle the case that the team belongs on a different board.
         if not board == team.board:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -107,7 +107,7 @@ class BoardService(Microservice[Board]):
                     ),
                 )
             )
-        # Handle the case that, the team's slot is already occupied.
+        # Handle the case that the team's slot is already occupied.
         if board.team_hash.slot_is_occupied(team):
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -118,12 +118,12 @@ class BoardService(Microservice[Board]):
                     ),
                 )
             )
-        # Handle the case that, the team is already deployed.
+        # Handle the case that the team is already deployed.
         if team.is_ready_to_play():
             return InsertionResult.success()
         # --- The is rea. ---#
         
-        # Handle the case that, the team is not ready
+        # Handle the case that the team is not ready
         if team.is_not_ready_to_play():
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -136,7 +136,7 @@ class BoardService(Microservice[Board]):
     def layout_board(self, board: Board) -> InsertionResult[bool]:
         method = "BoardService.layout_board"
         
-        # Handle the case that, the board does not pass a validation check.
+        # Handle the case that the board does not pass a validation check.
         validation = self.validator.execute(candidate=board)
         if validation.is_failure:
             # Return exception chain on failure
@@ -149,7 +149,7 @@ class BoardService(Microservice[Board]):
                     )
                 )
             )
-        # Handle the case that, the board has already been laid out.
+        # Handle the case that the board has already been laid out.
         if board.state == BoardState.HAS_TOKENS_LAID_OUT:
             # Return exception chain on failure
             return InsertionResult.failure(
@@ -167,7 +167,7 @@ class BoardService(Microservice[Board]):
         for key in board.team_hash.entry.keys():
             deployment_result = board.team_hash.entry[key].roster.deploy_tokens_on_board
             
-            # Handle the case that, the team's deployment is not completed.
+            # Handle the case that the team's deployment is not completed.
             if deployment_result.is_failure:
                 # Send the exception chain on failure.
                 return InsertionResult.failure(
@@ -184,7 +184,7 @@ class BoardService(Microservice[Board]):
     def generate_graph(self, board: Board) -> ComputationResult[Graph]:
         method = "BoardService.generate_graph"
     
-        # Handle the case that, the board does not pass a validation check.
+        # Handle the case that the board does not pass a validation check.
         validation = self.validator.execute(candidate=board)
         if validation.is_failure:
             # Return exception chain on failure

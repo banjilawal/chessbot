@@ -81,7 +81,7 @@ class DestinationCertifierBootstrapper:
             candidate_primary=destination,
             candidate_satellite=token,
         )
-        # Handle the case that, the relation_analysis is not completed.
+        # Handle the case that the relation_analysis is not completed.
         if relation_analysis_result.is_failure:
             # Send the exception chain on failure.
             return DestinationApprovalReport.deny(
@@ -114,7 +114,7 @@ class DestinationCertifierBootstrapper:
                     ),
                 )
             )
-        # Handle the case that, the token is already at the destination.
+        # Handle the case that the token is already at the destination.
         if relation.fully_exists:
             # Send the exception chain on failure.
             return DestinationApprovalReport.deny(
@@ -129,7 +129,7 @@ class DestinationCertifierBootstrapper:
                     ),
                 )
             )
-        # Handle the case that, the destination is occupied by a friend.
+        # Handle the case that the destination is occupied by a friend.
         if token.is_friend(destination.occupant):
             # Send the exception chain on failure.
             return DestinationApprovalReport.deny(

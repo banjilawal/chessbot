@@ -82,9 +82,9 @@ class PromotionPawnRequestAdjudicator(TokenRequestAdjudicator[PawnPromoter]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the request is malformed
+        # Handle the case that the request is malformed
         readiness_analysis_result = self._readiness_analyzer.execute(token=candidate)
-        # Handle the case that, the readiness analysis is not completed.
+        # Handle the case that the readiness analysis is not completed.
         if readiness_analysis_result.is_failure:
             # Send the exception chain in the result.
             return ValidationResult.failure(
@@ -98,7 +98,7 @@ class PromotionPawnRequestAdjudicator(TokenRequestAdjudicator[PawnPromoter]):
                 )
             )
         report = cast(TokenReadinessReport, readiness_analysis_result.payload)
-        # Handle the case that, the pawn is not free.
+        # Handle the case that the pawn is not free.
         if report.token_is_not_ready:
             # Send the exception chain in the result.
             return ValidationResult.failure(
@@ -116,7 +116,7 @@ class PromotionPawnRequestAdjudicator(TokenRequestAdjudicator[PawnPromoter]):
                     )
                 )
             )
-        # Handle the case that, the subject is not a pawn.
+        # Handle the case that the subject is not a pawn.
         if not isinstance(candidate, PawnToken):
             # Send the exception chain in the result.
             return ValidationResult.failure(
@@ -133,7 +133,7 @@ class PromotionPawnRequestAdjudicator(TokenRequestAdjudicator[PawnPromoter]):
                 )
             )
         pawn = cast(PawnToken, report.token)
-        # Handle the case that, the pawn_token has already been promoted.
+        # Handle the case that the pawn_token has already been promoted.
         if pawn.is_promoted:
             # Send the exception chain in the result.
             return ValidationResult.failure(
@@ -151,7 +151,7 @@ class PromotionPawnRequestAdjudicator(TokenRequestAdjudicator[PawnPromoter]):
                     )
                 )
             )
-        # Handle the case that, the is not on its promotion row..
+        # Handle the case that the is not on its promotion row..
         if pawn.current_position.row != pawn.team.enemy_rank_row:
             # Send the exception chain in the result.
             return ValidationResult.failure(

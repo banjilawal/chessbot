@@ -47,7 +47,7 @@ class SquareBuilder(ModelBuilder[Square]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the blueprint is for a HomeSquare.
+        # Handle the case that the blueprint is for a HomeSquare.
         if blueprint.formation is not None:
             return BuildResult.success(
                 HomeSquare(

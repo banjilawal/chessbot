@@ -307,7 +307,7 @@ class BishopSpanService(SpanMicroservice):
             method = f"{self.__class__.__name__}._build_pair"
             
             head_build_result = node_builder.execute(square=head_square)
-            # Handle the case that, the head node is not built successfully.
+            # Handle the case that the head node is not built successfully.
             if head_build_result.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
@@ -321,7 +321,7 @@ class BishopSpanService(SpanMicroservice):
                 )
             
             tail_build_result = node_builder.execute(square=tail_square)
-            # Handle the case that, the tail node is not built successfully.
+            # Handle the case that the tail node is not built successfully.
             if tail_build_result.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
@@ -352,7 +352,7 @@ class BishopSpanService(SpanMicroservice):
             method = f"{self.__class__.__name__}._build_edge_pair"
             
             forward_edge_result = edge_builder.execute(head=head, tail=tail, )
-            # Handle the case that, the e is not built successfully.
+            # Handle the case that the e is not built successfully.
             if forward_edge_result.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
@@ -366,7 +366,7 @@ class BishopSpanService(SpanMicroservice):
                 )
             
             reverse_edge_result = edge_builder.execute(head=tail, tail=head)
-            # Handle the case that, the tail node is not built successfully.
+            # Handle the case that the tail node is not built successfully.
             if reverse_edge_result.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(

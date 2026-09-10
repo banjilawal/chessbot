@@ -104,7 +104,7 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
         # --- Cast the candidate into SchemaQuery for additional tests. ---#
         query = cast(SchemaQuery, candidate)
         
-        # Handle the case that, the context is not safe to use.
+        # Handle the case that the context is not safe to use.
         context_validation_result = workers.context_validator.execute(query.context)
         if context_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -119,7 +119,7 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
                     ex=context_validation_result.exception,
                 )
             )
-        # Handle the case that, the schema is not safe to use.
+        # Handle the case that the schema is not safe to use.
         schema_validation_result = workers.schema_validator.execute(query.catalog)
         if schema_validation_result.is_failure:
             # Send the exception chain on failure.

@@ -92,7 +92,7 @@ class NodeContextBuilder(Builder[NodeContext]):
         params = [priority, square,predecessor, discovery_status,]
         param_count = sum(bool(p) for p in params)
         
-        # Handle the case that, all the optional params are null.
+        # Handle the case that all the optional params are null.
         if param_count == 0:
             # Send the exception chain on failure.
             return BuildResult.failure(
@@ -103,7 +103,7 @@ class NodeContextBuilder(Builder[NodeContext]):
                     )
                 )
             )
-        # Handle the case that, more than one optional param is not-null.
+        # Handle the case that more than one optional param is not-null.
         if param_count > 1:
             # Send the exception chain on failure.
             return BuildResult.failure(

@@ -90,7 +90,7 @@ class EuclideanDistance(Computation[Scalar]):
         if scalar_build_pipeline is None:
             scalar_build_pipeline = ScalarBuilder()
         
-        # Handle the case that, the register is flagged.
+        # Handle the case that the register is flagged.
         register_validation_result = register_validator.execute(register)
         if register_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -118,7 +118,7 @@ class EuclideanDistance(Computation[Scalar]):
                 (register.origin.coord.row - register.b.coord.row) ** 2 +
                 (register.origin.coord.column - register.b.coord.column) ** 2
             )
-        # Handle the case that, the scalar is not built.
+        # Handle the case that the scalar is not built.
         scalar_assembly_result = scalar_build_pipeline.run(
             blueprint=ScalarBlueprint(
                 magnitude=cast(int, magnitude)

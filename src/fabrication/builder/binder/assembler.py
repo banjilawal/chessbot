@@ -29,7 +29,7 @@ class TeamTableBuilder(Builder[TeamBinder]):
     ) -> BuildResult[TeamBinder]:
         method = f"TeamBinderBuilder.build"
         
-        # Handle the case that, the white_team does not pass a validation check.
+        # Handle the case that the white_team does not pass a validation check.
         white_team_validation_result = team_validator.execute(white_team)
         if white_team_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -39,7 +39,7 @@ class TeamTableBuilder(Builder[TeamBinder]):
                     ex=white_team_validation_result.exception
                 )
             )
-        # Handle the case that, the white_team's schema is wrong.
+        # Handle the case that the white_team's schema is wrong.
         if white_team.schema != schema_service.schema.WHITE:
             # Send the exception chain on failure.
             return BuildResult.failure(
@@ -50,7 +50,7 @@ class TeamTableBuilder(Builder[TeamBinder]):
                     )
                 )
             )
-        # Handle the case that, the black_team's schema is wrong.
+        # Handle the case that the black_team's schema is wrong.
         if black_team.schema != schema_service.schema.WHITE:
             # Send the exception chain on failure.
             return BuildResult.failure(

@@ -65,7 +65,7 @@ class NodeTreeProducer:
             
         # --- build the tree's root node. ---#
         root_node_build_result = node_service.builder.execute(square=square_span.origin)
-        # Handle the case that, the root_node is not built successfully.
+        # Handle the case that the root_node is not built successfully.
         if root_node_build_result.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
@@ -147,7 +147,7 @@ class NodeTreeProducer:
         # --- Send the success result to the caller. ---#
         # return BuildResult.success(pair)
         
-        # Handle the case that, a square is not found.
+        # Handle the case that a square is not found.
         if search_result.no_recurrences_exist:
             # Send the exception chain on failure.
             SearchResult.failure(

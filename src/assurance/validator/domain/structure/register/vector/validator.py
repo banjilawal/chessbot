@@ -96,7 +96,7 @@ class VectorRegisterValidator(Validator[VectorRegister]):
         # --- Cast the candidate into a VectorRegisterBlueprint for additional tests. ---#
         blueprint = carrier.extract_blueprint()
         
-        # Handle the case that, both slots are empty
+        # Handle the case that both slots are empty
         if blueprint.is_blank:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -113,7 +113,7 @@ class VectorRegisterValidator(Validator[VectorRegister]):
                     )
                 )
             )
-        # Handle the case that, one slot is empty.
+        # Handle the case that one slot is empty.
         if blueprint.is_half_full:
             # Send the exception chain on failure.
             return ValidationResult.failure(

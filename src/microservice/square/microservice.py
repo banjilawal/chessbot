@@ -115,7 +115,7 @@ class SquareService(Microservice[Square]):
             token_service=token_service,
             square_validator=self.validator,
         )
-        # Handle the case that, the request was not completed.
+        # Handle the case that the request was not completed.
         if visitation_result.is_failure:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
@@ -153,7 +153,7 @@ class SquareService(Microservice[Square]):
             square=square,
             square_validator=self.validator,
         )
-        # Handle the case that, the request was not completed.
+        # Handle the case that the request was not completed.
         if visitation_result.is_failure:
             return DeletionResult.failure(
                 exception=SquareServiceException(

@@ -83,7 +83,7 @@ class TokenSearchRequestAdjudicator(SearchRequestAdjudicator):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the SearchRequest is not bootstrapped successfully.
+        # Handle the case that the SearchRequest is not bootstrapped successfully.
         bootstrap = self._priming_validator.execute(candidate)
         if bootstrap.is_failure:
             # Send the exception chain in the result.
@@ -98,7 +98,7 @@ class TokenSearchRequestAdjudicator(SearchRequestAdjudicator):
                 )
             )
         request = cast(SearchRequest, bootstrap.payload)
-        # handle the case that, the item is not a safe token.
+        # handle the case that the item is not a safe token.
         context_test = self._item_validator.execute(request.item)
         if context_test.is_failure:
             # Send the exception chain in the result.
@@ -112,7 +112,7 @@ class TokenSearchRequestAdjudicator(SearchRequestAdjudicator):
                     ex=context_test.exception
                 )
             )
-        # Handle the case that, the request contains a malformed stack.
+        # Handle the case that the request contains a malformed stack.
         stack_test = self._priming_validator.execute(
             candidate=request.stack,
             target_model=Type[TokenStackService],

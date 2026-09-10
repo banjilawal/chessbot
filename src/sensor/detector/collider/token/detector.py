@@ -72,7 +72,7 @@ class TokenCollider(Collider[TokenCarrier]):
         # --- Loop through the collider_candidates to find matches. ---#
         
         for item in stream.items:
-            # Handle the case that, a token already has the target's id.
+            # Handle the case that a token already has the target's id.
             if item.id == attractor.entity.id:
                 # Return the collision details in the report.
                 return CollisionReport.collision(
@@ -87,7 +87,7 @@ class TokenCollider(Collider[TokenCarrier]):
                         err_code=TokenIdCollisionException.ERR_CODE,
                     )
                 )
-            # Handle the case that, a token already has the target's id.
+            # Handle the case that a token already has the target's id.
             if item.name.upper() == attractor.entity.name.upper():
                 # Return the collision details in the report.
                 return CollisionReport.collision(
@@ -102,7 +102,7 @@ class TokenCollider(Collider[TokenCarrier]):
                         err_code=TokenNameCollisionException.ERR_CODE,
                     )
                 )
-            # Handle the case that, the target shares its home_square_name with a collider_candidates member.
+            # Handle the case that the target shares its home_square_name with a collider_candidates member.
             if item.home_square.name.upper() == attractor.entity.formation.home_square_name.upper():
                 # Return the collider, designation, and the exception.
                 return CollisionReport.collision(

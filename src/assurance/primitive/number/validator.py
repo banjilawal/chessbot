@@ -80,7 +80,7 @@ class NumberValidator:
         method = f"{self.__class__.__name__}.execute"
         
         
-        # Handle the case that, the validator is not primed.
+        # Handle the case that the validator is not primed.
         validator_priming_result = self._priming_validator.execute(
             candidate=candidate,
             target_model=int,
@@ -100,7 +100,7 @@ class NumberValidator:
         # --- Cast the candidate into a Token for additional tests ---#
         number = cast(int, candidate)
         
-        # Handle the case that, the number
+        # Handle the case that the number
         if floor < 0:
             # Send the exception chain on failure.
             return ValidationResult.failure(

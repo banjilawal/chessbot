@@ -84,7 +84,7 @@ class NodeService(Microservice[Node]):
         """
         method = "NodeService.add_incoming_edge"
         
-        # Handle the case that, the node does not pass a validation check.
+        # Handle the case that the node does not pass a validation check.
         node_validation_result = self.validator.execute(candidate=node)
         if node_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -110,7 +110,7 @@ class NodeService(Microservice[Node]):
                     )
                 )
             )
-        # Handle the case that, the node is not the edge's tail
+        # Handle the case that the node is not the edge's tail
         if edge.tail != node:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -165,7 +165,7 @@ class NodeService(Microservice[Node]):
         """
         method = "NodeService.add_incoming_edge"
         
-        # Handle the case that, the node does not pass a validation check.
+        # Handle the case that the node does not pass a validation check.
         node_validation_result = self.validator.execute(candidate=node)
         if node_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -191,7 +191,7 @@ class NodeService(Microservice[Node]):
                     )
                 )
             )
-        # Handle the case that, the node is not the edge's tail
+        # Handle the case that the node is not the edge's tail
         if edge.tail != node:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -246,7 +246,7 @@ class NodeService(Microservice[Node]):
         """
         method = "NodeService.remove_incoming_edge"
         
-        # Handle the case that, the node does not pass a validation check.
+        # Handle the case that the node does not pass a validation check.
         node_validation_result = self.validator.execute(candidate=node)
         if node_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -311,7 +311,7 @@ class NodeService(Microservice[Node]):
         """
         method = "NodeService.add_outgoing_edge"
         
-        # Handle the case that, the node does not pass a validation check.
+        # Handle the case that the node does not pass a validation check.
         node_validation_result = self.validator.execute(candidate=node)
         if node_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -337,7 +337,7 @@ class NodeService(Microservice[Node]):
                     )
                 )
             )
-        # Handle the case that, the node is not the edge's tail
+        # Handle the case that the node is not the edge's tail
         if edge.tail != node:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -393,7 +393,7 @@ def remove_outgoing_edge(self, node: Node, edge: Edge) -> DeletionResult[Edge]:
     """
     method = "NodeService.remove_outgoing_edge"
     
-    # Handle the case that, the node does not pass a validation check.
+    # Handle the case that the node does not pass a validation check.
     node_validation_result = self.execute.search_service(candidate=node)
     if node_validation_result.is_failure:
         # Send the exception chain on failure.

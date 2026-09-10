@@ -72,7 +72,7 @@ class LaunchAttack:
         if priming_validator is None:
             priming_validator = PrimingValidator()
             
-        # Handle the case that, the itinerary is not valid.
+        # Handle the case that the itinerary is not valid.
         validation_result = priming_validator.execute(
             candidate=report,
             target_type=AttackApproval,
@@ -90,7 +90,7 @@ class LaunchAttack:
                     ex=validation_result.exception,
                 )
             )
-        # Handle the case that, the destination is not empty.
+        # Handle the case that the destination is not empty.
         if report.target_square.no_recurrences_exist:
             # Send the exception chain on failure.
             return EventResult.failure(

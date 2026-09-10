@@ -102,7 +102,7 @@ class TokenQueryValidationDispatcher(ValidationDispatcher[TokenQuery]):
         # --- Cast the candidate into TokenQuery for additional tests. ---#
         query = cast(TokenQuery, candidate)
         
-        # Handle the case that, the context is not safe to use.
+        # Handle the case that the context is not safe to use.
         context_validation_result = context_validator.execute(query.context)
         if context_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -133,7 +133,7 @@ class TokenQueryValidationDispatcher(ValidationDispatcher[TokenQuery]):
                     ex=stack_validation_result.exception,
                 )
             )
-        # Handle the case that, list is empty.
+        # Handle the case that list is empty.
         if query.stack.is_empty:
             # Send the exception chain on failure.
             return ValidationResult.failure(

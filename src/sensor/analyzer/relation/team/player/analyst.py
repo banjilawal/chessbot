@@ -60,7 +60,7 @@ class PlayerTeamRelationAnalyst(RelationAnalyst[Player, Team]):
         """
         method = "PlayerService.analyze"
         
-        # Handle the case that, owner validation fails.
+        # Handle the case that owner validation fails.
         player_validation = player_validator.execute(candidate_primary)
         if player_validation.is_failure:
             # Send the exception chain on failure.
@@ -73,7 +73,7 @@ class PlayerTeamRelationAnalyst(RelationAnalyst[Player, Team]):
         # Just incase things aren't Liskovian on the candidate_primary ue validation.payload for the cast.
         player = cast(Player, player_validation.payload)
         
-        # Handle the case that, team validation fails.
+        # Handle the case that team validation fails.
         team_validation = player.teams.pair_service.execute.search_service(candidate_satellite)
         if team_validation.is_failure:
             # Send the exception chain on failure.

@@ -94,7 +94,7 @@ class SouthAxisEndpointBuilder:
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the origin is not safe to use.
+        # Handle the case that the origin is not safe to use.
         validation = self._vector_validator.execute(self._origin)
         # Send the exception chain in the result.
         if validation.is_failure:
@@ -137,7 +137,7 @@ class SouthAxisEndpointBuilder:
     #         x=self._origin.x + self._delta.x,
     #         y=self._origin.y + self._delta.y,
     #     )
-    #     # Handle the case that, the request is not fulfilled.
+    #     # Handle the case that the request is not fulfilled.
     #     if result.is_failure:
     #         return BuildResult.failure(
     #             SouthAxisEndPointBuilderException(

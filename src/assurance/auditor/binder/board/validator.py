@@ -74,7 +74,7 @@ class BoardBinderConsistencyAuditor(ConsistencyAuditor[BoardBinder]):
         if toolkit is None:
             toolkit = BoardTeamBinderToolkit()
             
-        # Handle the case that, the consistency is not primed.
+        # Handle the case that the consistency is not primed.
         consistency_priming_result = toolkit.priming_consistency.execute(
             candidate=candidate,
             target_model=BoardBinder,
@@ -117,7 +117,7 @@ class BoardBinderConsistencyAuditor(ConsistencyAuditor[BoardBinder]):
     ) -> ValidationResult[Dict[Schema, Team]]:
         method = f"{self.__class__.__name__}.run_satellite_table_checks"
         
-        # Handle the case that, the satellite is not a dictionary or null.
+        # Handle the case that the satellite is not a dictionary or null.
         table_validation_result = BinderTablePrimingconsistency.execute(binder)
         if table_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -133,7 +133,7 @@ class BoardBinderConsistencyAuditor(ConsistencyAuditor[BoardBinder]):
         # --- Cast to Dict for additional tests. ---#
         table = cast(Dict[Schema, Any], table_validation_result.payload)
         
-        # handle the case that, the keys are not safe schemas.
+        # handle the case that the keys are not safe schemas.
         for key in table.keys():
             schema_validation_result = toolkit.schema_service.consistency.execute(table[key])
             # Send the exception chain on failure.
@@ -146,7 +146,7 @@ class BoardBinderConsistencyAuditor(ConsistencyAuditor[BoardBinder]):
                     ex=schema_validation_result.exception
                 )
             )
-        # Handle the case that, the values are not safe teams.
+        # Handle the case that the values are not safe teams.
         for key in table.keys():
             team_validation_result = toolkit.schema_service.consistency.execute(table[key])
             # Send the exception chain on failure.

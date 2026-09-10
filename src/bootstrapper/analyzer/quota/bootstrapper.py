@@ -67,7 +67,7 @@ class QuotaAnalyzerBootstrapper(AnalyzerBootstrapper):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, token_stack is null or the the wrong type
+        # Handle the case that token_stack is null or the the wrong type
         stack_validation_result = self._priming_validator.execute(
             candidate=token_stack,
             target_model=Type[TokenStackService],
@@ -85,7 +85,7 @@ class QuotaAnalyzerBootstrapper(AnalyzerBootstrapper):
                     ex=stack_validation_result.exception
                 )
             )
-        # Handle the case that, the rank does not pass a validation check.
+        # Handle the case that the rank does not pass a validation check.
         rank_validation_result = self._rank_validator.execute(candidate=rank)
         if rank_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -102,7 +102,7 @@ class QuotaAnalyzerBootstrapper(AnalyzerBootstrapper):
         # --- Search for the schema for rank members. ---#
         rank_search_result = token_stack.search(context=TokenContext(rank=rank))
         
-        # Handle the case that, a search error occurred.
+        # Handle the case that a search error occurred.
         if rank_search_result.is_failure:
             # Send the exception chain on failure.
             return AnalysisResult.failure(

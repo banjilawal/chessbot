@@ -85,7 +85,7 @@ class RankSlotPermitter(OperationPermitter):
         """
         method =  f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the request is malformed
+        # Handle the case that the request is malformed
         request_type_validation_result  = self._priming_validator.execute(
             candidate=request,
             target_model=Type[RankSlotRequest],

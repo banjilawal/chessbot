@@ -67,7 +67,7 @@ class TokenHomeReporter(TokenEnvironmentReporter):
             bootstrapper = HomeDetectorBootstrapper()
             
         result = bootstrapper.execute(context=context)
-        # Handle the case that, the opening square is not found.
+        # Handle the case that the opening square is not found.
         if result.is_failure:
             # Send the exception chain on failure.
             return Result.failure(

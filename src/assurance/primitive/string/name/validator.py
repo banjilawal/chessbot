@@ -81,7 +81,7 @@ class NameValidator(Validator[str]):
         
         string_validation_result = string_validator.execute(candidate)
         
-        # Handle the case that, the candidate is flagged unsafe.
+        # Handle the case that the candidate is flagged unsafe.
         if string_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

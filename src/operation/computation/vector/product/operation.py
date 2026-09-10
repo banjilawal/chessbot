@@ -95,7 +95,7 @@ class ScalarProduct(Computation[CartesianToggle]):
         if coord_build_pipeline is None:
             coord_build_pipeline = CoordBuildPipeline()
         
-        # Handle the case that, the scalar is not safe.
+        # Handle the case that the scalar is not safe.
         scalar_validation = scalar_validator.execute(scalar)
         if scalar_validation.is_failure:
             # Send the exception chain on failure.
@@ -108,7 +108,7 @@ class ScalarProduct(Computation[CartesianToggle]):
                     ex=scalar_validation.exception
                 )
             )
-        # Handle the case that, the validator flags the operand.
+        # Handle the case that the validator flags the operand.
         operand_validation = operand_validator.execute(operand)
         if operand_validation.is_failure:
             # Send the exception chain on failure.
@@ -134,7 +134,7 @@ class ScalarProduct(Computation[CartesianToggle]):
                 column=operand.coord.column * scalar.magnitude,
             )
             build_result = coord_build_pipeline.run(blueprint=blueprint, )
-        # Handle the case that, the build did not produce a result.
+        # Handle the case that the build did not produce a result.
         if build_result.is_failure:
             # Send the exception chain on failure.
             return ComputationResult.failure(

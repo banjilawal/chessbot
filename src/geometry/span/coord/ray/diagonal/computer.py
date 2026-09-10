@@ -88,7 +88,7 @@ class DiagonalRayComputer:
             x=factors.start_x,
             y=cls._f_of_x(x=factors.start_x, slope=factors.slope),
         )
-        # Handle the case that, the cursor is not built.
+        # Handle the case that the cursor is not built.
         if cursor_initialization_result.is_failure:
             # Send the exception chain on failure.
             return ComputationResult.failure(
@@ -130,7 +130,7 @@ class DiagonalRayComputer:
                 x=cursor.x,
                 y=cls._f_of_x(x=cursor.x, slope=factors.slope),
             )
-            # Handle the case that, the cursor is not updated.
+            # Handle the case that the cursor is not updated.
             if cursor_update_result.is_failure:
                 # Send the exception chain on failure.
                 return ComputationResult.failure(

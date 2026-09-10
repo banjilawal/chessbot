@@ -86,7 +86,7 @@ class TokenPositionPopper:
             token=token,
             token_validator=token_validator
         )
-        # Handle the case that, the analyzer aborts.
+        # Handle the case that the analyzer aborts.
         if readiness_analysis_result.is_failure:
             # Send the exception chain on failure.
             return DeletionResult.failure(
@@ -101,7 +101,7 @@ class TokenPositionPopper:
                 )
             )
         report = cast(TokenReadinessReport, readiness_analysis_result.payload)
-        # Handle the case that, the token is not actionable.
+        # Handle the case that the token is not actionable.
         if report.token_is_not_ready:
             # Send the exception chain on failure.
             return DeletionResult.failure(
@@ -120,7 +120,7 @@ class TokenPositionPopper:
                     )
                 )
             )
-        # Handle the case that, the token does not pass a validation check.
+        # Handle the case that the token does not pass a validation check.
         validation_result = token_validator.execute(token)
         if validation_result.is_failure:
             # Send the exception chain on failure.
@@ -135,7 +135,7 @@ class TokenPositionPopper:
                     ex=validation_result.exception
                 )
             )
-        # Handle the case that, token is not active
+        # Handle the case that token is not active
         if not token.is_active:
             # Send the exception chain on failure.
             return DeletionResult.failure(
@@ -154,7 +154,7 @@ class TokenPositionPopper:
                         )
                 )
             )
-        # Handle the case that, the active token has not opened.
+        # Handle the case that the active token has not opened.
         if token.positions.size == 1:
             if validation_result.is_failure:
                 # Send the exception chain on failure.
@@ -174,7 +174,7 @@ class TokenPositionPopper:
                         )
                     )
                 )
-        # Handle the case that, an attempt is made to undo more than one turn.
+        # Handle the case that an attempt is made to undo more than one turn.
         if token.previous_coord == token.current_position:
             # Send the exception chain on failure.
             return DeletionResult.failure(
@@ -194,7 +194,7 @@ class TokenPositionPopper:
         # --- Integrity are passed. ServiceRequest that, the CoordDatabase instance pop the last record. ---#
         popping_cord_stack_result = token.positions.pop()
         
-        # Handle the case that, the pop was not completed.
+        # Handle the case that the pop was not completed.
         if popping_cord_stack_result.is_failure:
             # Send the exception chain on failure.
             return DeletionResult.failure(

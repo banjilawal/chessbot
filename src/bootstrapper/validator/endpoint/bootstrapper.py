@@ -78,7 +78,7 @@ class EndpointCertifierBootstrapper(ValidatorBootstrapper):
         if destination_certifier is None:
             destination_certifier = TokenDestinationRootCertifier()
         
-        # Handle the case that, the token is not at the origin
+        # Handle the case that the token is not at the origin
         token_origin_relation_analysis_result = origin_certifier.validate(
             token=token,
             origin=origin,
@@ -94,7 +94,7 @@ class EndpointCertifierBootstrapper(ValidatorBootstrapper):
                     ex=token_origin_relation_analysis_result.exception,
                 )
             )
-        # Handle the case that, the token is already at the destination.
+        # Handle the case that the token is already at the destination.
         token_destination_relation_analysis_result = destination_certifier.validate(
             token=token,
             destination=destination,

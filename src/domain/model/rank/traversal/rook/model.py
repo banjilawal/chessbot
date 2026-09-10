@@ -74,7 +74,7 @@ class Rook(TraversalRank):
             origin=origin,
             coord_service=self.coord_service,
         )
-        # Handle the case that, the span is not produced.
+        # Handle the case that the span is not produced.
         if span_result.is_failure:
             # Send the exception chain on failure.
             return ComputationResult.failure(

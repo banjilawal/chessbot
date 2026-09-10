@@ -92,7 +92,7 @@ class PlayerService(Microservice[Player]):
         """
         method = "PlayerService.pop_team_from_player"
         
-        # Handle the case that, the owneris not safe.
+        # Handle the case that the owneris not safe.
         validation = self.validator.execute(player)
         if validation.is_failure:
             # Send the exception chain on failure.
@@ -105,7 +105,7 @@ class PlayerService(Microservice[Player]):
                     )
                 )
             )
-        # Handle the case that, the owner does not have any teams.
+        # Handle the case that the owner does not have any teams.
         if player.teams.no_recurrences_exist:
             # Send the exception chain on failure.
             return DeletionResult.failure(
@@ -117,7 +117,7 @@ class PlayerService(Microservice[Player]):
                     )
                 )
             )
-        # Handle the case that, the owner does not have any teams.
+        # Handle the case that the owner does not have any teams.
         deletion_result = player.teams.undo_team_addition()
         if deletion_result.is_failure:
             return DeletionResult.failure(
@@ -167,7 +167,7 @@ class PlayerService(Microservice[Player]):
             owner_validator=self.validator,
             team_service=team_service,
         )
-        # Handle the case that, the relation analysis is not completed.
+        # Handle the case that the relation analysis is not completed.
         if relation.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -178,7 +178,7 @@ class PlayerService(Microservice[Player]):
                         ex=relation.exception)
                 )
             )
-        # Handle the case that, the team belongs to a different owner.
+        # Handle the case that the team belongs to a different owner.
         if relation.does_not_exist:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -192,7 +192,7 @@ class PlayerService(Microservice[Player]):
                     )
                 )
             )
-        # Handle the case that, the owner already has the team.
+        # Handle the case that the owner already has the team.
         if relation.is_success:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -204,7 +204,7 @@ class PlayerService(Microservice[Player]):
                     )
                 )
             )
-        # Handle the case that, pushing the new team on to owner's TeamStack fails.
+        # Handle the case that pushing the new team on to owner's TeamStack fails.
         insertion_result = player.teams.add_team(team=team)
         if insertion_result.is_failure:
             # Send the exception chain on failure.

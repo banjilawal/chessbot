@@ -62,7 +62,7 @@ class MultiplyCoordTransaction:
         """
         method = f"{cls.__name__}.execute"
         
-        # Handle the case that, the coord does not pass a validation check.
+        # Handle the case that the coord does not pass a validation check.
         coord_validation_result =coord_service.execute.execute(coord)
         if coord_validation_result.is_failure:
             # Return exception chain on failure.
@@ -77,7 +77,7 @@ class MultiplyCoordTransaction:
                     ex=coord_validation_result.exception,
                 )
             )
-        # Handle the case that, the scalar does not pass a validation check.
+        # Handle the case that the scalar does not pass a validation check.
         scalar_validation_result = scalar_service.execute.execute(candidate=scalar)
         if scalar_validation_result.is_failure:
             # Return exception chain on failure.
@@ -97,7 +97,7 @@ class MultiplyCoordTransaction:
             row=coord.row * scalar.magnitude,
             column=coord.column * scalar.magnitude
         )
-        # Handle the case that, the product does not satisfy integrity requirements
+        # Handle the case that the product does not satisfy integrity requirements
         if product_build_result.is_failure:
             # Return exception chain on failure.
             return ComputationResult.failure(

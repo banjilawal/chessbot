@@ -80,7 +80,7 @@ class TokenHomePlacer(Operator[Token]):
         if home_square_validator is None:
             home_square_validator = HomeSquareValidator()
          
-        # Handle the case that, a claim report is not generated.
+        # Handle the case that a claim report is not generated.
         analysis_result = home_square_validator.analyze(token=token)
         if analysis_result.is_failure:
             # Send the exception chain on failure.
@@ -115,7 +115,7 @@ class TokenHomePlacer(Operator[Token]):
             visitor=claim.claimant,
             square=claim.home_square,
         )
-        # Handle the case that, the visitation transaction fails.
+        # Handle the case that the visitation transaction fails.
         if visitation_result.is_failure:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(

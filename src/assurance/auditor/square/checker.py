@@ -133,7 +133,7 @@ class SquareConsistencyAuditor(ConsistencyAuditor[Square]):
         """
         method = f"{self.__class__.__name__}._run_board_tests"
         
-        # Handle the case that, the square's board is nnt certified as safe.
+        # Handle the case that the square's board is nnt certified as safe.
         board_consistency_result = board_service.microservice.execute.validat(
             candidate=square.board
         )
@@ -156,7 +156,7 @@ class SquareConsistencyAuditor(ConsistencyAuditor[Square]):
             candidate_satellite=square,
         )
 
-        # Handle the case that, the analyzer did not complete the request.
+        # Handle the case that the analyzer did not complete the request.
         if board_square_relation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -169,7 +169,7 @@ class SquareConsistencyAuditor(ConsistencyAuditor[Square]):
                     ex=board_square_relation.exception
                 )
             )
-        # Handle the case that, the square belongs to a different board.
+        # Handle the case that the square belongs to a different board.
         if board_square_relation.does_not_exist:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -185,7 +185,7 @@ class SquareConsistencyAuditor(ConsistencyAuditor[Square]):
                     )
                 )
             )
-        # Handle the case that, the board has an expire link to the square.
+        # Handle the case that the board has an expire link to the square.
         if board_square_relation.stale_link_exists:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -201,7 +201,7 @@ class SquareConsistencyAuditor(ConsistencyAuditor[Square]):
                     )
                 )
             )
-        # Handle the case that, the square has not been added to the board's squares.
+        # Handle the case that the square has not been added to the board's squares.
         if board_square_relation.registration_does_not_exist:
             # Send the exception chain on failure.
             return ValidationResult.failure(

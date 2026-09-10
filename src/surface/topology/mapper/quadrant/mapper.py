@@ -82,7 +82,7 @@ class QuadrantMappingFunction(SpaceMappingFunction, Generic[T]):
         """
         method = f"{self.__class__.__name__}.next"
         
-        # Handle the case that, the argument is not safe to use.
+        # Handle the case that the argument is not safe to use.
         validation = self.math.vector.validator.execute(vector)
         if validation.is_failure:
             # Send an exception chain in the result.
@@ -103,7 +103,7 @@ class QuadrantMappingFunction(SpaceMappingFunction, Generic[T]):
             x=current.x + self._x_step,
             y=(2 * current.y * self._slope) + self.slope
         )
-        # Handle the case that, the build is not successful.
+        # Handle the case that the build is not successful.
         if build.is_failure:
             # Send an exception chain in the result.
             return ComputationResult.failure(

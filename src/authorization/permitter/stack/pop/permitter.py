@@ -62,7 +62,7 @@ class PopPermitter(OperationPermitter):
         """
         method = f"{self.__class__.__name__}.bootstrap_request"
         
-        # Handle the case that, the request is malformed
+        # Handle the case that the request is malformed
         validation_result = self.priming_validator.execute(
             candidate=request,
             target_model=Type[PopRequest],

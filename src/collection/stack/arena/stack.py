@@ -90,7 +90,7 @@ class ArenaStackService(StackService[Arena]):
         """
         method = "ArenaStackService.add_arena"
         
-        # Handle the case that, the arena is unsafe.
+        # Handle the case that the arena is unsafe.
         validation = self.arena_service.execute.execute(candidate=arena)
         if validation.is_failure:
             # Send the exception chain on failure.
@@ -108,7 +108,7 @@ class ArenaStackService(StackService[Arena]):
             dataset=self.items,
             context=ArenaContext(arena=arena.arena)
         )
-        # Handle the case that, the search is not completed.
+        # Handle the case that the search is not completed.
         if search_result.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -120,7 +120,7 @@ class ArenaStackService(StackService[Arena]):
                     )
                 )
             )
-        # Handle the case that, a arena in collection has the same arena.
+        # Handle the case that a arena in collection has the same arena.
         if search_result.is_success:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -137,7 +137,7 @@ class ArenaStackService(StackService[Arena]):
         # --- Arena order is not required. Direct insertion into the collider_candidates is simpler that a push. ---#
         self.items.append(arena)
         
-        # Handle the case that, the arena was not appended to the collider_candidates.
+        # Handle the case that the arena was not appended to the collider_candidates.
         if arena not in self.items:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -177,7 +177,7 @@ class ArenaStackService(StackService[Arena]):
         """
         method = "ArenaStackService.delete_arena_by_id"
         
-        # Handle the case that, there are no bag in the list.
+        # Handle the case that there are no bag in the list.
         if self.is_empty:
             # Send the exception chain on failure.
             return DeletionResult.failure(
@@ -191,7 +191,7 @@ class ArenaStackService(StackService[Arena]):
                     )
                 )
             )
-        # Handle the case that, the idis not safe.
+        # Handle the case that the idis not safe.
         validation = identity_service.validate_id(candidate=id)
         if validation.is_failure:
             # Send the exception chain on failure.
@@ -207,7 +207,7 @@ class ArenaStackService(StackService[Arena]):
         # --- Search the list for a arena with target id. ---#
         for item in self.items:
             if item.id == id:
-                # Handle the case that, the match is the wrong type.
+                # Handle the case that the match is the wrong type.
                 if not isinstance(item, Arena):
                     # Send the exception chain on failure.
                     return DeletionResult.failure(

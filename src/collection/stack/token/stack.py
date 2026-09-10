@@ -192,7 +192,7 @@ class TokenStackService(StackService[Token]):
         # --- Handoff request fulfilment to the controller. ---#
         request_result = self._controller.popper.execute()
         
-        # Handle the case that, the request was not fulfilled.
+        # Handle the case that the request was not fulfilled.
         if request_result.is_failure:
             # Send the exception chain on failure.
             return DeletionResult.failure(
@@ -229,7 +229,7 @@ class TokenStackService(StackService[Token]):
             item=item,
             stack=self,
         )
-        # Handle the case that, the request was not fulfilled.
+        # Handle the case that the request was not fulfilled.
         if request_result.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -266,7 +266,7 @@ class TokenStackService(StackService[Token]):
             item_id=id,
             stack=self,
         )
-        # Handle the case that, the request was not completed
+        # Handle the case that the request was not completed
         if request_result.is_failure:
             # Send the exception chain on failure.
             return DeletionResult.failure(
@@ -302,7 +302,7 @@ class TokenStackService(StackService[Token]):
         request_result = self._controller.searcher.execute(
             query=TokenQuery(context=context, stack=self)
         )
-        # Handle the case that, the request was not fulfilled.
+        # Handle the case that the request was not fulfilled.
         if request_result.is_failure:
             # Send the exception chain on failure.
             return SearchResult.failure(

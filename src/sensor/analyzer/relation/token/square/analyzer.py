@@ -80,7 +80,7 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
         if square_validator is None:
             square_validator = SquareValidationDispatcher()
         
-        # Handle the case that, the square is not certified as safe.
+        # Handle the case that the square is not certified as safe.
         square_validation_result = square_validator.execute(candidate_primary)
         if square_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -97,7 +97,7 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
         # Cast the validated primary as a Square.
         square = cast(Square, square_validation_result.payload)
         
-        # Handle the case that, the token is flagged.
+        # Handle the case that the token is flagged.
         token_validation_result = token_validator.execute(candidate_satellite)
         if token_validation_result.is_failure:
             # Send the exception chain on failure.

@@ -73,7 +73,7 @@ class OrientationSelectorValidationDispatcher(ModelValidationDispatcher[Orientat
         method = f"{self.__class__.__name__}.execute"
         
         
-        # Handle the case that, the validator is not primed.
+        # Handle the case that the validator is not primed.
         validator_priming_result = self.integrity_checker.bundle.priming_validator.execute(
             candidate=candidate,
             target_model=self.integrity_checker.bundle.model,

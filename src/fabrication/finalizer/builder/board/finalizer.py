@@ -27,7 +27,7 @@ class BoardBuilderFinalizer(BuilderFinalizer[Board]):
         arena = product.arena
         if product != arena.binder.board:
             update_result = arena_binder_service.update_board(arena_binder=arena.binder, board=product)
-            # Handle the case that, the board is not successfully registered with its arena.
+            # Handle the case that the board is not successfully registered with its arena.
             if insertion_result.is_failure:
                 return BuildResult.failure(
                     FinalizeBoardBuilderException(

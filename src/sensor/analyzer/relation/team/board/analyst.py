@@ -80,7 +80,7 @@ class BoardTeamRelationAnalyzer(RelationAnalyzer[Board, Team]):
         if team_validator is None:
             team_validator = TeamValidationDispatcher()
         
-        # Handle the case that, the board is not certified as safe.
+        # Handle the case that the board is not certified as safe.
         board_validator_result = board_validator.execute(candidate_primary)
         if board_validator_result.is_failure:
             # Send the exception chain on failure.
@@ -97,7 +97,7 @@ class BoardTeamRelationAnalyzer(RelationAnalyzer[Board, Team]):
         # Just incase things aren't Liskovian on the candidate_primary, cast the validation payload instead,
         board = cast(Board, board_validator_result.payload)
         
-        # Handle the case that, the team is not certified as safe.
+        # Handle the case that the team is not certified as safe.
         team_validation_result = team_validator.validator.execute(candidate_satellite)
         if team_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -116,11 +116,11 @@ class BoardTeamRelationAnalyzer(RelationAnalyzer[Board, Team]):
         if team.board != board and board.binder_controller.binder.satellite_table[team.schema] != team:
             return AnalysisResult.success(RelationReport.no_relation())
         
-        # Handle the case that, the team has not registered with the board.
+        # Handle the case that the team has not registered with the board.
         if team.schema not in board.binder_controller.binder.schema_list:
             return AnalysisResult.success(RelationReport.registration_missing(team))
         
-        # Handle the case that, the board has a stale link to the team.
+        # Handle the case that the board has a stale link to the team.
         if team in board.binder_controller.binder.satellite_list and team.board != board:
             return AnalysisResult.success(RelationReport.stale_link(board))
         

@@ -12,7 +12,10 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import AttributeHelperTable, BoardValidator, SquareValidator, TeamValidator, PrimingValidator
+from assurance import (
+    AttributeHelperTable, BoardValidator, RankValidator, SquareValidator, TeamValidator,
+    PrimingValidator
+)
 from domain import Token
 from microservice import IdentityService
 
@@ -28,6 +31,7 @@ class TokenHelperTable(AttributeHelperTable[Token]):
 
     Attributes:
         team_validator: TeamValidator
+        rank_validator: RankValidator
         board_validator: BoardValidator
         square_validator: SquareValidator
 
@@ -37,12 +41,15 @@ class TokenHelperTable(AttributeHelperTable[Token]):
         AttributeHelperTable
     """
     _team_validator: TeamValidator
+    _rank_validator: RankValidator
     _board_validator: BoardValidator
     _square_validator: SquareValidator
+
     
     def __init__(
             self,
             team_validator: Optional[TeamValidator] | None = None,
+            rank_validator: Optional[RankValidator] | None = None,
             board_validator: Optional[BoardValidator] | None = None,
             square_validator: Optional[SquareValidator] | None = None,
             identity_service: Optional[IdentityService] | None = None,
@@ -51,6 +58,7 @@ class TokenHelperTable(AttributeHelperTable[Token]):
         """
         Args:
             team_validator: Optional[TeamValidator]
+            rank_validator: Optional[RankValidator]
             board_validator: Optional[BoardValidator]
             square_validator: Optional[SquareValidator]
             identity_service: Optional[IdentityService]
@@ -61,12 +69,17 @@ class TokenHelperTable(AttributeHelperTable[Token]):
             priming_validator=priming_validator,
         )
         self._team_validator = team_validator or TeamValidator()
+        self._rank_validator = rank_validator or RankValidator()
         self._board_validator = board_validator or BoardValidator()
         self._square_validator = square_validator or SquareValidator()
     
     @property
     def team_validator(self) -> TeamValidator:
         return self._team_validator
+    
+    @property
+    def rank_validator(self) -> RankValidator:
+        return self._rank_validator
     
     @property
     def board_validator(self) -> BoardValidator:

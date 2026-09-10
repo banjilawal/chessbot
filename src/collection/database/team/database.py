@@ -118,7 +118,7 @@ class TeamDatabase(Database[Team]):
         # --- Handoff the deletion responsibility to _token_database_core. ---#
         deletion_result = self._team_stack.delete_by_id(id=id, identity_service=identity_service)
         
-        # Handle the case that, the deletion was not completed.
+        # Handle the case that the deletion was not completed.
         if deletion_result.is_failure:
             # Send the exception chain on failure.
             return DeletionResult.failure(
@@ -153,7 +153,7 @@ class TeamDatabase(Database[Team]):
         # --- Use _token_database_core.insert_token because order does not matter for the occupant access. ---#
         insertion_result = self._team_stack.search_service(item=team)
         
-        # Handle the case that, the insertion is not completed.
+        # Handle the case that the insertion is not completed.
         if insertion_result.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -188,7 +188,7 @@ class TeamDatabase(Database[Team]):
         # --- Handoff the search responsibility to _token_database_core. ---#
         search_result = self._team_stack.context_service.finder.route(context=context)
         
-        # Handle the case that, the search is not completed.
+        # Handle the case that the search is not completed.
         if search_result.is_failure:
             # Send the exception chain on failure.
             return SearchResult.failure(

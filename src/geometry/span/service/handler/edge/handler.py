@@ -57,7 +57,7 @@ class NodeEdgeHandler:
                 head=head_node,
                 tail=tail_node,
             )   
-            # Handle the case that, the edge is not built
+            # Handle the case that the edge is not built
             if build_result.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
@@ -105,7 +105,7 @@ class NodeEdgeHandler:
             head=node_dict["head"],
             tail=node_dict["tail"],
         )
-        # Handle the case that, the edge is not built
+        # Handle the case that the edge is not built
         if build_result.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

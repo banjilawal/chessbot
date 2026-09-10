@@ -68,7 +68,7 @@ class ZoneValidator(Validator[Zone]):
         """
         method = f"{cls.__name__}.execute"
         
-        # Handle the case that, the rank does not exist.
+        # Handle the case that the rank does not exist.
         if candidate is None:
             # Return the exception on failure.
             return ValidationResult.failure(
@@ -85,7 +85,7 @@ class ZoneValidator(Validator[Zone]):
                     )
                 )
             )
-        # Handle the case that, the rank is the wrong type.
+        # Handle the case that the rank is the wrong type.
         if not isinstance(candidate, Zone):
             # Return the exception on failure.
             return ValidationResult.failure(
@@ -104,7 +104,7 @@ class ZoneValidator(Validator[Zone]):
         # --- Cast candidate to a Zone for additional tests ---#
         zone = cast(Zone, candidate)
         
-        # Handle the case that, either the row or column are not between [0-7] inclusive.
+        # Handle the case that either the row or column are not between [0-7] inclusive.
         for attribute in [zone.row, zone.column]:
             validate_result = number_validation.execute(
                 ceiling=NUMBER_OF_ROWS,

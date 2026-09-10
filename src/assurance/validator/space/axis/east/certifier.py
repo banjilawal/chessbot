@@ -107,7 +107,7 @@ class EastAxisRootChecker(AxisRootChecker[EastAxis]):
         # --- Cast the candidate into a TokenBlueprint for additional tests. ---#
         blueprint = carrier.extract_blueprint()
         
-        # Handle the case that, any id in the blueprint is flagged.
+        # Handle the case that any id in the blueprint is flagged.
         vectors: List[Vector] = []
         for vector in [blueprint.origin, blueprint.terminus]:
             vector_validation = self.toolkit.math.vector.validator.execute(

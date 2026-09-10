@@ -39,7 +39,7 @@ class BishopPattern(TraversalSignature[Bishop]):
     ) -> ComputationResult[Tuple[VectorSet]]:
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the recurrence_set is not safe to use.
+        # Handle the case that the recurrence_set is not safe to use.
         validation = self.priming_validator.execute(
             candidate=recurrence_set,
             target_model=Type[BishopRecurrenceRegistries],

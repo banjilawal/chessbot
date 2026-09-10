@@ -65,7 +65,7 @@ class CoordStackPush:
         """
         method =  f"{cls.__name__}.push"
         
-        # Handle the case that, the coord does not past a validation check.
+        # Handle the case that the coord does not past a validation check.
         validation_result = coord_stack.execute.execute(coord)
         if validation_result.is_failure:
             # Return the exception chain on failure
@@ -80,7 +80,7 @@ class CoordStackPush:
                     ex=validation_result.exception
                 )
             )
-        # Handle the case that, the coord is already on top of the schema.
+        # Handle the case that the coord is already on top of the schema.
         if coord == coord_stack.current_item:
             # Return the exception chain on failure
             return InsertionResult.failure(

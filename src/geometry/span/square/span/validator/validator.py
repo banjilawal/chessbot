@@ -93,7 +93,7 @@ class SquareSpanValidator(Validator[SquareSpan]):
         # --- Cast candidate to a SquareSpan for additional tests. ---#
         square_span = cast(SquareSpan, candidate)
         
-        # Handle the case that, the origin does not pass square safety checks.
+        # Handle the case that the origin does not pass square safety checks.
         origin_validation_result = square_validator.execute(candidate=square_span.origin)
         if origin_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -107,7 +107,7 @@ class SquareSpanValidator(Validator[SquareSpan]):
                     ex=origin_validation_result.exception
                 )
             )
-        # Handle the case that, the rays are null
+        # Handle the case that the rays are null
         if square_span.rays is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -126,7 +126,7 @@ class SquareSpanValidator(Validator[SquareSpan]):
                     )
                 )
             )
-        # Handle the case that, square_span.rays is null.
+        # Handle the case that square_span.rays is null.
         if not isinstance(square_span.rays, List):
             # Send the exception chain on failure.
             wrong_type = type(square_span.rays).__name__

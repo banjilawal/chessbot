@@ -95,7 +95,7 @@ class RankPersonaValidator(Validator[Rank]):
         """
         method = f"{cls.__name__}.validate"
         
-        # --- Handle the case that, a King has the wrong Persona. ---#
+        # --- Handle the case that a King has the wrong Persona. ---#
         if isinstance(rank, King):
             if rank.persona != persona_service.persona:
                 # Return the exception on failure.
@@ -118,7 +118,7 @@ class RankPersonaValidator(Validator[Rank]):
             # --- Otherwise return the work product. ---#
             return ValidationResult.success(rank)
         
-        # --- Handle the case that, a Pawn has the wrong Persona. ---#
+        # --- Handle the case that a Pawn has the wrong Persona. ---#
         if isinstance(rank, Pawn):
             if rank.persona != persona_service.persona:
                 # Return the exception on failure.
@@ -141,7 +141,7 @@ class RankPersonaValidator(Validator[Rank]):
             # --- Otherwise return the work product. ---#
             return ValidationResult.success(rank)
         
-        # --- Handle the case that, a Knight has the wrong Persona. ---#
+        # --- Handle the case that a Knight has the wrong Persona. ---#
         if isinstance(rank, Knight):
             if rank.persona != persona_service.persona:
                 # Return the exception on failure.
@@ -164,7 +164,7 @@ class RankPersonaValidator(Validator[Rank]):
             # --- Otherwise return the work product. ---#
             return ValidationResult.success(rank)
         
-        # --- Handle the case that, a Bishop has the wrong Persona. ---#
+        # --- Handle the case that a Bishop has the wrong Persona. ---#
         if isinstance(rank, Bishop):
             if rank.persona != persona_service.persona:
                 # Return the exception on failure.
@@ -187,7 +187,7 @@ class RankPersonaValidator(Validator[Rank]):
             # --- Otherwise return the work product. ---#
             return ValidationResult.success(rank)
         
-        # --- Handle the case that, a Bishop has the wrong Persona. ---#
+        # --- Handle the case that a Bishop has the wrong Persona. ---#
         if isinstance(rank, Rook):
             if rank.persona != persona_service.persona:
                 # Return the exception on failure.
@@ -210,7 +210,7 @@ class RankPersonaValidator(Validator[Rank]):
             # --- Otherwise return the work product. ---#
             return ValidationResult.success(rank)
         
-        # --- Handle the case that, a Bishop has the wrong Persona. ---#
+        # --- Handle the case that a Bishop has the wrong Persona. ---#
         if isinstance(rank, Queen):
             if rank.persona != persona_service.persona:
                 # Return the exception on failure.
@@ -233,7 +233,7 @@ class RankPersonaValidator(Validator[Rank]):
             # --- Otherwise return the work product. ---#
             return ValidationResult.success(rank)
         
-        # Handle the case that, the there is no persona validator logic for the rank.
+        # Handle the case that the there is no persona validator logic for the rank.
         return ValidationResult.failure(
             RankPersonaValidatorException(
                 cls_mthd=method,

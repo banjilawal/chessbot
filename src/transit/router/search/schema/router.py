@@ -70,7 +70,7 @@ class TokenSearchRouter(SearchRouter[Token]):
             if query_validator is None:
                 query_validator = SquareQueryValidator()
             
-            # Handle the case that, the collider_candidates is null.
+            # Handle the case that the collider_candidates is null.
             if dataset is None:
                 # Send the exception chain on failure.
                 return SearchResult.failure(
@@ -79,7 +79,7 @@ class TokenSearchRouter(SearchRouter[Token]):
                         ex=SquareSearchDatasetNullException(f"{method}: {SquareSearchDatasetNullException.MSG}")
                     )
                 )
-            # Handle the case that, collider_candidates is the wrong type
+            # Handle the case that collider_candidates is the wrong type
             if not isinstance(dataset, List):
                 # Send the exception chain on failure.
                 return SearchResult.failure(

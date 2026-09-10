@@ -83,7 +83,7 @@ class PrimingWorkerRegistration(Primer[Operator]):
         if registry_entry_name_validator is None:
             registry_entry_name_validator = RegistryEntryNameValidator()
         
-        # Handle the case that, the worker is not a valid operation.
+        # Handle the case that the worker is not a valid operation.
         worker_validation_result = priming_validator.execute(
             candidate=worker,
             target_model=Operator,
@@ -100,7 +100,7 @@ class PrimingWorkerRegistration(Primer[Operator]):
                     ex=worker_validation_result.exception,
                 )
             )
-        # Handle the case that, either the worker's domain or name are not good strings.
+        # Handle the case that either the worker's domain or name are not good strings.
         keys_validation_result = registry_entry_name_validator.execute(
             candidates=[worker.DOMAIN, worker.NAME],
             priming_validator=priming_validator,
@@ -116,7 +116,7 @@ class PrimingWorkerRegistration(Primer[Operator]):
                     ex=keys_validation_result.exception,
                 )
             )
-        # Handle the case that, the worker's name has already been used in the domain.
+        # Handle the case that the worker's name has already been used in the domain.
         if worker.DOMAIN in registry.entries.keys():
             name_collision_result = cls._name_collision_helper(
                 target=worker,
@@ -169,7 +169,7 @@ class PrimingWorkerRegistration(Primer[Operator]):
         if registered_worker is None:
             return ValidationResult.success(target)
         
-        # Handle the case that, the registered_worker's type differs from the target's
+        # Handle the case that the registered_worker's type differs from the target's
         if not isinstance(type(registered_worker), type(target)):
             # Send the exception chain on failure.
             return ValidationResult.failure(

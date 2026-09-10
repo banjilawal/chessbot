@@ -81,7 +81,7 @@ class BoardTeamBinderRelationAnalyzer(RelationAnalyzer[Board, BoardBinder]):
         if team_binder_validator is None:
             team_binder_validator = BoardTeamBinderValidator()
         
-        # Handle the case that, the board is not certified as safe.
+        # Handle the case that the board is not certified as safe.
         board_validator_result = board_validator.execute(candidate_primary)
         if board_validator_result.is_failure:
             # Send the exception chain on failure.
@@ -97,7 +97,7 @@ class BoardTeamBinderRelationAnalyzer(RelationAnalyzer[Board, BoardBinder]):
         # Just incase things aren't Liskovian on the candidate_primary, cast the validation payload instead,
         board = cast(Board, board_validator_result.payload)
         
-        # Handle the case that, the binder is not certified as safe.
+        # Handle the case that the binder is not certified as safe.
         team_binder_validation_result = team_binder_validator.execute(candidate_satellite)
         if team_binder_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -112,18 +112,18 @@ class BoardTeamBinderRelationAnalyzer(RelationAnalyzer[Board, BoardBinder]):
             )
         team_binder = cast(BoardBinder, team_binder_validation_result.payload)
         
-        # Handle the case that, the binder belongs to a different board.
+        # Handle the case that the binder belongs to a different board.
         if board.team_binder != team_binder and team_binder.primary != board :
             return AnalysisResult.success(RelationReport.no_relation())
         
-        # Handle the case that, the board has a stale link to team_binder.
+        # Handle the case that the board has a stale link to team_binder.
         if board.team_binder == SENSOR.team_binder and team_binder.primary != board:
             return AnalysisResult.success(
                 RelationReport.stale_link(
                     primary=board
                 )
             )
-        # Handle the case that, the binder has not registered with its board.
+        # Handle the case that the binder has not registered with its board.
         if board.team_binder != team_binder and team_binder.primary == SENSOR.board:
             return AnalysisResult.success(
                 RelationReport.registration_missing(

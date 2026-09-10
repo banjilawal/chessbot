@@ -187,7 +187,7 @@ class TokenDatabase(Database[Token]):
             token_stack=self._kernel,
             rank_service=rank_service,
         )
-        # Handle the case that, the request is not completed.
+        # Handle the case that the request is not completed.
         if rank_quota_analysis_result.is_failure:
             # Return the exception chain on failure
             return ComputationResult.failure(
@@ -229,7 +229,7 @@ class TokenDatabase(Database[Token]):
             id=id,
             identity_service=identity_service,
         )
-        # Handle the case that, the request was not completed
+        # Handle the case that the request was not completed
         if request_result.is_failure:
             # Return the exception chain on failure
             return ComputationResult.failure(
@@ -263,7 +263,7 @@ class TokenDatabase(Database[Token]):
         # --- Forward the request to the kernel. ---#
         insertion_result = self._kernel.push(item=token)
         
-        # Handle the case that, the request was not completed.
+        # Handle the case that the request was not completed.
         if insertion_result.is_failure:
             # Return the exception chain on failure
             return ComputationResult.failure(
@@ -298,7 +298,7 @@ class TokenDatabase(Database[Token]):
         # --- Forward the request to the kernel. ---#
         query_result = self._kernel.search(context=context)
         
-        # Handle the case that, the request was not completed.
+        # Handle the case that the request was not completed.
         if query_result.is_failure:
             # Return the exception chain on failure
             return ComputationResult.failure(

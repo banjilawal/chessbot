@@ -73,7 +73,7 @@ class TokenOriginSearcher:
             
         search_result = bootstrapper.execute(target=target)
         if search_result.is_failure:
-            # Handle the case that, the freedom
+            # Handle the case that the freedom
             if search_result.is_failure:
                 # Return the exception chain on failure
                 return SearchResult.failure(

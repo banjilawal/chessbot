@@ -75,7 +75,7 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
         method = f"{self.__class__.__name__}.execute"
         
         
-        # Handle the case that, the validator is not primed.
+        # Handle the case that the validator is not primed.
         certification = self.integrity_checker.execute(
             candidate=candidate,
             target_model=self.integrity_checker.ruleset.model,

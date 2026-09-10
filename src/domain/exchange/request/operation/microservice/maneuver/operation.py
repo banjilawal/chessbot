@@ -68,7 +68,7 @@ class ManeuverLauncher:
         method = f"{self.__class__.__name__}.execute"
         
 
-        # Handle the case that, the itinerary is not valid.
+        # Handle the case that the itinerary is not valid.
         priming = self._priming_validator.execute(
             candidate=report,
             target_type=ManeuverApproval,
@@ -87,7 +87,7 @@ class ManeuverLauncher:
                 )
             )
         report = cast(ManeuverRequestDecision, priming.payload)
-        # Handle the case that, the destination is not empty.
+        # Handle the case that the destination is not empty.
         if report.is_denied:
             # Send the exception chain on failure.
             return TurnResult.failure(

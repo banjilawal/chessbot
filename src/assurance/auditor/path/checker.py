@@ -74,7 +74,7 @@ class PathConsistency:
         if toolkit is None:
             toolkit = PathToolkit()
         
-        # Handle the case that, the consistency is not primed.
+        # Handle the case that the consistency is not primed.
         consistency_priming_result = toolkit.priming_consistency.execute(
             candidate=candidate,
             target_model=toolkit.model,
@@ -94,7 +94,7 @@ class PathConsistency:
         # --- Cast the candidate into a Path for additional tests. ---#
         path = cast(Path, candidate)
         
-        # Handle the case that, the path's id gets flagged.
+        # Handle the case that the path's id gets flagged.
         id_validation = toolkit.helper.identity_service.validate_id(path.id)
         if id_validation.is_failure:
             # Send the exception chain on failure.
@@ -121,7 +121,7 @@ class PathConsistency:
                         ex=square_validation_result.exception,
                     )
                 )
-        # Handle the case that, the origin and the destination are the same.
+        # Handle the case that the origin and the destination are the same.
         if path.origin == path.destination:
             # Send the exception chain on failure.
             return ValidationResult.failure(

@@ -115,7 +115,7 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
                     )
                 )
             )
-        # Handle the case that, both options are enabled.
+        # Handle the case that both options are enabled.
         if blueprint.is_above_max_size:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -141,7 +141,7 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
             validation = self.toolkit.vector.validator.execute(
                 blueprint.vector
             )
-        # Handle the case that, the entity is not safe to use.
+        # Handle the case that the entity is not safe to use.
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

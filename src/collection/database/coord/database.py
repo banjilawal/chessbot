@@ -122,7 +122,7 @@ class CoordDatabase(Database[Coord]):
         # --- Forward the request to the kernel. ---#
         request_result = self._kernel.push(item=coord)
         
-        # Handle the case that, the request was not completed.
+        # Handle the case that the request was not completed.
         if request_result.is_failure:
             # Return the exception chain on failure
             return InsertionResult.failure(
@@ -157,7 +157,7 @@ class CoordDatabase(Database[Coord]):
         # --- Forward the request to the kernel. ---#
         request_result = self._kernel.search(context=context)
         
-        # Handle the case that, the request was not completed.
+        # Handle the case that the request was not completed.
         if request_result.is_failure:
             # Return the exception chain on failure
             return SearchResult.failure(
@@ -195,7 +195,7 @@ class CoordDatabase(Database[Coord]):
         """
         method = f"{self.__class__.__name__}.delete_by_id"
         
-        # Handle the case that, the method is called.
+        # Handle the case that the method is called.
         return DeletionResult.failure(
             CoordDatabaseException(
                 cls_mthd=method,

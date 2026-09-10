@@ -69,12 +69,12 @@ class GameConsistencyChecker(ConsistencyChecker[Game]):
         method = "GameConsistency.execute"
         
         try:
-            # Handle the case that, the rank does not exist.
+            # Handle the case that the rank does not exist.
             if candidate is None:
                 return ValidationResult.failure(
                     NullGameException(f"{method}: {NullGameException.MSG}")
                 )
-            # Handle the case that, the rank is not a Game.
+            # Handle the case that the rank is not a Game.
             if not isinstance(candidate, Game):
                 return ValidationResult.failure(
                     TypeError(f"{method}: Expected Game, {type(candidate).__name__} instead.")

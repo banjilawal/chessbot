@@ -74,7 +74,7 @@ class ItineraryAnalyzer:
         if itinerary_validator is None:
             itinerary_validator = ItineraryValidator()
             
-        # Handle the case that, the itinerary fails a validation check.
+        # Handle the case that the itinerary fails a validation check.
         validation_result = itinerary_validator.execute(itinerary)
         if validation_result.is_failure:
             # Send the exception chain on failure.
@@ -88,7 +88,7 @@ class ItineraryAnalyzer:
                     ex=validation_result.exception,
                 )
             )
-        # Handle the case that, the destination is not occupied.
+        # Handle the case that the destination is not occupied.
         if itinerary.destination.no_recurrences_exist:
             return AnalysisResult.completed(
                 ManeuverApproval(

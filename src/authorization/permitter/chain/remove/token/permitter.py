@@ -61,7 +61,7 @@ class TokenRemovePermitter(RemovePermitter[Token]):
         """
         method =  f"{self.__class__.__name__}.run"
         
-        # Handle the case that, the request is not bootstrapped successfully.
+        # Handle the case that the request is not bootstrapped successfully.
         bootstrap_result = self.bootstrap_request(request)
         if bootstrap_result.is_failure:
             # Send an exception chain in the permission denial.
@@ -74,7 +74,7 @@ class TokenRemovePermitter(RemovePermitter[Token]):
                     ex=bootstrap_result.exception,
                 )
             )
-        # Handle the case that, the candidate is not a TokenChain.
+        # Handle the case that the candidate is not a TokenChain.
         chain_validation_result = self.priming_validator.execute(
             candidate=request.chain,
             target_model=Type[TokenChainService],
@@ -91,7 +91,7 @@ class TokenRemovePermitter(RemovePermitter[Token]):
                     ex=chain_validation_result.exception,
                 )
             )
-        # Handle the case that, the chain is empty.
+        # Handle the case that the chain is empty.
         if request.chain.is_blank:
             # Send an exception chain in the permission denial.
             return RemoveApprovalReport.deny(

@@ -44,7 +44,11 @@ class BlueprintIdExtractor:
         self._identity_service = identity_service
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any, model_name: str, ) -> ValidationResult[int]:
+    def execute(
+            self,
+            candidate: Any,
+            model_name: str,
+    ) -> ValidationResult[int]:
         """
         Verify the id if it already exists or create a new one.
 
@@ -67,14 +71,14 @@ class BlueprintIdExtractor:
         
         # --- Process for candidates that are not null. ---#
         if candidate is not None:
-            # Handle the case that, the candidate is not a number.
+            # Handle the case that the candidate is not a number.
             id_validation = self._identity_service.validate_id(candidate)
             if id_validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     BlueprintIdValidatorExceptionIntegrity(
                         cls_mthd=method,
-                        cls_name=self.__clas__.__name__,
+                        cls_name=self.__class__.__name__,
                         msg=BlueprintIdValidatorExceptionIntegrity.MSG,
                         err_code=BlueprintIdValidatorExceptionIntegrity.ERR_CODE,
                         ex=id_validation.exception,
@@ -85,7 +89,7 @@ class BlueprintIdExtractor:
         
         # --- If the candidate is null the id has to be generated using the model_name. ---#
         
-        # Handle the case that, the model_name is not a valid string.
+        # Handle the case that the model_name is not a valid string.
         model_name_validation_result = self._identity_service.validate_name(model_name)
         if model_name_validation_result.is_failure:
             # Send the exception chain on failure.

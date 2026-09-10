@@ -90,7 +90,7 @@ class GameStackService(StackService[Game]):
         """
         method = "GameStackService.add_game"
         
-        # Handle the case that, the game is unsafe.
+        # Handle the case that the game is unsafe.
         validation = self.game_service.execute.execute(candidate=game)
         if validation.is_failure:
             # Send the exception chain on failure.
@@ -108,7 +108,7 @@ class GameStackService(StackService[Game]):
             dataset=self.items,
             context=GameContext(arena=game.arena)
         )
-        # Handle the case that, the search is not completed.
+        # Handle the case that the search is not completed.
         if search_result.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -120,7 +120,7 @@ class GameStackService(StackService[Game]):
                     )
                 )
             )
-        # Handle the case that, a game in collection has the same arena.
+        # Handle the case that a game in collection has the same arena.
         if search_result.is_success:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -137,7 +137,7 @@ class GameStackService(StackService[Game]):
         # --- Game order is not required. Direct insertion into the collider_candidates is simpler that a push. ---#
         self.items.append(game)
         
-        # Handle the case that, the game was not appended to the collider_candidates.
+        # Handle the case that the game was not appended to the collider_candidates.
         if game not in self.items:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -177,7 +177,7 @@ class GameStackService(StackService[Game]):
         """
         method = "GameStackService.delete_game_by_id"
         
-        # Handle the case that, there are no bag in the list.
+        # Handle the case that there are no bag in the list.
         if self.is_empty:
             # Send the exception chain on failure.
             return DeletionResult.failure(
@@ -191,7 +191,7 @@ class GameStackService(StackService[Game]):
                     )
                 )
             )
-        # Handle the case that, the idis not safe.
+        # Handle the case that the idis not safe.
         validation = identity_service.validate_id(candidate=id)
         if validation.is_failure:
             # Send the exception chain on failure.
@@ -207,7 +207,7 @@ class GameStackService(StackService[Game]):
         # --- Search the list for a game with target id. ---#
         for item in self.items:
             if item.id == id:
-                # Handle the case that, the match is the wrong type.
+                # Handle the case that the match is the wrong type.
                 if not isinstance(item, Game):
                     # Send the exception chain on failure.
                     return DeletionResult.failure(

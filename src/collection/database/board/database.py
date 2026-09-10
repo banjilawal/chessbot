@@ -117,7 +117,7 @@ class BoardDatabase(Database[Board]):
         
         # --- To assure uniqueness the member_service has to conduct a search. The board should be validated first. ---#
         
-        # Handle the case that, the boardis not safe.
+        # Handle the case that the boardis not safe.
         validation = self.microservice.execute.execute(candidate=board)
         if validation.is_failure:
             # Send the exception chain on failure.
@@ -133,7 +133,7 @@ class BoardDatabase(Database[Board]):
         # --- KingCheckRecord if the board is already in the collider_candidates before adding it. ---#
         search_result = self.search_boards(context=BoardContext(id=board.id))
         
-        # Handle the case that, the search is not completed.
+        # Handle the case that the search is not completed.
         if search_result.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -145,7 +145,7 @@ class BoardDatabase(Database[Board]):
                     )
                 )
             )
-        # Handle the case that, the board is already in the collider_candidates.
+        # Handle the case that the board is already in the collider_candidates.
         if search_result.is_success:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -160,7 +160,7 @@ class BoardDatabase(Database[Board]):
         # --- Use _board_database_core.insert_board because order does not matter for the board access. ---#
         insertion_result = self._board_database_core.insert_board(board=board)
         
-        # Handle the case that, the insertion is not completed.
+        # Handle the case that the insertion is not completed.
         if insertion_result.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -199,7 +199,7 @@ class BoardDatabase(Database[Board]):
         # --- Handoff the search responsibility to _board_database_core. ---#
         search_result = self._board_database_core.board_context_service.finder.route(context=context)
         
-        # Handle the case that, the search is not completed.
+        # Handle the case that the search is not completed.
         if search_result.is_failure:
             # Send the exception chain on failure.
             return SearchResult.failure(

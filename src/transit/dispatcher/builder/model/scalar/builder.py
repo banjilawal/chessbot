@@ -75,7 +75,7 @@ class ScalarBuilder(ModelBuilder[Scalar]):
         """
         method = f"{self.__class__.__name__}.build"
         
-        # Handle the case that, the blueprint is not certified safe.
+        # Handle the case that the blueprint is not certified safe.
         blueprint_validation = self.builder_toolkit.root_certifier.execute(
             candidate=blueprint
         )

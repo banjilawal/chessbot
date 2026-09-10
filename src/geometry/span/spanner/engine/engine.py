@@ -58,7 +58,7 @@ class SpannerEngine:
         """
         method = f"{cls.__name__}.compute"
         
-        # Handle the case that, no ray_provider is included.
+        # Handle the case that no ray_provider is included.
         providers = (diagonal_ray_provider, perpendicular_ray_provider)
         if len(providers) == 0:
             # Send the exception on failure.
@@ -81,7 +81,7 @@ class SpannerEngine:
                     )
                 )
             )
-        # Handle the case that, the origin is not certified as a safe coord.
+        # Handle the case that the origin is not certified as a safe coord.
         origin_validation = coord_service.execute.execute(candidate=origin)
         if origin_validation.is_failure:
             # Send the exception chain on failure.
@@ -186,7 +186,7 @@ class SpannerEngine:
             coord_service=coord_service,
             diagonal_provider=diagonal_provider,
         )
-        # Handle the case that, the queen's diagonal span is not computed.
+        # Handle the case that the queen's diagonal span is not computed.
         if diagonal_span_result.is_failure:
             # Send the exception chain on failure.
             return ComputationResult.failure(
@@ -211,7 +211,7 @@ class SpannerEngine:
             coord_service=coord_service,
             perpendicular_provider=perpendicular_provider,
         )
-        # Handle the case that, the rook span is not computed.
+        # Handle the case that the rook span is not computed.
         if perpendicular_span_result.is_failure:
             # Send the exception chain on failure.
             return ComputationResult.failure(
@@ -277,7 +277,7 @@ class SpannerEngine:
                 factor=factor,
                 coord_service=coord_service
             )
-           # Handle the case that, the rook span is not computed.
+           # Handle the case that the rook span is not computed.
             if ray_result.is_failure:
                 # Send the exception chain on failure.
                 return ComputationResult.failure(
@@ -342,7 +342,7 @@ class SpannerEngine:
                 coord_service=coord_service,
                 vector_service=vector_service,
             )
-            # Handle the case that, the rook span is not computed.
+            # Handle the case that the rook span is not computed.
             if ray_result.is_failure:
                 # Send the exception chain on failure.
                 return ComputationResult.failure(

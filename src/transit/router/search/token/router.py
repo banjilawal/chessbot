@@ -113,7 +113,7 @@ class TokenSearchRouter(SearchRouter[Token]):
                 items=query.token_stack.items,
                 ransom=query.context.current_position
             )
-        # Handle the case that, there is no search path for the context context..
+        # Handle the case that there is no search path for the context context..
         return SearchResult.failure(
             TokenSearcherException(
                 cls_mthd=method,

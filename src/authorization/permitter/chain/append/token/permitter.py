@@ -88,7 +88,7 @@ class TokenAppendPermitter(AppendPermitter[Token]):
         """
         method =  f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the request is not bootstrapped successfully.
+        # Handle the case that the request is not bootstrapped successfully.
         bootstrap = self._request_adjudicator.execute(candidate=request)
         if bootstrap.is_failure:
             # Send an exception chain in the permission denial.
@@ -105,7 +105,7 @@ class TokenAppendPermitter(AppendPermitter[Token]):
         token = cast(Token, request.item)
         chain = cast(TokenChainService, request.chain)
         
-        # Handle the case that, there is no opening for the token's rank.
+        # Handle the case that there is no opening for the token's rank.
         rank_opening = self._rank_slot_permitter.execute(
             RankSlotRequest(
                 id=IdFactory.next_id(class_name="RankSLotRequest"),
@@ -124,7 +124,7 @@ class TokenAppendPermitter(AppendPermitter[Token]):
                     ex=rank_opening.exception,
                 )
             )
-        # Handle the case that, token conflicts with a current chain member.
+        # Handle the case that token conflicts with a current chain member.
         report = self._collision_detector.execute(attractor=token, stream=chain)
         if report.collision_exists:
             AppendApprovalReport.deny(

@@ -126,7 +126,7 @@ class CoordStackService(StackService[Coord]):
             coord=item,
             coord_stack=self,
         )
-        # Handle the case that, the request is not fulfilled.
+        # Handle the case that the request is not fulfilled.
         if request_result.is_failure:
             return InsertionResult.failure(
                 CoordStackServiceException(
@@ -160,7 +160,7 @@ class CoordStackService(StackService[Coord]):
         request_result = self._ops_controller.crud_controller.pop.execute(
             coord_stack=self,
         )
-        # Handle the case that, the request is not fulfilled.
+        # Handle the case that the request is not fulfilled.
         if request_result.is_failure:
             return DeletionResult.failure(
                 CoordStackServiceException(
@@ -198,7 +198,7 @@ class CoordStackService(StackService[Coord]):
             context=context,
             dataset=self.items,
         )
-        # Handle the case that, the request is not fulfilled.
+        # Handle the case that the request is not fulfilled.
         if request_result.is_failure:
             return SearchResult.failure(
                 CoordStackServiceException(
@@ -233,7 +233,7 @@ class CoordStackService(StackService[Coord]):
         """
         method = f"{self.__class__.__name__}.delete_by_id"
         
-        # Handle the case that, the method is called.
+        # Handle the case that the method is called.
         return DeletionResult.failure(
             CoordStackServiceException(
                 cls_mthd=method,

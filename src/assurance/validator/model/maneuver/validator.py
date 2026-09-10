@@ -81,7 +81,7 @@ class ManeuverValidator(ModelValidator[Maneuver]):
         if self.toolkit is None:
             toolkit = ManeuverToolkit()
         
-        # Handle the case that, the validator is not primed.
+        # Handle the case that the validator is not primed.
         validator_priming_result = self.toolkit.helper.priming_validator.execute(
             candidate=candidate,
             target_model=self.toolkit.model,
@@ -101,7 +101,7 @@ class ManeuverValidator(ModelValidator[Maneuver]):
         # --- Cast the candidate into a Maneuver for additional tests. ---#
         maneuver = cast(Maneuver, candidate)
         
-        # Handle the case that, the path is not safe.
+        # Handle the case that the path is not safe.
         path_validation_result = self.toolkit.path_validator.execute(maneuver.path)
         if path_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -114,7 +114,7 @@ class ManeuverValidator(ModelValidator[Maneuver]):
                     ex=path_validation_result.exception,
                 )
             )
-        # Handle the case that, the token is not safe.
+        # Handle the case that the token is not safe.
         token_validation_result = self.toolkit.token_validator.execute(maneuver.path)
         if token_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -127,7 +127,7 @@ class ManeuverValidator(ModelValidator[Maneuver]):
                     ex=token_validation_result.exception,
                 )
             )
-        # Handle the case that, either the token is not at the origin or already at the destination.
+        # Handle the case that either the token is not at the origin or already at the destination.
         token_endpoint_relation_validation_result = self.toolkit.endpoint_validator.execute(
             token=maneuver.token,
             origin=maneuver.path.origin,

@@ -71,7 +71,7 @@ class SquareRegisterValidator(Validator[SquareRegister]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the validator is not primed.
+        # Handle the case that the validator is not primed.
         validator_priming_result = self.toolkit.priming_validator.execute(
             candidate=candidate,
             target_blueprint=self.toolkit.blueprint_model,
@@ -91,7 +91,7 @@ class SquareRegisterValidator(Validator[SquareRegister]):
         # --- Cast candidate to a VectorRegister for additional tests. ---#
         blueprint = cast(self.toolkit.blueprint_model, candidate)
         
-        # Handle the case that, either slot is not safe.
+        # Handle the case that either slot is not safe.
         for item in [blueprint.origin, blueprint.destination]:
             validation = self.toolkit.square_validator.execute(item)
             if validation.is_failure:

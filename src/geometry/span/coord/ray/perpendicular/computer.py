@@ -103,7 +103,7 @@ class PerpendicularRayComputer:
                 members.append(conversion_result.payload)
             cursor_update_result = vector_service.add_vectors([cursor, factors.vector])
             
-            # Handle the case that, the cursor is not updated.
+            # Handle the case that the cursor is not updated.
             if cursor_update_result.is_failure:
                 # Send the exception chain on failure.
                 return ComputationResult.failure(

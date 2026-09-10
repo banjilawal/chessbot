@@ -54,7 +54,7 @@ class SquareStackCapacityAnalyst:
         """
         method = f"{cls.__name__}.analyze"
         
-        # Handle the case that, the rank does not pass a validation check.
+        # Handle the case that the rank does not pass a validation check.
         rank_validation_result = rank_service.execute.search_service(rank)
         if rank_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -71,7 +71,7 @@ class SquareStackCapacityAnalyst:
         # --- Search for the schema for rank members. ---#
         rank_search_result = square_stack.execute(context=SquareContext(rank=rank))
         
-        # Handle the case that, a search error occurred.
+        # Handle the case that a search error occurred.
         if rank_search_result.is_failure:
             # Send the exception chain on failure.
             return ComputationResult.failure(

@@ -60,7 +60,7 @@ class TeamValidator(ModelValidator[Team]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the validator is not primed.
+        # Handle the case that the validator is not primed.
         priming_result = self.toolkit.helper.priming_validator.execute(
             candidate=candidate,
             blueprint_model=self.toolkit.blueprint_model,
@@ -80,7 +80,7 @@ class TeamValidator(ModelValidator[Team]):
         # --- Cast the candidate into TeamBlueprint for routing attribute testing ---#
         blueprint = cast(TeamBlueprint, candidate)
         
-        # Handle the case that, the blueprint's id does not pass.
+        # Handle the case that the blueprint's id does not pass.
         id_validation_result = self.toolkit.blueprint_id_validator.execute(
             candidate=blueprint.id,
         )
@@ -95,7 +95,7 @@ class TeamValidator(ModelValidator[Team]):
                     ex=id_validation_result.exception
                 )
             )
-        # Handle the case that, the owner gets flagged.
+        # Handle the case that the owner gets flagged.
         owner_validation_result = self.toolkit.player_validator.execute(blueprint.owner)
         if owner_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -108,7 +108,7 @@ class TeamValidator(ModelValidator[Team]):
                     ex=owner_validation_result.exception
                 )
             )
-        # Handle the case that, the board is not safe.
+        # Handle the case that the board is not safe.
         board_validation_result = self.toolkit.board_validator.excute(blueprint.board)
         if board_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -121,7 +121,7 @@ class TeamValidator(ModelValidator[Team]):
                     ex=owner_validation_result.exception
                 )
             )
-        # Handle the case that, the schema is not safe.
+        # Handle the case that the schema is not safe.
         schema_validation_result = self.toolkit.helper.priming_validator.execute(
             candidate=blueprint.schema,
             target_model=type[Archetype],

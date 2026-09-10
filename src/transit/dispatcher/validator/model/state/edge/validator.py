@@ -67,7 +67,7 @@ class EdgeValidationDispatcher(ModelValidationDispatcher[Edge]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the candidate is not safe.
+        # Handle the case that the candidate is not safe.
         certification = self.integrity_checker.execute(candidate)
         if certification.is_failure:
             # Send the exception chain on failure.

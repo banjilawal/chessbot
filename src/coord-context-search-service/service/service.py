@@ -110,7 +110,7 @@ class CoordQueryService(QueryService[Coord]):
         # --- Forward the request to the context_service. ---#
         query_result = self._router.route(dataset=dataset, context=context)
         
-        # Handle the case that, the request was not completed.
+        # Handle the case that the request was not completed.
         if query_result.is_failure:
             # Send the exception chain on failure.
             return SearchResult.failure(
@@ -133,7 +133,7 @@ class CoordQueryService(QueryService[Coord]):
     ) -> SearchResult[List[Coord]]:
         method = f"{self.__class__.__name__}._run_safety_checks"
         
-        # Handle the case that, the context is incorrect
+        # Handle the case that the context is incorrect
         context_validation_result = self._context_service.execute.search_service(context)
         if context_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -146,7 +146,7 @@ class CoordQueryService(QueryService[Coord]):
                     ex=context_validation_result.exception,
                 )
             )
-        # Handle the case that, the schema does not exist
+        # Handle the case that the schema does not exist
         if dataset is None:
             # Send the exception chain on failure.
             return SearchResult.failure(
@@ -161,7 +161,7 @@ class CoordQueryService(QueryService[Coord]):
                     )
                 )
             )
-        # Handle the case that, the schema is the wrong type.
+        # Handle the case that the schema is the wrong type.
         if not isinstance(dataset, List):
             # Send the exception chain on failure.
             return SearchResult.failure(
@@ -173,7 +173,7 @@ class CoordQueryService(QueryService[Coord]):
                     ex=TypeError(f"Expected List, got {type(dataset).__name__} instead.")
                 )
             )
-        # Handle the case that, the does not contain coords.
+        # Handle the case that the does not contain coords.
         if not isinstance(dataset[0], Coord):
             # Send the exception chain on failure.
             return SearchResult.failure(

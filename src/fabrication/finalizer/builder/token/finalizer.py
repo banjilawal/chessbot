@@ -27,7 +27,7 @@ class TokenBuildFinalizer(BuilderFinalizer[Token]):
         team = product.team
         if product not in team.roster:
             insertion_result = team.roster.insert(item=product)
-            # Handle the case that, the token is not successfully registered with its team.
+            # Handle the case that the token is not successfully registered with its team.
             if insertion_result.is_failure:
                 return BuildResult.failure(
                     FinalizeTokenBuilderException(

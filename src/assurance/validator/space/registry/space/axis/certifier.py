@@ -91,7 +91,7 @@ class AxisReservoirRootChecker(SpaceReservoirChecker[AxisReservoir]):
         # --- Cast the candidate into a AxisReservoirBlueprint for additional tests. ---#
         blueprint = carrier.extract_blueprint()
         
-        # Handle the case that, the origin is flagged unsafe.
+        # Handle the case that the origin is flagged unsafe.
         validation = self.toolkit.math.vector.validator.execute(blueprint.origin)
         if validation.is_failure:
             # Send the exception chain on failure.

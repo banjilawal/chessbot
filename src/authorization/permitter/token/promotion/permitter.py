@@ -66,7 +66,7 @@ class PromotionPermitter(OperationPermitter):
         """
         method = f"{self.__class__.__name__}.run"
         
-        # Handle the case that, the request cannot get bootstrapped.
+        # Handle the case that the request cannot get bootstrapped.
         bootstrap = self._bootstrapper.execute(request)
         if bootstrap.is_failure:
             PromotionRequestDecision.deny(

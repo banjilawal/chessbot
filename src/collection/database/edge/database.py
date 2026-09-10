@@ -117,7 +117,7 @@ class EdgeDatabase(Database[Edge]):
         
         # --- To assure uniqueness the member_service has to conduct a search. The edge should be validated first. ---#
         
-        # Handle the case that, the edgeis not safe.
+        # Handle the case that the edgeis not safe.
         validation = self.microservice.execute.execute(candidate=edge)
         if validation.is_failure:
             # Send the exception chain on failure.
@@ -133,7 +133,7 @@ class EdgeDatabase(Database[Edge]):
         # --- KingCheckRecord if the edge is already in the collider_candidates before adding it. ---#
         search_result = self.search_edges(context=EdgeContext(id=edge.id))
         
-        # Handle the case that, the search is not completed.
+        # Handle the case that the search is not completed.
         if search_result.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -145,7 +145,7 @@ class EdgeDatabase(Database[Edge]):
                     )
                 )
             )
-        # Handle the case that, the edge is already in the collider_candidates.
+        # Handle the case that the edge is already in the collider_candidates.
         if search_result.is_success:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -160,7 +160,7 @@ class EdgeDatabase(Database[Edge]):
         # --- Use _edge_database_core.insert_edge because order does not matter for the edge access. ---#
         insertion_result = self._edge_database_core.insert_edge(edge=edge)
         
-        # Handle the case that, the insertion is not completed.
+        # Handle the case that the insertion is not completed.
         if insertion_result.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -199,7 +199,7 @@ class EdgeDatabase(Database[Edge]):
         # --- Handoff the search responsibility to _edge_database_core. ---#
         search_result = self._edge_database_core.edge_context_service.finder.route(context=context)
         
-        # Handle the case that, the search is not completed.
+        # Handle the case that the search is not completed.
         if search_result.is_failure:
             # Send the exception chain on failure.
             return SearchResult.failure(

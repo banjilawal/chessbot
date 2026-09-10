@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain import Board, Coord, SquareState, ModelContext, Square, SquareType, Token
+from domain import Board, Coord, Formation, SquareState, ModelContext, Square, SquareType, Token
 
 
 class SquareContext(ModelContext[Square]):
@@ -41,7 +41,9 @@ class SquareContext(ModelContext[Square]):
     _coord: Optional[Coord]
     _occupant: Optional[Token]
     _state: Optional[SquareState]
+    _formation: Optional[Formation]
     _square_type: Optional[SquareType]
+
     
     def __init__(
             self,
@@ -51,6 +53,7 @@ class SquareContext(ModelContext[Square]):
             coord: Optional[Coord] | None = None,
             occupant: Optional[Token] | None = None,
             state: Optional[SquareState] | None = None,
+            formation: Optional[Formation] | None = None,
             square_type: Optional[SquareType] | None = None,
     ):
         """
@@ -87,6 +90,10 @@ class SquareContext(ModelContext[Square]):
         return self._state
     
     @property
+    def formation(self) -> Optional[Formation]:
+        return self._formation
+    
+    @property
     def square_type(self) -> Optional[SquareType]:
         return self._square_type
     
@@ -99,5 +106,6 @@ class SquareContext(ModelContext[Square]):
             "coord": self._coord,
             "state": self._state,
             "occupant": self._occupant,
+            "formation": self._formation,
             "square_type": self._square_type,
         }

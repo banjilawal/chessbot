@@ -82,7 +82,7 @@ class TokenBuilderBootstrapper(SearcherBootstrapper[TokenOriginSearcher]):
         # --- Before doing anything else make sure the token can be used. ---#
         readiness_analysis_result = readiness_analyzer.execute(target)
         
-        # Handle the case that, the freedom
+        # Handle the case that the freedom
         if readiness_analysis_result.is_failure:
             # Return the exception chain on failure
             return SearchResult.failure(
@@ -95,7 +95,7 @@ class TokenBuilderBootstrapper(SearcherBootstrapper[TokenOriginSearcher]):
                     ex=readiness_analysis_result.exception,
                 )
             )
-        # Handle the case that, the token is not ready for use.
+        # Handle the case that the token is not ready for use.
         report = cast(TokenReadinessReport, readiness_analysis_result.payload)
         if report.token_is_not_ready:
             # Return the exception chain on failure
@@ -119,7 +119,7 @@ class TokenBuilderBootstrapper(SearcherBootstrapper[TokenOriginSearcher]):
             context=SquareContext(occupant=target)
         )
         
-        # Handle the case that, the search is not completed.
+        # Handle the case that the search is not completed.
         if origin_search_result.is_failure:
             # Return the exception chain on failure
             return SearchResult.failure(
@@ -132,7 +132,7 @@ class TokenBuilderBootstrapper(SearcherBootstrapper[TokenOriginSearcher]):
                     ex=origin_search_result.exception,
                 )
             )
-        # Handle the case that, the token is not on the board.
+        # Handle the case that the token is not on the board.
         if origin_search_result.no_recurrences_exist:
             # Return the exception chain on failure
             return SearchResult.failure(
@@ -150,7 +150,7 @@ class TokenBuilderBootstrapper(SearcherBootstrapper[TokenOriginSearcher]):
                     ),
                 )
             )
-        # Handle the case that, the search contains more than one hit.
+        # Handle the case that the search contains more than one hit.
         if len(origin_search_result.payload) > 1:
             # Return the exception chain on failure
             return SearchResult.failure(

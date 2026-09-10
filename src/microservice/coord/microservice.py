@@ -122,7 +122,7 @@ class CoordService(Microservice[Coord]):
             coord_service=self,
             vector_service=vector_service,
         )
-        # Handle the case that, the request is not fulfilled.
+        # Handle the case that the request is not fulfilled.
         if request_result.is_failure:
             return ComputationResult.failure(
                 CoordServiceException(
@@ -169,7 +169,7 @@ class CoordService(Microservice[Coord]):
             coord_service=self,
             scalar_service=scalar_service,
         )
-        # Handle the case that, the request is not fulfilled.
+        # Handle the case that the request is not fulfilled.
         if request_result.is_failure:
             return ComputationResult.failure(
                 CoordServiceException(
@@ -208,7 +208,7 @@ class CoordService(Microservice[Coord]):
             v=v,
             coord_service=self,
         )
-        # Handle the case that, the request is not fulfilled.
+        # Handle the case that the request is not fulfilled.
         if request_result.is_failure:
             return ComputationResult.failure(
                 CoordServiceException(
@@ -251,7 +251,7 @@ class CoordService(Microservice[Coord]):
             coord_service=self,
             vector_service=vector_service,
         )
-        # Handle the case that, the request is not fulfilled.
+        # Handle the case that the request is not fulfilled.
         if request_result.is_failure:
             return ComputationResult.failure(
                 CoordServiceException(

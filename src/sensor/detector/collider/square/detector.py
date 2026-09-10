@@ -69,7 +69,7 @@ class SquareCollider(Collider[SquareCarrier]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the target does not pass a validation check.
+        # Handle the case that the target does not pass a validation check.
         validation_result = stream.microservice.execute.execute(attractor)
         if validation_result.is_failure:
             return AnalysisResult.failure(
@@ -84,7 +84,7 @@ class SquareCollider(Collider[SquareCarrier]):
         # --- Loop through the collider_candidates to find matches. ---#
         
         for square in stream.items:
-            # Handle the case that, a candidate already has the target's id.
+            # Handle the case that a candidate already has the target's id.
             if square.id == attractor.entity.id:
                 # Return the collision details in the report.
                 return CollisionReport.collision(
@@ -99,7 +99,7 @@ class SquareCollider(Collider[SquareCarrier]):
                         err_code=SquareIdCollisionException.ERR_CODE,
                     )
                 )
-            # Handle the case that, a candidate already has the target's name.
+            # Handle the case that a candidate already has the target's name.
             if square.name.upper() == attractor.entity.name.upper():
                 # Return the collision details in the report.
                 return CollisionReport.collision(
@@ -114,7 +114,7 @@ class SquareCollider(Collider[SquareCarrier]):
                         err_code=SquareNameCollisionException.ERR_CODE,
                     )
                 )
-            # Handle the case that, a candidate already has the target's coord.
+            # Handle the case that a candidate already has the target's coord.
             if square.coord == attractor.entity.coord:
                 # Return the collision details in the report.
                 return CollisionReport.collision(

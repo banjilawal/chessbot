@@ -43,7 +43,7 @@ class AddVectorNodeRequestAuthorizer(AddNodeRequestAuthorizer[VectorNode]):
     def execute(self, candidate: AddVectorNodeRequest) -> AuthorizationDecision:
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the candidate is null or the wrong type
+        # Handle the case that the candidate is null or the wrong type
         bootstrap = self.utility.priming_validator.execute(
             candidate=candidate,
             target_model=self.utility.request_type,
@@ -62,7 +62,7 @@ class AddVectorNodeRequestAuthorizer(AddNodeRequestAuthorizer[VectorNode]):
             )
         request = cast(AddVectorNodeRequest, bootstrap.payload)
         
-        # Handle the case that, the collection is not the proper chain.
+        # Handle the case that the collection is not the proper chain.
         chain_validation = self.utility.priming_validator.execute(
             candidate=request.chain,
             target_model=self.utility.collection_type,
@@ -81,7 +81,7 @@ class AddVectorNodeRequestAuthorizer(AddNodeRequestAuthorizer[VectorNode]):
             )
         chain = cast(VectorChain, chain_validation.payload)
         
-        # Handle the case that, the node is either null or the wrong type.
+        # Handle the case that the node is either null or the wrong type.
         node_validation = self.utility.priming_validator.execute(
             candidate=request.node,
             target_model=self.utility.node_type,

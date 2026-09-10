@@ -319,7 +319,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
             # On validation success forward the work product to the caller.
             return ValidationResult.success(context)
         
-        # Handle the case that, there is no validation logic for the attribute.
+        # Handle the case that there is no validation logic for the attribute.
         return ValidationResult.failure(
             SchemaContextValidatorException(
                 cls_mthd=method,

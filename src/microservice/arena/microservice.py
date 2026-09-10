@@ -81,7 +81,7 @@ class ArenaService(Microservice[Arena]):
             arena_validator=self.validator,
             team_service=team_service,
         )
-        # Handle the case that, one of the parties fails validation.
+        # Handle the case that one of the parties fails validation.
         if relation.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -90,7 +90,7 @@ class ArenaService(Microservice[Arena]):
                     ex=relation.exception
                 )
             )
-        # Handle the case that, the team should be playing a different arena.
+        # Handle the case that the team should be playing a different arena.
         if relation.does_not_exist:
             # Send the exception chain on failure.
             return InsertionResult.failure(

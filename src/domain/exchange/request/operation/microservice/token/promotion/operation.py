@@ -84,7 +84,7 @@ class PawnPromoter:
             pawn=pawn,
             rank=rank,
         )
-        # Handle the case that, the promotion permission evaluation is not completed.
+        # Handle the case that the promotion permission evaluation is not completed.
         if permission_analysis_result.is_failure:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
@@ -99,7 +99,7 @@ class PawnPromoter:
                 )
             )
         promotion_permission = cast(PromotionRequestDecision, permission_analysis_result.payload)
-        # Handle the case that, the pawn is not granted promotion permission.
+        # Handle the case that the pawn is not granted promotion permission.
         if promotion_permission.is_denied:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(

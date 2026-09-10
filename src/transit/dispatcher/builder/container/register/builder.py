@@ -42,7 +42,7 @@ class RegisterSetBuilder(ContainerBuildDispatcher[RegisterSet]):
     def execute(self) -> BuildResult[RegisterSet]:
         method = f"{self.__class__.__name__}.execute"
         
-        # # Handle the case that, the target_vector_set is not safe to use.
+        # # Handle the case that the target_vector_set is not safe to use.
         # validation = target_set_validator.execute(self._target_vector_set)
         # if validation.is_failure:
         #     return BuildResult.failure(

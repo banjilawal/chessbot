@@ -88,7 +88,7 @@ class TokenSearchService(SearchMicroservice[Token]):
             query=query,
             query_validator=self._resource_host.query_service.execute
         )
-        # Handle the case that, the request was not completed.
+        # Handle the case that the request was not completed.
         if search_result.is_failure:
             # Send the exception chain on failure.
             return SearchResult.failure(

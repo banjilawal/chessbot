@@ -94,7 +94,7 @@ class SquareStackRosterHandler:
         """
         method = "SquareStackRosterHandler.deploy_roster_on_stack"
         
-        # Handle the case that, the team does not pass a validation check.
+        # Handle the case that the team does not pass a validation check.
         team_validation = team_service.execute.execute(candidate=team)
         if team_validation.is_failure:
             # Send the exception chain on failure.
@@ -108,7 +108,7 @@ class SquareStackRosterHandler:
                     ex=team_validation.exception
                 )
             )
-        # Handle the case that, the team has already been deployed
+        # Handle the case that the team has already been deployed
         if team.roster.is_deployed_on_board:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
@@ -125,7 +125,7 @@ class SquareStackRosterHandler:
                     )
                 )
             )
-        # Handle the case that, the team is not at full strength.
+        # Handle the case that the team is not at full strength.
         if  0 < team.roster.rule_count < Team.MAX_ROSTER_SIZE:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
@@ -216,7 +216,7 @@ class SquareStackRosterHandler:
         # Find the roster member's opening square.
         token_search_result = team.roster.execute(context=TokenContext(home_square=square.name))
         
-        # Handle the case that, the search is not completed.
+        # Handle the case that the search is not completed.
         if token_search_result.is_failure:
             # Avoid an expensive rollback by sending the pre-deployment team and the exception chain on failure.
             return UpdateResult.update_failure(
@@ -229,7 +229,7 @@ class SquareStackRosterHandler:
                     ex=token_search_result.exception
                 )
             )
-        # Handle the case that, the opening square is not found.
+        # Handle the case that the opening square is not found.
         if token_search_result.is_failure:
             # Avoid an expensive rollback by sending the pre-deployment team and the exception chain on failure.
             return UpdateResult.update_failure(
@@ -267,7 +267,7 @@ class SquareStackRosterHandler:
             token=token,
             square=home_square,
         )
-        # Handle the case that, the occupation fails.
+        # Handle the case that the occupation fails.
         if square_update_result.is_failure:
             # Avoid an expensive rollback by sending the pre-deployment team and the exception chain on failure.
             return UpdateResult.update_failure(

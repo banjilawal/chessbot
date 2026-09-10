@@ -117,7 +117,7 @@ class PathDatabase(Database[Path]):
         
         # --- To assure uniqueness the member_service has to conduct a search. The path should be validated first. ---#
         
-        # Handle the case that, the pathis not safe.
+        # Handle the case that the pathis not safe.
         validation = self.microservice.execute.execute(candidate=path)
         if validation.is_failure:
             # Send the exception chain on failure.
@@ -133,7 +133,7 @@ class PathDatabase(Database[Path]):
         # --- KingCheckRecord if the path is already in the collider_candidates before adding it. ---#
         search_result = self.search_paths(context=PathContext(id=path.id))
         
-        # Handle the case that, the search is not completed.
+        # Handle the case that the search is not completed.
         if search_result.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -145,7 +145,7 @@ class PathDatabase(Database[Path]):
                     )
                 )
             )
-        # Handle the case that, the path is already in the collider_candidates.
+        # Handle the case that the path is already in the collider_candidates.
         if search_result.is_success:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -160,7 +160,7 @@ class PathDatabase(Database[Path]):
         # --- Use _path_database_core.insert_path because order does not matter for the path access. ---#
         insertion_result = self._path_database_core.insert_path(path=path)
         
-        # Handle the case that, the insertion is not completed.
+        # Handle the case that the insertion is not completed.
         if insertion_result.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -199,7 +199,7 @@ class PathDatabase(Database[Path]):
         # --- Handoff the search responsibility to _path_database_core. ---#
         search_result = self._path_database_core.path_context_service.finder.route(context=context)
         
-        # Handle the case that, the search is not completed.
+        # Handle the case that the search is not completed.
         if search_result.is_failure:
             # Send the exception chain on failure.
             return SearchResult.failure(

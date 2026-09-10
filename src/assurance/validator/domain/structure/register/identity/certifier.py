@@ -72,7 +72,7 @@ class IdentityRegisterValidator(Validator[IdentityRegister]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the validator is not primed.
+        # Handle the case that the validator is not primed.
         validator_priming_result = self.toolkit.priming_validator.execute(
             candidate=candidate,
             target_blueprint=self.toolkit.blueprint_model,
@@ -92,7 +92,7 @@ class IdentityRegisterValidator(Validator[IdentityRegister]):
         # --- Cast candidate to a VectorRegister for additional tests. ---#
         blueprint = cast(self.toolkit.blueprint_model, candidate)
         
-        # Handle the case that, the id is not safe.
+        # Handle the case that the id is not safe.
         id_validation_result = self.toolkit.helper.number_validator.execute(blueprint.id)
         if validator_priming_result.is_failure:
             # Send the exception chain on failure.
@@ -105,7 +105,7 @@ class IdentityRegisterValidator(Validator[IdentityRegister]):
                     ex=id_validation_result.exception,
                 )
             )
-        # Handle the case that, the name is not safe.
+        # Handle the case that the name is not safe.
         name_validation_result = self.toolkit.name_validator.execute(blueprint.id)
         if validator_priming_result.is_failure:
             # Send the exception chain on failure.

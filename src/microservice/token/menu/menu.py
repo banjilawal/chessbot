@@ -61,7 +61,7 @@ class TokenServiceMenu(Router[TokenService]):
     ) -> Any:
         method = f"{self.__class__.__name__}.route"
         
-        # Handle the case that, the command does not exist
+        # Handle the case that the command does not exist
         if command is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -76,7 +76,7 @@ class TokenServiceMenu(Router[TokenService]):
                     )
                 )
             )
-        # Handle the case that, the command is the wrong type.
+        # Handle the case that the command is the wrong type.
         if not isinstance(command, TokenCommand):
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -93,7 +93,7 @@ class TokenServiceMenu(Router[TokenService]):
         # --- Cast the candidate into a TokenCommand for additional tests ---#
         token_command = cast(TokenCommand, command)
         
-        # Handle the case that, the command's schema or id fail a safety ccheck.
+        # Handle the case that the command's schema or id fail a safety ccheck.
         identity_validation_result = identity_service.validate_identity_register(
             id_candidate=token_command.id,
             name_candidate=token_command.name,
@@ -126,7 +126,7 @@ class TokenServiceMenu(Router[TokenService]):
                     )
                 )
             )
-        # Handle the case that, its params don't exist.
+        # Handle the case that its params don't exist.
         if token_command.parameters is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -143,7 +143,7 @@ class TokenServiceMenu(Router[TokenService]):
                     )
                 )
             )
-        # Handle the case that, the parameters are the wrong type.
+        # Handle the case that the parameters are the wrong type.
         if not isinstance(token_command.parameters, self._commands.entry[token_command.name]):
             # Send the exception chain on failure.
             expected_type = type(self._commands.entry[token_command.name]).__name__
@@ -161,7 +161,7 @@ class TokenServiceMenu(Router[TokenService]):
             )
         cipher = self._commands.entry[token_command.name]
         
-        # Handle the case that, the number of params is wrong.
+        # Handle the case that the number of params is wrong.
         if token_command.parameters.size != cipher.parameters.size:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -176,7 +176,7 @@ class TokenServiceMenu(Router[TokenService]):
                     )
                 )
             )
-        # Handle the case that, a param is the wrong type
+        # Handle the case that a param is the wrong type
         for key in token_command.parameters.entries.keys():
             if not isinstance(token_command.parameters.entries[key], cipher.ruleset[key]):
                 # Send the exception chain on failure.

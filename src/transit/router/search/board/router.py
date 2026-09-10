@@ -50,7 +50,7 @@ class BoardSearchRouter(Router[Board]):
         """
         method = "BoardFinder.find"
         
-        # Handle the case that, the collider_candidates is null.
+        # Handle the case that the collider_candidates is null.
         if dataset is None:
             # Send the exception chain on failure.
             return SearchResult.failure(
@@ -59,7 +59,7 @@ class BoardSearchRouter(Router[Board]):
                     ex=BoardSearchNullDatasetException(f"{method}: {BoardSearchNullDatasetException.MSG}")
                 )
             )
-        # Handle the case that, collider_candidates is the wrong type
+        # Handle the case that collider_candidates is the wrong type
         if not isinstance(dataset, List):
             # Send the exception chain on failure.
             return SearchResult.failure(
@@ -68,7 +68,7 @@ class BoardSearchRouter(Router[Board]):
                     ex=BoardSearchPayloadTypeException(f"{method}: {BoardSearchPayloadTypeException.MSG}")
                 )
             )
-        # Handle the case that, the context fails validation.
+        # Handle the case that the context fails validation.
         validation_result = context_validator.execute(context)
         if validation_result.is_failure:
             # Send the exception chain on failure.

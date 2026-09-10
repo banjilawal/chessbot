@@ -26,7 +26,7 @@ class TeamBuilderFinalizer(BuilderFinalizer[Team]):
         owner = product.owner
         insertion_result = owner.teams.insert(product)
         if insertion_result.is_failure:
-            # Handle the case that, the team is not successfully registered with its team.
+            # Handle the case that the team is not successfully registered with its team.
             return BuildResult.failure(
                 FinalizeTeamBuilderException(
                     cls_mthd=method,

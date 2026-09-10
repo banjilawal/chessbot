@@ -60,7 +60,7 @@ class EuclideanDistance:
         """
         method = f"{cls.__name__}.compute"
         
-        # Handle the case that, the either coord does not pass a validation check.
+        # Handle the case that the either coord does not pass a validation check.
         for coord in (u, v):
             coord_validation_result =coord_service.execute.execute(coord)
             if coord_validation_result.is_failure:

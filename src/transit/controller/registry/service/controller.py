@@ -99,7 +99,7 @@ class ServiceRegistryController(Controller[ServiceRegistry]):
             registry=self._registry,
             null_exception=null_exception,
         )
-        # Handle the case that, the request is not satisfied.
+        # Handle the case that the request is not satisfied.
         if insertion_result.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -136,7 +136,7 @@ class ServiceRegistryController(Controller[ServiceRegistry]):
             microservice_name=name,
             registry=self._registry,
         )
-        # Handle the case that, the request is not satisfied.
+        # Handle the case that the request is not satisfied.
         if search_result.is_failure:
             # Send the exception chain on failure.
             return SearchResult.failure(

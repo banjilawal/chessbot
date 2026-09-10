@@ -140,7 +140,7 @@ class SquareStackService(StackService[Square]):
         # --- Handoff the push responsibility to _controller ---#
         insertion_result = self._controller.crud.pusher.execute(stack=self, item=item)
     
-        # Handle the case that, the search is not completed.
+        # Handle the case that the search is not completed.
         if insertion_result.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(
@@ -162,7 +162,7 @@ class SquareStackService(StackService[Square]):
         # --- Handoff the push responsibility to _controller ---#
         deletion_result = self._controller.crud.pop()
         
-        # Handle the case that, the search is not completed.
+        # Handle the case that the search is not completed.
         if deletion_result.is_failure:
             # Send the exception chain on failure.
             return DeletionResult.failure(
@@ -191,7 +191,7 @@ class SquareStackService(StackService[Square]):
             square_stack=self,
             identity_service=identity_service
         )
-        # Handle the case that, the deletion is not completed.
+        # Handle the case that the deletion is not completed.
         if deletion_result.is_failure:
             # Send the exception chain on failure.
             return DeletionResult.failure(
@@ -293,7 +293,7 @@ class SquareStackService(StackService[Square]):
             context=context,
             dataset=self._stack,
         )
-        # Handle the case that, the search is not completed.
+        # Handle the case that the search is not completed.
         if query_result.is_failure:
             # Send the exception chain on failure.
             return SearchResult.failure(

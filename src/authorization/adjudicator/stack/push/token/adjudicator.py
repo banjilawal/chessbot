@@ -87,7 +87,7 @@ class TokenPushRequestAdjudicator(PushRequestAdjudicator):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the PushRequest is not bootstrapped successfully.
+        # Handle the case that the PushRequest is not bootstrapped successfully.
         bootstrap = self._priming_validator.execute(candidate)
         if bootstrap.is_failure:
             # Send the exception chain in the result.
@@ -102,7 +102,7 @@ class TokenPushRequestAdjudicator(PushRequestAdjudicator):
                 )
             )
         request = cast(TokenStackPushRequest, bootstrap.payload)
-        # handle the case that, the item is not a safe token.
+        # handle the case that the item is not a safe token.
         token_test = self._item_validator.execute(request.item)
         if token_test.is_failure:
             # Send the exception chain in the result.
@@ -116,7 +116,7 @@ class TokenPushRequestAdjudicator(PushRequestAdjudicator):
                     ex=token_test.exception
                 )
             )
-        # Handle the case that, the request contains a malformed stack.
+        # Handle the case that the request contains a malformed stack.
         stack_test = self._priming_validator.execute(
             candidate=request.stack,
             target_model=Type[TokenStackService],

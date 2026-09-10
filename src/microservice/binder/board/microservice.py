@@ -119,7 +119,7 @@ class BoardTeamBinderService(Microservice[BoardBinder]):
         if schema_validator is None:
             schema_validator = SchemaValidator()
     
-        # Handle the case that, the binder is not certified as safe.
+        # Handle the case that the binder is not certified as safe.
         binder_validation_result = self._validator.execute(binder)
         if binder_validation_result.is_failure:
             # Return the exception chain on failure
@@ -132,7 +132,7 @@ class BoardTeamBinderService(Microservice[BoardBinder]):
                     ex=binder_validation_result.exception,
                 )
             )
-        # Handle the case that, the binder is not certified as safe.
+        # Handle the case that the binder is not certified as safe.
         schema_validation_result = schema_validator.execute(schema)
         if schema_validation_result.is_failure:
             # Return the exception chain on failure
@@ -161,7 +161,7 @@ class BoardTeamBinderService(Microservice[BoardBinder]):
         if team_validator is None:
             team_validator = TeamValidator()
         
-        # Handle the case that, the binder is not certified as safe.
+        # Handle the case that the binder is not certified as safe.
         binder_validation_result = self._validator.execute(binder)
         if binder_validation_result.is_failure:
             # Return the exception chain on failure
@@ -175,7 +175,7 @@ class BoardTeamBinderService(Microservice[BoardBinder]):
                     ex=binder_validation_result.exception,
                 )
             )
-        # Handle the case that, the team is flagged.
+        # Handle the case that the team is flagged.
         team_validation_result = team_validator.execute(team)
         if team_validation_result.is_failure:
             # Return the exception chain on failure
@@ -189,7 +189,7 @@ class BoardTeamBinderService(Microservice[BoardBinder]):
                     ex=team_validation_result.exception,
                 )
             )
-        # Handle the case that, the binder is already full.
+        # Handle the case that the binder is already full.
         if binder.has_both_slots_occupied:
             # Return the exception chain on failure
             return UpdateResult.update_failure(
@@ -205,7 +205,7 @@ class BoardTeamBinderService(Microservice[BoardBinder]):
                     ),
                 )
             )
-        # Handle the case that, the team belongs to a different board.
+        # Handle the case that the team belongs to a different board.
         if binder.board != team.board:
             # Return the exception chain on failure
             return UpdateResult.update_failure(

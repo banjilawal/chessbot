@@ -67,7 +67,7 @@ class TokenDeletionPermitter:
         """
         method = f"{self.__class__.__name__}.run"
         
-        # Handle the case that, the request is not bootstrapped successfully.
+        # Handle the case that the request is not bootstrapped successfully.
         bootstrap = self._request_adjudicator.execute(candidate=request)
         if bootstrap.is_failure:
             # Send an exception chain in the permission denial.

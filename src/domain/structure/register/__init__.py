@@ -12,6 +12,7 @@ version: 0.0.2
 # Packages
 from .toggle import *
 from .coord import *
+from .identity import *
 from .number import *
 from .player import *
 from .square import *

@@ -104,7 +104,7 @@ class SquareValidator(ModelValidator[SquareBlueprint]):
         # --- Cast the candidate into a TokenBlueprint for additional tests. ---#
         blueprint = carrier.extract_blueprint()
         
-        # Handle the case that, any id in the blueprint is flagged.
+        # Handle the case that any id in the blueprint is flagged.
         id_test = self.toolkit.helper.identity_service.validate_blueprint_id(
             owner_blueprint=blueprint,
             owner_name=blueprint.domain_class_name,
@@ -134,7 +134,7 @@ class SquareValidator(ModelValidator[SquareBlueprint]):
                     ex=name_test.exception,
                 )
             )
-        # Handle the case that, square.coord is not safe.
+        # Handle the case that square.coord is not safe.
         coord_test = self.toolkit.coord_validator.execute(blueprint.coord)
         if coord_test.is_failure:
             # Send the exception chain on failure.
@@ -147,7 +147,7 @@ class SquareValidator(ModelValidator[SquareBlueprint]):
                     ex=coord_test.exception,
                 )
             )
-        # Handle the case that, square.board does not pass a validation check.
+        # Handle the case that square.board does not pass a validation check.
         board_test = self.toolkit.board_validator.execute(blueprint.board)
         if board_test.is_failure:
             # Send the exception chain on failure.

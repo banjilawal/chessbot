@@ -73,7 +73,7 @@ class VectorSequenceGenerator:
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the sequence gets flagged,
+        # Handle the case that the sequence gets flagged,
         validation = self._math.priming_validator.execute(
             candidate=recurrence,
             target_model=Recurrence,
@@ -102,7 +102,7 @@ class VectorSequenceGenerator:
             # Request that the update for the cursor.
             step = recur.space_mapping_function.next(cursor)
             
-            # Handle the case that, the request is not satisfied.
+            # Handle the case that the request is not satisfied.
             if step.is_failure:
                 # Send an exception chain in the result.
                 return ComputationResult.failure(

@@ -84,7 +84,7 @@ class OffsetTopologyGenerator:
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that, the origin is not safe to use.
+        # Handle the case that the origin is not safe to use.
         origin_validation = self._math_toolkit.vector.validator.execute(candidate=origin)
         if origin_validation.is_failure:
             # Send an exception chain in the result.
@@ -98,7 +98,7 @@ class OffsetTopologyGenerator:
                     ex=origin_validation.exception,
                 ),
             )
-        # Handle the case that, the basis is not valid.
+        # Handle the case that the basis is not valid.
         basis_validation = self._priming_validator.execute(
             candidate=basis_vectors,
             target=Type[VectorSet],
@@ -125,7 +125,7 @@ class OffsetTopologyGenerator:
                 u=origin,
                 v=offset
             )
-            # Handle the case that, a solution is not computed.
+            # Handle the case that a solution is not computed.
             if computation.is_failure:
                 # Send an exception chain in the result.
                 return ComputationResult.failure(

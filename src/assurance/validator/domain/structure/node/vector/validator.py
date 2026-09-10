@@ -94,7 +94,7 @@ class VectorNodeValidator(NodeValidator):
         # --- Cast the candidate into a VectorBlueprint for additional tests. ---#
         blueprint = carrier.extract_blueprint()
         
-        # Handle the case that, the blueprint's vector is flagged.
+        # Handle the case that the blueprint's vector is flagged.
         validation = self.toolkit.vector_validator.execute(blueprint.vector)
         if validation.is_failure:
             # Send the exception chain on failure.
