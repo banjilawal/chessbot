@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Dict, Type
 
 from assurance import TeamValidator
-from authorization import BlueprintHomeSquareExtractor, BlueprintRankExtractor
+from authorization import HomeSquareExtractor, BlueprintRankExtractor
 from err import TokenBlueprintNullException, TokenCarrierNullException, TokenNullException
 from fabrication import TokenBlueprint
 from domain.model import Token
@@ -64,7 +64,7 @@ class TokenValidatorToolkit(ModelManifest[Token]):
                 "team_validator": TeamValidator(),
                 "home_detector": TokenHomeReporter(),
                 "rank_extractor": BlueprintRankExtractor(),
-                "home_square_extractor": BlueprintHomeSquareExtractor(),
+                "home_square_extractor": HomeSquareExtractor(),
             }
         )
         self._types = types or {

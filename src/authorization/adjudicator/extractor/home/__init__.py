@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .extractor import BlueprintHomeSquareExtractor
+from .extractor import HomeSquareExtractor

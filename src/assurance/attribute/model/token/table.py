@@ -16,6 +16,7 @@ from assurance import (
     AttributeHelperTable, BoardValidator, RankValidator, SquareValidator, TeamValidator,
     PrimingValidator
 )
+from authorization import HomeSquareExtractor
 from domain import Token
 from microservice import IdentityService
 
@@ -44,6 +45,7 @@ class TokenHelperTable(AttributeHelperTable[Token]):
     _rank_validator: RankValidator
     _board_validator: BoardValidator
     _square_validator: SquareValidator
+    _home_extractor: HomeSquareExtractor
 
     
     def __init__(
@@ -54,6 +56,7 @@ class TokenHelperTable(AttributeHelperTable[Token]):
             square_validator: Optional[SquareValidator] | None = None,
             identity_service: Optional[IdentityService] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
+            home_extractor: Optional[HomeSquareExtractor] | None = None,
     ):
         """
         Args:
@@ -63,6 +66,7 @@ class TokenHelperTable(AttributeHelperTable[Token]):
             square_validator: Optional[SquareValidator]
             identity_service: Optional[IdentityService]
             priming_validator: Optional[PrimingValidator]
+            home_extractor: Optional[HomeSquareExtractor]
         """
         super().__init__(
             identity_service=identity_service,
@@ -72,6 +76,7 @@ class TokenHelperTable(AttributeHelperTable[Token]):
         self._rank_validator = rank_validator or RankValidator()
         self._board_validator = board_validator or BoardValidator()
         self._square_validator = square_validator or SquareValidator()
+        self._home_extractor = home_extractor or HomeSquareExtractor()
     
     @property
     def team_validator(self) -> TeamValidator:
@@ -88,3 +93,7 @@ class TokenHelperTable(AttributeHelperTable[Token]):
     @property
     def square_validator(self) -> SquareValidator:
         return self._square_validator
+    
+    @property
+    def home_extractor(self) -> HomeSquareExtractor:
+        return self._home_extractor

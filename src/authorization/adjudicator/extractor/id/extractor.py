@@ -9,11 +9,13 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, cast
+from typing import Any, Optional, Type, cast
 
-from err import BlueprintIdValidatorExceptionIntegrity
-from microservice import IdentityService
 from artifcat import ValidationResult
+from assurance import PrimingValidator
+from domain import StateModelBlueprint
+from err import BlueprintIdExctractorException, BlueprintNullException
+from microservice import IdentityService
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -30,7 +32,7 @@ class BlueprintIdExtractor:
             the Blueprint's class.
 
     Attributes:
-        identity_service: IdetntiyService
+        priming_validator: IdetntiyService
         
     Provides:
         - execute(candidate: Any, model_name: str) -> ValidationResult:
@@ -39,15 +41,23 @@ class BlueprintIdExtractor:
         Adjudicator
     """
     _identity_service: IdentityService
+    _priming_validator: PrimingValidator
     
-    def __init__(self, identity_service: IdentityService | None = IdentityService()):
-        self._identity_service = identity_service
+    def __init__(
+            self,
+            identity_service: Optional[IdentityService] | None = None,
+            priming_validator: Optional[PrimingValidator] | None = None,
+    ):
+        self._identity_service = identity_service or IdentityService()
+        self._priming_validator = priming_validator or PrimingValidator()
     
     @LoggingLevelRouter.monitor
     def execute(
             self,
             candidate: Any,
-            model_name: str,
+            blueprint_owner_name: str,
+            blueprint_type: Type[StateModelBlueprint],
+            blueprint_null_exception: BlueprintNullException,
     ) -> ValidationResult[int]:
         """
         Verify the id if it already exists or create a new one.
@@ -61,48 +71,70 @@ class BlueprintIdExtractor:
                     - Otherwise, generate a unique id for the next model instance.
         Args:
             candidate: Any
-            model_name: str
+            blueprint_owner_name: str
+            blueprint_type: Type[Blueprint]
+            blueprint_null_exception: BlueprintNullException
         Returns:
-            ValidationResult
+            ValidationResult[int]
         Raises:
-            BlueprintIdValidatorException
+            BlueprintIdExtractorException
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # --- Process for candidates that are not null. ---#
-        if candidate is not None:
-            # Handle the case that the candidate is not a number.
-            id_validation = self._identity_service.validate_id(candidate)
-            if id_validation.is_failure:
-                # Send the exception chain on failure.
-                return ValidationResult.failure(
-                    BlueprintIdValidatorExceptionIntegrity(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=BlueprintIdValidatorExceptionIntegrity.MSG,
-                        err_code=BlueprintIdValidatorExceptionIntegrity.ERR_CODE,
-                        ex=id_validation.exception,
-                    )
-                )
-            # --- Return the work product. ---#
-            return ValidationResult.success(cast(int, candidate))
-        
-        # --- If the candidate is null the id has to be generated using the model_name. ---#
-        
-        # Handle the case that the model_name is not a valid string.
-        model_name_validation_result = self._identity_service.validate_name(model_name)
-        if model_name_validation_result.is_failure:
+        priming = self._priming_validator.execute(
+            candidate=candidate,
+            target_model=blueprint_type,
+            null_exception=blueprint_null_exception,
+        )
+        if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                BlueprintIdValidatorExceptionIntegrity(
+                BlueprintIdExctractorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=BlueprintIdValidatorExceptionIntegrity.MSG,
-                    err_code=BlueprintIdValidatorExceptionIntegrity.ERR_CODE,
-                    ex=model_name_validation_result.exception,
+                    msg=BlueprintIdExctractorException.MSG,
+                    err_code=BlueprintIdExctractorException.ERR_CODE,
+                    ex=priming.exception,
                 )
             )
-        # --- Return the work product. ---#
-        return ValidationResult.success(IdFactory.next_id(class_name=model_name))
+        blueprint = cast(Type[blueprint_type], priming.payload)
+        if not isinstance(blueprint, StateModelBlueprint):
+            return ValidationResult.failure(
+                BlueprintIdExctractorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=BlueprintIdExctractorException.MSG,
+                    err_code=BlueprintIdExctractorException.ERR_CODE,
+                    ex=TypeError(
+                        f"{blueprint.__class__.__name__} is not a StateModelBlueprint "
+                        f" It does not have an id property to extract and validate."
+                    ),
+                )
+            )
+        state_blueprint = cast(StateModelBlueprint, blueprint)
+        candidate_id = state_blueprint.id
+        
+        # --- If the candidate_id is null send a new one to the caller. ---#
+        if candidate_id is None:
+            id = IdFactory.next_id(class_name=blueprint_owner_name)
+            return ValidationResult.success(id)
+        
+        # --- Otherwise, process the existing id. ---#
+        validation = self._identity_service.validate_id(candidate_id)
+        if validation.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                BlueprintIdExctractorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=BlueprintIdExctractorException.MSG,
+                    err_code=BlueprintIdExctractorException.ERR_CODE,
+                    ex=validation.exception,
+                )
+            )
+        id = cast(int, validation.payload)
+        return ValidationResult.success(id)
+
+
         
 

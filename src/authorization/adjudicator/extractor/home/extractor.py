@@ -18,7 +18,7 @@ from artifcat import ValidationResult
 from util import LoggingLevelRouter
 
 
-class BlueprintHomeSquareExtractor:
+class HomeSquareExtractor:
     """
     Role
         - Transaction Worker
@@ -41,13 +41,13 @@ class BlueprintHomeSquareExtractor:
 
     Super Class:
     """
-    _toolkit: TokenValidatorToolkit
+    _square_validator: SquareValidator
     
     def __init__(
             self,
-            toolkit: Optional[TokenValidatorToolkit] | None = None,
+            square_validator: Optional[SquareValidator] | None = None,
     ):
-        self._bundle = toolkit or TokenValidatorToolkit()
+        self._square_validator = square_validator or SquareValdiator()
     
     @LoggingLevelRouter.monitor
     def execute(self, blueprint: TokenBlueprint) -> ValidationResult[HomeSquare]:
@@ -176,14 +176,14 @@ class BlueprintHomeSquareExtractor:
         method = f"{self.__class__.__name__}._validate_home_square"
         
         # Handle the case that the square is flagged.
-        validation_result = self._bundle.square_validator.execute(square)
-        if validation_result.is_failure:
+        validation = self._square_validator.execute(square)
+        if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 BlueprintHomeSquareExtractorException(
                     msg=BlueprintHomeSquareExtractorException.MSG,
                     err_code=BlueprintHomeSquareExtractorException.ERR_CODE,
-                    ex=validation_result.exception,
+                    ex=validation.exception,
                 )
             )
         # Handle the case that the square is the wrong type.
@@ -197,4 +197,5 @@ class BlueprintHomeSquareExtractor:
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return ValidationResult.success(cast(HomeSquare, square))
+        home_square = cast(HomeSquare, validation.payload)
+        return ValidationResult.success(home_square)

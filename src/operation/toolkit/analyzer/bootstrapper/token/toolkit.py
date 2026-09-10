@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from authorization import BlueprintHomeSquareExtractor, BlueprintRankExtractor
+from authorization import HomeSquareExtractor, BlueprintRankExtractor
 from microservice import RankService
 from operation import AnalyzerToolkit
 
@@ -52,6 +52,6 @@ class TokenToolkit(AnalyzerToolkit):
     rank_service: RankService = RankService()
     number_validator: NumberValidator = NumberValidator()
     blueprint_rank_processor: BlueprintRankExtractor = BlueprintRankExtractor()
-    blueprint_home_square_processor: BlueprintHomeSquareExtractor = BlueprintHomeSquareExtractor()
+    blueprint_home_square_processor: HomeSquareExtractor = HomeSquareExtractor()
     null_exception: TokenNullException = TokenNullException()
     analyzer: Token = Token

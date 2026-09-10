@@ -17,11 +17,11 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# ID_INTEGRITY_CHECKER_FAILURE #======================#
-    "BlueprintIdValidatorExceptionIntegrity",
+    "BlueprintIdExctractorException",
 ]
 
 # ======================# ID_INTEGRITY_CHECKER_FAILURE #======================#
-class BlueprintIdValidatorExceptionIntegrity(IntegrityCheckerException):
+class BlueprintIdExctractorException(IntegrityCheckerException):
     """
     Role:
         - Error Tracing

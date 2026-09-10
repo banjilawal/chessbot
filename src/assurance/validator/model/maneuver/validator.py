@@ -83,7 +83,7 @@ class ManeuverValidator(ModelValidator[Maneuver]):
         
         # Handle the case that the validator is not primed.
         validator_priming_result = self.toolkit.helper.priming_validator.execute(
-            candidate=candidate,
+            candidate_blueprint=candidate,
             target_model=self.toolkit.model,
             null_exception=self.toolkit.domain_null_exception,
         )

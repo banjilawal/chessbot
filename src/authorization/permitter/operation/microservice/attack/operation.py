@@ -74,7 +74,7 @@ class LaunchAttack:
             
         # Handle the case that the itinerary is not valid.
         validation_result = priming_validator.execute(
-            candidate=report,
+            candidate_blueprint=report,
             target_type=AttackApproval,
             null_ex_cls=AttackEventNullException,
         )
