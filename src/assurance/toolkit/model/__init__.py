@@ -23,4 +23,4 @@ from .token import *
 from .vector import *
 
 # Module
-from .toolkit import ModelValidationToolkit
+from .toolkit import ModelValidatorToolkit

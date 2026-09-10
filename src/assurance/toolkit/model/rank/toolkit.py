@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import RankHelperTable, ModelValidationToolkit
+from assurance import RankHelperTable, ModelValidatorToolkit
 from domain import Rank, RankManifest
 
 
 
-class RankValidationToolkit(ModelValidationToolkit[Rank]):
+class RankValidatorToolkit(ModelValidatorToolkit[Rank]):
     """
     Role:
         - Toolkit

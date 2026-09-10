@@ -11,10 +11,11 @@ from __future__ import annotations
 
 from typing import Optional
 
-from domain.model import Formation, HomeSquare
-from domain.model.searchable.state.team import Team
-from domain.model.rank import Pawn, Rank
-from domain.model.searchable.state.token import CombatantToken, PromotionState
+from collection import CoordDatabase
+from domain import (
+    CombatantToken, DeploymentState, Formation, HomeSquare, Pawn, PromotionState, Rank,
+    Team, Token, TokenReadiness
+)
 
 
 class PawnToken(CombatantToken):
@@ -65,6 +66,11 @@ class PawnToken(CombatantToken):
             team: Team,
             formation: Formation,
             home_square: HomeSquare,
+            rank: Optional[Rank] | None = None,
+            captor: Optional[Token] | None = None,
+            deployment_state: Optional[DeploymentState] | None = None,
+            readiness: Optional[TokenReadiness] | None = None,
+            positions: Optional[CoordDatabase] | None = None,
     ):
         """
         Args:
@@ -78,16 +84,15 @@ class PawnToken(CombatantToken):
         super().__init__(
             id=id,
             team=team,
-            rank=Pawn(formation.magnitude),
+            rank=rank,
+            captor=captor,
             formation=formation,
+            readiness=readiness,
             home_square=home_square,
+            deployment_state=deployment_state,
+            positions=positions,
         )
-        self._previous_rank = None
         self._promotion_state = PromotionState.NOT_PROMOTED
-    
-    @property
-    def previous_rank(self) -> Optional[Rank]:
-        return self._previous_rank
     
     @property
     def promotion_state(self) -> PromotionState:
@@ -98,18 +103,30 @@ class PawnToken(CombatantToken):
         self._promotion_state = promotion_state
         
     @property
-    def can_promote(self) -> bool:
-        return (
-            self.is_active and not self.is_promoted and
-            self.current_position.row == self.team.schema.enemy_schema.pawn_row
-        )
+    def is_promotable(self) -> bool:
+        current_position = self.current_position
+        
+        if not self.is_active:
+            return False
+        if self.is_promoted:
+            return False
+        if current_position is None:
+            return False
+        if current_position.row != self.team.archetype.enemy_archetype.pawn_row:
+            return False
+        return True
+    
+    @property
+    def is_not_promotable(self) -> bool:
+        return not self.is_promotable
     
     @property
     def is_promoted(self) -> bool:
-        return not isinstance(self.rank, Pawn) and self._promotion_state != PromotionState.NOT_PROMOTED
+        return not isinstance(self.rank, Pawn)
     
-    def set_new_rank(self, new_rank: Rank):
-        self.set_rank(new_rank)
+    @property
+    def is_not_promoted(self) -> bool:
+        return not self.is_promoted
        
     def __eq__(self, other):
         if super().__eq__(other):

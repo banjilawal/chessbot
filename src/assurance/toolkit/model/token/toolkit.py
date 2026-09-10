@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import TokenHelperTable, ModelValidationToolkit
+from assurance import ModelValidatorToolkit, TokenHelperTable
 from domain import Token, TokenManifest
 
 
 
-class TokenValidationToolkit(ModelValidationToolkit[Token]):
+class TokenValidatorToolkit(ModelValidatorToolkit[Token]):
     """
     Role:
         - Toolkit

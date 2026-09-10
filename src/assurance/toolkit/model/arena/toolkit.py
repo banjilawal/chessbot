@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ArenaHelperTable, ModelValidationToolkit
+from assurance import ArenaHelperTable, ModelValidatorToolkit
 from domain import Arena, ArenaManifest
 
 
 
-class ArenaValidationToolkit(ModelValidationToolkit[Arena]):
+class ArenaValidatorToolkit(ModelValidatorToolkit[Arena]):
     """
     Role:
         - Toolkit

@@ -15,7 +15,7 @@ from typing import Generic, TypeVar
 T = TypeVar("T")
 
 
-class ValidationToolkit(ABC, Generic[T]):
+class ValidatorToolkit(ABC, Generic[T]):
     """
     Role:
         - Toolkit

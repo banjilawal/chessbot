@@ -13,7 +13,7 @@ from typing import Any, Dict, Optional, Type, cast
 
 from config import GameColor
 from domain import (
-    Coord, Formation, HomeSquare, ModelContextBlueprint, Rank, Team, TokenActivityState, TokenContext
+    Coord, Formation, HomeSquare, ModelContextBlueprint, Rank, Team, TokenReadiness, TokenContext
 )
 from err import TokenContextNullException
 
@@ -55,7 +55,7 @@ class TokenContextBlueprint(ModelContextBlueprint[TokenContext]):
     _formation: Optional[Formation]
     _current_position: Optional[Coord]
     _home_square: Optional[HomeSquare]
-    _activity_state: Optional[TokenActivityState]
+    _activity_state: Optional[TokenReadiness]
     
     def __init__(
             self,
@@ -68,7 +68,7 @@ class TokenContextBlueprint(ModelContextBlueprint[TokenContext]):
             formation: Optional[Formation] | None = None,
             current_position: Optional[Coord] | None = None,
             home_square: Optional[HomeSquare] | None = None,
-            activity_state: Optional[TokenActivityState] | None = None,
+            activity_state: Optional[TokenReadiness] | None = None,
             domain_class: Optional[Type[TokenContext]] | None = None,
             domain_null_exception: Optional[TokenContextNullException] | None = None,
     ):
@@ -134,7 +134,7 @@ class TokenContextBlueprint(ModelContextBlueprint[TokenContext]):
         return self._home_square
     
     @property
-    def activity_state(self) -> Optional[TokenActivityState]:
+    def activity_state(self) -> Optional[TokenReadiness]:
         return self._activity_state
     
     @property

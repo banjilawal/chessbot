@@ -12,13 +12,13 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-from assurance import AttributeHelperTable, ValidationToolkit
+from assurance import AttributeHelperTable, ValidatorToolkit
 from domain import Model, ObjectManifest
 
 T = TypeVar("T", bound="Model")
 
 
-class ModelValidationToolkit(ValidationToolkit[T], ABC, Generic[T]):
+class ModelValidatorToolkit(ValidatorToolkit[T], ABC, Generic[T]):
     """
     Role:
         - Toolkit

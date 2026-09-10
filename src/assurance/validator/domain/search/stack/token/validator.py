@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional, cast
 
-from assurance import ContextValidator, TokenValidationToolkit
+from assurance import ContextValidator, TokenValidatorToolkit
 from config import GameColor
 from domain import Persona, TokenSearchContext
 from artifcat import ValidationResult
@@ -42,13 +42,13 @@ class TokenContextValidator(ContextValidator[TokenSearchContext]):
         StackContextChecker
     """
     
-    def __init__(self, toolkit: Optional[TokenValidationToolkit] | None = None, ):
-        super().__init__(toolkit=toolkit or TokenValidationToolkit())
+    def __init__(self, toolkit: Optional[TokenValidatorToolkit] | None = None, ):
+        super().__init__(toolkit=toolkit or TokenValidatorToolkit())
     
     
     @property
-    def toolkit(self) -> TokenValidationToolkit:
-        return cast(TokenValidationToolkit, super().toolkit)
+    def toolkit(self) -> TokenValidatorToolkit:
+        return cast(TokenValidatorToolkit, super().toolkit)
     
     
     @LoggingLevelRouter.monitor
@@ -129,7 +129,7 @@ class TokenContextValidator(ContextValidator[TokenSearchContext]):
             
         # Certification for the search-by-id target.
         if context.id is not None:
-            validation = self.toolkit.identity_service.validate_id(
+            validation = self.toolkit.helper.identity_service.validate_id(
                 candidate=context.id
             )
             if validation.is_failure:
@@ -148,7 +148,7 @@ class TokenContextValidator(ContextValidator[TokenSearchContext]):
         
         # Certification for the search-by-designation target.
         if context.name is not None:
-            validation = self.toolkit.identity_service.validate_name(
+            validation = self.toolkit.helper.identity_service.validate_name(
                 candidate=context.name
             )
             if validation.is_failure:
@@ -205,7 +205,7 @@ class TokenContextValidator(ContextValidator[TokenSearchContext]):
         
         # Certification for the search-by-team target.
         if context.team is not None:
-            validation = self.toolkit.team_validator.execute(
+            validation = self.toolkit.helper.team_validator.execute(
                 candidate=context.current_position
             )
             if validation.is_failure:

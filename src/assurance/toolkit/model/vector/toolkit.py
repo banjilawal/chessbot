@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import VectorHelperTable, ModelValidationToolkit
+from assurance import VectorHelperTable, ModelValidatorToolkit
 from domain import Vector, VectorManifest
 
 
-class VectorValidationToolkit(ModelValidationToolkit[Vector]):
+class VectorValidatorToolkit(ModelValidatorToolkit[Vector]):
     """
     Role:
         - Toolkit

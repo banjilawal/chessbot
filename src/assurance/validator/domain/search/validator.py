@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import Validator, ValidationToolkit
+from assurance import Validator, ValidatorToolkit
 from domain import Context
 from util import LoggingLevelRouter
 
@@ -39,7 +39,7 @@ class ContextValidator(Validator, ABC, Generic[T]):
         IntegrityChecker
     """
     
-    def __init__(self, toolkit: ValidationToolkit[T]):
+    def __init__(self, toolkit: ValidatorToolkit[T]):
         """
         Args:
             toolkit: ValidationToolkit[T]

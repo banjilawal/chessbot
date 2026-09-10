@@ -13,7 +13,7 @@ from typing import Any, Optional, cast
 
 import config.setting.board.dimension.config
 from artifcat import ValidationResult
-from assurance import ContextValidator, CoordValidationToolkit
+from assurance import ContextValidator, CoordValidatorToolkit
 from domain import CoordSearchContext
 from err import CoordContextCheckerException, ZeroCoordContextFlagsException
 from util import LoggingLevelRouter
@@ -38,13 +38,13 @@ class CoordContextValidator(ContextValidator[CoordSearchContext]):
         StackContextChecker
     """
     
-    def __init__(self, toolkit: Optional[CoordValidationToolkit] | None = None,):
-        super().__init__(toolkit=toolkit or CoordValidationToolkit())
+    def __init__(self, toolkit: Optional[CoordValidatorToolkit] | None = None, ):
+        super().__init__(toolkit=toolkit or CoordValidatorToolkit())
         
         
     @property
-    def toolkit(self) -> CoordValidationToolkit:
-        return cast(CoordValidationToolkit, super().toolkit)
+    def toolkit(self) -> CoordValidatorToolkit:
+        return cast(CoordValidatorToolkit, super().toolkit)
     
     
     @LoggingLevelRouter.monitor

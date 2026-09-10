@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ManeuverHelperTable, ModelValidationToolkit
+from assurance import ManeuverHelperTable, ModelValidatorToolkit
 from domain import Maneuver, ManeuverManifest
 
 
 
-class ManeuverValidationToolkit(ModelValidationToolkit[Maneuver]):
+class ManeuverValidatorToolkit(ModelValidatorToolkit[Maneuver]):
     """
     Role:
         - Toolkit

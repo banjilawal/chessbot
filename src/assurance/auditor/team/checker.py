@@ -91,7 +91,7 @@ class TeamConsistencyAuditor(ConsistencyAuditor[Team]):
         team = cast(Team, candidate)
         
         # Handle the case that, team.id does not pass a validation check.
-        id_validation_result = toolkit.identity_service.validate_id(candidate=team.id)
+        id_validation_result = toolkit.helper.identity_service.validate_id(candidate=team.id)
         if id_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

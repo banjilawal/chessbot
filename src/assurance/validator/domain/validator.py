@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
-from assurance import ValidationToolkit, Validator
+from assurance import ValidatorToolkit, Validator
 from artifcat import ValidationResult
 from domain import DomainDataObject
 from util import LoggingLevelRouter
@@ -42,10 +42,10 @@ class DomainObjectValidator(Validator[T], ABC, Generic[T]):
 
     Super Class:
     """
-    _toolkit: ValidationToolkit[T]
+    _toolkit: ValidatorToolkit[T]
     
     
-    def __init__(self, toolkit: ValidationToolkit[T]):
+    def __init__(self, toolkit: ValidatorToolkit[T]):
         """
         Args:
             toolkit: ValidationToolkit[T]
@@ -54,8 +54,8 @@ class DomainObjectValidator(Validator[T], ABC, Generic[T]):
         
         
     @property
-    def toolkit(self) -> ValidationToolkit[T]:
-        return cast(ValidationToolkit, super().toolkit)
+    def toolkit(self) -> ValidatorToolkit[T]:
+        return cast(ValidatorToolkit, super().toolkit)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

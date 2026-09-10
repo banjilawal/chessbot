@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ScalarHelperTable, ModelValidationToolkit
+from assurance import ScalarHelperTable, ModelValidatorToolkit
 from domain import Scalar, ScalarManifest
 
 
 
-class ScalarValidationToolkit(ModelValidationToolkit[Scalar]):
+class ScalarValidatorToolkit(ModelValidatorToolkit[Scalar]):
     """
     Role:
         - Toolkit

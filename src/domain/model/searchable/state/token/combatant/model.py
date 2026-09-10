@@ -11,10 +11,8 @@ from __future__ import annotations
 
 from typing import Optional
 
-from domain.model import Formation, HomeSquare
-from domain.model.searchable.state.team import Team
-from domain.model.rank import Rank
-from domain.model.searchable.state.token import Token, DeploymentState, TokenActivityState
+from collection import CoordDatabase
+from domain import DeploymentState, Formation, HomeSquare, Rank, Team, Token, TokenReadiness
 
 
 class CombatantToken(Token):
@@ -56,10 +54,14 @@ class CombatantToken(Token):
     def __init__(
             self,
             id: int,
-            rank: Rank,
             team: Team,
             formation: Formation,
             home_square: HomeSquare,
+            rank: Optional[Rank] | None = None,
+            captor: Optional[Token] | None = None,
+            readiness: Optional[TokenReadiness] | None = None,
+            deployment_state: Optional[DeploymentState] | None = None,
+            positions: Optional[CoordDatabase] | None = None,
     ):
         """
         Args:
@@ -75,14 +77,17 @@ class CombatantToken(Token):
             rank=rank,
             formation=formation,
             home_square=home_square,
+            readiness=readiness,
+            deployment_state=deployment_state,
+            positions=positions,
         )
-        self._captor = None
+        self._captor = captor
     
     @property
     def is_active(self) -> bool:
         return (
                 self._captor is None and
-                self._activity_state == TokenActivityState.FREE and
+                self._readiness == TokenReadiness.READY and
                 self._deployment_state == DeploymentState.DEPLOYED
         )
     
@@ -92,9 +97,9 @@ class CombatantToken(Token):
                 self._captor is not None and
                 self.deployment_state == DeploymentState.DEPLOYED and
                 (
-                        self._activity_state == TokenActivityState.CAPTURE_ACTIVATED or
-                        self.activity_state == TokenActivityState.HOSTAGE_CREATED or
-                        self._activity_state == TokenActivityState.HOSTAGE_IN_DATABASE
+                        self._readiness == TokenReadiness.CAPTURE_ACTIVATED or
+                        self.readiness == TokenReadiness.HOSTAGE_CREATED or
+                        self._readiness == TokenReadiness.HOSTAGE_IN_DATABASE
                 )
         )
     
@@ -108,7 +113,7 @@ class CombatantToken(Token):
         return (
                 self._captor is not None and
                 self.deployment_state == DeploymentState.DEPLOYED and
-                self.activity_state == TokenActivityState.CAPTURE_ACTIVATED
+                self.readiness == TokenReadiness.CAPTURE_ACTIVATED
         )
     
     @property
@@ -116,7 +121,7 @@ class CombatantToken(Token):
         return (
                 self._captor is not None and
                 self.deployment_state == DeploymentState.REMOVED_FROM_BOARD and
-                self.activity_state == TokenActivityState.HOSTAGE_CREATED
+                self.readiness == TokenReadiness.HOSTAGE_CREATED
         )
     
     @property
@@ -124,7 +129,7 @@ class CombatantToken(Token):
         return (
                 self._captor is not None and
                 self.deployment_state == DeploymentState.REMOVED_FROM_BOARD and
-                self.activity_state == TokenActivityState.HOSTAGE_IN_DATABASE
+                self.readiness == TokenReadiness.HOSTAGE_IN_DATABASE
         )
     
     @property

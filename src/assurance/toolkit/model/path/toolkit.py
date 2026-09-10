@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import PathHelperTable, ModelValidationToolkit
+from assurance import PathHelperTable, ModelValidatorToolkit
 from domain import Path, PathManifest
 
 
 
-class PathValidationToolkit(ModelValidationToolkit[Path]):
+class PathValidatorToolkit(ModelValidatorToolkit[Path]):
     """
     Role:
         - Toolkit

@@ -94,7 +94,7 @@ class PathValidator(ModelValidator[Path]):
         path = cast(Path, candidate)
         
         # Handle the case that, the path's id gets flagged.
-        id_validation = self.toolkit.identity_service.validate_id(path.id)
+        id_validation = self.toolkit.helper.identity_service.validate_id(path.id)
         if id_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

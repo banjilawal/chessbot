@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from domain import DeploymentState, Formation, HomeSquare, Team, Token, TokenActivityState
+from domain import DeploymentState, Formation, HomeSquare, Team, Token, TokenReadiness
 
 
 class KingToken(Token):
@@ -82,22 +82,22 @@ class KingToken(Token):
     def is_in_check(self) -> bool:
         return (
                 self.deployment_state == DeploymentState.DEPLOYED and
-                self.activity_state == TokenActivityState.IN_CHECK
+                self.readiness == TokenReadiness.IN_CHECK
         )
     
     @property
     def is_checkmated(self) -> bool:
         return (
                 self.deployment_state == DeploymentState.DEPLOYED and
-                self.activity_state == TokenActivityState.CHECKMATED
+                self.readiness == TokenReadiness.CHECKMATED
         )
     
     @property
     def is_active(self) -> bool:
         return (
                 (
-                        self.activity_state == TokenActivityState.FREE or
-                        self.activity_state == TokenActivityState.IN_CHECK
+                        self.readiness == TokenReadiness.READY or
+                        self.readiness == TokenReadiness.IN_CHECK
                 ) and
                 self.deployment_state == DeploymentState.DEPLOYED
         )

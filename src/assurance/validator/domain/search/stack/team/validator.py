@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ContextValidator, TeamValidationToolkit
+from assurance import ContextValidator, TeamValidatorToolkit
 from domain import Archetype, TeamSearchContext
 from err import (
     ExcessTeamContextFlagsException, GameColorNullException, TeamContextCheckerException,
@@ -40,13 +40,13 @@ class TeamContextValidator(ContextValidator[TeamSearchContext]):
         StackContextChecker
     """
     
-    def __init__(self, toolkit: Optional[TeamValidationToolkit] | None = None, ):
-        super().__init__(toolkit=toolkit or TeamValidationToolkit())
+    def __init__(self, toolkit: Optional[TeamValidatorToolkit] | None = None, ):
+        super().__init__(toolkit=toolkit or TeamValidatorToolkit())
     
     
     @property
-    def toolkit(self) -> TeamValidationToolkit:
-        return cast(TeamValidationToolkit, super().toolkit)
+    def toolkit(self) -> TeamValidatorToolkit:
+        return cast(TeamValidatorToolkit, super().toolkit)
     
     
     @LoggingLevelRouter.monitor
@@ -128,7 +128,7 @@ class TeamContextValidator(ContextValidator[TeamSearchContext]):
         
         # Certification for the search-by-id target.
         if context.id is not None:
-            validation_result = self.toolkit.identity_service.validate_id(
+            validation_result = self.toolkit.helper.identity_service.validate_id(
                 candidate=context.id
             )
             if validation_result.is_failure:

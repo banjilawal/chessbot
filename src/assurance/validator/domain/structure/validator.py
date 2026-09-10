@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
-from assurance import DomainObjectValidator, StructureValidationToolkit, ValidationToolkit
+from assurance import DomainObjectValidator, StructureValidationToolkit, ValidatorToolkit
 from artifcat import ValidationResult
 from domain import Blueprint, Structure
 from util import LoggingLevelRouter
@@ -43,7 +43,7 @@ class StructureValidator(DomainObjectValidator[T], ABC, Generic[T]):
     Super Class:
     """
     
-    def __init__(self, toolkit: ValidationToolkit[T]):
+    def __init__(self, toolkit: ValidatorToolkit[T]):
         """
         Args:
             toolkit: StructureValidationToolkit[T]

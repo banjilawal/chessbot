@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
 from artifcat import ValidationResult
-from assurance import ValidationToolkit
+from assurance import ValidatorToolkit
 from util import LoggingLevelRouter
 
 T = TypeVar("T",)
@@ -40,9 +40,9 @@ class Validator(ABC, Generic[T]):
 
     Super Class:
     """
-    _toolkit: ValidationToolkit[T]
+    _toolkit: ValidatorToolkit[T]
     
-    def __init__(self, toolkit: ValidationToolkit[T]):
+    def __init__(self, toolkit: ValidatorToolkit[T]):
         """
         Args:
             toolkit: ValidationToolkit[T]
@@ -51,7 +51,7 @@ class Validator(ABC, Generic[T]):
      
         
     @property
-    def toolkit(self) -> ValidationToolkit[T]:
+    def toolkit(self) -> ValidatorToolkit[T]:
         return self._toolkit
     
     @abstractmethod

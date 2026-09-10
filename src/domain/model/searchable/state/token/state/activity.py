@@ -10,7 +10,7 @@ version: 0.0.2
 from enum import Enum, auto
 
 
-class TokenActivityState(Enum):
+class TokenReadiness(Enum):
     """
     Role:
         - State
@@ -25,7 +25,7 @@ class TokenActivityState(Enum):
     Super Class:
         Enum
     """
-    FREE = auto(),
+    READY = auto(),
     IN_CHECK = auto(),
     CHECKMATED = auto(),
     NOT_INITIALIZED = auto(),

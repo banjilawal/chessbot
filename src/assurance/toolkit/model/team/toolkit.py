@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import TeamHelperTable, ModelValidationToolkit
+from assurance import TeamHelperTable, ModelValidatorToolkit
 from domain import Team, TeamManifest
 
 
 
-class TeamValidationToolkit(ModelValidationToolkit[Team]):
+class TeamValidatorToolkit(ModelValidatorToolkit[Team]):
     """
     Role:
         - Toolkit

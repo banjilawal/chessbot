@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidationToolkit, Validator
+from assurance import ModelValidatorToolkit, Validator
 from domain import Model, ValidationRequest
 from transit import EntityCarrier
 from util import LoggingLevelRouter
@@ -40,7 +40,7 @@ class ModelValidator(Validator[T], ABC, Generic[T]):
         Validator
     """
     
-    def __init__(self, toolkit: ModelValidationToolkit[T]):
+    def __init__(self, toolkit: ModelValidatorToolkit[T]):
         """
         Args:
             toolkit: ValidationToolkit[T]
@@ -48,8 +48,8 @@ class ModelValidator(Validator[T], ABC, Generic[T]):
         super().__init__(toolkit=toolkit)
     
     @property
-    def toolkit(self) -> ModelValidationToolkit[T]:
-        return cast(ModelValidationToolkit[T], super().toolkit)
+    def toolkit(self) -> ModelValidatorToolkit[T]:
+        return cast(ModelValidatorToolkit[T], super().toolkit)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

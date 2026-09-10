@@ -128,7 +128,7 @@ class VectorNodeContextValidator(
             
         # Certification for the search-by-id target.
         if context.id is not None:
-            validation = self.toolkit.identity_service.validate_id(
+            validation = self.toolkit.helper.identity_service.validate_id(
                 candidate=context.id
             )
             if validation.is_failure:
@@ -147,7 +147,7 @@ class VectorNodeContextValidator(
         
         # Certification for the search-by-designation target.
         if context.name is not None:
-            validation = self.toolkit.identity_service.validate_name(
+            validation = self.toolkit.helper.identity_service.validate_name(
                 candidate=context.name
             )
             if validation.is_failure:
@@ -204,7 +204,7 @@ class VectorNodeContextValidator(
         
         # Certification for the search-by-team target.
         if context.team is not None:
-            validation = self.toolkit.team_validator.execute(
+            validation = self.toolkit.helper.team_validator.execute(
                 candidate=context.current_position
             )
             if validation.is_failure:

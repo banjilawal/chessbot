@@ -14,4 +14,4 @@ from .model import *
 from .structure import *
 
 # Module
-from .toolkit import ValidationToolkit
+from .toolkit import ValidatorToolkit

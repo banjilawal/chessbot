@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import AttackHelperTable, ModelValidationToolkit
+from assurance import AttackHelperTable, ModelValidatorToolkit
 from domain import Attack, AttackManifest
 
 
 
-class AttackValidationToolkit(ModelValidationToolkit[Attack]):
+class AttackValidatorToolkit(ModelValidatorToolkit[Attack]):
     """
     Role:
         - Toolkit

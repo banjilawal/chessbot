@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import SquareHelperTable, ModelValidationToolkit
+from assurance import SquareHelperTable, ModelValidatorToolkit
 from domain import Square, SquareManifest
 
 
 
-class SquareValidationToolkit(ModelValidationToolkit[Square]):
+class SquareValidatorToolkit(ModelValidatorToolkit[Square]):
     """
     Role:
         - Toolkit

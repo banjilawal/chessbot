@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from assurance import TokenValidationToolkit
+from assurance import TokenValidatorToolkit
 from domain import Board, HomeSquare, Square, TokenBlueprint
 from err import BlueprintHomeSquareExtractorException
 from artifcat import ValidationResult
@@ -41,9 +41,9 @@ class BlueprintHomeSquareExtractor:
 
     Super Class:
     """
-    _bundle: TokenValidationToolkit
+    _bundle: TokenValidatorToolkit
     
-    def __init__(self, bundle: TokenValidationToolkit | None = TokenValidationToolkit()):
+    def __init__(self, bundle: TokenValidatorToolkit | None = TokenValidatorToolkit()):
         self._bundle = bundle
     
     @LoggingLevelRouter.monitor

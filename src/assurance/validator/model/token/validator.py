@@ -11,75 +11,100 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from assurance import ModelValidator, TokenValidationToolkit
-from domain.search.context import TokenHomeContext
-from err import FormationNullException, TokenValidatorException
-from fabrication import TokenBlueprint
-from domain.model import HomeSquare, Team, Token
 from artifcat import ValidationResult
-from domain.schema import Formation
-from transit.carrier import TokenCarrier
+from assurance import ModelValidator, TokenValidatorToolkit
+from domain import Formation, HomeSquare, Team, Token, TokenBlueprint, TokenValidationRequest
+from err import FormationNullException, TokenValidationRequestNullException, TokenValidatorException
+from transit import TokenCarrier
 from util import LoggingLevelRouter
 
 
 class TokenValidator(ModelValidator[Token]):
     """
     Role
-        - Integrity Maintenance
-        - Consistency Assurance
-
+        - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a TokenBlueprint instance is certified safe, reliable and consistent before use.
+        1.  Ensure a TokenCarrier and its contents instance is safe before use.
 
     Attributes:
-        toolkit: Optional[TokenValidationToolkit]
+        toolkit: TokenValidationToolkit
 
     Provides:
-        - execute(self, candidate: Any) -> ValidationResult:
+        - def execute(request: TokenValidationRequest) ->ValidationResult[TokenCarrier]:
 
     Super Class:
-        Validator
+        ModelValidator
     """
     
-    def __init__(self, toolkit: Optional[TokenValidationToolkit] | None = None):
+    def __init__(
+            self,
+            toolkit: Optional[TokenValidatorToolkit] | None = None,
+    ):
         """
         Args:
             toolkit: Optional[TokenValidationToolkit]
         """
-        super().__init__(toolkit=toolkit or TokenValidationToolkit())
-        
-    @property
-    def toolkit(self) -> TokenValidationToolkit:
-        return cast(TokenValidationToolkit, super().toolkit)
+        super().__init__(toolkit=toolkit or TokenValidatorToolkit())
     
+    @property
+    def toolkit(self) -> TokenValidatorToolkit:
+        return cast(
+            TokenValidatorToolkit,
+            super().toolkit,
+        )
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate, Any) -> ValidationResult:
+    def execute(
+            self,
+            request: TokenValidationRequest
+    ) -> ValidationResult[TokenCarrier]:
         """
-        Certify a candidate is a TokenBlueprint that is safe to use.
+        Certify a candidate is a TokenCarrier whose payload is either a Token
+        or a Blueprint that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    - The candidate is not a TokenCarrier.
+                    - The candidate is not a TokenCarrier or its null.
                     - The candidate is an empty TokenCarrier.
-                    - Either the board, team, formation, rank or id get flagged unsafe.
-            2.  For a model_carrier send a Token in the success result. Otherwise, send a TokeBlueprint.
+                    - Any Token attribute is flagged.
+            2.  Otherwise, Send a Carrier with the correct type of payload in the success
+                result.
         Args:
             candidate, Any
         Returns:
-            ValidationResult
+            ValidationResult[TokenCarrier]
         Raises:
             TokenValidatorException
-            TokenCarrierNullException
         """
         method = f"{self.__class__.__name__}.execute"
         
+        # Handle the case that, the request is null or the wrong type.
+        priming_validation = self.toolkit.helper.priming_validator.execute(
+            candidate=request,
+            target_model=TokenValidationRequest,
+            null_exception=TokenValidationRequestNullException(),
+        )
+        if priming_validation.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
+                    ex=priming_validation.exception,
+                )
+            )
+        # --- Cast the priming_validator payload for additional tests. ---#
+        safe_request = cast(TokenValidationRequest, priming_validation.payload)
+        
+        # Handle the case that the request payload is null or the wrong type.
         carrier_validation = self.toolkit.helper.priming_validator.execute(
-            candidate=candidate,
-            target_model=self.toolkit.metadata.types.model,
-            model_null_exception=self.toolkit.nulls.item,
+            candidate=safe_request.item,
+            target_model=self.toolkit.metadata.types.carrier,
+            null_exception=self.toolkit.metadata.nulls.carrier,
         )
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
@@ -92,13 +117,16 @@ class TokenValidator(ModelValidator[Token]):
                     ex=carrier_validation.exception,
                 )
             )
-        carrier = cast(self.toolkit.metadata.types.carrier, carrier_validation.payload)
-
-        # --- Cast the candidate into a TokenBlueprint for additional tests. ---#
+        # --- Cast the carrier_validation payload for additional tests. ---#
+        carrier = cast(
+            self.toolkit.metadata.types.carrier,
+            carrier_validation.payload,
+        )
+        # --- Extract the blueprint to verify the attributes. ---#
         blueprint = carrier.extract_blueprint()
         
         # Handle the case that, any id in the blueprint is flagged.
-        id_test = self.toolkit.identity_service.validate_blueprint_id(
+        id_test = self.toolkit.helper.identity_service.validate_blueprint_id(
             owner_blueprint=blueprint,
             owner_name=blueprint.domain_class_name,
         )
@@ -114,7 +142,7 @@ class TokenValidator(ModelValidator[Token]):
                 )
             )
         # Handle the case that, the team does not pass a validation check.
-        team_test = self.toolkit.team_validator.execute(
+        team_test = self.toolkit.helper.team_validator.execute(
             candidate=blueprint.team
         )
         if team_test.is_failure:
@@ -131,7 +159,7 @@ class TokenValidator(ModelValidator[Token]):
         # Handle the case that, the formation does not pass a validation check.
         formation_test = self.toolkit.helper.priming_validator.execute(
             candidate=blueprint.formation,
-            target_model=Type[Formation],
+            target_model=Formation,
             null_exception=FormationNullException(),
         )
         if formation_test.is_failure:
@@ -164,6 +192,7 @@ class TokenValidator(ModelValidator[Token]):
                 )
             )
         # Handle the case that, the rank is not safe to use.
+        if blueprint.is_
         rank_derivation = self.toolkit.rank_extractor.execute(
             blueprint=blueprint,
             toolkit=self.toolkit,
@@ -184,7 +213,7 @@ class TokenValidator(ModelValidator[Token]):
         team = cast(Team, team_test.payload)
         formation = cast(Formation, formation_test.payload)
         home_square = cast(HomeSquare, home_detection.payload)
-        rank = cast(type(formation.persona), rank_derivation.payload)
+        rank = formation.rank
         
         if carrier.is_carrying_model:
             return ValidationResult.success(

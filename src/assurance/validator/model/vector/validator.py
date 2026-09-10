@@ -12,10 +12,9 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidator, VectorValidationToolkit
+from assurance import ModelValidator, VectorValidatorToolkit
 from domain import Vector, VectorBlueprint, VectorValidationRequest
-from err import VectorValidatorException
-from err.null.domain.exchange.request import RequestNullException
+from err import VectorValidationRequestNullException, VectorValidatorException
 from transit import VectorCarrier
 from util import LoggingLevelRouter
 
@@ -26,13 +25,13 @@ class VectorValidator(ModelValidator[Vector]):
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a VectorBlueprint instance is safe before use.
+        1.  Ensure a VectorCarrier and its contents instance is safe before use.
 
     Attributes:
         toolkit: VectorValidationToolkit
 
     Provides:
-        - def execute(self, candidate: Any) ->ValidationResult[VectorCarrier]:
+        - def execute(request: VectorValidationRequest) ->ValidationResult[VectorCarrier]:
 
     Super Class:
         ModelValidator
@@ -40,18 +39,18 @@ class VectorValidator(ModelValidator[Vector]):
     
     def __init__(
             self,
-            toolkit: Optional[VectorValidationToolkit] | None = None,
+            toolkit: Optional[VectorValidatorToolkit] | None = None,
     ):
         """
         Args:
             toolkit: Optional[VectorValidationToolkit]
         """
-        super().__init__(toolkit=toolkit or VectorValidationToolkit())
+        super().__init__(toolkit=toolkit or VectorValidatorToolkit())
     
     @property
-    def toolkit(self) -> VectorValidationToolkit:
+    def toolkit(self) -> VectorValidatorToolkit:
         return cast(
-            VectorValidationToolkit,
+            VectorValidatorToolkit,
             super().toolkit,
         )
     
@@ -85,7 +84,7 @@ class VectorValidator(ModelValidator[Vector]):
         priming_validation = self.toolkit.helper.priming_validator.execute(
             candidate=request,
             target_model=VectorValidationRequest,
-            null_exception=RequestNullException(),
+            null_exception=VectorValidationRequestNullException(),
         )
         if priming_validation.is_failure:
             # Send the exception chain on failure.

@@ -105,7 +105,7 @@ class SquareValidator(ModelValidator[SquareBlueprint]):
         blueprint = carrier.extract_blueprint()
         
         # Handle the case that, any id in the blueprint is flagged.
-        id_test = self.toolkit.identity_service.validate_blueprint_id(
+        id_test = self.toolkit.helper.identity_service.validate_blueprint_id(
             owner_blueprint=blueprint,
             owner_name=blueprint.domain_class_name,
         )
@@ -120,7 +120,7 @@ class SquareValidator(ModelValidator[SquareBlueprint]):
                     ex=id_test.exception,
                 )
             )
-        name_test = self.toolkit.identity_service.validate_name.execute(
+        name_test = self.toolkit.helper.identity_service.validate_name.execute(
             candidate=blueprint.name,
         )
         if name_test.is_failure:

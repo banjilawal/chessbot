@@ -13,7 +13,7 @@ from abc import abstractmethod
 from typing import Optional
 
 from collection.database import CoordDatabase
-from domain.model import Coord, HomeSquare, KingToken, Rank, StateModel, Team, TokenActivityState, DeploymentState
+from domain.model import Coord, HomeSquare, KingToken, Rank, StateModel, Team, TokenReadiness, DeploymentState
 from domain.schema import Formation
 
 
@@ -50,12 +50,13 @@ class Token(StateModel):
     _id: int
     _team: Team
     _formation: Formation
-    _positions: CoordDatabase
     _home_square: HomeSquare
+    _readiness: TokenReadiness
+    _positions: CoordDatabase
     _current_position: Optional[Coord]
     _previous_address: Optional[Coord]
     _deployment_state: DeploymentState
-    _activity_state: TokenActivityState
+
     _checked_enemy_king: Optional[KingToken]
 
     def __init__(
@@ -64,6 +65,9 @@ class Token(StateModel):
             team: Team,
             formation: Formation,
             home_square: HomeSquare,
+            rank: Optional[Rank] | None = None,
+            deployment_state: Optional[DeploymentState] | None = None,
+            readiness: Optional[TokenReadiness] | None = None,
             positions: Optional[CoordDatabase] | None = None,
     ):
         """
@@ -72,17 +76,18 @@ class Token(StateModel):
             team: Team
             formation: Formation
             home_square: OpeningSquare
+            deployment_state: Optional[DeploymentState]
+            readiness: Optional[TokenActivityState]
         """
-        super().__init__()
-        self._id = id
+        super().__init__(id=id)
         self._team = team
-        self._rank = formation.rank
         self._formation = formation
         self._home_square = home_square
+        self._rank = rank or formation.rank
         self._current_position = self._positions.current_item
         self._previous_address = self._positions.previous_coord
-        self._deployment_state = DeploymentState.NOT_DEPLOYED
-        self._activity_state = TokenActivityState.NOT_INITIALIZED
+        self._deployment_state = deployment_state or DeploymentState.NOT_DEPLOYED
+        self._readiness = readiness or TokenReadiness.NOT_INITIALIZED
         self._checked_enemy_king = None
         self._positions = positions or CoordDatabase()
     
@@ -93,7 +98,6 @@ class Token(StateModel):
     @property
     def formation(self) -> Formation:
         return self._formation
-    
     
     @property
     def name(self) -> str:
@@ -120,12 +124,12 @@ class Token(StateModel):
         return self._checked_enemy_king
     
     @property
-    def activity_state(self) -> TokenActivityState:
-        return self._activity_state
+    def readiness(self) -> TokenReadiness:
+        return self._readiness
     
-    @activity_state.setter
-    def activity_state(self, readiness_state: TokenActivityState):
-        self._activity_state = readiness_state
+    @readiness.setter
+    def readiness(self, other: TokenReadiness):
+        self._readiness = other
         
     @checked_enemy_king.setter
     def checked_enemy_king(self, other: KingToken):

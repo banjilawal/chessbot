@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
-from assurance import ContextValidator, ValidationToolkit
+from assurance import ContextValidator, ValidatorToolkit
 from domain import ModelContext
 from artifcat import ValidationResult
 from util import LoggingLevelRouter
@@ -39,7 +39,7 @@ class ContextValidator(ContextValidator[T], ABC, Generic[T]):
         ContextIntegrityChecker
     """
     
-    def __init__(self, toolkit: ValidationToolkit[T]):
+    def __init__(self, toolkit: ValidatorToolkit[T]):
         """
         Args:
             toolkit: ValidationToolkit[T]

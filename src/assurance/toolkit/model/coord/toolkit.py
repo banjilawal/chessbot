@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import CoordHelperTable, ModelValidationToolkit
+from assurance import CoordHelperTable, ModelValidatorToolkit
 from domain import Coord, CoordManifest
 
 
 
-class CoordValidationToolkit(ModelValidationToolkit[Coord]):
+class CoordValidatorToolkit(ModelValidatorToolkit[Coord]):
     """
     Role:
         - Toolkit

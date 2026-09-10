@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import SquareValidationToolkit, ContextValidator
+from assurance import SquareValidatorToolkit, ContextValidator
 from domain import SquareSearchContext
 from err import (
     ExcessSquareContextFlagsException, SquareContextCheckerException, SquareContextValidationRouteException,
@@ -40,13 +40,13 @@ class SquareContextValidator(ContextValidator[SquareSearchContext]):
         StackContextChecker
     """
     
-    def __init__(self, toolkit: Optional[SquareValidationToolkit] | None = None, ):
-        super().__init__(toolkit=toolkit or SquareValidationToolkit())
+    def __init__(self, toolkit: Optional[SquareValidatorToolkit] | None = None, ):
+        super().__init__(toolkit=toolkit or SquareValidatorToolkit())
     
     
     @property
-    def toolkit(self) -> SquareValidationToolkit:
-        return cast(SquareValidationToolkit, super().toolkit)
+    def toolkit(self) -> SquareValidatorToolkit:
+        return cast(SquareValidatorToolkit, super().toolkit)
     
     
     @LoggingLevelRouter.monitor
@@ -128,7 +128,7 @@ class SquareContextValidator(ContextValidator[SquareSearchContext]):
         
         # Certification for the search-by-id target.
         if context.id is not None:
-            validation_result = self.toolkit.identity_service.validate_id(
+            validation_result = self.toolkit.helper.identity_service.validate_id(
                 candidate=context.id
             )
             if validation_result.is_failure:
@@ -147,7 +147,7 @@ class SquareContextValidator(ContextValidator[SquareSearchContext]):
         
         # Certification for the search-by-schema target.
         if context.name is not None:
-            validation_result = self.toolkit.identity_service.validate_name(
+            validation_result = self.toolkit.helper.identity_service.validate_name(
                 candidate=context.name
             )
             if validation_result.is_failure:

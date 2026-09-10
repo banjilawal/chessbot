@@ -13,7 +13,7 @@ from abc import ABC
 from dataclasses import dataclass
 from typing import Any, Dict, Generic, TypeVar
 
-from assurance import ValidationToolkit
+from assurance import ValidatorToolkit
 from domain import  NullExceptionRoster, DomainObjectTypeUnions
 from domain import Structure
 
@@ -22,7 +22,7 @@ T = TypeVar("T", bound="Structure")
 
 
 @dataclass
-class StructureValidationToolkit(ValidationToolkit[T], ABC, Generic[T]):
+class StructureValidatorToolkit(ValidatorToolkit[T], ABC, Generic[T]):
     """
     Role:
         - Toolkit
