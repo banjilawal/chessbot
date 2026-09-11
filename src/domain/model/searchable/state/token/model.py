@@ -13,7 +13,9 @@ from __future__ import annotations
 from typing import Optional
 
 from collection import CoordDatabase
-from domain import Coord, Formation, HomeSquare, Rank, StateModel, Team, TokenDeployment, TokenReadiness
+from domain import (
+    Coord, Formation, HomeSquare, Rank, StateModel, Team, TokenDeployment, TokenReadiness
+)
 
 
 class Token(StateModel):

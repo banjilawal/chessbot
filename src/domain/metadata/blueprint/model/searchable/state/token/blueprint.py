@@ -14,7 +14,7 @@ from typing import Optional, Type, cast
 
 from collection import CoordDatabase
 from domain import (
-    CombatantToken, TokenDeployment, Formation, HomeSquare, KingToken, PawnToken,
+    CombatantToken, Coord, TokenDeployment, Formation, HomeSquare, KingToken, PawnToken,
     Rank, StateModelBlueprint, Team, Token, TokenReadiness
 )
 from err import (
@@ -50,10 +50,12 @@ class TokenBlueprint(StateModelBlueprint[Token]):
     _rank: Rank
     _formation: Formation
     _positions: CoordDatabase
-    _readiness: TokenReadiness
+    _deployment: TokenDeployment
     _captor: Optional[Token]
+    _position: Optional[Coord]
+    _previous_position: Optional[Coord]
     _home_square: Optional[HomeSquare]
-    _deployment_state: TokenDeployment
+
 
 
 
@@ -64,10 +66,12 @@ class TokenBlueprint(StateModelBlueprint[Token]):
             formation: Formation,
             rank: Optional[Rank] | None = None,
             captor: Optional[Token] | None = None,
+            position: Optional[Coord] | None = None,
+            previous_position: Optional[Coord] | None = None,
             home_square: Optional[HomeSquare] | None = None,
             positions: Optional[CoordDatabase] | None = None,
             readiness: Optional[TokenReadiness] | None = None,
-            deployment_state: Optional[TokenDeployment] | None = None,
+            deployment: Optional[TokenDeployment] | None = None,
             domain_class: Optional[Type[Token]] | None = None,
             domain_null_exception: Optional[TokenNullException] | None = None,
             id: Optional[int] | None = None,
@@ -92,8 +96,10 @@ class TokenBlueprint(StateModelBlueprint[Token]):
         self._formation = formation
         self._home_square = home_square
         self._rank = rank or formation.rank
+        self._position = position
+        self._previous_position = previous_position
         self._readiness = readiness or TokenReadiness.NOT_INITIALIZED
-        self._deployment_state = deployment_state or TokenDeployment.NOT_DEPLOYED
+        self._deployment = deployment or TokenDeployment.NOT_DEPLOYED
         self._positions = positions or CoordDatabase()
     
     @property
@@ -118,7 +124,7 @@ class TokenBlueprint(StateModelBlueprint[Token]):
     
     @property
     def deployment(self) -> TokenDeployment:
-        return self._deployment_state
+        return self._deployment
     
     @property
     def home_square(self) -> Optional[HomeSquare]:
@@ -127,6 +133,14 @@ class TokenBlueprint(StateModelBlueprint[Token]):
     @property
     def captor(self) -> Optional[Token]:
         return self._captor
+    
+    @property
+    def position(self) -> Optional[Coord]:
+        return self._position
+    
+    @property
+    def previous_position(self) -> Optional[Coord]:
+        return self._previous_position
     
     @property
     def domain_class(self) -> Type[Token]:

@@ -108,7 +108,7 @@ class TokenCarrier(ModelCarrier[Token]):
                 formation=model.formation,
                 positions=model.positions,
                 home_square=model.home_square,
-                deployment_state=model.deployment,
+                deployment=model.deployment,
             )
         if isinstance(model, KingToken):
             return TokenBlueprint(
@@ -118,7 +118,7 @@ class TokenCarrier(ModelCarrier[Token]):
                 formation=model.formation,
                 positions=model.positions,
                 home_square=model.home_square,
-                deployment_state=model.deployment,
+                deployment=model.deployment,
             )
         return TokenBlueprint(
             id=model.id,
@@ -128,7 +128,7 @@ class TokenCarrier(ModelCarrier[Token]):
             formation=model.formation,
             positions=model.positions,
             home_square=model.home_square,
-            deployment_state=model.deployment,
+            deployment=model.deployment,
         )
 
 
