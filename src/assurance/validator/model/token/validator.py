@@ -14,9 +14,8 @@ from typing import Optional, cast
 from artifcat import ValidationResult
 from assurance import ModelValidator, TokenValidatorToolkit
 from domain import (
-    Blueprint, CombatantBlueprint, Formation, HomeSquare, KingTokenBlueprint, PawnTokenBlueprint, Team, Token,
-    TokenBlueprint,
-    TokenValidationRequest
+    CombatantBlueprint, Formation, HomeSquare, KingTokenBlueprint, PawnTokenBlueprint, 
+    Team, Token, TokenBlueprint, TokenValidationRequest
 )
 from err import FormationNullException, TokenValidationRequestNullException, TokenValidatorException
 from transit import TokenCarrier
@@ -127,10 +126,10 @@ class TokenValidator(ModelValidator[Token]):
             carrier_validation.payload,
         )
         # --- Extract the blueprint to verify the attributes. ---#
-        abstraction = carrier.extract_blueprint()
+        blueprint = carrier.extract_blueprint()
         
         # Handle the case that there is no blueprint.
-        if abstraction is None:
+        if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidatorException(
@@ -215,12 +214,12 @@ class TokenValidator(ModelValidator[Token]):
             )
         
 
-        if abstraction.is_king_token_blueprint:
-            blueprint = cast(KingTokenBlueprint, abstraction)
-        elif abstraction.is_pawn_token_blueprint:
-            blueprint = cast(PawnTokenBlueprint, abstraction)
+        if blueprint.is_king_token_blueprint:
+            blueprint = cast(KingTokenBlueprint, blueprint)
+        elif blueprint.is_pawn_token_blueprint:
+            blueprint = cast(PawnTokenBlueprint, blueprint)
         else:
-            blueprint = cast(CombatantBlueprint, abstraction)
+            blueprint = cast(CombatantBlueprint, blueprint)
         
         # Handle the case that the rank is not safe to use.
         rank = None

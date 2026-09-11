@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
+from artifcat import MethodResultType
 from err import ComputationRequestEmptyException
 from artifcat import MethodResultType
 
@@ -79,5 +80,5 @@ class CoordComputationRequestEmptyException(ComputationRequestEmptyException):
             err_code=err_code,
             cls_name=cls_name,
             cls_mthd=cls_mthd,
-           mthd_rslt_type=mthd_rslt_type,
+            mthd_rslt_type=mthd_rslt_type,
         )
