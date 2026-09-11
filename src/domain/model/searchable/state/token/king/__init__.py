@@ -14,3 +14,4 @@ version: 0.0.2
 
 # Modules
 from .model import KingToken
+from .readiness import KingReadiness

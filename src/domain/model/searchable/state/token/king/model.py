@@ -11,7 +11,10 @@ from __future__ import annotations
 
 from typing import Optional
 
-from domain import CheckWarning, CheckmateAttack, TokenDeployment, Formation, HomeSquare, Team, Token, TokenReadiness
+from domain import (
+    CheckWarning, CheckmateAttack, TokenDeployment, Formation, HomeSquare, Team,
+    Token, KingReadiness, TokenReadiness
+)
 
 
 
@@ -47,8 +50,10 @@ class KingToken(Token):
     Super Class:
         Token
     """
-    _check_warning: Optional[CheckWarning]
+    _readiness: KingReadiness
     _checkmate: Optional[CheckmateAttack]
+    _check_warning: Optional[CheckWarning]
+
     
 
     def __init__(
@@ -73,6 +78,15 @@ class KingToken(Token):
         )
         self._checkmate = None
         self._check_warning = None
+        self._readiness = KingReadiness.OFF_BOARD
+        
+    @property
+    def readiness(self) -> KingReadiness:
+        return self._readiness
+    
+    @readiness.setter
+    def readiness(self, other: KingReadiness):
+        self._readiness = other
         
     @property
     def checkmate(self) -> Optional[CheckmateAttack]:
@@ -92,38 +106,31 @@ class KingToken(Token):
         
     @property
     def is_ready(self) -> bool:
-        return super().is_ready and
+        return (
+                super().is_ready and
+                self._checkmate is not None and
+                self._readiness != KingReadiness.CHECKMATED
+        )
      
     @property
     def is_in_check(self) -> bool:
         return (
-                self.
-                self.readiness == TokenReadiness.IN_CHECK
+                super().is_ready and
+                self.check_warning is not None and
+                self._readiness == KingReadiness.IN_CHECK
         )
     
     @property
     def is_checkmated(self) -> bool:
         return (
-                self.deployment == TokenDeployment.DEPLOYED_TO_HOME_SQUARE and
-                self.readiness == TokenReadiness.CHECKMATED
-        )
-    
-    @property
-    def is_ready(self) -> bool:
-        return (
-                (
-                        self.readiness == TokenReadiness.READY or
-                        self.readiness == TokenReadiness.IN_CHECK
-                ) and
-                self.deployment == TokenDeployment.DEPLOYED_TO_HOME_SQUARE
+                super().is_ready and
+                self.checkmate is not None and
+                self._readiness == KingReadiness.CHECKMATED
         )
     
     @property
     def is_not_ready(self) -> bool:
-        return (
-                self.is_checkmated or
-                self.deployment == TokenDeployment.NOT_DEPLOYED
-        )
+        return super().is_not_ready or self.is_checkmated
     
     def __eq__(self, other):
         if super().__eq__(other):

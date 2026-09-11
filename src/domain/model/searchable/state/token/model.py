@@ -14,7 +14,7 @@ from typing import Optional
 
 from collection import CoordDatabase
 from domain import (
-    Coord, Formation, HomeSquare, Rank, StateModel, Team, TokenDeployment, TokenReadiness
+    Coord, Formation, HomeSquare, Rank, StateModel, Team, TokenDeployment
 )
 
 
@@ -30,7 +30,6 @@ class Token(StateModel):
         id: int
         team: Team
         formation: Formation
-        readiness: TokenReadiness
         deployment: TokenDeployment
         positions: CoordDatabase
         home_square: OpeningSquare
@@ -56,7 +55,6 @@ class Token(StateModel):
     _formation: Formation
     _home_square: HomeSquare
     _deployment: TokenDeployment
-    _readiness: TokenReadiness
     _positions: CoordDatabase
     _position: Optional[Coord]
     _previous_position: Optional[Coord]
@@ -81,7 +79,6 @@ class Token(StateModel):
         self._formation = formation
         self._home_square = home_square
         self._deployment = TokenDeployment.NOT_DEPLOYED
-        self._readiness = TokenReadiness.NOT_INITIALIZED
         
         self._position = None
         self._previous_position = None
@@ -110,14 +107,6 @@ class Token(StateModel):
     @property
     def home_square(self) -> HomeSquare:
         return self._home_square
-    
-    @property
-    def readiness(self) -> TokenReadiness:
-        return self._readiness
-    
-    @readiness.setter
-    def readiness(self, other: TokenReadiness):
-        self._readiness = other
     
     @property
     def deployment(self) -> TokenDeployment:
@@ -149,21 +138,10 @@ class Token(StateModel):
     @previous_position.setter
     def previous_position(self, other: Coord):
         self._previous_position = other
-    
-    @property
-    def is_deployed(self) -> bool:
-        return (
-                self._position is not None and
-                self._deployment == TokenDeployment.DEPLOYED_TO_HOME_SQUARE
-        )
-    
-    @property
-    def is_not_deployed(self) -> bool:
-        return not self.is_deployed
-    
+        
     @property
     def is_ready(self) -> bool:
-       return self.is_deployed and self._readiness == TokenReadiness.READY
+       return self._deployment == TokenDeployment.DEPLOYED_TO_HOME_SQUARE
     
     @property
     def is_not_ready(self) -> bool:
@@ -174,15 +152,6 @@ class Token(StateModel):
     
     def is_enemy(self, token: Token) -> bool:
         return not self.is_friend(token)
-    
-    def has_checked_enemy_king(self) -> bool:
-        return (
-                self._checked_enemy_king is not None and
-                self.is_enemy(self._checked_enemy_king)
-        )
-    
-    def is_no_enemy_checked(self) -> bool:
-        return not self.has_checked_enemy_king
     
     def __eq__(self, other: object) -> bool:
         if other is self: return True
