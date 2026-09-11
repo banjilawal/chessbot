@@ -83,7 +83,7 @@ class TokenStackDeployment:
                 )
         # --- Clean up and update the schema' state. ---#
         token_stack.items.clear()
-        token_stack.stack_state = TokenStackState.DEPLOYED
+        token_stack.stack_state = TokenStackState.DEPLOYED_TO_HOME_SQUARE
         
         # --- Forward the work product to the caller. ---#
         return UpdateResult.update_success(

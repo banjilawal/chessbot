@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from domain import DeploymentState, Formation, HomeSquare, Team, Token, TokenReadiness
+from domain import TokenDeployment, Formation, HomeSquare, Team, Token, TokenReadiness
 
 
 class KingToken(Token):
@@ -81,32 +81,32 @@ class KingToken(Token):
     @property
     def is_in_check(self) -> bool:
         return (
-                self.deployment_state == DeploymentState.DEPLOYED and
+                self.deployment == TokenDeployment.DEPLOYED_TO_HOME_SQUARE and
                 self.readiness == TokenReadiness.IN_CHECK
         )
     
     @property
     def is_checkmated(self) -> bool:
         return (
-                self.deployment_state == DeploymentState.DEPLOYED and
+                self.deployment == TokenDeployment.DEPLOYED_TO_HOME_SQUARE and
                 self.readiness == TokenReadiness.CHECKMATED
         )
     
     @property
-    def is_active(self) -> bool:
+    def is_ready(self) -> bool:
         return (
                 (
                         self.readiness == TokenReadiness.READY or
                         self.readiness == TokenReadiness.IN_CHECK
                 ) and
-                self.deployment_state == DeploymentState.DEPLOYED
+                self.deployment == TokenDeployment.DEPLOYED_TO_HOME_SQUARE
         )
     
     @property
-    def is_disabled(self) -> bool:
+    def is_not_ready(self) -> bool:
         return (
                 self.is_checkmated or
-                self.deployment_state == DeploymentState.NOT_DEPLOYED
+                self.deployment == TokenDeployment.NOT_DEPLOYED
         )
     
     def __eq__(self, other):

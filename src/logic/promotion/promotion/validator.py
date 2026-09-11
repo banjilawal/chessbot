@@ -65,7 +65,7 @@ class OldPromotionEventValidator(Validator[PromotionEvent]):
                 )
                 
             
-            if event.actor.current_position.row != event.actor.team_name.schema.enemy_schema.rank_row:
+            if event.actor.position.row != event.actor.team_name.schema.enemy_schema.rank_row:
                 return ValidationResult.failure(
                     ActorNotOnPromotionRowException(f"{method}: {ActorNotOnPromotionRowException.MSG}")
                 )

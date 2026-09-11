@@ -13,7 +13,7 @@ from typing import Optional
 
 from collection import CoordDatabase
 from domain import (
-    CombatantToken, DeploymentState, Formation, HomeSquare, Pawn, PromotionState, Rank,
+    CombatantToken, TokenDeployment, Formation, HomeSquare, Pawn, PromotionState, Rank,
     Team, Token, TokenReadiness
 )
 
@@ -69,7 +69,7 @@ class PawnToken(CombatantToken):
             home_square: HomeSquare,
             rank: Optional[Rank] | None = None,
             captor: Optional[Token] | None = None,
-            deployment_state: Optional[DeploymentState] | None = None,
+            deployment_state: Optional[TokenDeployment] | None = None,
             readiness: Optional[TokenReadiness] | None = None,
             positions: Optional[CoordDatabase] | None = None,
     ):
@@ -110,9 +110,9 @@ class PawnToken(CombatantToken):
         
     @property
     def is_promotable(self) -> bool:
-        current_position = self.current_position
+        current_position = self.position
         
-        if not self.is_active:
+        if not self.is_ready:
             return False
         if self.is_promoted:
             return False

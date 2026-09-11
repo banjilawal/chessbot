@@ -45,7 +45,7 @@ class VisitationEventBuilder(Builder[VisitationEvent]):
                     ChessException(f"{method}: Domain Owner cannot be its own domain visitor")
                 )
             
-            if domain_visitor.current_position not in domain.tree:
+            if domain_visitor.position not in domain.tree:
                 return BuildResult.failure(
                     ChessException(f"{method}: Visitor's current position is not in the domain tree.")
                 )

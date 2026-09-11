@@ -82,7 +82,7 @@ class KingTravelTransaction(TravelTransaction[KingOccupationEvent]):
             
             # If the push destination point is not the traveler's updated position rollback the rollback,
             # then return the rollback_exception.
-            if self.event.actor.current_position != self.event.destination_square.point:
+            if self.event.actor.position != self.event.destination_square.point:
                 self.event.actor.positions.undo_push()
                 self.event.actor_square.occupant = self.event.actor
                 self.event.destination_square.occupant = None

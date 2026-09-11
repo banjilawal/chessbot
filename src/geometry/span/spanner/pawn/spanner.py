@@ -67,7 +67,7 @@ class PawnSpanner(Spanner):
         method = f"{cls.__name__}.compute"
         
         # Handle the case that the origin is not certified as a safe Coord.
-        validation_result = coord_service.execute.execute(candidate=pawn_token.current_position)
+        validation_result = coord_service.execute.execute(candidate=pawn_token.position)
         if validation_result.is_failure:
             return ComputationResult.failure(
                 PawnSpannerException(
@@ -81,14 +81,14 @@ class PawnSpanner(Spanner):
         # --- Produce the spanning sets for a token that's new to the board. ---#
         if pawn_token.is_deployed:
             return cls._process_vector_dictionary(
-                origin=pawn_token.current_position,
+                origin=pawn_token.position,
                 vector_hash=cls.PAWN_VECTOR_SETS.developed_vector_sets,
                 coord_service=coord_service,
                 vector_service=vector_service,
             )
         # --- Otherwise produce the spanning sets for a pawn_token that's made its first move ---#
         return cls._process_vector_dictionary(
-            origin=pawn_token.current_position,
+            origin=pawn_token.position,
             vector_hash=cls.PAWN_VECTOR_SETS.opening_vector_sets,
             coord_service=coord_service,
             vector_service=vector_service,

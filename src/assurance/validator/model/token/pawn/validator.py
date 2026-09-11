@@ -1,7 +1,7 @@
-# src/assurance/validator/model/token/combatant/validator.py
+# src/assurance/validator/model/token/pawn/validator.py
 
 """
-Module: assurance.validator.model.token.combatant.validator
+Module: assurance.validator.model.token.pawn.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.2
@@ -12,20 +12,20 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult
-from assurance import TokenValidatorToolkit
+from assurance import ModelValidator, TokenValidatorToolkit
 from domain import (
-    CombatantBlueprint, CombatantToken, Formation, HomeSquare, KingTokenBlueprint,
+    PawnBlueprint, Formation, HomeSquare, KingTokenBlueprint, PawnTokenBlueprint, 
     Team, Token, TokenBlueprint, TokenValidationRequest
 )
 from err import (
     FormationNullException, TokenCarrierEmptyException, TokenValidationRequestNullException,
     TokenValidatorException
 )
-from transit import CombatantCarrier, TokenCarrier
+from transit import TokenCarrier
 from util import LoggingLevelRouter
 
 
-class CombatantCarrierValidator:
+class PawnTokenValidator:
     """
     Role
         - Integrity, Consistency Maintenance
@@ -61,7 +61,7 @@ class CombatantCarrierValidator:
         )
     
     @LoggingLevelRouter.monitor
-    def execute(self, id: int, carrier: CombatantCarrier, home_square: HomeSquare) -> ValidationResult[CombatantCarrier]:
+    def execute(self, blueprint: PawnTokenBlueprint) -> ValidationResult[PawnTokenCarrier]:
         """
         Certify a candidate is a TokenCarrier whose payload is either a Token
         or a Blueprint that is safe to use.
@@ -83,10 +83,6 @@ class CombatantCarrierValidator:
         """
         method = f"{self.__class__.__name__}.execute"
         
-        captor = blueprint.captor
-        
-        if captor is not None:
-            prim
         
         # Handle the case that the request is null or the wrong type.
         priming_validation = self.toolkit.helper.priming_validator.execute(
@@ -221,14 +217,14 @@ class CombatantCarrierValidator:
 
         if blueprint.is_king_token_blueprint:
             blueprint = cast(KingTokenBlueprint, blueprint)
-        elif blueprint.is_combatant_token_blueprint:
-            blueprint = cast(CombatantBlueprint, blueprint)
+        elif blueprint.is_pawn_token_blueprint:
+            blueprint = cast(PawnTokenBlueprint, blueprint)
         else:
-            blueprint = cast(CombatantBlueprint, blueprint)
+            blueprint = cast(PawnBlueprint, blueprint)
         
         # Handle the case that the rank is not safe to use.
         rank = None
-        if blueprint.is_combatant_token_blueprint:
+        if blueprint.is_pawn_token_blueprint:
             if blueprint.rank != blueprint.formation.rank:
                 rank = blueprint.formation.rank
                 rank_validation = self.toolkit.helper.rank_validator.execute(rank)
@@ -252,16 +248,6 @@ class CombatantCarrierValidator:
         rank = formation.rank
         
         if carrier.is_carrying_model:
-            model = CombatantToken(
-                id=id,
-                team=blueprint.team,
-                home_square=home_square,
-                formation=blueprint.formation,
-            )
-            model.captor = blueprint.captor
-            model.readiness = blueprint.readiness
-            model.deployment = blueprint.deployment
-            
             return ValidationResult.success(
                 TokenCarrier(
                     model=Token(

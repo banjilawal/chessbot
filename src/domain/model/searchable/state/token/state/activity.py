@@ -1,7 +1,7 @@
-# src/domain/model/searchable/state/token/state/activity.py
+# src/domain/model/searchable/state/token/state/readiness.py
 
 """
-Module: domain.model.searchable.state.token.state.activity
+Module: domain.model.searchable.state.token.state.readiness
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -16,7 +16,7 @@ class TokenReadiness(Enum):
         - State
     
     Responsibilities:
-        1.  Describes Token activity states
+        1.  Indicating a Token's state during the game.
     
     Attributes:
     

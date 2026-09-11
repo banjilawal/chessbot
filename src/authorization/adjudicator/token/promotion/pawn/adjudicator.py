@@ -152,7 +152,7 @@ class PromotionPawnRequestAdjudicator(TokenRequestAdjudicator[PawnPromoter]):
                 )
             )
         # Handle the case that the is not on its promotion row..
-        if pawn.current_position.row != pawn.team.enemy_rank_row:
+        if pawn.position.row != pawn.team.enemy_rank_row:
             # Send the exception chain in the result.
             return ValidationResult.failure(
                 PromotionPawnAdjudicatorException(

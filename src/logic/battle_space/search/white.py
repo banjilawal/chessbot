@@ -128,7 +128,7 @@ class WhiteTeamProjectionFinder(Finder[ProjectionService, Projection]):
     def _coord_search(cls, board: Board, coord: Coord) -> SearchResult[List[Piece]]:
         method = "BoardPieceFinder._coord_search"
         try:
-            matches = [piece for piece in board.pieces if piece.current_position == coord]
+            matches = [piece for piece in board.pieces if piece.position == coord]
             if len(matches) == 0:
                 return SearchResult()
             elif len(matches) == 1:
@@ -145,7 +145,7 @@ class WhiteTeamProjectionFinder(Finder[ProjectionService, Projection]):
         method = "BoardPieceFinder._resolve_matching_ids"
         target = matches.pop()
         misses = [piece for piece in matches if piece.id == target.id and (
-                piece.name.upper() != target.name.upper() or piece.current_position != target.current_position
+                piece.name.upper() != target.name.upper() or piece.position != target.position
             )
         ]
         if len(misses) == 0:
@@ -154,7 +154,7 @@ class WhiteTeamProjectionFinder(Finder[ProjectionService, Projection]):
                 if (
                     piece.id == target.id and
                     piece.name.upper() == target.name.upper() and
-                    piece.current_position == target.current_position
+                    piece.position == target.position
                 ):
                     board.pieces.remove(piece)
                     matches.remove(piece)
@@ -170,7 +170,7 @@ class WhiteTeamProjectionFinder(Finder[ProjectionService, Projection]):
         method = "BoardPieceFinder._resolve_matching_names"
         target = matches.pop()
         misses = [piece for piece in matches if piece.name.upper() == target.name.upper() and (
-                piece.id != target.id or piece.current_position != target.current_position
+                piece.id != target.id or piece.position != target.position
             )
                   ]
         if len(misses) == 0:
@@ -179,7 +179,7 @@ class WhiteTeamProjectionFinder(Finder[ProjectionService, Projection]):
                 if (
                     piece.id == target.id and
                     piece.name.upper() == target.name.upper() and
-                    piece.current_position == target.current_position
+                    piece.position == target.position
                 ):
                     board.pieces.remove(piece)
                     matches.remove(piece)
@@ -194,17 +194,17 @@ class WhiteTeamProjectionFinder(Finder[ProjectionService, Projection]):
     def _resolve_matching_coords(cls, matches: List[Piece], board: Board) -> SearchResult[List[Piece]]:
         method = "BoardPiceSearch._resolve_matching_coords"
         target = matches.pop()
-        misses = [piece for piece in matches if piece.current_position == target.current_position and (
+        misses = [piece for piece in matches if piece.position == target.position and (
                 piece.name.upper() != target.name.upper() or piece.id != target.id
             )
-        ]
+                  ]
         if len(misses) == 0:
             runs = len(matches) - 1
             for piece in board.pieces:
                 if (
                     piece.id == target.id and
                     piece.name.upper() == target.name.upper() and
-                    piece.current_position == target.current_position
+                    piece.position == target.position
                 ):
                     board.pieces.remove(piece)
                     matches.remove(piece)

@@ -212,9 +212,9 @@ class SchemaContextValidator(Validator[SchemaContext]):
             return ValidationResult.success(context)
         
         # Certification for the search-by-coord target.
-        if context.current_position is not None:
+        if context.position is not None:
             validation_result = workers.coord_service.execute.execute(
-                rank=context.current_position
+                rank=context.position
             )
             if validation_result.is_failure:
                 # Send the exception chain on failure.

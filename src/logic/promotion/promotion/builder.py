@@ -55,7 +55,7 @@ class OldPromotionEventBuilder(Builder[PromotionEvent]):
             actor = cast(PawnPiece, actor_candidate)
             board = cast(Board, environment_candidate)
             
-            if actor.current_position.row != actor.team_name.schema.enemy_schema.rank_row:
+            if actor.position.row != actor.team_name.schema.enemy_schema.rank_row:
                 return ValidationResult.failure(
                     ActorNotOnPromotionRowException(f"{method}: {ActorNotOnPromotionRowException.MSG}")
                 )

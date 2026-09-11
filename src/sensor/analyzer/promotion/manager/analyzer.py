@@ -146,7 +146,7 @@ class PawnPromotionApprovalManager(Analyzer):
                 )
             )
         # Handle the case that the is not on its promotion row..
-        if pawn.current_position.row != pawn.team.enemy_rank_row:
+        if pawn.position.row != pawn.team.enemy_rank_row:
             return AnalysisResult.completed(
                 PromotionApprovalManagerReport.deny_promotion(
                     PawnPromotionRowException(

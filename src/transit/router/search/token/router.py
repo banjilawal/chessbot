@@ -111,7 +111,7 @@ class TokenSearchRouter(SearchRouter[Token]):
         if query.context.ransom is not None:
             return cls._find_by_current_position(
                 items=query.token_stack.items,
-                ransom=query.context.current_position
+                ransom=query.context.position
             )
         # Handle the case that there is no search path for the context context..
         return SearchResult.failure(
@@ -324,7 +324,7 @@ class TokenSearchRouter(SearchRouter[Token]):
         Raises
         """
         matches = [
-            token for token in stack if token.current_position == current_position
+            token for token in stack if token.position == current_position
         ]
         # Handle the nothing found case.
         if len(matches) == 0:

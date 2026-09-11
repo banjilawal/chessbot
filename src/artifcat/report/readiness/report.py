@@ -67,7 +67,7 @@ class TokenReadinessReport(Report):
     def token_is_disabled(self) -> bool:
         return (
                 self.state == ReadinessState.DISABLED and
-                self.token.is_disabled
+                self.token.is_not_ready
         )
     
     @property

@@ -310,7 +310,7 @@ class TokenDeploymentPrimer(Operator[Token]):
                 )
             )
         # Handle the case that the token's current position is not the square's
-        if home_square.coord != token.current_position:
+        if home_square.coord != token.position:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=pre_update_token,
@@ -327,8 +327,8 @@ class TokenDeploymentPrimer(Operator[Token]):
                 )
             )
         # --- Ensure the token.board_state has been updated. ---#
-        if token.deployment_state == TokenBoardState.NOT_DEPLOYED:
-            token.deployment_state = TokenBoardState.DEPLOYED
+        if token.deployment == TokenBoardState.NOT_DEPLOYED:
+            token.deployment_state = TokenBoardState.DEPLOYED_TO_HOME_SQUARE
             
         # --- Send the work product ---#
         return UpdateResult.update_success(original=pre_update_token, updated=token,)

@@ -87,7 +87,7 @@ class TokenPushCoordProcess:
                 )
             )
         # Handle the case that token is not active
-        if not token.is_active:
+        if not token.is_ready:
             # Send the exception chain on failure.
             return InsertionResult.failure(
                 TokenPushCoordException(
@@ -121,7 +121,7 @@ class TokenPushCoordProcess:
                 )
             )
         # Handle the case that the token is already at the destination coord.
-        if token.current_position == coord:
+        if token.position == coord:
             # Send the exception chain on failure.
             return InsertionResult.failure(
                 TokenPushCoordException(
@@ -133,7 +133,7 @@ class TokenPushCoordProcess:
                     mthd_rslt_type=TokenPushCoordException.MTHD_RSLT,
                     ex=DuplicateCoordPushException(
                         var=token.name,
-                        val=token.current_position,
+                        val=token.position,
                         msg=DuplicateCoordPushException.MSG,
                         err_code=DuplicateCoordPushException.ERR_CODE,
                     )
@@ -142,7 +142,7 @@ class TokenPushCoordProcess:
         # --- Integrity tests are passed. Start the insertion tasks. ---#
         
         # Copy the top of the schema.
-        pre_insertion_top_coord = token.current_position
+        pre_insertion_top_coord = token.position
         # Run the insertion request.
         coord_insertion_result = token.positions.push(coord)
         

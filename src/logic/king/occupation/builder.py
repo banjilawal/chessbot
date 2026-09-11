@@ -49,7 +49,7 @@ class KingOccupationEventBuilder(Enum):
           PieceCapturingItSelfException(PieceCapturingItSelfException.MSG)
         )
 
-      search_result = BoardSearch.square_by_coord(coord=enemy.current_position, board=context.board)
+      search_result = BoardSearch.square_by_coord(coord=enemy.position, board=context.board)
       if not search_result.payload == destination_square:
         ThrowHelper.log_and_raise_exception(
           KingOccupationEventBuilder,
@@ -58,7 +58,7 @@ class KingOccupationEventBuilder(Enum):
           )
         )
 
-      search = BoardSearch.square_by_coord(coord=actor.current_position, board=context.board)
+      search = BoardSearch.square_by_coord(coord=actor.position, board=context.board)
       if not search.is_success():
         ThrowHelper.log_and_raise_exception(
           KingOccupationEventBuilder,

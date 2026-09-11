@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== ASSURANCE.VALIDATOR.MODEL.TOKEN.COMBATANT PACKAGE ===========#
 
 # Packages
-from .pawn import *
+
 
 # Modules
+from .validator import CombatantTokenValidator

@@ -119,7 +119,7 @@ class TokenUndoMovePermitter(TokenManeuverPermitter):
                 )
             )
         # Handle the case that an attempt is made to undo more than one turn.
-        if requestor.previous_coord == requestor.current_position:
+        if requestor.previous_position == requestor.position:
             # Send the exception chain on failure.
             return AnalysisResult.completed(
                 PopApprovalReport.deny(

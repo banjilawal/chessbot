@@ -106,7 +106,7 @@ class EnemyCombatantStatusDetector(Analyzer):
                     ),
                 )
             )
-        if combatant.is_active:
+        if combatant.is_ready:
             return Result.success(FriendshipStatus.FREE_ENEMY_COMBATANT)
         if combatant.captor is not None:
             return Result.success(FriendshipStatus.ENEMY_PRISONER)

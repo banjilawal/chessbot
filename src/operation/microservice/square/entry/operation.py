@@ -16,7 +16,7 @@ from logic.square import (
     SquareVisitorDisabledException, WrongOpeningSquareException
 )
 from util import LoggingLevelRouter, UpdateResult
-from domain.model.searchable.state import Token, DeploymentState, TokenFreedomAnalyzer
+from domain.model.searchable.state import Token, TokenDeployment, TokenFreedomAnalyzer
 
 
 class SquareEntry:
@@ -162,8 +162,8 @@ class SquareEntry:
                 )
             )
         # --- Update the token's deployment state. ---#
-        if token.deployment_state == DeploymentState.NOT_DEPLOYED:
-            token.deployment_state = DeploymentState.DEPLOYED
+        if token.deployment == TokenDeployment.NOT_DEPLOYED:
+            token.deployment_state = TokenDeployment.DEPLOYED_TO_HOME_SQUARE
             
         # --- Forward the work product to the caller. ---#
         return UpdateResult.update_success(original=pre_update_square, updated=square)
@@ -229,7 +229,7 @@ class SquareEntry:
                 )
             )
         # Handle the case that the occupant is disabled
-        if token.is_disabled:
+        if token.is_not_ready:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=square,

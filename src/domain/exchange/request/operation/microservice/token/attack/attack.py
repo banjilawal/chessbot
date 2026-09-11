@@ -144,7 +144,7 @@ class Attack:
         # Update the hostage's captor field and its status.
         prisoner = captive_removal.payload
         prisoner.captor = attacker
-        prisoner.deployment_state = DeploymentState.REMOVED_FROM_BOARD
+        prisoner.deployment = DeploymentState.REMOVED_FROM_BOARD
         prisoner.activity.classification = CombatantReadinessEnum.CAPTURE_ACTIVATED
         
         # Handle the case that removing the attacker from their old item fails.

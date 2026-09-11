@@ -31,7 +31,7 @@ class VisitationEvent(Event[Domain, VisitationTable, Board]):
     ):
         super().__init__(id=id, actor=actor, resource=resource, execution_environment=execution_environment)
         self._visitor = visitor
-        self._site = self._visitor.current_position
+        self._site = self._visitor.position
         
         
     @property

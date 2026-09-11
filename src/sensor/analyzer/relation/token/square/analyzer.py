@@ -120,17 +120,17 @@ class SquareTokenRelationAnalyzer(RelationAnalyzer[Square, Token]):
                 token.team.board != square.board or
                 (
                         square.occupant != token and
-                        token.current_position != square.coord
+                        token.position != square.coord
                 )
         ):
             return AnalysisResult.success(RelationReport.no_relation())
         
         # Case Stale Link: square has a token but their coords don't match.
-        if square.occupant == SENSOR.traveller and token.current_position != square.coord:
+        if square.occupant == SENSOR.traveller and token.position != square.coord:
             return AnalysisResult.success(RelationReport.stale_link(square))
         
         # Case Registration Missing: square does not have token but, token has square's coord.
-        if square.occupant != token and token.current_position == SENSOR.square.coord:
+        if square.occupant != token and token.position == SENSOR.square.coord:
             return AnalysisResult.success(RelationReport.registration_missing(square))
         
         # Case Fully Bidirectional: Square has token and token's coord matches square's

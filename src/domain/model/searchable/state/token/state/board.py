@@ -9,13 +9,13 @@ version: 0.0.2
 
 from enum import Enum, auto
 
-class DeploymentState(Enum):
+class TokenDeployment(Enum):
     """
     Role:
         - State
 
     Responsibilities:
-        1.  Describes Token's relationship with the Board.
+        1.  Indicating the token has been deployed to its HomeSquare
         
     Attributes:
     
@@ -25,5 +25,4 @@ class DeploymentState(Enum):
         Enum
     """
     NOT_DEPLOYED = auto(),
-    DEPLOYED = auto(),
-    REMOVED_FROM_BOARD = auto(),
+    DEPLOYED_TO_HOME_SQUARE = auto(),

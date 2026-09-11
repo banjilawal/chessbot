@@ -74,7 +74,7 @@ class FriendshipReport(Report):
         return (
                 self.are_not_friends and
                 self.enemy_king is not None and
-                self.enemy_king.is_active and
+                self.enemy_king.is_ready and
                 self.status == FriendshipStatus.FREE_ENEMY_KING
         )
     

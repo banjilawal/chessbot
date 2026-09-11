@@ -185,9 +185,9 @@ class TokenContextValidator(ContextValidator[TokenSearchContext]):
             return ValidationResult.success(context)
         
         # Certification for the search-by-coord target.
-        if context.current_position is not None:
+        if context.position is not None:
             validation = self.toolkit.coord_validator.execute(
-                candidate=context.current_position
+                candidate=context.position
             )
             if validation.is_failure:
                 # Send the exception chain on failure.
@@ -206,7 +206,7 @@ class TokenContextValidator(ContextValidator[TokenSearchContext]):
         # Certification for the search-by-team target.
         if context.team is not None:
             validation = self.toolkit.helper.team_validator.execute(
-                candidate=context.current_position
+                candidate=context.position
             )
             if validation.is_failure:
                 # Send the exception chain on failure.

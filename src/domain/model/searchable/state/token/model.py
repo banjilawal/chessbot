@@ -9,12 +9,11 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import abstractmethod
+
 from typing import Optional
 
-from collection.database import CoordDatabase
-from domain.model import Coord, HomeSquare, KingToken, Rank, StateModel, Team, TokenReadiness, DeploymentState
-from domain.schema import Formation
+from collection import CoordDatabase
+from domain import Coord, Formation, HomeSquare, Rank, StateModel, Team, TokenDeployment, TokenReadiness
 
 
 class Token(StateModel):
@@ -28,15 +27,14 @@ class Token(StateModel):
     Attributes:
         id: int
         team: Team
-        rank: Rank
-        designation: str
-        roster_number: int
+        formation: Formation
+        readiness: TokenReadiness
+        deployment: TokenDeployment
         positions: CoordDatabase
         home_square: OpeningSquare
-        current_position: Optional[Coord]
-        previous_address: Optional[Coord]
-        token_board_state: TokenBoardState
-        readiness_state: TokenActivityState
+        position: Optional[Coord]
+        previous_position: Optional[Coord]
+
         is_not_deployed: bool
         is_active(self): bool
         is_disabled: bool
@@ -51,13 +49,11 @@ class Token(StateModel):
     _team: Team
     _formation: Formation
     _home_square: HomeSquare
+    _deployment: TokenDeployment
     _readiness: TokenReadiness
     _positions: CoordDatabase
-    _current_position: Optional[Coord]
-    _previous_address: Optional[Coord]
-    _deployment_state: DeploymentState
-
-    _checked_enemy_king: Optional[KingToken]
+    _position: Optional[Coord]
+    _previous_position: Optional[Coord]
 
     def __init__(
             self,
@@ -65,8 +61,6 @@ class Token(StateModel):
             team: Team,
             formation: Formation,
             home_square: HomeSquare,
-            deployment_state: Optional[DeploymentState] | None = None,
-            readiness: Optional[TokenReadiness] | None = None,
             positions: Optional[CoordDatabase] | None = None,
     ):
         """
@@ -75,24 +69,17 @@ class Token(StateModel):
             team: Team
             formation: Formation
             home_square: OpeningSquare
-            deployment_state: Optional[DeploymentState]
-            readiness: Optional[TokenActivityState]
         """
         super().__init__(id=id)
         self._team = team
         self._formation = formation
         self._home_square = home_square
-        self._rank = rank or formation.rank
-        self._current_position = self._positions.current_item
-        self._previous_address = self._positions.previous_coord
-        self._deployment_state = deployment_state or DeploymentState.NOT_DEPLOYED
-        self._readiness = readiness or TokenReadiness.NOT_INITIALIZED
-        self._checked_enemy_king = None
+        self._deployment = TokenDeployment.NOT_DEPLOYED
+        self._readiness = TokenReadiness.NOT_INITIALIZED
+        
+        self._position = None
+        self._previous_position = None
         self._positions = positions or CoordDatabase()
-    
-    @property
-    def id(self) -> int:
-        return self._id
     
     @property
     def formation(self) -> Formation:
@@ -119,66 +106,65 @@ class Token(StateModel):
         return self._home_square
     
     @property
-    def checked_enemy_king(self) -> Optional[KingToken]:
-        return self._checked_enemy_king
-    
-    @property
     def readiness(self) -> TokenReadiness:
         return self._readiness
     
     @readiness.setter
     def readiness(self, other: TokenReadiness):
         self._readiness = other
-        
-    @checked_enemy_king.setter
-    def checked_enemy_king(self, other: KingToken):
-        self._checked_enemy_king = other
+    
+    @property
+    def deployment(self) -> TokenDeployment:
+        return self._deployment
+    
+    @deployment.setter
+    def deployment(
+            self,
+            other: TokenDeployment = TokenDeployment.DEPLOYED_TO_HOME_SQUARE
+    ):
+        self._deployment = other
     
     @property
     def positions(self) -> CoordDatabase:
         return self._positions
     
     @property
-    def current_position(self) -> Optional[Coord]:
-        return self._positions.current_item
+    def position(self) -> Optional[Coord]:
+        return self._position
+    
+    @position.setter
+    def position(self, other: Coord):
+        self._position = other
     
     @property
-    def previous_coord(self) -> Optional[Coord]:
-        return self._previous_address
+    def previous_position(self) -> Optional[Coord]:
+        return self._previous_position
     
-    @property
-    def deployment_state(self) -> DeploymentState:
-        return self._deployment_state
-    
-    def mark_deployed(self,):
-        self._deployment_state = DeploymentState.DEPLOYED
-    
+    @previous_position.setter
+    def previous_position(self, other: Coord):
+        self._previous_position = other
+     
     @property
     def is_not_deployed(self) -> bool:
         return (
-                self.positions.is_empty and
-                self._deployment_state == DeploymentState.NOT_DEPLOYED
+                self._position is None and 
+                self._deployment == TokenDeployment.NOT_DEPLOYED
         )
     
     @property
     def is_deployed(self) -> bool:
         return (
-                self.positions.size >= 1 and
-                self._deployment_state == DeploymentState.DEPLOYED
+                self._position == self._home_square.coord and 
+                self._deployment == TokenDeployment.DEPLOYED_TO_HOME_SQUARE
         )
     
     @property
-    @abstractmethod
-    def is_active(self) -> bool:
-        pass
+    def is_ready(self) -> bool:
+       return self.is_deployed and self._readiness == TokenReadiness.READY
     
     @property
-    @abstractmethod
-    def is_disabled(self) -> bool:
-        pass
-    
-    def set_rank(self, rank: Rank) -> None:
-        self._rank = rank
+    def is_not_ready(self) -> bool:
+       return not self.is_ready
     
     def is_friend(self, token: Token) -> bool:
         return self._team == token.team
@@ -209,7 +195,4 @@ class Token(StateModel):
         return (
             f"Token[id:{self._id} "
             f"name:{self.name} "
-            f"rank:{self._rank.persona.name} "
-            f"team:{self._team.archetype.name} "
-            f"position:{self.current_position}"
         )

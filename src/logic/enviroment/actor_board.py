@@ -73,7 +73,7 @@ class BoardActorValidator(Validator[Tuple[Piece, Board]]):
       actor = cast(Piece, actor_validation.payload)
 
       # If the owner has no position history its not on the board and cannot owner.
-      if actor.current_position is None or actor.positions.no_recurrences_exist():
+      if actor.position is None or actor.positions.no_recurrences_exist():
         return ValidationResult.failure(
           NoInitialPlacementException(f"{method}: {NoInitialPlacementException.MSG}")
         )

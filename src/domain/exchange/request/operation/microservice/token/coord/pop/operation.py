@@ -136,7 +136,7 @@ class TokenPositionPopper:
                 )
             )
         # Handle the case that token is not active
-        if not token.is_active:
+        if not token.is_ready:
             # Send the exception chain on failure.
             return DeletionResult.failure(
                 TokenPopCoordException(
@@ -175,7 +175,7 @@ class TokenPositionPopper:
                     )
                 )
         # Handle the case that an attempt is made to undo more than one turn.
-        if token.previous_coord == token.current_position:
+        if token.previous_position == token.position:
             # Send the exception chain on failure.
             return DeletionResult.failure(
                 TokenPopCoordException(
