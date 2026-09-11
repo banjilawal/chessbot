@@ -78,12 +78,12 @@ class PawnTokenCarrierValidator:
                 home_square=home_square,
                 formation=blueprint.formation,
             )
-            model.rank = rank,
+            model.rank = rank
             model.captor = blueprint.captor
+            model.position = blueprint.position
             model.readiness = blueprint.readiness
             model.deployment = blueprint.deployment
-            model.position = blueprint.position
-            model.current_position = model.previous_position
+            model.previous_position = model.previous_position
             
             return ValidationResult.success(
                 PawnTokenCarrier(model=model)

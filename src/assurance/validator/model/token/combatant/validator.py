@@ -77,10 +77,10 @@ class CombatantCarrierValidator:
                 formation=blueprint.formation,
             )
             model.captor = blueprint.captor
+            model.position = blueprint.position
             model.readiness = blueprint.readiness
             model.deployment = blueprint.deployment
-            model.position = blueprint.position
-            model.current_position = model.previous_position
+            model.previous_position = model.previous_position
             
             return ValidationResult.success(
                 CombatantCarrier(model=model)
