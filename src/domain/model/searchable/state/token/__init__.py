@@ -15,4 +15,5 @@ from .king import *
 from .state import *
 
 # Modules
+from .deployment import *
 from .model import Token
