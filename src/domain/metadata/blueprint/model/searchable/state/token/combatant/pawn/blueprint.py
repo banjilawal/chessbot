@@ -11,8 +11,10 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from collection import CoordDatabase
-from domain import Formation, HomeSquare, PawnToken, Rank, Team, CombatantBlueprint, Token
+from domain import (
+    CombatantReadiness, Coord, Formation, HomeSquare, PawnToken, Rank, Team, CombatantBlueprint,
+    Token, TokenDeployment
+)
 from err import PawnTokenNullException
 
 
@@ -33,18 +35,19 @@ class PawnTokenBlueprint(CombatantBlueprint):
      Super Class:
         CombatantBlueprint
      """
-    _previous_rank: Optional[Rank]
-
+    _rank: Rank
     
     def __init__(
             self,
             team: Team,
             formation: Formation,
             rank: Optional[Rank] | None = None,
-            previous_rank: Optional[Rank] | None = None,
             captor: Optional[Token] | None = None,
+            position: Optional[Coord] | None = None,
             home_square: Optional[HomeSquare] | None = None,
-            positions: Optional[CoordDatabase] | None = None,
+            previous_position: Optional[Coord] | None = None,
+            deployment: Optional[TokenDeployment] | None = None,
+            readiness: Optional[CombatantReadiness] | None = None,
             domain_class: Optional[Type[PawnToken]] | None = None,
             domain_null_exception: Optional[PawnTokenNullException] | None = None,
             id: Optional[int] | None = None,
@@ -53,29 +56,35 @@ class PawnTokenBlueprint(CombatantBlueprint):
         Args:
             team: Team,
             formation: Formation
-            rank: Optional[Rank]
-            positions: Optional[CoordDatabase]
-            domain_class: Optional[Type[PawnToken]]
-            domain_null_exception: Optional[PawnTokenNullException]
+            captor: Optional[Token]
+            position: Optional[Coord]
+            home_square: Optional[HomeSquare]
+            previous_position: Optional[Coord]
+            deployment: Optional[TokenDeployment]
+            readiness: Optional[CombatantReadiness]
+            domain_class: Optional[Type[CombatantToken]]
+            domain_null_exception: Optional[CombatantNullException]
             id: Optional[int]
         """
         super().__init__(
             id=id,
             team=team,
-            rank=rank,
             captor=captor,
+            position=position,
+            readiness=readiness,
             formation=formation,
-            positions=positions,
+            deployment=deployment,
             home_square=home_square,
-            domain_class=domain_class or PawnToken,
+            previous_position=previous_position,
+            domain_class=domain_class or Type[PawnToken],
             domain_null_exception=domain_null_exception or PawnTokenNullException(),
         )
-        self._previous_rank = previous_rank
-        
-    @property
-    def previous_rank(self) -> Optional[Rank]:
-        return self._previous_rank
+        self._rank = rank or formation.rank
     
+    @property
+    def rank(self) -> Rank:
+        return self._rank
+        
     @property
     def domain_class(self) -> Type[PawnToken]:
         return cast(Type[PawnToken], super().domain_class)
@@ -83,16 +92,3 @@ class PawnTokenBlueprint(CombatantBlueprint):
     @property
     def domain_null_exception(self) -> PawnTokenNullException:
         return cast(PawnTokenNullException, super().domain_null_exception)
-    
-    @property
-    def is_promoted(self) -> bool:
-        return self._previous_rank is not None
-    
-    @property
-    def is_not_promoted(self) -> bool:
-        return not self.is_promoted
-    
-
-
-        
-        

@@ -51,12 +51,12 @@ class CombatantBlueprint(TokenBlueprint):
             self,
             team: Team,
             formation: Formation,
+            captor: Optional[Token] | None = None,
             position: Optional[Coord] | None = None,
+            home_square: Optional[HomeSquare] | None = None,
             previous_position: Optional[Coord] | None = None,
             deployment: Optional[TokenDeployment] | None = None,
             readiness: Optional[CombatantReadiness] | None = None,
-            captor: Optional[Token] | None = None,
-            home_square: Optional[HomeSquare] | None = None,
             domain_class: Optional[Type[CombatantToken]] | None = None,
             domain_null_exception: Optional[CombatantNullException] | None = None,
             id: Optional[int] | None = None,
@@ -65,12 +65,12 @@ class CombatantBlueprint(TokenBlueprint):
         Args:
             team: Team,
             formation: Formation
+            captor: Optional[Token]
             position: Optional[Coord]
+            home_square: Optional[HomeSquare]
             previous_position: Optional[Coord]
             deployment: Optional[TokenDeployment]
             readiness: Optional[CombatantReadiness]
-            captor: Optional[Token]
-            positions: Optional[CoordDatabase]
             domain_class: Optional[Type[CombatantToken]]
             domain_null_exception: Optional[CombatantNullException]
             id: Optional[int]
@@ -80,8 +80,8 @@ class CombatantBlueprint(TokenBlueprint):
             team=team,
             position=position,
             formation=formation,
-            home_square=home_square,
             deployment=deployment,
+            home_square=home_square,
             previous_position=previous_position,
             domain_class=domain_class or Type[CombatantToken],
             domain_null_exception=domain_null_exception or CombatantNullException(),
