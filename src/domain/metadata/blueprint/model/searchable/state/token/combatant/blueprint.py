@@ -12,7 +12,10 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from collection import CoordDatabase
-from domain import CombatantToken, Formation, HomeSquare, Rank, Team, Token, TokenBlueprint
+from domain import (
+    CombatantReadiness, CombatantToken, Coord, Formation, HomeSquare, Rank, Team, Token, TokenBlueprint,
+    TokenDeployment
+)
 from err import CombatantNullException
 
 
@@ -41,16 +44,19 @@ class CombatantBlueprint(TokenBlueprint):
         TokenBlueprint
      """
     _captor: Optional[Token]
+    _readiness: CombatantReadiness
 
     
     def __init__(
             self,
             team: Team,
             formation: Formation,
-            rank: Optional[Rank] | None = None,
+            position: Optional[Coord] | None = None,
+            previous_position: Optional[Coord] | None = None,
+            deployment: Optional[TokenDeployment] | None = None,
+            readiness: Optional[CombatantReadiness] | None = None,
             captor: Optional[Token] | None = None,
             home_square: Optional[HomeSquare] | None = None,
-            positions: Optional[CoordDatabase] | None = None,
             domain_class: Optional[Type[CombatantToken]] | None = None,
             domain_null_exception: Optional[CombatantNullException] | None = None,
             id: Optional[int] | None = None,
@@ -59,7 +65,10 @@ class CombatantBlueprint(TokenBlueprint):
         Args:
             team: Team,
             formation: Formation
-            rank: Optional[Rank]
+            position: Optional[Coord]
+            previous_position: Optional[Coord]
+            deployment: Optional[TokenDeployment]
+            readiness: Optional[CombatantReadiness]
             captor: Optional[Token]
             positions: Optional[CoordDatabase]
             domain_class: Optional[Type[CombatantToken]]
@@ -69,14 +78,20 @@ class CombatantBlueprint(TokenBlueprint):
         super().__init__(
             id=id,
             team=team,
-            rank=rank,
+            position=position,
             formation=formation,
-            positions=positions,
             home_square=home_square,
+            deployment=deployment,
+            previous_position=previous_position,
             domain_class=domain_class or Type[CombatantToken],
             domain_null_exception=domain_null_exception or CombatantNullException(),
         )
         self._captor = captor
+        self._readiness = readiness or CombatantReadiness.READY
+        
+    @property
+    def readiness(self) -> CombatantReadiness:
+        return self._readiness
         
     @property
     def captor(self) -> Optional[Token]:

@@ -11,14 +11,12 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from collection import CoordDatabase
+
 from domain import (
-    CheckWarning, CheckmateAttack, Coord, KingReadiness, KingToken, Formation, HomeSquare, Rank, Team,
-    TokenBlueprint
+    CheckWarning, CheckmateAttack, Coord, KingReadiness, KingToken, Formation, HomeSquare,
+    Team, TokenBlueprint, TokenDeployment
 )
-from err import KingTokenNullException
-from game import Checkmate
-from sensor import KingReadinessAnalyzer
+from err import KingTokenNullException, TokenDeploymentException
 
 
 class KingTokenBlueprint(TokenBlueprint):
@@ -56,6 +54,7 @@ class KingTokenBlueprint(TokenBlueprint):
             position: Optional[Coord] | None = None,
             previous_position: Optional[Coord] | None = None,
             home_square: Optional[HomeSquare] | None = None,
+            deployment: Optional[TokenDeployment] | None = None,
             readiness: Optional[KingReadiness] | None = None,
             checkmate: Optional[CheckmateAttack] | None = None,
             check_warning: Optional[CheckWarning] | None = None,
@@ -67,7 +66,10 @@ class KingTokenBlueprint(TokenBlueprint):
         Args:
             team: Team,
             formation: Formation
-            readiness: Optional[KingReadiness],
+            position: Optional[Coord]
+            previous_position: Optional[Coord]
+            readiness: Optional[KingReadiness]
+            deployment: Optional[TokenDeployment]
             checkmate: Optional[CheckmateAttack]
             check_warning: Optional[CheckWarning]
             domain_class: Optional[Type[KingToken]]
@@ -80,6 +82,7 @@ class KingTokenBlueprint(TokenBlueprint):
             position=position,
             formation=formation,
             home_square=home_square,
+            deployment=deployment,
             previous_position=previous_position,
             domain_class=domain_class or Type[KingToken],
             domain_null_exception=domain_null_exception or KingTokenNullException(),
