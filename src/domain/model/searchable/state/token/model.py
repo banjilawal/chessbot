@@ -65,7 +65,6 @@ class Token(StateModel):
             team: Team,
             formation: Formation,
             home_square: HomeSquare,
-            rank: Optional[Rank] | None = None,
             deployment_state: Optional[DeploymentState] | None = None,
             readiness: Optional[TokenReadiness] | None = None,
             positions: Optional[CoordDatabase] | None = None,
@@ -113,7 +112,7 @@ class Token(StateModel):
     
     @property
     def rank(self) -> Rank:
-        return self._rank
+        return self._formation.rank
     
     @property
     def home_square(self) -> HomeSquare:

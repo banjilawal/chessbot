@@ -57,7 +57,6 @@ class CombatantToken(Token):
             team: Team,
             formation: Formation,
             home_square: HomeSquare,
-            rank: Optional[Rank] | None = None,
             captor: Optional[Token] | None = None,
             readiness: Optional[TokenReadiness] | None = None,
             deployment_state: Optional[DeploymentState] | None = None,
@@ -74,7 +73,6 @@ class CombatantToken(Token):
         super().__init__(
             id=id,
             team=team,
-            rank=rank,
             formation=formation,
             home_square=home_square,
             readiness=readiness,
@@ -146,7 +144,7 @@ class CombatantToken(Token):
     def __eq__(self, other):
         if super().__eq__(other):
             if isinstance(other, CombatantToken):
-                return True
+                return self.id == other.id
         return False
     
     def __hash__(self):

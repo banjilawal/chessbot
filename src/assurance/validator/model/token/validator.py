@@ -9,11 +9,15 @@ version: 1.0.2
 
 from __future__ import annotations
 
-from typing import Optional, Type, cast
+from typing import Optional, cast
 
 from artifcat import ValidationResult
 from assurance import ModelValidator, TokenValidatorToolkit
-from domain import Formation, HomeSquare, Team, Token, TokenBlueprint, TokenValidationRequest
+from domain import (
+    Blueprint, CombatantBlueprint, Formation, HomeSquare, KingTokenBlueprint, PawnTokenBlueprint, Team, Token,
+    TokenBlueprint,
+    TokenValidationRequest
+)
 from err import FormationNullException, TokenValidationRequestNullException, TokenValidatorException
 from transit import TokenCarrier
 from util import LoggingLevelRouter
@@ -123,10 +127,10 @@ class TokenValidator(ModelValidator[Token]):
             carrier_validation.payload,
         )
         # --- Extract the blueprint to verify the attributes. ---#
-        blueprint = carrier.extract_blueprint()
+        abstraction = carrier.extract_blueprint()
         
         # Handle the case that there is no blueprint.
-        if blueprint is None:
+        if abstraction is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidatorException(
@@ -142,11 +146,14 @@ class TokenValidator(ModelValidator[Token]):
                     ),
                 )
             )
+
         
         # Handle the case that any id in the blueprint is flagged.
-        id_test = self.toolkit.helper.identity_service.validate_blueprint_id(
-            owner_blueprint=blueprint,
-            owner_name=blueprint.domain_class_name,
+        id_test = self.toolkit.helper.blueprint_id_extractor.execute(
+            candidate=blueprint,
+            blueprint_owner_name=blueprint.domain_class_name,
+            blueprint_type=self.toolkit.metadata.types.blueprint,
+            blueprint_null_exception=self.toolkit.metadata.nulls.blueprint,
         )
         if id_test.is_failure:
         # Send the exception chain on failure.
@@ -192,11 +199,8 @@ class TokenValidator(ModelValidator[Token]):
                 )
             )
         # Handle the case that the home_square gets flagged.
-        home_detection = self.toolkit.home_detector.execute(
-            context=TokenHomeContext(
-                board=blueprint.team.board,
-                square_name=blueprint.formation.home_square_name,
-            ),
+        home_detection = self.toolkit.helper.home_extractor.execute(
+            blueprint=blueprint,
         )
         if home_detection.is_failure:
             # Send the exception chain on failure.
@@ -209,6 +213,15 @@ class TokenValidator(ModelValidator[Token]):
                     ex=home_detection.exception,
                 )
             )
+        
+
+        if abstraction.is_king_token_blueprint:
+            blueprint = cast(KingTokenBlueprint, abstraction)
+        elif abstraction.is_pawn_token_blueprint:
+            blueprint = cast(PawnTokenBlueprint, abstraction)
+        else:
+            blueprint = cast(CombatantBlueprint, abstraction)
+        
         # Handle the case that the rank is not safe to use.
         rank = None
         if blueprint.is_pawn_token_blueprint:
@@ -258,3 +271,5 @@ class TokenValidator(ModelValidator[Token]):
                 )
             )
         )
+    
+    

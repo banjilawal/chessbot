@@ -58,6 +58,7 @@ class PawnToken(CombatantToken):
     Super Class:
         CombatantToken
     """
+    _rank: Rank
     _promotion_state: PromotionState
     
     def __init__(
@@ -84,7 +85,6 @@ class PawnToken(CombatantToken):
         super().__init__(
             id=id,
             team=team,
-            rank=rank,
             captor=captor,
             formation=formation,
             readiness=readiness,
@@ -92,7 +92,13 @@ class PawnToken(CombatantToken):
             deployment_state=deployment_state,
             positions=positions,
         )
+        self._rank = rank or formation.rank
         self._promotion_state = PromotionState.NOT_PROMOTED
+        
+        
+    @property
+    def rank(self) -> Rank:
+        return self._rank
     
     @property
     def promotion_state(self) -> PromotionState:
@@ -122,7 +128,10 @@ class PawnToken(CombatantToken):
     
     @property
     def is_promoted(self) -> bool:
-        return not isinstance(self.rank, Pawn)
+        return (
+                not isinstance(self._rank, Pawn) and
+                self._promotion_state == PromotionState.PROMOTED
+        )
     
     @property
     def is_not_promoted(self) -> bool:
@@ -131,7 +140,7 @@ class PawnToken(CombatantToken):
     def __eq__(self, other):
         if super().__eq__(other):
             if isinstance(other, PawnToken):
-                return True
+                return self.id == other.id
         return False
     
     def __hash__(self):

@@ -71,6 +71,15 @@ class BlueprintRankExtractor(Extractor):
         """
         method = f"{self.__class__.__name__}.execute"
         
+        
+        rank = blueprint.rank
+        
+        if rank not None:
+            
+            if not blueprint.is_pawn_token_blueprint:
+            
+            
+        
         priming_result = self.priming_validator.execute(
             candidate=blueprint,
             target_model=Type[TokenBlueprint],
