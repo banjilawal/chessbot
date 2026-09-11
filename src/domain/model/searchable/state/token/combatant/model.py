@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional
 
 from collection import CoordDatabase
-from domain import TokenDeployment, Formation, HomeSquare, Team, Token, TokenReadiness
+from domain import CombatantReadiness, TokenDeployment, Formation, HomeSquare, Team, Token, TokenReadiness
 
 
 class CombatantToken(Token):
@@ -50,6 +50,7 @@ class CombatantToken(Token):
         Token
     """
     _captor: Optional[Token]
+    _readiness: CombatantReadiness
     
     def __init__(
             self,
@@ -75,6 +76,7 @@ class CombatantToken(Token):
             positions=positions,
         )
         self._captor = None
+        self._readiness = CombatantReadiness.OFF_BOARD
     
     @property
     def captor(self) -> Optional[Token]:
@@ -83,55 +85,35 @@ class CombatantToken(Token):
     @captor.setter
     def captor(self, captor: Token):
         self._captor = captor
+        
+    @property
+    def readiness(self) -> CombatantReadiness:
+        return self._readiness
+    
+    @readiness.setter
+    def readiness(self, other: CombatantReadiness):
+        self._readiness = other
     
     @property
     def is_ready(self) -> bool:
         return (
+                self.is_deployed and
                 self._captor is None and
-                self._readiness == TokenReadiness.READY and
-                self._deployment == TokenDeployment.DEPLOYED_TO_HOME_SQUARE
-        )
-    
-    @property
-    def is_captured(self) -> bool:
-        return (
-                self._captor is not None and
-                self.deployment == TokenDeployment.DEPLOYED_TO_HOME_SQUARE and
-                (
-                        self._readiness == TokenReadiness.CAPTURE_ACTIVATED or
-                        self.readiness == TokenReadiness.HOSTAGE_CREATED or
-                        self._readiness == TokenReadiness.HOSTAGE_IN_DATABASE
-                )
+                self._readiness == CombatantReadiness.READY
         )
     
     @property
     def is_not_ready(self) -> bool:
-        return self.is_not_deployed or self.is_captured
-
-    @property
-    def has_entered_hostage_process(self) -> bool:
-        return (
-                self._captor is not None and
-                self.deployment == TokenDeployment.DEPLOYED_TO_HOME_SQUARE and
-                self.readiness == TokenReadiness.CAPTURE_ACTIVATED
-        )
+        return not self.is_ready or self.is_captured
     
     @property
-    def being_processed_as_hostage(self) -> bool:
+    def is_captured(self) -> bool:
         return (
+                self.is_deployed and
                 self._captor is not None and
-                self.deployment == TokenDeployment.REMOVED_FROM_BOARD and
-                self.readiness == TokenReadiness.HOSTAGE_CREATED
+                self._readiness == CombatantReadiness.CAPTURED
         )
-    
-    @property
-    def recorded_as_hostage(self) -> bool:
-        return (
-                self._captor is not None and
-                self.deployment == TokenDeployment.REMOVED_FROM_BOARD and
-                self.readiness == TokenReadiness.HOSTAGE_IN_DATABASE
-        )
-    
+   
     def __eq__(self, other):
         if super().__eq__(other):
             if isinstance(other, CombatantToken):

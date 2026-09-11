@@ -1,0 +1,35 @@
+# src/domain/model/searchable/state/token/state/readiness.py
+
+"""
+Module: domain.model.searchable.state.token.state.readiness
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+from enum import Enum, auto
+
+
+class TokenReadiness(Enum):
+    """
+    Role:
+        - State
+    
+    Responsibilities:
+        1.  Indicating a Token's state during the game.
+    
+    Attributes:
+    
+    Provides:
+    
+    Super Class:
+        Enum
+    """
+    READY = auto(),
+    IN_CHECK = auto(),
+    CHECKMATED = auto(),
+    NOT_INITIALIZED = auto(),
+    CAPTURE_ACTIVATED = auto(),
+    HOSTAGE_CREATED = auto(),
+    HOSTAGE_IN_DATABASE = auto(),
+    DEACTIVATED = auto(),

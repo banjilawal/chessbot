@@ -1,7 +1,7 @@
-# src/assurance/validator/model/token/pawn/validator.py
+# src/assurance/validator/model/token/king/validator.py
 
 """
-Module: assurance.validator.model.token.pawn.validator
+Module: assurance.validator.model.token.king.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.2
@@ -12,12 +12,12 @@ from __future__ import annotations
 from typing import cast
 
 from artifcat import ValidationResult
-from domain import PawnTokenBlueprint, PawnToken, HomeSquare, Rank
-from transit import PawnTokenCarrier
+from domain import KingTokenBlueprint, KingToken, HomeSquare, Rank
+from transit import KingTokenCarrier
 from util import LoggingLevelRouter
 
 
-class PawnTokenCarrierValidator:
+class KingTokenCarrierValidator:
     """
     Role
         - Integrity, Consistency Maintenance
@@ -30,9 +30,9 @@ class PawnTokenCarrierValidator:
     Provides:
         -   def execute(
                     id: int,
-                    carrier: PawnTokenCarrier,
+                    carrier: KingTokenCarrier,
                     home_square: HomeSquare,
-            ) -> ValidationResult[PawnTokenCarrier]
+            ) -> ValidationResult[KingTokenCarrier]
 
     Super Class:
     """
@@ -41,13 +41,12 @@ class PawnTokenCarrierValidator:
     def execute(
             self,
             id: int,
-            rank: Rank,
             home_square: HomeSquare,
-            validated_carrier: PawnTokenCarrier,
-    ) -> ValidationResult[PawnTokenCarrier]:
+            validated_carrier: KingTokenCarrier,
+    ) -> ValidationResult[KingTokenCarrier]:
         """
-        Send a validated PawnToken or Blueprint which inside the validated
-        PawnTokenCarrier.
+        Send a validated KingToken or Blueprint which inside the validated
+        KingTokenCarrier.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
@@ -59,20 +58,19 @@ class PawnTokenCarrierValidator:
                 result.
         Args:
             id: int
-            rank: Rank
             home_square: HomeSquare
-            validated_carrier: PawnTokenCarrier
+            validated_carrier: KingTokenCarrier
         Returns:
-            ValidationResult[PawnTokenCarrier]
+            ValidationResult[KingTokenCarrier]
         Raises:
         """
         method = f"{self.__class__.__name__}.execute"
 
         # --- Extract the blueprint to verify the attributes. ---#
-        blueprint = cast(PawnTokenBlueprint, validated_carrier.extract_blueprint())
+        blueprint = cast(KingTokenBlueprint, validated_carrier.extract_blueprint())
 
         if validated_carrier.is_carrying_model:
-            model = PawnToken(
+            model = KingToken(
                 id=id,
                 team=blueprint.team,
                 home_square=home_square,
@@ -86,11 +84,11 @@ class PawnTokenCarrierValidator:
             model.current_position = model.previous_position
             
             return ValidationResult.success(
-                PawnTokenCarrier(model=model)
+                KingTokenCarrier(model=model)
             )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(
-            PawnTokenCarrier(blueprint=blueprint)
+            KingTokenCarrier(blueprint=blueprint)
         )
     
     

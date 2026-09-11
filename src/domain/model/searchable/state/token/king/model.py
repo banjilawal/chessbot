@@ -9,7 +9,10 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from domain import TokenDeployment, Formation, HomeSquare, Team, Token, TokenReadiness
+from typing import Optional
+
+from domain import CheckWarning, CheckmateAttack, TokenDeployment, Formation, HomeSquare, Team, Token, TokenReadiness
+
 
 
 class KingToken(Token):
@@ -44,7 +47,8 @@ class KingToken(Token):
     Super Class:
         Token
     """
-    _check_count: int
+    _check_warning: Optional[CheckWarning]
+    _checkmate: Optional[CheckmateAttack]
     
 
     def __init__(
@@ -64,24 +68,36 @@ class KingToken(Token):
         super().__init__(
             id=id,
             team=team,
-            rank=King(),
             formation=formation,
             home_square=home_square,
         )
-        self._check_count = 0
+        self._checkmate = None
+        self._check_warning = None
         
     @property
-    def check_count(self) -> int:
-        return self._check_count
+    def checkmate(self) -> Optional[CheckmateAttack]:
+        return self._checkmate
     
-    @check_count.setter
-    def check_count(self, update):
-        self._check_count = update
+    @checkmate.setter
+    def checkmate(self, other: CheckmateAttack):
+        self._checkmate = other
+        
+    @property
+    def check_warning(self) -> Optional[CheckWarning]:
+        return self._check_warning
+    
+    @check_warning.setter
+    def check_warning(self, other: CheckWarning):
+        self._check_warning = other
+        
+    @property
+    def is_ready(self) -> bool:
+        return super().is_ready and
      
     @property
     def is_in_check(self) -> bool:
         return (
-                self.deployment == TokenDeployment.DEPLOYED_TO_HOME_SQUARE and
+                self.
                 self.readiness == TokenReadiness.IN_CHECK
         )
     

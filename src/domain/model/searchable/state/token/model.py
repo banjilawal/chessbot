@@ -36,10 +36,14 @@ class Token(StateModel):
         home_square: OpeningSquare
         position: Optional[Coord]
         previous_position: Optional[Coord]
-
+        
+        is_ready: bool
+        is_not_ready: bool
+        
+        is_deployed: bool
         is_not_deployed: bool
-        is_active(self): bool
-        is_disabled: bool
+        
+        is_friend: bool
         is_enemy: bool
         
     Provides:
@@ -145,20 +149,17 @@ class Token(StateModel):
     @previous_position.setter
     def previous_position(self, other: Coord):
         self._previous_position = other
-     
-    @property
-    def is_not_deployed(self) -> bool:
-        return (
-                self._position is None and 
-                self._deployment == TokenDeployment.NOT_DEPLOYED
-        )
     
     @property
     def is_deployed(self) -> bool:
         return (
-                self._position == self._home_square.coord and 
+                self._position is not None and
                 self._deployment == TokenDeployment.DEPLOYED_TO_HOME_SQUARE
         )
+    
+    @property
+    def is_not_deployed(self) -> bool:
+        return not self.is_deployed
     
     @property
     def is_ready(self) -> bool:

@@ -14,4 +14,4 @@ version: 0.0.2
 
 # Modules
 from .board import TokenDeployment
-from .activity import TokenReadiness
+from .readiness import TokenReadiness
