@@ -53,7 +53,6 @@ class PawnToken(CombatantToken):
         is_promoted: bool
         
     Provides:
-        - set_new_rank(new_rank: Rank):
         
     Super Class:
         CombatantToken
@@ -67,38 +66,33 @@ class PawnToken(CombatantToken):
             team: Team,
             formation: Formation,
             home_square: HomeSquare,
-            rank: Optional[Rank] | None = None,
-            captor: Optional[Token] | None = None,
-            deployment_state: Optional[TokenDeployment] | None = None,
-            readiness: Optional[TokenReadiness] | None = None,
             positions: Optional[CoordDatabase] | None = None,
     ):
         """
         Args:
             id: int
             team: Team
-            rank: Rank
-            designation: str
-            roster_number: int
+            formation: Formation
             home_square: OpeningSquare
         """
         super().__init__(
             id=id,
             team=team,
-            captor=captor,
             formation=formation,
-            readiness=readiness,
             home_square=home_square,
-            deployment_state=deployment_state,
             positions=positions,
         )
-        self._rank = rank or formation.rank
+        self._rank = formation.rank
         self._promotion_state = PromotionState.NOT_PROMOTED
         
         
     @property
     def rank(self) -> Rank:
         return self._rank
+    
+    @rank.setter
+    def rank(self, other: Rank):
+        self._rank = other
     
     @property
     def promotion_state(self) -> PromotionState:
@@ -110,15 +104,15 @@ class PawnToken(CombatantToken):
         
     @property
     def is_promotable(self) -> bool:
-        current_position = self.position
+        position = self.position
         
         if not self.is_ready:
             return False
         if self.is_promoted:
             return False
-        if current_position is None:
+        if position is None:
             return False
-        if current_position.row != self.team.archetype.enemy_archetype.pawn_row:
+        if position.row != self.team.archetype.enemy_archetype.pawn_row:
             return False
         return True
     

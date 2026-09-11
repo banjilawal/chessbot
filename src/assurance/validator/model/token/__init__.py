@@ -11,6 +11,7 @@ version: 0.0.2
 
 # Packages
 from .combatant import *
+from .pawn import *
 
 # Modules
 from .validator import TokenValidator
