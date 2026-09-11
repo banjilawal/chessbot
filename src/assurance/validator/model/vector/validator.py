@@ -57,10 +57,7 @@ class VectorValidator(ModelValidator[Vector]):
         )
     
     @LoggingLevelRouter.monitor
-    def execute(
-            self,
-            request: VectorValidationRequest
-    ) -> ValidationResult[VectorCarrier]:
+    def execute(self, request: VectorValidationRequest) -> ValidationResult[VectorCarrier]:
         """
         Certify a candidate is a VectorCarrier whose payload is either a Vector
         or a Blueprint that is safe to use.

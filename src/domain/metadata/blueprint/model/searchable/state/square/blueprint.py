@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import Board, Coord, Square, StateModelBlueprint, Token
+from domain import Board, Coord, Square, SquareState, StateModelBlueprint, Token
 from err import SquareNullException
 
 
@@ -41,6 +41,7 @@ class SquareBlueprint(StateModelBlueprint[Square]):
     _name: str
     _board: Board
     _coord: Coord
+    _state: SquareState
     _occupant: Optional[Token]
     
     def __init__(
@@ -49,6 +50,7 @@ class SquareBlueprint(StateModelBlueprint[Square]):
             board: Board,
             coord: Coord,
             occupant: Optional[Token] | None = None,
+            state: Optional[SquareState] | None = None,
             domain_class: Optional[Type[Square]] | None = None,
             domain_null_exception: Optional[SquareNullException] | None = None,
             id: Optional[int] | None = None,
@@ -59,6 +61,7 @@ class SquareBlueprint(StateModelBlueprint[Square]):
             board: Board
             coord: Coord
             occupant: Optional[Token]
+            state: Optional[SquareState]
             domain_class: Optional[Type[Square]]
             domain_null_exception: Optional[SquareNullException]
             id: Optional[int]
@@ -72,6 +75,7 @@ class SquareBlueprint(StateModelBlueprint[Square]):
         self._board = board
         self._coord = coord
         self._occupant = occupant
+        self._state = state or SquareState.EMPTY
     
     @property
     def name(self) -> str:
@@ -84,6 +88,10 @@ class SquareBlueprint(StateModelBlueprint[Square]):
     @property
     def coord(self) -> Coord:
         return self._coord
+    
+    @property
+    def state(self) -> SquareState:
+        return self._state
     
     @property
     def occupant(self) -> Optional[Token]:
