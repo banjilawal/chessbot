@@ -17,7 +17,10 @@ from domain import (
     CombatantBlueprint, Formation, HomeSquare, KingTokenBlueprint, PawnTokenBlueprint, 
     Team, Token, TokenBlueprint, TokenValidationRequest
 )
-from err import FormationNullException, TokenValidationRequestNullException, TokenValidatorException
+from err import (
+    FormationNullException, TokenCarrierEmptyException, TokenValidationRequestNullException,
+    TokenValidatorException
+)
 from transit import TokenCarrier
 from util import LoggingLevelRouter
 
@@ -137,11 +140,11 @@ class TokenValidator(ModelValidator[Token]):
                     cls_name=self.__class__.__name__,
                     msg=TokenValidatorException.MSG,
                     err_code=TokenValidatorException.ERR_CODE,
-                    ex=EmptyTokenCarrierException(
+                    ex=TokenCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyTokenCarrierException.MSG,
-                        err_code=EmptyTokenCarrierException.ERR_CODE,
+                        msg=TokenCarrierEmptyException.MSG,
+                        err_code=TokenCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

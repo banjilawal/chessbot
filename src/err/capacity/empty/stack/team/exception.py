@@ -1,7 +1,7 @@
-# src/err/capacity/empty/carrier/edge/exception.py
+# src/err/capacity/empty/stack/token/exception.py
 
 """
-Module: err.capacity.empty.carrier.edge.exception
+Module: err.capacity.empty.stack.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,23 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import CarrierEmptyItemException
+from err import EmptyStackException
+from artifcat import MethodResultType
+
 
 __all__ = [
-    # ======================# EDGE_CARRIER_EMPTY_ERROR #======================#
-    "EdgeCarrierEmptyItemException",
+    # ======================# TOKEN_STACK_EMPTY_ERROR #======================#
+    "TokenStackEmptyException",
 ]
 
-# ======================# EDGE_CARRIER_EMPTY_ERROR #======================#
-class EdgeCarrierEmptyItemException(CarrierEmptyItemException):
+# ======================# TOKEN_STACK_EMPTY_ERROR #======================#
+class TokenStackEmptyException(EmptyStackException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a EdgeCarrier is empty.
+        1.  Indicating a TokenStack is empty.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +43,10 @@ class EdgeCarrierEmptyItemException(CarrierEmptyItemException):
     Provides:
 
     Super Class:
-        CarrierEmptyItemException
+        StackEmptyException
     """
-    MSG = "EdgeCarrier cannot be empty."
-    ERR_CODE = "EDGE_CARRIER_EMPTY_ERROR"
+    MSG = "The TokenStack is empty."
+    ERR_CODE = "TOKEN_STACK_EMPTY_ERROR"
     
     def __init__(
             self,

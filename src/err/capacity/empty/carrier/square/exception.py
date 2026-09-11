@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import CarrierEmptyItemException
+from err import EmptyCarrierException
 
 __all__ = [
     # ======================# SQUARE_CARRIER_EMPTY_ERROR #======================#
-    "SquareCarrierEmptyItemException",
+    "SquareCarrierEmptyException",
 ]
 
 # ======================# SQUARE_CARRIER_EMPTY_ERROR #======================#
-class SquareCarrierEmptyItemException(CarrierEmptyItemException):
+class SquareCarrierEmptyException(EmptyCarrierException):
     """
     Role:
         - Error Tracing

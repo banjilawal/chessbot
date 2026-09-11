@@ -14,10 +14,10 @@ from .arena import *
 from .array import *
 from .binder import *
 from .board import *
+from .carrier import *
 from .graph import *
 from .query import *
 from .request import *
-from .square import *
 from .stack import *
 
 # Modules

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StackEmptyException
+from err import EmptyStackException
 
 __all__ = [
     # ======================# HOSTAGE_STACK_EMPTY_ERROR #======================#
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# HOSTAGE_STACK_EMPTY_ERROR #======================#
-class HostageStackEmptyException(StackEmptyException):
+class HostageStackEmptyException(EmptyStackException):
     """
     Role:
         - Error Tracing

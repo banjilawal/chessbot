@@ -14,7 +14,9 @@ from typing import Optional, Type, cast
 from artifcat import ValidationResult
 from assurance import ModelValidator, VectorValidatorToolkit
 from domain import Vector, VectorBlueprint, VectorValidationRequest
-from err import VectorValidationRequestNullException, VectorValidatorException
+from err import (
+    VectorCarrierEmptyException, VectorValidationRequestNullException, VectorValidatorException
+)
 from transit import VectorCarrier
 from util import LoggingLevelRouter
 
@@ -124,7 +126,24 @@ class VectorValidator(ModelValidator[Vector]):
         )
         # --- Extract the blueprint to verify the attributes. ---#
         blueprint = carrier.extract_blueprint()
-        
+        # Handle the case that there is no blueprint.
+        if blueprint is None:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                VectorValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=VectorValidatorException.MSG,
+                    err_code=VectorValidatorException.ERR_CODE,
+                    ex=VectorCarrierEmptyException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=VectorCarrierEmptyException.MSG,
+                        err_code=VectorCarrierEmptyException.ERR_CODE,
+                    ),
+                )
+            )
+            
         # Handle the case that any vector component in the blueprint is flagged.
         numbers = []
         for number in [blueprint.x, blueprint.y]:

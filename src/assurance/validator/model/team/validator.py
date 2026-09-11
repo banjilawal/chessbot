@@ -14,7 +14,10 @@ from typing import Any, Optional, cast
 from artifcat import ValidationResult
 from assurance import ModelValidator, TeamValidatorToolkit
 from domain import Archetype, Board, Player, Team, TeamValidationRequest
-from err import ArchetypeNullException, TeamValidationRequestNullException, TeamValidatorException
+from err import (
+    ArchetypeNullException, TeamCarrierEmptyException, TeamValidationRequestNullException,
+    TeamValidatorException
+)
 from transit import TeamCarrier
 from util import LoggingLevelRouter
 
@@ -138,17 +141,14 @@ class TeamValidator(ModelValidator[Team]):
                     cls_name=self.__class__.__name__,
                     msg=TeamValidatorException.MSG,
                     err_code=TeamValidatorException.ERR_CODE,
-                    ex=EmptyTeamCarrierException(
+                    ex=TeamCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyTeamCarrierException.MSG,
-                        err_code=EmptyTeamCarrierException.ERR_CODE,
+                        msg=TeamCarrierEmptyException.MSG,
+                        err_code=TeamCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
-        
-        
-        
         # Handle the case that any id in the blueprint is flagged.
         id_test = self.toolkit.helper.blueprint_id_extractor.execute(
             candidate=blueprint,

@@ -1,7 +1,7 @@
-# src/err/capacity/empty/carrier/hostage/exception.py
+# src/err/capacity/empty/stack/square/exception.py
 
 """
-Module: err.capacity.empty.carrier.hostage.exception
+Module: err.capacity.empty.stack.square.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,23 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import CarrierEmptyItemException
+from err import EmptyStackException
+from artifcat import MethodResultType
+
 
 __all__ = [
-    # ======================# HOSTAGE_CARRIER_EMPTY_ERROR #======================#
-    "HostageCarrierEmptyItemException",
+    # ======================# SQUARE_STACK_EMPTY_ERROR #======================#
+    "SquareStackEmptyException",
 ]
 
-# ======================# HOSTAGE_CARRIER_EMPTY_ERROR #======================#
-class HostageCarrierEmptyItemException(CarrierEmptyItemException):
+# ======================# SQUARE_STACK_EMPTY_ERROR #======================#
+class SquareStackEmptyException(EmptyStackException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a HostageCarrier is empty.
+        1.  Indicating a SquareStack is empty.
 
     Attributes:
         msg: Optional[str]
@@ -37,14 +39,14 @@ class HostageCarrierEmptyItemException(CarrierEmptyItemException):
         cls_mthd: Optional[str]
         err_code: Optional[str]
         mthd_rslt_type: Optional[MethodResultType]
-        
+            
     Provides:
 
     Super Class:
-        CarrierEmptyItemException
+        StackEmptyException
     """
-    MSG = "HostageCarrier cannot be empty."
-    ERR_CODE = "HOSTAGE_CARRIER_EMPTY_ERROR"
+    MSG = "The SquareStack is empty."
+    ERR_CODE = "SQUARE_STACK_EMPTY_ERROR"
     
     def __init__(
             self,

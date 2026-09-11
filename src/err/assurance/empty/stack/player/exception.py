@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StackEmptyException
+from err import EmptyStackException
 
 __all__ = [
     # ======================# PLAYER_STACK_EMPTY_ERROR #======================#
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# PLAYER_STACK_EMPTY_ERROR #======================#
-class PlayerStackEmptyException(StackEmptyException):
+class PlayerStackEmptyException(EmptyStackException):
     """
     Role:
         - Error Tracing

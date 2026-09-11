@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import CarrierEmptyItemException
+from err import EmptyCarrierException
 
 __all__ = [
     # ======================# BOARD_CARRIER_EMPTY_ERROR #======================#
-    "BoardCarrierEmptyItemException",
+    "BoardCarrierEmptyException",
 ]
 
 # ======================# BOARD_CARRIER_EMPTY_ERROR #======================#
-class BoardCarrierEmptyItemException(CarrierEmptyItemException):
+class BoardCarrierEmptyException(EmptyCarrierException):
     """
     Role:
         - Error Tracing

@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import AttributeHelperTable, NumberValidator, PrimingValidator
+from assurance import AttributeHelperTable, BoardValidator, NumberValidator, PrimingValidator
 from domain import Coord
 
 class CoordHelperTable(AttributeHelperTable[Coord]):
@@ -25,20 +25,24 @@ class CoordHelperTable(AttributeHelperTable[Coord]):
             partners attributes.
 
     Attributes:
+        board_validator: BoardValidator
 
     Provides:
 
     Super Class:
         AttributeHelperTable
     """
+    _board_validator: BoardValidator
     
     def __init__(
             self,
+            board_validator: Optional[BoardValidator] | None = None,
             number_validator: Optional[NumberValidator] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
     ):
         """
         Args:
+            board_validator: Optional[BoardValidator]
             number_validator: Optional[NumberValidator]
             priming_validator: Optional[PrimingValidator]
         """
@@ -46,3 +50,9 @@ class CoordHelperTable(AttributeHelperTable[Coord]):
             number_validator=number_validator,
             priming_validator=priming_validator,
         )
+        self._board_validator = board_validator or BoardValidator()
+    
+    @property
+    def board_validator(self) -> BoardValidator:
+        return self._board_validator
+    

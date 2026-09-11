@@ -1,7 +1,7 @@
-# src/err/capacity/empty/carrier/snapshot/exception.py
+# src/err/capacity/empty/stack/coord/exception.py
 
 """
-Module: err.capacity.empty.carrier.snapshot.exception
+Module: err.capacity.empty.stack.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,23 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import CarrierEmptyItemException
+from err import EmptyStackException
+from artifcat import MethodResultType
+
 
 __all__ = [
-    # ======================# SNAPSHOT_CARRIER_EMPTY_ERROR #======================#
-    "SnapshotCarrierEmptyItemException",
+    # ======================# COORD_STACK_EMPTY_ERROR #======================#
+    "CoordStackEmptyException",
 ]
 
-# ======================# SNAPSHOT_CARRIER_EMPTY_ERROR #======================#
-class SnapshotCarrierEmptyItemException(CarrierEmptyItemException):
+# ======================# COORD_STACK_EMPTY_ERROR #======================#
+class CoordStackEmptyException(EmptyStackException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a SnapshotCarrier is empty.
+        1.  Indicating a CoordStack is empty.
 
     Attributes:
         msg: Optional[str]
@@ -37,14 +39,14 @@ class SnapshotCarrierEmptyItemException(CarrierEmptyItemException):
         cls_mthd: Optional[str]
         err_code: Optional[str]
         mthd_rslt_type: Optional[MethodResultType]
-        
+            
     Provides:
 
     Super Class:
-        CarrierEmptyItemException
+        StackEmptyException
     """
-    MSG = "SnapshotCarrier cannot be empty."
-    ERR_CODE = "SNAPSHOT_CARRIER_EMPTY_ERROR"
+    MSG = "The CoordStack is empty."
+    ERR_CODE = "COORD_STACK_EMPTY_ERROR"
     
     def __init__(
             self,
