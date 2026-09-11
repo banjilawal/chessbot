@@ -15,7 +15,7 @@ from typing import Optional, Type, cast
 from collection import CoordDatabase
 from domain import (
     CombatantToken, Coord, TokenDeployment, Formation, HomeSquare, KingToken, PawnToken,
-    Rank, StateModelBlueprint, Team, Token, TokenReadiness
+    Rank, StateModelBlueprint, Team, Token
 )
 from err import (
     CombatantNullException, KingTokenNullException, PawnTokenNullException, TokenNullException
@@ -47,11 +47,9 @@ class TokenBlueprint(StateModelBlueprint[Token]):
         StateModelBlueprint
      """
     _team: Team
-    _rank: Rank
     _formation: Formation
     _positions: CoordDatabase
     _deployment: TokenDeployment
-    _captor: Optional[Token]
     _position: Optional[Coord]
     _previous_position: Optional[Coord]
     _home_square: Optional[HomeSquare]
@@ -64,13 +62,10 @@ class TokenBlueprint(StateModelBlueprint[Token]):
             self,
             team: Team,
             formation: Formation,
-            rank: Optional[Rank] | None = None,
-            captor: Optional[Token] | None = None,
             position: Optional[Coord] | None = None,
             previous_position: Optional[Coord] | None = None,
             home_square: Optional[HomeSquare] | None = None,
             positions: Optional[CoordDatabase] | None = None,
-            readiness: Optional[TokenReadiness] | None = None,
             deployment: Optional[TokenDeployment] | None = None,
             domain_class: Optional[Type[Token]] | None = None,
             domain_null_exception: Optional[TokenNullException] | None = None,
@@ -80,7 +75,6 @@ class TokenBlueprint(StateModelBlueprint[Token]):
         Args:
             team: Team,
             formation: Formation
-            rank: Optional[Rank]
             positions: Optional[CoordDatabase]
             domain_class: Optional[Type[Token]]
             domain_null_exception: Optional[TokenNullException]
@@ -92,13 +86,10 @@ class TokenBlueprint(StateModelBlueprint[Token]):
             domain_null_exception=domain_null_exception or TokenNullException(),
         )
         self._team = team
-        self._captor = captor
         self._formation = formation
         self._home_square = home_square
-        self._rank = rank or formation.rank
         self._position = position
         self._previous_position = previous_position
-        self._readiness = readiness or TokenReadiness.NOT_INITIALIZED
         self._deployment = deployment or TokenDeployment.NOT_DEPLOYED
         self._positions = positions or CoordDatabase()
     
@@ -117,10 +108,6 @@ class TokenBlueprint(StateModelBlueprint[Token]):
     @property
     def positions(self) -> CoordDatabase:
         return self._positions
-    
-    @property
-    def readiness(self) -> TokenReadiness:
-        return self._readiness
     
     @property
     def deployment(self) -> TokenDeployment:

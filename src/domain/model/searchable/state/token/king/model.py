@@ -78,7 +78,7 @@ class KingToken(Token):
         )
         self._checkmate = None
         self._check_warning = None
-        self._readiness = KingReadiness.OFF_BOARD
+        self._readiness = KingReadiness.READY
         
     @property
     def readiness(self) -> KingReadiness:

@@ -12,8 +12,13 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from collection import CoordDatabase
-from domain import KingToken, Formation, HomeSquare, Rank, Team, TokenBlueprint
+from domain import (
+    CheckWarning, CheckmateAttack, Coord, KingReadiness, KingToken, Formation, HomeSquare, Rank, Team,
+    TokenBlueprint
+)
 from err import KingTokenNullException
+from game import Checkmate
+from sensor import KingReadinessAnalyzer
 
 
 class KingTokenBlueprint(TokenBlueprint):
@@ -39,47 +44,61 @@ class KingTokenBlueprint(TokenBlueprint):
      Super Class:
         TokenBlueprint
      """
-    _check_count: Optional[int]
+    _readiness: KingReadiness
+    _checkmate: Optional[CheckmateAttack]
+    _check_warning: Optional[CheckWarning]
 
     
     def __init__(
             self,
             team: Team,
             formation: Formation,
-            rank: Optional[Rank] | None = None,
+            position: Optional[Coord] | None = None,
+            previous_position: Optional[Coord] | None = None,
             home_square: Optional[HomeSquare] | None = None,
-            positions: Optional[CoordDatabase] | None = None,
+            readiness: Optional[KingReadiness] | None = None,
+            checkmate: Optional[CheckmateAttack] | None = None,
+            check_warning: Optional[CheckWarning] | None = None,
             domain_class: Optional[Type[KingToken]] | None = None,
             domain_null_exception: Optional[KingTokenNullException] | None = None,
             id: Optional[int] | None = None,
-            check_count: Optional[int] | None = None,
     ):
         """
         Args:
             team: Team,
             formation: Formation
-            rank: Optional[Rank]
-            positions: Optional[CoordDatabase]
+            readiness: Optional[KingReadiness],
+            checkmate: Optional[CheckmateAttack]
+            check_warning: Optional[CheckWarning]
             domain_class: Optional[Type[KingToken]]
             domain_null_exception: Optional[KingTokenNullException]
             id: Optional[int]
-            check_count: Optional[int]
         """
         super().__init__(
             id=id,
             team=team,
-            rank=rank,
+            position=position,
             formation=formation,
-            positions=positions,
             home_square=home_square,
+            previous_position=previous_position,
             domain_class=domain_class or Type[KingToken],
             domain_null_exception=domain_null_exception or KingTokenNullException(),
         )
-        self._check_count = check_count or 0
+        self._checkmate = checkmate
+        self._check_warning = check_warning
+        self._readiness = readiness or KingReadiness.READY
         
     @property
-    def check_count(self) -> int:
-        return self._check_count
+    def readiness(self) -> KingReadiness:
+        return self._readiness
+        
+    @property
+    def checkmate(self) -> Optional[CheckmateAttack]:
+        return self._checkmate
+    
+    @property
+    def check_warning(self) -> Optional[CheckWarning]:
+        return self._check_warning
     
     @property
     def domain_class(self) -> Type[KingToken]:
