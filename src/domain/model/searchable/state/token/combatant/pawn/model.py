@@ -30,27 +30,12 @@ class PawnToken(CombatantToken):
         id: int
         team: Team
         rank: Rank
-        designation: str
-        roster_number: int
-        positions: CoordDatabase
-        home_square: OpeningSquare
-        current_position: Optional[Coord]
-        previous_address: Optional[Coord]
-        token_board_state: TokenBoardState
-        readiness_state: TokenActivityState
-        is_not_deployed: bool
-        is_active(self): bool
-        is_disabled: bool
-        is_enemy: bool
-        has_entered_hostage_process: bool
-        being_processed_as_hostage: bool
-        recorded_as_hostage: bool
-        captor: Optional[Token]
-        previous_rank: Optional[Rank]
-        promotion_state:
-        previous_rank: Optional[Rank]
-        can_promote:  bool
+        formation: Formation
+        promotion_state: PromotionState
+
+        is_promotable: bool
         is_promoted: bool
+        is_not_promoted: bool
         
     Provides:
         
@@ -103,7 +88,7 @@ class PawnToken(CombatantToken):
         self._promotion_state = promotion_state
         
     @property
-    def is_promotable(self) -> bool:
+    def promotable(self) -> bool:
         position = self.position
         
         if not self.is_ready:
@@ -117,8 +102,8 @@ class PawnToken(CombatantToken):
         return True
     
     @property
-    def is_not_promotable(self) -> bool:
-        return not self.is_promotable
+    def not_promotable(self) -> bool:
+        return not self.promotable
     
     @property
     def is_promoted(self) -> bool:

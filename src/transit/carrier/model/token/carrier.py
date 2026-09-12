@@ -9,6 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from abc import abstractmethod
 from typing import Optional, Type, TypeVar, cast
 
 from domain import KingToken, Model, PawnToken, Token, TokenBlueprint
@@ -92,44 +93,9 @@ class TokenCarrier(ModelCarrier[Token]):
     def is_over_capacity(self) -> bool:
         return self.size > 1
 
+    @abstractmethod
     def extract_blueprint(self) -> Optional[TokenBlueprint]:
-        if self.is_empty: return None
-        if self.is_carrying_blueprint: return self._blueprint
-
-        model = cast(Type[self._model], self._model)
-        
-        if isinstance(model, PawnToken):
-            return TokenBlueprint(
-                id=model.id,
-                team=model.team,
-                rank=model.rank,
-                captor=model.captor,
-                readiness=model.readiness,
-                formation=model.formation,
-                positions=model.positions,
-                home_square=model.home_square,
-                deployment=model.deployment,
-            )
-        if isinstance(model, KingToken):
-            return TokenBlueprint(
-                id=model.id,
-                team=model.team,
-                readiness=model.readiness,
-                formation=model.formation,
-                positions=model.positions,
-                home_square=model.home_square,
-                deployment=model.deployment,
-            )
-        return TokenBlueprint(
-            id=model.id,
-            team=model.team,
-            captor=model.captor,
-            readiness=model.readiness,
-            formation=model.formation,
-            positions=model.positions,
-            home_square=model.home_square,
-            deployment=model.deployment,
-        )
+        pass
     
     @property
     def is_king_token_carrier(self) -> bool:

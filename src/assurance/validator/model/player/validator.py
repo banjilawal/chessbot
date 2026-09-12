@@ -4,135 +4,131 @@
 Module: assurance.validator.model.player.validator
 Author: Banji Lawal
 Created: 2026-04-03
-version: 0.0.2
+version: 1.0.2
 """
 
 from __future__ import annotations
 
+from typing import Optional, cast
+
+from artifcat import ValidationResult
+from assurance import (
+    MachinePlayerValidator, HumanPlayerValidator, ModelValidator, PawnPlayerValidator,
+    PlayerValidatorToolkit
+)
+from domain import Player, PlayerValidationRequest
+from err import PlayerValidationRequestNullException, PlayerValidatorException
+from transit import MachineCarrier, HumanPlayerCarrier, PawnPlayerCarrier, PlayerCarrier
+from util import LoggingLevelRouter
+
 
 class PlayerValidator(ModelValidator[Player]):
     """
-     Role:Validation, Data Integrity Guarantor, Security.
+    Role
+        - Integrity, Consistency Maintenance
 
     Responsibilities:
-    1.  Ensure an PlayerBlueprint instance is certified safe, reliable and consistent before use.
-    2.  If a rank fails a safety test, the validation sends an exception in a ValidationResult.
-    
-    Super Class:
-        *   Validator
+        1.  Ensure a PlayerCarrier and its contents instance is safe before use.
+
+    Attributes:
+        toolkit: PlayerValidationToolkit
 
     Provides:
+        - def execute(request: PlayerValidationRequest) ->ValidationResult[PlayerCarrier]:
 
-
-    # INHERITED ATTRIBUTES:
-    None
+    Super Class:
+        ModelValidator
     """
-    @classmethod
+    
+    def __init__(
+            self,
+            toolkit: Optional[PlayerValidatorToolkit] | None = None,
+    ):
+        """
+        Args:
+            toolkit: Optional[PlayerValidationToolkit]
+        """
+        super().__init__(toolkit=toolkit or PlayerValidatorToolkit())
+    
+    @property
+    def toolkit(self) -> PlayerValidatorToolkit:
+        return cast(
+            PlayerValidatorToolkit,
+            super().toolkit,
+        )
+    
     @LoggingLevelRouter.monitor
-    def validate(
-            cls,
-            candidate: Any,
-            team_service: TeamService = TeamService(),
-            game_service: GameService = GameService(),
-            identity_service: IdentityService = IdentityService(),
-    ) -> ValidationResult[Player]:
+    def execute(self, request: PlayerValidationRequest) -> ValidationResult[PlayerCarrier]:
         """
-        # ACTION:
-            1.  If the rank passes existence and type checks cast into a PlayerBlueprint for
-                additional integrity tests. Else return an exception in the ValidationResult.
-            2.  If one-and-only-one PlayerBlueprint attribute-value-tuple is enabled goto the integrity
-                check. Else, return an exception in the ValidationResult.
-            3.  Route to the appropriate validation subflow with the attribute as the routing key.
-            4.  If the validation subflow certifies the map tuple return it in the validation result.
-                Else, send the exception in the ValidationResult.
+        Certify a candidate is a PlayerCarrier whose payload is either a Player
+        or a Blueprint that is safe to use.
 
-        # PARAMETERS:
-            *   rank (Any)
-            *   team_service (TeamService)
-            *   game_service (GameService)
-            *   identity_service (IdentityService)
-
-        # RETURNS:
-        ValidationResult[Player] containing either:
-            - On success: PlayerBlueprint in the payload.
-            - On failure: Exception.
-
+        Action:
+            1.  Send an exception chain in the ValidationResult if any of the following
+                occur
+                    - The candidate is not a PlayerCarrier or its null.
+                    - The candidate is an empty PlayerCarrier.
+                    - Any Player attribute is flagged.
+            2.  Otherwise, Send a Carrier with the correct type of payload in the success
+                result.
+        Args:
+            candidate, Any
+        Returns:
+            ValidationResult[PlayerCarrier]
         Raises:
-            *   TypeError
-            *   NullPlayerBlueprintException
-            *   NoPlayerBlueprintFlagException
-            *   ArenaPlayerBlueprintFlagsException
-            *   InvalidPlayerBlueprintException
+            PlayerValidatorException
         """
-        method = "PlayerValidator.execute"
-        try:
-            # Handle the nonexistence case.
-            if candidate is None:
-                return ValidationResult.failure(
-                    NullPlayerBlueprintException(f"{method}: {NullPlayerBlueprintException.MSG}")
-                )
-            # Handle the wrong class case.
-            if not isinstance(candidate, PlayerBlueprint):
-                return ValidationResult.failure(
-                    TypeError(f"{method}: Expected PlayerBlueprint, got {type(candidate).__name__} instead.")
-                )
-            
-            # After existence and type checks are successful cast the candidate into an PlayerBlueprint
-            # for additional tests.
-            blueprint = cast(PlayerBlueprint, candidate)
-            
-            # Handle the no map flag enabled case.
-            if len(blueprint.to_dict()) == 0:
-                return ValidationResult.failure(
-                    ZeroPlayerBlueprintFlagsException(f"{method}: {ZeroPlayerBlueprintFlagsException.MSG}")
-                )
-            # Handle the arena map flags case.
-            if len(blueprint.to_dict()) > 1:
-                return ValidationResult.failure(
-                    ArenaPlayerBlueprintFlagsException(
-                        f"{method}: {ArenaPlayerBlueprintFlagsException.MSG}"
-                    )
-                )
-            
-            # Using the tuple's attribute as an address, route to appropriate validation subflow.
-            
-            # Which ever attribute value is not null should be certified safe by the appropriate validator.
-            if blueprint.id is not None:
-                validation = identity_service.validate_id(candidate=blueprint.id)
-                if validation.is_failure:
-                    return ValidationResult.failure(modelValidator.exception)
-                return ValidationResult.success(blueprint)
-            
-            if blueprint.name is not None:
-                validation = identity_service.validate_name(candidate=blueprint.name)
-                if validation.is_failure:
-                    return ValidationResult.failure(modelValidator.exception)
-                return ValidationResult.success(blueprint)
-            
-            if blueprint.team is not None:
-                validation = team_service.execute.execute(candidate=blueprint.team)
-                if validation.is_failure:
-                    return ValidationResult.failure(modelValidator.exception)
-                return ValidationResult.success(blueprint)
-            
-            if blueprint.game is not None:
-                validation = game_service.execute.execute(candidate=blueprint.game)
-                if validation.is_failure:
-                    return ValidationResult.failure(modelValidator.exception)
-                return ValidationResult.success(blueprint)
-            
-            if blueprint.variety is not None:
-                if blueprint.variety not in [PlayerVariety.HUMAN_PLAYER, PlayerVariety.MACHINE_PLAYER]:
-                    return ValidationResult.failure(
-                        TypeError(f"{method}: Expected PlayerType, got {type(candidate).__name__} instead.")
-                    )
-                return ValidationResult.success(blueprint)
+        method = f"{self.__class__.__name__}.execute"
         
-        # Finally, catch any missed exception, wrap an InvalidPlayerBlueprintException around it then, return
-        # the exception-chain inside the ValidationResult.
-        except Exception as ex:
+        # Handle the case that the request is null or the wrong type.
+        priming_validation = self.toolkit.helper.priming_validator.execute(
+            candidate=request,
+            target_model=PlayerValidationRequest,
+            null_exception=PlayerValidationRequestNullException(),
+        )
+        if priming_validation.is_failure:
+            # Send the exception chain on failure.
             return ValidationResult.failure(
-                InvalidPlayerBlueprintException(
-                    ex=ex, msg=f"{method}: {InvalidPlayerBlueprintException.MSG}"
+                PlayerValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=PlayerValidatorException.MSG,
+                    err_code=PlayerValidatorException.ERR_CODE,
+                    ex=priming_validation.exception,
                 )
             )
+        # --- Cast the priming_validator payload for additional tests. ---#
+        safe_request = cast(PlayerValidationRequest, priming_validation.payload)
+        
+        # Handle the case that the request payload is null or the wrong type.
+        carrier_validation = self.toolkit.helper.priming_validator.execute(
+            candidate=safe_request.item,
+            target_model=self.toolkit.metadata.types.carrier,
+            null_exception=self.toolkit.metadata.nulls.carrier,
+        )
+        if carrier_validation.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                PlayerValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=PlayerValidatorException.MSG,
+                    err_code=PlayerValidatorException.ERR_CODE,
+                    ex=carrier_validation.exception,
+                )
+            )
+        # --- Cast the carrier_validation payload for additional tests. ---#
+        carrier = cast(PlayerCarrier, carrier_validation.payload)
+        
+        # --- Extract the blueprint to verify the attributes. ---#
+
+        if carrier.is_human_player_carrier:
+            validated_carrier = cast(HumanPlayerCarrier, carrier)
+            helper = HumanPlayerValidator()
+            return helper.execute(validated_carrier)
+        validated_carrier = cast(MachineCarrier, carrier)
+        helper = MachinePlayerValidator()
+        return helper.execute(validated_carrier)
+
+    
+    

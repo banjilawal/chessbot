@@ -97,10 +97,11 @@ class PawnTokenCarrier(CombatantCarrier):
             team=model.team,
             rank=model.rank,
             captor=model.captor,
-            previous_rank=model.previous_rank,
+            readiness=model.readiness,
             formation=model.formation,
-            positions=model.positions,
             home_square=model.home_square,
+            deployment=model.deployment,
+            promotion_state=model.promotion_state
         )
 
 

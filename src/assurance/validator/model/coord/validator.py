@@ -72,7 +72,7 @@ class CoordValidator(ModelValidator[Coord]):
                             null
                             not a CoordCarrier
                             an empty CoordCarrier.
-                    *   Either the id, board, or owner attributes are flagged unsafe.
+                    *   Either the board, row, or column attributes are flagged unsafe.
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
@@ -81,7 +81,6 @@ class CoordValidator(ModelValidator[Coord]):
             ValidationResult[CoordCarrier]
         Raises:
             CoordValidatorException
-            BoardCarrierEmptyException
         """
         method = f"{self.__class__.__name__}.execute"
         
