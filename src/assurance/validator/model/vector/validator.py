@@ -140,7 +140,6 @@ class VectorValidator(ModelValidator[Vector]):
                     ),
                 )
             )
-            
         # Handle the case that any vector component in the blueprint is flagged.
         numbers = []
         for number in [blueprint.x, blueprint.y]:

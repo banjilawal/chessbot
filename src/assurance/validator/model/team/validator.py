@@ -266,14 +266,12 @@ class TeamValidator(ModelValidator[Team]):
                     ),
                 )
             )
-        # --- Extract and cast payloads of the validation results. ---#
+        # --- Extract validation payloads. ---#
         id = cast(int, id_validation.payload)
         board = cast(Board, board_carrier.entity)
         owner = cast(Player, owner_carrier.entity)
         archetype = cast(Archetype, archetype_validation.payload)
-        
         # --- Forward the appropriate work product to the caller. ---#
-        
         # The model case
         if carrier.is_carrying_model:
             return ValidationResult.success(

@@ -118,11 +118,12 @@ class ScalarValidator(ModelValidator[Scalar]):
             )
         # --- Cast the carrier_validation payload for additional tests. ---#
         carrier = cast(
-            Type[self.toolkit.metadata.types.carrier],
+            ScalarCarrier,
             carrier_validation.payload,
         )
         # --- Extract the blueprint to verify the attributes. ---#
         blueprint = carrier.extract_blueprint()
+        
         # Handle the case that there is no blueprint.
         if blueprint is None:
             # Send the exception chain on failure.
@@ -140,7 +141,6 @@ class ScalarValidator(ModelValidator[Scalar]):
                     ),
                 )
             )
-            
         # Handle the case that any scalar component in the blueprint is flagged.
         magnitude_validation = self.toolkit.helper.number_validator.execute(blueprint.magnitude)
         if magnitude_validation.is_failure:
