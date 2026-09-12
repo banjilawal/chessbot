@@ -142,8 +142,8 @@ class ScalarValidator(ModelValidator[Scalar]):
             )
             
         # Handle the case that any scalar component in the blueprint is flagged.
-        magnitude_test = self.toolkit.helper.number_validator.execute(blueprint.magnitude)
-        if magnitude_test.is_failure:
+        magnitude_validation = self.toolkit.helper.number_validator.execute(blueprint.magnitude)
+        if magnitude_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ScalarValidatorException(
@@ -151,11 +151,11 @@ class ScalarValidator(ModelValidator[Scalar]):
                     cls_name=self.__class__.__name__,
                     msg=ScalarValidatorException.MSG,
                     err_code=ScalarValidatorException.ERR_CODE,
-                    ex=magnitude_test.exception,
+                    ex=magnitude_validation.exception,
                 )
             )
         # --- Extract and cast payloads of the validation results. ---#
-        magnitude = cast(int, magnitude_test.payload)
+        magnitude = cast(int, magnitude_validation.payload)
         # --- Forward the appropriate work product to the caller. ---#
         # The model case
         if carrier.is_carrying_model:

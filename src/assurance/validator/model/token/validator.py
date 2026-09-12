@@ -153,13 +153,13 @@ class TokenValidator(ModelValidator[Token]):
                 )
             )
         # Handle the case that any id in the blueprint is flagged.
-        id_test = self.toolkit.helper.blueprint_id_extractor.execute(
+        id_validation = self.toolkit.helper.blueprint_id_extractor.execute(
             candidate=blueprint,
             blueprint_owner_name=blueprint.domain_class_name,
             blueprint_type=self.toolkit.metadata.types.blueprint,
             blueprint_null_exception=self.toolkit.metadata.nulls.blueprint,
         )
-        if id_test.is_failure:
+        if id_validation.is_failure:
         # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidatorException(
@@ -167,17 +167,17 @@ class TokenValidator(ModelValidator[Token]):
                     cls_name=self.__class__.__name__,
                     msg=TokenValidatorException.MSG,
                     err_code=TokenValidatorException.ERR_CODE,
-                    ex=id_test.exception,
+                    ex=id_validation.exception,
                 )
             )
         # Handle the case that the team does not pass a validation check.
-        team_test = self.toolkit.helper.team_validator.execute(
+        team_validation = self.toolkit.helper.team_validator.execute(
             request=TeamValidationRequest(
                 id=IdFactory.next_id(class_name="TeamValidationRequest"),
                 item=TeamCarrier(model=blueprint.team),
             )
         )
-        if team_test.is_failure:
+        if team_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidatorException(
@@ -185,19 +185,19 @@ class TokenValidator(ModelValidator[Token]):
                     cls_name=self.__class__.__name__,
                     msg=TokenValidatorException.MSG,
                     err_code=TokenValidatorException.ERR_CODE,
-                    ex=team_test.exception,
+                    ex=team_validation.exception,
                 )
             )
-        team_carrier = cast(TeamCarrier, team_test.payload)
+        team_carrier = cast(TeamCarrier, team_validation.payload)
         
         
         # Handle the case that the formation does not pass a validation check.
-        formation_test = self.toolkit.helper.priming_validator.execute(
+        formation_validation = self.toolkit.helper.priming_validator.execute(
             candidate=blueprint.formation,
             target_model=Formation,
             null_exception=FormationNullException(),
         )
-        if formation_test.is_failure:
+        if formation_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidatorException(
@@ -205,7 +205,7 @@ class TokenValidator(ModelValidator[Token]):
                     cls_name=self.__class__.__name__,
                     msg=TokenValidatorException.MSG,
                     err_code=TokenValidatorException.ERR_CODE,
-                    ex=formation_test.exception,
+                    ex=formation_validation.exception,
                 )
             )
         # Handle the case that the home_square gets flagged.
@@ -225,9 +225,9 @@ class TokenValidator(ModelValidator[Token]):
             )
         
         # --- Extract and cast payloads of the validation results. ---#
-        id = cast(int, id_test.payload)
+        id = cast(int, id_validation.payload)
         team = cast(Team, team_carrier.entity)
-        formation = cast(Formation, formation_test.payload)
+        formation = cast(Formation, formation_validation.payload)
         home_square = cast(HomeSquare, home_detection.payload)
         
         if blueprint.is_king_token_blueprint:
