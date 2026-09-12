@@ -10,7 +10,9 @@ version: 0.0.2
 # ============ ERR.ASSURANCE.VALIDATOR.MODEL.STATE.TOKEN PACKAGE ===========#
 
 # Packages
-
+from .combatant import *
+from .king import *
+from .pawn import *
 
 # Modules
 from .exception import TokenValidatorException

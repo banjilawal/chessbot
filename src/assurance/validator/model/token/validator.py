@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    CombatantCarrierValidator, KingTokenCarrierValidator, ModelValidator, PawnTokenCarrierValidator,
+    CombatantCarrierValidator, KingTokenValidator, ModelValidator, PawnTokenCarrierValidator,
     TokenValidatorToolkit
 )
 from domain import (
@@ -129,6 +129,10 @@ class TokenValidator(ModelValidator[Token]):
         )
         # --- Extract the blueprint to verify the attributes. ---#
 
+        if carrier.is_king_token_carrier:
+            validated_carrier = cast(KingTokenCarrier, carrier)
+            sender = KingTokenValidator()
+            return sender.execute(id, home_square, validated_carrier)
         blueprint = carrier.extract_blueprint()
         
         # Handle the case that there is no blueprint.
@@ -228,7 +232,7 @@ class TokenValidator(ModelValidator[Token]):
         
         if blueprint.is_king_token_blueprint:
             validated_carrier = cast(KingTokenCarrier, carrier)
-            sender = KingTokenCarrierValidator()
+            sender = KingTokenValidator()
             return sender.execute(id, home_square, validated_carrier)
         if blueprint.is_pawn_token_blueprint:
             validated_carrier = cast(PawnTokenCarrier, carrier)

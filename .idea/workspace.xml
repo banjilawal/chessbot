@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/token/pawn/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/pawn/validator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/validator/model/state/token/combatant/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/validator/model/state/token/combatant/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/validator/model/state/token/king/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/validator/model/state/token/king/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/validator/model/state/token/pawn/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/assurance/validator/model/state/token/pawn/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/token/king/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/king/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/token/king/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/king/validator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/model/state/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/validator/model/state/token/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,61 +56,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0000000000058162" />
-      <entry key="S60" value="1.0000049093368308" />
-      <entry key="M2" value="1.006765585239575" />
-      <entry key="M5" value="2.055184144201036" />
-      <entry key="M10" value="8.642306441451872" />
-      <entry key="M15" value="16.430855545866986" />
-      <entry key="M30" value="33.07474395252911" />
-      <entry key="H1" value="65.56305793478315" />
-      <entry key="H2" value="244.1115300312701" />
-      <entry key="H4" value="738.0145564237073" />
-      <entry key="D1" value="3812.7835826116934" />
-      <entry key="W1" value="19074.96768183059" />
+      <entry key="MS100" value="4.2692618665584025E-28" />
+      <entry key="MS500" value="3.357921652090153E-6" />
+      <entry key="S2" value="0.04286372672618338" />
+      <entry key="S5" value="0.30810390503787805" />
+      <entry key="S10" value="0.7427238917477432" />
+      <entry key="S30" value="1.9626570419002058" />
+      <entry key="S60" value="4.0722633163542055" />
+      <entry key="M2" value="8.68062242905694" />
+      <entry key="M5" value="22.503399651514975" />
+      <entry key="M10" value="46.60602596829941" />
+      <entry key="M15" value="64.30620403777313" />
+      <entry key="M30" value="92.23710997537059" />
+      <entry key="H1" value="113.03973867741767" />
+      <entry key="H2" value="155.2693241038193" />
+      <entry key="H4" value="395.4869746809414" />
+      <entry key="D1" value="3350.938613443284" />
+      <entry key="W1" value="18752.804669461093" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="1.5288037923006654E-203" />
-      <entry key="S5" value="7.47722932461692E-82" />
-      <entry key="S10" value="2.7344649574257796E-41" />
-      <entry key="S30" value="3.092728740137228E-14" />
-      <entry key="S60" value="2.2184125118866141E-7" />
-      <entry key="M2" value="8.3686736431447E-4" />
-      <entry key="M5" value="0.15764372556729125" />
-      <entry key="M10" value="1.0007187005050868" />
-      <entry key="M15" value="1.889078465669063" />
-      <entry key="M30" value="3.620457190030634" />
-      <entry key="H1" value="5.825425043005196" />
-      <entry key="H2" value="14.32513702667848" />
-      <entry key="H4" value="36.41736025334584" />
-      <entry key="D1" value="215.04493890116285" />
-      <entry key="W1" value="917.0809174041771" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0004971607420725" />
+      <entry key="S2" value="1.1493221405279266" />
+      <entry key="S5" value="1.4673580017580903" />
+      <entry key="S10" value="1.6836358692740532" />
+      <entry key="S30" value="1.8809304337570576" />
+      <entry key="S60" value="1.9385967061874982" />
+      <entry key="M2" value="1.974071174300441" />
+      <entry key="M5" value="2.2432996181595373" />
+      <entry key="M10" value="3.0813457696658197" />
+      <entry key="M15" value="3.7893928819220695" />
+      <entry key="M30" value="4.981648166071622" />
+      <entry key="H1" value="5.954363605634488" />
+      <entry key="H2" value="8.242089686905548" />
+      <entry key="H4" value="19.777794793092085" />
+      <entry key="D1" value="188.28146725476813" />
+      <entry key="W1" value="902.0057300186954" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="7.208207162045473E-5" />
-      <entry key="MS500" value="0.14844495825917628" />
-      <entry key="S2" value="0.6207137457630562" />
-      <entry key="S5" value="0.8263357557536753" />
-      <entry key="S10" value="0.9090301181774316" />
-      <entry key="S30" value="0.9687077126978915" />
-      <entry key="S60" value="0.9842344419467333" />
-      <entry key="M2" value="0.999513234254131" />
-      <entry key="M5" value="2.198736094148549" />
-      <entry key="M10" value="9.603781482282725" />
-      <entry key="M15" value="18.269207166804957" />
-      <entry key="M30" value="36.64442548180982" />
-      <entry key="H1" value="71.34916775316766" />
-      <entry key="H2" value="258.39987039357493" />
-      <entry key="H4" value="774.3931516838676" />
-      <entry key="D1" value="4027.8004368142624" />
-      <entry key="W1" value="19992.03423689483" />
+      <entry key="MS100" value="1.9334923331866142E-11" />
+      <entry key="MS500" value="0.007210390062751868" />
+      <entry key="S2" value="0.3774481404597984" />
+      <entry key="S5" value="1.1955555640353877" />
+      <entry key="S10" value="2.047261430351213" />
+      <entry key="S30" value="3.6862717926023754" />
+      <entry key="S60" value="5.914723665029455" />
+      <entry key="M2" value="10.582069698021476" />
+      <entry key="M5" value="24.684824911404487" />
+      <entry key="M10" value="49.6249433774476" />
+      <entry key="M15" value="68.03702345297718" />
+      <entry key="M30" value="97.17511960386666" />
+      <entry key="H1" value="118.96629093416789" />
+      <entry key="H2" value="163.49143932219485" />
+      <entry key="H4" value="415.24276806154546" />
+      <entry key="D1" value="3539.1949868351453" />
+      <entry key="W1" value="19654.796179368852" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -135,7 +141,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/domain/model/searchable/state/token/king",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/assurance/validator/model/state/token",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -149,11 +155,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/assurance/validator/model/state/token" />
+      <recent name="$PROJECT_DIR$/src/err/assurance/validator/model/state/token/king" />
       <recent name="$PROJECT_DIR$/src/domain/model/searchable/state/token/king" />
       <recent name="$PROJECT_DIR$/src/domain/model/searchable/state/token/combatant" />
       <recent name="$PROJECT_DIR$/src/assurance/validator/model/token" />
-      <recent name="$PROJECT_DIR$/src/assurance/validator/model/token/pawn" />
-      <recent name="$PROJECT_DIR$/src/assurance/validator/model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/domain/model/searchable/state/token" />
@@ -839,7 +845,7 @@
       <workItem from="1787812398225" duration="195474000" />
       <workItem from="1788709512302" duration="4064000" />
       <workItem from="1788782347688" duration="75617000" />
-      <workItem from="1788969937518" duration="111659000" />
+      <workItem from="1788969937518" duration="113766000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
