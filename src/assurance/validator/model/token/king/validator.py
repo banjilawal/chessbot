@@ -14,7 +14,8 @@ from typing import Optional, cast
 from artifcat import ValidationResult
 from assurance import TokenValidatorToolkit
 from domain import (
-    Formation, KingToken, HomeSquare, KingTokenBlueprint, Team, TeamValidationRequest, TokenDeployment, TokenReadiness
+    Formation, KingReadiness, KingToken, HomeSquare, KingTokenBlueprint, Team, TeamValidationRequest, TokenDeployment,
+    TokenReadiness
 )
 from err import (
     FormationNullException, KingTokenValidatorException, NullException, TeamCarrierEmptyException,
@@ -170,7 +171,7 @@ class KingTokenValidator:
         # Handle the case that the readiness does not pass a validation check.
         readiness_validation = self._toolkit.helper.priming_validator.execute(
             candidate=blueprint.readiness,
-            target_model=TokenReadiness,
+            target_model=KingReadiness,
             null_exception=NullException(),
         )
         if readiness_validation.is_failure:
@@ -216,16 +217,17 @@ class KingTokenValidator:
                     ex=home_detection.exception,
                 )
             )
-        # --- Extract and cast payloads of the validation results. ---#
+        # --- Extract validation payloads. ---#
         id = cast(int, id_validation.payload)
         team = cast(Team, team_carrier.entity)
-        formation = cast(Formation, formation_validation.payload)
         home_square = cast(HomeSquare, home_detection.payload)
-        readiness = cast(TokenReadiness, readiness_validation.payload)
+        formation = cast(Formation, formation_validation.payload)
+        readiness = cast(KingReadiness, readiness_validation.payload)
         deployment = cast(TokenDeployment, deployment_validation.payload)
         
-        # --- Extract the blueprint to verify the attributes. ---#
-   
+        # --- Forward the appropriate work product to the caller. ---#
+        
+        # The model case.
         if validated_carrier.is_carrying_model:
             model = KingToken(
                 id=id,
@@ -240,23 +242,23 @@ class KingTokenValidator:
             model.check_warning = blueprint.check_warning
             model.previous_position = model.previous_position
             
-            return ValidationResult.success(
-                KingTokenCarrier(model=model)
-            )
-        # --- Forward the work product to the caller. ---#
+            return ValidationResult.success(KingTokenCarrier(model=model))
+        # Else the blueprint case
         return ValidationResult.success(
-            KingTokenCarrier(blueprint=KingTokenBlueprint(
-                id=id,
-                team=team,
-                formation=formation,
-                readiness=readiness,
-                deployment=deployment,
-                home_square=home_square,
-                position=blueprint.position,
-                checkmate=blueprint.checkmate,
-                check_warning=blueprint.check_warning,
-                previous_position=blueprint.previous_position,
+            KingTokenCarrier(
+                blueprint=KingTokenBlueprint(
+                    id=id,
+                    team=team,
+                    formation=formation,
+                    readiness=readiness,
+                    deployment=deployment,
+                    home_square=home_square,
+                    position=blueprint.position,
+                    checkmate=blueprint.checkmate,
+                    check_warning=blueprint.check_warning,
+                    previous_position=blueprint.previous_position,
             )
         )
+    )
     
     
