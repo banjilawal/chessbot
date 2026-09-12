@@ -9,123 +9,172 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from typing import Optional, Type, cast
+
+from artifcat import ValidationResult
+from assurance import ModelValidator, GameValidatorToolkit
+from domain import Game, GameBlueprint, GameValidationRequest
+from err import (
+    GameCarrierEmptyException, GameValidationRequestNullException, GameValidatorException
+)
+from transit import GameCarrier
+from util import LoggingLevelRouter
+
 
 class GameValidator(ModelValidator[Game]):
     """
-     Role:Validation, Data Integrity Guarantor, Security.
+    Role
+        - Integrity, Consistency Maintenance
 
     Responsibilities:
-    1.  Ensure a GameBlueprint instance is certified safe, reliable and consistent before use.
-    2.  If verification fails indicate the reason in an exception, returned to the caller.
+        1.  Ensure a GameCarrier and its contents instance is safe before use.
+
+    Attributes:
+        toolkit: GameValidationToolkit
+
+    Provides:
+        - def execute(request: GameValidationRequest) ->ValidationResult[GameCarrier]:
 
     Super Class:
-        *   Validator
-
-    # PROVIDES:
-        * GameValidator
-
-    
-    # INHERITED ATTRIBUTES:
-    None
+        ModelValidator
     """
     
-    @classmethod
+    def __init__(
+            self,
+            toolkit: Optional[GameValidatorToolkit] | None = None,
+    ):
+        """
+        Args:
+            toolkit: Optional[GameValidationToolkit]
+        """
+        super().__init__(toolkit=toolkit or GameValidatorToolkit())
+    
+    @property
+    def toolkit(self) -> GameValidatorToolkit:
+        return cast(
+            GameValidatorToolkit,
+            super().toolkit,
+        )
+    
     @LoggingLevelRouter.monitor
-    def validate(
-            cls,
-            candidate: Any,
-            agent_service: AgentService = AgentService(),
-            identity_service: IdentityService = IdentityService(),
-    ) -> ValidationResult[Game]:
+    def execute(self, request: GameValidationRequest) -> ValidationResult[GameCarrier]:
         """
-        # ACTION:
-            1.  Confirm that only one in the (id, owner) tuple is not null.
-            2.  Certify the not-null attribute is safe using the appropriate entity_service and validator.
-            3.  If any check fais return a BuildResult containing the exception raised by the failure.
-            4.  On success send the verified GameBlueprint in a ValidationResult.
+        Certify a candidate is a GameCarrier whose payload is either a Game
+        or a Blueprint that is safe to use.
 
-        # PARAMETERS:
-        Only one these must be provided:
-            *   id (Optional[int])
-            *   owner (Optional[Player])
-
-        These Parameters must be provided:
-            *   player_service (AgentService)
-            *   identity_service (IdentityService)
-
-        # RETURNS:
-        BuildResult[Game] containing either:
-            - On success: GameBlueprint in the payload.
-            - On failure: Exception.
-
+        Action:
+            1.  Send an exception chain in the ValidationResult if any of the following
+                occur
+                    - The candidate is not a GameCarrier or its null.
+                    - The candidate is an empty GameCarrier.
+                    - Any Game attribute is flagged.
+            2.  Otherwise, Send a Carrier with the correct type of payload in the success
+                result.
+        Args:
+            candidate, Any
+        Returns:
+            ValidationResult[GameCarrier]
         Raises:
-            *   TypeError
-            *   NullGameBlueprintException
-            *   ZeroGameBlueprintFlagsException
-            *   ArenaGameBlueprintFlagsException
-            *   InvalidGameBlueprintException
+            GameValidatorException
         """
-        method = "GameValidator.execute"
-        try:
-            # Handle the case that the rank does not exist.
-            if candidate is None:
-                return ValidationResult.failure(
-                    NullGameBlueprintException(f"{method}: {NullGameBlueprintException.MSG}")
-                )
-            # Handle the case that the rank is not a GameBlueprint.
-            if not isinstance(candidate, GameBlueprint):
-                return ValidationResult.failure(
-                    TypeError(f"{method}: Expected GameBlueprint, got {type(candidate).__name__} instead.")
-                )
-            # After existence and type checks cast the rank for further processing.
-            blueprint = cast(GameBlueprint, candidate)
-            
-            # Handle the case that no attribute-value tuple is enabled.
-            if len(blueprint.to_dict()) == 0:
-                return ValidationResult.failure(
-                    ZeroGameBlueprintFlagsException(f"{method}: {ZeroGameBlueprintFlagsException.MSG}")
-                )
-            # Handle the case that more than one attribute-value tuple is enabled.
-            if len(blueprint.to_dict()) == 0:
-                return ValidationResult.failure(
-                    ArenaGameBlueprintFlagsException(f"{method}: {ArenaGameBlueprintFlagsException.MSG}")
-                )
-            # Make sure a search target exists in the map. Cannot perform a search without an
-            
-            # property-value pair.
-            if len(blueprint.to_dict()) == 0:
-                return ValidationResult.failure(
-                    ZeroGameBlueprintFlagsException(f"{method}: {ZeroGameBlueprintFlagsException.MSG}")
-                )
-            # Return an error if more than one property value pair exists in the map.
-            if len(blueprint.to_dict()) > 1:
-                return ValidationResult.failure(
-                    ArenaGameBlueprintFlagsException(
-                        f"{method}: {ArenaGameBlueprintFlagsException.MSG}"
-                    )
-                )
-            
-            # Build the id GameBlueprint if its flag is enabled.
-            if blueprint.id is not None:
-                validation = identity_service.validate_id(candidate=blueprint.id)
-                if validation.is_failure:
-                    return ValidationResult.failure(modelValidator.exception)
-                # On validation success return the id_game_blueprint in a ValidationResult.
-                return ValidationResult.success(blueprint)
-            
-            # Verify the id flag if its enabled.
-            if blueprint.agent is not None:
-                validation = agent_service.execute.search_service(candidate=blueprint.agent)
-                if validation.is_failure:
-                    return ValidationResult.failure(modelValidator.exception)
-                # On validation success return the agent_game_blueprint in a ValidationResult.
-                return ValidationResult.success(blueprint)
-            
-        # Finally, for unhandled exception, wrap it inside an InvalidGameBlueprintException. Then send the
-        # exception-chain in a ValidationResult.
-        except Exception as ex:
+        method = f"{self.__class__.__name__}.execute"
+        
+        # Handle the case that the request is null or the wrong type.
+        priming_validation = self.toolkit.helper.priming_validator.execute(
+            candidate=request,
+            target_model=GameValidationRequest,
+            null_exception=GameValidationRequestNullException(),
+        )
+        if priming_validation.is_failure:
+            # Send the exception chain on failure.
             return ValidationResult.failure(
-                InvalidGameBlueprintException(
-                    ex=ex, msg=f"{method}: {InvalidGameBlueprintException.MSG}"
+                GameValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=GameValidatorException.MSG,
+                    err_code=GameValidatorException.ERR_CODE,
+                    ex=priming_validation.exception,
                 )
             )
+        # --- Cast the priming_validator payload for additional tests. ---#
+        safe_request = cast(GameValidationRequest, priming_validation.payload)
+        
+        # Handle the case that the request payload is null or the wrong type.
+        carrier_validation = self.toolkit.helper.priming_validator.execute(
+            candidate=safe_request.item,
+            target_model=self.toolkit.metadata.types.carrier,
+            null_exception=self.toolkit.metadata.nulls.carrier,
+        )
+        if carrier_validation.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                GameValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=GameValidatorException.MSG,
+                    err_code=GameValidatorException.ERR_CODE,
+                    ex=carrier_validation.exception,
+                )
+            )
+        # --- Cast the carrier_validation payload for additional tests. ---#
+        carrier = cast(
+            Type[self.toolkit.metadata.types.carrier],
+            carrier_validation.payload,
+        )
+        # --- Extract the blueprint to verify the attributes. ---#
+        blueprint = carrier.extract_blueprint()
+        # Handle the case that there is no blueprint.
+        if blueprint is None:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                GameValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=GameValidatorException.MSG,
+                    err_code=GameValidatorException.ERR_CODE,
+                    ex=GameCarrierEmptyException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=GameCarrierEmptyException.MSG,
+                        err_code=GameCarrierEmptyException.ERR_CODE,
+                    ),
+                )
+            )
+        
+        # Handle the case that any game component in the blueprint is flagged.
+        numbers = []
+        for number in [blueprint.x, blueprint.y]:
+            validation = self.toolkit.helper.number_validator.execute(number)
+            if validation.is_failure:
+                # Send the exception chain on failure.
+                return ValidationResult.failure(
+                    GameValidatorException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=GameValidatorException.MSG,
+                        err_code=GameValidatorException.ERR_CODE,
+                        ex=validation.exception,
+                    )
+                )
+            numbers.append(cast(int, validation.payload))
+        # --- Forward the appropriate work product to the caller. ---#
+        
+        # The model case
+        if carrier.is_carrying_model:
+            return ValidationResult.success(
+                GameCarrier(
+                    model=Game(
+                        x=numbers[0],
+                        y=numbers[1],
+                    )
+                )
+            )
+        # The blueprint case
+        return ValidationResult.success(
+            GameCarrier(
+                blueprint=GameBlueprint(
+                    x=numbers[0],
+                    y=numbers[1],
+                )
+            )
+        )

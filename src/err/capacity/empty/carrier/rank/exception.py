@@ -1,7 +1,7 @@
-# src/err/capacity/empty/carrier/player/exception.py
+# src/err/capacity/empty/carrier/rank/exception.py
 
 """
-Module: err.capacity.empty.carrier.player.exception
+Module: err.capacity.empty.carrier.rank.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import EmptyCarrierException
 
 __all__ = [
-    # ======================# PLAYER_CARRIER_EMPTY_ERROR #======================#
-    "PlayerCarrierEmptyException",
+    # ======================# RANK_CARRIER_EMPTY_ERROR #======================#
+    "RankCarrierEmptyException",
 ]
 
-# ======================# PLAYER_CARRIER_EMPTY_ERROR #======================#
-class PlayerCarrierEmptyException(EmptyCarrierException):
+# ======================# RANK_CARRIER_EMPTY_ERROR #======================#
+class RankCarrierEmptyException(EmptyCarrierException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a PlayerCarrier is empty.
+        1.  Indicating a RankCarrier is empty.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class PlayerCarrierEmptyException(EmptyCarrierException):
     Super Class:
         CarrierEmptyItemException
     """
-    MSG = "PlayerCarrier cannot be empty."
-    ERR_CODE = "PLAYER_CARRIER_EMPTY_ERROR"
+    MSG = "RankCarrier cannot be empty."
+    ERR_CODE = "RANK_CARRIER_EMPTY_ERROR"
     
     def __init__(
             self,

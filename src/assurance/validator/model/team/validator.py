@@ -13,13 +13,16 @@ from typing import Optional, cast
 
 from artifcat import ValidationResult
 from assurance import ModelValidator, TeamValidatorToolkit
-from domain import Archetype, Board, Player, Team, TeamBlueprint, TeamValidationRequest
+from domain import (
+    Archetype, Board, BoardValidationRequest, Player, PlayerValidationRequest, Team, TeamBlueprint,
+    TeamValidationRequest
+)
 from err import (
-    ArchetypeNullException, TeamCarrierEmptyException, TeamValidationRequestNullException,
+    ArchetypeNullException, BoardCarrierEmptyException, PlayerCarrierEmptyException, TeamValidationRequestNullException,
     TeamValidatorException
 )
-from transit import TeamCarrier
-from util import LoggingLevelRouter
+from transit import BoardCarrier, PlayerCarrier, TeamCarrier
+from util import IdFactory, LoggingLevelRouter
 
 
 class TeamValidator(ModelValidator[Team]):
@@ -80,7 +83,7 @@ class TeamValidator(ModelValidator[Team]):
             ValidationResult[TeamCarrier]
         Raises:
             TeamValidatorException
-            TeamCarrierEmptyException
+            BoardCarrierEmptyException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -138,11 +141,11 @@ class TeamValidator(ModelValidator[Team]):
                     cls_name=self.__class__.__name__,
                     msg=TeamValidatorException.MSG,
                     err_code=TeamValidatorException.ERR_CODE,
-                    ex=TeamCarrierEmptyException(
+                    ex=BoardCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TeamCarrierEmptyException.MSG,
-                        err_code=TeamCarrierEmptyException.ERR_CODE,
+                        msg=BoardCarrierEmptyException.MSG,
+                        err_code=BoardCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
@@ -164,36 +167,6 @@ class TeamValidator(ModelValidator[Team]):
                     ex=id_validation.exception,
                 )
             )
-        # Handle the case that the board does not pass a validation check.
-        board_validation = self.toolkit.helper.board_validator.execute(
-            candidate=blueprint.board
-        )
-        if board_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                TeamValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=TeamValidatorException.MSG,
-                    err_code=TeamValidatorException.ERR_CODE,
-                    ex=board_validation.exception,
-                )
-            )
-        # Handle the case that the owner does not pass a validation check.
-        owner_validation = self.toolkit.helper.owner_validator.execute(
-            candidate=blueprint.owner
-        )
-        if owner_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                TeamValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=TeamValidatorException.MSG,
-                    err_code=TeamValidatorException.ERR_CODE,
-                    ex=owner_validation.exception,
-                )
-            )
         # Handle the case that the archetype does not pass a validation check.
         archetype_validation = self.toolkit.helper.priming_validator.execute(
             candidate=blueprint.archetype,
@@ -211,10 +184,92 @@ class TeamValidator(ModelValidator[Team]):
                     ex=archetype_validation.exception,
                 )
             )
+        # --- Run the board validation checks. ---#
+        board_validation = self.toolkit.helper.board_validator.execute(
+            request=BoardValidationRequest(
+                id=IdFactory.next_id(class_name="BoardValidationRequest"),
+                item=BoardCarrier(model=blueprint.board),
+            )
+        )
+        # Handle the case that the board is flagged.
+        if board_validation.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TeamValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TeamValidatorException.MSG,
+                    err_code=TeamValidatorException.ERR_CODE,
+                    ex=board_validation.exception,
+                )
+            )
+        # --- Extract the board validation payload. ---#
+        board_carrier = cast(
+            BoardCarrier,
+            board_validation.payload
+        )
+        # Handle the case that the board_carrier does not contain a model.
+        if not board_carrier.is_carrying_model:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+               TeamValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TeamValidatorException.MSG,
+                    err_code=TeamValidatorException.ERR_CODE,
+                    ex=BoardCarrierEmptyException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=BoardCarrierEmptyException.MSG,
+                        err_code=BoardCarrierEmptyException.ERR_CODE,
+                    ),
+                )
+            )
+        # --- Run the owner validation checks. ---#
+        owner_validation = self.toolkit.helper.owner_validator.execute(
+            request=PlayerValidationRequest(
+                id=IdFactory.next_id(class_name="PlayerValidationRequest"),
+                item=PlayerCarrier(model=blueprint.owner)
+            )
+        )
+        # Handle the case that the owner is flagged.
+        if owner_validation.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TeamValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TeamValidatorException.MSG,
+                    err_code=TeamValidatorException.ERR_CODE,
+                    ex=owner_validation.exception,
+                )
+            )
+        # --- Extract the owner validation payload. ---#
+        owner_carrier = cast(
+            PlayerCarrier,
+            owner_validation.payload
+        )
+        # Handle the case that the owner_carrier does not contain a model.
+        if not owner_carrier.is_carrying_model:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TeamValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TeamValidatorException.MSG,
+                    err_code=TeamValidatorException.ERR_CODE,
+                    ex=PlayerCarrierEmptyException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=PlayerCarrierEmptyException.MSG,
+                        err_code=PlayerCarrierEmptyException.ERR_CODE,
+                    ),
+                )
+            )
         # --- Extract and cast payloads of the validation results. ---#
         id = cast(int, id_validation.payload)
-        board = cast(Board, board_validation.payload)
-        owner = cast(Player, owner_validation.payload)
+        board = cast(Board, board_carrier.entity)
+        owner = cast(Player, owner_carrier.entity)
         archetype = cast(Archetype, archetype_validation.payload)
         
         # --- Forward the appropriate work product to the caller. ---#

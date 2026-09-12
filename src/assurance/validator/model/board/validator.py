@@ -9,137 +9,172 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from typing import Optional, Type, cast
+
+from artifcat import ValidationResult
+from assurance import ModelValidator, BoardValidatorToolkit
+from domain import Board, BoardBlueprint, BoardValidationRequest
+from err import (
+    BoardCarrierEmptyException, BoardValidationRequestNullException, BoardValidatorException
+)
+from transit import BoardCarrier
+from util import LoggingLevelRouter
+
 
 class BoardValidator(ModelValidator[Board]):
     """
-     Role:Validation, Data Integrity Guarantor, Security.
+    Role
+        - Integrity, Consistency Maintenance
 
     Responsibilities:
-    1.  Ensure a BoardBlueprint instance is certified safe, reliable and consistent before use.
-    2.  If verification fails indicate the reason in an exception returned to the caller.
+        1.  Ensure a BoardCarrier and its contents instance is safe before use.
 
-    Super Class:
-        *   Validator
+    Attributes:
+        toolkit: BoardValidationToolkit
 
     Provides:
+        - def execute(request: BoardValidationRequest) ->ValidationResult[BoardCarrier]:
 
-
-    # INHERITED ATTRIBUTES:
-    None
+    Super Class:
+        ModelValidator
     """
     
-    @classmethod
+    def __init__(
+            self,
+            toolkit: Optional[BoardValidatorToolkit] | None = None,
+    ):
+        """
+        Args:
+            toolkit: Optional[BoardValidationToolkit]
+        """
+        super().__init__(toolkit=toolkit or BoardValidatorToolkit())
+    
+    @property
+    def toolkit(self) -> BoardValidatorToolkit:
+        return cast(
+            BoardValidatorToolkit,
+            super().toolkit,
+        )
+    
     @LoggingLevelRouter.monitor
-    def validate(
-            cls,
-            candidate: Any,
-            arena_service: ArenaService = ArenaService(),
-            identity_service: IdentityService = IdentityService()
-    ) -> ValidationResult[Board]:
+    def execute(self, request: BoardValidationRequest) -> ValidationResult[BoardCarrier]:
         """
-        # ACTION:
-            1.  If Candidate fails existence or type checks return the exception chain in the ValidationResult. Else,
-                test how many optional attributes are not null.
-            2.  If only one attribute is one and only one attribute is not null return the exception chain in the
-                ValidationResult.
-            3.  If no route is found for the enabled attribute send an exception chain in the ValidationResult.
-            4.  If a validation route exists return the outcome of the validation to the caller.
-        # PARAMETERS:
-            *   rank (Any)
-            *   arena_service (ArenaService)
-            *   identity_service (IdentityService):
-        # RETURNS:
-            *   ValidationResult[Board] containing either:
-                    - On failure:   Exception.
-                    - On success:   BoardBlueprint in the payload.
+        Certify a candidate is a BoardCarrier whose payload is either a Board
+        or a Blueprint that is safe to use.
+
+        Action:
+            1.  Send an exception chain in the ValidationResult if any of the following
+                occur
+                    - The candidate is not a BoardCarrier or its null.
+                    - The candidate is an empty BoardCarrier.
+                    - Any Board attribute is flagged.
+            2.  Otherwise, Send a Carrier with the correct type of payload in the success
+                result.
+        Args:
+            candidate, Any
+        Returns:
+            ValidationResult[BoardCarrier]
         Raises:
-            *   TypeError
-            *   NullBoardBlueprintException
-            *   ZeroBoardBlueprintFlagsException
-            *   ArenaBoardBlueprintFlagsException
-            *   BoardBlueprintValidationRouteException
-            *   BoardValidatorException
+            BoardValidatorException
         """
-        method = "BoardValidator.execute"
+        method = f"{self.__class__.__name__}.execute"
         
-        # Handle the nonexistence case.
-        if candidate is None:
+        # Handle the case that the request is null or the wrong type.
+        priming_validation = self.toolkit.helper.priming_validator.execute(
+            candidate=request,
+            target_model=BoardValidationRequest,
+            null_exception=BoardValidationRequestNullException(),
+        )
+        if priming_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 BoardValidatorException(
-                    msg=f"{method}: {BoardValidatorException.MSG}",
-                    ex=NullBoardBlueprintException(f"{method}: {NullBoardBlueprintException.MSG}")
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=BoardValidatorException.MSG,
+                    err_code=BoardValidatorException.ERR_CODE,
+                    ex=priming_validation.exception,
                 )
             )
-        # Handle the wrong class case.
-        if not isinstance(candidate, BoardBlueprint):
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                BoardValidatorException(
-                    msg=f"{method}: {BoardValidatorException.MSG}",
-                    ex=TypeError(f"{method}: Was expecting a BoardBlueprint, got {type(candidate).__name__} instead.")
-                )
-            )
-        # --- Cast the candidate into BoardBlueprint for additional tests. ---#
-        blueprint = cast(BoardBlueprint, candidate)
+        # --- Cast the priming_validator payload for additional tests. ---#
+        safe_request = cast(BoardValidationRequest, priming_validation.payload)
         
-        # Handle the case of searching with no attribute-value provided.
-        flag_count = len(blueprint.to_dict())
-        if flag_count == 0:
+        # Handle the case that the request payload is null or the wrong type.
+        carrier_validation = self.toolkit.helper.priming_validator.execute(
+            candidate=safe_request.item,
+            target_model=self.toolkit.metadata.types.carrier,
+            null_exception=self.toolkit.metadata.nulls.carrier,
+        )
+        if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 BoardValidatorException(
-                    msg=f"{method}: {BoardValidatorException.MSG}",
-                    ex=ZeroBoardBlueprintFlagsException(f"{method}: {ZeroBoardBlueprintFlagsException.MSG}")
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=BoardValidatorException.MSG,
+                    err_code=BoardValidatorException.ERR_CODE,
+                    ex=carrier_validation.exception,
                 )
             )
-        # Handle the case of too many attributes being used in a search.
-        if flag_count > 1:
+        # --- Cast the carrier_validation payload for additional tests. ---#
+        carrier = cast(
+            Type[self.toolkit.metadata.types.carrier],
+            carrier_validation.payload,
+        )
+        # --- Extract the blueprint to verify the attributes. ---#
+        blueprint = carrier.extract_blueprint()
+        # Handle the case that there is no blueprint.
+        if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 BoardValidatorException(
-                    msg=f"{method}: {BoardValidatorException.MSG}",
-                    ex=ArenaBoardBlueprintFlagsException(
-                        f"{method}: {ArenaBoardBlueprintFlagsException.MSG}"
-                    )
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=BoardValidatorException.MSG,
+                    err_code=BoardValidatorException.ERR_CODE,
+                    ex=BoardCarrierEmptyException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=BoardCarrierEmptyException.MSG,
+                        err_code=BoardCarrierEmptyException.ERR_CODE,
+                    ),
                 )
             )
-        # --- Route to the appropriate validation branch. ---#
         
-        # Certification for the search-by-id target.
-        if blueprint.id is not None:
-            validation = identity_service.validate_id(candidate=blueprint.id)
+        # Handle the case that any board component in the blueprint is flagged.
+        numbers = []
+        for number in [blueprint.x, blueprint.y]:
+            validation = self.toolkit.helper.number_validator.execute(number)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     BoardValidatorException(
-                        msg=f"{method}: {BoardValidatorException.MSG}",
-                        ex=validator.exception
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=BoardValidatorException.MSG,
+                        err_code=BoardValidatorException.ERR_CODE,
+                        ex=validation.exception,
                     )
                 )
-            # On certification success return the id_BoardBlueprint in the ValidationResult.
-            return ValidationResult.success(payload=blueprint)
+            numbers.append(cast(int, validation.payload))
+        # --- Forward the appropriate work product to the caller. ---#
         
-        # Certification for the search-by-arena target.
-        if blueprint.arena is not None:
-            validation = arena_service.execute.search_service(blueprint.arena)
-            if validation.is_failure:
-                # Send the exception chain on failure.
-                return ValidationResult.failure(
-                    BoardValidatorException(
-                        msg=f"{method}: {BoardValidatorException.MSG}",
-                        ex=validator.exception
+        # The model case
+        if carrier.is_carrying_model:
+            return ValidationResult.success(
+                BoardCarrier(
+                    model=Board(
+                        x=numbers[0],
+                        y=numbers[1],
                     )
                 )
-            # On certification success return the arena_BoardBlueprint in the ValidationResult.
-            return ValidationResult.success(payload=blueprint)
-        
-        # Return the exception chain if there is no validation route for the blueprint.
-        return ValidationResult.failure(
-            BoardValidatorException(
-                msg=f"{method}: {BoardValidatorException.MSG}",
-                ex=BoardBlueprintValidationRouteException(
-                    f"{method}: {BoardBlueprintValidationRouteException.MSG}"
+            )
+        # The blueprint case
+        return ValidationResult.success(
+            BoardCarrier(
+                blueprint=BoardBlueprint(
+                    x=numbers[0],
+                    y=numbers[1],
                 )
             )
         )
