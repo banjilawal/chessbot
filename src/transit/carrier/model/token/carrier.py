@@ -130,5 +130,29 @@ class TokenCarrier(ModelCarrier[Token]):
             home_square=model.home_square,
             deployment=model.deployment,
         )
+    
+    @property
+    def is_king_token_carrier(self) -> bool:
+        blueprint = self.extract_blueprint()
+        if blueprint is None:
+            return False
+        return blueprint.is_king_token_blueprint
+    
+    @property
+    def is_pawn_token_carrier(self) -> bool:
+        blueprint = self.extract_blueprint()
+        if blueprint is None:
+            return False
+        return blueprint.is_pawn_token_blueprint
+    
+    @property
+    def is_combatant_token_carrier(self) -> bool:
+        blueprint = self.extract_blueprint()
+        if blueprint is None:
+            return False
+        return (
+                not self.is_king_token_carrier and
+                not self.is_pawn_token_carrier
+        )
 
 

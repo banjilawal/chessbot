@@ -12,17 +12,19 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidator, TokenValidatorToolkit
+from assurance import (
+    CombatantCarrierValidator, KingTokenCarrierValidator, ModelValidator, PawnTokenCarrierValidator,
+    TokenValidatorToolkit
+)
 from domain import (
-    CombatantBlueprint, Formation, HomeSquare, KingTokenBlueprint, PawnTokenBlueprint, 
-    Team, Token, TokenBlueprint, TokenValidationRequest
+    Formation, HomeSquare, Team, TeamValidationRequest, Token, TokenBlueprint, TokenValidationRequest
 )
 from err import (
     FormationNullException, TokenCarrierEmptyException, TokenValidationRequestNullException,
     TokenValidatorException
 )
-from transit import TokenCarrier
-from util import LoggingLevelRouter
+from transit import CombatantCarrier, KingTokenCarrier, PawnTokenCarrier, TeamCarrier, TokenCarrier
+from util import IdFactory, LoggingLevelRouter
 
 
 class TokenValidator(ModelValidator[Token]):
@@ -126,6 +128,7 @@ class TokenValidator(ModelValidator[Token]):
             carrier_validation.payload,
         )
         # --- Extract the blueprint to verify the attributes. ---#
+
         blueprint = carrier.extract_blueprint()
         
         # Handle the case that there is no blueprint.
@@ -145,8 +148,6 @@ class TokenValidator(ModelValidator[Token]):
                     ),
                 )
             )
-
-        
         # Handle the case that any id in the blueprint is flagged.
         id_test = self.toolkit.helper.blueprint_id_extractor.execute(
             candidate=blueprint,
@@ -167,7 +168,10 @@ class TokenValidator(ModelValidator[Token]):
             )
         # Handle the case that the team does not pass a validation check.
         team_test = self.toolkit.helper.team_validator.execute(
-            candidate=blueprint.team
+            request=TeamValidationRequest(
+                id=IdFactory.next_id(class_name="TeamValidationRequest"),
+                item=TeamCarrier(model=blueprint.team),
+            )
         )
         if team_test.is_failure:
             # Send the exception chain on failure.
@@ -180,6 +184,9 @@ class TokenValidator(ModelValidator[Token]):
                     ex=team_test.exception,
                 )
             )
+        team_carrier = cast(TeamCarrier, team_test.payload)
+        
+        
         # Handle the case that the formation does not pass a validation check.
         formation_test = self.toolkit.helper.priming_validator.execute(
             candidate=blueprint.formation,
@@ -213,62 +220,24 @@ class TokenValidator(ModelValidator[Token]):
                 )
             )
         
-
-        if blueprint.is_king_token_blueprint:
-            blueprint = cast(KingTokenBlueprint, blueprint)
-        elif blueprint.is_pawn_token_blueprint:
-            blueprint = cast(PawnTokenBlueprint, blueprint)
-        else:
-            blueprint = cast(CombatantBlueprint, blueprint)
-        
-        # Handle the case that the rank is not safe to use.
-        rank = None
-        if blueprint.is_pawn_token_blueprint:
-            if blueprint.rank != blueprint.formation.rank:
-                rank = blueprint.formation.rank
-                rank_validation = self.toolkit.helper.rank_validator.execute(rank)
-                if rank_validation.is_failure:
-                    # Send the exception chain on failure.
-                    return ValidationResult.failure(
-                        TokenValidatorException(
-                            cls_mthd=method,
-                            cls_name=self.__class__.__name__,
-                            msg=TokenValidatorException.MSG,
-                            err_code=TokenValidatorException.ERR_CODE,
-                            ex=rank_detection.exception,
-                        )
-                    )
-
         # --- Extract and cast payloads of the validation results. ---#
         id = cast(int, id_test.payload)
-        team = cast(Team, team_test.payload)
+        team = cast(Team, team_carrier.entity)
         formation = cast(Formation, formation_test.payload)
         home_square = cast(HomeSquare, home_detection.payload)
-        rank = formation.rank
         
-        if carrier.is_carrying_model:
-            return ValidationResult.success(
-                TokenCarrier(
-                    model=Token(
-                        id=id,
-                        team=team,
-                        rank=formation.rank,
-                        formation=formation,
-                        home_square=home_square,
-                    )
-                )
-            )
-        # --- Forward the work product to the caller. ---#
-        return ValidationResult.success(
-            TokenCarrier(
-                blueprint=TokenBlueprint(
-                    id=id,
-                    rank=rank,
-                    team=team,
-                    formation=formation,
-                    home_square=home_square,
-                )
-            )
-        )
+        if blueprint.is_king_token_blueprint:
+            validated_carrier = cast(KingTokenCarrier, carrier)
+            sender = KingTokenCarrierValidator()
+            return sender.execute(id, home_square, validated_carrier)
+        if blueprint.is_pawn_token_blueprint:
+            validated_carrier = cast(PawnTokenCarrier, carrier)
+            sender = PawnTokenCarrierValidator()
+            return sender.execute(id, home_square, validated_carrier)
+       
+        validated_carrier = cast(CombatantCarrier, carrier)
+        sender = CombatantCarrierValidator()
+        return sender.execute(id, home_square, validated_carrier)
+
     
     

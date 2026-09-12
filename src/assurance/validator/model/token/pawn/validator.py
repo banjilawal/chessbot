@@ -41,7 +41,6 @@ class PawnTokenCarrierValidator:
     def execute(
             self,
             id: int,
-            rank: Rank,
             home_square: HomeSquare,
             validated_carrier: PawnTokenCarrier,
     ) -> ValidationResult[PawnTokenCarrier]:
@@ -78,7 +77,7 @@ class PawnTokenCarrierValidator:
                 home_square=home_square,
                 formation=blueprint.formation,
             )
-            model.rank = rank
+            model.rank = blueprint.rank
             model.captor = blueprint.captor
             model.position = blueprint.position
             model.readiness = blueprint.readiness
