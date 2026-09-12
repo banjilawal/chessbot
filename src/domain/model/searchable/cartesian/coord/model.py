@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from domain import CartesianPoint
+from domain import Board, CartesianPoint
 
 
 class Coord(CartesianPoint):
@@ -23,6 +23,7 @@ class Coord(CartesianPoint):
     Attributes:
         row: int
         column: int
+        board: Board
     
     Provides:
     
@@ -31,12 +32,14 @@ class Coord(CartesianPoint):
     """
     _row: int
     _column: int
+    _board: Board
     
-    def __init__(self, row: int, column: int):
+    def __init__(self, row: int, column: int, board: Board):
         """
         Args:
             row: int
             column: int
+            board: Board
         """
         super().__init__()
         self._row = row
@@ -50,11 +53,21 @@ class Coord(CartesianPoint):
     def column(self) -> int:
         return self._column
     
+    @property
+    def board(self) -> Board:
+        return self._board
+    
     def __eq__(self, other):
-        if other is self: return True
-        if other is None: return False
+        if other is self:
+            return True
+        if other is None:
+            return False
         if isinstance(other, Coord):
-            return self._row == other.row and self._column == other.column
+            return (
+                self._board == other.board and
+                self._row == other.row and
+                self._column == other.column
+            )
         return False
     
     def __hash__(self):
