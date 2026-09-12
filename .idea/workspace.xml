@@ -5,16 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assurance/validator/model/player/combatant/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/validator/model/player/combatant/validator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/validator/model/player/king/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/validator/model/player/king/validator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/validator/model/player/pawn/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/validator/model/player/pawn/validator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/model/player/machine/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/model/player/machine/validator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/coord/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/coord/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/player/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/player/combatant/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/player/combatant/validator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/player/king/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/player/human/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/player/king/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/player/human/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/player/pawn/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/player/pawn/validator.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/player/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/player/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/state/player/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/state/player/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/state/player/human/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/state/player/human/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/player/human/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/player/human/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/carrier/model/player/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/model/player/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/carrier/model/token/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/model/token/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/carrier/model/token/combatant/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/model/token/combatant/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/carrier/model/token/combatant/pawn/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/model/token/combatant/pawn/carrier.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/transit/carrier/model/token/king/carrier.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/carrier/model/token/king/carrier.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,61 +64,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000000020955908" />
-      <entry key="MS500" value="1.0198161418183072" />
-      <entry key="S2" value="1.5629754413013002" />
-      <entry key="S5" value="2.190331901376724" />
-      <entry key="S10" value="2.5398308374032332" />
-      <entry key="S30" value="2.8322512245453586" />
-      <entry key="S60" value="2.94252184408113" />
-      <entry key="M2" value="4.709954734323652" />
-      <entry key="M5" value="37.74723137920898" />
-      <entry key="M10" value="120.0930774990989" />
-      <entry key="M15" value="188.574451781317" />
-      <entry key="M30" value="327.4863473722281" />
-      <entry key="H1" value="487.6123072811111" />
-      <entry key="H2" value="691.6584110686865" />
-      <entry key="H4" value="1006.3847923295172" />
-      <entry key="D1" value="3978.540761644269" />
-      <entry key="W1" value="19525.29440828496" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.000013828582306" />
+      <entry key="S5" value="1.0157037917606748" />
+      <entry key="S10" value="1.2246166695491023" />
+      <entry key="S30" value="3.2056139271938062" />
+      <entry key="S60" value="5.886051507659666" />
+      <entry key="M2" value="8.989232214330745" />
+      <entry key="M5" value="12.39286620161296" />
+      <entry key="M10" value="14.01453943511118" />
+      <entry key="M15" value="14.644553239608989" />
+      <entry key="M30" value="15.542011312971619" />
+      <entry key="H1" value="19.297227940075235" />
+      <entry key="H2" value="69.96752869755512" />
+      <entry key="H4" value="309.3441596461657" />
+      <entry key="D1" value="3329.516793445192" />
+      <entry key="W1" value="19141.662019843756" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="0.0" />
-      <entry key="S10" value="1.927293286382181E-170" />
-      <entry key="S30" value="2.681118068981769E-57" />
-      <entry key="S60" value="5.178417436665181E-29" />
-      <entry key="M2" value="7.27428523859855E-15" />
-      <entry key="M5" value="2.7074063342407535E-6" />
-      <entry key="M10" value="0.0024737335180527956" />
-      <entry key="M15" value="0.025498670985533475" />
-      <entry key="M30" value="0.2826258220857544" />
-      <entry key="H1" value="1.246204316024071" />
-      <entry key="H2" value="4.063511604129442" />
-      <entry key="H4" value="12.542022799466153" />
-      <entry key="D1" value="168.16756424178448" />
-      <entry key="W1" value="890.8336114094031" />
+      <entry key="MS500" value="1.723842734281369E-178" />
+      <entry key="S2" value="4.355645131512694E-45" />
+      <entry key="S5" value="2.556813362003217E-18" />
+      <entry key="S10" value="2.23351327498993E-9" />
+      <entry key="S30" value="0.0020691572277187847" />
+      <entry key="S60" value="0.06430697758082836" />
+      <entry key="M2" value="0.3585961410922872" />
+      <entry key="M5" value="1.0056597104754694" />
+      <entry key="M10" value="1.4186090109705833" />
+      <entry key="M15" value="1.5972722352501931" />
+      <entry key="M30" value="1.9010831867208382" />
+      <entry key="H1" value="2.41601947493399" />
+      <entry key="H2" value="3.6098506074279633" />
+      <entry key="H4" value="7.685989728306705" />
+      <entry key="D1" value="136.96737679072797" />
+      <entry key="W1" value="867.0004969044069" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.06983044790394174" />
-      <entry key="MS500" value="0.6060836393040943" />
-      <entry key="S2" value="1.421706407249056" />
-      <entry key="S5" value="2.1214189687288267" />
-      <entry key="S10" value="2.5018348355107656" />
-      <entry key="S30" value="2.8185799589323786" />
-      <entry key="S60" value="2.9355197470308956" />
-      <entry key="M2" value="4.7051685172085636" />
-      <entry key="M5" value="37.73017277211248" />
-      <entry key="M10" value="120.06136900526687" />
-      <entry key="M15" value="188.55989251296515" />
-      <entry key="M30" value="327.72674061380087" />
-      <entry key="H1" value="488.8187065747632" />
-      <entry key="H2" value="695.6842429571461" />
-      <entry key="H4" value="1018.8916790344188" />
-      <entry key="D1" value="4146.679967021562" />
-      <entry key="W1" value="20416.113015502997" />
+      <entry key="MS100" value="0.9659363289248456" />
+      <entry key="MS500" value="0.9930924954370359" />
+      <entry key="S2" value="0.9982716552100842" />
+      <entry key="S5" value="1.0095046411073" />
+      <entry key="S10" value="1.1902415538650857" />
+      <entry key="S30" value="3.0994810529990486" />
+      <entry key="S60" value="5.818890013235427" />
+      <entry key="M2" value="9.225113002954082" />
+      <entry key="M5" value="13.31821358015609" />
+      <entry key="M10" value="15.384587275134942" />
+      <entry key="M15" value="16.207179935832144" />
+      <entry key="M30" value="17.424139847700673" />
+      <entry key="H1" value="21.702299742984138" />
+      <entry key="H2" value="73.5675734635698" />
+      <entry key="H4" value="317.01560378188725" />
+      <entry key="D1" value="3466.4598089364067" />
+      <entry key="W1" value="20008.64761788489" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -141,7 +149,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/assurance/validator/model",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/assurance/validator/model/player",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -155,11 +163,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assurance/validator/model/player" />
       <recent name="$PROJECT_DIR$/src/assurance/validator/model" />
       <recent name="$PROJECT_DIR$/src/err/capacity/empty/carrier" />
       <recent name="$PROJECT_DIR$/src/assurance/validator/model/token" />
       <recent name="$PROJECT_DIR$/src/err/assurance/validator/model/state/token" />
-      <recent name="$PROJECT_DIR$/src/err/assurance/validator/model/state/token/king" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/domain/model/searchable/state/token" />
@@ -845,7 +853,7 @@
       <workItem from="1787812398225" duration="195474000" />
       <workItem from="1788709512302" duration="4064000" />
       <workItem from="1788782347688" duration="75617000" />
-      <workItem from="1788969937518" duration="129468000" />
+      <workItem from="1788969937518" duration="137434000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1983,11 +1991,6 @@
           <option name="timeStamp" value="424" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/state/player/human/blueprint.py</url>
-          <line>11</line>
-          <option name="timeStamp" value="425" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/transit/carrier/model/token/king/__init__.py</url>
           <line>11</line>
           <option name="timeStamp" value="426" />
@@ -2082,6 +2085,21 @@
           <line>49</line>
           <log-expression expression="formation=formation,&#10;            deployment=deployment,&#10;            home_square=home_square,&#10;            previous_position=previous_position,&#10;            domain_class=domain_class or Type[CombatantToken],&#10;            domain_null_exception=domain_null_exception or CombatantNullException(),&#10;        )&#10;        self._captor = captor&#10;        self._readiness = readiness or CombatantReadiness.READY" language="Python" />
           <option name="timeStamp" value="449" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/transit/carrier/model/token/__init__.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="450" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/transit/carrier/model/token/king/carrier.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="451" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/state/player/blueprint.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="452" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

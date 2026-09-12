@@ -15,7 +15,7 @@ from domain import CombatantToken, CombatantBlueprint
 from transit import TokenCarrier
 
 
-class CombatantCarrier(TokenCarrier):
+class CombatantCarrier(TokenCarrier[CombatantToken]):
     """
     Role:
         - Boundary Carrier Interface
@@ -92,42 +92,16 @@ class CombatantCarrier(TokenCarrier):
         if self.is_carrying_blueprint: return self._blueprint
         
         model = cast(CombatantToken, self._model)
-        if self.is_empty: return None
-        if self.is_carrying_blueprint: return self._blueprint
-        
-        model = cast(Type[self._model], self._model)
-        
-        if isinstance(model, PawnToken):
-            return TokenBlueprint(
-                id=model.id,
-                team=model.team,
-                rank=model.rank,
-                captor=model.captor,
-                readiness=model.readiness,
-                formation=model.formation,
-                positions=model.positions,
-                home_square=model.home_square,
-                deployment=model.deployment,
-            )
-        if isinstance(model, KingToken):
-            return TokenBlueprint(
-                id=model.id,
-                team=model.team,
-                readiness=model.readiness,
-                formation=model.formation,
-                positions=model.positions,
-                home_square=model.home_square,
-                deployment=model.deployment,
-            )
-        return TokenBlueprint(
+        return CombatantBlueprint(
             id=model.id,
             team=model.team,
             captor=model.captor,
+            position=model.position,
             readiness=model.readiness,
             formation=model.formation,
-            positions=model.positions,
-            home_square=model.home_square,
             deployment=model.deployment,
+            home_square=model.home_square,
+            previous_position=model.previous_position,
         )
 
 

@@ -37,7 +37,7 @@ class HumanPlayer(Player):
         Player
      """
     
-    def player(self, id: int, name: str, adviser: Optional[GameAdviser] | None = None, ):
+    def player(self, id: int, name: str, adviser: Optional[GameAdviser] | None = None,):
         """
         Args:
             id: int

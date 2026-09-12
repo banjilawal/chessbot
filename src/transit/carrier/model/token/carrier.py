@@ -9,15 +9,15 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import abstractmethod
-from typing import Optional, Type, TypeVar, cast
+from abc import ABC, abstractmethod
+from typing import Generic, Optional, TypeVar
 
-from domain import KingToken, Model, PawnToken, Token, TokenBlueprint
+from domain import Token, TokenBlueprint
 from transit import ModelCarrier
 
-T = TypeVar("T", bound="Model")
+T = TypeVar("T", bound="Token")
 
-class TokenCarrier(ModelCarrier[Token]):
+class TokenCarrier(ModelCarrier[T], ABC, Generic[T]):
     """
     Role:
         - Boundary Carrier Interface
@@ -39,9 +39,7 @@ class TokenCarrier(ModelCarrier[Token]):
     Super Class:
         ModelCarrier
     """
-    pass
-
-    _model: Optional[Token]
+    _model: Optional[T]
     _blueprint: Optional[TokenBlueprint]
 
     def __init__(

@@ -9,13 +9,15 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from abc import ABC, abstractmethod
+from typing import Generic, Optional, TypeVar, cast
 
 from domain import Player, PlayerBlueprint
 from transit import ModelCarrier
 
+T = TypeVar("T", bound="Player")
 
-class PlayerCarrier(ModelCarrier[Player]):
+class PlayerCarrier(ModelCarrier[T], ABC, Generic[T]):
     """
     Role:
         - Boundary Carrier Interface
@@ -38,12 +40,12 @@ class PlayerCarrier(ModelCarrier[Player]):
         ModelCarrier
     """
     
-    _model: Optional[Player]
+    _model: Optional[T]
     _blueprint: Optional[PlayerBlueprint]
     
     def __init__(
             self,
-            model: Optional[Player] | None = None,
+            model: Optional[T] | None = None,
             blueprint: Optional[PlayerBlueprint] | None = None,
     ):
         """
@@ -56,7 +58,8 @@ class PlayerCarrier(ModelCarrier[Player]):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> Optional[Player | PlayerBlueprint]:
+    @abstractmethod
+    def entity(self) -> Optional[T|PlayerBlueprint]:
         if self.is_empty:
             return None
         if self.is_carrying_model:
@@ -64,11 +67,12 @@ class PlayerCarrier(ModelCarrier[Player]):
         return self._blueprint
     
     @property
+    @abstractmethod
     def is_carrying_model(self) -> bool:
         return (
                 self._model is not None and
                 self._blueprint is None and
-                isinstance(self._model, Player)
+                isinstance(self._model, T)
         )
     
     @property
@@ -90,6 +94,7 @@ class PlayerCarrier(ModelCarrier[Player]):
     def is_over_capacity(self) -> bool:
         return self.size > 1
     
+    @abstractmethod
     def extract_blueprint(self) -> Optional[PlayerBlueprint]:
         if self.is_empty: return None
         if self.is_carrying_blueprint: return self._blueprint

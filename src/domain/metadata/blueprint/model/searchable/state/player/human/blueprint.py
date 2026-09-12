@@ -16,7 +16,7 @@ from err import HumanNullException
 from game import GameAdviser
 
 
-class HumanBlueprint(PlayerBlueprint):
+class HumanBlueprint(PlayerBlueprint[HumanPlayer]):
     """
     Role:
         1.  Metadata

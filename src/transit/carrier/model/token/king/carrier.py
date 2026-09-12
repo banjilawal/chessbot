@@ -95,11 +95,14 @@ class KingTokenCarrier(TokenCarrier[KingToken]):
         return KingTokenBlueprint(
             id=model.id,
             team=model.team,
-            rank=model.rank,
-            check_count=model.check_count,
+            position=model.position,
+            readiness=model.readiness,
             formation=model.formation,
-            positions=model.positions,
+            checkmate=model.checkmate,
+            deployment=model.deployment,
             home_square=model.home_square,
+            check_warning=model.check_warning,
+            previous_position=model.previous_position,
         )
 
 
