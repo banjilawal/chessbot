@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import CartesianBlueprint, Coord, CoordContext
+from domain import Board, CartesianBlueprint, Coord, CoordContext
 from err import CoordNullException
 
 
@@ -26,6 +26,7 @@ class CoordBlueprint(CartesianBlueprint[Coord]):
     Attributes:
         row: int
         column: int
+        board: Board
         domain_class: Type[Coord]
         domain_null_exception: CoordNullException
         
@@ -36,11 +37,13 @@ class CoordBlueprint(CartesianBlueprint[Coord]):
      """
     _row: int
     _column: int
+    _board: Board
     
     def __init__(
             self,
             row: int,
             column: int,
+            board: Board,
             domain_class: Optional[Type[Coord]] | None = None,
             domain_null_exception: Optional[CoordNullException]| None = None,
     ):
@@ -48,6 +51,7 @@ class CoordBlueprint(CartesianBlueprint[Coord]):
         Args:
             row: int
             column: int
+            board: Board
             domain_class: Optional[Type[Coord]]
             domain_null_exception: Optional[CoordNullException]
         """
@@ -57,6 +61,7 @@ class CoordBlueprint(CartesianBlueprint[Coord]):
         )
         self._row = row
         self._column = column
+        self._board = board
     
     @property
     def row(self) -> int:
@@ -65,6 +70,10 @@ class CoordBlueprint(CartesianBlueprint[Coord]):
     @property
     def column(self) -> int:
         return self._column
+    
+    @property
+    def board(self) -> Board:
+        return self._board
         
     @property
     def domain_class(self) -> Type[Coord]:
