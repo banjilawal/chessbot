@@ -13,13 +13,13 @@ from typing import Optional, cast
 
 from artifcat import ValidationResult
 from assurance import RankValidatorToolkit
-from domain import rook, rookBlueprint, Persona
-from err import rookCarrierEmptyException, rookValidatorException, PersonaNullException, WrongPersonaException
-from transit import rookCarrier
+from domain import Rook, RookBlueprint, Persona
+from err import RookCarrierEmptyException, RookValidatorException, PersonaNullException, WrongPersonaException
+from transit import RookCarrier
 from util import LoggingLevelRouter
 
 
-class rookValidator:
+class RookValidator:
     """
     Role
         - Integrity, Consistency Maintenance
@@ -31,7 +31,7 @@ class rookValidator:
         toolkit: RankValidationToolkit
 
     Provides:
-        -   def execute(validated_carrier: rookCarrier) -> ValidationResult[rookCarrier]
+        -   def execute(validated_carrier: RookCarrier) -> ValidationResult[RookCarrier]
 
     Super Class:
     """
@@ -48,10 +48,10 @@ class rookValidator:
         self._toolkit=toolkit or RankValidatorToolkit()
     
     @LoggingLevelRouter.monitor
-    def execute(self, validated_carrier: rookCarrier) -> ValidationResult[rookCarrier]:
+    def execute(self, validated_carrier: RookCarrier) -> ValidationResult[RookCarrier]:
         """
-        Send a validated rook or Blueprint which inside the validated
-        rookCarrier.
+        Send a validated Rook or Blueprint which inside the validated
+        RookCarrier.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
@@ -65,11 +65,11 @@ class rookValidator:
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            validated_carrier: rookCarrier
+            validated_carrier: RookCarrier
         Returns:
-            ValidationResult[rookCarrier]
+            ValidationResult[RookCarrier]
         Raises:
-            rookValidatorException
+            RookValidatorException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -78,16 +78,16 @@ class rookValidator:
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                rookValidatorException(
+                RookValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=rookValidatorException.MSG,
-                    err_code=rookValidatorException.ERR_CODE,
-                    ex=rookCarrierEmptyException(
+                    msg=RookValidatorException.MSG,
+                    err_code=RookValidatorException.ERR_CODE,
+                    ex=RookCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=rookCarrierEmptyException.MSG,
-                        err_code=rookCarrierEmptyException.ERR_CODE,
+                        msg=RookCarrierEmptyException.MSG,
+                        err_code=RookCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
@@ -100,24 +100,24 @@ class rookValidator:
         if persona_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                rookValidatorException(
+                RookValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=rookValidatorException.MSG,
-                    err_code=rookValidatorException.ERR_CODE,
+                    msg=RookValidatorException.MSG,
+                    err_code=RookValidatorException.ERR_CODE,
                     ex=persona_validation.exception,
                 )
             )
-        # Handle the case that the Persona is not a rook's.
+        # Handle the case that the Persona is not a Rook's.
         persona = cast(Persona, persona_validation.payload)
-        if persona != Persona.rook:
+        if persona != Persona.ROOK:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                rookValidatorException(
+                RookValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=rookValidatorException.MSG,
-                    err_code=rookValidatorException.ERR_CODE,
+                    msg=RookValidatorException.MSG,
+                    err_code=RookValidatorException.ERR_CODE,
                     ex=WrongPersonaException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -131,12 +131,12 @@ class rookValidator:
         
         # The model case.
         if validated_carrier.is_carrying_model:
-            model = rook(persona=persona)
-            return ValidationResult.success(rookCarrier(model=model))
+            model = Rook(persona=persona)
+            return ValidationResult.success(RookCarrier(model=model))
         # Else the blueprint case
         return ValidationResult.success(
-            rookCarrier(
-                blueprint=rookBlueprint(persona=persona)
+            RookCarrier(
+                blueprint=RookBlueprint(persona=persona)
             )
         )
     

@@ -13,13 +13,13 @@ from typing import Optional, cast
 
 from artifcat import ValidationResult
 from assurance import RankValidatorToolkit
-from domain import pawn, pawnBlueprint, Persona
-from err import pawnCarrierEmptyException, pawnValidatorException, PersonaNullException, WrongPersonaException
-from transit import pawnCarrier
+from domain import Pawn, PawnBlueprint, Persona
+from err import PawnCarrierEmptyException, PawnValidatorException, PersonaNullException, WrongPersonaException
+from transit import PawnCarrier
 from util import LoggingLevelRouter
 
 
-class pawnValidator:
+class PawnValidator:
     """
     Role
         - Integrity, Consistency Maintenance
@@ -31,7 +31,7 @@ class pawnValidator:
         toolkit: RankValidationToolkit
 
     Provides:
-        -   def execute(validated_carrier: pawnCarrier) -> ValidationResult[pawnCarrier]
+        -   def execute(validated_carrier: PawnCarrier) -> ValidationResult[PawnCarrier]
 
     Super Class:
     """
@@ -48,10 +48,10 @@ class pawnValidator:
         self._toolkit=toolkit or RankValidatorToolkit()
     
     @LoggingLevelRouter.monitor
-    def execute(self, validated_carrier: pawnCarrier) -> ValidationResult[pawnCarrier]:
+    def execute(self, validated_carrier: PawnCarrier) -> ValidationResult[PawnCarrier]:
         """
-        Send a validated pawn or Blueprint which inside the validated
-        pawnCarrier.
+        Send a validated Pawn or Blueprint which inside the validated
+        PawnCarrier.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
@@ -65,11 +65,11 @@ class pawnValidator:
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            validated_carrier: pawnCarrier
+            validated_carrier: PawnCarrier
         Returns:
-            ValidationResult[pawnCarrier]
+            ValidationResult[PawnCarrier]
         Raises:
-            pawnValidatorException
+            PawnValidatorException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -78,16 +78,16 @@ class pawnValidator:
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                pawnValidatorException(
+                PawnValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=pawnValidatorException.MSG,
-                    err_code=pawnValidatorException.ERR_CODE,
-                    ex=pawnCarrierEmptyException(
+                    msg=PawnValidatorException.MSG,
+                    err_code=PawnValidatorException.ERR_CODE,
+                    ex=PawnCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=pawnCarrierEmptyException.MSG,
-                        err_code=pawnCarrierEmptyException.ERR_CODE,
+                        msg=PawnCarrierEmptyException.MSG,
+                        err_code=PawnCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
@@ -100,24 +100,24 @@ class pawnValidator:
         if persona_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                pawnValidatorException(
+                PawnValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=pawnValidatorException.MSG,
-                    err_code=pawnValidatorException.ERR_CODE,
+                    msg=PawnValidatorException.MSG,
+                    err_code=PawnValidatorException.ERR_CODE,
                     ex=persona_validation.exception,
                 )
             )
-        # Handle the case that the Persona is not a pawn's.
+        # Handle the case that the Persona is not a Pawn's.
         persona = cast(Persona, persona_validation.payload)
-        if persona != Persona.pawn:
+        if persona != Persona.PAWN:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                pawnValidatorException(
+                PawnValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=pawnValidatorException.MSG,
-                    err_code=pawnValidatorException.ERR_CODE,
+                    msg=PawnValidatorException.MSG,
+                    err_code=PawnValidatorException.ERR_CODE,
                     ex=WrongPersonaException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -131,12 +131,12 @@ class pawnValidator:
         
         # The model case.
         if validated_carrier.is_carrying_model:
-            model = pawn(persona=persona)
-            return ValidationResult.success(pawnCarrier(model=model))
+            model = Pawn(persona=persona)
+            return ValidationResult.success(PawnCarrier(model=model))
         # Else the blueprint case
         return ValidationResult.success(
-            pawnCarrier(
-                blueprint=pawnBlueprint(persona=persona)
+            PawnCarrier(
+                blueprint=PawnBlueprint(persona=persona)
             )
         )
     

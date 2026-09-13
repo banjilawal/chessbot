@@ -41,7 +41,7 @@ class KnightCarrierEmptyException(RankCarrierEmptyException):
     Provides:
 
     Super Class:
-        CarrierEmptyItemException
+        RankCarrierEmptyException
     """
     MSG = "KnightCarrier cannot be empty."
     ERR_CODE = "KNIGHT_CARRIER_EMPTY_ERROR"

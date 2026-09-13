@@ -1,7 +1,7 @@
-# src/err/capacity/empty/carrier/rank/queen/exception.py
+# src/err/assurance/validator/model/state/square/home/exception.py
 
 """
-Module: err.capacity.empty.carrier.rank.queen.exception
+Module: err.assurance.validator.model.state.square.home.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,22 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
+from err import SquareValidatorException
 from artifcat import MethodResultType
-from err import RankCarrierEmptyException
+
 
 __all__ = [
-    # ======================# QUEEN_CARRIER_EMPTY_ERROR #======================#
-    "QueenCarrierEmptyException",
+    # ======================# HOME_SQUARE_VALIDATOR_FAILURE #======================#
+    "HomeSquareValidatorException",
 ]
 
-# ======================# QUEEN_CARRIER_EMPTY_ERROR #======================#
-class QueenCarrierEmptyException(RankCarrierEmptyException):
+# ======================# HOME_SQUARE_VALIDATOR_FAILURE #======================#
+class HomeSquareValidatorException(SquareValidatorException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a QueenCarrier is empty.
+        1.  Indicating a HomeSquareValidator failed.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +42,10 @@ class QueenCarrierEmptyException(RankCarrierEmptyException):
     Provides:
 
     Super Class:
-        RankCarrierEmptyException
+        SquareValidatorException
     """
-    MSG = "QueenCarrier cannot be empty."
-    ERR_CODE = "QUEEN_CARRIER_EMPTY_ERROR"
+    MSG = "HomeSquareValidator failed."
+    ERR_CODE = "HOME_SQUARE_VALIDATOR_FAILURE"
     
     def __init__(
             self,
@@ -70,6 +71,7 @@ class QueenCarrierEmptyException(RankCarrierEmptyException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,

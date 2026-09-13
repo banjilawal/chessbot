@@ -1,7 +1,7 @@
-# src/err/capacity/empty/carrier/rank/queen/exception.py
+# src/err/capacity/empty/carrier/square/home/exception.py
 
 """
-Module: err.capacity.empty.carrier.rank.queen.exception
+Module: err.capacity.empty.carrier.square.home.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import RankCarrierEmptyException
+from err import SquareCarrierEmptyException
 
 __all__ = [
-    # ======================# QUEEN_CARRIER_EMPTY_ERROR #======================#
-    "QueenCarrierEmptyException",
+    # ======================# HOME_SQUARE_CARRIER_EMPTY_ERROR #======================#
+    "HomeSquareCarrierEmptyException",
 ]
 
-# ======================# QUEEN_CARRIER_EMPTY_ERROR #======================#
-class QueenCarrierEmptyException(RankCarrierEmptyException):
+# ======================# HOME_SQUARE_CARRIER_EMPTY_ERROR #======================#
+class HomeSquareCarrierEmptyException(SquareCarrierEmptyException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a QueenCarrier is empty.
+        1.  Indicating a HomeSquareCarrier is empty.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class QueenCarrierEmptyException(RankCarrierEmptyException):
     Provides:
 
     Super Class:
-        RankCarrierEmptyException
+        SquareCarrierEmptyException
     """
-    MSG = "QueenCarrier cannot be empty."
-    ERR_CODE = "QUEEN_CARRIER_EMPTY_ERROR"
+    MSG = "HomeSquareCarrier cannot be empty."
+    ERR_CODE = "HOME_SQUARE_CARRIER_EMPTY_ERROR"
     
     def __init__(
             self,

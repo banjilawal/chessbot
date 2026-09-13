@@ -13,13 +13,13 @@ from typing import Optional, cast
 
 from artifcat import ValidationResult
 from assurance import RankValidatorToolkit
-from domain import king, kingBlueprint, Persona
-from err import kingCarrierEmptyException, kingValidatorException, PersonaNullException, WrongPersonaException
-from transit import kingCarrier
+from domain import King, KingBlueprint, Persona
+from err import KingCarrierEmptyException, KingValidatorException, PersonaNullException, WrongPersonaException
+from transit import KingCarrier
 from util import LoggingLevelRouter
 
 
-class kingValidator:
+class KingValidator:
     """
     Role
         - Integrity, Consistency Maintenance
@@ -31,7 +31,7 @@ class kingValidator:
         toolkit: RankValidationToolkit
 
     Provides:
-        -   def execute(validated_carrier: kingCarrier) -> ValidationResult[kingCarrier]
+        -   def execute(validated_carrier: KingCarrier) -> ValidationResult[KingCarrier]
 
     Super Class:
     """
@@ -48,10 +48,10 @@ class kingValidator:
         self._toolkit=toolkit or RankValidatorToolkit()
     
     @LoggingLevelRouter.monitor
-    def execute(self, validated_carrier: kingCarrier) -> ValidationResult[kingCarrier]:
+    def execute(self, validated_carrier: KingCarrier) -> ValidationResult[KingCarrier]:
         """
-        Send a validated king or Blueprint which inside the validated
-        kingCarrier.
+        Send a validated King or Blueprint which inside the validated
+        KingCarrier.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
@@ -65,11 +65,11 @@ class kingValidator:
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            validated_carrier: kingCarrier
+            validated_carrier: KingCarrier
         Returns:
-            ValidationResult[kingCarrier]
+            ValidationResult[KingCarrier]
         Raises:
-            kingValidatorException
+            KingValidatorException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -78,16 +78,16 @@ class kingValidator:
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                kingValidatorException(
+                KingValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=kingValidatorException.MSG,
-                    err_code=kingValidatorException.ERR_CODE,
-                    ex=kingCarrierEmptyException(
+                    msg=KingValidatorException.MSG,
+                    err_code=KingValidatorException.ERR_CODE,
+                    ex=KingCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=kingCarrierEmptyException.MSG,
-                        err_code=kingCarrierEmptyException.ERR_CODE,
+                        msg=KingCarrierEmptyException.MSG,
+                        err_code=KingCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
@@ -100,24 +100,24 @@ class kingValidator:
         if persona_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                kingValidatorException(
+                KingValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=kingValidatorException.MSG,
-                    err_code=kingValidatorException.ERR_CODE,
+                    msg=KingValidatorException.MSG,
+                    err_code=KingValidatorException.ERR_CODE,
                     ex=persona_validation.exception,
                 )
             )
-        # Handle the case that the Persona is not a king's.
+        # Handle the case that the Persona is not a King's.
         persona = cast(Persona, persona_validation.payload)
-        if persona != Persona.king:
+        if persona != Persona.KING:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                kingValidatorException(
+                KingValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=kingValidatorException.MSG,
-                    err_code=kingValidatorException.ERR_CODE,
+                    msg=KingValidatorException.MSG,
+                    err_code=KingValidatorException.ERR_CODE,
                     ex=WrongPersonaException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -131,12 +131,12 @@ class kingValidator:
         
         # The model case.
         if validated_carrier.is_carrying_model:
-            model = king(persona=persona)
-            return ValidationResult.success(kingCarrier(model=model))
+            model = King(persona=persona)
+            return ValidationResult.success(KingCarrier(model=model))
         # Else the blueprint case
         return ValidationResult.success(
-            kingCarrier(
-                blueprint=kingBlueprint(persona=persona)
+            KingCarrier(
+                blueprint=KingBlueprint(persona=persona)
             )
         )
     

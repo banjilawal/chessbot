@@ -41,7 +41,7 @@ class KingCarrierEmptyException(RankCarrierEmptyException):
     Provides:
 
     Super Class:
-        CarrierEmptyItemException
+        RankCarrierEmptyException
     """
     MSG = "KingCarrier cannot be empty."
     ERR_CODE = "KING_CARRIER_EMPTY_ERROR"

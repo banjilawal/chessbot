@@ -12,10 +12,14 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidator, RankValidatorToolkit
+from assurance import (
+    BishopValidator, KingValidator, KnightValidator, ModelValidator, PawnValidator, QueenValidator,
+    RankValidatorToolkit,
+    RookValidator
+)
 from domain import Rank, RankValidationRequest
 from err import RankValidationRequestNullException, RankValidatorException
-from transit import BishopCarrier, RankCarrier
+from transit import BishopCarrier, KingCarrier, KnightCarrier, PawnCarrier, QueenCarrier, RankCarrier, RookCarrier
 from util import LoggingLevelRouter
 
 
@@ -114,22 +118,26 @@ class RankValidator(ModelValidator[Rank]):
                     ex=carrier_validation.exception,
                 )
             )
-        # --- Cast the carrier_validation payload for additional tests. ---#
+        # --- Cast the carrier_validation payload to route for additional processing. ---#
         carrier = cast(RankCarrier, carrier_validation.payload)
         
-        # --- Extract the blueprint to verify the attributes. ---#
-
         if isinstance(carrier, BishopCarrier):
-            validated_carrier = cast(BishopCarrier, carrier)
             helper = BishopValidator()
-            return helper.execute(validated_carrier)
-        if carrier.is_pawn_rank_carrier:
-            validated_carrier = cast(PawnRankCarrier, carrier)
-            helper = PawnRankValidator()
-            return helper.execute(validated_carrier)
-        validated_carrier = cast(CombatantCarrier, carrier)
-        helper = CombatantRankValidator()
-        return helper.execute(validated_carrier)
+            return helper.execute(carrier)
+        if isinstance(carrier, KingCarrier):
+            helper = KingValidator()
+            return helper.execute(carrier)
+        if isinstance(carrier, KnightCarrier):
+            helper = KnightValidator()
+            return helper.execute(carrier)
+        if isinstance(carrier, PawnCarrier):
+            helper = PawnValidator()
+            return helper.execute(carrier)
+        if isinstance(carrier, QueenCarrier):
+            helper = QueenValidator()
+            return helper.execute(carrier)
+        helper = RookValidator()
+        return helper.execute(cast(RookCarrier, carrier))
 
     
     

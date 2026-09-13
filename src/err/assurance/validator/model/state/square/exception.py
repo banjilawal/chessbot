@@ -27,7 +27,7 @@ class SquareValidatorException(StateModelValidatorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a SquareValidator failed.
+        1.  Indicating a SquareValidator failed.
 
     Attributes:
         msg: Optional[str]

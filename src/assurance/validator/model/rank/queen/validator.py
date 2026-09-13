@@ -13,13 +13,13 @@ from typing import Optional, cast
 
 from artifcat import ValidationResult
 from assurance import RankValidatorToolkit
-from domain import queen, queenBlueprint, Persona
-from err import queenCarrierEmptyException, queenValidatorException, PersonaNullException, WrongPersonaException
-from transit import queenCarrier
+from domain import Queen, QueenBlueprint, Persona
+from err import QueenCarrierEmptyException, QueenValidatorException, PersonaNullException, WrongPersonaException
+from transit import QueenCarrier
 from util import LoggingLevelRouter
 
 
-class queenValidator:
+class QueenValidator:
     """
     Role
         - Integrity, Consistency Maintenance
@@ -31,7 +31,7 @@ class queenValidator:
         toolkit: RankValidationToolkit
 
     Provides:
-        -   def execute(validated_carrier: queenCarrier) -> ValidationResult[queenCarrier]
+        -   def execute(validated_carrier: QueenCarrier) -> ValidationResult[QueenCarrier]
 
     Super Class:
     """
@@ -48,10 +48,10 @@ class queenValidator:
         self._toolkit=toolkit or RankValidatorToolkit()
     
     @LoggingLevelRouter.monitor
-    def execute(self, validated_carrier: queenCarrier) -> ValidationResult[queenCarrier]:
+    def execute(self, validated_carrier: QueenCarrier) -> ValidationResult[QueenCarrier]:
         """
-        Send a validated queen or Blueprint which inside the validated
-        queenCarrier.
+        Send a validated Queen or Blueprint which inside the validated
+        QueenCarrier.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
@@ -65,11 +65,11 @@ class queenValidator:
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            validated_carrier: queenCarrier
+            validated_carrier: QueenCarrier
         Returns:
-            ValidationResult[queenCarrier]
+            ValidationResult[QueenCarrier]
         Raises:
-            queenValidatorException
+            QueenValidatorException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -78,16 +78,16 @@ class queenValidator:
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                queenValidatorException(
+                QueenValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=queenValidatorException.MSG,
-                    err_code=queenValidatorException.ERR_CODE,
-                    ex=queenCarrierEmptyException(
+                    msg=QueenValidatorException.MSG,
+                    err_code=QueenValidatorException.ERR_CODE,
+                    ex=QueenCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=queenCarrierEmptyException.MSG,
-                        err_code=queenCarrierEmptyException.ERR_CODE,
+                        msg=QueenCarrierEmptyException.MSG,
+                        err_code=QueenCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
@@ -100,24 +100,24 @@ class queenValidator:
         if persona_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                queenValidatorException(
+                QueenValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=queenValidatorException.MSG,
-                    err_code=queenValidatorException.ERR_CODE,
+                    msg=QueenValidatorException.MSG,
+                    err_code=QueenValidatorException.ERR_CODE,
                     ex=persona_validation.exception,
                 )
             )
-        # Handle the case that the Persona is not a queen's.
+        # Handle the case that the Persona is not a Queen's.
         persona = cast(Persona, persona_validation.payload)
-        if persona != Persona.queen:
+        if persona != Persona.QUEEN:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                queenValidatorException(
+                QueenValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=queenValidatorException.MSG,
-                    err_code=queenValidatorException.ERR_CODE,
+                    msg=QueenValidatorException.MSG,
+                    err_code=QueenValidatorException.ERR_CODE,
                     ex=WrongPersonaException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -131,12 +131,12 @@ class queenValidator:
         
         # The model case.
         if validated_carrier.is_carrying_model:
-            model = queen(persona=persona)
-            return ValidationResult.success(queenCarrier(model=model))
+            model = Queen(persona=persona)
+            return ValidationResult.success(QueenCarrier(model=model))
         # Else the blueprint case
         return ValidationResult.success(
-            queenCarrier(
-                blueprint=queenBlueprint(persona=persona)
+            QueenCarrier(
+                blueprint=QueenBlueprint(persona=persona)
             )
         )
     

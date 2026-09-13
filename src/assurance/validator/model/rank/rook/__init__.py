@@ -7,10 +7,10 @@ Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ASSURANCE.VALIDATOR.MODEL.RANK.rook PACKAGE ===========#
+# =========== ASSURANCE.VALIDATOR.MODEL.RANK.ROOK PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .validator import rookValidator
+from .validator import RookValidator

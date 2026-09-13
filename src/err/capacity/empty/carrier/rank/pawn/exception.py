@@ -41,7 +41,7 @@ class PawnCarrierEmptyException(RankCarrierEmptyException):
     Provides:
 
     Super Class:
-        CarrierEmptyItemException
+        RankCarrierEmptyException
     """
     MSG = "PawnCarrier cannot be empty."
     ERR_CODE = "PAWN_CARRIER_EMPTY_ERROR"

@@ -7,10 +7,10 @@ Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ASSURANCE.VALIDATOR.MODEL.RANK.king PACKAGE ===========#
+# =========== ASSURANCE.VALIDATOR.MODEL.RANK.KING PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .validator import kingValidator
+from .validator import KingValidator

@@ -7,10 +7,10 @@ Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ASSURANCE.VALIDATOR.MODEL.RANK.knight PACKAGE ===========#
+# =========== ASSURANCE.VALIDATOR.MODEL.RANK.KNIGHT PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .validator import knightValidator
+from .validator import KnightValidator

@@ -41,7 +41,7 @@ class RookCarrierEmptyException(RankCarrierEmptyException):
     Provides:
 
     Super Class:
-        CarrierEmptyItemException
+        RankCarrierEmptyException
     """
     MSG = "RookCarrier cannot be empty."
     ERR_CODE = "ROOK_CARRIER_EMPTY_ERROR"

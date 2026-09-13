@@ -13,13 +13,13 @@ from typing import Optional, cast
 
 from artifcat import ValidationResult
 from assurance import RankValidatorToolkit
-from domain import knight, knightBlueprint, Persona
-from err import knightCarrierEmptyException, knightValidatorException, PersonaNullException, WrongPersonaException
-from transit import knightCarrier
+from domain import Knight, KnightBlueprint, Persona
+from err import KnightCarrierEmptyException, KnightValidatorException, PersonaNullException, WrongPersonaException
+from transit import KnightCarrier
 from util import LoggingLevelRouter
 
 
-class knightValidator:
+class KnightValidator:
     """
     Role
         - Integrity, Consistency Maintenance
@@ -31,7 +31,7 @@ class knightValidator:
         toolkit: RankValidationToolkit
 
     Provides:
-        -   def execute(validated_carrier: knightCarrier) -> ValidationResult[knightCarrier]
+        -   def execute(validated_carrier: KnightCarrier) -> ValidationResult[KnightCarrier]
 
     Super Class:
     """
@@ -48,10 +48,10 @@ class knightValidator:
         self._toolkit=toolkit or RankValidatorToolkit()
     
     @LoggingLevelRouter.monitor
-    def execute(self, validated_carrier: knightCarrier) -> ValidationResult[knightCarrier]:
+    def execute(self, validated_carrier: KnightCarrier) -> ValidationResult[KnightCarrier]:
         """
-        Send a validated knight or Blueprint which inside the validated
-        knightCarrier.
+        Send a validated Knight or Blueprint which inside the validated
+        KnightCarrier.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
@@ -65,11 +65,11 @@ class knightValidator:
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            validated_carrier: knightCarrier
+            validated_carrier: KnightCarrier
         Returns:
-            ValidationResult[knightCarrier]
+            ValidationResult[KnightCarrier]
         Raises:
-            knightValidatorException
+            KnightValidatorException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -78,16 +78,16 @@ class knightValidator:
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                knightValidatorException(
+                KnightValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=knightValidatorException.MSG,
-                    err_code=knightValidatorException.ERR_CODE,
-                    ex=knightCarrierEmptyException(
+                    msg=KnightValidatorException.MSG,
+                    err_code=KnightValidatorException.ERR_CODE,
+                    ex=KnightCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=knightCarrierEmptyException.MSG,
-                        err_code=knightCarrierEmptyException.ERR_CODE,
+                        msg=KnightCarrierEmptyException.MSG,
+                        err_code=KnightCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
@@ -100,24 +100,24 @@ class knightValidator:
         if persona_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                knightValidatorException(
+                KnightValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=knightValidatorException.MSG,
-                    err_code=knightValidatorException.ERR_CODE,
+                    msg=KnightValidatorException.MSG,
+                    err_code=KnightValidatorException.ERR_CODE,
                     ex=persona_validation.exception,
                 )
             )
-        # Handle the case that the Persona is not a knight's.
+        # Handle the case that the Persona is not a Knight's.
         persona = cast(Persona, persona_validation.payload)
-        if persona != Persona.knight:
+        if persona != Persona.KNIGHT:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                knightValidatorException(
+                KnightValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=knightValidatorException.MSG,
-                    err_code=knightValidatorException.ERR_CODE,
+                    msg=KnightValidatorException.MSG,
+                    err_code=KnightValidatorException.ERR_CODE,
                     ex=WrongPersonaException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -131,12 +131,12 @@ class knightValidator:
         
         # The model case.
         if validated_carrier.is_carrying_model:
-            model = knight(persona=persona)
-            return ValidationResult.success(knightCarrier(model=model))
+            model = Knight(persona=persona)
+            return ValidationResult.success(KnightCarrier(model=model))
         # Else the blueprint case
         return ValidationResult.success(
-            knightCarrier(
-                blueprint=knightBlueprint(persona=persona)
+            KnightCarrier(
+                blueprint=KnightBlueprint(persona=persona)
             )
         )
     

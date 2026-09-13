@@ -7,10 +7,10 @@ Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ASSURANCE.VALIDATOR.MODEL.RANK.queen PACKAGE ===========#
+# =========== ASSURANCE.VALIDATOR.MODEL.RANK.QUEEN PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .validator import queenValidator
+from .validator import QueenValidator

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import Board, Coord, Formation, HomeSquare, SquareBlueprint, Token
+from domain import Board, Coord, Formation, HomeSquare, SquareBlueprint, SquareState, Token
 from err import HomeSquareNullException
 
 
@@ -43,6 +43,7 @@ class HomeSquareBlueprint(SquareBlueprint):
             coord: Coord,
             formation: Formation,
             occupant: Optional[Token] | None = None,
+            state: Optional[SquareState] | None = None,
             domain_class: Optional[Type[HomeSquare]] | None = None,
             domain_null_exception: Optional[HomeSquareNullException] | None = None,
             id: Optional[int] | None = None,
@@ -53,6 +54,7 @@ class HomeSquareBlueprint(SquareBlueprint):
             board: Board
             coord: Coord
             occupant: Optional[Token]
+            state: Optional[SquareState]
             formation: Optional[Formation]
             domain_class: Optional[Type[Square]]
             domain_null_exception: Optional[HomeSquareNullException]
@@ -64,6 +66,7 @@ class HomeSquareBlueprint(SquareBlueprint):
             board=board,
             coord=coord,
             occupant=occupant,
+            state=state or SquareState.EMPTY,
             domain_class=domain_class or Type[HomeSquare],
             domain_null_exception=domain_null_exception or HomeSquareNullException(),
         )

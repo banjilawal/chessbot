@@ -41,7 +41,7 @@ class BishopCarrierEmptyException(RankCarrierEmptyException):
     Provides:
 
     Super Class:
-        CarrierEmptyItemException
+        RankCarrierEmptyException
     """
     MSG = "BishopCarrier cannot be empty."
     ERR_CODE = "BISHOP_CARRIER_EMPTY_ERROR"
