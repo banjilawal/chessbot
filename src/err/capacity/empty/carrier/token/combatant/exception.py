@@ -1,7 +1,7 @@
-# src/err/capacity/empty/carrier/token/exception.py
+# src/err/capacity/empty/carrier/token/combatant/exception.py
 
 """
-Module: err.capacity.empty.carrier.token.exception
+Module: err.capacity.empty.carrier.token.combatant.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import EmptyCarrierException
+from err import TokenCarrierEmptyException
 
 __all__ = [
-    # ======================# TOKEN_CARRIER_EMPTY_ERROR #======================#
-    "TokenCarrierEmptyException",
+    # ======================# COMBATANT_CARRIER_EMPTY_ERROR #======================#
+    "CombatantCarrierEmptyException",
 ]
 
-# ======================# TOKEN_CARRIER_EMPTY_ERROR #======================#
-class TokenCarrierEmptyException(EmptyCarrierException):
+# ======================# COMBATANT_CARRIER_EMPTY_ERROR #======================#
+class CombatantCarrierEmptyException(TokenCarrierEmptyException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a TokenCarrier is empty.
+        1.  Indicating a CombatantCarrier is empty.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class TokenCarrierEmptyException(EmptyCarrierException):
     Provides:
 
     Super Class:
-        EmptyCarrierException
+        TokenCarrierEmptyException
     """
-    MSG = "TokenCarrier cannot be empty."
-    ERR_CODE = "TOKEN_CARRIER_EMPTY_ERROR"
+    MSG = "CombatantCarrier cannot be empty."
+    ERR_CODE = "COMBATANT_CARRIER_EMPTY_ERROR"
     
     def __init__(
             self,

@@ -1,7 +1,7 @@
-# src/err/capacity/empty/carrier/token/exception.py
+# src/err/capacity/empty/carrier/token/king/exception.py
 
 """
-Module: err.capacity.empty.carrier.token.exception
+Module: err.capacity.empty.carrier.token.king.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import EmptyCarrierException
+from err import TokenCarrierEmptyException
 
 __all__ = [
-    # ======================# TOKEN_CARRIER_EMPTY_ERROR #======================#
-    "TokenCarrierEmptyException",
+    # ======================# KING_TOKEN_CARRIER_EMPTY_ERROR #======================#
+    "KingTokenCarrierEmptyException",
 ]
 
-# ======================# TOKEN_CARRIER_EMPTY_ERROR #======================#
-class TokenCarrierEmptyException(EmptyCarrierException):
+# ======================# KING_TOKEN_CARRIER_EMPTY_ERROR #======================#
+class KingTokenCarrierEmptyException(TokenCarrierEmptyException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a TokenCarrier is empty.
+        1.  Indicating a KingTokenCarrier is empty.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class TokenCarrierEmptyException(EmptyCarrierException):
     Provides:
 
     Super Class:
-        EmptyCarrierException
+        TokenCarrierEmptyException
     """
-    MSG = "TokenCarrier cannot be empty."
-    ERR_CODE = "TOKEN_CARRIER_EMPTY_ERROR"
+    MSG = "KingTokenCarrier cannot be empty."
+    ERR_CODE = "KING_TOKEN_CARRIER_EMPTY_ERROR"
     
     def __init__(
             self,

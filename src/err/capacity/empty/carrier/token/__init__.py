@@ -10,7 +10,8 @@ version: 0.0.2
 # ============ ERR.CAPACITY.EMPTY.CARRIER.TOKEN PACKAGE ===========#
 
 # Packages
-
+from .combatant import *
+from .king import *
 
 # Modules
 from .exception import TokenCarrierEmptyException

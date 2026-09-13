@@ -1,7 +1,7 @@
-# src/err/capacity/empty/carrier/token/exception.py
+# src/err/capacity/empty/carrier/token/combatant/pawn/exception.py
 
 """
-Module: err.capacity.empty.carrier.token.exception
+Module: err.capacity.empty.carrier.token.combatant.pawn.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import EmptyCarrierException
+from err import CombatantCarrierEmptyException
 
 __all__ = [
-    # ======================# TOKEN_CARRIER_EMPTY_ERROR #======================#
-    "TokenCarrierEmptyException",
+    # ======================# PAWN_TOKEN_CARRIER_EMPTY_ERROR #======================#
+    "PawnTokenCarrierEmptyException",
 ]
 
-# ======================# TOKEN_CARRIER_EMPTY_ERROR #======================#
-class TokenCarrierEmptyException(EmptyCarrierException):
+# ======================# PAWN_TOKEN_CARRIER_EMPTY_ERROR #======================#
+class PawnTokenCarrierEmptyException(CombatantCarrierEmptyException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a TokenCarrier is empty.
+        1.  Indicating a PawnTokenCarrier is empty.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class TokenCarrierEmptyException(EmptyCarrierException):
     Provides:
 
     Super Class:
-        EmptyCarrierException
+        CombatantCarrierEmptyException
     """
-    MSG = "TokenCarrier cannot be empty."
-    ERR_CODE = "TOKEN_CARRIER_EMPTY_ERROR"
+    MSG = "PawnTokenCarrier cannot be empty."
+    ERR_CODE = "PAWN_TOKEN_CARRIER_EMPTY_ERROR"
     
     def __init__(
             self,
