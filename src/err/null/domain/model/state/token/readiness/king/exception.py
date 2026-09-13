@@ -1,7 +1,7 @@
-# src/err/null/domain/model/state/token/deployment/exception.py
+# src/err/null/domain/model/state/token/king/exception.py
 
 """
-Module: err.null.domain.model.state.token.deployment.exception
+Module: err.null.domain.model.state.token.king.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import NullException
+from err import TokenReadinessNullException
 from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# TOKEN_DEPLOYMENT_STATE_NULL_ERROR #======================#
-    "TokenDeploymentNullException",
+    # ======================# KING_READINESS_NULL_ERROR #======================#
+    "KingReadinessNullException",
 ]
 
-# ======================# TOKEN_DEPLOYMENT_STATE_NULL_ERROR #======================#
-class TokenDeploymentNullException(NullException):
+# ======================# KING_READINESS_NULL_ERROR #======================#
+class KingReadinessNullException(TokenReadinessNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required TokenDeploymentState is null.
+        1.  Indicating a required KingReadiness is null.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class TokenDeploymentNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = "TokenDeploymentState cannot be null."
-    ERR_CODE = "TOKEN_DEPLOYMENT_STATE_NULL_ERROR"
+    MSG = "KingReadiness cannot be null."
+    ERR_CODE = "KING_READINESS_NULL_ERROR"
     
     def __init__(
             self,

@@ -10,7 +10,7 @@ version: 0.0.2
 # ============ ERR.NULL.DOMAIN.MODEL.STATE.TOKEN.COMBATANT.PAWN PACKAGE ===========#
 
 # Packages
-
+from .promotion import *
 
 # Modules
 from .exception import PawnTokenNullException

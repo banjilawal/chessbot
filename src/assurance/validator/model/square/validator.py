@@ -9,17 +9,17 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, Optional, cast
+from typing import Optional, cast
 
 from artifcat import ValidationResult
 from assurance import HomeSquareValidator, ModelValidator, SquareValidatorToolkit
 from domain import (
-    Board, BoardValidationRequest, Coord, CoordValidationRequest, Formation, Square, SquareBlueprint,
+    Board, BoardValidationRequest, Coord, CoordValidationRequest, Square, SquareBlueprint,
     SquareState, SquareValidationRequest
 )
 from err import (
-    BoardCarrierEmptyException, CoordCarrierEmptyException, NullException, SquareCarrierEmptyException,
-    SquareValidationRequestNullException,
+    BoardCarrierEmptyException, CoordCarrierEmptyException, SquareCarrierEmptyException,
+    SquareStateNullException, SquareValidationRequestNullException,
     SquareValidatorException
 )
 from transit import BoardCarrier, CoordCarrier, HomeSquareCarrier, SquareCarrier
@@ -186,7 +186,7 @@ class SquareValidator(ModelValidator[Square]):
         state_validation = self.toolkit.helper.priming_validator.execute(
             candidate=blueprint.state,
             target_model=SquareState,
-            null_exception=NullException(),
+            null_exception=SquareStateNullException(),
         )
         if state_validation.is_failure:
             # Send the exception chain on failure.

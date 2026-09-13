@@ -15,11 +15,11 @@ from artifcat import ValidationResult
 from assurance import TokenValidatorToolkit
 from domain import (
     Formation, CombatantReadiness, PawnToken, HomeSquare, PawnTokenBlueprint, Team,
-    TeamValidationRequest, TokenDeployment, TokenReadiness
+    TeamValidationRequest, TokenDeployment
 )
 from err import (
     FormationNullException, PawnTokenValidatorException, NullException, TeamCarrierEmptyException,
-    PawnTokenCarrierEmptyException
+    PawnTokenCarrierEmptyException, TokenDeploymentNullException
 )
 from transit import PawnTokenCarrier, TeamCarrier
 from util import IdFactory, LoggingLevelRouter
@@ -188,8 +188,8 @@ class PawnTokenValidator:
         # Handle the case that the deployment does not pass a validation check.
         deployment_validation = self._toolkit.helper.priming_validator.execute(
             candidate=blueprint.deployment,
-            target_model=TokenReadiness,
-            null_exception=NullException(),
+            target_model=TokenDeployment,
+            null_exception=TokenDeploymentNullException(),
         )
         if deployment_validation.is_failure:
             # Send the exception chain on failure.

@@ -46,6 +46,7 @@ class NullException(ChessException):
     """
     MSG = "Object cannot be null."
     ERR_CODE = "NULL_ERROR"
+    MTHD_RSLT_TYPE = MethodResultType.VALIDATION_RESULT
     
     def __init__(
             self,
@@ -71,6 +72,7 @@ class NullException(ChessException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,

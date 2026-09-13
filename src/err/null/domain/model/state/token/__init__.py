@@ -13,6 +13,7 @@ version: 0.0.2
 from .combatant import *
 from .deployment import *
 from .king import *
+from .readiness import *
 
 # Modules
 from .exception import TokenNullException

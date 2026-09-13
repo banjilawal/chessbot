@@ -11,6 +11,7 @@ version: 0.0.2
 
 # Packages
 from .pawn import *
+from .readiness import *
 
 # Modules
 from .exception import CombatantNullException

@@ -14,12 +14,12 @@ from typing import Optional, cast
 from artifcat import ValidationResult
 from assurance import TokenValidatorToolkit
 from domain import (
-    Formation, CombatantReadiness, CombatantToken, HomeSquare, CombatantBlueprint, Team, TeamValidationRequest, TokenDeployment,
-    TokenReadiness
+    Formation, CombatantReadiness, CombatantToken, HomeSquare, CombatantBlueprint, Team,
+    TeamValidationRequest, TokenDeployment,
 )
 from err import (
     FormationNullException, CombatantTokenValidatorException, NullException, TeamCarrierEmptyException,
-    CombatantCarrierEmptyException
+    CombatantCarrierEmptyException, TokenDeploymentNullException
 )
 from transit import CombatantCarrier, TeamCarrier
 from util import IdFactory, LoggingLevelRouter
@@ -188,8 +188,8 @@ class CombatantTokenValidator:
         # Handle the case that the deployment does not pass a validation check.
         deployment_validation = self._toolkit.helper.priming_validator.execute(
             candidate=blueprint.deployment,
-            target_model=TokenReadiness,
-            null_exception=NullException(),
+            target_model=TokenDeployment,
+            null_exception=TokenDeploymentNullException(),
         )
         if deployment_validation.is_failure:
             # Send the exception chain on failure.

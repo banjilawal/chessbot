@@ -1,7 +1,7 @@
-# src/err/null/domain/model/state/token/deployment/exception.py
+# src/err/null/domain/model/state/token/combatant/exception.py
 
 """
-Module: err.null.domain.model.state.token.deployment.exception
+Module: err.null.domain.model.state.token.combatant.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# TOKEN_DEPLOYMENT_STATE_NULL_ERROR #======================#
-    "TokenDeploymentNullException",
+    # ======================# TOKEN_READINESS_NULL_ERROR #======================#
+    "TokenReadinessNullException",
 ]
 
-# ======================# TOKEN_DEPLOYMENT_STATE_NULL_ERROR #======================#
-class TokenDeploymentNullException(NullException):
+# ======================# TOKEN_READINESS_NULL_ERROR #======================#
+class TokenReadinessNullException(NullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required TokenDeploymentState is null.
+        1.  Indicating a required TokenReadiness is null.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,9 @@ class TokenDeploymentNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = "TokenDeploymentState cannot be null."
-    ERR_CODE = "TOKEN_DEPLOYMENT_STATE_NULL_ERROR"
+    MSG = "TokenReadiness cannot be null."
+    ERR_CODE = "TOKEN_READINESS_NULL_ERROR"
+    MTHD_RSLT_TYPE = super().MTHD_RSLT_TYPE
     
     def __init__(
             self,
