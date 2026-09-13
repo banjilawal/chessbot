@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
+from artifcat import MethodResultType
 from err import RankValidatorException
 
 __all__ = [

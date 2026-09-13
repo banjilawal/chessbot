@@ -15,8 +15,7 @@ from artifcat import ValidationResult
 from assurance import ModelValidator, RankValidatorToolkit
 from domain import Rank, RankValidationRequest
 from err import RankValidationRequestNullException, RankValidatorException
-from transit import RankCarrier
-
+from transit import BishopCarrier, RankCarrier
 from util import LoggingLevelRouter
 
 
@@ -116,8 +115,21 @@ class RankValidator(ModelValidator[Rank]):
                 )
             )
         # --- Cast the carrier_validation payload for additional tests. ---#
-        carrier = cast(
-            RankCarrier,
-            carrier_validation.payload,
-        )
+        carrier = cast(RankCarrier, carrier_validation.payload)
+        
         # --- Extract the blueprint to verify the attributes. ---#
+
+        if isinstance(carrier, BishopCarrier):
+            validated_carrier = cast(BishopCarrier, carrier)
+            helper = BishopValidator()
+            return helper.execute(validated_carrier)
+        if carrier.is_pawn_rank_carrier:
+            validated_carrier = cast(PawnRankCarrier, carrier)
+            helper = PawnRankValidator()
+            return helper.execute(validated_carrier)
+        validated_carrier = cast(CombatantCarrier, carrier)
+        helper = CombatantRankValidator()
+        return helper.execute(validated_carrier)
+
+    
+    

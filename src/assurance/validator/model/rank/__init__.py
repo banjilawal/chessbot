@@ -10,7 +10,9 @@ version: 0.0.2
 # =========== ASSURANCE.VALIDATOR.MODEL.RANK PACKAGE ===========#
 
 # Packages
-
+from .bishop import *
+from .king import *
+from .pawn import *
 
 # Modules
 from .validator import RankValidator

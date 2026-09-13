@@ -1,7 +1,7 @@
-# src/err/assurance/validator/model/rank/knight/exception.py
+# src/err/assurance/validator/model/rank/persona/exception.py
 
 """
-Module: err.assurance.validator.model.rank.knight.exception
+Module: err.assurance.validator.model.rank.persona.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import RankValidatorException
 
 __all__ = [
-    # ======================# KNIGHT_VALIDATOR_FAILURE #======================#
-    "KnightValidatorException",
+    # ======================# WRONG_PERSONA_ERROR #======================#
+    "WrongPersonaException",
 ]
 
-# ======================# KNIGHT_VALIDATOR_FAILURE #======================#
-class KnightValidatorException(RankValidatorException):
+# ======================# WRONG_PERSONA_ERROR #======================#
+class WrongPersonaException(RankValidatorException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a Knight validator failed.
+        1.  Indicating the wrong persona is being used with a Rank.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class KnightValidatorException(RankValidatorException):
     Super Class:
         RankValidatorException
     """
-    MSG = "Knight Validator failed."
-    ERR_CODE = "KNIGHT_VALIDATOR_FAILURE"
+    MSG = "Persona Validator failed."
+    ERR_CODE = "WRONG_PERSONA_ERROR"
     
     def __init__(
             self,

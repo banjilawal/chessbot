@@ -1,7 +1,7 @@
-# src/err/assurance/validator/model/rank/knight/exception.py
+# src/err/capacity/empty/carrier/rank/knight/exception.py
 
 """
-Module: err.assurance.validator.model.rank.knight.exception
+Module: err.capacity.empty.carrier.rank.knight.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import RankValidatorException
+from err import RankCarrierEmptyException
 
 __all__ = [
-    # ======================# KNIGHT_VALIDATOR_FAILURE #======================#
-    "KnightValidatorException",
+    # ======================# KNIGHT_CARRIER_EMPTY_ERROR #======================#
+    "KnightCarrierEmptyException",
 ]
 
-# ======================# KNIGHT_VALIDATOR_FAILURE #======================#
-class KnightValidatorException(RankValidatorException):
+# ======================# KNIGHT_CARRIER_EMPTY_ERROR #======================#
+class KnightCarrierEmptyException(RankCarrierEmptyException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a Knight validator failed.
+        1.  Indicating a KnightCarrier is empty.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class KnightValidatorException(RankValidatorException):
     Provides:
 
     Super Class:
-        RankValidatorException
+        CarrierEmptyItemException
     """
-    MSG = "Knight Validator failed."
-    ERR_CODE = "KNIGHT_VALIDATOR_FAILURE"
+    MSG = "KnightCarrier cannot be empty."
+    ERR_CODE = "KNIGHT_CARRIER_EMPTY_ERROR"
     
     def __init__(
             self,
@@ -70,7 +70,6 @@ class KnightValidatorException(RankValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,
