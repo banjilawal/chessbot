@@ -1,7 +1,7 @@
-# src/err/capacity/empty/carrier/player/exception.py
+# src/err/capacity/empty/carrier/player/machine/exception.py
 
 """
-Module: err.capacity.empty.carrier.player.exception
+Module: err.capacity.empty.carrier.player.machine.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import EmptyCarrierException
+from err import PlayerCarrierEmptyException
 
 __all__ = [
-    # ======================# PLAYER_CARRIER_EMPTY_ERROR #======================#
-    "PlayerCarrierEmptyException",
+    # ======================# MACHINE_CARRIER_EMPTY_ERROR #======================#
+    "MachineCarrierEmptyException",
 ]
 
-# ======================# PLAYER_CARRIER_EMPTY_ERROR #======================#
-class PlayerCarrierEmptyException(EmptyCarrierException):
+# ======================# MACHINE_CARRIER_EMPTY_ERROR #======================#
+class MachineCarrierEmptyException(PlayerCarrierEmptyException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a PlayerCarrier is empty.
+        1.  Indicating a MachineCarrier is empty.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class PlayerCarrierEmptyException(EmptyCarrierException):
     Provides:
 
     Super Class:
-        EmptyCarrierException
+        PlayerCarrierEmptyException
     """
-    MSG = "PlayerCarrier cannot be empty."
-    ERR_CODE = "PLAYER_CARRIER_EMPTY_ERROR"
+    MSG = "MachineCarrier cannot be empty."
+    ERR_CODE = "MACHINE_CARRIER_EMPTY_ERROR"
     
     def __init__(
             self,
