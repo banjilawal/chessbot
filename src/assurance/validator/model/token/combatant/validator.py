@@ -18,8 +18,8 @@ from domain import (
     TeamValidationRequest, TokenDeployment,
 )
 from err import (
-    FormationNullException, CombatantTokenValidatorException, NullException, TeamCarrierEmptyException,
-    CombatantCarrierEmptyException, TokenDeploymentNullException
+    CombatantReadinessNullException, FormationNullException, CombatantTokenValidatorException,
+    TeamCarrierEmptyException, CombatantCarrierEmptyException, TokenDeploymentNullException
 )
 from transit import CombatantCarrier, TeamCarrier
 from util import IdFactory, LoggingLevelRouter
@@ -54,7 +54,10 @@ class CombatantTokenValidator:
         self._toolkit=toolkit or TokenValidatorToolkit()
     
     @LoggingLevelRouter.monitor
-    def execute(self, validated_carrier: CombatantCarrier) -> ValidationResult[CombatantCarrier]:
+    def execute(
+            self,
+            validated_carrier: CombatantCarrier
+    ) -> ValidationResult[CombatantCarrier]:
         """
         Send a validated CombatantToken or Blueprint which inside the validated
         CombatantCarrier.
@@ -172,7 +175,7 @@ class CombatantTokenValidator:
         readiness_validation = self._toolkit.helper.priming_validator.execute(
             candidate=blueprint.readiness,
             target_model=CombatantReadiness,
-            null_exception=NullException(),
+            null_exception=CombatantReadinessNullException(),
         )
         if readiness_validation.is_failure:
             # Send the exception chain on failure.

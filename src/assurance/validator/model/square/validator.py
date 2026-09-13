@@ -269,10 +269,6 @@ class SquareValidator(ModelValidator[Square]):
                     ),
                 )
             )
-        if isinstance(carrier, HomeSquareCarrier):
-            helper = HomeSquareValidator()
-            return helper.execute(carrier)
-        
         # --- Extract and cast payloads of the validation results. ---#
         id = cast(int, id_validation.payload)
         name = cast(str, name_validation.payload)
@@ -280,6 +276,11 @@ class SquareValidator(ModelValidator[Square]):
         board = cast(Board, board_carrier.entity)
         coord = cast(Coord, coord_carrier.entity)
         occupant = blueprint.occupant
+        
+        # --- HomeSquareCarrier has additional fields that need validation. ---#
+        if isinstance(carrier, HomeSquareCarrier):
+            helper = HomeSquareValidator()
+            return helper.execute(home_square_id=id, validated_carrier=carrier)
         
         # --- Forward the appropriate work product to the caller. ---#
         # The model case

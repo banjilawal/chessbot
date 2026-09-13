@@ -18,8 +18,8 @@ from domain import (
     TeamValidationRequest, TokenDeployment
 )
 from err import (
-    FormationNullException, KingTokenValidatorException, NullException, TeamCarrierEmptyException,
-    KingTokenCarrierEmptyException, TokenDeploymentNullException
+    FormationNullException, KingReadinessNullException, KingTokenValidatorException,
+    TeamCarrierEmptyException, KingTokenCarrierEmptyException, TokenDeploymentNullException
 )
 from transit import KingTokenCarrier, TeamCarrier
 from util import IdFactory, LoggingLevelRouter
@@ -172,7 +172,7 @@ class KingTokenValidator:
         readiness_validation = self._toolkit.helper.priming_validator.execute(
             candidate=blueprint.readiness,
             target_model=KingReadiness,
-            null_exception=NullException(),
+            null_exception=KingReadinessNullException(),
         )
         if readiness_validation.is_failure:
             # Send the exception chain on failure.
