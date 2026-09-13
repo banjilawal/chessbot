@@ -1,7 +1,7 @@
-# src/err/assurance/validator/model/state/player/exception.py
+# src/err/assurance/validator/model/state/player/machine/exception.py
 
 """
-Module: err.assurance.validator.model.state.player.exception
+Module: err.assurance.validator.model.state.player.machine.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StateModelValidatorException
+from err import PlayerValidatorException
 from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# PLAYER_VALIDATOR_FAILURE #======================#
-    "PlayerValidatorException",
+    # ======================# MACHINE_PLAYER_VALIDATOR_FAILURE #======================#
+    "MachinePlayerValidatorException",
 ]
 
-# ======================# PLAYER_VALIDATOR_FAILURE #======================#
-class PlayerValidatorException(StateModelValidatorException):
+# ======================# MACHINE_PLAYER_VALIDATOR_FAILURE #======================#
+class MachinePlayerValidatorException(PlayerValidatorException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a PlayerValidator failed.
+        1.  Indicating a MachinePlayerValidator failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class PlayerValidatorException(StateModelValidatorException):
     Provides:
 
     Super Class:
-        StateModelValidatorException
+        PlayerValidatorException
     """
-    MSG = "PlayerValidator failed."
-    ERR_CODE = "PLAYER_VALIDATOR_FAILURE"
+    MSG = "MachinePlayerValidator failed."
+    ERR_CODE = "MACHINE_PLAYER_VALIDATOR_FAILURE"
     
     def __init__(
             self,
