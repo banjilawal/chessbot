@@ -14,12 +14,12 @@ from typing import Optional, cast
 from artifcat import ValidationResult
 from assurance import TokenValidatorToolkit
 from domain import (
-    Formation, CombatantReadiness, PawnToken, HomeSquare, PawnTokenBlueprint, Team,
-    TeamValidationRequest, TokenDeployment
+    Formation, CombatantReadiness, PawnToken, HomeSquare, PawnTokenBlueprint,
+    PromotionState, Team, TeamValidationRequest, TokenDeployment
 )
 from err import (
-    FormationNullException, PawnTokenValidatorException, NullException, TeamCarrierEmptyException,
-    PawnTokenCarrierEmptyException, TokenDeploymentNullException
+    CombatantReadinessNullException, FormationNullException, PawnTokenValidatorException, PromotionStateNullException,
+    TeamCarrierEmptyException, PawnTokenCarrierEmptyException, TokenDeploymentNullException
 )
 from transit import PawnTokenCarrier, TeamCarrier
 from util import IdFactory, LoggingLevelRouter
@@ -54,7 +54,10 @@ class PawnTokenValidator:
         self._toolkit=toolkit or TokenValidatorToolkit()
     
     @LoggingLevelRouter.monitor
-    def execute(self, validated_carrier: PawnTokenCarrier) -> ValidationResult[PawnTokenCarrier]:
+    def execute(
+            self,
+            validated_carrier: PawnTokenCarrier
+    ) -> ValidationResult[PawnTokenCarrier]:
         """
         Send a validated PawnToken or Blueprint which inside the validated
         PawnTokenCarrier.
@@ -172,7 +175,7 @@ class PawnTokenValidator:
         readiness_validation = self._toolkit.helper.priming_validator.execute(
             candidate=blueprint.readiness,
             target_model=CombatantReadiness,
-            null_exception=NullException(),
+            null_exception=CombatantReadinessNullException(),
         )
         if readiness_validation.is_failure:
             # Send the exception chain on failure.
@@ -202,6 +205,23 @@ class PawnTokenValidator:
                     ex=deployment_validation.exception,
                 )
             )
+        # Handle the case that the deployment does not pass a validation check.
+        promotion_state_validation = self._toolkit.helper.priming_validator.execute(
+            candidate=blueprint.promotion_state,
+            target_model=PromotionState,
+            null_exception=PromotionStateNullException(),
+        )
+        if deployment_validation.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                PawnTokenValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=PawnTokenValidatorException.MSG,
+                    err_code=PawnTokenValidatorException.ERR_CODE,
+                    ex=promotion_state_validation.exception,
+                )
+            )
         # Handle the case that the home_square gets flagged.
         home_detection = self._toolkit.helper.home_extractor.execute(
             blueprint=blueprint,
@@ -224,6 +244,7 @@ class PawnTokenValidator:
         formation = cast(Formation, formation_validation.payload)
         readiness = cast(CombatantReadiness, readiness_validation.payload)
         deployment = cast(TokenDeployment, deployment_validation.payload)
+        promotion_state = cast(PromotionState, promotion_state_validation.payload)
         # --- Forward the appropriate work product to the caller. ---#
         
         # The model case.
@@ -239,6 +260,7 @@ class PawnTokenValidator:
             model.rank = blueprint.rank
             model.captor = blueprint.captor
             model.position = blueprint.position
+            model.promotion_state = promotion_state
             model.previous_position = model.previous_position
             
             return ValidationResult.success(PawnTokenCarrier(model=model))
@@ -255,6 +277,7 @@ class PawnTokenValidator:
                     home_square=home_square,
                     captor=blueprint.captor,
                     position=blueprint.position,
+                    promotion_state=promotion_state,
                     previous_position=blueprint.previous_position,
             )
         )
