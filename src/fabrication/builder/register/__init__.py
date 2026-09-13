@@ -13,6 +13,5 @@ version: 0.0.2
 from .identity import *
 from .model import *
 
-
 # Modules
 from .builder import RegisterBuilder

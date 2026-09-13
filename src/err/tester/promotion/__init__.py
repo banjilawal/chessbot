@@ -13,5 +13,4 @@ version: 0.0.2
 from .pawn import *
 from .rank import *
 
-
 # Modules

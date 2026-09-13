@@ -14,6 +14,5 @@ from .node import *
 from .offset import *
 from .search import *
 
-
 # Modules
 from .request import ChainRequest

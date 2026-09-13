@@ -13,6 +13,5 @@ version: 0.0.2
 from .head import *
 from .tail import *
 
-
 # Modules
 from .request import TrimByOffsetRequest

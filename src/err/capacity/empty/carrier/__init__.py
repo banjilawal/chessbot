@@ -25,6 +25,5 @@ from .team import *
 from .token import *
 from .vector import *
 
-
 # Modules
 from .exception import EmptyCarrierException

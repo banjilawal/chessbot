@@ -14,6 +14,5 @@ from .register import *
 from .tuple import *
 from .vector import *
 
-
 # Modules
 from .exception import ContainerEmptyException

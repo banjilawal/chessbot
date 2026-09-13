@@ -13,6 +13,5 @@ version: 0.0.2
 from .axis import *
 from .quadrant import *
 
-
 # Modules
 from .exception import SpaceReservoirException

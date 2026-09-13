@@ -17,6 +17,5 @@ from .toggle import *
 from .token import *
 from .vector import *
 
-
 # Modules
 from .suite import OperationSuite

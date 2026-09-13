@@ -12,7 +12,6 @@ version: 0.0.2
 # Packages
 from .request import *
 
-
 # Modules
 from .decision import Decision
 from .state import Permission

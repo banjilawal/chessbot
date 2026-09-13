@@ -13,6 +13,5 @@ version: 0.0.2
 from .cartesian import *
 from .orientation import *
 
-
 # Modules
 from .structure import Toggle

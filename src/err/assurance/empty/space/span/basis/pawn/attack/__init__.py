@@ -13,6 +13,5 @@ version: 0.0.2
 from .opening import *
 from .developed import *
 
-
 # Modules
 from .exception import AttackBasisEmptyException

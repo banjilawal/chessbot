@@ -19,7 +19,6 @@ from queen import *
 from .rook import *
 from .engine import *
 
-
 # Modules
 from .spanner import Spanner
 from .category import SpannerCategory

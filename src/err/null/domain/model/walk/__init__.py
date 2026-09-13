@@ -14,5 +14,4 @@ from .attack import *
 from .maneuver import *
 from .path import *
 
-
 # Modules

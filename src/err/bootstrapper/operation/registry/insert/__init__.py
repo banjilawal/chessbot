@@ -13,6 +13,5 @@ version: 0.0.2
 from .service import *
 from .worker import *
 
-
 # Modules
 from .exception import NewRegistrationException

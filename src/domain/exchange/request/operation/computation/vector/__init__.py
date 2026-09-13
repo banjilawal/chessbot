@@ -15,6 +15,5 @@ from .distance import *
 from .product import *
 from .transform import *
 
-
 # Modules
 from .request import VectorComputationRequest

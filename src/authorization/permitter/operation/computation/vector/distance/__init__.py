@@ -12,5 +12,4 @@ version: 0.0.2
 # Packages
 from .euclidean import *
 
-
 # Modules

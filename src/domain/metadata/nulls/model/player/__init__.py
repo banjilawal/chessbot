@@ -13,6 +13,5 @@ version: 0.0.2
 from .human import *
 from .machine import *
 
-
 # Modules
 from .group import PlayerNullGroup

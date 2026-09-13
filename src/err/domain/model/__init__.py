@@ -17,6 +17,5 @@ from .registry import *
 from .scalar import *
 from .state import *
 
-
 # Modules
 from .exception import ModelException

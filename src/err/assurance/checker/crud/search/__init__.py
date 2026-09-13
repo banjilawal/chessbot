@@ -12,6 +12,5 @@ version: 0.0.2
 # Packages
 from .context import *
 
-
 # Modules
 from .exception import SearchCheckerException

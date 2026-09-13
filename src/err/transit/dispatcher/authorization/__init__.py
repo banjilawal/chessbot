@@ -12,6 +12,5 @@ version: 1.0.0
 # Packages
 from .crud import *
 
-
 # Modules
 from .exception import AuthorizationDispatcherException

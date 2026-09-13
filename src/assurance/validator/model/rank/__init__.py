@@ -12,7 +12,10 @@ version: 0.0.2
 # Packages
 from .bishop import *
 from .king import *
+from .knight import *
 from .pawn import *
+from .queen import *
+from .rook import *
 
 # Modules
 from .validator import RankValidator

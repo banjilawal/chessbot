@@ -13,6 +13,5 @@ version: 0.0.2
 from .combatant import *
 from .king import *
 
-
 # Modules
 from .exception import TokenCarrierNullException

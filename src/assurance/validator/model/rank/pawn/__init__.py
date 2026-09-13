@@ -7,10 +7,10 @@ Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ASSURANCE.VALIDATOR.MODEL.RANK.PAWN PACKAGE ===========#
+# =========== ASSURANCE.VALIDATOR.MODEL.RANK.pawn PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .validator import PawnRankValidator
+from .validator import pawnValidator

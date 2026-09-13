@@ -16,6 +16,5 @@ from .square import *
 from .number import *
 from .vector import *
 
-
 # Modules
 from .exception import RegisterNullException

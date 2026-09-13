@@ -13,19 +13,13 @@ from typing import Optional, cast
 
 from artifcat import ValidationResult
 from assurance import RankValidatorToolkit
-from domain import (
-    Formation, CombatantReadiness, PawnRank, HomeSquare, PawnRankBlueprint, Team,
-    TeamValidationRequest, RankDeployment, RankReadiness
-)
-from err import (
-    FormationNullException, PawnRankValidatorException, NullException, TeamCarrierEmptyException,
-    RankCarrierEmptyException
-)
-from transit import PawnRankCarrier, TeamCarrier
-from util import IdFactory, LoggingLevelRouter
+from domain import pawn, pawnBlueprint, Persona
+from err import pawnCarrierEmptyException, pawnValidatorException, PersonaNullException, WrongPersonaException
+from transit import pawnCarrier
+from util import LoggingLevelRouter
 
 
-class PawnRankValidator:
+class pawnValidator:
     """
     Role
         - Integrity, Consistency Maintenance
@@ -37,7 +31,7 @@ class PawnRankValidator:
         toolkit: RankValidationToolkit
 
     Provides:
-        -   def execute(validated_carrier: PawnRankCarrier) -> ValidationResult[PawnRankCarrier]
+        -   def execute(validated_carrier: pawnCarrier) -> ValidationResult[pawnCarrier]
 
     Super Class:
     """
@@ -54,10 +48,10 @@ class PawnRankValidator:
         self._toolkit=toolkit or RankValidatorToolkit()
     
     @LoggingLevelRouter.monitor
-    def execute(self, validated_carrier: PawnRankCarrier) -> ValidationResult[PawnRankCarrier]:
+    def execute(self, validated_carrier: pawnCarrier) -> ValidationResult[pawnCarrier]:
         """
-        Send a validated PawnRank or Blueprint which inside the validated
-        PawnRankCarrier.
+        Send a validated pawn or Blueprint which inside the validated
+        pawnCarrier.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
@@ -65,17 +59,17 @@ class PawnRankValidator:
                     - The carrier is empty.
                     - The id check fails.
                     - The team check fails.
-                    - The formation is null or the wrong type.
+                    - The persona is null or the wrong type.
                     - The readiness is null or the wrong type.
                     - the deployment is null or the wrong type.
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            validated_carrier: PawnRankCarrier
+            validated_carrier: pawnCarrier
         Returns:
-            ValidationResult[PawnRankCarrier]
+            ValidationResult[pawnCarrier]
         Raises:
-            PawnRankValidatorException
+            pawnValidatorException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -84,180 +78,66 @@ class PawnRankValidator:
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PawnRankValidatorException(
+                pawnValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PawnRankValidatorException.MSG,
-                    err_code=PawnRankValidatorException.ERR_CODE,
-                    ex=RankCarrierEmptyException(
+                    msg=pawnValidatorException.MSG,
+                    err_code=pawnValidatorException.ERR_CODE,
+                    ex=pawnCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=RankCarrierEmptyException.MSG,
-                        err_code=RankCarrierEmptyException.ERR_CODE,
+                        msg=pawnCarrierEmptyException.MSG,
+                        err_code=pawnCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
-        # Handle the case that any id in the blueprint is flagged.
-        id_validation = self._toolkit.helper.blueprint_id_extractor.execute(
-            candidate=blueprint,
-            blueprint_owner_name=blueprint.domain_class_name,
-            blueprint_type=self._toolkit.metadata.types.blueprint,
-            blueprint_null_exception=self._toolkit.metadata.nulls.blueprint,
+        # Handle the case that the persona does not pass a validation check.
+        persona_validation = self._toolkit.helper.priming_validator.execute(
+            candidate=blueprint.persona,
+            target_model=Persona,
+            null_exception=PersonaNullException(),
         )
-        if id_validation.is_failure:
+        if persona_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PawnRankValidatorException(
+                pawnValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PawnRankValidatorException.MSG,
-                    err_code=PawnRankValidatorException.ERR_CODE,
-                    ex=id_validation.exception,
+                    msg=pawnValidatorException.MSG,
+                    err_code=pawnValidatorException.ERR_CODE,
+                    ex=persona_validation.exception,
                 )
             )
-        # Handle the case that the team does not pass a validation check.
-        team_validation = self._toolkit.helper.team_validator.execute(
-            request=TeamValidationRequest(
-                id=IdFactory.next_id(class_name="TeamValidationRequest"),
-                item=TeamCarrier(model=blueprint.team),
-            )
-        )
-        if team_validation.is_failure:
+        # Handle the case that the Persona is not a pawn's.
+        persona = cast(Persona, persona_validation.payload)
+        if persona != Persona.pawn:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PawnRankValidatorException(
+                pawnValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PawnRankValidatorException.MSG,
-                    err_code=PawnRankValidatorException.ERR_CODE,
-                    ex=team_validation.exception,
-                )
-            )
-        # Handle the case that the team_carrier does not contain a model.
-        team_carrier = cast(TeamCarrier, team_validation.payload)
-        if not team_carrier.is_carrying_model:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                PawnRankValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=PawnRankValidatorException.MSG,
-                    err_code=PawnRankValidatorException.ERR_CODE,
-                    ex=TeamCarrierEmptyException(
+                    msg=pawnValidatorException.MSG,
+                    err_code=pawnValidatorException.ERR_CODE,
+                    ex=WrongPersonaException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TeamCarrierEmptyException.MSG,
-                        err_code=TeamCarrierEmptyException.ERR_CODE,
+                        msg=WrongPersonaException.MSG,
+                        err_code=WrongPersonaException.ERR_CODE,
                     ),
                 )
             )
-        # Handle the case that the formation does not pass a validation check.
-        formation_validation = self._toolkit.helper.priming_validator.execute(
-            candidate=blueprint.formation,
-            target_model=Formation,
-            null_exception=FormationNullException(),
-        )
-        if formation_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                PawnRankValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=PawnRankValidatorException.MSG,
-                    err_code=PawnRankValidatorException.ERR_CODE,
-                    ex=formation_validation.exception,
-                )
-            )
-        # Handle the case that the readiness does not pass a validation check.
-        readiness_validation = self._toolkit.helper.priming_validator.execute(
-            candidate=blueprint.readiness,
-            target_model=CombatantReadiness,
-            null_exception=NullException(),
-        )
-        if readiness_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                PawnRankValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=PawnRankValidatorException.MSG,
-                    err_code=PawnRankValidatorException.ERR_CODE,
-                    ex=readiness_validation.exception,
-                )
-            )
-        # Handle the case that the deployment does not pass a validation check.
-        deployment_validation = self._toolkit.helper.priming_validator.execute(
-            candidate=blueprint.deployment,
-            target_model=RankReadiness,
-            null_exception=NullException(),
-        )
-        if deployment_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                PawnRankValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=PawnRankValidatorException.MSG,
-                    err_code=PawnRankValidatorException.ERR_CODE,
-                    ex=deployment_validation.exception,
-                )
-            )
-        # Handle the case that the home_square gets flagged.
-        home_detection = self._toolkit.helper.home_extractor.execute(
-            blueprint=blueprint,
-        )
-        if home_detection.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                PawnRankValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=PawnRankValidatorException.MSG,
-                    err_code=PawnRankValidatorException.ERR_CODE,
-                    ex=home_detection.exception,
-                )
-            )
-        # --- Extract validation payloads. ---#
-        id = cast(int, id_validation.payload)
-        team = cast(Team, team_carrier.entity)
-        home_square = cast(HomeSquare, home_detection.payload)
-        formation = cast(Formation, formation_validation.payload)
-        readiness = cast(CombatantReadiness, readiness_validation.payload)
-        deployment = cast(RankDeployment, deployment_validation.payload)
+
         # --- Forward the appropriate work product to the caller. ---#
         
         # The model case.
         if validated_carrier.is_carrying_model:
-            model = PawnRank(
-                id=id,
-                team=team,
-                home_square=home_square,
-                formation=formation,
-            )
-            model.readiness = readiness
-            model.deployment = deployment
-            model.rank = blueprint.rank
-            model.captor = blueprint.captor
-            model.position = blueprint.position
-            model.previous_position = model.previous_position
-            
-            return ValidationResult.success(PawnRankCarrier(model=model))
+            model = pawn(persona=persona)
+            return ValidationResult.success(pawnCarrier(model=model))
         # Else the blueprint case
         return ValidationResult.success(
-            PawnRankCarrier(
-                blueprint=PawnRankBlueprint(
-                    id=id,
-                    team=team,
-                    rank=blueprint.rank,
-                    formation=formation,
-                    readiness=readiness,
-                    deployment=deployment,
-                    home_square=home_square,
-                    captor=blueprint.captor,
-                    position=blueprint.position,
-                    previous_position=blueprint.previous_position,
+            pawnCarrier(
+                blueprint=pawnBlueprint(persona=persona)
             )
         )
-    )
     
     

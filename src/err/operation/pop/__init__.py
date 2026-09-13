@@ -13,6 +13,5 @@ version: 0.0.2
 from .empty import *
 from .token import *
 
-
 # Modules
 from .exception import PopperException

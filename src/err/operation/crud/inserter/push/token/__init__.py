@@ -12,6 +12,5 @@ version: 0.0.2
 # Packages
 from .quota import *
 
-
 # Modules
 from .exception import TokenStackPushException

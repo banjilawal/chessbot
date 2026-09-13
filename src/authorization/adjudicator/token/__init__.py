@@ -12,6 +12,5 @@ version: 0.0.2
 # Packages
 from .promotion import *
 
-
 # Modules
 from .adjudicator import TokenRequestAdjudicator

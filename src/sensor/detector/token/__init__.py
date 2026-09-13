@@ -13,6 +13,5 @@ version: 0.0.2
 from .home import *
 from .readiness import *
 
-
 # Modules
 from .detector import TokenEnvironmentReporter

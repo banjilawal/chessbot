@@ -14,6 +14,5 @@ from .builder import *
 from .service import *
 from .validator import *
 
-
 # Modules
 from .span import SquareSpan

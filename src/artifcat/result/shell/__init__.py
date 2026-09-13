@@ -13,6 +13,5 @@ version: 0.0.2
 from .interpretation import *
 from .parse import *
 
-
 # Modules
 from .result import ShellResult

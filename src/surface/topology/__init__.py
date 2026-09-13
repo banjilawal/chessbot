@@ -17,6 +17,5 @@ from .rank import *
 from .recurrence import *
 from .registry import *
 
-
 # Modules
 from .topology import Topology

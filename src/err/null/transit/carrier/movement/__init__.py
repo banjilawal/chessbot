@@ -14,6 +14,5 @@ from .offset import *
 from .pawn import *
 from .traversal import *
 
-
 # Modules
 from .exception import MovementPatternCarrierNullException

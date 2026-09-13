@@ -12,6 +12,5 @@ version: 0.0.2
 # Packages
 from .east import *
 
-
 # Modules
 from .toolkit import AxisToolkit

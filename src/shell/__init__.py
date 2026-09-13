@@ -16,5 +16,4 @@ from .menu import *
 from .parser import *
 from .statement import *
 
-
 # Modules

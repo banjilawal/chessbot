@@ -22,6 +22,5 @@ from .registry import *
 from .space import *
 from .toggle import *
 
-
 # Modules
 from .exception import BuilderException

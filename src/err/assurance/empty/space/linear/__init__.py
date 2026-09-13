@@ -14,6 +14,5 @@ from .axis import *
 from .quadrant import *
 from .segment import *
 
-
 # Modules
 from .exception import LinearSpaceEmptyException

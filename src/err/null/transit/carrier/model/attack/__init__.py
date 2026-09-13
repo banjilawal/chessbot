@@ -14,6 +14,5 @@ from .check import *
 from .kill import *
 from .mate import *
 
-
 # Modules
 from .exception import AttackCarrierNullException

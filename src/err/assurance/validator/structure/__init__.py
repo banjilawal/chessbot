@@ -15,6 +15,5 @@ from .node import *
 from .register import *
 from .toggle import *
 
-
 # Modules
 from .exception import StructureValidatorException

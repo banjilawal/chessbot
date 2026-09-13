@@ -17,6 +17,5 @@ from .pawn import *
 from .queen import *
 from .rook import *
 
-
 # Modules
 from .group import RankNullGroup

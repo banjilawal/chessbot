@@ -12,6 +12,5 @@ version: 0.0.2
 # Packages
 from .registry import *
 
-
 # Modules
 from .exception import ControllerException

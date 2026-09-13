@@ -13,6 +13,5 @@ version: 0.0.2
 from .edge import *
 from .station import *
 
-
 # Modules
 from .exception import GraphContextValidatorException

@@ -14,6 +14,5 @@ from .bishop import *
 from .queen import *
 from .rook import *
 
-
 # Modules
 from .recurrence import RecurrenceRegistryCollection

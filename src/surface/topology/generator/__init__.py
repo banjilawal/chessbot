@@ -13,6 +13,5 @@ version: 0.0.2
 from .offset import *
 from .traversal import *
 
-
 # Modules
 from .topology import VectorSequenceGenerator

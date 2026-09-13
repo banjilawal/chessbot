@@ -12,6 +12,5 @@ version: 0.0.2
 # Packages
 from .bishop import *
 
-
 # Modules
 from .exception import RecurrenceTableGroupException

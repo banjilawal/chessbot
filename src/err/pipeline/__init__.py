@@ -12,6 +12,5 @@ version: 1.0.0
 # Packages
 from .build import *
 
-
 # Modules
 from .exception import PipelineException

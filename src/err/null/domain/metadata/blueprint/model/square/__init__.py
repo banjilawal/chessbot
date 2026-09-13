@@ -12,6 +12,5 @@ version: 0.0.2
 # Packages
 from .home import *
 
-
 # Modules
 from .exception import SquareBlueprintNullException

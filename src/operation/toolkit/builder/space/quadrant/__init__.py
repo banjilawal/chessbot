@@ -15,6 +15,5 @@ from .northwest import *
 from .southeast import *
 from .southwest import *
 
-
 # Modules
 from .toolkit import QuadrantBuilderToolkit

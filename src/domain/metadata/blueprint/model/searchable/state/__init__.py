@@ -20,6 +20,5 @@ from .square import *
 from .team import *
 from .token import *
 
-
 # Modules
 from .blueprint import StateModelBlueprint

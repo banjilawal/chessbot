@@ -14,6 +14,5 @@ from .deletion import *
 from .insertion import *
 from .search import *
 
-
 # Modules
 from .result import CrudResult

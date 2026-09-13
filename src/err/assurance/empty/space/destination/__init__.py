@@ -12,6 +12,5 @@ version: 0.0.2
 # Packages
 from .linear import *
 
-
 # Modules
 from .exception import TargetVectorSetEmptyException

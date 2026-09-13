@@ -18,6 +18,5 @@ from .player import *
 from .square import *
 from .vector import *
 
-
 # Modules
 from .structure import Register

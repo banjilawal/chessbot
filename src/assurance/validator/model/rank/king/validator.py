@@ -13,19 +13,13 @@ from typing import Optional, cast
 
 from artifcat import ValidationResult
 from assurance import RankValidatorToolkit
-from domain import (
-    Formation, KingReadiness, KingRank, HomeSquare, KingRankBlueprint, Team, TeamValidationRequest, RankDeployment,
-    RankReadiness
-)
-from err import (
-    FormationNullException, KingRankValidatorException, NullException, TeamCarrierEmptyException,
-    RankCarrierEmptyException
-)
-from transit import KingRankCarrier, TeamCarrier
-from util import IdFactory, LoggingLevelRouter
+from domain import king, kingBlueprint, Persona
+from err import kingCarrierEmptyException, kingValidatorException, PersonaNullException, WrongPersonaException
+from transit import kingCarrier
+from util import LoggingLevelRouter
 
 
-class KingRankValidator:
+class kingValidator:
     """
     Role
         - Integrity, Consistency Maintenance
@@ -37,7 +31,7 @@ class KingRankValidator:
         toolkit: RankValidationToolkit
 
     Provides:
-        -   def execute(validated_carrier: KingRankCarrier) -> ValidationResult[KingRankCarrier]
+        -   def execute(validated_carrier: kingCarrier) -> ValidationResult[kingCarrier]
 
     Super Class:
     """
@@ -54,10 +48,10 @@ class KingRankValidator:
         self._toolkit=toolkit or RankValidatorToolkit()
     
     @LoggingLevelRouter.monitor
-    def execute(self, validated_carrier: KingRankCarrier) -> ValidationResult[KingRankCarrier]:
+    def execute(self, validated_carrier: kingCarrier) -> ValidationResult[kingCarrier]:
         """
-        Send a validated KingRank or Blueprint which inside the validated
-        KingRankCarrier.
+        Send a validated king or Blueprint which inside the validated
+        kingCarrier.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
@@ -65,17 +59,17 @@ class KingRankValidator:
                     - The carrier is empty.
                     - The id check fails.
                     - The team check fails.
-                    - The formation is null or the wrong type.
+                    - The persona is null or the wrong type.
                     - The readiness is null or the wrong type.
                     - the deployment is null or the wrong type.
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            validated_carrier: KingRankCarrier
+            validated_carrier: kingCarrier
         Returns:
-            ValidationResult[KingRankCarrier]
+            ValidationResult[kingCarrier]
         Raises:
-            KingRankValidatorException
+            kingValidatorException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -84,181 +78,66 @@ class KingRankValidator:
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                KingRankValidatorException(
+                kingValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=KingRankValidatorException.MSG,
-                    err_code=KingRankValidatorException.ERR_CODE,
-                    ex=RankCarrierEmptyException(
+                    msg=kingValidatorException.MSG,
+                    err_code=kingValidatorException.ERR_CODE,
+                    ex=kingCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=RankCarrierEmptyException.MSG,
-                        err_code=RankCarrierEmptyException.ERR_CODE,
+                        msg=kingCarrierEmptyException.MSG,
+                        err_code=kingCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
-        # Handle the case that any id in the blueprint is flagged.
-        id_validation = self._toolkit.helper.blueprint_id_extractor.execute(
-            candidate=blueprint,
-            blueprint_owner_name=blueprint.domain_class_name,
-            blueprint_type=self._toolkit.metadata.types.blueprint,
-            blueprint_null_exception=self._toolkit.metadata.nulls.blueprint,
+        # Handle the case that the persona does not pass a validation check.
+        persona_validation = self._toolkit.helper.priming_validator.execute(
+            candidate=blueprint.persona,
+            target_model=Persona,
+            null_exception=PersonaNullException(),
         )
-        if id_validation.is_failure:
+        if persona_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                KingRankValidatorException(
+                kingValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=KingRankValidatorException.MSG,
-                    err_code=KingRankValidatorException.ERR_CODE,
-                    ex=id_validation.exception,
+                    msg=kingValidatorException.MSG,
+                    err_code=kingValidatorException.ERR_CODE,
+                    ex=persona_validation.exception,
                 )
             )
-        # Handle the case that the team does not pass a validation check.
-        team_validation = self._toolkit.helper.team_validator.execute(
-            request=TeamValidationRequest(
-                id=IdFactory.next_id(class_name="TeamValidationRequest"),
-                item=TeamCarrier(model=blueprint.team),
-            )
-        )
-        if team_validation.is_failure:
+        # Handle the case that the Persona is not a king's.
+        persona = cast(Persona, persona_validation.payload)
+        if persona != Persona.king:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                KingRankValidatorException(
+                kingValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=KingRankValidatorException.MSG,
-                    err_code=KingRankValidatorException.ERR_CODE,
-                    ex=team_validation.exception,
-                )
-            )
-        # Handle the case that the team_carrier does not contain a model.
-        team_carrier = cast(TeamCarrier, team_validation.payload)
-        if not team_carrier.is_carrying_model:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                KingRankValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=KingRankValidatorException.MSG,
-                    err_code=KingRankValidatorException.ERR_CODE,
-                    ex=TeamCarrierEmptyException(
+                    msg=kingValidatorException.MSG,
+                    err_code=kingValidatorException.ERR_CODE,
+                    ex=WrongPersonaException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TeamCarrierEmptyException.MSG,
-                        err_code=TeamCarrierEmptyException.ERR_CODE,
+                        msg=WrongPersonaException.MSG,
+                        err_code=WrongPersonaException.ERR_CODE,
                     ),
                 )
             )
-        # Handle the case that the formation does not pass a validation check.
-        formation_validation = self._toolkit.helper.priming_validator.execute(
-            candidate=blueprint.formation,
-            target_model=Formation,
-            null_exception=FormationNullException(),
-        )
-        if formation_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                KingRankValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=KingRankValidatorException.MSG,
-                    err_code=KingRankValidatorException.ERR_CODE,
-                    ex=formation_validation.exception,
-                )
-            )
-        # Handle the case that the readiness does not pass a validation check.
-        readiness_validation = self._toolkit.helper.priming_validator.execute(
-            candidate=blueprint.readiness,
-            target_model=KingReadiness,
-            null_exception=NullException(),
-        )
-        if readiness_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                KingRankValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=KingRankValidatorException.MSG,
-                    err_code=KingRankValidatorException.ERR_CODE,
-                    ex=readiness_validation.exception,
-                )
-            )
-        # Handle the case that the deployment does not pass a validation check.
-        deployment_validation = self._toolkit.helper.priming_validator.execute(
-            candidate=blueprint.deployment,
-            target_model=RankReadiness,
-            null_exception=NullException(),
-        )
-        if deployment_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                KingRankValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=KingRankValidatorException.MSG,
-                    err_code=KingRankValidatorException.ERR_CODE,
-                    ex=deployment_validation.exception,
-                )
-            )
-        # Handle the case that the home_square gets flagged.
-        home_detection = self._toolkit.helper.home_extractor.execute(
-            blueprint=blueprint,
-        )
-        if home_detection.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                KingRankValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=KingRankValidatorException.MSG,
-                    err_code=KingRankValidatorException.ERR_CODE,
-                    ex=home_detection.exception,
-                )
-            )
-        # --- Extract validation payloads. ---#
-        id = cast(int, id_validation.payload)
-        team = cast(Team, team_carrier.entity)
-        home_square = cast(HomeSquare, home_detection.payload)
-        formation = cast(Formation, formation_validation.payload)
-        readiness = cast(KingReadiness, readiness_validation.payload)
-        deployment = cast(RankDeployment, deployment_validation.payload)
-        
+
         # --- Forward the appropriate work product to the caller. ---#
         
         # The model case.
         if validated_carrier.is_carrying_model:
-            model = KingRank(
-                id=id,
-                team=team,
-                home_square=home_square,
-                formation=formation,
-            )
-            model.readiness = readiness
-            model.deployment = deployment
-            model.position = blueprint.position
-            model.checkmate = blueprint.checkmate
-            model.check_warning = blueprint.check_warning
-            model.previous_position = model.previous_position
-            
-            return ValidationResult.success(KingRankCarrier(model=model))
+            model = king(persona=persona)
+            return ValidationResult.success(kingCarrier(model=model))
         # Else the blueprint case
         return ValidationResult.success(
-            KingRankCarrier(
-                blueprint=KingRankBlueprint(
-                    id=id,
-                    team=team,
-                    formation=formation,
-                    readiness=readiness,
-                    deployment=deployment,
-                    home_square=home_square,
-                    position=blueprint.position,
-                    checkmate=blueprint.checkmate,
-                    check_warning=blueprint.check_warning,
-                    previous_position=blueprint.previous_position,
+            kingCarrier(
+                blueprint=kingBlueprint(persona=persona)
             )
         )
-    )
     
     

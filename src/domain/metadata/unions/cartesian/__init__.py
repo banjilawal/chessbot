@@ -13,6 +13,5 @@ version: 0.0.2
 from .coord import *
 from .vector import *
 
-
 # Modules
 from .types import CartesianTypeUnion

@@ -13,6 +13,5 @@ version: 0.0.2
 from .dossier import *
 from .vector import *
 
-
 # Modules
 from .exception import NodeException
