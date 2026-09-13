@@ -17,7 +17,7 @@ from domain import Board, Coord, Formation, Square, SquareBlueprint, SquareValid
 from err import (
     SquareCarrierEmptyException, SquareValidationRequestNullException, SquareValidatorException
 )
-from transit import SquareCarrier
+from transit import HomeSquareCarrier, SquareCarrier
 from util import LoggingLevelRouter
 
 
@@ -208,7 +208,8 @@ class SquareValidator(ModelValidator[Square]):
                     ex=coord_validation.exception,
                 )
             )
-        if carrier.i
+        if isinstance(carrier, HomeSquareCarrier):
+        
         # --- Extract and cast payloads of the validation results. ---#
         id = cast(int, id_validation.payload)
         name = cast(str, name_validation.payload)
