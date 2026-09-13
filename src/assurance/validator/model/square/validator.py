@@ -208,6 +208,7 @@ class SquareValidator(ModelValidator[Square]):
                     ex=coord_validation.exception,
                 )
             )
+        if carrier.i
         # --- Extract and cast payloads of the validation results. ---#
         id = cast(int, id_validation.payload)
         name = cast(str, name_validation.payload)
