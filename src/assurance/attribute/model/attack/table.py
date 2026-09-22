@@ -13,13 +13,13 @@ from __future__ import annotations
 from typing import Optional
 
 from assurance import (
-    AttributeHelperTable, ManeuverValidator, NumberValidator, PrimingValidator, TokenValidator
+    ModelHelperTable, ManeuverValidator, NumberValidator, PrimingValidator, TokenValidator
 )
 from domain import Attack
 from microservice import IdentityService
 
 
-class AttackHelperTable(AttributeHelperTable[Attack]):
+class AttackHelperTable(ModelHelperTable[Attack]):
     """
     Role:
         - Toolkit
@@ -35,7 +35,7 @@ class AttackHelperTable(AttributeHelperTable[Attack]):
     Provides:
 
     Super Class:
-        AttributeHelperTable
+        ModelHelperTable
     """
     _token_validator: TokenValidator
     _maneuver_validator: ManeuverValidator

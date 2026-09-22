@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import AttributeHelperTable, NumberValidator, PrimingValidator
+from assurance import ModelHelperTable, NumberValidator, PrimingValidator
 from domain import Vector
 
 
-class VectorHelperTable(AttributeHelperTable[Vector]):
+class VectorHelperTable(ModelHelperTable[Vector]):
     """
     Role:
         - Toolkit
@@ -28,7 +28,7 @@ class VectorHelperTable(AttributeHelperTable[Vector]):
     Provides:
 
     Super Class:
-        AttributeHelperTable
+        ModelHelperTable
     """
     
     def __init__(

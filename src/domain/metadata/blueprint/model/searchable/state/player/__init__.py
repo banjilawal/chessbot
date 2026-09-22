@@ -11,6 +11,7 @@ version: 0.0.2
 
 # Packages
 from .human import HumanBlueprint
+from .machine import MachineBlueprint
 
 # Modules
 from .blueprint import  PlayerBlueprint

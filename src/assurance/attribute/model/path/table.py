@@ -12,12 +12,12 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import AttributeHelperTable, SquareRegisterValidator, PrimingValidator
+from assurance import ModelHelperTable, SquareRegisterValidator, PrimingValidator
 from domain import Path
 from microservice import IdentityService
 
 
-class PathHelperTable(AttributeHelperTable[Path]):
+class PathHelperTable(ModelHelperTable[Path]):
     """
     Role:
         - Toolkit
@@ -32,7 +32,7 @@ class PathHelperTable(AttributeHelperTable[Path]):
     Provides:
 
     Super Class:
-        AttributeHelperTable
+        ModelHelperTable
     """
     _register_validator: SquareRegisterValidator
     

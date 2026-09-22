@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import AttributeHelperTable, NumberValidator, PrimingValidator
+from assurance import ModelHelperTable, NumberValidator, PrimingValidator
 from domain import Scalar
 
 
-class ScalarHelperTable(AttributeHelperTable[Scalar]):
+class ScalarHelperTable(ModelHelperTable[Scalar]):
     """
     Role:
         - Toolkit
@@ -28,7 +28,7 @@ class ScalarHelperTable(AttributeHelperTable[Scalar]):
     Provides:
 
     Super Class:
-        AttributeHelperTable
+        ModelHelperTable
     """
     
     def __init__(

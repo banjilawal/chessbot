@@ -9,15 +9,13 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
-from typing import Generic, Optional, TypeVar, cast
+from typing import Optional, cast
 
-from domain import Player, PlayerBlueprint
+from domain import HumanBlueprint, MachineBlueprint, Player, PlayerBlueprint
 from transit import ModelCarrier
 
-T = TypeVar("T", bound="Player")
 
-class PlayerCarrier(ModelCarrier[T], ABC, Generic[T]):
+class PlayerCarrier(ModelCarrier[Player]):
     """
     Role:
         - Boundary Carrier Interface
@@ -39,13 +37,12 @@ class PlayerCarrier(ModelCarrier[T], ABC, Generic[T]):
     Super Class:
         ModelCarrier
     """
-    
-    _model: Optional[T]
+    _model: Optional[Player]
     _blueprint: Optional[PlayerBlueprint]
     
     def __init__(
             self,
-            model: Optional[T] | None = None,
+            model: Optional[Player] | None = None,
             blueprint: Optional[PlayerBlueprint] | None = None,
     ):
         """
@@ -58,8 +55,7 @@ class PlayerCarrier(ModelCarrier[T], ABC, Generic[T]):
         self._blueprint = blueprint
     
     @property
-    @abstractmethod
-    def entity(self) -> Optional[T|PlayerBlueprint]:
+    def entity(self) -> Optional[Player | PlayerBlueprint]:
         if self.is_empty:
             return None
         if self.is_carrying_model:
@@ -67,12 +63,11 @@ class PlayerCarrier(ModelCarrier[T], ABC, Generic[T]):
         return self._blueprint
     
     @property
-    @abstractmethod
     def is_carrying_model(self) -> bool:
         return (
                 self._model is not None and
                 self._blueprint is None and
-                isinstance(self._model, T)
+                isinstance(self._model, Player)
         )
     
     @property
@@ -94,7 +89,6 @@ class PlayerCarrier(ModelCarrier[T], ABC, Generic[T]):
     def is_over_capacity(self) -> bool:
         return self.size > 1
     
-    @abstractmethod
     def extract_blueprint(self) -> Optional[PlayerBlueprint]:
         if self.is_empty: return None
         if self.is_carrying_blueprint: return self._blueprint
@@ -106,7 +100,16 @@ class PlayerCarrier(ModelCarrier[T], ABC, Generic[T]):
             adviser=model.adviser,
         )
     
+    @property
+    def is_carrying_human(self) -> bool:
+        blueprint = self.extract_blueprint()
+        if blueprint is None:
+            return False
+        return isinstance(blueprint, HumanBlueprint)
     
-
-
-
+    @property
+    def is_carrying_machine(self) -> bool:
+        blueprint = self.extract_blueprint()
+        if blueprint is None:
+            return False
+        return isinstance(blueprint, MachineBlueprint)

@@ -12,10 +12,10 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import AttributeHelperTable, BoardValidator, NumberValidator, PrimingValidator
+from assurance import ModelHelperTable, BoardValidator, NumberValidator, PrimingValidator
 from domain import Coord
 
-class CoordHelperTable(AttributeHelperTable[Coord]):
+class CoordHelperTable(ModelHelperTable[Coord]):
     """
     Role:
         - Toolkit
@@ -30,7 +30,7 @@ class CoordHelperTable(AttributeHelperTable[Coord]):
     Provides:
 
     Super Class:
-        AttributeHelperTable
+        ModelHelperTable
     """
     _board_validator: BoardValidator
     

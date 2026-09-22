@@ -13,7 +13,7 @@ from __future__ import annotations
 from typing import Optional
 
 from assurance import (
-    AttributeHelperTable, BoardValidator, RankValidator, SquareValidator, TeamValidator,
+    ModelHelperTable, BoardValidator, RankValidator, SquareValidator, TeamValidator,
     PrimingValidator
 )
 from authorization import BlueprintIdExtractor, HomeSquareExtractor
@@ -21,7 +21,7 @@ from domain import Token
 from microservice import IdentityService
 
 
-class TokenHelperTable(AttributeHelperTable[Token]):
+class TokenHelperTable(ModelHelperTable[Token]):
     """
     Role:
         - Toolkit
@@ -39,7 +39,7 @@ class TokenHelperTable(AttributeHelperTable[Token]):
     Provides:
 
     Super Class:
-        AttributeHelperTable
+        ModelHelperTable
     """
     _team_validator: TeamValidator
     _rank_validator: RankValidator

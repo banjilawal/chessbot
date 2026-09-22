@@ -12,12 +12,12 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import AttributeHelperTable, PrimingValidator
+from assurance import ModelHelperTable, PrimingValidator
 from domain import Rank
 from microservice import IdentityService
 
 
-class RankHelperTable(AttributeHelperTable[Rank]):
+class RankHelperTable(ModelHelperTable[Rank]):
     """
     Role:
         - Toolkit
@@ -31,7 +31,7 @@ class RankHelperTable(AttributeHelperTable[Rank]):
     Provides:
 
     Super Class:
-        AttributeHelperTable
+        ModelHelperTable
     """
     
     def __init__(

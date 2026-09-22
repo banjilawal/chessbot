@@ -15,10 +15,9 @@ from typing import Generic, Optional, TypeVar
 
 from assurance import NumberValidator, PrimingValidator
 from authorization import BlueprintIdExtractor
-from domain import Model
 from microservice import IdentityService
 
-T = TypeVar("T", bound="Model")
+T = TypeVar("T")
 
 
 class AttributeHelperTable(ABC, Generic[T]):

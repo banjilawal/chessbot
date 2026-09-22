@@ -12,12 +12,12 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import AttributeHelperTable, GameValidator, PlayerValidator, PrimingValidator
+from assurance import ModelHelperTable, GameValidator, PlayerValidator, PrimingValidator
 from domain import Arena
 from microservice import IdentityService
 
 
-class ArenaHelperTable(AttributeHelperTable[Arena]):
+class ArenaHelperTable(ModelHelperTable[Arena]):
     """
     Role:
         - Toolkit
@@ -33,7 +33,7 @@ class ArenaHelperTable(AttributeHelperTable[Arena]):
     Provides:
 
     Super Class:
-        AttributeHelperTable
+        ModelHelperTable
     """
     _game_validator: GameValidator
     _player_validator: PlayerValidator

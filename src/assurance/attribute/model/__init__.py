@@ -26,3 +26,4 @@ from .token import *
 from .vector import *
 
 # Module
+from .table import ModelHelperTable

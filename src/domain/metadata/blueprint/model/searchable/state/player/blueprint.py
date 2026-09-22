@@ -18,7 +18,7 @@ from game import GameAdviser
 
 T = TypeVar("T", bound="Player")
 
-class PlayerBlueprint(StateModelBlueprint[T], ABC, Generic[T]):
+class PlayerBlueprint(StateModelBlueprint[Player]):
     """
      Role:
         1.  Metadata

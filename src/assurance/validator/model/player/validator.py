@@ -13,12 +13,11 @@ from typing import Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    MachinePlayerValidator, HumanPlayerValidator, ModelValidator, PawnPlayerValidator,
-    PlayerValidatorToolkit
+    MachinePlayerValidator, HumanPlayerValidator, ModelValidator, PlayerValidatorToolkit
 )
 from domain import Player, PlayerValidationRequest
 from err import PlayerValidationRequestNullException, PlayerValidatorException
-from transit import MachineCarrier, HumanCarrier, PawnPlayerCarrier, PlayerCarrier
+from transit import HumanCarrier, MachineCarrier, PlayerCarrier
 from util import LoggingLevelRouter
 
 
@@ -123,12 +122,10 @@ class PlayerValidator(ModelValidator[Player]):
         # --- Extract the blueprint to verify the attributes. ---#
 
         if isinstance(carrier, HumanCarrier):
-            validated_carrier = cast(HumanCarrier, carrier)
             helper = HumanPlayerValidator()
-            return helper.execute(validated_carrier)
-        validated_carrier = cast(MachineCarrier, carrier)
+            return helper.execute(validated_carrier=carrier)
         helper = MachinePlayerValidator()
-        return helper.execute(validated_carrier)
+        return helper.execute(validated_carrier=cast(MachineCarrier, carrier))
 
     
     

@@ -14,11 +14,11 @@ from typing import Optional
 
 from domain import Team
 from microservice import IdentityService
-from assurance import AttributeHelperTable, BoardValidator, PlayerValidator, PrimingValidator
+from assurance import ModelHelperTable, BoardValidator, PlayerValidator, PrimingValidator
 
 
 
-class TeamHelperTable(AttributeHelperTable[Team]):
+class TeamHelperTable(ModelHelperTable[Team]):
     """
     Role:
         - Toolkit
@@ -34,7 +34,7 @@ class TeamHelperTable(AttributeHelperTable[Team]):
     Provides:
 
     Super Class:
-        AttributeHelperTable
+        ModelHelperTable
     """
     _board_validator: BoardValidator
     _owner_validator: PlayerValidator

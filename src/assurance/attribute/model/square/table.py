@@ -12,12 +12,12 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import AttributeHelperTable, BoardValidator, CoordValidator, PrimingValidator
+from assurance import ModelHelperTable, BoardValidator, CoordValidator, PrimingValidator
 from domain import Square
 from microservice import IdentityService
 
 
-class SquareHelperTable(AttributeHelperTable[Square]):
+class SquareHelperTable(ModelHelperTable[Square]):
     """
     Role:
         - Toolkit
@@ -33,7 +33,7 @@ class SquareHelperTable(AttributeHelperTable[Square]):
     Provides:
 
     Super Class:
-        AttributeHelperTable
+        ModelHelperTable
     """
     _board_validator: BoardValidator
     _coord_validator: CoordValidator
