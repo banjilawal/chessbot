@@ -12,14 +12,14 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar, cast
 
-from domain import NullExceptionGroup, Token
+from domain import ModelNullGroup, Token
 from err import (
     TokenBlueprintNullException, TokenCarrierNullException, TokenNullException
 )
 
 T = TypeVar("T", bound="Token")
 
-class TokenNullGroup(NullExceptionGroup[T], ABC, Generic[T]):
+class TokenNullGroup(ModelNullGroup[T], ABC, Generic[T]):
     """
     Role:
         - Metadata

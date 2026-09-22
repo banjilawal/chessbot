@@ -1,7 +1,7 @@
-# src/domain/metadata/nulls/nulls.py
+# src/domain/metadata/nulls/model/group.py
 
 """
-Module: domain.metadata.nulls.nulls
+Module: domain.metadata.nulls.model.group
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -10,14 +10,14 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, TypeVar
+from typing import Generic, TypeVar, cast
 
-from domain import Model
-from err import BlueprintNullException, EntityCarrierNullException, ModelNullException
+from domain import Model, NullExceptionGroup
+from err import EntityCarrierNullException, ModelBlueprintNullException, ModelNullException
 
 T = TypeVar("T", bound="Model")
 
-class NullExceptionGroup(ABC, Generic[T]):
+class ModelNullGroup(NullExceptionGroup[T], ABC, Generic[T]):
     """
     Role:
         - Metadata
@@ -28,40 +28,39 @@ class NullExceptionGroup(ABC, Generic[T]):
     Attributes:
         model: ModelNullException
         carrier: EntityCarrierNullException
-        blueprint: BlueprintNullException
+        blueprint: ModelBlueprintNullException
 
     Provides:
 
     Super Class:
     """
-    _model: ModelNullException
     _carrier: EntityCarrierNullException
-    _blueprint: BlueprintNullException
+    _blueprint: ModelBlueprintNullException
     
     def __init__(
             self,
             model: ModelNullException,
             carrier: EntityCarrierNullException,
-            blueprint: BlueprintNullException,
+            blueprint: ModelBlueprintNullException,
     ):
         """
         Args:
             model: ModelNullException
             carrier: EntityCarrierNullException
-            blueprint: BlueprintNullException
+            blueprint: ModelBlueprintNullException
         """
-        self._model = model
+        super().__init__(model=model)
         self._carrier = carrier
         self._blueprint = blueprint
         
     @property
     def model(self) -> ModelNullException:
-        return self._model
+        return cast(ModelNullException, super().model)
     
     @property
     def carrier(self) -> EntityCarrierNullException:
         return self._carrier
     
     @property
-    def blueprint(self) -> BlueprintNullException:
+    def blueprint(self) -> ModelBlueprintNullException:
         return self._blueprint

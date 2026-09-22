@@ -11,13 +11,13 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import NullExceptionGroup, Path
+from domain import ModelNullGroup, Path
 from err import (
     PathBlueprintNullException, PathCarrierNullException, PathNullException
 )
 
 
-class PathNullGroup(NullExceptionGroup[Path]):
+class PathNullGroup(ModelNullGroup[Path]):
     """
     Role:
         - Metadata

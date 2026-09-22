@@ -12,14 +12,14 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar, cast
 
-from domain import NullExceptionGroup, Rank
+from domain import ModelNullGroup, Rank
 from err import (
     RankBlueprintNullException, RankCarrierNullException, RankNullException
 )
 
 T = TypeVar("T", bound="Rank")
 
-class RankNullGroup(NullExceptionGroup[T], ABC, Generic[T]):
+class RankNullGroup(ModelNullGroup[T], ABC, Generic[T]):
     """
     Role:
         - Metadata

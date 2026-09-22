@@ -11,13 +11,13 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import NullExceptionGroup
+from domain import ModelNullGroup
 from err import (
     ScalarBlueprintNullException, ScalarCarrierNullException, ScalarNullException
 )
 
 
-class ScalarNullGroup(NullExceptionGroup):
+class ScalarNullGroup(ModelNullGroup):
     """
     Role:
         - Metadata

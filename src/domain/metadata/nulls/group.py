@@ -16,10 +16,10 @@ from typing import Generic, TypeVar
 from domain import DomainDataObject
 from err import NullException
 
-T = TypeVar("T", bound="DomainDataObject")
+T = TypeVar("T")
 
 @dataclass
-class NullExceptionRoster(ABC, Generic[T]):
+class NullExceptionGroup(ABC, Generic[T]):
     """
     Role:
         - Metadata

@@ -12,14 +12,14 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar, cast
 
-from domain import NullExceptionGroup, Player
+from domain import ModelNullGroup, Player
 from err import (
     PlayerBlueprintNullException, PlayerCarrierNullException, PlayerNullException
 )
 
 T = TypeVar("T", bound="Player")
 
-class PlayerNullGroup(NullExceptionGroup[T], ABC, Generic[T]):
+class PlayerNullGroup(ModelNullGroup[T], ABC, Generic[T]):
     """
     Role:
         - Metadata

@@ -1,7 +1,7 @@
-# src/err/null/domain/blueprint/node/dossier/exception.py
+# src/err/null/domain/blueprint/register/exception.py
 
 """
-Module: err.null.domain.blueprint.node.dossier.exception
+Module: err.null.domain.blueprint.register.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import NodeBlueprintNullException
+from err import StructureBlueprintNullException
 from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# DOSSIER_NODE_BLUEPRINT_NULL_ERROR #======================#
-    "DossierNodeBlueprintNullException",
+    # ======================# REGISTER_BLUEPRINT_NULL_ERROR #======================#
+    "RegisterBlueprintNullException",
 ]
 
-# ======================# DOSSIER_NODE_BLUEPRINT_NULL_ERROR #======================#
-class DossierNodeBlueprintNullException(NodeBlueprintNullException):
+# ======================# REGISTER_BLUEPRINT_NULL_ERROR #======================#
+class RegisterBlueprintNullException(StructureBlueprintNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required DossierNodeBlueprint is null.
+        1.  Indicating a required RegisterBlueprint is null.
 
     Cannot Be Null.s:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class DossierNodeBlueprintNullException(NodeBlueprintNullException):
     Provides:
 
     Super Class:
-        BlueprintNullException
+        StructureBlueprintNullException
     """
-    MSG = "DossierNodeBlueprint cannot be null."
-    ERR_CODE = "DOSSIER_NODE_BLUEPRINT_NULL_ERROR"
+    MSG = "RegisterBlueprint cannot be null."
+    ERR_CODE = "REGISTER_BLUEPRINT_NULL_ERROR"
     
     def __init__(
             self,

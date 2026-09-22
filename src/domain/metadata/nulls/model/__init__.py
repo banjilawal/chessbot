@@ -24,4 +24,4 @@ from .vector import *
 from .walk import *
 
 # Modules
-from group import NullExceptionGroup
+from group import ModelNullGroup

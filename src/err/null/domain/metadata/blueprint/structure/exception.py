@@ -1,7 +1,7 @@
-# src/err/null/domain/blueprint/register/exception.py
+# src/err/null/domain/blueprint/structure/exception.py
 
 """
-Module: err.null.domain.blueprint.register.exception
+Module: err.null.domain.blueprint.structure.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,24 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import RegisterBlueprintNullException
+
+from err import BlueprintNullException
 from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# REGISTER_BLUEPRINT_NULL_ERROR #======================#
-    "RegisterBlueprintNullException",
+    # ======================# STRUCTURE_BLUEPRINT_NULL_ERROR #======================#
+    "StructureBlueprintNullException",
 ]
 
-# ======================# REGISTER_BLUEPRINT_NULL_ERROR #======================#
-class RegisterBlueprintNullException(BlueprintNullException):
+# ======================# STRUCTURE_BLUEPRINT_NULL_ERROR #======================#
+class StructureBlueprintNullException(BlueprintNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required RegisterBlueprint is null.
+        1.  Indicating a required Blueprint is null.
 
     Cannot Be Null.s:
             msg: Optional[str]
@@ -44,8 +45,8 @@ class RegisterBlueprintNullException(BlueprintNullException):
     Super Class:
         BlueprintNullException
     """
-    MSG = "RegisterBlueprint cannot be null."
-    ERR_CODE = "REGISTER_BLUEPRINT_NULL_ERROR"
+    MSG = "StructureBlueprint cannot be null."
+    ERR_CODE = "STRUCTURE_BLUEPRINT_NULL_ERROR"
     
     def __init__(
             self,

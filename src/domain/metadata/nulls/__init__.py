@@ -14,4 +14,4 @@ from .model import *
 from .structure import *
 
 # Modules
-from roster import NullExceptionRoster
+from group import NullExceptionGroup

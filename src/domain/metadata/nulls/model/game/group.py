@@ -11,13 +11,13 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Game, NullExceptionGroup
+from domain import Game, ModelNullGroup
 from err import (
     GameBlueprintNullException, GameCarrierNullException, GameNullException
 )
 
 
-class GameNullGroup(NullExceptionGroup[Game]):
+class GameNullGroup(ModelNullGroup[Game]):
     """
     Role:
         - Metadata

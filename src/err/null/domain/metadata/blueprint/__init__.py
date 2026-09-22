@@ -11,11 +11,12 @@ version: 0.0.2
 
 # Packages
 from .model import *
-from .node import *
+from err.null.domain.metadata.blueprint.structure.node import *
 from .movement import *
-from .register import *
+from err.null.domain.metadata.blueprint.structure.register import *
 from .space import *
-from .toggle import *
+from .structure import *
+from err.null.domain.metadata.blueprint.structure.toggle import *
 
 # Modules
 from .exception import BlueprintNullException

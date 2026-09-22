@@ -11,13 +11,13 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Maneuver, NullExceptionGroup
+from domain import Maneuver, ModelNullGroup
 from err import (
     ManeuverBlueprintNullException, ManeuverCarrierNullException, ManeuverNullException
 )
 
 
-class ManeuverNullGroup(NullExceptionGroup[Maneuver]):
+class ManeuverNullGroup(ModelNullGroup[Maneuver]):
     """
     Role:
         - Metadata

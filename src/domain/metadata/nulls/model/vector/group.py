@@ -11,13 +11,13 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import NullExceptionGroup, Vector
+from domain import ModelNullGroup, Vector
 from err import (
     VectorBlueprintNullException, VectorCarrierNullException, VectorNullException
 )
 
 
-class VectorNullGroup(NullExceptionGroup[Vector]):
+class VectorNullGroup(ModelNullGroup[Vector]):
     """
     Role:
         - Metadata

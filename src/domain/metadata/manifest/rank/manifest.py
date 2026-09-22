@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-from domain import NullExceptionGroup, ObjectManifest, Rank, TypeUnion
+from domain import ModelNullGroup, ObjectManifest, Rank, TypeUnion
 
 T = TypeVar("T", bound="Rank")
 
@@ -37,7 +37,7 @@ class RankManifest(ObjectManifest[T], ABC, Generic[T]):
     def __init__(
             self,
             type_union: TypeUnion[T],
-            null_group: NullExceptionGroup[T]
+            null_group: ModelNullGroup[T]
     ):
         """
         Args:

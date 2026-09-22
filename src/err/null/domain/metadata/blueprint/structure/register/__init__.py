@@ -13,7 +13,7 @@ version: 0.0.2
 from .identity import *
 from .square import *
 from .vector import *
-from .vectortogle import *
+from .cartesian import *
 
 # Modules
 from .exception import RegisterBlueprintNullException

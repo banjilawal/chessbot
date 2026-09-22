@@ -11,13 +11,13 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Coord, NullExceptionGroup
+from domain import Coord, ModelNullGroup
 from err import (
     CoordBlueprintNullException, CoordCarrierNullException, CoordNullException
 )
 
 
-class CoordNullGroup(NullExceptionGroup[Coord]):
+class CoordNullGroup(ModelNullGroup[Coord]):
     """
     Role:
         - Metadata

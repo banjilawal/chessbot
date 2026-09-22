@@ -11,13 +11,13 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import NullExceptionGroup, Square
+from domain import ModelNullGroup, Square
 from err import (
     SquareBlueprintNullException, SquareCarrierNullException, SquareNullException
 )
 
 
-class SquareNullGroup(NullExceptionGroup[Square]):
+class SquareNullGroup(ModelNullGroup[Square]):
     """
     Role:
         - Metadata

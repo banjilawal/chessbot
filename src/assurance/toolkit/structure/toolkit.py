@@ -14,7 +14,7 @@ from dataclasses import dataclass
 from typing import Any, Dict, Generic, TypeVar
 
 from assurance import ValidatorToolkit
-from domain import  NullExceptionRoster, DomainObjectTypeUnions
+from domain import  NullExceptionGroup, DomainObjectTypeUnions
 from domain import Structure
 
 
@@ -46,5 +46,5 @@ class StructureValidatorToolkit(ValidatorToolkit[T], ABC, Generic[T]):
         ValidationToolkit
     """
     types: DomainObjectTypeUnions[T]
-    nulls: NullExceptionRoster[T]
+    nulls: NullExceptionGroup[T]
     resources: Dict[str, Any]

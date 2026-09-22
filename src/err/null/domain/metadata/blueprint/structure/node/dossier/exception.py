@@ -1,7 +1,7 @@
-# src/err/null/domain/blueprint/toggle/exception.py
+# src/err/null/domain/blueprint/node/dossier/exception.py
 
 """
-Module: err.null.domain.blueprint.toggle.exception
+Module: err.null.domain.blueprint.node.dossier.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,24 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-
-from err import BlueprintNullException
+from err import NodeBlueprintNullException
 from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# TOGGLE_BLUEPRINT_NULL_ERROR #======================#
-    "ToggleBlueprintNullException",
+    # ======================# DOSSIER_NODE_BLUEPRINT_NULL_ERROR #======================#
+    "DossierNodeBlueprintNullException",
 ]
 
-# ======================# TOGGLE_BLUEPRINT_NULL_ERROR #======================#
-class ToggleBlueprintNullException(BlueprintNullException):
+# ======================# DOSSIER_NODE_BLUEPRINT_NULL_ERROR #======================#
+class DossierNodeBlueprintNullException(NodeBlueprintNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required Blueprint is null.
+        1.  Indicating a required DossierNodeBlueprint is null.
 
     Cannot Be Null.s:
             msg: Optional[str]
@@ -43,10 +42,10 @@ class ToggleBlueprintNullException(BlueprintNullException):
     Provides:
 
     Super Class:
-        BlueprintNullException
+        StructureBlueprintNullException
     """
-    MSG = "ToggleBlueprint cannot be null."
-    ERR_CODE = "TOGGLE_BLUEPRINT_NULL_ERROR"
+    MSG = "DossierNodeBlueprint cannot be null."
+    ERR_CODE = "DOSSIER_NODE_BLUEPRINT_NULL_ERROR"
     
     def __init__(
             self,

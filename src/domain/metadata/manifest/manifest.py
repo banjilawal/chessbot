@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-from domain import NullExceptionGroup, TypeUnion
+from domain import ModelNullGroup, TypeUnion
 
 T = TypeVar("T", bound="Model")
 
@@ -34,12 +34,12 @@ class ObjectManifest(ABC, Generic[T]):
      """
     
     _type_union: TypeUnion[T]
-    _null_group: NullExceptionGroup[T]
+    _null_group: ModelNullGroup[T]
     
     def __init__(
             self,
             type_union: TypeUnion[T],
-            null_group: NullExceptionGroup[T]
+            null_group: ModelNullGroup[T]
     ):
         """
         Args:
@@ -54,5 +54,5 @@ class ObjectManifest(ABC, Generic[T]):
         return self._type_union
     
     @property
-    def nulls(self) -> NullExceptionGroup:
+    def nulls(self) -> ModelNullGroup:
         return self._null_group
