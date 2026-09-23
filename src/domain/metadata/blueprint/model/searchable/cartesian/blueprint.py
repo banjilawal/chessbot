@@ -12,10 +12,10 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Type, TypeVar, cast
 
-from domain import CartesianPoint, Context, SearchableModelBlueprint
+from domain import Locus, Context, SearchableModelBlueprint
 from err import ModelNullException
 
-T = TypeVar("T", bound="CartesianPoint")
+T = TypeVar("T", bound="Locus")
 
 
 class CartesianBlueprint(SearchableModelBlueprint[T], ABC, Generic[T]):

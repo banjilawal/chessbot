@@ -15,6 +15,6 @@ from .coord import *
 from .vector import *
 
 # Modules
-from .model import CartesianPoint
+from .model import Locus
 
 

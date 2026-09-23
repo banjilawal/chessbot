@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional, cast
 
-from domain import CartesianPoint, Coord, Toggle, Vector
+from domain import Locus, Coord, Toggle, Vector
 
 
-class CartesianToggle(Toggle[CartesianPoint]):
+class CartesianToggle(Toggle[Locus]):
     """
     Role:
         - Option Selector
@@ -74,7 +74,7 @@ class CartesianToggle(Toggle[CartesianPoint]):
         return (
                 self._vector is None and
                 self._coord is not None and
-                isinstance(self._coord, CartesianPoint)
+                isinstance(self._coord, Locus)
         )
     
     @property

@@ -9,10 +9,10 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from domain import Board, CartesianPoint, Vector
+from domain import Board, Locus, Vector
 
 
-class Coord(CartesianPoint):
+class Coord(Locus):
     """
     Role:
         - Address Model

@@ -14,7 +14,7 @@ from abc import ABC
 from domain import SearchableModel
 
 
-class CartesianPoint(SearchableModel, ABC):
+class Locus(SearchableModel, ABC):
     """
     Role:
         - Addressing

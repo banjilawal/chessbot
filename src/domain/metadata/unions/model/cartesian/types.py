@@ -12,10 +12,10 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Type, TypeVar, cast
 
-from domain import Blueprint, CartesianPoint, TypeUnion
+from domain import Blueprint, Locus, TypeUnion
 from transit import EntityCarrier
 
-T = TypeVar("T", bound="CartesianPoint")
+T = TypeVar("T", bound="Locus")
 
 
 class CartesianTypeUnion(TypeUnion[T], ABC, Generic[T]):
