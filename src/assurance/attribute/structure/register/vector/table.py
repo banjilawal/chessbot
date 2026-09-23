@@ -12,11 +12,11 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import RegisterHelperTable, SquareValidator
-from domain import SquareRegister
+from assurance import RegisterHelperTable, VectorValidator
+from domain import VectorRegister
 
 
-class SquareRegisterHelperTable(RegisterHelperTable[SquareRegister]):
+class VectorRegisterHelperTable(RegisterHelperTable[VectorRegister]):
     """
     Role:
         - Toolkit
@@ -26,26 +26,26 @@ class SquareRegisterHelperTable(RegisterHelperTable[SquareRegister]):
             upstream relational partners attributes.
 
     Attributes:
-        square_validator: SquareValidator
+        vector_validator: VectorValidator
 
     Provides:
 
     Super Class:
         RegisterHelperTable
     """
-    _square_validator: SquareValidator
+    _vector_validator: VectorValidator
     
     def __init__(
             self,
-            square_validator: Optional[SquareValidator] | None = None,
+            vector_validator: Optional[VectorValidator] | None = None,
     ):
         """
         Args:
-            square_validator: Optional[SquareValidator]
+            vector_validator: Optional[VectorValidator]
         """
         super().__init__()
-        self._square_validator = square_validator or SquareValidator()
+        self._vector_validator = vector_validator or VectorValidator()
         
     @property
-    def square_validator(self) -> SquareValidator:
-        return self.square_validator
+    def vector_validator(self) -> VectorValidator:
+        return self.vector_validator

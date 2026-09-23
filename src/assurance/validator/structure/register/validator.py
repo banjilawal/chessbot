@@ -1,0 +1,70 @@
+# src/assurance/validator/structure/register/validator.py
+
+"""
+Module: assurance.validator.structure.register.validator
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from abc import ABC, abstractmethod
+from typing import Generic, TypeVar, cast
+
+from artifcat import ValidationResult
+from assurance import RegisterValidatorToolkit, StructureValidator
+from domain import Register, StructureValidationRequest
+from util import LoggingLevelRouter
+
+T = TypeVar("T", bound="Register")
+
+
+class RegisterValidator(StructureValidator[T], ABC, Generic[T]):
+    """
+    Role
+        - Integrity Assurance Worker
+
+    Responsibilities:
+        1.  Check that a candidate is the right type of not-null EntityCarrier.
+        2.  Run safety checks on structures and blueprints inside an EntityCarrier's payload.
+
+    Attributes:
+        toolkit: StructureValidationToolkit[T]
+
+    Provides:
+        - def execute(candidate: Any) -> ValidationResult[Blueprint[T]|T]:
+
+    Super Class:
+        Validator
+    """
+    
+    def __init__(self, toolkit: RegisterValidatorToolkit[T]):
+        """
+        Args:
+            toolkit: ValidationToolkit[T]
+        """
+        super().__init__(toolkit=toolkit)
+    
+    @property
+    def toolkit(self) -> RegisterValidatorToolkit[T]:
+        return cast(RegisterValidatorToolkit[T], super().toolkit)
+    
+    @abstractmethod
+    @LoggingLevelRouter.monitor
+    def execute(
+            self,
+            request: StructureValidationRequest
+    ) -> ValidationResult[T]:
+        """
+        Verify the candidate is an EntityCarrier whose payload is safe.
+        Args:
+            request: StructureValidationRequest
+        Returns:
+           ValidationResult[T]
+        Raises:
+            ValidatorException
+        """
+        pass
+    
+    

@@ -1,7 +1,7 @@
-# src/domain/exchange/request/validation/request.py
+# src/domain/exchange/request/validation/structure/request.py
 
 """
-Module: domain.exchange.request.validation.request
+Module: domain.exchange.request.validation.structure.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,17 +9,11 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import Generic, TypeVar, cast
+from typing import Any
 
-from domain import Request
-from transit import EntityCarrier
+from domain import Structure, ValidationRequest
 
-T = TypeVar("T")
-
-
-
-class ValidationRequest(Request[T], ABC, Generic[T]):
+class StructureValidationRequest(ValidationRequest[Structure]):
     """
      Role:
          - Messaging
@@ -30,24 +24,31 @@ class ValidationRequest(Request[T], ABC, Generic[T]):
 
      Attributes:
          id: int
+         item: Any
 
      Provides:
      
      Super Class:
-        Request
+        ValidationRequest
      """
+    _item: Any
     
-    def __init__(self, id: int):
+    def __init__(self, id: int, item: Any):
         """
         Args:
             id: int
+            item: EntityCarrier[T]
         """
         super().__init__(id=id)
-        
+        self._item = item
+    
+    @property
+    def item(self) -> Any:
+        return self._item
     
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, ValidationRequest):
+        if isinstance(other, StructureValidationRequest):
             return self.id == other.id
         return False

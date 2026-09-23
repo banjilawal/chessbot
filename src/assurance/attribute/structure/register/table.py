@@ -15,13 +15,13 @@ from typing import Generic, Optional, TypeVar
 
 from assurance import NumberValidator, PrimingValidator, StructureHelperTable, Validator
 from authorization import BlueprintIdExtractor
-from domain import Model, Register
+from domain import Register
 from microservice import IdentityService
 
-T = TypeVar("T", bound="Model")
+T = TypeVar("T", bound="Register")
 
 
-class RegisterHelperTable(StructureHelperTable[Register], ABC, Generic[T]):
+class RegisterHelperTable(StructureHelperTable[T], ABC, Generic[T]):
     """
     Role:
         - Toolkit
@@ -37,11 +37,9 @@ class RegisterHelperTable(StructureHelperTable[Register], ABC, Generic[T]):
     Super Class:
         StructureHelperTable
     """
-    _model_validator: Validator[T]
     
     def __init__(
             self,
-            model_validator: Validator[T],
             identity_service: Optional[IdentityService] | None = None,
             number_validator: Optional[NumberValidator] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
@@ -49,7 +47,6 @@ class RegisterHelperTable(StructureHelperTable[Register], ABC, Generic[T]):
     ):
         """
         Args:
-            model_validator: Validator[T]
             identity_service: Optional[IdentityService]
             number_validator: Optional[NumberValidator]
             priming_validator: Optional[PrimingValidator]
@@ -61,10 +58,5 @@ class RegisterHelperTable(StructureHelperTable[Register], ABC, Generic[T]):
             priming_validator=priming_validator,
             blueprint_id_extractor=blueprint_id_extractor,
         )
-        self._model_validator = model_validator
-        
-    @property
-    def model_validator(self) -> Validator[T]:
-        return self._model_validator
     
     

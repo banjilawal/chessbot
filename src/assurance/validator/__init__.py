@@ -13,6 +13,7 @@ version: 0.0.2
 from .domain import *
 from .model import *
 from .space import *
+from .structure import *
 
 # Module
 from .validator import Validator
