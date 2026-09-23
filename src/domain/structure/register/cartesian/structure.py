@@ -11,25 +11,25 @@ from __future__ import annotations
 
 from typing import Dict, List, cast
 
-from domain import CartesianToggle, Register
+from domain import Cartesian, Register
 
 
-class CartesianToggleRegister(Register[CartesianToggle]):
+class CartesianRegister(Register[Cartesian]):
     """
         - Model
         - Data Holder
 
     Responsibilities:
-        1.  Contains CartesianToggles passed for Vector Algebra
+        1.  Contains Cartesian passed for Vector Algebra
 
     Attributes:
-        a: CartesianToggle
-        b: CartesianToggle
+        a: Cartesian
+        b: Cartesian
 
         is_vector_register:bool
         is_coord_register: bool
-        to_list: List[CartesianToggle]
-        to_dict: Dict[str, CartesianToggle]
+        to_list: List[Cartesian]
+        to_dict: Dict[str, Cartesian]
 
     Super Class:
         Register
@@ -37,34 +37,34 @@ class CartesianToggleRegister(Register[CartesianToggle]):
     
     def __init__(
             self,
-            u: CartesianToggle,
-            v: CartesianToggle,
+            u: Cartesian,
+            v: Cartesian,
     ):
         """
         Args:
-            u: CartesianToggle
-            v: CartesianToggle
+            u: Cartesian
+            v: Cartesian
         """
         super().__init__(a=u, b=v)
     
     @property
-    def u(self) -> CartesianToggle:
-        return cast(CartesianToggle, super().a)
+    def u(self) -> Cartesian:
+        return cast(Cartesian, super().a)
     
     @property
-    def v(self) -> CartesianToggle:
-        return cast(CartesianToggle, super().b)
+    def v(self) -> Cartesian:
+        return cast(Cartesian, super().b)
         
     @property
-    def a(self) -> CartesianToggle:
+    def a(self) -> Cartesian:
         return self.u
     
     @property
-    def b(self) -> CartesianToggle:
+    def b(self) -> Cartesian:
         return self.v
     
     @property
-    def b(self) -> CartesianToggle:
+    def b(self) -> Cartesian:
         return self._b
     
     @property
@@ -77,39 +77,41 @@ class CartesianToggleRegister(Register[CartesianToggle]):
     
     @property
     def is_vector_register(self) -> bool:
-        return self._a.is_vector_toggle and self._b.is_vector_toggle
+        return self._a.is_vector_locus and self._b.is_vector_locus
     
     @property
     def is_coord_register(self) -> bool:
-        return self._a.is_coord_toggle and self._b.is_coord_toggle
+        return self._a.is_coord_locus and self._b.is_coord_locus
 
     @property
-    def toggles_are_carrying_different_types(self) -> bool:
+    def is_mismatched(self) -> bool:
         return (
             not self.is_vector_register and
             not self.is_coord_register
-            
         )
     
     @property
-    def to_list(self) -> List[CartesianToggle]:
+    def to_list(self) -> List[Cartesian]:
         return [self.a, self.b]
     
     @property
-    def to_dict(self) -> Dict[str, CartesianToggle]:
+    def to_dict(self) -> Dict[str, Cartesian]:
         return {
             "a": self.a,
             "b": self.b,
         }
     
     def __eq__(self, other):
-        if other is self: return True
-        if other is None: return False
-        if isinstance(other, CartesianToggleRegister):
+        if other is self:
+            return True
+        if other is None:
+            return False
+        if isinstance(other, CartesianRegister):
             return (
                     self._a == other.b and
                     self._b == other.b
             )
+        return False
     
     
     

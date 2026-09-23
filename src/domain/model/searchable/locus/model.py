@@ -1,7 +1,7 @@
-# src/domain/model/searchable/cartesian/vector/model.py
+# src/domain/model/searchable/locus/vector/model.py
 
 """
-Module: domain.model.searchable.cartesian.vector.model
+Module: domain.model.searchable.locus.vector.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

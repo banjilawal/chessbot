@@ -1,7 +1,7 @@
-# src/domain/model/searchable/cartesian/coord/model.py
+# src/domain/model/searchable/locus/coord/model.py
 
 """
-Module: domain.model.searchable.cartesian.coord.model
+Module: domain.model.searchable.locus.coord.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

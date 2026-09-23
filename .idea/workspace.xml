@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="" />
+    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/locus/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/locus/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/locus/cartesian/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/locus/cartesian/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/locus/cartesian/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/locus/cartesian/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/locus/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/locus/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/locus/coord/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/locus/coord/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/locus/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/locus/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/locus/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/locus/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/structure/register/cartesian/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/structure/register/cartesian/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/structure/register/cartesian/structure.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/structure/register/cartesian/structure.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,60 +57,60 @@
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
       <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0000000633180894" />
-      <entry key="S2" value="1.0252559271464319" />
-      <entry key="S5" value="1.5621615928838901" />
-      <entry key="S10" value="3.968165913738909" />
-      <entry key="S30" value="13.909807822779255" />
-      <entry key="S60" value="23.22374511704319" />
-      <entry key="M2" value="33.75921525858901" />
-      <entry key="M5" value="49.59642647234559" />
-      <entry key="M10" value="64.54524065514423" />
-      <entry key="M15" value="75.88116283873741" />
-      <entry key="M30" value="99.06433368608849" />
-      <entry key="H1" value="132.27831873127838" />
-      <entry key="H2" value="211.4084264853164" />
-      <entry key="H4" value="353.49000281371855" />
-      <entry key="D1" value="2255.994665496065" />
-      <entry key="W1" value="18325.531478257224" />
+      <entry key="MS500" value="1.0000000033527685" />
+      <entry key="S2" value="1.007609408347994" />
+      <entry key="S5" value="1.1420825637342276" />
+      <entry key="S10" value="1.377466250195741" />
+      <entry key="S30" value="1.8744695672808027" />
+      <entry key="S60" value="2.6461223893340007" />
+      <entry key="M2" value="4.515061127332482" />
+      <entry key="M5" value="18.244744971502083" />
+      <entry key="M10" value="47.64758851520709" />
+      <entry key="M15" value="71.99328973184123" />
+      <entry key="M30" value="118.53278912783894" />
+      <entry key="H1" value="163.71710028186178" />
+      <entry key="H2" value="227.27895666943743" />
+      <entry key="H4" value="358.1641418095677" />
+      <entry key="D1" value="2185.1499464134035" />
+      <entry key="W1" value="18191.14919315792" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="6.802367702089271E-164" />
-      <entry key="S5" value="7.550295667921058E-66" />
-      <entry key="S10" value="4.3534596790519855E-33" />
-      <entry key="S30" value="3.320629827098886E-11" />
-      <entry key="S60" value="9.952010554371834E-6" />
-      <entry key="M2" value="0.005488537137196297" />
-      <entry key="M5" value="0.2911454472374474" />
-      <entry key="M10" value="1.565633514143868" />
-      <entry key="M15" value="3.109814030582251" />
-      <entry key="M30" value="6.748884600495801" />
-      <entry key="H1" value="10.810134613863207" />
-      <entry key="H2" value="16.6786751183889" />
-      <entry key="H4" value="26.500398728860507" />
-      <entry key="D1" value="121.14769062837289" />
-      <entry key="W1" value="841.4412147433763" />
+      <entry key="MS500" value="1.1053994187060899E-159" />
+      <entry key="S2" value="1.8710244055135514E-40" />
+      <entry key="S5" value="1.5675179816510762E-16" />
+      <entry key="S10" value="1.6716339399918028E-8" />
+      <entry key="S30" value="0.004001184384635152" />
+      <entry key="S60" value="0.08939753401138632" />
+      <entry key="M2" value="0.4326893040102067" />
+      <entry key="M5" value="1.2489177860214096" />
+      <entry key="M10" value="2.2201593895834" />
+      <entry key="M15" value="3.2240620886108666" />
+      <entry key="M30" value="5.760922980819201" />
+      <entry key="H1" value="8.812206891325923" />
+      <entry key="H2" value="13.612809783036443" />
+      <entry key="H4" value="23.257039554428754" />
+      <entry key="D1" value="118.40054537394394" />
+      <entry key="W1" value="838.1089125849722" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="5.4468598975503513E-8" />
-      <entry key="MS500" value="0.03525575228220632" />
-      <entry key="S2" value="0.4582874827490102" />
-      <entry key="S5" value="1.2754264863460334" />
-      <entry key="S10" value="3.808218957336873" />
-      <entry key="S30" value="13.845017102636602" />
-      <entry key="S60" value="23.17565931794884" />
-      <entry key="M2" value="33.71777625355623" />
-      <entry key="M5" value="49.84056951058792" />
-      <entry key="M10" value="66.06205072834824" />
-      <entry key="M15" value="78.94132866299928" />
-      <entry key="M30" value="105.7687404649452" />
-      <entry key="H1" value="143.05472968070225" />
-      <entry key="H2" value="228.0614777769945" />
-      <entry key="H4" value="379.9705681945017" />
-      <entry key="D1" value="2377.1257379981103" />
-      <entry key="W1" value="19166.957922572805" />
+      <entry key="MS100" value="0.9592641193252643" />
+      <entry key="MS500" value="0.9917167340403225" />
+      <entry key="S2" value="1.0055031731536037" />
+      <entry key="S5" value="1.1410345963109845" />
+      <entry key="S10" value="1.3766895648338062" />
+      <entry key="S30" value="1.8712584633897917" />
+      <entry key="S60" value="2.7161201297583695" />
+      <entry key="M2" value="4.916946797146129" />
+      <entry key="M5" value="19.46053682069202" />
+      <entry key="M10" value="49.828890461576385" />
+      <entry key="M15" value="75.17037245350068" />
+      <entry key="M30" value="124.24125763983419" />
+      <entry key="H1" value="172.4863222733923" />
+      <entry key="H2" value="240.8601476437871" />
+      <entry key="H4" value="381.39734618264305" />
+      <entry key="D1" value="2303.53320010263" />
+      <entry key="W1" value="19029.243214050366" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -130,7 +141,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/assurance/validator/structure/register/square",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/domain/model/searchable/locus",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -144,11 +155,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/domain/model/searchable/locus" />
       <recent name="$PROJECT_DIR$/src/assurance/validator/structure/register/square" />
       <recent name="$PROJECT_DIR$/src/assurance/attribute/structure/register" />
       <recent name="$PROJECT_DIR$/src/assurance/toolkit/structure/register/square" />
       <recent name="$PROJECT_DIR$/src/assurance/validator/structure/register" />
-      <recent name="$PROJECT_DIR$/src/domain/exchange/request/validation/structure/register/square" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/domain/metadata/manifest/model" />
@@ -836,7 +847,7 @@
       <workItem from="1788782347688" duration="75617000" />
       <workItem from="1788969937518" duration="171978000" />
       <workItem from="1790001362413" duration="735000" />
-      <workItem from="1790063398459" duration="38903000" />
+      <workItem from="1790063398459" duration="44605000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -2103,11 +2114,6 @@
           <url>file://$PROJECT_DIR$/src/domain/structure/register/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="458" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/domain/structure/register/cartesian/structure.py</url>
-          <line>11</line>
-          <option name="timeStamp" value="459" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/domain/metadata/manifest/model/token/manifest.py</url>

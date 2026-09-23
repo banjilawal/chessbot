@@ -1,16 +1,16 @@
-# src/domain/structure/toggle/vector/__init__.py
+# src/domain/model/searchable/locus/cartesian/__init__.py
 
 """
-Module: domain.structure.toggle.vector.__init__
+Module: domain.model.searchable.locus.cartesian.__init__
 Author: Banji Lawal
-Created: 2026-03-30
+Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== DOMAIN.STRUCTURE.TOGGLE.VECTOR PACKAGE ===========#
+# =========== DOMAIN.MODEL.SEARCHABLE.LOCUS.CARTESIAN PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .model import CartesianToggle
+from .model import Cartesian

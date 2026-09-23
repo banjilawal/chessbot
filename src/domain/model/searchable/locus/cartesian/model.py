@@ -1,20 +1,20 @@
-# src/domain/structure/toggle/vector/toggle.py
+# src/domain/model/searchable/locus/cartesian/model.py
 
 """
-Module: domain.structure.toggle.vector.toggle
+Module: domain.model.searchable.locus.cartesian.model
 Author: Banji Lawal
-Created: 2026-03-30
+Created: 2026-04-03
 version: 0.0.2
 """
 
 from __future__ import annotations
 
-from typing import Any, Dict, Optional, cast
+from typing import Any, Dict, Optional
 
-from domain import Locus, Coord, Model, Toggle, Vector
+from domain import Coord, SearchableModel, Vector
 
 
-class Cartesian(Model):
+class Cartesian(SearchableModel):
     """
     Role:
         - Option Selector
@@ -39,7 +39,6 @@ class Cartesian(Model):
     """
     _coord: Optional[Coord]
     _vector: Optional[Vector]
-
     
     def __init__(
             self,
@@ -54,7 +53,7 @@ class Cartesian(Model):
         super().__init__()
         self._vector = vector
         self._coord = coord
-        
+    
     @property
     def locus(self) -> Optional[Coord | Vector]:
         if self._vector is None and self._coord is None:
@@ -101,7 +100,7 @@ class Cartesian(Model):
     @property
     def has_excess_loci(self) -> bool:
         return self.size > 1
-
+    
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
@@ -110,7 +109,7 @@ class Cartesian(Model):
                 return self._equal_vector_loci(other)
             return self._equal_coord_loci(other)
         return False
-        
+    
     def _equal_vector_loci(self, other: Cartesian) -> bool:
         if self.is_vector_locus and other.is_vector_locus:
             return self.locus == other.locus
@@ -120,5 +119,3 @@ class Cartesian(Model):
         if self.is_coord_locus and other.is_coord_locus:
             return self.locus == other.locus
         return False
-    
-    
