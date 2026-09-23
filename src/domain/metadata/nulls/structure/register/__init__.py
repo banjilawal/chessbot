@@ -10,7 +10,9 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.NULLS.STRUCTURE.REGISTER PACKAGE ===========#
 
 # Packages
-
+from .coord import *
+from .square import *
+from .vector import *
 
 # Modules
 from .group import RegisterNullGroup

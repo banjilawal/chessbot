@@ -12,10 +12,9 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Type, TypeVar
 
-from domain import Blueprint, DomainDataObject
-from transit import EntityCarrier
+from domain import Blueprint
 
-T = TypeVar("T", bound="DomainDataObject")
+T = TypeVar("T")
 
 
 class TypeUnion(ABC, Generic[T]):
@@ -36,32 +35,24 @@ class TypeUnion(ABC, Generic[T]):
     Super Class:
     """
     _model: Type[T]
-    _carrier: Type[EntityCarrier[T]]
     _blueprint: Type[Blueprint[T]]
     
     def __init__(
             self,
             model: Type[T],
-            carrier: Type[EntityCarrier[T]],
             blueprint: Type[Blueprint[T]],
     ):
         """
         Args:
             model: Type[T]
-            carrier: Type[EntityCarrier[T]]
             blueprint: Type[Blueprint[T]]
         """
         self._model = model
-        self._carrier = carrier
         self._blueprint = blueprint
         
     @property
     def model(self) -> Type[T]:
         return self._model
-    
-    @property
-    def carrier(self) -> Type[EntityCarrier[T]]:
-        return self._carrier
     
     @property
     def blueprint(self) -> Type[Blueprint[T]]:

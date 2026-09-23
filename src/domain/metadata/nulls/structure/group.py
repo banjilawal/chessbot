@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from domain import Structure, NullExceptionGroup
-from err import BlueprintNullException, EntityCarrierNullException, StructureNullException
+from err import BlueprintNullException, StructureNullException
 
 T = TypeVar("T", bound="Structure")
 
@@ -27,29 +27,26 @@ class StructureNullGroup(NullExceptionGroup[T], ABC, Generic[T]):
 
     Attributes:
         structure: StructureNullException
-        carrier: EntityCarrierNullException
         blueprint: BlueprintNullException
 
     Provides:
 
     Super Class:
+        NullExceptionGroup
     """
 
     
     def __init__(
             self,
             structure: StructureNullException,
-            carrier: EntityCarrierNullException,
             blueprint: BlueprintNullException,
     ):
         """
         Args:
             structure: StructureNullException
-            carrier: EntityCarrierNullException
             blueprint: BlueprintNullException
         """
         super().__init__(structure=structure)
-        self._carrier = carrier
         self._blueprint = blueprint
         
     @property
@@ -59,10 +56,6 @@ class StructureNullGroup(NullExceptionGroup[T], ABC, Generic[T]):
     @property
     def model(self) -> StructureNullException:
         return self.structure
-    
-    @property
-    def carrier(self) -> EntityCarrierNullException:
-        return self._carrier
     
     @property
     def blueprint(self) -> BlueprintNullException:

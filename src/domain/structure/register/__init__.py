@@ -10,7 +10,7 @@ version: 0.0.2
 # =========== DOMAIN.STRUCTURE.REGISTER PACKAGE ===========#
 
 # Packages
-from .toggle import *
+from .cartesian import *
 from .coord import *
 from .identity import *
 from .number import *

@@ -10,17 +10,8 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.UNIONS PACKAGE ===========#
 
 # Packages
-from .arena import *
-from .board import *
-from .cartesian import *
-from .game import *
-from .player import *
-from .rank import *
-from .scalar import *
-from .square import *
-from .team import *
-from .token import *
-from .walk import *
+from .model import *
+from .structure import *
 
 # Modules
 from .types import TypeUnion

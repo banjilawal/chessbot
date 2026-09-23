@@ -11,6 +11,7 @@ version: 0.0.2
 
 # Packages
 from .register import *
+from .toggle import *
 
 # Modules
 from .blueprint import StructureBlueprint

@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from domain import Board, CartesianPoint
+from domain import Board, CartesianPoint, Vector
 
 
 class Coord(CartesianPoint):
@@ -56,6 +56,10 @@ class Coord(CartesianPoint):
     @property
     def board(self) -> Board:
         return self._board
+    
+    @property
+    def to_vector(self) -> Vector:
+        return Vector(x=self._column, y=self._row)
     
     def __eq__(self, other):
         if other is self:

@@ -12,10 +12,10 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from domain import StructureNullGroup
-from err import EntityCarrierNullException, StructureNullException
+from domain import Register, StructureNullGroup
+from err import RegisterBlueprintNullException, StructureNullException
 
-T = TypeVar("T", bound="Structure")
+T = TypeVar("T", bound="Register")
 
 class RegisterNullGroup(StructureNullGroup[T], ABC, Generic[T]):
     """
@@ -26,30 +26,27 @@ class RegisterNullGroup(StructureNullGroup[T], ABC, Generic[T]):
         1. Catalog of NullExceptions associated with a Register's integrity cycle.
 
     Attributes:
-        structure: StructureNullException
-        carrier: EntityCarrierNullException
-        blueprint: BlueprintNullException
+        structure: T
+        blueprint: RegisterBlueprintNullException
 
     Provides:
 
     Super Class:
+        StructureNullGroup
     """
 
     
     def __init__(
             self,
             structure: StructureNullException,
-            carrier: EntityCarrierNullException,
-            blueprint: BlueprintNullException,
+            blueprint: RegisterBlueprintNullException,
     ):
         """
         Args:
             structure: StructureNullException
-            carrier: EntityCarrierNullException
-            blueprint: BlueprintNullException
+            blueprint: RegisterBlueprintNullException
         """
         super().__init__(structure=structure)
-        self._carrier = carrier
         self._blueprint = blueprint
         
     @property
@@ -61,9 +58,5 @@ class RegisterNullGroup(StructureNullGroup[T], ABC, Generic[T]):
         return self.structure
     
     @property
-    def carrier(self) -> EntityCarrierNullException:
-        return self._carrier
-    
-    @property
-    def blueprint(self) -> BlueprintNullException:
+    def blueprint(self) -> RegisterBlueprintNullException:
         return self._blueprint

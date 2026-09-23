@@ -12,9 +12,9 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-from domain import ModelNullGroup, TypeUnion
+from domain import NullExceptionGroup, TypeUnion
 
-T = TypeVar("T", bound="Model")
+T = TypeVar("T")
 
 class ObjectManifest(ABC, Generic[T]):
     """
@@ -25,34 +25,34 @@ class ObjectManifest(ABC, Generic[T]):
          1.  Aggregates NullExceptions and TypeUnions for a Model's security lifecycle.
 
      Attributes:
-        type_union: TypeUnion[T],
-        null_group: NullExceptionGroup[T]
+        types: TypeUnion[T],
+        nulls: NullExceptionGroup[T]
 
      Provides:
 
      Super Class:
      """
     
-    _type_union: TypeUnion[T]
-    _null_group: ModelNullGroup[T]
+    _types: TypeUnion[T]
+    _nulls: NullExceptionGroup[T]
     
     def __init__(
             self,
-            type_union: TypeUnion[T],
-            null_group: ModelNullGroup[T]
+            types: TypeUnion[T],
+            nulls: NullExceptionGroup[T]
     ):
         """
         Args:
-            type_union: TypeUnion[T],
-            null_group: NullExceptionGroup[T]
+            types: TypeUnion[T],
+            nulls: NullExceptionGroup[T]
         """
-        self._type_union = type_union
-        self._null_group = null_group
+        self._types = types
+        self._nulls = nulls
         
     @property
     def types(self) -> TypeUnion[T]:
-        return self._type_union
+        return self._types
     
     @property
-    def nulls(self) -> ModelNullGroup:
-        return self._null_group
+    def nulls(self) -> NullExceptionGroup[T]:
+        return self._nulls

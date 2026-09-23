@@ -9,7 +9,6 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
 from typing import Generic, Optional, TypeVar, cast
 
 from domain import ModelNullGroup, Token
@@ -19,7 +18,7 @@ from err import (
 
 T = TypeVar("T", bound="Token")
 
-class TokenNullGroup(ModelNullGroup[T], ABC, Generic[T]):
+class TokenNullGroup(ModelNullGroup[T], Generic[T]):
     """
     Role:
         - Metadata
