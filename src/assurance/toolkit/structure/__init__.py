@@ -11,6 +11,7 @@ version: 0.0.2
 
 # Packages
 from .node import *
+from .register import *
 
 # Module
-from .toolkit import StructureValidationToolkit
+from .toolkit import StructureValidatorToolkit

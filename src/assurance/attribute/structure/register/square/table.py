@@ -49,3 +49,7 @@ class SquareRegisterHelperTable(RegisterHelperTable[Square]):
     @property
     def model_validator(self) -> SquareValidator:
         return cast(SquareValidator, super().model_validator)
+    
+    @property
+    def square_validator(self) -> SquareValidator:
+        return self.model_validator

@@ -10,41 +10,48 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from dataclasses import dataclass
-from typing import Any, Dict, Generic, TypeVar
+from typing import Generic, TypeVar, cast
 
-from assurance import ValidatorToolkit
-from domain import  NullExceptionGroup, DomainObjectTypeUnions
-from domain import Structure
-
+from assurance import StructureHelperTable, ValidatorToolkit
+from domain import Structure, StructureManifest
 
 T = TypeVar("T", bound="Structure")
 
 
-@dataclass
 class StructureValidatorToolkit(ValidatorToolkit[T], ABC, Generic[T]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Toolkits types, null-exceptions, attribute-validators, and utilities IntegrityChecker
-            needs to run safety checks on a validation candidate.
+        1.  Single source of truth for attribute validators and type metadata.
 
     Attributes:
-        identity_service: IdentityService
-        primin_validator: PrimingValidator
-        
-        types: DomainObjectUnions[T]
-        nulls: NullExceptionRoster[T]
-        
-        resources: Dict[str, Any]
+            helper: StructureHelperTable[T]
+            metadata: StructureManifest[T]
 
     Provides:
 
     Super Class:
-        ValidationToolkit
+        ValidatorToolkit
     """
-    types: DomainObjectTypeUnions[T]
-    nulls: NullExceptionGroup[T]
-    resources: Dict[str, Any]
+    
+    def __init__(
+            self,
+            helper: StructureHelperTable[T],
+            metadata: StructureManifest[T],
+    ):
+        """
+            helper: StructureHelperTable[T]
+            metadata: StructureManifest[T]
+        """
+        super().__init__(helper=helper, metadata=metadata)
+    
+    
+    @property
+    def helper(self) -> StructureHelperTable[T]:
+        return cast(StructureHelperTable, super().helper)
+    
+    @property
+    def metadata(self) -> StructureManifest[T]:
+        return cast(StructureManifest, super().metadata)

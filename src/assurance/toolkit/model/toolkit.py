@@ -10,10 +10,10 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, TypeVar
+from typing import Generic, TypeVar, cast
 
-from assurance import AttributeHelperTable, ValidatorToolkit
-from domain import Model, ObjectManifest
+from assurance import ModelHelperTable, ValidatorToolkit
+from domain import Model, ModelManifest
 
 T = TypeVar("T", bound="Model")
 
@@ -28,34 +28,31 @@ class ModelValidatorToolkit(ValidatorToolkit[T], ABC, Generic[T]):
 
     Attributes:
         helper: HelperTable[T]
-        metadata: ObjectManifest[T]
+        metadata: ModelManifest[T]
 
     Provides:
 
     Super Class:
     """
-    _metadata: ObjectManifest[T]
-    _helper: AttributeHelperTable[T]
     
     
     def __init__(
             self,
-            helper: AttributeHelperTable[T],
-            metadata: ObjectManifest[T],
+            helper: ModelHelperTable[T],
+            metadata: ModelManifest[T],
     ):
         """
         Args:
             helper: HelperTable[T]
-            metadata: ObjectManifest[T]
+            metadata: ModelManifest[T]
         """
-        self._helper = helper
-        self._metadata = metadata
+        super().__init__(helper=helper, metadata=metadata)
     
     
     @property
-    def helper(self) -> AttributeHelperTable[T]:
-        return self._helper
+    def helper(self) -> ModelHelperTable[T]:
+        return cast(ModelHelperTable[T], super().helper)
     
     @property
-    def metadata(self) -> ObjectManifest[T]:
-        return self._metadata
+    def metadata(self) -> ModelManifest[T]:
+        return cast(ModelManifest[T], super().metadata)
