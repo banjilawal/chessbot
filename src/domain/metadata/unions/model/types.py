@@ -1,4 +1,4 @@
-# src/domain/metadata/unions/strcture/manifest.py
+# src/domain/metadata/unions/model/strcture/manifest.py
 
 """
 Module: domain.metadata.unions.model.manifest

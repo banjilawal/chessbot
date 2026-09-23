@@ -1,7 +1,7 @@
-# src/domain/model/cartesian/vector/model.py
+# src/domain/model/searchable/vector/model.py
 
 """
-Module: domain.model.cartesian.vector.model
+Module: domain.model.searchable.vector.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,13 +9,12 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from domain import Locus
+from domain import SearchableModel
 
 
-class Vector(Locus):
+class Vector(SearchableModel):
     """
     Role:
-        - CartesianPoint
         - Stateless Data-Holder
     
     About:
@@ -38,6 +37,7 @@ class Vector(Locus):
     
     Responsibilities:
         1.  Represents a delta_x, delta_y which for traveling to coord.
+        2.  Used for computing trajectories from Board locations.
     
     Attributes:
         x: int
@@ -46,7 +46,7 @@ class Vector(Locus):
     Provides:
     
     Super Class:
-        CartesianPoint
+        SearchableModel
     """
     _x: int
     _y: int

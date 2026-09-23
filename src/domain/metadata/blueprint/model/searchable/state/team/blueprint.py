@@ -1,7 +1,7 @@
-# src/domain/metadata/blueprint/model/searchable/state/team/blueprint.py
+# src/domain/metadata/blueprint/model/searchable/model/team/blueprint.py
 
 """
-Module: domain.metadata.blueprint.model.searchable.state.team.blueprint
+Module: domain.metadata.blueprint.model.searchable.model.team.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

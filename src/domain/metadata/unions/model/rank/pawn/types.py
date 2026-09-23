@@ -1,4 +1,4 @@
-# src/domain/metadata/unions/rank/pawn/types.py
+# src/domain/metadata/unions/model/rank/pawn/types.py
 
 """
 Module: domain.metadata.unions.rank.pawn.types

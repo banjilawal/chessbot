@@ -1,7 +1,7 @@
-# src/domain/metadata/blueprint/model/searchable/state/token/combatant/blueprint.py
+# src/domain/metadata/blueprint/model/searchable/model/token/combatant/blueprint.py
 
 """
-Module: domain.metadata.blueprint.model.searchable.state.token.combatant.blueprint
+Module: domain.metadata.blueprint.model.searchable.model.token.combatant.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

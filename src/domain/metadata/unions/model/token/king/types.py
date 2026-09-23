@@ -1,4 +1,4 @@
-# src/domain/metadata/unions/token/king/types.py
+# src/domain/metadata/unions/model/token/king/types.py
 
 """
 Module: domain.metadata.unions.token.king.types

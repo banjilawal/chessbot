@@ -1,19 +1,16 @@
-# src/domain/model/searchable/locus/__init__.py
+# src/domain/model/searchable/__init__.py
 
 """
-Module: domain.model.searchable.locus.__init__
+Module: domain.model.searchable.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== DOMAIN.MODEL.SEARCHABLE.LOCUS PACKAGE ===========#
+# =========== DOMAIN.MODEL.SEARCHABLE PACKAGE ===========#
 
 
 # Packages
-from .cartesian import *
-from .coord import *
-from .vector import *
 
 # Modules
 from .model import Locus

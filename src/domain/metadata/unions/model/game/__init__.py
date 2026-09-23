@@ -1,4 +1,4 @@
-# src/domain/metadata/unions/game/__init__.py
+# src/domain/metadata/unions/model/game/__init__.py
 
 """
 Module: domain.metadata.unions.game.__init__

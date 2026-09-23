@@ -1,7 +1,7 @@
-# src/domain/metadata/unions/cartesian/coord/types.py
+# src/domain/metadata/unions/model/coord/types.py
 
 """
-Module: domain.metadata.unions.cartesian.coord.types
+Module: domain.metadata.unions.coord.types
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -12,12 +12,12 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import CartesianTypeUnion, Coord, CoordBlueprint
+from domain import Coord, CoordBlueprint, ModelTypeUnion
 from transit import CoordCarrier
 
 
 
-class CoordTypeUnion(CartesianTypeUnion[Coord]):
+class CoordTypeUnion(ModelTypeUnion[Coord]):
     """
     Role:
         - Metadata
@@ -33,7 +33,7 @@ class CoordTypeUnion(CartesianTypeUnion[Coord]):
     Provides:
 
     Super Class:
-        CartesianTypeUnion
+        ModelTypeUnion
     """
     
     def __init__(

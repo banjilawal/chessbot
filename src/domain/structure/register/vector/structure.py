@@ -32,10 +32,15 @@ class VectorRegister(Register[Vector]):
     Provides:
 
     Super Class:
-        ModekRegister
+        Register
     """
     
-    def __init__(self, u: Vector, v: Vector, id: Optional[int] | None = None,):
+    def __init__(
+            self,
+            u: Vector,
+            v: Vector,
+            id: Optional[int] | None = None,
+    ):
         """
         Args:
             u: Vector
@@ -83,7 +88,8 @@ class VectorRegister(Register[Vector]):
         if other is None: return False
         if isinstance(other, VectorRegister):
             return (
-                    self._u == other.u and
-                    self._v == other.v
+                    self.u == other.u and
+                    self.v == other.v
             )
+        return False
     

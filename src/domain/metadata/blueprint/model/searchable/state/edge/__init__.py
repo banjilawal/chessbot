@@ -1,13 +1,13 @@
-# src/domain/metadata/blueprint/model/searchable/state/edge/__init__.py
+# src/domain/metadata/blueprint/model/searchable/model/edge/__init__.py
 
 """
-Module: domain.metadata.blueprint.model.searchable.state.edge.__init__
+Module: domain.metadata.blueprint.model.searchable.model.edge.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== DOMAIN.METADATA.BLUEPRINT.MODEL.SEARCHABLE.STATE.EDGE PACKAGE ===========#
+# =========== DOMAIN.METADATA.BLUEPRINT.MODEL.SEARCHABLE.MODEL.EDGE PACKAGE ===========#
 
 # Packages
 

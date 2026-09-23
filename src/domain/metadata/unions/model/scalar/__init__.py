@@ -1,4 +1,4 @@
-# src/domain/metadata/unions/scalar/__init__.py
+# src/domain/metadata/unions/model/scalar/__init__.py
 
 """
 Module: domain.metadata.unions.scalar.__init__

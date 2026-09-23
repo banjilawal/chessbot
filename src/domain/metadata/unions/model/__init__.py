@@ -1,4 +1,4 @@
-# src/domain/metadata/unions/model/__init__.py
+# src/domain/metadata/unions/model/model/__init__.py
 
 """
 Module: domain.metadata.unions.model.__init__
@@ -12,6 +12,7 @@ version: 0.0.2
 # Packages
 from .arena import *
 from .board import *
+from .coord import *
 from .cartesian import *
 from .game import *
 from .player import *
@@ -20,6 +21,7 @@ from .scalar import *
 from .square import *
 from .team import *
 from .token import *
+from .vector import *
 from .walk import *
 
 # Modules

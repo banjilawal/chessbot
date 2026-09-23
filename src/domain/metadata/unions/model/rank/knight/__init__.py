@@ -1,4 +1,4 @@
-# src/domain/metadata/unions/rank/knight/__init__.py
+# src/domain/metadata/unions/model/rank/knight/__init__.py
 
 """
 Module: domain.metadata.unions.rank.knight.__init__

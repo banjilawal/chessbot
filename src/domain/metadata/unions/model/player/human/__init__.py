@@ -1,4 +1,4 @@
-# src/domain/metadata/unions/player/human/__init__.py
+# src/domain/metadata/unions/model/player/human/__init__.py
 
 """
 Module: domain.metadata.unions.player.human__init__

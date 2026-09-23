@@ -1,4 +1,4 @@
-# src/domain/metadata/unions/token/king/__init__.py
+# src/domain/metadata/unions/model/token/king/__init__.py
 
 """
 Module: domain.metadata.unions.token.king.__init__

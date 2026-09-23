@@ -1,4 +1,4 @@
-# src/domain/metadata/unions/rank/rook/types.py
+# src/domain/metadata/unions/model/rank/rook/types.py
 
 """
 Module: domain.metadata.unions.rank.rook.types

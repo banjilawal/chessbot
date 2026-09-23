@@ -11,16 +11,16 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import CartesianManifest, Vector, VectorNullGroup, VectorTypeUnion
+from domain import ModelManifest, Vector, VectorNullGroup, VectorTypeUnion
 
 
-class VectorManifest(CartesianManifest[Vector]):
+class VectorManifest(ModelManifest[Vector]):
     """
      Role:
         1.  Metadata
 
      Responsibilities:
-         1.  Aggregates NullExceptions and TypeUnions for an Vector's security lifecycle.
+         1.  Aggregates NullExceptions and TypeUnions for a Vector's security lifecycle.
 
      Attributes:
         types: VectorTypeUnion

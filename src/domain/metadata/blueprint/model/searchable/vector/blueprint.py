@@ -1,7 +1,7 @@
-# src/domain/metadata/blueprint/model/searchable/cartesian/vector/blueprint.py
+# src/domain/metadata/blueprint/model/searchable/vector/blueprint.py
 
 """
-Module: domain.metadata.blueprint.model.searchable.cartesian.vector.blueprint
+Module: domain.metadata.blueprint.model.searchable.vector.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -17,7 +17,7 @@ from err import VectorNullException
 
 
 
-class VectorBlueprint(CartesianBlueprint[Vector]):
+class VectorBlueprint(SearchableModelBlueprint[Vector]):
     """
      Role:
         1.  Metadata

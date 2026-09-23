@@ -12,9 +12,6 @@ version: 0.0.2
 # Packages
 from .context import *
 from .model import *
-from .registry import *
-from .context import *
-from .space import *
 from .structure import *
 
 # Modules

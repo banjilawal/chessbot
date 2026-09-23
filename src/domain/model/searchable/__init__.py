@@ -10,9 +10,12 @@ version: 0.0.2
 # =========== DOMAIN.MODEL.SEARCHABLE PACKAGE ===========#
 
 # Packages
+from .cartesian import *
+from .coord import *
 from .locus import *
 from .identity import *
 from .state import *
+from .vector import *
 from .walk import *
 
 # Modules

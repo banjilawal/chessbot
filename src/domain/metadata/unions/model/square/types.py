@@ -1,4 +1,4 @@
-# src/domain/metadata/unions/square/types.py
+# src/domain/metadata/unions/model/square/types.py
 
 """
 Module: domain.metadata.unions.square.types

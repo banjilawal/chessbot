@@ -1,7 +1,7 @@
-# src/domain/model/searchable/locus/coord/model.py
+# src/domain/model/searchable/coord/model.py
 
 """
-Module: domain.model.searchable.locus.coord.model
+Module: domain.model.searchable.coord.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,10 +9,10 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from domain import Board, Locus, Vector
+from domain import Board, SearchableModel, Vector
 
 
-class Coord(Locus):
+class Coord(SearchableModel):
     """
     Role:
         - Address Model
@@ -28,7 +28,7 @@ class Coord(Locus):
     Provides:
     
     Super Class:
-        CartesianPoint
+        SearchableModel
     """
     _row: int
     _column: int
@@ -58,7 +58,7 @@ class Coord(Locus):
         return self._board
     
     @property
-    def to_vector(self) -> Vector:
+    def extract_vector(self) -> Vector:
         return Vector(x=self._column, y=self._row)
     
     def __eq__(self, other):

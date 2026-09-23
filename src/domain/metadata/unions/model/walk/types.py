@@ -1,4 +1,4 @@
-# src/domain/metadata/unions/walk/types.py
+# src/domain/metadata/unions/model/walk/types.py
 
 """
 Module: domain.metadata.unions.walk.types

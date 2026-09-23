@@ -1,4 +1,4 @@
-# src/domain/metadata/unions/walk/__init__.py
+# src/domain/metadata/unions/model/walk/__init__.py
 
 """
 Module: domain.metadata.unions.walk.__init__

@@ -1,4 +1,4 @@
-# src/domain/metadata/unions/scalar/types.py
+# src/domain/metadata/unions/model/scalar/types.py
 
 """
 Module: domain.metadata.unions.scalar.types

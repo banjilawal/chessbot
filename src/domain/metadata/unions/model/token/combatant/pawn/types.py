@@ -1,4 +1,4 @@
-# src/domain/metadata/unions/token/combatant/pawn/types.py
+# src/domain/metadata/unions/model/token/combatant/pawn/types.py
 
 """
 Module: domain.metadata.unions.token.combatant.pawn.types

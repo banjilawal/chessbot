@@ -1,4 +1,4 @@
-# src/domain/metadata/unions/player/types.py
+# src/domain/metadata/unions/model/player/types.py
 
 """
 Module: domain.metadata.unions.player.types

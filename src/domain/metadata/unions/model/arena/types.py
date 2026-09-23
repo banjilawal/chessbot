@@ -1,7 +1,7 @@
-# src/domain/metadata/unions/arena/types.py
+# src/domain/metadata/unions/model/arena/types.py
 
 """
-Module: domain.metadata.unions.arena.types
+Module: domain.metadata.unions.model.arena.types
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

@@ -1,7 +1,7 @@
-# src/domain/metadata/blueprint/model/searchable/cartesian/coord/blueprint.py
+# src/domain/metadata/blueprint/model/searchable/coord/blueprint.py
 
 """
-Module: domain.metadata.blueprint.model.searchable.cartesian.coord.blueprint
+Module: domain.metadata.blueprint.model.searchable.coord.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import Board, CartesianBlueprint, Coord, CoordContext
+from domain import Board, Coord
 from err import CoordNullException
 
 
-class CoordBlueprint(CartesianBlueprint[Coord]):
+class CoordBlueprint(SearchableModelBlueprint[Coord]):
     """
      Role:
         1.  Metadata

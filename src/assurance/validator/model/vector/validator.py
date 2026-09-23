@@ -81,7 +81,7 @@ class VectorValidator(ModelValidator[Vector]):
         
         # Handle the case that the request is null or the wrong type.
         priming_validation = self.toolkit.helper.priming_validator.execute(
-            candidate=request,
+            candidate=candidate,
             target_model=VectorValidationRequest,
             null_exception=VectorValidationRequestNullException(),
         )
@@ -97,11 +97,11 @@ class VectorValidator(ModelValidator[Vector]):
                 )
             )
         # --- Cast the priming_validator payload for additional tests. ---#
-        safe_request = cast(VectorValidationRequest, priming_validation.payload)
+        request = cast(VectorValidationRequest, priming_validation.payload)
         
         # Handle the case that the request payload is null or the wrong type.
         carrier_validation = self.toolkit.helper.priming_validator.execute(
-            candidate=safe_request.item,
+            candidate=request.item,
             target_model=self.toolkit.metadata.types.carrier,
             null_exception=self.toolkit.metadata.nulls.carrier,
         )

@@ -1,4 +1,4 @@
-# src/domain/metadata/unions/cartesian/__init__.py
+# src/domain/metadata/unions/model/cartesian/__init__.py
 
 """
 Module: domain.metadata.unions.cartesian.__init__
@@ -7,11 +7,9 @@ Created: 2026-03-30
 version: 0.0.2
 """
 
-# =========== DOMAIN.METADATA.UNIONS.CARTESIAN PACKAGE ===========#
+# =========== DOMAIN.METADATA.UNIONS PACKAGE ===========#
 
 # Packages
-from .coord import *
-from .vector import *
 
 # Modules
 from .types import CartesianTypeUnion

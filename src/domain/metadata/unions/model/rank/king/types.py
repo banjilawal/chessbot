@@ -1,4 +1,4 @@
-# src/domain/metadata/unions/rank/king/types.py
+# src/domain/metadata/unions/model/rank/king/types.py
 
 """
 Module: domain.metadata.unions.rank.king.types

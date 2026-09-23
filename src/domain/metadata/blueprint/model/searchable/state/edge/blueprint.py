@@ -1,7 +1,7 @@
-# src/domain/metadata/blueprint/model/searchable/state/edge/blueprint.py
+# src/domain/metadata/blueprint/model/searchable/model/edge/blueprint.py
 
 """
-Module: domain.metadata.blueprint.model.searchable.state.edge.blueprint
+Module: domain.metadata.blueprint.model.searchable.model.edge.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

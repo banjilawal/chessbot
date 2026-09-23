@@ -1,4 +1,4 @@
-# src/domain/metadata/unions/team/__init__.py
+# src/domain/metadata/unions/model/team/__init__.py
 
 """
 Module: domain.metadata.unions.team.__init__

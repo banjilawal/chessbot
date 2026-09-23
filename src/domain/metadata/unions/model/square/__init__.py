@@ -1,4 +1,4 @@
-# src/domain/metadata/unions/square/__init__.py
+# src/domain/metadata/unions/model/square/__init__.py
 
 """
 Module: domain.metadata.unions.square.__init__

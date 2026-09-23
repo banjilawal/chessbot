@@ -1,4 +1,4 @@
-# src/domain/metadata/unions/cartesian/types.py
+# src/domain/metadata/unions/model/cartesian/types.py
 
 """
 Module: domain.metadata.unions.cartesian.types

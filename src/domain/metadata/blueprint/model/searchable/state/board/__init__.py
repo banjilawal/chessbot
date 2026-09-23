@@ -1,13 +1,13 @@
-# src/domain/metadata/blueprint/model/searchable/state/board/__init__.py
+# src/domain/metadata/blueprint/model/searchable/model/board/__init__.py
 
 """
-Module: domain.metadata.blueprint.model.searchable.state.board.__init__
+Module: domain.metadata.blueprint.model.searchable.model.board.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== DOMAIN.METADATA.BLUEPRINT.MODEL.SEARCHABLE.STATE.BOARD PACKAGE ===========#
+# =========== DOMAIN.METADATA.BLUEPRINT.MODEL.SEARCHABLE.MODEL.BOARD PACKAGE ===========#
 
 # Packages
 

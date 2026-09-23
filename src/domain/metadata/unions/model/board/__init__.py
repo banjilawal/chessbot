@@ -1,4 +1,4 @@
-# src/domain/metadata/unions/board/__init__.py
+# src/domain/metadata/unions/model/board/__init__.py
 
 """
 Module: domain.metadata.unions.board.__init__

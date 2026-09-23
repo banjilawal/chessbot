@@ -1,7 +1,7 @@
-# src/domain/metadata/blueprint/model/searchable/state/token/king/blueprint.py
+# src/domain/metadata/blueprint/model/searchable/model/token/king/blueprint.py
 
 """
-Module: domain.metadata.blueprint.model.searchable.state.token.king.blueprint
+Module: domain.metadata.blueprint.model.searchable.model.token.king.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

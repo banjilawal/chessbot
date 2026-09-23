@@ -9,7 +9,7 @@ version: 1.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
@@ -58,7 +58,7 @@ class TokenValidator(ModelValidator[Token]):
         )
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: TokenValidationRequest) -> ValidationResult[TokenCarrier]:
+    def execute(self, candidate: Any) -> ValidationResult[TokenCarrier]:
         """
         Certify a candidate is a TokenCarrier whose payload is either a Token
         or a Blueprint that is safe to use.
@@ -82,7 +82,7 @@ class TokenValidator(ModelValidator[Token]):
         
         # Handle the case that the request is null or the wrong type.
         priming_validation = self.toolkit.helper.priming_validator.execute(
-            candidate=request,
+            candidate=candidate,
             target_model=TokenValidationRequest,
             null_exception=TokenValidationRequestNullException(),
         )
@@ -98,11 +98,11 @@ class TokenValidator(ModelValidator[Token]):
                 )
             )
         # --- Cast the priming_validator payload for additional tests. ---#
-        safe_request = cast(TokenValidationRequest, priming_validation.payload)
+        request = cast(TokenValidationRequest, priming_validation.payload)
         
         # Handle the case that the request payload is null or the wrong type.
         carrier_validation = self.toolkit.helper.priming_validator.execute(
-            candidate=safe_request.item,
+            candidate=request.item,
             target_model=self.toolkit.metadata.types.carrier,
             null_exception=self.toolkit.metadata.nulls.carrier,
         )
