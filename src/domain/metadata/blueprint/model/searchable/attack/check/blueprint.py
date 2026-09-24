@@ -1,7 +1,7 @@
-# src/domain/metadata/blueprint/model/searchable/walk/attack/check/blueprint.py
+# src/domain/metadata/blueprint/model/searchable/attack/check/blueprint.py
 
 """
-Module: domain.metadata.blueprint.model.searchable.walk.attack.check.blueprint
+Module: domain.metadata.blueprint.model.searchable.attack.check.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

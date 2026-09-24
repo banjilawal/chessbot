@@ -1,7 +1,7 @@
-# src/domain/metadata/blueprint/model/searchable/walk/maneuver/blueprint.py
+# src/domain/metadata/blueprint/model/searchable/maneuver/blueprint.py
 
 """
-Module: domain.metadata.blueprint.model.searchable.walk.maneuver.blueprint
+Module: domain.metadata.blueprint.model.searchable.maneuver.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -48,31 +48,28 @@ class ManeuverBlueprint(SearchableModelBlueprint[Maneuver]):
             self,
             path: Path,
             traveller: Token,
-            domain_class: Optional[Type[Maneuver]] | None = None,
-            search_context_class: Optional[Type[ManeuverContext]] | None = None,
-            domain_null_exception: Optional[ManeuverNullException] | None = None,
-            benefit: Optional[int] | None = 0,
+            benefit: Optional[int] | None = None,
             attack: Optional[Attack] | None = None,
+            domain_class: Optional[Type[Maneuver]] | None = None,
+            domain_null_exception: Optional[ManeuverNullException] | None = None,
     ):
         """
         Args:
-            domain_class: Optional[Type[Maneuver]]
-            search_context_class: Optional[Type[ManeuverContext]]
-            domain_null_exception: Optional[ManeuverNullException]
             path: Path
-            benefit: int
             traveller: Token
+            benefit: Optional[int]
             attack: Optional[Attack]
+            domain_class: Optional[Type[Maneuver]]
+            domain_null_exception: Optional[ManeuverNullException]
         """
         super().__init__(
             domain_class=domain_class or Type[Maneuver],
-            search_context_class=search_context_class or Type[ManeuverContext],
             domain_null_exception=domain_null_exception or ManeuverNullException(),
         )
         self._path = path
-        self._benefit = benefit
-        self._traveller = traveller
         self._attack = attack
+        self._traveller = traveller
+        self._benefit = benefit or 0
     
     @property
     def domain_class(self) -> Type[Maneuver]:

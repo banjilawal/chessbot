@@ -1,7 +1,7 @@
-# src/domain/metadata/blueprint/model/searchable/walk/attack/kill/blueprint.py
+# src/domain/metadata/blueprint/model/searchable/attack/kill/blueprint.py
 
 """
-Module: domain.metadata.blueprint.model.searchable.walk.attack.kill.blueprint
+Module: domain.metadata.blueprint.model.searchable.attack.kill.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

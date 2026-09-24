@@ -44,7 +44,7 @@ class Maneuver(SearchableModel):
             self,
             path: Path,
             traveller: Token,
-            benefit: Optional[int] | None = 0,
+            benefit: Optional[int] | None = None,
             attack: Optional[Attack] | None = None,
     ):
         """
@@ -53,7 +53,7 @@ class Maneuver(SearchableModel):
             traveller: Token
         """
         self._path = path
-        self._benefit = benefit
+        self._benefit = benefit or 0
         self._traveller = traveller
         self._attack = attack
 

@@ -10,9 +10,11 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.BLUEPRINT.MODEL.SEARCHABLE PACKAGE ===========#
 
 # Packages
+from .attack import *
 from .coord import *
+from .maneuver import *
+from .path import *
 from .state import *
-from .walk import *
 from .vector import *
 
 # Modules

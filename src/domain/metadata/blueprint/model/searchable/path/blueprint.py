@@ -1,7 +1,7 @@
-# src/domain/metadata/blueprint/model/searchable/walk/path/blueprint.py
+# src/domain/metadata/blueprint/model/searchable/path/blueprint.py
 
 """
-Module: domain.metadata.blueprint.model.searchable.walk.path.blueprint
+Module: domain.metadata.blueprint.model.searchable.path.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -25,9 +25,9 @@ class PathBlueprint(SearchableModelBlueprint[Path]):
 
      Attributes:
         endpoints: SquareRegister
+        label: Optional[int]
         domain_class: Optional[Type[Path]]
         domain_null_exception: Optional[PathNullException]
-        label: Optional[int]
         
      Provides:
 
@@ -40,16 +40,16 @@ class PathBlueprint(SearchableModelBlueprint[Path]):
     def __init__(
             self,
             endpoints: SquareRegister,
+            label: Optional[int] | None = None,
             domain_class: Optional[Type[Path]] | None = None,
             domain_null_exception: Optional[PathNullException] | None = None,
-            label: Optional[int] | None = None,
     ):
         """
         Args:
             endpoints: SquareRegister
+            label: Optional[int]
             domain_class: Optional[Type[Path]]
             domain_null_exception: Optional[PathNullException]
-            label: Optional[int]
         """
         super().__init__(
             domain_class=domain_class or Type[Path],
