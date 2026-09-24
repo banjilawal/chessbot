@@ -27,7 +27,7 @@ class Maneuver(SearchableModel):
     Attributes:
         path: Path
         benefit: int
-        traveller: Token
+        traveler: Token
 
     Provides:
 
@@ -36,27 +36,27 @@ class Maneuver(SearchableModel):
     """
     _path: Path
     _benefit: int
-    _traveller: Token
+    _traveler: Token
     
     def __init__(
             self,
             path: Path,
-            traveller: Token,
+            traveler: Token,
             benefit: Optional[int] | None = None,
     ):
         """
         Args:
             path: Path
-            traveller: Token
+            traveler: Token
             benefit: Optional[int]
         """
         self._path = path
-        self._traveller = traveller
+        self._traveler = traveler
         self._benefit = benefit or NumericSetting().negative_infinity
     
     @property
-    def traveller(self) -> Token:
-        return self._traveller
+    def traveler(self) -> Token:
+        return self._traveler
     
     @property
     def path(self) -> Path:
@@ -70,7 +70,7 @@ class Maneuver(SearchableModel):
         if other == self: return True
         if other is None: return False
         if isinstance(other, Maneuver):
-            return self._traveller == other.traveller and self._path == other.path
+            return self._traveler == other.traveler and self._path == other.path
         return False
         
     

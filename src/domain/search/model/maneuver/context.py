@@ -25,7 +25,7 @@ class ManeuverContext(ModelContext[Maneuver]):
     Attributes:
         path: Optional[Path]
         attack: Optional[Attack]
-        traveller: Optional[Token]
+        traveler: Optional[Token]
         benefit: Optional[PathBenefit]
 
     Provides:
@@ -38,27 +38,27 @@ class ManeuverContext(ModelContext[Maneuver]):
     _path: Optional[Path]
     _benefit: Optional[int]
     _attack: Optional[Attack]
-    _traveller: Optional[Token]
+    _traveler: Optional[Token]
     
     def __init__(
             self,
             path: Optional[Path] | None = None,
             benefit: Optional[int] | None = None,
             attack: Optional[Attack] | None = None,
-            traveller: Optional[Token] | None = None,
+            traveler: Optional[Token] | None = None,
     ):
         """
         Args:
             path: Optional[Path]
             attack: Optional[Attack]
-            traveller: Optional[Token]
+            traveler: Optional[Token]
             benefit: Optional[PathBenefit]
         """
         super().__init__()
         self._path = path
         self._attack = attack
         self._benefit = benefit
-        self._traveller = traveller
+        self._traveler = traveler
     
     @property
     def path(self) -> Optional[Path]:
@@ -73,8 +73,8 @@ class ManeuverContext(ModelContext[Maneuver]):
         return self._attack
     
     @property
-    def traveller(self) -> Optional[Token]:
-        return self._traveller
+    def traveler(self) -> Optional[Token]:
+        return self._traveler
     
     @property
     def to_dict(self) -> Dict[str, Any]:
@@ -82,5 +82,5 @@ class ManeuverContext(ModelContext[Maneuver]):
             "path": self._path,
             "attack": self._attack,
             "benefit": self._benefit,
-            "traveller": self._traveller,
+            "traveler": self._traveler,
         }

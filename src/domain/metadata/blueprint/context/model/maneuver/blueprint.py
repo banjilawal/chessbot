@@ -27,7 +27,7 @@ class ManeuverContextBlueprint(ModelContextBlueprint[ManeuverContext]):
         path: Optional[Path]
         benefit: Optional[int]
         attack: Optional[Attack]
-        traveller: Optional[Token]
+        traveler: Optional[Token]
                  
         domain_class: Type[ManeuverContext]
         domain_null_exception: ManeuverContextNullException
@@ -41,7 +41,7 @@ class ManeuverContextBlueprint(ModelContextBlueprint[ManeuverContext]):
     _path: Optional[Path]
     _benefit: Optional[int]
     _attack: Optional[Attack]
-    _traveller: Optional[Token]
+    _traveler: Optional[Token]
 
 
     def __init__(
@@ -49,7 +49,7 @@ class ManeuverContextBlueprint(ModelContextBlueprint[ManeuverContext]):
             path: Optional[Path] | None = None,
             benefit: Optional[int] | None = None,
             attack: Optional[Attack] | None = None,
-            traveller: Optional[Token] | None = None,
+            traveler: Optional[Token] | None = None,
             domain_class: Optional[Type[ManeuverContext]] | None = None,
             domain_null_exception: Optional[ManeuverContextNullException] | None = None,
     ):
@@ -57,7 +57,7 @@ class ManeuverContextBlueprint(ModelContextBlueprint[ManeuverContext]):
         Args:
             path: Optional[Path]
             attack: Optional[Attack]
-            traveller: Optional[Token]
+            traveler: Optional[Token]
             benefit: Optional[PathBenefit]
             domain_class: Type[ManeuverContext]
             domain_null_exception: ManeuverContextNullException
@@ -69,7 +69,7 @@ class ManeuverContextBlueprint(ModelContextBlueprint[ManeuverContext]):
         self._path = path
         self._attack = attack
         self._benefit = benefit
-        self._traveller = traveller
+        self._traveler = traveler
     
     
     @property
@@ -98,8 +98,8 @@ class ManeuverContextBlueprint(ModelContextBlueprint[ManeuverContext]):
     
     
     @property
-    def traveller(self) -> Optional[Token]:
-        return self._traveller
+    def traveler(self) -> Optional[Token]:
+        return self._traveler
  
     
     @property
@@ -108,7 +108,7 @@ class ManeuverContextBlueprint(ModelContextBlueprint[ManeuverContext]):
             "path": self._path,
             "attack": self._attack,
             "benefit": self._benefit,
-            "traveller": self._traveller,
+            "traveler": self._traveler,
         }
     
     

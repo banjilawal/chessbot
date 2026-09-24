@@ -12,13 +12,18 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from assurance import ManeuverValidatorToolkit, ModelValidator
-from domain import ManeuverValidationRequest
-from err import EmptyManeuverCarrierException, ManeuverValidationRequestNullException, ManeuverValidatorException
+from config import NumericSetting
+from domain import ManeuverValidationRequest, Path, PathValidationRequest, Token, TokenValidationRequest
+from err import (
+    EmptyManeuverCarrierException, EmptyPathCarrierException, EmptyTokenCarrierException,
+    ManeuverValidationRequestNullException,
+    ManeuverValidatorException
+)
 from domain.model import Maneuver
 from artifcat import ValidationResult
 from operation.toolkit import ManeuverToolkit
-from transit import ManeuverCarrier
-from util import LoggingLevelRouter
+from transit import ManeuverCarrier, PathCarrier, TokenCarrier
+from util import IdFactory, LoggingLevelRouter
 
 
 class ManeuverValidator(ModelValidator[Maneuver]):
@@ -67,7 +72,7 @@ class ManeuverValidator(ModelValidator[Maneuver]):
                             null
                             not a ManeuverCarrier
                             an empty ManeuverCarrier.
-                    *   Either the id, board, or owner attributes are flagged unsafe.
+                    *   Either the id, token, or owner attributes are flagged unsafe.
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
@@ -137,13 +142,12 @@ class ManeuverValidator(ModelValidator[Maneuver]):
                 )
             )
         # Handle the case that any id in the blueprint is flagged.
-        id_validation = self.toolkit.helper.blueprint_id_extractor.execute(
-            candidate=blueprint,
-            blueprint_owner_name=blueprint.domain_class_name,
-            blueprint_type=self.toolkit.metadata.types.blueprint,
-            blueprint_null_exception=self.toolkit.metadata.nulls.blueprint,
+        benefit_validation = self.toolkit.helper.number_validator.execute(
+            candidate=blueprint.benefit,
+            floor=NumericSetting().negative_infinity,
+            ceiling=NumericSetting().infinity,
         )
-        if id_validation.is_failure:
+        if benefit_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ManeuverValidatorException(
@@ -151,16 +155,17 @@ class ManeuverValidator(ModelValidator[Maneuver]):
                     cls_name=self.__class__.__name__,
                     msg=ManeuverValidatorException.MSG,
                     err_code=ManeuverValidatorException.ERR_CODE,
-                    ex=id_validation.exception,
+                    ex=benefit_validation.exception,
                 )
             )
-        # Handle the case that the archetype does not pass a validation check.
-        archetype_validation = self.toolkit.helper.priming_validator.execute(
-            candidate=blueprint.archetype,
-            target_model=Archetype,
-            null_exception=ArchetypeNullException(),
+        # Handle the case that the traveler does not pass a validation check.
+        traveler_validation = self.toolkit.helper.path_validator.execute(
+            candidate=TokenValidationRequest(
+                item=TokenCarrier(model=blueprint.traveler),
+                id=IdFactory.next_id(class_name="TokenValidationRequest"),
+            ),
         )
-        if archetype_validation.is_failure:
+        if traveler_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ManeuverValidatorException(
@@ -168,18 +173,14 @@ class ManeuverValidator(ModelValidator[Maneuver]):
                     cls_name=self.__class__.__name__,
                     msg=ManeuverValidatorException.MSG,
                     err_code=ManeuverValidatorException.ERR_CODE,
-                    ex=archetype_validation.exception,
+                    ex=traveler_validation.exception,
                 )
             )
-        # --- Run the board validation checks. ---#
-        board_validation = self.toolkit.helper.board_validator.execute(
-            candidate=BoardValidationRequest(
-                id=IdFactory.next_id(class_name="BoardValidationRequest"),
-                item=BoardCarrier(model=blueprint.board),
-            )
-        )
-        # Handle the case that the board is flagged.
-        if board_validation.is_failure:
+        # --- Extract the traveler validation payload. ---#
+        traveler_carrier = cast(TokenCarrier, traveler_validation.payload)
+        traveler_blueprint = traveler_carrier.extract_blueprint()
+        # Handle the case that the traveler_blueprint is null.
+        if traveler_blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ManeuverValidatorException(
@@ -187,40 +188,25 @@ class ManeuverValidator(ModelValidator[Maneuver]):
                     cls_name=self.__class__.__name__,
                     msg=ManeuverValidatorException.MSG,
                     err_code=ManeuverValidatorException.ERR_CODE,
-                    ex=board_validation.exception,
-                )
-            )
-        # --- Extract the board validation payload. ---#
-        board_carrier = cast(
-            BoardCarrier,
-            board_validation.payload
-        )
-        # Handle the case that the board_carrier does not contain a model.
-        if not board_carrier.is_carrying_model:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                ManeuverValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=ManeuverValidatorException.MSG,
-                    err_code=ManeuverValidatorException.ERR_CODE,
-                    ex=EmptyBoardCarrierException(
+                    ex=EmptyTokenCarrierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyBoardCarrierException.MSG,
-                        err_code=EmptyBoardCarrierException.ERR_CODE,
+                        msg=EmptyTokenCarrierException.MSG,
+                        err_code=EmptyTokenCarrierException.ERR_CODE,
                     ),
                 )
             )
-        # --- Run the owner validation checks. ---#
-        owner_validation = self.toolkit.helper.owner_validator.execute(
-            candidate=PlayerValidationRequest(
-                id=IdFactory.next_id(class_name="PlayerValidationRequest"),
-                item=PlayerCarrier(model=blueprint.owner)
+        # Handle the case that the traveler_blueprint does not contain a model.
+        # --- Run the path validation checks. ---#
+        path_validation = self.toolkit.helper.path_validator.execute(
+            candidate=PathValidationRequest(
+                item=PathCarrier(model=blueprint.path),
+                id=IdFactory.next_id(class_name="PathValidationRequest"),
+
             )
         )
-        # Handle the case that the owner is flagged.
-        if owner_validation.is_failure:
+        # Handle the case that the path is flagged.
+        if path_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ManeuverValidatorException(
@@ -228,16 +214,14 @@ class ManeuverValidator(ModelValidator[Maneuver]):
                     cls_name=self.__class__.__name__,
                     msg=ManeuverValidatorException.MSG,
                     err_code=ManeuverValidatorException.ERR_CODE,
-                    ex=owner_validation.exception,
+                    ex=path_validation.exception,
                 )
             )
-        # --- Extract the owner validation payload. ---#
-        owner_carrier = cast(
-            PlayerCarrier,
-            owner_validation.payload
-        )
-        # Handle the case that the owner_carrier does not contain a model.
-        if not owner_carrier.is_carrying_model:
+        # --- Extract the path validation payload. ---#
+        path_carrier = cast(PathCarrier, path_validation.payload)
+        path_blueprint = path_carrier.extract_blueprint()
+        # Handle the case that the traveler_blueprint is null.
+        if path_blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ManeuverValidatorException(
@@ -245,36 +229,25 @@ class ManeuverValidator(ModelValidator[Maneuver]):
                     cls_name=self.__class__.__name__,
                     msg=ManeuverValidatorException.MSG,
                     err_code=ManeuverValidatorException.ERR_CODE,
-                    ex=EmptyPlayerCarrierException(
+                    ex=EmptyPathCarrierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyPlayerCarrierException.MSG,
-                        err_code=EmptyPlayerCarrierException.ERR_CODE,
+                        msg=EmptyPathCarrierException.MSG,
+                        err_code=EmptyPathCarrierException.ERR_CODE,
                     ),
                 )
             )
         # --- Extract validation payloads. ---#
-        id = cast(int, id_validation.payload)
-        board = cast(Board, board_carrier.entity)
-        owner = cast(Player, owner_carrier.entity)
-        archetype = cast(Archetype, archetype_validation.payload)
+        benefit = cast(int, benefit_validation.payload)
+        traveler = cast(Token, traveler_carrier.entity)
+        path = cast(Path, path_carrier.entity)
         # --- Forward the appropriate work product to the caller. ---#
         # The model case
         if carrier.is_carrying_model:
-            payload = Maneuver(
-                id=id,
-                board=board,
-                owner=owner,
-                archetype=archetype,
-            )
+            payload = Maneuver(benefit=benefit, traveler=traveler, path=path)
             return ValidationResult.success(ManeuverCarrier(model=payload))
         # The blueprint case
-        payload = ManeuverBlueprint(
-            id=id,
-            board=board,
-            owner=owner,
-            archetype=archetype,
-        )
+        payload = ManeuverBlueprint(benefit=benefit, traveler=traveler, path=path)
         return ValidationResult.success(ManeuverCarrier(blueprint=payload))
         
         

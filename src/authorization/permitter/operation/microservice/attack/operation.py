@@ -156,7 +156,7 @@ class LaunchAttack:
                     - Each updates its state.
             3.  Send the success result.
         Args:
-            traveller: Token
+            traveler: Token
             destination: Square
         Returns:
             UpdateResult[Square]

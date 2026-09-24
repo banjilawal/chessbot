@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
+from abc import abstractmethod
 from typing import Generic, Optional, TypeVar
 
 from domain import Token, TokenBlueprint
@@ -17,7 +17,7 @@ from transit import ModelCarrier
 
 T = TypeVar("T", bound="Token")
 
-class TokenCarrier(ModelCarrier[T], ABC, Generic[T]):
+class TokenCarrier(ModelCarrier[T], Generic[T]):
     """
     Role:
         - Boundary Carrier Interface
@@ -91,7 +91,6 @@ class TokenCarrier(ModelCarrier[T], ABC, Generic[T]):
     def is_over_capacity(self) -> bool:
         return self.size > 1
 
-    @abstractmethod
     def extract_blueprint(self) -> Optional[TokenBlueprint]:
         pass
     

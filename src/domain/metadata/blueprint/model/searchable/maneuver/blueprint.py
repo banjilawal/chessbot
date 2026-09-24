@@ -28,7 +28,7 @@ class ManeuverBlueprint(SearchableModelBlueprint[Maneuver]):
      Attributes:
         path: Path
         benefit: int
-        traveller: Token
+        traveler: Token
 
         domain_class: Optional[Type[Maneuver]]
         search_context_class: Type[ManeuverContext]
@@ -42,12 +42,12 @@ class ManeuverBlueprint(SearchableModelBlueprint[Maneuver]):
     
     _path: Path
     _benefit: int
-    _traveller: Token
+    _traveler: Token
     
     def __init__(
             self,
             path: Path,
-            traveller: Token,
+            traveler: Token,
             benefit: Optional[int] | None = None,
             domain_class: Optional[Type[Maneuver]] | None = None,
             domain_null_exception: Optional[ManeuverNullException] | None = None,
@@ -55,7 +55,7 @@ class ManeuverBlueprint(SearchableModelBlueprint[Maneuver]):
         """
         Args:
             path: Path
-            traveller: Token
+            traveler: Token
             benefit: Optional[int]
             domain_class: Optional[Type[Maneuver]]
             domain_null_exception: Optional[ManeuverNullException]
@@ -65,7 +65,7 @@ class ManeuverBlueprint(SearchableModelBlueprint[Maneuver]):
             domain_null_exception=domain_null_exception or ManeuverNullException(),
         )
         self._path = path
-        self._traveller = traveller
+        self._traveler = traveler
         self._benefit = benefit or NumericSetting().negative_infinity
     
     @property
@@ -77,8 +77,8 @@ class ManeuverBlueprint(SearchableModelBlueprint[Maneuver]):
         return cast(ManeuverNullException, super().domain_null_exception)
     
     @property
-    def traveller(self) -> Token:
-        return self._traveller
+    def traveler(self) -> Token:
+        return self._traveler
     
     @property
     def path(self) -> Path:

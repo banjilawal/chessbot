@@ -96,7 +96,7 @@ class GameCarrier(ModelCarrier[Game]):
         
         model = cast(Game, self._model)
         return GameBlueprint(
-            traveller=model.traveller,
+            traveler=model.traveler,
             path=model.path,
             benefit=model.benefit,
             attack=model.attack,
