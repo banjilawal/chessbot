@@ -123,7 +123,7 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #
 #     destination_square_validation = SquareValidator.execute(travel.enemy_square)
 #     if not destination_square_validation.is_success():
-#       raise InvalidSqaureException(f"{method}: {InvalidSqaureException.MSG}")
+#       raise InvalidSquareException(f"{method}: {InvalidSquareException.MSG}")
 #
 #     if travel.enemy_square.point == travel.traveler.current_position:
 #       raise CircularOccupationException(f"{method}: {CircularOccupationException.MSG}")
@@ -134,7 +134,7 @@ class KingOccupationEventValidator(Validator[KingOccupationEvent]):
 #       TypeError,
 #       IdValidatorException,
 #       InvalidAttackException,
-#       InvalidSqaureException,
+#       InvalidSquareException,
 #       NullAttackEventException,
 #       CircularOccupationException
 #   ) as e:

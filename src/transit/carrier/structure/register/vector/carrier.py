@@ -1,7 +1,7 @@
-# src/transit/carrier/structure/register/square/carrier.py
+# src/transit/carrier/structure/register/vector/carrier.py
 
 """
-Module: transit.carrier.structure.register.square.carrier
+Module: transit.carrier.structure.register.vector.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import SquareRegister, SquareRegisterBlueprint
+from domain import VectorRegister, VectorRegisterBlueprint
 from transit import RegisterCarrier
 
 
-class SquareRegisterCarrier(RegisterCarrier[SquareRegister]):
+class VectorRegisterCarrier(RegisterCarrier[VectorRegister]):
     """
     Role:
         - Boundary Carrier Interface
 
     Responsibilities:
-        1.  Transport a hydrated SquareRegister its Blueprint across processing boundaries.
+        1.  Transport a hydrated VectorRegister its Blueprint across processing boundaries.
 
     Attributes:
         size: int
@@ -29,34 +29,34 @@ class SquareRegisterCarrier(RegisterCarrier[SquareRegister]):
         is_over_capacity: bool
         is_model_carrier: bool
         is_blueprint_carrier: bool
-        entity: [SquareRegister | SquareRegisterBlueprint]
+        entity: [VectorRegister | VectorRegisterBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[SquareRegisterBlueprint]
+        - def extract_blueprint() -> Optional[VectorRegisterBlueprint]
 
     Super Class:
         RegisterCarrier
     """
     
-    _model: Optional[SquareRegister]
-    _blueprint: Optional[SquareRegisterBlueprint]
+    _model: Optional[VectorRegister]
+    _blueprint: Optional[VectorRegisterBlueprint]
     
     def __init__(
             self,
-            model: Optional[SquareRegister] | None = None,
-            blueprint: Optional[SquareRegisterBlueprint] | None = None,
+            model: Optional[VectorRegister] | None = None,
+            blueprint: Optional[VectorRegisterBlueprint] | None = None,
     ):
         """
         Args:
-            model: Optional[SquareRegister]
-            blueprint: Optional[SquareRegisterBlueprint]
+            model: Optional[VectorRegister]
+            blueprint: Optional[VectorRegisterBlueprint]
         """
         super().__init__()
         self._model = model
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> Optional[SquareRegister | SquareRegisterBlueprint]:
+    def entity(self) -> Optional[VectorRegister | VectorRegisterBlueprint]:
         if self.is_empty:
             return None
         if self.is_carrying_model:
@@ -68,14 +68,14 @@ class SquareRegisterCarrier(RegisterCarrier[SquareRegister]):
         return (
                 self._model is not None and
                 self._blueprint is None and
-                isinstance(self._model, SquareRegister)
+                isinstance(self._model, VectorRegister)
         )
     
     @property
     def is_carrying_blueprint(self) -> bool:
         return (
                 not self.is_carrying_model and
-                isinstance(self._blueprint, SquareRegisterBlueprint)
+                isinstance(self._blueprint, VectorRegisterBlueprint)
         )
     
     @property
@@ -90,12 +90,12 @@ class SquareRegisterCarrier(RegisterCarrier[SquareRegister]):
     def is_over_capacity(self) -> bool:
         return self.size > 1
     
-    def extract_blueprint(self) -> Optional[SquareRegisterBlueprint]:
+    def extract_blueprint(self) -> Optional[VectorRegisterBlueprint]:
         if self.is_empty: return None
         if self.is_carrying_blueprint: return self._blueprint
         
-        structure = cast(SquareRegister, self._model)
-        return SquareRegisterBlueprint(
+        structure = cast(VectorRegister, self._model)
+        return VectorRegisterBlueprint(
             origin=structure.origin,
             destination=structure.destination,
         )
