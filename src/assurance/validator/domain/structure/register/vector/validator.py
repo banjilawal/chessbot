@@ -67,7 +67,7 @@ class VectorRegisterValidator(Validator[VectorRegister]):
             2.  For a model_carrier send a VectorRegister in the success result. Otherwise, send
                 the VectorRegisterBlueprint.
         Args:
-            candidate, Any
+            candidate: Any
         Returns:
             ValidationResult
         Raises:

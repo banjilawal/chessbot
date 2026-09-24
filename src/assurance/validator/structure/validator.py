@@ -54,12 +54,12 @@ class StructureValidator(Validator[T], ABC, Generic[T]):
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            request: StructureValidationRequest
+            candidate: StructureValidationRequest
     ) -> ValidationResult[T]:
         """
         Verify the candidate is an EntityCarrier whose payload is safe.
         Args:
-            request: ValidationRequest[T]
+            candidate: ValidationRequest[T]
         Returns:
            ValidationResult[T]
         Raises:

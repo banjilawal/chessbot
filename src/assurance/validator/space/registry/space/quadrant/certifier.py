@@ -62,7 +62,7 @@ class QuadrantReservoirRootChecker(SpaceReservoirChecker[QuadrantReservoir]):
             2.  For a model_carrier send a QuadrantReservoir in the success result. Otherwise, send 
                 the QuadrantReservoirBlueprint.
         Args:
-            candidate, Any
+            candidate: Any
         Returns:
             ValidationResult
         Raises:

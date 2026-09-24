@@ -53,7 +53,7 @@ class ChainContextValidator(ContextValidator[T], ABC, Generic[T]):
         """
         Certify a candidate is a ChainContext that is safe to use.
         Args:
-            candidate, Any
+            candidate: Any
         Returns:
             ValidationResult[ChainContext]
         Raises:

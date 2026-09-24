@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, Type, cast
+from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
 from assurance import ModelValidator, ScalarValidatorToolkit
@@ -33,7 +33,7 @@ class ScalarValidator(ModelValidator[Scalar]):
         toolkit: ScalarValidationToolkit
 
     Provides:
-        -   def execute(request: ScalarValidationRequest) ->ValidationResult[ScalarCarrier]:
+        -   def execute(candidate: ScalarValidationRequest) ->ValidationResult[ScalarCarrier]:
 
     Super Class:
         ModelValidator
@@ -57,7 +57,7 @@ class ScalarValidator(ModelValidator[Scalar]):
         )
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: ScalarValidationRequest) -> ValidationResult[ScalarCarrier]:
+    def execute(self, candidate: Any) -> ValidationResult[ScalarCarrier]:
         """
         Certify a candidate is a ScalarCarrier whose payload is either a Scalar
         or a Blueprint that is safe to use.
@@ -71,7 +71,7 @@ class ScalarValidator(ModelValidator[Scalar]):
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            candidate, Any
+            candidate: Any
         Returns:
             ValidationResult[ScalarCarrier]
         Raises:

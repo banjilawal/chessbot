@@ -60,7 +60,7 @@ class CoordContextValidator(ContextValidator[CoordSearchContext]):
                     - An enabled search attribute fails a safety check.
             2.  Otherwise, send a TokeContext in the success result.
         Args:
-            candidate, Any
+            candidate: Any
         Returns:
             ValidationResult[CoordContext]
         Raises:

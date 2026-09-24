@@ -31,7 +31,7 @@ class HomeSquareValidator:
         toolkit: SquareValidationToolkit
 
     Provides:
-        *   def execute(request: SquareValidationRequest) -> ValidationResult[SquareCarrier]:
+        *   def execute(candidate: SquareValidationRequest) -> ValidationResult[SquareCarrier]:
 
     Super Class:
         ModelValidator

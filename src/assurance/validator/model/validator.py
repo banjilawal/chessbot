@@ -53,14 +53,11 @@ class ModelValidator(Validator[T], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(
-            self,
-            request: ValidationRequest[T]
-    ) -> ValidationResult[EntityCarrier[T]]:
+    def execute(self, candidate: Any) -> ValidationResult[EntityCarrier[T]]:
         """
         Verify the candidate is an EntityCarrier whose payload is safe.
         Args:
-            request: ValidationRequest[T]
+            candidate: Any
         Returns:
            ValidationResult[T]
         Raises:

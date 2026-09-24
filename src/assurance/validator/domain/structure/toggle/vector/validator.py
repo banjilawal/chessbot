@@ -70,7 +70,7 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
                     - Either the board, team, formation, rank or id get flagged unsafe.
             2.  For a model_carrier send a CartesianToggle in the success result. Otherwise, send a TokeBlueprint.
         Args:
-            candidate, Any
+            candidate: Any
         Returns:
             ValidationResult
         Raises:

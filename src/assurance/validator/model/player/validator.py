@@ -9,7 +9,7 @@ version: 1.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
@@ -33,7 +33,7 @@ class PlayerValidator(ModelValidator[Player]):
         toolkit: PlayerValidationToolkit
 
     Provides:
-        - def execute(request: PlayerValidationRequest) ->ValidationResult[PlayerCarrier]:
+        - def execute(candidate: PlayerValidationRequest) ->ValidationResult[PlayerCarrier]:
 
     Super Class:
         ModelValidator
@@ -57,7 +57,7 @@ class PlayerValidator(ModelValidator[Player]):
         )
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: PlayerValidationRequest) -> ValidationResult[PlayerCarrier]:
+    def execute(self, candidate: Any) -> ValidationResult[PlayerCarrier]:
         """
         Certify a candidate is a PlayerCarrier whose payload is either a Player
         or a Blueprint that is safe to use.
@@ -71,7 +71,7 @@ class PlayerValidator(ModelValidator[Player]):
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            candidate, Any
+            candidate: Any
         Returns:
             ValidationResult[PlayerCarrier]
         Raises:

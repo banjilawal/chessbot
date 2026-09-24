@@ -55,12 +55,12 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            request: StructureValidationRequest
+            candidate: StructureValidationRequest
     ) -> ValidationResult[SquareRegister]:
         """
         Verify the candidate is an EntityCarrier whose payload is safe.
         Args:
-            request: StructureValidationRequest
+            candidate: StructureValidationRequest
         Returns:
            ValidationResult[SquareRegister]
         Raises:

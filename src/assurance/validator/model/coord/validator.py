@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import List, Optional, cast
+from typing import Any, List, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import ModelValidator, CoordValidatorToolkit
@@ -35,7 +35,7 @@ class CoordValidator(ModelValidator[Coord]):
         toolkit: CoordValidationToolkit
 
     Provides:
-        *   def execute(request: CoordValidationRequest) -> ValidationResult[CoordCarrier]:
+        *   def execute(candidate: CoordValidationRequest) -> ValidationResult[CoordCarrier]:
 
     Super Class:
         ModelValidator
@@ -59,7 +59,7 @@ class CoordValidator(ModelValidator[Coord]):
         )
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: CoordValidationRequest) -> ValidationResult[CoordCarrier]:
+    def execute(self, candidate: Any) -> ValidationResult[CoordCarrier]:
         """
         Certify a CoordCarrier's payload is either a Coord or a Blueprint 
         that is safe to use.
@@ -76,7 +76,7 @@ class CoordValidator(ModelValidator[Coord]):
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            request: CoordValidationRequest
+            candidate: CoordValidationRequest
         Returns:
             ValidationResult[CoordCarrier]
         Raises:

@@ -33,7 +33,7 @@ class BoardValidator(ModelValidator[Board]):
         toolkit: BoardValidationToolkit
 
     Provides:
-        - def execute(request: BoardValidationRequest) ->ValidationResult[BoardCarrier]:
+        - def execute(candidate: BoardValidationRequest) ->ValidationResult[BoardCarrier]:
 
     Super Class:
         ModelValidator
@@ -57,7 +57,7 @@ class BoardValidator(ModelValidator[Board]):
         )
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: BoardValidationRequest) -> ValidationResult[BoardCarrier]:
+    def execute(self, candidate: BoardValidationRequest) -> ValidationResult[BoardCarrier]:
         """
         Certify a candidate is a BoardCarrier whose payload is either a Board
         or a Blueprint that is safe to use.
@@ -71,7 +71,7 @@ class BoardValidator(ModelValidator[Board]):
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            candidate, Any
+            candidate: Any
         Returns:
             ValidationResult[BoardCarrier]
         Raises:

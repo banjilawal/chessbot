@@ -53,7 +53,7 @@ class ContextValidator(ContextValidator[T], ABC, Generic[T]):
         """
         Certify a candidate is a StackContext that is safe to use.
         Args:
-            candidate, Any
+            candidate: Any
         Returns:
             ValidationResult[StackContext]
         Raises:

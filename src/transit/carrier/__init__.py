@@ -12,6 +12,7 @@ version: 0.0.2
 # Packages
 from .context import *
 from .model import *
+from .structure import *
 
 # Modules
 from .carrier import EntityCarrier

@@ -9,6 +9,8 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from assurance import ModelValidator
+
 
 class EdgeValidator(ModelValidator[Edge]):
     """

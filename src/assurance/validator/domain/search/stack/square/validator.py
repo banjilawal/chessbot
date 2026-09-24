@@ -62,7 +62,7 @@ class SquareContextValidator(ContextValidator[SquareSearchContext]):
                     - An enabled search attribute fails a safety check.
             2.  Otherwise, send a TokeContext in the success result.
         Args:
-            candidate, Any
+            candidate: Any
         Returns:
             ValidationResult[SquareContext]
         Raises:

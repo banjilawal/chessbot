@@ -49,7 +49,7 @@ class PathValidator(ModelValidator[Path]):
         return cast(PathToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any,) -> ValidationResult[Path]:
+    def execute(self, candidate: Any) -> ValidationResult[Path]:
         """
         Verify the object is a Path that is safe to use.
 

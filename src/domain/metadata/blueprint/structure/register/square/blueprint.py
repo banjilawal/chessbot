@@ -9,9 +9,9 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Type
+from typing import Optional, Type, cast
 
-from domain import RegisterBlueprint, SquareRegister
+from domain import RegisterBlueprint, Square, SquareRegister
 from err import SquareRegisterNullException
 
 
@@ -32,21 +32,35 @@ class SquareRegisterBlueprint(RegisterBlueprint[SquareRegister]):
      Super Class:
         Blueprint
      """
+    _origin: Square
+    _destination: Square
     
     def __init__(
             self,
-            domain_class: Type[SquareRegister],
-            domain_null_exception: SquareRegisterNullException,
+            origin: Square,
+            destination: Square,
+            domain_class: Optional[Type[SquareRegister]] | None = None,
+            domain_null_exception: Optional[SquareRegisterNullException] | None = None,
     ):
         """
         Args:
-            domain_class: Type[SquareRegister]
-            domain_null_exception: SquareRegisterNullException
+            Optional[Type[SquareRegister]]
+            domain_null_exception: Optional[SquareRegisterNullException]
         """
         super().__init__(
-            domain_class=domain_class,
-            domain_null_exception=domain_null_exception
+            domain_class=domain_class or SquareRegister,
+            domain_null_exception=domain_null_exception or SquareRegisterNullException(),
         )
+        self._origin = origin
+        self._destination = destination
+        
+    @property
+    def origin(self) -> Square:
+        return self._origin
+    
+    @property
+    def destination(self) -> Square:
+        return self._destination
     
     @property
     def domain_class(self) -> Type[SquareRegister]:

@@ -34,7 +34,7 @@ class TokenValidator(ModelValidator[Token]):
         toolkit: TokenValidationToolkit
 
     Provides:
-        - def execute(request: TokenValidationRequest) ->ValidationResult[TokenCarrier]:
+        - def execute(candidate: TokenValidationRequest) ->ValidationResult[TokenCarrier]:
 
     Super Class:
         ModelValidator
@@ -72,7 +72,7 @@ class TokenValidator(ModelValidator[Token]):
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            candidate, Any
+            candidate: Any
         Returns:
             ValidationResult[TokenCarrier]
         Raises:

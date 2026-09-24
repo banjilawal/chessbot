@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, Type, cast
+from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
 from assurance import ModelValidator, VectorValidatorToolkit
@@ -33,7 +33,7 @@ class VectorValidator(ModelValidator[Vector]):
         toolkit: VectorValidationToolkit
 
     Provides:
-        - def execute(request: VectorValidationRequest) ->ValidationResult[VectorCarrier]:
+        - def execute(candidate: VectorValidationRequest) ->ValidationResult[VectorCarrier]:
 
     Super Class:
         ModelValidator
@@ -57,7 +57,7 @@ class VectorValidator(ModelValidator[Vector]):
         )
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: VectorValidationRequest) -> ValidationResult[VectorCarrier]:
+    def execute(self, candidate: Any) -> ValidationResult[VectorCarrier]:
         """
         Certify a candidate is a VectorCarrier whose payload is either a Vector
         or a Blueprint that is safe to use.
@@ -71,7 +71,7 @@ class VectorValidator(ModelValidator[Vector]):
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            candidate, Any
+            candidate: Any
         Returns:
             ValidationResult[VectorCarrier]
         Raises:

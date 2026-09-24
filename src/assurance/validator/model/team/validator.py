@@ -37,7 +37,7 @@ class TeamValidator(ModelValidator[Team]):
         toolkit: TeamValidationToolkit
 
     Provides:
-        *   def execute(request: TeamValidationRequest) -> ValidationResult[TeamCarrier]:
+        *   def execute(candidate: TeamValidationRequest) -> ValidationResult[TeamCarrier]:
 
     Super Class:
         ModelValidator
@@ -61,7 +61,7 @@ class TeamValidator(ModelValidator[Team]):
         )
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: TeamValidationRequest) -> ValidationResult[TeamCarrier]:
+    def execute(self, candidate: Any) -> ValidationResult[TeamCarrier]:
         """
         Certify a TeamCarrier's payload is either a Team or a Blueprint 
         that is safe to use.
@@ -78,7 +78,7 @@ class TeamValidator(ModelValidator[Team]):
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            request: TeamValidationRequest
+            candidate: TeamValidationRequest
         Returns:
             ValidationResult[TeamCarrier]
         Raises:

@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, Type, cast
+from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
 from assurance import ModelValidator, GameValidatorToolkit
@@ -33,7 +33,7 @@ class GameValidator(ModelValidator[Game]):
         toolkit: GameValidationToolkit
 
     Provides:
-        - def execute(request: GameValidationRequest) ->ValidationResult[GameCarrier]:
+        - def execute(candidate: GameValidationRequest) ->ValidationResult[GameCarrier]:
 
     Super Class:
         ModelValidator
@@ -57,7 +57,7 @@ class GameValidator(ModelValidator[Game]):
         )
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: GameValidationRequest) -> ValidationResult[GameCarrier]:
+    def execute(self, candidate: Any) -> ValidationResult[GameCarrier]:
         """
         Certify a candidate is a GameCarrier whose payload is either a Game
         or a Blueprint that is safe to use.
@@ -71,7 +71,7 @@ class GameValidator(ModelValidator[Game]):
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            candidate, Any
+            candidate: Any
         Returns:
             ValidationResult[GameCarrier]
         Raises:

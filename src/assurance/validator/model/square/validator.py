@@ -38,7 +38,7 @@ class SquareValidator(ModelValidator[Square]):
         toolkit: SquareValidationToolkit
 
     Provides:
-        *   def execute(request: SquareValidationRequest) -> ValidationResult[SquareCarrier]:
+        *   def execute(candidate: SquareValidationRequest) -> ValidationResult[SquareCarrier]:
 
     Super Class:
         ModelValidator
@@ -62,7 +62,7 @@ class SquareValidator(ModelValidator[Square]):
         )
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: SquareValidationRequest) -> ValidationResult[SquareCarrier]:
+    def execute(self, candidate: Any) -> ValidationResult[SquareCarrier]:
         """
         Certify a SquareCarrier's payload is either a Square or a Blueprint 
         that is safe to use.
@@ -79,7 +79,7 @@ class SquareValidator(ModelValidator[Square]):
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            request: SquareValidationRequest
+            candidate: SquareValidationRequest
         Returns:
             ValidationResult[SquareCarrier]
         Raises:

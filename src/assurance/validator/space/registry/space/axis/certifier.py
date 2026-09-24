@@ -62,7 +62,7 @@ class AxisReservoirRootChecker(SpaceReservoirChecker[AxisReservoir]):
             2.  For a model_carrier send a AxisReservoir in the success result. Otherwise, send 
                 the AxisReservoirBlueprint.
         Args:
-            candidate, Any
+            candidate: Any
         Returns:
             ValidationResult
         Raises:

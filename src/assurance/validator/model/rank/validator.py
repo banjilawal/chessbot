@@ -9,7 +9,7 @@ version: 1.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
@@ -35,7 +35,7 @@ class RankValidator(ModelValidator[Rank]):
         toolkit: RankValidationToolkit
 
     Provides:
-        - def execute(request: RankValidationRequest) ->ValidationResult[RankCarrier]:
+        - def execute(candidate: RankValidationRequest) ->ValidationResult[RankCarrier]:
 
     Super Class:
         ModelValidator
@@ -59,7 +59,7 @@ class RankValidator(ModelValidator[Rank]):
         )
     
     @LoggingLevelRouter.monitor
-    def execute(self, request: RankValidationRequest) -> ValidationResult[RankCarrier]:
+    def execute(self, candidate: Any) -> ValidationResult[RankCarrier]:
         """
         Certify a candidate is a RankCarrier whose payload is either a Rank
         or a Blueprint that is safe to use.
@@ -73,7 +73,7 @@ class RankValidator(ModelValidator[Rank]):
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            candidate, Any
+            candidate: Any
         Returns:
             ValidationResult[RankCarrier]
         Raises:
