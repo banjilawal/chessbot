@@ -1,7 +1,7 @@
-# src/err/null/domain/request/validation/model/attack/exception.py
+# src/err/null/domain/request/validation/model/attack/check/exception.py
 
 """
-Module: err.null.domain.request.validation/model.attack.exception
+Module: err.null.domain.request.validation/model.attack.check.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidationRequestNullException
+from err import AttackValidationRequestNullException
 
 __all__ = [
-    # ======================# ATTACK_VALIDATION_REQUEST_NULL_ERROR #======================#
-    "AttackValidationRequestNullException",
+    # ======================# CHECK_ATTACK_VALIDATION_REQUEST_NULL_ERROR #======================#
+    "CheckAttackValidationRequestNullException",
 ]
 
-# ======================# ATTACK_VALIDATION_REQUEST_NULL_ERROR #======================#
-class AttackValidationRequestNullException(ModelValidationRequestNullException):
+# ======================# CHECK_ATTACK_VALIDATION_REQUEST_NULL_ERROR #======================#
+class CheckAttackValidationRequestNullException(AttackValidationRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an AttackValidationRequest is null.
+        1.  Indicating that a CheckAttackValidationRequest is null.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class AttackValidationRequestNullException(ModelValidationRequestNullException):
     Provides:
 
     Super Class:
-        ModelValidationRequestNullException
+        AttackValidationRequestNullException
     """
-    MSG = "AttackValidationRequest cannot be null."
-    ERR_CODE = "ATTACK_VALIDATION_REQUEST_NULL_ERROR"
+    MSG = "CheckAttackValidationRequest cannot be null."
+    ERR_CODE = "CHECK_ATTACK_VALIDATION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

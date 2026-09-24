@@ -1,7 +1,7 @@
-# src/err/null/domain/request/validation/model/attack/exception.py
+# src/err/null/domain/request/validation/model/attack/mate/exception.py
 
 """
-Module: err.null.domain.request.validation/model.attack.exception
+Module: err.null.domain.request.validation/model.attack.mate.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidationRequestNullException
+from err import AttackValidationRequestNullException
 
 __all__ = [
-    # ======================# ATTACK_VALIDATION_REQUEST_NULL_ERROR #======================#
-    "AttackValidationRequestNullException",
+    # ======================# CHECKMATE_ATTACK_VALIDATION_REQUEST_NULL_ERROR #======================#
+    "CheckCheckmateAttackValidationRequestNullException",
 ]
 
-# ======================# ATTACK_VALIDATION_REQUEST_NULL_ERROR #======================#
-class AttackValidationRequestNullException(ModelValidationRequestNullException):
+# ======================# CHECKMATE_ATTACK_VALIDATION_REQUEST_NULL_ERROR #======================#
+class CheckCheckmateAttackValidationRequestNullException(AttackValidationRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an AttackValidationRequest is null.
+        1.  Indicating that a CheckmateAttackValidationRequest is null.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class AttackValidationRequestNullException(ModelValidationRequestNullException):
     Provides:
 
     Super Class:
-        ModelValidationRequestNullException
+        AttackValidationRequestNullException
     """
-    MSG = "AttackValidationRequest cannot be null."
-    ERR_CODE = "ATTACK_VALIDATION_REQUEST_NULL_ERROR"
+    MSG = "CheckmateAttackValidationRequest cannot be null."
+    ERR_CODE = "CHECKMATE_ATTACK_VALIDATION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,
