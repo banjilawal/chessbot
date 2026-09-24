@@ -28,7 +28,7 @@ class HomeSquareValidator:
         1.  Ensure a SquareCarrier and its contents instance is safe before use.
 
     Attributes:
-        toolkit: SquareValidationToolkit
+        toolkit: SquareValidatorToolkit
 
     Provides:
         *   def execute(candidate: SquareValidationRequest) -> ValidationResult[SquareCarrier]:
@@ -43,7 +43,7 @@ class HomeSquareValidator:
     ):
         """
         Args:
-            toolkit: Optional[SquareValidationToolkit]
+            toolkit: Optional[SquareValidatorToolkit]
         """
         self._toolkit =toolkit or SquareValidatorToolkit()
 

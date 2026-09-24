@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import ModelValidator, TeamValidatorToolkit
@@ -34,7 +34,7 @@ class TeamValidator(ModelValidator[Team]):
         1.  Ensure a TeamCarrier and its contents instance is safe before use.
 
     Attributes:
-        toolkit: TeamValidationToolkit
+        toolkit: TeamValidatorToolkit
 
     Provides:
         *   def execute(candidate: TeamValidationRequest) -> ValidationResult[TeamCarrier]:
@@ -49,7 +49,7 @@ class TeamValidator(ModelValidator[Team]):
     ):
         """
         Args:
-            toolkit: Optional[TeamValidationToolkit]
+            toolkit: Optional[TeamValidatorToolkit]
         """
         super().__init__(toolkit=toolkit or TeamValidatorToolkit())
     
@@ -78,7 +78,7 @@ class TeamValidator(ModelValidator[Team]):
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            candidate: TeamValidationRequest
+            candidate: Any
         Returns:
             ValidationResult[TeamCarrier]
         Raises:
@@ -186,7 +186,7 @@ class TeamValidator(ModelValidator[Team]):
             )
         # --- Run the board validation checks. ---#
         board_validation = self.toolkit.helper.board_validator.execute(
-            request=BoardValidationRequest(
+            candidate=BoardValidationRequest(
                 id=IdFactory.next_id(class_name="BoardValidationRequest"),
                 item=BoardCarrier(model=blueprint.board),
             )
@@ -227,7 +227,7 @@ class TeamValidator(ModelValidator[Team]):
             )
         # --- Run the owner validation checks. ---#
         owner_validation = self.toolkit.helper.owner_validator.execute(
-            request=PlayerValidationRequest(
+            candidate=PlayerValidationRequest(
                 id=IdFactory.next_id(class_name="PlayerValidationRequest"),
                 item=PlayerCarrier(model=blueprint.owner)
             )

@@ -33,7 +33,7 @@ class Validator(ABC, Generic[T]):
         3.  Pluggable validation module.
 
     Attributes:
-        toolkit: ValidationToolkit[T]
+        toolkit: ValidatorToolkit[T]
 
     Provides:
         - def execute(candidate: Any) -> ValidationResult[Blueprint[T]|T]:
@@ -45,7 +45,7 @@ class Validator(ABC, Generic[T]):
     def __init__(self, toolkit: ValidatorToolkit[T]):
         """
         Args:
-            toolkit: ValidationToolkit[T]
+            toolkit: ValidatorToolkit[T]
         """
         self._toolkit = toolkit
      

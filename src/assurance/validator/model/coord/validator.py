@@ -32,7 +32,7 @@ class CoordValidator(ModelValidator[Coord]):
         1.  Ensure a CoordCarrier and its contents instance is safe before use.
 
     Attributes:
-        toolkit: CoordValidationToolkit
+        toolkit: CoordValidatorToolkit
 
     Provides:
         *   def execute(candidate: CoordValidationRequest) -> ValidationResult[CoordCarrier]:
@@ -47,7 +47,7 @@ class CoordValidator(ModelValidator[Coord]):
     ):
         """
         Args:
-            toolkit: Optional[CoordValidationToolkit]
+            toolkit: Optional[CoordValidatorToolkit]
         """
         super().__init__(toolkit=toolkit or CoordValidatorToolkit())
     
@@ -76,7 +76,7 @@ class CoordValidator(ModelValidator[Coord]):
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            candidate: CoordValidationRequest
+            candidate: Any
         Returns:
             ValidationResult[CoordCarrier]
         Raises:
@@ -148,7 +148,7 @@ class CoordValidator(ModelValidator[Coord]):
             )
         # --- Run the board validation checks. ---#
         board_validation = self.toolkit.helper.board_validator.execute(
-            request=BoardValidationRequest(
+            candidate=BoardValidationRequest(
                 id=IdFactory.next_id(class_name="BoardValidationRequest"),
                 item=BoardCarrier(model=blueprint.board),
             )

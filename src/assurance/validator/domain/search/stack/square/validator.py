@@ -31,7 +31,7 @@ class SquareContextValidator(ContextValidator[SquareSearchContext]):
         2.  Run safety checks on any SquareContext attributes that are enabled.
 
     Attributes:
-        toolkit: SquareValidationToolkit
+        toolkit: SquareValidatorToolkit
 
     Provides:
         - def execute(candidate: Any) -> ValidationResult[SquareContext]:

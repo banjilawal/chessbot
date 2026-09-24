@@ -34,7 +34,7 @@ class CombatantTokenValidator:
         1.  Ensure a TokenCarrier and its contents instance is safe before use.
 
     Attributes:
-        toolkit: TokenValidationToolkit
+        toolkit: TokenValidatorToolkit
 
     Provides:
         -   def execute(validated_carrier: CombatantCarrier) -> ValidationResult[CombatantCarrier]
@@ -49,7 +49,7 @@ class CombatantTokenValidator:
     ):
         """
         Args:
-            toolkit: Optional[TokenValidationToolkit]
+            toolkit: Optional[TokenValidatorToolkit]
         """
         self._toolkit=toolkit or TokenValidatorToolkit()
     
@@ -120,7 +120,7 @@ class CombatantTokenValidator:
             )
         # Handle the case that the team does not pass a validation check.
         team_validation = self._toolkit.helper.team_validator.execute(
-            request=TeamValidationRequest(
+            candidate=TeamValidationRequest(
                 id=IdFactory.next_id(class_name="TeamValidationRequest"),
                 item=TeamCarrier(model=blueprint.team),
             )

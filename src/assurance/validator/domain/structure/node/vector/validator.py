@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from assurance import NodeValidator, VectorNodeValidationToolkit
+from assurance import NodeValidator, VectorNodeValidatorToolkit
 from fabrication import VectorNodeBlueprint
 from domain.structure.node import VectorNode
 from artifcat import ValidationResult
@@ -31,7 +31,7 @@ class VectorNodeValidator(NodeValidator):
         1.  Ensure a Node instance is certified safe, reliable and consistent before use.
 
     Attributes:
-        toolkit: VectorNodeValidationToolkit
+        toolkit: VectorNodeValidatorToolkit
 
     Provides:
         - execute(self, candidate: Any) -> ValidationResult
@@ -40,7 +40,7 @@ class VectorNodeValidator(NodeValidator):
         Validator
     """
     
-    def __init__(self, toolkit: VectorNodeValidationToolkit):
+    def __init__(self, toolkit: VectorNodeValidatorToolkit):
         """
         Args:
             toolkit: VectorNodeValidator
@@ -48,8 +48,8 @@ class VectorNodeValidator(NodeValidator):
         super().__init__(toolkit=toolkit)
     
     @property
-    def toolkit(self) -> VectorNodeValidationToolkit:
-        return cast(VectorNodeValidationToolkit, super().toolkit)
+    def toolkit(self) -> VectorNodeValidatorToolkit:
+        return cast(VectorNodeValidatorToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate, Any) -> ValidationResult[VectorNode|VectorNodeBlueprint]:

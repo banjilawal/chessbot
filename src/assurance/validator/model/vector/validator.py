@@ -30,7 +30,7 @@ class VectorValidator(ModelValidator[Vector]):
         1.  Ensure a VectorCarrier and its contents instance is safe before use.
 
     Attributes:
-        toolkit: VectorValidationToolkit
+        toolkit: VectorValidatorToolkit
 
     Provides:
         - def execute(candidate: VectorValidationRequest) ->ValidationResult[VectorCarrier]:
@@ -45,7 +45,7 @@ class VectorValidator(ModelValidator[Vector]):
     ):
         """
         Args:
-            toolkit: Optional[VectorValidationToolkit]
+            toolkit: Optional[VectorValidatorToolkit]
         """
         super().__init__(toolkit=toolkit or VectorValidatorToolkit())
     

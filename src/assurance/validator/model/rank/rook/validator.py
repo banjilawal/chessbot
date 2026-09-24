@@ -28,7 +28,7 @@ class RookValidator:
         1.  Ensure a RankCarrier and its contents instance is safe before use.
 
     Attributes:
-        toolkit: RankValidationToolkit
+        toolkit: RankValidatorToolkit
 
     Provides:
         -   def execute(validated_carrier: RookCarrier) -> ValidationResult[RookCarrier]
@@ -43,7 +43,7 @@ class RookValidator:
     ):
         """
         Args:
-            toolkit: Optional[RankValidationToolkit]
+            toolkit: Optional[RankValidatorToolkit]
         """
         self._toolkit=toolkit or RankValidatorToolkit()
     

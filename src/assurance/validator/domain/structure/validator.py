@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
-from assurance import DomainObjectValidator, StructureValidationToolkit, ValidatorToolkit
+from assurance import DomainObjectValidator, StructureValidatorToolkit, ValidatorToolkit
 from artifcat import ValidationResult
 from domain import Blueprint, Structure
 from util import LoggingLevelRouter
@@ -35,7 +35,7 @@ class StructureValidator(DomainObjectValidator[T], ABC, Generic[T]):
         3.  Pluggable validation module.
 
     Attributes:
-        toolkit: StructureValidationToolkit[T]
+        toolkit: StructureValidatorToolkit[T]
 
     Provides:
         - def execute(candidate: Any) -> ValidationResult[Blueprint[T]|T]:
@@ -46,7 +46,7 @@ class StructureValidator(DomainObjectValidator[T], ABC, Generic[T]):
     def __init__(self, toolkit: ValidatorToolkit[T]):
         """
         Args:
-            toolkit: StructureValidationToolkit[T]
+            toolkit: StructureValidatorToolkit[T]
         """
         super().__init__(toolkit=toolkit)
     

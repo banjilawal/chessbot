@@ -24,7 +24,7 @@ class KnightOffsetBuilder(OffsetBuilder[KnightSignature]):
         Args:
             builder_toolkit: Optional[KnightSignatureBuilderToolkit]
         """
-        super().__init__(builder_tookit=builder_toolkit or KnightSignatureBuilderToolkit())
+        super().__init__(builder_toolkit=builder_toolkit or KnightSignatureBuilderToolkit())
         
         
     @property

@@ -30,7 +30,7 @@ class BoardValidator(ModelValidator[Board]):
         1.  Ensure a BoardCarrier and its contents instance is safe before use.
 
     Attributes:
-        toolkit: BoardValidationToolkit
+        toolkit: BoardValidatorToolkit
 
     Provides:
         - def execute(candidate: BoardValidationRequest) ->ValidationResult[BoardCarrier]:
@@ -45,7 +45,7 @@ class BoardValidator(ModelValidator[Board]):
     ):
         """
         Args:
-            toolkit: Optional[BoardValidationToolkit]
+            toolkit: Optional[BoardValidatorToolkit]
         """
         super().__init__(toolkit=toolkit or BoardValidatorToolkit())
     

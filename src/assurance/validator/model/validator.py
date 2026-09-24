@@ -14,8 +14,8 @@ from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
 from assurance import ModelValidatorToolkit, Validator
-from domain import Model, ValidationRequest
-from transit import EntityCarrier
+from domain import Model
+from transit import ModelCarrier
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Model")
@@ -31,10 +31,10 @@ class ModelValidator(Validator[T], ABC, Generic[T]):
         2.  Run safety checks on models and blueprints inside an EntityCarrier's payload.
 
     Attributes:
-        toolkit: ModelValidationToolkit[T]
+        toolkit: ModelValidatorToolkit[T]
 
     Provides:
-        - def execute(candidate: Any) -> ValidationResult[Blueprint[T]|T]:
+        - def execute(candidate: Any) -> ValidationResult[ModelCarrier[T]]:
 
     Super Class:
         Validator
@@ -43,7 +43,7 @@ class ModelValidator(Validator[T], ABC, Generic[T]):
     def __init__(self, toolkit: ModelValidatorToolkit[T]):
         """
         Args:
-            toolkit: ValidationToolkit[T]
+            toolkit: ValidatorToolkit[T]
         """
         super().__init__(toolkit=toolkit)
     
@@ -53,7 +53,7 @@ class ModelValidator(Validator[T], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[EntityCarrier[T]]:
+    def execute(self, candidate: Any) -> ValidationResult[ModelCarrier[T]]:
         """
         Verify the candidate is an EntityCarrier whose payload is safe.
         Args:
@@ -61,7 +61,7 @@ class ModelValidator(Validator[T], ABC, Generic[T]):
         Returns:
            ValidationResult[T]
         Raises:
-            ValidatorException
+            ModelValidatorException
         """
         pass
     

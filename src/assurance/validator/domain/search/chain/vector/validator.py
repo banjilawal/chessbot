@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ChainContextValidator, VectorNodeValidationToolkit
+from assurance import ChainContextValidator, VectorNodeValidatorToolkit
 from config import GameColor
 from domain import VectorNodeContext
 from err import ExcessVectorNodeContextFlagsException, ZeroVectorNodeContextFlagsException
@@ -32,7 +32,7 @@ class VectorNodeContextValidator(
         2.  Run safety checks on any VectorNodeContext attributes that are enabled.
 
     Attributes:
-        toolkit: VectorNodeValidationToolkit
+        toolkit: VectorNodeValidatorToolkit
 
     Provides:
         - def execute(candidate: Any) -> ValidationResult[VectorNodeContext]:
@@ -41,13 +41,13 @@ class VectorNodeContextValidator(
         ChainContextChecker
     """
     
-    def __init__(self, toolkit: Optional[VectorNodeValidationToolkit] | None = None, ):
-        super().__init__(toolkit=toolkit or VectorNodeValidationToolkit())
+    def __init__(self, toolkit: Optional[VectorNodeValidatorToolkit] | None = None, ):
+        super().__init__(toolkit=toolkit or VectorNodeValidatorToolkit())
     
     
     @property
-    def toolkit(self) -> VectorNodeValidationToolkit:
-        return cast(VectorNodeValidationToolkit, super().toolkit)
+    def toolkit(self) -> VectorNodeValidatorToolkit:
+        return cast(VectorNodeValidatorToolkit, super().toolkit)
     
     
     @LoggingLevelRouter.monitor

@@ -30,7 +30,7 @@ class ScalarValidator(ModelValidator[Scalar]):
         1.  Ensure a ScalarCarrier and its contents instance is safe before use.
 
     Attributes:
-        toolkit: ScalarValidationToolkit
+        toolkit: ScalarValidatorToolkit
 
     Provides:
         -   def execute(candidate: ScalarValidationRequest) ->ValidationResult[ScalarCarrier]:
@@ -45,7 +45,7 @@ class ScalarValidator(ModelValidator[Scalar]):
     ):
         """
         Args:
-            toolkit: Optional[ScalarValidationToolkit]
+            toolkit: Optional[ScalarValidatorToolkit]
         """
         super().__init__(toolkit=toolkit or ScalarValidatorToolkit())
     

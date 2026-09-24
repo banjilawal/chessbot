@@ -30,7 +30,7 @@ class ContextValidator(ContextValidator[T], ABC, Generic[T]):
         2.  Run safety checks on any StackSearchContex attributes that are enabled.
 
     Attributes:
-        toolkit: ValidationToolkit[T]
+        toolkit: ValidatorToolkit[T]
 
     Provides:
         - def execute(candidate: Any) -> ValidationResult[T]:
@@ -42,7 +42,7 @@ class ContextValidator(ContextValidator[T], ABC, Generic[T]):
     def __init__(self, toolkit: ValidatorToolkit[T]):
         """
         Args:
-            toolkit: ValidationToolkit[T]
+            toolkit: ValidatorToolkit[T]
         """
         super().__init__(toolkit=toolkit)
     

@@ -34,7 +34,7 @@ class MachinePlayerValidator:
         1.  Ensure a PlayerCarrier and its contents instance is safe before use.
 
     Attributes:
-        toolkit: PlayerValidationToolkit
+        toolkit: PlayerValidatorToolkit
 
     Provides:
         -   def execute(validated_carrier: MachineCarrier) -> ValidationResult[MachineCarrier]
@@ -49,7 +49,7 @@ class MachinePlayerValidator:
     ):
         """
         Args:
-            toolkit: Optional[PlayerValidationToolkit]
+            toolkit: Optional[PlayerValidatorToolkit]
         """
         self._toolkit=toolkit or PlayerValidatorToolkit()
     

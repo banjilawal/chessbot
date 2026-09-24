@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Any, cast
 
-from assurance import Validator, NodeValidationToolkit
+from assurance import Validator, NodeValidatorToolkit
 from domain.structure.node import Node
 from artifcat import ValidationResult
 from util import LoggingLevelRouter
@@ -39,7 +39,7 @@ class NodeValidator(Validator[Node]):
         Validator
     """
     
-    def __init__(self, toolkit: NodeValidationToolkit):
+    def __init__(self, toolkit: NodeValidatorToolkit):
         """
         Args:
             toolkit: NodeValidatorToolkit
@@ -47,8 +47,8 @@ class NodeValidator(Validator[Node]):
         super().__init__(toolkit=toolkit)
     
     @property
-    def toolkit(self) -> NodeValidationToolkit:
-        return cast(NodeValidationToolkit, super().toolkit)
+    def toolkit(self) -> NodeValidatorToolkit:
+        return cast(NodeValidatorToolkit, super().toolkit)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

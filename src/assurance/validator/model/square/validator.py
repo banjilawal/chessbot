@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import HomeSquareValidator, ModelValidator, SquareValidatorToolkit
@@ -35,7 +35,7 @@ class SquareValidator(ModelValidator[Square]):
         1.  Ensure a SquareCarrier and its contents instance is safe before use.
 
     Attributes:
-        toolkit: SquareValidationToolkit
+        toolkit: SquareValidatorToolkit
 
     Provides:
         *   def execute(candidate: SquareValidationRequest) -> ValidationResult[SquareCarrier]:
@@ -50,7 +50,7 @@ class SquareValidator(ModelValidator[Square]):
     ):
         """
         Args:
-            toolkit: Optional[SquareValidationToolkit]
+            toolkit: Optional[SquareValidatorToolkit]
         """
         super().__init__(toolkit=toolkit or SquareValidatorToolkit())
     
@@ -79,7 +79,7 @@ class SquareValidator(ModelValidator[Square]):
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            candidate: SquareValidationRequest
+            candidate: Any
         Returns:
             ValidationResult[SquareCarrier]
         Raises:
@@ -201,7 +201,7 @@ class SquareValidator(ModelValidator[Square]):
             )
         # Handle the case that the board does not pass a validation check.
         board_validation = self.toolkit.helper.board_validator.execute(
-            request=BoardValidationRequest(
+            candidate=BoardValidationRequest(
                 id=IdFactory.next_id(class_name="BoardValidationRequest"),
                 item=BoardCarrier(model=blueprint.board),
             )
@@ -236,7 +236,7 @@ class SquareValidator(ModelValidator[Square]):
             )
         # Handle the case that the coord does not pass a validation check.
         coord_validation = self.toolkit.helper.coord_validator.execute(
-            request=CoordValidationRequest(
+            candidate=CoordValidationRequest(
                 id=IdFactory.next_id(class_name="CoordValidationRequest"),
                 item=CoordCarrier(model=blueprint.coord),
             )

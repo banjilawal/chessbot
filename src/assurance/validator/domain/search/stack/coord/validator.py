@@ -29,7 +29,7 @@ class CoordContextValidator(ContextValidator[CoordSearchContext]):
         2.  Run safety checks on any CoordContext attributes that are enabled.
 
     Attributes:
-        toolkit: CoordValidationToolkit
+        toolkit: CoordValidatorToolkit
 
     Provides:
         - def execute(candidate: Any) -> ValidationResult[CoordContext]:

@@ -33,7 +33,7 @@ class TokenContextValidator(ContextValidator[TokenSearchContext]):
         2.  Run safety checks on any TokenContext attributes that are enabled.
 
     Attributes:
-        toolkit: TokenValidationToolkit
+        toolkit: TokenValidatorToolkit
 
     Provides:
         - def execute(candidate: Any) -> ValidationResult[TokenContext]:

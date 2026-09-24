@@ -31,7 +31,7 @@ class StructureValidator(Validator[T], ABC, Generic[T]):
         2.  Run safety checks on structures and blueprints inside an EntityCarrier's payload.
 
     Attributes:
-        toolkit: StructureValidationToolkit[T]
+        toolkit: StructureValidatorToolkit[T]
 
     Provides:
         - def execute(candidate: Any) -> ValidationResult[StructureCarrier[T]]:
@@ -43,7 +43,7 @@ class StructureValidator(Validator[T], ABC, Generic[T]):
     def __init__(self, toolkit: StructureValidatorToolkit[T]):
         """
         Args:
-            toolkit: ValidationToolkit[T]
+            toolkit: StructureValidatorToolkit[T]
         """
         super().__init__(toolkit=toolkit)
     

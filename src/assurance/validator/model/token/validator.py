@@ -31,7 +31,7 @@ class TokenValidator(ModelValidator[Token]):
         1.  Ensure a TokenCarrier and its contents instance is safe before use.
 
     Attributes:
-        toolkit: TokenValidationToolkit
+        toolkit: TokenValidatorToolkit
 
     Provides:
         - def execute(candidate: TokenValidationRequest) ->ValidationResult[TokenCarrier]:
@@ -46,7 +46,7 @@ class TokenValidator(ModelValidator[Token]):
     ):
         """
         Args:
-            toolkit: Optional[TokenValidationToolkit]
+            toolkit: Optional[TokenValidatorToolkit]
         """
         super().__init__(toolkit=toolkit or TokenValidatorToolkit())
     

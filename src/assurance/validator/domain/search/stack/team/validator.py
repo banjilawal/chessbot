@@ -31,7 +31,7 @@ class TeamContextValidator(ContextValidator[TeamSearchContext]):
         2.  Run safety checks on any TeamContext attributes that are enabled.
 
     Attributes:
-        toolkit: TeamValidationToolkit
+        toolkit: TeamValidatorToolkit
 
     Provides:
         - def execute(candidate: Any) -> ValidationResult[TeamContext]:
