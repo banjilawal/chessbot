@@ -11,6 +11,5 @@ version: 0.0.2
 
 # Packages
 
-
 # Modules
-from .exception import KnightCarrierEmptyException
+from .exception import EmptyKnightCarrierException

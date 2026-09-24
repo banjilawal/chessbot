@@ -17,7 +17,7 @@ from domain import (
     Board, BoardValidationRequest, Coord, CoordBlueprint, CoordValidationRequest
 )
 from err import (
-    BoardCarrierEmptyException, CoordValidationRequestNullException, CoordValidatorException
+    EmptyBoardCarrierException, CoordValidationRequestNullException, CoordValidatorException
 )
 from transit import BoardCarrier, CoordCarrier
 from util import IdFactory, LoggingLevelRouter
@@ -138,11 +138,11 @@ class CoordValidator(ModelValidator[Coord]):
                     cls_name=self.__class__.__name__,
                     msg=CoordValidatorException.MSG,
                     err_code=CoordValidatorException.ERR_CODE,
-                    ex=BoardCarrierEmptyException(
+                    ex=EmptyBoardCarrierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=BoardCarrierEmptyException.MSG,
-                        err_code=BoardCarrierEmptyException.ERR_CODE,
+                        msg=EmptyBoardCarrierException.MSG,
+                        err_code=EmptyBoardCarrierException.ERR_CODE,
                     ),
                 )
             )
@@ -179,11 +179,11 @@ class CoordValidator(ModelValidator[Coord]):
                     cls_name=self.__class__.__name__,
                     msg=CoordValidatorException.MSG,
                     err_code=CoordValidatorException.ERR_CODE,
-                    ex=BoardCarrierEmptyException(
+                    ex=EmptyBoardCarrierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=BoardCarrierEmptyException.MSG,
-                        err_code=BoardCarrierEmptyException.ERR_CODE,
+                        msg=EmptyBoardCarrierException.MSG,
+                        err_code=EmptyBoardCarrierException.ERR_CODE,
                     ),
                 )
             )

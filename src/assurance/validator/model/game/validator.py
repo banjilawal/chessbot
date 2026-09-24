@@ -15,7 +15,7 @@ from artifcat import ValidationResult
 from assurance import ModelValidator, GameValidatorToolkit
 from domain import Game, GameBlueprint, GameValidationRequest
 from err import (
-    GameCarrierEmptyException, GameValidationRequestNullException, GameValidatorException
+    EmptyGameCarrierException, GameValidationRequestNullException, GameValidatorException
 )
 from transit import GameCarrier
 from util import LoggingLevelRouter
@@ -132,11 +132,11 @@ class GameValidator(ModelValidator[Game]):
                     cls_name=self.__class__.__name__,
                     msg=GameValidatorException.MSG,
                     err_code=GameValidatorException.ERR_CODE,
-                    ex=GameCarrierEmptyException(
+                    ex=EmptyGameCarrierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=GameCarrierEmptyException.MSG,
-                        err_code=GameCarrierEmptyException.ERR_CODE,
+                        msg=EmptyGameCarrierException.MSG,
+                        err_code=EmptyGameCarrierException.ERR_CODE,
                     ),
                 )
             )

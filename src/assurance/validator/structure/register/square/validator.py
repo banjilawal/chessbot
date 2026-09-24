@@ -14,7 +14,7 @@ from typing import Any, Optional, cast
 from artifcat import ValidationResult
 from assurance import RegisterValidator, SquareRegisterValidatorToolkit
 from domain import SquareRegister, SquareRegisterValidationRequest
-from err import BoardCarrierEmptyException, SquareRegisterValidatorException
+from err import EmptyBoardCarrierException, SquareRegisterValidatorException
 from transit import SquareRegisterCarrier
 from util import LoggingLevelRouter
 
@@ -134,11 +134,11 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
                     cls_name=self.__class__.__name__,
                     msg=SquareRegisterValidatorException.MSG,
                     err_code=SquareRegisterValidatorException.ERR_CODE,
-                    ex=BoardCarrierEmptyException(
+                    ex=EmptyBoardCarrierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=BoardCarrierEmptyException.MSG,
-                        err_code=BoardCarrierEmptyException.ERR_CODE,
+                        msg=EmptyBoardCarrierException.MSG,
+                        err_code=EmptyBoardCarrierException.ERR_CODE,
                     ),
                 )
             )
@@ -175,11 +175,11 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
                     cls_name=self.__class__.__name__,
                     msg=SquareRegisterValidatorException.MSG,
                     err_code=SquareRegisterValidatorException.ERR_CODE,
-                    ex=BoardCarrierEmptyException(
+                    ex=EmptyBoardCarrierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=BoardCarrierEmptyException.MSG,
-                        err_code=BoardCarrierEmptyException.ERR_CODE,
+                        msg=EmptyBoardCarrierException.MSG,
+                        err_code=EmptyBoardCarrierException.ERR_CODE,
                     ),
                 )
             )

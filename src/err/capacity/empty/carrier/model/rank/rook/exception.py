@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import RankCarrierEmptyException
+from err import EmptyRankCarrierException
 
 __all__ = [
     # ======================# ROOK_CARRIER_EMPTY_ERROR #======================#
-    "RookCarrierEmptyException",
+    "EmptyRookCarrierException",
 ]
 
 # ======================# ROOK_CARRIER_EMPTY_ERROR #======================#
-class RookCarrierEmptyException(RankCarrierEmptyException):
+class EmptyRookCarrierException(EmptyRankCarrierException):
     """
     Role:
         - Error Tracing

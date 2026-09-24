@@ -15,7 +15,7 @@ from artifcat import ValidationResult
 from assurance import ModelValidator, ScalarValidatorToolkit
 from domain import Scalar, ScalarBlueprint, ScalarValidationRequest
 from err import (
-    ScalarCarrierEmptyException, ScalarValidationRequestNullException, ScalarValidatorException
+    EmptyScalarCarrierException, ScalarValidationRequestNullException, ScalarValidatorException
 )
 from transit import ScalarCarrier
 from util import LoggingLevelRouter
@@ -133,11 +133,11 @@ class ScalarValidator(ModelValidator[Scalar]):
                     cls_name=self.__class__.__name__,
                     msg=ScalarValidatorException.MSG,
                     err_code=ScalarValidatorException.ERR_CODE,
-                    ex=ScalarCarrierEmptyException(
+                    ex=EmptyScalarCarrierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=ScalarCarrierEmptyException.MSG,
-                        err_code=ScalarCarrierEmptyException.ERR_CODE,
+                        msg=EmptyScalarCarrierException.MSG,
+                        err_code=EmptyScalarCarrierException.ERR_CODE,
                     ),
                 )
             )

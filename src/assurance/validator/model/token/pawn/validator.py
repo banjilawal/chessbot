@@ -19,7 +19,7 @@ from domain import (
 )
 from err import (
     CombatantReadinessNullException, FormationNullException, PawnTokenValidatorException, PromotionStateNullException,
-    TeamCarrierEmptyException, EmptyPawnTokenCarrierException, TokenDeploymentNullException
+    EmptyTeamCarrierException, EmptyPawnTokenCarrierException, TokenDeploymentNullException
 )
 from transit import PawnTokenCarrier, TeamCarrier
 from util import IdFactory, LoggingLevelRouter
@@ -146,11 +146,11 @@ class PawnTokenValidator:
                     cls_name=self.__class__.__name__,
                     msg=PawnTokenValidatorException.MSG,
                     err_code=PawnTokenValidatorException.ERR_CODE,
-                    ex=TeamCarrierEmptyException(
+                    ex=EmptyTeamCarrierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TeamCarrierEmptyException.MSG,
-                        err_code=TeamCarrierEmptyException.ERR_CODE,
+                        msg=EmptyTeamCarrierException.MSG,
+                        err_code=EmptyTeamCarrierException.ERR_CODE,
                     ),
                 )
             )

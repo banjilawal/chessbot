@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import ValidationResult
 from assurance import SquareValidatorToolkit
 from domain import Formation, HomeSquare, HomeSquareBlueprint
-from err import FormationNullException, HomeSquareCarrierEmptyException, HomeSquareValidatorException
+from err import FormationNullException, EmptyHomeSquareCarrierException, HomeSquareValidatorException
 from transit import HomeSquareCarrier
 from util import LoggingLevelRouter
 
@@ -89,11 +89,11 @@ class HomeSquareValidator:
                     cls_name=self.__class__.__name__,
                     msg=HomeSquareValidatorException.MSG,
                     err_code=HomeSquareValidatorException.ERR_CODE,
-                    ex=HomeSquareCarrierEmptyException(
+                    ex=EmptyHomeSquareCarrierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=HomeSquareCarrierEmptyException.MSG,
-                        err_code=HomeSquareCarrierEmptyException.ERR_CODE,
+                        msg=EmptyHomeSquareCarrierException.MSG,
+                        err_code=EmptyHomeSquareCarrierException.ERR_CODE,
                     ),
                 )
             )

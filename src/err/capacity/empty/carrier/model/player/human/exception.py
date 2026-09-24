@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PlayerCarrierEmptyException
+from err import EmptyPlayerCarrierException
 
 __all__ = [
     # ======================# HUMAN_CARRIER_EMPTY_ERROR #======================#
-    "HumanCarrierEmptyException",
+    "EmptyHumanCarrierException",
 ]
 
 # ======================# HUMAN_CARRIER_EMPTY_ERROR #======================#
-class HumanCarrierEmptyException(PlayerCarrierEmptyException):
+class EmptyHumanCarrierException(EmptyPlayerCarrierException):
     """
     Role:
         - Error Tracing

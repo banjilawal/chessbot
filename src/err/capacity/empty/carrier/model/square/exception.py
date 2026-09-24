@@ -16,11 +16,11 @@ from err import EmptyModelCarrierException
 
 __all__ = [
     # ======================# SQUARE_CARRIER_EMPTY_ERROR #======================#
-    "SquareCarrierEmptyException",
+    "EmptySquareCarrierException",
 ]
 
 # ======================# SQUARE_CARRIER_EMPTY_ERROR #======================#
-class SquareCarrierEmptyException(EmptyModelCarrierException):
+class EmptySquareCarrierException(EmptyModelCarrierException):
     """
     Role:
         - Error Tracing

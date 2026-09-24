@@ -13,4 +13,4 @@ version: 0.0.2
 from .home import *
 
 # Modules
-from .exception import SquareCarrierEmptyException
+from .exception import EmptySquareCarrierException

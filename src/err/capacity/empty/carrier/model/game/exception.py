@@ -16,11 +16,11 @@ from err import EmptyModelCarrierException
 
 __all__ = [
     # ======================# GAME_CARRIER_EMPTY_ERROR #======================#
-    "GameCarrierEmptyException",
+    "EmptyGameCarrierException",
 ]
 
 # ======================# GAME_CARRIER_EMPTY_ERROR #======================#
-class GameCarrierEmptyException(EmptyModelCarrierException):
+class EmptyGameCarrierException(EmptyModelCarrierException):
     """
     Role:
         - Error Tracing

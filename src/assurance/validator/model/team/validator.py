@@ -18,7 +18,7 @@ from domain import (
     TeamValidationRequest
 )
 from err import (
-    ArchetypeNullException, BoardCarrierEmptyException, PlayerCarrierEmptyException, TeamValidationRequestNullException,
+    ArchetypeNullException, EmptyBoardCarrierException, EmptyPlayerCarrierException, TeamValidationRequestNullException,
     TeamValidatorException
 )
 from transit import BoardCarrier, PlayerCarrier, TeamCarrier
@@ -141,11 +141,11 @@ class TeamValidator(ModelValidator[Team]):
                     cls_name=self.__class__.__name__,
                     msg=TeamValidatorException.MSG,
                     err_code=TeamValidatorException.ERR_CODE,
-                    ex=BoardCarrierEmptyException(
+                    ex=EmptyBoardCarrierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=BoardCarrierEmptyException.MSG,
-                        err_code=BoardCarrierEmptyException.ERR_CODE,
+                        msg=EmptyBoardCarrierException.MSG,
+                        err_code=EmptyBoardCarrierException.ERR_CODE,
                     ),
                 )
             )
@@ -217,11 +217,11 @@ class TeamValidator(ModelValidator[Team]):
                     cls_name=self.__class__.__name__,
                     msg=TeamValidatorException.MSG,
                     err_code=TeamValidatorException.ERR_CODE,
-                    ex=BoardCarrierEmptyException(
+                    ex=EmptyBoardCarrierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=BoardCarrierEmptyException.MSG,
-                        err_code=BoardCarrierEmptyException.ERR_CODE,
+                        msg=EmptyBoardCarrierException.MSG,
+                        err_code=EmptyBoardCarrierException.ERR_CODE,
                     ),
                 )
             )
@@ -258,11 +258,11 @@ class TeamValidator(ModelValidator[Team]):
                     cls_name=self.__class__.__name__,
                     msg=TeamValidatorException.MSG,
                     err_code=TeamValidatorException.ERR_CODE,
-                    ex=PlayerCarrierEmptyException(
+                    ex=EmptyPlayerCarrierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=PlayerCarrierEmptyException.MSG,
-                        err_code=PlayerCarrierEmptyException.ERR_CODE,
+                        msg=EmptyPlayerCarrierException.MSG,
+                        err_code=EmptyPlayerCarrierException.ERR_CODE,
                     ),
                 )
             )

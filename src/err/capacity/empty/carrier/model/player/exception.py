@@ -16,11 +16,11 @@ from err import EmptyModelCarrierException
 
 __all__ = [
     # ======================# PLAYER_CARRIER_EMPTY_ERROR #======================#
-    "PlayerCarrierEmptyException",
+    "EmptyPlayerCarrierException",
 ]
 
 # ======================# PLAYER_CARRIER_EMPTY_ERROR #======================#
-class PlayerCarrierEmptyException(EmptyModelCarrierException):
+class EmptyPlayerCarrierException(EmptyModelCarrierException):
     """
     Role:
         - Error Tracing

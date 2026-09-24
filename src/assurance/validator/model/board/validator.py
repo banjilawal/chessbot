@@ -15,7 +15,7 @@ from artifcat import ValidationResult
 from assurance import ModelValidator, BoardValidatorToolkit
 from domain import Board, BoardBlueprint, BoardValidationRequest
 from err import (
-    BoardCarrierEmptyException, BoardValidationRequestNullException, BoardValidatorException
+    EmptyBoardCarrierException, BoardValidationRequestNullException, BoardValidatorException
 )
 from transit import BoardCarrier
 from util import LoggingLevelRouter
@@ -132,11 +132,11 @@ class BoardValidator(ModelValidator[Board]):
                     cls_name=self.__class__.__name__,
                     msg=BoardValidatorException.MSG,
                     err_code=BoardValidatorException.ERR_CODE,
-                    ex=BoardCarrierEmptyException(
+                    ex=EmptyBoardCarrierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=BoardCarrierEmptyException.MSG,
-                        err_code=BoardCarrierEmptyException.ERR_CODE,
+                        msg=EmptyBoardCarrierException.MSG,
+                        err_code=EmptyBoardCarrierException.ERR_CODE,
                     ),
                 )
             )
