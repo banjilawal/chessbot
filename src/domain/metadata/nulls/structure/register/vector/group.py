@@ -12,7 +12,10 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from domain import RegisterNullGroup, VectorRegister
-from err import VectorRegisterBlueprintNullException, VectorRegisterNullException
+from err import (
+    VectorRegisterBlueprintNullException, VectorRegisterCarrierNullException,
+    VectorRegisterNullException
+)
 
 
 class VectorRegisterNullGroup(RegisterNullGroup[VectorRegister]):
@@ -24,8 +27,9 @@ class VectorRegisterNullGroup(RegisterNullGroup[VectorRegister]):
         1. Catalog of NullExceptions associated with a VectorRegister's integrity cycle.
 
     Attributes:
-        structure: VectorRegisterNullException
-        blueprint: VectorRegisterBlueprintNullException
+        model: VectorRegisterNullException
+        carrier: VectorRegisterCarrierNullException
+        blueprint:VectorRegisterBlueprintNullException
 
     Provides:
 
@@ -36,16 +40,19 @@ class VectorRegisterNullGroup(RegisterNullGroup[VectorRegister]):
     
     def __init__(
             self,
-            structure: Optional[VectorRegisterNullException] | None = None,
+            model: Optional[VectorRegisterNullException] | None = None,
+            carrier: Optional[VectorRegisterCarrierNullException] | None = None,
             blueprint: Optional[VectorRegisterBlueprintNullException] | None = None,
     ):
         """
         Args:
-            structure: Optional[VectorRegisterNullException]
+            model: Optional[VectorRegisterNullException]
+            carrier: Optional[VectorRegisterCarrierNullException]
             blueprint: Optional[VectorRegisterBlueprintNullException]
         """
         super().__init__(
-            structure=structure or VectorRegisterNullException(),
+            model=model or VectorRegisterNullException(),
+            carrier=carrier or VectorRegisterCarrierNullException(),
             blueprint=blueprint or VectorRegisterBlueprintNullException(),
         )
         
@@ -56,6 +63,10 @@ class VectorRegisterNullGroup(RegisterNullGroup[VectorRegister]):
     @property
     def model(self) -> VectorRegisterNullException:
         return self.structure
+    
+    @property
+    def carrier(self) -> VectorRegisterCarrierNullException:
+        return cast(VectorRegisterCarrierNullException, super().carrier)
     
     @property
     def blueprint(self) -> VectorRegisterBlueprintNullException:

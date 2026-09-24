@@ -13,7 +13,9 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from domain import Structure, NullExceptionGroup
-from err import StructureCarrierNullException, StructureBlueprintNullException, StructureNullException
+from err import (
+    StructureCarrierNullException, StructureBlueprintNullException, StructureNullException
+)
 
 T = TypeVar("T", bound="Structure")
 
@@ -27,7 +29,7 @@ class StructureNullGroup(NullExceptionGroup[T], ABC, Generic[T]):
         1. Catalog of NullExceptions associated with a Structure's integrity cycle.
 
     Attributes:
-        structure: StructureNullException
+        model: StructureNullException
         carrier: StructureCarrierNullException
         blueprint: StructureBlueprintNullException
 
@@ -39,21 +41,25 @@ class StructureNullGroup(NullExceptionGroup[T], ABC, Generic[T]):
     
     def __init__(
             self,
-            structure: StructureNullException,
+            model: StructureNullException,
             carrier: StructureCarrierNullException,
             blueprint: StructureBlueprintNullException,
     ):
         """
         Args:
-            structure: StructureNullException
+            model: StructureNullException
             carrier: StructureCarrierNullException
             blueprint: StructureBlueprintNullException
         """
-        super().__init__(structure=structure, carrier=carrier, blueprint=blueprint)
+        super().__init__(model=model, carrier=carrier, blueprint=blueprint)
     
     @property
     def structure(self) -> StructureNullException:
-        return cast(StructureNullException, super().structure)
+        return cast(StructureNullException, super().model)
+    
+    @property
+    def model(self) -> StructureNullException:
+        return self.structure
     
     @property
     def carrier(self) -> StructureCarrierNullException:

@@ -13,7 +13,9 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from domain import Register, StructureNullGroup
-from err import RegisterBlueprintNullException, StructureNullException
+from err import (
+    RegisterBlueprintNullException, RegisterCarrierNullException, RegisterNullException
+)
 
 T = TypeVar("T", bound="Register")
 
@@ -26,7 +28,8 @@ class RegisterNullGroup(StructureNullGroup[T], ABC, Generic[T]):
         1. Catalog of NullExceptions associated with a Register's integrity cycle.
 
     Attributes:
-        structure: T
+        model: RegisterNullException
+        carrier: RegisterCarrierNullException
         blueprint: RegisterBlueprintNullException
 
     Provides:
@@ -38,25 +41,30 @@ class RegisterNullGroup(StructureNullGroup[T], ABC, Generic[T]):
     
     def __init__(
             self,
-            structure: StructureNullException,
+            model: RegisterNullException,
+            carrier: RegisterCarrierNullException,
             blueprint: RegisterBlueprintNullException,
     ):
         """
         Args:
-            structure: StructureNullException
+            model: RegisterNullException
+            carrier: RegisterCarrierNullException
             blueprint: RegisterBlueprintNullException
         """
-        super().__init__(structure=structure)
-        self._blueprint = blueprint
+        super().__init__(model=model, carrier=carrier, blueprint=blueprint)
         
     @property
-    def structure(self) -> StructureNullException:
-        return cast(StructureNullException, super().model)
+    def structure(self) -> RegisterNullException:
+        return cast(RegisterNullException, super().model)
     
     @property
-    def model(self) -> StructureNullException:
+    def model(self) -> RegisterNullException:
         return self.structure
     
     @property
+    def carrier(self) -> RegisterCarrierNullException:
+        return cast(RegisterCarrierNullException, super().carrier)
+    
+    @property
     def blueprint(self) -> RegisterBlueprintNullException:
-        return self._blueprint
+        return cast(RegisterBlueprintNullException, super().blueprint)

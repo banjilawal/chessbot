@@ -5,40 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/structure/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/structure/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/structure/node/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/structure/node/coord/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/structure/node/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/structure/node/square/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/structure/register/coord/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/structure/register/coord/blueprint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/group.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/model/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/model/group.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/structure/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/structure/group.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/transit/carrier/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/transit/carrier/node/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/structure/node/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/transit/carrier/node/dossier/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/structure/node/dossier/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/transit/carrier/node/dossier/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/structure/node/dossier/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/transit/carrier/node/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/structure/node/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/transit/carrier/node/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/structure/node/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/transit/carrier/node/vector/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/structure/node/vector/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/transit/carrier/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/structure/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/transit/carrier/register/cartesian/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/structure/register/cartesian/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/transit/carrier/register/cartesian/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/structure/register/cartesian/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/transit/carrier/register/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/structure/register/coord/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/transit/carrier/register/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/structure/register/coord/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/transit/carrier/register/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/structure/register/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/transit/carrier/register/identity/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/structure/register/identity/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/transit/carrier/register/identity/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/structure/register/identity/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/transit/carrier/register/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/structure/register/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/transit/carrier/register/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/structure/register/square/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/transit/carrier/register/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/structure/register/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/transit/carrier/register/vector/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/structure/register/vector/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/transit/carrier/toggle/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/structure/toggle/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/transit/carrier/toggle/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/structure/toggle/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/transit/carrier/toggle/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/structure/toggle/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/transit/carrier/toggle/vector/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/transit/carrier/structure/toggle/vector/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/structure/register/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/structure/register/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/structure/register/coord/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/structure/register/coord/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/structure/register/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/structure/register/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/structure/register/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/structure/register/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/structure/register/square/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/structure/register/square/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/structure/register/vector/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/structure/register/vector/group.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,61 +54,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="5.968435686749382E-9" />
-      <entry key="MS500" value="0.02265644784722824" />
-      <entry key="S2" value="0.4359410248861934" />
-      <entry key="S5" value="1.1294678266487048" />
-      <entry key="S10" value="1.7687908356153255" />
-      <entry key="S30" value="2.501439030047309" />
-      <entry key="S60" value="2.943151813340815" />
-      <entry key="M2" value="3.983923850652082" />
-      <entry key="M5" value="6.021350912265321" />
-      <entry key="M10" value="9.16046787679564" />
-      <entry key="M15" value="19.697927492882936" />
-      <entry key="M30" value="94.53364309601986" />
-      <entry key="H1" value="259.6657396729525" />
-      <entry key="H2" value="456.1125708356366" />
-      <entry key="H4" value="670.1480420176094" />
-      <entry key="D1" value="2442.9547761796193" />
-      <entry key="W1" value="18260.024292625694" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0000150487168045" />
+      <entry key="S5" value="1.0117764556703694" />
+      <entry key="S10" value="1.1092019724838138" />
+      <entry key="S30" value="1.6343065581305207" />
+      <entry key="S60" value="2.667629181580102" />
+      <entry key="M2" value="5.383667385610525" />
+      <entry key="M5" value="14.48556685230262" />
+      <entry key="M10" value="31.30678697261137" />
+      <entry key="M15" value="47.631257276509686" />
+      <entry key="M30" value="111.83812053051098" />
+      <entry key="H1" value="264.8861283318253" />
+      <entry key="H2" value="474.21873703872296" />
+      <entry key="H4" value="709.673931666614" />
+      <entry key="D1" value="2506.710842341413" />
+      <entry key="W1" value="18322.120507124866" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0001523841002078" />
-      <entry key="MS500" value="1.1724245768512465" />
-      <entry key="S2" value="1.6903465950174228" />
-      <entry key="S5" value="2.1305093525785392" />
-      <entry key="S10" value="2.4559612507842115" />
-      <entry key="S30" value="2.796601894366424" />
-      <entry key="S60" value="3.181576254909013" />
-      <entry key="M2" value="4.469812083082629" />
-      <entry key="M5" value="7.100689962891277" />
-      <entry key="M10" value="9.009622173884935" />
-      <entry key="M15" value="10.766364416602656" />
-      <entry key="M30" value="17.164893926795713" />
-      <entry key="H1" value="27.129205191888218" />
-      <entry key="H2" value="37.012184839299415" />
-      <entry key="H4" value="47.54093186888412" />
-      <entry key="D1" value="141.64282179402858" />
-      <entry key="W1" value="859.3426379848639" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="2.5444665626160735E-287" />
+      <entry key="S2" value="2.245945363149097E-72" />
+      <entry key="S5" value="2.1906163025439472E-29" />
+      <entry key="S10" value="4.6986679321763275E-15" />
+      <entry key="S30" value="1.9362635990579745E-5" />
+      <entry key="S60" value="0.005716710726036847" />
+      <entry key="M2" value="0.10767726442011162" />
+      <entry key="M5" value="0.9403027026627994" />
+      <entry key="M10" value="3.1148890986452558" />
+      <entry key="M15" value="5.432367424106836" />
+      <entry key="M30" value="12.423070492249526" />
+      <entry key="H1" value="23.714426267775703" />
+      <entry key="H2" value="35.971425029759644" />
+      <entry key="H4" value="48.56736772615937" />
+      <entry key="D1" value="144.67536953371334" />
+      <entry key="W1" value="862.6540706975582" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.08133397055663902" />
-      <entry key="MS500" value="0.6554152651774551" />
-      <entry key="S2" value="1.7151824333405912" />
-      <entry key="S5" value="2.961963083467313" />
-      <entry key="S10" value="4.018446893257844" />
-      <entry key="S30" value="5.207896746071446" />
-      <entry key="S60" value="6.072685359748264" />
-      <entry key="M2" value="8.418922745789825" />
-      <entry key="M5" value="13.101151261916371" />
-      <entry key="M10" value="18.155275580847803" />
-      <entry key="M15" value="30.447475455787647" />
-      <entry key="M30" value="111.67042977057034" />
-      <entry key="H1" value="286.7615848747022" />
-      <entry key="H2" value="493.0969936184543" />
-      <entry key="H4" value="717.6685556612247" />
-      <entry key="D1" value="2584.5819679692986" />
-      <entry key="W1" value="19119.352253032714" />
+      <entry key="MS100" value="0.9330329915368074" />
+      <entry key="MS500" value="0.9862327044933592" />
+      <entry key="S2" value="0.996546601007593" />
+      <entry key="S5" value="1.0069476353524593" />
+      <entry key="S10" value="1.0911508978883249" />
+      <entry key="S30" value="1.5976528207031198" />
+      <entry key="S60" value="2.621896683917915" />
+      <entry key="M2" value="5.418641407691731" />
+      <entry key="M5" value="15.344966948523874" />
+      <entry key="M10" value="34.355607221807865" />
+      <entry key="M15" value="53.008069909298186" />
+      <entry key="M30" value="124.21560380838469" />
+      <entry key="H1" value="288.5593167831118" />
+      <entry key="H2" value="510.1575127456326" />
+      <entry key="H4" value="758.21781553107" />
+      <entry key="D1" value="2651.3699964917355" />
+      <entry key="W1" value="19184.759814470923" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -165,7 +139,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/null/transit/carrier/structure/node",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/domain/metadata/nulls/structure/register",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -179,11 +153,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/domain/metadata/nulls/structure/register" />
       <recent name="$PROJECT_DIR$/src/err/null/transit/carrier/structure/node" />
       <recent name="$PROJECT_DIR$/src/err/null/transit/carrier" />
       <recent name="$PROJECT_DIR$/src/err/null/transit/carrier/register" />
       <recent name="$PROJECT_DIR$/src/transit/carrier/structure/register" />
-      <recent name="$PROJECT_DIR$/src/transit/carrier/structure/register/square" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/err/null/transit/carrier/structure" />
@@ -871,7 +845,7 @@
       <workItem from="1788782347688" duration="75617000" />
       <workItem from="1788969937518" duration="171978000" />
       <workItem from="1790001362413" duration="735000" />
-      <workItem from="1790063398459" duration="59205000" />
+      <workItem from="1790063398459" duration="60945000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

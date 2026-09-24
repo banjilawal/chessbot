@@ -12,7 +12,10 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from domain import RegisterNullGroup, CoordRegister
-from err import CoordRegisterBlueprintNullException, CoordRegisterNullException
+from err import (
+    CoordRegisterBlueprintNullException, CoordRegisterCarrierNullException,
+    CoordRegisterNullException
+)
 
 
 class CoordRegisterNullGroup(RegisterNullGroup[CoordRegister]):
@@ -24,8 +27,9 @@ class CoordRegisterNullGroup(RegisterNullGroup[CoordRegister]):
         1. Catalog of NullExceptions associated with a CoordRegister's integrity cycle.
 
     Attributes:
-        structure: CoordRegisterNullException
-        blueprint: CoordRegisterBlueprintNullException
+        model: CoordRegisterNullException
+        carrier: CoordRegisterCarrierNullException
+        blueprint:CoordRegisterBlueprintNullException
 
     Provides:
 
@@ -36,16 +40,19 @@ class CoordRegisterNullGroup(RegisterNullGroup[CoordRegister]):
     
     def __init__(
             self,
-            structure: Optional[CoordRegisterNullException] | None = None,
+            model: Optional[CoordRegisterNullException] | None = None,
+            carrier: Optional[CoordRegisterCarrierNullException] | None = None,
             blueprint: Optional[CoordRegisterBlueprintNullException] | None = None,
     ):
         """
         Args:
-            structure: Optional[CoordRegisterNullException]
+            model: Optional[CoordRegisterNullException]
+            carrier: Optional[CoordRegisterCarrierNullException]
             blueprint: Optional[CoordRegisterBlueprintNullException]
         """
         super().__init__(
-            structure=structure or CoordRegisterNullException(),
+            model=model or CoordRegisterNullException(),
+            carrier=carrier or CoordRegisterCarrierNullException(),
             blueprint=blueprint or CoordRegisterBlueprintNullException(),
         )
         
@@ -56,6 +63,10 @@ class CoordRegisterNullGroup(RegisterNullGroup[CoordRegister]):
     @property
     def model(self) -> CoordRegisterNullException:
         return self.structure
+    
+    @property
+    def carrier(self) -> CoordRegisterCarrierNullException:
+        return cast(CoordRegisterCarrierNullException, super().carrier)
     
     @property
     def blueprint(self) -> CoordRegisterBlueprintNullException:

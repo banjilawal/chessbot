@@ -12,7 +12,10 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from domain import RegisterNullGroup, SquareRegister
-from err import SquareRegisterBlueprintNullException, SquareRegisterNullException
+from err import (
+    SquareRegisterBlueprintNullException, SquareRegisterCarrierNullException,
+    SquareRegisterNullException
+)
 
 
 class SquareRegisterNullGroup(RegisterNullGroup[SquareRegister]):
@@ -24,8 +27,9 @@ class SquareRegisterNullGroup(RegisterNullGroup[SquareRegister]):
         1. Catalog of NullExceptions associated with a SquareRegister's integrity cycle.
 
     Attributes:
-        structure: SquareRegisterNullException
-        blueprint: SquareRegisterBlueprintNullException
+        model: SquareRegisterNullException
+        carrier: SquareRegisterCarrierNullException
+        blueprint:SquareRegisterBlueprintNullException
 
     Provides:
 
@@ -36,16 +40,19 @@ class SquareRegisterNullGroup(RegisterNullGroup[SquareRegister]):
     
     def __init__(
             self,
-            structure: Optional[SquareRegisterNullException] | None = None,
+            model: Optional[SquareRegisterNullException] | None = None,
+            carrier: Optional[SquareRegisterCarrierNullException] | None = None,
             blueprint: Optional[SquareRegisterBlueprintNullException] | None = None,
     ):
         """
         Args:
-            structure: Optional[SquareRegisterNullException]
+            model: Optional[SquareRegisterNullException]
+            carrier: Optional[SquareRegisterCarrierNullException]
             blueprint: Optional[SquareRegisterBlueprintNullException]
         """
         super().__init__(
-            structure=structure or SquareRegisterNullException(),
+            model=model or SquareRegisterNullException(),
+            carrier=carrier or SquareRegisterCarrierNullException(),
             blueprint=blueprint or SquareRegisterBlueprintNullException(),
         )
         
@@ -56,6 +63,10 @@ class SquareRegisterNullGroup(RegisterNullGroup[SquareRegister]):
     @property
     def model(self) -> SquareRegisterNullException:
         return self.structure
+    
+    @property
+    def carrier(self) -> SquareRegisterCarrierNullException:
+        return cast(SquareRegisterCarrierNullException, super().carrier)
     
     @property
     def blueprint(self) -> SquareRegisterBlueprintNullException:
