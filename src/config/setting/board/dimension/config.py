@@ -13,23 +13,24 @@ from typing import Mapping
 from types import MappingProxyType
 from dataclasses import dataclass, field
 
+from config import BoardPropertyName
+
 __all__ = [
     "BoardDimensionProperty",
 ]
 
-from config.setting import BoardProperty
 
 __all__ = [
     # ======================# BOARD_DIMENSION_PROPERTY #======================#
     "BoardDimensionProperty",
 ]
 
+
+
 board_size = 8
 knight_radius = 2
 number_of_rows = board_size
 number_of_columns = board_size
-
-
 
 @dataclass
 class BoardDimensionProperty:
@@ -47,7 +48,7 @@ class BoardDimensionProperty:
     Super Class:
         Enum
     """
-    entry: Mapping[BoardProperty, int] = field(
+    entry: Mapping[BoardPropertyName, int] = field(
         default_factory=lambda: MappingProxyType(
             {
                 BoardProperty.DIMENSION: board_size,

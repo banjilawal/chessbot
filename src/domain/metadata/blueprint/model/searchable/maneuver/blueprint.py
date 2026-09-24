@@ -9,6 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
+import sys
 from typing import Optional, Type, cast
 
 from domain import Attack, Maneuver, ManeuverContext, Path, SearchableModelBlueprint, Token
@@ -27,7 +28,6 @@ class ManeuverBlueprint(SearchableModelBlueprint[Maneuver]):
         path: Path
         benefit: int
         traveller: Token
-        attack: Optional[Attack]
 
         domain_class: Optional[Type[Maneuver]]
         search_context_class: Type[ManeuverContext]
@@ -42,14 +42,12 @@ class ManeuverBlueprint(SearchableModelBlueprint[Maneuver]):
     _path: Path
     _benefit: int
     _traveller: Token
-    _attack: Optional[Attack]
     
     def __init__(
             self,
             path: Path,
             traveller: Token,
             benefit: Optional[int] | None = None,
-            attack: Optional[Attack] | None = None,
             domain_class: Optional[Type[Maneuver]] | None = None,
             domain_null_exception: Optional[ManeuverNullException] | None = None,
     ):
@@ -58,7 +56,6 @@ class ManeuverBlueprint(SearchableModelBlueprint[Maneuver]):
             path: Path
             traveller: Token
             benefit: Optional[int]
-            attack: Optional[Attack]
             domain_class: Optional[Type[Maneuver]]
             domain_null_exception: Optional[ManeuverNullException]
         """
@@ -67,17 +64,12 @@ class ManeuverBlueprint(SearchableModelBlueprint[Maneuver]):
             domain_null_exception=domain_null_exception or ManeuverNullException(),
         )
         self._path = path
-        self._attack = attack
         self._traveller = traveller
-        self._benefit = benefit or 0
+        self._benefit = benefit or sys.maxsize
     
     @property
     def domain_class(self) -> Type[Maneuver]:
         return cast(Type[Maneuver], super().domain_class)
-    
-    @property
-    def search_context_class(self) -> Type[ManeuverContext]:
-        return cast(Type[ManeuverContext], super().search_context_class)
     
     @property
     def domain_null_exception(self) -> ManeuverNullException:
@@ -94,10 +86,6 @@ class ManeuverBlueprint(SearchableModelBlueprint[Maneuver]):
     @property
     def benefit(self) -> int:
         return self._benefit
-    
-    @property
-    def attack(self) -> Optional[Attack]:
-        return self._attack
 
 
 

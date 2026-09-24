@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== CONFIG PACKAGE ===========#
 
 # Packages
+from .property import *
 from .setting import *
 
 # Modules
