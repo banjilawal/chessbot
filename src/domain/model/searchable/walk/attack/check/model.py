@@ -15,7 +15,7 @@ from typing import cast
 from domain import Attack, KingToken, Maneuver, Token
 
 
-class CheckAttackWarning(Attack):
+class CheckWarning(Attack):
     """
     Role:
         - Model
@@ -71,7 +71,7 @@ class CheckAttackWarning(Attack):
             return False
         if other == self:
             return True
-        if isinstance(other, CheckAttackWarning):
+        if isinstance(other, CheckWarning):
             return super().__eq__(other)
         return False
         

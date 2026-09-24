@@ -37,7 +37,7 @@ class CheckmateAttackTypeUnion(AttackTypeUnion[CheckmateAttack]):
     def __init__(
             self, 
             model: Optional[Type[CheckmateAttack]] | None = None,
-            carrier: Optional[Type[CheckmateAttackCarrier]] | None = None,
+            carrier: Optional[Type[AttackCarrier]] | None = None,
             blueprint: Optional[Type[CheckmateWarningBlueprint]] | None = None,
     ):
         """

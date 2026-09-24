@@ -13,7 +13,7 @@ from typing import Optional, Type, cast
 
 
 from domain import (
-    CheckAttackWarning, CheckmateAttack, Coord, KingReadiness, KingToken, Formation, HomeSquare,
+    CheckWarning, CheckmateAttack, Coord, KingReadiness, KingToken, Formation, HomeSquare,
     Team, TokenBlueprint, TokenDeployment
 )
 from err import KingTokenNullException, TokenDeploymentException
@@ -44,7 +44,7 @@ class KingTokenBlueprint(TokenBlueprint):
      """
     _readiness: KingReadiness
     _checkmate: Optional[CheckmateAttack]
-    _check_warning: Optional[CheckAttackWarning]
+    _check_warning: Optional[CheckWarning]
 
     
     def __init__(
@@ -57,7 +57,7 @@ class KingTokenBlueprint(TokenBlueprint):
             deployment: Optional[TokenDeployment] | None = None,
             readiness: Optional[KingReadiness] | None = None,
             checkmate: Optional[CheckmateAttack] | None = None,
-            check_warning: Optional[CheckAttackWarning] | None = None,
+            check_warning: Optional[CheckWarning] | None = None,
             domain_class: Optional[Type[KingToken]] | None = None,
             domain_null_exception: Optional[KingTokenNullException] | None = None,
             id: Optional[int] | None = None,
@@ -100,7 +100,7 @@ class KingTokenBlueprint(TokenBlueprint):
         return self._checkmate
     
     @property
-    def check_warning(self) -> Optional[CheckAttackWarning]:
+    def check_warning(self) -> Optional[CheckWarning]:
         return self._check_warning
     
     @property
