@@ -17,7 +17,7 @@ from err import (
 )
 
 
-class CombatantNullGroup(TokenNullGroup[CombatantToken]):
+class CombatantTokenNullGroup(TokenNullGroup[CombatantToken]):
     """
     Role:
         - Metadata

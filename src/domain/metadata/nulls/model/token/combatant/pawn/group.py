@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import CombatantNullGroup
+from domain import CombatantTokenNullGroup
 from err import PawnTokenBlueprintNullException, PawnTokenCarrierNullException, PawnTokenNullException
 
 
-class PawnTokenNullGroup(CombatantNullGroup):
+class PawnTokenTokenNullGroup(CombatantTokenNullGroup):
     """
     Role:
         - Metadata

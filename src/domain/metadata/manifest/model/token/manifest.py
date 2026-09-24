@@ -1,4 +1,4 @@
-# src/domain/metadata/manifest/model/token/manifest.py
+# src/domain/metadata/manifest/model/token/token/manifest.py
 
 """
 Module: domain.metadata.manifest.model.token.manifest
@@ -9,19 +9,20 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from typing import Generic, TypeVar, cast
 
 from domain import ModelManifest, Token, TokenNullGroup, TokenTypeUnion
 
+T = TypeVar("T", bound="Token")
 
-
-class TokenManifest(ModelManifest[Token]):
+class TokenManifest(ModelManifest[T], Generic[T]):
     """
      Role:
         1.  Metadata
 
      Responsibilities:
-         1.  Aggregates NullExceptions and TypeUnions for the Token security lifecycle.
+         1. Aggregates NullExceptions and TypeUnions for the Token
+            security lifecycle.
 
      Attributes:
         types: TokenTypeUnion
@@ -35,23 +36,20 @@ class TokenManifest(ModelManifest[Token]):
     
     def __init__(
             self,
-            types: Optional[TokenTypeUnion] | None = None,
-            nulls: Optional[TokenNullGroup] | None = None,
+            types: TokenTypeUnion[T],
+            nulls: TokenNullGroup[T]
     ):
         """
         Args:
-            types: Optional[TokenTypeUnion]
-            nulls: Optional[TokenNullGroup]
+            types: TokenTypeUnion[T]
+            nulls: TokenNullGroup[T]
         """
-        super().__init__(
-            types=types or TokenTypeUnion(),
-            nulls=nulls or TokenNullGroup(),
-        )
+        super().__init__(types=types, nulls=nulls)
         
     @property
-    def types(self) -> TokenTypeUnion:
-        return cast(TokenTypeUnion, super().types)
+    def types(self) -> TokenTypeUnion[T]:
+        return cast(TokenTypeUnion[T], super().types)
     
     @property
-    def nulls(self) -> TokenNullGroup:
-        return cast(TokenNullGroup, super().nulls)
+    def nulls(self) -> TokenNullGroup[T]:
+        return cast(TokenNullGroup[T], super().nulls)

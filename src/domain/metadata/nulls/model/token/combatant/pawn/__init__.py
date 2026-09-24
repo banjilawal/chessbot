@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .group import PawnTokenNullGroup
+from .group import PawnTokenTokenNullGroup

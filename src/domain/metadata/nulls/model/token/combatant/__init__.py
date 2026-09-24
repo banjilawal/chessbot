@@ -13,4 +13,4 @@ version: 0.0.2
 from .pawn import *
 
 # Modules
-from .group import CombatantNullGroup
+from .group import CombatantTokenNullGroup
