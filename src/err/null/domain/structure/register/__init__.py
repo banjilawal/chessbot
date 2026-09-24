@@ -10,8 +10,10 @@ version: 0.0.2
 # ============ ERR.NULL.DOMAIN.STRUCTURE.REGISTER PACKAGE ===========#
 
 # Packages
-from .identity import *
 from .cartesian import *
+from .coord import *
+from .identity import *
+from .number import *
 from .square import *
 from .number import *
 from .vector import *

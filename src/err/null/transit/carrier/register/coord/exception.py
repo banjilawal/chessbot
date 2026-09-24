@@ -1,7 +1,7 @@
-# src/err/null/transit/carrier/register/vector_toggle/exception.py
+# src/err/null/transit/carrier/register/coord/exception.py
 
 """
-Module: err.null.transit.carrier.register.vector_toggle.exception
+Module: err.null.transit.carrier.register.coord.exception
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# VECTOR_TOGGLE_REGISTER_CARRIER_NULL_ERROR #======================#
-    "CartesianToggleRegisterCarrierNullException",
+    # ======================# COORD_REGISTER_CARRIER_NULL_ERROR #======================#
+    "CoordRegisterCarrierNullException",
 ]
 
-# ======================# VECTOR_TOGGLE_REGISTER_CARRIER_NULL_ERROR #======================#
-class CartesianToggleRegisterCarrierNullException(RegisterCarrierNullException):
+# ======================# COORD_REGISTER_CARRIER_NULL_ERROR #======================#
+class CoordRegisterCarrierNullException(RegisterCarrierNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required CartesianToggleRegisterCarrier is null.
+        1.  Indicating a required CoordRegisterCarrier is null.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class CartesianToggleRegisterCarrierNullException(RegisterCarrierNullException):
     Super Class:
         RegisterCarrierNullException
     """
-    MSG = "CartesianToggleRegisterCarrier cannot be null."
-    ERR_CODE= "VECTOR_TOGGLE_REGISTER_CARRIER_NULL_ERROR"
+    MSG = "CoordRegisterCarrier cannot be null."
+    ERR_CODE= "COORD_REGISTER_CARRIER_NULL_ERROR"
     
     def __init__(
             self,
@@ -80,6 +80,3 @@ class CartesianToggleRegisterCarrierNullException(RegisterCarrierNullException):
             cls_mthd=cls_mthd,
             mthd_rslt_type=mthd_rslt_type,
         )
-
-    
-    
