@@ -1,7 +1,7 @@
 # src/err/null/domain/request/validation/model/attack/combatant/exception.py
 
 """
-Module: err.null.domain.request.validation/model.attack.combatant.exception
+Module: err.null.domain.request.validation.model.attack.combatant.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

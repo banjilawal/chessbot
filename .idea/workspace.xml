@@ -5,21 +5,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/rank/bishop/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/rank/bishop/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/rank/king/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/rank/king/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/rank/knight/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/rank/knight/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/rank/pawn/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/rank/pawn/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/rank/queen/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/rank/queen/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/rank/rook/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/rank/rook/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/player/human/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/player/human/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/player/machine/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/player/machine/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/rank/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/arena/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/attack/check/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/attack/check/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/attack/combatant/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/attack/combatant/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/attack/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/attack/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/attack/mate/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/attack/mate/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/board/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/coord/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/game/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/game/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/maneuver/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/maneuver/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/path/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/path/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/player/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/player/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/player/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/rank/bishop/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/rank/bishop/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/rank/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/rank/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/rank/king/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/rank/king/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/rank/knight/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/rank/knight/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/rank/pawn/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/rank/pawn/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/rank/queen/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/rank/queen/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/rank/rook/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/rank/rook/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/scalar/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/scalar/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/square/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/square/home/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/square/home/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/team/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/token/combatant/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/token/combatant/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/token/combatant/pawn/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/token/combatant/pawn/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/token/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/token/king/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/token/king/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/vector/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/vector/exception.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,61 +81,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000000467648564" />
-      <entry key="MS500" value="1.034196678164398" />
-      <entry key="S2" value="1.4300272533876301" />
-      <entry key="S5" value="1.7135233183963012" />
-      <entry key="S10" value="1.8732862756889275" />
-      <entry key="S30" value="6.894974855161999" />
-      <entry key="S60" value="23.707222140022747" />
-      <entry key="M2" value="61.32539117823544" />
-      <entry key="M5" value="136.1882255207845" />
-      <entry key="M10" value="207.16804057595306" />
-      <entry key="M15" value="268.512386739136" />
-      <entry key="M30" value="457.5353272776292" />
-      <entry key="H1" value="789.8919337039038" />
-      <entry key="H2" value="1252.9824982614618" />
-      <entry key="H4" value="1770.7532303442383" />
-      <entry key="D1" value="3952.25433930921" />
-      <entry key="W1" value="19810.591380426475" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0000274849237014" />
+      <entry key="S5" value="1.0149843467630073" />
+      <entry key="S10" value="1.122414765034388" />
+      <entry key="S30" value="1.5325319865978058" />
+      <entry key="S60" value="3.6386398093220964" />
+      <entry key="M2" value="20.656272880554283" />
+      <entry key="M5" value="94.13351166340809" />
+      <entry key="M10" value="198.5643970206012" />
+      <entry key="M15" value="283.5578322394857" />
+      <entry key="M30" value="502.57667144446026" />
+      <entry key="H1" value="862.7434562419451" />
+      <entry key="H2" value="1362.6297429181056" />
+      <entry key="H4" value="1922.0283932886343" />
+      <entry key="D1" value="4167.209899709971" />
+      <entry key="W1" value="20036.550304559416" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="9.525442668066333E-149" />
-      <entry key="S5" value="6.190456602696366E-60" />
-      <entry key="S10" value="2.5706394561347262E-30" />
-      <entry key="S30" value="2.2604496103758946E-10" />
-      <entry key="S60" value="2.8759921929691982E-5" />
-      <entry key="M2" value="0.011661327242971942" />
-      <entry key="M5" value="0.5522433080221757" />
-      <entry key="M10" value="2.6861049683519425" />
-      <entry key="M15" value="5.039644200366" />
-      <entry key="M30" value="10.529710386694447" />
-      <entry key="H1" value="18.66967542767816" />
-      <entry key="H2" value="32.869659779714354" />
-      <entry key="H4" value="52.38044850748345" />
-      <entry key="D1" value="160.10730244283818" />
-      <entry key="W1" value="880.2785823490116" />
+      <entry key="MS500" value="8.389922735763935E-269" />
+      <entry key="S2" value="9.570607160330825E-68" />
+      <entry key="S5" value="1.5573125953613883E-27" />
+      <entry key="S10" value="3.946280014841221E-14" />
+      <entry key="S30" value="3.409392498843407E-5" />
+      <entry key="S60" value="0.006414037805764792" />
+      <entry key="M2" value="0.140027655225585" />
+      <entry key="M5" value="1.4646360277673605" />
+      <entry key="M10" value="4.050260947651317" />
+      <entry key="M15" value="6.54218761826854" />
+      <entry key="M30" value="12.744094545841604" />
+      <entry key="H1" value="21.889191043658418" />
+      <entry key="H2" value="36.88011455498903" />
+      <entry key="H4" value="57.29042271181377" />
+      <entry key="D1" value="166.5989700901325" />
+      <entry key="W1" value="887.1209289436983" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9330330367086811" />
-      <entry key="MS500" value="1.0201931689472985" />
-      <entry key="S2" value="1.4258229810467498" />
-      <entry key="S5" value="1.7116435382917694" />
-      <entry key="S10" value="1.8722551312284716" />
-      <entry key="S30" value="6.892074769374819" />
-      <entry key="S60" value="23.70152788221855" />
-      <entry key="M2" value="61.3293163840141" />
-      <entry key="M5" value="136.72876327395304" />
-      <entry key="M10" value="209.82822023875565" />
-      <entry key="M15" value="273.5164438580587" />
-      <entry key="M30" value="468.02367132085527" />
-      <entry key="H1" value="808.5239055679931" />
-      <entry key="H2" value="1285.819233532761" />
-      <entry key="H4" value="1823.1071492161373" />
-      <entry key="D1" value="4112.3443337868475" />
-      <entry key="W1" value="20690.855022620817" />
+      <entry key="MS100" value="0.9592641193252643" />
+      <entry key="MS500" value="0.9917167307382933" />
+      <entry key="S2" value="0.9979500329965764" />
+      <entry key="S5" value="1.0141155717014025" />
+      <entry key="S10" value="1.1218463293159557" />
+      <entry key="S30" value="1.5322070686754754" />
+      <entry key="S60" value="3.6442000758621855" />
+      <entry key="M2" value="20.79212899706417" />
+      <entry key="M5" value="95.58684528008995" />
+      <entry key="M10" value="202.5969972475819" />
+      <entry key="M15" value="290.07605285522203" />
+      <entry key="M30" value="515.2881697677112" />
+      <entry key="H1" value="884.5989971991584" />
+      <entry key="H2" value="1399.4785515843114" />
+      <entry key="H4" value="1979.292770585595" />
+      <entry key="D1" value="4333.791559587692" />
+      <entry key="W1" value="20923.656289912607" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -146,7 +166,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/null/domain/exchange/request/validation/model/rank",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/null/domain/exchange/request/validation/model",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -160,11 +180,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/rank" />
       <recent name="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model" />
+      <recent name="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/attack" />
+      <recent name="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/rank" />
       <recent name="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/token" />
       <recent name="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/token/combatant/pawn" />
-      <recent name="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/token/combatant" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/err/capacity/empty/carrier/model" />
@@ -852,7 +872,7 @@
       <workItem from="1788782347688" duration="75617000" />
       <workItem from="1788969937518" duration="171978000" />
       <workItem from="1790001362413" duration="735000" />
-      <workItem from="1790063398459" duration="72540000" />
+      <workItem from="1790063398459" duration="73426000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

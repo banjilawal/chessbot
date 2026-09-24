@@ -1,7 +1,7 @@
 # src/err/null/domain/request/validation/model/player/exception.py
 
 """
-Module: err.null.domain.request.validation/model.player.exception
+Module: err.null.domain.request.validation.model.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -10,7 +10,6 @@ version: 0.0.2
 from __future__ import annotations
 
 from typing import Any, Optional
-
 
 from artifcat import MethodResultType
 from err import ModelValidationRequestNullException

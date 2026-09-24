@@ -1,7 +1,7 @@
 # src/err/null/domain/request/validation/model/board/exception.py
 
 """
-Module: err.null.domain.request.validation/model.board.exception
+Module: err.null.domain.request.validation.model.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

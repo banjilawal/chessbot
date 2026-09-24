@@ -1,7 +1,7 @@
-# src/err/null/domain/request/validation/model/rank/queen/exception.py
+# src/err/null/domain/request/validation/model/player/human/exception.py
 
 """
-Module: err.null.domain.request.validation.model.rank.queen.exception
+Module: err.null.domain.request.validation.model.player.human.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import RankValidationRequestNullException
+from err import PlayerValidationRequestNullException
 
 __all__ = [
-    # ======================# QUEEN_VALIDATION_REQUEST_NULL_ERROR #======================#
-    "QueenValidationRequestNullException",
+    # ======================# HUMAN_PLAYER_VALIDATION_REQUEST_NULL_ERROR #======================#
+    "HumanPlayerValidationRequestNullException",
 ]
 
-# ======================# QUEEN_VALIDATION_REQUEST_NULL_ERROR #======================#
-class QueenValidationRequestNullException(RankValidationRequestNullException):
+# ======================# HUMAN_PLAYER_VALIDATION_REQUEST_NULL_ERROR #======================#
+class HumanPlayerValidationRequestNullException(PlayerValidationRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a QueenValidationRequest is null.
+        1.  Indicating that a HumanPlayerValidationRequest is null.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class QueenValidationRequestNullException(RankValidationRequestNullException):
     Provides:
 
     Super Class:
-        RankValidationRequestNullException
+        PlayerValidationRequestNullException
     """
-    MSG = "QueenValidationRequest cannot be null."
-    ERR_CODE = "QUEEN_VALIDATION_REQUEST_NULL_ERROR"
+    MSG = "HumanPlayerValidationRequest cannot be null."
+    ERR_CODE = "HUMAN_PLAYER_VALIDATION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

@@ -10,6 +10,8 @@ version: 0.0.2
 # ============ ERR.NULL.DOMAIN.REQUEST.VALIDATION.MODEL.PLAYER PACKAGE ===========#
 
 # Packages
+from .human import *
+from .machine import *
 
 # Modules
 from .exception import PlayerValidationRequestNullException
