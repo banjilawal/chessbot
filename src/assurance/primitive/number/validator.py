@@ -56,7 +56,7 @@ class NumberValidator:
             self,
             candidate: Any,
             floor: int | None = 0,
-            ceiling: int | None = config.setting.board.dimension.config.board_size - 1,
+            ceiling: int | None = config.setting.board.setting.board.dimension.config.board_size - 1,
     ) -> ValidationResult[int]:
         """
         Make sure an object is a number within bounds before use.

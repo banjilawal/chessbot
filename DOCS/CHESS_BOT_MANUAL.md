@@ -21,7 +21,7 @@ It supports both human players and AI-controlled opponents, with a strong focus 
 ## 🖥 Game Interface
 - **Drag-and-Drop**: Move pieces using your mouse.
 - **Color-Coded Pieces**: Each piece type has a distinct visual indicator.
-- **Configurable Board Size**: Adjust via configuration settings in `config.py`.
+- **Configurable Board Size**: Adjust via configuration settings in `setting.py`.
 - **Highlighting**: (Planned) Show legal moves when a piece is selected.
 
 ---

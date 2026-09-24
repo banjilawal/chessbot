@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional, cast
 
-import config.setting.board.dimension.config
+import config.setting.board.setting
 from artifcat import ValidationResult
 from assurance import ContextValidator, CoordValidatorToolkit
 from domain import CoordSearchContext
@@ -111,7 +111,7 @@ class CoordContextValidator(ContextValidator[CoordSearchContext]):
             validation = self.toolkit.helper.number_validator.execute(
                 candidate=attribute,
                 floor=0,
-                ceiling=config.setting.board.dimension.config.board_size - 1,
+                ceiling=config.setting.board.setting.board.dimension.config.board_size - 1,
             )
             if validation.is_failure:
                 # Send the exception chain on failure.

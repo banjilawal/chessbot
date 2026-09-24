@@ -10,6 +10,6 @@ version: 0.0.2
 # =========== CONFIG.SETTING.BOARD PACKAGE ===========#
 
 # Packages
-from .dimension import *
 
 # Modules
+from .setting import BoardSetting
