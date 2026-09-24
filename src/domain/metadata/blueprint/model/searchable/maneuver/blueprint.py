@@ -12,6 +12,7 @@ from __future__ import annotations
 import sys
 from typing import Optional, Type, cast
 
+from config import NumericSetting
 from domain import Attack, Maneuver, ManeuverContext, Path, SearchableModelBlueprint, Token
 from err import ManeuverNullException
 
@@ -65,7 +66,7 @@ class ManeuverBlueprint(SearchableModelBlueprint[Maneuver]):
         )
         self._path = path
         self._traveller = traveller
-        self._benefit = benefit or sys.maxsize
+        self._benefit = benefit or NumericSetting().negative_infinity
     
     @property
     def domain_class(self) -> Type[Maneuver]:
