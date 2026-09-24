@@ -1,7 +1,7 @@
-# src/err/capacity/empty/array/exception.py
+# src/err/assurance/empty/domain/structure/register/exception.py
 
 """
-Module: err.capacity.empty.array.exception
+Module: err.assurance.empty.domain.structure.register.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import EmptyDomainException
+from err import EmptyStructureException
 
 __all__ = [
-    # ======================# EMPTY_LIST_ERROR #======================#
-    "EmptyListException",
+    # ======================# EMPTY_REGISTER_ERROR #======================#
+    "EmptyRegisterException",
 ]
 
-# ======================# EMPTY_LIST_ERROR #======================#
-class EmptyListException(EmptyDomainException):
+# ======================# EMPTY_REGISTER_ERROR #======================#
+class EmptyRegisterException(EmptyStructureException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required List is empty.
+        1.  Indicating a Register is empty.
 
     Attributes:
         msg: Optional[str]
@@ -37,14 +37,14 @@ class EmptyListException(EmptyDomainException):
         cls_mthd: Optional[str]
         err_code: Optional[str]
         mthd_rslt_type: Optional[MethodResultType]
-        
+
     Provides:
 
     Super Class:
-        EmptyException
+       EmptyStructureException
     """
-    MSG = "List cannot be empty."
-    ERR_CODE = "EMPTY_LIST_ERROR"
+    MSG = "Register cannot be empty."
+    ERR_CODE = "EMPTY_REGISTER_ERROR"
     
     def __init__(
             self,
