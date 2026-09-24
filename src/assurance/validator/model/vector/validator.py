@@ -27,7 +27,7 @@ class VectorValidator(ModelValidator[Vector]):
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a VectorCarrier and its contents instance is safe before use.
+        1.  Ensure a VectorCarrier and its contents are safe before use.
 
     Attributes:
         toolkit: VectorValidatorToolkit

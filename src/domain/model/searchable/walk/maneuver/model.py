@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from domain import Attack, Path, SearchableModel, Token
+from domain import Path, SearchableModel, Token
 
 
 class Maneuver(SearchableModel):
@@ -27,7 +27,6 @@ class Maneuver(SearchableModel):
         path: Path
         benefit: int
         traveller: Token
-        attack: Optional[Attack]
 
     Provides:
 
@@ -37,25 +36,22 @@ class Maneuver(SearchableModel):
     _path: Path
     _benefit: int
     _traveller: Token
-    _attack: Optional[Attack]
-
     
     def __init__(
             self,
             path: Path,
             traveller: Token,
             benefit: Optional[int] | None = None,
-            attack: Optional[Attack] | None = None,
     ):
         """
         Args:
             path: Path
             traveller: Token
+            benefit: Optional[int]
         """
         self._path = path
         self._benefit = benefit or 0
         self._traveller = traveller
-        self._attack = attack
 
     
     @property
@@ -69,10 +65,6 @@ class Maneuver(SearchableModel):
     @property
     def benefit(self) -> int:
         return self._benefit
-        
-    @property
-    def attack(self) -> Optional[Attack]:
-        return self._attack
     
     def __eq__(self, other):
         if other == self: return True

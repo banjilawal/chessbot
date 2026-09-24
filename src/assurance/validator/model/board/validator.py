@@ -27,7 +27,7 @@ class BoardValidator(ModelValidator[Board]):
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a BoardCarrier and its contents instance is safe before use.
+        1.  Ensure a BoardCarrier and its contents are safe before use.
 
     Attributes:
         toolkit: BoardValidatorToolkit

@@ -29,7 +29,7 @@ class CoordValidator(ModelValidator[Coord]):
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a CoordCarrier and its contents instance is safe before use.
+        1.  Ensure a CoordCarrier and its contents are safe before use.
 
     Attributes:
         toolkit: CoordValidatorToolkit

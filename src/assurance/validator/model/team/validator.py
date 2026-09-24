@@ -14,12 +14,12 @@ from typing import Any, Optional, cast
 from artifcat import ValidationResult
 from assurance import ModelValidator, TeamValidatorToolkit
 from domain import (
-    Archetype, Board, BoardValidationRequest, Player, PlayerValidationRequest, Team, TeamBlueprint,
-    TeamValidationRequest
+    Archetype, Board, BoardValidationRequest, Player, PlayerValidationRequest, Team,
+    TeamBlueprint, TeamValidationRequest
 )
 from err import (
-    ArchetypeNullException, EmptyBoardCarrierException, EmptyPlayerCarrierException, TeamValidationRequestNullException,
-    TeamValidatorException
+    ArchetypeNullException, EmptyBoardCarrierException, EmptyPlayerCarrierException,
+    EmptyTeamCarrierException, TeamValidationRequestNullException, TeamValidatorException
 )
 from transit import BoardCarrier, PlayerCarrier, TeamCarrier
 from util import IdFactory, LoggingLevelRouter
@@ -31,13 +31,13 @@ class TeamValidator(ModelValidator[Team]):
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a TeamCarrier and its contents instance is safe before use.
+        1.  Ensure a TeamCarrier and its contents are safe before use.
 
     Attributes:
         toolkit: TeamValidatorToolkit
 
     Provides:
-        *   def execute(candidate: TeamValidationRequest) -> ValidationResult[TeamCarrier]:
+        *   def execute(candidate: Any) -> ValidationResult[TeamCarrier]:
 
     Super Class:
         ModelValidator
@@ -55,10 +55,7 @@ class TeamValidator(ModelValidator[Team]):
     
     @property
     def toolkit(self) -> TeamValidatorToolkit:
-        return cast(
-            TeamValidatorToolkit,
-            super().toolkit,
-        )
+        return cast(TeamValidatorToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[TeamCarrier]:
@@ -83,7 +80,6 @@ class TeamValidator(ModelValidator[Team]):
             ValidationResult[TeamCarrier]
         Raises:
             TeamValidatorException
-            BoardCarrierEmptyException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -124,15 +120,10 @@ class TeamValidator(ModelValidator[Team]):
                     ex=carrier_validation.exception,
                 )
             )
-        # --- Cast the carrier_validation payload for additional tests. ---#
-        carrier = cast(
-            TeamCarrier,
-            carrier_validation.payload,
-        )
-        # --- Extract the blueprint to verify the attributes. ---#
+        # --- Extract the blueprint from the validated carrier. ---#
+        carrier = cast(TeamCarrier, carrier_validation.payload)
         blueprint = carrier.extract_blueprint()
-        
-        # Handle the case that there is no blueprint.
+        # Handle the case that the carrier does not produce a Blueprint.
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -141,11 +132,11 @@ class TeamValidator(ModelValidator[Team]):
                     cls_name=self.__class__.__name__,
                     msg=TeamValidatorException.MSG,
                     err_code=TeamValidatorException.ERR_CODE,
-                    ex=EmptyBoardCarrierException(
+                    ex=EmptyTeamCarrierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyBoardCarrierException.MSG,
-                        err_code=EmptyBoardCarrierException.ERR_CODE,
+                        msg=EmptyTeamCarrierException.MSG,
+                        err_code=EmptyTeamCarrierException.ERR_CODE,
                     ),
                 )
             )
@@ -280,9 +271,7 @@ class TeamValidator(ModelValidator[Team]):
                 owner=owner,
                 archetype=archetype,
             )
-            return ValidationResult.success(
-                TeamCarrier(model=payload)
-            )
+            return ValidationResult.success(TeamCarrier(model=payload))
         # The blueprint case
         payload = TeamBlueprint(
             id=id,
@@ -290,6 +279,4 @@ class TeamValidator(ModelValidator[Team]):
             owner=owner,
             archetype=archetype,
         )
-        return ValidationResult.success(
-            TeamCarrier(blueprint=payload)
-        )
+        return ValidationResult.success(TeamCarrier(blueprint=payload))
