@@ -274,24 +274,22 @@ class TeamValidator(ModelValidator[Team]):
         # --- Forward the appropriate work product to the caller. ---#
         # The model case
         if carrier.is_carrying_model:
+            payload = Team(
+                id=id,
+                board=board,
+                owner=owner,
+                archetype=archetype,
+            )
             return ValidationResult.success(
-                TeamCarrier(
-                    model=Team(
-                        id=id,
-                        board=board,
-                        owner=owner,
-                        archetype=archetype,
-                    )
-                )
+                TeamCarrier(model=payload)
             )
         # The blueprint case
+        payload = TeamBlueprint(
+            id=id,
+            board=board,
+            owner=owner,
+            archetype=archetype,
+        )
         return ValidationResult.success(
-            TeamCarrier(
-                blueprint=TeamBlueprint(
-                    id=id,
-                    board=board,
-                    owner=owner,
-                    archetype=archetype,
-                )
-            )
+            TeamCarrier(blueprint=payload)
         )

@@ -16,7 +16,7 @@ from domain import CombatantBlueprint, CombatantToken, TokenTypeUnion
 from transit import CombatantCarrier
 
 
-class CombatantTokenUnion(TokenTypeUnion[CombatantToken]):
+class CombatantTokenTypeUnion(TokenTypeUnion[CombatantToken]):
     """
     Role:
         - Metadata

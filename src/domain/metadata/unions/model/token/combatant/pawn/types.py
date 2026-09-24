@@ -12,11 +12,11 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import CombatantTokenUnion, PawnTokenBlueprint, PawnToken
+from domain import CombatantTokenTypeUnion, PawnTokenBlueprint, PawnToken
 from transit import PawnTokenCarrier
 
 
-class PawnTokenUnion(CombatantTokenUnion):
+class PawnTokenTypeUnion(CombatantTokenTypeUnion):
     """
     Role:
         - Metadata

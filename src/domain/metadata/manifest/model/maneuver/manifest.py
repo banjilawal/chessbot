@@ -11,8 +11,9 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Maneuver, ManeuverNullGroup, ManeuverTypeUnion, ModelManifest
-
+from domain import (
+    Maneuver, ManeuverNullGroup, ManeuverTypeUnion, ModelManifest
+)
 
 class ManeuverManifest(ModelManifest[Maneuver]):
     """

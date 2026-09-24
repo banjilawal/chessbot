@@ -16,7 +16,7 @@ from domain import KingTokenBlueprint, KingToken, TokenTypeUnion
 from transit import KingTokenCarrier
 
 
-class KingTokenUnion(TokenTypeUnion[KingToken]):
+class KingTokenTypeUnion(TokenTypeUnion[KingToken]):
     """
     Role:
         - Metadata

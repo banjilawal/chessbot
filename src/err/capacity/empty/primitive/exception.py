@@ -1,7 +1,7 @@
-# src/err/assurance/primitive/string/blank/exception.py
+# src/err/capacity/empty/primitive/exception.py
 
 """
-Module: err.assurance.primitive.string.blank.exception
+Module: err.capacity.empty.primitive.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,22 +11,22 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StringException
-
+from artifcat import MethodResultType
+from err import EmptyItemException
 
 __all__ = [
-    # ======================# STRING_BLANK_ERROR #======================#
-    "StringBlankException",
+    # ======================# PRIMITIVE_EMPTY_ERROR #======================#
+    "PrimitiveEmptyException",
 ]
 
-# ======================# STRING_BLANK_ERROR #======================#
-class StringBlankException(StringException):
+# ======================# PRIMITIVE_EMPTY_ERROR #======================#
+class PrimitiveEmptyException(EmptyItemException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a String is only whitespace.
+        1.  Indicating a required Primitive is empty.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class StringBlankException(StringException):
     Provides:
 
     Super Class:
-        AssuranceException
+        EmptyException
     """
-    MSG = "Whitespace string not allowed"
-    ERR_CODE = "STRING_BLANK_ERROR"
+    MSG = "Primitive cannot be empty."
+    ERR_CODE = "PRIMITIVE_EMPTY_ERROR"
     
     def __init__(
             self,

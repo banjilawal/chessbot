@@ -28,7 +28,7 @@ class Path(SearchableModel):
 
     Attributes:
         endpoints: SquareRegister
-        id: Optional[int]
+        label: Optional[int]
 
     Provides:
 

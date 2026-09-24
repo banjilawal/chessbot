@@ -1,7 +1,7 @@
-# src/err/assurance/primitive/string/empty/exception.py
+# src/err/capacity/empty/domain/exception.py
 
 """
-Module: err.assurance.primitive.string.empty.exception
+Module: err.capacity.empty.domain.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,22 +11,22 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StringException
-
+from artifcat import MethodResultType
+from err import EmptyItemException
 
 __all__ = [
-    # ======================# STRING_EMPTY_ERROR #======================#
-    "StringEmptyException",
+    # ======================# DOMAIN_EMPTY_ERROR #======================#
+    "DomainEmptyException",
 ]
 
-# ======================# STRING_EMPTY_ERROR #======================#
-class StringEmptyException(StringException):
+# ======================# DOMAIN_EMPTY_ERROR #======================#
+class DomainEmptyException(EmptyItemException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a String is empty (zero length).
+        1.  Indicating a required Domain is empty.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class StringEmptyException(StringException):
     Provides:
 
     Super Class:
-        StringException
+        EmptyException
     """
-    MSG = "String cannot be empty."
-    ERR_CODE = "STRING_EMPTY_ERROR"
+    MSG = "Domain cannot be empty."
+    ERR_CODE = "DOMAIN_EMPTY_ERROR"
     
     def __init__(
             self,
