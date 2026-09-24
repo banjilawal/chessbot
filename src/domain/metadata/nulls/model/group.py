@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from domain import Model, NullExceptionGroup
-from err import EntityCarrierNullException, ModelBlueprintNullException, ModelNullException
+from err import ModelCarrierNullException, ModelBlueprintNullException, ModelNullException
 
 T = TypeVar("T", bound="Model")
 
@@ -27,40 +27,38 @@ class ModelNullGroup(NullExceptionGroup[T], ABC, Generic[T]):
 
     Attributes:
         model: ModelNullException
-        carrier: EntityCarrierNullException
+        carrier: ModelCarrierNullException
         blueprint: ModelBlueprintNullException
 
     Provides:
 
     Super Class:
+        NullExceptionGroup
     """
-    _carrier: EntityCarrierNullException
-    _blueprint: ModelBlueprintNullException
     
     def __init__(
             self,
             model: ModelNullException,
-            carrier: EntityCarrierNullException,
+            carrier: ModelCarrierNullException,
             blueprint: ModelBlueprintNullException,
     ):
         """
         Args:
             model: ModelNullException
-            carrier: EntityCarrierNullException
+            carrier: ModelCarrierNullException
             blueprint: ModelBlueprintNullException
         """
-        super().__init__(model=model)
-        self._carrier = carrier
-        self._blueprint = blueprint
+        super().__init__(model=model, carrier=carrier, blueprint=blueprint)
+
         
     @property
     def model(self) -> ModelNullException:
         return cast(ModelNullException, super().model)
     
     @property
-    def carrier(self) -> EntityCarrierNullException:
-        return self._carrier
+    def carrier(self) -> ModelCarrierNullException:
+        return cast(ModelCarrierNullException, super().carrier)
     
     @property
     def blueprint(self) -> ModelBlueprintNullException:
-        return self._blueprint
+        return cast(ModelBlueprintNullException, super().blueprint)

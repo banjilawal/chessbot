@@ -13,11 +13,9 @@ version: 0.0.2
 from .container import *
 from .model import *
 from .movement import *
-from .node import *
 from .recurrence import *
-from .register import *
 from .space import *
-from .toggle import *
+from .structure import *
 
 # Modules
 from .exception import EntityCarrierNullException

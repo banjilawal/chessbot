@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from domain import Coord, RegisterBlueprint, CoordRegister
-
+from err import CoordRegisterNullException
 
 
 class CoordRegisterBlueprint(RegisterBlueprint[CoordRegister]):

@@ -13,9 +13,10 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from domain import Structure, NullExceptionGroup
-from err import BlueprintNullException, StructureNullException
+from err import StructureCarrierNullException, StructureBlueprintNullException, StructureNullException
 
 T = TypeVar("T", bound="Structure")
+
 
 class StructureNullGroup(NullExceptionGroup[T], ABC, Generic[T]):
     """
@@ -27,36 +28,37 @@ class StructureNullGroup(NullExceptionGroup[T], ABC, Generic[T]):
 
     Attributes:
         structure: StructureNullException
-        blueprint: BlueprintNullException
+        carrier: StructureCarrierNullException
+        blueprint: StructureBlueprintNullException
 
     Provides:
 
     Super Class:
         NullExceptionGroup
     """
-
     
     def __init__(
             self,
             structure: StructureNullException,
-            blueprint: BlueprintNullException,
+            carrier: StructureCarrierNullException,
+            blueprint: StructureBlueprintNullException,
     ):
         """
         Args:
             structure: StructureNullException
-            blueprint: BlueprintNullException
+            carrier: StructureCarrierNullException
+            blueprint: StructureBlueprintNullException
         """
-        super().__init__(structure=structure)
-        self._blueprint = blueprint
-        
+        super().__init__(structure=structure, carrier=carrier, blueprint=blueprint)
+    
     @property
     def structure(self) -> StructureNullException:
-        return cast(StructureNullException, super().model)
+        return cast(StructureNullException, super().structure)
     
     @property
-    def model(self) -> StructureNullException:
-        return self.structure
+    def carrier(self) -> StructureCarrierNullException:
+        return cast(StructureCarrierNullException, super().carrier)
     
     @property
-    def blueprint(self) -> BlueprintNullException:
-        return self._blueprint
+    def blueprint(self) -> StructureBlueprintNullException:
+        return cast(StructureBlueprintNullException, super().blueprint)
