@@ -96,8 +96,8 @@ class VectorRegisterCarrier(RegisterCarrier[VectorRegister]):
         
         structure = cast(VectorRegister, self._model)
         return VectorRegisterBlueprint(
-            origin=structure.origin,
-            destination=structure.destination,
+            u=structure.u,
+            v=structure.v,
         )
 
 

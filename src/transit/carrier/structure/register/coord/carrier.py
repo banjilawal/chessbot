@@ -97,7 +97,7 @@ class CoordRegisterCarrier(RegisterCarrier[CoordRegister]):
         structure = cast(CoordRegister, self._model)
         return CoordRegisterBlueprint(
             origin=structure.origin,
-            destination=structure.destination,
+            terminus=structure.terminus,
         )
 
 

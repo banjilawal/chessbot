@@ -9,10 +9,10 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Type
+from typing import Optional, Type, cast
 
-from domain import RegisterBlueprint, CoordRegister
-from err import CoordRegisterNullException
+from domain import Coord, RegisterBlueprint, CoordRegister
+
 
 
 class CoordRegisterBlueprint(RegisterBlueprint[CoordRegister]):
@@ -24,29 +24,47 @@ class CoordRegisterBlueprint(RegisterBlueprint[CoordRegister]):
          1.  Provide attributes for hydrating a CoordRegister.
 
      Attributes:
-         domain_class: Type[CoordRegister]
-         domain_null_exception: CoordRegisterNullException
+        origin: Coord
+        terminus: Coord
+        Optional[Type[CoordRegister]]
+        domain_null_exception: Optional[CoordRegisterNullException]
 
      Provides:
 
      Super Class:
-        Blueprint
+        RegisterBlueprint
      """
+    _origin: Coord
+    _terminus: Coord
     
     def __init__(
             self,
-            domain_class: Type[CoordRegister],
-            domain_null_exception: CoordRegisterNullException,
+            origin: Coord,
+            terminus: Coord,
+            domain_class: Optional[Type[CoordRegister]] | None = None,
+            domain_null_exception: Optional[CoordRegisterNullException] | None = None,
     ):
         """
         Args:
-            domain_class: Type[CoordRegister]
-            domain_null_exception: CoordRegisterNullException
+            origin: Coord
+            terminus: Coord
+            Optional[Type[CoordRegister]]
+            domain_null_exception: Optional[CoordRegisterNullException]
         """
         super().__init__(
-            domain_class=domain_class,
-            domain_null_exception=domain_null_exception
+            domain_class=domain_class or CoordRegister,
+            domain_null_exception=domain_null_exception or CoordRegisterNullException(),
         )
+        self._origin = origin
+        self._terminus = terminus
+        
+    @property
+    def origin(self) -> Coord:
+        return self._origin
+    
+    @property
+    def terminus(self) -> Coord:
+        return self._terminus
     
     @property
     def domain_class(self) -> Type[CoordRegister]:

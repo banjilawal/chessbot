@@ -24,13 +24,15 @@ class SquareRegisterBlueprint(RegisterBlueprint[SquareRegister]):
          1.  Provide attributes for hydrating a SquareRegister.
 
      Attributes:
-         domain_class: Type[SquareRegister]
-         domain_null_exception: SquareRegisterNullException
+        origin: Square
+        destination: Square
+        Optional[Type[SquareRegister]]
+        domain_null_exception: Optional[SquareRegisterNullException]
 
      Provides:
 
      Super Class:
-        Blueprint
+        RegisterBlueprint
      """
     _origin: Square
     _destination: Square
@@ -44,6 +46,8 @@ class SquareRegisterBlueprint(RegisterBlueprint[SquareRegister]):
     ):
         """
         Args:
+            origin: Square
+            destination: Square
             Optional[Type[SquareRegister]]
             domain_null_exception: Optional[SquareRegisterNullException]
         """

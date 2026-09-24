@@ -9,9 +9,9 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Type
+from typing import Optional, Type, cast
 
-from domain import RegisterBlueprint, VectorRegister
+from domain import RegisterBlueprint, Vector, VectorRegister
 from err import VectorRegisterNullException
 
 
@@ -24,29 +24,47 @@ class VectorRegisterBlueprint(RegisterBlueprint[VectorRegister]):
          1.  Provide attributes for hydrating a VectorRegister.
 
      Attributes:
-         domain_class: Type[VectorRegister]
-         domain_null_exception: VectorRegisterNullException
+        u: Vector
+        v: Vector
+        domain_class: Optional[Type[VectorRegister]]
+        domain_null_exception: Optional[VectorRegisterNullException]
 
      Provides:
 
      Super Class:
-        Blueprint
+        RegisterBlueprint
      """
+    _u: Vector
+    _v: Vector
     
     def __init__(
             self,
-            domain_class: Type[VectorRegister],
-            domain_null_exception: VectorRegisterNullException,
+            u: Vector,
+            v: Vector,
+            domain_class: Optional[Type[VectorRegister]] | None = None,
+            domain_null_exception: Optional[VectorRegisterNullException] | None = None,
     ):
         """
         Args:
-            domain_class: Type[VectorRegister]
-            domain_null_exception: VectorRegisterNullException
+            u: Vector
+            v: Vector
+            domain_class: Optional[Type[VectorRegister]]
+            domain_null_exception: Optional[VectorRegisterNullException]
         """
         super().__init__(
-            domain_class=domain_class,
-            domain_null_exception=domain_null_exception
+            domain_class=domain_class or VectorRegister,
+            domain_null_exception=domain_null_exception or VectorRegisterNullException(),
         )
+        self._u = u
+        self._v = v
+        
+    @property
+    def u(self) -> Vector:
+        return self._u
+    
+    @property
+    def v(self) -> Vector:
+        return self._v
     
     @property
     def domain_class(self) -> Type[VectorRegister]:
