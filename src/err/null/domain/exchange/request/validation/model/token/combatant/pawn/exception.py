@@ -1,7 +1,7 @@
-# src/err/null/domain/request/validation/model/token/exception.py
+# src/err/null/domain/request/validation/model/token/combatant/pawn/exception.py
 
 """
-Module: err.null.domain.request.validation/model.token.exception
+Module: err.null.domain.request.validation/model.token.combatant.pawn.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidationRequestNullException
+from err import CombatantTokenValidationRequestNullException
 
 __all__ = [
-    # ======================# TOKEN_VALIDATION_REQUEST_NULL_ERROR #======================#
-    "TokenValidationRequestNullException",
+    # ======================# PAWN_TOKEN_VALIDATION_REQUEST_NULL_ERROR #======================#
+    "PawnTokenValidationRequestNullException",
 ]
 
-# ======================# TOKEN_VALIDATION_REQUEST_NULL_ERROR #======================#
-class TokenValidationRequestNullException(ModelValidationRequestNullException):
+# ======================# PAWN_TOKEN_VALIDATION_REQUEST_NULL_ERROR #======================#
+class PawnTokenValidationRequestNullException(CombatantTokenValidationRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an TokenValidationRequest is null.
+        1.  Indicating that a PawnTokenValidationRequest is null.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class TokenValidationRequestNullException(ModelValidationRequestNullException):
     Provides:
 
     Super Class:
-        ModelValidationRequestNullException
+        CombatantTokenValidationRequestNullException
     """
-    MSG = "TokenValidationRequest cannot be null."
-    ERR_CODE = "TOKEN_VALIDATION_REQUEST_NULL_ERROR"
+    MSG = "PawnTokenValidationRequest cannot be null."
+    ERR_CODE = "PAWN_TOKEN_VALIDATION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

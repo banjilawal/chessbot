@@ -5,16 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/empty/carrier/model/attack/check/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/empty/carrier/model/attack/check/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/empty/carrier/model/attack/combatant/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/empty/carrier/model/attack/combatant/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/empty/carrier/model/attack/mate/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/empty/carrier/model/attack/mate/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/token/combatant/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/token/combatant/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/token/combatant/pawn/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/token/combatant/pawn/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/token/king/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/token/king/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/token/king/pawn/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/token/king/pawn/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/empty/carrier/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/empty/carrier/model/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/empty/carrier/model/attack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/empty/carrier/model/attack/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/empty/carrier/model/attack/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/empty/carrier/model/attack/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/token/exception.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,61 +58,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0000000000075457" />
-      <entry key="S10" value="1.0000038773717725" />
-      <entry key="S30" value="1.0279122860718832" />
-      <entry key="S60" value="1.7887094218285506" />
-      <entry key="M2" value="9.925320673852436" />
-      <entry key="M5" value="60.25366355474245" />
-      <entry key="M10" value="165.59477631267748" />
-      <entry key="M15" value="261.0184318657868" />
-      <entry key="M30" value="471.16217434677657" />
-      <entry key="H1" value="753.3330223514237" />
-      <entry key="H2" value="1120.6332948492047" />
-      <entry key="H4" value="1527.8673263460516" />
-      <entry key="D1" value="3546.7437702006814" />
-      <entry key="W1" value="19380.106191930394" />
+      <entry key="MS100" value="1.0000004868565204" />
+      <entry key="MS500" value="1.0548019946209302" />
+      <entry key="S2" value="1.596950464543068" />
+      <entry key="S5" value="2.1710901864400665" />
+      <entry key="S10" value="2.6054683958352096" />
+      <entry key="S30" value="3.5767140839258507" />
+      <entry key="S60" value="4.647253007970744" />
+      <entry key="M2" value="7.572351500982232" />
+      <entry key="M5" value="23.873963066177502" />
+      <entry key="M10" value="64.8536986367688" />
+      <entry key="M15" value="117.69273448409633" />
+      <entry key="M30" value="302.0028364284663" />
+      <entry key="H1" value="628.3018250127208" />
+      <entry key="H2" value="1079.031463312099" />
+      <entry key="H4" value="1581.1997515092423" />
+      <entry key="D1" value="3738.2862739920165" />
+      <entry key="W1" value="19592.571689620254" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="4.325267841010237E-142" />
-      <entry key="S10" value="2.079727828589664E-71" />
-      <entry key="S30" value="2.7500177755818527E-24" />
-      <entry key="S60" value="1.6583221897855436E-12" />
-      <entry key="M2" value="1.2907351355911558E-6" />
-      <entry key="M5" value="0.004994113901012909" />
-      <entry key="M10" value="0.10164339242181476" />
-      <entry key="M15" value="0.3202844163552555" />
-      <entry key="M30" value="1.7094261224192606" />
-      <entry key="H1" value="7.672441688839951" />
-      <entry key="H2" value="20.81799727181042" />
-      <entry key="H4" value="38.41809717337737" />
-      <entry key="D1" value="142.38178696971457" />
-      <entry key="W1" value="861.7450722399784" />
+      <entry key="MS500" value="3.566300982568099E-300" />
+      <entry key="S2" value="1.3742144112966198E-75" />
+      <entry key="S5" value="1.136031610303543E-30" />
+      <entry key="S10" value="1.1012223963848096E-15" />
+      <entry key="S30" value="1.7040125368696313E-5" />
+      <entry key="S60" value="0.007896355284202967" />
+      <entry key="M2" value="0.19322684894240305" />
+      <entry key="M5" value="1.697689479729784" />
+      <entry key="M10" value="4.709630961649147" />
+      <entry key="M15" value="7.327837131183382" />
+      <entry key="M30" value="12.697095680098172" />
+      <entry key="H1" value="20.501269314165167" />
+      <entry key="H2" value="34.444287090292136" />
+      <entry key="H4" value="53.620419638641444" />
+      <entry key="D1" value="160.73284789757767" />
+      <entry key="W1" value="880.7690877263204" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9201876506248751" />
-      <entry key="MS500" value="0.9835020740262483" />
-      <entry key="S2" value="0.9958497530944581" />
-      <entry key="S5" value="0.9983378297119025" />
-      <entry key="S10" value="0.9991724441507145" />
-      <entry key="S30" value="1.0276283396197272" />
-      <entry key="S60" value="1.7884017557868557" />
-      <entry key="M2" value="9.924158714403722" />
-      <entry key="M5" value="60.25564903054903" />
-      <entry key="M10" value="165.69208573889935" />
-      <entry key="M15" value="261.3337124742287" />
-      <entry key="M30" value="472.8637086451489" />
-      <entry key="H1" value="760.9906807588586" />
-      <entry key="H2" value="1141.43150815215" />
-      <entry key="H4" value="1566.2664565527741" />
-      <entry key="D1" value="3689.1097317592757" />
-      <entry key="W1" value="20241.836543866302" />
+      <entry key="MS100" value="0.9075196127299375" />
+      <entry key="MS500" value="1.0349012742024828" />
+      <entry key="S2" value="1.5902118955367526" />
+      <entry key="S5" value="2.167615683798921" />
+      <entry key="S10" value="2.6032807832963814" />
+      <entry key="S30" value="3.575410233289668" />
+      <entry key="S60" value="4.653943749049753" />
+      <entry key="M2" value="7.762219975306929" />
+      <entry key="M5" value="25.555294552476138" />
+      <entry key="M10" value="69.52529045935069" />
+      <entry key="M15" value="124.97334531476265" />
+      <entry key="M30" value="314.6521192825435" />
+      <entry key="H1" value="648.762681796692" />
+      <entry key="H2" value="1113.4417330086078" />
+      <entry key="H4" value="1634.7932530765356" />
+      <entry key="D1" value="3899.0017858753795" />
+      <entry key="W1" value="20473.32583451174" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -141,7 +143,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/capacity/empty/carrier/model/attack",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/null/domain/exchange/request/validation/model/token",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -155,11 +157,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/token" />
+      <recent name="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/token/combatant/pawn" />
+      <recent name="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/token/combatant" />
+      <recent name="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation" />
       <recent name="$PROJECT_DIR$/src/err/capacity/empty/carrier/model/attack" />
-      <recent name="$PROJECT_DIR$/src/err/capacity/empty/carrier/model" />
-      <recent name="$PROJECT_DIR$/src/err/capacity/empty/carrier/model/rank" />
-      <recent name="$PROJECT_DIR$/src/err/capacity/empty/carrier/structure/register" />
-      <recent name="$PROJECT_DIR$/src/err/capacity/empty/carrier" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/err/capacity/empty/carrier/model" />
@@ -847,7 +849,7 @@
       <workItem from="1788782347688" duration="75617000" />
       <workItem from="1788969937518" duration="171978000" />
       <workItem from="1790001362413" duration="735000" />
-      <workItem from="1790063398459" duration="68885000" />
+      <workItem from="1790063398459" duration="71828000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

@@ -10,6 +10,8 @@ version: 0.0.2
 # ============ ERR.NULL.DOMAIN.REQUEST.VALIDATION.MODEL.TOKEN PACKAGE ===========#
 
 # Packages
+from .combatant import *
+from .king import *
 
 # Modules
 from .exception import TokenValidationRequestNullException

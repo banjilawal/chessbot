@@ -1,7 +1,7 @@
-# src/err/null/domain/request/validation/model/token/exception.py
+# src/err/null/domain/request/validation/model/token/combatant/exception.py
 
 """
-Module: err.null.domain.request.validation/model.token.exception
+Module: err.null.domain.request.validation/model.token.combatant.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidationRequestNullException
+from err import TokenValidationRequestNullException
 
 __all__ = [
-    # ======================# TOKEN_VALIDATION_REQUEST_NULL_ERROR #======================#
-    "TokenValidationRequestNullException",
+    # ======================# COMBATANT_TOKEN_VALIDATION_REQUEST_NULL_ERROR #======================#
+    "CombatantTokenValidationRequestNullException",
 ]
 
-# ======================# TOKEN_VALIDATION_REQUEST_NULL_ERROR #======================#
-class TokenValidationRequestNullException(ModelValidationRequestNullException):
+# ======================# COMBATANT_TOKEN_VALIDATION_REQUEST_NULL_ERROR #======================#
+class CombatantTokenValidationRequestNullException(TokenValidationRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an TokenValidationRequest is null.
+        1.  Indicating that a CombatantTokenValidationRequest is null.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class TokenValidationRequestNullException(ModelValidationRequestNullException):
     Provides:
 
     Super Class:
-        ModelValidationRequestNullException
+        TokenValidationRequestNullException
     """
-    MSG = "TokenValidationRequest cannot be null."
-    ERR_CODE = "TOKEN_VALIDATION_REQUEST_NULL_ERROR"
+    MSG = "CombatantTokenValidationRequest cannot be null."
+    ERR_CODE = "COMBATANT_TOKEN_VALIDATION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,
