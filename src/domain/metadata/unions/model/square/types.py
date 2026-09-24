@@ -9,7 +9,6 @@ version: 0.0.2
 
 from __future__ import annotations
 
-
 from typing import Optional, Type, cast
 
 from domain import Square, SquareBlueprint, TypeUnion
@@ -22,13 +21,13 @@ class SquareTypeUnion(TypeUnion[Square]):
         - Metadata
 
     Responsibilities:
-        1. Catalog of types associated with building and validating an Square.
+        1. Catalog of types associated with building and validating a Square.
 
     Attributes:
         model: Type[Square]
         carrier: Type[SquareCarrier]
         blueprint: Type[SquareBlueprint]
-
+        
     Provides:
 
     Super Class:
@@ -36,21 +35,21 @@ class SquareTypeUnion(TypeUnion[Square]):
     """
     
     def __init__(
-            self, 
+            self,
             model: Optional[Type[Square]] | None = None,
-            carrier: Optional[Type[SquareCarrier]] | None = None, 
+            carrier: Optional[Type[SquareCarrier]] | None = None,
             blueprint: Optional[Type[SquareBlueprint]] | None = None,
     ):
         """
         Args:
             model: Optional[Type[Square]]
-            carrier: Optional[Type[SquareCarrier]
-            blueprint: Optional[Type[SquareBlueprint] 
+            carrier: Optional[Type[SquareCarrier]]
+            blueprint: Optional[Type[SquareBlueprint]]
         """
         super().__init__(
-            model=model or Square, 
-            carrier=carrier or SquareCarrier, 
-            blueprint=blueprint or SquareBlueprint
+            model=model or Square,
+            carrier=carrier or Type[SquareCarrier],
+            blueprint=blueprint or SquareBlueprint,
         )
     
     @property

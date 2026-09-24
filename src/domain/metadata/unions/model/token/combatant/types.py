@@ -43,7 +43,7 @@ class CombatantTokenUnion(TokenTypeUnion[CombatantToken]):
     ):
         """
         Args:
-            odel: Optional[Type[CombatantToken]]
+            model: Optional[Type[CombatantToken]]
             carrier: Optional[Type[CombatantCarrier]]
             blueprint: Optional[Type[CombatantBlueprint]]
         """

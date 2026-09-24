@@ -11,13 +11,13 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import KillCombatant, AttackNullGroup
+from domain import CombatantAttack, AttackNullGroup
 from err import (
     CombatantAttackNullException, CombatantAttackBlueprintNullException, CombatantAttackCarrierNullException
 )
 
 
-class KillAttackNullGroup(AttackNullGroup[KillCombatant]):
+class KillAttackNullGroup(AttackNullGroup[CombatantAttack]):
     """
     Role:
         - Metadata

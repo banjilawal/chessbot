@@ -43,7 +43,7 @@ class KingTokenUnion(TokenTypeUnion[KingToken]):
     ):
         """
         Args:
-            odel: Optional[Type[KingToken]]
+            model: Optional[Type[KingToken]]
             carrier: Optional[Type[KingTokenCarrier]]
             blueprint: Optional[Type[KingTokenBlueprint]]
         """

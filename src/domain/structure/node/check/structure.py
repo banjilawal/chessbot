@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import CheckWarning, Node
+from domain import CheckAttackWarning, Node
 
 
-class CheckNode(Node[CheckWarning]):
+class CheckNode(Node[CheckAttackWarning]):
     """
     Role:
         - Structural
@@ -35,14 +35,14 @@ class CheckNode(Node[CheckWarning]):
         Node
     """
     
-    def __init__(self, payload: CheckWarning):
+    def __init__(self, payload: CheckAttackWarning):
         super().__init__(payload=payload)
         super().next = None
         super.previous = None
         
     @property
-    def payload(self) -> CheckWarning:
-        return cast(CheckWarning, super().payload)
+    def payload(self) -> CheckAttackWarning:
+        return cast(CheckAttackWarning, super().payload)
     
     @property
     def next(self) -> Optional[CheckNode]:

@@ -5,10 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/unions/model/path/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/metadata/unions/model/path/types.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/model/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/model/attack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/model/attack/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/unions/model/attack/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/unions/model/attack/check/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/unions/model/attack/check/types.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/unions/model/attack/combatant/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/unions/model/attack/combatant/types.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/unions/model/attack/mate/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/unions/model/attack/mate/types.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/unions/model/attack/types.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/unions/model/square/home/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/metadata/unions/model/square/home/types.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/state/token/king/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/state/token/king/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/walk/attack/check/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/walk/attack/check/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/walk/attack/kill/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/walk/attack/kill/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/model/walk/attack/check/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/model/walk/attack/check/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/nulls/model/walk/attack/kill/group.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/nulls/model/walk/attack/kill/group.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/unions/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/unions/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/unions/model/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/unions/model/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/unions/model/square/types.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/unions/model/square/types.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/unions/model/token/combatant/types.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/unions/model/token/combatant/types.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/unions/model/token/king/types.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/unions/model/token/king/types.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/token/king/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/token/king/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/check/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/check/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/check/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/check/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/kill/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/kill/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/kill/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/walk/attack/kill/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/structure/node/check/structure.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/structure/node/check/structure.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,61 +73,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="0.006754197151220843" />
-      <entry key="MS500" value="0.37600048737999664" />
-      <entry key="S2" value="1.1288136455915034" />
-      <entry key="S5" value="2.222781616715898" />
-      <entry key="S10" value="3.6801540993398842" />
-      <entry key="S30" value="16.15851441093542" />
-      <entry key="S60" value="41.18163240311346" />
-      <entry key="M2" value="72.69417542070646" />
-      <entry key="M5" value="107.75338225636993" />
-      <entry key="M10" value="129.84780064467407" />
-      <entry key="M15" value="154.29261977967897" />
-      <entry key="M30" value="291.4107901931207" />
-      <entry key="H1" value="658.3621743408121" />
-      <entry key="H2" value="1282.3186997844161" />
-      <entry key="H4" value="2038.8463867953105" />
-      <entry key="D1" value="4637.644104392348" />
-      <entry key="W1" value="20577.497426209167" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000300557386137" />
+      <entry key="S2" value="1.0740426326168022" />
+      <entry key="S5" value="1.3531249691180784" />
+      <entry key="S10" value="1.6073262924245906" />
+      <entry key="S30" value="2.2175652834413135" />
+      <entry key="S60" value="2.9133863372036712" />
+      <entry key="M2" value="4.37110471047264" />
+      <entry key="M5" value="13.925868692758453" />
+      <entry key="M10" value="43.00015198437883" />
+      <entry key="M15" value="77.19464318910202" />
+      <entry key="M30" value="202.36695288013988" />
+      <entry key="H1" value="531.736397975733" />
+      <entry key="H2" value="1152.247150523687" />
+      <entry key="H4" value="1954.366413481659" />
+      <entry key="D1" value="4677.877082254691" />
+      <entry key="W1" value="20646.840925422443" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0000006248442668" />
-      <entry key="MS500" value="1.0574648461556566" />
-      <entry key="S2" value="1.6119546908493043" />
-      <entry key="S5" value="2.428572726705049" />
-      <entry key="S10" value="3.296282558234643" />
-      <entry key="S30" value="5.235208082692654" />
-      <entry key="S60" value="6.379683600976263" />
-      <entry key="M2" value="7.457677164715846" />
-      <entry key="M5" value="9.229790706343099" />
-      <entry key="M10" value="10.731263027328195" />
-      <entry key="M15" value="11.634487006718242" />
-      <entry key="M30" value="14.26254922182235" />
-      <entry key="H1" value="21.211891024598557" />
-      <entry key="H2" value="35.92972263512875" />
-      <entry key="H4" value="58.529874036422775" />
-      <entry key="D1" value="174.31677645089204" />
-      <entry key="W1" value="896.5201797455975" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="6.721801950033072E-169" />
+      <entry key="S5" value="5.3826270052010204E-68" />
+      <entry key="S10" value="2.3202904087787974E-34" />
+      <entry key="S30" value="7.056465878507283E-12" />
+      <entry key="S60" value="4.802190790523968E-6" />
+      <entry key="M2" value="0.005341506536468053" />
+      <entry key="M5" value="0.46049582233541836" />
+      <entry key="M10" value="2.5930619303090787" />
+      <entry key="M15" value="4.972198117060091" />
+      <entry key="M30" value="10.669862251461392" />
+      <entry key="H1" value="19.653471282690248" />
+      <entry key="H2" value="35.55527874068443" />
+      <entry key="H4" value="59.491336984764054" />
+      <entry key="D1" value="178.33401881665006" />
+      <entry key="W1" value="901.3546787467499" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.06861035935123942" />
-      <entry key="MS500" value="0.7869899530754126" />
-      <entry key="S2" value="2.254921005102923" />
-      <entry key="S5" value="4.277516416723898" />
-      <entry key="S10" value="6.697720549799569" />
-      <entry key="S30" value="21.23894991713312" />
-      <entry key="S60" value="47.460000708062395" />
-      <entry key="M2" value="80.07708649658913" />
-      <entry key="M5" value="116.92289103482736" />
-      <entry key="M10" value="140.53208287546556" />
-      <entry key="M15" value="165.8875767045601" />
-      <entry key="M30" value="305.64183332024584" />
-      <entry key="H1" value="679.544532606837" />
-      <entry key="H2" value="1318.2194777674829" />
-      <entry key="H4" value="2097.3505156967353" />
-      <entry key="D1" value="4811.943275913412" />
-      <entry key="W1" value="21474.00260521056" />
+      <entry key="MS100" value="5.60708265114815E-23" />
+      <entry key="MS500" value="5.2753884785970016E-5" />
+      <entry key="S2" value="0.14173490734959432" />
+      <entry key="S5" value="0.6932330646499324" />
+      <entry key="S10" value="1.190362662532191" />
+      <entry key="S30" value="2.0514895966018156" />
+      <entry key="S60" value="2.820273749879592" />
+      <entry key="M2" value="4.306170427667279" />
+      <entry key="M5" value="14.297411608041298" />
+      <entry key="M10" value="45.50010249286085" />
+      <entry key="M15" value="82.08096156544059" />
+      <entry key="M30" value="212.97032975059253" />
+      <entry key="H1" value="551.3395056142706" />
+      <entry key="H2" value="1187.7621795173116" />
+      <entry key="H4" value="2013.825835691747" />
+      <entry key="D1" value="4856.192299570881" />
+      <entry key="W1" value="21548.180425278795" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -135,7 +158,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/domain/metadata/unions/model",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/domain/metadata/unions/model/attack",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -149,11 +172,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/domain/metadata/unions/model/attack" />
       <recent name="$PROJECT_DIR$/src/domain/metadata/unions/model" />
       <recent name="$PROJECT_DIR$/src/domain/metadata/nulls/model/attack" />
       <recent name="$PROJECT_DIR$/src/domain/metadata/nulls/model" />
       <recent name="$PROJECT_DIR$/src/assurance/toolkit/model" />
-      <recent name="$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/structure/register" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/err/capacity/empty/carrier/model" />
@@ -841,7 +864,7 @@
       <workItem from="1788782347688" duration="75617000" />
       <workItem from="1788969937518" duration="171978000" />
       <workItem from="1790001362413" duration="735000" />
-      <workItem from="1790063398459" duration="78894000" />
+      <workItem from="1790063398459" duration="80971000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -2128,6 +2151,11 @@
           <url>file://$PROJECT_DIR$/src/err/null/domain/exchange/request/validation/model/token/king/exception.py</url>
           <line>11</line>
           <option name="timeStamp" value="465" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/domain/metadata/unions/model/square/home/__init__.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="466" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
