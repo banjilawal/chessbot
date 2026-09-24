@@ -1,7 +1,7 @@
-# src/err/capacity/empty/domain/exception.py
+# src/err/assurance/empty/domain/model/exception.py
 
 """
-Module: err.capacity.empty.domain.exception
+Module: err.assurance.empty.domain.model.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import EmptyItemException, EmptyDomainException
+from err import EmptyDomainException
 
 __all__ = [
-    # ======================# EMPTY_DOMAIN_ERROR #======================#
-    "EmptyDomainException",
+    # ======================# EMPTY_MODEL_ERROR #======================#
+    "EmptyModelException",
 ]
 
-# ======================# EMPTY_DOMAIN_ERROR #======================#
-class EmptyDomainException(EmptyItemException):
+# ======================# EMPTY_MODEL_ERROR #======================#
+class EmptyModelException(EmptyDomainException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required Domain is empty.
+        1.  Indicating a Model is empty.
 
     Attributes:
         msg: Optional[str]
@@ -37,14 +37,14 @@ class EmptyDomainException(EmptyItemException):
         cls_mthd: Optional[str]
         err_code: Optional[str]
         mthd_rslt_type: Optional[MethodResultType]
-        
+
     Provides:
 
     Super Class:
-        EmptyItemException
+       EmptyDomainException
     """
-    MSG = "Domain cannot be empty."
-    ERR_CODE = "EMPTY_DOMAIN_ERROR"
+    MSG = "Model cannot be empty. Its length cannot be zero"
+    ERR_CODE = "EMPTY_MODEL_ERROR"
     
     def __init__(
             self,

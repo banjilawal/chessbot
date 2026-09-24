@@ -1,7 +1,7 @@
-# src/err/capacity/empty/domain/exception.py
+# src/err/assurance/empty/domain/model/square/exception.py
 
 """
-Module: err.capacity.empty.domain.exception
+Module: err.assurance.empty.domain.model.square.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import EmptyItemException, EmptyDomainException
+from err import EmptyModelException
 
 __all__ = [
-    # ======================# EMPTY_DOMAIN_ERROR #======================#
-    "EmptyDomainException",
+    # ======================# EMPTY_SQUARE_ERROR #======================#
+    "EmptySquareException",
 ]
 
-# ======================# EMPTY_DOMAIN_ERROR #======================#
-class EmptyDomainException(EmptyItemException):
+# ======================# EMPTY_SQUARE_ERROR #======================#
+class EmptySquareException(EmptyModelException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required Domain is empty.
+        1.  Indicating a Square is empty.
 
     Attributes:
         msg: Optional[str]
@@ -37,14 +37,14 @@ class EmptyDomainException(EmptyItemException):
         cls_mthd: Optional[str]
         err_code: Optional[str]
         mthd_rslt_type: Optional[MethodResultType]
-        
+
     Provides:
 
     Super Class:
-        EmptyItemException
+       EmptyModelException
     """
-    MSG = "Domain cannot be empty."
-    ERR_CODE = "EMPTY_DOMAIN_ERROR"
+    MSG = "Square cannot be empty."
+    ERR_CODE = "EMPTY_SQUARE_ERROR"
     
     def __init__(
             self,

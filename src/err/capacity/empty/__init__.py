@@ -11,7 +11,6 @@ version: 0.0.2
 
 # Packages
 from .arena import *
-from err.capacity.empty.primitive.array import *
 from .binder import *
 from .board import *
 from .carrier import *

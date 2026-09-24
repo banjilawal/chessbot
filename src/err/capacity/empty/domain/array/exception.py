@@ -1,7 +1,7 @@
-# src/err/capacity/empty/domain/exception.py
+# src/err/capacity/empty/array/exception.py
 
 """
-Module: err.capacity.empty.domain.exception
+Module: err.capacity.empty.array.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import EmptyItemException, EmptyDomainException
+from err import EmptyDomainException
 
 __all__ = [
-    # ======================# EMPTY_DOMAIN_ERROR #======================#
-    "EmptyDomainException",
+    # ======================# EMPTY_LIST_ERROR #======================#
+    "EmptyListException",
 ]
 
-# ======================# EMPTY_DOMAIN_ERROR #======================#
-class EmptyDomainException(EmptyItemException):
+# ======================# EMPTY_LIST_ERROR #======================#
+class EmptyListException(EmptyDomainException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required Domain is empty.
+        1.  Indicating a required List is empty.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class EmptyDomainException(EmptyItemException):
     Provides:
 
     Super Class:
-        EmptyItemException
+        EmptyException
     """
-    MSG = "Domain cannot be empty."
-    ERR_CODE = "EMPTY_DOMAIN_ERROR"
+    MSG = "List cannot be empty."
+    ERR_CODE = "EMPTY_LIST_ERROR"
     
     def __init__(
             self,

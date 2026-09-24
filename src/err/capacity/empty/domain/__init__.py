@@ -10,7 +10,7 @@ version: 0.0.2
 # ============ ERR.CAPACITY.EMPTY.DOMAIN PACKAGE ===========#
 
 # Packages
-
+from .model import *
 
 # Modules
 from .exception import EmptyDomainException
