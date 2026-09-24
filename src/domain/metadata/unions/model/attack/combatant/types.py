@@ -1,7 +1,7 @@
-# src/domain/metadata/unions/model/attack/home/types.py
+# src/domain/metadata/unions/model/attack/combatant/types.py
 
 """
-Module: domain.metadata.unions.attack.home.types
+Module: domain.metadata.unions.attack.combatant.types
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -13,6 +13,7 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from domain import Attack, AttackTypeUnion, CombatantAttack
+from transit import CombatantAttackCarrier
 
 
 class CombatantAttackTypeUnion(AttackTypeUnion[Attack]):
@@ -21,7 +22,8 @@ class CombatantAttackTypeUnion(AttackTypeUnion[Attack]):
         - Metadata
 
     Responsibilities:
-        1. Catalog of types associated with building and validating a CombatantAttack.
+        1.  Catalog of types associated with building and validating a
+            CombatantAttack.
 
     Attributes:
         model: Type[CombatantAttack]

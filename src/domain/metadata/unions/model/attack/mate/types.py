@@ -1,7 +1,7 @@
-# src/domain/metadata/unions/model/attack/home/types.py
+# src/domain/metadata/unions/model/attack/mate/types.py
 
 """
-Module: domain.metadata.unions.attack.home.types
+Module: domain.metadata.unions.attack.mate.types
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -13,6 +13,7 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from domain import AttackTypeUnion, CheckmateAttack
+from transit import CheckmateAttackCarrier
 
 
 class CheckmateAttackTypeUnion(AttackTypeUnion[CheckmateAttack]):
@@ -21,7 +22,8 @@ class CheckmateAttackTypeUnion(AttackTypeUnion[CheckmateAttack]):
         - Metadata
 
     Responsibilities:
-        1. Catalog of types associated with building and validating a CheckmateAttack.
+        1.  Catalog of types associated with building and validating 
+            a CheckmateAttack.
 
     Attributes:
         model: Type[CheckmateAttack]
@@ -37,7 +39,7 @@ class CheckmateAttackTypeUnion(AttackTypeUnion[CheckmateAttack]):
     def __init__(
             self, 
             model: Optional[Type[CheckmateAttack]] | None = None,
-            carrier: Optional[Type[AttackCarrier]] | None = None,
+            carrier: Optional[Type[CheckmateAttackCarrier]] | None = None,
             blueprint: Optional[Type[CheckmateWarningBlueprint]] | None = None,
     ):
         """

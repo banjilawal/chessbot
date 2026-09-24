@@ -12,12 +12,12 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, Type, TypeVar, cast
 
-from domain import Attack, AttackBlueprint, TypeUnion
-
+from domain import Attack, AttackBlueprint, ModelTypeUnion
+from transit import AttackCarrier
 
 T = TypeVar("T", bound="Attack")
 
-class AttackTypeUnion(TypeUnion[T], ABC, Generic[T]):
+class AttackTypeUnion(ModelTypeUnion[T], Generic[T]):
     """
     Role:
         - Metadata
@@ -26,27 +26,27 @@ class AttackTypeUnion(TypeUnion[T], ABC, Generic[T]):
         1. Catalog of types associated with building and validating an Attack.
 
     Attributes:
-        model: Type[Attack]
-        carrier: Type[AttackCarrier]
-        blueprint: Type[AttackBlueprint]
+        model: Type[T]
+        carrier: Type[AttackCarrier[T]
+        blueprint: Type[AttackBlueprint[T]
         
     Provides:
 
     Super Class:
-        TypeUnion
+        ModelTypeUnion
     """
     
     def __init__(
             self,
-            model: Optional[Type[Attack]] | None = None,
-            carrier: Optional[Type[AttackCarrier]] | None = None,
-            blueprint: Optional[Type[AttackBlueprint]] | None = None,
+            model: Optional[Type[T]] | None = None,
+            carrier: Optional[Type[AttackCarrier[T]]] | None = None,
+            blueprint: Optional[Type[AttackBlueprint[T]]] | None = None,
     ):
         """
         Args:
-            model: Optional[Type[Attack]]
-            carrier: Optional[Type[AttackCarrier]]
-            blueprint: Optional[Type[AttackBlueprint]]
+            model: Optional[Type[T]]
+            carrier: Optional[Type[AttackCarrier[T]]
+            blueprint: Optional[Type[AttackBlueprint[T]]
         """
         super().__init__(
             model=model or Attack,
@@ -55,13 +55,13 @@ class AttackTypeUnion(TypeUnion[T], ABC, Generic[T]):
         )
     
     @property
-    def model(self) -> Type[Attack]:
-        return cast(Type[Attack], super().model)
+    def model(self) -> Type[T]:
+        return cast(Type[T], super().model)
     
     @property
-    def carrier(self) -> Type[AttackCarrier]:
-        return cast(Type[AttackCarrier], super().carrier)
+    def carrier(self) -> Type[AttackCarrier[T]]:
+        return cast(Type[AttackCarrier[T]], super().carrier)
     
     @property
-    def blueprint(self) -> Type[AttackBlueprint]:
-        return cast(Type[AttackBlueprint], super().blueprint)
+    def blueprint(self) -> Type[AttackBlueprint[T]]:
+        return cast(Type[AttackBlueprint[T]], super().blueprint)
