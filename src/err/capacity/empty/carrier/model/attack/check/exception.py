@@ -1,7 +1,7 @@
-# src/err/capacity/empty/carrier/model/attack/exception.py
+# src/err/capacity/empty/carrier/model/attack/check/exception.py
 
 """
-Module: err.capacity.empt.carrier.model.attack.exception
+Module: err.capacity.empt.carrier.model.attack.check.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import EmptyModelCarrierException
+from err import EmptyAttackCarrierException
 
 __all__ = [
-    # ======================# ATTACK_CARRIER_EMPTY_ERROR #======================#
-    "EmptyAttackCarrierException",
+    # ======================# CHECK_ATTACK_CARRIER_EMPTY_ERROR #======================#
+    "EmptyCheckAttackCarrierException",
 ]
 
-# ======================# ATTACK_CARRIER_EMPTY_ERROR #======================#
-class EmptyAttackCarrierException(EmptyModelCarrierException):
+# ======================# CHECK_ATTACK_CARRIER_EMPTY_ERROR #======================#
+class EmptyCheckAttackCarrierException(EmptyAttackCarrierException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a AttackCarrier is empty.
+        1.  Indicating a CheckAttackCarrier is empty.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class EmptyAttackCarrierException(EmptyModelCarrierException):
     Provides:
 
     Super Class:
-        EmptyModelCarrierException
+        AttackCarrierEmptyException
     """
-    MSG = "AttackCarrier cannot be empty."
-    ERR_CODE = "ATTACK_CARRIER_EMPTY_ERROR"
+    MSG = "CheckAttackCarrier cannot be empty."
+    ERR_CODE = "CHECK_ATTACK_CARRIER_EMPTY_ERROR"
     
     def __init__(
             self,

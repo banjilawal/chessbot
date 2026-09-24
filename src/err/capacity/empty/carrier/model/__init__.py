@@ -10,8 +10,8 @@ version: 0.0.2
 # ============ ERR.CAPACITY.EMPT.CARRIER.MODEL PACKAGE ===========#
 
 # Packages
-from .attack import *
 from .arena import *
+from .attack import *
 from .board import *
 from .coord import *
 from .game import *

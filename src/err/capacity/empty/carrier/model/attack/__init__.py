@@ -10,7 +10,9 @@ version: 0.0.2
 # ============ ERR.CAPACITY.EMPT.CARRIER.MODEL.ATTACK PACKAGE ===========#
 
 # Packages
-
+from .check import *
+from .combatant import *
+from .mate import *
 
 # Modules
 from .exception import EmptyAttackCarrierException
