@@ -17,7 +17,7 @@ from .coord import *
 from .game import *
 from .maneuver import *
 from .path import *
-from .player import *
+from .register import *
 from .rank import *
 from .scalar import *
 from .square import *

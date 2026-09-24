@@ -1,7 +1,7 @@
-# src/err/capacity/empty/carrier/structure/token/exception.py
+# src/err/capacity/empty/carrier/structure/register/exception.py
 
 """
-Module: err.capacity.empt.carrier.structure.token.exception
+Module: err.capacity.empt.carrier.structure.register.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import EmptyStructureCarrierException
 
 __all__ = [
-    # ======================# TOKEN_CARRIER_EMPTY_ERROR #======================#
-    "TokenCarrierEmptyException",
+    # ======================# REGISTER_CARRIER_EMPTY_ERROR #======================#
+    "EmptyRegisterCarrierException",
 ]
 
-# ======================# TOKEN_CARRIER_EMPTY_ERROR #======================#
-class TokenCarrierEmptyException(EmptyStructureCarrierException):
+# ======================# REGISTER_CARRIER_EMPTY_ERROR #======================#
+class EmptyRegisterCarrierException(EmptyStructureCarrierException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a TokenCarrier is empty.
+        1.  Indicating a RegisterCarrier is empty.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class TokenCarrierEmptyException(EmptyStructureCarrierException):
     Super Class:
         EmptyStructureCarrierException
     """
-    MSG = "TokenCarrier cannot be empty."
-    ERR_CODE = "TOKEN_CARRIER_EMPTY_ERROR"
+    MSG = "RegisterCarrier cannot be empty."
+    ERR_CODE = "REGISTER_CARRIER_EMPTY_ERROR"
     
     def __init__(
             self,

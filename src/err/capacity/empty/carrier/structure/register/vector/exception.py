@@ -1,7 +1,7 @@
-# src/err/capacity/empty/carrier/structure/vector/exception.py
+# src/err/capacity/empty/carrier/structure/register/vector/exception.py
 
 """
-Module: err.capacity.empt.carrier.structure.vector.exception
+Module: err.capacity.empt.carrier.structure.register.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import EmptyStructureCarrierException
+from err import EmptyRegisterCarrierException
 
 __all__ = [
-    # ======================# VECTOR_CARRIER_EMPTY_ERROR #======================#
-    "VectorCarrierEmptyException",
+    # ======================# VECTOR_REGISTER_CARRIER_EMPTY_ERROR #======================#
+    "EmptyVectorRegisterCarrierException",
 ]
 
-# ======================# VECTOR_CARRIER_EMPTY_ERROR #======================#
-class VectorCarrierEmptyException(EmptyStructureCarrierException):
+# ======================# VECTOR_REGISTER_CARRIER_EMPTY_ERROR #======================#
+class EmptyVectorRegisterCarrierException(EmptyRegisterCarrierException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a VectorCarrier is empty.
+        1.  Indicating a VectorRegisterCarrier is empty.
 
     Attributes:
         msg: Optional[str]
@@ -37,14 +37,14 @@ class VectorCarrierEmptyException(EmptyStructureCarrierException):
         cls_mthd: Optional[str]
         err_code: Optional[str]
         mthd_rslt_type: Optional[MethodResultType]
-        
+            
     Provides:
 
     Super Class:
-        EmptyStructureCarrierException
+        EmptyRegisterCarrierException
     """
-    MSG = "VectorCarrier cannot be empty."
-    ERR_CODE = "VECTOR_CARRIER_EMPTY_ERROR"
+    MSG = "VectorRegisterCarrier cannot be empty."
+    ERR_CODE = "VECTOR_REGISTER_CARRIER_EMPTY_ERROR"
     
     def __init__(
             self,

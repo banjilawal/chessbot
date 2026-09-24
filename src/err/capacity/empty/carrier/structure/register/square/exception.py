@@ -1,7 +1,7 @@
-# src/err/capacity/empty/carrier/structure/player/machine/exception.py
+# src/err/capacity/empty/carrier/structure/register/square/exception.py
 
 """
-Module: err.capacity.empt.carrier.structure.player.machine.exception
+Module: err.capacity.empt.carrier.structure.register.square.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PlayerCarrierEmptyException
+from err import EmptyRegisterCarrierException
 
 __all__ = [
-    # ======================# MACHINE_CARRIER_EMPTY_ERROR #======================#
-    "MachineCarrierEmptyException",
+    # ======================# SQUARE_REGISTER_CARRIER_EMPTY_ERROR #======================#
+    "EmptySquareRegisterCarrierException",
 ]
 
-# ======================# MACHINE_CARRIER_EMPTY_ERROR #======================#
-class MachineCarrierEmptyException(PlayerCarrierEmptyException):
+# ======================# SQUARE_REGISTER_CARRIER_EMPTY_ERROR #======================#
+class EmptySquareRegisterCarrierException(EmptyRegisterCarrierException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a MachineCarrier is empty.
+        1.  Indicating a SquareRegisterCarrier is empty.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class MachineCarrierEmptyException(PlayerCarrierEmptyException):
     Provides:
 
     Super Class:
-        PlayerCarrierEmptyException
+        EmptyRegisterCarrierException
     """
-    MSG = "MachineCarrier cannot be empty."
-    ERR_CODE = "MACHINE_CARRIER_EMPTY_ERROR"
+    MSG = "SquareRegisterCarrier cannot be empty."
+    ERR_CODE = "SQUARE_REGISTER_CARRIER_EMPTY_ERROR"
     
     def __init__(
             self,

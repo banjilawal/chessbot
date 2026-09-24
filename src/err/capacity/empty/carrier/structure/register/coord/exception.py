@@ -1,7 +1,7 @@
-# src/err/capacity/empty/carrier/structure/rank/rook/exception.py
+# src/err/capacity/empty/carrier/structure/register/coord/exception.py
 
 """
-Module: err.capacity.empt.carrier.structure.rank.rook.exception
+Module: err.capacity.empt.carrier.structure.register.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import RankCarrierEmptyException
+from err import EmptyRegisterCarrierException
 
 __all__ = [
-    # ======================# ROOK_CARRIER_EMPTY_ERROR #======================#
-    "RookCarrierEmptyException",
+    # ======================# COORD_REGISTER_CARRIER_EMPTY_ERROR #======================#
+    "EmptyCoordRegisterCarrierException",
 ]
 
-# ======================# ROOK_CARRIER_EMPTY_ERROR #======================#
-class RookCarrierEmptyException(RankCarrierEmptyException):
+# ======================# COORD_REGISTER_CARRIER_EMPTY_ERROR #======================#
+class EmptyCoordRegisterCarrierException(EmptyRegisterCarrierException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a RookCarrier is empty.
+        1.  Indicating a CoordRegisterCarrier is empty.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class RookCarrierEmptyException(RankCarrierEmptyException):
     Provides:
 
     Super Class:
-        RankCarrierEmptyException
+        EmptyRegisterCarrierException
     """
-    MSG = "RookCarrier cannot be empty."
-    ERR_CODE = "ROOK_CARRIER_EMPTY_ERROR"
+    MSG = "CoordRegisterCarrier cannot be empty."
+    ERR_CODE = "COORD_REGISTER_CARRIER_EMPTY_ERROR"
     
     def __init__(
             self,

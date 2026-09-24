@@ -15,7 +15,7 @@ from artifcat import ValidationResult
 from assurance import ModelValidator, VectorValidatorToolkit
 from domain import Vector, VectorBlueprint, VectorValidationRequest
 from err import (
-    VectorCarrierEmptyException, VectorValidationRequestNullException, VectorValidatorException
+    EmptyVectorCarrierException, VectorValidationRequestNullException, VectorValidatorException
 )
 from transit import VectorCarrier
 from util import LoggingLevelRouter
@@ -132,11 +132,11 @@ class VectorValidator(ModelValidator[Vector]):
                     cls_name=self.__class__.__name__,
                     msg=VectorValidatorException.MSG,
                     err_code=VectorValidatorException.ERR_CODE,
-                    ex=VectorCarrierEmptyException(
+                    ex=EmptyVectorCarrierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=VectorCarrierEmptyException.MSG,
-                        err_code=VectorCarrierEmptyException.ERR_CODE,
+                        msg=EmptyVectorCarrierException.MSG,
+                        err_code=EmptyVectorCarrierException.ERR_CODE,
                     ),
                 )
             )
