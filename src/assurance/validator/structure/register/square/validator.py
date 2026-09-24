@@ -18,8 +18,8 @@ from domain import (
     SquareValidationRequest
 )
 from err import (
-    EmptySquareCarrierException, EmptySquareRegisterCarrierException,
-    SquareRegisterValidatorException
+    DuplicateSquareException, EmptySquareCarrierException, EmptySquareRegisterCarrierException,
+    SquareRegisterValidationRequestNullException, SquareRegisterValidatorException
 )
 from transit import SquareCarrier, SquareRegisterCarrier
 from util import IdFactory, LoggingLevelRouter
@@ -190,6 +190,23 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
                 )
             # Put the register's good Square in the endpoints array.
             endpoint = cast(Square, square_carrier.entity)
+            # Handle the case that the origin and destination are the same.
+            if endpoint in endpoints:
+                # Send the exception chain on failure.
+                return ValidationResult.failure(
+                    SquareRegisterValidatorException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=SquareRegisterValidatorException.MSG,
+                        err_code=SquareRegisterValidatorException.ERR_CODE,
+                        ex=DuplicateSquareException(
+                            cls_mthd=method,
+                            cls_name=self.__class__.__name__,
+                            msg=DuplicateSquareException.MSG,
+                            err_code=DuplicateSquareException.ERR_CODE,
+                        ),
+                    )
+                )
             endpoints.append(endpoint)
         # --- Forward the appropriate work product to the caller. ---#  
         # The model case
