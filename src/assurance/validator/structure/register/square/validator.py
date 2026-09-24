@@ -9,14 +9,20 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, Optional, cast
+from typing import Any, List, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import RegisterValidator, SquareRegisterValidatorToolkit
-from domain import SquareRegister, SquareRegisterValidationRequest
-from err import EmptyBoardCarrierException, SquareRegisterValidatorException
-from transit import SquareRegisterCarrier
-from util import LoggingLevelRouter
+from domain import (
+    Square, SquareRegister, SquareRegisterBlueprint, SquareRegisterValidationRequest,
+    SquareValidationRequest
+)
+from err import (
+    EmptySquareCarrierException, EmptySquareRegisterCarrierException,
+    SquareRegisterValidatorException
+)
+from transit import SquareCarrier, SquareRegisterCarrier
+from util import IdFactory, LoggingLevelRouter
 
 
 class SquareRegisterValidator(RegisterValidator[SquareRegister]):
@@ -68,7 +74,7 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
                             null
                             not a SquareRegisterCarrier
                             an empty SquareRegisterCarrier.
-                    *   Either the board, row, or column attributes are flagged unsafe.
+                    *   Either the square, row, or column attributes are flagged unsafe.
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
@@ -134,60 +140,25 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
                     cls_name=self.__class__.__name__,
                     msg=SquareRegisterValidatorException.MSG,
                     err_code=SquareRegisterValidatorException.ERR_CODE,
-                    ex=EmptyBoardCarrierException(
+                    ex=EmptySquareRegisterCarrierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyBoardCarrierException.MSG,
-                        err_code=EmptyBoardCarrierException.ERR_CODE,
+                        msg=EmptySquareRegisterCarrierException.MSG,
+                        err_code=EmptySquareRegisterCarrierException.ERR_CODE,
                     ),
                 )
             )
-        # --- Run the board validation checks. ---#
-        board_validation = self.toolkit.helper.board_validator.execute(
-            candidate=BoardValidationRequest(
-                id=IdFactory.next_id(class_name="BoardValidationRequest"),
-                item=BoardCarrier(model=blueprint.board),
-            )
-        )
-        # Handle the case that the board is flagged.
-        if board_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                SquareRegisterValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=SquareRegisterValidatorException.MSG,
-                    err_code=SquareRegisterValidatorException.ERR_CODE,
-                    ex=board_validation.exception,
+        # --- Run the square validation checks. ---#
+        endpoints: List[Square] = []
+        for square in [blueprint.origin, blueprint.destination]:
+            square_validation = self.toolkit.helper.square_validator.execute(
+            candidate=SquareValidationRequest(
+                    id=IdFactory.next_id(class_name="SquareValidationRequest"),
+                    item=SquareCarrier(model=square),
                 )
             )
-        # --- Extract the board validation payload. ---#
-        board_carrier = cast(
-            BoardCarrier,
-            board_validation.payload
-        )
-        # Handle the case that the board_carrier does not contain a model.
-        if not board_carrier.is_carrying_model:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                SquareRegisterValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=SquareRegisterValidatorException.MSG,
-                    err_code=SquareRegisterValidatorException.ERR_CODE,
-                    ex=EmptyBoardCarrierException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=EmptyBoardCarrierException.MSG,
-                        err_code=EmptyBoardCarrierException.ERR_CODE,
-                    ),
-                )
-            )
-        # Handle the case that any squareRegister component in the blueprint is flagged.
-        components: List[int] = []
-        for number in [blueprint.row, blueprint.column]:
-            validation = self.toolkit.helper.number_validator.execute(number)
-            if validation.is_failure:
+            # Handle the case that the square is flagged.
+            if square_validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     SquareRegisterValidatorException(
@@ -195,23 +166,40 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
                         cls_name=self.__class__.__name__,
                         msg=SquareRegisterValidatorException.MSG,
                         err_code=SquareRegisterValidatorException.ERR_CODE,
-                        ex=validation.exception,
+                        ex=square_validation.exception,
                     )
                 )
-            components.append(cast(int, validation.payload))
-        # --- Extract validation payloads. ---#
-        board = cast(Board, board_carrier.entity)
-        row = components[0]
-        column = components[1]
+            # Otherwise, extract the square from the carrier
+            square_carrier = cast(SquareCarrier, square_validation.payload)
+            # Handle the case that the carrier does not have a validated Square for the register.
+            if not square_carrier.is_carrying_model:
+                # Send the exception chain on failure.
+                return ValidationResult.failure(
+                    SquareRegisterValidatorException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=SquareRegisterValidatorException.MSG,
+                        err_code=SquareRegisterValidatorException.ERR_CODE,
+                        ex=EmptySquareCarrierException(
+                            cls_mthd=method,
+                            cls_name=self.__class__.__name__,
+                            msg=EmptySquareCarrierException.MSG,
+                            err_code=EmptySquareCarrierException.ERR_CODE,
+                        ),
+                    )
+                )
+            # Put the register's good Square in the endpoints array.
+            endpoint = cast(Square, square_carrier.entity)
+            endpoints.append(endpoint)
         # --- Forward the appropriate work product to the caller. ---#  
         # The model case
         if carrier.is_carrying_model:
-            model = SquareRegister(board=board, row=row, column=column)
+            model = SquareRegister(origin=endpoints[0], destination=endpoints[1])
             return ValidationResult.success(
                 SquareRegisterCarrier(model=model)
             )
         # The blueprint case
-        blueprint = SquareRegisterBlueprint(board=board, row=row, column=column)
+        blueprint = SquareRegisterBlueprint(origin=endpoints[0], destination=endpoints[1])
         return ValidationResult.success(
             SquareRegisterCarrier(blueprint=blueprint)
         )
