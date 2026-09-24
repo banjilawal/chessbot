@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .blueprint import MateEnemyBlueprint
+from .blueprint import CheckmateAttackBlueprint

@@ -9,14 +9,15 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import Optional, Type, cast
+from typing import Generic, Optional, Type, TypeVar, cast
 
 from domain import Attack, Maneuver, SearchableModelBlueprint, Token
 from err import AttackNullException
 
+T = TypeVar("T", bound="Attack")
 
-class AttackBlueprint(SearchableModelBlueprint[Attack], ABC):
+
+class AttackBlueprint(SearchableModelBlueprint[T], Generic[T]):
     """
      Role:
         1.  Metadata

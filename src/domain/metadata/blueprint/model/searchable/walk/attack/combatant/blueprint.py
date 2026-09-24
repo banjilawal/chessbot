@@ -15,13 +15,13 @@ from domain import AttackBlueprint, CombatantAttack, CombatantToken, Maneuver, T
 from err import CombatantAttackNullException
 
 
-class KillEnemyBlueprint(AttackBlueprint):
+class CombatantAttackBlueprint(AttackBlueprint[CombatantAttack]):
     """
      Role:
         1.  Metadata
 
      Responsibilities:
-        1.  Provides values for hydrating an AttackEnemyCombatant object.
+        1.  Provides values for hydrating a CombatantAttack object.
 
      Attributes:
         attacker: Token
@@ -30,7 +30,7 @@ class KillEnemyBlueprint(AttackBlueprint):
         attacker_reward: Optional[int]
         id: Optional[int]
         
-        domain_class: Optional[Type[AttackEnemyCombatant]]
+        domain_class: Optional[Type[CombatantAttack]]
         domain_null_exception: Optional[KillAttackNullException]
 
      Provides:
@@ -54,7 +54,7 @@ class KillEnemyBlueprint(AttackBlueprint):
             attacker: Token
             maneuver: Maneuver
             victim: CombatantToken,
-            domain_class: Optional[Type[AttackEnemyCombatant]]
+            domain_class: Optional[Type[CombatantAttack]]
             domain_null_exception: Optional[KillAttackNullException]
             attacker_reward: Optional[int]
             id: Optional[int]

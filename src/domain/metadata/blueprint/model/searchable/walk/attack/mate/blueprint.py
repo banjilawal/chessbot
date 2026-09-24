@@ -15,13 +15,13 @@ from domain import AttackBlueprint, KingToken, Maneuver, CheckmateAttack, Token
 from err import CheckmateAttackNullException
 
 
-class MateEnemyBlueprint(AttackBlueprint):
+class CheckmateAttackBlueprint(AttackBlueprint[CheckmateAttack]):
     """
      Role:
         1.  Metadata
 
      Responsibilities:
-        1.  Provides values for hydrating a MateEnemyKing object.
+        1.  Provides values for hydrating a CheckmateAttack object.
 
      Attributes:
         attacker: Token
@@ -30,7 +30,7 @@ class MateEnemyBlueprint(AttackBlueprint):
         attacker_reward: Optional[int]
         id: Optional[int]
         
-        domain_class: Optional[Type[MateEnemyKing]]
+        domain_class: Optional[Type[CheckmateAttack]]
         domain_null_exception: Optional[MateAttackNullException]
 
      Provides:
@@ -54,7 +54,7 @@ class MateEnemyBlueprint(AttackBlueprint):
             attacker: Token
             maneuver: Maneuver
             mated_king: KingToken,
-            domain_class: Optional[Type[MateEnemyKing]]
+            domain_class: Optional[Type[CheckmateAttack]]
             domain_null_exception: Optional[MateAttackNullException]
             attacker_reward: Optional[int]
             id: Optional[int]

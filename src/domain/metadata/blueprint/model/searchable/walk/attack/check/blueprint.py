@@ -15,13 +15,13 @@ from domain import AttackBlueprint, CheckWarning, KingToken, Maneuver, Token
 from err import CheckAttackNullException
 
 
-class CheckEnemyBlueprint(AttackBlueprint):
+class CheckWarningBlueprint(AttackBlueprint[CheckWarning]):
     """
      Role:
         1.  Metadata
 
      Responsibilities:
-        1.  Provides values for hydrating a CheckEnemyKing object.
+        1.  Provides values for hydrating a CheckWarning object.
 
      Attributes:
         attacker: Token
@@ -30,7 +30,7 @@ class CheckEnemyBlueprint(AttackBlueprint):
         attacker_reward: Optional[int]
         id: Optional[int]
         
-        domain_class: Optional[Type[CheckEnemyKing]]
+        domain_class: Optional[Type[CheckWarning]]
         domain_null_exception: Optional[CheckAttackNullException]
 
      Provides:
@@ -54,7 +54,7 @@ class CheckEnemyBlueprint(AttackBlueprint):
             attacker: Token
             maneuver: Maneuver
             checked_king: KingToken,
-            domain_class: Optional[Type[CheckEnemyKing]]
+            domain_class: Optional[Type[CheckWarning]]
             domain_null_exception: Optional[CheckAttackNullException]
             attacker_reward: Optional[int]
             id: Optional[int]
