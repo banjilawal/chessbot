@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from typing import Optional
 
+from config import NumericSetting
 from domain import Path, SearchableModel, Token
 
 
@@ -50,9 +51,8 @@ class Maneuver(SearchableModel):
             benefit: Optional[int]
         """
         self._path = path
-        self._benefit = benefit or 0
         self._traveller = traveller
-
+        self._benefit = benefit or NumericSetting().negative_infinity
     
     @property
     def traveller(self) -> Token:
