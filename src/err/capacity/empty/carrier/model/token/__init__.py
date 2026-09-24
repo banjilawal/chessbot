@@ -14,4 +14,4 @@ from .combatant import *
 from .king import *
 
 # Modules
-from .exception import TokenCarrierEmptyException
+from .exception import EmptyTokenCarrierException

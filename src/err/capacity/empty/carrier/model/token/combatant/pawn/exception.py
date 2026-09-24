@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import CombatantCarrierEmptyException
+from err import EmptyCombatantCarrierException
 
 __all__ = [
     # ======================# PAWN_TOKEN_CARRIER_EMPTY_ERROR #======================#
-    "PawnTokenCarrierEmptyException",
+    "EmptyPawnTokenCarrierException",
 ]
 
 # ======================# PAWN_TOKEN_CARRIER_EMPTY_ERROR #======================#
-class PawnTokenCarrierEmptyException(CombatantCarrierEmptyException):
+class EmptyPawnTokenCarrierException(EmptyCombatantCarrierException):
     """
     Role:
         - Error Tracing

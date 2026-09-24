@@ -19,7 +19,7 @@ from domain import (
 )
 from err import (
     CombatantReadinessNullException, FormationNullException, CombatantTokenValidatorException,
-    TeamCarrierEmptyException, CombatantCarrierEmptyException, TokenDeploymentNullException
+    TeamCarrierEmptyException, EmptyCombatantCarrierException, TokenDeploymentNullException
 )
 from transit import CombatantCarrier, TeamCarrier
 from util import IdFactory, LoggingLevelRouter
@@ -92,11 +92,11 @@ class CombatantTokenValidator:
                     cls_name=self.__class__.__name__,
                     msg=CombatantTokenValidatorException.MSG,
                     err_code=CombatantTokenValidatorException.ERR_CODE,
-                    ex=CombatantCarrierEmptyException(
+                    ex=EmptyCombatantCarrierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=CombatantCarrierEmptyException.MSG,
-                        err_code=CombatantCarrierEmptyException.ERR_CODE,
+                        msg=EmptyCombatantCarrierException.MSG,
+                        err_code=EmptyCombatantCarrierException.ERR_CODE,
                     ),
                 )
             )

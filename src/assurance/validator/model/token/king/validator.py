@@ -19,7 +19,7 @@ from domain import (
 )
 from err import (
     FormationNullException, KingReadinessNullException, KingTokenValidatorException,
-    TeamCarrierEmptyException, KingTokenCarrierEmptyException, TokenDeploymentNullException
+    TeamCarrierEmptyException, EmptyKingTokenCarrierException, TokenDeploymentNullException
 )
 from transit import KingTokenCarrier, TeamCarrier
 from util import IdFactory, LoggingLevelRouter
@@ -89,11 +89,11 @@ class KingTokenValidator:
                     cls_name=self.__class__.__name__,
                     msg=KingTokenValidatorException.MSG,
                     err_code=KingTokenValidatorException.ERR_CODE,
-                    ex=KingTokenCarrierEmptyException(
+                    ex=EmptyKingTokenCarrierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=KingTokenCarrierEmptyException.MSG,
-                        err_code=KingTokenCarrierEmptyException.ERR_CODE,
+                        msg=EmptyKingTokenCarrierException.MSG,
+                        err_code=EmptyKingTokenCarrierException.ERR_CODE,
                     ),
                 )
             )
