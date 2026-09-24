@@ -1,7 +1,7 @@
-# src/err/null/domain/request/validation/model/rank/exception.py
+# src/err/null/domain/request/validation/model/rank/pawn/exception.py
 
 """
-Module: err.null.domain.request.validation/model.rank.exception
+Module: err.null.domain.request.validation/model.rank.pawn.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidationRequestNullException
+from err import RankValidationRequestNullException
 
 __all__ = [
-    # ======================# RANK_VALIDATION_REQUEST_NULL_ERROR #======================#
-    "RankValidationRequestNullException",
+    # ======================# PAWN_VALIDATION_REQUEST_NULL_ERROR #======================#
+    "PawnValidationRequestNullException",
 ]
 
-# ======================# RANK_VALIDATION_REQUEST_NULL_ERROR #======================#
-class RankValidationRequestNullException(ModelValidationRequestNullException):
+# ======================# PAWN_VALIDATION_REQUEST_NULL_ERROR #======================#
+class PawnValidationRequestNullException(RankValidationRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an RankValidationRequest is null.
+        1.  Indicating that a PawnValidationRequest is null.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class RankValidationRequestNullException(ModelValidationRequestNullException):
     Provides:
 
     Super Class:
-        ModelValidationRequestNullException
+        RankValidationRequestNullException
     """
-    MSG = "RankValidationRequest cannot be null."
-    ERR_CODE = "RANK_VALIDATION_REQUEST_NULL_ERROR"
+    MSG = "PawnValidationRequest cannot be null."
+    ERR_CODE = "PAWN_VALIDATION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

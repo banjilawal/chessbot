@@ -1,7 +1,7 @@
-# src/err/null/domain/request/validation/model/rank/exception.py
+# src/err/null/domain/request/validation/model/rank/king/exception.py
 
 """
-Module: err.null.domain.request.validation/model.rank.exception
+Module: err.null.domain.request.validation/model.rank.king.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidationRequestNullException
+from err import RankValidationRequestNullException
 
 __all__ = [
-    # ======================# RANK_VALIDATION_REQUEST_NULL_ERROR #======================#
-    "RankValidationRequestNullException",
+    # ======================# KING_VALIDATION_REQUEST_NULL_ERROR #======================#
+    "KingValidationRequestNullException",
 ]
 
-# ======================# RANK_VALIDATION_REQUEST_NULL_ERROR #======================#
-class RankValidationRequestNullException(ModelValidationRequestNullException):
+# ======================# KING_VALIDATION_REQUEST_NULL_ERROR #======================#
+class KingValidationRequestNullException(RankValidationRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an RankValidationRequest is null.
+        1.  Indicating that a KingValidationRequest is null.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class RankValidationRequestNullException(ModelValidationRequestNullException):
     Provides:
 
     Super Class:
-        ModelValidationRequestNullException
+        RankValidationRequestNullException
     """
-    MSG = "RankValidationRequest cannot be null."
-    ERR_CODE = "RANK_VALIDATION_REQUEST_NULL_ERROR"
+    MSG = "KingValidationRequest cannot be null."
+    ERR_CODE = "KING_VALIDATION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,
