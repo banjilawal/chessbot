@@ -10,11 +10,12 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar, cast
+from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
 from assurance import RegisterValidatorToolkit, StructureValidator
-from domain import Register, StructureValidationRequest
+from domain import Register
+from transit import RegisterCarrier
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Register")
@@ -36,7 +37,7 @@ class RegisterValidator(StructureValidator[T], ABC, Generic[T]):
         - def execute(candidate: Any) -> ValidationResult[Blueprint[T]|T]:
 
     Super Class:
-        Validator
+        StructureValidator
     """
     
     def __init__(self, toolkit: RegisterValidatorToolkit[T]):
@@ -52,18 +53,15 @@ class RegisterValidator(StructureValidator[T], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(
-            self,
-            candidate: StructureValidationRequest
-    ) -> ValidationResult[T]:
+    def execute(self, candidate: Any) -> ValidationResult[RegisterCarrier[T]]:
         """
         Verify the candidate is an EntityCarrier whose payload is safe.
         Args:
-            candidate: StructureValidationRequest
+            candidate: Any
         Returns:
-           ValidationResult[T]
+           ValidationResult[RegisterCarrier[T]]
         Raises:
-            ValidatorException
+            RegisterValidatorException
         """
         pass
     

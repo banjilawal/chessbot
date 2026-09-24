@@ -1,7 +1,7 @@
-# src/err/assurance/validator/structure/register/toggle/exception.py
+# src/err/assurance/validator/structure/register/cartesian/exception.py
 
 """
-Module: err.assurance.validator.structure.egister.toggle.exception
+Module: err.assurance.validator.structure.egister.cartesian.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# VECTOR_TOGGLE_REGISTER_VALIDATOR_FAILURE #======================#
-    "CartesianToggleRegisterValidatorException",
+    # ======================# CARTESIAN_REGISTER_VALIDATOR_FAILURE #======================#
+    "CartesianRegisterValidatorException",
 ]
 
-# ======================# VECTOR_TOGGLE_REGISTER_VALIDATOR_FAILURE #======================#
-class CartesianToggleRegisterValidatorException(RegisterValidatorException):
+# ======================# CARTESIAN_REGISTER_VALIDATOR_FAILURE #======================#
+class CartesianRegisterValidatorException(RegisterValidatorException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a CartesianToggleRegisterValidator failed.
+        1.  Indicating assurance by a CartesianRegisterValidator failed.
 
     Attributes:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class CartesianToggleRegisterValidatorException(RegisterValidatorException):
     Super Class:
         RegisterValidatorException
     """
-    MSG = "CartesianToggleRegisterValidator failed."
-    ERR_CODE = "VECTOR_TOGGLE_REGISTER_VALIDATOR_FAILURE"
+    MSG = "CartesianRegisterValidator failed."
+    ERR_CODE = "CARTESIAN_REGISTER_VALIDATOR_FAILURE"
     
     def __init__(
             self,

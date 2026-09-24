@@ -10,11 +10,12 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar, cast
+from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
 from assurance import StructureValidatorToolkit, Validator
 from domain import Structure, StructureValidationRequest
+from transit import StructureCarrier
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Structure")
@@ -33,7 +34,7 @@ class StructureValidator(Validator[T], ABC, Generic[T]):
         toolkit: StructureValidationToolkit[T]
 
     Provides:
-        - def execute(candidate: Any) -> ValidationResult[Blueprint[T]|T]:
+        - def execute(candidate: Any) -> ValidationResult[StructureCarrier[T]]:
 
     Super Class:
         Validator
@@ -52,18 +53,15 @@ class StructureValidator(Validator[T], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(
-            self,
-            candidate: StructureValidationRequest
-    ) -> ValidationResult[T]:
+    def execute(self, candidate: Any) -> ValidationResult[StructureCarrier[T]]:
         """
         Verify the candidate is an EntityCarrier whose payload is safe.
         Args:
-            candidate: ValidationRequest[T]
+            candidate: Any
         Returns:
-           ValidationResult[T]
+           ValidationResult[StructureCarrier[T]]
         Raises:
-            ValidatorException
+            StructureValidatorException
         """
         pass
     

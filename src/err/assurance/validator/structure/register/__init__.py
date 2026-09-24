@@ -10,9 +10,11 @@ version: 0.0.2
 # =========== ERR.ASSURANCE.VALIDATOR.STRUCTURE.EGISTER PACKAGE ===========#
 
 # Packages
-from .vector import *
+from .cartesian import *
+from .coord import *
 from .square import *
-from .toggle import *
+from .vector import *
+
 
 # Modules
 from .exception import RegisterValidatorException

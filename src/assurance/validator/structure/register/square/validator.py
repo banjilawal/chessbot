@@ -9,11 +9,12 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import RegisterValidator, SquareRegisterValidatorToolkit
-from domain import SquareRegister, StructureValidationRequest
+from domain import SquareRegister
+from transit import SquareRegisterCarrier
 from util import LoggingLevelRouter
 
 
@@ -30,10 +31,10 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
         toolkit: SquareRegisterValidatorToolkit
 
     Provides:
-        - def execute(candidate: Any) -> ValidationResult[SquareRegister]:
+        - def execute(candidate: Any) -> ValidationResult[SquareRegisterCarrier]:
 
     Super Class:
-        Validator
+        RegisterValidator
     """
     
     def __init__(
@@ -53,18 +54,15 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
         return cast(SquareRegisterValidatorToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(
-            self,
-            candidate: StructureValidationRequest
-    ) -> ValidationResult[SquareRegister]:
+    def execute(self, candidate: Any) -> ValidationResult[SquareRegisterCarrier]:
         """
         Verify the candidate is an EntityCarrier whose payload is safe.
         Args:
-            candidate: StructureValidationRequest
+            candidate: Any
         Returns:
-           ValidationResult[SquareRegister]
+           ValidationResult[SquareRegisterCarrier]
         Raises:
-            ValidatorException
+            SquareRegisterValidatorException
         """
         pass
     

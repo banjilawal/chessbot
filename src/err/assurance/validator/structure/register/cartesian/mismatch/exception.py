@@ -1,7 +1,7 @@
-# src/err/assurance/validator/structure/register/vector_toggle/exception.py
+# src/err/assurance/validator/structure/register/vector_cartesian/exception.py
 
 """
-Module: err.assurance.validator.structure.egister.vector_toggle.exception
+Module: err.assurance.validator.structure.egister.vector_cartesian.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import CartesianToggleRegisterValidatorException
+from err import CartesianRegisterValidatorException
 from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# VECTOR_TOGGLE_REGISTER_MISMATCH_ERROR #======================#
-    "CartesianToggleRegisterMismatchException",
+    # ======================# CARTESIAN_REGISTER_MISMATCH_ERROR #======================#
+    "CartesianRegisterMismatchException",
 ]
 
-# ======================# VECTOR_TOGGLE_REGISTER_MISMATCH_ERROR #======================#
-class CartesianToggleRegisterMismatchException(CartesianToggleRegisterValidatorException):
+# ======================# CARTESIAN_REGISTER_MISMATCH_ERROR #======================#
+class CartesianRegisterMismatchException(CartesianRegisterValidatorException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a CartesianToggleRegister's a-b slots contain different types.
+        1.  Indicating assurance by a CartesianRegister's a-b slots contain different types.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class CartesianToggleRegisterMismatchException(CartesianToggleRegisterValidatorE
     Provides:
 
     Super Class:
-        CartesianToggleRegisterValidatorException
+        CartesianRegisterValidatorException
     """
-    MSG = "CartesianToggleRegister slots cannot hold different types."
-    ERR_CODE = "VECTOR_TOGGLE_REGISTER_MISMATCH_ERROR"
+    MSG = "CartesianRegister slots cannot hold different types."
+    ERR_CODE = "CARTESIAN_REGISTER_MISMATCH_ERROR"
     
     def __init__(
             self,
