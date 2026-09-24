@@ -9,13 +9,15 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from _testcapi import Generic
+from typing import Optional, TypeVar, cast
 
-from domain import HumanBlueprint, MachineBlueprint, Player, PlayerBlueprint
+from domain import HumanPlayerBlueprint, MachinePlayerBlueprint, Player, PlayerBlueprint
 from transit import ModelCarrier
 
+T = TypeVar("T", bound="Player")
 
-class PlayerCarrier(ModelCarrier[Player]):
+class PlayerCarrier(ModelCarrier[T], Generic[T]):
     """
     Role:
         - Boundary Carrier Interface
@@ -37,7 +39,7 @@ class PlayerCarrier(ModelCarrier[Player]):
     Super Class:
         ModelCarrier
     """
-    _model: Optional[Player]
+    _model: Optional[T]
     _blueprint: Optional[PlayerBlueprint]
     
     def __init__(
@@ -105,11 +107,11 @@ class PlayerCarrier(ModelCarrier[Player]):
         blueprint = self.extract_blueprint()
         if blueprint is None:
             return False
-        return isinstance(blueprint, HumanBlueprint)
+        return isinstance(blueprint, HumanPlayerBlueprint)
     
     @property
     def is_carrying_machine(self) -> bool:
         blueprint = self.extract_blueprint()
         if blueprint is None:
             return False
-        return isinstance(blueprint, MachineBlueprint)
+        return isinstance(blueprint, MachinePlayerBlueprint)

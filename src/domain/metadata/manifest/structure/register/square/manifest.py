@@ -20,7 +20,7 @@ class SquareRegisterManifest(RegisterManifest[SquareRegister]):
         1.  Metadata
 
      Responsibilities:
-         1.  Aggregates NullExceptions and TypeUnions for a SquareRegister's 
+         1.  Aggregates NullExceptions and TypeUnions for the SquareRegister
             security lifecycle.
 
      Attributes:

@@ -16,7 +16,7 @@ from domain import HomeSquareBlueprint, HomeSquare, SquareTypeUnion
 from transit import HomeSquareCarrier
 
 
-class HomeSquareTypeUnion(SquareTypeUnion[HomeSquare]):
+class HomeSquareTypeUnion(SquareModelTypeUnion[HomeSquare]):
     """
     Role:
         - Metadata

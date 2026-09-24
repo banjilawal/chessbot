@@ -16,7 +16,7 @@ from domain import Pawn, PawnBlueprint, RankTypeUnion
 from transit import PawnCarrier
 
 
-class PawnTypeUnion(RankTypeUnion[Pawn]):
+class PawnTypeUnion(RankModelTypeUnion[Pawn]):
     """
     Role:
         - Metadata

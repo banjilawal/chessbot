@@ -12,22 +12,23 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import MachineBlueprint, MachinePlayer, PlayerTypeUnion
-from transit import MachineCarrier
+from domain import MachinePlayerBlueprint, MachinePlayer, PlayerTypeUnion
+from transit import MachinePlayerCarrier
 
 
-class MachineTypeUnion(PlayerTypeUnion[MachinePlayer]):
+class MachinePlayerTypeUnion(PlayerTypeUnion[MachinePlayer]):
     """
     Role:
         - Metadata
 
     Responsibilities:
-        1. Catalog of types associated with building and validating a MachinePlayer.
+        1.  Catalog of types associated with building and validating a
+            MachinePlayer.
 
     Attributes:
         model: Type[MachinePlayer]
-        carrier: Type[MachineCarrier]
-        blueprint: Type[MachineBlueprint]
+        carrier: Type[MachinePlayerCarrier]
+        blueprint: Type[MachinePlayerBlueprint]
 
     Provides:
 
@@ -38,19 +39,19 @@ class MachineTypeUnion(PlayerTypeUnion[MachinePlayer]):
     def __init__(
             self, 
             model: Optional[Type[MachinePlayer]] | None = None,
-            carrier: Optional[Type[MachineCarrier]] | None = None, 
-            blueprint: Optional[Type[MachineBlueprint]] | None = None,
+            carrier: Optional[Type[MachinePlayerCarrier]] | None = None, 
+            blueprint: Optional[Type[MachinePlayerBlueprint]] | None = None,
     ):
         """
         Args:
             model: Optional[Type[MachinePlayer]]
-            carrier: Optional[Type[MachineCarrier]
-            blueprint: Optional[Type[MachineBlueprint] 
+            carrier: Optional[Type[MachinePlayerCarrier]
+            blueprint: Optional[Type[MachinePlayerBlueprint] 
         """
         super().__init__(
             model=model or MachinePlayer,
-            carrier=carrier or MachineCarrier, 
-            blueprint=blueprint or MachineBlueprint
+            carrier=carrier or MachinePlayerCarrier, 
+            blueprint=blueprint or MachinePlayerBlueprint
         )
     
     @property
@@ -58,9 +59,9 @@ class MachineTypeUnion(PlayerTypeUnion[MachinePlayer]):
         return cast(Type[MachinePlayer], super().model)
     
     @property
-    def carrier(self) -> Type[MachineCarrier]:
-        return cast(Type[MachineCarrier], super().carrier)
+    def carrier(self) -> Type[MachinePlayerCarrier]:
+        return cast(Type[MachinePlayerCarrier], super().carrier)
     
     @property
-    def blueprint(self) -> Type[MachineBlueprint]:
-        return cast(Type[MachineBlueprint], super().blueprint)
+    def blueprint(self) -> Type[MachinePlayerBlueprint]:
+        return cast(Type[MachinePlayerBlueprint], super().blueprint)

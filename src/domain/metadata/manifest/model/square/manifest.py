@@ -1,4 +1,4 @@
-# src/domain/metadata/manifest/model/square/manifest.py
+# src/domain/metadata/manifest/model/square/square/manifest.py
 
 """
 Module: domain.metadata.manifest.model.square.manifest
@@ -9,9 +9,8 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
 
-from domain import Square, SquareNullGroup, SquareTypeUnion, ModelManifest
+from domain import SquareNullGroup, ModelManifest, Square, SquareTypeUnion
 
 
 class SquareManifest(ModelManifest[Square]):
@@ -20,7 +19,8 @@ class SquareManifest(ModelManifest[Square]):
         1.  Metadata
 
      Responsibilities:
-         1.  Aggregates NullExceptions and TypeUnions for an Square's security lifecycle.
+         1. Aggregates NullExceptions and SquareTypeUnions for the Square
+            security lifecycle.
 
      Attributes:
         types: SquareTypeUnion
@@ -34,23 +34,20 @@ class SquareManifest(ModelManifest[Square]):
     
     def __init__(
             self,
-            types: Optional[SquareTypeUnion] | None = None,
-            nulls: Optional[SquareNullGroup] | None = None,
+            types: SquareTypeUnion,
+            nulls: SquareNullGroup
     ):
         """
         Args:
-            types: Optional[SquareTypeUnion]
-            nulls: Optional[SquareNullGroup]
+            types: SquareTypeUnion,
+            nulls: SquareNullGroup
         """
-        super().__init__(
-            types=types or SquareTypeUnion(),
-            nulls=nulls or SquareNullGroup(),
-        )
-        
-    @property
-    def types(self) -> SquareTypeUnion:
-        return cast(SquareTypeUnion, super().types)
+        super().__init__(types=types, nulls=nulls)
     
     @property
-    def nulls(self) -> SquareNullGroup:
-        return cast(SquareNullGroup, super().nulls)
+    def types(self) -> SquareTypeUnion[T]:
+        return cast(SquareTypeUnion[T], super().types)
+    
+    @property
+    def nulls(self) -> SquareNullGroup[T]:
+        return cast(SquareNullGroup[T], super().nulls)

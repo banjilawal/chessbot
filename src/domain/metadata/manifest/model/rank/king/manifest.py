@@ -20,7 +20,7 @@ class KingManifest(RankManifest[King]):
         1.  Metadata
 
      Responsibilities:
-         1.  Aggregates NullExceptions and TypeUnions for an King's security lifecycle.
+         1.  Aggregates NullExceptions and TypeUnions for the King security lifecycle.
 
      Attributes:
         types: KingTypeUnion

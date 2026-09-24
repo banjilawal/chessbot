@@ -12,13 +12,13 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Type, TypeVar, cast
 
-from domain import Model, ModelBlueprint, TypeUnion
+from domain import Model, ModelBlueprint
 from transit import EntityCarrier
 
 T = TypeVar("T", bound="Model")
 
 
-class ModelTypeUnion(TypeUnion[T], ABC, Generic[T]):
+class ModelTypeUnion(ModelTypeUnion[T], ABC, Generic[T]):
     """
     Role:
         - Metadata
@@ -34,7 +34,7 @@ class ModelTypeUnion(TypeUnion[T], ABC, Generic[T]):
     Provides:
 
     Super Class:
-        TypeUnion
+        ModelTypeUnion
     """
     _model: Type[T]
     _carrier: Type[EntityCarrier[T]]

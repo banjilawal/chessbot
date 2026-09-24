@@ -9,7 +9,6 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
 from typing import Generic, Optional, Type, TypeVar, cast
 
 from domain import Player, StateModelBlueprint
@@ -18,7 +17,7 @@ from game import GameAdviser
 
 T = TypeVar("T", bound="Player")
 
-class PlayerBlueprint(StateModelBlueprint[Player]):
+class PlayerBlueprint(StateModelBlueprint[T], Generic[T]):
     """
      Role:
         1.  Metadata
@@ -46,7 +45,7 @@ class PlayerBlueprint(StateModelBlueprint[Player]):
     def __init__(self,
             name: str,
             adviser: Optional[GameAdviser] | None = None,
-            domain_class: Optional[Type[Player]] | None = None,
+            domain_class: Optional[Type[T]] | None = None,
             domain_null_exception: Optional[PlayerNullException] | None = None,
             id: Optional[int] | None = None,
     ):
@@ -75,8 +74,8 @@ class PlayerBlueprint(StateModelBlueprint[Player]):
         return self._adviser
     
     @property
-    def domain_class(self) -> Type[Player]:
-        return cast(Type[Player], super().domain_class)
+    def domain_class(self) -> Type[T]:
+        return cast(Type[T], super().domain_class)
     
     @property
     def domain_null_exception(self) -> PlayerNullException:

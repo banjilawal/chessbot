@@ -17,7 +17,7 @@ from err import (
 )
 
 
-class MachineNullGroup(PlayerNullGroup[MachinePlayer]):
+class MachinePlayerNullGroup(PlayerNullGroup[MachinePlayer]):
     """
     Role:
         - Metadata

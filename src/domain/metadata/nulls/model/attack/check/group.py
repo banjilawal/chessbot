@@ -17,7 +17,7 @@ from err import (
 )
 
 
-class CheckAttackNullGroup(AttackNullGroup):
+class CheckWarningNullGroup(AttackNullGroup):
     """
     Role:
         - Metadata

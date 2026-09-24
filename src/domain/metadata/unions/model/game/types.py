@@ -12,11 +12,11 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import Game, GameBlueprint, TypeUnion
+from domain import Game, GameBlueprint, ModelTypeUnion
 from transit import GameCarrier
 
 
-class GameTypeUnion(TypeUnion[Game]):
+class GameTypeUnion(ModelTypeUnion[Game]):
     """
     Role:
         - Metadata
@@ -32,7 +32,7 @@ class GameTypeUnion(TypeUnion[Game]):
     Provides:
 
     Super Class:
-        TypeUnion
+        ModelTypeUnion
     """
     
     def __init__(

@@ -16,7 +16,7 @@ from domain import Rook, RookBlueprint, RankTypeUnion
 from transit import RookCarrier
 
 
-class RookTypeUnion(RankTypeUnion[Rook]):
+class RookTypeUnion(RankModelTypeUnion[Rook]):
     """
     Role:
         - Metadata

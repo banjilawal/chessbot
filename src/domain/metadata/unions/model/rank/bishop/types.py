@@ -16,7 +16,7 @@ from domain import Bishop, BishopBlueprint, RankTypeUnion
 from transit import BishopCarrier
 
 
-class BishopTypeUnion(RankTypeUnion[Bishop]):
+class BishopTypeUnion(RankModelTypeUnion[Bishop]):
     """
     Role:
         - Metadata

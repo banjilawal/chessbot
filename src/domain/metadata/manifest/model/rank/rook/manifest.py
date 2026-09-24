@@ -20,7 +20,7 @@ class RookManifest(RankManifest[Rook]):
         1.  Metadata
 
      Responsibilities:
-         1.  Aggregates NullExceptions and TypeUnions for an Rook's security lifecycle.
+         1.  Aggregates NullExceptions and TypeUnions for the Rook security lifecycle.
 
      Attributes:
         types: RookTypeUnion

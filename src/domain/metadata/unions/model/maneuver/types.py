@@ -23,7 +23,8 @@ class ManeuverTypeUnion(ModelTypeUnion[Maneuver]):
         - Metadata
 
     Responsibilities:
-        1. Catalog of types associated with building and validating a Maneuver.
+        1.  Catalog of types associated with building and validating
+            a Maneuver.
 
     Attributes:
         model: Type[Maneuver]

@@ -12,11 +12,11 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import AttackTypeUnion, CheckmateAttack
+from domain import AttackTypeUnion, CheckmateAttack, CheckmateAttackBlueprint
 from transit import CheckmateAttackCarrier
 
 
-class CheckmateAttackTypeUnion(AttackTypeUnion[CheckmateAttack]):
+class CheckmateAttackTypeUnion(AttackModelTypeUnion[CheckmateAttack]):
     """
     Role:
         - Metadata

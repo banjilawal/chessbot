@@ -9,13 +9,14 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, Type, cast
+from typing import Generic, Optional, Type, TypeVar, cast
 
-from domain import Token, TokenBlueprint, TypeUnion
+from domain import ModelTypeUnion, Token, TokenBlueprint
 from transit import TokenCarrier
 
+T = TypeVar("T", bound="Token")
 
-class TokenTypeUnion(TypeUnion[Token]):
+class TokenTypeUnion(ModelTypeUnion[T], Generic[T]):
     """
     Role:
         - Metadata
@@ -31,14 +32,14 @@ class TokenTypeUnion(TypeUnion[Token]):
     Provides:
 
     Super Class:
-        TypeUnion
+        ModelTypeUnion
     """
     
     def __init__(
             self,
-            model: Optional[Type[Token]] | None = None,
-            carrier: Optional[Type[TokenCarrier]] | None = None,
-            blueprint: Optional[Type[TokenBlueprint]] | None = None,
+            model: Optional[Type[T]] | None = None,
+            carrier: Optional[Type[TokenCarrier[T]]] | None = None,
+            blueprint: Optional[Type[TokenBlueprint[T]]] | None = None,
     ):
         """
         Args:
@@ -47,18 +48,18 @@ class TokenTypeUnion(TypeUnion[Token]):
             blueprint: Optional[Type[TokenBlueprint]]
         """
         super().__init__(
-            model=model or Token,
+            model=model or Type[Token],
             carrier=carrier or Type[TokenCarrier],
             blueprint=blueprint or TokenBlueprint,
         )
     
     @property
-    def model(self) -> Type[Token]:
+    def model(self) -> Type[T]:
         return cast(Type[Token], super().model)
     
     @property
-    def carrier(self) -> Type[TokenCarrier]:
-        return cast(Type[TokenCarrier], super().carrier)
+    def carrier(self) -> Type[TokenCarrier[T]]:
+        return cast(Type[TokenCarrier[T]], super().carrier)
     
     @property
     def blueprint(self) -> Type[TokenBlueprint]:

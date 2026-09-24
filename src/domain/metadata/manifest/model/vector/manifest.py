@@ -20,7 +20,7 @@ class VectorManifest(ModelManifest[Vector]):
         1.  Metadata
 
      Responsibilities:
-         1.  Aggregates NullExceptions and TypeUnions for a Vector's security lifecycle.
+         1.  Aggregates NullExceptions and TypeUnions for the Vector security lifecycle.
 
      Attributes:
         types: VectorTypeUnion

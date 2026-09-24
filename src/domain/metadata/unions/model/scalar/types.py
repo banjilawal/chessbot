@@ -12,11 +12,11 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import Scalar, ScalarBlueprint, TypeUnion
+from domain import Scalar, ScalarBlueprint
 from transit import ScalarCarrier
 
 
-class ScalarTypeUnion(TypeUnion[Scalar]):
+class ScalarTypeUnion(ModelTypeUnion[Scalar]):
     """
     Role:
         - Metadata
@@ -32,7 +32,7 @@ class ScalarTypeUnion(TypeUnion[Scalar]):
     Provides:
 
     Super Class:
-        TypeUnion
+        ModelTypeUnion
     """
     
     def __init__(

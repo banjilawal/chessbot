@@ -20,7 +20,7 @@ class BoardManifest(ModelManifest[Board]):
         1.  Metadata
 
      Responsibilities:
-         1.  Aggregates NullExceptions and TypeUnions for an Board's security lifecycle.
+         1.  Aggregates NullExceptions and TypeUnions for the Board security lifecycle.
 
      Attributes:
         types: BoardTypeUnion

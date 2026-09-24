@@ -9,10 +9,9 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import Generic, TypeVar
+from typing import Generic, TypeVar, cast
 
-from domain import ModelNullGroup, ModelManifest, Rank, TypeUnion
+from domain import RankNullGroup, ModelManifest, Rank, RankTypeUnion
 
 T = TypeVar("T", bound="Rank")
 
@@ -22,11 +21,12 @@ class RankManifest(ModelManifest[T], Generic[T]):
         1.  Metadata
 
      Responsibilities:
-         1.  Aggregates NullExceptions and TypeUnions for an Rank's security lifecycle.
+         1. Aggregates NullExceptions and RankTypeUnions for the Rank
+            security lifecycle.
 
      Attributes:
-        types: RankTypeUnion
-        nulls: RankNullGroup
+        types: RankRankTypeUnion[T]
+        nulls: RankNullGroup[T]
 
      Provides:
 
@@ -36,12 +36,20 @@ class RankManifest(ModelManifest[T], Generic[T]):
     
     def __init__(
             self,
-            types: TypeUnion[T],
-            nulls: ModelNullGroup[T]
+            types: RankTypeUnion[T],
+            nulls: RankNullGroup[T]
     ):
         """
         Args:
-            types: TypeUnion[T],
-            nulls: NullExceptionGroup[T]
+            types: RankTypeUnion[T],
+            nulls: RankNullGroup[T]
         """
         super().__init__(types=types, nulls=nulls)
+        
+    @property
+    def types(self) -> RankTypeUnion[T]:
+        return cast(RankTypeUnion[T], super().types)
+    
+    @property
+    def nulls(self) -> RankNullGroup[T]:
+        return cast(RankNullGroup[T], super().nulls)

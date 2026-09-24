@@ -16,7 +16,7 @@ from domain import Queen, QueenBlueprint, RankTypeUnion
 from transit import QueenCarrier
 
 
-class QueenTypeUnion(RankTypeUnion[Queen]):
+class QueenTypeUnion(RankModelTypeUnion[Queen]):
     """
     Role:
         - Metadata

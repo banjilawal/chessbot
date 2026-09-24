@@ -15,7 +15,7 @@ from domain import HumanPlayer, PlayerNullGroup
 from err import HumanBlueprintNullException, HumanCarrierNullException, HumanNullException
 
 
-class HumanNullGroup(PlayerNullGroup[HumanPlayer]):
+class HumanPlayerNullGroup(PlayerNullGroup[HumanPlayer]):
     """
     Role:
         - Metadata

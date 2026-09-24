@@ -9,12 +9,10 @@ version: 0.0.2
 
 from __future__ import annotations
 
-
 from typing import Optional, Type, cast
 
 from domain import Path, PathBlueprint, ModelTypeUnion
 from transit import PathCarrier
-
 
 
 class PathTypeUnion(ModelTypeUnion[Path]):
@@ -37,9 +35,9 @@ class PathTypeUnion(ModelTypeUnion[Path]):
     """
     
     def __init__(
-            self, 
+            self,
             model: Optional[Type[Path]] | None = None,
-            carrier: Optional[Type[PathCarrier]] | None = None, 
+            carrier: Optional[Type[PathCarrier]] | None = None,
             blueprint: Optional[Type[PathBlueprint]] | None = None,
     ):
         """
@@ -49,8 +47,8 @@ class PathTypeUnion(ModelTypeUnion[Path]):
             blueprint: Optional[Type[PathBlueprint] 
         """
         super().__init__(
-            model=model or Path, 
-            carrier=carrier or PathCarrier, 
+            model=model or Path,
+            carrier=carrier or PathCarrier,
             blueprint=blueprint or PathBlueprint
         )
     

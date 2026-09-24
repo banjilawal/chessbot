@@ -22,7 +22,7 @@ class ObjectManifest(ABC, Generic[T]):
         1.  Metadata
 
      Responsibilities:
-         1.  Aggregates NullExceptions and TypeUnions for a Model's security lifecycle.
+         1.  Aggregates NullExceptions and TypeUnions for the Model security lifecycle.
 
      Attributes:
         types: TypeUnion[T],

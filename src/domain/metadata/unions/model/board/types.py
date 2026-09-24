@@ -12,11 +12,11 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import Board, BoardBlueprint, TypeUnion
+from domain import Board, BoardBlueprint, ModelTypeUnion
 from transit import BoardCarrier
 
 
-class BoardTypeUnion(TypeUnion[Board]):
+class BoardTypeUnion(ModelTypeUnion[Board]):
     """
     Role:
         - Metadata
@@ -32,7 +32,7 @@ class BoardTypeUnion(TypeUnion[Board]):
     Provides:
 
     Super Class:
-        TypeUnion
+        ModelTypeUnion
     """
     
     def __init__(

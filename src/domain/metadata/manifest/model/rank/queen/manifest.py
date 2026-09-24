@@ -20,7 +20,7 @@ class QueenManifest(RankManifest[Queen]):
         1.  Metadata
 
      Responsibilities:
-         1.  Aggregates NullExceptions and TypeUnions for an Queen's security lifecycle.
+         1.  Aggregates NullExceptions and TypeUnions for the Queen security lifecycle.
 
      Attributes:
         types: QueenTypeUnion

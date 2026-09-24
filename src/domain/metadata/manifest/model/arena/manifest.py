@@ -20,7 +20,7 @@ class ArenaManifest(ModelManifest[Arena]):
         1.  Metadata
 
      Responsibilities:
-         1.  Aggregates NullExceptions and TypeUnions for an Arena's security lifecycle.
+         1.  Aggregates NullExceptions and TypeUnions for the Arena security lifecycle.
 
      Attributes:
         types: ArenaTypeUnion

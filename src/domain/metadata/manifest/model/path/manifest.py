@@ -1,7 +1,7 @@
-# src/domain/metadata/manifest/model/scalar/manifest.py
+# src/domain/metadata/manifest/model/path/manifest.py
 
 """
-Module: domain.metadata.manifest.model.scalar.manifest
+Module: domain.metadata.manifest.model.path.manifest
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -11,20 +11,21 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Scalar, ScalarNullGroup, ScalarTypeUnion, ModelManifest
+from domain import Path, PathNullGroup, PathTypeUnion, ModelManifest
 
 
-class ScalarManifest(ModelManifest[Scalar]):
+class PathManifest(ModelManifest[Path]):
     """
      Role:
         1.  Metadata
 
      Responsibilities:
-         1.  Aggregates NullExceptions and TypeUnions for an Scalar's security lifecycle.
+         1. Aggregates NullExceptions and TypeUnions for the Path
+            security lifecycle.
 
      Attributes:
-        types: ScalarTypeUnion
-        nulls: ScalarNullGroup
+        types: PathTypeUnion
+        nulls: PathNullGroup
 
      Provides:
 
@@ -34,23 +35,23 @@ class ScalarManifest(ModelManifest[Scalar]):
     
     def __init__(
             self,
-            types: Optional[ScalarTypeUnion] | None = None,
-            nulls: Optional[ScalarNullGroup] | None = None,
+            types: Optional[PathTypeUnion] | None = None,
+            nulls: Optional[PathNullGroup] | None = None,
     ):
         """
         Args:
-            types: Optional[ScalarTypeUnion]
-            nulls: Optional[ScalarNullGroup]
+            types: Optional[PathTypeUnion]
+            nulls: Optional[PathNullGroup]
         """
         super().__init__(
-            types=types or ScalarTypeUnion(),
-            nulls=nulls or ScalarNullGroup(),
+            types=types or PathTypeUnion(),
+            nulls=nulls or PathNullGroup(),
         )
         
     @property
-    def types(self) -> ScalarTypeUnion:
-        return cast(ScalarTypeUnion, super().types)
+    def types(self) -> PathTypeUnion:
+        return cast(PathTypeUnion, super().types)
     
     @property
-    def nulls(self) -> ScalarNullGroup:
-        return cast(ScalarNullGroup, super().nulls)
+    def nulls(self) -> PathNullGroup:
+        return cast(PathNullGroup, super().nulls)

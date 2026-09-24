@@ -12,11 +12,11 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import Arena, ArenaBlueprint, TypeUnion
+from domain import Arena, ArenaBlueprint, ModelTypeUnion
 from transit import ArenaCarrier
 
 
-class ArenaTypeUnion(TypeUnion[Arena]):
+class ArenaTypeUnion(ModelTypeUnion[Arena]):
     """
     Role:
         - Metadata
@@ -32,7 +32,7 @@ class ArenaTypeUnion(TypeUnion[Arena]):
     Provides:
 
     Super Class:
-        TypeUnion
+        ModelTypeUnion
     """
     
     def __init__(

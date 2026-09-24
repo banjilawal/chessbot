@@ -12,11 +12,11 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import Team, TeamBlueprint, TypeUnion
+from domain import Team, TeamBlueprint
 from transit import TeamCarrier
 
 
-class TeamTypeUnion(TypeUnion[Team]):
+class TeamTypeUnion(ModelTypeUnion[Team]):
     """
     Role:
         - Metadata
@@ -32,7 +32,7 @@ class TeamTypeUnion(TypeUnion[Team]):
     Provides:
 
     Super Class:
-        TypeUnion
+        ModelTypeUnion
     """
     
     def __init__(

@@ -9,49 +9,55 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
 from typing import Generic, Type, TypeVar, cast
 
-from domain import Blueprint, PlayerPoint, TypeUnion
-from transit import EntityCarrier
+from domain import ModelTypeUnion, Player, PlayerBlueprint
+from transit import PlayerCarrier
+
+T = TypeVar("T", bound="Player")
 
 
-
-T = TypeVar("T", bound="PlayerPoint")
-
-class PlayerTypeUnion(TypeUnion[T], ABC, Generic[T]):
+class PlayerTypeUnion(ModelTypeUnion[T], Generic[T]):
     """
     Role:
         - Metadata
 
     Responsibilities:
-        1. Catalog of types associated with building and validating a PlayerPoint.
+        1. Catalog of types associated with building and validating a Player.
 
     Attributes:
         model: Type[T]
-        carrier: Type[EntityCarrier[T]]
+        carrier: Type[PlayerCarrier[T]]
         blueprint: Type[Blueprint[T]]
 
     Provides:
 
     Super Class:
-        TypeUnion
+        ModelTypeUnion
     """
     
     def __init__(
-            self, 
+            self,
             model: Type[T],
-            carrier: Type[EntityCarrier[T]], 
-            blueprint: Type[Blueprint[T]],
+            carrier: Type[PlayerCarrier[T]],
+            blueprint: Type[PlayerBlueprint[T]],
     ):
         """
         Args:
             model: Type[T]
-            carrier: Type[EntityCarrier[T]]
-            blueprint: Type[Blueprint[T]] 
+            carrier: Type[PlayerCarrier[T]]
+            blueprint: Type[PlayerBlueprint[T]]
         """
         super().__init__(model=model, carrier=carrier, blueprint=blueprint)
     
     @property
     def model(self) -> Type[T]:
         return cast(Type[T], super().model)
+    
+    @property
+    def carrier(self) -> Type[PlayerCarrier[T]]:
+        return cast(Type[PlayerCarrier[T]], super().carrier)
+    
+    @property
+    def blueprint(self) -> Type[PlayerBlueprint[T]]:
+        return cast(Type[PlayerBlueprint[T]], super().blueprint)

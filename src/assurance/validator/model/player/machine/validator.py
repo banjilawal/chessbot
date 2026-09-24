@@ -21,7 +21,7 @@ from err import (
     FormationNullException, MachinePlayerValidatorException, NullException, NameCarrierEmptyException,
     EmptyPlayerCarrierException
 )
-from transit import MachineCarrier, NameCarrier
+from transit import MachinePlayerCarrier, NameCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -54,7 +54,7 @@ class MachinePlayerValidator:
         self._toolkit=toolkit or PlayerValidatorToolkit()
     
     @LoggingLevelRouter.monitor
-    def execute(self, validated_carrier: MachineCarrier) -> ValidationResult[MachineCarrier]:
+    def execute(self, validated_carrier: MachinePlayerCarrier) -> ValidationResult[MachinePlayerCarrier]:
         """
         Send a validated MachinePlayer or Blueprint which inside the validated
         MachineCarrier.
@@ -142,10 +142,10 @@ class MachinePlayerValidator:
                 name=name,
             )
             model.adviser = blueprint.adviser
-            return ValidationResult.success(MachineCarrier(model=model))
+            return ValidationResult.success(MachinePlayerCarrier(model=model))
         # Else the blueprint case
         return ValidationResult.success(
-            MachineCarrier(
+            MachinePlayerCarrier(
                 blueprint=MachinePlayerBlueprint(
                     id=id,
                     name=name,

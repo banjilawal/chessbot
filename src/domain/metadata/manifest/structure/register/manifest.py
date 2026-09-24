@@ -22,7 +22,7 @@ class RegisterManifest(StructureManifest[T], ABC, Generic[T]):
         1.  Metadata
 
      Responsibilities:
-         1.  Aggregates NullExceptions and TypeUnions for a Register's security lifecycle.
+         1.  Aggregates NullExceptions and TypeUnions for the Register security lifecycle.
 
      Attributes:
         types: RegisterTypeUnion[T]

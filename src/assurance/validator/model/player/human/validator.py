@@ -21,7 +21,7 @@ from err import (
     FormationNullException, HumanPlayerValidatorException, NullException, NameCarrierEmptyException,
     EmptyPlayerCarrierException
 )
-from transit import HumanCarrier, NameCarrier
+from transit import HumanPlayerCarrier, NameCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -54,7 +54,7 @@ class HumanPlayerValidator:
         self._toolkit=toolkit or PlayerValidatorToolkit()
     
     @LoggingLevelRouter.monitor
-    def execute(self, validated_carrier: HumanCarrier) -> ValidationResult[HumanCarrier]:
+    def execute(self, validated_carrier: HumanPlayerCarrier) -> ValidationResult[HumanPlayerCarrier]:
         """
         Send a validated HumanPlayer or Blueprint which inside the validated
         HumanCarrier.
@@ -142,10 +142,10 @@ class HumanPlayerValidator:
                 name=name,
             )
             model.adviser = blueprint.adviser
-            return ValidationResult.success(HumanCarrier(model=model))
+            return ValidationResult.success(HumanPlayerCarrier(model=model))
         # Else the blueprint case
         return ValidationResult.success(
-            HumanCarrier(
+            HumanPlayerCarrier(
                 blueprint=HumanPlayerBlueprint(
                     id=id,
                     name=name,

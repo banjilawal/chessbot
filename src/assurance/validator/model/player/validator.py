@@ -17,7 +17,7 @@ from assurance import (
 )
 from domain import Player, PlayerValidationRequest
 from err import PlayerValidationRequestNullException, PlayerValidatorException
-from transit import HumanCarrier, MachineCarrier, PlayerCarrier
+from transit import HumanPlayerCarrier, MachinePlayerCarrier, PlayerCarrier
 from util import LoggingLevelRouter
 
 
@@ -121,11 +121,11 @@ class PlayerValidator(ModelValidator[Player]):
         
         # --- Extract the blueprint to verify the attributes. ---#
 
-        if isinstance(carrier, HumanCarrier):
+        if isinstance(carrier, HumanPlayerCarrier):
             helper = HumanPlayerValidator()
             return helper.execute(validated_carrier=carrier)
         helper = MachinePlayerValidator()
-        return helper.execute(validated_carrier=cast(MachineCarrier, carrier))
+        return helper.execute(validated_carrier=cast(MachinePlayerCarrier, carrier))
 
     
     

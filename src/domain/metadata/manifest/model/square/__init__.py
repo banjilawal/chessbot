@@ -1,4 +1,4 @@
-# src/domain/metadata/manifest/model/square/__init__.py
+# src/domain/metadata/manifest/model/square/square/__init__.py
 
 """
 Module: domain.metadata.manifest.model.square.__init__
@@ -10,7 +10,7 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.MANIFEST.MODEL.SQUARE PACKAGE ===========#
 
 # Packages
-
+from .home import *
 
 # Modules
 from .manifest import SquareManifest

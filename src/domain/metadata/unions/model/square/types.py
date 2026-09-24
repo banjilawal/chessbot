@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import Square, SquareBlueprint, TypeUnion
+from domain import Square, SquareBlueprint
 from transit import SquareCarrier
 
 
-class SquareTypeUnion(TypeUnion[Square]):
+class SquareTypeUnion(ModelTypeUnion[Square]):
     """
     Role:
         - Metadata
@@ -31,7 +31,7 @@ class SquareTypeUnion(TypeUnion[Square]):
     Provides:
 
     Super Class:
-        TypeUnion
+        ModelTypeUnion
     """
     
     def __init__(

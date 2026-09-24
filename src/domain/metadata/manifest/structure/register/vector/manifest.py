@@ -20,7 +20,7 @@ class VectorRegisterManifest(RegisterManifest[VectorRegister]):
         1.  Metadata
 
      Responsibilities:
-         1.  Aggregates NullExceptions and TypeUnions for a VectorRegister's 
+         1.  Aggregates NullExceptions and TypeUnions for the VectorRegister
             security lifecycle.
 
      Attributes:

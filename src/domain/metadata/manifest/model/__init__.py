@@ -11,10 +11,14 @@ version: 0.0.2
 
 # Packages
 from .arena import *
+from .attack import *
 from .board import *
 from .cartesian import *
 from .coord import *
 from .game import *
+from .maneuver import *
+from .path import *
+from .player import *
 from .rank import *
 from .scalar import *
 from .square import *

@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import HumanPlayer, HumanBlueprint
+from domain import HumanPlayer, HumanPlayerBlueprint
 from transit import PlayerCarrier
 
 
-class HumanCarrier(PlayerCarrier):
+class HumanPlayerCarrier(PlayerCarrier):
     """
     Role:
         - Boundary Carrier Interface
@@ -39,12 +39,12 @@ class HumanCarrier(PlayerCarrier):
     """
     
     _model: Optional[HumanPlayer]
-    _blueprint: Optional[HumanBlueprint]
+    _blueprint: Optional[HumanPlayerBlueprint]
     
     def __init__(
             self,
             model: Optional[HumanPlayer] | None = None,
-            blueprint: Optional[HumanBlueprint] | None = None,
+            blueprint: Optional[HumanPlayerBlueprint] | None = None,
     ):
         """
         Args:
@@ -56,7 +56,7 @@ class HumanCarrier(PlayerCarrier):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> Optional[HumanPlayer|HumanBlueprint]:
+    def entity(self) -> Optional[HumanPlayer | HumanPlayerBlueprint]:
         if self.is_empty:
             return None
         if self.is_carrying_model:
@@ -75,7 +75,7 @@ class HumanCarrier(PlayerCarrier):
     def is_carrying_blueprint(self) -> bool:
         return (
                 not self.is_carrying_model and
-                isinstance(self._blueprint, HumanBlueprint)
+                isinstance(self._blueprint, HumanPlayerBlueprint)
         )
     
     @property
@@ -90,12 +90,12 @@ class HumanCarrier(PlayerCarrier):
     def is_over_capacity(self) -> bool:
         return self.size > 1
     
-    def extract_blueprint(self) -> Optional[HumanBlueprint]:
+    def extract_blueprint(self) -> Optional[HumanPlayerBlueprint]:
         if self.is_empty: return None
         if self.is_carrying_blueprint: return self._blueprint
         
         model = cast(HumanPlayer, self._model)
-        return HumanBlueprint(
+        return HumanPlayerBlueprint(
             id=model.id,
             name=model.name,
             adviser=model.adviser,

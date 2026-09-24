@@ -20,7 +20,7 @@ class ScalarManifest(ModelManifest[Scalar]):
         1.  Metadata
 
      Responsibilities:
-         1.  Aggregates NullExceptions and TypeUnions for an Scalar's security lifecycle.
+         1.  Aggregates NullExceptions and TypeUnions for the Scalar security lifecycle.
 
      Attributes:
         types: ScalarTypeUnion

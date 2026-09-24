@@ -12,22 +12,23 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import HumanBlueprint, HumanPlayer, PlayerTypeUnion
-from transit import HumanCarrier
+from domain import HumanPlayerBlueprint, HumanPlayer, PlayerTypeUnion
+from transit import HumanPlayerCarrier
 
 
-class HumanTypeUnion(PlayerTypeUnion[HumanPlayer]):
+class HumanPlayerTypeUnion(PlayerTypeUnion[HumanPlayer]):
     """
     Role:
         - Metadata
 
     Responsibilities:
-        1. Catalog of types associated with building and validating a HumanPlayer.
+        1.  Catalog of types associated with building and validating a
+            HumanPlayer.
 
     Attributes:
         model: Type[HumanPlayer]
-        carrier: Type[HumanCarrier]
-        blueprint: Type[HumanBlueprint]
+        carrier: Type[HumanPlayerCarrier]
+        blueprint: Type[HumanPlayerBlueprint]
 
     Provides:
 
@@ -38,19 +39,19 @@ class HumanTypeUnion(PlayerTypeUnion[HumanPlayer]):
     def __init__(
             self, 
             model: Optional[Type[HumanPlayer]] | None = None,
-            carrier: Optional[Type[HumanCarrier]] | None = None, 
-            blueprint: Optional[Type[HumanBlueprint]] | None = None,
+            carrier: Optional[Type[HumanPlayerCarrier]] | None = None, 
+            blueprint: Optional[Type[HumanPlayerBlueprint]] | None = None,
     ):
         """
         Args:
             model: Optional[Type[HumanPlayer]]
-            carrier: Optional[Type[HumanCarrier]
-            blueprint: Optional[Type[HumanBlueprint] 
+            carrier: Optional[Type[HumanPlayerCarrier]
+            blueprint: Optional[Type[HumanPlayerBlueprint] 
         """
         super().__init__(
             model=model or HumanPlayer,
-            carrier=carrier or HumanCarrier, 
-            blueprint=blueprint or HumanBlueprint
+            carrier=carrier or HumanPlayerCarrier, 
+            blueprint=blueprint or HumanPlayerBlueprint
         )
     
     @property
@@ -58,9 +59,9 @@ class HumanTypeUnion(PlayerTypeUnion[HumanPlayer]):
         return cast(Type[HumanPlayer], super().model)
     
     @property
-    def carrier(self) -> Type[HumanCarrier]:
-        return cast(Type[HumanCarrier], super().carrier)
+    def carrier(self) -> Type[HumanPlayerCarrier]:
+        return cast(Type[HumanPlayerCarrier], super().carrier)
     
     @property
-    def blueprint(self) -> Type[HumanBlueprint]:
-        return cast(Type[HumanBlueprint], super().blueprint)
+    def blueprint(self) -> Type[HumanPlayerBlueprint]:
+        return cast(Type[HumanPlayerBlueprint], super().blueprint)

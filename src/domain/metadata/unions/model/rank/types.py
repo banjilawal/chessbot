@@ -12,12 +12,12 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, Type, TypeVar, cast
 
-from domain import Rank, RankBlueprint, TypeUnion
+from domain import Rank, RankBlueprint
 from transit import RankCarrier
 
 T = TypeVar("T", bound="Rank")
 
-class RankTypeUnion(TypeUnion[T], ABC, Generic[T]):
+class RankTypeUnion(ModelTypeUnion[T], ABC, Generic[T]):
     """
     Role:
         - Metadata
@@ -33,6 +33,6 @@ class RankTypeUnion(TypeUnion[T], ABC, Generic[T]):
     Provides:
 
     Super Class:
-        TypeUnion
+        ModelTypeUnion
     """
     pass

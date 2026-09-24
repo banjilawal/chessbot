@@ -12,11 +12,11 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import Attack, AttackTypeUnion, CombatantAttack
+from domain import Attack, AttackTypeUnion, CombatantAttack, CombatantAttackBlueprint
 from transit import CombatantAttackCarrier
 
 
-class CombatantAttackTypeUnion(AttackTypeUnion[Attack]):
+class CombatantAttackTypeUnion(AttackModelTypeUnion[Attack]):
     """
     Role:
         - Metadata

@@ -16,7 +16,7 @@ from domain import Knight, KnightBlueprint, RankTypeUnion
 from transit import KnightCarrier
 
 
-class KnightTypeUnion(RankTypeUnion[Knight]):
+class KnightTypeUnion(RankModelTypeUnion[Knight]):
     """
     Role:
         - Metadata

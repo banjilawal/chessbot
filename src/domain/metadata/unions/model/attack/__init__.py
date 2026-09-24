@@ -11,6 +11,8 @@ version: 0.0.2
 
 # Packages
 from .check import *
+from .combatant import *
+from .mate import *
 
 # Modules
 from .types import AttackTypeUnion

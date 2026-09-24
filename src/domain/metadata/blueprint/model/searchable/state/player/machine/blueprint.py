@@ -16,7 +16,7 @@ from err import MachineNullException
 from game import GameAdviser
 
 
-class MachineBlueprint(PlayerBlueprint):
+class MachinePlayerBlueprint(PlayerBlueprint):
     """
     Role:
         1.  Metadata

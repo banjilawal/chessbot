@@ -20,7 +20,7 @@ class CoordRegisterManifest(RegisterManifest[CoordRegister]):
         1.  Metadata
 
      Responsibilities:
-         1.  Aggregates NullExceptions and TypeUnions for a CoordRegister's 
+         1.  Aggregates NullExceptions and TypeUnions for the CoordRegister
             security lifecycle.
 
      Attributes:

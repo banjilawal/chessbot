@@ -9,7 +9,6 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
 from typing import Generic, Optional, Type, TypeVar, cast
 
 from domain import Attack, AttackBlueprint, ModelTypeUnion

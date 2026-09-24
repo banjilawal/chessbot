@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import MachinePlayer, MachineBlueprint
+from domain import MachinePlayer, MachinePlayerBlueprint
 from transit import PlayerCarrier
 
 
-class MachineCarrier(PlayerCarrier):
+class MachinePlayerCarrier(PlayerCarrier):
     """
     Role:
         - Boundary Carrier Interface
@@ -39,12 +39,12 @@ class MachineCarrier(PlayerCarrier):
     """
     
     _model: Optional[MachinePlayer]
-    _blueprint: Optional[MachineBlueprint]
+    _blueprint: Optional[MachinePlayerBlueprint]
     
     def __init__(
             self,
             model: Optional[MachinePlayer] | None = None,
-            blueprint: Optional[MachineBlueprint] | None = None,
+            blueprint: Optional[MachinePlayerBlueprint] | None = None,
     ):
         """
         Args:
@@ -56,7 +56,7 @@ class MachineCarrier(PlayerCarrier):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> Optional[MachinePlayer|MachineBlueprint]:
+    def entity(self) -> Optional[MachinePlayer | MachinePlayerBlueprint]:
         if self.is_empty:
             return None
         if self.is_carrying_model:
@@ -75,7 +75,7 @@ class MachineCarrier(PlayerCarrier):
     def is_carrying_blueprint(self) -> bool:
         return (
                 not self.is_carrying_model and
-                isinstance(self._blueprint, MachineBlueprint)
+                isinstance(self._blueprint, MachinePlayerBlueprint)
         )
     
     @property
@@ -90,12 +90,12 @@ class MachineCarrier(PlayerCarrier):
     def is_over_capacity(self) -> bool:
         return self.size > 1
     
-    def extract_blueprint(self) -> Optional[MachineBlueprint]:
+    def extract_blueprint(self) -> Optional[MachinePlayerBlueprint]:
         if self.is_empty: return None
         if self.is_carrying_blueprint: return self._blueprint
         
         model = cast(MachinePlayer, self._model)
-        return MachineBlueprint(
+        return MachinePlayerBlueprint(
             id=model.id,
             name=model.name,
             adviser=model.adviser,

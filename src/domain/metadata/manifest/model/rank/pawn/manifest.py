@@ -20,7 +20,7 @@ class PawnManifest(RankManifest[Pawn]):
         1.  Metadata
 
      Responsibilities:
-         1.  Aggregates NullExceptions and TypeUnions for an Pawn's security lifecycle.
+         1.  Aggregates NullExceptions and TypeUnions for the Pawn security lifecycle.
 
      Attributes:
         types: PawnTypeUnion

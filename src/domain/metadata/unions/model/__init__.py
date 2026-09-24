@@ -25,7 +25,6 @@ from .square import *
 from .team import *
 from .token import *
 from .vector import *
-from .walk import *
 
 # Modules
 from .types import ModelTypeUnion

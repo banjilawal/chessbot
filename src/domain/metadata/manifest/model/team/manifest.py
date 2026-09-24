@@ -20,7 +20,7 @@ class TeamManifest(ModelManifest[Team]):
         1.  Metadata
 
      Responsibilities:
-         1.  Aggregates NullExceptions and TypeUnions for an Team's security lifecycle.
+         1.  Aggregates NullExceptions and TypeUnions for the Team security lifecycle.
 
      Attributes:
         types: TeamTypeUnion

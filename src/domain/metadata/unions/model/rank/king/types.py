@@ -16,7 +16,7 @@ from domain import King, KingBlueprint, RankTypeUnion
 from transit import KingCarrier
 
 
-class KingTypeUnion(RankTypeUnion[King]):
+class KingTypeUnion(RankModelTypeUnion[King]):
     """
     Role:
         - Metadata
