@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import EmptyContextException
 
 __all__ = [
-    # ======================# EMPTY_ARENA_ERROR #======================#
+    # ======================# EMPTY_ARENA_CONTEXT_ERROR #======================#
     "EmptyArenaContextException",
 ]
 
-# ======================# EMPTY_ARENA_ERROR #======================#
+# ======================# EMPTY_ARENA_CONTEXT_ERROR #======================#
 class EmptyArenaContextException(EmptyContextException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Arena is empty.
+        1.  Indicating a ArenaContext is empty.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class EmptyArenaContextException(EmptyContextException):
     Super Class:
        EmptyContextException
     """
-    MSG = "Arena cannot be empty."
-    ERR_CODE = "EMPTY_ARENA_ERROR"
+    MSG = "ArenaContext cannot be empty."
+    ERR_CODE = "EMPTY_ARENA_CONTEXT_ERROR"
     
     def __init__(
             self,

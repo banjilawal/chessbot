@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import EmptyContextException
 
 __all__ = [
-    # ======================# EMPTY_VECTOR_ERROR #======================#
+    # ======================# EMPTY_VECTOR_CONTEXT_ERROR #======================#
     "EmptyVectorContextException",
 ]
 
-# ======================# EMPTY_VECTOR_ERROR #======================#
+# ======================# EMPTY_VECTOR_CONTEXT_ERROR #======================#
 class EmptyVectorContextException(EmptyContextException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Vector is empty.
+        1.  Indicating a VectorContext is empty.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class EmptyVectorContextException(EmptyContextException):
     Super Class:
        EmptyContextException
     """
-    MSG = "Vector cannot be empty."
-    ERR_CODE = "EMPTY_VECTOR_ERROR"
+    MSG = "VectorContext cannot be empty."
+    ERR_CODE = "EMPTY_VECTOR_CONTEXT_ERROR"
     
     def __init__(
             self,

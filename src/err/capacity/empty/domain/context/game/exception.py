@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import EmptyContextException
 
 __all__ = [
-    # ======================# EMPTY_GAME_ERROR #======================#
+    # ======================# EMPTY_GAME_CONTEXT_ERROR #======================#
     "EmptyGameContextException",
 ]
 
-# ======================# EMPTY_GAME_ERROR #======================#
+# ======================# EMPTY_GAME_CONTEXT_ERROR #======================#
 class EmptyGameContextException(EmptyContextException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Game is empty.
+        1.  Indicating a GameContext is empty.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class EmptyGameContextException(EmptyContextException):
     Super Class:
        EmptyContextException
     """
-    MSG = "Game cannot be empty."
-    ERR_CODE = "EMPTY_GAME_ERROR"
+    MSG = "GameContext cannot be empty."
+    ERR_CODE = "EMPTY_GAME_CONTEXT_ERROR"
     
     def __init__(
             self,

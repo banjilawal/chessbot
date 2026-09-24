@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import EmptyDomainException
+from err import Empty.DomainException
 
 __all__ = [
     # ======================# EMPTY_STRUCTURE_ERROR #======================#
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# EMPTY_STRUCTURE_ERROR #======================#
-class EmptyStructureException(EmptyDomainException):
+class EmptyStructureException(Empty.DomainException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class EmptyStructureException(EmptyDomainException):
     Provides:
 
     Super Class:
-       EmptyDomainException
+       Empty.DomainException
     """
     MSG = "Structure cannot be empty. Its length cannot be zero"
     ERR_CODE = "EMPTY_STRUCTURE_ERROR"

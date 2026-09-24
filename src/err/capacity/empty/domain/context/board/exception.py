@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import EmptyContextException
 
 __all__ = [
-    # ======================# EMPTY_BOARD_ERROR #======================#
+    # ======================# EMPTY_BOARD_CONTEXT_ERROR #======================#
     "EmptyBoardContextException",
 ]
 
-# ======================# EMPTY_BOARD_ERROR #======================#
+# ======================# EMPTY_BOARD_CONTEXT_ERROR #======================#
 class EmptyBoardContextException(EmptyContextException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Board is empty.
+        1.  Indicating a BoardContext is empty.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class EmptyBoardContextException(EmptyContextException):
     Super Class:
        EmptyContextException
     """
-    MSG = "Board cannot be empty."
-    ERR_CODE = "EMPTY_BOARD_ERROR"
+    MSG = "BoardContext cannot be empty."
+    ERR_CODE = "EMPTY_BOARD_CONTEXT_ERROR"
     
     def __init__(
             self,

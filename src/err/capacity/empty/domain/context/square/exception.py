@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import EmptyContextException
 
 __all__ = [
-    # ======================# EMPTY_SQUARE_ERROR #======================#
+    # ======================# EMPTY_SQUARE_CONTEXT_ERROR #======================#
     "EmptySquareContextException",
 ]
 
-# ======================# EMPTY_SQUARE_ERROR #======================#
+# ======================# EMPTY_SQUARE_CONTEXT_ERROR #======================#
 class EmptySquareContextException(EmptyContextException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Square is empty.
+        1.  Indicating a SquareContext is empty.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class EmptySquareContextException(EmptyContextException):
     Super Class:
        EmptyContextException
     """
-    MSG = "Square cannot be empty."
-    ERR_CODE = "EMPTY_SQUARE_ERROR"
+    MSG = "SquareContext cannot be empty."
+    ERR_CODE = "EMPTY_SQUARE_CONTEXT_ERROR"
     
     def __init__(
             self,

@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import EmptyContextException
 
 __all__ = [
-    # ======================# EMPTY_MANEUVER_ERROR #======================#
+    # ======================# EMPTY_MANEUVER_CONTEXT_ERROR #======================#
     "EmptyManeuverContextException",
 ]
 
-# ======================# EMPTY_MANEUVER_ERROR #======================#
+# ======================# EMPTY_MANEUVER_CONTEXT_ERROR #======================#
 class EmptyManeuverContextException(EmptyContextException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Maneuver is empty.
+        1.  Indicating a ManeuverContext is empty.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class EmptyManeuverContextException(EmptyContextException):
     Super Class:
        EmptyContextException
     """
-    MSG = "Maneuver cannot be empty."
-    ERR_CODE = "EMPTY_MANEUVER_ERROR"
+    MSG = "ManeuverContext cannot be empty."
+    ERR_CODE = "EMPTY_MANEUVER_CONTEXT_ERROR"
     
     def __init__(
             self,

@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import EmptyContextException
 
 __all__ = [
-    # ======================# EMPTY_ATTACK_ERROR #======================#
+    # ======================# EMPTY_ATTACK_CONTEXT_ERROR #======================#
     "EmptyAttackContextException",
 ]
 
-# ======================# EMPTY_ATTACK_ERROR #======================#
+# ======================# EMPTY_ATTACK_CONTEXT_ERROR #======================#
 class EmptyAttackContextException(EmptyContextException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Attack is empty.
+        1.  Indicating a AttackContext is empty.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class EmptyAttackContextException(EmptyContextException):
     Super Class:
        EmptyContextException
     """
-    MSG = "Attack cannot be empty."
-    ERR_CODE = "EMPTY_ATTACK_ERROR"
+    MSG = "AttackContext cannot be empty."
+    ERR_CODE = "EMPTY_ATTACK_CONTEXT_ERROR"
     
     def __init__(
             self,

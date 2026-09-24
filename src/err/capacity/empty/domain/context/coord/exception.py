@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import EmptyContextException
 
 __all__ = [
-    # ======================# EMPTY_COORD_ERROR #======================#
+    # ======================# EMPTY_COORD_CONTEXT_ERROR #======================#
     "EmptyCoordContextException",
 ]
 
-# ======================# EMPTY_COORD_ERROR #======================#
+# ======================# EMPTY_COORD_CONTEXT_ERROR #======================#
 class EmptyCoordContextException(EmptyContextException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Coord is empty.
+        1.  Indicating a CoordContext is empty.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class EmptyCoordContextException(EmptyContextException):
     Super Class:
        EmptyContextException
     """
-    MSG = "Coord cannot be empty."
-    ERR_CODE = "EMPTY_COORD_ERROR"
+    MSG = "CoordContext cannot be empty."
+    ERR_CODE = "EMPTY_COORD_CONTEXT_ERROR"
     
     def __init__(
             self,

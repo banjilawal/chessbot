@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import EmptyContextException
 
 __all__ = [
-    # ======================# EMPTY_PATH_ERROR #======================#
+    # ======================# EMPTY_PATH_CONTEXT_ERROR #======================#
     "EmptyPathContextException",
 ]
 
-# ======================# EMPTY_PATH_ERROR #======================#
+# ======================# EMPTY_PATH_CONTEXT_ERROR #======================#
 class EmptyPathContextException(EmptyContextException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Path is empty.
+        1.  Indicating a PathContext is empty.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class EmptyPathContextException(EmptyContextException):
     Super Class:
        EmptyContextException
     """
-    MSG = "Path cannot be empty."
-    ERR_CODE = "EMPTY_PATH_ERROR"
+    MSG = "PathContext cannot be empty."
+    ERR_CODE = "EMPTY_PATH_CONTEXT_ERROR"
     
     def __init__(
             self,

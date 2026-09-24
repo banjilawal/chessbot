@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import EmptyContextException
 
 __all__ = [
-    # ======================# EMPTY_PLAYER_ERROR #======================#
+    # ======================# EMPTY_PLAYER_CONTEXT_ERROR #======================#
     "EmptyPlayerContextException",
 ]
 
-# ======================# EMPTY_PLAYER_ERROR #======================#
+# ======================# EMPTY_PLAYER_CONTEXT_ERROR #======================#
 class EmptyPlayerContextException(EmptyContextException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Player is empty.
+        1.  Indicating a PlayerContext is empty.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class EmptyPlayerContextException(EmptyContextException):
     Super Class:
        EmptyContextException
     """
-    MSG = "Player cannot be empty."
-    ERR_CODE = "EMPTY_PLAYER_ERROR"
+    MSG = "PlayerContext cannot be empty."
+    ERR_CODE = "EMPTY_PLAYER_CONTEXT_ERROR"
     
     def __init__(
             self,

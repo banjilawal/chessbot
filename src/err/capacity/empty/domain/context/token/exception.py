@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import EmptyContextException
 
 __all__ = [
-    # ======================# EMPTY_TOKEN_ERROR #======================#
+    # ======================# EMPTY_TOKEN_CONTEXT_ERROR #======================#
     "EmptyTokenContextException",
 ]
 
-# ======================# EMPTY_TOKEN_ERROR #======================#
+# ======================# EMPTY_TOKEN_CONTEXT_ERROR #======================#
 class EmptyTokenContextException(EmptyContextException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Token is empty.
+        1.  Indicating a TokenContext is empty.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class EmptyTokenContextException(EmptyContextException):
     Super Class:
        EmptyContextException
     """
-    MSG = "Token cannot be empty."
-    ERR_CODE = "EMPTY_TOKEN_ERROR"
+    MSG = "TokenContext cannot be empty."
+    ERR_CODE = "EMPTY_TOKEN_CONTEXT_ERROR"
     
     def __init__(
             self,

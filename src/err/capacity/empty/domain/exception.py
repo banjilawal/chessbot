@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import EmptyItemException, EmptyDomainException
+from err import EmptyItemException, Empty.DomainException
 
 __all__ = [
     # ======================# EMPTY_DOMAIN_ERROR #======================#
-    "EmptyDomainException",
+    "Empty.DomainException",
 ]
 
 # ======================# EMPTY_DOMAIN_ERROR #======================#
-class EmptyDomainException(EmptyItemException):
+class Empty.DomainException(EmptyItemException):
     """
     Role:
         - Error Tracing

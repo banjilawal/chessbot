@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import EmptyDomainException
+from err import Empty.DomainException
 
 __all__ = [
     # ======================# EMPTY_CONTEXT_ERROR #======================#
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# EMPTY_CONTEXT_ERROR #======================#
-class EmptyContextException(EmptyDomainException):
+class EmptyContextException(Empty.DomainException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class EmptyContextException(EmptyDomainException):
     Provides:
 
     Super Class:
-       EmptyDomainException
+       Empty.DomainException
     """
     MSG = "Context cannot be empty. Its length cannot be zero"
     ERR_CODE = "EMPTY_CONTEXT_ERROR"

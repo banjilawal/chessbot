@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import EmptyContextException
 
 __all__ = [
-    # ======================# EMPTY_TEAM_ERROR #======================#
+    # ======================# EMPTY_TEAM_CONTEXT_ERROR #======================#
     "EmptyTeamContextException",
 ]
 
-# ======================# EMPTY_TEAM_ERROR #======================#
+# ======================# EMPTY_TEAM_CONTEXT_ERROR #======================#
 class EmptyTeamContextException(EmptyContextException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Team is empty.
+        1.  Indicating a TeamContext is empty.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class EmptyTeamContextException(EmptyContextException):
     Super Class:
        EmptyContextException
     """
-    MSG = "Team cannot be empty."
-    ERR_CODE = "EMPTY_TEAM_ERROR"
+    MSG = "TeamContext cannot be empty."
+    ERR_CODE = "EMPTY_TEAM_CONTEXT_ERROR"
     
     def __init__(
             self,
