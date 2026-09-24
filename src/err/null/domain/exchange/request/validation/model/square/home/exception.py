@@ -1,7 +1,7 @@
-# src/err/null/domain/request/validation/model/square/exception.py
+# src/err/null/domain/request/validation/model/square/home/exception.py
 
 """
-Module: err.null.domain.request.validation/model.square.exception
+Module: err.null.domain.request.validation/model.square.home.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidationRequestNullException
+from err import SquareValidationRequestNullException
 
 __all__ = [
-    # ======================# SQUARE_VALIDATION_REQUEST_NULL_ERROR #======================#
-    "SquareValidationRequestNullException",
+    # ======================# HOME_SQUARE_VALIDATION_REQUEST_NULL_ERROR #======================#
+    "HomeSquareValidationRequestNullException",
 ]
 
-# ======================# SQUARE_VALIDATION_REQUEST_NULL_ERROR #======================#
-class SquareValidationRequestNullException(ModelValidationRequestNullException):
+# ======================# HOME_SQUARE_VALIDATION_REQUEST_NULL_ERROR #======================#
+class HomeSquareValidationRequestNullException(SquareValidationRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an SquareValidationRequest is null.
+        1.  Indicating that a HomeSquareValidationRequest is null.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class SquareValidationRequestNullException(ModelValidationRequestNullException):
     Provides:
 
     Super Class:
-        ModelValidationRequestNullException
+        SquareValidationRequestNullException
     """
-    MSG = "SquareValidationRequest cannot be null."
-    ERR_CODE = "SQUARE_VALIDATION_REQUEST_NULL_ERROR"
+    MSG = "HomeSquareValidationRequest cannot be null."
+    ERR_CODE = "HOME_SQUARE_VALIDATION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

@@ -10,6 +10,7 @@ version: 0.0.2
 # ============ ERR.NULL.DOMAIN.REQUEST.VALIDATION.MODEL.SQUARE PACKAGE ===========#
 
 # Packages
+from .home import *
 
 # Modules
 from .exception import SquareValidationRequestNullException
