@@ -5,247 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assurance/toolkit/model/rank/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/toolkit/model/rank/toolkit.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/primitive/primitive/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/empty/domain/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/empty/primitive/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/empty/primitive/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/empty/primitive/string/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/toolkit/model/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/path/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/path/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/team/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/team/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/metadata/manifest/model/maneuver/manifest.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/manifest/model/maneuver/manifest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/metadata/manifest/model/token/combatant/pawn/manifest.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/manifest/model/token/combatant/pawn/manifest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/metadata/unions/model/token/combatant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/unions/model/token/combatant/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/metadata/unions/model/token/combatant/pawn/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/unions/model/token/combatant/pawn/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/metadata/unions/model/token/combatant/pawn/types.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/unions/model/token/combatant/pawn/types.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/metadata/unions/model/token/combatant/types.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/unions/model/token/combatant/types.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/metadata/unions/model/token/king/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/unions/model/token/king/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/metadata/unions/model/token/king/types.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/unions/model/token/king/types.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/walk/path/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/walk/path/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/array/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/array/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/array/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/array/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/container/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/container/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/container/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/container/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/container/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/container/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/container/register/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/container/register/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/container/tuple/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/container/tuple/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/container/tuple/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/container/tuple/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/container/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/container/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/container/vector/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/container/vector/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/database/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/database/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/database/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/database/arena/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/database/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/database/arena/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/database/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/database/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/database/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/database/board/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/database/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/database/coord/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/database/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/database/coord/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/database/edge/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/database/edge/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/database/edge/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/database/edge/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/database/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/database/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/database/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/database/game/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/database/game/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/database/game/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/database/hostage/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/database/hostage/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/database/hostage/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/database/hostage/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/database/node/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/database/node/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/database/node/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/database/node/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/database/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/database/player/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/database/player/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/database/player/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/database/snapshot/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/database/snapshot/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/database/snapshot/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/database/snapshot/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/database/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/database/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/database/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/database/square/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/database/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/database/team/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/database/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/database/team/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/database/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/database/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/database/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/database/token/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/graph/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/graph/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/graph/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/graph/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/model/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/model/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/model/arena/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/model/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/model/arena/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/model/binder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/model/binder/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/model/binder/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/model/binder/arena/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/model/binder/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/model/binder/arena/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/model/binder/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/model/binder/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/model/binder/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/model/binder/board/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/model/binder/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/model/binder/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/model/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/model/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/model/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/model/board/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/model/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/model/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/model/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/model/game/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/model/game/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/model/game/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/model/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/model/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/model/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/model/square/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/arena/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/arena/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/board/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/coord/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/coord/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/edge/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/edge/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/edge/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/edge/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/formation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/formation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/formation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/formation/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/game/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/game/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/game/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/hostage/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/hostage/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/hostage/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/hostage/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/node/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/node/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/node/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/node/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/persona/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/persona/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/persona/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/persona/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/player/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/player/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/player/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/rank/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/rank/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/rank/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/schema/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/schema/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/schema/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/schema/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/square/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/team/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/team/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/query/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/query/token/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/register/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/register/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/register/identity/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/register/identity/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/register/identity/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/register/identity/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/register/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/register/model/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/register/model/cartesian/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/register/model/cartesian/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/register/model/cartesian/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/register/model/cartesian/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/register/model/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/register/model/coord/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/register/model/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/register/model/coord/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/register/model/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/register/model/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/register/model/number/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/register/model/number/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/register/model/number/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/register/model/number/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/register/model/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/register/model/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/register/model/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/register/model/square/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/register/model/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/register/model/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/register/model/vector/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/register/model/vector/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/destination/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/destination/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/destination/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/destination/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/destination/linear/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/destination/linear/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/destination/linear/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/destination/linear/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/linear/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/linear/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/linear/axis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/linear/axis/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/linear/axis/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/linear/axis/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/linear/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/linear/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/linear/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/linear/quadrant/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/linear/quadrant/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/linear/quadrant/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/linear/segment/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/linear/segment/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/linear/segment/axis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/linear/segment/axis/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/linear/segment/axis/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/linear/segment/axis/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/linear/segment/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/linear/segment/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/linear/segment/origin/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/linear/segment/origin/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/linear/segment/origin/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/linear/segment/origin/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/linear/segment/quadrant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/linear/segment/quadrant/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/linear/segment/quadrant/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/linear/segment/quadrant/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/linear/segment/terminus/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/linear/segment/terminus/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/linear/segment/terminus/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/linear/segment/terminus/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/basis/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/basis/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/basis/bishop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/basis/bishop/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/basis/bishop/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/basis/bishop/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/basis/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/basis/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/basis/king/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/basis/king/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/basis/king/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/basis/king/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/basis/knight/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/basis/knight/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/basis/knight/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/basis/knight/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/basis/pawn/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/basis/pawn/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/basis/pawn/attack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/basis/pawn/attack/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/basis/pawn/attack/developed/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/basis/pawn/attack/developed/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/basis/pawn/attack/developed/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/basis/pawn/attack/developed/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/basis/pawn/attack/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/basis/pawn/attack/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/basis/pawn/attack/opening/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/basis/pawn/attack/opening/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/basis/pawn/attack/opening/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/basis/pawn/attack/opening/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/basis/pawn/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/basis/pawn/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/basis/pawn/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/basis/pawn/maneuver/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/basis/pawn/maneuver/developed/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/basis/pawn/maneuver/developed/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/basis/pawn/maneuver/developed/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/basis/pawn/maneuver/developed/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/basis/pawn/maneuver/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/basis/pawn/maneuver/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/basis/pawn/maneuver/opening/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/basis/pawn/maneuver/opening/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/basis/pawn/maneuver/opening/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/basis/pawn/maneuver/opening/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/basis/queen/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/basis/queen/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/basis/queen/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/basis/queen/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/basis/rook/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/basis/rook/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/basis/rook/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/basis/rook/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/movement/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/movement/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/movement/bishop/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/movement/bishop/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/movement/bishop/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/movement/bishop/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/movement/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/movement/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/movement/king/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/movement/king/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/movement/king/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/movement/king/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/movement/knight/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/movement/knight/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/movement/knight/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/movement/knight/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/movement/pawn/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/movement/pawn/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/movement/pawn/attack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/movement/pawn/attack/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/movement/pawn/attack/developed/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/movement/pawn/attack/developed/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/movement/pawn/attack/developed/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/movement/pawn/attack/developed/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/movement/pawn/attack/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/movement/pawn/attack/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/movement/pawn/attack/opening/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/movement/pawn/attack/opening/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/movement/pawn/attack/opening/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/movement/pawn/attack/opening/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/movement/pawn/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/movement/pawn/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/movement/pawn/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/movement/pawn/maneuver/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/movement/pawn/maneuver/developed/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/movement/pawn/maneuver/developed/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/movement/pawn/maneuver/developed/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/movement/pawn/maneuver/developed/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/movement/pawn/maneuver/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/movement/pawn/maneuver/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/movement/pawn/maneuver/opening/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/movement/pawn/maneuver/opening/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/movement/pawn/maneuver/opening/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/movement/pawn/maneuver/opening/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/movement/queen/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/movement/queen/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/movement/queen/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/movement/queen/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/movement/rook/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/movement/rook/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/space/span/movement/rook/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/space/span/movement/rook/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/stack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/stack/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/stack/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/stack/arena/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/stack/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/stack/arena/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/stack/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/stack/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/stack/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/stack/board/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/stack/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/stack/coord/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/stack/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/stack/coord/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/stack/edge/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/stack/edge/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/stack/edge/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/stack/edge/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/stack/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/stack/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/stack/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/stack/game/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/stack/game/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/stack/game/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/stack/hostage/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/stack/hostage/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/stack/hostage/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/stack/hostage/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/stack/node/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/stack/node/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/stack/node/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/stack/node/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/stack/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/stack/player/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/stack/player/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/stack/player/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/stack/snapshot/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/stack/snapshot/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/stack/snapshot/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/stack/snapshot/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/stack/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/stack/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/stack/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/stack/square/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/stack/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/stack/team/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/stack/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/stack/team/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/stack/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/stack/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/stack/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/stack/token/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/string/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/string/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/string/blank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/empty/primitive/string/blank/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/string/blank/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/empty/primitive/string/blank/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/string/empty/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/empty/primitive/string/empty/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/string/empty/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/empty/primitive/string/empty/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/string/name/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/string/name/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/string/name/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/string/name/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/string/name/max/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/string/name/max/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/string/name/max/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/string/name/max/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/string/name/min/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/string/name/min/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/empty/string/name/min/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/primitive/string/name/min/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/empty/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/empty/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/empty/array/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/empty/primitive/array/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/empty/array/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/empty/primitive/array/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/err/capacity/empty/domain/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/empty/domain/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/capacity/empty/domain/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/empty/domain/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/capacity/empty/primitive/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/empty/primitive/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/capacity/empty/primitive/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/empty/primitive/exception.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -288,60 +51,60 @@
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
       <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0000000000000224" />
-      <entry key="S10" value="1.0000002426748111" />
-      <entry key="S30" value="1.012741370098491" />
-      <entry key="S60" value="1.2082969396691956" />
-      <entry key="M2" value="2.139685618191162" />
-      <entry key="M5" value="7.303965143287445" />
-      <entry key="M10" value="20.84074881014255" />
-      <entry key="M15" value="39.46126768459318" />
-      <entry key="M30" value="113.89675310328555" />
-      <entry key="H1" value="267.32696816993337" />
-      <entry key="H2" value="576.3544419875464" />
-      <entry key="H4" value="1266.6193382817396" />
-      <entry key="D1" value="4811.594734047374" />
-      <entry key="W1" value="21121.777716225675" />
+      <entry key="MS500" value="1.0000000000000002" />
+      <entry key="S2" value="1.0002003763231684" />
+      <entry key="S5" value="1.0608525144627934" />
+      <entry key="S10" value="1.5198219203305499" />
+      <entry key="S30" value="10.058879417922808" />
+      <entry key="S60" value="37.227234782041556" />
+      <entry key="M2" value="82.71257063015753" />
+      <entry key="M5" value="140.99355070550249" />
+      <entry key="M10" value="177.8667386144719" />
+      <entry key="M15" value="203.69215260576007" />
+      <entry key="M30" value="282.68645611450734" />
+      <entry key="H1" value="437.92328952679435" />
+      <entry key="H2" value="747.7207176343102" />
+      <entry key="H4" value="1436.8598020041775" />
+      <entry key="D1" value="4992.570921149562" />
+      <entry key="W1" value="21309.2073157704" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="2.071006045149937E-139" />
-      <entry key="S2" value="3.2946385450202597E-35" />
-      <entry key="S5" value="2.9447044681819346E-14" />
-      <entry key="S10" value="3.234155205992113E-7" />
-      <entry key="S30" value="0.017044471575143355" />
-      <entry key="S60" value="0.26061888543666667" />
-      <entry key="M2" value="1.0216895375024577" />
-      <entry key="M5" value="2.4397161738653765" />
-      <entry key="M10" value="3.889263630013708" />
-      <entry key="M15" value="5.239055939088247" />
-      <entry key="M30" value="9.09846692139778" />
-      <entry key="H1" value="15.3803282003465" />
-      <entry key="H2" value="25.597587615634197" />
-      <entry key="H4" value="46.369501024464356" />
-      <entry key="D1" value="182.26942085697925" />
-      <entry key="W1" value="914.0487714177028" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="9.985775402645753E-101" />
+      <entry key="S5" value="1.8267172201662555E-40" />
+      <entry key="S10" value="2.5472739922213945E-20" />
+      <entry key="S30" value="7.306148178624177E-7" />
+      <entry key="S60" value="0.0017063116282610576" />
+      <entry key="M2" value="0.08266947501809101" />
+      <entry key="M5" value="0.8923799392850968" />
+      <entry key="M10" value="2.352191244680184" />
+      <entry key="M15" value="3.7467656792416957" />
+      <entry key="M30" value="7.6943151301296355" />
+      <entry key="H1" value="14.143812077000764" />
+      <entry key="H2" value="24.54705950595029" />
+      <entry key="H4" value="45.40802795579783" />
+      <entry key="D1" value="181.63401514227402" />
+      <entry key="W1" value="913.592883166286" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9526379980439373" />
-      <entry key="MS500" value="0.9903428719330246" />
-      <entry key="S2" value="0.9975769252644544" />
-      <entry key="S5" value="0.9990300646389509" />
-      <entry key="S10" value="0.999515451645698" />
-      <entry key="S30" value="1.0290440483941599" />
-      <entry key="S60" value="1.4642387936008474" />
-      <entry key="M2" value="3.1514597120437964" />
-      <entry key="M5" value="9.719903430799134" />
-      <entry key="M10" value="24.68359078596179" />
-      <entry key="M15" value="44.64345598456827" />
-      <entry key="M30" value="122.93422616203439" />
-      <entry key="H1" value="282.6528539480725" />
-      <entry key="H2" value="601.9068003408343" />
-      <entry key="H4" value="1312.951797997924" />
-      <entry key="D1" value="4993.84275099559" />
-      <entry key="W1" value="22035.81083143931" />
+      <entry key="MS100" value="0.9201876506248751" />
+      <entry key="MS500" value="0.9835020740262486" />
+      <entry key="S2" value="0.9960495103622852" />
+      <entry key="S5" value="1.0591130342193449" />
+      <entry key="S10" value="1.5184017216477301" />
+      <entry key="S30" value="10.05253572578807" />
+      <entry key="S60" value="37.21774123413932" />
+      <entry key="M2" value="82.7826784644336" />
+      <entry key="M5" value="141.86959444439626" />
+      <entry key="M10" value="180.18633667834456" />
+      <entry key="M15" value="207.39506136079422" />
+      <entry key="M30" value="290.32750326397746" />
+      <entry key="H1" value="452.0161680300879" />
+      <entry key="H2" value="772.2239637695087" />
+      <entry key="H4" value="1482.2313349562812" />
+      <entry key="D1" value="5174.183569818797" />
+      <entry key="W1" value="22222.78454522438" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -1078,7 +841,7 @@
       <workItem from="1788782347688" duration="75617000" />
       <workItem from="1788969937518" duration="171978000" />
       <workItem from="1790001362413" duration="735000" />
-      <workItem from="1790063398459" duration="99816000" />
+      <workItem from="1790063398459" duration="100262000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1631,12 +1394,12 @@
           <option name="timeStamp" value="271" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/err/assurance/primitive/register/model/coord/exception.py</url>
+          <url>file://$PROJECT_DIR$/src/err/assurance/empty/register/model/coord/exception.py</url>
           <line>9</line>
           <option name="timeStamp" value="272" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/err/assurance/primitive/space/span/movement/exception.py</url>
+          <url>file://$PROJECT_DIR$/src/err/assurance/empty/space/span/movement/exception.py</url>
           <line>9</line>
           <option name="timeStamp" value="273" />
         </line-breakpoint>
@@ -2071,7 +1834,7 @@
           <option name="timeStamp" value="390" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/err/assurance/primitive/__init__.py</url>
+          <url>file://$PROJECT_DIR$/src/err/assurance/empty/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="391" />
         </line-breakpoint>

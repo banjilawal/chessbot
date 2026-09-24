@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import EmptyItemException
+from err import EmptyItemException, EmptyPrimitiveException
 
 __all__ = [
-    # ======================# PRIMITIVE_EMPTY_ERROR #======================#
-    "PrimitiveEmptyException",
+    # ======================# EMPTY_PRIMITIVE_ERROR #======================#
+    "EmptyPrimitiveException",
 ]
 
-# ======================# PRIMITIVE_EMPTY_ERROR #======================#
-class PrimitiveEmptyException(EmptyItemException):
+# ======================# EMPTY_PRIMITIVE_ERROR #======================#
+class EmptyPrimitiveException(EmptyItemException):
     """
     Role:
         - Error Tracing
@@ -41,10 +41,10 @@ class PrimitiveEmptyException(EmptyItemException):
     Provides:
 
     Super Class:
-        EmptyException
+        EmptyItemException
     """
     MSG = "Primitive cannot be empty."
-    ERR_CODE = "PRIMITIVE_EMPTY_ERROR"
+    ERR_CODE = "EMPTY_PRIMITIVE_ERROR"
     
     def __init__(
             self,

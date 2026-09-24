@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import EmptyItemException
+from err import EmptyPrimitiveException
 
 __all__ = [
     # ======================# EMPTY_STRING_ERROR #======================#
@@ -21,7 +21,7 @@ __all__ = [
 
 
 # ======================# EMPTY_STRING_ERROR #======================#
-class EmptyStringException(EmptyItemException):
+class EmptyStringException(EmptyPrimitiveException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class EmptyStringException(EmptyItemException):
     Provides:
 
     Super Class:
-       EmptyItemException
+       EmptyPrimitiveException
     """
     MSG = "String cannot be empty. Its length cannot be zero"
     ERR_CODE = "EMPTY_STRING_ERROR"

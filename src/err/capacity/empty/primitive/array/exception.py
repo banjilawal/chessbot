@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import EmptyItemException
+from err import EmptyPrimitiveException
 
 __all__ = [
-    # ======================# LIST_EMPTY_ERROR #======================#
-    "ListEmptyException",
+    # ======================# EMPTY_LIST_ERROR #======================#
+    "EmptyListException",
 ]
 
-# ======================# LIST_EMPTY_ERROR #======================#
-class ListEmptyException(EmptyItemException):
+# ======================# EMPTY_LIST_ERROR #======================#
+class EmptyListException(EmptyPrimitiveException):
     """
     Role:
         - Error Tracing
@@ -44,7 +44,7 @@ class ListEmptyException(EmptyItemException):
         EmptyException
     """
     MSG = "List cannot be empty."
-    ERR_CODE = "LIST_EMPTY_ERROR"
+    ERR_CODE = "EMPTY_LIST_ERROR"
     
     def __init__(
             self,

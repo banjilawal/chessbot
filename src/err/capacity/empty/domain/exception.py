@@ -16,11 +16,11 @@ from err import EmptyItemException
 
 __all__ = [
     # ======================# DOMAIN_EMPTY_ERROR #======================#
-    "DomainEmptyException",
+    "EmptyDomainException",
 ]
 
 # ======================# DOMAIN_EMPTY_ERROR #======================#
-class DomainEmptyException(EmptyItemException):
+class EmptyDomainException(EmptyItemException):
     """
     Role:
         - Error Tracing

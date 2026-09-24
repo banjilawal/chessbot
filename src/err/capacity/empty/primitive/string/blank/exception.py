@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import EmptyItemException
+from err import EmptyPrimitiveException
 
 
 __all__ = [
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# BLANK_STRING_ERROR #======================#
-class BlankStringException(EmptyItemException):
+class BlankStringException(EmptyPrimitiveException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class BlankStringException(EmptyItemException):
     Provides:
 
     Super Class:
-       EmptyItemException
+       EmptyPrimitiveException
     """
     MSG = "Whitespace string not allowed"
     ERR_CODE = "BLANK_STRING_ERROR"

@@ -10,7 +10,8 @@ version: 0.0.2
 # ============ ERR.CAPACITY.EMPTY.PRIMITIVE PACKAGE ===========#
 
 # Packages
-
+from .array import *
+from .string import *
 
 # Modules
-from .exception import PrimitiveEmptyException
+from .exception import EmptyPrimitiveException
