@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from domain import AttackBlueprint, KingToken, Maneuver, CheckmateAttack, Token
-from err import MateAttackNullException
+from err import CheckmateAttackNullException
 
 
 class MateEnemyBlueprint(AttackBlueprint):
@@ -45,7 +45,7 @@ class MateEnemyBlueprint(AttackBlueprint):
             maneuver: Maneuver,
             mated_king: KingToken,
             domain_class: Optional[Type[CheckmateAttack]] | None = None,
-            domain_null_exception: Optional[MateAttackNullException] | None = None,
+            domain_null_exception: Optional[CheckmateAttackNullException] | None = None,
             attacker_reward: Optional[int] | None = None,
             id: Optional[int] | None = None,
     ):
@@ -66,7 +66,7 @@ class MateEnemyBlueprint(AttackBlueprint):
             victim=mated_king,
             attacker_reward=attacker_reward,
             domain_class=domain_class or CheckmateAttack,
-            domain_null_exception=domain_null_exception or MateAttackNullException(),
+            domain_null_exception=domain_null_exception or CheckmateAttackNullException(),
         )
     
     @property
@@ -84,8 +84,8 @@ class MateEnemyBlueprint(AttackBlueprint):
     
     
     @property
-    def domain_null_exception(self) -> MateAttackNullException:
-        return cast(MateAttackNullException, super().domain_null_exception)
+    def domain_null_exception(self) -> CheckmateAttackNullException:
+        return cast(CheckmateAttackNullException, super().domain_null_exception)
 
 
 

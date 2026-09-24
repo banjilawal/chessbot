@@ -1,7 +1,7 @@
-# src/assurance/toolkit/model/toolkit.py
+# src/assurance/toolkit/model/square/toolkit.py
 
 """
-Module: assurance.toolkit.model.toolkit
+Module: assurance.toolkit.model.square.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,9 +11,8 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import SquareHelperTable, ModelValidatorToolkit
+from assurance import ModelValidatorToolkit, SquareHelperTable
 from domain import Square, SquareManifest
-
 
 
 class SquareValidatorToolkit(ModelValidatorToolkit[Square]):
@@ -25,15 +24,14 @@ class SquareValidatorToolkit(ModelValidatorToolkit[Square]):
         1.  Single source of truth for Square attribute validators and type metadata.
 
     Attributes:
-        helper: Optional[SquareManifest]
-        metadata: Optional[SquareHelperTable]
+        helper: SquareManifest
+        metadata: SquareHelperTable
 
     Provides:
 
     Super Class:
+        ModelValidatorToolkit
     """
-    _metadata: SquareManifest
-    _helper: SquareHelperTable
     
     def __init__(
             self,

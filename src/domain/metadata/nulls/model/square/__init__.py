@@ -11,11 +11,6 @@ version: 0.0.2
 
 # Packages
 from .home import *
-from .king import *
-from .knight import *
-from .pawn import *
-from .queen import *
-from .rook import *
 
 # Modules
 from .group import SquareNullGroup

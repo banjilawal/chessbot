@@ -17,11 +17,11 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# MATE_ENEMY_KING_NULL_ERROR #======================#
-    "MateAttackNullException",
+    "CheckmateAttackNullException",
 ]
 
 # ======================# MATE_ENEMY_KING_NULL_ERROR #======================#
-class MateAttackNullException(AttackNullException):
+class CheckmateAttackNullException(AttackNullException):
     """
     Role:
         - Error Tracing

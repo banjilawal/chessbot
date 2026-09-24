@@ -34,7 +34,7 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
 
 
     Responsibilities:
-        1.  Ensure a CartesianToggleBlueprint instance is certified safe, reliable and consistent before use.
+        1.  Ensure a CartesianToggleBlueprint instance is certified safe, reliable, and consistent before use.
 
     Attributes:
         toolkit: CartesianToggleToolkit

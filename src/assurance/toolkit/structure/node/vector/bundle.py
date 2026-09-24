@@ -12,13 +12,13 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from typing import Any, Dict
 
-from assurance import NodeValidationToolkit
+from assurance import NodeValidatorToolkit
 from domain import VectorNode, VectorNodeTypeUnions, VectorNullExceptionRoster
 from transit import VectorValidator
 
 
 @dataclass
-class VectorNodeValidationToolkit(NodeValidationToolkit[VectorNode]):
+class VectorNodeValidatorToolkit(NodeValidatorToolkit[VectorNode]):
     """
     Role:
         - Toolkit
@@ -38,7 +38,7 @@ class VectorNodeValidationToolkit(NodeValidationToolkit[VectorNode]):
     Provides:
 
     Super Class:
-        ValidationToolkit
+        ValidatorToolkit
     """
     types: VectorNodeTypeUnions = VectorNodeTypeUnions()
     nulls: VectorNullExceptionRoster = VectorNullExceptionRoster()

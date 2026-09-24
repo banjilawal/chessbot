@@ -1,7 +1,7 @@
-# src/assurance/toolkit/model/toolkit.py
+# src/assurance/toolkit/model/coord/toolkit.py
 
 """
-Module: assurance.toolkit.model.toolkit
+Module: assurance.toolkit.model.coord.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,9 +11,8 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import CoordHelperTable, ModelValidatorToolkit
+from assurance import ModelValidatorToolkit, CoordHelperTable
 from domain import Coord, CoordManifest
-
 
 
 class CoordValidatorToolkit(ModelValidatorToolkit[Coord]):
@@ -25,15 +24,14 @@ class CoordValidatorToolkit(ModelValidatorToolkit[Coord]):
         1.  Single source of truth for Coord attribute validators and type metadata.
 
     Attributes:
-        helper: Optional[CoordManifest]
-        metadata: Optional[CoordHelperTable]
+        helper: CoordManifest
+        metadata: CoordHelperTable
 
     Provides:
 
     Super Class:
+        ModelValidatorToolkit
     """
-    _metadata: CoordManifest
-    _helper: CoordHelperTable
     
     def __init__(
             self,
@@ -45,8 +43,10 @@ class CoordValidatorToolkit(ModelValidatorToolkit[Coord]):
             helper: Optional[CoordManifest]
             metadata: Optional[CoordHelperTable]
         """
-        self._helper = helper or CoordHelperTable()
-        self._metadata = metadata or CoordManifest()
+        super().__init__(
+            helper=helper or CoordHelperTable(),
+            metadata=metadata or CoordManifest(),
+        )
     
     @property
     def helper(self) -> CoordHelperTable:

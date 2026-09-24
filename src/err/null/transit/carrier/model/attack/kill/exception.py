@@ -17,11 +17,11 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# KILL_ENEMY_CARRIER_NULL_ERROR #======================#
-    "KillCarrierNullException",
+    "CombatantAttackCarrierNullException",
 ]
 
 # ======================# KILL_ENEMY_CARRIER_NULL_ERROR #======================#
-class KillCarrierNullException(AttackCarrierNullException):
+class CombatantAttackCarrierNullException(AttackCarrierNullException):
     """
     Role:
         - Error Tracing

@@ -1,7 +1,7 @@
-# src/assurance/toolkit/model/toolkit.py
+# src/assurance/toolkit/model/board/toolkit.py
 
 """
-Module: assurance.toolkit.model.toolkit
+Module: assurance.toolkit.model.board.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,9 +11,8 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import BoardHelperTable, ModelValidatorToolkit
+from assurance import ModelValidatorToolkit, BoardHelperTable
 from domain import Board, BoardManifest
-
 
 
 class BoardValidatorToolkit(ModelValidatorToolkit[Board]):
@@ -25,15 +24,14 @@ class BoardValidatorToolkit(ModelValidatorToolkit[Board]):
         1.  Single source of truth for Board attribute validators and type metadata.
 
     Attributes:
-        helper: Optional[BoardManifest]
-        metadata: Optional[BoardHelperTable]
+        helper: BoardManifest
+        metadata: BoardHelperTable
 
     Provides:
 
     Super Class:
+        ModelValidatorToolkit
     """
-    _metadata: BoardManifest
-    _helper: BoardHelperTable
     
     def __init__(
             self,
@@ -45,8 +43,10 @@ class BoardValidatorToolkit(ModelValidatorToolkit[Board]):
             helper: Optional[BoardManifest]
             metadata: Optional[BoardHelperTable]
         """
-        self._helper = helper or BoardHelperTable()
-        self._metadata = metadata or BoardManifest()
+        super().__init__(
+            helper=helper or BoardHelperTable(),
+            metadata=metadata or BoardManifest(),
+        )
     
     @property
     def helper(self) -> BoardHelperTable:

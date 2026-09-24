@@ -25,7 +25,7 @@ class CoordValidationDispatcher(ModelValidationDispatcher[Coord]):
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a Coord instance is certified safe, reliable and consistent before use.
+        1.  Ensure a Coord instance is certified safe, reliable, and consistent before use.
 
     Attributes:
         integrity_checker: CoordIntegrityChecker

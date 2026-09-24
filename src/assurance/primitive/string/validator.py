@@ -23,7 +23,7 @@ class StringValidator:
         - Validation Process Owner
 
     Responsibilities:
-        1.  Ensure a String instance is certified safe, reliable and consistent before use.
+        1.  Ensure a String instance is certified safe, reliable, and consistent before use.
 
     Attributes:
 

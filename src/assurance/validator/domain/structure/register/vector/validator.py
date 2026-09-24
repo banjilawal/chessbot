@@ -30,7 +30,7 @@ class VectorRegisterValidator(Validator[VectorRegister]):
 
 
     Responsibilities:
-        1.  Ensure a VectorRegisterBlueprint instance is certified safe, reliable and consistent before use.
+        1.  Ensure a VectorRegisterBlueprint instance is certified safe, reliable, and consistent before use.
 
     Attributes:
         toolkit: VectorRegisterToolkit

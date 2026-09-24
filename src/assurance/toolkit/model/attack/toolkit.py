@@ -1,7 +1,7 @@
-# src/assurance/toolkit/model/toolkit.py
+# src/assurance/toolkit/model/attack/toolkit.py
 
 """
-Module: assurance.toolkit.model.toolkit
+Module: assurance.toolkit.model.attack.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,9 +11,8 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import AttackHelperTable, ModelValidatorToolkit
+from assurance import ModelValidatorToolkit, AttackHelperTable
 from domain import Attack, AttackManifest
-
 
 
 class AttackValidatorToolkit(ModelValidatorToolkit[Attack]):
@@ -25,15 +24,14 @@ class AttackValidatorToolkit(ModelValidatorToolkit[Attack]):
         1.  Single source of truth for Attack attribute validators and type metadata.
 
     Attributes:
-        helper: Optional[AttackManifest]
-        metadata: Optional[AttackHelperTable]
+        helper: AttackManifest
+        metadata: AttackHelperTable
 
     Provides:
 
     Super Class:
+        ModelValidatorToolkit
     """
-    _metadata: AttackManifest
-    _helper: AttackHelperTable
     
     def __init__(
             self,
@@ -45,8 +43,10 @@ class AttackValidatorToolkit(ModelValidatorToolkit[Attack]):
             helper: Optional[AttackManifest]
             metadata: Optional[AttackHelperTable]
         """
-        self._helper = helper or AttackHelperTable()
-        self._metadata = metadata or AttackManifest()
+        super().__init__(
+            helper=helper or AttackHelperTable(),
+            metadata=metadata or AttackManifest(),
+        )
     
     @property
     def helper(self) -> AttackHelperTable:

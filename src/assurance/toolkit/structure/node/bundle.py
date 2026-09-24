@@ -13,14 +13,14 @@ from abc import ABC
 from dataclasses import dataclass
 from typing import Generic, TypeVar
 
-from assurance import StructureValidationToolkit
+from assurance import StructureValidatorToolkit
 from domain import Node
 
 T = TypeVar("T", bound="Node")
 
 
 @dataclass
-class NodeValidationToolkit(StructureValidationToolkit[T], ABC, Generic[T]):
+class NodeValidatorToolkit(StructureValidatorToolkit[T], ABC, Generic[T]):
     """
     Role:
         - Toolkit
@@ -39,5 +39,5 @@ class NodeValidationToolkit(StructureValidationToolkit[T], ABC, Generic[T]):
     Provides:
 
     Super Class:
-        StructureValidationToolkit
+        StructureValidatorToolkit
     """

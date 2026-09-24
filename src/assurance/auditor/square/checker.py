@@ -27,7 +27,7 @@ class SquareConsistencyAuditor(ConsistencyAuditor[Square]):
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a Square instance is certified safe, reliable and consistent before use.
+        1.  Ensure a Square instance is certified safe, reliable, and consistent before use.
 
     Attributes:
         root_certifier: SquareRootCertifier

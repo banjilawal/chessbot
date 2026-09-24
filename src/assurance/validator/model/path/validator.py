@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Any, Optional, cast
 
-from err import CircularPathException, PathValidatorException
-from domain.model import Path
-from assurance.validator.model import ModelValidator
 from artifcat import ValidationResult
-from operation.toolkit import PathToolkit
+from assurance import ModelValidator
+from domain import Path
+from err import CircularPathException, PathValidatorException
+from transit import PathCarrier
 from util import LoggingLevelRouter
 
 
@@ -25,31 +25,31 @@ class PathValidator(ModelValidator[Path]):
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a Path instance is certified safe, reliable and consistent before use.
+        1.  Ensure a Path instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        toolkit: Optional[PathToolkit]
+        toolkit: PathValidatorToolkit
         
     Provides:
-        - def execute(candidate: Any,) -> ValidationResult[Path]
+        - def execute(candidate: Any) -> ValidationResult[PathCarrier]
 
     Super Class:
         ModelValidator
     """
     
-    def __init__(self, toolkit: Optional[PathToolkit] | None = PathToolkit()):
+    def __init__(self, toolkit: Optional[PathValidatorToolkit] | None = None):
         """
         Args:
-            toolkit: Optional[PathToolkit]
+            toolkit: Optional[PathValidatorToolkit]
         """
-        super().__init__(toolkit=toolkit)
+        super().__init__(toolkit=toolkit or PathValidatorToolkit())
         
     @property
-    def toolkit(self) -> PathToolkit:
-        return cast(PathToolkit, super().toolkit)
+    def toolkit(self) -> PathValidatorToolkit:
+        return cast(PathValidatorToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[Path]:
+    def execute(self, candidate: Any) -> ValidationResult[PathCarrier]:
         """
         Verify the object is a Path that is safe to use.
 
@@ -63,9 +63,9 @@ class PathValidator(ModelValidator[Path]):
             2.  Otherwise, send the success result.
         Args:
             candidate: Any
-            toolkit: PathToolkit
+            toolkit: PathValidatorToolkit
         Returns:
-            ValidationResult[Path]
+            ValidationResult[PathCarrier]
         Raises:
              PathValidatorException
         """

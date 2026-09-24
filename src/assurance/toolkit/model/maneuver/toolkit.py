@@ -1,7 +1,7 @@
-# src/assurance/toolkit/model/toolkit.py
+# src/assurance/toolkit/model/maneuver/toolkit.py
 
 """
-Module: assurance.toolkit.model.toolkit
+Module: assurance.toolkit.model.maneuver.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,9 +11,8 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ManeuverHelperTable, ModelValidatorToolkit
+from assurance import ModelValidatorToolkit, ManeuverHelperTable
 from domain import Maneuver, ManeuverManifest
-
 
 
 class ManeuverValidatorToolkit(ModelValidatorToolkit[Maneuver]):
@@ -25,15 +24,14 @@ class ManeuverValidatorToolkit(ModelValidatorToolkit[Maneuver]):
         1.  Single source of truth for Maneuver attribute validators and type metadata.
 
     Attributes:
-        helper: Optional[ManeuverManifest]
-        metadata: Optional[ManeuverHelperTable]
+        helper: ManeuverManifest
+        metadata: ManeuverHelperTable
 
     Provides:
 
     Super Class:
+        ModelValidatorToolkit
     """
-    _metadata: ManeuverManifest
-    _helper: ManeuverHelperTable
     
     def __init__(
             self,
@@ -45,8 +43,10 @@ class ManeuverValidatorToolkit(ModelValidatorToolkit[Maneuver]):
             helper: Optional[ManeuverManifest]
             metadata: Optional[ManeuverHelperTable]
         """
-        self._helper = helper or ManeuverHelperTable()
-        self._metadata = metadata or ManeuverManifest()
+        super().__init__(
+            helper=helper or ManeuverHelperTable(),
+            metadata=metadata or ManeuverManifest(),
+        )
     
     @property
     def helper(self) -> ManeuverHelperTable:

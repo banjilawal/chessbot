@@ -27,7 +27,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
         - Process Runner
 
     Responsibilities:
-        1.  Ensure a SchemaContext instance is certified safe, reliable and consistent before use.
+        1.  Ensure a SchemaContext instance is certified safe, reliable, and consistent before use.
 
     Attributes:
 

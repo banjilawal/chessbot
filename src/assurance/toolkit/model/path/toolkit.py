@@ -1,7 +1,7 @@
-# src/assurance/toolkit/model/toolkit.py
+# src/assurance/toolkit/model/path/toolkit.py
 
 """
-Module: assurance.toolkit.model.toolkit
+Module: assurance.toolkit.model.path.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,9 +11,8 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import PathHelperTable, ModelValidatorToolkit
+from assurance import ModelValidatorToolkit, PathHelperTable
 from domain import Path, PathManifest
-
 
 
 class PathValidatorToolkit(ModelValidatorToolkit[Path]):
@@ -25,15 +24,14 @@ class PathValidatorToolkit(ModelValidatorToolkit[Path]):
         1.  Single source of truth for Path attribute validators and type metadata.
 
     Attributes:
-        helper: Optional[PathManifest]
-        metadata: Optional[PathHelperTable]
+        helper: PathManifest
+        metadata: PathHelperTable
 
     Provides:
 
     Super Class:
+        ModelValidatorToolkit
     """
-    _metadata: PathManifest
-    _helper: PathHelperTable
     
     def __init__(
             self,
@@ -45,8 +43,10 @@ class PathValidatorToolkit(ModelValidatorToolkit[Path]):
             helper: Optional[PathManifest]
             metadata: Optional[PathHelperTable]
         """
-        self._helper = helper or PathHelperTable()
-        self._metadata = metadata or PathManifest()
+        super().__init__(
+            helper=helper or PathHelperTable(),
+            metadata=metadata or PathManifest(),
+        )
     
     @property
     def helper(self) -> PathHelperTable:

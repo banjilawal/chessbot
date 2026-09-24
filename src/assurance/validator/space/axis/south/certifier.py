@@ -27,7 +27,7 @@ class SouthAxisRootChecker(AxisRootChecker[SouthAxisBlueprint]):
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a SouthAxisBlueprint instance is certified safe, reliable and consistent before use.
+        1.  Ensure a SouthAxisBlueprint instance is certified safe, reliable, and consistent before use.
 
     Attributes:
         toolkit: SouthAxisToolkit

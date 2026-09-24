@@ -25,7 +25,7 @@ class EdgeValidationDispatcher(ModelValidationDispatcher[Edge]):
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a Edge instance is certified safe, reliable and consistent before use.
+        1.  Ensure a Edge instance is certified safe, reliable, and consistent before use.
 
     Attributes:
         integrity_checker: EdgeIntegrityChecker

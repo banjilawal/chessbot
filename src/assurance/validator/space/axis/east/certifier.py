@@ -28,7 +28,7 @@ class EastAxisRootChecker(AxisRootChecker[EastAxis]):
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a EastAxisBlueprint instance is certified safe, reliable and consistent before use.
+        1.  Ensure a EastAxisBlueprint instance is certified safe, reliable, and consistent before use.
 
     Attributes:
         toolkit: EastAxisToolkit

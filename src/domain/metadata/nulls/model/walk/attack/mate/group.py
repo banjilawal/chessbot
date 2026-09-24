@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from domain import AttackNullGroup, CheckmateAttack
 from err import (
-    MateAttackNullException, MateAttackBlueprintNullException, MateAttackCarrierNullException
+    CheckmateAttackNullException, CheckmateAttackBlueprintNullException, CheckmateAttackCarrierNullException
 )
 
 
@@ -38,9 +38,9 @@ class MateAttackNullGroup(AttackNullGroup[CheckmateAttack]):
     
     def __init__(
             self,
-            model: Optional[MateAttackNullException] | None = None,
-            carrier: Optional[MateAttackCarrierNullException] | None = None,
-            blueprint: Optional[MateAttackBlueprintNullException] | None = None,
+            model: Optional[CheckmateAttackNullException] | None = None,
+            carrier: Optional[CheckmateAttackCarrierNullException] | None = None,
+            blueprint: Optional[CheckmateAttackBlueprintNullException] | None = None,
     ):
         """
         Args:
@@ -49,19 +49,19 @@ class MateAttackNullGroup(AttackNullGroup[CheckmateAttack]):
             blueprint: Optional[MateAttackBlueprintNullException]
         """
         super().__init__(
-            model = model or MateAttackNullException(),
-            carrier =carrier or MateAttackCarrierNullException(),
-            blueprint =blueprint or MateAttackBlueprintNullException(),
+            model =model or CheckmateAttackNullException(),
+            carrier =carrier or CheckmateAttackCarrierNullException(),
+            blueprint =blueprint or CheckmateAttackBlueprintNullException(),
         )
         
     @property
-    def model(self) -> MateAttackNullException:
-        return cast(MateAttackNullException, super().model)
+    def model(self) -> CheckmateAttackNullException:
+        return cast(CheckmateAttackNullException, super().model)
     
     @property
-    def carrier(self) -> MateAttackCarrierNullException:
-        return cast(MateAttackCarrierNullException, super().carrier)
+    def carrier(self) -> CheckmateAttackCarrierNullException:
+        return cast(CheckmateAttackCarrierNullException, super().carrier)
     
     @property
-    def blueprint(self) -> MateAttackBlueprintNullException:
-        return cast(MateAttackBlueprintNullException, super().blueprint)
+    def blueprint(self) -> CheckmateAttackBlueprintNullException:
+        return cast(CheckmateAttackBlueprintNullException, super().blueprint)

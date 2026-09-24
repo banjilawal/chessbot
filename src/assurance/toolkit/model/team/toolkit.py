@@ -1,7 +1,7 @@
-# src/assurance/toolkit/model/toolkit.py
+# src/assurance/toolkit/model/team/toolkit.py
 
 """
-Module: assurance.toolkit.model.toolkit
+Module: assurance.toolkit.model.team.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,9 +11,8 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import TeamHelperTable, ModelValidatorToolkit
+from assurance import ModelValidatorToolkit, TeamHelperTable
 from domain import Team, TeamManifest
-
 
 
 class TeamValidatorToolkit(ModelValidatorToolkit[Team]):
@@ -25,15 +24,14 @@ class TeamValidatorToolkit(ModelValidatorToolkit[Team]):
         1.  Single source of truth for Team attribute validators and type metadata.
 
     Attributes:
-        helper: Optional[TeamManifest]
-        metadata: Optional[TeamHelperTable]
+        helper: TeamManifest
+        metadata: TeamHelperTable
 
     Provides:
 
     Super Class:
+        ModelValidatorToolkit
     """
-    _metadata: TeamManifest
-    _helper: TeamHelperTable
     
     def __init__(
             self,

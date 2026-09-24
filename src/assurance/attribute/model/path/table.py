@@ -27,24 +27,24 @@ class PathHelperTable(ModelHelperTable[Path]):
             partners attributes.
 
     Attributes:
-        register_validator: SquareRegisterValidator
+        endpoint_validator: SquareRegisterValidator
 
     Provides:
 
     Super Class:
         ModelHelperTable
     """
-    _register_validator: SquareRegisterValidator
+    _endpoint_validator: SquareRegisterValidator
     
     def __init__(
             self,
-            register_validator: Optional[SquareRegisterValidator] | None = None,
+            endpoint_validator: Optional[SquareRegisterValidator] | None = None,
             identity_service: Optional[IdentityService] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
     ):
         """
         Args:
-            register_validator: Optional[SquareRegisterValidator]
+            endpoint_validator: Optional[SquareRegisterValidator]
             identity_service: Optional[IdentityService]
             priming_validator: Optional[PrimingValidator]
         """
@@ -52,8 +52,8 @@ class PathHelperTable(ModelHelperTable[Path]):
             identity_service=identity_service,
             priming_validator=priming_validator,
         )
-        self._register_validator = register_validator or SquareRegisterValidator()
+        self._endpoint_validator = endpoint_validator or SquareRegisterValidator()
         
     @property
-    def register_validator(self) -> SquareRegisterValidator:
-        return self._register_validator
+    def endpoint_validator(self) -> SquareRegisterValidator:
+        return self._endpoint_validator

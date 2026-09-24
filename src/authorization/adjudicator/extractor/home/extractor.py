@@ -32,7 +32,7 @@ class HomeSquareExtractor:
 
 
     Attributes:
-        bundle: TokenValidationToolkit
+        bundle: TokenValidatorToolkit
 
     Provides:
         - execute(self, blueprint: TokenBlueprint) -> ValidationResult
@@ -63,7 +63,7 @@ class HomeSquareExtractor:
             4.  Send the success result from either route taken.
         Args:
             blueprint: TokenBlueprint
-            bundle: TokenValidationToolkit
+            bundle: TokenValidatorToolkit
         Returns:
             ValidationResult[HomeSquare]
         Raises:

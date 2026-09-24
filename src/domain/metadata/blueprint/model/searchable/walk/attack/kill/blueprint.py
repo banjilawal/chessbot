@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from domain import AttackBlueprint, KillCombatant, CombatantToken, Maneuver, Token
-from err import KillAttackNullException
+from err import CombatantAttackNullException
 
 
 class KillEnemyBlueprint(AttackBlueprint):
@@ -45,7 +45,7 @@ class KillEnemyBlueprint(AttackBlueprint):
             maneuver: Maneuver,
             victim: CombatantToken,
             domain_class: Optional[Type[KillCombatant]] | None = None,
-            domain_null_exception: Optional[KillAttackNullException] | None = None,
+            domain_null_exception: Optional[CombatantAttackNullException] | None = None,
             attacker_reward: Optional[int] | None = None,
             id: Optional[int] | None = None,
     ):
@@ -66,7 +66,7 @@ class KillEnemyBlueprint(AttackBlueprint):
             victim=victim,
             attacker_reward=attacker_reward,
             domain_class=domain_class or KillCombatant,
-            domain_null_exception=domain_null_exception or KillAttackNullException(),
+            domain_null_exception=domain_null_exception or CombatantAttackNullException(),
         )
     
     @property
@@ -80,8 +80,8 @@ class KillEnemyBlueprint(AttackBlueprint):
     
     
     @property
-    def domain_null_exception(self) -> KillAttackNullException:
-        return cast(KillAttackNullException, super().domain_null_exception)
+    def domain_null_exception(self) -> CombatantAttackNullException:
+        return cast(CombatantAttackNullException, super().domain_null_exception)
 
 
 

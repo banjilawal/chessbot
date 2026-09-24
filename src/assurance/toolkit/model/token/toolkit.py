@@ -1,7 +1,7 @@
-# src/assurance/toolkit/model/toolkit.py
+# src/assurance/toolkit/model/token/toolkit.py
 
 """
-Module: assurance.toolkit.model.toolkit
+Module: assurance.toolkit.model.token.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -15,7 +15,6 @@ from assurance import ModelValidatorToolkit, TokenHelperTable
 from domain import Token, TokenManifest
 
 
-
 class TokenValidatorToolkit(ModelValidatorToolkit[Token]):
     """
     Role:
@@ -25,15 +24,14 @@ class TokenValidatorToolkit(ModelValidatorToolkit[Token]):
         1.  Single source of truth for Token attribute validators and type metadata.
 
     Attributes:
-        helper: Optional[TokenManifest]
-        metadata: Optional[TokenHelperTable]
+        helper: TokenManifest
+        metadata: TokenHelperTable
 
     Provides:
 
     Super Class:
+        ModelValidatorToolkit
     """
-    _metadata: TokenManifest
-    _helper: TokenHelperTable
     
     def __init__(
             self,
@@ -46,10 +44,9 @@ class TokenValidatorToolkit(ModelValidatorToolkit[Token]):
             metadata: Optional[TokenHelperTable]
         """
         super().__init__(
-            helper = helper or TokenHelperTable(),
-            metadata = metadata or TokenManifest(),
+            helper=helper or TokenHelperTable(),
+            metadata=metadata or TokenManifest(),
         )
-
     
     @property
     def helper(self) -> TokenHelperTable:

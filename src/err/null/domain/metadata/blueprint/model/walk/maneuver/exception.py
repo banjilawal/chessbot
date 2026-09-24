@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import BlueprintNullException
+from err import ModelBlueprintNullException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# MANEUVER_BLUEPRINT_NULL_ERROR #======================#
-class ManeuverBlueprintNullException(BlueprintNullException):
+class ManeuverBlueprintNullException(ModelBlueprintNullException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class ManeuverBlueprintNullException(BlueprintNullException):
     Provides:
 
     Super Class:
-        BlueprintNullException
+        ModelBlueprintNullException
     """
     MSG = "ManeuverBlueprint cannot be null."
     ERR_CODE = "MANEUVER_BLUEPRINT_NULL_ERROR"

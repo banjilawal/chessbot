@@ -1,7 +1,7 @@
-# src/assurance/toolkit/model/toolkit.py
+# src/assurance/toolkit/model/scalar/toolkit.py
 
 """
-Module: assurance.toolkit.model.toolkit
+Module: assurance.toolkit.model.scalar.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,9 +11,8 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ScalarHelperTable, ModelValidatorToolkit
+from assurance import ModelValidatorToolkit, ScalarHelperTable
 from domain import Scalar, ScalarManifest
-
 
 
 class ScalarValidatorToolkit(ModelValidatorToolkit[Scalar]):
@@ -25,15 +24,14 @@ class ScalarValidatorToolkit(ModelValidatorToolkit[Scalar]):
         1.  Single source of truth for Scalar attribute validators and type metadata.
 
     Attributes:
-        helper: Optional[ScalarManifest]
-        metadata: Optional[ScalarHelperTable]
+        helper: ScalarManifest
+        metadata: ScalarHelperTable
 
     Provides:
 
     Super Class:
+        ModelValidatorToolkit
     """
-    _metadata: ScalarManifest
-    _helper: ScalarHelperTable
     
     def __init__(
             self,

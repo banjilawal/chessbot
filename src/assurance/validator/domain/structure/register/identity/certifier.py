@@ -29,7 +29,7 @@ class IdentityRegisterValidator(Validator[IdentityRegister]):
         - Validation Process Owner
 
     Responsibilities:
-        1.  Ensure a VectorRegister instance is certified safe, reliable and consistent
+        1.  Ensure a VectorRegister instance is certified safe, reliable, and consistent
             before use in a binary arithmetic operation.
 
     Attributes:

@@ -25,7 +25,7 @@ class OrientationSelectorValidationDispatcher(ModelValidationDispatcher[Orientat
         - Validation Process Owner
 
     Responsibilities:
-        1.  Ensure a OrientationOperand instance is certified safe, reliable and consistent
+        1.  Ensure a OrientationOperand instance is certified safe, reliable, and consistent
             before use.
 
     Attributes:

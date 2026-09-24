@@ -28,7 +28,7 @@ class NortheastQuadrantRootChecker(QuadrantRootChecker[NortheastQuadrant]):
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a NortheastQuadrantBlueprint instance is certified safe, reliable and consistent before use.
+        1.  Ensure a NortheastQuadrantBlueprint instance is certified safe, reliable, and consistent before use.
 
     Attributes:
         toolkit: NortheastQuadrantToolkit

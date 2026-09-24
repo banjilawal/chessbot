@@ -36,7 +36,7 @@ class CartesianToggleRegisterValidator(
 
     Responsibilities:
         1.  Ensure a CartesianToggleRegisterBlueprint instance is certified safe,
-            reliable and consistent before use.
+            reliable, and consistent before use.
 
     Attributes:
         toolkit: Optional[CartesianToggleRegisterToolkit]

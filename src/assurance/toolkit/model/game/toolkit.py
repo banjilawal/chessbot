@@ -1,7 +1,7 @@
-# src/assurance/toolkit/model/toolkit.py
+# src/assurance/toolkit/model/game/toolkit.py
 
 """
-Module: assurance.toolkit.model.toolkit
+Module: assurance.toolkit.model.game.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,9 +11,8 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import GameHelperTable, ModelValidatorToolkit
+from assurance import ModelValidatorToolkit, GameHelperTable
 from domain import Game, GameManifest
-
 
 
 class GameValidatorToolkit(ModelValidatorToolkit[Game]):
@@ -25,15 +24,14 @@ class GameValidatorToolkit(ModelValidatorToolkit[Game]):
         1.  Single source of truth for Game attribute validators and type metadata.
 
     Attributes:
-        helper: Optional[GameManifest]
-        metadata: Optional[GameHelperTable]
+        helper: GameManifest
+        metadata: GameHelperTable
 
     Provides:
 
     Super Class:
+        ModelValidatorToolkit
     """
-    _metadata: GameManifest
-    _helper: GameHelperTable
     
     def __init__(
             self,
@@ -45,8 +43,10 @@ class GameValidatorToolkit(ModelValidatorToolkit[Game]):
             helper: Optional[GameManifest]
             metadata: Optional[GameHelperTable]
         """
-        self._helper = helper or GameHelperTable()
-        self._metadata = metadata or GameManifest()
+        super().__init__(
+            helper=helper or GameHelperTable(),
+            metadata=metadata or GameManifest(),
+        )
     
     @property
     def helper(self) -> GameHelperTable:

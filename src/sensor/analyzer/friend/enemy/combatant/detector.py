@@ -14,7 +14,7 @@ from err import EnemyCombatantAnalyzerException, TokenNullException
 from domain.model import CombatantToken
 from artifcat.report import FriendshipStatus
 from artifcat import Result
-from operation.toolkit import TokenValidationToolkit
+from operation.toolkit import TokenValidatorToolkit
 from util import LoggingLevelRouter
 from transit.dispatcher.validator import TokenValidationDispatcher
 
@@ -48,7 +48,7 @@ class EnemyCombatantStatusDetector(Analyzer):
     def execute(
             cls,
             combatant: CombatantToken,
-            bundle: TokenValidationToolkit | None = None,
+            bundle: TokenValidatorToolkit | None = None,
             token_validator: TokenValidationDispatcher | None = None,
     ) -> Result[FriendshipStatus]:
         """

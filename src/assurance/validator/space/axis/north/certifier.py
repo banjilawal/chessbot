@@ -28,7 +28,7 @@ class NorthAxisRootChecker(AxisRootChecker[NorthAxisBlueprint]):
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a NorthAxisBlueprint instance is certified safe, reliable and consistent before use.
+        1.  Ensure a NorthAxisBlueprint instance is certified safe, reliable, and consistent before use.
 
     Attributes:
         toolkit: NorthAxisToolkit

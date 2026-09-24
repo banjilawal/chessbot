@@ -24,7 +24,7 @@ class TokenHomeContextValidator(StackContextValidator[TokenHomeContext]):
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a HomeContext instance is certified safe, reliable and consistent before use.
+        1.  Ensure a HomeContext instance is certified safe, reliable, and consistent before use.
 
     Attributes:
 

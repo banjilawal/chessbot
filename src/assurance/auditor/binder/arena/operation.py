@@ -29,7 +29,7 @@ class BoardTeamBinderConsistencyAuditor(ConsistencyAuditor[BoardBinder]):
         - Validation Process Owner
 
     Responsibilities:
-        1.  Ensure a BoardTeamBinder instance is certified safe, reliable and consistent
+        1.  Ensure a BoardTeamBinder instance is certified safe, reliable, and consistent
             before use.
 
     Attributes:

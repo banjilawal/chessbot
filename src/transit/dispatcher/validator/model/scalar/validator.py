@@ -25,7 +25,7 @@ class ScalarValidationDispatcher(ModelValidationDispatcher[Scalar]):
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a Scalar instance is certified safe, reliable and consistent before use.
+        1.  Ensure a Scalar instance is certified safe, reliable, and consistent before use.
 
     Attributes:
         integrity_checker: ScalarIntegrityChecker

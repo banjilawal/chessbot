@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from domain import KillCombatant, AttackNullGroup
 from err import (
-    KillAttackNullException, KillBlueprintNullException, KillCarrierNullException
+    CombatantAttackNullException, CombatantAttackBlueprintNullException, CombatantAttackCarrierNullException
 )
 
 
@@ -38,9 +38,9 @@ class KillAttackNullGroup(AttackNullGroup[KillCombatant]):
     
     def __init__(
             self,
-            model: Optional[KillAttackNullException] | None = None,
-            carrier: Optional[KillCarrierNullException] | None = None,
-            blueprint: Optional[KillBlueprintNullException] | None = None,
+            model: Optional[CombatantAttackNullException] | None = None,
+            carrier: Optional[CombatantAttackCarrierNullException] | None = None,
+            blueprint: Optional[CombatantAttackBlueprintNullException] | None = None,
     ):
         """
         Args:
@@ -49,19 +49,19 @@ class KillAttackNullGroup(AttackNullGroup[KillCombatant]):
             blueprint: Optional[KillBlueprintNullException]
         """
         super().__init__(
-            model = model or KillAttackNullException(),
-            carrier =carrier or KillCarrierNullException(),
-            blueprint =blueprint or KillBlueprintNullException(),
+            model =model or CombatantAttackNullException(),
+            carrier =carrier or CombatantAttackCarrierNullException(),
+            blueprint =blueprint or CombatantAttackBlueprintNullException(),
         )
         
     @property
-    def model(self) -> KillAttackNullException:
-        return cast(KillAttackNullException, super().model)
+    def model(self) -> CombatantAttackNullException:
+        return cast(CombatantAttackNullException, super().model)
     
     @property
-    def carrier(self) -> KillCarrierNullException:
-        return cast(KillCarrierNullException, super().carrier)
+    def carrier(self) -> CombatantAttackCarrierNullException:
+        return cast(CombatantAttackCarrierNullException, super().carrier)
     
     @property
-    def blueprint(self) -> KillBlueprintNullException:
-        return cast(KillBlueprintNullException, super().blueprint)
+    def blueprint(self) -> CombatantAttackBlueprintNullException:
+        return cast(CombatantAttackBlueprintNullException, super().blueprint)

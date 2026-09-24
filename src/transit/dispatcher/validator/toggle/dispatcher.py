@@ -32,7 +32,7 @@ class ToggleValidationDispatcher(ValidationDispatcher, Generic[T]):
         - Validation Process Owner
 
     Responsibilities:
-        1.  Ensure a Operand instance is certified safe, reliable and consistent before use.
+        1.  Ensure a Operand instance is certified safe, reliable, and consistent before use.
 
     Attributes:
         integrity_checker: OperandToolkit

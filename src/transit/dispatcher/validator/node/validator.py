@@ -27,7 +27,7 @@ class NodeValidator(Validator[Node]):
         - Validation Process Owner
 
     Responsibilities:
-        1.  Ensure a Node instance is certified safe, reliable and consistent before use.
+        1.  Ensure a Node instance is certified safe, reliable, and consistent before use.
 
     Attributes:
         integrity_checker: NodeIntegrityChecker

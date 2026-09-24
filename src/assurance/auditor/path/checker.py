@@ -24,7 +24,7 @@ class PathConsistency:
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a Path instance is certified safe, reliable and consistent before use.
+        1.  Ensure a Path instance is certified safe, reliable, and consistent before use.
 
     Attributes:
 

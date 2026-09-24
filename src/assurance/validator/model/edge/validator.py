@@ -17,7 +17,7 @@ class EdgeValidator(ModelValidator[Edge]):
      Role:Validation, Data Integrity Guarantor, Security.
 
     Responsibilities:
-    1.  Ensure a EdgeBlueprint instance is certified safe, reliable and consistent before use.
+    1.  Ensure a EdgeBlueprint instance is certified safe, reliable, and consistent before use.
     2.  If verification fails indicate the reason in an exception returned to the caller.
 
     Super Class:

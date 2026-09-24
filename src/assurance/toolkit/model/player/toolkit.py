@@ -1,7 +1,7 @@
-# src/assurance/toolkit/model/toolkit.py
+# src/assurance/toolkit/model/player/toolkit.py
 
 """
-Module: assurance.toolkit.model.toolkit
+Module: assurance.toolkit.model.player.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,9 +11,8 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import PlayerHelperTable, ModelValidatorToolkit
+from assurance import ModelValidatorToolkit, PlayerHelperTable
 from domain import Player, PlayerManifest
-
 
 
 class PlayerValidatorToolkit(ModelValidatorToolkit[Player]):
@@ -25,15 +24,14 @@ class PlayerValidatorToolkit(ModelValidatorToolkit[Player]):
         1.  Single source of truth for Player attribute validators and type metadata.
 
     Attributes:
-        helper: Optional[PlayerManifest]
-        metadata: Optional[PlayerHelperTable]
+        helper: PlayerManifest
+        metadata: PlayerHelperTable
 
     Provides:
 
     Super Class:
+        ModelValidatorToolkit
     """
-    _metadata: PlayerManifest
-    _helper: PlayerHelperTable
     
     def __init__(
             self,

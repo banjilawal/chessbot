@@ -15,7 +15,7 @@ class PlayerContextValidator(ContextValidator[Player]):
      Role:Validation, Data Integrity Guarantor, Security.
 
     Responsibilities:
-    1.  Ensure an PlayerContext instance is certified safe, reliable and consistent before use.
+    1.  Ensure an PlayerContext instance is certified safe, reliable, and consistent before use.
     2.  If a rank fails a safety test, the validation sends an exception in a ValidationResult.
     
     Super Class:

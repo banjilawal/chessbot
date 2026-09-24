@@ -28,7 +28,7 @@ class SouthwestQuadrantRootChecker(QuadrantRootChecker[SouthwestQuadrantBlueprin
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a SouthwestQuadrants or their blueprints are certified safe, reliable and consistent
+        1.  Ensure a SouthwestQuadrants or their blueprints are certified safe, reliable, and consistent
             before use.
 
     Attributes:

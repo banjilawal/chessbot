@@ -25,7 +25,7 @@ class VectorRegisterValidator(RegisterValidationDispatcher[VectorRegister]):
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a VectorRegister instance is certified safe, reliable and consistent before use.
+        1.  Ensure a VectorRegister instance is certified safe, reliable, and consistent before use.
 
     Attributes:
         integrity_checker: VectorRegisterIntegrityChecker

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import BlueprintNullException
+from err import ModelBlueprintNullException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# PATH_BLUEPRINT_NULL_ERROR #======================#
-class PathBlueprintNullException(BlueprintNullException):
+class PathBlueprintNullException(ModelBlueprintNullException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class PathBlueprintNullException(BlueprintNullException):
     Provides:
 
     Super Class:
-        BlueprintNullException
+        ModelBlueprintNullException
     """
     MSG = "PathBlueprint cannot be null."
     ERR_CODE = "PATH_BLUEPRINT_NULL_ERROR"

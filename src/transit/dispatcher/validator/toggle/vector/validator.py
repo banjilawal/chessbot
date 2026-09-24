@@ -27,7 +27,7 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
         - Validation Process Owner
 
     Responsibilities:
-        1.  Ensure a CartesianToggle instance is certified safe, reliable and consistent
+        1.  Ensure a CartesianToggle instance is certified safe, reliable, and consistent
             before use.
 
     Attributes:

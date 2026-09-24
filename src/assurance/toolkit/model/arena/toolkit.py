@@ -1,7 +1,7 @@
-# src/assurance/toolkit/model/toolkit.py
+# src/assurance/toolkit/model/arena/toolkit.py
 
 """
-Module: assurance.toolkit.model.toolkit
+Module: assurance.toolkit.model.arena.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,9 +11,8 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ArenaHelperTable, ModelValidatorToolkit
+from assurance import ModelValidatorToolkit, ArenaHelperTable
 from domain import Arena, ArenaManifest
-
 
 
 class ArenaValidatorToolkit(ModelValidatorToolkit[Arena]):
@@ -25,15 +24,14 @@ class ArenaValidatorToolkit(ModelValidatorToolkit[Arena]):
         1.  Single source of truth for Arena attribute validators and type metadata.
 
     Attributes:
-        helper: Optional[ArenaManifest]
-        metadata: Optional[ArenaHelperTable]
+        helper: ArenaManifest
+        metadata: ArenaHelperTable
 
     Provides:
 
     Super Class:
+        ModelValidatorToolkit
     """
-    _metadata: ArenaManifest
-    _helper: ArenaHelperTable
     
     def __init__(
             self,
@@ -45,8 +43,10 @@ class ArenaValidatorToolkit(ModelValidatorToolkit[Arena]):
             helper: Optional[ArenaManifest]
             metadata: Optional[ArenaHelperTable]
         """
-        self._helper = helper or ArenaHelperTable()
-        self._metadata = metadata or ArenaManifest()
+        super().__init__(
+            helper=helper or ArenaHelperTable(),
+            metadata=metadata or ArenaManifest(),
+        )
     
     @property
     def helper(self) -> ArenaHelperTable:

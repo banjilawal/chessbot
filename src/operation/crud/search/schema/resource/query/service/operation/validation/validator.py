@@ -25,7 +25,7 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
         - Process Runner
 
     Responsibilities:
-        1.  Ensure a SchemaQuery instance is certified safe, reliable and consistent before use.
+        1.  Ensure a SchemaQuery instance is certified safe, reliable, and consistent before use.
 
     Attributes:
 
