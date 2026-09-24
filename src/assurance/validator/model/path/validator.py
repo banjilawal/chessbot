@@ -13,9 +13,9 @@ from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import ModelValidator, PathValidatorToolkit
-from domain import Path, PathBlueprint, PathValidationRequest, SquareRegister
+from domain import Path, PathBlueprint, PathValidationRequest, SquareRegister, SquareRegisterValidationRequest
 from err import (
-    EmptySquareRegisterCarrierException, PathValidationRequestNullException,
+    EmptyPathCarrierException, EmptySquareRegisterCarrierException, PathValidationRequestNullException,
     PathValidatorException
 )
 from transit import PathCarrier, SquareRegisterCarrier
@@ -116,10 +116,7 @@ class PathValidator(ModelValidator[Path]):
                 )
             )
         # --- Cast the carrier_validation payload for additional tests. ---#
-        carrier = cast(
-            PathCarrier,
-            carrier_validation.payload,
-        )
+        carrier = cast(PathCarrier, carrier_validation.payload,)
         # --- Extract the blueprint to verify the attributes. ---#
         blueprint = carrier.extract_blueprint()
         
@@ -132,11 +129,11 @@ class PathValidator(ModelValidator[Path]):
                     cls_name=self.__class__.__name__,
                     msg=PathValidatorException.MSG,
                     err_code=PathValidatorException.ERR_CODE,
-                    ex=EmptySquareRegisterCarrierException(
+                    ex=EmptyPathCarrierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptySquareRegisterCarrierException.MSG,
-                        err_code=EmptySquareRegisterCarrierException.ERR_CODE,
+                        msg=EmptyPathCarrierException.MSG,
+                        err_code=EmptyPathCarrierException.ERR_CODE,
                     ),
                 )
             )
