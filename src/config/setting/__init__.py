@@ -12,6 +12,7 @@ version: 0.0.2
 # Packages
 from .board import *
 from .gui import *
+from .numeric import *
 from .string import *
 
 # Modules
