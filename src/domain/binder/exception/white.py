@@ -1,7 +1,7 @@
-# src/domain/structure/binder/exception/white.py
+# src/domain/binder/exception/white.py
 
 """
-Module: domain.structure.binder.exception.white
+Module: domain.binder.exception.white
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -12,7 +12,7 @@ __all__ = [
     "WhiteTeamHasWrongArchetypeException",
 ]
 
-from domain.structure.team import TeamBinderException
+from domain.team import TeamBinderException
 
 
 # ======================# WHITE_TEAM_HAS_WRONG_ARCHETYPE EXCEPTION #======================#

@@ -1,13 +1,13 @@
-# src/domain/structure/binder/__init__.py
+# src/domain/binder/__init__.py
 
 """
-Module: domain.structure.binder.__init__
+Module: domain.binder.__init__
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
 """
 
-# =========== DOMAIN.STRUCTURE.BINDER PACKAGE ===========#
+# =========== DOMAIN.BINDER PACKAGE ===========#
 
 # Packages
 from .arena import *

@@ -12,13 +12,12 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Type, TypeVar
 
-from domain import DomainMetadata
 from err import NullException
 
 T = TypeVar("T")
 
 
-class Blueprint(DomainMetadata, ABC, Generic[T]):
+class Blueprint(ABC, Generic[T]):
     """
      Role:
         1.  Metadata

@@ -1,7 +1,7 @@
-# src/domain/structure/binder/exception/black.py
+# src/domain/binder/exception/black.py
 
 """
-Module: domain.structure.binder.exception.black
+Module: domain.binder.exception.black
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0

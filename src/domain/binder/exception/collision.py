@@ -1,7 +1,7 @@
-# src/domain/structure/binder/exception/collision.py
+# src/domain/binder/exception/collision.py
 
 """
-Module: domain.structure.binder.exception.collision
+Module: domain.binder.exception.collision
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -12,7 +12,7 @@ __all__ = [
     "TeamArchetypeCollisionException",
 ]
 
-from domain.structure.team import TeamBinderException
+from domain.team import TeamBinderException
 
 
 # ======================# TEAM_BINDER_ARCHETYPE_COLLISION EXCEPTION #======================#

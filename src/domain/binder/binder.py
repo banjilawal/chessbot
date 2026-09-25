@@ -1,7 +1,7 @@
-# src/domain/structure/binder/binder.py
+# src/domain/binder/binder.py
 
 """
-Module: domain.structure.binder.binder
+Module: domain.binder.binder
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0

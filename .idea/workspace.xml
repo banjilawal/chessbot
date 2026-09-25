@@ -4,7 +4,24 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="" />
+    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/structure/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/structure/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/structure/binder/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/binder/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/structure/binder/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/binder/arena/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/structure/binder/arena/binder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/binder/arena/binder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/structure/binder/binder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/binder/binder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/structure/binder/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/binder/board/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/structure/binder/board/binder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/binder/board/binder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/structure/binder/exception/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/binder/exception/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/structure/binder/exception/black.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/binder/exception/black.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/structure/binder/exception/collision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/binder/exception/collision.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/structure/binder/exception/white.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/binder/exception/white.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/structure/binder/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/binder/game/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/structure/binder/game/binder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/binder/game/binder.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,61 +62,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000008839808" />
-      <entry key="MS500" value="1.2064692329038256" />
-      <entry key="S2" value="4.1079411439972375" />
-      <entry key="S5" value="9.959713928983474" />
-      <entry key="S10" value="19.64271899070203" />
-      <entry key="S30" value="42.669766791418155" />
-      <entry key="S60" value="56.401723547855944" />
-      <entry key="M2" value="68.33293700157184" />
-      <entry key="M5" value="88.72498191309728" />
-      <entry key="M10" value="144.03096771138" />
-      <entry key="M15" value="212.37348301920076" />
-      <entry key="M30" value="398.23565728895636" />
-      <entry key="H1" value="674.8442860920528" />
-      <entry key="H2" value="1087.7673426442968" />
-      <entry key="H4" value="1816.592765368208" />
-      <entry key="D1" value="6224.322232069252" />
-      <entry key="W1" value="23150.74245409277" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0002729035975186" />
+      <entry key="S2" value="1.159085147891068" />
+      <entry key="S5" value="1.688108587557708" />
+      <entry key="S10" value="2.1614280808428568" />
+      <entry key="S30" value="2.66481342488348" />
+      <entry key="S60" value="2.8242069527192815" />
+      <entry key="M2" value="2.909946123964261" />
+      <entry key="M5" value="2.9634781589202577" />
+      <entry key="M10" value="3.048517809405863" />
+      <entry key="M15" value="4.1198053598217195" />
+      <entry key="M30" value="30.528906390340733" />
+      <entry key="H1" value="181.03329475046303" />
+      <entry key="H2" value="568.0412328554338" />
+      <entry key="H4" value="1321.0738336190154" />
+      <entry key="D1" value="5937.598670661314" />
+      <entry key="W1" value="23037.04146598901" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="1.6199554873936022E-110" />
-      <entry key="S5" value="1.3836265779586754E-44" />
-      <entry key="S10" value="1.5349219837426365E-22" />
-      <entry key="S30" value="1.0396324610144214E-7" />
-      <entry key="S60" value="6.808351525887332E-4" />
-      <entry key="M2" value="0.07186709945709416" />
-      <entry key="M5" value="1.705298037780635" />
-      <entry key="M10" value="5.868625577647936" />
-      <entry key="M15" value="9.8261139355443" />
-      <entry key="M30" value="20.61033811343964" />
-      <entry key="H1" value="38.69210609797214" />
-      <entry key="H2" value="65.1866687748183" />
-      <entry key="H4" value="103.40416067505332" />
-      <entry key="D1" value="287.8911056351794" />
-      <entry key="W1" value="1043.0299941034816" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="3.1398295597734388E-196" />
+      <entry key="S30" value="1.0766752979975472E-65" />
+      <entry key="S60" value="4.840582164792242E-33" />
+      <entry key="M2" value="1.277364343861289E-16" />
+      <entry key="M5" value="1.4302646672466123E-6" />
+      <entry key="M10" value="0.004404776837871173" />
+      <entry key="M15" value="0.07643654743906834" />
+      <entry key="M30" value="1.7724870565267015" />
+      <entry key="H1" value="11.459443240410861" />
+      <entry key="H2" value="36.249948548694086" />
+      <entry key="H4" value="78.6000354347771" />
+      <entry key="D1" value="280.1362512619869" />
+      <entry key="W1" value="1043.8033361616297" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="2.074705852824106E-4" />
-      <entry key="MS500" value="0.3827606194707466" />
-      <entry key="S2" value="3.7346907265262415" />
-      <entry key="S5" value="9.773453431647331" />
-      <entry key="S10" value="19.531966210178194" />
-      <entry key="S30" value="42.62154965354965" />
-      <entry key="S60" value="56.375234279023374" />
-      <entry key="M2" value="68.38730087523962" />
-      <entry key="M5" value="90.39797039671929" />
-      <entry key="M10" value="149.84685897778618" />
-      <entry key="M15" value="222.13604849379053" />
-      <entry key="M30" value="418.7693136899784" />
-      <entry key="H1" value="713.4602798200174" />
-      <entry key="H2" value="1152.8910044305746" />
-      <entry key="H4" value="1919.9479883708832" />
-      <entry key="D1" value="6512.187456843594" />
-      <entry key="W1" value="24193.75593356564" />
+      <entry key="MS100" value="6.15418822648717E-6" />
+      <entry key="MS500" value="0.09074941636975098" />
+      <entry key="S2" value="0.6062784022074578" />
+      <entry key="S5" value="1.2651877614188367" />
+      <entry key="S10" value="1.8635775345478338" />
+      <entry key="S30" value="2.5351443001834797" />
+      <entry key="S60" value="2.7545749619680833" />
+      <entry key="M2" value="2.8738408197276697" />
+      <entry key="M5" value="2.9487157608031644" />
+      <entry key="M10" value="3.04544134979621" />
+      <entry key="M15" value="4.190747500611588" />
+      <entry key="M30" value="32.292380975412534" />
+      <entry key="H1" value="192.46930686694662" />
+      <entry key="H2" value="604.2557469350335" />
+      <entry key="H4" value="1399.636432924176" />
+      <entry key="D1" value="6217.70980463766" />
+      <entry key="W1" value="24080.82831520115" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -130,7 +147,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/domain/structure/binder",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/domain/metadata/blueprint/model/searchable/state/game",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -144,18 +161,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/state/game" />
       <recent name="$PROJECT_DIR$/src/domain/structure/binder" />
       <recent name="$PROJECT_DIR$/src/assurance/validator/model/game" />
       <recent name="$PROJECT_DIR$/src/config/setting" />
       <recent name="$PROJECT_DIR$/src/config/property/value" />
-      <recent name="$PROJECT_DIR$/src/config/property/name" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/domain" />
       <recent name="$PROJECT_DIR$/src/config/setting/board" />
       <recent name="$PROJECT_DIR$/src/config/property/name" />
       <recent name="$PROJECT_DIR$/src/config" />
       <recent name="$PROJECT_DIR$/src/err/capacity/empty/domain/exchange/request/validation/model" />
-      <recent name="$PROJECT_DIR$/src/err/capacity/empty/primitive" />
     </key>
   </component>
   <component name="RunManager" selected="Python.validator">
@@ -836,7 +853,7 @@
       <workItem from="1788782347688" duration="75617000" />
       <workItem from="1788969937518" duration="171978000" />
       <workItem from="1790001362413" duration="735000" />
-      <workItem from="1790063398459" duration="127224000" />
+      <workItem from="1790063398459" duration="132339000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1039,7 +1056,7 @@
           <option name="timeStamp" value="145" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/domain/structure/binder/binder.py</url>
+          <url>file://$PROJECT_DIR$/src/domain/binder/binder.py</url>
           <line>11</line>
           <option name="timeStamp" value="147" />
         </line-breakpoint>
@@ -1909,7 +1926,7 @@
           <option name="timeStamp" value="408" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/domain/structure/binder/board/binder.py</url>
+          <url>file://$PROJECT_DIR$/src/domain/binder/board/binder.py</url>
           <line>11</line>
           <option name="timeStamp" value="409" />
         </line-breakpoint>
@@ -2160,7 +2177,7 @@
           <option name="timeStamp" value="473" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/domain/structure/binder/__init__.py</url>
+          <url>file://$PROJECT_DIR$/src/domain/binder/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="474" />
         </line-breakpoint>

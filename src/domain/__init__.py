@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== DOMAIN PACKAGE ===========#
 
 # Packages
+from .binder import *
 from .exchange import *
 from .graph import *
 from .metadata import *
