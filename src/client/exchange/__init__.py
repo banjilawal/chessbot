@@ -10,7 +10,6 @@ version: 0.0.2
 # =========== CLIENT.EXCHANGE PACKAGE ===========#
 
 # Packages
-from .response import *
 from .request import *
 
 # Modules
