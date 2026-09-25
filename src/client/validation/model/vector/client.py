@@ -14,6 +14,7 @@ from typing import Optional, cast
 from artifcat import ValidationResult
 from client import ModelValidatorClient, VectorValidationRequest
 from domain import Vector
+from err import VectorValidatorClientException
 from transit import VectorCarrier, VectorValidationDispatcher
 from util import LoggingLevelRouter
 
@@ -66,6 +67,20 @@ class VectorValidatorClient(ModelValidatorClient[Vector]):
         Result:
             ValidationResult[VectorCarrier]
         Raises:
-            ModelValidatorClientException
+            VectorValidatorClientException
         """
-        pass
+        method = f"{self.__class__.__name__}.submit"
+        
+        result = self.dispatcher.execute(job=request)
+        if result.is_failure:
+            return ValidationResult.failure(
+                VectorValidatorClientException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=VectorValidatorClientException.MSG,
+                    err_code=VectorValidatorClientException.ERR_CODE,
+                    ex=result.exception,
+                )
+            )
+        carrier = cast(VectorCarrier, result.payload)
+        return ValidationResult.success(carrier)

@@ -43,7 +43,7 @@ class ModelValidatorClient(ValidatorClient[T], ABC, Generic[T]):
     def __init__(self, dispatcher: ModelValidationDispatcher[T]):
         """
         Args:
-            dispatcher: ValidationDispatcher[T]
+            dispatcher: ModelValidationDispatcher[T]
         """
         super().__init__(dispatcher=dispatcher)
         
