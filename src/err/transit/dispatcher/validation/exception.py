@@ -1,32 +1,33 @@
-# src/err/transit/router/exception.py
+# src/err/transit/dispatcher/validation/exception.py
 
 """
-Module: err.transit.router.exception
+Module: err.transit.dispatcher.validation.exception
 Author: Banji Lawal
-Created: 2026-04-04
-version: 0.0.2
+Created: 2025-10-03
+version: 1.0.0
 """
 
 from __future__ import annotations
 
 from typing import Any, Optional
 
+from err import DispatcherException
 from artifcat import MethodResultType
-from err import RouterException
+
 
 __all__ = [
-    # ======================# NO_EXECUTION_ROUTE_ERROR #======================#
-    "MissingExecutionRouteException",
+    # ======================# VALIDATION_DISPATCHER_FAILURE #======================#
+    "ValidationDispatcherException",
 ]
 
-# ======================# NO_EXECUTION_ROUTE_ERROR #======================#
-class MissingExecutionRouteException(RouterException):
+# ======================# VALIDATION_DISPATCHER_FAILURE #======================#
+class ValidationDispatcherException(DispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required execution path does not exist.
+        1.  Indicating an ValidationDispatcher encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +42,10 @@ class MissingExecutionRouteException(RouterException):
     Provides:
 
     Super Class:
-        RouterException
+        DispatcherException
     """
-    MSG = "Required execution route does not exist."
-    ERR_CODE = "NO_EXECUTION_ROUTE_ERROR"
+    MSG = "ValidationDispatcher failure."
+    ERR_CODE = "VALIDATION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

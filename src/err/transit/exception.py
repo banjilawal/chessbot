@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ChessException
 from artifcat import MethodResultType
+from err import ChessException
 
 
 __all__ = [

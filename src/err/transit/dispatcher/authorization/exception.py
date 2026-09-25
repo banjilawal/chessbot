@@ -1,19 +1,18 @@
-# src/err/transit/dispatcher/exception.py
+# src/err/transit/dispatcher/authorization/exception.py
 
 """
-Module: err.transit.dispatcher.exception
+Module: err.transit.dispatcher.authorization.exception
 Author: Banji Lawal
-Created: 2026-04-04
-version: 0.0.2
+Created: 2025-10-03
+version: 1.0.0
 """
 
 from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import DispatcherException
 from artifcat import MethodResultType
-
+from err import DispatcherException
 
 __all__ = [
     # ======================# AUTHORIZATION_DISPATCHER_FAILURE #======================#
@@ -27,7 +26,7 @@ class AuthorizationDispatcherException(DispatcherException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an error prevented the AuthorizationDispatcher from working.
+        1.  Indicating an AuthorizationDispatcher encountered an error.
 
     Attributes:
         msg: Optional[str]

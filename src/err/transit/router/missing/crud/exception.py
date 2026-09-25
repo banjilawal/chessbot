@@ -11,9 +11,8 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import MissingRouterException
 from artifcat import MethodResultType
-
+from err import MissingExecutionRouterException
 
 __all__ = [
     # ======================# CRUD_MISSING_ROUTER_FAILURE #======================#
@@ -21,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# CRUD_MISSING_ROUTER_FAILURE #======================#
-class CrudMissingRouterException(MissingRouterException):
+class CrudMissingRouterException(MissingExecutionRouterException):
     """
     Role:
         - Error Tracing

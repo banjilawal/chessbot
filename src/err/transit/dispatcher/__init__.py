@@ -11,6 +11,7 @@ version: 1.0.0
 
 # Packages
 from .authorization import *
+from .validation import *
 
 # Modules
 from .exception import DispatcherException
