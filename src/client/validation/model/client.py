@@ -12,9 +12,9 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
-from artifcat import ValidationResult
+from artifcat import ModelValidationResponse
 from client import ModelValidationRequest, ValidatorClient
-from transit import ModelCarrier, ModelValidationDispatcher
+from transit import ModelValidationDispatcher
 from util import LoggingLevelRouter
 
 T = TypeVar("T",)
@@ -32,9 +32,8 @@ class ModelValidatorClient(ValidatorClient[T], ABC, Generic[T]):
         
     Provides:
         -   def submit(
-                    self,
                     request: ModelValidationRequest[T]
-            ) -> ValidationResult[ModelCarrier[T]]:
+            ) -> ModelValidationResponse[T]
 
     Super Class:
         ValidatorClient
@@ -54,14 +53,15 @@ class ModelValidatorClient(ValidatorClient[T], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def submit(
-            self, request: ModelValidationRequest[T]
-    ) -> ValidationResult[ModelCarrier[T]]:
+    def transmit(
+            self,
+            request: ModelValidationRequest[T]
+    ) -> ModelValidationResponse[T]:
         """
         Args:
             request: ModelValidationRequest[T]
         Result:
-            ValidationResult[ModelCarrier[T]]
+            ModelValidationResponse[T]
         Raises:
             ModelValidatorClientException
         """

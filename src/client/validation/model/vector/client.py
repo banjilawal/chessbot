@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import ValidationResult
+from artifcat import ValidationResult, VectorValidationResponse
 from client import ModelValidatorClient, VectorValidationRequest
 from domain import Vector
 from err import VectorValidatorClientException
@@ -57,15 +57,15 @@ class VectorValidatorClient(ModelValidatorClient[Vector]):
         return cast(VectorValidationDispatcher, super().dispatcher)
     
     @LoggingLevelRouter.monitor
-    def submit(
+    def transmit(
             self,
             request: VectorValidationRequest
-    ) -> ValidationResult[VectorCarrier]:
+    ) -> VectorValidationResponse:
         """
         Args:
             request: VectorValidationRequest
         Result:
-            ValidationResult[VectorCarrier]
+            VectorValidationResponse
         Raises:
             VectorValidatorClientException
         """

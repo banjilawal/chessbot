@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
-from artifcat import ValidationResult
+from artifcat import ValidationResponse, ValidationResult
 from client import Client, ValidationRequest
 from transit import ValidationDispatcher
 from util import LoggingLevelRouter
@@ -31,7 +31,7 @@ class ValidatorClient(Client[ValidationResult], ABC, Generic[T]):
         dispatcher: ValidationDispatcher[T]
         
     Provides:
-        -   def submit(request: ValidationRequest[T]) -> ValidationResult
+        -   def submit(request: ValidationRequest[T]) -> ValidationResponse[T]
 
     Super Class:
         Client
@@ -51,12 +51,12 @@ class ValidatorClient(Client[ValidationResult], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def submit(self, request: ValidationRequest[T]) -> ValidationResult:
+    def transmit(self, request: ValidationRequest[T]) -> ValidationResponse[T]:
         """
         Args:
             request: ValidationRequest[T]
         Result:
-            ValidationResult
+            ValidationResponse[T]
         Raises:
             ValidatorClientException
         """

@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic,  TypeVar
+from typing import Generic, Optional, TypeVar
 
 from artifcat import ResponseState, Result
 from client import Request
@@ -22,22 +22,26 @@ class Response(ABC, Generic[T]):
     _result: T
     _request: Request[T]
     _state: ResponseState
+    _exception: Optional[Exception]
     
     def __init__(
             self,
             result: T,
             request: Request[T],
-            state: ResponseState
+            state: ResponseState,
+            exception: Optional[Exception]
     ):
         """
         Args:
             result: T
             request: Request[T]
             state: ResponseState
+            exception: Optional[Exception]
         """
+        self._state = state
         self._result = result
         self._request = request
-        self._state = state
+        self._exception = exception or result.exception
         
     @property
     def result(self) -> T:
@@ -52,19 +56,20 @@ class Response(ABC, Generic[T]):
         return self._state
     
     @property
+    def exception(self) -> Optional[Exception]:
+        return self._result.exception
+    
+    @property
     def is_success(self) -> bool:
         return (
             self.result.is_success and
+            self.exception is None and
             self._state == ResponseState.SUCCESS
         )
-
     
     @property
     def is_failure(self) -> bool:
-        return (
-            self._result.is_failure and
-            self._state == ResponseState.FAILURE
-        )
+        return not self.success
         
     @classmethod
     def success(cls, result: T, request: Request[T],) -> Response[T]:
@@ -75,9 +80,15 @@ class Response(ABC, Generic[T]):
         )
     
     @classmethod
-    def failure(cls, result: T, request: Request[T],) -> Response[T]:
+    def failure(
+            cls,
+            result: T,
+            request: Request[T],
+            exception: Exception,
+    ) -> Response[T]:
         return cls(
             result=result,
             request=request,
+            exception=exception,
             state=ResponseState.FAILURE,
         )

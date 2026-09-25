@@ -12,8 +12,8 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from artifcat import Result
-from client.exchange import Request
+from artifcat import Response, Result
+from client import Request
 from transit import Dispatcher
 from util import LoggingLevelRouter
 
@@ -22,10 +22,12 @@ T = TypeVar("T", bound="Result")
 class Client(ABC, Generic[T]):
     """
     Role
-        - Client
+        - Mediator
 
     Responsibilities:
-        1.  Submit a request to a Dispatcher
+        1.  Intermediary in the Request-Response workflow.
+        2.  Sends an Originator's Request to a Dispatcher.
+        3.  Prepares then forwards a Response to the Originator.
 
     Attributes:
         dispatcher: Dispatcher[T]
@@ -50,12 +52,12 @@ class Client(ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def submit(self, request: Request[T]) -> T:
+    def transmit(self, request: Request[T]) -> Response[T]:
         """
         Args:
             request: Request[T]
         Result:
-            T
+            Response[T]
         Raises:
             ClientException
         """
