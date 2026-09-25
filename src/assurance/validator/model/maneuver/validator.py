@@ -13,15 +13,16 @@ from typing import Any, Optional, cast
 
 from assurance import ManeuverValidatorToolkit, ModelValidator
 from config import NumericSetting
-from domain import ManeuverValidationRequest, Path, PathValidationRequest, Token, TokenValidationRequest
+from domain import (
+    Maneuver, ManeuverBlueprint, ManeuverValidationRequest, Path, PathValidationRequest,
+    Token, TokenValidationRequest
+)
 from err import (
     EmptyManeuverCarrierException, EmptyPathCarrierException, EmptyTokenCarrierException,
-    ManeuverValidationRequestNullException,
-    ManeuverValidatorException
+    ManeuverValidationRequestNullException, ManeuverValidatorException
 )
-from domain.model import Maneuver
+
 from artifcat import ValidationResult
-from operation.toolkit import ManeuverToolkit
 from transit import ManeuverCarrier, PathCarrier, TokenCarrier
 from util import IdFactory, LoggingLevelRouter
 

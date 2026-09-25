@@ -12,6 +12,7 @@ version: 1.0.0
 # Packages
 from .arena import *
 from .board import *
+from .game import *
 
 # Modules
-from .structure import ColorBinder
+from .binder import ColorBinder

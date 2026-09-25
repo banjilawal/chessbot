@@ -1,0 +1,92 @@
+# src/domain/structure/binder/game/binder.py
+
+"""
+Module: domain.structure.binder.game.binder
+Author: Banji Lawal
+Created: 2025-02-08
+version: 1.0.0
+"""
+
+from __future__ import annotations
+
+from typing import Dict, Optional
+
+from config import GameColor
+from domain import ColorBinder, Game, Player
+
+
+class GamePlayerColorBinder(ColorBinder[Game, Player]):
+    """
+    Role:
+        - Mapper
+
+    Responsibility:
+        1.  Maps the Player correctly to its color slot on the Game.
+        
+    Attributes:
+        id: int
+        primary: Game
+        white_player: Player
+        black_player: Player
+        
+    Provides:
+        
+    Super Class:
+       ColorBinder
+    """
+    _entry: Dict[GameColor, Player]
+    
+    def __init__(
+            self,
+            id: int,
+            primary: Game,
+            white_player: Player,
+            black_player: Player,
+            max_capacity: Optional[int] | None = None,
+    ):
+        """
+        Args:
+            id: int
+            primary: Game
+            white_player: Player
+            black_player: Player
+            max_capacity: Optional[int]
+        """
+        super().__init__(
+            id=id,
+            primary=primary, 
+            max_capacity=max_capacity or self.MAX_CAPACITY,
+        )
+        self._entry = {
+            GameColor.WHITE: white_player,
+            GameColor.BLACK: black_player,
+        }
+        
+    @property
+    def primary(self) -> Game:
+        return cast(Game, super().primary)
+    
+    @property
+    def white_player(self) -> Player:
+        return self._entry[GameColor.WHITE]
+    
+    @property
+    def black_player(self) -> Player:
+        return self._entry[GameColor.BLACK]
+    
+    @property
+    def to_dict(self) -> Dict[GameColor, Player]:
+        return self._entry
+    
+    def __eq__(self, other):
+        if other is self: return True
+        if other is None: return False
+        if isinstance(other, GamePlayerColorBinder):
+            return self.id == other.id
+        return False
+        
+    def __hash__(self):
+        return hash(self.id)
+
+        
+    

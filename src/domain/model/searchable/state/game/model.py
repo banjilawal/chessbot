@@ -40,6 +40,7 @@ class Game(StateModel):
     _white_player: Player
     _black_player: Player
     _state: GameState
+    _binder:
     _win: Optional[GameWin]
     
     
