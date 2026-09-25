@@ -13,4 +13,4 @@ version: 0.0.2
 from .model import *
 
 # Modules
-from .client import ValidationClient
+from .client import ValidatorClient

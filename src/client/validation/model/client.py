@@ -1,0 +1,68 @@
+# src/client/validation/model/client.py
+
+"""
+Module: client.validation.model.client
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from abc import ABC, abstractmethod
+from typing import Generic, TypeVar, cast
+
+from artifcat import ValidationResult
+from client import ModelValidationRequest, ValidatorClient
+from transit import ModelCarrier, ModelValidationDispatcher
+from util import LoggingLevelRouter
+
+T = TypeVar("T",)
+
+class ModelValidatorClient(ValidatorClient[T], ABC, Generic[T]):
+    """
+    Role
+        - Client
+
+    Responsibilities:
+        1.  Submit a request to a ModelValidationDispatcher
+
+    Attributes:
+        dispatcher: ModelValidationDispatcher[T]
+        
+    Provides:
+        -   def submit(
+                    self,
+                    request: ModelValidationRequest[T]
+            ) -> ValidationResult[ModelCarrier[T]]:
+
+    Super Class:
+        ValidatorClient
+    """
+    
+    def __init__(self, dispatcher: ModelValidationDispatcher[T]):
+        """
+        Args:
+            dispatcher: ValidationDispatcher[T]
+        """
+        super().__init__(dispatcher=dispatcher)
+        
+    @property
+    def dispatcher(self) -> ModelValidationDispatcher[T]:
+        return cast(ModelValidationDispatcher, super().dispatcher)
+    
+    
+    @abstractmethod
+    @LoggingLevelRouter.monitor
+    def submit(
+            self, request: ModelValidationRequest[T]
+    ) -> ValidationResult[ModelCarrier[T]]:
+        """
+        Args:
+            request: ModelValidationRequest[T]
+        Result:
+            ValidationResult[ModelCarrier[T]]
+        Raises:
+            ModelValidatorClientException
+        """
+        pass

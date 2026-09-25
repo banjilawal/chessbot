@@ -13,12 +13,11 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from client import Client
-from domain import Request
+from client import Client, ValidationRequest
 from transit import ValidationDispatcher
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Request")
+T = TypeVar("T",)
 
 class ValidatorClient(Client[ValidationResult], ABC, Generic[T]):
     """
@@ -29,33 +28,33 @@ class ValidatorClient(Client[ValidationResult], ABC, Generic[T]):
         1.  Submit a request to a ValidationDispatcher
 
     Attributes:
-        dispatcher: ValidationDispatcher
+        dispatcher: ValidationDispatcher[T]
         
     Provides:
-        -   def submit(request: Request[T]) -> ValidationResult
+        -   def submit(request: ValidationRequest[T]) -> ValidationResult
 
     Super Class:
         Client
     """
     
-    def __init__(self, dispatcher: ValidationDispatcher):
+    def __init__(self, dispatcher: ValidationDispatcher[T]):
         """
         Args:
-            dispatcher: Dispatcher[T]
+            dispatcher: ValidationDispatcher[T]
         """
         super().__init__(dispatcher=dispatcher)
         
     @property
-    def dispatcher(self) -> ValidationDispatcher:
+    def dispatcher(self) -> ValidationDispatcher[T]:
         return cast(ValidationDispatcher, super().dispatcher)
     
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def submit(self, request: Request[T]) -> ValidationResult:
+    def submit(self, request: ValidationRequest[T]) -> ValidationResult:
         """
         Args:
-            request: Request[T]
+            request: ValidationRequest[T]
         Result:
             ValidationResult
         Raises:
