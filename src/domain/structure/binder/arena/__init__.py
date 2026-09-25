@@ -12,4 +12,4 @@ version: 1.0.0
 # Packages
 
 # Modules
-from .structure import ArenaPlayerColorBinder
+from .binder import ArenaPlayerColorBinder

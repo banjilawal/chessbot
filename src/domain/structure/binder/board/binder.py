@@ -1,7 +1,7 @@
-# src/domain/structure/binder/game/binder.py
+# src/domain/structure/binder/board/binder.py
 
 """
-Module: domain.structure.binder.game.binder
+Module: domain.structure.binder.board.binder
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -12,44 +12,44 @@ from __future__ import annotations
 from typing import Dict, Optional, cast
 
 from config import GameColor
-from domain import ColorBinder, Game, Player
+from domain import ColorBinder, Board, Team
 
 
-class GamePlayerColorBinder(ColorBinder[Game, Player]):
+class BoardTeamColorBinder(ColorBinder[Board, Team]):
     """
     Role:
         - Mapper
 
     Responsibility:
-        1.  Maps the Player correctly to its color slot on the Game.
+        1.  Maps the Team correctly to its color slot on the Board.
         
     Attributes:
         id: int
-        primary: Game
-        white_player: Player
-        black_player: Player
+        primary: Board
+        white_team: Team
+        black_team: Team
         
     Provides:
         
     Super Class:
        ColorBinder
     """
-    _entry: Dict[GameColor, Player]
+    _entry: Dict[GameColor, Team]
     
     def __init__(
             self,
             id: int,
-            primary: Game,
-            white_player: Player,
-            black_player: Player,
+            primary: Board,
+            white_team: Team,
+            black_team: Team,
             max_capacity: Optional[int] | None = None,
     ):
         """
         Args:
             id: int
-            primary: Game
-            white_player: Player
-            black_player: Player
+            primary: Board
+            white_team: Team
+            black_team: Team
             max_capacity: Optional[int]
         """
         super().__init__(
@@ -58,30 +58,30 @@ class GamePlayerColorBinder(ColorBinder[Game, Player]):
             max_capacity=max_capacity or self.MAX_CAPACITY,
         )
         self._entry = {
-            GameColor.WHITE: white_player,
-            GameColor.BLACK: black_player,
+            GameColor.WHITE: white_team,
+            GameColor.BLACK: black_team,
         }
         
     @property
-    def primary(self) -> Game:
-        return cast(Game, super().primary)
+    def primary(self) -> Board:
+        return cast(Board, super().primary)
     
     @property
-    def white_player(self) -> Player:
+    def white_team(self) -> Team:
         return self._entry[GameColor.WHITE]
     
     @property
-    def black_player(self) -> Player:
+    def black_team(self) -> Team:
         return self._entry[GameColor.BLACK]
     
     @property
-    def to_dict(self) -> Dict[GameColor, Player]:
+    def to_dict(self) -> Dict[GameColor, Team]:
         return self._entry
     
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, GamePlayerColorBinder):
+        if isinstance(other, BoardTeamColorBinder):
             return self.id == other.id
         return False
         

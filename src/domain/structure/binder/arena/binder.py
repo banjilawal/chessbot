@@ -1,7 +1,7 @@
-# src/domain/structure/binder/game/binder.py
+# src/domain/structure/binder/arena/binder.py
 
 """
-Module: domain.structure.binder.game.binder
+Module: domain.structure.binder.arena.binder
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -12,20 +12,20 @@ from __future__ import annotations
 from typing import Dict, Optional, cast
 
 from config import GameColor
-from domain import ColorBinder, Game, Player
+from domain import ColorBinder, Arena, Player
 
 
-class GamePlayerColorBinder(ColorBinder[Game, Player]):
+class ArenaPlayerColorBinder(ColorBinder[Arena, Player]):
     """
     Role:
         - Mapper
 
     Responsibility:
-        1.  Maps the Player correctly to its color slot on the Game.
+        1.  Maps the Player correctly to its color slot on the Arena.
         
     Attributes:
         id: int
-        primary: Game
+        primary: Arena
         white_player: Player
         black_player: Player
         
@@ -39,7 +39,7 @@ class GamePlayerColorBinder(ColorBinder[Game, Player]):
     def __init__(
             self,
             id: int,
-            primary: Game,
+            primary: Arena,
             white_player: Player,
             black_player: Player,
             max_capacity: Optional[int] | None = None,
@@ -47,7 +47,7 @@ class GamePlayerColorBinder(ColorBinder[Game, Player]):
         """
         Args:
             id: int
-            primary: Game
+            primary: Arena
             white_player: Player
             black_player: Player
             max_capacity: Optional[int]
@@ -63,8 +63,8 @@ class GamePlayerColorBinder(ColorBinder[Game, Player]):
         }
         
     @property
-    def primary(self) -> Game:
-        return cast(Game, super().primary)
+    def primary(self) -> Arena:
+        return cast(Arena, super().primary)
     
     @property
     def white_player(self) -> Player:
@@ -81,7 +81,7 @@ class GamePlayerColorBinder(ColorBinder[Game, Player]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, GamePlayerColorBinder):
+        if isinstance(other, ArenaPlayerColorBinder):
             return self.id == other.id
         return False
         
