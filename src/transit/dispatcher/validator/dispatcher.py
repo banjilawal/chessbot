@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T")
 
 
-class ValidationDispatcher(Dispatcher, ABC, Generic[T]):
+class ValidationDispatcher(Dispatcher[ValidationResult], ABC, Generic[T]):
     """
     Role
         -   Integrity Assurance Manager

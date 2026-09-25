@@ -10,11 +10,13 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
+from typing import Generic, TypeVar
 
-from util import LoggingLevelRouter
+from artifcat import Result
 
+T = TypeVar("T", bound="Result")
 
-class Dispatcher(ABC):
+class Dispatcher(ABC, Generic[T]):
     """
     Role
         -   Director
