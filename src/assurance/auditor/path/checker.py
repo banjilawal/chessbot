@@ -76,7 +76,7 @@ class PathConsistency:
         
         # Handle the case that the consistency is not primed.
         consistency_priming_result = toolkit.priming_consistency.execute(
-            candidate=candidate,
+            job=candidate,
             target_model=toolkit.model,
             model_null_exception=toolkit.null_exception,
         )

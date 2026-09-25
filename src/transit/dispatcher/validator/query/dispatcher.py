@@ -45,7 +45,7 @@ class QueryValidationDispatcher(ValidationDispatcher[Query]):
     @LoggingLevelRouter.monitor
     def execute(
             cls,
-            candidate: Any,
+            job: Any,
             blueprint: QueryValidationBlueprint,
     ) -> ValidationResult[Query]:
         """
@@ -61,7 +61,7 @@ class QueryValidationDispatcher(ValidationDispatcher[Query]):
                     - The schema's type is not ist[Token]
             2.  Otherwise, send the success result.
         Args:
-            candidate: Any
+            job: Any
             blueprint: QueryValidationBlueprint
         Returns:
             ValidationResult[Query]
@@ -72,7 +72,7 @@ class QueryValidationDispatcher(ValidationDispatcher[Query]):
         method = f"{self.__class__.__name__}._validate"
         
         priming_result = blueprint.priming_validator.execute(
-            candidate=candidate,
+            job=job,
             target_model=blueprint.query_model_type,
             model_null_exception=blueprint.query_null_exception,
         )
@@ -88,7 +88,7 @@ class QueryValidationDispatcher(ValidationDispatcher[Query]):
                 )
             )
         # --- Cast the candidate into Query for additional tests. ---#
-        query = cast(blueprint.query_model_type, candidate)
+        query = cast(blueprint.query_model_type, job)
         
         # Handle the case that the
         datasource_validation_result = cls._datasource_validator(
@@ -149,7 +149,7 @@ class QueryValidationDispatcher(ValidationDispatcher[Query]):
         
         # Handle the case that the stack is flagged.
         stack_validation_result = blueprint.priming_validator.execute(
-            candidate=query.stack,
+            job=query.stack,
             target_model=blueprint.stack_model_type,
             model_null_exception=blueprint.stack_null_exception,
         )
@@ -189,7 +189,7 @@ class QueryValidationDispatcher(ValidationDispatcher[Query]):
         method = f"{self.__class__.__name__}._stack_query_validator"
         
         catalog_validation_result = blueprint.priming_validator.execute(
-            candidate=query.catalog,
+            job=query.catalog,
             target_model=blueprint.stack_model_type,
             model_null_exception=blueprint.stack_null_exception,
         )

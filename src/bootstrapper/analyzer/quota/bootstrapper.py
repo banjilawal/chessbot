@@ -86,7 +86,7 @@ class QuotaAnalyzerBootstrapper(AnalyzerBootstrapper):
                 )
             )
         # Handle the case that the rank does not pass a validation check.
-        rank_validation_result = self._rank_validator.execute(candidate=rank)
+        rank_validation_result = self._rank_validator.execute(job=rank)
         if rank_validation_result.is_failure:
             # Send the exception chain on failure.
             return AnalysisResult.failure(

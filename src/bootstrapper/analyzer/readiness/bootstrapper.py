@@ -94,8 +94,8 @@ class ReadinessAnalyzerBootstrapper(AnalyzerBootstrapper):
 
         if isinstance(subject, CombatantToken):
             return toolkit.combatant_readiness_analyzer.execute(
-                candidate=cast(CombatantToken, subject)
+                job=cast(CombatantToken, subject)
             )
         return toolkit.king_readiness_analyzer.execute(
-            candidate=cast(KingToken, subject)
+            job=cast(KingToken, subject)
         )

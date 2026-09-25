@@ -90,7 +90,7 @@ class SquareConsistencyAuditor(ConsistencyAuditor[Square]):
                 )
             )
         root_certification = self.root_certifier.execute(
-            candidate=SquareCarrier(model=bootstrap.payload)
+            job=SquareCarrier(model=bootstrap.payload)
         )
         if root_certification.is_failure:
             # Send the exception chain on failure.
@@ -135,7 +135,7 @@ class SquareConsistencyAuditor(ConsistencyAuditor[Square]):
         
         # Handle the case that the square's board is nnt certified as safe.
         board_consistency_result = board_service.microservice.execute.validat(
-            candidate=square.board
+            job=square.board
         )
         if board_consistency_result.is_faiure:
             # Send the exception chain on failure.

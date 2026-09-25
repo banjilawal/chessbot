@@ -105,7 +105,7 @@ class SnapshotContextToolkit(Toolkit[SnapshotContext]):
 
             # Toolkit the timestamp SnapshotContext if its flag is enabled.
             if timestamp is not None:
-                validation = number_validator.execute(candidate=timestamp)
+                validation = number_validator.execute(job=timestamp)
                 if validation.is_failure:
                     return ToolkitResult.failure(validation.exception)
                 # On validation success return an timestamp_SnapshotContext in the ToolkitResult.
@@ -113,7 +113,7 @@ class SnapshotContextToolkit(Toolkit[SnapshotContext]):
             
             # Toolkit the agent SnapshotContext if its flag is enabled.
             if agent is not None:
-                validation = agent_service.execute.search_service(candidate=agent)
+                validation = agent_service.execute.search_service(job=agent)
                 if validation.is_failure:
                     return ToolkitResult.failure(validation.exception)
                 # On validation success return an agent_SnapshotContext in the ToolkitResult.
@@ -121,7 +121,7 @@ class SnapshotContextToolkit(Toolkit[SnapshotContext]):
             
             # Toolkit the team SnapshotContext if its flag is enabled.
             if team is not None:
-                validation = team_service.execute.execute(candidate=team)
+                validation = team_service.execute.execute(job=team)
                 if validation.is_failure:
                     return ToolkitResult.failure(validation.exception)
                 # On validation success return a team_SnapshotContext in the ToolkitResult.

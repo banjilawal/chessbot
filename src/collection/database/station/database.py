@@ -118,7 +118,7 @@ class StationDatabase(Database[Station]):
         # --- To assure uniqueness the member_service has to conduct a search. The station should be validated first. ---#
         
         # Handle the case that the stationis not safe.
-        validation = self.microservice.execute.execute(candidate=station)
+        validation = self.microservice.execute.execute(job=station)
         if validation.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(

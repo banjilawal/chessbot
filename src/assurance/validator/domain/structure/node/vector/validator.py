@@ -73,7 +73,7 @@ class VectorNodeValidator(NodeValidator):
         method = f"{self.__class__.__name__}.execute"
         
         carrier_validation = self.toolkit.priming_validator.execute(
-            candidate=candidate,
+            job=candidate,
             target_model=self.toolkit.types.item,
             model_null_exception=self.toolkit.nulls.item,
         )

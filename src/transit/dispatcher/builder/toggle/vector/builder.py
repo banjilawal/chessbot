@@ -76,7 +76,7 @@ class CartesianToggleBuilder(ToggleBuildDispatcher[CartesianToggle]):
         method = f"{self.__class__.__name__}.build"
         
         # Handle the case that the bootstrap is not successful.
-        blueprint_validation = self.builder_toolkit.root_certifier.execute(candidate=blueprint)
+        blueprint_validation = self.builder_toolkit.root_certifier.execute(job=blueprint)
         if blueprint_validation.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

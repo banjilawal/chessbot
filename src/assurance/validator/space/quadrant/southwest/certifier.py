@@ -73,7 +73,7 @@ class SouthwestQuadrantRootChecker(QuadrantRootChecker[SouthwestQuadrantBlueprin
         method = f"{self.__class__.__name__}.execute"
         
         carrier_validation = self.toolkit.priming_validator.execute(
-            candidate=candidate,
+            job=candidate,
             target_model=self.toolkit.carrier_model,
             null_exception=self.toolkit.carrier_null_exception,
         )
@@ -112,7 +112,7 @@ class SouthwestQuadrantRootChecker(QuadrantRootChecker[SouthwestQuadrantBlueprin
         vectors: List[Vector] = []
         for vector in [blueprint.origin, blueprint.terminus]:
             vector_validation = self.toolkit.math.vector.validator.execute(
-                candidate=vector,
+                job=vector,
             )
             if vector_validation.is_failure:
                 # Send the exception chain on failure.

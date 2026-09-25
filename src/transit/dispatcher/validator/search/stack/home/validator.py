@@ -71,7 +71,7 @@ class TokenHomeContextValidator(StackContextValidator[TokenHomeContext]):
         
         # Handle the case that the validator is not primed.
         priming_result = toolkit.priming_validator.execute(
-            candidate=candidate,
+            job=candidate,
             target_model=candidate,
             context_null_exception=HomeContext,
             priming_validator=HomeContextNullException()
@@ -131,7 +131,7 @@ class TokenHomeContextValidator(StackContextValidator[TokenHomeContext]):
         # Validation for the search-by-home_square target.
         if context.home_square is not None:
             validation_result = toolkit.square_validator.execute(
-                candidate=context.home_square
+                job=context.home_square
             )
             if validation_result.is_failure:
                 # Send the exception chain on failure.
@@ -150,7 +150,7 @@ class TokenHomeContextValidator(StackContextValidator[TokenHomeContext]):
         # Validation for the search-by-coord target.
         if context.position is not None:
             validation_result = toolkit.coord_validator.execute(
-                candidate=context.position
+                job=context.position
             )
             if validation_result.is_failure:
                 # Send the exception chain on failure.
@@ -169,7 +169,7 @@ class TokenHomeContextValidator(StackContextValidator[TokenHomeContext]):
         # Validation for the search-by-team target.
         if context.team is not None:
             validation_result = toolkit.team_validator.execute(
-                candidate=context.position
+                job=context.position
             )
             if validation_result.is_failure:
                 # Send the exception chain on failure.
@@ -188,7 +188,7 @@ class TokenHomeContextValidator(StackContextValidator[TokenHomeContext]):
         # Validation for the search-by-rank target.
         if context.rank is not None:
             validation_result = toolkit.rank_service.validator.execute(
-                candidate=context.rank
+                job=context.rank
             )
             if validation_result.is_failure:
                 # Send the exception chain on failure.
@@ -207,7 +207,7 @@ class TokenHomeContextValidator(StackContextValidator[TokenHomeContext]):
         # Validation for the search-by-color target.
         if context.team_color is not None:
             validation_result = toolkit.priming_validator.execute(
-                candidate=context.team_color,
+                job=context.team_color,
                 model_type=GameColor,
                 null_exception=GameColorNullException()
             )
@@ -228,7 +228,7 @@ class TokenHomeContextValidator(StackContextValidator[TokenHomeContext]):
         # Validation for the search-by-ransom target.
         if context.ransom is not None:
             validation_result = toolkit.number_validator.execute(
-                candidate=context.ransom,
+                job=context.ransom,
                 floor=Persona.KING.ransom,
                 ceiling=Persona.QUEEN.ransom,
             )

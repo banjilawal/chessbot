@@ -118,7 +118,7 @@ class AttackDatabase(Database[Attack]):
         # --- To assure uniqueness the member_service has to conduct a search. The attack should be validated first. ---#
         
         # Handle the case that the attackis not safe.
-        validation = self.microservice.execute.execute(candidate=attack)
+        validation = self.microservice.execute.execute(job=attack)
         if validation.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(

@@ -118,7 +118,7 @@ class PathDatabase(Database[Path]):
         # --- To assure uniqueness the member_service has to conduct a search. The path should be validated first. ---#
         
         # Handle the case that the pathis not safe.
-        validation = self.microservice.execute.execute(candidate=path)
+        validation = self.microservice.execute.execute(job=path)
         if validation.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(

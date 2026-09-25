@@ -67,7 +67,7 @@ class TokenPusher(StackPop[Token]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that push rights are not granted.
-        decision = self._permitter.execute(candidate=request)
+        decision = self._permitter.execute(job=request)
         if decision.is_denied:
             # Return the exception chain on failure
             return InsertionResult.failure(

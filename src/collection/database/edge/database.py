@@ -118,7 +118,7 @@ class EdgeDatabase(Database[Edge]):
         # --- To assure uniqueness the member_service has to conduct a search. The edge should be validated first. ---#
         
         # Handle the case that the edgeis not safe.
-        validation = self.microservice.execute.execute(candidate=edge)
+        validation = self.microservice.execute.execute(job=edge)
         if validation.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(

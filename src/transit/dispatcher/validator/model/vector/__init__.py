@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .dispatcher import VectorValidator
+from .dispatcher import VectorValidationDispatcher

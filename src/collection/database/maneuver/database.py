@@ -118,7 +118,7 @@ class ManeuverDatabase(Database[Maneuver]):
         # --- To assure uniqueness the member_service has to conduct a search. The maneuver should be validated first. ---#
         
         # Handle the case that the maneuveris not safe.
-        validation = self.microservice.execute.execute(candidate=maneuver)
+        validation = self.microservice.execute.execute(job=maneuver)
         if validation.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(

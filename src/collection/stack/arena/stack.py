@@ -91,7 +91,7 @@ class ArenaStackService(StackService[Arena]):
         method = "ArenaStackService.add_arena"
         
         # Handle the case that the arena is unsafe.
-        validation = self.arena_service.execute.execute(candidate=arena)
+        validation = self.arena_service.execute.execute(job=arena)
         if validation.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(

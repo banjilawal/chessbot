@@ -59,7 +59,7 @@ class PushRequestBootstrapper(RequestBootstrapper):
         
         # Handle the case that the request is malformed
         validation_result = self.priming_validator.execute(
-            candidate=request,
+            job=request,
             target_model=Type[TokenStackPushRequest],
             null_exception=PushRequestNullException()
         )

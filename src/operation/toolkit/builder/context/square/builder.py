@@ -161,7 +161,7 @@ class SquareContextToolkit(Toolkit[SquareContext]):
         
         # Toolkit the board SquareContext if its flag is enabled.
         if board is not None:
-            validation = board_service.execute.execute(candidate=board)
+            validation = board_service.execute.execute(job=board)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ToolkitResult.failure(

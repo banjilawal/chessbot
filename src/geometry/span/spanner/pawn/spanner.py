@@ -67,7 +67,7 @@ class PawnSpanner(Spanner):
         method = f"{cls.__name__}.compute"
         
         # Handle the case that the origin is not certified as a safe Coord.
-        validation_result = coord_service.execute.execute(candidate=pawn_token.position)
+        validation_result = coord_service.execute.execute(job=pawn_token.position)
         if validation_result.is_failure:
             return ComputationResult.failure(
                 PawnSpannerException(

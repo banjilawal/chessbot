@@ -41,7 +41,7 @@ class BishopPattern(TraversalSignature[Bishop]):
         
         # Handle the case that the recurrence_set is not safe to use.
         validation = self.priming_validator.execute(
-            candidate=recurrence_set,
+            job=recurrence_set,
             target_model=Type[BishopRecurrenceRegistries],
             null_exception=BishopRecurrenceSeriesNullException(),
         )

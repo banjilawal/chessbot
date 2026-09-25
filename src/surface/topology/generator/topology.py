@@ -75,7 +75,7 @@ class VectorSequenceGenerator:
         
         # Handle the case that the sequence gets flagged,
         validation = self._math.priming_validator.execute(
-            candidate=recurrence,
+            job=recurrence,
             target_model=Recurrence,
             null_exception=RecurrenceNullException(),
         )

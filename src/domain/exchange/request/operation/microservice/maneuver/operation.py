@@ -70,7 +70,7 @@ class ManeuverLauncher:
 
         # Handle the case that the itinerary is not valid.
         priming = self._priming_validator.execute(
-            candidate=report,
+            job=report,
             target_type=ManeuverApproval,
             null_ex_cls=ManeuverEventNullException,
         )

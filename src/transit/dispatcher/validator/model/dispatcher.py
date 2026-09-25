@@ -24,19 +24,19 @@ T = TypeVar("T", bound="Model")
 class ModelValidationDispatcher(ValidationDispatcher[T], ABC, Generic[T]):
     """
     Role
-        -   Transaction Worker
-        -   Integrity Maintenance
-        -    Consistency Assurance
-        -    Validation Process Owner
+        -   Transport
+        -   Forwarding
+        -   Integrity Assurance
 
     Responsibilities:
-        1.  Ensure a Model instance is certified safe, reliable, and consistent before use.
+        1.  Forward requests to a ModelValidator.
+        2.  Send the ValidationResult back to the caller.
 
     Attributes:
         validator: ModelValidator[T]
         
     Provides:
-        -   def execute(self, candidate: Any) -> ValidationResult
+        -   def execute(self, candidate: Any) -> ValidationResult[ModelCarrier]
 
     Super Class:
         ValidationDispatcher
@@ -57,11 +57,11 @@ class ModelValidationDispatcher(ValidationDispatcher[T], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[ModelCarrier[T]]:
+    def execute(self, job: Any) -> ValidationResult[ModelCarrier[T]]:
         """
         Verify a candidate is an EntityCarrier whose payload is safe.
         Args:
-            candidate: Any
+            job: Any
         Returns:
             ValidationResult[T]
         Raises:

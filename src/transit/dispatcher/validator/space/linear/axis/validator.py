@@ -21,7 +21,7 @@ from transit.dispatcher.validator import LinearSpaceValidator
 class AxisValidator(LinearSpaceValidator[AxisTraversalPattern]):
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[AxisTraversalPattern]:
+    def execute(self, job: Any) -> ValidationResult[AxisTraversalPattern]:
         pass
     
     

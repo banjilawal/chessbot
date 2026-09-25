@@ -91,7 +91,7 @@ class GameStackService(StackService[Game]):
         method = "GameStackService.add_game"
         
         # Handle the case that the game is unsafe.
-        validation = self.game_service.execute.execute(candidate=game)
+        validation = self.game_service.execute.execute(job=game)
         if validation.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(

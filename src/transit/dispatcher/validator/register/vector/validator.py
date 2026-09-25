@@ -49,7 +49,7 @@ class VectorRegisterValidator(RegisterValidationDispatcher[VectorRegister]):
     
 
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[VectorRegister]:
+    def execute(self, job: Any) -> ValidationResult[VectorRegister]:
         """
         Verify the object is a VectorRegister that is safe to use.
 
@@ -59,7 +59,7 @@ class VectorRegisterValidator(RegisterValidationDispatcher[VectorRegister]):
             2.  Otherwise, cast the payload into a VectorRegister and send in the success result.
                 success result.
         Args:
-            candidate: Any
+            job: Any
         Returns:
             ValidationResult[VectorRegister]
         Raises:
@@ -68,7 +68,7 @@ class VectorRegisterValidator(RegisterValidationDispatcher[VectorRegister]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        validation = self.validator.execute(candidate)
+        validation = self.validator.execute(job)
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

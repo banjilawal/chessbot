@@ -77,7 +77,7 @@ class SnapshotBuilder(ModelBuilder[Snapshot]):
         
         # Handle the case that the blueprint is not certified safe.
         blueprint_validation = self.builder_toolkit.validator.execute(
-            candidate=blueprint
+            job=blueprint
         )
         if blueprint_validation.is_failure:
             # Send the exception chain on failure.

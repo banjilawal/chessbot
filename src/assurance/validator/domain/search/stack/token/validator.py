@@ -74,7 +74,7 @@ class TokenContextValidator(ContextValidator[TokenSearchContext]):
         
         # Handle the case that the candidate is null or the wrong type.
         priming = self.toolkit.priming_validator.execute(
-            candidate=candidate,
+            job=candidate,
             target_model=self.toolkit.types.search_context,
             null_exception=self.toolkit.nulls.search_context
         )
@@ -168,7 +168,7 @@ class TokenContextValidator(ContextValidator[TokenSearchContext]):
         # Certification for the search-by-home_square target.
         if context.home_square is not None:
             validation = self.toolkit.square_validator.execute(
-                candidate=context.home_square
+                job=context.home_square
             )
             if validation.is_failure:
                 # Send the exception chain on failure.
@@ -187,7 +187,7 @@ class TokenContextValidator(ContextValidator[TokenSearchContext]):
         # Certification for the search-by-coord target.
         if context.position is not None:
             validation = self.toolkit.coord_validator.execute(
-                candidate=context.position
+                job=context.position
             )
             if validation.is_failure:
                 # Send the exception chain on failure.
@@ -225,7 +225,7 @@ class TokenContextValidator(ContextValidator[TokenSearchContext]):
         # Certification for the search-by-rank target.
         if context.rank is not None:
             validation = self.toolkit.rank_service.validator.execute(
-                candidate=context.rank
+                job=context.rank
             )
             if validation.is_failure:
                 # Send the exception chain on failure.
@@ -244,7 +244,7 @@ class TokenContextValidator(ContextValidator[TokenSearchContext]):
         # Certification for the search-by-color target.
         if context.team_color is not None:
             validation = self.priming_validator.execute(
-                candidate=context.team_color,
+                job=context.team_color,
                 model_type=GameColor,
                 null_exception=GameColorNullException()
             )

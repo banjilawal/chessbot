@@ -76,7 +76,7 @@ class TokenPopPermitter(PopPermitter[Token]):
             )
         # Handle the case that the candidate is not a TokenStack.
         stack_validation_result = self.priming_validator.execute(
-            candidate=request.stack,
+            job=request.stack,
             target_model=Type[TokenStackService],
             null_exception=TokenStackNullException()
         )

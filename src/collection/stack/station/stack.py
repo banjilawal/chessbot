@@ -91,7 +91,7 @@ class StationStackService(StackService[Station]):
         method = "StationStackService.add_station"
         
         # Handle the case that the station is unsafe.
-        validation = self.station_service.execute.execute(candidate=station)
+        validation = self.station_service.execute.execute(job=station)
         if validation.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(

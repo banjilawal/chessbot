@@ -52,7 +52,7 @@ class OrientationSelectorValidationDispatcher(ModelValidationDispatcher[Orientat
         return cast(CartesianToggleRegisterValidator, super().validator)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult:
+    def execute(self, job: Any) -> ValidationResult:
         """
         Verify the candidate is a safe OrientationOperand.
         
@@ -64,7 +64,7 @@ class OrientationSelectorValidationDispatcher(ModelValidationDispatcher[Orientat
                     - The orientationOperand's payload is flagged unsafe.
             3.  Otherwise, Send the success result.
         Args:
-            candidate: Any
+            job: Any
         Returns:
             ValidationResult
         Raises:
@@ -75,7 +75,7 @@ class OrientationSelectorValidationDispatcher(ModelValidationDispatcher[Orientat
         
         # Handle the case that the validator is not primed.
         validator_priming_result = self.validator.bundle.priming_validator.execute(
-            candidate=candidate,
+            job=job,
             target_model=self.validator.bundle.model,
             context_null_exception=self.validator.bundle.request_null_exception,
         )
@@ -91,7 +91,7 @@ class OrientationSelectorValidationDispatcher(ModelValidationDispatcher[Orientat
                 )
             )
         # --- Cast candidate to a OrientationOperand for additional tests. ---#
-        register = cast(OrientationOperandEntityRegister, candidate)
+        register = cast(OrientationOperandEntityRegister, job)
         
         root_validation = self.validator.execute(register)
         if root_validation.is_failure:

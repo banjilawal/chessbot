@@ -76,7 +76,7 @@ class NorthEastQuadrantBuilder(
         
         # Handle the case that the blueprint is not certified safe.
         validation = self.builder_toolkit.root_certifier.execute(
-            candidate=blueprint
+            job=blueprint
         )
         if validation.is_failure:
             # Send the exception chain on failure.

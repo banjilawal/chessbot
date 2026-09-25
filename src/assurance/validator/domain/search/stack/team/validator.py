@@ -72,7 +72,7 @@ class TeamContextValidator(ContextValidator[TeamSearchContext]):
         
         # Handle the case that the validator is not primed.
         priming = self.toolkit.priming_validator.execute(
-            candidate=candidate,
+            job=candidate,
             target_model=self.toolkit.types.search_context,
             null_exception=self.toolkit.nulls.search_context,
         )
@@ -148,7 +148,7 @@ class TeamContextValidator(ContextValidator[TeamSearchContext]):
         # Certification for the search-by-owner target.
         if context.owner is not None:
             validation_result = self.toolkit.owner_validator.execute(
-                candidate=context.owner
+                job=context.owner
             )
             if validation_result.is_failure:
                 # Send the exception chain on failure.
@@ -167,7 +167,7 @@ class TeamContextValidator(ContextValidator[TeamSearchContext]):
         # Certification for the search-by-board target.
         if context.board is not None:
             validation_result = self.toolkit.board_validator.execute(
-                candidate=context.board
+                job=context.board
             )
             if validation_result.is_failure:
                 if validation_result.is_failure:
@@ -187,7 +187,7 @@ class TeamContextValidator(ContextValidator[TeamSearchContext]):
         # Certification for the search-by-color target.
         if context.team_color is not None:
             validation_result = self.toolkit.priming_validator.execute(
-                candidate=context.team_color,
+                job=context.team_color,
                 model_type=GameColor,
                 null_exception=GameColorNullException,
             )
@@ -208,7 +208,7 @@ class TeamContextValidator(ContextValidator[TeamSearchContext]):
         # Certification for the search-by-archetype target.
         if context.archetype is not None:
             validation_result = self.toolkit.priming_validator.execute(
-                candidate=context.archetype,
+                job=context.archetype,
                 model_type=Archetype,
                 null_exception=ArchetypeNullException,
             )

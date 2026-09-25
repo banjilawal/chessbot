@@ -76,7 +76,7 @@ class VectorRegisterValidator(Validator[VectorRegister]):
         method = f"{self.__class__.__name__}.execute"
         
         carrier_validation = self.carrier_validator.execute(
-            candidate=candidate,
+            job=candidate,
             target_model=self.toolkit.carrier_model,
             model_null_exception=self.toolkit.carrier_null_exception,
         )

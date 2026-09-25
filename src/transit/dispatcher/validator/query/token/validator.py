@@ -47,7 +47,7 @@ class TokenQueryValidationDispatcher(ValidationDispatcher[TokenQuery]):
     @LoggingLevelRouter.monitor
     def execute(
             cls,
-            candidate: Any,
+            job: Any,
             priming_validator: PrimingValidator | None = None,
             context_validator: TokenContextValidator | None = None,
     ) -> ValidationResult[TokenQuery]:
@@ -64,7 +64,7 @@ class TokenQueryValidationDispatcher(ValidationDispatcher[TokenQuery]):
                     - The schema's type is not ist[Token]
             2.  Otherwise, send the success result.
         Args:
-            candidate: Any
+            job: Any
             context_validator: TokenContextValidator
         Returns:
             ValidationResult[int]
@@ -82,7 +82,7 @@ class TokenQueryValidationDispatcher(ValidationDispatcher[TokenQuery]):
             context_validator = TokenContextValidator()
         
         validator_priming_result = priming_validator.execute(
-            candidate=candidate,
+            candidate=job,
             target_model=TokenQuery,
             null_exception=TokenQueryNullException(),
         )
@@ -100,7 +100,7 @@ class TokenQueryValidationDispatcher(ValidationDispatcher[TokenQuery]):
                 )
             )
         # --- Cast the candidate into TokenQuery for additional tests. ---#
-        query = cast(TokenQuery, candidate)
+        query = cast(TokenQuery, job)
         
         # Handle the case that the context is not safe to use.
         context_validation_result = context_validator.execute(query.context)

@@ -72,7 +72,7 @@ class SquareContextValidator(ContextValidator[SquareSearchContext]):
         
         # Handle the case that the validator is not primed.
         priming = self.toolkit.priming_validator.execute(
-            candidate=candidate,
+            job=candidate,
             target_model=self.toolkit.types.search_context,
             null_exception=self.toolkit.nulls.search_context,
         )
@@ -167,7 +167,7 @@ class SquareContextValidator(ContextValidator[SquareSearchContext]):
         # Certification for the search-by-coord target.
         if context.coord is not None:
             validation_result = self.toolkit.coord_validator.execute(
-                candidate=context.coord
+                job=context.coord
             )
             if validation_result.is_failure:
                 # Send the exception chain on failure.
@@ -186,7 +186,7 @@ class SquareContextValidator(ContextValidator[SquareSearchContext]):
         # Certification for the search-by-board target.
         if context.board is not None:
             validation_result = self.toolkit.board_validator.execute(
-                candidate=context.board
+                job=context.board
             )
             if validation_result.is_failure:
                 # Send the exception chain on failure.
@@ -205,7 +205,7 @@ class SquareContextValidator(ContextValidator[SquareSearchContext]):
         # Certification for the search-by-occupant target.
         if context.occupant is not None:
             validation_result = self.toolkit.token_validator.execute(
-                candidate=context.occupant
+                job=context.occupant
             )
             if validation_result.is_failure:
                 # Send the exception chain on failure.
@@ -224,7 +224,7 @@ class SquareContextValidator(ContextValidator[SquareSearchContext]):
         # Certification for the search-by-state.
         if context.state is not None:
             validation_result = self.toolkit.priming_validator.execute(
-                candidate=context.state,
+                job=context.state,
                 model_type=SquareState,
                 null_exception=SquareStateNullException()
             )
@@ -245,7 +245,7 @@ class SquareContextValidator(ContextValidator[SquareSearchContext]):
         # Certification for the search-by-formation.
         if context.home_square_type is not None:
             validation_result = self.toolkit.priming_validator.execute(
-                candidate=context.home_square_type,
+                job=context.home_square_type,
                 model_type=bool,
                 null_exception=NullException()
             )

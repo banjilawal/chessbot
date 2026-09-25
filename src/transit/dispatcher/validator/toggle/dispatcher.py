@@ -62,7 +62,7 @@ class ToggleValidationDispatcher(ValidationDispatcher, Generic[T]):
     
        @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[T]:
+    def execute(self, job: Any) -> ValidationResult[T]:
         pass
 
 

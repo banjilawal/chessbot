@@ -77,7 +77,7 @@ class EnemyKingStatusDetector(Analyzer):
             token_validator = TokenValidationDispatcher()
         
         validation_result = token_validator.execute(
-                candidate=king,
+                job=king,
                 bundle=bundle,
                 null_exception=TokenNullException(),
             )

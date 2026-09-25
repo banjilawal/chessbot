@@ -62,7 +62,7 @@ class VectorNodeSearchRequestAdjudicator(ChainSearchRequestAdjudicator[VectorNod
         method = f"{self.__class__.__name__}.execute"
         
         bootstrap = self.priming_validator.execute(
-            candidate=candidate,
+            job=candidate,
             target_model=VectorNodeSearchRequest,
             null_exception=VectorNodeSearchRequestNullException,
         )

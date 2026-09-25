@@ -108,7 +108,7 @@ class ZoneValidator(Validator[Zone]):
         for attribute in [zone.row, zone.column]:
             validate_result = number_validation.execute(
                 ceiling=NUMBER_OF_ROWS,
-                candidate=attribute,
+                job=attribute,
                 floor=0,
             )
             if validate_result.is_failure:

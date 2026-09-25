@@ -78,7 +78,7 @@ class EnemyCombatantStatusDetector(Analyzer):
             token_validator = TokenValidationDispatcher()
         
         validation_result = token_validator.execute(
-                candidate=combatant,
+                job=combatant,
                 toolkit=bundle,
                 null_exception=TokenNullException(),
             )

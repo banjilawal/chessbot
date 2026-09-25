@@ -113,7 +113,7 @@ class NodeValidator(ModelValidator[Node]):
         # Certification for the search-by-priority target.
         if blueprint.priority is not None:
             validation = number_validator.execute(
-                candidate=blueprint.priority,
+                job=blueprint.priority,
                 floor=-(sys.maxsize -1),
                 ceiling=sys.maxsize
             )

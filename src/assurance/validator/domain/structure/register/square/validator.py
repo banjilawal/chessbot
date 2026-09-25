@@ -73,7 +73,7 @@ class SquareRegisterValidator(Validator[SquareRegister]):
         
         # Handle the case that the validator is not primed.
         validator_priming_result = self.toolkit.priming_validator.execute(
-            candidate=candidate,
+            job=candidate,
             target_blueprint=self.toolkit.blueprint_model,
             model_null_exception=self.toolkit.blueprint_null_exception,
         )

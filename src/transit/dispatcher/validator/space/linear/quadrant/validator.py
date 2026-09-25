@@ -21,7 +21,7 @@ from transit.dispatcher.validator import LinearSpaceValidator
 class QuadrantValidator(LinearSpaceValidator[QuadrantTraversalPattern]):
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[QuadrantTraversalPattern]:
+    def execute(self, job: Any) -> ValidationResult[QuadrantTraversalPattern]:
         pass
     
     

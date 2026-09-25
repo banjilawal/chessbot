@@ -118,7 +118,7 @@ class ArenaDatabase(Database[Arena]):
         # --- To assure uniqueness the member_service has to conduct a search. The arena should be validated first. ---#
         
         # Handle the case that the arenais not safe.
-        validation = self.microservice.execute.execute(candidate=arena)
+        validation = self.microservice.execute.execute(job=arena)
         if validation.is_failure:
             # Send the exception chain on failure.
             return InsertionResult.failure(

@@ -13,31 +13,35 @@ from typing import Any, cast
 
 
 from assurance import VectorValidator
-from domain.model import Vector
 from artifcat import ValidationResult
+from domain import Vector
+from err import VectorValidationDispatcherException
 from transit import ModelValidationDispatcher, VectorCarrier
 from util import LoggingLevelRouter
-
 
 
 class VectorValidationDispatcher(ModelValidationDispatcher[Vector]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Transport
+        -   Forwarding
+        -   Integrity Assurance
 
     Responsibilities:
-        1.  Ensure a Vector instance is certified safe, reliable, and consistent before use.
+        1.  Direct the VectorValidation workflow.
+        1.  Forward requests to a VectorValidator.
+        2.  Send the ValidationResult back to the caller.
 
     Attributes:
         validator: VectorValidator
 
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult[Vector]
+        -   def execute(self, candidate: Any) -> ValidationResult[validatorCarrier]
 
     Super Class:
-        ModelValidator
+        ModelValidationDispatcher
     """
-    
+
     def __init__(
             self,
             validator: VectorValidator | None = None,
@@ -50,26 +54,26 @@ class VectorValidationDispatcher(ModelValidationDispatcher[Vector]):
     
 
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[VectorCarrier]:
+    def execute(self, job: Any) -> ValidationResult[VectorCarrier]:
         """
-        Verify the object is a Vector that is safe to use.
+        Forward a job to a VectorValidator then deliver the result.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if the candidate fails a
-                validator test.
-            2.  Otherwise, cast the payload into a Vector and send in the success result.
-                success result.
+            1.  Send an exception chain in the ValidationResult if the validator cannot
+                certify the job's content.
+            2.  Otherwise, cast the job payload into a VectorCarrier and send in
+                the success result.
         Args:
-            candidate: Any
+            job: Any
         Returns:
-            ValidationResult[Vector]
+            ValidationResult[VectorCarrier]
         Raises:
              VectorValidationDispatcherException
         """
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        validation = self.validator.execute(candidate)
+        validation = self.validator.execute(job)
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

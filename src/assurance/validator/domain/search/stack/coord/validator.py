@@ -71,7 +71,7 @@ class CoordContextValidator(ContextValidator[CoordSearchContext]):
 
         # Handle the case that the validator is not primed.
         priming_result = self.toolkit.priming_validator.execute(
-            candidate=candidate,
+            job=candidate,
             target_model=self.toolkit.types.search_context,
             null_exception=self.toolkit.nulls.search_context,
         )

@@ -73,7 +73,7 @@ class VectorNodeContextValidator(
         
         # Handle the case that the candidate is null or the wrong type.
         priming = self.toolkit.priming_validator.execute(
-            candidate=candidate,
+            job=candidate,
             target_model=self.toolkit.types.search_context,
             null_exception=self.toolkit.nulls.search_context
         )
@@ -167,7 +167,7 @@ class VectorNodeContextValidator(
         # Certification for the search-by-home_square target.
         if context.home_square is not None:
             validation = self.toolkit.square_validator.execute(
-                candidate=context.home_square
+                job=context.home_square
             )
             if validation.is_failure:
                 # Send the exception chain on failure.
@@ -186,7 +186,7 @@ class VectorNodeContextValidator(
         # Certification for the search-by-coord target.
         if context.current_position is not None:
             validation = self.toolkit.coord_validator.execute(
-                candidate=context.current_position
+                job=context.current_position
             )
             if validation.is_failure:
                 # Send the exception chain on failure.
@@ -205,7 +205,7 @@ class VectorNodeContextValidator(
         # Certification for the search-by-team target.
         if context.team is not None:
             validation = self.toolkit.attribute.team_validator.execute(
-                candidate=context.current_position
+                job=context.current_position
             )
             if validation.is_failure:
                 # Send the exception chain on failure.
@@ -224,7 +224,7 @@ class VectorNodeContextValidator(
         # Certification for the search-by-rank target.
         if context.rank is not None:
             validation = self.toolkit.rank_service.validator.execute(
-                candidate=context.rank
+                job=context.rank
             )
             if validation.is_failure:
                 # Send the exception chain on failure.
@@ -243,7 +243,7 @@ class VectorNodeContextValidator(
         # Certification for the search-by-color target.
         if context.color is not None:
             validation = self.priming_validator.execute(
-                candidate=context.color,
+                job=context.color,
                 model_type=GameColor,
                 null_exception=GameColorNullException()
             )
@@ -264,7 +264,7 @@ class VectorNodeContextValidator(
         # Certification for the search-by-ransom target.
         if context.ransom is not None:
             validation = self.toolkit.attribute.number_validator.execute(
-                candidate=context.ransom,
+                job=context.ransom,
                 floor=Persona.KING.ransom,
                 ceiling=Persona.QUEEN.ransom,
             )

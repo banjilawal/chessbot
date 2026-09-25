@@ -76,7 +76,7 @@ class BoardBinderConsistencyAuditor(ConsistencyAuditor[BoardBinder]):
             
         # Handle the case that the consistency is not primed.
         consistency_priming_result = toolkit.priming_consistency.execute(
-            candidate=candidate,
+            job=candidate,
             target_model=BoardBinder,
             model_null_exception=BoardTeamBinderNullException(),
         )

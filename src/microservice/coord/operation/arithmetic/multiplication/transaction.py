@@ -78,7 +78,7 @@ class MultiplyCoordTransaction:
                 )
             )
         # Handle the case that the scalar does not pass a validation check.
-        scalar_validation_result = scalar_service.execute.execute(candidate=scalar)
+        scalar_validation_result = scalar_service.execute.execute(job=scalar)
         if scalar_validation_result.is_failure:
             # Return exception chain on failure.
             return ComputationResult.failure(

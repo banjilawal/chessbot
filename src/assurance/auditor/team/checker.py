@@ -72,7 +72,7 @@ class TeamConsistencyAuditor(ConsistencyAuditor[Team]):
         
         # Handle the case that the consistency is not primed.
         consistency_priming_result = toolkit.priming_consistency.execute(
-            candidate=candidate,
+            job=candidate,
             target_model=Team,
             model_null_exception=TeamNullException(),
         )
@@ -105,7 +105,7 @@ class TeamConsistencyAuditor(ConsistencyAuditor[Team]):
             )
         # Handle the case that team.schema does not pass a validation check.
         schema_validation_result = toolkit.priming_consistency.execute(
-            candidate=candidate,
+            job=candidate,
             target_model=Schema,
             model_null_exception=SchemaNullException(),
         )

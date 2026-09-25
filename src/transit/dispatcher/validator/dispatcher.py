@@ -24,18 +24,22 @@ T = TypeVar("T")
 class ValidationDispatcher(Dispatcher, ABC, Generic[T]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Transport
+        -   Forwarding
+        -   Integrity Assurance
 
     Responsibilities:
-        1.  Ensure data-holders are safe before they are used or saved.
-        
+        1.  Forward jobs to a Validator.
+        2.  Send the ValidationResult back to the caller.
+
     Attributes:
         validator: Validator[T]
-    
+
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult[T]
-        
-    super Class:
+        -   def execute(self, candidate: Any) -> ValidationResult[T]
+
+    Super Class:
+        Dispatcher
     """
     _validator: Validator[T]
     
@@ -52,14 +56,14 @@ class ValidationDispatcher(Dispatcher, ABC, Generic[T]):
 
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[T]:
+    def execute(self, job: Any) -> ValidationResult[T]:
         """
         Verify a candidate is safe to use.
         Args:
-            candidate: Any
+            job: Any
         Returns:
             ValidationResult[T]
         Raises:
-            DispatcherException
+            ModelDispatcherException
         """
         pass
