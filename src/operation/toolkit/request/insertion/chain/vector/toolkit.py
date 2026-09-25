@@ -15,7 +15,7 @@ from assurance import VectorValidator
 from collection import VectorChain
 from err import AddVectorNodeRequestNullException, VectorNodeNullException, VectorChainNullException
 from domain.structure.node import VectorNode
-from domain.exchange.request import AddVectorNodeRequest
+from client.exchange import AddVectorNodeRequest
 from operation.toolkit import AddNodeRequestToolkit
 
 

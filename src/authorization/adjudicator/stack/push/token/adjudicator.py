@@ -14,7 +14,7 @@ from typing import Any, Type, cast
 
 from priming_validator import PrimingValidator, PushRequestPriming_Validator
 from err import TokenStackNullException, TokenPushRequestAdjudicatorException
-from domain.exchange.request import TokenStackPushRequest
+from client.exchange import TokenStackPushRequest
 from artifcat import MethodResultType, ValidationResult
 from collection.stack import TokenStackService
 from authorization.adjudicator import PushRequestAdjudicator

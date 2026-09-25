@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
 from microservice import Microservice
-from domain.exchange.request import Request
+from client.exchange import Request
 from shell.statement import UserStatement
 from util import LoggingLevelRouter
 

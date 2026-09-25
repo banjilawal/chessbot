@@ -13,7 +13,7 @@ from typing import Type
 
 from bootstrapper import RequestBootstrapper
 from err import PushRequestNullException, PushPermitterBootstrapperException
-from domain.exchange.request import TokenStackPushRequest
+from client.exchange import TokenStackPushRequest
 from artifcat import ValidationResult
 from util import LoggingLevelRouter
 

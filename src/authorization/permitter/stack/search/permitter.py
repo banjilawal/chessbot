@@ -11,7 +11,7 @@ from abc import abstractmethod
 
 from authorization.permitter.stack import OperationPermitter
 from artifcat.report import SearchApprovalReport
-from domain.exchange.request import SearchRequest
+from client.exchange import SearchRequest
 from util import LoggingLevelRouter
 
 

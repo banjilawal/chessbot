@@ -13,7 +13,7 @@ from abc import abstractmethod
 from typing import Generic, TypeVar
 
 from transit.controller import Controller
-from domain.exchange.request import CollectionDeletionRequest, PopRequest, TokenStackPushRequest
+from client.exchange import CollectionDeletionRequest, PopRequest, TokenStackPushRequest
 from artifcat import DeletionResult, InsertionResult, SearchResult
 from util import LoggingLevelRouter
 

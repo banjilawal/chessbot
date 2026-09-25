@@ -11,7 +11,7 @@ from abc import abstractmethod
 
 from authorization.permitter.stack import OperationPermitter
 from artifcat.report import PushApprovalReport
-from domain.exchange.request import TokenStackPushRequest
+from client.exchange import TokenStackPushRequest
 from util import LoggingLevelRouter
 
 

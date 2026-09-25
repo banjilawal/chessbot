@@ -15,7 +15,7 @@ from authorization import AddNodeRequestAuthorizer
 from collection import VectorChain
 from domain.structure.node import VectorNode
 from artifcat.report import AuthorizationDecision
-from domain.exchange.request import AddVectorNodeRequest
+from client.exchange import AddVectorNodeRequest
 from operation.utility import AddVectorNodePermissionUtility
 from util import LoggingLevelRouter
 

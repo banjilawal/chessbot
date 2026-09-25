@@ -13,7 +13,7 @@ from typing import Type
 
 from bootstrapper import RequestBootstrapper
 from err import PromotionRequestNullException, PromotionPermitterBootstrapperException
-from domain.exchange.request.microservice import PromotionRequest
+from client.exchange.request.microservice import PromotionRequest
 from artifcat import ValidationResult
 from util import LoggingLevelRouter
 

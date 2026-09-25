@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/client/validation/__init__.py" afterDir="false" />
-    </list>
+    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,61 +45,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0000175715251445" />
-      <entry key="S5" value="1.0502629316568652" />
-      <entry key="S10" value="2.3134462877509048" />
-      <entry key="S30" value="20.5537977793089" />
-      <entry key="S60" value="43.93967767186314" />
-      <entry key="M2" value="68.45614869908849" />
-      <entry key="M5" value="108.47268816574817" />
-      <entry key="M10" value="177.01568202679573" />
-      <entry key="M15" value="244.80315435479434" />
-      <entry key="M30" value="422.71516905082257" />
-      <entry key="H1" value="683.3838288009033" />
-      <entry key="H2" value="1005.163637511802" />
-      <entry key="H4" value="1534.405905289291" />
-      <entry key="D1" value="6411.581578900547" />
-      <entry key="W1" value="24405.40651971276" />
+      <entry key="MS100" value="1.3536630752490995" />
+      <entry key="MS500" value="4.085629887503578" />
+      <entry key="S2" value="10.471705979755146" />
+      <entry key="S5" value="19.782268785998347" />
+      <entry key="S10" value="31.374506049596736" />
+      <entry key="S30" value="55.030165937493464" />
+      <entry key="S60" value="68.36000383671724" />
+      <entry key="M2" value="80.413997738258" />
+      <entry key="M5" value="105.68315097562503" />
+      <entry key="M10" value="159.86445483296484" />
+      <entry key="M15" value="222.02855506499284" />
+      <entry key="M30" value="405.0701966432402" />
+      <entry key="H1" value="693.4215972867578" />
+      <entry key="H2" value="1057.5341839307594" />
+      <entry key="H4" value="1617.6540637309358" />
+      <entry key="D1" value="6526.847358673885" />
+      <entry key="W1" value="24553.950931746025" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="7.02539307868751E-284" />
-      <entry key="S5" value="5.478583073868585E-114" />
-      <entry key="S10" value="2.3406373221557783E-57" />
-      <entry key="S30" value="1.3277349129602406E-19" />
-      <entry key="S60" value="3.643809860798281E-10" />
-      <entry key="M2" value="1.9092787172368483E-5" />
-      <entry key="M5" value="0.013533603714796815" />
-      <entry key="M10" value="0.17040680156055577" />
-      <entry key="M15" value="0.5409129111694063" />
-      <entry key="M30" value="2.513442320195975" />
-      <entry key="H1" value="8.225699485656357" />
-      <entry key="H2" value="22.037419798262462" />
-      <entry key="H4" value="55.885265999509166" />
-      <entry key="D1" value="311.5037304196923" />
-      <entry key="W1" value="1129.248919033636" />
+      <entry key="MS500" value="8.093898244609141E-155" />
+      <entry key="S2" value="3.8977166297455675E-39" />
+      <entry key="S5" value="6.30756690642857E-16" />
+      <entry key="S10" value="3.526851589105028E-8" />
+      <entry key="S30" value="0.005197490320513881" />
+      <entry key="S60" value="0.10193550950338882" />
+      <entry key="M2" value="0.4514983407172832" />
+      <entry key="M5" value="1.1032684305985496" />
+      <entry key="M10" value="1.5185847919999795" />
+      <entry key="M15" value="1.8228751841733712" />
+      <entry key="M30" value="3.2725160195892182" />
+      <entry key="H1" value="8.175522140733795" />
+      <entry key="H2" value="21.1947005280624" />
+      <entry key="H4" value="54.198281316788986" />
+      <entry key="D1" value="310.000498801616" />
+      <entry key="W1" value="1129.4274320621985" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9138314502294005" />
-      <entry key="MS500" value="0.9821395952633915" />
-      <entry key="S2" value="0.9955210103018758" />
-      <entry key="S5" value="1.0476354778261598" />
-      <entry key="S10" value="2.3066989188299716" />
-      <entry key="S30" value="20.532408869981865" />
-      <entry key="S60" value="43.89755150599399" />
-      <entry key="M2" value="68.39351599493982" />
-      <entry key="M5" value="108.4280412862986" />
-      <entry key="M10" value="177.14412238530738" />
-      <entry key="M15" value="245.31071344908915" />
-      <entry key="M30" value="425.2043161743878" />
-      <entry key="H1" value="691.5857641315255" />
-      <entry key="H2" value="1027.1728244863696" />
-      <entry key="H4" value="1590.255757092978" />
-      <entry key="D1" value="6723.054014274402" />
-      <entry key="W1" value="25534.63740177799" />
+      <entry key="MS100" value="1.1967625475238441" />
+      <entry key="MS500" value="3.9739749979566827" />
+      <entry key="S2" value="10.39967114690329" />
+      <entry key="S5" value="19.727777493637788" />
+      <entry key="S10" value="31.331257475981783" />
+      <entry key="S30" value="55.00459358383433" />
+      <entry key="S60" value="68.41328272548832" />
+      <entry key="M2" value="80.79003999077244" />
+      <entry key="M5" value="106.69585404074026" />
+      <entry key="M10" value="161.29916791677584" />
+      <entry key="M15" value="223.7778149486375" />
+      <entry key="M30" value="408.2893097962174" />
+      <entry key="H1" value="701.5567904602242" />
+      <entry key="H2" value="1078.6924002111634" />
+      <entry key="H4" value="1671.8131430542771" />
+      <entry key="D1" value="6836.815867958671" />
+      <entry key="W1" value="25683.360205797067" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -132,7 +130,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/client",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/client/validation",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -146,11 +144,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/client/validation" />
       <recent name="$PROJECT_DIR$/src/client" />
       <recent name="$PROJECT_DIR$/src/transit/dispatcher/validator/model" />
       <recent name="$PROJECT_DIR$/src/err/null/domain/model" />
       <recent name="$PROJECT_DIR$/src/err/transit/dispatcher/validation/model" />
-      <recent name="$PROJECT_DIR$/src/err/transit/dispatcher/validation/model/vector" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/err/null/domain/model" />
@@ -838,7 +836,7 @@
       <workItem from="1788782347688" duration="75617000" />
       <workItem from="1788969937518" duration="171978000" />
       <workItem from="1790001362413" duration="735000" />
-      <workItem from="1790063398459" duration="162682000" />
+      <workItem from="1790063398459" duration="164218000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

@@ -14,7 +14,7 @@ from typing import Optional
 from err import ManeuverPermitterException
 
 from artifcat.report import ManeuverRequestDecision
-from domain.exchange.request import ManeuverRequest
+from client.exchange import ManeuverRequest
 from artifcat import MethodResultType
 from authorization.adjudicator import ManeuverRequestAdjudicator
 from util import LoggingLevelRouter

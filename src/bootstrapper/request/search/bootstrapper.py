@@ -13,7 +13,7 @@ from typing import Type
 
 from bootstrapper import RequestBootstrapper
 from err import SearchPermitterBootstrapperException, SearchRequestNullException
-from domain.exchange.request import SearchRequest
+from client.exchange import SearchRequest
 from artifcat import ValidationResult
 from util import LoggingLevelRouter
 

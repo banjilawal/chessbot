@@ -11,7 +11,7 @@ from abc import abstractmethod
 
 from authorization.permitter.chain import ChainOperationPermitter
 from artifcat.report import CrudApprovalReport
-from domain.exchange.request import CrudRequest
+from client.exchange import CrudRequest
 from util import LoggingLevelRouter
 
 

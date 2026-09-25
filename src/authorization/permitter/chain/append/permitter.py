@@ -11,7 +11,7 @@ from abc import abstractmethod
 
 from authorization.permitter.chain import ChainOperationPermitter
 from artifcat.report import AppendApprovalReport
-from domain.exchange.request import AppendRequest
+from client.exchange import AppendRequest
 from util import LoggingLevelRouter
 
 

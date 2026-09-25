@@ -13,7 +13,7 @@ from typing import Type
 from err import PopRequestNullException, PopperPermitterException
 from authorization.permitter.stack import OperationPermitter
 from artifcat.report import PopApprovalReport
-from domain.exchange.request import PopRequest
+from client.exchange import PopRequest
 from artifcat import ValidationResult
 from util import LoggingLevelRouter
 

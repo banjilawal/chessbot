@@ -13,7 +13,7 @@ from __future__ import annotations
 from err import PromotionPermitterException
 from authorization.permitter.token import OperationPermitter
 from artifcat.report import PromotionRequestDecision
-from domain.exchange.request.microservice import PromotionRequest
+from client.exchange.request.microservice import PromotionRequest
 from authorization.adjudicator import PromotionRequestAdjudicator
 from util import LoggingLevelRouter
 

@@ -18,7 +18,7 @@ from transit.dispatcher import InsertionDispatcher
 from domain.structure.node import Node
 
 from artifcat.report import AuthorizationDecision
-from domain.exchange.request import AddNodeRequest
+from client.exchange import AddNodeRequest
 
 from util import LoggingLevelRouter
 

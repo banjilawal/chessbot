@@ -16,7 +16,7 @@ from authorization import InsertionRequestAuthorizer
 from collection import DomainObjectCollection
 from transit.dispatcher import AuthorizationDispatcher
 from artifcat.report import AuthorizationDecision
-from domain.exchange.request import InsertionRequest
+from client.exchange import InsertionRequest
 from artifcat import InsertionResult
 from util import LoggingLevelRouter
 

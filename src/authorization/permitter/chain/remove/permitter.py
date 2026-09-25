@@ -13,7 +13,7 @@ from typing import Type
 from err import RemoveRequestNullException, RemoveperPermitterException
 from authorization.permitter.chain import ChainOperationPermitter
 from artifcat.report import RemoveApprovalReport
-from domain.exchange.request import RemoveRequest
+from client.exchange import RemoveRequest
 from artifcat import ValidationResult
 from util import LoggingLevelRouter
 
