@@ -1,4 +1,4 @@
-# src/client/operator.py
+# src/client/client.py
 
 """
 Module: client.client
@@ -13,9 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from artifcat import Result
-from domain import Request
 from transit import Dispatcher
-from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Result")
 
@@ -31,7 +29,7 @@ class Client(ABC, Generic[T]):
         dispatcher: Dispatcher[T]
         
     Provides:
-        -   def submit(request: Request[T]) -> T
+        -   def submit(request: Request[T]) -> R
 
     Super Class:
     """
@@ -47,17 +45,3 @@ class Client(ABC, Generic[T]):
     @property
     def dispatcher(self) -> Dispatcher[T]:
         return self._dispatcher
-    
-    
-    @abstractmethod
-    @LoggingLevelRouter.monitor
-    def submit(self, request: Request[T]) -> T:
-        """
-        Args:
-            request: Request[T]
-        Result:
-            T
-        Raises:
-            ClientException
-        """
-        pass
