@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== ASSURANCE.PRIMITVE PACKAGE ===========#
 
 # Packages
+from .binder import *
 from .number import *
 from .string import *
 

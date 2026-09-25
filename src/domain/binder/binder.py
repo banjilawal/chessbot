@@ -82,7 +82,7 @@ class ColorBinder(ABC, Generic[P, S]):
         return self.size == self._max_capacity
     
     @property
-    def over_capacity(self) -> bool:
+    def is_over_capacity(self) -> bool:
         return self.size > self._max_capacity
     
     @property

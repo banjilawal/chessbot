@@ -11,13 +11,14 @@ from __future__ import annotations
 
 from typing import Any, Optional, cast
 
-import config
-from assurance import PrimingValidator
+from assurance import PlayerValidator, PrimingValidator
+from config import NumericSetting
 from err import (
-    NegativeNumberException, NumberAboveBoundsException, NumberBelowBoundsException,
-    NumberNullException, NumberValidatorException
+    NumberAboveBoundsException, NumberBelowBoundsException, NumberNullException,
+    NumberValidatorException
 )
 from artifcat import ValidationResult
+from microservice import IdentityService
 from util import LoggingLevelRouter
 
 
@@ -34,29 +35,29 @@ class NumberValidator:
     Provides:
         - def validate(
                     candidate: Any,
-                    floor: int = 0,
-                    ceiling: int = BOARD_DIMENSION,
+                    floor: Optional[int],
+                    ceiling: Optional[int],
             ) -> ValidationResult[int]:
     
     Super Class:
-        Validator
     """
-    _priming_validator: Optional[PrimingValidator]
     
-    def __init__(self, priming_validator: Optional[PrimingValidator] | None = None):
+    def __init__(
+            self,
+            priming_validator: Optional[PrimingValidator] | None = None,
+    ):
         """
         Args:
             priming_validator: Optional[PrimingValidator]
         """
         self._priming_validator = priming_validator or PrimingValidator()
         
-    
     @LoggingLevelRouter.monitor
     def execute(
             self,
             candidate: Any,
-            floor: int | None = 0,
-            ceiling: int | None = config.setting.board.setting.board.dimension.config.board_size - 1,
+            floor: Optional[int] | None = None,
+            ceiling: Optional[int] | None = None,
     ) -> ValidationResult[int]:
         """
         Make sure an object is a number within bounds before use.
@@ -67,8 +68,8 @@ class NumberValidator:
                     - int between floor and ceiling
         Args:
             candidate: Any
-            floor: int
-            ceiling: int
+            floor: Optional[int]
+            ceiling: Optional[int]
         Returns:
             ValidationResult[int]
         Raises:
@@ -79,7 +80,11 @@ class NumberValidator:
         """
         method = f"{self.__class__.__name__}.execute"
         
-        
+        if floor is None:
+            floor = 0
+        if ceiling is None:
+            ceiling = NumericSetting().ceiling
+         
         # Handle the case that the validator is not primed.
         validator_priming_result = self._priming_validator.execute(
             candidate=candidate,
@@ -100,23 +105,6 @@ class NumberValidator:
         # --- Cast the candidate into a Token for additional tests ---#
         number = cast(int, candidate)
         
-        # Handle the case that the number
-        if floor < 0:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                NumberValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=NumberValidatorException.MSG,
-                    err_code=NumberValidatorException.ERR_CODE,
-                    ex=NegativeNumberException(
-                        var="floor",
-                        val=number,
-                        msg=f"Floor cannot be negative",
-                        err_code=NegativeNumberException.ERR_CODE,
-                    )
-                )
-            )
         # Handle case that the number is below the floor
         if number < floor:
             # Send the exception chain on failure.
@@ -132,7 +120,7 @@ class NumberValidator:
                     )
                 )
             )
-        # Handle case that the number is above the floor
+        # Handle case that the number is above the ceiling.
         if number > ceiling:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -147,3 +135,4 @@ class NumberValidator:
                     )
                 )
             )
+        return ValidationResult.success(number)

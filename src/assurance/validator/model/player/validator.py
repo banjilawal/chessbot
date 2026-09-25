@@ -120,7 +120,6 @@ class PlayerValidator(ModelValidator[Player]):
         carrier = cast(PlayerCarrier, carrier_validation.payload)
         
         # --- Extract the blueprint to verify the attributes. ---#
-
         if isinstance(carrier, HumanPlayerCarrier):
             helper = HumanPlayerValidator()
             return helper.execute(validated_carrier=carrier)

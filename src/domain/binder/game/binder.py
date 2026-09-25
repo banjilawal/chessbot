@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from typing import Dict, Optional, cast
+from typing import Dict, List, Optional, cast
 
 from config import GameColor
 from domain import ColorBinder, Game, Player
@@ -73,6 +73,18 @@ class GamePlayerColorBinder(ColorBinder[Game, Player]):
     @property
     def black_player(self) -> Player:
         return self._entry[GameColor.BLACK]
+    
+    @property
+    def players(self) -> List[Player]:
+        return [self.white_player, self.black_player]
+    
+    @property
+    def players_are_same(self) -> bool:
+        return self.white_player == self.black_player
+    
+    @property
+    def players_differ(self):
+        return not self.players_are_same
     
     @property
     def to_dict(self) -> Dict[GameColor, Player]:
