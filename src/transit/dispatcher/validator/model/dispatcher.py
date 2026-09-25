@@ -24,13 +24,10 @@ T = TypeVar("T", bound="Model")
 class ModelValidationDispatcher(ValidationDispatcher[T], ABC, Generic[T]):
     """
     Role
-        -   Transport
-        -   Forwarding
-        -   Integrity Assurance
+        -   Integrity Assurance Manager
 
     Responsibilities:
-        1.  Forward requests to a ModelValidator.
-        2.  Send the ValidationResult back to the caller.
+        1.  Direct the ModelValidation workflow.
 
     Attributes:
         validator: ModelValidator[T]

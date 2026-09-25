@@ -17,8 +17,7 @@ from util import LoggingLevelRouter
 class Dispatcher(ABC):
     """
     Role
-        -   Transport
-        -   Forwarding
+        -   Director
 
     Responsibilities:
         1.  Forward client jobs to a worker.
