@@ -11,7 +11,7 @@ version: 1.0.0
 
 # Packages
 from .empty import *
-from .full import *
+from .excessive import *
 
 # Modules
 from .exception import CapacityException

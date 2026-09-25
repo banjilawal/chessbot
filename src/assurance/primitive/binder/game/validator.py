@@ -9,16 +9,18 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional, cast
+from typing import Dict, Optional, cast
 
 
 from artifcat import ValidationResult
 from assurance import GameValidator, PlayerValidator, PrimingValidator
 from config import GameColor
-from domain import Blueprint, Game, GamePlayerColorBinder, GameValidationRequest, Player, PlayerValidationRequest
+from domain import (
+    Game, GamePlayerColorBinder, GameValidationRequest, Player, PlayerValidationRequest
+)
 from err import (
     CapacityException, DuplicatePlayerException, EmptyGameCarrierException, EmptyItemException,
-    EmptyPlayerCarrierException, GameColorNullException
+    EmptyPlayerCarrierException, GameColorNullException, GamePlayerColorBinderValidatorException
 )
 from microservice import IdentityService
 from transit import GameCarrier, PlayerCarrier
