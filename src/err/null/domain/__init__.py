@@ -10,6 +10,7 @@ version: 0.0.2
 # ============ ERR.NULL.DOMAIN PACKAGE ===========#
 
 # Packages
+from .binder import *
 from .exchange import *
 from .metadata import *
 from .model import *

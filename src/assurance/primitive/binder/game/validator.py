@@ -19,8 +19,9 @@ from domain import (
     Game, GamePlayerColorBinder, GameValidationRequest, Player, PlayerValidationRequest
 )
 from err import (
-    CapacityException, DuplicatePlayerException, EmptyGameCarrierException, EmptyItemException,
-    EmptyPlayerCarrierException, GameColorNullException, GamePlayerColorBinderValidatorException
+    DuplicatePlayerException, EmptyGameCarrierException, EmptyItemException,
+    EmptyPlayerCarrierException, GameColorNullException,
+    GamePlayerColorBinderOverCapacityException, GamePlayerColorBinderValidatorException
 )
 from microservice import IdentityService
 from transit import GameCarrier, PlayerCarrier
@@ -173,7 +174,12 @@ class GamePlayerColorBinderValidator:
                     cls_name=self.__class__.__name__,
                     msg=GamePlayerColorBinderValidatorException.MSG,
                     err_code=GamePlayerColorBinderValidatorException.ERR_CODE,
-                    ex=ExcessCapacityException(),
+                    ex=GamePlayerColorBinderOverCapacityException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=GamePlayerColorBinderOverCapacityException.MSG,
+                        err_code=GamePlayerColorBinderOverCapacityException.ERR_CODE,
+                    ),
                 )
             )
         color_dict = Dict[str, GameColor]

@@ -5,166 +5,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/array/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/binder/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/binder/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/binder/arena/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/binder/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/binder/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/binder/game/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/database/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/database/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/database/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/database/edge/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/database/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/database/hostage/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/database/node/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/database/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/database/player/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/database/snapshot/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/database/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/database/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/database/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/graph/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/edge/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/formation/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/formation/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/hostage/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/hostage/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/node/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/persona/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/persona/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/rank/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/schema/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/team/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/token/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/stack/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/stack/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/stack/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/stack/coord/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/stack/edge/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/stack/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/stack/node/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/stack/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/stack/player/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/stack/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/stack/square/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/stack/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/stack/team/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/stack/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/capacity/excessive/stack/token/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/chain/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/chain/dossier/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/chain/dossier/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/chain/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/chain/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/chain/vector/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/graph/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/graph/edge/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/graph/edge/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/graph/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/graph/station/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/graph/station/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/model/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/model/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/model/arena/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/model/attack/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/model/attack/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/model/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/model/board/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/model/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/model/coord/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/model/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/model/game/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/model/game/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/model/maneuver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/model/maneuver/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/model/path/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/model/path/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/model/player/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/model/player/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/model/snapshot/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/model/snapshot/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/model/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/model/square/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/model/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/model/team/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/model/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/binder/game/model/token/exception.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assurance/primitive/binder/game/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/primitive/binder/game/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/arena/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/database/token/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/array/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/array/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/graph/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/binder/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/binder/arena/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/binder/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/binder/board/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/binder/board/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/binder/board/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/binder/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/binder/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/board/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/board/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/database/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/database/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/database/arena/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/database/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/database/edge/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/database/board/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/database/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/database/game/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/database/coord/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/database/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/database/team/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/database/edge/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/database/edge/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/database/coord/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/database/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/database/game/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/database/game/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/database/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/database/hostage/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/database/hostage/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/database/square/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/database/node/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/database/node/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/database/player/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/database/player/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/database/arena/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/database/snapshot/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/database/snapshot/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/database/hostage/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/database/square/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/database/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/database/board/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/database/team/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/database/team/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/database/token/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/database/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/database/node/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/graph/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/graph/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/array/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/arena/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/node/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/board/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/rank/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/coord/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/game/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/edge/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/edge/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/square/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/formation/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/formation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/edge/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/game/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/game/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/hostage/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/hostage/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/player/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/node/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/node/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/persona/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/persona/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/schema/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/player/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/player/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/arena/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/rank/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/rank/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/schema/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/schema/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/board/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/square/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/query/coord/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/team/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/team/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/token/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/query/token/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/square/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/square/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/stack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/stack/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/stack/arena/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/stack/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/square/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/stack/board/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/stack/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/stack/edge/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/stack/coord/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/stack/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/stack/game/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/stack/edge/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/stack/edge/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/stack/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/stack/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/database/snapshot/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/stack/game/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/stack/game/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/board/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/stack/node/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/stack/node/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/arena/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/stack/player/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/stack/player/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/stack/arena/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/stack/square/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/stack/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/stack/board/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/stack/team/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/stack/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/excessive/stack/node/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/stack/token/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/capacity/full/stack/token/exception.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -208,59 +93,59 @@
     <decayedCancelled>
       <entry key="MS100" value="1.0" />
       <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.000000000000006" />
-      <entry key="S5" value="1.0000022077681832" />
-      <entry key="S10" value="1.0018219409958118" />
-      <entry key="S30" value="1.1856849061998296" />
-      <entry key="S60" value="1.6069172827579257" />
-      <entry key="M2" value="2.20895377292064" />
-      <entry key="M5" value="10.843324367156207" />
-      <entry key="M10" value="49.56773781406106" />
-      <entry key="M15" value="95.16964255419681" />
-      <entry key="M30" value="217.8943184050686" />
-      <entry key="H1" value="407.2424109968919" />
-      <entry key="H2" value="757.0171333381919" />
-      <entry key="H4" value="1474.1407879629144" />
-      <entry key="D1" value="6263.095967947371" />
-      <entry key="W1" value="23580.750484319426" />
+      <entry key="S2" value="1.0001529313616906" />
+      <entry key="S5" value="1.0579531727156342" />
+      <entry key="S10" value="1.4589658834748374" />
+      <entry key="S30" value="3.208372069648418" />
+      <entry key="S60" value="5.088686130154036" />
+      <entry key="M2" value="11.046698707948593" />
+      <entry key="M5" value="34.619660983371816" />
+      <entry key="M10" value="74.05125056037978" />
+      <entry key="M15" value="116.95498897986795" />
+      <entry key="M30" value="239.25354451434987" />
+      <entry key="H1" value="435.04971973415905" />
+      <entry key="H2" value="790.1428892834831" />
+      <entry key="H4" value="1509.4862054172286" />
+      <entry key="D1" value="6313.142732939471" />
+      <entry key="W1" value="23646.563213788362" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="4.227138128208139E-266" />
-      <entry key="S5" value="8.587573862311458E-107" />
-      <entry key="S10" value="1.394397110042749E-53" />
-      <entry key="S30" value="5.148652113434701E-18" />
-      <entry key="S60" value="4.362123226137418E-9" />
-      <entry key="M2" value="1.3415907061965911E-4" />
-      <entry key="M5" value="0.08174308650602999" />
-      <entry key="M10" value="1.0163883611879583" />
-      <entry key="M15" value="2.8983561405003897" />
-      <entry key="M30" value="10.72868082669264" />
-      <entry key="H1" value="25.725300175899317" />
-      <entry key="H2" value="51.86136282298995" />
-      <entry key="H4" value="97.0362403846032" />
-      <entry key="D1" value="318.15717462931053" />
-      <entry key="W1" value="1093.643430065643" />
+      <entry key="MS100" value="2.037456400742767E-76" />
+      <entry key="MS500" value="8.544525704848226E-16" />
+      <entry key="S2" value="2.70387342858052E-4" />
+      <entry key="S5" value="0.056358870687425414" />
+      <entry key="S10" value="0.3354158878061715" />
+      <entry key="S30" value="1.1027868132133516" />
+      <entry key="S60" value="1.4967921620526525" />
+      <entry key="M2" value="1.8704038665684144" />
+      <entry key="M5" value="2.5979261288799096" />
+      <entry key="M10" value="3.58693852495133" />
+      <entry key="M15" value="5.093056653517403" />
+      <entry key="M30" value="11.939515048818038" />
+      <entry key="H1" value="26.42525121416283" />
+      <entry key="H2" value="52.52248831584128" />
+      <entry key="H4" value="97.90289369962736" />
+      <entry key="D1" value="320.4396311818515" />
+      <entry key="W1" value="1096.8007776943336" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9265880618903709" />
-      <entry key="MS500" value="0.9848664428955506" />
-      <entry key="S2" value="0.9961949481330602" />
-      <entry key="S5" value="0.9984784427894757" />
-      <entry key="S10" value="1.001058212121699" />
-      <entry key="S30" value="1.1853693134802419" />
-      <entry key="S60" value="1.6066589129704352" />
-      <entry key="M2" value="2.208477178999253" />
-      <entry key="M5" value="10.921701496116986" />
-      <entry key="M10" value="50.566105771530445" />
-      <entry key="M15" value="98.03040477766473" />
-      <entry key="M30" value="228.54782150857946" />
-      <entry key="H1" value="432.87927278077916" />
-      <entry key="H2" value="808.798308666487" />
-      <entry key="H4" value="1571.1117029522798" />
-      <entry key="D1" value="6581.221361910395" />
-      <entry key="W1" value="24674.37634370531" />
+      <entry key="MS100" value="0.9526379980439373" />
+      <entry key="MS500" value="0.9903428719330253" />
+      <entry key="S2" value="0.9979382536755964" />
+      <entry key="S5" value="1.1053382483959275" />
+      <entry key="S10" value="1.765708414107765" />
+      <entry key="S30" value="4.271837516344966" />
+      <entry key="S60" value="6.545913972787821" />
+      <entry key="M2" value="12.876285237727918" />
+      <entry key="M5" value="37.18224610367171" />
+      <entry key="M10" value="77.60600425282621" />
+      <entry key="M15" value="122.0077624102658" />
+      <entry key="M30" value="251.12494927865217" />
+      <entry key="H1" value="461.3919119674171" />
+      <entry key="H2" value="842.5874528914067" />
+      <entry key="H4" value="1607.3244513562452" />
+      <entry key="D1" value="6633.550517767156" />
+      <entry key="W1" value="24743.346400465794" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -291,7 +176,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/capacity/excessive/binder",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/null/domain",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -305,11 +190,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/null/domain" />
       <recent name="$PROJECT_DIR$/src/err/capacity/excessive/binder" />
       <recent name="$PROJECT_DIR$/src/err/assurance/primitve/binder" />
       <recent name="$PROJECT_DIR$/src/err/assurance/primitve/binder/game" />
       <recent name="$PROJECT_DIR$/src/domain/metadata/blueprint/model/searchable/state/game" />
-      <recent name="$PROJECT_DIR$/src/domain/structure/binder" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/domain" />
@@ -997,7 +882,7 @@
       <workItem from="1788782347688" duration="75617000" />
       <workItem from="1788969937518" duration="171978000" />
       <workItem from="1790001362413" duration="735000" />
-      <workItem from="1790063398459" duration="141737000" />
+      <workItem from="1790063398459" duration="142444000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
