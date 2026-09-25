@@ -10,9 +10,6 @@ version: 0.0.2
 # =========== DOMAIN.MODEL PACKAGE ===========#
 
 # Packages
-from .dossier import *
-from domain.model.searchable.identity import *
-from domain.model.searchable.walk import *
 from .rank import *
 from .scalar import *
 from .searchable import *

@@ -14,7 +14,6 @@ from .arena import *
 from .board import *
 from .edge import *
 from .game import *
-from .node import *
 from .path import *
 from .player import *
 from .square import *
