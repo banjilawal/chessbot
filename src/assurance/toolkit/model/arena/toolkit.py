@@ -49,8 +49,8 @@ class ArenaValidatorToolkit(ModelValidatorToolkit[Arena]):
         )
     
     @property
-    def helper(self) -> ArenaHelperTable:
-        return cast(ArenaHelperTable, super().helper)
+    def attribute(self) -> ArenaHelperTable:
+        return cast(ArenaHelperTable, super().attribute)
     
     @property
     def metadata(self) -> ArenaManifest:

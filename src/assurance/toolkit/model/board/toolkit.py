@@ -49,8 +49,8 @@ class BoardValidatorToolkit(ModelValidatorToolkit[Board]):
         )
     
     @property
-    def helper(self) -> BoardHelperTable:
-        return cast(BoardHelperTable, super().helper)
+    def attribute(self) -> BoardHelperTable:
+        return cast(BoardHelperTable, super().attribute)
     
     @property
     def metadata(self) -> BoardManifest:

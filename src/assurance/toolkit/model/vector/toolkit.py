@@ -49,8 +49,8 @@ class VectorValidatorToolkit(ModelValidatorToolkit[Vector]):
         )
     
     @property
-    def helper(self) -> VectorHelperTable:
-        return cast(VectorHelperTable, super().helper)
+    def attribute(self) -> VectorHelperTable:
+        return cast(VectorHelperTable, super().attribute)
     
     @property
     def metadata(self) -> VectorManifest:

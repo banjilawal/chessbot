@@ -21,7 +21,8 @@ from domain import (
 from err import (
     DuplicatePlayerException, EmptyGameCarrierException, EmptyItemException,
     EmptyPlayerCarrierException, GameColorNullException,
-    GamePlayerColorBinderOverCapacityException, GamePlayerColorBinderValidatorException
+    GamePlayerColorBinderNullException, GamePlayerColorBinderOverCapacityException,
+    GamePlayerColorBinderValidatorException
 )
 from microservice import IdentityService
 from transit import GameCarrier, PlayerCarrier
@@ -39,11 +40,7 @@ class GamePlayerColorBinderValidator:
     Attributes:
 
     Provides:
-        - def validate(
-                    candidate: Any,
-                    floor: int = 0,
-                    ceiling: int = BOARD_DIMENSION,
-            ) -> ValidationResult[int]:
+        - def execute(self, candidate) -> ValidationResult[GamePlayerColorBinder]
 
     Super Class:
     """
@@ -202,7 +199,12 @@ class GamePlayerColorBinderValidator:
                         cls_name=self.__class__.__name__,
                         msg=GamePlayerColorBinderValidatorException.MSG,
                         err_code=GamePlayerColorBinderValidatorException.ERR_CODE,
-                        ex=CapacityException(),
+                        ex=GamePlayerColorBinderOverCapacityException(
+                            cls_mthd=method,
+                            cls_name=self.__class__.__name__,
+                            msg=GamePlayerColorBinderOverCapacityException.MSG,
+                            err_code=GamePlayerColorBinderOverCapacityException.ERR_CODE,
+                        ),
                     )
                 )
         

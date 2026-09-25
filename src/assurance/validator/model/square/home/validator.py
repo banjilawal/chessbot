@@ -98,7 +98,7 @@ class HomeSquareValidator:
                 )
             )
         # Handle the case that the formation does not pass a validation check.
-        formation_validation = self._toolkit.helper.priming_validator.execute(
+        formation_validation = self._toolkit.attribute.priming_validator.execute(
             candidate=blueprint.formation,
             target_model=Formation,
             null_exception=FormationNullException(),

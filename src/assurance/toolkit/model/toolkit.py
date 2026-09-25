@@ -49,10 +49,9 @@ class ModelValidatorToolkit(ValidatorToolkit[T], ABC, Generic[T]):
         """
         super().__init__(helper=helper, metadata=metadata)
     
-    
     @property
-    def helper(self) -> ModelHelperTable[T]:
-        return cast(ModelHelperTable[T], super().helper)
+    def attribute(self) -> ModelHelperTable[T]:
+        return cast(ModelHelperTable[T], super().attribute)
     
     @property
     def metadata(self) -> ModelManifest[T]:

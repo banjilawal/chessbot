@@ -10,6 +10,8 @@ version: 0.0.2
 # ============ ERR.NULL.DOMAIN.BINDER PACKAGE ===========#
 
 # Packages
+from .arena import *
+from .board import *
 from .game import *
 
 # Modules

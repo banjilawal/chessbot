@@ -49,8 +49,8 @@ class ManeuverValidatorToolkit(ModelValidatorToolkit[Maneuver]):
         )
     
     @property
-    def helper(self) -> ManeuverHelperTable:
-        return cast(ManeuverHelperTable, super().helper)
+    def attribute(self) -> ManeuverHelperTable:
+        return cast(ManeuverHelperTable, super().attribute)
     
     @property
     def metadata(self) -> ManeuverManifest:

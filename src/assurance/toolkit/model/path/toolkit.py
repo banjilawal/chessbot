@@ -49,8 +49,8 @@ class PathValidatorToolkit(ModelValidatorToolkit[Path]):
         )
     
     @property
-    def helper(self) -> PathHelperTable:
-        return cast(PathHelperTable, super().helper)
+    def attribute(self) -> PathHelperTable:
+        return cast(PathHelperTable, super().attribute)
     
     @property
     def metadata(self) -> PathManifest:

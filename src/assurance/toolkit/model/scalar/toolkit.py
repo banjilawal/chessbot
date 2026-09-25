@@ -49,8 +49,8 @@ class ScalarValidatorToolkit(ModelValidatorToolkit[Scalar]):
         )
     
     @property
-    def helper(self) -> ScalarHelperTable:
-        return cast(ScalarHelperTable, super().helper)
+    def attribute(self) -> ScalarHelperTable:
+        return cast(ScalarHelperTable, super().attribute)
     
     @property
     def metadata(self) -> ScalarManifest:

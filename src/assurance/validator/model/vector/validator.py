@@ -80,12 +80,12 @@ class VectorValidator(ModelValidator[Vector]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the request is null or the wrong type.
-        priming_validation = self.toolkit.helper.priming_validator.execute(
+        priming_result = self.toolkit.attribute.priming_validator.execute(
             candidate=candidate,
             target_model=VectorValidationRequest,
             null_exception=VectorValidationRequestNullException(),
         )
-        if priming_validation.is_failure:
+        if priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorValidatorException(
@@ -93,14 +93,14 @@ class VectorValidator(ModelValidator[Vector]):
                     cls_name=self.__class__.__name__,
                     msg=VectorValidatorException.MSG,
                     err_code=VectorValidatorException.ERR_CODE,
-                    ex=priming_validation.exception,
+                    ex=priming_result.exception,
                 )
             )
         # --- Cast the priming_validator payload for additional tests. ---#
-        request = cast(VectorValidationRequest, priming_validation.payload)
+        request = cast(VectorValidationRequest, priming_result.payload)
         
         # Handle the case that the request payload is null or the wrong type.
-        carrier_validation = self.toolkit.helper.priming_validator.execute(
+        carrier_validation = self.toolkit.attribute.priming_validator.execute(
             candidate=request.item,
             target_model=self.toolkit.metadata.types.carrier,
             null_exception=self.toolkit.metadata.nulls.carrier,
@@ -143,7 +143,7 @@ class VectorValidator(ModelValidator[Vector]):
         # Handle the case that any vector component in the blueprint is flagged.
         numbers = []
         for number in [blueprint.x, blueprint.y]:
-            validation = self.toolkit.helper.number_validator.execute(number)
+            validation = self.toolkit.attribute.number_validator.execute(number)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(

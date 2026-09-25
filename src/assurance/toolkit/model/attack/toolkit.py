@@ -49,8 +49,8 @@ class AttackValidatorToolkit(ModelValidatorToolkit[Attack]):
         )
     
     @property
-    def helper(self) -> AttackHelperTable:
-        return cast(AttackHelperTable, super().helper)
+    def attribute(self) -> AttackHelperTable:
+        return cast(AttackHelperTable, super().attribute)
     
     @property
     def metadata(self) -> AttackManifest:

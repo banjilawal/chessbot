@@ -49,8 +49,8 @@ class GameValidatorToolkit(ModelValidatorToolkit[Game]):
         )
     
     @property
-    def helper(self) -> GameHelperTable:
-        return cast(GameHelperTable, super().helper)
+    def attribute(self) -> GameHelperTable:
+        return cast(GameHelperTable, super().attribute)
     
     @property
     def metadata(self) -> GameManifest:

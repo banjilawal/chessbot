@@ -51,13 +51,13 @@ class AxisTerminus(Enum):
         "north",
         Vector(
             x=0,
-            y=-config.setting.board.dimension.config.number_of_rows - 1,
+            y=-config.setting.board.dimension.config.num_rows - 1,
         )
     )
     EAST = (
         "east",
         Vector(
-            x=config.setting.board.dimension.config.number_of_columns - 1,
+            x=config.setting.board.dimension.config.num_columns - 1,
             y=0,
         )
     )
@@ -65,13 +65,13 @@ class AxisTerminus(Enum):
         "south",
         Vector(
             x=0,
-            y=config.setting.board.dimension.config.number_of_rows - 1,
+            y=config.setting.board.dimension.config.num_rows - 1,
         )
     )
     WEST = (
         "west",
         Vector(
-            x=config.setting.board.dimension.config.number_of_columns - 1,
+            x=config.setting.board.dimension.config.num_columns - 1,
             y=0,
         )
     )

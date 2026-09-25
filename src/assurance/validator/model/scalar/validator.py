@@ -80,12 +80,12 @@ class ScalarValidator(ModelValidator[Scalar]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the request is null or the wrong type.
-        priming_validation = self.toolkit.helper.priming_validator.execute(
+        priming_result = self.toolkit.attribute.priming_validator.execute(
             candidate=candidate,
             target_model=ScalarValidationRequest,
             null_exception=ScalarValidationRequestNullException(),
         )
-        if priming_validation.is_failure:
+        if priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ScalarValidatorException(
@@ -93,14 +93,14 @@ class ScalarValidator(ModelValidator[Scalar]):
                     cls_name=self.__class__.__name__,
                     msg=ScalarValidatorException.MSG,
                     err_code=ScalarValidatorException.ERR_CODE,
-                    ex=priming_validation.exception,
+                    ex=priming_result.exception,
                 )
             )
         # --- Cast the priming_validator payload for additional tests. ---#
-        request = cast(ScalarValidationRequest, priming_validation.payload)
+        request = cast(ScalarValidationRequest, priming_result.payload)
         
         # Handle the case that the request payload is null or the wrong type.
-        carrier_validation = self.toolkit.helper.priming_validator.execute(
+        carrier_validation = self.toolkit.attribute.priming_validator.execute(
             candidate=request.item,
             target_model=self.toolkit.metadata.types.carrier,
             null_exception=self.toolkit.metadata.nulls.carrier,
@@ -142,7 +142,7 @@ class ScalarValidator(ModelValidator[Scalar]):
                 )
             )
         # Handle the case that any scalar component in the blueprint is flagged.
-        magnitude_validation = self.toolkit.helper.number_validator.execute(blueprint.magnitude)
+        magnitude_validation = self.toolkit.attribute.number_validator.execute(blueprint.magnitude)
         if magnitude_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

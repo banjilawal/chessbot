@@ -49,8 +49,8 @@ class TeamValidatorToolkit(ModelValidatorToolkit[Team]):
         )
     
     @property
-    def helper(self) -> TeamHelperTable:
-        return cast(TeamHelperTable, super().helper)
+    def attribute(self) -> TeamHelperTable:
+        return cast(TeamHelperTable, super().attribute)
     
     @property
     def metadata(self) -> TeamManifest:

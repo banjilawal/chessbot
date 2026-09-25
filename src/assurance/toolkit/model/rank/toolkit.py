@@ -49,8 +49,8 @@ class RankValidatorToolkit(ModelValidatorToolkit[Rank]):
         )
     
     @property
-    def helper(self) -> RankHelperTable:
-        return cast(RankHelperTable, super().helper)
+    def attribute(self) -> RankHelperTable:
+        return cast(RankHelperTable, super().attribute)
     
     @property
     def metadata(self) -> RankManifest:

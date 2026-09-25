@@ -33,52 +33,50 @@ class NumericPropertyValue:
 
      Super Class:
      """
-    CEILING = 4096
-    INFINITY = sys.maxsize
 
-    _min_id: int
-    _floor: int
-    _ceiling: int
-    _infinity: int
+    _min_id: int = 0
+    _floor: int = 0
+    _ceiling: int = 4096
+    _infinity: int = sys.maxsize
     
-    def __init__(
-            self,
-            min_id: Optional[int] | None = None,
-            floor: Optional[int] | None = None,
-            ceiling: Optional[int] | None = None,
-            infinity: Optional[int] | None = None,
-    ):
-        """
-        Args:
-            min_id: Optional[int]
-            floor: Optional[int]
-            ceiling: Optional[int]
-            infinity: Optional[int]
-        """
-        self._min_id = min_id or 0
-        self._floor = floor or 0
-        self._ceiling = ceiling or self.CEILING
-        self._infinity = infinity or self.INFINITY
+    # def __init__(
+    #         cls,
+    #         min_id: Optional[int] | None = None,
+    #         floor: Optional[int] | None = None,
+    #         ceiling: Optional[int] | None = None,
+    #         infinity: Optional[int] | None = None,
+    # ):
+    #     """
+    #     Args:
+    #         min_id: Optional[int]
+    #         floor: Optional[int]
+    #         ceiling: Optional[int]
+    #         infinity: Optional[int]
+    #     """
+    #     cls._min_id = min_id or 0
+    #     cls._floor = floor or 0
+    #     cls._ceiling = ceiling or cls._CEILING
+    #     cls._infinity = infinity or cls._INFINITY
         
-    @property
-    def min_id(self) -> int:
-        return self._min_id
+    @classmethod
+    def min_id(cls) -> int:
+        return cls._min_id
     
-    @property
-    def floor(self) -> int:
-        return self._floor
+    @classmethod
+    def floor(cls) -> int:
+        return cls._floor
     
-    @property
-    def ceiling(self) -> int:
-        return self._ceiling
+    @classmethod
+    def ceiling(cls) -> int:
+        return cls._ceiling
     
-    @property
-    def infinity(self) -> int:
-        return self._infinity
+    @classmethod
+    def infinity(cls) -> int:
+        return cls._infinity
     
-    @property
-    def negative_infinity(self) -> int:
-        return  1 - self._infinity
+    @classmethod
+    def negative_infinity(cls) -> int:
+        return  1 - cls._infinity
     
         
         

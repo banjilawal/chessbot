@@ -10,9 +10,13 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.BLUEPRINT.MODEL PACKAGE ===========#
 
 # Packages
+from .attack import *
+from .coord import *
+from .maneuver import *
 from .rank import *
 from .scalar import *
-from .searchable import *
+from .state import *
+from .vector import *
 
 # Modules
 from .blueprint import ModelBlueprint

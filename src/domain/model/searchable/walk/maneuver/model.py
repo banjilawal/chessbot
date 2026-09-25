@@ -52,7 +52,7 @@ class Maneuver(SearchableModel):
         """
         self._path = path
         self._traveler = traveler
-        self._benefit = benefit or NumericSetting().negative_infinity
+        self._benefit = benefit or NumericSetting.negative_infinity()
     
     @property
     def traveler(self) -> Token:

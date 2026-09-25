@@ -9,7 +9,6 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional
 
 
 class BoardPropertyValue:
@@ -33,46 +32,45 @@ class BoardPropertyValue:
 
      Super Class:
      """
-    DIMENSION = 8
-    _board_size: int
-    _number_of_rows: int
-    _number_of_columns: int
+    _DIMENSION = 8
+    _number_of_rows: int = _DIMENSION
+    _number_of_columns: int = _DIMENSION
     
-    def __init__(
-            self,
-            board_size: Optional[int] | None = None,
-            number_of_rows: Optional[int] | None = None,
-            number_of_columns: Optional[int] | None = None,
-    ):
-        """
-        Args:
-            board_size: Optional[int]
-            number_of_rows: Optional[int]
-            number_of_columns: Optional[int]
-        """
-        self._board_size = board_size or self.DIMENSION
-        self._number_of_rows = number_of_rows or self.DIMENSION
-        self._number_of_columns = number_of_columns or self.DIMENSION
+    # def __init__(
+    #         cls,
+    #         board_size: Optional[int] | None = None,
+    #         number_of_rows: Optional[int] | None = None,
+    #         number_of_columns: Optional[int] | None = None,
+    # ):
+    #     """
+    #     Args:
+    #         board_size: Optional[int]
+    #         number_of_rows: Optional[int]
+    #         number_of_columns: Optional[int]
+    #     """
+    #     cls._board_size = board_size or cls._DIMENSION
+    #     cls._number_of_rows = number_of_rows or cls._DIMENSION
+    #     cls._number_of_columns = number_of_columns or cls._DIMENSION
         
-    @property
-    def board_size(self) -> int:
-        return self._board_size
+    @classmethod
+    def board_size(cls) -> int:
+        return cls._number_of_rows * cls._number_of_columns
     
-    @property
-    def number_of_rows(self) -> int:
-        return self._number_of_rows
+    @classmethod
+    def num_rows(cls) -> int:
+        return cls._number_of_rows
     
-    @property
-    def number_of_columns(self) -> int:
-        return self._number_of_columns
+    @classmethod
+    def num_columns(cls) -> int:
+        return cls._number_of_columns
     
-    @property
-    def max_row_index(self) -> int:
-        return self._number_of_rows - 1
+    @classmethod
+    def max_row_index(cls) -> int:
+        return cls._number_of_rows - 1
     
-    @property
-    def max_column_index(self) -> int:
-        return self._number_of_columns - 1
+    @classmethod
+    def max_column_index(cls) -> int:
+        return cls._number_of_columns - 1
     
         
         

@@ -68,8 +68,8 @@ class NumberValidator:
                     - int between floor and ceiling
         Args:
             candidate: Any
-            floor: Optional[int]
-            ceiling: Optional[int]
+            floor: Optional[int] = 0
+            ceiling: Optional[int] = NumericSetting.ceiling
         Returns:
             ValidationResult[int]
         Raises:
@@ -83,7 +83,7 @@ class NumberValidator:
         if floor is None:
             floor = 0
         if ceiling is None:
-            ceiling = NumericSetting().ceiling
+            ceiling = NumericSetting.ceiling
          
         # Handle the case that the validator is not primed.
         validator_priming_result = self._priming_validator.execute(

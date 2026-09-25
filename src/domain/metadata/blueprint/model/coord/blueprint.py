@@ -1,0 +1,84 @@
+# src/domain/metadata/blueprint/model/coord/blueprint.py
+
+"""
+Module: domain.metadata.blueprint.model.coord.blueprint
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from typing import Optional, Type, cast
+
+from domain import Board, Coord, ModelBlueprint
+from err import CoordNullException
+
+
+class CoordBlueprint(ModelBlueprint[Coord]):
+    """
+     Role:
+        1.  Metadata
+
+    Responsibilities:
+        1.  Provides values for hydrating a Coord object.
+
+    Attributes:
+        row: int
+        column: int
+        board: Board
+        domain_class: Type[Coord]
+        domain_null_exception: CoordNullException
+        
+    Provides:
+
+     Super Class:
+        CartesianBlueprint
+     """
+    _row: int
+    _column: int
+    _board: Board
+    
+    def __init__(
+            self,
+            row: int,
+            column: int,
+            board: Board,
+            domain_class: Optional[Type[Coord]] | None = None,
+            domain_null_exception: Optional[CoordNullException]| None = None,
+    ):
+        """
+        Args:
+            row: int
+            column: int
+            board: Board
+            domain_class: Optional[Type[Coord]]
+            domain_null_exception: Optional[CoordNullException]
+        """
+        super().__init__(
+            domain_class=domain_class or Type[Coord],
+            domain_null_exception=domain_null_exception or CoordNullException(),
+        )
+        self._row = row
+        self._column = column
+        self._board = board
+    
+    @property
+    def row(self) -> int:
+        return self._row
+    
+    @property
+    def column(self) -> int:
+        return self._column
+    
+    @property
+    def board(self) -> Board:
+        return self._board
+        
+    @property
+    def domain_class(self) -> Type[Coord]:
+        return cast(Type[Coord], super().domain_class)
+    
+    @property
+    def domain_null_exception(self) -> CoordNullException:
+        return cast(CoordNullException, super().domain_null_exception)

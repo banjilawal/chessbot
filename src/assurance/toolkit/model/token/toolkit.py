@@ -49,8 +49,8 @@ class TokenValidatorToolkit(ModelValidatorToolkit[Token]):
         )
     
     @property
-    def helper(self) -> TokenHelperTable:
-        return cast(TokenHelperTable, super().helper)
+    def attribute(self) -> TokenHelperTable:
+        return cast(TokenHelperTable, super().attribute)
     
     @property
     def metadata(self) -> TokenManifest:

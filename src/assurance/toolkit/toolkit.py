@@ -50,7 +50,7 @@ class ValidatorToolkit(ABC, Generic[T]):
         self._metadata = metadata
     
     @property
-    def helper(self) -> AttributeHelperTable[T]:
+    def attribute(self) -> AttributeHelperTable[T]:
         return self._helper
     
     @property

@@ -101,7 +101,7 @@ class PawnTokenValidator:
                 )
             )
         # Handle the case that any id in the blueprint is flagged.
-        id_validation = self._toolkit.helper.blueprint_id_extractor.execute(
+        id_validation = self._toolkit.attribute.blueprint_id_extractor.execute(
             candidate=blueprint,
             blueprint_owner_name=blueprint.domain_class_name,
             blueprint_type=self._toolkit.metadata.types.blueprint,
@@ -119,7 +119,7 @@ class PawnTokenValidator:
                 )
             )
         # Handle the case that the team does not pass a validation check.
-        team_validation = self._toolkit.helper.team_validator.execute(
+        team_validation = self._toolkit.attribute.team_validator.execute(
             candidate=TeamValidationRequest(
                 id=IdFactory.next_id(class_name="TeamValidationRequest"),
                 item=TeamCarrier(model=blueprint.team),
@@ -155,7 +155,7 @@ class PawnTokenValidator:
                 )
             )
         # Handle the case that the formation does not pass a validation check.
-        formation_validation = self._toolkit.helper.priming_validator.execute(
+        formation_validation = self._toolkit.attribute.priming_validator.execute(
             candidate=blueprint.formation,
             target_model=Formation,
             null_exception=FormationNullException(),
@@ -172,7 +172,7 @@ class PawnTokenValidator:
                 )
             )
         # Handle the case that the readiness does not pass a validation check.
-        readiness_validation = self._toolkit.helper.priming_validator.execute(
+        readiness_validation = self._toolkit.attribute.priming_validator.execute(
             candidate=blueprint.readiness,
             target_model=CombatantReadiness,
             null_exception=CombatantReadinessNullException(),
@@ -189,7 +189,7 @@ class PawnTokenValidator:
                 )
             )
         # Handle the case that the deployment does not pass a validation check.
-        deployment_validation = self._toolkit.helper.priming_validator.execute(
+        deployment_validation = self._toolkit.attribute.priming_validator.execute(
             candidate=blueprint.deployment,
             target_model=TokenDeployment,
             null_exception=TokenDeploymentNullException(),
@@ -206,7 +206,7 @@ class PawnTokenValidator:
                 )
             )
         # Handle the case that the deployment does not pass a validation check.
-        promotion_state_validation = self._toolkit.helper.priming_validator.execute(
+        promotion_state_validation = self._toolkit.attribute.priming_validator.execute(
             candidate=blueprint.promotion_state,
             target_model=PromotionState,
             null_exception=PromotionStateNullException(),
@@ -223,7 +223,7 @@ class PawnTokenValidator:
                 )
             )
         # Handle the case that the home_square gets flagged.
-        home_detection = self._toolkit.helper.home_extractor.execute(
+        home_detection = self._toolkit.attribute.home_extractor.execute(
             blueprint=blueprint,
         )
         if home_detection.is_failure:

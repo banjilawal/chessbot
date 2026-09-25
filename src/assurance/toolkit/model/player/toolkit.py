@@ -49,8 +49,8 @@ class PlayerValidatorToolkit(ModelValidatorToolkit[Player]):
         )
     
     @property
-    def helper(self) -> PlayerHelperTable:
-        return cast(PlayerHelperTable, super().helper)
+    def attribute(self) -> PlayerHelperTable:
+        return cast(PlayerHelperTable, super().attribute)
     
     @property
     def metadata(self) -> PlayerManifest:

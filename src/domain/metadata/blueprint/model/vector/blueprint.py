@@ -1,0 +1,78 @@
+# src/domain/metadata/blueprint/model/vector/blueprint.py
+
+"""
+Module: domain.metadata.blueprint.model.vector.blueprint
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+
+from typing import Optional, Type, cast
+
+from domain import ModelBlueprint, Vector
+from err import VectorNullException
+
+
+
+class VectorBlueprint(ModelBlueprint[Vector]):
+    """
+     Role:
+        1.  Metadata
+
+    Responsibilities:
+        1.  Provides values for hydrating a Vector object.
+
+
+    Attributes:
+        domain_class: Type[Vector]
+        domain_null_exception: VectorModelNullException
+        x: int
+        y: int
+            
+    Provides:
+
+     Super Class:
+        CartesianBlueprint
+     """
+    _x: int
+    _y: int
+    
+    def __init__(
+            self,
+            x: int,
+            y: int,
+            domain_class: Optional[Type[Vector]] | None = None,
+            domain_null_exception: Optional[VectorNullException] | None = None,
+    ):
+        """
+        Args:
+            x: int
+            y: int
+            domain_class: Optional[Type[Vector]]
+            domain_null_exception: Optional[VectorModelNullException]
+        """
+        super().__init__(
+            domain_class=domain_class or Type[Vector],
+            domain_null_exception=domain_null_exception or VectorNullException(),
+        )
+        self._x = x
+        self._y = y
+    
+    @property
+    def x(self) -> int:
+        return self._x
+    
+    @property
+    def y(self) -> int:
+        return self._y
+        
+    @property
+    def domain_class(self) -> Type[Vector]:
+        return cast(type[Vector], super()._domain_class)
+    
+    @property
+    def domain_null_exception(self) -> VectorNullException:
+        return cast(VectorNullException, super().domain_null_exception)

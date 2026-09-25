@@ -49,8 +49,8 @@ class SquareValidatorToolkit(ModelValidatorToolkit[Square]):
         )
     
     @property
-    def helper(self) -> SquareHelperTable:
-        return cast(SquareHelperTable, super().helper)
+    def attribute(self) -> SquareHelperTable:
+        return cast(SquareHelperTable, super().attribute)
     
     @property
     def metadata(self) -> SquareManifest:

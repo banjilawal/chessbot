@@ -139,8 +139,7 @@ class IdentityService:
     @LoggingLevelRouter.monitor
     def validate_blueprint_id(
             self,
-            owner_blueprint: Blueprint,
-            owner_name: str,
+            owner_blueprint: Blueprint
     ) -> ValidationResult:
         """
         Verify that blueprint contains an id that's safe for its owning model.

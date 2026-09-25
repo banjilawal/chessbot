@@ -49,8 +49,8 @@ class RegisterValidatorToolkit(StructureValidatorToolkit[T], ABC, Generic[T]):
     
     
     @property
-    def helper(self) -> RegisterHelperTable[T]:
-        return cast(RegisterHelperTable, super().helper)
+    def attribute(self) -> RegisterHelperTable[T]:
+        return cast(RegisterHelperTable, super().attribute)
     
     @property
     def metadata(self) -> RegisterManifest[T]:

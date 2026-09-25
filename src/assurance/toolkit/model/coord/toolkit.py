@@ -49,8 +49,8 @@ class CoordValidatorToolkit(ModelValidatorToolkit[Coord]):
         )
     
     @property
-    def helper(self) -> CoordHelperTable:
-        return cast(CoordHelperTable, super().helper)
+    def attribute(self) -> CoordHelperTable:
+        return cast(CoordHelperTable, super().attribute)
     
     @property
     def metadata(self) -> CoordManifest:

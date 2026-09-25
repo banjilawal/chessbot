@@ -74,7 +74,7 @@ class Archetype(Enum):
         return obj
     
     WHITE = (GameColor.WHITE, 0, Scalar(1),)
-    BLACK = (GameColor.BLACK, (config.setting.board.dimension.config.number_of_rows - 1), Scalar(-1),)
+    BLACK = (GameColor.BLACK, (config.setting.board.dimension.config.num_rows - 1), Scalar(-1),)
     
     @property
     def color(self) -> GameColor:

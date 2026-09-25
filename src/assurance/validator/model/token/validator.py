@@ -81,12 +81,12 @@ class TokenValidator(ModelValidator[Token]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the request is null or the wrong type.
-        priming_validation = self.toolkit.helper.priming_validator.execute(
+        priming_result = self.toolkit.attribute.priming_validator.execute(
             candidate=candidate,
             target_model=TokenValidationRequest,
             null_exception=TokenValidationRequestNullException(),
         )
-        if priming_validation.is_failure:
+        if priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidatorException(
@@ -94,14 +94,14 @@ class TokenValidator(ModelValidator[Token]):
                     cls_name=self.__class__.__name__,
                     msg=TokenValidatorException.MSG,
                     err_code=TokenValidatorException.ERR_CODE,
-                    ex=priming_validation.exception,
+                    ex=priming_result.exception,
                 )
             )
         # --- Cast the priming_validator payload for additional tests. ---#
-        request = cast(TokenValidationRequest, priming_validation.payload)
+        request = cast(TokenValidationRequest, priming_result.payload)
         
         # Handle the case that the request payload is null or the wrong type.
-        carrier_validation = self.toolkit.helper.priming_validator.execute(
+        carrier_validation = self.toolkit.attribute.priming_validator.execute(
             candidate=request.item,
             target_model=self.toolkit.metadata.types.carrier,
             null_exception=self.toolkit.metadata.nulls.carrier,
