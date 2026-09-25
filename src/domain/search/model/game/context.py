@@ -13,7 +13,7 @@ from typing import Any, Dict, Optional
 
 from config import GameColor
 from domain import Arena, Game, GameState, Player, ModelContext
-from game import GameWin
+from game import GameResult
 
 
 class GameContext(ModelContext[Game]):
@@ -39,7 +39,7 @@ class GameContext(ModelContext[Game]):
     """
     
     _id: Optional[int]
-    _win: Optional[GameWin]
+    _win: Optional[GameResult]
     _arena: Optional[Arena]
     _player: Optional[Player]
     _state: Optional[GameState]
@@ -49,7 +49,7 @@ class GameContext(ModelContext[Game]):
     def __init__(
             self,
             id: Optional[int] | None = None,
-            win: Optional[GameWin] | None = None,
+            win: Optional[GameResult] | None = None,
             arena: Optional[Arena] | None = None,
             player: Optional[Player] | None = None,
             state: Optional[GameState] | None = None,
@@ -72,7 +72,7 @@ class GameContext(ModelContext[Game]):
         self._player_color = player_color
         
     @property
-    def win(self) -> Optional[GameWin]:
+    def win(self) -> Optional[GameResult]:
         return self._win
         
     @property

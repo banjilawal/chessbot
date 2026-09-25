@@ -13,7 +13,7 @@ from domain import Championship, Player, Team
 from game import Checkmate
 
 
-class GameWin:
+class GameResult:
     """
     Role:
         - Reporting

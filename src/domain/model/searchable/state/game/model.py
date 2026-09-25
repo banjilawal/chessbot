@@ -9,70 +9,82 @@ version: 1.0.0
 
 from typing import List, Optional
 
-from domain import Arena, Championship, GameState, CheckmateAttack, Player, StateModel
-from game import GameWin
+from domain import Arena, Championship, GamePlayerColorBinder, GameState, CheckmateAttack, Player, StateModel
+from game import GameResult
+from util import IdFactory
 
 
 class Game(StateModel):
     """
-    Role:Controller
+     Role:
+         - Data Holder
 
-    Responsibilities:
-    Interface players use to change the Arena's state.
+     Responsibilities:
+        2.  Hold the game's state while its being played.
 
-    Super Class:
-    None
+     Attributes:
+        id: int
+        arena: Arena
+        white_player: Player
+        black_player: Player
+        binder_id: Optional[int]
+        state: Optional[GameState]
+        result: Optional[GameResult]
 
-    # PROVIDES:
-    Game
+     Provides:
 
-    # LOCAL ATTRIBUTES:
-        *   id (int)
-        *   arena (Arena)
-        *   white_player (Player)
-        *   black_player (Player)
-
-    # INHERITED ATTRIBUTES:
-    None
-    """
+     Super Class:
+        Model
+     """
     _id: int
     _arena: Arena
-    _white_player: Player
-    _black_player: Player
     _state: GameState
-    _binder:
-    _win: Optional[GameWin]
+    _result: Optional[GameResult]
+    _binder: GamePlayerColorBinder
+    _binder_id: int
+
     
     
     def __init__(
             self,
             id: int,
+            arena: Arena,
             white_player: Player,
             black_player: Player,
-            arena: Arena
+            binder_id: Optional[int] | None = None,
+            state: Optional[GameState] | None = None,
+            result: Optional[GameResult] | None = None,
     ):
+        """
+        Args:
+            id: int
+            arena: Arena
+            white_player: Player
+            black_player: Player
+            binder_id: Optional[int]
+            state: Optional[GameState]
+            result: Optional[GameResult]
+        """
         super().__init__(id=id)
         self._arena = arena
-        self._state = GameState.NEW
-        self._white_player = white_player
-        self._black_player = black_player
-        self._win = None
+        self._result = result
+        self._state = state or GameState.NEW
+        self._binder_id = binder_id or IdFactory.next_id(class_name="GamePlayerColorBinder")
+        
+        self._binder = GamePlayerColorBinder(
+            primary=self,
+            id=self._binder_id,
+            white_player=white_player,
+            black_player=black_player,
+        )
     
     @property
     def arena(self) -> Arena:
         return self._arena
     
     @property
-    def white_player(self) -> Player:
-        return self._white_player
-    
-    @property
-    def black_player(self) -> Player:
-        return self._black_player
-    
-    @property
-    def players(self) -> List[Player]:
-        return [self._white_player, self._black_player]
+    def binder(self) -> GamePlayerColorBinder:
+        return self._binder
     
     @property
     def state(self) -> GameState:
@@ -83,8 +95,12 @@ class Game(StateModel):
         self._state = other
     
     @property
-    def win(self) -> Optional[GameWin]:
-        return self._win
+    def result(self) -> Optional[GameResult]:
+        return self._result
+    
+    @result.setter
+    def result(self, other:GameResult):
+        self._result = other
     
     def __eq__(self, other) -> bool:
         if other is self:

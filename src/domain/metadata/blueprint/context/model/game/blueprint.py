@@ -14,7 +14,7 @@ from typing import Any, Dict, Optional, Type, cast
 from config import GameColor
 from domain import Arena, GameContext, GameState, ModelContextBlueprint, Player
 from err import GameContextNullException
-from game import GameWin
+from game import GameResult
 
 
 class GameContextBlueprint(ModelContextBlueprint[GameContext]):
@@ -41,7 +41,7 @@ class GameContextBlueprint(ModelContextBlueprint[GameContext]):
         ModelContextBlueprint
      """
     
-    _win: Optional[GameWin]
+    _win: Optional[GameResult]
     _arena: Optional[Arena]
     _player: Optional[Player]
     _state: Optional[GameState]
@@ -86,7 +86,7 @@ class GameContextBlueprint(ModelContextBlueprint[GameContext]):
         return  cast(GameContextNullException, super().domain_null_exception)
     
     @property
-    def win(self) -> Optional[GameWin]:
+    def win(self) -> Optional[GameResult]:
         return self._win
     
     @property
