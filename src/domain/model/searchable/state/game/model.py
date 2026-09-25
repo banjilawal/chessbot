@@ -41,9 +41,7 @@ class Game(StateModel):
     _state: GameState
     _result: Optional[GameResult]
     _binder: GamePlayerColorBinder
-    _binder_id: int
-
-    
+    _temp_binder_id: int
     
     def __init__(
             self,
@@ -69,11 +67,14 @@ class Game(StateModel):
         self._arena = arena
         self._result = result
         self._state = state or GameState.NEW
-        self._binder_id = binder_id or IdFactory.next_id(class_name="GamePlayerColorBinder")
+        self._temp_binder_id = (
+                binder_id or
+                IdFactory.next_id(class_name="GamePlayerColorBinder")
+        )
         
         self._binder = GamePlayerColorBinder(
             primary=self,
-            id=self._binder_id,
+            id=self._temp_binder_id,
             white_player=white_player,
             black_player=black_player,
         )
@@ -101,6 +102,10 @@ class Game(StateModel):
     @result.setter
     def result(self, other:GameResult):
         self._result = other
+        
+    @property
+    def binder_id(self) -> int:
+        return self._binder.id
     
     def __eq__(self, other) -> bool:
         if other is self:
