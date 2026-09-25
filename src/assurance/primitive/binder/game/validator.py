@@ -251,14 +251,11 @@ class GamePlayerColorBinderValidator:
             )
         id = cast(int, id_validation.payload)
         game = cast(Game, game_carrier.entity)
-        white_player = player_dict["white"]
-        black_player = player_dict["black"]
-        
         binder = GamePlayerColorBinder(
             id=id,
             primary=game,
             white_player=player_dict["white"],
-            black_player=player_dict["black"]
+            black_player=player_dict["black"],
         )
         return ValidationResult.success(binder)
         

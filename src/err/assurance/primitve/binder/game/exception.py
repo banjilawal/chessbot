@@ -1,7 +1,7 @@
-# src/err/assurance/primitive/number/__init__.py
+# src/err/assurance/primitive/binder/game/exception.py
 
 """
-Module: errassurance.primitive.number.exception
+Module: err.assurance.primitive.binder.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,21 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ChessException
+from artifcat import MethodResultType
+from err import ValidatorException
 
 __all__ = [
-    # ======================# NUMBER_ERROR #======================#
-    "NumberException",
+    # ======================# GAME_PLAYER_COLOR_BINDER_VALIDATOR_FAILURE #======================#
+    "GamePlayerColorBinderValidatorException",
 ]
 
-# ======================# NUMBER_ERROR #======================#
-class NumberException(ChessException):
+# ======================# GAME_PLAYER_COLOR_BINDER_VALIDATOR_FAILURE #======================#
+class GamePlayerColorBinderValidatorException(ValidatorException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a number does not meet requirements.
+        1.  Indicating assurance by a GamePlayerColorBinderValidator
+            failed.
 
     Attributes:
         msg: Optional[str]
@@ -36,23 +38,23 @@ class NumberException(ChessException):
         cls_mthd: Optional[str]
         err_code: Optional[str]
         mthd_rslt_type: Optional[MethodResultType]
-            
+
     Provides:
 
     Super Class:
-        ChessException
+        ValidatorException
     """
-    MSG = "Number is out of range."
-    ERR_CODE = "NUMBER_ERROR"
+    MSG = "GamePlayerColorBinderValidator failed."
+    ERR_CODE = "GAME_PLAYER_COLOR_BINDER_VALIDATOR_FAILURE"
     
     def __init__(
             self,
             msg: Optional[str] | None = None,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
-            cls_mthd: Optional[str] | None = None,
-            cls_name: Optional[str] | None = None,
             ex: Optional[Exception] | None = None,
+            cls_name: Optional[str] | None = None,
+            cls_mthd: Optional[str] | None = None,
             err_code: Optional[str] | None = None,
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
@@ -69,6 +71,7 @@ class NumberException(ChessException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,
