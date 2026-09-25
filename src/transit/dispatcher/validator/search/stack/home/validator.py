@@ -29,9 +29,9 @@ class TokenHomeContextValidator(StackContextValidator[TokenHomeContext]):
     Attributes:
 
     Provides:
-        - def validate(
+        -   def validate(
                     candidate: Any,
-                    integrity_checker: HomeToolkit,
+                    validator: HomeToolkit,
             ) -> ValidationResult[Home]:
 
     Super Class:
@@ -42,7 +42,7 @@ class TokenHomeContextValidator(StackContextValidator[TokenHomeContext]):
     def execute(
             cls,
             candidate: Any,
-            integrity_checker: TokenHomeContextToolkit | None = None,
+            validator: TokenHomeContextToolkit | None = None,
     ) -> ValidationResult:
         """
         Certify a candidate is a HomeContext that is safe to use.
@@ -56,7 +56,7 @@ class TokenHomeContextValidator(StackContextValidator[TokenHomeContext]):
             2.  Otherwise, send the success result.
         Args:
             candidate: Any,
-            integrity_checker: HomeToolkit,
+            validator: HomeToolkit,
         Returns:
             ValidationResult[Home]
         Raises:
@@ -90,7 +90,7 @@ class TokenHomeContextValidator(StackContextValidator[TokenHomeContext]):
         # --- Cast the candidate into HomeContext for routing attribute testing ---#
         context = cast(TokenHomeContext, priming.payload)
         
-        # Certification for the search-by-id target.
+        # Validation for the search-by-id target.
         if context.id is not None:
             validation_result = toolkit.identity_service.validate_id(
                 candidate=context.id
@@ -109,7 +109,7 @@ class TokenHomeContextValidator(StackContextValidator[TokenHomeContext]):
             # On validation success forward the work product to the caller.
             return ValidationResult.success(context)
         
-        # Certification for the search-by-designation target.
+        # Validation for the search-by-designation target.
         if context.designation is not None:
             validation_result = toolkit.identity_service.validate_name(
                 candidate=context.designation
@@ -128,7 +128,7 @@ class TokenHomeContextValidator(StackContextValidator[TokenHomeContext]):
                 # On validation success forward the work product to the caller.
             return ValidationResult.success(context)
         
-        # Certification for the search-by-home_square target.
+        # Validation for the search-by-home_square target.
         if context.home_square is not None:
             validation_result = toolkit.square_validator.execute(
                 candidate=context.home_square
@@ -147,7 +147,7 @@ class TokenHomeContextValidator(StackContextValidator[TokenHomeContext]):
                 # On validation success forward the work product to the caller.
             return ValidationResult.success(context)
         
-        # Certification for the search-by-coord target.
+        # Validation for the search-by-coord target.
         if context.position is not None:
             validation_result = toolkit.coord_validator.execute(
                 candidate=context.position
@@ -166,7 +166,7 @@ class TokenHomeContextValidator(StackContextValidator[TokenHomeContext]):
                 # On validation success forward the work product to the caller.
             return ValidationResult.success(context)
     
-        # Certification for the search-by-team target.
+        # Validation for the search-by-team target.
         if context.team is not None:
             validation_result = toolkit.team_validator.execute(
                 candidate=context.position
@@ -185,7 +185,7 @@ class TokenHomeContextValidator(StackContextValidator[TokenHomeContext]):
                 # On validation success forward the work product to the caller.
             return ValidationResult.success(context)
         
-        # Certification for the search-by-rank target.
+        # Validation for the search-by-rank target.
         if context.rank is not None:
             validation_result = toolkit.rank_service.validator.execute(
                 candidate=context.rank
@@ -204,7 +204,7 @@ class TokenHomeContextValidator(StackContextValidator[TokenHomeContext]):
                 # On validation success forward the work product to the caller.
             return ValidationResult.success(context)
         
-        # Certification for the search-by-color target.
+        # Validation for the search-by-color target.
         if context.team_color is not None:
             validation_result = toolkit.priming_validator.execute(
                 candidate=context.team_color,
@@ -225,7 +225,7 @@ class TokenHomeContextValidator(StackContextValidator[TokenHomeContext]):
                 # On validation success forward the work product to the caller.
             return ValidationResult.success(context)
         
-        # Certification for the search-by-ransom target.
+        # Validation for the search-by-ransom target.
         if context.ransom is not None:
             validation_result = toolkit.number_validator.execute(
                 candidate=context.ransom,

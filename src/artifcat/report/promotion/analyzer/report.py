@@ -34,8 +34,8 @@ class RankLevelApproval(Report):
         is_denied: bool
 
     Provides:
-        - def approve(new_rank: Rank) -> RankElevationReport:
-        - def deny(exception: Exception) -> RankElevationReport:
+        -   def approve(new_rank: Rank) -> RankElevationReport:
+        -   def deny(exception: Exception) -> RankElevationReport:
         
     Super Class:
         Report

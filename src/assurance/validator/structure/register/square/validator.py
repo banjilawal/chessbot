@@ -38,7 +38,7 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
         toolkit: SquareRegisterValidatorToolkit
 
     Provides:
-        - def execute(candidate: Any) -> ValidationResult[SquareRegisterCarrier]:
+        -   def execute(candidate: Any) -> ValidationResult[SquareRegisterCarrier]:
 
     Super Class:
         RegisterValidator

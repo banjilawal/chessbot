@@ -32,7 +32,7 @@ class CombatantCarrier(TokenCarrier[CombatantToken]):
         entity: [Token|CombatantBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[CombatantBlueprint]
+        -   def extract_blueprint() -> Optional[CombatantBlueprint]
 
     Super Class:
         ModelCarrier

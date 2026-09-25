@@ -30,7 +30,7 @@ class ServiceRegistry:
         items: Dict[str, Dict[str, Microservice]]
     
     Provides:
-        - def domains(self) -> List[str]:
+        -   def domains(self) -> List[str]:
     
     Super Class:
         StateModel

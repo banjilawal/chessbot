@@ -14,7 +14,6 @@ from typing import Optional, cast
 from domain import Vector, VectorBlueprint
 from transit import ModelCarrier
 
-
 class VectorCarrier(ModelCarrier[Vector]):
     """
     Role:
@@ -32,7 +31,7 @@ class VectorCarrier(ModelCarrier[Vector]):
         entity: [Vector|VectorBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[VectorBlueprint]
+        -   def extract_blueprint() -> Optional[VectorBlueprint]
 
     Super Class:
         ModelCarrier

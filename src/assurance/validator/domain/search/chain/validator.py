@@ -33,7 +33,7 @@ class ChainContextValidator(ContextValidator[T], ABC, Generic[T]):
         toolkit: ValidatorToolkit[T]
 
     Provides:
-        - def execute(candidate: Any) -> ValidationResult[T]:
+        -   def execute(candidate: Any) -> ValidationResult[T]:
 
     Super Class:
         ContextIntegrityChecker

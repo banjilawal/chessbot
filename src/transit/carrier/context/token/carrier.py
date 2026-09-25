@@ -32,7 +32,7 @@ class TokenContextCarrier(ContextCarrier[TokenContext]):
         entity: [Token|TokenContextBlueprint]
 
     Provides:
-        - def extract_ContextBlueprint() -> Optional[TokenContextBlueprint]
+        -   def extract_ContextBlueprint() -> Optional[TokenContextBlueprint]
 
     Super Class:
         ContextCarrier

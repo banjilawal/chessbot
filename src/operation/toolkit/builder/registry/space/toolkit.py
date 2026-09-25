@@ -56,4 +56,4 @@ class SpaceReservoirBuilderToolkit(BuilderToolkit, Generic[T]):
         
     @property
     def root_certifier(self) -> SpaceReservoirCertifier[T]:
-        return cast(SpaceReservoirCertifier[T], super().integrity_checker)
+        return cast(SpaceReservoirCertifier[T], super().validator)

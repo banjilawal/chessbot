@@ -54,5 +54,5 @@ class CoordBuilderToolkit(ModelBuilderToolkit[Coord]):
     
     @property
     def root_certifier(self) -> CoordRootCertifier:
-        return cast(CoordRootCertifier, super().integrity_checker)
+        return cast(CoordRootCertifier, super().validator)
     

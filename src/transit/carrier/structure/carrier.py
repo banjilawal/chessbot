@@ -37,7 +37,7 @@ class StructureCarrier(EntityCarrier[T], ABC, Generic[T]):
 
 
     Provides:
-        - def extract_blueprint() -> Optional[StructureBlueprint[T]]
+        -   def extract_blueprint() -> Optional[StructureBlueprint[T]]
 
     Super Class:
         EntityCarrier

@@ -54,5 +54,5 @@ class PlayerBuilderToolkit(ModelBuilderToolkit[Player]):
     
     @property
     def root_certifier(self) -> PlayerRootCertifier:
-        return cast(PlayerRootCertifier, super().integrity_checker)
+        return cast(PlayerRootCertifier, super().validator)
     

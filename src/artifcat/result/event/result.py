@@ -34,9 +34,9 @@ class EventResult(Result[Event]):
         is_failure: bool
 
     Provides:
-        - def success(r) -> EventResult[EventEvent]
-        - def failure(exception: Exception) -> EventResult[EventEvent]
-        - def timed_out(exception: Exception) -> EventResult[EventEvent]
+        -   def success(r) -> EventResult[EventEvent]
+        -   def failure(exception: Exception) -> EventResult[EventEvent]
+        -   def timed_out(exception: Exception) -> EventResult[EventEvent]
         
     Super Class:
         Result

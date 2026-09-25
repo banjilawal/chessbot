@@ -35,9 +35,9 @@ class TurnResult(Result[T], Generic[T]):
         is_failure: bool
 
     Provides:
-        - def success(payload: T) -> DeletionResult[T]
-        - def failure(exception: Exception) -> DeletionResult[T]
-        - def timed_out(exception: Exception) -> ManeuverResult[T]:
+        -   def success(payload: T) -> DeletionResult[T]
+        -   def failure(exception: Exception) -> DeletionResult[T]
+        -   def timed_out(exception: Exception) -> ManeuverResult[T]:
 
     Super Class:
         Result

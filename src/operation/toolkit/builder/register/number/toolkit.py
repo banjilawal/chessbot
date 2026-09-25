@@ -55,5 +55,5 @@ class NumberRegisterBuilderToolkit(RegisterBuilderToolkit[NumberRegister]):
     
     @property
     def root_certifier(self) -> NumberRegisterRootCertifier:
-        return cast(NumberRegisterRootCertifier, super().integrity_checker)
+        return cast(NumberRegisterRootCertifier, super().validator)
     

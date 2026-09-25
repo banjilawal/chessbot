@@ -53,4 +53,4 @@ class AxisReservoirBuilderToolkit(SpaceReservoirBuilderToolkit[AxisReservoir]):
         
     @property
     def root_certifier(self) -> AxisReservoirRootCertifier:
-        return cast(AxisReservoirRootCertifier, super().integrity_checker)
+        return cast(AxisReservoirRootCertifier, super().validator)

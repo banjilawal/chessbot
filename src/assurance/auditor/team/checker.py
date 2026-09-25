@@ -31,7 +31,7 @@ class TeamConsistencyAuditor(ConsistencyAuditor[Team]):
     Attributes:
 
     Provides:
-        - def validate(candidate: Any, toolkit: TeamToolkit) -> ValidationResult[Team]:
+        -   def validate(candidate: Any, toolkit: TeamToolkit) -> ValidationResult[Team]:
 
     Super Class:
         Consistency

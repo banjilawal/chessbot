@@ -32,7 +32,7 @@ class PathCarrier(ModelCarrier[Path]):
         entity: [Path|PathBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[PathBlueprint]
+        -   def extract_blueprint() -> Optional[PathBlueprint]
 
     Super Class:
         ModelCarrier

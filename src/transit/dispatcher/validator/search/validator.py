@@ -30,26 +30,26 @@ class ContextValidator(Validator[T], ABC, Generic[T]):
         1.  Ensure a Context instance is safe before use.
 
     Attributes:
-        integrity_checker: ContextChecker[T]
+        validator: ContextChecker[T]
         
     Provides:
-        - execute(self, candidate: Any) -> ValidationResult[T]
+        -   def execute(self, candidate: Any) -> ValidationResult[T]
 
     Super Class:
         Validator
     """
     
-    def __init__(self, integrity_checker: ContextValidator[T]):
+    def __init__(self, validator: ContextValidator[T]):
         """
         Args:
-            integrity_checker: ContextChecker
+            validator: ContextChecker
         """
-        super().__init__(integrity_checker=integrity_checker)
+        super().__init__(validator=validator)
     
     
     @property
-    def integrity_checker(self) -> ContextValidator[T]:
-        return cast(ContextValidator[T], super().integrity_checker)
+    def validator(self) -> ContextValidator[T]:
+        return cast(ContextValidator[T], super().validator)
    
     
     @abstractmethod

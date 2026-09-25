@@ -34,7 +34,7 @@ class TokenValidator(ModelValidator[Token]):
         toolkit: TokenValidatorToolkit
 
     Provides:
-        - def execute(candidate: TokenValidationRequest) ->ValidationResult[TokenCarrier]:
+        -   def execute(candidate: TokenValidationRequest) ->ValidationResult[TokenCarrier]:
 
     Super Class:
         ModelValidator

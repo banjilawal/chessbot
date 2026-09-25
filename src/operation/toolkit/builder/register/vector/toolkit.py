@@ -55,5 +55,5 @@ class VectorRegisterBuilderToolkit(RegisterBuilderToolkit[VectorRegister]):
     
     @property
     def root_certifier(self) -> VectorRegisterCertifier:
-        return cast(VectorRegisterCertifier, super().integrity_checker)
+        return cast(VectorRegisterCertifier, super().validator)
     

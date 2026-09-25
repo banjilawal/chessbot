@@ -34,7 +34,7 @@ class PlayerCarrier(ModelCarrier[T], Generic[T]):
         entity: [Player|PlayerBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[PlayerBlueprint]
+        -   def extract_blueprint() -> Optional[PlayerBlueprint]
 
     Super Class:
         ModelCarrier

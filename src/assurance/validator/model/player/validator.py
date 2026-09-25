@@ -33,7 +33,7 @@ class PlayerValidator(ModelValidator[Player]):
         toolkit: PlayerValidatorToolkit
 
     Provides:
-        - def execute(candidate: PlayerValidationRequest) ->ValidationResult[PlayerCarrier]:
+        -   def execute(candidate: PlayerValidationRequest) ->ValidationResult[PlayerCarrier]:
 
     Super Class:
         ModelValidator

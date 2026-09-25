@@ -55,4 +55,4 @@ class SpaceBuilderToolkit(BuilderToolkit, Generic[T]):
         
     @property
     def root_certifier(self) -> SpaceCertifier[T]:
-        return cast(SpaceCertifier[T], super().integrity_checker)
+        return cast(SpaceCertifier[T], super().validator)

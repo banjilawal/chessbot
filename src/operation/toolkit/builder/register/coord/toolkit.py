@@ -55,5 +55,5 @@ class CoordRegisterBuilderToolkit(RegisterBuilderToolkit[CoordRegister]):
     
     @property
     def root_certifier(self) -> CoordRegisterRootCertifier:
-        return cast(CoordRegisterRootCertifier, super().integrity_checker)
+        return cast(CoordRegisterRootCertifier, super().validator)
     

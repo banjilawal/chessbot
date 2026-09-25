@@ -33,7 +33,7 @@ class CheckWarningCarrier(AttackCarrier[CheckWarning]):
         entity: [Attack|CheckAttackWarningBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[CheckAttackWarningBlueprint]
+        -   def extract_blueprint() -> Optional[CheckAttackWarningBlueprint]
 
     Super Class:
         AttackCarrier

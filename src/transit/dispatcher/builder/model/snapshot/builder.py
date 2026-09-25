@@ -35,7 +35,7 @@ class SnapshotBuilder(ModelBuilder[Snapshot]):
             builder_toolkit: Optional[SnapshotBuilderToolkit]
 
     Provides:
-        - def execute(self, blueprint: SnapshotBlueprint) -> BuildResult[Snapshot]
+        -   def execute(self, blueprint: SnapshotBlueprint) -> BuildResult[Snapshot]
 
      Super Class:
          ModelBuilder
@@ -76,7 +76,7 @@ class SnapshotBuilder(ModelBuilder[Snapshot]):
         method = f"{self.__class__.__name__}.build"
         
         # Handle the case that the blueprint is not certified safe.
-        blueprint_validation = self.builder_toolkit.integrity_checker.execute(
+        blueprint_validation = self.builder_toolkit.validator.execute(
             candidate=blueprint
         )
         if blueprint_validation.is_failure:

@@ -36,7 +36,7 @@ class QuadrantReservoirRootChecker(SpaceReservoirChecker[QuadrantReservoir]):
         toolkit: SpaceToolkit
 
     Provides:
-        - def execute(candidate: Any, toolkit: SpaceToolkit,) -> ValidationResult[Blueprint[T]]:
+        -   def execute(candidate: Any, toolkit: SpaceToolkit,) -> ValidationResult[Blueprint[T]]:
 
     Super Class:
     """

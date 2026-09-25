@@ -33,7 +33,7 @@ class BoardValidator(ModelValidator[Board]):
         toolkit: BoardValidatorToolkit
 
     Provides:
-        - def execute(candidate: BoardValidationRequest) ->ValidationResult[BoardCarrier]:
+        -   def execute(candidate: BoardValidationRequest) ->ValidationResult[BoardCarrier]:
 
     Super Class:
         ModelValidator

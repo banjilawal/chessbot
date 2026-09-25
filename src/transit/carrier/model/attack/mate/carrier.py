@@ -33,7 +33,7 @@ class CheckmateAttackCarrier(AttackCarrier[CheckmateAttack]):
         entity: [CheckmateAttack | CheckmateAttackBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[CheckmateAttackBlueprint]
+        -   def extract_blueprint() -> Optional[CheckmateAttackBlueprint]
 
     Super Class:
         AttackCarrier

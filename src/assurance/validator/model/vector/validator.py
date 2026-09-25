@@ -33,7 +33,7 @@ class VectorValidator(ModelValidator[Vector]):
         toolkit: VectorValidatorToolkit
 
     Provides:
-        - def execute(candidate: VectorValidationRequest) ->ValidationResult[VectorCarrier]:
+        -   def execute(candidate: VectorValidationRequest) ->ValidationResult[VectorCarrier]:
 
     Super Class:
         ModelValidator

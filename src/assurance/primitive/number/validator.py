@@ -33,7 +33,7 @@ class NumberValidator:
     Attributes:
 
     Provides:
-        - def validate(
+        -   def validate(
                     candidate: Any,
                     floor: Optional[int],
                     ceiling: Optional[int],

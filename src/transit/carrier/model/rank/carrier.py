@@ -32,7 +32,7 @@ class RankCarrier(ModelCarrier[Rank]):
         entity: [Rank|RankBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[RankBlueprint]
+        -   def extract_blueprint() -> Optional[RankBlueprint]
 
     Super Class:
         ModelCarrier

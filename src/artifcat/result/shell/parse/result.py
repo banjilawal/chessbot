@@ -35,10 +35,10 @@ class ParseResult(ShellResult[Command]):
         nothing_to_parse: bool
 
     Provides:
-        - def success(payload: T) -> ParseResu[Command]
-        - def failure(exception: Exception) -> ParseResu[Command]
-        - def timed_out(exception: Exception) -> ParseResult
-        - def nothing_to_parse() -> ParseResult
+        -   def success(payload: T) -> ParseResu[Command]
+        -   def failure(exception: Exception) -> ParseResu[Command]
+        -   def timed_out(exception: Exception) -> ParseResult
+        -   def nothing_to_parse() -> ParseResult
 
     Super Class:
         ShellResult

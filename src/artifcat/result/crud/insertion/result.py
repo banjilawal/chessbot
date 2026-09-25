@@ -32,9 +32,9 @@ class InsertionResult(CrudResult[bool]):
         is_failure: bool
 
     Provides:
-        - def success(payload: T) -> InsertionResu[T]
-        - def failure(exception: Exception) -> InsertionResu[T]
-        - def timed_out(exception: Exception) -> InsertionResult[T]
+        -   def success(payload: T) -> InsertionResu[T]
+        -   def failure(exception: Exception) -> InsertionResu[T]
+        -   def timed_out(exception: Exception) -> InsertionResult[T]
 
     Super Class:
         Result

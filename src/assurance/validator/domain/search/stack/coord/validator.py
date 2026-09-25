@@ -32,7 +32,7 @@ class CoordContextValidator(ContextValidator[CoordSearchContext]):
         toolkit: CoordValidatorToolkit
 
     Provides:
-        - def execute(candidate: Any) -> ValidationResult[CoordContext]:
+        -   def execute(candidate: Any) -> ValidationResult[CoordContext]:
 
     Super Class:
         StackContextChecker

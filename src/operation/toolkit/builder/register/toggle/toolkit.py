@@ -55,5 +55,5 @@ class CartesianToggleRegisterBuilderToolkit(RegisterBuilderToolkit[CartesianTogg
     
     @property
     def root_certifier(self) -> CartesianToggleRegisterCertifier:
-        return cast(CartesianToggleRegisterCertifier, super().integrity_checker)
+        return cast(CartesianToggleRegisterCertifier, super().validator)
     

@@ -32,7 +32,7 @@ class QueenCarrier(RankCarrier[Queen]):
         entity: [Rank|QueenBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[QueenBlueprint]
+        -   def extract_blueprint() -> Optional[QueenBlueprint]
 
     Super Class:
         ModelCarrier

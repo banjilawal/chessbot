@@ -57,4 +57,4 @@ class SouthwestQuadrantBuilderToolkit(
         
     @property
     def root_certifier(self) -> SouthwestQuadrantRootCertifier:
-        return cast(SouthwestQuadrantRootCertifier, super().integrity_checker)
+        return cast(SouthwestQuadrantRootCertifier, super().validator)

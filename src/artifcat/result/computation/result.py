@@ -33,9 +33,9 @@ class ComputationResult(Result[T], Generic[T]):
         is_failure: bool
 
     Provides:
-        - def success(payload: T) -> ComputationResult
-        - def failure(exception: Exception) -> ComputationResult
-        - def timed_out(exception: Exception) -> ComputationResult
+        -   def success(payload: T) -> ComputationResult
+        -   def failure(exception: Exception) -> ComputationResult
+        -   def timed_out(exception: Exception) -> ComputationResult
         
     Super Class:
         Result

@@ -33,9 +33,9 @@ class Team(StateModel):
         roster: TokenDatabase
         
     Provides:
-        - def is_ready_to_play() -> bool
-        - def is_waiting_to_play() -> bool
-        - def is_not_ready_to_play() -> bool
+        -   def is_ready_to_play() -> bool
+        -   def is_waiting_to_play() -> bool
+        -   def is_not_ready_to_play() -> bool
         
     Super Class
     """

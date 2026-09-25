@@ -26,7 +26,7 @@ class VectorTransform(Computation[CartesianToggle]):
             permitter: Optional[VectorTransformPermitter]
             
     Provides:
-        - def execute(self, request: VectorTransformRequest) -> ComputationResult[CartesianToggle]
+        -   def execute(self, request: VectorTransformRequest) -> ComputationResult[CartesianToggle]
 
     Super Class:
         Computation

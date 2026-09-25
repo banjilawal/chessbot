@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import ArenaValidatorException
 from domain.model import Arena
-from assurance import ArenaIntegrityChecker
+from assurance import ArenaValidator
 from artifcat import ValidationResult
 from util import LoggingLevelRouter
 from transit.dispatcher.validator import ModelValidationDispatcher
@@ -28,10 +28,10 @@ class ArenaValidationDispatcher(ModelValidationDispatcher[Arena]):
         1.  Ensure a Arena instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        integrity_checker: ArenaIntegrityChecker
+        validator: ArenaValidator
 
     Provides:
-        - execute(candidate: Any) -> ValidationResult
+        -   def execute(candidate: Any) -> ValidationResult
 
     Super Class:
         ModelValidator
@@ -39,13 +39,13 @@ class ArenaValidationDispatcher(ModelValidationDispatcher[Arena]):
     
     def __init__(
             self,
-            integrity_checker: ArenaIntegrityChecker | None = ArenaIntegrityChecker(),
+            validator: ArenaValidator | None = ArenaValidator(),
     ):
-        super().__init__(integrity_checker=integrity_checker)
+        super().__init__(validator=validator)
         
     @property
-    def integrity_checker(self) -> ArenaIntegrityChecker:
-        return cast(ArenaIntegrityChecker, super().integrity_checker)
+    def validator(self) -> ArenaValidator:
+        return cast(ArenaValidator, super().validator)
     
 
     @LoggingLevelRouter.monitor
@@ -55,7 +55,7 @@ class ArenaValidationDispatcher(ModelValidationDispatcher[Arena]):
 
         Action:
             1.  Send an exception chain in the ValidationResult if the candidate fails a
-                integrity_checker test..
+                validator test..
             2.  Otherwise, cast the payload into a Arena and send in the success result.
                 success result.
         Args:
@@ -68,8 +68,8 @@ class ArenaValidationDispatcher(ModelValidationDispatcher[Arena]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        certification = self.integrity_checker.execute(candidate)
-        if certification.is_failure:
+        validation = self.validator.execute(candidate)
+        if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ArenaValidatorException(
@@ -77,13 +77,13 @@ class ArenaValidationDispatcher(ModelValidationDispatcher[Arena]):
                     cls_name=self.__class__.__name__,
                     msg=ArenaValidatorException.MSG,
                     err_code=ArenaValidatorException.ERR_CODE,
-                    ex=certification.exception,
+                    ex=validation.exception,
                 )
             )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(
             cast(
-                self.integrity_checker.bundle.model,
-                certification.payload
+                self.validator.bundle.model,
+                validation.payload
             )
         )

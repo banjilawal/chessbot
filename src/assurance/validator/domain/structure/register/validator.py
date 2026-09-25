@@ -35,7 +35,7 @@ class RegisterValidator(Validator, Generic[T]):
         toolkit: RegisterToolkit
 
     Provides:
-        - def execute(self, candidate: Any,) -> ValidationResult[T]
+        -   def execute(self, candidate: Any,) -> ValidationResult[T]
 
     Super Class:
         RootValidator

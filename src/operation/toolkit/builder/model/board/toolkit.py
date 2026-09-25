@@ -54,5 +54,5 @@ class BoardBuilderToolkit(ModelBuilderToolkit[Board]):
     
     @property
     def root_certifier(self) -> BoardRootCertifier:
-        return cast(BoardRootCertifier, super().integrity_checker)
+        return cast(BoardRootCertifier, super().validator)
     

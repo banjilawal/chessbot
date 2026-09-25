@@ -54,5 +54,5 @@ class TokenBuilderToolkit(ModelBuilderToolkit[Token]):
     
     @property
     def root_certifier(self) -> TokenValidator:
-        return cast(TokenValidator, super().integrity_checker)
+        return cast(TokenValidator, super().validator)
     

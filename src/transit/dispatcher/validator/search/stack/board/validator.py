@@ -106,7 +106,7 @@ class BoardContextValidator(ContextValidator[Board]):
             )
         # --- Route to the appropriate validation branch. ---#
         
-        # Certification for the search-by-id target.
+        # Validation for the search-by-id target.
         if context.id is not None:
             validation = identity_service.validate_id(candidate=context.id)
             if validation.is_failure:
@@ -117,10 +117,10 @@ class BoardContextValidator(ContextValidator[Board]):
                         ex=validator.exception
                     )
                 )
-            # On certification success return the id_BoardContext in the ValidationResult.
+            # On validation success return the id_BoardContext in the ValidationResult.
             return ValidationResult.success(payload=context)
         
-        # Certification for the search-by-arena target.
+        # Validation for the search-by-arena target.
         if context.arena is not None:
             validation = arena_service.execute.search_service(context.arena)
             if validation.is_failure:
@@ -131,7 +131,7 @@ class BoardContextValidator(ContextValidator[Board]):
                         ex=validator.exception
                     )
                 )
-            # On certification success return the arena_BoardContext in the ValidationResult.
+            # On validation success return the arena_BoardContext in the ValidationResult.
             return ValidationResult.success(payload=context)
         
         # Return the exception chain if there is no validation route for the context.

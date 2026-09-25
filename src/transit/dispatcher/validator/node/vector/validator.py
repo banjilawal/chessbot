@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from assurance import NodeValidator, VectorNodeIntegrityChecker
+from assurance import NodeValidator, VectorNodeValidator
 from artifcat import ValidationResult
 from util import LoggingLevelRouter
 
@@ -28,25 +28,25 @@ class VectorNodeValidator(NodeValidator):
         1.  Ensure a Node instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        integrity_checker: VectorNodeIntegrityChecker
+        validator: VectorNodeValidator
 
     Provides:
-        - execute(self, candidate: Any) -> ValidationResult
+        -   def execute(self, candidate: Any) -> ValidationResult
 
     Super Class:
         Validator
     """
     
-    def __init__(self, integrity_checker: VectorNodeIntegrityChecker):
+    def __init__(self, validator: VectorNodeValidator):
         """
         Args:
-            integrity_checker: VectorNodeIntegrityChecker
+            validator: VectorNodeValidator
         """
-        super().__init__(integrity_checker=integrity_checker)
+        super().__init__(validator=validator)
     
     @property
-    def integrity_checker(self) -> VectorNodeIntegrityChecker:
-        return cast(VectorNodeIntegrityChecker, super().integrity_checker)
+    def validator(self) -> VectorNodeValidator:
+        return cast(VectorNodeValidator, super().validator)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult:

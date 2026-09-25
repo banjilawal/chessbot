@@ -31,7 +31,7 @@ class Decision(ABC, Generic[T]):
         is_granted
         
     Provides:
-        - def deny(exception: Exception) -> Exception
+        -   def deny(exception: Exception) -> Exception
 
     Super Class:
     """

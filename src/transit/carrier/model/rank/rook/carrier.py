@@ -32,7 +32,7 @@ class RookCarrier(RankCarrier[Rook]):
         entity: [Rank|RookBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[RookBlueprint]
+        -   def extract_blueprint() -> Optional[RookBlueprint]
 
     Super Class:
         ModelCarrier

@@ -34,7 +34,7 @@ class BoardBinderConsistencyAuditor(ConsistencyAuditor[BoardBinder]):
     Attributes:
 
     Properties:
-        - def validate(
+        -   def validate(
                     candidate: Any,
                     toolkit : BoardTeamBinderToolkit,
             ) -> ValidationResult[BoardTeamBinder]:

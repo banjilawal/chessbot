@@ -27,26 +27,26 @@ class SquareContextValidator(StackContextValidator[SquareSearchContext]):
         1.  Ensure a SquareContext instance is safe before use.
 
     Attributes:
-        integrity_checker: SquareContextChecker
+        validator: SquareContextChecker
 
     Provides:
-        - execute(self, candidate: Any) -> ValidationResult[SquareContext]
+        -   def execute(self, candidate: Any) -> ValidationResult[SquareContext]
 
     Super Class:
         ContextValidator
     """
     
-    def __init__(self, integrity_checker: SquareContextValidator):
+    def __init__(self, validator: SquareContextValidator):
         """
         Args:
-            integrity_checker: SquareContextChecker
+            validator: SquareContextChecker
         """
-        super().__init__(integrity_checker=integrity_checker)
+        super().__init__(validator=validator)
     
     
     @property
-    def integrity_checker(self) -> SquareContextValidator:
-        return cast(SquareContextValidator, super().integrity_checker)
+    def validator(self) -> SquareContextValidator:
+        return cast(SquareContextValidator, super().validator)
     
     
     @LoggingLevelRouter.monitor
@@ -55,7 +55,7 @@ class SquareContextValidator(StackContextValidator[SquareSearchContext]):
         Certify a candidate is a SquareContext that is safe to use.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if integrity_checker
+            1.  Send an exception chain in the ValidationResult if validator
                 returns a failure.
             2.  Otherwise, send the success result.
         Args:
@@ -67,8 +67,8 @@ class SquareContextValidator(StackContextValidator[SquareSearchContext]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that integrity_checker flags the candidate.
-        validation = self.integrity_checker.execute(candidate=candidate)
+        # Handle the case that validator flags the candidate.
+        validation = self.validator.execute(candidate=candidate)
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

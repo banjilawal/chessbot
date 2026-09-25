@@ -32,7 +32,7 @@ class SquareRegisterCarrier(RegisterCarrier[SquareRegister]):
         entity: [SquareRegister | SquareRegisterBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[SquareRegisterBlueprint]
+        -   def extract_blueprint() -> Optional[SquareRegisterBlueprint]
 
     Super Class:
         RegisterCarrier

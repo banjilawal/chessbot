@@ -32,7 +32,7 @@ class BoardContextCarrier(ContextCarrier[BoardContext]):
         entity: [Board|BoardContextBlueprint]
 
     Provides:
-        - def extract_ContextBlueprint() -> Optional[BoardContextBlueprint]
+        -   def extract_ContextBlueprint() -> Optional[BoardContextBlueprint]
 
     Super Class:
         ContextCarrier

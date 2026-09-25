@@ -54,4 +54,4 @@ class RegisterBuilderToolkit(BuilderToolkit, Generic[T]):
         
     @property
     def root_certifier(self) -> [RegisterCertifier[T]]:
-        return cast([RegisterCertifier[T]], super().integrity_checker)
+        return cast([RegisterCertifier[T]], super().validator)

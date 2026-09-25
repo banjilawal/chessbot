@@ -54,4 +54,4 @@ class ModelBuilderToolkit(BuilderToolkit, Generic[T]):
         
     @property
     def root_certifier(self) -> [ModelValidator[T]]:
-        return cast([ModelValidator[T]], super().integrity_checker)
+        return cast([ModelValidator[T]], super().validator)

@@ -32,7 +32,7 @@ class TeamCarrier(ModelCarrier[Team]):
         entity: [Team|TeamBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[TeamBlueprint]
+        -   def extract_blueprint() -> Optional[TeamBlueprint]
 
     Super Class:
         ModelCarrier

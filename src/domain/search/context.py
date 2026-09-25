@@ -32,7 +32,7 @@ class Context(ABC, Generic[T]):
         max_size: int
         
     Provides:
-        - def to_dict() -> Dict[str, Any]
+        -   def to_dict() -> Dict[str, Any]
         
     Super Class:
     """

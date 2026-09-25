@@ -53,4 +53,4 @@ class QuadrantReservoirBuilderToolkit(SpaceReservoirBuilderToolkit[QuadrantReser
         
     @property
     def root_certifier(self) -> QuadrantReservoirRootCertifier:
-        return cast(QuadrantReservoirRootCertifier, super().integrity_checker)
+        return cast(QuadrantReservoirRootCertifier, super().validator)

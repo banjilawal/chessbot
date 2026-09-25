@@ -32,7 +32,7 @@ class KingCarrier(RankCarrier[King]):
         entity: [Rank|KingBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[KingBlueprint]
+        -   def extract_blueprint() -> Optional[KingBlueprint]
 
     Super Class:
         ModelCarrier

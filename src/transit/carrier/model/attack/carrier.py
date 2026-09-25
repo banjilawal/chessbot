@@ -34,7 +34,7 @@ class AttackCarrier(ModelCarrier[T], Generic[T]):
         entity: [Attack|AttackBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[AttackBlueprint]
+        -   def extract_blueprint() -> Optional[AttackBlueprint]
 
     Super Class:
         ModelCarrier

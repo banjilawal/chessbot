@@ -36,7 +36,7 @@ class TokenContextValidator(ContextValidator[TokenSearchContext]):
         toolkit: TokenValidatorToolkit
 
     Provides:
-        - def execute(candidate: Any) -> ValidationResult[TokenContext]:
+        -   def execute(candidate: Any) -> ValidationResult[TokenContext]:
 
     Super Class:
         StackContextChecker

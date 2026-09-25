@@ -31,10 +31,10 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
             before use.
 
     Attributes:
-        carrier_validator: CartesianToggleRegisterIntegrityChecker
+        carrier_validator: CartesianToggleRegisterValidator
 
     Properties:
-        - def validate(
+        -   def validate(
                     candidate: Any,
                     toolkit : CartesianToggleToolkit,
             ) -> ValidationResult[CartesianToggle]:
@@ -45,13 +45,13 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
     
     def __init__(
             self,
-            integrity_checker: CartesianToggleIntegrityChecker | None = None,
+            validator: CartesianToggleValidator | None = None,
     ):
-        super().__init__(integrity_checker=integrity_checker)
+        super().__init__(validator=validator)
         
     @property
-    def integrity_checker(self) -> CartesianToggleIntegrityChecker:
-        return cast(CartesianToggleIntegrityChecker, super().integrity_checker)
+    def validator(self) -> CartesianToggleValidator:
+        return cast(CartesianToggleValidator, super().validator)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[CartesianToggle]:
@@ -76,12 +76,12 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
         
         
         # Handle the case that the validator is not primed.
-        certification = self.integrity_checker.execute(
+        validation = self.validator.execute(
             candidate=candidate,
-            target_model=self.integrity_checker.ruleset.model,
-            context_null_exception=self.integrity_checker.ruleset.domain_null_exception,
+            target_model=self.validator.ruleset.model,
+            context_null_exception=self.validator.ruleset.domain_null_exception,
         )
-        if certification.is_failure:
+        if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 CartesianToggleValidatorException(
@@ -89,10 +89,10 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
                     cls_name=self.__class__.__name__,
                     msg=CartesianToggleValidatorException.MSG,
                     err_code=CartesianToggleValidatorException.ERR_CODE,
-                    ex=certification.exception
+                    ex=validation.exception
                 )
             )
         # --- Cast candidate to a CartesianToggle for additional tests. ---#
-        return ValidationResult.success(cast(CartesianToggle, certification.payload))
+        return ValidationResult.success(cast(CartesianToggle, validation.payload))
 
             

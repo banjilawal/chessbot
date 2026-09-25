@@ -32,7 +32,7 @@ class CoordCarrier(ModelCarrier[Coord]):
         entity: [Coord|CoordBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[CoordBlueprint]
+        -   def extract_blueprint() -> Optional[CoordBlueprint]
 
     Super Class:
         ModelCarrier

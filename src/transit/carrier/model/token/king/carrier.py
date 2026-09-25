@@ -32,7 +32,7 @@ class KingTokenCarrier(TokenCarrier[KingToken]):
         entity: [Token|KingTokenBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[KingTokenBlueprint]
+        -   def extract_blueprint() -> Optional[KingTokenBlueprint]
 
     Super Class:
         ModelCarrier

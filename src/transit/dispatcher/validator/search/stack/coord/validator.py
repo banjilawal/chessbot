@@ -27,26 +27,26 @@ class CoordContextValidator(StackContextValidator[CoordSearchContext]):
         1.  Ensure a CoordContext instance is safe before use.
 
     Attributes:
-        integrity_checker: CoordContextChecker
+        validator: CoordContextChecker
 
     Provides:
-        - execute(self, candidate: Any) -> ValidationResult[CoordContext]
+        -   def execute(self, candidate: Any) -> ValidationResult[CoordContext]
 
     Super Class:
         ContextValidator
     """
     
-    def __init__(self, integrity_checker: Optional[CoordContextValidator] | None = None):
+    def __init__(self, validator: Optional[CoordContextValidator] | None = None):
         """
         Args:
-            integrity_checker: Optional[CoordContextChecker]
+            validator: Optional[CoordContextChecker]
         """
-        super().__init__(integrity_checker=integrity_checker or CoordContextValidator)
+        super().__init__(validator=validator or CoordContextValidator)
     
     
     @property
-    def integrity_checker(self) -> CoordContextValidator:
-        return cast(CoordContextValidator, super().integrity_checker)
+    def validator(self) -> CoordContextValidator:
+        return cast(CoordContextValidator, super().validator)
     
     
     @LoggingLevelRouter.monitor
@@ -55,7 +55,7 @@ class CoordContextValidator(StackContextValidator[CoordSearchContext]):
         Certify a candidate is a CoordContext that is safe to use.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if integrity_checker
+            1.  Send an exception chain in the ValidationResult if validator
                 returns a failure.
             2.  Otherwise, send the success result.
         Args:
@@ -67,8 +67,8 @@ class CoordContextValidator(StackContextValidator[CoordSearchContext]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that integrity_checker flags the candidate.
-        validation = self.integrity_checker.execute(candidate=candidate)
+        # Handle the case that validator flags the candidate.
+        validation = self.validator.execute(candidate=candidate)
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

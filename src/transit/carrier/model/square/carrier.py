@@ -32,7 +32,7 @@ class SquareCarrier(ModelCarrier[Square]):
         entity: [Square|SquareBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[SquareBlueprint]
+        -   def extract_blueprint() -> Optional[SquareBlueprint]
 
     Super Class:
         ModelCarrier

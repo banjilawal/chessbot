@@ -32,7 +32,7 @@ class ScalarCarrier(ModelCarrier[Scalar]):
         entity: [Scalar|ScalarBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[ScalarBlueprint]
+        -   def extract_blueprint() -> Optional[ScalarBlueprint]
 
     Super Class:
         ModelCarrier

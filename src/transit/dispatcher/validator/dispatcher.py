@@ -30,25 +30,25 @@ class ValidationDispatcher(Dispatcher, ABC, Generic[T]):
         1.  Ensure data-holders are safe before they are used or saved.
         
     Attributes:
-        integrity_checker: IntegrityChecker[T]
+        validator: Validator[T]
     
     Provides:
-        - def execute(candidate: Any) -> ValidationResult[T]
+        -   def execute(candidate: Any) -> ValidationResult[T]
         
     super Class:
     """
-    _integrity_checker: Validator[T]
+    _validator: Validator[T]
     
-    def __init__(self, integrity_checker: Validator[T], ):
+    def __init__(self, validator: Validator[T]):
         """
         Args:
-            integrity_checker: IntegrityChecker[T]
+            validator: Validator[T]
         """
-        self._integrity_checker = integrity_checker
+        self._validator = validator
         
     @property
-    def integrity_checker(self) -> Validator[T]:
-        return self.integrity_checker
+    def validator(self) -> Validator[T]:
+        return self._validator
 
     @abstractmethod
     @LoggingLevelRouter.monitor
@@ -60,6 +60,6 @@ class ValidationDispatcher(Dispatcher, ABC, Generic[T]):
         Returns:
             ValidationResult[T]
         Raises:
-            ValidatorException
+            DispatcherException
         """
         pass

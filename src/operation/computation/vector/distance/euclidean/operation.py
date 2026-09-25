@@ -33,7 +33,7 @@ class EuclideanDistance(Computation[Scalar]):
             permitter: Optional[EuclideanDistancePermitter]
             
     Provides:
-        - def execute(self, request: EuclideanDistanceRequest) -> ComputationResult[Scalar]
+        -   def execute(self, request: EuclideanDistanceRequest) -> ComputationResult[Scalar]
 
     Super Class:
         Computation

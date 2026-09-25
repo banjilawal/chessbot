@@ -31,7 +31,7 @@ class VectorContextBuilder(Builder[CartesianToggle]):
     Attributes:
 
     Provides:
-        - def build(
+        -   def build(
                     coord: Optional[Coord] = None,
                     vector: Optional[Vector] = None,
                     toolkit : VectorContextToolkit

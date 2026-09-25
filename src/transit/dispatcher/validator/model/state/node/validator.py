@@ -28,10 +28,10 @@ class NodeValidationDispatcher(ModelValidationDispatcher[Node]):
         1.  Ensure a Node instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        integrity_checker: NodeIntegrityChecker
+        validator: NodeValidator
 
     Provides:
-        - execute(candidate: Any) -> ValidationResult
+        -   def execute(candidate: Any) -> ValidationResult
 
     Super Class:
         ModelValidator
@@ -39,13 +39,13 @@ class NodeValidationDispatcher(ModelValidationDispatcher[Node]):
     
     def __init__(
             self,
-            integrity_checker: NodeValidator | None = NodeValidator(),
+            validator: NodeValidator | None = NodeValidator(),
     ):
-        super().__init__(integrity_checker=integrity_checker)
+        super().__init__(validator=validator)
         
     @property
-    def integrity_checker(self) -> NodeValidator:
-        return cast(NodeValidator, super().integrity_checker)
+    def validator(self) -> NodeValidator:
+        return cast(NodeValidator, super().validator)
     
 
     @LoggingLevelRouter.monitor
@@ -55,7 +55,7 @@ class NodeValidationDispatcher(ModelValidationDispatcher[Node]):
 
         Action:
             1.  Send an exception chain in the ValidationResult if the candidate fails a
-                integrity_checker test..
+                validator test..
             2.  Otherwise, cast the payload into a Node and send in the success result.
                 success result.
         Args:
@@ -68,8 +68,8 @@ class NodeValidationDispatcher(ModelValidationDispatcher[Node]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        certification = self.integrity_checker.execute(candidate)
-        if certification.is_failure:
+        validation = self.validator.execute(candidate)
+        if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 NodeValidatorException(
@@ -77,13 +77,13 @@ class NodeValidationDispatcher(ModelValidationDispatcher[Node]):
                     cls_name=self.__class__.__name__,
                     msg=NodeValidatorException.MSG,
                     err_code=NodeValidatorException.ERR_CODE,
-                    ex=certification.exception,
+                    ex=validation.exception,
                 )
             )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(
             cast(
-                self.integrity_checker.bundle.model,
-                certification.payload
+                self.validator.bundle.model,
+                validation.payload
             )
         )

@@ -30,7 +30,7 @@ class WorkerRegistry:
         items: Dict[str, Dict[str, Operation]]
     
     Provides:
-        - def domains(self) -> List[str]:
+        -   def domains(self) -> List[str]:
     
     Super Class:
         StateModel

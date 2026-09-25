@@ -30,25 +30,25 @@ class NodeValidator(Validator[Node]):
         1.  Ensure a Node instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        integrity_checker: NodeIntegrityChecker
+        validator: NodeValidator
 
     Provides:
-        - execute(self, candidate: Any) -> ValidationResult
+        -   def execute(self, candidate: Any) -> ValidationResult
 
     Super Class:
         Validator
     """
     
-    def __init__(self, integrity_checker: NodeValidator):
+    def __init__(self, validator: NodeValidator):
         """
         Args:
-            integrity_checker: NodeIntegrityChecker
+            validator: NodeValidator
         """
-        super().__init__(integrity_checker=integrity_checker)
+        super().__init__(validator=validator)
     
     @property
-    def integrity_checker(self) -> NodeValidator:
-        return cast(NodeValidator, super().integrity_checker)
+    def validator(self) -> NodeValidator:
+        return cast(NodeValidator, super().validator)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

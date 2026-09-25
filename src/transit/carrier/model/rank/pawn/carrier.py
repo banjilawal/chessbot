@@ -32,7 +32,7 @@ class PawnCarrier(RankCarrier[Pawn]):
         entity: [Rank|PawnBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[PawnBlueprint]
+        -   def extract_blueprint() -> Optional[PawnBlueprint]
 
     Super Class:
         ModelCarrier

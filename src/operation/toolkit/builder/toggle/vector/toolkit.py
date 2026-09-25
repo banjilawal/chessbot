@@ -54,5 +54,5 @@ class CartesianToggleBuilderToolkit(ToggleBuilderToolkit[CartesianToggle]):
     
     @property
     def root_certifier(self) -> CartesianToggleRootCertifier:
-        return cast(CartesianToggleRootCertifier, super().integrity_checker)
+        return cast(CartesianToggleRootCertifier, super().validator)
     

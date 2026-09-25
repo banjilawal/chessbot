@@ -32,7 +32,7 @@ class PawnTokenCarrier(CombatantCarrier):
         entity: [PawnToken|PawnTokenBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[PawnTokenBlueprint]
+        -   def extract_blueprint() -> Optional[PawnTokenBlueprint]
 
     Super Class:
         ModelCarrier

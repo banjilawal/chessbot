@@ -30,7 +30,7 @@ class WorkerRegistryDomainSearch(Dict[str, Operator]):
     Attributes:
 
     Provides:
-        - def execute(
+        -   def execute(
                     domain: str,
                     registry: WorkerRegistry,
                     key_name_validator: RegistryEntryNameValidator,

@@ -35,8 +35,8 @@ class Square(StateModel):
         occupant: Optional[Token]
         
     Provides:
-        - def is_empty() -> bool
-        - def is_occupied() -> bool
+        -   def is_empty() -> bool
+        -   def is_occupied() -> bool
 
     Super Class:
         StateModel

@@ -35,7 +35,7 @@ class RankValidator(ModelValidator[Rank]):
         toolkit: RankValidatorToolkit
 
     Provides:
-        - def execute(candidate: RankValidationRequest) ->ValidationResult[RankCarrier]:
+        -   def execute(candidate: RankValidationRequest) ->ValidationResult[RankCarrier]:
 
     Super Class:
         ModelValidator

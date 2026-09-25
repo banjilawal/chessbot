@@ -29,8 +29,8 @@ class RequestDecision(Decision):
         exception: Optional[Exception]
 
     Provides:
-        - def grant(request: Request) -> RequestDecision
-        - def deny(request: Request, exception: Exception) -> RequestDecision
+        -   def grant(request: Request) -> RequestDecision
+        -   def deny(request: Request, exception: Exception) -> RequestDecision
 
     Super Class:
     """

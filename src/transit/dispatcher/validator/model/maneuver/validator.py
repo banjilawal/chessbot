@@ -13,9 +13,9 @@ from typing import Any, cast
 
 from err import ManeuverValidatorException
 from domain.model import Maneuver
-from assurance import ManeuverIntegrityChecker
+from assurance import ManeuverValidator
 from artifcat import ValidationResult
-from assurance import ManeuverIntegrityChecker
+from assurance import ManeuverValidator
 from util import LoggingLevelRouter
 
 
@@ -33,16 +33,16 @@ class ManeuverValidator:
     Attributes:
 
     Provides:
-        - def validate(
+        -   def validate(
                     candidate: Any,
-                    integrity_checker: ManeuverIntegrityChecker,
+                    validator: ManeuverValidator,
             ) -> ValidationResult[Maneuver]:
 
     Super Class:
         ModelValidator
     """
-    def __init__(self, integrity_checker: ManeuverIntegrityChecker):
-        super().__init__(integrity_checker=integrity_checker)
+    def __init__(self, validator: ManeuverValidator):
+        super().__init__(validator=validator)
     
 
     @LoggingLevelRouter.monitor
@@ -60,7 +60,7 @@ class ManeuverValidator:
             2.  Otherwise, send the success result.
         Args:
             candidate: Any
-            integrity_checker: ManeuverIntegrityChecker
+            validator: ManeuverValidator
         Returns:
             ValidationResult[int]
         Raises:
@@ -69,14 +69,14 @@ class ManeuverValidator:
         method = f"{self.__class__.__name__}.execute"
         
         # --- Supply any missing dependencies. ---#
-        if integrityChecker is None:
-            integrityChecker = ManeuverIntegrityChecker()
+        if validator is None:
+            validator = ManeuverValidator()
         
         # Handle the case that the validator is not primed.
-        validator_priming_result = integrityChecker.priming_validator.execute(
+        validator_priming_result = validator.priming_validator.execute(
             candidate=candidate,
-            target_model=integrityChecker.model,
-            null_exception=integrityChecker.domain_null_exception,
+            target_model=validator.model,
+            null_exception=validator.domain_null_exception,
         )
         if validator_priming_result.is_failure:
             # Send the exception chain on failure.
@@ -93,7 +93,7 @@ class ManeuverValidator:
         maneuver = cast(Maneuver, candidate)
         
         # Handle the case that the path is not safe.
-        path_validation_result = integrityChecker.path_validator.execute(maneuver.path)
+        path_validation_result = validator.path_validator.execute(maneuver.path)
         if path_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -106,7 +106,7 @@ class ManeuverValidator:
                 )
             )
         # Handle the case that the token is not safe.
-        token_validation_result = integrityChecker.token_validator.execute(maneuver.path)
+        token_validation_result = validator.token_validator.execute(maneuver.path)
         if token_validation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -119,7 +119,7 @@ class ManeuverValidator:
                 )
             )
         # Handle the case that either the token is not at the origin or already at the destination.
-        token_endpoint_relation_validation_result = integrityChecker.endpoint_validator.execute(
+        token_endpoint_relation_validation_result = validator.endpoint_validator.execute(
             token=maneuver.token,
             origin=maneuver.path.origin,
             destination=maneuver.path.destination,

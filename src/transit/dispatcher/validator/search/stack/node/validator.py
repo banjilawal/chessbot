@@ -110,7 +110,7 @@ class NodeContextValidator(ContextValidator[Node]):
             )
         # --- Route to the appropriate validation branch. ---#
         
-        # Certification for the search-by-priority target.
+        # Validation for the search-by-priority target.
         if context.priority is not None:
             validation = number_validator.execute(
                 candidate=context.priority,
@@ -125,10 +125,10 @@ class NodeContextValidator(ContextValidator[Node]):
                         ex=validator.exception
                     )
                 )
-            # On certification success return the priority_NodeContext in the ValidationResult.
+            # On validation success return the priority_NodeContext in the ValidationResult.
             return ValidationResult.success(payload=context)
         
-        # Certification for the search-by-predecessor target.
+        # Validation for the search-by-predecessor target.
         if context.predecessor is not None:
             validation = node_validator.execute(candidate=context.predecessor)
             if validation.is_failure:
@@ -139,10 +139,10 @@ class NodeContextValidator(ContextValidator[Node]):
                         ex=validator.exception
                     )
                 )
-            # On certification success return the predecessor_NodeContext in the ValidationResult.
+            # On validation success return the predecessor_NodeContext in the ValidationResult.
             return ValidationResult.success(payload=context)
         
-        # Certification for the search-by-square target.
+        # Validation for the search-by-square target.
         if context.home_square is not None:
             validation = square_service.execute.execute(context.home_square)
             if validation.is_failure:
@@ -153,10 +153,10 @@ class NodeContextValidator(ContextValidator[Node]):
                         ex=validator.exception
                     )
                 )
-            # On certification success return the square_NodeContext in the ValidationResult.
+            # On validation success return the square_NodeContext in the ValidationResult.
             return ValidationResult.success(payload=context)
         
-        # Certification for the search-by-discovery_status target.
+        # Validation for the search-by-discovery_status target.
         if context.discovery_status is not None:
             validation = node_validator.execute_discovery_status(context.discovery_status)
             if validation.is_failure:
@@ -167,7 +167,7 @@ class NodeContextValidator(ContextValidator[Node]):
                         ex=validator.exception
                     )
                 )
-            # On certification success return the discovery_status_NodeContext in the ValidationResult.
+            # On validation success return the discovery_status_NodeContext in the ValidationResult.
             return ValidationResult.success(payload=context)
         
         # Return the exception chain if there is no validation route for the context.

@@ -34,7 +34,7 @@ class ModelValidator(Validator[T], ABC, Generic[T]):
         toolkit: ModelValidatorToolkit[T]
 
     Provides:
-        - def execute(candidate: Any) -> ValidationResult[ModelCarrier[T]]:
+        -   def execute(candidate: Any) -> ValidationResult[ModelCarrier[T]]:
 
     Super Class:
         Validator

@@ -34,7 +34,7 @@ class SchemaLookupService(SearchMicroservice[Schema]):
         resource_host: SchemaSearchResourceHost
 
     Provides:
-        - def search(context: SchemaQuery) -> SearchResult[List[Schema]]
+        -   def search(context: SchemaQuery) -> SearchResult[List[Schema]]
 
     Super Class:
         SearchMicroservice

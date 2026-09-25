@@ -32,7 +32,7 @@ class CoordContextCarrier(ContextCarrier[CoordContext]):
         entity: [Coord|CoordContextBlueprint]
 
     Provides:
-        - def extract_ContextBlueprint() -> Optional[CoordContextBlueprint]
+        -   def extract_ContextBlueprint() -> Optional[CoordContextBlueprint]
 
     Super Class:
         ContextCarrier

@@ -23,10 +23,10 @@ class StateModelValidator(ModelValidator, ABC):
         1.  Ensure a Vector instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        integrity_checker: VectorIntegrityChecker
+        validator: VectorValidator
 
     Provides:
-        - execute(candidate: Any) -> ValidationResult
+        -   def execute(candidate: Any) -> ValidationResult
 
     Super Class:
         ModelValidator

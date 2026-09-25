@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
-from assurance import RegisterIntegrityChecker
+from assurance import RegisterValidator
 from artifcat import ValidationResult
 from transit import ValidationDispatcher
 
@@ -30,21 +30,21 @@ class RegisterValidationDispatcher(ValidationDispatcher, Generic[T]):
         1.  Ensure a Model instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        integrity_checker: RegisterIntegrityChecker[T]
+        validator: RegisterValidator[T]
         
     Provides:
-        - execute(self, candidate: Any) -> ValidationResult
+        -   def execute(self, candidate: Any) -> ValidationResult
 
     Super Class:
         Validator
     """
     
-    def __init__(self, integrity_checker: [RegisterIntegrityChecker[T]]):
-        super().__init__(integrity_checker=integrity_checker)
+    def __init__(self, validator: [RegisterValidator[T]]):
+        super().__init__(validator=validator)
     
     @property
-    def integrity_checker(self) -> RegisterIntegrityChecker:
-        return cast(RegisterIntegrityChecker[T], super().integrity_checker)
+    def validator(self) -> RegisterValidator:
+        return cast(RegisterValidator[T], super().validator)
     
        @abstractmethod
     @LoggingLevelRouter.monitor

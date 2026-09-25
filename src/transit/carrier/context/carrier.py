@@ -37,7 +37,7 @@ class ContextCarrier(EntityCarrier[TContext], ABC, Generic[TContext]):
 
 
     Provides:
-        - def extract_ContextBlueprint() -> Optional[Blueprint[TContext]Context]
+        -   def extract_ContextBlueprint() -> Optional[Blueprint[TContext]Context]
 
     Super Class:
         EntityCarrier

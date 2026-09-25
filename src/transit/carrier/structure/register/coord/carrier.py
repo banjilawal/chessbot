@@ -32,7 +32,7 @@ class CoordRegisterCarrier(RegisterCarrier[CoordRegister]):
         entity: [CoordRegister | CoordRegisterBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[CoordRegisterBlueprint]
+        -   def extract_blueprint() -> Optional[CoordRegisterBlueprint]
 
     Super Class:
         RegisterCarrier

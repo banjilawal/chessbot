@@ -36,7 +36,7 @@ class Validator(ABC, Generic[T]):
         toolkit: ValidatorToolkit[T]
 
     Provides:
-        - def execute(candidate: Any) -> ValidationResult[Blueprint[T]|T]:
+        -   def execute(candidate: Any) -> ValidationResult[Blueprint[T]|T]:
 
     Super Class:
     """

@@ -32,7 +32,7 @@ class ServiceRegistrySearch(Operator):
     Attributes:
 
     Provides:
-        - def execute(
+        -   def execute(
                     domain: str,
                     operation_name: str,
                     registry: ServiceRegistry,

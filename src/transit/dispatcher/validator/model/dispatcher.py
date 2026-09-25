@@ -9,53 +9,55 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import abstractmethod
-from typing import Any, cast
+from abc import ABC, abstractmethod
+from typing import Any, Generic, TypeVar, cast
 
 
 from artifcat import ValidationResult
+from assurance import ModelValidator
 from domain import Model
-from transit import ValidationDispatcher
+from transit import ModelCarrier, ValidationDispatcher
 from util import LoggingLevelRouter
 
+T = TypeVar("T", bound="Model")
 
-class ModelValidationDispatcher(ValidationDispatcher[Model]):
+class ModelValidationDispatcher(ValidationDispatcher[T], ABC, Generic[T]):
     """
     Role
-        - Transaction Worker
-        - Integrity Maintenance
-        - Consistency Assurance
-        - Validation Process Owner
+        -   Transaction Worker
+        -   Integrity Maintenance
+        -    Consistency Assurance
+        -    Validation Process Owner
 
     Responsibilities:
         1.  Ensure a Model instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        integrity_checker: ModelIntegrityChecker
+        validator: ModelValidator[T]
         
     Provides:
-        - execute(self, candidate: Any) -> ValidationResult
+        -   def execute(self, candidate: Any) -> ValidationResult
 
     Super Class:
-        Validator
+        ValidationDispatcher
     """
     
-    def __init__(self, integrity_checker: ModelIntegrityChecker):
+    def __init__(self, validator: ModelValidator[T]):
         """
         Args:
-            integrity_checker: ModelIntegrityChecker
+            validator: ModelValidator
         """
-        super().__init__(integrity_checker=integrity_checker)
+        super().__init__(validator=validator)
 
 
     @property
-    def integrity_checker(self) -> ModelIntegrityChecker:
-        return cast(ModelIntegrityChecker, super().integrity_checker)
+    def validator(self) -> ModelValidator[T]:
+        return cast(ModelValidator[T], super().validator)
     
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult:
+    def execute(self, candidate: Any) -> ValidationResult[ModelCarrier[T]]:
         """
         Verify a candidate is an EntityCarrier whose payload is safe.
         Args:
@@ -63,7 +65,7 @@ class ModelValidationDispatcher(ValidationDispatcher[Model]):
         Returns:
             ValidationResult[T]
         Raises:
-            ModelValidatorException
+            ModelDispatcherException
         """
         pass
     

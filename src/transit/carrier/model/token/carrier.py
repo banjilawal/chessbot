@@ -34,7 +34,7 @@ class TokenCarrier(ModelCarrier[T], Generic[T]):
         entity: [Token|TokenBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[TokenBlueprint]
+        -   def extract_blueprint() -> Optional[TokenBlueprint]
 
     Super Class:
         ModelCarrier

@@ -54,5 +54,5 @@ class TeamBuilderToolkit(ModelBuilderToolkit[Team]):
     
     @property
     def root_certifier(self) -> TeamRootCertifier:
-        return cast(TeamRootCertifier, super().integrity_checker)
+        return cast(TeamRootCertifier, super().validator)
     

@@ -34,7 +34,7 @@ class PathValidator(ModelValidator[Path]):
         toolkit: PathValidatorToolkit
         
     Provides:
-        - def execute(candidate: Any) -> ValidationResult[PathCarrier]
+        -   def execute(candidate: Any) -> ValidationResult[PathCarrier]
 
     Super Class:
         ModelValidator

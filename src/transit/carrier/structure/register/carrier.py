@@ -36,7 +36,7 @@ class RegisterCarrier(StructureCarrier[T], ABC, Generic[T]):
         entity: [T | RegisterBlueprint[T]]
 
     Provides:
-        - def extract_blueprint() -> Optional[RegisterBlueprint[T]]
+        -   def extract_blueprint() -> Optional[RegisterBlueprint[T]]
 
     Super Class:
         StructureCarrier

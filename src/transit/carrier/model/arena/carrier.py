@@ -32,7 +32,7 @@ class ArenaCarrier(ModelCarrier[Arena]):
         entity: [Arena|ArenaBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[ArenaBlueprint]
+        -   def extract_blueprint() -> Optional[ArenaBlueprint]
 
     Super Class:
         ModelCarrier

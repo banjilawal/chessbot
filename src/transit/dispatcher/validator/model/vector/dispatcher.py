@@ -11,16 +11,16 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from assurance import ModelValidator
-from err import VectorValidatorException
+
 from assurance import VectorValidator
 from domain.model import Vector
 from artifcat import ValidationResult
+from transit import ModelValidationDispatcher, VectorCarrier
 from util import LoggingLevelRouter
 
 
 
-class VectorValidator(ModelValidator):
+class VectorValidationDispatcher(ModelValidationDispatcher[Vector]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -29,10 +29,10 @@ class VectorValidator(ModelValidator):
         1.  Ensure a Vector instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        integrity_checker: VectorIntegrityChecker
+        validator: VectorValidator
 
     Provides:
-        - execute(candidate: Any) -> ValidationResult
+        -   def execute(candidate: Any) -> ValidationResult[Vector]
 
     Super Class:
         ModelValidator
@@ -40,23 +40,23 @@ class VectorValidator(ModelValidator):
     
     def __init__(
             self,
-            integrity_checker: VectorValidator | None = None,
+            validator: VectorValidator | None = None,
     ):
-        super().__init__(integrity_checker=integrity_checker or VectorValidator())
+        super().__init__(validator=validator or VectorValidator())
         
     @property
-    def integrity_checker(self) -> VectorValidator:
-        return cast(VectorValidator, super().integrity_checker)
+    def validator(self) -> VectorValidator:
+        return cast(VectorValidator, super().validator)
     
 
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult:
+    def execute(self, candidate: Any) -> ValidationResult[VectorCarrier]:
         """
         Verify the object is a Vector that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if the candidate fails a
-                integrity_checker test.
+                validator test.
             2.  Otherwise, cast the payload into a Vector and send in the success result.
                 success result.
         Args:
@@ -64,22 +64,23 @@ class VectorValidator(ModelValidator):
         Returns:
             ValidationResult[Vector]
         Raises:
-             VectorValidatorException
+             VectorValidationDispatcherException
         """
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        certification = self.integrity_checker.execute(candidate)
-        if certification.is_failure:
+        validation = self.validator.execute(candidate)
+        if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorValidatorException(
+                VectorValidationDispatcherException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorValidatorException.MSG,
-                    err_code=VectorValidatorException.ERR_CODE,
-                    ex=certification.exception,
+                    msg=VectorValidationDispatcherException.MSG,
+                    err_code=VectorValidationDispatcherException.ERR_CODE,
+                    ex=validation.exception,
                 )
             )
         # --- Forward the work product to the caller. ---#
-        return ValidationResult.success(cast(Vector, certification.payload))
+        carrier = cast(VectorCarrier, validation.payload)
+        return ValidationResult.success(carrier)

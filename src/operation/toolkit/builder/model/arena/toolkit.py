@@ -54,5 +54,5 @@ class ArenaBuilderToolkit(ModelBuilderToolkit[Arena]):
     
     @property
     def root_certifier(self) -> ArenaRootCertifier:
-        return cast(ArenaRootCertifier, super().integrity_checker)
+        return cast(ArenaRootCertifier, super().validator)
     

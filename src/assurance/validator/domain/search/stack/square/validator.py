@@ -34,7 +34,7 @@ class SquareContextValidator(ContextValidator[SquareSearchContext]):
         toolkit: SquareValidatorToolkit
 
     Provides:
-        - def execute(candidate: Any) -> ValidationResult[SquareContext]:
+        -   def execute(candidate: Any) -> ValidationResult[SquareContext]:
 
     Super Class:
         StackContextChecker

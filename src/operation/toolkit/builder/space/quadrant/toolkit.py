@@ -53,4 +53,4 @@ class QuadrantBuilderToolkit(SpaceBuilderToolkit, Generic[T]):
         
     @property
     def root_certifier(self) -> QuadrantRootCertifier[T]:
-        return cast(QuadrantRootCertifier[T], super().integrity_checker)
+        return cast(QuadrantRootCertifier[T], super().validator)

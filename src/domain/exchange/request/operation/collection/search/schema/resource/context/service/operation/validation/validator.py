@@ -32,7 +32,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
     Attributes:
 
     Provides:
-        - def validate(
+        -   def validate(
                     rank: Any,
                     workers: SchemaContextIntegrityWorkers,
             ) -> BuildResult[SchemaContext]:

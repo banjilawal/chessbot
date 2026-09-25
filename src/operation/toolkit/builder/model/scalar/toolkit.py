@@ -54,5 +54,5 @@ class ScalarBuilderToolkit(ModelBuilderToolkit[Scalar]):
     
     @property
     def root_certifier(self) -> ScalarRootCertifier:
-        return cast(ScalarRootCertifier, super().integrity_checker)
+        return cast(ScalarRootCertifier, super().validator)
     

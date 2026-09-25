@@ -54,5 +54,5 @@ class SquareBuilderToolkit(ModelBuilderToolkit[Square]):
     
     @property
     def root_certifier(self) -> SquareRootCertifier:
-        return cast(SquareRootCertifier, super().integrity_checker)
+        return cast(SquareRootCertifier, super().validator)
     

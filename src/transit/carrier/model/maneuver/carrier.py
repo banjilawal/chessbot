@@ -32,7 +32,7 @@ class ManeuverCarrier(ModelCarrier[Maneuver]):
         entity: [Maneuver|ManeuverBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[ManeuverBlueprint]
+        -   def extract_blueprint() -> Optional[ManeuverBlueprint]
 
     Super Class:
         ModelCarrier

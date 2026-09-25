@@ -54,4 +54,4 @@ class ToggleBuilderToolkit(BuilderToolkit, Generic[T]):
         
     @property
     def root_certifier(self) -> [ToggleCertifier[T]]:
-        return cast([ToggleCertifier[T]], super().integrity_checker)
+        return cast([ToggleCertifier[T]], super().validator)

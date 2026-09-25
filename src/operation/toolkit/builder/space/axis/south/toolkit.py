@@ -53,4 +53,4 @@ class SouthAxisBuilderToolkit(AxisBuilderToolkit[SouthAxis]):
         
     @property
     def root_certifier(self) -> SouthAxisRootCertifier:
-        return cast(SouthAxisRootCertifier, super().integrity_checker)
+        return cast(SouthAxisRootCertifier, super().validator)

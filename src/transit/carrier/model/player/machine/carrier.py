@@ -32,7 +32,7 @@ class MachinePlayerCarrier(PlayerCarrier):
         entity: [MachinePlayer|MachineBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[MachineBlueprint]
+        -   def extract_blueprint() -> Optional[MachineBlueprint]
 
     Super Class:
         MachinePlayerCarrier

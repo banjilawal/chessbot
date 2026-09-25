@@ -53,4 +53,4 @@ class AxisBuilderToolkit(SpaceBuilderToolkit, Generic[T]):
         
     @property
     def root_certifier(self) -> [AxisRootCertifier[T]]:
-        return cast([AxisRootCertifier[T]], super().integrity_checker)
+        return cast([AxisRootCertifier[T]], super().validator)

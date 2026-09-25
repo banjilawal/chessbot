@@ -40,7 +40,7 @@ class GamePlayerColorBinderValidator:
     Attributes:
 
     Provides:
-        - def execute(self, candidate) -> ValidationResult[GamePlayerColorBinder]
+        -   def execute(self, candidate) -> ValidationResult[GamePlayerColorBinder]
 
     Super Class:
     """

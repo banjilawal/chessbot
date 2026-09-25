@@ -32,7 +32,7 @@ class CoordStackPush:
     Attributes:
 
     Provides:
-        - execute(
+        -   def execute(
                     cls,
                     coord: Coord,
                     coord_stack: CoordStackService,

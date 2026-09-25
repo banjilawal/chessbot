@@ -111,7 +111,7 @@ class EdgeContextValidator(ContextValidator[Edge]):
             )
         # --- Route to the appropriate validation branch. ---#
         
-        # Certification for the search-by-id target.
+        # Validation for the search-by-id target.
         if context.id is not None:
             validation = identity_service.validate_id(candidate=context.id)
             if validation.is_failure:
@@ -122,10 +122,10 @@ class EdgeContextValidator(ContextValidator[Edge]):
                         ex=validator.exception
                     )
                 )
-            # On certification success return the id_EdgeContext in the ValidationResult.
+            # On validation success return the id_EdgeContext in the ValidationResult.
             return ValidationResult.success(payload=context)
         
-        # Certification for the search-by-schema target.
+        # Validation for the search-by-schema target.
         if context.name is not None:
             validation = identity_service.validate_name(context.name)
             if validation.is_failure:
@@ -136,10 +136,10 @@ class EdgeContextValidator(ContextValidator[Edge]):
                         ex=validator.exception
                     )
                 )
-            # On certification success return the name_EdgeContext in the ValidationResult.
+            # On validation success return the name_EdgeContext in the ValidationResult.
             return ValidationResult.success(payload=context)
         
-        # Certification for the search-by-coord target.
+        # Validation for the search-by-coord target.
         if context.coord is not None:
             validation = coord_service.execute.execute(context.coord)
             if validation.is_failure:
@@ -150,10 +150,10 @@ class EdgeContextValidator(ContextValidator[Edge]):
                         ex=validator.exception
                     )
                 )
-            # On certification success return the coord_EdgeContext in the ValidationResult.
+            # On validation success return the coord_EdgeContext in the ValidationResult.
             return ValidationResult.success(payload=context)
         
-        # Certification for the search-by-board target.
+        # Validation for the search-by-board target.
         if context.board is not None:
             validation = board_service.execute.execute(context.board)
             if validation.is_failure:
@@ -164,10 +164,10 @@ class EdgeContextValidator(ContextValidator[Edge]):
                         ex=validator.exception
                     )
                 )
-            # On certification success return the board_EdgeContext in the ValidationResult.
+            # On validation success return the board_EdgeContext in the ValidationResult.
             return ValidationResult.success(payload=context)
         
-        # Certification for the search-by-occupant target.
+        # Validation for the search-by-occupant target.
         if context.occupant is not None:
             validation = edge_service.execute.execute(context.occupant)
             if validation.is_failure:
@@ -178,10 +178,10 @@ class EdgeContextValidator(ContextValidator[Edge]):
                         ex=validator.exception
                     )
                 )
-            # On certification success return the board_EdgeContext in the ValidationResult.
+            # On validation success return the board_EdgeContext in the ValidationResult.
             return ValidationResult.success(payload=context)
         
-        # Certification for the search-by-state.
+        # Validation for the search-by-state.
         if context.state is not None:
             if not isinstance(context.state, EdgeState):
                 # Send the exception chain on failure.
@@ -193,7 +193,7 @@ class EdgeContextValidator(ContextValidator[Edge]):
                         )
                     )
                 )
-            # On certification success return the board_EdgeContext in the ValidationResult.
+            # On validation success return the board_EdgeContext in the ValidationResult.
             return ValidationResult.success(payload=context)
         
         # Return the exception chain if there is no validation route for the context.

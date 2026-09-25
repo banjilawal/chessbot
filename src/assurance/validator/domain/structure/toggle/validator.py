@@ -36,7 +36,7 @@ class ToggleValidator(Validator, Generic[T]):
         toolkit: ToggleToolkit
 
     Provides:
-        - def validate(candidate: Any, toolkit: ToggleToolkit,) -> ValidationResult[Blueprint[T]]:
+        -   def validate(candidate: Any, toolkit: ToggleToolkit,) -> ValidationResult[Blueprint[T]]:
 
     Super Class:
     """

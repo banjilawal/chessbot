@@ -30,26 +30,26 @@ class VectorNodeContextValidator(
         1.  Ensure a VectorNodeContext instance is safe before use.
 
     Attributes:
-        integrity_checker: VectorNodeContextChecker
+        validator: VectorNodeContextChecker
 
     Provides:
-        - execute(self, candidate: Any) -> ValidationResult[VectorNodeContext]
+        -   def execute(self, candidate: Any) -> ValidationResult[VectorNodeContext]
 
     Super Class:
         ContextValidator
     """
     
-    def __init__(self, integrity_checker: VectorNodeContextValidator):
+    def __init__(self, validator: VectorNodeContextValidator):
         """
         Args:
-            integrity_checker: VectorNodeContextChecker
+            validator: VectorNodeContextChecker
         """
-        super().__init__(integrity_checker=integrity_checker)
+        super().__init__(validator=validator)
     
     
     @property
-    def integrity_checker(self) -> VectorNodeContextValidator:
-        return cast(VectorNodeContextValidator, super().integrity_checker)
+    def validator(self) -> VectorNodeContextValidator:
+        return cast(VectorNodeContextValidator, super().validator)
     
     
     @LoggingLevelRouter.monitor
@@ -58,7 +58,7 @@ class VectorNodeContextValidator(
         Certify a candidate is a VectorNodeContext that is safe to use.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if integrity_checker
+            1.  Send an exception chain in the ValidationResult if validator
                 returns a failure.
             2.  Otherwise, send the success result.
         Args:
@@ -70,8 +70,8 @@ class VectorNodeContextValidator(
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that integrity_checker flags the candidate.
-        validation = self.integrity_checker.execute(candidate=candidate)
+        # Handle the case that validator flags the candidate.
+        validation = self.validator.execute(candidate=candidate)
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

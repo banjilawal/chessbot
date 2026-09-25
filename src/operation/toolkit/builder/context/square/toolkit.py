@@ -54,5 +54,5 @@ class VectorBuilderToolkit(ModelBuilderToolkit[Vector]):
     
     @property
     def root_certifier(self) -> VectorValidator:
-        return cast(VectorValidator, super().integrity_checker)
+        return cast(VectorValidator, super().validator)
     

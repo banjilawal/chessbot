@@ -32,7 +32,7 @@ class BoardCarrier(ModelCarrier[Board]):
         entity: [Board|BoardBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[BoardBlueprint]
+        -   def extract_blueprint() -> Optional[BoardBlueprint]
 
     Super Class:
         ModelCarrier

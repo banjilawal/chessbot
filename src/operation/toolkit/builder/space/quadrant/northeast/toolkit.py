@@ -55,4 +55,4 @@ class NortheastQuadrantBuilderToolkit(QuadrantBuilderToolkit[NortheastQuadrant])
         
     @property
     def root_certifier(self) -> NortheastQuadrantRootCertifier:
-        return cast(NortheastQuadrantRootCertifier, super().integrity_checker)
+        return cast(NortheastQuadrantRootCertifier, super().validator)

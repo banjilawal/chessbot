@@ -37,7 +37,7 @@ class EntityCarrier(ABC, Generic[T]):
 
 
     Provides:
-        - def extract_blueprint() -> Optional[Blueprint[T]]
+        -   def extract_blueprint() -> Optional[Blueprint[T]]
 
     Super Class:
     """

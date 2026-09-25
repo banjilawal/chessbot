@@ -31,7 +31,7 @@ class VectorContextToolkit(Toolkit[CartesianToggle]):
     Attributes:
 
     Provides:
-        - def __init__(
+        -   def __init__(
                     coord: Optional[Coord] = None,
                     vector: Optional[Vector] = None,
                     toolkit : VectorContextToolkit

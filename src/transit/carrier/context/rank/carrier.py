@@ -32,7 +32,7 @@ class RankContextCarrier(ContextCarrier[RankContext]):
         entity: [Rank|RankContextBlueprint]
 
     Provides:
-        - def extract_ContextBlueprint() -> Optional[RankContextBlueprint]
+        -   def extract_ContextBlueprint() -> Optional[RankContextBlueprint]
 
     Super Class:
         ContextCarrier

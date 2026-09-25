@@ -27,26 +27,26 @@ class TokenContextValidator(StackContextValidator[TokenSearchContext]):
         1.  Ensure a TokenContext instance is safe before use.
 
     Attributes:
-        integrity_checker: TokenContextChecker
+        validator: TokenContextChecker
 
     Provides:
-        - execute(self, candidate: Any) -> ValidationResult[TokenContext]
+        -   def execute(self, candidate: Any) -> ValidationResult[TokenContext]
 
     Super Class:
         ContextValidator
     """
     
-    def __init__(self, integrity_checker: TokenContextValidator):
+    def __init__(self, validator: TokenContextValidator):
         """
         Args:
-            integrity_checker: TokenContextChecker
+            validator: TokenContextChecker
         """
-        super().__init__(integrity_checker=integrity_checker)
+        super().__init__(validator=validator)
     
     
     @property
-    def integrity_checker(self) -> TokenContextValidator:
-        return cast(TokenContextValidator, super().integrity_checker)
+    def validator(self) -> TokenContextValidator:
+        return cast(TokenContextValidator, super().validator)
     
     
     @LoggingLevelRouter.monitor
@@ -55,7 +55,7 @@ class TokenContextValidator(StackContextValidator[TokenSearchContext]):
         Certify a candidate is a TokenContext that is safe to use.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if integrity_checker
+            1.  Send an exception chain in the ValidationResult if validator
                 returns a failure.
             2.  Otherwise, send the success result.
         Args:
@@ -67,8 +67,8 @@ class TokenContextValidator(StackContextValidator[TokenSearchContext]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that integrity_checker flags the candidate.
-        validation = self.integrity_checker.execute(candidate=candidate)
+        # Handle the case that validator flags the candidate.
+        validation = self.validator.execute(candidate=candidate)
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

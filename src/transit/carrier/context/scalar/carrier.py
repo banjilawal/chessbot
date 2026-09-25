@@ -32,7 +32,7 @@ class ScalarContextCarrier(ContextCarrier[ScalarContext]):
         entity: [Scalar|ScalarContextBlueprint]
 
     Provides:
-        - def extract_ContextBlueprint() -> Optional[ScalarContextBlueprint]
+        -   def extract_ContextBlueprint() -> Optional[ScalarContextBlueprint]
 
     Super Class:
         ContextCarrier

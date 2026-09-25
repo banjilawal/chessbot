@@ -54,5 +54,5 @@ class RankBuilderToolkit(ModelBuilderToolkit[Rank]):
     
     @property
     def root_certifier(self) -> RankRootCertifier:
-        return cast(RankRootCertifier, super().integrity_checker)
+        return cast(RankRootCertifier, super().validator)
     

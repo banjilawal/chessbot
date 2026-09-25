@@ -32,7 +32,7 @@ class BishopCarrier(RankCarrier[Bishop]):
         entity: [Rank|BishopBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[BishopBlueprint]
+        -   def extract_blueprint() -> Optional[BishopBlueprint]
 
     Super Class:
         ModelCarrier

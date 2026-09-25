@@ -34,7 +34,7 @@ class RegisterValidator(StructureValidator[T], ABC, Generic[T]):
         toolkit: RegisterValidatorToolkit[T]
 
     Provides:
-        - def execute(candidate: Any) -> ValidationResult[StructureCarrier[T]]:
+        -   def execute(candidate: Any) -> ValidationResult[StructureCarrier[T]]:
 
     Super Class:
         StructureValidator

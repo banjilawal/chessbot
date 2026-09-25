@@ -32,7 +32,7 @@ class GameCarrier(ModelCarrier[Game]):
         entity: [Game|GameBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[GameBlueprint]
+        -   def extract_blueprint() -> Optional[GameBlueprint]
 
     Super Class:
         ModelCarrier

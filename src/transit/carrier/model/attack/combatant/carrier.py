@@ -33,7 +33,7 @@ class CombatantAttackCarrier(AttackCarrier[CombatantAttack]):
         entity: [CombatantAttack | CombatantAttackBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[CombatantAttackBlueprint]
+        -   def extract_blueprint() -> Optional[CombatantAttackBlueprint]
 
     Super Class:
         AttackCarrier

@@ -32,7 +32,7 @@ class ArenaContextCarrier(ContextCarrier[ArenaContext]):
         entity: [Arena|ArenaContextBlueprint]
 
     Provides:
-        - def extract_ContextBlueprint() -> Optional[ArenaContextBlueprint]
+        -   def extract_ContextBlueprint() -> Optional[ArenaContextBlueprint]
 
     Super Class:
         ContextCarrier

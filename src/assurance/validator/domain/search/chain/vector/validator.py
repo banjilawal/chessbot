@@ -35,7 +35,7 @@ class VectorNodeContextValidator(
         toolkit: VectorNodeValidatorToolkit
 
     Provides:
-        - def execute(candidate: Any) -> ValidationResult[VectorNodeContext]:
+        -   def execute(candidate: Any) -> ValidationResult[VectorNodeContext]:
 
     Super Class:
         ChainContextChecker

@@ -32,7 +32,7 @@ class VectorRegisterCarrier(RegisterCarrier[VectorRegister]):
         entity: [VectorRegister | VectorRegisterBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[VectorRegisterBlueprint]
+        -   def extract_blueprint() -> Optional[VectorRegisterBlueprint]
 
     Super Class:
         RegisterCarrier

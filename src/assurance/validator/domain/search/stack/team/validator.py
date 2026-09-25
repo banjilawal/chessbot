@@ -34,7 +34,7 @@ class TeamContextValidator(ContextValidator[TeamSearchContext]):
         toolkit: TeamValidatorToolkit
 
     Provides:
-        - def execute(candidate: Any) -> ValidationResult[TeamContext]:
+        -   def execute(candidate: Any) -> ValidationResult[TeamContext]:
 
     Super Class:
         StackContextChecker

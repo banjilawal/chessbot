@@ -30,26 +30,26 @@ class ChainContextValidator(ContextValidator[T], ABC, Generic[T]):
         1.  Ensure a ChainContext instance is safe before use.
 
     Attributes:
-        integrity_checker: ChainContextChecker[T]
+        validator: ChainContextChecker[T]
         
     Provides:
-        - execute(self, candidate: Any) -> ValidationResult[T]
+        -   def execute(self, candidate: Any) -> ValidationResult[T]
 
     Super Class:
         ContextValidator
     """
     
-    def __init__(self, integrity_checker: ChainContextValidator[T]):
+    def __init__(self, validator: ChainContextValidator[T]):
         """
         Args:
-            integrity_checker: ChainContextChecker
+            validator: ChainContextChecker
         """
-        super().__init__(integrity_checker=integrity_checker)
+        super().__init__(validator=validator)
     
     
     @property
-    def integrity_checker(self) -> ChainContextValidator[T]:
-        return cast(ChainContextValidator[T], super().integrity_checker)
+    def validator(self) -> ChainContextValidator[T]:
+        return cast(ChainContextValidator[T], super().validator)
     
     
     @abstractmethod

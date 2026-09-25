@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from err import PlayerValidatorException
 from domain.model import Player
-from assurance import PlayerIntegrityChecker
+from assurance import PlayerValidator
 from artifcat import ValidationResult
 from util import LoggingLevelRouter
 from transit.dispatcher.validator import ModelValidationDispatcher
@@ -28,10 +28,10 @@ class PlayerValidationDispatcher(ModelValidationDispatcher[Player]):
         1.  Ensure a Player instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        integrity_checker: PlayerIntegrityChecker
+        validator: PlayerValidator
 
     Provides:
-        - execute(candidate: Any) -> ValidationResult
+        -   def execute(candidate: Any) -> ValidationResult
 
     Super Class:
         ModelValidator
@@ -39,13 +39,13 @@ class PlayerValidationDispatcher(ModelValidationDispatcher[Player]):
     
     def __init__(
             self,
-            integrity_checker: PlayerIntegrityChecker | None = PlayerIntegrityChecker(),
+            validator: PlayerValidator | None = PlayerValidator(),
     ):
-        super().__init__(integrity_checker=integrity_checker)
+        super().__init__(validator=validator)
         
     @property
-    def integrity_checker(self) -> PlayerIntegrityChecker:
-        return cast(PlayerIntegrityChecker, super().integrity_checker)
+    def validator(self) -> PlayerValidator:
+        return cast(PlayerValidator, super().validator)
     
 
     @LoggingLevelRouter.monitor
@@ -55,7 +55,7 @@ class PlayerValidationDispatcher(ModelValidationDispatcher[Player]):
 
         Action:
             1.  Send an exception chain in the ValidationResult if the candidate fails a
-                integrity_checker test..
+                validator test..
             2.  Otherwise, cast the payload into a Player and send in the success result.
                 success result.
         Args:
@@ -68,8 +68,8 @@ class PlayerValidationDispatcher(ModelValidationDispatcher[Player]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        certification = self.integrity_checker.execute(candidate)
-        if certification.is_failure:
+        validation = self.validator.execute(candidate)
+        if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 PlayerValidatorException(
@@ -77,13 +77,13 @@ class PlayerValidationDispatcher(ModelValidationDispatcher[Player]):
                     cls_name=self.__class__.__name__,
                     msg=PlayerValidatorException.MSG,
                     err_code=PlayerValidatorException.ERR_CODE,
-                    ex=certification.exception,
+                    ex=validation.exception,
                 )
             )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(
             cast(
-                self.integrity_checker.bundle.model,
-                certification.payload
+                self.validator.bundle.model,
+                validation.payload
             )
         )

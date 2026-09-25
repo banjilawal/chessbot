@@ -32,7 +32,7 @@ class PlayerContextCarrier(ContextCarrier[PlayerContext]):
         entity: [Player|PlayerContextBlueprint]
 
     Provides:
-        - def extract_ContextBlueprint() -> Optional[PlayerContextBlueprint]
+        -   def extract_ContextBlueprint() -> Optional[PlayerContextBlueprint]
 
     Super Class:
         ContextCarrier

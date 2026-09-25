@@ -32,7 +32,7 @@ class VectorContextCarrier(ContextCarrier[VectorContext]):
         entity: [Vector|VectorContextBlueprint]
 
     Provides:
-        - def extract_ContextBlueprint() -> Optional[VectorContextBlueprint]
+        -   def extract_ContextBlueprint() -> Optional[VectorContextBlueprint]
 
     Super Class:
         ContextCarrier

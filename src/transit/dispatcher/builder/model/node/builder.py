@@ -35,7 +35,7 @@ class NodeBuilder(ModelBuilder[Node]):
             builder_toolkit: Optional[NodeBuilderToolkit]
 
     Provides:
-        - def execute(self, blueprint: NodeBlueprint) -> BuildResult[Node]
+        -   def execute(self, blueprint: NodeBlueprint) -> BuildResult[Node]
 
      Super Class:
          ModelBuilder
@@ -76,7 +76,7 @@ class NodeBuilder(ModelBuilder[Node]):
         method = f"{self.__class__.__name__}.build"
         
         # Handle the case that the blueprint is not certified safe.
-        blueprint_validation = self.builder_toolkit.integrity_checker.execute(
+        blueprint_validation = self.builder_toolkit.validator.execute(
             candidate=blueprint
         )
         if blueprint_validation.is_failure:

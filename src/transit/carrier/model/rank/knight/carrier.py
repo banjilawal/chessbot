@@ -32,7 +32,7 @@ class KnightCarrier(RankCarrier[Knight]):
         entity: [Rank|KnightBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[KnightBlueprint]
+        -   def extract_blueprint() -> Optional[KnightBlueprint]
 
     Super Class:
         ModelCarrier

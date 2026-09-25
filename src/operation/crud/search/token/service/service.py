@@ -34,7 +34,7 @@ class TokenSearchService(SearchMicroservice[Token]):
         resource_host: TokenSearchResourceHost
 
     Provides:
-        - def search(context: TokenQuery) -> SearchResult[List[Token]]
+        -   def search(context: TokenQuery) -> SearchResult[List[Token]]
 
     Super Class:
         SearchMicroservice

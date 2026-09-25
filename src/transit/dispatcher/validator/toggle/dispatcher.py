@@ -13,7 +13,7 @@ from abc import abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 
-from assurance import ToggleIntegrityChecker
+from assurance import ToggleValidator
 from artifcat import ValidationResult
 from operation.toolkit import ToggleToolkit
 
@@ -35,10 +35,10 @@ class ToggleValidationDispatcher(ValidationDispatcher, Generic[T]):
         1.  Ensure a Operand instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        integrity_checker: OperandToolkit
+        validator: OperandToolkit
 
     Provides:
-        - execute(self, candidate: Any) -> ValidationResult
+        -   def execute(self, candidate: Any) -> ValidationResult
 
     Super Class:
         OperandValidator
@@ -46,19 +46,19 @@ class ToggleValidationDispatcher(ValidationDispatcher, Generic[T]):
     
     def __init__(
             self,
-            integrity_checker: ToggleToolkit[T],
-            integrity_checker: ToggleIntegrityChecker[T],
+            validator: ToggleToolkit[T],
+            validator: ToggleValidator[T],
     ):
-        super().__init__(toolk=toolkit, integrity_checker=integrity_checker)
+        super().__init__(toolk=toolkit, validator=validator)
         
     
     @property
-    def toolkit(self) -> ToggleIntegrity_Checker:
+    def toolkit(self) -> ToggleValidator:
         return cast(ToggleToolkit[T], self.toolkit)
     
     @property
-    def integrity_checker(self) -> ToggleIntegrityChecker[T]:
-        return cast(ToggleIntegrityChecker[T], super().integrity_checker)
+    def validator(self) -> ToggleValidator[T]:
+        return cast(ToggleValidator[T], super().validator)
     
        @abstractmethod
     @LoggingLevelRouter.monitor

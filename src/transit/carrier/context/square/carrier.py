@@ -32,7 +32,7 @@ class SquareContextCarrier(ContextCarrier[SquareContext]):
         entity: [Square|SquareContextBlueprint]
 
     Provides:
-        - def extract_ContextBlueprint() -> Optional[SquareContextBlueprint]
+        -   def extract_ContextBlueprint() -> Optional[SquareContextBlueprint]
 
     Super Class:
         ContextCarrier

@@ -32,7 +32,7 @@ class TeamContextCarrier(ContextCarrier[TeamContext]):
         entity: [Team|TeamContextBlueprint]
 
     Provides:
-        - def extract_ContextBlueprint() -> Optional[TeamContextBlueprint]
+        -   def extract_ContextBlueprint() -> Optional[TeamContextBlueprint]
 
     Super Class:
         ContextCarrier

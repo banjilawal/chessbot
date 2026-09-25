@@ -29,7 +29,7 @@ class PathConsistency:
     Attributes:
 
     Provides:
-        - def consistencyChecker(
+        -   def consistencyChecker(
                     cls,
                     candidate,
                     identity_service: IdentityService,

@@ -34,7 +34,7 @@ class StructureValidator(Validator[T], ABC, Generic[T]):
         toolkit: StructureValidatorToolkit[T]
 
     Provides:
-        - def execute(candidate: Any) -> ValidationResult[StructureCarrier[T]]:
+        -   def execute(candidate: Any) -> ValidationResult[StructureCarrier[T]]:
 
     Super Class:
         Validator

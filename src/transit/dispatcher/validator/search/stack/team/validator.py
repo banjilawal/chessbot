@@ -27,25 +27,25 @@ class TeamContextValidator(StackContextValidator[TeamSearchContext]):
         1.  Ensure a TeamContext instance is safe before use.
 
     Attributes:
-        integrity_checker: TeamContextChecker
+        validator: TeamContextChecker
 
     Provides:
-        - execute(self, candidate: Any) -> ValidationResult[TeamContext]
+        -   def execute(self, candidate: Any) -> ValidationResult[TeamContext]
 
     Super Class:
         ContextValidator
     """
     
-    def __init__(self, integrity_checker: TeamContextValidator):
+    def __init__(self, validator: TeamContextValidator):
         """
         Args:
-            integrity_checker: TeamContextChecker
+            validator: TeamContextChecker
         """
-        super().__init__(integrity_checker=integrity_checker)
+        super().__init__(validator=validator)
     
     @property
-    def integrity_checker(self) -> TeamContextValidator:
-        return cast(TeamContextValidator, super().integrity_checker)
+    def validator(self) -> TeamContextValidator:
+        return cast(TeamContextValidator, super().validator)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[TeamSearchContext]:
@@ -53,7 +53,7 @@ class TeamContextValidator(StackContextValidator[TeamSearchContext]):
         Certify a candidate is a TeamContext that is safe to use.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if integrity_checker
+            1.  Send an exception chain in the ValidationResult if validator
                 returns a failure.
             2.  Otherwise, send the success result.
         Args:
@@ -65,8 +65,8 @@ class TeamContextValidator(StackContextValidator[TeamSearchContext]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that integrity_checker flags the candidate.
-        validation = self.integrity_checker.execute(candidate=candidate)
+        # Handle the case that validator flags the candidate.
+        validation = self.validator.execute(candidate=candidate)
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

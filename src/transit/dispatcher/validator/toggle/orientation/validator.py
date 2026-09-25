@@ -29,10 +29,10 @@ class OrientationSelectorValidationDispatcher(ModelValidationDispatcher[Orientat
             before use.
 
     Attributes:
-        carrier_validator: CartesianToggleRegisterIntegrityChecker
+        carrier_validator: CartesianToggleRegisterValidator
 
     Properties:
-        - def validate(
+        -   def validate(
                     candidate: Any,
                     toolkit : OrientationOperandToolkit,
             ) -> ValidationResult[OrientationOperand]:
@@ -43,13 +43,13 @@ class OrientationSelectorValidationDispatcher(ModelValidationDispatcher[Orientat
     
     def __init__(
             self,
-            integrity_checker: CartesianToggleRegisterIntegrityChecker | None = CartesianToggleRegisterIntegrityChecker(),
+            validator: CartesianToggleRegisterValidator | None = CartesianToggleRegisterValidator(),
     ):
-        super().__init__(integrity_checker=integrity_checker)
+        super().__init__(validator=validator)
         
     @property
-    def integrity_checker(self) -> CartesianToggleRegisterIntegrityChecker:
-        return cast(CartesianToggleRegisterIntegrityChecker, super().integrity_checker)
+    def validator(self) -> CartesianToggleRegisterValidator:
+        return cast(CartesianToggleRegisterValidator, super().validator)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult:
@@ -74,10 +74,10 @@ class OrientationSelectorValidationDispatcher(ModelValidationDispatcher[Orientat
         
         
         # Handle the case that the validator is not primed.
-        validator_priming_result = self.integrity_checker.bundle.priming_validator.execute(
+        validator_priming_result = self.validator.bundle.priming_validator.execute(
             candidate=candidate,
-            target_model=self.integrity_checker.bundle.model,
-            context_null_exception=self.integrity_checker.bundle.request_null_exception,
+            target_model=self.validator.bundle.model,
+            context_null_exception=self.validator.bundle.request_null_exception,
         )
         if validator_priming_result.is_failure:
             # Send the exception chain on failure.
@@ -93,8 +93,8 @@ class OrientationSelectorValidationDispatcher(ModelValidationDispatcher[Orientat
         # --- Cast candidate to a OrientationOperand for additional tests. ---#
         register = cast(OrientationOperandEntityRegister, candidate)
         
-        root_certification = self.integrity_checker.execute(register)
-        if root_certification.is_failure:
+        root_validation = self.validator.execute(register)
+        if root_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 OrientationOperandValidatorException(
@@ -102,10 +102,10 @@ class OrientationSelectorValidationDispatcher(ModelValidationDispatcher[Orientat
                     cls_name=self.__class__.__name__,
                     msg=OrientationOperandValidatorException.MSG,
                     err_code=OrientationOperandValidatorException.ERR_CODE,
-                    ex=root_certification.exception
+                    ex=root_validation.exception
                 )
             )
         
-        return root_certification
+        return root_validation
 
             

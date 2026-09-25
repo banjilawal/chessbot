@@ -36,10 +36,10 @@ class WorkerRegistryController(Controller[WorkerRegistry]):
         toolkit: WorkerRegistryToolkit
     
     Provides:
-        - def find_worker(domain: str, operation_name: str) -> SearchResult[List[Operation]]:
-        - def domain_workers(domain: str) -> SearchResult[List[dict[str, Operation]]]:
+        -   def find_worker(domain: str, operation_name: str) -> SearchResult[List[Operation]]:
+        -   def domain_workers(domain: str) -> SearchResult[List[dict[str, Operation]]]:
         
-        - def register_worker(
+        -   def register_worker(
                     worker: Operation,
                     null_exception: OperationNullException,
             ) -> InsertionResult:

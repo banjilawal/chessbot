@@ -32,7 +32,7 @@ class HumanPlayerCarrier(PlayerCarrier):
         entity: [HumanPlayer|HumanBlueprint]
 
     Provides:
-        - def extract_blueprint() -> Optional[HumanBlueprint]
+        -   def extract_blueprint() -> Optional[HumanBlueprint]
 
     Super Class:
         HumanPlayerCarrier
