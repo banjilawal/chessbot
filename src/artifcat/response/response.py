@@ -12,8 +12,8 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic,  TypeVar
 
-from artifcat import Result
-from client import Request, ResponseState
+from artifcat import ResponseState, Result
+from client import Request
 
 T = TypeVar("T", bound="Result")
 
