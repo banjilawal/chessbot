@@ -12,23 +12,23 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ModelValidationResponse, ResponseState, ValidationResult
-from client import Request, VectorValidationRequest
-from domain import Vector, VectorBlueprint
-from transit import VectorCarrier
+from client import Request, BoardValidationRequest
+from domain import Board, BoardBlueprint
+from transit import BoardCarrier
 
 
-class VectorValidationResponse(ModelValidationResponse[Vector]):
+class BoardValidationResponse(ModelValidationResponse[Board]):
     """
     Role
         -   Messaging
 
     Responsibilities:
-        1.  Capture a Vector validation request-response cycle's data and state.
+        1.  Capture a Board validation request-response cycle's data and state.
 
     Attributes:
         state: ResponseState
         result: ValidationResult,
-        request: VectorValidationRequest
+        request: BoardValidationRequest
         exception: Optional[Exception]
 
     Provides:
@@ -37,19 +37,19 @@ class VectorValidationResponse(ModelValidationResponse[Vector]):
         -   is_consistent: bool
         -   is_not_consistent: bool
         
-        -   def valid_model() -> Optional[Vector]
-        -   def valid_blueprint() -> Optional[VectorBlueprint]
+        -   def valid_model() -> Optional[Board]
+        -   def valid_blueprint() -> Optional[BoardBlueprint]
 
         -   def success(
                     request: Request,
-                    result: ValidationResult[VectorCarrier],
-            ) -> VectorValidationResponse
+                    result: ValidationResult,
+            ) -> BoardValidationResponse
 
         -   def failure(
                     request: Request,
-                    result: ValidationResult[VectorCarrier],
+                    result: ValidationResult,
                     exception: Exception,
-            ) -> VectorValidationResponse
+            ) -> BoardValidationResponse
             
     Super Class:
         ModelValidationResponse
@@ -58,14 +58,14 @@ class VectorValidationResponse(ModelValidationResponse[Vector]):
             self,
             state: ResponseState,
             result: ValidationResult,
-            request: VectorValidationRequest,
+            request: BoardValidationRequest,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             state: ResponseState
             result: ValidationResult,
-            request: VectorValidationRequest
+            request: BoardValidationRequest
             exception: Optional[Exception]
         """
         super().__init__(
@@ -76,49 +76,49 @@ class VectorValidationResponse(ModelValidationResponse[Vector]):
         )
         
     @property
-    def request(self) -> VectorValidationRequest:
-        return cast(VectorValidationRequest, super().request)
+    def request(self) -> BoardValidationRequest:
+        return cast(BoardValidationRequest, super().request)
     
     @property
-    def valid_model(self) -> Optional[Vector]:
+    def valid_model(self) -> Optional[Board]:
         # Handle the case that the validation failed.
         if self.result.is_failure:
             return None
         # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(VectorCarrier, self.result.payload)
+        carrier = cast(BoardCarrier, self.result.payload)
         
         # Handle the case that the carrier is null or the wrong type.
         if (
                 carrier is None or
-                not isinstance(carrier, VectorCarrier)
+                not isinstance(carrier, BoardCarrier)
         ):
             return None
         # Handle the case that there is no model in the carrier.
         if not carrier.is_carrying_model:
             return None
         # --- Extract the model. ---#
-        model = cast(Vector, carrier.entity)
+        model = cast(Board, carrier.entity)
         # Handle the case that the model is null or the wrong type.
         if (
             model is None or
-            not isinstance(model, Vector)
+            not isinstance(model, Board)
         ):
             return None
         # Finally send the success result.
         return model
     
     @property
-    def valid_blueprint(self) -> Optional[VectorBlueprint]:
+    def valid_blueprint(self) -> Optional[BoardBlueprint]:
         # Handle the case that the validation failed.
         if self.result.is_failure:
             return None
         # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(VectorCarrier, self.result.payload)
+        carrier = cast(BoardCarrier, self.result.payload)
         
         # Handle the case that the carrier is null or the wrong type.
         if (
                 carrier is None or
-                not isinstance(carrier, VectorCarrier)
+                not isinstance(carrier, BoardCarrier)
         ):
             return None
         # Handle the case that there is no blueprint in the carrier.
@@ -129,7 +129,7 @@ class VectorValidationResponse(ModelValidationResponse[Vector]):
         # Handle the case that the blueprint is null or the wrong type.
         if (
                 blueprint is None or
-                not isinstance(blueprint, VectorBlueprint)
+                not isinstance(blueprint, BoardBlueprint)
         ):
             return None
         # Finally send the success result.
@@ -140,11 +140,11 @@ class VectorValidationResponse(ModelValidationResponse[Vector]):
             cls,
             request: Request,
             result: ValidationResult,
-    ) -> VectorValidationResponse:
+    ) -> BoardValidationResponse:
         
-        # Downcast the request into a VectorValidationRequest.
+        # Downcast the request into a BoardValidationRequest.
         validation_request = cast(
-            VectorValidationRequest,
+            BoardValidationRequest,
             request,
         )
         # Send a success Response using the cast.
@@ -160,11 +160,11 @@ class VectorValidationResponse(ModelValidationResponse[Vector]):
             request: Request,
             result: ValidationResult,
             exception: Exception,
-    ) -> VectorValidationResponse:
+    ) -> BoardValidationResponse:
         
-        # Downcast the request into a VectorValidationRequest.
+        # Downcast the request into a BoardValidationRequest.
         validation_request = cast(
-            VectorValidationRequest,
+            BoardValidationRequest,
             request,
         )
         # Send a failure Response using the cast.

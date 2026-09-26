@@ -12,23 +12,23 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ModelValidationResponse, ResponseState, ValidationResult
-from client import Request, VectorValidationRequest
-from domain import Vector, VectorBlueprint
-from transit import VectorCarrier
+from client import Request, TeamValidationRequest
+from domain import Team, TeamBlueprint
+from transit import TeamCarrier
 
 
-class VectorValidationResponse(ModelValidationResponse[Vector]):
+class TeamValidationResponse(ModelValidationResponse[Team]):
     """
     Role
         -   Messaging
 
     Responsibilities:
-        1.  Capture a Vector validation request-response cycle's data and state.
+        1.  Capture a Team validation request-response cycle's data and state.
 
     Attributes:
         state: ResponseState
         result: ValidationResult,
-        request: VectorValidationRequest
+        request: TeamValidationRequest
         exception: Optional[Exception]
 
     Provides:
@@ -37,19 +37,19 @@ class VectorValidationResponse(ModelValidationResponse[Vector]):
         -   is_consistent: bool
         -   is_not_consistent: bool
         
-        -   def valid_model() -> Optional[Vector]
-        -   def valid_blueprint() -> Optional[VectorBlueprint]
+        -   def valid_model() -> Optional[Team]
+        -   def valid_blueprint() -> Optional[TeamBlueprint]
 
         -   def success(
                     request: Request,
-                    result: ValidationResult[VectorCarrier],
-            ) -> VectorValidationResponse
+                    result: ValidationResult[TeamCarrier],
+            ) -> TeamValidationResponse
 
         -   def failure(
                     request: Request,
-                    result: ValidationResult[VectorCarrier],
+                    result: ValidationResult[TeamCarrier],
                     exception: Exception,
-            ) -> VectorValidationResponse
+            ) -> TeamValidationResponse
             
     Super Class:
         ModelValidationResponse
@@ -58,14 +58,14 @@ class VectorValidationResponse(ModelValidationResponse[Vector]):
             self,
             state: ResponseState,
             result: ValidationResult,
-            request: VectorValidationRequest,
+            request: TeamValidationRequest,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             state: ResponseState
             result: ValidationResult,
-            request: VectorValidationRequest
+            request: TeamValidationRequest
             exception: Optional[Exception]
         """
         super().__init__(
@@ -76,49 +76,49 @@ class VectorValidationResponse(ModelValidationResponse[Vector]):
         )
         
     @property
-    def request(self) -> VectorValidationRequest:
-        return cast(VectorValidationRequest, super().request)
+    def request(self) -> TeamValidationRequest:
+        return cast(TeamValidationRequest, super().request)
     
     @property
-    def valid_model(self) -> Optional[Vector]:
+    def valid_model(self) -> Optional[Team]:
         # Handle the case that the validation failed.
         if self.result.is_failure:
             return None
         # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(VectorCarrier, self.result.payload)
+        carrier = cast(TeamCarrier, self.result.payload)
         
         # Handle the case that the carrier is null or the wrong type.
         if (
                 carrier is None or
-                not isinstance(carrier, VectorCarrier)
+                not isinstance(carrier, TeamCarrier)
         ):
             return None
         # Handle the case that there is no model in the carrier.
         if not carrier.is_carrying_model:
             return None
         # --- Extract the model. ---#
-        model = cast(Vector, carrier.entity)
+        model = cast(Team, carrier.entity)
         # Handle the case that the model is null or the wrong type.
         if (
             model is None or
-            not isinstance(model, Vector)
+            not isinstance(model, Team)
         ):
             return None
         # Finally send the success result.
         return model
     
     @property
-    def valid_blueprint(self) -> Optional[VectorBlueprint]:
+    def valid_blueprint(self) -> Optional[TeamBlueprint]:
         # Handle the case that the validation failed.
         if self.result.is_failure:
             return None
         # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(VectorCarrier, self.result.payload)
+        carrier = cast(TeamCarrier, self.result.payload)
         
         # Handle the case that the carrier is null or the wrong type.
         if (
                 carrier is None or
-                not isinstance(carrier, VectorCarrier)
+                not isinstance(carrier, TeamCarrier)
         ):
             return None
         # Handle the case that there is no blueprint in the carrier.
@@ -129,7 +129,7 @@ class VectorValidationResponse(ModelValidationResponse[Vector]):
         # Handle the case that the blueprint is null or the wrong type.
         if (
                 blueprint is None or
-                not isinstance(blueprint, VectorBlueprint)
+                not isinstance(blueprint, TeamBlueprint)
         ):
             return None
         # Finally send the success result.
@@ -140,11 +140,11 @@ class VectorValidationResponse(ModelValidationResponse[Vector]):
             cls,
             request: Request,
             result: ValidationResult,
-    ) -> VectorValidationResponse:
+    ) -> TeamValidationResponse:
         
-        # Downcast the request into a VectorValidationRequest.
+        # Downcast the request into a TeamValidationRequest.
         validation_request = cast(
-            VectorValidationRequest,
+            TeamValidationRequest,
             request,
         )
         # Send a success Response using the cast.
@@ -160,11 +160,11 @@ class VectorValidationResponse(ModelValidationResponse[Vector]):
             request: Request,
             result: ValidationResult,
             exception: Exception,
-    ) -> VectorValidationResponse:
+    ) -> TeamValidationResponse:
         
-        # Downcast the request into a VectorValidationRequest.
+        # Downcast the request into a TeamValidationRequest.
         validation_request = cast(
-            VectorValidationRequest,
+            TeamValidationRequest,
             request,
         )
         # Send a failure Response using the cast.
