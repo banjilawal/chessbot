@@ -7,10 +7,10 @@ Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ASSURANCE.LOADER.EXTRACT.MODEL PACKAGE ===========#
+# =========== ASSURANCE.LOADER.EXTRACT.MODEL.TEAM PACKAGE ===========#
 
 # Packages
 
 
 # Module
-from .extract import TeamLoaderExtract
+from .extract import TeamExtract

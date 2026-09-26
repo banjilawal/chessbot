@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== ASSURANCE.LOADER PACKAGE ===========#
 
 # Packages
+from .extract import *
 from .model import *
 from .structure import *
 

@@ -10,7 +10,8 @@ version: 0.0.2
 # =========== ASSURANCE.LOADER.EXTRACT.MODEL PACKAGE ===========#
 
 # Packages
+from .board import *
 from .team import *
 
 # Module
-from .extract import ModelLoaderExtract
+from .extract import ModelExtract

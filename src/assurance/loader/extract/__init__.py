@@ -13,4 +13,4 @@ version: 0.0.2
 from .model import *
 
 # Module
-from .extract import LoaderExtract
+from .extract import Extract

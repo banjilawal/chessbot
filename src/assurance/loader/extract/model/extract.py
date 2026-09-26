@@ -1,7 +1,7 @@
-# src/assurance/loader/model/team/extract.py
+# src/assurance/loader/model/extract.py
 
 """
-Module: assurance.loader.model.team.extract
+Module: assurance.loader.model.extract
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -10,19 +10,16 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, Optional, TypeVar
+from typing import Generic, Optional, TypeVar, cast
 
-from domain import Blueprint
-from transit import EntityCarrier
+from assurance import Extract
+from domain import Blueprint, Model, ModelBlueprint
+from transit import EntityCarrier, ModelCarrier
 
-T = TypeVar("T")
+T = TypeVar("T", bound="Model")
 
-class LoaderExtract(ABC, Generic[T]):
-    _carrier: EntityCarrier[T]
-    _blueprint: Optional[Blueprint[T]]
-    _model: Optional[T]
+class ModelExtract(Extract[T], ABC, Generic[T]):
 
-    
     def __(
             self,
             carrier: EntityCarrier[T],
@@ -35,21 +32,23 @@ class LoaderExtract(ABC, Generic[T]):
             blueprint: Optional[Blueprint[T]]
             model: Optional[T]
         """
-        self._model = model
-        self._carrier = carrier
-        self._blueprint = blueprint
+        super().__init__(
+            carrier=carrier,
+            blueprint=blueprint,
+            model=model,
+        )
         
     @property
-    def carrier(self) -> EntityCarrier[T]:
-        return self._carrier
+    def carrier(self) -> ModelCarrier[T]:
+        return cast(ModelCarrier[T], super().carrier)
     
     @property
     def model(self) -> Optional[T]:
-        return self._model
+        return cast(T, super().model)
     
     @property
-    def blueprint(self) -> Optional[Blueprint[T]]:
-        return self._blueprint
+    def blueprint(self) -> Optional[ModelBlueprint[T]]:
+        return cast(ModelBlueprint[T], super().blueprint)
     
     @property
     def is_model_load(self) -> bool:
@@ -60,7 +59,7 @@ class LoaderExtract(ABC, Generic[T]):
                 not isinstance(self.model, T)
         ):
             return False
-        return self.model
+        return True
     
     @property
     def is_blueprint_load(self) -> bool:
@@ -71,4 +70,4 @@ class LoaderExtract(ABC, Generic[T]):
                 not isinstance(self.blueprint, Blueprint[T])
         ):
             return False
-        return self.blueprint
+        return True
