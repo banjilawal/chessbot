@@ -16,11 +16,11 @@ from err import ModelValidationResponderException
 
 __all__ = [
     # ======================# PLAYER_VALIDATION_RESPONDER_FAILURE #======================#
-    "PlayerValidatorResponseServiceExceptionValidation",
+    "PlayerValidationResponderException",
 ]
 
 # ======================# PLAYER_VALIDATION_RESPONDER_FAILURE #======================#
-class PlayerValidatorResponseServiceExceptionValidation(ModelValidationResponderException):
+class PlayerValidationResponderException(ModelValidationResponderException):
     """
     Role:
         - Error Tracing

@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import ValidationResult, SquareValidationResponse
 from exchange import ModelValidationResponder, SquareValidationRequest
 from domain import Square
-from err import SquareValidatorResponseServiceExceptionValidation
+from err import SquareValidationResponderException
 from transit import SquareCarrier, SquareValidationDispatcher
 from util import LoggingLevelRouter
 
@@ -82,11 +82,11 @@ class SquareValidationResponder(ModelValidationResponder[Square]):
             return SquareValidationResponse.failure(
                 request=request,
                 result=result,
-                exception=SquareValidatorResponseServiceExceptionValidation(
+                exception=SquareValidationResponderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SquareValidatorResponseServiceExceptionValidation.MSG,
-                    err_code=SquareValidatorResponseServiceExceptionValidation.ERR_CODE,
+                    msg=SquareValidationResponderException.MSG,
+                    err_code=SquareValidationResponderException.ERR_CODE,
                     ex=result.exception,
                 ),
             )

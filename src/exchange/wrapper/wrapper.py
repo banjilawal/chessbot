@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Any, Generic, TypeVar
+from typing import Generic, TypeVar
 
 from artifcat import Result
 from exchange import Request, Responder
@@ -24,7 +24,7 @@ class ResponseWrapper(ABC, Generic[T]):
         -   Wrapper
 
     Responsibilities:
-        1.  Extract the payload from a Response.result attribute
+        1.  Extract the payload from a Response.result.
 
     Attributes:
         responder: Responder[T]
@@ -46,8 +46,3 @@ class ResponseWrapper(ABC, Generic[T]):
     @property
     def responder(self) ->Responder[T]:
         return self._responder
-    
-    @abstractmethod
-    @LoggingLevelRouter.monitor
-    def execute(self, request: Request[T]) -> Any:
-        pass

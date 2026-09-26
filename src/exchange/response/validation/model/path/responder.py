@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import ValidationResult, PathValidationResponse
 from exchange import ModelValidationResponder, PathValidationRequest
 from domain import Path
-from err import PathValidatorResponseServiceExceptionValidation
+from err import PathValidationResponderException
 from transit import PathCarrier, PathValidationDispatcher
 from util import LoggingLevelRouter
 
@@ -82,11 +82,11 @@ class PathValidationResponder(ModelValidationResponder[Path]):
             return PathValidationResponse.failure(
                 request=request,
                 result=result,
-                exception=PathValidatorResponseServiceExceptionValidation(
+                exception=PathValidationResponderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PathValidatorResponseServiceExceptionValidation.MSG,
-                    err_code=PathValidatorResponseServiceExceptionValidation.ERR_CODE,
+                    msg=PathValidationResponderException.MSG,
+                    err_code=PathValidationResponderException.ERR_CODE,
                     ex=result.exception,
                 ),
             )

@@ -17,11 +17,11 @@ from err import ResponderException
 
 __all__ = [
     # ======================# VALIDATION_RESPONDER_FAILURE #======================#
-    "ValidatorResponderException",
+    "ValidationResponderException",
 ]
 
 # ======================# VALIDATION_RESPONDER_FAILURE #======================#
-class ValidatorResponderException(ResponderException):
+class ValidationResponderException(ResponderException):
     """
     Role:
         - Error Tracing

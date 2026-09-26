@@ -16,11 +16,11 @@ from err import ModelValidationResponderException
 
 __all__ = [
     # ======================# COORD_VALIDATION_RESPONDER_FAILURE #======================#
-    "CoordValidatorResponseServiceExceptionValidation",
+    "CoordValidationResponderException",
 ]
 
 # ======================# COORD_VALIDATION_RESPONDER_FAILURE #======================#
-class CoordValidatorResponseServiceExceptionValidation(ModelValidationResponderException):
+class CoordValidationResponderException(ModelValidationResponderException):
     """
     Role:
         - Error Tracing

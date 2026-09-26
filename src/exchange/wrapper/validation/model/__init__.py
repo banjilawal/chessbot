@@ -10,7 +10,7 @@ version: 0.0.2
 # ========== EXCHANGE.WRAPPER.VALIDATION.MODEL PACKAGE ===========#
 
 # Packages
-from .team import *
+from .board import *
 
 # Modules
 from .wrapper import ModelValidationResponseWrapper

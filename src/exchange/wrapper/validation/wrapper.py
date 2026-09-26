@@ -10,15 +10,20 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Any, Generic, TypeVar, cast
+from typing import Generic, TypeVar, cast
 
 from artifcat import ValidationResult
+from domain import Blueprint
 from exchange import ResponseWrapper, ValidationRequest, ValidationResponder
 from util import LoggingLevelRouter
 
 T = TypeVar("T")
 
-class ValidationResponseWrapper(ResponseWrapper[ValidationResult], ABC, Generic[T]):
+class ValidationResponseWrapper(
+    ResponseWrapper[ValidationResult],
+    ABC,
+    Generic[T],
+):
     """
     Role
         -   Wrapper
@@ -30,7 +35,13 @@ class ValidationResponseWrapper(ResponseWrapper[ValidationResult], ABC, Generic[
         responder: ValidationResponder[T]
 
     Provides:
-        -   def execute(self, request: ValidationRequest[T]) -> Any
+        -   def extract_model(
+                    request: ValidationRequest[T]
+            ) -> ValidationResult[T]
+            
+            -   def extract_blueprint(
+                    request: ValidationRequest[T]
+            ) -> ValidationResult[Blueprint[T]]
 
     Super Class:
         ResponseWrapper
@@ -49,5 +60,16 @@ class ValidationResponseWrapper(ResponseWrapper[ValidationResult], ABC, Generic[
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: ValidationRequest[T]) -> Any:
+    def extract_model(
+            self,
+            request: ValidationRequest[T]
+    ) -> ValidationResult[T]:
+        pass
+    
+    @abstractmethod
+    @LoggingLevelRouter.monitor
+    def extract_model(
+            self,
+            request: ValidationRequest[T]
+    ) -> ValidationResult[Blueprint[T]]:
         pass

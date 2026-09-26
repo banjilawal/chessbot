@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ValidatorResponderException
+from err import ValidationResponderException
 
 
 __all__ = [
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# MODEL_VALIDATION_RESPONDER_FAILURE #======================#
-class ModelValidationResponderException(ValidatorResponderException):
+class ModelValidationResponderException(ValidationResponderException):
     """
     Role:
         - Error Tracing

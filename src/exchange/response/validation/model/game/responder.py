@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import ValidationResult, GameValidationResponse
 from exchange import ModelValidationResponder, GameValidationRequest
 from domain import Game
-from err import GameValidatorResponseServiceExceptionValidation
+from err import GameValidationResponderException
 from transit import GameCarrier, GameValidationDispatcher
 from util import LoggingLevelRouter
 
@@ -82,11 +82,11 @@ class GameValidationResponder(ModelValidationResponder[Game]):
             return GameValidationResponse.failure(
                 request=request,
                 result=result,
-                exception=GameValidatorResponseServiceExceptionValidation(
+                exception=GameValidationResponderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=GameValidatorResponseServiceExceptionValidation.MSG,
-                    err_code=GameValidatorResponseServiceExceptionValidation.ERR_CODE,
+                    msg=GameValidationResponderException.MSG,
+                    err_code=GameValidationResponderException.ERR_CODE,
                     ex=result.exception,
                 ),
             )

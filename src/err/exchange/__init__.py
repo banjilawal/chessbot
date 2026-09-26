@@ -11,6 +11,7 @@ version: 1.0.0
 
 # Packages
 from .response import *
+from .wrapper import *
 
 # Modules
 from .exception import ExchangeException

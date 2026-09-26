@@ -12,9 +12,9 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult, TeamValidationResponse
+from err import TeamValidationResponderException
 from exchange import ModelValidationResponder, TeamValidationRequest
 from domain import Team
-from err import TeamValidatorResponseServiceExceptionValidation
 from transit import TeamCarrier, TeamValidationDispatcher
 from util import LoggingLevelRouter
 
@@ -82,11 +82,11 @@ class TeamValidationResponder(ModelValidationResponder[Team]):
             return TeamValidationResponse.failure(
                 request=request,
                 result=result,
-                exception=TeamValidatorResponseServiceExceptionValidation(
+                exception=TeamValidationResponderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamValidatorResponseServiceExceptionValidation.MSG,
-                    err_code=TeamValidatorResponseServiceExceptionValidation.ERR_CODE,
+                    msg=TeamValidationResponderException.MSG,
+                    err_code=TeamValidationResponderException.ERR_CODE,
                     ex=result.exception,
                 ),
             )

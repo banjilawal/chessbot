@@ -16,11 +16,11 @@ from err import ModelValidationResponderException
 
 __all__ = [
     # ======================# RANK_VALIDATION_RESPONDER_FAILURE #======================#
-    "RankValidatorResponseServiceExceptionValidation",
+    "RankValidationResponderException",
 ]
 
 # ======================# RANK_VALIDATION_RESPONDER_FAILURE #======================#
-class RankValidatorResponseServiceExceptionValidation(ModelValidationResponderException):
+class RankValidationResponderException(ModelValidationResponderException):
     """
     Role:
         - Error Tracing
