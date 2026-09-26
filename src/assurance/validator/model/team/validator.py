@@ -18,7 +18,8 @@ from domain import (
     TeamBlueprint, TeamValidationRequest
 )
 from err import (
-    ArchetypeNullException, EmptyBoardCarrierException, EmptyPlayerCarrierException,
+    ArchetypeNullException, BoardValidatorResponseServiceException, EmptyBoardCarrierException,
+    EmptyPlayerCarrierException,
     EmptyTeamCarrierException, TeamValidationRequestNullException, TeamValidatorException
 )
 from transit import BoardCarrier, PlayerCarrier, TeamCarrier
@@ -282,22 +283,16 @@ class TeamValidator(ModelValidator[Team]):
             )
         response = cast(BoardValidationResponse, service_result)
         if not response.valid_model:
-            if service_result.is_failure:
-                # Send the exception chain on failure.
-                return ValidationResult.failure(
-                    TeamValidatorException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=TeamValidatorException.MSG,
-                        err_code=TeamValidatorException.ERR_CODE,
-                        ex=BoardValidationClientException(
-                            cls_mthd=method,
-                            cls_name=self.__class__.__name__,
-                            msg=BoardValidationClientExceptionn.MSG,
-                            err_code=BoardValidationClientException.ERR_CODE,
-                        ),
-                    )
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                BoardValidatorResponseServiceException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=BoardValidatorResponseServiceException.MSG,
+                    err_code=BoardValidatorResponseServiceException.ERR_CODE,
+                    ex=response.exception,
                 )
-            model = cast(Board, response.valid_model)
-        # --- Extract the board validation payload. ---#
+            )
+        # --- Send the work product. ---#
+        model = cast(Board, response.valid_model)
         return ValidationResult.success(model)
