@@ -39,7 +39,7 @@ class ManeuverValidator(ModelValidator[Maneuver]):
         toolkit: ManeuverValidatorToolkit
 
     Provides:
-        *   def execute(candidate: Any) -> ValidationResult[ManeuverCarrier]:
+        -   def execute(candidate: Any) -> ValidationResult[ManeuverCarrier]:
 
     Super Class:
         ModelValidator
@@ -68,12 +68,12 @@ class ManeuverValidator(ModelValidator[Maneuver]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    *   The request is either null or not a ManeuverValidatorRequest.
-                    *   The request's payload is either,
+                    -   The request is either null or not a ManeuverValidatorRequest.
+                    -   The request's payload is either,
                             null
                             not a ManeuverCarrier
                             an empty ManeuverCarrier.
-                    *   Either the id, token, or owner attributes are flagged unsafe.
+                    -   Either the id, token, or owner attributes are flagged unsafe.
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
@@ -85,7 +85,7 @@ class ManeuverValidator(ModelValidator[Maneuver]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the request is null or the wrong type.
+        # Handle the case that the candidate is null or the rong type.
         priming_result = self.toolkit.helper.priming_validator.execute(
             candidate=candidate,
             target_model=ManeuverValidationRequest,
@@ -102,10 +102,10 @@ class ManeuverValidator(ModelValidator[Maneuver]):
                     ex=priming_result.exception,
                 )
             )
-        # --- Cast the priming_validator payload for additional tests. ---#
+        # --- Cast priming_result into a request for additional tests. ---#
         request = cast(ManeuverValidationRequest, priming_result.payload)
         
-        # Handle the case that the request payload is null or the wrong type.
+        # Handle the case that request.item is the wrong carrier type.
         carrier_validation = self.toolkit.helper.priming_validator.execute(
             candidate=request.item,
             target_model=self.toolkit.metadata.types.carrier,
@@ -122,10 +122,10 @@ class ManeuverValidator(ModelValidator[Maneuver]):
                     ex=carrier_validation.exception,
                 )
             )
-        # --- Extract the blueprint from the validated carrier. ---#
+        # --- Cast carrier_validation payload to into carrier to extract the blueprint. ---#
         carrier = cast(ManeuverCarrier, carrier_validation.payload)
         blueprint = carrier.extract_blueprint()
-        # Handle the case that the carrier does not produce a Blueprint.
+        # Handle the case that the blueprint is null.
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(

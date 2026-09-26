@@ -35,7 +35,7 @@ class CoordValidator(ModelValidator[Coord]):
         toolkit: CoordValidatorToolkit
 
     Provides:
-        *   def execute(candidate: CoordValidationRequest) -> ValidationResult[CoordCarrier]:
+        -   def execute(candidate: CoordValidationRequest) -> ValidationResult[CoordCarrier]:
 
     Super Class:
         ModelValidator
@@ -67,12 +67,12 @@ class CoordValidator(ModelValidator[Coord]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    *   The request is either null or not a CoordValidatorRequest.
-                    *   The request's payload is either,
+                    -   The request is either null or not a CoordValidatorRequest.
+                    -   The request's payload is either,
                             null
                             not a CoordCarrier
                             an empty CoordCarrier.
-                    *   Either the board, row, or column attributes are flagged unsafe.
+                    -   Either the board, row, or column attributes are flagged unsafe.
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
@@ -84,7 +84,7 @@ class CoordValidator(ModelValidator[Coord]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the request is null or the wrong type.
+        # Handle the case that the candidate is null or the rong type.
         priming_result = self.toolkit.helper.priming_validator.execute(
             candidate=candidate,
             target_model=CoordValidationRequest,
@@ -101,10 +101,10 @@ class CoordValidator(ModelValidator[Coord]):
                     ex=priming_result.exception,
                 )
             )
-        # --- Cast the priming_validator payload for additional tests. ---#
+        # --- Cast priming_result into a request for additional tests. ---#
         request = cast(CoordValidationRequest, priming_result.payload)
         
-        # Handle the case that the request payload is null or the wrong type.
+        # Handle the case that request.item is the wrong carrier type.
         carrier_validation = self.toolkit.helper.priming_validator.execute(
             candidate=request.item,
             target_model=self.toolkit.metadata.types.carrier,

@@ -14,7 +14,6 @@ from typing import Optional, cast
 from assurance import ModelValidatorToolkit, ArenaHelperTable
 from domain import Arena, ArenaManifest, ArenaNullGroup, ArenaTypeUnion
 
-
 class ArenaValidatorToolkit(ModelValidatorToolkit[Arena]):
     """
     Role:

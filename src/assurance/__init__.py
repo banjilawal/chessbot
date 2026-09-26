@@ -10,8 +10,8 @@ version: 0.0.2
 # =========== ASSURANCE PACKAGE ===========#
 
 # Packages
-from .auditor import *
 from .attribute import *
+from .loader import *
 from .primitive import *
 from .toolkit import *
 from .validator import *

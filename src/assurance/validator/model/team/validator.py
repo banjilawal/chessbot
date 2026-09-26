@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, Optional, cast
+from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
 from assurance import ModelValidator, TeamValidatorToolkit
@@ -37,7 +37,7 @@ class TeamValidator(ModelValidator[Team]):
         toolkit: TeamValidatorToolkit
 
     Provides:
-        *   def execute(candidate: Any) -> ValidationResult[TeamCarrier]:
+        -   def execute(candidate: Any) -> ValidationResult[TeamCarrier]:
 
     Super Class:
         ModelValidator
@@ -66,12 +66,12 @@ class TeamValidator(ModelValidator[Team]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    *   The request is either null or not a TeamValidatorRequest.
-                    *   The request's payload is either,
+                    -   The request is either null or not a TeamValidatorRequest.
+                    -   The request's payload is either,
                             null
                             not a TeamCarrier
                             an empty TeamCarrier.
-                    *   Either the id, board, or owner attributes are flagged unsafe.
+                    -   Either the id, board, or owner attributes are flagged unsafe.
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
@@ -83,63 +83,8 @@ class TeamValidator(ModelValidator[Team]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the request is null or the wrong type.
-        priming_result = self.toolkit.helper.priming_validator.execute(
-            candidate=candidate,
-            target_model=TeamValidationRequest,
-            null_exception=TeamValidationRequestNullException(),
-        )
-        if priming_result.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                TeamValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=TeamValidatorException.MSG,
-                    err_code=TeamValidatorException.ERR_CODE,
-                    ex=priming_result.exception,
-                )
-            )
-        # --- Cast the priming_validator payload for additional tests. ---#
-        request = cast(TeamValidationRequest, priming_result.payload)
-        
-        # Handle the case that the request payload is null or the wrong type.
-        carrier_validation = self.toolkit.helper.priming_validator.execute(
-            candidate=request.item,
-            target_model=self.toolkit.metadata.types.carrier,
-            null_exception=self.toolkit.metadata.nulls.carrier,
-        )
-        if carrier_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                TeamValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=TeamValidatorException.MSG,
-                    err_code=TeamValidatorException.ERR_CODE,
-                    ex=carrier_validation.exception,
-                )
-            )
-        # --- Extract the blueprint from the validated carrier. ---#
-        carrier = cast(TeamCarrier, carrier_validation.payload)
-        blueprint = carrier.extract_blueprint()
-        # Handle the case that the carrier does not produce a Blueprint.
-        if blueprint is None:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                TeamValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=TeamValidatorException.MSG,
-                    err_code=TeamValidatorException.ERR_CODE,
-                    ex=EmptyTeamCarrierException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=EmptyTeamCarrierException.MSG,
-                        err_code=EmptyTeamCarrierException.ERR_CODE,
-                    ),
-                )
-            )
+        loading_result = self._blueprint_loader(candidate=candidate)
+
         # Handle the case that any id in the blueprint is flagged.
         id_validation = self.toolkit.helper.blueprint_id_extractor.execute(
             candidate=blueprint,
@@ -280,3 +225,87 @@ class TeamValidator(ModelValidator[Team]):
             archetype=archetype,
         )
         return ValidationResult.success(TeamCarrier(blueprint=payload))
+    
+    @LoggingLevelRouter.monitor
+    def _blueprint_loader(self, candidate: Any) -> ValidationResult[TeamBlueprint]:
+        """
+        Extract the blueprint to validate the candidate.
+
+        Action:
+            1.  Send an exception chain in the ValidationResult if any of the following
+                occur
+                    -   The candidate is null or not a TeamValidatorRequest.
+                    -   The request payload is either:
+                            -   Null
+                            -   Not a TeamCarrier
+                            -   An empty TeamCarrier.
+                    -   A blueprint cannot be extracted from the carrier.
+            2.  Otherwise, send the blueprint in the success result.
+        Args:
+            candidate: Any
+        Returns:
+            ValidationResult[TeamBlueprint]
+        Raises:
+            TeamValidatorException
+        """
+        method = f"{self.__class__.__name__}.blueprint_loader"
+        
+        # Handle the case that the candidate is null or the rong type.
+        priming_result = self.toolkit.helper.priming_validator.execute(
+            candidate=candidate,
+            target_model=TeamValidationRequest,
+            null_exception=TeamValidationRequestNullException(),
+        )
+        if priming_result.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TeamValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TeamValidatorException.MSG,
+                    err_code=TeamValidatorException.ERR_CODE,
+                    ex=priming_result.exception,
+                )
+            )
+        # --- Cast priming_result into a request for additional tests. ---#
+        request = cast(Type[TeamValidationRequest], priming_result.payload)
+        
+        # Handle the case that request.item is the wrong carrier type.
+        carrier_validation = self.toolkit.helper.priming_validator.execute(
+            candidate=request.item,
+            target_model=self.toolkit.metadata.types.carrier,
+            null_exception=self.toolkit.metadata.nulls.carrier,
+        )
+        if carrier_validation.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TeamValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TeamValidatorException.MSG,
+                    err_code=TeamValidatorException.ERR_CODE,
+                    ex=carrier_validation.exception,
+                )
+            )
+        # --- Cast carrier_validation payload to into carrier to extract the blueprint. ---#
+        carrier = cast(TeamCarrier, carrier_validation.payload)
+        blueprint = carrier.extract_blueprint()
+        
+        # Handle the case that the blueprint is null.
+        if blueprint is None:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TeamValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TeamValidatorException.MSG,
+                    err_code=TeamValidatorException.ERR_CODE,
+                    ex=EmptyTeamCarrierException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=EmptyTeamCarrierException.MSG,
+                        err_code=EmptyTeamCarrierException.ERR_CODE,
+                    ),
+                )
+            )
+        return ValidationResult.success(blueprint)

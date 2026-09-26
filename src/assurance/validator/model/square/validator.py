@@ -38,7 +38,7 @@ class SquareValidator(ModelValidator[Square]):
         toolkit: SquareValidatorToolkit
 
     Provides:
-        *   def execute(candidate: SquareValidationRequest) -> ValidationResult[SquareCarrier]:
+        -   def execute(candidate: SquareValidationRequest) -> ValidationResult[SquareCarrier]:
 
     Super Class:
         ModelValidator
@@ -70,12 +70,12 @@ class SquareValidator(ModelValidator[Square]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    *   The request is either null or not a SquareValidatorRequest.
-                    *   The request's payload is either,
+                    -   The request is either null or not a SquareValidatorRequest.
+                    -   The request's payload is either,
                             null
                             not a SquareCarrier
                             an empty SquareCarrier.
-                    *   Either the id, board, or coord attributes are flagged unsafe.
+                    -   Either the id, board, or coord attributes are flagged unsafe.
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
@@ -87,7 +87,7 @@ class SquareValidator(ModelValidator[Square]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the request is null or the wrong type.
+        # Handle the case that the candidate is null or the rong type.
         priming_result = self.toolkit.helper.priming_validator.execute(
             candidate=candidate,
             target_model=SquareValidationRequest,
@@ -104,10 +104,10 @@ class SquareValidator(ModelValidator[Square]):
                     ex=priming_result.exception,
                 )
             )
-        # --- Cast the priming_validator payload for additional tests. ---#
+        # --- Cast priming_result into a request for additional tests. ---#
         request = cast(SquareValidationRequest, priming_result.payload)
         
-        # Handle the case that the request payload is null or the wrong type.
+        # Handle the case that request.item is the wrong carrier type.
         carrier_validation = self.toolkit.helper.priming_validator.execute(
             candidate=request.item,
             target_model=self.toolkit.metadata.types.carrier,

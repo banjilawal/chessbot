@@ -31,7 +31,7 @@ class HomeSquareValidator:
         toolkit: SquareValidatorToolkit
 
     Provides:
-        *   def execute(candidate: SquareValidationRequest) -> ValidationResult[SquareCarrier]:
+        -   def execute(candidate: SquareValidationRequest) -> ValidationResult[SquareCarrier]:
 
     Super Class:
         ModelValidator
@@ -61,12 +61,12 @@ class HomeSquareValidator:
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    *   The request is either null or not a SquareValidatorRequest.
-                    *   The request's payload is either,
+                    -   The request is either null or not a SquareValidatorRequest.
+                    -   The request's payload is either,
                             null
                             not a SquareCarrier
                             an empty SquareCarrier.
-                    *   Either the id, board, or coord attributes are flagged unsafe.
+                    -   Either the id, board, or coord attributes are flagged unsafe.
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:

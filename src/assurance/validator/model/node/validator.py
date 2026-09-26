@@ -19,7 +19,7 @@ class NodeValidator(ModelValidator[Node]):
     2.  If verification fails indicate the reason in an exception returned to the caller.
 
     Super Class:
-        *   Validator
+        -   Validator
 
     Provides:
 
@@ -45,22 +45,22 @@ class NodeValidator(ModelValidator[Node]):
             3.  If no route is found for the enabled attribute send an exception chain in the ValidationResult.
             4.  If a validation route exists return the outcome of the validation to the caller.
         # PARAMETERS:
-            *   rank (Any)
-            *   discovery_status_service (Discovery_StatusService)
-            *   square_validator (SquareService)
-            *   node_validator (NodeValidator)
-            *   number_validation (NumberValidator):
+            -   rank (Any)
+            -   discovery_status_service (Discovery_StatusService)
+            -   square_validator (SquareService)
+            -   node_validator (NodeValidator)
+            -   number_validation (NumberValidator):
         # RETURNS:
-            *   ValidationResult[Node] containing either:
+            -   ValidationResult[Node] containing either:
                     - On failure: Exception.
                     - On success: NodeBlueprint in the payload.
         Raises:
-            *   TypeError
-            *   NullNodeBlueprintException
-            *   ZeroNodeBlueprintFlagsException
-            *   ArenaNodeBlueprintFlagsException
-            *   NodeBlueprintValidationRouteException
-            *   NodeValidatorException
+            -   TypeError
+            -   NullNodeBlueprintException
+            -   ZeroNodeBlueprintFlagsException
+            -   ArenaNodeBlueprintFlagsException
+            -   NodeBlueprintValidationRouteException
+            -   NodeValidatorException
         """
         method = "NodeValidator.execute"
         

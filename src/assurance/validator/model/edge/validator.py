@@ -21,7 +21,7 @@ class EdgeValidator(ModelValidator[Edge]):
     2.  If verification fails indicate the reason in an exception returned to the caller.
 
     Super Class:
-        *   Validator
+        -   Validator
 
     Provides:
 
@@ -48,22 +48,22 @@ class EdgeValidator(ModelValidator[Edge]):
             3.  If no route is found for the enabled attribute send an exception chain in the ValidationResult.
             4.  If a validation route exists return the outcome of the validation to the caller.
         # PARAMETERS:
-            *   rank (Any)
-            *   board_service (BoardService)
-            *   coord_service (CoordService)
-            *   edge_service (EdgeService)
-            *   identity_service (IdentityService):
+            -   rank (Any)
+            -   board_service (BoardService)
+            -   coord_service (CoordService)
+            -   edge_service (EdgeService)
+            -   identity_service (IdentityService):
         # RETURNS:
-            *   ValidationResult[Edge] containing either:
+            -   ValidationResult[Edge] containing either:
                     - On failure:   Exception.
                     - On success:   EdgeBlueprint in the payload.
         Raises:
-            *   TypeError
-            *   NullEdgeBlueprintException
-            *   ZeroEdgeBlueprintFlagsException
-            *   ArenaEdgeBlueprintFlagsException
-            *   EdgeBlueprintValidationRouteException
-            *   EdgeValidatorException
+            -   TypeError
+            -   NullEdgeBlueprintException
+            -   ZeroEdgeBlueprintFlagsException
+            -   ArenaEdgeBlueprintFlagsException
+            -   EdgeBlueprintValidationRouteException
+            -   EdgeValidatorException
         """
         method = "EdgeValidator.execute"
         
