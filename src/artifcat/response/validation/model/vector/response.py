@@ -12,8 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ModelValidationResponse, ResponseState, ValidationResult
-from client import Request
-from client.request import VectorValidationRequest
+from client import Request, VectorValidationRequest
 from domain import Vector, VectorBlueprint
 from transit import VectorCarrier
 
@@ -46,40 +45,58 @@ class VectorValidationResponse(ModelValidationResponse[Vector]):
     
     @property
     def valid_model(self) -> Optional[Vector]:
+        # Handle the case that the validation failed.
         if self.result.is_failure:
             return None
+        # --- Otherwise extract the carrier for additional processing. ---#
         carrier = cast(VectorCarrier, self.result.payload)
+        
+        # Handle the case that the carrier is null or the wrong type.
         if (
                 carrier is None or
                 not isinstance(carrier, VectorCarrier)
-        ): return None
+        ):
+            return None
+        # Handle the case that there is no model in the carrier.
         if not carrier.is_carrying_model:
             return None
+        # --- Extract the model. ---#
         model = cast(Vector, carrier.entity)
+        # Handle the case that the model is null or the wrong type.
         if (
             model is None or
             not isinstance(model, Vector)
         ):
             return None
+        # Finally send the success result.
         return model
     
     @property
     def valid_blueprint(self) -> Optional[VectorBlueprint]:
+        # Handle the case that the validation failed.
         if self.result.is_failure:
             return None
+        # --- Otherwise extract the carrier for additional processing. ---#
         carrier = cast(VectorCarrier, self.result.payload)
+        
+        # Handle the case that the carrier is null or the wrong type.
         if (
                 carrier is None or
                 not isinstance(carrier, VectorCarrier)
-        ): return None
+        ):
+            return None
+        # Handle the case that there is no blueprint in the carrier.
         if not carrier.is_carrying_blueprint:
             return None
+        # --- Extract the blueprint. ---#
         blueprint = carrier.extract_blueprint()
+        # Handle the case that the blueprint is null or the wrong type.
         if (
                 blueprint is None or
                 not isinstance(blueprint, VectorBlueprint)
         ):
             return None
+        # Finally send the success result.
         return blueprint
     
     @classmethod
@@ -88,7 +105,12 @@ class VectorValidationResponse(ModelValidationResponse[Vector]):
             request: Request,
             result: ValidationResult,
     ) -> VectorValidationResponse:
-        validation_request = cast(VectorValidationRequest, request)
+        # Downcast the request into a VectorValidationRequest.
+        validation_request = cast(
+            VectorValidationRequest,
+            request,
+        )
+        # Send a success Response using the cast.
         return cls(
             result=result,
             request=validation_request,
@@ -102,7 +124,12 @@ class VectorValidationResponse(ModelValidationResponse[Vector]):
             result: ValidationResult,
             exception: Exception,
     ) -> VectorValidationResponse:
-        validation_request = cast(VectorValidationRequest, request)
+        # Downcast the request into a VectorValidationRequest.
+        validation_request = cast(
+            VectorValidationRequest,
+            request,
+        )
+        # Send a failure Response using the cast.
         return cls(
             result=result,
             exception=exception,

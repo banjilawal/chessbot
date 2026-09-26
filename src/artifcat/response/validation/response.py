@@ -68,7 +68,12 @@ class ValidationResponse(Response[ValidationResult], ABC, Generic[T]):
             request: Request,
             result: ValidationResult,
     ) -> ValidationResponse[T]:
-        validation_request = cast(ValidationRequest[T], request)
+        # Downcast the request into a ValidationRequest.
+        validation_request = cast(
+            ValidationRequest[T],
+            request,
+        )
+        # Send a success Response using the cast.
         return cls(
             result=result,
             request=validation_request,
@@ -82,11 +87,15 @@ class ValidationResponse(Response[ValidationResult], ABC, Generic[T]):
             result: ValidationResult,
             exception: Exception,
     ) -> ValidationResponse[T]:
-        validation_request = cast(ValidationRequest[T], request)
+        # Downcast the request into a ValidationRequest.
+        validation_request = cast(
+            ValidationRequest[T],
+            request,
+        )
+        # Send a failure Response using the cast.
         return cls(
             result=result,
             exception=exception,
             request=validation_request,
             state=ResponseState.FAILURE,
-            
         )

@@ -12,9 +12,8 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar, cast
 
-from artifcat import ResponseState, Result, ValidationResponse, ValidationResult
-from client import Request, ValidationRequest
-from client.request import ModelValidationRequest
+from artifcat import ResponseState, ValidationResponse, ValidationResult
+from client import ModelValidationRequest, Request
 from domain import Model, ModelBlueprint
 from transit import ModelCarrier
 
@@ -76,7 +75,10 @@ class ModelValidationResponse(ValidationResponse[T], ABC, Generic[T]):
     def is_consistent(self) -> bool:
         if self.is_failure:
             return False
-        if self.valid_model is None and self.valid_blueprint is None:
+        if (
+                self.valid_model is None and
+                self.valid_blueprint is None
+        ):
             return False
         return True
     
@@ -97,7 +99,12 @@ class ModelValidationResponse(ValidationResponse[T], ABC, Generic[T]):
             request: Request,
             result: ValidationResult,
     ) -> ModelValidationResponse:
-        validation_request = cast(ModelValidationRequest[T], request)
+        # Downcast the request into a ValidationRequest.
+        validation_request = cast(
+            ModelValidationRequest[T],
+            request
+        )
+        # Send a success Response using the cast.
         return cls(
             result=result,
             request=validation_request,
@@ -111,7 +118,12 @@ class ModelValidationResponse(ValidationResponse[T], ABC, Generic[T]):
             result: ValidationResult,
             exception: Exception,
     ) -> ModelValidationResponse:
-        validation_request = cast(ModelValidationRequest[T], request)
+        # Downcast the request into a ValidationRequest.
+        validation_request = cast(
+            ModelValidationRequest[T],
+            request
+        )
+        # Send a failure Response using the cast.
         return cls(
             result=result,
             exception=exception,
