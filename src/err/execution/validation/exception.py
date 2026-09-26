@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ExecutionRouteException
+from err import MissingExecutionRouteException
 
 __all__ = [
     # ======================# VALIDATION_ROUTE #======================#
@@ -22,7 +22,7 @@ from artifcat import MethodResultType
 
 
 # ======================# VALIDATION_ROUTE #======================#
-class NoValidationRouteException(ExecutionRouteException):
+class NoValidationRouteException(MissingExecutionRouteException):
     """
     Role:
         - Error Tracing
