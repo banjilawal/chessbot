@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, VectorHelperTable
-from domain import Vector, VectorManifest
+from domain import Vector, VectorManifest, VectorNullGroup, VectorTypeUnion
 
 
 class VectorValidatorToolkit(ModelValidatorToolkit[Vector]):
@@ -49,9 +49,17 @@ class VectorValidatorToolkit(ModelValidatorToolkit[Vector]):
         )
     
     @property
-    def attribute(self) -> VectorHelperTable:
-        return cast(VectorHelperTable, super().attribute)
+    def helper(self) -> VectorHelperTable:
+        return cast(VectorHelperTable, super().helper)
     
     @property
     def metadata(self) -> VectorManifest:
         return cast(VectorManifest, super().metadata)
+    
+    @property
+    def nulls(self) -> VectorNullGroup:
+        return self.metadata.nulls
+    
+    @property
+    def types(self) -> VectorTypeUnion:
+        return self.metadata.types

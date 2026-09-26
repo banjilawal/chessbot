@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, BoardHelperTable
-from domain import Board, BoardManifest
+from domain import Board, BoardManifest, BoardNullGroup, BoardTypeUnion
 
 
 class BoardValidatorToolkit(ModelValidatorToolkit[Board]):
@@ -49,9 +49,17 @@ class BoardValidatorToolkit(ModelValidatorToolkit[Board]):
         )
     
     @property
-    def attribute(self) -> BoardHelperTable:
-        return cast(BoardHelperTable, super().attribute)
+    def helper(self) -> BoardHelperTable:
+        return cast(BoardHelperTable, super().helper)
     
     @property
     def metadata(self) -> BoardManifest:
         return cast(BoardManifest, super().metadata)
+    
+    @property
+    def nulls(self) -> BoardNullGroup:
+        return self.metadata.nulls
+    
+    @property
+    def types(self) -> BoardTypeUnion:
+        return self.metadata.types

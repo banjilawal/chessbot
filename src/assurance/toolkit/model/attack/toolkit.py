@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, AttackHelperTable
-from domain import Attack, AttackManifest
+from domain import Attack, AttackManifest, AttackNullGroup, AttackTypeUnion
 
 
 class AttackValidatorToolkit(ModelValidatorToolkit[Attack]):
@@ -49,9 +49,17 @@ class AttackValidatorToolkit(ModelValidatorToolkit[Attack]):
         )
     
     @property
-    def attribute(self) -> AttackHelperTable:
-        return cast(AttackHelperTable, super().attribute)
+    def helper(self) -> AttackHelperTable:
+        return cast(AttackHelperTable, super().helper)
     
     @property
     def metadata(self) -> AttackManifest:
         return cast(AttackManifest, super().metadata)
+    
+    @property
+    def nulls(self) -> AttackNullGroup:
+        return self.metadata.nulls
+    
+    @property
+    def types(self) -> AttackTypeUnion:
+        return self.metadata.types

@@ -80,7 +80,7 @@ class PlayerValidator(ModelValidator[Player]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the request is null or the wrong type.
-        priming_result = self.toolkit.attribute.priming_validator.execute(
+        priming_result = self.toolkit.helper.priming_validator.execute(
             candidate=candidate,
             target_model=PlayerValidationRequest,
             null_exception=PlayerValidationRequestNullException(),
@@ -100,7 +100,7 @@ class PlayerValidator(ModelValidator[Player]):
         request = cast(PlayerValidationRequest, priming_result.payload)
         
         # Handle the case that the request payload is null or the wrong type.
-        carrier_validation = self.toolkit.attribute.priming_validator.execute(
+        carrier_validation = self.toolkit.helper.priming_validator.execute(
             candidate=request.item,
             target_model=self.toolkit.metadata.types.carrier,
             null_exception=self.toolkit.metadata.nulls.carrier,

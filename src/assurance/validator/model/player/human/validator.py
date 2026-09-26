@@ -98,7 +98,7 @@ class HumanPlayerValidator:
                 )
             )
         # Handle the case that any id in the blueprint is flagged.
-        id_validation = self._toolkit.attribute.blueprint_id_extractor.execute(
+        id_validation = self._toolkit.helper.blueprint_id_extractor.execute(
             candidate=blueprint,
             blueprint_owner_name=blueprint.domain_class_name,
             blueprint_type=self._toolkit.metadata.types.blueprint,
@@ -116,7 +116,7 @@ class HumanPlayerValidator:
                 )
             )
         # Handle the case that the name does not pass a validation check.
-        name_validation = self._toolkit.attribute.identity_service.validate_name(
+        name_validation = self._toolkit.helper.identity_service.validate_name(
             blueprint.name
         )
         if name_validation.is_failure:

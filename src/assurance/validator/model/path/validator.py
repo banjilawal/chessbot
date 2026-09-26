@@ -79,7 +79,7 @@ class PathValidator(ModelValidator[Path]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the request is null or the wrong type.
-        priming_result = self.toolkit.attribute.priming_validator.execute(
+        priming_result = self.toolkit.helper.priming_validator.execute(
             candidate=candidate,
             target_model=PathValidationRequest,
             null_exception=PathValidationRequestNullException(),
@@ -99,7 +99,7 @@ class PathValidator(ModelValidator[Path]):
         request = cast(PathValidationRequest, priming_result.payload)
         
         # Handle the case that the request payload is null or the wrong type.
-        carrier_validation = self.toolkit.attribute.priming_validator.execute(
+        carrier_validation = self.toolkit.helper.priming_validator.execute(
             candidate=request.item,
             target_model=self.toolkit.metadata.types.carrier,
             null_exception=self.toolkit.metadata.nulls.carrier,
@@ -141,7 +141,7 @@ class PathValidator(ModelValidator[Path]):
         blueprint_label = blueprint.label
         candidate_label = blueprint_label
         if blueprint_label is not None:
-            label_validation = self.toolkit.attribute.number_validator.execute(
+            label_validation = self.toolkit.helper.number_validator.execute(
                 candidate=blueprint_label
             )
             if label_validation.is_failure:
@@ -157,7 +157,7 @@ class PathValidator(ModelValidator[Path]):
                 )
             candidate_label = cast(int, label_validation.payload)
         # Handle the case that the squareRegister does not pass a validation check.
-        endpoint_validation = self.toolkit.attribute.endpoint_validator.execute(
+        endpoint_validation = self.toolkit.helper.endpoint_validator.execute(
             candidate=SquareRegisterValidationRequest(
                 item=blueprint.endpoints,
                 id=IdFactory.next_id(class_name="SquareRegisterValidationRequest"),

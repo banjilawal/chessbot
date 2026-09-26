@@ -92,7 +92,7 @@ class KnightValidator:
                 )
             )
         # Handle the case that the persona does not pass a validation check.
-        persona_validation = self._toolkit.attribute.priming_validator.execute(
+        persona_validation = self._toolkit.helper.priming_validator.execute(
             candidate=blueprint.persona,
             target_model=Persona,
             null_exception=PersonaNullException(),

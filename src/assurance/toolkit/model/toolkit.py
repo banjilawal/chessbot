@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from assurance import ModelHelperTable, ValidatorToolkit
-from domain import Model, ModelManifest
+from domain import Model, ModelManifest, ModelNullGroup, ModelTypeUnion
 
 T = TypeVar("T", bound="Model")
 
@@ -50,8 +50,16 @@ class ModelValidatorToolkit(ValidatorToolkit[T], ABC, Generic[T]):
         super().__init__(helper=helper, metadata=metadata)
     
     @property
-    def attribute(self) -> ModelHelperTable[T]:
-        return cast(ModelHelperTable[T], super().attribute)
+    def helper(self) -> ModelHelperTable[T]:
+        return cast(ModelHelperTable[T], super().helper)
+    
+    @property
+    def nulls(self) -> ModelNullGroup[T]:
+        return self.metadata.nulls
+    
+    @property
+    def types(self) -> ModelTypeUnion[T]:
+        return self.metadata.types
     
     @property
     def metadata(self) -> ModelManifest[T]:

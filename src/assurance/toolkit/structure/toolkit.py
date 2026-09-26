@@ -49,8 +49,8 @@ class StructureValidatorToolkit(ValidatorToolkit[T], ABC, Generic[T]):
     
     
     @property
-    def attribute(self) -> StructureHelperTable[T]:
-        return cast(StructureHelperTable, super().attribute)
+    def helper(self) -> StructureHelperTable[T]:
+        return cast(StructureHelperTable, super().helper)
     
     @property
     def metadata(self) -> StructureManifest[T]:

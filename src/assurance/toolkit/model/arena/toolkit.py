@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, ArenaHelperTable
-from domain import Arena, ArenaManifest
+from domain import Arena, ArenaManifest, ArenaNullGroup, ArenaTypeUnion
 
 
 class ArenaValidatorToolkit(ModelValidatorToolkit[Arena]):
@@ -49,9 +49,17 @@ class ArenaValidatorToolkit(ModelValidatorToolkit[Arena]):
         )
     
     @property
-    def attribute(self) -> ArenaHelperTable:
-        return cast(ArenaHelperTable, super().attribute)
+    def helper(self) -> ArenaHelperTable:
+        return cast(ArenaHelperTable, super().helper)
     
     @property
     def metadata(self) -> ArenaManifest:
         return cast(ArenaManifest, super().metadata)
+    
+    @property
+    def nulls(self) -> ArenaNullGroup:
+        return self.metadata.nulls
+    
+    @property
+    def types(self) -> ArenaTypeUnion:
+        return self.metadata.types

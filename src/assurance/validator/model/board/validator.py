@@ -80,7 +80,7 @@ class BoardValidator(ModelValidator[Board]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the request is null or the wrong type.
-        priming_result = self.toolkit.attribute.priming_validator.execute(
+        priming_result = self.toolkit.helper.priming_validator.execute(
             candidate=candidate,
             target_model=BoardValidationRequest,
             null_exception=BoardValidationRequestNullException(),
@@ -100,7 +100,7 @@ class BoardValidator(ModelValidator[Board]):
         request = cast(BoardValidationRequest, priming_result.payload)
         
         # Handle the case that the request payload is null or the wrong type.
-        carrier_validation = self.toolkit.attribute.priming_validator.execute(
+        carrier_validation = self.toolkit.helper.priming_validator.execute(
             candidate=request.item,
             target_model=self.toolkit.metadata.types.carrier,
             null_exception=self.toolkit.metadata.nulls.carrier,
@@ -144,7 +144,7 @@ class BoardValidator(ModelValidator[Board]):
         # Handle the case that any board component in the blueprint is flagged.
         numbers = []
         for number in [blueprint.x, blueprint.y]:
-            validation = self.toolkit.attribute.number_validator.execute(number)
+            validation = self.toolkit.helper.number_validator.execute(number)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(

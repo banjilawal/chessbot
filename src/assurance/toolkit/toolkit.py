@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from assurance import AttributeHelperTable
-from domain import ObjectManifest
+from domain import NullExceptionGroup, ObjectManifest, TypeUnion
 
 T = TypeVar("T")
 
@@ -50,8 +50,16 @@ class ValidatorToolkit(ABC, Generic[T]):
         self._metadata = metadata
     
     @property
-    def attribute(self) -> AttributeHelperTable[T]:
+    def helper(self) -> AttributeHelperTable[T]:
         return self._helper
+    
+    @property
+    def nulls(self) -> NullExceptionGroup[T]:
+        return self._metadata.nulls
+    
+    @property
+    def types(self) -> TypeUnion[T]:
+        return self._metadata.types
     
     @property
     def metadata(self) -> ObjectManifest[T]:

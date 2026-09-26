@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, PlayerHelperTable
-from domain import Player, PlayerManifest
+from domain import Player, PlayerManifest, PlayerNullGroup, PlayerTypeUnion
 
 
 class PlayerValidatorToolkit(ModelValidatorToolkit[Player]):
@@ -49,9 +49,17 @@ class PlayerValidatorToolkit(ModelValidatorToolkit[Player]):
         )
     
     @property
-    def attribute(self) -> PlayerHelperTable:
-        return cast(PlayerHelperTable, super().attribute)
+    def helper(self) -> PlayerHelperTable:
+        return cast(PlayerHelperTable, super().helper)
     
     @property
     def metadata(self) -> PlayerManifest:
         return cast(PlayerManifest, super().metadata)
+    
+    @property
+    def nulls(self) -> PlayerNullGroup:
+        return self.metadata.nulls
+    
+    @property
+    def types(self) -> PlayerTypeUnion:
+        return self.metadata.types

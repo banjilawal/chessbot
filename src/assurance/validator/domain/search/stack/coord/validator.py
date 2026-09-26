@@ -108,7 +108,7 @@ class CoordContextValidator(ContextValidator[CoordSearchContext]):
             )        
         # Certification whichever attribute is enabled.
         for attribute in [context.row, context.column]:
-            validation = self.toolkit.attribute.number_validator.execute(
+            validation = self.toolkit.helper.number_validator.execute(
                 candidate=attribute,
                 floor=0,
                 ceiling=config.setting.board.setting.board.dimension.config.board_size - 1,

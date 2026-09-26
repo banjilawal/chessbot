@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, ManeuverHelperTable
-from domain import Maneuver, ManeuverManifest
+from domain import Maneuver, ManeuverManifest, ManeuverNullGroup, ManeuverTypeUnion
 
 
 class ManeuverValidatorToolkit(ModelValidatorToolkit[Maneuver]):
@@ -49,9 +49,17 @@ class ManeuverValidatorToolkit(ModelValidatorToolkit[Maneuver]):
         )
     
     @property
-    def attribute(self) -> ManeuverHelperTable:
-        return cast(ManeuverHelperTable, super().attribute)
+    def helper(self) -> ManeuverHelperTable:
+        return cast(ManeuverHelperTable, super().helper)
     
     @property
     def metadata(self) -> ManeuverManifest:
         return cast(ManeuverManifest, super().metadata)
+    
+    @property
+    def nulls(self) -> ManeuverNullGroup:
+        return self.metadata.nulls
+    
+    @property
+    def types(self) -> ManeuverTypeUnion:
+        return self.metadata.types

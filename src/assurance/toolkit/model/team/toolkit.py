@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, TeamHelperTable
-from domain import Team, TeamManifest
+from domain import Team, TeamManifest, TeamNullGroup, TeamTypeUnion
 
 
 class TeamValidatorToolkit(ModelValidatorToolkit[Team]):
@@ -49,9 +49,17 @@ class TeamValidatorToolkit(ModelValidatorToolkit[Team]):
         )
     
     @property
-    def attribute(self) -> TeamHelperTable:
-        return cast(TeamHelperTable, super().attribute)
+    def helper(self) -> TeamHelperTable:
+        return cast(TeamHelperTable, super().helper)
     
     @property
     def metadata(self) -> TeamManifest:
         return cast(TeamManifest, super().metadata)
+    
+    @property
+    def nulls(self) -> TeamNullGroup:
+        return self.metadata.nulls
+    
+    @property
+    def types(self) -> TeamTypeUnion:
+        return self.metadata.types

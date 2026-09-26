@@ -128,7 +128,7 @@ class SquareContextValidator(ContextValidator[SquareSearchContext]):
         
         # Certification for the search-by-id target.
         if context.id is not None:
-            validation_result = self.toolkit.attribute.identity_service.validate_id(
+            validation_result = self.toolkit.helper.identity_service.validate_id(
                 candidate=context.id
             )
             if validation_result.is_failure:
@@ -147,7 +147,7 @@ class SquareContextValidator(ContextValidator[SquareSearchContext]):
         
         # Certification for the search-by-schema target.
         if context.name is not None:
-            validation_result = self.toolkit.attribute.identity_service.validate_name(
+            validation_result = self.toolkit.helper.identity_service.validate_name(
                 candidate=context.name
             )
             if validation_result.is_failure:

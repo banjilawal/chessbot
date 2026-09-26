@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, TokenHelperTable
-from domain import Token, TokenManifest
+from domain import Token, TokenManifest, TokenNullGroup, TokenTypeUnion
 
 
 class TokenValidatorToolkit(ModelValidatorToolkit[Token]):
@@ -49,9 +49,17 @@ class TokenValidatorToolkit(ModelValidatorToolkit[Token]):
         )
     
     @property
-    def attribute(self) -> TokenHelperTable:
-        return cast(TokenHelperTable, super().attribute)
+    def helper(self) -> TokenHelperTable:
+        return cast(TokenHelperTable, super().helper)
     
     @property
     def metadata(self) -> TokenManifest:
         return cast(TokenManifest, super().metadata)
+    
+    @property
+    def nulls(self) -> TokenNullGroup:
+        return self.metadata.nulls
+    
+    @property
+    def types(self) -> TokenTypeUnion:
+        return self.metadata.types

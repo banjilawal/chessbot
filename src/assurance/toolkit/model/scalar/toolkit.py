@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, ScalarHelperTable
-from domain import Scalar, ScalarManifest
+from domain import Scalar, ScalarManifest, ScalarNullGroup, ScalarTypeUnion
 
 
 class ScalarValidatorToolkit(ModelValidatorToolkit[Scalar]):
@@ -49,9 +49,17 @@ class ScalarValidatorToolkit(ModelValidatorToolkit[Scalar]):
         )
     
     @property
-    def attribute(self) -> ScalarHelperTable:
-        return cast(ScalarHelperTable, super().attribute)
+    def helper(self) -> ScalarHelperTable:
+        return cast(ScalarHelperTable, super().helper)
     
     @property
     def metadata(self) -> ScalarManifest:
         return cast(ScalarManifest, super().metadata)
+    
+    @property
+    def nulls(self) -> ScalarNullGroup:
+        return self.metadata.nulls
+    
+    @property
+    def types(self) -> ScalarTypeUnion:
+        return self.metadata.types

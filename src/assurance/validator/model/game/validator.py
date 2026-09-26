@@ -84,7 +84,7 @@ class GameValidator(ModelValidator[Game]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the request is null or the wrong type.
-        priming_result = self.toolkit.attribute.priming_validator.execute(
+        priming_result = self.toolkit.helper.priming_validator.execute(
             candidate=candidate,
             target_model=GameValidationRequest,
             null_exception=GameValidationRequestNullException(),
@@ -104,7 +104,7 @@ class GameValidator(ModelValidator[Game]):
         request = cast(GameValidationRequest, priming_result.payload)
         
         # Handle the case that the request payload is null or the wrong type.
-        carrier_validation = self.toolkit.attribute.priming_validator.execute(
+        carrier_validation = self.toolkit.helper.priming_validator.execute(
             candidate=request.item,
             target_model=self.toolkit.metadata.types.carrier,
             null_exception=self.toolkit.metadata.nulls.carrier,
@@ -141,7 +141,7 @@ class GameValidator(ModelValidator[Game]):
                 )
             )
         # Handle the case that any id in the blueprint is flagged.
-        id_validation = self.toolkit.attribute.identity_service.validate_blueprint_id(
+        id_validation = self.toolkit.helper.identity_service.validate_blueprint_id(
             owner_blueprint=Type[self.toolkit.metadata.types.blueprint]
         )
         if id_validation.is_failure:

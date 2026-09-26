@@ -48,8 +48,8 @@ class SquareRegisterValidatorToolkit(RegisterValidatorToolkit[SquareRegister]):
         )
     
     @property
-    def attribute(self) -> SquareRegisterHelperTable:
-        return cast(SquareRegisterHelperTable, super().attribute)
+    def helper(self) -> SquareRegisterHelperTable:
+        return cast(SquareRegisterHelperTable, super().helper)
     
     @property
     def metadata(self) -> SquareRegisterManifest:
