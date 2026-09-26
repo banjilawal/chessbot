@@ -1,4 +1,4 @@
-# src/err/client/__init__.py
+# src/err/client/exception.py
 
 """
 Module: err.client.exception

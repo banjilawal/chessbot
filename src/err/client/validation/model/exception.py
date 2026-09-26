@@ -1,7 +1,7 @@
-# src/err/capacity/exception.py
+# src/err/client/validation/model/exception.py
 
 """
-Module: err.capacity.exception
+Module: err.client.validation.model.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,23 +12,22 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ChessException
-from artifcat import MethodResultType
+from err import ValidationClientException
 
 
 __all__ = [
-    # ======================# CAPACITY_FULL_ERROR #======================#
-    "CapacityException",
+    # ======================# MODEL_VALIDATION_CLIENT_CLIENT_ERROR #======================#
+    "ModelValidationClientException",
 ]
 
-# ======================# CAPACITY_FULL_ERROR #======================#
-class CapacityException(ChessException):
+# ======================# MODEL_VALIDATION_CLIENT_CLIENT_ERROR #======================#
+class ModelValidationClientException(ValidationClientException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a container or resource is full.
+        1.  Indicating a ModelValidationClient encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -43,10 +42,10 @@ class CapacityException(ChessException):
     Provides:
 
     Super Class:
-        ChessException
+        ValidationClientException
     """
-    MSG = "Capacity is full. Nothing can be added."
-    ERR_CODE = "CAPACITY_FULL_ERROR"
+    MSG = "ModelValidationClient error."
+    ERR_CODE = "MODEL_VALIDATION_CLIENT_CLIENT_ERROR"
     
     def __init__(
             self,

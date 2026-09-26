@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/client/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/client/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/validation/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/validation/client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/validation/model/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/validation/model/client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/validation/model/vector/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/validation/model/vector/client.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/client/validation/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/client/validation/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/client/validation/model/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/client/validation/model/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/capacity/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/capacity/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/client/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/client/exception.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,61 +54,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.000000000000028" />
-      <entry key="MS500" value="1.001993076181993" />
-      <entry key="S2" value="1.3182562054314348" />
-      <entry key="S5" value="2.3541785880860733" />
-      <entry key="S10" value="3.9177478069622707" />
-      <entry key="S30" value="9.31978866125224" />
-      <entry key="S60" value="16.10652074766305" />
-      <entry key="M2" value="26.109033866970638" />
-      <entry key="M5" value="46.27057873299003" />
-      <entry key="M10" value="76.52084259581694" />
-      <entry key="M15" value="109.20156615407635" />
-      <entry key="M30" value="227.44143648754184" />
-      <entry key="H1" value="435.4020328724817" />
-      <entry key="H2" value="755.5254741648898" />
-      <entry key="H4" value="1402.6935992938531" />
-      <entry key="D1" value="6874.912219332324" />
-      <entry key="W1" value="25844.158539861564" />
+      <entry key="MS100" value="5.876940261430231E-13" />
+      <entry key="MS500" value="0.003579565023519655" />
+      <entry key="S2" value="0.2484938499517882" />
+      <entry key="S5" value="0.846739414257583" />
+      <entry key="S10" value="1.984559311494693" />
+      <entry key="S30" value="5.156420458274137" />
+      <entry key="S60" value="8.133144721266826" />
+      <entry key="M2" value="15.111268276153773" />
+      <entry key="M5" value="39.29648464354508" />
+      <entry key="M10" value="71.39579138552243" />
+      <entry key="M15" value="101.5809660559147" />
+      <entry key="M30" value="205.39500803009764" />
+      <entry key="H1" value="409.9984485053749" />
+      <entry key="H2" value="741.6132814868502" />
+      <entry key="H4" value="1394.687573864048" />
+      <entry key="D1" value="6884.788927527394" />
+      <entry key="W1" value="25894.25446395332" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="1.751406188629292E-271" />
-      <entry key="S2" value="2.0457224930828775E-68" />
-      <entry key="S5" value="8.403073630270732E-28" />
-      <entry key="S10" value="2.942345143411069E-14" />
-      <entry key="S30" value="3.8540400990517335E-5" />
-      <entry key="S60" value="0.008772375925014113" />
-      <entry key="M2" value="0.14870945392569607" />
-      <entry key="M5" value="0.877748275592507" />
-      <entry key="M10" value="1.6145534441270166" />
-      <entry key="M15" value="1.9826304016349918" />
-      <entry key="M30" value="2.4434462076235075" />
-      <entry key="H1" value="3.073523156713381" />
-      <entry key="H2" value="7.173539953826983" />
-      <entry key="H4" value="24.97127640187372" />
-      <entry key="D1" value="271.6803317105605" />
-      <entry key="W1" value="1132.8683711717008" />
+      <entry key="MS100" value="1.0000005402011325" />
+      <entry key="MS500" value="1.0557841857170611" />
+      <entry key="S2" value="1.4859904939906763" />
+      <entry key="S5" value="1.7492920242135432" />
+      <entry key="S10" value="1.8656165572662893" />
+      <entry key="S30" value="1.9530342714464262" />
+      <entry key="S60" value="1.9762347420786686" />
+      <entry key="M2" value="1.9880617874849869" />
+      <entry key="M5" value="2.0178281107447456" />
+      <entry key="M10" value="2.256825082933264" />
+      <entry key="M15" value="2.5840783010153614" />
+      <entry key="M30" value="3.327242026935071" />
+      <entry key="H1" value="4.265501820606412" />
+      <entry key="H2" value="8.159163957137146" />
+      <entry key="H4" value="25.138758238044225" />
+      <entry key="D1" value="270.25121829079467" />
+      <entry key="W1" value="1132.814539754833" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="3.0257694270283815E-14" />
-      <entry key="MS500" value="0.00235925990290947" />
-      <entry key="S2" value="0.43512978535419183" />
-      <entry key="S5" value="1.7384404102055147" />
-      <entry key="S10" value="3.4854503240372767" />
-      <entry key="S30" value="9.011424593913402" />
-      <entry key="S60" value="15.866384770816026" />
-      <entry key="M2" value="26.084619658953034" />
-      <entry key="M5" value="47.05307352618688" />
-      <entry key="M10" value="78.07790819215774" />
-      <entry key="M15" value="111.1420408302343" />
-      <entry key="M30" value="229.8590750114124" />
-      <entry key="H1" value="438.4561132457543" />
-      <entry key="H2" value="762.676291904097" />
-      <entry key="H4" value="1427.634531231351" />
-      <entry key="D1" value="7146.559488407449" />
-      <entry key="W1" value="26977.007935707163" />
+      <entry key="MS100" value="2.76582983188384E-4" />
+      <entry key="MS500" value="0.2008776218238229" />
+      <entry key="S2" value="1.132351774833146" />
+      <entry key="S5" value="2.213775290265883" />
+      <entry key="S10" value="3.584606916396514" />
+      <entry key="S30" value="6.978558630824457" />
+      <entry key="S60" value="10.033019388445123" />
+      <entry key="M2" value="17.05388079220466" />
+      <entry key="M5" value="41.288193891430375" />
+      <entry key="M10" value="73.6296543451583" />
+      <entry key="M15" value="104.14287846786613" />
+      <entry key="M30" value="208.7030433546293" />
+      <entry key="H1" value="414.24693606939826" />
+      <entry key="H2" value="749.7515715060332" />
+      <entry key="H4" value="1419.7975261256247" />
+      <entry key="D1" value="7155.007384919491" />
+      <entry key="W1" value="27027.050046251283" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -137,7 +139,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/client",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/client/validation",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -151,11 +153,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/client/validation" />
       <recent name="$PROJECT_DIR$/src/err/client" />
       <recent name="$PROJECT_DIR$/src/artifcat/response/validation/model/vector" />
       <recent name="$PROJECT_DIR$/src/artifcat/response/validation/model" />
       <recent name="$PROJECT_DIR$/src/artifcat/response/validation" />
-      <recent name="$PROJECT_DIR$/src/client" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/client" />
@@ -843,7 +845,7 @@
       <workItem from="1788782347688" duration="75617000" />
       <workItem from="1788969937518" duration="171978000" />
       <workItem from="1790001362413" duration="735000" />
-      <workItem from="1790063398459" duration="190067000" />
+      <workItem from="1790063398459" duration="190844000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -2190,6 +2192,11 @@
           <url>file://$PROJECT_DIR$/src/client/request/validation/request.py</url>
           <line>11</line>
           <option name="timeStamp" value="478" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/err/client/exception.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="479" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
