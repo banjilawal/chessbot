@@ -17,11 +17,11 @@ from err import ClientException
 
 __all__ = [
     # ======================# VALIDATION_CLIENT_ERROR #======================#
-    "ValidationClientException",
+    "ValidatorClientException",
 ]
 
 # ======================# VALIDATION_CLIENT_ERROR #======================#
-class ValidationClientException(ClientException):
+class ValidatorClientException(ClientException):
     """
     Role:
         - Error Tracing

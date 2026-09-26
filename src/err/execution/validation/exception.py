@@ -11,24 +11,22 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
+from artifcat import MethodResultType
 from err import MissingExecutionRouteException
 
 __all__ = [
-    # ======================# VALIDATION_ROUTE #======================#
-    "NoValidationRouteException",
+    # ======================# MISSING_VALIDATION_ROUTE #======================#
+    "MissingValidationRouteException",
 ]
 
-from artifcat import MethodResultType
-
-
-# ======================# VALIDATION_ROUTE #======================#
-class NoValidationRouteException(MissingExecutionRouteException):
+# ======================# MISSING_VALIDATION_ROUTE #======================#
+class MissingValidationRouteException(MissingExecutionRouteException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of  validation routes is missing.
+        1.  Indicating a validation route is missing from the logic.
 
     Attributes:
         msg: Optional[str]
@@ -45,8 +43,8 @@ class NoValidationRouteException(MissingExecutionRouteException):
     Super Class:
         ExecutionRouteException
     """
-    MSG = "One of validation routes is missing."
-    ERR_CODE = "VALIDATION_ROUTE"
+    MSG = "A validation route is missing."
+    ERR_CODE = "MISSING_VALIDATION_ROUTE"
     MTHD_RSLT_TYPE = MethodResultType.VALIDATION_RESULT
 
     

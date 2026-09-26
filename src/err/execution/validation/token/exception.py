@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import NoValidationRouteException
+from err import MissingValidationRouteException
 
 
 __all__ = [
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# TOKEN_VALIDATION_ROUTE #======================#
-class TokenNoValidationRouteException(NoValidationRouteException):
+class TokenNoValidationRouteException(MissingValidationRouteException):
     """
     Role:
         - Error Tracing

@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from typing import Any, Optional
-from err import NoValidationRouteException
+from err import MissingValidationRouteException
 
 
 __all__ = [
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# NO_VALIDATION_ROUTE #======================#
-class NodeNoValidationRouteException(NoValidationRouteException):
+class NodeNoValidationRouteException(MissingValidationRouteException):
     """
     Role:
         - Error Tracing

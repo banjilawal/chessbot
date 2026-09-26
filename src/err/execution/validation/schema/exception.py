@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import NoValidationRouteException
+from err import MissingValidationRouteException
 
 
 __all__ = [
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# SCHEMA_VALIDATION_ROUTE #======================#
-class SchemaNoValidationRouteException(NoValidationRouteException):
+class SchemaNoValidationRouteException(MissingValidationRouteException):
     """
     Role:
         - Error Tracing

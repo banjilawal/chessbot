@@ -15,7 +15,7 @@ from assurance import ToggleValidator
 from domain.metadata.blueprint import CartesianToggleBlueprint
 from carrier import CartesianToggleCarrier
 from err import (
-    ExcessToggleActivationException, NoActiveTogglesException, NoValidationRouteException,
+    ExcessToggleActivationException, NoActiveTogglesException, MissingValidationRouteException,
     CartesianToggleRootValidatorException
 )
 from domain.model import Coord, Vector
@@ -131,7 +131,7 @@ class CartesianToggleValidator(ToggleValidator[CartesianToggle]):
                 )
             )
         # Pick a route for integrity testing the toggle's entity.
-        validation = ValidationResult.failure(NoValidationRouteException())
+        validation = ValidationResult.failure(MissingValidationRouteException())
 
         if blueprint.for_coord_toggle:
             validation = self.toolkit.coord.validator.execute(

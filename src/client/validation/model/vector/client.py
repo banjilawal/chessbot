@@ -59,6 +59,13 @@ class VectorValidatorClient(ModelValidatorClient[Vector]):
             request: VectorValidationRequest
     ) -> VectorValidationResponse:
         """
+        Certify a candidate is a TokenCarrier whose payload is either a Token
+        or a Blueprint that is safe to use.
+
+        Action:
+            1.  Send an exception chain in the ValidationResponse if the dispatcher
+                aborts the job.
+            2.  Otherwise, extract and cast the carrier to send in the success result.
         Args:
             request: VectorValidationRequest
         Result:
@@ -75,11 +82,11 @@ class VectorValidatorClient(ModelValidatorClient[Vector]):
             return VectorValidationResponse.failure(
                 request=request,
                 result=result,
-                exception=VectorValidationClientException(
-                    cls_mthd=mthd,
+                exception=VectorValidatorClientException(
+                    cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorValidationClientException.MSG,
-                    err_code=VectorValidationClientException.ERR_CODE,
+                    msg=VectorValidatorClientException.MSG,
+                    err_code=VectorValidatorClientException.ERR_CODE,
                     ex=result.exception,
                 ),
             )

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 
-from err import NoValidationRouteException
+from err import MissingValidationRouteException
 
 
 __all__ = [
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# BOARD_VALIDATOR_ROUTE #======================#
-class BoardNoValidationRouteException(NoValidationRouteException):
+class BoardNoValidationRouteException(MissingValidationRouteException):
     """
     Role:
         - Error Tracing

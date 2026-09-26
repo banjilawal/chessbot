@@ -30,4 +30,4 @@ from .token import *
 from .vector import *
 
 # Modules
-from .exception import NoValidationRouteException
+from .exception import MissingValidationRouteException

@@ -13,4 +13,4 @@ version: 1.0.0
 from .model import *
 
 # Modules
-from .exception import ValidationClientException
+from .exception import ValidatorClientException
