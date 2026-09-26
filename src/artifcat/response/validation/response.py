@@ -23,8 +23,7 @@ class ValidationResponse(Response[ValidationResult], ABC, Generic[T]):
         -   Messaging
 
     Responsibilities:
-        1.  Capture data and state of the Validation request-response
-            chain.
+        1.  Capture a validation request-response cycle's data and state.
 
     Attributes:
         state: ResponseState
@@ -48,6 +47,7 @@ class ValidationResponse(Response[ValidationResult], ABC, Generic[T]):
             ) -> ValidationResponse[T]
 
     Super Class:
+        Response
     """
     def __init__(
             self,

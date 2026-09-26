@@ -24,7 +24,7 @@ class Response(ABC, Generic[T]):
         -   Messaging
 
     Responsibilities:
-        1.  Capture the request-response chain's state and data flow.
+        1.  Capture a request-response cycle's data and state.
 
     Attributes:
         result: T

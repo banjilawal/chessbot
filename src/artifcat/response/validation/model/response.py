@@ -20,6 +20,42 @@ from transit import ModelCarrier
 T = TypeVar("T", bound="Model")
 
 class ModelValidationResponse(ValidationResponse[T], ABC, Generic[T]):
+    """
+    Role
+        -   Messaging
+
+    Responsibilities:
+        1.  Capture a Model's validation request-response cycle's data and state.
+
+    Attributes:
+        state: ResponseState
+        result: ValidationResult
+        request: ValidationRequest[T]
+        exception: Optional[Exception]
+
+    Provides:
+        -   is_success: bool
+        -   is_failure: bool
+        -   is_consistent: bool
+        -   is_not_consistent: bool
+        
+        -   def valid_model() -> Optional[T]
+        -   def valid_blueprint() -> Optional[ModelBlueprint[T]]
+
+        -   def success(
+                    request: Request,
+                    result: ValidationResult[T],
+            ) -> ValidationResponse[T]
+
+        -   def failure(
+                    request: Request,
+                    result: ValidationResult[T],
+                    exception: Exception,
+            ) -> ValidationResponse[T]
+
+    Super Class:
+        ValidationResponse
+    """
     _carrier: Optional[ModelCarrier[T]]
     
     def __init__(

@@ -18,7 +18,42 @@ from transit import VectorCarrier
 
 
 class VectorValidationResponse(ModelValidationResponse[Vector]):
-    
+    """
+    Role
+        -   Messaging
+
+    Responsibilities:
+        1.  Capture a Vector validation request-response cycle's data and state.
+
+    Attributes:
+        state: ResponseState
+        result: ValidationResult,
+        request: VectorValidationRequest
+        exception: Optional[Exception]
+
+    Provides:
+        -   is_success: bool
+        -   is_failure: bool
+        -   is_consistent: bool
+        -   is_not_consistent: bool
+        
+        -   def valid_model() -> Optional[Vector]
+        -   def valid_blueprint() -> Optional[VectorBlueprint]
+
+        -   def success(
+                    request: Request,
+                    result: ValidationResult[T],
+            ) -> ValidationResponse[T]
+
+        -   def failure(
+                    request: Request,
+                    result: ValidationResult[T],
+                    exception: Exception,
+            ) -> ValidationResponse[T]
+
+    Super Class:
+        ModelValidationResponse
+    """
     def __init__(
             self,
             state: ResponseState,
@@ -30,7 +65,8 @@ class VectorValidationResponse(ModelValidationResponse[Vector]):
         Args:
             state: ResponseState
             result: ValidationResult,
-            request: VectorValidationRequest,
+            request: VectorValidationRequest
+            exception: Optional[Exception]
         """
         super().__init__(
             state=state,
