@@ -10,8 +10,7 @@ version: 0.0.2
 # =========== ASSURANCE.LOADER.MODEL PACKAGE ===========#
 
 # Packages
-from .model import *
-from .structure import *
+from .team import *
 
 # Module
 from .loader import ModelBlueprintLoader

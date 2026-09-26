@@ -1,7 +1,7 @@
-# src/assurance/loader/loader.py
+# src/assurance/loader/model/team/loader.py
 
 """
-Module: assurance.loader.loader
+Module: assurance.loader.model.team.loader
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -15,7 +15,10 @@ from artifcat import ValidationResult
 from assurance import ModelBlueprintLoader, TeamValidatorToolkit
 from client import TeamValidationRequest
 from domain import Team, TeamBlueprint
-from err import EmptyTeamCarrierException, TeamValidationRequestNullException, TeamBlueprintLoaderException
+from err import (
+    EmptyTeamCarrierException, TeamValidationRequestNullException,
+    TeamBlueprintLoaderException
+)
 from transit import TeamCarrier
 from util import LoggingLevelRouter
 

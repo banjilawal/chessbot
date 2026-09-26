@@ -1,7 +1,7 @@
-# src/assurance/loader/loader.py
+# src/assurance/loader/model/loader.py
 
 """
-Module: assurance.loader.loader
+Module: assurance.loader.model.loader
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
