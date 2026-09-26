@@ -4,7 +4,61 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="" />
+    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/err/client/response/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/client/response/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/client/response/validation/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/client/response/validation/model/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/client/response/validation/model/attack/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/client/response/validation/model/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/client/response/validation/model/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/client/response/validation/model/game/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/client/response/validation/model/maneuver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/client/response/validation/model/path/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/client/response/validation/model/player/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/client/response/validation/model/rank/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/client/response/validation/model/scalar/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/client/response/validation/model/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/client/response/validation/model/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/client/response/validation/model/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/client/response/validation/model/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/client/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/client/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/client/response/validation/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/client/response/validation/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/model/arena/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/model/arena/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/client/response/validation/model/arena/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/model/attack/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/model/attack/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/client/response/validation/model/attack/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/model/board/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/model/board/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/client/response/validation/model/board/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/model/coord/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/model/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/client/response/validation/model/coord/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/model/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/client/response/validation/model/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/model/game/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/model/game/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/client/response/validation/model/game/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/model/maneuver/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/model/maneuver/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/client/response/validation/model/maneuver/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/model/path/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/model/path/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/client/response/validation/model/path/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/model/player/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/model/player/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/client/response/validation/model/player/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/model/rank/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/model/rank/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/client/response/validation/model/rank/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/model/scalar/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/model/scalar/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/client/response/validation/model/scalar/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/model/square/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/model/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/client/response/validation/model/square/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/model/team/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/model/team/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/client/response/validation/model/team/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/model/token/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/model/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/client/response/validation/model/token/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/model/vector/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/client/validation/model/vector/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/client/response/validation/model/vector/exception.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,61 +99,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.000002503103613" />
-      <entry key="S2" value="1.2381099687362542" />
-      <entry key="S5" value="5.087680054324562" />
-      <entry key="S10" value="13.626861080934727" />
-      <entry key="S30" value="30.86581384161534" />
-      <entry key="S60" value="43.395871612191954" />
-      <entry key="M2" value="62.39877395395195" />
-      <entry key="M5" value="107.75051501235971" />
-      <entry key="M10" value="172.19562995265147" />
-      <entry key="M15" value="235.8511432092347" />
-      <entry key="M30" value="430.48170592128855" />
-      <entry key="H1" value="764.7897192131643" />
-      <entry key="H2" value="1180.5110080205143" />
-      <entry key="H4" value="1739.7593398436711" />
-      <entry key="D1" value="7200.432077224574" />
-      <entry key="W1" value="27395.188213610916" />
+      <entry key="MS100" value="1.0000000621358014" />
+      <entry key="MS500" value="1.0361966509003722" />
+      <entry key="S2" value="1.4413391913766325" />
+      <entry key="S5" value="1.8455054465728353" />
+      <entry key="S10" value="2.31892872318765" />
+      <entry key="S30" value="3.949107715714413" />
+      <entry key="S60" value="6.134412822626514" />
+      <entry key="M2" value="9.718458785797676" />
+      <entry key="M5" value="34.21740315630559" />
+      <entry key="M10" value="102.85802228660098" />
+      <entry key="M15" value="174.816576058755" />
+      <entry key="M30" value="383.4469674219318" />
+      <entry key="H1" value="740.3471482477958" />
+      <entry key="H2" value="1198.7574797496247" />
+      <entry key="H4" value="1797.4799008976202" />
+      <entry key="D1" value="7294.234799687373" />
+      <entry key="W1" value="27523.170667964612" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="1.5268788747217939E-270" />
-      <entry key="S2" value="3.5152089603467117E-68" />
-      <entry key="S5" value="1.043230939559766E-27" />
-      <entry key="S10" value="3.2299085738759976E-14" />
-      <entry key="S30" value="3.184662909858963E-5" />
-      <entry key="S60" value="0.005645563094312555" />
-      <entry key="M2" value="0.07718843197225429" />
-      <entry key="M5" value="0.5291141812262813" />
-      <entry key="M10" value="1.6545289592778742" />
-      <entry key="M15" value="3.0867736555386713" />
-      <entry key="M30" value="7.953286004271378" />
-      <entry key="H1" value="15.624056061792775" />
-      <entry key="H2" value="24.072228496078242" />
-      <entry key="H4" value="34.098718743971574" />
-      <entry key="D1" value="225.56299997004274" />
-      <entry key="W1" value="1118.725805899834" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="2.490398435890474E-259" />
+      <entry key="S5" value="3.6183246760155386E-104" />
+      <entry key="S10" value="1.9021894427252917E-52" />
+      <entry key="S30" value="5.751105252344504E-18" />
+      <entry key="S60" value="2.399115675381411E-9" />
+      <entry key="M2" value="5.031809376940271E-5" />
+      <entry key="M5" value="0.028133138623730302" />
+      <entry key="M10" value="0.3815124942355879" />
+      <entry key="M15" value="1.1607206562766026" />
+      <entry key="M30" value="4.877059615444495" />
+      <entry key="H1" value="12.234874549222848" />
+      <entry key="H2" value="21.301940296594278" />
+      <entry key="H4" value="32.07668606684866" />
+      <entry key="D1" value="223.27654379133634" />
+      <entry key="W1" value="1117.0987026122968" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.8766057213160351" />
-      <entry key="MS500" value="0.9740067002275488" />
-      <entry key="S2" value="1.2297819349909287" />
-      <entry key="S5" value="5.0734524654712745" />
-      <entry key="S10" value="13.608263711803822" />
-      <entry key="S30" value="30.85222750211978" />
-      <entry key="S60" value="43.39158826831988" />
-      <entry key="M2" value="62.46639387289447" />
-      <entry key="M5" value="108.24782140077983" />
-      <entry key="M10" value="173.78274148142214" />
-      <entry key="M15" value="238.85677930826708" />
-      <entry key="M30" value="438.34935644442356" />
-      <entry key="H1" value="780.3399791449949" />
-      <entry key="H2" value="1204.528197530949" />
-      <entry key="H4" value="1773.8194741119949" />
-      <entry key="D1" value="7425.965020088194" />
-      <entry key="W1" value="28513.894867355488" />
+      <entry key="MS100" value="0.9592641765018615" />
+      <entry key="MS500" value="1.0273162119725778" />
+      <entry key="S2" value="1.4374312757974097" />
+      <entry key="S5" value="1.842211962299961" />
+      <entry key="S10" value="2.3083526330545965" />
+      <entry key="S30" value="3.915295251112379" />
+      <entry key="S60" value="6.085110256489536" />
+      <entry key="M2" value="9.66862011468045" />
+      <entry key="M5" value="34.21111363024746" />
+      <entry key="M10" value="103.20400784274342" />
+      <entry key="M15" value="175.93241178856525" />
+      <entry key="M30" value="388.2637012371863" />
+      <entry key="H1" value="752.5201477434217" />
+      <entry key="H2" value="1220.0086229754058" />
+      <entry key="H4" value="1829.5192318081813" />
+      <entry key="D1" value="7517.481412794947" />
+      <entry key="W1" value="28640.25022076706" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -130,7 +184,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/assurance/toolkit/common",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/client",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -144,18 +198,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/client" />
       <recent name="$PROJECT_DIR$/src/assurance/toolkit/common" />
       <recent name="$PROJECT_DIR$/src/assurance/toolkit" />
       <recent name="$PROJECT_DIR$/src/assurance/loader/structure" />
       <recent name="$PROJECT_DIR$/src/assurance/loader" />
-      <recent name="$PROJECT_DIR$/src/err/assurance/loader/model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/client/response" />
       <recent name="$PROJECT_DIR$/src/err/assurance/primitve" />
       <recent name="$PROJECT_DIR$/src/err/assurance/loader/model" />
       <recent name="$PROJECT_DIR$/src/err/client/validation/model" />
       <recent name="$PROJECT_DIR$/src/client" />
-      <recent name="$PROJECT_DIR$/src/artifcat" />
     </key>
   </component>
   <component name="RunManager" selected="Python.validator">
@@ -836,7 +890,7 @@
       <workItem from="1788782347688" duration="75617000" />
       <workItem from="1788969937518" duration="171978000" />
       <workItem from="1790001362413" duration="735000" />
-      <workItem from="1790063398459" duration="222453000" />
+      <workItem from="1790063398459" duration="223692000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -2185,7 +2239,7 @@
           <option name="timeStamp" value="478" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/err/client/exception.py</url>
+          <url>file://$PROJECT_DIR$/src/err/client/response/exception.py</url>
           <line>11</line>
           <option name="timeStamp" value="479" />
         </line-breakpoint>
