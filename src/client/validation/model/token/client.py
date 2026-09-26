@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult, TokenValidationResponse
-from client import ModelValidatorClient, TokenValidationRequest
+from client import ModelValidationResponseService, TokenValidationRequest
 from domain import Token
 from err import TokenValidatorClientException
 from transit import TokenCarrier, TokenValidationDispatcher
 from util import LoggingLevelRouter
 
 
-class TokenValidatorClient(ModelValidatorClient[Token]):
+class TokenValidationResponseService(ModelValidationResponseService[Token]):
     """
     Role
         - Mediator
@@ -54,7 +54,7 @@ class TokenValidatorClient(ModelValidatorClient[Token]):
         return cast(TokenValidationDispatcher, super().dispatcher)
     
     @LoggingLevelRouter.monitor
-    def transmit(
+    def execute(
             self,
             request: TokenValidationRequest
     ) -> TokenValidationResponse:

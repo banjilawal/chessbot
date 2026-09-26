@@ -19,7 +19,7 @@ from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Result")
 
-class Client(ABC, Generic[T]):
+class ResponseService(ABC, Generic[T]):
     """
     Role
         - Mediator
@@ -52,7 +52,7 @@ class Client(ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def transmit(self, request: Request[T]) -> Response[T]:
+    def execute(self, request: Request[T]) -> Response[T]:
         """
         Args:
             request: Request[T]

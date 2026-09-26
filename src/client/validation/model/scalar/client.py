@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult, ScalarValidationResponse
-from client import ModelValidatorClient, ScalarValidationRequest
+from client import ModelValidationResponseService, ScalarValidationRequest
 from domain import Scalar
 from err import ScalarValidatorClientException
 from transit import ScalarCarrier, ScalarValidationDispatcher
 from util import LoggingLevelRouter
 
 
-class ScalarValidatorClient(ModelValidatorClient[Scalar]):
+class ScalarValidationResponseService(ModelValidationResponseService[Scalar]):
     """
     Role
         - Mediator
@@ -54,7 +54,7 @@ class ScalarValidatorClient(ModelValidatorClient[Scalar]):
         return cast(ScalarValidationDispatcher, super().dispatcher)
     
     @LoggingLevelRouter.monitor
-    def transmit(
+    def execute(
             self,
             request: ScalarValidationRequest
     ) -> ScalarValidationResponse:

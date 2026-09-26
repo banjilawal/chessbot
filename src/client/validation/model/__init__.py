@@ -25,4 +25,4 @@ from .token import *
 from .token import *
 
 # Modules
-from .client import ModelValidatorClient
+from .client import ModelValidationResponseService

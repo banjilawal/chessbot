@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult, CoordValidationResponse
-from client import ModelValidatorClient, CoordValidationRequest
+from client import ModelValidationResponseService, CoordValidationRequest
 from domain import Coord
 from err import CoordValidatorClientException
 from transit import CoordCarrier, CoordValidationDispatcher
 from util import LoggingLevelRouter
 
 
-class CoordValidatorClient(ModelValidatorClient[Coord]):
+class CoordValidationResponseService(ModelValidationResponseService[Coord]):
     """
     Role
         - Mediator
@@ -54,7 +54,7 @@ class CoordValidatorClient(ModelValidatorClient[Coord]):
         return cast(CoordValidationDispatcher, super().dispatcher)
     
     @LoggingLevelRouter.monitor
-    def transmit(
+    def execute(
             self,
             request: CoordValidationRequest
     ) -> CoordValidationResponse:

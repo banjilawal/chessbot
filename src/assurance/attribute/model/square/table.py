@@ -13,7 +13,7 @@ from __future__ import annotations
 from typing import Optional
 
 from assurance import ModelHelperTable
-from client import BoardValidatorClient, CoordValidatorClient
+from client import BoardValidationResponseService, CoordValidationResponseService
 
 f
 from domain import Square
@@ -38,13 +38,13 @@ class SquareHelperTable(ModelHelperTable[Square]):
     Super Class:
         ModelHelperTable
     """
-    _board_client: BoardValidatorClient
-    _coord_client: CoordValidatorClient
+    _board_client: BoardValidationResponseService
+    _coord_client: CoordValidationResponseService
     
     def __init__(
             self,
-            board_client: Optional[BoardValidatorClient] | None = None,
-            coord_client: Optional[CoordValidatorClient] | None = None,
+            board_client: Optional[BoardValidationResponseService] | None = None,
+            coord_client: Optional[CoordValidationResponseService] | None = None,
             identity_service: Optional[IdentityService] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
     ):
@@ -59,13 +59,13 @@ class SquareHelperTable(ModelHelperTable[Square]):
             identity_service=identity_service,
             priming_validator=priming_validator,
         )
-        self._board_client = board_client or BoardValidatorClient()
-        self._coord_client = coord_client or CoordValidatorClient()
+        self._board_client = board_client or BoardValidationResponseService()
+        self._coord_client = coord_client or CoordValidationResponseService()
         
     @property
-    def board_client(self) -> BoardValidatorClient:
+    def board_client(self) -> BoardValidationResponseService:
         return self._board_client
     
     @property
-    def coord_client(self) -> CoordValidatorClient:
+    def coord_client(self) -> CoordValidationResponseService:
         return self._coord_client

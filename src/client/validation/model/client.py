@@ -13,13 +13,17 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from artifcat import ModelValidationResponse
-from client import ModelValidationRequest, ValidatorClient
+from client import ModelValidationRequest, ValidatorResponseService
 from transit import ModelValidationDispatcher
 from util import LoggingLevelRouter
 
 T = TypeVar("T",)
 
-class ModelValidatorClient(ValidatorClient[T], ABC, Generic[T]):
+class ModelValidationResponseService(
+    ValidatorResponseService[T],
+    ABC,
+    Generic[T],
+):
     """
     Role
         - Mediator
@@ -51,7 +55,7 @@ class ModelValidatorClient(ValidatorClient[T], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def transmit(
+    def execute(
             self,
             request: ModelValidationRequest[T]
     ) -> ModelValidationResponse[T]:

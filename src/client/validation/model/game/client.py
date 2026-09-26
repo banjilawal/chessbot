@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult, GameValidationResponse
-from client import ModelValidatorClient, GameValidationRequest
+from client import ModelValidationResponseService, GameValidationRequest
 from domain import Game
 from err import GameValidatorClientException
 from transit import GameCarrier, GameValidationDispatcher
 from util import LoggingLevelRouter
 
 
-class GameValidatorClient(ModelValidatorClient[Game]):
+class GameValidationResponseService(ModelValidationResponseService[Game]):
     """
     Role
         - Mediator
@@ -54,7 +54,7 @@ class GameValidatorClient(ModelValidatorClient[Game]):
         return cast(GameValidationDispatcher, super().dispatcher)
     
     @LoggingLevelRouter.monitor
-    def transmit(
+    def execute(
             self,
             request: GameValidationRequest
     ) -> GameValidationResponse:

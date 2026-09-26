@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult, PathValidationResponse
-from client import ModelValidatorClient, PathValidationRequest
+from client import ModelValidationResponseService, PathValidationRequest
 from domain import Path
 from err import PathValidatorClientException
 from transit import PathCarrier, PathValidationDispatcher
 from util import LoggingLevelRouter
 
 
-class PathValidatorClient(ModelValidatorClient[Path]):
+class PathValidationResponseService(ModelValidationResponseService[Path]):
     """
     Role
         - Mediator
@@ -54,7 +54,7 @@ class PathValidatorClient(ModelValidatorClient[Path]):
         return cast(PathValidationDispatcher, super().dispatcher)
     
     @LoggingLevelRouter.monitor
-    def transmit(
+    def execute(
             self,
             request: PathValidationRequest
     ) -> PathValidationResponse:

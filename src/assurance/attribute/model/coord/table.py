@@ -13,7 +13,7 @@ from __future__ import annotations
 from typing import Optional
 
 from assurance import ModelHelperTable, NumberValidator, PrimingValidator
-from client import BoardValidatorClient
+from client import BoardValidationResponseService
 from domain import Coord
 
 class CoordHelperTable(ModelHelperTable[Coord]):
@@ -33,11 +33,11 @@ class CoordHelperTable(ModelHelperTable[Coord]):
     Super Class:
         ModelHelperTable
     """
-    _board_client: BoardValidatorClient
+    _board_client: BoardValidationResponseService
     
     def __init__(
             self,
-            board_client: Optional[BoardValidatorClient] | None = None,
+            board_client: Optional[BoardValidationResponseService] | None = None,
             number_validator: Optional[NumberValidator] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
     ):
@@ -51,9 +51,9 @@ class CoordHelperTable(ModelHelperTable[Coord]):
             number_validator=number_validator,
             priming_validator=priming_validator,
         )
-        self._board_client = board_client or BoardValidatorClient()
+        self._board_client = board_client or BoardValidationResponseService()
     
     @property
-    def board_client(self) -> BoardValidatorClient:
+    def board_client(self) -> BoardValidationResponseService:
         return self._board_client
     

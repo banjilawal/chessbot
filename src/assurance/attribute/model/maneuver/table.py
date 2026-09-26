@@ -13,7 +13,7 @@ from __future__ import annotations
 from typing import Optional
 
 from assurance import ModelHelperTable, NumberValidator, PrimingValidator
-from client import PathValidatorClient, TokenValidatorClient
+from client import PathValidationResponseService, TokenValidationResponseService
 from domain import Maneuver
 from microservice import IdentityService
 
@@ -36,13 +36,13 @@ class ManeuverHelperTable(ModelHelperTable[Maneuver]):
     Super Class:
         ModelHelperTable
     """
-    _path_client: PathValidatorClient
-    _token_client: TokenValidatorClient
+    _path_client: PathValidationResponseService
+    _token_client: TokenValidationResponseService
     
     def __init__(
             self,
-            path_client: Optional[PathValidatorClient] | None = None,
-            token_client: Optional[TokenValidatorClient] | None = None,
+            path_client: Optional[PathValidationResponseService] | None = None,
+            token_client: Optional[TokenValidationResponseService] | None = None,
             identity_service: Optional[IdentityService] | None = None,
             number_validator: Optional[NumberValidator] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
@@ -60,13 +60,13 @@ class ManeuverHelperTable(ModelHelperTable[Maneuver]):
             number_validator=number_validator,
             priming_validator=priming_validator,
         )
-        self._path_client = path_client or PathValidatorClient()
-        self._token_client = token_client or TokenValidatorClient()
+        self._path_client = path_client or PathValidationResponseService()
+        self._token_client = token_client or TokenValidationResponseService()
         
     @property
-    def path_client(self) -> PathValidatorClient:
+    def path_client(self) -> PathValidationResponseService:
         return self._path_client
     
     @property
-    def token_client(self) -> TokenValidatorClient:
+    def token_client(self) -> TokenValidationResponseService:
         return self._token_client

@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult, BoardValidationResponse
-from client import ModelValidatorClient, BoardValidationRequest
+from client import ModelValidationResponseService, BoardValidationRequest
 from domain import Board
 from err import BoardValidatorClientException
 from transit import BoardCarrier, BoardValidationDispatcher
 from util import LoggingLevelRouter
 
 
-class BoardValidatorClient(ModelValidatorClient[Board]):
+class BoardValidationResponseService(ModelValidationResponseService[Board]):
     """
     Role
         - Mediator
@@ -54,7 +54,7 @@ class BoardValidatorClient(ModelValidatorClient[Board]):
         return cast(BoardValidationDispatcher, super().dispatcher)
     
     @LoggingLevelRouter.monitor
-    def transmit(
+    def execute(
             self,
             request: BoardValidationRequest
     ) -> BoardValidationResponse:

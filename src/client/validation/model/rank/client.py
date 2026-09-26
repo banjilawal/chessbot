@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult, RankValidationResponse
-from client import ModelValidatorClient, RankValidationRequest
+from client import ModelValidationResponseService, RankValidationRequest
 from domain import Rank
 from err import RankValidatorClientException
 from transit import RankCarrier, RankValidationDispatcher
 from util import LoggingLevelRouter
 
 
-class RankValidatorClient(ModelValidatorClient[Rank]):
+class RankValidationResponseService(ModelValidationResponseService[Rank]):
     """
     Role
         - Mediator
@@ -54,7 +54,7 @@ class RankValidatorClient(ModelValidatorClient[Rank]):
         return cast(RankValidationDispatcher, super().dispatcher)
     
     @LoggingLevelRouter.monitor
-    def transmit(
+    def execute(
             self,
             request: RankValidationRequest
     ) -> RankValidationResponse:

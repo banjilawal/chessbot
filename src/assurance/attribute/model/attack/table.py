@@ -13,7 +13,7 @@ from __future__ import annotations
 from typing import Optional
 
 from assurance import ModelHelperTable, NumberValidator, PrimingValidator
-from client import ManeuverValidatorClient, TokenValidatorClient
+from client import ManeuverValidationResponseService, TokenValidationResponseService
 from domain import Attack
 from microservice import IdentityService
 
@@ -36,13 +36,13 @@ class AttackHelperTable(ModelHelperTable[Attack]):
     Super Class:
         ModelHelperTable
     """
-    _token_client: TokenValidatorClient
-    _maneuver_client: ManeuverValidatorClient
+    _token_client: TokenValidationResponseService
+    _maneuver_client: ManeuverValidationResponseService
     
     def __init__(
             self,
-            token_client: Optional[TokenValidatorClient] | None = None,
-            maneuver_client: Optional[ManeuverValidatorClient] | None = None,
+            token_client: Optional[TokenValidationResponseService] | None = None,
+            maneuver_client: Optional[ManeuverValidationResponseService] | None = None,
             identity_service: Optional[IdentityService] | None = None,
             number_validator: Optional[NumberValidator] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
@@ -60,13 +60,13 @@ class AttackHelperTable(ModelHelperTable[Attack]):
             number_validator=number_validator,
             priming_validator=priming_validator,
         )
-        self._token_client = token_client or TokenValidatorClient()
-        self._maneuver_client = maneuver_client or ManeuverValidatorClient()
+        self._token_client = token_client or TokenValidationResponseService()
+        self._maneuver_client = maneuver_client or ManeuverValidationResponseService()
         
     @property
-    def token_client(self) -> TokenValidatorClient:
+    def token_client(self) -> TokenValidationResponseService:
         return self._token_client
     
     @property
-    def maneuver_client(self) -> ManeuverValidatorClient:
+    def maneuver_client(self) -> ManeuverValidationResponseService:
         return self._maneuver_client

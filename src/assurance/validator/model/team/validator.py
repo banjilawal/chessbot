@@ -101,7 +101,7 @@ class TeamValidator(ModelValidator[Team]):
             blueprint_load_result.payload,
         )
         # Handle the case that any id in the blueprint is flagged.
-        id_validation = self.toolkit.helper.blueprint_id_extractor.execute(
+        id_validation = self.toolkit.blueprint_id_extractor.execute(
             candidate=blueprint,
             blueprint_owner_name=blueprint.domain_class_name,
             blueprint_type=self.toolkit.metadata.types.blueprint,
@@ -119,7 +119,7 @@ class TeamValidator(ModelValidator[Team]):
                 )
             )
         # Handle the case that the archetype does not pass a validation check.
-        archetype_validation = self.toolkit.helper.priming_validator.execute(
+        archetype_validation = self.toolkit.priming_validator.execute(
             candidate=blueprint.archetype,
             target_model=Archetype,
             null_exception=ArchetypeNullException(),
@@ -240,3 +240,33 @@ class TeamValidator(ModelValidator[Team]):
             archetype=archetype,
         )
         return ValidationResult.success(TeamCarrier(blueprint=payload))
+    
+    @LoggingLevelRouter.monitor
+    def _board_checker(self, request: BoardValidationRequest) -> ValidationResult[Board]:
+        """
+        -   Wrapper
+        Extracts a Board from the BoardValidationClient
+
+        Action:
+            1.  Send an exception chain in the ValidationResult if any of the following
+                occur
+                    -   The request is either null or not a TeamValidatorRequest.
+                    -   The request's payload is either,
+                            null
+                            not a TeamCarrier
+                            an empty TeamCarrier.
+                    -   Either the id, board, or owner attributes are flagged unsafe.
+            2.  Otherwise, Send a Carrier with the correct type of payload in the success
+                result.
+        Args:
+            candidate: Any
+        Returns:
+            ValidationResult[TeamCarrier]
+        Raises:
+            TeamValidatorException
+        """
+        method = f"{self.__class__.__name__}.execute"
+        
+        client_response = self.toolkit.helper.board_client.execute(
+            bo
+        )

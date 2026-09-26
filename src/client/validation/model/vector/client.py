@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult, VectorValidationResponse
-from client import ModelValidatorClient, VectorValidationRequest
+from client import ModelValidationResponseService, VectorValidationRequest
 from domain import Vector
 from err import VectorValidatorClientException
 from transit import VectorCarrier, VectorValidationDispatcher
 from util import LoggingLevelRouter
 
 
-class VectorValidatorClient(ModelValidatorClient[Vector]):
+class VectorValidationResponseService(ModelValidationResponseService[Vector]):
     """
     Role
         - Mediator
@@ -54,7 +54,7 @@ class VectorValidatorClient(ModelValidatorClient[Vector]):
         return cast(VectorValidationDispatcher, super().dispatcher)
     
     @LoggingLevelRouter.monitor
-    def transmit(
+    def execute(
             self,
             request: VectorValidationRequest
     ) -> VectorValidationResponse:

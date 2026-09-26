@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult, SquareValidationResponse
-from client import ModelValidatorClient, SquareValidationRequest
+from client import ModelValidationResponseService, SquareValidationRequest
 from domain import Square
 from err import SquareValidatorClientException
 from transit import SquareCarrier, SquareValidationDispatcher
 from util import LoggingLevelRouter
 
 
-class SquareValidatorClient(ModelValidatorClient[Square]):
+class SquareValidationResponseService(ModelValidationResponseService[Square]):
     """
     Role
         - Mediator
@@ -54,7 +54,7 @@ class SquareValidatorClient(ModelValidatorClient[Square]):
         return cast(SquareValidationDispatcher, super().dispatcher)
     
     @LoggingLevelRouter.monitor
-    def transmit(
+    def execute(
             self,
             request: SquareValidationRequest
     ) -> SquareValidationResponse:

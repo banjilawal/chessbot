@@ -13,7 +13,7 @@ from __future__ import annotations
 from typing import Optional
 
 from assurance import ModelHelperTable, PrimingValidator
-from client import GameValidatorClient, PlayerValidatorClient
+from client import GameValidationResponseService, PlayerValidationResponseService
 from domain import Arena
 from microservice import IdentityService
 
@@ -36,13 +36,13 @@ class ArenaHelperTable(ModelHelperTable[Arena]):
     Super Class:
         ModelHelperTable
     """
-    _game_client: GameValidatorClient
-    _player_client: PlayerValidatorClient
+    _game_client: GameValidationResponseService
+    _player_client: PlayerValidationResponseService
     
     def __init__(
             self,
-            game_client: Optional[GameValidatorClient] | None = None,
-            player_client: Optional[PlayerValidatorClient] | None = None,
+            game_client: Optional[GameValidationResponseService] | None = None,
+            player_client: Optional[PlayerValidationResponseService] | None = None,
             identity_service: Optional[IdentityService] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
     ):
@@ -57,13 +57,13 @@ class ArenaHelperTable(ModelHelperTable[Arena]):
             identity_service=identity_service,
             priming_validator=priming_validator,
         )
-        self._game_client = game_client or GameValidatorClient()
-        self._player_client = player_client or PlayerValidatorClient()
+        self._game_client = game_client or GameValidationResponseService()
+        self._player_client = player_client or PlayerValidationResponseService()
         
     @property
-    def game_client(self) -> GameValidatorClient:
+    def game_client(self) -> GameValidationResponseService:
         return self._game_client
     
     @property
-    def player_client(self) -> PlayerValidatorClient:
+    def player_client(self) -> PlayerValidationResponseService:
         return self._player_client

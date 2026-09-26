@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult, ArenaValidationResponse
-from client import ModelValidatorClient, ArenaValidationRequest
+from client import ModelValidationResponseService, ArenaValidationRequest
 from domain import Arena
 from err import ArenaValidatorClientException
 from transit import ArenaCarrier, ArenaValidationDispatcher
 from util import LoggingLevelRouter
 
 
-class ArenaValidatorClient(ModelValidatorClient[Arena]):
+class ArenaValidationResponseService(ModelValidationResponseService[Arena]):
     """
     Role
         - Mediator
@@ -54,7 +54,7 @@ class ArenaValidatorClient(ModelValidatorClient[Arena]):
         return cast(ArenaValidationDispatcher, super().dispatcher)
     
     @LoggingLevelRouter.monitor
-    def transmit(
+    def execute(
             self,
             request: ArenaValidationRequest
     ) -> ArenaValidationResponse:

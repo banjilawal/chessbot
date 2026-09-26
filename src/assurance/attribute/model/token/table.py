@@ -15,8 +15,8 @@ from typing import Optional
 from assurance import ModelHelperTable
 from authorization import BlueprintIdExtractor, HomeSquareExtractor
 from client import (
-    BoardValidatorClient, RankValidatorClient, SquareValidatorClient,
-    TeamValidatorClient
+    BoardValidationResponseService, RankValidationResponseService, SquareValidationResponseService,
+    TeamValidationResponseService
 )
 from domain import Token
 from microservice import IdentityService
@@ -42,19 +42,19 @@ class TokenHelperTable(ModelHelperTable[Token]):
     Super Class:
         ModelHelperTable
     """
-    _team_client: TeamValidatorClient
-    _rank_client: RankValidatorClient
-    _board_client: BoardValidatorClient
-    _square_client: SquareValidatorClient
+    _team_client: TeamValidationResponseService
+    _rank_client: RankValidationResponseService
+    _board_client: BoardValidationResponseService
+    _square_client: SquareValidationResponseService
     _home_extractor: HomeSquareExtractor
 
     
     def __init__(
             self,
-            team_client: Optional[TeamValidatorClient] | None = None,
-            rank_client: Optional[RankValidatorClient] | None = None,
-            board_client: Optional[BoardValidatorClient] | None = None,
-            square_client: Optional[SquareValidatorClient] | None = None,
+            team_client: Optional[TeamValidationResponseService] | None = None,
+            rank_client: Optional[RankValidationResponseService] | None = None,
+            board_client: Optional[BoardValidationResponseService] | None = None,
+            square_client: Optional[SquareValidationResponseService] | None = None,
             identity_service: Optional[IdentityService] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
             home_extractor: Optional[HomeSquareExtractor] | None = None,
@@ -76,26 +76,26 @@ class TokenHelperTable(ModelHelperTable[Token]):
             priming_validator=priming_validator,
             blueprint_id_extractor=blueprint_id_extractor,
         )
-        self._team_client = team_client or TeamValidatorClient()
-        self._rank_client = rank_client or RankValidatorClient()
-        self._board_client = board_client or BoardValidatorClient()
-        self._square_client = square_client or SquareValidatorClient()
+        self._team_client = team_client or TeamValidationResponseService()
+        self._rank_client = rank_client or RankValidationResponseService()
+        self._board_client = board_client or BoardValidationResponseService()
+        self._square_client = square_client or SquareValidationResponseService()
         self._home_extractor = home_extractor or HomeSquareExtractor()
     
     @property
-    def team_client(self) -> TeamValidatorClient:
+    def team_client(self) -> TeamValidationResponseService:
         return self._team_client
     
     @property
-    def rank_client(self) -> RankValidatorClient:
+    def rank_client(self) -> RankValidationResponseService:
         return self._rank_client
     
     @property
-    def board_client(self) -> BoardValidatorClient:
+    def board_client(self) -> BoardValidationResponseService:
         return self._board_client
     
     @property
-    def square_client(self) -> SquareValidatorClient:
+    def square_client(self) -> SquareValidationResponseService:
         return self._square_client
     
     @property

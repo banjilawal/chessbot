@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult, TeamValidationResponse
-from client import ModelValidatorClient, TeamValidationRequest
+from client import ModelValidationResponseService, TeamValidationRequest
 from domain import Team
 from err import TeamValidatorClientException
 from transit import TeamCarrier, TeamValidationDispatcher
 from util import LoggingLevelRouter
 
 
-class TeamValidatorClient(ModelValidatorClient[Team]):
+class TeamValidationResponseService(ModelValidationResponseService[Team]):
     """
     Role
         - Mediator
@@ -54,7 +54,7 @@ class TeamValidatorClient(ModelValidatorClient[Team]):
         return cast(TeamValidationDispatcher, super().dispatcher)
     
     @LoggingLevelRouter.monitor
-    def transmit(
+    def execute(
             self,
             request: TeamValidationRequest
     ) -> TeamValidationResponse:

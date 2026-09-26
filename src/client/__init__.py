@@ -14,4 +14,4 @@ from .request import *
 from .validation import *
 
 # Modules
-from .client import Client
+from .client import ResponseService

@@ -13,7 +13,7 @@ from __future__ import annotations
 from typing import Optional
 
 from assurance import ModelHelperTable
-from client import BoardValidatorClient, PlayerValidatorClient
+from client import BoardValidationResponseService, PlayerValidationResponseService
 from domain import Team
 
 
@@ -34,13 +34,13 @@ class TeamHelperTable(ModelHelperTable[Team]):
     Super Class:
         ModelHelperTable
     """
-    _board_client: BoardValidatorClient
-    _owner_client: PlayerValidatorClient
+    _board_client: BoardValidationResponseService
+    _owner_client: PlayerValidationResponseService
     
     def __init__(
             self,
-            board_client: Optional[BoardValidatorClient] | None = None,
-            owner_client: Optional[PlayerValidatorClient] | None = None,
+            board_client: Optional[BoardValidationResponseService] | None = None,
+            owner_client: Optional[PlayerValidationResponseService] | None = None,
     ):
         """
         Args:
@@ -48,13 +48,13 @@ class TeamHelperTable(ModelHelperTable[Team]):
             owner_client: Optional[PlayerValidatorClient]
         """
         super().__init__()
-        self._board_client = board_client or BoardValidatorClient()
-        self._owner_client = owner_client or PlayerValidatorClient()
+        self._board_client = board_client or BoardValidationResponseService()
+        self._owner_client = owner_client or PlayerValidationResponseService()
     
     @property
-    def board_client(self) -> BoardValidatorClient:
+    def board_client(self) -> BoardValidationResponseService:
         return self._board_client
     
     @property
-    def owner_client(self) -> PlayerValidatorClient:
+    def owner_client(self) -> PlayerValidationResponseService:
         return self._owner_client

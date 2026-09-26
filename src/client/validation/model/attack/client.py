@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult, AttackValidationResponse
-from client import ModelValidatorClient, AttackValidationRequest
+from client import ModelValidationResponseService, AttackValidationRequest
 from domain import Attack
 from err import AttackValidatorClientException
 from transit import AttackCarrier, AttackValidationDispatcher
 from util import LoggingLevelRouter
 
 
-class AttackValidatorClient(ModelValidatorClient[Attack]):
+class AttackValidationResponseService(ModelValidationResponseService[Attack]):
     """
     Role
         - Mediator
@@ -54,7 +54,7 @@ class AttackValidatorClient(ModelValidatorClient[Attack]):
         return cast(AttackValidationDispatcher, super().dispatcher)
     
     @LoggingLevelRouter.monitor
-    def transmit(
+    def execute(
             self,
             request: AttackValidationRequest
     ) -> AttackValidationResponse:

@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult, ManeuverValidationResponse
-from client import ModelValidatorClient, ManeuverValidationRequest
+from client import ModelValidationResponseService, ManeuverValidationRequest
 from domain import Maneuver
 from err import ManeuverValidatorClientException
 from transit import ManeuverCarrier, ManeuverValidationDispatcher
 from util import LoggingLevelRouter
 
 
-class ManeuverValidatorClient(ModelValidatorClient[Maneuver]):
+class ManeuverValidationResponseService(ModelValidationResponseService[Maneuver]):
     """
     Role
         - Mediator
@@ -54,7 +54,7 @@ class ManeuverValidatorClient(ModelValidatorClient[Maneuver]):
         return cast(ManeuverValidationDispatcher, super().dispatcher)
     
     @LoggingLevelRouter.monitor
-    def transmit(
+    def execute(
             self,
             request: ManeuverValidationRequest
     ) -> ManeuverValidationResponse:
