@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional, Type, cast
 
-from artifcat import ValidationResult
+from artifcat import BoardValidationResponse, ValidationResult
 from assurance import ModelValidator, TeamValidatorToolkit
 from domain import (
     Archetype, Board, BoardValidationRequest, Player, PlayerValidationRequest, Team,
@@ -267,6 +267,37 @@ class TeamValidator(ModelValidator[Team]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        client_response = self.toolkit.helper.board_client.execute(
-            bo
-        )
+        # Handle the case that a failure response is received.
+        service_result = self.toolkit.helper.board_client.execute(request)
+        if service_result.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TeamValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TeamValidatorException.MSG,
+                    err_code=TeamValidatorException.ERR_CODE,
+                    ex=service_result.exception,
+                )
+            )
+        response = cast(BoardValidationResponse, service_result)
+        if not response.valid_model:
+            if service_result.is_failure:
+                # Send the exception chain on failure.
+                return ValidationResult.failure(
+                    TeamValidatorException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=TeamValidatorException.MSG,
+                        err_code=TeamValidatorException.ERR_CODE,
+                        ex=BoardValidationClientException(
+                            cls_mthd=method,
+                            cls_name=self.__class__.__name__,
+                            msg=BoardValidationClientExceptionn.MSG,
+                            err_code=BoardValidationClientException.ERR_CODE,
+                        ),
+                    )
+                )
+            model = cast(Board, response.valid_model)
+        # --- Extract the board validation payload. ---#
+        return ValidationResult.success(model)
