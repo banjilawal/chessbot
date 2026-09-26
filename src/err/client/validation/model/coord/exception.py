@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidatorClientException
+from err import ModelValidatorResponseServiceException
 
 __all__ = [
     # ======================# COORD_VALIDATION_CLIENT_CLIENT_ERROR #======================#
-    "CoordValidatorClientException",
+    "CoordValidatorResponseServiceException",
 ]
 
 # ======================# COORD_VALIDATION_CLIENT_CLIENT_ERROR #======================#
-class CoordValidatorClientException(ModelValidatorClientException):
+class CoordValidatorResponseServiceException(ModelValidatorResponseServiceException):
     """
     Role:
         - Error Tracing

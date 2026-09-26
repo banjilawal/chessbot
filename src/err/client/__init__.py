@@ -13,4 +13,4 @@ version: 1.0.0
 from .validation import *
 
 # Modules
-from .exception import ClientException
+from .exception import ResponseServiceException

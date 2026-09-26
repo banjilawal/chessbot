@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import ValidationResult, VectorValidationResponse
 from client import ModelValidationResponseService, VectorValidationRequest
 from domain import Vector
-from err import VectorValidatorClientException
+from err import VectorValidatorResponseServiceException
 from transit import VectorCarrier, VectorValidationDispatcher
 from util import LoggingLevelRouter
 
@@ -82,11 +82,11 @@ class VectorValidationResponseService(ModelValidationResponseService[Vector]):
             return VectorValidationResponse.failure(
                 request=request,
                 result=result,
-                exception=VectorValidatorClientException(
+                exception=VectorValidatorResponseServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorValidatorClientException.MSG,
-                    err_code=VectorValidatorClientException.ERR_CODE,
+                    msg=VectorValidatorResponseServiceException.MSG,
+                    err_code=VectorValidatorResponseServiceException.ERR_CODE,
                     ex=result.exception,
                 ),
             )

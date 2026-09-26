@@ -12,16 +12,16 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ClientException
+from err import ResponseServiceException
 
 
 __all__ = [
     # ======================# VALIDATION_CLIENT_ERROR #======================#
-    "ValidatorClientException",
+    "ValidatorResponseServiceException",
 ]
 
 # ======================# VALIDATION_CLIENT_ERROR #======================#
-class ValidatorClientException(ClientException):
+class ValidatorResponseServiceException(ResponseServiceException):
     """
     Role:
         - Error Tracing

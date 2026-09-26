@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidatorClientException
+from err import ModelValidatorResponseServiceException
 
 __all__ = [
     # ======================# VECTOR_VALIDATION_CLIENT_CLIENT_ERROR #======================#
-    "VectorValidatorClientException",
+    "VectorValidatorResponseServiceException",
 ]
 
 # ======================# VECTOR_VALIDATION_CLIENT_CLIENT_ERROR #======================#
-class VectorValidatorClientException(ModelValidatorClientException):
+class VectorValidatorResponseServiceException(ModelValidatorResponseServiceException):
     """
     Role:
         - Error Tracing

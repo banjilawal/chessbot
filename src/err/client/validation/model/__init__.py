@@ -26,4 +26,4 @@ from .token import *
 from .vector import *
 
 # Modules
-from .exception import ModelValidatorClientException
+from .exception import ModelValidatorResponseServiceException

@@ -12,4 +12,4 @@ version: 1.0.0
 # Packages
 
 # Modules
-from .exception import RankValidatorClientException
+from .exception import RankValidatorResponseServiceException

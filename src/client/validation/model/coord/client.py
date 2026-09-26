@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import ValidationResult, CoordValidationResponse
 from client import ModelValidationResponseService, CoordValidationRequest
 from domain import Coord
-from err import CoordValidatorClientException
+from err import CoordValidatorResponseServiceException
 from transit import CoordCarrier, CoordValidationDispatcher
 from util import LoggingLevelRouter
 
@@ -82,11 +82,11 @@ class CoordValidationResponseService(ModelValidationResponseService[Coord]):
             return CoordValidationResponse.failure(
                 request=request,
                 result=result,
-                exception=CoordValidatorClientException(
+                exception=CoordValidatorResponseServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CoordValidatorClientException.MSG,
-                    err_code=CoordValidatorClientException.ERR_CODE,
+                    msg=CoordValidatorResponseServiceException.MSG,
+                    err_code=CoordValidatorResponseServiceException.ERR_CODE,
                     ex=result.exception,
                 ),
             )

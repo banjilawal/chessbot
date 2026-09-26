@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidatorClientException
+from err import ModelValidatorResponseServiceException
 
 __all__ = [
     # ======================# RANK_VALIDATION_CLIENT_CLIENT_ERROR #======================#
-    "RankValidatorClientException",
+    "RankValidatorResponseServiceException",
 ]
 
 # ======================# RANK_VALIDATION_CLIENT_CLIENT_ERROR #======================#
-class RankValidatorClientException(ModelValidatorClientException):
+class RankValidatorResponseServiceException(ModelValidatorResponseServiceException):
     """
     Role:
         - Error Tracing

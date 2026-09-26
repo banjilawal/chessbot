@@ -17,11 +17,11 @@ from err import ChessException
 
 __all__ = [
     # ======================# CLIENT_ERROR #======================#
-    "ClientException",
+    "ResponseServiceException",
 ]
 
 # ======================# CLIENT_ERROR #======================#
-class ClientException(ChessException):
+class ResponseServiceException(ChessException):
     """
     Role:
         - Error Tracing

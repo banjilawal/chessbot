@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import ValidationResult, TeamValidationResponse
 from client import ModelValidationResponseService, TeamValidationRequest
 from domain import Team
-from err import TeamValidatorClientException
+from err import TeamValidatorResponseServiceException
 from transit import TeamCarrier, TeamValidationDispatcher
 from util import LoggingLevelRouter
 
@@ -82,11 +82,11 @@ class TeamValidationResponseService(ModelValidationResponseService[Team]):
             return TeamValidationResponse.failure(
                 request=request,
                 result=result,
-                exception=TeamValidatorClientException(
+                exception=TeamValidatorResponseServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamValidatorClientException.MSG,
-                    err_code=TeamValidatorClientException.ERR_CODE,
+                    msg=TeamValidatorResponseServiceException.MSG,
+                    err_code=TeamValidatorResponseServiceException.ERR_CODE,
                     ex=result.exception,
                 ),
             )

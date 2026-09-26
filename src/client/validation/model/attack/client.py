@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import ValidationResult, AttackValidationResponse
 from client import ModelValidationResponseService, AttackValidationRequest
 from domain import Attack
-from err import AttackValidatorClientException
+from err import AttackValidatorResponseServiceException
 from transit import AttackCarrier, AttackValidationDispatcher
 from util import LoggingLevelRouter
 
@@ -82,11 +82,11 @@ class AttackValidationResponseService(ModelValidationResponseService[Attack]):
             return AttackValidationResponse.failure(
                 request=request,
                 result=result,
-                exception=AttackValidatorClientException(
+                exception=AttackValidatorResponseServiceException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AttackValidatorClientException.MSG,
-                    err_code=AttackValidatorClientException.ERR_CODE,
+                    msg=AttackValidatorResponseServiceException.MSG,
+                    err_code=AttackValidatorResponseServiceException.ERR_CODE,
                     ex=result.exception,
                 ),
             )
