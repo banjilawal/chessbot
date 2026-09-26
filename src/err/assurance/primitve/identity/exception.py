@@ -1,7 +1,7 @@
-# src/err/assurance/validator/primitive/number/exception.py
+# src/err/assurance/primitive/identity/exception.py
 
 """
-Module: err.assurance.validator.primitive.number.exception
+Module: err.assurance.primitve.identity.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import AssuranceException
 from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# NUMBER_VALIDATOR_FAILURE #======================#
-    "NumberValidatorException",
+    # ======================# IDENTITY_VALIDATOR_FAILURE #======================#
+    "IdentityAssuranceException",
 ]
 
-# ======================# NUMBER_VALIDATOR_FAILURE #======================#
-class NumberValidatorException(ValidatorException):
+# ======================# IDENTITY_VALIDATOR_FAILURE #======================#
+class IdentityAssuranceException(AssuranceException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a NumberValidator failed.
+        1.  Indicating an IdentityValidator failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class NumberValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        AssuranceException
     """
-    MSG = "NumberValidator failed."
-    ERR_CODE = "NUMBER_VALIDATOR_FAILURE"
+    MSG = "IdentityValidator failed."
+    ERR_CODE = "IDENTITY_VALIDATOR_FAILURE"
     
     def __init__(
             self,

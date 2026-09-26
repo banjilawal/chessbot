@@ -12,6 +12,7 @@ version: 0.0.2
 # Packages
 from .array import *
 from .binder import *
+from .identity import *
 from .number import *
 from .string import *
 
