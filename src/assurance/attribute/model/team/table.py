@@ -12,10 +12,10 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import ModelHelperTable, PrimingValidator, TeamBlueprintLoader
+from assurance import ModelHelperTable
 from client import BoardValidatorClient, PlayerValidatorClient
 from domain import Team
-from microservice import IdentityService
+
 
 class TeamHelperTable(ModelHelperTable[Team]):
     """
@@ -41,27 +41,15 @@ class TeamHelperTable(ModelHelperTable[Team]):
             self,
             board_client: Optional[BoardValidatorClient] | None = None,
             owner_client: Optional[PlayerValidatorClient] | None = None,
-            blueprint_loader: Optional[TeamBlueprintLoader] | None = None,
-            
-            identity_service: Optional[IdentityService] | None = None,
-            priming_validator: Optional[PrimingValidator] | None = None,
     ):
         """
         Args:
             board_client: Optional[BoardValidatorClient]
             owner_client: Optional[PlayerValidatorClient]
-            blueprint_loader: Optional[TeamBlueprintLoader]
-            
-            identity_service: Optional[IdentityService]
-            priming_validator: Optional[PrimingValidator]
         """
-        super().__init__(
-            identity_service=identity_service,
-            priming_validator=priming_validator,
-        )
+        super().__init__()
         self._board_client = board_client or BoardValidatorClient()
         self._owner_client = owner_client or PlayerValidatorClient()
-        self._blueprint_loader = blueprint_loader or TeamBlueprintLoader()
     
     @property
     def board_client(self) -> BoardValidatorClient:
@@ -70,7 +58,3 @@ class TeamHelperTable(ModelHelperTable[Team]):
     @property
     def owner_client(self) -> PlayerValidatorClient:
         return self._owner_client
-    
-    @property
-    def blueprint_loader(self) -> TeamBlueprintLoader:
-        return self._blueprint_loader

@@ -12,7 +12,10 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar
 
-from assurance import AttributeHelperTable, CommonValidatorToolkit, NumberValidator, PrimingValidator
+from assurance import (
+    AttributeHelperTable, BlueprintLoader, CommonValidatorToolkit,
+    NumberValidator, PrimingValidator
+)
 from authorization import BlueprintIdExtractor
 from domain import NullExceptionGroup, ObjectManifest, TypeUnion
 from microservice import IdentityService
@@ -32,6 +35,7 @@ class ValidatorToolkit(ABC, Generic[T]):
     Attributes:
         metadata: ObjectManifest[T]
         helper: AttributeHelperTable[T]
+        blueprint_loader: BlueprintLoader[T]
         common: CommonValidatorToolkit
 
     Provides:
@@ -40,22 +44,26 @@ class ValidatorToolkit(ABC, Generic[T]):
     """
     _metadata: ObjectManifest[T]
     _helper: AttributeHelperTable[T]
+    _blueprint_loader: BlueprintLoader[T]
     _common: CommonValidatorToolkit
     
     def __init__(
             self,
             helper: AttributeHelperTable[T],
             metadata: ObjectManifest[T],
+            blueprint_loader: BlueprintLoader[T],
             common: Optional[CommonValidatorToolkit] | None = None,
     ):
         """
         Args:
             helper: HelperTable[T]
             metadata: ObjectManifest[T]
+            blueprint_loader: BlueprintLoader[T]
             common: Optional[CommonValidatorToolkit]
         """
         self._helper = helper
         self._metadata = metadata
+        self._blueprint_loader = blueprint_loader
         self._common = common or CommonValidatorToolkit()
     
     @property
@@ -63,16 +71,12 @@ class ValidatorToolkit(ABC, Generic[T]):
         return self._helper
     
     @property
-    def nulls(self) -> NullExceptionGroup[T]:
-        return self._metadata.nulls
-    
-    @property
-    def types(self) -> TypeUnion[T]:
-        return self._metadata.types
-    
-    @property
     def metadata(self) -> ObjectManifest[T]:
         return self._metadata
+        
+    @property
+    def blueprint_loader(self) -> BlueprintLoader[T]:
+        return self._blueprint_loader
     
     @property
     def identity_service(self) -> IdentityService:
@@ -89,3 +93,14 @@ class ValidatorToolkit(ABC, Generic[T]):
     @property
     def blueprint_id_extractor(self) -> BlueprintIdExtractor:
         return self._common.blueprint_id_extractor
+    
+    @property
+    def nulls(self) -> NullExceptionGroup[T]:
+        return self._metadata.nulls
+    
+    @property
+    def types(self) -> TypeUnion[T]:
+        return self._metadata.types
+    
+
+    
