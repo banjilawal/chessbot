@@ -18,7 +18,37 @@ from client import Request, ValidationRequest
 T = TypeVar("T",)
 
 class ValidationResponse(Response[ValidationResult], ABC, Generic[T]):
-    
+    """
+    Role
+        -   Messaging
+
+    Responsibilities:
+        1.  Capture data and state of the Validation request-response
+            chain.
+
+    Attributes:
+        state: ResponseState
+        result: ValidationResult
+        request: ValidationRequest[T]
+        exception: Optional[Exception]
+
+    Provides:
+        -   is_success: bool
+        -   is_failure: bool
+
+        -   def success(
+                    request: Request,
+                    result: ValidationResult[T],
+            ) -> ValidationResponse[T]
+
+        -   def failure(
+                    request: Request,
+                    result: ValidationResult[T],
+                    exception: Exception,
+            ) -> ValidationResponse[T]
+
+    Super Class:
+    """
     def __init__(
             self,
             state: ResponseState,

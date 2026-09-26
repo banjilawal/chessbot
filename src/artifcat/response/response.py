@@ -21,7 +21,7 @@ T = TypeVar("T", bound="Result")
 class Response(ABC, Generic[T]):
     """
     Role
-        -   Messaging and Transport
+        -   Messaging
 
     Responsibilities:
         1.  Capture the request-response chain's state and data flow.
