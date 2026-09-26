@@ -28,7 +28,7 @@ class SearchRequest(CollectionRequest[SearchResult], ABC, Generic[T]):
          - Messaging
 
      Responsibilities:
-         1. Transport job information throughout the SearchOperation lifecycle.
+         1.  Transport job information throughout the SearchOperation lifecycle.
 
      Attributes:
         id: int

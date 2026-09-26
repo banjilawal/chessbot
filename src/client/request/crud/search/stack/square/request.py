@@ -18,11 +18,10 @@ from client import StackSearchRequest, Square, SquareSearchContext
 class SquareSearchRequest(StackSearchRequest[Square]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-        1. Provide a SquareStackService and criteria a SquareSearcher needs to run a job.
+        1.  Provide a SquareStackService and criteria a SquareSearcher needs to run a job.
 
      Attributes:
         id: int

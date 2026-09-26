@@ -73,14 +73,13 @@ class VectorValidatorClient(ModelValidatorClient[Vector]):
         
         result = self.dispatcher.execute(job=request)
         if result.is_failure:
-            return ValidationResult.failure(
-                VectorValidatorClientException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=VectorValidatorClientException.MSG,
-                    err_code=VectorValidatorClientException.ERR_CODE,
-                    ex=result.exception,
-                )
+            return VectorValidationResponse.failure(
+                request=request,
+                result=result,
+                exception=result.exception,
             )
         carrier = cast(VectorCarrier, result.payload)
-        return ValidationResult.success(carrier)
+        return VectorValidationResponse.success(
+            request=request,
+            result=ValidationResult(carrier),
+        )

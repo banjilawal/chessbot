@@ -22,7 +22,7 @@ class ArenaContextBuilder(Builder[ArenaContext]):
     Role:Builder, Data Integrity And Reliability Guarantor
 
     Responsibilities:
-    1.  Produce ArenaContext instances whose integrity is guaranteed at creation.
+    1.   Produce ArenaContext instances whose integrity is guaranteed at creation.
     2.  Manage construction of ArenaContext instances that can be used safely by the client.
     3.  Ensure params for ArenaContext creation have met the application's safety contract.
     4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
@@ -52,7 +52,7 @@ class ArenaContextBuilder(Builder[ArenaContext]):
     ) -> BuildResult[ArenaContext]:
         """
         # ACTION:
-            1.  Confirm that only one in the (id, designation, team, game, arena_variety) tuple is not null.
+            1.   Confirm that only one in the (id, designation, team, game, arena_variety) tuple is not null.
             2.  Certify the not-null attribute is safe using the appropriate validating service.
             3.  If all checks pass build a ArenaContext and send in a BuildResult. Else, return an exception
                 in the BuildResult.

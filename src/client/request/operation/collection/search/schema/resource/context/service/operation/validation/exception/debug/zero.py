@@ -28,7 +28,7 @@ class ZeroSchemaContextFlagsException(ZeroContextFlagsException):
         - Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that no SchemaContext work was not completed because
+        1.   Indicate that no SchemaContext work was not completed because
             no attribute was enabled.
 
     Attributes:

@@ -25,7 +25,7 @@ class MicroserviceRequest(OperationRequest[MicroserviceOperation], ABC, Generic[
          - Messaging
 
      Responsibilities:
-         1. Transport job information throughout the MicroserviceOperation lifecycle.
+         1.  Transport job information throughout the MicroserviceOperation lifecycle.
 
      Attributes:
 

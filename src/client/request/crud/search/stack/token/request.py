@@ -18,11 +18,10 @@ from client import StackSearchRequest, Token, TokenSearchContext
 class TokenSearchRequest(StackSearchRequest[Token]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-        1. Provide a TokenStackService and criteria a TokenSearcher needs to run a job.
+        1.  Provide a TokenStackService and criteria a TokenSearcher needs to run a job.
 
      Attributes:
         id: int

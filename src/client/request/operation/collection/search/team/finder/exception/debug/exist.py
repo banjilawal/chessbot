@@ -25,7 +25,7 @@ class TeamNotFoundException(TeamDebugException):
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  Indicate that no team was found.
+    1.   Indicate that no team was found.
 
     Super Class:
         *   TeamDebugException

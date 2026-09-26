@@ -18,11 +18,10 @@ from client import StackSearchRequest, Rank, RankContext
 class RankSearchRequest(StackSearchRequest[Rank]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-        1. Provide a RankStackService and criteria a RankSearcher needs to run a job.
+        1.  Provide a RankStackService and criteria a RankSearcher needs to run a job.
 
      Attributes:
         id: int

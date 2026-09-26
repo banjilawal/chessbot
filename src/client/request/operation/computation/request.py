@@ -25,7 +25,7 @@ class ComputationRequest(OperationRequest[ComputationResult], ABC, Generic[T]):
          - Messaging
 
      Responsibilities:
-         1. Transport job information through a ComputationOperation lifecycle.
+         1.  Transport job information through a ComputationOperation lifecycle.
 
      Attributes:
 

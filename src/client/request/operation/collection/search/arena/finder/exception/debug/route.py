@@ -25,7 +25,7 @@ class ArenaSearchRouteException(ArenaDebugException):
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  Indicate that there was no search logic for a arena attribute.
+    1.   Indicate that there was no search logic for a arena attribute.
 
     Super Class:
         *   ArenaDebugException

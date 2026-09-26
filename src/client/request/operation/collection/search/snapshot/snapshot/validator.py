@@ -28,7 +28,7 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
      Role:Validation, Data Integrity Guarantor, Security.
 
     Responsibilities:
-    1.  Ensure an SnapshotContext instance is certified safe, reliable, and consistent before use.
+    1.   Ensure an SnapshotContext instance is certified safe, reliable, and consistent before use.
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
@@ -53,7 +53,7 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
     ) -> ValidationResult[SnapshotContext]:
         """
         # ACTION:
-            1.  If the rank passes existence and type checks cast into a SnapshotContext for
+            1.   If the rank passes existence and type checks cast into a SnapshotContext for
                 additional integrity tests. Else return an exception in the ValidationResult.
             2.  If one-and-only-one SnapshotContext attribute-value-tuple is enabled goto the integrity
                 check. Else, return an exception in the ValidationResult.

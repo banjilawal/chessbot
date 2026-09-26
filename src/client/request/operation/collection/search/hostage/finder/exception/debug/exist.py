@@ -25,7 +25,7 @@ class HostageNotFoundException(HostageDebugException):
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  Indicate that no hostage was found.
+    1.   Indicate that no hostage was found.
 
     Super Class:
         *   HostageDebugException

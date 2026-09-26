@@ -10,10 +10,10 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, TypeVar, cast
+from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import Response, ResponseState, ValidationResult
-from client.request import ValidationRequest
+from client import Request, ValidationRequest
 
 T = TypeVar("T",)
 
@@ -24,14 +24,21 @@ class ValidationResponse(Response[ValidationResult], ABC, Generic[T]):
             state: ResponseState,
             result: ValidationResult,
             request: ValidationRequest[T],
+            exception: Optional[Exception],
     ):
         """
         Args:
             state: ResponseState
-            result: ValidationResult,
-            request: ValidationRequest[T],
+            result: ValidationResult
+            request: ValidationRequest[T]
+            exception: Optional[Exception]
         """
-        super().__init__(state=state, result=result, request=request)
+        super().__init__(
+            state=state,
+            result=result,
+            request=request,
+            exception=exception,
+        )
         
     @property
     def result(self) -> ValidationResult:
@@ -40,10 +47,6 @@ class ValidationResponse(Response[ValidationResult], ABC, Generic[T]):
     @property
     def request(self) -> ValidationRequest[T]:
         return cast(ValidationRequest[T], super().request)
-    
-    @property
-    def state(self) -> ResponseState:
-        return self._state
     
     @property
     def is_success(self) -> bool:
@@ -61,24 +64,29 @@ class ValidationResponse(Response[ValidationResult], ABC, Generic[T]):
         
     @classmethod
     def success(
-            cls, 
-            result: ValidationResult, 
-            request: ValidationRequest[T],
-    ) -> ValidationResponse:
+            cls,
+            request: Request,
+            result: ValidationResult,
+    ) -> ValidationResponse[T]:
+        validation_request = cast(ValidationRequest[T], request)
         return cls(
             result=result,
-            request=request,
+            request=validation_request,
             state=ResponseState.SUCCESS,
         )
     
     @classmethod
     def failure(
-            cls, 
-            result: ValidationResult, 
-            request: ValidationRequest[T],
-    ) -> ValidationResponse:
+            cls,
+            request: Request,
+            result: ValidationResult,
+            exception: Exception,
+    ) -> ValidationResponse[T]:
+        validation_request = cast(ValidationRequest[T], request)
         return cls(
             result=result,
-            request=request,
+            exception=exception,
+            request=validation_request,
             state=ResponseState.FAILURE,
+            
         )

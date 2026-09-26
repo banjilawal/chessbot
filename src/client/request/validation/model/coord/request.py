@@ -9,20 +9,18 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import cast
-
-from client import ModelValidationRequest, Coord
+from client import ModelValidationRequest
+from domain import Coord
 from transit import CoordCarrier
 
 
 class CoordValidationRequest(ModelValidationRequest[Coord]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-        1. Send job details to a CoordValidator.
+        1. Provide details about a Coord a validation job.
 
      Attributes:
          id: int

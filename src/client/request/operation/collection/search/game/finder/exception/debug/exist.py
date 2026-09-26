@@ -25,7 +25,7 @@ class GameNotFoundException(GameDebugException):
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  Indicate that no game was found.
+    1.   Indicate that no game was found.
 
     Super Class:
         *   GameDebugException

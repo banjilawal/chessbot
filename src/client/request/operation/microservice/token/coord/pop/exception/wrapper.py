@@ -27,7 +27,7 @@ class TokenPopCoordException(DeletionException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Indicate that the TokenPopCoord exception was aborted.
+        1.   Indicate that the TokenPopCoord exception was aborted.
         2.  Identify the method where the error occurred.
         
     Attributes:

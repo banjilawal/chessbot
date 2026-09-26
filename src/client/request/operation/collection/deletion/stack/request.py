@@ -25,7 +25,7 @@ class StackPopRequest(CollectionDeletionRequest[StackService], ABC, Generic[T]):
          - Messaging
 
      Responsibilities:
-         1. Transport job information throughout the StackPop lifecycle.
+         1.  Transport job information throughout the StackPop lifecycle.
 
      Attributes:
         item: T

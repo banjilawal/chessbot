@@ -25,7 +25,7 @@ class SchemaQueryServiceException(ServiceException):
     Role:Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
-    1.  Anchors SchemaQueryService debug (layer-2) error state firing incident
+    1.   Anchors SchemaQueryService debug (layer-2) error state firing incident
         reports on
             *   the triggering variable
             *   The trigger's value.

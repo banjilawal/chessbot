@@ -28,7 +28,7 @@ class SchemaQueryStackEmptyException(DebugException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Indicate that the SchemaQuery validation failed because the schema is empty.
+        1.   Indicate that the SchemaQuery validation failed because the schema is empty.
         
     Attributes:
         var: Optional[str]

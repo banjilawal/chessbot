@@ -21,7 +21,7 @@ class ChainRequest(Request):
         - Request
     
     Responsibilities:
-        1. Carry information running a Chain operation.
+        1.  Carry information running a Chain operation.
     
     Attributes:
         id: int

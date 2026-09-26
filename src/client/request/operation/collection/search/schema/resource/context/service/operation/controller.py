@@ -20,7 +20,7 @@ class SchemaContextOpsController:
         - Controller
         
     Responsibilities:
-        1.  Provide a single entry point for operations SchemaService supports.
+        1.   Provide a single entry point for operations SchemaService supports.
         
     Attributes:
         builder: SchemaContextBuilder

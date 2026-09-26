@@ -23,7 +23,7 @@ class OldRequest(Request, ABC, Generic[T]):
          - Messaging
 
      Responsibilities:
-         1. Transport job information throughout the Operation lifecycle.
+         1.  Transport job information throughout the Operation lifecycle.
 
      Attributes:
 

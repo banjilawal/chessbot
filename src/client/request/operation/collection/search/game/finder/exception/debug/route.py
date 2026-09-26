@@ -25,7 +25,7 @@ class GameSearchRouteException(GameDebugException):
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  Indicate that there was no search logic for a game attribute.
+    1.   Indicate that there was no search logic for a game attribute.
 
     Super Class:
         *   GameDebugException

@@ -16,11 +16,10 @@ from client import Structure, ValidationRequest
 class StructureValidationRequest(ValidationRequest[Structure]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-        1. Transport the collection and other objects a ValidationOperation needs to run a job.
+        1.  Transport the collection and other objects a ValidationOperation needs to run a job.
 
      Attributes:
          id: int

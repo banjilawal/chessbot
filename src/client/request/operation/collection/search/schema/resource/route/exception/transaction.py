@@ -28,7 +28,7 @@ class SchemaSearchException(SearchException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Indicate a Schema search was not completed because an error occurred.
+        1.   Indicate a Schema search was not completed because an error occurred.
         2.  Identify the SchemaSearchRouter method where the failure occurred.
 
     Attributes:

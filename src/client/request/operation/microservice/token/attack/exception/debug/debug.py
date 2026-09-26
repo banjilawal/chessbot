@@ -23,7 +23,7 @@ class AttackDebugException(AttackException, DebugException):
     Role:Error Tracing, Debugging
 
     Responsibilities:
-    1.  Describes the condition that caused a Attack operation failure.
+    1.   Describes the condition that caused a Attack operation failure.
 
     Super Class:
         *   AttackException

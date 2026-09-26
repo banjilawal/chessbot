@@ -22,7 +22,7 @@ class TokenStackPopRequest(StackPopRequest[Token]):
          - Messaging
 
      Responsibilities:
-         1. Transport job information throughout the TokenPop lifecycle
+         1.  Transport job information throughout the TokenPop lifecycle
 
      Attributes:
         id: int

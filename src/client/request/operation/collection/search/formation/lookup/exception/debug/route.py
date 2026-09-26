@@ -22,7 +22,7 @@ class FormationLookupRouteException(FormationException, ExecutionRouteException)
     Role:Fallback Result
 
     Responsibilities:
-    1. Indicate that FormationLookupProcess did not handle a build option or parameter with its own execution route.
+    1.  Indicate that FormationLookupProcess did not handle a build option or parameter with its own execution route.
 
     Super Class:
         *   FormationException

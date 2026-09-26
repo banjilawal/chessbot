@@ -17,11 +17,10 @@ from client import RegisterValidationRequest, SquareRegister
 class SquareRegisterValidationRequest(RegisterValidationRequest[SquareRegister]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-        1. Transport the collection and other objects a SquareRegisterValidator
+        1.  Transport the collection and other objects a SquareRegisterValidator
             needs to run a job.
 
      Attributes:

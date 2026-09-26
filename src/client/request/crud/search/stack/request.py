@@ -19,11 +19,10 @@ T = TypeVar("T", bound="StateModel")
 class StackSearchRequest(SearchRequest, ABC, Generic[T]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-        1. Provide a collection and criteria a Searcher needs to run a job.
+        1.  Provide a collection and criteria a Searcher needs to run a job.
 
      Attributes:
          id: int

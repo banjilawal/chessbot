@@ -28,7 +28,7 @@ class SchemaContextValidationRouteException(ContextRouteException):
         - Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that no SchemaContext validation failed because attribute
+        1.   Indicate that no SchemaContext validation failed because attribute
             did not have a verification path.
 
     Attributes:

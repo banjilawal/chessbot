@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from typing import cast
 
-from client import ModelValidationRequest, Token
+from client import ModelValidationRequest
+from domain import Token
 from transit import TokenCarrier
 
 
 class TokenValidationRequest(ModelValidationRequest[Token]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-        1. Send job details to a TokenValidator.
+        1. Provide details about a Token a validation job.
 
      Attributes:
          id: int

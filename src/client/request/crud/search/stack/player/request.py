@@ -18,11 +18,10 @@ from client import StackSearchRequest, Player, PlayerSearchContext
 class PlayerSearchRequest(StackSearchRequest[Player]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-        1. Provide a PlayerStackService and criteria a PlayerSearcher needs to run a job.
+        1.  Provide a PlayerStackService and criteria a PlayerSearcher needs to run a job.
 
      Attributes:
         id: int

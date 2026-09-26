@@ -23,7 +23,7 @@ class AttackException(OperationException):
     Role:Worker Method Identifier, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  An error occurred in Attack.execute that, prevented AttackResult.success() 
+    1.   An error occurred in Attack.execute that, prevented AttackResult.success() 
         from being returned.
 
     Super Class:

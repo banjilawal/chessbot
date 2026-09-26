@@ -21,7 +21,7 @@ class VectorTransformRequest(VectorComputationRequest):
          - Messaging
 
      Responsibilities:
-         1. Transport job information to execute an operation
+         1.  Transport job information to execute an operation
 
      Attributes:
 

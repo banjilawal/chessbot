@@ -23,7 +23,7 @@ class TokenOriginSearcher:
         - Integrity Maintenance
 
     Responsibilities:
-        1.  Find the square a Token occupies on a Board.
+        1.   Find the square a Token occupies on a Board.
         2.  Provides a token's origin for maneuver operations.
         3.  Provide debugging information for error cases which can occur during the searcher.
 
@@ -50,7 +50,7 @@ class TokenOriginSearcher:
         Find the source square a Token can move from.
         
         Action:
-            1.  Return a failure result containing an exception chain if either:
+            1.   Return a failure result containing an exception chain if either:
                     - The token's readiness analysis is not completed.
                     - The square search is not completed.
                     - The token is disabled.

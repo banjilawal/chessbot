@@ -23,11 +23,10 @@ T = TypeVar("T", bound="ClientDataObject")
 class InsertRequest(CrudRequest[InsertionResult], ABC, Generic[T]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-        1. Provide a collection and the item an Inserter needs to run a job.
+        1.  Provide a collection and the item an Inserter needs to run a job.
 
      Attributes:
          id: int

@@ -25,7 +25,7 @@ class ChainSearchRequest(ChainRequest, ABC, Generic[T]):
         - Request
 
     Responsibilities:
-        1. Carry information for firing a Node search in a Chain.
+        1.  Carry information for firing a Node search in a Chain.
 
     Attributes:
         id: int

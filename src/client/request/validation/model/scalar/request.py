@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from typing import cast
 
-from client import ModelValidationRequest, Scalar
+from client import ModelValidationRequest
+from domain import Scalar
 from transit import ScalarCarrier
 
 
 class ScalarValidationRequest(ModelValidationRequest[Scalar]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-        1. Send job details to a ScalarValidator.
+        1. Provide details about a Scalar a validation job.
 
      Attributes:
          id: int

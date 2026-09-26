@@ -25,7 +25,7 @@ class ArenaContextExecutionRouteException(ExecutionRouteException):
     Role:Error Tracing, Debugging, Super Exception
 
     Responsibilities:
-    1.  Indicate that there is no build route for a ArenaContext attribute.
+    1.   Indicate that there is no build route for a ArenaContext attribute.
 
     Super Class:
         *   ExecutionRoute

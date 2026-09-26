@@ -21,7 +21,7 @@ class PromotionRequest(TokenServiceRequest):
          - Data Transport
 
      Responsibilities:
-        1.  Provide information the PromotionPermitter needs to elevate a pawn's rank.
+        1.   Provide information the PromotionPermitter needs to elevate a pawn's rank.
 
      Attributes:
          id: int

@@ -18,7 +18,7 @@ class SchemaQueryService(IntegrityMicroservice[SchemaQuery]):
         - Stateless Integrity Lifecycle Manager
 
     Responsibilities:
-        1.  Mutates SchemaQuery instances
+        1.   Mutates SchemaQuery instances
         2.  Ensure SchemaQuery integrity and consistency when its state changes.
         3.  Build SchemaQuery instances that satisfy integrity contracts
         4.  Maintain the SchemaQuery integrity lifecycle.

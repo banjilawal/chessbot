@@ -25,7 +25,7 @@ class CollectionDeletionRequest(CollectionRequest[CollectionDeletion], ABC, Gene
          - Messaging
 
      Responsibilities:
-         1. Transport job information throughout the DeletionOperation lifecycle.
+         1.  Transport job information throughout the DeletionOperation lifecycle.
 
      Attributes:
         id: int

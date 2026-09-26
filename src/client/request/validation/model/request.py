@@ -12,8 +12,9 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from client import Model, ValidationRequest
-from transit import EntityCarrier
+from client import ValidationRequest
+from domain import Model
+from transit import ModelCarrier
 
 T = TypeVar("T", bound="Model")
 
@@ -21,35 +22,33 @@ T = TypeVar("T", bound="Model")
 class ModelValidationRequest(ValidationRequest[T], ABC, Generic[T]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-        1. Transport the collection and other objects a ValidationOperation needs to run a job.
+         1. Provide details about a Model validation job.
 
      Attributes:
          id: int
-         carriery: EntityCarrier[T]
+         item: ModelCarrier[T]
 
      Provides:
      
      Super Class:
-        Request
+        ValidationRequest
      """
-    _item: EntityCarrier[T]
+    _item: ModelCarrier[T]
     
-    def __init__(self, id: int, item: EntityCarrier[T]):
+    def __init__(self, id: int, item: ModelCarrier[T]):
         """
         Args:
             id: int
-            item: EntityCarrier[T]
+            item: ModelCarrier[T]
         """
-        super().__init__(id=id)
-        self._item = item
+        super().__init__(id=id, item=item)
     
     @property
-    def item(self) -> EntityCarrier[T]:
-        return self._item
+    def item(self) -> ModelCarrier[T]:
+        return cast(ModelCarrier[T], super().item)
     
     def __eq__(self, other):
         if other is self: return True

@@ -23,7 +23,7 @@ class SquareDepartureProcess:
         - Process Runner
         
     Responsibilities:
-        1.  Square departure exception owner.
+        1.   Square departure exception owner.
         2.  Ensure both the token and the squares are consistent throughout
             square departure lifecycle.
 
@@ -49,7 +49,7 @@ class SquareDepartureProcess:
         Takes the token out of the square.
 
         Action:
-            1.  Send  an exception chain in the DeletionResult if:
+            1.   Send  an exception chain in the DeletionResult if:
                     - The square does not pass a validation check.
                     - The square is empty.
             2.  Otherwise:

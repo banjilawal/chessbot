@@ -24,7 +24,7 @@ class GameFinder(DataFinder[Game]):
     Role:SearchRouter
 
     Responsibilities:
-    1.  Search Game collections for bag which match the attribute target specified in the GameContext parameter.
+    1.   Search Game collections for bag which match the attribute target specified in the GameContext parameter.
     2.  Safely forward any errors encountered during a search to the caller.
 
     Super Class:
@@ -46,7 +46,7 @@ class GameFinder(DataFinder[Game]):
     ) -> SearchResult[List[Game]]:
         """
         # ACTION:
-        1.  Verify the collider_candidates is not null and contains only Game objects,
+        1.   Verify the collider_candidates is not null and contains only Game objects,
         2.  Use context_validator to certify the provided map.
         3.  Context attribute routes the searcher. Attribute value is the search target.
         4.  The outcome of the search is sent back to the caller in a SearchResult object.
@@ -102,7 +102,7 @@ class GameFinder(DataFinder[Game]):
     def _find_by_id(cls, dataset: List[Game], id: int) -> SearchResult[List[Game]]:
         """
         # ACTION:
-        1.  Get the Game with the matching id.
+        1.   Get the Game with the matching id.
         2.  If no match is found return an exception.
         3.  An id search should produce either no hits or one hit only.
         4.  Multiple unique agents in the result indicate that  a problem.
@@ -142,7 +142,7 @@ class GameFinder(DataFinder[Game]):
     def _find_by_agent(cls, dataset: [Game], agent: PlayerAgent) -> SearchResult[List[Game]]:
         """
         # ACTION:
-        1.  Get the Game with the matching owner-owner.
+        1.   Get the Game with the matching owner-owner.
         2.  If no match is found return an exception.
         3.  An id search should produce either no hits or one hit only.
 

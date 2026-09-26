@@ -20,7 +20,7 @@ class RemoveByOffsetRequest(ChainOffsetRequest):
         - Data Transport
     
     Responsibilities:
-        1. Carry information for removing a Node from a Chain at an offset.
+        1.  Carry information for removing a Node from a Chain at an offset.
     
     Attributes:
         id: int

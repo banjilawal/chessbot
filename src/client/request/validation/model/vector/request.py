@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from typing import cast
 
-from client import ModelValidationRequest, Vector
+from client import ModelValidationRequest
+from domain import Vector
 from transit import VectorCarrier
 
 
 class VectorValidationRequest(ModelValidationRequest[Vector]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-        1. Send job details to a VectorValidator.
+        1. Provide details about a Vector a validation job.
 
      Attributes:
          id: int

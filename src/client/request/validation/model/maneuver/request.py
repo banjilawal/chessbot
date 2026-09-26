@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from typing import cast
 
-from client import ModelValidationRequest, Maneuver
+from client import ModelValidationRequest
+from domain import Maneuver
 from transit import ManeuverCarrier
 
 
 class ManeuverValidationRequest(ModelValidationRequest[Maneuver]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-        1. Send job details to a ManeuverValidator.
+        1. Provide details about a Maneuver a validation job.
 
      Attributes:
          id: int

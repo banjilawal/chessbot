@@ -27,7 +27,7 @@ class SchemaStackNullException(NullException):
         - Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate a client got null instead of a List[Schema].
+        1.   Indicate a client got null instead of a List[Schema].
 
     Attributes:
         var: Optional[str]

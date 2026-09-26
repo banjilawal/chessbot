@@ -21,7 +21,7 @@ class SchemaLookupProcess(HashLookupProcess[Schema]):
     Role:Forward Lookups
 
     Responsibilities:
-    1.  Run forward lookups on the Schema hashtable to find a Team's play_directive_metadata for a game.
+    1.   Run forward lookups on the Schema hashtable to find a Team's play_directive_metadata for a game.
     2.  Indicate there is no play_directive for a given key-value pair by returning an exception to the caller.
     3.  Verifies correctness of key-value key before running lookup.
 
@@ -42,7 +42,7 @@ class SchemaLookupProcess(HashLookupProcess[Schema]):
     ) -> SearchResult[List[Schema]]:
         """
         # ACTION:
-            1.  If super_key fails validation send the exception chain in the SearchResult. Else, route to the
+            1.   If super_key fails validation send the exception chain in the SearchResult. Else, route to the
                 search method by the attribute portion of the Key.
             2.  If the value portion of the Key is not in the permitted attribute values send the exception
                 chain in the SearchResult. Else, send Personas whose targeted attribute values match.
@@ -90,7 +90,7 @@ class SchemaLookupProcess(HashLookupProcess[Schema]):
     def _query_by_name(cls, name: str) -> SearchResult[List[Schema]]:
         """
         # ACTION:
-            1.  Get any Schema entry whose schema matches the target value.
+            1.   Get any Schema entry whose schema matches the target value.
         # PARAMETERS:
             *   target (str)
         # RETURNS:
@@ -122,7 +122,7 @@ class SchemaLookupProcess(HashLookupProcess[Schema]):
     def _query_by_color(cls, color: GameColor) -> SearchResult[List[Schema]]:
         """
         # ACTION:
-        1.  Get any Schema entry which matches the targeted color-value key.
+        1.   Get any Schema entry which matches the targeted color-value key.
 
         # PARAMETERS:
             *   color (GameColor)

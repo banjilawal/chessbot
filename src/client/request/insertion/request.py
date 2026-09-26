@@ -22,11 +22,10 @@ T = TypeVar("T", bound="ClientObjectCollection")
 class InsertionRequest(Request[InsertionResult], ABC, Generic[T]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-         1. Transport information during the InsertionOperation lifecycle.
+         1.  Transport information during the InsertionOperation lifecycle.
 
      Attributes:
          id: int

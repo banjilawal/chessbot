@@ -18,7 +18,7 @@ class TokenContextOpsController:
         - Controller
         
     Responsibilities:
-        1.  Provide a single entry point for operations TokenService supports.
+        1.   Provide a single entry point for operations TokenService supports.
         
     Attributes:
         builder: TokenContextBuilder

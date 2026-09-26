@@ -28,7 +28,7 @@ class TokenQueryStackEmptyException(DebugException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Indicate that the TokenQuery validation failed because the schema is empty.
+        1.   Indicate that the TokenQuery validation failed because the schema is empty.
         
     Attributes:
         var: Optional[str]

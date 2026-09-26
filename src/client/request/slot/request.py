@@ -21,7 +21,7 @@ class RankSlotRequest(Request):
          - Data Transport
 
      Responsibilities:
-        1.  Provide information the SlotPermitter needs to approve or deny removing an item
+        1.   Provide information the SlotPermitter needs to approve or deny removing an item
             from the stack.
 
      Attributes:

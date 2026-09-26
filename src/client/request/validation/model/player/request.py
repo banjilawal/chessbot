@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from typing import cast
 
-from client import ModelValidationRequest, Player
+from client import ModelValidationRequest
+from domain import Player
 from transit import PlayerCarrier
 
 
 class PlayerValidationRequest(ModelValidationRequest[Player]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-        1. Send job details to a PlayerValidator.
+        1. Provide details about a Player a validation job.
 
      Attributes:
          id: int

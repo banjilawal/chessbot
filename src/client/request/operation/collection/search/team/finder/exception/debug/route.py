@@ -25,7 +25,7 @@ class TeamSearchRouteException(TeamDebugException):
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  Indicate that there was no search logic for a team attribute.
+    1.   Indicate that there was no search logic for a team attribute.
 
     Super Class:
         *   TeamDebugException

@@ -23,7 +23,7 @@ class FormationLookupProcess(HashLookupProcess[Formation]):
      Role:Forward Lookups
 
      Responsibilities:
-     1.  Run forward lookups on the Formation hashtable to find a Team's play_directive_metadata for a game.
+     1.   Run forward lookups on the Formation hashtable to find a Team's play_directive_metadata for a game.
      2.  Indicate there is no play_directive for a given key-value pair by returning an exception to the caller.
      3.  Verifies correctness of key-value key before running lookup.
 
@@ -48,7 +48,7 @@ class FormationLookupProcess(HashLookupProcess[Formation]):
     ) -> SearchResult[List[Formation]]:
         """
         # ACTION:
-            1.  Certify the provided key with the validation.
+            1.   Certify the provided key with the validation.
             2.  If the key validation fails return the exception in a validation result. Otherwise, return
                 the formation items with the targeted key-values.
         # PARAMETERS:
@@ -104,7 +104,7 @@ class FormationLookupProcess(HashLookupProcess[Formation]):
     def _by_designation(cls, designation: str) -> SearchResult[List[Formation]]:
         """
         # ACTION:
-            1.  Get any Formation entry whose designation matches the target value.
+            1.   Get any Formation entry whose designation matches the target value.
         # PARAMETERS:
             *   designation (str)
         # RETURNS:
@@ -135,7 +135,7 @@ class FormationLookupProcess(HashLookupProcess[Formation]):
     def _by_square_name(cls, square_name: str) -> SearchResult[List[Formation]]:
         """
         # ACTION:
-            1.  Get any Formation entry whose designation matches the target value.
+            1.   Get any Formation entry whose designation matches the target value.
         # PARAMETERS:
             *   square_name (str)
         # RETURNS:
@@ -165,7 +165,7 @@ class FormationLookupProcess(HashLookupProcess[Formation]):
     def _by_color(cls, color: GameColor) -> SearchResult[List[Formation]]:
         """
         # ACTION:
-            1.  Get any Formation entry whose designation matches the target value.
+            1.   Get any Formation entry whose designation matches the target value.
         # PARAMETERS:
             *   color (GameColor)
         # RETURNS:
@@ -196,7 +196,7 @@ class FormationLookupProcess(HashLookupProcess[Formation]):
     def _by_persona(cls, persona: Persona) -> SearchResult[List[Formation]]:
         """
         # ACTION:
-            1.  Get any Formation entry whose designation matches the target value.
+            1.   Get any Formation entry whose designation matches the target value.
         # PARAMETERS:
             *   persona (Persona)
         # RETURNS:

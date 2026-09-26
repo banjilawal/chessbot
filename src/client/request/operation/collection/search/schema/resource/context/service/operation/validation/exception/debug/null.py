@@ -28,7 +28,7 @@ class NullSchemaContextException(NullException):
         - Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that null was received instead of a SchemaContext.
+        1.   Indicate that null was received instead of a SchemaContext.
 
     Attributes:
         var: Optional[str]

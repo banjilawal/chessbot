@@ -27,7 +27,7 @@ class TokenVisitHandlerDebugException(DebugException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Produce the:
+        1.   Produce the:
                 *   variable,
                 *   it's value,
                 *   event which fired the variable into its error state.

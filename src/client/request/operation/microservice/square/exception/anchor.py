@@ -28,7 +28,7 @@ class TokenVisitHandlerException(AnchorException):
     Role:Debug Coverage Target, Exception Chain Layer 0
 
     Responsibilities:
-    1.  Indicate an error occurred in a VisitationController.
+    1.   Indicate an error occurred in a VisitationController.
 
     Super Class:
     *   AnchorException
@@ -93,13 +93,13 @@ class PoppingEmptySquareStackException(DebugException):
     # TASK: Capture Error Variable State
 
     Responsibilities:
-    1.  Produce the:
+    1.   Produce the:
             *   variable,
             *   it's value,
             *   event which fired the variable into its error state.
         which occurred in the VisitationController method identified in layer-0 of the exception chain.
 
-    1.  Indicate a failure occurred in VisitationController.
+    1.   Indicate a failure occurred in VisitationController.
     2.  The method where the error occurred is identified in the exception nested directly underneath.
 
     Super Class:

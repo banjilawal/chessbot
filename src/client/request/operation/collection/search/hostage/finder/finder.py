@@ -24,11 +24,11 @@ class HostageFinder(DataFinder[Hostage]):
     Role:SearchRouter
 
     Responsibilities:
-    1.  Send bag in a HostageList whose attribute value match the context.key value to the caller.
+    1.   Send bag in a HostageList whose attribute value match the context.key value to the caller.
     2.  If a search does not complete forward the exception chain to the caller for debugging.
 
     # LIMITATIONS:
-    1.  HostageFinder sends the raw list of matches. Resolving id collisions is the caller's responsibility.
+    1.   HostageFinder sends the raw list of matches. Resolving id collisions is the caller's responsibility.
 
     # PARENT
         *   SearchRouter
@@ -50,7 +50,7 @@ class HostageFinder(DataFinder[Hostage]):
     ) -> SearchResult[List[Hostage]]:
         """
         # ACTION:
-        1.  If the collider_candidates is null or the wrong type send the exception in the SearchResult.
+        1.   If the collider_candidates is null or the wrong type send the exception in the SearchResult.
         2.  If the context fails validation send the exception in the SearchResult. Else, route to the
             search method which matches the context key.
         3.  The search method returns either an empty result or a list of hostages. Any exceptions were caught earlier
@@ -131,7 +131,7 @@ class HostageFinder(DataFinder[Hostage]):
     def _find_by_id(cls, dataset: List[Hostage], id: int) -> SearchResult[List[Hostage]]:
         """
         # ACTION:
-            1.  Get the Hostages with the desired id.
+            1.   Get the Hostages with the desired id.
         # PARAMETERS:
             *   id (int)
             *   collider_candidates (List[Hostage])
@@ -159,7 +159,7 @@ class HostageFinder(DataFinder[Hostage]):
     ) -> SearchResult[List[Hostage]]:
         """
         # ACTION:
-            1.  Get the Hostages which match the schema.
+            1.   Get the Hostages which match the schema.
         # PARAMETERS:
             *   schema (str)
             *   collider_candidates (List[Hostage])
@@ -187,7 +187,7 @@ class HostageFinder(DataFinder[Hostage]):
     ) -> SearchResult[List[Hostage]]:
         """
         # ACTION:
-            1.  Get the Hostages which match the schema.
+            1.   Get the Hostages which match the schema.
         # PARAMETERS:
             *   coord (Coord)
             *   collider_candidates (List[Hostage])
@@ -215,7 +215,7 @@ class HostageFinder(DataFinder[Hostage]):
     ) -> SearchResult[List[Hostage]]:
         """
         # ACTION:
-            1.  Get the Hostages which match the board.
+            1.   Get the Hostages which match the board.
         # PARAMETERS:
             *   board (Board)
             *   collider_candidates (List[Hostage])

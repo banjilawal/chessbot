@@ -12,7 +12,8 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar, cast
 
-from artifcat import ResponseState, ValidationResponse, ValidationResult
+from artifcat import ResponseState, Result, ValidationResponse, ValidationResult
+from client import Request, ValidationRequest
 from client.request import ModelValidationRequest
 from domain import Model, ModelBlueprint
 from transit import ModelCarrier
@@ -27,6 +28,7 @@ class ModelValidationResponse(ValidationResponse[T], ABC, Generic[T]):
             state: ResponseState,
             result: ValidationResult,
             request: ModelValidationRequest[T],
+            exception:Optional[Exception],
     ):
         """
         Args:
@@ -34,7 +36,12 @@ class ModelValidationResponse(ValidationResponse[T], ABC, Generic[T]):
             result: ValidationResult,
             request: ModelValidationRequest[T],
         """
-        super().__init__(state=state, result=result, request=request)
+        super().__init__(
+            state=state,
+            result=result,
+            request=request,
+            exception=exception,
+        )
         
     @property
     def result(self) -> ValidationResult:
@@ -86,24 +93,28 @@ class ModelValidationResponse(ValidationResponse[T], ABC, Generic[T]):
         
     @classmethod
     def success(
-            cls, 
-            result: ValidationResult, 
-            request: ModelValidationRequest[T],
-    ) -> ValidationResponse:
+            cls,
+            request: Request,
+            result: ValidationResult,
+    ) -> ModelValidationResponse:
+        validation_request = cast(ModelValidationRequest[T], request)
         return cls(
             result=result,
-            request=request,
+            request=validation_request,
             state=ResponseState.SUCCESS,
         )
     
     @classmethod
     def failure(
-            cls, 
-            result: ValidationResult, 
-            request: ModelValidationRequest[T],
-    ) -> ValidationResponse:
+            cls,
+            request: Request,
+            result: ValidationResult,
+            exception: Exception,
+    ) -> ModelValidationResponse:
+        validation_request = cast(ModelValidationRequest[T], request)
         return cls(
             result=result,
-            request=request,
+            exception=exception,
+            request=validation_request,
             state=ResponseState.FAILURE,
         )

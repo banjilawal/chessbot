@@ -22,7 +22,7 @@ class TokenStackPushRequest(StackPushRequest[Token]):
          - Messaging
 
      Responsibilities:
-         1. Transport job information throughout the TokenPush lifecycle
+         1.  Transport job information throughout the TokenPush lifecycle
 
      Attributes:
         id: int

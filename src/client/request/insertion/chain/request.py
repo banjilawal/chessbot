@@ -23,11 +23,10 @@ T = TypeVar("T", bound="Node")
 class AddNodeRequest(InsertionRequest[AddNode], ABC, Generic[T]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-         1. Transport information during the AddNode lifecycle.
+         1.  Transport information during the AddNode lifecycle.
 
      Attributes:
          id: int

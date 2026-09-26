@@ -23,7 +23,7 @@ class PersonaLookupProcess(HashLookupProcess[Persona]):
     Role:Forward Lookups
 
     Responsibilities:
-    1.  Run forward lookups on the Persona hashtable to find a Rank's metadata.
+    1.   Run forward lookups on the Persona hashtable to find a Rank's metadata.
     2.  Indicate there is no metadata for a given key-value pair by returning an exception to the caller.
     3.  Verifies correctness of key-value key before running lookup.
 
@@ -44,7 +44,7 @@ class PersonaLookupProcess(HashLookupProcess[Persona]):
     ) -> SearchResult[List[Persona]]:
         """
         # ACTION:
-            1.  If super_key fails validation send the exception chain in the SearchResult. Else, route to the
+            1.   If super_key fails validation send the exception chain in the SearchResult. Else, route to the
                 search method by the attribute portion of the Key.
             2.  If the value portion of the Key is not in the permitted attribute values send the exception
                 chain in the SearchResult. Else, send Personas whose targeted attribute values match.
@@ -100,7 +100,7 @@ class PersonaLookupProcess(HashLookupProcess[Persona]):
     def _query_by_name(cls, name: str) -> SearchResult[List[Persona]]:
         """
         # ACTION:
-            1.  Get any Persona entry whose schema matches the target value.
+            1.   Get any Persona entry whose schema matches the target value.
         # PARAMETERS:
             *   schema (str)
         # RETURNS:
@@ -132,7 +132,7 @@ class PersonaLookupProcess(HashLookupProcess[Persona]):
     def _query_by_designation(cls, designation: str) -> SearchResult[List[Persona]]:
         """
         # ACTION:
-            1.  Get any Persona entry whose schema matches the target value.
+            1.   Get any Persona entry whose schema matches the target value.
         # PARAMETERS:
             *   designation (str)
         # RETURNS:
@@ -163,7 +163,7 @@ class PersonaLookupProcess(HashLookupProcess[Persona]):
     def _query_by_quota(cls, quota: int) -> SearchResult[List[Persona]]:
         """
         # ACTION:
-            1.  Get any Persona entry whose schema matches the target value.
+            1.   Get any Persona entry whose schema matches the target value.
         # PARAMETERS:
             *   quota (int)
         # RETURNS:
@@ -194,7 +194,7 @@ class PersonaLookupProcess(HashLookupProcess[Persona]):
     def _query_by_ransom(cls, ransom: int) -> SearchResult[List[Persona]]:
         """
         # ACTION:
-            1.  Get any Persona entry whose schema matches the target value.
+            1.   Get any Persona entry whose schema matches the target value.
         # PARAMETERS:
             *   ransom (int)
         # RETURNS:

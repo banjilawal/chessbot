@@ -22,7 +22,7 @@ class RemoveVectorNodeRequest(RemoveNodeRequest[VectorNode]):
         - Request
 
     Responsibilities:
-        1. Carry information about which node to remove from a VectorChain.
+        1.  Carry information about which node to remove from a VectorChain.
 
     Attributes:
         id: int

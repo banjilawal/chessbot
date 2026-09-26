@@ -28,7 +28,7 @@ class WrongOpeningSquareException(SquareDebugException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Indicate a square entry failed because a token tried deploying to the
+        1.   Indicate a square entry failed because a token tried deploying to the
             wrong opening square.
 
     Attributes:

@@ -22,7 +22,7 @@ class TokenContextIntegrityWorkers:
         - Container
 
     Responsibilities:
-        1.  Reduces the number params in TokenContext Builder and Validator entry points.
+        1.   Reduces the number params in TokenContext Builder and Validator entry points.
 
     Attributes:
         team_service: TeamService

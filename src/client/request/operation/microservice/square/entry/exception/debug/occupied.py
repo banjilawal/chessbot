@@ -28,7 +28,7 @@ class SquareOccupiedException(SquareDebugException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Indicate a square entry failed the square was already occupied
+        1.   Indicate a square entry failed the square was already occupied
 
     Attributes:
         var: Optional[str]

@@ -27,7 +27,7 @@ class TokenContextServiceException(ServiceException):
         - Exception coverage target
 
     Responsibilities:
-        1.  Anchors TokenContextService debug (layer-2) information.
+        1.   Anchors TokenContextService debug (layer-2) information.
         2.  Indicate which TokenContextService method received a  worker's (layer-1)
             failure result.
 

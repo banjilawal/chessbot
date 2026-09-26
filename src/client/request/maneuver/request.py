@@ -21,7 +21,7 @@ class ManeuverRequest(Request):
          - Data Transport
 
      Responsibilities:
-        1.  Provide information the ManeuverPermitter needs to approve a Token's journey.
+        1.   Provide information the ManeuverPermitter needs to approve a Token's journey.
 
      Attributes:
          id: int

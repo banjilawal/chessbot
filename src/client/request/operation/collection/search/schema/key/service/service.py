@@ -18,7 +18,7 @@ class SchemaKeyService(QueryService[SchemaKey]):
     Role:Microservice, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
-    1.  Public facing SchemaKey microservice API.
+    1.   Public facing SchemaKey microservice API.
     2.  Encapsulate integrity assurance logic in one extendable module.
     3.  Authoritative, single source of truth for SchemaKey state.
     4.  Single entry and entry points to SchemaKey lifecycle.

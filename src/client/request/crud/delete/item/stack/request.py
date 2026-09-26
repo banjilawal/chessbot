@@ -19,11 +19,10 @@ T = TypeVar("T", bound="StateModel")
 class DeleteStackItemRequest(DeleteItemRequest, ABC, Generic[T]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-         1. Transport information during the CrudOperation lifecycle.
+         1.  Transport information during the CrudOperation lifecycle.
 
      Attributes:
          id: int

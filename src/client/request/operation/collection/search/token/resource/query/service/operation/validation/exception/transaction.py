@@ -28,7 +28,7 @@ class TokenQueryValidatorException(ValidatorException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Indicate that one of the TokenQuery's params failed a safety test.
+        1.   Indicate that one of the TokenQuery's params failed a safety test.
 
     Attributes:
         msg: Optional[str]

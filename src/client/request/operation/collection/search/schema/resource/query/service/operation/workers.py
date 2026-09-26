@@ -18,7 +18,7 @@ class SchemaQueryIntegrityWorkers:
         - Container
 
     Responsibilities:
-        1.  Reduces the number params in SchemaQuery Builder and Validator entry points.
+        1.   Reduces the number params in SchemaQuery Builder and Validator entry points.
 
     Attributes:
         schema_validator: SchemaValidator

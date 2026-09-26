@@ -32,7 +32,7 @@ class TokenPositionPopper:
         - Process Runner
 
     Responsibilities:
-        1.  Maintain the token's integrity and consistency when the last coord is popped.
+        1.   Maintain the token's integrity and consistency when the last coord is popped.
         2.  Enforce chess constraints on coord popes.
 
     Attributes:
@@ -57,7 +57,7 @@ class TokenPositionPopper:
         Forwards a request that the CoordDatabase instance removed its latest insert.
 
         Action:
-            1.  Send an exception chain in the DeletionResult if:
+            1.   Send an exception chain in the DeletionResult if:
                     *   The token is unsafe or not actionable.
                     *   It has no position history.
                     *   It has not moved from its opening square.

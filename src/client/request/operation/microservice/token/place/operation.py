@@ -31,7 +31,7 @@ class TokenHomePlacer(Operator[Token]):
         - Process Runner
         
     Responsibilities:
-        1.  Puts token onto its opening square on the board.
+        1.   Puts token onto its opening square on the board.
         2.  Preserve original and updated data for rollbacks.
         3.  Ensure the token's integrity and consistency are maintained during the transaction.
     
@@ -58,7 +58,7 @@ class TokenHomePlacer(Operator[Token]):
         Executes the place transaction.
         
         Action:
-            1.  Send the unmodified token along with an exception chain in the UpdateResult if either
+            1.   Send the unmodified token along with an exception chain in the UpdateResult if either
                     - HomeSquare claim analysis fails.
                     - Square visitation fails.
             2.  Otherwise:

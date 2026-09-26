@@ -27,7 +27,7 @@ class ServiceRegistrySearch(Operator):
         - Search Service
 
     Responsibilities:
-        1.  Search the ServiceRegistry for an operation.
+        1.   Search the ServiceRegistry for an operation.
 
     Attributes:
 
@@ -55,7 +55,7 @@ class ServiceRegistrySearch(Operator):
         Search the ServiceRegistry for an operation.
         
         Action:
-            1.  Send an exception chain in the SearchResult if the name is not a valid String.
+            1.   Send an exception chain in the SearchResult if the name is not a valid String.
             2.  Otherwise, search the ServiceRegistry and send any hits in the success  result.
         Args:
             service_name: str

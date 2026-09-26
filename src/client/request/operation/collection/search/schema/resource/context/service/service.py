@@ -17,7 +17,7 @@ class SchemaContextService(IntegrityMicroservice[SchemaContext]):
         - Stateless Integrity Lifecycle Manager
 
     Responsibilities:
-        1.  Mutates SchemaContext instances
+        1.   Mutates SchemaContext instances
         2.  Ensure SchemaContext integrity and consistency when its state changes.
         3.  Build SchemaContext instances that satisfy integrity contracts
         4.  Maintain the SchemaContext integrity lifecycle.

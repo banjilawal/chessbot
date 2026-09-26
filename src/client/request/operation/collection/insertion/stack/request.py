@@ -25,7 +25,7 @@ class StackPushRequest(CollectionInsertionRequest[StackService], ABC, Generic[T]
          - Messaging
 
      Responsibilities:
-         1. Transport job information throughout the StackPush lifecycle.
+         1.  Transport job information throughout the StackPush lifecycle.
 
      Attributes:
         item: T

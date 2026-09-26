@@ -20,7 +20,7 @@ class SquareQueryService(QueryService[SquareContext]):
     Role:Search Microservice, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
-    1.  Public facing Square search microservice API.
+    1.   Public facing Square search microservice API.
     2.  Provides a map aware utility for searching Square objects.
     3.  Encapsulate integrity assurance logic in one extendable module.
     4.  Create a single source of truth for Square search results by having single entry and exit points for the

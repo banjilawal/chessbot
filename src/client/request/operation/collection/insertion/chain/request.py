@@ -25,7 +25,7 @@ class AddNodeRequest(InsertionRequest[Chain], ABC, Generic[T]):
          - Messaging
 
      Responsibilities:
-         1. Transport job information throughout the AddChainNode lifecycle.
+         1.  Transport job information throughout the AddChainNode lifecycle.
 
      Attributes:
         item: T

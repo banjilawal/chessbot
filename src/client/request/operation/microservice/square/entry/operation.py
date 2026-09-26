@@ -27,7 +27,7 @@ class SquareEntry:
         - Process Runner
 
     Responsibilities:
-        1.  Square entry exception owner.
+        1.   Square entry exception owner.
         2.  Preserve original and updated square data for rollbacks.
         3.  Ensure both the token and the squares are consistent throughout
             square entry lifecycle.
@@ -56,7 +56,7 @@ class SquareEntry:
     ) -> UpdateResult[Square]:
         """
         Action:
-            1.  Send the original square along with an exception chain in the validation result if:
+            1.   Send the original square along with an exception chain in the validation result if:
                     - The square or token are insecure.
                     - The token is disabled
                     - The token belongs to a different board.
@@ -119,7 +119,7 @@ class SquareEntry:
         Puts the token into the square.
 
         Action:
-            1.  Send the square and an exception chain in the UpdateResult if:
+            1.   Send the square and an exception chain in the UpdateResult if:
                     - Pushing the square's coord onto the token's schema fails.
             2.  Otherwise, after:
                     - The square makes the token its occupant
@@ -180,7 +180,7 @@ class SquareEntry:
         Tests if the token can enter the square.
 
         Action:
-            1.  Send the square and an exception chain in the UpdateResult if:
+            1.   Send the square and an exception chain in the UpdateResult if:
                     - The token does not pass a validation check.
                     - The token is disabled.
             2.  Otherwise, send the success result.
@@ -259,7 +259,7 @@ class SquareEntry:
         Tests if the square can be visited.
         
         Action:
-            1.  Send the square and an exception chain in the UpdateResult if:
+            1.   Send the square and an exception chain in the UpdateResult if:
                     - The square is not safe.
                     - The square is already occupied.
             2.  Otherwise, send the success result.
@@ -321,7 +321,7 @@ class SquareEntry:
         Tests if  new tokens are deployed to the correct square.
         
         # ACTION:
-            1.  If the token has not been deployed and the it has not been assigned to the square,
+            1.   If the token has not been deployed and the it has not been assigned to the square,
                 send the square along wih exception chain in the UpdateResult.
             2.  Otherwise, send the success result.
         Args:

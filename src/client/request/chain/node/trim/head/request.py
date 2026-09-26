@@ -24,7 +24,7 @@ class TrimHeadNodeRequest(ChainTrimByNodeRequest, ABC, Generic[T]):
         - Request
     
     Responsibilities:
-        1. Carry information for trimming a Chain from its head to a target node.
+        1.  Carry information for trimming a Chain from its head to a target node.
 
     Attributes:
         id: int

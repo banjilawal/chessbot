@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from typing import cast
 
-from client import ModelValidationRequest, Attack
+from client import ModelValidationRequest
+from domain import Attack
 from transit import AttackCarrier
 
 
 class AttackValidationRequest(ModelValidationRequest[Attack]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-        1. Send job details to a AttackValidator.
+        1. Provide details about a Attack a validation job.
 
      Attributes:
          id: int

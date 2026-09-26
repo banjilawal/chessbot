@@ -72,7 +72,11 @@ class Response(ABC, Generic[T]):
         return not self.success
         
     @classmethod
-    def success(cls, result: T, request: Request[T],) -> Response[T]:
+    def success(
+            cls,
+            request: Request[T],
+            result: T,
+    ) -> Response[T]:
         return cls(
             result=result,
             request=request,
@@ -82,8 +86,8 @@ class Response(ABC, Generic[T]):
     @classmethod
     def failure(
             cls,
-            result: T,
             request: Request[T],
+            result: T,
             exception: Exception,
     ) -> Response[T]:
         return cls(

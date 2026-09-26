@@ -26,7 +26,7 @@ class MissingSchemaSearchRouteException(SchemaDebugException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Indicate that there was no search logic for a schema attribute.
+        1.   Indicate that there was no search logic for a schema attribute.
 
     Attributes:
         var: Optional[str]

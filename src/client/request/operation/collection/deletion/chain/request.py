@@ -24,7 +24,7 @@ class AddNodeRequest(CollectionDeletionRequest[Chain], ABC, Generic[T]):
          - Messaging
 
      Responsibilities:
-         1. Transport job information throughout the ChainPop lifecycle.
+         1.  Transport job information throughout the ChainPop lifecycle.
 
      Attributes:
         node: T

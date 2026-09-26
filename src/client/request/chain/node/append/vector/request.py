@@ -22,7 +22,7 @@ class AppendVectorNodeRequest(AppendNodeRequest[VectorNode]):
         - Request
 
     Responsibilities:
-        1. Carry Node information for appending a Node to a Chain.
+        1.  Carry Node information for appending a Node to a Chain.
 
     Attributes:
         id: int

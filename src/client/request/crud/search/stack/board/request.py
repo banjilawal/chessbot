@@ -18,11 +18,10 @@ from client import StackSearchRequest, Board, BoardSearchContext
 class BoardSearchRequest(StackSearchRequest[Board]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-        1. Provide a BoardStackService and criteria a BoardSearcher needs to run a job.
+        1.  Provide a BoardStackService and criteria a BoardSearcher needs to run a job.
 
      Attributes:
         id: int

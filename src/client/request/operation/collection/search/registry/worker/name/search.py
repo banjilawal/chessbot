@@ -27,7 +27,7 @@ class WorkerRegistryNameSearch(Operator):
         - Search Worker
 
     Responsibilities:
-        1.  Search the WorkerRegistry for an operation.
+        1.   Search the WorkerRegistry for an operation.
 
     Attributes:
 
@@ -56,7 +56,7 @@ class WorkerRegistryNameSearch(Operator):
         Search the WorkerRegistry for an operation.
         
         Action:
-            1.  Send an exception chain in the SearchResult if either the client
+            1.   Send an exception chain in the SearchResult if either the client
                 or the name is not a valid String.
             2.  Otherwise, search the WorkerRegistry for the operation. If either of the following occurs,
                 send an empty SearchResult:

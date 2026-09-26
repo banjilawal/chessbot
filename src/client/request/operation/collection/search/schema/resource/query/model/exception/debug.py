@@ -27,7 +27,7 @@ class SchemaQueryDebugException(DebugException):
         - Debugging Metadata provider
 
     Responsibilities:
-        1.  Record the condition that fired a SchemaQuery variable's error state.
+        1.   Record the condition that fired a SchemaQuery variable's error state.
 
     Attributes:
         var: Optional[str]

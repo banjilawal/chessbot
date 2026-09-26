@@ -20,11 +20,10 @@ from client.request import AddNodeRequest
 class AddVectorNodeRequest(AddNodeRequest[VectorNode]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-         1. Transport information during the AddVectorNode lifecycle.
+         1.  Transport information during the AddVectorNode lifecycle.
 
      Attributes:
          id: int

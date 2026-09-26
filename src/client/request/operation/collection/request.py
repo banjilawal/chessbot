@@ -25,7 +25,7 @@ class CollectionRequest(OperationRequest[CrudOperator], ABC, Generic[T]):
          - Messaging
 
      Responsibilities:
-         1. Transport job information throughout the CollectionOperation lifecycle.
+         1.  Transport job information throughout the CollectionOperation lifecycle.
 
      Attributes:
 

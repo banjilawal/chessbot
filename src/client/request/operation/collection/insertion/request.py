@@ -27,7 +27,7 @@ class CollectionInsertionRequest(CollectionRequest[InsertionResult], ABC, Generi
          - Messaging
 
      Responsibilities:
-         1. Transport job information throughout the InsertionOperation lifecycle.
+         1.  Transport job information throughout the InsertionOperation lifecycle.
 
      Attributes:
         id: int

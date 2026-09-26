@@ -25,7 +25,7 @@ class HostageSearchException(SearchException):
     Role:Worker Method Identification, Exception Chain Layer 1, Exception Messaging
 
     Responsibilities:
-    1.  Indicate a hostage search was not completed, it returned an error instead of a
+    1.   Indicate a hostage search was not completed, it returned an error instead of a
         work product. 
     2.  Trace the method calls.
 
@@ -100,7 +100,7 @@ class HostageSearchException(HostageException, SearchException):
     Role:Exception Work
 
     Responsibilities:
-    1.  Wrap debug exceptions indicating why a hostage search operation failed. The exception chain
+    1.   Wrap debug exceptions indicating why a hostage search operation failed. The exception chain
         traces the ultimate source of failure.
 
     Super Class:

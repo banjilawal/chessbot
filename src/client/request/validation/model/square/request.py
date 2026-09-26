@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from typing import cast
 
-from client import ModelValidationRequest, Square
+from client import ModelValidationRequest
+from domain import Square
 from transit import SquareCarrier
 
 
 class SquareValidationRequest(ModelValidationRequest[Square]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-        1. Send job details to a SquareValidator.
+        1. Provide details about a Square a validation job.
 
      Attributes:
          id: int

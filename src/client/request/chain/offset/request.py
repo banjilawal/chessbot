@@ -20,7 +20,7 @@ class ChainOffsetRequest(ChainRequest):
         - Request
 
     Responsibilities:
-        1. Carry information for modifying a Chain by an offset.
+        1.  Carry information for modifying a Chain by an offset.
     
     Attributes:
         offset: int

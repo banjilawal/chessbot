@@ -25,7 +25,7 @@ class ManeuverLauncher:
         - Process Runner
 
     Responsibilities:
-        1.  Square entry exception owner.
+        1.   Square entry exception owner.
         2.  Preserve original and updated square data for rollbacks.
         3.  Ensure both the token and the squares are consistent throughout
             square entry lifecycle.
@@ -49,7 +49,7 @@ class ManeuverLauncher:
     def execute(self, report: ManeuverRequestDecision, ) -> TurnResult:
         """
         Action:
-            1.  Send the original square along with an exception chain in the validation result if:
+            1.   Send the original square along with an exception chain in the validation result if:
                     - The square or token are insecure.
                     - The token is disabled
                     - The token belongs to a different board.

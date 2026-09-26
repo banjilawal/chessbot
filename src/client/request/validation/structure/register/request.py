@@ -20,11 +20,10 @@ T = TypeVar("T", bound="Register")
 class RegisterValidationRequest(StructureValidationRequest[T], ABC, Generic[T]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-        1. Transport the collection and other objects a RegisterValidator needs to run a job.
+        1.  Transport the collection and other objects a RegisterValidator needs to run a job.
 
      Attributes:
          id: int

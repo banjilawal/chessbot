@@ -22,7 +22,7 @@ class TokenPushCoordProcess:
         - Process Runner
 
     Responsibilities:
-        1.  Maintain the token's integrity and consistency when a coord is pushed
+        1.   Maintain the token's integrity and consistency when a coord is pushed
             onto its positions schema.
         2.  Enforce chess constraints on coord pushes.
 
@@ -52,7 +52,7 @@ class TokenPushCoordProcess:
         Forwards a request that the CoordDatabase insert  a new record.
 
         Action:
-            1.  Send an exception chain in the InsertionResult if:
+            1.   Send an exception chain in the InsertionResult if:
                     *   Either the token or the coord are not certified as safe.
                     *   The token is already at the coord.
                     *   The CoordDatabase does not complete the insertion.

@@ -5,7 +5,268 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/artifcat/response/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/response.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/response.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/vector/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/vector/response.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/response.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/builder/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/builder/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/chain/node/append/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/chain/node/append/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/chain/node/append/vector/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/chain/node/append/vector/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/chain/node/remove/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/chain/node/remove/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/chain/node/remove/vector/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/chain/node/remove/vector/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/chain/node/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/chain/node/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/chain/node/trim/head/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/chain/node/trim/head/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/chain/node/trim/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/chain/node/trim/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/chain/node/trim/tail/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/chain/node/trim/tail/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/chain/offset/append/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/chain/offset/append/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/chain/offset/remove/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/chain/offset/remove/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/chain/offset/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/chain/offset/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/chain/offset/trim/head/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/chain/offset/trim/head/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/chain/offset/trim/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/chain/offset/trim/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/chain/offset/trim/tail/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/chain/offset/trim/tail/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/chain/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/chain/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/chain/search/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/chain/search/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/chain/search/vector/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/chain/search/vector/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/crud/delete/id/chain/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/crud/delete/id/chain/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/crud/delete/id/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/crud/delete/id/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/crud/delete/id/stack/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/crud/delete/id/stack/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/crud/delete/item/chain/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/crud/delete/item/chain/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/crud/delete/item/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/crud/delete/item/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/crud/delete/item/stack/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/crud/delete/item/stack/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/crud/delete/pop/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/crud/delete/pop/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/crud/delete/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/crud/delete/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/crud/insert/chain/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/crud/insert/chain/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/crud/insert/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/crud/insert/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/crud/insert/stack/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/crud/insert/stack/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/crud/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/crud/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/crud/search/chain/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/crud/search/chain/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/crud/search/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/crud/search/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/crud/search/stack/arena/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/crud/search/stack/arena/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/crud/search/stack/board/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/crud/search/stack/board/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/crud/search/stack/coord/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/crud/search/stack/coord/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/crud/search/stack/game/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/crud/search/stack/game/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/crud/search/stack/player/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/crud/search/stack/player/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/crud/search/stack/rank/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/crud/search/stack/rank/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/crud/search/stack/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/crud/search/stack/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/crud/search/stack/snapshot/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/crud/search/stack/snapshot/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/crud/search/stack/square/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/crud/search/stack/square/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/crud/search/stack/team/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/crud/search/stack/team/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/crud/search/stack/token/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/crud/search/stack/token/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/insertion/chain/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/insertion/chain/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/insertion/chain/vector/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/insertion/chain/vector/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/insertion/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/insertion/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/maneuver/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/maneuver/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/microservice/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/microservice/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/microservice/token/promotion/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/microservice/token/promotion/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/microservice/token/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/microservice/token/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/deletion/chain/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/deletion/chain/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/deletion/chain/vector/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/deletion/chain/vector/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/deletion/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/deletion/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/deletion/stack/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/deletion/stack/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/deletion/stack/token/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/deletion/stack/token/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/insertion/chain/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/insertion/chain/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/insertion/chain/vector/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/insertion/chain/vector/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/insertion/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/insertion/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/insertion/stack/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/insertion/stack/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/insertion/stack/token/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/insertion/stack/token/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/arena/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/arena/builder/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/arena/builder/exception/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/arena/builder/exception/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/arena/builder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/arena/builder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/arena/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/arena/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/arena/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/arena/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/arena/finder/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/arena/finder/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/arena/finder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/arena/finder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/arena/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/arena/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/arena/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/arena/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/board/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/board/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/board/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/board/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/board/finder/exception/debug/exist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/board/finder/exception/debug/exist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/board/finder/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/board/finder/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/board/finder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/board/finder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/board/service/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/board/service/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/board/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/board/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/board/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/board/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/edge/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/edge/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/edge/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/edge/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/formation/lookup/exception/debug/color.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/formation/lookup/exception/debug/color.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/formation/lookup/exception/debug/designation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/formation/lookup/exception/debug/designation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/formation/lookup/exception/debug/persona.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/formation/lookup/exception/debug/persona.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/formation/lookup/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/formation/lookup/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/formation/lookup/exception/debug/square.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/formation/lookup/exception/debug/square.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/formation/lookup/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/formation/lookup/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/formation/lookup/lookup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/formation/lookup/lookup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/formation/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/formation/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/formation/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/formation/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/game/finder/exception/debug/exist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/game/finder/exception/debug/exist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/game/finder/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/game/finder/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/game/finder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/game/finder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/game/finder/finder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/game/finder/finder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/game/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/game/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/game/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/game/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/graph/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/graph/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/hostage/finder/exception/debug/exist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/hostage/finder/exception/debug/exist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/hostage/finder/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/hostage/finder/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/hostage/finder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/hostage/finder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/hostage/finder/finder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/hostage/finder/finder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/hostage/service/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/hostage/service/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/hostage/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/hostage/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/hostage/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/hostage/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/node/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/node/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/node/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/node/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/node/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/node/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/origin/searcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/origin/searcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/exception/debug/designation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/exception/debug/designation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/exception/debug/name.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/exception/debug/name.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/exception/debug/quota.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/exception/debug/quota.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/exception/debug/ransom.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/exception/debug/ransom.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/lookup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/lookup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/persona/exception/debug/designation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/persona/exception/debug/designation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/persona/exception/debug/name.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/persona/exception/debug/name.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/persona/exception/debug/quota.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/persona/exception/debug/quota.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/persona/exception/debug/ransom.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/persona/exception/debug/ransom.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/persona/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/persona/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/persona/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/persona/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/persona/lookup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/persona/lookup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/persona/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/player/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/player/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/player/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/player/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/rank/search/rank/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/rank/search/rank/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/rank/search/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/rank/search/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/registry/service/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/registry/service/search.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/registry/worker/domain/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/registry/worker/domain/search.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/registry/worker/name/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/registry/worker/name/search.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/key/lookup/exception/debug/color.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/key/lookup/exception/debug/color.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/key/lookup/exception/debug/name.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/key/lookup/exception/debug/name.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/key/lookup/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/key/lookup/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/key/lookup/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/key/lookup/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/key/lookup/lookup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/key/lookup/lookup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/key/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/key/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/key/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/key/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/context/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/context/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/context/service/operation/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/context/service/operation/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/context/service/operation/validation/exception/debug/excess.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/context/service/operation/validation/exception/debug/excess.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/context/service/operation/validation/exception/debug/null.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/context/service/operation/validation/exception/debug/null.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/context/service/operation/validation/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/context/service/operation/validation/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/context/service/operation/validation/exception/debug/zero.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/context/service/operation/validation/exception/debug/zero.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/context/service/operation/validation/exception/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/context/service/operation/validation/exception/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/context/service/operation/validation/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/context/service/operation/validation/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/context/service/operation/workers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/context/service/operation/workers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/context/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/host.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/host.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/query/model/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/query/model/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/query/model/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/query/model/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/query/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/query/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/query/service/operation/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/query/service/operation/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/query/service/operation/validation/exception/candidate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/query/service/operation/validation/exception/candidate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/query/service/operation/validation/exception/empty.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/query/service/operation/validation/exception/empty.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/query/service/operation/validation/exception/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/query/service/operation/validation/exception/stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/query/service/operation/validation/exception/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/query/service/operation/validation/exception/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/query/service/operation/validation/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/query/service/operation/validation/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/query/service/operation/workers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/query/service/operation/workers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/query/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/query/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/route/exception/debug/missing.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/route/exception/debug/missing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/route/exception/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/route/exception/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/route/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/resource/route/router.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/schema/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/snapshot/context.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/snapshot/context.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/snapshot/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/snapshot/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/snapshot/snapshot/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/snapshot/snapshot/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/square/finder/exception/debug/exist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/square/finder/exception/debug/exist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/square/finder/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/square/finder/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/square/finder/square/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/square/finder/square/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/square/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/square/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/square/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/square/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/team/finder/exception/debug/exist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/team/finder/exception/debug/exist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/team/finder/exception/debug/route.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/team/finder/exception/debug/route.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/team/finder/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/team/finder/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/team/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/team/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/team/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/team/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/token/resource/context/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/token/resource/context/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/token/resource/context/service/operation/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/token/resource/context/service/operation/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/token/resource/context/service/operation/workers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/token/resource/context/service/operation/workers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/token/resource/context/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/token/resource/context/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/token/resource/host.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/token/resource/host.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/token/resource/query/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/token/resource/query/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/token/resource/query/service/operation/controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/token/resource/query/service/operation/controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/token/resource/query/service/operation/validation/exception/candidate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/token/resource/query/service/operation/validation/exception/candidate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/token/resource/query/service/operation/validation/exception/empty.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/token/resource/query/service/operation/validation/exception/empty.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/token/resource/query/service/operation/validation/exception/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/token/resource/query/service/operation/validation/exception/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/token/resource/query/service/operation/workers.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/token/resource/query/service/operation/workers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/token/resource/query/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/token/resource/query/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/token/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/token/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/token/service/exception/exist.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/token/service/exception/exist.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/collection/search/token/service/service.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/collection/search/token/service/service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/computation/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/computation/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/computation/vector/addition/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/computation/vector/addition/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/computation/vector/distance/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/computation/vector/distance/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/computation/vector/product/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/computation/vector/product/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/computation/vector/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/computation/vector/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/computation/vector/transform/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/computation/vector/transform/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/attack/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/attack/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/maneuver/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/maneuver/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/square/departure/exception/empty.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/square/departure/exception/empty.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/square/departure/exception/transaction.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/square/departure/exception/transaction.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/square/departure/worker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/square/departure/worker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/square/entry/exception/debug/board.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/square/entry/exception/debug/board.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/square/entry/exception/debug/disabled.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/square/entry/exception/debug/disabled.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/square/entry/exception/debug/occupied.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/square/entry/exception/debug/occupied.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/square/entry/exception/debug/opening.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/square/entry/exception/debug/opening.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/square/entry/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/square/entry/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/square/entry/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/square/entry/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/square/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/square/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/square/exception/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/square/exception/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/token/attack/exception/debug/board/wrong.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/token/attack/exception/debug/board/wrong.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/token/attack/exception/debug/debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/token/attack/exception/debug/debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/token/attack/exception/debug/enemy/disabled.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/token/attack/exception/debug/enemy/disabled.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/token/attack/exception/debug/enemy/king.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/token/attack/exception/debug/enemy/king.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/token/attack/exception/debug/square/attacker.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/token/attack/exception/debug/square/attacker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/token/attack/exception/debug/square/empty.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/token/attack/exception/debug/square/empty.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/token/attack/exception/debug/square/friend.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/token/attack/exception/debug/square/friend.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/token/attack/exception/debug/square/stale.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/token/attack/exception/debug/square/stale.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/token/attack/exception/debug/square/unfound.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/token/attack/exception/debug/square/unfound.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/token/attack/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/token/attack/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/token/attack/service/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/token/attack/service/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/token/coord/exception/anchor.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/token/coord/exception/anchor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/token/coord/pop/exception/inactive.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/token/coord/pop/exception/inactive.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/token/coord/pop/exception/limit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/token/coord/pop/exception/limit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/token/coord/pop/exception/opening.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/token/coord/pop/exception/opening.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/token/coord/pop/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/token/coord/pop/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/token/coord/pop/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/token/coord/pop/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/token/coord/push/exception/inactive.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/token/coord/push/exception/inactive.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/token/coord/push/exception/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/token/coord/push/exception/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/token/coord/push/process.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/token/coord/push/process.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/token/place/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/token/place/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/microservice/token/promotion/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/microservice/token/promotion/operation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/operation/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/operation/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/slot/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/slot/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/validation/model/arena/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/validation/model/arena/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/validation/model/attack/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/validation/model/attack/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/validation/model/board/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/validation/model/board/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/validation/model/coord/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/validation/model/coord/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/validation/model/game/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/validation/model/game/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/validation/model/maneuver/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/validation/model/maneuver/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/validation/model/path/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/validation/model/path/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/validation/model/player/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/validation/model/player/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/validation/model/rank/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/validation/model/rank/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/validation/model/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/validation/model/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/validation/model/scalar/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/validation/model/scalar/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/validation/model/square/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/validation/model/square/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/validation/model/team/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/validation/model/team/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/validation/model/token/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/validation/model/token/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/validation/model/vector/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/validation/model/vector/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/validation/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/validation/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/validation/structure/register/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/validation/structure/register/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/validation/structure/register/square/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/validation/structure/register/square/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/request/validation/structure/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/request/validation/structure/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/validation/model/vector/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/validation/model/vector/client.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,61 +308,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.2836269419507547" />
-      <entry key="MS500" value="2.9959427190107357" />
-      <entry key="S2" value="8.27948573023616" />
-      <entry key="S5" value="18.319877117989495" />
-      <entry key="S10" value="32.98340546300404" />
-      <entry key="S30" value="72.27826766922081" />
-      <entry key="S60" value="99.16241813216423" />
-      <entry key="M2" value="123.4082740491214" />
-      <entry key="M5" value="157.73311987066643" />
-      <entry key="M10" value="183.91966705238804" />
-      <entry key="M15" value="201.14858177338027" />
-      <entry key="M30" value="269.1035805546484" />
-      <entry key="H1" value="481.8405325647674" />
-      <entry key="H2" value="903.1174254181723" />
-      <entry key="H4" value="1568.3012090621685" />
-      <entry key="D1" value="6640.736828615276" />
-      <entry key="W1" value="24849.204276838303" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000000000005507" />
+      <entry key="S2" value="1.0008614226399555" />
+      <entry key="S5" value="1.060160015931187" />
+      <entry key="S10" value="1.2863833497492148" />
+      <entry key="S30" value="2.5859760105932557" />
+      <entry key="S60" value="4.469649061302739" />
+      <entry key="M2" value="7.674692659022501" />
+      <entry key="M5" value="15.930883180089493" />
+      <entry key="M10" value="24.301037547738098" />
+      <entry key="M15" value="31.021678993759853" />
+      <entry key="M30" value="62.30016799213794" />
+      <entry key="H1" value="196.09909382953484" />
+      <entry key="H2" value="583.8626105830141" />
+      <entry key="H4" value="1342.5284160583576" />
+      <entry key="D1" value="6746.695841782161" />
+      <entry key="W1" value="25336.09548053218" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0990863951017763E-247" />
-      <entry key="MS500" value="4.605795850844811E-50" />
-      <entry key="S2" value="7.209784721009974E-13" />
-      <entry key="S5" value="2.0920901195640963E-5" />
-      <entry key="S10" value="0.006460463460207404" />
-      <entry key="S30" value="0.2956614861452595" />
-      <entry key="S60" value="0.7805507210637369" />
-      <entry key="M2" value="1.3844234238043207" />
-      <entry key="M5" value="2.340185807817225" />
-      <entry key="M10" value="3.0412051453230147" />
-      <entry key="M15" value="3.6145589921222925" />
-      <entry key="M30" value="5.924244561266434" />
-      <entry key="H1" value="11.168626622143815" />
-      <entry key="H2" value="22.915488312927074" />
-      <entry key="H4" value="52.77831336890555" />
-      <entry key="D1" value="309.36261990025184" />
-      <entry key="W1" value="1137.6898675958575" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="5.025909626628354E-92" />
+      <entry key="S2" value="1.4972822245871513E-23" />
+      <entry key="S5" value="7.415176068181377E-10" />
+      <entry key="S10" value="2.723082089871949E-5" />
+      <entry key="S30" value="0.030085246758645587" />
+      <entry key="S60" value="0.1734509923829946" />
+      <entry key="M2" value="0.4164744955144968" />
+      <entry key="M5" value="0.7058283766363043" />
+      <entry key="M10" value="0.907518673395696" />
+      <entry key="M15" value="1.1722547983788478" />
+      <entry key="M30" value="2.6921960057211924" />
+      <entry key="H1" value="7.803698980092213" />
+      <entry key="H2" value="19.870511685196558" />
+      <entry key="H4" value="47.25581251468754" />
+      <entry key="D1" value="305.096164130009" />
+      <entry key="W1" value="1150.5656544376309" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.077206902557645" />
-      <entry key="MS500" value="2.8982009308146366" />
-      <entry key="S2" value="8.21440208529011" />
-      <entry key="S5" value="18.26431492987407" />
-      <entry key="S10" value="32.93985923986095" />
-      <entry key="S30" value="72.52857397881208" />
-      <entry key="S60" value="99.90481238089143" />
-      <entry key="M2" value="124.75645950941072" />
-      <entry key="M5" value="160.02870720381665" />
-      <entry key="M10" value="186.92068766663945" />
-      <entry key="M15" value="204.72708103336012" />
-      <entry key="M30" value="274.99310744694014" />
-      <entry key="H1" value="492.973156744715" />
-      <entry key="H2" value="925.996850795272" />
-      <entry key="H4" value="1621.0412287437564" />
-      <entry key="D1" value="6950.067187802101" />
-      <entry key="W1" value="25986.875827791344" />
+      <entry key="MS100" value="4.38670332256428E-12" />
+      <entry key="MS500" value="0.005350910077997971" />
+      <entry key="S2" value="0.2707564925599555" />
+      <entry key="S5" value="0.6318966828843696" />
+      <entry key="S10" value="1.0026348689018287" />
+      <entry key="S30" value="2.432332981396204" />
+      <entry key="S60" value="4.488236384484739" />
+      <entry key="M2" value="7.96245829436093" />
+      <entry key="M5" value="16.5401590122679" />
+      <entry key="M10" value="25.138856321664075" />
+      <entry key="M15" value="32.13518111180404" />
+      <entry key="M30" value="64.93986014004024" />
+      <entry key="H1" value="203.84762606247062" />
+      <entry key="H2" value="603.6778465235509" />
+      <entry key="H4" value="1389.732564767036" />
+      <entry key="D1" value="7051.75583344458" />
+      <entry key="W1" value="26486.641992374847" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -132,7 +393,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/client/validation/model/vector",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/artifcat/response/validation/model/vector",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -146,15 +407,15 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/client/validation/model/vector" />
-      <recent name="$PROJECT_DIR$/src/client/validation/model" />
-      <recent name="$PROJECT_DIR$/src/client/validation" />
+      <recent name="$PROJECT_DIR$/src/artifcat/response/validation/model/vector" />
+      <recent name="$PROJECT_DIR$/src/artifcat/response/validation/model" />
+      <recent name="$PROJECT_DIR$/src/artifcat/response/validation" />
       <recent name="$PROJECT_DIR$/src/client" />
-      <recent name="$PROJECT_DIR$/src/transit/dispatcher/validator/model" />
+      <recent name="$PROJECT_DIR$/src/client/validation/model/vector" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/artifcat" />
       <recent name="$PROJECT_DIR$/src/client" />
+      <recent name="$PROJECT_DIR$/src/artifcat" />
       <recent name="$PROJECT_DIR$/src/err/null/domain/model" />
       <recent name="$PROJECT_DIR$/src/err/domain/model" />
       <recent name="$PROJECT_DIR$/src/domain/metadata/blueprint/model" />
@@ -838,7 +1099,7 @@
       <workItem from="1788782347688" duration="75617000" />
       <workItem from="1788969937518" duration="171978000" />
       <workItem from="1790001362413" duration="735000" />
-      <workItem from="1790063398459" duration="169168000" />
+      <workItem from="1790063398459" duration="181453000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -2180,6 +2441,11 @@
           <url>file://$PROJECT_DIR$/src/err/transit/dispatcher/authorization/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="477" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/client/request/validation/request.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="478" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -19,7 +19,7 @@ class AppendByOffsetRequest(ChainOffsetRequest):
         - Request
     
     Responsibilities:
-        1. Carry information for adding a Node to a Chain by an offset.
+        1.  Carry information for adding a Node to a Chain by an offset.
     
     Attributes:
         id: int

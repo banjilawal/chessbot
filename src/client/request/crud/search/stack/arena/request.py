@@ -18,11 +18,10 @@ from client import StackSearchRequest, Arena, ArenaSearchContext
 class ArenaSearchRequest(StackSearchRequest[Arena]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-        1. Provide a ArenaStackService and criteria a ArenaSearcher needs to run a job.
+        1.  Provide a ArenaStackService and criteria a ArenaSearcher needs to run a job.
 
      Attributes:
         id: int

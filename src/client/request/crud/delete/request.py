@@ -23,11 +23,10 @@ T = TypeVar("T", bound="ClientDataObject")
 class DeleteRequest(CrudRequest[DeletionResult], ABC, Generic[T]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-        1. Provide a collection and details about the item a Deleter needs to run a job.
+        1.  Provide a collection and details about the item a Deleter needs to run a job.
 
      Attributes:
          id: int

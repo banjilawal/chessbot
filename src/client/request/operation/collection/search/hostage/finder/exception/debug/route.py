@@ -25,7 +25,7 @@ class HostageSearchRouteException(HostageDebugException):
     Role:Error Variable Identifier, Exception Chain Layer 2, Exception Messaging
 
     Responsibilities:
-    1.  Indicate that there was no search logic for a hostage attribute.
+    1.   Indicate that there was no search logic for a hostage attribute.
 
     Super Class:
         *   HostageDebugException

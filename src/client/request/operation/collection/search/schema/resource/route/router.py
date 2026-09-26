@@ -23,11 +23,11 @@ class SchemaSearchRouter(SearchRouter[Schema]):
     Role:SearchRouter
 
     Responsibilities:
-    1.  Send bag in a SchemaList whose attribute value match the context.key value to the caller.
+    1.   Send bag in a SchemaList whose attribute value match the context.key value to the caller.
     2.  If a search does not complete forward the exception chain to the caller for debugging.
     
     # LIMITATIONS:
-    1.  SchemaSearchRouter sends the raw list of matches. Resolving id collisions is the caller's responsibility.
+    1.   SchemaSearchRouter sends the raw list of matches. Resolving id collisions is the caller's responsibility.
 
     # PARENT
         *   SearchRouter
@@ -49,7 +49,7 @@ class SchemaSearchRouter(SearchRouter[Schema]):
         Find schemas whith an attribute that fits the context.
         
         Action:
-            1.  Send an exception chain in the SearchResult if either:
+            1.   Send an exception chain in the SearchResult if either:
                     - The params check fails.
                     - There is no search logic for the context
             2.  Otherwise, send the success result.
@@ -120,7 +120,7 @@ class SchemaSearchRouter(SearchRouter[Schema]):
         """
         Search the schema by a schema id
         
-            1.  Get the Schemas with the desired id.
+            1.   Get the Schemas with the desired id.
         Args:
             name: str
             catalog: List[Schema]

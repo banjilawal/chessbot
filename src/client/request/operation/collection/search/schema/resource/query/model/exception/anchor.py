@@ -27,7 +27,7 @@ class SchemaQueryException(AnchorException):
         - Exception coverage target
 
     Responsibilities:
-        1.  Anchors SchemaQuery debug (layer-2) information.
+        1.   Anchors SchemaQuery debug (layer-2) information.
         2.  Indicate which SchemaQuery method received a worker's (layer-1)
             failure result.
 

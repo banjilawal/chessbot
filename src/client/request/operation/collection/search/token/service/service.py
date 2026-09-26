@@ -26,7 +26,7 @@ class TokenSearchService(SearchMicroservice[Token]):
         - Operations Provider
 
     Responsibilities:
-        1.  Baremetal microservice for querying Tokens.
+        1.   Baremetal microservice for querying Tokens.
 
     Args:
         id: int

@@ -11,18 +11,17 @@ from __future__ import annotations
 
 from typing import cast
 
-from client import ModelValidationRequest, Team
+from client import ModelValidationRequest
+from domain import Team
 from transit import TeamCarrier
-
 
 class TeamValidationRequest(ModelValidationRequest[Team]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-        1. Send job details to a TeamValidator.
+        1. Provide details about a Team a validation job.
 
      Attributes:
          id: int

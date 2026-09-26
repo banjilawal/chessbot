@@ -28,7 +28,7 @@ class ExcessSchemaContextFlagsException(ExcessContextFlagsException):
         - Debugging Metadata provider
 
     Responsibilities:
-        1.  Indicate that no SchemaContext work was not completed
+        1.   Indicate that no SchemaContext work was not completed
             because more than one attribute was enabled.
 
     Attributes:

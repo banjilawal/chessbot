@@ -21,7 +21,7 @@ class AttackerSquareNotFoundException(AttackDebugException):
     Role:Debug, Error Tracing
 
     Responsibilities:
-    1.  Indicate that the attack failed because no item was found at the attacker's coord.
+    1.   Indicate that the attack failed because no item was found at the attacker's coord.
 
     Super Class:
         *   AttackDebugException

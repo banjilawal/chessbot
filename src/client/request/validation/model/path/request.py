@@ -18,11 +18,10 @@ from transit import PathCarrier
 class PathValidationRequest(ModelValidationRequest[Path]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-        1. Send job details to a PathValidator.
+        1. Provide details about a Path a validation job.
 
      Attributes:
          id: int

@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from typing import cast
 
-from client import ModelValidationRequest, Arena
+from client import ModelValidationRequest
+from domain import Arena
 from transit import ArenaCarrier
 
 
 class ArenaValidationRequest(ModelValidationRequest[Arena]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-        1. Send job details to a ArenaValidator.
+        1. Provide details about a Arena a validation job.
 
      Attributes:
          id: int

@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from typing import cast
 
-from client import ModelValidationRequest, Game
+from client import ModelValidationRequest
+from domain import Game
 from transit import GameCarrier
 
 
 class GameValidationRequest(ModelValidationRequest[Game]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-        1. Send job details to a GameValidator.
+        1. Provide details about a Game a validation job.
 
      Attributes:
          id: int

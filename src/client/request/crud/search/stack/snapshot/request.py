@@ -18,11 +18,10 @@ from client import StackSearchRequest, Snapshot, SnapshotContext
 class SnapshotSearchRequest(StackSearchRequest[Snapshot]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-        1. Provide a SnapshotStackService and criteria a SnapshotSearcher needs to run a job.
+        1.  Provide a SnapshotStackService and criteria a SnapshotSearcher needs to run a job.
 
      Attributes:
         id: int

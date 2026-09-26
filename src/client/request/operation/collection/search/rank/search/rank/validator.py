@@ -22,7 +22,7 @@ class RankContextValidator(Validator[RankContext]):
      Role:Validation, Data Integrity Guarantor, Security.
 
     Responsibilities:
-    1. Verify a rank is a RankContext that meets the application's safety contract before the client
+    1.  Verify a rank is a RankContext that meets the application's safety contract before the client
         is allowed to use the RankContext object.
     2. Provide pluggable factories for validating different options separately.
     
@@ -44,7 +44,7 @@ class RankContextValidator(Validator[RankContext]):
         """
         # ACTION:
         Verifies rank is a RankContext in two steps.
-            1. Test the rank is a valid SearchRankContext with a single searcher option switched on.
+            1.  Test the rank is a valid SearchRankContext with a single searcher option switched on.
             2. Test the value passed to RankContext passes its validation contract.
 
         # PARAMETERS:

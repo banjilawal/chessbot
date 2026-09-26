@@ -18,7 +18,7 @@ class TokenContextService(IntegrityMicroservice[TokenContext]):
         - Stateless Integrity Lifecycle Manager
 
     Responsibilities:
-        1.  Mutates TokenContext instances
+        1.   Mutates TokenContext instances
         2.  Ensure TokenContext integrity and consistency when its state changes.
         3.  Build TokenContext instances that satisfy integrity contracts
         4.  Maintain the TokenContext integrity lifecycle.

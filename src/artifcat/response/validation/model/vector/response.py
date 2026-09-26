@@ -12,6 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ModelValidationResponse, ResponseState, ValidationResult
+from client import Request
 from client.request import VectorValidationRequest
 from domain import Vector, VectorBlueprint
 from transit import VectorCarrier
@@ -24,6 +25,7 @@ class VectorValidationResponse(ModelValidationResponse[Vector]):
             state: ResponseState,
             result: ValidationResult,
             request: VectorValidationRequest,
+            exception: Optional[Exception] | None = None,
     ):
         """
         Args:
@@ -31,7 +33,12 @@ class VectorValidationResponse(ModelValidationResponse[Vector]):
             result: ValidationResult,
             request: VectorValidationRequest,
         """
-        super().__init__(state=state, result=result, request=request)
+        super().__init__(
+            state=state,
+            result=result,
+            request=request,
+            exception=exception or result.exception,
+        )
         
     @property
     def request(self) -> VectorValidationRequest:
@@ -77,24 +84,28 @@ class VectorValidationResponse(ModelValidationResponse[Vector]):
     
     @classmethod
     def success(
-            cls, 
-            result: ValidationResult, 
-            request: VectorValidationRequest,
+            cls,
+            request: Request,
+            result: ValidationResult,
     ) -> VectorValidationResponse:
+        validation_request = cast(VectorValidationRequest, request)
         return cls(
             result=result,
-            request=request,
+            request=validation_request,
             state=ResponseState.SUCCESS,
         )
     
     @classmethod
     def failure(
-            cls, 
-            result: ValidationResult, 
-            request: VectorValidationRequest,
+            cls,
+            request: Request,
+            result: ValidationResult,
+            exception: Exception,
     ) -> VectorValidationResponse:
+        validation_request = cast(VectorValidationRequest, request)
         return cls(
             result=result,
-            request=request,
+            exception=exception,
+            request=validation_request,
             state=ResponseState.FAILURE,
         )

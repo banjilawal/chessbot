@@ -18,7 +18,7 @@ class TeamQueryService(QueryService[TeamContext]):
     Role:Search Microservice, Lifecycle Management, Encapsulation, API layer.
 
     Responsibilities:
-    1.  Public facing Team search microservice API.
+    1.   Public facing Team search microservice API.
     2.  Provides a map aware utility for searching Team objects.
     3.  Encapsulate integrity assurance logic in one extendable module.
     4.  Create a single source of truth for Team search results by having single entry and exit points for the

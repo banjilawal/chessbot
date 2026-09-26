@@ -29,7 +29,7 @@ class PawnPromoter:
         - Process Runner
         
     Responsibilities:
-        1.  Pawn promotion exception owner.
+        1.   Pawn promotion exception owner.
         2.  Preserve original and updated data for rollbacks.
         3.  Ensure the pawn's integrity and consistency are maintained during the transaction.
         
@@ -57,7 +57,7 @@ class PawnPromoter:
         Executes the promotion transaction.
         
         Action:
-            1.  Send the unmodified pawn along with an exception chain in the UpdateResult if:
+            1.   Send the unmodified pawn along with an exception chain in the UpdateResult if:
                     - The promotion_approval_manager sends a denial report.
                     - The promotion_rank_analyzer approves the new rank.
             2.  Otherwise:

@@ -25,7 +25,7 @@ class RemoveNodeRequest(ChainNodeRequest, ABC, Generic[T]):
         - Request
 
     Responsibilities:
-        1. Carry Node information for removing a Node from a Chain.
+        1.  Carry Node information for removing a Node from a Chain.
 
     Attributes:
         id: int

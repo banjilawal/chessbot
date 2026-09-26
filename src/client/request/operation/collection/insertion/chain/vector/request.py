@@ -22,7 +22,7 @@ class AddVectorNodeRequest(AddNodeRequest[VectorNode]):
          - Messaging
 
      Responsibilities:
-         1. Transport job information throughout the AddVectorNode lifecycle
+         1.  Transport job information throughout the AddVectorNode lifecycle
 
      Attributes:
         id: int

@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from typing import cast
 
-from client import ModelValidationRequest, Board
+from client import ModelValidationRequest
+from domain import Board
 from transit import BoardCarrier
 
 
 class BoardValidationRequest(ModelValidationRequest[Board]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-        1. Send job details to a BoardValidator.
+        1. Provide details about a Board a validation job.
 
      Attributes:
          id: int
@@ -41,7 +41,7 @@ class BoardValidationRequest(ModelValidationRequest[Board]):
             item: BoardCarrier
         """
         super().__init__(id=id, item=item)
-
+    
     @property
     def item(self) -> BoardCarrier:
         return cast(BoardCarrier, super().item)

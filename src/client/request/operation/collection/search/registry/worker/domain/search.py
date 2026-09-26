@@ -25,7 +25,7 @@ class WorkerRegistryClientSearch(Dict[str, Operator]):
         - Search Worker
 
     Responsibilities:
-        1.  Search the WorkerRegistry for items in a client.
+        1.   Search the WorkerRegistry for items in a client.
 
     Attributes:
 
@@ -53,7 +53,7 @@ class WorkerRegistryClientSearch(Dict[str, Operator]):
         Search the WorkerRegistry for an operation.
 
         Action:
-            1.  Send an exception chain in the SearchResult if the name is not a valid String.
+            1.   Send an exception chain in the SearchResult if the name is not a valid String.
             2.  Otherwise, search the WorkerRegistry for the client.
                     - If the client does not exist, send an empty SearchResult.
                     - Else, send the client's items in a SearchResult.

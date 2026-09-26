@@ -20,7 +20,7 @@ class TrimTailByOffsetRequest(ChainOffsetRequest):
         - Data Transport
     
     Responsibilities:
-        1. Carry information for running a ChainTrimByTail operation.
+        1.  Carry information for running a ChainTrimByTail operation.
     
     Attributes:
         id: int

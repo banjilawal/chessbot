@@ -28,7 +28,7 @@ class InactiveTokenPoppingCoordException(TokenDebugException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Indicate an inactive Token cannot undo its last move by popping its CoordStackService.
+        1.   Indicate an inactive Token cannot undo its last move by popping its CoordStackService.
     
     Attributes:
         var: Optional[str]

@@ -17,7 +17,7 @@ class SchemaContextIntegrityWorkers:
         - Container
 
     Responsibilities:
-        1.  Reduces the number params in SchemaContext Builder and Validator entry points.
+        1.   Reduces the number params in SchemaContext Builder and Validator entry points.
 
     Attributes:
         identity_service: IdentityService

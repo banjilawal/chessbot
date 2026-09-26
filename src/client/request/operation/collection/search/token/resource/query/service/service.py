@@ -18,7 +18,7 @@ class TokenQueryService(IntegrityMicroservice[TokenQuery]):
         - Stateless Integrity Lifecycle Manager
 
     Responsibilities:
-        1.  Mutates TokenQuery instances
+        1.   Mutates TokenQuery instances
         2.  Ensure TokenQuery integrity and consistency when its state changes.
         3.  Build TokenQuery instances that satisfy integrity contracts
         4.  Maintain the TokenQuery integrity lifecycle.

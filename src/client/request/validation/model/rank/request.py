@@ -11,18 +11,18 @@ from __future__ import annotations
 
 from typing import cast
 
-from client import ModelValidationRequest, Rank
+from client import ModelValidationRequest
+from domain import Rank
 from transit import RankCarrier
 
 
 class RankValidationRequest(ModelValidationRequest[Rank]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-        1. Send job details to a RankValidator.
+        1. Provide details about a Rank a validation job.
 
      Attributes:
          id: int

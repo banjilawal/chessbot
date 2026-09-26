@@ -22,7 +22,7 @@ class NodeContextException(NodeException, ContextException):
     Role:Super Exception
 
     Responsibilities:
-    1.  Super for NodeContext errors not covered by NodeException subclasses.
+    1.   Super for NodeContext errors not covered by NodeException subclasses.
 
     Super Class:
         *   NodeException

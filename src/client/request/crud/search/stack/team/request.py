@@ -18,11 +18,10 @@ from client import StackSearchRequest, Team, TeamSearchContext
 class TeamSearchRequest(StackSearchRequest[Team]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-        1. Provide a TeamStackService and criteria a TeamSearcher needs to run a job.
+        1.  Provide a TeamStackService and criteria a TeamSearcher needs to run a job.
 
      Attributes:
         id: int

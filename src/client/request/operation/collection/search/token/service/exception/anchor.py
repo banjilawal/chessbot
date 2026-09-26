@@ -26,7 +26,7 @@ class TokenSearchServiceException(ServiceException):
         - Exception coverage target
 
     Responsibilities:
-        1.  Anchors TokenSearchService debug (layer-2) information.
+        1.   Anchors TokenSearchService debug (layer-2) information.
         2.  Indicate which TokenSearchService method received a worker's
             (layer-1) failure result.
 

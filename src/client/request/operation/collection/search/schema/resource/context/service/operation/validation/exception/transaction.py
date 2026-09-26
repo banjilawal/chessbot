@@ -28,7 +28,7 @@ class SchemaContextValidatorException(ValidatorException):
         - Exception Messaging
 
     Responsibilities:
-        1.  Identify which SchemaContextValidator method, a test failed.
+        1.   Identify which SchemaContextValidator method, a test failed.
 
     Attributes:
         ex: Optional[str]

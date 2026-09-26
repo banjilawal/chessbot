@@ -23,7 +23,7 @@ class TokenServiceRequest(MicroserviceRequest[Token]):
          - Messaging
 
      Responsibilities:
-         1. Transport job information to a worker.
+         1.  Transport job information to a worker.
 
      Attributes:
         id: int

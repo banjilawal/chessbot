@@ -18,7 +18,7 @@ class TokenSearchResourceHost:
         - Controller
         
     Responsibilities:
-        1.  Provide a single entry point for operations TokenSearchService supports.
+        1.   Provide a single entry point for operations TokenSearchService supports.
         
     Attributes:
         query_service: TokenQueryService

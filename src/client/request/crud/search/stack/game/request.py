@@ -18,11 +18,10 @@ from client import StackSearchRequest, Game, GameSearchContext
 class GameSearchRequest(StackSearchRequest[Game]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-        1. Provide a GameStackService and criteria a GameSearcher needs to run a job.
+        1.  Provide a GameStackService and criteria a GameSearcher needs to run a job.
 
      Attributes:
         id: int

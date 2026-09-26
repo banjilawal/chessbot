@@ -22,11 +22,10 @@ T = TypeVar("T", bound="ClientDataObject")
 class DeleteItemRequest(DeleteRequest, ABC, Generic[C, T]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-         1. Transport information during the CrudOperation lifecycle.
+         1.  Transport information during the CrudOperation lifecycle.
 
      Attributes:
          id: int

@@ -24,7 +24,7 @@ class SquareListValidator(Validator[List[Square]]):
         - Exception Messaging
 
     Responsibilities:
-        1.  Verifies that mission-critical operations that need a non-empty List[Square] get one.
+        1.   Verifies that mission-critical operations that need a non-empty List[Square] get one.
 
     Attributes:
 
@@ -47,7 +47,7 @@ class SquareListValidator(Validator[List[Square]]):
         Tests if a squareFinder is getting a List[Square]
 
         Args:
-            1.  Send an exception chain in the ValidationResult if:
+            1.   Send an exception chain in the ValidationResult if:
                     - The rank is null
                     - Is not a List.
                     - Is an empty list.

@@ -22,7 +22,7 @@ class PersonaLookupRouteException(PersonaException, ExecutionRouteException):
     Role:Fallback Result
 
     Responsibilities:
-    1. Indicate that PersonaLookupProcess did not handle a build option or parameter with its own execution route.
+    1.  Indicate that PersonaLookupProcess did not handle a build option or parameter with its own execution route.
 
     Super Class:
         *   PersonaException

@@ -24,7 +24,7 @@ class MicroserviceRequest(Request, ABC, Generic[T]):
          - Messaging
 
      Responsibilities:
-         1. Provide information to get permission to run a Microservice operation.
+         1.  Provide information to get permission to run a Microservice operation.
 
      Attributes:
          id: int

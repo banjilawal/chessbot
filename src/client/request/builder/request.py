@@ -23,11 +23,10 @@ T = TypeVar("T", bound="ClientDataObject")
 class BuildRequest(Request[T], ABC, Generic[T]):
     """
      Role:
-         - Messaging
-         - Transport
+         -  Messaging
 
      Responsibilities:
-        1. Transport the collection and other objects a BuilderOperation needs to run a job.
+        1.  Transport the collection and other objects a BuilderOperation needs to run a job.
 
      Attributes:
          id: int

@@ -26,7 +26,7 @@ class SchemaLookupService(SearchMicroservice[Schema]):
         - Operations Provider
 
     Responsibilities:
-        1.  Baremetal microservice for querying Schemas.
+        1.   Baremetal microservice for querying Schemas.
 
     Args:
         id: int

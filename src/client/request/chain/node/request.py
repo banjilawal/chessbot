@@ -25,7 +25,7 @@ class ChainNodeRequest(ChainRequest, ABC, Generic[T]):
         - Request
 
     Responsibilities:
-        1. Carry Node information for a Chain's CRUD operation.
+        1.  Carry Node information for a Chain's CRUD operation.
 
     Attributes:
         id: int

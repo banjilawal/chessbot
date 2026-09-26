@@ -26,7 +26,7 @@ class TokenNotFoundException(TokenDebugException):
         - Exception coverage target
     
     Responsibilities:
-        1.  Indicate that no token was found.
+        1.   Indicate that no token was found.
 
     Attributes:
         var: Optional[str]

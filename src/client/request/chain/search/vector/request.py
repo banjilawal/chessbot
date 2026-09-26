@@ -22,7 +22,7 @@ class VectorNodeSearchRequest(ChainSearchRequest[VectorNode]):
         - Request
 
     Responsibilities:
-        1. Carry information to find a VectorNode in the a VectorChain.
+        1.  Carry information to find a VectorNode in the a VectorChain.
 
     Attributes:
         id: int
