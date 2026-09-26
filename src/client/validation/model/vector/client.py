@@ -1,7 +1,7 @@
 # src/client/validation/model/vector/client.py
 
 """
-Module: client.validation.model.vectorclient
+Module: client.validation.model.vector.client
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -59,7 +59,7 @@ class VectorValidatorClient(ModelValidatorClient[Vector]):
             request: VectorValidationRequest
     ) -> VectorValidationResponse:
         """
-        Certify a candidate is a TokenCarrier whose payload is either a Token
+        Certify a candidate is a VectorCarrier whose payload is either a Vector
         or a Blueprint that is safe to use.
 
         Action:

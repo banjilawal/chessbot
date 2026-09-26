@@ -1,4 +1,4 @@
-# src/client/validation/model/vector'__init__.py
+# src/client/validation/model/vector/__init__.py
 
 """
 Module: client.validation.model.vector.__init__

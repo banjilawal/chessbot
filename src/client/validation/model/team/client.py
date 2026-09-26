@@ -1,0 +1,98 @@
+# src/client/validation/model/team/client.py
+
+"""
+Module: client.validation.model.team.client
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from typing import Optional, cast
+
+from artifcat import ValidationResult, TeamValidationResponse
+from client import ModelValidatorClient, TeamValidationRequest
+from domain import Team
+from err import TeamValidatorClientException
+from transit import TeamCarrier, TeamValidationDispatcher
+from util import LoggingLevelRouter
+
+
+class TeamValidatorClient(ModelValidatorClient[Team]):
+    """
+    Role
+        - Mediator
+
+    Responsibilities:
+        1.  Intermediary in the Team validation Request-Response workflow.
+
+    Attributes:
+        dispatcher: TeamValidationDispatcher[T]
+
+    Provides:
+        -   def submit(request: TeamValidationRequest[T]) -> TeamValidationResponse[T]
+
+    Super Class:
+        ModelValidatorClient
+    """
+    
+    def __init__(
+            self, 
+            dispatcher: Optional[TeamValidationDispatcher] | None = None,
+    ):
+        """
+        Args:
+            dispatcher: Optional[TeamValidationDispatcher]
+        """
+        super().__init__(
+            dispatcher=dispatcher or TeamValidationDispatcher()
+        )
+        
+    @property
+    def dispatcher(self) -> TeamValidationDispatcher:
+        return cast(TeamValidationDispatcher, super().dispatcher)
+    
+    @LoggingLevelRouter.monitor
+    def transmit(
+            self,
+            request: TeamValidationRequest
+    ) -> TeamValidationResponse:
+        """
+        Certify a candidate is a TeamCarrier whose payload is either a Team
+        or a Blueprint that is safe to use.
+
+        Action:
+            1.  Send an exception chain in the ValidationResponse if the dispatcher
+                aborts the job.
+            2.  Otherwise, extract and cast the carrier to send in the success result.
+        Args:
+            request: TeamValidationRequest
+        Result:
+            TeamValidationResponse
+        Raises:
+            TeamValidatorClientException
+        """
+        method = f"{self.__class__.__name__}.submit"
+        
+        result = self.dispatcher.execute(job=request)
+        # Handle the case that the dispatcher marks the candidate unsafe.
+        if result.is_failure:
+            # Send the exception chain on failure.
+            return TeamValidationResponse.failure(
+                request=request,
+                result=result,
+                exception=TeamValidatorClientException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TeamValidatorClientException.MSG,
+                    err_code=TeamValidatorClientException.ERR_CODE,
+                    ex=result.exception,
+                ),
+            )
+        # --- Otherwise cast and send the success response to the caller. ---#
+        carrier = cast(TeamCarrier, result.payload)
+        return TeamValidationResponse.success(
+            request=request,
+            result=ValidationResult(carrier),
+        )
