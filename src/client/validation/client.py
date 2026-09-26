@@ -22,14 +22,14 @@ T = TypeVar("T",)
 class ValidatorClient(Client[ValidationResult], ABC, Generic[T]):
     """
     Role
-        - Client
+        - Mediator
 
     Responsibilities:
-        1.  Submit a request to a ValidationDispatcher
+        1.  Intermediary in the validation Request-Response workflow.
 
     Attributes:
         dispatcher: ValidationDispatcher[T]
-        
+
     Provides:
         -   def submit(request: ValidationRequest[T]) -> ValidationResponse[T]
 
