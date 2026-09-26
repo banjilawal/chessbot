@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import RegisterHelperTable, SquareValidator
+from assurance import RegisterHelperTable, SquareValidatorClient
 from domain import SquareRegister
 
 
@@ -22,30 +22,30 @@ class SquareRegisterHelperTable(RegisterHelperTable[SquareRegister]):
         - Toolkit
 
     Responsibilities:
-        1.  Bundles validators a Register needs for its primitive and
+        1.  Bundles validatorClients a Register needs for its primitive and
             upstream relational partners attributes.
 
     Attributes:
-        square_validator: SquareValidator
+        square: SquareValidatorClient
 
     Provides:
 
     Super Class:
         RegisterHelperTable
     """
-    _square_validator: SquareValidator
+    _square: SquareValidatorClient
     
     def __init__(
             self,
-            square_validator: Optional[SquareValidator] | None = None,
+            square_client: Optional[SquareValidatorClient] | None = None,
     ):
         """
         Args:
-            square_validator: Optional[SquareValidator]
+            square_client: Optional[SquareValidatorClient]
         """
         super().__init__()
-        self._square_validator = square_validator or SquareValidator()
+        self._square_client = square_client or SquareValidatorClient()
         
     @property
-    def square_validator(self) -> SquareValidator:
-        return self.square_validator
+    def square_client(self) -> SquareValidatorClient:
+        return self.square_client

@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import ModelHelperTable, SquareRegisterValidator, PrimingValidator
+from assurance import ModelHelperTable, PrimingValidator, SquareRegisterValidator
 from domain import Path
 from microservice import IdentityService
 
@@ -23,7 +23,7 @@ class PathHelperTable(ModelHelperTable[Path]):
         - Toolkit
 
     Responsibilities:
-        1.  Bundles validators an Path needs for its primitive and upstream relational
+        1.  Bundles validatorClients an Path needs for its primitive and upstream relational
             partners attributes.
 
     Attributes:

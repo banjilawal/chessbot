@@ -12,7 +12,8 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import ModelHelperTable, PlayerValidator, PrimingValidator
+from assurance import ModelHelperTable, PrimingValidator
+from client import PlayerValidatorClient
 from domain import Game
 from microservice import IdentityService
 
@@ -23,28 +24,28 @@ class GameHelperTable(ModelHelperTable[Game]):
         - Toolkit
 
     Responsibilities:
-        1.  Bundles validators an Game needs for its primitive and upstream relational
+        1.  Bundles validatorClients an Game needs for its primitive and upstream relational
             partners attributes.
 
     Attributes:
-        player_validator: PlayerValidator
+        player_client: PlayerValidatorClient
 
     Provides:
 
     Super Class:
         ModelHelperTable
     """
-    _player_validator: PlayerValidator
+    _player_client: PlayerValidatorClient
     
     def __init__(
             self,
-            player_validator: Optional[PlayerValidator] | None = None,
+            player_client: Optional[PlayerValidatorClient] | None = None,
             identity_service: Optional[IdentityService] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
     ):
         """
         Args:
-            player_validator: Optional[PlayerValidator]
+            player_client: Optional[PlayerValidatorClient]
             identity_service: Optional[IdentityService]
             priming_validator: Optional[PrimingValidator]
         """
@@ -52,8 +53,8 @@ class GameHelperTable(ModelHelperTable[Game]):
             identity_service=identity_service,
             priming_validator=priming_validator,
         )
-        self._player_validator = player_validator or PlayerValidator()
+        self._player_client = player_client or PlayerValidatorClient()
     
     @property
-    def player_validator(self) -> PlayerValidator:
-        return self._player_validator
+    def player_client(self) -> PlayerValidatorClient:
+        return self._player_client

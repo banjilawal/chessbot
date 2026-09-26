@@ -13,7 +13,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar
 
-from assurance import NumberValidator, PrimingValidator, StructureHelperTable, Validator
+from assurance import NumberValidator, PrimingValidator, StructureHelperTable, ValidatorClient
 from authorization import BlueprintIdExtractor
 from domain import Register
 from microservice import IdentityService
@@ -27,7 +27,7 @@ class RegisterHelperTable(StructureHelperTable[T], ABC, Generic[T]):
         - Toolkit
 
     Responsibilities:
-        1.  Bundles validators a Register needs for its primitive and upstream relational
+        1.  Bundles validatorClients a Register needs for its primitive and upstream relational
             partners attributes.
 
     Attributes:

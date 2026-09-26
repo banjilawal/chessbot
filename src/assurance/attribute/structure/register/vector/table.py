@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import RegisterHelperTable, VectorValidator
+from assurance import RegisterHelperTable, VectorValidatorClient
 from domain import VectorRegister
 
 
@@ -22,30 +22,30 @@ class VectorRegisterHelperTable(RegisterHelperTable[VectorRegister]):
         - Toolkit
 
     Responsibilities:
-        1.  Bundles validators a Register needs for its primitive and
+        1.  Bundles validatorClients a Register needs for its primitive and
             upstream relational partners attributes.
 
     Attributes:
-        vector_validator: VectorValidator
+        vector: VectorValidatorClient
 
     Provides:
 
     Super Class:
         RegisterHelperTable
     """
-    _vector_validator: VectorValidator
+    _vector: VectorValidatorClient
     
     def __init__(
             self,
-            vector_validator: Optional[VectorValidator] | None = None,
+            vector_client: Optional[VectorValidatorClient] | None = None,
     ):
         """
         Args:
-            vector_validator: Optional[VectorValidator]
+            vector_client: Optional[VectorValidatorClient]
         """
         super().__init__()
-        self._vector_validator = vector_validator or VectorValidator()
+        self._vector_client = vector_client or VectorValidatorClient()
         
     @property
-    def vector_validator(self) -> VectorValidator:
-        return self.vector_validator
+    def vector_client(self) -> VectorValidatorClient:
+        return self.vector_client

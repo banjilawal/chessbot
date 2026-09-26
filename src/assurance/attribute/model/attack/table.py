@@ -12,9 +12,8 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import (
-    ModelHelperTable, ManeuverValidator, NumberValidator, PrimingValidator, TokenValidator
-)
+from assurance import ModelHelperTable, NumberValidator, PrimingValidator
+from client import ManeuverValidatorClient, TokenValidatorClient
 from domain import Attack
 from microservice import IdentityService
 
@@ -25,33 +24,33 @@ class AttackHelperTable(ModelHelperTable[Attack]):
         - Toolkit
 
     Responsibilities:
-        1.  Bundles validators an Attack needs for its primitive and upstream relational
+        1.  Bundles validatorClients an Attack needs for its primitive and upstream relational
             partners attributes.
 
     Attributes:
-        token_validator: TokenValidator
-        maneuver_validator: ManeuverValidator
+        token_client: TokenValidatorClient
+        maneuver_client: ManeuverValidatorClient
 
     Provides:
 
     Super Class:
         ModelHelperTable
     """
-    _token_validator: TokenValidator
-    _maneuver_validator: ManeuverValidator
+    _token_client: TokenValidatorClient
+    _maneuver_client: ManeuverValidatorClient
     
     def __init__(
             self,
-            token_validator: Optional[TokenValidator] | None = None,
-            maneuver_validator: Optional[ManeuverValidator] | None = None,
+            token_client: Optional[TokenValidatorClient] | None = None,
+            maneuver_client: Optional[ManeuverValidatorClient] | None = None,
             identity_service: Optional[IdentityService] | None = None,
             number_validator: Optional[NumberValidator] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
     ):
         """
         Args:
-            token_validator: Optional[TokenValidator]
-            maneuver_validator: Optional[ManeuverValidator]
+            token_client: Optional[TokenValidatorClient]
+            maneuver_client: Optional[ManeuverValidatorClient]
             identity_service: Optional[IdentityService]
             number_validator: Optional[NumberValidator]
             priming_validator: Optional[PrimingValidator]
@@ -61,13 +60,13 @@ class AttackHelperTable(ModelHelperTable[Attack]):
             number_validator=number_validator,
             priming_validator=priming_validator,
         )
-        self._token_validator = token_validator or TokenValidator()
-        self._maneuver_validator = maneuver_validator or ManeuverValidator()
+        self._token_client = token_client or TokenValidatorClient()
+        self._maneuver_client = maneuver_client or ManeuverValidatorClient()
         
     @property
-    def token_validator(self) -> TokenValidator:
-        return self._token_validator
+    def token_client(self) -> TokenValidatorClient:
+        return self._token_client
     
     @property
-    def maneuver_validator(self) -> ManeuverValidator:
-        return self._maneuver_validator
+    def maneuver_client(self) -> ManeuverValidatorClient:
+        return self._maneuver_client

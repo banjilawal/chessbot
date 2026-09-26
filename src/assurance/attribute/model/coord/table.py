@@ -12,7 +12,8 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import ModelHelperTable, BoardValidator, NumberValidator, PrimingValidator
+from assurance import ModelHelperTable, NumberValidator, PrimingValidator
+from client import BoardValidatorClient
 from domain import Coord
 
 class CoordHelperTable(ModelHelperTable[Coord]):
@@ -21,28 +22,28 @@ class CoordHelperTable(ModelHelperTable[Coord]):
         - Toolkit
 
     Responsibilities:
-        1.  Bundles validators an Coord needs for its primitive and upstream relational
+        1.  Bundles validatorClients an Coord needs for its primitive and upstream relational
             partners attributes.
 
     Attributes:
-        board_validator: BoardValidator
+        board_client: BoardValidatorClient
 
     Provides:
 
     Super Class:
         ModelHelperTable
     """
-    _board_validator: BoardValidator
+    _board_client: BoardValidatorClient
     
     def __init__(
             self,
-            board_validator: Optional[BoardValidator] | None = None,
+            board_client: Optional[BoardValidatorClient] | None = None,
             number_validator: Optional[NumberValidator] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
     ):
         """
         Args:
-            board_validator: Optional[BoardValidator]
+            board_client: Optional[BoardValidatorClient]
             number_validator: Optional[NumberValidator]
             priming_validator: Optional[PrimingValidator]
         """
@@ -50,9 +51,9 @@ class CoordHelperTable(ModelHelperTable[Coord]):
             number_validator=number_validator,
             priming_validator=priming_validator,
         )
-        self._board_validator = board_validator or BoardValidator()
+        self._board_client = board_client or BoardValidatorClient()
     
     @property
-    def board_validator(self) -> BoardValidator:
-        return self._board_validator
+    def board_client(self) -> BoardValidatorClient:
+        return self._board_client
     

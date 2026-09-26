@@ -21,7 +21,7 @@ class VectorHelperTable(ModelHelperTable[Vector]):
         - Toolkit
 
     Responsibilities:
-        1.  Bundles validators an Vector needs for its primitive and upstream relational partners attributes.
+        1.  Bundles validatorClients an Vector needs for its primitive and upstream relational partners attributes.
 
     Attributes:
 

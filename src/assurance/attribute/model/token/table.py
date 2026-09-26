@@ -12,11 +12,12 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import (
-    ModelHelperTable, BoardValidator, RankValidator, SquareValidator, TeamValidator,
-    PrimingValidator
-)
+from assurance import ModelHelperTable
 from authorization import BlueprintIdExtractor, HomeSquareExtractor
+from client import (
+    BoardValidatorClient, RankValidatorClient, SquareValidatorClient,
+    TeamValidatorClient
+)
 from domain import Token
 from microservice import IdentityService
 
@@ -27,33 +28,33 @@ class TokenHelperTable(ModelHelperTable[Token]):
         - Toolkit
 
     Responsibilities:
-        1.  Bundles validators a Token needs for its primitive and upstream relational
+        1.  Bundles validatorClients a Token needs for its primitive and upstream relational
             partners attributes.
 
     Attributes:
-        team_validator: TeamValidator
-        rank_validator: RankValidator
-        board_validator: BoardValidator
-        square_validator: SquareValidator
+        team_client: TeamValidatorClient
+        rank_client: RankValidatorClient
+        board_client: BoardValidatorClient
+        square_client: SquareValidatorClient
 
     Provides:
 
     Super Class:
         ModelHelperTable
     """
-    _team_validator: TeamValidator
-    _rank_validator: RankValidator
-    _board_validator: BoardValidator
-    _square_validator: SquareValidator
+    _team_client: TeamValidatorClient
+    _rank_client: RankValidatorClient
+    _board_client: BoardValidatorClient
+    _square_client: SquareValidatorClient
     _home_extractor: HomeSquareExtractor
 
     
     def __init__(
             self,
-            team_validator: Optional[TeamValidator] | None = None,
-            rank_validator: Optional[RankValidator] | None = None,
-            board_validator: Optional[BoardValidator] | None = None,
-            square_validator: Optional[SquareValidator] | None = None,
+            team_client: Optional[TeamValidatorClient] | None = None,
+            rank_client: Optional[RankValidatorClient] | None = None,
+            board_client: Optional[BoardValidatorClient] | None = None,
+            square_client: Optional[SquareValidatorClient] | None = None,
             identity_service: Optional[IdentityService] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
             home_extractor: Optional[HomeSquareExtractor] | None = None,
@@ -61,10 +62,10 @@ class TokenHelperTable(ModelHelperTable[Token]):
     ):
         """
         Args:
-            team_validator: Optional[TeamValidator]
-            rank_validator: Optional[RankValidator]
-            board_validator: Optional[BoardValidator]
-            square_validator: Optional[SquareValidator]
+            team_client: Optional[TeamValidatorClient]
+            rank_client: Optional[RankValidatorClient]
+            board_client: Optional[BoardValidatorClient]
+            square_client: Optional[SquareValidatorClient]
             identity_service: Optional[IdentityService]
             priming_validator: Optional[PrimingValidator]
             home_extractor: Optional[HomeSquareExtractor]
@@ -75,27 +76,27 @@ class TokenHelperTable(ModelHelperTable[Token]):
             priming_validator=priming_validator,
             blueprint_id_extractor=blueprint_id_extractor,
         )
-        self._team_validator = team_validator or TeamValidator()
-        self._rank_validator = rank_validator or RankValidator()
-        self._board_validator = board_validator or BoardValidator()
-        self._square_validator = square_validator or SquareValidator()
+        self._team_client = team_client or TeamValidatorClient()
+        self._rank_client = rank_client or RankValidatorClient()
+        self._board_client = board_client or BoardValidatorClient()
+        self._square_client = square_client or SquareValidatorClient()
         self._home_extractor = home_extractor or HomeSquareExtractor()
     
     @property
-    def team_validator(self) -> TeamValidator:
-        return self._team_validator
+    def team_client(self) -> TeamValidatorClient:
+        return self._team_client
     
     @property
-    def rank_validator(self) -> RankValidator:
-        return self._rank_validator
+    def rank_client(self) -> RankValidatorClient:
+        return self._rank_client
     
     @property
-    def board_validator(self) -> BoardValidator:
-        return self._board_validator
+    def board_client(self) -> BoardValidatorClient:
+        return self._board_client
     
     @property
-    def square_validator(self) -> SquareValidator:
-        return self._square_validator
+    def square_client(self) -> SquareValidatorClient:
+        return self._square_client
     
     @property
     def home_extractor(self) -> HomeSquareExtractor:

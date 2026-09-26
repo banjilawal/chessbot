@@ -12,7 +12,10 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import ModelHelperTable, BoardValidator, CoordValidator, PrimingValidator
+from assurance import ModelHelperTable
+from client import BoardValidatorClient, CoordValidatorClient
+
+f
 from domain import Square
 from microservice import IdentityService
 
@@ -23,32 +26,32 @@ class SquareHelperTable(ModelHelperTable[Square]):
         - Toolkit
 
     Responsibilities:
-        1.  Bundles validators a Square needs for its primitive and upstream
+        1.  Bundles validatorClients a Square needs for its primitive and upstream
             relational partners attributes.
 
     Attributes:
-        board_validator: BoardValidator
-        coord_validator: CoordValidator
+        board_client: BoardValidatorClient
+        coord_client: CoordValidatorClient
 
     Provides:
 
     Super Class:
         ModelHelperTable
     """
-    _board_validator: BoardValidator
-    _coord_validator: CoordValidator
+    _board_client: BoardValidatorClient
+    _coord_client: CoordValidatorClient
     
     def __init__(
             self,
-            board_validator: Optional[BoardValidator] | None = None,
-            coord_validator: Optional[CoordValidator] | None = None,
+            board_client: Optional[BoardValidatorClient] | None = None,
+            coord_client: Optional[CoordValidatorClient] | None = None,
             identity_service: Optional[IdentityService] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
     ):
         """
         Args:
-            board_validator: Optional[BoardValidator]
-            coord_validator: Optional[CoordValidator]
+            board_client: Optional[BoardValidatorClient]
+            coord_client: Optional[CoordValidatorClient]
             identity_service: Optional[IdentityService]
             priming_validator: Optional[PrimingValidator]
         """
@@ -56,13 +59,13 @@ class SquareHelperTable(ModelHelperTable[Square]):
             identity_service=identity_service,
             priming_validator=priming_validator,
         )
-        self._board_validator = board_validator or BoardValidator()
-        self._coord_validator = coord_validator or CoordValidator()
+        self._board_client = board_client or BoardValidatorClient()
+        self._coord_client = coord_client or CoordValidatorClient()
         
     @property
-    def board_validator(self) -> BoardValidator:
-        return self._board_validator
+    def board_client(self) -> BoardValidatorClient:
+        return self._board_client
     
     @property
-    def coord_validator(self) -> CoordValidator:
-        return self._coord_validator
+    def coord_client(self) -> CoordValidatorClient:
+        return self._coord_client

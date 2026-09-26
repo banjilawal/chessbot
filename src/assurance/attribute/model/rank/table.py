@@ -23,7 +23,7 @@ class RankHelperTable(ModelHelperTable[Rank]):
         - Toolkit
 
     Responsibilities:
-        1.  Bundles validators a Rank needs for its primitive and upstream relational
+        1.  Bundles validatorClients a Rank needs for its primitive and upstream relational
             partners attributes.
 
     Attributes:

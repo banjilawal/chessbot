@@ -21,7 +21,7 @@ class ScalarHelperTable(ModelHelperTable[Scalar]):
         - Toolkit
 
     Responsibilities:
-        1.  Bundles validators an Scalar needs for its primitive and upstream relational partners attributes.
+        1.  Bundles validatorClients an Scalar needs for its primitive and upstream relational partners attributes.
 
     Attributes:
 

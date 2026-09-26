@@ -12,7 +12,8 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import ModelHelperTable, GameValidator, PlayerValidator, PrimingValidator
+from assurance import ModelHelperTable, PrimingValidator
+from client import GameValidatorClient, PlayerValidatorClient
 from domain import Arena
 from microservice import IdentityService
 
@@ -23,32 +24,32 @@ class ArenaHelperTable(ModelHelperTable[Arena]):
         - Toolkit
 
     Responsibilities:
-        1.  Bundles validators an Arena needs for its primitive and upstream relational
+        1.  Bundles validatorClients an Arena needs for its primitive and upstream relational
             partners attributes.
 
     Attributes:
-        game_validator: GameValidator
-        player_validator: PlayerValidator
+        game_client: GameValidatorClient
+        player_client: PlayerValidatorClient
 
     Provides:
 
     Super Class:
         ModelHelperTable
     """
-    _game_validator: GameValidator
-    _player_validator: PlayerValidator
+    _game_client: GameValidatorClient
+    _player_client: PlayerValidatorClient
     
     def __init__(
             self,
-            game_validator: Optional[GameValidator] | None = None,
-            player_validator: Optional[PlayerValidator] | None = None,
+            game_client: Optional[GameValidatorClient] | None = None,
+            player_client: Optional[PlayerValidatorClient] | None = None,
             identity_service: Optional[IdentityService] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
     ):
         """
         Args:
-            game_validator: Optional[GameValidator]
-            player_validator: Optional[PlayerValidator]
+            game_client: Optional[GameValidatorClient]
+            player_client: Optional[PlayerValidatorClient]
             identity_service: Optional[IdentityService]
             priming_validator: Optional[PrimingValidator]
         """
@@ -56,13 +57,13 @@ class ArenaHelperTable(ModelHelperTable[Arena]):
             identity_service=identity_service,
             priming_validator=priming_validator,
         )
-        self._game_validator = game_validator or GameValidator()
-        self._player_validator = player_validator or PlayerValidator()
+        self._game_client = game_client or GameValidatorClient()
+        self._player_client = player_client or PlayerValidatorClient()
         
     @property
-    def game_validator(self) -> GameValidator:
-        return self._game_validator
+    def game_client(self) -> GameValidatorClient:
+        return self._game_client
     
     @property
-    def player_validator(self) -> PlayerValidator:
-        return self._player_validator
+    def player_client(self) -> PlayerValidatorClient:
+        return self._player_client

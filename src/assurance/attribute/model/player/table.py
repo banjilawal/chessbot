@@ -23,7 +23,7 @@ class PlayerHelperTable(ModelHelperTable[Player]):
         - Toolkit
 
     Responsibilities:
-        1.  Bundles validators an Player needs for its primitive and upstream relational
+        1.  Bundles validatorClients an Player needs for its primitive and upstream relational
             partners attributes.
 
     Attributes:

@@ -12,7 +12,8 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import ModelHelperTable, ArenaValidator, PrimingValidator
+from assurance import ModelHelperTable, PrimingValidator
+from client import ArenaValidatorClient
 from domain import Board
 from microservice import IdentityService
 
@@ -23,28 +24,28 @@ class BoardHelperTable(ModelHelperTable[Board]):
         - Toolkit
 
     Responsibilities:
-        1.  Bundles validators an Board needs for its primitive and upstream relational
+        1.  Bundles validatorClients an Board needs for its primitive and upstream relational
             partners attributes.
 
     Attributes:
-        arena_validator: ArenaValidator
+        arena_client: ArenaValidatorClient
 
     Provides:
 
     Super Class:
         ModelHelperTable
     """
-    _arena_validator: ArenaValidator
+    _arena_client: ArenaValidatorClient
     
     def __init__(
             self,
-            arena_validator: Optional[ArenaValidator] | None = None,
+            arena_client: Optional[ArenaValidatorClient] | None = None,
             identity_service: Optional[IdentityService] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
     ):
         """
         Args:
-            arena_validator: Optional[ArenaValidator]
+            arena_client: Optional[ArenaValidatorClient]
             identity_service: Optional[IdentityService]
             priming_validator: Optional[PrimingValidator]
         """
@@ -52,8 +53,8 @@ class BoardHelperTable(ModelHelperTable[Board]):
             identity_service=identity_service,
             priming_validator=priming_validator,
         )
-        self._arena_validator = arena_validator or ArenaValidator()
+        self._arena_client = arena_client or ArenaValidatorClient()
     
     @property
-    def arena_validator(self) -> ArenaValidator:
-        return self._arena_validator
+    def arena_client(self) -> ArenaValidatorClient:
+        return self._arena_client

@@ -12,11 +12,10 @@ from __future__ import annotations
 
 from typing import Optional
 
+from assurance import ModelHelperTable, PrimingValidator
+from client import BoardValidatorClient, PlayerValidatorClient
 from domain import Team
 from microservice import IdentityService
-from assurance import ModelHelperTable, BoardValidator, PlayerValidator, PrimingValidator
-
-
 
 class TeamHelperTable(ModelHelperTable[Team]):
     """
@@ -24,32 +23,32 @@ class TeamHelperTable(ModelHelperTable[Team]):
         - Toolkit
 
     Responsibilities:
-        1.  Bundles validators a Team needs for its primitive and upstream relational
+        1.  Bundles validatorClients a Team needs for its primitive and upstream relational
             partners attributes.
 
     Attributes:
-        board_validator: BoardValidator
-        owner_validator: PlayerValidator
+        board_client: BoardValidatorClient
+        owner_client: PlayerValidatorClient
 
     Provides:
 
     Super Class:
         ModelHelperTable
     """
-    _board_validator: BoardValidator
-    _owner_validator: PlayerValidator
+    _board_client: BoardValidatorClient
+    _owner_client: PlayerValidatorClient
     
     def __init__(
             self,
-            board_validator: Optional[BoardValidator] | None = None,
-            owner_validator: Optional[PlayerValidator] | None = None,
+            board_client: Optional[BoardValidatorClient] | None = None,
+            owner_client: Optional[PlayerValidatorClient] | None = None,
             identity_service: Optional[IdentityService] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
     ):
         """
         Args:
-            board_validator: Optional[BoardValidator]
-            owner_validator: Optional[PlayerValidator]
+            board_client: Optional[BoardValidatorClient]
+            owner_client: Optional[PlayerValidatorClient]
             identity_service: Optional[IdentityService]
             priming_validator: Optional[PrimingValidator]
         """
@@ -57,13 +56,13 @@ class TeamHelperTable(ModelHelperTable[Team]):
             identity_service=identity_service,
             priming_validator=priming_validator,
         )
-        self._board_validator = board_validator or BoardValidator()
-        self._owner_validator = owner_validator or PlayerValidator()
+        self._board_client = board_client or BoardValidatorClient()
+        self._owner_client = owner_client or PlayerValidatorClient()
     
     @property
-    def board_validator(self) -> BoardValidator:
-        return self._board_validator
+    def board_client(self) -> BoardValidatorClient:
+        return self._board_client
     
     @property
-    def owner_validator(self) -> PlayerValidator:
-        return self._owner_validator
+    def owner_client(self) -> PlayerValidatorClient:
+        return self._owner_client

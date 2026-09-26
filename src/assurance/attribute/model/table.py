@@ -27,13 +27,13 @@ class ModelHelperTable(AttributeHelperTable[T], ABC, Generic[T]):
         - Toolkit
 
     Responsibilities:
-        1.  Bundles validators a Model needs for its primitive and upstream
+        1.  Bundles validatorClients a Model needs for its primitive and upstream
             relational partners attributes.
 
     Attributes:
         identity_service: IdentityService
         number_validator: NumberValidator
-        primin_validator: PrimingValidator
+        priming_validator: PrimingValidator
 
     Provides:
 
