@@ -12,11 +12,11 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import ModelHelperTable, NumberValidator, PrimingValidator
-from client import BoardValidationResponseService
+from assurance import ModelValidationWrapperDict, NumberValidator, PrimingValidator
+from client import BoardValidationResponseWrapper
 from domain import Coord
 
-class CoordHelperTable(ModelHelperTable[Coord]):
+class CoordValidationWrapperDict(ModelValidationWrapperDict[Coord]):
     """
     Role:
         - Toolkit
@@ -33,11 +33,11 @@ class CoordHelperTable(ModelHelperTable[Coord]):
     Super Class:
         ModelHelperTable
     """
-    _board_client: BoardValidationResponseService
+    _board_client: BoardValidationResponseWrapper
     
     def __init__(
             self,
-            board_client: Optional[BoardValidationResponseService] | None = None,
+            board_client: Optional[BoardValidationResponseWrapper] | None = None,
             number_validator: Optional[NumberValidator] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
     ):
@@ -51,9 +51,9 @@ class CoordHelperTable(ModelHelperTable[Coord]):
             number_validator=number_validator,
             priming_validator=priming_validator,
         )
-        self._board_client = board_client or BoardValidationResponseService()
+        self._board_client = board_client or BoardValidationResponseWrapper()
     
     @property
-    def board_client(self) -> BoardValidationResponseService:
+    def board_client(self) -> BoardValidationResponseWrapper:
         return self._board_client
     

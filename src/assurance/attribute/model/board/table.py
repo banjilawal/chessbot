@@ -12,13 +12,13 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import ModelHelperTable, PrimingValidator
-from client import ArenaValidationResponseService
+from assurance import ModelValidationWrapperDict, PrimingValidator
+from client import ArenaValidationResponseWrapper
 from domain import Board
 from microservice import IdentityService
 
 
-class BoardHelperTable(ModelHelperTable[Board]):
+class BoardValidationWrapperDict(ModelValidationWrapperDict[Board]):
     """
     Role:
         - Toolkit
@@ -35,11 +35,11 @@ class BoardHelperTable(ModelHelperTable[Board]):
     Super Class:
         ModelHelperTable
     """
-    _arena_client: ArenaValidationResponseService
+    _arena_client: ArenaValidationResponseWrapper
     
     def __init__(
             self,
-            arena_client: Optional[ArenaValidationResponseService] | None = None,
+            arena_client: Optional[ArenaValidationResponseWrapper] | None = None,
             identity_service: Optional[IdentityService] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
     ):
@@ -53,8 +53,8 @@ class BoardHelperTable(ModelHelperTable[Board]):
             identity_service=identity_service,
             priming_validator=priming_validator,
         )
-        self._arena_client = arena_client or ArenaValidationResponseService()
+        self._arena_client = arena_client or ArenaValidationResponseWrapper()
     
     @property
-    def arena_client(self) -> ArenaValidationResponseService:
+    def arena_client(self) -> ArenaValidationResponseWrapper:
         return self._arena_client

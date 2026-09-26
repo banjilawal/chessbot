@@ -12,11 +12,11 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import RegisterHelperTable, SquareValidatorClient
+from assurance import RegisterValidationWrapperDict, SquareValidatorClient
 from domain import SquareRegister
 
 
-class SquareRegisterHelperTable(RegisterHelperTable[SquareRegister]):
+class SquareRegisterHelperTable(RegisterValidationWrapperDict[SquareRegister]):
     """
     Role:
         - Toolkit

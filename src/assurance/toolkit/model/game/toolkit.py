@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelValidatorToolkit, GameHelperTable
+from assurance import ModelValidatorToolkit, GameValidationWrapperDict
 from domain import Game, GameManifest, GameNullGroup, GameTypeUnion
 
 
@@ -36,21 +36,21 @@ class GameValidatorToolkit(ModelValidatorToolkit[Game]):
     def __init__(
             self,
             metadata: Optional[GameManifest] | None = None,
-            helper: Optional[GameHelperTable] | None = None,
+            wrapper: Optional[GameValidationWrapperDict] | None = None,
     ):
         """
         Args:
-            helper: Optional[GameManifest]
+            wrapper: Optional[GameManifest]
             metadata: Optional[GameHelperTable]
         """
         super().__init__(
-            helper=helper or GameHelperTable(),
+            wrapper=wrapper or GameValidationWrapperDict(),
             metadata=metadata or GameManifest(),
         )
     
     @property
-    def helper(self) -> GameHelperTable:
-        return cast(GameHelperTable, super().helper)
+    def wrapper(self) -> GameValidationWrapperDict:
+        return cast(GameValidationWrapperDict, super().wrapper)
     
     @property
     def metadata(self) -> GameManifest:

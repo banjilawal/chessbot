@@ -18,7 +18,7 @@ from domain import (
     TeamBlueprint, TeamValidationRequest
 )
 from err import (
-    ArchetypeNullException, BoardValidatorResponseServiceExceptionValidation, EmptyBoardCarrierException,
+    ArchetypeNullException, BoardValidatorResponseWrapperExceptionValidation, EmptyBoardCarrierException,
     EmptyPlayerCarrierException,
     EmptyTeamCarrierException, TeamValidationRequestNullException, TeamValidatorException
 )
@@ -137,7 +137,7 @@ class TeamValidator(ModelValidator[Team]):
                 )
             )
         # --- Run the board validation checks. ---#
-        board_validation = self.toolkit.helper.board_validator.execute(
+        board_validation = self.toolkit.wrapper.board_validator.execute(
             candidate=BoardValidationRequest(
                 id=IdFactory.next_id(class_name="BoardValidationRequest"),
                 item=BoardCarrier(model=blueprint.board),
@@ -178,7 +178,7 @@ class TeamValidator(ModelValidator[Team]):
                 )
             )
         # --- Run the owner validation checks. ---#
-        owner_validation = self.toolkit.helper.owner_validator.execute(
+        owner_validation = self.toolkit.wrapper.owner_validator.execute(
             candidate=PlayerValidationRequest(
                 id=IdFactory.next_id(class_name="PlayerValidationRequest"),
                 item=PlayerCarrier(model=blueprint.owner)

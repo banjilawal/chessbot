@@ -85,7 +85,7 @@ class CoordValidator(ModelValidator[Coord]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is null or the rong type.
-        priming_result = self.toolkit.helper.priming_validator.execute(
+        priming_result = self.toolkit.wrapper.priming_validator.execute(
             candidate=candidate,
             target_model=CoordValidationRequest,
             null_exception=CoordValidationRequestNullException(),
@@ -105,7 +105,7 @@ class CoordValidator(ModelValidator[Coord]):
         request = cast(CoordValidationRequest, priming_result.payload)
         
         # Handle the case that request.item is the wrong carrier type.
-        carrier_validation = self.toolkit.helper.priming_validator.execute(
+        carrier_validation = self.toolkit.wrapper.priming_validator.execute(
             candidate=request.item,
             target_model=self.toolkit.metadata.types.carrier,
             null_exception=self.toolkit.metadata.nulls.carrier,
@@ -147,7 +147,7 @@ class CoordValidator(ModelValidator[Coord]):
                 )
             )
         # --- Run the board validation checks. ---#
-        board_validation = self.toolkit.helper.board_validator.execute(
+        board_validation = self.toolkit.wrapper.board_validator.execute(
             candidate=BoardValidationRequest(
                 id=IdFactory.next_id(class_name="BoardValidationRequest"),
                 item=BoardCarrier(model=blueprint.board),
@@ -190,7 +190,7 @@ class CoordValidator(ModelValidator[Coord]):
         # Handle the case that any coord component in the blueprint is flagged.
         components: List[int] = []
         for number in [blueprint.row, blueprint.column]:
-            validation = self.toolkit.helper.number_validator.execute(number)
+            validation = self.toolkit.wrapper.number_validator.execute(number)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(

@@ -12,13 +12,13 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import ModelHelperTable, NumberValidator, PrimingValidator
-from client import PathValidationResponseService, TokenValidationResponseService
+from assurance import ModelValidationWrapperDict, NumberValidator, PrimingValidator
+from client import PathValidationResponseWrapper, TokenValidationResponseWrapper
 from domain import Maneuver
 from microservice import IdentityService
 
 
-class ManeuverHelperTable(ModelHelperTable[Maneuver]):
+class ManeuverValidationWrapperDict(ModelValidationWrapperDict[Maneuver]):
     """
     Role:
         - Toolkit
@@ -36,13 +36,13 @@ class ManeuverHelperTable(ModelHelperTable[Maneuver]):
     Super Class:
         ModelHelperTable
     """
-    _path_client: PathValidationResponseService
-    _token_client: TokenValidationResponseService
+    _path_client: PathValidationResponseWrapper
+    _token_client: TokenValidationResponseWrapper
     
     def __init__(
             self,
-            path_client: Optional[PathValidationResponseService] | None = None,
-            token_client: Optional[TokenValidationResponseService] | None = None,
+            path_client: Optional[PathValidationResponseWrapper] | None = None,
+            token_client: Optional[TokenValidationResponseWrapper] | None = None,
             identity_service: Optional[IdentityService] | None = None,
             number_validator: Optional[NumberValidator] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
@@ -60,13 +60,13 @@ class ManeuverHelperTable(ModelHelperTable[Maneuver]):
             number_validator=number_validator,
             priming_validator=priming_validator,
         )
-        self._path_client = path_client or PathValidationResponseService()
-        self._token_client = token_client or TokenValidationResponseService()
+        self._path_client = path_client or PathValidationResponseWrapper()
+        self._token_client = token_client or TokenValidationResponseWrapper()
         
     @property
-    def path_client(self) -> PathValidationResponseService:
+    def path_client(self) -> PathValidationResponseWrapper:
         return self._path_client
     
     @property
-    def token_client(self) -> TokenValidationResponseService:
+    def token_client(self) -> TokenValidationResponseWrapper:
         return self._token_client

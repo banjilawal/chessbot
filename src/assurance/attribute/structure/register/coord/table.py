@@ -12,11 +12,11 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import RegisterHelperTable, CoordValidatorClient
+from assurance import RegisterValidationWrapperDict, CoordValidatorClient
 from domain import CoordRegister
 
 
-class CoordRegisterHelperTable(RegisterHelperTable[CoordRegister]):
+class CoordRegisterHelperTable(RegisterValidationWrapperDict[CoordRegister]):
     """
     Role:
         - Toolkit

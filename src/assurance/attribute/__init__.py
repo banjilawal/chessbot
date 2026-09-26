@@ -14,4 +14,4 @@ from .model import *
 from .structure import *
 
 # Module
-from .table import AttributeHelperTable
+from .table import ValidationWrapperDict

@@ -12,13 +12,13 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import ModelHelperTable, NumberValidator, PrimingValidator
-from client import ManeuverValidationResponseService, TokenValidationResponseService
+from assurance import ModelValidationWrapperDict, NumberValidator, PrimingValidator
+from client import ManeuverValidationResponseWrapper, TokenValidationResponseWrapper
 from domain import Attack
 from microservice import IdentityService
 
 
-class AttackHelperTable(ModelHelperTable[Attack]):
+class AttackValidationWrapperDict(ModelValidationWrapperDict[Attack]):
     """
     Role:
         - Toolkit
@@ -36,13 +36,13 @@ class AttackHelperTable(ModelHelperTable[Attack]):
     Super Class:
         ModelHelperTable
     """
-    _token_client: TokenValidationResponseService
-    _maneuver_client: ManeuverValidationResponseService
+    _token_client: TokenValidationResponseWrapper
+    _maneuver_client: ManeuverValidationResponseWrapper
     
     def __init__(
             self,
-            token_client: Optional[TokenValidationResponseService] | None = None,
-            maneuver_client: Optional[ManeuverValidationResponseService] | None = None,
+            token_client: Optional[TokenValidationResponseWrapper] | None = None,
+            maneuver_client: Optional[ManeuverValidationResponseWrapper] | None = None,
             identity_service: Optional[IdentityService] | None = None,
             number_validator: Optional[NumberValidator] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
@@ -60,13 +60,13 @@ class AttackHelperTable(ModelHelperTable[Attack]):
             number_validator=number_validator,
             priming_validator=priming_validator,
         )
-        self._token_client = token_client or TokenValidationResponseService()
-        self._maneuver_client = maneuver_client or ManeuverValidationResponseService()
+        self._token_client = token_client or TokenValidationResponseWrapper()
+        self._maneuver_client = maneuver_client or ManeuverValidationResponseWrapper()
         
     @property
-    def token_client(self) -> TokenValidationResponseService:
+    def token_client(self) -> TokenValidationResponseWrapper:
         return self._token_client
     
     @property
-    def maneuver_client(self) -> ManeuverValidationResponseService:
+    def maneuver_client(self) -> ManeuverValidationResponseWrapper:
         return self._maneuver_client

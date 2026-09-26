@@ -12,15 +12,15 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import ModelHelperTable
-from client import BoardValidationResponseService, CoordValidationResponseService
+from assurance import ModelValidationWrapperDict
+from client import BoardValidationResponseWrapper, CoordValidationResponseWrapper
 
 f
 from domain import Square
 from microservice import IdentityService
 
 
-class SquareHelperTable(ModelHelperTable[Square]):
+class SquareValidationWrapperDict(ModelValidationWrapperDict[Square]):
     """
     Role:
         - Toolkit
@@ -38,13 +38,13 @@ class SquareHelperTable(ModelHelperTable[Square]):
     Super Class:
         ModelHelperTable
     """
-    _board_client: BoardValidationResponseService
-    _coord_client: CoordValidationResponseService
+    _board_client: BoardValidationResponseWrapper
+    _coord_client: CoordValidationResponseWrapper
     
     def __init__(
             self,
-            board_client: Optional[BoardValidationResponseService] | None = None,
-            coord_client: Optional[CoordValidationResponseService] | None = None,
+            board_client: Optional[BoardValidationResponseWrapper] | None = None,
+            coord_client: Optional[CoordValidationResponseWrapper] | None = None,
             identity_service: Optional[IdentityService] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
     ):
@@ -59,13 +59,13 @@ class SquareHelperTable(ModelHelperTable[Square]):
             identity_service=identity_service,
             priming_validator=priming_validator,
         )
-        self._board_client = board_client or BoardValidationResponseService()
-        self._coord_client = coord_client or CoordValidationResponseService()
+        self._board_client = board_client or BoardValidationResponseWrapper()
+        self._coord_client = coord_client or CoordValidationResponseWrapper()
         
     @property
-    def board_client(self) -> BoardValidationResponseService:
+    def board_client(self) -> BoardValidationResponseWrapper:
         return self._board_client
     
     @property
-    def coord_client(self) -> CoordValidationResponseService:
+    def coord_client(self) -> CoordValidationResponseWrapper:
         return self._coord_client

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelValidatorToolkit, AttackHelperTable
+from assurance import ModelValidatorToolkit, AttackValidationWrapperDict
 from domain import Attack, AttackManifest, AttackNullGroup, AttackTypeUnion
 
 
@@ -36,21 +36,21 @@ class AttackValidatorToolkit(ModelValidatorToolkit[Attack]):
     def __init__(
             self,
             metadata: Optional[AttackManifest] | None = None,
-            helper: Optional[AttackHelperTable] | None = None,
+            wrapper: Optional[AttackValidationWrapperDict] | None = None,
     ):
         """
         Args:
-            helper: Optional[AttackManifest]
+            wrapper: Optional[AttackManifest]
             metadata: Optional[AttackHelperTable]
         """
         super().__init__(
-            helper=helper or AttackHelperTable(),
+            wrapper=wrapper or AttackValidationWrapperDict(),
             metadata=metadata or AttackManifest(),
         )
     
     @property
-    def helper(self) -> AttackHelperTable:
-        return cast(AttackHelperTable, super().helper)
+    def wrapper(self) -> AttackValidationWrapperDict:
+        return cast(AttackValidationWrapperDict, super().wrapper)
     
     @property
     def metadata(self) -> AttackManifest:

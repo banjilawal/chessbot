@@ -12,11 +12,11 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import RegisterHelperTable, VectorValidatorClient
+from assurance import RegisterValidationWrapperDict, VectorValidatorClient
 from domain import VectorRegister
 
 
-class VectorRegisterHelperTable(RegisterHelperTable[VectorRegister]):
+class VectorRegisterHelperTable(RegisterValidationWrapperDict[VectorRegister]):
     """
     Role:
         - Toolkit

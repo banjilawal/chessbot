@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from assurance import RegisterHelperTable, StructureValidatorToolkit
+from assurance import RegisterValidationWrapperDict, StructureValidatorToolkit
 from domain import Register, RegisterManifest
 
 T = TypeVar("T", bound="Register")
@@ -38,19 +38,19 @@ class RegisterValidatorToolkit(StructureValidatorToolkit[T], ABC, Generic[T]):
     
     def __init__(
             self,
-            helper: RegisterHelperTable[T],
+            wrapper: RegisterValidationWrapperDict[T],
             metadata: RegisterManifest[T],
     ):
         """
             helper: RegisterHelperTable[T]
             metadata: RegisterManifest[T]
         """
-        super().__init__(helper=helper, metadata=metadata)
+        super().__init__(wrapper=wrapper, metadata=metadata)
     
     
     @property
-    def helper(self) -> RegisterHelperTable[T]:
-        return cast(RegisterHelperTable, super().helper)
+    def wrapper(self) -> RegisterValidationWrapperDict[T]:
+        return cast(RegisterValidationWrapperDict, super().wrapper)
     
     @property
     def metadata(self) -> RegisterManifest[T]:

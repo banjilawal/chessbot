@@ -87,7 +87,7 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is null or the rong type.
-        priming_result = self.toolkit.helper.priming_validator.execute(
+        priming_result = self.toolkit.wrapper.priming_validator.execute(
             candidate=candidate,
             target_model=SquareRegisterValidationRequest,
             null_exception=SquareRegisterValidationRequestNullException(),
@@ -107,7 +107,7 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
         request = cast(SquareRegisterValidationRequest, priming_result.payload)
         
         # Handle the case that request.item is the wrong carrier type.
-        carrier_validation = self.toolkit.helper.priming_validator.execute(
+        carrier_validation = self.toolkit.wrapper.priming_validator.execute(
             candidate=request.item,
             target_model=self.toolkit.metadata.types.carrier,
             null_exception=self.toolkit.metadata.nulls.carrier,
@@ -151,7 +151,7 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
         # --- Run the square validation checks. ---#
         endpoints: List[Square] = []
         for square in [blueprint.origin, blueprint.destination]:
-            square_validation = self.toolkit.helper.square_validator.execute(
+            square_validation = self.toolkit.wrapper.square_validator.execute(
             candidate=SquareValidationRequest(
                     id=IdFactory.next_id(class_name="SquareValidationRequest"),
                     item=SquareCarrier(model=square),

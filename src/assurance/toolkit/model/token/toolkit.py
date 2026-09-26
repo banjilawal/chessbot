@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelValidatorToolkit, TokenHelperTable
+from assurance import ModelValidatorToolkit, TokenValidationWrapperDict
 from domain import Token, TokenManifest, TokenNullGroup, TokenTypeUnion
 
 
@@ -36,21 +36,21 @@ class TokenValidatorToolkit(ModelValidatorToolkit[Token]):
     def __init__(
             self,
             metadata: Optional[TokenManifest] | None = None,
-            helper: Optional[TokenHelperTable] | None = None,
+            wrapper: Optional[TokenValidationWrapperDict] | None = None,
     ):
         """
         Args:
-            helper: Optional[TokenManifest]
+            wrapper: Optional[TokenManifest]
             metadata: Optional[TokenHelperTable]
         """
         super().__init__(
-            helper=helper or TokenHelperTable(),
+            wrapper=wrapper or TokenValidationWrapperDict(),
             metadata=metadata or TokenManifest(),
         )
     
     @property
-    def helper(self) -> TokenHelperTable:
-        return cast(TokenHelperTable, super().helper)
+    def wrapper(self) -> TokenValidationWrapperDict:
+        return cast(TokenValidationWrapperDict, super().wrapper)
     
     @property
     def metadata(self) -> TokenManifest:

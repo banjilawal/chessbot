@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, Optional, TypeVar
 
 from assurance import (
-    AttributeHelperTable, BlueprintLoader, CommonValidatorToolkit,
+    ValidationWrapperDict, BlueprintLoader, CommonValidatorToolkit,
     NumberValidator, PrimingValidator
 )
 from authorization import BlueprintIdExtractor
@@ -43,32 +43,32 @@ class ValidatorToolkit(ABC, Generic[T]):
     Super Class:
     """
     _metadata: ObjectManifest[T]
-    _helper: AttributeHelperTable[T]
+    _wrapper: ValidationWrapperDict[T]
     _blueprint_loader: BlueprintLoader[T]
     _common: CommonValidatorToolkit
     
     def __init__(
             self,
-            helper: AttributeHelperTable[T],
+            wrapper: ValidationWrapperDict[T],
             metadata: ObjectManifest[T],
             blueprint_loader: BlueprintLoader[T],
             common: Optional[CommonValidatorToolkit] | None = None,
     ):
         """
         Args:
-            helper: HelperTable[T]
+            wrapper: HelperTable[T]
             metadata: ObjectManifest[T]
             blueprint_loader: BlueprintLoader[T]
             common: Optional[CommonValidatorToolkit]
         """
-        self._helper = helper
+        self._wrapper = wrapper
         self._metadata = metadata
         self._blueprint_loader = blueprint_loader
         self._common = common or CommonValidatorToolkit()
     
     @property
-    def helper(self) -> AttributeHelperTable[T]:
-        return self._helper
+    def wrapper(self) -> ValidationWrapperDict[T]:
+        return self._wrapper
     
     @property
     def metadata(self) -> ObjectManifest[T]:

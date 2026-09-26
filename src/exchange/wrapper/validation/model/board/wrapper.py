@@ -13,7 +13,10 @@ from typing import Optional, cast
 
 from artifcat import BoardValidationResponse, ValidationResult
 from domain import Board, BoardBlueprint
-from err import BoardValidationResponderException, BoardValidationResponseWrapperException, EmptyBoardCarrierException
+from err import (
+    BoardValidationResponderException, BoardValidationResponseWrapperException,
+    EmptyBoardCarrierException
+)
 from exchange import (
     BoardValidationResponder, ModelValidationResponseWrapper, BoardValidationRequest
 )

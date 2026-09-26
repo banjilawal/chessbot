@@ -88,7 +88,7 @@ class SquareValidator(ModelValidator[Square]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is null or the rong type.
-        priming_result = self.toolkit.helper.priming_validator.execute(
+        priming_result = self.toolkit.wrapper.priming_validator.execute(
             candidate=candidate,
             target_model=SquareValidationRequest,
             null_exception=SquareValidationRequestNullException(),
@@ -108,7 +108,7 @@ class SquareValidator(ModelValidator[Square]):
         request = cast(SquareValidationRequest, priming_result.payload)
         
         # Handle the case that request.item is the wrong carrier type.
-        carrier_validation = self.toolkit.helper.priming_validator.execute(
+        carrier_validation = self.toolkit.wrapper.priming_validator.execute(
             candidate=request.item,
             target_model=self.toolkit.metadata.types.carrier,
             null_exception=self.toolkit.metadata.nulls.carrier,
@@ -150,7 +150,7 @@ class SquareValidator(ModelValidator[Square]):
                 )
             )
         # Handle the case that any id in the blueprint is flagged.
-        id_validation = self.toolkit.helper.blueprint_id_extractor.execute(
+        id_validation = self.toolkit.wrapper.blueprint_id_extractor.execute(
             candidate=blueprint,
             blueprint_owner_name=blueprint.domain_class_name,
             blueprint_type=self.toolkit.metadata.types.blueprint,
@@ -168,7 +168,7 @@ class SquareValidator(ModelValidator[Square]):
                 )
             )
         # Handle the case that the name does not pass a validation check.
-        name_validation = self.toolkit.helper.identity_service.validate_name(
+        name_validation = self.toolkit.wrapper.identity_service.validate_name(
             candidate=blueprint.name
         )
         if name_validation.is_failure:
@@ -183,7 +183,7 @@ class SquareValidator(ModelValidator[Square]):
                 )
             )
         # Handle the case that the state is null or the wrong type.
-        state_validation = self.toolkit.helper.priming_validator.execute(
+        state_validation = self.toolkit.wrapper.priming_validator.execute(
             candidate=blueprint.state,
             target_model=SquareState,
             null_exception=SquareStateNullException(),
@@ -200,7 +200,7 @@ class SquareValidator(ModelValidator[Square]):
                 )
             )
         # Handle the case that the board does not pass a validation check.
-        board_validation = self.toolkit.helper.board_validator.execute(
+        board_validation = self.toolkit.wrapper.board_validator.execute(
             candidate=BoardValidationRequest(
                 id=IdFactory.next_id(class_name="BoardValidationRequest"),
                 item=BoardCarrier(model=blueprint.board),
@@ -235,7 +235,7 @@ class SquareValidator(ModelValidator[Square]):
                 )
             )
         # Handle the case that the coord does not pass a validation check.
-        coord_validation = self.toolkit.helper.coord_validator.execute(
+        coord_validation = self.toolkit.wrapper.coord_validator.execute(
             candidate=CoordValidationRequest(
                 id=IdFactory.next_id(class_name="CoordValidationRequest"),
                 item=CoordCarrier(model=blueprint.coord),

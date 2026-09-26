@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelValidatorToolkit, ArenaHelperTable
+from assurance import ModelValidatorToolkit, ArenaValidationWrapperDict
 from domain import Arena, ArenaManifest, ArenaNullGroup, ArenaTypeUnion
 
 class ArenaValidatorToolkit(ModelValidatorToolkit[Arena]):
@@ -35,21 +35,21 @@ class ArenaValidatorToolkit(ModelValidatorToolkit[Arena]):
     def __init__(
             self,
             metadata: Optional[ArenaManifest] | None = None,
-            helper: Optional[ArenaHelperTable] | None = None,
+            wrapper: Optional[ArenaValidationWrapperDict] | None = None,
     ):
         """
         Args:
-            helper: Optional[ArenaManifest]
+            wrapper: Optional[ArenaManifest]
             metadata: Optional[ArenaHelperTable]
         """
         super().__init__(
-            helper=helper or ArenaHelperTable(),
+            wrapper=wrapper or ArenaValidationWrapperDict(),
             metadata=metadata or ArenaManifest(),
         )
     
     @property
-    def helper(self) -> ArenaHelperTable:
-        return cast(ArenaHelperTable, super().helper)
+    def wrapper(self) -> ArenaValidationWrapperDict:
+        return cast(ArenaValidationWrapperDict, super().wrapper)
     
     @property
     def metadata(self) -> ArenaManifest:

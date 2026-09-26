@@ -15,4 +15,4 @@ from .square import *
 from .vector import *
 
 # Module
-from .table import RegisterHelperTable
+from .table import RegisterValidationWrapperDict

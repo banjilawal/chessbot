@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelValidatorToolkit, ScalarHelperTable
+from assurance import ModelValidatorToolkit, ScalarValidationWrapperDict
 from domain import Scalar, ScalarManifest, ScalarNullGroup, ScalarTypeUnion
 
 
@@ -36,21 +36,21 @@ class ScalarValidatorToolkit(ModelValidatorToolkit[Scalar]):
     def __init__(
             self,
             metadata: Optional[ScalarManifest] | None = None,
-            helper: Optional[ScalarHelperTable] | None = None,
+            wrapper: Optional[ScalarValidationWrapperDict] | None = None,
     ):
         """
         Args:
-            helper: Optional[ScalarManifest]
+            wrapper: Optional[ScalarManifest]
             metadata: Optional[ScalarHelperTable]
         """
         super().__init__(
-            helper=helper or ScalarHelperTable(),
+            wrapper=wrapper or ScalarValidationWrapperDict(),
             metadata=metadata or ScalarManifest(),
         )
     
     @property
-    def helper(self) -> ScalarHelperTable:
-        return cast(ScalarHelperTable, super().helper)
+    def wrapper(self) -> ScalarValidationWrapperDict:
+        return cast(ScalarValidationWrapperDict, super().wrapper)
     
     @property
     def metadata(self) -> ScalarManifest:

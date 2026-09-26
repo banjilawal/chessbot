@@ -12,12 +12,12 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import ModelHelperTable, PrimingValidator
+from assurance import ModelValidationWrapperDict, PrimingValidator
 from domain import Rank
 from microservice import IdentityService
 
 
-class RankHelperTable(ModelHelperTable[Rank]):
+class RankValidationWrapperDict(ModelValidationWrapperDict[Rank]):
     """
     Role:
         - Toolkit

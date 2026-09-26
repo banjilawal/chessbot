@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelValidatorToolkit, ManeuverHelperTable
+from assurance import ModelValidatorToolkit, ManeuverValidationWrapperDict
 from domain import Maneuver, ManeuverManifest, ManeuverNullGroup, ManeuverTypeUnion
 
 
@@ -36,21 +36,21 @@ class ManeuverValidatorToolkit(ModelValidatorToolkit[Maneuver]):
     def __init__(
             self,
             metadata: Optional[ManeuverManifest] | None = None,
-            helper: Optional[ManeuverHelperTable] | None = None,
+            wrapper: Optional[ManeuverValidationWrapperDict] | None = None,
     ):
         """
         Args:
-            helper: Optional[ManeuverManifest]
+            wrapper: Optional[ManeuverManifest]
             metadata: Optional[ManeuverHelperTable]
         """
         super().__init__(
-            helper=helper or ManeuverHelperTable(),
+            wrapper=wrapper or ManeuverValidationWrapperDict(),
             metadata=metadata or ManeuverManifest(),
         )
     
     @property
-    def helper(self) -> ManeuverHelperTable:
-        return cast(ManeuverHelperTable, super().helper)
+    def wrapper(self) -> ManeuverValidationWrapperDict:
+        return cast(ManeuverValidationWrapperDict, super().wrapper)
     
     @property
     def metadata(self) -> ManeuverManifest:

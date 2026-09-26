@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelValidatorToolkit, CoordHelperTable
+from assurance import ModelValidatorToolkit, CoordValidationWrapperDict
 from domain import Coord, CoordManifest, CoordNullGroup, CoordTypeUnion
 
 
@@ -36,21 +36,21 @@ class CoordValidatorToolkit(ModelValidatorToolkit[Coord]):
     def __init__(
             self,
             metadata: Optional[CoordManifest] | None = None,
-            helper: Optional[CoordHelperTable] | None = None,
+            wrapper: Optional[CoordValidationWrapperDict] | None = None,
     ):
         """
         Args:
-            helper: Optional[CoordManifest]
+            wrapper: Optional[CoordManifest]
             metadata: Optional[CoordHelperTable]
         """
         super().__init__(
-            helper=helper or CoordHelperTable(),
+            wrapper=wrapper or CoordValidationWrapperDict(),
             metadata=metadata or CoordManifest(),
         )
     
     @property
-    def helper(self) -> CoordHelperTable:
-        return cast(CoordHelperTable, super().helper)
+    def wrapper(self) -> CoordValidationWrapperDict:
+        return cast(CoordValidationWrapperDict, super().wrapper)
     
     @property
     def metadata(self) -> CoordManifest:

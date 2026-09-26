@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelValidatorToolkit, TeamBlueprintLoader, TeamHelperTable
+from assurance import ModelValidatorToolkit, TeamBlueprintLoader, TeamValidationWrapperDict
 from domain import Team, TeamManifest, TeamNullGroup, TeamTypeUnion
 
 
@@ -37,24 +37,24 @@ class TeamValidatorToolkit(ModelValidatorToolkit[Team]):
     def __init__(
             self,
             metadata: Optional[TeamManifest] | None = None,
-            helper: Optional[TeamHelperTable] | None = None,
+            wrapper: Optional[TeamValidationWrapperDict] | None = None,
             blueprint_loader: Optional[TeamBlueprintLoader] | None = None,
     ):
         """
         Args:
-            helper: Optional[TeamManifest]
+            wrapper: Optional[TeamManifest]
             metadata: Optional[TeamHelperTable]
             blueprint_loader: Optional[TeamBlueprintLoader]
         """
         super().__init__(
-            helper=helper or TeamHelperTable(),
+            wrapper=wrapper or TeamValidationWrapperDict(),
             metadata=metadata or TeamManifest(),
             blueprint_loader=blueprint_loader or TeamBlueprintLoader(),
         )
     
     @property
-    def helper(self) -> TeamHelperTable:
-        return cast(TeamHelperTable, super().helper)
+    def wrapper(self) -> TeamValidationWrapperDict:
+        return cast(TeamValidationWrapperDict, super().wrapper)
     
     @property
     def metadata(self) -> TeamManifest:

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelValidatorToolkit, VectorHelperTable
+from assurance import ModelValidatorToolkit, VectorValidationWrapperDict
 from domain import Vector, VectorManifest, VectorNullGroup, VectorTypeUnion
 
 
@@ -36,21 +36,21 @@ class VectorValidatorToolkit(ModelValidatorToolkit[Vector]):
     def __init__(
             self,
             metadata: Optional[VectorManifest] | None = None,
-            helper: Optional[VectorHelperTable] | None = None,
+            wrapper: Optional[VectorValidationWrapperDict] | None = None,
     ):
         """
         Args:
-            helper: Optional[VectorManifest]
+            wrapper: Optional[VectorManifest]
             metadata: Optional[VectorHelperTable]
         """
         super().__init__(
-            helper=helper or VectorHelperTable(),
+            wrapper=wrapper or VectorValidationWrapperDict(),
             metadata=metadata or VectorManifest(),
         )
     
     @property
-    def helper(self) -> VectorHelperTable:
-        return cast(VectorHelperTable, super().helper)
+    def wrapper(self) -> VectorValidationWrapperDict:
+        return cast(VectorValidationWrapperDict, super().wrapper)
     
     @property
     def metadata(self) -> VectorManifest:

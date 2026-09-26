@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from assurance import ModelBlueprintLoader, ModelHelperTable, ValidatorToolkit
+from assurance import ModelBlueprintLoader, ModelValidationWrapperDict, ValidatorToolkit
 from domain import Model, ModelManifest, ModelNullGroup, ModelTypeUnion
 
 T = TypeVar("T", bound="Model")
@@ -40,25 +40,25 @@ class ModelValidatorToolkit(ValidatorToolkit[T], ABC, Generic[T]):
     
     def __init__(
             self,
-            helper: ModelHelperTable[T],
+            wrapper: ModelValidationWrapperDict[T],
             metadata: ModelManifest[T],
             blueprint_loader: ModelBlueprintLoader[T]
     ):
         """
         Args:
-            helper: HelperTable[T]
+            wrapper: HelperTable[T]
             metadata: ModelManifest[T]
             blueprint_loader: ModelBlueprintLoader[T]
         """
         super().__init__(
-            helper=helper,
+            wrapper=wrapper,
             metadata=metadata,
             blueprint_loader=blueprint_loader,
         )
     
     @property
-    def helper(self) -> ModelHelperTable[T]:
-        return cast(ModelHelperTable[T], super().helper)
+    def wrapper(self) -> ModelValidationWrapperDict[T]:
+        return cast(ModelValidationWrapperDict[T], super().wrapper)
     
     @property
     def metadata(self) -> ModelManifest[T]:

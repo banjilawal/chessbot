@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelValidatorToolkit, SquareHelperTable
+from assurance import ModelValidatorToolkit, SquareValidationWrapperDict
 from domain import Square, SquareManifest, SquareNullGroup, SquareTypeUnion
 
 
@@ -36,21 +36,21 @@ class SquareValidatorToolkit(ModelValidatorToolkit[Square]):
     def __init__(
             self,
             metadata: Optional[SquareManifest] | None = None,
-            helper: Optional[SquareHelperTable] | None = None,
+            wrapper: Optional[SquareValidationWrapperDict] | None = None,
     ):
         """
         Args:
-            helper: Optional[SquareManifest]
+            wrapper: Optional[SquareManifest]
             metadata: Optional[SquareHelperTable]
         """
         super().__init__(
-            helper=helper or SquareHelperTable(),
+            wrapper=wrapper or SquareValidationWrapperDict(),
             metadata=metadata or SquareManifest(),
         )
     
     @property
-    def helper(self) -> SquareHelperTable:
-        return cast(SquareHelperTable, super().helper)
+    def wrapper(self) -> SquareValidationWrapperDict:
+        return cast(SquareValidationWrapperDict, super().wrapper)
     
     @property
     def metadata(self) -> SquareManifest:

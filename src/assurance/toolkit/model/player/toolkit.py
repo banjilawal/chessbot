@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelValidatorToolkit, PlayerHelperTable
+from assurance import ModelValidatorToolkit, PlayerValidationWrapperDict
 from domain import Player, PlayerManifest, PlayerNullGroup, PlayerTypeUnion
 
 
@@ -36,21 +36,21 @@ class PlayerValidatorToolkit(ModelValidatorToolkit[Player]):
     def __init__(
             self,
             metadata: Optional[PlayerManifest] | None = None,
-            helper: Optional[PlayerHelperTable] | None = None,
+            wrapper: Optional[PlayerValidationWrapperDict] | None = None,
     ):
         """
         Args:
-            helper: Optional[PlayerManifest]
+            wrapper: Optional[PlayerManifest]
             metadata: Optional[PlayerHelperTable]
         """
         super().__init__(
-            helper=helper or PlayerHelperTable(),
+            wrapper=wrapper or PlayerValidationWrapperDict(),
             metadata=metadata or PlayerManifest(),
         )
     
     @property
-    def helper(self) -> PlayerHelperTable:
-        return cast(PlayerHelperTable, super().helper)
+    def wrapper(self) -> PlayerValidationWrapperDict:
+        return cast(PlayerValidationWrapperDict, super().wrapper)
     
     @property
     def metadata(self) -> PlayerManifest:

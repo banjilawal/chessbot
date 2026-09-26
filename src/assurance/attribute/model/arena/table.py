@@ -12,13 +12,13 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import ModelHelperTable, PrimingValidator
-from client import GameValidationResponseService, PlayerValidationResponseService
+from assurance import ModelValidationWrapperDict, PrimingValidator
+from client import GameValidationResponseWrapper, PlayerValidationResponseWrapper
 from domain import Arena
 from microservice import IdentityService
 
 
-class ArenaHelperTable(ModelHelperTable[Arena]):
+class ArenaValidationWrapperDict(ModelValidationWrapperDict[Arena]):
     """
     Role:
         - Toolkit
@@ -36,13 +36,13 @@ class ArenaHelperTable(ModelHelperTable[Arena]):
     Super Class:
         ModelHelperTable
     """
-    _game_client: GameValidationResponseService
-    _player_client: PlayerValidationResponseService
+    _game_client: GameValidationResponseWrapper
+    _player_client: PlayerValidationResponseWrapper
     
     def __init__(
             self,
-            game_client: Optional[GameValidationResponseService] | None = None,
-            player_client: Optional[PlayerValidationResponseService] | None = None,
+            game_client: Optional[GameValidationResponseWrapper] | None = None,
+            player_client: Optional[PlayerValidationResponseWrapper] | None = None,
             identity_service: Optional[IdentityService] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
     ):
@@ -57,13 +57,13 @@ class ArenaHelperTable(ModelHelperTable[Arena]):
             identity_service=identity_service,
             priming_validator=priming_validator,
         )
-        self._game_client = game_client or GameValidationResponseService()
-        self._player_client = player_client or PlayerValidationResponseService()
+        self._game_client = game_client or GameValidationResponseWrapper()
+        self._player_client = player_client or PlayerValidationResponseWrapper()
         
     @property
-    def game_client(self) -> GameValidationResponseService:
+    def game_client(self) -> GameValidationResponseWrapper:
         return self._game_client
     
     @property
-    def player_client(self) -> PlayerValidationResponseService:
+    def player_client(self) -> PlayerValidationResponseWrapper:
         return self._player_client

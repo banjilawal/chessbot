@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import ModelHelperTable, NumberValidator, PrimingValidator
+from assurance import ModelValidationWrapperDict, NumberValidator, PrimingValidator
 from domain import Vector
 
 
-class VectorHelperTable(ModelHelperTable[Vector]):
+class VectorValidationWrapperDict(ModelValidationWrapperDict[Vector]):
     """
     Role:
         - Toolkit

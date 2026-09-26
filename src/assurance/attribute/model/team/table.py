@@ -12,49 +12,49 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import ModelHelperTable
-from client import BoardValidationResponseService, PlayerValidationResponseService
+from assurance import ModelValidationWrapperDict
+from responseWrapper import BoardValidationResponseWrapper, PlayerValidationResponseWrapper
 from domain import Team
 
 
-class TeamHelperTable(ModelHelperTable[Team]):
+class TeamValidationWrapperDict(ModelValidationWrapperDict[Team]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Bundles validatorClients a TeamValidator needs.
+        1.  Bundles validatorResponseWrappers a TeamValidator needs.
         
     Attributes:
-        board_client: BoardValidatorClient
-        owner_client: PlayerValidatorClient
+        board: BoardValidatorResponseWrapper
+        owner: PlayerValidatorResponseWrapper
 
     Provides:
 
     Super Class:
         ModelHelperTable
     """
-    _board_client: BoardValidationResponseService
-    _owner_client: PlayerValidationResponseService
+    _board: BoardValidationResponseWrapper
+    _owner: PlayerValidationResponseWrapper
     
     def __init__(
             self,
-            board_client: Optional[BoardValidationResponseService] | None = None,
-            owner_client: Optional[PlayerValidationResponseService] | None = None,
+            board: Optional[BoardValidationResponseWrapper] | None = None,
+            owner: Optional[PlayerValidationResponseWrapper] | None = None,
     ):
         """
         Args:
-            board_client: Optional[BoardValidatorClient]
-            owner_client: Optional[PlayerValidatorClient]
+            board: Optional[BoardValidatorResponseWrapper]
+            owner: Optional[PlayerValidatorResponseWrapper]
         """
         super().__init__()
-        self._board_client = board_client or BoardValidationResponseService()
-        self._owner_client = owner_client or PlayerValidationResponseService()
+        self._board = board or BoardValidationResponseWrapper()
+        self._owner = owner or PlayerValidationResponseWrapper()
     
     @property
-    def board_client(self) -> BoardValidationResponseService:
-        return self._board_client
+    def board(self) -> BoardValidationResponseWrapper:
+        return self._board
     
     @property
-    def owner_client(self) -> PlayerValidationResponseService:
-        return self._owner_client
+    def owner(self) -> PlayerValidationResponseWrapper:
+        return self._owner

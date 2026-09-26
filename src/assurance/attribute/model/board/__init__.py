@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Module
-from .table import BoardHelperTable
+from .table import BoardValidationWrapperDict

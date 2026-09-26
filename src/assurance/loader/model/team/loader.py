@@ -80,7 +80,7 @@ class TeamBlueprintLoader(ModelBlueprintLoader[Team]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is null or the rong type.
-        priming_result = self.toolkit.helper.priming_validator.execute(
+        priming_result = self.toolkit.wrapper.priming_validator.execute(
             candidate=candidate,
             target_model=TeamValidationRequest,
             null_exception=TeamValidationRequestNullException(),
@@ -100,7 +100,7 @@ class TeamBlueprintLoader(ModelBlueprintLoader[Team]):
         request = cast(Type[TeamValidationRequest], priming_result.payload)
         
         # Handle the case that request.item is the wrong carrier type.
-        carrier_validation = self.toolkit.helper.priming_validator.execute(
+        carrier_validation = self.toolkit.wrapper.priming_validator.execute(
             candidate=request.item,
             target_model=self.toolkit.metadata.types.carrier,
             null_exception=self.toolkit.metadata.nulls.carrier,

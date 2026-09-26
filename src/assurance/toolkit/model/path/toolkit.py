@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelValidatorToolkit, PathHelperTable
+from assurance import ModelValidatorToolkit, PathValidationWrapperDict
 from domain import Path, PathManifest, PathNullGroup, PathTypeUnion
 
 
@@ -36,21 +36,21 @@ class PathValidatorToolkit(ModelValidatorToolkit[Path]):
     def __init__(
             self,
             metadata: Optional[PathManifest] | None = None,
-            helper: Optional[PathHelperTable] | None = None,
+            wrapper: Optional[PathValidationWrapperDict] | None = None,
     ):
         """
         Args:
-            helper: Optional[PathManifest]
+            wrapper: Optional[PathManifest]
             metadata: Optional[PathHelperTable]
         """
         super().__init__(
-            helper=helper or PathHelperTable(),
+            wrapper=wrapper or PathValidationWrapperDict(),
             metadata=metadata or PathManifest(),
         )
     
     @property
-    def helper(self) -> PathHelperTable:
-        return cast(PathHelperTable, super().helper)
+    def wrapper(self) -> PathValidationWrapperDict:
+        return cast(PathValidationWrapperDict, super().wrapper)
     
     @property
     def metadata(self) -> PathManifest:

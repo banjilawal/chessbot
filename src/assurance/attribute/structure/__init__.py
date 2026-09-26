@@ -13,4 +13,4 @@ version: 0.0.2
 from .register import *
 
 # Module
-from .table import StructureHelperTable
+from .table import StructureValidationWrapperDict

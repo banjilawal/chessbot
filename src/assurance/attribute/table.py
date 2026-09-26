@@ -20,7 +20,7 @@ from microservice import IdentityService
 T = TypeVar("T")
 
 
-class AttributeHelperTable(ABC, Generic[T]):
+class ValidationWrapperDict(ABC, Generic[T]):
     """
     Role:
         - Toolkit

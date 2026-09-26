@@ -13,7 +13,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar
 
-from assurance import AttributeHelperTable, NumberValidator, PrimingValidator
+from assurance import ValidationWrapperDict, NumberValidator, PrimingValidator
 from authorization import BlueprintIdExtractor
 from domain import Model
 from microservice import IdentityService
@@ -21,7 +21,7 @@ from microservice import IdentityService
 T = TypeVar("T", bound="Model")
 
 
-class ModelHelperTable(AttributeHelperTable[T], ABC, Generic[T]):
+class ModelValidationWrapperDict(ValidationWrapperDict[T], ABC, Generic[T]):
     """
     Role:
         - Toolkit

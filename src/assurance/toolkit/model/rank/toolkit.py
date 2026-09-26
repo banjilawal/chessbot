@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelValidatorToolkit, RankHelperTable
+from assurance import ModelValidatorToolkit, RankValidationWrapperDict
 from domain import Rank, RankManifest, RankNullGroup, RankTypeUnion
 
 
@@ -36,21 +36,21 @@ class RankValidatorToolkit(ModelValidatorToolkit[Rank]):
     def __init__(
             self,
             metadata: Optional[RankManifest] | None = None,
-            helper: Optional[RankHelperTable] | None = None,
+            wrapper: Optional[RankValidationWrapperDict] | None = None,
     ):
         """
         Args:
-            helper: Optional[RankManifest]
+            wrapper: Optional[RankManifest]
             metadata: Optional[RankHelperTable]
         """
         super().__init__(
-            helper=helper or RankHelperTable(),
+            wrapper=wrapper or RankValidationWrapperDict(),
             metadata=metadata or RankManifest(),
         )
     
     @property
-    def helper(self) -> RankHelperTable:
-        return cast(RankHelperTable, super().helper)
+    def wrapper(self) -> RankValidationWrapperDict:
+        return cast(RankValidationWrapperDict, super().wrapper)
     
     @property
     def metadata(self) -> RankManifest:

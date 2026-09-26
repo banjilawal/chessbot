@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelValidatorToolkit, BoardHelperTable
+from assurance import ModelValidatorToolkit, BoardValidationWrapperDict
 from domain import Board, BoardManifest, BoardNullGroup, BoardTypeUnion
 
 
@@ -36,21 +36,21 @@ class BoardValidatorToolkit(ModelValidatorToolkit[Board]):
     def __init__(
             self,
             metadata: Optional[BoardManifest] | None = None,
-            helper: Optional[BoardHelperTable] | None = None,
+            wrapper: Optional[BoardValidationWrapperDict] | None = None,
     ):
         """
         Args:
-            helper: Optional[BoardManifest]
+            wrapper: Optional[BoardManifest]
             metadata: Optional[BoardHelperTable]
         """
         super().__init__(
-            helper=helper or BoardHelperTable(),
+            wrapper=wrapper or BoardValidationWrapperDict(),
             metadata=metadata or BoardManifest(),
         )
     
     @property
-    def helper(self) -> BoardHelperTable:
-        return cast(BoardHelperTable, super().helper)
+    def wrapper(self) -> BoardValidationWrapperDict:
+        return cast(BoardValidationWrapperDict, super().wrapper)
     
     @property
     def metadata(self) -> BoardManifest:

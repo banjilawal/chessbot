@@ -35,7 +35,7 @@ class SquareRegisterValidatorToolkit(RegisterValidatorToolkit[SquareRegister]):
     
     def __init__(
             self,
-            helper: Optional[SquareRegisterHelperTable] | None = None,
+            wrapper: Optional[SquareRegisterHelperTable] | None = None,
             metadata: Optional[SquareRegisterManifest] | None = None,
     ):
         """
@@ -43,13 +43,13 @@ class SquareRegisterValidatorToolkit(RegisterValidatorToolkit[SquareRegister]):
             metadata: Optional[SquareRegisterManifest]
         """
         super().__init__(
-            helper=helper or SquareRegisterHelperTable(),
+            wrapper=wrapper or SquareRegisterHelperTable(),
             metadata=metadata or SquareRegisterManifest(),
         )
     
     @property
-    def helper(self) -> SquareRegisterHelperTable:
-        return cast(SquareRegisterHelperTable, super().helper)
+    def wrapper(self) -> SquareRegisterHelperTable:
+        return cast(SquareRegisterHelperTable, super().wrapper)
     
     @property
     def metadata(self) -> SquareRegisterManifest:
