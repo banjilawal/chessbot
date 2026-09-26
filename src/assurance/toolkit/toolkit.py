@@ -10,10 +10,12 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, TypeVar
+from typing import Generic, Optional, TypeVar
 
-from assurance import AttributeHelperTable
+from assurance import AttributeHelperTable, CommonValidatorToolkit, NumberValidator, PrimingValidator
+from authorization import BlueprintIdExtractor
 from domain import NullExceptionGroup, ObjectManifest, TypeUnion
+from microservice import IdentityService
 
 T = TypeVar("T")
 
@@ -28,6 +30,9 @@ class ValidatorToolkit(ABC, Generic[T]):
             needs to run safety checks on a validation candidate.
 
     Attributes:
+        metadata: ObjectManifest[T]
+        helper: AttributeHelperTable[T]
+        common: CommonValidatorToolkit
 
     Provides:
 
@@ -35,19 +40,23 @@ class ValidatorToolkit(ABC, Generic[T]):
     """
     _metadata: ObjectManifest[T]
     _helper: AttributeHelperTable[T]
+    _common: CommonValidatorToolkit
     
     def __init__(
             self,
             helper: AttributeHelperTable[T],
             metadata: ObjectManifest[T],
+            common: Optional[CommonValidatorToolkit] | None = None,
     ):
         """
         Args:
             helper: HelperTable[T]
             metadata: ObjectManifest[T]
+            common: Optional[CommonValidatorToolkit]
         """
         self._helper = helper
         self._metadata = metadata
+        self._common = common or CommonValidatorToolkit()
     
     @property
     def helper(self) -> AttributeHelperTable[T]:
@@ -64,3 +73,19 @@ class ValidatorToolkit(ABC, Generic[T]):
     @property
     def metadata(self) -> ObjectManifest[T]:
         return self._metadata
+    
+    @property
+    def identity_service(self) -> IdentityService:
+        return self._common.identity_service
+    
+    @property
+    def number_validator(self) -> NumberValidator:
+        return self._common.number_validator
+    
+    @property
+    def priming_validator(self) -> PrimingValidator:
+        return self._common.priming_validator
+    
+    @property
+    def blueprint_id_extractor(self) -> BlueprintIdExtractor:
+        return self._common.blueprint_id_extractor

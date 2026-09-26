@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from assurance import ModelHelperTable, ValidatorToolkit
+from assurance import ModelBlueprintLoader, ModelHelperTable, ValidatorToolkit
 from domain import Model, ModelManifest, ModelNullGroup, ModelTypeUnion
 
 T = TypeVar("T", bound="Model")
@@ -29,6 +29,7 @@ class ModelValidatorToolkit(ValidatorToolkit[T], ABC, Generic[T]):
     Attributes:
         helper: HelperTable[T]
         metadata: ModelManifest[T]
+        blueprint_loader: ModelBlueprintLoader[T]
 
     Provides:
 
@@ -41,17 +42,31 @@ class ModelValidatorToolkit(ValidatorToolkit[T], ABC, Generic[T]):
             self,
             helper: ModelHelperTable[T],
             metadata: ModelManifest[T],
+            blueprint_loader: ModelBlueprintLoader[T]
     ):
         """
         Args:
             helper: HelperTable[T]
             metadata: ModelManifest[T]
+            blueprint_loader: ModelBlueprintLoader[T]
         """
-        super().__init__(helper=helper, metadata=metadata)
+        super().__init__(
+            helper=helper,
+            metadata=metadata,
+            blueprint_loader=blueprint_loader,
+        )
     
     @property
     def helper(self) -> ModelHelperTable[T]:
         return cast(ModelHelperTable[T], super().helper)
+    
+    @property
+    def metadata(self) -> ModelManifest[T]:
+        return cast(ModelManifest[T], super().metadata)
+    
+    @property
+    def blueprint_loader(self) -> ModelBlueprintLoader[T]:
+        return cast(ModelBlueprintLoader[T], super().blueprint_loader)
     
     @property
     def nulls(self) -> ModelNullGroup[T]:
@@ -61,6 +76,3 @@ class ModelValidatorToolkit(ValidatorToolkit[T], ABC, Generic[T]):
     def types(self) -> ModelTypeUnion[T]:
         return self.metadata.types
     
-    @property
-    def metadata(self) -> ModelManifest[T]:
-        return cast(ModelManifest[T], super().metadata)

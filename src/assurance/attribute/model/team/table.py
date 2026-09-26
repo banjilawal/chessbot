@@ -28,7 +28,6 @@ class TeamHelperTable(ModelHelperTable[Team]):
     Attributes:
         board_client: BoardValidatorClient
         owner_client: PlayerValidatorClient
-        blueprint_loader: TeamBlueprintLoader
 
     Provides:
 
@@ -37,7 +36,6 @@ class TeamHelperTable(ModelHelperTable[Team]):
     """
     _board_client: BoardValidatorClient
     _owner_client: PlayerValidatorClient
-    _blueprint_loader: TeamBlueprintLoader
     
     def __init__(
             self,
