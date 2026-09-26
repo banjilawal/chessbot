@@ -1,7 +1,7 @@
-# src/transit/dispatcher/response/dispatcher.py
+# src/exchange/wrapper/response/wrapper.py
 
 """
-Module: transit.dispatcher.response.dispatcher
+Module: exchange.wrapper.response.wrapper
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -12,40 +12,40 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
-from exchange import Request
+from artifcat import Result
+from exchange import Request, Responder
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Result")
 
-class ResponseDispatcher(ABC, Generic[T]):
+class ResponseWrapper(ABC, Generic[T]):
     """
     Role
-        -   Messaging 
+        -   Wrapper
 
     Responsibilities:
-        1.  Interface for Responder
+        1.  Extract the payload from a Response.result attribute
 
     Attributes:
-        responsder: Responsder[T]
+        responder: Responder[T]
 
     Provides:
         -   def execute(self, request[T]) -> Any
 
     Super Class:
-        Dispatcher
     """
-    _responder: Responder
+    _responder: Responder[T]
     
-    def __init__(self, responder: Responsder[T]):
+    def __init__(self, responder: Responder[T]):
         """
         Args:
-            responder: Responsder[T]
+            responder: Responder[T]
         """
         self._responder = responder
         
     @property
-    def responsder(self) ->Responsder[T]:
-        return self._responsder
+    def responder(self) ->Responder[T]:
+        return self._responder
     
     @abstractmethod
     @LoggingLevelRouter.monitor
