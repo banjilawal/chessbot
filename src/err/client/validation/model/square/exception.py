@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidatorResponseServiceException
+from err import ModelValidationResponderException
 
 __all__ = [
     # ======================# SQUARE_VALIDATION_CLIENT_CLIENT_ERROR #======================#
-    "SquareValidatorResponseServiceException",
+    "SquareValidatorResponseServiceExceptionValidation",
 ]
 
 # ======================# SQUARE_VALIDATION_CLIENT_CLIENT_ERROR #======================#
-class SquareValidatorResponseServiceException(ModelValidatorResponseServiceException):
+class SquareValidatorResponseServiceExceptionValidation(ModelValidationResponderException):
     """
     Role:
         - Error Tracing

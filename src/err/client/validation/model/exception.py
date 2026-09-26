@@ -17,11 +17,11 @@ from err import ValidatorResponseServiceException
 
 __all__ = [
     # ======================# MODEL_VALIDATION_CLIENT_CLIENT_ERROR #======================#
-    "ModelValidatorResponseServiceException",
+    "ModelValidationResponderException",
 ]
 
 # ======================# MODEL_VALIDATION_CLIENT_CLIENT_ERROR #======================#
-class ModelValidatorResponseServiceException(ValidatorResponseServiceException):
+class ModelValidationResponderException(ValidatorResponseServiceException):
     """
     Role:
         - Error Tracing

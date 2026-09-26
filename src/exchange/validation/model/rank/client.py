@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import ValidationResult, RankValidationResponse
 from exchange import ModelValidationResponseService, RankValidationRequest
 from domain import Rank
-from err import RankValidatorResponseServiceException
+from err import RankValidatorResponseServiceExceptionValidation
 from transit import RankCarrier, RankValidationDispatcher
 from util import LoggingLevelRouter
 
@@ -82,11 +82,11 @@ class RankValidationResponseService(ModelValidationResponseService[Rank]):
             return RankValidationResponse.failure(
                 request=request,
                 result=result,
-                exception=RankValidatorResponseServiceException(
+                exception=RankValidatorResponseServiceExceptionValidation(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=RankValidatorResponseServiceException.MSG,
-                    err_code=RankValidatorResponseServiceException.ERR_CODE,
+                    msg=RankValidatorResponseServiceExceptionValidation.MSG,
+                    err_code=RankValidatorResponseServiceExceptionValidation.ERR_CODE,
                     ex=result.exception,
                 ),
             )

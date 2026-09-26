@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import ValidationResult, BoardValidationResponse
 from exchange import ModelValidationResponseService, BoardValidationRequest
 from domain import Board
-from err import BoardValidatorResponseServiceException
+from err import BoardValidatorResponseServiceExceptionValidation
 from transit import BoardCarrier, BoardValidationDispatcher
 from util import LoggingLevelRouter
 
@@ -82,11 +82,11 @@ class BoardValidationResponseService(ModelValidationResponseService[Board]):
             return BoardValidationResponse.failure(
                 request=request,
                 result=result,
-                exception=BoardValidatorResponseServiceException(
+                exception=BoardValidatorResponseServiceExceptionValidation(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=BoardValidatorResponseServiceException.MSG,
-                    err_code=BoardValidatorResponseServiceException.ERR_CODE,
+                    msg=BoardValidatorResponseServiceExceptionValidation.MSG,
+                    err_code=BoardValidatorResponseServiceExceptionValidation.ERR_CODE,
                     ex=result.exception,
                 ),
             )

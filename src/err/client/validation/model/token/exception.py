@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidatorResponseServiceException
+from err import ModelValidationResponderException
 
 __all__ = [
     # ======================# TOKEN_VALIDATION_CLIENT_CLIENT_ERROR #======================#
-    "TokenValidatorResponseServiceException",
+    "TokenValidatorResponseServiceExceptionValidation",
 ]
 
 # ======================# TOKEN_VALIDATION_CLIENT_CLIENT_ERROR #======================#
-class TokenValidatorResponseServiceException(ModelValidatorResponseServiceException):
+class TokenValidatorResponseServiceExceptionValidation(ModelValidationResponderException):
     """
     Role:
         - Error Tracing

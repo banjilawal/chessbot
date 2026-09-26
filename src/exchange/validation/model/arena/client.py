@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import ValidationResult, ArenaValidationResponse
 from exchange import ModelValidationResponseService, ArenaValidationRequest
 from domain import Arena
-from err import ArenaValidatorResponseServiceException
+from err import ArenaValidatorResponseServiceExceptionValidation
 from transit import ArenaCarrier, ArenaValidationDispatcher
 from util import LoggingLevelRouter
 
@@ -82,11 +82,11 @@ class ArenaValidationResponseService(ModelValidationResponseService[Arena]):
             return ArenaValidationResponse.failure(
                 request=request,
                 result=result,
-                exception=ArenaValidatorResponseServiceException(
+                exception=ArenaValidatorResponseServiceExceptionValidation(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ArenaValidatorResponseServiceException.MSG,
-                    err_code=ArenaValidatorResponseServiceException.ERR_CODE,
+                    msg=ArenaValidatorResponseServiceExceptionValidation.MSG,
+                    err_code=ArenaValidatorResponseServiceExceptionValidation.ERR_CODE,
                     ex=result.exception,
                 ),
             )

@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidatorResponseServiceException
+from err import ModelValidationResponderException
 
 __all__ = [
     # ======================# GAME_VALIDATION_CLIENT_CLIENT_ERROR #======================#
-    "GameValidatorResponseServiceException",
+    "GameValidatorResponseServiceExceptionValidation",
 ]
 
 # ======================# GAME_VALIDATION_CLIENT_CLIENT_ERROR #======================#
-class GameValidatorResponseServiceException(ModelValidatorResponseServiceException):
+class GameValidatorResponseServiceExceptionValidation(ModelValidationResponderException):
     """
     Role:
         - Error Tracing

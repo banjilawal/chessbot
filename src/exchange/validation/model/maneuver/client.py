@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import ValidationResult, ManeuverValidationResponse
 from exchange import ModelValidationResponseService, ManeuverValidationRequest
 from domain import Maneuver
-from err import ManeuverValidatorResponseServiceException
+from err import ManeuverValidatorResponseServiceExceptionValidation
 from transit import ManeuverCarrier, ManeuverValidationDispatcher
 from util import LoggingLevelRouter
 
@@ -82,11 +82,11 @@ class ManeuverValidationResponseService(ModelValidationResponseService[Maneuver]
             return ManeuverValidationResponse.failure(
                 request=request,
                 result=result,
-                exception=ManeuverValidatorResponseServiceException(
+                exception=ManeuverValidatorResponseServiceExceptionValidation(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ManeuverValidatorResponseServiceException.MSG,
-                    err_code=ManeuverValidatorResponseServiceException.ERR_CODE,
+                    msg=ManeuverValidatorResponseServiceExceptionValidation.MSG,
+                    err_code=ManeuverValidatorResponseServiceExceptionValidation.ERR_CODE,
                     ex=result.exception,
                 ),
             )

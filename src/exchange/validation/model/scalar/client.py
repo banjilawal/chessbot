@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import ValidationResult, ScalarValidationResponse
 from exchange import ModelValidationResponseService, ScalarValidationRequest
 from domain import Scalar
-from err import ScalarValidatorResponseServiceException
+from err import ScalarValidatorResponseServiceExceptionValidation
 from transit import ScalarCarrier, ScalarValidationDispatcher
 from util import LoggingLevelRouter
 
@@ -82,11 +82,11 @@ class ScalarValidationResponseService(ModelValidationResponseService[Scalar]):
             return ScalarValidationResponse.failure(
                 request=request,
                 result=result,
-                exception=ScalarValidatorResponseServiceException(
+                exception=ScalarValidatorResponseServiceExceptionValidation(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ScalarValidatorResponseServiceException.MSG,
-                    err_code=ScalarValidatorResponseServiceException.ERR_CODE,
+                    msg=ScalarValidatorResponseServiceExceptionValidation.MSG,
+                    err_code=ScalarValidatorResponseServiceExceptionValidation.ERR_CODE,
                     ex=result.exception,
                 ),
             )

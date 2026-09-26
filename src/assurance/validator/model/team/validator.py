@@ -18,7 +18,7 @@ from domain import (
     TeamBlueprint, TeamValidationRequest
 )
 from err import (
-    ArchetypeNullException, BoardValidatorResponseServiceException, EmptyBoardCarrierException,
+    ArchetypeNullException, BoardValidatorResponseServiceExceptionValidation, EmptyBoardCarrierException,
     EmptyPlayerCarrierException,
     EmptyTeamCarrierException, TeamValidationRequestNullException, TeamValidatorException
 )
@@ -285,11 +285,11 @@ class TeamValidator(ModelValidator[Team]):
         if not response.valid_model:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                BoardValidatorResponseServiceException(
+                BoardValidatorResponseServiceExceptionValidation(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=BoardValidatorResponseServiceException.MSG,
-                    err_code=BoardValidatorResponseServiceException.ERR_CODE,
+                    msg=BoardValidatorResponseServiceExceptionValidation.MSG,
+                    err_code=BoardValidatorResponseServiceExceptionValidation.ERR_CODE,
                     ex=response.exception,
                 )
             )

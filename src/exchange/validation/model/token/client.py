@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import ValidationResult, TokenValidationResponse
 from exchange import ModelValidationResponseService, TokenValidationRequest
 from domain import Token
-from err import TokenValidatorResponseServiceException
+from err import TokenValidatorResponseServiceExceptionValidation
 from transit import TokenCarrier, TokenValidationDispatcher
 from util import LoggingLevelRouter
 
@@ -82,11 +82,11 @@ class TokenValidationResponseService(ModelValidationResponseService[Token]):
             return TokenValidationResponse.failure(
                 request=request,
                 result=result,
-                exception=TokenValidatorResponseServiceException(
+                exception=TokenValidatorResponseServiceExceptionValidation(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenValidatorResponseServiceException.MSG,
-                    err_code=TokenValidatorResponseServiceException.ERR_CODE,
+                    msg=TokenValidatorResponseServiceExceptionValidation.MSG,
+                    err_code=TokenValidatorResponseServiceExceptionValidation.ERR_CODE,
                     ex=result.exception,
                 ),
             )
