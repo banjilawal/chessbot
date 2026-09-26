@@ -1,7 +1,7 @@
-# src/searcher/registry/worker/client/searcher.py
+# src/searcher/registry/worker/exchange/searcher.py
 
 """
-Module: searcher.registry.worker.client.search
+Module: searcher.registry.worker.exchange.search
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,26 +12,26 @@ from __future__ import annotations
 from typing import Dict, List
 
 from transit.controller import WorkerRegistryController
-from err import WorkerRegistryClientSearchException
+from err import WorkerRegistryExchangeSearchException
 from artifcat import SearchResult
-from client.model import WorkerRegistry
+from exchange.model import WorkerRegistry
 from util import LoggingLevelRouter
 from operation import Operator, RegistryEntryNameValidator
 
 
-class WorkerRegistryClientSearch(Dict[str, Operator]):
+class WorkerRegistryExchangeSearch(Dict[str, Operator]):
     """
     Role
         - Search Worker
 
     Responsibilities:
-        1.   Search the WorkerRegistry for items in a client.
+        1.   Search the WorkerRegistry for items in a exchange.
 
     Attributes:
 
     Provides:
         -   def execute(
-                    client: str,
+                    exchange: str,
                     registry: WorkerRegistry,
                     key_name_validator: RegistryEntryNameValidator,
             ) -> SearchResult[List[Dict[str, Operation]]]:
@@ -39,7 +39,7 @@ class WorkerRegistryClientSearch(Dict[str, Operator]):
     Super Class:
         WorkerRegistryOperation
     """
-    NAME = "worker_registry_client_search"
+    NAME = "worker_registry_exchange_search"
     
     @classmethod
     @LoggingLevelRouter.monitor
@@ -54,9 +54,9 @@ class WorkerRegistryClientSearch(Dict[str, Operator]):
 
         Action:
             1.   Send an exception chain in the SearchResult if the name is not a valid String.
-            2.  Otherwise, search the WorkerRegistry for the client.
-                    - If the client does not exist, send an empty SearchResult.
-                    - Else, send the client's items in a SearchResult.
+            2.  Otherwise, search the WorkerRegistry for the exchange.
+                    - If the exchange does not exist, send an empty SearchResult.
+                    - Else, send the exchange's items in a SearchResult.
         Args:
             name: str
             registry: WorkerRegistry   
@@ -64,7 +64,7 @@ class WorkerRegistryClientSearch(Dict[str, Operator]):
         Returns:
             SearchResult[List[Operation]]
         Raises:
-            WorkerRegistryClientSearchException
+            WorkerRegistryExchangeSearchException
         """
         method = f"{cls.__name__}.execute"
         
@@ -72,26 +72,26 @@ class WorkerRegistryClientSearch(Dict[str, Operator]):
         if key_name_validator is None:
             key_name_validator = RegistryEntryNameValidator()
         
-        # Handle the case that client is not a valid String.
+        # Handle the case that exchange is not a valid String.
         search_key_validation_result = key_name_validator.execute(candidates=[name], )
         if search_key_validation_result.is_failure:
             # Send the exception chain on failure.
             SearchResult.failure(
-                WorkerRegistryClientSearchException(
+                WorkerRegistryExchangeSearchException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=WorkerRegistryClientSearchException.MSG,
-                    err_code=WorkerRegistryClientSearchException.ERR_CODE,
+                    msg=WorkerRegistryExchangeSearchException.MSG,
+                    err_code=WorkerRegistryExchangeSearchException.ERR_CODE,
                     ex=search_key_validation_result.exception,
                 )
             )
-        # Send and empty result if the client does not exist.
-        if name.upper() not in registry.clients:
+        # Send and empty result if the exchange does not exist.
+        if name.upper() not in registry.exchanges:
             return SearchResult.empty()
         
-        # --- Otherwise, return the client's items in the work product. ---#
+        # --- Otherwise, return the exchange's items in the work product. ---#
         workers = registry.entries[name.upper()]
         return SearchResult.success([workers])
 
 # --- FINALLY: REGISTER THE OPERATION ---#
-WorkerRegistryController.register_worker(worker=WorkerRegistryClientSearch)
+WorkerRegistryController.register_worker(worker=WorkerRegistryExchangeSearch)

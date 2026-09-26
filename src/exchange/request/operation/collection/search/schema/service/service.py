@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import List
 
 from system import LoggingLevelRouter, SearchMicroservice, SearchResult
-from client.model import (
+from exchange.model import (
     Schema, SchemaContextService, SchemaQuery, SchemaQueryService, SchemaSearchResourceHost,
     SchemaSearchRouter, SchemaSearchServiceException
 )
@@ -100,7 +100,7 @@ class SchemaLookupService(SearchMicroservice[Schema]):
                     ex=search_result.exception
                 )
             )
-        # --- Forward the work product to the client. ---#
+        # --- Forward the work product to the exchange. ---#
         return search_result
     
     

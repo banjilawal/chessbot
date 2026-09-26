@@ -1,13 +1,13 @@
-# src/client/request/crud/insert/chain/__init__.py
+# src/exchange/request/crud/insert/chain/__init__.py
 
 """
-Module: client.request.crud.insert.chain.__init__
+Module: exchange.request.crud.insert.chain.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== CLIENT.REQUEST.CRUD.INSERT.CHAIN PACKAGE ===========#
+# =========== EXCHANGE.REQUEST.CRUD.INSERT.CHAIN PACKAGE ===========#
 
 # Packages
 

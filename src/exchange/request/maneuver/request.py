@@ -1,7 +1,7 @@
-# src/client/request/maneuver/request.py
+# src/exchange/request/maneuver/request.py
 
 """
-Module: client.request.maneuver.request
+Module: exchange.request.maneuver.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -10,8 +10,8 @@ version: 0.0.2
 from __future__ import annotations
 
 
-from client.model import Square, Token
-from client.request.maneuver.request import Request
+from exchange.model import Square, Token
+from exchange.request.maneuver.request import Request
 
 
 class ManeuverRequest(Request):

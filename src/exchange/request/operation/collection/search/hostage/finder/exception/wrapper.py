@@ -91,7 +91,7 @@ __all__ = [
 ]
 
 from system import SearchException
-from client.model import HostageException
+from exchange.model import HostageException
 
 
 # ======================# HOSTAGE_SEARCH_FAILURE #======================#

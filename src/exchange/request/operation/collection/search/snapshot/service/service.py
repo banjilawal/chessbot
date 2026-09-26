@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from system import QueryService
-from client.model import SnapshotContext
+from exchange.model import SnapshotContext
 
 
 class SnapshotQueryService(QueryService[SnapshotContext]):

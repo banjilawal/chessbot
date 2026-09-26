@@ -1,7 +1,7 @@
-# src/client/request/operation/collection/deletion/stack.token.request.py
+# src/exchange/request/operation/collection/deletion/stack.token.request.py
 
 """
-Module: client.request.operation.collection.deletion.stack.token.request
+Module: exchange.request.operation.collection.deletion.stack.token.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from typing import cast
 
 from authorization import StackPopRequest
 from collection import TokenStackService
-from client.model import Token
+from exchange.model import Token
 
 
 class TokenStackPopRequest(StackPopRequest[Token]):
@@ -57,5 +57,5 @@ class TokenStackPopRequest(StackPopRequest[Token]):
         if other is None: return False
         if isinstance(other, TokenStackPopRequest):
             request = cast(TokenStackPopRequest, other)
-            return self.id == client.request.id
+            return self.id == exchange.request.id
         return False

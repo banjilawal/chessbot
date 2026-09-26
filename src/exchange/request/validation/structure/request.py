@@ -1,7 +1,7 @@
-# src/client/request/validation/structure/request.py
+# src/exchange/request/validation/structure/request.py
 
 """
-Module: client.request.validation.structure.request
+Module: exchange.request.validation.structure.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any
 
-from client import Structure, ValidationRequest
+from exchange import Structure, ValidationRequest
 
 class StructureValidationRequest(ValidationRequest[Structure]):
     """

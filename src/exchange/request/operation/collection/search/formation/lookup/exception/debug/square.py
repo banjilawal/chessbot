@@ -7,7 +7,7 @@ Created: 2025-09-08
 version: 1.0.0
 """
 
-from client.model import FormationException
+from exchange.model import FormationException
 from system import BoundsException
 
 __all__ = [

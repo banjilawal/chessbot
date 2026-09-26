@@ -1,7 +1,7 @@
-# src/client/request/operation/collection/insertion/chain.request.py
+# src/exchange/request/operation/collection/insertion/chain.request.py
 
 """
-Module: client.request.operation.collection.insertion.chain.request
+Module: exchange.request.operation.collection.insertion.chain.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -14,7 +14,7 @@ from typing import Generic, TypeVar, cast
 
 
 from collection import Chain
-from client.request import InsertionRequest
+from exchange.request import InsertionRequest
 
 T = TypeVar("T", bound="Node")
 
@@ -61,5 +61,5 @@ class AddNodeRequest(InsertionRequest[Chain], ABC, Generic[T]):
         if other is None: return False
         if isinstance(other, AddNodeRequest):
             request = cast(AddNodeRequest, other)
-            return self.id == client.request.id
+            return self.id == exchange.request.id
         return False

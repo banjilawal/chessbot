@@ -13,7 +13,7 @@ from typing import List
 
 from err import WorkerRegistryNameSearchException
 from artifcat import SearchResult
-from client.model import WorkerRegistry
+from exchange.model import WorkerRegistry
 from util import LoggingLevelRouter
 from transit.controller import WorkerRegistryController
 from operation import Operator, RegistryEntryNameValidator
@@ -33,7 +33,7 @@ class WorkerRegistryNameSearch(Operator):
 
     Provides:
         -   def execute(
-                    client: str,
+                    exchange: str,
                     operation_name: str,
                     registry: WorkerRegistry,
             ) -> SearchResult[List[Operation]]:
@@ -47,7 +47,7 @@ class WorkerRegistryNameSearch(Operator):
     @LoggingLevelRouter.monitor
     def execute(
             cls,
-            client: str,
+            exchange: str,
             operation_name: str,
             registry: WorkerRegistry,
             key_name_validator: RegistryEntryNameValidator | None = None,
@@ -56,15 +56,15 @@ class WorkerRegistryNameSearch(Operator):
         Search the WorkerRegistry for an operation.
         
         Action:
-            1.   Send an exception chain in the SearchResult if either the client
+            1.   Send an exception chain in the SearchResult if either the exchange
                 or the name is not a valid String.
             2.  Otherwise, search the WorkerRegistry for the operation. If either of the following occurs,
                 send an empty SearchResult:
-                    - The client does not exist.
-                    - The operation does not exist in the client.
+                    - The exchange does not exist.
+                    - The operation does not exist in the exchange.
                 Else, send the operation in a SearchResult.
         Args:
-            client: str
+            exchange: str
             operation_name: str
             registry: WorkerRegistry
             key_name_validator: RegistryEntryNameValidator
@@ -81,7 +81,7 @@ class WorkerRegistryNameSearch(Operator):
         
         # Handle the case that one of keys is not a valid String.
         search_key_validation_result = key_name_validator.execute(
-            candidates=[client, operation_name],
+            candidates=[exchange, operation_name],
         )
         if search_key_validation_result.is_failure:
             # Send the exception chain on failure.
@@ -94,15 +94,15 @@ class WorkerRegistryNameSearch(Operator):
                     ex=search_key_validation_result.exception,
                 )
             )
-        # Send and empty result if the client does not exist.
-        if client.upper() not in registry.clients:
+        # Send and empty result if the exchange does not exist.
+        if exchange.upper() not in registry.exchanges:
             return SearchResult.empty()
-        # Send and empty result if the operation does not exist in the client.
-        if operation_name.upper() not in registry.entries[client].keys():
+        # Send and empty result if the operation does not exist in the exchange.
+        if operation_name.upper() not in registry.entries[exchange].keys():
             return SearchResult.empty()
         
         # --- Otherwise, return the hits in the work product. ---#
-        operation = registry.entries[client][operation_name]
+        operation = registry.entries[exchange][operation_name]
         return SearchResult.success([operation])
 
 # --- FINALLY: REGISTER THE OPERATION ---#

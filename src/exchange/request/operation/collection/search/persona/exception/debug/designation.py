@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from system import BoundsException
-from client.schema.persona import PersonaException
+from exchange.schema.persona import PersonaException
 
 
 

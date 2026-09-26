@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import Optional
 
-from client.model import Game, GameService
+from exchange.model import Game, GameService
 from logic.team import Team, TeamService
 from system import Builder, BuildResult, ExecutionRouteException, IdentityService, LoggingLevelRouter
 from logic.arena import (
@@ -23,9 +23,9 @@ class ArenaContextBuilder(Builder[ArenaContext]):
 
     Responsibilities:
     1.   Produce ArenaContext instances whose integrity is guaranteed at creation.
-    2.  Manage construction of ArenaContext instances that can be used safely by the client.
+    2.  Manage construction of ArenaContext instances that can be used safely by the exchange.
     3.  Ensure params for ArenaContext creation have met the application's safety contract.
-    4.  Return an exception to the client if a build resource does not satisfy integrity requirements.
+    4.  Return an exception to the exchange if a build resource does not satisfy integrity requirements.
 
     Super Class:
         *   Builder

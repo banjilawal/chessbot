@@ -1,7 +1,7 @@
-# src/client/request/operation/computation.vector/distance/request.py
+# src/exchange/request/operation/computation.vector/distance/request.py
 
 """
-Module: client.request.operation.computation.vector.distance.request
+Module: exchange.request.operation.computation.vector.distance.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -44,5 +44,5 @@ class VectorDistanceRequest(VectorComputationRequest):
         if other is None: return False
         if isinstance(other, VectorDistanceRequest):
             request = cast(VectorDistanceRequest, other)
-            return self.id == client.request.id
+            return self.id == exchange.request.id
         return False

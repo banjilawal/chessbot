@@ -1,13 +1,13 @@
-# src/client/request/chain/offset/trim/head/__init__.py
+# src/exchange/request/chain/offset/trim/head/__init__.py
 
 """
-Module: client.request.chain.offset.trim.head.__init__
+Module: exchange.request.chain.offset.trim.head.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== CLIENT.REQUEST.CHAIN.OFFSET.TRIM.HEAD PACKAGE ===========#
+# =========== EXCHANGE.REQUEST.CHAIN.OFFSET.TRIM.HEAD PACKAGE ===========#
 
 # Packages
 

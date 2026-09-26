@@ -11,12 +11,12 @@ from typing import List
 
 from logic.square import Square
 from system import DataFinder, LoggingLevelRouter, SearchResult
-from client.model import (
+from exchange.model import (
     CaptivityContext, CaptivityContextValidator, Hostage, HostageSearchException,
     HostageSearchNullDatasetException, HostageSearchPayloadTypeException,
     HostageSearchRouteException
 )
-from client.model.state.token import CombatantToken, Token
+from exchange.model.state.token import CombatantToken, Token
 
 
 class HostageFinder(DataFinder[Hostage]):

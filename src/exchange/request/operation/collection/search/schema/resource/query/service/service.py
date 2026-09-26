@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from system import IntegrityMicroservice, IdFactory
-from client.model import SchemaQuery, SchemaQueryBuilder, SchemaQueryOpsController, SchemaQueryValidator
+from exchange.model import SchemaQuery, SchemaQueryBuilder, SchemaQueryOpsController, SchemaQueryValidator
 
 
 class SchemaQueryService(IntegrityMicroservice[SchemaQuery]):

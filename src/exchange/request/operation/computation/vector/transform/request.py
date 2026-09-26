@@ -1,7 +1,7 @@
-# src/client/request/operation/computation.vector/transform/request.py
+# src/exchange/request/operation/computation.vector/transform/request.py
 
 """
-Module: client.request.operation.computation.vector.transform.request
+Module: exchange.request.operation.computation.vector.transform.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -44,5 +44,5 @@ class VectorTransformRequest(VectorComputationRequest):
         if other is None: return False
         if isinstance(other, VectorTransformRequest):
             request = cast(VectorTransformRequest, other)
-            return self.id == client.request.id
+            return self.id == exchange.request.id
         return False

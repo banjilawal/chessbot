@@ -1,7 +1,7 @@
-# src/client/request/operation/collection/deletion/chain.vector.request.py
+# src/exchange/request/operation/collection/deletion/chain.vector.request.py
 
 """
-Module: client.request.operation.collection.deletion.chain.vector.request
+Module: exchange.request.operation.collection.deletion.chain.vector.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from typing import cast
 
 from authorization import AddNodeRequest
 from collection import VectorChain
-from client.structures.node import VectorNode
+from exchange.structures.node import VectorNode
 
 
 class VectorAddNodeRequest(AddNodeRequest[VectorNode]):
@@ -57,5 +57,5 @@ class VectorAddNodeRequest(AddNodeRequest[VectorNode]):
         if other is None: return False
         if isinstance(other, VectorAddNodeRequest):
             request = cast(VectorAddNodeRequest, other)
-            return self.id == client.request.id
+            return self.id == exchange.request.id
         return False

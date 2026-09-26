@@ -1,7 +1,7 @@
-# src/client/request/crud/request.py
+# src/exchange/request/crud/request.py
 
 """
-Module: client.request.crud.request
+Module: exchange.request.crud.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,12 +12,12 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from collection import ClientObjectCollection
-from client import Request
+from collection import ExchangeObjectCollection
+from exchange import Request
 
 from artifcat import CrudResult
 
-C = TypeVar("C", bound="ClientObjectCollection")
+C = TypeVar("C", bound="ExchangeObjectCollection")
 R = TypeVar("R", bound="CrudResult")
 
 

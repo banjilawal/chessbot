@@ -1,7 +1,7 @@
-# src/client/validation/model/rank/client.py
+# src/exchange/validation/model/rank/exchange.py
 
 """
-Module: client.validation.model.rank.client
+Module: exchange.validation.model.rank.exchange
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult, RankValidationResponse
-from client import ModelValidationResponseService, RankValidationRequest
+from exchange import ModelValidationResponseService, RankValidationRequest
 from domain import Rank
 from err import RankValidatorResponseServiceException
 from transit import RankCarrier, RankValidationDispatcher
@@ -34,7 +34,7 @@ class RankValidationResponseService(ModelValidationResponseService[Rank]):
         -   def submit(request: RankValidationRequest[T]) -> RankValidationResponse[T]
 
     Super Class:
-        ModelValidatorClient
+        ModelValidatorExchange
     """
     
     def __init__(
@@ -71,7 +71,7 @@ class RankValidationResponseService(ModelValidationResponseService[Rank]):
         Result:
             RankValidationResponse
         Raises:
-            RankValidatorClientException
+            RankValidatorExchangeException
         """
         method = f"{self.__class__.__name__}.submit"
         

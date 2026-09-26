@@ -1,7 +1,7 @@
-# src/client/validation/model/arena/client.py
+# src/exchange/validation/model/arena/exchange.py
 
 """
-Module: client.validation.model.arena.client
+Module: exchange.validation.model.arena.exchange
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult, ArenaValidationResponse
-from client import ModelValidationResponseService, ArenaValidationRequest
+from exchange import ModelValidationResponseService, ArenaValidationRequest
 from domain import Arena
 from err import ArenaValidatorResponseServiceException
 from transit import ArenaCarrier, ArenaValidationDispatcher
@@ -34,7 +34,7 @@ class ArenaValidationResponseService(ModelValidationResponseService[Arena]):
         -   def submit(request: ArenaValidationRequest[T]) -> ArenaValidationResponse[T]
 
     Super Class:
-        ModelValidatorClient
+        ModelValidatorExchange
     """
     
     def __init__(
@@ -71,7 +71,7 @@ class ArenaValidationResponseService(ModelValidationResponseService[Arena]):
         Result:
             ArenaValidationResponse
         Raises:
-            ArenaValidatorClientException
+            ArenaValidatorExchangeException
         """
         method = f"{self.__class__.__name__}.submit"
         

@@ -12,7 +12,7 @@ version: 1.0.0
 from typing import List
 
 from logic.agent import PlayerAgent
-from client.model import Game, GameContext, GameContextValidator
+from exchange.model import Game, GameContext, GameContextValidator
 from system import (
     DataFinder, ExecutionRouteException, LoggingLevelRouter, SearchException, SearchResult
 )

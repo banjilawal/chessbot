@@ -1,7 +1,7 @@
-# src/client/request/operation/promotion/operation.py
+# src/exchange/request/operation/promotion/operation.py
 
 """
-Module: client.request.operation.promotion.operation
+Module: exchange.request.operation.promotion.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from copy import deepcopy
 from typing import cast
 
 from err import PawnPromoterException
-from client.model import PawnToken, PromotionState, Rank
+from exchange.model import PawnToken, PromotionState, Rank
 from permitter import PromotionPermitter
 from artifcat.report import PromotionRequestDecision
 from artifcat import MethodResultType, UpdateResult

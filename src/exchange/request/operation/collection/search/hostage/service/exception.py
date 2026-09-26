@@ -8,7 +8,7 @@ version: 1.0.0
 """
 
 from system import ServiceException
-from client.model import CaptivityContextException
+from exchange.model import CaptivityContextException
 
 __all__ = [
     # ======================# CAPTIVITY_CONTEXT_SERVICE EXCEPTION #======================#

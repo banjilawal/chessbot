@@ -1,7 +1,7 @@
-# src/client/request/validation/model/path/request.py
+# src/exchange/request/validation/model/path/request.py
 
 """
-Module: client.request.validation.model.path.request
+Module: exchange.request.validation.model.path.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from client import ModelValidationRequest, Path
+from exchange import ModelValidationRequest, Path
 from transit import PathCarrier
 
 

@@ -16,7 +16,7 @@ __all__ = [
     "MoveUndoLimitException",
 ]
 
-from client.model.state.token import TokenDebugException
+from exchange.model.state.token import TokenDebugException
 
 
 # ======================# ABOVE_MOVE_UNDO_LIMIT_EXCEPTION  #======================#

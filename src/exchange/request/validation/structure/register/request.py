@@ -1,7 +1,7 @@
-# src/client/request/validation/structure/register/request.py
+# src/exchange/request/validation/structure/register/request.py
 
 """
-Module: client.request.validation.structure.register.request
+Module: exchange.request.validation.structure.register.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from client import Register, StructureValidationRequest
+from exchange import Register, StructureValidationRequest
 
 T = TypeVar("T", bound="Register")
 

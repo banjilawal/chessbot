@@ -1,7 +1,7 @@
-# src/client/validation/client.py
+# src/exchange/validation/exchange.py
 
 """
-Module: client.validation.client
+Module: exchange.validation.exchange
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from artifcat import ValidationResponse, ValidationResult
-from client import ResponseService, ValidationRequest
+from exchange import ResponseService, ValidationRequest
 from transit import ValidationDispatcher
 from util import LoggingLevelRouter
 
@@ -34,7 +34,7 @@ class ValidatorResponseService(ResponseService[ValidationResult], ABC, Generic[T
         -   def submit(request: ValidationRequest[T]) -> ValidationResponse[T]
 
     Super Class:
-        Client
+        Exchange
     """
     
     def __init__(self, dispatcher: ValidationDispatcher[T]):
@@ -58,6 +58,6 @@ class ValidatorResponseService(ResponseService[ValidationResult], ABC, Generic[T
         Result:
             ValidationResponse[T]
         Raises:
-            ValidatorClientException
+            ValidatorExchangeException
         """
         pass

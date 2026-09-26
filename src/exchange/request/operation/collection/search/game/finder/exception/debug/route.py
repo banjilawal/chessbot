@@ -16,7 +16,7 @@ __all__ = [
     "GameSearchRouteException",
 ]
 
-from client.model import GameDebugException
+from exchange.model import GameDebugException
 
 
 # ======================# NO_GAME_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#

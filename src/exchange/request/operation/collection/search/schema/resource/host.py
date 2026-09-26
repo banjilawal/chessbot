@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from client.model import SchemaContextService, SchemaQueryService, SchemaSearchRouter
+from exchange.model import SchemaContextService, SchemaQueryService, SchemaSearchRouter
 
 
 class SchemaSearchResourceHost:

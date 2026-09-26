@@ -91,7 +91,7 @@ __all__ = [
 ]
 
 from system import SearchException
-from client.model import GameException
+from exchange.model import GameException
 
 
 # ======================# GAME_SEARCH_FAILURE #======================#

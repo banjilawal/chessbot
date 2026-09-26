@@ -1,7 +1,7 @@
-# src/client/request/operation/collection/insertion/stack.request.py
+# src/exchange/request/operation/collection/insertion/stack.request.py
 
 """
-Module: client.request.operation.collection.insertion.stack.request
+Module: exchange.request.operation.collection.insertion.stack.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -61,5 +61,5 @@ class StackPushRequest(CollectionInsertionRequest[StackService], ABC, Generic[T]
         if other is None: return False
         if isinstance(other, StackPushRequest):
             request = cast(StackPushRequest, other)
-            return self.id == client.request.id
+            return self.id == exchange.request.id
         return False

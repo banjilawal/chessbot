@@ -1,7 +1,7 @@
-# src/client/request/chain/node/remove/request.py
+# src/exchange/request/chain/node/remove/request.py
 
 """
-Module: client.request.chain.node.remove.request
+Module: exchange.request.chain.node.remove.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from authorization import RemoveNodeRequest, ChainOffsetRequest
 from collection import VectorChain
-from client.structures.node import VectorNode
+from exchange.structures.node import VectorNode
 
 
 class RemoveVectorNodeRequest(RemoveNodeRequest[VectorNode]):

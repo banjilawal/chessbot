@@ -1,7 +1,7 @@
-# src/client/request/crud/search/stack/square/request.py
+# src/exchange/request/crud/search/stack/square/request.py
 
 """
-Module: client.request.crud.search.stack.square.request
+Module: exchange.request.crud.search.stack.square.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from collection import SquareStackService
-from client import StackSearchRequest, Square, SquareSearchContext
+from exchange import StackSearchRequest, Square, SquareSearchContext
 
 
 class SquareSearchRequest(StackSearchRequest[Square]):

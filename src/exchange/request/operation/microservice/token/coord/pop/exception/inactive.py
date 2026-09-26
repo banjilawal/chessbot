@@ -16,7 +16,7 @@ __all__ = [
     "InactiveTokenPoppingCoordException",
 ]
 
-from client.model.state.token import TokenDebugException
+from exchange.model.state.token import TokenDebugException
 
 
 # ======================# INACTIVE_TOKEN_UNDO_COORD_POP_EXCEPTION  #======================#

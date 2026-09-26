@@ -1,13 +1,13 @@
-# src/client/request/operation/computation.vector/distance/__init__.py
+# src/exchange/request/operation/computation.vector/distance/__init__.py
 
 """
-Module: client.request.operation.computation.vector.distance.__init__
+Module: exchange.request.operation.computation.vector.distance.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== CLIENT.REQUEST.OPERATION.COMPUTATION.VECTOR.DISTANCE CONTENTS ===========#
+# =========== EXCHANGE.REQUEST.OPERATION.COMPUTATION.VECTOR.DISTANCE CONTENTS ===========#
 
 # Packages
 

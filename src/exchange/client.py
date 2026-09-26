@@ -1,7 +1,7 @@
-# src/client/client.py
+# src/exchange/exchange.py
 
 """
-Module: client.client
+Module: exchange.exchange
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from artifcat import Response, Result
-from client import Request
+from exchange import Request
 from transit import Dispatcher
 from util import LoggingLevelRouter
 
@@ -59,6 +59,6 @@ class ResponseService(ABC, Generic[T]):
         Result:
             Response[T]
         Raises:
-            ClientException
+            ExchangeException
         """
         pass

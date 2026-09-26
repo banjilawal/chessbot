@@ -1,7 +1,7 @@
-# src/client/request/crud/insert/chain/request.py
+# src/exchange/request/crud/insert/chain/request.py
 
 """
-Module: client.request.crud.insert.chain.request
+Module: exchange.request.crud.insert.chain.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from collection import Chain
-from client import InsertRequest, Node
+from exchange import InsertRequest, Node
 
 T = TypeVar("T", bound="Node")
 

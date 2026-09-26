@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from client.model.state.token import Token
+from exchange.model.state.token import Token
 from system import DeletionResult, LoggingLevelRouter
 from logic.square import (
     DepartingEmptySquareException, Square, SquareDepartureException, SquareValidator

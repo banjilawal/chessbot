@@ -1,7 +1,7 @@
-# src/client/request/operation/maneuver/operation.py
+# src/exchange/request/operation/maneuver/operation.py
 
 """
-Module: client.request.operation.maneuver.operation
+Module: exchange.request.operation.maneuver.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

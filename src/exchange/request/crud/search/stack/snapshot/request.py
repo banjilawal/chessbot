@@ -1,7 +1,7 @@
-# src/client/request/crud/search/stack/snapshot/request.py
+# src/exchange/request/crud/search/stack/snapshot/request.py
 
 """
-Module: client.request.crud.search.stack.snapshot.request
+Module: exchange.request.crud.search.stack.snapshot.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from collection import SnapshotStackService
-from client import StackSearchRequest, Snapshot, SnapshotContext
+from exchange import StackSearchRequest, Snapshot, SnapshotContext
 
 
 class SnapshotSearchRequest(StackSearchRequest[Snapshot]):

@@ -1,7 +1,7 @@
-# src/client/request/slot/request.py
+# src/exchange/request/slot/request.py
 
 """
-Module: client.request.slot.request
+Module: exchange.request.slot.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,8 +9,8 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from client.model import Rank
-from client.request.slot.request import Request
+from exchange.model import Rank
+from exchange.request.slot.request import Request
 from collection.stack import TokenStackService
 
 

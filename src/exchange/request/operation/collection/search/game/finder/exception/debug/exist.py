@@ -16,7 +16,7 @@ __all__ = [
     "GameNotFoundException",
 ]
 
-from client.model import GameDebugException
+from exchange.model import GameDebugException
 
 
 # ======================# GAME_NOT_FOUND_EXCEPTION #======================#

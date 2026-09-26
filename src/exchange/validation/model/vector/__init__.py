@@ -1,15 +1,15 @@
-# src/client/validation/model/vector/__init__.py
+# src/exchange/validation/model/vector/__init__.py
 
 """
-Module: client.validation.model.vector.__init__
+Module: exchange.validation.model.vector.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== CLIENT.VALIDATION.MODEL.VECTOR PACKAGE ===========#
+# =========== EXCHANGE.VALIDATION.MODEL.VECTOR PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .client import VectorValidationResponseService
+from .exchange import VectorValidationResponseService

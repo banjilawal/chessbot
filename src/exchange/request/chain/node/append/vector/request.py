@@ -1,7 +1,7 @@
-# src/client/request/chain/node/append/request.py
+# src/exchange/request/chain/node/append/request.py
 
 """
-Module: client.request.chain.node.append.request
+Module: exchange.request.chain.node.append.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from authorization import AppendNodeRequest, ChainOffsetRequest
 from collection import VectorChain
-from client.structures.node import VectorNode
+from exchange.structures.node import VectorNode
 
 
 class AppendVectorNodeRequest(AppendNodeRequest[VectorNode]):

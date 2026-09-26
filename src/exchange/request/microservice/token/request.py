@@ -1,7 +1,7 @@
-# src/client/request/microservice/token/request.py
+# src/exchange/request/microservice/token/request.py
 
 """
-Module: client.request.microservice.token.request
+Module: exchange.request.microservice.token.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -14,7 +14,7 @@ from typing import cast
 
 from authorization import MicroserviceRequest
 from microservice import TokenService
-from client.model import Token
+from exchange.model import Token
 
 
 class TokenServiceRequest(MicroserviceRequest[Token]):

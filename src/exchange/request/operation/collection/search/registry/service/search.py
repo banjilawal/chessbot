@@ -13,7 +13,7 @@ from typing import List
 
 from err import ServiceRegistrySearchException
 from artifcat import SearchResult
-from client.model import ServiceRegistry
+from exchange.model import ServiceRegistry
 from util import LoggingLevelRouter
 from transit.controller import ServiceRegistryController
 from operation import Operator, RegistryEntryNameValidator
@@ -33,7 +33,7 @@ class ServiceRegistrySearch(Operator):
 
     Provides:
         -   def execute(
-                    client: str,
+                    exchange: str,
                     operation_name: str,
                     registry: ServiceRegistry,
             ) -> SearchResult[List[Operation]]:
@@ -85,7 +85,7 @@ class ServiceRegistrySearch(Operator):
                     ex=search_key_validation_result.exception,
                 )
             )
-        # Send and empty result if the operation does not exist in the client.
+        # Send and empty result if the operation does not exist in the exchange.
         if service_name.upper() not in registry.entries.keys():
             return SearchResult.empty()
         

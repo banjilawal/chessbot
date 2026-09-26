@@ -1,7 +1,7 @@
-# src/client/request/chain/offset/remove/request.py
+# src/exchange/request/chain/offset/remove/request.py
 
 """
-Module: client.request.chain.offset.remove.request
+Module: exchange.request.chain.offset.remove.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

@@ -10,7 +10,7 @@ version: 0.0.2
 # =========== SEARCHER.REGISTRY.WORKER PACKAGE ===========#
 
 # Packages
-from .client import *
+from .exchange import *
 from .name import *
 
 # Modules

@@ -1,7 +1,7 @@
-# src/client/validation/model/client.py
+# src/exchange/validation/model/exchange.py
 
 """
-Module: client.validation.model.client
+Module: exchange.validation.model.exchange
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from artifcat import ModelValidationResponse
-from client import ModelValidationRequest, ValidatorResponseService
+from exchange import ModelValidationRequest, ValidatorResponseService
 from transit import ModelValidationDispatcher
 from util import LoggingLevelRouter
 
@@ -38,7 +38,7 @@ class ModelValidationResponseService(
         -   def submit(request: ModelValidationRequest[T]) -> ModelValidationResponse[T]
 
     Super Class:
-        ValidatorClient
+        ValidatorExchange
     """
     
     def __init__(self, dispatcher: ModelValidationDispatcher[T]):
@@ -65,6 +65,6 @@ class ModelValidationResponseService(
         Result:
             ModelValidationResponse[T]
         Raises:
-            ModelValidatorClientException
+            ModelValidatorExchangeException
         """
         pass

@@ -1,13 +1,13 @@
-# src/client/request/validation/structure/register/square/__init__.py
+# src/exchange/request/validation/structure/register/square/__init__.py
 
 """
-Module: client.request.validation.structure.register.square.__init__
+Module: exchange.request.validation.structure.register.square.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== CLIENT.REQUEST.VALIDATION.STRUCTURE.REGISTER.SQUARE PACKAGE ===========#
+# =========== EXCHANGE.REQUEST.VALIDATION.STRUCTURE.REGISTER.SQUARE PACKAGE ===========#
 
 # Packages
 

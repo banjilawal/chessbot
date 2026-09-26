@@ -1,7 +1,7 @@
-# src/client/request/insertion/chain/request.py
+# src/exchange/request/insertion/chain/request.py
 
 """
-Module: client.request.insertion.chain.request
+Module: exchange.request.insertion.chain.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,8 +13,8 @@ from __future__ import annotations
 from typing import cast
 
 from collection import VectorChain
-from client.structures.node import VectorNode
-from client.request import AddNodeRequest
+from exchange.structures.node import VectorNode
+from exchange.request import AddNodeRequest
 
 
 class AddVectorNodeRequest(AddNodeRequest[VectorNode]):
@@ -57,5 +57,5 @@ class AddVectorNodeRequest(AddNodeRequest[VectorNode]):
         if other is None: return False
         if isinstance(other, AddVectorNodeRequest):
             request = cast(AddVectorNodeRequest, other)
-            return self._id == client.request.id
+            return self._id == exchange.request.id
         return False

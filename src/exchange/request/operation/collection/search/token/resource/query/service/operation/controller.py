@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from client.model.state.token import TokenQueryBuilder, TokenContextIntegrityWorkers, TokenQueryValidator
+from exchange.model.state.token import TokenQueryBuilder, TokenContextIntegrityWorkers, TokenQueryValidator
 
 
 class TokenQueryOpsController:

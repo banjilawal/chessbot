@@ -1,7 +1,7 @@
-# src/client/request/crud/search/stack/game/request.py
+# src/exchange/request/crud/search/stack/game/request.py
 
 """
-Module: client.request.crud.search.stack.game.request
+Module: exchange.request.crud.search.stack.game.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from collection import GameStackService
-from client import StackSearchRequest, Game, GameSearchContext
+from exchange import StackSearchRequest, Game, GameSearchContext
 
 
 class GameSearchRequest(StackSearchRequest[Game]):

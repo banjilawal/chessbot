@@ -1,7 +1,7 @@
-# src/client/validation/model/board/client.py
+# src/exchange/validation/model/board/exchange.py
 
 """
-Module: client.validation.model.board.client
+Module: exchange.validation.model.board.exchange
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult, BoardValidationResponse
-from client import ModelValidationResponseService, BoardValidationRequest
+from exchange import ModelValidationResponseService, BoardValidationRequest
 from domain import Board
 from err import BoardValidatorResponseServiceException
 from transit import BoardCarrier, BoardValidationDispatcher
@@ -34,7 +34,7 @@ class BoardValidationResponseService(ModelValidationResponseService[Board]):
         -   def submit(request: BoardValidationRequest[T]) -> BoardValidationResponse[T]
 
     Super Class:
-        ModelValidatorClient
+        ModelValidatorExchange
     """
     
     def __init__(
@@ -71,7 +71,7 @@ class BoardValidationResponseService(ModelValidationResponseService[Board]):
         Result:
             BoardValidationResponse
         Raises:
-            BoardValidatorClientException
+            BoardValidatorExchangeException
         """
         method = f"{self.__class__.__name__}.submit"
         

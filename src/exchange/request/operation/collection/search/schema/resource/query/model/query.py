@@ -11,9 +11,9 @@ from __future__ import annotations
 
 from typing import Type
 
-from client.model import Schema
+from exchange.model import Schema
 from system import CatalogQuery
-from client.model import SchemaContext
+from exchange.model import SchemaContext
 
 
 class SchemaQuery(CatalogQuery[Schema]):

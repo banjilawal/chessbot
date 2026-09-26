@@ -16,7 +16,7 @@ __all__ = [
     "SchemaLookupFailedException",
 ]
 
-from client.model import SchemaException
+from exchange.model import SchemaException
 from system import ForwardLookupFailedException
 
 

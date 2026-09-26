@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from system import LoggingLevelRouter, ValidationResult, Validator
-from client.model import (
+from exchange.model import (
     SchemaQuery, SchemaQueryIntegrityWorkers, SchemaQueryNullException, SchemaQueryValidatorException
 )
 
@@ -134,7 +134,7 @@ class SchemaQueryValidator(Validator[SchemaQuery]):
                     ex=schema_validation_result.exception,
                 )
             )
-        # --- Forward the work product to the client. ---#
+        # --- Forward the work product to the exchange. ---#
         return ValidationResult.success(query)
         
     

@@ -1,7 +1,7 @@
-# src/client/validation/model/maneuver/client.py
+# src/exchange/validation/model/maneuver/exchange.py
 
 """
-Module: client.validation.model.maneuver.client
+Module: exchange.validation.model.maneuver.exchange
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult, ManeuverValidationResponse
-from client import ModelValidationResponseService, ManeuverValidationRequest
+from exchange import ModelValidationResponseService, ManeuverValidationRequest
 from domain import Maneuver
 from err import ManeuverValidatorResponseServiceException
 from transit import ManeuverCarrier, ManeuverValidationDispatcher
@@ -34,7 +34,7 @@ class ManeuverValidationResponseService(ModelValidationResponseService[Maneuver]
         -   def submit(request: ManeuverValidationRequest[T]) -> ManeuverValidationResponse[T]
 
     Super Class:
-        ModelValidatorClient
+        ModelValidatorExchange
     """
     
     def __init__(
@@ -71,7 +71,7 @@ class ManeuverValidationResponseService(ModelValidationResponseService[Maneuver]
         Result:
             ManeuverValidationResponse
         Raises:
-            ManeuverValidatorClientException
+            ManeuverValidatorExchangeException
         """
         method = f"{self.__class__.__name__}.submit"
         

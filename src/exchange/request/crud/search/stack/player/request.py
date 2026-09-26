@@ -1,7 +1,7 @@
-# src/client/request/crud/search/stack/player/request.py
+# src/exchange/request/crud/search/stack/player/request.py
 
 """
-Module: client.request.crud.search.stack.player.request
+Module: exchange.request.crud.search.stack.player.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from collection import PlayerStackService
-from client import StackSearchRequest, Player, PlayerSearchContext
+from exchange import StackSearchRequest, Player, PlayerSearchContext
 
 
 class PlayerSearchRequest(StackSearchRequest[Player]):

@@ -1,7 +1,7 @@
-# src/client/request/chain/node/trim/tail/request.py
+# src/exchange/request/chain/node/trim/tail/request.py
 
 """
-Module: client.request.chain.node.trim.tail.request
+Module: exchange.request.chain.node.trim.tail.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

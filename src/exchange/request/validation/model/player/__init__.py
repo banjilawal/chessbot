@@ -1,13 +1,13 @@
-# src/client/request/validation/model/player/__init__.py
+# src/exchange/request/validation/model/player/__init__.py
 
 """
-Module: client.request.validation.model.player.__init__
+Module: exchange.request.validation.model.player.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== CLIENT.REQUEST.VALIDATION.MODEL.PLAYER PACKAGE ===========#
+# =========== EXCHANGE.REQUEST.VALIDATION.MODEL.PLAYER PACKAGE ===========#
 
 # Packages
 

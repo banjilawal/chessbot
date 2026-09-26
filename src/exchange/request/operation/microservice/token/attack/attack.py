@@ -16,8 +16,8 @@ from operation.microservice.token.attack import (
 from util import LoggingLevelRouter
 from logic.square import Square, SquareDatabase
 from system import RelationReport
-from client.model import HostageService
-from client.model.state.token import CombatantReadinessEnum, KingToken, Token, DeploymentState, TokenService
+from exchange.model import HostageService
+from exchange.model.state.token import CombatantReadinessEnum, KingToken, Token, DeploymentState, TokenService
 
 
 class Attack:

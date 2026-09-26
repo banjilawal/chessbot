@@ -1,7 +1,7 @@
-# src/client/request/operation/collection/request.py
+# src/exchange/request/operation/collection/request.py
 
 """
-Module: client.request.operation.collection.request
+Module: exchange.request.operation.collection.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from authorization import OperationRequest
-from collection import ClientObjectCollection
+from collection import ExchangeObjectCollection
 from operation import CrudOperator
 
 T = TypeVar("T", bound="Result")
@@ -34,9 +34,9 @@ class CollectionRequest(OperationRequest[CrudOperator], ABC, Generic[T]):
      Super Class:
         OperationRequest
      """
-    _collection: ClientObjectCollection
+    _collection: ExchangeObjectCollection
     
-    def __init__(self, id: int, collection: ClientObjectCollection):
+    def __init__(self, id: int, collection: ExchangeObjectCollection):
         """
         Args:
             id: int
@@ -46,7 +46,7 @@ class CollectionRequest(OperationRequest[CrudOperator], ABC, Generic[T]):
         self._collection = collection
         
     @property
-    def collection(self) -> ClientObjectCollection:
+    def collection(self) -> ExchangeObjectCollection:
         return self._collection
     
     def __eq__(self, other):
@@ -54,5 +54,5 @@ class CollectionRequest(OperationRequest[CrudOperator], ABC, Generic[T]):
         if other is None: return False
         if isinstance(other, CollectionRequest):
             request = cast(CollectionRequest, other)
-            return self.id == client.request.id
+            return self.id == exchange.request.id
         return False

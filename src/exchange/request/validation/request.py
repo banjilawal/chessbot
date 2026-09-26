@@ -1,7 +1,7 @@
-# src/client/request/validation/request.py
+# src/exchange/request/validation/request.py
 
 """
-Module: client.request.validation.request
+Module: exchange.request.validation.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from artifcat import ValidationResult
-from client import Request
+from exchange import Request
 from transit import EntityCarrier
 
 T = TypeVar("T")

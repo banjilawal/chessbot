@@ -1,7 +1,7 @@
-# src/client/request/crud/search/request.py
+# src/exchange/request/crud/search/request.py
 
 """
-Module: client.request.crud.search.request
+Module: exchange.request.crud.search.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,12 +12,12 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from collection import ClientObjectCollection
-from client import CrudRequest, ClientDataObject, Context
+from collection import ExchangeObjectCollection
+from exchange import CrudRequest, ExchangeDataObject, Context
 from artifcat import SearchResult
 
 
-T = TypeVar("T", bound="ClientDataObject")
+T = TypeVar("T", bound="ExchangeDataObject")
 
 
 class SearchRequest(CrudRequest[SearchResult], ABC, Generic[T]):
@@ -31,7 +31,7 @@ class SearchRequest(CrudRequest[SearchResult], ABC, Generic[T]):
      Attributes:
          id: int
          context: Context[T]
-         collection: ClientObjectCollection[T]
+         collection: ExchangeObjectCollection[T]
 
      Provides:
      
@@ -40,12 +40,12 @@ class SearchRequest(CrudRequest[SearchResult], ABC, Generic[T]):
      """
     _context: Context[T]
     
-    def __init__(self, id: int, context: Context[T], collection: ClientObjectCollection[T]):
+    def __init__(self, id: int, context: Context[T], collection: ExchangeObjectCollection[T]):
         """
         Args:
             id: int
             context: Context[T]
-            collection: ClientObjectCollection[T]
+            collection: ExchangeObjectCollection[T]
         """
         super().__init__(id=id, collection=collection)
         self._context = context

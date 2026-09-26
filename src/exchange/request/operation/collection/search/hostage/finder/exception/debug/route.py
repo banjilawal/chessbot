@@ -16,7 +16,7 @@ __all__ = [
     "HostageSearchRouteException",
 ]
 
-from client.model import HostageDebugException
+from exchange.model import HostageDebugException
 
 
 # ======================# NO_HOSTAGE_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#

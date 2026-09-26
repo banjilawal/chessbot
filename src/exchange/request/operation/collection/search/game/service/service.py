@@ -9,9 +9,9 @@ version: 1.0.0
 
 from typing import cast
 
-from client.model import GameFinder
+from exchange.model import GameFinder
 from system import QueryService, id_emitter
-from client.model import GameContext, GameContextBuilder, GameContextValidator
+from exchange.model import GameContext, GameContextBuilder, GameContextValidator
 
 
 class GameQueryService(QueryService[GameContext]):

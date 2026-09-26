@@ -1,7 +1,7 @@
-# src/client/request/chain/node/append/request.py
+# src/exchange/request/chain/node/append/request.py
 
 """
-Module: client.request.chain.node.append.request
+Module: exchange.request.chain.node.append.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

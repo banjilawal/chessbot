@@ -1,7 +1,7 @@
-# src/client/request/chain/search/request.py
+# src/exchange/request/chain/search/request.py
 
 """
-Module: client.request.chain.search.request
+Module: exchange.request.chain.search.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

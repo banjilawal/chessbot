@@ -1,7 +1,7 @@
-# src/client/validation/model/token/client.py
+# src/exchange/validation/model/token/exchange.py
 
 """
-Module: client.validation.model.token.client
+Module: exchange.validation.model.token.exchange
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult, TokenValidationResponse
-from client import ModelValidationResponseService, TokenValidationRequest
+from exchange import ModelValidationResponseService, TokenValidationRequest
 from domain import Token
 from err import TokenValidatorResponseServiceException
 from transit import TokenCarrier, TokenValidationDispatcher
@@ -34,7 +34,7 @@ class TokenValidationResponseService(ModelValidationResponseService[Token]):
         -   def submit(request: TokenValidationRequest[T]) -> TokenValidationResponse[T]
 
     Super Class:
-        ModelValidatorClient
+        ModelValidatorExchange
     """
     
     def __init__(
@@ -71,7 +71,7 @@ class TokenValidationResponseService(ModelValidationResponseService[Token]):
         Result:
             TokenValidationResponse
         Raises:
-            TokenValidatorClientException
+            TokenValidatorExchangeException
         """
         method = f"{self.__class__.__name__}.submit"
         

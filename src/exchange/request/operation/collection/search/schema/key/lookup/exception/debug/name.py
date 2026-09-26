@@ -12,7 +12,7 @@ __all__ = [
     "SchemaNameBoundsException",
 ]
 
-from client.model import SchemaException
+from exchange.model import SchemaException
 from system import BoundsException
 
 

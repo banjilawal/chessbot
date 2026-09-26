@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import List
 
-from client.model import (
+from exchange.model import (
     SchemaLookupFailedException, SchemaLookupRouteException, SchemaColorBoundsException, SchemaKey, Schema,
     SchemaNameBoundsException, SchemaKeyValidator,
 )

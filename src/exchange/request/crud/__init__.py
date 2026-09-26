@@ -1,13 +1,13 @@
-# src/client/request/crud/__init__.py
+# src/exchange/request/crud/__init__.py
 
 """
-Module: client.request.crud.__init__
+Module: exchange.request.crud.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== CLIENT.REQUEST.CRUD PACKAGE ===========#
+# =========== EXCHANGE.REQUEST.CRUD PACKAGE ===========#
 
 # Packages
 from .delete import *

@@ -1,7 +1,7 @@
-# src/client/validation/model/game/client.py
+# src/exchange/validation/model/game/exchange.py
 
 """
-Module: client.validation.model.game.client
+Module: exchange.validation.model.game.exchange
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult, GameValidationResponse
-from client import ModelValidationResponseService, GameValidationRequest
+from exchange import ModelValidationResponseService, GameValidationRequest
 from domain import Game
 from err import GameValidatorResponseServiceException
 from transit import GameCarrier, GameValidationDispatcher
@@ -34,7 +34,7 @@ class GameValidationResponseService(ModelValidationResponseService[Game]):
         -   def submit(request: GameValidationRequest[T]) -> GameValidationResponse[T]
 
     Super Class:
-        ModelValidatorClient
+        ModelValidatorExchange
     """
     
     def __init__(
@@ -71,7 +71,7 @@ class GameValidationResponseService(ModelValidationResponseService[Game]):
         Result:
             GameValidationResponse
         Raises:
-            GameValidatorClientException
+            GameValidatorExchangeException
         """
         method = f"{self.__class__.__name__}.submit"
         

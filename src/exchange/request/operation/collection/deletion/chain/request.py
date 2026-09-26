@@ -1,7 +1,7 @@
-# src/client/request/operation/collection/deletion/chain.request.py
+# src/exchange/request/operation/collection/deletion/chain.request.py
 
 """
-Module: client.request.operation.collection.deletion.chain.request
+Module: exchange.request.operation.collection.deletion.chain.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -60,5 +60,5 @@ class AddNodeRequest(CollectionDeletionRequest[Chain], ABC, Generic[T]):
         if other is None: return False
         if isinstance(other, AddNodeRequest):
             request = cast(AddNodeRequest, other)
-            return self.id == client.request.id
+            return self.id == exchange.request.id
         return False

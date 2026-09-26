@@ -1,7 +1,7 @@
-# src/client/request/operation/request.py
+# src/exchange/request/operation/request.py
 
 """
-Module: client.request.operation.request
+Module: exchange.request.operation.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -45,5 +45,5 @@ class OldRequest(Request, ABC, Generic[T]):
         if other is None: return False
         if isinstance(other, OperationRequest):
             request = cast(OperationRequest, other)
-            return self.id == client.request.id
+            return self.id == exchange.request.id
         return False

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import List, Type
 
 from system import GameColor, LoggingLevelRouter, SearchResult, SearchRouter
-from client.model import (
+from exchange.model import (
     MissingSchemaSearchRouteException, Schema, SchemaQuery, SchemaQueryValidator,
     SchemaSearchException
 )

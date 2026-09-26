@@ -1,7 +1,7 @@
-# src/client/request/operation/token/place/operation.py
+# src/exchange/request/operation/token/place/operation.py
 
 """
-Module: client.request.operation.token.place.operation
+Module: exchange.request.operation.token.place.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -16,7 +16,7 @@ from typing import cast
 from sensor.analyzer import HomeSquareValidator
 from transit.controller import WorkerRegistryController
 from err import TokenPlaceException
-from client.model import PlaceState, HomeSquare, Token, TokenHomeClaimState
+from exchange.model import PlaceState, HomeSquare, Token, TokenHomeClaimState
 from operation import Operator
 from artifcat.report import HomeSquareClaimReport
 from artifcat import MethodResultType, UpdateResult
@@ -140,7 +140,7 @@ class TokenHomePlacer(Operator[Token]):
         if home_square.token_claim_state != TokenHomeClaimState.UNCLAIMED:
             home_square.record_claim()
             
-        # --- Forward the work product to the client. ---#
+        # --- Forward the work product to the exchange. ---#
         return UpdateResult.update_success(original=pre_update_token, updated=claimant,)
 
 

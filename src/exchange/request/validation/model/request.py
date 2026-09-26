@@ -1,7 +1,7 @@
-# src/client/request/validation/model/request.py
+# src/exchange/request/validation/model/request.py
 
 """
-Module: client.request.validation.model.request
+Module: exchange.request.validation.model.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from client import ValidationRequest
+from exchange import ValidationRequest
 from domain import Model
 from transit import ModelCarrier
 

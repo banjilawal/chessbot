@@ -1,7 +1,7 @@
-# src/client/request/microservice/request.py
+# src/exchange/request/microservice/request.py
 
 """
-Module: client.request.microservice.request
+Module: exchange.request.microservice.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -62,6 +62,6 @@ class MicroserviceRequest(Request, ABC, Generic[T]):
             request = cast(MicroserviceRequest, other)
             return (
                     super().__eq__(request) and
-                    self._microservice.id == client.request.microservice.id
+                    self._microservice.id == exchange.request.microservice.id
             )
         return False

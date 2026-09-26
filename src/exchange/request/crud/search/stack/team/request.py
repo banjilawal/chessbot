@@ -1,7 +1,7 @@
-# src/client/request/crud/search/stack/team/request.py
+# src/exchange/request/crud/search/stack/team/request.py
 
 """
-Module: client.request.crud.search.stack.team.request
+Module: exchange.request.crud.search.stack.team.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from collection import TeamStackService
-from client import StackSearchRequest, Team, TeamSearchContext
+from exchange import StackSearchRequest, Team, TeamSearchContext
 
 
 class TeamSearchRequest(StackSearchRequest[Team]):

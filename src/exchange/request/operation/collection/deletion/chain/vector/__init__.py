@@ -1,13 +1,13 @@
-# src/client/request/operation/collection/deletion/chain/vector/__init__.py
+# src/exchange/request/operation/collection/deletion/chain/vector/__init__.py
 
 """
-Module: client.request.operation.collection.deletion.chain.vector.__init__
+Module: exchange.request.operation.collection.deletion.chain.vector.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== CLIENT.REQUEST.OPERATION.COLLECTION.DELETION.CHAIN.VECTOR PACKAGE ===========#
+# =========== EXCHANGE.REQUEST.OPERATION.COLLECTION.DELETION.CHAIN.VECTOR PACKAGE ===========#
 
 # Packages
 

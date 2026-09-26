@@ -1,7 +1,7 @@
-# src/client/request/operation/attack/operation.py
+# src/exchange/request/operation/attack/operation.py
 
 """
-Module: client.request.operation.attack.operation
+Module: exchange.request.operation.attack.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from copy import deepcopy
 
 from err import AttackDestinationEmptyException, AttackEventNullException, AttackException
 from event import AttackEvent
-from client.model import SquareState
+from exchange.model import SquareState
 from operation import ManeuverLauncher
 from artifcat.report import AttackApproval, ManeuverApproval
 from artifcat import EventResult, MethodResultType

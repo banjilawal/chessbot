@@ -1,15 +1,15 @@
-# src/client/validation/model/rank/__init__.py
+# src/exchange/validation/model/rank/__init__.py
 
 """
-Module: client.validation.model.rank.__init__
+Module: exchange.validation.model.rank.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== CLIENT.VALIDATION.MODEL.RANK PACKAGE ===========#
+# =========== EXCHANGE.VALIDATION.MODEL.RANK PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .client import RankValidationResponseService
+from .exchange import RankValidationResponseService

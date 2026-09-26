@@ -17,7 +17,7 @@ from sensor.analyzer import TokenReadinessAnalyzer
 from err import DisabledTokenManeuverException
 from artifcat.report import TokenReadinessReport
 from system import DeletionResult, LoggingLevelRouter
-from client.model.state.token import (
+from exchange.model.state.token import (
     InactiveTokenPoppingCoordException, MoveUndoLimitException, Token, TokenPopCoordException, TokenValidation,
     UnopenedTokenPoppingCoordException
 )
@@ -207,6 +207,6 @@ class TokenPositionPopper:
                     ex=popping_cord_stack_result.exception
                 )
             )
-        # --- Forward the work product to the client. ---#
+        # --- Forward the work product to the exchange. ---#
         return popping_cord_stack_result
 

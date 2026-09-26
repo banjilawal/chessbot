@@ -1,7 +1,7 @@
-# src/client/request/crud/delete/item/chain/request.py
+# src/exchange/request/crud/delete/item/chain/request.py
 
 """
-Module: client.request.crud.delete.item.chain.request
+Module: exchange.request.crud.delete.item.chain.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from collection import Chain
-from client import DeleteItemRequest, Node
+from exchange import DeleteItemRequest, Node
 
 T = TypeVar("T", bound="Node")
 

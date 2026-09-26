@@ -1,7 +1,7 @@
-# src/client/request/microservice/token/promotion/request.py
+# src/exchange/request/microservice/token/promotion/request.py
 
 """
-Module: client.request.microservice.token.promotion.request
+Module: exchange.request.microservice.token.promotion.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from authorization import TokenServiceRequest
-from client.model import PawnToken, Rank
+from exchange.model import PawnToken, Rank
 
 
 

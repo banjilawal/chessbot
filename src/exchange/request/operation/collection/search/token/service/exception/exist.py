@@ -16,7 +16,7 @@ __all__ = [
     "TokenNotFoundException",
 ]
 
-from client.model.state.token import TokenDebugException
+from exchange.model.state.token import TokenDebugException
 
 # ======================# TOKEN_NOT_FOUND_EXCEPTION #======================#
 class TokenNotFoundException(TokenDebugException):

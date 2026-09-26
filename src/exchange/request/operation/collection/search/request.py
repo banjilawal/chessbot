@@ -1,7 +1,7 @@
-# src/client/request/operation/collection/search.request.py
+# src/exchange/request/operation/collection/search.request.py
 
 """
-Module: client.request.operation.collection.search.request
+Module: exchange.request.operation.collection.search.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -15,7 +15,7 @@ from typing import Generic, TypeVar, cast
 from authorization import CollectionRequest
 from collection import StackService
 
-from client.search.context import Context
+from exchange.search.context import Context
 from artifcat import SearchResult
 
 
@@ -68,5 +68,5 @@ class SearchRequest(CollectionRequest[SearchResult], ABC, Generic[T]):
         if other is None: return False
         if isinstance(other, SearchRequest):
             request = cast(SearchRequest, other)
-            return self.id == client.request.id
+            return self.id == exchange.request.id
         return False

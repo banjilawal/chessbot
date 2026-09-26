@@ -9,7 +9,7 @@ version: 1.0.0
 
 
 from system import BoundsException
-from client.model import SchemaException
+from exchange.model import SchemaException
 
 __all__ = [
     # ======================# SCHEMA_COLOR_BOUNDS EXCEPTION #======================#

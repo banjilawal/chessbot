@@ -1,7 +1,7 @@
-# src/client/request/crud/search/stack/coord/request.py
+# src/exchange/request/crud/search/stack/coord/request.py
 
 """
-Module: client.request.crud.search.stack.coord.request
+Module: exchange.request.crud.search.stack.coord.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from collection import CoordStackService
-from client import StackSearchRequest, Coord, CoordSearchContext
+from exchange import StackSearchRequest, Coord, CoordSearchContext
 
 
 class CoordSearchRequest(StackSearchRequest[Coord]):

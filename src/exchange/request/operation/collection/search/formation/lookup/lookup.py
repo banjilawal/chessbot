@@ -9,12 +9,12 @@ version: 1.0.0
 
 from typing import List
 
-from client.model import (
+from exchange.model import (
     Formation, FormationColorBoundsException, FormationDesignationBoundsException, FormationLookupFailedException,
     FormationLookupRouteException, FormationPersonaBoundsException, FormationSquareBoundsException, FormationKey,
     FormationKeyValidator
 )
-from client.schema.persona import Persona
+from exchange.schema.persona import Persona
 from system import GameColor, HashLookupProcess, LoggingLevelRouter, SearchResult
 
 

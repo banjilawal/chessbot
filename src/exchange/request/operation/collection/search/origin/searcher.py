@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from bootstrapper import TokenBuilderBootstrapper
 from err import TokenOriginSearcherException
-from client.model import Token
+from exchange.model import Token
 from artifcat import MethodResultType, SearchResult
 from util import LoggingLevelRouter
 

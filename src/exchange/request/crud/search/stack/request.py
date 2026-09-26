@@ -1,7 +1,7 @@
-# src/client/request/crud/search/stack/request.py
+# src/exchange/request/crud/search/stack/request.py
 
 """
-Module: client.request.crud.search.stack.request
+Module: exchange.request.crud.search.stack.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from collection import StackService
-from client import Context, SearchRequest, StateModel
+from exchange import Context, SearchRequest, StateModel
 
 T = TypeVar("T", bound="StateModel")
 

@@ -16,7 +16,7 @@ __all__ = [
     "InactiveTokenPushingCoordException",
 ]
 
-from client.model.state.token import TokenDebugException
+from exchange.model.state.token import TokenDebugException
 
 
 # ======================# INACTIVE_TOKEN_PUSHING_COORD_EXCEPTION  #======================#

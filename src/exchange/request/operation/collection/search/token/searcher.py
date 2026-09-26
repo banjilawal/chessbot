@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from err import TokenSearcherException
 from permitter import TokenSearchPermitter
-from client.request import SearchRequest
+from exchange.request import SearchRequest
 from artifcat import SearchResult
 from transit.router import TokenSearchRouter
 from util import LoggingLevelRouter

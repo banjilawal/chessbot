@@ -1,15 +1,15 @@
-# src/client/validation/model/token/__init__.py
+# src/exchange/validation/model/token/__init__.py
 
 """
-Module: client.validation.model.token.__init__
+Module: exchange.validation.model.token.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== CLIENT.VALIDATION.MODEL.TOKEN PACKAGE ===========#
+# =========== EXCHANGE.VALIDATION.MODEL.TOKEN PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .client import TokenValidationResponseService
+from .exchange import TokenValidationResponseService

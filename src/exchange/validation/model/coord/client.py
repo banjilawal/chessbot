@@ -1,7 +1,7 @@
-# src/client/validation/model/coord/client.py
+# src/exchange/validation/model/coord/exchange.py
 
 """
-Module: client.validation.model.coord.client
+Module: exchange.validation.model.coord.exchange
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult, CoordValidationResponse
-from client import ModelValidationResponseService, CoordValidationRequest
+from exchange import ModelValidationResponseService, CoordValidationRequest
 from domain import Coord
 from err import CoordValidatorResponseServiceException
 from transit import CoordCarrier, CoordValidationDispatcher
@@ -34,7 +34,7 @@ class CoordValidationResponseService(ModelValidationResponseService[Coord]):
         -   def submit(request: CoordValidationRequest[T]) -> CoordValidationResponse[T]
 
     Super Class:
-        ModelValidatorClient
+        ModelValidatorExchange
     """
     
     def __init__(
@@ -71,7 +71,7 @@ class CoordValidationResponseService(ModelValidationResponseService[Coord]):
         Result:
             CoordValidationResponse
         Raises:
-            CoordValidatorClientException
+            CoordValidatorExchangeException
         """
         method = f"{self.__class__.__name__}.submit"
         

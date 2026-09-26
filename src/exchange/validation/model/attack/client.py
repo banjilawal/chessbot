@@ -1,7 +1,7 @@
-# src/client/validation/model/attack/client.py
+# src/exchange/validation/model/attack/exchange.py
 
 """
-Module: client.validation.model.attack.client
+Module: exchange.validation.model.attack.exchange
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult, AttackValidationResponse
-from client import ModelValidationResponseService, AttackValidationRequest
+from exchange import ModelValidationResponseService, AttackValidationRequest
 from domain import Attack
 from err import AttackValidatorResponseServiceException
 from transit import AttackCarrier, AttackValidationDispatcher
@@ -34,7 +34,7 @@ class AttackValidationResponseService(ModelValidationResponseService[Attack]):
         -   def submit(request: AttackValidationRequest[T]) -> AttackValidationResponse[T]
 
     Super Class:
-        ModelValidatorClient
+        ModelValidatorExchange
     """
     
     def __init__(
@@ -71,7 +71,7 @@ class AttackValidationResponseService(ModelValidationResponseService[Attack]):
         Result:
             AttackValidationResponse
         Raises:
-            AttackValidatorClientException
+            AttackValidatorExchangeException
         """
         method = f"{self.__class__.__name__}.submit"
         

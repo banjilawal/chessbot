@@ -13,7 +13,7 @@ from typing import Any, cast
 
 
 from system import LoggingLevelRouter, Validator, ValidationResult
-from client.model import (
+from exchange.model import (
     ExcessSchemaContextFlagsException, NullSchemaContextException, SchemaContext, SchemaContextIntegrityWorkers,
     SchemaContextValidatorException, SchemaContextValidationRouteException, ZeroSchemaContextFlagsException
 )

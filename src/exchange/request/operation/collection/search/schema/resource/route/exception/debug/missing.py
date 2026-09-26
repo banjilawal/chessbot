@@ -15,7 +15,7 @@ __all__ = [
     "MissingSchemaSearchRouteException",
 ]
 
-from client.model import SchemaDebugException
+from exchange.model import SchemaDebugException
 
 # ======================# MISSING_SCHEMA_SEARCH_ROUTE_EXCEPTION #======================#
 class MissingSchemaSearchRouteException(SchemaDebugException):

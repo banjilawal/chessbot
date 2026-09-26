@@ -1,14 +1,14 @@
-# src/client/request/__init__.py
+# src/exchange/request/__init__.py
 
 """
-Module: client.request.__init__
+Module: exchange.request.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
 
-# =========== CLIENT.REQUEST PACKAGE ===========#
+# =========== EXCHANGE.REQUEST PACKAGE ===========#
 
 # Packages
 from .builder import *

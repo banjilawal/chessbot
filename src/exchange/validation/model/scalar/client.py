@@ -1,7 +1,7 @@
-# src/client/validation/model/scalar/client.py
+# src/exchange/validation/model/scalar/exchange.py
 
 """
-Module: client.validation.model.scalar.client
+Module: exchange.validation.model.scalar.exchange
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult, ScalarValidationResponse
-from client import ModelValidationResponseService, ScalarValidationRequest
+from exchange import ModelValidationResponseService, ScalarValidationRequest
 from domain import Scalar
 from err import ScalarValidatorResponseServiceException
 from transit import ScalarCarrier, ScalarValidationDispatcher
@@ -34,7 +34,7 @@ class ScalarValidationResponseService(ModelValidationResponseService[Scalar]):
         -   def submit(request: ScalarValidationRequest[T]) -> ScalarValidationResponse[T]
 
     Super Class:
-        ModelValidatorClient
+        ModelValidatorExchange
     """
     
     def __init__(
@@ -71,7 +71,7 @@ class ScalarValidationResponseService(ModelValidationResponseService[Scalar]):
         Result:
             ScalarValidationResponse
         Raises:
-            ScalarValidatorClientException
+            ScalarValidatorExchangeException
         """
         method = f"{self.__class__.__name__}.submit"
         

@@ -1,7 +1,7 @@
-# src/client/validation/model/path/client.py
+# src/exchange/validation/model/path/exchange.py
 
 """
-Module: client.validation.model.path.client
+Module: exchange.validation.model.path.exchange
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult, PathValidationResponse
-from client import ModelValidationResponseService, PathValidationRequest
+from exchange import ModelValidationResponseService, PathValidationRequest
 from domain import Path
 from err import PathValidatorResponseServiceException
 from transit import PathCarrier, PathValidationDispatcher
@@ -34,7 +34,7 @@ class PathValidationResponseService(ModelValidationResponseService[Path]):
         -   def submit(request: PathValidationRequest[T]) -> PathValidationResponse[T]
 
     Super Class:
-        ModelValidatorClient
+        ModelValidatorExchange
     """
     
     def __init__(
@@ -71,7 +71,7 @@ class PathValidationResponseService(ModelValidationResponseService[Path]):
         Result:
             PathValidationResponse
         Raises:
-            PathValidatorClientException
+            PathValidatorExchangeException
         """
         method = f"{self.__class__.__name__}.submit"
         

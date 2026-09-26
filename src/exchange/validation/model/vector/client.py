@@ -1,7 +1,7 @@
-# src/client/validation/model/vector/client.py
+# src/exchange/validation/model/vector/exchange.py
 
 """
-Module: client.validation.model.vector.client
+Module: exchange.validation.model.vector.exchange
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult, VectorValidationResponse
-from client import ModelValidationResponseService, VectorValidationRequest
+from exchange import ModelValidationResponseService, VectorValidationRequest
 from domain import Vector
 from err import VectorValidatorResponseServiceException
 from transit import VectorCarrier, VectorValidationDispatcher
@@ -34,7 +34,7 @@ class VectorValidationResponseService(ModelValidationResponseService[Vector]):
         -   def submit(request: VectorValidationRequest[T]) -> VectorValidationResponse[T]
 
     Super Class:
-        ModelValidatorClient
+        ModelValidatorExchange
     """
     
     def __init__(
@@ -71,7 +71,7 @@ class VectorValidationResponseService(ModelValidationResponseService[Vector]):
         Result:
             VectorValidationResponse
         Raises:
-            VectorValidatorClientException
+            VectorValidatorExchangeException
         """
         method = f"{self.__class__.__name__}.submit"
         

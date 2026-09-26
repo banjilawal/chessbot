@@ -1,7 +1,7 @@
-# src/client/request/request.py
+# src/exchange/request/request.py
 
 """
-Module: client.request.request
+Module: exchange.request.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

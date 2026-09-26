@@ -1,7 +1,7 @@
-# src/client/request/insertion/request.py
+# src/exchange/request/insertion/request.py
 
 """
-Module: client.request.insertion.request
+Module: exchange.request.insertion.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,11 +12,11 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from collection import ClientObjectCollection
-from client.request import Request
+from collection import ExchangeObjectCollection
+from exchange.request import Request
 from artifcat import InsertionResult
 
-T = TypeVar("T", bound="ClientObjectCollection")
+T = TypeVar("T", bound="ExchangeObjectCollection")
 
 
 class InsertionRequest(Request[InsertionResult], ABC, Generic[T]):
@@ -59,5 +59,5 @@ class InsertionRequest(Request[InsertionResult], ABC, Generic[T]):
         if other is None: return False
         if isinstance(other, InsertionRequest):
             request = cast(InsertionRequest, other)
-            return self._id == client.request.id
+            return self._id == exchange.request.id
         return False

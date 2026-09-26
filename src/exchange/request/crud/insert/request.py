@@ -1,7 +1,7 @@
-# src/client/request/crud/insert/request.py
+# src/exchange/request/crud/insert/request.py
 
 """
-Module: client.request.crud.insert.request
+Module: exchange.request.crud.insert.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,12 +12,12 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from collection import ClientObjectCollection
-from client import CrudRequest, ClientDataObject
+from collection import ExchangeObjectCollection
+from exchange import CrudRequest, ExchangeDataObject
 from artifcat import InsertionResult
 
 
-T = TypeVar("T", bound="ClientDataObject")
+T = TypeVar("T", bound="ExchangeDataObject")
 
 
 class InsertRequest(CrudRequest[InsertionResult], ABC, Generic[T]):
@@ -31,7 +31,7 @@ class InsertRequest(CrudRequest[InsertionResult], ABC, Generic[T]):
      Attributes:
          id: int
          item: T
-         collection: ClientObjectCollection[T]
+         collection: ExchangeObjectCollection[T]
 
      Provides:
      
@@ -40,12 +40,12 @@ class InsertRequest(CrudRequest[InsertionResult], ABC, Generic[T]):
      """
     _item: T
     
-    def __init__(self, id: int, item: T, collection: ClientObjectCollection[T]):
+    def __init__(self, id: int, item: T, collection: ExchangeObjectCollection[T]):
         """
         Args:
             id: int
             item: T
-            collection: ClientObjectCollection[T]
+            collection: ExchangeObjectCollection[T]
         """
         super().__init__(id=id, collection=collection)
         self._item = item

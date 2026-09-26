@@ -16,7 +16,7 @@ __all__ = [
     "HostageNotFoundException",
 ]
 
-from client.model import HostageDebugException
+from exchange.model import HostageDebugException
 
 
 # ======================# HOSTAGE_NOT_FOUND_EXCEPTION #======================#

@@ -1,7 +1,7 @@
-# src/client/validation/model/team/client.py
+# src/exchange/validation/model/team/exchange.py
 
 """
-Module: client.validation.model.team.client
+Module: exchange.validation.model.team.exchange
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult, TeamValidationResponse
-from client import ModelValidationResponseService, TeamValidationRequest
+from exchange import ModelValidationResponseService, TeamValidationRequest
 from domain import Team
 from err import TeamValidatorResponseServiceException
 from transit import TeamCarrier, TeamValidationDispatcher
@@ -34,7 +34,7 @@ class TeamValidationResponseService(ModelValidationResponseService[Team]):
         -   def submit(request: TeamValidationRequest[T]) -> TeamValidationResponse[T]
 
     Super Class:
-        ModelValidatorClient
+        ModelValidatorExchange
     """
     
     def __init__(
@@ -71,7 +71,7 @@ class TeamValidationResponseService(ModelValidationResponseService[Team]):
         Result:
             TeamValidationResponse
         Raises:
-            TeamValidatorClientException
+            TeamValidatorExchangeException
         """
         method = f"{self.__class__.__name__}.submit"
         

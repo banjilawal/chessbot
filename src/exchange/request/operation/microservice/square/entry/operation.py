@@ -1,7 +1,7 @@
-# src/client/request/operation/square/entry/operation.py
+# src/exchange/request/operation/square/entry/operation.py
 
 """
-Module: client.request.operation.square.entry.operation
+Module: exchange.request.operation.square.entry.operation
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -16,7 +16,7 @@ from logic.square import (
     SquareVisitorDisabledException, WrongOpeningSquareException
 )
 from util import LoggingLevelRouter, UpdateResult
-from client.model.state.token import Token, DeploymentState, TokenFreedomAnalyzer
+from exchange.model.state.token import Token, DeploymentState, TokenFreedomAnalyzer
 
 
 class SquareEntry:

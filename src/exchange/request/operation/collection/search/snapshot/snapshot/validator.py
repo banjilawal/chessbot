@@ -11,7 +11,7 @@ from typing import Any, cast
 
 from logic.agent import AgentService
 from logic.arena import ArenaService
-from client.model import GameService
+from exchange.model import GameService
 from logic.snapshot import NullSnapshotContextException, SnapshotContext
 from logic.snapshot.context.validator.exception.base import InvalidSnapshotContextException
 from logic.snapshot.context.validator.exception.flag.excess import ArenaSnapshotContextFlagsException
@@ -156,7 +156,7 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
 
             # Validation subflow for owner SnapshotContexts.
             if context.plyer is not None:
-                validation = player_service.execute.search_service(job=context.client_class)
+                validation = player_service.execute.search_service(job=context.exchange_class)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
                 # On validation success return the player_SnapshotContext in the ValidationResult

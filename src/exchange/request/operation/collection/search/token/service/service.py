@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import List
 
 from system import LoggingLevelRouter, SearchMicroservice, SearchResult
-from client.model.state.token import (
+from exchange.model.state.token import (
     Token, TokenContextService, TokenQuery, TokenQueryService, TokenSearchResourceHost,
     TokenSearchRouter, TokenSearchServiceException
 )
@@ -100,7 +100,7 @@ class TokenSearchService(SearchMicroservice[Token]):
                     ex=search_result.exception
                 )
             )
-        # --- Forward the work product to the client. ---#
+        # --- Forward the work product to the exchange. ---#
         return search_result
     
     

@@ -1,7 +1,7 @@
-# src/client/request/crud/delete/request.py
+# src/exchange/request/crud/delete/request.py
 
 """
-Module: client.request.crud.delete.request
+Module: exchange.request.crud.delete.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,12 +12,12 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from collection import ClientObjectCollection
-from client import CrudRequest, ClientDataObject
+from collection import ExchangeObjectCollection
+from exchange import CrudRequest, ExchangeDataObject
 from artifcat import DeletionResult
 
 
-T = TypeVar("T", bound="ClientDataObject")
+T = TypeVar("T", bound="ExchangeDataObject")
 
 
 class DeleteRequest(CrudRequest[DeletionResult], ABC, Generic[T]):
@@ -30,7 +30,7 @@ class DeleteRequest(CrudRequest[DeletionResult], ABC, Generic[T]):
 
      Attributes:
          id: int
-         collection: ClientObjectCollection[T]
+         collection: ExchangeObjectCollection[T]
 
      Provides:
      
@@ -38,11 +38,11 @@ class DeleteRequest(CrudRequest[DeletionResult], ABC, Generic[T]):
         CrudRequest
      """
     
-    def __init__(self, id: int, collection: ClientObjectCollection[T]):
+    def __init__(self, id: int, collection: ExchangeObjectCollection[T]):
         """
         Args:
             id: int
-            collection: ClientObjectCollection[T]
+            collection: ExchangeObjectCollection[T]
         """
         super().__init__(id, collection=collection)
     

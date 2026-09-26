@@ -16,7 +16,7 @@ __all__ = [
     "UnopenedTokenPoppingCoordException",
 ]
 
-from client.model.state.token import TokenDebugException
+from exchange.model.state.token import TokenDebugException
 
 
 # ======================# UNOPENED__TOKEN_POPPING_COORD_EXCEPTION  #======================#

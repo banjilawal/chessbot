@@ -1,7 +1,7 @@
-# src/client/request/crud/delete/pop/request.py
+# src/exchange/request/crud/delete/pop/request.py
 
 """
-Module: client.request.crud.delete.pop.request
+Module: exchange.request.crud.delete.pop.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from collection import StackService
-from client import DeleteItemRequest, StateModel
+from exchange import DeleteItemRequest, StateModel
 
 T = TypeVar("T", bound="StateModel")
 

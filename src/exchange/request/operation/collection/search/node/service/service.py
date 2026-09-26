@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from system import QueryService, id_emitter
-from client.structures.node import NodeContext, NodeContextBuilder, NodeContextValidator, NodeFinder
+from exchange.structures.node import NodeContext, NodeContextBuilder, NodeContextValidator, NodeFinder
 
 
 class NodeQueryService(QueryService[NodeContext]):

@@ -1,7 +1,7 @@
-# src/client/request/crud/delete/id/request.py
+# src/exchange/request/crud/delete/id/request.py
 
 """
-Module: client.request.crud.delete.id.request
+Module: exchange.request.crud.delete.id.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,10 +11,10 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from collection import ClientObjectCollection
-from client import DeleteRequest
+from collection import ExchangeObjectCollection
+from exchange import DeleteRequest
 
-T = TypeVar("T", bound="ClientObjectCollection")
+T = TypeVar("T", bound="ExchangeObjectCollection")
 
 
 

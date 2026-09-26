@@ -1,7 +1,7 @@
-# src/client/request/crud/insert/stack/request.py
+# src/exchange/request/crud/insert/stack/request.py
 
 """
-Module: client.request.crud.insert.stack.request
+Module: exchange.request.crud.insert.stack.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from collection import StackService
-from client import InsertRequest, StateModel
+from exchange import InsertRequest, StateModel
 
 T = TypeVar("T", bound="StateModel")
 

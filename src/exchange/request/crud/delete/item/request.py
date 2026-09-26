@@ -1,7 +1,7 @@
-# src/client/request/crud/delete/item/request.py
+# src/exchange/request/crud/delete/item/request.py
 
 """
-Module: client.request.crud.delete.item.request
+Module: exchange.request.crud.delete.item.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,11 +12,11 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from collection import ClientObjectCollection
-from client import DeleteRequest, ClientDataObject
+from collection import ExchangeObjectCollection
+from exchange import DeleteRequest, ExchangeDataObject
 
-C = TypeVar("C", bound="ClientObjectCollection")
-T = TypeVar("T", bound="ClientDataObject")
+C = TypeVar("C", bound="ExchangeObjectCollection")
+T = TypeVar("T", bound="ExchangeDataObject")
 
 
 class DeleteItemRequest(DeleteRequest, ABC, Generic[C, T]):

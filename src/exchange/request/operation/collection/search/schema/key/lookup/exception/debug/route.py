@@ -7,7 +7,7 @@ Created: 2025-10-09
 version: 1.0.0
 """
 
-from client.model import SchemaException
+from exchange.model import SchemaException
 from system import ExecutionRouteException
 
 
