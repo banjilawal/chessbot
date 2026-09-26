@@ -13,14 +13,14 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from artifcat import ModelValidationResponse
-from exchange import ModelValidationRequest, ValidatorResponder
+from exchange import ModelValidationRequest, ValidationResponder
 from transit import ModelValidationDispatcher
 from util import LoggingLevelRouter
 
 T = TypeVar("T",)
 
 class ModelValidationResponder(
-    ValidatorResponder[T],
+    ValidationResponder[T],
     ABC,
     Generic[T],
 ):

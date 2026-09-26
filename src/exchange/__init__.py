@@ -12,5 +12,6 @@ version: 0.0.2
 # Packages
 from .request import *
 from .response import *
+from .wrapper import *
 
 # Modules

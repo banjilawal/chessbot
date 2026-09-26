@@ -1,7 +1,7 @@
-# src/exchange/wrapper/response/wrapper.py
+# src/exchange/wrapper/wrapper.py
 
 """
-Module: exchange.wrapper.response.wrapper
+Module: exchange.wrapper.wrapper
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

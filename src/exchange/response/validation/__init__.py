@@ -13,4 +13,4 @@ version: 0.0.2
 from .model import *
 
 # Modules
-from .responder import ValidatorResponder
+from .responder import ValidationResponder

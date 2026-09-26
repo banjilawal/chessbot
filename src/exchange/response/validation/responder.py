@@ -19,7 +19,7 @@ from util import LoggingLevelRouter
 
 T = TypeVar("T",)
 
-class ValidatorResponder(Responder[ValidationResult], ABC, Generic[T]):
+class ValidationResponder(Responder[ValidationResult], ABC, Generic[T]):
     """
     Role
         - Mediator
