@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import ModelHelperTable, PrimingValidator
+from assurance import ModelHelperTable, PrimingValidator, TeamBlueprintLoader
 from client import BoardValidatorClient, PlayerValidatorClient
 from domain import Team
 from microservice import IdentityService
@@ -23,12 +23,12 @@ class TeamHelperTable(ModelHelperTable[Team]):
         - Toolkit
 
     Responsibilities:
-        1.  Bundles validatorClients a Team needs for its primitive and upstream relational
-            partners attributes.
-
+        1.  Bundles validatorClients a TeamValidator needs.
+        
     Attributes:
         board_client: BoardValidatorClient
         owner_client: PlayerValidatorClient
+        blueprint_loader: TeamBlueprintLoader
 
     Provides:
 
@@ -37,11 +37,14 @@ class TeamHelperTable(ModelHelperTable[Team]):
     """
     _board_client: BoardValidatorClient
     _owner_client: PlayerValidatorClient
+    _blueprint_loader: TeamBlueprintLoader
     
     def __init__(
             self,
             board_client: Optional[BoardValidatorClient] | None = None,
             owner_client: Optional[PlayerValidatorClient] | None = None,
+            blueprint_loader: Optional[TeamBlueprintLoader] | None = None,
+            
             identity_service: Optional[IdentityService] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
     ):
@@ -49,6 +52,8 @@ class TeamHelperTable(ModelHelperTable[Team]):
         Args:
             board_client: Optional[BoardValidatorClient]
             owner_client: Optional[PlayerValidatorClient]
+            blueprint_loader: Optional[TeamBlueprintLoader]
+            
             identity_service: Optional[IdentityService]
             priming_validator: Optional[PrimingValidator]
         """
@@ -58,6 +63,7 @@ class TeamHelperTable(ModelHelperTable[Team]):
         )
         self._board_client = board_client or BoardValidatorClient()
         self._owner_client = owner_client or PlayerValidatorClient()
+        self._blueprint_loader = blueprint_loader or TeamBlueprintLoader()
     
     @property
     def board_client(self) -> BoardValidatorClient:
@@ -66,3 +72,7 @@ class TeamHelperTable(ModelHelperTable[Team]):
     @property
     def owner_client(self) -> PlayerValidatorClient:
         return self._owner_client
+    
+    @property
+    def blueprint_loader(self) -> TeamBlueprintLoader:
+        return self._blueprint_loader
