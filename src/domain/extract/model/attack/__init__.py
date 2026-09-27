@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== DOMAIN.EXTRACT.MODEL.ATTACK PACKAGE ===========#
 
 # Packages
+from .combatant import *
 
 # Module
 from .extract import AttackPrimeExtract

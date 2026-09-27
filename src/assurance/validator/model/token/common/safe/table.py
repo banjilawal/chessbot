@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional
 
 from assurance import TokenPositionTable
-from domain import Coord, Formation, HomeSquare, Team, TokenDeployment, TokenPrimeExtract
+from domain import Coord, Formation, HomeSquare, Team, TokenDeployment
 
 
 class SafeSuperTokenPropertyTable:
@@ -50,7 +50,6 @@ class SafeSuperTokenPropertyTable:
             home_square: HomeSquare,
             deployment: TokenDeployment,
             position_table: TokenPositionTable,
-            prime_extract: TokenPrimeExtract,
     ):
         """
             id: int
@@ -59,7 +58,6 @@ class SafeSuperTokenPropertyTable:
             home_square: HomeSquare
             deployment: TokenDeployment
             position_log: TokenPositionTable
-            prime_extract: TokenPrimeExtract
         """
         self._id = id
         self._team = team
@@ -67,7 +65,6 @@ class SafeSuperTokenPropertyTable:
         self._home_square = home_square
         self._deployment = deployment
         self._position_log = position_table
-        self._prime_extract = prime_extract
         
     @property
     def id(self) -> int:

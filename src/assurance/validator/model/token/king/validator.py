@@ -1,7 +1,7 @@
 # src/assurance/validator/model/token/king/validator.py
 
 """
-Module: assurance.validator.model.token.king.validator
+Module: assurance.validator.payload.token.king.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.2
@@ -9,19 +9,21 @@ version: 1.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from typing import Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import TokenValidatorToolkit
+from assurance import CommonTokenPropertyTable, TokenEnemyValidator, TokenValidatorToolkit
 from domain import (
-    Formation, KingReadiness, KingToken, HomeSquare, KingTokenBlueprint, KingTokenPrimeExtract, Team,
-    TeamValidationRequest, TokenDeployment, TokenPrimeExtract
+    KingReadiness, KingToken, KingTokenBlueprint, KingTokenPrimeExtract, PromotionState,
+    Rank, Token
 )
 from err import (
-    FormationNullException, KingReadinessNullException, KingTokenValidatorException,
-    EmptyTeamCarrierException, EmptyKingTokenCarrierException, TokenDeploymentNullException
+    KingReadinessNullException, CommonTokenPropertyTableNullException,
+    KingTokenPrimeExtractNullException, KingTokenValidatorException,
+    PromotionStateNullException
 )
-from transit import KingTokenCarrier, TeamCarrier
+from exchange import RankValidationRequest, TokenValidationRequest
+from transit import KingTokenCarrier, RankCarrier, TokenCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -31,52 +33,54 @@ class KingTokenValidator:
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a TokenCarrier is safe to use.
+        1.  Ensure a KingTokenCarrier is safe to use.
 
     Attributes:
         toolkit: TokenValidatorToolkit
+        enemy_validator: TokenEnemyValidator
 
     Provides:
         -   def execute(
-                    prime_extract: KingTokenPrimeExtract
-            ) -> ValidationResult[KingTokenCarrier]
+                    candidate: Any
+            ) -> ValidationResult[KingTokenCarrier]:
 
     Super Class:
     """
     _toolkit: TokenValidatorToolkit
+    _enemy_validator: TokenEnemyValidator
     
     def __init__(
             self,
             toolkit: Optional[TokenValidatorToolkit] | None = None,
+            enemy_validator: Optional[TokenEnemyValidator] | None = None,
     ):
         """
         Args:
             toolkit: Optional[TokenValidatorToolkit]
+            enemy_validator: Optional[TokenEnemyValidator]
         """
-        self._toolkit=toolkit or TokenValidatorToolkit()
+        self._toolkit = toolkit or TokenValidatorToolkit()
+        self._enemy_validator = enemy_validator or TokenEnemyValidator()
     
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            prime_extract: KingTokenPrimeExtract,
-    ) -> ValidationResult[KingTokenPrimeExtract]:
+            property_table: CommonTokenPropertyTable
+    ) -> ValidationResult[KingTokenCarrier]:
         """
-        Send a validated KingToken or Blueprint which inside the validated
-        KingTokenCarrier.
+        Assure the properties can assemble a safe KingTokenCarrier.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
-                occur
-                    - The carrier is empty.
-                    - The id check fails.
-                    - The team check fails.
-                    - The formation is null or the wrong type.
-                    - The readiness is null or the wrong type.
-                    - the deployment is null or the wrong type.
+                fields are flagged.
+                    -   captor
+                    -   rank
+                    -   promotion_state
+                    -   king_readiness
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            prime_extract: KingTokenPrimeExtract
+            property_table: CommonTokenPropertyTable
         Returns:
             ValidationResult[KingTokenCarrier]
         Raises:
@@ -84,100 +88,47 @@ class KingTokenValidator:
         """
         method = f"{self.__class__.__name__}.execute"
         
-        king_blueprint = prime_extract.blueprint
-        
-        readiness_validation = self_toolkit.
+        # Handle the case that the property table is null or the wrong type.
+        table_validation = self._toolkit.priming_validator.execute(
+            candidate=property_table,
+            target_model=Type[CommonTokenPropertyTable],
+            null_exception=CommonTokenPropertyTableNullException(),
+        )
+        if table_validation.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                KingTokenValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=KingTokenValidatorException.MSG,
+                    err_code=KingTokenValidatorException.ERR_CODE,
+                    ex=table_validation.exception
+                )
+            )
+        # Handle the case that the property table has the wrong PrimeExtract.
+        extract_validation = self._toolkit.priming_validator.execute(
+            candidate=property_table.prime_extract,
+            target_model=Type[KingTokenPrimeExtract],
+            null_exception=KingTokenPrimeExtractNullException(),
+        )
+        if extract_validation.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                KingTokenValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=KingTokenValidatorException.MSG,
+                    err_code=KingTokenValidatorException.ERR_CODE,
+                    ex=extract_validation.exception
+                )
+            )
         # Handle the case that there is no blueprint in the carrier.
-        blueprint = carrier.extract_blueprint()
-        if blueprint is None:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                KingTokenValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=KingTokenValidatorException.MSG,
-                    err_code=KingTokenValidatorException.ERR_CODE,
-                    ex=EmptyKingTokenCarrierException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=EmptyKingTokenCarrierException.MSG,
-                        err_code=EmptyKingTokenCarrierException.ERR_CODE,
-                    ),
-                )
-            )
-        # Handle the case that any id in the blueprint is flagged.
-        id_validation = self._toolkit.wrapper.blueprint_id_extractor.execute(
-            candidate=blueprint,
-            blueprint_owner_name=blueprint.domain_class_name,
-            blueprint_type=self._toolkit.metadata.types.blueprint,
-            blueprint_null_exception=self._toolkit.metadata.nulls.blueprint,
-        )
-        if id_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                KingTokenValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=KingTokenValidatorException.MSG,
-                    err_code=KingTokenValidatorException.ERR_CODE,
-                    ex=id_validation.exception,
-                )
-            )
-        # Handle the case that the team does not pass a validation check.
-        team_validation = self._toolkit.wrapper.team_validator.execute(
-            candidate=TeamValidationRequest(
-                id=IdFactory.next_id(class_name="TeamValidationRequest"),
-                item=TeamCarrier(model=blueprint.team),
-            )
-        )
-        if team_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                KingTokenValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=KingTokenValidatorException.MSG,
-                    err_code=KingTokenValidatorException.ERR_CODE,
-                    ex=team_validation.exception,
-                )
-            )
-        # Handle the case that the team_carrier does not contain a model.
-        team_carrier = cast(TeamCarrier, team_validation.payload)
-        if not team_carrier.has_model:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                KingTokenValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=KingTokenValidatorException.MSG,
-                    err_code=KingTokenValidatorException.ERR_CODE,
-                    ex=EmptyTeamCarrierException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=EmptyTeamCarrierException.MSG,
-                        err_code=EmptyTeamCarrierException.ERR_CODE,
-                    ),
-                )
-            )
-        # Handle the case that the formation does not pass a validation check.
-        formation_validation = self._toolkit.wrapper.priming_validator.execute(
-            candidate=blueprint.formation,
-            target_model=Formation,
-            null_exception=FormationNullException(),
-        )
-        if formation_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                KingTokenValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=KingTokenValidatorException.MSG,
-                    err_code=KingTokenValidatorException.ERR_CODE,
-                    ex=formation_validation.exception,
-                )
-            )
-        # Handle the case that the readiness does not pass a validation check.
-        readiness_validation = self._toolkit.wrapper.priming_validator.execute(
+        prime_extract = cast(KingTokenPrimeExtract, property_table.prime_extract)
+        blueprint = cast(KingTokenBlueprint, prime_extract.blueprint)
+        # --- START_KING_TOKEN_READINESS_VALIDATION_PROCESS ---#
+        
+        # Handle the case that the readiness is flagged.
+        readiness_validation = self._toolkit.priming_validator.execute(
             candidate=blueprint.readiness,
             target_model=KingReadiness,
             null_exception=KingReadinessNullException(),
@@ -193,13 +144,15 @@ class KingTokenValidator:
                     ex=readiness_validation.exception,
                 )
             )
-        # Handle the case that the deployment does not pass a validation check.
-        deployment_validation = self._toolkit.wrapper.priming_validator.execute(
-            candidate=blueprint.deployment,
-            target_model=TokenDeployment,
-            null_exception=TokenDeploymentNullException(),
+        # --- START_PROMOTION_STATE_VALIDATION_PROCESS ---#
+        
+        # Handle the case that the promotion_state is flagged.
+        promotion_state_validation = self._toolkit.priming_validator.execute(
+            candidate=blueprint.checkmate,
+            target_model=PromotionState,
+            null_exception=PromotionStateNullException(),
         )
-        if deployment_validation.is_failure:
+        if promotion_state_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 KingTokenValidatorException(
@@ -207,14 +160,19 @@ class KingTokenValidator:
                     cls_name=self.__class__.__name__,
                     msg=KingTokenValidatorException.MSG,
                     err_code=KingTokenValidatorException.ERR_CODE,
-                    ex=deployment_validation.exception,
+                    ex=promotion_state_validation.exception,
                 )
             )
-        # Handle the case that the home_square gets flagged.
-        home_detection = self._toolkit.wrapper.home_extractor.execute(
-            blueprint=blueprint,
+        # --- START_RANK_VALIDATION_PROCESS ---#
+        
+        # Handle the case that the rank is flagged.
+        rank_validation = self._toolkit.wrapper.rank.extract_model(
+            request=RankValidationRequest(
+                item=RankCarrier(model=blueprint.rank),
+                id=IdFactory.next_id(class_name="RankValidationRequest"),
+            )
         )
-        if home_detection.is_failure:
+        if rank_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 KingTokenValidatorException(
@@ -222,51 +180,72 @@ class KingTokenValidator:
                     cls_name=self.__class__.__name__,
                     msg=KingTokenValidatorException.MSG,
                     err_code=KingTokenValidatorException.ERR_CODE,
-                    ex=home_detection.exception,
+                    ex=rank_validation.exception,
                 )
             )
+        # --- START_CAPTOR_VALIDATION_PROCESS ---#
+        
+        captor_placeholder = blueprint.captor
+        if blueprint.captor is not None:
+            # Handle the case that the not-null captor is flagged
+            enemy_validation_result = self._enemy_validator.execute(
+                request=TokenValidationRequest(
+                    item=TokenCarrier(model=blueprint.captor),
+                    id=IdFactory.next_id(class_name="TokenValidationRequest"),
+                )
+            )
+            if enemy_validation_result.is_failure:
+                # Send the exception chain on failure.
+                return ValidationResult.failure(
+                    KingTokenValidatorException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=KingTokenValidatorException.MSG,
+                        err_code=KingTokenValidatorException.ERR_CODE,
+                        ex=enemy_validation_result.exception,
+                    )
+                )
+            # Otherwise update captor_placeholder
+            captor_placeholder = cast(Token, enemy_validation_result.payload)
+
         # --- Extract validation payloads. ---#
-        id = cast(int, id_validation.payload)
-        team = cast(Team, team_carrier.entity)
-        home_square = cast(HomeSquare, home_detection.payload)
-        formation = cast(Formation, formation_validation.payload)
+        rank = cast(Rank, rank_validation.payload)
         readiness = cast(KingReadiness, readiness_validation.payload)
-        deployment = cast(TokenDeployment, deployment_validation.payload)
+        promotion_state = cast(PromotionState, promotion_state_validation.payload)
         
         # --- Forward the appropriate work product to the caller. ---#
-        
-        # The model case.
-        if carrier.has_model:
-            model = KingToken(
-                id=id,
-                team=team,
-                home_square=home_square,
-                formation=formation,
+        # The client wants a safe KingToken.
+        if prime_extract.carrier.has_model:
+            payload = KingToken(
+                id=property_table.safe.id,
+                team=property_table.safe.team,
+                formation=property_table.safe.formation,
+                home_square=property_table.safe.home_square,
             )
-            model.readiness = readiness
-            model.deployment = deployment
-            model.position = blueprint.position
-            model.checkmate = blueprint.checkmate
-            model.check_warning = blueprint.check_warning
-            model.previous_position = model.previous_position
+            payload.rank = rank
+            payload.readiness = readiness
+            payload.captor = captor_placeholder
+            payload.promotion_state = promotion_state
+            payload.deployment = property_table.safe.deployment
+            payload.position = property_table.safe.position
+            payload.previous_position = property_table.safe.previous_position
             
-            return ValidationResult.success(KingTokenCarrier(model=model))
-        # Else the blueprint case
-        return ValidationResult.success(
-            KingTokenCarrier(
-                blueprint=KingTokenBlueprint(
-                    id=id,
-                    team=team,
-                    formation=formation,
-                    readiness=readiness,
-                    deployment=deployment,
-                    home_square=home_square,
-                    position=blueprint.position,
-                    checkmate=blueprint.checkmate,
-                    check_warning=blueprint.check_warning,
-                    previous_position=blueprint.previous_position,
-            )
+            return ValidationResult.success(KingTokenCarrier(model=payload))
+        
+        # Otherwise, the client is a VectorBuilder that needs a Blueprint.
+        payload = KingTokenBlueprint(
+            id=property_table.safe.id,
+            team=property_table.safe.team,
+            formation=property_table.safe.formation,
+            home_square=property_table.safe.home_square,
+            deployment=property_table.safe.deployment,
+            position=property_table.safe.position,
+            previous_position=property_table.safe.previous_position,
+            promotion_state=promotion_state,
+            captor=captor_placeholder,
+            readiness=readiness,
+            rank=rank,
         )
-    )
+        return ValidationResult.success(KingTokenCarrier(blueprint=payload))
     
     
