@@ -17,12 +17,12 @@ from assurance import (
     TokenValidatorToolkit
 )
 from domain import (
-    CombatantBlueprint, CombatantTokenPrimeExtract, Coord, Formation, HomeSquare,
+    CombatantTokenBlueprint, CombatantTokenPrimeExtract, Coord, Formation, HomeSquare,
     KingTokenBlueprint, KingTokenPrimeExtract, PawnTokenBlueprint,
     PawnTokenPrimeExtract, Team, TokenDeployment, TokenPrimeExtract
 )
 from err import TokenValidationRouteException
-from transit import CombatantCarrier, KingTokenCarrier, PawnTokenCarrier, TokenCarrier
+from transit import CombatantTokenCarrier, KingTokenCarrier, PawnTokenCarrier, TokenCarrier
 from util import LoggingLevelRouter
 
 
@@ -168,8 +168,8 @@ class TokenValidationRouter:
             )
         # CombatantToken validation route.
         if original_carrier.is_combatant_token_carrier:
-            raw = cast(CombatantBlueprint, token_blueprint)
-            combatant_blueprint = CombatantBlueprint(
+            raw = cast(CombatantTokenBlueprint, token_blueprint)
+            combatant_blueprint = CombatantTokenBlueprint(
                 id=id,
                 team=team,
                 formation=formation,
@@ -180,7 +180,7 @@ class TokenValidationRouter:
                 readiness=raw.readiness,
                 captor=raw.captor,
             )
-            combatant_carrier = cast(CombatantCarrier, original_carrier)
+            combatant_carrier = cast(CombatantTokenCarrier, original_carrier)
             combatant_prime_extract = CombatantTokenPrimeExtract(
                 carrier=combatant_carrier,
                 blueprint=combatant_blueprint

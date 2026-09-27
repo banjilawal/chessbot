@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import CombatantToken, CombatantBlueprint
+from domain import CombatantToken, CombatantTokenBlueprint
 from transit import TokenCarrier
 
 
-class CombatantCarrier(TokenCarrier[CombatantToken]):
+class CombatantTokenCarrier(TokenCarrier[CombatantToken]):
     """
     Role:
         - Boundary Carrier Interface
@@ -41,7 +41,7 @@ class CombatantCarrier(TokenCarrier[CombatantToken]):
     def __init__(
             self,
             model: Optional[CombatantToken] | None = None,
-            blueprint: Optional[CombatantBlueprint] | None = None,
+            blueprint: Optional[CombatantTokenBlueprint] | None = None,
     ):
         """
         Args:
@@ -53,7 +53,7 @@ class CombatantCarrier(TokenCarrier[CombatantToken]):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> Optional[CombatantToken|CombatantBlueprint]:
+    def entity(self) -> Optional[CombatantToken | CombatantTokenBlueprint]:
         if self.is_empty:
             return None
         if self.has_model:
@@ -72,7 +72,7 @@ class CombatantCarrier(TokenCarrier[CombatantToken]):
     def is_carrying_blueprint(self) -> bool:
         return (
                 not self.has_model and
-                isinstance(self._blueprint, CombatantBlueprint)
+                isinstance(self._blueprint, CombatantTokenBlueprint)
         )
     
     @property
@@ -87,12 +87,12 @@ class CombatantCarrier(TokenCarrier[CombatantToken]):
     def is_over_capacity(self) -> bool:
         return self.size > 1
     
-    def extract_blueprint(self) -> Optional[CombatantBlueprint]:
+    def extract_blueprint(self) -> Optional[CombatantTokenBlueprint]:
         if self.is_empty: return None
         if self.is_carrying_blueprint: return self._blueprint
         
         model = cast(CombatantToken, self._model)
-        return CombatantBlueprint(
+        return CombatantTokenBlueprint(
             id=model.id,
             team=model.team,
             captor=model.captor,

@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from domain import PawnToken, PawnTokenBlueprint
-from transit import CombatantCarrier
+from transit import CombatantTokenCarrier
 
 
-class PawnTokenCarrier(CombatantCarrier):
+class PawnTokenCarrier(CombatantTokenCarrier):
     """
     Role:
         - Boundary Carrier Interface

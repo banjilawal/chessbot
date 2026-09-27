@@ -5,86 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/null/assurance/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/assurance/table/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/assurance/table/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/assurance/table/token/common/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/assurance/table/token/common/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/assurance/table/token/position/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/assurance/table/token/position/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/assurance/table/token/safe/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/assurance/table/token/safe/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/arena/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/attack/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/attack/check/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/attack/check/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/attack/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/attack/kill/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/attack/kill/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/attack/mate/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/attack/mate/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/board/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/coord/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/edge/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/edge/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/game/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/maneuver/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/node/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/node/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/path/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/path/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/player/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/player/human/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/player/human/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/player/machine/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/player/machine/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/rank/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/rank/bishop/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/rank/bishop/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/rank/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/rank/king/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/rank/king/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/rank/knight/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/rank/knight/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/rank/pawn/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/rank/pawn/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/rank/queen/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/rank/queen/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/rank/rook/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/rank/rook/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/scalar/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/scalar/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/square/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/square/home/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/square/home/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/team/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/token/combatant/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/token/combatant/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/token/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/token/king/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/token/king/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/token/pawn/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/token/pawn/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/null/domain/extract/vector/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/token/combatant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/combatant/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/token/combatant/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/combatant/combatant.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/token/common/safe/table.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/common/safe/table.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/combatant/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/token/combatant/combatant.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/token/pawn/blank.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/token/pawn/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/pawn/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/null/domain/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,59 +52,59 @@
     <decayedCancelled>
       <entry key="MS100" value="1.0" />
       <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.000000000023121" />
-      <entry key="S5" value="1.0000556677079961" />
-      <entry key="S10" value="1.0074667572777711" />
-      <entry key="S30" value="1.2408954055326602" />
-      <entry key="S60" value="1.8912530455112586" />
-      <entry key="M2" value="3.253884157189753" />
-      <entry key="M5" value="9.446676741991295" />
-      <entry key="M10" value="30.111989840206622" />
-      <entry key="M15" value="57.533326794580404" />
-      <entry key="M30" value="154.31900295180245" />
-      <entry key="H1" value="388.3273417773136" />
-      <entry key="H2" value="870.182876001944" />
-      <entry key="H4" value="1735.156572132498" />
-      <entry key="D1" value="8831.440036569229" />
-      <entry key="W1" value="32030.312065753475" />
+      <entry key="S2" value="1.000000000017195" />
+      <entry key="S5" value="1.0002875797490896" />
+      <entry key="S10" value="1.1079829752259602" />
+      <entry key="S30" value="11.169293187765655" />
+      <entry key="S60" value="44.10494359406989" />
+      <entry key="M2" value="100.75164228333568" />
+      <entry key="M5" value="174.84686684181602" />
+      <entry key="M10" value="218.5477061676596" />
+      <entry key="M15" value="247.90820882635393" />
+      <entry key="M30" value="337.27182931996333" />
+      <entry key="H1" value="556.0275487856321" />
+      <entry key="H2" value="1026.9866817764143" />
+      <entry key="H4" value="1891.553265231355" />
+      <entry key="D1" value="9002.496368982867" />
+      <entry key="W1" value="32242.730576945676" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="4.464573173592895E-115" />
-      <entry key="S2" value="4.1289832200973404E-29" />
-      <entry key="S5" value="6.682652115026032E-12" />
-      <entry key="S10" value="3.6530217630919982E-6" />
-      <entry key="S30" value="0.024443459685074075" />
-      <entry key="S60" value="0.22128499986739839" />
-      <entry key="M2" value="0.6889083429955358" />
-      <entry key="M5" value="2.0360830600837456" />
-      <entry key="M10" value="4.855071731924138" />
-      <entry key="M15" value="7.5499145757794555" />
-      <entry key="M30" value="13.989538375146013" />
-      <entry key="H1" value="25.05299355049106" />
-      <entry key="H2" value="45.399032941562496" />
-      <entry key="H4" value="80.24466829657845" />
-      <entry key="D1" value="320.0505215244292" />
-      <entry key="W1" value="1282.3287375249354" />
+      <entry key="MS100" value="4.2486170986959977E-14" />
+      <entry key="MS500" value="0.0021166522789937154" />
+      <entry key="S2" value="0.21454866222361138" />
+      <entry key="S5" value="0.5687187928122225" />
+      <entry key="S10" value="0.9712226995098662" />
+      <entry key="S30" value="1.88662560853685" />
+      <entry key="S60" value="2.4741097531404246" />
+      <entry key="M2" value="3.260746016948816" />
+      <entry key="M5" value="4.56425172024153" />
+      <entry key="M10" value="6.30255387741831" />
+      <entry key="M15" value="8.341131748419317" />
+      <entry key="M30" value="14.438917711145104" />
+      <entry key="H1" value="25.663927837605204" />
+      <entry key="H2" value="46.30704455600281" />
+      <entry key="H4" value="81.64753325943525" />
+      <entry key="D1" value="322.94164221897404" />
+      <entry key="W1" value="1286.5449328726836" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9330329915368074" />
-      <entry key="MS500" value="0.9862327044933592" />
-      <entry key="S2" value="0.9965402628509409" />
-      <entry key="S5" value="0.9986702875309725" />
-      <entry key="S10" value="1.0067741165329405" />
-      <entry key="S30" value="1.2643730496377261" />
-      <entry key="S60" value="2.1090897303531704" />
-      <entry key="M2" value="3.936972530132837" />
-      <entry key="M5" value="11.46371460554767" />
-      <entry key="M10" value="34.923040912296756" />
-      <entry key="M15" value="65.02614392543174" />
-      <entry key="M30" value="168.2399066503323" />
-      <entry key="H1" value="413.3091679962996" />
-      <entry key="H2" value="915.512966685647" />
-      <entry key="H4" value="1815.336497489914" />
-      <entry key="D1" value="9151.445243700078" />
-      <entry key="W1" value="33312.61775055241" />
+      <entry key="MS100" value="4.411315797218118E-11" />
+      <entry key="MS500" value="0.008490248384473301" />
+      <entry key="S2" value="0.32263629115678566" />
+      <entry key="S5" value="0.8435090618154449" />
+      <entry key="S10" value="1.5318006055542015" />
+      <entry key="S30" value="12.756208026890446" />
+      <entry key="S60" value="46.39066140943756" />
+      <entry key="M2" value="103.89794186529059" />
+      <entry key="M5" value="179.3548651238445" />
+      <entry key="M10" value="224.80956908272427" />
+      <entry key="M15" value="256.20642085942285" />
+      <entry key="M30" value="351.65716903009906" />
+      <entry key="H1" value="581.6297712539917" />
+      <entry key="H2" value="1073.229680632795" />
+      <entry key="H4" value="1973.1383709837094" />
+      <entry key="D1" value="9325.392908653223" />
+      <entry key="W1" value="33529.25245664921" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -213,7 +137,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/null/assurance/table/token",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/assurance/validator/model/token/combatant",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -227,11 +151,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assurance/validator/model/token/combatant" />
       <recent name="$PROJECT_DIR$/src/err/null/assurance/table/token" />
       <recent name="$PROJECT_DIR$/src/err/null/domain" />
       <recent name="$PROJECT_DIR$/src/err/null" />
       <recent name="$PROJECT_DIR$/src/assurance/validator/model/token/common" />
-      <recent name="$PROJECT_DIR$/src/err/assurance/validator/model/token" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/assurance/validator/model/token/common/table" />
@@ -895,7 +819,7 @@
       <workItem from="1788969937518" duration="171978000" />
       <workItem from="1790001362413" duration="735000" />
       <workItem from="1790063398459" duration="258692000" />
-      <workItem from="1790480915263" duration="45993000" />
+      <workItem from="1790480915263" duration="46494000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

@@ -18,7 +18,7 @@ from domain import (
 from err import CombatantTokenNullException
 
 
-class CombatantBlueprint(TokenBlueprint[CombatantToken]):
+class CombatantTokenBlueprint(TokenBlueprint[CombatantToken]):
     """
      Role:
         1.  Metadata

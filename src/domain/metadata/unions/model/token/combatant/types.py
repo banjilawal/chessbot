@@ -12,8 +12,8 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import CombatantBlueprint, CombatantToken, TokenTypeUnion
-from transit import CombatantCarrier
+from domain import CombatantTokenBlueprint, CombatantToken, TokenTypeUnion
+from transit import CombatantTokenCarrier
 
 
 class CombatantTokenTypeUnion(TokenTypeUnion[CombatantToken]):
@@ -38,8 +38,8 @@ class CombatantTokenTypeUnion(TokenTypeUnion[CombatantToken]):
     def __init__(
             self, 
             model: Optional[Type[CombatantToken]] | None = None,
-            carrier: Optional[Type[CombatantCarrier]] | None = None, 
-            blueprint: Optional[Type[CombatantBlueprint]] | None = None,
+            carrier: Optional[Type[CombatantTokenCarrier]] | None = None,
+            blueprint: Optional[Type[CombatantTokenBlueprint]] | None = None,
     ):
         """
         Args:
@@ -49,8 +49,8 @@ class CombatantTokenTypeUnion(TokenTypeUnion[CombatantToken]):
         """
         super().__init__(
             model=model or CombatantToken,
-            carrier=carrier or CombatantCarrier,
-            blueprint=blueprint or CombatantBlueprint
+            carrier=carrier or CombatantTokenCarrier,
+            blueprint=blueprint or CombatantTokenBlueprint
         )
     
     @property
@@ -58,9 +58,9 @@ class CombatantTokenTypeUnion(TokenTypeUnion[CombatantToken]):
         return cast(Type[CombatantToken], super().model)
     
     @property
-    def carrier(self) -> Type[CombatantCarrier]:
-        return cast(Type[CombatantCarrier], super().carrier)
+    def carrier(self) -> Type[CombatantTokenCarrier]:
+        return cast(Type[CombatantTokenCarrier], super().carrier)
     
     @property
-    def blueprint(self) -> Type[CombatantBlueprint]:
-        return cast(Type[CombatantBlueprint], super().blueprint)
+    def blueprint(self) -> Type[CombatantTokenBlueprint]:
+        return cast(Type[CombatantTokenBlueprint], super().blueprint)

@@ -1,7 +1,7 @@
-# src/assurance/validator/model/token/pawn/validator.py
+# src/assurance/validator/model/token/combatant/validator.py
 
 """
-Module: assurance.validator.payload.token.pawn.validator
+Module: assurance.validator.payload.token.combatant.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.2
@@ -12,28 +12,29 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import CommonTokenPropertyTable, TokenEnemyValidator, TokenValidatorToolkit
+from assurance import (
+    CommonTokenPropertyTable, TokenEnemyValidator, TokenValidatorToolkit
+)
 from domain import (
-    CombatantReadiness, PawnToken, PawnTokenBlueprint, PawnTokenPrimeExtract, PromotionState,
-    Rank, Token
+    CombatantReadiness, CombatantToken, CombatantTokenBlueprint,
+    CombatantTokenPrimeExtract, Token
 )
 from err import (
-    CombatantReadinessNullException, CommonTokenPropertyTableNullException,
-    PawnTokenPrimeExtractNullException, PawnTokenValidatorException,
-    PromotionStateNullException
+    CombatantReadinessNullException, CombatantTokenPrimeExtractNullException,
+    CombatantTokenValidatorException, CommonTokenPropertyTableNullException
 )
-from exchange import RankValidationRequest, TokenValidationRequest
-from transit import PawnTokenCarrier, RankCarrier, TokenCarrier
+from exchange import TokenValidationRequest
+from transit import CombatantTokenCarrier, TokenCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class PawnTokenValidator:
+class CombatantTokenValidator:
     """
     Role
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a PawnTokenCarrier is safe to use.
+        1.  Ensure a CombatantTokenCarrier is safe to use.
 
     Attributes:
         toolkit: TokenValidatorToolkit
@@ -42,7 +43,7 @@ class PawnTokenValidator:
     Provides:
         -   def execute(
                     candidate: Any
-            ) -> ValidationResult[PawnTokenCarrier]:
+            ) -> ValidationResult[CombatantTokenCarrier]:
 
     Super Class:
     """
@@ -66,25 +67,23 @@ class PawnTokenValidator:
     def execute(
             self,
             property_table: CommonTokenPropertyTable
-    ) -> ValidationResult[PawnTokenCarrier]:
+    ) -> ValidationResult[CombatantTokenCarrier]:
         """
-        Assure the properties can assemble a safe PawnTokenCarrier.
+        Assure the properties can assemble a safe CombatantTokenCarrier.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 fields are flagged.
                     -   captor
-                    -   rank
-                    -   promotion_state
                     -   combatant_readiness
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
             property_table: CommonTokenPropertyTable
         Returns:
-            ValidationResult[PawnTokenCarrier]
+            ValidationResult[CombatantTokenCarrier]
         Raises:
-            PawnTokenValidatorException
+            CombatantTokenValidatorException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -97,34 +96,34 @@ class PawnTokenValidator:
         if table_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PawnTokenValidatorException(
+                CombatantTokenValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PawnTokenValidatorException.MSG,
-                    err_code=PawnTokenValidatorException.ERR_CODE,
+                    msg=CombatantTokenValidatorException.MSG,
+                    err_code=CombatantTokenValidatorException.ERR_CODE,
                     ex=table_validation.exception
                 )
             )
         # Handle the case that the property table has the wrong PrimeExtract.
         extract_validation = self._toolkit.priming_validator.execute(
             candidate=property_table.prime_extract,
-            target_model=Type[PawnTokenPrimeExtract],
-            null_exception=PawnTokenPrimeExtractNullException(),
+            target_model=Type[CombatantTokenPrimeExtract],
+            null_exception=CombatantTokenPrimeExtractNullException(),
         )
         if extract_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PawnTokenValidatorException(
+                CombatantTokenValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PawnTokenValidatorException.MSG,
-                    err_code=PawnTokenValidatorException.ERR_CODE,
+                    msg=CombatantTokenValidatorException.MSG,
+                    err_code=CombatantTokenValidatorException.ERR_CODE,
                     ex=extract_validation.exception
                 )
             )
         # Handle the case that there is no blueprint in the carrier.
-        prime_extract = cast(PawnTokenPrimeExtract, property_table.prime_extract)
-        blueprint = cast(PawnTokenBlueprint, prime_extract.blueprint)
+        prime_extract = cast(CombatantTokenPrimeExtract, property_table.prime_extract)
+        blueprint = cast(CombatantTokenBlueprint, prime_extract.blueprint)
         # --- START_COMBATANT_TOKEN_READINESS_VALIDATION_PROCESS ---#
         
         # Handle the case that the readiness is flagged.
@@ -136,51 +135,12 @@ class PawnTokenValidator:
         if readiness_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PawnTokenValidatorException(
+                CombatantTokenValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PawnTokenValidatorException.MSG,
-                    err_code=PawnTokenValidatorException.ERR_CODE,
+                    msg=CombatantTokenValidatorException.MSG,
+                    err_code=CombatantTokenValidatorException.ERR_CODE,
                     ex=readiness_validation.exception,
-                )
-            )
-        # --- START_PROMOTION_STATE_VALIDATION_PROCESS ---#
-        
-        # Handle the case that the promotion_state is flagged.
-        promotion_state_validation = self._toolkit.priming_validator.execute(
-            candidate=blueprint.promotion_state,
-            target_model=PromotionState,
-            null_exception=PromotionStateNullException(),
-        )
-        if promotion_state_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                PawnTokenValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=PawnTokenValidatorException.MSG,
-                    err_code=PawnTokenValidatorException.ERR_CODE,
-                    ex=promotion_state_validation.exception,
-                )
-            )
-        # --- START_RANK_VALIDATION_PROCESS ---#
-        
-        # Handle the case that the rank is flagged.
-        rank_validation = self._toolkit.wrapper.rank.extract_model(
-            request=RankValidationRequest(
-                item=RankCarrier(model=blueprint.rank),
-                id=IdFactory.next_id(class_name="RankValidationRequest"),
-            )
-        )
-        if rank_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                PawnTokenValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=PawnTokenValidatorException.MSG,
-                    err_code=PawnTokenValidatorException.ERR_CODE,
-                    ex=rank_validation.exception,
                 )
             )
         # --- START_CAPTOR_VALIDATION_PROCESS ---#
@@ -197,11 +157,11 @@ class PawnTokenValidator:
             if enemy_validation_result.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    PawnTokenValidatorException(
+                    CombatantTokenValidatorException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=PawnTokenValidatorException.MSG,
-                        err_code=PawnTokenValidatorException.ERR_CODE,
+                        msg=CombatantTokenValidatorException.MSG,
+                        err_code=CombatantTokenValidatorException.ERR_CODE,
                         ex=enemy_validation_result.exception,
                     )
                 )
@@ -209,31 +169,27 @@ class PawnTokenValidator:
             captor_placeholder = cast(Token, enemy_validation_result.payload)
 
         # --- Extract validation payloads. ---#
-        rank = cast(Rank, rank_validation.payload)
         readiness = cast(CombatantReadiness, readiness_validation.payload)
-        promotion_state = cast(PromotionState, promotion_state_validation.payload)
         
         # --- Forward the appropriate work product to the caller. ---#
-        # The client wants a safe PawnToken.
+        # The client wants a safe CombatantToken.
         if prime_extract.carrier.has_model:
-            payload = PawnToken(
+            payload = CombatantToken(
                 id=property_table.safe.id,
                 team=property_table.safe.team,
                 formation=property_table.safe.formation,
                 home_square=property_table.safe.home_square,
             )
-            payload.rank = rank
             payload.readiness = readiness
             payload.captor = captor_placeholder
-            payload.promotion_state = promotion_state
             payload.deployment = property_table.safe.deployment
             payload.position = property_table.safe.position
             payload.previous_position = property_table.safe.previous_position
             
-            return ValidationResult.success(PawnTokenCarrier(model=payload))
+            return ValidationResult.success(CombatantTokenCarrier(model=payload))
         
         # Otherwise, the client is a VectorBuilder that needs a Blueprint.
-        payload = PawnTokenBlueprint(
+        payload = CombatantTokenBlueprint(
             id=property_table.safe.id,
             team=property_table.safe.team,
             formation=property_table.safe.formation,
@@ -241,11 +197,9 @@ class PawnTokenValidator:
             deployment=property_table.safe.deployment,
             position=property_table.safe.position,
             previous_position=property_table.safe.previous_position,
-            promotion_state=promotion_state,
             captor=captor_placeholder,
             readiness=readiness,
-            rank=rank,
         )
-        return ValidationResult.success(PawnTokenCarrier(blueprint=payload))
+        return ValidationResult.success(CombatantTokenCarrier(blueprint=payload))
     
     
