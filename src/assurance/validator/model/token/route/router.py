@@ -17,7 +17,7 @@ from assurance import (
     TokenValidatorToolkit
 )
 from domain import (
-    CombatantBlueprint, CombatantTokenPrimeExtract, Formation, HomeSquare,
+    CombatantBlueprint, CombatantTokenPrimeExtract, Coord, Formation, HomeSquare,
     KingTokenBlueprint, KingTokenPrimeExtract, PawnTokenBlueprint,
     PawnTokenPrimeExtract, Team, TokenDeployment, TokenPrimeExtract
 )
@@ -85,6 +85,8 @@ class TokenValidationRouter:
             home_square: HomeSquare,
             deployment: TokenDeployment,
             prime_extract: TokenPrimeExtract,
+            position: Optional[Coord] | None = None,
+            previous_position: Optional[Coord] | None = None,
     ) -> ValidationResult[TokenCarrier]:
         """
         Assure a candidate is a safe TokenCarrier.
@@ -126,6 +128,8 @@ class TokenValidationRouter:
                 readiness=raw.readiness,
                 checkmate=raw.checkmate,
                 check_warning=raw.check_warning,
+                position=position,
+                previous_position,
             )
             king_carrier = cast(KingTokenCarrier, original_carrier)
             king_prime_extract = KingTokenPrimeExtract(

@@ -9,19 +9,14 @@ version: 1.0.2
 
 from __future__ import annotations
 
-from typing import Any, Optional, cast
+from typing import Any, Dict, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidator, TokenValidationRouter, TokenValidatorToolkit
-from domain import (
-    Coord, Formation, HomeSquare, Team, Token, TokenBlueprint, TokenDeployment,
-    TokenPrimeExtract
-)
-from err import (
-    CoordValidatorException, FormationNullException, TokenDeploymentNullException, TokenValidatorException
-)
-from exchange import CoordValidationRequest, TeamValidationRequest
-from transit import CoordCarrier, TeamCarrier, TokenCarrier
+from assurance import ModelValidator, TokenPositionValidator, TokenValidationRouter, TokenValidatorToolkit
+from domain import Coord, Formation, HomeSquare, Token, TokenBlueprint, TokenDeployment, TokenPrimeExtract
+from err import FormationNullException, TokenDeploymentNullException, TokenValidatorException
+from exchange import TeamValidationRequest
+from transit import TeamCarrier, TokenCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -36,6 +31,7 @@ class TokenValidator(ModelValidator[Token]):
     Attributes:
         toolkit: TokenValidatorToolkit
         validation_router: TokenValidationRouter
+        position_validator: TokenPositionValidator
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[TokenCarrier]:
@@ -50,14 +46,17 @@ class TokenValidator(ModelValidator[Token]):
             self,
             toolkit: Optional[TokenValidatorToolkit] | None = None,
             validation_router: Optional[TokenValidationRouter] | None = None,
+            position_validator: Optional[TokenPositionValidator] | None = None,
     ):
         """
         Args:
             toolkit: Optional[TokenValidatorToolkit]
             validation_router: Optional[TokenValidationRouter]
+            position_validator: Optional[TokenPositionValidator]
         """
         super().__init__(toolkit=toolkit or TokenValidatorToolkit())
         self._validation_router = validation_router or TokenValidationRouter()
+        self._position_validator = position_validator or TokenPositionValidator()
     
     @property
     def toolkit(self) -> TokenValidatorToolkit:
@@ -190,52 +189,35 @@ class TokenValidator(ModelValidator[Token]):
                 )
             )
         # Handle the case that the current_position is flagged.
-        position_validation: ValidationResult = ValidationResult.failure(
-            CoordValidatorException()
+        position_dict_result = self._position_validator.execute(
+            blueprint=token_blueprint
         )
-        if token_blueprint.position is not None:
-            position_validation = self._position_validator(
-                position_candidate=token_blueprint.position
-            )
-            if position_validation.is_failure:
-                # Send the exception chain on failure.
-                return ValidationResult.failure(
-                    TokenValidatorException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=TokenValidatorException.MSG,
-                        err_code=TokenValidatorException.ERR_CODE,
-                        ex=position_validation.exception,
-                    )
+        if position_dict_result.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
+                    ex=position_dict_result.exception,
                 )
-        # Handle the case that the previous_position is flagged.
-        previous_position_validation: ValidationResult = ValidationResult.failure(
-            CoordValidatorException()
-        )
-        if token_blueprint.previous_position is not None:
-            previous_position_validation = self._position_validator(
-                position_candidate=token_blueprint.position
             )
-            if previous_position_validation.is_failure:
-                # Send the exception chain on failure.
-                return ValidationResult.failure(
-                    TokenValidatorException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=TokenValidatorException.MSG,
-                        err_code=TokenValidatorException.ERR_CODE,
-                        ex=previous_position_validation.exception,
-                    )
-                )
+        position_log = cast(Dict[str, Coord], position_dict_result.payload)
+        position = None
+        previous_position = None
+        if position_log["position".upper()] is not None:
+            position = position_log["position".upper()]
+        if position_log["previous_position".upper()] is not None:
+            position = position_log["previous_position".upper()]
         
-            
-            
         # --- Extract common Token validation payloads. ---#
         id = cast(int, id_validation.payload)
         team = cast(Team, team_validation.payload)
         home_square = cast(HomeSquare, home_detection.payload)
         formation = cast(Formation, formation_validation.payload)
         deployment = cast(TokenDeployment, deployment_validation.payload)
+        position = position_log["position".upper()]
         
         # Handle the case that the router did not send a safe Token.
         router_result = self._validation_router.execute(
@@ -244,6 +226,8 @@ class TokenValidator(ModelValidator[Token]):
             formation=formation,
             deployment=deployment,
             home_square=home_square,
+            position=position,
+            previous_position,
             prime_extract=prime_extract,
         )
         if router_result.is_failure:

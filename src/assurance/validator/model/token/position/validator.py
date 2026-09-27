@@ -26,7 +26,8 @@ class TokenPositionValidator:
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a TokenBlueprint position fields are safe to use.
+        1.  Ensure a TokenBlueprint position and previous_positions fields
+            are safe to use.
 
     Attributes:
         toolkit: TokenValidatorToolkit
