@@ -14,12 +14,12 @@ from typing import Optional, cast
 from artifcat import ValidationResult
 from assurance import TokenEnemyValidator, TokenValidatorToolkit
 from domain import (
-    CombatantReadiness, Coord, Formation, HomeSquare, PawnToken, PawnTokenPrimeExtract, PromotionState, Rank, Team,
-    Token, TokenDeployment
+    CombatantReadiness, Coord, Formation, HomeSquare, PawnToken, PawnTokenBlueprint,
+    PawnTokenPrimeExtract, PromotionState, Rank, Team, Token, TokenDeployment
 )
 from err import (
-    CombatantReadinessNullException, EmptyPawnTokenCarrierException, PawnTokenValidatorException,
-    PromotionStateNullException, TokenEnemyValidatorException
+    CombatantReadinessNullException, EmptyPawnTokenCarrierException,
+    PawnTokenValidatorException, PromotionStateNullException
 )
 from exchange import RankValidationRequest, TokenValidationRequest
 from transit import PawnTokenCarrier, RankCarrier, TokenCarrier
@@ -74,18 +74,15 @@ class PawnTokenValidator:
             previous_position: Optional[Coord] | None = None,
     ) -> ValidationResult[PawnTokenCarrier]:
         """
-        Send a validated PawnToken or Blueprint which inside the validated
-        PawnTokenCarrier.
+        Assure the properties can assemble a safe PawnTokenCarrier.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
-                occur
-                    - The carrier is empty.
-                    - The id check fails.
-                    - The team check fails.
-                    - The formation is null or the wrong type.
-                    - The readiness is null or the wrong type.
-                    - the deployment is null or the wrong type.
+                fields are flagged.
+                    -   captor
+                    -   rank
+                    -   promotion_state
+                    -   combatant_readiness
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
@@ -123,6 +120,8 @@ class PawnTokenValidator:
                     ),
                 )
             )
+        # --- START_COMBATANT_TOKEN_READINESS_VALIDATION_PROCESS ---#
+        
         # Handle the case that the readiness is flagged.
         readiness_validation = self._toolkit.priming_validator.execute(
             candidate=blueprint.readiness,
@@ -140,6 +139,8 @@ class PawnTokenValidator:
                     ex=readiness_validation.exception,
                 )
             )
+        # --- START_PROMOTION_STATE_VALIDATION_PROCESS ---#
+        
         # Handle the case that the promotion_state is flagged.
         promotion_state_validation = self._toolkit.priming_validator.execute(
             candidate=blueprint.promotion_state,
@@ -157,6 +158,8 @@ class PawnTokenValidator:
                     ex=promotion_state_validation.exception,
                 )
             )
+        # --- START_RANK_VALIDATION_PROCESS ---#
+        
         # Handle the case that the rank is flagged.
         rank_validation = self._toolkit.wrapper.rank.extract_model(
             request=RankValidationRequest(
@@ -175,8 +178,11 @@ class PawnTokenValidator:
                     ex=rank_validation.exception,
                 )
             )
-        captor = blueprint.captor
+        # --- START_CAPTOR_VALIDATION_PROCESS ---#
+        
+        captor_placeholder = blueprint.captor
         if blueprint.captor is not None:
+            # Handle the case that the not-null captor is flagged
             enemy_validation_result = self._enemy_validator.execute(
                 request=TokenValidationRequest(
                     item=TokenCarrier(model=blueprint.captor),
@@ -194,8 +200,9 @@ class PawnTokenValidator:
                         ex=enemy_validation_result.exception,
                     )
                 )
-            # Otherwise update captor
-            captor = cast(Token, enemy_validation_result.payload)
+            # Otherwise update captor_placeholder
+            captor_placeholder = cast(Token, enemy_validation_result.payload)
+
         # --- Extract validation payloads. ---#
         rank = cast(Rank, rank_validation.payload)
         readiness = cast(CombatantReadiness, readiness_validation.payload)
@@ -211,7 +218,7 @@ class PawnTokenValidator:
                 home_square=home_square,
             )
             payload.rank = rank
-            payload.captor = captor
+            payload.captor = captor_placeholder
             payload.position = position
             payload.readiness = readiness
             payload.deployment = deployment
@@ -226,7 +233,7 @@ class PawnTokenValidator:
             formation=formation,
             home_square=home_square,
             rank=rank,
-            captor=captor,
+            captor=captor_placeholder,
             position=position,
             readiness=readiness,
             deployment=deployment,

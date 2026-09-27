@@ -11,6 +11,7 @@ version: 0.0.2
 
 # Packages
 from .combatant import *
+from .common import *
 from .enemy import *
 from .king import *
 from .pawn import *
