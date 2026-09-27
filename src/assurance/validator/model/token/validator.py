@@ -13,7 +13,8 @@ from typing import Any, Dict, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    CommonTokenPropertyTableGenerator, ModelValidator, TokenPositionTableGenerator, TokenValidationRouter,
+    CommonTokenPropertyTable, CommonTokenPropertyTableGenerator, ModelValidator, TokenPositionTableGenerator,
+    TokenValidationRouter,
     TokenValidatorToolkit
 )
 from domain import Coord, Formation, HomeSquare, Token, TokenBlueprint, TokenDeployment, TokenPrimeExtract
@@ -34,7 +35,7 @@ class TokenValidator(ModelValidator[Token]):
     Attributes:
         toolkit: TokenValidatorToolkit
         validation_router: TokenValidationRouter
-        common_property_validator: CommonTokenPropertyValidator
+        property_table_generator: CommonTokenPropertyTableGenerator
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[TokenCarrier]:
@@ -43,25 +44,25 @@ class TokenValidator(ModelValidator[Token]):
         ModelValidator
     """
     _validation_router: TokenValidationRouter
-    _common_property_validator: CommonTokenPropertyTableGenerator
+    _property_table_generator: CommonTokenPropertyTableGenerator
     
     def __init__(
             self,
             toolkit: Optional[TokenValidatorToolkit] | None = None,
             validation_router: Optional[TokenValidationRouter] | None = None,
-            common_property_validator: Optional[CommonTokenPropertyTableGenerator]
-                                       | None = None,
+            property_table_generator: Optional[CommonTokenPropertyTableGenerator]
+                                      | None = None,
     ):
         """
         Args:
             toolkit: Optional[TokenValidatorToolkit]
             validation_router: Optional[TokenValidationRouter]
-            common_property_validator: Optional[CommonTokenPropertyValidator]
+            property_table_generator: Optional[CommonTokenPropertyTableGenerator]
         """
         super().__init__(toolkit=toolkit or TokenValidatorToolkit())
         self._validation_router = validation_router or TokenValidationRouter()
-        self._common_property_validator = (
-                common_property_validator or
+        self._property_table_generator = (
+                property_table_generator or
                 CommonTokenPropertyTableGenerator()
         )
     
@@ -94,8 +95,8 @@ class TokenValidator(ModelValidator[Token]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the blueprint cannot be extracted.
-        load_result = self._common_property_validator.execute(candidate=candidate)
-        if load_result.is_failure:
+        table_generation_result = self._property_table_generator.execute(candidate=candidate)
+        if table_generation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidatorException(
@@ -103,10 +104,14 @@ class TokenValidator(ModelValidator[Token]):
                     cls_name=self.__class__.__name__,
                     msg=TokenValidatorException.MSG,
                     err_code=TokenValidatorException.ERR_CODE,
-                    ex=load_result.exception,
+                    ex=table_generation_result.exception,
                 )
             )
-        property_dict
+        common_property_table = cast(
+            CommonTokenPropertyTable,
+            table_generation_result.payload,
+        )
+        router_result = self._validation_router.execute()
         
         # --- Extract common Token validation payloads. ---#
         id = cast(int, id_validation.payload)

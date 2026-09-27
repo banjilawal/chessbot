@@ -64,6 +64,7 @@ class PawnTokenValidator:
     @LoggingLevelRouter.monitor
     def execute(
             self,
+            property_table: CommonTokenPropertyTable
             id: int,
             team: Team,
             formation: Formation,

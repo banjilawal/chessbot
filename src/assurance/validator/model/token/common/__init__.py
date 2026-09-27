@@ -10,8 +10,8 @@ version: 0.0.2
 # =========== ASSURANCE.VALIDATOR.MODEL.TOKEN.COMMON PACKAGE ===========#
 
 # Packages
-
+from .safe import *
+from .property import *
 
 # Modules
-from .table import CommonTokenPropertyTable
 from .generator import CommonTokenPropertyTableGenerator

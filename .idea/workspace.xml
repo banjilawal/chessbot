@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/common/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/common/validator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/validator/model/token/common/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/validator/model/token/common/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/token/pawn/blank.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/token/pawn/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/pawn/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/token/common/generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/common/generator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/token/common/table.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/common/table.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/token/route/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/route/router.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,61 +50,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000169306865245" />
-      <entry key="MS500" value="1.1111071749708499" />
-      <entry key="S2" value="1.6141721223384613" />
-      <entry key="S5" value="2.069716744650088" />
-      <entry key="S10" value="2.4130093423067227" />
-      <entry key="S30" value="3.105896207720575" />
-      <entry key="S60" value="5.204031369817262" />
-      <entry key="M2" value="10.843469819862479" />
-      <entry key="M5" value="28.541264357531503" />
-      <entry key="M10" value="68.52499564293264" />
-      <entry key="M15" value="117.09782196516974" />
-      <entry key="M30" value="250.384057478729" />
-      <entry key="H1" value="437.8676329885245" />
-      <entry key="H2" value="761.5434950193772" />
-      <entry key="H4" value="1484.910523624737" />
-      <entry key="D1" value="8333.991366115119" />
-      <entry key="W1" value="31013.731360218182" />
+      <entry key="MS100" value="1.000000185767312" />
+      <entry key="MS500" value="1.0454377301275526" />
+      <entry key="S2" value="1.6487806217268766" />
+      <entry key="S5" value="2.492524620286364" />
+      <entry key="S10" value="3.193565470321318" />
+      <entry key="S30" value="5.05607986840614" />
+      <entry key="S60" value="7.643734330170354" />
+      <entry key="M2" value="13.210596004723302" />
+      <entry key="M5" value="50.259067182980516" />
+      <entry key="M10" value="159.37910137521087" />
+      <entry key="M15" value="264.88396126731647" />
+      <entry key="M30" value="509.6581712890689" />
+      <entry key="H1" value="840.0967614028892" />
+      <entry key="H2" value="1292.6479365435182" />
+      <entry key="H4" value="2079.9395212222857" />
+      <entry key="D1" value="9008.120967579684" />
+      <entry key="W1" value="31881.946153381836" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="3.528E-320" />
-      <entry key="S2" value="1.3705429984670471E-80" />
-      <entry key="S5" value="1.134376095526704E-32" />
-      <entry key="S10" value="1.0650709345046955E-16" />
-      <entry key="S30" value="4.740158288596698E-6" />
-      <entry key="S60" value="0.0021771930292786013" />
-      <entry key="M2" value="0.046711132632778464" />
-      <entry key="M5" value="0.3150802700228153" />
-      <entry key="M10" value="0.8054783172358391" />
-      <entry key="M15" value="1.4952480758133937" />
-      <entry key="M30" value="4.404698602300674" />
-      <entry key="H1" value="10.33088253315933" />
-      <entry key="H2" value="22.786274822327172" />
-      <entry key="H4" value="50.62240552840469" />
-      <entry key="D1" value="274.3100591826427" />
-      <entry key="W1" value="1221.3762933048527" />
+      <entry key="MS500" value="3.0792815267105754E-103" />
+      <entry key="S2" value="2.355663357184276E-26" />
+      <entry key="S5" value="5.6526571404033425E-11" />
+      <entry key="S10" value="8.577339685964852E-6" />
+      <entry key="S30" value="0.04069152950520899" />
+      <entry key="S60" value="0.3912368189664361" />
+      <entry key="M2" value="1.2420603251287972" />
+      <entry key="M5" value="2.573098838227762" />
+      <entry key="M10" value="4.626684310716172" />
+      <entry key="M15" value="7.721206897915657" />
+      <entry key="M30" value="17.606691288115563" />
+      <entry key="H1" value="31.911919841684504" />
+      <entry key="H2" value="50.79677375151552" />
+      <entry key="H4" value="81.98353079474708" />
+      <entry key="D1" value="311.3651338151045" />
+      <entry key="W1" value="1263.9706312901756" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9202033383968882" />
-      <entry key="MS500" value="1.0929277797529477" />
-      <entry key="S2" value="1.6075706573158417" />
-      <entry key="S5" value="2.0660921907018244" />
-      <entry key="S10" value="2.4107385738539" />
-      <entry key="S30" value="3.0947351162610817" />
-      <entry key="S60" value="5.1703140241626055" />
-      <entry key="M2" value="10.822135578386497" />
-      <entry key="M5" value="28.772093543570342" />
-      <entry key="M10" value="69.2583470825865" />
-      <entry key="M15" value="118.52909406308221" />
-      <entry key="M30" value="254.73242099048" />
-      <entry key="H1" value="448.14756516818966" />
-      <entry key="H2" value="784.2802465439055" />
-      <entry key="H4" value="1535.4809517516765" />
-      <entry key="D1" value="8608.26040943501" />
-      <entry key="W1" value="32235.085582416512" />
+      <entry key="MS100" value="0.8467453124223713" />
+      <entry key="MS500" value="0.9763176837080595" />
+      <entry key="S2" value="1.3922904271485785" />
+      <entry key="S5" value="2.196276898433727" />
+      <entry key="S10" value="2.9260965817329483" />
+      <entry key="S30" value="4.856361226545072" />
+      <entry key="S60" value="7.826540711973329" />
+      <entry key="M2" value="14.273569362342672" />
+      <entry key="M5" value="52.701537656134924" />
+      <entry key="M10" value="163.90014327222508" />
+      <entry key="M15" value="272.50221521452687" />
+      <entry key="M30" value="527.1632827675128" />
+      <entry key="H1" value="871.9185364217896" />
+      <entry key="H2" value="1343.3694513348942" />
+      <entry key="H4" value="2161.8570391526146" />
+      <entry key="D1" value="9319.44196897246" />
+      <entry key="W1" value="33145.89413221169" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -822,7 +819,7 @@
       <workItem from="1788969937518" duration="171978000" />
       <workItem from="1790001362413" duration="735000" />
       <workItem from="1790063398459" duration="258692000" />
-      <workItem from="1790480915263" duration="31692000" />
+      <workItem from="1790480915263" duration="37939000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

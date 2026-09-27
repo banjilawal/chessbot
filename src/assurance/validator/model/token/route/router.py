@@ -87,6 +87,7 @@ class TokenValidationRouter:
             prime_extract: TokenPrimeExtract,
             position: Optional[Coord] | None = None,
             previous_position: Optional[Coord] | None = None,
+            property_table: CommonTokenPropertyTable
     ) -> ValidationResult[TokenCarrier]:
         """
         Assure a candidate is a safe TokenCarrier.
@@ -112,7 +113,8 @@ class TokenValidationRouter:
         """
         method = f"{self.__class__.__name__}.execute"
     
-        original_carrier = prime_extract.carrier
+        
+        original_carrier = property_table.prime_extract.carrier
         token_blueprint = prime_extract.blueprint
         
         # --- Select the appropriate validation route. ---#

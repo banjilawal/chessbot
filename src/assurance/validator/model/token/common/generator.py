@@ -9,12 +9,15 @@ version: 1.0.2
 
 from __future__ import annotations
 
-from typing import Any, Dict, Optional, cast
+from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import CommonTokenPropertyTable, TokenPositionTable, TokenPositionTableGenerator, TokenValidatorToolkit
+from assurance import (
+    CommonTokenPropertyTable, TokenPositionTable, TokenPositionTableGenerator, 
+    TokenValidatorToolkit
+)
 from domain import (
-    Coord, Formation, HomeSquare, Team, TokenBlueprint, TokenDeployment,
+    Formation, HomeSquare, Team, TokenBlueprint, TokenDeployment, 
     TokenPrimeExtract
 )
 from err import (
@@ -65,21 +68,21 @@ class CommonTokenPropertyTableGenerator:
             candidate: Any,
     ) -> ValidationResult[CommonTokenPropertyTable]:
         """
-        Assure a candidate is a safe TokenCarrier.
+        Assure a candidate's properties are safe for a Token
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
                     -   The Loader fails.
                     -   Team, Formation, Deployment, id, or HomeSquare are flagged.
-                    -   The validation_router does not return a product
-            2.  Otherwise, send a TokenCarrier in the success result.
+                    -   The position_table_generator fails.
+            2.  Otherwise, send a CommonTokenPropertyTable in the success result.
         Args:
             candidate: Any
         Returns:
-            ValidationResult[TokenCarrier]
+           ValidationResult[CommonTokenPropertyTable]
         Raises:
-            CommonTokenPropertyValidatorException
+            CommonTokenPropertyTableGeneratorException
         """
         method = f"{self.__class__.__name__}.execute"
         
