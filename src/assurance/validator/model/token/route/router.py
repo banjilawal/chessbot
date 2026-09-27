@@ -102,6 +102,8 @@ class TokenValidationRouter:
             home_square: HomeSquare
             deployment: TokenDeployment
             prime_extract: TokenPrimeExtract
+            previous_position: Optional[Coord]
+            position: Optional[Coord]
             
         Returns:
             ValidationResult[TokenCarrier]
@@ -122,14 +124,12 @@ class TokenValidationRouter:
                 team=team,
                 formation=formation,
                 deployment=deployment,
-                position=raw.position,
                 home_square=home_square,
-                previous_position=raw.previous_position,
+                position=position,
+                previous_position=previous_position,
                 readiness=raw.readiness,
                 checkmate=raw.checkmate,
                 check_warning=raw.check_warning,
-                position=position,
-                previous_position,
             )
             king_carrier = cast(KingTokenCarrier, original_carrier)
             king_prime_extract = KingTokenPrimeExtract(
@@ -148,9 +148,9 @@ class TokenValidationRouter:
                 team=team,
                 formation=formation,
                 deployment=deployment,
-                position=raw.position,
                 home_square=home_square,
-                previous_position=raw.previous_position,
+                position=position,
+                previous_position=previous_position,
                 readiness=raw.readiness,
                 rank=raw.rank,
                 captor=raw.captor,
@@ -172,9 +172,9 @@ class TokenValidationRouter:
                 team=team,
                 formation=formation,
                 deployment=deployment,
-                position=raw.position,
                 home_square=home_square,
-                previous_position=raw.previous_position,
+                position=position,
+                previous_position=previous_position,
                 readiness=raw.readiness,
                 captor=raw.captor,
             )

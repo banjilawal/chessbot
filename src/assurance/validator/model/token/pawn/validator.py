@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import ValidationResult
 from assurance import TokenValidatorToolkit
 from domain import (
-    Formation, CombatantReadiness, PawnToken, HomeSquare, PawnTokenBlueprint,
+    Coord, Formation, CombatantReadiness, PawnToken, HomeSquare, PawnTokenBlueprint,
     PawnTokenPrimeExtract, PromotionState, Rank, Team, TeamValidationRequest, TokenDeployment
 )
 from err import (
@@ -22,7 +22,7 @@ from err import (
     EmptyTeamCarrierException, EmptyPawnTokenCarrierException, TokenDeploymentNullException
 )
 from exchange import RankValidationRequest
-from transit import PawnTokenCarrier, RankCarrier, TeamCarrier
+from transit import PawnTokenCarrier, RankCarrier, TeamCarrier, TokenCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -64,7 +64,9 @@ class PawnTokenValidator:
             formation: Formation,
             home_square: HomeSquare,
             deployment: TokenDeployment,
-            prime_extract: PawnTokenPrimeExtract
+            prime_extract: PawnTokenPrimeExtract,
+            position: Optional[Coord] | None = None,
+            previous_position: Optional[Coord] | None = None,
     ) -> ValidationResult[PawnTokenPrimeExtract]:
         """
         Send a validated PawnToken or Blueprint which inside the validated
@@ -82,7 +84,15 @@ class PawnTokenValidator:
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            prime_extract: PawnTokenCarrier
+            id: int
+            team: Team
+            formation: Formation
+            home_square: HomeSquare
+            deployment: TokenDeployment
+            prime_extract: TokenPrimeExtract
+            previous_position: Optional[Coord]
+            position: Optional[Coord]
+            
         Returns:
             ValidationResult[PawnTokenPrimeExtract]
         Raises:
@@ -160,6 +170,11 @@ class PawnTokenValidator:
                     ex=rank_validation.exception,
                 )
             )
+        validated_captor = blueprint.captor
+        if blueprint.captor is not None:
+            token_validation_
+            captor_validation_result =
+        
         # --- Extract validation payloads. ---#
         rank = cast(Rank, rank_validation.payload)
         readiness = cast(CombatantReadiness, readiness_validation.payload)
@@ -168,13 +183,20 @@ class PawnTokenValidator:
         # --- Forward the appropriate work product to the caller. ---#
         # The client wants a safe PawnToken.
         if prime_extract.carrier.has_model:
-            payload = PawnToken(
+            model = PawnToken(
                 id=id,
                 team=team,
                 formation=formation,
                 home_square=home_square,
             )
-            return ValidationResult.success(VectorCarrier(model=payload))
+            model.readiness = readiness
+            model.deployment = deployment
+            model.rank = rank
+            model.captor = blueprint.captor
+            model.position = position
+            model.promotion_state = promotion_state
+            model.previous_position = previous_position
+            return ValidationResult.success(TokenCarrier(model=model))
         
         # Otherwise, the client is a VectorBuilder that needs a Blueprint.
         payload = VectorBlueprint(x=x, y=y)
@@ -189,13 +211,7 @@ class PawnTokenValidator:
                 home_square=home_square,
                 formation=formation,
             )
-            model.readiness = readiness
-            model.deployment = deployment
-            model.rank = blueprint.rank
-            model.captor = blueprint.captor
-            model.position = blueprint.position
-            model.promotion_state = promotion_state
-            model.previous_position = model.previous_position
+
             
             return ValidationResult.success(PawnTokenCarrier(model=model))
         # Else the blueprint case
