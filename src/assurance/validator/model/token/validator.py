@@ -12,24 +12,16 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import (
-    CombatantTokenValidator, KingTokenValidator, ModelValidator, PawnTokenValidator,
-    TokenValidatorToolkit
-)
+from assurance import ModelValidator, TokenValidationRouter, TokenValidatorToolkit
 from domain import (
-    CombatantBlueprint, CombatantTokenPrimeExtract, Formation, HomeSquare, KingTokenBlueprint, KingTokenPrimeExtract,
-    PawnTokenBlueprint,
-    PawnTokenPrimeExtract, Team,
-    Token, TokenBlueprint,
-    TokenDeployment,
+    Formation, HomeSquare, Team, Token, TokenBlueprint, TokenDeployment,
     TokenPrimeExtract
 )
 from err import (
-    FormationNullException, TokenDeploymentNullException, TokenValidationRouteException,
-    TokenValidatorException
+    FormationNullException, TokenDeploymentNullException, TokenValidatorException
 )
 from exchange import TeamValidationRequest
-from transit import CombatantCarrier, KingTokenCarrier, PawnTokenCarrier, TeamCarrier, TokenCarrier
+from transit import TeamCarrier, TokenCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -43,9 +35,7 @@ class TokenValidator(ModelValidator[Token]):
 
     Attributes:
         toolkit: TokenValidatorToolkit
-        king_validator: KingTokenValidator
-        pawn_validator: PawnTokenValidator
-        combatant_validator: CombatantTokenValidator
+        validation_router: TokenValidationRouter
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[TokenCarrier]:
@@ -53,28 +43,20 @@ class TokenValidator(ModelValidator[Token]):
     Super Class:
         ModelValidator
     """
-    _king_validator: KingTokenValidator
-    _pawn_validator: PawnTokenValidator
-    _combatant_validator: CombatantTokenValidator
+    _validation_router: TokenValidationRouter
     
     def __init__(
             self,
             toolkit: Optional[TokenValidatorToolkit] | None = None,
-            king_validator: Optional[KingTokenValidator] | None = None,
-            pawn_validator: Optional[PawnTokenValidator] | None = None,
-            combatant_validator: Optional[CombatantTokenValidator] | None = None,
+            validation_router: Optional[TokenValidationRouter] | None = None,
     ):
         """
         Args:
             toolkit: Optional[TokenValidatorToolkit]
-            king_validator: Optional[KingTokenValidator]
-            pawn_validator: Optional[PawnTokenValidator]
-            combatant_validator: Optional[CombatantTokenValidator]
+            validation_router: Optional[TokenValidationRouter]
         """
         super().__init__(toolkit=toolkit or TokenValidatorToolkit())
-        self._king_validator = king_validator or KingTokenValidator()
-        self._pawn_validator = pawn_validator or PawnTokenValidator()
-        self._combatant_validator = combatant_validator or CombatantTokenValidator()
+        self._validation_router = validation_router or TokenValidationRouter()
     
     @property
     def toolkit(self) -> TokenValidatorToolkit:
@@ -92,11 +74,8 @@ class TokenValidator(ModelValidator[Token]):
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
                     -   The Loader fails.
-                    -   The TokenCarrier subclass does not have a validation route.
-                    -   Any of the following sub-validators fail.
-                        -   KingTokenValidator
-                        -   PawnTokenValidator
-                        -   CombatantTokenValidator
+                    -   Team, Formation, Deployment, id, or HomeSquare are flagged.
+                    -   The validation_router does not return a product
             2.  Otherwise, send a TokenCarrier in the success result.
         Args:
             candidate: Any
@@ -215,93 +194,28 @@ class TokenValidator(ModelValidator[Token]):
         home_square = cast(HomeSquare, home_detection.payload)
         formation = cast(Formation, formation_validation.payload)
         deployment = cast(TokenDeployment, deployment_validation.payload)
-
-        # --- Select the appropriate validation route. ---#
-        original_carrier = prime_extract.carrier
         
-        # KingToken validation route.
-        if original_carrier.is_king_token_carrier:
-            raw = cast(KingTokenBlueprint, token_blueprint)
-            king_blueprint = KingTokenBlueprint(
-                id=id,
-                team=team,
-                formation=formation,
-                deployment=deployment,
-                position=raw.position,
-                previous_position=raw.previous_position,
-                readiness=raw.readiness,
-                checkmate=raw.checkmate,
-                check_warning=raw.check_warning,
-            )
-            king_carrier = cast(KingTokenCarrier, original_carrier)
-            king_prime_extract = KingTokenPrimeExtract(
-                carrier=king_carrier,
-                blueprint=king_blueprint
-            )
-            return self._king_validator.execute(
-                prime_extract=king_prime_extract
-            )
-
-        # PawnToken validation route.
-        if original_carrier.is_pawn_token_carrier:
-            raw = cast(PawnTokenBlueprint, token_blueprint)
-            pawn_blueprint = PawnTokenBlueprint(
-                id=id,
-                team=team,
-                formation=formation,
-                deployment=deployment,
-                position=raw.position,
-                previous_position=raw.previous_position,
-                readiness=raw.readiness,
-                rank=raw.rank,
-                captor=raw.captor,
-                promotion_state=raw.promotion_state,
-            )
-            pawn_carrier = cast(PawnTokenCarrier, original_carrier)
-            pawn_prime_extract = PawnTokenPrimeExtract(
-                carrier=pawn_carrier,
-                blueprint=pawn_blueprint
-            )
-            return self._pawn_validator.execute(
-                prime_extract=pawn_prime_extract
-            )
-        # CombatantToken validation route.
-        if original_carrier.is_combatant_token_carrier:
-            raw = cast(CombatantBlueprint, token_blueprint)
-            combatant_blueprint = CombatantBlueprint(
-                id=id,
-                team=team,
-                formation=formation,
-                deployment=deployment,
-                position=raw.position,
-                previous_position=raw.previous_position,
-                readiness=raw.readiness,
-                captor=raw.captor,
-            )
-            combatant_carrier = cast(CombatantCarrier, original_carrier)
-            combatant_prime_extract = CombatantTokenPrimeExtract(
-                carrier=combatant_carrier,
-                blueprint=combatant_blueprint
-            )
-            return self._combatant_validator.execute(
-                prime_extract=combatant_prime_extract
-            )
-            return self._combatant_validator.execute(
-                prime_extract=cast(CombatantCarrier, carrier)
-            )
-        # Handle the case that the carrier is not consistent.
-        return ValidationResult.failure(
-            TokenValidatorException(
-                cls_mthd=method,
-                cls_name=self.__class__.__name__,
-                msg=TokenValidatorException.MSG,
-                err_code=TokenValidatorException.ERR_CODE,
-                ex=TokenValidationRouteException(
+        # Handle the case that the router did not send a safe Token.
+        router_result = self._validation_router.execute(
+            id=id,
+            team=team,
+            formation=formation,
+            deployment=deployment,
+            home_square=home_square,
+            prime_extract=prime_extract,
+        )
+        if router_result.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenValidationRouteException.MSG,
-                    err_code=TokenValidationRouteException.ERR_CODE,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
+                    ex=router_result.exception,
                 )
             )
-        )
+        # --- Send the work product. ---#
+        safe_carrier = cast(TokenCarrier, router_result.payload)
+        return ValidationResult.success(safe_carrier)
     

@@ -13,6 +13,7 @@ version: 0.0.2
 from .combatant import *
 from .king import *
 from .pawn import *
+from .route import *
 
 # Modules
 from .validator import TokenValidator

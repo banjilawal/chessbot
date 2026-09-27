@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .route import TokenValidationRoute
+from .router import TokenValidationRouter
