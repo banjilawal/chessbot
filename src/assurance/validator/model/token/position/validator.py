@@ -14,6 +14,7 @@ from typing import Dict, Optional, cast
 from artifcat import ValidationResult
 from assurance import TokenValidatorToolkit
 from domain import Coord, TokenBlueprint
+from err import TokenPositionValidatorException
 from exchange import CoordValidationRequest
 from transit import CoordCarrier
 from util import IdFactory, LoggingLevelRouter
@@ -59,23 +60,24 @@ class TokenPositionValidator:
         Assure a candidate is a safe TokenCarrier.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if any of the following
-                occur
-                    -   The Loader fails.
-                    -   Team, Formation, Deployment, id, or HomeSquare are flagged.
-                    -   The validation_router does not return a product
-            2.  Otherwise, send a TokenCarrier in the success result.
+            1.  Send an exception chain in the ValidationResult if either
+                    -   blueprint.position or
+                    -   blueprint.previous_postion
+                is not null and gets flagged.
+            2.  Otherwise, for the success result, send a dictionary that is:
+                    -   Empty if the Token has not been deployed.
+                    -   Any validated position.
         Args:
             blueprint: TokenBlueprint
         Returns:
-            ValidationResult[List[Coord]]
+            ValidationResult[Dict[str, Coord]]
         Raises:
             TokenPositionValidatorException
         """
         method = f"{self.__class__.__name__}.execute"
         
         valid_locations: Dict[str, Coord] = {}
-        # If the token has not been deployed send an empty dictionay
+        # If the token has not been deployed send an empty dictionary
         if (
                 blueprint.position is None and 
                 blueprint.previous_position is None

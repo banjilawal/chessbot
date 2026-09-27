@@ -44,6 +44,7 @@ class TokenValidator(ModelValidator[Token]):
         ModelValidator
     """
     _validation_router: TokenValidationRouter
+    _position_validator: TokenPositionValidator
     
     def __init__(
             self,
