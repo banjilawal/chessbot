@@ -28,7 +28,7 @@ class TokenValidator(ModelValidator[Token]):
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a TokenCarrier and its contents are safe before use.
+        1.  Ensure a TokenCarrier is safe to use.
 
     Attributes:
         toolkit: TokenValidatorToolkit
@@ -75,14 +75,17 @@ class TokenValidator(ModelValidator[Token]):
             candidate: Any,
     ) -> ValidationResult[TokenCarrier]:
         """
-        Certify a TokenCarrier's payload is either a Token or a Blueprint 
-        that is safe to use.
+        Assure a candidate is a safe TokenCarrier.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
                     -   The Loader fails.
-                    -   Either the id, board, or owner are flagged unsafe.
+                    -   The TokenCarrier subclass does not have a validation route.
+                    -   Any of the following sub-validators fail.
+                        -   KingTokenValidator
+                        -   PawnTokenValidator
+                        -   CombatantTokenValidator
             2.  Otherwise, send a TokenCarrier in the success result.
         Args:
             candidate: Any
@@ -110,19 +113,23 @@ class TokenValidator(ModelValidator[Token]):
         prime_extract = cast(TokenPrimeExtract, load_result.payload)
         carrier = cast(TokenCarrier, prime_extract.carrier)
         
+        # --- Select the appropriate validation route. ---#
+        # KingToken validation route.
         if carrier.is_king_token_carrier:
             return self._king_validator.execute(
                 carrier=cast(KingTokenCarrier, carrier)
             )
+        # PawnToken validation route.
         if carrier.is_pawn_token_carrier:
             return self._pawn_validator.execute(
                 carrier=cast(PawnTokenCarrier, carrier)
             )
+        # CombatantToken validation route.
         if carrier.is_combatant_token_carrier:
             return self._combatant_validator.execute(
                 carrier=cast(CombatantCarrier, carrier)
             )
-        
+        # Handle the case that the carrier is not consistent.
         return ValidationResult.failure(
             TokenValidatorException(
                 cls_mthd=method,

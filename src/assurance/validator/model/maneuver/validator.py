@@ -33,7 +33,7 @@ class ManeuverValidator(ModelValidator[Maneuver]):
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a ManeuverCarrier and its contents are safe before use.
+        1.  Ensure a ManeuverCarrier is safe to use.
 
     Attributes:
         toolkit: ManeuverValidatorToolkit

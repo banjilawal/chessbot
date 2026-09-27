@@ -4,14 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/token/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/token/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/token/combatant/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/combatant/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/token/king/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/king/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/token/pawn/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/pawn/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/validator.py" afterDir="false" />
-    </list>
+    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -52,61 +45,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.000000000000023" />
-      <entry key="S5" value="1.000003519085951" />
-      <entry key="S10" value="1.001986571412293" />
-      <entry key="S30" value="1.268233595839655" />
-      <entry key="S60" value="2.6417194728643505" />
-      <entry key="M2" value="6.947857530726226" />
-      <entry key="M5" value="21.29926602478885" />
-      <entry key="M10" value="46.709148622950515" />
-      <entry key="M15" value="74.85014368474232" />
-      <entry key="M30" value="163.73633924498023" />
-      <entry key="H1" value="338.65530646982853" />
-      <entry key="H2" value="726.4237697873313" />
-      <entry key="H4" value="1583.8853548463464" />
-      <entry key="D1" value="8040.985028597701" />
-      <entry key="W1" value="29388.709807310355" />
+      <entry key="MS100" value="1.3386775513812532" />
+      <entry key="MS500" value="3.438120245160468" />
+      <entry key="S2" value="8.962444022701073" />
+      <entry key="S5" value="16.448974986884682" />
+      <entry key="S10" value="23.865501174478748" />
+      <entry key="S30" value="49.279652216652366" />
+      <entry key="S60" value="85.7917058842831" />
+      <entry key="M2" value="136.99366524951543" />
+      <entry key="M5" value="204.92530751648826" />
+      <entry key="M10" value="255.32162437314003" />
+      <entry key="M15" value="292.43315001013923" />
+      <entry key="M30" value="390.4825241619065" />
+      <entry key="H1" value="570.3171223217229" />
+      <entry key="H2" value="959.7817236641569" />
+      <entry key="H4" value="1817.2101624565926" />
+      <entry key="D1" value="8278.126291680037" />
+      <entry key="W1" value="29633.04000129065" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="3.985200570925813E-130" />
-      <entry key="S2" value="4.467993637137292E-33" />
-      <entry key="S5" value="1.1482727677873737E-13" />
-      <entry key="S10" value="3.390202360504298E-7" />
-      <entry key="S30" value="0.00803270003527435" />
-      <entry key="S60" value="0.14149422998635855" />
-      <entry key="M2" value="0.8179283708221086" />
-      <entry key="M5" value="3.855973374193058" />
-      <entry key="M10" value="9.153002953811045" />
-      <entry key="M15" value="13.87818552951755" />
-      <entry key="M30" value="23.57318132808361" />
-      <entry key="H1" value="33.780535860586085" />
-      <entry key="H2" value="47.510651145979054" />
-      <entry key="H4" value="69.53442633546115" />
-      <entry key="D1" value="263.2037071912616" />
-      <entry key="W1" value="1176.8147743995314" />
+      <entry key="MS500" value="1.318477763582419E-266" />
+      <entry key="S2" value="3.388583582911511E-67" />
+      <entry key="S5" value="2.582303761708188E-27" />
+      <entry key="S10" value="5.084014180366724E-14" />
+      <entry key="S30" value="4.267648019840872E-5" />
+      <entry key="S60" value="0.010313409261001221" />
+      <entry key="M2" value="0.2208243869440532" />
+      <entry key="M5" value="2.283845551666566" />
+      <entry key="M10" value="7.044172048000466" />
+      <entry key="M15" value="11.654945771249084" />
+      <entry key="M30" value="21.602647589781135" />
+      <entry key="H1" value="32.33783393991445" />
+      <entry key="H2" value="46.485036745455275" />
+      <entry key="H4" value="68.77981035982336" />
+      <entry key="D1" value="262.7254744360915" />
+      <entry key="W1" value="1176.5090741289978" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.6232907466740455E-15" />
-      <entry key="MS500" value="0.0011017403686098739" />
-      <entry key="S2" value="0.18218801985308694" />
-      <entry key="S5" value="0.5060704069398759" />
-      <entry key="S10" value="0.7133631514523561" />
-      <entry key="S30" value="1.1619844728027575" />
-      <entry key="S60" value="2.6794603790106817" />
-      <entry key="M2" value="7.625245507688325" />
-      <entry key="M5" value="24.984426334920563" />
-      <entry key="M10" value="55.69675251775528" />
-      <entry key="M15" value="88.57602540477357" />
-      <entry key="M30" value="187.19136229620682" />
-      <entry key="H1" value="372.3516284125356" />
-      <entry key="H2" value="773.870364305194" />
-      <entry key="H4" value="1653.367410364135" />
-      <entry key="D1" value="8304.154019358273" />
-      <entry key="W1" value="30565.504263524643" />
+      <entry key="MS100" value="1.1415528905482588" />
+      <entry key="MS500" value="3.3224394394746866" />
+      <entry key="S2" value="8.901614418609466" />
+      <entry key="S5" value="16.406715711944216" />
+      <entry key="S10" value="23.83610978555333" />
+      <entry key="S30" value="49.261202697453584" />
+      <entry key="S60" value="85.7800416202917" />
+      <entry key="M2" value="137.1655467186975" />
+      <entry key="M5" value="207.10179372501042" />
+      <entry key="M10" value="262.2349819052571" />
+      <entry key="M15" value="303.95773368573225" />
+      <entry key="M30" value="411.9756044301335" />
+      <entry key="H1" value="602.5736807269777" />
+      <entry key="H2" value="1006.2037535755865" />
+      <entry key="H4" value="1885.9380028659068" />
+      <entry key="D1" value="8540.817084712835" />
+      <entry key="W1" value="30809.528758501765" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -820,6 +813,7 @@
       <workItem from="1788969937518" duration="171978000" />
       <workItem from="1790001362413" duration="735000" />
       <workItem from="1790063398459" duration="258692000" />
+      <workItem from="1790480915263" duration="516000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

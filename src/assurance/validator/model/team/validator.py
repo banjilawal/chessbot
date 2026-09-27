@@ -26,7 +26,7 @@ class TeamValidator(ModelValidator[Team]):
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a TeamCarrier and its contents are safe before use.
+        1.  Ensure a TeamCarrier is safe to use.
 
     Attributes:
         toolkit: TeamValidatorToolkit
@@ -58,8 +58,7 @@ class TeamValidator(ModelValidator[Team]):
             candidate: Any,
     ) -> ValidationResult[TeamCarrier]:
         """
-        Certify a TeamCarrier's payload is either a Team or a Blueprint 
-        that is safe to use.
+        Assure a candidate is a safe TokenCarrier.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following

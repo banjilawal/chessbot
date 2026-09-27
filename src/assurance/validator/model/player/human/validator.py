@@ -31,7 +31,7 @@ class HumanPlayerValidator:
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a PlayerCarrier and its contents are safe before use.
+        1.  Ensure a PlayerCarrier is safe to use.
 
     Attributes:
         toolkit: PlayerValidatorToolkit

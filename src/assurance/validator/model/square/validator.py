@@ -32,7 +32,7 @@ class SquareValidator(ModelValidator[Square]):
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a SquareCarrier and its contents are safe before use.
+        1.  Ensure a SquareCarrier is safe to use.
 
     Attributes:
         toolkit: SquareValidatorToolkit

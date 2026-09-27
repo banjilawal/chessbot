@@ -25,7 +25,7 @@ class VectorValidator(ModelValidator[Vector]):
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a VectorCarrier and its contents are safe before use.
+        1.  Ensure a VectorCarrier is safe to use.
 
     Attributes:
         toolkit: VectorValidatorToolkit
@@ -57,14 +57,13 @@ class VectorValidator(ModelValidator[Vector]):
             candidate: Any,
     ) -> ValidationResult[VectorCarrier]:
         """
-        Certify a VectorCarrier's payload is either a Vector or a Blueprint 
-        that is safe to use.
+        Assure a candidate is a safe VectorCarrier.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
                     -   The Loader fails.
-                    -   Either the id, board, or owner are flagged unsafe.
+                    -   Either the x or y component is unsafe.
             2.  Otherwise, send a VectorCarrier in the success result.
         Args:
             candidate: Any

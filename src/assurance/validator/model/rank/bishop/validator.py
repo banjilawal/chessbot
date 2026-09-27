@@ -25,7 +25,7 @@ class BishopValidator:
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a RankCarrier and its contents are safe before use.
+        1.  Ensure a RankCarrier is safe to use.
 
     Attributes:
         toolkit: RankValidatorToolkit

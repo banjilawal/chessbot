@@ -31,7 +31,7 @@ class KingTokenValidator:
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a TokenCarrier and its contents are safe before use.
+        1.  Ensure a TokenCarrier is safe to use.
 
     Attributes:
         toolkit: TokenValidatorToolkit
