@@ -9,14 +9,12 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, Optional, Type, cast
+from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import ModelValidator, VectorValidatorToolkit
-from domain import Vector, VectorBlueprint, VectorValidationRequest
-from err import (
-    EmptyVectorCarrierException, VectorValidationRequestNullException, VectorValidatorException
-)
+from domain import Vector, VectorBlueprint, VectorPrimeExtract
+from err import VectorValidatorException
 from transit import VectorCarrier
 from util import LoggingLevelRouter
 
@@ -33,7 +31,7 @@ class VectorValidator(ModelValidator[Vector]):
         toolkit: VectorValidatorToolkit
 
     Provides:
-        -   def execute(candidate: VectorValidationRequest) ->ValidationResult[VectorCarrier]:
+        -   def execute(candidate: Any) -> ValidationResult[VectorCarrier]:
 
     Super Class:
         ModelValidator
@@ -51,25 +49,23 @@ class VectorValidator(ModelValidator[Vector]):
     
     @property
     def toolkit(self) -> VectorValidatorToolkit:
-        return cast(
-            VectorValidatorToolkit,
-            super().toolkit,
-        )
+        return cast(VectorValidatorToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[VectorCarrier]:
+    def execute(
+            self,
+            candidate: Any,
+    ) -> ValidationResult[VectorCarrier]:
         """
-        Certify a candidate is a VectorCarrier whose payload is either a Vector
-        or a Blueprint that is safe to use.
+        Certify a VectorCarrier's payload is either a Vector or a Blueprint 
+        that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    - The candidate is not a VectorCarrier or its null.
-                    - The candidate is an empty VectorCarrier.
-                    - Any Vector attribute is flagged.
-            2.  Otherwise, Send a Carrier with the correct type of payload in the success
-                result.
+                    -   The Loader fails.
+                    -   Either the id, board, or owner are flagged unsafe.
+            2.  Otherwise, send a VectorCarrier in the success result.
         Args:
             candidate: Any
         Returns:
@@ -79,13 +75,9 @@ class VectorValidator(ModelValidator[Vector]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the candidate is null or the rong type.
-        priming_result = self.toolkit.wrapper.priming_validator.execute(
-            candidate=candidate,
-            target_model=VectorValidationRequest,
-            null_exception=VectorValidationRequestNullException(),
-        )
-        if priming_result.is_failure:
+        # Handle the case that the blueprint cannot be extracted.
+        load_result = self.toolkit.loader.execute(candidate)
+        if load_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorValidatorException(
@@ -93,57 +85,17 @@ class VectorValidator(ModelValidator[Vector]):
                     cls_name=self.__class__.__name__,
                     msg=VectorValidatorException.MSG,
                     err_code=VectorValidatorException.ERR_CODE,
-                    ex=priming_result.exception,
+                    ex=load_result.exception,
                 )
             )
-        # --- Cast priming_result into a request for additional tests. ---#
-        request = cast(VectorValidationRequest, priming_result.payload)
+        # --- Get the PrimeExtract and Blueprint for additional processing. ---#
+        prime_extract = cast(VectorPrimeExtract, load_result.payload)
+        blueprint = cast(VectorBlueprint, prime_extract.blueprint)
         
-        # Handle the case that request.item is the wrong carrier type.
-        carrier_validation = self.toolkit.wrapper.priming_validator.execute(
-            candidate=request.item,
-            target_model=self.toolkit.metadata.types.carrier,
-            null_exception=self.toolkit.metadata.nulls.carrier,
-        )
-        if carrier_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                VectorValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=VectorValidatorException.MSG,
-                    err_code=VectorValidatorException.ERR_CODE,
-                    ex=carrier_validation.exception,
-                )
-            )
-        # --- Cast the carrier_validation payload for additional tests. ---#
-        carrier = cast(
-            Type[self.toolkit.metadata.types.carrier],
-            carrier_validation.payload,
-        )
-        # --- Extract the blueprint to verify the attributes. ---#
-        blueprint = carrier.extract_blueprint()
-        # Handle the case that there is no blueprint.
-        if blueprint is None:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                VectorValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=VectorValidatorException.MSG,
-                    err_code=VectorValidatorException.ERR_CODE,
-                    ex=EmptyVectorCarrierException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=EmptyVectorCarrierException.MSG,
-                        err_code=EmptyVectorCarrierException.ERR_CODE,
-                    ),
-                )
-            )
         # Handle the case that any vector component in the blueprint is flagged.
-        numbers = []
-        for number in [blueprint.x, blueprint.y]:
-            validation = self.toolkit.wrapper.number_validator.execute(number)
+        components = []
+        for value in [blueprint.x, blueprint.y]:
+            validation = self.toolkit.number_validator.execute(value)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
@@ -155,25 +107,22 @@ class VectorValidator(ModelValidator[Vector]):
                         ex=validation.exception,
                     )
                 )
-            numbers.append(cast(int, validation.payload))
-        # --- Forward the appropriate work product to the caller. ---#
+            components.append(cast(int, validation.payload))
+        # --- Extract validation payloads. ---#
+        x = components[0]
+        y = components[1]
         
-        # The model case
-        if carrier.has_model:
-            return ValidationResult.success(
-                VectorCarrier(
-                    model=Vector(
-                        x=numbers[0],
-                        y=numbers[1],
-                    )
-                )
-            )
-        # The blueprint case
-        return ValidationResult.success(
-            VectorCarrier(
-                blueprint=VectorBlueprint(
-                    x=numbers[0],
-                    y=numbers[1],
-                )
-            )
-        )
+        # --- Forward the appropriate work product to the caller. ---#
+        # The client wants a safe Vector.
+        if prime_extract.carrier.has_model:
+            payload = Vector(x=x, y=y)
+            return ValidationResult.success(VectorCarrier(model=payload))
+        
+        # Otherwise, the client is a VectorBuilder that needs a Blueprint.
+        payload = VectorBlueprint(x=x, y=y)
+        return ValidationResult.success(VectorCarrier(blueprint=payload))
+        # --- Forward the appropriate work product to the caller. ---#
+
+        
+
+

@@ -127,7 +127,7 @@ class TeamValidator(ModelValidator[Team]):
             )
         # --- Handle the case that the board is not safe. ---#
         board_validation = self.toolkit.wrapper.board.extract_model(
-            candidate=BoardValidationRequest(
+            request=BoardValidationRequest(
                 item=BoardCarrier(model=blueprint.board),
                 id=IdFactory.next_id(class_name="BoardValidationRequest"),
             )
@@ -145,7 +145,7 @@ class TeamValidator(ModelValidator[Team]):
             )
         # --- Handle the case that the owner is not safe. ---#
         owner_validation = self.toolkit.wrapper.owner.extract_model(
-            candidate=PlayerValidationRequest(
+            request=PlayerValidationRequest(
                 item=PlayerCarrier(model=blueprint.owner),
                 id=IdFactory.next_id(class_name="PlayerValidationRequest"),
             )
@@ -178,7 +178,7 @@ class TeamValidator(ModelValidator[Team]):
                 archetype=archetype,
             )
             return ValidationResult.success(TeamCarrier(model=payload))
-        # Otherwise, the client is a Builder which needs a Blueprint.
+        # Otherwise, the client is a TeamBuilder that needs a Blueprint.
         payload = TeamBlueprint(
             id=id,
             board=board,
