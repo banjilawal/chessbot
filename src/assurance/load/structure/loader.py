@@ -1,7 +1,7 @@
-# src/assurance/loader/structure/loader.py
+# src/assurance/load/structure/loader.py
 
 """
-Module: assurance.loader.structure.loader
+Module: assurance.load.structure.loader
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,13 +13,13 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import BlueprintLoader, StructureValidatorToolkit
+from assurance import Loader, StructureValidatorToolkit
 from domain import Structure, StructureBlueprint
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Structure")
 
-class StructureBlueprintLoader(BlueprintLoader[T], ABC, Generic[T]):
+class StructureLoader(Loader[T], ABC, Generic[T]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -34,7 +34,7 @@ class StructureBlueprintLoader(BlueprintLoader[T], ABC, Generic[T]):
         -   def execute(candidate: Any) -> ValidationResult[StructureBlueprint[T]]:
 
     Super Class:
-        BlueprintLoader
+        Extractor
     """
     
     def __init__(self, toolkit: StructureValidatorToolkit[T]):
@@ -58,6 +58,6 @@ class StructureBlueprintLoader(BlueprintLoader[T], ABC, Generic[T]):
         Returns:
             ValidationResult[StructureBlueprint[T]]
         Raises:
-            StructureBlueprintLoaderException
+            StructureExtractorException
         """
         pass

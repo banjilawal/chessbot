@@ -1,7 +1,7 @@
-# src/assurance/loader/structure/register/loader.py
+# src/assurance/load/structure/register/loader.py
 
 """
-Module: assurance.loader.structure.register.loader
+Module: assurance.load.structure.register.loader
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,13 +13,13 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import BlueprintLoader, RegisterValidationToolkit
+from assurance import Loader, RegisterValidationToolkit
 from domain import Register, RegisterBlueprint
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Register")
 
-class RegisterBlueprintLoader(BlueprintLoader[T], ABC, Generic[T]):
+class RegisterLoader(Loader[T], ABC, Generic[T]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -34,7 +34,7 @@ class RegisterBlueprintLoader(BlueprintLoader[T], ABC, Generic[T]):
         -   def execute(candidate: Any) -> ValidationResult[RegisterBlueprint[T]]:
 
     Super Class:
-        BlueprintLoader
+        Extractor
     """
     
     def __init__(self, toolkit: RegisterValidationToolkit[T]):
@@ -58,6 +58,6 @@ class RegisterBlueprintLoader(BlueprintLoader[T], ABC, Generic[T]):
         Returns:
             ValidationResult[RegisterBlueprint[T]]
         Raises:
-            RegisterBlueprintLoaderException
+            RegisterExtractorException
         """
         pass

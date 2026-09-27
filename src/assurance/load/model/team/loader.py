@@ -1,7 +1,7 @@
-# src/assurance/loader/model/team/loader.py
+# src/assurance/load/model/team/loader.py
 
 """
-Module: assurance.loader.model.team.loader
+Module: assurance.load.model.team.loader
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,33 +12,39 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelBlueprintLoader, TeamValidatorToolkit
-from client import TeamValidationRequest
-from domain import Team, TeamBlueprint
+from assurance import ModelLoader, TeamPrimeExtract, TeamValidatorToolkit
+from domain import Team
 from err import (
-    EmptyTeamCarrierException, TeamValidationRequestNullException,
-    TeamBlueprintLoaderException
+    EmptyTeamCarrierException, TeamBlueprintLoaderException,
+    TeamValidationRequestNullException
 )
+from exchange import TeamValidationRequest
 from transit import TeamCarrier
+
 from util import LoggingLevelRouter
 
 
-class TeamBlueprintLoader(ModelBlueprintLoader[Team]):
+class TeamLoader(ModelLoader[Team]):
     """
     Role
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Extract a TeamBlueprint from the validation candidate.
+        1.  Run type safety checks on a Candidate for:
+            -   TeamValidationRequest
+            -   TeamCarrier
+            -   TeamBlueprint
 
     Attributes:
         toolkit: TeamValidatorToolkit
 
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult[TeamBlueprint]:
+        -   def execute(
+                    candidate: Any
+            ) -> ValidationResult[TeamPrimeExtract[T]
 
     Super Class:
-        ModelBlueprintLoader
+        ModelLoader
     """
     
     def __init__(
@@ -56,31 +62,31 @@ class TeamBlueprintLoader(ModelBlueprintLoader[Team]):
         return cast(TeamValidatorToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[TeamBlueprint]:
+    def execute(self, candidate: Any) -> ValidationResult[TeamPrimeExtract]:
         """
         Extract the TeamBlueprint to validate the candidate.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The candidate is null or not a TeamValidatorRequest.
-                    -   The request payload is either:
-                            -   Null
-                            -   Not a TeamCarrier
-                            -   An empty TeamCarrier.
-                    -   A blueprint cannot be extracted from the carrier.
+                -   The candidate is null or not a TeamValidatorRequest.
+                -   The request payload is either:
+                        -   Null
+                        -   Not a TeamCarrier
+                        -   An empty TeamCarrier.
+                -   A blueprint cannot be extracted from the carrier.
             2.  Otherwise, send the blueprint in the success result.
         Args:
             candidate: Any
         Returns:
-            ValidationResult[TeamBlueprint]
+            ValidationResult[TeamPrimeExtract]
         Raises:
             TeamBlueprintLoaderException
         """
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is null or the rong type.
-        priming_result = self.toolkit.wrapper.priming_validator.execute(
+        priming_result = self.toolkit.priming_validator.execute(
             candidate=candidate,
             target_model=TeamValidationRequest,
             null_exception=TeamValidationRequestNullException(),
@@ -100,7 +106,7 @@ class TeamBlueprintLoader(ModelBlueprintLoader[Team]):
         request = cast(Type[TeamValidationRequest], priming_result.payload)
         
         # Handle the case that request.item is the wrong carrier type.
-        carrier_validation = self.toolkit.wrapper.priming_validator.execute(
+        carrier_validation = self.toolkit.priming_validator.execute(
             candidate=request.item,
             target_model=self.toolkit.metadata.types.carrier,
             null_exception=self.toolkit.metadata.nulls.carrier,
@@ -137,5 +143,27 @@ class TeamBlueprintLoader(ModelBlueprintLoader[Team]):
                     ),
                 )
             )
+        # --- Cast carrier_validation payload to into carrier to extract the blueprint. ---#
+        if carrier.is_carrying_model:
+            model = cast(Team, carrier.entity)
+            if model is not None and not isinstance(model, Team):
+                # Send the exception chain on failure.
+                return ValidationResult.failure(
+                    TeamBlueprintLoaderException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=TeamBlueprintLoaderException.MSG,
+                        err_code=TeamBlueprintLoaderException.ERR_CODE,
+                        ex=EmptyTeamCarrierException(
+                            cls_mthd=method,
+                            cls_name=self.__class__.__name__,
+                            msg=EmptyTeamCarrierException.MSG,
+                            err_code=EmptyTeamCarrierException.ERR_CODE,
+                        ),
+                    )
+                )
+            extract = TeamPrimeExtract(carrier=carrier, blueprint=blueprint, model=model)
+            return ValidationResult(extract)
+        extract = TeamPrimeExtract(carrier=carrier, blueprint=blueprint)
         # --- Send the work product. ---#
-        return ValidationResult.success(blueprint)
+        return ValidationResult.success(extract)

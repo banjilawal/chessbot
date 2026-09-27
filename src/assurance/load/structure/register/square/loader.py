@@ -1,7 +1,7 @@
-# src/assurance/loader/structure/register/square/loader.py
+# src/assurance/load/structure/register/square/loader.py
 
 """
-Module: assurance.loader.structure.register.square.loader
+Module: assurance.load.structure.register.square.loader
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,18 +12,18 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import RegisterBlueprintLoader, SquareRegisterValidationToolkit
+from assurance import RegisterLoader, SquareRegisterValidationToolkit
 from client import SquareRegisterValidationRequest
 from domain import SquareRegister, SquareRegisterBlueprint
 from err import (
     EmptySquareRegisterCarrierException, SquareRegisterValidationRequestNullException,
-    SquareRegisterBlueprintLoaderException
+    SquareRegisterExtractorException
 )
 from transit import SquareRegisterCarrier
 from util import LoggingLevelRouter
 
 
-class SquareRegisterBlueprintLoader(RegisterBlueprintLoader[SquareRegister]):
+class SquareRegisterExtractor(RegisterLoader[SquareRegister]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -38,7 +38,7 @@ class SquareRegisterBlueprintLoader(RegisterBlueprintLoader[SquareRegister]):
         -   def execute(candidate: Any) -> ValidationResult[SquareRegisterBlueprint]:
 
     Super Class:
-        RegisterBlueprintLoader
+        RegisterExtractor
     """
     
     def __init__(
@@ -75,7 +75,7 @@ class SquareRegisterBlueprintLoader(RegisterBlueprintLoader[SquareRegister]):
         Returns:
             ValidationResult[SquareRegisterBlueprint]
         Raises:
-            SquareRegisterBlueprintLoaderException
+            SquareRegisterExtractorException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -88,11 +88,11 @@ class SquareRegisterBlueprintLoader(RegisterBlueprintLoader[SquareRegister]):
         if priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareRegisterBlueprintLoaderException(
+                SquareRegisterExtractorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SquareRegisterBlueprintLoaderException.MSG,
-                    err_code=SquareRegisterBlueprintLoaderException.ERR_CODE,
+                    msg=SquareRegisterExtractorException.MSG,
+                    err_code=SquareRegisterExtractorException.ERR_CODE,
                     ex=priming_result.exception,
                 )
             )
@@ -108,11 +108,11 @@ class SquareRegisterBlueprintLoader(RegisterBlueprintLoader[SquareRegister]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareRegisterBlueprintLoaderException(
+                SquareRegisterExtractorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SquareRegisterBlueprintLoaderException.MSG,
-                    err_code=SquareRegisterBlueprintLoaderException.ERR_CODE,
+                    msg=SquareRegisterExtractorException.MSG,
+                    err_code=SquareRegisterExtractorException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -124,11 +124,11 @@ class SquareRegisterBlueprintLoader(RegisterBlueprintLoader[SquareRegister]):
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareRegisterBlueprintLoaderException(
+                SquareRegisterExtractorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SquareRegisterBlueprintLoaderException.MSG,
-                    err_code=SquareRegisterBlueprintLoaderException.ERR_CODE,
+                    msg=SquareRegisterExtractorException.MSG,
+                    err_code=SquareRegisterExtractorException.ERR_CODE,
                     ex=EmptySquareRegisterCarrierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,

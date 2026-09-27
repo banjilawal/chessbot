@@ -11,7 +11,7 @@ version: 0.0.2
 
 # Packages
 from .attribute import *
-from .loader import *
+from .load import *
 from .primitive import *
 from .toolkit import *
 from .validator import *
