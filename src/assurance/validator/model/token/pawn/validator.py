@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult
-from assurance import TokenEnemyValidator, TokenValidatorToolkit
+from assurance import CommonTokenPropertyTable, TokenEnemyValidator, TokenValidatorToolkit
 from domain import (
-    CombatantReadiness, Coord, Formation, HomeSquare, PawnToken, PawnTokenBlueprint,
-    PawnTokenPrimeExtract, PromotionState, Rank, Team, Token, TokenDeployment
+    CombatantReadiness, PawnToken, PawnTokenBlueprint, PromotionState,
+    Rank, Token
 )
 from err import (
     CombatantReadinessNullException, EmptyPawnTokenCarrierException,
@@ -65,14 +65,6 @@ class PawnTokenValidator:
     def execute(
             self,
             property_table: CommonTokenPropertyTable
-            id: int,
-            team: Team,
-            formation: Formation,
-            home_square: HomeSquare,
-            deployment: TokenDeployment,
-            prime_extract: PawnTokenPrimeExtract,
-            position: Optional[Coord] | None = None,
-            previous_position: Optional[Coord] | None = None,
     ) -> ValidationResult[PawnTokenCarrier]:
         """
         Assure the properties can assemble a safe PawnTokenCarrier.
@@ -87,15 +79,7 @@ class PawnTokenValidator:
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            id: int
-            team: Team
-            formation: Formation
-            home_square: HomeSquare
-            deployment: TokenDeployment
-            prime_extract: TokenPrimeExtract
-            previous_position: Optional[Coord]
-            position: Optional[Coord]
-            
+            property_table: CommonTokenPropertyTable
         Returns:
             ValidationResult[PawnTokenCarrier]
         Raises:
@@ -104,6 +88,7 @@ class PawnTokenValidator:
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that there is no blueprint in the carrier.
+        prime_extract = property_table.prime_extract
         blueprint = prime_extract.blueprint
         if blueprint is None:
             # Send the exception chain on failure.
@@ -213,33 +198,33 @@ class PawnTokenValidator:
         # The client wants a safe PawnToken.
         if prime_extract.carrier.has_model:
             payload = PawnToken(
-                id=id,
-                team=team,
-                formation=formation,
-                home_square=home_square,
+                id=property_table.safe.id,
+                team=property_table.safe.team,
+                formation=property_table.safe.formation,
+                home_square=property_table.safe.home_square,
             )
             payload.rank = rank
-            payload.captor = captor_placeholder
-            payload.position = position
             payload.readiness = readiness
-            payload.deployment = deployment
+            payload.captor = captor_placeholder
             payload.promotion_state = promotion_state
-            payload.previous_position = previous_position
+            payload.deployment = property_table.deployment
+            payload.position = property_table.safe.position
+            payload.previous_position = property_table.safe.previous_position
+            
             return ValidationResult.success(PawnTokenCarrier(model=payload))
         
         # Otherwise, the client is a VectorBuilder that needs a Blueprint.
         payload = PawnTokenBlueprint(
-            id=id,
-            team=team,
-            formation=formation,
-            home_square=home_square,
+            id=property_table.safe.id,
+            team=property_table.safe.team,
+            formation=property_table.safe.formation,
+            home_square=property_table.safe.home_square,
+            deployment=property_table.deployment,
+            position=property_table.safe.position,
+            previous_position=property_table.safe.previous_position,
             rank=rank,
             captor=captor_placeholder,
-            position=position,
             readiness=readiness,
-            deployment=deployment,
-            promotion_state=promotion_state,
-            previous_position=previous_position,
         )
         return ValidationResult.success(PawnTokenCarrier(blueprint=payload))
     

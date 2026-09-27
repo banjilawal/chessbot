@@ -49,6 +49,6 @@ class CommonTokenPropertyTable:
         return self._prime_extract
     
     @property
-    def safe_property_table(self) -> SafeSuperTokenPropertyTable:
+    def safe(self) -> SafeSuperTokenPropertyTable:
         return self._safe_property_table
     
