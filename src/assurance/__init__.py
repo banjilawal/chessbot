@@ -10,10 +10,10 @@ version: 0.0.2
 # =========== ASSURANCE PACKAGE ===========#
 
 # Packages
-from .attribute import *
+from .depend import *
 from .load import *
 from .primitive import *
-from .toolkit import *
+from assurance.depend.toolkit import *
 from .validator import *
 
 # Modules

@@ -10,7 +10,6 @@ version: 0.0.2
 # =========== ASSURANCE.VALIDATOR PACKAGE ===========#
 
 # Packages
-from .domain import *
 from .model import *
 from .space import *
 from .structure import *
