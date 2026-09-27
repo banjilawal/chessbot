@@ -13,12 +13,12 @@ from typing import Optional, Type, cast
 
 from domain import (
     CombatantReadiness, Coord, Formation, HomeSquare, PawnToken, PromotionState, Rank,
-    Team, CombatantBlueprint, Token, TokenDeployment
+    Team, Token, TokenBlueprint, TokenDeployment
 )
 from err import PawnTokenNullException
 
 
-class PawnTokenBlueprint(CombatantBlueprint):
+class PawnTokenBlueprint(TokenBlueprint[PawnToken]):
     """
      Role:
         1.  Metadata
@@ -28,7 +28,9 @@ class PawnTokenBlueprint(CombatantBlueprint):
 
      Attributes:
         rank: Rank
+        readiness: CombatantReadiness
         promotion_state: PromotionState
+        captor: Optional[Token]
 
      Provides:
 
@@ -36,7 +38,9 @@ class PawnTokenBlueprint(CombatantBlueprint):
         CombatantBlueprint
      """
     _rank: Rank
+    _readiness: CombatantReadiness
     _promotion_state: PromotionState
+    _captor: Optional[Token]
     
     def __init__(
             self,
@@ -72,9 +76,7 @@ class PawnTokenBlueprint(CombatantBlueprint):
         super().__init__(
             id=id,
             team=team,
-            captor=captor,
             position=position,
-            readiness=readiness,
             formation=formation,
             deployment=deployment,
             home_square=home_square,
@@ -82,6 +84,8 @@ class PawnTokenBlueprint(CombatantBlueprint):
             domain_class=domain_class or Type[PawnToken],
             domain_null_exception=domain_null_exception or PawnTokenNullException(),
         )
+        self._captor = captor
+        self._readiness = readiness
         self._rank = rank or formation.rank
         self._promotion_state = promotion_state or PromotionState.NOT_PROMOTED
     
@@ -92,6 +96,22 @@ class PawnTokenBlueprint(CombatantBlueprint):
     @property
     def promotion_state(self) -> PromotionState:
         return self._promotion_state
+    
+    @property
+    def readiness(self) -> CombatantReadiness:
+        return self._readiness
+    
+    @property
+    def captor(self) -> Optional[Token]:
+        return self._captor
+    
+    @property
+    def is_captured(self) -> bool:
+        return self._captor is not None
+    
+    @property
+    def is_not_captured(self) -> bool:
+        return not self.is_captured
     
     @property
     def domain_class(self) -> Type[PawnToken]:

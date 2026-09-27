@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 
-from typing import Optional, Type, cast
+from typing import Generic, Optional, Type, TypeVar, cast
 
 from collection import CoordDatabase
 from domain import (
@@ -21,9 +21,9 @@ from err import (
     CombatantNullException, KingTokenNullException, PawnTokenNullException, TokenNullException
 )
 
+T = TypeVar("T", bound="Token")
 
-
-class TokenBlueprint(StateModelBlueprint[Token]):
+class TokenBlueprint(StateModelBlueprint[T], Generic[T]):
     """
      Role:
         1.  Metadata
@@ -53,10 +53,6 @@ class TokenBlueprint(StateModelBlueprint[Token]):
     _position: Optional[Coord]
     _previous_position: Optional[Coord]
     _home_square: Optional[HomeSquare]
-
-
-
-
     
     def __init__(
             self,

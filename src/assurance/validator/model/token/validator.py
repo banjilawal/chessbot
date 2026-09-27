@@ -16,10 +16,17 @@ from assurance import (
     CombatantTokenValidator, KingTokenValidator, ModelValidator, PawnTokenValidator,
     TokenValidatorToolkit
 )
-from domain import Token, TokenPrimeExtract
-from err import TokenValidationRouteException, TokenValidatorException
-from transit import CombatantCarrier, KingTokenCarrier, PawnTokenCarrier, TokenCarrier
-from util import LoggingLevelRouter
+from domain import (
+    Formation, HomeSquare, KingTokenBlueprint, Team, Token, TokenBlueprint, TokenDeployment,
+    TokenPrimeExtract
+)
+from err import (
+    FormationNullException, TokenDeploymentNullException, TokenValidationRouteException,
+    TokenValidatorException
+)
+from exchange import TeamValidationRequest
+from transit import CombatantCarrier, KingTokenCarrier, PawnTokenCarrier, TeamCarrier, TokenCarrier
+from util import IdFactory, LoggingLevelRouter
 
 
 class TokenValidator(ModelValidator[Token]):
@@ -111,14 +118,125 @@ class TokenValidator(ModelValidator[Token]):
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
         prime_extract = cast(TokenPrimeExtract, load_result.payload)
-        carrier = cast(TokenCarrier, prime_extract.carrier)
+        token_blueprint = cast(TokenBlueprint, prime_extract.blueprint)
         
+        # Handle the case that any id in the blueprint is flagged.
+        id_validation = self.toolkit.blueprint_id_extractor.execute(
+            candidate=token_blueprint,
+            blueprint_owner_name=token_blueprint.domain_class_name,
+            blueprint_type=self.toolkit.types.blueprint,
+            blueprint_null_exception=self._toolkit.nulls.blueprint,
+        )
+        if id_validation.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
+                    ex=id_validation.exception,
+                )
+            )
+        # Handle the case that the formation is flagged.
+        formation_validation = self.toolkit.priming_validator.execute(
+            candidate=token_blueprint.formation,
+            target_model=Formation,
+            null_exception=FormationNullException(),
+        )
+        if formation_validation.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
+                    ex=formation_validation.exception,
+                )
+            )
+        # Handle the case that the deployment is flagged..
+        deployment_validation = self.toolkit.priming_validator.execute(
+            candidate=token_blueprint.deployment,
+            target_model=TokenDeployment,
+            null_exception=TokenDeploymentNullException(),
+        )
+        if deployment_validation.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
+                    ex=deployment_validation.exception,
+                )
+            )
+        # Handle the case that the team is flagged.
+        team_validation = self.toolkit.wrapper.team.extract_model(
+            request=TeamValidationRequest(
+                item=TeamCarrier(model=token_blueprint.team),
+                id=IdFactory.next_id(class_name="TeamValidationRequest"),
+            )
+        )
+        if team_validation.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
+                    ex=team_validation.exception,
+                )
+            )
+        # Handle the case that the home_square gets flagged.
+        home_detection = self.toolkit.home_square_extractor.execute(
+            blueprint=token_blueprint,
+        )
+        if home_detection.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
+                    ex=home_detection.exception,
+                )
+            )
+        # --- Extract common Token validation payloads. ---#
+        id = cast(int, id_validation.payload)
+        team = cast(Team, team_validation.payload)
+        home_square = cast(HomeSquare, home_detection.payload)
+        formation = cast(Formation, formation_validation.payload)
+        deployment = cast(TokenDeployment, deployment_validation.payload)
+
         # --- Select the appropriate validation route. ---#
+        original_carrier = prime_extract.carrier
+        
         # KingToken validation route.
         if carrier.is_king_token_carrier:
+            raw = cast(KingTokenBlueprint, token_blueprint)
+            king_blueprint = KingTokenBlueprint(
+                id=id,
+                team=team,
+                formation=formation,
+                deployment=deployment,
+                position=raw.position,
+                previous_position=raw.previous_position,
+                readiness=raw.readiness,
+                checkmate=raw.checkmate,
+                check_warning=raw.check_warning,
+            )
+            king_prime_extractor = TokenPrimeExtract(
+                carrier=original_carrier,
+                blueprint=king_blueprint
+            )
             return self._king_validator.execute(
                 carrier=cast(KingTokenCarrier, carrier)
             )
+
         # PawnToken validation route.
         if carrier.is_pawn_token_carrier:
             return self._pawn_validator.execute(

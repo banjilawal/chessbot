@@ -9,14 +9,15 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from abc import ABC
+from typing import Generic, Optional, TypeVar, cast
 
-from assurance import ModelPrimeExtract
-from domain import Token, TokenBlueprint
+from domain import Blueprint, ModelPrimeExtract, Token, TokenBlueprint
 from transit import TokenCarrier
 
+T = TypeVar("T", bound="Token")
 
-class TokenPrimeExtract(ModelPrimeExtract[Token]):
+class TokenPrimeExtract(ModelPrimeExtract[T], ABC, Generic[T]):
     """
     Role
         - Data Holder
@@ -38,13 +39,13 @@ class TokenPrimeExtract(ModelPrimeExtract[Token]):
 
     def __init__(
             self,
-            carrier: TokenCarrier,
+            carrier: TokenCarrier[T],
             blueprint: Optional[TokenBlueprint] | None = None,
     ):
         """
         Args:
-            carrier: EntityCarrier[Token]
-            blueprint: Optional[Blueprint[Token]]
+            carrier: TokenCarrier[T]
+            blueprint: Optional[TokenBlueprint[T]]
         """
         super().__init__(carrier=carrier, blueprint=blueprint,)
         

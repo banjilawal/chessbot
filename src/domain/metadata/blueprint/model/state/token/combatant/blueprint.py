@@ -11,15 +11,14 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from collection import CoordDatabase
 from domain import (
-    CombatantReadiness, CombatantToken, Coord, Formation, HomeSquare, Rank, Team, Token, TokenBlueprint,
-    TokenDeployment
+    CombatantReadiness, CombatantToken, Coord, Formation, HomeSquare, Team,
+    Token, TokenBlueprint, TokenDeployment
 )
 from err import CombatantNullException
 
 
-class CombatantBlueprint(TokenBlueprint):
+class CombatantBlueprint(TokenBlueprint[CombatantToken]):
     """
      Role:
         1.  Metadata
@@ -98,20 +97,21 @@ class CombatantBlueprint(TokenBlueprint):
         return self._captor
     
     @property
-    def domain_class(self) -> Type[CombatantToken]:
-        return cast(Type[CombatantToken], super().domain_class)
-    
-    @property
-    def domain_null_exception(self) -> CombatantNullException:
-        return cast(CombatantNullException, super().domain_null_exception)
-    
-    @property
     def is_captured(self) -> bool:
         return self._captor is not None
     
     @property
     def is_not_captured(self) -> bool:
         return not self.is_captured
+    
+    @property
+    def domain_class(self) -> Type[CombatantToken]:
+        return cast(Type[CombatantToken], super().domain_class)
+    
+    @property
+    def domain_null_exception(self) -> CombatantNullException:
+        return cast(CombatantNullException, super().domain_null_exception)
+
     
 
 

@@ -10,6 +10,9 @@ version: 0.0.2
 # =========== DOMAIN.EXTRACT.MODEL.TOKEN PACKAGE ===========#
 
 # Packages
+from .combatant import *
+from .king import *
+from .pawn import *
 
 # Module
 from .extract import TokenPrimeExtract

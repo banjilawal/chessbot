@@ -4,7 +4,23 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="" />
+    <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/model/token/king/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/model/token/king/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/model/token/pawn/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/model/token/pawn/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/token/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/token/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/token/king/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/king/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/token/pawn/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/pawn/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/token/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/token/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/state/token/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/state/token/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/state/token/combatant/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/state/token/combatant/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/state/token/combatant/pawn/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/state/token/combatant/pawn/blueprint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/state/token/king/blueprint.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/state/token/king/blueprint.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,61 +61,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.3386775513812532" />
-      <entry key="MS500" value="3.438120245160468" />
-      <entry key="S2" value="8.962444022701073" />
-      <entry key="S5" value="16.448974986884682" />
-      <entry key="S10" value="23.865501174478748" />
-      <entry key="S30" value="49.279652216652366" />
-      <entry key="S60" value="85.7917058842831" />
-      <entry key="M2" value="136.99366524951543" />
-      <entry key="M5" value="204.92530751648826" />
-      <entry key="M10" value="255.32162437314003" />
-      <entry key="M15" value="292.43315001013923" />
-      <entry key="M30" value="390.4825241619065" />
-      <entry key="H1" value="570.3171223217229" />
-      <entry key="H2" value="959.7817236641569" />
-      <entry key="H4" value="1817.2101624565926" />
-      <entry key="D1" value="8278.126291680037" />
-      <entry key="W1" value="29633.04000129065" />
+      <entry key="MS100" value="1.0121744465572087" />
+      <entry key="MS500" value="1.4157965551240967" />
+      <entry key="S2" value="2.0787378159701353" />
+      <entry key="S5" value="2.845744106310772" />
+      <entry key="S10" value="3.6790611271280866" />
+      <entry key="S30" value="6.119836132937134" />
+      <entry key="S60" value="9.231217999421865" />
+      <entry key="M2" value="14.54757942379838" />
+      <entry key="M5" value="26.629547220004117" />
+      <entry key="M10" value="47.649501985368346" />
+      <entry key="M15" value="72.17503784365834" />
+      <entry key="M30" value="166.89688021323002" />
+      <entry key="H1" value="383.2484127409393" />
+      <entry key="H2" value="809.1222898314472" />
+      <entry key="H4" value="1676.7867248254581" />
+      <entry key="D1" value="8255.613556209306" />
+      <entry key="W1" value="29816.0147112505" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="1.318477763582419E-266" />
-      <entry key="S2" value="3.388583582911511E-67" />
-      <entry key="S5" value="2.582303761708188E-27" />
-      <entry key="S10" value="5.084014180366724E-14" />
-      <entry key="S30" value="4.267648019840872E-5" />
-      <entry key="S60" value="0.010313409261001221" />
-      <entry key="M2" value="0.2208243869440532" />
-      <entry key="M5" value="2.283845551666566" />
-      <entry key="M10" value="7.044172048000466" />
-      <entry key="M15" value="11.654945771249084" />
-      <entry key="M30" value="21.602647589781135" />
-      <entry key="H1" value="32.33783393991445" />
-      <entry key="H2" value="46.485036745455275" />
-      <entry key="H4" value="68.77981035982336" />
-      <entry key="D1" value="262.7254744360915" />
-      <entry key="W1" value="1176.5090741289978" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="2.793412324579495E-90" />
+      <entry key="S5" value="1.5081829193993935E-36" />
+      <entry key="S10" value="1.22808099057E-18" />
+      <entry key="S30" value="1.070883769387346E-6" />
+      <entry key="S60" value="0.0010348353609526966" />
+      <entry key="M2" value="0.03219103713490056" />
+      <entry key="M5" value="0.2890249060008634" />
+      <entry key="M10" value="1.097825129472986" />
+      <entry key="M15" value="2.338302401309273" />
+      <entry key="M30" value="7.321831939536507" />
+      <entry key="H1" value="18.45302724281392" />
+      <entry key="H2" value="36.77890232002817" />
+      <entry key="H4" value="63.83567116453965" />
+      <entry key="D1" value="264.3755231833775" />
+      <entry key="W1" value="1182.9496235535228" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.1415528905482588" />
-      <entry key="MS500" value="3.3224394394746866" />
-      <entry key="S2" value="8.901614418609466" />
-      <entry key="S5" value="16.406715711944216" />
-      <entry key="S10" value="23.83610978555333" />
-      <entry key="S30" value="49.261202697453584" />
-      <entry key="S60" value="85.7800416202917" />
-      <entry key="M2" value="137.1655467186975" />
-      <entry key="M5" value="207.10179372501042" />
-      <entry key="M10" value="262.2349819052571" />
-      <entry key="M15" value="303.95773368573225" />
-      <entry key="M30" value="411.9756044301335" />
-      <entry key="H1" value="602.5736807269777" />
-      <entry key="H2" value="1006.2037535755865" />
-      <entry key="H4" value="1885.9380028659068" />
-      <entry key="D1" value="8540.817084712835" />
-      <entry key="W1" value="30809.528758501765" />
+      <entry key="MS100" value="0.8881234495761346" />
+      <entry key="MS500" value="1.3852150094162106" />
+      <entry key="S2" value="2.0692092658714927" />
+      <entry key="S5" value="2.8376261839459054" />
+      <entry key="S10" value="3.647225854252318" />
+      <entry key="S30" value="6.037181880050985" />
+      <entry key="S60" value="9.147960698141953" />
+      <entry key="M2" value="14.50295957536497" />
+      <entry key="M5" value="26.840833484511545" />
+      <entry key="M10" value="48.65492456279893" />
+      <entry key="M15" value="74.41210354600176" />
+      <entry key="M30" value="174.11476928042214" />
+      <entry key="H1" value="401.608757012321" />
+      <entry key="H2" value="845.8249035315611" />
+      <entry key="H4" value="1740.5607334331928" />
+      <entry key="D1" value="8519.951860672893" />
+      <entry key="W1" value="30998.943547374893" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -113,36 +129,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.__init__.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.checker.executor&quot;: &quot;Run&quot;,
-    &quot;Python.node.executor&quot;: &quot;Run&quot;,
-    &quot;Python.notifier.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.ray.executor&quot;: &quot;Coverage&quot;,
-    &quot;Python.responder.executor&quot;: &quot;Run&quot;,
-    &quot;Python.roster.executor&quot;: &quot;Run&quot;,
-    &quot;Python.stack.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/griot/PycharmProjects/chessbot/src/domain/extract/model&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.__init__.executor": "Debug",
+    "Python.checker.executor": "Run",
+    "Python.node.executor": "Run",
+    "Python.notifier.executor": "Debug",
+    "Python.ray.executor": "Coverage",
+    "Python.responder.executor": "Run",
+    "Python.roster.executor": "Run",
+    "Python.stack.executor": "Debug",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/domain/extract/model/token",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/domain/extract/model" />
@@ -813,7 +829,7 @@
       <workItem from="1788969937518" duration="171978000" />
       <workItem from="1790001362413" duration="735000" />
       <workItem from="1790063398459" duration="258692000" />
-      <workItem from="1790480915263" duration="516000" />
+      <workItem from="1790480915263" duration="6821000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -2027,7 +2043,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" log-message="true" suspend="NONE" type="python-line">
           <url>file://$PROJECT_DIR$/src/domain/metadata/blueprint/model/state/token/combatant/blueprint.py</url>
-          <line>49</line>
+          <line>48</line>
           <log-expression expression="formation=formation,&#10;            deployment=deployment,&#10;            home_square=home_square,&#10;            previous_position=previous_position,&#10;            domain_class=domain_class or Type[CombatantToken],&#10;            domain_null_exception=domain_null_exception or CombatantNullException(),&#10;        )&#10;        self._captor = captor&#10;        self._readiness = readiness or CombatantReadiness.READY" language="Python" />
           <option name="timeStamp" value="449" />
         </line-breakpoint>

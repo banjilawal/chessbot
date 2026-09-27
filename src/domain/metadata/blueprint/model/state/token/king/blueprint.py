@@ -16,10 +16,10 @@ from domain import (
     CheckWarning, CheckmateAttack, Coord, KingReadiness, KingToken, Formation, HomeSquare,
     Team, TokenBlueprint, TokenDeployment
 )
-from err import KingTokenNullException, TokenDeploymentException
+from err import KingTokenNullException
 
 
-class KingTokenBlueprint(TokenBlueprint):
+class KingTokenBlueprint(TokenBlueprint[KingToken]):
     """
      Role:
         1.  Metadata

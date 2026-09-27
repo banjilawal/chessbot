@@ -15,7 +15,7 @@ from artifcat import ValidationResult
 from assurance import TokenValidatorToolkit
 from domain import (
     Formation, KingReadiness, KingToken, HomeSquare, KingTokenBlueprint, Team,
-    TeamValidationRequest, TokenDeployment
+    TeamValidationRequest, TokenDeployment, TokenPrimeExtract
 )
 from err import (
     FormationNullException, KingReadinessNullException, KingTokenValidatorException,
@@ -54,7 +54,7 @@ class KingTokenValidator:
         self._toolkit=toolkit or TokenValidatorToolkit()
     
     @LoggingLevelRouter.monitor
-    def execute(self, carrier: KingTokenCarrier) -> ValidationResult[KingTokenCarrier]:
+    def execute(self, prime_extract: TokenPrimeExtract) -> ValidationResult[KingTokenCarrier]:
         """
         Send a validated KingToken or Blueprint which inside the validated
         KingTokenCarrier.

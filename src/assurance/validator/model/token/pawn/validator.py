@@ -31,13 +31,15 @@ class PawnTokenValidator:
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a TokenCarrier is safe to use.
+        1.  Ensure a PawnTokenCarrier is safe to use.
 
     Attributes:
         toolkit: TokenValidatorToolkit
 
     Provides:
-        -   def execute(validated_carrier: PawnTokenCarrier) -> ValidationResult[PawnTokenCarrier]
+        -   def execute(
+                    candidate: Any
+            ) -> ValidationResult[PawnTokenCarrier]:
 
     Super Class:
     """
@@ -100,79 +102,11 @@ class PawnTokenValidator:
                     ),
                 )
             )
-        # Handle the case that any id in the blueprint is flagged.
-        id_validation = self._toolkit.wrapper.blueprint_id_extractor.execute(
-            candidate=blueprint,
-            blueprint_owner_name=blueprint.domain_class_name,
-            blueprint_type=self._toolkit.metadata.types.blueprint,
-            blueprint_null_exception=self._toolkit.metadata.nulls.blueprint,
-        )
-        if id_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                PawnTokenValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=PawnTokenValidatorException.MSG,
-                    err_code=PawnTokenValidatorException.ERR_CODE,
-                    ex=id_validation.exception,
-                )
-            )
-        # Handle the case that the team does not pass a validation check.
-        team_validation = self._toolkit.wrapper.team_validator.execute(
-            candidate=TeamValidationRequest(
-                id=IdFactory.next_id(class_name="TeamValidationRequest"),
-                item=TeamCarrier(model=blueprint.team),
-            )
-        )
-        if team_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                PawnTokenValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=PawnTokenValidatorException.MSG,
-                    err_code=PawnTokenValidatorException.ERR_CODE,
-                    ex=team_validation.exception,
-                )
-            )
-        # Handle the case that the team_carrier does not contain a model.
-        team_carrier = cast(TeamCarrier, team_validation.payload)
-        if not team_carrier.has_model:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                PawnTokenValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=PawnTokenValidatorException.MSG,
-                    err_code=PawnTokenValidatorException.ERR_CODE,
-                    ex=EmptyTeamCarrierException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=EmptyTeamCarrierException.MSG,
-                        err_code=EmptyTeamCarrierException.ERR_CODE,
-                    ),
-                )
-            )
-        # Handle the case that the formation does not pass a validation check.
-        formation_validation = self._toolkit.wrapper.priming_validator.execute(
-            candidate=blueprint.formation,
-            target_model=Formation,
-            null_exception=FormationNullException(),
-        )
-        if formation_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                PawnTokenValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=PawnTokenValidatorException.MSG,
-                    err_code=PawnTokenValidatorException.ERR_CODE,
-                    ex=formation_validation.exception,
-                )
-            )
+
+
+
         # Handle the case that the readiness does not pass a validation check.
-        readiness_validation = self._toolkit.wrapper.priming_validator.execute(
+        readiness_validation = self._toolkit.priming_validator.execute(
             candidate=blueprint.readiness,
             target_model=CombatantReadiness,
             null_exception=CombatantReadinessNullException(),
@@ -188,23 +122,7 @@ class PawnTokenValidator:
                     ex=readiness_validation.exception,
                 )
             )
-        # Handle the case that the deployment does not pass a validation check.
-        deployment_validation = self._toolkit.wrapper.priming_validator.execute(
-            candidate=blueprint.deployment,
-            target_model=TokenDeployment,
-            null_exception=TokenDeploymentNullException(),
-        )
-        if deployment_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                PawnTokenValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=PawnTokenValidatorException.MSG,
-                    err_code=PawnTokenValidatorException.ERR_CODE,
-                    ex=deployment_validation.exception,
-                )
-            )
+
         # Handle the case that the deployment does not pass a validation check.
         promotion_state_validation = self._toolkit.wrapper.priming_validator.execute(
             candidate=blueprint.promotion_state,
@@ -222,21 +140,7 @@ class PawnTokenValidator:
                     ex=promotion_state_validation.exception,
                 )
             )
-        # Handle the case that the home_square gets flagged.
-        home_detection = self._toolkit.wrapper.home_extractor.execute(
-            blueprint=blueprint,
-        )
-        if home_detection.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                PawnTokenValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=PawnTokenValidatorException.MSG,
-                    err_code=PawnTokenValidatorException.ERR_CODE,
-                    ex=home_detection.exception,
-                )
-            )
+
         # --- Extract validation payloads. ---#
         id = cast(int, id_validation.payload)
         team = cast(Team, team_carrier.entity)
