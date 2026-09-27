@@ -37,7 +37,9 @@ class KingTokenValidator:
         toolkit: TokenValidatorToolkit
 
     Provides:
-        -   def execute(validated_carrier: KingTokenCarrier) -> ValidationResult[KingTokenCarrier]
+        -   def execute(
+                    prime_extract: KingTokenPrimeExtract
+            ) -> ValidationResult[KingTokenCarrier]
 
     Super Class:
     """
@@ -74,7 +76,7 @@ class KingTokenValidator:
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            carrier: KingTokenCarrier
+            prime_extract: KingTokenPrimeExtract
         Returns:
             ValidationResult[KingTokenCarrier]
         Raises:
@@ -82,6 +84,9 @@ class KingTokenValidator:
         """
         method = f"{self.__class__.__name__}.execute"
         
+        king_blueprint = prime_extract.blueprint
+        
+        readiness_validation = self_toolkit.
         # Handle the case that there is no blueprint in the carrier.
         blueprint = carrier.extract_blueprint()
         if blueprint is None:

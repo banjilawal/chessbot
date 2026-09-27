@@ -14,14 +14,14 @@ from typing import Any, Optional, cast
 from artifcat import ValidationResult
 from assurance import ModelValidator, TokenValidationRouter, TokenValidatorToolkit
 from domain import (
-    Formation, HomeSquare, Team, Token, TokenBlueprint, TokenDeployment,
+    Coord, Formation, HomeSquare, Team, Token, TokenBlueprint, TokenDeployment,
     TokenPrimeExtract
 )
 from err import (
-    FormationNullException, TokenDeploymentNullException, TokenValidatorException
+    CoordValidatorException, FormationNullException, TokenDeploymentNullException, TokenValidatorException
 )
-from exchange import TeamValidationRequest
-from transit import TeamCarrier, TokenCarrier
+from exchange import CoordValidationRequest, TeamValidationRequest
+from transit import CoordCarrier, TeamCarrier, TokenCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -188,6 +188,47 @@ class TokenValidator(ModelValidator[Token]):
                     ex=home_detection.exception,
                 )
             )
+        # Handle the case that the current_position is flagged.
+        position_validation: ValidationResult = ValidationResult.failure(
+            CoordValidatorException()
+        )
+        if token_blueprint.position is not None:
+            position_validation = self._position_validator(
+                position_candidate=token_blueprint.position
+            )
+            if position_validation.is_failure:
+                # Send the exception chain on failure.
+                return ValidationResult.failure(
+                    TokenValidatorException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=TokenValidatorException.MSG,
+                        err_code=TokenValidatorException.ERR_CODE,
+                        ex=position_validation.exception,
+                    )
+                )
+        # Handle the case that the previous_position is flagged.
+        previous_position_validation: ValidationResult = ValidationResult.failure(
+            CoordValidatorException()
+        )
+        if token_blueprint.previous_position is not None:
+            previous_position_validation = self._position_validator(
+                position_candidate=token_blueprint.position
+            )
+            if previous_position_validation.is_failure:
+                # Send the exception chain on failure.
+                return ValidationResult.failure(
+                    TokenValidatorException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=TokenValidatorException.MSG,
+                        err_code=TokenValidatorException.ERR_CODE,
+                        ex=previous_position_validation.exception,
+                    )
+                )
+        
+            
+            
         # --- Extract common Token validation payloads. ---#
         id = cast(int, id_validation.payload)
         team = cast(Team, team_validation.payload)
@@ -218,4 +259,43 @@ class TokenValidator(ModelValidator[Token]):
         # --- Send the work product. ---#
         safe_carrier = cast(TokenCarrier, router_result.payload)
         return ValidationResult.success(safe_carrier)
+    
+    @LoggingLevelRouter.monitor
+    def _position_validator(self, position_candidate: Any) -> ValidationResult[Coord]:
+        """
+        Assure a not-null position is a safe Coord.
+
+        Action:
+            1.  Send an exception chain in the ValidationResult if the
+                candidate is flagged.
+            2.  Otherwise, send a Coord in the success result.
+        Args:
+            position_candidate: Any
+        Returns:
+            ValidationResult[Coord]
+        Raises:
+            TokenValidatorException
+        """
+        method = f"{self.__class__.__name__}._position_validator"
+        
+        result = self.toolkit.wrapper.coord.extract_model(
+            request=CoordValidationRequest(
+                item=CoordCarrier(model=position_candidate),
+                id=IdFactory.next_id(class_name="CoordValidationRequest"),
+            )
+        )
+        if result.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenValidatorException.MSG,
+                    err_code=TokenValidatorException.ERR_CODE,
+                    ex=result.exception,
+                )
+            )
+        # --- Send the work product. ---#
+        coord = cast(Coord, result.payload)
+        return ValidationResult.success(coord)
     

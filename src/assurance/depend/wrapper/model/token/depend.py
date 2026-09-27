@@ -15,7 +15,7 @@ from typing import Optional
 from assurance import ModelWrapperDependency
 from domain import Token
 from exchange import (
-    BoardValidationResponseWrapper, RankValidationResponseWrapper,
+    CoordValidationResponseWrapper, RankValidationResponseWrapper,
     SquareValidationResponseWrapper, TeamValidationResponseWrapper
 )
 
@@ -31,7 +31,7 @@ class TokenWrapperDependency(ModelWrapperDependency[Token]):
     Attributes:
         team: TeamValidationResponseWrapper
         rank: RankValidationResponseWrapper
-        board: BoardValidationResponseWrapper
+        coord: CoordValidationResponseWrapper
         square: SquareValidationResponseWrapper
         
     Provides:
@@ -41,27 +41,27 @@ class TokenWrapperDependency(ModelWrapperDependency[Token]):
     """
     _team: TeamValidationResponseWrapper
     _rank: RankValidationResponseWrapper
-    _board: BoardValidationResponseWrapper
+    _coord: CoordValidationResponseWrapper
     _square: SquareValidationResponseWrapper
     
     def __init__(
             self,
             team: Optional[TeamValidationResponseWrapper] | None = None,
             rank: Optional[RankValidationResponseWrapper] | None = None,
-            board: Optional[BoardValidationResponseWrapper] | None = None,
+            coord: Optional[CoordValidationResponseWrapper] | None = None,
             square: Optional[SquareValidationResponseWrapper] | None = None,
     ):
         """
         Args:
             team: Optional[TeamValidatorClient]
             rank: Optional[RankValidatorClient]
-            board: Optional[BoardValidatorClient]
+            coord: Optional[CoordValidatorClient]
             square: Optional[SquareValidatorClient]
         """
         super().__init__()
         self._team = team or TeamValidationResponseWrapper()
         self._rank = rank or RankValidationResponseWrapper()
-        self._board = board or BoardValidationResponseWrapper()
+        self._coord = coord or CoordValidationResponseWrapper()
         self._square = square or SquareValidationResponseWrapper()
     
     @property
@@ -73,8 +73,8 @@ class TokenWrapperDependency(ModelWrapperDependency[Token]):
         return self._rank
     
     @property
-    def board(self) -> BoardValidationResponseWrapper:
-        return self._board
+    def coord(self) -> CoordValidationResponseWrapper:
+        return self._coord
     
     @property
     def square(self) -> SquareValidationResponseWrapper:

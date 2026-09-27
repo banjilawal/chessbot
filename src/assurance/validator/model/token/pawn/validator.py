@@ -15,13 +15,14 @@ from artifcat import ValidationResult
 from assurance import TokenValidatorToolkit
 from domain import (
     Formation, CombatantReadiness, PawnToken, HomeSquare, PawnTokenBlueprint,
-    PawnTokenPrimeExtract, PromotionState, Team, TeamValidationRequest, TokenDeployment
+    PawnTokenPrimeExtract, PromotionState, Rank, Team, TeamValidationRequest, TokenDeployment
 )
 from err import (
     CombatantReadinessNullException, FormationNullException, PawnTokenValidatorException, PromotionStateNullException,
     EmptyTeamCarrierException, EmptyPawnTokenCarrierException, TokenDeploymentNullException
 )
-from transit import PawnTokenCarrier, TeamCarrier
+from exchange import RankValidationRequest
+from transit import PawnTokenCarrier, RankCarrier, TeamCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -58,6 +59,11 @@ class PawnTokenValidator:
     @LoggingLevelRouter.monitor
     def execute(
             self,
+            id: int,
+            team: Team,
+            formation: Formation,
+            home_square: HomeSquare,
+            deployment: TokenDeployment,
             prime_extract: PawnTokenPrimeExtract
     ) -> ValidationResult[PawnTokenPrimeExtract]:
         """
@@ -85,7 +91,7 @@ class PawnTokenValidator:
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that there is no blueprint in the carrier.
-        blueprint = prime_extract.extract_blueprint()
+        blueprint = prime_extract.blueprint
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -102,10 +108,7 @@ class PawnTokenValidator:
                     ),
                 )
             )
-
-
-
-        # Handle the case that the readiness does not pass a validation check.
+        # Handle the case that the readiness is flagged.
         readiness_validation = self._toolkit.priming_validator.execute(
             candidate=blueprint.readiness,
             target_model=CombatantReadiness,
@@ -122,14 +125,13 @@ class PawnTokenValidator:
                     ex=readiness_validation.exception,
                 )
             )
-
-        # Handle the case that the deployment does not pass a validation check.
-        promotion_state_validation = self._toolkit.wrapper.priming_validator.execute(
+        # Handle the case that the promotion_state is flagged.
+        promotion_state_validation = self._toolkit.priming_validator.execute(
             candidate=blueprint.promotion_state,
             target_model=PromotionState,
             null_exception=PromotionStateNullException(),
         )
-        if deployment_validation.is_failure:
+        if promotion_state_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 PawnTokenValidatorException(
@@ -140,15 +142,43 @@ class PawnTokenValidator:
                     ex=promotion_state_validation.exception,
                 )
             )
-
+        # Handle the case that the rank is flagged.
+        rank_validation = self._toolkit.wrapper.rank.extract_model(
+            request=RankValidationRequest(
+                item=RankCarrier(model=blueprint.rank),
+                id=IdFactory.next_id(class_name="RankValidationRequest"),
+            )
+        )
+        if rank_validation.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                PawnTokenValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=PawnTokenValidatorException.MSG,
+                    err_code=PawnTokenValidatorException.ERR_CODE,
+                    ex=rank_validation.exception,
+                )
+            )
         # --- Extract validation payloads. ---#
-        id = cast(int, id_validation.payload)
-        team = cast(Team, team_carrier.entity)
-        home_square = cast(HomeSquare, home_detection.payload)
-        formation = cast(Formation, formation_validation.payload)
+        rank = cast(Rank, rank_validation.payload)
         readiness = cast(CombatantReadiness, readiness_validation.payload)
-        deployment = cast(TokenDeployment, deployment_validation.payload)
         promotion_state = cast(PromotionState, promotion_state_validation.payload)
+        
+        # --- Forward the appropriate work product to the caller. ---#
+        # The client wants a safe PawnToken.
+        if prime_extract.carrier.has_model:
+            payload = PawnToken(
+                id=id,
+                team=team,
+                formation=formation,
+                home_square=home_square,
+            )
+            return ValidationResult.success(VectorCarrier(model=payload))
+        
+        # Otherwise, the client is a VectorBuilder that needs a Blueprint.
+        payload = VectorBlueprint(x=x, y=y)
+        return ValidationResult.success(VectorCarrier(blueprint=payload))
         # --- Forward the appropriate work product to the caller. ---#
         
         # The model case.
