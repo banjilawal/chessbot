@@ -10,7 +10,6 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.BLUEPRINT.MODEL.STATE.TOKEN.COMBATANT PACKAGE ===========#
 
 # Packages
-from .pawn import *
 
 # Modules
 from .blueprint import CombatantBlueprint

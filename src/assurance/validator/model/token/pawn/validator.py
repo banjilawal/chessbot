@@ -15,7 +15,7 @@ from artifcat import ValidationResult
 from assurance import TokenValidatorToolkit
 from domain import (
     Formation, CombatantReadiness, PawnToken, HomeSquare, PawnTokenBlueprint,
-    PromotionState, Team, TeamValidationRequest, TokenDeployment
+    PawnTokenPrimeExtract, PromotionState, Team, TeamValidationRequest, TokenDeployment
 )
 from err import (
     CombatantReadinessNullException, FormationNullException, PawnTokenValidatorException, PromotionStateNullException,
@@ -58,8 +58,8 @@ class PawnTokenValidator:
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            carrier: PawnTokenCarrier
-    ) -> ValidationResult[PawnTokenCarrier]:
+            prime_extract: PawnTokenPrimeExtract
+    ) -> ValidationResult[PawnTokenPrimeExtract]:
         """
         Send a validated PawnToken or Blueprint which inside the validated
         PawnTokenCarrier.
@@ -76,16 +76,16 @@ class PawnTokenValidator:
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            carrier: PawnTokenCarrier
+            prime_extract: PawnTokenCarrier
         Returns:
-            ValidationResult[PawnTokenCarrier]
+            ValidationResult[PawnTokenPrimeExtract]
         Raises:
             PawnTokenValidatorException
         """
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that there is no blueprint in the carrier.
-        blueprint = carrier.extract_blueprint()
+        blueprint = prime_extract.extract_blueprint()
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -152,7 +152,7 @@ class PawnTokenValidator:
         # --- Forward the appropriate work product to the caller. ---#
         
         # The model case.
-        if carrier.has_model:
+        if prime_extract.has_model:
             model = PawnToken(
                 id=id,
                 team=team,

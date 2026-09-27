@@ -11,21 +11,21 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import combatantToken, combatantTokenBlueprint, TokenPrimeExtract
-from transit import combatantTokenCarrier
+from domain import CombatantToken, CombatantTokenBlueprint, TokenPrimeExtract
+from transit import CombatantTokenCarrier
 
 
-class combatantTokenPrimeExtract(TokenPrimeExtract[combatantToken]):
+class CombatantTokenPrimeExtract(TokenPrimeExtract[CombatantToken]):
     """
     Role
         - Data Holder
 
     Responsibilities:
-        1.  Persist Blueprint and Carrier data for combatantTokenValidator.
+        1.  Persist Blueprint and Carrier data for CombatantTokenValidator.
 
     Attributes:
-        carrier: combatantTokenCarrier
-        blueprint: Optional[combatantTokenBlueprint]
+        carrier: CombatantTokenCarrier
+        blueprint: Optional[CombatantTokenBlueprint]
 
     Provides:
         blueprint_exists: bool
@@ -37,20 +37,20 @@ class combatantTokenPrimeExtract(TokenPrimeExtract[combatantToken]):
 
     def __init__(
             self,
-            carrier: combatantTokenCarrier,
-            blueprint: Optional[combatantTokenBlueprint] | None = None,
+            carrier: CombatantTokenCarrier,
+            blueprint: Optional[CombatantTokenBlueprint] | None = None,
     ):
         """
         Args:
-            carrier: combatantTokenCarrier
-            blueprint: Optional[combatantTokenBlueprint]
+            carrier: CombatantTokenCarrier
+            blueprint: Optional[CombatantTokenBlueprint]
         """
         super().__init__(carrier=carrier, blueprint=blueprint,)
         
     @property
-    def carrier(self) -> combatantTokenCarrier:
-        return cast(combatantTokenCarrier, super().carrier)
+    def carrier(self) -> CombatantTokenCarrier:
+        return cast(CombatantTokenCarrier, super().carrier)
     
     @property
-    def blueprint(self) -> Optional[combatantTokenBlueprint]:
-        return cast(combatantTokenBlueprint,super().blueprint)
+    def blueprint(self) -> Optional[CombatantTokenBlueprint]:
+        return cast(CombatantTokenBlueprint,super().blueprint)

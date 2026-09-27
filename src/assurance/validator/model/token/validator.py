@@ -17,7 +17,11 @@ from assurance import (
     TokenValidatorToolkit
 )
 from domain import (
-    Formation, HomeSquare, KingTokenBlueprint, Team, Token, TokenBlueprint, TokenDeployment,
+    CombatantBlueprint, CombatantTokenPrimeExtract, Formation, HomeSquare, KingTokenBlueprint, KingTokenPrimeExtract,
+    PawnTokenBlueprint,
+    PawnTokenPrimeExtract, Team,
+    Token, TokenBlueprint,
+    TokenDeployment,
     TokenPrimeExtract
 )
 from err import (
@@ -216,7 +220,7 @@ class TokenValidator(ModelValidator[Token]):
         original_carrier = prime_extract.carrier
         
         # KingToken validation route.
-        if carrier.is_king_token_carrier:
+        if original_carrier.is_king_token_carrier:
             raw = cast(KingTokenBlueprint, token_blueprint)
             king_blueprint = KingTokenBlueprint(
                 id=id,
@@ -229,23 +233,61 @@ class TokenValidator(ModelValidator[Token]):
                 checkmate=raw.checkmate,
                 check_warning=raw.check_warning,
             )
-            king_prime_extractor = TokenPrimeExtract(
-                carrier=original_carrier,
+            king_carrier = cast(KingTokenCarrier, original_carrier)
+            king_prime_extract = KingTokenPrimeExtract(
+                carrier=king_carrier,
                 blueprint=king_blueprint
             )
             return self._king_validator.execute(
-                carrier=cast(KingTokenCarrier, carrier)
+                prime_extract=king_prime_extract
             )
 
         # PawnToken validation route.
-        if carrier.is_pawn_token_carrier:
+        if original_carrier.is_pawn_token_carrier:
+            raw = cast(PawnTokenBlueprint, token_blueprint)
+            pawn_blueprint = PawnTokenBlueprint(
+                id=id,
+                team=team,
+                formation=formation,
+                deployment=deployment,
+                position=raw.position,
+                previous_position=raw.previous_position,
+                readiness=raw.readiness,
+                rank=raw.rank,
+                captor=raw.captor,
+                promotion_state=raw.promotion_state,
+            )
+            pawn_carrier = cast(PawnTokenCarrier, original_carrier)
+            pawn_prime_extract = PawnTokenPrimeExtract(
+                carrier=pawn_carrier,
+                blueprint=pawn_blueprint
+            )
             return self._pawn_validator.execute(
-                carrier=cast(PawnTokenCarrier, carrier)
+                prime_extract=pawn_prime_extract
             )
         # CombatantToken validation route.
-        if carrier.is_combatant_token_carrier:
+        if original_carrier.is_combatant_token_carrier:
+            raw = cast(CombatantBlueprint, token_blueprint)
+            combatant_blueprint = CombatantBlueprint(
+                id=id,
+                team=team,
+                formation=formation,
+                deployment=deployment,
+                position=raw.position,
+                previous_position=raw.previous_position,
+                readiness=raw.readiness,
+                captor=raw.captor,
+            )
+            combatant_carrier = cast(CombatantCarrier, original_carrier)
+            combatant_prime_extract = CombatantTokenPrimeExtract(
+                carrier=combatant_carrier,
+                blueprint=combatant_blueprint
+            )
             return self._combatant_validator.execute(
-                carrier=cast(CombatantCarrier, carrier)
+                prime_extract=combatant_prime_extract
+            )
+            return self._combatant_validator.execute(
+                prime_extract=cast(CombatantCarrier, carrier)
             )
         # Handle the case that the carrier is not consistent.
         return ValidationResult.failure(

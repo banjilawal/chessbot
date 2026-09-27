@@ -1,7 +1,7 @@
-# src/domain/metadata/blueprint/model/state/token/combatant/pawn/blueprint.py
+# src/domain/metadata/blueprint/model/state/token/pawn/blueprint.py
 
 """
-Module: domain.metadata.blueprint.model.state.token.combatant.pawn.blueprint
+Module: domain.metadata.blueprint.model.state.token.pawn.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

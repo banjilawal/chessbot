@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import ValidationResult
 from assurance import TokenValidatorToolkit
 from domain import (
-    Formation, CombatantReadiness, CombatantToken, HomeSquare, CombatantBlueprint, Team,
+    CombatantTokenPrimeExtract, Formation, CombatantReadiness, CombatantToken, HomeSquare, CombatantBlueprint, Team,
     TeamValidationRequest, TokenDeployment,
 )
 from err import (
@@ -56,8 +56,8 @@ class CombatantTokenValidator:
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            carrier: CombatantCarrier
-    ) -> ValidationResult[CombatantCarrier]:
+            prime_extract: CombatantTokenPrimeExtract
+    ) -> ValidationResult[CombatantTokenPrimeExtract]:
         """
         Send a validated CombatantToken or Blueprint which inside the validated
         CombatantCarrier.
@@ -74,7 +74,7 @@ class CombatantTokenValidator:
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            carrier: CombatantCarrier
+            prime_extract: CombatantCarrier
         Returns:
             ValidationResult[CombatantCarrier]
         Raises:
@@ -83,7 +83,7 @@ class CombatantTokenValidator:
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that there is no blueprint in the carrier.
-        blueprint = carrier.extract_blueprint()
+        blueprint = prime_extract.extract_blueprint()
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -231,7 +231,7 @@ class CombatantTokenValidator:
         # --- Forward the appropriate work product to the caller. ---#
         
         # The model case.
-        if carrier.has_model:
+        if prime_extract.has_model:
             model = CombatantToken(
                 id=id,
                 team=team,

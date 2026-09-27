@@ -7,10 +7,10 @@ Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== DOMAIN.EXTRACT.MODEL.TOKEN.pawn PACKAGE ===========#
+# =========== DOMAIN.EXTRACT.MODEL.TOKEN.PAWN PACKAGE ===========#
 
 # Packages
 
 
 # Module
-from .extract import pawnTokenPrimeExtract
+from .extract import PawnTokenPrimeExtract

@@ -7,10 +7,10 @@ Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== DOMAIN.EXTRACT.MODEL.TOKEN.combatant PACKAGE ===========#
+# =========== DOMAIN.EXTRACT.MODEL.TOKEN.COMBATANT PACKAGE ===========#
 
 # Packages
 
 
 # Module
-from .extract import combatantTokenPrimeExtract
+from .extract import CombatantTokenPrimeExtract
