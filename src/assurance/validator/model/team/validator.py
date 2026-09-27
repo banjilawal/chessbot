@@ -53,7 +53,10 @@ class TeamValidator(ModelValidator[Team]):
         return cast(TeamValidatorToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[TeamCarrier]:
+    def execute(
+            self,
+            candidate: Any,
+    ) -> ValidationResult[TeamCarrier]:
         """
         Certify a TeamCarrier's payload is either a Team or a Blueprint 
         that is safe to use.

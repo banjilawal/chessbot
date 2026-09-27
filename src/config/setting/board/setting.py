@@ -32,43 +32,17 @@ class BoardSetting:
     """
     # _value: BoardPropertyValue = BoardPropertyValue()
     _entry: Dict[BoardPropertyName, int] = {
-                BoardPropertyName.DIMENSION: BoardPropertyValue.board_size(),
-                BoardPropertyName.NUMBER_OF_ROWS: BoardPropertyValue.num_rows(),
-                BoardPropertyName.NUMBER_OF_COLUMNS: BoardPropertyValue.num_columns(),
-                BoardPropertyName.MAX_ROW_INDEX: BoardPropertyValue.max_row_index(),
-                BoardPropertyName.MAX_COLUMN_INDEX: BoardPropertyValue.max_column_index(),
-            }
-    
-    # def __init__(
-    #         cls,
-    #         value: Optional[BoardPropertyValue] | None = None,
-    # ):
-    #     """
-    #     Args:
-    #         value: Optional[BoardPropertyValue]
-    #     """
-    # 
-    #     _vale = value or BoardPropertyValue()
-    #     _entry = Mapping[BoardPropertyName, int] = field(
-    #         default_factory=lambda: MappingProxyType(
-    #             {
-    #                 BoardPropertyName.DIMENSION: _value.board_size,
-    #                 BoardPropertyName.NUMBER_OF_ROWS: _value.number_of_rows,
-    #                 BoardPropertyName.NUMBER_OF_COLUMNS: _value.number_of_columns,
-    #                 BoardPropertyName.MAX_ROW_INDEX: _value.number_of_rows - 1,
-    #                 BoardPropertyName.MAX_COLUMN_INDEX: _value.number_of_columns - 1,
-    #                 BoardPropertyName.KNIGHT_RADIUS: _value.number_of_columns,
-    #             }
-    #         )
-    #     )
-        
-    # @classmethod
-    # def entry(cls) -> Mapping[BoardPropertyName, int]:
-    #     return _entry
+        BoardPropertyName.CELL_COUNT: BoardPropertyValue.board_size(),
+        BoardPropertyName.NUMBER_OF_ROWS: BoardPropertyValue.num_rows(),
+        BoardPropertyName.NUMBER_OF_COLUMNS: BoardPropertyValue.num_columns(),
+        BoardPropertyName.MAX_ROW_INDEX: BoardPropertyValue.max_row_index(),
+        BoardPropertyName.MAX_COLUMN_INDEX: BoardPropertyValue.max_column_index(),
+        BoardPropertyName.DIAGONAL_LENGTH: BoardPropertyValue.diagonal_length(),
+    }
     
     @classmethod
-    def dimension(cls) -> int:
-        return cls._entry[BoardPropertyName.DIMENSION]
+    def cell_count(cls) -> int:
+        return cls._entry[BoardPropertyName.CELL_COUNT]
     
     @classmethod
     def numer_of_rows(cls) -> int:
@@ -85,3 +59,7 @@ class BoardSetting:
     @classmethod
     def max_column_index(cls) -> int:
         return cls._entry[BoardPropertyName.MAX_COLUMN_INDEX]
+    
+    @classmethod
+    def diagonal_length(cls) -> int:
+        return cls._entry[BoardPropertyName.DIAGONAL_LENGTH]

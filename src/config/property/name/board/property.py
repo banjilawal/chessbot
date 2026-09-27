@@ -28,9 +28,9 @@ class BoardPropertyName(Enum):
      Super Class:
         Enum
      """
-    DIMENSION = auto(),
+    CELL_COUNT = auto(),
     NUMBER_OF_ROWS = auto(),
     NUMBER_OF_COLUMNS = auto(),
     MAX_ROW_INDEX = auto(),
     MAX_COLUMN_INDEX = auto(),
-    KNIGHT_RADIUS = auto(),
+    DIAGONAL_LENGTH = auto()

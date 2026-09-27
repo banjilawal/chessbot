@@ -9,14 +9,13 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, Optional, Type, cast
+from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import ModelValidator, ScalarValidatorToolkit
-from domain import Scalar, ScalarBlueprint, ScalarValidationRequest
-from err import (
-    EmptyScalarCarrierException, ScalarValidationRequestNullException, ScalarValidatorException
-)
+from config import BoardSetting
+from domain import Scalar, ScalarBlueprint, ScalarPrimeExtract
+from err import ScalarValidatorException
 from transit import ScalarCarrier
 from util import LoggingLevelRouter
 
@@ -33,7 +32,7 @@ class ScalarValidator(ModelValidator[Scalar]):
         toolkit: ScalarValidatorToolkit
 
     Provides:
-        -   def execute(candidate: ScalarValidationRequest) ->ValidationResult[ScalarCarrier]:
+        -   def execute(candidate: Any) -> ValidationResult[ScalarCarrier]:
 
     Super Class:
         ModelValidator
@@ -51,25 +50,23 @@ class ScalarValidator(ModelValidator[Scalar]):
     
     @property
     def toolkit(self) -> ScalarValidatorToolkit:
-        return cast(
-            ScalarValidatorToolkit,
-            super().toolkit,
-        )
+        return cast(ScalarValidatorToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[ScalarCarrier]:
+    def execute(
+            self,
+            candidate: Any,
+    ) -> ValidationResult[ScalarCarrier]:
         """
-        Certify a candidate is a ScalarCarrier whose payload is either a Scalar
-        or a Blueprint that is safe to use.
+        Certify a ScalarCarrier's payload is either a Scalar or a Blueprint 
+        that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    - The candidate is not a ScalarCarrier or its null.
-                    - The candidate is an empty ScalarCarrier.
-                    - Any Scalar attribute is flagged.
-            2.  Otherwise, Send a Carrier with the correct type of payload in the success
-                result.
+                    -   The Loader fails.
+                    -   Either the id, board, or owner are flagged unsafe.
+            2.  Otherwise, send a ScalarCarrier in the success result.
         Args:
             candidate: Any
         Returns:
@@ -79,13 +76,9 @@ class ScalarValidator(ModelValidator[Scalar]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the candidate is null or the rong type.
-        priming_result = self.toolkit.wrapper.priming_validator.execute(
-            candidate=candidate,
-            target_model=ScalarValidationRequest,
-            null_exception=ScalarValidationRequestNullException(),
-        )
-        if priming_result.is_failure:
+        # Handle the case that the blueprint cannot be extracted.
+        load_result = self.toolkit.loader.execute(candidate)
+        if load_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ScalarValidatorException(
@@ -93,56 +86,20 @@ class ScalarValidator(ModelValidator[Scalar]):
                     cls_name=self.__class__.__name__,
                     msg=ScalarValidatorException.MSG,
                     err_code=ScalarValidatorException.ERR_CODE,
-                    ex=priming_result.exception,
+                    ex=load_result.exception,
                 )
             )
-        # --- Cast priming_result into a request for additional tests. ---#
-        request = cast(ScalarValidationRequest, priming_result.payload)
+        # --- Get the PrimeExtract and Blueprint for additional processing. ---#
+        prime_extract = cast(ScalarPrimeExtract, load_result.payload)
+        blueprint = cast(ScalarBlueprint, prime_extract.blueprint)
         
-        # Handle the case that request.item is the wrong carrier type.
-        carrier_validation = self.toolkit.wrapper.priming_validator.execute(
-            candidate=request.item,
-            target_model=self.toolkit.metadata.types.carrier,
-            null_exception=self.toolkit.metadata.nulls.carrier,
-        )
-        if carrier_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                ScalarValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=ScalarValidatorException.MSG,
-                    err_code=ScalarValidatorException.ERR_CODE,
-                    ex=carrier_validation.exception,
-                )
-            )
-        # --- Cast the carrier_validation payload for additional tests. ---#
-        carrier = cast(
-            ScalarCarrier,
-            carrier_validation.payload,
-        )
-        # --- Extract the blueprint to verify the attributes. ---#
-        blueprint = carrier.extract_blueprint()
-        
-        # Handle the case that there is no blueprint.
-        if blueprint is None:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                ScalarValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=ScalarValidatorException.MSG,
-                    err_code=ScalarValidatorException.ERR_CODE,
-                    ex=EmptyScalarCarrierException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=EmptyScalarCarrierException.MSG,
-                        err_code=EmptyScalarCarrierException.ERR_CODE,
-                    ),
-                )
-            )
         # Handle the case that any scalar component in the blueprint is flagged.
-        magnitude_validation = self.toolkit.wrapper.number_validator.execute(blueprint.magnitude)
+        ceiling = BoardSetting.diagonal_length()
+        magnitude_validation = self.toolkit.number_validator.execute(
+            candidate=blueprint.magnitude,
+            floor= (-1 * ceiling),
+            ceiling=ceiling,
+        )
         if magnitude_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -154,15 +111,15 @@ class ScalarValidator(ModelValidator[Scalar]):
                     ex=magnitude_validation.exception,
                 )
             )
-        # --- Extract and cast payloads of the validation results. ---#
+        # --- Extract validation payloads. ---#
         magnitude = cast(int, magnitude_validation.payload)
+        
         # --- Forward the appropriate work product to the caller. ---#
-        # The model case
-        if carrier.has_model:
-            return ValidationResult.success(
-                ScalarCarrier(model=Scalar(magnitude))
-            )
-        # The blueprint case
-        return ValidationResult.success(
-            ScalarCarrier(blueprint=ScalarBlueprint(magnitude=magnitude))
-        )
+        # The client wants a safe Scalar.
+        if prime_extract.carrier.has_model:
+            payload = Scalar(magnitude=magnitude)
+            return ValidationResult.success(ScalarCarrier(model=payload))
+        
+        # Otherwise, the client is a ScalarBuilder that needs a Blueprint.
+        payload = ScalarBlueprint(magnitude=magnitude)
+        return ValidationResult.success(ScalarCarrier(blueprint=payload))

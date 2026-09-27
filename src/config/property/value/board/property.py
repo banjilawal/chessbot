@@ -9,6 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from math import sqrt
 
 
 class BoardPropertyValue:
@@ -33,44 +34,32 @@ class BoardPropertyValue:
      Super Class:
      """
     _DIMENSION = 8
-    _number_of_rows: int = _DIMENSION
-    _number_of_columns: int = _DIMENSION
-    
-    # def __init__(
-    #         cls,
-    #         board_size: Optional[int] | None = None,
-    #         number_of_rows: Optional[int] | None = None,
-    #         number_of_columns: Optional[int] | None = None,
-    # ):
-    #     """
-    #     Args:
-    #         board_size: Optional[int]
-    #         number_of_rows: Optional[int]
-    #         number_of_columns: Optional[int]
-    #     """
-    #     cls._board_size = board_size or cls._DIMENSION
-    #     cls._number_of_rows = number_of_rows or cls._DIMENSION
-    #     cls._number_of_columns = number_of_columns or cls._DIMENSION
+    _num_rows: int = _DIMENSION
+    _num_columns: int = _DIMENSION
         
     @classmethod
     def board_size(cls) -> int:
-        return cls._number_of_rows * cls._number_of_columns
+        return cls._num_rows * cls._num_columns
     
     @classmethod
     def num_rows(cls) -> int:
-        return cls._number_of_rows
+        return cls._num_rows
     
     @classmethod
     def num_columns(cls) -> int:
-        return cls._number_of_columns
+        return cls._num_columns
     
     @classmethod
     def max_row_index(cls) -> int:
-        return cls._number_of_rows - 1
+        return cls._num_rows - 1
     
     @classmethod
     def max_column_index(cls) -> int:
-        return cls._number_of_columns - 1
+        return cls._num_columns - 1
+    
+    @classmethod
+    def diagonal_length(cls) -> int:
+        return sqrt(cls._num_rows**2 + cls._num_columns**2)
     
         
         
