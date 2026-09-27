@@ -13,6 +13,8 @@ version: 0.0.2
 from .combatant import *
 from .deployment import *
 from .king import *
+from .pawn import *
+from .promotion import *
 from .readiness import *
 
 # Modules

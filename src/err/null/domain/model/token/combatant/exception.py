@@ -17,11 +17,11 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# COMBATANT_TOKEN_NULL_ERROR #======================#
-    "CombatantNullException",
+    "CombatantTokenNullException",
 ]
 
 # ======================# COMBATANT_TOKEN_NULL_ERROR #======================#
-class CombatantNullException(TokenNullException):
+class CombatantTokenNullException(TokenNullException):
     """
     Role:
         - Error Tracing

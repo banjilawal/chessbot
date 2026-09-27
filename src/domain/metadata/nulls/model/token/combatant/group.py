@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from domain import CombatantToken, TokenNullGroup
 from err import (
-    CombatantBlueprintNullException, CombatantCarrierNullException, CombatantNullException
+    CombatantBlueprintNullException, CombatantCarrierNullException, CombatantTokenNullException
 )
 
 
@@ -38,7 +38,7 @@ class CombatantTokenNullGroup(TokenNullGroup[CombatantToken]):
     
     def __init__(
             self,
-            model: Optional[CombatantNullException] | None = None,
+            model: Optional[CombatantTokenNullException] | None = None,
             carrier: Optional[CombatantCarrierNullException] | None = None,
             blueprint: Optional[CombatantBlueprintNullException] | None = None,
     ):
@@ -49,14 +49,14 @@ class CombatantTokenNullGroup(TokenNullGroup[CombatantToken]):
             blueprint: Optional[CombatantBlueprintNullException]
         """
         super().__init__(
-            model = model or CombatantNullException(),
+            model =model or CombatantTokenNullException(),
             carrier = carrier or CombatantCarrierNullException(),
             blueprint = blueprint or CombatantBlueprintNullException(),
         )
         
     @property
-    def model(self) -> CombatantNullException:
-        return cast(CombatantNullException, super().model)
+    def model(self) -> CombatantTokenNullException:
+        return cast(CombatantTokenNullException, super().model)
     
     @property
     def carrier(self) -> CombatantCarrierNullException:

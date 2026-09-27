@@ -1,7 +1,7 @@
-# src/err/null/domain/model/token/combatant/exception.py
+# src/err/null/domain/model/token/promotion/exception.py
 
 """
-Module: err.null.domain.model.token.combatant.exception
+Module: err.null.domain.model.token.promotion.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import CombatantNullException
+from err import TokenNullException
 from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# PAWN_TOKEN_NULL_ERROR #======================#
-    "PawnTokenNullException",
+    # ======================# PROMOTION_STATE_NULL_ERROR #======================#
+    "PromotionStateNullException",
 ]
 
-# ======================# PAWN_TOKEN_NULL_ERROR #======================#
-class PawnTokenNullException(CombatantNullException):
+# ======================# PROMOTION_STATE_NULL_ERROR #======================#
+class PromotionStateNullException(TokenNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required PawnToken is null.
+        1.  Indicating a required PromotionState is null.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class PawnTokenNullException(CombatantNullException):
     Provides:
 
     Super Class:
-        CombatantNullException
+        TokenNullException
     """
-    MSG = "PawnToken cannot be null."
-    ERR_CODE = "PAWN_TOKEN_NULL_ERROR"
+    MSG = "PromotionState cannot be null."
+    ERR_CODE = "PROMOTION_STATE_NULL_ERROR"
     
     def __init__(
             self,

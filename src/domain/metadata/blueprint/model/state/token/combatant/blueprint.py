@@ -15,7 +15,7 @@ from domain import (
     CombatantReadiness, CombatantToken, Coord, Formation, HomeSquare, Team,
     Token, TokenBlueprint, TokenDeployment
 )
-from err import CombatantNullException
+from err import CombatantTokenNullException
 
 
 class CombatantBlueprint(TokenBlueprint[CombatantToken]):
@@ -57,7 +57,7 @@ class CombatantBlueprint(TokenBlueprint[CombatantToken]):
             deployment: Optional[TokenDeployment] | None = None,
             readiness: Optional[CombatantReadiness] | None = None,
             domain_class: Optional[Type[CombatantToken]] | None = None,
-            domain_null_exception: Optional[CombatantNullException] | None = None,
+            domain_null_exception: Optional[CombatantTokenNullException] | None = None,
             id: Optional[int] | None = None,
     ):
         """
@@ -83,7 +83,7 @@ class CombatantBlueprint(TokenBlueprint[CombatantToken]):
             home_square=home_square,
             previous_position=previous_position,
             domain_class=domain_class or Type[CombatantToken],
-            domain_null_exception=domain_null_exception or CombatantNullException(),
+            domain_null_exception=domain_null_exception or CombatantTokenNullException(),
         )
         self._captor = captor
         self._readiness = readiness or CombatantReadiness.READY
@@ -109,8 +109,8 @@ class CombatantBlueprint(TokenBlueprint[CombatantToken]):
         return cast(Type[CombatantToken], super().domain_class)
     
     @property
-    def domain_null_exception(self) -> CombatantNullException:
-        return cast(CombatantNullException, super().domain_null_exception)
+    def domain_null_exception(self) -> CombatantTokenNullException:
+        return cast(CombatantTokenNullException, super().domain_null_exception)
 
     
 

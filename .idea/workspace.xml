@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/enemy/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/enemy/validator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/validator/model/token/enemy/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/validator/model/token/enemy/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/domain/model/token/promotion/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/token/pawn/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/pawn/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/token/route/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/route/router.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/validator/model/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/validator/model/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/model/token/combatant/pawn/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/model/token/combatant/pawn/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/model/token/combatant/pawn/promotion/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/domain/model/token/combatant/pawn/promotion/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/domain/model/token/promotion/exception.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,61 +52,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="2.495923573285938E-145" />
-      <entry key="MS500" value="1.2007324745926283E-29" />
-      <entry key="S2" value="5.8865606365501036E-8" />
-      <entry key="S5" value="0.0012852941581728307" />
-      <entry key="S10" value="0.03887738650744477" />
-      <entry key="S30" value="0.7764583429284515" />
-      <entry key="S60" value="2.5260290619213577" />
-      <entry key="M2" value="5.762506856656731" />
-      <entry key="M5" value="13.35875745982847" />
-      <entry key="M10" value="20.471587402875276" />
-      <entry key="M15" value="24.23440275753347" />
-      <entry key="M30" value="36.45930954289003" />
-      <entry key="H1" value="121.14046688111564" />
-      <entry key="H2" value="427.15413841159597" />
-      <entry key="H4" value="1184.937656766758" />
-      <entry key="D1" value="8038.746279859002" />
-      <entry key="W1" value="30516.95828187211" />
+      <entry key="MS100" value="1.0000000021544997" />
+      <entry key="MS500" value="1.0184786093788147" />
+      <entry key="S2" value="1.3686950621541607" />
+      <entry key="S5" value="1.6709141154204192" />
+      <entry key="S10" value="1.8191248574854382" />
+      <entry key="S30" value="1.9723610966731786" />
+      <entry key="S60" value="2.3087147856658894" />
+      <entry key="M2" value="3.9434933625019455" />
+      <entry key="M5" value="15.86408019453157" />
+      <entry key="M10" value="51.869226739409285" />
+      <entry key="M15" value="87.6269176972986" />
+      <entry key="M30" value="160.5888287557017" />
+      <entry key="H1" value="270.46861536941566" />
+      <entry key="H2" value="560.3149002716403" />
+      <entry key="H4" value="1289.916453723576" />
+      <entry key="D1" value="8132.4721386986585" />
+      <entry key="W1" value="30691.410373684947" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0000000000000007" />
-      <entry key="MS500" value="1.0009099027629929" />
-      <entry key="S2" value="1.173679574294856" />
-      <entry key="S5" value="1.4964774165633157" />
-      <entry key="S10" value="1.7046115359581862" />
-      <entry key="S30" value="1.8903606445813115" />
-      <entry key="S60" value="1.980844876372863" />
-      <entry key="M2" value="2.332671618093804" />
-      <entry key="M5" value="3.488622300708965" />
-      <entry key="M10" value="4.435836899305377" />
-      <entry key="M15" value="4.874966035881966" />
-      <entry key="M30" value="5.656564046028203" />
-      <entry key="H1" value="9.08799524958054" />
-      <entry key="H2" value="21.576822778404342" />
-      <entry key="H4" value="50.534955027667856" />
-      <entry key="D1" value="271.93513164833956" />
-      <entry key="W1" value="1213.6230321430046" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="1.341055011405563E-213" />
+      <entry key="S2" value="8.288212995506842E-54" />
+      <entry key="S5" value="8.635537448664354E-22" />
+      <entry key="S10" value="4.1362788859628336E-11" />
+      <entry key="S30" value="5.484067301184364E-4" />
+      <entry key="S60" value="0.03324030945128122" />
+      <entry key="M2" value="0.28107545941822026" />
+      <entry key="M5" value="1.5997625340040842" />
+      <entry key="M10" value="3.9704101660110727" />
+      <entry key="M15" value="5.93286260956244" />
+      <entry key="M30" value="9.802698769792398" />
+      <entry key="H1" value="15.01792275794643" />
+      <entry key="H2" value="27.36640132069983" />
+      <entry key="H4" value="55.725772159771694" />
+      <entry key="D1" value="278.00818064513487" />
+      <entry key="W1" value="1221.86624567785" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="7.84388600659231E-6" />
-      <entry key="MS500" value="0.09535442883473316" />
-      <entry key="S2" value="0.6543780270275891" />
-      <entry key="S5" value="1.1875922173675295" />
-      <entry key="S10" value="1.5513244671938011" />
-      <entry key="S30" value="2.5754160605320404" />
-      <entry key="S60" value="4.450253176050504" />
-      <entry key="M2" value="8.04813140297199" />
-      <entry key="M5" value="16.778220966275335" />
-      <entry key="M10" value="24.83947363989856" />
-      <entry key="M15" value="29.051351063390285" />
-      <entry key="M30" value="42.076556944275715" />
-      <entry key="H1" value="130.1949194603537" />
-      <entry key="H2" value="448.68964048970844" />
-      <entry key="H4" value="1235.4234513979836" />
-      <entry key="D1" value="8310.64144251438" />
-      <entry key="W1" value="31730.559534239015" />
+      <entry key="MS100" value="2.3558212623790426E-9" />
+      <entry key="MS500" value="0.025580336389737307" />
+      <entry key="S2" value="0.6573066936334275" />
+      <entry key="S5" value="1.279044432080514" />
+      <entry key="S10" value="1.5989169760357316" />
+      <entry key="S30" value="1.8927131896613072" />
+      <entry key="S60" value="2.293509283551655" />
+      <entry key="M2" value="4.1739630886495025" />
+      <entry key="M5" value="17.382147089456723" />
+      <entry key="M10" value="55.74540041874891" />
+      <entry key="M15" value="93.4677137756439" />
+      <entry key="M30" value="170.31575403174105" />
+      <entry key="H1" value="285.4284451359569" />
+      <entry key="H2" value="587.6281280544268" />
+      <entry key="H4" value="1345.5877750128284" />
+      <entry key="D1" value="8410.439233987692" />
+      <entry key="W1" value="31913.254622823042" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -163,11 +160,11 @@
       <recent name="$PROJECT_DIR$/src/assurance/validator/model/token/position" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/null/domain/model/token" />
       <recent name="$PROJECT_DIR$/src/err/assurance/validator/model" />
       <recent name="$PROJECT_DIR$/src/domain/metadata/blueprint/model/state/token" />
       <recent name="$PROJECT_DIR$/src/assurance/depend" />
       <recent name="$PROJECT_DIR$/src/assurance/loader/extract" />
-      <recent name="$PROJECT_DIR$/src/exchange" />
     </key>
   </component>
   <component name="RunManager" selected="Python.validator (1)">
@@ -824,7 +821,7 @@
       <workItem from="1788969937518" duration="171978000" />
       <workItem from="1790001362413" duration="735000" />
       <workItem from="1790063398459" duration="258692000" />
-      <workItem from="1790480915263" duration="24825000" />
+      <workItem from="1790480915263" duration="28112000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -2063,7 +2060,7 @@
           <option name="timeStamp" value="453" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/err/null/domain/model/token/combatant/pawn/promotion/exception.py</url>
+          <url>file://$PROJECT_DIR$/src/err/null/domain/model/token/promotion/exception.py</url>
           <line>11</line>
           <option name="timeStamp" value="454" />
         </line-breakpoint>
@@ -2201,8 +2198,8 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/chessbot$node.coverage" NAME="node Coverage Results" MODIFIED="1785863460749" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/node" />
     <SUITE FILE_PATH="coverage/chessbot$responder.coverage" NAME="responder Coverage Results" MODIFIED="1790448751814" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/exchange/response/validation" />
+    <SUITE FILE_PATH="coverage/chessbot$node.coverage" NAME="node Coverage Results" MODIFIED="1785863460749" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/node" />
     <SUITE FILE_PATH="coverage/chessbot$result.coverage" NAME="result Coverage Results" MODIFIED="1775565583432" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/result/analysis" />
     <SUITE FILE_PATH="coverage/chessbot$base.coverage" NAME="base Coverage Results" MODIFIED="1766354878379" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/system/text/exception" />
     <SUITE FILE_PATH="coverage/chessbot$motion_controller_factory.coverage" NAME="motion_controller_factory Coverage Results" MODIFIED="1754426205076" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/factory" />
@@ -2248,6 +2245,7 @@
     <SUITE FILE_PATH="coverage/chessbot$square__1_.coverage" NAME="square (1) Coverage Results" MODIFIED="1756996071141" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/board" />
     <SUITE FILE_PATH="coverage/chessbot$team_factory__1_.coverage" NAME="team_factory (1) Coverage Results" MODIFIED="1754422569684" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/creator/entity/factory" />
     <SUITE FILE_PATH="coverage/chessbot$anchor.coverage" NAME="anchor Coverage Results" MODIFIED="1773661956586" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/logic/node/service/exception" />
+    <SUITE FILE_PATH="coverage/chessbot$validator__1_.coverage" NAME="validator (1) Coverage Results" MODIFIED="1790516249824" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/assurance/validator/model/token/enemy" />
     <SUITE FILE_PATH="coverage/chessbot$path.coverage" NAME="path Coverage Results" MODIFIED="1756971927927" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/geometry" />
     <SUITE FILE_PATH="coverage/chessbot$exception__1_.coverage" NAME="exception (1) Coverage Results" MODIFIED="1761268191233" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/piece/travel/blocked" />
     <SUITE FILE_PATH="coverage/chessbot$driver.coverage" NAME="driver Coverage Results" MODIFIED="1755033742497" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/chess/driver" />

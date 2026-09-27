@@ -18,7 +18,7 @@ from domain import (
     Rank, StateModelBlueprint, Team, Token
 )
 from err import (
-    CombatantNullException, KingTokenNullException, PawnTokenNullException, TokenNullException
+    CombatantTokenNullException, KingTokenNullException, PawnTokenNullException, TokenNullException
 )
 
 T = TypeVar("T", bound="Token")
@@ -148,7 +148,7 @@ class TokenBlueprint(StateModelBlueprint[T], Generic[T]):
             return cast(KingTokenNullException, super().domain_null_exception)
         if self.is_pawn_token_blueprint:
             return cast(PawnTokenNullException, super().domain_null_exception)
-        return cast(CombatantNullException, super().domain_null_exception)
+        return cast(CombatantTokenNullException, super().domain_null_exception)
     
     @property
     def is_pawn_token_blueprint(self) -> bool:

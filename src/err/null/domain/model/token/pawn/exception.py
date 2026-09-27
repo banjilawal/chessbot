@@ -1,7 +1,7 @@
-# src/err/null/domain/model/token/combatant/exception.py
+# src/err/null/domain/model/token/exception.py
 
 """
-Module: err.null.domain.model.token.combatant.exception
+Module: err.null.domain.model.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import NullException
+from err import TokenNullException
 from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# COMBATANT_READINESS_NULL_ERROR #======================#
-    "CombatantReadinessNullException",
+    # ======================# PAWN_TOKEN_NULL_ERROR #======================#
+    "PawnTokenNullException",
 ]
 
-# ======================# COMBATANT_READINESS_NULL_ERROR #======================#
-class CombatantReadinessNullException(NullException):
+# ======================# PAWN_TOKEN_NULL_ERROR #======================#
+class PawnTokenNullException(TokenNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required CombatantReadiness is null.
+        1.  Indicating a required PawnToken is null.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class CombatantReadinessNullException(NullException):
     Provides:
 
     Super Class:
-        NullException
+        TokenNullException
     """
-    MSG = "CombatantReadiness cannot be null."
-    ERR_CODE = "COMBATANT_READINESS_NULL_ERROR"
+    MSG = "PawnToken cannot be null."
+    ERR_CODE = "PAWN_TOKEN_NULL_ERROR"
     
     def __init__(
             self,

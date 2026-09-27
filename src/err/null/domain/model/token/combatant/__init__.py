@@ -10,8 +10,6 @@ version: 0.0.2
 # ============ ERR.NULL.DOMAIN.MODEL.TOKEN.COMBATANT PACKAGE ===========#
 
 # Packages
-from .pawn import *
-from .readiness import *
 
 # Modules
-from .exception import CombatantNullException
+from .exception import CombatantTokenNullException
