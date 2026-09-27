@@ -9,17 +9,17 @@ version: 1.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from typing import Optional, Type, cast
 
 from artifcat import ValidationResult
 from assurance import CommonTokenPropertyTable, TokenEnemyValidator, TokenValidatorToolkit
 from domain import (
-    CombatantReadiness, PawnToken, PawnTokenBlueprint, PromotionState,
+    CombatantReadiness, PawnToken, PawnTokenBlueprint, PawnTokenPrimeExtract, PromotionState,
     Rank, Token
 )
 from err import (
-    CombatantReadinessNullException, EmptyPawnTokenCarrierException,
-    PawnTokenValidatorException, PromotionStateNullException
+    CombatantReadinessNullException, NullException, PawnTokenValidatorException,
+    PromotionStateNullException
 )
 from exchange import RankValidationRequest, TokenValidationRequest
 from transit import PawnTokenCarrier, RankCarrier, TokenCarrier
@@ -87,10 +87,13 @@ class PawnTokenValidator:
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that there is no blueprint in the carrier.
-        prime_extract = property_table.prime_extract
-        blueprint = prime_extract.blueprint
-        if blueprint is None:
+        # Handle the case that the property table is null or the wrong type.
+        table_validation = self._toolkit.priming_validator.execute(
+            candidate=property_table,
+            target_model=Type[CommonTokenPropertyTable],
+            null_exception=NullException(),
+        )
+        if table_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 PawnTokenValidatorException(
@@ -98,14 +101,29 @@ class PawnTokenValidator:
                     cls_name=self.__class__.__name__,
                     msg=PawnTokenValidatorException.MSG,
                     err_code=PawnTokenValidatorException.ERR_CODE,
-                    ex=EmptyPawnTokenCarrierException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=EmptyPawnTokenCarrierException.MSG,
-                        err_code=EmptyPawnTokenCarrierException.ERR_CODE,
-                    ),
+                    ex=table_validation.exception
                 )
             )
+        # Handle the case that the property table has the wrong PrimeExtract.
+        extract_validation = self._toolkit.priming_validator.execute(
+            candidate=property_table.prime_extract,
+            target_model=Type[PawnTokenPrimeExtract],
+            null_exception=NullException(),
+        )
+        if extract_validation.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                PawnTokenValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=PawnTokenValidatorException.MSG,
+                    err_code=PawnTokenValidatorException.ERR_CODE,
+                    ex=extract_validation.exception
+                )
+            )
+        # Handle the case that there is no blueprint in the carrier.
+        prime_extract = cast(PawnTokenPrimeExtract, property_table.prime_extract)
+        blueprint = cast(PawnTokenBlueprint, prime_extract.blueprint)
         # --- START_COMBATANT_TOKEN_READINESS_VALIDATION_PROCESS ---#
         
         # Handle the case that the readiness is flagged.
@@ -207,7 +225,7 @@ class PawnTokenValidator:
             payload.readiness = readiness
             payload.captor = captor_placeholder
             payload.promotion_state = promotion_state
-            payload.deployment = property_table.deployment
+            payload.deployment = property_table.safe.deployment
             payload.position = property_table.safe.position
             payload.previous_position = property_table.safe.previous_position
             
@@ -219,7 +237,7 @@ class PawnTokenValidator:
             team=property_table.safe.team,
             formation=property_table.safe.formation,
             home_square=property_table.safe.home_square,
-            deployment=property_table.deployment,
+            deployment=property_table.safe.deployment,
             position=property_table.safe.position,
             previous_position=property_table.safe.previous_position,
             rank=rank,

@@ -9,8 +9,10 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from typing import Optional
+
 from assurance import TokenPositionTable
-from domain import Formation, HomeSquare, Team, TokenDeployment, TokenPrimeExtract
+from domain import Coord, Formation, HomeSquare, Team, TokenDeployment, TokenPrimeExtract
 
 
 class SafeSuperTokenPropertyTable:
@@ -94,4 +96,12 @@ class SafeSuperTokenPropertyTable:
     @property
     def prime_extract(self) -> TokenPrimeExtract:
         return self._prime_extract
+    
+    @property
+    def position(self) -> Optional[Coord]:
+        return self._position_log.position
+    
+    @property
+    def previous_position(self) -> Optional[Coord]:
+        return self._position_log.previous_position
     
