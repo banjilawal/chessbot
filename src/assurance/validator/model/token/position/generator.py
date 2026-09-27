@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Dict, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import TokenValidatorToolkit
+from assurance import TokenPositionTable, TokenValidatorToolkit
 from domain import Coord, TokenBlueprint
-from err import TokenPositionValidatorException
+from err import TokenPositionTableGeneratorException
 from exchange import CoordValidationRequest
 from transit import CoordCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class TokenPositionValidator:
+class TokenPositionTableGenerator:
     """
     Role
         - Integrity, Consistency Maintenance
@@ -35,7 +35,7 @@ class TokenPositionValidator:
     Provides:
         -   def execute(
                     blueprint: TokenBlueprint
-            ) -> alidationResult[Dict[str, Coord]]:
+            ) -> ValidationResult[TokenPositionTable]:
 
     Super Class:
     """
@@ -56,7 +56,7 @@ class TokenPositionValidator:
     def execute(
             self,
             blueprint: TokenBlueprint,
-    ) -> ValidationResult[Dict[str, Coord]]:
+    ) -> ValidationResult[TokenPositionTable]:
         """
         Assure a candidate is a safe TokenCarrier.
 
@@ -71,7 +71,7 @@ class TokenPositionValidator:
         Args:
             blueprint: TokenBlueprint
         Returns:
-            ValidationResult[Dict[str, Coord]]
+            ValidationResult[TokenPositionTable]
         Raises:
             TokenPositionValidatorException
         """
@@ -96,11 +96,11 @@ class TokenPositionValidator:
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenPositionValidatorException(
+                    TokenPositionTableGeneratorException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TokenPositionValidatorException.MSG,
-                        err_code=TokenPositionValidatorException.ERR_CODE,
+                        msg=TokenPositionTableGeneratorException.MSG,
+                        err_code=TokenPositionTableGeneratorException.ERR_CODE,
                         ex=validation.exception,
                     )
                 )
@@ -118,16 +118,20 @@ class TokenPositionValidator:
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenPositionValidatorException(
+                    TokenPositionTableGeneratorException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TokenPositionValidatorException.MSG,
-                        err_code=TokenPositionValidatorException.ERR_CODE,
+                        msg=TokenPositionTableGeneratorException.MSG,
+                        err_code=TokenPositionTableGeneratorException.ERR_CODE,
                         ex=validation.exception,
                     )
                 )
             # Otherwise add to the dictionary.
             valid_locations["previous_position"] = cast(Coord, validation.payload)
         # --- Send the work product. ---#
-        return ValidationResult.success(valid_locations)
+        position_table = TokenPositionTable(
+            position=valid_locations["position"] or None,
+            previous_position=valid_locations["previous_position"] or None,
+        )
+        return ValidationResult.success(position_table)
     

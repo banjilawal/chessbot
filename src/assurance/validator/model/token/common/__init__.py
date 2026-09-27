@@ -13,4 +13,5 @@ version: 0.0.2
 
 
 # Modules
-from .validator import CommonTokenPropertyValidator
+from .table import CommonTokenPropertyTable
+from .generator import CommonTokenPropertyTableGenerator

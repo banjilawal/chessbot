@@ -17,11 +17,11 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# TOKEN_POSITION_VALIDATOR_FAILURE #======================#
-    "TokenPositionValidatorException",
+    "TokenPositionTableGeneratorException",
 ]
 
 # ======================# TOKEN_POSITION_VALIDATOR_FAILURE #======================#
-class TokenPositionValidatorException(TokenValidatorException):
+class TokenPositionTableGeneratorException(TokenValidatorException):
     """
     Role:
         - Error Tracing

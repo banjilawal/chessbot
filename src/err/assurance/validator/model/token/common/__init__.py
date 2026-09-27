@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .exception import CommonTokenPropertyValidatorException
+from .exception import CommonTokenPropertyTableGeneratorException

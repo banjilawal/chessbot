@@ -12,15 +12,21 @@ from __future__ import annotations
 from typing import Any, Dict, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import TokenPositionValidator, TokenValidatorToolkit
-from domain import Coord, Formation, HomeSquare, Team, TokenBlueprint, TokenDeployment, TokenPrimeExtract
-from err import FormationNullException, TokenDeploymentNullException
+from assurance import CommonTokenPropertyTable, TokenPositionTable, TokenPositionTableGenerator, TokenValidatorToolkit
+from domain import (
+    Coord, Formation, HomeSquare, Team, TokenBlueprint, TokenDeployment,
+    TokenPrimeExtract
+)
+from err import (
+    CommonTokenPropertyTableGeneratorException, FormationNullException,
+    TokenDeploymentNullException
+)
 from exchange import TeamValidationRequest
 from transit import TeamCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class CommonTokenPropertyValidator:
+class CommonTokenPropertyTableGenerator:
     """
     Role
         - Integrity, Consistency Maintenance
@@ -33,17 +39,17 @@ class CommonTokenPropertyValidator:
         position_validator: TokenPositionValidator
 
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult[TokenCarrier]:
+        -   def execute(candidate: Any) -> ValidationResult[CommonTokenPropertyTable]:
 
     Super Class:
     """
     _toolkit: TokenValidatorToolkit
-    _position_validator: TokenPositionValidator
+    _position_table_generator: TokenPositionTableGenerator
     
     def __init__(
             self,
             toolkit: Optional[TokenValidatorToolkit] | None = None,
-            position_validator: Optional[TokenPositionValidator] | None = None,
+            position_validator: Optional[TokenPositionTableGenerator] | None = None,
     ):
         """
         Args:
@@ -51,13 +57,13 @@ class CommonTokenPropertyValidator:
             position_validator: Optional[TokenPositionValidator]
         """
         self._toolkit = toolkit or TokenValidatorToolkit()
-        self._position_validator = position_validator or TokenPositionValidator()
+        self._position_table_generator = position_validator or TokenPositionTableGenerator()
     
     @LoggingLevelRouter.monitor
     def execute(
             self,
             candidate: Any,
-    ) -> ValidationResult[Dict[str, Any]]:
+    ) -> ValidationResult[CommonTokenPropertyTable]:
         """
         Assure a candidate is a safe TokenCarrier.
 
@@ -82,11 +88,11 @@ class CommonTokenPropertyValidator:
         if load_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CommonTokenPropertyValidatorException(
+                CommonTokenPropertyTableGeneratorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CommonTokenPropertyValidatorException.MSG,
-                    err_code=CommonTokenPropertyValidatorException.ERR_CODE,
+                    msg=CommonTokenPropertyTableGeneratorException.MSG,
+                    err_code=CommonTokenPropertyTableGeneratorException.ERR_CODE,
                     ex=load_result.exception,
                 )
             )
@@ -105,11 +111,11 @@ class CommonTokenPropertyValidator:
         if id_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CommonTokenPropertyValidatorException(
+                CommonTokenPropertyTableGeneratorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CommonTokenPropertyValidatorException.MSG,
-                    err_code=CommonTokenPropertyValidatorException.ERR_CODE,
+                    msg=CommonTokenPropertyTableGeneratorException.MSG,
+                    err_code=CommonTokenPropertyTableGeneratorException.ERR_CODE,
                     ex=id_validation.exception,
                 )
             )
@@ -124,11 +130,11 @@ class CommonTokenPropertyValidator:
         if formation_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CommonTokenPropertyValidatorException(
+                CommonTokenPropertyTableGeneratorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CommonTokenPropertyValidatorException.MSG,
-                    err_code=CommonTokenPropertyValidatorException.ERR_CODE,
+                    msg=CommonTokenPropertyTableGeneratorException.MSG,
+                    err_code=CommonTokenPropertyTableGeneratorException.ERR_CODE,
                     ex=formation_validation.exception,
                 )
             )
@@ -143,11 +149,11 @@ class CommonTokenPropertyValidator:
         if deployment_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CommonTokenPropertyValidatorException(
+                CommonTokenPropertyTableGeneratorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CommonTokenPropertyValidatorException.MSG,
-                    err_code=CommonTokenPropertyValidatorException.ERR_CODE,
+                    msg=CommonTokenPropertyTableGeneratorException.MSG,
+                    err_code=CommonTokenPropertyTableGeneratorException.ERR_CODE,
                     ex=deployment_validation.exception,
                 )
             )
@@ -163,11 +169,11 @@ class CommonTokenPropertyValidator:
         if team_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CommonTokenPropertyValidatorException(
+                CommonTokenPropertyTableGeneratorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CommonTokenPropertyValidatorException.MSG,
-                    err_code=CommonTokenPropertyValidatorException.ERR_CODE,
+                    msg=CommonTokenPropertyTableGeneratorException.MSG,
+                    err_code=CommonTokenPropertyTableGeneratorException.ERR_CODE,
                     ex=team_validation.exception,
                 )
             )
@@ -180,49 +186,48 @@ class CommonTokenPropertyValidator:
         if home_detection.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CommonTokenPropertyValidatorException(
+                CommonTokenPropertyTableGeneratorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CommonTokenPropertyValidatorException.MSG,
-                    err_code=CommonTokenPropertyValidatorException.ERR_CODE,
+                    msg=CommonTokenPropertyTableGeneratorException.MSG,
+                    err_code=CommonTokenPropertyTableGeneratorException.ERR_CODE,
                     ex=home_detection.exception,
                 )
             )
         # --- START_POSITIONS_VALIDATION_PROCESS ---#
         
         # Handle the case that the current_position is flagged.
-        position_dict_result = self._position_validator.execute(
+        generation_result = self._position_table_generator.execute(
             blueprint=token_blueprint
         )
-        if position_dict_result.is_failure:
+        if generation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CommonTokenPropertyValidatorException(
+                CommonTokenPropertyTableGeneratorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CommonTokenPropertyValidatorException.MSG,
-                    err_code=CommonTokenPropertyValidatorException.ERR_CODE,
-                    ex=position_dict_result.exception,
+                    msg=CommonTokenPropertyTableGeneratorException.MSG,
+                    err_code=CommonTokenPropertyTableGeneratorException.ERR_CODE,
+                    ex=generation_result.exception,
                 )
             )
-        position_log = cast(Dict[str, Coord], position_dict_result.payload)
-        
         # --- Extract from the validation payloads. ---#
         id = cast(int, id_validation.payload)
         team = cast(Team, team_validation.payload)
         home_square = cast(HomeSquare, home_detection.payload)
         formation = cast(Formation, formation_validation.payload)
         deployment = cast(TokenDeployment, deployment_validation.payload)
-        # Create the dictionary
-        properties = {
-            "id": id,
-            "team": team,
-            "formation": formation,
-            "deployment": deployment,
-            "home_square": home_square,
-            "position_log": position_log, 
-        }
+        position_table = cast(TokenPositionTable, generation_result.payload)
+        
         # --- Send the work product. ---#
-        return ValidationResult.success(properties)
+        token_property_table = CommonTokenPropertyTable(
+            id=id,
+            team=team,
+            formation=formation,
+            home_square=home_square,
+            deployment=deployment,
+            position_table=position_table,
+        )
+        return ValidationResult.success(token_property_table)
 
     
