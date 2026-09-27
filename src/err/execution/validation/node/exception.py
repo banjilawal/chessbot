@@ -10,16 +10,16 @@ version: 0.0.2
 from __future__ import annotations
 
 from typing import Any, Optional
-from err import MissingValidationRouteException
+from err import ValidationRouteException
 
 
 __all__ = [
     # ======================# NO_VALIDATION_ROUTE #======================#
-    "NodeNoValidationRouteException",
+    "NodeValidationRouteException",
 ]
 
 # ======================# NO_VALIDATION_ROUTE #======================#
-class NodeNoValidationRouteException(MissingValidationRouteException):
+class NodeValidationRouteException(ValidationRouteException):
     """
     Role:
         - Error Tracing

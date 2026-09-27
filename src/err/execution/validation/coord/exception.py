@@ -11,16 +11,16 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import MissingValidationRouteException
+from err import ValidationRouteException
 
 
 __all__ = [
     # ======================# COORD_VALIDATION_ROUTE #======================#
-    "CoordNoValidationRouteException",
+    "CoordValidationRouteException",
 ]
 
 # ======================# COORD_VALIDATION_ROUTE #======================#
-class CoordNoValidationRouteException(MissingValidationRouteException):
+class CoordValidationRouteException(ValidationRouteException):
     """
     Role:
         - Error Tracing

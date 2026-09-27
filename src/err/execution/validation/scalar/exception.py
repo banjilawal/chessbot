@@ -11,16 +11,16 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import MissingValidationRouteException
+from err import ValidationRouteException
 
 
 __all__ = [
     # ======================# SCALAR_VALIDATION_ROUTE #======================#
-    "ScalarNoValidationRouteException",
+    "ScalarValidationRouteException",
 ]
 
 # ======================# SCALAR_VALIDATION_ROUTE #======================#
-class ScalarNoValidationRouteException(MissingValidationRouteException):
+class ScalarValidationRouteException(ValidationRouteException):
     """
     Role:
         - Error Tracing

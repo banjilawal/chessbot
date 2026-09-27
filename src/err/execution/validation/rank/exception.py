@@ -11,16 +11,16 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import MissingValidationRouteException
+from err import ValidationRouteException
 
 
 __all__ = [
     # ======================# RANK_VALIDATION_ROUTE #======================#
-    "RankNoValidationRouteException",
+    "RankValidationRouteException",
 ]
 
 # ======================# RANK_VALIDATION_ROUTE #======================#
-class RankNoValidationRouteException(MissingValidationRouteException):
+class RankValidationRouteException(ValidationRouteException):
     """
     Role:
         - Error Tracing

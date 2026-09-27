@@ -15,4 +15,4 @@ from .search import *
 from .validation import *
 
 # Modules
-from .exception import MissingExecutionRouteException
+from .exception import ExecutionRouteException

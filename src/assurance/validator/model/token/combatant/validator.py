@@ -56,7 +56,7 @@ class CombatantTokenValidator:
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            validated_carrier: CombatantCarrier
+            carrier: CombatantCarrier
     ) -> ValidationResult[CombatantCarrier]:
         """
         Send a validated CombatantToken or Blueprint which inside the validated
@@ -74,7 +74,7 @@ class CombatantTokenValidator:
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            validated_carrier: CombatantCarrier
+            carrier: CombatantCarrier
         Returns:
             ValidationResult[CombatantCarrier]
         Raises:
@@ -83,7 +83,7 @@ class CombatantTokenValidator:
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that there is no blueprint in the carrier.
-        blueprint = validated_carrier.extract_blueprint()
+        blueprint = carrier.extract_blueprint()
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -231,7 +231,7 @@ class CombatantTokenValidator:
         # --- Forward the appropriate work product to the caller. ---#
         
         # The model case.
-        if validated_carrier.has_model:
+        if carrier.has_model:
             model = CombatantToken(
                 id=id,
                 team=team,

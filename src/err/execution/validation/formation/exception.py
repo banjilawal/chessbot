@@ -11,16 +11,16 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import MissingValidationRouteException
+from err import ValidationRouteException
 
 
 __all__ = [
     # ======================# FORMATION_VALIDATION_ROUTE #======================#
-    "FormationNoValidationRouteException",
+    "FormationValidationRouteException",
 ]
 
 # ======================# FORMATION_VALIDATION_ROUTE #======================#
-class FormationNoValidationRouteException(MissingValidationRouteException):
+class FormationValidationRouteException(ValidationRouteException):
     """
     Role:
         - Error Tracing

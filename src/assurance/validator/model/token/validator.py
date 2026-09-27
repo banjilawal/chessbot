@@ -16,8 +16,8 @@ from assurance import (
     CombatantTokenValidator, KingTokenValidator, ModelValidator, PawnTokenValidator,
     TokenValidatorToolkit
 )
-from domain import Token, TokenValidationRequest
-from err import TokenValidationRequestNullException, TokenValidatorException
+from domain import Token, TokenPrimeExtract
+from err import TokenValidationRouteException, TokenValidatorException
 from transit import CombatantCarrier, KingTokenCarrier, PawnTokenCarrier, TokenCarrier
 from util import LoggingLevelRouter
 
@@ -32,45 +32,58 @@ class TokenValidator(ModelValidator[Token]):
 
     Attributes:
         toolkit: TokenValidatorToolkit
+        king_validator: KingTokenValidator
+        pawn_validator: PawnTokenValidator
+        combatant_validator: CombatantTokenValidator
 
     Provides:
-        -   def execute(candidate: TokenValidationRequest) ->ValidationResult[TokenCarrier]:
+        -   def execute(candidate: Any) -> ValidationResult[TokenCarrier]:
 
     Super Class:
         ModelValidator
     """
+    _king_validator: KingTokenValidator
+    _pawn_validator: PawnTokenValidator
+    _combatant_validator: CombatantTokenValidator
     
     def __init__(
             self,
             toolkit: Optional[TokenValidatorToolkit] | None = None,
+            king_validator: Optional[KingTokenValidator] | None = None,
+            pawn_validator: Optional[PawnTokenValidator] | None = None,
+            combatant_validator: Optional[CombatantTokenValidator] | None = None,
     ):
         """
         Args:
             toolkit: Optional[TokenValidatorToolkit]
+            king_validator: Optional[KingTokenValidator]
+            pawn_validator: Optional[PawnTokenValidator]
+            combatant_validator: Optional[CombatantTokenValidator]
         """
         super().__init__(toolkit=toolkit or TokenValidatorToolkit())
+        self._king_validator = king_validator or KingTokenValidator()
+        self._pawn_validator = pawn_validator or PawnTokenValidator()
+        self._combatant_validator = combatant_validator or CombatantTokenValidator()
     
     @property
     def toolkit(self) -> TokenValidatorToolkit:
-        return cast(
-            TokenValidatorToolkit,
-            super().toolkit,
-        )
+        return cast(TokenValidatorToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[TokenCarrier]:
+    def execute(
+            self,
+            candidate: Any,
+    ) -> ValidationResult[TokenCarrier]:
         """
-        Certify a candidate is a TokenCarrier whose payload is either a Token
-        or a Blueprint that is safe to use.
+        Certify a TokenCarrier's payload is either a Token or a Blueprint 
+        that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    - The candidate is not a TokenCarrier or its null.
-                    - The candidate is an empty TokenCarrier.
-                    - Any Token attribute is flagged.
-            2.  Otherwise, Send a Carrier with the correct type of payload in the success
-                result.
+                    -   The Loader fails.
+                    -   Either the id, board, or owner are flagged unsafe.
+            2.  Otherwise, send a TokenCarrier in the success result.
         Args:
             candidate: Any
         Returns:
@@ -80,13 +93,9 @@ class TokenValidator(ModelValidator[Token]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the candidate is null or the rong type.
-        priming_result = self.toolkit.wrapper.priming_validator.execute(
-            candidate=candidate,
-            target_model=TokenValidationRequest,
-            null_exception=TokenValidationRequestNullException(),
-        )
-        if priming_result.is_failure:
+        # Handle the case that the blueprint cannot be extracted.
+        load_result = self.toolkit.loader.execute(candidate)
+        if load_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TokenValidatorException(
@@ -94,45 +103,38 @@ class TokenValidator(ModelValidator[Token]):
                     cls_name=self.__class__.__name__,
                     msg=TokenValidatorException.MSG,
                     err_code=TokenValidatorException.ERR_CODE,
-                    ex=priming_result.exception,
+                    ex=load_result.exception,
                 )
             )
-        # --- Cast priming_result into a request for additional tests. ---#
-        request = cast(TokenValidationRequest, priming_result.payload)
+        # --- Get the PrimeExtract and Blueprint for additional processing. ---#
+        prime_extract = cast(TokenPrimeExtract, load_result.payload)
+        carrier = cast(TokenCarrier, prime_extract.carrier)
         
-        # Handle the case that request.item is the wrong carrier type.
-        carrier_validation = self.toolkit.wrapper.priming_validator.execute(
-            candidate=request.item,
-            target_model=self.toolkit.metadata.types.carrier,
-            null_exception=self.toolkit.metadata.nulls.carrier,
-        )
-        if carrier_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                TokenValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=TokenValidatorException.MSG,
-                    err_code=TokenValidatorException.ERR_CODE,
-                    ex=carrier_validation.exception,
-                )
-            )
-        # --- Cast the carrier_validation payload for additional tests. ---#
-        carrier = cast(TokenCarrier, carrier_validation.payload)
-        
-        # --- Extract the blueprint to verify the attributes. ---#
-
         if carrier.is_king_token_carrier:
-            validated_carrier = cast(KingTokenCarrier, carrier)
-            helper = KingTokenValidator()
-            return helper.execute(validated_carrier)
+            return self._king_validator.execute(
+                carrier=cast(KingTokenCarrier, carrier)
+            )
         if carrier.is_pawn_token_carrier:
-            validated_carrier = cast(PawnTokenCarrier, carrier)
-            helper = PawnTokenValidator()
-            return helper.execute(validated_carrier)
-        validated_carrier = cast(CombatantCarrier, carrier)
-        helper = CombatantTokenValidator()
-        return helper.execute(validated_carrier)
-
-    
+            return self._pawn_validator.execute(
+                carrier=cast(PawnTokenCarrier, carrier)
+            )
+        if carrier.is_combatant_token_carrier:
+            return self._combatant_validator.execute(
+                carrier=cast(CombatantCarrier, carrier)
+            )
+        
+        return ValidationResult.failure(
+            TokenValidatorException(
+                cls_mthd=method,
+                cls_name=self.__class__.__name__,
+                msg=TokenValidatorException.MSG,
+                err_code=TokenValidatorException.ERR_CODE,
+                ex=TokenValidationRouteException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenValidationRouteException.MSG,
+                    err_code=TokenValidationRouteException.ERR_CODE,
+                )
+            )
+        )
     

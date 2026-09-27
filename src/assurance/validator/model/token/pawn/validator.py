@@ -56,7 +56,7 @@ class PawnTokenValidator:
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            validated_carrier: PawnTokenCarrier
+            carrier: PawnTokenCarrier
     ) -> ValidationResult[PawnTokenCarrier]:
         """
         Send a validated PawnToken or Blueprint which inside the validated
@@ -74,7 +74,7 @@ class PawnTokenValidator:
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            validated_carrier: PawnTokenCarrier
+            carrier: PawnTokenCarrier
         Returns:
             ValidationResult[PawnTokenCarrier]
         Raises:
@@ -83,7 +83,7 @@ class PawnTokenValidator:
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that there is no blueprint in the carrier.
-        blueprint = validated_carrier.extract_blueprint()
+        blueprint = carrier.extract_blueprint()
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -248,7 +248,7 @@ class PawnTokenValidator:
         # --- Forward the appropriate work product to the caller. ---#
         
         # The model case.
-        if validated_carrier.has_model:
+        if carrier.has_model:
             model = PawnToken(
                 id=id,
                 team=team,

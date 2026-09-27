@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import MissingValidationRouteException
+from err import ValidationRouteException
 
 
 __all__ = [
@@ -19,11 +19,11 @@ __all__ = [
     "PlayerContextValidationRouteException",
 ]
 
-from err import ContextNoValidationRouteException
+from err import ContextValidationRouteException
 
 
 # ======================# PLAYER_CONTEXT_VALIDATION_ROUTE #======================#
-class PlayerContextValidationRouteException(ContextNoValidationRouteException):
+class PlayerContextValidationRouteException(ContextValidationRouteException):
     """
     Role:
         - Error Tracing

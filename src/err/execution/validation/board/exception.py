@@ -12,16 +12,16 @@ from __future__ import annotations
 from typing import Any, Optional
 
 
-from err import MissingValidationRouteException
+from err import ValidationRouteException
 
 
 __all__ = [
     # ======================# BOARD_VALIDATOR_ROUTE #======================#
-    "BoardNoValidationRouteException",
+    "BoardValidationRouteException",
 ]
 
 # ======================# BOARD_VALIDATOR_ROUTE #======================#
-class BoardNoValidationRouteException(MissingValidationRouteException):
+class BoardValidationRouteException(ValidationRouteException):
     """
     Role:
         - Error Tracing

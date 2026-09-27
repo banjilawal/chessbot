@@ -11,16 +11,16 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import MissingValidationRouteException
+from err import ValidationRouteException
 
 
 __all__ = [
     # ======================# PERSONA_VALIDATION_ROUTE #======================#
-    "PersonaNoValidationRouteException",
+    "PersonaValidationRouteException",
 ]
 
 # ======================# PERSONA_VALIDATION_ROUTE #======================#
-class PersonaNoValidationRouteException(MissingValidationRouteException):
+class PersonaValidationRouteException(ValidationRouteException):
     """
     Role:
         - Error Tracing

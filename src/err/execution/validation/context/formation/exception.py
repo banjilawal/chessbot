@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import MissingValidationRouteException
+from err import ValidationRouteException
 
 
 __all__ = [
@@ -19,11 +19,11 @@ __all__ = [
     "FormationContextValidationRouteException",
 ]
 
-from err import ContextNoValidationRouteException
+from err import ContextValidationRouteException
 
 
 # ======================# FORMATION_CONTEXT_VALIDATION_ROUTE #======================#
-class FormationContextValidationRouteException(ContextNoValidationRouteException):
+class FormationContextValidationRouteException(ContextValidationRouteException):
     """
     Role:
         - Error Tracing

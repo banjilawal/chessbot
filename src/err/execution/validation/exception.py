@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import MissingExecutionRouteException
+from err import ExecutionRouteException
 
 __all__ = [
     # ======================# MISSING_VALIDATION_ROUTE #======================#
-    "MissingValidationRouteException",
+    "ValidationRouteException",
 ]
 
 # ======================# MISSING_VALIDATION_ROUTE #======================#
-class MissingValidationRouteException(MissingExecutionRouteException):
+class ValidationRouteException(ExecutionRouteException):
     """
     Role:
         - Error Tracing

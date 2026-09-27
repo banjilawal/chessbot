@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import MissingExecutionRouteException
+from err import ExecutionRouteException
 
 __all__ = [
     # ======================# BUILD_ROUTE #======================#
@@ -19,7 +19,7 @@ __all__ = [
 ]
 
 # ======================# BUILD_ROUTE #======================#
-class BuildRouteException(MissingExecutionRouteException):
+class BuildRouteException(ExecutionRouteException):
     """
     Role:
         - Error Tracing

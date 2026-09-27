@@ -5,131 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/arena/depend.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/attack/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/attack/depend.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/board/depend.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/coord/depend.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/depend.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/game/depend.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/maneuver/depend.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/path/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/path/depend.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/player/depend.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/rank/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/rank/depend.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/scalar/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/scalar/depend.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/square/depend.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/token/depend.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/vector/depend.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/structure/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/structure/register/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/structure/register/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/structure/register/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/structure/register/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/model/arena/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/model/arena/table.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/model/attack/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/model/attack/table.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/model/board/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/model/board/table.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/model/coord/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/model/coord/table.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/model/game/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/model/game/table.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/model/maneuver/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/model/maneuver/table.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/model/path/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/model/path/table.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/model/player/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/model/player/table.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/model/rank/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/model/rank/table.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/model/scalar/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/model/scalar/table.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/model/square/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/model/square/table.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/model/table.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/model/team/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/model/team/table.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/team/depend.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/model/token/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/model/token/table.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/model/vector/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/model/vector/table.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/structure/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/structure/register/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/structure/register/coord/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/structure/register/coord/table.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/structure/register/coord/table.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/structure/register/square/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/structure/register/square/table.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/structure/register/square/table.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/structure/register/table.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/structure/register/table.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/structure/register/vector/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/structure/register/vector/table.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/structure/register/vector/depend.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/structure/table.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/structure/depend.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/attribute/table.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/depend.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/common/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/common/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/common/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/common/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/model/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/arena/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/model/arena/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/arena/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/model/attack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/attack/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/model/attack/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/attack/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/model/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/model/board/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/board/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/model/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/coord/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/model/coord/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/coord/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/model/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/game/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/model/game/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/game/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/model/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/maneuver/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/model/maneuver/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/maneuver/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/model/path/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/path/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/model/path/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/path/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/model/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/player/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/model/player/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/player/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/model/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/rank/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/model/rank/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/rank/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/model/scalar/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/scalar/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/model/scalar/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/scalar/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/model/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/model/square/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/square/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/model/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/team/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/model/team/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/team/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/model/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/model/token/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/token/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/model/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/model/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/model/vector/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/vector/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/structure/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/structure/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/structure/node/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/structure/node/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/structure/node/bundle.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/structure/node/bundle.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/structure/node/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/structure/node/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/structure/node/vector/bundle.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/structure/node/vector/bundle.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/structure/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/structure/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/structure/register/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/structure/register/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/structure/register/square/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/structure/register/square/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/structure/register/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/structure/register/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/structure/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/structure/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/toolkit/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/toolkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/validator/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/wrapper/validation/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/wrapper/validation/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/token/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/token/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/token/combatant/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/combatant/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/token/king/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/king/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/token/pawn/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/pawn/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/token/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,59 +54,59 @@
     <decayedCancelled>
       <entry key="MS100" value="1.0" />
       <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0000000000037375" />
-      <entry key="S30" value="1.0005516920748325" />
-      <entry key="S60" value="1.0700491260576874" />
-      <entry key="M2" value="1.888247375393863" />
-      <entry key="M5" value="6.172283760135737" />
-      <entry key="M10" value="14.278980326187702" />
-      <entry key="M15" value="26.32719369669741" />
-      <entry key="M30" value="85.78884620029554" />
-      <entry key="H1" value="247.40383124806286" />
-      <entry key="H2" value="659.2019877523641" />
-      <entry key="H4" value="1548.571837949846" />
-      <entry key="D1" value="7934.3059132670305" />
-      <entry key="W1" value="29117.937009547863" />
+      <entry key="S2" value="1.000000000000023" />
+      <entry key="S5" value="1.000003519085951" />
+      <entry key="S10" value="1.001986571412293" />
+      <entry key="S30" value="1.268233595839655" />
+      <entry key="S60" value="2.6417194728643505" />
+      <entry key="M2" value="6.947857530726226" />
+      <entry key="M5" value="21.29926602478885" />
+      <entry key="M10" value="46.709148622950515" />
+      <entry key="M15" value="74.85014368474232" />
+      <entry key="M30" value="163.73633924498023" />
+      <entry key="H1" value="338.65530646982853" />
+      <entry key="H2" value="726.4237697873313" />
+      <entry key="H4" value="1583.8853548463464" />
+      <entry key="D1" value="8040.985028597701" />
+      <entry key="W1" value="29388.709807310355" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="3.870970905836305E-244" />
-      <entry key="S5" value="7.574770892789484E-98" />
-      <entry key="S10" value="4.686064011302726E-49" />
-      <entry key="S30" value="1.6095914788674481E-16" />
-      <entry key="S60" value="2.1964268420786936E-8" />
-      <entry key="M2" value="2.566662801975036E-4" />
-      <entry key="M5" value="0.07080175398307993" />
-      <entry key="M10" value="0.4650016334630007" />
-      <entry key="M15" value="0.9019037076991849" />
-      <entry key="M30" value="2.2084697372799416" />
-      <entry key="H1" value="6.229897106036382" />
-      <entry key="H2" value="17.32562541878913" />
-      <entry key="H4" value="37.645007212890114" />
-      <entry key="D1" value="229.39550300414555" />
-      <entry key="W1" value="1139.8163079507847" />
+      <entry key="MS500" value="3.985200570925813E-130" />
+      <entry key="S2" value="4.467993637137292E-33" />
+      <entry key="S5" value="1.1482727677873737E-13" />
+      <entry key="S10" value="3.390202360504298E-7" />
+      <entry key="S30" value="0.00803270003527435" />
+      <entry key="S60" value="0.14149422998635855" />
+      <entry key="M2" value="0.8179283708221086" />
+      <entry key="M5" value="3.855973374193058" />
+      <entry key="M10" value="9.153002953811045" />
+      <entry key="M15" value="13.87818552951755" />
+      <entry key="M30" value="23.57318132808361" />
+      <entry key="H1" value="33.780535860586085" />
+      <entry key="H2" value="47.510651145979054" />
+      <entry key="H4" value="69.53442633546115" />
+      <entry key="D1" value="263.2037071912616" />
+      <entry key="W1" value="1176.8147743995314" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="6.669059502222755E-35" />
-      <entry key="MS500" value="1.4615474463142812E-7" />
-      <entry key="S2" value="0.019552542097359484" />
-      <entry key="S5" value="0.20724367830558876" />
-      <entry key="S10" value="0.455240242408998" />
-      <entry key="S30" value="0.7698035764481662" />
-      <entry key="S60" value="0.9459091191853936" />
-      <entry key="M2" value="1.8181191018631369" />
-      <entry key="M5" value="6.204846794487127" />
-      <entry key="M10" value="14.720040049896946" />
-      <entry key="M15" value="27.210798817566946" />
-      <entry key="M30" value="87.98185069114584" />
-      <entry key="H1" value="253.61066576227321" />
-      <entry key="H2" value="676.4944395830191" />
-      <entry key="H4" value="1586.1801198605626" />
-      <entry key="D1" value="8163.669650158268" />
-      <entry key="W1" value="30257.73349720883" />
+      <entry key="MS100" value="1.6232907466740455E-15" />
+      <entry key="MS500" value="0.0011017403686098739" />
+      <entry key="S2" value="0.18218801985308694" />
+      <entry key="S5" value="0.5060704069398759" />
+      <entry key="S10" value="0.7133631514523561" />
+      <entry key="S30" value="1.1619844728027575" />
+      <entry key="S60" value="2.6794603790106817" />
+      <entry key="M2" value="7.625245507688325" />
+      <entry key="M5" value="24.984426334920563" />
+      <entry key="M10" value="55.69675251775528" />
+      <entry key="M15" value="88.57602540477357" />
+      <entry key="M30" value="187.19136229620682" />
+      <entry key="H1" value="372.3516284125356" />
+      <entry key="H2" value="773.870364305194" />
+      <entry key="H4" value="1653.367410364135" />
+      <entry key="D1" value="8304.154019358273" />
+      <entry key="W1" value="30565.504263524643" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -938,7 +819,7 @@
       <workItem from="1788782347688" duration="75617000" />
       <workItem from="1788969937518" duration="171978000" />
       <workItem from="1790001362413" duration="735000" />
-      <workItem from="1790063398459" duration="253528000" />
+      <workItem from="1790063398459" duration="258692000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -2300,6 +2181,16 @@
           <url>file://$PROJECT_DIR$/src/assurance/depend/wrapper/model/path/depend.py</url>
           <line>12</line>
           <option name="timeStamp" value="486" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/assurance/validator/model/scalar/validator.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="487" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/domain/extract/__init__.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="488" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

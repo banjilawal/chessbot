@@ -15,14 +15,14 @@ from err import ChessException
 
 __all__ = [
     # ======================# EXECUTION_ROUTE_ERROR #======================#
-    "MissingExecutionRouteException",
+    "ExecutionRouteException",
 ]
 
 from artifcat import MethodResultType
 
 
 # ======================# EXECUTION_ROUTE_ERROR #======================#
-class MissingExecutionRouteException(ChessException):
+class ExecutionRouteException(ChessException):
     """
     Role:
         - Error Tracing

@@ -11,16 +11,16 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import MissingValidationRouteException
+from err import ValidationRouteException
 
 
 __all__ = [
     # ======================# SQUARE_VALIDATION_ROUTE #======================#
-    "SquareNoValidationRouteException",
+    "SquareValidationRouteException",
 ]
 
 # ======================# SQUARE_VALIDATION_ROUTE #======================#
-class SquareNoValidationRouteException(MissingValidationRouteException):
+class SquareValidationRouteException(ValidationRouteException):
     """
     Role:
         - Error Tracing

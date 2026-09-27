@@ -54,7 +54,7 @@ class KingTokenValidator:
         self._toolkit=toolkit or TokenValidatorToolkit()
     
     @LoggingLevelRouter.monitor
-    def execute(self, validated_carrier: KingTokenCarrier) -> ValidationResult[KingTokenCarrier]:
+    def execute(self, carrier: KingTokenCarrier) -> ValidationResult[KingTokenCarrier]:
         """
         Send a validated KingToken or Blueprint which inside the validated
         KingTokenCarrier.
@@ -71,7 +71,7 @@ class KingTokenValidator:
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            validated_carrier: KingTokenCarrier
+            carrier: KingTokenCarrier
         Returns:
             ValidationResult[KingTokenCarrier]
         Raises:
@@ -80,7 +80,7 @@ class KingTokenValidator:
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that there is no blueprint in the carrier.
-        blueprint = validated_carrier.extract_blueprint()
+        blueprint = carrier.extract_blueprint()
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -228,7 +228,7 @@ class KingTokenValidator:
         # --- Forward the appropriate work product to the caller. ---#
         
         # The model case.
-        if validated_carrier.has_model:
+        if carrier.has_model:
             model = KingToken(
                 id=id,
                 team=team,
