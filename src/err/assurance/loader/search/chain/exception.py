@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ContextBlueprintLoaderException
+from err import ContextLoaderException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# CHAIN_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
-class ChainContextBlueprintLoaderException(ContextBlueprintLoaderException):
+class ChainContextBlueprintLoaderException(ContextLoaderException):
     """
     Role:
         - Error Tracing

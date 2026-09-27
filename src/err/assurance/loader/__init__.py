@@ -15,4 +15,4 @@ from .search import *
 from .structure import *
 
 # Modules
-from .exception import BlueprintLoaderException
+from .exception import LoaderException

@@ -171,7 +171,7 @@ class CoordValidator(ModelValidator[Coord]):
             board_validation.payload
         )
         # Handle the case that the board_carrier does not contain a model.
-        if not board_carrier.is_carrying_model:
+        if not board_carrier.has_model:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 CoordValidatorException(
@@ -209,7 +209,7 @@ class CoordValidator(ModelValidator[Coord]):
         column = components[1]
         # --- Forward the appropriate work product to the caller. ---#  
         # The model case
-        if carrier.is_carrying_model:
+        if carrier.has_model:
             model = Coord(board=board, row=row, column=column)
             return ValidationResult.success(
                 CoordCarrier(model=model)

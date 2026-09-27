@@ -128,7 +128,7 @@ class NorthAxisRootChecker(AxisRootChecker[NorthAxisBlueprint]):
         # --- Extract and cast payloads of the validation results. ---#
         origin = vectors[0]
 
-        if carrier.is_carrying_model:
+        if carrier.has_model:
             return ValidationResult.success(
                 NorthAxis(origin=origin)
             )

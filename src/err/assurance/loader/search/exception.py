@@ -14,15 +14,15 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# SEARCH_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
-    "ContextBlueprintLoaderException",
+    "ContextLoaderException",
 ]
 
-from err import BlueprintLoaderException
+from err import LoaderException
 from artifcat import MethodResultType
 
 
 # ======================# SEARCH_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
-class ContextBlueprintLoaderException(BlueprintLoaderException):
+class ContextLoaderException(LoaderException):
     """
     Role:
         - Error Tracing

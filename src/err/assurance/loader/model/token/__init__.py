@@ -15,4 +15,4 @@ from .king import *
 from .pawn import *
 
 # Modules
-from .exception import TokenBlueprintLoaderException
+from .exception import TokenLoaderException

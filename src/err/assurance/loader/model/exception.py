@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import BlueprintLoaderException
+from err import LoaderException
 from artifcat import MethodResultType
 
 
 __all__ = [
     # ======================# MODEL_BLUEPRINT_LOADER_FAILURE #======================#
-    "ModelBlueprintLoaderException",
+    "ModelLoaderException",
 ]
 
 # ======================# MODEL_BLUEPRINT_LOADER_FAILURE #======================#
-class ModelBlueprintLoaderException(BlueprintLoaderException):
+class ModelLoaderException(LoaderException):
     """
     Role:
         - Error Tracing

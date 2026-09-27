@@ -136,7 +136,7 @@ class GamePlayerColorBinderValidator:
                 )
             )
         game_carrier = cast(GameCarrier, game_validation.payload)
-        if not game_carrier.is_carrying_model:
+        if not game_carrier.has_model:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 GamePlayerColorBinderValidatorException(
@@ -228,7 +228,7 @@ class GamePlayerColorBinderValidator:
                     )
                 )
             player_carrier = cast(PlayerCarrier, player_validation.payload)
-            if not player_carrier.is_carrying_model:
+            if not player_carrier.has_model:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     GamePlayerColorBinderValidatorException(

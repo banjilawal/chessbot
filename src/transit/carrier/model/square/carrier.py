@@ -59,12 +59,12 @@ class SquareCarrier(ModelCarrier[Square]):
     def entity(self) -> Optional[Square | SquareBlueprint]:
         if self.is_empty:
             return None
-        if self.is_carrying_model:
+        if self.has_model:
             return self._model
         return self._blueprint
     
     @property
-    def is_carrying_model(self) -> bool:
+    def has_model(self) -> bool:
         return (
                 self._model is not None and
                 self._blueprint is None and
@@ -74,7 +74,7 @@ class SquareCarrier(ModelCarrier[Square]):
     @property
     def is_carrying_blueprint(self) -> bool:
         return (
-                not self.is_carrying_model and
+                not self.has_model and
                 isinstance(self._blueprint, SquareBlueprint)
         )
     
@@ -93,7 +93,7 @@ class SquareCarrier(ModelCarrier[Square]):
     @property
     def is_home_square_carrier(self) -> bool:
         return (
-                self.is_carrying_model and
+                self.has_model and
                 isinstance(self._model, HomeSquare)
         )
 

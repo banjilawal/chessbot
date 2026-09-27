@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SquareBlueprintLoaderException
+from err import SquareLoaderException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# HOME_SQUARE_BLUEPRINT_LOADER_FAILURE #======================#
-class HomeSquareBlueprintLoaderException(SquareBlueprintLoaderException):
+class HomeSquareBlueprintLoaderException(SquareLoaderException):
     """
     Role:
         - Error Tracing

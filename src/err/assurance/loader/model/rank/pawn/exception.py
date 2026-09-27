@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import RankBlueprintLoaderException
+from err import RankLoaderException
 
 __all__ = [
     # ======================# PAWN_BLUEPRINT_LOADER_FAILURE #======================#
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# PAWN_BLUEPRINT_LOADER_FAILURE #======================#
-class PawnBlueprintLoaderException(RankBlueprintLoaderException):
+class PawnBlueprintLoaderException(RankLoaderException):
     """
     Role:
         - Error Tracing

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import PathBlueprintLoaderException
+from err import PathLoaderException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# KING_PATH_BLUEPRINT_LOADER_FAILURE #======================#
-class KingPathBlueprintLoaderException(PathBlueprintLoaderException):
+class KingPathBlueprintLoaderException(PathLoaderException):
     """
     Role:
         - Error Tracing

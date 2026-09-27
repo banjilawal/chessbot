@@ -130,7 +130,7 @@ class BishopValidator:
         # --- Forward the appropriate work product to the caller. ---#
         
         # The model case.
-        if validated_carrier.is_carrying_model:
+        if validated_carrier.has_model:
             model = Bishop(persona=persona)
             return ValidationResult.success(BishopCarrier(model=model))
         # Else the blueprint case

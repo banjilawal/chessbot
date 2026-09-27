@@ -138,7 +138,7 @@ class PawnTokenValidator:
             )
         # Handle the case that the team_carrier does not contain a model.
         team_carrier = cast(TeamCarrier, team_validation.payload)
-        if not team_carrier.is_carrying_model:
+        if not team_carrier.has_model:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 PawnTokenValidatorException(
@@ -248,7 +248,7 @@ class PawnTokenValidator:
         # --- Forward the appropriate work product to the caller. ---#
         
         # The model case.
-        if validated_carrier.is_carrying_model:
+        if validated_carrier.has_model:
             model = PawnToken(
                 id=id,
                 team=team,

@@ -1,7 +1,7 @@
-# src/domain/extract/extract.py
+# src/domain/extract.py
 
 """
-Module: domain.extract.extract
+Module: domain.extract
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

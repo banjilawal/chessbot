@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StructureBlueprintLoaderException
+from err import StructureLoaderException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# NODE_BLUEPRINT_LOADER_FAILURE #======================#
-class NodeBlueprintLoaderException(StructureBlueprintLoaderException):
+class NodeBlueprintLoaderException(StructureLoaderException):
     """
     Role:
         - Error Tracing

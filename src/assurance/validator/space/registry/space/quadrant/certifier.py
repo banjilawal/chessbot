@@ -105,7 +105,7 @@ class QuadrantReservoirRootChecker(SpaceReservoirChecker[QuadrantReservoir]):
                 )
             )
         origin = cast(Vector, validation.payload)
-        if carrier.is_carrying_model:
+        if carrier.has_model:
             return ValidationResult.success(
                 QuadrantReservoirCarrier(model=QuadrantReservoir(origin=origin))
             )

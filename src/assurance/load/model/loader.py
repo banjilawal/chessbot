@@ -13,9 +13,8 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import ModelPrimeExtract, ModelValidatorToolkit
-from assurance.load import Loader
-from domain import Model
+from assurance import Loader, ModelValidatorToolkit
+from domain import Model, ModelPrimeExtract
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Model")

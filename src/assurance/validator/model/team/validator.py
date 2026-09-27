@@ -9,19 +9,13 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, Optional, Type, cast
+from typing import Any, Optional, cast
 
-from artifcat import BoardValidationResponse, ValidationResult
+from artifcat import ValidationResult
 from assurance import ModelValidator, TeamValidatorToolkit
-from domain import (
-    Archetype, Board, BoardValidationRequest, Player, PlayerValidationRequest, Team,
-    TeamBlueprint, TeamValidationRequest
-)
-from err import (
-    ArchetypeNullException, BoardValidatorResponseWrapperExceptionValidation, EmptyBoardCarrierException,
-    EmptyPlayerCarrierException,
-    EmptyTeamCarrierException, TeamValidationRequestNullException, TeamValidatorException
-)
+from domain import Archetype, Board, Player, Team, TeamBlueprint, TeamPrimeExtract
+from err import ArchetypeNullException, TeamValidatorException
+from exchange import BoardValidationRequest, PlayerValidationRequest
 from transit import BoardCarrier, PlayerCarrier, TeamCarrier
 from util import IdFactory, LoggingLevelRouter
 
@@ -67,14 +61,9 @@ class TeamValidator(ModelValidator[Team]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The request is either null or not a TeamValidatorRequest.
-                    -   The request's payload is either,
-                            null
-                            not a TeamCarrier
-                            an empty TeamCarrier.
-                    -   Either the id, board, or owner attributes are flagged unsafe.
-            2.  Otherwise, Send a Carrier with the correct type of payload in the success
-                result.
+                    -   The Loader fails.
+                    -   Either the id, board, or owner are flagged unsafe.
+            2.  Otherwise, send a TeamCarrier in the success result.
         Args:
             candidate: Any
         Returns:
@@ -85,8 +74,8 @@ class TeamValidator(ModelValidator[Team]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the blueprint cannot be extracted.
-        blueprint_load_result = self.toolkit.blueprint_loader.execute(candidate)
-        if blueprint_load_result.is_failure:
+        load_result = self.toolkit.loader.execute(candidate)
+        if load_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TeamValidatorException(
@@ -94,13 +83,13 @@ class TeamValidator(ModelValidator[Team]):
                     cls_name=self.__class__.__name__,
                     msg=TeamValidatorException.MSG,
                     err_code=TeamValidatorException.ERR_CODE,
-                    ex=blueprint_load_result.exception,
+                    ex=load_result.exception,
                 )
             )
-        blueprint = cast(
-            TeamBlueprint,
-            blueprint_load_result.payload,
-        )
+        # --- Get the PrimeExtract and Blueprint for additional processing. ---#
+        prime_extract = cast(TeamPrimeExtract, load_result.payload)
+        blueprint = cast(TeamBlueprint, prime_extract.blueprint)
+        
         # Handle the case that any id in the blueprint is flagged.
         id_validation = self.toolkit.blueprint_id_extractor.execute(
             candidate=blueprint,
@@ -180,8 +169,8 @@ class TeamValidator(ModelValidator[Team]):
         archetype = cast(Archetype, archetype_validation.payload)
         
         # --- Forward the appropriate work product to the caller. ---#
-        # The model case
-        if carrier.is_carrying_model:
+        # The client wants a safe Team.
+        if prime_extract.carrier.has_model:
             payload = Team(
                 id=id,
                 board=board,
@@ -189,7 +178,7 @@ class TeamValidator(ModelValidator[Team]):
                 archetype=archetype,
             )
             return ValidationResult.success(TeamCarrier(model=payload))
-        # The blueprint case
+        # Otherwise, the client is a Builder which needs a Blueprint.
         payload = TeamBlueprint(
             id=id,
             board=board,
@@ -197,3 +186,4 @@ class TeamValidator(ModelValidator[Team]):
             archetype=archetype,
         )
         return ValidationResult.success(TeamCarrier(blueprint=payload))
+

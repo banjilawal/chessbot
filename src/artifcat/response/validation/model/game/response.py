@@ -94,7 +94,7 @@ class GameValidationResponse(ModelValidationResponse[Game]):
         ):
             return None
         # Handle the case that there is no model in the carrier.
-        if not carrier.is_carrying_model:
+        if not carrier.has_model:
             return None
         # --- Extract the model. ---#
         model = cast(Game, carrier.entity)

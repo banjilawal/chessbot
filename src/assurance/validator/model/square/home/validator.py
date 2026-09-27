@@ -124,7 +124,7 @@ class HomeSquareValidator:
         
         # --- Forward the appropriate work product to the caller. ---#
         # The model case
-        if validated_carrier.is_carrying_model:
+        if validated_carrier.has_model:
             model = HomeSquare(
                 name=name,
                 board=board,

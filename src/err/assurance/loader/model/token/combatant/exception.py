@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import TokenBlueprintLoaderException
+from err import TokenLoaderException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# COMBATANT_TOKEN_BLUEPRINT_LOADER_FAILURE #======================#
-class CombatantTokenBlueprintLoaderException(TokenBlueprintLoaderException):
+class CombatantTokenBlueprintLoaderException(TokenLoaderException):
     """
     Role:
         - Error Tracing

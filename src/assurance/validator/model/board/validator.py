@@ -160,7 +160,7 @@ class BoardValidator(ModelValidator[Board]):
         # --- Forward the appropriate work product to the caller. ---#
         
         # The model case
-        if carrier.is_carrying_model:
+        if carrier.has_model:
             return ValidationResult.success(
                 BoardCarrier(
                     model=Board(

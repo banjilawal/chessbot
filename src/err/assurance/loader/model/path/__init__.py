@@ -17,4 +17,4 @@ from .combatant import *
 from .king import *
 
 # Modules
-from .exception import PathBlueprintLoaderException
+from .exception import PathLoaderException

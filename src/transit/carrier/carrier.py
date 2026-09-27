@@ -52,7 +52,7 @@ class EntityCarrier(ABC, Generic[T]):
     
     @property
     @abstractmethod
-    def is_carrying_model(self) -> bool:
+    def has_model(self) -> bool:
         pass
     
     @property

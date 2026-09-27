@@ -65,8 +65,8 @@ class ModelValidatorToolkit(ValidatorToolkit[T], ABC, Generic[T]):
         return cast(ModelManifest[T], super().metadata)
     
     @property
-    def blueprint_loader(self) -> ModelBlueprintLoader[T]:
-        return cast(ModelBlueprintLoader[T], super().blueprint_loader)
+    def loader(self) -> ModelBlueprintLoader[T]:
+        return cast(ModelBlueprintLoader[T], super().loader)
     
     @property
     def nulls(self) -> ModelNullGroup[T]:

@@ -13,4 +13,4 @@ version: 0.0.2
 from .register import *
 
 # Modules
-from .exception import VectorBlueprintLoaderException
+from .exception import VectorLoaderException

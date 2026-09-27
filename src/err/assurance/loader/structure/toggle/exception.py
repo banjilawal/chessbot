@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 
-from err import StructureBlueprintLoaderException
+from err import StructureLoaderException
 from artifcat import MethodResultType
 
 
@@ -22,7 +22,7 @@ __all__ = [
 ]
 
 # ======================# TOGGLE_BLUEPRINT_LOADER_FAILURE #======================#
-class ToggleBlueprintLoaderException(StructureBlueprintLoaderException):
+class ToggleBlueprintLoaderException(StructureLoaderException):
     """
     Role:
         - Error Tracing

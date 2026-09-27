@@ -218,7 +218,7 @@ class SquareValidator(ModelValidator[Square]):
                 )
             )
         board_carrier = cast(BoardCarrier, board_validation.payload)
-        if not board_carrier.is_carrying_model:
+        if not board_carrier.has_model:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidatorException(
@@ -253,7 +253,7 @@ class SquareValidator(ModelValidator[Square]):
                 )
             )
         coord_carrier = cast(CoordCarrier, coord_validation.payload)
-        if not coord_carrier.is_carrying_model:
+        if not coord_carrier.has_model:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareValidatorException(
@@ -284,7 +284,7 @@ class SquareValidator(ModelValidator[Square]):
         
         # --- Forward the appropriate work product to the caller. ---#
         # The model case
-        if carrier.is_carrying_model:
+        if carrier.has_model:
             model = Square(id=id, name=name, board=board, coord=coord)
             model.occupant = occupant
             model.state = state

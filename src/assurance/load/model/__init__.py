@@ -10,6 +10,8 @@ version: 0.0.2
 # =========== ASSURANCE.LOAD.MODEL PACKAGE ===========#
 
 # Packages
+from .board import *
+from .player import *
 from .team import *
 
 # Module

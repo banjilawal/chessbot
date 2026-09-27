@@ -172,7 +172,7 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
             # Otherwise, extract the square from the carrier
             square_carrier = cast(SquareCarrier, square_validation.payload)
             # Handle the case that the carrier does not have a validated Square for the register.
-            if not square_carrier.is_carrying_model:
+            if not square_carrier.has_model:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     SquareRegisterValidatorException(
@@ -210,7 +210,7 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
             endpoints.append(endpoint)
         # --- Forward the appropriate work product to the caller. ---#  
         # The model case
-        if carrier.is_carrying_model:
+        if carrier.has_model:
             model = SquareRegister(origin=endpoints[0], destination=endpoints[1])
             return ValidationResult.success(
                 SquareRegisterCarrier(model=model)

@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ModelBlueprintLoaderException
+from err import ModelLoaderException
 from artifcat import MethodResultType
 
 
 __all__ = [
     # ======================# VECTOR_BLUEPRINT_LOADER_FAILURE #======================#
-    "VectorBlueprintLoaderException",
+    "VectorLoaderException",
 ]
 
 # ======================# VECTOR_BLUEPRINT_LOADER_FAILURE #======================#
-class VectorBlueprintLoaderException(ModelBlueprintLoaderException):
+class VectorLoaderException(ModelLoaderException):
     """
     Role:
         - Error Tracing

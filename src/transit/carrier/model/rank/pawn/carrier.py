@@ -59,12 +59,12 @@ class PawnCarrier(RankCarrier[Pawn]):
     def entity(self) -> Optional[Rank|PawnBlueprint]:
         if self.is_empty:
             return None
-        if self.is_carrying_model:
+        if self.has_model:
             return self._model
         return self._blueprint
     
     @property
-    def is_carrying_model(self) -> bool:
+    def has_model(self) -> bool:
         return (
                 self._model is not None and
                 self._blueprint is None and
@@ -74,7 +74,7 @@ class PawnCarrier(RankCarrier[Pawn]):
     @property
     def is_carrying_blueprint(self) -> bool:
         return (
-                not self.is_carrying_model and
+                not self.has_model and
                 isinstance(self._blueprint, PawnBlueprint)
         )
     

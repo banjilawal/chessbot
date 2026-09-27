@@ -131,7 +131,7 @@ class NortheastQuadrantRootChecker(QuadrantRootChecker[NortheastQuadrant]):
         if len(vectors) == 2:
             terminus = vectors[1]
 
-        if carrier.is_carrying_model:
+        if carrier.has_model:
             return ValidationResult.success(
                 NortheastQuadrant(origin=origin)
             )

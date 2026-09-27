@@ -105,7 +105,7 @@ class AxisReservoirRootChecker(SpaceReservoirChecker[AxisReservoir]):
                 )
             )
         origin = cast(Vector, validation.payload)
-        if carrier.is_carrying_model:
+        if carrier.has_model:
             return ValidationResult.success(
                 AxisReservoirCarrier(model=AxisReservoir(origin=origin))
             )

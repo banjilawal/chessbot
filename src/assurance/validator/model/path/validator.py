@@ -180,7 +180,7 @@ class PathValidator(ModelValidator[Path]):
             endpoint_validation.payload
         )
         # Handle the case that the endpoint_carrier does not contain a model.
-        if not endpoint_carrier.is_carrying_model:
+        if not endpoint_carrier.has_model:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 PathValidatorException(
@@ -201,7 +201,7 @@ class PathValidator(ModelValidator[Path]):
         endpoints = cast(SquareRegister, endpoint_carrier.entity)
         # --- Forward the appropriate work product to the caller. ---#
         # The model case
-        if carrier.is_carrying_model:
+        if carrier.has_model:
             payload = Path(label=label, endpoints=endpoints,)
             return ValidationResult.success(
                 PathCarrier(model=payload)

@@ -164,7 +164,7 @@ class GameValidator(ModelValidator[Game]):
         
         # --- Forward the appropriate work product to the caller. ---#
         # The model case
-        if carrier.is_carrying_model:
+        if carrier.has_model:
             payload = Game(
                 id=id,
                 arena=arena,

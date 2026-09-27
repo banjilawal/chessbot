@@ -244,7 +244,7 @@ class ManeuverValidator(ModelValidator[Maneuver]):
         path = cast(Path, path_carrier.entity)
         # --- Forward the appropriate work product to the caller. ---#
         # The model case
-        if carrier.is_carrying_model:
+        if carrier.has_model:
             payload = Maneuver(benefit=benefit, traveler=traveler, path=path)
             return ValidationResult.success(ManeuverCarrier(model=payload))
         # The blueprint case

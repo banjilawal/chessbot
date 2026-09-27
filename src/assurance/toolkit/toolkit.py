@@ -75,7 +75,7 @@ class ValidatorToolkit(ABC, Generic[T]):
         return self._metadata
         
     @property
-    def blueprint_loader(self) -> BlueprintLoader[T]:
+    def loader(self) -> BlueprintLoader[T]:
         return self._blueprint_loader
     
     @property

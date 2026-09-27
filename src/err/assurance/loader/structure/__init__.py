@@ -16,4 +16,4 @@ from .register import *
 from .toggle import *
 
 # Modules
-from .exception import StructureBlueprintLoaderException
+from .exception import StructureLoaderException

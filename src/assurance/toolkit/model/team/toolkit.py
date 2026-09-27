@@ -61,8 +61,8 @@ class TeamValidatorToolkit(ModelValidatorToolkit[Team]):
         return cast(TeamManifest, super().metadata)
     
     @property
-    def blueprint_loader(self) -> TeamBlueprintLoader:
-        return cast(TeamBlueprintLoader, super().blueprint_loader)
+    def loader(self) -> TeamBlueprintLoader:
+        return cast(TeamBlueprintLoader, super().loader)
     
     @property
     def nulls(self) -> TeamNullGroup:

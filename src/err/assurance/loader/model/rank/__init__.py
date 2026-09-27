@@ -19,4 +19,4 @@ from .queen import *
 from .rook import *
 
 # Modules
-from .exception import RankBlueprintLoaderException
+from .exception import RankLoaderException

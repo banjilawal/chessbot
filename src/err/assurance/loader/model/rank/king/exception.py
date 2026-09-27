@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import RankBlueprintLoaderException
+from err import RankLoaderException
 
 __all__ = [
     # ======================# KING_BLUEPRINT_LOADER_FAILURE #======================#
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# KING_BLUEPRINT_LOADER_FAILURE #======================#
-class KingBlueprintLoaderException(RankBlueprintLoaderException):
+class KingBlueprintLoaderException(RankLoaderException):
     """
     Role:
         - Error Tracing

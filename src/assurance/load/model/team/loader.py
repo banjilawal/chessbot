@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelLoader, TeamPrimeExtract, TeamValidatorToolkit
-from domain import Team
+from assurance import ModelLoader, TeamValidatorToolkit
+from domain import Team, TeamPrimeExtract
 from err import (
-    EmptyTeamCarrierException, TeamBlueprintLoaderException,
+    EmptyTeamCarrierException, TeamLoaderException,
     TeamValidationRequestNullException
 )
 from exchange import TeamValidationRequest
@@ -94,15 +94,15 @@ class TeamLoader(ModelLoader[Team]):
         if priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamBlueprintLoaderException(
+                TeamLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamBlueprintLoaderException.MSG,
-                    err_code=TeamBlueprintLoaderException.ERR_CODE,
+                    msg=TeamLoaderException.MSG,
+                    err_code=TeamLoaderException.ERR_CODE,
                     ex=priming_result.exception,
                 )
             )
-        # --- Cast priming_result into a request for additional tests. ---#
+        # --- Cast priming_result to request for additional tests. ---#
         request = cast(Type[TeamValidationRequest], priming_result.payload)
         
         # Handle the case that request.item is the wrong carrier type.
@@ -114,15 +114,15 @@ class TeamLoader(ModelLoader[Team]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamBlueprintLoaderException(
+                TeamLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamBlueprintLoaderException.MSG,
-                    err_code=TeamBlueprintLoaderException.ERR_CODE,
+                    msg=TeamLoaderException.MSG,
+                    err_code=TeamLoaderException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
-        # --- Cast carrier_validation payload to into carrier to extract the blueprint. ---#
+        # --- Cast carrier_validation payload to carrier then extract blueprint. ---#
         carrier = cast(TeamCarrier, carrier_validation.payload)
         blueprint = carrier.extract_blueprint()
         
@@ -130,11 +130,11 @@ class TeamLoader(ModelLoader[Team]):
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamBlueprintLoaderException(
+                TeamLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamBlueprintLoaderException.MSG,
-                    err_code=TeamBlueprintLoaderException.ERR_CODE,
+                    msg=TeamLoaderException.MSG,
+                    err_code=TeamLoaderException.ERR_CODE,
                     ex=EmptyTeamCarrierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -143,27 +143,6 @@ class TeamLoader(ModelLoader[Team]):
                     ),
                 )
             )
-        # --- Cast carrier_validation payload to into carrier to extract the blueprint. ---#
-        if carrier.is_carrying_model:
-            model = cast(Team, carrier.entity)
-            if model is not None and not isinstance(model, Team):
-                # Send the exception chain on failure.
-                return ValidationResult.failure(
-                    TeamBlueprintLoaderException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=TeamBlueprintLoaderException.MSG,
-                        err_code=TeamBlueprintLoaderException.ERR_CODE,
-                        ex=EmptyTeamCarrierException(
-                            cls_mthd=method,
-                            cls_name=self.__class__.__name__,
-                            msg=EmptyTeamCarrierException.MSG,
-                            err_code=EmptyTeamCarrierException.ERR_CODE,
-                        ),
-                    )
-                )
-            extract = TeamPrimeExtract(carrier=carrier, blueprint=blueprint, model=model)
-            return ValidationResult(extract)
-        extract = TeamPrimeExtract(carrier=carrier, blueprint=blueprint)
         # --- Send the work product. ---#
+        extract = TeamPrimeExtract(carrier=carrier, blueprint=blueprint)
         return ValidationResult.success(extract)
