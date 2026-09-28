@@ -10,7 +10,7 @@ version: 0.0.2
 # =========== RESULT.ATTACK PACKAGE ===========#
 
 # Packages
-
+from .kill import *
 
 # Modules
 from .result import AttackResult

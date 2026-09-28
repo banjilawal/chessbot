@@ -1,7 +1,7 @@
-# src/artifact/result/attack/result.py
+# src/artifact/result/attack/kill/result.py
 
 """
-Module: artfifact.result.attack.result
+Module: artfifact.result.attack.kill.result
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,16 +9,13 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import Generic, Optional, TypeVar, cast
+from typing import Optional, cast
 
-from artifcat import AttackState, Result
-from domain import Encounter
-
-T = TypeVar("T", bound="Encounter")
+from artifcat import AttackResult, AttackState
+from domain import CheckmateEncounter, EncounterWarning, KillEncounter
 
 
-class AttackResult(Result[T], ABC, Generic[T]):
+class KillResult(AttackResult[KillEncounter]):
     """
     Role:
         - Data Transport
@@ -31,7 +28,6 @@ class AttackResult(Result[T], ABC, Generic[T]):
         exception: Optional[Exception]
         payload: Optional[T]
         state: attackState
-        
         is_timed_out: bool
         is_success: bool
         is_failure: bool
@@ -93,6 +89,36 @@ class AttackResult(Result[T], ABC, Generic[T]):
                 self.exception is not None and
                 self._state ==  AttackState.TIMED_OUT
         )
+    
+    
+    @property
+    def is_kill(self) -> bool:
+        return (
+            self._payload is not None and
+            self._exception is None and
+            self._state == AttackState.COMBATANT_KILLED and
+            isinstance(self._payload, KillEncounter)
+        )
+    
+    @property
+    def is_check_warning_issued(self) -> bool:
+        return (
+                self._payload is not None and
+                self._exception is None and
+                self._state == AttackState.COMBATANT_KILLED and
+                isinstance(self._payload, EncounterWarning)
+        )
+    
+    @property
+    def is_checkmate(self) -> bool:
+        return (
+                self._payload is not None and
+                self._exception is None and
+                self._state == AttackState.CHECKMATE and
+                isinstance(self._payload, CheckmateEncounter)
+        )
+    
+
     
     @classmethod
     def success(cls, payload: T) -> AttackResult:
