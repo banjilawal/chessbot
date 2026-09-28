@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== TRANSIT.CARRIER.MODEL PACKAGE ===========#
 
 # Packages
+from .account import *
 from .arena import *
 from .attack import *
 from .board import *

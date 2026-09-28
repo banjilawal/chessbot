@@ -1,7 +1,7 @@
-# src/transit/carrier/model/player/carrier.py
+# src/transit/carrier/model/account/carrier.py
 
 """
-Module: transit.carrier.model.player.carrier
+Module: transit.carrier.model.account.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,18 +12,18 @@ from __future__ import annotations
 from _testcapi import Generic
 from typing import Optional, TypeVar, cast
 
-from domain import HumanPlayerBlueprint, MachinePlayerBlueprint, Player, PlayerBlueprint
+from domain import HumanAccountBlueprint, MachineAccountBlueprint, Account, AccountBlueprint
 from transit import ModelCarrier
 
-T = TypeVar("T", bound="Player")
+T = TypeVar("T", bound="Account")
 
-class PlayerCarrier(ModelCarrier[T], Generic[T]):
+class AccountCarrier(ModelCarrier[T], Generic[T]):
     """
     Role:
         - Boundary Carrier Interface
 
     Responsibilities:
-        1.  Transport a hydrated Player or its Blueprint across processing boundaries.
+        1.  Transport a hydrated Account or its Blueprint across processing boundaries.
 
     Attributes:
         size: int
@@ -31,33 +31,33 @@ class PlayerCarrier(ModelCarrier[T], Generic[T]):
         is_over_capacity: bool
         is_model_carrier: bool
         is_blueprint_carrier: bool
-        entity: [Player|PlayerBlueprint]
+        entity: [Account|AccountBlueprint]
 
     Provides:
-        -   def extract_blueprint() -> Optional[PlayerBlueprint]
+        -   def extract_blueprint() -> Optional[AccountBlueprint]
 
     Super Class:
         ModelCarrier
     """
     _model: Optional[T]
-    _blueprint: Optional[PlayerBlueprint]
+    _blueprint: Optional[AccountBlueprint]
     
     def __init__(
             self,
-            model: Optional[Player] | None = None,
-            blueprint: Optional[PlayerBlueprint] | None = None,
+            model: Optional[Account] | None = None,
+            blueprint: Optional[AccountBlueprint] | None = None,
     ):
         """
         Args:
-            model: Optional[Player]
-            blueprint: Optional[PlayerBlueprint]
+            model: Optional[Account]
+            blueprint: Optional[AccountBlueprint]
         """
         super().__init__()
         self._model = model
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> Optional[Player | PlayerBlueprint]:
+    def entity(self) -> Optional[Account | AccountBlueprint]:
         if self.is_empty:
             return None
         if self.has_model:
@@ -69,14 +69,14 @@ class PlayerCarrier(ModelCarrier[T], Generic[T]):
         return (
                 self._model is not None and
                 self._blueprint is None and
-                isinstance(self._model, Player)
+                isinstance(self._model, Account)
         )
     
     @property
     def is_carrying_blueprint(self) -> bool:
         return (
                 not self.has_model and
-                isinstance(self._blueprint, PlayerBlueprint)
+                isinstance(self._blueprint, AccountBlueprint)
         )
     
     @property
@@ -91,13 +91,27 @@ class PlayerCarrier(ModelCarrier[T], Generic[T]):
     def is_over_capacity(self) -> bool:
         return self.size > 1
     
-    def extract_blueprint(self) -> Optional[PlayerBlueprint]:
+    def extract_blueprint(self) -> Optional[AccountBlueprint]:
         if self.is_empty: return None
         if self.is_carrying_blueprint: return self._blueprint
         
-        model = cast(Player, self._model)
-        return PlayerBlueprint(
+        model = cast(Account, self._model)
+        return AccountBlueprint(
             id=model.id,
             name=model.name,
             adviser=model.adviser,
         )
+    
+    @property
+    def is_carrying_human(self) -> bool:
+        blueprint = self.extract_blueprint()
+        if blueprint is None:
+            return False
+        return isinstance(blueprint, HumanAccountBlueprint)
+    
+    @property
+    def is_carrying_machine(self) -> bool:
+        blueprint = self.extract_blueprint()
+        if blueprint is None:
+            return False
+        return isinstance(blueprint, MachineAccountBlueprint)

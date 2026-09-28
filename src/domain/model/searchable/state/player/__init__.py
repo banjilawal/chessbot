@@ -10,8 +10,6 @@ version: 0.0.2
 # =========== DOMAIN.MODEL.SEARCHABLE.STATE.PLAYER PACKAGE ===========#
 
 # Packages
-from .human import *
-from .machine import *
 
 # Modules
 from .model import Player

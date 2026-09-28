@@ -1,7 +1,7 @@
-# src/transit/carrier/model/player/machine/carrier.py
+# src/transit/carrier/model/account/machine/carrier.py
 
 """
-Module: transit.carrier.model.player.machine.carrier
+Module: transit.carrier.model.account.machine.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import MachinePlayer, MachinePlayerBlueprint
-from transit import PlayerCarrier
+from domain import MachineAccount, MachineAccountBlueprint
+from transit import AccountCarrier
 
 
-class MachinePlayerCarrier(PlayerCarrier):
+class MachineAccountCarrier(AccountCarrier):
     """
     Role:
         - Boundary Carrier Interface
 
     Responsibilities:
-        1.  Transport a hydrated MachinePlayer or its Blueprint across processing boundaries.
+        1.  Transport a hydrated MachineAccount or its Blueprint across processing boundaries.
 
     Attributes:
         size: int
@@ -29,26 +29,26 @@ class MachinePlayerCarrier(PlayerCarrier):
         is_over_capacity: bool
         is_model_carrier: bool
         is_blueprint_carrier: bool
-        entity: [MachinePlayer|MachineBlueprint]
+        entity: [MachineAccount|MachineBlueprint]
 
     Provides:
         -   def extract_blueprint() -> Optional[MachineBlueprint]
 
     Super Class:
-        MachinePlayerCarrier
+        MachineAccountCarrier
     """
     
-    _model: Optional[MachinePlayer]
-    _blueprint: Optional[MachinePlayerBlueprint]
+    _model: Optional[MachineAccount]
+    _blueprint: Optional[MachineAccountBlueprint]
     
     def __init__(
             self,
-            model: Optional[MachinePlayer] | None = None,
-            blueprint: Optional[MachinePlayerBlueprint] | None = None,
+            model: Optional[MachineAccount] | None = None,
+            blueprint: Optional[MachineAccountBlueprint] | None = None,
     ):
         """
         Args:
-            model: Optional[MachinePlayer]
+            model: Optional[MachineAccount]
             blueprint: Optional[MachineBlueprint]
         """
         super().__init__()
@@ -56,7 +56,7 @@ class MachinePlayerCarrier(PlayerCarrier):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> Optional[MachinePlayer | MachinePlayerBlueprint]:
+    def entity(self) -> Optional[MachineAccount | MachineAccountBlueprint]:
         if self.is_empty:
             return None
         if self.has_model:
@@ -68,14 +68,14 @@ class MachinePlayerCarrier(PlayerCarrier):
         return (
                 self._model is not None and
                 self._blueprint is None and
-                isinstance(self._model, MachinePlayer)
+                isinstance(self._model, MachineAccount)
         )
     
     @property
     def is_carrying_blueprint(self) -> bool:
         return (
                 not self.has_model and
-                isinstance(self._blueprint, MachinePlayerBlueprint)
+                isinstance(self._blueprint, MachineAccountBlueprint)
         )
     
     @property
@@ -90,12 +90,12 @@ class MachinePlayerCarrier(PlayerCarrier):
     def is_over_capacity(self) -> bool:
         return self.size > 1
     
-    def extract_blueprint(self) -> Optional[MachinePlayerBlueprint]:
+    def extract_blueprint(self) -> Optional[MachineAccountBlueprint]:
         if self.is_empty: return None
         if self.is_carrying_blueprint: return self._blueprint
         
-        model = cast(MachinePlayer, self._model)
-        return MachinePlayerBlueprint(
+        model = cast(MachineAccount, self._model)
+        return MachineAccountBlueprint(
             id=model.id,
             name=model.name,
             adviser=model.adviser,

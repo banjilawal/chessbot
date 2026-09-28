@@ -9,15 +9,15 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from abc import ABC
+
 from typing import Optional
 
-from domain import Archetype, StateModel
+from domain import Archetype, Game, StateModel
 from domain.model.account import Account
 from game import GameAdviser
 
 
-class Player(StateModel, ABC):
+class Player(StateModel):
     """
      Role:
          - Data Holder
@@ -26,9 +26,11 @@ class Player(StateModel, ABC):
         2.  Direct a Team's pieces that are in an Arena's Board during a Game.
 
      Attributes:
-         id: int
-         account: str
-         adviser: Optional[GameAdviser]
+        id: int
+        game: Game
+        account: Account,
+        archetype: Archetype,
+        adviser: Optional[GameAdviser]
 
      Provides:
 
@@ -36,6 +38,7 @@ class Player(StateModel, ABC):
         Model
      """
     _id: int
+    _game: Game
     _account: Account
     _archetype: Archetype
     _adviser: Optional[GameAdviser]
@@ -43,6 +46,7 @@ class Player(StateModel, ABC):
     def __init__(
             self,
             id: int,
+            game: Game,
             account: Account,
             archetype: Archetype,
             adviser: Optional[GameAdviser] | None = None,
@@ -50,11 +54,13 @@ class Player(StateModel, ABC):
         """
         Args:
             id: int
+            game: Game
             account: Account,
             archetype: Archetype,
             adviser: Optional[GameAdviser]
         """
         super().__init__(id=id)
+        self._game = game
         self._account = account
         self._archetype = archetype
         self._adviser = adviser
@@ -70,6 +76,10 @@ class Player(StateModel, ABC):
     @property
     def archetype(self) -> Archetype:
         return self._archetype
+    
+    @property
+    def game(self) -> Game:
+        return self._game
         
     @property
     def adviser(self) -> Optional[GameAdviser]:
