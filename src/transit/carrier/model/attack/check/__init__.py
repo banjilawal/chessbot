@@ -1,13 +1,13 @@
-# src/transit/carrier/model/attack/check/__init__.py
+# src/transit/carrier/model/encounter/check/__init__.py
 
 """
-Module: transit.carrier.model.attack.check.__init__
+Module: transit.carrier.model.encounter.check.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== TRANSIT.CARRIER.MODEL.ATTACK.CHECK PACKAGE ===========#
+# =========== TRANSIT.CARRIER.MODEL.ENCOUNTER.CHECK PACKAGE ===========#
 
 # Packages
 

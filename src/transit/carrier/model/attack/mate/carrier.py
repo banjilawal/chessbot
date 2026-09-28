@@ -1,7 +1,7 @@
-# src/transit/carrier/model/attack/mate/carrier.py
+# src/transit/carrier/model/encounter/mate/carrier.py
 
 """
-Module: transit.carrier.model.attack.mate.carrier
+Module: transit.carrier.model.encounter.mate.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import CheckmateEncounter, CheckmateAttackBlueprint
-from transit import AttackCarrier
+from domain import CheckmateEncounter, CheckmateEncounterBlueprint
+from transit import EncounterCarrier
 
 
-class CheckmateAttackCarrier(AttackCarrier[CheckmateEncounter]):
+class CheckmateEncounterCarrier(EncounterCarrier[CheckmateEncounter]):
     """
     Role:
         - Boundary Carrier Interface
 
     Responsibilities:
-        1.  Transport a hydrated CheckmateAttack or its Blueprint across
+        1.  Transport a hydrated CheckmateEncounter or its Blueprint across
             processing boundaries.
 
     Attributes:
@@ -30,31 +30,31 @@ class CheckmateAttackCarrier(AttackCarrier[CheckmateEncounter]):
         is_over_capacity: bool
         is_model_carrier: bool
         is_blueprint_carrier: bool
-        entity: [CheckmateAttack | CheckmateAttackBlueprint]
+        entity: [CheckmateEncounter | CheckmateEncounterBlueprint]
 
     Provides:
-        -   def extract_blueprint() -> Optional[CheckmateAttackBlueprint]
+        -   def extract_blueprint() -> Optional[CheckmateEncounterBlueprint]
 
     Super Class:
-        AttackCarrier
+        EncounterCarrier
     """
     
     def __init__(
             self,
             model: Optional[CheckmateEncounter] | None = None,
-            blueprint: Optional[CheckmateAttackBlueprint] | None = None,
+            blueprint: Optional[CheckmateEncounterBlueprint] | None = None,
     ):
         """
         Args:
-            model: Optional[CheckmateAttack]
-            blueprint: Optional[CheckmateAttackBlueprint]
+            model: Optional[CheckmateEncounter]
+            blueprint: Optional[CheckmateEncounterBlueprint]
         """
         super().__init__()
         self._model = model
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> Optional[CheckmateEncounter | CheckmateAttackBlueprint]:
+    def entity(self) -> Optional[CheckmateEncounter | CheckmateEncounterBlueprint]:
         if self.is_empty:
             return None
         if self.has_model:
@@ -73,7 +73,7 @@ class CheckmateAttackCarrier(AttackCarrier[CheckmateEncounter]):
     def is_carrying_blueprint(self) -> bool:
         return (
                 not self.has_model and
-                isinstance(self._blueprint, CheckmateAttackBlueprint)
+                isinstance(self._blueprint, CheckmateEncounterBlueprint)
         )
     
     @property
@@ -88,12 +88,12 @@ class CheckmateAttackCarrier(AttackCarrier[CheckmateEncounter]):
     def is_over_capacity(self) -> bool:
         return self.size > 1
     
-    def extract_blueprint(self) -> Optional[CheckmateAttackBlueprint]:
+    def extract_blueprint(self) -> Optional[CheckmateEncounterBlueprint]:
         if self.is_empty: return None
         if self.is_carrying_blueprint: return self._blueprint
         
         model = cast(CheckmateEncounter, self._model)
-        return CheckmateAttackBlueprint(
+        return CheckmateEncounterBlueprint(
             id=model.id,
             team=model.team,
             position=model.position,

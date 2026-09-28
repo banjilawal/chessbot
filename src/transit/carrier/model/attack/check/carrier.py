@@ -1,7 +1,7 @@
-# src/transit/carrier/model/attack/check/carrier.py
+# src/transit/carrier/model/encounter/check/carrier.py
 
 """
-Module: transit.carrier.model.attack.check.carrier
+Module: transit.carrier.model.encounter.check.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import EncounterWarning, CheckAttackWarningBlueprint
-from transit import AttackCarrier
+from domain import EncounterWarning, CheckEncounterWarningBlueprint
+from transit import EncounterCarrier
 
 
-class CheckWarningCarrier(AttackCarrier[EncounterWarning]):
+class CheckWarningCarrier(EncounterCarrier[EncounterWarning]):
     """
     Role:
         - Boundary Carrier Interface
 
     Responsibilities:
-        1.  Transport a hydrated CheckAttackWarning or its Blueprint across
+        1.  Transport a hydrated CheckEncounterWarning or its Blueprint across
             processing boundaries.
 
     Attributes:
@@ -30,31 +30,31 @@ class CheckWarningCarrier(AttackCarrier[EncounterWarning]):
         is_over_capacity: bool
         is_model_carrier: bool
         is_blueprint_carrier: bool
-        entity: [Attack|CheckAttackWarningBlueprint]
+        entity: [Encounter|CheckEncounterWarningBlueprint]
 
     Provides:
-        -   def extract_blueprint() -> Optional[CheckAttackWarningBlueprint]
+        -   def extract_blueprint() -> Optional[CheckEncounterWarningBlueprint]
 
     Super Class:
-        AttackCarrier
+        EncounterCarrier
     """
     
     def __init__(
             self,
             model: Optional[EncounterWarning] | None = None,
-            blueprint: Optional[CheckAttackWarningBlueprint] | None = None,
+            blueprint: Optional[CheckEncounterWarningBlueprint] | None = None,
     ):
         """
         Args:
-            model: Optional[CheckAttackWarning]
-            blueprint: Optional[CheckAttackWarningBlueprint]
+            model: Optional[CheckEncounterWarning]
+            blueprint: Optional[CheckEncounterWarningBlueprint]
         """
         super().__init__()
         self._model = model
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> Optional[EncounterWarning | CheckAttackWarningBlueprint]:
+    def entity(self) -> Optional[EncounterWarning | CheckEncounterWarningBlueprint]:
         if self.is_empty:
             return None
         if self.has_model:
@@ -73,7 +73,7 @@ class CheckWarningCarrier(AttackCarrier[EncounterWarning]):
     def is_carrying_blueprint(self) -> bool:
         return (
                 not self.has_model and
-                isinstance(self._blueprint, CheckAttackWarningBlueprint)
+                isinstance(self._blueprint, CheckEncounterWarningBlueprint)
         )
     
     @property
@@ -88,12 +88,12 @@ class CheckWarningCarrier(AttackCarrier[EncounterWarning]):
     def is_over_capacity(self) -> bool:
         return self.size > 1
     
-    def extract_blueprint(self) -> Optional[CheckAttackWarningBlueprint]:
+    def extract_blueprint(self) -> Optional[CheckEncounterWarningBlueprint]:
         if self.is_empty: return None
         if self.is_carrying_blueprint: return self._blueprint
         
         model = cast(EncounterWarning, self._model)
-        return CheckAttackWarningBlueprint(
+        return CheckEncounterWarningBlueprint(
             id=model.id,
             team=model.team,
             position=model.position,

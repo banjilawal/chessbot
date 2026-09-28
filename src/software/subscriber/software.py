@@ -9,7 +9,7 @@ version: 0.0.2
 
 from typing import List, Optional
 
-from domain import SoftwareLicense
+from software import SoftwareLicense
 
 
 class Subscriber:

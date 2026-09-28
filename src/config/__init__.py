@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== CONFIG PACKAGE ===========#
 
 # Packages
+from .default import *
 from .property import *
 from .setting import *
 

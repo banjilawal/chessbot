@@ -1,7 +1,7 @@
-# src/transit/carrier/model/attack/combatant/carrier.py
+# src/transit/carrier/model/encounter/combatant/carrier.py
 
 """
-Module: transit.carrier.model.attack.combatant.carrier
+Module: transit.carrier.model.encounter.combatant.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import KillEncounter, CombatantAttackBlueprint
-from transit import AttackCarrier
+from domain import KillEncounter, CombatantEncounterBlueprint
+from transit import EncounterCarrier
 
 
-class CombatantAttackCarrier(AttackCarrier[KillEncounter]):
+class CombatantEncounterCarrier(EncounterCarrier[KillEncounter]):
     """
     Role:
         - Boundary Carrier Interface
 
     Responsibilities:
-        1.  Transport a hydrated CombatantAttack or its Blueprint across
+        1.  Transport a hydrated CombatantEncounter or its Blueprint across
             processing boundaries.
 
     Attributes:
@@ -30,31 +30,31 @@ class CombatantAttackCarrier(AttackCarrier[KillEncounter]):
         is_over_capacity: bool
         is_model_carrier: bool
         is_blueprint_carrier: bool
-        entity: [CombatantAttack | CombatantAttackBlueprint]
+        entity: [CombatantEncounter | CombatantEncounterBlueprint]
 
     Provides:
-        -   def extract_blueprint() -> Optional[CombatantAttackBlueprint]
+        -   def extract_blueprint() -> Optional[CombatantEncounterBlueprint]
 
     Super Class:
-        AttackCarrier
+        EncounterCarrier
     """
     
     def __init__(
             self,
             model: Optional[KillEncounter] | None = None,
-            blueprint: Optional[CombatantAttackBlueprint] | None = None,
+            blueprint: Optional[CombatantEncounterBlueprint] | None = None,
     ):
         """
         Args:
-            model: Optional[CombatantAttack]
-            blueprint: Optional[CombatantAttackBlueprint]
+            model: Optional[CombatantEncounter]
+            blueprint: Optional[CombatantEncounterBlueprint]
         """
         super().__init__()
         self._model = model
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> Optional[KillEncounter | CombatantAttackBlueprint]:
+    def entity(self) -> Optional[KillEncounter | CombatantEncounterBlueprint]:
         if self.is_empty:
             return None
         if self.has_model:
@@ -73,7 +73,7 @@ class CombatantAttackCarrier(AttackCarrier[KillEncounter]):
     def is_carrying_blueprint(self) -> bool:
         return (
                 not self.has_model and
-                isinstance(self._blueprint, CombatantAttackBlueprint)
+                isinstance(self._blueprint, CombatantEncounterBlueprint)
         )
     
     @property
@@ -88,12 +88,12 @@ class CombatantAttackCarrier(AttackCarrier[KillEncounter]):
     def is_over_capacity(self) -> bool:
         return self.size > 1
     
-    def extract_blueprint(self) -> Optional[CombatantAttackBlueprint]:
+    def extract_blueprint(self) -> Optional[CombatantEncounterBlueprint]:
         if self.is_empty: return None
         if self.is_carrying_blueprint: return self._blueprint
         
         model = cast(KillEncounter, self._model)
-        return CombatantAttackBlueprint(
+        return CombatantEncounterBlueprint(
             id=model.id,
             team=model.team,
             position=model.position,

@@ -1,7 +1,7 @@
-# src/transit/carrier/model/attack/carrier.py
+# src/transit/carrier/model/encounter/carrier.py
 
 """
-Module: transit.carrier.model.attack.carrier
+Module: transit.carrier.model.encounter.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,18 +12,18 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar
 
-from domain import Encounter, AttackBlueprint
+from domain import Encounter, EncounterBlueprint
 from transit import ModelCarrier
 
 T = TypeVar("T", bound="Encounter")
 
-class AttackCarrier(ModelCarrier[T], Generic[T]):
+class EncounterCarrier(ModelCarrier[T], Generic[T]):
     """
     Role:
         - Boundary Carrier Interface
 
     Responsibilities:
-        1.  Transport a hydrated Attack or its Blueprint across processing boundaries.
+        1.  Transport a hydrated Encounter or its Blueprint across boundaries.
 
     Attributes:
         size: int
@@ -31,33 +31,33 @@ class AttackCarrier(ModelCarrier[T], Generic[T]):
         is_over_capacity: bool
         is_model_carrier: bool
         is_blueprint_carrier: bool
-        entity: [Attack|AttackBlueprint]
+        entity: [Encounter|EncounterBlueprint]
 
     Provides:
-        -   def extract_blueprint() -> Optional[AttackBlueprint]
+        -   def extract_blueprint() -> Optional[EncounterBlueprint]
 
     Super Class:
         ModelCarrier
     """
     _model: Optional[T]
-    _blueprint: Optional[AttackBlueprint]
+    _blueprint: Optional[EncounterBlueprint]
 
     def __init__(
             self,
             model: Optional[Encounter] | None = None,
-            blueprint: Optional[AttackBlueprint] | None = None,
+            blueprint: Optional[EncounterBlueprint] | None = None,
     ):
         """
         Args:
-            model: Optional[Attack]
-            blueprint: Optional[AttackBlueprint]
+            model: Optional[Encounter]
+            blueprint: Optional[EncounterBlueprint]
         """
         super().__init__()
         self._model = model
         self._blueprint = blueprint
 
     @property
-    def entity(self) -> Optional[Encounter | AttackBlueprint]:
+    def entity(self) -> Optional[Encounter | EncounterBlueprint]:
         if self.is_empty:
             return None
         if self.has_model:
@@ -76,7 +76,7 @@ class AttackCarrier(ModelCarrier[T], Generic[T]):
     def is_carrying_blueprint(self) -> bool:
         return (
                 not self.has_model and
-                isinstance(self._blueprint, AttackBlueprint)
+                isinstance(self._blueprint, EncounterBlueprint)
         )
 
     @property
@@ -92,31 +92,31 @@ class AttackCarrier(ModelCarrier[T], Generic[T]):
         return self.size > 1
 
     @abstractmethod
-    def extract_blueprint(self) -> Optional[AttackBlueprint]:
+    def extract_blueprint(self) -> Optional[EncounterBlueprint]:
         pass
     
     @property
-    def is_king_attack_carrier(self) -> bool:
+    def is_king_encounter_carrier(self) -> bool:
         blueprint = self.extract_blueprint()
         if blueprint is None:
             return False
-        return blueprint.is_king_attack_blueprint
+        return blueprint.is_king_encounter_blueprint
     
     @property
-    def is_pawn_attack_carrier(self) -> bool:
+    def is_pawn_encounter_carrier(self) -> bool:
         blueprint = self.extract_blueprint()
         if blueprint is None:
             return False
-        return blueprint.is_pawn_attack_blueprint
+        return blueprint.is_pawn_encounter_blueprint
     
     @property
-    def is_combatant_attack_carrier(self) -> bool:
+    def is_combatant_encounter_carrier(self) -> bool:
         blueprint = self.extract_blueprint()
         if blueprint is None:
             return False
         return (
-                not self.is_king_attack_carrier and
-                not self.is_pawn_attack_carrier
+                not self.is_king_encounter_carrier and
+                not self.is_pawn_encounter_carrier
         )
 
 
