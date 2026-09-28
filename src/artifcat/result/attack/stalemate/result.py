@@ -1,7 +1,7 @@
-# src/artifact/result/play/stalemate/result.py
+# src/artifact/result/attack/stalemate/result.py
 
 """
-Module: artfifact.result.play.stalemate.result
+Module: artfifact.result.attack.stalemate.result
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,47 +11,47 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import PlayResult, PlayState
-from domain import StalemateOutcome
+from artifcat import AttackResult, AttackState
+from domain import StalemateEncounter
 
 
-class StalemateResult(PlayResult[StalemateOutcome]):
+class StalemateResult(AttackResult[StalemateEncounter]):
     """
     Role:
         - Data Transport
         - Error Transport
 
     Responsibilities:
-        1.  Contains the outcome of a play transaction.
+        1.  Contains the outcome of a attack transaction.
 
     Attributes:
         exception: Optional[Exception]
-        payload: Optional[StalemateOutcome]
-        state: playState
+        payload: Optional[StalemateEncounter]
+        state: attackState
         
         is_timed_out: bool
         is_success: bool
         is_failure: bool
 
     Provides:
-        -   def success(payload: StalemateOutcome) -> StalemateResult
+        -   def success(payload: StalemateEncounter) -> StalemateResult
         -   def failure(exception: Exception) -> StalemateResult
         -   def timed_out(exception: Exception) -> StalemateResult:
 
     Super Class:
-        PlayResult
+        AttackResult
     """
     
     def __init__(
             self,
-            state: PlayState,
-            payload: Optional[StalemateOutcome] = None,
+            state: AttackState,
+            payload: Optional[StalemateEncounter] = None,
             exception: Optional[Exception] = None,
     ):
         """
         Args:
-            state: playState
-            payload: Optional[StalemateOutcome]
+            state: attackState
+            payload: Optional[StalemateEncounter]
             exception: Optional[Exception]
         """
         super().__init__(
@@ -59,14 +59,14 @@ class StalemateResult(PlayResult[StalemateOutcome]):
             payload=payload,
             exception=exception,
         )
-        """INTERNAL: Use play methods instead of direct constructor."""
+        """INTERNAL: Use attack methods instead of direct constructor."""
     
     @property
-    def payload(self) -> Optional[StalemateOutcome]:
+    def payload(self) -> Optional[StalemateEncounter]:
         return cast(T, super().payload)
     
     @property
-    def state(self) -> PlayState:
+    def state(self) -> AttackState:
         return self._state
         
     @property
@@ -78,8 +78,8 @@ class StalemateResult(PlayResult[StalemateOutcome]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state ==  PlayState.FAILURE or
-                self._state ==  PlayState.TIMED_OUT
+                self._state ==  AttackState.FAILURE or
+                self._state ==  AttackState.TIMED_OUT
         )
     
     @property
@@ -87,26 +87,26 @@ class StalemateResult(PlayResult[StalemateOutcome]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state ==  PlayState.TIMED_OUT
+                self._state ==  AttackState.TIMED_OUT
         )
     
     @classmethod
     def success(cls, payload: T) -> StalemateResult:
         return cls(
             payload=payload,
-            state=PlayState.SUCCESS,
+            state=AttackState.SUCCESS,
         )
     
     @classmethod
     def failure(cls, exception: Exception) -> StalemateResult:
         return cls(
             exception=exception,
-            state=PlayState.FAILURE,
+            state=AttackState.FAILURE,
         )
     
     @classmethod
     def timed_out(cls, exception: Exception) -> StalemateResult:
         return cls(
             exception=exception,
-            state=PlayState.TIMED_OUT,
+            state=AttackState.TIMED_OUT,
         )
