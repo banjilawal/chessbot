@@ -107,6 +107,26 @@ class Game(StateModel):
     def binder_id(self) -> int:
         return self._binder.id
     
+    @property
+    def is_ready(self) -> bool:
+        return self._state == GameState.READY
+    
+    @property
+    def is_not_ready(self) -> bool:
+        return not self.is_ready
+    
+    @property
+    def is_running(self) -> bool:
+        return self._state == GameState.STARTED
+    
+    @property
+    def is_finished(self) -> bool:
+        return (
+                self._state == GameState.WON or
+                self._state == GameState.TIED or
+                self._state == GameState.CANCELLED
+        )
+    
     def __eq__(self, other) -> bool:
         if other is self:
             return True

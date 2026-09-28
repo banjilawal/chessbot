@@ -30,8 +30,8 @@ class GameState(Enum):
     NOT_READY = auto(),
     READY = auto(),
     STARTED = auto(),
-    GAME_WON = auto(),
-    GAME_TIED = auto(),
-    GAME_CANCELLED = auto(),
+    WON = auto(),
+    TIED = auto(),
+    CANCELLED = auto(),
     
     
