@@ -42,6 +42,8 @@ class Game(StateModel):
     _result: Optional[GameResult]
     _binder: GamePlayerColorBinder
     _temp_binder_id: int
+    _checkmate: Optional[CheckmateAttack]
+    _tie_record: Optional[SquareRegister]
     
     def __init__(
             self,
@@ -50,8 +52,6 @@ class Game(StateModel):
             white_player: Player,
             black_player: Player,
             binder_id: Optional[int] | None = None,
-            state: Optional[GameState] | None = None,
-            result: Optional[GameResult] | None = None,
     ):
         """
         Args:
@@ -65,19 +65,18 @@ class Game(StateModel):
         """
         super().__init__(id=id)
         self._arena = arena
-        self._result = result
-        self._state = state or GameState.NEW
         self._temp_binder_id = (
                 binder_id or
                 IdFactory.next_id(class_name="GamePlayerColorBinder")
         )
-        
         self._binder = GamePlayerColorBinder(
             primary=self,
             id=self._temp_binder_id,
             white_player=white_player,
             black_player=black_player,
         )
+        self._checkmate = None
+        self._tie_record = None
     
     @property
     def arena(self) -> Arena:
@@ -120,11 +119,39 @@ class Game(StateModel):
         return self._state == GameState.STARTED
     
     @property
+    def is_not_running(self) -> bool:
+        return self.is_finished or self.is_not_ready
+    
+    @property
+    def is_won(self) -> bool:
+        return (
+                self._checkmate is not None and
+                self._tie_record is None and
+                self._state == GameState.WON
+        )
+    
+    @property
+    def is_tied(self) -> bool:
+        return (
+            self._checkmate is None and
+            self._tie_record is not None and
+            self._state == GameState.TIED
+        )
+    
+    @property
+    def is_cancelled(self) -> bool:
+        return (
+            self._checkmate is None and
+            self._tie_record is None and
+            self._state == GameState.CANCELLED
+        )
+    
+    @property
     def is_finished(self) -> bool:
         return (
-                self._state == GameState.WON or
-                self._state == GameState.TIED or
-                self._state == GameState.CANCELLED
+                self.is_won or
+                self.is_tied or
+                self.is_cancelled
         )
     
     def __eq__(self, other) -> bool:
