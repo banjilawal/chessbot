@@ -11,6 +11,7 @@ from enum import Enum, auto
 
 class MethodResultType(Enum):
     ANALYSIS_RESULT = auto(),
+    ATTACK_RESULT = auto(),
     BUILD_RESULT = auto(),
     COMPUTATION_RESULT = auto(),
     DELETION_RESULT = auto(),

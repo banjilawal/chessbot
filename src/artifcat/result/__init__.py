@@ -11,7 +11,8 @@ version: 0.0.2
 
 # Packages
 from .analysis import *
-from .build import *
+from .attack import *
+from .builder import *
 from .computation import *
 from .crud import *
 from .event import *

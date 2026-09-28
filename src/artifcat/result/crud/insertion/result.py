@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import InsertionState
+from artifcat import CrudResult, InsertionState
 
 
 class InsertionResult(CrudResult[bool]):
