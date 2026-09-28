@@ -13,9 +13,9 @@ from abc import ABC
 from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import PlayState, Result
-from domain import Encounter
+from domain import GameOutcome
 
-T = TypeVar("T", bound="Encounter")
+T = TypeVar("T", bound="GameOutcome")
 
 
 class PlayResult(Result[T], ABC, Generic[T]):

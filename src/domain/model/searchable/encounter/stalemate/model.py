@@ -1,7 +1,7 @@
-# src/domain/model/searchable/encounter/mate/model.py.py
+# src/domain/model/searchable/encounter/stalemate/model.py.py
 
 """
-Module: domain.model.searchable.encounter.mate.model
+Module: domain.model.searchable.encounter.stalemate.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,10 +12,10 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import KingToken, Encounter, Maneuver, Square, Token
+from domain import KingToken, Encounter, Maneuver, PlayerColorBinder, Square, Token
 
 
-class CheckmateEncounter(Encounter):
+class StalemateEncounter(Encounter):
     """
     Role:
         - Model
@@ -36,13 +36,14 @@ class CheckmateEncounter(Encounter):
     Super Class:
         Encounter
     """
+    _counter_maneuver: Maneuver
 
     
     def __init__(
             self,
             id: int,
-            victim: KingToken,
             maneuver: Maneuver,
+            counter_maneuver: Maneuver,
             location: Optional[Square] | None = None,
             attacker_reward: Optional[int] | None = None,
     ):
@@ -56,30 +57,22 @@ class CheckmateEncounter(Encounter):
         """
         super().__init__(
             id=id,
-            victim=victim,
+            victim=counter_maneuver.traveler,
             maneuver=maneuver,
             location=location,
             attacker_reward=attacker_reward,
         )
         
     @property
-    def looser(self) -> KingToken:
-        return cast(KingToken, super().victim)
-    
-    @property
-    def victim(self) -> KingToken:
-        return self.looser
-    
-    @property
-    def victor(self) -> Token:
-        return self.initiater
+    def players(self) -> PlayerColorBinder:
+        return self.maneuver.traveler.team.board.arena.player_binder
 
     def __eq__(self, other) -> bool:
         if other is None:
             return False
         if other == self:
             return True
-        if isinstance(other, CheckmateEncounter):
+        if isinstance(other, StalemateEncounter):
             return self.id == other.id
         return False
     

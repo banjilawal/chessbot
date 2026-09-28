@@ -5,38 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/artifcat/result/play/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/result/play/kill/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/result/play/kill/result.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/result/play/result.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/result/play/state.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/result/play/warning/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/result/play/warning/result.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/result/play/win/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/result/play/win/result.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/model/outcome/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/model/outcome/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/model/outcome/offset/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/model/outcome/offset/king/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/model/outcome/offset/king/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/model/outcome/offset/knight/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/model/outcome/offset/knight/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/model/outcome/offset/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/model/outcome/offset/pawn/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/model/outcome/offset/pawn/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/model/outcome/traversal/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/model/outcome/traversal/bishop/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/model/outcome/traversal/bishop/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/model/outcome/traversal/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/model/outcome/traversal/queen/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/model/outcome/traversal/queen/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/model/outcome/traversal/rook/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/model/outcome/traversal/rook/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/game/checkmate/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/result/play/stalemate/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/model/searchable/encounter/stalemate/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/model/searchable/encounter/stalemate/model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/stalemate/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/stalemate/outcome.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/result/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/result/attack/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/attack/state.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/play/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/play/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/play/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/play/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/play/warning/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/play/warning/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/play/stalemate/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/play/win/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/play/win/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/outcome/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/outcome/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/outcome/offset/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/outcome/offset/king/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/outcome/offset/king/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/outcome/offset/knight/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/outcome/offset/knight/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/outcome/offset/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/outcome/offset/pawn/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/outcome/offset/pawn/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/outcome/win/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/outcome/win/model.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/encounter/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/encounter/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/encounter/mate/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/encounter/checkmate/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/encounter/mate/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/encounter/checkmate/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/outcome.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/outcome.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/game/win/outcome.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/win/outcome.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,61 +74,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.670743188731177E-21" />
-      <entry key="MS500" value="6.9916863890366E-5" />
-      <entry key="S2" value="0.0914419512940204" />
-      <entry key="S5" value="0.38411228201868636" />
-      <entry key="S10" value="0.6197679260738731" />
-      <entry key="S30" value="0.8531140719256314" />
-      <entry key="S60" value="0.9479959610538623" />
-      <entry key="M2" value="1.2058799423984432" />
-      <entry key="M5" value="4.525183526403976" />
-      <entry key="M10" value="21.19611315072578" />
-      <entry key="M15" value="48.79412083005517" />
-      <entry key="M30" value="148.51798108698028" />
-      <entry key="H1" value="304.00498968877514" />
-      <entry key="H2" value="518.4750870083467" />
-      <entry key="H4" value="995.788284530906" />
-      <entry key="D1" value="7639.568723617114" />
-      <entry key="W1" value="32536.795394827714" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0000000001249356" />
+      <entry key="S10" value="1.000015807303736" />
+      <entry key="S30" value="1.0398415615355012" />
+      <entry key="S60" value="1.2867935933098038" />
+      <entry key="M2" value="2.001680432741021" />
+      <entry key="M5" value="5.777471424830089" />
+      <entry key="M10" value="11.3483861357689" />
+      <entry key="M15" value="15.963569529470425" />
+      <entry key="M30" value="41.68171264883285" />
+      <entry key="H1" value="141.42942120914452" />
+      <entry key="H2" value="363.4022498937137" />
+      <entry key="H4" value="837.6909970986225" />
+      <entry key="D1" value="7369.516857777585" />
+      <entry key="W1" value="32445.808961081766" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0000001781999168" />
-      <entry key="MS500" value="1.0446870308238028" />
-      <entry key="S2" value="1.459775023075829" />
-      <entry key="S5" value="1.7328551598286859" />
-      <entry key="S10" value="1.8560695998741492" />
-      <entry key="S30" value="1.9495176128548906" />
-      <entry key="S60" value="1.974433994083871" />
-      <entry key="M2" value="1.9891623260296338" />
-      <entry key="M5" value="2.1365138563924275" />
-      <entry key="M10" value="2.8168057144869936" />
-      <entry key="M15" value="3.891502480170806" />
-      <entry key="M30" value="8.384824875706329" />
-      <entry key="H1" value="17.02148162164979" />
-      <entry key="H2" value="30.73155118589139" />
-      <entry key="H4" value="59.660397697062315" />
-      <entry key="D1" value="328.3189246616257" />
-      <entry key="W1" value="1353.7748701952817" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="9.154574875678046E-100" />
+      <entry key="S5" value="3.984431671607893E-40" />
+      <entry key="S10" value="3.7769092733256554E-20" />
+      <entry key="S30" value="1.0516830219810056E-6" />
+      <entry key="S60" value="0.002958304625899131" />
+      <entry key="M2" value="0.18735056825833277" />
+      <entry key="M5" value="2.5743950601183134" />
+      <entry key="M10" value="6.374589489498231" />
+      <entry key="M15" value="8.798293024800929" />
+      <entry key="M30" value="14.006120074101208" />
+      <entry key="H1" value="23.907891305559456" />
+      <entry key="H2" value="41.257509205448265" />
+      <entry key="H4" value="72.69375248409084" />
+      <entry key="D1" value="345.4441767593745" />
+      <entry key="W1" value="1379.7090887928634" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.003594483010253417" />
-      <entry key="MS500" value="0.32461745735843717" />
-      <entry key="S2" value="0.9293432918837576" />
-      <entry key="S5" value="1.6389120016794703" />
-      <entry key="S10" value="2.163799709128304" />
-      <entry key="S30" value="2.6766808672923745" />
-      <entry key="S60" value="2.856252283690082" />
-      <entry key="M2" value="3.1608639226732214" />
-      <entry key="M5" value="6.644762588424176" />
-      <entry key="M10" value="23.996755114907586" />
-      <entry key="M15" value="52.66469792326259" />
-      <entry key="M30" value="156.8671402928678" />
-      <entry key="H1" value="320.98173790431133" />
-      <entry key="H2" value="549.1637078271817" />
-      <entry key="H4" value="1055.4075355320024" />
-      <entry key="D1" value="7967.845624769855" />
-      <entry key="W1" value="33890.54637221948" />
+      <entry key="MS100" value="0.9592641193252643" />
+      <entry key="MS500" value="0.9917167307382933" />
+      <entry key="S2" value="0.9979227189990506" />
+      <entry key="S5" value="0.9991685693354703" />
+      <entry key="S10" value="0.9995998085992183" />
+      <entry key="S30" value="1.0395368841354677" />
+      <entry key="S60" value="1.28874995452362" />
+      <entry key="M2" value="2.1777795465852794" />
+      <entry key="M5" value="8.293298958705876" />
+      <entry key="M10" value="17.64999344684552" />
+      <entry key="M15" value="24.694545938205867" />
+      <entry key="M30" value="55.63420242341986" />
+      <entry key="H1" value="165.28917453366714" />
+      <entry key="H2" value="404.6141807076453" />
+      <entry key="H4" value="910.34149635587" />
+      <entry key="D1" value="7714.918640957604" />
+      <entry key="W1" value="33825.49394296864" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -165,7 +161,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/domain/model",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/domain/model/searchable/encounter",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -179,11 +175,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/domain/model" />
-      <recent name="$PROJECT_DIR$/src/artifcat/result" />
-      <recent name="$PROJECT_DIR$/src/artifcat/result/attack" />
-      <recent name="$PROJECT_DIR$/src/artifcat/result/attack/kill" />
       <recent name="$PROJECT_DIR$/src/domain/model/searchable/encounter" />
+      <recent name="$PROJECT_DIR$/src/game" />
+      <recent name="$PROJECT_DIR$/src/artifcat/result/play" />
+      <recent name="$PROJECT_DIR$/src/game/win" />
+      <recent name="$PROJECT_DIR$/src/domain/model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/domain/model/searchable" />
@@ -847,7 +843,7 @@
       <workItem from="1788969937518" duration="171978000" />
       <workItem from="1790001362413" duration="735000" />
       <workItem from="1790063398459" duration="258692000" />
-      <workItem from="1790480915263" duration="76329000" />
+      <workItem from="1790480915263" duration="80286000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1945,7 +1941,7 @@
           <option name="timeStamp" value="415" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/domain/model/searchable/encounter/mate/model.py</url>
+          <url>file://$PROJECT_DIR$/src/domain/model/searchable/encounter/checkmate/model.py</url>
           <line>12</line>
           <option name="timeStamp" value="416" />
         </line-breakpoint>
@@ -2229,6 +2225,11 @@
           <url>file://$PROJECT_DIR$/src/artifcat/result/play/win/result.py</url>
           <line>11</line>
           <option name="timeStamp" value="491" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/domain/model/outcome/__init__.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="492" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

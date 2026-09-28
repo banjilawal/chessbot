@@ -14,7 +14,7 @@ from domain import CheckmateEncounter, Game, Player
 from game import GameOutcome
 
 
-class GameWin(GameOutcome):
+class Stalemate(GameOutcome):
     """
     Role:
 

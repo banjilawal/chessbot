@@ -1,7 +1,7 @@
-# src/artifact/result/play/warning/result.py
+# src/artifact/result/play/stalemate/result.py
 
 """
-Module: artfifact.result.play.warning.result
+Module: artfifact.result.play.stalemate.result
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import PlayResult, PlayState
-from domain import EncounterWarning
+from domain import StalemateOutcome
 
 
-class WarningResult(PlayResult[EncounterWarning]):
+class StalemateResult(PlayResult[StalemateOutcome]):
     """
     Role:
         - Data Transport
@@ -26,7 +26,7 @@ class WarningResult(PlayResult[EncounterWarning]):
 
     Attributes:
         exception: Optional[Exception]
-        payload: Optional[EncounterWarning]
+        payload: Optional[StalemateOutcome]
         state: playState
         
         is_timed_out: bool
@@ -34,9 +34,9 @@ class WarningResult(PlayResult[EncounterWarning]):
         is_failure: bool
 
     Provides:
-        -   def success(payload: EncounterWarning) -> WarningResult
-        -   def failure(exception: Exception) -> WarningResult
-        -   def timed_out(exception: Exception) -> WarningResult:
+        -   def success(payload: StalemateOutcome) -> StalemateResult
+        -   def failure(exception: Exception) -> StalemateResult
+        -   def timed_out(exception: Exception) -> StalemateResult:
 
     Super Class:
         PlayResult
@@ -45,13 +45,13 @@ class WarningResult(PlayResult[EncounterWarning]):
     def __init__(
             self,
             state: PlayState,
-            payload: Optional[EncounterWarning] = None,
+            payload: Optional[StalemateOutcome] = None,
             exception: Optional[Exception] = None,
     ):
         """
         Args:
             state: playState
-            payload: Optional[EncounterWarning]
+            payload: Optional[StalemateOutcome]
             exception: Optional[Exception]
         """
         super().__init__(
@@ -62,7 +62,7 @@ class WarningResult(PlayResult[EncounterWarning]):
         """INTERNAL: Use play methods instead of direct constructor."""
     
     @property
-    def payload(self) -> Optional[EncounterWarning]:
+    def payload(self) -> Optional[StalemateOutcome]:
         return cast(T, super().payload)
     
     @property
@@ -91,21 +91,21 @@ class WarningResult(PlayResult[EncounterWarning]):
         )
     
     @classmethod
-    def success(cls, payload: T) -> WarningResult:
+    def success(cls, payload: T) -> StalemateResult:
         return cls(
             payload=payload,
             state=PlayState.SUCCESS,
         )
     
     @classmethod
-    def failure(cls, exception: Exception) -> WarningResult:
+    def failure(cls, exception: Exception) -> StalemateResult:
         return cls(
             exception=exception,
             state=PlayState.FAILURE,
         )
     
     @classmethod
-    def timed_out(cls, exception: Exception) -> WarningResult:
+    def timed_out(cls, exception: Exception) -> StalemateResult:
         return cls(
             exception=exception,
             state=PlayState.TIMED_OUT,

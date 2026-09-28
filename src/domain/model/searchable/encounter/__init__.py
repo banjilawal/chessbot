@@ -10,9 +10,11 @@ version: 0.0.2
 # =========== DOMAIN.MODEL.SEARCHABLE.ENCOUNTER PACKAGE ===========#
 
 # Packages
-from .warning import *
-from .mate import *
+from .checkmate import *
 from .kill import *
+from .stalemate import *
+from .warning import *
+
 
 # Modules
 from .model import Encounter

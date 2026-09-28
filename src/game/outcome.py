@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
+from abc import ABC, abstractmethod
 
 from domain import Game
 
@@ -24,24 +24,22 @@ class GameOutcome(ABC):
 
     Attributes:
         id: int
-        game: Game
 
     Provides:
 
     Super Class:
     """
     _id: int
-    _game: Game
     
-    def __init__(self, id: int, game: Game):
+    def __init__(self, id: int):
         self._id = id
-        self._game = game
         
     @property
     def id(self) -> int:
         return self._id
     
     @property
+    @abstractmethod
     def game(self) -> Game:
-        return self._game
+        pass
     

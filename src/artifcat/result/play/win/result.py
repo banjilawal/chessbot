@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import PlayResult, PlayState
-from domain import WinEncounter
+from domain import WinOutcome
 
 
-class WinResult(PlayResult[WinEncounter]):
+class WinResult(PlayResult[WinOutcome]):
     """
     Role:
         - Data Transport
@@ -26,7 +26,7 @@ class WinResult(PlayResult[WinEncounter]):
 
     Attributes:
         exception: Optional[Exception]
-        payload: Optional[WinEncounter]
+        payload: Optional[WinOutcome]
         state: playState
         
         is_timed_out: bool
@@ -34,7 +34,7 @@ class WinResult(PlayResult[WinEncounter]):
         is_failure: bool
 
     Provides:
-        -   def success(payload: WinEncounter) -> WinResult
+        -   def success(payload: WinOutcome) -> WinResult
         -   def failure(exception: Exception) -> WinResult
         -   def timed_out(exception: Exception) -> WinResult:
 
@@ -45,13 +45,13 @@ class WinResult(PlayResult[WinEncounter]):
     def __init__(
             self,
             state: PlayState,
-            payload: Optional[WinEncounter] = None,
+            payload: Optional[WinOutcome] = None,
             exception: Optional[Exception] = None,
     ):
         """
         Args:
             state: playState
-            payload: Optional[WinEncounter]
+            payload: Optional[WinOutcome]
             exception: Optional[Exception]
         """
         super().__init__(
@@ -62,7 +62,7 @@ class WinResult(PlayResult[WinEncounter]):
         """INTERNAL: Use play methods instead of direct constructor."""
     
     @property
-    def payload(self) -> Optional[WinEncounter]:
+    def payload(self) -> Optional[WinOutcome]:
         return cast(T, super().payload)
     
     @property

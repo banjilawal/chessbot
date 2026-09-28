@@ -12,7 +12,6 @@ version: 0.0.2
 # Packages
 from .win import *
 from .kill import *
-from .warning import *
 
 # Modules
 from .result import PlayResult
