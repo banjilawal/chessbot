@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import AttackResult, AttackState
+from artifcat import AttackResult, ResultState
 from domain import StalemateEncounter
 
 
@@ -27,7 +27,7 @@ class StalemateResult(AttackResult[StalemateEncounter]):
     Attributes:
         exception: Optional[Exception]
         payload: Optional[StalemateEncounter]
-        state: attackState
+        state: resultState
         
         is_timed_out: bool
         is_success: bool
@@ -44,13 +44,13 @@ class StalemateResult(AttackResult[StalemateEncounter]):
     
     def __init__(
             self,
-            state: AttackState,
+            state: ResultState,
             payload: Optional[StalemateEncounter] = None,
             exception: Optional[Exception] = None,
     ):
         """
         Args:
-            state: attackState
+            state: resultState
             payload: Optional[StalemateEncounter]
             exception: Optional[Exception]
         """
@@ -66,7 +66,7 @@ class StalemateResult(AttackResult[StalemateEncounter]):
         return cast(T, super().payload)
     
     @property
-    def state(self) -> AttackState:
+    def state(self) -> ResultState:
         return self._state
         
     @property
@@ -78,8 +78,8 @@ class StalemateResult(AttackResult[StalemateEncounter]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state ==  AttackState.FAILURE or
-                self._state ==  AttackState.TIMED_OUT
+                self._state ==  ResultState.FAILURE or
+                self._state ==  ResultState.TIMED_OUT
         )
     
     @property
@@ -87,26 +87,26 @@ class StalemateResult(AttackResult[StalemateEncounter]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state ==  AttackState.TIMED_OUT
+                self._state ==  ResultState.TIMED_OUT
         )
     
     @classmethod
     def success(cls, payload: T) -> StalemateResult:
         return cls(
             payload=payload,
-            state=AttackState.SUCCESS,
+            state=ResultState.SUCCESS,
         )
     
     @classmethod
     def failure(cls, exception: Exception) -> StalemateResult:
         return cls(
             exception=exception,
-            state=AttackState.FAILURE,
+            state=ResultState.FAILURE,
         )
     
     @classmethod
     def timed_out(cls, exception: Exception) -> StalemateResult:
         return cls(
             exception=exception,
-            state=AttackState.TIMED_OUT,
+            state=ResultState.TIMED_OUT,
         )

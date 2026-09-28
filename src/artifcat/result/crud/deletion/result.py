@@ -27,7 +27,7 @@ class DeletionResult(CrudResult[T], Generic[T]):
 
     Attributes:
         exception: Optional[Exception]
-        state: validationState
+        state: resultState
         payload: Optional[T]
         is_timed_out: bool
         is_success: bool

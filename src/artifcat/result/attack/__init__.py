@@ -16,4 +16,4 @@ from .warning import *
 
 # Modules
 from .result import AttackResult
-from .state import AttackState
+from .state import ResultState

@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar, cast
 
-from artifcat import AttackState, Result
+from artifcat import ResultState, Result
 from domain import Encounter
 
 T = TypeVar("T", bound="Encounter")
@@ -30,7 +30,7 @@ class AttackResult(Result[T], ABC, Generic[T]):
     Attributes:
         exception: Optional[Exception]
         payload: Optional[T]
-        state: attackState
+        state: resultState
         
         is_timed_out: bool
         is_success: bool
@@ -44,17 +44,17 @@ class AttackResult(Result[T], ABC, Generic[T]):
     Super Class:
         Result
     """
-    _state: AttackState
+    _state: ResultState
     
     def __init__(
             self,
-            state: AttackState,
+            state: ResultState,
             payload: Optional[T] = None,
             exception: Optional[Exception] = None,
     ):
         """
         Args:
-            state: attackState
+            state: resultState
             payload: Optional[T]
             exception: Optional[Exception]
         """
@@ -70,7 +70,7 @@ class AttackResult(Result[T], ABC, Generic[T]):
         return cast(T, super().payload)
     
     @property
-    def state(self) -> AttackState:
+    def state(self) -> ResultState:
         return self._state
         
     @property
@@ -82,8 +82,8 @@ class AttackResult(Result[T], ABC, Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state ==  AttackState.FAILURE or
-                self._state ==  AttackState.TIMED_OUT
+                self._state ==  ResultState.FAILURE or
+                self._state ==  ResultState.TIMED_OUT
         )
     
     @property
@@ -91,26 +91,26 @@ class AttackResult(Result[T], ABC, Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state ==  AttackState.TIMED_OUT
+                self._state ==  ResultState.TIMED_OUT
         )
     
     @classmethod
     def success(cls, payload: T) -> AttackResult:
         return cls(
             payload=payload,
-            state=AttackState.SUCCESS,
+            state=ResultState.SUCCESS,
         )
     
     @classmethod
     def failure(cls, exception: Exception) -> AttackResult:
         return cls(
             exception=exception,
-            state=AttackState.FAILURE,
+            state=ResultState.FAILURE,
         )
     
     @classmethod
     def timed_out(cls, exception: Exception) -> AttackResult:
         return cls(
             exception=exception,
-            state=AttackState.TIMED_OUT,
+            state=ResultState.TIMED_OUT,
         )

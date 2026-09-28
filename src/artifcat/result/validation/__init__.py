@@ -11,7 +11,5 @@ version: 0.0.2
 
 # Packages
 
-
 # Modules
 from .result import ValidationResult
-from .state import ValidationState

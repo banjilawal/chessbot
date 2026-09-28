@@ -9,8 +9,8 @@ version: 1.0.0
 
 from typing import Optional
 
-from artifcat import CheckmateResult
-from domain import Arena, PlayerColorBinder, GameState, Player, StateModel
+from artifcat import CheckmateEncounter
+from domain import Arena, PlayerColorBinder, GameState, Player, StalemateEncounter, StateModel
 from game import GameResult
 
 
@@ -42,8 +42,8 @@ class Game(StateModel):
     _result: Optional[GameResult]
     _binder: PlayerColorBinder
     _temp_binder_id: int
-    _checkmate: Optional[CheckmateResult]
-    _tie_record: Optional[SquareRegister]
+    _checkmate: Optional[CheckmateEncounter]
+    _stalemate: Optional[StalemateEncounter]
     
     def __init__(
             self,
@@ -62,7 +62,7 @@ class Game(StateModel):
         super().__init__(id=id)
         self._arena = arena
         self._checkmate = None
-        self._tie_record = None
+        self._stalemate = None
         
         self._binder = PlayerColorBinder(
             white_player=white_player,
@@ -97,6 +97,8 @@ class Game(StateModel):
     @property
     def is_ready(self) -> bool:
         return (
+                self._checkmate is None and
+                self._stalemate is None and
                 self._state == GameState.READY and
                 self._arena.board.has_been_filled
         )
@@ -108,6 +110,8 @@ class Game(StateModel):
     @property
     def is_running(self) -> bool:
         return (
+                self._checkmate is None and
+                self._stalemate is None and
                 self._state == GameState.STARTED and
                 self._arena.opening_move_launched
         )
@@ -121,23 +125,23 @@ class Game(StateModel):
         return (
                 self._checkmate is not None and
                 self._checkmate.is_success and
-                self._tie_record is None and
+                self._stalemate is None and
                 self._state == GameState.WON
         )
     
     @property
-    def is_tied(self) -> bool:
+    def is_stalemated(self) -> bool:
         return (
             self._checkmate is None and
-            self._tie_record is not None and
-            self._state == GameState.TIED
+            self._stalemate is not None and
+            self._state == GameState.STALEMATE
         )
     
     @property
     def is_cancelled(self) -> bool:
         return (
             self._checkmate is None and
-            self._tie_record is None and
+            self._stalemate is None and
             self._state == GameState.CANCELLED
         )
     
@@ -145,7 +149,7 @@ class Game(StateModel):
     def is_finished(self) -> bool:
         return (
                 self.is_won or
-                self.is_tied or
+                self.is_stalemated or
                 self.is_cancelled
         )
     

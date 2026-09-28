@@ -1,9 +1,9 @@
-# src/artifact/result/validation/state.py
+# src/artifact/result/state.py
 
 """
-Module: artfifact.result.validation.state
+Module: artfifact.result.state
 Author: Banji Lawal
-Created: 2026-04-03
+Created: 2026-03-30
 version: 0.0.2
 """
 
@@ -12,7 +12,7 @@ from __future__ import annotations
 from enum import Enum, auto
 
 
-class ValidationState(Enum):
+class ResultState(Enum):
     SUCCESS = auto(),
     FAILURE = auto(),
     TIMED_OUT = auto(),

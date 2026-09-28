@@ -11,8 +11,7 @@ from __future__ import annotations
 
 from typing import Generic, Optional, TypeVar, cast
 
-from artifcat import BuildState, Result
-
+from artifcat import ResultState, Result
 
 T = TypeVar("T")
 
@@ -29,7 +28,7 @@ class BuildResult(Result[T], Generic[T]):
     Attributes:
         exception: Optional[Exception]
         payload: Optional[T]
-        state: buildState
+        state: resultState
         is_timed_out: bool
         is_success: bool
         is_failure: bool
@@ -42,17 +41,17 @@ class BuildResult(Result[T], Generic[T]):
     Super Class:
         Result
     """
-    _state: BuildState
+    _state: ResultState
     
     def __init__(
             self,
-            state: BuildState,
+            state: ResultState,
             payload: Optional[T] = None,
             exception: Optional[Exception] = None,
     ):
         """
         Args:
-            state: buildState
+            state: resultState
             payload: Optional[T]
             exception: Optional[Exception]
         """
@@ -68,9 +67,9 @@ class BuildResult(Result[T], Generic[T]):
         return cast(T, super().payload)
     
     @property
-    def state(self) -> BuildState:
+    def state(self) -> ResultState:
         return self._state
-        
+    
     @property
     def is_success(self) -> bool:
         return not self.is_failure
@@ -80,8 +79,8 @@ class BuildResult(Result[T], Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state ==  BuildState.FAILURE or
-                self._state ==  BuildState.TIMED_OUT
+                self._state == ResultState.FAILURE or
+                self._state == ResultState.TIMED_OUT
         )
     
     @property
@@ -89,26 +88,26 @@ class BuildResult(Result[T], Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state ==  BuildState.TIMED_OUT
+                self._state == ResultState.TIMED_OUT
         )
     
     @classmethod
     def success(cls, payload: T) -> BuildResult:
         return cls(
             payload=payload,
-            state=BuildState.SUCCESS,
+            state=ResultState.SUCCESS,
         )
     
     @classmethod
     def failure(cls, exception: Exception) -> BuildResult:
         return cls(
             exception=exception,
-            state=BuildState.FAILURE,
+            state=ResultState.FAILURE,
         )
     
     @classmethod
     def timed_out(cls, exception: Exception) -> BuildResult:
         return cls(
             exception=exception,
-            state=BuildState.TIMED_OUT,
+            state=ResultState.TIMED_OUT,
         )

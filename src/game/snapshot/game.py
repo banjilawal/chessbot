@@ -84,7 +84,7 @@ class Snapshot:
     @property
     def game_is_tied(self) -> bool:
         """Return True if the game is tied."""
-        return self.exception is None and self.winner is None and self._game_state == GameState.TIED
+        return self.exception is None and self.winner is None and self._game_state == GameState.STALEMATE
     
     @property
     def game_failed(self) -> bool:
@@ -104,7 +104,7 @@ class Snapshot:
     
     @classmethod
     def tied(cls, timestamp: int, arena: Arena) -> Snapshot:
-        return cls(timestamp=timestamp, arena=arena, game_state=GameState.TIED)
+        return cls(timestamp=timestamp, arena=arena, game_state=GameState.STALEMATE)
     
     @classmethod
     def errored(cls, timestamp: int, arena: Arena, exception: Exception) -> Snapshot:

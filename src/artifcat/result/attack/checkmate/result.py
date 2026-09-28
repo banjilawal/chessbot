@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import AttackResult, AttackState
+from artifcat import AttackResult, ResultState
 from domain import CheckmateEncounter
 
 
@@ -27,7 +27,7 @@ class CheckmateResult(AttackResult[CheckmateEncounter]):
     Attributes:
         exception: Optional[Exception]
         payload: Optional[CheckmateEncounter]
-        state: attackState
+        state: resultState
         
         is_timed_out: bool
         is_success: bool
@@ -44,13 +44,13 @@ class CheckmateResult(AttackResult[CheckmateEncounter]):
     
     def __init__(
             self,
-            state: AttackState,
+            state: ResultState,
             payload: Optional[CheckmateEncounter] = None,
             exception: Optional[Exception] = None,
     ):
         """
         Args:
-            state: attackState
+            state: resultState
             payload: Optional[CheckmateEncounter]
             exception: Optional[Exception]
         """
@@ -66,7 +66,7 @@ class CheckmateResult(AttackResult[CheckmateEncounter]):
         return cast(T, super().payload)
     
     @property
-    def state(self) -> AttackState:
+    def state(self) -> ResultState:
         return self._state
         
     @property
@@ -78,8 +78,8 @@ class CheckmateResult(AttackResult[CheckmateEncounter]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state ==  AttackState.FAILURE or
-                self._state ==  AttackState.TIMED_OUT
+                self._state ==  ResultState.FAILURE or
+                self._state ==  ResultState.TIMED_OUT
         )
     
     @property
@@ -87,26 +87,26 @@ class CheckmateResult(AttackResult[CheckmateEncounter]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state ==  AttackState.TIMED_OUT
+                self._state ==  ResultState.TIMED_OUT
         )
     
     @classmethod
     def success(cls, payload: T) -> CheckmateResult:
         return cls(
             payload=payload,
-            state=AttackState.SUCCESS,
+            state=ResultState.SUCCESS,
         )
     
     @classmethod
     def failure(cls, exception: Exception) -> CheckmateResult:
         return cls(
             exception=exception,
-            state=AttackState.FAILURE,
+            state=ResultState.FAILURE,
         )
     
     @classmethod
     def timed_out(cls, exception: Exception) -> CheckmateResult:
         return cls(
             exception=exception,
-            state=AttackState.TIMED_OUT,
+            state=ResultState.TIMED_OUT,
         )

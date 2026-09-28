@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Generic, Optional, TypeVar, cast
 
-from artifcat import ComputationState, Result
+from artifcat import ResultState, Result
 
 T = TypeVar("T")
 
@@ -26,7 +26,7 @@ class ComputationResult(Result[T], Generic[T]):
 
     Attributes:
         exception: Optional[Exception]
-        state: ComputationState
+        state: ResultState
         payload: Optional[T]
         is_timed_out: bool
         is_success: bool
@@ -40,18 +40,18 @@ class ComputationResult(Result[T], Generic[T]):
     Super Class:
         Result
     """
-    _state: ComputationState
+    _state: ResultState
     
     def __init__(
             self,
-            state: ComputationState,
+            state: ResultState,
             exception: Optional[Exception] = None,
             payload: Optional[T] = None,
     ):
         """
         Args:
             payload: Optional[T]
-            state: ComputationState
+            state: ResultState
             exception: Optional[Exception]
         """
         super().__init__(
@@ -66,7 +66,7 @@ class ComputationResult(Result[T], Generic[T]):
         return cast(T, super().payload)
         
     @property
-    def state(self) -> ComputationState:
+    def state(self) -> ResultState:
         return self._state
 
     @property
@@ -78,8 +78,8 @@ class ComputationResult(Result[T], Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state ==  ComputationState.FAILURE or
-                self._state ==  ComputationState.TIMED_OUT
+                self._state ==  ResultState.FAILURE or
+                self._state ==  ResultState.TIMED_OUT
         )
     
     @property
@@ -87,7 +87,7 @@ class ComputationResult(Result[T], Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state ==  ComputationState.TIMED_OUT
+                self._state ==  ResultState.TIMED_OUT
         )
     
     @classmethod
@@ -95,7 +95,7 @@ class ComputationResult(Result[T], Generic[T]):
         return cls(
             payload=payload,
             exception=None,
-            state=ComputationState.SUCCESS,
+            state=ResultState.SUCCESS,
         )
     
     @classmethod
@@ -103,7 +103,7 @@ class ComputationResult(Result[T], Generic[T]):
         return cls(
             payload=None,
             exception=exception,
-            state=ComputationState.FAILURE,
+            state=ResultState.FAILURE,
         )
     
     @classmethod
@@ -111,5 +111,5 @@ class ComputationResult(Result[T], Generic[T]):
         return cls(
             payload=None,
             exception=exception,
-            state=ComputationState.TIMED_OUT,
+            state=ResultState.TIMED_OUT,
         )

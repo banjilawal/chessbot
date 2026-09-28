@@ -11,7 +11,6 @@ from __future__ import annotations
 from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import Result
-from artifcat.validation import ValidationState
 
 T = TypeVar("T")
 
@@ -27,7 +26,7 @@ class ValidationResult(Result[T], Generic[T]):
 
     Attributes:
         exception: Optional[Exception]
-        state: validationState
+        state: resultState
         payload: Optional[T]
         is_timed_out: bool
         is_success: bool
@@ -41,17 +40,17 @@ class ValidationResult(Result[T], Generic[T]):
     Super Class:
         Result
     """
-    _state: ValidationState
+    _state: ResultState
     
     def __init__(
             self,
-            state: ValidationState,
+            state: ResultState,
             payload: Optional[T] = None,
             exception: Optional[Exception] = None,
     ):
         """
         Args:
-            state: validationState
+            state: resultState
             payload: Optional[T]
             exception: Optional[Exception]
         """
@@ -67,7 +66,7 @@ class ValidationResult(Result[T], Generic[T]):
         return cast(T, super().payload)
     
     @property
-    def state(self) -> ValidationState:
+    def state(self) -> ResultState:
         return self._state
     
     @property
@@ -75,7 +74,7 @@ class ValidationResult(Result[T], Generic[T]):
         return (
             self.exception is None and
             self.payload is not None and
-            self._state ==  ValidationState.SUCCESS
+            self._state ==  ResultState.SUCCESS
         )
     
     @property
@@ -83,8 +82,8 @@ class ValidationResult(Result[T], Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state ==  ValidationState.FAILURE or
-                self._state ==  ValidationState.TIMED_OUT
+                self._state ==  ResultState.FAILURE or
+                self._state ==  ResultState.TIMED_OUT
         )
     
     @property
@@ -92,28 +91,28 @@ class ValidationResult(Result[T], Generic[T]):
         return (
                 self.payload is None and
                 self.exception is not None and
-                self._state ==  ValidationState.TIMED_OUT
+                self._state ==  ResultState.TIMED_OUT
         )
     
     @classmethod
     def success(cls, payload: T) -> ValidationResult[T]:
         return cls(
             payload=payload,
-            state=ValidationState.SUCCESS,
+            state=ResultState.SUCCESS,
         )
     
     @classmethod
     def failure(cls, exception: Exception) -> ValidationResult[T]:
         return cls(
             exception=exception,
-            state=ValidationState.FAILURE,
+            state=ResultState.FAILURE,
         )
     
     @classmethod
     def timed_out(cls, exception: Exception) -> ValidationResult[T]:
         return cls(
             exception=exception,
-            state=ValidationState.TIMED_OUT,
+            state=ResultState.TIMED_OUT,
         )
 
 
