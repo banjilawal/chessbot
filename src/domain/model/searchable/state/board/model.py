@@ -12,7 +12,9 @@ from __future__ import annotations
 from typing import Optional
 
 from collection import AttackDatabase, ManeuverDatabase, SquareDatabase, TokenDatabase
-from domain import Arena, BoardState, BoardTeamColorBinder, StateModel
+from config import BoardSetting
+from domain import Arena, BoardState, TeamColorBinder, StateModel
+from microservice import BoardService
 
 
 class Board(StateModel):
@@ -29,7 +31,7 @@ class Board(StateModel):
         maneuver_log: ManeuverDatabase
         attack_records: AttackDatabase
         captured_tokens: TokenDatabase
-        team_binder: BoardTeamColorBinder
+        team_binder: TeamColorBinder
         
     Super Class:
         StateModel
@@ -41,13 +43,14 @@ class Board(StateModel):
     _maneuver_log: ManeuverDatabase
     _attack_records: AttackDatabase
     _captured_tokens: TokenDatabase
-    _team_binder: BoardTeamColorBinder
+    _team_binder: TeamColorBinder
+    _deployment_counter: int
 
     def __init__(
             self,
             id: int,
             arena: Arena,
-            team_binder: BoardTeamColorBinder,
+            team_binder: TeamColorBinder,
             squares: Optional[SquareDatabase] | None = None,
             maneuver_log: Optional[ManeuverDatabase] | None = None,
             attack_records: Optional[AttackDatabase] | None = None,
@@ -57,7 +60,7 @@ class Board(StateModel):
         Args:
             id: int
             arena: Arena
-            team_binder: BoardTeamColorBinder
+            team_binder: TeamColorBinder
             squares: Optional[SquareDatabase]
             maneuver_log: Optional[ManeuverDatabase]
             attack_records: Optional[AttackDatabase]
@@ -71,6 +74,7 @@ class Board(StateModel):
         self._attack_records = attack_records or AttackDatabase()
         self._captured_tokens = captured_tokens or TokenDatabase()
         self._state = BoardState.IS_EMPTY
+        self._deployment_counter = 0
     
     @property
     def id(self) -> int:
@@ -93,12 +97,34 @@ class Board(StateModel):
         return self._squares
     
     @property
-    def team_binder(self) -> BoardTeamColorBinder:
+    def team_binder(self) -> TeamColorBinder:
         return self._team_binder
     
     @property
     def maneuver_log(self) -> ManeuverDatabase:
         return self._maneuver_log
+    
+    @property
+    def deployment_count(self) -> int:
+        return self._deployment_counter
+    
+    @property
+    def is_empty(self) -> bool:
+        return (
+                self._deployment_counter == 0 and
+                self._state == BoardState.IS_EMPTY
+        )
+    
+    @property
+    def has_been_filled(self) -> bool:
+        return (
+            self._deployment_counter == BoardSetting.team_size() * 2 and
+            self._state == BoardState.HAS_BEEN_FILLED
+        )
+    
+    @property
+    def is_not_filled(self) -> bool:
+        return not self.has_been_filled
     
     def __eq__(self, other):
         if other is self: return True

@@ -11,4 +11,4 @@ from enum import Enum, auto
 
 class BoardState(Enum):
     IS_EMPTY = auto(),
-    HAS_TOKENS_LAID_OUT = auto(),
+    HAS_BEEN_FILLED = auto(),

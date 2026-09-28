@@ -126,6 +126,10 @@ class SquareDatabase(Database[Square]):
         return self._stack_service.context_service
     
     @property
+    def squares_are_empty(self) -> bool:
+        return True
+    
+    @property
     def size(self) -> int:
         return self._stack_service.rule_count
     

@@ -9,7 +9,8 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from math import sqrt
+import math
+from typing import cast
 
 
 class BoardPropertyValue:
@@ -36,6 +37,7 @@ class BoardPropertyValue:
     _DIMENSION = 8
     _num_rows: int = _DIMENSION
     _num_columns: int = _DIMENSION
+    _team_size: int = 16
         
     @classmethod
     def board_size(cls) -> int:
@@ -58,8 +60,13 @@ class BoardPropertyValue:
         return cls._num_columns - 1
     
     @classmethod
+    def team_size(cls) -> int:
+        return cls._team_size
+    
+    @classmethod
     def diagonal_length(cls) -> int:
-        return sqrt(cls._num_rows**2 + cls._num_columns**2)
+        sum = cls._num_rows**2 + cls._num_columns**2
+        return cast(int, math.sqrt(sum))
     
         
         

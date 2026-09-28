@@ -7,11 +7,10 @@ Created: 2025-02-08
 version: 1.0.0
 """
 
-from typing import List, Optional
+from typing import Optional
 
-from domain import Arena, Championship, PlayerColorBinder, GameState, CheckmateAttack, Player, StateModel
+from domain import Arena, PlayerColorBinder, GameState, CheckmateAttack, Player, StateModel
 from game import GameResult
-from util import IdFactory
 
 
 class Game(StateModel):
@@ -51,7 +50,6 @@ class Game(StateModel):
             arena: Arena,
             white_player: Player,
             black_player: Player,
-            binder_id: Optional[int] | None = None,
     ):
         """
         Args:
@@ -59,24 +57,17 @@ class Game(StateModel):
             arena: Arena
             white_player: Player
             black_player: Player
-            binder_id: Optional[int]
-            state: Optional[GameState]
-            result: Optional[GameResult]
         """
         super().__init__(id=id)
         self._arena = arena
-        self._temp_binder_id = (
-                binder_id or
-                IdFactory.next_id(class_name="GamePlayerColorBinder")
-        )
+        self._checkmate = None
+        self._tie_record = None
+        
         self._binder = PlayerColorBinder(
-            primary=self,
-            id=self._temp_binder_id,
             white_player=white_player,
             black_player=black_player,
         )
-        self._checkmate = None
-        self._tie_record = None
+
     
     @property
     def arena(self) -> Arena:
@@ -101,10 +92,6 @@ class Game(StateModel):
     @result.setter
     def result(self, other:GameResult):
         self._result = other
-        
-    @property
-    def binder_id(self) -> int:
-        return self._binder.id
     
     @property
     def is_ready(self) -> bool:

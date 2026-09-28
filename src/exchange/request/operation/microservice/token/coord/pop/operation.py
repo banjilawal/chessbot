@@ -136,7 +136,7 @@ class TokenPositionPopper:
                 )
             )
         # Handle the case that token is not active
-        if not token.is_ready:
+        if not token.has_been_filled:
             # Send the exception chain on failure.
             return DeletionResult.failure(
                 TokenPopCoordException(

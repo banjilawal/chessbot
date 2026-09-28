@@ -38,6 +38,7 @@ class BoardSetting:
         BoardPropertyName.MAX_ROW_INDEX: BoardPropertyValue.max_row_index(),
         BoardPropertyName.MAX_COLUMN_INDEX: BoardPropertyValue.max_column_index(),
         BoardPropertyName.DIAGONAL_LENGTH: BoardPropertyValue.diagonal_length(),
+        BoardPropertyName.TEAM_SIZE: BoardPropertyValue.team_size(),
     }
     
     @classmethod
@@ -63,3 +64,7 @@ class BoardSetting:
     @classmethod
     def diagonal_length(cls) -> int:
         return cls._entry[BoardPropertyName.DIAGONAL_LENGTH]
+    
+    @classmethod
+    def team_size(cls) -> int:
+        return cls._entry[BoardPropertyName.TEAM_SIZE]

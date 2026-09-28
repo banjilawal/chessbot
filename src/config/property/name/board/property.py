@@ -34,3 +34,4 @@ class BoardPropertyName(Enum):
     MAX_ROW_INDEX = auto(),
     MAX_COLUMN_INDEX = auto(),
     DIAGONAL_LENGTH = auto()
+    TEAM_SIZE = auto()
