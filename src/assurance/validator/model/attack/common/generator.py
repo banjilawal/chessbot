@@ -12,20 +12,10 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import (
-    CommonAttackPropertyTable, AttackPositionTable, AttackPositionTableGenerator, 
-    AttackValidatorToolkit
-)
-from domain import (
-    Formation, HomeSquare, Team, AttackBlueprint, AttackDeployment, 
-    AttackPrimeExtract
-)
-from err import (
-    CommonAttackPropertyTableGeneratorException, FormationNullException,
-    AttackDeploymentNullException
-)
-from exchange import TeamValidationRequest
-from transit import TeamCarrier
+from assurance import AttackValidatorToolkit, CommonAttackPropertyTable, SafeSuperAttackPropertyTable
+from domain import AttackBlueprint, AttackPrimeExtract, Maneuver, Token
+from exchange import ManeuverValidationRequest, TokenValidationRequest
+from transit import ManeuverCarrier, TokenCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -47,20 +37,16 @@ class CommonAttackPropertyTableGenerator:
     Super Class:
     """
     _toolkit: AttackValidatorToolkit
-    _position_table_generator: AttackPositionTableGenerator
     
     def __init__(
             self,
             toolkit: Optional[AttackValidatorToolkit] | None = None,
-            position_validator: Optional[AttackPositionTableGenerator] | None = None,
     ):
         """
         Args:
             toolkit: Optional[AttackValidatorToolkit]
-            position_validator: Optional[AttackPositionValidator]
         """
         self._toolkit = toolkit or AttackValidatorToolkit()
-        self._position_table_generator = position_validator or AttackPositionTableGenerator()
     
     @LoggingLevelRouter.monitor
     def execute(
@@ -74,7 +60,7 @@ class CommonAttackPropertyTableGenerator:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
                     -   The Loader fails.
-                    -   Team, Formation, Deployment, id, or HomeSquare are flagged.
+                    -   Maneuver, Formation, Deployment, id, or HomeSquare are flagged.
                     -   The position_table_generator fails.
             2.  Otherwise, send a CommonAttackPropertyTable in the success result.
         Args:
@@ -122,15 +108,29 @@ class CommonAttackPropertyTableGenerator:
                     ex=id_validation.exception,
                 )
             )
-        # --- START_FORMATION_VALIDATION_PROCESS ---#
-        
-        # Handle the case that the formation is flagged.
-        formation_validation = self._toolkit.priming_validator.execute(
-            candidate=attack_blueprint.formation,
-            target_model=Formation,
-            null_exception=FormationNullException(),
+        # --- START_VICTIM_VALIDATION_PROCESS ---#
+        victim_validation = self._toolkit.wrapper.token.extract_model(
+            request=TokenValidationRequest(
+                item=TokenCarrier(model=attack_blueprint.victim),
+                id=IdFactory.next_id(class_name="TokenValidationRequest"),
+            )
         )
-        if formation_validation.is_failure:
+        attacker_validation = self._toolkit.wrapper.token.extract_model(
+            request=TokenValidationRequest(
+                item=TokenCarrier(model=attack_blueprint.attacker),
+                id=IdFactory.next_id(class_name="TokenValidationRequest"),
+            )
+        )
+        # --- START_MANEUVER_VALIDATION_PROCESS ---#
+        
+        # Handle the case that the maneuver is flagged.
+        maneuver_validation = self._toolkit.wrapper.maneuver.extract_model(
+            request=ManeuverValidationRequest(
+                item=ManeuverCarrier(model=attack_blueprint.maneuver),
+                id=IdFactory.next_id(class_name="ManeuverValidationRequest"),
+            )
+        )
+        if maneuver_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 CommonAttackPropertyTableGeneratorException(
@@ -138,94 +138,37 @@ class CommonAttackPropertyTableGenerator:
                     cls_name=self.__class__.__name__,
                     msg=CommonAttackPropertyTableGeneratorException.MSG,
                     err_code=CommonAttackPropertyTableGeneratorException.ERR_CODE,
-                    ex=formation_validation.exception,
-                )
-            )
-        # --- START_DEPLOYEMENT_STATE_VALIDATION_PROCESS ---#
-        
-        # Handle the case that the deployment is flagged.
-        deployment_validation = self._toolkit.priming_validator.execute(
-            candidate=attack_blueprint.deployment,
-            target_model=AttackDeployment,
-            null_exception=AttackDeploymentNullException(),
-        )
-        if deployment_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                CommonAttackPropertyTableGeneratorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=CommonAttackPropertyTableGeneratorException.MSG,
-                    err_code=CommonAttackPropertyTableGeneratorException.ERR_CODE,
-                    ex=deployment_validation.exception,
-                )
-            )
-        # --- START_TEAM_VALIDATION_PROCESS ---#
-        
-        # Handle the case that the team is flagged.
-        team_validation = self._toolkit.wrapper.team.extract_model(
-            request=TeamValidationRequest(
-                item=TeamCarrier(model=attack_blueprint.team),
-                id=IdFactory.next_id(class_name="TeamValidationRequest"),
-            )
-        )
-        if team_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                CommonAttackPropertyTableGeneratorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=CommonAttackPropertyTableGeneratorException.MSG,
-                    err_code=CommonAttackPropertyTableGeneratorException.ERR_CODE,
-                    ex=team_validation.exception,
-                )
-            )
-        # --- START_HOME_SQUARE_DETECTION_PROCESS ---#
-        
-        # Handle the case that the home_square gets flagged.
-        home_detection = self._toolkit.home_square_extractor.execute(
-            blueprint=attack_blueprint,
-        )
-        if home_detection.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                CommonAttackPropertyTableGeneratorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=CommonAttackPropertyTableGeneratorException.MSG,
-                    err_code=CommonAttackPropertyTableGeneratorException.ERR_CODE,
-                    ex=home_detection.exception,
-                )
-            )
-        # --- START_POSITIONS_VALIDATION_PROCESS ---#
-        
-        # Handle the case that the current_position is flagged.
-        generation_result = self._position_table_generator.execute(
-            blueprint=attack_blueprint
-        )
-        if generation_result.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                CommonAttackPropertyTableGeneratorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=CommonAttackPropertyTableGeneratorException.MSG,
-                    err_code=CommonAttackPropertyTableGeneratorException.ERR_CODE,
-                    ex=generation_result.exception,
+                    ex=maneuver_validation.exception,
                 )
             )
         # --- Extract from the validation payloads. ---#
         id = cast(int, id_validation.payload)
-        team = cast(Team, team_validation.payload)
-        home_square = cast(HomeSquare, home_detection.payload)
-        formation = cast(Formation, formation_validation.payload)
-        deployment = cast(AttackDeployment, deployment_validation.payload)
-        position_table = cast(AttackPositionTable, generation_result.payload)
+        victim = cast(Token, victim_validation.payload)
+        attacker = cast(Token, attacker_validation.payload)
+        maneuver = cast(Maneuver, maneuver_validation.payload)
+        
+        if victim == attacker:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                CommonAttackPropertyTableGeneratorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=CommonAttackPropertyTableGeneratorException.MSG,
+                    err_code=CommonAttackPropertyTableGeneratorException.ERR_CODE,
+                    ex=maneuver_validation.exception,
+                )
+            )
+        safe_property_table = SafeSuperAttackPropertyTable(
+            id=id,
+            victim=victim,
+            attacker=attacker,
+            maneuver=maneuver,
+        )
         
         # --- Send the work product. ---#
         attack_property_table = CommonAttackPropertyTable(
             id=id,
-            team=team,
+            maneuver=maneuver,
             formation=formation,
             home_square=home_square,
             deployment=deployment,

@@ -27,13 +27,11 @@ class GameState(Enum):
     # INHERITED ATTRIBUTES:
     None
     """
-    NEW = auto(),
-    FINISHED = auto(),
-    SAVED = auto(),
-    ABORTED = auto(),
-    TIED = auto(),
-    WINNER_EXISTS = auto(),
-    FAILURE = auto(),
-    ROLLED_BACK = auto(),
+    NOT_READY = auto(),
+    READY = auto(),
+    STARTED = auto(),
+    GAME_WON = auto(),
+    GAME_TIED = auto(),
+    GAME_CANCELLED = auto(),
     
     
