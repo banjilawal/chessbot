@@ -1,7 +1,7 @@
-# src/domain/model/searchable/state/account/machine/model.py
+# src/domain/model/account/machine/model.py
 
 """
-Module: domain.model.searchable.state.account.machine.model
+Module: domain.model.account.machine.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -10,7 +10,6 @@ version: 0.0.2
 from __future__ import annotations
 
 from domain import Account
-from game import GameAdviser
 
 
 class MachineAccount(Account):
@@ -30,6 +29,7 @@ class MachineAccount(Account):
      Super Class:
         Account
      """
+    _name: str
     
     def __init__(self, id: int, name: str):
         """
@@ -37,7 +37,12 @@ class MachineAccount(Account):
             id: int
             name: str
         """
-        super().__init__(id=id, name=name)
+        super().__init__(id=id)
+        self._name = name
+    
+    @property
+    def name(self) -> str:
+        return self._name
         
     def __eq__(self, other):
         if other is self: return True

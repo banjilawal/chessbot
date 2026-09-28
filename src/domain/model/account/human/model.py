@@ -1,7 +1,7 @@
-# src/domain/model/searchable/state/account/human/model.py
+# src/domain/model/account/human/model.py
 
 """
-Module: domain.model.searchable.state.account.human.model
+Module: domain.model.account.human.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,10 +9,8 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional
-
 from domain import Account
-from game import GameAdviser
+from software import Subscriber
 
 
 class HumanAccount(Account):
@@ -36,14 +34,22 @@ class HumanAccount(Account):
      Super Class:
         Account
      """
+    _subscriber: Subscriber
     
-    def account(self, id: int, name: str,):
+    def account(
+            self,
+            subscriber: Subscriber,
+    ):
         """
         Args:
-            id: int
-            name: str
+            subscriber: Subscriber
         """
-        super().__init__(id=id, name=name)
+        super().__init__(id=subscriber.id)
+        self._subscriber = subscriber
+        
+    @property
+    def subscriber(self) -> Subscriber:
+        return self._subscriber
     
     def __eq__(self, other):
         if other is self: return True
