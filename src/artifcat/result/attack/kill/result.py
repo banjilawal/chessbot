@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import AttackResult, AttackState
-from domain import CheckmateEncounter, EncounterWarning, KillEncounter
+from domain import KillEncounter
 
 
 class KillResult(AttackResult[KillEncounter]):
@@ -26,43 +26,43 @@ class KillResult(AttackResult[KillEncounter]):
 
     Attributes:
         exception: Optional[Exception]
-        payload: Optional[T]
+        payload: Optional[KillEncounter]
         state: attackState
+        
         is_timed_out: bool
         is_success: bool
         is_failure: bool
 
     Provides:
-        -   def success(payload: T) -> AttackResult
-        -   def failure(exception: Exception) -> AttackResult
-        -   def timed_out(cls, exception: Exception) -> AttackResult:
+        -   def success(payload: KillEncounter) -> KillResult
+        -   def failure(exception: Exception) -> KillResult
+        -   def timed_out(exception: Exception) -> KillResult:
 
     Super Class:
-        Result
+        AttackResult
     """
-    _state: AttackState
     
     def __init__(
             self,
             state: AttackState,
-            payload: Optional[T] = None,
+            payload: Optional[KillEncounter] = None,
             exception: Optional[Exception] = None,
     ):
         """
         Args:
             state: attackState
-            payload: Optional[T]
+            payload: Optional[KillEncounter]
             exception: Optional[Exception]
         """
         super().__init__(
+            state=state,
             payload=payload,
-            exception=exception
+            exception=exception,
         )
         """INTERNAL: Use attack methods instead of direct constructor."""
-        self._state = state
     
     @property
-    def payload(self) -> Optional[T]:
+    def payload(self) -> Optional[KillEncounter]:
         return cast(T, super().payload)
     
     @property
@@ -90,52 +90,22 @@ class KillResult(AttackResult[KillEncounter]):
                 self._state ==  AttackState.TIMED_OUT
         )
     
-    
-    @property
-    def is_kill(self) -> bool:
-        return (
-            self._payload is not None and
-            self._exception is None and
-            self._state == AttackState.COMBATANT_KILLED and
-            isinstance(self._payload, KillEncounter)
-        )
-    
-    @property
-    def is_check_warning_issued(self) -> bool:
-        return (
-                self._payload is not None and
-                self._exception is None and
-                self._state == AttackState.COMBATANT_KILLED and
-                isinstance(self._payload, EncounterWarning)
-        )
-    
-    @property
-    def is_checkmate(self) -> bool:
-        return (
-                self._payload is not None and
-                self._exception is None and
-                self._state == AttackState.CHECKMATE and
-                isinstance(self._payload, CheckmateEncounter)
-        )
-    
-
-    
     @classmethod
-    def success(cls, payload: T) -> AttackResult:
+    def success(cls, payload: T) -> KillResult:
         return cls(
             payload=payload,
             state=AttackState.SUCCESS,
         )
     
     @classmethod
-    def failure(cls, exception: Exception) -> AttackResult:
+    def failure(cls, exception: Exception) -> KillResult:
         return cls(
             exception=exception,
             state=AttackState.FAILURE,
         )
     
     @classmethod
-    def timed_out(cls, exception: Exception) -> AttackResult:
+    def timed_out(cls, exception: Exception) -> KillResult:
         return cls(
             exception=exception,
             state=AttackState.TIMED_OUT,

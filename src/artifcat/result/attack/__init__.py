@@ -10,7 +10,9 @@ version: 0.0.2
 # =========== RESULT.ATTACK PACKAGE ===========#
 
 # Packages
+from .checkmate import *
 from .kill import *
+from .warning import *
 
 # Modules
 from .result import AttackResult

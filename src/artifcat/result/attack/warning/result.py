@@ -1,7 +1,7 @@
-# src/artifact/result/attack/checkmate/result.py
+# src/artifact/result/attack/warning/result.py
 
 """
-Module: artfifact.result.attack.checkmate.result
+Module: artfifact.result.attack.warning.result
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import AttackResult, AttackState
-from domain import CheckmateEncounter
+from domain import EncounterWarning
 
 
-class CheckmateResult(AttackResult[CheckmateEncounter]):
+class WarningResult(AttackResult[EncounterWarning]):
     """
     Role:
         - Data Transport
@@ -26,7 +26,7 @@ class CheckmateResult(AttackResult[CheckmateEncounter]):
 
     Attributes:
         exception: Optional[Exception]
-        payload: Optional[CheckmateEncounter]
+        payload: Optional[EncounterWarning]
         state: attackState
         
         is_timed_out: bool
@@ -34,9 +34,9 @@ class CheckmateResult(AttackResult[CheckmateEncounter]):
         is_failure: bool
 
     Provides:
-        -   def success(payload: CheckmateEncounter) -> CheckmateResult
-        -   def failure(exception: Exception) -> CheckmateResult
-        -   def timed_out(exception: Exception) -> CheckmateResult:
+        -   def success(payload: EncounterWarning) -> WarningResult
+        -   def failure(exception: Exception) -> WarningResult
+        -   def timed_out(exception: Exception) -> WarningResult:
 
     Super Class:
         AttackResult
@@ -45,13 +45,13 @@ class CheckmateResult(AttackResult[CheckmateEncounter]):
     def __init__(
             self,
             state: AttackState,
-            payload: Optional[CheckmateEncounter] = None,
+            payload: Optional[EncounterWarning] = None,
             exception: Optional[Exception] = None,
     ):
         """
         Args:
             state: attackState
-            payload: Optional[CheckmateEncounter]
+            payload: Optional[EncounterWarning]
             exception: Optional[Exception]
         """
         super().__init__(
@@ -62,7 +62,7 @@ class CheckmateResult(AttackResult[CheckmateEncounter]):
         """INTERNAL: Use attack methods instead of direct constructor."""
     
     @property
-    def payload(self) -> Optional[CheckmateEncounter]:
+    def payload(self) -> Optional[EncounterWarning]:
         return cast(T, super().payload)
     
     @property
@@ -91,21 +91,21 @@ class CheckmateResult(AttackResult[CheckmateEncounter]):
         )
     
     @classmethod
-    def success(cls, payload: T) -> CheckmateResult:
+    def success(cls, payload: T) -> WarningResult:
         return cls(
             payload=payload,
             state=AttackState.SUCCESS,
         )
     
     @classmethod
-    def failure(cls, exception: Exception) -> CheckmateResult:
+    def failure(cls, exception: Exception) -> WarningResult:
         return cls(
             exception=exception,
             state=AttackState.FAILURE,
         )
     
     @classmethod
-    def timed_out(cls, exception: Exception) -> CheckmateResult:
+    def timed_out(cls, exception: Exception) -> WarningResult:
         return cls(
             exception=exception,
             state=AttackState.TIMED_OUT,

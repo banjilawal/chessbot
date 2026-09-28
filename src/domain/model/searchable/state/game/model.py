@@ -9,7 +9,8 @@ version: 1.0.0
 
 from typing import Optional
 
-from domain import Arena, PlayerColorBinder, GameState, CheckmateEncounter, Player, StateModel
+from artifcat import CheckmateResult
+from domain import Arena, PlayerColorBinder, GameState, Player, StateModel
 from game import GameResult
 
 
@@ -41,7 +42,7 @@ class Game(StateModel):
     _result: Optional[GameResult]
     _binder: PlayerColorBinder
     _temp_binder_id: int
-    _checkmate: Optional[CheckmateEncounter]
+    _checkmate: Optional[CheckmateResult]
     _tie_record: Optional[SquareRegister]
     
     def __init__(
@@ -119,6 +120,7 @@ class Game(StateModel):
     def is_won(self) -> bool:
         return (
                 self._checkmate is not None and
+                self._checkmate.is_success and
                 self._tie_record is None and
                 self._state == GameState.WON
         )
