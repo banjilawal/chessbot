@@ -95,7 +95,10 @@ class Game(StateModel):
     
     @property
     def is_ready(self) -> bool:
-        return self._state == GameState.READY
+        return (
+                self._state == GameState.READY and
+                self._arena.board.has_been_filled
+        )
     
     @property
     def is_not_ready(self) -> bool:
@@ -103,7 +106,10 @@ class Game(StateModel):
     
     @property
     def is_running(self) -> bool:
-        return self._state == GameState.STARTED
+        return (
+                self._state == GameState.STARTED and
+                self._arena.opening_move_launched
+        )
     
     @property
     def is_not_running(self) -> bool:

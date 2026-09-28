@@ -45,6 +45,7 @@ class Board(StateModel):
     _captured_tokens: TokenDatabase
     _team_binder: TeamColorBinder
     _deployment_counter: int
+    _move_counter: int
 
     def __init__(
             self,
@@ -75,6 +76,7 @@ class Board(StateModel):
         self._captured_tokens = captured_tokens or TokenDatabase()
         self._state = BoardState.IS_EMPTY
         self._deployment_counter = 0
+        self._move_counter = 0
     
     @property
     def id(self) -> int:
@@ -107,6 +109,10 @@ class Board(StateModel):
     @property
     def deployment_count(self) -> int:
         return self._deployment_counter
+    
+    @property
+    def move_counter(self) -> int:
+        return self._move_counter
     
     @property
     def is_empty(self) -> bool:
