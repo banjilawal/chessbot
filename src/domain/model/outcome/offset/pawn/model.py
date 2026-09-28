@@ -1,0 +1,88 @@
+# src/domain/model/outcome/pawn/__init__.py
+
+"""
+Module: domain.model.outcome.pawn.__init__
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from typing import Dict
+
+from domain.schema import Persona
+from err import PawnException
+from geometry import CoordSpan, PawnSpanner
+from domain.model import OffsetGameOutcome, PawnToken
+from artifcat import ComputationResult
+from util import LoggingLevelRouter
+
+
+class Pawn(OffsetGameOutcome):
+    """
+    Role:Computation, Metadata
+
+    Responsibilities:
+    1.  Produces a list of Coords reachable from a Pawn's updated position.
+    2.  Metadata about the Pawn outcome useful for optimizing the GameGraph.
+    
+    Super Class:
+        Outcome
+
+    Provides:
+
+    
+    INHERITED ATTRIBUTES:
+        *   See Outcome class for inherited attributes
+    """
+    _spanner: PawnSpanner
+
+    def __init__(
+            self,
+            persona: Persona | None = Persona.PAWN,
+            spanner: PawnSpanner | None = PawnSpanner(),
+    ):
+        """
+        Args:
+                        persona: Persona
+            spanner: PawnSpanner
+        """
+        super().__init__(id=id, persona=persona,)
+        self._spanner = spanner
+    
+    @LoggingLevelRouter.monitor
+    def span_dict(self, pawn_token: PawnToken) -> ComputationResult[Dict[str, CoordSpan]]:
+        """
+        Produce a dictionary of the coords a Pawn can reach from its current position.
+
+        Args:
+            pawn_token: PawnToken
+
+        Raises:
+            PawnException
+
+        Returns:
+            ComputationResult[Dict[str, CoordSpan]]
+        """
+        method = f"{self.__class__.__name__}.span_dict"
+        
+        span_result = self._spanner.compute(
+            pawn_token=pawn_token,
+            coord_service=self.coord_service,
+            vector_service=self.vector_service,
+        )
+        # Handle the case that the span is not produced.
+        if span_result.is_failure:
+            # Send the exception chain on failure.
+            return ComputationResult.failure(
+                PawnException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    err_code=PawnException.ERR_CODE,
+                    msg=PawnException.MSG,
+                    ex=span_result.exception
+                )
+            )
+        # --- Send the success resul to the client. ---#
+        return span_result

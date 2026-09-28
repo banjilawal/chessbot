@@ -13,6 +13,8 @@ version: 0.0.2
 from .checkmate import *
 from .snapshot import *
 from .turn import *
+from .win import *
 from .winner import *
 
 # Modules
+from .outcome import GameOutcome

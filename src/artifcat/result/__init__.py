@@ -16,6 +16,7 @@ from .builder import *
 from .computation import *
 from .crud import *
 from .event import *
+from .play import *
 from .shell import *
 from .turn import *
 from .update import *

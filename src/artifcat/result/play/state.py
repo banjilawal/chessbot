@@ -1,7 +1,7 @@
-# src/artifact/result/attack/state.py
+# src/artifact/result/play/state.py
 
 """
-Module: artfifact.result.attack.state
+Module: artfifact.result.play.state
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from enum import Enum, auto
 
-class AttackState(Enum):
+class PlayState(Enum):
     SUCCESS = auto(),
     FAILURE = auto(),
     TIMED_OUT = auto(),
