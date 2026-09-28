@@ -23,7 +23,7 @@ class DeletionResult(CrudResult[T], Generic[T]):
         - Error Transport
 
     Responsibilities:
-        1.  Contains the outcome of a deletion.
+        1.  Contains details of a Deletion transaction.
 
     Attributes:
         exception: Optional[Exception]

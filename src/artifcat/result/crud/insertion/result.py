@@ -21,7 +21,7 @@ class InsertionResult(CrudResult[bool]):
         - Error Transport
 
     Responsibilities:
-        1.  Contains the outcome of an insertion.
+        1.  Contains details of an Insertion transaction.
 
     Attributes:
         exception: Optional[Exception]

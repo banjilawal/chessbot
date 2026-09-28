@@ -23,7 +23,7 @@ class SearchResult(CrudResult[T], Generic[T]):
         - Error Transport
 
     Responsibilities:
-        1.  Contains the outcome of a search transaction
+        1.  Contains details of a Search transaction.
 
     Attributes:
         exception: Optional[Exception]

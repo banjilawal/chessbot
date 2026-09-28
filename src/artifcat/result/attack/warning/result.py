@@ -22,7 +22,7 @@ class WarningResult(AttackResult[EncounterWarning]):
         - Error Transport
 
     Responsibilities:
-        1.  Contains the outcome of a attack transaction.
+        1.  Contains details of an EncounterWarning transaction.
 
     Attributes:
         exception: Optional[Exception]
@@ -63,7 +63,7 @@ class WarningResult(AttackResult[EncounterWarning]):
     
     @property
     def payload(self) -> Optional[EncounterWarning]:
-        return cast(T, super().payload)
+        return cast(EncounterWarning, super().payload)
     
     @property
     def state(self) -> ResultState:
@@ -91,7 +91,7 @@ class WarningResult(AttackResult[EncounterWarning]):
         )
     
     @classmethod
-    def success(cls, payload: T) -> WarningResult:
+    def success(cls, payload: EncounterWarning) -> WarningResult:
         return cls(
             payload=payload,
             state=ResultState.SUCCESS,

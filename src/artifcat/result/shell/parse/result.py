@@ -22,7 +22,7 @@ class ParseResult(ShellResult[Command]):
         - Error Transport
 
     Responsibilities:
-        1.  Contains the outcome of a parse.
+        1.  Contains details of a Parse transaction.
 
     Attributes:
         state: ParseState

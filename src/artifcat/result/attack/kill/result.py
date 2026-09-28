@@ -22,7 +22,7 @@ class KillResult(AttackResult[KillEncounter]):
         - Error Transport
 
     Responsibilities:
-        1.  Contains the outcome of a attack transaction.
+        1.  Contains details of a KillEncounter transaction.
 
     Attributes:
         exception: Optional[Exception]
@@ -63,7 +63,7 @@ class KillResult(AttackResult[KillEncounter]):
     
     @property
     def payload(self) -> Optional[KillEncounter]:
-        return cast(T, super().payload)
+        return cast(KillEncounter, super().payload)
     
     @property
     def state(self) -> ResultState:
@@ -91,7 +91,7 @@ class KillResult(AttackResult[KillEncounter]):
         )
     
     @classmethod
-    def success(cls, payload: T) -> KillResult:
+    def success(cls, payload: KillEncounter) -> KillResult:
         return cls(
             payload=payload,
             state=ResultState.SUCCESS,

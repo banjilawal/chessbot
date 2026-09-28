@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from enum import Enum
 
-from domain.model import Scalar
-from config.setting import GameColor
+from config import BoardSetting, GameColor
+from domain import Scalar
 
 
 class Archetype(Enum):
@@ -74,7 +74,7 @@ class Archetype(Enum):
         return obj
     
     WHITE = (GameColor.WHITE, 0, Scalar(1),)
-    BLACK = (GameColor.BLACK, (config.setting.board.dimension.config.num_rows - 1), Scalar(-1),)
+    BLACK = (GameColor.BLACK, (BoardSetting.max_row_index(), Scalar(-1),)
     
     @property
     def color(self) -> GameColor:
@@ -94,7 +94,7 @@ class Archetype(Enum):
     
     @property
     def enemy_archetype(self) -> Archetype:
-        if self == Archetype.WHITE:
+        if self.WHITE == Archetype.WHITE:
             return Archetype.BLACK
         return Archetype.WHITE
     

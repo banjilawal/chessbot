@@ -24,7 +24,7 @@ class ShellResult(Result, ABC, Generic[T]):
         - Error Transport
   
     Responsibilities:
-        1.  Hold the product of some work.
+        1.  Contains details of a Shell transaction.
 
     Attributes:
         payload: Optional[T]

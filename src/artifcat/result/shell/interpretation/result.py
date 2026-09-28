@@ -23,7 +23,7 @@ class InterpretationResult(ShellResult[T], Generic[T]):
         - Error Transport
 
     Responsibilities:
-        1.  Contains the outcome of an Interpretation.
+        1.  Contains details of an Interpretation transaction.
 
     Attributes:
         exception: Optional[Exception]

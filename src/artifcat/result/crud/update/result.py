@@ -24,7 +24,7 @@ class UpdateResult(CrudResult[T], Generic[T]):
         -   Error Transport
 
     Responsibilities:
-        1.  Contains the outcome of an update
+        1.  Contains details of an Update transaction.
 
     Attributes:
         exception: Optional[Exception]

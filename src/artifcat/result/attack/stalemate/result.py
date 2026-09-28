@@ -22,7 +22,7 @@ class StalemateResult(AttackResult[StalemateEncounter]):
         - Error Transport
 
     Responsibilities:
-        1.  Contains the outcome of a attack transaction.
+        1.  Contains details of a StalemateEncounter transaction.
 
     Attributes:
         exception: Optional[Exception]
@@ -63,7 +63,7 @@ class StalemateResult(AttackResult[StalemateEncounter]):
     
     @property
     def payload(self) -> Optional[StalemateEncounter]:
-        return cast(T, super().payload)
+        return cast(StalemateEncounter, super().payload)
     
     @property
     def state(self) -> ResultState:
@@ -91,7 +91,7 @@ class StalemateResult(AttackResult[StalemateEncounter]):
         )
     
     @classmethod
-    def success(cls, payload: T) -> StalemateResult:
+    def success(cls, payload: StalemateEncounter) -> StalemateResult:
         return cls(
             payload=payload,
             state=ResultState.SUCCESS,

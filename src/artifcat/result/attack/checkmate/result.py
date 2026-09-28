@@ -22,7 +22,7 @@ class CheckmateResult(AttackResult[CheckmateEncounter]):
         - Error Transport
 
     Responsibilities:
-        1.  Contains the outcome of a attack transaction.
+        1.  Contains details of a CheckmateEncounter transaction.
 
     Attributes:
         exception: Optional[Exception]
@@ -63,7 +63,7 @@ class CheckmateResult(AttackResult[CheckmateEncounter]):
     
     @property
     def payload(self) -> Optional[CheckmateEncounter]:
-        return cast(T, super().payload)
+        return cast(CheckmateEncounter, super().payload)
     
     @property
     def state(self) -> ResultState:
@@ -91,7 +91,7 @@ class CheckmateResult(AttackResult[CheckmateEncounter]):
         )
     
     @classmethod
-    def success(cls, payload: T) -> CheckmateResult:
+    def success(cls, payload: CheckmateEncounter) -> CheckmateResult:
         return cls(
             payload=payload,
             state=ResultState.SUCCESS,

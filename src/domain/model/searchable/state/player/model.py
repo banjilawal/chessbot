@@ -12,7 +12,8 @@ from __future__ import annotations
 from abc import ABC
 from typing import Optional
 
-from domain import StateModel
+from domain import Archetype, StateModel
+from domain.model.account import Account
 from game import GameAdviser
 
 
@@ -26,7 +27,7 @@ class Player(StateModel, ABC):
 
      Attributes:
          id: int
-         name: str
+         account: str
          adviser: Optional[GameAdviser]
 
      Provides:
@@ -35,23 +36,27 @@ class Player(StateModel, ABC):
         Model
      """
     _id: int
-    _name: str
+    _account: Account
+    _archetype: Archetype
     _adviser: Optional[GameAdviser]
     
     def __init__(
             self,
             id: int,
-            name: str,
+            account: Account,
+            archetype: Archetype,
             adviser: Optional[GameAdviser] | None = None,
     ):
         """
         Args:
             id: int
-            name: str
+            account: Account,
+            archetype: Archetype,
             adviser: Optional[GameAdviser]
         """
         super().__init__(id=id)
-        self._name = name
+        self._account = account
+        self._archetype = archetype
         self._adviser = adviser
     
     @property
@@ -59,12 +64,12 @@ class Player(StateModel, ABC):
         return self._id
     
     @property
-    def name(self) -> str:
-        return self._name
+    def account(self) -> Account:
+        return self._account
     
-    @name.setter
-    def name(self, name: str):
-        self._name = name
+    @property
+    def archetype(self) -> Archetype:
+        return self._archetype
         
     @property
     def adviser(self) -> Optional[GameAdviser]:

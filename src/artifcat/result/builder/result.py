@@ -23,7 +23,7 @@ class BuildResult(Result[T], Generic[T]):
         - Error Transport
 
     Responsibilities:
-        1.  Contains the outcome of a build transaction.
+        1.  Contains details of a Build transaction.
 
     Attributes:
         exception: Optional[Exception]

@@ -10,9 +10,10 @@ version: 0.0.2
 from __future__ import annotations
 
 
-from typing import Optional, cast
+from typing import Dict, Optional, cast
 
-from domain import KingToken, Encounter, Maneuver, Square, Token
+from config import GameColor
+from domain import KingToken, Encounter, Maneuver, Player, Square, Token
 
 
 class CheckmateEncounter(Encounter):
@@ -73,6 +74,33 @@ class CheckmateEncounter(Encounter):
     @property
     def victor(self) -> Token:
         return self.initiater
+    
+    @property
+    def winner(self) -> Dict[str, Dict[GameColor, Player]]:
+        
+        table: Dict[str, Dict[GameColor, Player]]
+        player = self.victor.team.owner
+        color = self._encounter.victor.team.archetype.color
+   
+        
+        winning_team = self._encounter.victor.team
+        winning_archetype = winning_team.archetyp
+        winner = winning_team.owner
+        archetype.
+        
+        
+        winner_archetype = winner_team.archetype
+        if winner_archety
+        
+        team_binder = self._encounter.victor.team.board.team_binder
+        player_binder = self._encount.victim.team.board.arena.player_binder
+        
+        winner_archetype = sel
+        
+        return {color:}
+        self._encounter.victor.team.owner
+    
+    @
 
     def __eq__(self, other) -> bool:
         if other is None:

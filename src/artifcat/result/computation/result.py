@@ -22,7 +22,7 @@ class ComputationResult(Result[T], Generic[T]):
         - Error Transport
 
     Responsibilities:
-        1.  Contains outcome of a compute transaction.
+        1.  Contains details of a Computation transaction.
 
     Attributes:
         exception: Optional[Exception]
