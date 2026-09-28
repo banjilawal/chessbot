@@ -1,7 +1,7 @@
-# src/domain/binder/game/binder.py
+# src/domain/binder/player/binder.py
 
 """
-Module: domain.binder.game.binder
+Module: domain.binder.player.binder
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -21,13 +21,16 @@ class PlayerColorBinder(ColorBinder[Player]):
         - Mapper
 
     Responsibility:
-        1.  Maps the Player correctly to its color slot on the Game.
+        1.  Use GameColor to map Player to Archetype.
         
     Attributes:
         white_player: Player
         black_player: Player
         
     Provides:
+        players_are_same: bool
+        players_differ: bool
+        to_dict: Dict[GameColor, Dict[Archetype, Player]]
         
     Super Class:
        ColorBinder
@@ -67,7 +70,7 @@ class PlayerColorBinder(ColorBinder[Player]):
         return self.white_player == self.black_player
     
     @property
-    def players_differ(self):
+    def players_differ(self) -> bool:
         return not self.players_are_same
     
     @property

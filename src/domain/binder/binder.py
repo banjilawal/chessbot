@@ -23,18 +23,22 @@ class ColorBinder(ABC, Generic[T]):
         - Mapper
         
     Responsibility:
-        1.  Create a biding between GameColor and two entities that have a one-to-many
-            relationship.
+        1.  Use GameColor to map Model to Archetype.
         
     Attributes:
+        size: int
+        is_empty: bool
+        is_correct_size: bool
+        is_over_capacity: bool
         
     Provides:
+        same_items: bool
+        items_are_different: bool
+        to_dict: Dict[GameColor, Dict[Archetype, T]]
 
     Super Class:
     """
     _MAX_CAPACITY = 2
-    WHITE_KEY = GameColor.WHITE
-    BLACK_KEY = GameColor.BLACK
 
     @property
     @abstractmethod

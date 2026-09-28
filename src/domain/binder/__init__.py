@@ -10,9 +10,8 @@ version: 1.0.0
 # =========== DOMAIN.BINDER PACKAGE ===========#
 
 # Packages
-from .arena import *
-from .board import *
-from .game import *
+from .team import *
+from .player import *
 
 # Modules
 from .binder import ColorBinder
