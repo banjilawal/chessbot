@@ -9,10 +9,10 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional, cast
+from typing import Dict, List
 
 from config import GameColor
-from domain import ColorBinder, Game, Player
+from domain import Archetype, ColorBinder, Player
 
 
 class PlayerColorBinder(ColorBinder[Player]):
@@ -24,7 +24,6 @@ class PlayerColorBinder(ColorBinder[Player]):
         1.  Maps the Player correctly to its color slot on the Game.
         
     Attributes:
-        primary: Game
         white_player: Player
         black_player: Player
         
@@ -33,36 +32,31 @@ class PlayerColorBinder(ColorBinder[Player]):
     Super Class:
        ColorBinder
     """
-    _entry: Dict[GameColor, Player]
+    _entry: Dict[GameColor, Dict[Archetype, Player]]
     
     def __init__(
             self,
             white_player: Player,
             black_player: Player,
-            max_capacity: Optional[int] | None = None,
     ):
         """
         Args:
             white_player: Player
             black_player: Player
-            max_capacity: Optional[int]
         """
-        super().__init__(
-            primary=primary, 
-            max_capacity=max_capacity or self.MAX_CAPACITY,
-        )
+        super().__init__()
         self._entry = {
-            GameColor.WHITE: white_player,
-            GameColor.BLACK: black_player,
+            GameColor.WHITE: {Archetype.WHITE: white_player},
+            GameColor.BLACK: {Archetype.BLACK: black_player},
         }
     
     @property
     def white_player(self) -> Player:
-        return self._entry[GameColor.WHITE]
+        return self._entry[GameColor.WHITE][Archetype.WHITE]
     
     @property
     def black_player(self) -> Player:
-        return self._entry[GameColor.BLACK]
+        return self._entry[GameColor.BLACK][Archetype.BLACK]
     
     @property
     def players(self) -> List[Player]:
@@ -77,18 +71,15 @@ class PlayerColorBinder(ColorBinder[Player]):
         return not self.players_are_same
     
     @property
-    def to_dict(self) -> Dict[GameColor, Player]:
-        return self._entry
+    def items_are_different(self) -> bool:
+        return self.players_differ
     
-    def __eq__(self, other):
-        if other is self: return True
-        if other is None: return False
-        if isinstance(other, PlayerColorBinder):
-            return self.id == other.id
-        return False
-        
-    def __hash__(self):
-        return hash(self.id)
-
+    @property
+    def same_items(self) -> bool:
+        return self.players_are_same
+    
+    @property
+    def to_dict(self) -> Dict[GameColor, Dict[Archetype, Player]]:
+        return self._entry
         
     

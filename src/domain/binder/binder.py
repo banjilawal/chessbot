@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Dict, Generic, TypeVar
 
 from config import GameColor
-from domain import Model
+from domain import Archetype, Model
 
 T = TypeVar("T", bound="Model")
 
@@ -27,38 +27,15 @@ class ColorBinder(ABC, Generic[T]):
             relationship.
         
     Attributes:
-        max_capacity: int
         
     Provides:
 
     Super Class:
-        Structure
     """
     _MAX_CAPACITY = 2
-    _white_item: T
-    _black_item: T
-    
-    def __init__(
-            self,
-            white_item: T,
-            black_item: T,
-    ):
-        """
-        Args:
-            white_item: T
-            black_item: T
-        """
-        self._white_item = white_item
-        self._black_item = black_item
-    
-    @property
-    def white_item(self) -> T:
-        return self._white_item
-    
-    @property
-    def black_item(self) -> T:
-        return self._black_item
-    
+    WHITE_KEY = GameColor.WHITE
+    BLACK_KEY = GameColor.BLACK
+
     @property
     @abstractmethod
     def same_items(self) -> bool:
@@ -87,7 +64,7 @@ class ColorBinder(ABC, Generic[T]):
     
     @property
     @abstractmethod
-    def to_dict(self) -> Dict[GameColor, T]:
+    def to_dict(self) -> Dict[GameColor, Dict[Archetype, T]]:
         pass
 
         
