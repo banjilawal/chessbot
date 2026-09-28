@@ -12,11 +12,11 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assurance import ModelPrimeExtract
-from domain import Attack, AttackBlueprint
+from domain import Encounter, AttackBlueprint
 from transit import AttackCarrier
 
 
-class AttackPrimeExtract(ModelPrimeExtract[Attack]):
+class AttackPrimeExtract(ModelPrimeExtract[Encounter]):
     """
     Role
         - Data Holder

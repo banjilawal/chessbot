@@ -12,11 +12,11 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from domain import (
-    CheckWarningNullGroup, CheckWarning, CheckWarningTypeUnion, AttackManifest
+    CheckWarningNullGroup, EncounterWarning, CheckWarningTypeUnion, AttackManifest
 )
 
 
-class CheckWarningManifest(AttackManifest[CheckWarning]):
+class CheckWarningManifest(AttackManifest[EncounterWarning]):
     """
      Role:
         1.  Metadata

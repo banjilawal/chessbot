@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import CheckWarning, CheckAttackWarningBlueprint
+from domain import EncounterWarning, CheckAttackWarningBlueprint
 from transit import AttackCarrier
 
 
-class CheckWarningCarrier(AttackCarrier[CheckWarning]):
+class CheckWarningCarrier(AttackCarrier[EncounterWarning]):
     """
     Role:
         - Boundary Carrier Interface
@@ -41,7 +41,7 @@ class CheckWarningCarrier(AttackCarrier[CheckWarning]):
     
     def __init__(
             self,
-            model: Optional[CheckWarning] | None = None,
+            model: Optional[EncounterWarning] | None = None,
             blueprint: Optional[CheckAttackWarningBlueprint] | None = None,
     ):
         """
@@ -54,7 +54,7 @@ class CheckWarningCarrier(AttackCarrier[CheckWarning]):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> Optional[CheckWarning | CheckAttackWarningBlueprint]:
+    def entity(self) -> Optional[EncounterWarning | CheckAttackWarningBlueprint]:
         if self.is_empty:
             return None
         if self.has_model:
@@ -66,7 +66,7 @@ class CheckWarningCarrier(AttackCarrier[CheckWarning]):
         return (
                 self._model is not None and
                 self._blueprint is None and
-                isinstance(self._model, CheckWarning)
+                isinstance(self._model, EncounterWarning)
         )
     
     @property
@@ -92,7 +92,7 @@ class CheckWarningCarrier(AttackCarrier[CheckWarning]):
         if self.is_empty: return None
         if self.is_carrying_blueprint: return self._blueprint
         
-        model = cast(CheckWarning, self._model)
+        model = cast(EncounterWarning, self._model)
         return CheckAttackWarningBlueprint(
             id=model.id,
             team=model.team,

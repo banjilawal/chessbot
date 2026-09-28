@@ -13,13 +13,13 @@ from typing import Optional, cast
 
 from artifcat import ValidationResult, AttackValidationResponse
 from exchange import ModelValidationResponder, AttackValidationRequest
-from domain import Attack
+from domain import Encounter
 from err import AttackValidationResponderException
 from transit import AttackCarrier, AttackValidationDispatcher
 from util import LoggingLevelRouter
 
 
-class AttackValidationResponder(ModelValidationResponder[Attack]):
+class AttackValidationResponder(ModelValidationResponder[Encounter]):
     """
     Role
         - Mediator

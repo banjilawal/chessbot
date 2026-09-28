@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional, Type, cast
 
-from domain import Attack, ManeuverContext, ModelContextBlueprint, Path, Token
+from domain import Encounter, ManeuverContext, ModelContextBlueprint, Path, Token
 from err import ManeuverContextNullException
 
 
@@ -40,7 +40,7 @@ class ManeuverContextBlueprint(ModelContextBlueprint[ManeuverContext]):
 
     _path: Optional[Path]
     _benefit: Optional[int]
-    _attack: Optional[Attack]
+    _attack: Optional[Encounter]
     _traveler: Optional[Token]
 
 
@@ -48,7 +48,7 @@ class ManeuverContextBlueprint(ModelContextBlueprint[ManeuverContext]):
             self,
             path: Optional[Path] | None = None,
             benefit: Optional[int] | None = None,
-            attack: Optional[Attack] | None = None,
+            attack: Optional[Encounter] | None = None,
             traveler: Optional[Token] | None = None,
             domain_class: Optional[Type[ManeuverContext]] | None = None,
             domain_null_exception: Optional[ManeuverContextNullException] | None = None,
@@ -93,7 +93,7 @@ class ManeuverContextBlueprint(ModelContextBlueprint[ManeuverContext]):
     
     
     @property
-    def attack(self) -> Optional[Attack]:
+    def attack(self) -> Optional[Encounter]:
         return self._attack
     
     

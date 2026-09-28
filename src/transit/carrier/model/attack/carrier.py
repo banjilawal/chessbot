@@ -12,10 +12,10 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar
 
-from domain import Attack, AttackBlueprint
+from domain import Encounter, AttackBlueprint
 from transit import ModelCarrier
 
-T = TypeVar("T", bound="Attack")
+T = TypeVar("T", bound="Encounter")
 
 class AttackCarrier(ModelCarrier[T], Generic[T]):
     """
@@ -44,7 +44,7 @@ class AttackCarrier(ModelCarrier[T], Generic[T]):
 
     def __init__(
             self,
-            model: Optional[Attack] | None = None,
+            model: Optional[Encounter] | None = None,
             blueprint: Optional[AttackBlueprint] | None = None,
     ):
         """
@@ -57,7 +57,7 @@ class AttackCarrier(ModelCarrier[T], Generic[T]):
         self._blueprint = blueprint
 
     @property
-    def entity(self) -> Optional[Attack | AttackBlueprint]:
+    def entity(self) -> Optional[Encounter | AttackBlueprint]:
         if self.is_empty:
             return None
         if self.has_model:
@@ -69,7 +69,7 @@ class AttackCarrier(ModelCarrier[T], Generic[T]):
         return (
                 self._model is not None and
                 self._blueprint is None and
-                isinstance(self._model, Attack)
+                isinstance(self._model, Encounter)
         )
 
     @property

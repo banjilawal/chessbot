@@ -10,11 +10,11 @@ from __future__ import annotations
 
 from typing import Generic, Optional, TypeVar, cast
 
-from domain.model import Attack, Maneuver
+from domain.model import Encounter, Maneuver
 from artifcat import Result
 from artifcat.turn import ManeuverState
 
-T = TypeVar("T", Maneuver, Attack)
+T = TypeVar("T", Maneuver, Encounter)
 
 
 class TurnResult(Result[T], Generic[T]):

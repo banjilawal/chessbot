@@ -12,11 +12,11 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import AttackTypeUnion, CheckWarning, CheckWarningBlueprint
+from domain import AttackTypeUnion, EncounterWarning, CheckWarningBlueprint
 from transit import CheckWarningCarrier
 
 
-class CheckWarningTypeUnion(AttackModelTypeUnion[CheckWarning]):
+class CheckWarningTypeUnion(AttackModelTypeUnion[EncounterWarning]):
     """
     Role:
         - Metadata
@@ -37,7 +37,7 @@ class CheckWarningTypeUnion(AttackModelTypeUnion[CheckWarning]):
     
     def __init__(
             self, 
-            model: Optional[Type[CheckWarning]] | None = None,
+            model: Optional[Type[EncounterWarning]] | None = None,
             carrier: Optional[Type[CheckWarningCarrier]] | None = None,
             blueprint: Optional[Type[CheckWarningBlueprint]] | None = None,
     ):
@@ -48,14 +48,14 @@ class CheckWarningTypeUnion(AttackModelTypeUnion[CheckWarning]):
             blueprint: Optional[Type[CheckWarningBlueprint]]
         """
         super().__init__(
-            model=model or CheckWarning,
+            model=model or EncounterWarning,
             carrier=carrier or CheckWarningCarrier,
             blueprint=blueprint or CheckWarningBlueprint
         )
     
     @property
-    def model(self) -> Type[CheckWarning]:
-        return cast(Type[CheckWarning], super().model)
+    def model(self) -> Type[EncounterWarning]:
+        return cast(Type[EncounterWarning], super().model)
     
     @property
     def carrier(self) -> Type[CheckWarningCarrier]:

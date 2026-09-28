@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional
 
 from domain import (
-    CheckWarning, CheckmateAttack, TokenDeployment, Formation, HomeSquare, Team,
+    EncounterWarning, CheckmateEncounter, TokenDeployment, Formation, HomeSquare, Team,
     Token, KingReadiness, TokenReadiness
 )
 
@@ -51,8 +51,8 @@ class KingToken(Token):
         Token
     """
     _readiness: KingReadiness
-    _checkmate: Optional[CheckmateAttack]
-    _check_warning: Optional[CheckWarning]
+    _checkmate: Optional[CheckmateEncounter]
+    _check_warning: Optional[EncounterWarning]
 
     
 
@@ -89,19 +89,19 @@ class KingToken(Token):
         self._readiness = other
         
     @property
-    def checkmate(self) -> Optional[CheckmateAttack]:
+    def checkmate(self) -> Optional[CheckmateEncounter]:
         return self._checkmate
     
     @checkmate.setter
-    def checkmate(self, other: CheckmateAttack):
+    def checkmate(self, other: CheckmateEncounter):
         self._checkmate = other
         
     @property
-    def check_warning(self) -> Optional[CheckWarning]:
+    def check_warning(self) -> Optional[EncounterWarning]:
         return self._check_warning
     
     @check_warning.setter
-    def check_warning(self, other: CheckWarning):
+    def check_warning(self, other: EncounterWarning):
         self._check_warning = other
         
     @property

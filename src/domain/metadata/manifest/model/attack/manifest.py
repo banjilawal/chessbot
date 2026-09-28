@@ -11,9 +11,9 @@ from __future__ import annotations
 
 from typing import Generic, TypeVar, cast
 
-from domain import ModelManifest, Attack, AttackNullGroup, AttackTypeUnion
+from domain import ModelManifest, Encounter, AttackNullGroup, AttackTypeUnion
 
-T = TypeVar("T", bound="Attack")
+T = TypeVar("T", bound="Encounter")
 
 class AttackManifest(ModelManifest[T], Generic[T]):
     """

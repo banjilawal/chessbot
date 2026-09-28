@@ -12,12 +12,12 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar, cast
 
-from domain import Attack, ModelNullGroup
+from domain import Encounter, ModelNullGroup
 from err import (
     AttackBlueprintNullException, AttackCarrierNullException, AttackNullException
 )
 
-T = TypeVar("T", bound="Attack")
+T = TypeVar("T", bound="Encounter")
 
 class AttackNullGroup(ModelNullGroup[T], ABC, Generic[T]):
     """

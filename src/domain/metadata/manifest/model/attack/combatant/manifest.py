@@ -12,11 +12,11 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from domain import (
-    CombatantAttackNullGroup, CombatantAttack, AttackManifest, CombatantAttackTypeUnion
+    CombatantAttackNullGroup, KillEncounter, AttackManifest, CombatantAttackTypeUnion
 )
 
 
-class CombatantAttackManifest(AttackManifest[CombatantAttack]):
+class CombatantAttackManifest(AttackManifest[KillEncounter]):
     """
      Role:
         1.  Metadata

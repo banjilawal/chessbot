@@ -11,13 +11,13 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import AttackNullGroup, CheckWarning
+from domain import AttackNullGroup, EncounterWarning
 from err import (
     CheckAttackNullException, CheckAttackBlueprintNullException, CheckAttackCarrierNullException
 )
 
 
-class CheckAttackNullGroup(AttackNullGroup[CheckWarning]):
+class CheckAttackNullGroup(AttackNullGroup[EncounterWarning]):
     """
     Role:
         - Metadata

@@ -13,12 +13,12 @@ from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import AttackValidatorToolkit, ModelValidator
-from domain import Attack
+from domain import Encounter
 from transit import AttackCarrier
 from util import LoggingLevelRouter
 
 
-class AttackValidator(ModelValidator[Attack]):
+class AttackValidator(ModelValidator[Encounter]):
     """
     Role
         - Integrity, Consistency Maintenance

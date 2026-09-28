@@ -1,7 +1,7 @@
-# src/domain/model/searchable/walk/path/model.py
+# src/domain/model/searchable/path/model.py
 
 """
-Module: domain.model.searchable.walk.path.model
+Module: domain.model.searchable.path.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

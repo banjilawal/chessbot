@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import CheckmateAttack, CheckmateAttackBlueprint
+from domain import CheckmateEncounter, CheckmateAttackBlueprint
 from transit import AttackCarrier
 
 
-class CheckmateAttackCarrier(AttackCarrier[CheckmateAttack]):
+class CheckmateAttackCarrier(AttackCarrier[CheckmateEncounter]):
     """
     Role:
         - Boundary Carrier Interface
@@ -41,7 +41,7 @@ class CheckmateAttackCarrier(AttackCarrier[CheckmateAttack]):
     
     def __init__(
             self,
-            model: Optional[CheckmateAttack] | None = None,
+            model: Optional[CheckmateEncounter] | None = None,
             blueprint: Optional[CheckmateAttackBlueprint] | None = None,
     ):
         """
@@ -54,7 +54,7 @@ class CheckmateAttackCarrier(AttackCarrier[CheckmateAttack]):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> Optional[CheckmateAttack|CheckmateAttackBlueprint]:
+    def entity(self) -> Optional[CheckmateEncounter | CheckmateAttackBlueprint]:
         if self.is_empty:
             return None
         if self.has_model:
@@ -66,7 +66,7 @@ class CheckmateAttackCarrier(AttackCarrier[CheckmateAttack]):
         return (
                 self._model is not None and
                 self._blueprint is None and
-                isinstance(self._model, CheckmateAttack)
+                isinstance(self._model, CheckmateEncounter)
         )
     
     @property
@@ -92,7 +92,7 @@ class CheckmateAttackCarrier(AttackCarrier[CheckmateAttack]):
         if self.is_empty: return None
         if self.is_carrying_blueprint: return self._blueprint
         
-        model = cast(CheckmateAttack, self._model)
+        model = cast(CheckmateEncounter, self._model)
         return CheckmateAttackBlueprint(
             id=model.id,
             team=model.team,

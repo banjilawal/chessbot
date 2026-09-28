@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Generic, Optional, Type, TypeVar, cast
 
-from domain import Attack, AttackBlueprint, ModelTypeUnion
+from domain import Encounter, AttackBlueprint, ModelTypeUnion
 from transit import AttackCarrier
 
-T = TypeVar("T", bound="Attack")
+T = TypeVar("T", bound="Encounter")
 
 class AttackTypeUnion(ModelTypeUnion[T], Generic[T]):
     """
@@ -48,7 +48,7 @@ class AttackTypeUnion(ModelTypeUnion[T], Generic[T]):
             blueprint: Optional[Type[AttackBlueprint[T]]
         """
         super().__init__(
-            model=model or Attack,
+            model=model or Encounter,
             carrier=carrier or AttackCarrier,
             blueprint=blueprint or AttackBlueprint,
         )

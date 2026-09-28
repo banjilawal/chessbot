@@ -1,7 +1,7 @@
-# src/domain/model/searchable/walk/attack/kill/model.py
+# src/domain/model/searchable/encounter/kill/model.py.py
 
 """
-Module: domain.model.searchable.walk.attack.kill.model
+Module: domain.model.searchable.encounter.kill.model
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,67 +12,75 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Attack, CombatantToken, Maneuver, Token
+from domain import CombatantToken, Encounter, Maneuver, Square, Token
 
 
-class CombatantAttack(Attack):
+class KillEncounter(Encounter):
     """
     Role:
         - Model
         - Data Holder
 
     Responsibilities:
-        1.  Store details about attacking an enemy CombatantToken
+        1.  Details about an encounter.
 
     Attributes:
-        killer: Token
-        maneuver: Maneuver
+        id: int
         victim: CombatantToken
+        maneuver: Maneuver
+        location: Square
         attacker_reward: int
 
     Provides:
-
+        
     Super Class:
-        Attack
+        Encounter
     """
+
     
     def __init__(
             self,
-            killer: Token,
-            maneuver: Maneuver,
+            id: int,
             victim: CombatantToken,
+            maneuver: Maneuver,
+            location: Optional[Square] | None = None,
             attacker_reward: Optional[int] | None = None,
     ):
         """
         Args:
-            killer: Token
-            maneuver: Maneuver
+            id: int
             victim: CombatantToken
+            maneuver: Maneuver
+            location: Optional[Square]
             attacker_reward: Optional[int]
         """
         super().__init__(
+            id=id,
             victim=victim,
-            attacker=killer,
             maneuver=maneuver,
-            attacker_reward=attacker_reward or victim.rank.ransom
+            location=location,
+            attacker_reward=attacker_reward,
         )
-
-    @property
-    def killer(self) -> Token:
-        return super().attacker
         
     @property
     def victim(self) -> CombatantToken:
         return cast(CombatantToken, super().victim)
     
+    @property
+    def attacker(self) -> Token:
+        return self.initiater
+
     def __eq__(self, other) -> bool:
         if other is None:
             return False
         if other == self:
             return True
-        if isinstance(other, CombatantAttack):
-            return super().__eq__(other)
+        if isinstance(other, KillEncounter):
+            return self.id == other.id
         return False
+    
+
+
         
         
         

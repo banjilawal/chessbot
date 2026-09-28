@@ -16,7 +16,7 @@ from transit.controller import AttackStackOpsController
 
 from event import AttackEvent
 from microservice import IdentityService, AttackService
-from domain.model import Attack, AttackContext
+from domain.model import Encounter, AttackContext
 from artifcat import DeletionResult, InsertionResult, SearchResult
 from collection.stack import StackService, AttackStackState
 from system import IdFactory, LoggingLevelRouter
@@ -187,7 +187,7 @@ class AttackStackService(StackService[AttackEvent]):
         return request_result
     
     @LoggingLevelRouter.monitor
-    def push(self, item: Attack) -> InsertionResult[bool]:
+    def push(self, item: Encounter) -> InsertionResult[bool]:
         """
         Put the attack onto the schema.
 

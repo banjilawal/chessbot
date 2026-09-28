@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import AttackBlueprint, CombatantAttack, CombatantToken, Maneuver, Token
+from domain import AttackBlueprint, KillEncounter, CombatantToken, Maneuver, Token
 from err import CombatantAttackNullException
 
 
-class CombatantAttackBlueprint(AttackBlueprint[CombatantAttack]):
+class CombatantAttackBlueprint(AttackBlueprint[KillEncounter]):
     """
      Role:
         1.  Metadata
@@ -44,7 +44,7 @@ class CombatantAttackBlueprint(AttackBlueprint[CombatantAttack]):
             attacker: Token,
             maneuver: Maneuver,
             victim: CombatantToken,
-            domain_class: Optional[Type[CombatantAttack]] | None = None,
+            domain_class: Optional[Type[KillEncounter]] | None = None,
             domain_null_exception: Optional[CombatantAttackNullException] | None = None,
             attacker_reward: Optional[int] | None = None,
             id: Optional[int] | None = None,
@@ -65,7 +65,7 @@ class CombatantAttackBlueprint(AttackBlueprint[CombatantAttack]):
             maneuver=maneuver,
             victim=victim,
             attacker_reward=attacker_reward,
-            domain_class=domain_class or CombatantAttack,
+            domain_class=domain_class or KillEncounter,
             domain_null_exception=domain_null_exception or CombatantAttackNullException(),
         )
     
@@ -75,8 +75,8 @@ class CombatantAttackBlueprint(AttackBlueprint[CombatantAttack]):
     
     
     @property
-    def domain_class(self) -> Type[CombatantAttack]:
-        return cast(Type[CombatantAttack], super().domain_class)
+    def domain_class(self) -> Type[KillEncounter]:
+        return cast(Type[KillEncounter], super().domain_class)
     
     
     @property

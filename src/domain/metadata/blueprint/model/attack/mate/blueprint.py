@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import AttackBlueprint, KingToken, Maneuver, CheckmateAttack, Token
+from domain import AttackBlueprint, KingToken, Maneuver, CheckmateEncounter, Token
 from err import CheckmateAttackNullException
 
 
-class CheckmateAttackBlueprint(AttackBlueprint[CheckmateAttack]):
+class CheckmateAttackBlueprint(AttackBlueprint[CheckmateEncounter]):
     """
      Role:
         1.  Metadata
@@ -44,7 +44,7 @@ class CheckmateAttackBlueprint(AttackBlueprint[CheckmateAttack]):
             attacker: Token,
             maneuver: Maneuver,
             mated_king: KingToken,
-            domain_class: Optional[Type[CheckmateAttack]] | None = None,
+            domain_class: Optional[Type[CheckmateEncounter]] | None = None,
             domain_null_exception: Optional[CheckmateAttackNullException] | None = None,
             attacker_reward: Optional[int] | None = None,
             id: Optional[int] | None = None,
@@ -65,7 +65,7 @@ class CheckmateAttackBlueprint(AttackBlueprint[CheckmateAttack]):
             maneuver=maneuver,
             victim=mated_king,
             attacker_reward=attacker_reward,
-            domain_class=domain_class or CheckmateAttack,
+            domain_class=domain_class or CheckmateEncounter,
             domain_null_exception=domain_null_exception or CheckmateAttackNullException(),
         )
     
@@ -79,8 +79,8 @@ class CheckmateAttackBlueprint(AttackBlueprint[CheckmateAttack]):
     
     
     @property
-    def domain_class(self) -> Type[CheckmateAttack]:
-        return cast(Type[CheckmateAttack], super().domain_class)
+    def domain_class(self) -> Type[CheckmateEncounter]:
+        return cast(Type[CheckmateEncounter], super().domain_class)
     
     
     @property

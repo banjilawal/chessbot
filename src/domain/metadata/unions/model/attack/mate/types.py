@@ -12,11 +12,11 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import AttackTypeUnion, CheckmateAttack, CheckmateAttackBlueprint
+from domain import AttackTypeUnion, CheckmateEncounter, CheckmateAttackBlueprint
 from transit import CheckmateAttackCarrier
 
 
-class CheckmateAttackTypeUnion(AttackModelTypeUnion[CheckmateAttack]):
+class CheckmateAttackTypeUnion(AttackModelTypeUnion[CheckmateEncounter]):
     """
     Role:
         - Metadata
@@ -38,7 +38,7 @@ class CheckmateAttackTypeUnion(AttackModelTypeUnion[CheckmateAttack]):
     
     def __init__(
             self, 
-            model: Optional[Type[CheckmateAttack]] | None = None,
+            model: Optional[Type[CheckmateEncounter]] | None = None,
             carrier: Optional[Type[CheckmateAttackCarrier]] | None = None,
             blueprint: Optional[Type[CheckmateWarningBlueprint]] | None = None,
     ):
@@ -49,14 +49,14 @@ class CheckmateAttackTypeUnion(AttackModelTypeUnion[CheckmateAttack]):
             blueprint: Optional[Type[CheckmateAttackBlueprint]]
         """
         super().__init__(
-            model=model or CheckmateAttack,
+            model=model or CheckmateEncounter,
             carrier=carrier or CheckmateAttackCarrier,
             blueprint=blueprint or CheckmateAttackBlueprint
         )
     
     @property
-    def model(self) -> Type[CheckmateAttack]:
-        return cast(Type[CheckmateAttack], super().model)
+    def model(self) -> Type[CheckmateEncounter]:
+        return cast(Type[CheckmateEncounter], super().model)
     
     @property
     def carrier(self) -> Type[CheckmateAttackCarrier]:

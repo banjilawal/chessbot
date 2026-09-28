@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain import Attack, Maneuver, ModelContext, Path, Token
+from domain import Encounter, Maneuver, ModelContext, Path, Token
 
 
 class ManeuverContext(ModelContext[Maneuver]):
@@ -37,14 +37,14 @@ class ManeuverContext(ModelContext[Maneuver]):
     
     _path: Optional[Path]
     _benefit: Optional[int]
-    _attack: Optional[Attack]
+    _attack: Optional[Encounter]
     _traveler: Optional[Token]
     
     def __init__(
             self,
             path: Optional[Path] | None = None,
             benefit: Optional[int] | None = None,
-            attack: Optional[Attack] | None = None,
+            attack: Optional[Encounter] | None = None,
             traveler: Optional[Token] | None = None,
     ):
         """
@@ -69,7 +69,7 @@ class ManeuverContext(ModelContext[Maneuver]):
         return self._benefit
     
     @property
-    def attack(self) -> Optional[Attack]:
+    def attack(self) -> Optional[Encounter]:
         return self._attack
     
     @property

@@ -12,11 +12,14 @@ version: 0.0.2
 # Packages
 from .cartesian import *
 from .coord import *
-from .locus import *
+from .encounter import *
 from .identity import *
+from .locus import *
+from .maneuver import *
+from .path import *
 from .state import *
 from .vector import *
-from .walk import *
+
 
 # Modules
 from .model import SearchableModel

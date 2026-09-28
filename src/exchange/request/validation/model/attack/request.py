@@ -12,11 +12,11 @@ from __future__ import annotations
 from typing import cast
 
 from exchange import ModelValidationRequest
-from domain import Attack
+from domain import Encounter
 from transit import AttackCarrier
 
 
-class AttackValidationRequest(ModelValidationRequest[Attack]):
+class AttackValidationRequest(ModelValidationRequest[Encounter]):
     """
      Role:
          -  Messaging

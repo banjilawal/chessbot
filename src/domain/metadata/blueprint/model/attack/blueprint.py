@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Generic, Optional, Type, TypeVar, cast
 
-from domain import Attack, Maneuver, ModelBlueprint, Token
+from domain import Encounter, Maneuver, ModelBlueprint, Token
 from err import AttackNullException
 
-T = TypeVar("T", bound="Attack")
+T = TypeVar("T", bound="Encounter")
 
 
 class AttackBlueprint(ModelBlueprint[T], Generic[T]):
@@ -51,7 +51,7 @@ class AttackBlueprint(ModelBlueprint[T], Generic[T]):
             victim: Token,
             attacker: Token,
             maneuver: Maneuver,
-            domain_class: Type[Attack],
+            domain_class: Type[Encounter],
             domain_null_exception: AttackNullException,
             attacker_reward: Optional[int] | None = None,
             id: Optional[int] | None = None,
@@ -98,8 +98,8 @@ class AttackBlueprint(ModelBlueprint[T], Generic[T]):
         return self._attacker_reward
     
     @property
-    def domain_class(self) -> Type[Attack]:
-        return cast(Type[Attack], super().domain_class)
+    def domain_class(self) -> Type[Encounter]:
+        return cast(Type[Encounter], super().domain_class)
     
     @property
     def domain_null_exception(self) -> AttackNullException:

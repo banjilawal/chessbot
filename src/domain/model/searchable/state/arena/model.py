@@ -74,7 +74,7 @@ class Arena(StateModel):
         return self._board is None and self._player_binder is None
     
     @property
-    def no_token_opened(self) -> bool:
+    def no_token_has_opened(self) -> bool:
         return (
                 self._board.move_counter == 0 and
                 self._state == ArenaState.NO_TOKEN_OPENED

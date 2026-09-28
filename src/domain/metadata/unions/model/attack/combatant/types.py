@@ -12,11 +12,11 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import Attack, AttackTypeUnion, CombatantAttack, CombatantAttackBlueprint
+from domain import Encounter, AttackTypeUnion, KillEncounter, CombatantAttackBlueprint
 from transit import CombatantAttackCarrier
 
 
-class CombatantAttackTypeUnion(AttackModelTypeUnion[Attack]):
+class CombatantAttackTypeUnion(AttackModelTypeUnion[Encounter]):
     """
     Role:
         - Metadata
@@ -38,7 +38,7 @@ class CombatantAttackTypeUnion(AttackModelTypeUnion[Attack]):
     
     def __init__(
             self, 
-            model: Optional[Type[CombatantAttack]] | None = None,
+            model: Optional[Type[KillEncounter]] | None = None,
             carrier: Optional[Type[CombatantAttackCarrier]] | None = None,
             blueprint: Optional[Type[CombatantBlueprint]] | None = None,
     ):
@@ -49,14 +49,14 @@ class CombatantAttackTypeUnion(AttackModelTypeUnion[Attack]):
             blueprint: Optional[Type[CombatantAttackBlueprint]]
         """
         super().__init__(
-            model=model or CombatantAttack,
+            model=model or KillEncounter,
             carrier=carrier or CombatantAttackCarrier,
             blueprint=blueprint or CombatantAttackBlueprint
         )
     
     @property
-    def model(self) -> Type[CombatantAttack]:
-        return cast(Type[CombatantAttack], super().model)
+    def model(self) -> Type[KillEncounter]:
+        return cast(Type[KillEncounter], super().model)
     
     @property
     def carrier(self) -> Type[CombatantAttackCarrier]:

@@ -12,11 +12,11 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from domain import (
-    CheckmateAttackNullGroup, CheckmateAttack, AttackManifest, CheckmateAttackTypeUnion
+    CheckmateAttackNullGroup, CheckmateEncounter, AttackManifest, CheckmateAttackTypeUnion
 )
 
 
-class CheckcheckmateAttackManifest(AttackManifest[CheckmateAttack]):
+class CheckcheckmateAttackManifest(AttackManifest[CheckmateEncounter]):
     """
      Role:
         1.  Metadata

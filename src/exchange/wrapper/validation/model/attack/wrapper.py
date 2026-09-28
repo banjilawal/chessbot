@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import AttackValidationResponse, ValidationResult
-from domain import Attack, AttackBlueprint
+from domain import Encounter, AttackBlueprint
 from err import AttackValidationResponderException, AttackValidationResponseWrapperException, EmptyAttackCarrierException
 from exchange import (
     AttackValidationResponder, ModelValidationResponseWrapper, AttackValidationRequest
@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 
 
 class AttackValidationResponseWrapper(
-    ModelValidationResponseWrapper[Attack]
+    ModelValidationResponseWrapper[Encounter]
 ):
     """
     Role
@@ -68,7 +68,7 @@ class AttackValidationResponseWrapper(
     def extract_model(
             self, 
             request: AttackValidationRequest,
-    ) -> ValidationResult[Attack]:
+    ) -> ValidationResult[Encounter]:
         """
         Extract a Attack safe to use.
 
@@ -117,7 +117,7 @@ class AttackValidationResponseWrapper(
                 )
             )
         # --- Send the work product. ---#
-        model = cast(Attack, response.valid_model)
+        model = cast(Encounter, response.valid_model)
         return ValidationResult.success(model)
     
     @LoggingLevelRouter.monitor

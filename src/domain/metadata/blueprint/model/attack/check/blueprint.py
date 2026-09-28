@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import AttackBlueprint, CheckWarning, KingToken, Maneuver, Token
+from domain import AttackBlueprint, EncounterWarning, KingToken, Maneuver, Token
 from err import CheckAttackNullException
 
 
-class CheckWarningBlueprint(AttackBlueprint[CheckWarning]):
+class CheckWarningBlueprint(AttackBlueprint[EncounterWarning]):
     """
      Role:
         1.  Metadata
@@ -44,7 +44,7 @@ class CheckWarningBlueprint(AttackBlueprint[CheckWarning]):
             attacker: Token,
             maneuver: Maneuver,
             checked_king: KingToken,
-            domain_class: Optional[Type[CheckWarning]] | None = None,
+            domain_class: Optional[Type[EncounterWarning]] | None = None,
             domain_null_exception: Optional[CheckAttackNullException] | None = None,
             attacker_reward: Optional[int] | None = None,
             id: Optional[int] | None = None,
@@ -65,7 +65,7 @@ class CheckWarningBlueprint(AttackBlueprint[CheckWarning]):
             maneuver=maneuver,
             victim=checked_king,
             attacker_reward=attacker_reward,
-            domain_class=domain_class or CheckWarning,
+            domain_class=domain_class or EncounterWarning,
             domain_null_exception=domain_null_exception or CheckAttackNullException(),
         )
     
@@ -79,8 +79,8 @@ class CheckWarningBlueprint(AttackBlueprint[CheckWarning]):
     
     
     @property
-    def domain_class(self) -> Type[CheckWarning]:
-        return cast(Type[CheckWarning], super().domain_class)
+    def domain_class(self) -> Type[EncounterWarning]:
+        return cast(Type[EncounterWarning], super().domain_class)
     
     
     @property

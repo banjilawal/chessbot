@@ -13,7 +13,7 @@ from typing import Optional, Type, cast
 
 
 from domain import (
-    CheckWarning, CheckmateAttack, Coord, KingReadiness, KingToken, Formation, HomeSquare,
+    EncounterWarning, CheckmateEncounter, Coord, KingReadiness, KingToken, Formation, HomeSquare,
     Team, TokenBlueprint, TokenDeployment
 )
 from err import KingTokenNullException
@@ -43,8 +43,8 @@ class KingTokenBlueprint(TokenBlueprint[KingToken]):
         TokenBlueprint
      """
     _readiness: KingReadiness
-    _checkmate: Optional[CheckmateAttack]
-    _check_warning: Optional[CheckWarning]
+    _checkmate: Optional[CheckmateEncounter]
+    _check_warning: Optional[EncounterWarning]
 
     
     def __init__(
@@ -56,8 +56,8 @@ class KingTokenBlueprint(TokenBlueprint[KingToken]):
             home_square: Optional[HomeSquare] | None = None,
             deployment: Optional[TokenDeployment] | None = None,
             readiness: Optional[KingReadiness] | None = None,
-            checkmate: Optional[CheckmateAttack] | None = None,
-            check_warning: Optional[CheckWarning] | None = None,
+            checkmate: Optional[CheckmateEncounter] | None = None,
+            check_warning: Optional[EncounterWarning] | None = None,
             domain_class: Optional[Type[KingToken]] | None = None,
             domain_null_exception: Optional[KingTokenNullException] | None = None,
             id: Optional[int] | None = None,
@@ -96,11 +96,11 @@ class KingTokenBlueprint(TokenBlueprint[KingToken]):
         return self._readiness
         
     @property
-    def checkmate(self) -> Optional[CheckmateAttack]:
+    def checkmate(self) -> Optional[CheckmateEncounter]:
         return self._checkmate
     
     @property
-    def check_warning(self) -> Optional[CheckWarning]:
+    def check_warning(self) -> Optional[EncounterWarning]:
         return self._check_warning
     
     @property

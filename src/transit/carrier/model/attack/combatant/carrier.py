@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import CombatantAttack, CombatantAttackBlueprint
+from domain import KillEncounter, CombatantAttackBlueprint
 from transit import AttackCarrier
 
 
-class CombatantAttackCarrier(AttackCarrier[CombatantAttack]):
+class CombatantAttackCarrier(AttackCarrier[KillEncounter]):
     """
     Role:
         - Boundary Carrier Interface
@@ -41,7 +41,7 @@ class CombatantAttackCarrier(AttackCarrier[CombatantAttack]):
     
     def __init__(
             self,
-            model: Optional[CombatantAttack] | None = None,
+            model: Optional[KillEncounter] | None = None,
             blueprint: Optional[CombatantAttackBlueprint] | None = None,
     ):
         """
@@ -54,7 +54,7 @@ class CombatantAttackCarrier(AttackCarrier[CombatantAttack]):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> Optional[CombatantAttack|CombatantAttackBlueprint]:
+    def entity(self) -> Optional[KillEncounter | CombatantAttackBlueprint]:
         if self.is_empty:
             return None
         if self.has_model:
@@ -66,7 +66,7 @@ class CombatantAttackCarrier(AttackCarrier[CombatantAttack]):
         return (
                 self._model is not None and
                 self._blueprint is None and
-                isinstance(self._model, CombatantAttack)
+                isinstance(self._model, KillEncounter)
         )
     
     @property
@@ -92,7 +92,7 @@ class CombatantAttackCarrier(AttackCarrier[CombatantAttack]):
         if self.is_empty: return None
         if self.is_carrying_blueprint: return self._blueprint
         
-        model = cast(CombatantAttack, self._model)
+        model = cast(KillEncounter, self._model)
         return CombatantAttackBlueprint(
             id=model.id,
             team=model.team,

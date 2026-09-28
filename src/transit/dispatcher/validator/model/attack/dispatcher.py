@@ -14,13 +14,13 @@ from typing import Any, cast
 
 from assurance import AttackValidator
 from artifcat import ValidationResult
-from domain import Attack
+from domain import Encounter
 from err import AttackValidationDispatcherException
 from transit import ModelValidationDispatcher, AttackCarrier
 from util import LoggingLevelRouter
 
 
-class AttackValidationDispatcher(ModelValidationDispatcher[Attack]):
+class AttackValidationDispatcher(ModelValidationDispatcher[Encounter]):
     """
     Role
         -   Integrity Assurance Manager

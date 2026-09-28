@@ -13,11 +13,11 @@ from typing import Optional, cast
 
 from artifcat import ModelBuildResponse, ResponseState, BuildResult
 from client import Request, AttackBuildRequest
-from domain import Attack, AttackBlueprint
+from domain import Encounter, AttackBlueprint
 from transit import AttackCarrier
 
 
-class AttackBuildResponse(ModelBuildResponse[Attack]):
+class AttackBuildResponse(ModelBuildResponse[Encounter]):
     """
     Role
         -   Messaging
@@ -80,7 +80,7 @@ class AttackBuildResponse(ModelBuildResponse[Attack]):
         return cast(AttackBuildRequest, super().request)
     
     @property
-    def valid_model(self) -> Optional[Attack]:
+    def valid_model(self) -> Optional[Encounter]:
         # Handle the case that the fabrication failed.
         if self.result.is_failure:
             return None
@@ -97,11 +97,11 @@ class AttackBuildResponse(ModelBuildResponse[Attack]):
         if not carrier.has_model:
             return None
         # --- Extract the model. ---#
-        model = cast(Attack, carrier.entity)
+        model = cast(Encounter, carrier.entity)
         # Handle the case that the model is null or the wrong type.
         if (
             model is None or
-            not isinstance(model, Attack)
+            not isinstance(model, Encounter)
         ):
             return None
         # Finally send the success result.

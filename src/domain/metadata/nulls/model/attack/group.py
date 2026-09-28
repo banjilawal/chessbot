@@ -11,13 +11,13 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import ModelNullGroup, Attack
+from domain import ModelNullGroup, Encounter
 from err import (
     AttackBlueprintNullException, AttackCarrierNullException, AttackNullException
 )
 
 
-class AttackNullGroup(ModelNullGroup[Attack]):
+class AttackNullGroup(ModelNullGroup[Encounter]):
     """
     Role:
         - Metadata
