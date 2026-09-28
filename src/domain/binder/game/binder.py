@@ -15,7 +15,7 @@ from config import GameColor
 from domain import ColorBinder, Game, Player
 
 
-class GamePlayerColorBinder(ColorBinder[Game, Player]):
+class PlayerColorBinder(ColorBinder[Player]):
     """
     Role:
         - Mapper
@@ -24,7 +24,6 @@ class GamePlayerColorBinder(ColorBinder[Game, Player]):
         1.  Maps the Player correctly to its color slot on the Game.
         
     Attributes:
-        id: int
         primary: Game
         white_player: Player
         black_player: Player
@@ -38,22 +37,17 @@ class GamePlayerColorBinder(ColorBinder[Game, Player]):
     
     def __init__(
             self,
-            id: int,
-            primary: Game,
             white_player: Player,
             black_player: Player,
             max_capacity: Optional[int] | None = None,
     ):
         """
         Args:
-            id: int
-            primary: Game
             white_player: Player
             black_player: Player
             max_capacity: Optional[int]
         """
         super().__init__(
-            id=id,
             primary=primary, 
             max_capacity=max_capacity or self.MAX_CAPACITY,
         )
@@ -61,10 +55,6 @@ class GamePlayerColorBinder(ColorBinder[Game, Player]):
             GameColor.WHITE: white_player,
             GameColor.BLACK: black_player,
         }
-        
-    @property
-    def primary(self) -> Game:
-        return cast(Game, super().primary)
     
     @property
     def white_player(self) -> Player:
@@ -93,7 +83,7 @@ class GamePlayerColorBinder(ColorBinder[Game, Player]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, GamePlayerColorBinder):
+        if isinstance(other, PlayerColorBinder):
             return self.id == other.id
         return False
         

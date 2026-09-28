@@ -10,15 +10,14 @@ version: 1.0.0
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Dict, Generic, Optional, TypeVar
+from typing import Dict, Generic, TypeVar
 
 from config import GameColor
 from domain import Model
 
-P = TypeVar("P", bound="Model")
-S = TypeVar("S", bound="Model")
+T = TypeVar("T", bound="Model")
 
-class ColorBinder(ABC, Generic[P, S]):
+class ColorBinder(ABC, Generic[T]):
     """
     Role:
         - Mapper
@@ -28,7 +27,6 @@ class ColorBinder(ABC, Generic[P, S]):
             relationship.
         
     Attributes:
-        id: int
         max_capacity: int
         
     Provides:
@@ -36,38 +34,40 @@ class ColorBinder(ABC, Generic[P, S]):
     Super Class:
         Structure
     """
-    MAX_CAPACITY = 2
-    
-    _id: int
-    _primary: P
-    _max_capacity: int
+    _MAX_CAPACITY = 2
+    _white_item: T
+    _black_item: T
     
     def __init__(
             self,
-            id: int,
-            primary: P,
-            max_capacity: Optional[int] | None = None,
+            white_item: T,
+            black_item: T,
     ):
         """
         Args:
-            id: int
-            max_capacity: Optional[int]
+            white_item: T
+            black_item: T
         """
-        self._id = id
-        self._primary = primary
-        self._max_capacity = max_capacity or self.MAX_CAPACITY
-        
-    @property
-    def id(self) -> int:
-        return self._id
+        self._white_item = white_item
+        self._black_item = black_item
     
     @property
-    def primary(self) -> P:
-        return self._primary
+    def white_item(self) -> T:
+        return self._white_item
     
     @property
-    def max_capacity(self) -> int:
-        return self._max_capacity
+    def black_item(self) -> T:
+        return self._black_item
+    
+    @property
+    @abstractmethod
+    def same_items(self) -> bool:
+        pass
+    
+    @property
+    @abstractmethod
+    def items_are_different(self) -> bool:
+        pass
     
     @property
     def size(self) -> int:
@@ -79,27 +79,16 @@ class ColorBinder(ABC, Generic[P, S]):
     
     @property
     def is_correct_size(self) -> bool:
-        return self.size == self._max_capacity
+        return self.size == self._MAX_CAPACITY
     
     @property
     def is_over_capacity(self) -> bool:
-        return self.size > self._max_capacity
+        return self.size > self._MAX_CAPACITY
     
     @property
     @abstractmethod
-    def to_dict(self) -> Dict[GameColor, S]:
+    def to_dict(self) -> Dict[GameColor, T]:
         pass
-    
-    
-    def __eq__(self, other):
-        if other is self: return True
-        if other is None: return False
-        if isinstance(other, ColorBinder):
-            return self.id == other.id
-        return False
-        
-    def __hash__(self):
-        return hash(self.id)
 
         
     

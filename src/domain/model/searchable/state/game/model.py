@@ -9,7 +9,7 @@ version: 1.0.0
 
 from typing import List, Optional
 
-from domain import Arena, Championship, GamePlayerColorBinder, GameState, CheckmateAttack, Player, StateModel
+from domain import Arena, Championship, PlayerColorBinder, GameState, CheckmateAttack, Player, StateModel
 from game import GameResult
 from util import IdFactory
 
@@ -40,7 +40,7 @@ class Game(StateModel):
     _arena: Arena
     _state: GameState
     _result: Optional[GameResult]
-    _binder: GamePlayerColorBinder
+    _binder: PlayerColorBinder
     _temp_binder_id: int
     _checkmate: Optional[CheckmateAttack]
     _tie_record: Optional[SquareRegister]
@@ -69,7 +69,7 @@ class Game(StateModel):
                 binder_id or
                 IdFactory.next_id(class_name="GamePlayerColorBinder")
         )
-        self._binder = GamePlayerColorBinder(
+        self._binder = PlayerColorBinder(
             primary=self,
             id=self._temp_binder_id,
             white_player=white_player,
@@ -83,7 +83,7 @@ class Game(StateModel):
         return self._arena
     
     @property
-    def binder(self) -> GamePlayerColorBinder:
+    def binder(self) -> PlayerColorBinder:
         return self._binder
     
     @property
