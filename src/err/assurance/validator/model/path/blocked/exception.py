@@ -1,7 +1,7 @@
 # src/err/assurance/validator/model/path/blocked/exception.py
 
 """
-Module: err.assurance.validator.modelpath.blocked.exception
+Module: err.assurance.validator.model.path.blocked.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

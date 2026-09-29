@@ -1,7 +1,7 @@
 # src/err/assurance/validator/model/path/attack/exception.py
 
 """
-Module: err.assurance.validator.modelpath.attack.exception
+Module: err.assurance.validator.model.path.attack.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

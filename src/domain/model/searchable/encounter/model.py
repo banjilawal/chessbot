@@ -76,10 +76,6 @@ class Encounter(SearchableModel, ABC):
     @property
     def maneuver(self) -> Maneuver:
         return self._maneuver
-    
-    @property
-    def initiater(self) -> Token:
-        return self._maneuver.traveler
         
     @property
     def attacker_reward(self) -> int:
@@ -95,11 +91,7 @@ class Encounter(SearchableModel, ABC):
         if other == self:
             return True
         if isinstance(other, Encounter):
-            return (
-                    self.id == other.id and
-                    self._initiater == other.attacker and
-                    self._victim == other.victim
-            )
+            return self.id == other.id
         return False
     
 

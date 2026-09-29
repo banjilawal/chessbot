@@ -1,7 +1,7 @@
 # src/err/assurance/validator/model/square/exception.py
 
 """
-Module: err.assurance.validator.modelsquare.exception
+Module: err.assurance.validator.model.square.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

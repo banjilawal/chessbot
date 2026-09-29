@@ -1,13 +1,13 @@
 # src/err/assurance/validator/model/board/__init__.py
 
 """
-Module: err.assurance.validator.modelboard.__init__
+Module: err.assurance.validator.model.board.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.ASSURANCE.VALIDATOR.MODELBOARD PACKAGE ===========#
+# ============ ERR.ASSURANCE.VALIDATOR.MODEL.BOARD PACKAGE ===========#
 
 # Packages
 

@@ -13,7 +13,7 @@ from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
 from assurance import PrimingValidator
-from domain import StateModelBlueprint
+from domain import IdentifiableModelBlueprint
 from err import BlueprintIdExctractorException, BlueprintNullException
 from microservice import IdentityService
 from util import IdFactory, LoggingLevelRouter
@@ -62,7 +62,7 @@ class BlueprintIdExtractor:
             self,
             candidate: Any,
             blueprint_owner_name: str,
-            blueprint_type: Type[StateModelBlueprint],
+            blueprint_type: Type[IdentifiableModelBlueprint],
             blueprint_null_exception: BlueprintNullException,
     ) -> ValidationResult[int]:
         """
@@ -104,7 +104,7 @@ class BlueprintIdExtractor:
                 )
             )
         blueprint = cast(Type[blueprint_type], priming.payload)
-        if not isinstance(blueprint, StateModelBlueprint):
+        if not isinstance(blueprint, IdentifiableModelBlueprint):
             return ValidationResult.failure(
                 BlueprintIdExctractorException(
                     cls_mthd=method,
@@ -117,7 +117,7 @@ class BlueprintIdExtractor:
                     ),
                 )
             )
-        state_blueprint = cast(StateModelBlueprint, blueprint)
+        state_blueprint = cast(IdentifiableModelBlueprint, blueprint)
         candidate_id = state_blueprint.id
         
         # --- If the candidate_id is null send a new one to the caller. ---#

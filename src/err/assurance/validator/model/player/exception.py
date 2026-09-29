@@ -1,7 +1,7 @@
 # src/err/assurance/validator/model/player/exception.py
 
 """
-Module: err.assurance.validator.modelplayer.exception
+Module: err.assurance.validator.model.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
