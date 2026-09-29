@@ -1,7 +1,7 @@
-# src/domain/model/searchable/state/arena/model.py
+# src/domain/model/searchable/state/game/model.py
 
 """
-Module: domain.model.searchable.state.arena.model
+Module: domain.model.searchable.state.game.model
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -9,9 +9,10 @@ version: 1.0.0
 
 from typing import Optional
 
-from artifcat import CheckmateEncounter
-from domain import Arena, PlayerColorBinder, GameState, Player, StalemateEncounter, StateModel
-from game import GameResult
+from domain import (
+    Arena, CheckmateEncounter, GameState, Player, PlayerColorBinder,
+    StalemateEncounter, StateModel
+)
 
 
 class Game(StateModel):
@@ -27,9 +28,8 @@ class Game(StateModel):
         arena: Arena
         white_player: Player
         black_player: Player
-        binder_id: Optional[int]
-        state: Optional[GameState]
-        result: Optional[GameResult]
+        checkmate: Optional[CheckmateEncounter]
+        stalemate: Optional[StalemateEncounter]
 
      Provides:
 
@@ -39,9 +39,7 @@ class Game(StateModel):
     _id: int
     _arena: Arena
     _state: GameState
-    _result: Optional[GameResult]
     _binder: PlayerColorBinder
-    _temp_binder_id: int
     _checkmate: Optional[CheckmateEncounter]
     _stalemate: Optional[StalemateEncounter]
     
@@ -69,7 +67,6 @@ class Game(StateModel):
             black_player=black_player,
         )
 
-    
     @property
     def arena(self) -> Arena:
         return self._arena
@@ -79,20 +76,28 @@ class Game(StateModel):
         return self._binder
     
     @property
+    def checkmate(self) -> Optional[CheckmateEncounter]:
+        return self._checkmate
+    
+    @checkmate.setter
+    def checkmate(self, other: CheckmateEncounter):
+        self._checkmate = other
+    
+    @property
+    def stalemate(self) -> Optional[StalemateEncounter]:
+        return self.stalemate
+    
+    @stalemate.setter
+    def stalemate(self, other: StalemateEncounter):
+        self._stalemate = other
+    
+    @property
     def state(self) -> GameState:
         return self._state
     
     @state.setter
     def state(self, other: GameState):
         self._state = other
-    
-    @property
-    def result(self) -> Optional[GameResult]:
-        return self._result
-    
-    @result.setter
-    def result(self, other:GameResult):
-        self._result = other
     
     @property
     def is_ready(self) -> bool:
@@ -124,9 +129,9 @@ class Game(StateModel):
     def is_won(self) -> bool:
         return (
                 self._checkmate is not None and
-                self._checkmate.is_success and
                 self._stalemate is None and
-                self._state == GameState.WON
+                self._state == GameState.WON and
+                isinstance(self._checkmate, CheckmateEncounter)
         )
     
     @property
@@ -134,7 +139,8 @@ class Game(StateModel):
         return (
             self._checkmate is None and
             self._stalemate is not None and
-            self._state == GameState.STALEMATE
+            self._state == GameState.STALEMATE and
+            isinstance(self._stalemate, StalemateEncounter)
         )
     
     @property

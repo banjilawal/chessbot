@@ -10,8 +10,6 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.BLUEPRINT.MODEL.IDEN.PLAYER PACKAGE ===========#
 
 # Packages
-from .human import HumanPlayerBlueprint
-from .machine import MachinePlayerBlueprint
 
 # Modules
 from .blueprint import  PlayerBlueprint

@@ -9,15 +9,14 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Generic, Optional, Type, TypeVar, cast
+from typing import Optional, Type, cast
 
-from domain import Player, IdentifiableModelBlueprint
+from domain import Account, Archetype, Game, IdentifiableModelBlueprint, Player
 from err import PlayerNullException
 from game import GameAdviser
 
-T = TypeVar("T", bound="Player")
 
-class PlayerBlueprint(IdentifiableModelBlueprint[T], Generic[T]):
+class PlayerBlueprint(IdentifiableModelBlueprint[Player]):
     """
      Role:
         1.  Metadata
@@ -26,12 +25,13 @@ class PlayerBlueprint(IdentifiableModelBlueprint[T], Generic[T]):
         1.  Provides values for hydrating a Player object.
 
     Attributes:
-        name: str
+        game: Game
+        account: Account
+        archetype: Archetype
         adviser: Optional[GameAdviser]
         id: Optional[int]
         
         domain_class: Type[Player]
-        search_context_class: Type[PlayerContext]
         domain_null_exception: PlayerNullException
 
     Provides:
@@ -39,19 +39,25 @@ class PlayerBlueprint(IdentifiableModelBlueprint[T], Generic[T]):
      Super Class:
         IdentifiableModelBlueprint
      """
-    _name: str
+    _game: Game
+    _account: Account
+    _archetype: Archetype
     _adviser: Optional[GameAdviser]
     
     def __init__(self,
-            name: str,
+            game: Game,
+            account: Account,
+            archetype: Archetype,
             adviser: Optional[GameAdviser] | None = None,
-            domain_class: Optional[Type[T]] | None = None,
+            domain_class: Optional[Type[Player]] | None = None,
             domain_null_exception: Optional[PlayerNullException] | None = None,
             id: Optional[int] | None = None,
     ):
         """
         Args:
-            name: str
+            game: Game
+            account: Account
+            archetype: Archetype
             adviser: Optional[GameAdviser]
             domain_class: Optional[Type[Player]]
             domain_null_exception: Optional[PlayerNullException]
@@ -62,23 +68,31 @@ class PlayerBlueprint(IdentifiableModelBlueprint[T], Generic[T]):
             domain_class=domain_class or Type[Player],
             domain_null_exception=domain_null_exception or PlayerNullException(),
         )
-        self._name = name
+        self._game = game
+        self._account = account
+        self._archetype = archetype
         self._adviser = adviser
     
     @property
-    def name(self) -> str:
-        return self._name
+    def account(self) -> Account:
+        return self._account
+    
+    @property
+    def archetype(self) -> Archetype:
+        return self._archetype
+    
+    @property
+    def game(self) -> Game:
+        return self._game
     
     @property
     def adviser(self) -> Optional[GameAdviser]:
         return self._adviser
     
     @property
-    def domain_class(self) -> Type[T]:
-        return cast(Type[T], super().domain_class)
+    def domain_class(self) -> Type[Player]:
+        return cast(Type[Player], super().domain_class)
     
     @property
     def domain_null_exception(self) -> PlayerNullException:
         return cast(PlayerNullException, super().domain_null_exception)
-    
-    
