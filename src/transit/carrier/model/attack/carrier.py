@@ -23,7 +23,7 @@ class EncounterCarrier(ModelCarrier[T], Generic[T]):
         - Boundary Carrier Interface
 
     Responsibilities:
-        1.  Transport a hydrated Encounter or its Blueprint across boundaries.
+        1.  Transport a hydrated Encounter or its Blueprint.
 
     Attributes:
         size: int
@@ -73,7 +73,7 @@ class EncounterCarrier(ModelCarrier[T], Generic[T]):
         )
 
     @property
-    def is_carrying_blueprint(self) -> bool:
+    def has_blueprint(self) -> bool:
         return (
                 not self.has_model and
                 isinstance(self._blueprint, EncounterBlueprint)
@@ -88,7 +88,7 @@ class EncounterCarrier(ModelCarrier[T], Generic[T]):
         return self.size == 0
 
     @property
-    def is_over_capacity(self) -> bool:
+    def not_consistent(self) -> bool:
         return self.size > 1
 
     @abstractmethod

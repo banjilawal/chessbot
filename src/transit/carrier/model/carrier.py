@@ -25,7 +25,7 @@ class ModelCarrier(EntityCarrier[T], ABC, Generic[T]):
         - Boundary Carrier Interface
 
     Responsibilities:
-        1.  Transport a hydrated Model or its Blueprint across processing boundaries.
+        1.  Transport a hydrated Model or its Blueprint.
 
     Attributes:
         size: int

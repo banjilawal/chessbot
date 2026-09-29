@@ -21,7 +21,7 @@ class PathCarrier(ModelCarrier[Path]):
         - Boundary Carrier Interface
 
     Responsibilities:
-        1.  Transport a hydrated Path or its Blueprint across processing boundaries.
+        1.  Transport a hydrated Path or its Blueprint.
 
     Attributes:
         size: int
@@ -72,7 +72,7 @@ class PathCarrier(ModelCarrier[Path]):
         )
     
     @property
-    def is_carrying_blueprint(self) -> bool:
+    def has_blueprint(self) -> bool:
         return (
                 not self.has_model and
                 isinstance(self._blueprint, PathBlueprint)
@@ -87,12 +87,12 @@ class PathCarrier(ModelCarrier[Path]):
         return self.size == 0
     
     @property
-    def is_over_capacity(self) -> bool:
+    def not_consistent(self) -> bool:
         return self.size > 1
     
     def extract_blueprint(self) -> Optional[PathBlueprint]:
         if self.is_empty: return None
-        if self.is_carrying_blueprint: return self._blueprint
+        if self.has_blueprint: return self._blueprint
         
         model = cast(Path, self._model)
         return PathBlueprint(

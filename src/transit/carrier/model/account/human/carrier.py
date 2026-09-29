@@ -21,7 +21,7 @@ class HumanAccountCarrier(AccountCarrier):
         - Boundary Carrier Interface
 
     Responsibilities:
-        1.  Transport a hydrated HumanAccount or its Blueprint across processing boundaries.
+        1.  Transport a hydrated HumanAccount or its Blueprint.
 
     Attributes:
         size: int
@@ -29,10 +29,10 @@ class HumanAccountCarrier(AccountCarrier):
         is_over_capacity: bool
         is_model_carrier: bool
         is_blueprint_carrier: bool
-        entity: [HumanAccount|HumanBlueprint]
+        entity: [HumanAccount|HumanAccountBlueprint]
 
     Provides:
-        -   def extract_blueprint() -> Optional[HumanBlueprint]
+        -   def extract_blueprint() -> Optional[HumanAccountBlueprint]
 
     Super Class:
         HumanAccountCarrier
@@ -49,7 +49,7 @@ class HumanAccountCarrier(AccountCarrier):
         """
         Args:
             model: Optional[HumanAccount]
-            blueprint: Optional[HumanBlueprint]
+            blueprint: Optional[HumanAccountBlueprint]
         """
         super().__init__()
         self._model = model
@@ -72,7 +72,7 @@ class HumanAccountCarrier(AccountCarrier):
         )
     
     @property
-    def is_carrying_blueprint(self) -> bool:
+    def has_blueprint(self) -> bool:
         return (
                 not self.has_model and
                 isinstance(self._blueprint, HumanAccountBlueprint)
@@ -87,18 +87,20 @@ class HumanAccountCarrier(AccountCarrier):
         return self.size == 0
     
     @property
-    def is_over_capacity(self) -> bool:
-        return self.size > 1
+    def is_consistent(self) -> bool:
+        return self.size == 1
+    
+    @property
+    def not_consistent(self) -> bool:
+        return not self.size
     
     def extract_blueprint(self) -> Optional[HumanAccountBlueprint]:
         if self.is_empty: return None
-        if self.is_carrying_blueprint: return self._blueprint
+        if self.has_blueprint: return self._blueprint
         
         model = cast(HumanAccount, self._model)
         return HumanAccountBlueprint(
-            id=model.id,
-            name=model.name,
-            adviser=model.adviser,
+            subscriber=model.subscriber,
         )
     
     

@@ -24,7 +24,7 @@ class EntityCarrier(ABC, Generic[T]):
         - Boundary Carrier Interface
 
     Responsibilities:
-        1.  Transport a hydrated Object or its Blueprint across processing boundaries.
+        1.  Transport a hydrated Object or its Blueprint.
 
     Attributes:
         size: int
@@ -57,12 +57,7 @@ class EntityCarrier(ABC, Generic[T]):
     
     @property
     @abstractmethod
-    def is_carrying_blueprint(self) -> bool:
-        pass
-    
-    @property
-    @abstractmethod
-    def is_empty(self) -> bool:
+    def has_blueprint(self) -> bool:
         pass
     
     @property
@@ -72,7 +67,17 @@ class EntityCarrier(ABC, Generic[T]):
     
     @property
     @abstractmethod
-    def is_over_capacity(self) -> bool:
+    def is_empty(self) -> bool:
+        pass
+    
+    @property
+    @abstractmethod
+    def is_consistent(self) -> bool:
+        pass
+    
+    @property
+    @abstractmethod
+    def not_consistent(self) -> bool:
         pass
     
     @abstractmethod

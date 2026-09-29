@@ -25,7 +25,7 @@ class RegisterCarrier(StructureCarrier[T], ABC, Generic[T]):
         - Boundary Carrier Interface
 
     Responsibilities:
-        1.  Transport a hydrated Register its Blueprint across processing boundaries.
+        1.  Transport a hydrated Register its Blueprint.
 
     Attributes:
         size: int

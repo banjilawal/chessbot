@@ -25,7 +25,7 @@ class StructureCarrier(EntityCarrier[T], ABC, Generic[T]):
         - Boundary Carrier Interface
 
     Responsibilities:
-        1.  Transport a hydrated Structure or its Blueprint across processing boundaries.
+        1.  Transport a hydrated Structure or its Blueprint.
 
     Attributes:
         size: int

@@ -10,8 +10,8 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.BLUEPRINT.MODEL PACKAGE ===========#
 
 # Packages
-from domain.metadata.blueprint.model.iden.encouter import *
 from .coord import *
+from .iden import *
 from .maneuver import *
 from .rank import *
 from .scalar import *

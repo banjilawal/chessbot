@@ -21,7 +21,7 @@ class ArenaContextCarrier(ContextCarrier[ArenaContext]):
         - Boundary Carrier Interface
 
     Responsibilities:
-        1.  Transport a hydrated ArenaContext or its Blueprint across processing boundaries.
+        1.  Transport a hydrated ArenaContext or its Blueprint.
 
     Attributes:
         size: int
@@ -87,12 +87,12 @@ class ArenaContextCarrier(ContextCarrier[ArenaContext]):
         return self.size == 0
     
     @property
-    def is_over_capacity(self) -> bool:
+    def not_consistent(self) -> bool:
         return self.size > 1
     
     def extract_ContextBlueprint(self) -> Optional[ArenaContextBlueprint]:
         if self.is_empty: return None
-        if self.is_carrying_blueprint: return self._blueprint
+        if self.has_blueprint: return self._blueprint
         
         context = cast(ArenaContext, self._model)
         return ArenaContextBlueprint(

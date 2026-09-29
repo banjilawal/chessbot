@@ -25,7 +25,7 @@ class ContextCarrier(EntityCarrier[TContext], ABC, Generic[TContext]):
         - Boundary Carrier Interface
 
     Responsibilities:
-        1.  Transport a hydrated ContextContext or its Blueprint across processing boundaries.
+        1.  Transport a hydrated ContextContext or its Blueprint.
 
     Attributes:
         size: int

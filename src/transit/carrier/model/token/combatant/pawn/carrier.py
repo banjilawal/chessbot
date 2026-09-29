@@ -21,7 +21,7 @@ class PawnTokenCarrier(CombatantTokenCarrier):
         - Boundary Carrier Interface
 
     Responsibilities:
-        1.  Transport a hydrated PawnToken or its Blueprint across processing boundaries.
+        1.  Transport a hydrated PawnToken or its Blueprint.
 
     Attributes:
         size: int
@@ -69,7 +69,7 @@ class PawnTokenCarrier(CombatantTokenCarrier):
         )
     
     @property
-    def is_carrying_blueprint(self) -> bool:
+    def has_blueprint(self) -> bool:
         return (
                 not self.has_model and
                 isinstance(self._blueprint, PawnTokenBlueprint)
@@ -84,12 +84,12 @@ class PawnTokenCarrier(CombatantTokenCarrier):
         return self.size == 0
     
     @property
-    def is_over_capacity(self) -> bool:
+    def not_consistent(self) -> bool:
         return self.size > 1
     
     def extract_blueprint(self) -> Optional[PawnTokenBlueprint]:
         if self.is_empty: return None
-        if self.is_carrying_blueprint: return self._blueprint
+        if self.has_blueprint: return self._blueprint
         
         model = cast(PawnToken, self._model)
         return PawnTokenBlueprint(

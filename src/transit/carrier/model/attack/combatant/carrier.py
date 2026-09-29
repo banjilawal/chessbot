@@ -70,7 +70,7 @@ class CombatantEncounterCarrier(EncounterCarrier[KillEncounter]):
         )
     
     @property
-    def is_carrying_blueprint(self) -> bool:
+    def has_blueprint(self) -> bool:
         return (
                 not self.has_model and
                 isinstance(self._blueprint, KillEncounterBlueprint)
@@ -85,12 +85,12 @@ class CombatantEncounterCarrier(EncounterCarrier[KillEncounter]):
         return self.size == 0
     
     @property
-    def is_over_capacity(self) -> bool:
+    def not_consistent(self) -> bool:
         return self.size > 1
     
     def extract_blueprint(self) -> Optional[KillEncounterBlueprint]:
         if self.is_empty: return None
-        if self.is_carrying_blueprint: return self._blueprint
+        if self.has_blueprint: return self._blueprint
         
         model = cast(KillEncounter, self._model)
         return KillEncounterBlueprint(

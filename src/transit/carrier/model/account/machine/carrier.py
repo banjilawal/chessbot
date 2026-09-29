@@ -9,19 +9,19 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from typing import Optional, Type, cast
 
 from domain import MachineAccount, MachineAccountBlueprint
 from transit import AccountCarrier
 
 
-class MachineAccountCarrier(AccountCarrier):
+class MachineAccountCarrier(AccountCarrier[MachineAccount]):
     """
     Role:
         - Boundary Carrier Interface
 
     Responsibilities:
-        1.  Transport a hydrated MachineAccount or its Blueprint across processing boundaries.
+        1.  Transport a hydrated MachineAccount or its Blueprint.
 
     Attributes:
         size: int
@@ -29,10 +29,10 @@ class MachineAccountCarrier(AccountCarrier):
         is_over_capacity: bool
         is_model_carrier: bool
         is_blueprint_carrier: bool
-        entity: [MachineAccount|MachineBlueprint]
+        entity: [MachineAccount|MachineAccountBlueprint]
 
     Provides:
-        -   def extract_blueprint() -> Optional[MachineBlueprint]
+        -   def extract_blueprint() -> Optional[MachineAccountBlueprint]
 
     Super Class:
         MachineAccountCarrier
@@ -49,11 +49,11 @@ class MachineAccountCarrier(AccountCarrier):
         """
         Args:
             model: Optional[MachineAccount]
-            blueprint: Optional[MachineBlueprint]
+            blueprint: Optional[MachineAccountBlueprint]
         """
         super().__init__()
-        self._model = model
-        self._blueprint = blueprint
+        self._model = model or Type[MachineAccount]
+        self._blueprint = blueprint or Type[MachineAccountBlueprint]
     
     @property
     def entity(self) -> Optional[MachineAccount | MachineAccountBlueprint]:
@@ -72,7 +72,7 @@ class MachineAccountCarrier(AccountCarrier):
         )
     
     @property
-    def is_carrying_blueprint(self) -> bool:
+    def has_blueprint(self) -> bool:
         return (
                 not self.has_model and
                 isinstance(self._blueprint, MachineAccountBlueprint)
@@ -87,18 +87,21 @@ class MachineAccountCarrier(AccountCarrier):
         return self.size == 0
     
     @property
-    def is_over_capacity(self) -> bool:
-        return self.size > 1
+    def is_consistent(self) -> bool:
+        return self.size == 1
+    
+    @property
+    def not_consistent(self) -> bool:
+        return not self.is_consistent
     
     def extract_blueprint(self) -> Optional[MachineAccountBlueprint]:
         if self.is_empty: return None
-        if self.is_carrying_blueprint: return self._blueprint
+        if self.has_blueprint: return self._blueprint
         
         model = cast(MachineAccount, self._model)
         return MachineAccountBlueprint(
             id=model.id,
             name=model.name,
-            adviser=model.adviser,
         )
     
     

@@ -122,7 +122,7 @@ class PlayerValidationResponse(ModelValidationResponse[Player]):
         ):
             return None
         # Handle the case that there is no blueprint in the carrier.
-        if not carrier.is_carrying_blueprint:
+        if not carrier.has_blueprint:
             return None
         # --- Extract the blueprint. ---#
         blueprint = carrier.extract_blueprint()
