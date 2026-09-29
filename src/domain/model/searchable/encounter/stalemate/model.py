@@ -22,14 +22,11 @@ class StalemateEncounter(Encounter):
         - Data Holder
 
     Responsibilities:
-        1.  Details about an encounter.
+        1.  Details about a StalemateEncounter.
 
     Attributes:
         id: int
-        victim: KingToken
-        maneuver: Maneuver
-        location: Square
-        attacker_reward: int
+        counter_maneuver: Maneuver
 
     Provides:
         
@@ -50,8 +47,8 @@ class StalemateEncounter(Encounter):
         """
         Args:
             id: int
-            victim: KingToken
             maneuver: Maneuver
+            counter_maneuver: Maneuver
             location: Optional[Square]
             attacker_reward: Optional[int]
         """

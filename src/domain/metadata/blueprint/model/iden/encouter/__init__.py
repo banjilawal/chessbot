@@ -10,9 +10,10 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.BLUEPRINT.MODEL.IDEN.ENCOUNTER PACKAGE ===========#
 
 # Packages
-from .warning import *
-from .kill import *
 from .checkmate import *
+from .kill import *
+from .stalemate import *
+from .warning import *
 
 # Modules
 from .blueprint import EncounterBlueprint
