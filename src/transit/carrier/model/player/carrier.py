@@ -9,15 +9,14 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from _testcapi import Generic
-from typing import Optional, TypeVar, cast
+from typing import Optional, cast
+from xml.sax.handler import property_declaration_handler
 
-from domain import HumanPlayerBlueprint, MachinePlayerBlueprint, Player, PlayerBlueprint
+from domain import Player, PlayerBlueprint
 from transit import ModelCarrier
 
-T = TypeVar("T", bound="Player")
 
-class PlayerCarrier(ModelCarrier[T], Generic[T]):
+class PlayerCarrier(ModelCarrier[Player]):
     """
     Role:
         - Boundary Carrier Interface
@@ -39,7 +38,7 @@ class PlayerCarrier(ModelCarrier[T], Generic[T]):
     Super Class:
         ModelCarrier
     """
-    _model: Optional[T]
+    _model: Optional[Player]
     _blueprint: Optional[PlayerBlueprint]
     
     def __init__(
@@ -88,8 +87,12 @@ class PlayerCarrier(ModelCarrier[T], Generic[T]):
         return self.size == 0
     
     @property
+    def is_consistent(self) -> bool:
+        return self.size == 1
+    
+    @property
     def not_consistent(self) -> bool:
-        return self.size > 1
+        return not self.is_consistent
     
     def extract_blueprint(self) -> Optional[PlayerBlueprint]:
         if self.is_empty: return None
@@ -98,6 +101,7 @@ class PlayerCarrier(ModelCarrier[T], Generic[T]):
         model = cast(Player, self._model)
         return PlayerBlueprint(
             id=model.id,
-            name=model.name,
+            game=model.game,
+            account=model.account,
             adviser=model.adviser,
         )

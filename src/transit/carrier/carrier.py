@@ -47,7 +47,7 @@ class EntityCarrier(ABC, Generic[T]):
 
     @property
     @abstractmethod
-    def entity(self) -> Optional[T|Blueprint[T]]:
+    def entity(self) -> Optional[T | Blueprint[T]]:
         pass
     
     @property
@@ -61,24 +61,20 @@ class EntityCarrier(ABC, Generic[T]):
         pass
     
     @property
-    @abstractmethod
     def size(self) -> int:
-        pass
+        return len([self.has_model, self.has_model])
     
     @property
-    @abstractmethod
     def is_empty(self) -> bool:
-        pass
+        return self.size == 0
     
     @property
-    @abstractmethod
     def is_consistent(self) -> bool:
-        pass
+        return self.size == 1
     
     @property
-    @abstractmethod
     def not_consistent(self) -> bool:
-        pass
+        return self.size > 1
     
     @abstractmethod
     def extract_blueprint(self) -> Optional[Blueprint[T]]:

@@ -10,7 +10,7 @@ version: 0.0.2
 # =========== TRANSIT.CARRIER.MODEL.ENCOUNTER PACKAGE ===========#
 
 # Packages
-from .check import *
+from .warning import *
 from .combatant import *
 from .mate import *
 

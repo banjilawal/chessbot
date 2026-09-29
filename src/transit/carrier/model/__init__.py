@@ -12,10 +12,10 @@ version: 0.0.2
 # Packages
 from .account import *
 from .arena import *
-from .attack import *
 from .board import *
 from .coord import *
 from .game import *
+from .encounter import *
 from .maneuver import *
 from .path import *
 from .player import *
