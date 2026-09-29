@@ -11,7 +11,7 @@ version: 0.0.2
 
 # Packages
 from .warning import *
-from .combatant import *
+from .kill import *
 from .checkmate import *
 
 # Modules

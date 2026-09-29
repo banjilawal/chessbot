@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import KillEncounter, CombatantEncounterBlueprint
+from domain import KillEncounter, KillEncounterBlueprint
 from transit import EncounterCarrier
 
 
@@ -42,7 +42,7 @@ class CombatantEncounterCarrier(EncounterCarrier[KillEncounter]):
     def __init__(
             self,
             model: Optional[KillEncounter] | None = None,
-            blueprint: Optional[CombatantEncounterBlueprint] | None = None,
+            blueprint: Optional[KillEncounterBlueprint] | None = None,
     ):
         """
         Args:
@@ -54,7 +54,7 @@ class CombatantEncounterCarrier(EncounterCarrier[KillEncounter]):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> Optional[KillEncounter | CombatantEncounterBlueprint]:
+    def entity(self) -> Optional[KillEncounter | KillEncounterBlueprint]:
         if self.is_empty:
             return None
         if self.has_model:
@@ -73,7 +73,7 @@ class CombatantEncounterCarrier(EncounterCarrier[KillEncounter]):
     def is_carrying_blueprint(self) -> bool:
         return (
                 not self.has_model and
-                isinstance(self._blueprint, CombatantEncounterBlueprint)
+                isinstance(self._blueprint, KillEncounterBlueprint)
         )
     
     @property
@@ -88,12 +88,12 @@ class CombatantEncounterCarrier(EncounterCarrier[KillEncounter]):
     def is_over_capacity(self) -> bool:
         return self.size > 1
     
-    def extract_blueprint(self) -> Optional[CombatantEncounterBlueprint]:
+    def extract_blueprint(self) -> Optional[KillEncounterBlueprint]:
         if self.is_empty: return None
         if self.is_carrying_blueprint: return self._blueprint
         
         model = cast(KillEncounter, self._model)
-        return CombatantEncounterBlueprint(
+        return KillEncounterBlueprint(
             id=model.id,
             team=model.team,
             position=model.position,

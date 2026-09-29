@@ -1,13 +1,13 @@
-# src/domain/metadata/blueprint/model/iden/encounter/warnining/__init__.py
+# src/domain/metadata/blueprint/model/iden/encounter/checkmate/__init__.py
 
 """
-Module: domain.metadata.blueprint.model.iden.encounter.warning.__init__
+Module: domain.metadata.blueprint.model.iden.encounter.checkmate.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== DOMAIN.METADATA.BLUEPRINT.MODEL.IDEN.ENCOUNTER.WARNING PACKAGE ===========#
+# =========== DOMAIN.METADATA.BLUEPRINT.MODEL.IDEN.ENCOUNTER.CHECKMATE PACKAGE ===========#
 
 # Packages
 
