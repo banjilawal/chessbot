@@ -10,9 +10,10 @@ version: 1.0.0
 from typing import Optional
 
 from domain import (
-    Arena, CheckmateEncounter, GameState, Player, PlayerArchetypeBinder,
-    StalemateEncounter, StateModel
+    Arena, CheckmateEncounter, GameState, PlayerArchetypeBinder, StalemateEncounter,
+    StateModel
 )
+from sync import TurnManagementService
 
 
 class Game(StateModel):
@@ -40,6 +41,7 @@ class Game(StateModel):
     _arena: Arena
     _state: GameState
     _binder: PlayerArchetypeBinder
+    _turn_service: TurnManagementService
     _checkmate: Optional[CheckmateEncounter]
     _stalemate: Optional[StalemateEncounter]
     
@@ -47,25 +49,22 @@ class Game(StateModel):
             self,
             id: int,
             arena: Arena,
-            white_player: Player,
-            black_player: Player,
+            binder: PlayerArchetypeBinder,
+            turn_service: Optional[TurnManagementService] | None = None,
     ):
         """
         Args:
             id: int
             arena: Arena
-            white_player: Player
-            black_player: Player
+            binder: PlayerArchetypeBinder
+            turn_service: Optional[TurnManagementService]
         """
         super().__init__(id=id)
         self._arena = arena
+        self._binder = binder
+        self._turn_service = turn_service
         self._checkmate = None
         self._stalemate = None
-        
-        self._binder = PlayerArchetypeBinder(
-            white_player=white_player,
-            black_player=black_player,
-        )
 
     @property
     def arena(self) -> Arena:
@@ -74,6 +73,10 @@ class Game(StateModel):
     @property
     def binder(self) -> PlayerArchetypeBinder:
         return self._binder
+    
+    @property
+    def turn_service(self) -> TurnManagementService:
+        return self._turn_service
     
     @property
     def checkmate(self) -> Optional[CheckmateEncounter]:
