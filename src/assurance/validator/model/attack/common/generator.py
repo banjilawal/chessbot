@@ -126,7 +126,7 @@ class CommonAttackPropertyTableGenerator:
         # Handle the case that the maneuver is flagged.
         maneuver_validation = self._toolkit.wrapper.maneuver.extract_model(
             request=ManeuverValidationRequest(
-                item=ManeuverCarrier(model=attack_blueprint.maneuver),
+                item=ManeuverCarrier(model=attack_blueprint.attacker_maneuver),
                 id=IdFactory.next_id(class_name="ManeuverValidationRequest"),
             )
         )

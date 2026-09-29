@@ -43,7 +43,7 @@ class EncounterWarning(Encounter):
     def __init__(
             self,
             id: int,
-            maneuver: Maneuver,
+            attacker_maneuver: Maneuver,
             warning_recipient: KingToken,
             current_safe_square: Square,
             danger_zone: Optional[Square] | None = None,
@@ -52,7 +52,7 @@ class EncounterWarning(Encounter):
         """
         Args:
             id: int
-            maneuver: Maneuver
+            attacker_maneuver: Maneuver
             warning_recipient: KingToken
             current_safe_square: Square
             danger_zone: Optional[Square]
@@ -61,7 +61,7 @@ class EncounterWarning(Encounter):
         super().__init__(
             id=id,
             victim=warning_recipient,
-            maneuver=maneuver,
+            attacker_maneuver=attacker_maneuver,
             location=danger_zone,
             attacker_reward=attacker_reward,
         )
@@ -85,7 +85,7 @@ class EncounterWarning(Encounter):
     
     @property
     def threat_path(self) -> Path:
-        return self.maneuver.path
+        return self.attacker_maneuver.path
 
     def __eq__(self, other) -> bool:
         if other is None:

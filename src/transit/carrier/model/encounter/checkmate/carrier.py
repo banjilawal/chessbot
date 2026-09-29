@@ -1,7 +1,7 @@
-# src/transit/carrier/model/encounter/mate/carrier.py
+# src/transit/carrier/model/encounter/checkmate/carrier.py
 
 """
-Module: transit.carrier.model.encounter.mate.carrier
+Module: transit.carrier.model.encounter.checkmate.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -21,8 +21,7 @@ class CheckmateEncounterCarrier(EncounterCarrier[CheckmateEncounter]):
         - Boundary Carrier Interface
 
     Responsibilities:
-        1.  Transport a hydrated CheckmateEncounter or its Blueprint across
-            processing boundaries.
+        1.  Transport a hydrated CheckmateEncounter or its Blueprint.
 
     Attributes:
         size: int
@@ -76,18 +75,6 @@ class CheckmateEncounterCarrier(EncounterCarrier[CheckmateEncounter]):
                 isinstance(self._blueprint, CheckmateEncounterBlueprint)
         )
     
-    @property
-    def size(self) -> int:
-        return len([self._model, self._blueprint])
-    
-    @property
-    def is_empty(self) -> bool:
-        return self.size == 0
-    
-    @property
-    def not_consistent(self) -> bool:
-        return self.size > 1
-    
     def extract_blueprint(self) -> Optional[CheckmateEncounterBlueprint]:
         if self.is_empty: return None
         if self.has_blueprint: return self._blueprint
@@ -95,15 +82,8 @@ class CheckmateEncounterCarrier(EncounterCarrier[CheckmateEncounter]):
         model = cast(CheckmateEncounter, self._model)
         return CheckmateEncounterBlueprint(
             id=model.id,
-            team=model.team,
-            position=model.position,
-            readiness=model.readiness,
-            formation=model.formation,
-            checkmate=model.checkmate,
-            deployment=model.deployment,
-            home_square=model.home_square,
-            check_warning=model.check_warning,
-            previous_position=model.previous_position,
+            victim=model.victim,
+            attacker_maneuver=model.attacker_maneuver,
         )
 
 

@@ -39,7 +39,7 @@ class StalemateEncounter(Encounter):
     def __init__(
             self,
             id: int,
-            maneuver: Maneuver,
+            attacker_maneuver: Maneuver,
             counter_maneuver: Maneuver,
             location: Optional[Square] | None = None,
             attacker_reward: Optional[int] | None = None,
@@ -47,7 +47,7 @@ class StalemateEncounter(Encounter):
         """
         Args:
             id: int
-            maneuver: Maneuver
+            attacker_maneuver: Maneuver
             counter_maneuver: Maneuver
             location: Optional[Square]
             attacker_reward: Optional[int]
@@ -55,14 +55,14 @@ class StalemateEncounter(Encounter):
         super().__init__(
             id=id,
             victim=counter_maneuver.traveler,
-            maneuver=maneuver,
+            attacker_maneuver=attacker_maneuver,
             location=location,
             attacker_reward=attacker_reward,
         )
         
     @property
     def players(self) -> PlayerColorBinder:
-        return self.maneuver.traveler.team.board.arena.player_binder
+        return self.attacker_maneuver.traveler.team.board.arena.player_binder
 
     def __eq__(self, other) -> bool:
         if other is None:

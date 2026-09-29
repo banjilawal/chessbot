@@ -1,7 +1,7 @@
-# src/transit/carrier/model/encounter/warning/carrier.py
+# src/transit/carrier/model/encounter/stalemate/carrier.py
 
 """
-Module: transit.carrier.model.encounter.warning.carrier
+Module: transit.carrier.model.encounter.stalemate.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import EncounterWarning, EncounterWarningBlueprint
+from domain import StalemateEncounter, StalemateEncounterBlueprint
 from transit import EncounterCarrier
 
 
-class EncounterWarningCarrier(EncounterCarrier[EncounterWarning]):
+class StalemateEncounterCarrier(EncounterCarrier[StalemateEncounter]):
     """
     Role:
         - Boundary Carrier Interface
 
     Responsibilities:
-        1.  Transport a hydrated EncounterWarning or its Blueprint.
+        1.  Transport a hydrated StalemateEncounter or its Blueprint.
 
     Attributes:
         size: int
@@ -29,10 +29,10 @@ class EncounterWarningCarrier(EncounterCarrier[EncounterWarning]):
         is_over_capacity: bool
         is_model_carrier: bool
         is_blueprint_carrier: bool
-        entity: [Encounter | EncounterWarningBlueprint]
+        entity: [StalemateEncounter | StalemateEncounterBlueprint]
 
     Provides:
-        -   def extract_blueprint() -> Optional[EncounterWarningBlueprint]
+        -   def extract_blueprint() -> Optional[StalemateEncounterBlueprint]
 
     Super Class:
         EncounterCarrier
@@ -40,20 +40,20 @@ class EncounterWarningCarrier(EncounterCarrier[EncounterWarning]):
     
     def __init__(
             self,
-            model: Optional[EncounterWarning] | None = None,
-            blueprint: Optional[EncounterWarningBlueprint] | None = None,
+            model: Optional[StalemateEncounter] | None = None,
+            blueprint: Optional[StalemateEncounterBlueprint] | None = None,
     ):
         """
         Args:
-            model: Optional[EncounterWarning]
-            blueprint: Optional[EncounterWarningBlueprint]
+            model: Optional[StalemateEncounter]
+            blueprint: Optional[StalemateEncounterBlueprint]
         """
         super().__init__()
         self._model = model
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> Optional[EncounterWarning | EncounterWarningBlueprint]:
+    def entity(self) -> Optional[StalemateEncounter | StalemateEncounterBlueprint]:
         if self.is_empty:
             return None
         if self.has_model:
@@ -65,25 +65,25 @@ class EncounterWarningCarrier(EncounterCarrier[EncounterWarning]):
         return (
                 self._model is not None and
                 self._blueprint is None and
-                isinstance(self._model, EncounterWarning)
+                isinstance(self._model, StalemateEncounter)
         )
     
     @property
     def has_blueprint(self) -> bool:
         return (
                 not self.has_model and
-                isinstance(self._blueprint, EncounterWarningBlueprint)
+                isinstance(self._blueprint, StalemateEncounterBlueprint)
         )
     
-    def extract_blueprint(self) -> Optional[EncounterWarningBlueprint]:
+    def extract_blueprint(self) -> Optional[StalemateEncounterBlueprint]:
         if self.is_empty: return None
         if self.has_blueprint: return self._blueprint
         
-        model = cast(EncounterWarning, self._model)
-        return EncounterWarningBlueprint(
+        model = cast(StalemateEncounter, self._model)
+        return StalemateEncounterBlueprint(
+            id=model.id,
+            victim=model.victim,
             attacker_maneuver=model.attacker_maneuver,
-            warning_recipient=model.warning_recipient,
-            current_safe_square=model.current_safe_square,
         )
 
 

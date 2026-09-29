@@ -42,7 +42,7 @@ class KillEncounter(Encounter):
             self,
             id: int,
             victim: CombatantToken,
-            maneuver: Maneuver,
+            attacker_maneuver: Maneuver,
             location: Optional[Square] | None = None,
             attacker_reward: Optional[int] | None = None,
     ):
@@ -50,14 +50,14 @@ class KillEncounter(Encounter):
         Args:
             id: int
             victim: CombatantToken
-            maneuver: Maneuver
+            attacker_maneuver: Maneuver
             location: Optional[Square]
             attacker_reward: Optional[int]
         """
         super().__init__(
             id=id,
             victim=victim,
-            maneuver=maneuver,
+            attacker_maneuver=attacker_maneuver,
             location=location,
             attacker_reward=attacker_reward,
         )

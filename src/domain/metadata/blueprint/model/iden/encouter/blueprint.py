@@ -42,13 +42,13 @@ class EncounterBlueprint(IdentifiableModelBlueprint[T], Generic[T]):
      """
     _victim: Token
     _location: Square
-    _maneuver: Maneuver
+    _attacker_maneuver: Maneuver
     _attacker_reward: int
     
     def __init__(
             self,
             victim: Token,
-            maneuver: Maneuver,
+            attacker_maneuver: Maneuver,
             domain_class: Type[T],
             domain_null_exception: EncounterNullException,
             attacker_reward: Optional[int] | None = None,
@@ -59,7 +59,7 @@ class EncounterBlueprint(IdentifiableModelBlueprint[T], Generic[T]):
         Args:
             victim: Token
             location: Square
-            maneuver: Maneuver
+            attacker_maneuver: Maneuver
             domain_class: Type[T]
             domain_null_exception: EncounterNullException
             attacker_reward: Optional[int]
@@ -72,8 +72,8 @@ class EncounterBlueprint(IdentifiableModelBlueprint[T], Generic[T]):
             domain_null_exception=domain_null_exception,
         )
         self._victim = victim
-        self._maneuver = maneuver
-        self._location = location or maneuver.path.endpoints.destination
+        self._attacker_maneuver = attacker_maneuver
+        self._location = location or attacker_maneuver.path.endpoints.destination
         self._attacker_reward = attacker_reward or victim.rank.ransom
     
     @property
@@ -81,8 +81,8 @@ class EncounterBlueprint(IdentifiableModelBlueprint[T], Generic[T]):
         return self._victim
     
     @property
-    def maneuver(self) -> Maneuver:
-        return self._maneuver
+    def attacker_maneuver(self) -> Maneuver:
+        return self._attacker_maneuver
     
     @property
     def attacker_reward(self) -> int:

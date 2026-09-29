@@ -39,7 +39,7 @@ class Encounter(SearchableModel, ABC):
     _id: int
     _victim: Token
     _location: Square
-    _maneuver: Maneuver
+    _attack_maneuver: Maneuver
     _attacker_reward: int
 
     
@@ -47,7 +47,7 @@ class Encounter(SearchableModel, ABC):
             self,
             id: int,
             victim: Token,
-            maneuver: Maneuver,
+            attacker_maneuver: Maneuver,
             location: Optional[Square] | None = None,
             attacker_reward: Optional[int] | None = None,
     ):
@@ -55,14 +55,14 @@ class Encounter(SearchableModel, ABC):
         Args:
             id: int
             victim: Token
-            maneuver: Maneuver
+            attacker_maneuver: Maneuver
             location: Optional[Square]
             attacker_reward: Optional[int]
         """
         self._id = id
         self._victim = victim
-        self._maneuver = maneuver
-        self._location = location or maneuver.path.endpoints.destination
+        self._attack_maneuver = attacker_maneuver
+        self._location = location or attacker_maneuver.path.endpoints.destination
         self._attacker_reward = attacker_reward or victim.rank.ransom
         
     @property
@@ -74,8 +74,8 @@ class Encounter(SearchableModel, ABC):
         return self._victim
     
     @property
-    def maneuver(self) -> Maneuver:
-        return self._maneuver
+    def attacker_maneuver(self) -> Maneuver:
+        return self._attack_maneuver
         
     @property
     def attacker_reward(self) -> int:

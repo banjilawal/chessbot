@@ -42,7 +42,7 @@ class StalemateEncounterBlueprint(EncounterBlueprint[StalemateEncounter]):
     
     def __init__(
             self,
-            maneuver: Maneuver,
+            attacker_maneuver: Maneuver,
             counter_maneuver: Maneuver,
             domain_class: Optional[Type[StalemateEncounter]] | None = None,
             domain_null_exception: Optional[StalemateEncounterNullException] | None = None,
@@ -52,7 +52,7 @@ class StalemateEncounterBlueprint(EncounterBlueprint[StalemateEncounter]):
     ):
         """
         Args:
-            maneuver: Maneuver
+            attacker_maneuver: Maneuver
             counter_maneuver: Maneuver
             domain_class: Optional[Type[StalemateEncounter]]
             domain_null_exception: Optional[MateEncounterNullException]
@@ -63,7 +63,7 @@ class StalemateEncounterBlueprint(EncounterBlueprint[StalemateEncounter]):
         super().__init__(
             id=id,
             victim=counter_maneuver.traveler,
-            maneuver=maneuver,
+            attacker_maneuver=attacker_maneuver,
             location=location,
             attacker_reward=attacker_reward,
             domain_class=domain_class or StalemateEncounter,

@@ -42,7 +42,7 @@ class CheckmateEncounterBlueprint(EncounterBlueprint[CheckmateEncounter]):
     def __init__(
             self,
             victim: KingToken,
-            maneuver: Maneuver,
+            attacker_maneuver: Maneuver,
             domain_class: Optional[Type[CheckmateEncounter]] | None = None,
             domain_null_exception: Optional[CheckmateEncounterNullException] | None = None,
             location: Optional[Square] | None = None,
@@ -52,7 +52,7 @@ class CheckmateEncounterBlueprint(EncounterBlueprint[CheckmateEncounter]):
         """
         Args:
             victim: KingToken
-            maneuver: Maneuver
+            attacker_maneuver: Maneuver
             domain_class: Optional[Type[CheckmateEncounter]]
             domain_null_exception: Optional[MateEncounterNullException]
             location: Optional[Square]
@@ -62,7 +62,7 @@ class CheckmateEncounterBlueprint(EncounterBlueprint[CheckmateEncounter]):
         super().__init__(
             id=id,
             victim=victim,
-            maneuver=maneuver,
+            attacker_maneuver=attacker_maneuver,
             location=location,
             attacker_reward=attacker_reward,
             domain_class=domain_class or CheckmateEncounter,

@@ -44,7 +44,7 @@ class KillEncounterBlueprint(EncounterBlueprint[KillEncounter]):
     def __init__(
             self,
             victim: CombatantToken,
-            maneuver: Maneuver,
+            attacker_maneuver: Maneuver,
             domain_class: Optional[Type[KillEncounter]] | None = None,
             domain_null_exception: Optional[KillEncounterNullException] | None = None,
             location: Optional[Square] | None = None,
@@ -54,7 +54,7 @@ class KillEncounterBlueprint(EncounterBlueprint[KillEncounter]):
         """
         Args:
             victim: CombatantToken
-            maneuver: Maneuver
+            attacker_maneuver: Maneuver
             domain_class: Optional[Type[KillEncounter]]
             domain_null_exception: Optional[KillEncounterNullException]
             location: Optional[Square]
@@ -64,7 +64,7 @@ class KillEncounterBlueprint(EncounterBlueprint[KillEncounter]):
         super().__init__(
             id=id,
             victim=victim,
-            maneuver=maneuver,
+            attacker_maneuver=attacker_maneuver,
             location=location,
             attacker_reward=attacker_reward,
             domain_class=domain_class or KillEncounter,

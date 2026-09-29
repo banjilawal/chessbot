@@ -44,7 +44,7 @@ class EncounterWarningBlueprint(EncounterBlueprint[EncounterWarning]):
     
     def __init__(
             self,
-            maneuver: Maneuver,
+            attacker_maneuver: Maneuver,
             warning_recipient: KingToken,
             current_safe_square: Square,
             domain_class: Optional[Type[EncounterWarning]] | None = None,
@@ -55,7 +55,7 @@ class EncounterWarningBlueprint(EncounterBlueprint[EncounterWarning]):
     ):
         """
         Args:
-            maneuver: Maneuver
+            attacker_maneuver: Maneuver
             warning_recipient: KingToken
             current_safe_square: Square
             domain_class: Optional[Type[EncounterWarning]]
@@ -67,7 +67,7 @@ class EncounterWarningBlueprint(EncounterBlueprint[EncounterWarning]):
         super().__init__(
             id=id,
             victim=warning_recipient,
-            maneuver=maneuver,
+            attacker_maneuver=attacker_maneuver,
             location=danger_zone,
             attacker_reward=attacker_reward or warning_recipient.rank.ransom,
             domain_class=domain_class or EncounterWarning,

@@ -10,9 +10,10 @@ version: 0.0.2
 # =========== TRANSIT.CARRIER.MODEL.ENCOUNTER PACKAGE ===========#
 
 # Packages
+from .checkmate import *
+from .kill import *
+from .stalemate import *
 from .warning import *
-from .combatant import *
-from .mate import *
 
 # Modules
 from .carrier import EncounterCarrier
