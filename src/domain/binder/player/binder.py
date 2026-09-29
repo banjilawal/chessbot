@@ -15,7 +15,7 @@ from config import GameColor
 from domain import Archetype, ColorBinder, Player
 
 
-class PlayerColorBinder(ColorBinder[Player]):
+class PlayerArchetypeBinder(ColorBinder[Player]):
     """
     Role:
         - Mapper

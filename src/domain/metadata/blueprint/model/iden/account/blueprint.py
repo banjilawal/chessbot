@@ -13,7 +13,7 @@ from typing import Generic, Optional, Type, TypeVar, cast
 
 from domain import Account, IdentifiableModelBlueprint
 from err import AccountNullException
-from game import GameAdviser
+from sync import GameAdviser
 
 T = TypeVar("T", bound="Account")
 

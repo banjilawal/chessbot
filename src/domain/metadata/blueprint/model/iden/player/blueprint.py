@@ -13,7 +13,7 @@ from typing import Optional, Type, cast
 
 from domain import Account, Archetype, Game, IdentifiableModelBlueprint, Player
 from err import PlayerNullException
-from game import GameAdviser
+from sync import GameAdviser
 
 
 class PlayerBlueprint(IdentifiableModelBlueprint[Player]):

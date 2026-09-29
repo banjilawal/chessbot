@@ -1,14 +1,14 @@
-# src/game/snapshot/game.py
+# src/sync/snapshot/sync.py
 
 """
-Module: game.snapshot.game
+Module: sync.snapshot.sync
 Created: 2026-04-03
 version: 0.0.2
 """
 
 from typing import Optional
 
-from domain import Game
+from domain import Sync
 
 
 class Snapshot:
@@ -16,8 +16,8 @@ class Snapshot:
     Role: Persistence, Messanger, Data Transport Object, Error Transport Object,
 
     Responsibilities:
-    1.  Capture a snapshot of the Game by recording Game.arena state after an owner plays their turn.
-    2.  Recording the Game winner if the game completed and there was no tie.
+    1.  Capture a snapshot of the Sync by recording Sync.arena state after an owner plays their turn.
+    2.  Recording the Sync winner if the sync completed and there was no tie.
     3.  Enforcing mutual exclusion. A Snapshot can either carry payload or exception. Not both.
 
     Super Class:
@@ -29,90 +29,90 @@ class Snapshot:
     # LOCAL ATTRIBUTES:
         *   arena (Arena)
         *   timestamp (int)
-        *   game_state (GameState)
+        *   sync_state (SyncState)
         *   winner (Optional[Player])
 
     # INHERITED ATTRIBUTES:
         *   See Result class for inherited attributes.
     """
-    _game: Game
+    _sync: Sync
     _timestamp: int
 
     
     def __init__(
             self,
-            game: Game,
+            sync: Sync,
             timestamp: int,
     ):
         """
         Args:
-            game: Game,
+            sync: Sync,
             timestamp: int
         """
         self._timestamp = timestamp
-        self._game = game
+        self._sync = sync
     
     @property
     def timestamp(self) -> int:
         return self.timestamp
     
     @property
-    def game(self) -> Game:
-        return self._game
+    def sync(self) -> Sync:
+        return self._sync
     
     @property
-    def game_state(self) -> Optional[GameState]:
-        return self._game_state
+    def sync_state(self) -> Optional[SyncState]:
+        return self._sync_state
     
     @property
-    def game_is_ready(self) -> bool:
-        return self.exception is None and self._winner is None and self._game_state == GameState.CREATED
+    def sync_is_ready(self) -> bool:
+        return self.exception is None and self._winner is None and self._sync_state == SyncState.CREATED
     
     @property
-    def game_is_running(self) -> bool:
-        return self.exception is None and self._winner is None and self._game_state == GameState.RUNNING
+    def sync_is_running(self) -> bool:
+        return self.exception is None and self._winner is None and self._sync_state == SyncState.RUNNING
     
     @property
-    def game_is_aborted(self) -> bool:
-        return self.exception is None and self._winner is None and self._game_state == GameState.ABORTED
+    def sync_is_aborted(self) -> bool:
+        return self.exception is None and self._winner is None and self._sync_state == SyncState.ABORTED
     
     @property
-    def game_is_won(self) -> bool:
-        """Return True if the game is won."""
-        return self.exception is None and self._winner is not None and self._game_state == GameState.WON
+    def sync_is_won(self) -> bool:
+        """Return True if the sync is won."""
+        return self.exception is None and self._winner is not None and self._sync_state == SyncState.WON
     
     @property
-    def game_is_tied(self) -> bool:
-        """Return True if the game is tied."""
-        return self.exception is None and self.winner is None and self._game_state == GameState.STALEMATE
+    def sync_is_tied(self) -> bool:
+        """Return True if the sync is tied."""
+        return self.exception is None and self.winner is None and self._sync_state == SyncState.STALEMATE
     
     @property
-    def game_failed(self) -> bool:
-        """Return True if the game raised an exception."""
+    def sync_failed(self) -> bool:
+        """Return True if the sync raised an exception."""
         return (
                 self.exception is not None and
-                (self._game_state == GameState.FAILURE or self._game_state == GameState.ROLLED_BACK)
+                (self._sync_state == SyncState.FAILURE or self._sync_state == SyncState.ROLLED_BACK)
         )
     
     @classmethod
     def won(cls, timestamp: int, arena: Arena, winner: PlayerAgent) -> Snapshot:
-        return cls(timestamp=timestamp, arena=arena, winner=winner, game_state=GameState.WON)
+        return cls(timestamp=timestamp, arena=arena, winner=winner, sync_state=SyncState.WON)
     
     @classmethod
     def aborted(cls, timestamp: int, arena: Arena) -> Snapshot:
-        return cls(timestamp=timestamp, arena=arena, game_state=GameState.ABORTED)
+        return cls(timestamp=timestamp, arena=arena, sync_state=SyncState.ABORTED)
     
     @classmethod
     def tied(cls, timestamp: int, arena: Arena) -> Snapshot:
-        return cls(timestamp=timestamp, arena=arena, game_state=GameState.STALEMATE)
+        return cls(timestamp=timestamp, arena=arena, sync_state=SyncState.STALEMATE)
     
     @classmethod
     def errored(cls, timestamp: int, arena: Arena, exception: Exception) -> Snapshot:
-        return cls(timestamp=timestamp, arena=arena, exception=exception, game_state=GameState.FAILURE)
+        return cls(timestamp=timestamp, arena=arena, exception=exception, sync_state=SyncState.FAILURE)
     
     @classmethod
     def rolled_back(cls, timestamp: int, arena: Arena, rollback_exception: RollbackException) -> Snapshot:
-        return cls(timestamp=timestamp, arena=arena, exception=rollback_exception, game_state=GameState.ROLLED_BACK)
+        return cls(timestamp=timestamp, arena=arena, exception=rollback_exception, sync_state=SyncState.ROLLED_BACK)
     
     @classmethod
     def empty(cls) -> Result:
@@ -121,7 +121,7 @@ class Snapshot:
         return Result(
             exception=MethodImplementationException(
                 f"{method}: {MethodImplementationException.MSG}. Snapshot must "
-                f"always have at least a payload and GameState."
+                f"always have at least a payload and SyncState."
             )
         )
     

@@ -82,7 +82,7 @@ class StalemateEncounterCarrier(EncounterCarrier[StalemateEncounter]):
         model = cast(StalemateEncounter, self._model)
         return StalemateEncounterBlueprint(
             id=model.id,
-            victim=model.victim,
+            counter_maneuver=model.counter_maneuver,
             attacker_maneuver=model.attacker_maneuver,
         )
 

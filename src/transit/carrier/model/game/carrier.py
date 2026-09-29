@@ -78,27 +78,16 @@ class GameCarrier(ModelCarrier[Game]):
                 isinstance(self._blueprint, GameBlueprint)
         )
     
-    @property
-    def size(self) -> int:
-        return len([self._model, self._blueprint])
-    
-    @property
-    def is_empty(self) -> bool:
-        return self.size == 0
-    
-    @property
-    def not_consistent(self) -> bool:
-        return self.size > 1
-    
     def extract_blueprint(self) -> Optional[GameBlueprint]:
         if self.is_empty: return None
         if self.has_blueprint: return self._blueprint
         
         model = cast(Game, self._model)
         return GameBlueprint(
-            traveler=model.traveler,
-            path=model.path,
-            benefit=model.benefit,
-            attack=model.attack,
+            id=model.id,
+            arena=model.arena,
+            binder=model.binder,
+            checkmate=model.checkmate,
+            stalemate=model.stalemate,
         )
 

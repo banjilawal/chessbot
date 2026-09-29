@@ -60,7 +60,7 @@ class EncounterWarning(Encounter):
         """
         super().__init__(
             id=id,
-            victim=warning_recipient,
+            counter_maneuver=warning_recipient,
             attacker_maneuver=attacker_maneuver,
             location=danger_zone,
             attacker_reward=attacker_reward,

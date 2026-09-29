@@ -1,13 +1,13 @@
-# src/game/__init__.py
+# src/sync/__init__.py
 
 """
-Module: game.__init__
+Module: sync.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== GAME PACKAGE ===========#
+# =========== SYNC PACKAGE ===========#
 
 # Packages
 from .checkmate import *
@@ -17,4 +17,4 @@ from .win import *
 from .winner import *
 
 # Modules
-from .outcome import GameOutcome
+from .outcome import SyncOutcome

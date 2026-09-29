@@ -46,7 +46,7 @@ class Encounter(SearchableModel, ABC):
     def __init__(
             self,
             id: int,
-            victim: Token,
+            counter_maneuver: Token,
             attacker_maneuver: Maneuver,
             location: Optional[Square] | None = None,
             attacker_reward: Optional[int] | None = None,
@@ -54,16 +54,16 @@ class Encounter(SearchableModel, ABC):
         """
         Args:
             id: int
-            victim: Token
+            counter_maneuver: Token
             attacker_maneuver: Maneuver
             location: Optional[Square]
             attacker_reward: Optional[int]
         """
         self._id = id
-        self._victim = victim
+        self._victim = counter_maneuver
         self._attack_maneuver = attacker_maneuver
         self._location = location or attacker_maneuver.path.endpoints.destination
-        self._attacker_reward = attacker_reward or victim.rank.ransom
+        self._attacker_reward = attacker_reward or counter_maneuver.rank.ransom
         
     @property
     def id(self) -> int:

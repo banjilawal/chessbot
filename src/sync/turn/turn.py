@@ -1,7 +1,7 @@
-# src/game/turn/game.py
+# src/sync/turn/turn.py
 
 """
-Module: game.turn.game
+Module: sync.turn.turn
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,10 +11,9 @@ from __future__ import annotations
 
 from typing import Optional
 
-from artifcat import TurnResult
-from domain import Graph, Player
+from domain import Player
+from graph import Graph
 from operation.microservice.maneuver import ManeuverLauncher
-from util import LoggingLevelRouter
 
 
 class Turn:
@@ -23,7 +22,7 @@ class Turn:
     _graph: Graph
     _maneuver_launcher: ManeuverLauncher
     
-    def game(
+    def sync(
             self,
             id: int,
             graph: Graph,

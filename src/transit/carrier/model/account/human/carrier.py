@@ -78,22 +78,6 @@ class HumanAccountCarrier(AccountCarrier):
                 isinstance(self._blueprint, HumanAccountBlueprint)
         )
     
-    @property
-    def size(self) -> int:
-        return len([self._model, self._blueprint])
-    
-    @property
-    def is_empty(self) -> bool:
-        return self.size == 0
-    
-    @property
-    def is_consistent(self) -> bool:
-        return self.size == 1
-    
-    @property
-    def not_consistent(self) -> bool:
-        return not self.size
-    
     def extract_blueprint(self) -> Optional[HumanAccountBlueprint]:
         if self.is_empty: return None
         if self.has_blueprint: return self._blueprint

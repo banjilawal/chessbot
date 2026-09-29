@@ -11,7 +11,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import Result, ResultState
-from game import Turn
+from sync import Turn
 
 
 class TurnResult(Result[Turn]):

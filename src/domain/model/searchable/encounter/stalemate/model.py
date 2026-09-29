@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import KingToken, Encounter, Maneuver, PlayerColorBinder, Square, Token
+from domain import KingToken, Encounter, Maneuver, PlayerArchetypeBinder, Square, Token
 
 
 class StalemateEncounter(Encounter):
@@ -54,14 +54,14 @@ class StalemateEncounter(Encounter):
         """
         super().__init__(
             id=id,
-            victim=counter_maneuver.traveler,
+            counter_maneuver=counter_maneuver.traveler,
             attacker_maneuver=attacker_maneuver,
             location=location,
             attacker_reward=attacker_reward,
         )
         
     @property
-    def players(self) -> PlayerColorBinder:
+    def enemies(self) -> PlayerArchetypeBinder:
         return self.attacker_maneuver.traveler.team.board.arena.player_binder
 
     def __eq__(self, other) -> bool:

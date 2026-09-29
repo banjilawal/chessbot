@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Optional
 
 from domain import (
-    Arena, CheckmateEncounter, GameState, Player, PlayerColorBinder,
+    Arena, CheckmateEncounter, GameState, Player, PlayerArchetypeBinder,
     StalemateEncounter, StateModel
 )
 
@@ -39,7 +39,7 @@ class Game(StateModel):
     _id: int
     _arena: Arena
     _state: GameState
-    _binder: PlayerColorBinder
+    _binder: PlayerArchetypeBinder
     _checkmate: Optional[CheckmateEncounter]
     _stalemate: Optional[StalemateEncounter]
     
@@ -62,7 +62,7 @@ class Game(StateModel):
         self._checkmate = None
         self._stalemate = None
         
-        self._binder = PlayerColorBinder(
+        self._binder = PlayerArchetypeBinder(
             white_player=white_player,
             black_player=black_player,
         )
@@ -72,7 +72,7 @@ class Game(StateModel):
         return self._arena
     
     @property
-    def binder(self) -> PlayerColorBinder:
+    def binder(self) -> PlayerArchetypeBinder:
         return self._binder
     
     @property

@@ -77,23 +77,7 @@ class PlayerCarrier(ModelCarrier[Player]):
                 not self.has_model and
                 isinstance(self._blueprint, PlayerBlueprint)
         )
-    
-    @property
-    def size(self) -> int:
-        return len([self._model, self._blueprint])
-    
-    @property
-    def is_empty(self) -> bool:
-        return self.size == 0
-    
-    @property
-    def is_consistent(self) -> bool:
-        return self.size == 1
-    
-    @property
-    def not_consistent(self) -> bool:
-        return not self.is_consistent
-    
+
     def extract_blueprint(self) -> Optional[PlayerBlueprint]:
         if self.is_empty: return None
         if self.has_blueprint: return self._blueprint

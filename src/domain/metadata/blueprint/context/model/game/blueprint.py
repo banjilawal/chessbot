@@ -14,7 +14,7 @@ from typing import Any, Dict, Optional, Type, cast
 from config import GameColor
 from domain import Arena, GameContext, GameState, ModelContextBlueprint, Player
 from err import GameContextNullException
-from game import GameResult
+from sync import GameResult
 
 
 class GameContextBlueprint(ModelContextBlueprint[GameContext]):

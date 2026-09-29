@@ -1,7 +1,7 @@
-# src/game/encounter/report.py
+# src/sync/encounter/report.py
 
 """
-Module: game.encounter.report
+Module: sync.encounter.report
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Dict
 
 from collection import CheckChain
-from config import GameColor
+from config import SyncColor
 from domain import Arena, CheckmateEncounter, Player, Team
 
 

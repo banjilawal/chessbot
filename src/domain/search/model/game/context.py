@@ -13,7 +13,7 @@ from typing import Any, Dict, Optional
 
 from config import GameColor
 from domain import Arena, Game, GameState, Player, ModelContext
-from game import GameResult
+from sync import GameResult
 
 
 class GameContext(ModelContext[Game]):

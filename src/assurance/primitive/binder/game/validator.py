@@ -16,7 +16,7 @@ from artifcat import ValidationResult
 from assurance import GameValidator, PlayerValidator, PrimingValidator
 from config import GameColor
 from domain import (
-    Game, PlayerColorBinder, GameValidationRequest, Player, PlayerValidationRequest
+    Game, PlayerArchetypeBinder, GameValidationRequest, Player, PlayerValidationRequest
 )
 from err import (
     DuplicatePlayerException, EmptyGameCarrierException, EmptyItemException,
@@ -70,7 +70,7 @@ class GamePlayerColorBinderValidator:
 
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate) -> ValidationResult[PlayerColorBinder]:
+    def execute(self, candidate) -> ValidationResult[PlayerArchetypeBinder]:
         """
         Make sure a GamePlayerBinder is safe before use.
 
@@ -90,7 +90,7 @@ class GamePlayerColorBinderValidator:
         # Handle the case that the validator is not primed.
         priming_result = self._priming_validator.execute(
             candidate=candidate,
-            target_model=PlayerColorBinder,
+            target_model=PlayerArchetypeBinder,
             null_exception=GamePlayerColorBinderNullException(),
         )
         if priming_result.is_failure:
@@ -104,7 +104,7 @@ class GamePlayerColorBinderValidator:
                     ex=priming_result.exception,
                 )
             )
-        target = cast(PlayerColorBinder, priming_result.payload)
+        target = cast(PlayerArchetypeBinder, priming_result.payload)
         
         id_validation = self._identity_service.validate_id(candidate=target.id)
         if id_validation.is_failure:
@@ -261,7 +261,7 @@ class GamePlayerColorBinderValidator:
             )
         id = cast(int, id_validation.payload)
         game = cast(Game, game_carrier.entity)
-        binder = PlayerColorBinder(
+        binder = PlayerArchetypeBinder(
             id=id,
             primary=game,
             white_player=player_dict["white"],
