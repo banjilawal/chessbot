@@ -89,5 +89,5 @@ class GameCarrier(ModelCarrier[Game]):
             binder=model.binder,
             checkmate=model.checkmate,
             stalemate=model.stalemate,
+            turn_service=model.turn_service,
         )
-

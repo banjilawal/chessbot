@@ -12,10 +12,11 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from domain import (
-    Arena, CheckmateEncounter, Game, Player, IdentifiableModelBlueprint,
-    PlayerArchetypeBinder, StalemateEncounter
+    Arena, CheckmateEncounter, Game, IdentifiableModelBlueprint, PlayerArchetypeBinder,
+    StalemateEncounter
 )
 from err import GameNullException
+from sync import TurnManagementService
 
 
 class GameBlueprint(IdentifiableModelBlueprint[Game]):
@@ -29,8 +30,10 @@ class GameBlueprint(IdentifiableModelBlueprint[Game]):
      Attributes:
         arena: Arena
         binder: PlayerArchetypeBinder
+        turn_service: TurnManagementService
         checkmate: Optional[CheckmateEncounter]
         stalemate: Optional[StalemateEncounter]
+        
 
         domain_class: Type[Game]
         search_context_class: Type[GameContext]
@@ -43,6 +46,7 @@ class GameBlueprint(IdentifiableModelBlueprint[Game]):
      """
     _arena: Arena
     _binder: PlayerArchetypeBinder
+    _turn_service: TurnManagementService
     _checkmate: Optional[CheckmateEncounter]
     _stalemate: Optional[StalemateEncounter]
 
@@ -52,6 +56,7 @@ class GameBlueprint(IdentifiableModelBlueprint[Game]):
             binder: PlayerArchetypeBinder,
             checkmate: Optional[CheckmateEncounter] | None = None,
             stalemate: Optional[StalemateEncounter] | None = None,
+            turn_service: Optional[TurnManagementService] | None = None,
             domain_class: Optional[Type[Game]] | None = None,
             domain_null_exception: Optional[GameNullException] | None = None,
             id: Optional[int] | None = None,
@@ -62,6 +67,7 @@ class GameBlueprint(IdentifiableModelBlueprint[Game]):
             binder: PlayerArchetypeBinder
             checkmate: Optional[CheckmateEncounter]
             stalemate: Optional[StalemateEncounter]
+            turn_service: Optional[TurnManagementService]
             domain_class: Optional[Type[Game]]
             domain_null_exception: Optional[GameNullException]
             id: Optional[int]
@@ -75,6 +81,7 @@ class GameBlueprint(IdentifiableModelBlueprint[Game]):
         self._binder = binder
         self._checkmate = checkmate
         self._stalemate = stalemate
+        self._turn_service = turn_service or TurnManagementService()
     
     @property
     def arena(self) -> Arena:
@@ -85,12 +92,16 @@ class GameBlueprint(IdentifiableModelBlueprint[Game]):
         return self._binder
     
     @property
-    def checkmate(self) -> Player:
+    def checkmate(self) -> Optional[CheckmateEncounter]:
         return self._checkmate
     
     @property
     def stalemate(self) -> Optional[StalemateEncounter]:
         return self._stalemate
+    
+    @property
+    def turn_service(self) -> TurnManagementService:
+        return self._turn_service
     
     @property
     def domain_class(self) -> Type[Game]:

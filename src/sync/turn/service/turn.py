@@ -9,6 +9,8 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from typing import Optional
+
 from sync import TurnReferee
 
 
@@ -16,8 +18,11 @@ from sync import TurnReferee
 class TurnManagementService:
     _referee: TurnReferee
     
-    def __init__(self, referee: TurnReferee):
-        self._referee = referee
+    def __init__(
+            self,
+            referee: Optional[TurnReferee] | None = None
+    ):
+        self._referee = referee or TurnReferee()
         
     @property
     def referee(self) -> TurnReferee:
