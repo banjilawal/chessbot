@@ -9,17 +9,15 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import Generic, Optional, TypeVar, cast
+from typing import Optional, cast
 
 from domain import ModelNullGroup, Player
 from err import (
     PlayerBlueprintNullException, PlayerCarrierNullException, PlayerNullException
 )
 
-T = TypeVar("T", bound="Player")
 
-class PlayerNullGroup(ModelNullGroup[T], ABC, Generic[T]):
+class PlayerNullGroup(ModelNullGroup[Player]):
     """
     Role:
         - Metadata

@@ -26,9 +26,9 @@ class SquareCarrier(ModelCarrier[Square]):
     Attributes:
         size: int
         is_empty: bool
-        is_over_capacity: bool
-        is_model_carrier: bool
-        is_blueprint_carrier: bool
+        is_not_consistent: bool
+        has_model: bool
+        has_blueprint: bool
         entity: [Square|SquareBlueprint]
 
     Provides:
@@ -87,7 +87,7 @@ class SquareCarrier(ModelCarrier[Square]):
         return self.size == 0
     
     @property
-    def not_consistent(self) -> bool:
+    def is_not_consistent(self) -> bool:
         return self.size > 1
     
     @property

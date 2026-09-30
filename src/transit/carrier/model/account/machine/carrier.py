@@ -24,12 +24,9 @@ class MachineAccountCarrier(AccountCarrier[MachineAccount]):
         1.  Transport a hydrated MachineAccount or its Blueprint.
 
     Attributes:
-        size: int
-        is_empty: bool
-        is_over_capacity: bool
-        is_model_carrier: bool
-        is_blueprint_carrier: bool
-        entity: [MachineAccount|MachineAccountBlueprint]
+        has_model: bool
+        has_blueprint: bool
+        entity: [MachineAccount | MachineAccountBlueprint]
 
     Provides:
         -   def extract_blueprint() -> Optional[MachineAccountBlueprint]
@@ -77,23 +74,7 @@ class MachineAccountCarrier(AccountCarrier[MachineAccount]):
                 not self.has_model and
                 isinstance(self._blueprint, MachineAccountBlueprint)
         )
-    
-    @property
-    def size(self) -> int:
-        return len([self._model, self._blueprint])
-    
-    @property
-    def is_empty(self) -> bool:
-        return self.size == 0
-    
-    @property
-    def is_consistent(self) -> bool:
-        return self.size == 1
-    
-    @property
-    def not_consistent(self) -> bool:
-        return not self.is_consistent
-    
+  
     def extract_blueprint(self) -> Optional[MachineAccountBlueprint]:
         if self.is_empty: return None
         if self.has_blueprint: return self._blueprint

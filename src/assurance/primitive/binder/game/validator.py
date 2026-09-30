@@ -21,7 +21,7 @@ from domain import (
 from err import (
     DuplicatePlayerException, EmptyGameCarrierException, EmptyItemException,
     EmptyPlayerCarrierException, GameColorNullException,
-    GamePlayerColorBinderNullException, GamePlayerColorBinderOverCapacityException,
+    GamePlayerArchetypeBinderNullException, GamePlayerColorBinderOverCapacityException,
     GamePlayerColorBinderValidatorException
 )
 from microservice import IdentityService
@@ -91,7 +91,7 @@ class GamePlayerColorBinderValidator:
         priming_result = self._priming_validator.execute(
             candidate=candidate,
             target_model=PlayerArchetypeBinder,
-            null_exception=GamePlayerColorBinderNullException(),
+            null_exception=GamePlayerArchetypeBinderNullException(),
         )
         if priming_result.is_failure:
             # Send the exception chain on failure.
@@ -163,7 +163,7 @@ class GamePlayerColorBinderValidator:
                     ex=EmptyItemException(),
                 )
             )
-        if target.is_over_capacity:
+        if target.is_not_consistent:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 GamePlayerColorBinderValidatorException(

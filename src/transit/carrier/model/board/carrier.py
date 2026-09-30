@@ -24,11 +24,8 @@ class BoardCarrier(ModelCarrier[Board]):
         1.  Transport a hydrated Board or its Blueprint.
 
     Attributes:
-        size: int
-        is_empty: bool
-        is_over_capacity: bool
-        is_model_carrier: bool
-        is_blueprint_carrier: bool
+        has_model: bool
+        has_blueprint: bool
         entity: [Board|BoardBlueprint]
 
     Provides:
@@ -87,7 +84,7 @@ class BoardCarrier(ModelCarrier[Board]):
         return self.size == 0
     
     @property
-    def not_consistent(self) -> bool:
+    def is_not_consistent(self) -> bool:
         return self.size > 1
     
     def extract_blueprint(self) -> Optional[BoardBlueprint]:
@@ -100,8 +97,6 @@ class BoardCarrier(ModelCarrier[Board]):
             arena=model.arena,
             squares=model.squares,
             maneuver_log=model.maneuver_log,
-            attack_records=model.attack_records,
-            captured_tokens=model.captured_tokens,
             team_binder=model.team_binder,
         )
 

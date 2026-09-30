@@ -24,11 +24,8 @@ class HumanAccountCarrier(AccountCarrier):
         1.  Transport a hydrated HumanAccount or its Blueprint.
 
     Attributes:
-        size: int
-        is_empty: bool
-        is_over_capacity: bool
-        is_model_carrier: bool
-        is_blueprint_carrier: bool
+        has_model: bool
+        has_blueprint: bool
         entity: [HumanAccount|HumanAccountBlueprint]
 
     Provides:

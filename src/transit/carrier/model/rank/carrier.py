@@ -9,13 +9,15 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, Type, cast
+from abc import ABC, abstractmethod
+from typing import Generic, Optional, TypeVar
 
 from domain import Rank, RankBlueprint
 from transit import ModelCarrier
 
+T = TypeVar("T", bound="Rank")
 
-class RankCarrier(ModelCarrier[Rank]):
+class RankCarrier(ModelCarrier[T], ABC, Generic[T]):
     """
     Role:
         - Boundary Carrier Interface
@@ -24,77 +26,21 @@ class RankCarrier(ModelCarrier[Rank]):
         1.  Transport a hydrated Rank or its Blueprint.
 
     Attributes:
-        size: int
-        is_empty: bool
-        is_over_capacity: bool
-        is_model_carrier: bool
-        is_blueprint_carrier: bool
-        entity: [Rank|RankBlueprint]
 
     Provides:
-        -   def extract_blueprint() -> Optional[RankBlueprint]
+        -   def extract_blueprint() -> Optional[RankBlueprint[T]]
 
     Super Class:
         ModelCarrier
     """
-    
-    _model: Optional[Rank]
-    _blueprint: Optional[RankBlueprint]
-    
-    def __init__(
-            self,
-            model: Optional[Rank] | None = None,
-            blueprint: Optional[RankBlueprint] | None = None,
-    ):
-        """
-        Args:
-            model: Optional[Rank]
-            blueprint: Optional[RankBlueprint]
-        """
-        super().__init__()
-        self._model = model
-        self._blueprint = blueprint
+
     
     @property
-    def entity(self) -> Optional[Rank | RankBlueprint]:
-        if self.is_empty:
-            return None
-        if self.has_model:
-            return self._model
-        return self._blueprint
+    @abstractmethod
+    def entity(self) -> Optional[T | RankBlueprint[T]]:
+        pass
     
-    @property
-    def has_model(self) -> bool:
-        return (
-                self._model is not None and
-                self._blueprint is None and
-                isinstance(self._model, Rank)
-        )
     
-    @property
-    def has_blueprint(self) -> bool:
-        return (
-                not self.has_model and
-                isinstance(self._blueprint, RankBlueprint)
-        )
-    
-    @property
-    def size(self) -> int:
-        return len([self._model, self._blueprint])
-    
-    @property
-    def is_empty(self) -> bool:
-        return self.size == 0
-    
-    @property
-    def not_consistent(self) -> bool:
-        return self.size > 1
-    
-    def extract_blueprint(self) -> Optional[RankBlueprint]:
-        if self.is_empty: return None
-        if self.has_blueprint: return self._blueprint
-        
-        model = cast(Type[self._model], self._model)
-        return RankBlueprint(
-            persona=model.p,
-        )
+    @abstractmethod
+    def extract_blueprint(self) -> Optional[RankBlueprint[T]]:
+        pass

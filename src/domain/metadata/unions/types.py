@@ -34,6 +34,7 @@ class TypeUnion(ABC, Generic[T]):
 
     Super Class:
     """
+    
     _model: Type[T]
     _blueprint: Type[Blueprint[T]]
     

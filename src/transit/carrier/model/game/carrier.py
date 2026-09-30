@@ -24,12 +24,9 @@ class GameCarrier(ModelCarrier[Game]):
         1.  Transport a hydrated Game or its Blueprint.
 
     Attributes:
-        size: int
-        is_empty: bool
-        is_over_capacity: bool
-        is_model_carrier: bool
-        is_blueprint_carrier: bool
-        entity: [Game|GameBlueprint]
+        has_model: bool
+        has_blueprint: bool
+        entity: [Game | GameBlueprint]
 
     Provides:
         -   def extract_blueprint() -> Optional[GameBlueprint]

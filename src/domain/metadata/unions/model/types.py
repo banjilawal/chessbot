@@ -12,13 +12,13 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Type, TypeVar, cast
 
-from domain import Model, ModelBlueprint
-from transit import EntityCarrier
+from domain import Model, ModelBlueprint, TypeUnion
+from transit import ModelCarrier
 
 T = TypeVar("T", bound="Model")
 
 
-class ModelTypeUnion(ModelTypeUnion[T], ABC, Generic[T]):
+class ModelTypeUnion(TypeUnion[T], ABC, Generic[T]):
     """
     Role:
         - Metadata
@@ -28,7 +28,7 @@ class ModelTypeUnion(ModelTypeUnion[T], ABC, Generic[T]):
 
     Attributes:
         model: Type[T]
-        carrier: Type[EntityCarrier[T]]
+        carrier: Type[ModelCarrier[T]]
         blueprint: Type[ModelBlueprint[T]]
         
     Provides:
@@ -36,20 +36,18 @@ class ModelTypeUnion(ModelTypeUnion[T], ABC, Generic[T]):
     Super Class:
         ModelTypeUnion
     """
-    _model: Type[T]
-    _carrier: Type[EntityCarrier[T]]
-    _blueprint: Type[ModelBlueprint[T]]
+    _carrier: Type[ModelCarrier[T]]
     
     def __init__(
             self,
             model: Type[T],
-            carrier: Type[EntityCarrier[T]],
+            carrier: Type[ModelCarrier[T]],
             blueprint: Type[ModelBlueprint[T]],
     ):
         """
         Args:
             model: Type[T]
-            carrier: Type[EntityCarrier[T]]
+            carrier: Type[ModelCarrier[T]]
             blueprint: Type[ModelBlueprint[T]]
         """
         super().__init__(model=model, blueprint=blueprint)
@@ -60,7 +58,7 @@ class ModelTypeUnion(ModelTypeUnion[T], ABC, Generic[T]):
         return cast(Type[T], super().model)
     
     @property
-    def carrier(self) -> Type[EntityCarrier[T]]:
+    def carrier(self) -> Type[ModelCarrier[T]]:
         return self._carrier
     
     @property

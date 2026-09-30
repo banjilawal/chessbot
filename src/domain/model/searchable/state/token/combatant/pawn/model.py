@@ -9,12 +9,9 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional
 
-from collection import CoordDatabase
 from domain import (
-    CombatantToken, TokenDeployment, Formation, HomeSquare, Pawn, PromotionState, Rank,
-    Team, Token, TokenReadiness
+    CombatantToken, Formation, HomeSquare, Pawn, PromotionState, Rank, Team
 )
 
 
@@ -51,7 +48,6 @@ class PawnToken(CombatantToken):
             team: Team,
             formation: Formation,
             home_square: HomeSquare,
-            positions: Optional[CoordDatabase] | None = None,
     ):
         """
         Args:
@@ -65,7 +61,6 @@ class PawnToken(CombatantToken):
             team=team,
             formation=formation,
             home_square=home_square,
-            positions=positions,
         )
         self._rank = formation.rank
         self._promotion_state = PromotionState.NOT_PROMOTED
@@ -88,7 +83,7 @@ class PawnToken(CombatantToken):
         self._promotion_state = promotion_state
         
     @property
-    def promotable(self) -> bool:
+    def is_promotable(self) -> bool:
         position = self.position
         
         if not self.is_ready:
@@ -102,8 +97,8 @@ class PawnToken(CombatantToken):
         return True
     
     @property
-    def not_promotable(self) -> bool:
-        return not self.promotable
+    def is_not_promotable(self) -> bool:
+        return not self.is_promotable
     
     @property
     def is_promoted(self) -> bool:

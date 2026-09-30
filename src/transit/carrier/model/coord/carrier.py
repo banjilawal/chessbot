@@ -24,11 +24,8 @@ class CoordCarrier(ModelCarrier[Coord]):
         1.  Transport a hydrated Coord or its Blueprint.
 
     Attributes:
-        size: int
-        is_empty: bool
-        is_over_capacity: bool
-        is_model_carrier: bool
-        is_blueprint_carrier: bool
+        has_model: bool
+        has_blueprint: bool
         entity: [Coord|CoordBlueprint]
 
     Provides:

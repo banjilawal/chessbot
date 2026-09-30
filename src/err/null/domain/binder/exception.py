@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import NullException
 
 __all__ = [
-    # ======================# COLOR_BINDER_NULL_ERROR #======================#
-    "ColorBinderNullException",
+    # ======================# ARCHETYPE_BINDER_NULL_ERROR #======================#
+    "ArchetypeBinderNullException",
 ]
 
-# ======================# COLOR_BINDER_NULL_ERROR #======================#
-class ColorBinderNullException(NullException):
+# ======================# ARCHETYPE_BINDER_NULL_ERROR #======================#
+class ArchetypeBinderNullException(NullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required ColorBinder is null.
+        1.  Indicating a required ArchetypeBinder is null.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class ColorBinderNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = "ColorBinder cannot be null."
-    ERR_CODE = "COLOR_BINDER_NULL_ERROR"
+    MSG = "ArchetypeBinder cannot be null."
+    ERR_CODE = "ARCHETYPE_BINDER_NULL_ERROR"
     
     def __init__(
             self,

@@ -9,10 +9,10 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import abstractmethod
+from abc import ABC, abstractmethod
 
-from _testcapi import Generic
-from typing import Optional, TypeVar
+
+from typing import Generic, Optional, TypeVar
 
 from domain import (
     HumanAccountBlueprint, MachineAccountBlueprint, Account, AccountBlueprint
@@ -21,7 +21,7 @@ from transit import ModelCarrier
 
 T = TypeVar("T", bound="Account")
 
-class AccountCarrier(ModelCarrier[T], Generic[T]):
+class AccountCarrier(ModelCarrier[T], ABC, Generic[T]):
     """
     Role:
         - Boundary Carrier Interface
@@ -30,12 +30,9 @@ class AccountCarrier(ModelCarrier[T], Generic[T]):
         1.  Transport a hydrated Account or its Blueprint.
 
     Attributes:
-        size: int
-        is_empty: bool
-        is_over_capacity: bool
-        is_model_carrier: bool
-        is_blueprint_carrier: bool
-        entity: [Account|AccountBlueprint]
+        entity: [Account | AccountBlueprint]
+        is_human_account_carrier: bool
+        is_machine_account_carrier: bool
 
     Provides:
         -   def extract_blueprint() -> Optional[AccountBlueprint]
@@ -49,44 +46,19 @@ class AccountCarrier(ModelCarrier[T], Generic[T]):
     def entity(self) -> Optional[T | AccountBlueprint[T]]:
         pass
     
-    @property
     @abstractmethod
-    def has_model(self) -> bool:
-        pass
-    
-    @property
-    @abstractmethod
-    def has_blueprint(self) -> bool:
-        pass
-    
-    @property
-    def size(self) -> int:
-        return len([self._model, self._blueprint])
-    
-    @property
-    def is_empty(self) -> bool:
-        return self.size == 0
-    
-    @property
-    def is_consistent(self) -> bool:
-        return self.size == 1
-    
-    @property
-    def not_consistent(self) -> bool:
-        return self.size > 1
-    
     def extract_blueprint(self) -> Optional[AccountBlueprint[T]]:
         pass
-    
+
     @property
-    def is_carrying_human(self) -> bool:
+    def is_human_account_carrier(self) -> bool:
         blueprint = self.extract_blueprint()
         if blueprint is None:
             return False
-        return isinstance(blueprint, HumanAccountBlueprint)
+        return  isinstance(blueprint, HumanAccountBlueprint)
     
     @property
-    def is_carrying_machine(self) -> bool:
+    def is_machine_account_carrier(self) -> bool:
         blueprint = self.extract_blueprint()
         if blueprint is None:
             return False

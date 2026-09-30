@@ -24,11 +24,8 @@ class CombatantTokenCarrier(TokenCarrier[CombatantToken]):
         1.  Transport a hydrated CombatantToken or its Blueprint.
 
     Attributes:
-        size: int
-        is_empty: bool
-        is_over_capacity: bool
-        is_model_carrier: bool
-        is_blueprint_carrier: bool
+        has_model: bool
+        has_blueprint: bool
         entity: [Token|CombatantBlueprint]
 
     Provides:
@@ -74,19 +71,7 @@ class CombatantTokenCarrier(TokenCarrier[CombatantToken]):
                 not self.has_model and
                 isinstance(self._blueprint, CombatantTokenBlueprint)
         )
-    
-    @property
-    def size(self) -> int:
-        return len([self._model, self._blueprint])
-    
-    @property
-    def is_empty(self) -> bool:
-        return self.size == 0
-    
-    @property
-    def not_consistent(self) -> bool:
-        return self.size > 1
-    
+       
     def extract_blueprint(self) -> Optional[CombatantTokenBlueprint]:
         if self.is_empty: return None
         if self.has_blueprint: return self._blueprint

@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import NullException
 from artifcat import MethodResultType
+from err import NullException
 
 __all__ = [
     # ======================# MOVEMENT_PATTERN_NULL_ERROR #======================#

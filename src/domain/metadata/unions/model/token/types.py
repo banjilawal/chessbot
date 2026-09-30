@@ -9,14 +9,15 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Generic, Optional, Type, TypeVar, cast
+from abc import ABC
+from typing import Generic, Type, TypeVar, cast
 
 from domain import ModelTypeUnion, Token, TokenBlueprint
 from transit import TokenCarrier
 
 T = TypeVar("T", bound="Token")
 
-class TokenTypeUnion(ModelTypeUnion[T], Generic[T]):
+class TokenTypeUnion(ModelTypeUnion[T], ABC, Generic[T]):
     """
     Role:
         - Metadata
@@ -25,8 +26,8 @@ class TokenTypeUnion(ModelTypeUnion[T], Generic[T]):
         1. Catalog of types associated with building and validating a Token.
 
     Attributes:
-        model: Type[Token]
-        carrier: Type[TokenCarrier]
+        model: Type[T]
+        carrier: Type[TokenCarrier[T]]
         blueprint: Type[TokenBlueprint]
         
     Provides:
@@ -37,25 +38,25 @@ class TokenTypeUnion(ModelTypeUnion[T], Generic[T]):
     
     def __init__(
             self,
-            model: Optional[Type[T]] | None = None,
-            carrier: Optional[Type[TokenCarrier[T]]] | None = None,
-            blueprint: Optional[Type[TokenBlueprint[T]]] | None = None,
+            model: Type[T],
+            carrier: Type[TokenCarrier[T]],
+            blueprint: Type[TokenBlueprint[T]],
     ):
         """
         Args:
-            model: Optional[Type[Token]]
-            carrier: Optional[Type[TokenCarrier]]
-            blueprint: Optional[Type[TokenBlueprint]]
+            model: Type[T]
+            carrier: Type[TokenCarrier[T]]
+            blueprint: Type[TokenBlueprint]
         """
         super().__init__(
-            model=model or Type[Token],
-            carrier=carrier or Type[TokenCarrier],
+            model=model or Type[T],
+            carrier=carrier or Type[TokenCarrier[T]],
             blueprint=blueprint or TokenBlueprint,
         )
     
     @property
     def model(self) -> Type[T]:
-        return cast(Type[Token], super().model)
+        return cast(Type[T], super().model)
     
     @property
     def carrier(self) -> Type[TokenCarrier[T]]:

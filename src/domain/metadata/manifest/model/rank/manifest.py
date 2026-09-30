@@ -9,13 +9,14 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from domain import RankNullGroup, ModelManifest, Rank, RankTypeUnion
 
 T = TypeVar("T", bound="Rank")
 
-class RankManifest(ModelManifest[T], Generic[T]):
+class RankManifest(ModelManifest[T], ABC, Generic[T]):
     """
      Role:
         1.  Metadata
@@ -37,7 +38,7 @@ class RankManifest(ModelManifest[T], Generic[T]):
     def __init__(
             self,
             types: RankTypeUnion[T],
-            nulls: RankNullGroup[T]
+            nulls: RankNullGroup[T],
     ):
         """
         Args:

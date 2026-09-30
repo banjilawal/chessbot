@@ -35,7 +35,7 @@ class ManeuverBlueprint(ModelBlueprint[Maneuver]):
      Provides:
 
      Super Class:
-        SearchableModelBlueprint
+        ModelBlueprint
      """
     
     _path: Path

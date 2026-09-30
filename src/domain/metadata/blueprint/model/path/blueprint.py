@@ -32,7 +32,7 @@ class PathBlueprint(ModelBlueprint[Path]):
      Provides:
 
      Super Class:
-        SearchableModelBlueprint
+        ModelBlueprint
      """
     _endpoints: SquareRegister
     _label: Optional[int]

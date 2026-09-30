@@ -15,7 +15,7 @@ from domain import Pawn, Persona, RankBlueprint
 from err import PawnNullException
 
 
-class PawnBlueprint(RankBlueprint):
+class PawnBlueprint(RankBlueprint[Pawn]):
     """
      Role:
         1.  Metadata
@@ -31,7 +31,7 @@ class PawnBlueprint(RankBlueprint):
     Provides:
 
      Super Class:
-        RankBlueprintNullException
+        RankBlueprint
      """
     
     def __init__(

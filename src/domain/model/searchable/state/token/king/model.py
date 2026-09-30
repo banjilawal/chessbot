@@ -38,14 +38,8 @@ class KingToken(Token):
         previous_address: Optional[Coord]
         token_board_state: TokenBoardState
         readiness_state: TokenActivityState
-        is_not_deployed: bool
-        is_active(self): bool
-        is_disabled: bool
-        is_enemy: bool
-        is_checkmated: bool
-        is_active: bool
-        is_disabled: bool
-        is_in_checkk: bool
+
+
 
     Super Class:
         Token
@@ -94,7 +88,8 @@ class KingToken(Token):
     
     @checkmate.setter
     def checkmate(self, other: CheckmateEncounter):
-        self._checkmate = other
+        if self._checkmate is None:
+            self._checkmate = other
         
     @property
     def check_warning(self) -> Optional[EncounterWarning]:

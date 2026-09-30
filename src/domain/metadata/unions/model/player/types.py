@@ -9,15 +9,12 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Generic, Type, TypeVar, cast
+from typing import Type
 
 from domain import ModelTypeUnion, Player, PlayerBlueprint
 from transit import PlayerCarrier
 
-T = TypeVar("T", bound="Player")
-
-
-class PlayerTypeUnion(ModelTypeUnion[T], Generic[T]):
+class PlayerTypeUnion(ModelTypeUnion[Player]):
     """
     Role:
         - Metadata
@@ -26,9 +23,9 @@ class PlayerTypeUnion(ModelTypeUnion[T], Generic[T]):
         1. Catalog of types associated with building and validating a Player.
 
     Attributes:
-        model: Type[T]
-        carrier: Type[PlayerCarrier[T]]
-        blueprint: Type[Blueprint[T]]
+        model: Type[Player]
+        carrier: Type[PlayerCarrier]
+        blueprint: Type[PlayerBlueprint]
 
     Provides:
 
@@ -38,26 +35,26 @@ class PlayerTypeUnion(ModelTypeUnion[T], Generic[T]):
     
     def __init__(
             self,
-            model: Type[T],
-            carrier: Type[PlayerCarrier[T]],
-            blueprint: Type[PlayerBlueprint[T]],
+            model: Type[Player],
+            carrier: Type[PlayerCarrier],
+            blueprint: Type[PlayerBlueprint],
     ):
         """
         Args:
-            model: Type[T]
-            carrier: Type[PlayerCarrier[T]]
-            blueprint: Type[PlayerBlueprint[T]]
+            model: Type[Player]
+            carrier: Type[PlayerCarrier]
+            blueprint: Type[PlayerBlueprint]
         """
         super().__init__(model=model, carrier=carrier, blueprint=blueprint)
     
     @property
-    def model(self) -> Type[T]:
-        return cast(Type[T], super().model)
+    def model(self) -> Type[Player]:
+        return cast(Type[Player], super().model)
     
     @property
-    def carrier(self) -> Type[PlayerCarrier[T]]:
-        return cast(Type[PlayerCarrier[T]], super().carrier)
+    def carrier(self) -> Type[PlayerCarrier]:
+        return cast(Type[PlayerCarrier], super().carrier)
     
     @property
-    def blueprint(self) -> Type[PlayerBlueprint[T]]:
-        return cast(Type[PlayerBlueprint[T]], super().blueprint)
+    def blueprint(self) -> Type[PlayerBlueprint]:
+        return cast(Type[PlayerBlueprint], super().blueprint)

@@ -23,12 +23,9 @@ class VectorCarrier(ModelCarrier[Vector]):
         1.  Transport a hydrated Vector or its Blueprint.
 
     Attributes:
-        size: int
-        is_empty: bool
-        is_over_capacity: bool
-        is_model_carrier: bool
-        is_blueprint_carrier: bool
-        entity: [Vector|VectorBlueprint]
+        model: Optional[Vector]
+        blueprint: Optional[VectorBlueprint]
+        entity: [Vector | VectorBlueprint]
 
     Provides:
         -   def extract_blueprint() -> Optional[VectorBlueprint]
@@ -55,7 +52,7 @@ class VectorCarrier(ModelCarrier[Vector]):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> Optional[Vector|VectorBlueprint]:
+    def entity(self) -> Optional[Vector | VectorBlueprint]:
         if self.is_empty:
             return None
         if self.has_model:
@@ -76,18 +73,6 @@ class VectorCarrier(ModelCarrier[Vector]):
                 not self.has_model and
                 isinstance(self._blueprint, VectorBlueprint)
         )
-    
-    @property
-    def size(self) -> int:
-        return len([self._model, self._blueprint])
-    
-    @property
-    def is_empty(self) -> bool:
-        return self.size == 0
-    
-    @property
-    def not_consistent(self) -> bool:
-        return self.size > 1
      
     def extract_blueprint(self) -> Optional[VectorBlueprint]:
         if self.is_empty: return None

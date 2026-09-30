@@ -10,8 +10,6 @@ version: 0.0.2
 # =========== ERR.NULL.DOMAIN.BLUEPRINT.MODEL.PLAYER PACKAGE ===========#
 
 # Packages
-from .human import *
-from .machine import *
 
 # Modules
 from .exception import PlayerBlueprintNullException

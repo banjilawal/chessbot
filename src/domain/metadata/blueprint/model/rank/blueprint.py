@@ -10,13 +10,14 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Type, cast
+from typing import Generic, Type, TypeVar, cast
 
 from domain import ModelBlueprint, Persona, Rank
 from err import RankNullException
 
+T = TypeVar("T", bound="Rank")
 
-class RankBlueprint(ModelBlueprint[Rank], ABC):
+class RankBlueprint(ModelBlueprint[T], ABC, Generic[T]):
     """
      Role:
         1.  Metadata
@@ -26,7 +27,7 @@ class RankBlueprint(ModelBlueprint[Rank], ABC):
 
     Attributes:
         persona: Persona
-        domain_class: Type[Rank]
+        domain_class: Type[T]
         domain_null_exception: RankNullException
         
     Provides:
@@ -39,13 +40,13 @@ class RankBlueprint(ModelBlueprint[Rank], ABC):
     def __init__(
             self,
             persona: Persona,
-            domain_class: Type[Rank],
+            domain_class: Type[T],
             domain_null_exception: RankNullException,
     ):
         """
         Args:
             persona: Persona
-            domain_class: Optional[Type[Rank]]
+            domain_class: Optional[Type[T]]
             domain_null_exception: Optional[RankNullException]
         """
         super().__init__(
@@ -59,8 +60,8 @@ class RankBlueprint(ModelBlueprint[Rank], ABC):
         return self._persona
         
     @property
-    def domain_class(self) -> Type[Rank]:
-        return cast(Type[Rank], super().domain_class)
+    def domain_class(self) -> Type[T]:
+        return cast(Type[T], super().domain_class)
     
     @property
     def domain_null_exception(self) -> RankNullException:

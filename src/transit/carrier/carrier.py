@@ -28,13 +28,12 @@ class EntityCarrier(ABC, Generic[T]):
 
     Attributes:
         size: int
-        
         is_empty: bool
-        is_over_capacity: bool
-        is_model_carrier: bool
-        is_blueprint_carrier: bool
-        entity: [T | Blueprint[T]]
-
+        has_model: bool
+        has_blueprint: bool
+        
+        is_consistent: bool
+        is_not_consistent: bool
 
     Provides:
         -   def extract_blueprint() -> Optional[Blueprint[T]]
@@ -73,7 +72,7 @@ class EntityCarrier(ABC, Generic[T]):
         return self.size == 1
     
     @property
-    def not_consistent(self) -> bool:
+    def is_not_consistent(self) -> bool:
         return self.size > 1
     
     @abstractmethod

@@ -20,10 +20,6 @@ class TurnReferee:
         """
         Args:
         """
-        
-    @property
-    def players(self) -> PlayerArchetypeBinder:
-        return self._players
     
     @LoggingLevelRouter.monitor
     def execute(self, players: PlayerArchetypeBinder) -> TurnResult:

@@ -11,11 +11,10 @@ version: 0.0.2
 
 # Packages
 from .coord import *
-from .iden import *
 from .maneuver import *
 from .rank import *
 from .scalar import *
-from .iden import *
+from .state import *
 from .vector import *
 
 # Modules

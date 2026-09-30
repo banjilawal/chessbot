@@ -15,7 +15,7 @@ from domain import Knight, Persona, RankBlueprint
 from err import KnightNullException
 
 
-class KnightBlueprint(RankBlueprint):
+class KnightBlueprint(RankBlueprint[Knight]):
     """
      Role:
         1.  Metadata
@@ -31,7 +31,7 @@ class KnightBlueprint(RankBlueprint):
     Provides:
 
      Super Class:
-        RankBlueprintNullException
+        RankBlueprint
      """
     
     def __init__(

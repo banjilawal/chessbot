@@ -10,8 +10,6 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.MANIFEST.MODEL.PLAYER PACKAGE ===========#
 
 # Packages
-from .human import *
-
 
 # Modules
 from .manifest import PlayerManifest

@@ -15,7 +15,7 @@ from domain import King, Persona, RankBlueprint
 from err import KingNullException
 
 
-class KingBlueprint(RankBlueprint):
+class KingBlueprint(RankBlueprint[King]):
     """
      Role:
         1.  Metadata
@@ -31,7 +31,7 @@ class KingBlueprint(RankBlueprint):
     Provides:
 
      Super Class:
-        RankBlueprintNullException
+        RankBlueprint
      """
     
     def __init__(

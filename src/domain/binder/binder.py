@@ -29,7 +29,7 @@ class ColorBinder(ABC, Generic[T]):
         size: int
         is_empty: bool
         is_correct_size: bool
-        is_over_capacity: bool
+        is_not_consistent: bool
         
     Provides:
         same_items: bool
@@ -63,7 +63,7 @@ class ColorBinder(ABC, Generic[T]):
         return self.size == self._MAX_CAPACITY
     
     @property
-    def is_over_capacity(self) -> bool:
+    def is_not_consistent(self) -> bool:
         return self.size > self._MAX_CAPACITY
     
     @property

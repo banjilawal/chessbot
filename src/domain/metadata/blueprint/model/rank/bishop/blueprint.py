@@ -15,7 +15,7 @@ from domain import Bishop, Persona, RankBlueprint
 from err import BishopNullException
 
 
-class BishopBlueprint(RankBlueprint):
+class BishopBlueprint(RankBlueprint[Bishop]):
     """
     Role:
         1.  Metadata
@@ -31,7 +31,7 @@ class BishopBlueprint(RankBlueprint):
     Provides:
     
     Super Class:
-        RankBlueprintNullException
+        RankBlueprint
     """
     
     def __init__(

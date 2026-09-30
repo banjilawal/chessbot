@@ -26,9 +26,9 @@ class CheckmateEncounterCarrier(EncounterCarrier[CheckmateEncounter]):
     Attributes:
         size: int
         is_empty: bool
-        is_over_capacity: bool
-        is_model_carrier: bool
-        is_blueprint_carrier: bool
+        is_not_consistent: bool
+        has_model: bool
+        has_blueprint: bool
         entity: [CheckmateEncounter | CheckmateEncounterBlueprint]
 
     Provides:

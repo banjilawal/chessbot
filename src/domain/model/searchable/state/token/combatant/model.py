@@ -11,8 +11,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from collection import CoordDatabase
-from domain import CombatantReadiness, TokenDeployment, Formation, HomeSquare, Team, Token, TokenReadiness
+from domain import CombatantReadiness, Formation, HomeSquare, Team, Token
 
 
 class CombatantToken(Token):
@@ -58,7 +57,6 @@ class CombatantToken(Token):
             team: Team,
             formation: Formation,
             home_square: HomeSquare,
-            positions: Optional[CoordDatabase] | None = None,
     ):
         """
         Args:
@@ -73,7 +71,6 @@ class CombatantToken(Token):
             team=team,
             formation=formation,
             home_square=home_square,
-            positions=positions,
         )
         self._captor = None
         self._readiness = CombatantReadiness.OFF_BOARD
@@ -97,7 +94,7 @@ class CombatantToken(Token):
     @property
     def is_ready(self) -> bool:
         return (
-                self.is_deployed and
+                super().is_ready and
                 self._captor is None and
                 self._readiness == CombatantReadiness.READY
         )
@@ -113,6 +110,7 @@ class CombatantToken(Token):
                 self._captor is not None and
                 self._readiness == CombatantReadiness.CAPTURED
         )
+    
    
     def __eq__(self, other):
         if super().__eq__(other):

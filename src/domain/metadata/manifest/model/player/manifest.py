@@ -9,13 +9,12 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Generic, TypeVar, cast
+from typing import Optional, cast
 
 from domain import ModelManifest, Player, PlayerNullGroup, PlayerTypeUnion
 
-T = TypeVar("T", bound="Player")
 
-class PlayerManifest(ModelManifest[T], Generic[T]):
+class PlayerManifest(ModelManifest[Player]):
     """
      Role:
         1.  Metadata
@@ -36,20 +35,23 @@ class PlayerManifest(ModelManifest[T], Generic[T]):
     
     def __init__(
             self,
-            types: PlayerTypeUnion[T],
-            nulls: PlayerNullGroup[T]
+            types: Optional[PlayerTypeUnion],
+            nulls: Optional[PlayerNullGroup],
     ):
         """
         Args:
-            types: PlayerTypeUnion[T]
-            nulls: PlayerNullGroup[T]
+            types: Optional[PlayerTypeUnion]
+            nulls: Optional[PlayerNullGroup]
         """
-        super().__init__(types=types, nulls=nulls)
+        super().__init__(
+            types=types or PlayerTypeUnion(),
+            nulls=nulls or PlayerNullGroup(),
+        )
         
     @property
-    def types(self) -> PlayerTypeUnion[T]:
-        return cast(PlayerTypeUnion[T], super().types)
+    def types(self) -> PlayerTypeUnion:
+        return cast(PlayerTypeUnion, super().types)
     
     @property
-    def nulls(self) -> PlayerNullGroup[T]:
-        return cast(PlayerNullGroup[T], super().nulls)
+    def nulls(self) -> PlayerNullGroup:
+        return cast(PlayerNullGroup, super().nulls)

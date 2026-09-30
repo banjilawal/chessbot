@@ -11,8 +11,8 @@ version: 0.0.2
 
 # Packages
 from .arena import *
-from .board import *
-from .game import *
+from .team import *
+from .player import *
 
 # Modules
-from .exception import ColorBinderNullException
+from .exception import ArchetypeBinderNullException

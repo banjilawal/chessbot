@@ -9,7 +9,6 @@ version: 0.0.2
 
 from __future__ import annotations
 
-
 from typing import Optional
 
 from collection import CoordDatabase
@@ -31,7 +30,6 @@ class Token(StateModel):
         team: Team
         formation: Formation
         deployment: TokenDeployment
-        positions: CoordDatabase
         home_square: OpeningSquare
         position: Optional[Coord]
         previous_position: Optional[Coord]
@@ -39,13 +37,10 @@ class Token(StateModel):
         is_ready: bool
         is_not_ready: bool
         
-        is_deployed: bool
-        is_not_deployed: bool
-        
-        is_friend: bool
-        is_enemy: bool
-        
     Provides:
+        -   def mark_as_deployed() -> Void
+        -   def is_friend(token: Token) -> bool
+        -   def is_enemy(token: Token) -> bool
 
     Super Class:
         StateModel
@@ -65,7 +60,6 @@ class Token(StateModel):
             team: Team,
             formation: Formation,
             home_square: HomeSquare,
-            positions: Optional[CoordDatabase] | None = None,
     ):
         """
         Args:
@@ -79,10 +73,8 @@ class Token(StateModel):
         self._formation = formation
         self._home_square = home_square
         self._deployment = TokenDeployment.NOT_DEPLOYED
-        
         self._position = None
         self._previous_position = None
-        self._positions = positions or CoordDatabase()
     
     @property
     def formation(self) -> Formation:
@@ -112,17 +104,6 @@ class Token(StateModel):
     def deployment(self) -> TokenDeployment:
         return self._deployment
     
-    @deployment.setter
-    def deployment(
-            self,
-            other: TokenDeployment = TokenDeployment.DEPLOYED_TO_HOME_SQUARE
-    ):
-        self._deployment = other
-    
-    @property
-    def positions(self) -> CoordDatabase:
-        return self._positions
-    
     @property
     def position(self) -> Optional[Coord]:
         return self._position
@@ -141,11 +122,17 @@ class Token(StateModel):
         
     @property
     def is_ready(self) -> bool:
-       return self._deployment == TokenDeployment.DEPLOYED_TO_HOME_SQUARE
+       return (
+               self._position is not None and
+               self._deployment == TokenDeployment.DEPLOYED_TO_HOME_SQUARE
+       )
     
     @property
     def is_not_ready(self) -> bool:
        return not self.is_ready
+    
+    def mark_as_deployed(self):
+        self._deployment = TokenDeployment.DEPLOYED_TO_HOME_SQUARE
     
     def is_friend(self, token: Token) -> bool:
         return self._team == token.team

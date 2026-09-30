@@ -10,7 +10,6 @@ version: 0.0.2
 # =========== TRANSIT.CARRIER.MODEL.TOKEN.COMBATANT PACKAGE ===========#
 
 # Packages
-from .pawn import *
 
 # Modules
 from .carrier import CombatantTokenCarrier

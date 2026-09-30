@@ -24,12 +24,9 @@ class KingTokenCarrier(TokenCarrier[KingToken]):
         1.  Transport a hydrated KingToken or its Blueprint.
 
     Attributes:
-        size: int
-        is_empty: bool
-        is_over_capacity: bool
-        is_model_carrier: bool
-        is_blueprint_carrier: bool
-        entity: [Token|KingTokenBlueprint]
+        has_model: bool
+        has_blueprint: bool
+        entity: [KingToken | KingTokenBlueprint]
 
     Provides:
         -   def extract_blueprint() -> Optional[KingTokenBlueprint]
@@ -37,6 +34,10 @@ class KingTokenCarrier(TokenCarrier[KingToken]):
     Super Class:
         ModelCarrier
     """
+    
+    _model: Optional[KingToken]
+    _blueprint: Optional[KingTokenBlueprint]
+    
     
     def __init__(
             self,
@@ -53,7 +54,7 @@ class KingTokenCarrier(TokenCarrier[KingToken]):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> Optional[KingToken|KingTokenBlueprint]:
+    def entity(self) -> Optional[KingToken | KingTokenBlueprint]:
         if self.is_empty:
             return None
         if self.has_model:
@@ -74,18 +75,6 @@ class KingTokenCarrier(TokenCarrier[KingToken]):
                 not self.has_model and
                 isinstance(self._blueprint, KingTokenBlueprint)
         )
-    
-    @property
-    def size(self) -> int:
-        return len([self._model, self._blueprint])
-    
-    @property
-    def is_empty(self) -> bool:
-        return self.size == 0
-    
-    @property
-    def not_consistent(self) -> bool:
-        return self.size > 1
     
     def extract_blueprint(self) -> Optional[KingTokenBlueprint]:
         if self.is_empty: return None
