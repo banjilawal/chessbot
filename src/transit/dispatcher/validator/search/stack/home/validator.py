@@ -167,7 +167,7 @@ class TokenHomeContextValidator(StackContextValidator[TokenHomeContext]):
             return ValidationResult.success(context)
     
         # Validation for the search-by-team target.
-        if context.team is not None:
+        if context.victim is not None:
             validation_result = toolkit.team_validator.execute(
                 job=context.position
             )

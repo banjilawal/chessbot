@@ -35,10 +35,6 @@ class KingTokenCarrier(TokenCarrier[KingToken]):
         ModelCarrier
     """
     
-    _model: Optional[KingToken]
-    _blueprint: Optional[KingTokenBlueprint]
-    
-    
     def __init__(
             self,
             model: Optional[KingToken] | None = None,
@@ -49,32 +45,26 @@ class KingTokenCarrier(TokenCarrier[KingToken]):
             model: Optional[KingToken]
             blueprint: Optional[KingTokenBlueprint]
         """
-        super().__init__()
-        self._model = model
-        self._blueprint = blueprint
+        super().__init__(model=model, blueprint=blueprint, )
     
     @property
     def entity(self) -> Optional[KingToken | KingTokenBlueprint]:
-        if self.is_empty:
-            return None
-        if self.has_model:
-            return self._model
-        return self._blueprint
+        entity = super().entity
+        if (
+                isinstance(entity, KingToken) or
+                isinstance(entity, KingTokenBlueprint)
+        ):
+            return entity
+        
+        return None
     
     @property
     def has_model(self) -> bool:
-        return (
-                self._model is not None and
-                self._blueprint is None and
-                isinstance(self._model, KingToken)
-        )
+        return isinstance(self.entity, KingToken)
     
     @property
     def has_blueprint(self) -> bool:
-        return (
-                not self.has_model and
-                isinstance(self._blueprint, KingTokenBlueprint)
-        )
+        return isinstance(self.entity, KingTokenBlueprint)
     
     def extract_blueprint(self) -> Optional[KingTokenBlueprint]:
         if self.is_empty: return None

@@ -45,38 +45,32 @@ class PawnTokenCarrier(TokenCarrier[PawnToken]):
             model: Optional[PawnToken]
             blueprint: Optional[PawnTokenBlueprint]
         """
-        super().__init__()
-        self._model = model
-        self._blueprint = blueprint
+        super().__init__(model=model, blueprint=blueprint,)
     
     @property
     def entity(self) -> Optional[PawnToken | PawnTokenBlueprint]:
-        if self.is_empty:
-            return None
-        if self.has_model:
-            return self._model
-        return self._blueprint
+        entity = super().entity
+        if (
+                isinstance(entity, PawnToken) or
+                isinstance(entity, PawnTokenBlueprint)
+        ):
+            return entity
+        
+        return None
     
     @property
     def has_model(self) -> bool:
-        return (
-                self._model is not None and
-                self._blueprint is None and
-                isinstance(self._model, PawnToken)
-        )
+        return isinstance(self.entity, PawnToken)
     
     @property
     def has_blueprint(self) -> bool:
-        return (
-                not self.has_model and
-                isinstance(self._blueprint, PawnTokenBlueprint)
-        )
+        return isinstance(self.entity, PawnTokenBlueprint)
     
     def extract_blueprint(self) -> Optional[PawnTokenBlueprint]:
         if self.is_empty: return None
-        if self.has_blueprint: return self._blueprint
+        if self.has_blueprint: return cast(PawnTokenBlueprint, self.entity)
         
-        model = cast(PawnToken, self._model)
+        model = cast(PawnToken, self.entity)
         return PawnTokenBlueprint(
             id=model.id,
             team=model.team,

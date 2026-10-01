@@ -150,7 +150,7 @@ class TurnSceneValidator(Validator[TurnScene]):
             
             if isinstance(piece, CombatantPiece):
                 combatant_piece = cast(CombatantPiece, piece)
-                team = combatant_piece.team
+                team = combatant_piece.victim
                 
                 if combatant_piece.victor is not None:
                     return ValidationResult.failure(

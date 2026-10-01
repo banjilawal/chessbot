@@ -113,7 +113,7 @@ class TeamTokenRelationAnalyzer(RelationAnalyzer[Team, Token]):
             )
         token = cast(Token, token_validation_result.payload)
         
-        if team.roster.is_empty and token.team == SENSOR.team:
+        if team.roster.is_empty and token.team == SENSOR.victim:
             return AnalysisResult.success(RelationReport.bidirectional(primary=team, satellite=token))
         
         token_search_result = team.roster.search(context=TokenContext(id=token.id))
@@ -132,7 +132,7 @@ class TeamTokenRelationAnalyzer(RelationAnalyzer[Team, Token]):
         if token.team != team and token_search_result.no_recurrences_exist:
             return AnalysisResult.success(RelationReport.no_relation())
         
-        if token.team == SENSOR.team and token_search_result.no_recurrences_exist:
+        if token.team == SENSOR.victim and token_search_result.no_recurrences_exist:
             return AnalysisResult.success(RelationReport.registration_missing(satellite=token))
         
         if token.team != team and token_search_result.is_success:

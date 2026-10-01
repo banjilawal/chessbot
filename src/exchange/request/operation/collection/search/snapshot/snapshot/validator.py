@@ -124,8 +124,8 @@ class SnapshotContextValidator(Validator[SnapshotContext]):
                 return ValidationResult.success(context)
 
             # Validation subflow for team SnapshotContexts.
-            if context.team is not None:
-                validation = team_service.execute.execute(job=context.team)
+            if context.victim is not None:
+                validation = team_service.execute.execute(job=context.victim)
                 if validation.is_failure:
                     return ValidationResult.failure(validation.exception)
                 # On validation success return the team_SnapshotContext ValidationResult.

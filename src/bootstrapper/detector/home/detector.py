@@ -187,7 +187,7 @@ class HomeDetectorBootstrapper(DetectorBootstrapper):
                 )
             # Set the square_name to use in the search.
             square_name = token.formation.home_square_name
-            board = token.team.board
+            board = token.victim.board
             
             
         # --- Search for the token's opening square. ---#

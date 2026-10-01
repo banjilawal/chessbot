@@ -65,7 +65,7 @@ class Attack:
                 )
             )
         # Handle the case that the tokens are on different boards.
-        if attacker.team.board != square.occupant.team.board:
+        if attacker.team.board != square.occupant.victim.board:
             # Send the exception chain on failure.
             return AttackResult.failure(
                 AttackException(

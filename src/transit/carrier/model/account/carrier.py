@@ -40,11 +40,44 @@ class AccountCarrier(ModelCarrier[T], ABC, Generic[T]):
     Super Class:
         ModelCarrier
     """
+    _model: Optional[T]
+    _blueprint: Optional[AccountBlueprint[T]]
+    
+    def __init__(
+            self,
+            model: Optional[T] | None = None,
+            blueprint: Optional[AccountBlueprint[T]] | None = None,
+    ):
+        """
+        Args:
+            model: Optional[T]
+            blueprint: Optional[AccountBlueprint[T]]
+        """
+        super().__init__()
+        self._model = model
+        self._blueprint = blueprint
     
     @property
-    @abstractmethod
     def entity(self) -> Optional[T | AccountBlueprint[T]]:
-        pass
+        if self.is_empty:
+            return None
+        if self.has_model:
+            return self._model
+        return self._blueprint
+    
+    @property
+    def has_model(self) -> bool:
+        return (
+                self._model is not None and
+                self._blueprint is None
+        )
+    
+    @property
+    def has_blueprint(self) -> bool:
+        return (
+                self._model is None and
+                self._blueprint is not None
+        )
     
     @abstractmethod
     def extract_blueprint(self) -> Optional[AccountBlueprint[T]]:

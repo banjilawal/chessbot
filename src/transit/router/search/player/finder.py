@@ -88,8 +88,8 @@ class AgentFinder(DataFinder[PlayerAgent]):
             if context.name is not None:
                 return cls._find_by_name(dataset, context.name)
             # Entry point into searching by owner's team.
-            if context.team is not None:
-                return cls._find_by_team(dataset, context.team)
+            if context.victim is not None:
+                return cls._find_by_team(dataset, context.victim)
             # Entry point into searching by AgentVariety (Human or Machine)
             if context.variety is not None:
                 return cls._find_by_variety(dataset, context.variety)

@@ -111,7 +111,7 @@ class TokenHomePlacer(Operator[Token]):
         pre_update_token = deepcopy(token)
         
         # Make a visitation request to square_validator.
-        visitation_result = token.team.board.squares.service.begin_square_visit(
+        visitation_result = token.victim.board.squares.service.begin_square_visit(
             visitor=claim.claimant,
             square=claim.home_square,
         )

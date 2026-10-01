@@ -14,6 +14,7 @@ from .arena import *
 from .attack import *
 from .board import *
 from .coord import *
+from .encounter import *
 from .edge import *
 from .game import *
 from .maneuver import *

@@ -233,9 +233,9 @@ class SchemaContextValidator(Validator[SchemaContext]):
             return ValidationResult.success(context)
         
         # Certification for the search-by-team target.
-        if context.team is not None:
+        if context.victim is not None:
             validation_result = workers.team_service.execute.execute(
-                rank=context.team
+                rank=context.victim
             )
             if validation_result.is_failure:
                 # Send the exception chain on failure.

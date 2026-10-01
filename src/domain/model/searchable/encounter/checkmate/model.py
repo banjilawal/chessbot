@@ -80,10 +80,10 @@ class CheckmateEncounter(Encounter):
         
         table: Dict[str, Dict[GameColor, Player]]
         player = self.victor.team.owner
-        color = self._encounter.victor.team.archetype.color
+        color = self._encounter.victor.victim.archetype.color
    
         
-        winning_team = self._encounter.victor.team
+        winning_team = self._encounter.victor.victim
         winning_archetype = winning_team.archetyp
         winner = winning_team.owner
         archetype.
@@ -92,13 +92,13 @@ class CheckmateEncounter(Encounter):
         winner_archetype = winner_team.archetype
         if winner_archety
         
-        team_binder = self._encounter.victor.team.board.team_binder
-        player_binder = self._encount.victim.team.board.arena.player_binder
+        team_binder = self._encounter.victor.victim.board.team_binder
+        player_binder = self._encount.victim.victim.board.arena.player_binder
         
         winner_archetype = sel
         
         return {color:}
-        self._encounter.victor.team.owner
+        self._encounter.victor.victim.owner
     
     @
 

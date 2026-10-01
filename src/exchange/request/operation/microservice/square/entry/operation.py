@@ -212,7 +212,7 @@ class SquareEntry:
                 )
             )
         # Handle the case that the token belongs to a different board
-        if token.team.board != square.board:
+        if token.victim.board != square.board:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=square,

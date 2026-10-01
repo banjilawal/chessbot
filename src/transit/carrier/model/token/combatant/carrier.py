@@ -43,34 +43,28 @@ class CombatantTokenCarrier(TokenCarrier[CombatantToken]):
         """
         Args:
             model: Optional[CombatantToken]
-            blueprint: Optional[CombatantBlueprint]
+            blueprint: Optional[CombatantTokenBlueprint]
         """
-        super().__init__()
-        self._model = model
-        self._blueprint = blueprint
+        super().__init__(model=model, blueprint=blueprint, )
     
     @property
     def entity(self) -> Optional[CombatantToken | CombatantTokenBlueprint]:
-        if self.is_empty:
-            return None
-        if self.has_model:
-            return self._model
-        return self._blueprint
+        entity = super().entity
+        if (
+                isinstance(entity, CombatantToken) or
+                isinstance(entity, CombatantTokenBlueprint)
+        ):
+            return entity
+        
+        return None
     
     @property
     def has_model(self) -> bool:
-        return (
-                self._model is not None and
-                self._blueprint is None and
-                isinstance(self._model, CombatantToken)
-        )
+        return isinstance(self.entity, CombatantToken)
     
     @property
     def has_blueprint(self) -> bool:
-        return (
-                not self.has_model and
-                isinstance(self._blueprint, CombatantTokenBlueprint)
-        )
+        return isinstance(self.entity, CombatantTokenBlueprint)
        
     def extract_blueprint(self) -> Optional[CombatantTokenBlueprint]:
         if self.is_empty: return None

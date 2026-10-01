@@ -97,7 +97,7 @@ class TokenContextCarrier(ContextCarrier[TokenContext]):
         context = cast(Type[self._modelContext]Context, self._model)
         return TokenContextBlueprint(
             id=context.id,
-            team=context.team,
+            team=context.victim,
             rank=context.rank,
             formation=context.formation,
             positions=context.positions,

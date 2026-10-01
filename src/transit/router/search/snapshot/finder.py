@@ -86,8 +86,8 @@ class SnapshotFinder(Finder[Snapshot]):
             if context.agent is not None:
                 return cls._find_by_agent(dataset, context.agent)
             # Find by team
-            if context.team is not None:
-                return cls._find_by_team(dataset, context.team)
+            if context.victim is not None:
+                return cls._find_by_team(dataset, context.victim)
             # Find by exception
             if context.exception is not None:
                 return cls._find_by_exception(dataset, context.exception)
@@ -209,7 +209,7 @@ class SnapshotFinder(Finder[Snapshot]):
         method = "SnapshotFinder._find_by_team"
         try:
             # Players are unique the search should only produce one unique result.
-            matches = [snapshot for snapshot in dataset.items if team in snapshot.arena.team]
+            matches = [snapshot for snapshot in dataset.items if team in snapshot.arena.victim]
             if len(matches) == 0:
                 return SearchResult.empty()
             # Relaxing the 0 <= match_count < 2 requirement for convenience. Will handle the

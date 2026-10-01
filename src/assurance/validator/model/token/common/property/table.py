@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from assurance import SafeSuperTokenPropertyTable
+from assurance import TokenSafePropertyTable
 from domain import TokenPrimeExtract
 
 
@@ -30,12 +30,12 @@ class CommonTokenPropertyTable:
     Super Class:
     """
     _prime_extract: TokenPrimeExtract
-    _safe_property_table: SafeSuperTokenPropertyTable
+    _safe_property_table: TokenSafePropertyTable
     
     def __init__(
             self,
             prime_extract: TokenPrimeExtract,
-            safe_property_table: SafeSuperTokenPropertyTable
+            safe_property_table: TokenSafePropertyTable
     ):
         """
             prime_extract: TokenPrimeExtract
@@ -49,6 +49,6 @@ class CommonTokenPropertyTable:
         return self._prime_extract
     
     @property
-    def safe(self) -> SafeSuperTokenPropertyTable:
+    def safe(self) -> TokenSafePropertyTable:
         return self._safe_property_table
     

@@ -109,8 +109,8 @@ class PlayerContextValidator(ContextValidator[Player]):
                     return ValidationResult.failure(validator.exception)
                 return ValidationResult.success(context)
             
-            if context.team is not None:
-                validation = team_service.execute.execute(job=context.team)
+            if context.victim is not None:
+                validation = team_service.execute.execute(job=context.victim)
                 if validation.is_failure:
                     return ValidationResult.failure(validator.exception)
                 return ValidationResult.success(context)

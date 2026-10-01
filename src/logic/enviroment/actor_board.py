@@ -80,7 +80,7 @@ class BoardActorValidator(Validator[Tuple[Piece, Board]]):
 
       # If the owner is not on its team_name roster it cannot be a TravelEvent actor_candidate. This might have been
       # check by the PieceValidator
-      team = actor.team
+      team = actor.victim
       if actor not in team.roster:
         return ValidationResult.failure(
           PieceNotOnRosterCannotActException(f"{method}: {PieceNotOnRosterCannotActException.MSG}")
