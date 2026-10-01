@@ -19,7 +19,7 @@ from err import (
 
 T = TypeVar("T", bound="Account")
 
-class AccountNullGroup(ModelNullGroup[T], ABC, Generic[T]):
+class AccountNullGroup(ModelNullGroup[T], Generic[T]):
     """
     Role:
         - Metadata

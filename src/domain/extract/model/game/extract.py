@@ -54,4 +54,4 @@ class GamePrimeExtract(ModelPrimeExtract[Game]):
     
     @property
     def blueprint(self) -> Optional[GameBlueprint]:
-        return cast(GameBlueprint,super().blueprint)
+        return cast(GameBlueprint, super().blueprint)

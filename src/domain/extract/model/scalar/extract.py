@@ -54,4 +54,4 @@ class ScalarPrimeExtract(ModelPrimeExtract[Scalar]):
     
     @property
     def blueprint(self) -> Optional[ScalarBlueprint]:
-        return cast(ScalarBlueprint,super().blueprint)
+        return cast(ScalarBlueprint, super().blueprint)

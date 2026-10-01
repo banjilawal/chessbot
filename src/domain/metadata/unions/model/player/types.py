@@ -9,10 +9,12 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Type
+
+from typing import Optional, Type, cast
 
 from domain import ModelTypeUnion, Player, PlayerBlueprint
 from transit import PlayerCarrier
+
 
 class PlayerTypeUnion(ModelTypeUnion[Player]):
     """
@@ -20,7 +22,7 @@ class PlayerTypeUnion(ModelTypeUnion[Player]):
         - Metadata
 
     Responsibilities:
-        1. Catalog of types associated with building and validating a Player.
+        1. Catalog of types associated with building and validating an Player.
 
     Attributes:
         model: Type[Player]
@@ -34,18 +36,22 @@ class PlayerTypeUnion(ModelTypeUnion[Player]):
     """
     
     def __init__(
-            self,
-            model: Type[Player],
-            carrier: Type[PlayerCarrier],
-            blueprint: Type[PlayerBlueprint],
+            self, 
+            model: Optional[Type[Player]] | None = None,
+            carrier: Optional[Type[PlayerCarrier]] | None = None, 
+            blueprint: Optional[Type[PlayerBlueprint]] | None = None,
     ):
         """
         Args:
-            model: Type[Player]
-            carrier: Type[PlayerCarrier]
-            blueprint: Type[PlayerBlueprint]
+            model: Optional[Type[Player]]
+            carrier: Optional[Type[PlayerCarrier]
+            blueprint: Optional[Type[PlayerBlueprint] 
         """
-        super().__init__(model=model, carrier=carrier, blueprint=blueprint)
+        super().__init__(
+            model=model or Player, 
+            carrier=carrier or PlayerCarrier, 
+            blueprint=blueprint or PlayerBlueprint
+        )
     
     @property
     def model(self) -> Type[Player]:

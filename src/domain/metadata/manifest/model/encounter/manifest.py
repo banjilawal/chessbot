@@ -10,15 +10,13 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, TypeVar, cast
+from typing import Generic, Optional, TypeVar, cast
 
-from domain import (
-    EncounterNullGroup, ModelManifest, Encounter, EncounterTypeUnion
-)
+from domain import ModelManifest, Encounter, EncounterNullGroup, EncounterTypeUnion
 
 T = TypeVar("T", bound="Encounter")
 
-class EncounterManifest(ModelManifest[T], ABC, Generic[T]):
+class EncounterManifest(ModelManifest[T], Generic[T]):
     """
      Role:
         1.  Metadata
@@ -36,23 +34,26 @@ class EncounterManifest(ModelManifest[T], ABC, Generic[T]):
      Super Class:
         ModelManifest
      """
-    
+
     def __init__(
             self,
-            types: EncounterTypeUnion[T],
-            nulls: EncounterNullGroup[T]
+            types: Optional[EncounterTypeUnion[T]] | None = None,
+            nulls: Optional[EncounterNullGroup[T]] | None = None,
     ):
         """
         Args:
             types: EncounterTypeUnion[T]
             nulls: EncounterNullGroup[T]
         """
-        super().__init__(types=types, nulls=nulls)
-        
+        super().__init__(
+            types=types or EncounterTypeUnion(),
+            nulls=nulls or EncounterNullGroup(),
+        )
+
     @property
     def types(self) -> EncounterTypeUnion[T]:
         return cast(EncounterTypeUnion[T], super().types)
-    
+
     @property
     def nulls(self) -> EncounterNullGroup[T]:
         return cast(EncounterNullGroup[T], super().nulls)

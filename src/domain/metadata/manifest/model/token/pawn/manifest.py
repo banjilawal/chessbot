@@ -1,7 +1,7 @@
-# src/domain/metadata/manifest/model/token/combatant/pawn/manifest.py
+# src/domain/metadata/manifest/model/token/pawn/manifest.py
 
 """
-Module: domain.metadata.manifest.model.token.combatant.pawn.manifest
+Module: domain.metadata.manifest.model.token.pawn.manifest
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -12,11 +12,11 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from domain import (
-    CombatantTokenManifest, PawnTokenTokenNullGroup, PawnTokenTypeUnion
+    PawnToken, PawnTokenTokenNullGroup, PawnTokenTypeUnion, TokenManifest
 )
 
 
-class PawnTokenManifest(CombatantTokenManifest):
+class PawnTokenManifest(TokenManifest[PawnToken]):
     """
      Role:
         1.  Metadata

@@ -54,4 +54,4 @@ class VectorPrimeExtract(ModelPrimeExtract[Vector]):
     
     @property
     def blueprint(self) -> Optional[VectorBlueprint]:
-        return cast(VectorBlueprint,super().blueprint)
+        return cast(VectorBlueprint, super().blueprint)

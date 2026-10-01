@@ -1,16 +1,16 @@
-# src/domain/metadata/manifest/model/player/human/__init__.py
+# src/domain/metadata/manifest/model/account/human/__init__.py
 
 """
-Module: domain.metadata.manifest.model.player.human.__init__
+Module: domain.metadata.manifest.model.account.human.__init__
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
 """
 
-# =========== DOMAIN.METADATA.MANIFEST.MODEL.PLAYER.HUMAN PACKAGE ===========#
+# =========== DOMAIN.METADATA.MANIFEST.MODEL.ACCOUNT.HUMAN PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .manifest import HumanPlayerManifest
+from .manifest import HumanAccountManifest

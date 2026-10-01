@@ -12,8 +12,9 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, AccountWrapperDependency
-from domain import Account, AccountManifest, AccountNullGroup, AccountTypeUnion
-
+from domain import (
+    Account, AccountManifest, AccountNullGroup, AccountTypeUnion
+)
 
 class AccountValidatorToolkit(ModelValidatorToolkit[Account]):
     """

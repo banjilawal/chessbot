@@ -9,14 +9,15 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
+from abc import ABC
+from typing import Generic, Optional, TypeVar, cast
 
-from assurance import ModelPrimeExtract
-from domain import Rank, RankBlueprint
+from domain import Blueprint, ModelPrimeExtract, Rank, RankBlueprint
 from transit import RankCarrier
 
+T = TypeVar("T", bound="Rank")
 
-class RankPrimeExtract(ModelPrimeExtract[Rank]):
+class RankPrimeExtract(ModelPrimeExtract[T], ABC, Generic[T]):
     """
     Role
         - Data Holder
@@ -38,20 +39,20 @@ class RankPrimeExtract(ModelPrimeExtract[Rank]):
 
     def __init__(
             self,
-            carrier: RankCarrier,
-            blueprint: Optional[RankBlueprint] | None = None,
+            carrier: RankCarrier[T],
+            blueprint: Optional[RankBlueprint[T]] | None = None,
     ):
         """
         Args:
-            carrier: EntityCarrier[Rank]
-            blueprint: Optional[Blueprint[Rank]]
+            carrier: RankCarrier[T]
+            blueprint: Optional[RankBlueprint[T]]
         """
         super().__init__(carrier=carrier, blueprint=blueprint,)
         
     @property
-    def carrier(self) -> RankCarrier:
+    def carrier(self) -> RankCarrier[T]:
         return cast(RankCarrier, super().carrier)
     
     @property
-    def blueprint(self) -> Optional[RankBlueprint]:
-        return cast(RankBlueprint,super().blueprint)
+    def blueprint(self) -> Optional[RankBlueprint[T]]:
+        return cast(RankBlueprint, super().blueprint)

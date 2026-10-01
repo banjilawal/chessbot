@@ -54,4 +54,4 @@ class TeamPrimeExtract(ModelPrimeExtract[Team]):
     
     @property
     def blueprint(self) -> Optional[TeamBlueprint]:
-        return cast(TeamBlueprint,super().blueprint)
+        return cast(TeamBlueprint, super().blueprint)

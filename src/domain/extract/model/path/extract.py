@@ -54,4 +54,4 @@ class PathPrimeExtract(ModelPrimeExtract[Path]):
     
     @property
     def blueprint(self) -> Optional[PathBlueprint]:
-        return cast(PathBlueprint,super().blueprint)
+        return cast(PathBlueprint, super().blueprint)

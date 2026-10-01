@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, Type, TypeVar, cast
+from typing import Generic, Optional, Type, TypeVar, cast
 
 from domain import ModelTypeUnion, Account, AccountBlueprint
 from transit import AccountCarrier
@@ -18,7 +18,7 @@ from transit import AccountCarrier
 T = TypeVar("T", bound="Account")
 
 
-class AccountTypeUnion(ModelTypeUnion[T], ABC, Generic[T]):
+class AccountTypeUnion(ModelTypeUnion[T], Generic[T]):
     """
     Role:
         - Metadata
@@ -27,9 +27,9 @@ class AccountTypeUnion(ModelTypeUnion[T], ABC, Generic[T]):
         1. Catalog of types associated with building and validating a Account.
 
     Attributes:
-        model: Type[T]
-        carrier: Type[AccountCarrier[T]]
-        blueprint: Type[AccountBlueprint[T]]
+        model: Type[Account]
+        carrier: Type[AccountCarrier]
+        blueprint: Type[AccountBlueprint]
 
     Provides:
 
@@ -39,17 +39,21 @@ class AccountTypeUnion(ModelTypeUnion[T], ABC, Generic[T]):
     
     def __init__(
             self,
-            model: Type[T],
-            carrier: Type[AccountCarrier[T]],
-            blueprint: Type[AccountBlueprint[T]],
+            model: Optional[Type[T]] | None = None,
+            carrier: Optional[Type[AccountCarrier[T]]] | None = None,
+            blueprint: Optional[Type[AccountBlueprint[T]]] | None = None,
     ):
         """
         Args:
-            model: Type[T]
-            carrier: Type[AccountCarrier[T]]
-            blueprint: Type[AccountBlueprint[T]]
+            model: Optional[Type[T]]
+            carrier: Optional[Type[AccountCarrier[T]]]
+            blueprint: Optional[Type[AccountBlueprint[T]]]
         """
-        super().__init__(model=model, carrier=carrier, blueprint=blueprint)
+        super().__init__(
+            model=model or Account,
+            carrier=carrier or AccountCarrier,
+            blueprint=blueprint or AccountBlueprint,
+        )
     
     @property
     def model(self) -> Type[T]:

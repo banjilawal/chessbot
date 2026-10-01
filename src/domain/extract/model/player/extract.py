@@ -11,8 +11,8 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelPrimeExtract
-from domain import Player, PlayerBlueprint
+
+from domain import ModelPrimeExtract, Player, PlayerBlueprint
 from transit import PlayerCarrier
 
 
@@ -54,4 +54,4 @@ class PlayerPrimeExtract(ModelPrimeExtract[Player]):
     
     @property
     def blueprint(self) -> Optional[PlayerBlueprint]:
-        return cast(PlayerBlueprint,super().blueprint)
+        return cast(PlayerBlueprint, super().blueprint)

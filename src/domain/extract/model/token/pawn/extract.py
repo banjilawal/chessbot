@@ -53,4 +53,4 @@ class PawnTokenPrimeExtract(TokenPrimeExtract[PawnToken]):
     
     @property
     def blueprint(self) -> Optional[PawnTokenBlueprint]:
-        return cast(PawnTokenBlueprint,super().blueprint)
+        return cast(PawnTokenBlueprint, super().blueprint)

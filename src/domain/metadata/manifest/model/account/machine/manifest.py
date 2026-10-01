@@ -1,7 +1,7 @@
-# src/domain/metadata/manifest/model/player/machine/manifest.py
+# src/domain/metadata/manifest/model/account/machine/manifest.py
 
 """
-Module: domain.metadata.manifest.model.player.machine.manifest
+Module: domain.metadata.manifest.model.account.machine.manifest
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -12,48 +12,48 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from domain import (
-    MachinePlayerNullGroup, MachinePlayer, MachinePlayerTypeUnion, PlayerManifest
+    MachineAccountNullGroup, MachineAccount, MachineAccountTypeUnion, AccountManifest
 )
 
 
-class MachinePlayerManifest(PlayerManifest[MachinePlayer]):
+class MachineAccountManifest(AccountManifest[MachineAccount]):
     """
      Role:
         1.  Metadata
 
      Responsibilities:
-         1. Aggregates NullExceptions and TypeUnions for the MachinePlayer 
+         1. Aggregates NullExceptions and TypeUnions for the MachineAccount 
             security lifecycle.
 
      Attributes:
-        types: MachinePlayerTypeUnion
-        nulls: MachinePlayerNullGroup
+        types: MachineAccountTypeUnion
+        nulls: MachineAccountNullGroup
 
      Provides:
 
      Super Class:
-        PlayerManifest
+        AccountManifest
      """
     
     def __init__(
             self,
-            types: Optional[MachinePlayerTypeUnion] | None = None,
-            nulls: Optional[MachinePlayerNullGroup] | None = None,
+            types: Optional[MachineAccountTypeUnion] | None = None,
+            nulls: Optional[MachineAccountNullGroup] | None = None,
     ):
         """
         Args:
-            types: Optional[MachinePlayerTypeUnion]
-            nulls: Optional[MachinePlayerNullGroup]
+            types: Optional[MachineAccountTypeUnion]
+            nulls: Optional[MachineAccountNullGroup]
         """
         super().__init__(
-            types=types or MachinePlayerTypeUnion(),
-            nulls=nulls or MachinePlayerNullGroup(),
+            types=types or MachineAccountTypeUnion(),
+            nulls=nulls or MachineAccountNullGroup(),
         )
     
     @property
-    def types(self) -> MachinePlayerTypeUnion:
-        return cast(MachinePlayerTypeUnion, super().types)
+    def types(self) -> MachineAccountTypeUnion:
+        return cast(MachineAccountTypeUnion, super().types)
     
     @property
-    def nulls(self) -> MachinePlayerNullGroup:
-        return cast(MachinePlayerNullGroup, super().nulls)
+    def nulls(self) -> MachineAccountNullGroup:
+        return cast(MachineAccountNullGroup, super().nulls)

@@ -10,9 +10,9 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.MANIFEST.MODEL.TOKEN PACKAGE ===========#
 
 # Packages
-from .check import *
 from .combatant import *
 from .king import *
+from .pawn import *
 
 # Modules
 from .manifest import TokenManifest

@@ -10,6 +10,12 @@ version: 0.0.2
 # =========== DOMAIN.EXTRACT.MODEL.RANK PACKAGE ===========#
 
 # Packages
+from .bishop import *
+from .king import *
+from .knight import *
+from .pawn import *
+from .queen import *
+from .rook import *
 
 # Module
 from .extract import RankPrimeExtract

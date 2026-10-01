@@ -54,4 +54,4 @@ class SquarePrimeExtract(ModelPrimeExtract[Square]):
     
     @property
     def blueprint(self) -> Optional[SquareBlueprint]:
-        return cast(SquareBlueprint,super().blueprint)
+        return cast(SquareBlueprint, super().blueprint)

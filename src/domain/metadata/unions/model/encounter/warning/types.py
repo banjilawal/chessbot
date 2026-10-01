@@ -12,7 +12,9 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import EncounterTypeUnion, EncounterWarning, EncounterWarningBlueprint
+from domain import (
+    EncounterTypeUnion, EncounterWarning, EncounterWarningBlueprint
+)
 from transit import EncounterWarningCarrier
 
 

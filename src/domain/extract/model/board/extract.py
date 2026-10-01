@@ -54,4 +54,4 @@ class BoardPrimeExtract(ModelPrimeExtract[Board]):
     
     @property
     def blueprint(self) -> Optional[BoardBlueprint]:
-        return cast(BoardBlueprint,super().blueprint)
+        return cast(BoardBlueprint, super().blueprint)

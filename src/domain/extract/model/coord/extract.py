@@ -54,4 +54,4 @@ class CoordPrimeExtract(ModelPrimeExtract[Coord]):
     
     @property
     def blueprint(self) -> Optional[CoordBlueprint]:
-        return cast(CoordBlueprint,super().blueprint)
+        return cast(CoordBlueprint, super().blueprint)

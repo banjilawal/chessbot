@@ -13,6 +13,7 @@ from __future__ import annotations
 from typing import Optional
 
 from assurance import ModelWrapperDependency
+from domain import Encounter
 from exchange import ManeuverValidationResponseWrapper, TokenValidationResponseWrapper
 
 

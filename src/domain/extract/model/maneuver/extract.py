@@ -54,4 +54,4 @@ class ManeuverPrimeExtract(ModelPrimeExtract[Maneuver]):
     
     @property
     def blueprint(self) -> Optional[ManeuverBlueprint]:
-        return cast(ManeuverBlueprint,super().blueprint)
+        return cast(ManeuverBlueprint, super().blueprint)

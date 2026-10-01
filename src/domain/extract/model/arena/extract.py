@@ -54,4 +54,4 @@ class ArenaPrimeExtract(ModelPrimeExtract[Arena]):
     
     @property
     def blueprint(self) -> Optional[ArenaBlueprint]:
-        return cast(ArenaBlueprint,super().blueprint)
+        return cast(ArenaBlueprint, super().blueprint)

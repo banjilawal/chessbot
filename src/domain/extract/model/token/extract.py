@@ -40,7 +40,7 @@ class TokenPrimeExtract(ModelPrimeExtract[T], ABC, Generic[T]):
     def __init__(
             self,
             carrier: TokenCarrier[T],
-            blueprint: Optional[TokenBlueprint] | None = None,
+            blueprint: Optional[TokenBlueprint[T]] | None = None,
     ):
         """
         Args:
@@ -50,9 +50,9 @@ class TokenPrimeExtract(ModelPrimeExtract[T], ABC, Generic[T]):
         super().__init__(carrier=carrier, blueprint=blueprint,)
         
     @property
-    def carrier(self) -> TokenCarrier:
+    def carrier(self) -> TokenCarrier[T]:
         return cast(TokenCarrier, super().carrier)
     
     @property
-    def blueprint(self) -> Optional[TokenBlueprint]:
-        return cast(TokenBlueprint,super().blueprint)
+    def blueprint(self) -> Optional[TokenBlueprint[T]]:
+        return cast(TokenBlueprint, super().blueprint)

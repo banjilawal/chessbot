@@ -53,4 +53,4 @@ class KingTokenPrimeExtract(TokenPrimeExtract[KingToken]):
     
     @property
     def blueprint(self) -> Optional[KingTokenBlueprint]:
-        return cast(KingTokenBlueprint,super().blueprint)
+        return cast(KingTokenBlueprint, super().blueprint)

@@ -9,27 +9,28 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import Generic, Type, TypeVar, cast
 
-from domain import Encounter, EncounterBlueprint, ModelTypeUnion
+from typing import Generic, Optional, Type, TypeVar, cast
+
+from domain import ModelTypeUnion, Encounter, EncounterBlueprint
 from transit import EncounterCarrier
 
 T = TypeVar("T", bound="Encounter")
 
-class EncounterTypeUnion(ModelTypeUnion[T], ABC, Generic[T]):
+
+class EncounterTypeUnion(ModelTypeUnion[T], Generic[T]):
     """
     Role:
         - Metadata
 
     Responsibilities:
-        1. Catalog of types associated with building and validating an Encounter.
+        1. Catalog of types associated with building and validating a Encounter.
 
     Attributes:
-        model: Type[T]
-        carrier: Type[EncounterCarrier[T]
-        blueprint: Type[EncounterBlueprint[T]
-        
+        model: Type[Encounter]
+        carrier: Type[EncounterCarrier]
+        blueprint: Type[EncounterBlueprint]
+
     Provides:
 
     Super Class:
@@ -38,15 +39,15 @@ class EncounterTypeUnion(ModelTypeUnion[T], ABC, Generic[T]):
     
     def __init__(
             self,
-            model: Type[T],
-            carrier: Type[EncounterCarrier[T]],
-            blueprint: Type[EncounterBlueprint[T]],
+            model: Optional[Type[T]] | None = None,
+            carrier: Optional[Type[EncounterCarrier[T]]] | None = None,
+            blueprint: Optional[Type[EncounterBlueprint[T]]] | None = None,
     ):
         """
         Args:
-            model: Type[T]]
-            carrier: Type[EncounterCarrier[T]]
-            blueprint: Type[EncounterBlueprint[T]]
+            model: Optional[Type[T]]
+            carrier: Optional[Type[EncounterCarrier[T]]]
+            blueprint: Optional[Type[EncounterBlueprint[T]]]
         """
         super().__init__(
             model=model or Encounter,

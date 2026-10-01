@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import Team, TeamBlueprint
+from domain import ModelTypeUnion, Team, TeamBlueprint
 from transit import TeamCarrier
 
 

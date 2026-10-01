@@ -1,4 +1,4 @@
-# src/domain/metadata/manifest/model/player/player/manifest.py
+# src/domain/metadata/manifest/model/player/manifest.py
 
 """
 Module: domain.metadata.manifest.model.player.manifest
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import ModelManifest, Player, PlayerNullGroup, PlayerTypeUnion
+from domain import Player, PlayerNullGroup, PlayerTypeUnion, ModelManifest
 
 
 class PlayerManifest(ModelManifest[Player]):
@@ -20,8 +20,7 @@ class PlayerManifest(ModelManifest[Player]):
         1.  Metadata
 
      Responsibilities:
-         1. Aggregates NullExceptions and TypeUnions for the Player
-            security lifecycle.
+         1.  Aggregates NullExceptions and TypeUnions for the Player security lifecycle.
 
      Attributes:
         types: PlayerTypeUnion
@@ -35,8 +34,8 @@ class PlayerManifest(ModelManifest[Player]):
     
     def __init__(
             self,
-            types: Optional[PlayerTypeUnion],
-            nulls: Optional[PlayerNullGroup],
+            types: Optional[PlayerTypeUnion] | None = None,
+            nulls: Optional[PlayerNullGroup] | None = None,
     ):
         """
         Args:

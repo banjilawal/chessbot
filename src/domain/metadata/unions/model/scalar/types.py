@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import Scalar, ScalarBlueprint
+from domain import ModelTypeUnion, Scalar, ScalarBlueprint
 from transit import ScalarCarrier
 
 

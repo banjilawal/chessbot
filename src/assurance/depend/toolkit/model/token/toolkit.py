@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import KingTokenValidator, ModelValidatorToolkit, TokenWrapperDependency
+from assurance import ModelValidatorToolkit, TokenWrapperDependency
 from authorization import HomeSquareExtractor
 from domain import Token, TokenManifest, TokenNullGroup, TokenTypeUnion
 

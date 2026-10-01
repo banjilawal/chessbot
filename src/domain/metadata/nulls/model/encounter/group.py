@@ -20,7 +20,7 @@ from err import (
 
 T = TypeVar("T", bound="Encounter")
 
-class EncounterNullGroup(ModelNullGroup[T], ABC, Generic[T]):
+class EncounterNullGroup(ModelNullGroup[T], Generic[T]):
     """
     Role:
         - Metadata

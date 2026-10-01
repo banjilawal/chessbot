@@ -1,7 +1,7 @@
-# src/domain/metadata/manifest/model/player/player/manifest.py
+# src/domain/metadata/manifest/model/account/account/manifest.py
 
 """
-Module: domain.metadata.manifest.model.player.manifest
+Module: domain.metadata.manifest.model.account.manifest
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -9,47 +9,51 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Generic, TypeVar, cast
+from abc import ABC
+from typing import Generic, Optional, TypeVar, cast
 
-from domain import ModelManifest, Player, PlayerNullGroup, PlayerTypeUnion
+from domain import ModelManifest, Account, AccountNullGroup, AccountTypeUnion
 
-T = TypeVar("T", bound="Player")
+T = TypeVar("T", bound="Account")
 
-class PlayerManifest(ModelManifest[T], Generic[T]):
+class AccountManifest(ModelManifest[T], Generic[T]):
     """
      Role:
         1.  Metadata
 
      Responsibilities:
-         1. Aggregates NullExceptions and TypeUnions for the Player
+         1. Aggregates NullExceptions and TypeUnions for the Account
             security lifecycle.
 
      Attributes:
-        types: PlayerTypeUnion
-        nulls: PlayerNullGroup
+        types: AccountTypeUnion[T]
+        nulls: AccountNullGroup[T]
 
      Provides:
 
      Super Class:
         ModelManifest
      """
-    
+
     def __init__(
             self,
-            types: PlayerTypeUnion[T],
-            nulls: PlayerNullGroup[T]
+            types: Optional[AccountTypeUnion[T]] | None = None,
+            nulls: Optional[AccountNullGroup[T]] | None = None,
     ):
         """
         Args:
-            types: PlayerTypeUnion[T]
-            nulls: PlayerNullGroup[T]
+            types: AccountTypeUnion[T]
+            nulls: AccountNullGroup[T]
         """
-        super().__init__(types=types, nulls=nulls)
-        
+        super().__init__(
+            types=types or AccountTypeUnion(),
+            nulls=nulls or AccountNullGroup(),
+        )
+
     @property
-    def types(self) -> PlayerTypeUnion[T]:
-        return cast(PlayerTypeUnion[T], super().types)
-    
+    def types(self) -> AccountTypeUnion[T]:
+        return cast(AccountTypeUnion[T], super().types)
+
     @property
-    def nulls(self) -> PlayerNullGroup[T]:
-        return cast(PlayerNullGroup[T], super().nulls)
+    def nulls(self) -> AccountNullGroup[T]:
+        return cast(AccountNullGroup[T], super().nulls)

@@ -9,7 +9,8 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Generic, TypeVar, cast
+from abc import ABC
+from typing import Generic, Optional, TypeVar, cast
 
 from domain import ModelManifest, Token, TokenNullGroup, TokenTypeUnion
 
@@ -25,31 +26,34 @@ class TokenManifest(ModelManifest[T], Generic[T]):
             security lifecycle.
 
      Attributes:
-        types: TokenTypeUnion
-        nulls: TokenNullGroup
+        types: TokenTypeUnion[T]
+        nulls: TokenNullGroup[T]
 
      Provides:
 
      Super Class:
         ModelManifest
      """
-    
+
     def __init__(
             self,
-            types: TokenTypeUnion[T],
-            nulls: TokenNullGroup[T]
+            types: Optional[TokenTypeUnion[T]] | None = None,
+            nulls: Optional[TokenNullGroup[T]] | None = None,
     ):
         """
         Args:
             types: TokenTypeUnion[T]
             nulls: TokenNullGroup[T]
         """
-        super().__init__(types=types, nulls=nulls)
-        
+        super().__init__(
+            types=types or TokenTypeUnion(),
+            nulls=nulls or TokenNullGroup(),
+        )
+
     @property
     def types(self) -> TokenTypeUnion[T]:
         return cast(TokenTypeUnion[T], super().types)
-    
+
     @property
     def nulls(self) -> TokenNullGroup[T]:
         return cast(TokenNullGroup[T], super().nulls)

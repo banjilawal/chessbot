@@ -53,4 +53,4 @@ class CombatantTokenPrimeExtract(TokenPrimeExtract[CombatantToken]):
     
     @property
     def blueprint(self) -> Optional[CombatantTokenBlueprint]:
-        return cast(CombatantTokenBlueprint,super().blueprint)
+        return cast(CombatantTokenBlueprint, super().blueprint)

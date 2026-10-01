@@ -12,8 +12,9 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from assurance import ModelValidatorToolkit, PlayerWrapperDependency
-from domain import Player, PlayerManifest, PlayerNullGroup, PlayerTypeUnion
-
+from domain import (
+    Player, PlayerManifest, PlayerNullGroup, PlayerTypeUnion
+)
 
 class PlayerValidatorToolkit(ModelValidatorToolkit[Player]):
     """
