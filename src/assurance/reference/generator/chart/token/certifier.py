@@ -9,17 +9,18 @@ version: 1.0.2
 
 from __future__ import annotations
 
-from typing import Dict, Optional, cast
+from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import TokenPositionChart, TokenValidatorToolkit
-from domain import Coord, TokenBlueprint
+from assurance import TokenPositionChart, TokenValidatorToolkit, VerificationCharter
+from domain import Coord, Token, TokenBlueprint
+from err import CoordValidatorException, TokenPositionCertifierException
 from exchange import CoordValidationRequest
 from transit import CoordCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class TokenPositionCertifier:
+class TokenPositionCertifier(VerificationCharter[Token]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -38,7 +39,6 @@ class TokenPositionCertifier:
 
     Super Class:
     """
-    _toolkit: TokenValidatorToolkit
     
     def __init__(
             self,
@@ -48,8 +48,11 @@ class TokenPositionCertifier:
         Args:
             toolkit: Optional[TokenValidatorToolkit]
         """
-        self._toolkit = toolkit or TokenValidatorToolkit()
-
+        super().__init__(toolkit=toolkit or TokenValidatorToolkit())
+        
+    @property
+    def toolkit(self) -> TokenValidatorToolkit:
+        return cast(TokenValidatorToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(
@@ -76,23 +79,21 @@ class TokenPositionCertifier:
         """
         method = f"{self.__class__.__name__}.execute"
         
-        valid_locations: Dict[str, Coord] = {}
+        position_chart: TokenPositionChart = TokenPositionChart()
         # If the token has not been deployed send an empty dictionary
         if (
                 blueprint.position is None and 
                 blueprint.previous_position is None
         ):
-            return ValidationResult.success(valid_locations)
+            return ValidationResult.success(position_chart)
         
+        position_validation = ValidationResult.failure(
+            CoordValidatorException()
+        )
         if blueprint.position is not None:
             # Handle the case that the position is flagged.
-            validation = self._toolkit.wrapper.coord.extract_model(
-                request=CoordValidationRequest(
-                    item=CoordCarrier(model=blueprint.position),
-                    id=IdFactory.next_id(class_name="CoordValidationRequest"),
-                )
-            )
-            if validation.is_failure:
+            position_validation = self._coord_check_runner(blueprint.position)
+            if position_validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     TokenPositionCertifierException(
@@ -100,21 +101,17 @@ class TokenPositionCertifier:
                         cls_name=self.__class__.__name__,
                         msg=TokenPositionCertifierException.MSG,
                         err_code=TokenPositionCertifierException.ERR_CODE,
-                        ex=validation.exception,
+                        ex=position_validation.exception,
                     )
                 )
-            # Otherwise add to the dictionary.
-            valid_locations["position"] = cast(Coord, validation.payload)
-        
+        previous_position_validation = ValidationResult.failure(
+            CoordValidatorException()
+        )
+        # Handle the case that the not-null previous_position is unsafe.
         if blueprint.previous_position is not None:
             # Handle the case that the previous position is flagged.
-            validation = self._toolkit.wrapper.coord.extract_model(
-                request=CoordValidationRequest(
-                    item=CoordCarrier(model=blueprint.previous_position),
-                    id=IdFactory.next_id(class_name="CoordValidationRequest"),
-                )
-            )
-            if validation.is_failure:
+            previous_position_validation = self._coord_check_runner(blueprint.previous_position)
+            if position_validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     TokenPositionCertifierException(
@@ -122,15 +119,60 @@ class TokenPositionCertifier:
                         cls_name=self.__class__.__name__,
                         msg=TokenPositionCertifierException.MSG,
                         err_code=TokenPositionCertifierException.ERR_CODE,
-                        ex=validation.exception,
+                        ex=previous_position_validation.exception,
                     )
                 )
-            # Otherwise add to the dictionary.
-            valid_locations["previous_position"] = cast(Coord, validation.payload)
         # --- Send the work product. ---#
+        position = cast(Coord, position_validation.payload)
+        previous_position = cast(Coord, previous_position_validation.payload)
         position_table = TokenPositionChart(
-            position=valid_locations["position"] or None,
-            previous_position=valid_locations["previous_position"] or None,
+            position=position or None,
+            previous_position=previous_position or None,
         )
         return ValidationResult.success(position_table)
+    
+    @LoggingLevelRouter.monitor
+    def _coord_check_runner(self, candidate: Any) -> ValidationResult[Coord]:
+        """
+        Assure a candidate is a safe TokenCarrier.
+
+        Action:
+            1.  Send an exception chain in the ValidationResult if either
+                    -   blueprint.position or
+                    -   blueprint.previous_postion
+                is not null and gets flagged.
+            2.  Otherwise, for the success result, send a dictionary that is:
+                    -   Empty if the Token has not been deployed.
+                    -   Any validated position.
+        Args:
+            blueprint: TokenBlueprint
+        Returns:
+            ValidationResult[TokenPositionChart]
+        Raises:
+            TokenPositionValidatorException
+        """
+        method = f"{self.__class__.__name__}._coord_check_runner"
+        
+        # Handle the case that the candidate is flagged.
+        validation = self.toolkit.wrapper.coord.extract_model(
+            request=CoordValidationRequest(
+                item=CoordCarrier(model=candidate),
+                id=IdFactory.next_id(class_name="CoordValidationRequest"),
+            )
+        )
+        if validation.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenPositionCertifierException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenPositionCertifierException.MSG,
+                    err_code=TokenPositionCertifierException.ERR_CODE,
+                    ex=validation.exception,
+                )
+            )
+        # --- Send the work product. ---#
+        coord = cast(Coord, validation.payload)
+        return ValidationResult.success(coord)
+        
     

@@ -48,6 +48,7 @@ class EncounterValidationReferenceGenerator(ValidationReferenceGenerator[Encount
         ValidationReferenceGenerator
     """
     _participant_certifier: EncounterParticipantCertifier
+    
     def __init__(
             self,
             toolkit: Optional[EncounterValidatorToolkit] | None = None,

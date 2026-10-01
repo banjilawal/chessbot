@@ -15,8 +15,8 @@ from artifcat import ValidationResult
 from assurance import EncounterParticipantChart, TokenValidatorToolkit, VerificationCharter
 from domain import Encounter, Token
 from err import (
-    EncounterParticipantCertifierException, FriendlyFireAttackException, TokenAttackingItselfException,
-    VictimNeverDeployedException
+    EncounterParticipantCertifierException, FriendlyFireAttackException,
+    TokenAttackingItselfException, VictimNeverDeployedException
 )
 from util import LoggingLevelRouter
 
