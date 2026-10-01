@@ -102,15 +102,19 @@ class KingToken(Token):
     @property
     def is_ready(self) -> bool:
         return (
-                super().is_ready and
+                self.has_been_deployed and
                 self._checkmate is not None and
                 self._readiness != KingReadiness.CHECKMATED
         )
+    
+    @property
+    def is_not_ready(self) -> bool:
+        return self.is_ready
      
     @property
     def is_in_check(self) -> bool:
         return (
-                super().is_ready and
+                self.has_been_deployed and
                 self.check_warning is not None and
                 self._readiness == KingReadiness.IN_CHECK
         )
@@ -118,14 +122,10 @@ class KingToken(Token):
     @property
     def is_checkmated(self) -> bool:
         return (
-                super().is_ready and
+                super().has_been_deployed and
                 self.checkmate is not None and
                 self._readiness == KingReadiness.CHECKMATED
         )
-    
-    @property
-    def is_not_ready(self) -> bool:
-        return super().is_not_ready or self.is_checkmated
     
     def __eq__(self, other):
         if super().__eq__(other):

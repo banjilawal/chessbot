@@ -94,14 +94,14 @@ class CombatantToken(Token):
     @property
     def is_ready(self) -> bool:
         return (
-                super().is_ready and
+                self.has_been_deployed and
                 self._captor is None and
                 self._readiness == CombatantReadiness.READY
         )
     
     @property
     def is_not_ready(self) -> bool:
-        return not self.is_ready or self.is_captured
+        return not self.is_ready
     
     @property
     def is_captured(self) -> bool:

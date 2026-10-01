@@ -1,4 +1,4 @@
-# src/err/authorizerpermitter/search/__init__.py
+# src/err/authorizer/permitter/search/__init__.py
 
 """
 Module: err.authorizer.permitter.search.__init__

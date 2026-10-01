@@ -229,7 +229,7 @@ class SquareEntry:
                 )
             )
         # Handle the case that the occupant is disabled
-        if token.is_not_ready:
+        if token.has_never_been_deployed:
             # Send the exception chain on failure.
             return UpdateResult.update_failure(
                 original=square,

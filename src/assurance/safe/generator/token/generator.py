@@ -1,10 +1,10 @@
-# src/assurance/validator/model/token/common/validator.py
+# src/assurance/safe/generator/token/generator.py
 
 """
-Module: assurance.validator.model.common.validator
+Module: assurance.safe.generator.token.generator
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.2
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -13,15 +13,16 @@ from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    CommonTokenPropertyTable, TokenPositionTable, TokenPositionTableGenerator, 
-    TokenValidatorToolkit
+    TokenPositionTable, TokenPositionTableGenerator, TokenSafePropertyTable, TokenValidationReference,
+    TokenValidatorToolkit,
+    ValidationReferenceGenerator
 )
 from domain import (
-    Formation, HomeSquare, Team, TokenBlueprint, TokenDeployment, 
+    Formation, HomeSquare, Team, Token, TokenBlueprint, TokenDeployment,
     TokenPrimeExtract
 )
 from err import (
-    CommonTokenPropertyTableGeneratorException, FormationNullException,
+    TokenValidationReferenceGeneratorException, FormationNullException,
     TokenDeploymentNullException
 )
 from exchange import TeamValidationRequest
@@ -29,7 +30,7 @@ from transit import TeamCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class CommonTokenPropertyTableGenerator:
+class TokenValidationReferenceGenerator(ValidationReferenceGenerator[Token]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -42,11 +43,13 @@ class CommonTokenPropertyTableGenerator:
         position_validator: TokenPositionValidator
 
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult[CommonTokenPropertyTable]:
+        -   def execute(
+                    candidate: Any
+            ) -> ValidationResult[TokenValidationReference]:
 
     Super Class:
+        ValidationReferenceGenerator
     """
-    _toolkit: TokenValidatorToolkit
     _position_table_generator: TokenPositionTableGenerator
     
     def __init__(
@@ -59,14 +62,18 @@ class CommonTokenPropertyTableGenerator:
             toolkit: Optional[TokenValidatorToolkit]
             position_validator: Optional[TokenPositionValidator]
         """
-        self._toolkit = toolkit or TokenValidatorToolkit()
+        super().__init__(toolkit=toolkit or TokenValidatorToolkit())
         self._position_table_generator = position_validator or TokenPositionTableGenerator()
+    
+    @property
+    def toolkit(self) -> TokenValidatorToolkit:
+        return cast(TokenValidatorToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(
             self,
             candidate: Any,
-    ) -> ValidationResult[CommonTokenPropertyTable]:
+    ) -> ValidationResult[TokenValidationReference]:
         """
         Assure a candidate's properties are safe for a Token
 
@@ -76,26 +83,26 @@ class CommonTokenPropertyTableGenerator:
                     -   The Loader fails.
                     -   Team, Formation, Deployment, id, or HomeSquare are flagged.
                     -   The position_table_generator fails.
-            2.  Otherwise, send a CommonTokenPropertyTable in the success result.
+            2.  Otherwise, send a TokenValidationReference in the success result.
         Args:
             candidate: Any
         Returns:
-           ValidationResult[CommonTokenPropertyTable]
+           ValidationResult[TokenValidationReference]
         Raises:
-            CommonTokenPropertyTableGeneratorException
+            TokenValidationReferenceGeneratorException
         """
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the blueprint cannot be extracted.
-        load_result = self._toolkit.loader.execute(candidate)
+        load_result = self.toolkit.loader.execute(candidate)
         if load_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CommonTokenPropertyTableGeneratorException(
+                TokenValidationReferenceGeneratorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CommonTokenPropertyTableGeneratorException.MSG,
-                    err_code=CommonTokenPropertyTableGeneratorException.ERR_CODE,
+                    msg=TokenValidationReferenceGeneratorException.MSG,
+                    err_code=TokenValidationReferenceGeneratorException.ERR_CODE,
                     ex=load_result.exception,
                 )
             )
@@ -105,27 +112,27 @@ class CommonTokenPropertyTableGenerator:
         # --- START_ID_VALIDATION_PROCESS ---#
         
         # Handle the case that any id in the blueprint is flagged.
-        id_validation = self._toolkit.blueprint_id_extractor.execute(
+        id_validation = self.toolkit.blueprint_id_extractor.execute(
             candidate=token_blueprint,
             blueprint_owner_name=token_blueprint.domain_class_name,
-            blueprint_type=self._toolkit.types.blueprint,
-            blueprint_null_exception=self._toolkit.nulls.blueprint,
+            blueprint_type=self.toolkit.types.blueprint,
+            blueprint_null_exception=self.toolkit.nulls.blueprint,
         )
         if id_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CommonTokenPropertyTableGeneratorException(
+                TokenValidationReferenceGeneratorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CommonTokenPropertyTableGeneratorException.MSG,
-                    err_code=CommonTokenPropertyTableGeneratorException.ERR_CODE,
+                    msg=TokenValidationReferenceGeneratorException.MSG,
+                    err_code=TokenValidationReferenceGeneratorException.ERR_CODE,
                     ex=id_validation.exception,
                 )
             )
         # --- START_FORMATION_VALIDATION_PROCESS ---#
         
         # Handle the case that the formation is flagged.
-        formation_validation = self._toolkit.priming_validator.execute(
+        formation_validation = self.toolkit.priming_validator.execute(
             candidate=token_blueprint.formation,
             target_model=Formation,
             null_exception=FormationNullException(),
@@ -133,18 +140,18 @@ class CommonTokenPropertyTableGenerator:
         if formation_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CommonTokenPropertyTableGeneratorException(
+                TokenValidationReferenceGeneratorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CommonTokenPropertyTableGeneratorException.MSG,
-                    err_code=CommonTokenPropertyTableGeneratorException.ERR_CODE,
+                    msg=TokenValidationReferenceGeneratorException.MSG,
+                    err_code=TokenValidationReferenceGeneratorException.ERR_CODE,
                     ex=formation_validation.exception,
                 )
             )
         # --- START_DEPLOYEMENT_STATE_VALIDATION_PROCESS ---#
         
         # Handle the case that the deployment is flagged.
-        deployment_validation = self._toolkit.priming_validator.execute(
+        deployment_validation = self.toolkit.priming_validator.execute(
             candidate=token_blueprint.deployment,
             target_model=TokenDeployment,
             null_exception=TokenDeploymentNullException(),
@@ -152,18 +159,18 @@ class CommonTokenPropertyTableGenerator:
         if deployment_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CommonTokenPropertyTableGeneratorException(
+                TokenValidationReferenceGeneratorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CommonTokenPropertyTableGeneratorException.MSG,
-                    err_code=CommonTokenPropertyTableGeneratorException.ERR_CODE,
+                    msg=TokenValidationReferenceGeneratorException.MSG,
+                    err_code=TokenValidationReferenceGeneratorException.ERR_CODE,
                     ex=deployment_validation.exception,
                 )
             )
         # --- START_TEAM_VALIDATION_PROCESS ---#
         
         # Handle the case that the team is flagged.
-        team_validation = self._toolkit.wrapper.team.extract_model(
+        team_validation = self.toolkit.wrapper.team.extract_model(
             request=TeamValidationRequest(
                 item=TeamCarrier(model=token_blueprint.team),
                 id=IdFactory.next_id(class_name="TeamValidationRequest"),
@@ -172,28 +179,28 @@ class CommonTokenPropertyTableGenerator:
         if team_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CommonTokenPropertyTableGeneratorException(
+                TokenValidationReferenceGeneratorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CommonTokenPropertyTableGeneratorException.MSG,
-                    err_code=CommonTokenPropertyTableGeneratorException.ERR_CODE,
+                    msg=TokenValidationReferenceGeneratorException.MSG,
+                    err_code=TokenValidationReferenceGeneratorException.ERR_CODE,
                     ex=team_validation.exception,
                 )
             )
         # --- START_HOME_SQUARE_DETECTION_PROCESS ---#
         
         # Handle the case that the home_square gets flagged.
-        home_detection = self._toolkit.home_square_extractor.execute(
+        home_detection = self.toolkit.home_square_extractor.execute(
             blueprint=token_blueprint,
         )
         if home_detection.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CommonTokenPropertyTableGeneratorException(
+                TokenValidationReferenceGeneratorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CommonTokenPropertyTableGeneratorException.MSG,
-                    err_code=CommonTokenPropertyTableGeneratorException.ERR_CODE,
+                    msg=TokenValidationReferenceGeneratorException.MSG,
+                    err_code=TokenValidationReferenceGeneratorException.ERR_CODE,
                     ex=home_detection.exception,
                 )
             )
@@ -206,11 +213,11 @@ class CommonTokenPropertyTableGenerator:
         if generation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CommonTokenPropertyTableGeneratorException(
+                TokenValidationReferenceGeneratorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CommonTokenPropertyTableGeneratorException.MSG,
-                    err_code=CommonTokenPropertyTableGeneratorException.ERR_CODE,
+                    msg=TokenValidationReferenceGeneratorException.MSG,
+                    err_code=TokenValidationReferenceGeneratorException.ERR_CODE,
                     ex=generation_result.exception,
                 )
             )
@@ -222,15 +229,20 @@ class CommonTokenPropertyTableGenerator:
         deployment = cast(TokenDeployment, deployment_validation.payload)
         position_table = cast(TokenPositionTable, generation_result.payload)
         
-        # --- Send the work product. ---#
-        token_property_table = CommonTokenPropertyTable(
+        safe_properties = TokenSafePropertyTable(
             id=id,
             team=team,
             formation=formation,
-            home_square=home_square,
             deployment=deployment,
+            home_square=home_square,
             position_table=position_table,
         )
-        return ValidationResult.success(token_property_table)
+        
+        # --- Send the work product. ---#
+        validation_reference = TokenValidationReference(
+            safe_properties=safe_properties,
+            prime_extract=prime_extract,
+        )
+        return ValidationResult.success(validation_reference)
 
     

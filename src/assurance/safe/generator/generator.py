@@ -1,7 +1,7 @@
-# src/assurance/validator/model/encounter/common/safe/table.py
+# src/assurance/safe/generator/generator.py
 
 """
-Module: assurance.validator.model.encounter.common.table.table
+Module: assurance.safe.generator.generator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,17 +9,17 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
+from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
 from artifcat import ValidationResult
-from assurance import ValidatorToolkit
+from assurance import ValidationReference, ValidatorToolkit
 from domain import Model
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Model")
 
-class ValidationReferenceTableGenerator(ABC, Generic[T]):
+class ValidationReferenceGenerator(ABC, Generic[T]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -32,7 +32,7 @@ class ValidationReferenceTableGenerator(ABC, Generic[T]):
         position_validator: TokenPositionValidator
 
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult[CommonTokenPropertyTable]:
+        -   def execute(candidate: Any) -> ValidationResult[ValidationReference]:
 
     Super Class:
     """
@@ -44,12 +44,17 @@ class ValidationReferenceTableGenerator(ABC, Generic[T]):
             toolkit: ValidatorToolkit[T]
         """
         self._toolkit = toolkit
-   
-   @LoggingLevelRouter.monitor
+        
+    @property
+    def toolkit(self) -> ValidatorToolkit[T]:
+        return self._toolkit
+
+    @abstractmethod
+    @LoggingLevelRouter.monitor
     def execute(
             self,
             candidate: Any,
-    ) -> ValidationResult[CommonTokenPropertyTable]:
-    pass
+    ) -> ValidationResult[ValidationReference]:
+        pass
 
     

@@ -1,4 +1,4 @@
-# src/err/authorizerpermitter/maneuver/__init__.py
+# src/err/authorizer/permitter/maneuver/__init__.py
 
 """
 Module: err.authorizer.permitter.maneuver.__init__

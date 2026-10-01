@@ -1,4 +1,4 @@
-# src/err/authorizerpermitter/slot/__init__.py
+# src/err/authorizer/permitter/slot/__init__.py
 
 """
 Module: err.authorizer.permitter.slot.__init__

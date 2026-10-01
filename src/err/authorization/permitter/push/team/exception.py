@@ -1,4 +1,4 @@
-# src/err/authorizerpermitter/push/team/exception.py
+# src/err/authorizer/permitter/push/team/exception.py
 
 """
 Module: err.authorizer.permitter.push.team.exception

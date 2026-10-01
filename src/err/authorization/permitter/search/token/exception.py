@@ -1,4 +1,4 @@
-# src/err/authorizerpermitter/search/token/exception.py
+# src/err/authorizer/permitter/search/token/exception.py
 
 """
 Module: err.authorizer.permitter.search.token.exception

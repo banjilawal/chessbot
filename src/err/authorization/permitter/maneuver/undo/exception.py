@@ -1,4 +1,4 @@
-# src/err/authorizerpermitter/undo/exception.py
+# src/err/authorizer/permitter/undo/exception.py
 
 """
 Module: err.authorizer.permitter.undo.exception

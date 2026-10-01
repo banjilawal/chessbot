@@ -17,7 +17,7 @@ from domain import Model, PrimeExtract
 
 T = TypeVar("T", bound="Model")
 
-class ValidationReferenceTable(ABC, Generic[T]):
+class ValidationReference(ABC, Generic[T]):
     """
     Role
         - Data Holder

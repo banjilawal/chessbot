@@ -1,4 +1,4 @@
-# src/err/authorizerpermitter/push/arena/__init__.py
+# src/err/authorizer/permitter/push/arena/__init__.py
 
 """
 Module: err.authorizer.permitter.push.arena.__init__

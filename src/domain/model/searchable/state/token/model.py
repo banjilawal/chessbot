@@ -9,6 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from abc import abstractmethod
 from typing import Optional
 
 from collection import CoordDatabase
@@ -104,6 +105,9 @@ class Token(StateModel):
     def deployment(self) -> TokenDeployment:
         return self._deployment
     
+    def mark_as_deployed(self):
+        self._deployment = TokenDeployment.DEPLOYED_TO_HOME_SQUARE
+    
     @property
     def position(self) -> Optional[Coord]:
         return self._position
@@ -121,24 +125,31 @@ class Token(StateModel):
         self._previous_position = other
         
     @property
-    def is_ready(self) -> bool:
+    def has_been_deployed(self) -> bool:
        return (
                self._position is not None and
                self._deployment == TokenDeployment.DEPLOYED_TO_HOME_SQUARE
        )
     
     @property
-    def is_not_ready(self) -> bool:
-       return not self.is_ready
-    
-    def mark_as_deployed(self):
-        self._deployment = TokenDeployment.DEPLOYED_TO_HOME_SQUARE
+    def has_never_been_deployed(self) -> bool:
+       return not self.has_been_deployed
     
     def is_friend(self, token: Token) -> bool:
         return self._team == token.team
     
     def is_enemy(self, token: Token) -> bool:
         return not self.is_friend(token)
+    
+    @property
+    @abstractmethod
+    def is_ready(self) -> bool:
+        pass
+    
+    @property
+    @abstractmethod
+    def is_not_read(self) -> bool:
+        pass
     
     def __eq__(self, other: object) -> bool:
         if other is self: return True

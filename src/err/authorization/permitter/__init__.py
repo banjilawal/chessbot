@@ -10,6 +10,7 @@ version: 1.0.0
 # =========== ERR.AUTHORIZER.PERMITTER PACKAGE ===========#
 
 # Packages
+from .attack import *
 from .delete import *
 from .maneuver import *
 from .pop import *

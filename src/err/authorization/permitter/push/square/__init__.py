@@ -1,4 +1,4 @@
-# src/err/authorizerpermitter/push/square/__init__.py
+# src/err/authorizer/permitter/push/square/__init__.py
 
 """
 Module: err.authorizer.permitter.push.square.__init__

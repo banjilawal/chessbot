@@ -1,4 +1,4 @@
-# src/err/authorizerpermitter/push/coord/__init__.py
+# src/err/authorizer/permitter/push/coord/__init__.py
 
 """
 Module: err.authorizer.permitter.push.coord.__init__

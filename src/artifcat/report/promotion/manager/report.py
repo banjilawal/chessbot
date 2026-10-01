@@ -50,7 +50,7 @@ class PromotionApprovalManagerReport(Report):
     @property
     def is_granted(self) -> bool:
         return (
-                self.requestor.is_ready and
+                self.requestor.has_been_deployed and
                 self.exception is None and
                 self.decision == PromotionDecision.GRANTED and
                 self.requestor.promotion_state == PromotionState.NOT_PROMOTED and

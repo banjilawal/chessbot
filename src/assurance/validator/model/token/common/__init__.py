@@ -14,4 +14,3 @@ from .safe import *
 from .property import *
 
 # Modules
-from .generator import CommonTokenPropertyTableGenerator

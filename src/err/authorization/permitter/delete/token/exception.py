@@ -1,4 +1,4 @@
-# src/err/authorizerpermitter/deleter/token/exception.py
+# src/err/authorizer/permitter/deleter/token/exception.py
 
 """
 Module: err.authorizer.permitter.deleter.token.exception

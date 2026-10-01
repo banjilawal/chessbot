@@ -1,4 +1,4 @@
-# src/err/authorizerpermitter/deleter/__init__.py
+# src/err/authorizer/permitter/deleter/__init__.py
 
 """
 Module: err.authorizer.permitter.deleter.__init__

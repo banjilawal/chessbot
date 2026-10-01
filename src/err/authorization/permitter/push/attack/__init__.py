@@ -1,4 +1,4 @@
-# src/err/authorizerpermitter/push/attack/__init__.py
+# src/err/authorizer/permitter/push/attack/__init__.py
 
 """
 Module: err.authorizer.permitter.push.attack.__init__

@@ -1,4 +1,4 @@
-# src/err/authorizerpermitter/push/board/__init__.py
+# src/err/authorizer/permitter/push/board/__init__.py
 
 """
 Module: err.authorizer.permitter.push.board.__init__

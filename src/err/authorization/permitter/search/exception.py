@@ -1,4 +1,4 @@
-# src/err/authorizerpermitter/search/exception.py
+# src/err/authorizer/permitter/search/exception.py
 
 """
 Module: err.authorizer.permitter.search.exception

@@ -1,4 +1,4 @@
-# src/err/authorizerpermitter/push/token/__init__.py
+# src/err/authorizer/permitter/push/token/__init__.py
 
 """
 Module: err.authorizer.permitter.push.token.__init__

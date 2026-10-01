@@ -1,4 +1,4 @@
-# src/err/authorizerpermitter/undo/max/__init__.py
+# src/err/authorizer/permitter/undo/max/__init__.py
 
 """
 Module: err.authorizer.permitter.undo.max.__init__

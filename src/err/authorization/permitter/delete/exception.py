@@ -1,4 +1,4 @@
-# src/err/authorizerpermitter/deleter/exception.py
+# src/err/authorizer/permitter/deleter/exception.py
 
 """
 Module: err.authorizer.permitter.deleter.exception

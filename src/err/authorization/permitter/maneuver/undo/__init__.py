@@ -1,4 +1,4 @@
-# src/err/authorizerpermitter/undo/__init__.py
+# src/err/authorizer/permitter/undo/__init__.py
 
 """
 Module: err.authorizer.permitter.undo.__init__

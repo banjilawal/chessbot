@@ -1,4 +1,4 @@
-# src/err/authorizerpermitter/maneuver/deployed/exception.py
+# src/err/authorizer/permitter/maneuver/deployed/exception.py
 
 """
 Module: err.authorizer.permitter.maneuver.deployed.exception

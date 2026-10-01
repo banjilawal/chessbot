@@ -17,11 +17,11 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# COMMON_TOKEN_PROPERTY_VALIDATOR_FAILURE #======================#
-    "CommonTokenPropertyTableGeneratorException",
+    "TokenValidationReferenceGeneratorException",
 ]
 
 # ======================# COMMON_TOKEN_PROPERTY_VALIDATOR_FAILURE #======================#
-class CommonTokenPropertyTableGeneratorException(TokenValidatorException):
+class TokenValidationReferenceGeneratorException(TokenValidatorException):
     """
     Role:
         - Error Tracing

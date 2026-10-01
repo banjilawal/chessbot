@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import cast
 
-from assurance import TokenSafePropertyTable, ValidationReferenceTable
+from assurance import TokenSafePropertyTable, ValidationReference
 from domain import Token, TokenPrimeExtract
 
 
-class TokenValidationReferenceTable(ValidationReferenceTable[Token]):
+class TokenValidationReference(ValidationReference[Token]):
     """
     Role
         - Data Holder

@@ -1,4 +1,4 @@
-# src/err/authorizerpermitter/push/attack/exception.py
+# src/err/authorizer/permitter/push/attack/exception.py
 
 """
 Module: err.authorizer.permitter.push.attack.exception

@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import cast
 
-from assurance import EncounterSafePropertyTable, ValidationReferenceTable
+from assurance import EncounterSafePropertyTable, ValidationReference
 from domain import Encounter, EncounterPrimeExtract
 
 
-class EncounterValidationReferenceTable(ValidationReferenceTable[Encounter]):
+class EncounterValidationReference(ValidationReference[Encounter]):
     """
     Role
         - Data Holder

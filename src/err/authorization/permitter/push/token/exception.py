@@ -1,4 +1,4 @@
-# src/err/authorizerpermitter/push/token/exception.py
+# src/err/authorizer/permitter/push/token/exception.py
 
 """
 Module: err.authorizer.permitter.push.token.exception

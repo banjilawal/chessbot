@@ -1,4 +1,4 @@
-# src/err/authorizerpermitter/push/arena/exception.py
+# src/err/authorizer/permitter/push/arena/exception.py
 
 """
 Module: err.authorizer.permitter.push.arena.exception

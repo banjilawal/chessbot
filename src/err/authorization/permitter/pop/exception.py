@@ -1,4 +1,4 @@
-# src/err/authorizerpermitter/popper/exception.py
+# src/err/authorizer/permitter/popper/exception.py
 
 """
 Module: err.authorizer.permitter.popper.exception

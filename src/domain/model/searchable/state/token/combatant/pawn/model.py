@@ -86,7 +86,7 @@ class PawnToken(CombatantToken):
     def is_promotable(self) -> bool:
         position = self.position
         
-        if not self.is_ready:
+        if not self.has_been_deployed:
             return False
         if self.is_promoted:
             return False

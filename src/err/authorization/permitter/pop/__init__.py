@@ -1,4 +1,4 @@
-# src/err/authorizerpermitter/popper/__init__.py
+# src/err/authorizer/permitter/popper/__init__.py
 
 """
 Module: err.authorizer.permitter.popper.__init__

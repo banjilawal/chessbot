@@ -1,4 +1,4 @@
-# src/err/authorizerpermitter/push/team/__init__.py
+# src/err/authorizer/permitter/push/team/__init__.py
 
 """
 Module: err.authorizer.permitter.push.team.__init__

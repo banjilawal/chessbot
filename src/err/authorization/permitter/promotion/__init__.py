@@ -1,4 +1,4 @@
-# src/err/authorizerpermitter/promote/__init__.py
+# src/err/authorizer/permitter/promote/__init__.py
 
 """
 Module: err.authorizer.permitter.promote.__init__
