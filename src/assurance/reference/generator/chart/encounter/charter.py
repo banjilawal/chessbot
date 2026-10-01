@@ -9,17 +9,19 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Dict, Optional, cast
+from typing import Optional, cast
 
 from artifcat import ValidationResult
 from assurance import EncounterParticipantChart, TokenValidatorToolkit, VerificationCharter
 from domain import Encounter, Token
-from err import FriendlyFireAttackException, TokenAttackingItselfException, VictimNeverDeployedException
-from sensor import FriendshipAnalyzer
-from util import IdFactory, LoggingLevelRouter
+from err import (
+    EncounterParticipantCertifierException, FriendlyFireAttackException, TokenAttackingItselfException,
+    VictimNeverDeployedException
+)
+from util import LoggingLevelRouter
 
 
-class EncounterParticipantStateCertifier(VerificationCharter[Encounter]):
+class EncounterParticipantCertifier(VerificationCharter[Encounter]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -56,8 +58,8 @@ class EncounterParticipantStateCertifier(VerificationCharter[Encounter]):
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            victim_candidate: Token,
-            attacker_candidate: Token
+            victim: Token,
+            attacker: Token
     ) -> ValidationResult[EncounterParticipantChart]:
         """
         Assure a candidate's properties are reference for a Encounter
@@ -70,23 +72,24 @@ class EncounterParticipantStateCertifier(VerificationCharter[Encounter]):
                     -   The position_table_charter fails.
             2.  Otherwise, send a EncounterParticipantChart in the success result.
         Args:
-            candidate: Any
+            victim: Token
+            attacker: Token
         Returns:
            ValidationResult[EncounterParticipantChart]
         Raises:
-            EncounterVerificationCharterException
+            EncounterParticipantCertifierException
         """
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the victim and the attacker are the same
-        if victim_candidate == attacker_candidate:
+        if victim == attacker:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                EncounterVerificationCharterException(
+                EncounterParticipantCertifierException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=EncounterVerificationCharterException.MSG,
-                    err_code=EncounterVerificationCharterException.ERR_CODE,
+                    msg=EncounterParticipantCertifierException.MSG,
+                    err_code=EncounterParticipantCertifierException.ERR_CODE,
                     ex=TokenAttackingItselfException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -96,14 +99,14 @@ class EncounterParticipantStateCertifier(VerificationCharter[Encounter]):
                 )
             )
         # Handle the case that the victim and attacker are on the same team.
-        if victim_candidate.is_friend(attacker_candidate):
+        if victim.is_friend(attacker):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                EncounterVerificationCharterException(
+                EncounterParticipantCertifierException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=EncounterVerificationCharterException.MSG,
-                    err_code=EncounterVerificationCharterException.ERR_CODE,
+                    msg=EncounterParticipantCertifierException.MSG,
+                    err_code=EncounterParticipantCertifierException.ERR_CODE,
                     ex=FriendlyFireAttackException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -113,14 +116,14 @@ class EncounterParticipantStateCertifier(VerificationCharter[Encounter]):
                 )
             )
         # Handle the case that the victim has never been deployed.
-        if victim_candidate.has_never_been_deployed:
+        if victim.has_never_been_deployed:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                EncounterVerificationCharterException(
+                EncounterParticipantCertifierException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=EncounterVerificationCharterException.MSG,
-                    err_code=EncounterVerificationCharterException.ERR_CODE,
+                    msg=EncounterParticipantCertifierException.MSG,
+                    err_code=EncounterParticipantCertifierException.ERR_CODE,
                     ex=VictimNeverDeployedException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -129,15 +132,11 @@ class EncounterParticipantStateCertifier(VerificationCharter[Encounter]):
                     ),
                 )
             )
-            
-        reference_properties = EncounterReferencePropertyTable(
-            victim=cast(Token, victim_candidate),
-            attacker=(Token, attacker_candidate)
-        )
         # --- Send the work product. ---#
-        participant_chart: EncounterParticipantChart = EncounterParticipantChart(
-            victim=victim, attacker=attacker,
-        )# --- Send the work product. -- =
+        participant_chart = EncounterParticipantChart(
+            victim=victim,
+            attacker=attacker,
+        )
         return ValidationResult.success(participant_chart)
 
     

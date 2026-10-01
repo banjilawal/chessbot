@@ -13,16 +13,15 @@ from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    EncounterPositionTable, EncounterReferencePropertyTable, EncounterValidationReference,
-    EncounterValidatorToolkit,
-    ValidationReferenceGenerator
+    EncounterParticipantCertifier, EncounterParticipantChart, EncounterReferencePropertyTable,
+    EncounterValidationReference, EncounterValidatorToolkit, ValidationReferenceGenerator
 )
 from config import NumericSetting
 from domain import (
     Maneuver, Token, Encounter, EncounterBlueprint, EncounterPrimeExtract
 )
 from err import (
-    EncounterValidationReferenceGeneratorException, TokenAttackingItselfException, VictimNeverDeployedException
+    EncounterValidationReferenceGeneratorException
 )
 from exchange import ManeuverValidationRequest, TokenValidationRequest
 from transit import ManeuverCarrier, TokenCarrier
@@ -48,16 +47,19 @@ class EncounterValidationReferenceGenerator(ValidationReferenceGenerator[Encount
     Super Class:
         ValidationReferenceGenerator
     """
-    
+    _participant_certifier: EncounterParticipantCertifier
     def __init__(
             self,
             toolkit: Optional[EncounterValidatorToolkit] | None = None,
+            participant_certifier: Optional[EncounterParticipantCertifier] | None = None,
     ):
         """
         Args:
             toolkit: Optional[EncounterValidatorToolkit]
+            participant_certifier: Optional[EncounterPositionCertifier]
         """
         super().__init__(toolkit=toolkit or EncounterValidatorToolkit())
+        self._participant_certifier = participant_certifier or EncounterParticipantCertifier()
         
     @property
     def toolkit(self) -> EncounterValidatorToolkit:
@@ -188,28 +190,12 @@ class EncounterValidationReferenceGenerator(ValidationReferenceGenerator[Encount
         attacker_reward = cast(int, attacker_reward.payload)
         attacker_maneuver = cast(Maneuver, attacker_maneuver_validation.payload)
         
+        participant_chart_validation = self._participant_certifier.execute(
+            victim=victim,
+            attacker=attacker_maneuver.traveler,
+        )
         # Handle the case that the victim and the attacker are the same
-        if victim == attacker_maneuver.traveler:
-            # Send the exception chain on failure.
-            # Handle the case that the victim and attacker are on the same team.
-            if victim.is_friend(attacker_maneuver.traveler):
-                # Send the exception chain on failure.
-                return ValidationResult.failure(
-                    EncounterValidationReferenceGeneratorException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=EncounterValidationReferenceGeneratorException.MSG,
-                        err_code=EncounterValidationReferenceGeneratorException.ERR_CODE,
-                        ex=TokenAttackingItselfException(
-                            cls_mthd=method,
-                            cls_name=self.__class__.__name__,
-                            msg=TokenAttackingItselfException.MSG,
-                            err_code=TokenAttackingItselfException.ERR_CODE,
-                        ),
-                    )
-                )
-        # Handle the case that the victim and attacker are on the same team.
-        if victim.is_friend(attacker_maneuver.traveler):
+        if participant_chart_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 EncounterValidationReferenceGeneratorException(
@@ -217,37 +203,18 @@ class EncounterValidationReferenceGenerator(ValidationReferenceGenerator[Encount
                     cls_name=self.__class__.__name__,
                     msg=EncounterValidationReferenceGeneratorException.MSG,
                     err_code=EncounterValidationReferenceGeneratorException.ERR_CODE,
-                    ex=TokenAttackingItselfException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=TokenAttackingItselfException.MSG,
-                        err_code=TokenAttackingItselfException.ERR_CODE,
-                    ),
+                    ex=participant_chart_validation.exception
                 )
             )
-        # Handle the case that the victim has never been deployed.
-        if victim.has_never_been_deployed:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                EncounterValidationReferenceGeneratorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=EncounterValidationReferenceGeneratorException.MSG,
-                    err_code=EncounterValidationReferenceGeneratorException.ERR_CODE,
-                    ex=VictimNeverDeployedException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=VictimNeverDeployedException.MSG,
-                        err_code=VictimNeverDeployedException.ERR_CODE,
-                    ),
-                )
-            )
-            
+        participant_chart = cast(
+            EncounterParticipantChart, 
+            participant_chart_validation.payload,
+        )
         reference_properties = EncounterReferencePropertyTable(
             id=id,
-            victim=victim,
-            attacker_maneuver=attacker_maneuver,
             attacker_reward=attacker_reward,
+            participant_chart=participant_chart,
+            attacker_maneuver=attacker_maneuver,
         )
         
         # --- Send the work product. ---#

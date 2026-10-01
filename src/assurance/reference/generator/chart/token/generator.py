@@ -14,13 +14,12 @@ from typing import Dict, Optional, cast
 from artifcat import ValidationResult
 from assurance import TokenPositionChart, TokenValidatorToolkit
 from domain import Coord, TokenBlueprint
-from err import TokenPositionChartValidatorException
 from exchange import CoordValidationRequest
 from transit import CoordCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class TokenPositionChartValidator:
+class TokenPositionCertifier:
     """
     Role
         - Integrity, Consistency Maintenance
@@ -96,11 +95,11 @@ class TokenPositionChartValidator:
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenPositionChartValidatorException(
+                    TokenPositionCertifierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TokenPositionChartValidatorException.MSG,
-                        err_code=TokenPositionChartValidatorException.ERR_CODE,
+                        msg=TokenPositionCertifierException.MSG,
+                        err_code=TokenPositionCertifierException.ERR_CODE,
                         ex=validation.exception,
                     )
                 )
@@ -118,11 +117,11 @@ class TokenPositionChartValidator:
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenPositionChartValidatorException(
+                    TokenPositionCertifierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TokenPositionChartValidatorException.MSG,
-                        err_code=TokenPositionChartValidatorException.ERR_CODE,
+                        msg=TokenPositionCertifierException.MSG,
+                        err_code=TokenPositionCertifierException.ERR_CODE,
                         ex=validation.exception,
                     )
                 )

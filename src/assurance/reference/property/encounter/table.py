@@ -9,8 +9,8 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from assurance import ReferencePropertyTable
-from domain import Encounter, Maneuver, Token
+from assurance import EncounterParticipantChart, ReferencePropertyTable
+from domain import Encounter, Maneuver
 
 
 class EncounterReferencePropertyTable(ReferencePropertyTable[Encounter]):
@@ -23,7 +23,7 @@ class EncounterReferencePropertyTable(ReferencePropertyTable[Encounter]):
 
     Attributes:
         id: int
-        token: Token
+        encounterParticipantChart: EncounterParticipantChart
         attacker_maneuver: Maneuver
         attacker_reward: int
 
@@ -33,35 +33,33 @@ class EncounterReferencePropertyTable(ReferencePropertyTable[Encounter]):
         ReferenceSuperClassPropertyTable
     """
     _id: int
-    _victim: Token
-    _attacker_maneuver: Maneuver
     _attacker_reward: int
+    _attacker_maneuver: Maneuver
+    _participant_chart: EncounterParticipantChart
+
+
     
     def __init__(
             self,
             id: int,
-            victim: Token,
-            attacker_maneuver: Maneuver,
             attacker_reward: int,
+            attacker_maneuver: Maneuver,
+            participant_chart: EncounterParticipantChart,
     ):
         """
             id: int
-            token: Token
-            attacker_maneuver: Maneuver
             attacker_reward: int
+            attacker_maneuver: Maneuver
+            participant_chart: EncounterParticipantChart
         """
         self._id = id
-        self._victim = victim
         self._maneuver = attacker_maneuver
         self._attacker_reward = attacker_reward
-        
+        self._participant_chart = participant_chart
+
     @property
     def id(self) -> int:
         return self._id
-    
-    @property
-    def victim(self) -> Token:
-        return self._victim
     
     @property
     def maneuver(self) -> Maneuver:
@@ -70,5 +68,10 @@ class EncounterReferencePropertyTable(ReferencePropertyTable[Encounter]):
     @property
     def attacker_reward(self) -> int:
         return self._attacker_reward
+    
+    @property
+    def participant_chart(self) -> EncounterParticipantChart:
+        return self._participant_chart
+
 
     

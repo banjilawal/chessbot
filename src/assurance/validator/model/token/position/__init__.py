@@ -13,4 +13,3 @@ version: 0.0.2
 
 # Modules
 from .table import TokenPositionChart
-from .generator import TokenPositionChartValidator

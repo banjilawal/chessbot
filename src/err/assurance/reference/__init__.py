@@ -10,6 +10,7 @@ version: 0.0.2
 # ============ ERR.ASSURANCE.REFERENCE PACKAGE ===========#
 
 # Packages
+from .chart import *
 from .generator import *
 
 # Modules
