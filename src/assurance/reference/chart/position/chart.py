@@ -1,7 +1,7 @@
-# src/assurance/validator/model/token/position/table.py
+# src/assurance/reference/chart/position/chart.py
 
 """
-Module: assurance.validator.model.token.position.table
+Module: assurance.reference.chart.position.chart
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,16 +11,17 @@ from __future__ import annotations
 
 from typing import Dict, Optional
 
+from assurance.reference import ValidatorChart
 from domain import Coord
 
 
-class TokenPositionChart:
+class TokenPositionChart(ValidatorChart[Coord]):
     """
     Role
         - Data Holder
 
     Responsibilities:
-        1.  Stores TokenPositionChartValidator success data.
+        1.  Stores TokenPositionValidator success data.
 
     Attributes:
         position: Optional[Coord]
@@ -43,9 +44,10 @@ class TokenPositionChart:
             position: Optional[Coord]
             previous_position: Optional[Coord]
         """
+        super().__init__()
         self._position = position
         self._previous_position = previous_position
-        
+    
     @property
     def position(self) -> Optional[Coord]:
         return self._position
@@ -55,25 +57,14 @@ class TokenPositionChart:
         return self._previous_position
     
     @property
-    def size(self) -> int:
-        return len(self.to_dict)
-    
-    @property
-    def is_empty(self) -> bool:
-        return self.size == 0
-    
-    @property
-    def is_not_empty(self) -> bool:
-        return not self.is_empty
-    
-    @property
     def is_full(self) -> bool:
         return self.size == 2
     
     @property
     def to_dict(self) -> Dict[str, Coord]:
-        table = {
-            "position": self._position,
-            "previous_position": self._previous_position
-        }
+        table: Dict[str, Coord] = {}
+        if self._position is not None:
+            table["position"] = self._position
+        if self._previous_position is not None:
+            table["previous_position"] = self._previous_position
         return table

@@ -1,7 +1,7 @@
-# src/assurance/validator/model/token/common/safe/table.py
+# src/assurance/reference/property/token/table.py
 
 """
-Module: assurance.validator.model.token.common.table.table
+Module: assurance.reference.property.token.table
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,19 +9,22 @@ version: 0.0.2
 
 from __future__ import annotations
 
+
+from __future__ import annotations
+
 from typing import Optional
 
-from assurance import TokenPositionChart
-from domain import Coord, Formation, HomeSquare, Team, TokenDeployment
+from assurance import ReferencePropertyTable, TokenPositionChart
+from domain import Coord, Formation, HomeSquare, Team, Token, TokenDeployment
 
 
-class SafeSuperTokenPropertyTable:
+class TokenReferencePropertyTable(ReferencePropertyTable[Token]):
     """
     Role
         - Data Holder
 
     Responsibilities:
-        1.  Stores Token super class properties that are safe.
+        1.  Stores Token super class properties that are reference.
 
     Attributes:
         id: int
@@ -65,7 +68,7 @@ class SafeSuperTokenPropertyTable:
         self._home_square = home_square
         self._deployment = deployment
         self._position_log = position_table
-        
+    
     @property
     def id(self) -> int:
         return self._id
@@ -91,14 +94,9 @@ class SafeSuperTokenPropertyTable:
         return self._position_log
     
     @property
-    def prime_extract(self) -> TokenPrimeExtract:
-        return self._prime_extract
-    
-    @property
     def position(self) -> Optional[Coord]:
         return self._position_log.position
     
     @property
     def previous_position(self) -> Optional[Coord]:
         return self._position_log.previous_position
-    

@@ -1,7 +1,7 @@
-# src/assurance/validator/model/token/position/validator.py
+# src/assurance/validator/model/encounter/participant/validator.py
 
 """
-Module: assurance.validator.model.token.position.validator
+Module: assurance.validator.model.encounter.participant.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.2
@@ -12,21 +12,18 @@ from __future__ import annotations
 from typing import Dict, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import TokenPositionChart, TokenValidatorToolkit
-from domain import Coord, TokenBlueprint
-from err import TokenPositionChartValidatorException
-from exchange import CoordValidationRequest
-from transit import CoordCarrier
-from util import IdFactory, LoggingLevelRouter
+from assurance import TokenValidatorToolkit
+from domain import Token
+from util import LoggingLevelRouter
 
 
-class TokenPositionChartValidator:
+class EncounterParticipantValidator:
     """
     Role
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a TokenBlueprint position and previous_positions fields
+        1.  Ensure a EncounterBlueprint participant and previous_participants fields
             are safe to use.
 
     Attributes:
@@ -34,8 +31,8 @@ class TokenPositionChartValidator:
 
     Provides:
         -   def execute(
-                    blueprint: TokenBlueprint
-            ) -> ValidationResult[TokenPositionChart]:
+                    blueprint: EncounterBlueprint
+            ) -> ValidationResult[EncounterParticipantTable]:
 
     Super Class:
     """
@@ -55,83 +52,85 @@ class TokenPositionChartValidator:
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            blueprint: TokenBlueprint,
-    ) -> ValidationResult[TokenPositionChart]:
+            victim_candidate: Token,
+            attacker_candidate: Token,
+    ) -> ValidationResult[EncounterParticipantTable]:
         """
-        Assure a candidate is a safe TokenCarrier.
+        Assure a candidate is a safe EncounterCarrier.
 
         Action:
             1.  Send an exception chain in the ValidationResult if either
-                    -   blueprint.position or
+                    -   blueprint.participant or
                     -   blueprint.previous_postion
                 is not null and gets flagged.
             2.  Otherwise, for the success result, send a dictionary that is:
-                    -   Empty if the Token has not been deployed.
-                    -   Any validated position.
+                    -   Empty if the Encounter has not been deployed.
+                    -   Any validated participant.
         Args:
-            blueprint: TokenBlueprint
+            blueprint: EncounterBlueprint
         Returns:
-            ValidationResult[TokenPositionChart]
+            ValidationResult[EncounterParticipantTable]
         Raises:
-            TokenPositionValidatorException
+            EncounterParticipantValidatorException
         """
         method = f"{self.__class__.__name__}.execute"
         
-        valid_locations: Dict[str, Coord] = {}
-        # If the token has not been deployed send an empty dictionary
+        
+        candidates: Dict[str, Token] = {}
+        # If the encounter has not been deployed send an empty dictionary
         if (
-                blueprint.position is None and 
-                blueprint.previous_position is None
+                blueprint.participant is None and 
+                blueprint.previous_participant is None
         ):
             return ValidationResult.success(valid_locations)
         
-        if blueprint.position is not None:
-            # Handle the case that the position is flagged.
+        if blueprint.participant is not None:
+            # Handle the case that the participant is flagged.
             validation = self._toolkit.wrapper.coord.extract_model(
                 request=CoordValidationRequest(
-                    item=CoordCarrier(model=blueprint.position),
+                    item=CoordCarrier(model=blueprint.participant),
                     id=IdFactory.next_id(class_name="CoordValidationRequest"),
                 )
             )
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenPositionChartValidatorException(
+                    EncounterParticipantTableGeneratorException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TokenPositionChartValidatorException.MSG,
-                        err_code=TokenPositionChartValidatorException.ERR_CODE,
+                        msg=EncounterParticipantTableGeneratorException.MSG,
+                        err_code=EncounterParticipantTableGeneratorException.ERR_CODE,
                         ex=validation.exception,
                     )
                 )
             # Otherwise add to the dictionary.
-            valid_locations["position"] = cast(Coord, validation.payload)
+            valid_locations["participant"] = cast(Coord, validation.payload)
         
-        if blueprint.previous_position is not None:
-            # Handle the case that the previous position is flagged.
+        if blueprint.previous_participant is not None:
+            # Handle the case that the previous participant is flagged.
             validation = self._toolkit.wrapper.coord.extract_model(
                 request=CoordValidationRequest(
-                    item=CoordCarrier(model=blueprint.previous_position),
+                    item=CoordCarrier(model=blueprint.previous_participant),
                     id=IdFactory.next_id(class_name="CoordValidationRequest"),
                 )
             )
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenPositionChartValidatorException(
+                    EncounterParticipantTableGeneratorException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TokenPositionChartValidatorException.MSG,
-                        err_code=TokenPositionChartValidatorException.ERR_CODE,
+                        msg=EncounterParticipantTableGeneratorException.MSG,
+                        err_code=EncounterParticipantTableGeneratorException.ERR_CODE,
                         ex=validation.exception,
                     )
                 )
             # Otherwise add to the dictionary.
-            valid_locations["previous_position"] = cast(Coord, validation.payload)
+            valid_locations["previous_participant"] = cast(Coord, validation.payload)
         # --- Send the work product. ---#
-        position_table = TokenPositionChart(
-            position=valid_locations["position"] or None,
-            previous_position=valid_locations["previous_position"] or None,
+        participant_table = EncounterParticipantTable(
+            participant=valid_locations["participant"] or None,
+            previous_participant=valid_locations["previous_participant"] or None,
         )
-        return ValidationResult.success(position_table)
+        return ValidationResult.success(participant_table)
     

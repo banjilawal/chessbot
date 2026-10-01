@@ -98,7 +98,7 @@ class CheckmateEncounter(Encounter):
         winner_archetype = sel
         
         return {color:}
-        self._encounter.victor.victim.owner
+        self.victor.victor.victim.owner
     
     @
 

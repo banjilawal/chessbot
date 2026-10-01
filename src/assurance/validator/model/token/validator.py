@@ -13,7 +13,7 @@ from typing import Any, Dict, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    CommonTokenPropertyTable, CommonTokenPropertyTableGenerator, ModelValidator, TokenPositionTableGenerator,
+    CommonTokenPropertyTable, CommonTokenPropertyTableGenerator, ModelValidator, TokenPositionChartValidator,
     TokenValidationRouter,
     TokenValidatorToolkit
 )

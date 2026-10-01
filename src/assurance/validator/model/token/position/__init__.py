@@ -12,5 +12,5 @@ version: 0.0.2
 # Packages
 
 # Modules
-from .table import TokenPositionTable
-from .generator import TokenPositionTableGenerator
+from .table import TokenPositionChart
+from .generator import TokenPositionChartValidator
