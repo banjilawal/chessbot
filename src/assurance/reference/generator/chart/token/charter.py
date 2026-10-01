@@ -1,7 +1,7 @@
-# src/assurance/reference/generator/token/generator.py
+# src/assurance/reference/charter/charttoken/charter.py
 
 """
-Module: assurance.reference.generator.token.generator
+Module: assurance.reference.charter.chart.token.charter
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -15,14 +15,14 @@ from artifcat import ValidationResult
 from assurance import (
     TokenPositionChart, TokenPositionChartValidator, TokenReferencePropertyTable, TokenValidationReference,
     TokenValidatorToolkit,
-    ValidationReferenceGenerator
+    VerificationCharter
 )
 from domain import (
     Formation, HomeSquare, Team, Token, TokenBlueprint, TokenDeployment,
     TokenPrimeExtract
 )
 from err import (
-    TokenValidationReferenceGeneratorException, FormationNullException,
+    TokenVerificationCharterException, FormationNullException,
     TokenDeploymentNullException
 )
 from exchange import TeamValidationRequest
@@ -30,7 +30,7 @@ from transit import TeamCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class TokenValidationReferenceGenerator(ValidationReferenceGenerator[Token]):
+class TokenPositionCharter(VerificationCharter[Token]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -48,9 +48,9 @@ class TokenValidationReferenceGenerator(ValidationReferenceGenerator[Token]):
             ) -> ValidationResult[TokenValidationReference]:
 
     Super Class:
-        ValidationReferenceGenerator
+        VerificationCharter
     """
-    _position_table_generator: TokenPositionChartValidator
+    _position_table_charter: TokenPositionChartValidator
     
     def __init__(
             self,
@@ -63,7 +63,7 @@ class TokenValidationReferenceGenerator(ValidationReferenceGenerator[Token]):
             position_validator: Optional[TokenPositionValidator]
         """
         super().__init__(toolkit=toolkit or TokenValidatorToolkit())
-        self._position_table_generator = position_validator or TokenPositionChartValidator()
+        self._position_table_charter = position_validator or TokenPositionChartValidator()
     
     @property
     def toolkit(self) -> TokenValidatorToolkit:
@@ -82,14 +82,14 @@ class TokenValidationReferenceGenerator(ValidationReferenceGenerator[Token]):
                 occur
                     -   The Loader fails.
                     -   Team, Formation, Deployment, id, or HomeSquare are flagged.
-                    -   The position_table_generator fails.
+                    -   The position_table_charter fails.
             2.  Otherwise, send a TokenValidationReference in the success result.
         Args:
             candidate: Any
         Returns:
            ValidationResult[TokenValidationReference]
         Raises:
-            TokenValidationReferenceGeneratorException
+            TokenVerificationCharterException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -98,11 +98,11 @@ class TokenValidationReferenceGenerator(ValidationReferenceGenerator[Token]):
         if load_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationReferenceGeneratorException(
+                TokenVerificationCharterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenValidationReferenceGeneratorException.MSG,
-                    err_code=TokenValidationReferenceGeneratorException.ERR_CODE,
+                    msg=TokenVerificationCharterException.MSG,
+                    err_code=TokenVerificationCharterException.ERR_CODE,
                     ex=load_result.exception,
                 )
             )
@@ -121,11 +121,11 @@ class TokenValidationReferenceGenerator(ValidationReferenceGenerator[Token]):
         if id_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationReferenceGeneratorException(
+                TokenVerificationCharterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenValidationReferenceGeneratorException.MSG,
-                    err_code=TokenValidationReferenceGeneratorException.ERR_CODE,
+                    msg=TokenVerificationCharterException.MSG,
+                    err_code=TokenVerificationCharterException.ERR_CODE,
                     ex=id_validation.exception,
                 )
             )
@@ -140,11 +140,11 @@ class TokenValidationReferenceGenerator(ValidationReferenceGenerator[Token]):
         if formation_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationReferenceGeneratorException(
+                TokenVerificationCharterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenValidationReferenceGeneratorException.MSG,
-                    err_code=TokenValidationReferenceGeneratorException.ERR_CODE,
+                    msg=TokenVerificationCharterException.MSG,
+                    err_code=TokenVerificationCharterException.ERR_CODE,
                     ex=formation_validation.exception,
                 )
             )
@@ -159,11 +159,11 @@ class TokenValidationReferenceGenerator(ValidationReferenceGenerator[Token]):
         if deployment_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationReferenceGeneratorException(
+                TokenVerificationCharterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenValidationReferenceGeneratorException.MSG,
-                    err_code=TokenValidationReferenceGeneratorException.ERR_CODE,
+                    msg=TokenVerificationCharterException.MSG,
+                    err_code=TokenVerificationCharterException.ERR_CODE,
                     ex=deployment_validation.exception,
                 )
             )
@@ -179,11 +179,11 @@ class TokenValidationReferenceGenerator(ValidationReferenceGenerator[Token]):
         if team_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationReferenceGeneratorException(
+                TokenVerificationCharterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenValidationReferenceGeneratorException.MSG,
-                    err_code=TokenValidationReferenceGeneratorException.ERR_CODE,
+                    msg=TokenVerificationCharterException.MSG,
+                    err_code=TokenVerificationCharterException.ERR_CODE,
                     ex=team_validation.exception,
                 )
             )
@@ -196,28 +196,28 @@ class TokenValidationReferenceGenerator(ValidationReferenceGenerator[Token]):
         if home_detection.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationReferenceGeneratorException(
+                TokenVerificationCharterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenValidationReferenceGeneratorException.MSG,
-                    err_code=TokenValidationReferenceGeneratorException.ERR_CODE,
+                    msg=TokenVerificationCharterException.MSG,
+                    err_code=TokenVerificationCharterException.ERR_CODE,
                     ex=home_detection.exception,
                 )
             )
         # --- START_POSITIONS_VALIDATION_PROCESS ---#
         
         # Handle the case that the current_position is flagged.
-        generation_result = self._position_table_generator.execute(
+        generation_result = self._position_table_charter.execute(
             blueprint=token_blueprint
         )
         if generation_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationReferenceGeneratorException(
+                TokenVerificationCharterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenValidationReferenceGeneratorException.MSG,
-                    err_code=TokenValidationReferenceGeneratorException.ERR_CODE,
+                    msg=TokenVerificationCharterException.MSG,
+                    err_code=TokenVerificationCharterException.ERR_CODE,
                     ex=generation_result.exception,
                 )
             )

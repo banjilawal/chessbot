@@ -10,8 +10,8 @@ version: 0.0.2
 # =========== ASSURANCE.REFERENCE.GENERATOR PACKAGE ===========#
 
 # Packages
-from .encounter import *
-from .token import *
+from .chart import *
+from .reference import *
 
 # Modules
 from .generator import ValidationReferenceGenerator

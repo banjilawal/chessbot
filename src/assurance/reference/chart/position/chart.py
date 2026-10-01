@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Dict, Optional
 
-from assurance.reference import ValidatorChart
+from assurance import ValidatorChart
 from domain import Coord
 
 

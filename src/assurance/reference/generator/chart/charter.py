@@ -1,7 +1,7 @@
-# src/assurance/reference/generator/generator.py
+# src/assurance/reference/charter/chartcharter.py
 
 """
-Module: assurance.reference.generator.generator
+Module: assurance.reference.charter.chart.charter
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -19,7 +19,7 @@ from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Model")
 
-class ValidationReferenceGenerator(ABC, Generic[T]):
+class VerificationCharter(ABC, Generic[T]):
     """
     Role
         - Integrity, Consistency Maintenance

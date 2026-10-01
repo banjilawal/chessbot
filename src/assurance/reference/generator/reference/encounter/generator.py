@@ -1,7 +1,7 @@
-# src/assurance/reference/generator/encounter/generator.py
+# src/assurance/reference/generator/reference/encounter/generator.py
 
 """
-Module: assurance.reference.generator.encounter.generator
+Module: assurance.reference.generator.reference.encounter.generator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
