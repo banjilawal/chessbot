@@ -10,6 +10,7 @@ version: 0.0.2
 # ============ ERR.NULL.DOMAIN.STRUCTURE.STRUCTURE PACKAGE ===========#
 
 # Packages
+from .chart import *
 from .node import *
 from .register import *
 from .toggle import *

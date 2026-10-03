@@ -11,5 +11,6 @@ version: 0.0.2
 
 # Packages
 from .carrier import *
+from .delivery import *
 
 # Modules

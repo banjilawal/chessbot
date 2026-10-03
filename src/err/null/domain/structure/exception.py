@@ -27,7 +27,7 @@ class StructureNullException(DomainObjectNullException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required StructureWrapper is null.
+        1.  Indicating a required Structure is null.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class StructureNullException(DomainObjectNullException):
     Super Class:
         DomainObjectNullException
     """
-    MSG = "StructureWrapper cannot be null."
+    MSG = "Structure cannot be null."
     ERR_CODE = "STRUCTURE_WRAPPER_WRAPPERNULL_ERROR"
     
     def __init__(

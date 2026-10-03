@@ -1,7 +1,7 @@
-# src/err/null/domain/structure/register/exception.py
+# src/err/null/domain/structure/chart/exception.py
 
 """
-Module: err.null.domain.structure.register.exception
+Module: err.null.domain.structure.chart.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# REGISTER_NULL_ERROR #======================#
-    "RegisterNullException",
+    # ======================# PARTICIPANT_CHART_NULL_ERROR #======================#
+    "ParticipantChartNullException",
 ]
 
-# ======================# REGISTER_NULL_ERROR #======================#
-class RegisterNullException(StructureNullException):
+# ======================# PARTICIPANT_CHART_NULL_ERROR #======================#
+class ParticipantChartNullException(StructureNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required Register is null.
+        1.  Indicating a required ParticipantChart is null.
 
     Attributes:
         msg: Optional[str]
@@ -44,17 +44,17 @@ class RegisterNullException(StructureNullException):
     Super Class:
         StructureNullException
     """
-    MSG = "Register cannot be null."
-    ERR_CODE = "REGISTER_NULL_ERROR"
+    MSG = "ParticipantChart cannot be null."
+    ERR_CODE = "PARTICIPANT_CHART_NULL_ERROR"
     
     def __init__(
             self,
             msg: Optional[str] | None = None,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
-            ex: Optional[Exception] | None = None,
-            cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
+            cls_name: Optional[str] | None = None,
+            ex: Optional[Exception] | None = None,
             err_code: Optional[str] | None = None,
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):

@@ -1,7 +1,7 @@
-# src/err/null/domain/structure/register/exception.py
+# src/err/null/transit/delivery/exception.py
 
 """
-Module: err.null.domain.structure.register.exception
+Module: err.null.transit.delivery.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,41 +11,41 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StructureNullException
 from artifcat import MethodResultType
+from err import NullException
 
 
 __all__ = [
-    # ======================# REGISTER_NULL_ERROR #======================#
-    "RegisterNullException",
+    # ======================# PRODUCT_DELIVERY_NULL_ERROR #======================#
+    "ProductEnvelopeNullException",
 ]
 
-# ======================# REGISTER_NULL_ERROR #======================#
-class RegisterNullException(StructureNullException):
+# ======================# PRODUCT_DELIVERY_NULL_ERROR #======================#
+class ProductEnvelopeNullException(NullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required Register is null.
+        1.  Indicating a Delivery is null.
 
     Attributes:
-        msg: Optional[str]
-        var: Optional[str]
-        val: Optional[Any]
-        ex: Optional[Exception]
-        cls_name: Optional[str]
-        cls_mthd: Optional[str]
-        err_code: Optional[str]
-        mthd_rslt_type: Optional[MethodResultType]
-        
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
+            
     Provides:
 
     Super Class:
-        StructureNullException
+        NullException
     """
-    MSG = "Register cannot be null."
-    ERR_CODE = "REGISTER_NULL_ERROR"
+    MSG = "Delivery cannot be null."
+    ERR_CODE = "PRODUCT_DELIVERY_NULL_ERROR"
     
     def __init__(
             self,

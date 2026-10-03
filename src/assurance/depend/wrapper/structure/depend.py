@@ -21,7 +21,7 @@ from microservice import IdentityService
 T = TypeVar("T", bound="Structure")
 
 
-class StructureWrapperDependency(WrapperDependency[T], ABC, Generic[T]):
+class StructureDependency(WrapperDependency[T], ABC, Generic[T]):
     """
     Role:
         - Toolkit

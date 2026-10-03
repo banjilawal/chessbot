@@ -42,7 +42,7 @@ class ToggleNullException(StructureNullException):
     Provides:
 
     Super Class:
-        StructureWrapperNullException
+        StructureNullException
     """
     MSG = "Toggle cannot be null."
     ERR_CODE = "TOGGLE_NULL_ERROR"

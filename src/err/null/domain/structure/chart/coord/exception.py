@@ -1,7 +1,7 @@
-# src/err/null/domain/structure/register/exception.py
+# src/err/null/domain/structure/chart/coord/exception.py
 
 """
-Module: err.null.domain.structure.register.exception
+Module: err.null.domain.structure.chart.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,41 +11,41 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StructureNullException
+from err import ParticipantChartNullException
 from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# REGISTER_NULL_ERROR #======================#
-    "RegisterNullException",
+    # ======================# PARTICIPANT_COORD_CHART_NULL_ERROR #======================#
+    "ParticipantCoordChartNullException",
 ]
 
-# ======================# REGISTER_NULL_ERROR #======================#
-class RegisterNullException(StructureNullException):
+# ======================# PARTICIPANT_COORD_CHART_NULL_ERROR #======================#
+class ParticipantCoordChartNullException(ParticipantChartNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required Register is null.
+        1.  Indicating an ParticipantCoordChart is null.
 
     Attributes:
-        msg: Optional[str]
-        var: Optional[str]
-        val: Optional[Any]
-        ex: Optional[Exception]
-        cls_name: Optional[str]
-        cls_mthd: Optional[str]
-        err_code: Optional[str]
-        mthd_rslt_type: Optional[MethodResultType]
-        
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
+            
     Provides:
 
     Super Class:
-        StructureNullException
+        ChartNullException
     """
-    MSG = "Register cannot be null."
-    ERR_CODE = "REGISTER_NULL_ERROR"
+    MSG = "ParticipantCoordChart cannot be null."
+    ERR_CODE = "PARTICIPANT_COORD_CHART_NULL_ERROR"
     
     def __init__(
             self,

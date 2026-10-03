@@ -42,7 +42,7 @@ class NodeNullException(StructureNullException):
     Provides:
 
     Super Class:
-       StructureWrapperNullException
+       StructureNullException
     """
     MSG = "Node cannot be null."
     ERR_CODE = "NODE_NULL_ERROR"

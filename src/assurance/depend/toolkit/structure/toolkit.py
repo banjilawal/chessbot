@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from assurance import StructureWrapperDependency, ValidatorToolkit
+from assurance import StructureDependency, ValidatorToolkit
 from domain import Structure, StructureManifest
 
 T = TypeVar("T", bound="Structure")
@@ -38,7 +38,7 @@ class StructureValidatorToolkit(ValidatorToolkit[T], ABC, Generic[T]):
     
     def __init__(
             self,
-            wrapper: StructureWrapperDependency[T],
+            wrapper: StructureDependency[T],
             metadata: StructureManifest[T],
     ):
         """
@@ -49,8 +49,8 @@ class StructureValidatorToolkit(ValidatorToolkit[T], ABC, Generic[T]):
     
     
     @property
-    def wrapper(self) -> StructureWrapperDependency[T]:
-        return cast(StructureWrapperDependency, super().wrapper)
+    def wrapper(self) -> StructureDependency[T]:
+        return cast(StructureDependency, super().wrapper)
     
     @property
     def metadata(self) -> StructureManifest[T]:

@@ -13,7 +13,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar
 
-from assurance import NumberValidator, PrimingValidator, StructureWrapperDependency, ValidatorClient
+from assurance import NumberValidator, PrimingValidator, StructureDependency, ValidatorClient
 from authorization import BlueprintIdExtractor
 from domain import Register
 from microservice import IdentityService
@@ -21,7 +21,7 @@ from microservice import IdentityService
 T = TypeVar("T", bound="Register")
 
 
-class RegisterWrapperDependency(StructureWrapperDependency[T], ABC, Generic[T]):
+class RegisterWrapperDependency(StructureDependency[T], ABC, Generic[T]):
     """
     Role:
         - Toolkit

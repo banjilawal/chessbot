@@ -1,7 +1,7 @@
-# src/err/null/domain/structure/register/exception.py
+# src/err/null/transit/delivery/token/exception.py
 
 """
-Module: err.null.domain.structure.register.exception
+Module: err.null.transit.delivery.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,41 +11,41 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StructureNullException
+from err import ProductEnvelopeNullException
 from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# REGISTER_NULL_ERROR #======================#
-    "RegisterNullException",
+    # ======================# TOKEN_DELIVERY_NULL_ERROR #======================#
+    "RootTokenProductNullException",
 ]
 
-# ======================# REGISTER_NULL_ERROR #======================#
-class RegisterNullException(StructureNullException):
+# ======================# TOKEN_DELIVERY_NULL_ERROR #======================#
+class RootTokenProductNullException(ProductEnvelopeNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required Register is null.
+        1.  Indicating a required RootTokenValidationProduct is null.
 
     Attributes:
-        msg: Optional[str]
-        var: Optional[str]
-        val: Optional[Any]
-        ex: Optional[Exception]
-        cls_name: Optional[str]
-        cls_mthd: Optional[str]
-        err_code: Optional[str]
-        mthd_rslt_type: Optional[MethodResultType]
-        
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
+            
     Provides:
 
     Super Class:
-        StructureNullException
+        ProductEnvelopeNullException
     """
-    MSG = "Register cannot be null."
-    ERR_CODE = "REGISTER_NULL_ERROR"
+    MSG = "RootTokenValidationProduct cannot be null."
+    ERR_CODE = "TOKEN_DELIVERY_NULL_ERROR"
     
     def __init__(
             self,
