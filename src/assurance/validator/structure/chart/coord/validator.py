@@ -13,14 +13,14 @@ from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
 from assurance import TokenValidatorToolkit, Validator
-from domain import Coord, TokenPositionChart
-from err import StructureNullException, TokenPositionValidatorException
+from domain import Coord, ParticipantCoordChart
+from err import StructureNullException, ParticipantCoordChartValidatorException
 from exchange import CoordValidationRequest
 from transit import CoordCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class TokenPositionChartValidator(Validator[TokenPositionChart]):
+class ParticipantCoordChartValidator(Validator[ParticipantCoordChart]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -55,7 +55,7 @@ class TokenPositionChartValidator(Validator[TokenPositionChart]):
         return cast(TokenValidatorToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[TokenPositionChart]:
+    def execute(self, candidate: Any) -> ValidationResult[ParticipantCoordChart]:
         """
         Assure a candidate is a safe TokenCarrier.
 
@@ -78,35 +78,35 @@ class TokenPositionChartValidator(Validator[TokenPositionChart]):
         
         priming = self.toolkit.priming_validator.execute(
             candidate=candidate,
-            target_model=Type[TokenPositionChart],
+            target_model=Type[ParticipantCoordChart],
             null_exception=StructureNullException(),
         )
         if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenPositionValidatorException(
+                ParticipantCoordChartValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenPositionValidatorException.MSG,
-                    err_code=TokenPositionValidatorException.ERR_CODE,
+                    msg=ParticipantCoordChartValidatorException.MSG,
+                    err_code=ParticipantCoordChartValidatorException.ERR_CODE,
                     ex=priming.exception,
                 )
             )
-        candidate_chart = cast(TokenPositionChart, priming.payload)
+        candidate_chart = cast(ParticipantCoordChart, priming.payload)
         # Handle the case that the position_chart has an inconsistency.
         if candidate_chart.is_not_consistent:
             # Send the exception chain on failure.
             validation_result = ValidationResult.failure(
-                TokenPositionValidatorException(
+                ParticipantCoordChartValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenPositionValidatorException.MSG,
-                    err_code=TokenPositionValidatorException.ERR_CODE,
-                    ex=TokenPositionChartConsistencyException(
+                    msg=ParticipantCoordChartValidatorException.MSG,
+                    err_code=ParticipantCoordChartValidatorException.ERR_CODE,
+                    ex=ParticiantCoordChartConsistencyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TokenPositionChartConsistencyException.MSG,
-                        err_code=TokenPositionChartConsistencyException.ERR_CODE,
+                        msg=ParticiantCoordChartConsistencyException.MSG,
+                        err_code=ParticiantCoordChartConsistencyException.ERR_CODE,
                     ),
                 )
             )
@@ -116,11 +116,11 @@ class TokenPositionChartValidator(Validator[TokenPositionChart]):
             if coord_validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenPositionValidatorException(
+                    ParticipantCoordChartValidatorException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TokenPositionValidatorException.MSG,
-                        err_code=TokenPositionValidatorException.ERR_CODE,
+                        msg=ParticipantCoordChartValidatorException.MSG,
+                        err_code=ParticipantCoordChartValidatorException.ERR_CODE,
                         ex=coord_validation.exception,
                     )
                 )
@@ -136,21 +136,23 @@ class TokenPositionChartValidator(Validator[TokenPositionChart]):
             if coord_validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenPositionValidatorException(
+                    ParticipantCoordChartValidatorException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TokenPositionValidatorException.MSG,
-                        err_code=TokenPositionValidatorException.ERR_CODE,
+                        msg=ParticipantCoordChartValidatorException.MSG,
+                        err_code=ParticipantCoordChartValidatorException.ERR_CODE,
                         ex=coord_validation.exception,
                     )
                 )
             previous_position = cast(Coord, coord_validation.payload)
-        chart = TokenPositionChart(
-            position=position,
-            previous_position=previous_position,
-        )
         # --- Send the work product. ---#
-        return ValidationResult.success(chart)
+        carrier = ParticipantCoordChartCarrier(
+            model=articipantCoordChart(
+                position=position,
+                previous_position=previous_position,
+            )
+        )
+        return ValidationResult.success(carrier)
     
     @LoggingLevelRouter.monitor
     def _coord_check_runner(self, coord_candidate: Any) -> ValidationResult[Coord]:
@@ -184,11 +186,11 @@ class TokenPositionChartValidator(Validator[TokenPositionChart]):
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenPositionValidatorException(
+                ParticipantCoordChartValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenPositionValidatorException.MSG,
-                    err_code=TokenPositionValidatorException.ERR_CODE,
+                    msg=ParticipantCoordChartValidatorException.MSG,
+                    err_code=ParticipantCoordChartValidatorException.ERR_CODE,
                     ex=validation.exception,
                 )
             )

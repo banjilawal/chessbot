@@ -12,10 +12,10 @@ from __future__ import  annotations
 from typing import Dict, Optional
 
 from domain import Coord
-from domain.structure.chart import Chart
+from domain.structure.chart import ParticipantChart
 
 
-class TokenPositionChart(Chart[Coord]):
+class ParticipantCoordChart(ParticipantChart[Coord]):
     """
     Role
         - Data Holder
@@ -30,6 +30,7 @@ class TokenPositionChart(Chart[Coord]):
     Provides:
 
     Super
+        ParticipantChart
     """
     
     _position: Optional[Coord]

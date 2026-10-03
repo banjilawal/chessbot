@@ -14,7 +14,7 @@ from typing import Optional
 
 from collection import CoordDatabase
 from domain import (
-    Coord, Formation, HomeSquare, Rank, StateModel, Team, TokenDeployment, TokenPositionChart
+    Coord, Formation, HomeSquare, Rank, StateModel, Team, TokenDeployment, ParticipantCoordChart
 )
 
 
@@ -51,7 +51,7 @@ class Token(StateModel):
     _formation: Formation
     _home_square: HomeSquare
     _deployment: TokenDeployment
-    _chart: TokenPositionChart
+    _chart: ParticipantCoordChart
 
     def __init__(
             self,
@@ -72,7 +72,7 @@ class Token(StateModel):
         self._formation = formation
         self._home_square = home_square
         self._deployment = TokenDeployment.NOT_DEPLOYED
-        self._chart = TokenPositionChart()
+        self._chart = ParticipantCoordChart()
     
     @property
     def formation(self) -> Formation:
@@ -110,7 +110,7 @@ class Token(StateModel):
         return self._chart.position
     
     @property
-    def position_chart(self) -> TokenPositionChart:
+    def position_chart(self) -> ParticipantCoordChart:
         return self._chart
     
     @position.setter
@@ -118,7 +118,7 @@ class Token(StateModel):
         position = self._chart.position
         previous_position = self._chart.position
         
-        self._chart = TokenPositionChart(
+        self._chart = ParticipantCoordChart(
             position=position,
             previous_position=previous_position,
         )

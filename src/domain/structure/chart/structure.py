@@ -16,7 +16,7 @@ from domain import Model, Structure
 
 T = TypeVar("T", bound="Model")
 
-class Chart(Structure, Generic[T]):
+class ParticipantChart(Structure, Generic[T]):
     pass
         
     @property
