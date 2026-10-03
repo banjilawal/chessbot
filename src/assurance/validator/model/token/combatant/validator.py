@@ -13,15 +13,15 @@ from typing import Optional, Type, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    CommonTokenPropertyTable, TokenEnemyValidator, TokenValidatorToolkit
+    TokenValidationReference, TokenEnemyValidator, TokenValidatorToolkit
 )
 from domain import (
     CombatantReadiness, CombatantToken, CombatantTokenBlueprint,
-    CombatantTokenPrimeExtract, Token
+    CombatantTokenPrimeExtract, Token, TokenDeployment
 )
 from err import (
     CombatantReadinessNullException, CombatantTokenPrimeExtractNullException,
-    CombatantTokenValidatorException, CommonTokenPropertyTableNullException
+    CombatantTokenValidatorException, TokenValidationReferenceNullException
 )
 from exchange import TokenValidationRequest
 from transit import CombatantTokenCarrier, TokenCarrier
@@ -66,7 +66,7 @@ class CombatantTokenValidator:
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            property_table: CommonTokenPropertyTable
+            reference: TokenValidationReference
     ) -> ValidationResult[CombatantTokenCarrier]:
         """
         Assure the properties can assemble a safe CombatantTokenCarrier.
@@ -79,7 +79,7 @@ class CombatantTokenValidator:
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            property_table: CommonTokenPropertyTable
+            reference: TokenValidationReference
         Returns:
             ValidationResult[CombatantTokenCarrier]
         Raises:
@@ -88,12 +88,12 @@ class CombatantTokenValidator:
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the property table is null or the wrong type.
-        table_validation = self._toolkit.priming_validator.execute(
-            candidate=property_table,
-            target_model=Type[CommonTokenPropertyTable],
-            null_exception=CommonTokenPropertyTableNullException(),
+        priming = self._toolkit.priming_validator.execute(
+            candidate=reference,
+            target_model=Type[TokenValidationReference],
+            null_exception=TokenValidationReferenceNullException(),
         )
-        if table_validation.is_failure:
+        if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 CombatantTokenValidatorException(
@@ -101,12 +101,12 @@ class CombatantTokenValidator:
                     cls_name=self.__class__.__name__,
                     msg=CombatantTokenValidatorException.MSG,
                     err_code=CombatantTokenValidatorException.ERR_CODE,
-                    ex=table_validation.exception
+                    ex=priming.exception
                 )
             )
         # Handle the case that the property table has the wrong PrimeExtract.
         extract_validation = self._toolkit.priming_validator.execute(
-            candidate=property_table.prime_extract,
+            candidate=reference.prime_extract,
             target_model=Type[CombatantTokenPrimeExtract],
             null_exception=CombatantTokenPrimeExtractNullException(),
         )
@@ -122,8 +122,8 @@ class CombatantTokenValidator:
                 )
             )
         # Handle the case that there is no blueprint in the carrier.
-        prime_extract = cast(CombatantTokenPrimeExtract, property_table.prime_extract)
-        blueprint = cast(CombatantTokenBlueprint, prime_extract.blueprint)
+        extract = cast(CombatantTokenPrimeExtract, extract_validation.payload)
+        blueprint = cast(CombatantTokenBlueprint, extract.blueprint)
         # --- START_COMBATANT_TOKEN_READINESS_VALIDATION_PROCESS ---#
         
         # Handle the case that the readiness is flagged.
@@ -145,7 +145,7 @@ class CombatantTokenValidator:
             )
         # --- START_CAPTOR_VALIDATION_PROCESS ---#
         
-        captor_placeholder = blueprint.captor
+        captor = blueprint.captor
         if blueprint.captor is not None:
             # Handle the case that the not-null captor is flagged
             enemy_validation_result = self._enemy_validator.execute(
@@ -166,38 +166,38 @@ class CombatantTokenValidator:
                     )
                 )
             # Otherwise update captor_placeholder
-            captor_placeholder = cast(Token, enemy_validation_result.payload)
+            captor = cast(Token, enemy_validation_result.payload)
 
         # --- Extract validation payloads. ---#
         readiness = cast(CombatantReadiness, readiness_validation.payload)
         
         # --- Forward the appropriate work product to the caller. ---#
         # The client wants a safe CombatantToken.
-        if prime_extract.carrier.has_model:
+        if extract.carrier.has_model:
             payload = CombatantToken(
-                id=property_table.safe.id,
-                team=property_table.safe.team,
-                formation=property_table.safe.formation,
-                home_square=property_table.safe.home_square,
+                id=reference.safe.id,
+                team=reference.safe.team,
+                formation=reference.safe.formation,
+                home_square=reference.safe.home_square,
             )
             payload.readiness = readiness
-            payload.captor = captor_placeholder
-            payload.deployment = property_table.safe.deployment
-            payload.position = property_table.safe.position
-            payload.previous_position = property_table.safe.previous_position
-            
+            payload.captor = captor
+            payload.position = reference.safe.position
+            payload.previous_position = reference.safe.previous_position
+            if reference.safe.deployment == TokenDeployment.DEPLOYED_TO_HOME_SQUARE:
+                payload.mark_as_deployed()
             return ValidationResult.success(CombatantTokenCarrier(model=payload))
         
         # Otherwise, the client is a VectorBuilder that needs a Blueprint.
         payload = CombatantTokenBlueprint(
-            id=property_table.safe.id,
-            team=property_table.safe.team,
-            formation=property_table.safe.formation,
-            home_square=property_table.safe.home_square,
-            deployment=property_table.safe.deployment,
-            position=property_table.safe.position,
-            previous_position=property_table.safe.previous_position,
-            captor=captor_placeholder,
+            id=reference.safe.id,
+            team=reference.safe.team,
+            formation=reference.safe.formation,
+            home_square=reference.safe.home_square,
+            deployment=reference.safe.deployment,
+            position=reference.safe.position,
+            previous_position=reference.safe.previous_position,
+            captor=captor,
             readiness=readiness,
         )
         return ValidationResult.success(CombatantTokenCarrier(blueprint=payload))

@@ -148,7 +148,7 @@ class Token(StateModel):
     
     @property
     @abstractmethod
-    def is_not_read(self) -> bool:
+    def is_not_ready(self) -> bool:
         pass
     
     def __eq__(self, other: object) -> bool:

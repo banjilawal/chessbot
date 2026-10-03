@@ -12,13 +12,13 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import CommonTokenPropertyTable, TokenEnemyValidator, TokenValidatorToolkit
+from assurance import TokenValidationReference, TokenEnemyValidator, TokenValidatorToolkit
 from domain import (
     CombatantReadiness, PawnToken, PawnTokenBlueprint, PawnTokenPrimeExtract, PromotionState,
     Rank, Token
 )
 from err import (
-    CombatantReadinessNullException, CommonTokenPropertyTableNullException,
+    CombatantReadinessNullException, TokenValidationReferenceNullException,
     PawnTokenPrimeExtractNullException, PawnTokenValidatorException,
     PromotionStateNullException
 )
@@ -65,7 +65,7 @@ class PawnTokenValidator:
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            property_table: CommonTokenPropertyTable
+            validation_reference: TokenValidationReference
     ) -> ValidationResult[PawnTokenCarrier]:
         """
         Assure the properties can assemble a safe PawnTokenCarrier.
@@ -80,7 +80,7 @@ class PawnTokenValidator:
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            property_table: CommonTokenPropertyTable
+            validation_reference: TokenValidationReference
         Returns:
             ValidationResult[PawnTokenCarrier]
         Raises:
@@ -90,9 +90,9 @@ class PawnTokenValidator:
         
         # Handle the case that the property table is null or the wrong type.
         table_validation = self._toolkit.priming_validator.execute(
-            candidate=property_table,
-            target_model=Type[CommonTokenPropertyTable],
-            null_exception=CommonTokenPropertyTableNullException(),
+            candidate=validation_reference,
+            target_model=Type[TokenValidationReference],
+            null_exception=TokenValidationReferenceNullException(),
         )
         if table_validation.is_failure:
             # Send the exception chain on failure.
@@ -107,7 +107,7 @@ class PawnTokenValidator:
             )
         # Handle the case that the property table has the wrong PrimeExtract.
         extract_validation = self._toolkit.priming_validator.execute(
-            candidate=property_table.prime_extract,
+            candidate=validation_reference.prime_extract,
             target_model=Type[PawnTokenPrimeExtract],
             null_exception=PawnTokenPrimeExtractNullException(),
         )
@@ -123,7 +123,7 @@ class PawnTokenValidator:
                 )
             )
         # Handle the case that there is no blueprint in the carrier.
-        prime_extract = cast(PawnTokenPrimeExtract, property_table.prime_extract)
+        prime_extract = cast(PawnTokenPrimeExtract, validation_reference.prime_extract)
         blueprint = cast(PawnTokenBlueprint, prime_extract.blueprint)
         # --- START_COMBATANT_TOKEN_READINESS_VALIDATION_PROCESS ---#
         
@@ -217,30 +217,30 @@ class PawnTokenValidator:
         # The client wants a safe PawnToken.
         if prime_extract.carrier.has_model:
             payload = PawnToken(
-                id=property_table.safe.id,
-                team=property_table.safe.team,
-                formation=property_table.safe.formation,
-                home_square=property_table.safe.home_square,
+                id=validation_reference.safe.id,
+                team=validation_reference.safe.team,
+                formation=validation_reference.safe.formation,
+                home_square=validation_reference.safe.home_square,
             )
             payload.rank = rank
             payload.readiness = readiness
             payload.captor = captor_placeholder
             payload.promotion_state = promotion_state
-            payload.deployment = property_table.safe.deployment
-            payload.position = property_table.safe.position
-            payload.previous_position = property_table.safe.previous_position
+            payload.deployment = validation_reference.safe.deployment
+            payload.position = validation_reference.safe.position
+            payload.previous_position = validation_reference.safe.previous_position
             
             return ValidationResult.success(PawnTokenCarrier(model=payload))
         
         # Otherwise, the client is a VectorBuilder that needs a Blueprint.
         payload = PawnTokenBlueprint(
-            id=property_table.safe.id,
-            team=property_table.safe.team,
-            formation=property_table.safe.formation,
-            home_square=property_table.safe.home_square,
-            deployment=property_table.safe.deployment,
-            position=property_table.safe.position,
-            previous_position=property_table.safe.previous_position,
+            id=validation_reference.safe.id,
+            team=validation_reference.safe.team,
+            formation=validation_reference.safe.formation,
+            home_square=validation_reference.safe.home_square,
+            deployment=validation_reference.safe.deployment,
+            position=validation_reference.safe.position,
+            previous_position=validation_reference.safe.previous_position,
             promotion_state=promotion_state,
             captor=captor_placeholder,
             readiness=readiness,

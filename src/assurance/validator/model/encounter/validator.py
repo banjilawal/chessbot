@@ -13,7 +13,7 @@ from typing import Any, Dict, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    CommonEncounterPropertyTable, CommonEncounterPropertyTableGenerator, ModelValidator, EncounterPositionTableGenerator,
+    EncounterValidationReference, EncounterValidationReferenceGenerator, ModelValidator, EncounterPositionTableGenerator,
     EncounterValidationRouter,
     EncounterValidatorToolkit
 )
@@ -35,7 +35,7 @@ class EncounterValidator(ModelValidator[Encounter]):
     Attributes:
         toolkit: EncounterValidatorToolkit
         validation_router: EncounterValidationRouter
-        property_table_generator: CommonEncounterPropertyTableGenerator
+        property_table_generator: EncounterValidationReferenceGenerator
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[EncounterCarrier]:
@@ -44,26 +44,26 @@ class EncounterValidator(ModelValidator[Encounter]):
         ModelValidator
     """
     _validation_router: EncounterValidationRouter
-    _property_table_generator: CommonEncounterPropertyTableGenerator
+    _property_table_generator: EncounterValidationReferenceGenerator
     
     def __init__(
             self,
             toolkit: Optional[EncounterValidatorToolkit] | None = None,
             validation_router: Optional[EncounterValidationRouter] | None = None,
-            property_table_generator: Optional[CommonEncounterPropertyTableGenerator]
+            property_table_generator: Optional[EncounterValidationReferenceGenerator]
                                       | None = None,
     ):
         """
         Args:
             toolkit: Optional[EncounterValidatorToolkit]
             validation_router: Optional[EncounterValidationRouter]
-            property_table_generator: Optional[CommonEncounterPropertyTableGenerator]
+            property_table_generator: Optional[EncounterValidationReferenceGenerator]
         """
         super().__init__(toolkit=toolkit or EncounterValidatorToolkit())
         self._validation_router = validation_router or EncounterValidationRouter()
         self._property_table_generator = (
                 property_table_generator or
-                CommonEncounterPropertyTableGenerator()
+                EncounterValidationReferenceGenerator()
         )
     
     @property
@@ -108,7 +108,7 @@ class EncounterValidator(ModelValidator[Encounter]):
                 )
             )
         common_property_table = cast(
-            CommonEncounterPropertyTable,
+            EncounterValidationReference,
             table_generation_result.payload,
         )
         router_result = self._validation_router.execute()

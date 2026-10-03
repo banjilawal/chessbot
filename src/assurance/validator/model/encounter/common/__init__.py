@@ -14,4 +14,4 @@ from .safe import *
 from .property import *
 
 # Modules
-from .generator import CommonEncounterPropertyTableGenerator
+from .generator import EncounterValidationReferenceGenerator

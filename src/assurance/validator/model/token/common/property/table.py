@@ -13,13 +13,13 @@ from assurance import TokenSafePropertyTable
 from domain import TokenPrimeExtract
 
 
-class CommonTokenPropertyTable:
+class TokenValidationReference:
     """
     Role
         - Data Holder
 
     Responsibilities:
-        1.  Stores CommonTokenPropertyTableGenerator success data.
+        1.  Stores TokenValidationReferenceGenerator success data.
 
     Attributes:
         prime_extract: TokenPrimeExtract

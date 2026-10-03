@@ -1,9 +1,9 @@
-# src/toggle/toggle.py
+# src/domain/structure/toggle/structure.py
 
 """
-Module: toggle.toggle
+Module: domain.structure.toggle.structure
 Author: Banji Lawal
-Created: 2026-04-03
+Created: 2026-03-30
 version: 0.0.2
 """
 

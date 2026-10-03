@@ -14,7 +14,7 @@ from .combatant import *
 from .common import *
 from .enemy import *
 from .king import *
-from .pawn import *
+from .kill import *
 from .position import *
 from .route import *
 

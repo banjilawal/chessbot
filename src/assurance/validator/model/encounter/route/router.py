@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    CombatantEncounterValidator, KingEncounterValidator, PawnEncounterValidator,
+    CombatantEncounterValidator, KingEncounterValidator, KillEncounterValidator,
     EncounterValidatorToolkit
 )
 from domain import (
@@ -53,7 +53,7 @@ class EncounterValidationRouter:
     Super Class:
     """
     _king_validator: KingEncounterValidator
-    _pawn_validator: PawnEncounterValidator
+    _pawn_validator: KillEncounterValidator
     _combatant_validator: CombatantEncounterValidator
     _toolkit: EncounterValidatorToolkit
     
@@ -61,7 +61,7 @@ class EncounterValidationRouter:
             self,
             toolkit: Optional[EncounterValidatorToolkit] | None = None,
             king_validator: Optional[KingEncounterValidator] | None = None,
-            pawn_validator: Optional[PawnEncounterValidator] | None = None,
+            pawn_validator: Optional[KillEncounterValidator] | None = None,
             combatant_validator: Optional[CombatantEncounterValidator] | None = None,
     ):
         """
@@ -73,7 +73,7 @@ class EncounterValidationRouter:
         """
         self._toolkit=toolkit or EncounterValidatorToolkit()
         self._king_validator = king_validator or KingEncounterValidator()
-        self._pawn_validator = pawn_validator or PawnEncounterValidator()
+        self._pawn_validator = pawn_validator or KillEncounterValidator()
         self._combatant_validator = combatant_validator or CombatantEncounterValidator()
     
     @LoggingLevelRouter.monitor
@@ -87,7 +87,7 @@ class EncounterValidationRouter:
             prime_extract: EncounterPrimeExtract,
             position: Optional[Coord] | None = None,
             previous_position: Optional[Coord] | None = None,
-            property_table: CommonEncounterPropertyTable
+            property_table: EncounterValidationReference
     ) -> ValidationResult[EncounterCarrier]:
         """
         Assure a candidate is a safe EncounterCarrier.

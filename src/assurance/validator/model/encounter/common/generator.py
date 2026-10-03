@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import CommonEncounterPropertyTable, EncounterValidatorToolkit
+from assurance import EncounterValidationReference, EncounterValidatorToolkit
 from config import NumericSetting
 from domain import EncounterBlueprint, EncounterPrimeExtract, Maneuver, Token
 from exchange import ManeuverValidationRequest
@@ -20,7 +20,7 @@ from transit import ManeuverCarrier, TokenCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class CommonEncounterPropertyTableGenerator:
+class EncounterValidationReferenceGenerator:
     """
     Role
         - Integrity, Consistency Maintenance
@@ -35,7 +35,7 @@ class CommonEncounterPropertyTableGenerator:
     Provides:
         -   def execute(
                     candidate: Any
-            ) -> ValidationResult[CommonEncounterPropertyTable]:
+            ) -> ValidationResult[EncounterValidationReference]:
 
     Super Class:
     """
@@ -55,7 +55,7 @@ class CommonEncounterPropertyTableGenerator:
     def execute(
             self,
             candidate: Any,
-    ) -> ValidationResult[CommonEncounterPropertyTable]:
+    ) -> ValidationResult[EncounterValidationReference]:
         """
         Assure a candidate's properties are safe for a Encounter
 
@@ -65,13 +65,13 @@ class CommonEncounterPropertyTableGenerator:
                     -   The Loader fails.
                     -   Token, Formation, Deployment, id, or HomeSquare are flagged.
                     -   The position_table_generator fails.
-            2.  Otherwise, send a CommonEncounterPropertyTable in the success result.
+            2.  Otherwise, send a EncounterValidationReference in the success result.
         Args:
             candidate: Any
         Returns:
-           ValidationResult[CommonEncounterPropertyTable]
+           ValidationResult[EncounterValidationReference]
         Raises:
-            CommonEncounterPropertyTableGeneratorException
+            EncounterValidationReferenceGeneratorException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -80,11 +80,11 @@ class CommonEncounterPropertyTableGenerator:
         if load_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CommonEncounterPropertyTableGeneratorException(
+                EncounterValidationReferenceGeneratorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CommonEncounterPropertyTableGeneratorException.MSG,
-                    err_code=CommonEncounterPropertyTableGeneratorException.ERR_CODE,
+                    msg=EncounterValidationReferenceGeneratorException.MSG,
+                    err_code=EncounterValidationReferenceGeneratorException.ERR_CODE,
                     ex=load_result.exception,
                 )
             )
@@ -103,11 +103,11 @@ class CommonEncounterPropertyTableGenerator:
         if id_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CommonEncounterPropertyTableGeneratorException(
+                EncounterValidationReferenceGeneratorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CommonEncounterPropertyTableGeneratorException.MSG,
-                    err_code=CommonEncounterPropertyTableGeneratorException.ERR_CODE,
+                    msg=EncounterValidationReferenceGeneratorException.MSG,
+                    err_code=EncounterValidationReferenceGeneratorException.ERR_CODE,
                     ex=id_validation.exception,
                 )
             )
@@ -123,11 +123,11 @@ class CommonEncounterPropertyTableGenerator:
         if victim_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CommonEncounterPropertyTableGeneratorException(
+                EncounterValidationReferenceGeneratorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CommonEncounterPropertyTableGeneratorException.MSG,
-                    err_code=CommonEncounterPropertyTableGeneratorException.ERR_CODE,
+                    msg=EncounterValidationReferenceGeneratorException.MSG,
+                    err_code=EncounterValidationReferenceGeneratorException.ERR_CODE,
                     ex=victim_validation.exception,
                 )
             )
@@ -143,11 +143,11 @@ class CommonEncounterPropertyTableGenerator:
         if attacker_maneuver_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CommonEncounterPropertyTableGeneratorException(
+                EncounterValidationReferenceGeneratorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CommonEncounterPropertyTableGeneratorException.MSG,
-                    err_code=CommonEncounterPropertyTableGeneratorException.ERR_CODE,
+                    msg=EncounterValidationReferenceGeneratorException.MSG,
+                    err_code=EncounterValidationReferenceGeneratorException.ERR_CODE,
                     ex=attacker_maneuver_validation.exception,
                 )
             )
@@ -159,11 +159,11 @@ class CommonEncounterPropertyTableGenerator:
         if attacker_reward_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CommonEncounterPropertyTableGeneratorException(
+                EncounterValidationReferenceGeneratorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CommonEncounterPropertyTableGeneratorException.MSG,
-                    err_code=CommonEncounterPropertyTableGeneratorException.ERR_CODE,
+                    msg=EncounterValidationReferenceGeneratorException.MSG,
+                    err_code=EncounterValidationReferenceGeneratorException.ERR_CODE,
                     ex=attacker_reward_validation.exception,
                 )
             )
@@ -179,7 +179,7 @@ class CommonEncounterPropertyTableGenerator:
 
         
         # --- Send the work product. ---#
-        encounter_property_table = CommonEncounterPropertyTable(
+        encounter_property_table = EncounterValidationReference(
             id=id,
             token=token,
             formation=formation,

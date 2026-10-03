@@ -13,7 +13,7 @@ from typing import Any, Dict, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    CommonTokenPropertyTable, CommonTokenPropertyTableGenerator, ModelValidator, TokenPositionChartValidator,
+    TokenValidationReference, RootTokenValidator, ModelValidator, TokenPositionChartValidator,
     TokenValidationRouter,
     TokenValidatorToolkit
 )
@@ -35,7 +35,7 @@ class TokenValidator(ModelValidator[Token]):
     Attributes:
         toolkit: TokenValidatorToolkit
         validation_router: TokenValidationRouter
-        property_table_generator: CommonTokenPropertyTableGenerator
+        property_table_generator: TokenValidationReferenceGenerator
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[TokenCarrier]:
@@ -44,26 +44,26 @@ class TokenValidator(ModelValidator[Token]):
         ModelValidator
     """
     _validation_router: TokenValidationRouter
-    _property_table_generator: CommonTokenPropertyTableGenerator
+    _property_table_generator: RootTokenValidator
     
     def __init__(
             self,
             toolkit: Optional[TokenValidatorToolkit] | None = None,
             validation_router: Optional[TokenValidationRouter] | None = None,
-            property_table_generator: Optional[CommonTokenPropertyTableGenerator]
+            property_table_generator: Optional[RootTokenValidator]
                                       | None = None,
     ):
         """
         Args:
             toolkit: Optional[TokenValidatorToolkit]
             validation_router: Optional[TokenValidationRouter]
-            property_table_generator: Optional[CommonTokenPropertyTableGenerator]
+            property_table_generator: Optional[TokenValidationReferenceGenerator]
         """
         super().__init__(toolkit=toolkit or TokenValidatorToolkit())
         self._validation_router = validation_router or TokenValidationRouter()
         self._property_table_generator = (
                 property_table_generator or
-                CommonTokenPropertyTableGenerator()
+                RootTokenValidator()
         )
     
     @property
@@ -108,7 +108,7 @@ class TokenValidator(ModelValidator[Token]):
                 )
             )
         common_property_table = cast(
-            CommonTokenPropertyTable,
+            TokenValidationReference,
             table_generation_result.payload,
         )
         router_result = self._validation_router.execute()

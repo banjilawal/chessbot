@@ -46,6 +46,7 @@ class AssuranceException(ChessException):
     """
     MSG = "Assurance failure"
     ERR_CODE = "ASSURANCE_FAILURE"
+    MTHD_RSLT_TYPE =MethodResultType.VALIDATION_RESULT
     
     def __init__(
             self,

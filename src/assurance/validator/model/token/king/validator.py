@@ -12,13 +12,13 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import CommonTokenPropertyTable, TokenEnemyValidator, TokenValidatorToolkit
+from assurance import TokenValidationReference, TokenEnemyValidator, TokenValidatorToolkit
 from domain import (
     KingReadiness, KingToken, KingTokenBlueprint, KingTokenPrimeExtract, PromotionState,
     Rank, Token
 )
 from err import (
-    KingReadinessNullException, CommonTokenPropertyTableNullException,
+    KingReadinessNullException, TokenValidationReferenceNullException,
     KingTokenPrimeExtractNullException, KingTokenValidatorException,
     PromotionStateNullException
 )
@@ -65,7 +65,7 @@ class KingTokenValidator:
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            property_table: CommonTokenPropertyTable
+            property_table: TokenValidationReference
     ) -> ValidationResult[KingTokenCarrier]:
         """
         Assure the properties can assemble a safe KingTokenCarrier.
@@ -80,7 +80,7 @@ class KingTokenValidator:
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            property_table: CommonTokenPropertyTable
+            property_table: TokenValidationReference
         Returns:
             ValidationResult[KingTokenCarrier]
         Raises:
@@ -91,8 +91,8 @@ class KingTokenValidator:
         # Handle the case that the property table is null or the wrong type.
         table_validation = self._toolkit.priming_validator.execute(
             candidate=property_table,
-            target_model=Type[CommonTokenPropertyTable],
-            null_exception=CommonTokenPropertyTableNullException(),
+            target_model=Type[TokenValidationReference],
+            null_exception=TokenValidationReferenceNullException(),
         )
         if table_validation.is_failure:
             # Send the exception chain on failure.

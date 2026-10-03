@@ -12,13 +12,13 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import CommonEncounterPropertyTable, EncounterEnemyValidator, EncounterValidatorToolkit
+from assurance import EncounterValidationReference, EncounterEnemyValidator, EncounterValidatorToolkit
 from domain import (
     KingReadiness, KingEncounter, KingEncounterBlueprint, KingEncounterPrimeExtract, PromotionState,
     Rank, Encounter
 )
 from err import (
-    KingReadinessNullException, CommonEncounterPropertyTableNullException,
+    KingReadinessNullException, EncounterValidationReferenceNullException,
     KingEncounterPrimeExtractNullException, KingEncounterValidatorException,
     PromotionStateNullException
 )
@@ -65,7 +65,7 @@ class KingEncounterValidator:
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            property_table: CommonEncounterPropertyTable
+            property_table: EncounterValidationReference
     ) -> ValidationResult[KingEncounterCarrier]:
         """
         Assure the properties can assemble a safe KingEncounterCarrier.
@@ -80,7 +80,7 @@ class KingEncounterValidator:
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            property_table: CommonEncounterPropertyTable
+            property_table: EncounterValidationReference
         Returns:
             ValidationResult[KingEncounterCarrier]
         Raises:
@@ -91,8 +91,8 @@ class KingEncounterValidator:
         # Handle the case that the property table is null or the wrong type.
         table_validation = self._toolkit.priming_validator.execute(
             candidate=property_table,
-            target_model=Type[CommonEncounterPropertyTable],
-            null_exception=CommonEncounterPropertyTableNullException(),
+            target_model=Type[EncounterValidationReference],
+            null_exception=EncounterValidationReferenceNullException(),
         )
         if table_validation.is_failure:
             # Send the exception chain on failure.

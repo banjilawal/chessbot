@@ -16,7 +16,6 @@ from .enemy import *
 from .king import *
 from .pawn import *
 from .position import *
-from .route import *
 
 # Modules
 from .validator import TokenValidator
