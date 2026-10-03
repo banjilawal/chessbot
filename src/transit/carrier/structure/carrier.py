@@ -11,7 +11,7 @@ from __future__ import annotations
 
 
 from abc import ABC, abstractmethod
-from typing import Generic, Optional, TypeVar
+from typing import Generic, Optional, TypeVar, cast
 
 from domain import Structure, StructureBlueprint
 from transit import EntityCarrier
@@ -41,9 +41,15 @@ class StructureCarrier(EntityCarrier[T], ABC, Generic[T]):
         super().__init__()
     
     @property
-    @abstractmethod
     def entity(self) -> Optional[T | StructureBlueprint[T]]:
-        pass
+        if (
+                self.is_empty or
+                self.is_not_consistent
+        ):
+            return None
+        if self.has_model:
+            return cast(T, super().entity)
+        return cast(StructureBlueprint[T], super().entity)
     
     @property
     @abstractmethod
@@ -54,7 +60,6 @@ class StructureCarrier(EntityCarrier[T], ABC, Generic[T]):
     @abstractmethod
     def has_blueprint(self) -> bool:
         pass
-
     
     @abstractmethod
     def extract_blueprint(self) -> Optional[StructureBlueprint[T]]:

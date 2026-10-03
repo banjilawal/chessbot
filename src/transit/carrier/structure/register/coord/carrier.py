@@ -24,9 +24,6 @@ class CoordRegisterCarrier(RegisterCarrier[CoordRegister]):
         1.  Transport a hydrated CoordRegister its Blueprint.
 
     Attributes:
-        size: int
-        is_empty: bool
-        is_not_consistent: bool
         has_model: bool
         has_blueprint: bool
         entity: [CoordRegister | CoordRegisterBlueprint]
@@ -38,9 +35,6 @@ class CoordRegisterCarrier(RegisterCarrier[CoordRegister]):
         RegisterCarrier
     """
     
-    _model: Optional[CoordRegister]
-    _blueprint: Optional[CoordRegisterBlueprint]
-    
     def __init__(
             self,
             model: Optional[CoordRegister] | None = None,
@@ -51,53 +45,41 @@ class CoordRegisterCarrier(RegisterCarrier[CoordRegister]):
             model: Optional[CoordRegister]
             blueprint: Optional[CoordRegisterBlueprint]
         """
-        super().__init__()
-        self._model = model
-        self._blueprint = blueprint
+        super().__init__(model=model, blueprint=blueprint)
     
     @property
     def entity(self) -> Optional[CoordRegister | CoordRegisterBlueprint]:
-        if self.is_empty:
+        entity = super().entity
+        if entity is None:
             return None
         if self.has_model:
-            return self._model
-        return self._blueprint
+            return cast(CoordRegister, entity)
+        return cast(CoordRegister, entity)
     
     @property
     def has_model(self) -> bool:
         return (
-                self._model is not None and
-                self._blueprint is None and
-                isinstance(self._model, CoordRegister)
+                super().has_model is None and
+                isinstance(self.entity, CoordRegister)
         )
     
     @property
     def has_blueprint(self) -> bool:
         return (
                 not self.has_model and
-                isinstance(self._blueprint, CoordRegisterBlueprint)
+                isinstance(self.entity, CoordRegisterBlueprint)
         )
-    
-    @property
-    def size(self) -> int:
-        return len([self._model, self._blueprint])
-    
-    @property
-    def is_empty(self) -> bool:
-        return self.size == 0
-    
-    @property
-    def is_not_consistent(self) -> bool:
-        return self.size > 1
     
     def extract_blueprint(self) -> Optional[CoordRegisterBlueprint]:
         if self.is_empty: return None
-        if self.has_blueprint: return self._blueprint
+        if self.has_blueprint:
+            blueprint = cast(CoordRegisterBlueprint, self.entity)
+            return blueprint
         
-        structure = cast(CoordRegister, self._model)
+        model = cast(CoordRegister, self.entity)
         return CoordRegisterBlueprint(
-            origin=structure.origin,
-            terminus=structure.terminus,
+            origin=model.origin,
+            terminus=model.terminus,
         )
 
 

@@ -12,7 +12,7 @@ version: 0.0.2
 # Packages
 from .coord import *
 from .square import *
-from .vector import *
+from .token import *
 
 # Modules
 from .carrier import ChartCarrier

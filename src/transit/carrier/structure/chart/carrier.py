@@ -10,10 +10,10 @@ version: 0.0.2
 from __future__ import annotations
 
 
-from abc import ABC
-from typing import Generic, TypeVar
+from abc import ABC, abstractmethod
+from typing import Generic, Optional, TypeVar, cast
 
-from domain import ParticipantChart
+from domain import ParticipantChart, ParticipantChartBlueprint
 from transit import StructureCarrier
 
 T = TypeVar("T", bound="ParticipantChart")
@@ -28,22 +28,42 @@ class ChartCarrier(StructureCarrier[T], ABC, Generic[T]):
         1.  Transport a hydrated Chart its Blueprint.
 
     Attributes:
-        size: int
-        is_empty: bool
-        is_not_consistent: bool
-        has_model: bool
-        has_blueprint: bool
-        entity: [T | ChartBlueprint[T]]
+        model: Optional[T]
+        blueprint: Optional[ParticipantChartBlueprint[T]]
+        entity: [T | ParticipantChartBlueprint[T]]
 
     Provides:
-        -   def extract_blueprint() -> Optional[ChartBlueprint[T]]
+        -   def extract_blueprint() -> Optional[ParticipantChartBlueprint[T]]
 
     Super Class:
         StructureCarrier
     """
     
-    def __init__(self):
-        super().__init__()
+    def __init__(
+            self,
+            model: Optional[T] | None = None,
+            blueprint: Optional[ParticipantChartBlueprint[T]] | None = None,
+    ):
+        """
+        Args:
+            model: Optional[T]
+            blueprint: Optional[ParticipantChartBlueprint[T]]
+        """
+        super().__init__(model=model, blueprint=blueprint)
+    
+    @property
+    @abstractmethod
+    def entity(self) -> Optional[T | ParticipantChartBlueprint[T]]:
+        entity = super().entity
+        if entity is None:
+            return None
+        if self.has_model:
+            return cast(T, entity)
+        return cast(ParticipantChartBlueprint[T], super().entity)
+    
+    @abstractmethod
+    def extract_blueprint(self) -> Optional[ParticipantChartBlueprint[T]]:
+        pass
 
 
     

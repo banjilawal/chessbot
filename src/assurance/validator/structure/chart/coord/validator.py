@@ -13,14 +13,14 @@ from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
 from assurance import TokenValidatorToolkit, Validator
-from domain import Coord, ParticipantCoordChart
+from domain import Coord, CoordChart
 from err import StructureNullException, ParticipantCoordChartValidatorException
 from exchange import CoordValidationRequest
 from transit import CoordCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class ParticipantCoordChartValidator(Validator[ParticipantCoordChart]):
+class ParticipantCoordChartValidator(Validator[CoordChart]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -55,7 +55,7 @@ class ParticipantCoordChartValidator(Validator[ParticipantCoordChart]):
         return cast(TokenValidatorToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[ParticipantCoordChart]:
+    def execute(self, candidate: Any) -> ValidationResult[CoordChart]:
         """
         Assure a candidate is a safe TokenCarrier.
 
@@ -78,7 +78,7 @@ class ParticipantCoordChartValidator(Validator[ParticipantCoordChart]):
         
         priming = self.toolkit.priming_validator.execute(
             candidate=candidate,
-            target_model=Type[ParticipantCoordChart],
+            target_model=Type[CoordChart],
             null_exception=StructureNullException(),
         )
         if priming.is_failure:
@@ -92,7 +92,7 @@ class ParticipantCoordChartValidator(Validator[ParticipantCoordChart]):
                     ex=priming.exception,
                 )
             )
-        candidate_chart = cast(ParticipantCoordChart, priming.payload)
+        candidate_chart = cast(CoordChart, priming.payload)
         # Handle the case that the position_chart has an inconsistency.
         if candidate_chart.is_not_consistent:
             # Send the exception chain on failure.

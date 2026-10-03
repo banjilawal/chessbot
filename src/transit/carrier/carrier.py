@@ -27,6 +27,8 @@ class EntityCarrier(ABC, Generic[T]):
         1.  Transport a hydrated Object or its Blueprint.
 
     Attributes:
+        model: Optional[T]
+        blueprint: Optional[Blueprint[T]]
         size: int
         is_empty: bool
         has_model: bool
@@ -40,28 +42,51 @@ class EntityCarrier(ABC, Generic[T]):
 
     Super Class:
     """
+    _model: Optional[T]
+    _blueprint: Optional[Blueprint[T]]
     
-    def __init__(self):
-        super().__init__()
+    def __init__(
+            self,
+            model: Optional[T] | None = None,
+            blueprint: Optional[Blueprint[T]] | None = None,
+    ):
+        """
+        Args:
+            model: Optional[T]
+            blueprint: Optional[Blueprint[T]]
+        """
+        self._model = model
+        self._blueprint = blueprint
 
     @property
-    @abstractmethod
     def entity(self) -> Optional[T | Blueprint[T]]:
-        pass
+        if (
+                self.is_empty or
+                self.is_not_consistent
+        ):
+            return None
+        if self._model is not None:
+            return self._model
+        return self._blueprint
     
     @property
-    @abstractmethod
     def has_model(self) -> bool:
-        pass
+        return (
+                self._model is not None and
+                self._blueprint is None
+        )
     
     @property
     @abstractmethod
     def has_blueprint(self) -> bool:
-        pass
+        return (
+                self._model is None and
+                self._blueprint is not None
+        )
     
     @property
     def size(self) -> int:
-        return len([self.has_model, self.has_model])
+        return len([self._model, self._blueprint])
     
     @property
     def is_empty(self) -> bool:

@@ -15,13 +15,13 @@ from domain import Coord
 from domain.structure.chart import ParticipantChart
 
 
-class ParticipantCoordChart(ParticipantChart[Coord]):
+class CoordChart(ParticipantChart[Coord]):
     """
     Role
         - Data Holder
 
     Responsibilities:
-        1.  Stores TokenPositionValidator success data.
+        1.  Stores CoordPositionValidator success data.
 
     Attributes:
         position: Optional[Coord]

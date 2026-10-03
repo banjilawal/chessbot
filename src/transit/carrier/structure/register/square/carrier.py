@@ -24,9 +24,6 @@ class SquareRegisterCarrier(RegisterCarrier[SquareRegister]):
         1.  Transport a hydrated SquareRegister its Blueprint.
 
     Attributes:
-        size: int
-        is_empty: bool
-        is_not_consistent: bool
         has_model: bool
         has_blueprint: bool
         entity: [SquareRegister | SquareRegisterBlueprint]
@@ -38,9 +35,6 @@ class SquareRegisterCarrier(RegisterCarrier[SquareRegister]):
         RegisterCarrier
     """
     
-    _model: Optional[SquareRegister]
-    _blueprint: Optional[SquareRegisterBlueprint]
-    
     def __init__(
             self,
             model: Optional[SquareRegister] | None = None,
@@ -51,53 +45,41 @@ class SquareRegisterCarrier(RegisterCarrier[SquareRegister]):
             model: Optional[SquareRegister]
             blueprint: Optional[SquareRegisterBlueprint]
         """
-        super().__init__()
-        self._model = model
-        self._blueprint = blueprint
+        super().__init__(model=model, blueprint=blueprint)
     
     @property
     def entity(self) -> Optional[SquareRegister | SquareRegisterBlueprint]:
-        if self.is_empty:
+        entity = super().entity
+        if entity is None:
             return None
         if self.has_model:
-            return self._model
-        return self._blueprint
+            return cast(SquareRegister, entity)
+        return cast(SquareRegister, entity)
     
     @property
     def has_model(self) -> bool:
         return (
-                self._model is not None and
-                self._blueprint is None and
-                isinstance(self._model, SquareRegister)
+                super().has_model is None and
+                isinstance(self.entity, SquareRegister)
         )
     
     @property
     def has_blueprint(self) -> bool:
         return (
                 not self.has_model and
-                isinstance(self._blueprint, SquareRegisterBlueprint)
+                isinstance(self.entity, SquareRegisterBlueprint)
         )
-    
-    @property
-    def size(self) -> int:
-        return len([self._model, self._blueprint])
-    
-    @property
-    def is_empty(self) -> bool:
-        return self.size == 0
-    
-    @property
-    def is_not_consistent(self) -> bool:
-        return self.size > 1
     
     def extract_blueprint(self) -> Optional[SquareRegisterBlueprint]:
         if self.is_empty: return None
-        if self.has_blueprint: return self._blueprint
+        if self.has_blueprint:
+            blueprint = cast(SquareRegisterBlueprint, self.entity)
+            return blueprint
         
-        structure = cast(SquareRegister, self._model)
+        model = cast(SquareRegister, self.entity)
         return SquareRegisterBlueprint(
-            origin=structure.origin,
-            destination=structure.destination,
+            origin=model.origin,
+            destination=model.destination,
         )
 
 
