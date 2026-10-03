@@ -1,7 +1,7 @@
 # src/assurance/data/data/token/table.py
 
 """
-Module: assurance.data.reference.token.table
+Module: transit.delivery.token.table
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -15,7 +15,7 @@ from assurance import SafeRootTokenProperties, ValidationReference
 from domain import Token, TokenPrimeExtract
 
 
-class TokenValidationReference(ValidationReference[Token]):
+class RootTokenValidatorProduct(ValidationReference[Token]):
     """
     Role
         - Data Holder

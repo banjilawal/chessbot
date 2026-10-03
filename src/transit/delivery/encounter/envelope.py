@@ -1,7 +1,7 @@
-# src/assurance/data/data/encounter/table.py
+# src/transit/delivery/table.py
 
 """
-Module: assurance.data.reference.encounter.table
+Module: transit.delivery.encounter.table
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -15,7 +15,7 @@ from assurance import SafeRootEncounterProperties, ValidationReference
 from domain import Encounter, EncounterPrimeExtract
 
 
-class EncounterValidationReference(ValidationReference[Encounter]):
+class RootEncounterValidatorProduct(ValidationReference[Encounter]):
     """
     Role
         - Data Holder
