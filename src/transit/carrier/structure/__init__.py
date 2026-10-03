@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== TRANSIT.CARRIER.STRUCTURE PACKAGE ===========#
 
 # Packages
+from .chart import *
 from .register import *
 
 # Modules

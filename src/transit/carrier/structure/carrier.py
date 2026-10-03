@@ -10,14 +10,13 @@ version: 0.0.2
 from __future__ import annotations
 
 
-from abc import ABC
-from typing import Generic, TypeVar
+from abc import ABC, abstractmethod
+from typing import Generic, Optional, TypeVar
 
-from domain import Structure
+from domain import Structure, StructureBlueprint
 from transit import EntityCarrier
 
 T = TypeVar("T", bound="Structure")
-
 
 class StructureCarrier(EntityCarrier[T], ABC, Generic[T]):
     """
@@ -28,11 +27,6 @@ class StructureCarrier(EntityCarrier[T], ABC, Generic[T]):
         1.  Transport a hydrated Structure or its Blueprint.
 
     Attributes:
-        size: int
-        is_empty: bool
-        is_not_consistent: bool
-        has_model: bool
-        has_blueprint: bool
         entity: [T | StructureBlueprint[T]]
 
 
@@ -45,6 +39,27 @@ class StructureCarrier(EntityCarrier[T], ABC, Generic[T]):
     
     def __init__(self):
         super().__init__()
+    
+    @property
+    @abstractmethod
+    def entity(self) -> Optional[T | StructureBlueprint[T]]:
+        pass
+    
+    @property
+    @abstractmethod
+    def has_model(self) -> bool:
+        pass
+    
+    @property
+    @abstractmethod
+    def has_blueprint(self) -> bool:
+        pass
+
+    
+    @abstractmethod
+    def extract_blueprint(self) -> Optional[StructureBlueprint[T]]:
+        pass
+
 
 
     
