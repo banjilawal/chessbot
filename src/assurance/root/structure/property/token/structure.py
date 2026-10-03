@@ -1,7 +1,7 @@
-# src/assurance/data/property/token/table.py
+# src/assurance/structure/property/token/table.py
 
 """
-Module: assurance.data.property.token.table
+Module: assurance.structure.property.token.table
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -14,14 +14,14 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import ParentPropertyTable, TokenPositionChart
+from assurance import RootPropertyTable, TokenPositionChart
 from domain import Coord, Formation, HomeSquare, Team, Token, TokenDeployment
 
 
-class SafeRootTokenProperties(ParentPropertyTable[Token]):
+class SafeRootTokenProperties(RootPropertyTable[Token]):
     """
     Role
-        - Data Holder
+        - Structure Holder
 
     Responsibilities:
         1.  Stores Token super class properties that are reference.
@@ -32,7 +32,7 @@ class SafeRootTokenProperties(ParentPropertyTable[Token]):
         formation: Formation
         home_square: HomeSquare
         deployment: TokenDeployment
-        position_log: TokenPositionChart
+        position_chart: TokenPositionChart
 
     Provides:
 
@@ -43,7 +43,7 @@ class SafeRootTokenProperties(ParentPropertyTable[Token]):
     _formation: Formation
     _home_square: HomeSquare
     _deployment: TokenDeployment
-    _position_log: TokenPositionChart
+    _position_chart: TokenPositionChart
     
     def __init__(
             self,
@@ -52,7 +52,7 @@ class SafeRootTokenProperties(ParentPropertyTable[Token]):
             formation: Formation,
             home_square: HomeSquare,
             deployment: TokenDeployment,
-            position_table: TokenPositionChart,
+            position_chart: TokenPositionChart,
     ):
         """
             id: int
@@ -60,14 +60,14 @@ class SafeRootTokenProperties(ParentPropertyTable[Token]):
             formation: Formation
             home_square: HomeSquare
             deployment: TokenDeployment
-            position_log: TokenPositionChart
+            position_chart: TokenPositionChart
         """
         self._id = id
         self._team = team
         self._formation = formation
         self._home_square = home_square
         self._deployment = deployment
-        self._position_log = position_table
+        self._position_chart = position_chart
     
     @property
     def id(self) -> int:
@@ -90,13 +90,13 @@ class SafeRootTokenProperties(ParentPropertyTable[Token]):
         return self._deployment
     
     @property
-    def position_log(self) -> TokenPositionChart:
-        return self._position_log
+    def position_chart(self) -> TokenPositionChart:
+        return self._position_chart
     
     @property
     def position(self) -> Optional[Coord]:
-        return self._position_log.position
+        return self._position_chart.position
     
     @property
     def previous_position(self) -> Optional[Coord]:
-        return self._position_log.previous_position
+        return self._position_chart.previous_position

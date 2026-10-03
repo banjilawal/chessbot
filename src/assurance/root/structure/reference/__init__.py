@@ -14,4 +14,4 @@ from .encounter import *
 from .token import *
 
 # Modules
-from .validator import ValidationReference
+from .structure import ValidationReference

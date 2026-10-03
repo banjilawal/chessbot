@@ -14,7 +14,7 @@ from typing import Optional
 
 from collection import CoordDatabase
 from domain import (
-    Coord, Formation, HomeSquare, Rank, StateModel, Team, TokenDeployment
+    Coord, Formation, HomeSquare, Rank, StateModel, Team, TokenDeployment, TokenPositionChart
 )
 
 
@@ -51,9 +51,7 @@ class Token(StateModel):
     _formation: Formation
     _home_square: HomeSquare
     _deployment: TokenDeployment
-    _positions: CoordDatabase
-    _position: Optional[Coord]
-    _previous_position: Optional[Coord]
+    _chart: TokenPositionChart
 
     def __init__(
             self,
@@ -74,8 +72,7 @@ class Token(StateModel):
         self._formation = formation
         self._home_square = home_square
         self._deployment = TokenDeployment.NOT_DEPLOYED
-        self._position = None
-        self._previous_position = None
+        self._chart = TokenPositionChart()
     
     @property
     def formation(self) -> Formation:
@@ -110,24 +107,26 @@ class Token(StateModel):
     
     @property
     def position(self) -> Optional[Coord]:
-        return self._position
+        return self._chart.position
+    
+    @property
+    def position_chart(self) -> TokenPositionChart:
+        return self._chart
     
     @position.setter
     def position(self, other: Coord):
-        self._position = other
-    
-    @property
-    def previous_position(self) -> Optional[Coord]:
-        return self._previous_position
-    
-    @previous_position.setter
-    def previous_position(self, other: Coord):
-        self._previous_position = other
+        position = self._chart.position
+        previous_position = self._chart.position
+        
+        self._chart = TokenPositionChart(
+            position=position,
+            previous_position=previous_position,
+        )
         
     @property
     def has_been_deployed(self) -> bool:
        return (
-               self._position is not None and
+               self._chart.position is not None and
                self._deployment == TokenDeployment.DEPLOYED_TO_HOME_SQUARE
        )
     

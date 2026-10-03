@@ -1,7 +1,7 @@
-# src/assurance/data/property/encounter/table.py
+# src/assurance/structure/property/encounter/structure.py
 
 """
-Module: assurance.data.property.encounter.table
+Module: assurance.structure.property.encounter.structure
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,14 +9,14 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from assurance import EncounterParticipants, ParentPropertyTable
+from assurance import EncounterParticipants
 from domain import Encounter, Maneuver
 
 
-class SafeRootEncounterProperties(ParentPropertyTable[Encounter]):
+class SafeRootEncounterProperties(RootPropertyTable[Encounter]):
     """
     Role
-        - Data Holder
+        - Structure Holder
 
     Responsibilities:
         1.  Stores Encounter super class properties that are reference.

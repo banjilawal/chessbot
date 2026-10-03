@@ -12,6 +12,5 @@ version: 0.0.2
 # Packages
 from .chart import *
 from .property import *
-from .reference import *
 
 # Modules

@@ -13,7 +13,7 @@ from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    TokenPositionChart, SafeRootTokenProperties, TokenPositionValidator, TokenValidationReference,
+    TokenPositionChart, SafeRootTokenProperties, TokenPositionChartValidator, TokenValidationReference,
     TokenValidatorToolkit, RootValidator
 )
 from domain import (
@@ -48,12 +48,12 @@ class RootTokenValidator(RootValidator[Token]):
     Super Class:
         ValidationReferenceGenerator
     """
-    _position_validator: TokenPositionValidator
+    _position_validator: TokenPositionChartValidator
     
     def __init__(
             self,
             toolkit: Optional[TokenValidatorToolkit] | None = None,
-            position_validator: Optional[ TokenPositionValidator] | None = None,
+            position_validator: Optional[ TokenPositionChartValidator] | None = None,
     ):
         """
         Args:
@@ -61,7 +61,7 @@ class RootTokenValidator(RootValidator[Token]):
             position_validator: Optional[TokenPositionValidator]
         """
         super().__init__(toolkit=toolkit or TokenValidatorToolkit())
-        self._position_validator = position_validator or TokenPositionValidator()
+        self._position_validator = position_validator or TokenPositionChartValidator()
     
     @property
     def toolkit(self) -> TokenValidatorToolkit:
@@ -233,7 +233,7 @@ class RootTokenValidator(RootValidator[Token]):
             formation=formation,
             deployment=deployment,
             home_square=home_square,
-            position_table=position_table,
+            position_chart=position_table,
         )
         
         # --- Send the work product. ---#

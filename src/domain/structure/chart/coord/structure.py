@@ -9,7 +9,6 @@ version: 0.0.2
 
 from __future__ import  annotations
 
-from operator import and_
 from typing import Dict, Optional
 
 from domain import Coord
@@ -69,6 +68,23 @@ class TokenPositionChart(Chart[Coord]):
             self._previous_position is not None
         )
     
+    @property
+    def position_exists(self) -> bool:
+        return self._position is not None
+    
+    @property
+    def position_does_not_exist(self) -> bool:
+        return not self.position_exists
+    
+    
+    @property
+    def has_previous_position(self) -> bool:
+        return self._previous_position is not None
+    
+    @property
+    def does_not_have_previous_position(self) -> bool:
+        return not self.has_previous_position
+        
     @property
     def consistency_exists(self) -> bool:
         return not self.is_not_consistent

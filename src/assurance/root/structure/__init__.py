@@ -1,0 +1,18 @@
+# src/assurance/structure/property/encounter/__init__.py
+
+"""
+Module: assurance.structure.property.encounter.__init__
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+# =========== ASSURANCE.STRUCTURE.PROPERTY.ENCOUNTER PACKAGE ===========#
+
+# Packages
+from .encounter import *
+from .token import *
+from .property import *
+
+# Modules
+from .property import RootPropertyTable

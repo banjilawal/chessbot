@@ -1,4 +1,4 @@
-# src/assurance/validator/model/encounter/common/data/table.py
+# src/assurance/validator/model/encounter/common/structure/table.py
 
 """
 Module: assurance.validator.model.encounter.common.table.table
@@ -16,10 +16,10 @@ from domain import Model
 
 T = TypeVar("T", bound="Model")
 
-class ParentPropertyTable(ABC, Generic[T]):
+class RootPropertyTable(ABC, Generic[T]):
     """
     Role
-        - Data Holder
+        - Structure Holder
 
     Responsibilities:
         1.  Stores a Super class's properties that a ReferencePropertyTableGenerator

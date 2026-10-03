@@ -9,18 +9,18 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, Optional, cast
+from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import TokenPositionChart, TokenValidatorToolkit, Validator
-from domain import Coord, TokenBlueprint
-from err import CoordValidatorException, TokenPositionValidatorException
+from assurance import TokenValidatorToolkit, Validator
+from domain import Coord, TokenPositionChart
+from err import StructureNullException, TokenPositionValidatorException
 from exchange import CoordValidationRequest
 from transit import CoordCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class TokenPositionValidator(Validator[TokenPositionChart]):
+class TokenPositionChartValidator(Validator[TokenPositionChart]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -55,10 +55,7 @@ class TokenPositionValidator(Validator[TokenPositionChart]):
         return cast(TokenValidatorToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(
-            self,
-            blueprint: TokenBlueprint,
-    ) -> ValidationResult[TokenPositionChart]:
+    def execute(self, candidate: Any) -> ValidationResult[TokenPositionChart]:
         """
         Assure a candidate is a safe TokenCarrier.
 
@@ -79,21 +76,44 @@ class TokenPositionValidator(Validator[TokenPositionChart]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        position_chart: TokenPositionChart = TokenPositionChart()
-        # If the token has not been deployed send an empty dictionary
-        if (
-                blueprint.position is None and 
-                blueprint.previous_position is None
-        ):
-            return ValidationResult.success(position_chart)
-        
-        position_validation = ValidationResult.failure(
-            CoordValidatorException()
+        priming = self.toolkit.priming_validator.execute(
+            candidate=candidate,
+            target_model=Type[TokenPositionChart],
+            null_exception=StructureNullException(),
         )
-        if blueprint.position is not None:
-            # Handle the case that the position is flagged.
-            position_validation = self._coord_check_runner(blueprint.position)
-            if position_validation.is_failure:
+        if priming.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenPositionValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenPositionValidatorException.MSG,
+                    err_code=TokenPositionValidatorException.ERR_CODE,
+                    ex=priming.exception,
+                )
+            )
+        candidate_chart = cast(TokenPositionChart, priming.payload)
+        # Handle the case that the position_chart has an inconsistency.
+        if candidate_chart.is_not_consistent:
+            # Send the exception chain on failure.
+            validation_result = ValidationResult.failure(
+                TokenPositionValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenPositionValidatorException.MSG,
+                    err_code=TokenPositionValidatorException.ERR_CODE,
+                    ex=TokenPositionChartConsistencyException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=TokenPositionChartConsistencyException.MSG,
+                        err_code=TokenPositionChartConsistencyException.ERR_CODE,
+                    ),
+                )
+            )
+        position = candidate_chart.position
+        if candidate_chart.position_exists:
+            coord_validation = self._coord_check_runner(candidate_chart.position)
+            if coord_validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     TokenPositionValidatorException(
@@ -101,17 +121,19 @@ class TokenPositionValidator(Validator[TokenPositionChart]):
                         cls_name=self.__class__.__name__,
                         msg=TokenPositionValidatorException.MSG,
                         err_code=TokenPositionValidatorException.ERR_CODE,
-                        ex=position_validation.exception,
+                        ex=coord_validation.exception,
                     )
                 )
-        previous_position_validation = ValidationResult.failure(
-            CoordValidatorException()
-        )
-        # Handle the case that the not-null previous_position is unsafe.
-        if blueprint.previous_position is not None:
-            # Handle the case that the previous position is flagged.
-            previous_position_validation = self._coord_check_runner(blueprint.previous_position)
-            if position_validation.is_failure:
+            position = cast(Coord, coord_validation.payload)
+        previous_position = candidate_chart.previous_position
+        if candidate_chart.previous_position.exists:
+            coord_validation = self.toolkit.wrapper.coord.extract_model(
+                request=CoordValidationRequest(
+                    item=CoordCarrier(model=candidate_chart.previous_position),
+                    id=IdFactory.next_id(class_name="CoordValidationRequest")
+                )
+            )
+            if coord_validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     TokenPositionValidatorException(
@@ -119,20 +141,19 @@ class TokenPositionValidator(Validator[TokenPositionChart]):
                         cls_name=self.__class__.__name__,
                         msg=TokenPositionValidatorException.MSG,
                         err_code=TokenPositionValidatorException.ERR_CODE,
-                        ex=previous_position_validation.exception,
+                        ex=coord_validation.exception,
                     )
                 )
+            previous_position = cast(Coord, coord_validation.payload)
+        chart = TokenPositionChart(
+            position=position,
+            previous_position=previous_position,
+        )
         # --- Send the work product. ---#
-        position = cast(Coord, position_validation.payload)
-        previous_position = cast(Coord, previous_position_validation.payload)
-        position_table = TokenPositionChart(
-            position=position or None,
-            previous_position=previous_position or None,
-        )
-        return ValidationResult.success(position_table)
+        return ValidationResult.success(chart)
     
     @LoggingLevelRouter.monitor
-    def _coord_check_runner(self, candidate: Any) -> ValidationResult[Coord]:
+    def _coord_check_runner(self, coord_candidate: Any) -> ValidationResult[Coord]:
         """
         Assure a candidate is a safe TokenCarrier.
 

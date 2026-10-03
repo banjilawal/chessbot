@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-from assurance import ParentPropertyTable
+from assurance import RootPropertyTable
 from domain import Model, PrimeExtract
 
 T = TypeVar("T", bound="Model")
@@ -35,14 +35,14 @@ class ValidationReference(ABC, Generic[T]):
     Super Class:
     """
     _prime_extract: PrimeExtract[T]
-    _safe_properties: ParentPropertyTable[T]
+    _safe_properties: RootPropertyTable[T]
 
     
     
     def __init__(
             self,
             prime_extract: PrimeExtract[T],
-            safe_properties: ParentPropertyTable[T],
+            safe_properties: RootPropertyTable[T],
     ):
         """
         Args:
@@ -57,7 +57,7 @@ class ValidationReference(ABC, Generic[T]):
         return self._prime_extract
     
     @property
-    def safe(self) -> ParentPropertyTable[T]:
+    def safe(self) -> RootPropertyTable[T]:
         return self._safe_properties
 
     
