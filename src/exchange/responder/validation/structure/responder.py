@@ -12,7 +12,8 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
-from exchange import ValidationResponder
+from exchange import StructureValidationRequest, ValidationResponder
+from transit import StructureValidationDispatcher
 from util import LoggingLevelRouter
 
 T = TypeVar("T",)
