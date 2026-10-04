@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Square, SquareBlueprint
+from domain import ModelPrimeExtract, Square, SquareBlueprint
 from transit import SquareCarrier
 
 
@@ -28,8 +28,6 @@ class SquarePrimeExtract(ModelPrimeExtract[Square]):
         blueprint: Optional[SquareBlueprint]
 
     Provides:
-        blueprint_exists: bool
-        no_blueprint_exists: bool
 
     Super Class:
         ModelPrimeExtract
@@ -42,8 +40,8 @@ class SquarePrimeExtract(ModelPrimeExtract[Square]):
     ):
         """
         Args:
-            carrier: EntityCarrier[Square]
-            blueprint: Optional[Blueprint[Square]]
+            carrier: SquareCarrier
+            blueprint: Optional[SquareBlueprint]
         """
         super().__init__(carrier=carrier, blueprint=blueprint)
         

@@ -11,6 +11,5 @@ version: 0.0.2
 
 # Packages
 
-
 # Module
 from .extract import MachineAccountPrimeExtract

@@ -28,8 +28,6 @@ class PawnTokenPrimeExtract(TokenPrimeExtract[PawnToken]):
         blueprint: Optional[PawnTokenBlueprint]
 
     Provides:
-        blueprint_exists: bool
-        no_blueprint_exists: bool
 
     Super Class:
         TokenPrimeExtract

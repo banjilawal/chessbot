@@ -28,8 +28,6 @@ class KingTokenPrimeExtract(TokenPrimeExtract[KingToken]):
         blueprint: Optional[KingTokenBlueprint]
 
     Provides:
-        blueprint_exists: bool
-        no_blueprint_exists: bool
 
     Super Class:
         TokenPrimeExtract

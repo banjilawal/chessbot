@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Board, BoardBlueprint
+from domain import Board, BoardBlueprint, ModelPrimeExtract
 from transit import BoardCarrier
 
 
@@ -28,8 +28,6 @@ class BoardPrimeExtract(ModelPrimeExtract[Board]):
         blueprint: Optional[BoardBlueprint]
 
     Provides:
-        blueprint_exists: bool
-        no_blueprint_exists: bool
 
     Super Class:
         ModelPrimeExtract
@@ -42,7 +40,7 @@ class BoardPrimeExtract(ModelPrimeExtract[Board]):
     ):
         """
         Args:
-            carrier: EntityCarrier[Board]
+            carrier: BoardCarrier
             blueprint: Optional[Blueprint[Board]]
         """
         super().__init__(carrier=carrier, blueprint=blueprint)

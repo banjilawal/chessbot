@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== DOMAIN.EXTRACT.MODEL.SQUARE PACKAGE ===========#
 
 # Packages
+from .home import *
 
 # Module
 from .extract import SquarePrimeExtract

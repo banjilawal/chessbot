@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Game, GameBlueprint
+from domain import Game, GameBlueprint, ModelPrimeExtract
 from transit import GameCarrier
 
 
@@ -28,8 +28,6 @@ class GamePrimeExtract(ModelPrimeExtract[Game]):
         blueprint: Optional[GameBlueprint]
 
     Provides:
-        blueprint_exists: bool
-        no_blueprint_exists: bool
 
     Super Class:
         ModelPrimeExtract
@@ -42,7 +40,7 @@ class GamePrimeExtract(ModelPrimeExtract[Game]):
     ):
         """
         Args:
-            carrier: EntityCarrier[Game]
+            carrier: GameCarrier
             blueprint: Optional[Blueprint[Game]]
         """
         super().__init__(carrier=carrier, blueprint=blueprint)

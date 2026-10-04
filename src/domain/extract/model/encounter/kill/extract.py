@@ -30,8 +30,6 @@ class KillEncounterPrimeExtract(EncounterPrimeExtract[KillEncounter]):
         blueprint: Optional[KillEncounterBlueprint]
 
     Provides:
-        blueprint_exists: bool
-        no_blueprint_exists: bool
 
     Super Class:
         EncounterPrimeExtract

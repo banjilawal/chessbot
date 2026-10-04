@@ -28,8 +28,6 @@ class KnightPrimeExtract(RankPrimeExtract[Knight]):
         blueprint: Optional[KnightBlueprint]
 
     Provides:
-        blueprint_exists: bool
-        no_blueprint_exists: bool
 
     Super Class:
         RankPrimeExtract

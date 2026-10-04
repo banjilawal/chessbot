@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Arena, ArenaBlueprint
+from domain import Arena, ArenaBlueprint, ModelPrimeExtract
 from transit import ArenaCarrier
 
 
@@ -28,8 +28,6 @@ class ArenaPrimeExtract(ModelPrimeExtract[Arena]):
         blueprint: Optional[ArenaBlueprint]
 
     Provides:
-        blueprint_exists: bool
-        no_blueprint_exists: bool
 
     Super Class:
         ModelPrimeExtract
@@ -42,7 +40,7 @@ class ArenaPrimeExtract(ModelPrimeExtract[Arena]):
     ):
         """
         Args:
-            carrier: EntityCarrier[Arena]
+            carrier: ArenaCarrier
             blueprint: Optional[Blueprint[Arena]]
         """
         super().__init__(carrier=carrier, blueprint=blueprint)

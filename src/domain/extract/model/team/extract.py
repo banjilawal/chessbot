@@ -28,8 +28,6 @@ class TeamPrimeExtract(ModelPrimeExtract[Team]):
         blueprint: Optional[TeamBlueprint]
 
     Provides:
-        blueprint_exists: bool
-        no_blueprint_exists: bool
 
     Super Class:
         ModelPrimeExtract

@@ -11,6 +11,7 @@ version: 0.0.2
 
 # Packages
 from .model import *
+from .struct import *
 
 # Module
 from .extract import PrimeExtract

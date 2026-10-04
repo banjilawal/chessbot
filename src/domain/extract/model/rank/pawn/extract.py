@@ -28,8 +28,6 @@ class PawnPrimeExtract(RankPrimeExtract[Pawn]):
         blueprint: Optional[PawnBlueprint]
 
     Provides:
-        blueprint_exists: bool
-        no_blueprint_exists: bool
 
     Super Class:
         RankPrimeExtract

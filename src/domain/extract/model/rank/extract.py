@@ -9,15 +9,14 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
 from typing import Generic, Optional, TypeVar, cast
 
-from domain import Blueprint, ModelPrimeExtract, Rank, RankBlueprint
+from domain import ModelPrimeExtract, Rank, RankBlueprint
 from transit import RankCarrier
 
 T = TypeVar("T", bound="Rank")
 
-class RankPrimeExtract(ModelPrimeExtract[T], ABC, Generic[T]):
+class RankPrimeExtract(ModelPrimeExtract[T], Generic[T]):
     """
     Role
         - Data Holder
@@ -30,8 +29,6 @@ class RankPrimeExtract(ModelPrimeExtract[T], ABC, Generic[T]):
         blueprint: Optional[RankBlueprint]
 
     Provides:
-        blueprint_exists: bool
-        no_blueprint_exists: bool
 
     Super Class:
         ModelPrimeExtract

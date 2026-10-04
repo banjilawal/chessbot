@@ -28,8 +28,6 @@ class HumanAccountPrimeExtract(AccountPrimeExtract[HumanAccount]):
         blueprint: Optional[HumanAccountBlueprint]
 
     Provides:
-        blueprint_exists: bool
-        no_blueprint_exists: bool
 
     Super Class:
         AccountPrimeExtract

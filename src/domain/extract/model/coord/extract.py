@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Coord, CoordBlueprint
+from domain import Coord, CoordBlueprint, ModelPrimeExtract
 from transit import CoordCarrier
 
 
@@ -28,8 +28,6 @@ class CoordPrimeExtract(ModelPrimeExtract[Coord]):
         blueprint: Optional[CoordBlueprint]
 
     Provides:
-        blueprint_exists: bool
-        no_blueprint_exists: bool
 
     Super Class:
         ModelPrimeExtract
@@ -42,7 +40,7 @@ class CoordPrimeExtract(ModelPrimeExtract[Coord]):
     ):
         """
         Args:
-            carrier: EntityCarrier[Coord]
+            carrier: CoordCarrier
             blueprint: Optional[Blueprint[Coord]]
         """
         super().__init__(carrier=carrier, blueprint=blueprint)

@@ -28,8 +28,6 @@ class EncounterWarningPrimeExtract(EncounterPrimeExtract[EncounterWarning]):
         blueprint: Optional[EncounterWarningBlueprint]
 
     Provides:
-        blueprint_exists: bool
-        no_blueprint_exists: bool
 
     Super Class:
         EncounterPrimeExtract

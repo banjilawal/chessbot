@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import ModelPrimeExtract, Path
+from domain import ModelPrimeExtract, Path, PathBlueprint
 from transit import PathCarrier
 
 
@@ -28,8 +28,6 @@ class PathPrimeExtract(ModelPrimeExtract[Path]):
         blueprint: Optional[PathBlueprint]
 
     Provides:
-        blueprint_exists: bool
-        no_blueprint_exists: bool
 
     Super Class:
         ModelPrimeExtract
@@ -42,7 +40,7 @@ class PathPrimeExtract(ModelPrimeExtract[Path]):
     ):
         """
         Args:
-            carrier: EntityCarrier[Path]
+            carrier: PathCarrier
             blueprint: Optional[Blueprint[Path]]
         """
         super().__init__(carrier=carrier, blueprint=blueprint)

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Maneuver, ManeuverBlueprint
+from domain import Maneuver, ManeuverBlueprint, ModelPrimeExtract
 from transit import ManeuverCarrier
 
 
@@ -28,8 +28,6 @@ class ManeuverPrimeExtract(ModelPrimeExtract[Maneuver]):
         blueprint: Optional[ManeuverBlueprint]
 
     Provides:
-        blueprint_exists: bool
-        no_blueprint_exists: bool
 
     Super Class:
         ModelPrimeExtract
@@ -42,7 +40,7 @@ class ManeuverPrimeExtract(ModelPrimeExtract[Maneuver]):
     ):
         """
         Args:
-            carrier: EntityCarrier[Maneuver]
+            carrier: ManeuverCarrier
             blueprint: Optional[Blueprint[Maneuver]]
         """
         super().__init__(carrier=carrier, blueprint=blueprint)

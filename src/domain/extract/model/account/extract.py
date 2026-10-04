@@ -9,7 +9,6 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
 from typing import Generic, Optional, TypeVar, cast
 
 from domain import ModelPrimeExtract, Account, AccountBlueprint
@@ -26,12 +25,10 @@ class AccountPrimeExtract(ModelPrimeExtract[T], Generic[T]):
         1.  Persist Blueprint and Carrier data for AccountValidator.
 
     Attributes:
-        carrier: AccountCarrier
+        carrier: AccountCarrier[T]
         blueprint: Optional[AccountBlueprint]
 
     Provides:
-        blueprint_exists: bool
-        no_blueprint_exists: bool
 
     Super Class:
         ModelPrimeExtract

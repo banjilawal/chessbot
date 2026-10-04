@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar, cast
 
-from domain import Blueprint, ModelPrimeExtract, Encounter, EncounterBlueprint
+from domain import ModelPrimeExtract, Encounter, EncounterBlueprint
 from transit import EncounterCarrier
 
 T = TypeVar("T", bound="Encounter")
@@ -30,8 +30,6 @@ class EncounterPrimeExtract(ModelPrimeExtract[T], ABC, Generic[T]):
         blueprint: Optional[EncounterBlueprint]
 
     Provides:
-        blueprint_exists: bool
-        no_blueprint_exists: bool
 
     Super Class:
         ModelPrimeExtract

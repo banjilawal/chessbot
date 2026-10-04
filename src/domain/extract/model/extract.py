@@ -30,8 +30,6 @@ class ModelPrimeExtract(PrimeExtract[T], ABC, Generic[T]):
         blueprint: Optional[ModelBlueprint[T]]
 
     Provides:
-        blueprint_exists: bool
-        no_blueprint_exists: bool
 
     Super Class:
         PrimeExtract

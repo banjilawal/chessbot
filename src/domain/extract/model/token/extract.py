@@ -30,8 +30,6 @@ class TokenPrimeExtract(ModelPrimeExtract[T], ABC, Generic[T]):
         blueprint: Optional[TokenBlueprint]
 
     Provides:
-        blueprint_exists: bool
-        no_blueprint_exists: bool
 
     Super Class:
         ModelPrimeExtract
