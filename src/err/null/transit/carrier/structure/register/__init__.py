@@ -10,9 +10,7 @@ version: 0.0.2
 # =========== ERR.NULL.TRANSIT.CARRIER.STRUCTURE.REGISTER PACKAGE ===========#
 
 # Packages
-from .cartesian import *
 from .coord import *
-from .identity import *
 from .square import *
 from .vector import *
 
