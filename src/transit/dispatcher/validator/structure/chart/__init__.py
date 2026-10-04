@@ -11,6 +11,7 @@ version: 0.0.2
 
 # Packages
 from .coord import *
+from .token import *
 
 # Module
 from .dispatcher import ChartValidationDispatcher

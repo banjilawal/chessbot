@@ -10,7 +10,6 @@ version: 0.0.2
 # =========== ASSURANCE.VALIDATOR.ROOT.ENCOUNTER PACKAGE ===========#
 
 # Packages
-from .participant import *
 from .readiness import *
 
 # Modules

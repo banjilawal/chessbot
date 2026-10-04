@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== ASSURANCE.VALIDATOR.STRUCTUE.CHART PACKAGE ===========#
 
 # Packages
-from .position import *
+from .coord import *
+from .token import *
 
 # Module

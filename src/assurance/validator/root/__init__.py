@@ -11,7 +11,6 @@ version: 0.0.2
 
 # Packages
 from .encounter import *
-from .token import *
 from .validator import *
 
 # Modules

@@ -13,7 +13,7 @@ from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    EncounterParticipantValidator, EncounterParticipants, SafeRootEncounterProperties,
+    TokenChartValidator, EncounterParticipants, SafeRootEncounterProperties,
     RootTokenProduct, EncounterValidatorToolkit, RootValidator
 )
 from config import NumericSetting
@@ -47,12 +47,12 @@ class RootEncounterValidator(RootValidator[Encounter]):
     Super Class:
         ValidationReferenceGenerator
     """
-    _participant_chart_producer: EncounterParticipantValidator
+    _participant_chart_producer: TokenChartValidator
     
     def __init__(
             self,
             toolkit: Optional[EncounterValidatorToolkit] | None = None,
-            participant_certifier: Optional[EncounterParticipantValidator] | None = None,
+            participant_certifier: Optional[TokenChartValidator] | None = None,
     ):
         """
         Args:
@@ -60,7 +60,7 @@ class RootEncounterValidator(RootValidator[Encounter]):
             participant_certifier: Optional[EncounterPositionCertifier]
         """
         super().__init__(toolkit=toolkit or EncounterValidatorToolkit())
-        self._participant_chart_producer = participant_certifier or EncounterParticipantValidator()
+        self._participant_chart_producer = participant_certifier or TokenChartValidator()
         
     @property
     def toolkit(self) -> EncounterValidatorToolkit:

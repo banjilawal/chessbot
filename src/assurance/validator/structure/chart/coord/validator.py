@@ -20,7 +20,7 @@ from transit import CoordCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class ParticipantCoordChartValidator(Validator[CoordChart]):
+class CoordChartValidator(Validator[CoordChart]):
     """
     Role
         - Integrity, Consistency Maintenance

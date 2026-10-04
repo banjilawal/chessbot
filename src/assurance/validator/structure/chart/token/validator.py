@@ -1,7 +1,7 @@
-# src/assurance/validator/validator/root/encounter/participant/validator.py
+# src/assurance/root/validator/token/token/validator.py
 
 """
-Module: assurance.validator.root.encounter.participant.validator
+Module: assurance.root.validator.token.token.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -23,7 +23,7 @@ from err import (
 from util import LoggingLevelRouter
 
 
-class EncounterParticipantValidator:
+class TokenChartValidator:
     """
     Role
         - Integrity, Consistency Maintenance

@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from typing import Any, cast
 
+from assurance import TokenChartValidator
 from domain.structure.chart import TokenChart
 from artifcat import ValidationResult
 from transit import TokenChartCarrier

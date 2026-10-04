@@ -10,7 +10,6 @@ version: 0.0.2
 # =========== ASSURANCE.VALIDATOR.ROOT.TOKEN PACKAGE ===========#
 
 # Packages
-from .coord import *
 
 # Modules
 from .validator import RootTokenValidator

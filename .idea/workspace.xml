@@ -5,57 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/structure/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/structure/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/structure/arena/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/structure/attack/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/structure/attack/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/structure/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/structure/board/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/structure/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/structure/coord/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/structure/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/structure/game/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/structure/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/structure/maneuver/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/structure/path/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/structure/path/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/structure/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/structure/player/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/structure/rank/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/structure/rank/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/structure/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/structure/scalar/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/structure/scalar/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/structure/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/structure/square/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/structure/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/structure/team/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/structure/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/structure/token/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/structure/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/structure/vector/responder.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/structure/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/structure/chart/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/structure/chart/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/structure/chart/coord/dispatcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/structure/chart/dispatcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/structure/chart/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/structure/chart/square/dispatcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/structure/chart/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/structure/chart/vector/dispatcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/structure/dispatcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/structure/register/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/structure/register/coord/dispatcher.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/structure/register/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/structure/register/square/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validator/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validator/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/structure/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validator/register/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/structure/register/dispatcher.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validator/register/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/structure/register/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validator/register/vector/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/structure/register/vector/dispatcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/root/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/root/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/root/encounter/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/root/encounter/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/root/encounter/participant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/structure/chart/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/root/encounter/participant/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/structure/chart/token/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/root/encounter/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/root/encounter/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/root/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/root/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/root/token/coord/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/structure/chart/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/structure/chart/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/structure/chart/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/structure/chart/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/structure/chart/coord/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/structure/chart/coord/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,61 +56,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="9.430621519463362E-9" />
-      <entry key="MS500" value="0.024831987162032693" />
-      <entry key="S2" value="0.45092581230956497" />
-      <entry key="S5" value="1.1103078764926666" />
-      <entry key="S10" value="1.774122237501376" />
-      <entry key="S30" value="3.3129546911372687" />
-      <entry key="S60" value="5.518565658395095" />
-      <entry key="M2" value="9.439951164833808" />
-      <entry key="M5" value="20.206972879212604" />
-      <entry key="M10" value="54.34473875700447" />
-      <entry key="M15" value="103.2947531173057" />
-      <entry key="M30" value="260.01887696099084" />
-      <entry key="H1" value="534.3976679484008" />
-      <entry key="H2" value="988.1076773668331" />
-      <entry key="H4" value="1669.9897984986308" />
-      <entry key="D1" value="4186.617789412714" />
-      <entry key="W1" value="27421.812021941598" />
+      <entry key="MS100" value="3.824907235988689E-8" />
+      <entry key="MS500" value="0.03284915340899082" />
+      <entry key="S2" value="0.42572685555215994" />
+      <entry key="S5" value="0.7109841165445804" />
+      <entry key="S10" value="0.8661340196735142" />
+      <entry key="S30" value="1.440038942101626" />
+      <entry key="S60" value="3.6729099621499475" />
+      <entry key="M2" value="12.455009230216216" />
+      <entry key="M5" value="34.970983755801605" />
+      <entry key="M10" value="67.41367979532619" />
+      <entry key="M15" value="108.85302323059848" />
+      <entry key="M30" value="253.49260886334196" />
+      <entry key="H1" value="525.280376301912" />
+      <entry key="H2" value="983.5121975663948" />
+      <entry key="H4" value="1674.949762803845" />
+      <entry key="D1" value="4222.939715831206" />
+      <entry key="W1" value="27459.651080399377" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0011694127974795" />
-      <entry key="MS500" value="1.2599648721176906" />
-      <entry key="S2" value="2.0158982291420258" />
-      <entry key="S5" value="3.149812506575244" />
-      <entry key="S10" value="4.143971410352188" />
-      <entry key="S30" value="5.242585171062836" />
-      <entry key="S60" value="5.600209796772214" />
-      <entry key="M2" value="5.797641407541092" />
-      <entry key="M5" value="6.145006045350368" />
-      <entry key="M10" value="7.259592219685247" />
-      <entry key="M15" value="8.641538175201541" />
-      <entry key="M30" value="12.906299774172265" />
-      <entry key="H1" value="21.534896842276936" />
-      <entry key="H2" value="37.16721543419951" />
-      <entry key="H4" value="63.90014138548217" />
-      <entry key="D1" value="200.99656974598167" />
-      <entry key="W1" value="1287.9699908200803" />
+      <entry key="MS100" value="1.0015008546692266" />
+      <entry key="MS500" value="1.272438028053332" />
+      <entry key="S2" value="1.7224651989617628" />
+      <entry key="S5" value="1.8780652152344268" />
+      <entry key="S10" value="1.9370513407676375" />
+      <entry key="S30" value="1.978561683585181" />
+      <entry key="S60" value="1.9915763549642351" />
+      <entry key="M2" value="2.1134625307137016" />
+      <entry key="M5" value="3.2957457808481023" />
+      <entry key="M10" value="5.33528131207452" />
+      <entry key="M15" value="7.145618728231934" />
+      <entry key="M30" value="11.959550749513715" />
+      <entry key="H1" value="20.917577599505403" />
+      <entry key="H2" value="36.83552309353544" />
+      <entry key="H4" value="63.86331960264705" />
+      <entry key="D1" value="201.9143254060942" />
+      <entry key="W1" value="1288.976997807189" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.1232792499957559" />
-      <entry key="MS500" value="0.713807176216566" />
-      <entry key="S2" value="1.9555698863970425" />
-      <entry key="S5" value="3.8223258028636904" />
-      <entry key="S10" value="5.585388698926958" />
-      <entry key="S30" value="8.390575059404545" />
-      <entry key="S60" value="10.994570898731663" />
-      <entry key="M2" value="15.115448019974727" />
-      <entry key="M5" value="26.241704237256883" />
-      <entry key="M10" value="61.51684247242045" />
-      <entry key="M15" value="111.85972269934008" />
-      <entry key="M30" value="272.8591265756922" />
-      <entry key="H1" value="555.8698726591376" />
-      <entry key="H2" value="1025.216994154042" />
-      <entry key="H4" value="1733.8388809787286" />
-      <entry key="D1" value="4387.588524258752" />
-      <entry key="W1" value="28709.759611694295" />
+      <entry key="MS100" value="0.10223866589391062" />
+      <entry key="MS500" value="0.7049048124806327" />
+      <entry key="S2" value="1.7011679805970177" />
+      <entry key="S5" value="2.3389496608282" />
+      <entry key="S10" value="2.6619542703256824" />
+      <entry key="S30" value="3.3672207341953806" />
+      <entry key="S60" value="5.637103296109316" />
+      <entry key="M2" value="14.550111952385219" />
+      <entry key="M5" value="38.23542046566581" />
+      <entry key="M10" value="72.7042344344937" />
+      <entry key="M15" value="115.94989027192354" />
+      <entry key="M30" value="265.3995339642404" />
+      <entry key="H1" value="546.1420325699046" />
+      <entry key="H2" value="1020.2930245654596" />
+      <entry key="H4" value="1738.7634347739888" />
+      <entry key="D1" value="4424.828309211449" />
+      <entry key="W1" value="28748.605689229284" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -185,7 +144,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/transit/dispatcher/validator/structure",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/transit/dispatcher/validator/structure/chart",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -199,18 +158,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/transit/dispatcher/validator/structure/chart" />
       <recent name="$PROJECT_DIR$/src/transit/dispatcher/validator/structure" />
       <recent name="$PROJECT_DIR$/src/transit/dispatcher/validator/structure/register" />
       <recent name="$PROJECT_DIR$/src/transit/dispatcher/validator" />
       <recent name="$PROJECT_DIR$/src/exchange/responder/validation" />
-      <recent name="$PROJECT_DIR$/src/exchange/request/validation/structure/chart" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assurance/validator/structure/chart" />
       <recent name="$PROJECT_DIR$/src/transit/dispatcher/validator/structure" />
       <recent name="$PROJECT_DIR$/src/assurance/validator" />
       <recent name="$PROJECT_DIR$/src/assurance/root" />
       <recent name="$PROJECT_DIR$/src/assurance/root/validator" />
-      <recent name="$PROJECT_DIR$/src/domain/structure/chart" />
     </key>
   </component>
   <component name="RunManager" selected="Python.generator">
@@ -868,7 +827,7 @@
       <workItem from="1790001362413" duration="735000" />
       <workItem from="1790063398459" duration="258692000" />
       <workItem from="1790480915263" duration="119124000" />
-      <workItem from="1790671354344" duration="177024000" />
+      <workItem from="1790671354344" duration="177716000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
