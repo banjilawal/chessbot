@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== EXCHANGE.REQUEST.VALIDATION.STRUCTURE PACKAGE ===========#
 
 # Packages
+from .chart import *
 from .register import *
 
 # Modules

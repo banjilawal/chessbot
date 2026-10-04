@@ -9,11 +9,16 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any
+from abc import ABC
+from typing import Any, Generic, TypeVar, cast
 
-from exchange import Structure, ValidationRequest
+from domain import Structure
+from exchange import ValidationRequest
+from transit import StructureCarrier
 
-class StructureValidationRequest(ValidationRequest[Structure]):
+T = TypeVar("T", bound="Structure")
+
+class StructureValidationRequest(ValidationRequest[T], ABC, Generic[T]):
     """
      Role:
          -  Messaging
@@ -30,20 +35,19 @@ class StructureValidationRequest(ValidationRequest[Structure]):
      Super Class:
         ValidationRequest
      """
-    _item: Any
     
-    def __init__(self, id: int, item: Any):
+    def __init__(self, id: int, item: StructureCarrier[T]):
         """
         Args:
             id: int
-            item: EntityCarrier[T]
+            item: StructureCarrier[T]
         """
         super().__init__(id=id)
         self._item = item
     
     @property
-    def item(self) -> Any:
-        return self._item
+    def item(self) -> StructureCarrier[T]:
+        return cast(StructureCarrier[T], super().item)
     
     def __eq__(self, other):
         if other is self: return True
