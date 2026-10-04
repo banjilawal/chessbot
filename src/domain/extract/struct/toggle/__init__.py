@@ -1,0 +1,16 @@
+# src/domain/extract/struct/toggle/__init__.py
+
+"""
+Module: domain.extract.struct.toggle.__init__
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+# =========== DOMAIN.EXTRACT.STRUCT.TOGGLE PACKAGE ===========#
+
+# Packages
+from .orientation import *
+
+# Module
+from .extract import TogglePrimeExtract
