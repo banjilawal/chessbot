@@ -1,7 +1,7 @@
-# src/artifact/response/validation/response.py
+# src/artifact/response/validation/model/arena/response.py
 
 """
-Module: artifact.response.validation.response
+Module: artifact.response.validation.model.arena.response
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -26,28 +26,22 @@ class ArenaValidationResponse(ModelValidationResponse[Arena]):
         1.  Capture a Arena validation request-response cycle's data and state.
 
     Attributes:
-        state: ResponseState
-        result: ValidationResult,
+        result: ValidationResult[ArenaCarrier],
         request: ArenaValidationRequest
         exception: Optional[Exception]
 
     Provides:
-        -   is_success: bool
-        -   is_failure: bool
-        -   is_consistent: bool
-        -   is_not_consistent: bool
-        
         -   def valid_model() -> Optional[Arena]
         -   def valid_blueprint() -> Optional[ArenaBlueprint]
 
         -   def success(
                     request: Request,
-                    result: ValidationResult,
+                    result: ValidationResult[ArenaCarrier],
             ) -> ArenaValidationResponse
 
         -   def failure(
                     request: Request,
-                    result: ValidationResult,
+                    result: ValidationResult[ArenaCarrier],
                     exception: Exception,
             ) -> ArenaValidationResponse
             

@@ -1,7 +1,7 @@
-# src/artifact/response/validation/response.py
+# src/artifact/response/validation/model/board/response.py
 
 """
-Module: artifact.response.validation.response
+Module: artifact.response.validation.model.board.response
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -26,28 +26,22 @@ class BoardValidationResponse(ModelValidationResponse[Board]):
         1.  Capture a Board validation request-response cycle's data and state.
 
     Attributes:
-        state: ResponseState
-        result: ValidationResult,
+        result: ValidationResult[BoardCarrier],
         request: BoardValidationRequest
         exception: Optional[Exception]
 
     Provides:
-        -   is_success: bool
-        -   is_failure: bool
-        -   is_consistent: bool
-        -   is_not_consistent: bool
-        
         -   def valid_model() -> Optional[Board]
         -   def valid_blueprint() -> Optional[BoardBlueprint]
 
         -   def success(
                     request: Request,
-                    result: ValidationResult,
+                    result: ValidationResult[BoardCarrier],
             ) -> BoardValidationResponse
 
         -   def failure(
                     request: Request,
-                    result: ValidationResult,
+                    result: ValidationResult[BoardCarrier],
                     exception: Exception,
             ) -> BoardValidationResponse
             

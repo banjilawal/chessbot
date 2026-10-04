@@ -1,7 +1,7 @@
-# src/artifact/response/validation/response.py
+# src/artifact/response/validation/model/game/response.py
 
 """
-Module: artifact.response.validation.response
+Module: artifact.response.validation.model.game.response
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -26,28 +26,22 @@ class GameValidationResponse(ModelValidationResponse[Game]):
         1.  Capture a Game validation request-response cycle's data and state.
 
     Attributes:
-        state: ResponseState
-        result: ValidationResult,
+        result: ValidationResult[GameCarrier],
         request: GameValidationRequest
         exception: Optional[Exception]
 
     Provides:
-        -   is_success: bool
-        -   is_failure: bool
-        -   is_consistent: bool
-        -   is_not_consistent: bool
-        
         -   def valid_model() -> Optional[Game]
         -   def valid_blueprint() -> Optional[GameBlueprint]
 
         -   def success(
                     request: Request,
-                    result: ValidationResult,
+                    result: ValidationResult[GameCarrier],
             ) -> GameValidationResponse
 
         -   def failure(
                     request: Request,
-                    result: ValidationResult,
+                    result: ValidationResult[GameCarrier],
                     exception: Exception,
             ) -> GameValidationResponse
             

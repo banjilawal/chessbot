@@ -1,7 +1,7 @@
-# src/artifact/response/validation/response.py
+# src/artifact/response/validation/model/response.py
 
 """
-Module: artifact.response.validation.response
+Module: artifact.response.validation.model.response
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

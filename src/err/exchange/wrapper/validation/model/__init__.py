@@ -1,19 +1,20 @@
 # src/err/exchange/wrapper/validation/model/__init__.py
 
 """
-Module: err.exchange.response.validation.model.__init__
+Module: err.exchange.wrapper.validation.model.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== ERR.EXCHANGE.RESPONSE.MODEL PACKAGE ===========#
+# =========== ERR.EXCHANGE.WRAPPER.MODEL PACKAGE ===========#
 
 # Packages
+from .account import *
 from .arena import *
-from .attack import *
 from .board import *
 from .coord import *
+from .encounter import *
 from .game import *
 from .maneuver import *
 from .path import *

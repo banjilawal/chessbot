@@ -1,7 +1,7 @@
 # src/err/exchange/wrapper/validation/model/player/exception.py
 
 """
-Module: err.exchange.response.validation.model.player.exception
+Module: err.exchange.wrapper.validation.model.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

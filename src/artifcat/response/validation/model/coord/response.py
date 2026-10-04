@@ -1,7 +1,7 @@
-# src/artifact/response/validation/response.py
+# src/artifact/response/validation/model/coord/response.py
 
 """
-Module: artifact.response.validation.response
+Module: artifact.response.validation.model.coord.response
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -26,28 +26,22 @@ class CoordValidationResponse(ModelValidationResponse[Coord]):
         1.  Capture a Coord validation request-response cycle's data and state.
 
     Attributes:
-        state: ResponseState
-        result: ValidationResult,
+        result: ValidationResult[CoordCarrier],
         request: CoordValidationRequest
         exception: Optional[Exception]
 
     Provides:
-        -   is_success: bool
-        -   is_failure: bool
-        -   is_consistent: bool
-        -   is_not_consistent: bool
-        
         -   def valid_model() -> Optional[Coord]
         -   def valid_blueprint() -> Optional[CoordBlueprint]
 
         -   def success(
                     request: Request,
-                    result: ValidationResult,
+                    result: ValidationResult[CoordCarrier],
             ) -> CoordValidationResponse
 
         -   def failure(
                     request: Request,
-                    result: ValidationResult,
+                    result: ValidationResult[CoordCarrier],
                     exception: Exception,
             ) -> CoordValidationResponse
             

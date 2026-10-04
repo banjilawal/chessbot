@@ -11,6 +11,7 @@ version: 1.0.0
 
 # Packages
 from .model import *
+from .structure import *
 
 # Modules
 from .exception import ValidationResponderException

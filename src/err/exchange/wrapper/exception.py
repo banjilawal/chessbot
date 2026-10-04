@@ -1,7 +1,7 @@
 # src/err/exchange/wrapper/exception.py
 
 """
-Module: err.exchange.response.exception
+Module: err.exchange.wrapper.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

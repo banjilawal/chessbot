@@ -1,7 +1,7 @@
 # src/err/exchange/wrapper/validation/model/token/exception.py
 
 """
-Module: err.exchange.response.validation.model.token.exception
+Module: err.exchange.wrapper.validation.model.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

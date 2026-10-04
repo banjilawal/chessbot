@@ -1,7 +1,7 @@
-# src/artifact/response/validation/response.py
+# src/artifact/response/validation/model/player/response.py
 
 """
-Module: artifact.response.validation.response
+Module: artifact.response.validation.model.player.response
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -26,17 +26,11 @@ class PlayerValidationResponse(ModelValidationResponse[Player]):
         1.  Capture a Player validation request-response cycle's data and state.
 
     Attributes:
-        state: ResponseState
-        result: ValidationResult,
+        result: ValidationResult[PlayerCarrier],
         request: PlayerValidationRequest
         exception: Optional[Exception]
 
     Provides:
-        -   is_success: bool
-        -   is_failure: bool
-        -   is_consistent: bool
-        -   is_not_consistent: bool
-        
         -   def valid_model() -> Optional[Player]
         -   def valid_blueprint() -> Optional[PlayerBlueprint]
 

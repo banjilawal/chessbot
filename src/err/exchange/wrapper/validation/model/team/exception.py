@@ -1,7 +1,7 @@
 # src/err/exchange/wrapper/validation/model/team/exception.py
 
 """
-Module: err.exchange.response.validation.model.team.exception
+Module: err.exchange.wrapper.validation.model.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
