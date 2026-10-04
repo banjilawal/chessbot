@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Type
+from typing import Type, cast
 
 from domain import CartesianToggle, ToggleBlueprint
 from err import CartesianToggleNullException

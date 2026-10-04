@@ -11,6 +11,7 @@ version: 0.0.2
 
 # Packages
 from .model import *
+from .root import *
 from .space import *
 from .structure import *
 

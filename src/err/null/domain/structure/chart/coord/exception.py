@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ParticipantChartNullException
+from err import ChartNullException
 from artifcat import MethodResultType
 
 
 __all__ = [
     # ======================# PARTICIPANT_COORD_CHART_NULL_ERROR #======================#
-    "ParticipantCoordChartNullException",
+    "CoordChartNullException",
 ]
 
 # ======================# PARTICIPANT_COORD_CHART_NULL_ERROR #======================#
-class ParticipantCoordChartNullException(ParticipantChartNullException):
+class CoordChartNullException(ChartNullException):
     """
     Role:
         - Error Tracing

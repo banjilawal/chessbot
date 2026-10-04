@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.BLUEPRINT.STRUCTURE PACKAGE ===========#
 
 # Packages
+from .chart import *
 from .register import *
 from .toggle import *
 

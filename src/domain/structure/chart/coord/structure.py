@@ -12,10 +12,10 @@ from __future__ import  annotations
 from typing import Dict, Optional
 
 from domain import Coord
-from domain.structure.chart import ParticipantChart
+from domain.structure.chart import Chart
 
 
-class CoordChart(ParticipantChart[Coord]):
+class CoordChart(Chart[Coord]):
     """
     Role
         - Data Holder

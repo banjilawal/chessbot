@@ -13,10 +13,10 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar, cast
 
-from domain import ParticipantChart, ParticipantChartBlueprint
+from domain import Chart, ParticipantChartBlueprint
 from transit import StructureCarrier
 
-T = TypeVar("T", bound="ParticipantChart")
+T = TypeVar("T", bound="Chart")
 
 
 class ChartCarrier(StructureCarrier[T], ABC, Generic[T]):

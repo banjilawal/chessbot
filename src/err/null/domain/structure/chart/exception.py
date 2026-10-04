@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# PARTICIPANT_CHART_NULL_ERROR #======================#
-    "ParticipantChartNullException",
+    # ======================# CHART_NULL_ERROR #======================#
+    "ChartNullException",
 ]
 
-# ======================# PARTICIPANT_CHART_NULL_ERROR #======================#
-class ParticipantChartNullException(StructureNullException):
+# ======================# CHART_NULL_ERROR #======================#
+class ChartNullException(StructureNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required ParticipantChart is null.
+        1.  Indicating a required Chart is null.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class ParticipantChartNullException(StructureNullException):
     Super Class:
         StructureNullException
     """
-    MSG = "ParticipantChart cannot be null."
-    ERR_CODE = "PARTICIPANT_CHART_NULL_ERROR"
+    MSG = "Chart cannot be null."
+    ERR_CODE = "CHART_NULL_ERROR"
     
     def __init__(
             self,

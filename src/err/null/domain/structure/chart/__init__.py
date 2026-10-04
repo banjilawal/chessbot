@@ -14,4 +14,4 @@ from .coord import *
 from .token import *
 
 # Modules
-from .exception import ParticipantChartNullException
+from .exception import ChartNullException

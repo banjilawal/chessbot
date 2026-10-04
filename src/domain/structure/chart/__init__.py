@@ -14,4 +14,4 @@ from .coord import *
 from .token import *
 
 # Modules
-from .structure import ParticipantChart
+from .structure import Chart
