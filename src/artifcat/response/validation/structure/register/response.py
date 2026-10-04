@@ -1,7 +1,7 @@
 # src/artifact/response/validation/structure/register/response.py
 
 """
-Module: artifact.response.validation.register.response
+Module: artifact.response.validation.structure.register.response
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -15,7 +15,6 @@ from typing import Generic, Optional, TypeVar, cast
 from artifcat import ResponseState, ValidationResponse, ValidationResult
 from domain import Register, RegisterBlueprint
 from exchange import RegisterValidationRequest, Request
-from transit import RegisterCarrier
 
 T = TypeVar("T", bound="Register")
 
@@ -28,17 +27,10 @@ class RegisterValidationResponse(ValidationResponse[T], ABC, Generic[T]):
         1.  Capture a Register's validation request-response cycle's data and state.
 
     Attributes:
-        state: ResponseState
-        result: ValidationResult
         request: ValidationRequest[T]
         exception: Optional[Exception]
 
     Provides:
-        -   is_success: bool
-        -   is_failure: bool
-        -   is_consistent: bool
-        -   is_not_consistent: bool
-        
         -   def valid_register() -> Optional[T]
         -   def valid_blueprint() -> Optional[RegisterBlueprint[T]]
 
@@ -56,7 +48,6 @@ class RegisterValidationResponse(ValidationResponse[T], ABC, Generic[T]):
     Super Class:
         ValidationResponse
     """
-    _carrier: Optional[RegisterCarrier[T]]
     
     def __init__(
             self,

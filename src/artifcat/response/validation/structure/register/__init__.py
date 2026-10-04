@@ -10,6 +10,8 @@ version: 0.0.2
 # =========== ARTIFACT.RESPONSE.VALIDATION.STRUCTURE.REGISTER PACKAGE ===========#
 
 # Packages
+from .coord import *
+from .square import *
 from .vector import *
 
 # Modules

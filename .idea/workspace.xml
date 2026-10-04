@@ -5,93 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/artifcat/response/validation/structure/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/response/validation/structure/register/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/response/validation/structure/register/response.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/response/validation/structure/register/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/response/validation/structure/register/square/response.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/response/validation/structure/register/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/response/validation/structure/register/vector/response.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/artifcat/response/validation/structure/response.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/request/validation/structure/register/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/request/validation/structure/register/coord/request.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/request/validation/structure/register/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/request/validation/structure/register/vector/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/response/validation/structure/chart/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/response/validation/structure/chart/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/response/validation/structure/chart/coord/response.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/response/validation/structure/chart/response.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/response/validation/structure/chart/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/response/validation/structure/chart/token/response.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/arena/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/arena/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/arena/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/attack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/attack/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/attack/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/attack/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/board/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/board/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/coord/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/coord/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/coord/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/game/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/game/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/game/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/maneuver/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/maneuver/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/maneuver/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/path/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/path/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/path/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/path/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/player/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/player/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/player/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/rank/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/rank/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/rank/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/scalar/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/scalar/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/scalar/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/scalar/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/square/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/square/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/team/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/team/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/team/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/token/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/token/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/vector/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/model/vector/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/fabrication/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/fabrication/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/state.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/arena/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/arena/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/arena/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/arena/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/attack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/attack/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/attack/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/attack/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/board/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/board/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/board/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/coord/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/coord/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/coord/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/game/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/game/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/game/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/game/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/maneuver/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/maneuver/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/maneuver/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/maneuver/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/path/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/path/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/path/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/path/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/player/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/player/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/player/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/player/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/rank/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/rank/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/rank/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/rank/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/scalar/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/scalar/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/scalar/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/scalar/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/square/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/square/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/square/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/team/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/team/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/team/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/token/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/token/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/model/vector/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/model/vector/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/collection/search/schema/resource/context/service/operation/validation/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/collection/search/schema/resource/context/service/operation/validation/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/collection/search/schema/resource/route/router.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/collection/search/schema/resource/route/router.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/validation/structure/chart/coord/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/validation/structure/chart/coord/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/validation/structure/chart/token/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/validation/structure/chart/token/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/validation/structure/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/validation/structure/register/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/validation/structure/register/square/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/validation/structure/register/square/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/wrapper/validation/structure/register/coord/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/wrapper/validation/structure/register/coord/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/structure/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/structure/register/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/structure/register/coord/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/structure/register/coord/response.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/structure/register/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/structure/register/response.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/structure/register/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/structure/register/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/structure/register/square/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/structure/register/square/response.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/structure/register/vector/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/structure/register/vector/response.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/response/validation/structure/response.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/response/validation/structure/response.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,61 +60,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000000000482727" />
-      <entry key="MS500" value="1.0086445105710333" />
-      <entry key="S2" value="1.304919432231134" />
-      <entry key="S5" value="1.621834706332273" />
-      <entry key="S10" value="1.790180696798188" />
-      <entry key="S30" value="2.110083496866351" />
-      <entry key="S60" value="2.5714441376693777" />
-      <entry key="M2" value="3.109422042323206" />
-      <entry key="M5" value="5.590833073016716" />
-      <entry key="M10" value="13.66250780048443" />
-      <entry key="M15" value="21.295163111877073" />
-      <entry key="M30" value="36.36645855391374" />
-      <entry key="H1" value="50.24022116380035" />
-      <entry key="H2" value="89.13866724156533" />
-      <entry key="H4" value="365.7406938806373" />
-      <entry key="D1" value="3385.5176416124273" />
-      <entry key="W1" value="26627.046966743656" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0006109037835829" />
+      <entry key="S2" value="1.1840578406146887" />
+      <entry key="S5" value="1.7125307321221146" />
+      <entry key="S10" value="2.1910972532002013" />
+      <entry key="S30" value="3.1863763817402124" />
+      <entry key="S60" value="4.352452438667294" />
+      <entry key="M2" value="6.5091238396434745" />
+      <entry key="M5" value="19.78395633551587" />
+      <entry key="M10" value="76.28897175840356" />
+      <entry key="M15" value="136.7110172613808" />
+      <entry key="M30" value="258.8554034048388" />
+      <entry key="H1" value="366.0796060446428" />
+      <entry key="H2" value="462.5414490255305" />
+      <entry key="H4" value="748.372269281134" />
+      <entry key="D1" value="3770.511901366259" />
+      <entry key="W1" value="27007.91518167742" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="9.468476560796327E-172" />
-      <entry key="S5" value="3.8950428175506414E-69" />
-      <entry key="S10" value="6.245202051773503E-35" />
-      <entry key="S30" value="4.407404894910139E-12" />
-      <entry key="S60" value="3.220106587552286E-6" />
-      <entry key="M2" value="0.004047578662493217" />
-      <entry key="M5" value="0.3657578818425431" />
-      <entry key="M10" value="1.7639891155626357" />
-      <entry key="M15" value="3.092326299644506" />
-      <entry key="M30" value="5.735146241924474" />
-      <entry key="H1" value="8.138805254486314" />
-      <entry key="H2" value="10.758499463656264" />
-      <entry key="H4" value="21.12583259499705" />
-      <entry key="D1" value="162.40962435599803" />
-      <entry key="W1" value="1248.5009682600062" />
+      <entry key="MS500" value="3.3427073446481045E-264" />
+      <entry key="S2" value="1.360069325911213E-66" />
+      <entry key="S5" value="5.066461378330719E-27" />
+      <entry key="S10" value="9.099445331763662E-14" />
+      <entry key="S30" value="6.945425991037792E-5" />
+      <entry key="S60" value="0.011743143107071415" />
+      <entry key="M2" value="0.15311213944994187" />
+      <entry key="M5" value="0.7162606021077279" />
+      <entry key="M10" value="1.283487222085748" />
+      <entry key="M15" value="1.8368088898162371" />
+      <entry key="M30" value="3.791472535371668" />
+      <entry key="H1" value="6.768235593292116" />
+      <entry key="H2" value="10.291486794094448" />
+      <entry key="H4" value="20.59735170065458" />
+      <entry key="D1" value="161.04864317172363" />
+      <entry key="W1" value="1246.7837467686595" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.011202775375282215" />
-      <entry key="MS500" value="0.4100082697391787" />
-      <entry key="S2" value="1.0279440776179865" />
-      <entry key="S5" value="1.4687167254577624" />
-      <entry key="S10" value="1.7021607368488378" />
-      <entry key="S30" value="2.0663312845106288" />
-      <entry key="S60" value="2.5356109676746117" />
-      <entry key="M2" value="3.087014770269909" />
-      <entry key="M5" value="5.931708957450798" />
-      <entry key="M10" value="15.392828374196307" />
-      <entry key="M15" value="24.35236314300151" />
-      <entry key="M30" value="42.07224066290423" />
-      <entry key="H1" value="58.35936525597068" />
-      <entry key="H2" value="99.88428485601465" />
-      <entry key="H4" value="386.8523114350539" />
-      <entry key="D1" value="3547.9069664080957" />
-      <entry key="W1" value="27875.52629378506" />
+      <entry key="MS100" value="0.9138314502294005" />
+      <entry key="MS500" value="0.9827437563545501" />
+      <entry key="S2" value="1.178987964439711" />
+      <entry key="S5" value="1.709712247127625" />
+      <entry key="S10" value="2.189293614641771" />
+      <entry key="S30" value="3.1854475769235386" />
+      <entry key="S60" value="4.361629348255278" />
+      <entry key="M2" value="6.6534507756095325" />
+      <entry key="M5" value="20.486517008972843" />
+      <entry key="M10" value="77.55889792601677" />
+      <entry key="M15" value="138.53311349234886" />
+      <entry key="M30" value="262.6295684389146" />
+      <entry key="H1" value="372.83212721267563" />
+      <entry key="H2" value="472.8208466055623" />
+      <entry key="H4" value="768.9560039789495" />
+      <entry key="D1" value="3931.5404785049527" />
+      <entry key="W1" value="28254.67732495364" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -236,8 +163,8 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/artifcat/response/validation/structure/register" />
-      <recent name="$PROJECT_DIR$/src/exchange/request/validation/structure/register" />
       <recent name="$PROJECT_DIR$/src/artifcat/response/validation/structure" />
+      <recent name="$PROJECT_DIR$/src/exchange/request/validation/structure/register" />
       <recent name="$PROJECT_DIR$/src/artifcat/response/validation" />
       <recent name="$PROJECT_DIR$/src/exchange/wrapper/validation/structure/chart" />
     </key>
@@ -904,7 +831,7 @@
       <workItem from="1790001362413" duration="735000" />
       <workItem from="1790063398459" duration="258692000" />
       <workItem from="1790480915263" duration="119124000" />
-      <workItem from="1790671354344" duration="189915000" />
+      <workItem from="1790671354344" duration="192124000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

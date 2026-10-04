@@ -1,7 +1,7 @@
-# src/artifact/response/validation/structure/register/square/response.py
+# src/artifact/response/validation/structure/chart/coord/response.py
 
 """
-Module: artifact.response.validation.structure.register.square.response
+Module: artifact.response.validation.structure.chart.coord.response
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,59 +11,59 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import RegisterValidationResponse, ResponseState, ValidationResult
-from exchange import Request, SquareRegisterValidationRequest
-from domain import SquareRegister, SquareRegisterBlueprint
-from transit import SquareRegisterCarrier
+from artifcat import ChartValidationResponse, ResponseState, ValidationResult
+from exchange import Request, CoordChartValidationRequest
+from domain import CoordChart, CoordChartBlueprint
+from transit import CoordChartCarrier
 
 
-class SquareRegisterValidationResponse(
-    RegisterValidationResponse[SquareRegister]
+class CoordChartValidationResponse(
+    ChartValidationResponse[CoordChart]
 ):
     """
     Role
         -   Messaging
 
     Responsibilities:
-        1.  Capture a SquareRegister validation request-response cycle's data and state.
+        1.  Capture a CoordChart validation request-response cycle's data and state.
 
     Attributes:
         state: ResponseState
-        result: ValidationResult[SquareRegisterCarrier]
-        request: SquareRegisterValidationRequest
+        result: ValidationResult[CoordChartCarrier]
+        request: CoordChartValidationRequest
         exception: Optional[Exception]
 
     Provides:
-        -   def valid_model() -> Optional[Square]
-        -   def valid_blueprint() -> Optional[SquareRegisterBlueprint]
+        -   def valid_model() -> Optional[Coord]
+        -   def valid_blueprint() -> Optional[CoordChartBlueprint]
 
         -   def success(
                     request: Request,
-                    result: ValidationResult[SquareRegisterCarrier],
-            ) -> SquareRegisterValidationResponse
+                    result: ValidationResult[CoordChartCarrier],
+            ) -> CoordChartValidationResponse
 
         -   def failure(
                     request: Request,
-                    result: ValidationResult[SquareRegisterCarrier],
+                    result: ValidationResult[CoordChartCarrier],
                     exception: Exception,
-            ) -> SquareRegisterValidationResponse
+            ) -> CoordChartValidationResponse
             
     Super Class:
-        RegisterValidationResponse
+        ChartValidationResponse
     """
     
     def __init__(
             self,
             state: ResponseState,
             result: ValidationResult,
-            request: SquareRegisterValidationRequest,
+            request: CoordChartValidationRequest,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             state: ResponseState
-            result: ValidationResult[SquareRegisterCarrier]
-            request: SquareRegisterValidationRequest
+            result: ValidationResult[CoordChartCarrier]
+            request: CoordChartValidationRequest
             exception: Optional[Exception]
         """
         super().__init__(
@@ -74,49 +74,49 @@ class SquareRegisterValidationResponse(
         )
     
     @property
-    def request(self) -> SquareRegisterValidationRequest:
-        return cast(SquareRegisterValidationRequest, super().request)
+    def request(self) -> CoordChartValidationRequest:
+        return cast(CoordChartValidationRequest, super().request)
     
     @property
-    def valid_model(self) -> Optional[SquareRegister]:
+    def valid_model(self) -> Optional[CoordChart]:
         # Handle the case that the validation failed.
         if self.result.is_failure:
             return None
         # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(SquareRegisterCarrier, self.result.payload)
+        carrier = cast(CoordChartCarrier, self.result.payload)
         
         # Handle the case that the carrier is null or the wrong type.
         if (
                 carrier is None or
-                not isinstance(carrier, SquareRegisterCarrier)
+                not isinstance(carrier, CoordChartCarrier)
         ):
             return None
-        # Handle the case that there is no register in the carrier.
+        # Handle the case that there is no chart in the carrier.
         if not carrier.has_model:
             return None
-        # --- Extract the register. ---#
-        register = cast(SquareRegister, carrier.entity)
-        # Handle the case that the register is null or the wrong type.
+        # --- Extract the chart. ---#
+        chart = cast(CoordChart, carrier.entity)
+        # Handle the case that the chart is null or the wrong type.
         if (
-                register is None or
-                not isinstance(register, SquareRegister)
+                chart is None or
+                not isinstance(chart, CoordChart)
         ):
             return None
         # Finally send the success result.
-        return register
+        return chart
     
     @property
-    def valid_blueprint(self) -> Optional[SquareRegisterBlueprint]:
+    def valid_blueprint(self) -> Optional[CoordChartBlueprint]:
         # Handle the case that the validation failed.
         if self.result.is_failure:
             return None
         # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(SquareRegisterCarrier, self.result.payload)
+        carrier = cast(CoordChartCarrier, self.result.payload)
         
         # Handle the case that the carrier is null or the wrong type.
         if (
                 carrier is None or
-                not isinstance(carrier, SquareRegisterCarrier)
+                not isinstance(carrier, CoordChartCarrier)
         ):
             return None
         # Handle the case that there is no blueprint in the carrier.
@@ -127,7 +127,7 @@ class SquareRegisterValidationResponse(
         # Handle the case that the blueprint is null or the wrong type.
         if (
                 blueprint is None or
-                not isinstance(blueprint, SquareRegisterBlueprint)
+                not isinstance(blueprint, CoordChartBlueprint)
         ):
             return None
         # Finally send the success result.
@@ -138,10 +138,10 @@ class SquareRegisterValidationResponse(
             cls,
             request: Request,
             result: ValidationResult,
-    ) -> SquareRegisterValidationResponse:
-        # Downcast the request into a SquareRegisterValidationRequest.
+    ) -> CoordChartValidationResponse:
+        # Downcast the request into a CoordChartValidationRequest.
         validation_request = cast(
-            SquareRegisterValidationRequest,
+            CoordChartValidationRequest,
             request,
         )
         # Send a success Response using the cast.
@@ -157,10 +157,10 @@ class SquareRegisterValidationResponse(
             request: Request,
             result: ValidationResult,
             exception: Exception,
-    ) -> SquareRegisterValidationResponse:
-        # Downcast the request into a SquareRegisterValidationRequest.
+    ) -> CoordChartValidationResponse:
+        # Downcast the request into a CoordChartValidationRequest.
         validation_request = cast(
-            SquareRegisterValidationRequest,
+            CoordChartValidationRequest,
             request,
         )
         # Send a failure Response using the cast.

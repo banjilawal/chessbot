@@ -1,7 +1,7 @@
-# src/artifact/response/validation/structure/response.py
+# src/artifact/response/validation/structure/chart/response.py
 
 """
-Module: artifact.response.validation.structure.response
+Module: artifact.response.validation.structure.chart.response
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,33 +13,26 @@ from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import ResponseState, ValidationResponse, ValidationResult
-from domain import Structure, StructureBlueprint
-from exchange import Request, StructureValidationRequest
+from domain import Chart, ChartBlueprint
+from exchange import ChartValidationRequest, Request
 
-T = TypeVar("T", bound="Structure")
+T = TypeVar("T", bound="Chart")
 
-class StructureValidationResponse(ValidationResponse[T], ABC, Generic[T]):
+class ChartValidationResponse(ValidationResponse[T], ABC, Generic[T]):
     """
     Role
         -   Messaging
 
     Responsibilities:
-        1.  Capture a Structure's validation request-response cycle's data and state.
+        1.  Capture a Chart's validation request-response cycle's data and state.
 
     Attributes:
-        state: ResponseState
-        result: ValidationResult
         request: ValidationRequest[T]
         exception: Optional[Exception]
 
     Provides:
-        -   is_success: bool
-        -   is_failure: bool
-        -   is_consistent: bool
-        -   is_not_consistent: bool
-        
-        -   def valid_model() -> Optional[T]
-        -   def valid_blueprint() -> Optional[StructureBlueprint[T]]
+        -   def valid_chart() -> Optional[T]
+        -   def valid_blueprint() -> Optional[ChartBlueprint[T]]
 
         -   def success(
                     request: Request,
@@ -60,14 +53,14 @@ class StructureValidationResponse(ValidationResponse[T], ABC, Generic[T]):
             self,
             state: ResponseState,
             result: ValidationResult,
-            request: StructureValidationRequest[T],
+            request: ChartValidationRequest[T],
             exception:Optional[Exception] | None = None,
     ):
         """
         Args:
             state: ResponseState
-            result: ValidationResult
-            request: StructureValidationRequest[T]
+            result: ValidationResult,
+            request: ChartValidationRequest[T]
             exception:Optional[Exception]
         """
         super().__init__(
@@ -82,17 +75,17 @@ class StructureValidationResponse(ValidationResponse[T], ABC, Generic[T]):
         return cast(ValidationResult, super().result)
         
     @property
-    def request(self) -> StructureValidationRequest[T]:
-        return cast(StructureValidationRequest[T], super().request)
+    def request(self) -> ChartValidationRequest[T]:
+        return cast(ChartValidationRequest[T], super().request)
     
     @property
     @abstractmethod
-    def valid_model(self) -> Optional[Structure[T]]:
+    def valid_model(self) -> Optional[T]:
         pass
     
     @property
     @abstractmethod
-    def valid_blueprint(self) -> Optional[StructureBlueprint[T]]:
+    def valid_blueprint(self) -> Optional[ChartBlueprint[T]]:
         pass
         
     @classmethod
@@ -100,10 +93,10 @@ class StructureValidationResponse(ValidationResponse[T], ABC, Generic[T]):
             cls,
             request: Request,
             result: ValidationResult,
-    ) -> StructureValidationResponse:
+    ) -> ChartValidationResponse:
         # Downcast the request into a ValidationRequest.
         validation_request = cast(
-            StructureValidationRequest[T],
+            ChartValidationRequest[T],
             request
         )
         # Send a success Response using the cast.
@@ -119,10 +112,10 @@ class StructureValidationResponse(ValidationResponse[T], ABC, Generic[T]):
             request: Request,
             result: ValidationResult,
             exception: Exception,
-    ) -> StructureValidationResponse:
+    ) -> ChartValidationResponse:
         # Downcast the request into a ValidationRequest.
         validation_request = cast(
-            StructureValidationRequest[T],
+            ChartValidationRequest[T],
             request
         )
         # Send a failure Response using the cast.

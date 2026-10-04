@@ -1,7 +1,7 @@
-# src/artifact/response/validation/structure/register/square/response.py
+# src/artifact/response/validation/structure/chart/token/response.py
 
 """
-Module: artifact.response.validation.structure.register.square.response
+Module: artifact.response.validation.structure.chart.token.response
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,59 +11,59 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import RegisterValidationResponse, ResponseState, ValidationResult
-from exchange import Request, SquareRegisterValidationRequest
-from domain import SquareRegister, SquareRegisterBlueprint
-from transit import SquareRegisterCarrier
+from artifcat import ChartValidationResponse, ResponseState, ValidationResult
+from exchange import Request, TokenChartValidationRequest
+from domain import TokenChart, TokenChartBlueprint
+from transit import TokenChartCarrier
 
 
-class SquareRegisterValidationResponse(
-    RegisterValidationResponse[SquareRegister]
+class TokenChartValidationResponse(
+    ChartValidationResponse[TokenChart]
 ):
     """
     Role
         -   Messaging
 
     Responsibilities:
-        1.  Capture a SquareRegister validation request-response cycle's data and state.
+        1.  Capture a TokenChart validation request-response cycle's data and state.
 
     Attributes:
         state: ResponseState
-        result: ValidationResult[SquareRegisterCarrier]
-        request: SquareRegisterValidationRequest
+        result: ValidationResult[TokenChartCarrier]
+        request: TokenChartValidationRequest
         exception: Optional[Exception]
 
     Provides:
-        -   def valid_model() -> Optional[Square]
-        -   def valid_blueprint() -> Optional[SquareRegisterBlueprint]
+        -   def valid_model() -> Optional[Token]
+        -   def valid_blueprint() -> Optional[TokenChartBlueprint]
 
         -   def success(
                     request: Request,
-                    result: ValidationResult[SquareRegisterCarrier],
-            ) -> SquareRegisterValidationResponse
+                    result: ValidationResult[TokenChartCarrier],
+            ) -> TokenChartValidationResponse
 
         -   def failure(
                     request: Request,
-                    result: ValidationResult[SquareRegisterCarrier],
+                    result: ValidationResult[TokenChartCarrier],
                     exception: Exception,
-            ) -> SquareRegisterValidationResponse
+            ) -> TokenChartValidationResponse
             
     Super Class:
-        RegisterValidationResponse
+        ChartValidationResponse
     """
     
     def __init__(
             self,
             state: ResponseState,
             result: ValidationResult,
-            request: SquareRegisterValidationRequest,
+            request: TokenChartValidationRequest,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             state: ResponseState
-            result: ValidationResult[SquareRegisterCarrier]
-            request: SquareRegisterValidationRequest
+            result: ValidationResult[TokenChartCarrier]
+            request: TokenChartValidationRequest
             exception: Optional[Exception]
         """
         super().__init__(
@@ -74,49 +74,49 @@ class SquareRegisterValidationResponse(
         )
     
     @property
-    def request(self) -> SquareRegisterValidationRequest:
-        return cast(SquareRegisterValidationRequest, super().request)
+    def request(self) -> TokenChartValidationRequest:
+        return cast(TokenChartValidationRequest, super().request)
     
     @property
-    def valid_model(self) -> Optional[SquareRegister]:
+    def valid_model(self) -> Optional[TokenChart]:
         # Handle the case that the validation failed.
         if self.result.is_failure:
             return None
         # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(SquareRegisterCarrier, self.result.payload)
+        carrier = cast(TokenChartCarrier, self.result.payload)
         
         # Handle the case that the carrier is null or the wrong type.
         if (
                 carrier is None or
-                not isinstance(carrier, SquareRegisterCarrier)
+                not isinstance(carrier, TokenChartCarrier)
         ):
             return None
-        # Handle the case that there is no register in the carrier.
+        # Handle the case that there is no chart in the carrier.
         if not carrier.has_model:
             return None
-        # --- Extract the register. ---#
-        register = cast(SquareRegister, carrier.entity)
-        # Handle the case that the register is null or the wrong type.
+        # --- Extract the chart. ---#
+        chart = cast(TokenChart, carrier.entity)
+        # Handle the case that the chart is null or the wrong type.
         if (
-                register is None or
-                not isinstance(register, SquareRegister)
+                chart is None or
+                not isinstance(chart, TokenChart)
         ):
             return None
         # Finally send the success result.
-        return register
+        return chart
     
     @property
-    def valid_blueprint(self) -> Optional[SquareRegisterBlueprint]:
+    def valid_blueprint(self) -> Optional[TokenChartBlueprint]:
         # Handle the case that the validation failed.
         if self.result.is_failure:
             return None
         # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(SquareRegisterCarrier, self.result.payload)
+        carrier = cast(TokenChartCarrier, self.result.payload)
         
         # Handle the case that the carrier is null or the wrong type.
         if (
                 carrier is None or
-                not isinstance(carrier, SquareRegisterCarrier)
+                not isinstance(carrier, TokenChartCarrier)
         ):
             return None
         # Handle the case that there is no blueprint in the carrier.
@@ -127,7 +127,7 @@ class SquareRegisterValidationResponse(
         # Handle the case that the blueprint is null or the wrong type.
         if (
                 blueprint is None or
-                not isinstance(blueprint, SquareRegisterBlueprint)
+                not isinstance(blueprint, TokenChartBlueprint)
         ):
             return None
         # Finally send the success result.
@@ -138,10 +138,10 @@ class SquareRegisterValidationResponse(
             cls,
             request: Request,
             result: ValidationResult,
-    ) -> SquareRegisterValidationResponse:
-        # Downcast the request into a SquareRegisterValidationRequest.
+    ) -> TokenChartValidationResponse:
+        # Downcast the request into a TokenChartValidationRequest.
         validation_request = cast(
-            SquareRegisterValidationRequest,
+            TokenChartValidationRequest,
             request,
         )
         # Send a success Response using the cast.
@@ -157,10 +157,10 @@ class SquareRegisterValidationResponse(
             request: Request,
             result: ValidationResult,
             exception: Exception,
-    ) -> SquareRegisterValidationResponse:
-        # Downcast the request into a SquareRegisterValidationRequest.
+    ) -> TokenChartValidationResponse:
+        # Downcast the request into a TokenChartValidationRequest.
         validation_request = cast(
-            SquareRegisterValidationRequest,
+            TokenChartValidationRequest,
             request,
         )
         # Send a failure Response using the cast.

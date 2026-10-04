@@ -1,7 +1,7 @@
-# src/artifact/response/validation/structure/response.py
+# src/artifact/response/validation/structure/register/vector/response.py
 
 """
-Module: artifact.response.validation.response
+Module: artifact.response.validation.structure.register.vector.response
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -25,11 +25,11 @@ class VectorRegisterValidationResponse(
         -   Messaging
 
     Responsibilities:
-        1.  Capture a Vector validation request-response cycle's data and state.
+        1.  Capture a VectorRegister validation request-response cycle's data and state.
 
     Attributes:
         state: ResponseState
-        result: ValidationResult,
+        result: ValidationResult[VectorRegisterCarrier]
         request: VectorRegisterValidationRequest
         exception: Optional[Exception]
 
@@ -51,6 +51,7 @@ class VectorRegisterValidationResponse(
     Super Class:
         RegisterValidationResponse
     """
+    
     def __init__(
             self,
             state: ResponseState,
@@ -61,7 +62,7 @@ class VectorRegisterValidationResponse(
         """
         Args:
             state: ResponseState
-            result: ValidationResult,
+            result: ValidationResult[VectorRegisterCarrier]
             request: VectorRegisterValidationRequest
             exception: Optional[Exception]
         """
@@ -71,7 +72,7 @@ class VectorRegisterValidationResponse(
             request=request,
             exception=exception or result.exception,
         )
-        
+    
     @property
     def request(self) -> VectorRegisterValidationRequest:
         return cast(VectorRegisterValidationRequest, super().request)
@@ -97,8 +98,8 @@ class VectorRegisterValidationResponse(
         register = cast(VectorRegister, carrier.entity)
         # Handle the case that the register is null or the wrong type.
         if (
-            register is None or
-            not isinstance(register, VectorRegister)
+                register is None or
+                not isinstance(register, VectorRegister)
         ):
             return None
         # Finally send the success result.
@@ -138,7 +139,6 @@ class VectorRegisterValidationResponse(
             request: Request,
             result: ValidationResult,
     ) -> VectorRegisterValidationResponse:
-        
         # Downcast the request into a VectorRegisterValidationRequest.
         validation_request = cast(
             VectorRegisterValidationRequest,
@@ -158,7 +158,6 @@ class VectorRegisterValidationResponse(
             result: ValidationResult,
             exception: Exception,
     ) -> VectorRegisterValidationResponse:
-        
         # Downcast the request into a VectorRegisterValidationRequest.
         validation_request = cast(
             VectorRegisterValidationRequest,

@@ -1,7 +1,7 @@
-# src/artifact/response/validation/structure/response.py
+# src/artifact/response/validation/structure/register/coord/response.py
 
 """
-Module: artifact.response.validation.response
+Module: artifact.response.validation.structure.register.coord.response
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -25,11 +25,11 @@ class CoordRegisterValidationResponse(
         -   Messaging
 
     Responsibilities:
-        1.  Capture a Coord validation request-response cycle's data and state.
+        1.  Capture a CoordRegister validation request-response cycle's data and state.
 
     Attributes:
         state: ResponseState
-        result: ValidationResult,
+        result: ValidationResult[CoordRegisterCarrier]
         request: CoordRegisterValidationRequest
         exception: Optional[Exception]
 
@@ -51,6 +51,7 @@ class CoordRegisterValidationResponse(
     Super Class:
         RegisterValidationResponse
     """
+    
     def __init__(
             self,
             state: ResponseState,
@@ -61,7 +62,7 @@ class CoordRegisterValidationResponse(
         """
         Args:
             state: ResponseState
-            result: ValidationResult,
+            result: ValidationResult[CoordRegisterCarrier]
             request: CoordRegisterValidationRequest
             exception: Optional[Exception]
         """
@@ -71,7 +72,7 @@ class CoordRegisterValidationResponse(
             request=request,
             exception=exception or result.exception,
         )
-        
+    
     @property
     def request(self) -> CoordRegisterValidationRequest:
         return cast(CoordRegisterValidationRequest, super().request)
@@ -97,8 +98,8 @@ class CoordRegisterValidationResponse(
         register = cast(CoordRegister, carrier.entity)
         # Handle the case that the register is null or the wrong type.
         if (
-            register is None or
-            not isinstance(register, CoordRegister)
+                register is None or
+                not isinstance(register, CoordRegister)
         ):
             return None
         # Finally send the success result.
@@ -138,7 +139,6 @@ class CoordRegisterValidationResponse(
             request: Request,
             result: ValidationResult,
     ) -> CoordRegisterValidationResponse:
-        
         # Downcast the request into a CoordRegisterValidationRequest.
         validation_request = cast(
             CoordRegisterValidationRequest,
@@ -158,7 +158,6 @@ class CoordRegisterValidationResponse(
             result: ValidationResult,
             exception: Exception,
     ) -> CoordRegisterValidationResponse:
-        
         # Downcast the request into a CoordRegisterValidationRequest.
         validation_request = cast(
             CoordRegisterValidationRequest,
