@@ -1,7 +1,7 @@
-# src/assurance/root/validator/token/token/validator.py
+# src/assurance/validator/struct/chain/token/validator.py
 
 """
-Module: assurance.root.validator.token.token.validator
+Module: assurance.validator.struct.chain.token.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

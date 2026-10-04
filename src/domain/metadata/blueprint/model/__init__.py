@@ -12,6 +12,7 @@ version: 0.0.2
 # Packages
 from .coord import *
 from .maneuver import *
+from .path import *
 from .rank import *
 from .scalar import *
 from .state import *

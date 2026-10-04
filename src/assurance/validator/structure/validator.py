@@ -1,7 +1,7 @@
-# src/assurance/validator/structure/validator.py
+# src/assurance/validator/struct/validator.py
 
 """
-Module: assurance.validator.structure.validator
+Module: assurance.validator.struct.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,55 +13,55 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import StructureValidatorToolkit, Validator
-from domain import Structure, StructureValidationRequest
-from transit import StructureCarrier
+from assurance import StructValidatorToolkit, Validator
+from domain import Struct, StructValidationRequest
+from transit import StructCarrier
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Structure")
+T = TypeVar("T", bound="Struct")
 
 
-class StructureValidator(Validator[T], ABC, Generic[T]):
+class StructValidator(Validator[T], ABC, Generic[T]):
     """
     Role
         - Integrity Assurance Worker
 
     Responsibilities:
         1.  Check that a candidate is the right type of not-null EntityCarrier.
-        2.  Run safety checks on structures and blueprints inside an EntityCarrier's payload.
+        2.  Run safety checks on structs and blueprints inside an EntityCarrier's payload.
 
     Attributes:
-        toolkit: StructureValidatorToolkit[T]
+        toolkit: StructValidatorToolkit[T]
 
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult[StructureCarrier[T]]:
+        -   def execute(candidate: Any) -> ValidationResult[StructCarrier[T]]:
 
     Super Class:
         Validator
     """
     
-    def __init__(self, toolkit: StructureValidatorToolkit[T]):
+    def __init__(self, toolkit: StructValidatorToolkit[T]):
         """
         Args:
-            toolkit: StructureValidatorToolkit[T]
+            toolkit: StructValidatorToolkit[T]
         """
         super().__init__(toolkit=toolkit)
     
     @property
-    def toolkit(self) -> StructureValidatorToolkit[T]:
-        return cast(StructureValidatorToolkit[T], super().toolkit)
+    def toolkit(self) -> StructValidatorToolkit[T]:
+        return cast(StructValidatorToolkit[T], super().toolkit)
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[StructureCarrier[T]]:
+    def execute(self, candidate: Any) -> ValidationResult[StructCarrier[T]]:
         """
         Verify the candidate is an EntityCarrier whose payload is safe.
         Args:
             candidate: Any
         Returns:
-           ValidationResult[StructureCarrier[T]]
+           ValidationResult[StructCarrier[T]]
         Raises:
-            StructureValidatorException
+            StructValidatorException
         """
         pass
     

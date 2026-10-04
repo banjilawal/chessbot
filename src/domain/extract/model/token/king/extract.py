@@ -45,7 +45,7 @@ class KingTokenPrimeExtract(TokenPrimeExtract[KingToken]):
             carrier: KingTokenCarrier
             blueprint: Optional[KingTokenBlueprint]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint,)
+        super().__init__(carrier=carrier, blueprint=blueprint)
         
     @property
     def carrier(self) -> KingTokenCarrier:

@@ -1,7 +1,7 @@
-# src/domain/structure/register/square/structure.py
+# src/domain/struct/register/square/struct.py
 
 """
-Module: domain.structure.register.square.structure
+Module: domain.struct.register.square.struct
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

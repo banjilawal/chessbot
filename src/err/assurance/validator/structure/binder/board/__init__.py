@@ -1,13 +1,13 @@
-# src/err/assurance/validator/structurebinder/board/__init__.py
+# src/err/assurance/validator/structbinder/board/__init__.py
 
 """
-Module: err.assurance.validator.structure.binder.board.__init__
+Module: err.assurance.validator.struct.binder.board.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.ASSURANCE.VALIDATOR.STRUCTURE.BINDER.BOARD PACKAGE ===========#
+# ============ ERR.ASSURANCE.VALIDATOR.STRUCT.BINDER.BOARD PACKAGE ===========#
 
 # Packages
 

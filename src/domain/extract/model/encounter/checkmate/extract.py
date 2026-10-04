@@ -45,7 +45,7 @@ class CheckmateEncounterPrimeExtract(EncounterPrimeExtract[CheckmateEncounter]):
             carrier: CheckmateEncounterCarrier
             blueprint: Optional[CheckmateEncounterBlueprint]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint,)
+        super().__init__(carrier=carrier, blueprint=blueprint)
         
     @property
     def carrier(self) -> CheckmateEncounterCarrier:

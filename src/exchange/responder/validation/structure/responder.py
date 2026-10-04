@@ -1,7 +1,7 @@
-# src/exchange/responder/validation/structure/exchange.py
+# src/exchange/responder/validation/struct/exchange.py
 
 """
-Module: exchange.responder.validation.structure.exchange
+Module: exchange.responder.validation.struct.exchange
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,15 +12,15 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
-from artifcat import StructureValidationResponse
-from domain import Structure
-from exchange import StructureValidationRequest, ValidationResponder
-from transit import StructureValidationDispatcher
+from artifcat import StructValidationResponse
+from domain import Struct
+from exchange import StructValidationRequest, ValidationResponder
+from transit import StructValidationDispatcher
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Structure")
+T = TypeVar("T", bound="Struct")
 
-class StructureValidationResponder(
+class StructValidationResponder(
     ValidationResponder[T],
     ABC,
     Generic[T],
@@ -30,42 +30,42 @@ class StructureValidationResponder(
         - Mediator
 
     Responsibilities:
-        1.  Intermediary in the Structure validation Request-Response workflow.
+        1.  Intermediary in the Struct validation Request-Response workflow.
 
     Attributes:
-        dispatcher: StructureValidationDispatcher[T]
+        dispatcher: StructValidationDispatcher[T]
 
     Provides:
-        -   def submit(request: StructureValidationRequest[T]) -> StructureValidationResponse[T]
+        -   def submit(request: StructValidationRequest[T]) -> StructValidationResponse[T]
 
     Super Class:
         ValidatorExchange
     """
     
-    def __init__(self, dispatcher: StructureValidationDispatcher[T]):
+    def __init__(self, dispatcher: StructValidationDispatcher[T]):
         """
         Args:
-            dispatcher: StructureValidationDispatcher[T]
+            dispatcher: StructValidationDispatcher[T]
         """
         super().__init__(dispatcher=dispatcher)
         
     @property
-    def dispatcher(self) -> StructureValidationDispatcher[T]:
-        return cast(StructureValidationDispatcher, super().dispatcher)
+    def dispatcher(self) -> StructValidationDispatcher[T]:
+        return cast(StructValidationDispatcher, super().dispatcher)
     
     
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            request: StructureValidationRequest[T]
-    ) -> StructureValidationResponse[T]:
+            request: StructValidationRequest[T]
+    ) -> StructValidationResponse[T]:
         """
         Args:
-            request: StructureValidationRequest[T]
+            request: StructValidationRequest[T]
         Result:
-            StructureValidationResponse[T]
+            StructValidationResponse[T]
         Raises:
-            StructureValidatorExchangeException
+            StructValidatorExchangeException
         """
         pass

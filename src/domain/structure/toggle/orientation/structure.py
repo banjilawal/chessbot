@@ -1,7 +1,7 @@
-# src/domain/structure/toggle/orientation/toggle.py
+# src/domain/struct/toggle/orientation/toggle.py
 
 """
-Module: domain.structure.toggle.orientation.toggle
+Module: domain.struct.toggle.orientation.toggle
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

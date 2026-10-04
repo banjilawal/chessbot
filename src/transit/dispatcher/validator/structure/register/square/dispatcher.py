@@ -1,4 +1,4 @@
-# src/transit/dispatcher/validator/structure/register/square/validator.py
+# src/transit/dispatcher/validator/struct/register/square/validator.py
 
 """
 Module: transit.dispatcher.validator.register.square.validator
@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from assurance import SquareRegisterValidator
 from err import SquareRegisterValidationDispatcherException
-from domain.structure.register import SquareRegister
+from domain.struct.register import SquareRegister
 from artifcat import ValidationResult
 from transit import SquareRegisterCarrier
 from util import LoggingLevelRouter

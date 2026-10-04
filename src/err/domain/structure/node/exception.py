@@ -1,7 +1,7 @@
-# src/err/domain/structure/node/exception.py
+# src/err/domain/struct/node/exception.py
 
 """
-Module: err.domain.structure.node.exception
+Module: err.domain.struct.node.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StructureException
+from err import StructException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# NODE_ERROR #======================#
-class NodeException(StructureException):
+class NodeException(StructException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class NodeException(StructureException):
     Provides:
 
     Super Class:
-        StructureException
+        StructException
     """
     MSG = "Node error."
     ERR_CODE = "NODE_ERROR"

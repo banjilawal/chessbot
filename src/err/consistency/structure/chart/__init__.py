@@ -1,13 +1,13 @@
-# src/err/consistency/structure/chart/__init__.py
+# src/err/consistency/struct/chart/__init__.py
 
 """
-Module: err.consistency.structure.chart.__init__
+Module: err.consistency.struct.chart.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# =========== ERR.CONSISTENCY.STRUCTURE.CHART PACKAGE ===========#
+# =========== ERR.CONSISTENCY.STRUCT.CHART PACKAGE ===========#
 
 # Packages
 from .coord import *

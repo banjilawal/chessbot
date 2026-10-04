@@ -1,7 +1,7 @@
-# src/err/transit/dispatcher/validation/structure/register/square/exception.py
+# src/err/transit/dispatcher/validation/struct/register/square/exception.py
 
 """
-Module: err.transit.dispatcher.validation.structure.register.square.exception
+Module: err.transit.dispatcher.validation.struct.register.square.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

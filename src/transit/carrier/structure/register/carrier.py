@@ -1,7 +1,7 @@
-# src/transit/carrier/structure/register/carrier.py
+# src/transit/carrier/struct/register/carrier.py
 
 """
-Module: transit.carrier.structure.register.carrier
+Module: transit.carrier.struct.register.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -14,12 +14,12 @@ from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar, cast
 
 from domain import Register, RegisterBlueprint
-from transit import StructureCarrier
+from transit import StructCarrier
 
 T = TypeVar("T", bound="Register")
 
 
-class RegisterCarrier(StructureCarrier[T], ABC, Generic[T]):
+class RegisterCarrier(StructCarrier[T], ABC, Generic[T]):
     """
     Role:
         - Boundary Carrier Interface
@@ -36,7 +36,7 @@ class RegisterCarrier(StructureCarrier[T], ABC, Generic[T]):
         -   def extract_blueprint() -> Optional[RegisterBlueprint[T]]
 
     Super Class:
-        StructureCarrier
+        StructCarrier
     """
     
     def __init__(

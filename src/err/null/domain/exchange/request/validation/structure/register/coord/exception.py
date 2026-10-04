@@ -1,7 +1,7 @@
-# src/err/null/domain/request/validation/structure/register/coord/exception.py
+# src/err/null/domain/request/validation/struct/register/coord/exception.py
 
 """
-Module: err.null.domain.request.validation.structure.register.coord.exception
+Module: err.null.domain.request.validation.struct.register.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

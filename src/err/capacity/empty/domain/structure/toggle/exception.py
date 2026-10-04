@@ -1,7 +1,7 @@
-# src/err/assurance/empty/domain/structure/toggle/exception.py
+# src/err/assurance/empty/domain/struct/toggle/exception.py
 
 """
-Module: err.assurance.empty.domain.structure.toggle.exception
+Module: err.assurance.empty.domain.struct.toggle.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import EmptyStructureException
+from err import EmptyStructException
 
 __all__ = [
     # ======================# EMPTY_TOGGLE_ERROR #======================#
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# EMPTY_TOGGLE_ERROR #======================#
-class EmptyToggleException(EmptyStructureException):
+class EmptyToggleException(EmptyStructException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class EmptyToggleException(EmptyStructureException):
     Provides:
 
     Super Class:
-       EmptyStructureException
+       EmptyStructException
     """
     MSG = "Toggle cannot be empty."
     ERR_CODE = "EMPTY_TOGGLE_ERROR"

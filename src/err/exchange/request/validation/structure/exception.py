@@ -1,7 +1,7 @@
-# src/err/exchange/request/validation/structure/exception.py
+# src/err/exchange/request/validation/struct/exception.py
 
 """
-Module: err.exchange.request.validation.structure.exception
+Module: err.exchange.request.validation.struct.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,18 +16,18 @@ from err import ValidationRequestException
 
 
 __all__ = [
-    # ======================# STRUCTURE_VALIDATION_REQUEST_FAILURE #======================#
-    "StructureValidationRequestException",
+    # ======================# STRUCT_VALIDATION_REQUEST_FAILURE #======================#
+    "StructValidationRequestException",
 ]
 
-# ======================# STRUCTURE_VALIDATION_REQUEST_FAILURE #======================#
-class StructureValidationRequestException(ValidationRequestException):
+# ======================# STRUCT_VALIDATION_REQUEST_FAILURE #======================#
+class StructValidationRequestException(ValidationRequestException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a StructureValidationRequest encountered and error.
+        1.  Indicating a StructValidationRequest encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class StructureValidationRequestException(ValidationRequestException):
     Super Class:
         ValidationRequestException
     """
-    MSG = "StructureValidationRequest error."
-    ERR_CODE = "STRUCTURE_VALIDATION_REQUEST_FAILURE"
+    MSG = "StructValidationRequest error."
+    ERR_CODE = "STRUCT_VALIDATION_REQUEST_FAILURE"
     
     def __init__(
             self,

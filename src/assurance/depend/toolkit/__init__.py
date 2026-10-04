@@ -12,7 +12,7 @@ version: 0.0.2
 # Packages
 from .common import *
 from .model import *
-from .structure import *
+from .struct import *
 
 # Module
 from .toolkit import ValidatorToolkit

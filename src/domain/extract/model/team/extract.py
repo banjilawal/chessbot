@@ -11,8 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelPrimeExtract
-from domain import Team, TeamBlueprint
+from domain import ModelPrimeExtract, Team, TeamBlueprint
 from transit import TeamCarrier
 
 
@@ -43,10 +42,10 @@ class TeamPrimeExtract(ModelPrimeExtract[Team]):
     ):
         """
         Args:
-            carrier: EntityCarrier[Team]
+            carrier: TeamCarrier
             blueprint: Optional[Blueprint[Team]]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint,)
+        super().__init__(carrier=carrier, blueprint=blueprint)
         
     @property
     def carrier(self) -> TeamCarrier:

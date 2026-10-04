@@ -1,7 +1,7 @@
-# src/err/assurance/validator/structure/exception.py
+# src/err/assurance/validator/struct/exception.py
 
 """
-Module: err.assurance.validator.structure.exception
+Module: err.assurance.validator.struct.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# STRUCTURE_VALIDATOR_FAILURE #======================#
-    "StructureValidatorException",
+    # ======================# STRUCT_VALIDATOR_FAILURE #======================#
+    "StructValidatorException",
 ]
 
-# ======================# STRUCTURE_VALIDATOR_FAILURE #======================#
-class StructureValidatorException(ValidatorException):
+# ======================# STRUCT_VALIDATOR_FAILURE #======================#
+class StructValidatorException(ValidatorException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a StructureValidator failed.
+        1.  Indicating assurance by a StructValidator failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class StructureValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "StructureValidator failure."
-    ERR_CODE = "STRUCTURE_VALIDATOR_FAILURE"
+    MSG = "StructValidator failure."
+    ERR_CODE = "STRUCT_VALIDATOR_FAILURE"
     
     def __init__(
             self,

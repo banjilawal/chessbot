@@ -1,7 +1,7 @@
-# src/domain/metadata/blueprint/structure/chart/token.blueprint.py
+# src/domain/metadata/blueprint/struct/chart/token.blueprint.py
 
 """
-Module: domain.metadata.blueprint.structure.chart.token.blueprint
+Module: domain.metadata.blueprint.struct.chart.token.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

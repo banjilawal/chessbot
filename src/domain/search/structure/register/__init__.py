@@ -1,13 +1,13 @@
-# src/domain/search/structure/node/__init__.py
+# src/domain/search/struct/node/__init__.py
 
 """
-Module: domain.search.structure.node.__init__
+Module: domain.search.struct.node.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== DOMAIN.SEARCH.STRUCTURE.NODE PACKAGE ===========#
+# =========== DOMAIN.SEARCH.STRUCT.NODE PACKAGE ===========#
 
 # Packages
 from .dossier import *

@@ -1,7 +1,7 @@
-# src/domain/structure/node/vector/structure.py
+# src/domain/struct/node/vector/struct.py
 
 """
-Module: domain.structure.node.vector.structure
+Module: domain.struct.node.vector.struct
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

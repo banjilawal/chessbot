@@ -1,7 +1,7 @@
-# src/domain/metadata/nulls/structure/register/square/group.py
+# src/domain/metadata/nulls/struct/register/square/group.py
 
 """
-Module: domain.metadata.nulls.structure.register.square.group
+Module: domain.metadata.nulls.struct.register.square.group
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -57,12 +57,12 @@ class SquareRegisterNullGroup(RegisterNullGroup[SquareRegister]):
         )
         
     @property
-    def structure(self) -> SquareRegisterNullException:
+    def struct(self) -> SquareRegisterNullException:
         return cast(SquareRegisterNullException, super().model)
     
     @property
     def model(self) -> SquareRegisterNullException:
-        return self.structure
+        return self.struct
     
     @property
     def carrier(self) -> SquareRegisterCarrierNullException:

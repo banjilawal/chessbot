@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from collection import Chain
-from exchange.structures.node import Node
+from exchange.structs.node import Node
 from operation import AddNode
 from exchange.request import InsertionRequest
 

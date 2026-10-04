@@ -1,7 +1,7 @@
-# src/err/null/domain/request/validation/structure/exception.py
+# src/err/null/domain/request/validation/struct/exception.py
 
 """
-Module: err.null.domain.request.validation.structure.exception
+Module: err.null.domain.request.validation.struct.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 from err import ValidationRequestNullException
 
 __all__ = [
-    # ======================# STRUCTURE_VALIDATION_REQUEST_NULL_ERROR #======================#
-    "StructureValidationRequestNullException",
+    # ======================# STRUCT_VALIDATION_REQUEST_NULL_ERROR #======================#
+    "StructValidationRequestNullException",
 ]
 
-# ======================# STRUCTURE_VALIDATION_REQUEST_NULL_ERROR #======================#
-class StructureValidationRequestNullException(ValidationRequestNullException):
+# ======================# STRUCT_VALIDATION_REQUEST_NULL_ERROR #======================#
+class StructValidationRequestNullException(ValidationRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a StructureValidationRequestNullException is null.
+        1.  Indicating that a StructValidationRequestNullException is null.
 
     Attributes:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class StructureValidationRequestNullException(ValidationRequestNullException):
     Super Class:
         RequestNullException
     """
-    MSG = "StructureValidationRequest cannot be null."
-    ERR_CODE = "STRUCTURE_VALIDATION_REQUEST_NULL_ERROR"
+    MSG = "StructValidationRequest cannot be null."
+    ERR_CODE = "STRUCT_VALIDATION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

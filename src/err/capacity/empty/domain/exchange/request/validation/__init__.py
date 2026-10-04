@@ -11,6 +11,6 @@ version: 0.0.2
 
 # Packages
 from .model import *
-from .structure import *
+from .struct import *
 
 # Modules

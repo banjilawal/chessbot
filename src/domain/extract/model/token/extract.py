@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar, cast
 
-from domain import Blueprint, ModelPrimeExtract, Token, TokenBlueprint
+from domain import ModelPrimeExtract, Token, TokenBlueprint
 from transit import TokenCarrier
 
 T = TypeVar("T", bound="Token")
@@ -47,7 +47,7 @@ class TokenPrimeExtract(ModelPrimeExtract[T], ABC, Generic[T]):
             carrier: TokenCarrier[T]
             blueprint: Optional[TokenBlueprint[T]]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint,)
+        super().__init__(carrier=carrier, blueprint=blueprint)
         
     @property
     def carrier(self) -> TokenCarrier[T]:

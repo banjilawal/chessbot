@@ -1,4 +1,4 @@
-# src/transit/dispatcher/validator/structure/register/validator.py
+# src/transit/dispatcher/validator/struct/register/validator.py
 
 """
 Module: transit.dispatcher.validator.register.validator
@@ -15,12 +15,12 @@ from typing import Any, Generic, TypeVar, cast
 from assurance import RegisterValidator
 from artifcat import ValidationResult
 from domain import Register
-from transit import RegisterCarrier, StructureValidationDispatcher
+from transit import RegisterCarrier, StructValidationDispatcher
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Register")
 
-class RegisterValidationDispatcher(StructureValidationDispatcher[T], ABC, Generic[T]):
+class RegisterValidationDispatcher(StructValidationDispatcher[T], ABC, Generic[T]):
     """
     Role
         - Transaction Worker

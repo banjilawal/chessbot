@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/structure/chart/token/wrapper.py
+# src/exchange/wrapper/validation/struct/chart/token/wrapper.py
 
 """
-Module: exchange.wrapper.validation.structure.chart.token.wrapper
+Module: exchange.wrapper.validation.struct.chart.token.wrapper
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

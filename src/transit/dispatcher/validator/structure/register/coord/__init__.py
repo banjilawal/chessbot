@@ -1,4 +1,4 @@
-# src/transit/dispatcher/validator/structure/register/coord/__init__.py
+# src/transit/dispatcher/validator/struct/register/coord/__init__.py
 
 """
 Module: transit.dispatcher.validator.register.coord.__init__

@@ -1,13 +1,13 @@
-# src/err/assurance/loader/structure/register/coord/__init__.py
+# src/err/assurance/loader/struct/register/coord/__init__.py
 
 """
-Module: err.assurance.loader.structure.register.coord.__init__
+Module: err.assurance.loader.struct.register.coord.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# =========== ERR.ASSURANCE.LOADER.STRUCTURE.REGISTER.COORD PACKAGE ===========#
+# =========== ERR.ASSURANCE.LOADER.STRUCT.REGISTER.COORD PACKAGE ===========#
 
 # Packages
 

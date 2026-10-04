@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from authorization import InsertionRequestAuthorizer
-from domain.structure.node import Node
+from domain.struct.node import Node
 from artifcat.report import AuthorizationDecision
 from client.exchange import AddNodeRequest
 from operation.utility import AddNodePermissionUtility

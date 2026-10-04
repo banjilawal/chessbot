@@ -45,7 +45,7 @@ class KingPrimeExtract(RankPrimeExtract[King]):
             carrier: KingCarrier
             blueprint: Optional[KingBlueprint]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint,)
+        super().__init__(carrier=carrier, blueprint=blueprint)
         
     @property
     def carrier(self) -> KingCarrier:

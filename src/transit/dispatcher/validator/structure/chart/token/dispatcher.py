@@ -1,4 +1,4 @@
-# src/transit/dispatcher/validator/structure/chart/token/validator.py
+# src/transit/dispatcher/validator/struct/chart/token/validator.py
 
 """
 Module: transit.dispatcher.validator.chart.token.validator
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from assurance import TokenChartValidator
-from domain.structure.chart import TokenChart
+from domain.struct.chart import TokenChart
 from artifcat import ValidationResult
 from transit import TokenChartCarrier
 from util import LoggingLevelRouter

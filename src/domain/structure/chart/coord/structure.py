@@ -1,7 +1,7 @@
-# src/domain/structure/chart/coord/structure.py
+# src/domain/struct/chart/coord/struct.py
 
 """
-Module: domain.structure.chart.coord.structure
+Module: domain.struct.chart.coord.struct
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import  annotations
 from typing import Dict, Optional
 
 from domain import Coord
-from domain.structure.chart import Chart
+from domain.struct.chart import Chart
 
 
 class CoordChart(Chart[Coord]):

@@ -1,4 +1,4 @@
-# src/transit/dispatcher/validator/structure/register/vector/validator.py
+# src/transit/dispatcher/validator/struct/register/vector/validator.py
 
 """
 Module: transit.dispatcher.validator.register.vector.validator
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from err import VectorRegisterValidationDispatcherException
-from domain.structure.register import VectorRegister
+from domain.struct.register import VectorRegister
 from artifcat import ValidationResult
 from transit import VectorRegisterCarrier
 from util import LoggingLevelRouter

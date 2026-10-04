@@ -11,8 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelPrimeExtract
-from domain import Vector, VectorBlueprint
+from domain import ModelPrimeExtract, Vector, VectorBlueprint
 from transit import VectorCarrier
 
 
@@ -46,7 +45,7 @@ class VectorPrimeExtract(ModelPrimeExtract[Vector]):
             carrier: EntityCarrier[Vector]
             blueprint: Optional[Blueprint[Vector]]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint,)
+        super().__init__(carrier=carrier, blueprint=blueprint)
         
     @property
     def carrier(self) -> VectorCarrier:

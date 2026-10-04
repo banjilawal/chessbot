@@ -40,7 +40,7 @@ class Persona(Enum):
         The Persona implements a hashtable of attributes assigned to concrete Rank classes.
         The Rank's title is the hash key.
 
-    ## STRUCTURE OF THE PERSONA HASHTABLE:
+    ## STRUCT OF THE PERSONA HASHTABLE:
         *   Key (str)
         *   Value   (List{str: Any})
 

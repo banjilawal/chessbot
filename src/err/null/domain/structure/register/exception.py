@@ -1,7 +1,7 @@
-# src/err/null/domain/structure/register/exception.py
+# src/err/null/domain/struct/register/exception.py
 
 """
-Module: err.null.domain.structure.register.exception
+Module: err.null.domain.struct.register.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StructureNullException
+from err import StructNullException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# REGISTER_NULL_ERROR #======================#
-class RegisterNullException(StructureNullException):
+class RegisterNullException(StructNullException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class RegisterNullException(StructureNullException):
     Provides:
 
     Super Class:
-        StructureNullException
+        StructNullException
     """
     MSG = "Register cannot be null."
     ERR_CODE = "REGISTER_NULL_ERROR"

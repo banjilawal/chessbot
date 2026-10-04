@@ -1,7 +1,7 @@
 # src/domain/metadata/manifest/strcture/register/manifest.py
 
 """
-Module: domain.metadata.manifest.structure.register.manifest
+Module: domain.metadata.manifest.struct.register.manifest
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -12,11 +12,11 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from domain import Register, StructureManifest, RegisterNullGroup, RegisterTypeUnion
+from domain import Register, StructManifest, RegisterNullGroup, RegisterTypeUnion
 
 T = TypeVar("T", bound="Register")
 
-class RegisterManifest(StructureManifest[T], ABC, Generic[T]):
+class RegisterManifest(StructManifest[T], ABC, Generic[T]):
     """
      Role:
         1.  Metadata

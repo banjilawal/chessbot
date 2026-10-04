@@ -15,7 +15,7 @@ from .model import *
 from .movement import *
 from .recurrence import *
 from .space import *
-from .structure import *
+from .struct import *
 
 # Modules
 from .exception import EntityCarrierNullException

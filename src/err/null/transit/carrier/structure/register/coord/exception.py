@@ -1,7 +1,7 @@
-# src/err/null/transit/carrier/structure/register/coord/exception.py
+# src/err/null/transit/carrier/struct/register/coord/exception.py
 
 """
-Module: err.null.transit.carrier.structure.register.coord.exception
+Module: err.null.transit.carrier.struct.register.coord.exception
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

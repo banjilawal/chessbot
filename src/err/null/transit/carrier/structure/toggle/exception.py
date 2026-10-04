@@ -1,7 +1,7 @@
-# src/err/null/transit/carrier/structure/toggle/exception.py
+# src/err/null/transit/carrier/struct/toggle/exception.py
 
 """
-Module: err.null.transit.carrier.structure.toggle.exception
+Module: err.null.transit.carrier.struct.toggle.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StructureCarrierNullException
+from err import StructCarrierNullException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# TOGGLE_CARRIER_NULL_ERROR #======================#
-class ToggleCarrierNullException(StructureCarrierNullException):
+class ToggleCarrierNullException(StructCarrierNullException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class ToggleCarrierNullException(StructureCarrierNullException):
     Provides:
 
     Super Class:
-        StructureCarrierNullException
+        StructCarrierNullException
     """
     MSG = "ToggleCarrier cannot be null."
     ERR_CODE = "TOGGLE_CARRIER_NULL_ERROR"

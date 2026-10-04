@@ -1,4 +1,4 @@
-# src/transit/dispatcher/validator/structure/chart/__init__.py
+# src/transit/dispatcher/validator/struct/chart/__init__.py
 
 """
 Module: transit.dispatcher.validator.chart.__init__

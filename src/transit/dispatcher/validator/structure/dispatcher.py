@@ -1,7 +1,7 @@
-# src/transit/dispatcher/validator/structure/validator.py
+# src/transit/dispatcher/validator/struct/validator.py
 
 """
-Module: transit.dispatcher.validator.structure.validator
+Module: transit.dispatcher.validator.struct.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -14,47 +14,47 @@ from typing import Any, Generic, TypeVar, cast
 
 
 from artifcat import ValidationResult
-from assurance import StructureValidator
-from domain import Structure
-from transit import StructureCarrier, ValidationDispatcher
+from assurance import StructValidator
+from domain import Struct
+from transit import StructCarrier, ValidationDispatcher
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Structure")
+T = TypeVar("T", bound="Struct")
 
-class StructureValidationDispatcher(ValidationDispatcher[T], ABC, Generic[T]):
+class StructValidationDispatcher(ValidationDispatcher[T], ABC, Generic[T]):
     """
     Role
         -   Integrity Assurance Manager
 
     Responsibilities:
-        1.  Direct the StructureValidation workflow.
+        1.  Direct the StructValidation workflow.
 
     Attributes:
-        validator: StructureValidator[T]
+        validator: StructValidator[T]
         
     Provides:
-        -   def execute(self, candidate: Any) -> ValidationResult[StructureCarrier]
+        -   def execute(self, candidate: Any) -> ValidationResult[StructCarrier]
 
     Super Class:
         ValidationDispatcher
     """
     
-    def __init__(self, validator: StructureValidator[T]):
+    def __init__(self, validator: StructValidator[T]):
         """
         Args:
-            validator: StructureValidator
+            validator: StructValidator
         """
         super().__init__(validator=validator)
 
 
     @property
-    def validator(self) -> StructureValidator[T]:
-        return cast(StructureValidator[T], super().validator)
+    def validator(self) -> StructValidator[T]:
+        return cast(StructValidator[T], super().validator)
     
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, job: Any) -> ValidationResult[StructureCarrier[T]]:
+    def execute(self, job: Any) -> ValidationResult[StructCarrier[T]]:
         """
         Verify a candidate is an EntityCarrier whose payload is safe.
         Args:
@@ -62,7 +62,7 @@ class StructureValidationDispatcher(ValidationDispatcher[T], ABC, Generic[T]):
         Returns:
             ValidationResult[T]
         Raises:
-            StructureDispatcherException
+            StructDispatcherException
         """
         pass
     

@@ -1,7 +1,7 @@
-# src/err/consistency/structure/chart/exception.py
+# src/err/consistency/struct/chart/exception.py
 
 """
-Module: err.consistency.structure.chart.exception
+Module: err.consistency.struct.chart.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StructureConsistencyException
+from err import StructConsistencyException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# CHART_CONSISTENCY_ERROR #======================#
-class ChartConsistencyException(StructureConsistencyException):
+class ChartConsistencyException(StructConsistencyException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class ChartConsistencyException(StructureConsistencyException):
     Provides:
 
     Super Class:
-        StructureConsistencyException
+        StructConsistencyException
     """
     MSG = "Chart consistency check failed."
     ERR_CODE = "CHART_CONSISTENCY_ERROR"

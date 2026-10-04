@@ -15,7 +15,7 @@ from .metadata import *
 from .model import *
 from .schema import *
 from .search import *
-from .structure import *
+from .struct import *
 
 # Modules
 from .exception import DomainObjectException

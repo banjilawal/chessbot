@@ -1,4 +1,4 @@
-# src/logic/structure/node/context/transit/route/exception/debug/exist.py
+# src/logic/struct/node/context/transit/route/exception/debug/exist.py
 
 """
 Module: logic.node.context.route.exception.debug.exist
@@ -16,7 +16,7 @@ __all__ = [
     "NodeNotFoundException",
 ]
 
-from domain.structure.node import NodeDebugException
+from domain.struct.node import NodeDebugException
 
 
 # ======================# NODE_NOT_FOUND_EXCEPTION #======================#

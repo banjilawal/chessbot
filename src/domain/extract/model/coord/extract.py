@@ -11,7 +11,6 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelPrimeExtract
 from domain import Coord, CoordBlueprint
 from transit import CoordCarrier
 
@@ -46,7 +45,7 @@ class CoordPrimeExtract(ModelPrimeExtract[Coord]):
             carrier: EntityCarrier[Coord]
             blueprint: Optional[Blueprint[Coord]]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint,)
+        super().__init__(carrier=carrier, blueprint=blueprint)
         
     @property
     def carrier(self) -> CoordCarrier:

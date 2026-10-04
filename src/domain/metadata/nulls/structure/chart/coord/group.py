@@ -1,7 +1,7 @@
-# src/domain/metadata/nulls/structure/chart/coord/group.py
+# src/domain/metadata/nulls/struct/chart/coord/group.py
 
 """
-Module: domain.metadata.nulls.structure.chart.coord.group
+Module: domain.metadata.nulls.struct.chart.coord.group
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -57,12 +57,12 @@ class CoordChartNullGroup(ChartNullGroup[CoordChart]):
         )
         
     @property
-    def structure(self) -> CoordChartNullException:
+    def struct(self) -> CoordChartNullException:
         return cast(CoordChartNullException, super().model)
     
     @property
     def model(self) -> CoordChartNullException:
-        return self.structure
+        return self.struct
     
     @property
     def carrier(self) -> CoordChartCarrierNullException:

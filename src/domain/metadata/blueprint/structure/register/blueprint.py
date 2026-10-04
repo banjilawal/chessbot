@@ -1,7 +1,7 @@
-# src/domain/metadata/blueprint/structure/register/blueprint.py
+# src/domain/metadata/blueprint/struct/register/blueprint.py
 
 """
-Module: domain.metadata.blueprint.structure.register.blueprint
+Module: domain.metadata.blueprint.struct.register.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,13 +12,13 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Type, TypeVar, cast
 
-from domain import Register, StructureBlueprint
+from domain import Register, StructBlueprint
 from err import RegisterNullException
 
 
 T = TypeVar("T", bound="Register")
 
-class RegisterBlueprint(StructureBlueprint[T], ABC, Generic[T]):
+class RegisterBlueprint(StructBlueprint[T], ABC, Generic[T]):
     """
      Role:
         1.  Metadata

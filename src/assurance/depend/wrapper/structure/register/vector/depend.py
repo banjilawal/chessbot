@@ -1,7 +1,7 @@
-# src/assurance/depend/wrapper/structure/register/depend.py
+# src/assurance/depend/wrapper/struct/register/depend.py
 
 """
-Module: assurance.depend.wrapper.structure.register.depend
+Module: assurance.depend.wrapper.struct.register.depend
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

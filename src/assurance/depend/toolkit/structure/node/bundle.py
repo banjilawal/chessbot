@@ -1,7 +1,7 @@
-# src/assurance/depend/toolkit/structure/node/toolkit.py
+# src/assurance/depend/toolkit/struct/node/toolkit.py
 
 """
-Module: assurance.depend.toolkit.structure.node.toolkit
+Module: assurance.depend.toolkit.struct.node.toolkit
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -13,14 +13,14 @@ from abc import ABC
 from dataclasses import dataclass
 from typing import Generic, TypeVar
 
-from assurance import StructureValidatorToolkit
+from assurance import StructValidatorToolkit
 from domain import Node
 
 T = TypeVar("T", bound="Node")
 
 
 @dataclass
-class NodeValidatorToolkit(StructureValidatorToolkit[T], ABC, Generic[T]):
+class NodeValidatorToolkit(StructValidatorToolkit[T], ABC, Generic[T]):
     """
     Role:
         - Toolkit
@@ -39,5 +39,5 @@ class NodeValidatorToolkit(StructureValidatorToolkit[T], ABC, Generic[T]):
     Provides:
 
     Super Class:
-        StructureValidatorToolkit
+        StructValidatorToolkit
     """

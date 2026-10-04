@@ -16,7 +16,7 @@ from domain.metadata.blueprint import CartesianToggleBlueprint
 from carrier.toggle.vector.carrier import CartesianToggleCarrier
 from err import CartesianToggleBlueprintNullException, CartesianToggleCarrierNullException, CartesianToggleNullException
 from operation.suite import  CoordOperationSuite, VectorOperationSuite
-from domain.structure.toggle import CartesianToggle
+from domain.struct.toggle import CartesianToggle
 from operation.toolkit.toggle.vector.toolkit import ToggleToolkit
 
 

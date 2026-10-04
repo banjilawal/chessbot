@@ -1,7 +1,7 @@
-# src/exchange/request/validation/structure/register/request.py
+# src/exchange/request/validation/struct/register/request.py
 
 """
-Module: exchange.request.validation.structure.register.request
+Module: exchange.request.validation.struct.register.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,13 +13,13 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from domain import Register
-from exchange import StructureValidationRequest
+from exchange import StructValidationRequest
 from transit import RegisterCarrier
 
 T = TypeVar("T", bound="Register")
 
 
-class RegisterValidationRequest(StructureValidationRequest[T], ABC, Generic[T]):
+class RegisterValidationRequest(StructValidationRequest[T], ABC, Generic[T]):
     """
      Role:
          -  Messaging

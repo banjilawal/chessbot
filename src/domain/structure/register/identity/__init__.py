@@ -1,16 +1,16 @@
-# src/domain/structure/register/identity/__init__.py
+# src/domain/struct/register/identity/__init__.py
 
 """
-Module: domain.structure.register.identity.__init__
+Module: domain.struct.register.identity.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== DOMAIN.STRUCTURE.REGISTER.IDENTITY PACKAGE ===========#
+# =========== DOMAIN.STRUCT.REGISTER.IDENTITY PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .structure import IdentityRegister
+from .struct import IdentityRegister

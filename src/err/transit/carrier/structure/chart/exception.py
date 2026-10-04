@@ -1,7 +1,7 @@
-# src/err/domain/transit/carrier/structure/chart/exception.py
+# src/err/domain/transit/carrier/struct/chart/exception.py
 
 """
-Module: err.domain.transit.carrier.structure.chart.exception
+Module: err.domain.transit.carrier.struct.chart.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

@@ -45,7 +45,7 @@ class CombatantTokenPrimeExtract(TokenPrimeExtract[CombatantToken]):
             carrier: CombatantTokenCarrier
             blueprint: Optional[CombatantTokenBlueprint]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint,)
+        super().__init__(carrier=carrier, blueprint=blueprint)
         
     @property
     def carrier(self) -> CombatantTokenCarrier:

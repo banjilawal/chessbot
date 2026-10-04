@@ -1,4 +1,4 @@
-# src/transit/dispatcher/validator/structure/register/coord/validator.py
+# src/transit/dispatcher/validator/struct/register/coord/validator.py
 
 """
 Module: transit.dispatcher.validator.register.coord.validator
@@ -13,7 +13,7 @@ from typing import Any, cast
 
 from assurance import CoordRegisterValidator
 from err import CoordRegisterValidationDispatcherException
-from domain.structure.register import CoordRegister
+from domain.struct.register import CoordRegister
 from artifcat import ValidationResult
 from transit import CoordRegisterCarrier
 from util import LoggingLevelRouter

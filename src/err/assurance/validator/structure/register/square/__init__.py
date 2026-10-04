@@ -1,13 +1,13 @@
-# src/err/assurance/validator/structure/register/square/__init__.py
+# src/err/assurance/validator/struct/register/square/__init__.py
 
 """
-Module: err.assurance.validator.structure.register.square.__init__
+Module: err.assurance.validator.struct.register.square.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# =========== ERR.ASSURANCE.VALIDATOR.STRUCTURE.REGISTER.SQUARE PACKAGE ===========#
+# =========== ERR.ASSURANCE.VALIDATOR.STRUCT.REGISTER.SQUARE PACKAGE ===========#
 
 # Packages
 

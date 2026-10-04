@@ -1,7 +1,7 @@
-# src/domain/metadata/blueprint/structure/register/cartesian.blueprint.py
+# src/domain/metadata/blueprint/struct/register/cartesian.blueprint.py
 
 """
-Module: domain.metadata.blueprint.structure.register.cartesian.blueprint
+Module: domain.metadata.blueprint.struct.register.cartesian.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

@@ -1,4 +1,4 @@
-# src/logic/structure/node/transit/route/exception/validator.py
+# src/logic/struct/node/transit/route/exception/validator.py
 
 """
 Module: logic.node.route.exception.work
@@ -91,7 +91,7 @@ __all__ = [
 ]
 
 from system import SearchException
-from domain.structure.node import NodeException
+from domain.struct.node import NodeException
 
 
 # ======================# NODE_SEARCH_FAILURE #======================#

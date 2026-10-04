@@ -1,7 +1,7 @@
 # src/domain/metadata/unions/strcture/chart/token/manifest.py
 
 """
-Module: domain.metadata.unions.structure.chart.token.manifest
+Module: domain.metadata.unions.struct.chart.token.manifest
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

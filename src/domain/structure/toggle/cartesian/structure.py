@@ -1,7 +1,7 @@
-# src/domain/structure/toggle/vector/toggle.py
+# src/domain/struct/toggle/vector/toggle.py
 
 """
-Module: domain.structure.toggle.vector.toggle
+Module: domain.struct.toggle.vector.toggle
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

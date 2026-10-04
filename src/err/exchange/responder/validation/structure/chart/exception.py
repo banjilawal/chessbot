@@ -1,7 +1,7 @@
-# src/err/exchange/responder/validation/structure/chart/exception.py
+# src/err/exchange/responder/validation/struct/chart/exception.py
 
 """
-Module: err.exchange.responder.validation.structure.chart.exception
+Module: err.exchange.responder.validation.struct.chart.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import StructureValidationResponderException
+from err import StructValidationResponderException
 
 
 __all__ = [
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# CHART_VALIDATION_RESPONDER_FAILURE #======================#
-class ChartValidationResponderException(StructureValidationResponderException):
+class ChartValidationResponderException(StructValidationResponderException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class ChartValidationResponderException(StructureValidationResponderException):
     Provides:
 
     Super Class:
-        StructureValidationResponderException
+        StructValidationResponderException
     """
     MSG = "ChartValidationResponder error."
     ERR_CODE = "CHART_VALIDATION_RESPONDER_FAILURE"

@@ -1,7 +1,7 @@
-# src/domain/structure/toggle/structure.py
+# src/domain/struct/toggle/struct.py
 
 """
-Module: domain.structure.toggle.structure
+Module: domain.struct.toggle.struct
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -12,11 +12,11 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Any, Dict, Generic, TypeVar
 
-from domain import SearchableModel, Structure
+from domain import SearchableModel, Struct
 
 T = TypeVar("T", bound="SearchableModel")
 
-class Toggle(Structure, Generic[T]):
+class Toggle(Struct, Generic[T]):
     _max_enabled_toggles: int
     
     def __init(self, max_enabled_toggles: int | None = 1):

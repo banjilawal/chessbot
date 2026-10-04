@@ -1,7 +1,7 @@
-# src/err/null/domain/structure/chart/exception.py
+# src/err/null/domain/struct/chart/exception.py
 
 """
-Module: err.null.domain.structure.chart.exception
+Module: err.null.domain.struct.chart.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StructureNullException
+from err import StructNullException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# CHART_NULL_ERROR #======================#
-class ChartNullException(StructureNullException):
+class ChartNullException(StructNullException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class ChartNullException(StructureNullException):
     Provides:
 
     Super Class:
-        StructureNullException
+        StructNullException
     """
     MSG = "Chart cannot be null."
     ERR_CODE = "CHART_NULL_ERROR"

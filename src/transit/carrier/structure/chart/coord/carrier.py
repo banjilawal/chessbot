@@ -1,7 +1,7 @@
-# src/transit/carrier/structure/chart/coord/carrier.py
+# src/transit/carrier/struct/chart/coord/carrier.py
 
 """
-Module: transit.carrier.structure.chart.coord.carrier
+Module: transit.carrier.struct.chart.coord.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

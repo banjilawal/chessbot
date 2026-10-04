@@ -1,7 +1,7 @@
-# src/err/consistency/structure/chart/token/exception.py
+# src/err/consistency/struct/chart/token/exception.py
 
 """
-Module: err.consistency.structure.chart.token.exception
+Module: err.consistency.struct.chart.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

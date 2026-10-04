@@ -15,7 +15,7 @@ from domain.metadata.blueprint import CartesianToggleBlueprint
 from transit.dispatcher.builder import ToggleBuildDispatcher
 from err import CartesianToggleBuilderException
 from artifcat import BuildResult, MethodResultType
-from domain.structure.toggle import CartesianToggle
+from domain.struct.toggle import CartesianToggle
 from operation.toolkit import CartesianToggleBuilderToolkit
 from util import LoggingLevelRouter
 

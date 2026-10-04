@@ -46,7 +46,7 @@ class PlayerPrimeExtract(ModelPrimeExtract[Player]):
             carrier: EntityCarrier[Player]
             blueprint: Optional[Blueprint[Player]]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint,)
+        super().__init__(carrier=carrier, blueprint=blueprint)
         
     @property
     def carrier(self) -> PlayerCarrier:

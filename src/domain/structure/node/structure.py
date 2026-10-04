@@ -1,7 +1,7 @@
-# src/domain/structure/node/structure.py
+# src/domain/struct/node/struct.py
 
 """
-Module: domain.structure.node.structure
+Module: domain.struct.node.struct
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,13 +12,13 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar
 
-from domain import Structure
+from domain import Struct
 from domain import SearchableModel
 
 T = TypeVar("T", bound="SearchableModel")
 
 
-class Node(Structure[T], ABC, Generic[T]):
+class Node(Struct[T], ABC, Generic[T]):
     """
     Role:
         - Structural Wrapper

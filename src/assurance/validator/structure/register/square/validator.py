@@ -1,7 +1,7 @@
-# src/assurance/validator/structure/register/square/validator.py
+# src/assurance/validator/struct/register/square/validator.py
 
 """
-Module: assurance.validator.structure.register.square.validator
+Module: assurance.validator.struct.register.square.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -32,7 +32,7 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
 
     Responsibilities:
         1.  Check that a candidate is the right type of not-null EntityCarrier.
-        2.  Run safety checks on structures and blueprints inside an EntityCarrier's payload.
+        2.  Run safety checks on structs and blueprints inside an EntityCarrier's payload.
 
     Attributes:
         toolkit: SquareRegisterValidatorToolkit

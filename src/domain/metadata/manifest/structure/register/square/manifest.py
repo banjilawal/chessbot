@@ -1,7 +1,7 @@
 # src/domain/metadata/manifest/strcture/register/square/manifest.py
 
 """
-Module: domain.metadata.manifest.structure.register.square.manifest
+Module: domain.metadata.manifest.struct.register.square.manifest
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

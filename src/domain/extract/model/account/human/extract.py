@@ -45,7 +45,7 @@ class HumanAccountPrimeExtract(AccountPrimeExtract[HumanAccount]):
             carrier: HumanAccountCarrier
             blueprint: Optional[HumanAccountBlueprint]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint,)
+        super().__init__(carrier=carrier, blueprint=blueprint)
         
     @property
     def carrier(self) -> HumanAccountCarrier:

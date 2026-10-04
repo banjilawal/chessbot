@@ -45,7 +45,7 @@ class BishopPrimeExtract(RankPrimeExtract[Bishop]):
             carrier: BishopCarrier
             blueprint: Optional[BishopBlueprint]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint,)
+        super().__init__(carrier=carrier, blueprint=blueprint)
         
     @property
     def carrier(self) -> BishopCarrier:

@@ -1,7 +1,7 @@
-# src/err/capacity/empty/carrier/structure/register/coord/exception.py
+# src/err/capacity/empty/carrier/struct/register/coord/exception.py
 
 """
-Module: err.capacity.empt.carrier.structure.register.coord.exception
+Module: err.capacity.empt.carrier.struct.register.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

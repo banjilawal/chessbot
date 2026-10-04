@@ -1,7 +1,7 @@
-# src/err/domain/transit/carrier/structure/exception.py
+# src/err/domain/transit/carrier/struct/exception.py
 
 """
-Module: err.domain.transit.carrier.structure.exception
+Module: err.domain.transit.carrier.struct.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# STRUCTURE_CARRIER_ERROR #======================#
-    "StructureCarrierException",
+    # ======================# STRUCT_CARRIER_ERROR #======================#
+    "StructCarrierException",
 ]
 
-# ======================# STRUCTURE_CARRIER_ERROR #======================#
-class StructureCarrierException(ChessException):
+# ======================# STRUCT_CARRIER_ERROR #======================#
+class StructCarrierException(ChessException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a StructureCarrier encountered an error.
+        1.  Indicating a StructCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class StructureCarrierException(ChessException):
     Super Class:
         ChessException
     """
-    MSG = "StructureCarrier error."
-    ERR_CODE = "STRUCTURE_CARRIER_ERROR"
+    MSG = "StructCarrier error."
+    ERR_CODE = "STRUCT_CARRIER_ERROR"
     
     def __init__(
             self,

@@ -1,7 +1,7 @@
-# src/err/consistency/structure/node/vector/exception.py
+# src/err/consistency/struct/node/vector/exception.py
 
 """
-Module: err.consistency.structure.node.vector.exception
+Module: err.consistency.struct.node.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

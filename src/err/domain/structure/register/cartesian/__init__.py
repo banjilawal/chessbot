@@ -1,13 +1,13 @@
-# src/err/domain/structure/register/cartesian/__init__.py
+# src/err/domain/struct/register/cartesian/__init__.py
 
 """
-Module: err.domain.structure.register.cartesian.__init__
+Module: err.domain.struct.register.cartesian.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ERR.DOMAIN.STRUCTURE.REGISTER.CARTESIAN PACKAGE ===========#
+# =========== ERR.DOMAIN.STRUCT.REGISTER.CARTESIAN PACKAGE ===========#
 
 # Packages
 

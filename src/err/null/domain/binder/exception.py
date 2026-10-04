@@ -1,7 +1,7 @@
-# src/err/null/domain/structure/exception.py
+# src/err/null/domain/struct/exception.py
 
 """
-Module: err.null.domain.binder.structure.exception
+Module: err.null.domain.binder.struct.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

@@ -13,7 +13,7 @@ from __future__ import annotations
 from typing import cast
 
 from collection import VectorChain
-from exchange.structures.node import VectorNode
+from exchange.structs.node import VectorNode
 from exchange.request import AddNodeRequest
 
 

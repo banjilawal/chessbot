@@ -11,8 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelPrimeExtract
-from domain import Scalar, ScalarBlueprint
+from domain import ModelPrimeExtract, Scalar, ScalarBlueprint
 from transit import ScalarCarrier
 
 
@@ -43,10 +42,10 @@ class ScalarPrimeExtract(ModelPrimeExtract[Scalar]):
     ):
         """
         Args:
-            carrier: EntityCarrier[Scalar]
+            carrier: EScalarCarrier
             blueprint: Optional[Blueprint[Scalar]]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint,)
+        super().__init__(carrier=carrier, blueprint=blueprint)
         
     @property
     def carrier(self) -> ScalarCarrier:

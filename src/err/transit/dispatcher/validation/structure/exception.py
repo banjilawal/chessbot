@@ -1,7 +1,7 @@
-# src/err/transit/dispatcher/validation/structure/exception.py
+# src/err/transit/dispatcher/validation/struct/exception.py
 
 """
-Module: err.transit.dispatcher.validation.structure.exception
+Module: err.transit.dispatcher.validation.struct.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import ValidationDispatcherException
 
 __all__ = [
-    # ======================# STRUCTURE_VALIDATION_DISPATCHER_FAILURE #======================#
-    "StructureValidationDispatcherException",
+    # ======================# STRUCT_VALIDATION_DISPATCHER_FAILURE #======================#
+    "StructValidationDispatcherException",
 ]
 
-# ======================# STRUCTURE_VALIDATION_DISPATCHER_FAILURE #======================#
-class StructureValidationDispatcherException(ValidationDispatcherException):
+# ======================# STRUCT_VALIDATION_DISPATCHER_FAILURE #======================#
+class StructValidationDispatcherException(ValidationDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a StructureValidationDispatcher encountered an error.
+        1.  Indicating a StructValidationDispatcher encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class StructureValidationDispatcherException(ValidationDispatcherException):
     Super Class:
         ValidationDispatcherException
     """
-    MSG = "StructureValidationDispatcher failure."
-    ERR_CODE = "STRUCTURE_VALIDATION_DISPATCHER_FAILURE"
+    MSG = "StructValidationDispatcher failure."
+    ERR_CODE = "STRUCT_VALIDATION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

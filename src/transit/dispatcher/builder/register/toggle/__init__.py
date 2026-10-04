@@ -1,4 +1,4 @@
-# src/transit/dispatcher/builder/structure/register/toggle/__init__.py
+# src/transit/dispatcher/builder/struct/register/toggle/__init__.py
 
 """
 Module: transit.dispatcher.builder.register.toggle.__init__

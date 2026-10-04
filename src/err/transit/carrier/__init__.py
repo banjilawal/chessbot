@@ -12,9 +12,9 @@ version: 0.0.2
 # Packages
 from .model import *
 from .movement import *
-from err.transit.carrier.structure.register import *
+from err.transit.carrier.struct.register import *
 from .space import *
-from err.transit.carrier.structure.toggle import *
+from err.transit.carrier.struct.toggle import *
 
 # Modules
 from .exception import EntityCarrierException

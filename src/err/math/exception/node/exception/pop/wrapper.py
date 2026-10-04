@@ -12,7 +12,7 @@ __all__ = [
     "NodePopException",
 ]
 
-from domain.structure.node import NodeStackException
+from domain.struct.node import NodeStackException
 from system import DeletionException
 
 

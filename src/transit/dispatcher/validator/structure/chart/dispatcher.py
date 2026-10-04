@@ -1,4 +1,4 @@
-# src/transit/dispatcher/validator/structure/chart/validator.py
+# src/transit/dispatcher/validator/struct/chart/validator.py
 
 """
 Module: transit.dispatcher.validator.chart.validator
@@ -15,12 +15,12 @@ from typing import Any, Generic, TypeVar, cast
 from assurance import ChartValidator
 from artifcat import ValidationResult
 from domain import Chart
-from transit import ChartCarrier, StructureValidationDispatcher
+from transit import ChartCarrier, StructValidationDispatcher
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Chart")
 
-class ChartValidationDispatcher(StructureValidationDispatcher[T], ABC, Generic[T]):
+class ChartValidationDispatcher(StructValidationDispatcher[T], ABC, Generic[T]):
     """
     Role
         - Transaction Worker

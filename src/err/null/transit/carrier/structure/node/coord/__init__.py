@@ -1,13 +1,13 @@
-# src/err/null/transit/carrier/structure/node/coord/__init__.py
+# src/err/null/transit/carrier/struct/node/coord/__init__.py
 
 """
-Module: err.null.transit.carrier.structure.node.coord.__init__
+Module: err.null.transit.carrier.struct.node.coord.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.NULL.TRANSIT.CARRIER.STRUCTURE.NODE.COORD PACKAGE ===========#
+# ============ ERR.NULL.TRANSIT.CARRIER.STRUCT.NODE.COORD PACKAGE ===========#
 
 # Packages
 

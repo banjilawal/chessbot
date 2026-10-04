@@ -1,7 +1,7 @@
 # src/domain/metadata/unions/strcture/register/vector/manifest.py
 
 """
-Module: domain.metadata.unions.structure.register.vector.manifest
+Module: domain.metadata.unions.struct.register.vector.manifest
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

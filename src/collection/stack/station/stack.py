@@ -18,7 +18,7 @@ class StationStackService(StackService[Station]):
     1.  Public facing API.
     2.  Microservice for managing Station objects and their lifecycles.
     3.  Ensure integrity of Station data schema
-    4.  Stack data structure for Station objects with no guarantee of uniqueness.
+    4.  Stack data struct for Station objects with no guarantee of uniqueness.
 
     Super Class:
         *   StackService[Station]

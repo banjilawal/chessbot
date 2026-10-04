@@ -1,7 +1,7 @@
-# src/err/null/domain/blueprint/structure/exception.py
+# src/err/null/domain/blueprint/struct/exception.py
 
 """
-Module: err.null.domain.blueprint.structure.exception
+Module: err.null.domain.blueprint.struct.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -17,12 +17,12 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# STRUCTURE_BLUEPRINT_NULL_ERROR #======================#
-    "StructureBlueprintNullException",
+    # ======================# STRUCT_BLUEPRINT_NULL_ERROR #======================#
+    "StructBlueprintNullException",
 ]
 
-# ======================# STRUCTURE_BLUEPRINT_NULL_ERROR #======================#
-class StructureBlueprintNullException(BlueprintNullException):
+# ======================# STRUCT_BLUEPRINT_NULL_ERROR #======================#
+class StructBlueprintNullException(BlueprintNullException):
     """
     Role:
         - Error Tracing
@@ -45,8 +45,8 @@ class StructureBlueprintNullException(BlueprintNullException):
     Super Class:
         BlueprintNullException
     """
-    MSG = "StructureBlueprint cannot be null."
-    ERR_CODE = "STRUCTURE_BLUEPRINT_NULL_ERROR"
+    MSG = "StructBlueprint cannot be null."
+    ERR_CODE = "STRUCT_BLUEPRINT_NULL_ERROR"
     
     def __init__(
             self,

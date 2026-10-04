@@ -1,13 +1,13 @@
-# src/err/exchange/wrapper/validation/structure/chart/coord/__init__.py
+# src/err/exchange/wrapper/validation/struct/chart/coord/__init__.py
 
 """
-Module: err.exchange.wrapper.validation.structure.chart.coord.__init__
+Module: err.exchange.wrapper.validation.struct.chart.coord.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== ERR.EXCHANGE.WRAPPER.VALIDATION.STRUCTURE.CHART PACKAGE ===========#
+# =========== ERR.EXCHANGE.WRAPPER.VALIDATION.STRUCT.CHART PACKAGE ===========#
 
 # Packages
 

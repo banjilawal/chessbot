@@ -1,7 +1,7 @@
-# src/exchange/request/validation/structure/register/coord/request.py
+# src/exchange/request/validation/struct/register/coord/request.py
 
 """
-Module: exchange.request.validation.structure.register.coord.request
+Module: exchange.request.validation.struct.register.coord.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

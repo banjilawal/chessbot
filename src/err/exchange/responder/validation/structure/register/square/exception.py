@@ -1,7 +1,7 @@
-# src/err/exchange/responder/validation/structure/register/square/exception.py
+# src/err/exchange/responder/validation/struct/register/square/exception.py
 
 """
-Module: err.exchange.responder.validation.structure.register.square.exception
+Module: err.exchange.responder.validation.struct.register.square.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

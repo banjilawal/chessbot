@@ -7,7 +7,7 @@ Created: 2026-02-19
 version: 1.0.0
 """
 
-from exchange.structures.node import NodeException
+from exchange.structs.node import NodeException
 from system import ContextException
 
 __all__ = [

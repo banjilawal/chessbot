@@ -1,7 +1,7 @@
-# src/err/transit/dispatcher/validation/structure/register/exception.py
+# src/err/transit/dispatcher/validation/struct/register/exception.py
 
 """
-Module: err.transit.dispatcher.validation.structure.register.exception
+Module: err.transit.dispatcher.validation.struct.register.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import StructureValidationDispatcherException
+from err import StructValidationDispatcherException
 
 __all__ = [
     # ======================# REGISTER_VALIDATION_DISPATCHER_FAILURE #======================#
@@ -21,7 +21,7 @@ __all__ = [
 
 # ======================# REGISTER_VALIDATION_DISPATCHER_FAILURE #======================#
 class RegisterValidationDispatcherException(
-    StructureValidationDispatcherException
+    StructValidationDispatcherException
 ):
     """
     Role:
@@ -43,7 +43,7 @@ class RegisterValidationDispatcherException(
     Provides:
 
     Super Class:
-        StructureValidationDispatcherException
+        StructValidationDispatcherException
     """
     MSG = "RegisterValidationDispatcher failure."
     ERR_CODE = "REGISTER_VALIDATION_DISPATCHER_FAILURE"

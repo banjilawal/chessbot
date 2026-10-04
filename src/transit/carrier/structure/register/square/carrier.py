@@ -1,7 +1,7 @@
-# src/transit/carrier/structure/register/square/carrier.py
+# src/transit/carrier/struct/register/square/carrier.py
 
 """
-Module: transit.carrier.structure.register.square.carrier
+Module: transit.carrier.struct.register.square.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

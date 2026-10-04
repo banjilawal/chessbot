@@ -1,7 +1,7 @@
-# src/err/exchange/responder/validation/structure/exception.py
+# src/err/exchange/responder/validation/struct/exception.py
 
 """
-Module: err.exchange.responder.validation.structure.exception
+Module: err.exchange.responder.validation.struct.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,18 +16,18 @@ from err import ValidationResponderException
 
 
 __all__ = [
-    # ======================# STRUCTURE_VALIDATION_RESPONDER_FAILURE #======================#
-    "StructureValidationResponderException",
+    # ======================# STRUCT_VALIDATION_RESPONDER_FAILURE #======================#
+    "StructValidationResponderException",
 ]
 
-# ======================# STRUCTURE_VALIDATION_RESPONDER_FAILURE #======================#
-class StructureValidationResponderException(ValidationResponderException):
+# ======================# STRUCT_VALIDATION_RESPONDER_FAILURE #======================#
+class StructValidationResponderException(ValidationResponderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a StructureValidationResponder encountered and error.
+        1.  Indicating a StructValidationResponder encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class StructureValidationResponderException(ValidationResponderException):
     Super Class:
         ValidationResponderException
     """
-    MSG = "StructureValidationResponder error."
-    ERR_CODE = "STRUCTURE_VALIDATION_RESPONDER_FAILURE"
+    MSG = "StructValidationResponder error."
+    ERR_CODE = "STRUCT_VALIDATION_RESPONDER_FAILURE"
     
     def __init__(
             self,

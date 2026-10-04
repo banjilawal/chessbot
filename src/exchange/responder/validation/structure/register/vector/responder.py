@@ -1,7 +1,7 @@
-# src/exchange/responder/validation/structure/register/vector/exchange.py
+# src/exchange/responder/validation/struct/register/vector/exchange.py
 
 """
-Module: exchange.responder.validation.structure.register.vector.exchange
+Module: exchange.responder.validation.struct.register.vector.exchange
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

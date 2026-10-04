@@ -11,7 +11,6 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelPrimeExtract
 from domain import Board, BoardBlueprint
 from transit import BoardCarrier
 
@@ -46,7 +45,7 @@ class BoardPrimeExtract(ModelPrimeExtract[Board]):
             carrier: EntityCarrier[Board]
             blueprint: Optional[Blueprint[Board]]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint,)
+        super().__init__(carrier=carrier, blueprint=blueprint)
         
     @property
     def carrier(self) -> BoardCarrier:

@@ -1,7 +1,7 @@
-# src/domain/metadata/nulls/structure/register/vector/group.py
+# src/domain/metadata/nulls/struct/register/vector/group.py
 
 """
-Module: domain.metadata.nulls.structure.register.vector.group
+Module: domain.metadata.nulls.struct.register.vector.group
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -57,12 +57,12 @@ class VectorRegisterNullGroup(RegisterNullGroup[VectorRegister]):
         )
         
     @property
-    def structure(self) -> VectorRegisterNullException:
+    def struct(self) -> VectorRegisterNullException:
         return cast(VectorRegisterNullException, super().model)
     
     @property
     def model(self) -> VectorRegisterNullException:
-        return self.structure
+        return self.struct
     
     @property
     def carrier(self) -> VectorRegisterCarrierNullException:

@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from authorization import RemoveNodeRequest, ChainOffsetRequest
 from collection import VectorChain
-from exchange.structures.node import VectorNode
+from exchange.structs.node import VectorNode
 
 
 class RemoveVectorNodeRequest(RemoveNodeRequest[VectorNode]):

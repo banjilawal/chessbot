@@ -1,7 +1,7 @@
-# src/err/null/transit/carrier/structure/chart/coord/exception.py
+# src/err/null/transit/carrier/struct/chart/coord/exception.py
 
 """
-Module: err.null.transit.carrier.structure.chart.coord.exception
+Module: err.null.transit.carrier.struct.chart.coord.exception
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

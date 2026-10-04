@@ -1,7 +1,7 @@
 # src/domain/metadata/unions/strcture/types.py
 
 """
-Module: domain.metadata.unions.structure.types
+Module: domain.metadata.unions.struct.types
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -12,23 +12,23 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Type, TypeVar, cast
 
-from domain import Structure, StructureBlueprint, TypeUnion
-from transit import StructureCarrier
+from domain import Struct, StructBlueprint, TypeUnion
+from transit import StructCarrier
 
-T = TypeVar("T", bound="Structure")
+T = TypeVar("T", bound="Struct")
 
 
-class StructureTypeUnion(TypeUnion[T], ABC, Generic[T]):
+class StructTypeUnion(TypeUnion[T], ABC, Generic[T]):
     """
     Role:
         - Metadata
 
     Responsibilities:
-        1. Catalog of types associated with building and validating a Structure.
+        1. Catalog of types associated with building and validating a Struct.
 
     Attributes:
         model: Type[T]
-        blueprint: Type[StructureBlueprint[T]]
+        blueprint: Type[StructBlueprint[T]]
         
     Provides:
 
@@ -36,20 +36,20 @@ class StructureTypeUnion(TypeUnion[T], ABC, Generic[T]):
         TypeUnion
     """
     _model: Type[T]
-    _carrier: Type[StructureCarrier[T]]
-    _blueprint: Type[StructureBlueprint[T]]
+    _carrier: Type[StructCarrier[T]]
+    _blueprint: Type[StructBlueprint[T]]
     
     def __init__(
             self,
             model: Type[T],
-            carrier: Type[StructureCarrier[T]],
-            blueprint: Type[StructureBlueprint[T]],
+            carrier: Type[StructCarrier[T]],
+            blueprint: Type[StructBlueprint[T]],
     ):
         """
         Args:
             model: Type[T]
-            carrier: Type[StructureCarrier[T]]
-            blueprint: Type[StructureBlueprint[T]]
+            carrier: Type[StructCarrier[T]]
+            blueprint: Type[StructBlueprint[T]]
         """
         super().__init__(model=model, carrier=carrier, blueprint=blueprint)
         
@@ -58,9 +58,9 @@ class StructureTypeUnion(TypeUnion[T], ABC, Generic[T]):
         return cast(Type[T], super().model)
     
     @property
-    def carrier(self) -> Type[StructureCarrier[T]]:
-        return cast(Type[StructureCarrier[T]], super().carrier)
+    def carrier(self) -> Type[StructCarrier[T]]:
+        return cast(Type[StructCarrier[T]], super().carrier)
     
     @property
-    def blueprint(self) -> Type[StructureBlueprint[T]]:
-        return cast(Type[StructureBlueprint[T]], super().blueprint)
+    def blueprint(self) -> Type[StructBlueprint[T]]:
+        return cast(Type[StructBlueprint[T]], super().blueprint)

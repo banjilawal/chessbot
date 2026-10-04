@@ -1,7 +1,7 @@
-# src/assurance/depend/wrapper/structure/depend.py
+# src/assurance/depend/wrapper/struct/depend.py
 
 """
-Module: assurance.depend.wrapper.structure.depend
+Module: assurance.depend.wrapper.struct.depend
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -15,19 +15,19 @@ from typing import Generic, Optional, TypeVar
 
 from assurance import WrapperDependency, NumberValidator, PrimingValidator
 from authorization import BlueprintIdExtractor
-from domain import Structure
+from domain import Struct
 from microservice import IdentityService
 
-T = TypeVar("T", bound="Structure")
+T = TypeVar("T", bound="Struct")
 
 
-class StructureDependency(WrapperDependency[T], ABC, Generic[T]):
+class StructDependency(WrapperDependency[T], ABC, Generic[T]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Bundles validatorClients a Structure needs for its primitive and upstream
+        1.  Bundles validatorClients a Struct needs for its primitive and upstream
             relational partners attributes.
 
     Attributes:

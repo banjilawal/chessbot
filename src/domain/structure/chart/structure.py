@@ -1,7 +1,7 @@
-# src/domain/structure/chart/structure.py
+# src/domain/struct/chart/struct.py
 
 """
-Module: domain.structure.chart.structure
+Module: domain.struct.chart.struct
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -12,11 +12,11 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Any, Dict, Generic, TypeVar
 
-from domain import Model, Structure
+from domain import Model, Struct
 
 T = TypeVar("T", bound="Model")
 
-class Chart(Structure, Generic[T]):
+class Chart(Struct, Generic[T]):
     pass
         
     @property

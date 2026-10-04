@@ -1,7 +1,7 @@
-# src/err/exchange/request/validation/structure/register/vector/exception.py
+# src/err/exchange/request/validation/struct/register/vector/exception.py
 
 """
-Module: err.exchange.request.validation.structure.register.vector.exception
+Module: err.exchange.request.validation.struct.register.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

@@ -1,4 +1,4 @@
-# src/transit/dispatcher/validator/structure/register/square/__init__.py
+# src/transit/dispatcher/validator/struct/register/square/__init__.py
 
 """
 Module: transit.dispatcher.validator.register.square.__init__

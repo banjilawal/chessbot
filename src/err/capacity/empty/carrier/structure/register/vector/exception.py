@@ -1,7 +1,7 @@
-# src/err/capacity/empty/carrier/structure/register/vector/exception.py
+# src/err/capacity/empty/carrier/struct/register/vector/exception.py
 
 """
-Module: err.capacity.empt.carrier.structure.register.vector.exception
+Module: err.capacity.empt.carrier.struct.register.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

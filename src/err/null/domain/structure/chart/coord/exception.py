@@ -1,7 +1,7 @@
-# src/err/null/domain/structure/chart/coord/exception.py
+# src/err/null/domain/struct/chart/coord/exception.py
 
 """
-Module: err.null.domain.structure.chart.coord.exception
+Module: err.null.domain.struct.chart.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

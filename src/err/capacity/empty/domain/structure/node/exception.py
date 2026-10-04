@@ -1,7 +1,7 @@
-# src/err/assurance/empty/domain/structure/node/exception.py
+# src/err/assurance/empty/domain/struct/node/exception.py
 
 """
-Module: err.assurance.empty.domain.structure.node.exception
+Module: err.assurance.empty.domain.struct.node.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import EmptyStructureException
+from err import EmptyStructException
 
 __all__ = [
     # ======================# EMPTY_NODE_ERROR #======================#
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# EMPTY_NODE_ERROR #======================#
-class EmptyNodeException(EmptyStructureException):
+class EmptyNodeException(EmptyStructException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class EmptyNodeException(EmptyStructureException):
     Provides:
 
     Super Class:
-       EmptyStructureException
+       EmptyStructException
     """
     MSG = "Node cannot be empty."
     ERR_CODE = "EMPTY_NODE_ERROR"

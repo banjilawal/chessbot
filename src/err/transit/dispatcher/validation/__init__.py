@@ -11,7 +11,7 @@ version: 1.0.0
 
 # Packages
 from .model import *
-from .structure import *
+from .struct import *
 
 # Modules
 from .exception import ValidationDispatcherException

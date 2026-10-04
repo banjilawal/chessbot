@@ -1,4 +1,4 @@
-# src/transit/dispatcher/builder/context/structure/node/dispatcher/builder.py
+# src/transit/dispatcher/builder/context/struct/node/dispatcher/builder.py
 
 """
 Module: transit.dispatcher.builder.context.node.builder
@@ -12,7 +12,7 @@ from __future__ import annotations
 import sys
 from typing import Optional
 
-from domain.structure.node import (
+from domain.struct.node import (
     DiscoveryStatus, ArenaNodeContextFlagsException, SquareNode, NodeContext, NodeContextBuilderException,
     NodeContextBuildRouteException, NodeValidator, ZeroNodeContextFlagsException
 )

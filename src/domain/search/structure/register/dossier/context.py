@@ -1,7 +1,7 @@
-# src/domain/search/structure/node/dossier/context.py
+# src/domain/search/struct/node/dossier/context.py
 
 """
-Module: domain.search.structure.node.dossier.context
+Module: domain.search.struct.node.dossier.context
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Any, Dict, Optional
 
-from domain import StructureContext, Dossier, Square, Token
+from domain import StructContext, Dossier, Square, Token
 from artifcat.report import AuthorizationDecision
 
 
-class DossierNodeContext(StructureContext[Dossier]):
+class DossierNodeContext(StructContext[Dossier]):
     """
     Role:
         - Option Selector

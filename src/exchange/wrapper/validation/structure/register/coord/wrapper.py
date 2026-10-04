@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/structure/register/coord/wrapper.py
+# src/exchange/wrapper/validation/struct/register/coord/wrapper.py
 
 """
-Module: exchange.wrapper.validation.structure.register.coord.wrapper
+Module: exchange.wrapper.validation.struct.register.coord.wrapper
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

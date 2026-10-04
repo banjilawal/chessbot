@@ -1,7 +1,7 @@
-# src/domain/metadata/nulls/structure/register/group.py
+# src/domain/metadata/nulls/struct/register/group.py
 
 """
-Module: domain.metadata.nulls.structure.register.group
+Module: domain.metadata.nulls.struct.register.group
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -12,14 +12,14 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from domain import Register, StructureNullGroup
+from domain import Register, StructNullGroup
 from err import (
     RegisterBlueprintNullException, RegisterCarrierNullException, RegisterNullException
 )
 
 T = TypeVar("T", bound="Register")
 
-class RegisterNullGroup(StructureNullGroup[T], ABC, Generic[T]):
+class RegisterNullGroup(StructNullGroup[T], ABC, Generic[T]):
     """
     Role:
         - Metadata
@@ -35,7 +35,7 @@ class RegisterNullGroup(StructureNullGroup[T], ABC, Generic[T]):
     Provides:
 
     Super Class:
-        StructureNullGroup
+        StructNullGroup
     """
 
     
@@ -54,12 +54,12 @@ class RegisterNullGroup(StructureNullGroup[T], ABC, Generic[T]):
         super().__init__(model=model, carrier=carrier, blueprint=blueprint)
         
     @property
-    def structure(self) -> RegisterNullException:
+    def struct(self) -> RegisterNullException:
         return cast(RegisterNullException, super().model)
     
     @property
     def model(self) -> RegisterNullException:
-        return self.structure
+        return self.struct
     
     @property
     def carrier(self) -> RegisterCarrierNullException:

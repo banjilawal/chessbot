@@ -1,7 +1,7 @@
-# src/artifact/response/validation/structure/chart/coord/response.py
+# src/artifact/response/validation/struct/chart/coord/response.py
 
 """
-Module: artifact.response.validation.structure.chart.coord.response
+Module: artifact.response.validation.struct.chart.coord.response
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

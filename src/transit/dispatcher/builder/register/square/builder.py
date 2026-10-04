@@ -1,4 +1,4 @@
-# src/transit/dispatcher/builder/structure/register/square/dispatcher/builder.py
+# src/transit/dispatcher/builder/struct/register/square/dispatcher/builder.py
 
 """
 Module: transit.dispatcher.builder.register.square.builder
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from transit.dispatcher.builder import RegisterBuildDispatcher
-from domain.structure.register import SquareRegister
+from domain.struct.register import SquareRegister
 from util import LoggingLevelRouter
 
 

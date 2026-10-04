@@ -1,7 +1,7 @@
-# src/assurance/depend/toolkit/structure/register.toolkit.py
+# src/assurance/depend/toolkit/struct/register.toolkit.py
 
 """
-Module: assurance.depend.toolkit.structure.register.toolkit
+Module: assurance.depend.toolkit.struct.register.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,13 +12,13 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from assurance import RegisterWrapperDependency, StructureValidatorToolkit
+from assurance import RegisterWrapperDependency, StructValidatorToolkit
 from domain import Register, RegisterManifest
 
 T = TypeVar("T", bound="Register")
 
 
-class RegisterValidatorToolkit(StructureValidatorToolkit[T], ABC, Generic[T]):
+class RegisterValidatorToolkit(StructValidatorToolkit[T], ABC, Generic[T]):
     """
     Role:
         - Toolkit
@@ -33,7 +33,7 @@ class RegisterValidatorToolkit(StructureValidatorToolkit[T], ABC, Generic[T]):
     Provides:
 
     Super Class:
-        StructureValidatorToolkit
+        StructValidatorToolkit
     """
     
     def __init__(

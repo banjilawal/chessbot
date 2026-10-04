@@ -1,4 +1,4 @@
-# src/transit/dispatcher/builder/structure/register/vector/dispatcher/builder.py
+# src/transit/dispatcher/builder/struct/register/vector/dispatcher/builder.py
 
 """
 Module: transit.dispatcher.builder.register.vector.builder
@@ -14,7 +14,7 @@ from typing import Optional, cast
 from domain.metadata.blueprint import VectorRegisterBlueprint
 from transit.dispatcher.builder import RegisterBuildDispatcher
 from err import VectorRegisterBuilderException
-from domain.structure.register import VectorRegister
+from domain.struct.register import VectorRegister
 from artifcat import BuildResult, MethodResultType
 from util import LoggingLevelRouter
 

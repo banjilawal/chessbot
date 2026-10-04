@@ -5,153 +5,105 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/account/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/account/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/account/human/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/account/human/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/account/machine/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/account/machine/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/arena/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/board/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/coord/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/edge/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/edge/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/encounter/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/encounter/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/game/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/maneuver/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/node/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/node/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/path/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/path/attack/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/path/attack/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/path/blocked/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/path/blocked/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/path/checked/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/path/checked/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/path/combatant/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/path/combatant/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/path/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/path/king/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/path/king/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/player/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/rank/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/rank/bishop/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/rank/bishop/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/rank/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/rank/king/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/rank/king/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/rank/knight/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/rank/knight/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/rank/pawn/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/rank/pawn/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/rank/persona/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/rank/persona/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/rank/queen/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/rank/queen/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/rank/rook/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/rank/rook/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/scalar/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/scalar/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/square/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/team/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/token/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/model/vector/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/query/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/query/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/query/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/query/token/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/chain/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/chain/dossier/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/chain/dossier/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/chain/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/chain/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/chain/vector/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/graph/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/graph/edge/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/graph/edge/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/graph/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/graph/station/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/graph/station/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/stack/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/stack/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/stack/arena/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/stack/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/stack/board/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/stack/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/stack/coord/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/stack/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/stack/game/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/stack/game/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/stack/player/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/stack/player/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/stack/snapshot/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/stack/snapshot/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/stack/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/stack/square/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/stack/team/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/stack/team/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/stack/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/search/stack/token/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/structure/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/structure/binder/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/structure/binder/arena/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/structure/binder/arena/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/structure/binder/board/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/structure/binder/board/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/structure/binder/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/structure/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/structure/node/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/structure/node/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/structure/node/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/structure/node/vector/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/structure/register/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/structure/register/cartesian/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/structure/register/cartesian/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/structure/register/cartesian/mismatch/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/structure/register/cartesian/mismatch/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/structure/register/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/structure/register/coord/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/structure/register/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/structure/register/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/structure/register/square/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/structure/register/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/structure/register/vector/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/structure/toggle/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/structure/toggle/cartesian/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/structure/toggle/cartesian/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/consistency/structure/toggle/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/account/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/account/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/encounter/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/encounter/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/maneuver/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/path/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/path/exception.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/duplicate/vector/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/account/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/account/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/account/human/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/account/human/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/account/machine/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/account/machine/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/arena/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/board/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/coord/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/encounter/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/encounter/checkmate/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/encounter/checkmate/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/encounter/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/encounter/kill/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/encounter/kill/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/encounter/stalemate/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/encounter/stalemate/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/encounter/warning/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/encounter/warning/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/game/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/game/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/maneuver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/maneuver/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/path/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/path/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/player/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/player/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/rank/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/rank/bishop/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/rank/bishop/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/rank/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/rank/king/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/rank/king/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/rank/knight/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/rank/knight/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/rank/pawn/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/rank/pawn/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/rank/queen/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/rank/queen/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/rank/rook/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/rank/rook/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/scalar/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/scalar/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/square/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/team/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/token/combatant/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/token/combatant/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/token/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/token/king/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/token/king/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/token/pawn/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/token/pawn/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/extract/structure/vector/extract.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assurance/validator/structure/chart/coord/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/structure/chart/coord/validator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/root/token/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/root/token/coord/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/root/token/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/root/token/coord/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/transit/dispatcher/validator/structure/chart/coord/dispatcher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/transit/dispatcher/validator/structure/chart/coord/dispatcher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/structure/chart/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/structure/chart/token/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/account/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/account/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/account/human/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/account/human/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/account/machine/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/account/machine/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/arena/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/arena/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/board/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/board/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/coord/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/coord/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/encounter/checkmate/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/encounter/checkmate/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/encounter/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/encounter/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/encounter/kill/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/encounter/kill/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/encounter/stalemate/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/encounter/stalemate/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/encounter/warning/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/encounter/warning/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/game/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/game/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/maneuver/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/maneuver/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/path/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/path/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/player/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/player/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/rank/bishop/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/rank/bishop/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/rank/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/rank/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/rank/king/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/rank/king/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/rank/knight/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/rank/knight/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/rank/pawn/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/rank/pawn/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/rank/queen/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/rank/queen/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/rank/rook/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/rank/rook/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/scalar/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/scalar/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/square/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/square/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/team/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/team/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/token/combatant/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/token/combatant/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/token/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/token/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/token/king/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/token/king/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/token/pawn/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/token/pawn/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/model/vector/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/model/vector/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/metadata/blueprint/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/consistency/structure/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/consistency/structure/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,61 +145,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0" />
-      <entry key="S60" value="1.000000009551339" />
-      <entry key="M2" value="1.000102721090707" />
-      <entry key="M5" value="1.1488755329435514" />
-      <entry key="M10" value="5.382526718382254" />
-      <entry key="M15" value="16.84010189815329" />
-      <entry key="M30" value="76.07516061988798" />
-      <entry key="H1" value="221.11974337520004" />
-      <entry key="H2" value="474.91410819655334" />
-      <entry key="H4" value="878.1435037666831" />
-      <entry key="D1" value="4045.21994951697" />
-      <entry key="W1" value="27290.003697613847" />
+      <entry key="MS100" value="5.458716974839142E-20" />
+      <entry key="MS500" value="1.4041649088752505E-4" />
+      <entry key="S2" value="0.10885654067734207" />
+      <entry key="S5" value="0.4118525995700927" />
+      <entry key="S10" value="0.64175743047517" />
+      <entry key="S30" value="0.8625619611756798" />
+      <entry key="S60" value="0.9287441418929092" />
+      <entry key="M2" value="0.9673592768898407" />
+      <entry key="M5" value="1.3231509148250373" />
+      <entry key="M10" value="2.528932645532528" />
+      <entry key="M15" value="3.5665899638828864" />
+      <entry key="M30" value="7.46679532186271" />
+      <entry key="H1" value="41.30705780092504" />
+      <entry key="H2" value="194.0790038148427" />
+      <entry key="H4" value="560.9955840863164" />
+      <entry key="D1" value="3765.8692420609477" />
+      <entry key="W1" value="27014.44686671813" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="5.1311402757339067E-163" />
-      <entry key="S10" value="7.163197802471956E-82" />
-      <entry key="S30" value="8.94751251678065E-28" />
-      <entry key="S60" value="2.991239294472251E-14" />
-      <entry key="M2" value="1.7295221438538205E-7" />
-      <entry key="M5" value="0.001986994823427342" />
-      <entry key="M10" value="0.050583140448192995" />
-      <entry key="M15" value="0.1788676234351216" />
-      <entry key="M30" value="1.0647009361376913" />
-      <entry key="H1" value="4.6618897639765695" />
-      <entry key="H2" value="12.797100281412296" />
-      <entry key="H4" value="26.808437992135985" />
-      <entry key="D1" value="168.34674960516125" />
-      <entry key="W1" value="1253.0272132956966" />
+      <entry key="MS100" value="1.0000096569564358" />
+      <entry key="MS500" value="1.099304300012013" />
+      <entry key="S2" value="1.5613607110368042" />
+      <entry key="S5" value="1.7937738828780951" />
+      <entry key="S10" value="1.8909398873538523" />
+      <entry key="S30" value="1.962238658402521" />
+      <entry key="S60" value="1.9809377555597387" />
+      <entry key="M2" value="1.9907592587404919" />
+      <entry key="M5" value="2.036960866747914" />
+      <entry key="M10" value="2.2001523270464736" />
+      <entry key="M15" value="2.3466753829786713" />
+      <entry key="M30" value="2.772573593972868" />
+      <entry key="H1" value="4.499050453549226" />
+      <entry key="H2" value="10.385432916113748" />
+      <entry key="H4" value="23.694254123151108" />
+      <entry key="D1" value="164.5404762884701" />
+      <entry key="W1" value="1248.283390262703" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.8350879194283694" />
-      <entry key="MS500" value="0.9645981845841383" />
-      <entry key="S2" value="0.9910295632640791" />
-      <entry key="S5" value="0.9964021225885421" />
-      <entry key="S10" value="0.9981994402866303" />
-      <entry key="S30" value="0.9993994528441876" />
-      <entry key="S60" value="0.9996996905713459" />
-      <entry key="M2" value="0.9999511243428396" />
-      <entry key="M5" value="1.1505443832213726" />
-      <entry key="M10" value="5.431237254952167" />
-      <entry key="M15" value="17.015288026267456" />
-      <entry key="M30" value="77.1329457344606" />
-      <entry key="H1" value="225.77272685145095" />
-      <entry key="H2" value="487.7015423122747" />
-      <entry key="H4" value="904.9407227980914" />
-      <entry key="D1" value="4213.547903663718" />
-      <entry key="W1" value="28543.009525122652" />
+      <entry key="MS100" value="0.09672281209640071" />
+      <entry key="MS500" value="0.6278724587646379" />
+      <entry key="S2" value="1.1532050446486684" />
+      <entry key="S5" value="1.8280346806821068" />
+      <entry key="S10" value="2.2948486848794767" />
+      <entry key="S30" value="2.731493535289316" />
+      <entry key="S60" value="2.8610342746220963" />
+      <entry key="M2" value="2.933176585063346" />
+      <entry key="M5" value="3.346395157810239" />
+      <entry key="M10" value="4.715766561744628" />
+      <entry key="M15" value="5.900764841018919" />
+      <entry key="M30" value="10.229832356876726" />
+      <entry key="H1" value="45.798642497296385" />
+      <entry key="H2" value="204.45699618537924" />
+      <entry key="H4" value="584.6808135365834" />
+      <entry key="D1" value="3930.3920314847364" />
+      <entry key="W1" value="28262.7090683543" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -281,7 +233,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/domain/extract",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -295,11 +247,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/domain/extract" />
+      <recent name="$PROJECT_DIR$/src/err/consistency/structure/chart" />
+      <recent name="$PROJECT_DIR$/src/err/consistency/structure" />
       <recent name="$PROJECT_DIR$/src/err" />
       <recent name="$PROJECT_DIR$/src/err/assurance" />
-      <recent name="$PROJECT_DIR$/src/err/duplicate" />
-      <recent name="$PROJECT_DIR$/src/err/transit/dispatcher/validation/structure/chart" />
-      <recent name="$PROJECT_DIR$/src/err/transit/dispatcher/validation/structure" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/err" />
@@ -964,7 +916,7 @@
       <workItem from="1790001362413" duration="735000" />
       <workItem from="1790063398459" duration="258692000" />
       <workItem from="1790480915263" duration="119124000" />
-      <workItem from="1790671354344" duration="207028000" />
+      <workItem from="1790671354344" duration="210952000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -2371,6 +2323,16 @@
           <url>file://$PROJECT_DIR$/src/exchange/wrapper/validation/structure/chart/token/wrapper.py</url>
           <line>112</line>
           <option name="timeStamp" value="509" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/domain/extract/model/vector/extract.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="511" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/domain/extract/model/token/combatant/extract.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="512" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

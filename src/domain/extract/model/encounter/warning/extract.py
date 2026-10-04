@@ -45,7 +45,7 @@ class EncounterWarningPrimeExtract(EncounterPrimeExtract[EncounterWarning]):
             carrier: EncounterWarningCarrier
             blueprint: Optional[EncounterWarningBlueprint]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint,)
+        super().__init__(carrier=carrier, blueprint=blueprint)
         
     @property
     def carrier(self) -> EncounterWarningCarrier:

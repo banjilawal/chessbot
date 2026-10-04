@@ -1,7 +1,7 @@
-# src/err/null/transit/carrier/structure/register/exception.py
+# src/err/null/transit/carrier/struct/register/exception.py
 
 """
-Module: err.null.transit.carrier.structure.register.exception
+Module: err.null.transit.carrier.struct.register.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StructureCarrierNullException
+from err import StructCarrierNullException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# REGISTER_CARRIER_NULL_ERROR #======================#
-class RegisterCarrierNullException(StructureCarrierNullException):
+class RegisterCarrierNullException(StructCarrierNullException):
     """
     Role:
         - Error Tracing

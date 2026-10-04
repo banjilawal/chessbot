@@ -1,7 +1,7 @@
-# src/transit/carrier/structure/carrier.py
+# src/transit/carrier/struct/carrier.py
 
 """
-Module: transit.carrier.structure.carrier
+Module: transit.carrier.struct.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,25 +13,25 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar, cast
 
-from domain import Structure, StructureBlueprint
+from domain import Struct, StructBlueprint
 from transit import EntityCarrier
 
-T = TypeVar("T", bound="Structure")
+T = TypeVar("T", bound="Struct")
 
-class StructureCarrier(EntityCarrier[T], ABC, Generic[T]):
+class StructCarrier(EntityCarrier[T], ABC, Generic[T]):
     """
     Role:
         - Boundary Carrier Interface
 
     Responsibilities:
-        1.  Transport a hydrated Structure or its Blueprint.
+        1.  Transport a hydrated Struct or its Blueprint.
 
     Attributes:
-        entity: [T | StructureBlueprint[T]]
+        entity: [T | StructBlueprint[T]]
 
 
     Provides:
-        -   def extract_blueprint() -> Optional[StructureBlueprint[T]]
+        -   def extract_blueprint() -> Optional[StructBlueprint[T]]
 
     Super Class:
         EntityCarrier
@@ -41,7 +41,7 @@ class StructureCarrier(EntityCarrier[T], ABC, Generic[T]):
         super().__init__()
     
     @property
-    def entity(self) -> Optional[T | StructureBlueprint[T]]:
+    def entity(self) -> Optional[T | StructBlueprint[T]]:
         if (
                 self.is_empty or
                 self.is_not_consistent
@@ -49,7 +49,7 @@ class StructureCarrier(EntityCarrier[T], ABC, Generic[T]):
             return None
         if self.has_model:
             return cast(T, super().entity)
-        return cast(StructureBlueprint[T], super().entity)
+        return cast(StructBlueprint[T], super().entity)
     
     @property
     @abstractmethod
@@ -62,7 +62,7 @@ class StructureCarrier(EntityCarrier[T], ABC, Generic[T]):
         pass
     
     @abstractmethod
-    def extract_blueprint(self) -> Optional[StructureBlueprint[T]]:
+    def extract_blueprint(self) -> Optional[StructBlueprint[T]]:
         pass
 
 

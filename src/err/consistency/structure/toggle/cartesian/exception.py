@@ -1,7 +1,7 @@
-# src/err/consistency/structure/toggle/cartrsian/exception.py
+# src/err/consistency/struct/toggle/cartrsian/exception.py
 
 """
-Module: err.consistency.structure.toggle.cartesian.exception
+Module: err.consistency.struct.toggle.cartesian.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

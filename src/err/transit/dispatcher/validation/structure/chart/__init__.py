@@ -1,13 +1,13 @@
-# src/err/transit/dispatcher/validation/structure/chart/__init__.py
+# src/err/transit/dispatcher/validation/struct/chart/__init__.py
 
 """
-Module: err.transit.dispatcher.validation.structure.chart.__init__
+Module: err.transit.dispatcher.validation.struct.chart.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== ERR.TRANSIT.DISPATCHER.VALIDATION.STRUCTURE.CHART PACKAGE ===========#
+# =========== ERR.TRANSIT.DISPATCHER.VALIDATION.STRUCT.CHART PACKAGE ===========#
 
 # Packages
 from .coord import *

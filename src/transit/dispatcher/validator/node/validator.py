@@ -1,4 +1,4 @@
-# src/transit/dispatcher/validator/structure/node/validator.py
+# src/transit/dispatcher/validator/struct/node/validator.py
 
 """
 Module: transit.dispatcher.validator.node.validator
@@ -13,7 +13,7 @@ from abc import abstractmethod
 from typing import Any, cast
 
 from assurance import NodeValidator, Validator
-from domain.structure.node import Node
+from domain.struct.node import Node
 from artifcat import ValidationResult
 from util import LoggingLevelRouter
 

@@ -1,13 +1,13 @@
-# src/err/null/domain/structure/node/vector/__init__.py
+# src/err/null/domain/struct/node/vector/__init__.py
 
 """
-Module: err.null.domain.structure.node.vector.__init__
+Module: err.null.domain.struct.node.vector.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.NULL.DOMAIN.STRUCTURE.NODE.VECTOR PACKAGE ===========#
+# ============ ERR.NULL.DOMAIN.STRUCT.NODE.VECTOR PACKAGE ===========#
 
 # Packages
 

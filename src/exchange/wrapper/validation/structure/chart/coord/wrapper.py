@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/structure/chart/coord/wrapper.py
+# src/exchange/wrapper/validation/struct/chart/coord/wrapper.py
 
 """
-Module: exchange.wrapper.validation.structure.chart.coord.wrapper
+Module: exchange.wrapper.validation.struct.chart.coord.wrapper
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

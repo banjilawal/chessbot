@@ -1,7 +1,7 @@
-# src/artifact/response/validation/structure/register/square/response.py
+# src/artifact/response/validation/struct/register/square/response.py
 
 """
-Module: artifact.response.validation.structure.register.square.response
+Module: artifact.response.validation.struct.register.square.response
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

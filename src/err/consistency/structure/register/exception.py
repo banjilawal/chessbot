@@ -1,7 +1,7 @@
-# src/err/consistency/structure/register/exception.py
+# src/err/consistency/struct/register/exception.py
 
 """
-Module: err.consistency.structure.register.exception
+Module: err.consistency.struct.register.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StructureConsistencyException
+from err import StructConsistencyException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# REGISTER_CONSISTENCY_ERROR #======================#
-class RegisterConsistencyException(StructureConsistencyException):
+class RegisterConsistencyException(StructConsistencyException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class RegisterConsistencyException(StructureConsistencyException):
     Provides:
 
     Super Class:
-        StructureConsistencyException
+        StructConsistencyException
     """
     MSG = "Register consistency check failed."
     ERR_CODE = "REGISTER_CONSISTENCY_ERROR"

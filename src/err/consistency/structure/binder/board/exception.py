@@ -1,7 +1,7 @@
-# src/err/consistency/structurebinder/board/exception.py
+# src/err/consistency/structbinder/board/exception.py
 
 """
-Module: err.consistency.structure.binder.board.exception
+Module: err.consistency.struct.binder.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

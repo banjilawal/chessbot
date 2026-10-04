@@ -1,7 +1,7 @@
-# src/err/capacity/empty/carrier/structure/exception.py
+# src/err/capacity/empty/carrier/struct/exception.py
 
 """
-Module: err.capacity.empt.carrier.structure.exception
+Module: err.capacity.empt.carrier.struct.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import EmptyCarrierException
 
 __all__ = [
-    # ======================# STRUCTURE_CARRIER_EMPTY_ERROR #======================#
-    "EmptyStructureCarrierException",
+    # ======================# STRUCT_CARRIER_EMPTY_ERROR #======================#
+    "EmptyStructCarrierException",
 ]
 
-# ======================# STRUCTURE_CARRIER_EMPTY_ERROR #======================#
-class EmptyStructureCarrierException(EmptyCarrierException):
+# ======================# STRUCT_CARRIER_EMPTY_ERROR #======================#
+class EmptyStructCarrierException(EmptyCarrierException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a StructureCarrier is empty.
+        1.  Indicating a StructCarrier is empty.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class EmptyStructureCarrierException(EmptyCarrierException):
     Super Class:
         EmptyCarrierException
     """
-    MSG = "StructureCarrier cannot be empty."
-    ERR_CODE = "STRUCTURE_CARRIER_EMPTY_ERROR"
+    MSG = "StructCarrier cannot be empty."
+    ERR_CODE = "STRUCT_CARRIER_EMPTY_ERROR"
     
     def __init__(
             self,

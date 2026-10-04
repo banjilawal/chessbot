@@ -1,4 +1,4 @@
-# src/transit/dispatcher/authorization/insertion/structure/node/dispatcher.py
+# src/transit/dispatcher/authorization/insertion/struct/node/dispatcher.py
 
 """
 Module: transit.dispatcher.authorization.insertion.node.dispatcher
@@ -15,7 +15,7 @@ from typing import Generic, TypeVar, cast
 from authorization import AddNodeRequestAuthorizer
 from collection import Chain
 from transit.dispatcher import InsertionDispatcher
-from domain.structure.node import Node
+from domain.struct.node import Node
 
 from artifcat.report import AuthorizationDecision
 from client.exchange import AddNodeRequest

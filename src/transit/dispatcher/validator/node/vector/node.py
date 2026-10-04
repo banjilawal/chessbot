@@ -1,4 +1,4 @@
-# src/structure/node/vector/structure/node.py
+# src/struct/node/vector/struct/node.py
 
 """
 Module: node.vector.node
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from domain.model import Vector
-from domain.structure.node import Node
+from domain.struct.node import Node
 
 
 class VectorNode(Node[Vector]):

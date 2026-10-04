@@ -42,7 +42,7 @@ class VectorNodeBlueprintNullException(NodeBlueprintNullException):
     Provides:
 
     Super Class:
-        StructureBlueprintNullException
+        StructBlueprintNullException
     """
     MSG = "VectorNodeBlueprint cannot be null."
     ERR_CODE = "VECTOR_NODE_BLUEPRINT_NULL_ERROR"

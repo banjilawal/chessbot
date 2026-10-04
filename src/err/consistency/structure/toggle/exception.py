@@ -1,7 +1,7 @@
-# src/err/consistency/structure/toggle/exception.py
+# src/err/consistency/struct/toggle/exception.py
 
 """
-Module: err.consistency.structure.toggle.exception
+Module: err.consistency.struct.toggle.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 
-from err import StructureConsistencyException
+from err import StructConsistencyException
 from artifcat import MethodResultType
 
 
@@ -22,7 +22,7 @@ __all__ = [
 ]
 
 # ======================# TOGGLE_CONSISTENCY_ERROR #======================#
-class ToggleConsistencyException(StructureConsistencyException):
+class ToggleConsistencyException(StructConsistencyException):
     """
     Role:
         - Error Tracing
@@ -43,7 +43,7 @@ class ToggleConsistencyException(StructureConsistencyException):
     Provides:
 
     Super Class:
-        StructureConsistencyException
+        StructConsistencyException
     """
     MSG = "Toggle consistency check failed."
     ERR_CODE = "TOGGLE_CONSISTENCY_ERROR"

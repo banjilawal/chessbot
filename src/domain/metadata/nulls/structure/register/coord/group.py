@@ -1,7 +1,7 @@
-# src/domain/metadata/nulls/structure/register/coord/group.py
+# src/domain/metadata/nulls/struct/register/coord/group.py
 
 """
-Module: domain.metadata.nulls.structure.register.coord.group
+Module: domain.metadata.nulls.struct.register.coord.group
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -57,12 +57,12 @@ class CoordRegisterNullGroup(RegisterNullGroup[CoordRegister]):
         )
         
     @property
-    def structure(self) -> CoordRegisterNullException:
+    def struct(self) -> CoordRegisterNullException:
         return cast(CoordRegisterNullException, super().model)
     
     @property
     def model(self) -> CoordRegisterNullException:
-        return self.structure
+        return self.struct
     
     @property
     def carrier(self) -> CoordRegisterCarrierNullException:

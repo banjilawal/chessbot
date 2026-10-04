@@ -11,7 +11,6 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelPrimeExtract
 from domain import Maneuver, ManeuverBlueprint
 from transit import ManeuverCarrier
 
@@ -46,7 +45,7 @@ class ManeuverPrimeExtract(ModelPrimeExtract[Maneuver]):
             carrier: EntityCarrier[Maneuver]
             blueprint: Optional[Blueprint[Maneuver]]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint,)
+        super().__init__(carrier=carrier, blueprint=blueprint)
         
     @property
     def carrier(self) -> ManeuverCarrier:

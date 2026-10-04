@@ -1,7 +1,7 @@
-# src/err/null/transit/carrier/structure/register/square/exception.py
+# src/err/null/transit/carrier/struct/register/square/exception.py
 
 """
-Module: err.null.transit.carrier.structure.register.square.exception
+Module: err.null.transit.carrier.struct.register.square.exception
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

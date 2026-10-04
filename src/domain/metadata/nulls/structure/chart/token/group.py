@@ -1,7 +1,7 @@
-# src/domain/metadata/nulls/structure/chart/token/group.py
+# src/domain/metadata/nulls/struct/chart/token/group.py
 
 """
-Module: domain.metadata.nulls.structure.chart.token.group
+Module: domain.metadata.nulls.struct.chart.token.group
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -57,12 +57,12 @@ class TokenChartNullGroup(ChartNullGroup[TokenChart]):
         )
         
     @property
-    def structure(self) -> TokenChartNullException:
+    def struct(self) -> TokenChartNullException:
         return cast(TokenChartNullException, super().model)
     
     @property
     def model(self) -> TokenChartNullException:
-        return self.structure
+        return self.struct
     
     @property
     def carrier(self) -> TokenChartCarrierNullException:

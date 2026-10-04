@@ -1,7 +1,7 @@
 # src/domain/metadata/unions/strcture/chart/coord/manifest.py
 
 """
-Module: domain.metadata.unions.structure.chart.coord.manifest
+Module: domain.metadata.unions.struct.chart.coord.manifest
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

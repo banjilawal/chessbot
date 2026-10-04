@@ -24,7 +24,7 @@ class GameStackService(StackService[Game]):
     3.  Assure only valid Games are put in the collection.
     4.  Assure updates do not break the integrity individual bag in the collection or
         the collection itself.
-    5.  Provide Game schema data structure with no guarantee of uniqueness.
+    5.  Provide Game schema data struct with no guarantee of uniqueness.
     6.  Search utility.
     
     Super Class:

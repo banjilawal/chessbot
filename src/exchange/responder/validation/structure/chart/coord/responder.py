@@ -1,7 +1,7 @@
-# src/exchange/responder/validation/structure/chart/coord/exchange.py
+# src/exchange/responder/validation/struct/chart/coord/exchange.py
 
 """
-Module: exchange.responder.validation.structure.chart.coord.exchange
+Module: exchange.responder.validation.struct.chart.coord.exchange
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

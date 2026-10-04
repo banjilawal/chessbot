@@ -1,7 +1,7 @@
-# src/transit/carrier/structure/register/coord/carrier.py
+# src/transit/carrier/struct/register/coord/carrier.py
 
 """
-Module: transit.carrier.structure.register.coord.carrier
+Module: transit.carrier.struct.register.coord.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

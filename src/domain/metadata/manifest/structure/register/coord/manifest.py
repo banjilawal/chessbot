@@ -1,7 +1,7 @@
 # src/domain/metadata/manifest/strcture/register/coord/manifest.py
 
 """
-Module: domain.metadata.manifest.structure.register.coord.manifest
+Module: domain.metadata.manifest.struct.register.coord.manifest
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

@@ -1,7 +1,7 @@
-# src/exchange/responder/validation/structure/register/exchange.py
+# src/exchange/responder/validation/struct/register/exchange.py
 
 """
-Module: exchange.responder.validation.structure.register.exchange
+Module: exchange.responder.validation.struct.register.exchange
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,14 +13,14 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from artifcat import RegisterValidationResponse
-from exchange import RegisterValidationRequest, StructureValidationResponder
+from exchange import RegisterValidationRequest, StructValidationResponder
 from transit import RegisterValidationDispatcher
 from util import LoggingLevelRouter
 
 T = TypeVar("T",)
 
 class RegisterValidationResponder(
-    StructureValidationResponder[T],
+    StructValidationResponder[T],
     ABC,
     Generic[T],
 ):

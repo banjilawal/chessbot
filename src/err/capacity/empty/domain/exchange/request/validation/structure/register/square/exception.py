@@ -1,7 +1,7 @@
-# src/err/assurance/empty/domain/exchange/request/validation/structure/register/square/exception.py
+# src/err/assurance/empty/domain/exchange/request/validation/struct/register/square/exception.py
 
 """
-Module: err.assurance.empty.domain.exchange.request.validation.structure.register.square.exception
+Module: err.assurance.empty.domain.exchange.request.validation.struct.register.square.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

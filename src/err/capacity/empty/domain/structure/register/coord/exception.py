@@ -1,7 +1,7 @@
-# src/err/assurance/empty/domain/structure/register/coord/exception.py
+# src/err/assurance/empty/domain/struct/register/coord/exception.py
 
 """
-Module: err.assurance.empty.domain.structure.register.coord.exception
+Module: err.assurance.empty.domain.struct.register.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

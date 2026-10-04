@@ -18,7 +18,7 @@ class BoardStackService(StackService[Board]):
     1.  Public facing API.
     2.  Microservice for managing Board objects and their lifecycles.
     3.  Ensure integrity of Board data schema
-    4.  Stack data structure for Board objects with no guarantee of uniqueness.
+    4.  Stack data struct for Board objects with no guarantee of uniqueness.
 
     Super Class:
         *   StackService[Board]

@@ -1,7 +1,7 @@
-# src/domain/structure/register/structure.py
+# src/domain/struct/register/struct.py
 
 """
-Module: domain.structure.register.structure
+Module: domain.struct.register.struct
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,12 +12,12 @@ from __future__ import annotations
 from abc import ABC
 from typing import Dict, Generic, List, Optional, TypeVar
 
-from domain import SearchableModel, Structure
+from domain import SearchableModel, Struct
 
 T = TypeVar("T", bound="SearchableModel")
 
 
-class Register(Structure, ABC, Generic[T]):
+class Register(Struct, ABC, Generic[T]):
     """
     Role:
         - Addressing
@@ -41,7 +41,7 @@ class Register(Structure, ABC, Generic[T]):
     Provides:
     
     Super Class:
-        Structure
+        Struct
     """
     _a: T
     _b: T

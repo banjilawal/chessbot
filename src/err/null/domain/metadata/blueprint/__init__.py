@@ -13,7 +13,7 @@ version: 0.0.2
 from .model import *
 from .movement import *
 from .space import *
-from .structure import *
+from .struct import *
 
 # Modules
 from .exception import BlueprintNullException

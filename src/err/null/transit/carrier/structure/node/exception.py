@@ -1,7 +1,7 @@
-# src/err/null/transit/carrier/structure/node/exception.py
+# src/err/null/transit/carrier/struct/node/exception.py
 
 """
-Module: err.null.transit.carrier.structure.node.exception
+Module: err.null.transit.carrier.struct.node.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StructureCarrierNullException
+from err import StructCarrierNullException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# NODE_CARRIER_NULL_ERROR #======================#
-class NodeCarrierNullException(StructureCarrierNullException):
+class NodeCarrierNullException(StructCarrierNullException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class NodeCarrierNullException(StructureCarrierNullException):
     Provides:
 
     Super Class:
-        StructureCarrierNullException
+        StructCarrierNullException
     """
     MSG = "NodeCarrier cannot be null."
     ERR_CODE = "NODE_CARRIER_NULL_ERROR"

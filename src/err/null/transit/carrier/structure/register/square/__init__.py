@@ -1,13 +1,13 @@
-# src/err/null/transit/carrier/structure/register/square/__init__.py
+# src/err/null/transit/carrier/struct/register/square/__init__.py
 
 """
-Module: err.null.transit.carrier.structure.register.square.__init__
+Module: err.null.transit.carrier.struct.register.square.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ERR.NULL.TRANSIT.CARRIER.STRUCTURE.REGISTER.SQUARE PACKAGE ===========#
+# =========== ERR.NULL.TRANSIT.CARRIER.STRUCT.REGISTER.SQUARE PACKAGE ===========#
 
 # Packages
 

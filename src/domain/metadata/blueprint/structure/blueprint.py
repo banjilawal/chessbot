@@ -1,7 +1,7 @@
-# src/domain/metadata/blueprint/structure/blueprint.py
+# src/domain/metadata/blueprint/struct/blueprint.py
 
 """
-Module: domain.metadata.blueprint.structure.blueprint
+Module: domain.metadata.blueprint.struct.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,23 +12,23 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Type, TypeVar, cast
 
-from domain import Blueprint, Structure
-from err import StructureNullException
+from domain import Blueprint, Struct
+from err import StructNullException
 
 
-T = TypeVar("T", bound="Structure")
+T = TypeVar("T", bound="Struct")
 
-class StructureBlueprint(Blueprint[T], ABC, Generic[T]):
+class StructBlueprint(Blueprint[T], ABC, Generic[T]):
     """
      Role:
         1.  Metadata
 
      Responsibilities:
-         1.  Provide attributes for hydrating a Structure.
+         1.  Provide attributes for hydrating a Struct.
 
      Attributes:
          domain_class: Type[T]
-         domain_null_exception: StructureNullException
+         domain_null_exception: StructNullException
 
      Provides:
 
@@ -38,13 +38,13 @@ class StructureBlueprint(Blueprint[T], ABC, Generic[T]):
     
     def __init__(
             self,
-            domain_class: Type[Structure],
-            domain_null_exception: StructureNullException,
+            domain_class: Type[Struct],
+            domain_null_exception: StructNullException,
     ):
         """
         Args:
             domain_class: Type[T]
-            domain_null_exception: StructureNullException
+            domain_null_exception: StructNullException
         """
         super().__init__(
             domain_class=domain_class,
@@ -56,7 +56,7 @@ class StructureBlueprint(Blueprint[T], ABC, Generic[T]):
         return cast(Type[T], super().domain_class)
     
     @property
-    def domain_null_exception(self) -> StructureNullException:
-        return cast(StructureNullException, super().domain_null_exception)
+    def domain_null_exception(self) -> StructNullException:
+        return cast(StructNullException, super().domain_null_exception)
     
     

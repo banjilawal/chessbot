@@ -42,7 +42,7 @@ class DossierNodeBlueprintNullException(NodeBlueprintNullException):
     Provides:
 
     Super Class:
-        StructureBlueprintNullException
+        StructBlueprintNullException
     """
     MSG = "DossierNodeBlueprint cannot be null."
     ERR_CODE = "DOSSIER_NODE_BLUEPRINT_NULL_ERROR"

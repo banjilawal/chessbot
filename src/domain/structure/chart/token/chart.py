@@ -1,7 +1,7 @@
-# src/domain/structure/chart/token/structure.py
+# src/domain/struct/chart/token/struct.py
 
 """
-Module: domain.structure.chart.token.structure
+Module: domain.struct.chart.token.struct
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

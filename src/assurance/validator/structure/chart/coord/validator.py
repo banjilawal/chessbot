@@ -1,7 +1,7 @@
-# src/assurance/root/validator/token/coord/validator.py
+# src/assurance/validator/struct/chain/coord/validator.py
 
 """
-Module: assurance.root.validator.token.coord.validator
+Module: assurance.validator.struct.chain.coord.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -14,7 +14,7 @@ from typing import Any, Optional, Type, cast
 from artifcat import ValidationResult
 from assurance import TokenValidatorToolkit, Validator
 from domain import Coord, CoordChart
-from err import StructureNullException, CoordChartValidatorException
+from err import CoordChartConsistencyException, StructNullException, CoordChartValidatorException
 from exchange import CoordValidationRequest
 from transit import CoordCarrier, CoordChartCarrier
 from util import IdFactory, LoggingLevelRouter
@@ -76,10 +76,27 @@ class CoordChartValidator(Validator[CoordChart]):
         """
         method = f"{self.__class__.__name__}.execute"
         
+        # Handle the case that the blueprint cannot be extracted.
+        load_result = self.toolkit.loader.execute(candidate)
+        if load_result.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                CoordChartValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=CoordChartValidatorException.MSG,
+                    err_code=CoordChartValidatorException.ERR_CODE,
+                    ex=load_result.exception,
+                )
+            )
+        # --- Get the PrimeExtract and Blueprint for additional processing. ---#
+        prime_extract = cast(CoordChartPrimeExtract, load_result.payload)
+        blueprint = cast(CoordHBlueprint, prime_extract.blueprint)
+        
         priming = self.toolkit.priming_validator.execute(
             candidate=candidate,
             target_model=Type[CoordChart],
-            null_exception=StructureNullException(),
+            null_exception=StructNullException(),
         )
         if priming.is_failure:
             # Send the exception chain on failure.
@@ -102,11 +119,11 @@ class CoordChartValidator(Validator[CoordChart]):
                     cls_name=self.__class__.__name__,
                     msg=CoordChartValidatorException.MSG,
                     err_code=CoordChartValidatorException.ERR_CODE,
-                    ex=CoordchartConsistencyException(
+                    ex=CoordChartConsistencyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=CoordchartConsistencyException.MSG,
-                        err_code=CoordchartConsistencyException.ERR_CODE,
+                        msg=CoordChartConsistencyException.MSG,
+                        err_code=CoordChartConsistencyException.ERR_CODE,
                     ),
                 )
             )

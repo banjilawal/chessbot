@@ -28,7 +28,7 @@ class ModelBlueprint(Blueprint[T], ABC, Generic[T]):
 
      Attributes:
          domain_class: Type[T]
-         domain_null_exception: StructureNullException
+         domain_null_exception: StructNullException
 
      Provides:
 

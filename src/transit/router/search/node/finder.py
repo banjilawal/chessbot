@@ -1,4 +1,4 @@
-# src/logic/structure/node/context/transit/route/transit/route.py
+# src/logic/struct/node/context/transit/route/transit/route.py
 
 """
 Module: logic.node.context.route.route
@@ -13,7 +13,7 @@ from typing import List
 
 from logic.square import Square
 from system import LoggingLevelRouter, SearchResult, StackSearchRouter
-from domain.structure.node import (
+from domain.struct.node import (
     DiscoveryStatus, SquareNode, NodeContext, NodeContextValidator, NodeSearchException, NodeSearchRouteException,
     NodeSearchNullDatasetException, NodeSearchPayloadTypeException
 )

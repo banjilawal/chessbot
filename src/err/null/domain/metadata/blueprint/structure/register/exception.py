@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StructureBlueprintNullException
+from err import StructBlueprintNullException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# REGISTER_BLUEPRINT_NULL_ERROR #======================#
-class RegisterBlueprintNullException(StructureBlueprintNullException):
+class RegisterBlueprintNullException(StructBlueprintNullException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class RegisterBlueprintNullException(StructureBlueprintNullException):
     Provides:
 
     Super Class:
-        StructureBlueprintNullException
+        StructBlueprintNullException
     """
     MSG = "RegisterBlueprint cannot be null."
     ERR_CODE = "REGISTER_BLUEPRINT_NULL_ERROR"

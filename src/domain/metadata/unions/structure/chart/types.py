@@ -1,7 +1,7 @@
 # src/domain/metadata/unions/strcture/chart/manifest.py
 
 """
-Module: domain.metadata.unions.structure.chart.manifest
+Module: domain.metadata.unions.struct.chart.manifest
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -12,13 +12,13 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Type, TypeVar, cast
 
-from domain import Chart, ChartBlueprint, StructureTypeUnion
+from domain import Chart, ChartBlueprint, StructTypeUnion
 from transit import ChartCarrier
 
 T = TypeVar("T", bound="Chart")
 
 
-class ChartTypeUnion(StructureTypeUnion[T], ABC, Generic[T]):
+class ChartTypeUnion(StructTypeUnion[T], ABC, Generic[T]):
     """
     Role:
         - Metadata
@@ -34,7 +34,7 @@ class ChartTypeUnion(StructureTypeUnion[T], ABC, Generic[T]):
     Provides:
 
     Super Class:
-        StructureTypeUnion
+        StructTypeUnion
     """
     
     def __init__(

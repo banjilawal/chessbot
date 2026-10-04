@@ -1,7 +1,7 @@
-# src/err/assurance/empty/domain/structure/exception.py
+# src/err/assurance/empty/domain/struct/exception.py
 
 """
-Module: err.assurance.empty.domain.structure.exception
+Module: err.assurance.empty.domain.struct.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import Empty.DomainException
 
 __all__ = [
-    # ======================# EMPTY_STRUCTURE_ERROR #======================#
-    "EmptyStructureException",
+    # ======================# EMPTY_STRUCT_ERROR #======================#
+    "EmptyStructException",
 ]
 
-# ======================# EMPTY_STRUCTURE_ERROR #======================#
-class EmptyStructureException(Empty.DomainException):
+# ======================# EMPTY_STRUCT_ERROR #======================#
+class EmptyStructException(Empty.DomainException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Structure is empty.
+        1.  Indicating a Struct is empty.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class EmptyStructureException(Empty.DomainException):
     Super Class:
        Empty.DomainException
     """
-    MSG = "Structure cannot be empty. Its length cannot be zero"
-    ERR_CODE = "EMPTY_STRUCTURE_ERROR"
+    MSG = "Struct cannot be empty. Its length cannot be zero"
+    ERR_CODE = "EMPTY_STRUCT_ERROR"
     
     def __init__(
             self,

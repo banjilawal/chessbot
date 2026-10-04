@@ -1,4 +1,4 @@
-# src/transit/carrier/structure/__init__.py
+# src/transit/carrier/struct/__init__.py
 
 """
 Module: transit.carrier.s.tructure.__init__
@@ -7,11 +7,11 @@ Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== TRANSIT.CARRIER.STRUCTURE PACKAGE ===========#
+# =========== TRANSIT.CARRIER.STRUCT PACKAGE ===========#
 
 # Packages
 from .chart import *
 from .register import *
 
 # Modules
-from .carrier import StructureCarrier
+from .carrier import StructCarrier

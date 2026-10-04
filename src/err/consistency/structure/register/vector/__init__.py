@@ -1,13 +1,13 @@
-# src/err/consistency/structure/register/vector/__init__.py
+# src/err/consistency/struct/register/vector/__init__.py
 
 """
-Module: err.consistency.structure.register.vector.__init__
+Module: err.consistency.struct.register.vector.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# =========== ERR.CONSISTENCY.STRUCTURE.REGISTER.VECTOR PACKAGE ===========#
+# =========== ERR.CONSISTENCY.STRUCT.REGISTER.VECTOR PACKAGE ===========#
 
 # Packages
 

@@ -1,7 +1,7 @@
-# src/err/exchange/wrapper/validation/structure/register/exception.py
+# src/err/exchange/wrapper/validation/struct/register/exception.py
 
 """
-Module: err.exchange.wrapper.validation.structure.register.exception
+Module: err.exchange.wrapper.validation.struct.register.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import StructureValidationResponseWrapperException
+from err import StructValidationResponseWrapperException
 
 
 __all__ = [
@@ -22,7 +22,7 @@ __all__ = [
 
 # ======================# REGISTER_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
 class RegisterValidationResponseWrapperException(
-    StructureValidationResponseWrapperException
+    StructValidationResponseWrapperException
 ):
     """
     Role:
@@ -44,7 +44,7 @@ class RegisterValidationResponseWrapperException(
     Provides:
 
     Super Class:
-        StructureValidationResponseWrapperException
+        StructValidationResponseWrapperException
     """
     MSG = "RegisterValidationResponseWrapper error."
     ERR_CODE = "REGISTER_VALIDATION_RESPONSE_WRAPPER_FAILURE"

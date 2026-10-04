@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/structure/register/wrapper.py
+# src/exchange/wrapper/validation/struct/register/wrapper.py
 
 """
-Module: exchange.wrapper.validation.structure.register.wrapper
+Module: exchange.wrapper.validation.struct.register.wrapper
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -15,14 +15,14 @@ from typing import Generic, TypeVar, cast
 from artifcat import ValidationResult
 from domain import Register, RegisterBlueprint
 from exchange import (
-    RegisterValidationRequest, RegisterValidationResponder, StructureValidationResponseWrapper,
+    RegisterValidationRequest, RegisterValidationResponder, StructValidationResponseWrapper,
 )
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Register")
 
 class RegisterValidationResponseWrapper(
-    StructureValidationResponseWrapper[T],
+    StructValidationResponseWrapper[T],
     ABC,
     Generic[T]
 ):

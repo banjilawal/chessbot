@@ -1,7 +1,7 @@
-# src/err/assurance/loader/structure/register/coord/exception.py
+# src/err/assurance/loader/struct/register/coord/exception.py
 
 """
-Module: err.assurance.loader.structure.register.coord.exception
+Module: err.assurance.loader.struct.register.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

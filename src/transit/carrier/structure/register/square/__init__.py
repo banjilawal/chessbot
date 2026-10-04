@@ -1,4 +1,4 @@
-# src/transit/carrier/structure/register/square/__init__.py
+# src/transit/carrier/struct/register/square/__init__.py
 
 """
 Module: transit.carrier.s.tructure.register.square.__init__
@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== TRANSIT.CARRIER.STRUCTURE.REGISTER.SQUARE PACKAGE ===========#
+# =========== TRANSIT.CARRIER.STRUCT.REGISTER.SQUARE PACKAGE ===========#
 
 # Packages
 

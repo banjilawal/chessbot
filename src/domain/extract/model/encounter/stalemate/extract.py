@@ -45,7 +45,7 @@ class StalemateEncounterPrimeExtract(EncounterPrimeExtract[StalemateEncounter]):
             carrier: StalemateEncounterCarrier
             blueprint: Optional[StalemateEncounterBlueprint]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint,)
+        super().__init__(carrier=carrier, blueprint=blueprint)
         
     @property
     def carrier(self) -> StalemateEncounterCarrier:

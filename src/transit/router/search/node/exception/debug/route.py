@@ -1,4 +1,4 @@
-# src/logic/structure/node/context/transit/route/exception/debug/transit/route.py
+# src/logic/struct/node/context/transit/route/exception/debug/transit/route.py
 
 """
 Module: logic.node.context.route.exception.debug.route
@@ -16,7 +16,7 @@ __all__ = [
     "NodeSearchRouteException",
 ]
 
-from domain.structure.node import NodeDebugException
+from domain.struct.node import NodeDebugException
 
 
 # ======================# NO_NODE_SEARCH_ROUTE_ROUTE_EXCEPTION #======================#

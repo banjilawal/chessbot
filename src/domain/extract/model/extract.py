@@ -12,8 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar, cast
 
-from assurance import PrimeExtract
-from domain import Model, ModelBlueprint
+from domain import Model, ModelBlueprint, PrimeExtract
 from transit import ModelCarrier
 
 T = TypeVar("T", bound="Model")
@@ -48,7 +47,7 @@ class ModelPrimeExtract(PrimeExtract[T], ABC, Generic[T]):
             carrier: EntityCarrier[T]
             blueprint: Optional[Blueprint[T]]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint,)
+        super().__init__(carrier=carrier, blueprint=blueprint)
         
     @property
     def carrier(self) -> ModelCarrier[T]:

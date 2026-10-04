@@ -1,16 +1,16 @@
-# src/domain/search/structure/__init__.py
+# src/domain/search/struct/__init__.py
 
 """
-Module: domain.search.structure.__init__
+Module: domain.search.struct.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== DOMAIN.SEARCH.STRUCTURE PACKAGE ===========#
+# =========== DOMAIN.SEARCH.STRUCT PACKAGE ===========#
 
 # Packages
 from .node import *
 
 # Modules
-from  .context import StructureContext
+from  .context import StructContext

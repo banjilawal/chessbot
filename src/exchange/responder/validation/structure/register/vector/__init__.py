@@ -1,13 +1,13 @@
-# src/exchange/responder/validation/structure/register/vector/__init__.py
+# src/exchange/responder/validation/struct/register/vector/__init__.py
 
 """
-Module: exchange.responder.validation.structure.register.vector.__init__
+Module: exchange.responder.validation.struct.register.vector.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== EXCHANGE.RESPONDER.VALIDATION.STRUCTURE.REGISTER.VECTOR PACKAGE ===========#
+# =========== EXCHANGE.RESPONDER.VALIDATION.STRUCT.REGISTER.VECTOR PACKAGE ===========#
 
 # Packages
 

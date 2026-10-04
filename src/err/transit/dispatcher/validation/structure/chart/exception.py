@@ -1,7 +1,7 @@
-# src/err/transit/dispatcher/validation/structure/chart/exception.py
+# src/err/transit/dispatcher/validation/struct/chart/exception.py
 
 """
-Module: err.transit.dispatcher.validation.structure.chart.exception
+Module: err.transit.dispatcher.validation.struct.chart.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import StructureValidationDispatcherException
+from err import StructValidationDispatcherException
 
 __all__ = [
     # ======================# CHART_VALIDATION_DISPATCHER_FAILURE #======================#
@@ -21,7 +21,7 @@ __all__ = [
 
 # ======================# CHART_VALIDATION_DISPATCHER_FAILURE #======================#
 class ChartValidationDispatcherException(
-    StructureValidationDispatcherException
+    StructValidationDispatcherException
 ):
     """
     Role:
@@ -43,7 +43,7 @@ class ChartValidationDispatcherException(
     Provides:
 
     Super Class:
-        StructureValidationDispatcherException
+        StructValidationDispatcherException
     """
     MSG = "ChartValidationDispatcher failure."
     ERR_CODE = "CHART_VALIDATION_DISPATCHER_FAILURE"

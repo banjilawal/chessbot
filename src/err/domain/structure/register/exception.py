@@ -1,7 +1,7 @@
-# src/err/domain/structure/register/exception.py
+# src/err/domain/struct/register/exception.py
 
 """
-Module: err.domain.structure.register.exception
+Module: err.domain.struct.register.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StructureException
+from err import StructException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# REGISTER_ERROR #======================#
-class RegisterException(StructureException):
+class RegisterException(StructException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class RegisterException(StructureException):
     Provides:
 
     Super Class:
-        StructureException
+        StructException
     """
     MSG = "Register error."
     ERR_CODE = "REGISTER_ERROR"

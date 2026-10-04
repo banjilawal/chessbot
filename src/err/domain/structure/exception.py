@@ -1,7 +1,7 @@
-# src/err/domain/structure/exception.py
+# src/err/domain/struct/exception.py
 
 """
-Module: err.domain.structure.exception
+Module: err.domain.struct.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# STRUCTURE_ERROR #======================#
-    "StructureException",
+    # ======================# STRUCT_ERROR #======================#
+    "StructException",
 ]
 
-# ======================# STRUCTURE_ERROR #======================#
-class StructureException(DomainObjectException):
+# ======================# STRUCT_ERROR #======================#
+class StructException(DomainObjectException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Structure encountered an error.
+        1.  Indicating a Struct encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class StructureException(DomainObjectException):
     Super Class:
         DomainObjectException
     """
-    MSG = "Structure error."
-    ERR_CODE = "STRUCTURE_ERROR"
+    MSG = "Struct error."
+    ERR_CODE = "STRUCT_ERROR"
     
     def __init__(
             self,

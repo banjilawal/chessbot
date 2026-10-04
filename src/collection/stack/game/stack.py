@@ -18,7 +18,7 @@ class GameStackService(StackService[Game]):
     1.  Public facing API.
     2.  Microservice for managing Game objects and their lifecycles.
     3.  Ensure integrity of Game data schema
-    4.  Stack data structure for Game objects with no guarantee of uniqueness.
+    4.  Stack data struct for Game objects with no guarantee of uniqueness.
 
     Super Class:
         *   StackService[Game]

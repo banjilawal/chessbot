@@ -1,7 +1,7 @@
-# src/err/null/domain/request/validation/structure/register/exception.py
+# src/err/null/domain/request/validation/struct/register/exception.py
 
 """
-Module: err.null.domain.request.validation.structure.register.exception
+Module: err.null.domain.request.validation.struct.register.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import StructureValidationRequestNullException
+from err import StructValidationRequestNullException
 
 __all__ = [
     # ======================# REGISTER_VALIDATION_REQUEST_NULL_ERROR #======================#
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# REGISTER_VALIDATION_REQUEST_NULL_ERROR #======================#
-class RegisterValidationRequestNullException(StructureValidationRequestNullException):
+class RegisterValidationRequestNullException(StructValidationRequestNullException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class RegisterValidationRequestNullException(StructureValidationRequestNullExcep
     Provides:
 
     Super Class:
-        StructureValidationRequestNullException
+        StructValidationRequestNullException
     """
     MSG = "RegisterValidationRequest cannot be null."
     ERR_CODE = "REGISTER_VALIDATION_REQUEST_NULL_ERROR"

@@ -1,7 +1,7 @@
-# src/err/exchange/request/validation/structure/register/exception.py
+# src/err/exchange/request/validation/struct/register/exception.py
 
 """
-Module: err.exchange.request.validation.structure.register.exception
+Module: err.exchange.request.validation.struct.register.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import StructureValidationRequestException
+from err import StructValidationRequestException
 
 
 __all__ = [
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# REGISTER_VALIDATION_REQUEST_FAILURE #======================#
-class RegisterValidationRequestException(StructureValidationRequestException):
+class RegisterValidationRequestException(StructValidationRequestException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class RegisterValidationRequestException(StructureValidationRequestException):
     Provides:
 
     Super Class:
-        StructureValidationRequestException
+        StructValidationRequestException
     """
     MSG = "RegisterValidationRequest error."
     ERR_CODE = "REGISTER_VALIDATION_REQUEST_FAILURE"

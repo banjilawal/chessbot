@@ -39,7 +39,7 @@ class Archetype(Enum):
         The Archetype implements a hashtable which a Team gets metadata about its initial deployment on
         the Board and how it advances. The color assigned to the Team is the Archetype table's key.
 
-    ## STRUCTURE OF THE ARCHETYPE HASHTABLE:
+    ## STRUCT OF THE ARCHETYPE HASHTABLE:
         *   Key (str)
         *   Value   (List{str: Any})
         

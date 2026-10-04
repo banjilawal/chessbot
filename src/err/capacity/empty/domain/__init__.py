@@ -13,7 +13,7 @@ version: 0.0.2
 from .context import *
 from .exchange import *
 from .model import *
-from .structure import *
+from .struct import *
 
 # Modules
 from .exception import Empty.DomainException

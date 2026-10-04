@@ -1,7 +1,7 @@
 # src/domain/metadata/unions/strcture/register/manifest.py
 
 """
-Module: domain.metadata.unions.structure.register.manifest
+Module: domain.metadata.unions.struct.register.manifest
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -12,13 +12,13 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Type, TypeVar, cast
 
-from domain import Register, RegisterBlueprint, StructureTypeUnion
+from domain import Register, RegisterBlueprint, StructTypeUnion
 from transit import EntityCarrier
 
 T = TypeVar("T", bound="Register")
 
 
-class RegisterTypeUnion(StructureTypeUnion[T], ABC, Generic[T]):
+class RegisterTypeUnion(StructTypeUnion[T], ABC, Generic[T]):
     """
     Role:
         - Metadata
@@ -34,7 +34,7 @@ class RegisterTypeUnion(StructureTypeUnion[T], ABC, Generic[T]):
     Provides:
 
     Super Class:
-        StructureTypeUnion
+        StructTypeUnion
     """
     
     def __init__(

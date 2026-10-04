@@ -1,7 +1,7 @@
-# src/err/assurance/loader/structure/exception.py
+# src/err/assurance/loader/struct/exception.py
 
 """
-Module: err.assurance.loader.structure.exception
+Module: err.assurance.loader.struct.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# STRUCTURE_BLUEPRINT_LOADER_FAILURE #======================#
-    "StructureLoaderException",
+    # ======================# STRUCT_BLUEPRINT_LOADER_FAILURE #======================#
+    "StructLoaderException",
 ]
 
-# ======================# STRUCTURE_BLUEPRINT_LOADER_FAILURE #======================#
-class StructureLoaderException(LoaderException):
+# ======================# STRUCT_BLUEPRINT_LOADER_FAILURE #======================#
+class StructLoaderException(LoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a StructureBlueprintLoader failed.
+        1.  Indicating assurance by a StructBlueprintLoader failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class StructureLoaderException(LoaderException):
     Super Class:
         BlueprintLoaderException
     """
-    MSG = "StructureLoader failure."
-    ERR_CODE = "STRUCTURE_BLUEPRINT_LOADER_FAILURE"
+    MSG = "StructLoader failure."
+    ERR_CODE = "STRUCT_BLUEPRINT_LOADER_FAILURE"
     
     def __init__(
             self,

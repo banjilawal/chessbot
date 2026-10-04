@@ -1,13 +1,13 @@
-# src/err/consistency/structure/register/square/__init__.py
+# src/err/consistency/struct/register/square/__init__.py
 
 """
-Module: err.consistency.structure.register.square.__init__
+Module: err.consistency.struct.register.square.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# =========== ERR.CONSISTENCY.STRUCTURE.REGISTER.SQUARE PACKAGE ===========#
+# =========== ERR.CONSISTENCY.STRUCT.REGISTER.SQUARE PACKAGE ===========#
 
 # Packages
 

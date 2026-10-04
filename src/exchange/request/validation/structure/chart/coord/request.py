@@ -1,7 +1,7 @@
-# src/exchange/request/validation/structure/chart/coord/request.py
+# src/exchange/request/validation/struct/chart/coord/request.py
 
 """
-Module: exchange.request.validation.structure.chart.coord.request
+Module: exchange.request.validation.struct.chart.coord.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

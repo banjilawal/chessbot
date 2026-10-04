@@ -1,7 +1,7 @@
-# src/assurance/load/structure/register/loader.py
+# src/assurance/load/struct/register/loader.py
 
 """
-Module: assurance.load.structure.register.loader
+Module: assurance.load.struct.register.loader
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

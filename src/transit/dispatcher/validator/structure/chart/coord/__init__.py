@@ -1,4 +1,4 @@
-# src/transit/dispatcher/validator/structure/chart/coord/__init__.py
+# src/transit/dispatcher/validator/struct/chart/coord/__init__.py
 
 """
 Module: transit.dispatcher.validator.chart.coord.__init__

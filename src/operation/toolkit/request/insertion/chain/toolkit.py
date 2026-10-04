@@ -13,7 +13,7 @@ from typing import Generic, Type, TypeVar, cast
 
 from collection import Chain
 from err import ChainNullException, NodeNullException, RequestNullException
-from domain.structure.node import Node
+from domain.struct.node import Node
 from client.exchange import AddNodeRequest
 
 from operation.toolkit import InsertPermissionRuleset

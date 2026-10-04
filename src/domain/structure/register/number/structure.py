@@ -1,7 +1,7 @@
-# src/domain/structure/register/number/structure.py
+# src/domain/struct/register/number/struct.py
 
 """
-Module: domain.structure.register.number.register
+Module: domain.struct.register.number.register
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

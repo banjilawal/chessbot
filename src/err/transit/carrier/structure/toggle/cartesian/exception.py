@@ -1,7 +1,7 @@
-# src/err/domain/transit/carrier/structure/toggle/cartesian/exception.py
+# src/err/domain/transit/carrier/struct/toggle/cartesian/exception.py
 
 """
-Module: err.domain.transit.carrier.structure.toggle.cartesian.exception
+Module: err.domain.transit.carrier.struct.toggle.cartesian.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

@@ -1,7 +1,7 @@
-# src/err/domain/structure/register/cartesian/exception.py
+# src/err/domain/struct/register/cartesian/exception.py
 
 """
-Module: err.domain.structure.register.cartesian.exception
+Module: err.domain.struct.register.cartesian.exception
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 
-from err import StructureBlueprintNullException
+from err import StructBlueprintNullException
 from artifcat import MethodResultType
 
 
@@ -22,7 +22,7 @@ __all__ = [
 ]
 
 # ======================# TOGGLE_BLUEPRINT_NULL_ERROR #======================#
-class ToggleBlueprintNullException(StructureBlueprintNullException):
+class ToggleBlueprintNullException(StructBlueprintNullException):
     """
     Role:
         - Error Tracing
@@ -43,7 +43,7 @@ class ToggleBlueprintNullException(StructureBlueprintNullException):
     Provides:
 
     Super Class:
-        StructureBlueprintNullException
+        StructBlueprintNullException
     """
     MSG = "ToggleBlueprint cannot be null."
     ERR_CODE = "TOGGLE_BLUEPRINT_NULL_ERROR"

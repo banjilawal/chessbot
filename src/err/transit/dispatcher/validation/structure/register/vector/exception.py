@@ -1,7 +1,7 @@
-# src/err/transit/dispatcher/validation/structure/register/vector/exception.py
+# src/err/transit/dispatcher/validation/struct/register/vector/exception.py
 
 """
-Module: err.transit.dispatcher.validation.structure.register.vector.exception
+Module: err.transit.dispatcher.validation.struct.register.vector.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0

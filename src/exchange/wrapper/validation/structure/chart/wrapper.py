@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/structure/chart/wrapper.py
+# src/exchange/wrapper/validation/struct/chart/wrapper.py
 
 """
-Module: exchange.wrapper.validation.structure.chart.wrapper
+Module: exchange.wrapper.validation.struct.chart.wrapper
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -15,14 +15,14 @@ from typing import Generic, TypeVar, cast
 from artifcat import ValidationResult
 from domain import Chart, ChartBlueprint
 from exchange import (
-    ChartValidationRequest, ChartValidationResponder, StructureValidationResponseWrapper,
+    ChartValidationRequest, ChartValidationResponder, StructValidationResponseWrapper,
 )
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Chart")
 
 class ChartValidationResponseWrapper(
-    StructureValidationResponseWrapper[T],
+    StructValidationResponseWrapper[T],
     ABC,
     Generic[T]
 ):

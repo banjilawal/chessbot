@@ -1,7 +1,7 @@
-# src/transit/carrier/structure/chart/token/carrier.py
+# src/transit/carrier/struct/chart/token/carrier.py
 
 """
-Module: transit.carrier.structure.chart.token.carrier
+Module: transit.carrier.struct.chart.token.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

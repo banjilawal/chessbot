@@ -1,7 +1,7 @@
-# src/err/domain/structure/toggle/exception.py
+# src/err/domain/struct/toggle/exception.py
 
 """
-Module: err.domain.structure.toggle.exception
+Module: err.domain.struct.toggle.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StructureException
+from err import StructException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# TOGGLE_ERROR #======================#
-class ToggleException(StructureException):
+class ToggleException(StructException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class ToggleException(StructureException):
     Provides:
 
     Super Class:
-        StructureException
+        StructException
     """
     MSG = "Toggle error."
     ERR_CODE = "TOGGLE_ERROR"

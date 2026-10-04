@@ -1,7 +1,7 @@
-# src/err/consistency/structure/register/coord/exception.py
+# src/err/consistency/struct/register/coord/exception.py
 
 """
-Module: err.consistency.structure.register.coord.exception
+Module: err.consistency.struct.register.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

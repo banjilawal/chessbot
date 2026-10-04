@@ -13,7 +13,7 @@ from __future__ import annotations
 
 class SquareStackService(StackService[Square]):
     """
-    Role:Data Structure, Services:(Integrity, Build, Validation, Search) Encapsulation, API layer.
+    Role:Data Struct, Services:(Integrity, Build, Validation, Search) Encapsulation, API layer.
 
     Responsibilities:
     1.  Microservice for managing Square objects and their lifecycles.

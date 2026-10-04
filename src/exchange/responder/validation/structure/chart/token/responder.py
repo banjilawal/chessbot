@@ -1,7 +1,7 @@
-# src/exchange/responder/validation/structure/chart/token/exchange.py
+# src/exchange/responder/validation/struct/chart/token/exchange.py
 
 """
-Module: exchange.responder.validation.structure.chart.token.exchange
+Module: exchange.responder.validation.struct.chart.token.exchange
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

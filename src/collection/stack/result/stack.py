@@ -24,7 +24,7 @@ class ResultStackService(StackService[Result]):
     1.  Public facing API.
     2.  Microservice for managing result objects and their lifecycles.
     3.  Ensure integrity of result data schema
-    4.  Stack data structure for Result objects with no guarantee of uniqueness.
+    4.  Stack data struct for Result objects with no guarantee of uniqueness.
     
     Super Class:
         *   StackService

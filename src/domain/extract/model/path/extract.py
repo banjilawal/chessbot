@@ -11,8 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelPrimeExtract
-from domain import Path, PathBlueprint
+from domain import ModelPrimeExtract, Path
 from transit import PathCarrier
 
 
@@ -46,7 +45,7 @@ class PathPrimeExtract(ModelPrimeExtract[Path]):
             carrier: EntityCarrier[Path]
             blueprint: Optional[Blueprint[Path]]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint,)
+        super().__init__(carrier=carrier, blueprint=blueprint)
         
     @property
     def carrier(self) -> PathCarrier:

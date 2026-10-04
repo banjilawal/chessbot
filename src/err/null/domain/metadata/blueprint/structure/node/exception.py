@@ -22,7 +22,7 @@ __all__ = [
 ]
 
 # ======================# NODE_BLUEPRINT_NULL_ERROR #======================#
-class NodeBlueprintNullException(StructureBlueprintNullException):
+class NodeBlueprintNullException(StructBlueprintNullException):
     """
     Role:
         - Error Tracing
@@ -43,7 +43,7 @@ class NodeBlueprintNullException(StructureBlueprintNullException):
     Provides:
 
     Super Class:
-        StructureBlueprintNullException
+        StructBlueprintNullException
     """
     MSG = "NodeBlueprint cannot be null."
     ERR_CODE = "NODE_BLUEPRINT_NULL_ERROR"

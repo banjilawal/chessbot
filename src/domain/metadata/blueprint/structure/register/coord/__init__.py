@@ -1,13 +1,13 @@
-# src/domain/metadata/blueprint/structure/register/coord/__init__.py
+# src/domain/metadata/blueprint/struct/register/coord/__init__.py
 
 """
-Module: domain.metadata.blueprint.structure.register.coord.__init__
+Module: domain.metadata.blueprint.struct.register.coord.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== DOMAIN.METADATA.BLUEPRINT.STRUCTURE.REGISTER.COORD PACKAGE ===========#
+# =========== DOMAIN.METADATA.BLUEPRINT.STRUCT.REGISTER.COORD PACKAGE ===========#
 
 # Packages
 

@@ -1,7 +1,7 @@
-# src/err/null/transit/carrier/structure/exception.py
+# src/err/null/transit/carrier/struct/exception.py
 
 """
-Module: err.null.transit.carrier.structure.exception
+Module: err.null.transit.carrier.struct.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# STRUCTURE_CARRIER_NULL_ERROR #======================#
-    "StructureCarrierNullException",
+    # ======================# STRUCT_CARRIER_NULL_ERROR #======================#
+    "StructCarrierNullException",
 ]
 
-# ======================# STRUCTURE_CARRIER_NULL_ERROR #======================#
-class StructureCarrierNullException(EntityCarrierNullException):
+# ======================# STRUCT_CARRIER_NULL_ERROR #======================#
+class StructCarrierNullException(EntityCarrierNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required StructureCarrier is null.
+        1.  Indicating a required StructCarrier is null.
 
     Attributes:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class StructureCarrierNullException(EntityCarrierNullException):
     Super Class:
         EntityCarrierNullException
     """
-    MSG = "StructureCarrier cannot be null."
-    ERR_CODE = "STRUCTURE_CARRIER_NULL_ERROR"
+    MSG = "StructCarrier cannot be null."
+    ERR_CODE = "STRUCT_CARRIER_NULL_ERROR"
     
     def __init__(
             self,

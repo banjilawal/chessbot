@@ -1,7 +1,7 @@
-# src/assurance/depend/wrapper/structure/register/depend.py
+# src/assurance/depend/wrapper/struct/register/depend.py
 
 """
-Module: assurance.depend.wrapper.structure.register.depend
+Module: assurance.depend.wrapper.struct.register.depend
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Optional, TypeVar
 
-from assurance import NumberValidator, PrimingValidator, StructureDependency, ValidatorClient
+from assurance import NumberValidator, PrimingValidator, StructDependency, ValidatorClient
 from authorization import BlueprintIdExtractor
 from domain import Register
 from microservice import IdentityService
@@ -21,7 +21,7 @@ from microservice import IdentityService
 T = TypeVar("T", bound="Register")
 
 
-class RegisterWrapperDependency(StructureDependency[T], ABC, Generic[T]):
+class RegisterWrapperDependency(StructDependency[T], ABC, Generic[T]):
     """
     Role:
         - Toolkit
@@ -35,7 +35,7 @@ class RegisterWrapperDependency(StructureDependency[T], ABC, Generic[T]):
     Provides:
 
     Super Class:
-        StructureHelperTable
+        StructHelperTable
     """
     
     def __init__(

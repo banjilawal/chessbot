@@ -1,7 +1,7 @@
-# src/err/assurance/validator/structure/toggle/cartrsian/exception.py
+# src/err/assurance/validator/struct/toggle/cartrsian/exception.py
 
 """
-Module: err.assurance.validator.structure.toggle.cartesian.exception
+Module: err.assurance.validator.struct.toggle.cartesian.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

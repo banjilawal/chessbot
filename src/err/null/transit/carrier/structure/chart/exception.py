@@ -1,7 +1,7 @@
-# src/err/null/transit/carrier/structure/chart/exception.py
+# src/err/null/transit/carrier/struct/chart/exception.py
 
 """
-Module: err.null.transit.carrier.structure.chart.exception
+Module: err.null.transit.carrier.struct.chart.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StructureCarrierNullException
+from err import StructCarrierNullException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# CHART_CARRIER_NULL_ERROR #======================#
-class ChartCarrierNullException(StructureCarrierNullException):
+class ChartCarrierNullException(StructCarrierNullException):
     """
     Role:
         - Error Tracing

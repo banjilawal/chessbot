@@ -1,7 +1,7 @@
-# src/err/domain/structure/register/square/exception.py
+# src/err/domain/struct/register/square/exception.py
 
 """
-Module: err.domain.structure.register.square.exception
+Module: err.domain.struct.register.square.exception
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

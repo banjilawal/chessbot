@@ -1,7 +1,7 @@
-# src/assurance/depend/toolkit/structure/register/square/toolkit.py
+# src/assurance/depend/toolkit/struct/register/square/toolkit.py
 
 """
-Module: assurance.depend.toolkit.structure.register.square.toolkit
+Module: assurance.depend.toolkit.struct.register.square.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

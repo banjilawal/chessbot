@@ -1,4 +1,4 @@
-# src/transit/carrier/structure/register/__init__.py
+# src/transit/carrier/struct/register/__init__.py
 
 """
 Module: transit.carrier.s.tructure.register.__init__
@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== TRANSIT.CARRIER.STRUCTURE.REGISTER PACKAGE ===========#
+# =========== TRANSIT.CARRIER.STRUCT.REGISTER PACKAGE ===========#
 
 # Packages
 from .coord import *

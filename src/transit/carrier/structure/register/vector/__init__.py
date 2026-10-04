@@ -1,4 +1,4 @@
-# src/transit/carrier/structure/register/vector/__init__.py
+# src/transit/carrier/struct/register/vector/__init__.py
 
 """
 Module: transit.carrier.s.tructure.register.vector.__init__
@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== TRANSIT.CARRIER.STRUCTURE.REGISTER.VECTOR PACKAGE ===========#
+# =========== TRANSIT.CARRIER.STRUCT.REGISTER.VECTOR PACKAGE ===========#
 
 # Packages
 

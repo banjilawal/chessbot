@@ -1,7 +1,7 @@
-# src/transit/carrier/structure/chart/carrier.py
+# src/transit/carrier/struct/chart/carrier.py
 
 """
-Module: transit.carrier.structure.chart.carrier
+Module: transit.carrier.struct.chart.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -14,12 +14,12 @@ from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar, cast
 
 from domain import Chart, ParticipantChartBlueprint
-from transit import StructureCarrier
+from transit import StructCarrier
 
 T = TypeVar("T", bound="Chart")
 
 
-class ChartCarrier(StructureCarrier[T], ABC, Generic[T]):
+class ChartCarrier(StructCarrier[T], ABC, Generic[T]):
     """
     Role:
         - Boundary Carrier Interface
@@ -36,7 +36,7 @@ class ChartCarrier(StructureCarrier[T], ABC, Generic[T]):
         -   def extract_blueprint() -> Optional[ParticipantChartBlueprint[T]]
 
     Super Class:
-        StructureCarrier
+        StructCarrier
     """
     
     def __init__(

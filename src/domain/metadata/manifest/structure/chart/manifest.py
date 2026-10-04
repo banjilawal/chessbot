@@ -1,7 +1,7 @@
 # src/domain/metadata/manifest/strcture/chart/manifest.py
 
 """
-Module: domain.metadata.manifest.structure.chart.manifest
+Module: domain.metadata.manifest.struct.chart.manifest
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -12,11 +12,11 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from domain import Chart, StructureManifest, ChartNullGroup, ChartTypeUnion
+from domain import Chart, StructManifest, ChartNullGroup, ChartTypeUnion
 
 T = TypeVar("T", bound="Chart")
 
-class ChartManifest(StructureManifest[T], ABC, Generic[T]):
+class ChartManifest(StructManifest[T], ABC, Generic[T]):
     """
      Role:
         1.  Metadata

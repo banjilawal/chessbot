@@ -1,17 +1,17 @@
-# src/err/exchange/responder/validation/structure/__init__.py
+# src/err/exchange/responder/validation/struct/__init__.py
 
 """
-Module: err.exchange.responder.validation.structure.__init__
+Module: err.exchange.responder.validation.struct.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
 """
 
-# =========== ERR.EXCHANGE.RESPONDER.VALIDATION.STRUCTURE PACKAGE ===========#
+# =========== ERR.EXCHANGE.RESPONDER.VALIDATION.STRUCT PACKAGE ===========#
 
 # Packages
 from .chart import *
 from .register import *
 
 # Modules
-from .exception import StructureValidationResponderException
+from .exception import StructValidationResponderException

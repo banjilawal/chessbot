@@ -24,7 +24,7 @@ class TeamStackService(StackService[Team]):
     1.  Public facing API.
     2.  Microservice for managing team objects and their lifecycles.
     3.  Ensure integrity of team data schema
-    4.  Stack data structure for Team objects with no guarantee of uniqueness.
+    4.  Stack data struct for Team objects with no guarantee of uniqueness.
     
     Super Class:
         *   StackService

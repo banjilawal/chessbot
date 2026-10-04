@@ -1,7 +1,7 @@
-# src/transit/carrier/structure/register/vector/carrier.py
+# src/transit/carrier/struct/register/vector/carrier.py
 
 """
-Module: transit.carrier.structure.register.vector.carrier
+Module: transit.carrier.struct.register.vector.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

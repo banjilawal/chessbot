@@ -1,7 +1,7 @@
-# src/err/null/domain/structure/node/exception.py
+# src/err/null/domain/struct/node/exception.py
 
 """
-Module: err.null.domain.structure.node.exception
+Module: err.null.domain.struct.node.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StructureNullException
+from err import StructNullException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# NODE_NULL_ERROR #======================#
-class NodeNullException(StructureNullException):
+class NodeNullException(StructNullException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class NodeNullException(StructureNullException):
     Provides:
 
     Super Class:
-       StructureNullException
+       StructNullException
     """
     MSG = "Node cannot be null."
     ERR_CODE = "NODE_NULL_ERROR"

@@ -1,7 +1,7 @@
-# src/assurance/depend/toolkit/structure/node/vector/toolkit.py
+# src/assurance/depend/toolkit/struct/node/vector/toolkit.py
 
 """
-Module: assurance.depend.toolkit.structure.node.vector.toolkit
+Module: assurance.depend.toolkit.struct.node.vector.toolkit
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

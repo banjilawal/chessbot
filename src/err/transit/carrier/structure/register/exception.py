@@ -1,7 +1,7 @@
-# src/err/domain/transit/carrier/structure/register/exception.py
+# src/err/domain/transit/carrier/struct/register/exception.py
 
 """
-Module: err.domain.transit.carrier.structure.register.exception
+Module: err.domain.transit.carrier.struct.register.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

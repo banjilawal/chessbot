@@ -1,7 +1,7 @@
-# src/err/consistency/structure/exception.py
+# src/err/consistency/struct/exception.py
 
 """
-Module: err.consistency.structure.exception
+Module: err.consistency.struct.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StructureConsistencyException
+from err import StructConsistencyException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# NODE_CONSISTENCY_ERROR #======================#
-class NodeConsistencyException(StructureConsistencyException):
+class NodeConsistencyException(StructConsistencyException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class NodeConsistencyException(StructureConsistencyException):
     Provides:
 
     Super Class:
-         StructureConsistencyException
+         StructConsistencyException
     """
     MSG = "NodeConsistency error."
     ERR_CODE = "NODE_CONSISTENCY_ERROR"

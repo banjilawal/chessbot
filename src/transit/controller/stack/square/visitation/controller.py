@@ -37,7 +37,7 @@ class SquareStacVisitationController:
     2.  Separates maintenance and debugging of
             *   Token operations.
             *   Capacity monitoring operations
-        from  kernel data structure operations.
+        from  kernel data struct operations.
     3.  Manges Updates (state changes) responsibilities for the SquareStackService.
 
     Super Class:

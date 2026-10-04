@@ -1,7 +1,7 @@
-# src/err/assurance/loader/structure/toggle/exception.py
+# src/err/assurance/loader/struct/toggle/exception.py
 
 """
-Module: err.assurance.loader.structure.toggle.exception
+Module: err.assurance.loader.struct.toggle.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 
-from err import StructureLoaderException
+from err import StructLoaderException
 from artifcat import MethodResultType
 
 
@@ -22,7 +22,7 @@ __all__ = [
 ]
 
 # ======================# TOGGLE_BLUEPRINT_LOADER_FAILURE #======================#
-class ToggleBlueprintLoaderException(StructureLoaderException):
+class ToggleBlueprintLoaderException(StructLoaderException):
     """
     Role:
         - Error Tracing
@@ -43,7 +43,7 @@ class ToggleBlueprintLoaderException(StructureLoaderException):
     Provides:
 
     Super Class:
-        StructureBlueprintLoaderException
+        StructBlueprintLoaderException
     """
     MSG = "ToggleBlueprintLoader failed."
     ERR_CODE = "TOGGLE_BLUEPRINT_LOADER_FAILURE"

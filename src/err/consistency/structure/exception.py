@@ -1,7 +1,7 @@
-# src/err/consistency/structure/exception.py
+# src/err/consistency/struct/exception.py
 
 """
-Module: err.consistency.structure.exception
+Module: err.consistency.struct.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# STRUCTURE_CONSISTENCY_ERROR #======================#
-    "StructureConsistencyException",
+    # ======================# STRUCT_CONSISTENCY_ERROR #======================#
+    "StructConsistencyException",
 ]
 
-# ======================# STRUCTURE_CONSISTENCY_ERROR #======================#
-class StructureConsistencyException(ConsistencyException):
+# ======================# STRUCT_CONSISTENCY_ERROR #======================#
+class StructConsistencyException(ConsistencyException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Structure consistency check failed.
+        1.  Indicating a Struct consistency check failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class StructureConsistencyException(ConsistencyException):
     Super Class:
         ConsistencyException
     """
-    MSG = "StructureConsistency error."
-    ERR_CODE = "STRUCTURE_CONSISTENCY_ERROR"
+    MSG = "StructConsistency error."
+    ERR_CODE = "STRUCT_CONSISTENCY_ERROR"
     
     def __init__(
             self,

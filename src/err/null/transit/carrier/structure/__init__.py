@@ -1,13 +1,13 @@
-# src/err/null/transit/carrier/structure/__init__.py
+# src/err/null/transit/carrier/struct/__init__.py
 
 """
-Module: err.null.transit.carrier.structure.__init__
+Module: err.null.transit.carrier.struct.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.NULL.TRANSIT.CARRIER.STRUCTURE PACKAGE ===========#
+# ============ ERR.NULL.TRANSIT.CARRIER.STRUCT PACKAGE ===========#
 
 # Packages
 from .chart import *
@@ -16,4 +16,4 @@ from .register import *
 from .toggle import *
 
 # Modules
-from .exception import StructureCarrierNullException
+from .exception import StructCarrierNullException

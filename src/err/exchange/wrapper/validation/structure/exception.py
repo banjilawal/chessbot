@@ -1,7 +1,7 @@
-# src/err/exchange/wrapper/validation/structure/exception.py
+# src/err/exchange/wrapper/validation/struct/exception.py
 
 """
-Module: err.exchange.wrapper.validation.structure.exception
+Module: err.exchange.wrapper.validation.struct.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,12 +16,12 @@ from err import ValidationResponseWrapperException
 
 
 __all__ = [
-    # ======================# STRUCTURE_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-    "StructureValidationResponseWrapperException",
+    # ======================# STRUCT_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
+    "StructValidationResponseWrapperException",
 ]
 
-# ======================# STRUCTURE_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-class StructureValidationResponseWrapperException(
+# ======================# STRUCT_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
+class StructValidationResponseWrapperException(
     ValidationResponseWrapperException
 ):
     """
@@ -29,7 +29,7 @@ class StructureValidationResponseWrapperException(
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a StructureValidationResponseWrapper encountered and error.
+        1.  Indicating a StructValidationResponseWrapper encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -46,8 +46,8 @@ class StructureValidationResponseWrapperException(
     Super Class:
         ValidationResponseWrapperException
     """
-    MSG = "StructureValidationResponseWrapper error."
-    ERR_CODE = "STRUCTURE_VALIDATION_RESPONSE_WRAPPER_FAILURE"
+    MSG = "StructValidationResponseWrapper error."
+    ERR_CODE = "STRUCT_VALIDATION_RESPONSE_WRAPPER_FAILURE"
     
     def __init__(
             self,

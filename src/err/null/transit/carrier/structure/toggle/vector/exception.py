@@ -1,7 +1,7 @@
-# src/err/null/transit/carrier/structure/toggle/vector_toggle/exception.py
+# src/err/null/transit/carrier/struct/toggle/vector_toggle/exception.py
 
 """
-Module: err.null.transit.carrier.structure.toggle.vector_toggle.exception
+Module: err.null.transit.carrier.struct.toggle.vector_toggle.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

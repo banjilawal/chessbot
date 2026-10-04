@@ -1,4 +1,4 @@
-# src/transit/dispatcher/validator/structure/chart/coord/validator.py
+# src/transit/dispatcher/validator/struct/chart/coord/validator.py
 
 """
 Module: transit.dispatcher.validator.chart.coord.validator
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from assurance import CoordChartValidator
-from domain.structure.chart import CoordChart
+from domain.struct.chart import CoordChart
 from artifcat import ValidationResult
 from err import CoordChartValidationDispatcherException
 from transit import CoordChartCarrier

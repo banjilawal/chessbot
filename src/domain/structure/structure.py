@@ -1,7 +1,7 @@
-# src/domain/structure/structure.py
+# src/domain/struct/struct.py
 
 """
-Module: domain.structure.structure
+Module: domain.struct.struct
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -17,13 +17,13 @@ from domain import SearchableModel
 T = TypeVar("T", bound="SearchableModel")
 
 
-class Structure(ABC, Generic[T]):
+class Struct(ABC, Generic[T]):
     """
     Role:
         - Structural
 
     Responsibility:
-        1.  Provides structure and additional capabilities to a pure data object.
+        1.  Provides struct and additional capabilities to a pure data object.
 
     Attributes:
 

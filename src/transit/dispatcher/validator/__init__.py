@@ -17,7 +17,7 @@ from .movement import *
 from .node import *
 from .query import *
 from .space import *
-from .structure import *
+from .struct import *
 from .toggle import *
 
 # Module

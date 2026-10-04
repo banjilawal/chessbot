@@ -11,7 +11,6 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelPrimeExtract
 from domain import Square, SquareBlueprint
 from transit import SquareCarrier
 
@@ -46,7 +45,7 @@ class SquarePrimeExtract(ModelPrimeExtract[Square]):
             carrier: EntityCarrier[Square]
             blueprint: Optional[Blueprint[Square]]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint,)
+        super().__init__(carrier=carrier, blueprint=blueprint)
         
     @property
     def carrier(self) -> SquareCarrier:

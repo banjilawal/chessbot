@@ -1,13 +1,13 @@
-# src/err/domain/transit/carrier/structure/register/vector/__init__.py
+# src/err/domain/transit/carrier/struct/register/vector/__init__.py
 
 """
-Module: err.domain.transit.carrier.structure.register.vector.__init__
+Module: err.domain.transit.carrier.struct.register.vector.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.DOMAIN.TRANSIT.CARRIER.STRUCTURE.REGISTER.VECTOR PACKAGE ===========#
+# ============ ERR.DOMAIN.TRANSIT.CARRIER.STRUCT.REGISTER.VECTOR PACKAGE ===========#
 
 # Packages
 

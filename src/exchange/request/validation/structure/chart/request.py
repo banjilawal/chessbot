@@ -1,7 +1,7 @@
-# src/exchange/request/validation/structure/chart/request.py
+# src/exchange/request/validation/struct/chart/request.py
 
 """
-Module: exchange.request.validation.structure.chart.request
+Module: exchange.request.validation.struct.chart.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,13 +13,13 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from domain import Chart
-from exchange import StructureValidationRequest
+from exchange import StructValidationRequest
 from transit import ChartCarrier
 
 T = TypeVar("T", bound="Chart")
 
 
-class ChartValidationRequest(StructureValidationRequest[T], ABC, Generic[T]):
+class ChartValidationRequest(StructValidationRequest[T], ABC, Generic[T]):
     """
      Role:
          -  Messaging

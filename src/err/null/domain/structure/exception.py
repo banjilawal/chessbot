@@ -1,7 +1,7 @@
-# src/err/null/domain/structure/exception.py
+# src/err/null/domain/struct/exception.py
 
 """
-Module: err.null.domain.structure.exception
+Module: err.null.domain.struct.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# STRUCTURE_WRAPPER_WRAPPERNULL_ERROR #======================#
-    "StructureNullException",
+    # ======================# STRUCT_WRAPPER_WRAPPERNULL_ERROR #======================#
+    "StructNullException",
 ]
 
-# ======================# STRUCTURE_WRAPPER_WRAPPERNULL_ERROR #======================#
-class StructureNullException(DomainObjectNullException):
+# ======================# STRUCT_WRAPPER_WRAPPERNULL_ERROR #======================#
+class StructNullException(DomainObjectNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required Structure is null.
+        1.  Indicating a required Struct is null.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class StructureNullException(DomainObjectNullException):
     Super Class:
         DomainObjectNullException
     """
-    MSG = "Structure cannot be null."
-    ERR_CODE = "STRUCTURE_WRAPPER_WRAPPERNULL_ERROR"
+    MSG = "Struct cannot be null."
+    ERR_CODE = "STRUCT_WRAPPER_WRAPPERNULL_ERROR"
     
     def __init__(
             self,

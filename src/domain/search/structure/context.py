@@ -1,7 +1,7 @@
-# src/domain/search/structure/context.py
+# src/domain/search/struct/context.py
 
 """
-Module: domain.search.structure.context
+Module: domain.search.struct.context
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,12 +13,12 @@ from typing import Generic, Optional, TypeVar
 from abc import ABC
 
 from domain import Context
-from domain import Structure
+from domain import Struct
 
-T = TypeVar("T", bound="Structure")
+T = TypeVar("T", bound="Struct")
 
 
-class StructureContext(Context[T], ABC, Generic[T]):
+class StructContext(Context[T], ABC, Generic[T]):
     """
     Role:
         - Option Selector

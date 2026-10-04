@@ -10,10 +10,10 @@ version: 0.0.2
 from __future__ import annotations
 
 from fabrication.builder import ToggleBuilder
-from domain.metadata.blueprint.structure.toggle import CartesianToggleBlueprint
+from domain.metadata.blueprint.struct.toggle import CartesianToggleBlueprint
 
 from artifcat import BuildResult
-from domain.structure.toggle import CartesianToggle
+from domain.struct.toggle import CartesianToggle
 from util import LoggingLevelRouter
 
 

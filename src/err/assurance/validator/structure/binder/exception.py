@@ -1,7 +1,7 @@
-# src/err/assurance/validator/structurebinder/exception.py
+# src/err/assurance/validator/structbinder/exception.py
 
 """
-Module: err.assurance.validator.structure.binder.exception
+Module: err.assurance.validator.struct.binder.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StructureValidatorException
+from err import StructValidatorException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# BINDER_VALIDATOR_FAILURE #======================#
-class BinderValidatorException(StructureValidatorException):
+class BinderValidatorException(StructValidatorException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class BinderValidatorException(StructureValidatorException):
     Provides:
 
     Super Class:
-        StructureValidatorException
+        StructValidatorException
     """
     MSG = "BinderValidator failed."
     ERR_CODE = "BINDER_VALIDATOR_FAILURE"
