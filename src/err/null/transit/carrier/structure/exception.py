@@ -1,7 +1,7 @@
-# src/err/null/transit/carrier/structure/structure/exception.py
+# src/err/null/transit/carrier/structure/exception.py
 
 """
-Module: err.null.transit.carrier.structure.structure.exception
+Module: err.null.transit.carrier.structure.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

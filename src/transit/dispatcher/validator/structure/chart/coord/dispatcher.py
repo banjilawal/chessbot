@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from typing import Any, cast
 
+from assurance import CoordChartValidator
 from domain.structure.chart import CoordChart
 from artifcat import ValidationResult
 from transit import CoordChartCarrier

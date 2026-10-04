@@ -1,7 +1,7 @@
-# src/err/transit/dispatcher/validation/structure/exception.py
+# src/err/transit/dispatcher/validation/structure/chart/exception.py
 
 """
-Module: err.transit.dispatcher.validation.structure.exception
+Module: err.transit.dispatcher.validation.structure.chart.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,23 +11,24 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import DispatcherException
 from artifcat import MethodResultType
-
+from err import StructureValidationDispatcherException
 
 __all__ = [
-    # ======================# VALIDATION_DISPATCHER_FAILURE #======================#
-    "ValidationDispatcherException",
+    # ======================# CHART_VALIDATION_DISPATCHER_FAILURE #======================#
+    "ChartValidationDispatcherException",
 ]
 
-# ======================# VALIDATION_DISPATCHER_FAILURE #======================#
-class ValidationDispatcherException(DispatcherException):
+# ======================# CHART_VALIDATION_DISPATCHER_FAILURE #======================#
+class ChartValidationDispatcherException(
+    StructureValidationDispatcherException
+):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an ValidationDispatcher encountered an error.
+        1.  Indicating a ChartValidationDispatcher encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +43,10 @@ class ValidationDispatcherException(DispatcherException):
     Provides:
 
     Super Class:
-        DispatcherException
+        StructureValidationDispatcherException
     """
-    MSG = "ValidationDispatcher failure."
-    ERR_CODE = "VALIDATION_DISPATCHER_FAILURE"
+    MSG = "ChartValidationDispatcher failure."
+    ERR_CODE = "CHART_VALIDATION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

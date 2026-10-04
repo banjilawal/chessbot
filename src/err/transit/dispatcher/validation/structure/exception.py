@@ -11,23 +11,22 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import DispatcherException
 from artifcat import MethodResultType
-
+from err import ValidationDispatcherException
 
 __all__ = [
-    # ======================# VALIDATION_DISPATCHER_FAILURE #======================#
-    "ValidationDispatcherException",
+    # ======================# STRUCTURE_VALIDATION_DISPATCHER_FAILURE #======================#
+    "StructureValidationDispatcherException",
 ]
 
-# ======================# VALIDATION_DISPATCHER_FAILURE #======================#
-class ValidationDispatcherException(DispatcherException):
+# ======================# STRUCTURE_VALIDATION_DISPATCHER_FAILURE #======================#
+class StructureValidationDispatcherException(ValidationDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an ValidationDispatcher encountered an error.
+        1.  Indicating a StructureValidationDispatcher encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +41,10 @@ class ValidationDispatcherException(DispatcherException):
     Provides:
 
     Super Class:
-        DispatcherException
+        ValidationDispatcherException
     """
-    MSG = "ValidationDispatcher failure."
-    ERR_CODE = "VALIDATION_DISPATCHER_FAILURE"
+    MSG = "StructureValidationDispatcher failure."
+    ERR_CODE = "STRUCTURE_VALIDATION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

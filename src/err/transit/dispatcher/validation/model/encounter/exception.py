@@ -1,7 +1,7 @@
-# src/err/transit/dispatcher/validation/structure/exception.py
+# src/err/transit/dispatcher/validation/model/encounter/exception.py
 
 """
-Module: err.transit.dispatcher.validation.structure.exception
+Module: err.transit.dispatcher.validation.model.encounter.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -11,23 +11,22 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import DispatcherException
 from artifcat import MethodResultType
-
+from err import ModelValidationDispatcherException
 
 __all__ = [
-    # ======================# VALIDATION_DISPATCHER_FAILURE #======================#
-    "ValidationDispatcherException",
+    # ======================# ENCOUNTER_VALIDATION_DISPATCHER_FAILURE #======================#
+    "EncounterValidationDispatcherException",
 ]
 
-# ======================# VALIDATION_DISPATCHER_FAILURE #======================#
-class ValidationDispatcherException(DispatcherException):
+# ======================# ENCOUNTER_VALIDATION_DISPATCHER_FAILURE #======================#
+class EncounterValidationDispatcherException(ModelValidationDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an ValidationDispatcher encountered an error.
+        1.  Indicating a EncounterValidationDispatcher encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +41,10 @@ class ValidationDispatcherException(DispatcherException):
     Provides:
 
     Super Class:
-        DispatcherException
+        ValidationDispatcherException
     """
-    MSG = "ValidationDispatcher failure."
-    ERR_CODE = "VALIDATION_DISPATCHER_FAILURE"
+    MSG = "EncounterValidationDispatcher failure."
+    ERR_CODE = "ENCOUNTER_VALIDATION_DISPATCHER_FAILURE"
     
     def __init__(
             self,
