@@ -1,7 +1,7 @@
-# src/client/artifact/response/fabrication/response.py
+# src/artifact/response/fabrication/response.py
 
 """
-Module: client.artifact.response.fabrication.response
+Module: artifact.response.fabrication.response
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import ResponseState, BuildResponse, BuildResult
-from client import ModelBuildRequest, Request
+from exchange import ModelBuildRequest, Request
 from domain import Model, ModelBlueprint
 from transit import ModelCarrier
 
@@ -63,7 +63,7 @@ class ModelBuildResponse(BuildResponse[T], ABC, Generic[T]):
             state: ResponseState,
             result: BuildResult,
             request: ModelBuildRequest[T],
-            exception:Optional[Exception],
+            exception:Optional[Exception] | None = None,
     ):
         """
         Args:

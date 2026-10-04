@@ -100,7 +100,7 @@ class CoordRegisterValidationResponseWrapper(
                 )
             )
         response = cast(CoordRegisterValidationResponse, result)
-        if not response.valid_register:
+        if not response.valid_model:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 CoordRegisterValidationResponderException(
@@ -117,7 +117,7 @@ class CoordRegisterValidationResponseWrapper(
                 )
             )
         # --- Send the work product. ---#
-        register = cast(CoordRegister, response.valid_register)
+        register = cast(CoordRegister, response.valid_model)
         return ValidationResult.success(register)
     
     @LoggingLevelRouter.monitor

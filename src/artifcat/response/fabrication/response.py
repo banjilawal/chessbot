@@ -1,7 +1,7 @@
-# src/client/artifact/response/fabrication/response.py
+# src/artifact/response/fabrication/response.py
 
 """
-Module: client.artifact.response.fabrication.response
+Module: artifact.response.fabrication.response
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import Response, ResponseState, BuildResult
-from client import Request, BuildRequest
+from exchange import Request, BuildRequest
 
 T = TypeVar("T",)
 

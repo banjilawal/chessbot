@@ -94,7 +94,7 @@ class SchemaSearchRouter(SearchRouter[Schema]):
                 color=query.context.name,
             )
 
-        # Handle the case that there is no search path for the context context..
+        # Handle the case that there is no search path for the context context.
         return SearchResult.failure(
             SchemaSearchException(
                 cls_mthd=method,

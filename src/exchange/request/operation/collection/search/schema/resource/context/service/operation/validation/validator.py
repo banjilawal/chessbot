@@ -229,7 +229,7 @@ class SchemaContextValidator(Validator[SchemaContext]):
                         ex=validation_result.exception
                     )
                 )
-            # On validation success forward the work product to the caller..
+            # On validation success forward the work product to the caller.
             return ValidationResult.success(context)
         
         # Certification for the search-by-team target.

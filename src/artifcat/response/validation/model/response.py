@@ -1,7 +1,7 @@
-# src/client/artifact/response/validation/response.py
+# src/artifact/response/validation/response.py
 
 """
-Module: client.artifact.response.validation.response
+Module: artifact.response.validation.response
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import ResponseState, ValidationResponse, ValidationResult
-from client import ModelValidationRequest, Request
+from exchange import ModelValidationRequest, Request
 from domain import Model, ModelBlueprint
 from transit import ModelCarrier
 
@@ -56,14 +56,13 @@ class ModelValidationResponse(ValidationResponse[T], ABC, Generic[T]):
     Super Class:
         ValidationResponse
     """
-    _carrier: Optional[ModelCarrier[T]]
     
     def __init__(
             self,
             state: ResponseState,
             result: ValidationResult,
             request: ModelValidationRequest[T],
-            exception:Optional[Exception],
+            exception:Optional[Exception] | None = None,
     ):
         """
         Args:
@@ -88,46 +87,13 @@ class ModelValidationResponse(ValidationResponse[T], ABC, Generic[T]):
     
     @property
     @abstractmethod
-    def valid_blueprint(self) -> Optional[ModelBlueprint[T]]:
-        pass
-    
-    @property
-    @abstractmethod
     def valid_model(self) -> Optional[T]:
         pass
     
     @property
-    def state(self) -> ResponseState:
-        return self._state
-    
-    @property
-    def is_success(self) -> bool:
-        return (
-            self.result.is_success and
-            self._state == ResponseState.SUCCESS
-        )
-
-    @property
-    def is_consistent(self) -> bool:
-        if self.is_failure:
-            return False
-        if (
-                self.valid_model is None and
-                self.valid_blueprint is None
-        ):
-            return False
-        return True
-    
-    @property
-    def is_not_consistent(self) -> bool:
-        return not self.is_consistent
-
-    @property
-    def is_failure(self) -> bool:
-        return (
-            self._result.is_failure and
-            self._state == ResponseState.FAILURE
-        )
+    @abstractmethod
+    def valid_blueprint(self) -> Optional[ModelBlueprint[T]]:
+        pass
         
     @classmethod
     def success(

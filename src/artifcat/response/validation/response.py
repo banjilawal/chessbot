@@ -1,7 +1,7 @@
-# src/client/artifact/response/validation/response.py
+# src/artifact/response/validation/response.py
 
 """
-Module: client.artifact.response.validation.response
+Module: artifact.response.validation.response
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,11 +9,12 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
+from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar, cast
 
 from artifcat import Response, ResponseState, ValidationResult
-from client import Request, ValidationRequest
+from domain import Blueprint
+from exchange import Request, ValidationRequest
 
 T = TypeVar("T",)
 
@@ -81,16 +82,26 @@ class ValidationResponse(Response[ValidationResult], ABC, Generic[T]):
     @property
     def is_success(self) -> bool:
         return (
-            self.result.is_success and
-            self._state == ResponseState.SUCCESS
+            super().is_success and
+            (
+                self.valid_model is not None or
+                self.valid_blueprint is not None
+            )
         )
-
+    
     @property
     def is_failure(self) -> bool:
-        return (
-            self._result.is_failure and
-            self._state == ResponseState.FAILURE
-        )
+        return not self.is_success
+    
+    @property
+    @abstractmethod
+    def valid_model(self) -> Optional[T]:
+        pass
+    
+    @property
+    @abstractmethod
+    def valid_blueprint(self) -> Optional[Blueprint[T]]:
+        pass
         
     @classmethod
     def success(

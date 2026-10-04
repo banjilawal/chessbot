@@ -1,7 +1,7 @@
-# src/client/artifact/response/fabrication/response.py
+# src/artifact/response/fabrication/response.py
 
 """
-Module: client.artifact.response.fabrication.response
+Module: artifact.response.fabrication.response
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ModelBuildResponse, ResponseState, BuildResult
-from client import Request, RankBuildRequest
+from exchange import Request, RankBuildRequest
 from domain import Rank, RankBlueprint
 from transit import RankCarrier
 

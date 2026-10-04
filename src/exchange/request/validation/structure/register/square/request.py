@@ -1,7 +1,7 @@
 # src/exchange/request/validation/structure/register/square/request.py
 
 """
-Module: exchange.request.validation.structure.register.square..request
+Module: exchange.request.validation.structure.register.square.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -16,7 +16,9 @@ from exchange import RegisterValidationRequest
 from transit import SquareRegisterCarrier
 
 
-class SquareRegisterValidationRequest(RegisterValidationRequest[SquareRegister]):
+class SquareRegisterValidationRequest(
+    RegisterValidationRequest[SquareRegister]
+):
     """
      Role:
          -  Messaging

@@ -1,7 +1,7 @@
-# src/client/artifact/response/state.py
+# src/artifact/response/state.py
 
 """
-Module: client.artifact.response.state
+Module: artifact.response.state
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

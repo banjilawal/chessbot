@@ -1,13 +1,13 @@
-# src/client/artifact/response/validation/model/path/__init__.py
+# src/artifact/response/validation/model/path/__init__.py
 
 """
-Module: client.artifact.response.validation.model.path.__init__
+Module: artifact.response.validation.model.path.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== CLIENT.ARTIFACT.RESPONSE.VALIDATION.MODEL.PATH PACKAGE ===========#
+# =========== ARTIFACT.RESPONSE.VALIDATION.MODEL.PATH PACKAGE ===========#
 
 # Packages
 

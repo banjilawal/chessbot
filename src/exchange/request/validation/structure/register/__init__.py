@@ -10,7 +10,9 @@ version: 0.0.2
 # =========== EXCHANGE.REQUEST.VALIDATION.STRUCTURE.REGISTER PACKAGE ===========#
 
 # Packages
+from .coord import *
 from .square import *
+from .vector import *
 
 # Modules
 from .request import RegisterValidationRequest

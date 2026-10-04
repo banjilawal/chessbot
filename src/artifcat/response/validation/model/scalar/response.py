@@ -1,7 +1,7 @@
-# src/client/artifact/response/validation/response.py
+# src/artifact/response/validation/response.py
 
 """
-Module: client.artifact.response.validation.response
+Module: artifact.response.validation.response
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ModelValidationResponse, ResponseState, ValidationResult
-from client import Request, ScalarValidationRequest
+from exchange import Request, ScalarValidationRequest
 from domain import Scalar, ScalarBlueprint
 from transit import ScalarCarrier
 

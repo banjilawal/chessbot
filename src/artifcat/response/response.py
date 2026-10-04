@@ -1,7 +1,7 @@
-# src/client/artifact/response/response.py
+# src/artifact/response/response.py
 
 """
-Module: client.artifact.response.response
+Module: artifact.response.response
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, Optional, TypeVar
 
 from artifcat import ResponseState, Result
-from client import Request
+from exchange import Request
 
 T = TypeVar("T", bound="Result")
 
@@ -59,7 +59,7 @@ class Response(ABC, Generic[T]):
             result: T,
             request: Request[T],
             state: ResponseState,
-            exception: Optional[Exception]
+            exception: Optional[Exception] | None = None,
     ):
         """
         Args:
@@ -92,8 +92,8 @@ class Response(ABC, Generic[T]):
     @property
     def is_success(self) -> bool:
         return (
-            self.result.is_success and
-            self.exception is None and
+            self._result.is_success and
+            self._exception is None and
             self._state == ResponseState.SUCCESS
         )
     

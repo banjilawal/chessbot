@@ -1,13 +1,13 @@
-# src/client/artifact/response/fabrication/model/__init__.py
+# src/artifact/response/fabrication/model/__init__.py
 
 """
-Module: client.artifact.response.fabrication.model.__init__
+Module: artifact.response.fabrication.model.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== CLIENT.ARTIFACT.RESPONSE.FABRICATION.MODEL PACKAGE ===========#
+# =========== ARTIFACT.RESPONSE.FABRICATION.MODEL PACKAGE ===========#
 
 # Packages
 from .arena import *
