@@ -11,15 +11,15 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from err import VectorRegisterValidatorException
+from err import VectorRegisterValidationDispatcherException
 from domain.structure.register import VectorRegister
 from artifcat import ValidationResult
-from assurance import VectorRegisterValidator
+from transit import VectorRegisterCarrier
 from util import LoggingLevelRouter
 from transit.dispatcher.validator import RegisterValidationDispatcher
 
 
-class VectorRegisterValidator(RegisterValidationDispatcher[VectorRegister]):
+class VectorRegisterValidationDispatcher(RegisterValidationDispatcher[VectorRegister]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -41,7 +41,7 @@ class VectorRegisterValidator(RegisterValidationDispatcher[VectorRegister]):
             self,
             validator: VectorRegisterValidator | None = VectorRegisterValidator(),
     ):
-        super().__init__(validator=validator)
+        super().__init__(validator=validator or VectorRegisterValidator())
         
     @property
     def validator(self) -> VectorRegisterValidator:
@@ -49,7 +49,7 @@ class VectorRegisterValidator(RegisterValidationDispatcher[VectorRegister]):
     
 
     @LoggingLevelRouter.monitor
-    def execute(self, job: Any) -> ValidationResult[VectorRegister]:
+    def execute(self, job: Any) -> ValidationResult[VectorRegisterCarrier]:
         """
         Verify the object is a VectorRegister that is safe to use.
 
@@ -63,7 +63,7 @@ class VectorRegisterValidator(RegisterValidationDispatcher[VectorRegister]):
         Returns:
             ValidationResult[VectorRegister]
         Raises:
-             VectorRegisterValidatorException
+             VectorRegisterValidationDispatcherException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -72,15 +72,15 @@ class VectorRegisterValidator(RegisterValidationDispatcher[VectorRegister]):
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorRegisterValidatorException(
+                VectorRegisterValidationDispatcherException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorRegisterValidatorException.MSG,
-                    err_code=VectorRegisterValidatorException.ERR_CODE,
+                    msg=VectorRegisterValidationDispatcherException.MSG,
+                    err_code=VectorRegisterValidationDispatcherException.ERR_CODE,
                     ex=validation.exception,
                 )
             )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(
-            cast(self.validator.ruleset.model, validation.payload)
+            cast(VectorRegisterCarrier, validation.payload)
         )

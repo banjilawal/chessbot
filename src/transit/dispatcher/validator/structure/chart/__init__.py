@@ -1,0 +1,16 @@
+# src/transit/dispatcher/validator/structure/chart/__init__.py
+
+"""
+Module: transit.dispatcher.validator.chart.__init__
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+# =========== TRANSIT.DISPATCHER.VALIDATOR.CHART PACKAGE ===========#
+
+# Packages
+from .coord import *
+
+# Module
+from .dispatcher import ChartValidationDispatcher

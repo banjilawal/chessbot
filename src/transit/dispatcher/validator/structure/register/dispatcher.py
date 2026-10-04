@@ -9,16 +9,18 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import abstractmethod
+from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from assurance import RegisterValidator
 from artifcat import ValidationResult
-from transit import ValidationDispatcher
+from domain import Register
+from transit import RegisterCarrier, StructureValidationDispatcher
+from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Register")
 
-class RegisterValidationDispatcher(ValidationDispatcher, Generic[T]):
+class RegisterValidationDispatcher(StructureValidationDispatcher[T], ABC, Generic[T]):
     """
     Role
         - Transaction Worker
@@ -39,16 +41,16 @@ class RegisterValidationDispatcher(ValidationDispatcher, Generic[T]):
         Validator
     """
     
-    def __init__(self, validator: [RegisterValidator[T]]):
+    def __init__(self, validator: RegisterValidator[T]):
         super().__init__(validator=validator)
     
     @property
     def validator(self) -> RegisterValidator:
         return cast(RegisterValidator[T], super().validator)
     
-       @abstractmethod
+    @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, job: Any) -> ValidationResult[T]:
+    def execute(self, job: Any) -> ValidationResult[RegisterCarrier[T]]:
         pass
     
         

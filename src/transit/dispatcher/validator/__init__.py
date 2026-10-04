@@ -16,8 +16,8 @@ from .model import *
 from .movement import *
 from .node import *
 from .query import *
-from .register import *
 from .space import *
+from .structure import *
 from .toggle import *
 
 # Module

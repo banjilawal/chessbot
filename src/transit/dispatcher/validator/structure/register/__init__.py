@@ -10,7 +10,9 @@ version: 0.0.2
 # =========== TRANSIT.DISPATCHER.VALIDATOR.REGISTER PACKAGE ===========#
 
 # Packages
-
+from .coord import *
+from .square import *
+from .vector import *
 
 # Module
-from .validator import RegisterValidationDispatcher
+from .dispatcher import RegisterValidationDispatcher
