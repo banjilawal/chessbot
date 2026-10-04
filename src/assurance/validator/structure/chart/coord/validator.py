@@ -14,9 +14,9 @@ from typing import Any, Optional, Type, cast
 from artifcat import ValidationResult
 from assurance import TokenValidatorToolkit, Validator
 from domain import Coord, CoordChart
-from err import StructureNullException, ParticipantCoordChartValidatorException
+from err import StructureNullException, CoordChartValidatorException
 from exchange import CoordValidationRequest
-from transit import CoordCarrier
+from transit import CoordCarrier, CoordChartCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -55,7 +55,7 @@ class CoordChartValidator(Validator[CoordChart]):
         return cast(TokenValidatorToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[CoordChart]:
+    def execute(self, candidate: Any) -> ValidationResult[CoordChartCarrier]:
         """
         Assure a candidate is a safe TokenCarrier.
 
@@ -84,11 +84,11 @@ class CoordChartValidator(Validator[CoordChart]):
         if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ParticipantCoordChartValidatorException(
+                CoordChartValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ParticipantCoordChartValidatorException.MSG,
-                    err_code=ParticipantCoordChartValidatorException.ERR_CODE,
+                    msg=CoordChartValidatorException.MSG,
+                    err_code=CoordChartValidatorException.ERR_CODE,
                     ex=priming.exception,
                 )
             )
@@ -97,16 +97,16 @@ class CoordChartValidator(Validator[CoordChart]):
         if candidate_chart.is_not_consistent:
             # Send the exception chain on failure.
             validation_result = ValidationResult.failure(
-                ParticipantCoordChartValidatorException(
+                CoordChartValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ParticipantCoordChartValidatorException.MSG,
-                    err_code=ParticipantCoordChartValidatorException.ERR_CODE,
-                    ex=ParticiantCoordChartConsistencyException(
+                    msg=CoordChartValidatorException.MSG,
+                    err_code=CoordChartValidatorException.ERR_CODE,
+                    ex=CoordchartConsistencyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=ParticiantCoordChartConsistencyException.MSG,
-                        err_code=ParticiantCoordChartConsistencyException.ERR_CODE,
+                        msg=CoordchartConsistencyException.MSG,
+                        err_code=CoordchartConsistencyException.ERR_CODE,
                     ),
                 )
             )
@@ -116,11 +116,11 @@ class CoordChartValidator(Validator[CoordChart]):
             if coord_validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    ParticipantCoordChartValidatorException(
+                    CoordChartValidatorException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=ParticipantCoordChartValidatorException.MSG,
-                        err_code=ParticipantCoordChartValidatorException.ERR_CODE,
+                        msg=CoordChartValidatorException.MSG,
+                        err_code=CoordChartValidatorException.ERR_CODE,
                         ex=coord_validation.exception,
                     )
                 )
@@ -136,18 +136,18 @@ class CoordChartValidator(Validator[CoordChart]):
             if coord_validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    ParticipantCoordChartValidatorException(
+                    CoordChartValidatorException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=ParticipantCoordChartValidatorException.MSG,
-                        err_code=ParticipantCoordChartValidatorException.ERR_CODE,
+                        msg=CoordChartValidatorException.MSG,
+                        err_code=CoordChartValidatorException.ERR_CODE,
                         ex=coord_validation.exception,
                     )
                 )
             previous_position = cast(Coord, coord_validation.payload)
         # --- Send the work product. ---#
-        carrier = ParticipantCoordChartCarrier(
-            model=articipantCoordChart(
+        carrier = CoordChartCarrier(
+            model=CoordChart(
                 position=position,
                 previous_position=previous_position,
             )
@@ -179,18 +179,18 @@ class CoordChartValidator(Validator[CoordChart]):
         # Handle the case that the candidate is flagged.
         validation = self.toolkit.wrapper.coord.extract_model(
             request=CoordValidationRequest(
-                item=CoordCarrier(model=candidate),
+                item=CoordCarrier(model=coord_candidate),
                 id=IdFactory.next_id(class_name="CoordValidationRequest"),
             )
         )
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ParticipantCoordChartValidatorException(
+                CoordChartValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ParticipantCoordChartValidatorException.MSG,
-                    err_code=ParticipantCoordChartValidatorException.ERR_CODE,
+                    msg=CoordChartValidatorException.MSG,
+                    err_code=CoordChartValidatorException.ERR_CODE,
                     ex=validation.exception,
                 )
             )

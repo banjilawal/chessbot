@@ -1,7 +1,7 @@
 # src/err/assurance/validator/structure/register/coord/exception.py
 
 """
-Module: err.assurance.validator.structure.egister.coord.exception
+Module: err.assurance.validator.structure.register.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

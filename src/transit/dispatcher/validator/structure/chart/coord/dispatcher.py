@@ -14,6 +14,7 @@ from typing import Any, cast
 from assurance import CoordChartValidator
 from domain.structure.chart import CoordChart
 from artifcat import ValidationResult
+from err import CoordChartValidationDispatcherException
 from transit import CoordChartCarrier
 from util import LoggingLevelRouter
 from transit.dispatcher.validator import ChartValidationDispatcher
@@ -81,6 +82,7 @@ class CoordChartValidationDispatcher(ChartValidationDispatcher[CoordChart]):
                 )
             )
         # --- Forward the work product to the caller. ---#
+        carrier = validation.payload
         return ValidationResult.success(
             cast(CoordChartCarrier, validation.payload)
         )

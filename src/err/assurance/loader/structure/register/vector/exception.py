@@ -1,7 +1,7 @@
 # src/err/assurance/loader/structure/register/vector/exception.py
 
 """
-Module: err.assurance.loader.structure.egister.vector.exception
+Module: err.assurance.loader.structure.register.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

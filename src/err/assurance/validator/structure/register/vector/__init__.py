@@ -1,13 +1,13 @@
 # src/err/assurance/validator/structure/register/vector/__init__.py
 
 """
-Module: err.assurance.validator.structure.egister.vector.__init__
+Module: err.assurance.validator.structure.register.vector.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# =========== ERR.ASSURANCE.VALIDATOR.STRUCTURE.EGISTER.VECTOR PACKAGE ===========#
+# =========== ERR.ASSURANCE.VALIDATOR.STRUCTURE.REGISTER.VECTOR PACKAGE ===========#
 
 # Packages
 
