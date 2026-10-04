@@ -13,14 +13,14 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
 from artifcat import RegisterValidationResponse
-from exchange import RegisterValidationRequest, ValidationResponder
+from exchange import RegisterValidationRequest, StructureValidationResponder
 from transit import RegisterValidationDispatcher
 from util import LoggingLevelRouter
 
 T = TypeVar("T",)
 
 class RegisterValidationResponder(
-    ValidationResponder[T],
+    StructureValidationResponder[T],
     ABC,
     Generic[T],
 ):

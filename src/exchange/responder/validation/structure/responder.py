@@ -12,11 +12,12 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
+from domain import Structure
 from exchange import StructureValidationRequest, ValidationResponder
 from transit import StructureValidationDispatcher
 from util import LoggingLevelRouter
 
-T = TypeVar("T",)
+T = TypeVar("T", bound="Structure")
 
 class StructureValidationResponder(
     ValidationResponder[T],
