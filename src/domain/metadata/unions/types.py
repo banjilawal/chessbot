@@ -13,6 +13,7 @@ from abc import ABC
 from typing import Generic, Type, TypeVar
 
 from domain import Blueprint
+from transit import EntityCarrier
 
 T = TypeVar("T")
 
@@ -36,24 +37,32 @@ class TypeUnion(ABC, Generic[T]):
     """
     
     _model: Type[T]
+    _carrier: Type[EntityCarrier]
     _blueprint: Type[Blueprint[T]]
     
     def __init__(
             self,
             model: Type[T],
+            carrier: Type[EntityCarrier],
             blueprint: Type[Blueprint[T]],
     ):
         """
         Args:
             model: Type[T]
+            carrier: Type[EntityCarrier]
             blueprint: Type[Blueprint[T]]
         """
         self._model = model
+        self._carrier = carrier
         self._blueprint = blueprint
         
     @property
     def model(self) -> Type[T]:
         return self._model
+    
+    @property
+    def carrier(self) -> Type[EntityCarrier[T]]:
+        return self._carrier
     
     @property
     def blueprint(self) -> Type[Blueprint[T]]:

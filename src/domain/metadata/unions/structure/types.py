@@ -13,6 +13,7 @@ from abc import ABC
 from typing import Generic, Type, TypeVar, cast
 
 from domain import Structure, StructureBlueprint, TypeUnion
+from transit import StructureCarrier
 
 T = TypeVar("T", bound="Structure")
 
@@ -35,24 +36,31 @@ class StructureTypeUnion(TypeUnion[T], ABC, Generic[T]):
         TypeUnion
     """
     _model: Type[T]
+    _carrier: Type[StructureCarrier[T]]
     _blueprint: Type[StructureBlueprint[T]]
     
     def __init__(
             self,
             model: Type[T],
+            carrier: Type[StructureCarrier[T]],
             blueprint: Type[StructureBlueprint[T]],
     ):
         """
         Args:
             model: Type[T]
+            carrier: Type[StructureCarrier[T]]
             blueprint: Type[StructureBlueprint[T]]
         """
-        super().__init__(model=model, blueprint=blueprint)
+        super().__init__(model=model, carrier=carrier, blueprint=blueprint)
         
     @property
     def model(self) -> Type[T]:
         return cast(Type[T], super().model)
     
     @property
+    def carrier(self) -> Type[StructureCarrier[T]]:
+        return cast(Type[StructureCarrier[T]], super().carrier)
+    
+    @property
     def blueprint(self) -> Type[StructureBlueprint[T]]:
-        return cast(Type[StructureBlueprint[T]], super().model)
+        return cast(Type[StructureBlueprint[T]], super().blueprint)

@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.NULLS.STRUCTURE PACKAGE ===========#
 
 # Packages
+from .chart import *
 from .register import *
 
 # Modules
