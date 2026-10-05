@@ -9,14 +9,15 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, Optional, cast
+from typing import Any, List, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import CoordLoader, CoordValidatorToolkit, ModelValidator
-from domain import Coord, CoordPrimeExtract
+from domain import Board, Coord, CoordBlueprint, CoordPrimeExtract
 from err import CoordCarrierEmptyException, CoordValidatorException
-from transit import CoordCarrier
-from util import LoggingLevelRouter
+from exchange import BoardValidationRequest
+from transit import BoardCarrier, CoordCarrier
+from util import IdFactory, LoggingLevelRouter
 
 
 class CoordValidator(ModelValidator[Coord]):
@@ -114,11 +115,12 @@ class CoordValidator(ModelValidator[Coord]):
                     ),
                 )
             )
-        # --- Run the board validation checks. ---#
-        board_validation = self.toolkit.wrapper.board_validator.execute(
-            candidate=BoardValidationRequest(
-                id=IdFactory.next_id(class_name="BoardValidationRequest"),
+        # --- PROCESS_THE_BOARD_ATTRIBUTE. ---#
+        board_validation = self.toolkit.wrapper.board.extract_model(
+            request=BoardValidationRequest(
                 item=BoardCarrier(model=blueprint.board),
+                id=IdFactory.next_id(class_name="BoardValidationRequest"),
+
             )
         )
         # Handle the case that the board is flagged.
@@ -133,31 +135,10 @@ class CoordValidator(ModelValidator[Coord]):
                     ex=board_validation.exception,
                 )
             )
-        # --- Extract the board validation payload. ---#
-        board_carrier = cast(
-            BoardCarrier,
-            board_validation.payload
-        )
-        # Handle the case that the board_carrier does not contain a model.
-        if not board_carrier.has_model:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                CoordValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=CoordValidatorException.MSG,
-                    err_code=CoordValidatorException.ERR_CODE,
-                    ex=BoardCarrierEmptyException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=BoardCarrierEmptyException.MSG,
-                        err_code=BoardCarrierEmptyException.ERR_CODE,
-                    ),
-                )
-            )
-        # Handle the case that any coord component in the blueprint is flagged.
+        # --- PROCESS_THE_ROW_AND_COLUMN_ATTRIBUTES. ---#
         components: List[int] = []
         for number in [blueprint.row, blueprint.column]:
+            # Handle the case that any coord component in the blueprint is flagged.
             validation = self.toolkit.wrapper.number_validator.execute(number)
             if validation.is_failure:
                 # Send the exception chain on failure.
@@ -171,24 +152,31 @@ class CoordValidator(ModelValidator[Coord]):
                     )
                 )
             components.append(cast(int, validation.payload))
-        # --- Extract validation payloads. ---#
-        board = cast(Board, board_carrier.entity)
+        # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
+        board = cast(Board, board_validation.payload)
         row = components[0]
         column = components[1]
-        # --- Forward the appropriate work product to the caller. ---#  
-        # The model case
-        if carrier.has_model:
-            model = Coord(board=board, row=row, column=column)
-            return ValidationResult.success(
-                CoordCarrier(model=model)
-            )
-        # The blueprint case
-        blueprint = CoordBlueprint(board=board, row=row, column=column)
-        return ValidationResult.success(
-            CoordCarrier(blueprint=blueprint)
-        )
-
+        # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         
+        # The client wants a safe Coord.
+        if carrier.has_model:
+            payload = CoordCarrier(
+                model=Coord(
+                    board=board,
+                    row=row,
+                    column=column
+                )
+            )
+            return ValidationResult.success(payload)
+        # Otherwise, the client is a CoordBuilder that needs a Blueprint.
+        payload = CoordCarrier(
+            blueprint=CoordBlueprint(
+                board=board,
+                row=row,
+                column=column
+            )
+        )
+        return ValidationResult.success(payload)
 
 
 
