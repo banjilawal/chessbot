@@ -1,7 +1,7 @@
-# src/assurance/validator/struct/chain/token/validator.py
+# src/assurance/validator/struct/chain/participate/validator.py
 
 """
-Module: assurance.validator.struct.chain.token.validator
+Module: assurance.validator.struct.chain.participate.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,18 +9,25 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import List, Optional, cast
+from typing import Any, List, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ChartValidator, ParticipantReadinessValidator, ParticipationValidatorToolkit
-from domain import Token, Participation
-from err import (
-    FriendlyFireAttackException, TokenAttackingItselfException,
-    ParticipationValidatorException, VictimNeverDeployedException
+from assurance import (
+    ChartValidator, ParticipantReadinessValidator,
+    ParticipationValidatorToolkit
 )
-from transit import ParticipationCarrier
-
-from util import LoggingLevelRouter
+from domain import (
+    Participation, ParticipationBlueprint, ParticipationPrimeExtract,
+    Token
+)
+from err import (
+    FriendlyFireAttackException, ParticipationCarrierEmptyException,
+    ParticipationValidatorException, TokenAttackingItselfException,
+    VictimNeverDeployedException
+)
+from exchange import TokenValidationRequest
+from transit import ParticipationCarrier, TokenCarrier
+from util import IdFactory, LoggingLevelRouter
 
 
 class ParticipationValidator(ChartValidator[Participation]):
@@ -38,10 +45,10 @@ class ParticipationValidator(ChartValidator[Participation]):
     Provides:
         -   def execute(
                     candidate: Any
-            ) -> ValidationResult[EncounterChart]:
+            ) -> ValidationResult[[ParticipationCarrier]:
 
     Super Class:
-        VerificationProducer
+        ChartValidator
     """
     _readiness_validator: ParticipantReadinessValidator
     
@@ -57,36 +64,89 @@ class ParticipationValidator(ChartValidator[Participation]):
         """
         super().__init__(toolkit=toolkit or ParticipationValidatorToolkit())
         self._readiness_validator = readiness_validator or ParticipantReadinessValidator()
-        
+    
     @property
     def toolkit(self) -> ParticipationValidatorToolkit:
         return cast(ParticipationValidatorToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(
-            self,
-            victim: Token,
-            attacker: Token
-    ) -> ValidationResult[ParticipationCarrier]:
+    def execute(self, candidate: Any) -> ValidationResult[ParticipationCarrier]:
         """
-        Assure a candidate's properties are reference for a Encounter
+        Assure a candidate is a safe ParticipationCarrier.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if any of the following
-                occur
-                    -   The Loader fails.
-                    -   Token, Formation, Deployment, id, or HomeSquare are flagged.
-                    -   The position_validator fails.
-            2.  Otherwise, send a EncounterChart in the success result.
+            1.  Send an exception chain in the ValidationResult if either
+                    -   Loader fails.
+                    -   The ParticipationBlueprint has an inconsistency.
+                    -   The CoordValidator flags either existing position.
+            2.  Otherwise, send the type of carrier prime_extract indicates.
         Args:
-            victim: Token
-            attacker: Token
+            candidate: Any
         Returns:
-           ValidationResult[EncounterChart]
+            ValidationResult[Participation]
         Raises:
-            EncounterParticipantCertifierException
+            ParticipationValidatorException
         """
         method = f"{self.__class__.__name__}.execute"
+        
+        # Handle the case that the blueprint cannot be extracted.
+        load_result = self.toolkit.loader.execute(candidate)
+        if load_result.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                ParticipationValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=ParticipationValidatorException.MSG,
+                    err_code=ParticipationValidatorException.ERR_CODE,
+                    ex=load_result.exception,
+                )
+            )
+        # --- Get the PrimeExtract and Blueprint for additional processing. ---#
+        prime_extract = cast(ParticipationPrimeExtract, load_result.payload)
+        carrier = prime_extract.carrier
+        blueprint = carrier.extract_blueprint()
+        
+        # Handle the case that the blueprint is null.
+        if blueprint is None:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                ParticipationValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=ParticipationValidatorException.MSG,
+                    err_code=ParticipationValidatorException.ERR_CODE,
+                    ex=ParticipationCarrierEmptyException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=ParticipationCarrierEmptyException.MSG,
+                        err_code=ParticipationCarrierEmptyException.ERR_CODE,
+                    ),
+                )
+            )
+        
+        tokens: List[Token] = []
+        for token in [blueprint.victim, blueprint.attacker]:
+            token_validation = self.toolkit.wrapper.token.extract_model(
+                request=TokenValidationRequest(
+                    item=TokenCarrier(model=token),
+                    id=IdFactory.next_id(class_name="TokenValidationRequest"),
+                )
+            )
+            if token_validation.is_failure:
+                # Send the exception chain on failure.
+                return ValidationResult.failure(
+                    ParticipationValidatorException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=ParticipationValidatorException.MSG,
+                        err_code=ParticipationValidatorException.ERR_CODE,
+                        ex=token_validation.exception,
+                    )
+                )
+            tokens.append(cast(Token, token_validation.payload))
+        victim = tokens[0]
+        attacker = tokens[1]
         
         # Handle the case that the victim and the attacker are the same
         if victim == attacker:
@@ -122,28 +182,9 @@ class ParticipationValidator(ChartValidator[Participation]):
                     ),
                 )
             )
-        # Handle the case that the victim has never been deployed.
-        if victim.has_never_been_deployed:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                ParticipationValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=ParticipationValidatorException.MSG,
-                    err_code=ParticipationValidatorException.ERR_CODE,
-                    ex=VictimNeverDeployedException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=VictimNeverDeployedException.MSG,
-                        err_code=VictimNeverDeployedException.ERR_CODE,
-                    ),
-                )
-            )
-        # Handle the case that either participant is not ready
-        participants: List[Token] = []
-        for candidate in [victim, attacker]:
-            readiness_validation = self._readiness_validator.execute(candidate)
-            if readiness_validation.is_failure:
+        # Handle the case that either token has never been deployed.
+        for token in [victim, attacker]:
+            if token.has_never_been_deployed:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     ParticipationValidatorException(
@@ -151,15 +192,30 @@ class ParticipationValidator(ChartValidator[Participation]):
                         cls_name=self.__class__.__name__,
                         msg=ParticipationValidatorException.MSG,
                         err_code=ParticipationValidatorException.ERR_CODE,
-                        ex=readiness_validation.exception,
+                        ex=VictimNeverDeployedException(
+                            cls_mthd=method,
+                            cls_name=self.__class__.__name__,
+                            msg=VictimNeverDeployedException.MSG,
+                            err_code=VictimNeverDeployedException.ERR_CODE,
+                        ),
                     )
                 )
-            participants.append(cast(Token, readiness_validation.payload))
-        # --- Send the work product. ---#
-        participant_chart = Participation(
-            victim=participants[0],
-            attacker=participants[1],
+        # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
+        # The client wants safe Participants.
+        if prime_extract.recipient_wants_model:
+            payload = ParticipationCarrier(
+                model=Participation(
+                    victim=victim,
+                    attacker=attacker,
+                )
+            )
+            return ValidationResult.success(payload)
+        # Otherwise, the client is a ParticipationBuilder that needs a Blueprint.
+        payload = ParticipationCarrier(
+            blueprint=ParticipationBlueprint(
+                victim=victim,
+                attacker=attacker,
+            )
         )
-        return ValidationResult.success(participant_chart)
-
-    
+        return ValidationResult.success(payload)
+        # --- Send the work product. ---#
