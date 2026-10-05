@@ -14,7 +14,7 @@ from typing import Any, List, Optional, cast
 from artifcat import ValidationResult
 from assurance import (
     ChartValidator, ParticipantReadinessValidator,
-    ParticipationValidatorToolkit
+    ParticipationLoader, ParticipationValidatorToolkit
 )
 from domain import (
     Participation, ParticipationBlueprint, ParticipationPrimeExtract,
@@ -50,24 +50,31 @@ class ParticipationValidator(ChartValidator[Participation]):
     Super Class:
         ChartValidator
     """
+    _loader: ParticipationLoader
     _readiness_validator: ParticipantReadinessValidator
     
     def __init__(
             self,
+            loader: Optional[ParticipationLoader] | None = None,
             toolkit: Optional[ParticipationValidatorToolkit] | None = None,
             readiness_validator: Optional[ParticipantReadinessValidator] | None = None,
     ):
         """
         Args:
+            loader: Optional[ParticipationLoader]
             toolkit: Optional[ParticipationValidatorToolkit]
             readiness_validator: Optional[ParticipantReadinessValidator]
         """
-        super().__init__(toolkit=toolkit or ParticipationValidatorToolkit())
+        super().__init__(loader=loader or ParticipationLoader(), toolkit=toolkit or ParticipationValidatorToolkit())
         self._readiness_validator = readiness_validator or ParticipantReadinessValidator()
     
     @property
     def toolkit(self) -> ParticipationValidatorToolkit:
         return cast(ParticipationValidatorToolkit, super().toolkit)
+    
+    @property
+    def loader(self) -> ParticipationLoader:
+        return cast(ParticipationLoader, super().loader)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[ParticipationCarrier]:
