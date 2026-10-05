@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import WarningNodeValidationResponse, ValidationResult
-from domain import Warning, WarningBlueprint, EncounterWarningNode, WarningNodeBlueprint
+from domain import Warning, WarningBlueprint, EncounterWarningNode, EncounterWarningNodeBlueprint
 from err import WarningNodeValidationResponderException, WarningNodeValidationResponseWrapperException, EmptyWarningCarrierException
 from exchange import (
     WarningNodeValidationResponder, NodeValidationResponseWrapper, EncounterWarningNodeValidationRequest
@@ -124,7 +124,7 @@ class EncounterWarningNodeValidationResponseWrapper(
     def extract_blueprint(
             self,
             request: EncounterWarningNodeValidationRequest,
-    ) -> ValidationResult[WarningNodeBlueprint]:
+    ) -> ValidationResult[EncounterWarningNodeBlueprint]:
         """
         Extract a WarningBlueprint safe to use.
 
@@ -173,5 +173,5 @@ class EncounterWarningNodeValidationResponseWrapper(
                 )
             )
         # --- Send the work product. ---#
-        blueprint = cast(WarningNodeBlueprint, response.valid_blueprint)
+        blueprint = cast(EncounterWarningNodeBlueprint, response.valid_blueprint)
         return ValidationResult.success(blueprint)

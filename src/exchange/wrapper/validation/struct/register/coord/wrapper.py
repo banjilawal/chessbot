@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import CoordRegisterValidationResponse, ValidationResult
 from domain import Coord, CoordBlueprint, CoordRegister, CoordRegisterBlueprint
-from err import CoordRegisterValidationResponderException, CoordRegisterValidationResponseWrapperException, EmptyCoordCarrierException
+from err import CoordRegisterValidationResponderException, CoordRegisterValidationResponseWrapperException, CoordCarrierEmptyException
 from exchange import (
     CoordRegisterValidationResponder, RegisterValidationResponseWrapper, CoordRegisterValidationRequest
 )
@@ -108,11 +108,11 @@ class CoordRegisterValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=CoordRegisterValidationResponderException.MSG,
                     err_code=CoordRegisterValidationResponderException.ERR_CODE,
-                    ex=EmptyCoordCarrierException(
+                    ex=CoordCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyCoordCarrierException.MSG,
-                        err_code=EmptyCoordCarrierException.ERR_CODE,
+                        msg=CoordCarrierEmptyException.MSG,
+                        err_code=CoordCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
@@ -164,11 +164,11 @@ class CoordRegisterValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=CoordRegisterValidationResponderException.MSG,
                     err_code=CoordRegisterValidationResponderException.ERR_CODE,
-                    ex=EmptyCoordCarrierException(
+                    ex=CoordCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyCoordCarrierException.MSG,
-                        err_code=EmptyCoordCarrierException.ERR_CODE,
+                        msg=CoordCarrierEmptyException.MSG,
+                        err_code=CoordCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

@@ -26,4 +26,4 @@ from .token import *
 from .vector import *
 
 # Modules
-from .exception import EmptyModelCarrierException
+from .exception import ModelCarrierEmptyException

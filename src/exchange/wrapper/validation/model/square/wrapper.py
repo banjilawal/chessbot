@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import SquareValidationResponse, ValidationResult
 from domain import Square, SquareBlueprint
-from err import SquareValidationResponderException, SquareValidationResponseWrapperException, EmptySquareCarrierException
+from err import SquareValidationResponderException, SquareValidationResponseWrapperException, SquareCarrierEmptyException
 from exchange import (
     SquareValidationResponder, ModelValidationResponseWrapper, SquareValidationRequest
 )
@@ -108,11 +108,11 @@ class SquareValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=SquareValidationResponderException.MSG,
                     err_code=SquareValidationResponderException.ERR_CODE,
-                    ex=EmptySquareCarrierException(
+                    ex=SquareCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptySquareCarrierException.MSG,
-                        err_code=EmptySquareCarrierException.ERR_CODE,
+                        msg=SquareCarrierEmptyException.MSG,
+                        err_code=SquareCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
@@ -164,11 +164,11 @@ class SquareValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=SquareValidationResponderException.MSG,
                     err_code=SquareValidationResponderException.ERR_CODE,
-                    ex=EmptySquareCarrierException(
+                    ex=SquareCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptySquareCarrierException.MSG,
-                        err_code=EmptySquareCarrierException.ERR_CODE,
+                        msg=SquareCarrierEmptyException.MSG,
+                        err_code=SquareCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

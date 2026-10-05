@@ -17,7 +17,7 @@ from transit import EncounterCarrier
 
 T = TypeVar("T", bound="Encounter")
 
-class EncounterPrimeExtract(ModelPrimeExtract[T], ABC, Generic[T]):
+class EncounterPrimeExtract(ModelPrimeExtract[T], Generic[T]):
     """
     Role
         - Data Holder

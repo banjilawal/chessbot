@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import EmptyModelCarrierException
+from err import ModelCarrierEmptyException
 
 __all__ = [
     # ======================# VECTOR_CARRIER_EMPTY_ERROR #======================#
-    "EmptyVectorCarrierException",
+    "VectorCarrierEmptyException",
 ]
 
 # ======================# VECTOR_CARRIER_EMPTY_ERROR #======================#
-class EmptyVectorCarrierException(EmptyModelCarrierException):
+class VectorCarrierEmptyException(ModelCarrierEmptyException):
     """
     Role:
         - Error Tracing

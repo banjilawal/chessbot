@@ -16,11 +16,11 @@ from err import EmptyChartCarrierException
 
 __all__ = [
     # ======================# COORD_CHART_CARRIER_EMPTY_ERROR #======================#
-    "EmptyCoordChartCarrierException",
+    "CoordChartCarrierEmptyException",
 ]
 
 # ======================# COORD_CHART_CARRIER_EMPTY_ERROR #======================#
-class EmptyCoordChartCarrierException(EmptyChartCarrierException):
+class CoordChartCarrierEmptyException(EmptyChartCarrierException):
     """
     Role:
         - Error Tracing

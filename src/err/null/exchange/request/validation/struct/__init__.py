@@ -10,6 +10,8 @@ version: 0.0.2
 # ============ ERR.NULL.EXCHANGE.REQUEST.VALIDATION.STRUCT PACKAGE ===========#
 
 # Packages
+from .chart import *
+from .node import *
 from .register import *
 
 # Modules

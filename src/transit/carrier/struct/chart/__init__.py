@@ -11,7 +11,6 @@ version: 0.0.2
 
 # Packages
 from .coord import *
-from .square import *
 from .token import *
 
 # Modules

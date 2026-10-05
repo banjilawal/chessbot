@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import EmptyModelCarrierException
+from err import ModelCarrierEmptyException
 
 __all__ = [
     # ======================# ARENA_CARRIER_EMPTY_ERROR #======================#
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# ARENA_CARRIER_EMPTY_ERROR #======================#
-class EmptyArenaCarrierEmptyException(EmptyModelCarrierException):
+class EmptyArenaCarrierEmptyException(ModelCarrierEmptyException):
     """
     Role:
         - Error Tracing

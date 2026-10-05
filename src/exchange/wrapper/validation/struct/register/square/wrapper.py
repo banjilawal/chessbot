@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import SquareRegisterValidationResponse, ValidationResult
 from domain import Square, SquareBlueprint, SquareRegister, SquareRegisterBlueprint
-from err import SquareRegisterValidationResponderException, SquareRegisterValidationResponseWrapperException, EmptySquareCarrierException
+from err import SquareRegisterValidationResponderException, SquareRegisterValidationResponseWrapperException, SquareCarrierEmptyException
 from exchange import (
     SquareRegisterValidationResponder, RegisterValidationResponseWrapper, SquareRegisterValidationRequest
 )
@@ -108,11 +108,11 @@ class SquareRegisterValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=SquareRegisterValidationResponderException.MSG,
                     err_code=SquareRegisterValidationResponderException.ERR_CODE,
-                    ex=EmptySquareCarrierException(
+                    ex=SquareCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptySquareCarrierException.MSG,
-                        err_code=EmptySquareCarrierException.ERR_CODE,
+                        msg=SquareCarrierEmptyException.MSG,
+                        err_code=SquareCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
@@ -164,11 +164,11 @@ class SquareRegisterValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=SquareRegisterValidationResponderException.MSG,
                     err_code=SquareRegisterValidationResponderException.ERR_CODE,
-                    ex=EmptySquareCarrierException(
+                    ex=SquareCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptySquareCarrierException.MSG,
-                        err_code=EmptySquareCarrierException.ERR_CODE,
+                        msg=SquareCarrierEmptyException.MSG,
+                        err_code=SquareCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

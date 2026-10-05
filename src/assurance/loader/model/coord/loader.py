@@ -15,7 +15,7 @@ from artifcat import ValidationResult
 from assurance import ModelLoader, CoordValidatorToolkit
 from domain import Coord, CoordPrimeExtract
 from err import (
-    EmptyCoordCarrierException, CoordLoaderException, CoordValidationRequestNullException
+    CoordCarrierEmptyException, CoordLoaderException, CoordValidationRequestNullException
 )
 from exchange import CoordValidationRequest
 from transit import CoordCarrier
@@ -135,11 +135,11 @@ class CoordLoader(ModelLoader[Coord]):
                     cls_name=self.__class__.__name__,
                     msg=CoordLoaderException.MSG,
                     err_code=CoordLoaderException.ERR_CODE,
-                    ex=EmptyCoordCarrierException(
+                    ex=CoordCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyCoordCarrierException.MSG,
-                        err_code=EmptyCoordCarrierException.ERR_CODE,
+                        msg=CoordCarrierEmptyException.MSG,
+                        err_code=CoordCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

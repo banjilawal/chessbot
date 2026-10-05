@@ -30,7 +30,7 @@ class CoordChart(Chart[Coord]):
     Provides:
 
     Super
-        ParticipantChart
+        Chart
     """
     
     _position: Optional[Coord]

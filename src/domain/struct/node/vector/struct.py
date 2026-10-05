@@ -76,8 +76,7 @@ class VectorNode(Node[Vector]):
         if other is None:
             return False
         if isinstance(other, VectorNode):
-            node = cast(VectorNode, other)
-            return self.payload == node.payload
+            return self.payload == other.payload
         return False
     
     

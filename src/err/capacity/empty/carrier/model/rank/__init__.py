@@ -14,4 +14,4 @@ from .bishop import *
 from .king import *
 
 # Modules
-from .exception import EmptyRankCarrierException
+from .exception import RankCarrierEmptyException

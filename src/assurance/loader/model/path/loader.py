@@ -15,7 +15,7 @@ from artifcat import ValidationResult
 from assurance import ModelLoader, PathValidatorToolkit
 from domain import Path, PathPrimeExtract
 from err import (
-    EmptyPathCarrierException, PathLoaderException, PathValidationRequestNullException
+    PathCarrierEmptyException, PathLoaderException, PathValidationRequestNullException
 )
 from exchange import PathValidationRequest
 from transit import PathCarrier
@@ -135,11 +135,11 @@ class PathLoader(ModelLoader[Path]):
                     cls_name=self.__class__.__name__,
                     msg=PathLoaderException.MSG,
                     err_code=PathLoaderException.ERR_CODE,
-                    ex=EmptyPathCarrierException(
+                    ex=PathCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyPathCarrierException.MSG,
-                        err_code=EmptyPathCarrierException.ERR_CODE,
+                        msg=PathCarrierEmptyException.MSG,
+                        err_code=PathCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

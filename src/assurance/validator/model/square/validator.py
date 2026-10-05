@@ -18,7 +18,7 @@ from domain import (
     SquareState, SquareValidationRequest
 )
 from err import (
-    EmptyBoardCarrierException, EmptyCoordCarrierException, EmptySquareCarrierException,
+    BoardCarrierEmptyException, CoordCarrierEmptyException, SquareCarrierEmptyException,
     SquareStateNullException, SquareValidationRequestNullException,
     SquareValidatorException
 )
@@ -141,11 +141,11 @@ class SquareValidator(ModelValidator[Square]):
                     cls_name=self.__class__.__name__,
                     msg=SquareValidatorException.MSG,
                     err_code=SquareValidatorException.ERR_CODE,
-                    ex=EmptySquareCarrierException(
+                    ex=SquareCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptySquareCarrierException.MSG,
-                        err_code=EmptySquareCarrierException.ERR_CODE,
+                        msg=SquareCarrierEmptyException.MSG,
+                        err_code=SquareCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
@@ -226,11 +226,11 @@ class SquareValidator(ModelValidator[Square]):
                     cls_name=self.__class__.__name__,
                     msg=SquareValidatorException.MSG,
                     err_code=SquareValidatorException.ERR_CODE,
-                    ex=EmptyBoardCarrierException(
+                    ex=BoardCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyBoardCarrierException.MSG,
-                        err_code=EmptyBoardCarrierException.ERR_CODE,
+                        msg=BoardCarrierEmptyException.MSG,
+                        err_code=BoardCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
@@ -261,11 +261,11 @@ class SquareValidator(ModelValidator[Square]):
                     cls_name=self.__class__.__name__,
                     msg=SquareValidatorException.MSG,
                     err_code=SquareValidatorException.ERR_CODE,
-                    ex=EmptyCoordCarrierException(
+                    ex=CoordCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyCoordCarrierException.MSG,
-                        err_code=EmptyCoordCarrierException.ERR_CODE,
+                        msg=CoordCarrierEmptyException.MSG,
+                        err_code=CoordCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

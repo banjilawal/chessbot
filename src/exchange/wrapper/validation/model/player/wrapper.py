@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import PlayerValidationResponse, ValidationResult
 from domain import Player, PlayerBlueprint
-from err import PlayerValidationResponderException, PlayerValidationResponseWrapperException, EmptyPlayerCarrierException
+from err import PlayerValidationResponderException, PlayerValidationResponseWrapperException, PlayerCarrierEmptyException
 from exchange import (
     PlayerValidationResponder, ModelValidationResponseWrapper, PlayerValidationRequest
 )
@@ -108,11 +108,11 @@ class PlayerValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=PlayerValidationResponderException.MSG,
                     err_code=PlayerValidationResponderException.ERR_CODE,
-                    ex=EmptyPlayerCarrierException(
+                    ex=PlayerCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyPlayerCarrierException.MSG,
-                        err_code=EmptyPlayerCarrierException.ERR_CODE,
+                        msg=PlayerCarrierEmptyException.MSG,
+                        err_code=PlayerCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
@@ -164,11 +164,11 @@ class PlayerValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=PlayerValidationResponderException.MSG,
                     err_code=PlayerValidationResponderException.ERR_CODE,
-                    ex=EmptyPlayerCarrierException(
+                    ex=PlayerCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyPlayerCarrierException.MSG,
-                        err_code=EmptyPlayerCarrierException.ERR_CODE,
+                        msg=PlayerCarrierEmptyException.MSG,
+                        err_code=PlayerCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

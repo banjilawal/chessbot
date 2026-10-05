@@ -19,7 +19,7 @@ from domain import (
 )
 from err import (
     FormationNullException, HumanPlayerValidatorException, NullException, NameCarrierEmptyException,
-    EmptyPlayerCarrierException
+    PlayerCarrierEmptyException
 )
 from transit import HumanPlayerCarrier, NameCarrier
 from util import IdFactory, LoggingLevelRouter
@@ -89,11 +89,11 @@ class HumanPlayerValidator:
                     cls_name=self.__class__.__name__,
                     msg=HumanPlayerValidatorException.MSG,
                     err_code=HumanPlayerValidatorException.ERR_CODE,
-                    ex=EmptyPlayerCarrierException(
+                    ex=PlayerCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyPlayerCarrierException.MSG,
-                        err_code=EmptyPlayerCarrierException.ERR_CODE,
+                        msg=PlayerCarrierEmptyException.MSG,
+                        err_code=PlayerCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

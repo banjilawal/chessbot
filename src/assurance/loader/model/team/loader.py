@@ -15,7 +15,7 @@ from artifcat import ValidationResult
 from assurance import ModelLoader, TeamValidatorToolkit
 from domain import Team, TeamPrimeExtract
 from err import (
-    EmptyTeamCarrierException, TeamLoaderException, TeamValidationRequestNullException
+    TeamCarrierEmptyException, TeamLoaderException, TeamValidationRequestNullException
 )
 from exchange import TeamValidationRequest
 from transit import TeamCarrier
@@ -135,11 +135,11 @@ class TeamLoader(ModelLoader[Team]):
                     cls_name=self.__class__.__name__,
                     msg=TeamLoaderException.MSG,
                     err_code=TeamLoaderException.ERR_CODE,
-                    ex=EmptyTeamCarrierException(
+                    ex=TeamCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyTeamCarrierException.MSG,
-                        err_code=EmptyTeamCarrierException.ERR_CODE,
+                        msg=TeamCarrierEmptyException.MSG,
+                        err_code=TeamCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

@@ -15,7 +15,7 @@ from artifcat import ValidationResult
 from assurance import ModelLoader, SquareValidatorToolkit
 from domain import Square, SquarePrimeExtract
 from err import (
-    EmptySquareCarrierException, SquareLoaderException, SquareValidationRequestNullException
+    SquareCarrierEmptyException, SquareLoaderException, SquareValidationRequestNullException
 )
 from exchange import SquareValidationRequest
 from transit import SquareCarrier
@@ -135,11 +135,11 @@ class SquareLoader(ModelLoader[Square]):
                     cls_name=self.__class__.__name__,
                     msg=SquareLoaderException.MSG,
                     err_code=SquareLoaderException.ERR_CODE,
-                    ex=EmptySquareCarrierException(
+                    ex=SquareCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptySquareCarrierException.MSG,
-                        err_code=EmptySquareCarrierException.ERR_CODE,
+                        msg=SquareCarrierEmptyException.MSG,
+                        err_code=SquareCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

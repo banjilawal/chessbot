@@ -15,7 +15,7 @@ from artifcat import ValidationResult
 from assurance import ModelLoader, ScalarValidatorToolkit
 from domain import Scalar, ScalarPrimeExtract
 from err import (
-    EmptyScalarCarrierException, ScalarLoaderException, ScalarValidationRequestNullException
+    ScalarCarrierEmptyException, ScalarLoaderException, ScalarValidationRequestNullException
 )
 from exchange import ScalarValidationRequest
 from transit import ScalarCarrier
@@ -135,11 +135,11 @@ class ScalarLoader(ModelLoader[Scalar]):
                     cls_name=self.__class__.__name__,
                     msg=ScalarLoaderException.MSG,
                     err_code=ScalarLoaderException.ERR_CODE,
-                    ex=EmptyScalarCarrierException(
+                    ex=ScalarCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyScalarCarrierException.MSG,
-                        err_code=EmptyScalarCarrierException.ERR_CODE,
+                        msg=ScalarCarrierEmptyException.MSG,
+                        err_code=ScalarCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

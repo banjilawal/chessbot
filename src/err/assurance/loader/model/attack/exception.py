@@ -17,11 +17,11 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# ATTACK_LOADER_FAILURE #======================#
-    "AttackLoaderException",
+    "EncounterLoaderException",
 ]
 
 # ======================# ATTACK_LOADER_FAILURE #======================#
-class AttackLoaderException(ModelLoaderException):
+class EncounterLoaderException(ModelLoaderException):
     """
     Role:
         - Error Tracing

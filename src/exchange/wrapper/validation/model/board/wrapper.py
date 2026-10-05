@@ -15,7 +15,7 @@ from artifcat import BoardValidationResponse, ValidationResult
 from domain import Board, BoardBlueprint
 from err import (
     BoardValidationResponderException, BoardValidationResponseWrapperException,
-    EmptyBoardCarrierException
+    BoardCarrierEmptyException
 )
 from exchange import (
     BoardValidationResponder, ModelValidationResponseWrapper, BoardValidationRequest
@@ -111,11 +111,11 @@ class BoardValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=BoardValidationResponderException.MSG,
                     err_code=BoardValidationResponderException.ERR_CODE,
-                    ex=EmptyBoardCarrierException(
+                    ex=BoardCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyBoardCarrierException.MSG,
-                        err_code=EmptyBoardCarrierException.ERR_CODE,
+                        msg=BoardCarrierEmptyException.MSG,
+                        err_code=BoardCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
@@ -167,11 +167,11 @@ class BoardValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=BoardValidationResponderException.MSG,
                     err_code=BoardValidationResponderException.ERR_CODE,
-                    ex=EmptyBoardCarrierException(
+                    ex=BoardCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyBoardCarrierException.MSG,
-                        err_code=EmptyBoardCarrierException.ERR_CODE,
+                        msg=BoardCarrierEmptyException.MSG,
+                        err_code=BoardCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

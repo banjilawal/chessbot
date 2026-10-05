@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import EmptyStructCarrierException
+from err import StructCarrierEmptyException
 
 __all__ = [
     # ======================# REGISTER_CARRIER_EMPTY_ERROR #======================#
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# REGISTER_CARRIER_EMPTY_ERROR #======================#
-class EmptyRegisterCarrierException(EmptyStructCarrierException):
+class EmptyRegisterCarrierException(StructCarrierEmptyException):
     """
     Role:
         - Error Tracing

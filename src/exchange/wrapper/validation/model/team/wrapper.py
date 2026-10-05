@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import TeamValidationResponse, ValidationResult
 from domain import Team, TeamBlueprint
-from err import TeamValidationResponderException, TeamValidationResponseWrapperException, EmptyTeamCarrierException
+from err import TeamValidationResponderException, TeamValidationResponseWrapperException, TeamCarrierEmptyException
 from exchange import (
     TeamValidationResponder, ModelValidationResponseWrapper, TeamValidationRequest
 )
@@ -108,11 +108,11 @@ class TeamValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=TeamValidationResponderException.MSG,
                     err_code=TeamValidationResponderException.ERR_CODE,
-                    ex=EmptyTeamCarrierException(
+                    ex=TeamCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyTeamCarrierException.MSG,
-                        err_code=EmptyTeamCarrierException.ERR_CODE,
+                        msg=TeamCarrierEmptyException.MSG,
+                        err_code=TeamCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
@@ -164,11 +164,11 @@ class TeamValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=TeamValidationResponderException.MSG,
                     err_code=TeamValidationResponderException.ERR_CODE,
-                    ex=EmptyTeamCarrierException(
+                    ex=TeamCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyTeamCarrierException.MSG,
-                        err_code=EmptyTeamCarrierException.ERR_CODE,
+                        msg=TeamCarrierEmptyException.MSG,
+                        err_code=TeamCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

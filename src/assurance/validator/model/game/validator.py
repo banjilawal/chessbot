@@ -16,7 +16,7 @@ from domain import (
     Game, GameBlueprint, GameValidationRequest
 )
 from err import (
-    EmptyGameCarrierException, GameValidationRequestNullException,
+    GameCarrierEmptyException, GameValidationRequestNullException,
     GameValidatorException
 )
 
@@ -132,11 +132,11 @@ class GameValidator(ModelValidator[Game]):
                     cls_name=self.__class__.__name__,
                     msg=GameValidatorException.MSG,
                     err_code=GameValidatorException.ERR_CODE,
-                    ex=EmptyGameCarrierException(
+                    ex=GameCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyGameCarrierException.MSG,
-                        err_code=EmptyGameCarrierException.ERR_CODE,
+                        msg=GameCarrierEmptyException.MSG,
+                        err_code=GameCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

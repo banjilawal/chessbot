@@ -15,7 +15,7 @@ from artifcat import ValidationResult
 from assurance import ModelLoader, VectorValidatorToolkit
 from domain import Vector, VectorPrimeExtract
 from err import (
-    EmptyVectorCarrierException, VectorLoaderException, VectorValidationRequestNullException
+    VectorCarrierEmptyException, VectorLoaderException, VectorValidationRequestNullException
 )
 from exchange import VectorValidationRequest
 from transit import VectorCarrier
@@ -135,11 +135,11 @@ class VectorLoader(ModelLoader[Vector]):
                     cls_name=self.__class__.__name__,
                     msg=VectorLoaderException.MSG,
                     err_code=VectorLoaderException.ERR_CODE,
-                    ex=EmptyVectorCarrierException(
+                    ex=VectorCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyVectorCarrierException.MSG,
-                        err_code=EmptyVectorCarrierException.ERR_CODE,
+                        msg=VectorCarrierEmptyException.MSG,
+                        err_code=VectorCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import EncounterWarningNode, WarningNodeBlueprint, NodePrimeExtract
+from domain import EncounterWarningNode, EncounterWarningNodeBlueprint, NodePrimeExtract
 from transit import WarningNodeCarrier
 
 
@@ -36,7 +36,7 @@ class EncounterWarningNodePrimeExtract(NodePrimeExtract[EncounterWarningNode]):
     def __init__(
             self,
             carrier: WarningNodeCarrier,
-            blueprint: Optional[WarningNodeBlueprint] | None = None,
+            blueprint: Optional[EncounterWarningNodeBlueprint] | None = None,
     ):
         """
         Args:
@@ -50,5 +50,5 @@ class EncounterWarningNodePrimeExtract(NodePrimeExtract[EncounterWarningNode]):
         return cast(WarningNodeCarrier, super().carrier)
     
     @property
-    def blueprint(self) -> Optional[WarningNodeBlueprint]:
-        return cast(WarningNodeBlueprint, super().blueprint)
+    def blueprint(self) -> Optional[EncounterWarningNodeBlueprint]:
+        return cast(EncounterWarningNodeBlueprint, super().blueprint)

@@ -16,11 +16,11 @@ from err import EmptyChartCarrierException
 
 __all__ = [
     # ======================# TOKEN_CHART_CARRIER_EMPTY_ERROR #======================#
-    "EmptyTokenChartCarrierException",
+    "TokenChartCarrierEmptyException",
 ]
 
 # ======================# TOKEN_CHART_CARRIER_EMPTY_ERROR #======================#
-class EmptyTokenChartCarrierException(EmptyChartCarrierException):
+class TokenChartCarrierEmptyException(EmptyChartCarrierException):
     """
     Role:
         - Error Tracing

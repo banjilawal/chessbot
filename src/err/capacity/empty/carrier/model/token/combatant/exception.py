@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import EmptyTokenCarrierException
+from err import TokenCarrierEmptyException
 
 __all__ = [
     # ======================# COMBATANT_CARRIER_EMPTY_ERROR #======================#
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# COMBATANT_CARRIER_EMPTY_ERROR #======================#
-class EmptyCombatantCarrierException(EmptyTokenCarrierException):
+class EmptyCombatantCarrierException(TokenCarrierEmptyException):
     """
     Role:
         - Error Tracing

@@ -24,8 +24,8 @@ class VectorNodeBlueprint(NodeBlueprint[VectorNode]):
          1.  Provide attributes for hydrating a VectorNode.
 
      Attributes:
-        position: Optional[Vector]
-        previous_position: Optional[Vector]
+        payload: Optional[Vector]
+        next: Optional[Vector]
         Optional[Type[VectorNode]]
         domain_null_exception: Optional[VectorNodeNullException]
 
@@ -34,20 +34,23 @@ class VectorNodeBlueprint(NodeBlueprint[VectorNode]):
      Super Class:
         NodeBlueprint
      """
-    _position: Optional[Vector]
-    _previous_position: Optional[Vector]
+    _payload: Optional[Vector]
+    _next: Optional[Vector]
+    _previous: Optional[Vector]
     
     def __init__(
             self,
-            position: Optional[Vector] | None = None,
-            previous_position: Optional[Vector] | None = None,
+            payload: Optional[Vector] | None = None,
+            next: Optional[Vector] | None = None,
+            previous: Optional[Vector] | None = None,
             domain_class: Optional[Type[VectorNode]] | None = None,
             domain_null_exception: Optional[VectorNodeNullException] | None = None,
     ):
         """
         Args:
-            position: Optional[Vector]
-            previous_position: Optional[Vector]
+            payload: Optional[Vector]
+            next: Optional[Vector]
+            previous: Optional[Vector]
             Optional[Type[VectorNode]]
             domain_null_exception: Optional[VectorNodeNullException]
         """
@@ -55,16 +58,21 @@ class VectorNodeBlueprint(NodeBlueprint[VectorNode]):
             domain_class=domain_class or VectorNode,
             domain_null_exception=domain_null_exception or VectorNodeNullException(),
         )
-        self._position = position
-        self._previous_position = previous_position
+        self._payload = payload
+        self._next = next
+        self._previous = previous
         
     @property
-    def position(self) -> Optional[Vector]:
-        return self._position
+    def payload(self) -> Optional[Vector]:
+        return self._payload
     
     @property
-    def previous_position(self) -> Optional[Vector]:
-        return self._previous_position
+    def next(self) -> Optional[Vector]:
+        return self._next
+    
+    @property
+    def previous(self) -> Optional[Vector]:
+        return self._previous
     
     @property
     def domain_class(self) -> Type[VectorNode]:

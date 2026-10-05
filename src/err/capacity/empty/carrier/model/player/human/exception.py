@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import EmptyPlayerCarrierException
+from err import PlayerCarrierEmptyException
 
 __all__ = [
     # ======================# HUMAN_CARRIER_EMPTY_ERROR #======================#
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# HUMAN_CARRIER_EMPTY_ERROR #======================#
-class EmptyHumanCarrierException(EmptyPlayerCarrierException):
+class EmptyHumanCarrierException(PlayerCarrierEmptyException):
     """
     Role:
         - Error Tracing

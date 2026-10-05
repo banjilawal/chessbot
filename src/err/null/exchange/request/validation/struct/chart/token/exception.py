@@ -1,7 +1,7 @@
-# src/err/null/domain/struct/node/dossier/exception.py
+# src/err/null/exchange/request/validation/struct/chart/token/exception.py
 
 """
-Module: err.null.domain.struct.node.dossier.exception
+Module: err.null.exchange.request.validation.struct.chart.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,41 +11,40 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import NodeNullException
 from artifcat import MethodResultType
-
+from err import ChartValidationRequestNullException
 
 __all__ = [
-    # ======================# DOSSIER_NODE_NULL_ERROR #======================#
-    "DossierNodeNullException",
+    # ======================# TOKEN_CHART_VALIDATION_REQUEST_NULL_ERROR #======================#
+    "TokenChartValidationRequestNullException",
 ]
 
-# ======================# DOSSIER_NODE_NULL_ERROR #======================#
-class DossierNodeNullException(NodeNullException):
+# ======================# TOKEN_CHART_VALIDATION_REQUEST_NULL_ERROR #======================#
+class TokenChartValidationRequestNullException(ChartValidationRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required DossierNode is null.
+        1.  Indicating that a TokenChartValidationRequest is null.
 
     Attributes:
-        msg: Optional[str]
-        var: Optional[str]
-        val: Optional[Any]
-        ex: Optional[Exception]
-        cls_name: Optional[str]
-        cls_mthd: Optional[str]
-        err_code: Optional[str]
-        mthd_rslt_type: Optional[MethodResultType]
-        
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
+            
     Provides:
 
     Super Class:
-        NodeNullException
+        ChartValidationRequestNullException
     """
-    MSG = "DossierNode cannot be null."
-    ERR_CODE = "DOSSIER_NODE_NULL_ERROR"
+    MSG = "TokenChartValidationRequest cannot be null."
+    ERR_CODE = "TOKEN_CHART_VALIDATION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

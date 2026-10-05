@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import ManeuverValidationResponse, ValidationResult
 from domain import Maneuver, ManeuverBlueprint
-from err import ManeuverValidationResponderException, ManeuverValidationResponseWrapperException, EmptyManeuverCarrierException
+from err import ManeuverValidationResponderException, ManeuverValidationResponseWrapperException, ManeuverCarrierEmptyException
 from exchange import (
     ManeuverValidationResponder, ModelValidationResponseWrapper, ManeuverValidationRequest
 )
@@ -108,11 +108,11 @@ class ManeuverValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=ManeuverValidationResponderException.MSG,
                     err_code=ManeuverValidationResponderException.ERR_CODE,
-                    ex=EmptyManeuverCarrierException(
+                    ex=ManeuverCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyManeuverCarrierException.MSG,
-                        err_code=EmptyManeuverCarrierException.ERR_CODE,
+                        msg=ManeuverCarrierEmptyException.MSG,
+                        err_code=ManeuverCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
@@ -164,11 +164,11 @@ class ManeuverValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=ManeuverValidationResponderException.MSG,
                     err_code=ManeuverValidationResponderException.ERR_CODE,
-                    ex=EmptyManeuverCarrierException(
+                    ex=ManeuverCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyManeuverCarrierException.MSG,
-                        err_code=EmptyManeuverCarrierException.ERR_CODE,
+                        msg=ManeuverCarrierEmptyException.MSG,
+                        err_code=ManeuverCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

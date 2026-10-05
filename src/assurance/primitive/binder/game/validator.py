@@ -19,8 +19,8 @@ from domain import (
     Game, PlayerArchetypeBinder, GameValidationRequest, Player, PlayerValidationRequest
 )
 from err import (
-    DuplicatePlayerException, EmptyGameCarrierException, EmptyItemException,
-    EmptyPlayerCarrierException, GameColorNullException,
+    DuplicatePlayerException, GameCarrierEmptyException, EmptyItemException,
+    PlayerCarrierEmptyException, GameColorNullException,
     GamePlayerArchetypeBinderNullException, GamePlayerColorBinderOverCapacityException,
     GamePlayerColorBinderValidatorException
 )
@@ -144,11 +144,11 @@ class GamePlayerColorBinderValidator:
                     cls_name=self.__class__.__name__,
                     msg=GamePlayerColorBinderValidatorException.MSG,
                     err_code=GamePlayerColorBinderValidatorException.ERR_CODE,
-                    ex=EmptyGameCarrierException(
+                    ex=GameCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyGameCarrierException.MSG,
-                        err_code=EmptyGameCarrierException.ERR_CODE,
+                        msg=GameCarrierEmptyException.MSG,
+                        err_code=GameCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
@@ -236,11 +236,11 @@ class GamePlayerColorBinderValidator:
                         cls_name=self.__class__.__name__,
                         msg=GamePlayerColorBinderValidatorException.MSG,
                         err_code=GamePlayerColorBinderValidatorException.ERR_CODE,
-                        ex=EmptyPlayerCarrierException(
+                        ex=PlayerCarrierEmptyException(
                             cls_mthd=method,
                             cls_name=self.__class__.__name__,
-                            msg=EmptyPlayerCarrierException.MSG,
-                            err_code=EmptyPlayerCarrierException.ERR_CODE,
+                            msg=PlayerCarrierEmptyException.MSG,
+                            err_code=PlayerCarrierEmptyException.ERR_CODE,
                         ),
                     )
                 )

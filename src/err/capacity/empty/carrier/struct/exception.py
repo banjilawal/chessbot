@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import EmptyCarrierException
+from err import CarrierEmptyException
 
 __all__ = [
     # ======================# STRUCT_CARRIER_EMPTY_ERROR #======================#
-    "EmptyStructCarrierException",
+    "StructCarrierEmptyException",
 ]
 
 # ======================# STRUCT_CARRIER_EMPTY_ERROR #======================#
-class EmptyStructCarrierException(EmptyCarrierException):
+class StructCarrierEmptyException(CarrierEmptyException):
     """
     Role:
         - Error Tracing

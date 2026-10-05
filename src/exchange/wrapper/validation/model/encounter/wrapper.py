@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import AttackValidationResponse, ValidationResult
 from domain import Encounter, AttackBlueprint
-from err import AttackValidationResponderException, AttackValidationResponseWrapperException, EmptyAttackCarrierException
+from err import AttackValidationResponderException, AttackValidationResponseWrapperException, EncounterCarrierEmptyException
 from exchange import (
     AttackValidationResponder, ModelValidationResponseWrapper, AttackValidationRequest
 )
@@ -108,11 +108,11 @@ class EncounterValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=AttackValidationResponderException.MSG,
                     err_code=AttackValidationResponderException.ERR_CODE,
-                    ex=EmptyAttackCarrierException(
+                    ex=EncounterCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyAttackCarrierException.MSG,
-                        err_code=EmptyAttackCarrierException.ERR_CODE,
+                        msg=EncounterCarrierEmptyException.MSG,
+                        err_code=EncounterCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
@@ -164,11 +164,11 @@ class EncounterValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=AttackValidationResponderException.MSG,
                     err_code=AttackValidationResponderException.ERR_CODE,
-                    ex=EmptyAttackCarrierException(
+                    ex=EncounterCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyAttackCarrierException.MSG,
-                        err_code=EmptyAttackCarrierException.ERR_CODE,
+                        msg=EncounterCarrierEmptyException.MSG,
+                        err_code=EncounterCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

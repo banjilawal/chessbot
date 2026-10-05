@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import RankValidationResponse, ValidationResult
 from domain import Rank, RankBlueprint
-from err import RankValidationResponderException, RankValidationResponseWrapperException, EmptyRankCarrierException
+from err import RankValidationResponderException, RankValidationResponseWrapperException, RankCarrierEmptyException
 from exchange import (
     RankValidationResponder, ModelValidationResponseWrapper, RankValidationRequest
 )
@@ -108,11 +108,11 @@ class RankValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=RankValidationResponderException.MSG,
                     err_code=RankValidationResponderException.ERR_CODE,
-                    ex=EmptyRankCarrierException(
+                    ex=RankCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyRankCarrierException.MSG,
-                        err_code=EmptyRankCarrierException.ERR_CODE,
+                        msg=RankCarrierEmptyException.MSG,
+                        err_code=RankCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
@@ -164,11 +164,11 @@ class RankValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=RankValidationResponderException.MSG,
                     err_code=RankValidationResponderException.ERR_CODE,
-                    ex=EmptyRankCarrierException(
+                    ex=RankCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyRankCarrierException.MSG,
-                        err_code=EmptyRankCarrierException.ERR_CODE,
+                        msg=RankCarrierEmptyException.MSG,
+                        err_code=RankCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

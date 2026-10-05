@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import TokenChartValidationResponse, ValidationResult
 from domain import Token, TokenBlueprint, TokenChart, TokenChartBlueprint
-from err import TokenChartValidationResponderException, TokenChartValidationResponseWrapperException, EmptyTokenCarrierException
+from err import TokenChartValidationResponderException, TokenChartValidationResponseWrapperException, TokenCarrierEmptyException
 from exchange import (
     TokenChartValidationResponder, ChartValidationResponseWrapper, TokenChartValidationRequest
 )
@@ -108,11 +108,11 @@ class TokenChartValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=TokenChartValidationResponderException.MSG,
                     err_code=TokenChartValidationResponderException.ERR_CODE,
-                    ex=EmptyTokenCarrierException(
+                    ex=TokenCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyTokenCarrierException.MSG,
-                        err_code=EmptyTokenCarrierException.ERR_CODE,
+                        msg=TokenCarrierEmptyException.MSG,
+                        err_code=TokenCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
@@ -164,11 +164,11 @@ class TokenChartValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=TokenChartValidationResponderException.MSG,
                     err_code=TokenChartValidationResponderException.ERR_CODE,
-                    ex=EmptyTokenCarrierException(
+                    ex=TokenCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyTokenCarrierException.MSG,
-                        err_code=EmptyTokenCarrierException.ERR_CODE,
+                        msg=TokenCarrierEmptyException.MSG,
+                        err_code=TokenCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

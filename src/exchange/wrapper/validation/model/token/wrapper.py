@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import TokenValidationResponse, ValidationResult
 from domain import Token, TokenBlueprint
-from err import TokenValidationResponderException, TokenValidationResponseWrapperException, EmptyTokenCarrierException
+from err import TokenValidationResponderException, TokenValidationResponseWrapperException, TokenCarrierEmptyException
 from exchange import (
     TokenValidationResponder, ModelValidationResponseWrapper, TokenValidationRequest
 )
@@ -108,11 +108,11 @@ class TokenValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=TokenValidationResponderException.MSG,
                     err_code=TokenValidationResponderException.ERR_CODE,
-                    ex=EmptyTokenCarrierException(
+                    ex=TokenCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyTokenCarrierException.MSG,
-                        err_code=EmptyTokenCarrierException.ERR_CODE,
+                        msg=TokenCarrierEmptyException.MSG,
+                        err_code=TokenCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
@@ -164,11 +164,11 @@ class TokenValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=TokenValidationResponderException.MSG,
                     err_code=TokenValidationResponderException.ERR_CODE,
-                    ex=EmptyTokenCarrierException(
+                    ex=TokenCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyTokenCarrierException.MSG,
-                        err_code=EmptyTokenCarrierException.ERR_CODE,
+                        msg=TokenCarrierEmptyException.MSG,
+                        err_code=TokenCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

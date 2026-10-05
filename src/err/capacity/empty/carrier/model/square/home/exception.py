@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import EmptySquareCarrierException
+from err import SquareCarrierEmptyException
 
 __all__ = [
     # ======================# HOME_SQUARE_CARRIER_EMPTY_ERROR #======================#
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# HOME_SQUARE_CARRIER_EMPTY_ERROR #======================#
-class EmptyHomeSquareCarrierException(EmptySquareCarrierException):
+class EmptyHomeSquareCarrierException(SquareCarrierEmptyException):
     """
     Role:
         - Error Tracing

@@ -15,4 +15,4 @@ from .combatant import *
 from .mate import *
 
 # Modules
-from .exception import EmptyAttackCarrierException
+from .exception import EncounterCarrierEmptyException

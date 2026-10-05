@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import ScalarValidationResponse, ValidationResult
 from domain import Scalar, ScalarBlueprint
-from err import ScalarValidationResponderException, ScalarValidationResponseWrapperException, EmptyScalarCarrierException
+from err import ScalarValidationResponderException, ScalarValidationResponseWrapperException, ScalarCarrierEmptyException
 from exchange import (
     ScalarValidationResponder, ModelValidationResponseWrapper, ScalarValidationRequest
 )
@@ -108,11 +108,11 @@ class ScalarValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=ScalarValidationResponderException.MSG,
                     err_code=ScalarValidationResponderException.ERR_CODE,
-                    ex=EmptyScalarCarrierException(
+                    ex=ScalarCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyScalarCarrierException.MSG,
-                        err_code=EmptyScalarCarrierException.ERR_CODE,
+                        msg=ScalarCarrierEmptyException.MSG,
+                        err_code=ScalarCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
@@ -164,11 +164,11 @@ class ScalarValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=ScalarValidationResponderException.MSG,
                     err_code=ScalarValidationResponderException.ERR_CODE,
-                    ex=EmptyScalarCarrierException(
+                    ex=ScalarCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyScalarCarrierException.MSG,
-                        err_code=EmptyScalarCarrierException.ERR_CODE,
+                        msg=ScalarCarrierEmptyException.MSG,
+                        err_code=ScalarCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

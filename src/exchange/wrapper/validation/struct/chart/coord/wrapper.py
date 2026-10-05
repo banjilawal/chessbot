@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import CoordChartValidationResponse, ValidationResult
 from domain import Coord, CoordBlueprint, CoordChart, CoordChartBlueprint
-from err import CoordChartValidationResponderException, CoordChartValidationResponseWrapperException, EmptyCoordCarrierException
+from err import CoordChartValidationResponderException, CoordChartValidationResponseWrapperException, CoordCarrierEmptyException
 from exchange import (
     CoordChartValidationResponder, ChartValidationResponseWrapper, CoordChartValidationRequest
 )
@@ -108,11 +108,11 @@ class CoordChartValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=CoordChartValidationResponderException.MSG,
                     err_code=CoordChartValidationResponderException.ERR_CODE,
-                    ex=EmptyCoordCarrierException(
+                    ex=CoordCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyCoordCarrierException.MSG,
-                        err_code=EmptyCoordCarrierException.ERR_CODE,
+                        msg=CoordCarrierEmptyException.MSG,
+                        err_code=CoordCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
@@ -164,11 +164,11 @@ class CoordChartValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=CoordChartValidationResponderException.MSG,
                     err_code=CoordChartValidationResponderException.ERR_CODE,
-                    ex=EmptyCoordCarrierException(
+                    ex=CoordCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyCoordCarrierException.MSG,
-                        err_code=EmptyCoordCarrierException.ERR_CODE,
+                        msg=CoordCarrierEmptyException.MSG,
+                        err_code=CoordCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

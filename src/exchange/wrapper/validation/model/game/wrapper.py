@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import GameValidationResponse, ValidationResult
 from domain import Game, GameBlueprint
-from err import GameValidationResponderException, GameValidationResponseWrapperException, EmptyGameCarrierException
+from err import GameValidationResponderException, GameValidationResponseWrapperException, GameCarrierEmptyException
 from exchange import (
     GameValidationResponder, ModelValidationResponseWrapper, GameValidationRequest
 )
@@ -108,11 +108,11 @@ class GameValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=GameValidationResponderException.MSG,
                     err_code=GameValidationResponderException.ERR_CODE,
-                    ex=EmptyGameCarrierException(
+                    ex=GameCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyGameCarrierException.MSG,
-                        err_code=EmptyGameCarrierException.ERR_CODE,
+                        msg=GameCarrierEmptyException.MSG,
+                        err_code=GameCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
@@ -164,11 +164,11 @@ class GameValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=GameValidationResponderException.MSG,
                     err_code=GameValidationResponderException.ERR_CODE,
-                    ex=EmptyGameCarrierException(
+                    ex=GameCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyGameCarrierException.MSG,
-                        err_code=EmptyGameCarrierException.ERR_CODE,
+                        msg=GameCarrierEmptyException.MSG,
+                        err_code=GameCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

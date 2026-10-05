@@ -18,7 +18,7 @@ from domain import (
     Token, TokenValidationRequest
 )
 from err import (
-    EmptyManeuverCarrierException, EmptyPathCarrierException, EmptyTokenCarrierException,
+    ManeuverCarrierEmptyException, PathCarrierEmptyException, TokenCarrierEmptyException,
     ManeuverValidationRequestNullException, ManeuverValidatorException
 )
 
@@ -134,11 +134,11 @@ class ManeuverValidator(ModelValidator[Maneuver]):
                     cls_name=self.__class__.__name__,
                     msg=ManeuverValidatorException.MSG,
                     err_code=ManeuverValidatorException.ERR_CODE,
-                    ex=EmptyManeuverCarrierException(
+                    ex=ManeuverCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyManeuverCarrierException.MSG,
-                        err_code=EmptyManeuverCarrierException.ERR_CODE,
+                        msg=ManeuverCarrierEmptyException.MSG,
+                        err_code=ManeuverCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
@@ -189,11 +189,11 @@ class ManeuverValidator(ModelValidator[Maneuver]):
                     cls_name=self.__class__.__name__,
                     msg=ManeuverValidatorException.MSG,
                     err_code=ManeuverValidatorException.ERR_CODE,
-                    ex=EmptyTokenCarrierException(
+                    ex=TokenCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyTokenCarrierException.MSG,
-                        err_code=EmptyTokenCarrierException.ERR_CODE,
+                        msg=TokenCarrierEmptyException.MSG,
+                        err_code=TokenCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
@@ -230,11 +230,11 @@ class ManeuverValidator(ModelValidator[Maneuver]):
                     cls_name=self.__class__.__name__,
                     msg=ManeuverValidatorException.MSG,
                     err_code=ManeuverValidatorException.ERR_CODE,
-                    ex=EmptyPathCarrierException(
+                    ex=PathCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyPathCarrierException.MSG,
-                        err_code=EmptyPathCarrierException.ERR_CODE,
+                        msg=PathCarrierEmptyException.MSG,
+                        err_code=PathCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

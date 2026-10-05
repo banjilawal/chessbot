@@ -15,4 +15,4 @@ from .node import *
 from .register import *
 
 # Modules
-from .exception import EmptyStructCarrierException
+from .exception import StructCarrierEmptyException

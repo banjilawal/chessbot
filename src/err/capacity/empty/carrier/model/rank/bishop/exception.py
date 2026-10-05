@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import EmptyRankCarrierException
+from err import RankCarrierEmptyException
 
 __all__ = [
     # ======================# BISHOP_CARRIER_EMPTY_ERROR #======================#
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# BISHOP_CARRIER_EMPTY_ERROR #======================#
-class EmptyBishopCarrierException(EmptyRankCarrierException):
+class EmptyBishopCarrierException(RankCarrierEmptyException):
     """
     Role:
         - Error Tracing

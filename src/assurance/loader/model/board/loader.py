@@ -15,7 +15,7 @@ from artifcat import ValidationResult
 from assurance import ModelLoader, BoardValidatorToolkit
 from domain import Board, BoardPrimeExtract
 from err import (
-    EmptyBoardCarrierException, BoardLoaderException, BoardValidationRequestNullException
+    BoardCarrierEmptyException, BoardLoaderException, BoardValidationRequestNullException
 )
 from exchange import BoardValidationRequest
 from transit import BoardCarrier
@@ -135,11 +135,11 @@ class BoardLoader(ModelLoader[Board]):
                     cls_name=self.__class__.__name__,
                     msg=BoardLoaderException.MSG,
                     err_code=BoardLoaderException.ERR_CODE,
-                    ex=EmptyBoardCarrierException(
+                    ex=BoardCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyBoardCarrierException.MSG,
-                        err_code=EmptyBoardCarrierException.ERR_CODE,
+                        msg=BoardCarrierEmptyException.MSG,
+                        err_code=BoardCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

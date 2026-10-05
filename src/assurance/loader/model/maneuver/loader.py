@@ -15,7 +15,7 @@ from artifcat import ValidationResult
 from assurance import ModelLoader, ManeuverValidatorToolkit
 from domain import Maneuver, ManeuverPrimeExtract
 from err import (
-    EmptyManeuverCarrierException, ManeuverLoaderException, ManeuverValidationRequestNullException
+    ManeuverCarrierEmptyException, ManeuverLoaderException, ManeuverValidationRequestNullException
 )
 from exchange import ManeuverValidationRequest
 from transit import ManeuverCarrier
@@ -135,11 +135,11 @@ class ManeuverLoader(ModelLoader[Maneuver]):
                     cls_name=self.__class__.__name__,
                     msg=ManeuverLoaderException.MSG,
                     err_code=ManeuverLoaderException.ERR_CODE,
-                    ex=EmptyManeuverCarrierException(
+                    ex=ManeuverCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyManeuverCarrierException.MSG,
-                        err_code=EmptyManeuverCarrierException.ERR_CODE,
+                        msg=ManeuverCarrierEmptyException.MSG,
+                        err_code=ManeuverCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

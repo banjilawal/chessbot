@@ -15,7 +15,7 @@ from artifcat import ValidationResult
 from assurance import ModelLoader, GameValidatorToolkit
 from domain import Game, GamePrimeExtract
 from err import (
-    EmptyGameCarrierException, GameLoaderException, GameValidationRequestNullException
+    GameCarrierEmptyException, GameLoaderException, GameValidationRequestNullException
 )
 from exchange import GameValidationRequest
 from transit import GameCarrier
@@ -135,11 +135,11 @@ class GameLoader(ModelLoader[Game]):
                     cls_name=self.__class__.__name__,
                     msg=GameLoaderException.MSG,
                     err_code=GameLoaderException.ERR_CODE,
-                    ex=EmptyGameCarrierException(
+                    ex=GameCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyGameCarrierException.MSG,
-                        err_code=EmptyGameCarrierException.ERR_CODE,
+                        msg=GameCarrierEmptyException.MSG,
+                        err_code=GameCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

@@ -15,7 +15,7 @@ from artifcat import ValidationResult
 from assurance import ModelValidator, PathValidatorToolkit
 from domain import Path, PathBlueprint, PathValidationRequest, SquareRegister, SquareRegisterValidationRequest
 from err import (
-    EmptyPathCarrierException, EmptySquareRegisterCarrierException, PathValidationRequestNullException,
+    PathCarrierEmptyException, EmptySquareRegisterCarrierException, PathValidationRequestNullException,
     PathValidatorException
 )
 from transit import PathCarrier, SquareRegisterCarrier
@@ -129,11 +129,11 @@ class PathValidator(ModelValidator[Path]):
                     cls_name=self.__class__.__name__,
                     msg=PathValidatorException.MSG,
                     err_code=PathValidatorException.ERR_CODE,
-                    ex=EmptyPathCarrierException(
+                    ex=PathCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyPathCarrierException.MSG,
-                        err_code=EmptyPathCarrierException.ERR_CODE,
+                        msg=PathCarrierEmptyException.MSG,
+                        err_code=PathCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

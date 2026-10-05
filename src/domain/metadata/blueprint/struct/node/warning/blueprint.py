@@ -1,4 +1,4 @@
-# src/domain/metadata/blueprint/struct/node/warning.blueprint.py
+# src/domain/metadata/blueprint/struct/node/warning/blueprint.py
 
 """
 Module: domain.metadata.blueprint.struct.node.warning.blueprint
@@ -11,67 +11,75 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import Warning, NodeBlueprint, WarningNode
-from err import WarningNodeNullException
+from domain import EncounterWarning, NodeBlueprint, EncounterWarningNode
+from err import EncounterWarningNodeNullException
 
 
-class EncounterWarningNodeBlueprint(NodeBlueprint[WarningNode]):
+class EncounterWarningNodeBlueprint(NodeBlueprint[EncounterWarningNode]):
     """
      Role:
         1.  Metadata
 
      Responsibilities:
-         1.  Provide attributes for hydrating a WarningNode.
+         1.  Provide attributes for hydrating a EncounterWarningNode.
 
      Attributes:
-        victim: Warning
-        attacker: Warning
-        Optional[Type[WarningNode]]
-        domain_null_exception: Optional[WarningNodeNullException]
+        payload: Optional[EncounterWarning]
+        next: Optional[EncounterWarning]
+        Optional[Type[EncounterWarningNode]]
+        domain_null_exception: Optional[EncounterWarningNodeNullException]
 
      Provides:
 
      Super Class:
         NodeBlueprint
      """
-    _victim: Warning
-    _attacker: Warning
+    _payload: Optional[EncounterWarning]
+    _next: Optional[EncounterWarning]
+    _previous: Optional[EncounterWarning]
     
     def __init__(
             self,
-            victim: Warning,
-            attacker: Warning,
-            domain_class: Optional[Type[WarningNode]] | None = None,
-            domain_null_exception: Optional[WarningNodeNullException] | None = None,
+            payload: Optional[EncounterWarning] | None = None,
+            next: Optional[EncounterWarning] | None = None,
+            previous: Optional[EncounterWarning] | None = None,
+            domain_class: Optional[Type[EncounterWarningNode]] | None = None,
+            domain_null_exception: Optional[EncounterWarningNodeNullException] | None = None,
     ):
         """
         Args:
-            victim: Warning
-            attacker: Warning
-            Optional[Type[WarningNode]]
-            domain_null_exception: Optional[WarningNodeNullException]
+            payload: Optional[EncounterWarning]
+            next: Optional[EncounterWarning]
+            previous: Optional[EncounterWarning]
+            Optional[Type[EncounterWarningNode]]
+            domain_null_exception: Optional[EncounterWarningNodeNullException]
         """
         super().__init__(
-            domain_class=domain_class or WarningNode,
-            domain_null_exception=domain_null_exception or WarningNodeNullException(),
+            domain_class=domain_class or EncounterWarningNode,
+            domain_null_exception=domain_null_exception or EncounterWarningNodeNullException(),
         )
-        self._victim = victim
-        self._attacker = attacker
+        self._payload = payload
+        self._next = next
+        self._previous = previous
         
     @property
-    def victim(self) -> Warning:
-        return self._victim
+    def payload(self) -> Optional[EncounterWarning]:
+        return self._payload
     
     @property
-    def attacker(self) -> Warning:
-        return self._attacker
+    def next(self) -> Optional[EncounterWarning]:
+        return self._next
     
     @property
-    def domain_class(self) -> Type[WarningNode]:
-        return cast(Type[WarningNode], super().domain_class)
+    def previous(self) -> Optional[EncounterWarning]:
+        return self._previous
     
     @property
-    def domain_null_exception(self) -> WarningNodeNullException:
-        return cast(WarningNodeNullException, super().domain_null_exception)
+    def domain_class(self) -> Type[EncounterWarningNode]:
+        return cast(Type[EncounterWarningNode], super().domain_class)
+    
+    @property
+    def domain_null_exception(self) -> EncounterWarningNodeNullException:
+        return cast(EncounterWarningNodeNullException, super().domain_null_exception)
     
     

@@ -16,11 +16,11 @@ from err import ModelValidationRequestNullException
 
 __all__ = [
     # ======================# ATTACK_VALIDATION_REQUEST_NULL_ERROR #======================#
-    "AttackValidationRequestNullException",
+    "EncounterValidationRequestNullException",
 ]
 
 # ======================# ATTACK_VALIDATION_REQUEST_NULL_ERROR #======================#
-class AttackValidationRequestNullException(ModelValidationRequestNullException):
+class EncounterValidationRequestNullException(ModelValidationRequestNullException):
     """
     Role:
         - Error Tracing

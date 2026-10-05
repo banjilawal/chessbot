@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import VectorRegisterValidationResponse, ValidationResult
 from domain import Vector, VectorBlueprint, VectorRegister, VectorRegisterBlueprint
-from err import VectorRegisterValidationResponderException, VectorRegisterValidationResponseWrapperException, EmptyVectorCarrierException
+from err import VectorRegisterValidationResponderException, VectorRegisterValidationResponseWrapperException, VectorCarrierEmptyException
 from exchange import (
     VectorRegisterValidationResponder, RegisterValidationResponseWrapper, VectorRegisterValidationRequest
 )
@@ -108,11 +108,11 @@ class VectorRegisterValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=VectorRegisterValidationResponderException.MSG,
                     err_code=VectorRegisterValidationResponderException.ERR_CODE,
-                    ex=EmptyVectorCarrierException(
+                    ex=VectorCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyVectorCarrierException.MSG,
-                        err_code=EmptyVectorCarrierException.ERR_CODE,
+                        msg=VectorCarrierEmptyException.MSG,
+                        err_code=VectorCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
@@ -164,11 +164,11 @@ class VectorRegisterValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=VectorRegisterValidationResponderException.MSG,
                     err_code=VectorRegisterValidationResponderException.ERR_CODE,
-                    ex=EmptyVectorCarrierException(
+                    ex=VectorCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyVectorCarrierException.MSG,
-                        err_code=EmptyVectorCarrierException.ERR_CODE,
+                        msg=VectorCarrierEmptyException.MSG,
+                        err_code=VectorCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

@@ -10,6 +10,8 @@ version: 0.0.2
 # =========== ASSURANCE.LOAD.STRUCT PACKAGE ===========#
 
 # Packages
+from .chart import *
+from .node import *
 from .register import *
 
 # Module

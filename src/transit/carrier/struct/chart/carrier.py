@@ -13,7 +13,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar, cast
 
-from domain import Chart, ParticipantChartBlueprint
+from domain import Chart, ChartBlueprint
 from transit import StructCarrier
 
 T = TypeVar("T", bound="Chart")
@@ -29,11 +29,11 @@ class ChartCarrier(StructCarrier[T], ABC, Generic[T]):
 
     Attributes:
         model: Optional[T]
-        blueprint: Optional[ParticipantChartBlueprint[T]]
-        entity: [T | ParticipantChartBlueprint[T]]
+        blueprint: Optional[ChartBlueprint[T]]
+        entity: [T | ChartBlueprint[T]]
 
     Provides:
-        -   def extract_blueprint() -> Optional[ParticipantChartBlueprint[T]]
+        -   def extract_blueprint() -> Optional[ChartBlueprint[T]]
 
     Super Class:
         StructCarrier
@@ -42,27 +42,27 @@ class ChartCarrier(StructCarrier[T], ABC, Generic[T]):
     def __init__(
             self,
             model: Optional[T] | None = None,
-            blueprint: Optional[ParticipantChartBlueprint[T]] | None = None,
+            blueprint: Optional[ChartBlueprint[T]] | None = None,
     ):
         """
         Args:
             model: Optional[T]
-            blueprint: Optional[ParticipantChartBlueprint[T]]
+            blueprint: Optional[ChartBlueprint[T]]
         """
         super().__init__(model=model, blueprint=blueprint)
     
     @property
     @abstractmethod
-    def entity(self) -> Optional[T | ParticipantChartBlueprint[T]]:
+    def entity(self) -> Optional[T | ChartBlueprint[T]]:
         entity = super().entity
         if entity is None:
             return None
         if self.has_model:
             return cast(T, entity)
-        return cast(ParticipantChartBlueprint[T], super().entity)
+        return cast(ChartBlueprint[T], super().entity)
     
     @abstractmethod
-    def extract_blueprint(self) -> Optional[ParticipantChartBlueprint[T]]:
+    def extract_blueprint(self) -> Optional[ChartBlueprint[T]]:
         pass
 
 

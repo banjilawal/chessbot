@@ -15,7 +15,8 @@ from artifcat import ValidationResult
 from assurance import ModelLoader, EncounterValidatorToolkit
 from domain import Encounter, EncounterPrimeExtract
 from err import (
-    EmptyEncounterCarrierException, EncounterLoaderException, EncounterValidationRequestNullException
+    EncounterCarrierEmptyException, EncounterLoaderException,
+    EncounterValidationRequestNullException
 )
 from exchange import EncounterValidationRequest
 from transit import EncounterCarrier
@@ -135,11 +136,11 @@ class EncounterLoader(ModelLoader[Encounter]):
                     cls_name=self.__class__.__name__,
                     msg=EncounterLoaderException.MSG,
                     err_code=EncounterLoaderException.ERR_CODE,
-                    ex=EmptyEncounterCarrierException(
+                    ex=EncounterCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyEncounterCarrierException.MSG,
-                        err_code=EmptyEncounterCarrierException.ERR_CODE,
+                        msg=EncounterCarrierEmptyException.MSG,
+                        err_code=EncounterCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

@@ -15,7 +15,7 @@ from artifcat import ValidationResult
 from assurance import ModelLoader, RankValidatorToolkit
 from domain import Rank, RankPrimeExtract
 from err import (
-    EmptyRankCarrierException, RankLoaderException, RankValidationRequestNullException
+    RankCarrierEmptyException, RankLoaderException, RankValidationRequestNullException
 )
 from exchange import RankValidationRequest
 from transit import RankCarrier
@@ -135,11 +135,11 @@ class RankLoader(ModelLoader[Rank]):
                     cls_name=self.__class__.__name__,
                     msg=RankLoaderException.MSG,
                     err_code=RankLoaderException.ERR_CODE,
-                    ex=EmptyRankCarrierException(
+                    ex=RankCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyRankCarrierException.MSG,
-                        err_code=EmptyRankCarrierException.ERR_CODE,
+                        msg=RankCarrierEmptyException.MSG,
+                        err_code=RankCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

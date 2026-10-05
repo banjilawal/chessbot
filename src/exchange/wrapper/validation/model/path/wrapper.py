@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import PathValidationResponse, ValidationResult
 from domain import Path, PathBlueprint
-from err import PathValidationResponderException, PathValidationResponseWrapperException, EmptyPathCarrierException
+from err import PathValidationResponderException, PathValidationResponseWrapperException, PathCarrierEmptyException
 from exchange import (
     PathValidationResponder, ModelValidationResponseWrapper, PathValidationRequest
 )
@@ -108,11 +108,11 @@ class PathValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=PathValidationResponderException.MSG,
                     err_code=PathValidationResponderException.ERR_CODE,
-                    ex=EmptyPathCarrierException(
+                    ex=PathCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyPathCarrierException.MSG,
-                        err_code=EmptyPathCarrierException.ERR_CODE,
+                        msg=PathCarrierEmptyException.MSG,
+                        err_code=PathCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
@@ -164,11 +164,11 @@ class PathValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=PathValidationResponderException.MSG,
                     err_code=PathValidationResponderException.ERR_CODE,
-                    ex=EmptyPathCarrierException(
+                    ex=PathCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyPathCarrierException.MSG,
-                        err_code=EmptyPathCarrierException.ERR_CODE,
+                        msg=PathCarrierEmptyException.MSG,
+                        err_code=PathCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

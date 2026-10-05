@@ -38,7 +38,7 @@ class TokenChartValidator:
     Provides:
         -   def execute(
                     candidate: Any
-            ) -> ValidationResult[EncounterParticipantChart]:
+            ) -> ValidationResult[EncounterChart]:
 
     Super Class:
         VerificationProducer
@@ -77,12 +77,12 @@ class TokenChartValidator:
                     -   The Loader fails.
                     -   Token, Formation, Deployment, id, or HomeSquare are flagged.
                     -   The position_validator fails.
-            2.  Otherwise, send a EncounterParticipantChart in the success result.
+            2.  Otherwise, send a EncounterChart in the success result.
         Args:
             victim: Token
             attacker: Token
         Returns:
-           ValidationResult[EncounterParticipantChart]
+           ValidationResult[EncounterChart]
         Raises:
             EncounterParticipantCertifierException
         """

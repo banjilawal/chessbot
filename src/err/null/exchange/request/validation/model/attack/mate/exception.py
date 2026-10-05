@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import AttackValidationRequestNullException
+from err import EncounterValidationRequestNullException
 
 __all__ = [
     # ======================# CHECKMATE_ATTACK_VALIDATION_REQUEST_NULL_ERROR #======================#
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# CHECKMATE_ATTACK_VALIDATION_REQUEST_NULL_ERROR #======================#
-class CheckCheckmateAttackValidationRequestNullException(AttackValidationRequestNullException):
+class CheckCheckmateAttackValidationRequestNullException(EncounterValidationRequestNullException):
     """
     Role:
         - Error Tracing

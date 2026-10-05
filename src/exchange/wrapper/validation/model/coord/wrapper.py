@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import CoordValidationResponse, ValidationResult
 from domain import Coord, CoordBlueprint
-from err import CoordValidationResponderException, CoordValidationResponseWrapperException, EmptyCoordCarrierException
+from err import CoordValidationResponderException, CoordValidationResponseWrapperException, CoordCarrierEmptyException
 from exchange import (
     CoordValidationResponder, ModelValidationResponseWrapper, CoordValidationRequest
 )
@@ -108,11 +108,11 @@ class CoordValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=CoordValidationResponderException.MSG,
                     err_code=CoordValidationResponderException.ERR_CODE,
-                    ex=EmptyCoordCarrierException(
+                    ex=CoordCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyCoordCarrierException.MSG,
-                        err_code=EmptyCoordCarrierException.ERR_CODE,
+                        msg=CoordCarrierEmptyException.MSG,
+                        err_code=CoordCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
@@ -164,11 +164,11 @@ class CoordValidationResponseWrapper(
                     cls_name=self.__class__.__name__,
                     msg=CoordValidationResponderException.MSG,
                     err_code=CoordValidationResponderException.ERR_CODE,
-                    ex=EmptyCoordCarrierException(
+                    ex=CoordCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyCoordCarrierException.MSG,
-                        err_code=EmptyCoordCarrierException.ERR_CODE,
+                        msg=CoordCarrierEmptyException.MSG,
+                        err_code=CoordCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
