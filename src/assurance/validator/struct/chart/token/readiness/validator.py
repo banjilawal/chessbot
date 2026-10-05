@@ -1,7 +1,7 @@
-# src/assurance/validator/validator/root/encounter/readiness/validator.py
+# src/assurance/validator/struct/chart/readiness/validator.py
 
 """
-Module: assurance.validator.root.encounter.readiness.validator
+Module: assurance.validator.struct.chart.readiness.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

@@ -12,14 +12,13 @@ from __future__ import annotations
 from typing import List, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import (
-    EncounterParticipants, ParticipantReadinessValidator, TokenValidatorToolkit
-)
-from domain import Token
+from assurance import ParticipantReadinessValidator, TokenValidatorToolkit
+from domain import Token, TokenChart
 from err import (
-    EncounterParticipantValidatorException, FriendlyFireAttackException,
-    TokenAttackingItselfException, VictimNeverDeployedException
+    FriendlyFireAttackException, TokenAttackingItselfException,
+    TokenChartValidatorException, VictimNeverDeployedException
 )
+
 from util import LoggingLevelRouter
 
 
@@ -67,7 +66,7 @@ class TokenChartValidator:
             self,
             victim: Token,
             attacker: Token
-    ) -> ValidationResult[EncounterParticipants]:
+    ) -> ValidationResult[TokenChart]:
         """
         Assure a candidate's properties are reference for a Encounter
 
@@ -92,11 +91,11 @@ class TokenChartValidator:
         if victim == attacker:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                EncounterParticipantValidatorException(
+                TokenChartValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=EncounterParticipantValidatorException.MSG,
-                    err_code=EncounterParticipantValidatorException.ERR_CODE,
+                    msg=TokenChartValidatorException.MSG,
+                    err_code=TokenChartValidatorException.ERR_CODE,
                     ex=TokenAttackingItselfException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -109,11 +108,11 @@ class TokenChartValidator:
         if victim.is_friend(attacker):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                EncounterParticipantValidatorException(
+                TokenChartValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=EncounterParticipantValidatorException.MSG,
-                    err_code=EncounterParticipantValidatorException.ERR_CODE,
+                    msg=TokenChartValidatorException.MSG,
+                    err_code=TokenChartValidatorException.ERR_CODE,
                     ex=FriendlyFireAttackException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -126,11 +125,11 @@ class TokenChartValidator:
         if victim.has_never_been_deployed:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                EncounterParticipantValidatorException(
+                TokenChartValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=EncounterParticipantValidatorException.MSG,
-                    err_code=EncounterParticipantValidatorException.ERR_CODE,
+                    msg=TokenChartValidatorException.MSG,
+                    err_code=TokenChartValidatorException.ERR_CODE,
                     ex=VictimNeverDeployedException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -146,17 +145,17 @@ class TokenChartValidator:
             if readiness_validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    EncounterParticipantValidatorException(
+                    TokenChartValidatorException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EncounterParticipantValidatorException.MSG,
-                        err_code=EncounterParticipantValidatorException.ERR_CODE,
+                        msg=TokenChartValidatorException.MSG,
+                        err_code=TokenChartValidatorException.ERR_CODE,
                         ex=readiness_validation.exception,
                     )
                 )
             participants.append(cast(Token, readiness_validation.payload))
         # --- Send the work product. ---#
-        participant_chart = EncounterParticipants(
+        participant_chart = TokenChart(
             victim=participants[0],
             attacker=participants[1],
         )

@@ -10,7 +10,8 @@ version: 0.0.2
 # =========== ASSURANCE.ROUTER PACKAGE ===========#
 
 # Packages
+from .encounter import *
 from .token import *
 
 # Module
-from .router import SubclassValidationRouter
+from .router import ValidationIntraRouter

@@ -13,13 +13,13 @@ from assurance import EncounterSafePropertyTable
 from domain import EncounterPrimeExtract
 
 
-class EncounterProductEnvelope:
+class RootEncounterEnvelope:
     """
     Role
         - Data Holder
 
     Responsibilities:
-        1.  Stores EncounterProductEnvelopeGenerator success data.
+        1.  Stores RootEncounterEnvelopeGenerator success data.
 
     Attributes:
         prime_extract: EncounterPrimeExtract

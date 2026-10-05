@@ -9,24 +9,11 @@ version: 1.0.2
 
 from __future__ import annotations
 
-from typing import Optional, cast
-
-from artifcat import ValidationResult
-from assurance import (
-    CombatantTokenValidator, KingTokenValidator, PawnTokenValidator,
-    TokenProductEnvelope, TokenValidatorToolkit
-)
-from domain import (
-    CombatantTokenBlueprint, CombatantTokenPrimeExtract, Coord, Formation, HomeSquare,
-    KingTokenBlueprint, KingTokenPrimeExtract, PawnTokenBlueprint,
-    PawnTokenPrimeExtract, Team, TokenDeployment, TokenPrimeExtract
-)
-from err import TokenValidationRouteException
-from transit import CombatantTokenCarrier, KingTokenCarrier, PawnTokenCarrier, TokenCarrier
-from util import LoggingLevelRouter
+from assurance import ValidationIntraRouter
+from domain import Token
 
 
-class TokenValidationRouter:
+class TokenValidationRouter(ValidationIntraRouter[Token]):
     """
     Role
         - Router

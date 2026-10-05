@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Dict
 
-from domain import Chart, Token
+from domain import Chart, CombatantToken, KingToken, Token
 
 
 class TokenChart(Chart[Token]):
@@ -66,7 +66,29 @@ class TokenChart(Chart[Token]):
     
     @property
     def is_not_consistent(self) -> bool:
-        return self.size == 1 or self.size > 2
+        return self.size == 1
+    
+    @property
+    def victim_is_missing(self) -> bool:
+        return self._victim is None
+    
+    @property
+    def attacker_is_missing(self) -> bool:
+        return self._attacker is None
+    
+    @property
+    def victim_is_combatant(self) -> bool:
+        return (
+                self.consistency_exists and
+                isinstance(self._victim, CombatantToken)
+        )
+    
+    @property
+    def victim_is_king(self) -> bool:
+        return (
+                self.consistency_exists and
+                isinstance(self._victim, KingToken)
+        )
     
     @property
     def to_dict(self) -> Dict[str, Token]:

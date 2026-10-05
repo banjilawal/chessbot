@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional
 
 from config import NumericSetting
-from domain import Path, SearchableModel, Token
+from domain import Path, SearchableModel, Square, Token
 
 
 class Maneuver(SearchableModel):
@@ -61,6 +61,16 @@ class Maneuver(SearchableModel):
     @property
     def path(self) -> Path:
         return self._path
+    
+    @property
+    def origin(self) -> Square:
+        return self._path.endpoints.origin
+    
+    @property
+    def destination(self) -> Square:
+        return self._path.endpoints.destination
+        
+        
     
     @property
     def benefit(self) -> int:

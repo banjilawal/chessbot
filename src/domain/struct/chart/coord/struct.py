@@ -92,9 +92,8 @@ class CoordChart(Chart[Coord]):
     
     @property
     def to_dict(self) -> Dict[str, Coord]:
-        table: Dict[str, Coord] = {}
-        if self._position is not None:
-            table["position"] = self._position
-        if self._previous_position is not None:
-            table["previous_position"] = self._previous_position
+        table = {
+            "position": self._position,
+            "previous_position": self._previous_position
+        }
         return table

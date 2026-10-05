@@ -10,7 +10,6 @@ version: 0.0.2
 # =========== ASSURANCE.VALIDATOR.ROOT.ENCOUNTER PACKAGE ===========#
 
 # Packages
-from .readiness import *
 
 # Modules
 from .validator import RootEncounterValidator

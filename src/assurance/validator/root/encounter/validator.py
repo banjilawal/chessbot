@@ -41,7 +41,7 @@ class RootEncounterValidator(RootValidator[Encounter]):
     Super Class:
         ProductEnvelopeGenerator
     """
-    _chart_validator: TokenChartValidator
+    _participant_readiness_validator: TokenChartValidator
     
     def __init__(
             self,
@@ -54,7 +54,7 @@ class RootEncounterValidator(RootValidator[Encounter]):
             chart_validator: Optional[EncounterPositionCertifier]
         """
         super().__init__(toolkit=toolkit or EncounterValidatorToolkit())
-        self._chart_validator = chart_validator or TokenChartValidator()
+        self._participant_readiness_validator = chart_validator or TokenChartValidator()
         
     @property
     def toolkit(self) -> EncounterValidatorToolkit:
@@ -185,12 +185,12 @@ class RootEncounterValidator(RootValidator[Encounter]):
         attacker_reward = cast(int, attacker_reward.payload)
         attacker_maneuver = cast(Maneuver, attacker_maneuver_validation.payload)
         
-        chart_validation = self._chart_validator.execute(
+        readiness_chart_validation = self._participant_readiness_validator.execute(
             victim=victim,
             attacker=attacker_maneuver.traveler,
         )
         # Handle the case that the victim and the attacker are the same
-        if chart_validation.is_failure:
+        if readiness_chart_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 RootEncounterValidatorException(
@@ -198,10 +198,10 @@ class RootEncounterValidator(RootValidator[Encounter]):
                     cls_name=self.__class__.__name__,
                     msg=RootEncounterValidatorException.MSG,
                     err_code=RootEncounterValidatorException.ERR_CODE,
-                    ex=chart_validation.exception
+                    ex=readiness_chart_validation.exception
                 )
             )
-        participants = cast(TokenChart, chart_validation.payload)        
+        participants = cast(TokenChart, readiness_chart_validation.payload)
         # --- Send the work product. ---#
         envelope = RootEncounterEnvelope(
             id=id,

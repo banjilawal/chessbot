@@ -27,7 +27,7 @@ class RootEncounterValidatorException(RootValdatorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an EncounterProductEnvelopeGenerator failed.
+        1.  Indicating an RootEncounterEnvelopeGenerator failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class RootEncounterValidatorException(RootValdatorException):
     Super Class:
         RootValidatorException
     """
-    MSG = "EncounterProductEnvelopeGenerator failed."
+    MSG = "RootEncounterEnvelopeGenerator failed."
     ERR_CODE = "ENCOUNTER_VALIDATION_REFERENCE_GENERATOR_FAILURE"
     
     def __init__(
