@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import WarningNode, WarningNodeBlueprint, NodePrimeExtract
+from domain import EncounterWarningNode, WarningNodeBlueprint, NodePrimeExtract
 from transit import WarningNodeCarrier
 
 
-class EncounterWarningNodePrimeExtract(NodePrimeExtract[WarningNode]):
+class EncounterWarningNodePrimeExtract(NodePrimeExtract[EncounterWarningNode]):
     """
     Role
         - Data Holder

@@ -17,7 +17,7 @@ from transit import TokenCarrier
 
 T = TypeVar("T", bound="Token")
 
-class TokenPrimeExtract(ModelPrimeExtract[T], ABC, Generic[T]):
+class TokenPrimeExtract(ModelPrimeExtract[T], Generic[T]):
     """
     Role
         - Data Holder

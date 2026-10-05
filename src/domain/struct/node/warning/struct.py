@@ -14,7 +14,7 @@ from typing import Optional, cast
 from domain import EncounterWarning, Node
 
 
-class WarningNode(Node[EncounterWarning]):
+class EncounterWarningNode(Node[EncounterWarning]):
     """
     Role:
         - Structural
@@ -45,19 +45,19 @@ class WarningNode(Node[EncounterWarning]):
         return cast(EncounterWarning, super().payload)
     
     @property
-    def next(self) -> Optional[WarningNode]:
-        return cast(WarningNode, super().next)
+    def next(self) -> Optional[EncounterWarningNode]:
+        return cast(EncounterWarningNode, super().next)
     
     @next.setter
-    def next(self, other: WarningNode):
+    def next(self, other: EncounterWarningNode):
         super().next = other
     
     @property
-    def previous(self) -> Optional[WarningNode]:
-        return cast(WarningNode, super().previous)
+    def previous(self) -> Optional[EncounterWarningNode]:
+        return cast(EncounterWarningNode, super().previous)
     
     @previous.setter
-    def previous(self, other: WarningNode):
+    def previous(self, other: EncounterWarningNode):
         super().previous = other
         
     def __eq__(self, other):
@@ -65,7 +65,7 @@ class WarningNode(Node[EncounterWarning]):
             return True
         if other is None:
             return False
-        if isinstance(other, WarningNode):
+        if isinstance(other, EncounterWarningNode):
             return self.payload == other.payload
         return False
     

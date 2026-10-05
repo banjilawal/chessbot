@@ -12,8 +12,9 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import ModelWrapperDependency, SquareRegisterValidator
+from assurance import ModelWrapperDependency
 from domain import Path
+from exchange import SquareRegisterValidationResponseWrapper
 
 
 class PathWrapperDependency(ModelWrapperDependency[Path]):
@@ -25,27 +26,27 @@ class PathWrapperDependency(ModelWrapperDependency[Path]):
         1.  Satisfy PathValidator's ResponseWrapper dependencies.
 
     Attributes:
-        endpoint_validator: SquareRegisterValidator
+        square_register: SquareRegisterValidationResponseWrapper
         
     Provides:
 
     Super Class:
         ModelWrapperDependency
     """
-
-    _endpoint: SquareRegisterValidator
+    
+    _square_register: SquareRegisterValidationResponseWrapper
     
     def __init__(
             self,
-            endpoint: Optional[SquareRegisterValidator] | None = None,
+            square_register: Optional[SquareRegisterValidationResponseWrapper] | None = None,
     ):
         """
         Args:
-            endpoint: Optional[SquareRegisterValidator]
+            square_register: Optional[SquareRegisterValidationResponseWrapper]
         """
         super().__init__()
-        self._endpoint = endpoint or SquareRegisterValidator()
+        self._square_register = square_register or SquareRegisterValidationResponseWrapper()
         
     @property
-    def endpoint(self) -> SquareRegisterValidator:
-        return self._endpoint
+    def square_register(self) -> SquareRegisterValidationResponseWrapper:
+        return self._square_register

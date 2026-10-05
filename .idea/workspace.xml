@@ -5,74 +5,176 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/domain/extract/struct/chart/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/extract/struct/chart/coord/extract.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/extract/struct/chart/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/extract/struct/chart/token/extract.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/extract/struct/node/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/extract/struct/node/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/extract/struct/node/coord/extract.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/extract/struct/node/extract.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/extract/struct/node/token/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/extract/struct/node/token/extract.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/extract/struct/register/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/extract/struct/register/coord/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/extract/struct/register/coord/extract.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/extract/struct/register/extract.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/extract/struct/register/square/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/extract/struct/register/square/extract.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/extract/struct/register/vector/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/extract/struct/register/vector/extract.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/struct/chart/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/struct/chart/depend.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/struct/chart/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/struct/chart/token/depend.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/struct/node/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/struct/node/depend.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/struct/node/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/struct/node/warning/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/struct/node/warning/depend.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/struct/register/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/struct/register/coord/depend.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/struct/register/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/struct/register/square/depend.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/loader/model/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/loader/model/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/loader/model/board/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/loader/model/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/loader/model/coord/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/loader/model/encounter/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/loader/model/encounter/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/loader/model/game/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/loader/model/game/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/loader/model/maneuver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/loader/model/maneuver/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/loader/model/path/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/loader/model/path/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/loader/model/rank/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/loader/model/rank/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/loader/model/scalar/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/loader/model/scalar/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/loader/model/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/loader/model/square/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/loader/model/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/loader/model/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/loader/model/token/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/loader/model/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/loader/model/vector/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/model/account/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/validator/model/account/validator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/request/validation/struct/node/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/request/validation/struct/node/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/request/validation/struct/node/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/request/validation/struct/node/vector/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/request/validation/struct/node/warning/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/request/validation/struct/node/warning/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/node/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/node/responder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/node/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/node/vector/responder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/node/warning/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/node/warning/responder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/wrapper/validation/model/account/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/wrapper/validation/model/account/wrapper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/wrapper/validation/struct/node/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/wrapper/validation/struct/node/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/wrapper/validation/struct/node/vector/wrapper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/wrapper/validation/struct/node/warning/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/wrapper/validation/struct/node/warning/wrapper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/wrapper/validation/struct/node/wrapper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/wrapper/validation/struct/register/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/wrapper/validation/struct/register/square/wrapper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/wrapper/validation/struct/register/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/wrapper/validation/struct/register/vector/wrapper.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/struct/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/account/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/struct/chart/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/account/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/struct/chart/extract.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/account/human/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/account/human/extract.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/account/machine/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/account/machine/extract.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/arena/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/arena/extract.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/board/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/board/extract.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/coord/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/coord/extract.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/encounter/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/encounter/checkmate/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/encounter/checkmate/extract.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/encounter/extract.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/encounter/kill/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/encounter/kill/extract.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/encounter/stalemate/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/encounter/stalemate/extract.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/encounter/warning/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/encounter/warning/extract.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/game/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/game/extract.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/maneuver/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/maneuver/extract.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/path/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/path/extract.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/player/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/player/extract.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/scalar/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/scalar/extract.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/square/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/square/extract.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/square/home/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/square/home/extract.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/team/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/team/extract.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/token/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/token/combatant/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/token/combatant/extract.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/token/extract.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/token/king/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/token/king/extract.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/token/pawn/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/token/pawn/extract.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/vector/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/vector/extract.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/model/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/depend/toolkit/structure/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/struct/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/depend/toolkit/structure/node/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/struct/node/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/depend/toolkit/structure/node/bundle.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/struct/node/bundle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/depend/toolkit/structure/node/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/struct/node/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/depend/toolkit/structure/node/vector/bundle.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/struct/node/vector/bundle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/depend/toolkit/structure/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/struct/register/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/depend/toolkit/structure/register/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/struct/register/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/depend/toolkit/structure/register/square/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/struct/register/square/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/depend/toolkit/structure/register/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/struct/register/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/depend/toolkit/structure/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/struct/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/depend/toolkit/toolkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/toolkit/toolkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/coord/depend.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/coord/depend.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/game/depend.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/game/depend.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/maneuver/depend.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/maneuver/depend.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/path/depend.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/path/depend.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/player/depend.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/model/player/depend.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/depend/wrapper/structure/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/struct/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/depend/wrapper/structure/depend.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/struct/depend.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/depend/wrapper/structure/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/struct/register/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/depend/wrapper/structure/register/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/struct/chart/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/depend/wrapper/structure/register/coord/table.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/struct/chart/coord/depend.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/depend/wrapper/structure/register/square/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/depend/wrapper/structure/register/square/table.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/struct/node/vector/depend.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/depend/wrapper/structure/register/table.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/struct/register/depend.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/depend/wrapper/structure/register/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/struct/register/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/depend/wrapper/structure/register/vector/depend.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/depend/wrapper/struct/register/vector/depend.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/load/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/loader/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/load/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/loader/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/load/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/loader/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/load/model/board/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/load/model/board/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/loader/model/account/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/load/model/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/loader/model/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/load/model/player/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/load/model/player/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/loader/model/arena/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/load/model/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/loader/model/account/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/load/model/team/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/loader/model/team/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/load/struct/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/load/struct/loader.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/load/struct/register/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/load/struct/register/loader.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/load/struct/register/square/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/load/struct/register/square/loader.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/structure/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/struct/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/structure/chart/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/struct/chart/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/structure/chart/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/struct/chart/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/structure/chart/coord/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/struct/chart/coord/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/structure/chart/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/struct/chart/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/structure/chart/token/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/struct/chart/token/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/structure/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/struct/register/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/structure/register/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/struct/register/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/structure/register/square/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/struct/register/square/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/structure/register/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/struct/register/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/structure/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/struct/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/extract/struct/node/warning/extract.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/extract/struct/node/warning/extract.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/struct/node/warning/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/struct/node/warning/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/struct/node/warning/struct.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/struct/node/warning/struct.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/validation/structure/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/validation/struct/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/validation/structure/chart/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/validation/struct/chart/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/validation/structure/chart/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/validation/struct/chart/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/validation/structure/chart/coord/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/validation/struct/chart/coord/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/validation/structure/chart/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/validation/struct/chart/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/validation/structure/chart/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/validation/struct/chart/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/validation/structure/chart/token/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/validation/struct/chart/token/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/validation/structure/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/validation/struct/register/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/validation/structure/register/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/validation/struct/register/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/validation/structure/register/coord/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/validation/struct/register/coord/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/validation/structure/register/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/validation/struct/register/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/validation/structure/register/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/validation/struct/register/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/validation/structure/register/square/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/validation/struct/register/square/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/validation/structure/register/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/validation/struct/register/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/validation/structure/register/vector/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/validation/struct/register/vector/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/validation/structure/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/validation/struct/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/structure/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/structure/chart/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/chart/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/structure/chart/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/chart/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/structure/chart/coord/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/chart/coord/responder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/structure/chart/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/chart/responder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/structure/chart/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/chart/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/structure/chart/token/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/chart/token/responder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/structure/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/register/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/structure/register/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/register/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/structure/register/coord/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/register/coord/responder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/structure/register/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/register/responder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/structure/register/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/register/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/structure/register/square/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/register/square/responder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/structure/register/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/register/vector/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/structure/register/vector/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/register/vector/responder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/responder/validation/structure/responder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/responder/validation/struct/responder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/wrapper/validation/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/wrapper/validation/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/wrapper/validation/model/attack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/wrapper/validation/model/encounter/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/wrapper/validation/model/attack/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/wrapper/validation/model/encounter/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/wrapper/validation/structure/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/wrapper/validation/struct/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/wrapper/validation/structure/chart/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/wrapper/validation/struct/chart/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/wrapper/validation/structure/chart/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/wrapper/validation/struct/chart/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/wrapper/validation/structure/chart/coord/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/wrapper/validation/struct/chart/coord/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/wrapper/validation/structure/chart/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/wrapper/validation/struct/chart/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/wrapper/validation/structure/chart/token/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/wrapper/validation/struct/chart/token/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/wrapper/validation/structure/chart/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/wrapper/validation/struct/chart/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/wrapper/validation/structure/register/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/wrapper/validation/struct/register/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/wrapper/validation/structure/register/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/wrapper/validation/struct/register/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/wrapper/validation/structure/register/coord/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/wrapper/validation/struct/register/coord/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/wrapper/validation/structure/register/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/wrapper/validation/struct/register/wrapper.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/wrapper/validation/structure/wrapper.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/wrapper/validation/struct/wrapper.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,61 +216,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.000004492655905" />
-      <entry key="S2" value="1.0460389901817793" />
-      <entry key="S5" value="1.2919137907845744" />
-      <entry key="S10" value="1.5419939911750746" />
-      <entry key="S30" value="1.960683945209197" />
-      <entry key="S60" value="2.5569557246306296" />
-      <entry key="M2" value="4.492569794397558" />
-      <entry key="M5" value="19.456051229195694" />
-      <entry key="M10" value="47.12930302094872" />
-      <entry key="M15" value="68.62551109206399" />
-      <entry key="M30" value="109.76040395869768" />
-      <entry key="H1" value="161.7726788672297" />
-      <entry key="H2" value="298.23989849515436" />
-      <entry key="H4" value="642.763872535425" />
-      <entry key="D1" value="3839.915743139487" />
-      <entry key="W1" value="27086.208372151268" />
+      <entry key="MS100" value="1.0263239935798596" />
+      <entry key="MS500" value="1.6915638202461092" />
+      <entry key="S2" value="2.5099575785150723" />
+      <entry key="S5" value="2.7850236049260246" />
+      <entry key="S10" value="2.889049956906412" />
+      <entry key="S30" value="2.962216924909806" />
+      <entry key="S60" value="2.9810065295531585" />
+      <entry key="M2" value="2.9904869012601627" />
+      <entry key="M5" value="3.059865524424305" />
+      <entry key="M10" value="4.523875307254442" />
+      <entry key="M15" value="8.225471448994504" />
+      <entry key="M30" value="29.39359132836468" />
+      <entry key="H1" value="90.91363925607949" />
+      <entry key="H2" value="230.2113368207622" />
+      <entry key="H4" value="554.4434875337847" />
+      <entry key="D1" value="3747.6793699030486" />
+      <entry key="W1" value="26990.926346449934" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="4.1951863156325486E-125" />
-      <entry key="S5" value="2.3826821663517643E-50" />
-      <entry key="S10" value="2.469637664477961E-25" />
-      <entry key="S30" value="1.492569448372863E-8" />
-      <entry key="S60" value="2.62710242666127E-4" />
-      <entry key="M2" value="0.038359123181988246" />
-      <entry key="M5" value="0.9538324570050384" />
-      <entry key="M10" value="3.125951114007882" />
-      <entry key="M15" value="4.791041310099268" />
-      <entry key="M30" value="7.728371348550345" />
-      <entry key="H1" value="10.919373977482167" />
-      <entry key="H2" value="16.903300500185242" />
-      <entry key="H4" value="29.921915105398845" />
-      <entry key="D1" value="170.1917200238664" />
-      <entry key="W1" value="1253.500831505586" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="1.8045170202944858E-303" />
+      <entry key="S10" value="4.247960716750954E-152" />
+      <entry key="S30" value="3.494827269065799E-51" />
+      <entry key="S60" value="6.238331440673845E-26" />
+      <entry key="M2" value="3.252856838273842E-13" />
+      <entry key="M5" value="1.9573707547153483E-5" />
+      <entry key="M10" value="0.01095947353547268" />
+      <entry key="M15" value="0.11055496790978132" />
+      <entry key="M30" value="1.4352269088941292" />
+      <entry key="H1" value="6.231725247423371" />
+      <entry key="H2" value="15.4385341182979" />
+      <entry key="H4" value="31.040602447079323" />
+      <entry key="D1" value="173.71139982619005" />
+      <entry key="W1" value="1256.721551682195" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9330329915368074" />
-      <entry key="MS500" value="0.9862371599353857" />
-      <entry key="S2" value="1.0424836170900396" />
-      <entry key="S5" value="1.2902857487733668" />
-      <entry key="S10" value="1.541075132029491" />
-      <entry key="S30" value="1.960304422750136" />
-      <entry key="S60" value="2.556963222583186" />
-      <entry key="M2" value="4.53035548881637" />
-      <entry key="M5" value="20.405466545708865" />
-      <entry key="M10" value="50.247416518509766" />
-      <entry key="M15" value="73.4078173997439" />
-      <entry key="M30" value="117.47999326114775" />
-      <entry key="H1" value="172.68417909168087" />
-      <entry key="H2" value="315.13559407144874" />
-      <entry key="H4" value="672.6769802061123" />
-      <entry key="D1" value="4010.09009624567" />
-      <entry key="W1" value="28339.68807766903" />
+      <entry key="MS100" value="0.952009941113755" />
+      <entry key="MS500" value="1.6710760465352144" />
+      <entry key="S2" value="2.5030700233691396" />
+      <entry key="S5" value="2.7820259966429215" />
+      <entry key="S10" value="2.8875050364392045" />
+      <entry key="S30" value="2.961691115268787" />
+      <entry key="S60" value="2.980742231802898" />
+      <entry key="M2" value="2.990354376826402" />
+      <entry key="M5" value="3.0597811424729193" />
+      <entry key="M10" value="4.534100572048395" />
+      <entry key="M15" value="8.334080062570324" />
+      <entry key="M30" value="30.823435759310847" />
+      <entry key="H1" value="97.13742269716218" />
+      <entry key="H2" value="245.64128796283813" />
+      <entry key="H4" value="585.4749257831098" />
+      <entry key="D1" value="3921.373934425797" />
+      <entry key="W1" value="28247.626890885043" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -202,7 +304,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/domain/extract/struct",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/assurance/validator/model",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -216,11 +318,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/domain/extract/struct" />
-      <recent name="$PROJECT_DIR$/src/err/assurance/validator/struct" />
-      <recent name="$PROJECT_DIR$/src/err/assurance/validator/struct/node" />
-      <recent name="$PROJECT_DIR$/src/err/domain/struct" />
-      <recent name="$PROJECT_DIR$/src/err/domain/struct/node" />
+      <recent name="$PROJECT_DIR$/src/assurance/validator/model" />
+      <recent name="$PROJECT_DIR$/src/assurance/loader/model" />
+      <recent name="$PROJECT_DIR$/src/assurance/loader/model/account" />
+      <recent name="$PROJECT_DIR$/src/assurance/loader/struct" />
+      <recent name="$PROJECT_DIR$/src/exchange/request/validation/struct" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/err" />
@@ -885,7 +987,7 @@
       <workItem from="1790001362413" duration="735000" />
       <workItem from="1790063398459" duration="258692000" />
       <workItem from="1790480915263" duration="119124000" />
-      <workItem from="1790671354344" duration="215080000" />
+      <workItem from="1790671354344" duration="224034000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -2209,7 +2311,7 @@
           <option name="timeStamp" value="484" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/assurance/depend/wrapper/structure/__init__.py</url>
+          <url>file://$PROJECT_DIR$/src/assurance/depend/wrapper/struct/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="485" />
         </line-breakpoint>
@@ -2279,12 +2381,12 @@
           <option name="timeStamp" value="506" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/exchange/request/validation/structure/chart/request.py</url>
+          <url>file://$PROJECT_DIR$/src/exchange/request/validation/struct/chart/request.py</url>
           <line>11</line>
           <option name="timeStamp" value="507" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/exchange/wrapper/validation/structure/chart/token/wrapper.py</url>
+          <url>file://$PROJECT_DIR$/src/exchange/wrapper/validation/struct/chart/token/wrapper.py</url>
           <line>112</line>
           <option name="timeStamp" value="509" />
         </line-breakpoint>
@@ -2302,6 +2404,26 @@
           <url>file://$PROJECT_DIR$/src/domain/extract/model/game/extract.py</url>
           <line>11</line>
           <option name="timeStamp" value="513" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/assurance/depend/toolkit/struct/toolkit.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="514" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/assurance/depend/wrapper/struct/register/coord/table.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="515" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/assurance/depend/wrapper/struct/register/vector/depend.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="516" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/exchange/wrapper/validation/struct/__init__.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="517" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

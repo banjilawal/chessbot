@@ -1,0 +1,148 @@
+# src/assurance/load/model/vector/loader.py
+
+"""
+Module: assurance.load.model.vector.loader
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from typing import Any, Optional, Type, cast
+
+from artifcat import ValidationResult
+from assurance import ModelLoader, VectorValidatorToolkit
+from domain import Vector, VectorPrimeExtract
+from err import (
+    EmptyVectorCarrierException, VectorLoaderException, VectorValidationRequestNullException
+)
+from exchange import VectorValidationRequest
+from transit import VectorCarrier
+
+from util import LoggingLevelRouter
+
+
+class VectorLoader(ModelLoader[Vector]):
+    """
+    Role
+        - Integrity, Consistency Maintenance
+
+    Responsibilities:
+        1.  Run type safety checks on a Candidate for:
+            -   VectorValidationRequest
+            -   VectorCarrier
+            -   VectorBlueprint
+
+    Attributes:
+        toolkit: VectorValidatorToolkit
+
+    Provides:
+        -   def execute(
+                    candidate: Any
+            ) -> ValidationResult[VectorPrimeExtract[T]
+
+    Super Class:
+        ModelLoader
+    """
+    
+    def __init__(
+            self,
+            toolkit: Optional[VectorValidatorToolkit] | None = None,
+    ):
+        """
+        Args:
+            toolkit: Optional[VectorValidatorToolkit]
+        """
+        super().__init__(toolkit=toolkit or VectorValidatorToolkit())
+    
+    @property
+    def toolkit(self) -> VectorValidatorToolkit:
+        return cast(VectorValidatorToolkit, super().toolkit)
+    
+    @LoggingLevelRouter.monitor
+    def execute(self, candidate: Any) -> ValidationResult[VectorPrimeExtract]:
+        """
+        Extract the VectorBlueprint to validate the candidate.
+
+        Action:
+            1.  Send an exception chain in the ValidationResult if any of the following
+                occur
+                -   The candidate is null or not a VectorValidatorRequest.
+                -   The request payload is either:
+                        -   Null
+                        -   Not a VectorCarrier
+                        -   An empty VectorCarrier.
+                -   A blueprint cannot be extracted from the carrier.
+            2.  Otherwise, pack the original carrier and the blueprint in a VectorPrimeExtract
+                for the success result.
+        Args:
+            candidate: Any
+        Returns:
+            ValidationResult[VectorPrimeExtract]
+        Raises:
+            VectorLoaderException
+        """
+        method = f"{self.__class__.__name__}.execute"
+        
+        # Handle the case that the candidate is null or the rong type.
+        priming_result = self.toolkit.priming_validator.execute(
+            candidate=candidate,
+            target_model=VectorValidationRequest,
+            null_exception=VectorValidationRequestNullException(),
+        )
+        if priming_result.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                VectorLoaderException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=VectorLoaderException.MSG,
+                    err_code=VectorLoaderException.ERR_CODE,
+                    ex=priming_result.exception,
+                )
+            )
+        # --- Cast priming_result to request for additional tests. ---#
+        request = cast(Type[VectorValidationRequest], priming_result.payload)
+        
+        # Handle the case that request.item is the wrong carrier type.
+        carrier_validation = self.toolkit.priming_validator.execute(
+            candidate=request.item,
+            target_model=self.toolkit.types.carrier,
+            null_exception=self.toolkit.nulls.carrier,
+        )
+        if carrier_validation.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                VectorLoaderException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=VectorLoaderException.MSG,
+                    err_code=VectorLoaderException.ERR_CODE,
+                    ex=carrier_validation.exception,
+                )
+            )
+        # --- Cast carrier_validation payload to carrier then extract blueprint. ---#
+        carrier = cast(VectorCarrier, carrier_validation.payload)
+        blueprint = carrier.extract_blueprint()
+        
+        # Handle the case that the blueprint is null.
+        if blueprint is None:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                VectorLoaderException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=VectorLoaderException.MSG,
+                    err_code=VectorLoaderException.ERR_CODE,
+                    ex=EmptyVectorCarrierException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=EmptyVectorCarrierException.MSG,
+                        err_code=EmptyVectorCarrierException.ERR_CODE,
+                    ),
+                )
+            )
+        # --- Send the work product. ---#
+        extract = VectorPrimeExtract(carrier=carrier, blueprint=blueprint)
+        return ValidationResult.success(extract)

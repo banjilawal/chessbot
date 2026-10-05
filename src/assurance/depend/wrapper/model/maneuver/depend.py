@@ -34,7 +34,6 @@ class ManeuverWrapperDependency(ModelWrapperDependency[Maneuver]):
     Super Class:
         ModelWrapperDependency
     """
-
     _path: PathValidationResponseWrapper
     _token: TokenValidationResponseWrapper
     

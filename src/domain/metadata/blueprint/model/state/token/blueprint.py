@@ -21,7 +21,7 @@ from err import  TokenNullException
 
 T = TypeVar("T", bound="Token")
 
-class TokenBlueprint(StateModelBlueprint[T], ABC, Generic[T]):
+class TokenBlueprint(StateModelBlueprint[T], Generic[T]):
     """
      Role:
         1.  Metadata

@@ -33,7 +33,7 @@ class CoordWrapperDependency(ModelWrapperDependency[Coord]):
     Super Class:
         ModelWrapperDependency
     """
-
+    
     _board: BoardValidationResponseWrapper
     
     def __init__(

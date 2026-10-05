@@ -26,27 +26,12 @@ class GameWrapperDependency(ModelWrapperDependency[Game]):
         1.  Satisfy GameValidator's ResponseWrapper dependencies.
 
     Attributes:
-        player: PlayerValidationResponseWrapper
 
     Provides:
 
     Super Class:
         ModelWrapperDependency
     """
-
-    _player: PlayerValidationResponseWrapper
     
-    def __init__(
-            self,
-            player: Optional[PlayerValidationResponseWrapper] | None = None,
-    ):
-        """
-        Args:
-            player: Optional[PlayerValidatorClient]
-        """
+    def __init__(self):
         super().__init__()
-        self._player = player or PlayerValidationResponseWrapper()
-    
-    @property
-    def player(self) -> PlayerValidationResponseWrapper:
-        return self._player
