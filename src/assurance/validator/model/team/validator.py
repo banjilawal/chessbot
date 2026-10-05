@@ -26,7 +26,7 @@ class TeamValidator(ModelValidator[Team]):
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a TeamCarrier is safe to use.
+        1.  Ensure a TeamCarrier and its contents are safe to use.
 
     Attributes:
         loader: TeamLoader
@@ -41,7 +41,7 @@ class TeamValidator(ModelValidator[Team]):
     def __init__(self, loader: Optional[TeamLoader] | None = None):
         """
         Args:
-            loader: Optional[TeamValidatorToolkit]
+            loader: Optional[TeamLoader]
         """
         super().__init__(loader=loader or TeamLoader())
     
@@ -180,13 +180,13 @@ class TeamValidator(ModelValidator[Team]):
                     ex=owner_validation.exception,
                 )
             )
-        # --- Extract validation payloads. ---#
+        # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
         id = cast(int, id_validation.payload)
         board = cast(Board, board_validation.payload)
         owner = cast(Player, owner_validation.payload)
         archetype = cast(Archetype, archetype_validation.payload)
+        # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         
-        # --- Forward the appropriate work product to the caller. ---#
         # The client wants a safe Team.
         if prime_extract.recipient_wants_model:
             payload = Team(
@@ -195,7 +195,9 @@ class TeamValidator(ModelValidator[Team]):
                 owner=owner,
                 archetype=archetype,
             )
-            return ValidationResult.success(TeamCarrier(model=payload))
+            return ValidationResult.success(
+                TeamCarrier(model=payload)
+            )
         # Otherwise, the client is a TeamBuilder that needs a Blueprint.
         payload = TeamBlueprint(
             id=id,
@@ -203,5 +205,7 @@ class TeamValidator(ModelValidator[Team]):
             owner=owner,
             archetype=archetype,
         )
-        return ValidationResult.success(TeamCarrier(blueprint=payload))
+        return ValidationResult.success(
+            TeamCarrier(blueprint=payload)
+        )
 

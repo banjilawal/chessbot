@@ -9,18 +9,14 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, List, Optional, cast
+from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidator, CoordValidatorToolkit
-from domain import (
-    Board, BoardValidationRequest, Coord, CoordBlueprint, CoordValidationRequest
-)
-from err import (
-    BoardCarrierEmptyException, CoordValidationRequestNullException, CoordValidatorException
-)
-from transit import BoardCarrier, CoordCarrier
-from util import IdFactory, LoggingLevelRouter
+from assurance import CoordLoader, CoordValidatorToolkit, ModelValidator
+from domain import Coord, CoordPrimeExtract
+from err import CoordCarrierEmptyException, CoordValidatorException
+from transit import CoordCarrier
+from util import LoggingLevelRouter
 
 
 class CoordValidator(ModelValidator[Coord]):
@@ -29,13 +25,13 @@ class CoordValidator(ModelValidator[Coord]):
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a CoordCarrier is safe to use.
+        1.  Ensure a CoordCarrier and its contents are safe to use.
 
     Attributes:
-        loader: CoordValidatorToolkit
+        loader: CoordLoader
 
     Provides:
-        -   def execute(candidate: CoordValidationRequest) -> ValidationResult[CoordCarrier]:
+        -   def execute(candidate: Ant) -> ValidationResult[CoordCarrier]:
 
     Super Class:
         ModelValidator
@@ -43,26 +39,26 @@ class CoordValidator(ModelValidator[Coord]):
     
     def __init__(
             self,
-            loader: Optional[CoordValidatorToolkit] | None = None,
+            loader: Optional[CoordLoader] | None = None,
     ):
         """
         Args:
-            loader: Optional[CoordValidatorToolkit]
+            loader: Optional[CoordLoader]
         """
-        super().__init__(toolkit=toolkit or CoordValidatorToolkit())
+        super().__init__(loader=loader or CoordLoader())
+        
+    @property
+    def loader(self) -> CoordLoader:
+        return cast(CoordLoader, super().loader)
     
     @property
     def toolkit(self) -> CoordValidatorToolkit:
-        return cast(
-            CoordValidatorToolkit,
-            super().toolkit,
-        )
+        return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[CoordCarrier]:
         """
-        Certify a CoordCarrier's payload is either a Coord or a Blueprint 
-        that is safe to use.
+        Assure a candidate is a safe CoordCarrier.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
@@ -84,13 +80,9 @@ class CoordValidator(ModelValidator[Coord]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the candidate is null or the rong type.
-        priming_result = self.toolkit.wrapper.priming_validator.execute(
-            candidate=candidate,
-            target_model=CoordValidationRequest,
-            null_exception=CoordValidationRequestNullException(),
-        )
-        if priming_result.is_failure:
+        # Handle the case that the blueprint cannot be extracted.
+        loading = self.loader.execute(candidate)
+        if loading.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 CoordValidatorException(
@@ -98,38 +90,14 @@ class CoordValidator(ModelValidator[Coord]):
                     cls_name=self.__class__.__name__,
                     msg=CoordValidatorException.MSG,
                     err_code=CoordValidatorException.ERR_CODE,
-                    ex=priming_result.exception,
+                    ex=loading.exception,
                 )
             )
-        # --- Cast priming_result into a request for additional tests. ---#
-        request = cast(CoordValidationRequest, priming_result.payload)
-        
-        # Handle the case that request.item is the wrong carrier type.
-        carrier_validation = self.toolkit.wrapper.priming_validator.execute(
-            candidate=request.item,
-            target_model=self.toolkit.metadata.types.carrier,
-            null_exception=self.toolkit.metadata.nulls.carrier,
-        )
-        if carrier_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                CoordValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=CoordValidatorException.MSG,
-                    err_code=CoordValidatorException.ERR_CODE,
-                    ex=carrier_validation.exception,
-                )
-            )
-        # --- Cast the carrier_validation payload for additional tests. ---#
-        carrier = cast(
-            CoordCarrier,
-            carrier_validation.payload,
-        )
-        # --- Extract the blueprint to verify the attributes. ---#
+        # --- Get the PrimeExtract and Blueprint for additional processing. ---#
+        prime_extract = cast(CoordPrimeExtract, loading.payload)
+        carrier = prime_extract.carrier
         blueprint = carrier.extract_blueprint()
         
-        # Handle the case that there is no blueprint.
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -138,11 +106,11 @@ class CoordValidator(ModelValidator[Coord]):
                     cls_name=self.__class__.__name__,
                     msg=CoordValidatorException.MSG,
                     err_code=CoordValidatorException.ERR_CODE,
-                    ex=BoardCarrierEmptyException(
+                    ex=CoordCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=BoardCarrierEmptyException.MSG,
-                        err_code=BoardCarrierEmptyException.ERR_CODE,
+                        msg=CoordCarrierEmptyException.MSG,
+                        err_code=CoordCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

@@ -126,20 +126,23 @@ class VectorValidator(ModelValidator[Vector]):
                     )
                 )
             components.append(cast(int, validation.payload))
-        # --- Extract validation payloads. ---#
+        # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
         x = components[0]
         y = components[1]
+        # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         
-        # --- Forward the appropriate work product to the caller. ---#
         # The client wants a safe Vector.
         if prime_extract.recipient_wants_model:
-            payload = Vector(x=x, y=y)
-            return ValidationResult.success(VectorCarrier(model=payload))
+            payload = VectorCarrier(
+                model=Vector(x=x, y=y)
+            )
+            return ValidationResult.success(payload)
         
         # Otherwise, the client is a VectorBuilder that needs a Blueprint.
-        payload = VectorBlueprint(x=x, y=y)
-        return ValidationResult.success(VectorCarrier(blueprint=payload))
-        # --- Forward the appropriate work product to the caller. ---#
+        payload = VectorCarrier(
+            blueprint=VectorBlueprint(x=x, y=y)
+        )
+        return ValidationResult.success(payload)
 
         
 
