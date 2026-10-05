@@ -12,12 +12,12 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ChartValidationResponse, ResponseState, ValidationResult
-from exchange import Request, TokenChartValidationRequest
-from domain import Participation, TokenChartBlueprint
-from transit import TokenChartCarrier
+from exchange import Request, WalkValidationRequest
+from domain import Participation, ParticipationBlueprint
+from transit import ParticipationCarrier
 
 
-class TokenChartValidationResponse(
+class ParticipationValidationResponse(
     ChartValidationResponse[Participation]
 ):
     """
@@ -25,28 +25,28 @@ class TokenChartValidationResponse(
         -   Messaging
 
     Responsibilities:
-        1.  Capture a TokenChart validation request-response cycle's data and state.
+        1.  Capture a Participation validation request-response cycle's data and state.
 
     Attributes:
         state: ResponseState
-        result: ValidationResult[TokenChartCarrier]
-        request: TokenChartValidationRequest
+        result: ValidationResult[ParticipationCarrier]
+        request: ParticipationValidationRequest
         exception: Optional[Exception]
 
     Provides:
         -   def valid_model() -> Optional[Token]
-        -   def valid_blueprint() -> Optional[TokenChartBlueprint]
+        -   def valid_blueprint() -> Optional[ParticipationBlueprint]
 
         -   def success(
                     request: Request,
-                    result: ValidationResult[TokenChartCarrier],
-            ) -> TokenChartValidationResponse
+                    result: ValidationResult[ParticipationCarrier],
+            ) -> ParticipationValidationResponse
 
         -   def failure(
                     request: Request,
-                    result: ValidationResult[TokenChartCarrier],
+                    result: ValidationResult[ParticipationCarrier],
                     exception: Exception,
-            ) -> TokenChartValidationResponse
+            ) -> ParticipationValidationResponse
             
     Super Class:
         ChartValidationResponse
@@ -56,14 +56,14 @@ class TokenChartValidationResponse(
             self,
             state: ResponseState,
             result: ValidationResult,
-            request: TokenChartValidationRequest,
+            request: WalkValidationRequest,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             state: ResponseState
-            result: ValidationResult[TokenChartCarrier]
-            request: TokenChartValidationRequest
+            result: ValidationResult[ParticipationCarrier]
+            request: ParticipationValidationRequest
             exception: Optional[Exception]
         """
         super().__init__(
@@ -74,8 +74,8 @@ class TokenChartValidationResponse(
         )
     
     @property
-    def request(self) -> TokenChartValidationRequest:
-        return cast(TokenChartValidationRequest, super().request)
+    def request(self) -> WalkValidationRequest:
+        return cast(WalkValidationRequest, super().request)
     
     @property
     def valid_model(self) -> Optional[Participation]:
@@ -83,12 +83,12 @@ class TokenChartValidationResponse(
         if self.result.is_failure:
             return None
         # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(TokenChartCarrier, self.result.payload)
+        carrier = cast(ParticipationCarrier, self.result.payload)
         
         # Handle the case that the carrier is null or the wrong type.
         if (
                 carrier is None or
-                not isinstance(carrier, TokenChartCarrier)
+                not isinstance(carrier, ParticipationCarrier)
         ):
             return None
         # Handle the case that there is no chart in the carrier.
@@ -106,17 +106,17 @@ class TokenChartValidationResponse(
         return chart
     
     @property
-    def valid_blueprint(self) -> Optional[TokenChartBlueprint]:
+    def valid_blueprint(self) -> Optional[ParticipationBlueprint]:
         # Handle the case that the validation failed.
         if self.result.is_failure:
             return None
         # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(TokenChartCarrier, self.result.payload)
+        carrier = cast(ParticipationCarrier, self.result.payload)
         
         # Handle the case that the carrier is null or the wrong type.
         if (
                 carrier is None or
-                not isinstance(carrier, TokenChartCarrier)
+                not isinstance(carrier, ParticipationCarrier)
         ):
             return None
         # Handle the case that there is no blueprint in the carrier.
@@ -127,7 +127,7 @@ class TokenChartValidationResponse(
         # Handle the case that the blueprint is null or the wrong type.
         if (
                 blueprint is None or
-                not isinstance(blueprint, TokenChartBlueprint)
+                not isinstance(blueprint, ParticipationBlueprint)
         ):
             return None
         # Finally send the success result.
@@ -138,10 +138,10 @@ class TokenChartValidationResponse(
             cls,
             request: Request,
             result: ValidationResult,
-    ) -> TokenChartValidationResponse:
-        # Downcast the request into a TokenChartValidationRequest.
+    ) -> ParticipationValidationResponse:
+        # Downcast the request into a ParticipationValidationRequest.
         validation_request = cast(
-            TokenChartValidationRequest,
+            WalkValidationRequest,
             request,
         )
         # Send a success Response using the cast.
@@ -157,10 +157,10 @@ class TokenChartValidationResponse(
             request: Request,
             result: ValidationResult,
             exception: Exception,
-    ) -> TokenChartValidationResponse:
-        # Downcast the request into a TokenChartValidationRequest.
+    ) -> ParticipationValidationResponse:
+        # Downcast the request into a ParticipationValidationRequest.
         validation_request = cast(
-            TokenChartValidationRequest,
+            WalkValidationRequest,
             request,
         )
         # Send a failure Response using the cast.

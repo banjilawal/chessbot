@@ -1,7 +1,7 @@
-# src/exchange/responder/validation/model/rank/exchange.py
+# src/exchange/responder/validation/model/rank/responder.py
 
 """
-Module: exchange.responder.validation.model.rank.exchange
+Module: exchange.responder.validation.model.rank.responder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

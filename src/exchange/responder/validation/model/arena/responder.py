@@ -1,7 +1,7 @@
-# src/exchange/responder/validation/model/arena/exchange.py
+# src/exchange/responder/validation/model/arena/responder.py
 
 """
-Module: exchange.responder.validation.model.arena.exchange
+Module: exchange.responder.validation.model.arena.responder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

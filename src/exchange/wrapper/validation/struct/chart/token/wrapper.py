@@ -11,16 +11,16 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import TokenChartValidationResponse, ValidationResult
-from domain import Token, TokenBlueprint, Participation, TokenChartBlueprint
-from err import TokenChartValidationResponderException, TokenChartValidationResponseWrapperException, TokenCarrierEmptyException
+from artifcat import ParticipationValidationResponse, ValidationResult
+from domain import Token, TokenBlueprint, Participation, ParticipationBlueprint
+from err import ParticipationValidationResponderException, ParticipationValidationResponseWrapperException, TokenCarrierEmptyException
 from exchange import (
-    TokenChartValidationResponder, ChartValidationResponseWrapper, TokenChartValidationRequest
+    ParticipationValidationResponder, ChartValidationResponseWrapper, WalkValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class TokenChartValidationResponseWrapper(
+class ParticipationValidationResponseWrapper(
     ChartValidationResponseWrapper[Participation]
 ):
     """
@@ -31,18 +31,18 @@ class TokenChartValidationResponseWrapper(
         1.  Extract either safe:
                 -   Token
                 _   TokenBlueprint
-            products from TokenChartValidationResponder.
+            products from ParticipationValidationResponder.
 
     Attributes:
-        responder: TokenChartValidationResponder
+        responder: ParticipationValidationResponder
         
     Provides:
         -   def extract_model(
-                    request: TokenChartValidationRequest
+                    request: ParticipationValidationRequest
             ) -> ValidationResult[Token]
             
         -   def extract_blueprint(
-                    request: TokenChartValidationRequest
+                    request: ParticipationValidationRequest
             ) -> ValidationResult[TokenBlueprint]
 
     Super Class:
@@ -51,23 +51,23 @@ class TokenChartValidationResponseWrapper(
     
     def __init__(
             self,
-            responder: Optional[TokenChartValidationResponder] | None = None,
+            responder: Optional[ParticipationValidationResponder] | None = None,
     ):
         """
         Args:
-            responder: Optional[TokenChartValidationResponder]
+            responder: Optional[ParticipationValidationResponder]
         """
-        super().__init__(responder=responder or TokenChartValidationResponder())
+        super().__init__(responder=responder or ParticipationValidationResponder())
     
     @property
-    def responder(self) -> TokenChartValidationResponder:
-        return cast(TokenChartValidationResponder, super().responder)
+    def responder(self) -> ParticipationValidationResponder:
+        return cast(ParticipationValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor
     def extract_model(
             self, 
-            request: TokenChartValidationRequest,
+            request: WalkValidationRequest,
     ) -> ValidationResult[Participation]:
         """
         Extract a Token safe to use.
@@ -78,11 +78,11 @@ class TokenChartValidationResponseWrapper(
             2.  Otherwise, extract the Token from the success response then send it 
                 to the client.
         Args:
-            request: TokenChartValidationRequest
+            request: ParticipationValidationRequest
         Result:
             ValidationResult[Token]
         Raises:
-            TokenChartValidationResponseWrapperException
+            ParticipationValidationResponseWrapperException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -91,23 +91,23 @@ class TokenChartValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenChartValidationResponseWrapperException(
+                ParticipationValidationResponseWrapperException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenChartValidationResponseWrapperException.MSG,
-                    err_code=TokenChartValidationResponseWrapperException.ERR_CODE,
+                    msg=ParticipationValidationResponseWrapperException.MSG,
+                    err_code=ParticipationValidationResponseWrapperException.ERR_CODE,
                     ex=result.exception,
                 )
             )
-        response = cast(TokenChartValidationResponse, result)
+        response = cast(ParticipationValidationResponse, result)
         if not response.valid_chart:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenChartValidationResponderException(
+                ParticipationValidationResponderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenChartValidationResponderException.MSG,
-                    err_code=TokenChartValidationResponderException.ERR_CODE,
+                    msg=ParticipationValidationResponderException.MSG,
+                    err_code=ParticipationValidationResponderException.ERR_CODE,
                     ex=TokenCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -123,8 +123,8 @@ class TokenChartValidationResponseWrapper(
     @LoggingLevelRouter.monitor
     def extract_blueprint(
             self,
-            request: TokenChartValidationRequest,
-    ) -> ValidationResult[TokenChartBlueprint]:
+            request: WalkValidationRequest,
+    ) -> ValidationResult[ParticipationBlueprint]:
         """
         Extract a TokenBlueprint safe to use.
 
@@ -134,11 +134,11 @@ class TokenChartValidationResponseWrapper(
             2.  Otherwise, extract the TokenBluprint from the success response
                 then send it to the client.
         Args:
-            request: TokenChartValidationRequest
+            request: ParticipationValidationRequest
         Result:
             ValidationResult[TokenBlueprint]
         Raises:
-            TokenChartValidationResponseWrapperException
+            ParticipationValidationResponseWrapperException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -147,23 +147,23 @@ class TokenChartValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenChartValidationResponseWrapperException(
+                ParticipationValidationResponseWrapperException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenChartValidationResponseWrapperException.MSG,
-                    err_code=TokenChartValidationResponseWrapperException.ERR_CODE,
+                    msg=ParticipationValidationResponseWrapperException.MSG,
+                    err_code=ParticipationValidationResponseWrapperException.ERR_CODE,
                     ex=result.exception,
                 )
             )
-        response = cast(TokenChartValidationResponse, result)
+        response = cast(ParticipationValidationResponse, result)
         if not response.valid_token:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenChartValidationResponderException(
+                ParticipationValidationResponderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenChartValidationResponderException.MSG,
-                    err_code=TokenChartValidationResponderException.ERR_CODE,
+                    msg=ParticipationValidationResponderException.MSG,
+                    err_code=ParticipationValidationResponderException.ERR_CODE,
                     ex=TokenCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -173,5 +173,5 @@ class TokenChartValidationResponseWrapper(
                 )
             )
         # --- Send the work product. ---#
-        blueprint = cast(TokenChartBlueprint, response.valid_blueprint)
+        blueprint = cast(ParticipationBlueprint, response.valid_blueprint)
         return ValidationResult.success(blueprint)

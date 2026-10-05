@@ -27,8 +27,8 @@ class ParticipationValidatorToolkit(ChartValidatorToolkit[Participation]):
         1.  Single source of truth for attribute validators and type metadata.
 
     Attributes:
-            wrapper: TokenChartDependency
-            metadata: TokenChartManifest
+            wrapper: ParticipationDependency
+            metadata: ParticipationManifest
 
     Provides:
 
@@ -42,8 +42,8 @@ class ParticipationValidatorToolkit(ChartValidatorToolkit[Participation]):
             metadata: Optional[ParticipationManifest] | None = None,
     ):
         """
-            wrapper: Optional[TokenChartDependency]
-            metadata: Optional[TokenChartManifest]
+            wrapper: Optional[ParticipationDependency]
+            metadata: Optional[ParticipationManifest]
         """
         super().__init__(
             wrapper=wrapper or ParticipationDependency(),

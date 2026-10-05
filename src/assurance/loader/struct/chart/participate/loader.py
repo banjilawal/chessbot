@@ -13,13 +13,13 @@ from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
 from assurance import ChartLoader, ParticipationValidatorToolkit
-from domain import Participation, TokenChartPrimeExtract
+from domain import Participation, ParticipationPrimeExtract
 from err import (
-    TokenChartCarrierEmptyException, TokenChartLoaderException,
-    TokenChartValidationRequestNullException
+    ParticipationCarrierEmptyException, ParticipationLoaderException,
+    ParticipationValidationRequestNullException
 )
-from exchange import TokenChartValidationRequest
-from transit import TokenChartCarrier
+from exchange import WalkValidationRequest
+from transit import ParticipationCarrier
 
 from util import LoggingLevelRouter
 
@@ -31,17 +31,17 @@ class ParticipationLoader(ChartLoader[Participation]):
 
     Responsibilities:
         1.  Run type safety checks on a Candidate for:
-            -   TokenChartValidationRequest
-            -   TokenChartCarrier
-            -   TokenChartBlueprint
+            -   ParticipationValidationRequest
+            -   ParticipationCarrier
+            -   ParticipationBlueprint
 
     Attributes:
-        toolkit: TokenChartValidatorToolkit
+        toolkit: ParticipationValidatorToolkit
 
     Provides:
         -   def execute(
                     candidate: Any
-            ) -> ValidationResult[TokenChartPrimeExtract[T]
+            ) -> ValidationResult[ParticipationPrimeExtract[T]
 
     Super Class:
         ChartLoader
@@ -53,7 +53,7 @@ class ParticipationLoader(ChartLoader[Participation]):
     ):
         """
         Args:
-            toolkit: Optional[TokenChartValidatorToolkit]
+            toolkit: Optional[ParticipationValidatorToolkit]
         """
         super().__init__(toolkit=toolkit or ParticipationValidatorToolkit())
     
@@ -62,49 +62,49 @@ class ParticipationLoader(ChartLoader[Participation]):
         return cast(ParticipationValidatorToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[TokenChartPrimeExtract]:
+    def execute(self, candidate: Any) -> ValidationResult[ParticipationPrimeExtract]:
         """
-        Extract the TokenChartBlueprint to validate the candidate.
+        Extract the ParticipationBlueprint to validate the candidate.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                -   The candidate is null or not a TokenChartValidatorRequest.
+                -   The candidate is null or not a ParticipationValidatorRequest.
                 -   The request payload is either:
                         -   Null
-                        -   Not a TokenChartCarrier
-                        -   An empty TokenChartCarrier.
+                        -   Not a ParticipationCarrier
+                        -   An empty ParticipationCarrier.
                 -   A blueprint cannot be extracted from the carrier.
-            2.  Otherwise, pack the original carrier and the blueprint in a TokenChartPrimeExtract
+            2.  Otherwise, pack the original carrier and the blueprint in a ParticipationPrimeExtract
                 for the success result.
         Args:
             candidate: Any
         Returns:
-            ValidationResult[TokenChartPrimeExtract]
+            ValidationResult[ParticipationPrimeExtract]
         Raises:
-            TokenChartLoaderException
+            ParticipationLoaderException
         """
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is null or the rong type.
         priming_result = self.toolkit.priming_validator.execute(
             candidate=candidate,
-            target_model=TokenChartValidationRequest,
-            null_exception=TokenChartValidationRequestNullException(),
+            target_model=WalkValidationRequest,
+            null_exception=ParticipationValidationRequestNullException(),
         )
         if priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenChartLoaderException(
+                ParticipationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenChartLoaderException.MSG,
-                    err_code=TokenChartLoaderException.ERR_CODE,
+                    msg=ParticipationLoaderException.MSG,
+                    err_code=ParticipationLoaderException.ERR_CODE,
                     ex=priming_result.exception,
                 )
             )
         # --- Cast priming_result to request for additional tests. ---#
-        request = cast(Type[TokenChartValidationRequest], priming_result.payload)
+        request = cast(Type[WalkValidationRequest], priming_result.payload)
         
         # Handle the case that request.item is the wrong carrier type.
         carrier_validation = self.toolkit.priming_validator.execute(
@@ -115,35 +115,35 @@ class ParticipationLoader(ChartLoader[Participation]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenChartLoaderException(
+                ParticipationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenChartLoaderException.MSG,
-                    err_code=TokenChartLoaderException.ERR_CODE,
+                    msg=ParticipationLoaderException.MSG,
+                    err_code=ParticipationLoaderException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
         # --- Cast carrier_validation payload to carrier then extract blueprint. ---#
-        carrier = cast(TokenChartCarrier, carrier_validation.payload)
+        carrier = cast(ParticipationCarrier, carrier_validation.payload)
         blueprint = carrier.extract_blueprint()
         
         # Handle the case that the blueprint is null.
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenChartLoaderException(
+                ParticipationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenChartLoaderException.MSG,
-                    err_code=TokenChartLoaderException.ERR_CODE,
-                    ex=TokenChartCarrierEmptyException(
+                    msg=ParticipationLoaderException.MSG,
+                    err_code=ParticipationLoaderException.ERR_CODE,
+                    ex=ParticipationCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TokenChartCarrierEmptyException.MSG,
-                        err_code=TokenChartCarrierEmptyException.ERR_CODE,
+                        msg=ParticipationCarrierEmptyException.MSG,
+                        err_code=ParticipationCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )
         # --- Send the work product. ---#
-        extract = TokenChartPrimeExtract(carrier=carrier, blueprint=blueprint)
+        extract = ParticipationPrimeExtract(carrier=carrier, blueprint=blueprint)
         return ValidationResult.success(extract)

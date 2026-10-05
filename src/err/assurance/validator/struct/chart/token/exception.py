@@ -17,17 +17,17 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# TOKEN_CHART_VALIDATOR_FAILURE #======================#
-    "TokenChartValidatorException",
+    "ParticipationValidatorException",
 ]
 
 # ======================# TOKEN_CHART_VALIDATOR_FAILURE #======================#
-class TokenChartValidatorException(ChartValidatorException):
+class ParticipationValidatorException(ChartValidatorException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a TokenChartValidator failed.
+        1.  Indicating assurance by a ParticipationValidator failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class TokenChartValidatorException(ChartValidatorException):
     Super Class:
         ChartValidatorException
     """
-    MSG = "TokenChartValidator failure."
+    MSG = "ParticipationValidator failure."
     ERR_CODE = "TOKEN_CHART_VALIDATOR_FAILURE"
     
     def __init__(

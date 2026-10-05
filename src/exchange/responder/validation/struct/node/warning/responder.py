@@ -1,7 +1,7 @@
-# src/exchange/responder/validation/struct/node/warning/exchange.py
+# src/exchange/responder/validation/struct/node/warning/responder.py
 
 """
-Module: exchange.responder.validation.struct.node.warning.exchange
+Module: exchange.responder.validation.struct.node.warning.responder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

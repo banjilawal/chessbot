@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import ChartTypeUnion, Participation, TokenChartBlueprint
+from domain import ChartTypeUnion, Participation, ParticipationBlueprint
 from transit import EntityCarrier
 
 class ParticipationTypeUnion(ChartTypeUnion[Participation]):
@@ -21,34 +21,34 @@ class ParticipationTypeUnion(ChartTypeUnion[Participation]):
         - Metadata
 
     Responsibilities:
-        1. Catalog of types associated with building and validating a TokenChart.
+        1. Catalog of types associated with building and validating a Participation.
 
     Attributes:
-        model: Type[TokenChart]
-        carrier: Type[EntityCarrier[TokenChart]]
-        blueprint: Type[TokenChartBlueprint]
+        model: Type[Participation]
+        carrier: Type[EntityCarrier[Participation]]
+        blueprint: Type[ParticipationBlueprint]
         
     Provides:
 
     Super Class:
-        TokenChartTypeUnion
+        ParticipationTypeUnion
     """
     
     def __init__(
             self,
             carrier: Type[EntityCarrier[Participation]],
             model: Optional[Type[Participation]] | None = None,
-            blueprint: Optional[Type[TokenChartBlueprint]] | None = None,
+            blueprint: Optional[Type[ParticipationBlueprint]] | None = None,
     ):
         """
         Args:
-            model: Type[TokenChart]
-            carrier: Type[EntityCarrier[TokenChart]]
-            blueprint: Type[TokenChartBlueprint]
+            model: Type[Participation]
+            carrier: Type[EntityCarrier[Participation]]
+            blueprint: Type[ParticipationBlueprint]
         """
         super().__init__(
             model=model or Participation,
-            blueprint=blueprint or TokenChartBlueprint,
+            blueprint=blueprint or ParticipationBlueprint,
             carrier=carrier,
         )
         
@@ -61,5 +61,5 @@ class ParticipationTypeUnion(ChartTypeUnion[Participation]):
         return cast(Type[EntityCarrier[Participation]], super().carrier)
     
     @property
-    def blueprint(self) -> Type[TokenChartBlueprint]:
-        return cast(Type[TokenChartBlueprint], super().model)
+    def blueprint(self) -> Type[ParticipationBlueprint]:
+        return cast(Type[ParticipationBlueprint], super().model)

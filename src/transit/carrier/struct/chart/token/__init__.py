@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .carrier import TokenChartCarrier
+from .carrier import ParticipationCarrier

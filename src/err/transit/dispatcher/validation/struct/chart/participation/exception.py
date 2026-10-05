@@ -1,7 +1,7 @@
-# src/err/transit/dispatcher/validation/struct/chart/walk/exception.py
+# src/err/transit/dispatcher/validation/struct/chart/participate/exception.py
 
 """
-Module: err.transit.dispatcher.validation.struct.chart.walk.exception
+Module: err.transit.dispatcher.validation.struct.chart.participate.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -12,21 +12,23 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ChartChartValidationDispatcherException
+from err import ChartValidationDispatcherException
 
 __all__ = [
-    # ======================# COORD_CHART_VALIDATION_DISPATCHER_FAILURE #======================#
-    "WalkValidationDispatcherException",
+    # ======================# PARTICIPATION_VALIDATION_DISPATCHER_FAILURE #======================#
+    "ParticipationValidationDispatcherException",
 ]
 
-# ======================# COORD_CHART_VALIDATION_DISPATCHER_FAILURE #======================#
-class WalkValidationDispatcherException(ChartChartValidationDispatcherException):
+# ======================# PARTICIPATION_VALIDATION_DISPATCHER_FAILURE #======================#
+class ParticipationValidationDispatcherException(
+    ChartValidationDispatcherException
+):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a WalkValidationDispatcher encountered an error.
+        1.  Indicating a ParticipationValidationDispatcher encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +45,8 @@ class WalkValidationDispatcherException(ChartChartValidationDispatcherException)
     Super Class:
         ChartValidationDispatcherException
     """
-    MSG = "WalkValidationDispatcher failure."
-    ERR_CODE = "COORD_CHART_VALIDATION_DISPATCHER_FAILURE"
+    MSG = "ParticipationValidationDispatcher failure."
+    ERR_CODE = "PARTICIPATION_VALIDATION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

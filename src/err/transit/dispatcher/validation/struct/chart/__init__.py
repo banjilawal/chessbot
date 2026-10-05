@@ -10,8 +10,8 @@ version: 1.0.0
 # =========== ERR.TRANSIT.DISPATCHER.VALIDATION.STRUCT.CHART PACKAGE ===========#
 
 # Packages
-from .coord import *
-from .token import *
+from .participation import *
+from .walk import *
 
 # Modules
 from .exception import ChartValidationDispatcherException

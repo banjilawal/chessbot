@@ -50,6 +50,6 @@ class WalkValidationRequest(ChartValidationRequest[Walk]):
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, ChartValidationRequest):
+        if isinstance(other, WalkValidationRequest):
             return self.id == other.id
         return False

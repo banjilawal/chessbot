@@ -16,17 +16,17 @@ from err import ChartValidationResponderException
 
 __all__ = [
     # ======================# TOKEN_VALIDATION_RESPONDER_FAILURE #======================#
-    "TokenChartValidationResponderException",
+    "ParticipationValidationResponderException",
 ]
 
 # ======================# TOKEN_VALIDATION_RESPONDER_FAILURE #======================#
-class TokenChartValidationResponderException(ChartValidationResponderException):
+class ParticipationValidationResponderException(ChartValidationResponderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a TokenChartValidationResponder encountered and error.
+        1.  Indicating a ParticipationValidationResponder encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class TokenChartValidationResponderException(ChartValidationResponderException):
     Super Class:
         ChartValidationResponderException
     """
-    MSG = "TokenChartValidationResponder error."
+    MSG = "ParticipationValidationResponder error."
     ERR_CODE = "TOKEN_VALIDATION_RESPONDER_FAILURE"
     
     def __init__(

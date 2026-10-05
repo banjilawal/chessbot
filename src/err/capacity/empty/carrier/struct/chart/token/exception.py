@@ -16,17 +16,17 @@ from err import EmptyChartCarrierException
 
 __all__ = [
     # ======================# TOKEN_CHART_CARRIER_EMPTY_ERROR #======================#
-    "TokenChartCarrierEmptyException",
+    "ParticipationCarrierEmptyException",
 ]
 
 # ======================# TOKEN_CHART_CARRIER_EMPTY_ERROR #======================#
-class TokenChartCarrierEmptyException(EmptyChartCarrierException):
+class ParticipationCarrierEmptyException(EmptyChartCarrierException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a TokenChartCarrier is empty.
+        1.  Indicating a ParticipationCarrier is empty.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class TokenChartCarrierEmptyException(EmptyChartCarrierException):
     Super Class:
         EmptyChartCarrierException
     """
-    MSG = "TokenChartCarrier cannot be empty."
+    MSG = "ParticipationCarrier cannot be empty."
     ERR_CODE = "TOKEN_CHART_CARRIER_EMPTY_ERROR"
     
     def __init__(

@@ -17,17 +17,17 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# TOKEN_CHART_CONSISTENCY_ERROR #======================#
-    "TokenChartConsistencyException",
+    "ParticipationConsistencyException",
 ]
 
 # ======================# TOKEN_CHART_CONSISTENCY_ERROR #======================#
-class TokenChartConsistencyException(ChartConsistencyException):
+class ParticipationConsistencyException(ChartConsistencyException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a TokenChart consistency check failed.
+        1.  Indicating a Participation consistency check failed.
 
     Attributes:
             msg: Optional[str]
@@ -44,7 +44,7 @@ class TokenChartConsistencyException(ChartConsistencyException):
     Super Class:
         ChartConsistencyException
     """
-    MSG = "TokenChart consistency check failed."
+    MSG = "Participation consistency check failed."
     ERR_CODE = "TOKEN_CHART_CONSISTENCY_ERROR"
     
     def __init__(

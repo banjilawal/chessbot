@@ -12,22 +12,22 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from domain import Token, ChartBlueprint, Participation
-from err import TokenChartNullException
+from err import ParticipationNullException
 
 
-class TokenChartBlueprint(ChartBlueprint[Participation]):
+class ParticipationBlueprint(ChartBlueprint[Participation]):
     """
      Role:
         1.  Metadata
 
      Responsibilities:
-         1.  Provide attributes for hydrating a TokenChart.
+         1.  Provide attributes for hydrating a Participation.
 
      Attributes:
         victim: Token
         attacker: Token
-        Optional[Type[TokenChart]]
-        domain_null_exception: Optional[TokenChartNullException]
+        Optional[Type[Participation]]
+        domain_null_exception: Optional[ParticipationNullException]
 
      Provides:
 
@@ -42,18 +42,18 @@ class TokenChartBlueprint(ChartBlueprint[Participation]):
             victim: Token,
             attacker: Token,
             domain_class: Optional[Type[Participation]] | None = None,
-            domain_null_exception: Optional[TokenChartNullException] | None = None,
+            domain_null_exception: Optional[ParticipationNullException] | None = None,
     ):
         """
         Args:
             victim: Token
             attacker: Token
-            Optional[Type[TokenChart]]
-            domain_null_exception: Optional[TokenChartNullException]
+            Optional[Type[Participation]]
+            domain_null_exception: Optional[ParticipationNullException]
         """
         super().__init__(
             domain_class=domain_class or Participation,
-            domain_null_exception=domain_null_exception or TokenChartNullException(),
+            domain_null_exception=domain_null_exception or ParticipationNullException(),
         )
         self._victim = victim
         self._attacker = attacker
@@ -71,7 +71,7 @@ class TokenChartBlueprint(ChartBlueprint[Participation]):
         return cast(Type[Participation], super().domain_class)
     
     @property
-    def domain_null_exception(self) -> TokenChartNullException:
-        return cast(TokenChartNullException, super().domain_null_exception)
+    def domain_null_exception(self) -> ParticipationNullException:
+        return cast(ParticipationNullException, super().domain_null_exception)
     
     

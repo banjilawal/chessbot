@@ -10,8 +10,8 @@ version: 0.0.2
 # =========== TRANSIT.DISPATCHER.VALIDATOR.CHART PACKAGE ===========#
 
 # Packages
-from .coord import *
-from .token import *
+from .participation import *
+from .walk import *
 
 # Module
 from .dispatcher import ChartValidationDispatcher

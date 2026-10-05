@@ -11,27 +11,27 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from assurance import TokenChartValidator
-from domain.struct.chart import Participation
 from artifcat import ValidationResult
-from transit import TokenChartCarrier
+from assurance import ParticipationValidator
+from domain import Participation
+from err import ParticipationValidationDispatcherException
+from transit import ChartValidationDispatcher, ParticipationCarrier
 from util import LoggingLevelRouter
-from transit.dispatcher.validator import ChartValidationDispatcher
 
 
-class TokenChartValidationDispatcher(ChartValidationDispatcher[Participation]):
+class ParticipationValidationDispatcher(ChartValidationDispatcher[Participation]):
     """
     Role
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a TokenChart instance is certified safe, reliable, and consistent before use.
+        1.  Ensure a Participation instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        validator: TokenChartValidator
+        validator: ParticipationValidator
 
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult{TokenChart]
+        -   def execute(candidate: Any) -> ValidationResult{Participation]
 
     Super Class:
         ChartValidator
@@ -39,31 +39,31 @@ class TokenChartValidationDispatcher(ChartValidationDispatcher[Participation]):
     
     def __init__(
             self,
-            validator: TokenChartValidator | None = TokenChartValidator(),
+            validator: ParticipationValidator | None = None,
     ):
-        super().__init__(validator=validator or TokenChartValidator())
+        super().__init__(validator=validator or ParticipationValidator())
         
     @property
-    def validator(self) -> TokenChartValidator:
-        return cast(TokenChartValidator, super().validator)
+    def validator(self) -> ParticipationValidator:
+        return cast(ParticipationValidator, super().validator)
     
 
     @LoggingLevelRouter.monitor
-    def execute(self, job: Any) -> ValidationResult[TokenChartCarrier]:
+    def execute(self, job: Any) -> ValidationResult[ParticipationCarrier]:
         """
-        Verify the object is a TokenChart that is safe to use.
+        Verify the object is a Participation that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if the candidate fails a
                 validator test..
-            2.  Otherwise, cast the payload into a TokenChart and send in the success result.
+            2.  Otherwise, cast the payload into a Participation and send in the success result.
                 success result.
         Args:
             job: Any
         Returns:
-            ValidationResult[TokenChart]
+            ValidationResult[Participation]
         Raises:
-             TokenChartValidationDispatcherException
+             ParticipationValidationDispatcherException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -72,15 +72,15 @@ class TokenChartValidationDispatcher(ChartValidationDispatcher[Participation]):
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenChartValidationDispatcherException(
+                ParticipationValidationDispatcherException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenChartValidationDispatcherException.MSG,
-                    err_code=TokenChartValidationDispatcherException.ERR_CODE,
+                    msg=ParticipationValidationDispatcherException.MSG,
+                    err_code=ParticipationValidationDispatcherException.ERR_CODE,
                     ex=validation.exception,
                 )
             )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(
-            cast(TokenChartCarrier, validation.payload)
+            cast(ParticipationCarrier, validation.payload)
         )

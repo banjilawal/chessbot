@@ -13,8 +13,8 @@ from typing import Optional, cast
 
 from domain import ChartNullGroup, Participation
 from err import (
-    TokenChartBlueprintNullException, TokenChartCarrierNullException,
-    TokenChartNullException
+    ParticipationBlueprintNullException, ParticipationCarrierNullException,
+    ParticipationNullException
 )
 
 
@@ -24,12 +24,12 @@ class ParticipationNullGroup(ChartNullGroup[Participation]):
         - Metadata
 
     Responsibilities:
-        1. Catalog of NullExceptions associated with a TokenChart's integrity cycle.
+        1. Catalog of NullExceptions associated with a Participation's integrity cycle.
 
     Attributes:
-        model: TokenChartNullException
-        carrier: TokenChartCarrierNullException
-        blueprint:TokenChartBlueprintNullException
+        model: ParticipationNullException
+        carrier: ParticipationCarrierNullException
+        blueprint:ParticipationBlueprintNullException
 
     Provides:
 
@@ -40,34 +40,34 @@ class ParticipationNullGroup(ChartNullGroup[Participation]):
     
     def __init__(
             self,
-            model: Optional[TokenChartNullException] | None = None,
-            carrier: Optional[TokenChartCarrierNullException] | None = None,
-            blueprint: Optional[TokenChartBlueprintNullException] | None = None,
+            model: Optional[ParticipationNullException] | None = None,
+            carrier: Optional[ParticipationCarrierNullException] | None = None,
+            blueprint: Optional[ParticipationBlueprintNullException] | None = None,
     ):
         """
         Args:
-            model: Optional[TokenChartNullException]
-            carrier: Optional[TokenChartCarrierNullException]
-            blueprint: Optional[TokenChartBlueprintNullException]
+            model: Optional[ParticipationNullException]
+            carrier: Optional[ParticipationCarrierNullException]
+            blueprint: Optional[ParticipationBlueprintNullException]
         """
         super().__init__(
-            model=model or TokenChartNullException(),
-            carrier=carrier or TokenChartCarrierNullException(),
-            blueprint=blueprint or TokenChartBlueprintNullException(),
+            model=model or ParticipationNullException(),
+            carrier=carrier or ParticipationCarrierNullException(),
+            blueprint=blueprint or ParticipationBlueprintNullException(),
         )
         
     @property
-    def struct(self) -> TokenChartNullException:
-        return cast(TokenChartNullException, super().model)
+    def struct(self) -> ParticipationNullException:
+        return cast(ParticipationNullException, super().model)
     
     @property
-    def model(self) -> TokenChartNullException:
+    def model(self) -> ParticipationNullException:
         return self.struct
     
     @property
-    def carrier(self) -> TokenChartCarrierNullException:
-        return cast(TokenChartCarrierNullException, super().carrier)
+    def carrier(self) -> ParticipationCarrierNullException:
+        return cast(ParticipationCarrierNullException, super().carrier)
     
     @property
-    def blueprint(self) -> TokenChartBlueprintNullException:
-        return cast(TokenChartBlueprintNullException, super().blueprint)
+    def blueprint(self) -> ParticipationBlueprintNullException:
+        return cast(ParticipationBlueprintNullException, super().blueprint)

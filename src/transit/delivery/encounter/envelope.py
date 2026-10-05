@@ -27,7 +27,7 @@ class RootEncounterEnvelope(ProductEnvelope[Encounter]):
         id: int
         location: Square
         attacker_reward: int
-        participants: TokenChart
+        participants: Participation
         attacker_maneuver: Maneuver
         prime_extract: EncounterPrimeExtract
 
@@ -55,7 +55,7 @@ class RootEncounterEnvelope(ProductEnvelope[Encounter]):
             id: int
             location: Square
             attacker_reward: int
-            participants: TokenChart
+            participants: Participation
             attacker_maneuver: Maneuver
             prime_extract: EncounterPrimeExtract
         """

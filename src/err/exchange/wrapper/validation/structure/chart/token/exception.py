@@ -16,11 +16,11 @@ from err import ChartValidationResponseWrapperException
 
 __all__ = [
     # ======================# TOKEN_CHART_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-    "TokenChartValidationResponseWrapperException",
+    "ParticipationValidationResponseWrapperException",
 ]
 
 # ======================# TOKEN_CHART_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-class TokenChartValidationResponseWrapperException(
+class ParticipationValidationResponseWrapperException(
     ChartValidationResponseWrapperException
 ):
     """
@@ -28,7 +28,7 @@ class TokenChartValidationResponseWrapperException(
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a TokenChartValidationResponseWrapper encountered and error.
+        1.  Indicating a ParticipationValidationResponseWrapper encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -45,7 +45,7 @@ class TokenChartValidationResponseWrapperException(
     Super Class:
         ChartValidationResponseWrapperException
     """
-    MSG = "TokenChartValidationResponseWrapper error."
+    MSG = "ParticipationValidationResponseWrapper error."
     ERR_CODE = "TOKEN_CHART_VALIDATION_RESPONSE_WRAPPER_FAILURE"
     
     def __init__(

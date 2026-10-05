@@ -1,7 +1,7 @@
-# src/exchange/responder/validation/model/scalar/exchange.py
+# src/exchange/responder/validation/model/scalar/responder.py
 
 """
-Module: exchange.responder.validation.model.scalar.exchange
+Module: exchange.responder.validation.model.scalar.responder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

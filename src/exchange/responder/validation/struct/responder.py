@@ -1,7 +1,7 @@
-# src/exchange/responder/validation/struct/exchange.py
+# src/exchange/responder/validation/struct/responder.py
 
 """
-Module: exchange.responder.validation.struct.exchange
+Module: exchange.responder.validation.struct.responder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

@@ -16,17 +16,17 @@ from err import ChartValidationRequestNullException
 
 __all__ = [
     # ======================# TOKEN_CHART_VALIDATION_REQUEST_NULL_ERROR #======================#
-    "TokenChartValidationRequestNullException",
+    "ParticipationValidationRequestNullException",
 ]
 
 # ======================# TOKEN_CHART_VALIDATION_REQUEST_NULL_ERROR #======================#
-class TokenChartValidationRequestNullException(ChartValidationRequestNullException):
+class ParticipationValidationRequestNullException(ChartValidationRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a TokenChartValidationRequest is null.
+        1.  Indicating that a ParticipationValidationRequest is null.
 
     Attributes:
             msg: Optional[str]
@@ -43,7 +43,7 @@ class TokenChartValidationRequestNullException(ChartValidationRequestNullExcepti
     Super Class:
         ChartValidationRequestNullException
     """
-    MSG = "TokenChartValidationRequest cannot be null."
+    MSG = "ParticipationValidationRequest cannot be null."
     ERR_CODE = "TOKEN_CHART_VALIDATION_REQUEST_NULL_ERROR"
     
     def __init__(

@@ -11,21 +11,21 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Participation, TokenChartBlueprint, ChartPrimeExtract
-from transit import TokenChartCarrier
+from domain import Participation, ParticipationBlueprint, ChartPrimeExtract
+from transit import ParticipationCarrier
 
 
-class TokenChartPrimeExtract(ChartPrimeExtract[Participation]):
+class ParticipationPrimeExtract(ChartPrimeExtract[Participation]):
     """
     Role
         - Data Holder
 
     Responsibilities:
-        1.  Persist Blueprint and Carrier data for TokenChartValidator.
+        1.  Persist Blueprint and Carrier data for ParticipationValidator.
 
     Attributes:
-        carrier: TokenChartCarrier
-        blueprint: Optional[TokenChartBlueprint]
+        carrier: ParticipationCarrier
+        blueprint: Optional[ParticipationBlueprint]
 
     Provides:
 
@@ -35,20 +35,20 @@ class TokenChartPrimeExtract(ChartPrimeExtract[Participation]):
 
     def __init__(
             self,
-            carrier: TokenChartCarrier,
-            blueprint: Optional[TokenChartBlueprint] | None = None,
+            carrier: ParticipationCarrier,
+            blueprint: Optional[ParticipationBlueprint] | None = None,
     ):
         """
         Args:
-            carrier: TokenChartCarrier
-            blueprint: Optional[TokenChartBlueprint]
+            carrier: ParticipationCarrier
+            blueprint: Optional[ParticipationBlueprint]
         """
         super().__init__(carrier=carrier, blueprint=blueprint)
         
     @property
-    def carrier(self) -> TokenChartCarrier:
-        return cast(TokenChartCarrier, super().carrier)
+    def carrier(self) -> ParticipationCarrier:
+        return cast(ParticipationCarrier, super().carrier)
     
     @property
-    def blueprint(self) -> Optional[TokenChartBlueprint]:
-        return cast(TokenChartBlueprint, super().blueprint)
+    def blueprint(self) -> Optional[ParticipationBlueprint]:
+        return cast(ParticipationBlueprint, super().blueprint)

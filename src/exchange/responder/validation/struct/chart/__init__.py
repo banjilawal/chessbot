@@ -10,8 +10,8 @@ version: 0.0.2
 # =========== EXCHANGE.RESPONDER.VALIDATION.STRUCT.CHART PACKAGE ===========#
 
 # Packages
-from .coord import *
-from .token import *
+from .walk import *
+from .participate import *
 
 # Modules
 from .responder import ChartValidationResponder

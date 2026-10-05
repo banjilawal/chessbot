@@ -1,7 +1,7 @@
-# src/exchange/responder/validation/struct/chart/walk/exchange.py
+# src/exchange/responder/validation/struct/chart/walk/responder.py
 
 """
-Module: exchange.responder.validation.struct.chart.walk.exchange
+Module: exchange.responder.validation.struct.chart.walk.responder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,11 +11,8 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import ValidationResult, WalkValidationResponse
 from domain import Walk
-from exchange import ChartValidationResponder, WalkValidationRequest
-from err import WalkValidationResponderException
-from transit import CoordCarrier, WalkCarrier, WalkValidationDispatcher
+from exchange import ChartValidationResponder
 from util import LoggingLevelRouter
 
 

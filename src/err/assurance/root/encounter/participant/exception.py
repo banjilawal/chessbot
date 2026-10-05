@@ -17,11 +17,11 @@ from err import AssuranceException
 
 __all__ = [
     # ======================# ENCOUNTER_PARTICIPANT_VALIDATOR_FAILURE #======================#
-    "TokenChartValidatorException",
+    "ParticipationValidatorException",
 ]
 
 # ======================# ENCOUNTER_PARTICIPANT_VALIDATOR_FAILURE #======================#
-class TokenChartValidatorException(AssuranceException):
+class ParticipationValidatorException(AssuranceException):
     """
     Role:
         - Error Tracing

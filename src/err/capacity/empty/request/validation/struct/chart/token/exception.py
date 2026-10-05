@@ -17,11 +17,11 @@ from err import ChartValidationRequestEmptyException
 
 __all__ = [
     # ======================# TOKEN_CHART_VALIDATION_REQUEST_EMPTY_ERROR #======================#
-    "TokenChartValidationRequestEmptyException",
+    "ParticipationValidationRequestEmptyException",
 ]
 
 # ======================# TOKEN_CHART_VALIDATION_REQUEST_EMPTY_ERROR #======================#
-class TokenChartValidationRequestEmptyException(
+class ParticipationValidationRequestEmptyException(
     ChartValidationRequestEmptyException
 ):
     """
@@ -29,7 +29,7 @@ class TokenChartValidationRequestEmptyException(
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a TokenChartValidationRequest is empty.
+        1.  Indicating a ParticipationValidationRequest is empty.
 
     Attributes:
         msg: Optional[str]
@@ -46,7 +46,7 @@ class TokenChartValidationRequestEmptyException(
     Super Class:
         ChartValidationRequestEmptyException
     """
-    MSG = "The TokenChartValidationRequest is empty."
+    MSG = "The ParticipationValidationRequest is empty."
     ERR_CODE = "TOKEN_CHART_VALIDATION_REQUEST_EMPTY_ERROR"
     
     def __init__(

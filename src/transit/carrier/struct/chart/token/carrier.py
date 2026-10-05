@@ -11,25 +11,25 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Participation, TokenChartBlueprint
+from domain import Participation, ParticipationBlueprint
 from transit import ChartCarrier
 
 
-class TokenChartCarrier(ChartCarrier[Participation]):
+class ParticipationCarrier(ChartCarrier[Participation]):
     """
     Role:
         - Boundary Carrier Interface
 
     Responsibilities:
-        1.  Transport a hydrated TokenChart its Blueprint.
+        1.  Transport a hydrated Participation its Blueprint.
 
     Attributes:
         has_model: bool
         has_blueprint: bool
-        entity: [TokenChart | TokenChartBlueprint]
+        entity: [Participation | ParticipationBlueprint]
 
     Provides:
-        -   def extract_blueprint() -> Optional[TokenChartBlueprint]
+        -   def extract_blueprint() -> Optional[ParticipationBlueprint]
 
     Super Class:
         ChartCarrier
@@ -38,23 +38,23 @@ class TokenChartCarrier(ChartCarrier[Participation]):
     def __init__(
             self,
             model: Optional[Participation] | None = None,
-            blueprint: Optional[TokenChartBlueprint] | None = None,
+            blueprint: Optional[ParticipationBlueprint] | None = None,
     ):
         """
         Args:
-            model: Optional[TokenChart]
-            blueprint: Optional[TokenChartBlueprint]
+            model: Optional[Participation]
+            blueprint: Optional[ParticipationBlueprint]
         """
         super().__init__(model=model, blueprint=blueprint)
     
     @property
-    def entity(self) -> Optional[Participation | TokenChartBlueprint]:
+    def entity(self) -> Optional[Participation | ParticipationBlueprint]:
         entity = super().entity
         if entity is None:
             return None
         if self.has_model:
             return cast(Participation, entity)
-        return cast(TokenChartBlueprint, entity)
+        return cast(ParticipationBlueprint, entity)
     
     @property
     def has_model(self) -> bool:
@@ -67,17 +67,17 @@ class TokenChartCarrier(ChartCarrier[Participation]):
     def has_blueprint(self) -> bool:
         return (
                 not self.has_model and
-                isinstance(self.entity, TokenChartBlueprint)
+                isinstance(self.entity, ParticipationBlueprint)
         )
     
-    def extract_blueprint(self) -> Optional[TokenChartBlueprint]:
+    def extract_blueprint(self) -> Optional[ParticipationBlueprint]:
         if self.is_empty: return None
         if self.has_blueprint:
-            blueprint = cast(TokenChartBlueprint, self.entity)
+            blueprint = cast(ParticipationBlueprint, self.entity)
             return blueprint
         
         model = cast(Participation, self.entity)
-        return TokenChartBlueprint(
+        return ParticipationBlueprint(
             victim=model.victim,
             attacker=model.attacker,
         )

@@ -12,17 +12,18 @@ from __future__ import annotations
 from typing import List, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ParticipantReadinessValidator, TokenValidatorToolkit
+from assurance import ChartValidator, ParticipantReadinessValidator, ParticipationValidatorToolkit
 from domain import Token, Participation
 from err import (
     FriendlyFireAttackException, TokenAttackingItselfException,
-    TokenChartValidatorException, VictimNeverDeployedException
+    ParticipationValidatorException, VictimNeverDeployedException
 )
+from transit import ParticipationCarrier
 
 from util import LoggingLevelRouter
 
 
-class EncounterParticipantsValidator(ChartValidator[Participation]):
+class ParticipationValidator(ChartValidator[Participation]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -31,7 +32,7 @@ class EncounterParticipantsValidator(ChartValidator[Participation]):
         1.  Runs validation checks on fields in Encounter superclass.
 
     Attributes:
-        toolkit: TokenValidatorToolkit
+        toolkit: ParticipationValidatorToolkit
         readiness_validator: ParticipantReadinessValidator
 
     Provides:
@@ -46,27 +47,27 @@ class EncounterParticipantsValidator(ChartValidator[Participation]):
     
     def __init__(
             self,
-            toolkit: Optional[TokenValidatorToolkit] | None = None,
+            toolkit: Optional[ParticipationValidatorToolkit] | None = None,
             readiness_validator: Optional[ParticipantReadinessValidator] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[TokenValidatorToolkit]
+            toolkit: Optional[ParticipationValidatorToolkit]
             readiness_validator: Optional[ParticipantReadinessValidator]
         """
-        super().__init__(toolkit=toolkit or TokenValidatorToolkit())
+        super().__init__(toolkit=toolkit or ParticipationValidatorToolkit())
         self._readiness_validator = readiness_validator or ParticipantReadinessValidator()
         
     @property
-    def toolkit(self) -> TokenValidatorToolkit:
-        return cast(TokenValidatorToolkit, super().toolkit)
+    def toolkit(self) -> ParticipationValidatorToolkit:
+        return cast(ParticipationValidatorToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(
             self,
             victim: Token,
             attacker: Token
-    ) -> ValidationResult[Participation]:
+    ) -> ValidationResult[ParticipationCarrier]:
         """
         Assure a candidate's properties are reference for a Encounter
 
@@ -91,11 +92,11 @@ class EncounterParticipantsValidator(ChartValidator[Participation]):
         if victim == attacker:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenChartValidatorException(
+                ParticipationValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenChartValidatorException.MSG,
-                    err_code=TokenChartValidatorException.ERR_CODE,
+                    msg=ParticipationValidatorException.MSG,
+                    err_code=ParticipationValidatorException.ERR_CODE,
                     ex=TokenAttackingItselfException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -108,11 +109,11 @@ class EncounterParticipantsValidator(ChartValidator[Participation]):
         if victim.is_friend(attacker):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenChartValidatorException(
+                ParticipationValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenChartValidatorException.MSG,
-                    err_code=TokenChartValidatorException.ERR_CODE,
+                    msg=ParticipationValidatorException.MSG,
+                    err_code=ParticipationValidatorException.ERR_CODE,
                     ex=FriendlyFireAttackException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -125,11 +126,11 @@ class EncounterParticipantsValidator(ChartValidator[Participation]):
         if victim.has_never_been_deployed:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenChartValidatorException(
+                ParticipationValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenChartValidatorException.MSG,
-                    err_code=TokenChartValidatorException.ERR_CODE,
+                    msg=ParticipationValidatorException.MSG,
+                    err_code=ParticipationValidatorException.ERR_CODE,
                     ex=VictimNeverDeployedException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -145,11 +146,11 @@ class EncounterParticipantsValidator(ChartValidator[Participation]):
             if readiness_validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    TokenChartValidatorException(
+                    ParticipationValidatorException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TokenChartValidatorException.MSG,
-                        err_code=TokenChartValidatorException.ERR_CODE,
+                        msg=ParticipationValidatorException.MSG,
+                        err_code=ParticipationValidatorException.ERR_CODE,
                         ex=readiness_validation.exception,
                     )
                 )

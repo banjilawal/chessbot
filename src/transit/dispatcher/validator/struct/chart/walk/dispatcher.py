@@ -12,12 +12,11 @@ from __future__ import annotations
 from typing import Any, cast
 
 from assurance import WalkValidator
-from domain.struct.chart import Walk
 from artifcat import ValidationResult
+from domain import Walk
 from err import WalkValidationDispatcherException
-from transit import WalkCarrier
+from transit import ChartValidationDispatcher, WalkCarrier
 from util import LoggingLevelRouter
-from transit.dispatcher.validator import ChartValidationDispatcher
 
 
 class WalkValidationDispatcher(ChartValidationDispatcher[Walk]):
@@ -82,7 +81,6 @@ class WalkValidationDispatcher(ChartValidationDispatcher[Walk]):
                 )
             )
         # --- Forward the work product to the caller. ---#
-        carrier = validation.payload
         return ValidationResult.success(
             cast(WalkCarrier, validation.payload)
         )

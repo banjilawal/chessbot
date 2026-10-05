@@ -1,7 +1,7 @@
-# src/exchange/responder/validation/model/encounter/exchange.py
+# src/exchange/responder/validation/model/encounter/responder.py
 
 """
-Module: exchange.responder.validation.model.encounter.exchange
+Module: exchange.responder.validation.model.encounter.responder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

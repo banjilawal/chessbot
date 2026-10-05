@@ -13,16 +13,16 @@ from typing import cast
 
 from domain import Participation
 from exchange import ChartValidationRequest
-from transit import TokenChartCarrier
+from transit import ParticipationCarrier
 
 
-class TokenChartValidationRequest(ChartValidationRequest[Participation]):
+class ParticipationValidationRequest(ChartValidationRequest[Participation]):
     """
      Role:
          -  Messaging
 
      Responsibilities:
-        1.  Transport the collection and other objects a TokenChartValidator
+        1.  Transport the collection and other objects a ParticipationValidator
             needs to run a job.
 
      Attributes:
@@ -35,21 +35,21 @@ class TokenChartValidationRequest(ChartValidationRequest[Participation]):
         ChartValidationRequest
      """
     
-    def __init__(self, id: int, item: TokenChartCarrier):
+    def __init__(self, id: int, item: ParticipationCarrier):
         """
         Args:
             id: int
-            item: TokenChart
+            item: Participation
         """
         super().__init__(id=id, item=item)
     
     @property
-    def item(self) -> TokenChartCarrier:
-        return cast(TokenChartCarrier, super().item)
+    def item(self) -> ParticipationCarrier:
+        return cast(ParticipationCarrier, super().item)
     
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, ChartValidationRequest):
+        if isinstance(other, ParticipationValidationRequest):
             return self.id == other.id
         return False

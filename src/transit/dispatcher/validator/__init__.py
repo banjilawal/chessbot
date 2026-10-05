@@ -14,11 +14,11 @@ version: 0.0.2
 from .search import *
 from .model import *
 from .movement import *
-from .node import *
+from transit.dispatcher.validator.struct.node import *
 from .query import *
 from .space import *
 from .struct import *
-from .toggle import *
+from transit.dispatcher.validator.struct.toggle import *
 
 # Module
 from .dispatcher import ValidationDispatcher

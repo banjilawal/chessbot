@@ -17,17 +17,17 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# ENCOUNTER_TOKEN_CHART_LOADER_FAILURE #======================#
-    "TokenChartLoaderException",
+    "ParticipationLoaderException",
 ]
 
 # ======================# ENCOUNTER_TOKEN_CHART_LOADER_FAILURE #======================#
-class TokenChartLoaderException(ChartLoaderException):
+class ParticipationLoaderException(ChartLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a EncounterTokenChartLoader failed.
+        1.  Indicating assurance by a EncounterParticipationLoader failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class TokenChartLoaderException(ChartLoaderException):
     Super Class:
         ChartLoaderException
     """
-    MSG = "EncounterTokenChartLoader failure."
+    MSG = "EncounterParticipationLoader failure."
     ERR_CODE = "TOKEN_CHART_LOADER_FAILURE"
     
     def __init__(

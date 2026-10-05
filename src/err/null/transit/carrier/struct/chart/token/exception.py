@@ -17,17 +17,17 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# TOKEN_CHART_CARRIER_NULL_ERROR #======================#
-    "TokenChartCarrierNullException",
+    "ParticipationCarrierNullException",
 ]
 
 # ======================# TOKEN_CHART_CARRIER_NULL_ERROR #======================#
-class TokenChartCarrierNullException(ChartCarrierNullException):
+class ParticipationCarrierNullException(ChartCarrierNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required TokenChartCarrier is null.
+        1.  Indicating a required ParticipationCarrier is null.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class TokenChartCarrierNullException(ChartCarrierNullException):
     Super Class:
         ChartCarrierNullException
     """
-    MSG = "TokenChartCarrier cannot be null."
+    MSG = "ParticipationCarrier cannot be null."
     ERR_CODE= "TOKEN_CHART_CARRIER_NULL_ERROR"
     
     def __init__(

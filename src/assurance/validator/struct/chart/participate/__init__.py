@@ -13,4 +13,4 @@ version: 0.0.2
 from .readiness import *
 
 # Module
-from .validator import EncounterParticipantsValidator
+from .validator import ParticipationValidator

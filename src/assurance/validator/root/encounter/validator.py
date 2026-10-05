@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import EncounterValidatorToolkit, RootValidator, TokenChartValidator
+from assurance import EncounterValidatorToolkit, RootValidator, ParticipationValidator
 from config import NumericSetting
 from domain import Encounter, EncounterBlueprint, EncounterPrimeExtract, Maneuver, Token, Participation
 from err import RootEncounterValidatorException
@@ -41,12 +41,12 @@ class RootEncounterValidator(RootValidator[Encounter]):
     Super Class:
         ProductEnvelopeGenerator
     """
-    _participant_readiness_validator: TokenChartValidator
+    _participant_readiness_validator: ParticipationValidator
     
     def __init__(
             self,
             toolkit: Optional[EncounterValidatorToolkit] | None = None,
-            chart_validator: Optional[TokenChartValidator] | None = None,
+            chart_validator: Optional[ParticipationValidator] | None = None,
     ):
         """
         Args:
@@ -54,7 +54,7 @@ class RootEncounterValidator(RootValidator[Encounter]):
             chart_validator: Optional[EncounterPositionCertifier]
         """
         super().__init__(toolkit=toolkit or EncounterValidatorToolkit())
-        self._participant_readiness_validator = chart_validator or TokenChartValidator()
+        self._participant_readiness_validator = chart_validator or ParticipationValidator()
         
     @property
     def toolkit(self) -> EncounterValidatorToolkit:

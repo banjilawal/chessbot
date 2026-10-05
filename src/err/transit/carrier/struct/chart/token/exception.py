@@ -17,17 +17,17 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# TOKEN_CHART_CARRIER_ERROR #======================#
-    "TokenChartCarrierException",
+    "ParticipationCarrierException",
 ]
 
 # ======================# TOKEN_CHART_CARRIER_ERROR #======================#
-class TokenChartCarrierException(ChartCarrierException):
+class ParticipationCarrierException(ChartCarrierException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a TokenChartCarrier encountered an error.
+        1.  Indicating a ParticipationCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class TokenChartCarrierException(ChartCarrierException):
     Super Class:
         ChartCarrierException
     """
-    MSG = "TokenChartCarrier error."
+    MSG = "ParticipationCarrier error."
     ERR_CODE = "TOKEN_CHART_CARRIER_ERROR"
     
     def __init__(

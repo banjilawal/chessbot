@@ -20,12 +20,12 @@ class ParticipationManifest(ChartManifest[Participation]):
         1.  Metadata
 
      Responsibilities:
-         1.  Aggregates NullExceptions and TypeUnions for the TokenChart
+         1.  Aggregates NullExceptions and TypeUnions for the Participation
             security lifecycle.
 
      Attributes:
-        types: TokenChartTypeUnion
-        nulls: TokenChartNullGroup
+        types: ParticipationTypeUnion
+        nulls: ParticipationNullGroup
 
      Provides:
 
@@ -40,8 +40,8 @@ class ParticipationManifest(ChartManifest[Participation]):
     ):
         """
         Args:
-            types: Optional[TokenChartTypeUnion]
-            nulls: Optional[TokenChartNullGroup]
+            types: Optional[ParticipationTypeUnion]
+            nulls: Optional[ParticipationNullGroup]
         """
         super().__init__(
             types=types or ParticipationTypeUnion(),
