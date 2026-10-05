@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# COORD_BLUEPRINT_LOADER_FAILURE #======================#
+    # ======================# COORD_LOADER_FAILURE #======================#
     "CoordLoaderException",
 ]
 
-# ======================# COORD_BLUEPRINT_LOADER_FAILURE #======================#
+# ======================# COORD_LOADER_FAILURE #======================#
 class CoordLoaderException(ModelLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a CoordBlueprintLoader failed.
+        1.  Indicating assurance by a CoordLoader failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class CoordLoaderException(ModelLoaderException):
     Provides:
 
     Super Class:
-        ModelBlueprintLoaderException
+        ModelLoaderException
     """
-    MSG = "CoordBlueprintLoader failed."
-    ERR_CODE = "COORD_BLUEPRINT_LOADER_FAILURE"
+    MSG = "CoordLoader failed."
+    ERR_CODE = "COORD_LOADER_FAILURE"
     
     def __init__(
             self,

@@ -26,7 +26,7 @@ class EncounterValidatorToolkit(ModelValidatorToolkit[Encounter]):
 
     Attributes:
         helper: EncounterManifest
-        metadata: EncounterHelperTable
+        metadata: EncounterWrapperDependency
 
     Provides:
 
@@ -42,7 +42,7 @@ class EncounterValidatorToolkit(ModelValidatorToolkit[Encounter]):
         """
         Args:
             wrapper: Optional[EncounterManifest]
-            metadata: Optional[EncounterHelperTable]
+            metadata: Optional[EncounterWrapperDependency]
         """
         super().__init__(
             wrapper=wrapper or EncounterWrapperDependency(),

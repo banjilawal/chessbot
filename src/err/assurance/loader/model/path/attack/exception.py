@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# ATTACK_PATH_BLUEPRINT_LOADER_FAILURE #======================#
-    "AttackPathBlueprintLoaderException",
+    # ======================# ATTACK_PATH_LOADER_FAILURE #======================#
+    "AttackPathLoaderException",
 ]
 
-# ======================# ATTACK_PATH_BLUEPRINT_LOADER_FAILURE #======================#
-class AttackPathBlueprintLoaderException(PathLoaderException):
+# ======================# ATTACK_PATH_LOADER_FAILURE #======================#
+class AttackPathLoaderException(PathLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a candidate did not pass an AttackPathBlueprintLoader failed.
+        1.  Indicating assurance by a candidate did not pass an AttackPathLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class AttackPathBlueprintLoaderException(PathLoaderException):
     Provides:
 
     Super Class:
-        PathBlueprintLoaderException
+        PathLoaderException
     """
-    MSG = "Candidate did not pass an AttackPathBlueprintLoader failed."
-    ERR_CODE = "ATTACK_PATH_BLUEPRINT_LOADER_FAILURE"
+    MSG = "Candidate did not pass an AttackPathLoader failed."
+    ERR_CODE = "ATTACK_PATH_LOADER_FAILURE"
     
     def __init__(
             self,

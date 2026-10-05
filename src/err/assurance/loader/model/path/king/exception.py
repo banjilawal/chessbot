@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# KING_PATH_BLUEPRINT_LOADER_FAILURE #======================#
-    "KingPathBlueprintLoaderException",
+    # ======================# KING_PATH_LOADER_FAILURE #======================#
+    "KingPathLoaderException",
 ]
 
-# ======================# KING_PATH_BLUEPRINT_LOADER_FAILURE #======================#
-class KingPathBlueprintLoaderException(PathLoaderException):
+# ======================# KING_PATH_LOADER_FAILURE #======================#
+class KingPathLoaderException(PathLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a KingPathBlueprintLoader failed.
+        1.  Indicating assurance by a KingPathLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class KingPathBlueprintLoaderException(PathLoaderException):
     Provides:
 
     Super Class:
-        PathBlueprintLoaderException
+        PathLoaderException
     """
-    MSG = "Candidate did not pass an KingPathBlueprintLoader failed."
-    ERR_CODE = "KING_PATH_BLUEPRINT_LOADER_FAILURE"
+    MSG = "Candidate did not pass an KingPathLoader failed."
+    ERR_CODE = "KING_PATH_LOADER_FAILURE"
     
     def __init__(
             self,

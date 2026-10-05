@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, Type, TypeVar, cast
+from typing import Generic, Optional, Type, TypeVar, cast
 
 from domain import ModelTypeUnion, Rank, RankBlueprint
 from transit import RankCarrier
@@ -18,7 +18,7 @@ from transit import RankCarrier
 T = TypeVar("T", bound="Rank")
 
 
-class RankTypeUnion(ModelTypeUnion[T], ABC, Generic[T]):
+class RankTypeUnion(ModelTypeUnion[T], Generic[T]):
     """
     Role:
         - Metadata
@@ -39,17 +39,21 @@ class RankTypeUnion(ModelTypeUnion[T], ABC, Generic[T]):
     
     def __init__(
             self,
-            model: Type[T],
-            carrier: Type[RankCarrier[T]],
-            blueprint: Type[RankBlueprint[T]],
+            model: Optional[Type[T]] | None = None,
+            carrier: Optional[Type[RankCarrier[T]]] | None = None,
+            blueprint: Optional[Type[RankBlueprint[T]]] | None = None,
     ):
         """
         Args:
-            model: Type[T]
-            carrier: Type[RankCarrier[T]]
-            blueprint: Type[RankBlueprint[T]]
+            model: Optional[Type[T]]
+            carrier: Optional[Type[RankCarrier[T]]]
+            blueprint: Optional[Type[RankBlueprint[T]]]
         """
-        super().__init__(model=model, carrier=carrier, blueprint=blueprint)
+        super().__init__(
+            model=model or Type[Rank],
+            carrier=carrier or Type[RankCarrier],
+            blueprint=blueprint or Type[RankBlueprint],
+        )
     
     @property
     def model(self) -> Type[T]:

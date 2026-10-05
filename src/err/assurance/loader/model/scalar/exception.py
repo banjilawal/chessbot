@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# SCALAR_BLUEPRINT_LOADER_FAILURE #======================#
+    # ======================# SCALAR_LOADER_FAILURE #======================#
     "ScalarLoaderException",
 ]
 
-# ======================# SCALAR_BLUEPRINT_LOADER_FAILURE #======================#
+# ======================# SCALAR_LOADER_FAILURE #======================#
 class ScalarLoaderException(ModelLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a ScalarBlueprintLoader failed.
+        1.  Indicating assurance by a ScalarLoader failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class ScalarLoaderException(ModelLoaderException):
     Provides:
 
     Super Class:
-        ModelBlueprintLoaderException
+        ModelLoaderException
     """
-    MSG = "ScalarBlueprintLoader failed."
-    ERR_CODE = "SCALAR_BLUEPRINT_LOADER_FAILURE"
+    MSG = "ScalarLoader failed."
+    ERR_CODE = "SCALAR_LOADER_FAILURE"
     
     def __init__(
             self,

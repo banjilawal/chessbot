@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import RankLoaderException
 
 __all__ = [
-    # ======================# BISHOP_BLUEPRINT_LOADER_FAILURE #======================#
-    "BishopBlueprintLoaderException",
+    # ======================# BISHOP_LOADER_FAILURE #======================#
+    "BishopLoaderException",
 ]
 
-# ======================# BISHOP_BLUEPRINT_LOADER_FAILURE #======================#
-class BishopBlueprintLoaderException(RankLoaderException):
+# ======================# BISHOP_LOADER_FAILURE #======================#
+class BishopLoaderException(RankLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a BishopBlueprintLoader failed.
+        1.  Indicating assurance by a BishopLoader failed.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class BishopBlueprintLoaderException(RankLoaderException):
     Provides:
 
     Super Class:
-        RankBlueprintLoaderException
+        RankLoaderException
     """
-    MSG = "BishopBlueprintLoader failed."
-    ERR_CODE = "BISHOP_BLUEPRINT_LOADER_FAILURE"
+    MSG = "BishopLoader failed."
+    ERR_CODE = "BISHOP_LOADER_FAILURE"
     
     def __init__(
             self,

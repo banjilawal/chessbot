@@ -34,7 +34,7 @@ class ValidatorToolkit(ABC, Generic[T]):
 
     Attributes:
         metadata: ObjectManifest[T]
-        helper: AttributeHelperTable[T]
+        helper: AttributeWrapperDependency[T]
         blueprint_loader: Loader[T]
         common: CommonValidatorToolkit
 
@@ -44,7 +44,7 @@ class ValidatorToolkit(ABC, Generic[T]):
     """
     _metadata: ObjectManifest[T]
     _wrapper: WrapperDependency[T]
-    _blueprint_loader: Loader[T]
+    _loader: Loader[T]
     _common: CommonValidatorToolkit
     
     def __init__(
@@ -56,14 +56,14 @@ class ValidatorToolkit(ABC, Generic[T]):
     ):
         """
         Args:
-            wrapper: HelperTable[T]
+            wrapper: WrapperDependency[T]
             metadata: ObjectManifest[T]
             blueprint_loader: Loader[T]
             common: Optional[CommonValidatorToolkit]
         """
         self._wrapper = wrapper
         self._metadata = metadata
-        self._blueprint_loader = blueprint_loader
+        self._loader = blueprint_loader
         self._common = common or CommonValidatorToolkit()
     
     @property
@@ -76,7 +76,7 @@ class ValidatorToolkit(ABC, Generic[T]):
         
     @property
     def loader(self) -> Loader[T]:
-        return self._blueprint_loader
+        return self._loader
     
     @property
     def identity_service(self) -> IdentityService:

@@ -26,7 +26,7 @@ class TokenValidatorToolkit(ModelValidatorToolkit[Token]):
 
     Attributes:
         helper: TokenManifest
-        metadata: TokenHelperTable
+        metadata: TokenWrapperDependency
         home_square_extractor: HomeSquareExtractor
 
     Provides:
@@ -46,7 +46,7 @@ class TokenValidatorToolkit(ModelValidatorToolkit[Token]):
         """
         Args:
             wrapper: Optional[TokenManifest]
-            metadata: Optional[TokenHelperTable]
+            metadata: Optional[TokenWrapperDependency]
             home_square_extractor: Optional[HomeSquareExtractor]
         """
         super().__init__(

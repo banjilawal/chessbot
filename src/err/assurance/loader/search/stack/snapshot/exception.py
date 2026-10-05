@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# SNAPSHOT_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
-    "SnapshotContextBlueprintLoaderException",
+    # ======================# SNAPSHOT_CONTEXT_LOADER_FAILURE #======================#
+    "SnapshotContextLoaderException",
 ]
 
-# ======================# SNAPSHOT_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
-class SnapshotContextBlueprintLoaderException(ContextLoaderException):
+# ======================# SNAPSHOT_CONTEXT_LOADER_FAILURE #======================#
+class SnapshotContextLoaderException(ContextLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a SnapshotContextBlueprintLoader failed.
+        1.  Indicating assurance by a SnapshotContextLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class SnapshotContextBlueprintLoaderException(ContextLoaderException):
     Provides:
 
     Super Class:
-        ContextBlueprintLoaderException
+        ContextLoaderException
     """
-    MSG = "SnapshotContextBlueprintLoader failed."
-    ERR_CODE = "SNAPSHOT_CONTEXT_BLUEPRINT_LOADER_FAILURE"
+    MSG = "SnapshotContextLoader failed."
+    ERR_CODE = "SNAPSHOT_CONTEXT_LOADER_FAILURE"
     
     def __init__(
             self,

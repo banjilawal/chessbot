@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# GAME_BLUEPRINT_LOADER_FAILURE #======================#
+    # ======================# GAME_LOADER_FAILURE #======================#
     "GameLoaderException",
 ]
 
-# ======================# GAME_BLUEPRINT_LOADER_FAILURE #======================#
+# ======================# GAME_LOADER_FAILURE #======================#
 class GameLoaderException(ModelLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a GameBlueprintLoader failed.
+        1.  Indicating assurance by a GameLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class GameLoaderException(ModelLoaderException):
     Provides:
 
     Super Class:
-        ModelBlueprintLoaderException
+        ModelLoaderException
     """
-    MSG = "GameBlueprintLoader failed."
-    ERR_CODE = "GAME_BLUEPRINT_LOADER_FAILURE"
+    MSG = "GameLoader failed."
+    ERR_CODE = "GAME_LOADER_FAILURE"
     
     def __init__(
             self,

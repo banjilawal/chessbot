@@ -25,7 +25,7 @@ class PathValidatorToolkit(ModelValidatorToolkit[Path]):
 
     Attributes:
         helper: PathManifest
-        metadata: PathHelperTable
+        metadata: PathWrapperDependency
 
     Provides:
 
@@ -41,7 +41,7 @@ class PathValidatorToolkit(ModelValidatorToolkit[Path]):
         """
         Args:
             wrapper: Optional[PathManifest]
-            metadata: Optional[PathHelperTable]
+            metadata: Optional[PathWrapperDependency]
         """
         super().__init__(
             wrapper=wrapper or PathWrapperDependency(),

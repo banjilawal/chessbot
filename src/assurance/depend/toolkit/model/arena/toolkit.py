@@ -24,7 +24,7 @@ class ArenaValidatorToolkit(ModelValidatorToolkit[Arena]):
 
     Attributes:
         helper: ArenaManifest
-        metadata: ArenaHelperTable
+        metadata: ArenaWrapperDependency
 
     Provides:
 
@@ -40,7 +40,7 @@ class ArenaValidatorToolkit(ModelValidatorToolkit[Arena]):
         """
         Args:
             wrapper: Optional[ArenaManifest]
-            metadata: Optional[ArenaHelperTable]
+            metadata: Optional[ArenaWrapperDependency]
         """
         super().__init__(
             wrapper=wrapper or ArenaWrapperDependency(),

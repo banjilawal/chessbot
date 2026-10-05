@@ -13,7 +13,6 @@ from typing import Any, Optional
 
 from artifcat import MethodResultType
 from err import EmptyRequestException
-from artifcat import MethodResultType
 
 
 __all__ = [

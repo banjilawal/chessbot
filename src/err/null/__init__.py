@@ -17,6 +17,7 @@ from .consistencey import *
 from .collection import *
 from .dependecy import *
 from .domain import *
+from .exchange import *
 from .microservice import *
 from .operation import *
 from .primitive import *

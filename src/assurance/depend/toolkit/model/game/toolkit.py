@@ -25,7 +25,7 @@ class GameValidatorToolkit(ModelValidatorToolkit[Game]):
 
     Attributes:
         helper: GameManifest
-        metadata: GameHelperTable
+        metadata: GameWrapperDependency
 
     Provides:
 
@@ -41,7 +41,7 @@ class GameValidatorToolkit(ModelValidatorToolkit[Game]):
         """
         Args:
             wrapper: Optional[GameManifest]
-            metadata: Optional[GameHelperTable]
+            metadata: Optional[GameWrapperDependency]
         """
         super().__init__(
             wrapper=wrapper or GameWrapperDependency(),

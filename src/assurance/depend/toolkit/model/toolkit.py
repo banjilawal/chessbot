@@ -27,9 +27,8 @@ class ModelValidatorToolkit(ValidatorToolkit[T], ABC, Generic[T]):
         1.  Single source of truth for attribute validators and type metadata.
 
     Attributes:
-        helper: HelperTable[T]
+        helper: WrapperDependency[T]
         metadata: ModelManifest[T]
-        blueprint_loader: ModelLoader[T]
 
     Provides:
 
@@ -42,19 +41,13 @@ class ModelValidatorToolkit(ValidatorToolkit[T], ABC, Generic[T]):
             self,
             wrapper: ModelWrapperDependency[T],
             metadata: ModelManifest[T],
-            blueprint_loader: ModelLoader[T]
     ):
         """
         Args:
-            wrapper: HelperTable[T]
+            wrapper: WrapperDependency[T]
             metadata: ModelManifest[T]
-            blueprint_loader: ModelLoader[T]
         """
-        super().__init__(
-            wrapper=wrapper,
-            metadata=metadata,
-            blueprint_loader=blueprint_loader,
-        )
+        super().__init__(wrapper=wrapper, metadata=metadata)
     
     @property
     def wrapper(self) -> ModelWrapperDependency[T]:
@@ -63,10 +56,6 @@ class ModelValidatorToolkit(ValidatorToolkit[T], ABC, Generic[T]):
     @property
     def metadata(self) -> ModelManifest[T]:
         return cast(ModelManifest[T], super().metadata)
-    
-    @property
-    def loader(self) -> ModelLoader[T]:
-        return cast(ModelLoader[T], super().loader)
     
     @property
     def nulls(self) -> ModelNullGroup[T]:

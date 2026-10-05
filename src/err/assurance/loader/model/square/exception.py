@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# SQUARE_BLUEPRINT_LOADER_FAILURE #======================#
+    # ======================# SQUARE_LOADER_FAILURE #======================#
     "SquareLoaderException",
 ]
 
-# ======================# SQUARE_BLUEPRINT_LOADER_FAILURE #======================#
+# ======================# SQUARE_LOADER_FAILURE #======================#
 class SquareLoaderException(ModelLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a SquareBlueprintLoader failed.
+        1.  Indicating a SquareLoader failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class SquareLoaderException(ModelLoaderException):
     Provides:
 
     Super Class:
-        ModelBlueprintLoaderException
+        ModelLoaderException
     """
-    MSG = "SquareBlueprintLoader failed."
-    ERR_CODE = "SQUARE_BLUEPRINT_LOADER_FAILURE"
+    MSG = "SquareLoader failed."
+    ERR_CODE = "SQUARE_LOADER_FAILURE"
     
     def __init__(
             self,

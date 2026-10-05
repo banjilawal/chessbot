@@ -25,7 +25,7 @@ class RankValidatorToolkit(ModelValidatorToolkit[Rank]):
 
     Attributes:
         helper: RankManifest
-        metadata: RankHelperTable
+        metadata: RankWrapperDependency
 
     Provides:
 
@@ -41,7 +41,7 @@ class RankValidatorToolkit(ModelValidatorToolkit[Rank]):
         """
         Args:
             wrapper: Optional[RankManifest]
-            metadata: Optional[RankHelperTable]
+            metadata: Optional[RankWrapperDependency]
         """
         super().__init__(
             wrapper=wrapper or RankWrapperDependency(),

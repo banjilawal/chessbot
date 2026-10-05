@@ -27,26 +27,26 @@ class EncounterWarningNodeDependency(NodeDependency[EncounterWarningNode]):
             upstream relational partners attributes.
 
     Attributes:
-        warning: EncounterValidationResponseWrapper
+        encounter: EncounterValidationResponseWrapper
 
     Provides:
 
     Super Class:
         NodeDependency
     """
-    _warning: EncounterValidationResponseWrapper
+    _encounter: EncounterValidationResponseWrapper
     
     def __init__(
             self,
-            warning: Optional[EncounterValidationResponseWrapper] | None = None,
+            encounter: Optional[EncounterValidationResponseWrapper] | None = None,
     ):
         """
         Args:
-            warning: Optional[EncounterValidationResponseWrapper]
+            encounter: Optional[EncounterValidationResponseWrapper]
         """
         super().__init__()
-        self._warning = warning or EncounterValidationResponseWrapper()
+        self._encounter = encounter or EncounterValidationResponseWrapper()
         
     @property
-    def warning(self) -> EncounterValidationResponseWrapper:
-        return self._warning
+    def encounter(self) -> EncounterValidationResponseWrapper:
+        return self._encounter

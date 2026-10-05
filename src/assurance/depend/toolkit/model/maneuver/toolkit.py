@@ -25,7 +25,7 @@ class ManeuverValidatorToolkit(ModelValidatorToolkit[Maneuver]):
 
     Attributes:
         helper: ManeuverManifest
-        metadata: ManeuverHelperTable
+        metadata: ManeuverWrapperDependency
 
     Provides:
 
@@ -41,7 +41,7 @@ class ManeuverValidatorToolkit(ModelValidatorToolkit[Maneuver]):
         """
         Args:
             wrapper: Optional[ManeuverManifest]
-            metadata: Optional[ManeuverHelperTable]
+            metadata: Optional[ManeuverWrapperDependency]
         """
         super().__init__(
             wrapper=wrapper or ManeuverWrapperDependency(),

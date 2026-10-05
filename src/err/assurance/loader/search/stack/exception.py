@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# STACK_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
+    # ======================# STACK_CONTEXT_LOADER_FAILURE #======================#
     "ContextLoaderException",
 ]
 
-# ======================# STACK_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
-class ContextBlueprintLoaderException(ContextLoaderException):
+# ======================# STACK_CONTEXT_LOADER_FAILURE #======================#
+class ContextLoaderException(ContextLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a ContextBlueprintLoader failed.
+        1.  Indicating assurance by a ContextLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class ContextBlueprintLoaderException(ContextLoaderException):
     Provides:
 
     Super Class:
-        ContextBlueprintLoaderException
+        ContextLoaderException
     """
-    MSG = "ContextBlueprintLoader failed."
-    ERR_CODE = "STACK_CONTEXT_BLUEPRINT_LOADER_FAILURE"
+    MSG = "ContextLoader failed."
+    ERR_CODE = "STACK_CONTEXT_LOADER_FAILURE"
     
     def __init__(
             self,

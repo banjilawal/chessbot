@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# PAWN_TOKEN_BLUEPRINT_LOADER_FAILURE #======================#
-    "PawnTokenBlueprintLoaderException",
+    # ======================# PAWN_TOKEN_LOADER_FAILURE #======================#
+    "PawnTokenLoaderException",
 ]
 
-# ======================# PAWN_TOKEN_BLUEPRINT_LOADER_FAILURE #======================#
-class PawnTokenBlueprintLoaderException(TokenLoaderException):
+# ======================# PAWN_TOKEN_LOADER_FAILURE #======================#
+class PawnTokenLoaderException(TokenLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a PawnTokenBlueprintLoader failed.
+        1.  Indicating a PawnTokenLoader failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class PawnTokenBlueprintLoaderException(TokenLoaderException):
     Provides:
 
     Super Class:
-        TokenBlueprintLoaderException
+        TokenLoaderException
     """
-    MSG = "PawnTokenBlueprintLoader failed."
-    ERR_CODE = "PAWN_TOKEN_BLUEPRINT_LOADER_FAILURE"
+    MSG = "PawnTokenLoader failed."
+    ERR_CODE = "PAWN_TOKEN_LOADER_FAILURE"
     
     def __init__(
             self,

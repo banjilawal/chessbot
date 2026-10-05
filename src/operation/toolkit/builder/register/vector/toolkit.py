@@ -23,7 +23,7 @@ class VectorRegisterBuilderToolkit(RegisterBuilderToolkit[VectorRegister]):
         - Dependency Management
         
     Responsibilities:
-        1.  Bundles VectorRegisterRegisterBuilder dependencies.
+        1.  Bundles VectorRegisterBuilder dependencies.
 
     Attributes:
         assembler: Optional[VectorRegisterAssembler]

@@ -25,7 +25,7 @@ class VectorValidatorToolkit(ModelValidatorToolkit[Vector]):
 
     Attributes:
         helper: VectorManifest
-        metadata: VectorHelperTable
+        metadata: VectorWrapperDependency
 
     Provides:
 
@@ -41,7 +41,7 @@ class VectorValidatorToolkit(ModelValidatorToolkit[Vector]):
         """
         Args:
             wrapper: Optional[VectorManifest]
-            metadata: Optional[VectorHelperTable]
+            metadata: Optional[VectorWrapperDependency]
         """
         super().__init__(
             wrapper=wrapper or VectorWrapperDependency(),

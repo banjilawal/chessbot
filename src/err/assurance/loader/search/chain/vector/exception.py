@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ChainContextBlueprintLoaderException
+from err import ChainContextLoaderException
 from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# VECTOR_NODE_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
-    "VectorNodeContextBlueprintLoaderException",
+    # ======================# VECTOR_NODE_CONTEXT_LOADER_FAILURE #======================#
+    "VectorNodeContextLoaderException",
 ]
 
-# ======================# VECTOR_NODE_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
-class VectorNodeContextBlueprintLoaderException(ChainContextBlueprintLoaderException):
+# ======================# VECTOR_NODE_CONTEXT_LOADER_FAILURE #======================#
+class VectorNodeContextLoaderException(ChainContextLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a VectorNodeContextBlueprintLoader failed.
+        1.  Indicating assurance by a VectorNodeContextLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class VectorNodeContextBlueprintLoaderException(ChainContextBlueprintLoaderExcep
     Provides:
 
     Super Class:
-        ContextBlueprintLoaderException
+        ContextLoaderException
     """
-    MSG = "VectorNodeContextBlueprintLoader failed."
-    ERR_CODE = "VECTOR_NODE_CONTEXT_BLUEPRINT_LOADER_FAILURE"
+    MSG = "VectorNodeContextLoader failed."
+    ERR_CODE = "VECTOR_NODE_CONTEXT_LOADER_FAILURE"
     
     def __init__(
             self,

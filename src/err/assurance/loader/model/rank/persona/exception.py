@@ -41,9 +41,9 @@ class WrongPersonaException(RankLoaderException):
     Provides:
 
     Super Class:
-        RankBlueprintLoaderException
+        RankLoaderException
     """
-    MSG = "PersonaBlueprintLoader failed."
+    MSG = "PersonaLoader failed."
     ERR_CODE = "WRONG_PERSONA_ERROR"
     
     def __init__(

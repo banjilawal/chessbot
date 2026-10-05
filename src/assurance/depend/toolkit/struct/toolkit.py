@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from assurance import StructDependency, ValidatorToolkit
-from domain import Struct, StructManifest
+from domain import Struct, StructManifest, StructNullGroup, StructTypeUnion
 
 T = TypeVar("T", bound="Struct")
 
@@ -27,7 +27,7 @@ class StructValidatorToolkit(ValidatorToolkit[T], ABC, Generic[T]):
         1.  Single source of truth for attribute validators and type metadata.
 
     Attributes:
-            helper: StructHelperTable[T]
+            wrapper: StructWrapperDependency[T]
             metadata: StructManifest[T]
 
     Provides:
@@ -42,7 +42,7 @@ class StructValidatorToolkit(ValidatorToolkit[T], ABC, Generic[T]):
             metadata: StructManifest[T],
     ):
         """
-            helper: StructHelperTable[T]
+            wrapper: StructWrapperDependency[T]
             metadata: StructManifest[T]
         """
         super().__init__(wrapper=wrapper, metadata=metadata)
@@ -55,3 +55,11 @@ class StructValidatorToolkit(ValidatorToolkit[T], ABC, Generic[T]):
     @property
     def metadata(self) -> StructManifest[T]:
         return cast(StructManifest, super().metadata)
+    
+    @property
+    def nulls(self) -> StructNullGroup[T]:
+        return self.metadata.nulls
+    
+    @property
+    def types(self) -> StructTypeUnion[T]:
+        return self.metadata.types

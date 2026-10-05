@@ -16,11 +16,11 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# WARNING_NODE_ERROR #======================#
+    # ======================# ENCOUNTER_WARNING_NODE_ERROR #======================#
     "EncounterWarningNodeException",
 ]
 
-# ======================# WARNING_NODE_ERROR #======================#
+# ======================# ENCOUNTER_WARNING_NODE_ERROR #======================#
 class EncounterWarningNodeException(NodeException):
     """
     Role:

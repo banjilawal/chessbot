@@ -13,7 +13,7 @@ from typing import Any, Optional
 
 
 __all__ = [
-    # ======================# SEARCH_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
+    # ======================# SEARCH_CONTEXT_LOADER_FAILURE #======================#
     "ContextLoaderException",
 ]
 
@@ -21,14 +21,14 @@ from err import LoaderException
 from artifcat import MethodResultType
 
 
-# ======================# SEARCH_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
+# ======================# SEARCH_CONTEXT_LOADER_FAILURE #======================#
 class ContextLoaderException(LoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a ContextBlueprintLoader failed.
+        1.  Indicating assurance by a ContextLoader failed.
 
     Attributes:
         msg: Optional[str]
@@ -43,10 +43,10 @@ class ContextLoaderException(LoaderException):
     Provides:
 
     Super Class:
-        BlueprintLoaderException
+        LoaderException
     """
-    MSG = "ContextBlueprintLoader failed."
-    ERR_CODE = "SEARCH_CONTEXT_BLUEPRINT_LOADER_FAILURE"
+    MSG = "ContextLoader failed."
+    ERR_CODE = "SEARCH_CONTEXT_LOADER_FAILURE"
     
     def __init__(
             self,

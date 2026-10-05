@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# CHECKED_PATH_BLUEPRINT_LOADER_FAILURE #======================#
-    "CheckedPathBlueprintLoaderException",
+    # ======================# CHECKED_PATH_LOADER_FAILURE #======================#
+    "CheckedPathLoaderException",
 ]
 
-# ======================# CHECKED_PATH_BLUEPRINT_LOADER_FAILURE #======================#
-class CheckedPathBlueprintLoaderException(PathLoaderException):
+# ======================# CHECKED_PATH_LOADER_FAILURE #======================#
+class CheckedPathLoaderException(PathLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a CheckedPathBlueprintLoader failed.
+        1.  Indicating assurance by a CheckedPathLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class CheckedPathBlueprintLoaderException(PathLoaderException):
     Provides:
 
     Super Class:
-        PathBlueprintLoaderException
+        PathLoaderException
     """
-    MSG = "Candidate did not pass an CheckedPathBlueprintLoader failed."
-    ERR_CODE = "CHECKED_PATH_BLUEPRINT_LOADER_FAILURE"
+    MSG = "Candidate did not pass an CheckedPathLoader failed."
+    ERR_CODE = "CHECKED_PATH_LOADER_FAILURE"
     
     def __init__(
             self,

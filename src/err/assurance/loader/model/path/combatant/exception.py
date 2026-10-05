@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# COMBATANT_PATH_BLUEPRINT_LOADER_FAILURE #======================#
-    "CombatantPathBlueprintLoaderException",
+    # ======================# COMBATANT_PATH_LOADER_FAILURE #======================#
+    "CombatantPathLoaderException",
 ]
 
-# ======================# COMBATANT_PATH_BLUEPRINT_LOADER_FAILURE #======================#
-class CombatantPathBlueprintLoaderException(PathLoaderException):
+# ======================# COMBATANT_PATH_LOADER_FAILURE #======================#
+class CombatantPathLoaderException(PathLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a CombatantPathBlueprintLoader failed.
+        1.  Indicating assurance by a CombatantPathLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class CombatantPathBlueprintLoaderException(PathLoaderException):
     Provides:
 
     Super Class:
-        PathBlueprintLoaderException
+        PathLoaderException
     """
-    MSG = "Candidate did not pass an CombatantPathBlueprintLoader failed."
-    ERR_CODE = "COMBATANT_PATH_BLUEPRINT_LOADER_FAILURE"
+    MSG = "Candidate did not pass an CombatantPathLoader failed."
+    ERR_CODE = "COMBATANT_PATH_LOADER_FAILURE"
     
     def __init__(
             self,

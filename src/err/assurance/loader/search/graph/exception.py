@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# GRAPH_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
-    "GraphContextBlueprintLoaderException",
+    # ======================# GRAPH_CONTEXT_LOADER_FAILURE #======================#
+    "GraphContextLoaderException",
 ]
 
-# ======================# GRAPH_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
-class GraphContextBlueprintLoaderException(ContextLoaderException):
+# ======================# GRAPH_CONTEXT_LOADER_FAILURE #======================#
+class GraphContextLoaderException(ContextLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a GraphContextBlueprintLoader failed.
+        1.  Indicating assurance by a GraphContextLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class GraphContextBlueprintLoaderException(ContextLoaderException):
     Provides:
 
     Super Class:
-        ContextBlueprintLoaderException
+        ContextLoaderException
     """
-    MSG = "GraphContextBlueprintLoader failed."
-    ERR_CODE = "GRAPH_CONTEXT_BLUEPRINT_LOADER_FAILURE"
+    MSG = "GraphContextLoader failed."
+    ERR_CODE = "GRAPH_CONTEXT_LOADER_FAILURE"
     
     def __init__(
             self,

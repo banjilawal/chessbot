@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# MANEUVER_BLUEPRINT_LOADER_FAILURE #======================#
+    # ======================# MANEUVER_LOADER_FAILURE #======================#
     "ManeuverLoaderException",
 ]
 
-# ======================# MANEUVER_BLUEPRINT_LOADER_FAILURE #======================#
+# ======================# MANEUVER_LOADER_FAILURE #======================#
 class ManeuverLoaderException(ModelLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a ManeuverBlueprintLoader failed.
+        1.  Indicating assurance by a ManeuverLoader failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class ManeuverLoaderException(ModelLoaderException):
     Provides:
 
     Super Class:
-        ModelBlueprintLoaderException
+        ModelLoaderException
     """
-    MSG = "ManeuverBlueprintLoader failed."
-    ERR_CODE = "MANEUVER_BLUEPRINT_LOADER_FAILURE"
+    MSG = "ManeuverLoader failed."
+    ERR_CODE = "MANEUVER_LOADER_FAILURE"
     
     def __init__(
             self,

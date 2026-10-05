@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import RankLoaderException
 
 __all__ = [
-    # ======================# QUEEN_BLUEPRINT_LOADER_FAILURE #======================#
-    "QueenBlueprintLoaderException",
+    # ======================# QUEEN_LOADER_FAILURE #======================#
+    "QueenLoaderException",
 ]
 
-# ======================# QUEEN_BLUEPRINT_LOADER_FAILURE #======================#
-class QueenBlueprintLoaderException(RankLoaderException):
+# ======================# QUEEN_LOADER_FAILURE #======================#
+class QueenLoaderException(RankLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a QueenBlueprintLoader failed.
+        1.  Indicating assurance by a QueenLoader failed.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class QueenBlueprintLoaderException(RankLoaderException):
     Provides:
 
     Super Class:
-        RankBlueprintLoaderException
+        RankLoaderException
     """
-    MSG = "QueenBlueprintLoader failed."
-    ERR_CODE = "QUEEN_BLUEPRINT_LOADER_FAILURE"
+    MSG = "QueenLoader failed."
+    ERR_CODE = "QUEEN_LOADER_FAILURE"
     
     def __init__(
             self,

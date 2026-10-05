@@ -26,7 +26,7 @@ class LoaderException(AssuranceException):
         - Failure Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a BlueprintLoader failed.
+        1.  Indicating assurance by a Loader failed.
 
     Attributes:
         msg: str
@@ -43,7 +43,7 @@ class LoaderException(AssuranceException):
     Super Class:
         AssuranceException
     """
-    MSG = "BlueprintLoader failed."
+    MSG = "Loader failed."
     ERR_CODE = "BLUEPRINT_LOADER_FAILURE"
     MTHD_RSLT_TYPE = MethodResultType.VALIDATION_RESULT
     

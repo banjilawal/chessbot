@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# SQUARE_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
-    "SquareContextBlueprintLoaderException",
+    # ======================# SQUARE_CONTEXT_LOADER_FAILURE #======================#
+    "SquareContextLoaderException",
 ]
 
-# ======================# SQUARE_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
-class SquareContextBlueprintLoaderException(ContextLoaderException):
+# ======================# SQUARE_CONTEXT_LOADER_FAILURE #======================#
+class SquareContextLoaderException(ContextLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a SquareContextBlueprintLoader failed.
+        1.  Indicating assurance by a SquareContextLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class SquareContextBlueprintLoaderException(ContextLoaderException):
     Provides:
 
     Super Class:
-        ContextBlueprintLoaderException
+        ContextLoaderException
     """
-    MSG = "SquareContextBlueprintLoader failed."
-    ERR_CODE = "SQUARE_CONTEXT_BLUEPRINT_LOADER_FAILURE"
+    MSG = "SquareContextLoader failed."
+    ERR_CODE = "SQUARE_CONTEXT_LOADER_FAILURE"
     
     def __init__(
             self,

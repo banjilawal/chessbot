@@ -15,6 +15,7 @@ from .arena import *
 from .board import *
 from .cartesian import *
 from .coord import *
+from .game import *
 from .encounter import *
 from .maneuver import *
 from .path import *

@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# TEAM_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
-    "TeamContextBlueprintLoaderException",
+    # ======================# TEAM_CONTEXT_LOADER_FAILURE #======================#
+    "TeamContextLoaderException",
 ]
 
-# ======================# TEAM_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
-class TeamContextBlueprintLoaderException(ContextLoaderException):
+# ======================# TEAM_CONTEXT_LOADER_FAILURE #======================#
+class TeamContextLoaderException(ContextLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a TeamContextBlueprintLoader failed.
+        1.  Indicating assurance by a TeamContextLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class TeamContextBlueprintLoaderException(ContextLoaderException):
     Provides:
 
     Super Class:
-        ContextBlueprintLoaderException
+        ContextLoaderException
     """
-    MSG = "TeamContextBlueprintLoader failed."
-    ERR_CODE = "TEAM_CONTEXT_BLUEPRINT_LOADER_FAILURE"
+    MSG = "TeamContextLoader failed."
+    ERR_CODE = "TEAM_CONTEXT_LOADER_FAILURE"
     
     def __init__(
             self,

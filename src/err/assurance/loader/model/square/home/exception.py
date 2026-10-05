@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# HOME_SQUARE_BLUEPRINT_LOADER_FAILURE #======================#
-    "HomeSquareBlueprintLoaderException",
+    # ======================# HOME_SQUARE_LOADER_FAILURE #======================#
+    "HomeSquareLoaderException",
 ]
 
-# ======================# HOME_SQUARE_BLUEPRINT_LOADER_FAILURE #======================#
-class HomeSquareBlueprintLoaderException(SquareLoaderException):
+# ======================# HOME_SQUARE_LOADER_FAILURE #======================#
+class HomeSquareLoaderException(SquareLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a HomeSquareBlueprintLoader failed.
+        1.  Indicating a HomeSquareLoader failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class HomeSquareBlueprintLoaderException(SquareLoaderException):
     Provides:
 
     Super Class:
-        SquareBlueprintLoaderException
+        SquareLoaderException
     """
-    MSG = "HomeSquareBlueprintLoader failed."
-    ERR_CODE = "HOME_SQUARE_BLUEPRINT_LOADER_FAILURE"
+    MSG = "HomeSquareLoader failed."
+    ERR_CODE = "HOME_SQUARE_LOADER_FAILURE"
     
     def __init__(
             self,

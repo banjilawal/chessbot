@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .exception import KingBlueprintLoaderException
+from .exception import KingLoaderException

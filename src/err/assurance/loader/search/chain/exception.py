@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# CHAIN_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
-    "ChainContextBlueprintLoaderException",
+    # ======================# CHAIN_CONTEXT_LOADER_FAILURE #======================#
+    "ChainContextLoaderException",
 ]
 
-# ======================# CHAIN_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
-class ChainContextBlueprintLoaderException(ContextLoaderException):
+# ======================# CHAIN_CONTEXT_LOADER_FAILURE #======================#
+class ChainContextLoaderException(ContextLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a ChainContextBlueprintLoader failed.
+        1.  Indicating assurance by a ChainContextLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class ChainContextBlueprintLoaderException(ContextLoaderException):
     Provides:
 
     Super Class:
-        ContextBlueprintLoaderException
+        ContextLoaderException
     """
-    MSG = "ChainContextBlueprintLoader failed."
-    ERR_CODE = "CHAIN_CONTEXT_BLUEPRINT_LOADER_FAILURE"
+    MSG = "ChainContextLoader failed."
+    ERR_CODE = "CHAIN_CONTEXT_LOADER_FAILURE"
     
     def __init__(
             self,

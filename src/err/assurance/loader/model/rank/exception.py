@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# RANK_BLUEPRINT_LOADER_FAILURE #======================#
+    # ======================# RANK_LOADER_FAILURE #======================#
     "RankLoaderException",
 ]
 
-# ======================# RANK_BLUEPRINT_LOADER_FAILURE #======================#
+# ======================# RANK_LOADER_FAILURE #======================#
 class RankLoaderException(ModelLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a RankBlueprintLoader failed.
+        1.  Indicating assurance by a RankLoader failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class RankLoaderException(ModelLoaderException):
     Provides:
 
     Super Class:
-        ModelBlueprintLoaderException
+        ModelLoaderException
     """
-    MSG = "RankBlueprintLoader failed."
-    ERR_CODE = "RANK_BLUEPRINT_LOADER_FAILURE"
+    MSG = "RankLoader failed."
+    ERR_CODE = "RANK_LOADER_FAILURE"
     
     def __init__(
             self,

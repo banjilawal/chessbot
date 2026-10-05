@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import RankLoaderException
 
 __all__ = [
-    # ======================# ROOK_BLUEPRINT_LOADER_FAILURE #======================#
-    "RookBlueprintLoaderException",
+    # ======================# ROOK_LOADER_FAILURE #======================#
+    "RookLoaderException",
 ]
 
-# ======================# ROOK_BLUEPRINT_LOADER_FAILURE #======================#
-class RookBlueprintLoaderException(RankLoaderException):
+# ======================# ROOK_LOADER_FAILURE #======================#
+class RookLoaderException(RankLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a RookBlueprintLoader failed.
+        1.  Indicating assurance by a RookLoader failed.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class RookBlueprintLoaderException(RankLoaderException):
     Provides:
 
     Super Class:
-        RankBlueprintLoaderException
+        RankLoaderException
     """
-    MSG = "RookBlueprintLoader failed."
-    ERR_CODE = "ROOK_BLUEPRINT_LOADER_FAILURE"
+    MSG = "RookLoader failed."
+    ERR_CODE = "ROOK_LOADER_FAILURE"
     
     def __init__(
             self,

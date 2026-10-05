@@ -23,7 +23,7 @@ class CartesianToggleRegisterBuilderToolkit(RegisterBuilderToolkit[CartesianTogg
         - Dependency Management
         
     Responsibilities:
-        1.  Bundles CartesianToggleRegisterRegisterBuilder dependencies.
+        1.  Bundles CartesianToggleRegisterBuilder dependencies.
 
     Attributes:
         assembler: Optional[CartesianToggleRegisterAssembler]

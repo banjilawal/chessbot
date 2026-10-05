@@ -23,7 +23,7 @@ class CoordRegisterBuilderToolkit(RegisterBuilderToolkit[CoordRegister]):
         - Dependency Management
         
     Responsibilities:
-        1.  Bundles CoordRegisterRegisterBuilder dependencies.
+        1.  Bundles CoordRegisterBuilder dependencies.
 
     Attributes:
         assembler: Optional[CoordRegisterAssembler]

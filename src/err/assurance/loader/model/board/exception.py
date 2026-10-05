@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# BOARD_BLUEPRINT_LOADER_FAILURE #======================#
+    # ======================# BOARD_LOADER_FAILURE #======================#
     "BoardLoaderException",
 ]
 
-# ======================# BOARD_BLUEPRINT_LOADER_FAILURE #======================#
+# ======================# BOARD_LOADER_FAILURE #======================#
 class BoardLoaderException(ModelLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a BoardBlueprintLoader failed.
+        1.  Indicating assurance by a BoardLoader failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class BoardLoaderException(ModelLoaderException):
     Provides:
 
     Super Class:
-        ModelBlueprintLoaderException
+        ModelLoaderException
     """
-    MSG = "BoardBlueprintLoader failed."
-    ERR_CODE = "BOARD_BLUEPRINT_LOADER_FAILURE"
+    MSG = "BoardLoader failed."
+    ERR_CODE = "BOARD_LOADER_FAILURE"
     
     def __init__(
             self,

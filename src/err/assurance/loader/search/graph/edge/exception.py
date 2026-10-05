@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import GraphContextBlueprintLoaderException
+from err import GraphContextLoaderException
 from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# EDGE_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
-    "EdgeContextBlueprintLoaderException",
+    # ======================# EDGE_CONTEXT_LOADER_FAILURE #======================#
+    "EdgeContextLoaderException",
 ]
 
-# ======================# EDGE_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
-class EdgeContextBlueprintLoaderException(GraphContextBlueprintLoaderException):
+# ======================# EDGE_CONTEXT_LOADER_FAILURE #======================#
+class EdgeContextLoaderException(GraphContextLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by an EdgeContextBlueprintLoader failed.
+        1.  Indicating assurance by an EdgeContextLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class EdgeContextBlueprintLoaderException(GraphContextBlueprintLoaderException):
     Provides:
 
     Super Class:
-        ContextBlueprintLoaderException
+        ContextLoaderException
     """
-    MSG = "EdgeContextBlueprintLoader failed."
-    ERR_CODE = "EDGE_CONTEXT_BLUEPRINT_LOADER_FAILURE"
+    MSG = "EdgeContextLoader failed."
+    ERR_CODE = "EDGE_CONTEXT_LOADER_FAILURE"
     
     def __init__(
             self,

@@ -26,7 +26,7 @@ class AccountValidatorToolkit(ModelValidatorToolkit[Account]):
 
     Attributes:
         helper: AccountManifest
-        metadata: AccountHelperTable
+        metadata: AccountWrapperDependency
 
     Provides:
 
@@ -42,7 +42,7 @@ class AccountValidatorToolkit(ModelValidatorToolkit[Account]):
         """
         Args:
             wrapper: Optional[AccountManifest]
-            metadata: Optional[AccountHelperTable]
+            metadata: Optional[AccountWrapperDependency]
         """
         super().__init__(
             wrapper=wrapper or AccountWrapperDependency(),

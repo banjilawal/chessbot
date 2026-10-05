@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# TOKEN_BLUEPRINT_LOADER_FAILURE #======================#
+    # ======================# TOKEN_LOADER_FAILURE #======================#
     "TokenLoaderException",
 ]
 
-# ======================# TOKEN_BLUEPRINT_LOADER_FAILURE #======================#
+# ======================# TOKEN_LOADER_FAILURE #======================#
 class TokenLoaderException(ModelLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a TokenBlueprintLoader failed.
+        1.  Indicating a TokenLoader failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class TokenLoaderException(ModelLoaderException):
     Provides:
 
     Super Class:
-        ModelBlueprintLoaderException
+        ModelLoaderException
     """
-    MSG = "TokenBlueprintLoader failed."
-    ERR_CODE = "TOKEN_BLUEPRINT_LOADER_FAILURE"
+    MSG = "TokenLoader failed."
+    ERR_CODE = "TOKEN_LOADER_FAILURE"
     
     def __init__(
             self,

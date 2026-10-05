@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import RankLoaderException
 
 __all__ = [
-    # ======================# PAWN_BLUEPRINT_LOADER_FAILURE #======================#
-    "PawnBlueprintLoaderException",
+    # ======================# PAWN_LOADER_FAILURE #======================#
+    "PawnLoaderException",
 ]
 
-# ======================# PAWN_BLUEPRINT_LOADER_FAILURE #======================#
-class PawnBlueprintLoaderException(RankLoaderException):
+# ======================# PAWN_LOADER_FAILURE #======================#
+class PawnLoaderException(RankLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a PawnBlueprintLoader failed.
+        1.  Indicating assurance by a PawnLoader failed.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class PawnBlueprintLoaderException(RankLoaderException):
     Provides:
 
     Super Class:
-        RankBlueprintLoaderException
+        RankLoaderException
     """
-    MSG = "PawnBlueprintLoader failed."
-    ERR_CODE = "PAWN_BLUEPRINT_LOADER_FAILURE"
+    MSG = "PawnLoader failed."
+    ERR_CODE = "PAWN_LOADER_FAILURE"
     
     def __init__(
             self,

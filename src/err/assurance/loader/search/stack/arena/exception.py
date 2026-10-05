@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# ARENA_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
-    "ArenaContextBlueprintLoaderException",
+    # ======================# ARENA_CONTEXT_LOADER_FAILURE #======================#
+    "ArenaContextLoaderException",
 ]
 
-# ======================# ARENA_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
-class ArenaContextBlueprintLoaderException(ContextLoaderException):
+# ======================# ARENA_CONTEXT_LOADER_FAILURE #======================#
+class ArenaContextLoaderException(ContextLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a ArenaContextBlueprintLoader failed.
+        1.  Indicating assurance by a ArenaContextLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class ArenaContextBlueprintLoaderException(ContextLoaderException):
     Provides:
 
     Super Class:
-        ContextBlueprintLoaderException
+        ContextLoaderException
     """
-    MSG = "ArenaContextBlueprintLoader failed."
-    ERR_CODE = "ARENA_CONTEXT_BLUEPRINT_LOADER_FAILURE"
+    MSG = "ArenaContextLoader failed."
+    ERR_CODE = "ARENA_CONTEXT_LOADER_FAILURE"
     
     def __init__(
             self,

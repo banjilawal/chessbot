@@ -16,11 +16,11 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# PATH_BLUEPRINT_LOADER_FAILURE #======================#
+    # ======================# PATH_LOADER_FAILURE #======================#
     "PathLoaderException",
 ]
 
-# ======================# PATH_BLUEPRINT_LOADER_FAILURE #======================#
+# ======================# PATH_LOADER_FAILURE #======================#
 class PathLoaderException(ModelLoaderException):
     """
     Role:
@@ -42,10 +42,10 @@ class PathLoaderException(ModelLoaderException):
     Provides:
 
     Super Class:
-        ModelBlueprintLoaderException
+        ModelLoaderException
     """
-    MSG = "PathBlueprintLoader failed."
-    ERR_CODE = "PATH_BLUEPRINT_LOADER_FAILURE"
+    MSG = "PathLoader failed."
+    ERR_CODE = "PATH_LOADER_FAILURE"
     
     def __init__(
             self,

@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# VECTOR_BLUEPRINT_LOADER_FAILURE #======================#
+    # ======================# VECTOR_LOADER_FAILURE #======================#
     "VectorLoaderException",
 ]
 
-# ======================# VECTOR_BLUEPRINT_LOADER_FAILURE #======================#
+# ======================# VECTOR_LOADER_FAILURE #======================#
 class VectorLoaderException(ModelLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a VectorBlueprintLoader failed.
+        1.  Indicating a VectorLoader failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class VectorLoaderException(ModelLoaderException):
     Provides:
 
     Super Class:
-        ModelBlueprintLoaderException
+        ModelLoaderException
     """
-    MSG = "VectorBlueprintLoader failed."
-    ERR_CODE = "VECTOR_BLUEPRINT_LOADER_FAILURE"
+    MSG = "VectorLoader failed."
+    ERR_CODE = "VECTOR_LOADER_FAILURE"
     
     def __init__(
             self,

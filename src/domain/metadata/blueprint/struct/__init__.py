@@ -11,6 +11,7 @@ version: 0.0.2
 
 # Packages
 from .chart import *
+from .node import *
 from .register import *
 from .toggle import *
 

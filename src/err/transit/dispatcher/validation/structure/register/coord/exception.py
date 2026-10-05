@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import RegisterRegisterValidationDispatcherException
+from err import RegisterValidationDispatcherException
 
 __all__ = [
     # ======================# COORD_REGISTER_VALIDATION_DISPATCHER_FAILURE #======================#
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# COORD_REGISTER_VALIDATION_DISPATCHER_FAILURE #======================#
-class CoordRegisterValidationDispatcherException(RegisterRegisterValidationDispatcherException):
+class CoordRegisterValidationDispatcherException(RegisterValidationDispatcherException):
     """
     Role:
         - Error Tracing

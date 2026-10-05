@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import RankLoaderException
 
 __all__ = [
-    # ======================# KING_BLUEPRINT_LOADER_FAILURE #======================#
-    "KingBlueprintLoaderException",
+    # ======================# KING_LOADER_FAILURE #======================#
+    "KingLoaderException",
 ]
 
-# ======================# KING_BLUEPRINT_LOADER_FAILURE #======================#
-class KingBlueprintLoaderException(RankLoaderException):
+# ======================# KING_LOADER_FAILURE #======================#
+class KingLoaderException(RankLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a KingBlueprintLoader failed.
+        1.  Indicating assurance by a KingLoader failed.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class KingBlueprintLoaderException(RankLoaderException):
     Provides:
 
     Super Class:
-        RankBlueprintLoaderException
+        RankLoaderException
     """
-    MSG = "KingBlueprintLoader failed."
-    ERR_CODE = "KING_BLUEPRINT_LOADER_FAILURE"
+    MSG = "KingLoader failed."
+    ERR_CODE = "KING_LOADER_FAILURE"
     
     def __init__(
             self,

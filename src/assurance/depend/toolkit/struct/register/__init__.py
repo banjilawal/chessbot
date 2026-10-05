@@ -10,7 +10,9 @@ version: 0.0.2
 # =========== ASSURANCE.DEPEND.TOOLKIT.STRUCT.REGISTER PACKAGE ===========#
 
 # Packages
+from .coord import *
 from .square import *
+from .vector import *
 
 # Module
 from .toolkit import RegisterValidatorToolkit

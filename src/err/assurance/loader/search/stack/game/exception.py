@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# GAME_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
-    "GameContextBlueprintLoaderException",
+    # ======================# GAME_CONTEXT_LOADER_FAILURE #======================#
+    "GameContextLoaderException",
 ]
 
-# ======================# GAME_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
-class GameContextBlueprintLoaderException(ContextLoaderException):
+# ======================# GAME_CONTEXT_LOADER_FAILURE #======================#
+class GameContextLoaderException(ContextLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a GameContextBlueprintLoader failed.
+        1.  Indicating assurance by a GameContextLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class GameContextBlueprintLoaderException(ContextLoaderException):
     Provides:
 
     Super Class:
-        ContextBlueprintLoaderException
+        ContextLoaderException
     """
-    MSG = "GameContextBlueprintLoader failed."
-    ERR_CODE = "GAME_CONTEXT_BLUEPRINT_LOADER_FAILURE"
+    MSG = "GameContextLoader failed."
+    ERR_CODE = "GAME_CONTEXT_LOADER_FAILURE"
     
     def __init__(
             self,

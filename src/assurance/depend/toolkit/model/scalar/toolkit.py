@@ -25,7 +25,7 @@ class ScalarValidatorToolkit(ModelValidatorToolkit[Scalar]):
 
     Attributes:
         helper: ScalarManifest
-        metadata: ScalarHelperTable
+        metadata: ScalarWrapperDependency
 
     Provides:
 
@@ -41,7 +41,7 @@ class ScalarValidatorToolkit(ModelValidatorToolkit[Scalar]):
         """
         Args:
             wrapper: Optional[ScalarManifest]
-            metadata: Optional[ScalarHelperTable]
+            metadata: Optional[ScalarWrapperDependency]
         """
         super().__init__(
             wrapper=wrapper or ScalarWrapperDependency(),

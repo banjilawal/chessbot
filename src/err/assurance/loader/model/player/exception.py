@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# PLAYER_BLUEPRINT_LOADER_FAILURE #======================#
+    # ======================# PLAYER_LOADER_FAILURE #======================#
     "PlayerLoaderException",
 ]
 
-# ======================# PLAYER_BLUEPRINT_LOADER_FAILURE #======================#
+# ======================# PLAYER_LOADER_FAILURE #======================#
 class PlayerLoaderException(ModelLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a PlayerBlueprintLoader failed.
+        1.  Indicating a PlayerLoader failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class PlayerLoaderException(ModelLoaderException):
     Provides:
 
     Super Class:
-        ModelBlueprintLoaderException
+        ModelLoaderException
     """
-    MSG = "PlayerBlueprintLoader failed."
-    ERR_CODE = "PLAYER_BLUEPRINT_LOADER_FAILURE"
+    MSG = "PlayerLoader failed."
+    ERR_CODE = "PLAYER_LOADER_FAILURE"
     
     def __init__(
             self,

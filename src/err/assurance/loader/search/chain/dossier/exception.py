@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ChainContextBlueprintLoaderException
+from err import ChainContextLoaderException
 from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# DOSSIER_NODE_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
-    "DossierNodeContextBlueprintLoaderException",
+    # ======================# DOSSIER_NODE_CONTEXT_LOADER_FAILURE #======================#
+    "DossierNodeContextLoaderException",
 ]
 
-# ======================# DOSSIER_NODE_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
-class DossierNodeContextBlueprintLoaderException(ChainContextBlueprintLoaderException):
+# ======================# DOSSIER_NODE_CONTEXT_LOADER_FAILURE #======================#
+class DossierNodeContextLoaderException(ChainContextLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a DossierNodeContextBlueprintLoader failed.
+        1.  Indicating assurance by a DossierNodeContextLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class DossierNodeContextBlueprintLoaderException(ChainContextBlueprintLoaderExce
     Provides:
 
     Super Class:
-        ContextBlueprintLoaderException
+        ContextLoaderException
     """
-    MSG = "DossierNodeContextBlueprintLoader failed."
-    ERR_CODE = "DOSSIER_NODE_CONTEXT_BLUEPRINT_LOADER_FAILURE"
+    MSG = "DossierNodeContextLoader failed."
+    ERR_CODE = "DOSSIER_NODE_CONTEXT_LOADER_FAILURE"
     
     def __init__(
             self,

@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# ARENA_BLUEPRINT_LOADER_FAILURE #======================#
+    # ======================# ARENA_LOADER_FAILURE #======================#
     "ArenaLoaderException",
 ]
 
-# ======================# ARENA_BLUEPRINT_LOADER_FAILURE #======================#
+# ======================# ARENA_LOADER_FAILURE #======================#
 class ArenaLoaderException(ModelLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an ArenaBlueprintLoader failed.
+        1.  Indicating an ArenaLoader failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class ArenaLoaderException(ModelLoaderException):
     Provides:
 
     Super Class:
-        ModelBlueprintLoaderException
+        ModelLoaderException
     """
-    MSG = "ArenaBlueprintLoader failed."
-    ERR_CODE = "ARENA_BLUEPRINT_LOADER_FAILURE"
+    MSG = "ArenaLoader failed."
+    ERR_CODE = "ARENA_LOADER_FAILURE"
     
     def __init__(
             self,

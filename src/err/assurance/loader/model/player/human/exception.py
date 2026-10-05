@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# HUMAN_PLAYER_BLUEPRINT_LOADER_FAILURE #======================#
-    "HumanPlayerBlueprintLoaderException",
+    # ======================# HUMAN_PLAYER_LOADER_FAILURE #======================#
+    "HumanPlayerLoaderException",
 ]
 
-# ======================# HUMAN_PLAYER_BLUEPRINT_LOADER_FAILURE #======================#
-class HumanPlayerBlueprintLoaderException(PlayerLoaderException):
+# ======================# HUMAN_PLAYER_LOADER_FAILURE #======================#
+class HumanPlayerLoaderException(PlayerLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a HumanPlayerBlueprintLoader failed.
+        1.  Indicating a HumanPlayerLoader failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class HumanPlayerBlueprintLoaderException(PlayerLoaderException):
     Provides:
 
     Super Class:
-        PlayerBlueprintLoaderException
+        PlayerLoaderException
     """
-    MSG = "HumanPlayerBlueprintLoader failed."
-    ERR_CODE = "HUMAN_PLAYER_BLUEPRINT_LOADER_FAILURE"
+    MSG = "HumanPlayerLoader failed."
+    ERR_CODE = "HUMAN_PLAYER_LOADER_FAILURE"
     
     def __init__(
             self,

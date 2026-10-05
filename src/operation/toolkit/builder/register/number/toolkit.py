@@ -23,7 +23,7 @@ class NumberRegisterBuilderToolkit(RegisterBuilderToolkit[NumberRegister]):
         - Dependency Management
         
     Responsibilities:
-        1.  Bundles NumberRegisterRegisterBuilder dependencies.
+        1.  Bundles NumberRegisterBuilder dependencies.
 
     Attributes:
         assembler: Optional[NumberRegisterAssembler]

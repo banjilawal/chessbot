@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# COMBATANT_TOKEN_BLUEPRINT_LOADER_FAILURE #======================#
-    "CombatantTokenBlueprintLoaderException",
+    # ======================# COMBATANT_TOKEN_LOADER_FAILURE #======================#
+    "CombatantTokenLoaderException",
 ]
 
-# ======================# COMBATANT_TOKEN_BLUEPRINT_LOADER_FAILURE #======================#
-class CombatantTokenBlueprintLoaderException(TokenLoaderException):
+# ======================# COMBATANT_TOKEN_LOADER_FAILURE #======================#
+class CombatantTokenLoaderException(TokenLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a CombatantTokenBlueprintLoader failed.
+        1.  Indicating a CombatantTokenLoader failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class CombatantTokenBlueprintLoaderException(TokenLoaderException):
     Provides:
 
     Super Class:
-        TokenBlueprintLoaderException
+        TokenLoaderException
     """
-    MSG = "CombatantTokenBlueprintLoader failed."
-    ERR_CODE = "COMBATANT_TOKEN_BLUEPRINT_LOADER_FAILURE"
+    MSG = "CombatantTokenLoader failed."
+    ERR_CODE = "COMBATANT_TOKEN_LOADER_FAILURE"
     
     def __init__(
             self,

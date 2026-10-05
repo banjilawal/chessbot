@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# COORD_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
-    "CoordContextBlueprintLoaderException",
+    # ======================# COORD_CONTEXT_LOADER_FAILURE #======================#
+    "CoordContextLoaderException",
 ]
 
-# ======================# COORD_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
-class CoordContextBlueprintLoaderException(ContextLoaderException):
+# ======================# COORD_CONTEXT_LOADER_FAILURE #======================#
+class CoordContextLoaderException(ContextLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a CoordContextBlueprintLoader failed.
+        1.  Indicating assurance by a CoordContextLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class CoordContextBlueprintLoaderException(ContextLoaderException):
     Provides:
 
     Super Class:
-        ContextBlueprintLoaderException
+        ContextLoaderException
     """
-    MSG = "CoordContextBlueprintLoader failed."
-    ERR_CODE = "COORD_CONTEXT_BLUEPRINT_LOADER_FAILURE"
+    MSG = "CoordContextLoader failed."
+    ERR_CODE = "COORD_CONTEXT_LOADER_FAILURE"
     
     def __init__(
             self,

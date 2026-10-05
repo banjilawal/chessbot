@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# ATTACK_BLUEPRINT_LOADER_FAILURE #======================#
+    # ======================# ATTACK_LOADER_FAILURE #======================#
     "AttackLoaderException",
 ]
 
-# ======================# ATTACK_BLUEPRINT_LOADER_FAILURE #======================#
+# ======================# ATTACK_LOADER_FAILURE #======================#
 class AttackLoaderException(ModelLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an AttackBlueprintLoader failed.
+        1.  Indicating an AttackLoader failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class AttackLoaderException(ModelLoaderException):
     Provides:
 
     Super Class:
-        ModelBlueprintLoaderException
+        ModelLoaderException
     """
-    MSG = "AttackBlueprintLoader failed."
-    ERR_CODE = "ATTACK_BLUEPRINT_LOADER_FAILURE"
+    MSG = "AttackLoader failed."
+    ERR_CODE = "ATTACK_LOADER_FAILURE"
     
     def __init__(
             self,

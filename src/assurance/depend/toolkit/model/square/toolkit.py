@@ -25,7 +25,7 @@ class SquareValidatorToolkit(ModelValidatorToolkit[Square]):
 
     Attributes:
         helper: SquareManifest
-        metadata: SquareHelperTable
+        metadata: SquareWrapperDependency
 
     Provides:
 
@@ -41,7 +41,7 @@ class SquareValidatorToolkit(ModelValidatorToolkit[Square]):
         """
         Args:
             wrapper: Optional[SquareManifest]
-            metadata: Optional[SquareHelperTable]
+            metadata: Optional[SquareWrapperDependency]
         """
         super().__init__(
             wrapper=wrapper or SquareWrapperDependency(),

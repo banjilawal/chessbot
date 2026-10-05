@@ -16,11 +16,11 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# WARNING_NODE_CARRIER_NULL_ERROR #======================#
+    # ======================# ENCOUNTER_WARNING_NODE_CARRIER_NULL_ERROR #======================#
     "EncounterWarningNodeCarrierNullException",
 ]
 
-# ======================# WARNING_NODE_CARRIER_NULL_ERROR #======================#
+# ======================# ENCOUNTER_WARNING_NODE_CARRIER_NULL_ERROR #======================#
 class EncounterWarningNodeCarrierNullException(NodeCarrierNullException):
     """
     Role:

@@ -26,7 +26,7 @@ class PlayerValidatorToolkit(ModelValidatorToolkit[Player]):
 
     Attributes:
         helper: PlayerManifest
-        metadata: PlayerHelperTable
+        metadata: PlayerWrapperDependency
 
     Provides:
 
@@ -42,7 +42,7 @@ class PlayerValidatorToolkit(ModelValidatorToolkit[Player]):
         """
         Args:
             wrapper: Optional[PlayerManifest]
-            metadata: Optional[PlayerHelperTable]
+            metadata: Optional[PlayerWrapperDependency]
         """
         super().__init__(
             wrapper=wrapper or PlayerWrapperDependency(),

@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# BLOCKED_PATH_BLUEPRINT_LOADER_FAILURE #======================#
-    "BlockedPathBlueprintLoaderException",
+    # ======================# BLOCKED_PATH_LOADER_FAILURE #======================#
+    "BlockedPathLoaderException",
 ]
 
-# ======================# BLOCKED_PATH_BLUEPRINT_LOADER_FAILURE #======================#
-class BlockedPathBlueprintLoaderException(PathLoaderException):
+# ======================# BLOCKED_PATH_LOADER_FAILURE #======================#
+class BlockedPathLoaderException(PathLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a BlockedPathBlueprintLoader failed.
+        1.  Indicating assurance by a BlockedPathLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class BlockedPathBlueprintLoaderException(PathLoaderException):
     Provides:
 
     Super Class:
-        PathBlueprintLoaderException
+        PathLoaderException
     """
-    MSG = "Candidate did not pass an BlockedPathBlueprintLoader failed."
-    ERR_CODE = "BLOCKED_PATH_BLUEPRINT_LOADER_FAILURE"
+    MSG = "Candidate did not pass an BlockedPathLoader failed."
+    ERR_CODE = "BLOCKED_PATH_LOADER_FAILURE"
     
     def __init__(
             self,

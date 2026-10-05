@@ -25,7 +25,7 @@ class BoardValidatorToolkit(ModelValidatorToolkit[Board]):
 
     Attributes:
         helper: BoardManifest
-        metadata: BoardHelperTable
+        metadata: BoardWrapperDependency
 
     Provides:
 
@@ -41,7 +41,7 @@ class BoardValidatorToolkit(ModelValidatorToolkit[Board]):
         """
         Args:
             wrapper: Optional[BoardManifest]
-            metadata: Optional[BoardHelperTable]
+            metadata: Optional[BoardWrapperDependency]
         """
         super().__init__(
             wrapper=wrapper or BoardWrapperDependency(),

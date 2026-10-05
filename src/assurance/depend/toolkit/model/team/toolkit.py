@@ -25,7 +25,7 @@ class TeamValidatorToolkit(ModelValidatorToolkit[Team]):
 
     Attributes:
         helper: TeamManifest
-        metadata: TeamHelperTable
+        metadata: TeamWrapperDependency
 
     Provides:
 
@@ -41,7 +41,7 @@ class TeamValidatorToolkit(ModelValidatorToolkit[Team]):
         """
         Args:
             wrapper: Optional[TeamManifest]
-            metadata: Optional[TeamHelperTable]
+            metadata: Optional[TeamWrapperDependency]
         """
         super().__init__(
             wrapper=wrapper or TeamWrapperDependency(),

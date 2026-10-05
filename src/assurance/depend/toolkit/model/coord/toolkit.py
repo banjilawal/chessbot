@@ -25,7 +25,7 @@ class CoordValidatorToolkit(ModelValidatorToolkit[Coord]):
 
     Attributes:
         helper: CoordManifest
-        metadata: CoordHelperTable
+        metadata: CoordWrapperDependency
 
     Provides:
 
@@ -41,7 +41,7 @@ class CoordValidatorToolkit(ModelValidatorToolkit[Coord]):
         """
         Args:
             wrapper: Optional[CoordManifest]
-            metadata: Optional[CoordHelperTable]
+            metadata: Optional[CoordWrapperDependency]
         """
         super().__init__(
             wrapper=wrapper or CoordWrapperDependency(),

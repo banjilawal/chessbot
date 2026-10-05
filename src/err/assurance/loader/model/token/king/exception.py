@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# KING_TOKEN_BLUEPRINT_LOADER_FAILURE #======================#
-    "KingTokenBlueprintLoaderException",
+    # ======================# KING_TOKEN_LOADER_FAILURE #======================#
+    "KingTokenLoaderException",
 ]
 
-# ======================# KING_TOKEN_BLUEPRINT_LOADER_FAILURE #======================#
-class KingTokenBlueprintLoaderException(TokenLoaderException):
+# ======================# KING_TOKEN_LOADER_FAILURE #======================#
+class KingTokenLoaderException(TokenLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a KingTokenBlueprintLoader failed.
+        1.  Indicating a KingTokenLoader failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class KingTokenBlueprintLoaderException(TokenLoaderException):
     Provides:
 
     Super Class:
-        TokenBlueprintLoaderException
+        TokenLoaderException
     """
-    MSG = "KingTokenBlueprintLoader failed."
-    ERR_CODE = "KING_TOKEN_BLUEPRINT_LOADER_FAILURE"
+    MSG = "KingTokenLoader failed."
+    ERR_CODE = "KING_TOKEN_LOADER_FAILURE"
     
     def __init__(
             self,

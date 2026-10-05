@@ -16,11 +16,11 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# WARNING_NODE_CONSISTENCY_ERROR #======================#
+    # ======================# ENCOUNTER_WARNING_NODE_CONSISTENCY_ERROR #======================#
     "EncounterWarningNodeConsistencyException",
 ]
 
-# ======================# WARNING_NODE_CONSISTENCY_ERROR #======================#
+# ======================# ENCOUNTER_WARNING_NODE_CONSISTENCY_ERROR #======================#
 class EncounterWarningNodeConsistencyException(NodeConsistencyException):
     """
     Role:

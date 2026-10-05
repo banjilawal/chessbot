@@ -3,7 +3,7 @@
 """
 Module: assurance.depend.toolkit.struct.node.vector.__init__
 Author: Banji Lawal
-Created: 2026-03-30
+Created: 2026-04-03
 version: 0.0.2
 """
 
@@ -11,5 +11,6 @@ version: 0.0.2
 
 # Packages
 
-# Modules
+
+# Module
 from .toolkit import VectorNodeValidatorToolkit

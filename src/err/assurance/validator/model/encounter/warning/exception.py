@@ -16,11 +16,11 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# WARNING_ENCOUNTER_VALIDATOR_FAILURE #======================#
+    # ======================# ENCOUNTER_WARNING_ENCOUNTER_VALIDATOR_FAILURE #======================#
     "WarningEncounterValidatorException",
 ]
 
-# ======================# WARNING_ENCOUNTER_VALIDATOR_FAILURE #======================#
+# ======================# ENCOUNTER_WARNING_ENCOUNTER_VALIDATOR_FAILURE #======================#
 class WarningEncounterValidatorException(EncounterValidatorException):
     """
     Role:

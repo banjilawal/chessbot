@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# TOKEN_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
-    "TokenContextBlueprintLoaderException",
+    # ======================# TOKEN_CONTEXT_LOADER_FAILURE #======================#
+    "TokenContextLoaderException",
 ]
 
-# ======================# TOKEN_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
-class TokenContextBlueprintLoaderException(ContextLoaderException):
+# ======================# TOKEN_CONTEXT_LOADER_FAILURE #======================#
+class TokenContextLoaderException(ContextLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a TokenContextBlueprintLoader failed.
+        1.  Indicating assurance by a TokenContextLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class TokenContextBlueprintLoaderException(ContextLoaderException):
     Provides:
 
     Super Class:
-        ContextBlueprintLoaderException
+        ContextLoaderException
     """
-    MSG = "TokenContextBlueprintLoader failed."
-    ERR_CODE = "TOKEN_CONTEXT_BLUEPRINT_LOADER_FAILURE"
+    MSG = "TokenContextLoader failed."
+    ERR_CODE = "TOKEN_CONTEXT_LOADER_FAILURE"
     
     def __init__(
             self,

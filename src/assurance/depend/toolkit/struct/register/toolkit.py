@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar, cast
 
 from assurance import RegisterDependency, StructValidatorToolkit
-from domain import Register, RegisterManifest
+from domain import Register, RegisterManifest, RegisterNullGroup, RegisterTypeUnion
 
 T = TypeVar("T", bound="Register")
 
@@ -27,7 +27,7 @@ class RegisterValidatorToolkit(StructValidatorToolkit[T], ABC, Generic[T]):
         1.  Single source of truth for attribute validators and type metadata.
 
     Attributes:
-            helper: RegisterHelperTable[T]
+            wrapper: RegisterWrapperDependency[T]
             metadata: RegisterManifest[T]
 
     Provides:
@@ -42,7 +42,7 @@ class RegisterValidatorToolkit(StructValidatorToolkit[T], ABC, Generic[T]):
             metadata: RegisterManifest[T],
     ):
         """
-            helper: RegisterHelperTable[T]
+            wrapper: RegisterWrapperDependency[T]
             metadata: RegisterManifest[T]
         """
         super().__init__(wrapper=wrapper, metadata=metadata)
@@ -55,3 +55,11 @@ class RegisterValidatorToolkit(StructValidatorToolkit[T], ABC, Generic[T]):
     @property
     def metadata(self) -> RegisterManifest[T]:
         return cast(RegisterManifest, super().metadata)
+    
+    @property
+    def nulls(self) -> RegisterNullGroup[T]:
+        return self.metadata.nulls
+    
+    @property
+    def types(self) -> RegisterTypeUnion[T]:
+        return self.metadata.types

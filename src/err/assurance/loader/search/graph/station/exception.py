@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import GraphContextBlueprintLoaderException
+from err import GraphContextLoaderException
 from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# STATION_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
-    "StationContextBlueprintLoaderException",
+    # ======================# STATION_CONTEXT_LOADER_FAILURE #======================#
+    "StationContextLoaderException",
 ]
 
-# ======================# STATION_CONTEXT_BLUEPRINT_LOADER_FAILURE #======================#
-class StationContextBlueprintLoaderException(GraphContextBlueprintLoaderException):
+# ======================# STATION_CONTEXT_LOADER_FAILURE #======================#
+class StationContextLoaderException(GraphContextLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a StationContextBlueprintLoader failed.
+        1.  Indicating assurance by a StationContextLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class StationContextBlueprintLoaderException(GraphContextBlueprintLoaderExceptio
     Provides:
 
     Super Class:
-        ContextBlueprintLoaderException
+        ContextLoaderException
     """
-    MSG = "StationContextBlueprintLoader failed."
-    ERR_CODE = "STATION_CONTEXT_BLUEPRINT_LOADER_FAILURE"
+    MSG = "StationContextLoader failed."
+    ERR_CODE = "STATION_CONTEXT_LOADER_FAILURE"
     
     def __init__(
             self,
