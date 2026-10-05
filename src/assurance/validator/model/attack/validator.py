@@ -27,7 +27,7 @@ class AttackValidator(ModelValidator[Encounter]):
         1.  Ensure a AttackCarrier is safe to use.
 
     Attributes:
-        toolkit: AttackValidatorToolkit
+        loader: AttackValidatorToolkit
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[AttackCarrier]:
@@ -38,11 +38,11 @@ class AttackValidator(ModelValidator[Encounter]):
     
     def __init__(
             self,
-            toolkit: Optional[AttackValidatorToolkit] | None = None,
+            loader: Optional[AttackValidatorToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[AttackValidatorToolkit]
+            loader: Optional[AttackValidatorToolkit]
         """
         super().__init__(toolkit=toolkit or AttackValidatorToolkit())
     

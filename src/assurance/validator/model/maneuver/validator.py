@@ -36,7 +36,7 @@ class ManeuverValidator(ModelValidator[Maneuver]):
         1.  Ensure a ManeuverCarrier is safe to use.
 
     Attributes:
-        toolkit: ManeuverValidatorToolkit
+        loader: ManeuverValidatorToolkit
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[ManeuverCarrier]:
@@ -47,11 +47,11 @@ class ManeuverValidator(ModelValidator[Maneuver]):
     
     def __init__(
             self,
-            toolkit: Optional[ManeuverValidatorToolkit] | None = None,
+            loader: Optional[ManeuverValidatorToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[ManeuverValidatorToolkit]
+            loader: Optional[ManeuverValidatorToolkit]
         """
         super().__init__(toolkit=toolkit or ManeuverValidatorToolkit())
     

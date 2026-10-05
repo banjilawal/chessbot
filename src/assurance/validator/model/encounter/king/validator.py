@@ -36,7 +36,7 @@ class KingEncounterValidator:
         1.  Ensure a KingEncounterCarrier is safe to use.
 
     Attributes:
-        toolkit: EncounterValidatorToolkit
+        loader: EncounterValidatorToolkit
         enemy_validator: EncounterEnemyValidator
 
     Provides:
@@ -46,17 +46,17 @@ class KingEncounterValidator:
 
     Super Class:
     """
-    _toolkit: EncounterValidatorToolkit
+    _loader: EncounterValidatorToolkit
     _enemy_validator: EncounterEnemyValidator
     
     def __init__(
             self,
-            toolkit: Optional[EncounterValidatorToolkit] | None = None,
+            loader: Optional[EncounterValidatorToolkit] | None = None,
             enemy_validator: Optional[EncounterEnemyValidator] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[EncounterValidatorToolkit]
+            loader: Optional[EncounterValidatorToolkit]
             enemy_validator: Optional[EncounterEnemyValidator]
         """
         self._toolkit = toolkit or EncounterValidatorToolkit()

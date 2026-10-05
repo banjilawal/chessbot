@@ -34,7 +34,7 @@ class Validator(ABC, Generic[T]):
 
     Attributes:
         loader: Loader[T]
-        toolkit: ValidatorToolkit[T]
+        loader: ValidatorToolkit[T]
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[Blueprint[T]|T]:
@@ -42,16 +42,14 @@ class Validator(ABC, Generic[T]):
     Super Class:
     """
     _loader: Loader[T]
-    _toolkit: ValidatorToolkit[T]
     
-    def __init__(self, loader: Loader[T], toolkit: ValidatorToolkit[T]):
+    def __init__(self, loader: Loader[T]):
         """
         Args:
             loader: Loader[T]
-            toolkit: ValidatorToolkit[T]
+            loader: ValidatorToolkit[T]
         """
         self._loader = loader
-        self._toolkit = toolkit
      
     @property
     def loader(self) -> Loader[T]:
@@ -59,7 +57,7 @@ class Validator(ABC, Generic[T]):
         
     @property
     def toolkit(self) -> ValidatorToolkit[T]:
-        return self._toolkit
+        return self._loader.toolkit
     
     @abstractmethod
     @LoggingLevelRouter.monitor

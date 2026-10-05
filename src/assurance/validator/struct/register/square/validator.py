@@ -35,7 +35,7 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
         2.  Run safety checks on structs and blueprints inside an EntityCarrier's payload.
 
     Attributes:
-        toolkit: SquareRegisterValidatorToolkit
+        loader: SquareRegisterValidatorToolkit
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[SquareRegisterCarrier]:
@@ -46,11 +46,11 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
     
     def __init__(
             self,
-            toolkit: Optional[SquareRegisterValidatorToolkit] | None = None,
+            loader: Optional[SquareRegisterValidatorToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[SquareRegisterValidatorToolkit]
+            loader: Optional[SquareRegisterValidatorToolkit]
         """
         super().__init__(
             toolkit=toolkit or SquareRegisterValidatorToolkit()

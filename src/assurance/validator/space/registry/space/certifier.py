@@ -34,15 +34,15 @@ class SpaceReservoirValidator(Validator, ABC, Generic[T]):
         2.  Pluggable validation module.
 
     Attributes:
-        toolkit: SpaceToolkit
+        loader: SpaceToolkit
 
     Provides:
-        -   def execute(candidate: Any, toolkit: SpaceToolkit,) -> ValidationResult[Blueprint[T]]:
+        -   def execute(candidate: Any, loader: SpaceToolkit,) -> ValidationResult[Blueprint[T]]:
 
     Super Class:
     """
 
-    def __init__(self, toolkit: SpaceReservoirToolkit[T],):
+    def __init__(self, loader: SpaceReservoirToolkit[T],):
         super().__init__(toolkit=toolkit)
         
     @property

@@ -34,7 +34,7 @@ class EncounterValidator(ModelValidator[Encounter]):
         1.  Ensure a EncounterCarrier is safe to use.
 
     Attributes:
-        toolkit: EncounterValidatorToolkit
+        loader: EncounterValidatorToolkit
         validation_router: EncounterValidationRouter
         property_table_generator: RootEncounterEnvelopeGenerator
 
@@ -50,14 +50,14 @@ class EncounterValidator(ModelValidator[Encounter]):
     def __init__(
             self,
             root_validator: Optional[RootEncounterValidator] | None = None,
-            toolkit: Optional[EncounterValidatorToolkit] | None = None,
+            loader: Optional[EncounterValidatorToolkit] | None = None,
             validation_router: Optional[EncounterValidationRouter] | None = None,
             property_table_generator: Optional[RootEncounterEnvelopeGenerator]
                                       | None = None,
     ):
         """
         Args:
-            toolkit: Optional[EncounterValidatorToolkit]
+            loader: Optional[EncounterValidatorToolkit]
             validation_router: Optional[EncounterValidationRouter]
             property_table_generator: Optional[RootEncounterEnvelopeGenerator]
         """

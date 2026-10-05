@@ -31,7 +31,7 @@ class NortheastQuadrantRootChecker(QuadrantRootChecker[NortheastQuadrant]):
         1.  Ensure a NortheastQuadrantBlueprint instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        toolkit: NortheastQuadrantToolkit
+        loader: NortheastQuadrantToolkit
 
     Provides:
         - execute(self, candidate: Any) -> ValidationResult:
@@ -40,15 +40,15 @@ class NortheastQuadrantRootChecker(QuadrantRootChecker[NortheastQuadrant]):
         IntegrityChecker
     """
     
-    def __init__(self, toolkit: NortheastQuadrantToolkit | None = NortheastQuadrantToolkit()):
+    def __init__(self, loader: NortheastQuadrantToolkit | None = NortheastQuadrantToolkit()):
         """
         Args:
-            toolkit: NortheastQuadrantToolkit
+            loader: NortheastQuadrantToolkit
         """
         super().__init__(toolkit=toolkit)
     
     @property
-    def toolkit(self) -> NortheastQuadrantToolkit:
+    def toolkit(self) -> NortheastQuadrantLoader:
         return cast(NortheastQuadrantToolkit, super().ruleset)
     
     @LoggingLevelRouter.monitor

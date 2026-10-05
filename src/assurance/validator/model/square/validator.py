@@ -35,7 +35,7 @@ class SquareValidator(ModelValidator[Square]):
         1.  Ensure a SquareCarrier is safe to use.
 
     Attributes:
-        toolkit: SquareValidatorToolkit
+        loader: SquareValidatorToolkit
 
     Provides:
         -   def execute(candidate: SquareValidationRequest) -> ValidationResult[SquareCarrier]:
@@ -46,11 +46,11 @@ class SquareValidator(ModelValidator[Square]):
     
     def __init__(
             self,
-            toolkit: Optional[SquareValidatorToolkit] | None = None,
+            loader: Optional[SquareValidatorToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[SquareValidatorToolkit]
+            loader: Optional[SquareValidatorToolkit]
         """
         super().__init__(toolkit=toolkit or SquareValidatorToolkit())
     

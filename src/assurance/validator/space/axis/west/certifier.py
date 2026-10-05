@@ -30,7 +30,7 @@ class WestAxisRootChecker(AxisRootChecker[WestAxisBlueprint]):
         1.  Ensure a WestAxisBlueprint instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        toolkit: WestAxisToolkit
+        loader: WestAxisToolkit
 
     Provides:
         - execute(self, candidate: Any) -> ValidationResult:
@@ -39,15 +39,15 @@ class WestAxisRootChecker(AxisRootChecker[WestAxisBlueprint]):
         IntegrityChecker
     """
     
-    def __init__(self, toolkit: WestAxisToolkit | None = WestAxisToolkit()):
+    def __init__(self, loader: WestAxisToolkit | None = WestAxisToolkit()):
         """
         Args:
-            toolkit: WestAxisToolkit
+            loader: WestAxisToolkit
         """
         super().__init__(toolkit=toolkit)
     
     @property
-    def toolkit(self) -> WestAxisToolkit:
+    def toolkit(self) -> WestAxisLoader:
         return cast(WestAxisToolkit, super().ruleset)
     
     @LoggingLevelRouter.monitor

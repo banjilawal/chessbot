@@ -31,7 +31,7 @@ class RegisterValidator(StructValidator[T], ABC, Generic[T]):
         2.  Run safety checks on structs and blueprints inside an EntityCarrier's payload.
 
     Attributes:
-        toolkit: RegisterValidatorToolkit[T]
+        loader: RegisterValidatorToolkit[T]
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[StructCarrier[T]]:
@@ -40,10 +40,10 @@ class RegisterValidator(StructValidator[T], ABC, Generic[T]):
         StructValidator
     """
     
-    def __init__(self, toolkit: RegisterValidatorToolkit[T]):
+    def __init__(self, loader: RegisterValidatorToolkit[T]):
         """
         Args:
-            toolkit: RegisterValidatorToolkit[T]
+            loader: RegisterValidatorToolkit[T]
         """
         super().__init__(toolkit=toolkit)
     

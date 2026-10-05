@@ -28,7 +28,7 @@ class CommonAttackPropertyTableGenerator:
         1.  Runs validation checks on fields in Attack superclass.
 
     Attributes:
-        toolkit: AttackValidatorToolkit
+        loader: AttackValidatorToolkit
         position_validator: AttackPositionValidator
 
     Provides:
@@ -36,15 +36,15 @@ class CommonAttackPropertyTableGenerator:
 
     Super Class:
     """
-    _toolkit: AttackValidatorToolkit
+    _loader: AttackValidatorToolkit
     
     def __init__(
             self,
-            toolkit: Optional[AttackValidatorToolkit] | None = None,
+            loader: Optional[AttackValidatorToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[AttackValidatorToolkit]
+            loader: Optional[AttackValidatorToolkit]
         """
         self._toolkit = toolkit or AttackValidatorToolkit()
     
@@ -73,8 +73,8 @@ class CommonAttackPropertyTableGenerator:
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the blueprint cannot be extracted.
-        load_result = self._toolkit.loader.execute(candidate)
-        if load_result.is_failure:
+        loading = self._toolkit.loader.execute(candidate)
+        if loading.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 CommonAttackPropertyTableGeneratorException(
@@ -82,11 +82,11 @@ class CommonAttackPropertyTableGenerator:
                     cls_name=self.__class__.__name__,
                     msg=CommonAttackPropertyTableGeneratorException.MSG,
                     err_code=CommonAttackPropertyTableGeneratorException.ERR_CODE,
-                    ex=load_result.exception,
+                    ex=loading.exception,
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        prime_extract = cast(AttackPrimeExtract, load_result.payload)
+        prime_extract = cast(AttackPrimeExtract, loading.payload)
         attack_blueprint = cast(AttackBlueprint, prime_extract.blueprint)
         # --- START_ID_VALIDATION_PROCESS ---#
         

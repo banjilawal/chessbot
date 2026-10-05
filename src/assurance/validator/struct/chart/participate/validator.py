@@ -39,7 +39,7 @@ class ParticipationValidator(ChartValidator[Participation]):
         1.  Runs validation checks on fields in Encounter superclass.
 
     Attributes:
-        toolkit: ParticipationValidatorToolkit
+        loader: ParticipationLoader
         readiness_validator: ParticipantReadinessValidator
 
     Provides:
@@ -56,25 +56,24 @@ class ParticipationValidator(ChartValidator[Participation]):
     def __init__(
             self,
             loader: Optional[ParticipationLoader] | None = None,
-            toolkit: Optional[ParticipationValidatorToolkit] | None = None,
             readiness_validator: Optional[ParticipantReadinessValidator] | None = None,
     ):
         """
         Args:
             loader: Optional[ParticipationLoader]
-            toolkit: Optional[ParticipationValidatorToolkit]
             readiness_validator: Optional[ParticipantReadinessValidator]
         """
-        super().__init__(loader=loader or ParticipationLoader(), toolkit=toolkit or ParticipationValidatorToolkit())
+        super().__init__(loader=loader or ParticipationLoader())
         self._readiness_validator = readiness_validator or ParticipantReadinessValidator()
-    
-    @property
-    def toolkit(self) -> ParticipationValidatorToolkit:
-        return cast(ParticipationValidatorToolkit, super().toolkit)
     
     @property
     def loader(self) -> ParticipationLoader:
         return cast(ParticipationLoader, super().loader)
+    
+    @property
+    def toolkit(self) -> ParticipationValidatorToolkit:
+        return self.loader.toolkit
+
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[ParticipationCarrier]:
@@ -97,8 +96,8 @@ class ParticipationValidator(ChartValidator[Participation]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the blueprint cannot be extracted.
-        load_result = self.toolkit.loader.execute(candidate)
-        if load_result.is_failure:
+        loading = self.toolkit.loader.execute(candidate)
+        if loading.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ParticipationValidatorException(
@@ -106,11 +105,11 @@ class ParticipationValidator(ChartValidator[Participation]):
                     cls_name=self.__class__.__name__,
                     msg=ParticipationValidatorException.MSG,
                     err_code=ParticipationValidatorException.ERR_CODE,
-                    ex=load_result.exception,
+                    ex=loading.exception,
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        prime_extract = cast(ParticipationPrimeExtract, load_result.payload)
+        prime_extract = cast(ParticipationPrimeExtract, loading.payload)
         carrier = prime_extract.carrier
         blueprint = carrier.extract_blueprint()
         

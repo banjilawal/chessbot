@@ -33,7 +33,7 @@ class TokenValidator(ModelValidator[Token]):
         1.  Ensure a TokenCarrier is safe to use.
 
     Attributes:
-        toolkit: TokenValidatorToolkit
+        loader: TokenValidatorToolkit
         validation_router: TokenValidationRouter
         property_table_generator: TokenProductEnvelopeGenerator
 
@@ -48,14 +48,14 @@ class TokenValidator(ModelValidator[Token]):
     
     def __init__(
             self,
-            toolkit: Optional[TokenValidatorToolkit] | None = None,
+            loader: Optional[TokenValidatorToolkit] | None = None,
             validation_router: Optional[TokenValidationRouter] | None = None,
             property_table_generator: Optional[RootTokenValidator]
                                       | None = None,
     ):
         """
         Args:
-            toolkit: Optional[TokenValidatorToolkit]
+            loader: Optional[TokenValidatorToolkit]
             validation_router: Optional[TokenValidationRouter]
             property_table_generator: Optional[TokenProductEnvelopeGenerator]
         """

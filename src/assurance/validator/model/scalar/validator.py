@@ -29,7 +29,7 @@ class ScalarValidator(ModelValidator[Scalar]):
         1.  Ensure a ScalarCarrier is safe to use.
 
     Attributes:
-        toolkit: ScalarValidatorToolkit
+        loader: ScalarValidatorToolkit
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[ScalarCarrier]:
@@ -40,11 +40,11 @@ class ScalarValidator(ModelValidator[Scalar]):
     
     def __init__(
             self,
-            toolkit: Optional[ScalarValidatorToolkit] | None = None,
+            loader: Optional[ScalarValidatorToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[ScalarValidatorToolkit]
+            loader: Optional[ScalarValidatorToolkit]
         """
         super().__init__(toolkit=toolkit or ScalarValidatorToolkit())
     
@@ -77,8 +77,8 @@ class ScalarValidator(ModelValidator[Scalar]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the blueprint cannot be extracted.
-        load_result = self.toolkit.loader.execute(candidate)
-        if load_result.is_failure:
+        loading = self.toolkit.loader.execute(candidate)
+        if loading.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ScalarValidatorException(
@@ -86,11 +86,11 @@ class ScalarValidator(ModelValidator[Scalar]):
                     cls_name=self.__class__.__name__,
                     msg=ScalarValidatorException.MSG,
                     err_code=ScalarValidatorException.ERR_CODE,
-                    ex=load_result.exception,
+                    ex=loading.exception,
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        prime_extract = cast(ScalarPrimeExtract, load_result.payload)
+        prime_extract = cast(ScalarPrimeExtract, loading.payload)
         blueprint = cast(ScalarBlueprint, prime_extract.blueprint)
         
         # Handle the case that any scalar component in the blueprint is flagged.

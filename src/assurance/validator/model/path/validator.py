@@ -31,7 +31,7 @@ class PathValidator(ModelValidator[Path]):
         1.  Ensure a Path instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        toolkit: PathValidatorToolkit
+        loader: PathValidatorToolkit
         
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[PathCarrier]
@@ -40,10 +40,10 @@ class PathValidator(ModelValidator[Path]):
         ModelValidator
     """
     
-    def __init__(self, toolkit: Optional[PathValidatorToolkit] | None = None):
+    def __init__(self, loader: Optional[PathValidatorToolkit] | None = None):
         """
         Args:
-            toolkit: Optional[PathValidatorToolkit]
+            loader: Optional[PathValidatorToolkit]
         """
         super().__init__(toolkit=toolkit or PathValidatorToolkit())
         

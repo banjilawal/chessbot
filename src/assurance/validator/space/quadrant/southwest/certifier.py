@@ -32,7 +32,7 @@ class SouthwestQuadrantRootChecker(QuadrantRootChecker[SouthwestQuadrantBlueprin
             before use.
 
     Attributes:
-        toolkit: SouthwestQuadrantToolkit
+        loader: SouthwestQuadrantToolkit
 
     Provides:
         -   def execute(self, candidate: Any) -> ValidationResult[SouthwestQuadrant|SouthwestQuadrantBlueprint]:
@@ -41,15 +41,15 @@ class SouthwestQuadrantRootChecker(QuadrantRootChecker[SouthwestQuadrantBlueprin
         RootChecker
     """
     
-    def __init__(self, toolkit: Optional[SouthwestQuadrantToolkit]| None = None):
+    def __init__(self, loader: Optional[SouthwestQuadrantToolkit]| None = None):
         """
         Args:
-            toolkit: SouthwestQuadrantToolkit
+            loader: SouthwestQuadrantToolkit
         """
         super().__init__(toolkit=toolkit or SouthwestQuadrantToolkit())
     
     @property
-    def toolkit(self) -> SouthwestQuadrantToolkit:
+    def toolkit(self) -> SouthwestQuadrantLoader:
         return cast(SouthwestQuadrantToolkit, super().ruleset)
     
     @LoggingLevelRouter.monitor

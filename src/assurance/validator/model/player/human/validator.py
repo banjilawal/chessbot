@@ -34,22 +34,22 @@ class HumanPlayerValidator:
         1.  Ensure a PlayerCarrier is safe to use.
 
     Attributes:
-        toolkit: PlayerValidatorToolkit
+        loader: PlayerValidatorToolkit
 
     Provides:
         -   def execute(validated_carrier: HumanCarrier) -> ValidationResult[HumanCarrier]
 
     Super Class:
     """
-    _toolkit: PlayerValidatorToolkit
+    _loader: PlayerValidatorToolkit
     
     def __init__(
             self,
-            toolkit: Optional[PlayerValidatorToolkit] | None = None,
+            loader: Optional[PlayerValidatorToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[PlayerValidatorToolkit]
+            loader: Optional[PlayerValidatorToolkit]
         """
         self._toolkit=toolkit or PlayerValidatorToolkit()
     

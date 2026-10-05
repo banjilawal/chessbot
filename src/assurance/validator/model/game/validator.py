@@ -34,7 +34,7 @@ class GameValidator(ModelValidator[Game]):
         1.  Ensure a GameCarrier is safe to use.
 
     Attributes:
-        toolkit: GameValidatorToolkit
+        loader: GameValidatorToolkit
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[GameCarrier]:
@@ -45,11 +45,11 @@ class GameValidator(ModelValidator[Game]):
     
     def __init__(
             self,
-            toolkit: Optional[GameValidatorToolkit] | None = None,
+            loader: Optional[GameValidatorToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[GameValidatorToolkit]
+            loader: Optional[GameValidatorToolkit]
         """
         super().__init__(toolkit=toolkit or GameValidatorToolkit())
     

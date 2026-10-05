@@ -32,7 +32,7 @@ class CoordValidator(ModelValidator[Coord]):
         1.  Ensure a CoordCarrier is safe to use.
 
     Attributes:
-        toolkit: CoordValidatorToolkit
+        loader: CoordValidatorToolkit
 
     Provides:
         -   def execute(candidate: CoordValidationRequest) -> ValidationResult[CoordCarrier]:
@@ -43,11 +43,11 @@ class CoordValidator(ModelValidator[Coord]):
     
     def __init__(
             self,
-            toolkit: Optional[CoordValidatorToolkit] | None = None,
+            loader: Optional[CoordValidatorToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[CoordValidatorToolkit]
+            loader: Optional[CoordValidatorToolkit]
         """
         super().__init__(toolkit=toolkit or CoordValidatorToolkit())
     

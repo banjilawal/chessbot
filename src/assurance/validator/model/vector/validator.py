@@ -28,7 +28,7 @@ class VectorValidator(ModelValidator[Vector]):
         1.  Ensure a VectorCarrier is safe to use.
 
     Attributes:
-        toolkit: VectorValidatorToolkit
+        loader: VectorValidatorToolkit
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[VectorCarrier]:
@@ -39,11 +39,11 @@ class VectorValidator(ModelValidator[Vector]):
     
     def __init__(
             self,
-            toolkit: Optional[VectorValidatorToolkit] | None = None,
+            loader: Optional[VectorValidatorToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[VectorValidatorToolkit]
+            loader: Optional[VectorValidatorToolkit]
         """
         super().__init__(toolkit=toolkit or VectorValidatorToolkit())
     
@@ -75,8 +75,8 @@ class VectorValidator(ModelValidator[Vector]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the blueprint cannot be extracted.
-        load_result = self.toolkit.loader.execute(candidate)
-        if load_result.is_failure:
+        loading = self.toolkit.loader.execute(candidate)
+        if loading.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorValidatorException(
@@ -84,11 +84,11 @@ class VectorValidator(ModelValidator[Vector]):
                     cls_name=self.__class__.__name__,
                     msg=VectorValidatorException.MSG,
                     err_code=VectorValidatorException.ERR_CODE,
-                    ex=load_result.exception,
+                    ex=loading.exception,
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        prime_extract = cast(VectorPrimeExtract, load_result.payload)
+        prime_extract = cast(VectorPrimeExtract, loading.payload)
         blueprint = cast(VectorBlueprint, prime_extract.blueprint)
         
         # Handle the case that any vector component in the blueprint is flagged.

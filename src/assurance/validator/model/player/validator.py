@@ -30,7 +30,7 @@ class PlayerValidator(ModelValidator[Player]):
         1.  Ensure a PlayerCarrier is safe to use.
 
     Attributes:
-        toolkit: PlayerValidatorToolkit
+        loader: PlayerValidatorToolkit
 
     Provides:
         -   def execute(candidate: PlayerValidationRequest) ->ValidationResult[PlayerCarrier]:
@@ -41,11 +41,11 @@ class PlayerValidator(ModelValidator[Player]):
     
     def __init__(
             self,
-            toolkit: Optional[PlayerValidatorToolkit] | None = None,
+            loader: Optional[PlayerValidatorToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[PlayerValidatorToolkit]
+            loader: Optional[PlayerValidatorToolkit]
         """
         super().__init__(toolkit=toolkit or PlayerValidatorToolkit())
     

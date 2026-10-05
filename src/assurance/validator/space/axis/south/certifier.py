@@ -30,7 +30,7 @@ class SouthAxisRootChecker(AxisRootChecker[SouthAxisBlueprint]):
         1.  Ensure a SouthAxisBlueprint instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        toolkit: SouthAxisToolkit
+        loader: SouthAxisToolkit
 
     Provides:
         - execute(self, candidate: Any) -> ValidationResult:
@@ -39,15 +39,15 @@ class SouthAxisRootChecker(AxisRootChecker[SouthAxisBlueprint]):
         IntegrityChecker
     """
     
-    def __init__(self, toolkit: SouthAxisToolkit | None = SouthAxisToolkit()):
+    def __init__(self, loader: SouthAxisToolkit | None = SouthAxisToolkit()):
         """
         Args:
-            toolkit: SouthAxisToolkit
+            loader: SouthAxisToolkit
         """
         super().__init__(toolkit=toolkit)
     
     @property
-    def toolkit(self) -> SouthAxisToolkit:
+    def toolkit(self) -> SouthAxisLoader:
         return cast(SouthAxisToolkit, super().ruleset)
     
     @LoggingLevelRouter.monitor

@@ -31,7 +31,7 @@ class NorthAxisRootChecker(AxisRootChecker[NorthAxisBlueprint]):
         1.  Ensure a NorthAxisBlueprint instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        toolkit: NorthAxisToolkit
+        loader: NorthAxisToolkit
 
     Provides:
         - execute(self, candidate: Any) -> ValidationResult:
@@ -40,15 +40,15 @@ class NorthAxisRootChecker(AxisRootChecker[NorthAxisBlueprint]):
         IntegrityChecker
     """
     
-    def __init__(self, toolkit: NorthAxisToolkit | None = NorthAxisToolkit()):
+    def __init__(self, loader: NorthAxisToolkit | None = NorthAxisToolkit()):
         """
         Args:
-            toolkit: NorthAxisToolkit
+            loader: NorthAxisToolkit
         """
         super().__init__(toolkit=toolkit)
     
     @property
-    def toolkit(self) -> NorthAxisToolkit:
+    def toolkit(self) -> NorthAxisLoader:
         return cast(NorthAxisToolkit, super().ruleset)
     
     @LoggingLevelRouter.monitor

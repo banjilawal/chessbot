@@ -12,9 +12,9 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidator, TeamValidatorToolkit
+from assurance import ModelValidator, TeamLoader, TeamValidatorToolkit
 from domain import Archetype, Board, Player, Team, TeamBlueprint, TeamPrimeExtract
-from err import ArchetypeNullException, TeamValidatorException
+from err import ArchetypeNullException, TeamCarrierEmptyException, TeamValidatorException
 from exchange import BoardValidationRequest, PlayerValidationRequest
 from transit import BoardCarrier, PlayerCarrier, TeamCarrier
 from util import IdFactory, LoggingLevelRouter
@@ -29,7 +29,7 @@ class TeamValidator(ModelValidator[Team]):
         1.  Ensure a TeamCarrier is safe to use.
 
     Attributes:
-        toolkit: TeamValidatorToolkit
+        loader: TeamLoader
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[TeamCarrier]:
@@ -38,25 +38,23 @@ class TeamValidator(ModelValidator[Team]):
         ModelValidator
     """
     
-    def __init__(
-            self,
-            toolkit: Optional[TeamValidatorToolkit] | None = None,
-    ):
+    def __init__(self, loader: Optional[TeamLoader] | None = None):
         """
         Args:
-            toolkit: Optional[TeamValidatorToolkit]
+            loader: Optional[TeamValidatorToolkit]
         """
-        super().__init__(toolkit=toolkit or TeamValidatorToolkit())
+        super().__init__(loader=loader or TeamLoader())
+    
+    @property
+    def loader(self) -> TeamLoader:
+        return cast(TeamLoader, super().loader)
     
     @property
     def toolkit(self) -> TeamValidatorToolkit:
-        return cast(TeamValidatorToolkit, super().toolkit)
+        return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
-    def execute(
-            self,
-            candidate: Any,
-    ) -> ValidationResult[TeamCarrier]:
+    def execute(self, candidate: Any) -> ValidationResult[TeamCarrier]:
         """
         Assure a candidate is a safe TokenCarrier.
 
@@ -76,8 +74,8 @@ class TeamValidator(ModelValidator[Team]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the blueprint cannot be extracted.
-        load_result = self.toolkit.loader.execute(candidate)
-        if load_result.is_failure:
+        loading = self.toolkit.loader.execute(candidate)
+        if loading.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TeamValidatorException(
@@ -85,13 +83,31 @@ class TeamValidator(ModelValidator[Team]):
                     cls_name=self.__class__.__name__,
                     msg=TeamValidatorException.MSG,
                     err_code=TeamValidatorException.ERR_CODE,
-                    ex=load_result.exception,
+                    ex=loading.exception,
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        prime_extract = cast(TeamPrimeExtract, load_result.payload)
-        blueprint = cast(TeamBlueprint, prime_extract.blueprint)
+        prime_extract = cast(TeamPrimeExtract, loading.payload)
+        carrier = prime_extract.carrier
+        blueprint = carrier.extract_blueprint()
         
+        # Handle the case that the blueprint is null.
+        if blueprint is None:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TeamValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TeamValidatorException.MSG,
+                    err_code=TeamValidatorException.ERR_CODE,
+                    ex=TeamCarrierEmptyException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=TeamCarrierEmptyException.MSG,
+                        err_code=TeamCarrierEmptyException.ERR_CODE,
+                    )
+                )
+            )
         # Handle the case that any id in the blueprint is flagged.
         id_validation = self.toolkit.blueprint_id_extractor.execute(
             candidate=blueprint,
@@ -172,7 +188,7 @@ class TeamValidator(ModelValidator[Team]):
         
         # --- Forward the appropriate work product to the caller. ---#
         # The client wants a safe Team.
-        if prime_extract.carrier.has_model:
+        if prime_extract.recipient_wants_model:
             payload = Team(
                 id=id,
                 board=board,

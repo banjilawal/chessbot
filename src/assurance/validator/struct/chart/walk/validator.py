@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Dict, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ChartValidator, WalkValidatorToolkit
+from assurance import ChartValidator, WalkLoader, WalkValidatorToolkit
 from domain import Coord, WalkBlueprint, WalkPrimeExtract, Walk
 from err import WalkConsistencyException, WalkValidatorException
 from exchange import CoordValidationRequest
@@ -29,7 +29,7 @@ class WalkValidator(ChartValidator[Walk]):
         1.  Ensure a WalkCarrier and its contents are safe to use.
 
     Attributes:
-        toolkit: WalkValidatorToolkit
+        loader: WalkLoader
 
     Provides:
         -   execute(candidate: Any) -> ValidationResult[WalkCarrier]
@@ -38,19 +38,20 @@ class WalkValidator(ChartValidator[Walk]):
         ChartValidator
     """
     
-    def __init__(
-            self,
-            toolkit: Optional[WalkValidatorToolkit] | None = None,
-    ):
+    def __init__(self, loader: Optional[WalkLoader] | None = None):
         """
         Args:
-            toolkit: Optional[WalkValidatorToolkit]
+            loader: Optional[WalkLoader]
         """
-        super().__init__(toolkit=toolkit or WalkValidatorToolkit())
+        super().__init__(loader=loader or WalkLoader())
         
     @property
+    def loader(self) -> WalkLoader:
+        return cast(WalkLoader, super().loader)
+    
+    @property
     def toolkit(self) -> WalkValidatorToolkit:
-        return cast(WalkValidatorToolkit, super().toolkit)
+        return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[WalkCarrier]:
@@ -73,8 +74,8 @@ class WalkValidator(ChartValidator[Walk]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the blueprint cannot be extracted.
-        load_result = self.toolkit.loader.execute(candidate)
-        if load_result.is_failure:
+        loading = self.toolkit.loader.execute(candidate)
+        if loading.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 WalkValidatorException(
@@ -82,11 +83,11 @@ class WalkValidator(ChartValidator[Walk]):
                     cls_name=self.__class__.__name__,
                     msg=WalkValidatorException.MSG,
                     err_code=WalkValidatorException.ERR_CODE,
-                    ex=load_result.exception,
+                    ex=loading.exception,
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        prime_extract = cast(WalkPrimeExtract, load_result.payload)
+        prime_extract = cast(WalkPrimeExtract, loading.payload)
         blueprint = cast(WalkBlueprint, prime_extract.blueprint)
         
         # Handle the case that the walk has an inconsistency.

@@ -31,7 +31,7 @@ class EastAxisRootChecker(AxisRootChecker[EastAxis]):
         1.  Ensure a EastAxisBlueprint instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        toolkit: EastAxisToolkit
+        loader: EastAxisToolkit
 
     Provides:
         - execute(self, candidate: Any) -> ValidationResult:
@@ -40,15 +40,15 @@ class EastAxisRootChecker(AxisRootChecker[EastAxis]):
         IntegrityChecker
     """
     
-    def __init__(self, toolkit: EastAxisToolkit | None = EastAxisToolkit()):
+    def __init__(self, loader: EastAxisToolkit | None = EastAxisToolkit()):
         """
         Args:
-            toolkit: EastAxisToolkit
+            loader: EastAxisToolkit
         """
         super().__init__(toolkit=toolkit)
     
     @property
-    def toolkit(self) -> EastAxisToolkit:
+    def toolkit(self) -> EastAxisLoader:
         return cast(EastAxisToolkit, super().ruleset)
     
     @LoggingLevelRouter.monitor

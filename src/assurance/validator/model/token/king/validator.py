@@ -36,7 +36,7 @@ class KingTokenValidator:
         1.  Ensure a KingTokenCarrier is safe to use.
 
     Attributes:
-        toolkit: TokenValidatorToolkit
+        loader: TokenValidatorToolkit
         enemy_validator: TokenEnemyValidator
 
     Provides:
@@ -46,17 +46,17 @@ class KingTokenValidator:
 
     Super Class:
     """
-    _toolkit: TokenValidatorToolkit
+    _loader: TokenValidatorToolkit
     _enemy_validator: TokenEnemyValidator
     
     def __init__(
             self,
-            toolkit: Optional[TokenValidatorToolkit] | None = None,
+            loader: Optional[TokenValidatorToolkit] | None = None,
             enemy_validator: Optional[TokenEnemyValidator] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[TokenValidatorToolkit]
+            loader: Optional[TokenValidatorToolkit]
             enemy_validator: Optional[TokenEnemyValidator]
         """
         self._toolkit = toolkit or TokenValidatorToolkit()

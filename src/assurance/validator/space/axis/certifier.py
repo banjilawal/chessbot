@@ -38,10 +38,10 @@ class AxisRootChecker(SpaceChecker, Generic[T]):
         SpaceRootChecker
     """
 
-    def __init__(self, toolkit: AxisToolkit[T]):
+    def __init__(self, loader: AxisToolkit[T]):
         """
         Args:
-            toolkit: AxisToolkit[T]
+            loader: AxisToolkit[T]
         """
         super().__init__(toolkit=toolkit)
     

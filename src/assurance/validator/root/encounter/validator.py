@@ -31,7 +31,7 @@ class RootEncounterValidator(RootValidator[Encounter]):
         1.  Runs validation checks on fields in Encounter superclass.
 
     Attributes:
-        toolkit: EncounterValidatorToolkit
+        loader: EncounterValidatorToolkit
 
     Provides:
         -   def execute(
@@ -45,12 +45,12 @@ class RootEncounterValidator(RootValidator[Encounter]):
     
     def __init__(
             self,
-            toolkit: Optional[EncounterValidatorToolkit] | None = None,
+            loader: Optional[EncounterValidatorToolkit] | None = None,
             chart_validator: Optional[ParticipationValidator] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[EncounterValidatorToolkit]
+            loader: Optional[EncounterValidatorToolkit]
             chart_validator: Optional[EncounterPositionCertifier]
         """
         super().__init__(toolkit=toolkit or EncounterValidatorToolkit())
@@ -85,8 +85,8 @@ class RootEncounterValidator(RootValidator[Encounter]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the blueprint cannot be extracted.
-        load_result = self.toolkit.loader.execute(candidate)
-        if load_result.is_failure:
+        loading = self.toolkit.loader.execute(candidate)
+        if loading.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 RootEncounterValidatorException(
@@ -94,11 +94,11 @@ class RootEncounterValidator(RootValidator[Encounter]):
                     cls_name=self.__class__.__name__,
                     msg=RootEncounterValidatorException.MSG,
                     err_code=RootEncounterValidatorException.ERR_CODE,
-                    ex=load_result.exception,
+                    ex=loading.exception,
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        prime_extract = cast(EncounterPrimeExtract, load_result.payload)
+        prime_extract = cast(EncounterPrimeExtract, loading.payload)
         blueprint = cast(EncounterBlueprint, prime_extract.blueprint)
         # --- START_ID_VALIDATION_PROCESS ---#
         

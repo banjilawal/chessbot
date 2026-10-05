@@ -32,7 +32,7 @@ class KillEncounterValidator:
         1.  Ensure a KillEncounterCarrier is safe to use.
 
     Attributes:
-        toolkit: EncounterValidatorToolkit
+        loader: EncounterValidatorToolkit
         enemy_validator: EncounterEnemyValidator
 
     Provides:
@@ -42,15 +42,15 @@ class KillEncounterValidator:
 
     Super Class:
     """
-    _toolkit: EncounterValidatorToolkit
+    _loader: EncounterValidatorToolkit
     
     def __init__(
             self,
-            toolkit: Optional[EncounterValidatorToolkit] | None = None,
+            loader: Optional[EncounterValidatorToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[EncounterValidatorToolkit]
+            loader: Optional[EncounterValidatorToolkit]
         """
         self._toolkit = toolkit or EncounterValidatorToolkit()
     

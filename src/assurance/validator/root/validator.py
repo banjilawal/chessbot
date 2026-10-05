@@ -28,7 +28,7 @@ class RootValidator(ABC, Generic[T]):
         1.  Runs validation checks on fields in Token superclass.
 
     Attributes:
-        toolkit: TokenValidatorToolkit
+        loader: TokenValidatorToolkit
         position_validator: TokenPositionValidator
 
     Provides:
@@ -36,12 +36,12 @@ class RootValidator(ABC, Generic[T]):
 
     Super Class:
     """
-    _toolkit: ValidatorToolkit[T]
+    _loader: ValidatorToolkit[T]
     
-    def __init__(self, toolkit: ValidatorToolkit[T]):
+    def __init__(self, loader: ValidatorToolkit[T]):
         """
         Args:
-            toolkit: ValidatorToolkit[T]
+            loader: ValidatorToolkit[T]
         """
         self._toolkit = toolkit
         

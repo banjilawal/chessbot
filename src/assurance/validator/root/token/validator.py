@@ -37,7 +37,7 @@ class RootTokenValidator(RootValidator[Token]):
         1.  Runs validation checks on fields in Token superclass.
 
     Attributes:
-        toolkit: TokenValidatorToolkit
+        loader: TokenValidatorToolkit
         position_validator: TokenPositionValidator
 
     Provides:
@@ -52,12 +52,12 @@ class RootTokenValidator(RootValidator[Token]):
     
     def __init__(
             self,
-            toolkit: Optional[TokenValidatorToolkit] | None = None,
+            loader: Optional[TokenValidatorToolkit] | None = None,
             position_validator: Optional[ WalkValidator] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[TokenValidatorToolkit]
+            loader: Optional[TokenValidatorToolkit]
             position_validator: Optional[TokenPositionValidator]
         """
         super().__init__(toolkit=toolkit or TokenValidatorToolkit())
@@ -92,8 +92,8 @@ class RootTokenValidator(RootValidator[Token]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the blueprint cannot be extracted.
-        load_result = self.toolkit.loader.execute(candidate)
-        if load_result.is_failure:
+        loading = self.toolkit.loader.execute(candidate)
+        if loading.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 RootTokenValidatorException(
@@ -101,11 +101,11 @@ class RootTokenValidator(RootValidator[Token]):
                     cls_name=self.__class__.__name__,
                     msg=RootTokenValidatorException.MSG,
                     err_code=RootTokenValidatorException.ERR_CODE,
-                    ex=load_result.exception,
+                    ex=loading.exception,
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        prime_extract = cast(TokenPrimeExtract, load_result.payload)
+        prime_extract = cast(TokenPrimeExtract, loading.payload)
         token_blueprint = cast(TokenBlueprint, prime_extract.blueprint)
         # --- START_ID_VALIDATION_PROCESS ---#
         

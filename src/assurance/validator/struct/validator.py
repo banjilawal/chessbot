@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import StructValidatorToolkit, Validator
+from assurance import StructLoader, StructValidatorToolkit, Validator
 from domain import Struct, StructValidationRequest
 from transit import StructCarrier
 from util import LoggingLevelRouter
@@ -31,7 +31,7 @@ class StructValidator(Validator[T], ABC, Generic[T]):
         2.  Run safety checks on structs and blueprints inside an EntityCarrier's payload.
 
     Attributes:
-        toolkit: StructValidatorToolkit[T]
+        loader: StructLoader[T]
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[StructCarrier[T]]:
@@ -40,16 +40,20 @@ class StructValidator(Validator[T], ABC, Generic[T]):
         Validator
     """
     
-    def __init__(self, toolkit: StructValidatorToolkit[T]):
+    def __init__(self, loader: StructLoader[T]):
         """
         Args:
-            toolkit: StructValidatorToolkit[T]
+            loader: StructValidatorToolkit[T]
         """
-        super().__init__(toolkit=toolkit)
+        super().__init__(loader=loader)
+    
+    @property
+    def loader(self) -> StructLoader[T]:
+        return cast(StructLoader[T], super().loader)
     
     @property
     def toolkit(self) -> StructValidatorToolkit[T]:
-        return cast(StructValidatorToolkit[T], super().toolkit)
+        return self.loader.toolkit
     
     @abstractmethod
     @LoggingLevelRouter.monitor

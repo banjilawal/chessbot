@@ -32,7 +32,7 @@ class RankValidator(ModelValidator[Rank]):
         1.  Ensure a RankCarrier is safe to use.
 
     Attributes:
-        toolkit: RankValidatorToolkit
+        loader: RankValidatorToolkit
 
     Provides:
         -   def execute(candidate: RankValidationRequest) ->ValidationResult[RankCarrier]:
@@ -43,11 +43,11 @@ class RankValidator(ModelValidator[Rank]):
     
     def __init__(
             self,
-            toolkit: Optional[RankValidatorToolkit] | None = None,
+            loader: Optional[RankValidatorToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[RankValidatorToolkit]
+            loader: Optional[RankValidatorToolkit]
         """
         super().__init__(toolkit=toolkit or RankValidatorToolkit())
     

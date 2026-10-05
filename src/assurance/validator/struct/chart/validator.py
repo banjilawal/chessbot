@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import ChartValidatorToolkit, StructValidator
+from assurance import ChartLoader, ChartValidatorToolkit, StructValidator
 from domain import Chart
 from transit import ChartCarrier
 from util import LoggingLevelRouter
@@ -31,7 +31,7 @@ class ChartValidator(StructValidator[T], ABC, Generic[T]):
         2.  Run safety checks on structs and blueprints inside an EntityCarrier's payload.
 
     Attributes:
-        toolkit: ChartValidatorToolkit[T]
+        loader: ChartLoader[T]
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[StructCarrier[T]]:
@@ -40,16 +40,20 @@ class ChartValidator(StructValidator[T], ABC, Generic[T]):
         StructValidator
     """
     
-    def __init__(self, toolkit: ChartValidatorToolkit[T]):
+    def __init__(self, loader: ChartLoader[T]):
         """
         Args:
-            toolkit: ChartValidatorToolkit[T]
+            loader: ChartLoader[T]
         """
-        super().__init__(toolkit=toolkit)
+        super().__init__(loader=loader)
+    
+    @property
+    def loader(self) -> ChartLoader[T]:
+        return cast(ChartLoader[T], super().loader)
     
     @property
     def toolkit(self) -> ChartValidatorToolkit[T]:
-        return cast(ChartValidatorToolkit[T], super().toolkit)
+        return self.loader.toolkit
     
     @abstractmethod
     @LoggingLevelRouter.monitor

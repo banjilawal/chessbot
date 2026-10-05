@@ -33,19 +33,19 @@ class QuadrantReservoirRootChecker(SpaceReservoirChecker[QuadrantReservoir]):
         2.  Pluggable validation module.
 
     Attributes:
-        toolkit: SpaceToolkit
+        loader: SpaceToolkit
 
     Provides:
-        -   def execute(candidate: Any, toolkit: SpaceToolkit,) -> ValidationResult[Blueprint[T]]:
+        -   def execute(candidate: Any, loader: SpaceToolkit,) -> ValidationResult[Blueprint[T]]:
 
     Super Class:
     """
 
-    def __init__(self, toolkit: Optional[QuadrantReservoirToolkit] | None = None):
+    def __init__(self, loader: Optional[QuadrantReservoirToolkit] | None = None):
         super().__init__(toolkit=toolkit or QuadrantReservoirToolkit())
         
     @property
-    def toolkit(self) -> QuadrantReservoirToolkit:
+    def toolkit(self) -> QuadrantReservoirLoader:
         return cast(QuadrantReservoirToolkit, super().ruleset)
     
     @LoggingLevelRouter.monitor

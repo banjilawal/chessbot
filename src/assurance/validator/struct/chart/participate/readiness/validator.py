@@ -28,22 +28,22 @@ class ParticipantReadinessValidator:
         1.  Runs validation checks on fields in Encounter superclass.
 
     Attributes:
-        toolkit: TokenValidatorToolkit
+        loader: TokenValidatorToolkit
 
     Provides:
         -   def execute(participant: Token) -> ValidationResult[Token]:
 
     Super Class:
     """
-    _toolkit: TokenValidatorToolkit
+    _loader: TokenValidatorToolkit
     
     def __init__(
             self,
-            toolkit: Optional[TokenValidatorToolkit] | None = None
+            loader: Optional[TokenValidatorToolkit] | None = None
     ):
         """
         Args:
-            toolkit: Optional[TokenValidatorToolkit]
+            loader: Optional[TokenValidatorToolkit]
         """
         self._toolkit=toolkit or TokenValidatorToolkit()
 

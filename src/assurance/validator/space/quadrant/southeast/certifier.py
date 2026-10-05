@@ -30,7 +30,7 @@ class SoutheastQuadrantRootChecker(QuadrantRootChecker[SoutheastQuadrantBlueprin
         1.  Ensure a SoutheastQuadrantBlueprint instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        toolkit: SoutheastQuadrantToolkit
+        loader: SoutheastQuadrantToolkit
 
     Provides:
         - execute(self, candidate: Any) -> ValidationResult:
@@ -39,15 +39,15 @@ class SoutheastQuadrantRootChecker(QuadrantRootChecker[SoutheastQuadrantBlueprin
         IntegrityChecker
     """
     
-    def __init__(self, toolkit: SoutheastQuadrantToolkit | None = SoutheastQuadrantToolkit()):
+    def __init__(self, loader: SoutheastQuadrantToolkit | None = SoutheastQuadrantToolkit()):
         """
         Args:
-            toolkit: SoutheastQuadrantToolkit
+            loader: SoutheastQuadrantToolkit
         """
         super().__init__(toolkit=toolkit)
     
     @property
-    def toolkit(self) -> SoutheastQuadrantToolkit:
+    def toolkit(self) -> SoutheastQuadrantLoader:
         return cast(SoutheastQuadrantToolkit, super().ruleset)
     
     @LoggingLevelRouter.monitor

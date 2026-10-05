@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidatorToolkit, Validator
+from assurance import ModelLoader, ModelValidatorToolkit, Validator
 from domain import Model
 from transit import ModelCarrier
 from util import LoggingLevelRouter
@@ -31,7 +31,7 @@ class ModelValidator(Validator[T], ABC, Generic[T]):
         2.  Run safety checks on models and blueprints inside an EntityCarrier's payload.
 
     Attributes:
-        toolkit: ModelValidatorToolkit[T]
+        loader: ModelLoader[T]
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[ModelCarrier[T]]:
@@ -40,16 +40,20 @@ class ModelValidator(Validator[T], ABC, Generic[T]):
         Validator
     """
     
-    def __init__(self, toolkit: ModelValidatorToolkit[T]):
+    def __init__(self, loader: ModelLoader[T]):
         """
         Args:
-            toolkit: ValidatorToolkit[T]
+            loader: ModelLoader[T]
         """
-        super().__init__(toolkit=toolkit)
+        super().__init__(loader=loader)
+    
+    @property
+    def loader(self) -> ModelLoader[T]:
+        return cast(ModelLoader[T], super().loader)
     
     @property
     def toolkit(self) -> ModelValidatorToolkit[T]:
-        return cast(ModelValidatorToolkit[T], super().toolkit)
+        return self.toolkit
     
     @abstractmethod
     @LoggingLevelRouter.monitor

@@ -31,7 +31,7 @@ class NorthwestQuadrantRootChecker(QuadrantRootChecker[NorthwestQuadrantBlueprin
         1.  Ensure a NorthwestQuadrantBlueprint instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        toolkit: NorthwestQuadrantToolkit
+        loader: NorthwestQuadrantToolkit
 
     Provides:
         - execute(self, candidate: Any) -> ValidationResult:
@@ -40,15 +40,15 @@ class NorthwestQuadrantRootChecker(QuadrantRootChecker[NorthwestQuadrantBlueprin
         IntegrityChecker
     """
     
-    def __init__(self, toolkit: NorthwestQuadrantToolkit | None = NorthwestQuadrantToolkit()):
+    def __init__(self, loader: NorthwestQuadrantToolkit | None = NorthwestQuadrantToolkit()):
         """
         Args:
-            toolkit: NorthwestQuadrantToolkit
+            loader: NorthwestQuadrantToolkit
         """
         super().__init__(toolkit=toolkit)
     
     @property
-    def toolkit(self) -> NorthwestQuadrantToolkit:
+    def toolkit(self) -> NorthwestQuadrantLoader:
         return cast(NorthwestQuadrantToolkit, super().ruleset)
     
     @LoggingLevelRouter.monitor
