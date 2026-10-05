@@ -1,7 +1,7 @@
-# src/transit/dispatcher/validator/struct/chart/coord/validator.py
+# src/transit/dispatcher/validator/struct/chart/walk/validator.py
 
 """
-Module: transit.dispatcher.validator.chart.coord.validator
+Module: transit.dispatcher.validator.chart.walk.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,28 +11,28 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from assurance import CoordChartValidator
-from domain.struct.chart import CoordChart
+from assurance import WalkValidator
+from domain.struct.chart import Walk
 from artifcat import ValidationResult
-from err import CoordChartValidationDispatcherException
-from transit import CoordChartCarrier
+from err import WalkValidationDispatcherException
+from transit import WalkCarrier
 from util import LoggingLevelRouter
 from transit.dispatcher.validator import ChartValidationDispatcher
 
 
-class CoordChartValidationDispatcher(ChartValidationDispatcher[CoordChart]):
+class WalkValidationDispatcher(ChartValidationDispatcher[Walk]):
     """
     Role
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a CoordChart instance is certified safe, reliable, and consistent before use.
+        1.  Ensure a Walk instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        validator: CoordChartValidator
+        validator: WalkValidator
 
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult{CoordChart]
+        -   def execute(candidate: Any) -> ValidationResult{Walk]
 
     Super Class:
         ChartValidator
@@ -40,31 +40,31 @@ class CoordChartValidationDispatcher(ChartValidationDispatcher[CoordChart]):
     
     def __init__(
             self,
-            validator: CoordChartValidator | None = CoordChartValidator(),
+            validator: WalkValidator | None = WalkValidator(),
     ):
-        super().__init__(validator=validator or CoordChartValidator())
+        super().__init__(validator=validator or WalkValidator())
         
     @property
-    def validator(self) -> CoordChartValidator:
-        return cast(CoordChartValidator, super().validator)
+    def validator(self) -> WalkValidator:
+        return cast(WalkValidator, super().validator)
     
 
     @LoggingLevelRouter.monitor
-    def execute(self, job: Any) -> ValidationResult[CoordChartCarrier]:
+    def execute(self, job: Any) -> ValidationResult[WalkCarrier]:
         """
-        Verify the object is a CoordChart that is safe to use.
+        Verify the object is a Walk that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if the candidate fails a
                 validator test..
-            2.  Otherwise, cast the payload into a CoordChart and send in the success result.
+            2.  Otherwise, cast the payload into a Walk and send in the success result.
                 success result.
         Args:
             job: Any
         Returns:
-            ValidationResult[CoordChart]
+            ValidationResult[Walk]
         Raises:
-             CoordChartValidationDispatcherException
+             WalkValidationDispatcherException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -73,16 +73,16 @@ class CoordChartValidationDispatcher(ChartValidationDispatcher[CoordChart]):
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CoordChartValidationDispatcherException(
+                WalkValidationDispatcherException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CoordChartValidationDispatcherException.MSG,
-                    err_code=CoordChartValidationDispatcherException.ERR_CODE,
+                    msg=WalkValidationDispatcherException.MSG,
+                    err_code=WalkValidationDispatcherException.ERR_CODE,
                     ex=validation.exception,
                 )
             )
         # --- Forward the work product to the caller. ---#
         carrier = validation.payload
         return ValidationResult.success(
-            cast(CoordChartCarrier, validation.payload)
+            cast(WalkCarrier, validation.payload)
         )

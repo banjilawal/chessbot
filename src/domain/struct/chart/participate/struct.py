@@ -1,7 +1,7 @@
-# src/domain/struct/chart/token/struct.py
+# src/domain/struct/chart/participate/struct.py
 
 """
-Module: domain.struct.chart.token.struct
+Module: domain.struct.chart.participate.struct
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -14,7 +14,7 @@ from typing import Dict
 from domain import Chart, CombatantToken, KingToken, Token
 
 
-class TokenChart(Chart[Token]):
+class Participation(Chart[Token]):
     """
     Role
         - Data Holder

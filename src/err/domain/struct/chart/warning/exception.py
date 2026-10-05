@@ -1,7 +1,7 @@
-# src/err/domain/struct/chart/token/exception.py
+# src/err/domain/struct/chart/participate/exception.py
 
 """
-Module: err.domain.struct.chart.token.exception
+Module: err.domain.struct.chart.participate.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2

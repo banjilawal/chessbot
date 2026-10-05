@@ -14,7 +14,7 @@ from typing import Any, Optional, cast
 from artifcat import ValidationResult
 from assurance import EncounterValidatorToolkit, RootValidator, TokenChartValidator
 from config import NumericSetting
-from domain import Encounter, EncounterBlueprint, EncounterPrimeExtract, Maneuver, Token, TokenChart
+from domain import Encounter, EncounterBlueprint, EncounterPrimeExtract, Maneuver, Token, Participation
 from err import RootEncounterValidatorException
 from exchange import ManeuverValidationRequest, TokenValidationRequest
 
@@ -201,7 +201,7 @@ class RootEncounterValidator(RootValidator[Encounter]):
                     ex=readiness_chart_validation.exception
                 )
             )
-        participants = cast(TokenChart, readiness_chart_validation.payload)
+        participants = cast(Participation, readiness_chart_validation.payload)
         # --- Send the work product. ---#
         envelope = RootEncounterEnvelope(
             id=id,

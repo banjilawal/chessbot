@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# ENCOUNTER_DELIVERY_NULL_ERROR #======================#
-    "RootEncounterProductNullException",
+    # ======================# ROOT_ENCOUNTER_ENVELOPE_NULL_ERROR #======================#
+    "RootEncounterEnvelopeNullException",
 ]
 
-# ======================# ENCOUNTER_DELIVERY_NULL_ERROR #======================#
-class RootEncounterProductNullException(ProductEnvelopeNullException):
+# ======================# ROOT_ENCOUNTER_ENVELOPE_NULL_ERROR #======================#
+class RootEncounterEnvelopeNullException(ProductEnvelopeNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required RootEncounterValidationProduct is null.
+        1.  Indicating a required RootEncounterEnvelope is null.
 
     Attributes:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class RootEncounterProductNullException(ProductEnvelopeNullException):
     Super Class:
         ProductEnvelopeNullException
     """
-    MSG = "RootEncounterValidationProduct cannot be null."
-    ERR_CODE = "ENCOUNTER_DELIVERY_NULL_ERROR"
+    MSG = "RootEncounterEnvelope cannot be null."
+    ERR_CODE = "ROOT_ENCOUNTER_ENVELOPE_NULL_ERROR"
     
     def __init__(
             self,

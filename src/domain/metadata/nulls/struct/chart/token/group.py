@@ -1,7 +1,7 @@
-# src/domain/metadata/nulls/struct/chart/token/group.py
+# src/domain/metadata/nulls/struct/chart/participate/group.py
 
 """
-Module: domain.metadata.nulls.struct.chart.token.group
+Module: domain.metadata.nulls.struct.chart.participate.group
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -11,14 +11,14 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import ChartNullGroup, TokenChart
+from domain import ChartNullGroup, Participation
 from err import (
     TokenChartBlueprintNullException, TokenChartCarrierNullException,
     TokenChartNullException
 )
 
 
-class TokenChartNullGroup(ChartNullGroup[TokenChart]):
+class ParticipationNullGroup(ChartNullGroup[Participation]):
     """
     Role:
         - Metadata

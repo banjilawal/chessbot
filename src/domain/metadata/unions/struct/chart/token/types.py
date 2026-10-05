@@ -1,7 +1,7 @@
-# src/domain/metadata/unions/strcture/chart/token/manifest.py
+# src/domain/metadata/unions/strcture/chart/participate/manifest.py
 
 """
-Module: domain.metadata.unions.struct.chart.token.manifest
+Module: domain.metadata.unions.struct.chart.participate.manifest
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -12,10 +12,10 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import ChartTypeUnion, TokenChart, TokenChartBlueprint
+from domain import ChartTypeUnion, Participation, TokenChartBlueprint
 from transit import EntityCarrier
 
-class TokenChartTypeUnion(ChartTypeUnion[TokenChart]):
+class ParticipationTypeUnion(ChartTypeUnion[Participation]):
     """
     Role:
         - Metadata
@@ -36,8 +36,8 @@ class TokenChartTypeUnion(ChartTypeUnion[TokenChart]):
     
     def __init__(
             self,
-            carrier: Type[EntityCarrier[TokenChart]],
-            model: Optional[Type[TokenChart]] | None = None,
+            carrier: Type[EntityCarrier[Participation]],
+            model: Optional[Type[Participation]] | None = None,
             blueprint: Optional[Type[TokenChartBlueprint]] | None = None,
     ):
         """
@@ -47,18 +47,18 @@ class TokenChartTypeUnion(ChartTypeUnion[TokenChart]):
             blueprint: Type[TokenChartBlueprint]
         """
         super().__init__(
-            model=model or TokenChart,
+            model=model or Participation,
             blueprint=blueprint or TokenChartBlueprint,
             carrier=carrier,
         )
         
     @property
-    def model(self) -> Type[TokenChart]:
-        return cast(Type[TokenChart], super().model)
+    def model(self) -> Type[Participation]:
+        return cast(Type[Participation], super().model)
     
     @property
-    def carrier(self) -> Type[EntityCarrier[TokenChart]]:
-        return cast(Type[EntityCarrier[TokenChart]], super().carrier)
+    def carrier(self) -> Type[EntityCarrier[Participation]]:
+        return cast(Type[EntityCarrier[Participation]], super().carrier)
     
     @property
     def blueprint(self) -> Type[TokenChartBlueprint]:

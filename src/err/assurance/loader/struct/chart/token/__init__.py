@@ -1,13 +1,13 @@
-# src/err/assurance/loader/struct/chart/token/__init__.py
+# src/err/assurance/loader/struct/chart/participate/__init__.py
 
 """
-Module: err.assurance.loader.struct.chart.token.__init__
+Module: err.assurance.loader.struct.chart.participate.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.ASSURANCE.LOADER.STRUCT.CHART.TOKEN PACKAGE ===========#
+# ============ ERR.ASSURANCE.LOADER.STRUCT.CHART.PARTICIPATE PACKAGE ===========#
 
 # Packages
 

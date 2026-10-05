@@ -16,18 +16,18 @@ from err import NullException
 
 
 __all__ = [
-    # ======================# PRODUCT_DELIVERY_NULL_ERROR #======================#
+    # ======================# PRODUCT_ENVELOPE_NULL_ERROR #======================#
     "ProductEnvelopeNullException",
 ]
 
-# ======================# PRODUCT_DELIVERY_NULL_ERROR #======================#
+# ======================# PRODUCT_ENVELOPE_NULL_ERROR #======================#
 class ProductEnvelopeNullException(NullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Delivery is null.
+        1.  Indicating a required RootProductEnvelope is null.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class ProductEnvelopeNullException(NullException):
         NullException
     """
     MSG = "Delivery cannot be null."
-    ERR_CODE = "PRODUCT_DELIVERY_NULL_ERROR"
+    ERR_CODE = "PRODUCT_ENVELOPE_NULL_ERROR"
     
     def __init__(
             self,

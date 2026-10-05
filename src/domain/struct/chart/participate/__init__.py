@@ -1,7 +1,7 @@
-# src/domain/struct/chart/coord/__init__.py
+# src/domain/struct/chart/participate/__init__.py
 
 """
-Module: domain.struct.chart.coord.__init__
+Module: domain.struct.chart.participate.__init__
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -12,4 +12,4 @@ version: 0.0.2
 # Packages
 
 # Modules
-from .struct import CoordChart
+from .struct import Participation

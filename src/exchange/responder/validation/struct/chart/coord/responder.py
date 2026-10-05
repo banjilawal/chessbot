@@ -1,7 +1,7 @@
-# src/exchange/responder/validation/struct/chart/coord/exchange.py
+# src/exchange/responder/validation/struct/chart/walk/exchange.py
 
 """
-Module: exchange.responder.validation.struct.chart.coord.exchange
+Module: exchange.responder.validation.struct.chart.walk.exchange
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,27 +11,27 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import ValidationResult, CoordChartValidationResponse
-from domain import CoordChart
-from exchange import ChartValidationResponder, CoordChartValidationRequest
-from err import CoordChartValidationResponderException
-from transit import CoordCarrier, CoordChartCarrier, CoordChartValidationDispatcher
+from artifcat import ValidationResult, WalkValidationResponse
+from domain import Walk
+from exchange import ChartValidationResponder, WalkValidationRequest
+from err import WalkValidationResponderException
+from transit import CoordCarrier, WalkCarrier, WalkValidationDispatcher
 from util import LoggingLevelRouter
 
 
-class CoordChartValidationResponder(ChartValidationResponder[CoordChart]):
+class WalkValidationResponder(ChartValidationResponder[Walk]):
     """
     Role
         - Mediator
 
     Responsibilities:
-        1.  Intermediary in the CoordChart validation Request-Response workflow.
+        1.  Intermediary in the Walk validation Request-Response workflow.
 
     Attributes:
-        dispatcher: CoordChartValidationDispatcher[T]
+        dispatcher: WalkValidationDispatcher[T]
 
     Provides:
-        -   def submit(request: CoordChartValidationRequest[T]) -> CoordChartValidationResponse[T]
+        -   def submit(request: WalkValidationRequest[T]) -> WalkValidationResponse[T]
 
     Super Class:
         ChartValidatorExchange
@@ -39,25 +39,25 @@ class CoordChartValidationResponder(ChartValidationResponder[CoordChart]):
     
     def __init__(
             self, 
-            dispatcher: Optional[CoordChartValidationDispatcher] | None = None,
+            dispatcher: Optional[WalkValidationDispatcher] | None = None,
     ):
         """
         Args:
-            dispatcher: Optional[CoordChartValidationDispatcher]
+            dispatcher: Optional[WalkValidationDispatcher]
         """
         super().__init__(
-            dispatcher=dispatcher or CoordChartValidationDispatcher()
+            dispatcher=dispatcher or WalkValidationDispatcher()
         )
         
     @property
-    def dispatcher(self) -> CoordChartValidationDispatcher:
-        return cast(CoordChartValidationDispatcher, super().dispatcher)
+    def dispatcher(self) -> WalkValidationDispatcher:
+        return cast(WalkValidationDispatcher, super().dispatcher)
     
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            request: CoordChartValidationRequest
-    ) -> CoordChartValidationResponse:
+            request: WalkValidationRequest
+    ) -> WalkValidationResponse:
         """
         Certify a candidate is a CoordCarrier whose payload is either a Coord
         or a Blueprint that is safe to use.
@@ -67,9 +67,9 @@ class CoordChartValidationResponder(ChartValidationResponder[CoordChart]):
                 aborts the job.
             2.  Otherwise, extract and cast the carrier to send in the success result.
         Args:
-            request: CoordChartValidationRequest
+            request: WalkValidationRequest
         Result:
-            CoordChartValidationResponse
+            WalkValidationResponse
         Raises:
             CoordValidatorExchangeException
         """
@@ -79,20 +79,20 @@ class CoordChartValidationResponder(ChartValidationResponder[CoordChart]):
         # Handle the case that the dispatcher marks the candidate unsafe.
         if result.is_failure:
             # Send the exception chain on failure.
-            return CoordChartValidationResponse.failure(
+            return WalkValidationResponse.failure(
                 request=request,
                 result=result,
-                exception=CoordChartValidationResponderException(
+                exception=WalkValidationResponderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CoordChartValidationResponderException.MSG,
-                    err_code=CoordChartValidationResponderException.ERR_CODE,
+                    msg=WalkValidationResponderException.MSG,
+                    err_code=WalkValidationResponderException.ERR_CODE,
                     ex=result.exception,
                 ),
             )
         # --- Otherwise cast and send the success response to the caller. ---#
-        carrier = cast(CoordChartCarrier, result.payload)
-        return CoordChartValidationResponse.success(
+        carrier = cast(WalkCarrier, result.payload)
+        return WalkValidationResponse.success(
             request=request,
             result=ValidationResult(carrier),
         )

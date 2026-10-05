@@ -1,7 +1,7 @@
-# src/transit/dispatcher/validator/struct/chart/token/validator.py
+# src/transit/dispatcher/validator/struct/chart/participate/validator.py
 
 """
-Module: transit.dispatcher.validator.chart.token.validator
+Module: transit.dispatcher.validator.chart.participate.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing import Any, cast
 
 from assurance import TokenChartValidator
-from domain.struct.chart import TokenChart
+from domain.struct.chart import Participation
 from artifcat import ValidationResult
 from transit import TokenChartCarrier
 from util import LoggingLevelRouter
 from transit.dispatcher.validator import ChartValidationDispatcher
 
 
-class TokenChartValidationDispatcher(ChartValidationDispatcher[TokenChart]):
+class TokenChartValidationDispatcher(ChartValidationDispatcher[Participation]):
     """
     Role
         - Integrity, Consistency Maintenance

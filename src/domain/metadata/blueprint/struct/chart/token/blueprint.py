@@ -1,7 +1,7 @@
-# src/domain/metadata/blueprint/struct/chart/token.blueprint.py
+# src/domain/metadata/blueprint/struct/chart/participate.blueprint.py
 
 """
-Module: domain.metadata.blueprint.struct.chart.token.blueprint
+Module: domain.metadata.blueprint.struct.chart.participate.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import Token, ChartBlueprint, TokenChart
+from domain import Token, ChartBlueprint, Participation
 from err import TokenChartNullException
 
 
-class TokenChartBlueprint(ChartBlueprint[TokenChart]):
+class TokenChartBlueprint(ChartBlueprint[Participation]):
     """
      Role:
         1.  Metadata
@@ -41,7 +41,7 @@ class TokenChartBlueprint(ChartBlueprint[TokenChart]):
             self,
             victim: Token,
             attacker: Token,
-            domain_class: Optional[Type[TokenChart]] | None = None,
+            domain_class: Optional[Type[Participation]] | None = None,
             domain_null_exception: Optional[TokenChartNullException] | None = None,
     ):
         """
@@ -52,7 +52,7 @@ class TokenChartBlueprint(ChartBlueprint[TokenChart]):
             domain_null_exception: Optional[TokenChartNullException]
         """
         super().__init__(
-            domain_class=domain_class or TokenChart,
+            domain_class=domain_class or Participation,
             domain_null_exception=domain_null_exception or TokenChartNullException(),
         )
         self._victim = victim
@@ -67,8 +67,8 @@ class TokenChartBlueprint(ChartBlueprint[TokenChart]):
         return self._attacker
     
     @property
-    def domain_class(self) -> Type[TokenChart]:
-        return cast(Type[TokenChart], super().domain_class)
+    def domain_class(self) -> Type[Participation]:
+        return cast(Type[Participation], super().domain_class)
     
     @property
     def domain_null_exception(self) -> TokenChartNullException:

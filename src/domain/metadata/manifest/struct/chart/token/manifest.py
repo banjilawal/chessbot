@@ -1,7 +1,7 @@
-# src/domain/metadata/manifest/strcture/chart/token/manifest.py
+# src/domain/metadata/manifest/strcture/chart/participate/manifest.py
 
 """
-Module: domain.metadata.manifest.struct.chart.token.manifest
+Module: domain.metadata.manifest.struct.chart.participate.manifest
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import ChartManifest, TokenChart, TokenChartNullGroup, TokenChartTypeUnion
+from domain import ChartManifest, Participation, ParticipationNullGroup, ParticipationTypeUnion
 
 
-class TokenChartManifest(ChartManifest[TokenChart]):
+class ParticipationManifest(ChartManifest[Participation]):
     """
      Role:
         1.  Metadata
@@ -35,8 +35,8 @@ class TokenChartManifest(ChartManifest[TokenChart]):
     
     def __init__(
             self,
-            types: Optional[TokenChartTypeUnion] | None = None,
-            nulls: Optional[TokenChartNullGroup] | None = None,
+            types: Optional[ParticipationTypeUnion] | None = None,
+            nulls: Optional[ParticipationNullGroup] | None = None,
     ):
         """
         Args:
@@ -44,15 +44,15 @@ class TokenChartManifest(ChartManifest[TokenChart]):
             nulls: Optional[TokenChartNullGroup]
         """
         super().__init__(
-            types=types or TokenChartTypeUnion(),
-            nulls=nulls or TokenChartNullGroup(),
+            types=types or ParticipationTypeUnion(),
+            nulls=nulls or ParticipationNullGroup(),
         )
 
         
     @property
-    def types(self) -> TokenChartTypeUnion:
-        return cast(TokenChartTypeUnion, super().types)
+    def types(self) -> ParticipationTypeUnion:
+        return cast(ParticipationTypeUnion, super().types)
     
     @property
-    def nulls(self) -> TokenChartNullGroup:
-        return cast(TokenChartNullGroup, super().nulls)
+    def nulls(self) -> ParticipationNullGroup:
+        return cast(ParticipationNullGroup, super().nulls)

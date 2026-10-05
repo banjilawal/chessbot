@@ -13,11 +13,11 @@ from __future__ import annotations
 from typing import Optional
 
 from assurance import ChartDependency
-from domain import CoordChart
+from domain import Walk
 from exchange import CoordValidationResponseWrapper
 
 
-class CoordChartDependency(ChartDependency[CoordChart]):
+class WalkDependency(ChartDependency[Walk]):
     """
     Role:
         - Toolkit

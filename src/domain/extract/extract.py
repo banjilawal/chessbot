@@ -60,6 +60,14 @@ class PrimeExtract(ABC, Generic[T]):
         return self._blueprint
     
     @property
+    def recipient_wants_model(self) -> bool:
+        return self.no_blueprint_exists and self._carrier.has_model
+    
+    @property
+    def recipient_wants_blueprint(self) -> bool:
+        return self.blueprint_exists and self._carrier.has_blueprint
+    
+    @property
     def blueprint_exists(self) -> bool:
         return self._blueprint is None
     

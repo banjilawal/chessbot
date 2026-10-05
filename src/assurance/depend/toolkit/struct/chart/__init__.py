@@ -10,8 +10,8 @@ version: 0.0.2
 # =========== ASSURANCE.DEPEND.TOOLKIT.STRUCT.CHART PACKAGE ===========#
 
 # Packages
-from .coord import *
-from .token import *
+from .participate import *
+from .walk import *
 
 # Module
 from .toolkit import ChartValidatorToolkit

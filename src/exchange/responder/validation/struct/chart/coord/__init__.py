@@ -1,15 +1,15 @@
-# src/exchange/responder/validation/struct/chart/coord/__init__.py
+# src/exchange/responder/validation/struct/chart/walk/__init__.py
 
 """
-Module: exchange.responder.validation.struct.chart.coord.__init__
+Module: exchange.responder.validation.struct.chart.walk.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== EXCHANGE.RESPONDER.VALIDATION.STRUCT.CHART.COORD PACKAGE ===========#
+# =========== EXCHANGE.RESPONDER.VALIDATION.STRUCT.CHART.WALK PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .responder import CoordChartValidationResponder
+from .responder import WalkValidationResponder

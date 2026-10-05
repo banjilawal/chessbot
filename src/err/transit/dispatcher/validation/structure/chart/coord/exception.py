@@ -1,7 +1,7 @@
-# src/err/transit/dispatcher/validation/struct/chart/coord/exception.py
+# src/err/transit/dispatcher/validation/struct/chart/walk/exception.py
 
 """
-Module: err.transit.dispatcher.validation.struct.chart.coord.exception
+Module: err.transit.dispatcher.validation.struct.chart.walk.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -16,17 +16,17 @@ from err import ChartChartValidationDispatcherException
 
 __all__ = [
     # ======================# COORD_CHART_VALIDATION_DISPATCHER_FAILURE #======================#
-    "CoordChartValidationDispatcherException",
+    "WalkValidationDispatcherException",
 ]
 
 # ======================# COORD_CHART_VALIDATION_DISPATCHER_FAILURE #======================#
-class CoordChartValidationDispatcherException(ChartChartValidationDispatcherException):
+class WalkValidationDispatcherException(ChartChartValidationDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a CoordChartValidationDispatcher encountered an error.
+        1.  Indicating a WalkValidationDispatcher encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class CoordChartValidationDispatcherException(ChartChartValidationDispatcherExce
     Super Class:
         ChartValidationDispatcherException
     """
-    MSG = "CoordChartValidationDispatcher failure."
+    MSG = "WalkValidationDispatcher failure."
     ERR_CODE = "COORD_CHART_VALIDATION_DISPATCHER_FAILURE"
     
     def __init__(

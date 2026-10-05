@@ -1,7 +1,7 @@
-# src/err/domain/struct/chart/coord/exception.py
+# src/err/domain/struct/chart/walk/exception.py
 
 """
-Module: err.domain.struct.chart.coord.exception
+Module: err.domain.struct.chart.walk.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -17,17 +17,17 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# COORD_CHART_ERROR #======================#
-    "CoordChartException",
+    "WalkException",
 ]
 
 # ======================# COORD_CHART_ERROR #======================#
-class CoordChartException(ChartException):
+class WalkException(ChartException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a CoordChart encountered an error.
+        1.  Indicating a Walk encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class CoordChartException(ChartException):
     Super Class:
         ChartException
     """
-    MSG = "CoordChart error."
+    MSG = "Walk error."
     ERR_CODE = "COORD_CHART_ERROR"
     
     def __init__(

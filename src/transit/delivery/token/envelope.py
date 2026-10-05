@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from domain import (
-    CoordChart, Formation, HomeSquare, Team, Token, TokenDeployment,
+    Walk, Formation, HomeSquare, Team, Token, TokenDeployment,
     TokenPrimeExtract
 )
 from transit import ProductEnvelope
@@ -29,7 +29,7 @@ class RootTokenEnvelope(ProductEnvelope[Token]):
     Attributes:
         id: int
         team: Team
-        walk: CoordChart
+        walk: Walk
         formation: Formation
         home_square: HomeSquare
         deployment: TokenDeployment
@@ -42,7 +42,7 @@ class RootTokenEnvelope(ProductEnvelope[Token]):
     """
     _id: int
     _team: Team
-    _walk: CoordChart
+    _walk: Walk
     _formation: Formation
     _home_square: HomeSquare
     _deployment: TokenDeployment
@@ -52,7 +52,7 @@ class RootTokenEnvelope(ProductEnvelope[Token]):
             self,
             id: int,
             team: Team,
-            walk: CoordChart,
+            walk: Walk,
             formation: Formation,
             home_square: HomeSquare,
             deployment: TokenDeployment,
@@ -62,7 +62,7 @@ class RootTokenEnvelope(ProductEnvelope[Token]):
         Args:
             id: int
             team: Team
-            walk: CoordChart
+            walk: Walk
             formation: Formation
             home_square: HomeSquare
             deployment: TokenDeployment
@@ -89,7 +89,7 @@ class RootTokenEnvelope(ProductEnvelope[Token]):
         return self._team
     
     @property
-    def walk(self) -> CoordChart:
+    def walk(self) -> Walk:
         return self._walk
     
     @property

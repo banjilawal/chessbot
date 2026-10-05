@@ -1,7 +1,7 @@
-# src/err/null/exchange/request/validation/struct/chart/coord/exception.py
+# src/err/null/exchange/request/validation/struct/chart/walk/exception.py
 
 """
-Module: err.null.exchange.request.validation.struct.chart.coord.exception
+Module: err.null.exchange.request.validation.struct.chart.walk.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,17 +16,17 @@ from err import ChartValidationRequestNullException
 
 __all__ = [
     # ======================# COORD_CHART_VALIDATION_REQUEST_NULL_ERROR #======================#
-    "CoordChartValidationRequestNullException",
+    "WalkValidationRequestNullException",
 ]
 
 # ======================# COORD_CHART_VALIDATION_REQUEST_NULL_ERROR #======================#
-class CoordChartValidationRequestNullException(ChartValidationRequestNullException):
+class WalkValidationRequestNullException(ChartValidationRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a CoordChartValidationRequest is null.
+        1.  Indicating that a WalkValidationRequest is null.
 
     Attributes:
             msg: Optional[str]
@@ -43,7 +43,7 @@ class CoordChartValidationRequestNullException(ChartValidationRequestNullExcepti
     Super Class:
         ChartValidationRequestNullException
     """
-    MSG = "CoordChartValidationRequest cannot be null."
+    MSG = "WalkValidationRequest cannot be null."
     ERR_CODE = "COORD_CHART_VALIDATION_REQUEST_NULL_ERROR"
     
     def __init__(

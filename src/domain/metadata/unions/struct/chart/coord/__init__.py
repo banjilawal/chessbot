@@ -1,15 +1,15 @@
-# src/domain/metadata/unions/struct/chart/coord/__init__.py
+# src/domain/metadata/unions/struct/chart/walk/__init__.py
 
 """
-Module: domain.metadata.unions.struct.chart.coord.__init__
+Module: domain.metadata.unions.struct.chart.walk.__init__
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
 """
 
-# =========== DOMAIN.METADATA.UNIONS.STRUCT.CHART.COORD PACKAGE ===========#
+# =========== DOMAIN.METADATA.UNIONS.STRUCT.CHART.WALK PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .types import CoordChartTypeUnion
+from .types import WalkTypeUnion

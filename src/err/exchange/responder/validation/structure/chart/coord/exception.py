@@ -1,7 +1,7 @@
-# src/err/exchange/responder/validation/struct/chart/coord/exception.py
+# src/err/exchange/responder/validation/struct/chart/walk/exception.py
 
 """
-Module: err.exchange.responder.validation.struct.chart.coord.exception
+Module: err.exchange.responder.validation.struct.chart.walk.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,17 +16,17 @@ from err import ChartValidationResponderException
 
 __all__ = [
     # ======================# COORD_VALIDATION_RESPONDER_FAILURE #======================#
-    "CoordChartValidationResponderException",
+    "WalkValidationResponderException",
 ]
 
 # ======================# COORD_VALIDATION_RESPONDER_FAILURE #======================#
-class CoordChartValidationResponderException(ChartValidationResponderException):
+class WalkValidationResponderException(ChartValidationResponderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a CoordChartValidationResponder encountered and error.
+        1.  Indicating a WalkValidationResponder encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class CoordChartValidationResponderException(ChartValidationResponderException):
     Super Class:
         ChartValidationResponderException
     """
-    MSG = "CoordChartValidationResponder error."
+    MSG = "WalkValidationResponder error."
     ERR_CODE = "COORD_VALIDATION_RESPONDER_FAILURE"
     
     def __init__(

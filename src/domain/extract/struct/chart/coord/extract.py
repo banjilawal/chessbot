@@ -1,7 +1,7 @@
-# src/domain/extract/struct/chart/coord.extract.py
+# src/domain/extract/struct/chart/walk.extract.py
 
 """
-Module: domain.extract.struct.chart.coord.extract
+Module: domain.extract.struct.chart.walk.extract
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,21 +11,21 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import CoordChart, CoordChartBlueprint, ChartPrimeExtract
-from transit import CoordChartCarrier
+from domain import Walk, WalkBlueprint, ChartPrimeExtract
+from transit import WalkCarrier
 
 
-class CoordChartPrimeExtract(ChartPrimeExtract[CoordChart]):
+class WalkPrimeExtract(ChartPrimeExtract[Walk]):
     """
     Role
         - Data Holder
 
     Responsibilities:
-        1.  Persist Blueprint and Carrier data for CoordChartValidator.
+        1.  Persist Blueprint and Carrier data for WalkValidator.
 
     Attributes:
-        carrier: CoordChartCarrier
-        blueprint: Optional[CoordChartBlueprint]
+        carrier: WalkCarrier
+        blueprint: Optional[WalkBlueprint]
 
     Provides:
 
@@ -35,20 +35,20 @@ class CoordChartPrimeExtract(ChartPrimeExtract[CoordChart]):
 
     def __init__(
             self,
-            carrier: CoordChartCarrier,
-            blueprint: Optional[CoordChartBlueprint] | None = None,
+            carrier: WalkCarrier,
+            blueprint: Optional[WalkBlueprint] | None = None,
     ):
         """
         Args:
-            carrier: CoordChartCarrier
-            blueprint: Optional[CoordChartBlueprint]
+            carrier: WalkCarrier
+            blueprint: Optional[WalkBlueprint]
         """
         super().__init__(carrier=carrier, blueprint=blueprint)
         
     @property
-    def carrier(self) -> CoordChartCarrier:
-        return cast(CoordChartCarrier, super().carrier)
+    def carrier(self) -> WalkCarrier:
+        return cast(WalkCarrier, super().carrier)
     
     @property
-    def blueprint(self) -> Optional[CoordChartBlueprint]:
-        return cast(CoordChartBlueprint, super().blueprint)
+    def blueprint(self) -> Optional[WalkBlueprint]:
+        return cast(WalkBlueprint, super().blueprint)

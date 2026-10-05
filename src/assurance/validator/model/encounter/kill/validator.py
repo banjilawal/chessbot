@@ -1,10 +1,10 @@
-# src/assurance/validator/model/encounter/kill/validator.py
+# src/assurance/validator/model/encounter/kill/exception.py
 
 """
-Module: assurance.validator.payload.encounter.kill.validator
+Module: assurance.validator.model.encounter.kill.exception
 Author: Banji Lawal
 Created: 2026-04-03
-version: 1.0.2
+version: 0.0.2
 """
 
 from __future__ import annotations
@@ -20,7 +20,7 @@ from err import (
 )
 from transit import KillEncounterCarrier, RootEncounterEnvelope
 
-from util import IdFactory, LoggingLevelRouter
+from util import LoggingLevelRouter
 
 
 class KillEncounterValidator:
@@ -199,5 +199,3 @@ class KillEncounterValidator:
             attacker_maneuver=attacker_maneuver,
         )
         return ValidationResult.success(KillEncounterCarrier(blueprint=payload))
-    
-    

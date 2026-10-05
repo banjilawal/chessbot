@@ -1,7 +1,7 @@
-# src/err/null/transit/carrier/struct/chart/coord/exception.py
+# src/err/null/transit/carrier/struct/chart/walk/exception.py
 
 """
-Module: err.null.transit.carrier.struct.chart.coord.exception
+Module: err.null.transit.carrier.struct.chart.walk.exception
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -17,17 +17,17 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# COORD_CHART_CARRIER_NULL_ERROR #======================#
-    "CoordChartCarrierNullException",
+    "WalkCarrierNullException",
 ]
 
 # ======================# COORD_CHART_CARRIER_NULL_ERROR #======================#
-class CoordChartCarrierNullException(ChartCarrierNullException):
+class WalkCarrierNullException(ChartCarrierNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required CoordChartCarrier is null.
+        1.  Indicating a required WalkCarrier is null.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class CoordChartCarrierNullException(ChartCarrierNullException):
     Super Class:
         ChartCarrierNullException
     """
-    MSG = "CoordChartCarrier cannot be null."
+    MSG = "WalkCarrier cannot be null."
     ERR_CODE= "COORD_CHART_CARRIER_NULL_ERROR"
     
     def __init__(

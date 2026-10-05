@@ -1,7 +1,7 @@
-# src/artifact/response/validation/struct/chart/token/response.py
+# src/artifact/response/validation/struct/chart/participate/response.py
 
 """
-Module: artifact.response.validation.struct.chart.token.response
+Module: artifact.response.validation.struct.chart.participate.response
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,12 +13,12 @@ from typing import Optional, cast
 
 from artifcat import ChartValidationResponse, ResponseState, ValidationResult
 from exchange import Request, TokenChartValidationRequest
-from domain import TokenChart, TokenChartBlueprint
+from domain import Participation, TokenChartBlueprint
 from transit import TokenChartCarrier
 
 
 class TokenChartValidationResponse(
-    ChartValidationResponse[TokenChart]
+    ChartValidationResponse[Participation]
 ):
     """
     Role
@@ -78,7 +78,7 @@ class TokenChartValidationResponse(
         return cast(TokenChartValidationRequest, super().request)
     
     @property
-    def valid_model(self) -> Optional[TokenChart]:
+    def valid_model(self) -> Optional[Participation]:
         # Handle the case that the validation failed.
         if self.result.is_failure:
             return None
@@ -95,11 +95,11 @@ class TokenChartValidationResponse(
         if not carrier.has_model:
             return None
         # --- Extract the chart. ---#
-        chart = cast(TokenChart, carrier.entity)
+        chart = cast(Participation, carrier.entity)
         # Handle the case that the chart is null or the wrong type.
         if (
                 chart is None or
-                not isinstance(chart, TokenChart)
+                not isinstance(chart, Participation)
         ):
             return None
         # Finally send the success result.

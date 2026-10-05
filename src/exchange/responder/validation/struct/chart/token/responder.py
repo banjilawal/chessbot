@@ -1,7 +1,7 @@
-# src/exchange/responder/validation/struct/chart/token/exchange.py
+# src/exchange/responder/validation/struct/chart/participate/exchange.py
 
 """
-Module: exchange.responder.validation.struct.chart.token.exchange
+Module: exchange.responder.validation.struct.chart.participate.exchange
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult, TokenChartValidationResponse
-from domain import TokenChart
+from domain import Participation
 from exchange import ChartValidationResponder, TokenChartValidationRequest
 from err import TokenChartValidationResponderException
 from transit import TokenCarrier, TokenChartCarrier, TokenChartValidationDispatcher
 from util import LoggingLevelRouter
 
 
-class TokenChartValidationResponder(ChartValidationResponder[TokenChart]):
+class TokenChartValidationResponder(ChartValidationResponder[Participation]):
     """
     Role
         - Mediator

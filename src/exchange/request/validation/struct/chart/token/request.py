@@ -1,7 +1,7 @@
-# src/exchange/request/validation/struct/chart/token/request.py
+# src/exchange/request/validation/struct/chart/participate/request.py
 
 """
-Module: exchange.request.validation.struct.chart.token.request
+Module: exchange.request.validation.struct.chart.participate.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from typing import cast
 
-from domain import TokenChart
+from domain import Participation
 from exchange import ChartValidationRequest
 from transit import TokenChartCarrier
 
 
-class TokenChartValidationRequest(ChartValidationRequest[TokenChart]):
+class TokenChartValidationRequest(ChartValidationRequest[Participation]):
     """
      Role:
          -  Messaging

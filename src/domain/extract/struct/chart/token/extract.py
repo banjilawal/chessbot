@@ -1,7 +1,7 @@
-# src/domain/extract/struct/chart/token.extract.py
+# src/domain/extract/struct/chart/participate.extract.py
 
 """
-Module: domain.extract.struct.chart.token.extract
+Module: domain.extract.struct.chart.participate.extract
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import TokenChart, TokenChartBlueprint, ChartPrimeExtract
+from domain import Participation, TokenChartBlueprint, ChartPrimeExtract
 from transit import TokenChartCarrier
 
 
-class TokenChartPrimeExtract(ChartPrimeExtract[TokenChart]):
+class TokenChartPrimeExtract(ChartPrimeExtract[Participation]):
     """
     Role
         - Data Holder

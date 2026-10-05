@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from assurance import TokenPositionChart
+from assurance import Walk
 from domain import Coord, Formation, HomeSquare, Team, TokenDeployment
 
 
@@ -29,7 +29,7 @@ class SafeSuperTokenPropertyTable:
         formation: Formation
         home_square: HomeSquare
         deployment: TokenDeployment
-        position_log: TokenPositionChart
+        position_log: Walk
 
     Provides:
 
@@ -40,7 +40,7 @@ class SafeSuperTokenPropertyTable:
     _formation: Formation
     _home_square: HomeSquare
     _deployment: TokenDeployment
-    _position_log: TokenPositionChart
+    _position_log: Walk
     
     def __init__(
             self,
@@ -49,7 +49,7 @@ class SafeSuperTokenPropertyTable:
             formation: Formation,
             home_square: HomeSquare,
             deployment: TokenDeployment,
-            position_table: TokenPositionChart,
+            position_table: Walk,
     ):
         """
             id: int
@@ -57,7 +57,7 @@ class SafeSuperTokenPropertyTable:
             formation: Formation
             home_square: HomeSquare
             deployment: TokenDeployment
-            position_log: TokenPositionChart
+            position_log: Walk
         """
         self._id = id
         self._team = team
@@ -87,7 +87,7 @@ class SafeSuperTokenPropertyTable:
         return self._deployment
     
     @property
-    def position_log(self) -> TokenPositionChart:
+    def position_log(self) -> Walk:
         return self._position_log
     
     @property

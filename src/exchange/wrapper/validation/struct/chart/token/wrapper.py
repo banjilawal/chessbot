@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/struct/chart/token/wrapper.py
+# src/exchange/wrapper/validation/struct/chart/participate/wrapper.py
 
 """
-Module: exchange.wrapper.validation.struct.chart.token.wrapper
+Module: exchange.wrapper.validation.struct.chart.participate.wrapper
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import TokenChartValidationResponse, ValidationResult
-from domain import Token, TokenBlueprint, TokenChart, TokenChartBlueprint
+from domain import Token, TokenBlueprint, Participation, TokenChartBlueprint
 from err import TokenChartValidationResponderException, TokenChartValidationResponseWrapperException, TokenCarrierEmptyException
 from exchange import (
     TokenChartValidationResponder, ChartValidationResponseWrapper, TokenChartValidationRequest
@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 
 
 class TokenChartValidationResponseWrapper(
-    ChartValidationResponseWrapper[TokenChart]
+    ChartValidationResponseWrapper[Participation]
 ):
     """
     Role
@@ -68,7 +68,7 @@ class TokenChartValidationResponseWrapper(
     def extract_model(
             self, 
             request: TokenChartValidationRequest,
-    ) -> ValidationResult[TokenChart]:
+    ) -> ValidationResult[Participation]:
         """
         Extract a Token safe to use.
 
@@ -117,7 +117,7 @@ class TokenChartValidationResponseWrapper(
                 )
             )
         # --- Send the work product. ---#
-        chart = cast(TokenChart, response.valid_chart)
+        chart = cast(Participation, response.valid_chart)
         return ValidationResult.success(chart)
     
     @LoggingLevelRouter.monitor

@@ -1,7 +1,7 @@
-# src/domain/struct/chart/coord/struct.py
+# src/domain/struct/chart/walk/struct.py
 
 """
-Module: domain.struct.chart.coord.struct
+Module: domain.struct.chart.walk.struct
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -15,7 +15,7 @@ from domain import Coord
 from domain.struct.chart import Chart
 
 
-class CoordChart(Chart[Coord]):
+class Walk(Chart[Coord]):
     """
     Role
         - Data Holder

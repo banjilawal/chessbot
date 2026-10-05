@@ -1,7 +1,7 @@
-# src/err/capacity/empty/carrier/struct/chart/coord/exception.py
+# src/err/capacity/empty/carrier/struct/chart/walk/exception.py
 
 """
-Module: err.capacity.empt.carrier.struct.chart.coord.exception
+Module: err.capacity.empt.carrier.struct.chart.walk.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,17 +16,17 @@ from err import EmptyChartCarrierException
 
 __all__ = [
     # ======================# COORD_CHART_CARRIER_EMPTY_ERROR #======================#
-    "CoordChartCarrierEmptyException",
+    "WalkCarrierEmptyException",
 ]
 
 # ======================# COORD_CHART_CARRIER_EMPTY_ERROR #======================#
-class CoordChartCarrierEmptyException(EmptyChartCarrierException):
+class WalkCarrierEmptyException(EmptyChartCarrierException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a CoordChartCarrier is empty.
+        1.  Indicating a WalkCarrier is empty.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class CoordChartCarrierEmptyException(EmptyChartCarrierException):
     Super Class:
         EmptyChartCarrierException
     """
-    MSG = "CoordChartCarrier cannot be empty."
+    MSG = "WalkCarrier cannot be empty."
     ERR_CODE = "COORD_CHART_CARRIER_EMPTY_ERROR"
     
     def __init__(

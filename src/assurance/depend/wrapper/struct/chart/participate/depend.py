@@ -13,11 +13,11 @@ from __future__ import annotations
 from typing import Optional
 
 from assurance import ChartDependency
-from domain import TokenChart
+from domain import Participation
 from exchange import TokenValidationResponseWrapper
 
 
-class TokenChartDependency(ChartDependency[TokenChart]):
+class ParticipationDependency(ChartDependency[Participation]):
     """
     Role:
         - Toolkit

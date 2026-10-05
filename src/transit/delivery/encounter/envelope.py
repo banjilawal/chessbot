@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from domain import Encounter, EncounterPrimeExtract, Maneuver, Square, TokenChart
+from domain import Encounter, EncounterPrimeExtract, Maneuver, Square, Participation
 from transit import ProductEnvelope
 
 
@@ -39,7 +39,7 @@ class RootEncounterEnvelope(ProductEnvelope[Encounter]):
     _id: int
     _location: Square
     _attacker_reward: int
-    _participants: TokenChart
+    _participants: Participation
     _attacker_maneuver: Maneuver
     
     def __init__(
@@ -47,7 +47,7 @@ class RootEncounterEnvelope(ProductEnvelope[Encounter]):
             id: int,
             location: Square,
             attacker_reward: int,
-            participants: TokenChart,
+            participants: Participation,
             attacker_maneuver: Maneuver,
             prime_extract: EncounterPrimeExtract,
     ):
@@ -75,7 +75,7 @@ class RootEncounterEnvelope(ProductEnvelope[Encounter]):
         return self._location
     
     @property
-    def participants(self) -> TokenChart:
+    def participants(self) -> Participation:
         return self._participants
     
     @property

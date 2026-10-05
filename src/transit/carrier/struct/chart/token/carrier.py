@@ -1,7 +1,7 @@
-# src/transit/carrier/struct/chart/token/carrier.py
+# src/transit/carrier/struct/chart/participate/carrier.py
 
 """
-Module: transit.carrier.struct.chart.token.carrier
+Module: transit.carrier.struct.chart.participate.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import TokenChart, TokenChartBlueprint
+from domain import Participation, TokenChartBlueprint
 from transit import ChartCarrier
 
 
-class TokenChartCarrier(ChartCarrier[TokenChart]):
+class TokenChartCarrier(ChartCarrier[Participation]):
     """
     Role:
         - Boundary Carrier Interface
@@ -37,7 +37,7 @@ class TokenChartCarrier(ChartCarrier[TokenChart]):
     
     def __init__(
             self,
-            model: Optional[TokenChart] | None = None,
+            model: Optional[Participation] | None = None,
             blueprint: Optional[TokenChartBlueprint] | None = None,
     ):
         """
@@ -48,19 +48,19 @@ class TokenChartCarrier(ChartCarrier[TokenChart]):
         super().__init__(model=model, blueprint=blueprint)
     
     @property
-    def entity(self) -> Optional[TokenChart | TokenChartBlueprint]:
+    def entity(self) -> Optional[Participation | TokenChartBlueprint]:
         entity = super().entity
         if entity is None:
             return None
         if self.has_model:
-            return cast(TokenChart, entity)
+            return cast(Participation, entity)
         return cast(TokenChartBlueprint, entity)
     
     @property
     def has_model(self) -> bool:
         return (
                 super().has_model is None and
-                isinstance(self.entity, TokenChart)
+                isinstance(self.entity, Participation)
         )
     
     @property
@@ -76,7 +76,7 @@ class TokenChartCarrier(ChartCarrier[TokenChart]):
             blueprint = cast(TokenChartBlueprint, self.entity)
             return blueprint
         
-        model = cast(TokenChart, self.entity)
+        model = cast(Participation, self.entity)
         return TokenChartBlueprint(
             victim=model.victim,
             attacker=model.attacker,

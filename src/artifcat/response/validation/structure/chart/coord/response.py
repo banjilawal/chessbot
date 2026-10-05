@@ -1,7 +1,7 @@
-# src/artifact/response/validation/struct/chart/coord/response.py
+# src/artifact/response/validation/struct/chart/walk/response.py
 
 """
-Module: artifact.response.validation.struct.chart.coord.response
+Module: artifact.response.validation.struct.chart.walk.response
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,41 +12,41 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ChartValidationResponse, ResponseState, ValidationResult
-from exchange import Request, CoordChartValidationRequest
-from domain import CoordChart, CoordChartBlueprint
-from transit import CoordChartCarrier
+from exchange import Request, WalkValidationRequest
+from domain import Walk, WalkBlueprint
+from transit import WalkCarrier
 
 
-class CoordChartValidationResponse(
-    ChartValidationResponse[CoordChart]
+class WalkValidationResponse(
+    ChartValidationResponse[Walk]
 ):
     """
     Role
         -   Messaging
 
     Responsibilities:
-        1.  Capture a CoordChart validation request-response cycle's data and state.
+        1.  Capture a Walk validation request-response cycle's data and state.
 
     Attributes:
         state: ResponseState
-        result: ValidationResult[CoordChartCarrier]
-        request: CoordChartValidationRequest
+        result: ValidationResult[WalkCarrier]
+        request: WalkValidationRequest
         exception: Optional[Exception]
 
     Provides:
         -   def valid_model() -> Optional[Coord]
-        -   def valid_blueprint() -> Optional[CoordChartBlueprint]
+        -   def valid_blueprint() -> Optional[WalkBlueprint]
 
         -   def success(
                     request: Request,
-                    result: ValidationResult[CoordChartCarrier],
-            ) -> CoordChartValidationResponse
+                    result: ValidationResult[WalkCarrier],
+            ) -> WalkValidationResponse
 
         -   def failure(
                     request: Request,
-                    result: ValidationResult[CoordChartCarrier],
+                    result: ValidationResult[WalkCarrier],
                     exception: Exception,
-            ) -> CoordChartValidationResponse
+            ) -> WalkValidationResponse
             
     Super Class:
         ChartValidationResponse
@@ -56,14 +56,14 @@ class CoordChartValidationResponse(
             self,
             state: ResponseState,
             result: ValidationResult,
-            request: CoordChartValidationRequest,
+            request: WalkValidationRequest,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             state: ResponseState
-            result: ValidationResult[CoordChartCarrier]
-            request: CoordChartValidationRequest
+            result: ValidationResult[WalkCarrier]
+            request: WalkValidationRequest
             exception: Optional[Exception]
         """
         super().__init__(
@@ -74,49 +74,49 @@ class CoordChartValidationResponse(
         )
     
     @property
-    def request(self) -> CoordChartValidationRequest:
-        return cast(CoordChartValidationRequest, super().request)
+    def request(self) -> WalkValidationRequest:
+        return cast(WalkValidationRequest, super().request)
     
     @property
-    def valid_model(self) -> Optional[CoordChart]:
+    def valid_model(self) -> Optional[Walk]:
         # Handle the case that the validation failed.
         if self.result.is_failure:
             return None
         # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(CoordChartCarrier, self.result.payload)
+        carrier = cast(WalkCarrier, self.result.payload)
         
         # Handle the case that the carrier is null or the wrong type.
         if (
                 carrier is None or
-                not isinstance(carrier, CoordChartCarrier)
+                not isinstance(carrier, WalkCarrier)
         ):
             return None
         # Handle the case that there is no chart in the carrier.
         if not carrier.has_model:
             return None
         # --- Extract the chart. ---#
-        chart = cast(CoordChart, carrier.entity)
+        chart = cast(Walk, carrier.entity)
         # Handle the case that the chart is null or the wrong type.
         if (
                 chart is None or
-                not isinstance(chart, CoordChart)
+                not isinstance(chart, Walk)
         ):
             return None
         # Finally send the success result.
         return chart
     
     @property
-    def valid_blueprint(self) -> Optional[CoordChartBlueprint]:
+    def valid_blueprint(self) -> Optional[WalkBlueprint]:
         # Handle the case that the validation failed.
         if self.result.is_failure:
             return None
         # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(CoordChartCarrier, self.result.payload)
+        carrier = cast(WalkCarrier, self.result.payload)
         
         # Handle the case that the carrier is null or the wrong type.
         if (
                 carrier is None or
-                not isinstance(carrier, CoordChartCarrier)
+                not isinstance(carrier, WalkCarrier)
         ):
             return None
         # Handle the case that there is no blueprint in the carrier.
@@ -127,7 +127,7 @@ class CoordChartValidationResponse(
         # Handle the case that the blueprint is null or the wrong type.
         if (
                 blueprint is None or
-                not isinstance(blueprint, CoordChartBlueprint)
+                not isinstance(blueprint, WalkBlueprint)
         ):
             return None
         # Finally send the success result.
@@ -138,10 +138,10 @@ class CoordChartValidationResponse(
             cls,
             request: Request,
             result: ValidationResult,
-    ) -> CoordChartValidationResponse:
-        # Downcast the request into a CoordChartValidationRequest.
+    ) -> WalkValidationResponse:
+        # Downcast the request into a WalkValidationRequest.
         validation_request = cast(
-            CoordChartValidationRequest,
+            WalkValidationRequest,
             request,
         )
         # Send a success Response using the cast.
@@ -157,10 +157,10 @@ class CoordChartValidationResponse(
             request: Request,
             result: ValidationResult,
             exception: Exception,
-    ) -> CoordChartValidationResponse:
-        # Downcast the request into a CoordChartValidationRequest.
+    ) -> WalkValidationResponse:
+        # Downcast the request into a WalkValidationRequest.
         validation_request = cast(
-            CoordChartValidationRequest,
+            WalkValidationRequest,
             request,
         )
         # Send a failure Response using the cast.

@@ -13,7 +13,7 @@ from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    TokenPositionChart, SafeRootTokenProperties, TokenPositionChartValidator, TokenProductEnvelope,
+    Walk, SafeRootTokenProperties, WalkValidator, TokenProductEnvelope,
     TokenValidatorToolkit, RootValidator
 )
 from domain import (
@@ -48,12 +48,12 @@ class RootTokenValidator(RootValidator[Token]):
     Super Class:
         ProductEnvelopeGenerator
     """
-    _position_validator: TokenPositionChartValidator
+    _position_validator: WalkValidator
     
     def __init__(
             self,
             toolkit: Optional[TokenValidatorToolkit] | None = None,
-            position_validator: Optional[ TokenPositionChartValidator] | None = None,
+            position_validator: Optional[ WalkValidator] | None = None,
     ):
         """
         Args:
@@ -61,7 +61,7 @@ class RootTokenValidator(RootValidator[Token]):
             position_validator: Optional[TokenPositionValidator]
         """
         super().__init__(toolkit=toolkit or TokenValidatorToolkit())
-        self._position_validator = position_validator or TokenPositionChartValidator()
+        self._position_validator = position_validator or WalkValidator()
     
     @property
     def toolkit(self) -> TokenValidatorToolkit:
@@ -225,7 +225,7 @@ class RootTokenValidator(RootValidator[Token]):
         home_square = cast(HomeSquare, home_detection.payload)
         formation = cast(Formation, formation_validation.payload)
         deployment = cast(TokenDeployment, deployment_validation.payload)
-        position_table = cast(TokenPositionChart, production_result.payload)
+        position_table = cast(Walk, production_result.payload)
         
         safe_properties = SafeRootTokenProperties(
             id=id,

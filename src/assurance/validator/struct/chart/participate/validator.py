@@ -13,7 +13,7 @@ from typing import List, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import ParticipantReadinessValidator, TokenValidatorToolkit
-from domain import Token, TokenChart
+from domain import Token, Participation
 from err import (
     FriendlyFireAttackException, TokenAttackingItselfException,
     TokenChartValidatorException, VictimNeverDeployedException
@@ -22,7 +22,7 @@ from err import (
 from util import LoggingLevelRouter
 
 
-class TokenChartValidator:
+class EncounterParticipantsValidator(ChartValidator[Participation]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -66,7 +66,7 @@ class TokenChartValidator:
             self,
             victim: Token,
             attacker: Token
-    ) -> ValidationResult[TokenChart]:
+    ) -> ValidationResult[Participation]:
         """
         Assure a candidate's properties are reference for a Encounter
 
@@ -155,7 +155,7 @@ class TokenChartValidator:
                 )
             participants.append(cast(Token, readiness_validation.payload))
         # --- Send the work product. ---#
-        participant_chart = TokenChart(
+        participant_chart = Participation(
             victim=participants[0],
             attacker=participants[1],
         )

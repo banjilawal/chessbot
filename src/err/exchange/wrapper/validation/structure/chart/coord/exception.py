@@ -1,7 +1,7 @@
-# src/err/exchange/wrapper/validation/struct/chart/coord/exception.py
+# src/err/exchange/wrapper/validation/struct/chart/walk/exception.py
 
 """
-Module: err.exchange.wrapper.validation.struct.chart.coord.exception
+Module: err.exchange.wrapper.validation.struct.chart.walk.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,11 +16,11 @@ from err import ChartValidationResponseWrapperException
 
 __all__ = [
     # ======================# COORD_CHART_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-    "CoordChartValidationResponseWrapperException",
+    "WalkValidationResponseWrapperException",
 ]
 
 # ======================# COORD_CHART_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-class CoordChartValidationResponseWrapperException(
+class WalkValidationResponseWrapperException(
     ChartValidationResponseWrapperException
 ):
     """
@@ -28,7 +28,7 @@ class CoordChartValidationResponseWrapperException(
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a CoordChartValidationResponseWrapper encountered and error.
+        1.  Indicating a WalkValidationResponseWrapper encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -45,7 +45,7 @@ class CoordChartValidationResponseWrapperException(
     Super Class:
         ChartValidationResponseWrapperException
     """
-    MSG = "CoordChartValidationResponseWrapper error."
+    MSG = "WalkValidationResponseWrapper error."
     ERR_CODE = "COORD_CHART_VALIDATION_RESPONSE_WRAPPER_FAILURE"
     
     def __init__(

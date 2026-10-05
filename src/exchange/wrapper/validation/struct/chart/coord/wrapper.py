@@ -1,7 +1,7 @@
-# src/exchange/wrapper/validation/struct/chart/coord/wrapper.py
+# src/exchange/wrapper/validation/struct/chart/walk/wrapper.py
 
 """
-Module: exchange.wrapper.validation.struct.chart.coord.wrapper
+Module: exchange.wrapper.validation.struct.chart.walk.wrapper
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import CoordChartValidationResponse, ValidationResult
-from domain import Coord, CoordBlueprint, CoordChart, CoordChartBlueprint
-from err import CoordChartValidationResponderException, CoordChartValidationResponseWrapperException, CoordCarrierEmptyException
+from artifcat import WalkValidationResponse, ValidationResult
+from domain import Coord, CoordBlueprint, Walk, WalkBlueprint
+from err import WalkValidationResponderException, WalkValidationResponseWrapperException, CoordCarrierEmptyException
 from exchange import (
-    CoordChartValidationResponder, ChartValidationResponseWrapper, CoordChartValidationRequest
+    WalkValidationResponder, ChartValidationResponseWrapper, WalkValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class CoordChartValidationResponseWrapper(
-    ChartValidationResponseWrapper[CoordChart]
+class WalkValidationResponseWrapper(
+    ChartValidationResponseWrapper[Walk]
 ):
     """
     Role
@@ -31,18 +31,18 @@ class CoordChartValidationResponseWrapper(
         1.  Extract either safe:
                 -   Coord
                 _   CoordBlueprint
-            products from CoordChartValidationResponder.
+            products from WalkValidationResponder.
 
     Attributes:
-        responder: CoordChartValidationResponder
+        responder: WalkValidationResponder
         
     Provides:
         -   def extract_model(
-                    request: CoordChartValidationRequest
+                    request: WalkValidationRequest
             ) -> ValidationResult[Coord]
             
         -   def extract_blueprint(
-                    request: CoordChartValidationRequest
+                    request: WalkValidationRequest
             ) -> ValidationResult[CoordBlueprint]
 
     Super Class:
@@ -51,24 +51,24 @@ class CoordChartValidationResponseWrapper(
     
     def __init__(
             self,
-            responder: Optional[CoordChartValidationResponder] | None = None,
+            responder: Optional[WalkValidationResponder] | None = None,
     ):
         """
         Args:
-            responder: Optional[CoordChartValidationResponder]
+            responder: Optional[WalkValidationResponder]
         """
-        super().__init__(responder=responder or CoordChartValidationResponder())
+        super().__init__(responder=responder or WalkValidationResponder())
     
     @property
-    def responder(self) -> CoordChartValidationResponder:
-        return cast(CoordChartValidationResponder, super().responder)
+    def responder(self) -> WalkValidationResponder:
+        return cast(WalkValidationResponder, super().responder)
     
 
     @LoggingLevelRouter.monitor
     def extract_model(
             self, 
-            request: CoordChartValidationRequest,
-    ) -> ValidationResult[CoordChart]:
+            request: WalkValidationRequest,
+    ) -> ValidationResult[Walk]:
         """
         Extract a Coord safe to use.
 
@@ -78,11 +78,11 @@ class CoordChartValidationResponseWrapper(
             2.  Otherwise, extract the Coord from the success response then send it 
                 to the client.
         Args:
-            request: CoordChartValidationRequest
+            request: WalkValidationRequest
         Result:
             ValidationResult[Coord]
         Raises:
-            CoordChartValidationResponseWrapperException
+            WalkValidationResponseWrapperException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -91,23 +91,23 @@ class CoordChartValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CoordChartValidationResponseWrapperException(
+                WalkValidationResponseWrapperException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CoordChartValidationResponseWrapperException.MSG,
-                    err_code=CoordChartValidationResponseWrapperException.ERR_CODE,
+                    msg=WalkValidationResponseWrapperException.MSG,
+                    err_code=WalkValidationResponseWrapperException.ERR_CODE,
                     ex=result.exception,
                 )
             )
-        response = cast(CoordChartValidationResponse, result)
+        response = cast(WalkValidationResponse, result)
         if not response.valid_chart:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CoordChartValidationResponderException(
+                WalkValidationResponderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CoordChartValidationResponderException.MSG,
-                    err_code=CoordChartValidationResponderException.ERR_CODE,
+                    msg=WalkValidationResponderException.MSG,
+                    err_code=WalkValidationResponderException.ERR_CODE,
                     ex=CoordCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -117,14 +117,14 @@ class CoordChartValidationResponseWrapper(
                 )
             )
         # --- Send the work product. ---#
-        chart = cast(CoordChart, response.valid_chart)
+        chart = cast(Walk, response.valid_chart)
         return ValidationResult.success(chart)
     
     @LoggingLevelRouter.monitor
     def extract_blueprint(
             self,
-            request: CoordChartValidationRequest,
-    ) -> ValidationResult[CoordChartBlueprint]:
+            request: WalkValidationRequest,
+    ) -> ValidationResult[WalkBlueprint]:
         """
         Extract a CoordBlueprint safe to use.
 
@@ -134,11 +134,11 @@ class CoordChartValidationResponseWrapper(
             2.  Otherwise, extract the CoordBluprint from the success response
                 then send it to the client.
         Args:
-            request: CoordChartValidationRequest
+            request: WalkValidationRequest
         Result:
             ValidationResult[CoordBlueprint]
         Raises:
-            CoordChartValidationResponseWrapperException
+            WalkValidationResponseWrapperException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -147,23 +147,23 @@ class CoordChartValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CoordChartValidationResponseWrapperException(
+                WalkValidationResponseWrapperException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CoordChartValidationResponseWrapperException.MSG,
-                    err_code=CoordChartValidationResponseWrapperException.ERR_CODE,
+                    msg=WalkValidationResponseWrapperException.MSG,
+                    err_code=WalkValidationResponseWrapperException.ERR_CODE,
                     ex=result.exception,
                 )
             )
-        response = cast(CoordChartValidationResponse, result)
+        response = cast(WalkValidationResponse, result)
         if not response.valid_coord:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CoordChartValidationResponderException(
+                WalkValidationResponderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CoordChartValidationResponderException.MSG,
-                    err_code=CoordChartValidationResponderException.ERR_CODE,
+                    msg=WalkValidationResponderException.MSG,
+                    err_code=WalkValidationResponderException.ERR_CODE,
                     ex=CoordCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -173,5 +173,5 @@ class CoordChartValidationResponseWrapper(
                 )
             )
         # --- Send the work product. ---#
-        blueprint = cast(CoordChartBlueprint, response.valid_blueprint)
+        blueprint = cast(WalkBlueprint, response.valid_blueprint)
         return ValidationResult.success(blueprint)

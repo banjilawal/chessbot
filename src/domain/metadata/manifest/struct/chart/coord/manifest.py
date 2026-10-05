@@ -1,7 +1,7 @@
-# src/domain/metadata/manifest/strcture/chart/coord/manifest.py
+# src/domain/metadata/manifest/strcture/chart/walk/manifest.py
 
 """
-Module: domain.metadata.manifest.struct.chart.coord.manifest
+Module: domain.metadata.manifest.struct.chart.walk.manifest
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -11,21 +11,21 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import ChartManifest, CoordChart, CoordChartNullGroup, CoordChartTypeUnion
+from domain import ChartManifest, Walk, WalkNullGroup, WalkTypeUnion
 
 
-class CoordChartManifest(ChartManifest[CoordChart]):
+class WalkManifest(ChartManifest[Walk]):
     """
      Role:
         1.  Metadata
 
      Responsibilities:
-         1.  Aggregates NullExceptions and TypeUnions for the CoordChart
+         1.  Aggregates NullExceptions and TypeUnions for the Walk
             security lifecycle.
 
      Attributes:
-        types: CoordChartTypeUnion
-        nulls: CoordChartNullGroup
+        types: WalkTypeUnion
+        nulls: WalkNullGroup
 
      Provides:
 
@@ -35,24 +35,24 @@ class CoordChartManifest(ChartManifest[CoordChart]):
     
     def __init__(
             self,
-            types: Optional[CoordChartTypeUnion] | None = None,
-            nulls: Optional[CoordChartNullGroup] | None = None,
+            types: Optional[WalkTypeUnion] | None = None,
+            nulls: Optional[WalkNullGroup] | None = None,
     ):
         """
         Args:
-            types: Optional[CoordChartTypeUnion]
-            nulls: Optional[CoordChartNullGroup]
+            types: Optional[WalkTypeUnion]
+            nulls: Optional[WalkNullGroup]
         """
         super().__init__(
-            types=types or CoordChartTypeUnion(),
-            nulls=nulls or CoordChartNullGroup(),
+            types=types or WalkTypeUnion(),
+            nulls=nulls or WalkNullGroup(),
         )
 
         
     @property
-    def types(self) -> CoordChartTypeUnion:
-        return cast(CoordChartTypeUnion, super().types)
+    def types(self) -> WalkTypeUnion:
+        return cast(WalkTypeUnion, super().types)
     
     @property
-    def nulls(self) -> CoordChartNullGroup:
-        return cast(CoordChartNullGroup, super().nulls)
+    def nulls(self) -> WalkNullGroup:
+        return cast(WalkNullGroup, super().nulls)

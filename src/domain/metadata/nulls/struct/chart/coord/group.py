@@ -1,7 +1,7 @@
-# src/domain/metadata/nulls/struct/chart/coord/group.py
+# src/domain/metadata/nulls/struct/chart/walk/group.py
 
 """
-Module: domain.metadata.nulls.struct.chart.coord.group
+Module: domain.metadata.nulls.struct.chart.walk.group
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -11,25 +11,25 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import ChartNullGroup, CoordChart
+from domain import ChartNullGroup, Walk
 from err import (
-    CoordChartBlueprintNullException, CoordChartCarrierNullException,
-    CoordChartNullException
+    WalkBlueprintNullException, WalkCarrierNullException,
+    WalkNullException
 )
 
 
-class CoordChartNullGroup(ChartNullGroup[CoordChart]):
+class WalkNullGroup(ChartNullGroup[Walk]):
     """
     Role:
         - Metadata
 
     Responsibilities:
-        1. Catalog of NullExceptions associated with a CoordChart's integrity cycle.
+        1. Catalog of NullExceptions associated with a Walk's integrity cycle.
 
     Attributes:
-        model: CoordChartNullException
-        carrier: CoordChartCarrierNullException
-        blueprint:CoordChartBlueprintNullException
+        model: WalkNullException
+        carrier: WalkCarrierNullException
+        blueprint:WalkBlueprintNullException
 
     Provides:
 
@@ -40,34 +40,34 @@ class CoordChartNullGroup(ChartNullGroup[CoordChart]):
     
     def __init__(
             self,
-            model: Optional[CoordChartNullException] | None = None,
-            carrier: Optional[CoordChartCarrierNullException] | None = None,
-            blueprint: Optional[CoordChartBlueprintNullException] | None = None,
+            model: Optional[WalkNullException] | None = None,
+            carrier: Optional[WalkCarrierNullException] | None = None,
+            blueprint: Optional[WalkBlueprintNullException] | None = None,
     ):
         """
         Args:
-            model: Optional[CoordChartNullException]
-            carrier: Optional[CoordChartCarrierNullException]
-            blueprint: Optional[CoordChartBlueprintNullException]
+            model: Optional[WalkNullException]
+            carrier: Optional[WalkCarrierNullException]
+            blueprint: Optional[WalkBlueprintNullException]
         """
         super().__init__(
-            model=model or CoordChartNullException(),
-            carrier=carrier or CoordChartCarrierNullException(),
-            blueprint=blueprint or CoordChartBlueprintNullException(),
+            model=model or WalkNullException(),
+            carrier=carrier or WalkCarrierNullException(),
+            blueprint=blueprint or WalkBlueprintNullException(),
         )
         
     @property
-    def struct(self) -> CoordChartNullException:
-        return cast(CoordChartNullException, super().model)
+    def struct(self) -> WalkNullException:
+        return cast(WalkNullException, super().model)
     
     @property
-    def model(self) -> CoordChartNullException:
+    def model(self) -> WalkNullException:
         return self.struct
     
     @property
-    def carrier(self) -> CoordChartCarrierNullException:
-        return cast(CoordChartCarrierNullException, super().carrier)
+    def carrier(self) -> WalkCarrierNullException:
+        return cast(WalkCarrierNullException, super().carrier)
     
     @property
-    def blueprint(self) -> CoordChartBlueprintNullException:
-        return cast(CoordChartBlueprintNullException, super().blueprint)
+    def blueprint(self) -> WalkBlueprintNullException:
+        return cast(WalkBlueprintNullException, super().blueprint)

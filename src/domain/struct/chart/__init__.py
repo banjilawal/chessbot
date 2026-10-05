@@ -10,8 +10,8 @@ version: 0.0.2
 # =========== DOMAIN.STRUCT.CHART PACKAGE ===========#
 
 # Packages
-from .coord import *
-from .token import *
+from .participate import *
+from .walk import *
 
 # Modules
 from .struct import Chart
