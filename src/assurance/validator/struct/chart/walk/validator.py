@@ -38,7 +38,6 @@ class WalkValidator(ChartValidator[Walk]):
         ChartValidator
     """
     
-    
     def __init__(
             self,
             toolkit: Optional[WalkValidatorToolkit] | None = None,
@@ -107,12 +106,14 @@ class WalkValidator(ChartValidator[Walk]):
                     ),
                 )
             )
-        coords: Dict[str, Coord] = {}
-        endpoints = blueprint.to_dict
-        for key in endpoints.keys():
+        # --- VALIDATE_THE_WALK_ENDPOINTS. ---#
+        safe_coords: Dict[str, Coord] = {}
+        candidate_points = blueprint.to_dict
+        for key in candidate_points.keys():
+            # Handle the case that a position is not a safe Coord.
             coord_validation = self.toolkit.wrapper.coord.extract_model(
                 request=CoordValidationRequest(
-                    item=CoordCarrier(model=endpoints[key]),
+                    item=CoordCarrier(model=candidate_points[key]),
                     id=IdFactory.next_id(class_name="CoordValidationRequest"),
                 )
             )
@@ -127,21 +128,23 @@ class WalkValidator(ChartValidator[Walk]):
                         ex=coord_validation.exception,
                     )
                 )
-            coords[key] = cast(Coord, coord_validation.payload)
-    
-        # --- Send the work product. ---#
+            # Otherwise, the add value to the safe_coords.
+            safe_coords[key] = cast(Coord, coord_validation.payload)
+        # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
+        # The client wants a safe Team.
         if prime_extract.recipient_wants_model:
             payload = WalkCarrier(
                 model=Walk(
-                    position=coords["position"],
-                    previous_position=coords["previous_position"],
+                    position=safe_coords["position"],
+                    previous_position=safe_coords["previous_position"],
                 )
             )
             return ValidationResult.success(payload)
+        # Otherwise, the client is a WalkBuilder that needs a Blueprint.
         payload = WalkCarrier(
             blueprint=WalkBlueprint(
-                position=coords["position"],
-                previous_position=coords["previous_position"],
+                position=safe_coords["position"],
+                previous_position=safe_coords["previous_position"],
             )
         )
         return ValidationResult.success(payload)

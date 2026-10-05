@@ -32,6 +32,8 @@ class PrimeExtract(ABC, Generic[T]):
     Provides:
         blueprint_exists: bool
         no_blueprint_exists: bool
+        recipient_wants_model: bool
+        recipient_wants_blueprint: bool
 
     Super Class:
     """
