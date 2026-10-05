@@ -12,7 +12,6 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-from assurance import RootPropertyTable
 from domain import Model, PrimeExtract
 
 T = TypeVar("T", bound="Model")
@@ -35,14 +34,11 @@ class ProductEnvelope(ABC, Generic[T]):
     Super Class:
     """
     _prime_extract: PrimeExtract[T]
-    _safe_properties: RootPropertyTable[T]
-
     
     
     def __init__(
             self,
             prime_extract: PrimeExtract[T],
-            safe_properties: RootPropertyTable[T],
     ):
         """
         Args:
@@ -50,14 +46,9 @@ class ProductEnvelope(ABC, Generic[T]):
             safe_properties: ReferenceSuperClassPropertyTable[T]
         """
         self._prime_extract = prime_extract
-        self._safe_properties = safe_properties
         
     @property
     def prime_extract(self) -> PrimeExtract[T]:
         return self._prime_extract
-    
-    @property
-    def safe(self) -> RootPropertyTable[T]:
-        return self._safe_properties
 
     

@@ -87,7 +87,7 @@ class EncounterValidationRouter:
             prime_extract: EncounterPrimeExtract,
             position: Optional[Coord] | None = None,
             previous_position: Optional[Coord] | None = None,
-            property_table: EncounterValidationReference
+            property_table: EncounterProductEnvelope
     ) -> ValidationResult[EncounterCarrier]:
         """
         Assure a candidate is a safe EncounterCarrier.

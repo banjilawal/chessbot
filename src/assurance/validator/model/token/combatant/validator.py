@@ -13,7 +13,7 @@ from typing import Optional, Type, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    TokenValidationReference, TokenEnemyValidator, TokenValidatorToolkit
+    TokenProductEnvelope, TokenEnemyValidator, TokenValidatorToolkit
 )
 from domain import (
     CombatantReadiness, CombatantToken, CombatantTokenBlueprint,
@@ -21,7 +21,7 @@ from domain import (
 )
 from err import (
     CombatantReadinessNullException, CombatantTokenPrimeExtractNullException,
-    CombatantTokenValidatorException, TokenValidationReferenceNullException
+    CombatantTokenValidatorException, TokenProductEnvelopeNullException
 )
 from exchange import TokenValidationRequest
 from transit import CombatantTokenCarrier, TokenCarrier
@@ -66,7 +66,7 @@ class CombatantTokenValidator:
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            reference: TokenValidationReference
+            reference: TokenProductEnvelope
     ) -> ValidationResult[CombatantTokenCarrier]:
         """
         Assure the properties can assemble a safe CombatantTokenCarrier.
@@ -79,7 +79,7 @@ class CombatantTokenValidator:
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            reference: TokenValidationReference
+            reference: TokenProductEnvelope
         Returns:
             ValidationResult[CombatantTokenCarrier]
         Raises:
@@ -90,8 +90,8 @@ class CombatantTokenValidator:
         # Handle the case that the property table is null or the wrong type.
         priming = self._toolkit.priming_validator.execute(
             candidate=reference,
-            target_model=Type[TokenValidationReference],
-            null_exception=TokenValidationReferenceNullException(),
+            target_model=Type[TokenProductEnvelope],
+            null_exception=TokenProductEnvelopeNullException(),
         )
         if priming.is_failure:
             # Send the exception chain on failure.

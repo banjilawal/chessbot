@@ -17,11 +17,11 @@ from err import NullException
 
 __all__ = [
     # ======================# COMMON_TOKEN_PROPERTY_TABLE_NULL_ERROR #======================#
-    "TokenValidationReferenceNullException",
+    "TokenProductEnvelopeNullException",
 ]
 
 # ======================# COMMON_TOKEN_PROPERTY_TABLE_NULL_ERROR #======================#
-class TokenValidationReferenceNullException(NullException):
+class TokenProductEnvelopeNullException(NullException):
     """
     Role:
         - Error Tracing

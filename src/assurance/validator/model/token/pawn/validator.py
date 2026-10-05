@@ -12,13 +12,13 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import TokenValidationReference, TokenEnemyValidator, TokenValidatorToolkit
+from assurance import TokenProductEnvelope, TokenEnemyValidator, TokenValidatorToolkit
 from domain import (
     CombatantReadiness, PawnToken, PawnTokenBlueprint, PawnTokenPrimeExtract, PromotionState,
     Rank, Token
 )
 from err import (
-    CombatantReadinessNullException, TokenValidationReferenceNullException,
+    CombatantReadinessNullException, TokenProductEnvelopeNullException,
     PawnTokenPrimeExtractNullException, PawnTokenValidatorException,
     PromotionStateNullException
 )
@@ -65,7 +65,7 @@ class PawnTokenValidator:
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            validation_reference: TokenValidationReference
+            validation_reference: TokenProductEnvelope
     ) -> ValidationResult[PawnTokenCarrier]:
         """
         Assure the properties can assemble a safe PawnTokenCarrier.
@@ -80,7 +80,7 @@ class PawnTokenValidator:
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            validation_reference: TokenValidationReference
+            validation_reference: TokenProductEnvelope
         Returns:
             ValidationResult[PawnTokenCarrier]
         Raises:
@@ -91,8 +91,8 @@ class PawnTokenValidator:
         # Handle the case that the property table is null or the wrong type.
         table_validation = self._toolkit.priming_validator.execute(
             candidate=validation_reference,
-            target_model=Type[TokenValidationReference],
-            null_exception=TokenValidationReferenceNullException(),
+            target_model=Type[TokenProductEnvelope],
+            null_exception=TokenProductEnvelopeNullException(),
         )
         if table_validation.is_failure:
             # Send the exception chain on failure.

@@ -13,7 +13,7 @@ from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    TokenPositionChart, SafeRootTokenProperties, TokenPositionChartValidator, TokenValidationReference,
+    TokenPositionChart, SafeRootTokenProperties, TokenPositionChartValidator, TokenProductEnvelope,
     TokenValidatorToolkit, RootValidator
 )
 from domain import (
@@ -43,10 +43,10 @@ class RootTokenValidator(RootValidator[Token]):
     Provides:
         -   def execute(
                     candidate: Any
-            ) -> ValidationResult[TokenValidationReference]:
+            ) -> ValidationResult[TokenProductEnvelope]:
 
     Super Class:
-        ValidationReferenceGenerator
+        ProductEnvelopeGenerator
     """
     _position_validator: TokenPositionChartValidator
     
@@ -71,7 +71,7 @@ class RootTokenValidator(RootValidator[Token]):
     def execute(
             self,
             candidate: Any,
-    ) -> ValidationResult[TokenValidationReference]:
+    ) -> ValidationResult[TokenProductEnvelope]:
         """
         Assure a candidate's properties are reference for a Token
 
@@ -81,13 +81,13 @@ class RootTokenValidator(RootValidator[Token]):
                     -   The Loader fails.
                     -   Team, Formation, Deployment, id, or HomeSquare are flagged.
                     -   The position_table_generator fails.
-            2.  Otherwise, send a TokenValidationReference in the success result.
+            2.  Otherwise, send a TokenProductEnvelope in the success result.
         Args:
             candidate: Any
         Returns:
-           ValidationResult[TokenValidationReference]
+           ValidationResult[TokenProductEnvelope]
         Raises:
-            TokenValidationReferenceGeneratorException
+            TokenProductEnvelopeGeneratorException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -237,7 +237,7 @@ class RootTokenValidator(RootValidator[Token]):
         )
         
         # --- Send the work product. ---#
-        validation_reference = TokenValidationReference(
+        validation_reference = TokenProductEnvelope(
             safe_properties=safe_properties,
             prime_extract=prime_extract,
         )

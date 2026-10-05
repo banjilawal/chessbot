@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
 from artifcat import ValidationResult
-from assurance import ValidationReference, ValidatorToolkit
+from assurance import ProductEnvelope, ValidatorToolkit
 from domain import Model
 from util import LoggingLevelRouter
 
@@ -32,7 +32,7 @@ class RootValidator(ABC, Generic[T]):
         position_validator: TokenPositionValidator
 
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult[ValidationReference]:
+        -   def execute(candidate: Any) -> ValidationResult[ProductEnvelope]:
 
     Super Class:
     """
@@ -54,7 +54,7 @@ class RootValidator(ABC, Generic[T]):
     def execute(
             self,
             candidate: Any,
-    ) -> ValidationResult[ValidationReference]:
+    ) -> ValidationResult[ProductEnvelope]:
         pass
 
     

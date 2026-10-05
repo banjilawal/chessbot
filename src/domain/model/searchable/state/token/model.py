@@ -51,7 +51,7 @@ class Token(StateModel):
     _formation: Formation
     _home_square: HomeSquare
     _deployment: TokenDeployment
-    _chart: CoordChart
+    _walk: CoordChart
 
     def __init__(
             self,
@@ -72,7 +72,7 @@ class Token(StateModel):
         self._formation = formation
         self._home_square = home_square
         self._deployment = TokenDeployment.NOT_DEPLOYED
-        self._chart = CoordChart()
+        self._walk = CoordChart()
     
     @property
     def formation(self) -> Formation:
@@ -104,21 +104,25 @@ class Token(StateModel):
     
     def mark_as_deployed(self):
         self._deployment = TokenDeployment.DEPLOYED_TO_HOME_SQUARE
+        
+    @property
+    def walk(self) -> CoordChart:
+        return self._walk
     
     @property
     def position(self) -> Optional[Coord]:
-        return self._chart.position
+        return self._walk.position
     
     @property
     def position_chart(self) -> CoordChart:
-        return self._chart
+        return self._walk
     
     @position.setter
     def position(self, other: Coord):
-        position = self._chart.position
-        previous_position = self._chart.position
+        position = self._walk.position
+        previous_position = self._walk.position
         
-        self._chart = CoordChart(
+        self._walk = CoordChart(
             position=position,
             previous_position=previous_position,
         )
@@ -126,7 +130,7 @@ class Token(StateModel):
     @property
     def has_been_deployed(self) -> bool:
        return (
-               self._chart.position is not None and
+               self._walk.position is not None and
                self._deployment == TokenDeployment.DEPLOYED_TO_HOME_SQUARE
        )
     

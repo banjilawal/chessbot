@@ -13,7 +13,7 @@ from typing import Any, Dict, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    TokenValidationReference, RootTokenValidator, ModelValidator, TokenPositionChartValidator,
+    TokenProductEnvelope, RootTokenValidator, ModelValidator, TokenPositionChartValidator,
     TokenValidationRouter,
     TokenValidatorToolkit
 )
@@ -35,7 +35,7 @@ class TokenValidator(ModelValidator[Token]):
     Attributes:
         toolkit: TokenValidatorToolkit
         validation_router: TokenValidationRouter
-        property_table_generator: TokenValidationReferenceGenerator
+        property_table_generator: TokenProductEnvelopeGenerator
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[TokenCarrier]:
@@ -57,7 +57,7 @@ class TokenValidator(ModelValidator[Token]):
         Args:
             toolkit: Optional[TokenValidatorToolkit]
             validation_router: Optional[TokenValidationRouter]
-            property_table_generator: Optional[TokenValidationReferenceGenerator]
+            property_table_generator: Optional[TokenProductEnvelopeGenerator]
         """
         super().__init__(toolkit=toolkit or TokenValidatorToolkit())
         self._validation_router = validation_router or TokenValidationRouter()
@@ -108,7 +108,7 @@ class TokenValidator(ModelValidator[Token]):
                 )
             )
         common_property_table = cast(
-            TokenValidationReference,
+            TokenProductEnvelope,
             table_generation_result.payload,
         )
         router_result = self._validation_router.execute()

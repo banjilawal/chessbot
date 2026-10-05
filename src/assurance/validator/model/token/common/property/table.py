@@ -13,13 +13,13 @@ from assurance import TokenSafePropertyTable
 from domain import TokenPrimeExtract
 
 
-class TokenValidationReference:
+class TokenProductEnvelope:
     """
     Role
         - Data Holder
 
     Responsibilities:
-        1.  Stores TokenValidationReferenceGenerator success data.
+        1.  Stores TokenProductEnvelopeGenerator success data.
 
     Attributes:
         prime_extract: TokenPrimeExtract

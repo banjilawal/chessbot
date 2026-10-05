@@ -12,19 +12,13 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import (
-    TokenChartValidator, EncounterParticipants, SafeRootEncounterProperties,
-    RootTokenProduct, EncounterValidatorToolkit, RootValidator
-)
+from assurance import EncounterValidatorToolkit, RootValidator, TokenChartValidator
 from config import NumericSetting
-from domain import (
-    Maneuver, Token, Encounter, EncounterBlueprint, EncounterPrimeExtract
-)
-from err import (
-    RootEncounterValidatorException
-)
+from domain import Encounter, EncounterBlueprint, EncounterPrimeExtract, Maneuver, Token, TokenChart
+from err import RootEncounterValidatorException
 from exchange import ManeuverValidationRequest, TokenValidationRequest
-from transit import ManeuverCarrier, TokenCarrier
+
+from transit import ManeuverCarrier, RootEncounterEnvelope, RootEncounterEnvelope, TokenCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -42,25 +36,25 @@ class RootEncounterValidator(RootValidator[Encounter]):
     Provides:
         -   def execute(
                     candidate: Any
-            ) -> ValidationResult[RootTokenProduct]:
+            ) -> ValidationResult[RootEncounterEnvelope]:
 
     Super Class:
-        ValidationReferenceGenerator
+        ProductEnvelopeGenerator
     """
-    _participant_chart_producer: TokenChartValidator
+    _chart_validator: TokenChartValidator
     
     def __init__(
             self,
             toolkit: Optional[EncounterValidatorToolkit] | None = None,
-            participant_certifier: Optional[TokenChartValidator] | None = None,
+            chart_validator: Optional[TokenChartValidator] | None = None,
     ):
         """
         Args:
             toolkit: Optional[EncounterValidatorToolkit]
-            participant_certifier: Optional[EncounterPositionCertifier]
+            chart_validator: Optional[EncounterPositionCertifier]
         """
         super().__init__(toolkit=toolkit or EncounterValidatorToolkit())
-        self._participant_chart_producer = participant_certifier or TokenChartValidator()
+        self._chart_validator = chart_validator or TokenChartValidator()
         
     @property
     def toolkit(self) -> EncounterValidatorToolkit:
@@ -70,7 +64,7 @@ class RootEncounterValidator(RootValidator[Encounter]):
     def execute(
             self,
             candidate: Any,
-    ) -> ValidationResult[RootTokenProduct]:
+    ) -> ValidationResult[RootEncounterEnvelope]:
         """
         Assure a candidate's properties are reference for a Encounter
 
@@ -80,13 +74,13 @@ class RootEncounterValidator(RootValidator[Encounter]):
                     -   The Loader fails.
                     -   Token, Formation, Deployment, id, or HomeSquare are flagged.
                     -   The position_table_generator fails.
-            2.  Otherwise, send a RootTokenProduct in the success result.
+            2.  Otherwise, send a RootEncounterEnvelope in the success result.
         Args:
             candidate: Any
         Returns:
-           ValidationResult[RootTokenProduct]
+           ValidationResult[RootEncounterEnvelope]
         Raises:
-            RootTokenProductGeneratorException
+            RootEncounterEnvelopeGeneratorException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -191,12 +185,12 @@ class RootEncounterValidator(RootValidator[Encounter]):
         attacker_reward = cast(int, attacker_reward.payload)
         attacker_maneuver = cast(Maneuver, attacker_maneuver_validation.payload)
         
-        production_result = self._participant_chart_producer.execute(
+        chart_validation = self._chart_validator.execute(
             victim=victim,
             attacker=attacker_maneuver.traveler,
         )
         # Handle the case that the victim and the attacker are the same
-        if production_result.is_failure:
+        if chart_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 RootEncounterValidatorException(
@@ -204,25 +198,18 @@ class RootEncounterValidator(RootValidator[Encounter]):
                     cls_name=self.__class__.__name__,
                     msg=RootEncounterValidatorException.MSG,
                     err_code=RootEncounterValidatorException.ERR_CODE,
-                    ex=production_result.exception
+                    ex=chart_validation.exception
                 )
             )
-        encounter_participants = cast(
-            EncounterParticipants,
-            production_result.payload,
-        )
-        safe_properties = SafeRootEncounterProperties(
-            id=id,
-            attacker_reward=attacker_reward,
-            participants=encounter_participants,
-            attacker_maneuver=attacker_maneuver,
-        )
-        
+        participants = cast(TokenChart, chart_validation.payload)        
         # --- Send the work product. ---#
-        validation_reference = RootTokenProduct(
-            safe_properties=safe_properties,
+        envelope = RootEncounterEnvelope(
+            id=id,
+            participants=participants,
+            attacker_reward=attacker_reward,
+            attacker_maneuver=attacker_maneuver,
             prime_extract=prime_extract,
         )
-        return ValidationResult.success(validation_reference)
+        return ValidationResult.success(envelope)
 
     

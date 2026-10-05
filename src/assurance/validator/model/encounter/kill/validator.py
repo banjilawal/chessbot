@@ -12,13 +12,13 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import EncounterValidationReference, EncounterEnemyValidator, EncounterValidatorToolkit
+from assurance import EncounterProductEnvelope, EncounterEnemyValidator, EncounterValidatorToolkit
 from domain import (
     CombatantReadiness, KillEncounter, KillEncounterBlueprint, KillEncounterPrimeExtract, PromotionState,
     Rank, Encounter
 )
 from err import (
-    CombatantReadinessNullException, EncounterValidationReferenceNullException,
+    CombatantReadinessNullException, EncounterProductEnvelopeNullException,
     KillEncounterPrimeExtractNullException, KillEncounterValidatorException,
     PromotionStateNullException
 )
@@ -65,7 +65,7 @@ class KillEncounterValidator:
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            reference: EncounterValidationReference
+            reference: EncounterProductEnvelope
     ) -> ValidationResult[KillEncounterCarrier]:
         """
         Assure the properties can assemble a safe KillEncounterCarrier.
@@ -80,7 +80,7 @@ class KillEncounterValidator:
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            reference: EncounterValidationReference
+            reference: EncounterProductEnvelope
         Returns:
             ValidationResult[KillEncounterCarrier]
         Raises:
@@ -91,8 +91,8 @@ class KillEncounterValidator:
         # Handle the case that the property table is null or the wrong type.
         priming = self._toolkit.priming_validator.execute(
             candidate=reference,
-            target_model=Type[EncounterValidationReference],
-            null_exception=EncounterValidationReferenceNullException(),
+            target_model=Type[EncounterProductEnvelope],
+            null_exception=EncounterProductEnvelopeNullException(),
         )
         if priming.is_failure:
             # Send the exception chain on failure.

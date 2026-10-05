@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import ValidationResult
 from assurance import (
     CombatantTokenValidator, KingTokenValidator, PawnTokenValidator,
-    TokenValidationReference, TokenValidatorToolkit
+    TokenProductEnvelope, TokenValidatorToolkit
 )
 from domain import (
     CombatantTokenBlueprint, CombatantTokenPrimeExtract, Coord, Formation, HomeSquare,
@@ -79,7 +79,7 @@ class TokenValidationRouter:
     @LoggingLevelRouter.monitor
     def execute(
             self, 
-            validation_reference: TokenValidationReference,
+            validation_reference: TokenProductEnvelope,
     ) -> ValidationResult[TokenCarrier]:
         """
         Assure a candidate is a safe TokenCarrier.
@@ -89,7 +89,7 @@ class TokenValidationRouter:
                 for the Token type.
             2.  Otherwise, send a TokenCarrier in the success result.
         Args:
-            validation_reference: TokenValidationReference
+            validation_reference: TokenProductEnvelope
             
         Returns:
             ValidationResult[TokenCarrier]

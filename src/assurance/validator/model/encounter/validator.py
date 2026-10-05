@@ -13,9 +13,10 @@ from typing import Any, Dict, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    EncounterValidationReference, EncounterValidationReferenceGenerator, ModelValidator, EncounterPositionTableGenerator,
+    EncounterProductEnvelope, EncounterProductEnvelopeGenerator, ModelValidator,
+    EncounterPositionTableGenerator,
     EncounterValidationRouter,
-    EncounterValidatorToolkit
+    EncounterValidatorToolkit, RootEncounterValidator
 )
 from domain import Coord, Formation, HomeSquare, Encounter, EncounterBlueprint, EncounterDeployment, EncounterPrimeExtract
 from err import FormationNullException, EncounterDeploymentNullException, EncounterValidatorException
@@ -35,7 +36,7 @@ class EncounterValidator(ModelValidator[Encounter]):
     Attributes:
         toolkit: EncounterValidatorToolkit
         validation_router: EncounterValidationRouter
-        property_table_generator: EncounterValidationReferenceGenerator
+        property_table_generator: EncounterProductEnvelopeGenerator
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[EncounterCarrier]:
@@ -44,27 +45,29 @@ class EncounterValidator(ModelValidator[Encounter]):
         ModelValidator
     """
     _validation_router: EncounterValidationRouter
-    _property_table_generator: EncounterValidationReferenceGenerator
+    _root_validator: RootEncounterValidator
     
     def __init__(
             self,
+            root_validator: Optional[RootEncounterValidator] | None = None,
             toolkit: Optional[EncounterValidatorToolkit] | None = None,
             validation_router: Optional[EncounterValidationRouter] | None = None,
-            property_table_generator: Optional[EncounterValidationReferenceGenerator]
+            property_table_generator: Optional[EncounterProductEnvelopeGenerator]
                                       | None = None,
     ):
         """
         Args:
             toolkit: Optional[EncounterValidatorToolkit]
             validation_router: Optional[EncounterValidationRouter]
-            property_table_generator: Optional[EncounterValidationReferenceGenerator]
+            property_table_generator: Optional[EncounterProductEnvelopeGenerator]
         """
         super().__init__(toolkit=toolkit or EncounterValidatorToolkit())
         self._validation_router = validation_router or EncounterValidationRouter()
         self._property_table_generator = (
                 property_table_generator or
-                EncounterValidationReferenceGenerator()
+                EncounterProductEnvelopeGenerator()
         )
+        self._root_validator = root_validator
     
     @property
     def toolkit(self) -> EncounterValidatorToolkit:
@@ -94,6 +97,19 @@ class EncounterValidator(ModelValidator[Encounter]):
         """
         method = f"{self.__class__.__name__}.execute"
         
+        root_validation = self._root_validator.execute(candidate=candidate)
+        if root_validation.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                EncounterValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=EncounterValidatorException.MSG,
+                    err_code=EncounterValidatorException.ERR_CODE,
+                    ex=root_validation.exception,
+                )
+            )
+        
         # Handle the case that the blueprint cannot be extracted.
         table_generation_result = self._property_table_generator.execute(candidate=candidate)
         if table_generation_result.is_failure:
@@ -108,7 +124,7 @@ class EncounterValidator(ModelValidator[Encounter]):
                 )
             )
         common_property_table = cast(
-            EncounterValidationReference,
+            EncounterProductEnvelope,
             table_generation_result.payload,
         )
         router_result = self._validation_router.execute()

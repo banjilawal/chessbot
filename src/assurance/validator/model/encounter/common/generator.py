@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import EncounterValidationReference, EncounterValidatorToolkit
+from assurance import EncounterProductEnvelope, EncounterValidatorToolkit
 from config import NumericSetting
 from domain import EncounterBlueprint, EncounterPrimeExtract, Maneuver, Token
 from exchange import ManeuverValidationRequest
@@ -20,7 +20,7 @@ from transit import ManeuverCarrier, TokenCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class EncounterValidationReferenceGenerator:
+class EncounterProductEnvelopeGenerator:
     """
     Role
         - Integrity, Consistency Maintenance
@@ -35,7 +35,7 @@ class EncounterValidationReferenceGenerator:
     Provides:
         -   def execute(
                     candidate: Any
-            ) -> ValidationResult[EncounterValidationReference]:
+            ) -> ValidationResult[EncounterProductEnvelope]:
 
     Super Class:
     """
@@ -55,7 +55,7 @@ class EncounterValidationReferenceGenerator:
     def execute(
             self,
             candidate: Any,
-    ) -> ValidationResult[EncounterValidationReference]:
+    ) -> ValidationResult[EncounterProductEnvelope]:
         """
         Assure a candidate's properties are safe for a Encounter
 
@@ -65,13 +65,13 @@ class EncounterValidationReferenceGenerator:
                     -   The Loader fails.
                     -   Token, Formation, Deployment, id, or HomeSquare are flagged.
                     -   The position_table_generator fails.
-            2.  Otherwise, send a EncounterValidationReference in the success result.
+            2.  Otherwise, send a EncounterProductEnvelope in the success result.
         Args:
             candidate: Any
         Returns:
-           ValidationResult[EncounterValidationReference]
+           ValidationResult[EncounterProductEnvelope]
         Raises:
-            EncounterValidationReferenceGeneratorException
+            EncounterProductEnvelopeGeneratorException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -80,11 +80,11 @@ class EncounterValidationReferenceGenerator:
         if load_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                EncounterValidationReferenceGeneratorException(
+                EncounterProductEnvelopeGeneratorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=EncounterValidationReferenceGeneratorException.MSG,
-                    err_code=EncounterValidationReferenceGeneratorException.ERR_CODE,
+                    msg=EncounterProductEnvelopeGeneratorException.MSG,
+                    err_code=EncounterProductEnvelopeGeneratorException.ERR_CODE,
                     ex=load_result.exception,
                 )
             )
@@ -103,11 +103,11 @@ class EncounterValidationReferenceGenerator:
         if id_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                EncounterValidationReferenceGeneratorException(
+                EncounterProductEnvelopeGeneratorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=EncounterValidationReferenceGeneratorException.MSG,
-                    err_code=EncounterValidationReferenceGeneratorException.ERR_CODE,
+                    msg=EncounterProductEnvelopeGeneratorException.MSG,
+                    err_code=EncounterProductEnvelopeGeneratorException.ERR_CODE,
                     ex=id_validation.exception,
                 )
             )
@@ -123,11 +123,11 @@ class EncounterValidationReferenceGenerator:
         if victim_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                EncounterValidationReferenceGeneratorException(
+                EncounterProductEnvelopeGeneratorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=EncounterValidationReferenceGeneratorException.MSG,
-                    err_code=EncounterValidationReferenceGeneratorException.ERR_CODE,
+                    msg=EncounterProductEnvelopeGeneratorException.MSG,
+                    err_code=EncounterProductEnvelopeGeneratorException.ERR_CODE,
                     ex=victim_validation.exception,
                 )
             )
@@ -143,11 +143,11 @@ class EncounterValidationReferenceGenerator:
         if attacker_maneuver_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                EncounterValidationReferenceGeneratorException(
+                EncounterProductEnvelopeGeneratorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=EncounterValidationReferenceGeneratorException.MSG,
-                    err_code=EncounterValidationReferenceGeneratorException.ERR_CODE,
+                    msg=EncounterProductEnvelopeGeneratorException.MSG,
+                    err_code=EncounterProductEnvelopeGeneratorException.ERR_CODE,
                     ex=attacker_maneuver_validation.exception,
                 )
             )
@@ -159,11 +159,11 @@ class EncounterValidationReferenceGenerator:
         if attacker_reward_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                EncounterValidationReferenceGeneratorException(
+                EncounterProductEnvelopeGeneratorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=EncounterValidationReferenceGeneratorException.MSG,
-                    err_code=EncounterValidationReferenceGeneratorException.ERR_CODE,
+                    msg=EncounterProductEnvelopeGeneratorException.MSG,
+                    err_code=EncounterProductEnvelopeGeneratorException.ERR_CODE,
                     ex=attacker_reward_validation.exception,
                 )
             )
@@ -179,7 +179,7 @@ class EncounterValidationReferenceGenerator:
 
         
         # --- Send the work product. ---#
-        encounter_property_table = EncounterValidationReference(
+        encounter_property_table = EncounterProductEnvelope(
             id=id,
             token=token,
             formation=formation,
