@@ -80,7 +80,7 @@ class EncounterCarrier(ModelCarrier[T], Generic[T]):
         )
     
     @abstractmethod
-    def extract_blueprint(self) -> Optional[Blueprint[T]]:
+    def extract_blueprint(self) -> Optional[EncounterBlueprint[T]]:
         pass
     
     @property

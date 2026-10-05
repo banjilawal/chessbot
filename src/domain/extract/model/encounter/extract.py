@@ -38,7 +38,7 @@ class EncounterPrimeExtract(ModelPrimeExtract[T], Generic[T]):
     def __init__(
             self,
             carrier: EncounterCarrier[T],
-            blueprint: Optional[EncounterBlueprint[T]] | None = None,
+            blueprint: Optional[EncounterBlueprint] | None = None,
     ):
         """
         Args:
@@ -53,4 +53,4 @@ class EncounterPrimeExtract(ModelPrimeExtract[T], Generic[T]):
     
     @property
     def blueprint(self) -> Optional[EncounterBlueprint[T]]:
-        return cast(EncounterBlueprint, super().blueprint)
+        return cast(EncounterBlueprint[T], super().blueprint)

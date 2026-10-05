@@ -15,7 +15,7 @@ from artifcat import ValidationResult
 from assurance import ModelLoader, AccountValidatorToolkit
 from domain import Account, AccountPrimeExtract
 from err import (
-    EmptyAccountCarrierException, AccountLoaderException, AccountValidationRequestNullException
+    AccountCarrierEmptyException, AccountLoaderException, AccountValidationRequestNullException
 )
 from exchange import AccountValidationRequest
 from transit import AccountCarrier
@@ -135,11 +135,11 @@ class AccountLoader(ModelLoader[Account]):
                     cls_name=self.__class__.__name__,
                     msg=AccountLoaderException.MSG,
                     err_code=AccountLoaderException.ERR_CODE,
-                    ex=EmptyAccountCarrierException(
+                    ex=AccountCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyAccountCarrierException.MSG,
-                        err_code=EmptyAccountCarrierException.ERR_CODE,
+                        msg=AccountCarrierEmptyException.MSG,
+                        err_code=AccountCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

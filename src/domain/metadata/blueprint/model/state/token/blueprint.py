@@ -15,7 +15,7 @@ from typing import Generic, Optional, Type, TypeVar, cast
 from domain import (
     CombatantTokenBlueprint, Coord, Formation, HomeSquare, KingTokenBlueprint, PawnTokenBlueprint, StateModelBlueprint,
     Team,
-    TokenDeployment
+    Token, TokenDeployment
 )
 from err import  TokenNullException
 

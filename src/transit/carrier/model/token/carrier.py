@@ -82,7 +82,7 @@ class TokenCarrier(ModelCarrier[T], Generic[T]):
                 self._blueprint is not None
         )
     
-    def extract_blueprint(self) -> Optional[Blueprint[T]]:
+    def extract_blueprint(self) -> Optional[TokenBlueprint[T]]:
         pass
     
     @property

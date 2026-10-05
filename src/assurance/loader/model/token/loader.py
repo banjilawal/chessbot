@@ -13,7 +13,7 @@ from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
 from assurance import ModelLoader, TokenValidatorToolkit
-from domain import Token, TokenPrimeExtract
+from domain import Token, TokenBlueprint, TokenPrimeExtract
 from err import (
     TokenCarrierEmptyException, TokenLoaderException, TokenValidationRequestNullException
 )
