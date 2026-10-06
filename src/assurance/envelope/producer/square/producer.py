@@ -207,6 +207,11 @@ class RootSquareEnvelopeProducer(RootEnvelopeProducer[Square]):
                     ex=board_validation.exception,
                 )
             )
+        # --- PROCESS_THE_OCCUPANT_ATTRIBUTE. ---#
+        occupant = blueprint.occupant
+        if occupant is not None:
+            occupant_validation = self.toolkit.wrapper.token.e
+        
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
         id = cast(int, id_validation.payload)
         board = cast(Board, board_validation.payload)
@@ -224,5 +229,7 @@ class RootSquareEnvelopeProducer(RootEnvelopeProducer[Square]):
             prime_extract=prime_extract,
         )
         return ValidationResult.success(envelope)
+    
+    
 
     

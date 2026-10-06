@@ -15,7 +15,7 @@ from typing import Optional
 from assurance import ModelWrapperDependency
 from domain import Square
 from exchange import (
-    BoardValidationResponseWrapper, CoordValidationResponseWrapper
+    BoardValidationResponseWrapper, CoordValidationResponseWrapper, TokenValidationResponseWrapper
 )
 
 
@@ -30,6 +30,7 @@ class SquareWrapperDependency(ModelWrapperDependency[Square]):
     Attributes:
         board: BoardValidationResponseWrapper
         coord: CoordValidationResponseWrapper
+        token: TokenValidationResponseWrapper
 
     Provides:
 
@@ -38,11 +39,13 @@ class SquareWrapperDependency(ModelWrapperDependency[Square]):
     """
     _board: BoardValidationResponseWrapper
     _coord: CoordValidationResponseWrapper
+    _token: TokenValidationResponseWrapper
     
     def __init__(
             self,
             board: Optional[BoardValidationResponseWrapper] | None = None,
             coord: Optional[CoordValidationResponseWrapper] | None = None,
+            token: Optional[TokenValidationResponseWrapper] | None = None,
     ):
         """
         Args:
@@ -52,6 +55,7 @@ class SquareWrapperDependency(ModelWrapperDependency[Square]):
         super().__init__()
         self._board = board or BoardValidationResponseWrapper()
         self._coord = coord or CoordValidationResponseWrapper()
+        self._token = token or TokenValidationResponseWrapper()
         
     @property
     def board(self) -> BoardValidationResponseWrapper:
@@ -60,3 +64,7 @@ class SquareWrapperDependency(ModelWrapperDependency[Square]):
     @property
     def coord(self) -> CoordValidationResponseWrapper:
         return self._coord
+    
+    @property
+    def token(self) -> TokenValidationResponseWrapper:
+        return self._token
