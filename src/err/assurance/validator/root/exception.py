@@ -1,7 +1,7 @@
-# src/err/null/domain/model/square/square/exception.py
+# src/err/assurance/validator/root/exception.py
 
 """
-Module: err.null.domain.model.square.square.exception
+Module: err.assurance.validator.root.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,65 +11,66 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import NullException
+from err import AssuranceException
 from artifcat import MethodResultType
 
-
 __all__ = [
-    # ======================# SQUARE_STATE_NULL_ERROR #======================#
-    "SquareStateNullException",
+    # ======================# ROOT_VALIDATOR_FAILURE #======================#
+    "RootValidatorException",
 ]
 
-# ======================# SQUARE_STATE_NULL_ERROR #======================#
-class SquareStateNullException(NullException):
+# ======================# ROOT_VALIDATOR_FAILURE #======================#
+class RootValidatorException(AssuranceException):
     """
     Role:
-        - Error Tracing
+        - Failure Tracing
 
     Responsibilities:
-        1.  Indicating a required SquareState is null.
+        1.  Indicating assurance by a RootValidator failed.
 
     Attributes:
-        msg: Optional[str]
+        msg: str
+        err_code: str
         var: Optional[str]
         val: Optional[Any]
-        ex: Optional[Exception]
         cls_name: Optional[str]
         cls_mthd: Optional[str]
-        err_code: Optional[str]
+        ex: Optional[Exception]
         mthd_rslt_type: Optional[MethodResultType]
-        
+            
     Provides:
 
     Super Class:
-        NullException
+        AssuranceException
     """
-    MSG = "SquareState cannot be null."
-    ERR_CODE = "SQUARE_STATE_NULL_ERROR"
+    MSG = "RootValidator failed."
+    ERR_CODE = "ROOT_VALIDATOR_FAILURE"
+    MTHD_RSLT_TYPE = MethodResultType.VALIDATION_RESULT
     
     def __init__(
             self,
-            msg: Optional[str] | None = None,
+            msg: str = MSG,
+            err_code: str = ERR_CODE,
             var: Optional[str] | None = None,
             val: Optional[Any] | None = None,
-            ex: Optional[Exception] | None = None,
             cls_name: Optional[str] | None = None,
             cls_mthd: Optional[str] | None = None,
-            err_code: Optional[str] | None = None,
+            ex: Optional[Exception] | None = None,
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-        args:
-            Msg: Optional[str]
-            Var: Optional[str]
-            val: Optional[any]
-            ex: Optional[Exception]
-            cls_name: Optional[Str]
+            Args:
+            msg: str
+            err_code: str
+            var: Optional[str]
+            val: Optional[Any]
+            cls_name: Optional[str]
             cls_mthd: Optional[str]
-            err_code: Optional[str]
+            ex: Optional[Exception]
             mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
+        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         err_code = err_code or self.ERR_CODE
         super().__init__(
             ex=ex,

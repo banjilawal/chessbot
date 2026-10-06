@@ -1,7 +1,7 @@
-# src/assurance/validator/validator/roottoken/generator.py
+# src/assurance/validator/root/encounter/validator.py
 
 """
-Module: assurance.validator.root.token.generator
+Module: assurance.validator.root.encounter.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,11 +12,16 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import RootValidator, T, TokenLoader, TokenProductEnvelope, TokenValidatorToolkit, WalkValidator
-from domain import Formation, HomeSquare, Team, Token, TokenDeployment, TokenPrimeExtract, Walk
+from assurance import (
+    RootValidator, TokenLoader, TokenValidatorToolkit, WalkValidator
+)
+from domain import (
+    Formation, HomeSquare, Team, Token, TokenDeployment,
+    TokenPrimeExtract, Walk
+)
 from err import (
-    FormationNullException, RootTokenValidatorException, TokenCarrierEmptyException,
-    TokenDeploymentNullException
+    FormationNullException, RootTokenValidatorException,
+    TokenCarrierEmptyException, TokenDeploymentNullException
 )
 from exchange import TeamValidationRequest, WalkValidationRequest
 from transit import RootTokenEnvelope, TeamCarrier, WalkCarrier
@@ -33,7 +38,7 @@ class RootTokenValidator(RootValidator[Token]):
             for additional processing.
 
     Attributes:
-        loader: TokenValidatorToolkit
+        loader: TokenLoader
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[RootTokenEnvelope]
@@ -41,7 +46,6 @@ class RootTokenValidator(RootValidator[Token]):
     Super Class:
         RootValidator
     """
-    _walk_validator: WalkValidator
     
     def __init__(
             self,
@@ -49,7 +53,7 @@ class RootTokenValidator(RootValidator[Token]):
     ):
         """
         Args:
-            loader: Optional[TokenValidatorToolkit]
+            loader: Optional[TokenLoader]
         """
         super().__init__(loader=loader or TokenLoader())
         
@@ -116,7 +120,7 @@ class RootTokenValidator(RootValidator[Token]):
                     ),
                 )
             )
-        # --- START_ID_VALIDATION_PROCESS ---#
+        # --- PROCESS_THE_ID_ATTRIBUTE. ---#
         
         # Handle the case that any id in the blueprint is flagged.
         id_validation = self.toolkit.blueprint_id_extractor.execute(
@@ -136,7 +140,7 @@ class RootTokenValidator(RootValidator[Token]):
                     ex=id_validation.exception,
                 )
             )
-        # --- START_FORMATION_VALIDATION_PROCESS ---#
+        # --- PROCESS_THE_FORMATION_ATTRIBUTE. ---#
         
         # Handle the case that the formation is flagged.
         formation_validation = self.toolkit.priming_validator.execute(
@@ -155,7 +159,7 @@ class RootTokenValidator(RootValidator[Token]):
                     ex=formation_validation.exception,
                 )
             )
-        # --- START_DEPLOYEMENT_STATE_VALIDATION_PROCESS ---#
+        # --- PROCESS_THE_DEPLOYMENT_ATTRIBUTE. ---#
         
         # Handle the case that the deployment is flagged.
         deployment_validation = self.toolkit.priming_validator.execute(
@@ -194,7 +198,7 @@ class RootTokenValidator(RootValidator[Token]):
                     ex=team_validation.exception,
                 )
             )
-        # --- START_HOME_SQUARE_DETECTION_PROCESS ---#
+        # --- HOME_SQUARE_DETECTION_PROCESS ---#
         
         # Handle the case that the home_square gets flagged.
         home_detection = self.toolkit.home_square_extractor.execute(
@@ -211,15 +215,14 @@ class RootTokenValidator(RootValidator[Token]):
                     ex=home_detection.exception,
                 )
             )
-        # --- START_POSITIONS_VALIDATION_PROCESS ---#
-        
-        # Handle the case that the current_position is flagged.
+        # --- PROCESS_THE_WALK_ATTRIBUTE. ---#
         walk_validation = self.toolkit.wrapper.walk.extract_model(
             request=WalkValidationRequest(
                 item=WalkCarrier(model=blueprint.walk),
                 id=IdFactory.next_id(class_name="WalkValidationRequest"),
             )
         )
+        
         if walk_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -231,14 +234,15 @@ class RootTokenValidator(RootValidator[Token]):
                     ex=walk_validation.exception,
                 )
             )
-        # --- Extract from the validation payloads. ---#
+        # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
         id = cast(int, id_validation.payload)
         walk = cast(Walk, walk_validation.payload)
         team = cast(Team, team_validation.payload)
         home_square = cast(HomeSquare, home_detection.payload)
         formation = cast(Formation, formation_validation.payload)
         deployment = cast(TokenDeployment, deployment_validation.payload)
-
+        
+        # --- SEND_THE_WORK_PRODUCT. ---#
         envelope = RootTokenEnvelope(
             id=id,
             team=team,
@@ -248,7 +252,6 @@ class RootTokenValidator(RootValidator[Token]):
             home_square=home_square,
             prime_extract=prime_extract,
         )
-        # --- Send the work product. ---#
         return ValidationResult.success(envelope)
 
     

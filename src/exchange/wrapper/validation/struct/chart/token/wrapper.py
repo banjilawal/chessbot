@@ -11,12 +11,10 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import ParticipationValidationResponse, ValidationResult
-from domain import Token, TokenBlueprint, Participation, ParticipationBlueprint
-from err import ParticipationValidationResponderException, ParticipationValidationResponseWrapperException, TokenCarrierEmptyException
-from exchange import (
-    ParticipationValidationResponder, ChartValidationResponseWrapper, WalkValidationRequest
-)
+from artifcat import ValidationResult
+from domain import Participation, ParticipationBlueprint
+from err import ParticipationValidationResponseWrapperException
+from exchange import ChartValidationResponseWrapper, ParticipationValidationRequest, ParticipationValidationResponder
 from util import LoggingLevelRouter
 
 
@@ -67,7 +65,7 @@ class ParticipationValidationResponseWrapper(
     @LoggingLevelRouter.monitor
     def extract_model(
             self, 
-            request: WalkValidationRequest,
+            request: ParticipationValidationRequest,
     ) -> ValidationResult[Participation]:
         """
         Extract a Token safe to use.
@@ -123,7 +121,7 @@ class ParticipationValidationResponseWrapper(
     @LoggingLevelRouter.monitor
     def extract_blueprint(
             self,
-            request: WalkValidationRequest,
+            request: ParticipationValidationRequest,
     ) -> ValidationResult[ParticipationBlueprint]:
         """
         Extract a TokenBlueprint safe to use.

@@ -12,59 +12,62 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import EncounterValidatorToolkit, RootValidator, ParticipationValidator
+from assurance import EncounterLoader, EncounterValidatorToolkit, RootValidator
 from config import NumericSetting
-from domain import Encounter, EncounterBlueprint, EncounterPrimeExtract, Maneuver, Token, Participation
-from err import RootEncounterValidatorException
-from exchange import ManeuverValidationRequest, TokenValidationRequest
-
-from transit import ManeuverCarrier, RootEncounterEnvelope, RootEncounterEnvelope, TokenCarrier
+from domain import (
+    Encounter, EncounterPrimeExtract, Maneuver, Participation,
+    ParticipationBlueprint, Token
+)
+from err import EncounterCarrierEmptyException, RootEncounterValidatorException
+from exchange import (
+    ManeuverValidationRequest, ParticipationValidationRequest,
+    TokenValidationRequest
+)
+from transit import (
+    ManeuverCarrier, ParticipationCarrier, RootEncounterEnvelope, TokenCarrier
+)
 from util import IdFactory, LoggingLevelRouter
 
 
 class RootEncounterValidator(RootValidator[Encounter]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Runs validation checks on fields in Encounter superclass.
+        1.  Runs safety checks on Encounter super class, then send a 
+            RootEncounterEnvelope for additional processing.
 
     Attributes:
-        loader: EncounterValidatorToolkit
+        loader: EncounterLoader
 
     Provides:
-        -   def execute(
-                    candidate: Any
-            ) -> ValidationResult[RootEncounterEnvelope]:
+        -   def execute(candidate: Any) -> ValidationResult[RootEncounterEnvelope]
 
     Super Class:
-        ProductEnvelopeGenerator
+        RootValidator
     """
-    _participant_readiness_validator: ParticipationValidator
     
     def __init__(
             self,
-            loader: Optional[EncounterValidatorToolkit] | None = None,
-            chart_validator: Optional[ParticipationValidator] | None = None,
+            loader: Optional[EncounterLoader] | None = None
     ):
         """
         Args:
-            loader: Optional[EncounterValidatorToolkit]
-            chart_validator: Optional[EncounterPositionCertifier]
+            loader: Optional[EncounterLoader]
         """
-        super().__init__(toolkit=toolkit or EncounterValidatorToolkit())
-        self._participant_readiness_validator = chart_validator or ParticipationValidator()
-        
+        super().__init__(loader=loader or EncounterLoader())
+    
+    @property
+    def loader(self) -> EncounterLoader:
+        return cast(EncounterLoader, super().loader)
+    
     @property
     def toolkit(self) -> EncounterValidatorToolkit:
-        return cast(EncounterValidatorToolkit, super().toolkit)
+        return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
-    def execute(
-            self,
-            candidate: Any,
-    ) -> ValidationResult[RootEncounterEnvelope]:
+    def execute(self, candidate: Any) -> ValidationResult[RootEncounterEnvelope]:
         """
         Assure a candidate's properties are reference for a Encounter
 
@@ -85,7 +88,7 @@ class RootEncounterValidator(RootValidator[Encounter]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the blueprint cannot be extracted.
-        loading = self.toolkit.loader.execute(candidate)
+        loading = self.loader.execute(candidate)
         if loading.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -99,8 +102,27 @@ class RootEncounterValidator(RootValidator[Encounter]):
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
         prime_extract = cast(EncounterPrimeExtract, loading.payload)
-        blueprint = cast(EncounterBlueprint, prime_extract.blueprint)
-        # --- START_ID_VALIDATION_PROCESS ---#
+        carrier = prime_extract.carrier
+        blueprint = carrier.extract_blueprint()
+        
+        # Handle the case that the blueprint is null
+        if blueprint is None:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                RootEncounterValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=RootEncounterValidatorException.MSG,
+                    err_code=RootEncounterValidatorException.ERR_CODE,
+                    ex=EncounterCarrierEmptyException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=EncounterCarrierEmptyException.MSG,
+                        err_code=EncounterCarrierEmptyException.ERR_CODE,
+                    ),
+                )
+            )
+        # --- PROCESS_THE_ID_ATTRIBUTE. ---#
         
         # Handle the case that any id in the blueprint is flagged.
         id_validation = self.toolkit.blueprint_id_extractor.execute(
@@ -120,7 +142,7 @@ class RootEncounterValidator(RootValidator[Encounter]):
                     ex=id_validation.exception,
                 )
             )
-        # --- START_TOKEN_VALIDATION_PROCESS ---#
+        # --- PROCESS_THE_VICTIM_ATTRIBUTE. ---#
         
         # Handle the case that the victim is flagged.
         victim_validation = self.toolkit.wrapper.token.extract_model(
@@ -140,8 +162,7 @@ class RootEncounterValidator(RootValidator[Encounter]):
                     ex=victim_validation.exception,
                 )
             )
-        # --- START_ATTACKER_MANEUVER_VALIDATION_PROCESS ---#
-        
+        # --- PROCESS_THE_ATTACKER_MANEUVER_ATTRIBUTE. ---#
         # Handle the case that the token is flagged.
         attacker_maneuver_validation = self.toolkit.wrapper.maneuver.extract_model(
             request=ManeuverValidationRequest(
@@ -160,14 +181,13 @@ class RootEncounterValidator(RootValidator[Encounter]):
                     ex=attacker_maneuver_validation.exception,
                 )
             )
-        # --- START_ATTACKER_REWARD_VALIDATION_PROCESS ---#
-        
-        # Handle the case that the home_square gets flagged.
+        # --- PROCESS_THE_ATTACKER_REWARD_ATTRIBUTE. ---#
         attacker_reward = self.toolkit.number_validator.execute(
             candidate=blueprint.attacker_reward,
             floor=NumericSetting.floor(),
             ceiling=NumericSetting.ceiling(),
         )
+        
         if attacker_reward.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -179,18 +199,24 @@ class RootEncounterValidator(RootValidator[Encounter]):
                     ex=attacker_reward.exception,
                 )
             )
-        # --- Extract from the validation payloads. ---#
+        # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
         id = cast(int, id_validation.payload)
         victim = cast(Token, victim_validation.payload)
         attacker_reward = cast(int, attacker_reward.payload)
         attacker_maneuver = cast(Maneuver, attacker_maneuver_validation.payload)
         
-        readiness_chart_validation = self._participant_readiness_validator.execute(
-            victim=victim,
-            attacker=attacker_maneuver.traveler,
+        participation_validation = self.toolkit.wrapper.participation.extract_blueprint(
+            request=ParticipationValidationRequest(
+                item=ParticipationCarrier(
+                    blueprint=ParticipationBlueprint(
+                        victim=victim,
+                        attacker=attacker_maneuver.traveler,
+                    )
+                ),
+                id=IdFactory.next_id(class_name="ParticipationValidationRequest")
+            )
         )
-        # Handle the case that the victim and the attacker are the same
-        if readiness_chart_validation.is_failure:
+        if participation_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 RootEncounterValidatorException(
@@ -198,11 +224,18 @@ class RootEncounterValidator(RootValidator[Encounter]):
                     cls_name=self.__class__.__name__,
                     msg=RootEncounterValidatorException.MSG,
                     err_code=RootEncounterValidatorException.ERR_CODE,
-                    ex=readiness_chart_validation.exception
+                    ex=participation_validation.exception
                 )
             )
-        participants = cast(Participation, readiness_chart_validation.payload)
-        # --- Send the work product. ---#
+        participation_blueprint = cast(
+            ParticipationBlueprint,
+            participation_validation.payload,
+        )
+        participants = Participation(
+            victim=participation_blueprint.victim,
+            attacker=participation_blueprint.attacker,
+        )
+        # --- SEND_THE_WORK_PRODUCT. ---#
         envelope = RootEncounterEnvelope(
             id=id,
             participants=participants,

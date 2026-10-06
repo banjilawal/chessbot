@@ -10,11 +10,14 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Any, Optional, SupportsIndex
 
 from assurance import ModelWrapperDependency
 from domain import Encounter
-from exchange import ManeuverValidationResponseWrapper, TokenValidationResponseWrapper
+from exchange import (
+    ManeuverValidationResponseWrapper, ParticipationValidationResponseWrapper,
+    TokenValidationResponseWrapper
+)
 
 
 class EncounterWrapperDependency(ModelWrapperDependency[Encounter]):
@@ -28,29 +31,34 @@ class EncounterWrapperDependency(ModelWrapperDependency[Encounter]):
     Attributes:
         token: TokenValidationResponseWrapper
         maneuver: ManeuverValidationResponseWrapper
+        participation: ParticipationValidationResponseWrapper
 
     Provides:
 
     Super Class:
         ModelWrapperDependency
     """
-    
     _token: TokenValidationResponseWrapper
     _maneuver: ManeuverValidationResponseWrapper
+    _participation: ParticipationValidationResponseWrapper
     
     def __init__(
             self,
             token: Optional[TokenValidationResponseWrapper] | None = None,
             maneuver: Optional[ManeuverValidationResponseWrapper] | None = None,
+            participation: Optional[ParticipationValidationResponseWrapper]
+                           | None = None,
     ):
         """
         Args:
-            token: Optional[TokenValidatorClient]
-            maneuver: Optional[ManeuverValidatorClient]
+            token: Optional[TokenValidationResponseWrapper]
+            maneuver: Optional[ManeuverValidationResponseWrapper]
+            participation: Optional[ParticipationValidationResponseWrapper]
         """
         super().__init__()
         self._token = token or TokenValidationResponseWrapper()
         self._maneuver = maneuver or ManeuverValidationResponseWrapper()
+        self._participation = participation or ParticipationValidationResponseWrapper()
         
     @property
     def token(self) -> TokenValidationResponseWrapper:
@@ -59,3 +67,7 @@ class EncounterWrapperDependency(ModelWrapperDependency[Encounter]):
     @property
     def maneuver(self) -> ManeuverValidationResponseWrapper:
         return self._maneuver
+    
+    @property
+    def participation(self) -> ParticipationValidationResponseWrapper:
+        return self._participation

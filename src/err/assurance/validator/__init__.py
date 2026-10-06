@@ -12,6 +12,7 @@ version: 0.0.2
 # Packages
 from .model import *
 from .query import *
+from .root import *
 from .search import *
 from .struct import *
 

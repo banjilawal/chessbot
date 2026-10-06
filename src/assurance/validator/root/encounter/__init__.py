@@ -1,4 +1,4 @@
-# src/assurance/validator/validator/root/encounter/__init__.py
+# src/assurance/validator/root/encounter/__init__.py
 
 """
 Module: assurance.validator.root.encounter.__init__

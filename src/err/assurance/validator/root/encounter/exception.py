@@ -1,7 +1,7 @@
-# src/err/null/domain/model/square/square/exception.py
+# src/err/assurance/validator/root/encounter/exception.py
 
 """
-Module: err.null.domain.model.square.square.exception
+Module: err.assurance.validator.root.encounter.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import NullException
 from artifcat import MethodResultType
+from err import RootValdatorException
 
 
 __all__ = [
-    # ======================# SQUARE_STATE_NULL_ERROR #======================#
-    "SquareStateNullException",
+    # ======================# ENCOUNTER_VALIDATION_REFERENCE_GENERATOR_FAILURE #======================#
+    "RootEncounterValidatorException",
 ]
 
-# ======================# SQUARE_STATE_NULL_ERROR #======================#
-class SquareStateNullException(NullException):
+# ======================# ENCOUNTER_VALIDATION_REFERENCE_GENERATOR_FAILURE #======================#
+class RootEncounterValidatorException(RootValdatorException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required SquareState is null.
+        1.  Indicating an RootEncounterEnvelopeGenerator failed.
 
     Attributes:
         msg: Optional[str]
@@ -38,14 +38,14 @@ class SquareStateNullException(NullException):
         cls_mthd: Optional[str]
         err_code: Optional[str]
         mthd_rslt_type: Optional[MethodResultType]
-        
+            
     Provides:
 
     Super Class:
-        NullException
+        RootValidatorException
     """
-    MSG = "SquareState cannot be null."
-    ERR_CODE = "SQUARE_STATE_NULL_ERROR"
+    MSG = "RootEncounterEnvelopeGenerator failed."
+    ERR_CODE = "ENCOUNTER_VALIDATION_REFERENCE_GENERATOR_FAILURE"
     
     def __init__(
             self,
@@ -71,6 +71,7 @@ class SquareStateNullException(NullException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,

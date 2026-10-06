@@ -1,4 +1,4 @@
-# src/assurance/validator/validator/root/token/__init__.py
+# src/assurance/validator/root/token/__init__.py
 
 """
 Module: assurance.validator.root.token.__init__
