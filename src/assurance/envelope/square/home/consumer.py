@@ -12,48 +12,43 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult
-from assurance import SquareValidatorToolkit
-from domain import Formation, PublicSquare, PublicSquareBlueprint
-from err import FormationNullException, EmptyPublicSquareCarrierException, PublicSquareValidatorException
-from transit import PublicSquareCarrier
+from assurance import EnvelopeConsumer, SquareValidatorToolkit
+from domain import HomeSquare
+from err import RootSquareEnvelopeNullException
+from transit import HomeSquareCarrier, RootSquareEnvelope
 from util import LoggingLevelRouter
 
 
-class PublicSquareValidator:
+class HomeSquareEnvelopeConsumer(EnvelopeConsumer[HomeSquare]):
     """
     Role
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a SquareCarrier is safe to use.
+        1.  Assure a HomeSquare covered by a SquareEnvelope is safe.
 
     Attributes:
-        loader: SquareValidatorToolkit
+        toolkit: SquareValidatorToolkit
 
     Provides:
-        -   def execute(candidate: SquareValidationRequest) -> ValidationResult[SquareCarrier]:
+        -   def execute(
+                    envelope: RootSquareEnvelope
+            ) -> ValidationResult[HomeSquareCarrier]
 
     Super Class:
-        ModelValidator
+        EnvelopeConsumer
     """
     
-    def __init__(
-            self,
-            loader: Optional[SquareValidatorToolkit] | None = None,
-    ):
-        """
-        Args:
-            loader: Optional[SquareValidatorToolkit]
-        """
-        self._toolkit =toolkit or SquareValidatorToolkit()
+    def __init__(self, toolkit: Optional[SquareValidatorToolkit] | None = None):
+        super().__init__(toolkit=toolkit or SquareValidatorToolkit())
+    
+    @property
+    def toolkit(self) -> SquareValidatorToolkit:
+        return cast(SquareValidatorToolkit, super().toolkit)
 
     
     @LoggingLevelRouter.monitor
-    def execute(
-            self,
-            public_square_id: int,
-            validated_carrier: PublicSquareCarrier,
-    ) -> ValidationResult[PublicSquareCarrier]:
+    def execute(self, envelope: RootSquareEnvelope) -> ValidationResult[HomeSquareCarrier]:
         """
         Certify a SquareCarrier's payload is either a Square or a Blueprint 
         that is safe to use.
@@ -70,30 +65,47 @@ class PublicSquareValidator:
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
-            public_square_id: int
-            validated_carrier: PublicSquareCarrier
+            envelope: RootSquareEnvelope
         Returns:
-            ValidationResult[PublicSquareCarrier]
+            ValidationResult[HomeSquareCarrier]
         Raises:
-            PublicSquareValidatorException
+            HomeSquareEnvelopeConsumerException
         """
         method = f"{self.__class__.__name__}.execute"
         
+        priming = self.toolkit.priming_validator.execute(
+            candidate=envelope,
+            target_model=RootSquareEnvelope,
+            null_exception=RootSquareEnvelopeNullException(),
+        )
+        if priming.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                HomeSquareEnvelopeConsumerException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=HomeSquareValidatorException.MSG,
+                    err_code=HomeSquareValidatorException.ERR_CODE,
+                    ex=priming.exception,
+                )
+            )
+        valid_envelope = cast(RootSquareEnvelope, priming.payload)
+        if valid_envelope.contains.
         # Handle the case that there is no blueprint in the carrier.
         blueprint = validated_carrier.extract_blueprint()
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PublicSquareValidatorException(
+                HomeSquareEnvelopeConsumerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PublicSquareValidatorException.MSG,
-                    err_code=PublicSquareValidatorException.ERR_CODE,
-                    ex=EmptyPublicSquareCarrierException(
+                    msg=HomeSquareValidatorException.MSG,
+                    err_code=HomeSquareValidatorException.ERR_CODE,
+                    ex=EmptyHomeSquareCarrierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyPublicSquareCarrierException.MSG,
-                        err_code=EmptyPublicSquareCarrierException.ERR_CODE,
+                        msg=EmptyHomeSquareCarrierException.MSG,
+                        err_code=EmptyHomeSquareCarrierException.ERR_CODE,
                     ),
                 )
             )
@@ -106,11 +118,11 @@ class PublicSquareValidator:
         if formation_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PublicSquareValidatorException(
+                HomeSquareEnvelopeConsumerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PublicSquareValidatorException.MSG,
-                    err_code=PublicSquareValidatorException.ERR_CODE,
+                    msg=HomeSquareValidatorException.MSG,
+                    err_code=HomeSquareValidatorException.ERR_CODE,
                     ex=formation_validation.exception,
                 )
             )
@@ -125,28 +137,28 @@ class PublicSquareValidator:
         # --- Forward the appropriate work product to the caller. ---#
         # The model case
         if validated_carrier.has_model:
-            model = PublicSquare(
+            model = HomeSquare(
                 name=name,
                 board=board,
                 coord=coord,
-                id=public_square_id,
+                id=home_square_id,
                 formation=formation,
             )
             model.occupant = occupant
             model.state = state
             return ValidationResult.success(
-                PublicSquareCarrier(model=model)
+                HomeSquareCarrier(model=model)
             )
         # The blueprint case
         return ValidationResult.success(
-            PublicSquareCarrier(
-                blueprint=PublicSquareBlueprint(
+            HomeSquareCarrier(
+                blueprint=HomeSquareBlueprint(
                     name=name,
                     board=board,
                     coord=coord,
                     state=state,
                     occupant=occupant,
-                    id=public_square_id,
+                    id=home_square_id,
                     formation=formation,
                 )
             )

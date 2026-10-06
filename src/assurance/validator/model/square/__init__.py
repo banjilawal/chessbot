@@ -10,7 +10,6 @@ version: 0.0.2
 # =========== ASSURANCE.VALIDATOR.MODEL.SQUARE PACKAGE ===========#
 
 # Packages
-from .home import *
 from .public import *
 
 # Modules

@@ -37,10 +37,6 @@ class SquareCarrier(ModelCarrier[Square]):
     Super Class:
         ModelCarrier
     """
-    
-    _model: Optional[Square]
-    _blueprint: Optional[SquareBlueprint]
-    
     def __init__(
             self,
             model: Optional[Square] | None = None,
@@ -78,38 +74,10 @@ class SquareCarrier(ModelCarrier[Square]):
                 isinstance(self._blueprint, SquareBlueprint)
         )
     
-    @property
-    def size(self) -> int:
-        return len([self._model, self._blueprint])
-    
-    @property
-    def is_empty(self) -> bool:
-        return self.size == 0
-    
-    @property
-    def is_not_consistent(self) -> bool:
-        return self.size > 1
-    
-    @property
-    def is_home_square_carrier(self) -> bool:
-        return (
-                self.has_model and
-                isinstance(self._model, HomeSquare)
-        )
 
     def extract_blueprint(self) -> Optional[SquareBlueprint]:
         if self.is_empty: return None
         if self.has_blueprint: return self._blueprint
-        if self.is_home_square_carrier:
-            home_square = cast(HomeSquare, self._model)
-            return SquareBlueprint(
-                id=home_square.id,
-                name=home_square.name,
-                board=home_square.board,
-                coord=home_square.coord,
-                occupant=home_square.occupant,
-                formation=home_square.formation,
-            )
         model = cast(Square, self._model)
         return SquareBlueprint(
             id=model.id,
@@ -117,5 +85,6 @@ class SquareCarrier(ModelCarrier[Square]):
             board=model.board,
             coord=model.coord,
             occupant=model.occupant,
+            state=model.state,
         )
 

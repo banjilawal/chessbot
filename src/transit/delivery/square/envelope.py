@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from domain import Board, Coord, SquareState, Square, SquarePrimeExtract
-from transit import ProductEnvelope
+from transit import HomeSquareCarrier, ProductEnvelope
 
 
 class RootSquareEnvelope(ProductEnvelope[Square]):
@@ -41,7 +41,6 @@ class RootSquareEnvelope(ProductEnvelope[Square]):
     _board: Board
     _coord: Coord
     _state: SquareState
-    
 
     def __init__(
             self,
@@ -50,7 +49,6 @@ class RootSquareEnvelope(ProductEnvelope[Square]):
             board: Board,
             coord: Coord,
             state: SquareState,
-            deployment: SquareDeployment,
             prime_extract: SquarePrimeExtract,
     ):
         """
@@ -92,4 +90,13 @@ class RootSquareEnvelope(ProductEnvelope[Square]):
     @property
     def state(self) -> SquareState:
         return self._state
+    
+    @property
+    def for_home_square_consumer(self) -> bool:
+        return isinstance(self._prime_extract.carrier, HomeSquareCarrier)
+    
+    @property
+    def for_public_square_consumer(self) -> bool:
+        return self.for_home_square_consumer
+    
 

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import HomeSquareValidator, ModelValidator, SquareValidatorToolkit
+from assurance import HomeSquareEnvelopeConsumer, ModelValidator, SquareValidatorToolkit
 from domain import (
     Board, BoardValidationRequest, Coord, CoordValidationRequest, Square, SquareBlueprint,
     SquareState, SquareValidationRequest
@@ -279,7 +279,7 @@ class SquareValidator(ModelValidator[Square]):
         
         # --- HomeSquareCarrier has additional fields that need validation. ---#
         if isinstance(carrier, HomeSquareCarrier):
-            helper = HomeSquareValidator()
+            helper = HomeSquareEnvelopeConsumer()
             return helper.execute(home_square_id=id, validated_carrier=carrier)
         
         # --- Forward the appropriate work product to the caller. ---#

@@ -22,9 +22,7 @@ T = TypeVar("T",)
 class Validator(ABC, Generic[T]):
     """
     Role
-        - Validator
-        - Integrity Assurance
-        - Consistency Assurance
+        - Integrity, Consistency Maintenance
 
     Responsibilities:
         1.  Run integrity checks on an object or its blueprint encapsulated inside their
