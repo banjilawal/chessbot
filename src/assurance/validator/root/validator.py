@@ -1,7 +1,7 @@
-# src/assurance/validator/validator/rootgenerator.py
+# src/assurance/validator/root/validator.py
 
 """
-Module: assurance.validator.root.generator
+Module: assurance.validator.root.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,8 +13,9 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
 from artifcat import ValidationResult
-from assurance import ProductEnvelope, ValidatorToolkit
+from assurance import Loader, ValidatorToolkit
 from domain import Model
+from transit import ProductEnvelope
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Model")
@@ -22,39 +23,41 @@ T = TypeVar("T", bound="Model")
 class RootValidator(ABC, Generic[T]):
     """
     Role
-        - Integrity, Consistency Maintenance
+        -   Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Runs validation checks on fields in Token superclass.
+        1.  Runs safety checks on root (super) class properties.
+        2.  Send the ProductEnvelope containing verified super class properties
+            and the prime_extract for its client validators.
 
     Attributes:
-        loader: TokenValidatorToolkit
-        position_validator: TokenPositionValidator
+        loader: Loader[T]
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[ProductEnvelope]:
 
     Super Class:
     """
-    _loader: ValidatorToolkit[T]
+    _loader: Loader[T]
     
-    def __init__(self, loader: ValidatorToolkit[T]):
+    def __init__(self, loader: Loader[T]):
         """
         Args:
-            loader: ValidatorToolkit[T]
+            loader: Loader[T]
         """
-        self._toolkit = toolkit
+        self._loader = loader
+        
+    @property
+    def loader(self) -> Loader[T]:
+        return self._loader
         
     @property
     def toolkit(self) -> ValidatorToolkit[T]:
-        return self._toolkit
-
+        return self.loader.toolkit
+    
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(
-            self,
-            candidate: Any,
-    ) -> ValidationResult[ProductEnvelope]:
+    def execute(self, candidate: Any) -> ValidationResult[ProductEnvelope[T]]:
         pass
 
     

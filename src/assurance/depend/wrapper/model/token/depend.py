@@ -15,8 +15,8 @@ from typing import Optional
 from assurance import ModelWrapperDependency
 from domain import Token
 from exchange import (
-    CoordValidationResponseWrapper, RankValidationResponseWrapper,
-    SquareValidationResponseWrapper, TeamValidationResponseWrapper
+    RankValidationResponseWrapper, TeamValidationResponseWrapper,
+    WalkValidationResponseWrapper
 )
 
 
@@ -31,8 +31,7 @@ class TokenWrapperDependency(ModelWrapperDependency[Token]):
     Attributes:
         team: TeamValidationResponseWrapper
         rank: RankValidationResponseWrapper
-        coord: CoordValidationResponseWrapper
-        square: SquareValidationResponseWrapper
+        walk: WalkValidationResponseWrapper
         
     Provides:
 
@@ -41,28 +40,24 @@ class TokenWrapperDependency(ModelWrapperDependency[Token]):
     """
     _team: TeamValidationResponseWrapper
     _rank: RankValidationResponseWrapper
-    _coord: CoordValidationResponseWrapper
-    _square: SquareValidationResponseWrapper
+    _walk: WalkValidationResponseWrapper
     
     def __init__(
             self,
             team: Optional[TeamValidationResponseWrapper] | None = None,
             rank: Optional[RankValidationResponseWrapper] | None = None,
-            coord: Optional[CoordValidationResponseWrapper] | None = None,
-            square: Optional[SquareValidationResponseWrapper] | None = None,
+            walk: Optional[WalkValidationResponseWrapper] | None = None,
     ):
         """
         Args:
             team: Optional[TeamValidatorClient]
             rank: Optional[RankValidatorClient]
-            coord: Optional[CoordValidatorClient]
-            square: Optional[SquareValidatorClient]
+            walk: Optional[WalkValidationResponseWrapper]
         """
         super().__init__()
         self._team = team or TeamValidationResponseWrapper()
         self._rank = rank or RankValidationResponseWrapper()
-        self._coord = coord or CoordValidationResponseWrapper()
-        self._square = square or SquareValidationResponseWrapper()
+        self._walk = walk or WalkValidationResponseWrapper()
     
     @property
     def team(self) -> TeamValidationResponseWrapper:
@@ -73,9 +68,5 @@ class TokenWrapperDependency(ModelWrapperDependency[Token]):
         return self._rank
     
     @property
-    def coord(self) -> CoordValidationResponseWrapper:
-        return self._coord
-    
-    @property
-    def square(self) -> SquareValidationResponseWrapper:
-        return self._square
+    def walk(self) -> WalkValidationResponseWrapper:
+        return self._walk

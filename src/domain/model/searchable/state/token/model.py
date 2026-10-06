@@ -113,10 +113,6 @@ class Token(StateModel):
     def position(self) -> Optional[Coord]:
         return self._walk.position
     
-    @property
-    def position_chart(self) -> Walk:
-        return self._walk
-    
     @position.setter
     def position(self, other: Coord):
         position = self._walk.position

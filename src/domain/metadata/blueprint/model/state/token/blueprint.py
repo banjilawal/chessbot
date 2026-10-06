@@ -9,13 +9,13 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
+
 from typing import Generic, Optional, Type, TypeVar, cast
 
 from domain import (
-    CombatantTokenBlueprint, Coord, Formation, HomeSquare, KingTokenBlueprint, PawnTokenBlueprint, StateModelBlueprint,
-    Team,
-    Token, TokenDeployment
+    CombatantTokenBlueprint, Coord, Formation, HomeSquare,
+    KingTokenBlueprint, PawnTokenBlueprint, StateModelBlueprint,
+    Team, Token, TokenDeployment, Walk
 )
 from err import  TokenNullException
 
@@ -30,12 +30,11 @@ class TokenBlueprint(StateModelBlueprint[T], Generic[T]):
          1.  Provides values for hydrating a Token object.
 
      Attributes:
+        team: Team
+        walk: Walk
         formation: Formation
         home_square: Optional[HomeSquare]
-        positions: Optional[CoordDatabase]
         deployment: Optional[TokenDeployment]
-        previous_position: Optional[Coord]
-        position: Optional[Coord]
         id: Optional[int]
 
         domain_class: Type[Token]
@@ -47,20 +46,19 @@ class TokenBlueprint(StateModelBlueprint[T], Generic[T]):
         StateModelBlueprint
      """
     _team: Team
+    _walk: Walk
     _formation: Formation
     _deployment: TokenDeployment
     _home_square: Optional[HomeSquare]
-    _previous_position: Optional[Coord]
-    _position: Optional[Coord]
+
     
     def __init__(
             self,
             team: Team,
+            walk: Walk,
             formation: Formation,
             home_square: Optional[HomeSquare] | None = None,
             deployment: Optional[TokenDeployment] | None = None,
-            previous_position: Optional[Coord] | None = None,
-            position: Optional[Coord] | None = None,
             id: Optional[int] | None = None,
             domain_class: Optional[Type[Token]] | None = None,
             domain_null_exception: Optional[TokenNullException] | None = None,
@@ -68,11 +66,10 @@ class TokenBlueprint(StateModelBlueprint[T], Generic[T]):
         """
         Args:
             team: Team
+            walk: Walk
             formation: Formation
             home_square: Optional[HomeSquare]
             deployment: Optional[TokenDeployment]
-            previous_position: Optional[Coord]
-            position: Optional[Coord]
             id: Optional[int]
             domain_class: Optional[Type[Token]]
             domain_null_exception: Optional[TokenNullException]
@@ -83,10 +80,9 @@ class TokenBlueprint(StateModelBlueprint[T], Generic[T]):
             domain_null_exception=domain_null_exception or TokenNullException(),
         )
         self._team = team
+        self._walk = walk
         self._formation = formation
         self._home_square = home_square
-        self._previous_position = previous_position
-        self._position = position
         self._deployment = deployment or TokenDeployment.NOT_DEPLOYED
     
     @property
@@ -106,12 +102,8 @@ class TokenBlueprint(StateModelBlueprint[T], Generic[T]):
         return self._home_square
     
     @property
-    def position(self) -> Optional[Coord]:
-        return self._position
-    
-    @property
-    def previous_position(self) -> Optional[Coord]:
-        return self._previous_position
+    def walk(self) -> Walk:
+        return self._walk
     
     @property
     def is_pawn_token_blueprint(self) -> bool:

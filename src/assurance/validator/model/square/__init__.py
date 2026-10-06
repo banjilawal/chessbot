@@ -11,6 +11,7 @@ version: 0.0.2
 
 # Packages
 from .home import *
+from .public import *
 
 # Modules
 from .validator import SquareValidator
