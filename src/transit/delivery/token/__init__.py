@@ -1,4 +1,4 @@
-# src/assurance/data/data/token/__init__.py
+# src/transit/delivery/token/__init__.py
 
 """
 Module: transit.delivery.token.__init__

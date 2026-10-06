@@ -1,7 +1,7 @@
-# src/assurance/data/data/token/table.py
+# src/transit/delivery/token/envelope.py
 
 """
-Module: transit.delivery.token.table
+Module: transit.delivery.token.envelope
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -21,10 +21,10 @@ from transit import ProductEnvelope
 class RootTokenEnvelope(ProductEnvelope[Token]):
     """
     Role
-        - Data Holder
+        -   Data Transfer
 
     Responsibilities:
-        1.  Stores Token super class properties that are reference.
+        1.  Data from a RooTokenValidator forwarded to client validators.
 
     Attributes:
         id: int

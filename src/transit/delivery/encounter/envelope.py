@@ -1,7 +1,7 @@
-# src/transit/delivery/table.py
+# src/transit/delivery/encounter/envelope.py
 
 """
-Module: transit.delivery.encounter.table
+Module: transit.delivery.encounter.envelope
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -18,10 +18,10 @@ from transit import ProductEnvelope
 class RootEncounterEnvelope(ProductEnvelope[Encounter]):
     """
     Role
-        - Data Holder
+        -   Data Transfer
 
     Responsibilities:
-        1.  Stores Encounter super class properties that are reference.
+        1.  Data from a RootEncounterValidator forwarded to client validators.
 
     Attributes:
         id: int

@@ -1,4 +1,4 @@
-# src/transit/delivery/__init__.py
+# src/transit/delivery/encounter/__init__.py
 
 """
 Module: transit.delivery.encounter.__init__

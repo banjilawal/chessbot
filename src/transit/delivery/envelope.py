@@ -1,7 +1,7 @@
-# src/assurance/validator/model/encounter/common/data/table.py
+# src/transit/delivery/envelop.py
 
 """
-Module: assurance.validator.model.encounter.common.table.table
+Module: transit.delivery.envelope
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -19,15 +19,13 @@ T = TypeVar("T", bound="Model")
 class ProductEnvelope(ABC, Generic[T]):
     """
     Role
-        - Data Holder
+        -   Data Transfer
 
     Responsibilities:
-        1.  Stores a Super class's properties that a ReferenceReferenceTableGenerator
-            validates
+        1.  Data from a RootValidator forwarded to client validators.
 
     Attributes:
         prime_extract: PrimeExtract[T]
-        safe_properties: ReferenceSuperClassPropertyTable[T]
     
     Provides:
 
@@ -43,7 +41,6 @@ class ProductEnvelope(ABC, Generic[T]):
         """
         Args:
             prime_extract: PrimeExtract[T]
-            safe_properties: ReferenceSuperClassPropertyTable[T]
         """
         self._prime_extract = prime_extract
         
