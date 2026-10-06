@@ -98,6 +98,29 @@ class SquareBlueprint(StateModelBlueprint[Square]):
         return self._occupant
     
     @property
+    def consistency_exists(self) -> bool:
+        if (
+                self._state == SquareState.OCCUPIED and
+                self._occupant is None
+        ):
+            return False
+        if (
+                self._state == SquareState.EMPTY and
+                self._occupant is not None
+        ):
+            return False
+        if (
+            self._state == SquareState.EMPTY and
+            self._occupant is None
+        ):
+            return True
+        return True
+    
+    @property
+    def is_not_consistent(self) -> bool:
+        return not self.consistency_exists
+    
+    @property
     def domain_class(self) -> Type[Square]:
         return cast(Type[Square], super().domain_class)
     

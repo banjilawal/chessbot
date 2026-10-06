@@ -13,13 +13,13 @@ from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import RootEnvelopeProducer, SquareLoader, SquareValidatorToolkit
-from domain import Coord, Square, SquareState, SquarePrimeExtract, Board
+from domain import Coord, Square, SquareState, SquarePrimeExtract, Board, Token
 from err import (
     RootSquareValidatorException, SquareCarrierEmptyException,
-    SquareStateNullException
+    SquareConsistencyException, SquareStateNullException
 )
-from exchange import CoordValidationRequest, BoardValidationRequest
-from transit import RootSquareEnvelope, CoordCarrier, BoardCarrier
+from exchange import CoordValidationRequest, BoardValidationRequest, TokenValidationRequest
+from transit import RootSquareEnvelope, CoordCarrier, BoardCarrier, TokenCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -209,8 +209,45 @@ class RootSquareEnvelopeProducer(RootEnvelopeProducer[Square]):
             )
         # --- PROCESS_THE_OCCUPANT_ATTRIBUTE. ---#
         occupant = blueprint.occupant
+        
+        # Handle the case that an inconsistency between occupant and state exists.
+        if blueprint.is_not_consistent:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                RootSquareValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=RootSquareValidatorException.MSG,
+                    err_code=RootSquareValidatorException.ERR_CODE,
+                    ex=SquareConsistencyException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=SquareConsistencyException.MSG,
+                        err_code=SquareConsistencyException.ERR_CODE,
+                    )
+                )
+            )
         if occupant is not None:
-            occupant_validation = self.toolkit.wrapper.token.e
+            occupant_validation = self.toolkit.wrapper.token.extract_model(
+                request=TokenValidationRequest(
+                    item=TokenCarrier(model=occupant),
+                    id=IdFactory.next_id(class_name="TokenValidationRequest")
+                )
+            )
+            # Handle the case that the existing occupant is not safe.
+            if occupant_validation.is_failure:
+                # Send the exception chain on failure.
+                return ValidationResult.failure(
+                    RootSquareValidatorException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=RootSquareValidatorException.MSG,
+                        err_code=RootSquareValidatorException.ERR_CODE,
+                        ex=occupant_validation.exception,
+                    )
+                )
+            # Otherwise update the occupant temp variable.
+            occupant = cast(Token, occupant_validation.payload)
         
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
         id = cast(int, id_validation.payload)
@@ -226,6 +263,7 @@ class RootSquareEnvelopeProducer(RootEnvelopeProducer[Square]):
             board=board,
             name=name,
             state=state,
+            occupant=occupant,
             prime_extract=prime_extract,
         )
         return ValidationResult.success(envelope)

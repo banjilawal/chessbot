@@ -104,6 +104,29 @@ class Square(StateModel):
     def occupant(self, token: Optional[Token]):
         self._occupant = token
     
+    @property
+    def consistency_exists(self) -> bool:
+        if (
+                self._state == SquareState.OCCUPIED and
+                self._occupant is None
+        ):
+            return False
+        if (
+                self._state == SquareState.EMPTY and
+                self._occupant is not None
+        ):
+            return False
+        if (
+                self._state == SquareState.EMPTY and
+                self._occupant is None
+        ):
+            return True
+        return True
+    
+    @property
+    def is_no_consistent(self) -> bool:
+        return not self.consistency_exists
+    
     def __eq__(self, other: object) -> bool:
         if other is self: return True
         if other is None: return False
