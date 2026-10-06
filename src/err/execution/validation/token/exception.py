@@ -16,17 +16,17 @@ from err import ValidationRouteException
 
 __all__ = [
     # ======================# TOKEN_VALIDATION_ROUTE #======================#
-    "TokenValidationRouteException",
+    "TokenEnvelopeRouterException",
 ]
 
 # ======================# TOKEN_VALIDATION_ROUTE #======================#
-class TokenValidationRouteException(ValidationRouteException):
+class TokenEnvelopeRouterException(ValidationRouteException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Token validation routes is missing.
+        1.  Indicating that one of Token validation routes is missing.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class TokenValidationRouteException(ValidationRouteException):
     Super Class:
         ValidationRouteException
     """
-    MSG = "One of Token validation routes is missing."
+    MSG = "One of Token validation paths is missing."
     ERR_CODE = "TOKEN_VALIDATION_ROUTE"
     
     def __init__(
@@ -58,18 +58,18 @@ class TokenValidationRouteException(ValidationRouteException):
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-        Args:
-            msg: Optional[str]
-            var: Optional[str]
-            val: Optional[Any]
+        args:
+            Msg: Optional[str]
+            Var: Optional[str]
+            val: Optional[any]
             ex: Optional[Exception]
-            cls_name: Optional[str]
+            cls_name: Optional[Str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        mthd_rslt_type = mthd_rslt or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,

@@ -1,7 +1,7 @@
-# src/err/route/validation/hostage/exception.py
+# src/err/route/validation/account/exception.py
 
 """
-Module: err.route.validation.hostage.exception
+Module: err.route.validation.account.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -15,18 +15,18 @@ from err import ValidationRouteException
 
 
 __all__ = [
-    # ======================# HOSTAGE_VALIDATION_ROUTE #======================#
-    "HostageValidationRouteException",
+    # ======================# ACCOUNT_VALIDATION_ROUTE #======================#
+    "AccountEnvelopeRouterException",
 ]
 
-# ======================# HOSTAGE_VALIDATION_ROUTE #======================#
-class HostageValidationRouteException(ValidationRouteException):
+# ======================# ACCOUNT_VALIDATION_ROUTE #======================#
+class AccountEnvelopeRouterException(ValidationRouteException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of Hostage validation routes is missing.
+        1.  Indicating that one of Account validation routes is missing.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class HostageValidationRouteException(ValidationRouteException):
     Super Class:
         ValidationRouteException
     """
-    MSG = "One of Hostage validation paths is missing."
-    ERR_CODE = "HOSTAGE_VALIDATION_ROUTE"
+    MSG = "One of Account validation paths is missing."
+    ERR_CODE = "ACCOUNT_VALIDATION_ROUTE"
     
     def __init__(
             self,

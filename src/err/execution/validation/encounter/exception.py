@@ -1,7 +1,7 @@
-# src/err/assurance/validator/model/encounter/kill/exception.py
+# src/err/route/validation/encounter/exception.py
 
 """
-Module: err.assurance.validator.model.encounter.kill.exception
+Module: err.route.validation.encounter.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,22 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import EncounterValidatorException
-from artifcat import MethodResultType
+from err import ValidationRouteException
 
 
 __all__ = [
-    # ======================# KILL_ENCOUNTER_VALIDATOR_FAILURE #======================#
-    "KillEncounterValidatorException",
+    # ======================# ENCOUNTER_VALIDATION_ROUTE #======================#
+    "EncounterEnvelopeRouterException",
 ]
 
-# ======================# KILL_ENCOUNTER_VALIDATOR_FAILURE #======================#
-class KillEncounterValidatorException(EncounterValidatorException):
+# ======================# ENCOUNTER_VALIDATION_ROUTE #======================#
+class EncounterEnvelopeRouterException(ValidationRouteException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a KillEncounterValidator failed.
+        1.  Indicating that one of Encounter validation routes is missing.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +41,10 @@ class KillEncounterValidatorException(EncounterValidatorException):
     Provides:
 
     Super Class:
-        EncounterValidatorException
+        ValidationRouteException
     """
-    MSG = "KillEncounterValidator failed."
-    ERR_CODE = "KILL_ENCOUNTER_VALIDATOR_FAILURE"
+    MSG = "One of Encounter validation paths is missing."
+    ERR_CODE = "ENCOUNTER_VALIDATION_ROUTE"
     
     def __init__(
             self,
@@ -71,7 +70,6 @@ class KillEncounterValidatorException(EncounterValidatorException):
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,

@@ -32,9 +32,11 @@ class RootSquareEnvelope(ProductEnvelope[Square]):
         prime_extract: SquarePrimeExtract
 
     Provides:
+        for_home_square_consumer: bool
+        for_public_square_consumer: bool
 
     Super Class:
-        ProductEnvelopeTable
+        ProductEnvelope
     """
     _id: int
     _name: str

@@ -7,7 +7,7 @@ Created: 2026-04-03
 version: 0.0.2
 """
 
-# ============= MICROSERVICE. PACKAGE ===========#
+# ============= MICROSERVICE PACKAGE ===========#
 
 # Packages
 from .arena import *

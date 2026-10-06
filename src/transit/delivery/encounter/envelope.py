@@ -12,7 +12,10 @@ from __future__ import annotations
 from typing import cast
 
 from domain import Encounter, EncounterPrimeExtract, Maneuver, Square, Participation
-from transit import ProductEnvelope
+from transit import (
+    CheckmateEncounterCarrier, EncounterWarningCarrier, KillEncounterCarrier, ProductEnvelope,
+    StalemateEncounterCarrier
+)
 
 
 class RootEncounterEnvelope(ProductEnvelope[Encounter]):
@@ -32,9 +35,13 @@ class RootEncounterEnvelope(ProductEnvelope[Encounter]):
         prime_extract: EncounterPrimeExtract
 
     Provides:
+        for_kill_encounter_consumer: bool
+        for_checkmate_encounter_consumer: bool
+        for_encounter_warning_consumer: bool
+        for_stalemate_encounter_consumer: bool
 
     Super Class:
-        ProductEnvelopeTable
+        ProductEnvelope
     """
     _id: int
     _location: Square
@@ -89,6 +96,22 @@ class RootEncounterEnvelope(ProductEnvelope[Encounter]):
     @property
     def prime_extract(self) -> EncounterPrimeExtract:
         return cast(EncounterPrimeExtract, super().prime_extract)
+    
+    @property
+    def for_kill_encounter_consumer(self) -> bool:
+        return isinstance(self._prime_extract.reference, KillEncounterCarrier)
+    
+    @property
+    def for_checkmate_encounter_consumer(self) -> bool:
+        return isinstance(self._prime_extract.reference, CheckmateEncounterCarrier)
+    
+    @property
+    def for_encounter_warning_consumer(self) -> bool:
+        return isinstance(self._prime_extract.reference, EncounterWarningCarrier)
+    
+    @property
+    def for_stalemate_encounter_consumer(self) -> bool:
+        return isinstance(self._prime_extract.reference, StalemateEncounterCarrier)
     
 
     

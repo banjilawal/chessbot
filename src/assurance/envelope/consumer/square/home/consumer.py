@@ -106,8 +106,8 @@ class HomeSquareEnvelopeConsumer(RootEnvelopeConsumer[HomeSquare]):
                 )
             )
         original_extract = safe.prime_extract
-        reference_carrier = cast(HomeSquareCarrier, original_extract.reference)
-        blueprint = reference_carrier.extract_blueprint()
+        reference = cast(HomeSquareCarrier, original_extract.reference)
+        blueprint = reference.extract_blueprint()
         
         # Handle the case that there is no blueprint in the carrier.
         if blueprint is None:
@@ -126,12 +126,13 @@ class HomeSquareEnvelopeConsumer(RootEnvelopeConsumer[HomeSquare]):
                     ),
                 )
             )
-        # Handle the case that the formation does not pass a validation check.
+        # --- PROCESS_FORMATION_ATTRIBUTE. ---#
         formation_validation = self._toolkit.priming_validator.execute(
             candidate=blueprint.formation,
             target_model=Formation,
             null_exception=FormationNullException(),
         )
+        # Handle the case that the formation does not pass a validation check.
         if formation_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -143,7 +144,7 @@ class HomeSquareEnvelopeConsumer(RootEnvelopeConsumer[HomeSquare]):
                     ex=formation_validation.exception,
                 )
             )
-        # --- Extract and cast payloads of the validation results. ---#
+        # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
         id = safe.id
         name = safe.name
         state = safe.state

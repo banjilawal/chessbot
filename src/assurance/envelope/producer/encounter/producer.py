@@ -98,8 +98,8 @@ class RootEncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        original_extract = cast(EncounterPrimeExtract, loading.payload)
-        reference = original_extract.reference
+        prime_extract = cast(EncounterPrimeExtract, loading.payload)
+        reference = prime_extract.reference
         blueprint = reference.extract_blueprint()
         
         # Handle the case that the blueprint is null
@@ -201,9 +201,9 @@ class RootEncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
         victim = cast(Token, victim_validation.payload)
         attacker_reward = cast(int, attacker_reward.payload)
         attacker_maneuver = cast(Maneuver, attacker_maneuver_validation.payload)
-        
         attacker = attacker_maneuver.traveler
         
+        # Handle the case that the victim and attacker are the same.
         if victim == attacker:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -220,6 +220,7 @@ class RootEncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
                     ),
                 )
             )
+        # Handle the case that the attacker and victim belong to the same team.
         if victim.is_friend(attacker):
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -243,7 +244,7 @@ class RootEncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
             participants=participants,
             attacker_reward=attacker_reward,
             attacker_maneuver=attacker_maneuver,
-            prime_extract=original_extract,
+            prime_extract=prime_extract,
         )
         return ValidationResult.success(envelope)
 

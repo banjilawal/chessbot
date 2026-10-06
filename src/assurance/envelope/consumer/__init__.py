@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== ASSURANCE.ENVELOPE.CONSUMER PACKAGE ===========#
 
 # Packages
+from .encounter import *
 from .square import *
 
 # Module

@@ -1,7 +1,7 @@
-# src/err/assurance/validator/model/encounter/stalemate/exception.py
+# src/err/assurance/validator/model/encounter/location/exception.py
 
 """
-Module: err.assurance.validator.model.encounter.stalemate.exception
+Module: err.assurance.validator.model.encounter.location.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,18 +16,19 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# STALEMATE_ENCOUNTER_VALIDATOR_FAILURE #======================#
-    "StalemateEncounterValidatorException",
+    # ======================# ENCOUNTER_LOCATION_MISMATCH_ERROR #======================#
+    "EncounterLocationMismatchException",
 ]
 
-# ======================# STALEMATE_ENCOUNTER_VALIDATOR_FAILURE #======================#
-class StalemateEncounterValidatorException(EncounterValidatorException):
+# ======================# ENCOUNTER_LOCATION_MISMATCH_ERROR #======================#
+class EncounterLocationMismatchException(EncounterValidatorException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a StalemateEncounterValidator failed.
+        1.  Indicating a mismatch between the Encounter location and the
+            attacker_maneuver.destination.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +45,8 @@ class StalemateEncounterValidatorException(EncounterValidatorException):
     Super Class:
         EncounterValidatorException
     """
-    MSG = "StalemateEncounterValidator failed."
-    ERR_CODE = "STALEMATE_ENCOUNTER_VALIDATOR_FAILURE"
+    MSG = "Mismatch between attacker_maneuver.destination and kill_location."
+    ERR_CODE = "ENCOUNTER_LOCATION_MISMATCH_ERROR"
     
     def __init__(
             self,

@@ -10,10 +10,7 @@ version: 0.0.2
 # ============ ERR.ASSURANCE.VALIDATOR.MODEL.ENCOUNTER PACKAGE ===========#
 
 # Packages
-from .checkmate import *
-from .kill import *
-from .stalemate import *
-from .warning import *
+from .location import *
 
 # Modules
 from .exception import EncounterValidatorException

@@ -7,7 +7,7 @@ Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.ASSURANCE.ENVELOPE.MODEL. PACKAGE ===========#
+# ============ ERR.ASSURANCE.ENVELOPE.MODEL PACKAGE ===========#
 
 # Packages
 from .account import *

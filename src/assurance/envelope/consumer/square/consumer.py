@@ -32,9 +32,7 @@ class PublicSquareEnvelopeConsumer(RootEnvelopeConsumer[Square]):
         toolkit: SquareValidatorToolkit
 
     Provides:
-        -   def execute(
-                    envelope: RootSquareEnvelope
-            ) -> ValidationResult[SquareCarrier]
+        -   def execute(envelope: RootSquareEnvelope) -> ValidationResult[SquareCarrier]
 
     Super Class:
         EnvelopeConsumer
@@ -103,7 +101,7 @@ class PublicSquareEnvelopeConsumer(RootEnvelopeConsumer[Square]):
                 )
             )
         prime_extract = safe.prime_extract
-        # --- Extract and cast payloads of the validation results. ---#
+        # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
         id = safe.id
         name = safe.name
         state = safe.state

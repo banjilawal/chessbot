@@ -1,7 +1,7 @@
-# src/err/assurance/validator/model/encounter/participant/exception.py
+# src/err/assurance/envelope/model/encounter/kill/exception.py
 
 """
-Module: err.assurance.validator.model.encounter.participant.exception
+Module: err.assurance.envelope.model.encounter.kill.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import EncounterValidatorException
+from err import EncounterEnvelopeConsumerException
 from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# PARTICIPANT_ENCOUNTER_VALIDATOR_FAILURE #======================#
-    "EncounterParticipantValidatorException",
+    # ======================# KILLING_A_KING_TOKEN_NOT_ALLOWED #======================#
+    "NonCombatantKillException",
 ]
 
-# ======================# PARTICIPANT_ENCOUNTER_VALIDATOR_FAILURE #======================#
-class EncounterParticipantValidatorException(EncounterValidatorException):
+# ======================# KILLING_A_KING_TOKEN_NOT_ALLOWED #======================#
+class NonCombatantKillException(EncounterEnvelopeConsumerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a ParticipantEncounterValidator failed.
+        1.  Indicating an attempt was made to kill a KingToken.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class EncounterParticipantValidatorException(EncounterValidatorException):
     Provides:
 
     Super Class:
-        EncounterValidatorException
+        EncounterEnvelopeConsumerException
     """
-    MSG = "ParticipantEncounterValidator failed."
-    ERR_CODE = "PARTICIPANT_ENCOUNTER_VALIDATOR_FAILURE"
+    MSG = "KingToken cannot participate in a KillEncounter."
+    ERR_CODE = "KILLING_A_KING_TOKEN_NOT_ALLOWED"
     
     def __init__(
             self,

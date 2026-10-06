@@ -38,7 +38,7 @@ class RootTokenEnvelope(ProductEnvelope[Token]):
     Provides:
 
     Super Class:
-        ProductEnvelopeTable
+        ProductEnvelope
     """
     _id: int
     _team: Team
