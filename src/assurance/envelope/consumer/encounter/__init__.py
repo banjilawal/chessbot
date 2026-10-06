@@ -12,6 +12,7 @@ version: 0.0.2
 # Packages
 from .checkmate import *
 from .kill import *
+from .warning import *
 
 # Module
 from .consumer import EncounterEnvelopeConsumer

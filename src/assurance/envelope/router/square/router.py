@@ -28,12 +28,13 @@ class SquareEnvelopeRouter(EnvelopeRouter[Square]):
         - Router
 
     Responsibilities:
-        1.  Route a RootSquareEnvelope to its appropriate Consumer by the SquareCarrier type.
+        1.  Route a RootSquareEnvelope to its appropriate Consumer
+            by Carrier type.
 
     Attributes:
         toolkit: SquareValidatorToolkit
-        home: HomeSquareEnvelopeConsumer
-        public: PublicSquareEnvelopeConsumer
+        home_consumer: HomeSquareEnvelopeConsumer
+        public_consumer: PublicSquareEnvelopeConsumer
 
     Provides:
         -   def execute(envelope: RootSquareEnvelope) -> ValidationResult[SquareCarrier]
@@ -70,8 +71,8 @@ class SquareEnvelopeRouter(EnvelopeRouter[Square]):
         Assure a candidate is a safe SquareCarrier.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if any of the following
-                occur:
+            1.  Send an exception chain in the ValidationResult if any of
+                the following occur:
                     -   The router cannot be primed.
                     -   The endpoint cannot consume the envelope.
                     -   No consumption route exists
@@ -103,14 +104,18 @@ class SquareEnvelopeRouter(EnvelopeRouter[Square]):
                 )
             )
         # Otherwise get the payload.
-        safe_envelope = cast(RootSquareEnvelope, priming.payload)
+        safe = cast(RootSquareEnvelope, priming.payload)
         
         # --- Route to the appropriate consumer. ---#
         result = ValidationResult.failure(SquareEnvelopeRouterException())
-        if safe_envelope.for_home_square_consumer:
-            result = self._home_consumer.execute(envelope=safe_envelope)
-        else:
-            result = self._public_consumer.execute(envelope=safe_envelope)
+        
+        # Route to home_square_validation consumers.
+        if safe.for_home_square_consumer:
+            result = self._home_consumer.execute(envelope=safe)
+        # Route all other square_validation consumers.
+        if safe.for_public_square_consumer:
+            result = self._public_consumer.execute(envelope=safe)
+            
         # Handle the case that the envelope is not consumed.
         if result.is_failure:
             # Send the exception chain on failure.
