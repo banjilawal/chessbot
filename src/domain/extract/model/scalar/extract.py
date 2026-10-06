@@ -36,14 +36,14 @@ class ScalarPrimeExtract(ModelPrimeExtract[Scalar]):
     def __init__(
             self,
             reference: ScalarCarrier,
-            safe_blueprint: Optional[ScalarBlueprint] | None = None,
+            blueprint: Optional[ScalarBlueprint] | None = None,
     ):
         """
         Args:
             reference: EScalarCarrier
-            safe_blueprint: Optional[Blueprint[Scalar]]
+            blueprint: Optional[Blueprint[Scalar]]
         """
-        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
+        super().__init__(reference=reference, blueprint=blueprint)
         
     @property
     def reference(self) -> ScalarCarrier:

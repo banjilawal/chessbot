@@ -38,14 +38,14 @@ class ModelPrimeExtract(PrimeExtract[T], ABC, Generic[T]):
     def __init__(
             self,
             reference: ModelCarrier[T],
-            safe_blueprint: Optional[ModelBlueprint[T]] | None = None,
+            blueprint: Optional[ModelBlueprint[T]] | None = None,
     ):
         """
         Args:
             reference: EntityCarrier[T]
-            safe_blueprint: Optional[Blueprint[T]]
+            blueprint: Optional[Blueprint[T]]
         """
-        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
+        super().__init__(reference=reference, blueprint=blueprint)
         
     @property
     def reference(self) -> ModelCarrier[T]:

@@ -36,14 +36,14 @@ class HumanAccountPrimeExtract(AccountPrimeExtract[HumanAccount]):
     def __init__(
             self,
             reference: HumanAccountCarrier,
-            safe_blueprint: Optional[HumanAccountBlueprint] | None = None,
+            blueprint: Optional[HumanAccountBlueprint] | None = None,
     ):
         """
         Args:
             reference: HumanAccountCarrier
-            safe_blueprint: Optional[HumanAccountBlueprint]
+            blueprint: Optional[HumanAccountBlueprint]
         """
-        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
+        super().__init__(reference=reference, blueprint=blueprint)
         
     @property
     def reference(self) -> HumanAccountCarrier:

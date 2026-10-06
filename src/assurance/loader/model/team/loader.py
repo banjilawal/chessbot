@@ -86,12 +86,12 @@ class TeamLoader(ModelLoader[Team]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is null or the rong type.
-        priming_result = self.toolkit.priming_validator.execute(
+        priming = self.toolkit.priming_validator.execute(
             candidate=candidate,
             target_model=TeamValidationRequest,
             null_exception=TeamValidationRequestNullException(),
         )
-        if priming_result.is_failure:
+        if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TeamLoaderException(
@@ -99,11 +99,11 @@ class TeamLoader(ModelLoader[Team]):
                     cls_name=self.__class__.__name__,
                     msg=TeamLoaderException.MSG,
                     err_code=TeamLoaderException.ERR_CODE,
-                    ex=priming_result.exception,
+                    ex=priming.exception,
                 )
             )
-        # --- Cast priming_result to request for additional tests. ---#
-        request = cast(Type[TeamValidationRequest], priming_result.payload)
+        # --- Cast priming to request for additional tests. ---#
+        request = cast(Type[TeamValidationRequest], priming.payload)
         
         # Handle the case that request.item is the wrong carrier type.
         carrier_validation = self.toolkit.priming_validator.execute(
@@ -144,5 +144,5 @@ class TeamLoader(ModelLoader[Team]):
                 )
             )
         # --- Send the work product. ---#
-        extract = TeamPrimeExtract(reference=carrier, safe_blueprint=blueprint)
+        extract = TeamPrimeExtract(reference=carrier, blueprint=blueprint)
         return ValidationResult.success(extract)

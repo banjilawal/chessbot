@@ -25,7 +25,7 @@ class ArenaPlayerBinderValidatorException(BinderValidatorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a ArenaPlayerBinder validator failed.
+        1.  Indicating assurance by a ArenaPlayerBinderValidator failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class ArenaPlayerBinderValidatorException(BinderValidatorException):
     Super Class:
         BinderValidatorException
     """
-    MSG = "ArenaPlayerBinder Validator failed."
+    MSG = "ArenaPlayerBinderValidator failed."
     ERR_CODE = "ARENA_PLAYER_BINDER_VALIDATOR_FAILURE"
     
     def __init__(

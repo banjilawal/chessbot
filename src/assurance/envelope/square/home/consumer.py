@@ -13,9 +13,10 @@ from typing import Optional, cast
 
 from artifcat import ValidationResult
 from assurance import EnvelopeConsumer, SquareValidatorToolkit
-from domain import Formation, HomeSquare, SquarePrimeExtract
+from domain import Formation, HomeSquare, HomeSquareBlueprint, SquarePrimeExtract
 from err import (
-    FormationNullException, HomeSquareEnvelopeConsumerException, RootSquareEnvelopeNullException,
+    EmptyHomeSquareCarrierException, FormationNullException, HomeSquareEnvelopeConsumerException,
+    RootSquareEnvelopeNullException,
     SquarePrimeExtractNullException
 )
 from transit import HomeSquareCarrier, RootSquareEnvelope
@@ -92,8 +93,8 @@ class HomeSquareEnvelopeConsumer(EnvelopeConsumer[HomeSquare]):
                     ex=priming.exception,
                 )
             )
-        valid_envelope = cast(RootSquareEnvelope, priming.payload)
-        if not valid_envelope.for_home_square_consumer:
+        safe = cast(RootSquareEnvelope, priming.payload)
+        if not safe.for_home_square_consumer:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 HomeSquareEnvelopeConsumerException(
@@ -104,12 +105,11 @@ class HomeSquareEnvelopeConsumer(EnvelopeConsumer[HomeSquare]):
                     ex=priming.exception,
                 )
             )
-        prime_extract = valid_envelope.prime_extract
+        prime_extract = safe.prime_extract
         carrier = cast(HomeSquareCarrier, prime_extract.reference)
         blueprint = carrier.extract_blueprint()
         
         # Handle the case that there is no blueprint in the carrier.
-        blueprint = validated_carrier.extract_blueprint()
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -144,39 +144,39 @@ class HomeSquareEnvelopeConsumer(EnvelopeConsumer[HomeSquare]):
                 )
             )
         # --- Extract and cast payloads of the validation results. ---#
-        name = blueprint.name
-        state = blueprint.state
-        board = blueprint.board
-        coord = blueprint.coord
-        occupant = blueprint.occupant
+        id = safe.id
+        name = safe.name
+        state = safe.state
+        board = safe.board
+        coord = safe.coord
+        occupant = safe.occupant
         formation = cast(Formation, formation_validation.payload)
         
         # --- Forward the appropriate work product to the caller. ---#
         # The model case
-        if validated_carrier.has_model:
+        if prime_extract.recipient_wants_model:
             model = HomeSquare(
+                id=id,
                 name=name,
                 board=board,
                 coord=coord,
-                id=home_square_id,
                 formation=formation,
             )
-            model.occupant = occupant
-            model.state = state
+            model.occupant = safe.occupant
+            model.state = safe.state
             return ValidationResult.success(
                 HomeSquareCarrier(model=model)
             )
         # The blueprint case
-        return ValidationResult.success(
-            HomeSquareCarrier(
-                blueprint=HomeSquareBlueprint(
-                    name=name,
-                    board=board,
-                    coord=coord,
-                    state=state,
-                    occupant=occupant,
-                    id=home_square_id,
-                    formation=formation,
-                )
+        payload = HomeSquareCarrier(
+            blueprint=HomeSquareBlueprint(
+                id=id,
+                name=name,
+                board=board,
+                coord=coord,
+                state=state,
+                occupant=occupant,
+                formation=formation,
             )
         )
+        return ValidationResult.success(payload)

@@ -36,14 +36,14 @@ class TeamPrimeExtract(ModelPrimeExtract[Team]):
     def __init__(
             self,
             reference: TeamCarrier,
-            safe_blueprint: Optional[TeamBlueprint] | None = None,
+            blueprint: Optional[TeamBlueprint] | None = None,
     ):
         """
         Args:
             reference: TeamCarrier
-            safe_blueprint: Optional[Blueprint[Team]]
+            blueprint: Optional[Blueprint[Team]]
         """
-        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
+        super().__init__(reference=reference, blueprint=blueprint)
         
     @property
     def reference(self) -> TeamCarrier:

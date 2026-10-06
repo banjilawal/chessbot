@@ -86,12 +86,12 @@ class BoardLoader(ModelLoader[Board]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is null or the rong type.
-        priming_result = self.toolkit.priming_validator.execute(
+        priming = self.toolkit.priming_validator.execute(
             candidate=candidate,
             target_model=BoardValidationRequest,
             null_exception=BoardValidationRequestNullException(),
         )
-        if priming_result.is_failure:
+        if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 BoardLoaderException(
@@ -99,11 +99,11 @@ class BoardLoader(ModelLoader[Board]):
                     cls_name=self.__class__.__name__,
                     msg=BoardLoaderException.MSG,
                     err_code=BoardLoaderException.ERR_CODE,
-                    ex=priming_result.exception,
+                    ex=priming.exception,
                 )
             )
-        # --- Cast priming_result to request for additional tests. ---#
-        request = cast(Type[BoardValidationRequest], priming_result.payload)
+        # --- Cast priming to request for additional tests. ---#
+        request = cast(Type[BoardValidationRequest], priming.payload)
         
         # Handle the case that request.item is the wrong carrier type.
         carrier_validation = self.toolkit.priming_validator.execute(
@@ -144,5 +144,5 @@ class BoardLoader(ModelLoader[Board]):
                 )
             )
         # --- Send the work product. ---#
-        extract = BoardPrimeExtract(reference=carrier, safe_blueprint=blueprint)
+        extract = BoardPrimeExtract(reference=carrier, blueprint=blueprint)
         return ValidationResult.success(extract)

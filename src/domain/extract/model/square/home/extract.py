@@ -36,14 +36,14 @@ class HomeSquarePrimeExtract(ModelPrimeExtract[HomeSquare]):
     def __init__(
             self,
             reference: HomeSquareCarrier,
-            safe_blueprint: Optional[HomeSquareBlueprint] | None = None,
+            blueprint: Optional[HomeSquareBlueprint] | None = None,
     ):
         """
         Args:
             reference: HomeSquareCarrier
-            safe_blueprint: Optional[HomeSquareBlueprint]
+            blueprint: Optional[HomeSquareBlueprint]
         """
-        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
+        super().__init__(reference=reference, blueprint=blueprint)
         
     @property
     def reference(self) -> HomeSquareCarrier:

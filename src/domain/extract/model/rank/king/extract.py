@@ -36,14 +36,14 @@ class KingPrimeExtract(RankPrimeExtract[King]):
     def __init__(
             self,
             reference: KingCarrier,
-            safe_blueprint: Optional[KingBlueprint] | None = None,
+            blueprint: Optional[KingBlueprint] | None = None,
     ):
         """
         Args:
             reference: KingCarrier
-            safe_blueprint: Optional[KingBlueprint]
+            blueprint: Optional[KingBlueprint]
         """
-        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
+        super().__init__(reference=reference, blueprint=blueprint)
         
     @property
     def reference(self) -> KingCarrier:

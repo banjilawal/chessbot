@@ -36,14 +36,14 @@ class StalemateEncounterPrimeExtract(EncounterPrimeExtract[StalemateEncounter]):
     def __init__(
             self,
             reference: StalemateEncounterCarrier,
-            safe_blueprint: Optional[StalemateEncounterBlueprint] | None = None,
+            blueprint: Optional[StalemateEncounterBlueprint] | None = None,
     ):
         """
         Args:
             reference: StalemateEncounterCarrier
-            safe_blueprint: Optional[StalemateEncounterBlueprint]
+            blueprint: Optional[StalemateEncounterBlueprint]
         """
-        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
+        super().__init__(reference=reference, blueprint=blueprint)
         
     @property
     def reference(self) -> StalemateEncounterCarrier:

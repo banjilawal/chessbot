@@ -36,14 +36,14 @@ class GamePrimeExtract(ModelPrimeExtract[Game]):
     def __init__(
             self,
             reference: GameCarrier,
-            safe_blueprint: Optional[GameBlueprint] | None = None,
+            blueprint: Optional[GameBlueprint] | None = None,
     ):
         """
         Args:
             reference: GameCarrier
-            safe_blueprint: Optional[Blueprint[Game]]
+            blueprint: Optional[Blueprint[Game]]
         """
-        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
+        super().__init__(reference=reference, blueprint=blueprint)
         
     @property
     def reference(self) -> GameCarrier:

@@ -37,14 +37,14 @@ class NodePrimeExtract(StructPrimeExtract[T], Generic[T]):
     def __init__(
             self,
             reference: NodeCarrier[T],
-            safe_blueprint: Optional[NodeBlueprint[T]] | None = None,
+            blueprint: Optional[NodeBlueprint[T]] | None = None,
     ):
         """
         Args:
             reference: NodeCarrier[T]
-            safe_blueprint: Optional[NodeBlueprint[T]]
+            blueprint: Optional[NodeBlueprint[T]]
         """
-        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
+        super().__init__(reference=reference, blueprint=blueprint)
         
     @property
     def reference(self) -> NodeCarrier[T]:

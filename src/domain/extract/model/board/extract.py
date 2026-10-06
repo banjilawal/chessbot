@@ -36,14 +36,14 @@ class BoardPrimeExtract(ModelPrimeExtract[Board]):
     def __init__(
             self,
             reference: BoardCarrier,
-            safe_blueprint: Optional[BoardBlueprint] | None = None,
+            blueprint: Optional[BoardBlueprint] | None = None,
     ):
         """
         Args:
             reference: BoardCarrier
-            safe_blueprint: Optional[Blueprint[Board]]
+            blueprint: Optional[Blueprint[Board]]
         """
-        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
+        super().__init__(reference=reference, blueprint=blueprint)
         
     @property
     def reference(self) -> BoardCarrier:

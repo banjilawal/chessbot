@@ -37,14 +37,14 @@ class AccountPrimeExtract(ModelPrimeExtract[T], Generic[T]):
     def __init__(
             self,
             reference: AccountCarrier[T],
-            safe_blueprint: Optional[AccountBlueprint[T]] | None = None,
+            blueprint: Optional[AccountBlueprint[T]] | None = None,
     ):
         """
         Args:
             reference: AccountCarrier[T]
-            safe_blueprint: Optional[AccountBlueprint[T]]
+            blueprint: Optional[AccountBlueprint[T]]
         """
-        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
+        super().__init__(reference=reference, blueprint=blueprint)
         
     @property
     def reference(self) -> AccountCarrier[T]:

@@ -38,14 +38,14 @@ class EncounterPrimeExtract(ModelPrimeExtract[T], Generic[T]):
     def __init__(
             self,
             reference: EncounterCarrier[T],
-            safe_blueprint: Optional[EncounterBlueprint] | None = None,
+            blueprint: Optional[EncounterBlueprint] | None = None,
     ):
         """
         Args:
             reference: EncounterCarrier[T]
-            safe_blueprint: Optional[EncounterBlueprint[T]]
+            blueprint: Optional[EncounterBlueprint[T]]
         """
-        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
+        super().__init__(reference=reference, blueprint=blueprint)
         
     @property
     def reference(self) -> EncounterCarrier[T]:

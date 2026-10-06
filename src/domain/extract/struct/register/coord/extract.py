@@ -36,14 +36,14 @@ class CoordRegisterPrimeExtract(RegisterPrimeExtract[CoordRegister]):
     def __init__(
             self,
             reference: CoordRegisterCarrier,
-            safe_blueprint: Optional[CoordRegisterBlueprint] | None = None,
+            blueprint: Optional[CoordRegisterBlueprint] | None = None,
     ):
         """
         Args:
             reference: CoordRegisterCarrier
-            safe_blueprint: Optional[CoordRegisterBlueprint]
+            blueprint: Optional[CoordRegisterBlueprint]
         """
-        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
+        super().__init__(reference=reference, blueprint=blueprint)
         
     @property
     def reference(self) -> CoordRegisterCarrier:

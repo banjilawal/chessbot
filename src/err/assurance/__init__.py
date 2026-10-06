@@ -10,6 +10,7 @@ version: 0.0.2
 # ============ ERR.ASSURANCE PACKAGE ===========#
 
 # Packages
+from .envelope import *
 from .loader import *
 from .primitve import *
 from .validator import *

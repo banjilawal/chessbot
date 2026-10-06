@@ -86,12 +86,12 @@ class AccountLoader(ModelLoader[Account]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is null or the rong type.
-        priming_result = self.toolkit.priming_validator.execute(
+        priming = self.toolkit.priming_validator.execute(
             candidate=candidate,
             target_model=AccountValidationRequest,
             null_exception=AccountValidationRequestNullException(),
         )
-        if priming_result.is_failure:
+        if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 AccountLoaderException(
@@ -99,11 +99,11 @@ class AccountLoader(ModelLoader[Account]):
                     cls_name=self.__class__.__name__,
                     msg=AccountLoaderException.MSG,
                     err_code=AccountLoaderException.ERR_CODE,
-                    ex=priming_result.exception,
+                    ex=priming.exception,
                 )
             )
-        # --- Cast priming_result to request for additional tests. ---#
-        request = cast(Type[AccountValidationRequest], priming_result.payload)
+        # --- Cast priming to request for additional tests. ---#
+        request = cast(Type[AccountValidationRequest], priming.payload)
         
         # Handle the case that request.item is the wrong carrier type.
         carrier_validation = self.toolkit.priming_validator.execute(
@@ -144,5 +144,5 @@ class AccountLoader(ModelLoader[Account]):
                 )
             )
         # --- Send the work product. ---#
-        extract = AccountPrimeExtract(reference=carrier, safe_blueprint=blueprint)
+        extract = AccountPrimeExtract(reference=carrier, blueprint=blueprint)
         return ValidationResult.success(extract)

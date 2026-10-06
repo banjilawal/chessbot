@@ -26,7 +26,7 @@ class ValidatorException(AssuranceException):
         - Failure Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a Validator failed.
+        1.  Indicating assurance by aValidator failed.
 
     Attributes:
         msg: str

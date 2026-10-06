@@ -86,12 +86,12 @@ class PathLoader(ModelLoader[Path]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is null or the rong type.
-        priming_result = self.toolkit.priming_validator.execute(
+        priming = self.toolkit.priming_validator.execute(
             candidate=candidate,
             target_model=PathValidationRequest,
             null_exception=PathValidationRequestNullException(),
         )
-        if priming_result.is_failure:
+        if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 PathLoaderException(
@@ -99,11 +99,11 @@ class PathLoader(ModelLoader[Path]):
                     cls_name=self.__class__.__name__,
                     msg=PathLoaderException.MSG,
                     err_code=PathLoaderException.ERR_CODE,
-                    ex=priming_result.exception,
+                    ex=priming.exception,
                 )
             )
-        # --- Cast priming_result to request for additional tests. ---#
-        request = cast(Type[PathValidationRequest], priming_result.payload)
+        # --- Cast priming to request for additional tests. ---#
+        request = cast(Type[PathValidationRequest], priming.payload)
         
         # Handle the case that request.item is the wrong carrier type.
         carrier_validation = self.toolkit.priming_validator.execute(
@@ -144,5 +144,5 @@ class PathLoader(ModelLoader[Path]):
                 )
             )
         # --- Send the work product. ---#
-        extract = PathPrimeExtract(reference=carrier, safe_blueprint=blueprint)
+        extract = PathPrimeExtract(reference=carrier, blueprint=blueprint)
         return ValidationResult.success(extract)

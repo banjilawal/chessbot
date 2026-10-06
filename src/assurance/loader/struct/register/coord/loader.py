@@ -87,12 +87,12 @@ class CoordRegisterLoader(RegisterLoader[CoordRegister]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is null or the rong type.
-        priming_result = self.toolkit.priming_validator.execute(
+        priming = self.toolkit.priming_validator.execute(
             candidate=candidate,
             target_model=CoordRegisterValidationRequest,
             null_exception=CoordRegisterValidationRequestNullException(),
         )
-        if priming_result.is_failure:
+        if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 CoordRegisterLoaderException(
@@ -100,11 +100,11 @@ class CoordRegisterLoader(RegisterLoader[CoordRegister]):
                     cls_name=self.__class__.__name__,
                     msg=CoordRegisterLoaderException.MSG,
                     err_code=CoordRegisterLoaderException.ERR_CODE,
-                    ex=priming_result.exception,
+                    ex=priming.exception,
                 )
             )
-        # --- Cast priming_result to request for additional tests. ---#
-        request = cast(Type[CoordRegisterValidationRequest], priming_result.payload)
+        # --- Cast priming to request for additional tests. ---#
+        request = cast(Type[CoordRegisterValidationRequest], priming.payload)
         
         # Handle the case that request.item is the wrong carrier type.
         carrier_validation = self.toolkit.priming_validator.execute(
@@ -145,5 +145,5 @@ class CoordRegisterLoader(RegisterLoader[CoordRegister]):
                 )
             )
         # --- Send the work product. ---#
-        extract = CoordRegisterPrimeExtract(reference=carrier, safe_blueprint=blueprint)
+        extract = CoordRegisterPrimeExtract(reference=carrier, blueprint=blueprint)
         return ValidationResult.success(extract)

@@ -9,9 +9,9 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import cast
+from typing import Optional, cast
 
-from domain import Board, Coord, SquareState, Square, SquarePrimeExtract
+from domain import Board, Coord, SquareState, Square, SquarePrimeExtract, Token
 from transit import HomeSquareCarrier, ProductEnvelope
 
 
@@ -41,6 +41,7 @@ class RootSquareEnvelope(ProductEnvelope[Square]):
     _board: Board
     _coord: Coord
     _state: SquareState
+    _occupant: Optional[Token]
 
     def __init__(
             self,
@@ -50,6 +51,8 @@ class RootSquareEnvelope(ProductEnvelope[Square]):
             coord: Coord,
             state: SquareState,
             prime_extract: SquarePrimeExtract,
+            occupant: Optional[Token] | None = None,
+            
     ):
         """
         Args:
@@ -58,6 +61,7 @@ class RootSquareEnvelope(ProductEnvelope[Square]):
             board: Board
             coord: Coord
             state: SquareState
+            occupant: Optional[Token]
             prime_extract: SquarePrimeExtract
         """
         super().__init__(prime_extract=prime_extract)
@@ -66,6 +70,7 @@ class RootSquareEnvelope(ProductEnvelope[Square]):
         self._board = board
         self._coord = coord
         self._state = state
+        self._occupant = occupant
     
     @property
     def prime_extract(self) -> SquarePrimeExtract:
@@ -90,6 +95,10 @@ class RootSquareEnvelope(ProductEnvelope[Square]):
     @property
     def state(self) -> SquareState:
         return self._state
+    
+    @property
+    def occupant(self) -> Optional[Token]:
+        return self._occupant
     
     @property
     def for_home_square_consumer(self) -> bool:

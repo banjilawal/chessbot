@@ -37,14 +37,14 @@ class RankPrimeExtract(ModelPrimeExtract[T], Generic[T]):
     def __init__(
             self,
             reference: RankCarrier[T],
-            safe_blueprint: Optional[RankBlueprint[T]] | None = None,
+            blueprint: Optional[RankBlueprint[T]] | None = None,
     ):
         """
         Args:
             reference: RankCarrier[T]
-            safe_blueprint: Optional[RankBlueprint[T]]
+            blueprint: Optional[RankBlueprint[T]]
         """
-        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
+        super().__init__(reference=reference, blueprint=blueprint)
         
     @property
     def reference(self) -> RankCarrier[T]:

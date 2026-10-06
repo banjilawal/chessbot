@@ -86,12 +86,12 @@ class GameLoader(ModelLoader[Game]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is null or the rong type.
-        priming_result = self.toolkit.priming_validator.execute(
+        priming = self.toolkit.priming_validator.execute(
             candidate=candidate,
             target_model=GameValidationRequest,
             null_exception=GameValidationRequestNullException(),
         )
-        if priming_result.is_failure:
+        if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 GameLoaderException(
@@ -99,11 +99,11 @@ class GameLoader(ModelLoader[Game]):
                     cls_name=self.__class__.__name__,
                     msg=GameLoaderException.MSG,
                     err_code=GameLoaderException.ERR_CODE,
-                    ex=priming_result.exception,
+                    ex=priming.exception,
                 )
             )
-        # --- Cast priming_result to request for additional tests. ---#
-        request = cast(Type[GameValidationRequest], priming_result.payload)
+        # --- Cast priming to request for additional tests. ---#
+        request = cast(Type[GameValidationRequest], priming.payload)
         
         # Handle the case that request.item is the wrong carrier type.
         carrier_validation = self.toolkit.priming_validator.execute(
@@ -144,5 +144,5 @@ class GameLoader(ModelLoader[Game]):
                 )
             )
         # --- Send the work product. ---#
-        extract = GamePrimeExtract(reference=carrier, safe_blueprint=blueprint)
+        extract = GamePrimeExtract(reference=carrier, blueprint=blueprint)
         return ValidationResult.success(extract)

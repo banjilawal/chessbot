@@ -38,14 +38,14 @@ class TokenPrimeExtract(ModelPrimeExtract[T], Generic[T]):
     def __init__(
             self,
             reference: TokenCarrier[T],
-            safe_blueprint: Optional[TokenBlueprint[T]] | None = None,
+            blueprint: Optional[TokenBlueprint[T]] | None = None,
     ):
         """
         Args:
             reference: TokenCarrier[T]
-            safe_blueprint: Optional[TokenBlueprint[T]]
+            blueprint: Optional[TokenBlueprint[T]]
         """
-        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
+        super().__init__(reference=reference, blueprint=blueprint)
     
     @property
     def reference(self) -> TokenCarrier[T]:

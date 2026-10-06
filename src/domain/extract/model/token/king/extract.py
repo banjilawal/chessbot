@@ -36,14 +36,14 @@ class KingTokenPrimeExtract(TokenPrimeExtract[KingToken]):
     def __init__(
             self,
             reference: KingTokenCarrier,
-            safe_blueprint: Optional[KingTokenBlueprint] | None = None,
+            blueprint: Optional[KingTokenBlueprint] | None = None,
     ):
         """
         Args:
             reference: KingTokenCarrier
-            safe_blueprint: Optional[KingTokenBlueprint]
+            blueprint: Optional[KingTokenBlueprint]
         """
-        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
+        super().__init__(reference=reference, blueprint=blueprint)
         
     @property
     def reference(self) -> KingTokenCarrier:

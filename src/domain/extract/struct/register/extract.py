@@ -38,14 +38,14 @@ class RegisterPrimeExtract(StructPrimeExtract[T], ABC, Generic[T]):
     def __init__(
             self,
             reference: RegisterCarrier[T],
-            safe_blueprint: Optional[RegisterBlueprint[T]] | None = None,
+            blueprint: Optional[RegisterBlueprint[T]] | None = None,
     ):
         """
         Args:
             reference: RegisterCarrier[T]
-            safe_blueprint: Optional[RegisterBlueprint[T]]
+            blueprint: Optional[RegisterBlueprint[T]]
         """
-        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
+        super().__init__(reference=reference, blueprint=blueprint)
         
     @property
     def reference(self) -> RegisterCarrier[T]:

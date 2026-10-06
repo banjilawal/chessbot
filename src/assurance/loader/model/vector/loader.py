@@ -86,12 +86,12 @@ class VectorLoader(ModelLoader[Vector]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is null or the rong type.
-        priming_result = self.toolkit.priming_validator.execute(
+        priming = self.toolkit.priming_validator.execute(
             candidate=candidate,
             target_model=VectorValidationRequest,
             null_exception=VectorValidationRequestNullException(),
         )
-        if priming_result.is_failure:
+        if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorLoaderException(
@@ -99,11 +99,11 @@ class VectorLoader(ModelLoader[Vector]):
                     cls_name=self.__class__.__name__,
                     msg=VectorLoaderException.MSG,
                     err_code=VectorLoaderException.ERR_CODE,
-                    ex=priming_result.exception,
+                    ex=priming.exception,
                 )
             )
-        # --- Cast priming_result to request for additional tests. ---#
-        request = cast(Type[VectorValidationRequest], priming_result.payload)
+        # --- Cast priming to request for additional tests. ---#
+        request = cast(Type[VectorValidationRequest], priming.payload)
         
         # Handle the case that request.item is the wrong carrier type.
         carrier_validation = self.toolkit.priming_validator.execute(
@@ -144,5 +144,5 @@ class VectorLoader(ModelLoader[Vector]):
                 )
             )
         # --- Send the work product. ---#
-        extract = VectorPrimeExtract(reference=carrier, safe_blueprint=blueprint)
+        extract = VectorPrimeExtract(reference=carrier, blueprint=blueprint)
         return ValidationResult.success(extract)

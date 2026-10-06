@@ -26,7 +26,7 @@ class BishopValidatorException(RankValidatorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a Bishop validator failed.
+        1.  Indicating assurance by a BishopValidator failed.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class BishopValidatorException(RankValidatorException):
     Super Class:
         RankValidatorException
     """
-    MSG = "Bishop Validator failed."
+    MSG = "BishopValidator failed."
     ERR_CODE = "BISHOP_VALIDATOR_FAILURE"
     
     def __init__(

@@ -36,14 +36,14 @@ class ArenaPrimeExtract(ModelPrimeExtract[Arena]):
     def __init__(
             self,
             reference: ArenaCarrier,
-            safe_blueprint: Optional[ArenaBlueprint] | None = None,
+            blueprint: Optional[ArenaBlueprint] | None = None,
     ):
         """
         Args:
             reference: ArenaCarrier
-            safe_blueprint: Optional[Blueprint[Arena]]
+            blueprint: Optional[Blueprint[Arena]]
         """
-        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
+        super().__init__(reference=reference, blueprint=blueprint)
         
     @property
     def reference(self) -> ArenaCarrier:

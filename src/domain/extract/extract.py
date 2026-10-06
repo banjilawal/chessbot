@@ -26,8 +26,8 @@ class PrimeExtract(ABC, Generic[T]):
         1.  Persist Blueprint and Carrier data for Validator.
 
     Attributes:
-        carrier: EntityCarrier[T]
-        blueprint: Blueprint[T]]
+        reference: EntityCarrier[T]
+        blueprint: Optional[Blueprint[T]]
 
     Provides:
         blueprint_exists: bool
@@ -38,33 +38,47 @@ class PrimeExtract(ABC, Generic[T]):
     Super Class:
     """
     _reference: EntityCarrier[T]
-    _safe_blueprint: Blueprint[T]
+    _blueprint: Optional[Blueprint[T]]
 
     def __init__(
             self,
             reference: EntityCarrier[T],
-            safe_blueprint: Blueprint[T],
+            blueprint: Optional[Blueprint[T]],
     ):
         """
         Args:
             reference: EntityCarrier[T]
-            safe_blueprint: Blueprint[T]]
+            blueprint: Optional[Blueprint[T]]
         """
         self._reference = reference
-        self._safe_blueprint = safe_blueprint
+        self._blueprint = blueprint
         
     @property
     def reference(self) -> EntityCarrier[T]:
         return self._reference
     
     @property
-    def blueprint(self) -> Blueprint[T]:
-        return self._safe_blueprint
+    def blueprint(self) -> Optional[Blueprint[T]]:
+        return self._blueprint
     
     @property
     def recipient_wants_model(self) -> bool:
-        return self._reference.has_model
+        return (
+                self._reference.has_model and
+                self.blueprint_does_not_exist
+        )
     
     @property
     def recipient_wants_blueprint(self) -> bool:
-        return self._reference.has_blueprint
+        return (
+                self._reference.has_blueprint and
+                self.blueprint_exists
+        )
+    
+    @property
+    def blueprint_exists(self) -> bool:
+        return self._blueprint is not None
+    
+    @property
+    def blueprint_does_not_exist(self):
+        return not self.blueprint_exists

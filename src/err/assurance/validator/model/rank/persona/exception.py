@@ -43,7 +43,7 @@ class WrongPersonaException(RankValidatorException):
     Super Class:
         RankValidatorException
     """
-    MSG = "Persona Validator failed."
+    MSG = "PersonaValidator failed."
     ERR_CODE = "WRONG_PERSONA_ERROR"
     
     def __init__(

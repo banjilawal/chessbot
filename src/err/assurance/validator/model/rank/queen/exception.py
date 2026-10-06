@@ -26,7 +26,7 @@ class QueenValidatorException(RankValidatorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a Queen validator failed.
+        1.  Indicating assurance by a QueenValidator failed.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class QueenValidatorException(RankValidatorException):
     Super Class:
         RankValidatorException
     """
-    MSG = "Queen Validator failed."
+    MSG = "QueenValidator failed."
     ERR_CODE = "QUEEN_VALIDATOR_FAILURE"
     
     def __init__(

@@ -36,14 +36,14 @@ class CheckmateEncounterPrimeExtract(EncounterPrimeExtract[CheckmateEncounter]):
     def __init__(
             self,
             reference: CheckmateEncounterCarrier,
-            safe_blueprint: Optional[CheckmateEncounterBlueprint] | None = None,
+            blueprint: Optional[CheckmateEncounterBlueprint] | None = None,
     ):
         """
         Args:
             reference: CheckmateEncounterCarrier
-            safe_blueprint: Optional[CheckmateEncounterBlueprint]
+            blueprint: Optional[CheckmateEncounterBlueprint]
         """
-        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
+        super().__init__(reference=reference, blueprint=blueprint)
         
     @property
     def reference(self) -> CheckmateEncounterCarrier:

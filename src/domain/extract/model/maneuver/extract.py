@@ -36,14 +36,14 @@ class ManeuverPrimeExtract(ModelPrimeExtract[Maneuver]):
     def __init__(
             self,
             reference: ManeuverCarrier,
-            safe_blueprint: Optional[ManeuverBlueprint] | None = None,
+            blueprint: Optional[ManeuverBlueprint] | None = None,
     ):
         """
         Args:
             reference: ManeuverCarrier
-            safe_blueprint: Optional[Blueprint[Maneuver]]
+            blueprint: Optional[Blueprint[Maneuver]]
         """
-        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
+        super().__init__(reference=reference, blueprint=blueprint)
         
     @property
     def reference(self) -> ManeuverCarrier:
