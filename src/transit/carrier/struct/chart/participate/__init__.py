@@ -1,7 +1,7 @@
 # src/transit/carrier/struct/chart/participate/__init__.py
 
 """
-Module: transit.carrier.s.tructure.chart.participate.__init__
+Module: transit.carrier..struct.chart.participate.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

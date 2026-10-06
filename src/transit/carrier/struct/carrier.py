@@ -37,8 +37,17 @@ class StructCarrier(EntityCarrier[T], ABC, Generic[T]):
         EntityCarrier
     """
     
-    def __init__(self):
-        super().__init__()
+    def __init__(
+            self,
+            model: Optional[T] | None = None,
+            blueprint: Optional[StructBlueprint[T]] | None = None,
+    ):
+        """
+        Args:
+            model: Optional[T]
+            blueprint: Optional[StructBlueprint[T]]
+        """
+        super().__init__(model=model, blueprint=blueprint)
     
     @property
     def entity(self) -> Optional[T | StructBlueprint[T]]:
