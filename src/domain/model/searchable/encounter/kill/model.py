@@ -56,7 +56,7 @@ class KillEncounter(Encounter):
         """
         super().__init__(
             id=id,
-            counter_maneuver=counter_maneuver,
+            victim=counter_maneuver,
             attacker_maneuver=attacker_maneuver,
             location=location,
             attacker_reward=attacker_reward,

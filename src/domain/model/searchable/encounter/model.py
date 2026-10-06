@@ -10,9 +10,9 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Optional
+from typing import Dict, Optional
 
-from domain import Maneuver, SearchableModel, Square, Token
+from domain import Account, Archetype, Maneuver, SearchableModel, Square, Token
 
 
 class Encounter(SearchableModel, ABC):
@@ -46,7 +46,7 @@ class Encounter(SearchableModel, ABC):
     def __init__(
             self,
             id: int,
-            counter_maneuver: Token,
+            victim: Token,
             attacker_maneuver: Maneuver,
             location: Optional[Square] | None = None,
             attacker_reward: Optional[int] | None = None,
@@ -54,16 +54,16 @@ class Encounter(SearchableModel, ABC):
         """
         Args:
             id: int
-            counter_maneuver: Token
+            victim: Token
             attacker_maneuver: Maneuver
             location: Optional[Square]
             attacker_reward: Optional[int]
         """
         self._id = id
-        self._victim = counter_maneuver
+        self._victim = victim
         self._attack_maneuver = attacker_maneuver
         self._location = location or attacker_maneuver.path.endpoints.destination
-        self._attacker_reward = attacker_reward or counter_maneuver.rank.ransom
+        self._attacker_reward = attacker_reward or victim.rank.ransom
         
     @property
     def id(self) -> int:
@@ -84,6 +84,10 @@ class Encounter(SearchableModel, ABC):
     @property
     def location(self) -> Square:
         return self._location
+    
+    @property
+    def score(self) -> Dict[str, Dict[Archetype, Account]]:
+        return {}
     
     def __eq__(self, other) -> bool:
         if other is None:

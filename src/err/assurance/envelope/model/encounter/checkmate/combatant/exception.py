@@ -1,7 +1,7 @@
-# src/err/assurance/envelope/model/encounter/kill/exception.py
+# src/err/assurance/envelope/model/encounter/checkmate/exception.py
 
 """
-Module: err.assurance.envelope.model.encounter.kill.exception
+Module: err.assurance.envelope.model.encounter.checkmate.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# KILLING_A_KING_TOKEN_NOT_ALLOWED #======================#
-    "KillKingException",
+    # ======================# CHECKMATEING_A_COMBATANT_TOKEN_NOT_ALLOWED #======================#
+    "CheckmateCombatantException",
 ]
 
-# ======================# KILLING_A_KING_TOKEN_NOT_ALLOWED #======================#
-class KillKingException(EncounterEnvelopeConsumerException):
+# ======================# CHECKMATEING_A_COMBATANT_TOKEN_NOT_ALLOWED #======================#
+class CheckmateCombatantException(EncounterEnvelopeConsumerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an attempt was made to kill a KingToken.
+        1.  Indicating an attempt was made to checkmate a CombatantToken.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class KillKingException(EncounterEnvelopeConsumerException):
     Super Class:
         EncounterEnvelopeConsumerException
     """
-    MSG = "KingToken cannot participate in a KillEncounter."
-    ERR_CODE = "KILLING_A_KING_TOKEN_NOT_ALLOWED"
+    MSG = "CombatantToken cannot participate in a CheckmateEncounter."
+    ERR_CODE = "CHECKMATEING_A_COMBATANT_TOKEN_NOT_ALLOWED"
     
     def __init__(
             self,

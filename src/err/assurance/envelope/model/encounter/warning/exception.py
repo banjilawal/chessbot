@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# ENCOUNTER_WARNING_ENCOUNTER_ENVELOPE_CONSUMER_FAILURE #======================#
-    "WarningEncounterEnvelopeConsumerException",
+    # ======================# WARNING_ENVELOPE_CONSUMER_FAILURE #======================#
+    "EncounterWarningEnvelopeConsumerException",
 ]
 
-# ======================# ENCOUNTER_WARNING_ENCOUNTER_ENVELOPE_CONSUMER_FAILURE #======================#
-class WarningEncounterEnvelopeConsumerException(EncounterEnvelopeConsumerException):
+# ======================# WARNING_ENVELOPE_CONSUMER_FAILURE #======================#
+class EncounterWarningEnvelopeConsumerException(EncounterEnvelopeConsumerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a WarningEncounterEnvelopConsumer failed.
+        1.  Indicating a EncounterWarningEnvelopConsumer failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class WarningEncounterEnvelopeConsumerException(EncounterEnvelopeConsumerExcepti
     Super Class:
         EncounterEnvelopeConsumerException
     """
-    MSG = "WarningEncounterEnvelopConsumer failed."
+    MSG = "EncounterWarningEnvelopConsumer failed."
     ERR_CODE = "WARNING_ENCOUNTER_ENVELOPE_CONSUMER_FAILURE"
     
     def __init__(

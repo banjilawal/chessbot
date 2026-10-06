@@ -10,13 +10,13 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, Optional, SupportsIndex
+from typing import Optional
 
 from assurance import ModelWrapperDependency
 from domain import Encounter
 from exchange import (
     ManeuverValidationResponseWrapper, ParticipationValidationResponseWrapper,
-    TokenValidationResponseWrapper
+    SquareValidationResponseWrapper, TokenValidationResponseWrapper
 )
 
 
@@ -30,6 +30,7 @@ class EncounterWrapperDependency(ModelWrapperDependency[Encounter]):
 
     Attributes:
         token: TokenValidationResponseWrapper
+        square: SquareValidationResponseWrapper
         maneuver: ManeuverValidationResponseWrapper
         participation: ParticipationValidationResponseWrapper
 
@@ -39,12 +40,14 @@ class EncounterWrapperDependency(ModelWrapperDependency[Encounter]):
         ModelWrapperDependency
     """
     _token: TokenValidationResponseWrapper
+    _square: SquareValidationResponseWrapper
     _maneuver: ManeuverValidationResponseWrapper
     _participation: ParticipationValidationResponseWrapper
     
     def __init__(
             self,
             token: Optional[TokenValidationResponseWrapper] | None = None,
+            square: Optional[SquareValidationResponseWrapper] | None = None,
             maneuver: Optional[ManeuverValidationResponseWrapper] | None = None,
             participation: Optional[ParticipationValidationResponseWrapper]
                            | None = None,
@@ -52,17 +55,23 @@ class EncounterWrapperDependency(ModelWrapperDependency[Encounter]):
         """
         Args:
             token: Optional[TokenValidationResponseWrapper]
+            square: Optional[SquareValidationResponseWrapper]
             maneuver: Optional[ManeuverValidationResponseWrapper]
             participation: Optional[ParticipationValidationResponseWrapper]
         """
         super().__init__()
         self._token = token or TokenValidationResponseWrapper()
+        self._square = square or SquareValidationResponseWrapper()
         self._maneuver = maneuver or ManeuverValidationResponseWrapper()
         self._participation = participation or ParticipationValidationResponseWrapper()
         
     @property
     def token(self) -> TokenValidationResponseWrapper:
         return self._token
+    
+    @property
+    def square(self) -> SquareValidationResponseWrapper:
+        return self._square
     
     @property
     def maneuver(self) -> ManeuverValidationResponseWrapper:

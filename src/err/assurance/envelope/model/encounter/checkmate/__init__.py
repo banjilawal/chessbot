@@ -10,7 +10,7 @@ version: 0.0.2
 # ============ ERR.ASSURANCE.ENVELOPE.MODEL.ENCOUNTER.CHECKMATE PACKAGE ===========#
 
 # Packages
-
+from .combatant import *
 
 # Modules
 from .exception import CheckmateEncounterEnvelopeConsumerException

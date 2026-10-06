@@ -40,7 +40,7 @@ class StalemateEncounter(Encounter):
             self,
             id: int,
             attacker_maneuver: Maneuver,
-            counter_maneuver: Maneuver,
+            victim: Maneuver,
             location: Optional[Square] | None = None,
             attacker_reward: Optional[int] | None = None,
     ):
@@ -48,13 +48,13 @@ class StalemateEncounter(Encounter):
         Args:
             id: int
             attacker_maneuver: Maneuver
-            counter_maneuver: Maneuver
+            victim: Maneuver
             location: Optional[Square]
             attacker_reward: Optional[int]
         """
         super().__init__(
             id=id,
-            counter_maneuver=counter_maneuver.traveler,
+            victim=victim.traveler,
             attacker_maneuver=attacker_maneuver,
             location=location,
             attacker_reward=attacker_reward,

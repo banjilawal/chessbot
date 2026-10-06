@@ -42,7 +42,7 @@ class CheckmateEncounter(Encounter):
     def __init__(
             self,
             id: int,
-            counter_maneuver: KingToken,
+            victim: KingToken,
             attacker_maneuver: Maneuver,
             location: Optional[Square] | None = None,
             attacker_reward: Optional[int] | None = None,
@@ -50,14 +50,14 @@ class CheckmateEncounter(Encounter):
         """
         Args:
             id: int
-            counter_maneuver: KingToken
+            victim: KingToken
             attacker_maneuver: Maneuver
             location: Optional[Square]
             attacker_reward: Optional[int]
         """
         super().__init__(
             id=id,
-            counter_maneuver=counter_maneuver,
+            victim=victim,
             attacker_maneuver=attacker_maneuver,
             location=location,
             attacker_reward=attacker_reward,
@@ -70,37 +70,6 @@ class CheckmateEncounter(Encounter):
     @property
     def victim(self) -> KingToken:
         return self.looser
-    
-    @property
-    def victor(self) -> Token:
-        return self.initiater
-    
-    @property
-    def winner(self) -> Dict[str, Dict[GameColor, Player]]:
-        
-        table: Dict[str, Dict[GameColor, Player]]
-        player = self.victor.team.owner
-        color = self._encounter.victor.victim.archetype.color
-   
-        
-        winning_team = self._encounter.victor.victim
-        winning_archetype = winning_team.archetyp
-        winner = winning_team.owner
-        archetype.
-        
-        
-        winner_archetype = winner_team.archetype
-        if winner_archety
-        
-        team_binder = self._encounter.victor.victim.board.team_binder
-        player_binder = self._encount.victim.victim.board.arena.player_binder
-        
-        winner_archetype = sel
-        
-        return {color:}
-        self.victor.victor.victim.owner
-    
-    @
 
     def __eq__(self, other) -> bool:
         if other is None:

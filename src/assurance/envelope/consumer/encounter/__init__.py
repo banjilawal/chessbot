@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== ASSURANCE.ENVELOPE.CONSUMER.ENCOUNTER PACKAGE ===========#
 
 # Packages
+from .checkmate import *
 from .kill import *
 
 # Module

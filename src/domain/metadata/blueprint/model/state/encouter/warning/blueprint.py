@@ -41,6 +41,7 @@ class EncounterWarningBlueprint(EncounterBlueprint[EncounterWarning]):
         EncounterBlueprint
      """
     _current_safe_square: Square
+    _danger_zone: Optional[Square]
     
     def __init__(
             self,
@@ -74,6 +75,7 @@ class EncounterWarningBlueprint(EncounterBlueprint[EncounterWarning]):
             domain_null_exception=domain_null_exception or EncounterWarningNullException(),
         )
         self._current_safe_square = current_safe_square
+        self._danger_zone = danger_zone
     
     @property
     def current_safe_square(self) -> Square:
@@ -86,6 +88,10 @@ class EncounterWarningBlueprint(EncounterBlueprint[EncounterWarning]):
     @property
     def victim(self) -> KingToken:
         return self.warning_recipient
+    
+    @property
+    def danger_zone(self) -> Optional[Square]:
+        return self._danger_zone
     
     @property
     def domain_class(self) -> Type[EncounterWarning]:
