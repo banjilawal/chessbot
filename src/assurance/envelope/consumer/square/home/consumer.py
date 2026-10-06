@@ -76,6 +76,7 @@ class HomeSquareEnvelopeConsumer(RootEnvelopeConsumer[HomeSquare]):
         """
         method = f"{self.__class__.__name__}.execute"
         
+        # Handle the case that the consumer cannot be primed.
         priming = self.toolkit.priming_validator.execute(
             candidate=envelope,
             target_model=RootSquareEnvelope,

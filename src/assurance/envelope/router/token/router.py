@@ -1,7 +1,7 @@
-# src/assurance/router/tokenr.py
+# src/assurance/envelope/router/tokenr.py
 
 """
-Module: assurance.router.tokenr
+Module: assurance.envelope.router.tokenr
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.2
@@ -9,11 +9,11 @@ version: 1.0.2
 
 from __future__ import annotations
 
-from assurance import ValidationIntraRouter
+from assurance import EnvelopeRouter
 from domain import Token
 
 
-class TokenValidationRouter(ValidationIntraRouter[Token]):
+class TokenValidationRouter(EnvelopeRouter[Token]):
     """
     Role
         - Router

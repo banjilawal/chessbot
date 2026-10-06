@@ -1,7 +1,7 @@
-# src/assurance/router/encounterr.py
+# src/assurance/envelope/router/encounterr.py
 
 """
-Module: assurance.router.encounterr
+Module: assurance.envelope.router.encounterr
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.2
@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult
-from assurance import EncounterValidatorToolkit, KillEncounterValidator, ValidationIntraRouter
+from assurance import EncounterValidatorToolkit, KillEncounterValidator, EnvelopeRouter
 from domain import Encounter
 from err import NullException
 from transit import EncounterCarrier, RootEncounterEnvelope
 from util import LoggingLevelRouter
 
 
-class EncounterValidationRouter(ValidationIntraRouter[Encounter]):
+class EncounterValidationRouter(EnvelopeRouter[Encounter]):
     """
     Role
         - Router
