@@ -36,9 +36,7 @@ class SquareEnvelopeRouter(EnvelopeRouter[Square]):
         public: PublicSquareEnvelopeConsumer
 
     Provides:
-        -   def execute(
-                envelope: RootSquareEnvelope
-            ) -> ValidationResult[SquareCarrier]
+        -   def execute(envelope: RootSquareEnvelope) -> ValidationResult[SquareCarrier]
 
     Super Class:
         EnvelopeRouter

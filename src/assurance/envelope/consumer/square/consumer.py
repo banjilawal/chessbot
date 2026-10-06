@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import ValidationResult
 from assurance import RootEnvelopeConsumer, SquareValidatorToolkit
 from domain import Square, SquareBlueprint
-from err import RootSquareEnvelopeNullException
+from err import PublicSquareEnvelopeConsumerException, RootSquareEnvelopeNullException
 from transit import RootSquareEnvelope, SquareCarrier
 
 from util import LoggingLevelRouter

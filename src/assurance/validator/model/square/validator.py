@@ -12,18 +12,14 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import HomeSquareEnvelopeConsumer, ModelValidator, SquareValidatorToolkit
-from domain import (
-    Board, BoardValidationRequest, Coord, CoordValidationRequest, Square, SquareBlueprint,
-    SquareState, SquareValidationRequest
+from assurance import (
+    ModelValidator, SquareEnvelopeProducer, SquareEnvelopeRouter, SquareLoader,
+    SquareValidatorToolkit
 )
-from err import (
-    BoardCarrierEmptyException, CoordCarrierEmptyException, SquareCarrierEmptyException,
-    SquareStateNullException, SquareValidationRequestNullException,
-    SquareValidatorException
-)
-from transit import BoardCarrier, CoordCarrier, HomeSquareCarrier, SquareCarrier
-from util import IdFactory, LoggingLevelRouter
+from domain import Square
+from err import SquareValidatorException
+from transit import RootSquareEnvelope, SquareCarrier
+from util import LoggingLevelRouter
 
 
 class SquareValidator(ModelValidator[Square]):
@@ -35,7 +31,9 @@ class SquareValidator(ModelValidator[Square]):
         1.  Ensure a SquareCarrier is safe to use.
 
     Attributes:
-        loader: SquareValidatorToolkit
+        loader: SquareLoader
+        envelope_router: SquareEnvelopeRouter
+        envelope_producer: SquareEnvelopeProducer
 
     Provides:
         -   def execute(candidate: SquareValidationRequest) -> ValidationResult[SquareCarrier]:
@@ -43,23 +41,34 @@ class SquareValidator(ModelValidator[Square]):
     Super Class:
         ModelValidator
     """
+    _envelope_router: SquareEnvelopeRouter
+    _envelope_producer: SquareEnvelopeProducer
+
+    
     
     def __init__(
             self,
-            loader: Optional[SquareValidatorToolkit] | None = None,
+            loader: Optional[SquareLoader] | None = None,
+            envelope_router: Optional[SquareEnvelopeRouter] | None = None,
+            envelope_producer: Optional[SquareEnvelopeProducer] | None = None,
     ):
         """
         Args:
-            loader: Optional[SquareValidatorToolkit]
+            loader: Optional[SquareLoader]
+            envelope_router: Optional[SquareEnvelopeRouter]
+            envelope_producer: Optional[SquareEnvelopeProducer]
         """
-        super().__init__(toolkit=toolkit or SquareValidatorToolkit())
+        super().__init__(loader=loader or SquareLoader())
+        self._envelope_router = envelope_router or SquareEnvelopeRouter()
+        self._envelope_producer = envelope_producer or SquareEnvelopeProducer()
+        
+    @property
+    def loader(self) -> SquareLoader:
+        return cast(SquareLoader, super().loader)
     
     @property
     def toolkit(self) -> SquareValidatorToolkit:
-        return cast(
-            SquareValidatorToolkit,
-            super().toolkit,
-        )
+        return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[SquareCarrier]:
@@ -68,16 +77,10 @@ class SquareValidator(ModelValidator[Square]):
         that is safe to use.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if any of the following
-                occur
-                    -   The request is either null or not a SquareValidatorRequest.
-                    -   The request's payload is either,
-                            null
-                            not a SquareCarrier
-                            an empty SquareCarrier.
-                    -   Either the id, board, or coord attributes are flagged unsafe.
-            2.  Otherwise, Send a Carrier with the correct type of payload in the success
-                result.
+            1.  Send an exception chain in the ValidationResult if either:
+                    -   The Producer cannot generate a RootSquareEnvelope
+                    -   A SquareCarrier could not be routed.
+            2.  Otherwise, send the success result.
         Args:
             candidate: Any
         Returns:
@@ -87,220 +90,29 @@ class SquareValidator(ModelValidator[Square]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the candidate is null or the rong type.
-        priming_result = self.toolkit.wrapper.priming_validator.execute(
-            candidate=candidate,
-            target_model=SquareValidationRequest,
-            null_exception=SquareValidationRequestNullException(),
-        )
-        if priming_result.is_failure:
-            # Send the exception chain on failure.
+        product = self._envelope_producer.execute(candidate=candidate)
+        if product.is_failure:
             return ValidationResult.failure(
                 SquareValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=SquareValidatorException.MSG,
                     err_code=SquareValidatorException.ERR_CODE,
-                    ex=priming_result.exception,
+                    ex=product.exception,
                 )
             )
-        # --- Cast priming_result into a request for additional tests. ---#
-        request = cast(SquareValidationRequest, priming_result.payload)
+        envelope = cast(RootSquareEnvelope, product.payload)
         
-        # Handle the case that request.item is the wrong carrier type.
-        carrier_validation = self.toolkit.wrapper.priming_validator.execute(
-            candidate=request.item,
-            target_model=self.toolkit.metadata.types.carrier,
-            null_exception=self.toolkit.metadata.nulls.carrier,
-        )
-        if carrier_validation.is_failure:
-            # Send the exception chain on failure.
+        routing = self._envelope_router.execute(envelope=envelope)
+        if routing.is_failure:
             return ValidationResult.failure(
                 SquareValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=SquareValidatorException.MSG,
                     err_code=SquareValidatorException.ERR_CODE,
-                    ex=carrier_validation.exception,
+                    ex=routing.exception,
                 )
             )
-        # --- Cast the carrier_validation payload for additional tests. ---#
-        carrier = cast(
-            SquareCarrier,
-            carrier_validation.payload,
-        )
-        # --- Extract the blueprint to verify the attributes. ---#
-        blueprint = carrier.extract_blueprint()
-        
-        # Handle the case that there is no blueprint.
-        if blueprint is None:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                SquareValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=SquareValidatorException.MSG,
-                    err_code=SquareValidatorException.ERR_CODE,
-                    ex=SquareCarrierEmptyException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=SquareCarrierEmptyException.MSG,
-                        err_code=SquareCarrierEmptyException.ERR_CODE,
-                    ),
-                )
-            )
-        # Handle the case that any id in the blueprint is flagged.
-        id_validation = self.toolkit.wrapper.blueprint_id_extractor.execute(
-            candidate=blueprint,
-            blueprint_owner_name=blueprint.domain_class_name,
-            blueprint_type=self.toolkit.metadata.types.blueprint,
-            blueprint_null_exception=self.toolkit.metadata.nulls.blueprint,
-        )
-        if id_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                SquareValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=SquareValidatorException.MSG,
-                    err_code=SquareValidatorException.ERR_CODE,
-                    ex=id_validation.exception,
-                )
-            )
-        # Handle the case that the name does not pass a validation check.
-        name_validation = self.toolkit.wrapper.identity_service.validate_name(
-            candidate=blueprint.name
-        )
-        if name_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                SquareValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=SquareValidatorException.MSG,
-                    err_code=SquareValidatorException.ERR_CODE,
-                    ex=name_validation.exception,
-                )
-            )
-        # Handle the case that the state is null or the wrong type.
-        state_validation = self.toolkit.wrapper.priming_validator.execute(
-            candidate=blueprint.state,
-            target_model=SquareState,
-            null_exception=SquareStateNullException(),
-        )
-        if state_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                SquareValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=SquareValidatorException.MSG,
-                    err_code=SquareValidatorException.ERR_CODE,
-                    ex=state_validation.exception,
-                )
-            )
-        # Handle the case that the board does not pass a validation check.
-        board_validation = self.toolkit.wrapper.board_validator.execute(
-            candidate=BoardValidationRequest(
-                id=IdFactory.next_id(class_name="BoardValidationRequest"),
-                item=BoardCarrier(model=blueprint.board),
-            )
-        )
-        if board_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                SquareValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=SquareValidatorException.MSG,
-                    err_code=SquareValidatorException.ERR_CODE,
-                    ex=board_validation.exception,
-                )
-            )
-        board_carrier = cast(BoardCarrier, board_validation.payload)
-        if not board_carrier.has_model:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                SquareValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=SquareValidatorException.MSG,
-                    err_code=SquareValidatorException.ERR_CODE,
-                    ex=BoardCarrierEmptyException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=BoardCarrierEmptyException.MSG,
-                        err_code=BoardCarrierEmptyException.ERR_CODE,
-                    ),
-                )
-            )
-        # Handle the case that the coord does not pass a validation check.
-        coord_validation = self.toolkit.wrapper.coord_validator.execute(
-            candidate=CoordValidationRequest(
-                id=IdFactory.next_id(class_name="CoordValidationRequest"),
-                item=CoordCarrier(model=blueprint.coord),
-            )
-        )
-        if coord_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                SquareValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=SquareValidatorException.MSG,
-                    err_code=SquareValidatorException.ERR_CODE,
-                    ex=coord_validation.exception,
-                )
-            )
-        coord_carrier = cast(CoordCarrier, coord_validation.payload)
-        if not coord_carrier.has_model:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                SquareValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=SquareValidatorException.MSG,
-                    err_code=SquareValidatorException.ERR_CODE,
-                    ex=CoordCarrierEmptyException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=CoordCarrierEmptyException.MSG,
-                        err_code=CoordCarrierEmptyException.ERR_CODE,
-                    ),
-                )
-            )
-        # --- Extract and cast payloads of the validation results. ---#
-        id = cast(int, id_validation.payload)
-        name = cast(str, name_validation.payload)
-        state = cast(SquareState, state_validation.payload)
-        board = cast(Board, board_carrier.entity)
-        coord = cast(Coord, coord_carrier.entity)
-        occupant = blueprint.occupant
-        
-        # --- HomeSquareCarrier has additional fields that need validation. ---#
-        if isinstance(carrier, HomeSquareCarrier):
-            helper = HomeSquareEnvelopeConsumer()
-            return helper.execute(home_square_id=id, validated_carrier=carrier)
-        
-        # --- Forward the appropriate work product to the caller. ---#
-        # The model case
-        if carrier.has_model:
-            model = Square(id=id, name=name, board=board, coord=coord)
-            model.occupant = occupant
-            model.state = state
-            return ValidationResult.success(
-                SquareCarrier(model=model)
-            )
-        # The blueprint case
-        return ValidationResult.success(
-            SquareCarrier(
-                blueprint=SquareBlueprint(
-                    id=id,
-                    name=name,
-                    board=board,
-                    coord=coord,
-                    state=state,
-                    occupant=occupant,
-                )
-            )
-        )
+        carrier = cast(SquareCarrier, routing.payload)
+        return ValidationResult.success(carrier)

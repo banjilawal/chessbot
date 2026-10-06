@@ -105,9 +105,9 @@ class HomeSquareEnvelopeConsumer(RootEnvelopeConsumer[HomeSquare]):
                     ex=priming.exception,
                 )
             )
-        prime_extract = safe.prime_extract
-        carrier = cast(HomeSquareCarrier, prime_extract.reference)
-        blueprint = carrier.extract_blueprint()
+        original_extract = safe.prime_extract
+        reference_carrier = cast(HomeSquareCarrier, original_extract.reference)
+        blueprint = reference_carrier.extract_blueprint()
         
         # Handle the case that there is no blueprint in the carrier.
         if blueprint is None:
@@ -154,7 +154,7 @@ class HomeSquareEnvelopeConsumer(RootEnvelopeConsumer[HomeSquare]):
         
         # --- Forward the appropriate work product to the caller. ---#
         # The model case
-        if prime_extract.recipient_wants_model:
+        if original_extract.recipient_wants_model:
             model = HomeSquare(
                 id=id,
                 name=name,

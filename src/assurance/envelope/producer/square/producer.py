@@ -19,11 +19,11 @@ from err import (
     SquareConsistencyException, SquareStateNullException
 )
 from exchange import CoordValidationRequest, BoardValidationRequest, TokenValidationRequest
-from transit import RootSquareEnvelope, CoordCarrier, BoardCarrier, TokenCarrier
+from transit import RootSquareEnvelope, CoordCarrier, BoardCarrier, SquareCarrier, TokenCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class RootSquareEnvelopeProducer(RootEnvelopeProducer[Square]):
+class SquareEnvelopeProducer(RootEnvelopeProducer[Square]):
     """
     Role
         -   Integrity, Consistency Maintenance
