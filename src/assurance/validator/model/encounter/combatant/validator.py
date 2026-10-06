@@ -173,7 +173,7 @@ class CombatantEncounterValidator:
         
         # --- Forward the appropriate work product to the caller. ---#
         # The client wants a safe CombatantEncounter.
-        if prime_extract.carrier.has_model:
+        if prime_extract.reference.has_model:
             payload = CombatantEncounter(
                 id=property_table.safe.id,
                 team=property_table.safe.victim,

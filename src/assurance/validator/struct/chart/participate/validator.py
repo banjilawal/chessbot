@@ -110,7 +110,7 @@ class ParticipationValidator(ChartValidator[Participation]):
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
         prime_extract = cast(ParticipationPrimeExtract, loading.payload)
-        carrier = prime_extract.carrier
+        carrier = prime_extract.reference
         blueprint = carrier.extract_blueprint()
         
         # Handle the case that the blueprint is null.

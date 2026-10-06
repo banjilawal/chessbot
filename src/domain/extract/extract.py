@@ -27,7 +27,7 @@ class PrimeExtract(ABC, Generic[T]):
 
     Attributes:
         carrier: EntityCarrier[T]
-        blueprint: Optional[Blueprint[T]]
+        blueprint: Blueprint[T]]
 
     Provides:
         blueprint_exists: bool
@@ -37,42 +37,34 @@ class PrimeExtract(ABC, Generic[T]):
 
     Super Class:
     """
-    _carrier: EntityCarrier[T]
-    _blueprint: Optional[Blueprint[T]]
+    _reference: EntityCarrier[T]
+    _safe_blueprint: Blueprint[T]
 
     def __init__(
             self,
-            carrier: EntityCarrier[T],
-            blueprint: Optional[Blueprint[T]] | None = None,
+            reference: EntityCarrier[T],
+            safe_blueprint: Blueprint[T],
     ):
         """
         Args:
-            carrier: EntityCarrier[T]
-            blueprint: Optional[Blueprint[T]]
+            reference: EntityCarrier[T]
+            safe_blueprint: Blueprint[T]]
         """
-        self._carrier = carrier
-        self._blueprint = blueprint
+        self._reference = reference
+        self._safe_blueprint = safe_blueprint
         
     @property
-    def carrier(self) -> EntityCarrier[T]:
-        return self._carrier
+    def reference(self) -> EntityCarrier[T]:
+        return self._reference
     
     @property
-    def blueprint(self) -> Optional[Blueprint[T]]:
-        return self._blueprint
+    def blueprint(self) -> Blueprint[T]:
+        return self._safe_blueprint
     
     @property
     def recipient_wants_model(self) -> bool:
-        return self.no_blueprint_exists and self._carrier.has_model
+        return self._reference.has_model
     
     @property
     def recipient_wants_blueprint(self) -> bool:
-        return self.blueprint_exists and self._carrier.has_blueprint
-    
-    @property
-    def blueprint_exists(self) -> bool:
-        return self._blueprint is None
-    
-    @property
-    def no_blueprint_exists(self) -> bool:
-        return not self.blueprint_exists
+        return self._reference.has_blueprint

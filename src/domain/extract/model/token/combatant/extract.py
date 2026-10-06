@@ -35,19 +35,19 @@ class CombatantTokenPrimeExtract(TokenPrimeExtract[CombatantToken]):
 
     def __init__(
             self,
-            carrier: CombatantTokenCarrier,
-            blueprint: Optional[CombatantTokenBlueprint] | None = None,
+            reference: CombatantTokenCarrier,
+            safe_blueprint: Optional[CombatantTokenBlueprint] | None = None,
     ):
         """
         Args:
-            carrier: CombatantTokenCarrier
-            blueprint: Optional[CombatantTokenBlueprint]
+            reference: CombatantTokenCarrier
+            safe_blueprint: Optional[CombatantTokenBlueprint]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint)
+        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
         
     @property
-    def carrier(self) -> CombatantTokenCarrier:
-        return cast(CombatantTokenCarrier, super().carrier)
+    def reference(self) -> CombatantTokenCarrier:
+        return cast(CombatantTokenCarrier, super().reference)
     
     @property
     def blueprint(self) -> Optional[CombatantTokenBlueprint]:

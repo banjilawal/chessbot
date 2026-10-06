@@ -37,19 +37,19 @@ class KillEncounterPrimeExtract(EncounterPrimeExtract[KillEncounter]):
 
     def __init__(
             self,
-            carrier: KillEncounterCarrier,
-            blueprint: Optional[KillEncounterBlueprint] | None = None,
+            reference: KillEncounterCarrier,
+            safe_blueprint: Optional[KillEncounterBlueprint] | None = None,
     ):
         """
         Args:
-            carrier: KillEncounterCarrier
-            blueprint: Optional[KillEncounterBlueprint[T]
+            reference: KillEncounterCarrier
+            safe_blueprint: Optional[KillEncounterBlueprint[T]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint)
+        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
         
     @property
-    def carrier(self) -> KillEncounterCarrier:
-        return cast(KillEncounterCarrier, super().carrier)
+    def reference(self) -> KillEncounterCarrier:
+        return cast(KillEncounterCarrier, super().reference)
     
     @property
     def blueprint(self) -> Optional[KillEncounterBlueprint]:

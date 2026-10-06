@@ -77,18 +77,6 @@ class HomeSquareCarrier(SquareCarrier):
                 not self.has_model and
                 isinstance(self._blueprint, SquareBlueprint)
         )
-    
-    @property
-    def size(self) -> int:
-        return len([self._model, self._blueprint])
-    
-    @property
-    def is_empty(self) -> bool:
-        return self.size == 0
-    
-    @property
-    def is_not_consistent(self) -> bool:
-        return self.size > 1
 
     def extract_blueprint(self) -> Optional[HomeSquareBlueprint]:
         if self.is_empty: return None
@@ -102,5 +90,6 @@ class HomeSquareCarrier(SquareCarrier):
             coord=model.coord,
             occupant=model.occupant,
             formation=model.formation,
+            state=model.state,
         )
 

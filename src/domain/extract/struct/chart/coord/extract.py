@@ -35,19 +35,19 @@ class WalkPrimeExtract(ChartPrimeExtract[Walk]):
 
     def __init__(
             self,
-            carrier: WalkCarrier,
-            blueprint: Optional[WalkBlueprint] | None = None,
+            reference: WalkCarrier,
+            safe_blueprint: Optional[WalkBlueprint] | None = None,
     ):
         """
         Args:
-            carrier: WalkCarrier
-            blueprint: Optional[WalkBlueprint]
+            reference: WalkCarrier
+            safe_blueprint: Optional[WalkBlueprint]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint)
+        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
         
     @property
-    def carrier(self) -> WalkCarrier:
-        return cast(WalkCarrier, super().carrier)
+    def reference(self) -> WalkCarrier:
+        return cast(WalkCarrier, super().reference)
     
     @property
     def blueprint(self) -> Optional[WalkBlueprint]:

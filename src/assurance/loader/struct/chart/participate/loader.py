@@ -146,7 +146,7 @@ class ParticipationLoader(ChartLoader[Participation]):
             )
         # --- Send the work product. ---#
         extract = ParticipationPrimeExtract(
-            carrier=carrier,
-            blueprint=blueprint,
+            reference=carrier,
+            safe_blueprint=blueprint,
         )
         return ValidationResult.success(extract)

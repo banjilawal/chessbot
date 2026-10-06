@@ -17,11 +17,11 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# HOME_SQUARE_VALIDATOR_FAILURE #======================#
-    "HomeSquareValidatorException",
+    "HomeSquareEnvelopeConsumerException",
 ]
 
 # ======================# HOME_SQUARE_VALIDATOR_FAILURE #======================#
-class HomeSquareValidatorException(SquareValidatorException):
+class HomeSquareEnvelopeConsumerException(SquareValidatorException):
     """
     Role:
         - Error Tracing

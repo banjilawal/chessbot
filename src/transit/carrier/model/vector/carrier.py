@@ -33,7 +33,6 @@ class VectorCarrier(ModelCarrier[Vector]):
     Super Class:
         ModelCarrier
     """
-    
     _model: Optional[Vector]
     _blueprint: Optional[VectorBlueprint]
     
@@ -47,14 +46,11 @@ class VectorCarrier(ModelCarrier[Vector]):
             model: Optional[Vector]
             blueprint: Optional[VectorBlueprint]
         """
-        super().__init__()
         self._model = model
         self._blueprint = blueprint
     
     @property
     def entity(self) -> Optional[Vector | VectorBlueprint]:
-        if self.is_empty:
-            return None
         if self.has_model:
             return self._model
         return self._blueprint

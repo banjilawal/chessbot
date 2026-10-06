@@ -96,7 +96,7 @@ class CoordValidator(ModelValidator[Coord]):
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
         prime_extract = cast(CoordPrimeExtract, loading.payload)
-        carrier = prime_extract.carrier
+        carrier = prime_extract.reference
         blueprint = carrier.extract_blueprint()
         
         if blueprint is None:

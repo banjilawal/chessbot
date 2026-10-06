@@ -35,19 +35,19 @@ class VectorPrimeExtract(ModelPrimeExtract[Vector]):
 
     def __init__(
             self,
-            carrier: VectorCarrier,
-            blueprint: Optional[VectorBlueprint] | None = None,
+            reference: VectorCarrier,
+            safe_blueprint: Optional[VectorBlueprint] | None = None,
     ):
         """
         Args:
-            carrier: EntityCarrier[Vector]
-            blueprint: Optional[Blueprint[Vector]]
+            reference: EntityCarrier[Vector]
+            safe_blueprint: Optional[Blueprint[Vector]]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint)
+        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
         
     @property
-    def carrier(self) -> VectorCarrier:
-        return cast(VectorCarrier, super().carrier)
+    def reference(self) -> VectorCarrier:
+        return cast(VectorCarrier, super().reference)
     
     @property
     def blueprint(self) -> Optional[VectorBlueprint]:

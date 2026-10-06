@@ -144,5 +144,5 @@ class PlayerLoader(ModelLoader[Player]):
                 )
             )
         # --- Send the work product. ---#
-        extract = PlayerPrimeExtract(carrier=carrier, blueprint=blueprint)
+        extract = PlayerPrimeExtract(reference=carrier, safe_blueprint=blueprint)
         return ValidationResult.success(extract)

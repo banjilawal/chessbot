@@ -59,7 +59,7 @@ class CheckmateEncounterTypeUnion(EncounterTypeUnion[CheckmateEncounter]):
     
     @property
     def carrier(self) -> Type[CheckmateEncounterCarrier]:
-        return cast(Type[CheckmateEncounterCarrier], super().carrier)
+        return cast(Type[CheckmateEncounterCarrier], super().reference)
     
     @property
     def blueprint(self) -> Type[CheckmateEncounterBlueprint]:

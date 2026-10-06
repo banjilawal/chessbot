@@ -144,5 +144,5 @@ class RankLoader(ModelLoader[Rank]):
                 )
             )
         # --- Send the work product. ---#
-        extract = RankPrimeExtract(carrier=carrier, blueprint=blueprint)
+        extract = RankPrimeExtract(reference=carrier, safe_blueprint=blueprint)
         return ValidationResult.success(extract)

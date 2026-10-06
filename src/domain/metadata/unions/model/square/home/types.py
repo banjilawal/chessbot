@@ -59,7 +59,7 @@ class HomeSquareTypeUnion(SquareModelTypeUnion[HomeSquare]):
     
     @property
     def carrier(self) -> Type[HomeSquareCarrier]:
-        return cast(Type[HomeSquareCarrier], super().carrier)
+        return cast(Type[HomeSquareCarrier], super().reference)
     
     @property
     def blueprint(self) -> Type[HomeSquareBlueprint]:

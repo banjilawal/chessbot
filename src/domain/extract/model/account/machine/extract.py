@@ -35,19 +35,19 @@ class MachineAccountPrimeExtract(AccountPrimeExtract[MachineAccount]):
 
     def __init__(
             self,
-            carrier: MachineAccountCarrier,
-            blueprint: Optional[MachineAccountBlueprint] | None = None,
+            reference: MachineAccountCarrier,
+            safe_blueprint: Optional[MachineAccountBlueprint] | None = None,
     ):
         """
         Args:
-            carrier: MachineAccountCarrier
-            blueprint: Optional[MachineAccountBlueprint]
+            reference: MachineAccountCarrier
+            safe_blueprint: Optional[MachineAccountBlueprint]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint)
+        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
         
     @property
-    def carrier(self) -> MachineAccountCarrier:
-        return cast(MachineAccountCarrier, super().carrier)
+    def reference(self) -> MachineAccountCarrier:
+        return cast(MachineAccountCarrier, super().reference)
     
     @property
     def blueprint(self) -> Optional[MachineAccountBlueprint]:

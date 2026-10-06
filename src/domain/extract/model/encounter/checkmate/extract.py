@@ -35,19 +35,19 @@ class CheckmateEncounterPrimeExtract(EncounterPrimeExtract[CheckmateEncounter]):
 
     def __init__(
             self,
-            carrier: CheckmateEncounterCarrier,
-            blueprint: Optional[CheckmateEncounterBlueprint] | None = None,
+            reference: CheckmateEncounterCarrier,
+            safe_blueprint: Optional[CheckmateEncounterBlueprint] | None = None,
     ):
         """
         Args:
-            carrier: CheckmateEncounterCarrier
-            blueprint: Optional[CheckmateEncounterBlueprint]
+            reference: CheckmateEncounterCarrier
+            safe_blueprint: Optional[CheckmateEncounterBlueprint]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint)
+        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
         
     @property
-    def carrier(self) -> CheckmateEncounterCarrier:
-        return cast(CheckmateEncounterCarrier, super().carrier)
+    def reference(self) -> CheckmateEncounterCarrier:
+        return cast(CheckmateEncounterCarrier, super().reference)
     
     @property
     def blueprint(self) -> Optional[CheckmateEncounterBlueprint]:

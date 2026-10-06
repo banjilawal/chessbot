@@ -13,8 +13,11 @@ from typing import Optional, cast
 
 from artifcat import ValidationResult
 from assurance import EnvelopeConsumer, SquareValidatorToolkit
-from domain import HomeSquare
-from err import RootSquareEnvelopeNullException
+from domain import Formation, HomeSquare, SquarePrimeExtract
+from err import (
+    FormationNullException, HomeSquareEnvelopeConsumerException, RootSquareEnvelopeNullException,
+    SquarePrimeExtractNullException
+)
 from transit import HomeSquareCarrier, RootSquareEnvelope
 from util import LoggingLevelRouter
 
@@ -84,13 +87,27 @@ class HomeSquareEnvelopeConsumer(EnvelopeConsumer[HomeSquare]):
                 HomeSquareEnvelopeConsumerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=HomeSquareValidatorException.MSG,
-                    err_code=HomeSquareValidatorException.ERR_CODE,
+                    msg=HomeSquareEnvelopeConsumerException.MSG,
+                    err_code=HomeSquareEnvelopeConsumerException.ERR_CODE,
                     ex=priming.exception,
                 )
             )
         valid_envelope = cast(RootSquareEnvelope, priming.payload)
-        if valid_envelope.contains.
+        if not valid_envelope.for_home_square_consumer:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                HomeSquareEnvelopeConsumerException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=HomeSquareEnvelopeConsumerException.MSG,
+                    err_code=HomeSquareEnvelopeConsumerException.ERR_CODE,
+                    ex=priming.exception,
+                )
+            )
+        prime_extract = valid_envelope.prime_extract
+        carrier = cast(HomeSquareCarrier, prime_extract.reference)
+        blueprint = carrier.extract_blueprint()
+        
         # Handle the case that there is no blueprint in the carrier.
         blueprint = validated_carrier.extract_blueprint()
         if blueprint is None:
@@ -99,8 +116,8 @@ class HomeSquareEnvelopeConsumer(EnvelopeConsumer[HomeSquare]):
                 HomeSquareEnvelopeConsumerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=HomeSquareValidatorException.MSG,
-                    err_code=HomeSquareValidatorException.ERR_CODE,
+                    msg=HomeSquareEnvelopeConsumerException.MSG,
+                    err_code=HomeSquareEnvelopeConsumerException.ERR_CODE,
                     ex=EmptyHomeSquareCarrierException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -110,7 +127,7 @@ class HomeSquareEnvelopeConsumer(EnvelopeConsumer[HomeSquare]):
                 )
             )
         # Handle the case that the formation does not pass a validation check.
-        formation_validation = self._toolkit.wrapper.priming_validator.execute(
+        formation_validation = self._toolkit.priming_validator.execute(
             candidate=blueprint.formation,
             target_model=Formation,
             null_exception=FormationNullException(),
@@ -121,8 +138,8 @@ class HomeSquareEnvelopeConsumer(EnvelopeConsumer[HomeSquare]):
                 HomeSquareEnvelopeConsumerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=HomeSquareValidatorException.MSG,
-                    err_code=HomeSquareValidatorException.ERR_CODE,
+                    msg=HomeSquareEnvelopeConsumerException.MSG,
+                    err_code=HomeSquareEnvelopeConsumerException.ERR_CODE,
                     ex=formation_validation.exception,
                 )
             )

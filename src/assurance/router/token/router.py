@@ -86,7 +86,7 @@ class TokenValidationRouter(ValidationIntraRouter[Token]):
         method = f"{self.__class__.__name__}.execute"
         
         
-        reference = validation_reference.prime_extract.carrier
+        reference = validation_reference.prime_extract.reference
         
         result = ValidationResult.failure(TokenValidationRouteException())
         # --- Select the appropriate validation route. ---#

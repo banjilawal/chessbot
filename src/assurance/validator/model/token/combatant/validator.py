@@ -173,7 +173,7 @@ class CombatantTokenValidator:
         
         # --- Forward the appropriate work product to the caller. ---#
         # The client wants a safe CombatantToken.
-        if extract.carrier.has_model:
+        if extract.reference.has_model:
             payload = CombatantToken(
                 id=reference.safe.id,
                 team=reference.safe.team,

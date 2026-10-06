@@ -145,5 +145,5 @@ class EncounterWarningNodeLoader(NodeLoader[EncounterWarningNode]):
                 )
             )
         # --- Send the work product. ---#
-        extract = EncounterWarningNodePrimeExtract(carrier=carrier, blueprint=blueprint)
+        extract = EncounterWarningNodePrimeExtract(reference=carrier, safe_blueprint=blueprint)
         return ValidationResult.success(extract)

@@ -90,7 +90,7 @@ class VectorValidator(ModelValidator[Vector]):
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
         prime_extract = cast(VectorPrimeExtract, loading.payload)
-        carrier = prime_extract.carrier
+        carrier = prime_extract.reference
         blueprint = carrier.extract_blueprint()
         
         if blueprint is None:

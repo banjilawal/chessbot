@@ -47,7 +47,7 @@ class OrientationTogglePrimeExtract(TogglePrimeExtract[Orientation]):
         
     @property
     def carrier(self) -> OrientationCarrier:
-        return cast(OrientationCarrier, super().carrier)
+        return cast(OrientationCarrier, super().reference)
     
     @property
     def blueprint(self) -> Optional[OrientationBlueprint]:

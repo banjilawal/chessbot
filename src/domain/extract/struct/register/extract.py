@@ -37,19 +37,19 @@ class RegisterPrimeExtract(StructPrimeExtract[T], ABC, Generic[T]):
 
     def __init__(
             self,
-            carrier: RegisterCarrier[T],
-            blueprint: Optional[RegisterBlueprint[T]] | None = None,
+            reference: RegisterCarrier[T],
+            safe_blueprint: Optional[RegisterBlueprint[T]] | None = None,
     ):
         """
         Args:
-            carrier: RegisterCarrier[T]
-            blueprint: Optional[RegisterBlueprint[T]]
+            reference: RegisterCarrier[T]
+            safe_blueprint: Optional[RegisterBlueprint[T]]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint)
+        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
         
     @property
-    def carrier(self) -> RegisterCarrier[T]:
-        return cast(RegisterCarrier, super().carrier)
+    def reference(self) -> RegisterCarrier[T]:
+        return cast(RegisterCarrier, super().reference)
     
     @property
     def blueprint(self) -> Optional[RegisterBlueprint[T]]:

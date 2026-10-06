@@ -59,7 +59,7 @@ class RookTypeUnion(RankModelTypeUnion[Rook]):
     
     @property
     def carrier(self) -> Type[RookCarrier]:
-        return cast(Type[RookCarrier], super().carrier)
+        return cast(Type[RookCarrier], super().reference)
     
     @property
     def blueprint(self) -> Type[RookBlueprint]:

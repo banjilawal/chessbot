@@ -37,19 +37,19 @@ class EncounterPrimeExtract(ModelPrimeExtract[T], Generic[T]):
 
     def __init__(
             self,
-            carrier: EncounterCarrier[T],
-            blueprint: Optional[EncounterBlueprint] | None = None,
+            reference: EncounterCarrier[T],
+            safe_blueprint: Optional[EncounterBlueprint] | None = None,
     ):
         """
         Args:
-            carrier: EncounterCarrier[T]
-            blueprint: Optional[EncounterBlueprint[T]]
+            reference: EncounterCarrier[T]
+            safe_blueprint: Optional[EncounterBlueprint[T]]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint)
+        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
         
     @property
-    def carrier(self) -> EncounterCarrier[T]:
-        return cast(EncounterCarrier, super().carrier)
+    def reference(self) -> EncounterCarrier[T]:
+        return cast(EncounterCarrier, super().reference)
     
     @property
     def blueprint(self) -> Optional[EncounterBlueprint[T]]:

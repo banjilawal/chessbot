@@ -144,5 +144,5 @@ class TeamLoader(ModelLoader[Team]):
                 )
             )
         # --- Send the work product. ---#
-        extract = TeamPrimeExtract(carrier=carrier, blueprint=blueprint)
+        extract = TeamPrimeExtract(reference=carrier, safe_blueprint=blueprint)
         return ValidationResult.success(extract)

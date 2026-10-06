@@ -35,19 +35,19 @@ class HomeSquarePrimeExtract(ModelPrimeExtract[HomeSquare]):
 
     def __init__(
             self,
-            carrier: HomeSquareCarrier,
-            blueprint: Optional[HomeSquareBlueprint] | None = None,
+            reference: HomeSquareCarrier,
+            safe_blueprint: Optional[HomeSquareBlueprint] | None = None,
     ):
         """
         Args:
-            carrier: HomeSquareCarrier
-            blueprint: Optional[HomeSquareBlueprint]
+            reference: HomeSquareCarrier
+            safe_blueprint: Optional[HomeSquareBlueprint]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint)
+        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
         
     @property
-    def carrier(self) -> HomeSquareCarrier:
-        return cast(HomeSquareCarrier, super().carrier)
+    def reference(self) -> HomeSquareCarrier:
+        return cast(HomeSquareCarrier, super().reference)
     
     @property
     def blueprint(self) -> Optional[HomeSquareBlueprint]:

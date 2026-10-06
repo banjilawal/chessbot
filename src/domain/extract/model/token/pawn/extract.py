@@ -35,19 +35,19 @@ class PawnTokenPrimeExtract(TokenPrimeExtract[PawnToken]):
 
     def __init__(
             self,
-            carrier: PawnTokenCarrier,
-            blueprint: Optional[PawnTokenBlueprint] | None = None,
+            reference: PawnTokenCarrier,
+            safe_blueprint: Optional[PawnTokenBlueprint] | None = None,
     ):
         """
         Args:
-            carrier: PawnTokenCarrier
-            blueprint: Optional[PawnTokenBlueprint]
+            reference: PawnTokenCarrier
+            safe_blueprint: Optional[PawnTokenBlueprint]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint)
+        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
         
     @property
-    def carrier(self) -> PawnTokenCarrier:
-        return cast(PawnTokenCarrier, super().carrier)
+    def reference(self) -> PawnTokenCarrier:
+        return cast(PawnTokenCarrier, super().reference)
     
     @property
     def blueprint(self) -> Optional[PawnTokenBlueprint]:

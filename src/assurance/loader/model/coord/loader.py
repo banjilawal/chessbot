@@ -144,5 +144,5 @@ class CoordLoader(ModelLoader[Coord]):
                 )
             )
         # --- Send the work product. ---#
-        extract = CoordPrimeExtract(carrier=carrier, blueprint=blueprint)
+        extract = CoordPrimeExtract(reference=carrier, safe_blueprint=blueprint)
         return ValidationResult.success(extract)

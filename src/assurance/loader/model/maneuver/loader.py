@@ -144,5 +144,5 @@ class ManeuverLoader(ModelLoader[Maneuver]):
                 )
             )
         # --- Send the work product. ---#
-        extract = ManeuverPrimeExtract(carrier=carrier, blueprint=blueprint)
+        extract = ManeuverPrimeExtract(reference=carrier, safe_blueprint=blueprint)
         return ValidationResult.success(extract)

@@ -59,7 +59,7 @@ class QueenTypeUnion(RankModelTypeUnion[Queen]):
     
     @property
     def carrier(self) -> Type[QueenCarrier]:
-        return cast(Type[QueenCarrier], super().carrier)
+        return cast(Type[QueenCarrier], super().reference)
     
     @property
     def blueprint(self) -> Type[QueenBlueprint]:

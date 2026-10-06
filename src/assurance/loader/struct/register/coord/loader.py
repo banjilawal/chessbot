@@ -145,5 +145,5 @@ class CoordRegisterLoader(RegisterLoader[CoordRegister]):
                 )
             )
         # --- Send the work product. ---#
-        extract = CoordRegisterPrimeExtract(carrier=carrier, blueprint=blueprint)
+        extract = CoordRegisterPrimeExtract(reference=carrier, safe_blueprint=blueprint)
         return ValidationResult.success(extract)

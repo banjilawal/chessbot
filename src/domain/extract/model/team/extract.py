@@ -35,19 +35,19 @@ class TeamPrimeExtract(ModelPrimeExtract[Team]):
 
     def __init__(
             self,
-            carrier: TeamCarrier,
-            blueprint: Optional[TeamBlueprint] | None = None,
+            reference: TeamCarrier,
+            safe_blueprint: Optional[TeamBlueprint] | None = None,
     ):
         """
         Args:
-            carrier: TeamCarrier
-            blueprint: Optional[Blueprint[Team]]
+            reference: TeamCarrier
+            safe_blueprint: Optional[Blueprint[Team]]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint)
+        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
         
     @property
-    def carrier(self) -> TeamCarrier:
-        return cast(TeamCarrier, super().carrier)
+    def reference(self) -> TeamCarrier:
+        return cast(TeamCarrier, super().reference)
     
     @property
     def blueprint(self) -> Optional[TeamBlueprint]:

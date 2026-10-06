@@ -144,5 +144,5 @@ class VectorLoader(ModelLoader[Vector]):
                 )
             )
         # --- Send the work product. ---#
-        extract = VectorPrimeExtract(carrier=carrier, blueprint=blueprint)
+        extract = VectorPrimeExtract(reference=carrier, safe_blueprint=blueprint)
         return ValidationResult.success(extract)

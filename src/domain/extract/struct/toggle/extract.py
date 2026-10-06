@@ -36,19 +36,19 @@ class TogglePrimeExtract(StructPrimeExtract[T], Generic[T]):
 
     def __init__(
             self,
-            carrier: ToggleCarrier[T],
-            blueprint: Optional[ToggleBlueprint[T]] | None = None,
+            reference: ToggleCarrier[T],
+            safe_blueprint: Optional[ToggleBlueprint[T]] | None = None,
     ):
         """
         Args:
-            carrier: ToggleCarrier[T]
-            blueprint: Optional[ToggleBlueprint[T]]
+            reference: ToggleCarrier[T]
+            safe_blueprint: Optional[ToggleBlueprint[T]]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint)
+        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
         
     @property
-    def carrier(self) -> ToggleCarrier[T]:
-        return cast(ToggleCarrier, super().carrier)
+    def reference(self) -> ToggleCarrier[T]:
+        return cast(ToggleCarrier, super().reference)
     
     @property
     def blueprint(self) -> Optional[ToggleBlueprint[T]]:

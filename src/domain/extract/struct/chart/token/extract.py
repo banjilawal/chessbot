@@ -35,19 +35,19 @@ class ParticipationPrimeExtract(ChartPrimeExtract[Participation]):
 
     def __init__(
             self,
-            carrier: ParticipationCarrier,
-            blueprint: Optional[ParticipationBlueprint] | None = None,
+            reference: ParticipationCarrier,
+            safe_blueprint: Optional[ParticipationBlueprint] | None = None,
     ):
         """
         Args:
-            carrier: ParticipationCarrier
-            blueprint: Optional[ParticipationBlueprint]
+            reference: ParticipationCarrier
+            safe_blueprint: Optional[ParticipationBlueprint]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint)
+        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
         
     @property
-    def carrier(self) -> ParticipationCarrier:
-        return cast(ParticipationCarrier, super().carrier)
+    def reference(self) -> ParticipationCarrier:
+        return cast(ParticipationCarrier, super().reference)
     
     @property
     def blueprint(self) -> Optional[ParticipationBlueprint]:

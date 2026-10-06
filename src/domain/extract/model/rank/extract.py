@@ -36,19 +36,19 @@ class RankPrimeExtract(ModelPrimeExtract[T], Generic[T]):
 
     def __init__(
             self,
-            carrier: RankCarrier[T],
-            blueprint: Optional[RankBlueprint[T]] | None = None,
+            reference: RankCarrier[T],
+            safe_blueprint: Optional[RankBlueprint[T]] | None = None,
     ):
         """
         Args:
-            carrier: RankCarrier[T]
-            blueprint: Optional[RankBlueprint[T]]
+            reference: RankCarrier[T]
+            safe_blueprint: Optional[RankBlueprint[T]]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint)
+        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
         
     @property
-    def carrier(self) -> RankCarrier[T]:
-        return cast(RankCarrier, super().carrier)
+    def reference(self) -> RankCarrier[T]:
+        return cast(RankCarrier, super().reference)
     
     @property
     def blueprint(self) -> Optional[RankBlueprint[T]]:

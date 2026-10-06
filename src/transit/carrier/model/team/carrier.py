@@ -56,7 +56,7 @@ class TeamCarrier(ModelCarrier[Team]):
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> Optional[Team|TeamBlueprint]:
+    def entity(self) -> Optional[Team | TeamBlueprint]:
         if self.is_empty:
             return None
         if self.has_model:

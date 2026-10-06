@@ -9,7 +9,6 @@ version: 0.0.2
 
 from __future__ import annotations
 
-
 from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar, cast
 
@@ -36,28 +35,9 @@ class ModelCarrier(EntityCarrier[T], ABC, Generic[T]):
         EntityCarrier
     """
     
-    def __init__(
-            self,
-            model: Optional[T] | None = None,
-            blueprint: Optional[ModelBlueprint[T]] | None = None,
-    ):
-        """
-        Args:
-            model: Optional[T]
-            blueprint: Optional[ModelBlueprint[T]]
-        """
-        super().__init__(model=model, blueprint=blueprint)
-    
-    @property
-    def entity(self) -> Optional[T | ModelBlueprint[T]]:
-        if (
-                self.is_empty or
-                self.is_not_consistent
-        ):
-            return None
-        if self.has_model:
-            return cast(T, super().entity)
-        return cast(ModelBlueprint[T], super().entity)
+    def __init__(self):
+        super().__init__()
+
 
     
     @abstractmethod

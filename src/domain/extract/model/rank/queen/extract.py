@@ -35,19 +35,19 @@ class QueenPrimeExtract(RankPrimeExtract[Queen]):
 
     def __init__(
             self,
-            carrier: QueenCarrier,
-            blueprint: Optional[QueenBlueprint] | None = None,
+            reference: QueenCarrier,
+            safe_blueprint: Optional[QueenBlueprint] | None = None,
     ):
         """
         Args:
-            carrier: QueenCarrier
-            blueprint: Optional[QueenBlueprint]
+            reference: QueenCarrier
+            safe_blueprint: Optional[QueenBlueprint]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint)
+        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
         
     @property
-    def carrier(self) -> QueenCarrier:
-        return cast(QueenCarrier, super().carrier)
+    def reference(self) -> QueenCarrier:
+        return cast(QueenCarrier, super().reference)
     
     @property
     def blueprint(self) -> Optional[QueenBlueprint]:

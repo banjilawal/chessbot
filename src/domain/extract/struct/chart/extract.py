@@ -36,19 +36,19 @@ class ChartPrimeExtract(StructPrimeExtract[T], Generic[T]):
 
     def __init__(
             self,
-            carrier: ChartCarrier[T],
-            blueprint: Optional[ChartBlueprint[T]] | None = None,
+            reference: ChartCarrier[T],
+            safe_blueprint: Optional[ChartBlueprint[T]] | None = None,
     ):
         """
         Args:
-            carrier: ChartCarrier[T]
-            blueprint: Optional[ChartBlueprint[T]]
+            reference: ChartCarrier[T]
+            safe_blueprint: Optional[ChartBlueprint[T]]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint)
+        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
         
     @property
-    def carrier(self) -> ChartCarrier[T]:
-        return cast(ChartCarrier[T], super().carrier)
+    def reference(self) -> ChartCarrier[T]:
+        return cast(ChartCarrier[T], super().reference)
     
     @property
     def blueprint(self) -> Optional[ChartBlueprint[T]]:

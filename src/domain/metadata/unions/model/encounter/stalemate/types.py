@@ -59,7 +59,7 @@ class StalemateEncounterTypeUnion(EncounterTypeUnion[StalemateEncounter]):
     
     @property
     def carrier(self) -> Type[StalemateEncounterCarrier]:
-        return cast(Type[StalemateEncounterCarrier], super().carrier)
+        return cast(Type[StalemateEncounterCarrier], super().reference)
     
     @property
     def blueprint(self) -> Type[StalemateEncounterBlueprint]:

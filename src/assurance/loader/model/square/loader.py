@@ -144,5 +144,5 @@ class SquareLoader(ModelLoader[Square]):
                 )
             )
         # --- Send the work product. ---#
-        extract = SquarePrimeExtract(carrier=carrier, blueprint=blueprint)
+        extract = SquarePrimeExtract(reference=carrier, safe_blueprint=blueprint)
         return ValidationResult.success(extract)

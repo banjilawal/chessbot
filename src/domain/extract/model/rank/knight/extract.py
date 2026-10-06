@@ -35,19 +35,19 @@ class KnightPrimeExtract(RankPrimeExtract[Knight]):
 
     def __init__(
             self,
-            carrier: KnightCarrier,
-            blueprint: Optional[KnightBlueprint] | None = None,
+            reference: KnightCarrier,
+            safe_blueprint: Optional[KnightBlueprint] | None = None,
     ):
         """
         Args:
-            carrier: KnightCarrier
-            blueprint: Optional[KnightBlueprint]
+            reference: KnightCarrier
+            safe_blueprint: Optional[KnightBlueprint]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint)
+        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
         
     @property
-    def carrier(self) -> KnightCarrier:
-        return cast(KnightCarrier, super().carrier)
+    def reference(self) -> KnightCarrier:
+        return cast(KnightCarrier, super().reference)
     
     @property
     def blueprint(self) -> Optional[KnightBlueprint]:

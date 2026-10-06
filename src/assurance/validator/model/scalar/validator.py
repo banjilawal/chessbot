@@ -89,7 +89,7 @@ class ScalarValidator(ModelValidator[Scalar]):
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
         prime_extract = cast(ScalarPrimeExtract, loading.payload)
-        carrier = prime_extract.carrier
+        carrier = prime_extract.reference
         blueprint = carrier.extract_blueprint()
         
         if blueprint is None:

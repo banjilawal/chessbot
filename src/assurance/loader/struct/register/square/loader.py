@@ -145,5 +145,5 @@ class SquareRegisterLoader(RegisterLoader[SquareRegister]):
                 )
             )
         # --- Send the work product. ---#
-        extract = SquareRegisterPrimeExtract(carrier=carrier, blueprint=blueprint)
+        extract = SquareRegisterPrimeExtract(reference=carrier, safe_blueprint=blueprint)
         return ValidationResult.success(extract)

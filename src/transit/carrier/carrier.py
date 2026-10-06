@@ -42,21 +42,16 @@ class EntityCarrier(ABC, Generic[T]):
 
     Super Class:
     """
-    _model: Optional[T]
-    _blueprint: Optional[Blueprint[T]]
     
     def __init__(
-            self,
-            model: Optional[T] | None = None,
-            blueprint: Optional[Blueprint[T]] | None = None,
+            self
     ):
         """
         Args:
             model: Optional[T]
             blueprint: Optional[Blueprint[T]]
         """
-        self._model = model
-        self._blueprint = blueprint
+
 
     @property
     def entity(self) -> Optional[T | Blueprint[T]]:

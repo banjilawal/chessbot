@@ -155,7 +155,7 @@ class KillEncounterValidator:
             )
         # Handle the case that the envelope does not have a KillEncounterCarrier
         carrier_validation = self._toolkit.priming_validator.execute(
-            candidate=envelope.prime_extract.carrier,
+            candidate=envelope.prime_extract.reference,
             target_model=Type[KillEncounterCarrier],
             null_exception=KillEncounterNullException(),
         )

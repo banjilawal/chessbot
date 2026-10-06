@@ -35,19 +35,19 @@ class VectorRegisterPrimeExtract(RegisterPrimeExtract[VectorRegister]):
 
     def __init__(
             self,
-            carrier: VectorRegisterCarrier,
-            blueprint: Optional[VectorRegisterBlueprint] | None = None,
+            reference: VectorRegisterCarrier,
+            safe_blueprint: Optional[VectorRegisterBlueprint] | None = None,
     ):
         """
         Args:
-            carrier: VectorRegisterCarrier
-            blueprint: Optional[VectorRegisterBlueprint]
+            reference: VectorRegisterCarrier
+            safe_blueprint: Optional[VectorRegisterBlueprint]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint)
+        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
         
     @property
-    def carrier(self) -> VectorRegisterCarrier:
-        return cast(VectorRegisterCarrier, super().carrier)
+    def reference(self) -> VectorRegisterCarrier:
+        return cast(VectorRegisterCarrier, super().reference)
     
     @property
     def blueprint(self) -> Optional[VectorRegisterBlueprint]:

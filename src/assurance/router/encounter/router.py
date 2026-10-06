@@ -92,7 +92,7 @@ class EncounterValidationRouter(ValidationIntraRouter[Encounter]):
         method = f"{self.__class__.__name__}.execute"
         
         prime_extract = envelope.prime_extract
-        carrier = prime_extract.carrier
+        carrier = prime_extract.reference
         
         if carrier.is_empty:
             return ValidationResult.failure(
@@ -129,7 +129,7 @@ class EncounterValidationRouter(ValidationIntraRouter[Encounter]):
         if carrier.is_kill_encounter_carrier:
             validation_result = self._kill_validator.execute(candidate=envelope)
             
-        reference = validation_reference.prime_extract.carrier
+        reference = validation_reference.prime_extract.reference
         
         result = ValidationResult.failure(EncounterValidationRouterException())
         # --- Select the appropriate validation route. ---#

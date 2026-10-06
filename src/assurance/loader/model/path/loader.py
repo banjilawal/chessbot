@@ -144,5 +144,5 @@ class PathLoader(ModelLoader[Path]):
                 )
             )
         # --- Send the work product. ---#
-        extract = PathPrimeExtract(carrier=carrier, blueprint=blueprint)
+        extract = PathPrimeExtract(reference=carrier, safe_blueprint=blueprint)
         return ValidationResult.success(extract)

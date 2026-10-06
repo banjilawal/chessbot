@@ -144,5 +144,5 @@ class TokenLoader(ModelLoader[Token]):
                 )
             )
         # --- Send the work product. ---#
-        extract = TokenPrimeExtract(carrier=carrier, blueprint=blueprint)
+        extract = TokenPrimeExtract(reference=carrier, safe_blueprint=blueprint)
         return ValidationResult.success(extract)

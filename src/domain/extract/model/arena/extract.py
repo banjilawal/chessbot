@@ -35,19 +35,19 @@ class ArenaPrimeExtract(ModelPrimeExtract[Arena]):
 
     def __init__(
             self,
-            carrier: ArenaCarrier,
-            blueprint: Optional[ArenaBlueprint] | None = None,
+            reference: ArenaCarrier,
+            safe_blueprint: Optional[ArenaBlueprint] | None = None,
     ):
         """
         Args:
-            carrier: ArenaCarrier
-            blueprint: Optional[Blueprint[Arena]]
+            reference: ArenaCarrier
+            safe_blueprint: Optional[Blueprint[Arena]]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint)
+        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
         
     @property
-    def carrier(self) -> ArenaCarrier:
-        return cast(ArenaCarrier, super().carrier)
+    def reference(self) -> ArenaCarrier:
+        return cast(ArenaCarrier, super().reference)
     
     @property
     def blueprint(self) -> Optional[ArenaBlueprint]:

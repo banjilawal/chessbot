@@ -144,5 +144,5 @@ class BoardLoader(ModelLoader[Board]):
                 )
             )
         # --- Send the work product. ---#
-        extract = BoardPrimeExtract(carrier=carrier, blueprint=blueprint)
+        extract = BoardPrimeExtract(reference=carrier, safe_blueprint=blueprint)
         return ValidationResult.success(extract)

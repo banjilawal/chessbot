@@ -93,7 +93,7 @@ class RootSquareEnvelope(ProductEnvelope[Square]):
     
     @property
     def for_home_square_consumer(self) -> bool:
-        return isinstance(self._prime_extract.carrier, HomeSquareCarrier)
+        return isinstance(self._prime_extract.reference, HomeSquareCarrier)
     
     @property
     def for_public_square_consumer(self) -> bool:

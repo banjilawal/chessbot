@@ -35,19 +35,19 @@ class PawnPrimeExtract(RankPrimeExtract[Pawn]):
 
     def __init__(
             self,
-            carrier: PawnCarrier,
-            blueprint: Optional[PawnBlueprint] | None = None,
+            reference: PawnCarrier,
+            safe_blueprint: Optional[PawnBlueprint] | None = None,
     ):
         """
         Args:
-            carrier: PawnCarrier
-            blueprint: Optional[PawnBlueprint]
+            reference: PawnCarrier
+            safe_blueprint: Optional[PawnBlueprint]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint)
+        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
         
     @property
-    def carrier(self) -> PawnCarrier:
-        return cast(PawnCarrier, super().carrier)
+    def reference(self) -> PawnCarrier:
+        return cast(PawnCarrier, super().reference)
     
     @property
     def blueprint(self) -> Optional[PawnBlueprint]:

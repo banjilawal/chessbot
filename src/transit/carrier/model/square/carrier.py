@@ -47,7 +47,7 @@ class SquareCarrier(ModelCarrier[Square]):
             model: Optional[Square]
             blueprint: Optional[SquareBlueprint]
         """
-        super().__init__(model=model, blueprint=blueprint)
+        super().__init__()
         self._model = model
         self._blueprint = blueprint
     

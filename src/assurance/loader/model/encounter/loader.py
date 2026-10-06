@@ -145,5 +145,5 @@ class EncounterLoader(ModelLoader[Encounter]):
                 )
             )
         # --- Send the work product. ---#
-        extract = EncounterPrimeExtract(carrier=carrier, blueprint=blueprint)
+        extract = EncounterPrimeExtract(reference=carrier, safe_blueprint=blueprint)
         return ValidationResult.success(extract)

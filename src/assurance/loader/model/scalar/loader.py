@@ -144,5 +144,5 @@ class ScalarLoader(ModelLoader[Scalar]):
                 )
             )
         # --- Send the work product. ---#
-        extract = ScalarPrimeExtract(carrier=carrier, blueprint=blueprint)
+        extract = ScalarPrimeExtract(reference=carrier, safe_blueprint=blueprint)
         return ValidationResult.success(extract)

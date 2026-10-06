@@ -35,19 +35,19 @@ class BishopPrimeExtract(RankPrimeExtract[Bishop]):
 
     def __init__(
             self,
-            carrier: BishopCarrier,
-            blueprint: Optional[BishopBlueprint] | None = None,
+            reference: BishopCarrier,
+            safe_blueprint: Optional[BishopBlueprint] | None = None,
     ):
         """
         Args:
-            carrier: BishopCarrier
-            blueprint: Optional[BishopBlueprint]
+            reference: BishopCarrier
+            safe_blueprint: Optional[BishopBlueprint]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint)
+        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
         
     @property
-    def carrier(self) -> BishopCarrier:
-        return cast(BishopCarrier, super().carrier)
+    def reference(self) -> BishopCarrier:
+        return cast(BishopCarrier, super().reference)
     
     @property
     def blueprint(self) -> Optional[BishopBlueprint]:

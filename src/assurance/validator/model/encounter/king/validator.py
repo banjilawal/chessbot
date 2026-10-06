@@ -215,7 +215,7 @@ class KingEncounterValidator:
         
         # --- Forward the appropriate work product to the caller. ---#
         # The client wants a safe KingEncounter.
-        if prime_extract.carrier.has_model:
+        if prime_extract.reference.has_model:
             payload = KingEncounter(
                 id=property_table.safe.id,
                 team=property_table.safe.victim,

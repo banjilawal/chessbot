@@ -35,19 +35,19 @@ class GamePrimeExtract(ModelPrimeExtract[Game]):
 
     def __init__(
             self,
-            carrier: GameCarrier,
-            blueprint: Optional[GameBlueprint] | None = None,
+            reference: GameCarrier,
+            safe_blueprint: Optional[GameBlueprint] | None = None,
     ):
         """
         Args:
-            carrier: GameCarrier
-            blueprint: Optional[Blueprint[Game]]
+            reference: GameCarrier
+            safe_blueprint: Optional[Blueprint[Game]]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint)
+        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
         
     @property
-    def carrier(self) -> GameCarrier:
-        return cast(GameCarrier, super().carrier)
+    def reference(self) -> GameCarrier:
+        return cast(GameCarrier, super().reference)
     
     @property
     def blueprint(self) -> Optional[GameBlueprint]:

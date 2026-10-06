@@ -59,7 +59,7 @@ class KnightTypeUnion(RankModelTypeUnion[Knight]):
     
     @property
     def carrier(self) -> Type[KnightCarrier]:
-        return cast(Type[KnightCarrier], super().carrier)
+        return cast(Type[KnightCarrier], super().reference)
     
     @property
     def blueprint(self) -> Type[KnightBlueprint]:

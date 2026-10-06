@@ -35,19 +35,19 @@ class EncounterWarningPrimeExtract(EncounterPrimeExtract[EncounterWarning]):
 
     def __init__(
             self,
-            carrier: EncounterWarningCarrier,
-            blueprint: Optional[EncounterWarningBlueprint] | None = None,
+            reference: EncounterWarningCarrier,
+            safe_blueprint: Optional[EncounterWarningBlueprint] | None = None,
     ):
         """
         Args:
-            carrier: EncounterWarningCarrier
-            blueprint: Optional[EncounterWarningBlueprint]
+            reference: EncounterWarningCarrier
+            safe_blueprint: Optional[EncounterWarningBlueprint]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint)
+        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
         
     @property
-    def carrier(self) -> EncounterWarningCarrier:
-        return cast(EncounterWarningCarrier, super().carrier)
+    def reference(self) -> EncounterWarningCarrier:
+        return cast(EncounterWarningCarrier, super().reference)
     
     @property
     def blueprint(self) -> Optional[EncounterWarningBlueprint]:

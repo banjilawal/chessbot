@@ -37,19 +37,19 @@ class StructPrimeExtract(PrimeExtract[T], ABC, Generic[T]):
 
     def __init__(
             self,
-            carrier: StructCarrier[T],
-            blueprint: Optional[StructBlueprint[T]] | None = None,
+            reference: StructCarrier[T],
+            safe_blueprint: Optional[StructBlueprint[T]] | None = None,
     ):
         """
         Args:
-            carrier: EntityCarrier[T]
-            blueprint: Optional[Blueprint[T]]
+            reference: EntityCarrier[T]
+            safe_blueprint: Optional[Blueprint[T]]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint)
+        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
         
     @property
-    def carrier(self) -> StructCarrier[T]:
-        return cast(StructCarrier[T], super().carrier)
+    def reference(self) -> StructCarrier[T]:
+        return cast(StructCarrier[T], super().reference)
     
     @property
     def blueprint(self) -> Optional[StructBlueprint[T]]:

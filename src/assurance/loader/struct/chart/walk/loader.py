@@ -144,5 +144,5 @@ class WalkLoader(ChartLoader[Walk]):
                 )
             )
         # --- Send the work product. ---#
-        extract = WalkPrimeExtract(carrier=carrier, blueprint=blueprint)
+        extract = WalkPrimeExtract(reference=carrier, safe_blueprint=blueprint)
         return ValidationResult.success(extract)

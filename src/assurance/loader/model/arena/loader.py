@@ -144,5 +144,5 @@ class ArenaLoader(ModelLoader[Arena]):
                 )
             )
         # --- Send the work product. ---#
-        extract = ArenaPrimeExtract(carrier=carrier, blueprint=blueprint)
+        extract = ArenaPrimeExtract(reference=carrier, safe_blueprint=blueprint)
         return ValidationResult.success(extract)

@@ -35,19 +35,19 @@ class PathPrimeExtract(ModelPrimeExtract[Path]):
 
     def __init__(
             self,
-            carrier: PathCarrier,
-            blueprint: Optional[PathBlueprint] | None = None,
+            reference: PathCarrier,
+            safe_blueprint: Optional[PathBlueprint] | None = None,
     ):
         """
         Args:
-            carrier: PathCarrier
-            blueprint: Optional[Blueprint[Path]]
+            reference: PathCarrier
+            safe_blueprint: Optional[Blueprint[Path]]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint)
+        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
         
     @property
-    def carrier(self) -> PathCarrier:
-        return cast(PathCarrier, super().carrier)
+    def reference(self) -> PathCarrier:
+        return cast(PathCarrier, super().reference)
     
     @property
     def blueprint(self) -> Optional[PathBlueprint]:

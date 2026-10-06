@@ -59,7 +59,7 @@ class PawnTypeUnion(RankModelTypeUnion[Pawn]):
     
     @property
     def carrier(self) -> Type[PawnCarrier]:
-        return cast(Type[PawnCarrier], super().carrier)
+        return cast(Type[PawnCarrier], super().reference)
     
     @property
     def blueprint(self) -> Type[PawnBlueprint]:

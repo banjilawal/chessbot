@@ -35,19 +35,19 @@ class SquareRegisterPrimeExtract(RegisterPrimeExtract[SquareRegister]):
 
     def __init__(
             self,
-            carrier: SquareRegisterCarrier,
-            blueprint: Optional[SquareRegisterBlueprint] | None = None,
+            reference: SquareRegisterCarrier,
+            safe_blueprint: Optional[SquareRegisterBlueprint] | None = None,
     ):
         """
         Args:
-            carrier: SquareRegisterCarrier
-            blueprint: Optional[SquareRegisterBlueprint]
+            reference: SquareRegisterCarrier
+            safe_blueprint: Optional[SquareRegisterBlueprint]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint)
+        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
         
     @property
-    def carrier(self) -> SquareRegisterCarrier:
-        return cast(SquareRegisterCarrier, super().carrier)
+    def reference(self) -> SquareRegisterCarrier:
+        return cast(SquareRegisterCarrier, super().reference)
     
     @property
     def blueprint(self) -> Optional[SquareRegisterBlueprint]:

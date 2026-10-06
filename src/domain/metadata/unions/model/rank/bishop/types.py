@@ -59,7 +59,7 @@ class BishopTypeUnion(RankModelTypeUnion[Bishop]):
     
     @property
     def carrier(self) -> Type[BishopCarrier]:
-        return cast(Type[BishopCarrier], super().carrier)
+        return cast(Type[BishopCarrier], super().reference)
     
     @property
     def blueprint(self) -> Type[BishopBlueprint]:

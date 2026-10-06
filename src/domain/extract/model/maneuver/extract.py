@@ -35,19 +35,19 @@ class ManeuverPrimeExtract(ModelPrimeExtract[Maneuver]):
 
     def __init__(
             self,
-            carrier: ManeuverCarrier,
-            blueprint: Optional[ManeuverBlueprint] | None = None,
+            reference: ManeuverCarrier,
+            safe_blueprint: Optional[ManeuverBlueprint] | None = None,
     ):
         """
         Args:
-            carrier: ManeuverCarrier
-            blueprint: Optional[Blueprint[Maneuver]]
+            reference: ManeuverCarrier
+            safe_blueprint: Optional[Blueprint[Maneuver]]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint)
+        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
         
     @property
-    def carrier(self) -> ManeuverCarrier:
-        return cast(ManeuverCarrier, super().carrier)
+    def reference(self) -> ManeuverCarrier:
+        return cast(ManeuverCarrier, super().reference)
     
     @property
     def blueprint(self) -> Optional[ManeuverBlueprint]:

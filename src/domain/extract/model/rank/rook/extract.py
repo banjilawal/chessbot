@@ -35,19 +35,19 @@ class RookPrimeExtract(RankPrimeExtract[Rook]):
 
     def __init__(
             self,
-            carrier: RookCarrier,
-            blueprint: Optional[RookBlueprint] | None = None,
+            reference: RookCarrier,
+            safe_blueprint: Optional[RookBlueprint] | None = None,
     ):
         """
         Args:
-            carrier: RookCarrier
-            blueprint: Optional[RookBlueprint]
+            reference: RookCarrier
+            safe_blueprint: Optional[RookBlueprint]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint)
+        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
         
     @property
-    def carrier(self) -> RookCarrier:
-        return cast(RookCarrier, super().carrier)
+    def reference(self) -> RookCarrier:
+        return cast(RookCarrier, super().reference)
     
     @property
     def blueprint(self) -> Optional[RookBlueprint]:

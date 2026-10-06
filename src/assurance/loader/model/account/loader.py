@@ -144,5 +144,5 @@ class AccountLoader(ModelLoader[Account]):
                 )
             )
         # --- Send the work product. ---#
-        extract = AccountPrimeExtract(carrier=carrier, blueprint=blueprint)
+        extract = AccountPrimeExtract(reference=carrier, safe_blueprint=blueprint)
         return ValidationResult.success(extract)

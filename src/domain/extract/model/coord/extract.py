@@ -35,19 +35,19 @@ class CoordPrimeExtract(ModelPrimeExtract[Coord]):
 
     def __init__(
             self,
-            carrier: CoordCarrier,
-            blueprint: Optional[CoordBlueprint] | None = None,
+            reference: CoordCarrier,
+            safe_blueprint: Optional[CoordBlueprint] | None = None,
     ):
         """
         Args:
-            carrier: CoordCarrier
-            blueprint: Optional[Blueprint[Coord]]
+            reference: CoordCarrier
+            safe_blueprint: Optional[Blueprint[Coord]]
         """
-        super().__init__(carrier=carrier, blueprint=blueprint)
+        super().__init__(reference=reference, safe_blueprint=safe_blueprint)
         
     @property
-    def carrier(self) -> CoordCarrier:
-        return cast(CoordCarrier, super().carrier)
+    def reference(self) -> CoordCarrier:
+        return cast(CoordCarrier, super().reference)
     
     @property
     def blueprint(self) -> Optional[CoordBlueprint]:

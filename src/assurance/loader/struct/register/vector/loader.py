@@ -145,5 +145,5 @@ class VectorRegisterLoader(RegisterLoader[VectorRegister]):
                 )
             )
         # --- Send the work product. ---#
-        extract = VectorRegisterPrimeExtract(carrier=carrier, blueprint=blueprint)
+        extract = VectorRegisterPrimeExtract(reference=carrier, safe_blueprint=blueprint)
         return ValidationResult.success(extract)
