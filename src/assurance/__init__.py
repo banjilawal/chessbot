@@ -11,7 +11,7 @@ version: 0.0.2
 
 # Packages
 from .depend import *
-from .envelope import *
+from assurance.envelope import *
 from .loader import *
 from .primitive import *
 from .router import *

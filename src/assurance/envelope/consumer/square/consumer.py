@@ -1,7 +1,7 @@
-# src/assurance/validator/model/square/assurance/validator/model.py
+# src/assurance/envelope/consumer/square/consumer.py
 
 """
-Module: assurance.validator.model.square.validator
+Module: assurance.envelope.consumer.square.consumer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult
-from assurance import EnvelopeConsumer, SquareValidatorToolkit
+from assurance import RootEnvelopeConsumer, SquareValidatorToolkit
 from domain import Square, SquareBlueprint
 from err import RootSquareEnvelopeNullException
 from transit import RootSquareEnvelope, SquareCarrier
@@ -20,7 +20,7 @@ from transit import RootSquareEnvelope, SquareCarrier
 from util import LoggingLevelRouter
 
 
-class PublicSquareEnvelopeConsumer(EnvelopeConsumer[Square]):
+class PublicSquareEnvelopeConsumer(RootEnvelopeConsumer[Square]):
     """
     Role
         - Integrity, Consistency Maintenance

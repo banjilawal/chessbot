@@ -1,7 +1,7 @@
-# src/assurance/validator/root/validator.py
+# src/assurance/envelope/producer/validator.py
 
 """
-Module: assurance.validator.root.validator
+Module: assurance.envelope.producer.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -20,7 +20,7 @@ from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Model")
 
-class RootValidator(ABC, Generic[T]):
+class RootEnvelopeProducer(ABC, Generic[T]):
     """
     Role
         -   Integrity, Consistency Maintenance

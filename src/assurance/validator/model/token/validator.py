@@ -13,7 +13,7 @@ from typing import Any, Dict, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    TokenProductEnvelope, RootTokenValidator, ModelValidator, WalkValidator,
+    TokenProductEnvelope, RootTokenEnvelopeProducer, ModelValidator, WalkValidator,
     TokenValidationRouter,
     TokenValidatorToolkit
 )
@@ -44,13 +44,13 @@ class TokenValidator(ModelValidator[Token]):
         ModelValidator
     """
     _validation_router: TokenValidationRouter
-    _property_table_generator: RootTokenValidator
+    _property_table_generator: RootTokenEnvelopeProducer
     
     def __init__(
             self,
             loader: Optional[TokenValidatorToolkit] | None = None,
             validation_router: Optional[TokenValidationRouter] | None = None,
-            property_table_generator: Optional[RootTokenValidator]
+            property_table_generator: Optional[RootTokenEnvelopeProducer]
                                       | None = None,
     ):
         """
@@ -63,7 +63,7 @@ class TokenValidator(ModelValidator[Token]):
         self._validation_router = validation_router or TokenValidationRouter()
         self._property_table_generator = (
                 property_table_generator or
-                RootTokenValidator()
+                RootTokenEnvelopeProducer()
         )
     
     @property

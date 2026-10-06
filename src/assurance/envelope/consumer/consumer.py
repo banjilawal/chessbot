@@ -1,7 +1,7 @@
-# src/assurance/envelope/consumer.py
+# src/assurance/envelope/consumer/consumer.py
 
 """
-Module: assurance.envelope.consumer
+Module: assurance.envelope.consumer.consumer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="Model")
 
 
-class EnvelopeConsumer(ABC, Generic[T]):
+class RootEnvelopeConsumer(ABC, Generic[T]):
     """
     Role
         - Integrity, Consistency Maintenance

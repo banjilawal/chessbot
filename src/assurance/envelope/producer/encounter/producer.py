@@ -1,7 +1,7 @@
-# src/assurance/validator/validator/root/encounter/generator.py
+# src/assurance/validator/envelope/producer/encounter/generator.py
 
 """
-Module: assurance.validator.root.encounter.generator
+Module: assurance.envelope.producer.encounter.generator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import EncounterLoader, EncounterValidatorToolkit, RootValidator
+from assurance import EncounterLoader, EncounterValidatorToolkit, RootEnvelopeProducer
 from config import NumericSetting
 from domain import (
     Encounter, EncounterPrimeExtract, Maneuver, Participation,
@@ -29,7 +29,7 @@ from transit import (
 from util import IdFactory, LoggingLevelRouter
 
 
-class RootEncounterValidator(RootValidator[Encounter]):
+class RootEncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
     """
     Role
         -   Integrity, Consistency Maintenance

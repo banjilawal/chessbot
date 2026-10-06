@@ -1,7 +1,7 @@
-# src/assurance/validator/root/encounter/validator.py
+# src/assurance/envelope/producer/encounter/validator.py
 
 """
-Module: assurance.validator.root.encounter.validator
+Module: assurance.envelope.producer.encounter.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    RootValidator, TokenLoader, TokenValidatorToolkit, WalkValidator
+    RootEnvelopeProducer, TokenLoader, TokenValidatorToolkit, WalkValidator
 )
 from domain import (
     Formation, HomeSquare, Team, Token, TokenDeployment,
@@ -28,7 +28,7 @@ from transit import RootTokenEnvelope, TeamCarrier, WalkCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class RootTokenValidator(RootValidator[Token]):
+class RootTokenEnvelopeProducer(RootEnvelopeProducer[Token]):
     """
     Role
         -   Integrity, Consistency Maintenance

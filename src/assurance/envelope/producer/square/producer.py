@@ -1,7 +1,7 @@
-# src/assurance/validator/root/encounter/validator.py
+# src/assurance/envelope/producer/encounter/validator.py
 
 """
-Module: assurance.validator.root.encounter.validator
+Module: assurance.envelope.producer.encounter.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import RootValidator, SquareLoader, SquareValidatorToolkit
+from assurance import RootEnvelopeProducer, SquareLoader, SquareValidatorToolkit
 from domain import Coord, Square, SquareState, SquarePrimeExtract, Board
 from err import (
     RootSquareValidatorException, SquareCarrierEmptyException,
@@ -23,7 +23,7 @@ from transit import RootSquareEnvelope, CoordCarrier, BoardCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class RootSquareValidator(RootValidator[Square]):
+class RootSquareEnvelopeProducer(RootEnvelopeProducer[Square]):
     """
     Role
         -   Integrity, Consistency Maintenance

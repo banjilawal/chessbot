@@ -10,7 +10,7 @@ version: 0.0.2
 # =========== ASSURANCE.ENVELOPE PACKAGE ===========#
 
 # Packages
-from .square import *
+from .consumer import *
+from .producer import *
 
 # Module
-from .consumer import EnvelopeConsumer
