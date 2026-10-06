@@ -15,17 +15,14 @@ from artifcat import ValidationResult
 from assurance import EncounterLoader, EncounterValidatorToolkit, RootEnvelopeProducer
 from config import NumericSetting
 from domain import (
-    Encounter, EncounterPrimeExtract, Maneuver, Participation,
-    ParticipationBlueprint, Token
+    Encounter, EncounterPrimeExtract, Maneuver, Participation, Token
 )
-from err import EncounterCarrierEmptyException, RootEncounterValidatorException
-from exchange import (
-    ManeuverValidationRequest, ParticipationValidationRequest,
-    TokenValidationRequest
+from err import (
+    EncounterCarrierEmptyException, FriendlyFireAttackException,
+    RootEncounterValidatorException, TokenAttackingItselfException
 )
-from transit import (
-    ManeuverCarrier, ParticipationCarrier, RootEncounterEnvelope, TokenCarrier
-)
+from exchange import ManeuverValidationRequest,  TokenValidationRequest
+from transit import ManeuverCarrier, RootEncounterEnvelope, TokenCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -101,9 +98,9 @@ class RootEncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
                 )
             )
         # --- Get the PrimeExtract and Blueprint for additional processing. ---#
-        prime_extract = cast(EncounterPrimeExtract, loading.payload)
-        carrier = prime_extract.reference
-        blueprint = carrier.extract_blueprint()
+        original_extract = cast(EncounterPrimeExtract, loading.payload)
+        reference = original_extract.reference
+        blueprint = reference.extract_blueprint()
         
         # Handle the case that the blueprint is null
         if blueprint is None:
@@ -205,18 +202,9 @@ class RootEncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
         attacker_reward = cast(int, attacker_reward.payload)
         attacker_maneuver = cast(Maneuver, attacker_maneuver_validation.payload)
         
-        participation_validation = self.toolkit.wrapper.participation.extract_blueprint(
-            request=ParticipationValidationRequest(
-                item=ParticipationCarrier(
-                    blueprint=ParticipationBlueprint(
-                        victim=victim,
-                        attacker=attacker_maneuver.traveler,
-                    )
-                ),
-                id=IdFactory.next_id(class_name="ParticipationValidationRequest")
-            )
-        )
-        if participation_validation.is_failure:
+        attacker = attacker_maneuver.traveler
+        
+        if victim == attacker:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 RootEncounterValidatorException(
@@ -224,24 +212,38 @@ class RootEncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
                     cls_name=self.__class__.__name__,
                     msg=RootEncounterValidatorException.MSG,
                     err_code=RootEncounterValidatorException.ERR_CODE,
-                    ex=participation_validation.exception
+                    ex=TokenAttackingItselfException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=TokenAttackingItselfException.MSG,
+                        err_code=TokenAttackingItselfException.ERR_CODE,
+                    ),
                 )
             )
-        participation_blueprint = cast(
-            ParticipationBlueprint,
-            participation_validation.payload,
-        )
-        participants = Participation(
-            victim=participation_blueprint.victim,
-            attacker=participation_blueprint.attacker,
-        )
+        if victim.is_friend(attacker):
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                RootEncounterValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=RootEncounterValidatorException.MSG,
+                    err_code=RootEncounterValidatorException.ERR_CODE,
+                    ex=FriendlyFireAttackException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=FriendlyFireAttackException.MSG,
+                        err_code=FriendlyFireAttackException.ERR_CODE,
+                    )
+                )
+            )
+        participants = Participation(victim=victim, attacker=attacker)
         # --- SEND_THE_WORK_PRODUCT. ---#
         envelope = RootEncounterEnvelope(
             id=id,
             participants=participants,
             attacker_reward=attacker_reward,
             attacker_maneuver=attacker_maneuver,
-            prime_extract=prime_extract,
+            prime_extract=original_extract,
         )
         return ValidationResult.success(envelope)
 
