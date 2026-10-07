@@ -1,7 +1,7 @@
-# src/err/assurance/validator/struct/chart/walk/exception.py
+# src/err/assurance/validator/struct/chart/footstep/exception.py
 
 """
-Module: err.assurance.validator.struct.chart.walk.exception
+Module: err.assurance.validator.struct.chart.footstep.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -17,17 +17,17 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# COORD_CHART_VALIDATOR_FAILURE #======================#
-    "WalkValidatorException",
+    "FootstepValidatorException",
 ]
 
 # ======================# COORD_CHART_VALIDATOR_FAILURE #======================#
-class WalkValidatorException(ChartValidatorException):
+class FootstepValidatorException(ChartValidatorException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a WalkValidator failed.
+        1.  Indicating assurance by a FootstepValidator failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class WalkValidatorException(ChartValidatorException):
     Super Class:
         ChartValidatorException
     """
-    MSG = "WalkValidator failure."
+    MSG = "FootstepValidator failure."
     ERR_CODE = "COORD_CHART_VALIDATOR_FAILURE"
     
     def __init__(

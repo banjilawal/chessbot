@@ -199,7 +199,7 @@ class CombatantTokenEnvelopeConsumer(
             model = CombatantToken(
                 id=safe.id,
                 team=safe.team,
-                walk=safe.walk,
+                footstep=safe.footstep,
                 formation=safe.formation,
                 home_square=safe.home_square,
             )
@@ -214,7 +214,7 @@ class CombatantTokenEnvelopeConsumer(
             blueprint=CombatantTokenBlueprint(
                 id=safe.id,
                 team=safe.team,
-                walk=safe.walk,
+                footstep=safe.footstep,
                 formation=safe.formation,
                 home_square=safe.home_square,
                 deployment=safe.deployment,

@@ -16,7 +16,7 @@ from assurance import ModelWrapperDependency
 from domain import Token
 from exchange import (
     RankValidationResponseWrapper, TeamValidationResponseWrapper,
-    WalkValidationResponseWrapper
+    FootstepValidationResponseWrapper
 )
 
 
@@ -31,7 +31,7 @@ class TokenWrapperDependency(ModelWrapperDependency[Token]):
     Attributes:
         team: TeamValidationResponseWrapper
         rank: RankValidationResponseWrapper
-        walk: WalkValidationResponseWrapper
+        footstep: FootstepValidationResponseWrapper
         
     Provides:
 
@@ -40,24 +40,24 @@ class TokenWrapperDependency(ModelWrapperDependency[Token]):
     """
     _team: TeamValidationResponseWrapper
     _rank: RankValidationResponseWrapper
-    _walk: WalkValidationResponseWrapper
+    _footstep: FootstepValidationResponseWrapper
     
     def __init__(
             self,
             team: Optional[TeamValidationResponseWrapper] | None = None,
             rank: Optional[RankValidationResponseWrapper] | None = None,
-            walk: Optional[WalkValidationResponseWrapper] | None = None,
+            footstep: Optional[FootstepValidationResponseWrapper] | None = None,
     ):
         """
         Args:
             team: Optional[TeamValidatorClient]
             rank: Optional[RankValidatorClient]
-            walk: Optional[WalkValidationResponseWrapper]
+            footstep: Optional[FootstepValidationResponseWrapper]
         """
         super().__init__()
         self._team = team or TeamValidationResponseWrapper()
         self._rank = rank or RankValidationResponseWrapper()
-        self._walk = walk or WalkValidationResponseWrapper()
+        self._footstep = footstep or FootstepValidationResponseWrapper()
     
     @property
     def team(self) -> TeamValidationResponseWrapper:
@@ -68,5 +68,5 @@ class TokenWrapperDependency(ModelWrapperDependency[Token]):
         return self._rank
     
     @property
-    def walk(self) -> WalkValidationResponseWrapper:
-        return self._walk
+    def footstep(self) -> FootstepValidationResponseWrapper:
+        return self._footstep

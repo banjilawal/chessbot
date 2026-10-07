@@ -1,7 +1,7 @@
-# src/domain/metadata/manifest/strcture/chart/walk/manifest.py
+# src/domain/metadata/manifest/strcture/chart/footstep/manifest.py
 
 """
-Module: domain.metadata.manifest.struct.chart.walk.manifest
+Module: domain.metadata.manifest.struct.chart.footstep.manifest
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -11,21 +11,21 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import ChartManifest, Walk, WalkNullGroup, WalkTypeUnion
+from domain import ChartManifest, Footstep, FootstepNullGroup, FootstepTypeUnion
 
 
-class WalkManifest(ChartManifest[Walk]):
+class FootstepManifest(ChartManifest[Footstep]):
     """
      Role:
         1.  Metadata
 
      Responsibilities:
-         1.  Aggregates NullExceptions and TypeUnions for the Walk
+         1.  Aggregates NullExceptions and TypeUnions for the Footstep
             security lifecycle.
 
      Attributes:
-        types: WalkTypeUnion
-        nulls: WalkNullGroup
+        types: FootstepTypeUnion
+        nulls: FootstepNullGroup
 
      Provides:
 
@@ -35,24 +35,24 @@ class WalkManifest(ChartManifest[Walk]):
     
     def __init__(
             self,
-            types: Optional[WalkTypeUnion] | None = None,
-            nulls: Optional[WalkNullGroup] | None = None,
+            types: Optional[FootstepTypeUnion] | None = None,
+            nulls: Optional[FootstepNullGroup] | None = None,
     ):
         """
         Args:
-            types: Optional[WalkTypeUnion]
-            nulls: Optional[WalkNullGroup]
+            types: Optional[FootstepTypeUnion]
+            nulls: Optional[FootstepNullGroup]
         """
         super().__init__(
-            types=types or WalkTypeUnion(),
-            nulls=nulls or WalkNullGroup(),
+            types=types or FootstepTypeUnion(),
+            nulls=nulls or FootstepNullGroup(),
         )
 
         
     @property
-    def types(self) -> WalkTypeUnion:
-        return cast(WalkTypeUnion, super().types)
+    def types(self) -> FootstepTypeUnion:
+        return cast(FootstepTypeUnion, super().types)
     
     @property
-    def nulls(self) -> WalkNullGroup:
-        return cast(WalkNullGroup, super().nulls)
+    def nulls(self) -> FootstepNullGroup:
+        return cast(FootstepNullGroup, super().nulls)

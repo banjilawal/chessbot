@@ -11,7 +11,7 @@ version: 0.0.2
 
 # Packages
 from .participate import *
-from .walk import *
+from .footstep import *
 
 # Modules
 from .request import ChartValidationRequest

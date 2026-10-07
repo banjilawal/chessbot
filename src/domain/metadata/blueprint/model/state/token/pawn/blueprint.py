@@ -13,7 +13,7 @@ from typing import Optional, Type, cast
 
 from domain import (
     Bishop, CombatantReadiness, Coord, Formation, HomeSquare, Knight, Pawn, PawnToken, PromotionState, Queen, Rank,
-    Rook, Team, Token, TokenBlueprint, TokenDeployment, Walk
+    Rook, Team, Token, TokenBlueprint, TokenDeployment, Footstep
 )
 from err import PawnTokenNullException
 
@@ -28,7 +28,7 @@ class PawnTokenBlueprint(TokenBlueprint[PawnToken]):
 
      Attributes:
         team: Team
-        walk: Walk
+        footstep: Footstep
         rank: Rank
         formation: Formation
         deployment: TokenDeployment
@@ -55,7 +55,7 @@ class PawnTokenBlueprint(TokenBlueprint[PawnToken]):
     def __init__(
             self,
             team: Team,
-            walk: Walk,
+            footstep: Footstep,
             formation: Formation,
             home_square: Optional[HomeSquare] | None = None,
             deployment: Optional[TokenDeployment] | None = None,
@@ -70,7 +70,7 @@ class PawnTokenBlueprint(TokenBlueprint[PawnToken]):
         """
         Args:
             team: Team
-            walk: Walk
+            footstep: Footstep
             formation: Formation
             home_square: Optional[HomeSquare]
             deployment: Optional[TokenDeployment]
@@ -85,7 +85,7 @@ class PawnTokenBlueprint(TokenBlueprint[PawnToken]):
         super().__init__(
             id=id,
             team=team,
-            walk=walk,
+            footstep=footstep,
             formation=formation,
             home_square=home_square,
             deployment=deployment or TokenDeployment.NOT_DEPLOYED,

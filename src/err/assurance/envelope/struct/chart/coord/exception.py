@@ -1,7 +1,7 @@
-# src/err/assurance/envelope/struct/chart/walk/exception.py
+# src/err/assurance/envelope/struct/chart/footstep/exception.py
 
 """
-Module: err.assurance.envelope.struct.chart.walk.exception
+Module: err.assurance.envelope.struct.chart.footstep.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -17,17 +17,17 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# COORD_CHART_ENVELOPE_CONSUMER_FAILURE #======================#
-    "WalkEnvelopeConsumerException",
+    "FootstepEnvelopeConsumerException",
 ]
 
 # ======================# COORD_CHART_ENVELOPE_CONSUMER_FAILURE #======================#
-class WalkEnvelopeConsumerException(ChartEnvelopeConsumerException):
+class FootstepEnvelopeConsumerException(ChartEnvelopeConsumerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a WalkEnvelopConsumer failed.
+        1.  Indicating assurance by a FootstepEnvelopConsumer failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class WalkEnvelopeConsumerException(ChartEnvelopeConsumerException):
     Super Class:
         ChartEnvelopeConsumerException
     """
-    MSG = "WalkEnvelopConsumer failure."
+    MSG = "FootstepEnvelopConsumer failure."
     ERR_CODE = "COORD_CHART_ENVELOPE_CONSUMER_FAILURE"
     
     def __init__(

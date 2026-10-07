@@ -13,11 +13,11 @@ from __future__ import annotations
 from typing import Optional
 
 from assurance import ChartDependency
-from domain import Walk
+from domain import Footstep
 from exchange import CoordValidationResponseWrapper
 
 
-class WalkDependency(ChartDependency[Walk]):
+class FootstepDependency(ChartDependency[Footstep]):
     """
     Role:
         - Toolkit

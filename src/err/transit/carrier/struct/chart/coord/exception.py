@@ -1,7 +1,7 @@
-# src/err/domain/transit/carrier/struct/chart/walk/exception.py
+# src/err/domain/transit/carrier/struct/chart/footstep/exception.py
 
 """
-Module: err.domain.transit.carrier.struct.chart.walk.exception
+Module: err.domain.transit.carrier.struct.chart.footstep.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -17,17 +17,17 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# COORD_CHART_CARRIER_ERROR #======================#
-    "WalkCarrierException",
+    "FootstepCarrierException",
 ]
 
 # ======================# COORD_CHART_CARRIER_ERROR #======================#
-class WalkCarrierException(ChartCarrierException):
+class FootstepCarrierException(ChartCarrierException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a WalkCarrier encountered an error.
+        1.  Indicating a FootstepCarrier encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class WalkCarrierException(ChartCarrierException):
     Super Class:
         ChartCarrierException
     """
-    MSG = "WalkCarrier error."
+    MSG = "FootstepCarrier error."
     ERR_CODE = "COORD_CHART_CARRIER_ERROR"
     
     def __init__(

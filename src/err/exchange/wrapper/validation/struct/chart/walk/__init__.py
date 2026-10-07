@@ -1,7 +1,7 @@
-# src/err/exchange/wrapper/validation/struct/chart/walk/__init__.py
+# src/err/exchange/wrapper/validation/struct/chart/footstep/__init__.py
 
 """
-Module: err.exchange.wrapper.validation.struct.chart.walk.__init__
+Module: err.exchange.wrapper.validation.struct.chart.footstep.__init__
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -12,4 +12,4 @@ version: 1.0.0
 # Packages
 
 # Modules
-from .exception import WalkValidationResponseWrapperException
+from .exception import FootstepValidationResponseWrapperException

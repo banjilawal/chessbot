@@ -252,7 +252,7 @@ class GameDisplay:
   def is_position_valid_for_drag(self, chess_piece: Piece, test_coordinate: Coord) -> bool:
     """Combined state for visual dragging"""
     # 1. KingCheckRecord board_validator's official position (for static entities)
-    if not chess_piece.rank_level.walk.is_walkable(chess_piece, test_coordinate):
+    if not chess_piece.rank_level.footstep.is_footstepable(chess_piece, test_coordinate):
       return False
     return True
 

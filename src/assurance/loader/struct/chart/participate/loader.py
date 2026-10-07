@@ -18,7 +18,7 @@ from err import (
     ParticipationCarrierEmptyException, ParticipationLoaderException,
     ParticipationValidationRequestNullException
 )
-from exchange import WalkValidationRequest
+from exchange import FootstepValidationRequest
 from transit import ParticipationCarrier
 
 from util import LoggingLevelRouter
@@ -89,7 +89,7 @@ class ParticipationLoader(ChartLoader[Participation]):
         # Handle the case that the candidate is null or the rong type.
         priming = self.toolkit.priming_validator.execute(
             candidate=candidate,
-            target_model=WalkValidationRequest,
+            target_model=FootstepValidationRequest,
             null_exception=ParticipationValidationRequestNullException(),
         )
         if priming.is_failure:
@@ -104,7 +104,7 @@ class ParticipationLoader(ChartLoader[Participation]):
                 )
             )
         # --- Cast priming to request for additional tests. ---#
-        request = cast(Type[WalkValidationRequest], priming.payload)
+        request = cast(Type[FootstepValidationRequest], priming.payload)
         
         # Handle the case that request.item is the wrong carrier type.
         carrier_validation = self.toolkit.priming_validator.execute(

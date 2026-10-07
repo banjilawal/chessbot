@@ -17,11 +17,11 @@ from err import AssuranceException
 
 __all__ = [
     # ======================# POSITION_CHART_PRODUCER_FAILURE #======================#
-    "WalkValidatorException",
+    "FootstepValidatorException",
 ]
 
 # ======================# POSITION_CHART_PRODUCER_FAILURE #======================#
-class WalkValidatorException(AssuranceException):
+class FootstepValidatorException(AssuranceException):
     """
     Role:
         - Error Tracing

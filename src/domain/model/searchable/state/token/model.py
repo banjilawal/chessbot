@@ -13,7 +13,7 @@ from abc import abstractmethod
 from typing import Optional
 
 from domain import (
-    Coord, Formation, HomeSquare, Rank, StateModel, Team, TokenDeployment, Walk
+    Coord, Formation, HomeSquare, Rank, StateModel, Team, TokenDeployment, Footstep
 )
 
 
@@ -50,7 +50,7 @@ class Token(StateModel):
     _formation: Formation
     _home_square: HomeSquare
     _deployment: TokenDeployment
-    _walk: Walk
+    _footstep: Footstep
 
     def __init__(
             self,
@@ -58,7 +58,7 @@ class Token(StateModel):
             team: Team,
             formation: Formation,
             home_square: HomeSquare,
-            walk: Optional[Walk] | None = None,
+            footstep: Optional[Footstep] | None = None,
     ):
         """
         Args:
@@ -66,14 +66,14 @@ class Token(StateModel):
             team: Team
             formation: Formation
             home_square: OpeningSquare
-            walk: Optional[Walk]
+            footstep: Optional[Footstep]
         """
         super().__init__(id=id)
         self._team = team
         self._formation = formation
         self._home_square = home_square
         self._deployment = TokenDeployment.NOT_DEPLOYED
-        self._walk = walk or Walk()
+        self._footstep = footstep or Footstep()
     
     @property
     def formation(self) -> Formation:
@@ -107,19 +107,19 @@ class Token(StateModel):
         self._deployment = TokenDeployment.DEPLOYED_TO_HOME_SQUARE
         
     @property
-    def walk(self) -> Walk:
-        return self._walk
+    def footstep(self) -> Footstep:
+        return self._footstep
     
     @property
     def position(self) -> Optional[Coord]:
-        return self._walk.position
+        return self._footstep.position
     
     @position.setter
     def position(self, other: Coord):
-        position = self._walk.position
-        previous_position = self._walk.position
+        position = self._footstep.position
+        previous_position = self._footstep.position
         
-        self._walk = Walk(
+        self._footstep = Footstep(
             position=position,
             previous_position=previous_position,
         )
@@ -127,7 +127,7 @@ class Token(StateModel):
     @property
     def has_been_deployed(self) -> bool:
        return (
-               self._walk.position is not None and
+               self._footstep.position is not None and
                self._deployment == TokenDeployment.DEPLOYED_TO_HOME_SQUARE
        )
     

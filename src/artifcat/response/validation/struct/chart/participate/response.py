@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ChartValidationResponse, ResponseState, ValidationResult
-from exchange import Request, WalkValidationRequest
+from exchange import Request, FootstepValidationRequest
 from domain import Participation, ParticipationBlueprint
 from transit import ParticipationCarrier
 
@@ -56,7 +56,7 @@ class ParticipationValidationResponse(
             self,
             state: ResponseState,
             result: ValidationResult,
-            request: WalkValidationRequest,
+            request: FootstepValidationRequest,
             exception: Optional[Exception] | None = None,
     ):
         """
@@ -74,8 +74,8 @@ class ParticipationValidationResponse(
         )
     
     @property
-    def request(self) -> WalkValidationRequest:
-        return cast(WalkValidationRequest, super().request)
+    def request(self) -> FootstepValidationRequest:
+        return cast(FootstepValidationRequest, super().request)
     
     @property
     def valid_model(self) -> Optional[Participation]:
@@ -141,7 +141,7 @@ class ParticipationValidationResponse(
     ) -> ParticipationValidationResponse:
         # Downcast the request into a ParticipationValidationRequest.
         validation_request = cast(
-            WalkValidationRequest,
+            FootstepValidationRequest,
             request,
         )
         # Send a success Response using the cast.
@@ -160,7 +160,7 @@ class ParticipationValidationResponse(
     ) -> ParticipationValidationResponse:
         # Downcast the request into a ParticipationValidationRequest.
         validation_request = cast(
-            WalkValidationRequest,
+            FootstepValidationRequest,
             request,
         )
         # Send a failure Response using the cast.

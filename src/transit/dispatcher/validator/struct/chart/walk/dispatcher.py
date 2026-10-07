@@ -1,7 +1,7 @@
-# src/transit/dispatcher/validator/struct/chart/walk/validator.py
+# src/transit/dispatcher/validator/struct/chart/footstep/validator.py
 
 """
-Module: transit.dispatcher.validator.chart.walk.validator
+Module: transit.dispatcher.validator.chart.footstep.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,27 +11,27 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from assurance import WalkValidator
+from assurance import FootstepValidator
 from artifcat import ValidationResult
-from domain import Walk
-from err import WalkValidationDispatcherException
-from transit import ChartValidationDispatcher, WalkCarrier
+from domain import Footstep
+from err import FootstepValidationDispatcherException
+from transit import ChartValidationDispatcher, FootstepCarrier
 from util import LoggingLevelRouter
 
 
-class WalkValidationDispatcher(ChartValidationDispatcher[Walk]):
+class FootstepValidationDispatcher(ChartValidationDispatcher[Footstep]):
     """
     Role
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a Walk instance is certified safe, reliable, and consistent before use.
+        1.  Ensure a Footstep instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        validator: WalkValidator
+        validator: FootstepValidator
 
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult{Walk]
+        -   def execute(candidate: Any) -> ValidationResult{Footstep]
 
     Super Class:
         ChartValidator
@@ -39,31 +39,31 @@ class WalkValidationDispatcher(ChartValidationDispatcher[Walk]):
     
     def __init__(
             self,
-            validator: WalkValidator | None = WalkValidator(),
+            validator: FootstepValidator | None = FootstepValidator(),
     ):
-        super().__init__(validator=validator or WalkValidator())
+        super().__init__(validator=validator or FootstepValidator())
         
     @property
-    def validator(self) -> WalkValidator:
-        return cast(WalkValidator, super().validator)
+    def validator(self) -> FootstepValidator:
+        return cast(FootstepValidator, super().validator)
     
 
     @LoggingLevelRouter.monitor
-    def execute(self, job: Any) -> ValidationResult[WalkCarrier]:
+    def execute(self, job: Any) -> ValidationResult[FootstepCarrier]:
         """
-        Verify the object is a Walk that is safe to use.
+        Verify the object is a Footstep that is safe to use.
 
         Action:
             1.  Send an exception chain in the ValidationResult if the candidate fails a
                 validator test..
-            2.  Otherwise, cast the payload into a Walk and send in the success result.
+            2.  Otherwise, cast the payload into a Footstep and send in the success result.
                 success result.
         Args:
             job: Any
         Returns:
-            ValidationResult[Walk]
+            ValidationResult[Footstep]
         Raises:
-             WalkValidationDispatcherException
+             FootstepValidationDispatcherException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -72,15 +72,15 @@ class WalkValidationDispatcher(ChartValidationDispatcher[Walk]):
         if validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                WalkValidationDispatcherException(
+                FootstepValidationDispatcherException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=WalkValidationDispatcherException.MSG,
-                    err_code=WalkValidationDispatcherException.ERR_CODE,
+                    msg=FootstepValidationDispatcherException.MSG,
+                    err_code=FootstepValidationDispatcherException.ERR_CODE,
                     ex=validation.exception,
                 )
             )
         # --- Forward the work product to the caller. ---#
         return ValidationResult.success(
-            cast(WalkCarrier, validation.payload)
+            cast(FootstepCarrier, validation.payload)
         )

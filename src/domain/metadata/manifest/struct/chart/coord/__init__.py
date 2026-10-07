@@ -1,16 +1,16 @@
-# src/domain/metadata/manifest/struct/chart/walk/__init__.py
+# src/domain/metadata/manifest/struct/chart/footstep/__init__.py
 
 """
-Module: domain.metadata.manifest.struct.chart.walk.__init__
+Module: domain.metadata.manifest.struct.chart.footstep.__init__
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
 """
 
-# =========== DOMAIN.METADATA.MANIFEST.STRUCT.CHART.WALK PACKAGE ===========#
+# =========== DOMAIN.METADATA.MANIFEST.STRUCT.CHART.FOOTSTEP PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .manifest import WalkManifest
+from .manifest import FootstepManifest

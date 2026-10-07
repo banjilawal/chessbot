@@ -188,7 +188,7 @@ class PawnTokenEnvelopeConsumer(
         if safe.prime_extract.reference.has_model:
             model = PawnToken(
                 id=safe.id,
-                walk=safe.walk,
+                footstep=safe.footstep,
                 team=safe.team,
                 formation=safe.formation,
                 home_square=safe.home_square,
@@ -206,7 +206,7 @@ class PawnTokenEnvelopeConsumer(
             blueprint=PawnTokenBlueprint(
                 id=safe.id,
                 team=safe.team,
-                walk=safe.walk,
+                footstep=safe.footstep,
                 rank=rank,
                 promotion_state=promotion_state,
                 formation=safe.formation,

@@ -1,15 +1,15 @@
-# src/transit/dispatcher/validator/struct/chart/walk/__init__.py
+# src/transit/dispatcher/validator/struct/chart/footstep/__init__.py
 
 """
-Module: transit.dispatcher.validator.chart.walk.__init__
+Module: transit.dispatcher.validator.chart.footstep.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== TRANSIT.DISPATCHER.VALIDATOR.CHART.WALK PACKAGE ===========#
+# =========== TRANSIT.DISPATCHER.VALIDATOR.CHART.FOOTSTEP PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .dispatcher import WalkValidationDispatcher
+from .dispatcher import FootstepValidationDispatcher

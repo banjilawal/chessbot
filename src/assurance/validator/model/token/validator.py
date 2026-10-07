@@ -13,7 +13,7 @@ from typing import Any, Dict, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    TokenProductEnvelope, RootTokenEnvelopeProducer, ModelValidator, WalkValidator,
+    TokenProductEnvelope, RootTokenEnvelopeProducer, ModelValidator, FootstepValidator,
     TokenValidationRouter,
     TokenValidatorToolkit
 )

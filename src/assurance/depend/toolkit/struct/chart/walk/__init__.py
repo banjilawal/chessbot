@@ -1,16 +1,16 @@
-# src/assurance/depend/toolkit/struct/chart/walk/__init__.py
+# src/assurance/depend/toolkit/struct/chart/footstep/__init__.py
 
 """
-Module: assurance.depend.toolkit.struct.chart.walk.__init__
+Module: assurance.depend.toolkit.struct.chart.footstep.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ASSURANCE.DEPEND.TOOLKIT.STRUCT.CHART.WALK PACKAGE ===========#
+# =========== ASSURANCE.DEPEND.TOOLKIT.STRUCT.CHART.FOOTSTEP PACKAGE ===========#
 
 # Packages
 
 
 # Module
-from .toolkit import WalkValidatorToolkit
+from .toolkit import FootstepValidatorToolkit

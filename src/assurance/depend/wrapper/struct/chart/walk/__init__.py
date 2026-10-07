@@ -1,16 +1,16 @@
-# src/assurance/depend/wrapper/struct/chart/walk/__init__.py
+# src/assurance/depend/wrapper/struct/chart/footstep/__init__.py
 
 """
-Module: assurance.depend.wrapper.struct.chart.walk.__init__
+Module: assurance.depend.wrapper.struct.chart.footstep.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ASSURANCE.DEPEND.WRAPPER.STRUCT.CHART.WALK PACKAGE ===========#
+# =========== ASSURANCE.DEPEND.WRAPPER.STRUCT.CHART.FOOTSTEP PACKAGE ===========#
 
 # Packages
 
 
 # Module
-from .depend import WalkDependency
+from .depend import FootstepDependency

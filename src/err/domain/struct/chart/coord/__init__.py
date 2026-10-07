@@ -1,15 +1,15 @@
-# src/err/domain/struct/chart/walk/__init__.py
+# src/err/domain/struct/chart/footstep/__init__.py
 
 """
-Module: err.domain.struct.chart.walk.__init__
+Module: err.domain.struct.chart.footstep.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.DOMAIN.STRUCT.CHART.WALK PACKAGE ===========#
+# ============ ERR.DOMAIN.STRUCT.CHART.FOOTSTEP PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .exception import WalkException
+from .exception import FootstepException

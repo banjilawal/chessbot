@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from domain import (
-    Walk, Formation, HomeSquare, Team, Token, TokenDeployment,
+    Footstep, Formation, HomeSquare, Team, Token, TokenDeployment,
     TokenPrimeExtract
 )
 from transit import CombatantTokenCarrier, KingTokenCarrier, PawnTokenCarrier, ProductEnvelope
@@ -29,7 +29,7 @@ class RootTokenEnvelope(ProductEnvelope[Token]):
     Attributes:
         id: int
         team: Team
-        walk: Walk
+        footstep: Footstep
         formation: Formation
         home_square: HomeSquare
         deployment: TokenDeployment
@@ -42,7 +42,7 @@ class RootTokenEnvelope(ProductEnvelope[Token]):
     """
     _id: int
     _team: Team
-    _walk: Walk
+    _footstep: Footstep
     _formation: Formation
     _home_square: HomeSquare
     _deployment: TokenDeployment
@@ -51,7 +51,7 @@ class RootTokenEnvelope(ProductEnvelope[Token]):
             self,
             id: int,
             team: Team,
-            walk: Walk,
+            footstep: Footstep,
             formation: Formation,
             home_square: HomeSquare,
             deployment: TokenDeployment,
@@ -61,7 +61,7 @@ class RootTokenEnvelope(ProductEnvelope[Token]):
         Args:
             id: int
             team: Team
-            walk: Walk
+            footstep: Footstep
             formation: Formation
             home_square: HomeSquare
             deployment: TokenDeployment
@@ -70,7 +70,7 @@ class RootTokenEnvelope(ProductEnvelope[Token]):
         super().__init__(prime_extract=prime_extract)
         self._id = id
         self._team = team
-        self._walk = walk
+        self._footstep = footstep
         self._formation = formation
         self._home_square = home_square
         self._deployment = deployment
@@ -88,8 +88,8 @@ class RootTokenEnvelope(ProductEnvelope[Token]):
         return self._team
     
     @property
-    def walk(self) -> Walk:
-        return self._walk
+    def footstep(self) -> Footstep:
+        return self._footstep
     
     @property
     def formation(self) -> Formation:

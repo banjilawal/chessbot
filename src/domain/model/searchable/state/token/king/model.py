@@ -13,7 +13,7 @@ from typing import Optional
 
 from domain import (
     EncounterAlertLevel, EncounterWarning, CheckmateEncounter, TokenDeployment, Formation, HomeSquare, Team,
-    Token, KingReadiness, TokenReadiness, Walk
+    Token, KingReadiness, TokenReadiness, Footstep
 )
 
 
@@ -29,7 +29,7 @@ class KingToken(Token):
     Attributes:
         id: int
         team: Team
-        walk: Walk
+        footstep: Footstep
         formation: Formation
         home_square: HomeSquare
         checkmate:
@@ -53,7 +53,7 @@ class KingToken(Token):
             team: Team,
             formation: Formation,
             home_square: HomeSquare,
-            walk: Optional[Walk] | None = None,
+            footstep: Optional[Footstep] | None = None,
     ):
         """
         Args:
@@ -61,14 +61,14 @@ class KingToken(Token):
             team: Team
             formation: Formation
             home_square: Square
-            walk: Optional[Walk]
+            footstep: Optional[Footstep]
         """
         super().__init__(
             id=id,
             team=team,
             formation=formation,
             home_square=home_square,
-            walk=walk,
+            footstep=footstep,
         )
         self._checkmate = None
         self._encounter_warning = None

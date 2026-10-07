@@ -1,7 +1,7 @@
-# src/exchange/responder/validation/struct/chart/walk/responder.py
+# src/exchange/responder/validation/struct/chart/footstep/responder.py
 
 """
-Module: exchange.responder.validation.struct.chart.walk.responder
+Module: exchange.responder.validation.struct.chart.footstep.responder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,24 +11,24 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import Walk
+from domain import Footstep
 from exchange import ChartValidationResponder
 from util import LoggingLevelRouter
 
 
-class WalkValidationResponder(ChartValidationResponder[Walk]):
+class FootstepValidationResponder(ChartValidationResponder[Footstep]):
     """
     Role
         - Mediator
 
     Responsibilities:
-        1.  Intermediary in the Walk validation Request-Response workflow.
+        1.  Intermediary in the Footstep validation Request-Response workflow.
 
     Attributes:
-        dispatcher: WalkValidationDispatcher[T]
+        dispatcher: FootstepValidationDispatcher[T]
 
     Provides:
-        -   def submit(request: WalkValidationRequest[T]) -> WalkValidationResponse[T]
+        -   def submit(request: FootstepValidationRequest[T]) -> FootstepValidationResponse[T]
 
     Super Class:
         ChartValidatorExchange
@@ -36,25 +36,25 @@ class WalkValidationResponder(ChartValidationResponder[Walk]):
     
     def __init__(
             self, 
-            dispatcher: Optional[WalkValidationDispatcher] | None = None,
+            dispatcher: Optional[FootstepValidationDispatcher] | None = None,
     ):
         """
         Args:
-            dispatcher: Optional[WalkValidationDispatcher]
+            dispatcher: Optional[FootstepValidationDispatcher]
         """
         super().__init__(
-            dispatcher=dispatcher or WalkValidationDispatcher()
+            dispatcher=dispatcher or FootstepValidationDispatcher()
         )
         
     @property
-    def dispatcher(self) -> WalkValidationDispatcher:
-        return cast(WalkValidationDispatcher, super().dispatcher)
+    def dispatcher(self) -> FootstepValidationDispatcher:
+        return cast(FootstepValidationDispatcher, super().dispatcher)
     
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            request: WalkValidationRequest
-    ) -> WalkValidationResponse:
+            request: FootstepValidationRequest
+    ) -> FootstepValidationResponse:
         """
         Certify a candidate is a CoordCarrier whose payload is either a Coord
         or a Blueprint that is safe to use.
@@ -64,9 +64,9 @@ class WalkValidationResponder(ChartValidationResponder[Walk]):
                 aborts the job.
             2.  Otherwise, extract and cast the carrier to send in the success result.
         Args:
-            request: WalkValidationRequest
+            request: FootstepValidationRequest
         Result:
-            WalkValidationResponse
+            FootstepValidationResponse
         Raises:
             CoordValidatorExchangeException
         """
@@ -76,20 +76,20 @@ class WalkValidationResponder(ChartValidationResponder[Walk]):
         # Handle the case that the dispatcher marks the candidate unsafe.
         if result.is_failure:
             # Send the exception chain on failure.
-            return WalkValidationResponse.failure(
+            return FootstepValidationResponse.failure(
                 request=request,
                 result=result,
-                exception=WalkValidationResponderException(
+                exception=FootstepValidationResponderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=WalkValidationResponderException.MSG,
-                    err_code=WalkValidationResponderException.ERR_CODE,
+                    msg=FootstepValidationResponderException.MSG,
+                    err_code=FootstepValidationResponderException.ERR_CODE,
                     ex=result.exception,
                 ),
             )
         # --- Otherwise cast and send the success response to the caller. ---#
-        carrier = cast(WalkCarrier, result.payload)
-        return WalkValidationResponse.success(
+        carrier = cast(FootstepCarrier, result.payload)
+        return FootstepValidationResponse.success(
             request=request,
             result=ValidationResult(carrier),
         )

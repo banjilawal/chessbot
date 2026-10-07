@@ -15,7 +15,7 @@ from typing import Generic, Optional, Type, TypeVar, cast
 from domain import (
     CombatantTokenBlueprint, Coord, Formation, HomeSquare,
     KingTokenBlueprint, PawnTokenBlueprint, StateModelBlueprint,
-    Team, Token, TokenDeployment, Walk
+    Team, Token, TokenDeployment, Footstep
 )
 from err import  TokenNullException
 
@@ -31,7 +31,7 @@ class TokenBlueprint(StateModelBlueprint[T], Generic[T]):
 
      Attributes:
         team: Team
-        walk: Walk
+        footstep: Footstep
         formation: Formation
         home_square: Optional[HomeSquare]
         deployment: Optional[TokenDeployment]
@@ -46,7 +46,7 @@ class TokenBlueprint(StateModelBlueprint[T], Generic[T]):
         StateModelBlueprint
      """
     _team: Team
-    _walk: Walk
+    _footstep: Footstep
     _formation: Formation
     _deployment: TokenDeployment
     _home_square: Optional[HomeSquare]
@@ -55,7 +55,7 @@ class TokenBlueprint(StateModelBlueprint[T], Generic[T]):
     def __init__(
             self,
             team: Team,
-            walk: Walk,
+            footstep: Footstep,
             formation: Formation,
             home_square: Optional[HomeSquare] | None = None,
             deployment: Optional[TokenDeployment] | None = None,
@@ -66,7 +66,7 @@ class TokenBlueprint(StateModelBlueprint[T], Generic[T]):
         """
         Args:
             team: Team
-            walk: Walk
+            footstep: Footstep
             formation: Formation
             home_square: Optional[HomeSquare]
             deployment: Optional[TokenDeployment]
@@ -80,7 +80,7 @@ class TokenBlueprint(StateModelBlueprint[T], Generic[T]):
             domain_null_exception=domain_null_exception or TokenNullException(),
         )
         self._team = team
-        self._walk = walk
+        self._footstep = footstep
         self._formation = formation
         self._home_square = home_square
         self._deployment = deployment or TokenDeployment.NOT_DEPLOYED
@@ -102,8 +102,8 @@ class TokenBlueprint(StateModelBlueprint[T], Generic[T]):
         return self._home_square
     
     @property
-    def walk(self) -> Walk:
-        return self._walk
+    def footstep(self) -> Footstep:
+        return self._footstep
     
     @property
     def is_pawn_token_blueprint(self) -> bool:

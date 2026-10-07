@@ -1,7 +1,7 @@
-# src/err/transit/dispatcher/validation/struct/chart/walk/exception.py
+# src/err/transit/dispatcher/validation/struct/chart/footstep/exception.py
 
 """
-Module: err.transit.dispatcher.validation.struct.chart.walk.exception
+Module: err.transit.dispatcher.validation.struct.chart.footstep.exception
 Author: Banji Lawal
 Created: 2025-10-03
 version: 1.0.0
@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import ChartValidationDispatcherException
 
 __all__ = [
-    # ======================# WALK_VALIDATION_DISPATCHER_FAILURE #======================#
-    "WalkValidationDispatcherException",
+    # ======================# FOOTSTEP_VALIDATION_DISPATCHER_FAILURE #======================#
+    "FootstepValidationDispatcherException",
 ]
 
-# ======================# WALK_VALIDATION_DISPATCHER_FAILURE #======================#
-class WalkValidationDispatcherException(ChartValidationDispatcherException):
+# ======================# FOOTSTEP_VALIDATION_DISPATCHER_FAILURE #======================#
+class FootstepValidationDispatcherException(ChartValidationDispatcherException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a WalkValidationDispatcher encountered an error.
+        1.  Indicating a FootstepValidationDispatcher encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class WalkValidationDispatcherException(ChartValidationDispatcherException):
     Super Class:
         ChartValidationDispatcherException
     """
-    MSG = "WalkValidationDispatcher failure."
-    ERR_CODE = "WALK_VALIDATION_DISPATCHER_FAILURE"
+    MSG = "FootstepValidationDispatcher failure."
+    ERR_CODE = "FOOTSTEP_VALIDATION_DISPATCHER_FAILURE"
     
     def __init__(
             self,

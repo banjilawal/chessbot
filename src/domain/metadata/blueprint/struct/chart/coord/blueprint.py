@@ -1,7 +1,7 @@
-# src/domain/metadata/blueprint/struct/chart/walk.blueprint.py
+# src/domain/metadata/blueprint/struct/chart/footstep.blueprint.py
 
 """
-Module: domain.metadata.blueprint.struct.chart.walk.blueprint
+Module: domain.metadata.blueprint.struct.chart.footstep.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Dict, Optional, Type, cast
 
-from domain import Coord, ChartBlueprint, Walk
-from err import WalkNullException
+from domain import Coord, ChartBlueprint, Footstep
+from err import FootstepNullException
 
 
-class WalkBlueprint(ChartBlueprint[Walk]):
+class FootstepBlueprint(ChartBlueprint[Footstep]):
     """
      Role:
         1.  Metadata
 
      Responsibilities:
-         1.  Provide attributes for hydrating a Walk.
+         1.  Provide attributes for hydrating a Footstep.
 
      Attributes:
         position: Optional[Coord]
         previous_position: Optional[Coord]
-        Optional[Type[Walk]]
-        domain_null_exception: Optional[WalkNullException]
+        Optional[Type[Footstep]]
+        domain_null_exception: Optional[FootstepNullException]
 
      Provides:
 
@@ -41,19 +41,19 @@ class WalkBlueprint(ChartBlueprint[Walk]):
             self,
             position: Optional[Coord] | None = None,
             previous_position: Optional[Coord] | None = None,
-            domain_class: Optional[Type[Walk]] | None = None,
-            domain_null_exception: Optional[WalkNullException] | None = None,
+            domain_class: Optional[Type[Footstep]] | None = None,
+            domain_null_exception: Optional[FootstepNullException] | None = None,
     ):
         """
         Args:
             position: Optional[Coord]
             previous_position: Optional[Coord]
-            Optional[Type[Walk]]
-            domain_null_exception: Optional[WalkNullException]
+            Optional[Type[Footstep]]
+            domain_null_exception: Optional[FootstepNullException]
         """
         super().__init__(
-            domain_class=domain_class or Walk,
-            domain_null_exception=domain_null_exception or WalkNullException(),
+            domain_class=domain_class or Footstep,
+            domain_null_exception=domain_null_exception or FootstepNullException(),
         )
         self._position = position
         self._previous_position = previous_position
@@ -110,11 +110,11 @@ class WalkBlueprint(ChartBlueprint[Walk]):
         }
     
     @property
-    def domain_class(self) -> Type[Walk]:
-        return cast(Type[Walk], super().domain_class)
+    def domain_class(self) -> Type[Footstep]:
+        return cast(Type[Footstep], super().domain_class)
     
     @property
-    def domain_null_exception(self) -> WalkNullException:
-        return cast(WalkNullException, super().domain_null_exception)
+    def domain_null_exception(self) -> FootstepNullException:
+        return cast(FootstepNullException, super().domain_null_exception)
     
     

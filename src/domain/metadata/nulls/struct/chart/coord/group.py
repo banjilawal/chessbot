@@ -1,7 +1,7 @@
-# src/domain/metadata/nulls/struct/chart/walk/group.py
+# src/domain/metadata/nulls/struct/chart/footstep/group.py
 
 """
-Module: domain.metadata.nulls.struct.chart.walk.group
+Module: domain.metadata.nulls.struct.chart.footstep.group
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -11,25 +11,25 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import ChartNullGroup, Walk
+from domain import ChartNullGroup, Footstep
 from err import (
-    WalkBlueprintNullException, WalkCarrierNullException,
-    WalkNullException
+    FootstepBlueprintNullException, FootstepCarrierNullException,
+    FootstepNullException
 )
 
 
-class WalkNullGroup(ChartNullGroup[Walk]):
+class FootstepNullGroup(ChartNullGroup[Footstep]):
     """
     Role:
         - Metadata
 
     Responsibilities:
-        1. Catalog of NullExceptions associated with a Walk's integrity cycle.
+        1. Catalog of NullExceptions associated with a Footstep's integrity cycle.
 
     Attributes:
-        model: WalkNullException
-        carrier: WalkCarrierNullException
-        blueprint:WalkBlueprintNullException
+        model: FootstepNullException
+        carrier: FootstepCarrierNullException
+        blueprint:FootstepBlueprintNullException
 
     Provides:
 
@@ -40,34 +40,34 @@ class WalkNullGroup(ChartNullGroup[Walk]):
     
     def __init__(
             self,
-            model: Optional[WalkNullException] | None = None,
-            carrier: Optional[WalkCarrierNullException] | None = None,
-            blueprint: Optional[WalkBlueprintNullException] | None = None,
+            model: Optional[FootstepNullException] | None = None,
+            carrier: Optional[FootstepCarrierNullException] | None = None,
+            blueprint: Optional[FootstepBlueprintNullException] | None = None,
     ):
         """
         Args:
-            model: Optional[WalkNullException]
-            carrier: Optional[WalkCarrierNullException]
-            blueprint: Optional[WalkBlueprintNullException]
+            model: Optional[FootstepNullException]
+            carrier: Optional[FootstepCarrierNullException]
+            blueprint: Optional[FootstepBlueprintNullException]
         """
         super().__init__(
-            model=model or WalkNullException(),
-            carrier=carrier or WalkCarrierNullException(),
-            blueprint=blueprint or WalkBlueprintNullException(),
+            model=model or FootstepNullException(),
+            carrier=carrier or FootstepCarrierNullException(),
+            blueprint=blueprint or FootstepBlueprintNullException(),
         )
         
     @property
-    def struct(self) -> WalkNullException:
-        return cast(WalkNullException, super().model)
+    def struct(self) -> FootstepNullException:
+        return cast(FootstepNullException, super().model)
     
     @property
-    def model(self) -> WalkNullException:
+    def model(self) -> FootstepNullException:
         return self.struct
     
     @property
-    def carrier(self) -> WalkCarrierNullException:
-        return cast(WalkCarrierNullException, super().carrier)
+    def carrier(self) -> FootstepCarrierNullException:
+        return cast(FootstepCarrierNullException, super().carrier)
     
     @property
-    def blueprint(self) -> WalkBlueprintNullException:
-        return cast(WalkBlueprintNullException, super().blueprint)
+    def blueprint(self) -> FootstepBlueprintNullException:
+        return cast(FootstepBlueprintNullException, super().blueprint)

@@ -1,7 +1,7 @@
-# src/artifact/response/validation/struct/chart/walk/response.py
+# src/artifact/response/validation/struct/chart/footstep/response.py
 
 """
-Module: artifact.response.validation.struct.chart.walk.response
+Module: artifact.response.validation.struct.chart.footstep.response
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,41 +12,41 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ChartValidationResponse, ResponseState, ValidationResult
-from exchange import Request, WalkValidationRequest
-from domain import Walk, WalkBlueprint
-from transit import WalkCarrier
+from exchange import Request, FootstepValidationRequest
+from domain import Footstep, FootstepBlueprint
+from transit import FootstepCarrier
 
 
-class WalkValidationResponse(
-    ChartValidationResponse[Walk]
+class FootstepValidationResponse(
+    ChartValidationResponse[Footstep]
 ):
     """
     Role
         -   Messaging
 
     Responsibilities:
-        1.  Capture a Walk validation request-response cycle's data and state.
+        1.  Capture a Footstep validation request-response cycle's data and state.
 
     Attributes:
         state: ResponseState
-        result: ValidationResult[WalkCarrier]
-        request: WalkValidationRequest
+        result: ValidationResult[FootstepCarrier]
+        request: FootstepValidationRequest
         exception: Optional[Exception]
 
     Provides:
         -   def valid_model() -> Optional[Coord]
-        -   def valid_blueprint() -> Optional[WalkBlueprint]
+        -   def valid_blueprint() -> Optional[FootstepBlueprint]
 
         -   def success(
                     request: Request,
-                    result: ValidationResult[WalkCarrier],
-            ) -> WalkValidationResponse
+                    result: ValidationResult[FootstepCarrier],
+            ) -> FootstepValidationResponse
 
         -   def failure(
                     request: Request,
-                    result: ValidationResult[WalkCarrier],
+                    result: ValidationResult[FootstepCarrier],
                     exception: Exception,
-            ) -> WalkValidationResponse
+            ) -> FootstepValidationResponse
             
     Super Class:
         ChartValidationResponse
@@ -56,14 +56,14 @@ class WalkValidationResponse(
             self,
             state: ResponseState,
             result: ValidationResult,
-            request: WalkValidationRequest,
+            request: FootstepValidationRequest,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
             state: ResponseState
-            result: ValidationResult[WalkCarrier]
-            request: WalkValidationRequest
+            result: ValidationResult[FootstepCarrier]
+            request: FootstepValidationRequest
             exception: Optional[Exception]
         """
         super().__init__(
@@ -74,49 +74,49 @@ class WalkValidationResponse(
         )
     
     @property
-    def request(self) -> WalkValidationRequest:
-        return cast(WalkValidationRequest, super().request)
+    def request(self) -> FootstepValidationRequest:
+        return cast(FootstepValidationRequest, super().request)
     
     @property
-    def valid_model(self) -> Optional[Walk]:
+    def valid_model(self) -> Optional[Footstep]:
         # Handle the case that the validation failed.
         if self.result.is_failure:
             return None
         # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(WalkCarrier, self.result.payload)
+        carrier = cast(FootstepCarrier, self.result.payload)
         
         # Handle the case that the carrier is null or the wrong type.
         if (
                 carrier is None or
-                not isinstance(carrier, WalkCarrier)
+                not isinstance(carrier, FootstepCarrier)
         ):
             return None
         # Handle the case that there is no chart in the carrier.
         if not carrier.has_model:
             return None
         # --- Extract the chart. ---#
-        chart = cast(Walk, carrier.entity)
+        chart = cast(Footstep, carrier.entity)
         # Handle the case that the chart is null or the wrong type.
         if (
                 chart is None or
-                not isinstance(chart, Walk)
+                not isinstance(chart, Footstep)
         ):
             return None
         # Finally send the success result.
         return chart
     
     @property
-    def valid_blueprint(self) -> Optional[WalkBlueprint]:
+    def valid_blueprint(self) -> Optional[FootstepBlueprint]:
         # Handle the case that the validation failed.
         if self.result.is_failure:
             return None
         # --- Otherwise extract the carrier for additional processing. ---#
-        carrier = cast(WalkCarrier, self.result.payload)
+        carrier = cast(FootstepCarrier, self.result.payload)
         
         # Handle the case that the carrier is null or the wrong type.
         if (
                 carrier is None or
-                not isinstance(carrier, WalkCarrier)
+                not isinstance(carrier, FootstepCarrier)
         ):
             return None
         # Handle the case that there is no blueprint in the carrier.
@@ -127,7 +127,7 @@ class WalkValidationResponse(
         # Handle the case that the blueprint is null or the wrong type.
         if (
                 blueprint is None or
-                not isinstance(blueprint, WalkBlueprint)
+                not isinstance(blueprint, FootstepBlueprint)
         ):
             return None
         # Finally send the success result.
@@ -138,10 +138,10 @@ class WalkValidationResponse(
             cls,
             request: Request,
             result: ValidationResult,
-    ) -> WalkValidationResponse:
-        # Downcast the request into a WalkValidationRequest.
+    ) -> FootstepValidationResponse:
+        # Downcast the request into a FootstepValidationRequest.
         validation_request = cast(
-            WalkValidationRequest,
+            FootstepValidationRequest,
             request,
         )
         # Send a success Response using the cast.
@@ -157,10 +157,10 @@ class WalkValidationResponse(
             request: Request,
             result: ValidationResult,
             exception: Exception,
-    ) -> WalkValidationResponse:
-        # Downcast the request into a WalkValidationRequest.
+    ) -> FootstepValidationResponse:
+        # Downcast the request into a FootstepValidationRequest.
         validation_request = cast(
-            WalkValidationRequest,
+            FootstepValidationRequest,
             request,
         )
         # Send a failure Response using the cast.

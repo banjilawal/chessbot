@@ -45,7 +45,7 @@ class Scout:
 
     for territory in self._scout.rank_level.quadrants:
       for square in chess_board.iterator(origin, territory.vector):
-        if not self._scout.rank_level.walk.is_walkable(self._scout, square.position):
+        if not self._scout.rank_level.footstep.is_footstepable(self._scout, square.position):
           break
         if square.occupant is not None and square not in squares:
           squares.append(square)

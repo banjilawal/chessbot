@@ -19,12 +19,12 @@ def main():
 
    bp2_dest_square = arena.chess_board.find_square_by_coord(bp2_dest)
    print(f"dest square:{bp2_dest_square}")
-   if rank.walk.is_walkable(chess_piece=bp2, destination=bp2_dest):
-     print(f"can walk to {bp2_dest}")
+   if rank.footstep.is_footstepable(chess_piece=bp2, destination=bp2_dest):
+     print(f"can footstep to {bp2_dest}")
    #   print(f" {bp2} advancing to to {dest} from {point}")
      arena.chess_board.capture_square(bp2, bp2_dest)
    else:
-     print(f"cannot walk to {bp2_dest} from {bp2_origin}")
+     print(f"cannot footstep to {bp2_dest} from {bp2_origin}")
    print(arena.chess_board)
 
    wp3 = arena.chess_board.find_square_by_name("c7").occupant
@@ -34,31 +34,31 @@ def main():
    print(f"\n{wp3}")
    rank = wp3.rank_name
    print(f"Rank:{rank}")
-   if rank.walk.is_walkable(chess_piece=wp3, destination=wp3_dest):
-     print(f"can walk to {wp3_dest}")
+   if rank.footstep.is_footstepable(chess_piece=wp3, destination=wp3_dest):
+     print(f"can footstep to {wp3_dest}")
      arena.chess_board.capture_square(wp3, wp3_dest)
    else:
-     print(f"cannot walk to {wp3_dest} from {wp3_origin}")
+     print(f"cannot footstep to {wp3_dest} from {wp3_origin}")
    # print(arena.chess_board)
 
    origin = bp2.positions.current_coord()
    print(f"bp2.coord {origin}\n ")
    bp2_dest = Coord(row=(origin.row + 1), column=origin.column)
    print(f"dest square:{bp2_dest_square}")
-   if rank.walk.is_walkable(chess_piece=bp2, destination=bp2_dest):
-     print(f"can walk to {bp2_dest}")
+   if rank.footstep.is_footstepable(chess_piece=bp2, destination=bp2_dest):
+     print(f"can footstep to {bp2_dest}")
      #   print(f" {bp2} advancing to to {dest} from {point}")
      arena.chess_board.capture_square(bp2, bp2_dest)
    else:
-     print(f"cannot walk to {bp2_dest} from {bp2_origin}")
+     print(f"cannot footstep to {bp2_dest} from {bp2_origin}")
 
    wp3_origin = wp3.positions.current_coord()
    wp3_dest = Coord(row=wp3_origin.row - 1, column=wp3_origin.column + 1)
-   if rank.walk.is_walkable(chess_piece=wp3, destination=wp3_dest):
-     print(f"can walk to {wp3_dest}")
+   if rank.footstep.is_footstepable(chess_piece=wp3, destination=wp3_dest):
+     print(f"can footstep to {wp3_dest}")
      arena.chess_board.capture_square(wp3, wp3_dest)
    else:
-     print(f"cannot walk to {wp3_dest} from {wp3_origin}")
+     print(f"cannot footstep to {wp3_dest} from {wp3_origin}")
    print(arena.chess_board)
    print(f"bp")
 
@@ -69,11 +69,11 @@ def main():
 
    wp3_origin = wp3.positions.current_coord()
    wp3_dest = Coord(row=wp3_origin.row - 1, column=wp3_origin.column + 1)
-   if rank.walk.is_walkable(chess_piece=wp3, destination=wp3_dest):
-     print(f"can walk to {wp3_dest}")
+   if rank.footstep.is_footstepable(chess_piece=wp3, destination=wp3_dest):
+     print(f"can footstep to {wp3_dest}")
      arena.chess_board.capture_square(wp3, wp3_dest)
    else:
-     print(f"cannot walk to {wp3_dest} from {wp3_origin}")
+     print(f"cannot footstep to {wp3_dest} from {wp3_origin}")
    print(f"\n{arena.chess_board}")
 
    print(f"\nwp3={wp3}")

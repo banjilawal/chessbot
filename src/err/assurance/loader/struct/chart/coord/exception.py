@@ -1,7 +1,7 @@
-# src/err/assurance/loader/struct/chart/walk/exception.py
+# src/err/assurance/loader/struct/chart/footstep/exception.py
 
 """
-Module: err.assurance.loader.struct.chart.walk.exception
+Module: err.assurance.loader.struct.chart.footstep.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -17,17 +17,17 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# COORD_CHART_LOADER_FAILURE #======================#
-    "WalkoaderException",
+    "FootstepoaderException",
 ]
 
 # ======================# COORD_CHART_LOADER_FAILURE #======================#
-class WalkoaderException(ChartLoaderException):
+class FootstepoaderException(ChartLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a WalkLoader failed.
+        1.  Indicating assurance by a FootstepLoader failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class WalkoaderException(ChartLoaderException):
     Super Class:
         ChartLoaderException
     """
-    MSG = "WalkLoader failure."
+    MSG = "FootstepLoader failure."
     ERR_CODE = "COORD_CHART_LOADER_FAILURE"
     
     def __init__(

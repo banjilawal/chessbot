@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import ValidationResult, ParticipationValidationResponse
 from domain import Participation
-from exchange import ChartValidationResponder, WalkValidationRequest
+from exchange import ChartValidationResponder, FootstepValidationRequest
 from err import ParticipationValidationResponderException
 from transit import TokenCarrier, ParticipationCarrier, ParticipationValidationDispatcher
 from util import LoggingLevelRouter
@@ -56,7 +56,7 @@ class ParticipationValidationResponder(ChartValidationResponder[Participation]):
     @LoggingLevelRouter.monitor
     def execute(
             self,
-            request: WalkValidationRequest
+            request: FootstepValidationRequest
     ) -> ParticipationValidationResponse:
         """
         Certify a candidate is a TokenCarrier whose payload is either a Token

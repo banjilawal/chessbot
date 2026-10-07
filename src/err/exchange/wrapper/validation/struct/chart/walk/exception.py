@@ -1,7 +1,7 @@
-# src/err/exchange/wrapper/validation/struct/chart/walk/exception.py
+# src/err/exchange/wrapper/validation/struct/chart/footstep/exception.py
 
 """
-Module: err.exchange.wrapper.validation.struct.chart.walk.exception
+Module: err.exchange.wrapper.validation.struct.chart.footstep.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,11 +16,11 @@ from err import ChartValidationResponseWrapperException
 
 __all__ = [
     # ======================# COORD_CHART_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-    "WalkValidationResponseWrapperException",
+    "FootstepValidationResponseWrapperException",
 ]
 
 # ======================# COORD_CHART_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-class WalkValidationResponseWrapperException(
+class FootstepValidationResponseWrapperException(
     ChartValidationResponseWrapperException
 ):
     """
@@ -28,7 +28,7 @@ class WalkValidationResponseWrapperException(
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a WalkValidationResponseWrapper encountered and error.
+        1.  Indicating a FootstepValidationResponseWrapper encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -45,7 +45,7 @@ class WalkValidationResponseWrapperException(
     Super Class:
         ChartValidationResponseWrapperException
     """
-    MSG = "WalkValidationResponseWrapper error."
+    MSG = "FootstepValidationResponseWrapper error."
     ERR_CODE = "COORD_CHART_VALIDATION_RESPONSE_WRAPPER_FAILURE"
     
     def __init__(

@@ -1,7 +1,7 @@
-# src/err/null/transit/carrier/struct/chart/walk/exception.py
+# src/err/null/transit/carrier/struct/chart/footstep/exception.py
 
 """
-Module: err.null.transit.carrier.struct.chart.walk.exception
+Module: err.null.transit.carrier.struct.chart.footstep.exception
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -17,17 +17,17 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# COORD_CHART_CARRIER_NULL_ERROR #======================#
-    "WalkCarrierNullException",
+    "FootstepCarrierNullException",
 ]
 
 # ======================# COORD_CHART_CARRIER_NULL_ERROR #======================#
-class WalkCarrierNullException(ChartCarrierNullException):
+class FootstepCarrierNullException(ChartCarrierNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required WalkCarrier is null.
+        1.  Indicating a required FootstepCarrier is null.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class WalkCarrierNullException(ChartCarrierNullException):
     Super Class:
         ChartCarrierNullException
     """
-    MSG = "WalkCarrier cannot be null."
+    MSG = "FootstepCarrier cannot be null."
     ERR_CODE= "COORD_CHART_CARRIER_NULL_ERROR"
     
     def __init__(

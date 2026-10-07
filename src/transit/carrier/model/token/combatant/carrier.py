@@ -74,7 +74,7 @@ class CombatantTokenCarrier(TokenCarrier[CombatantToken]):
         return CombatantTokenBlueprint(
             id=model.id,
             team=model.team,
-            walk=model.walk,
+            footstep=model.footstep,
             captor=model.captor,
             readiness=model.readiness,
             formation=model.formation,

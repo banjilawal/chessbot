@@ -13,7 +13,7 @@ from typing import Optional, Type, cast
 
 from domain import (
     CombatantReadiness, CombatantToken, Coord, Formation, HomeSquare, Team,
-    Token, TokenBlueprint, TokenDeployment, Walk
+    Token, TokenBlueprint, TokenDeployment, Footstep
 )
 from err import CombatantTokenNullException
 
@@ -45,7 +45,7 @@ class CombatantTokenBlueprint(TokenBlueprint[CombatantToken]):
     def __init__(
             self,
             team: Team,
-            walk: Walk,
+            footstep: Footstep,
             formation: Formation,
             captor: Optional[Token] | None = None,
             home_square: Optional[HomeSquare] | None = None,
@@ -58,7 +58,7 @@ class CombatantTokenBlueprint(TokenBlueprint[CombatantToken]):
         """
         Args:
             team: Team
-            walk: Walk
+            footstep: Footstep
             formation: Formation
             captor: Optional[Token]
             home_square: Optional[HomeSquare]
@@ -71,7 +71,7 @@ class CombatantTokenBlueprint(TokenBlueprint[CombatantToken]):
         super().__init__(
             id=id,
             team=team,
-            walk=walk,
+            footstep=footstep,
             formation=formation,
             deployment=deployment,
             home_square=home_square,

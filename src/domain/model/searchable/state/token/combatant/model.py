@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from domain import CombatantReadiness, Formation, HomeSquare, Team, Token, Walk
+from domain import CombatantReadiness, Formation, HomeSquare, Team, Token, Footstep
 
 
 class CombatantToken(Token):
@@ -41,7 +41,7 @@ class CombatantToken(Token):
             team: Team,
             formation: Formation,
             home_square: HomeSquare,
-            walk: Optional[Walk] | None = None
+            footstep: Optional[Footstep] | None = None
     ):
         """
         Args:
@@ -50,12 +50,12 @@ class CombatantToken(Token):
             rank: Rank
             formation: Formation
             home_square: OpeningSquare
-            walk: Optional[Walk]
+            footstep: Optional[Footstep]
         """
         super().__init__(
             id=id,
             team=team,
-            walk=walk,
+            footstep=footstep,
             formation=formation,
             home_square=home_square,
         )

@@ -1,7 +1,7 @@
-# src/err/null/domain/struct/chart/walk/exception.py
+# src/err/null/domain/struct/chart/footstep/exception.py
 
 """
-Module: err.null.domain.struct.chart.walk.exception
+Module: err.null.domain.struct.chart.footstep.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -17,17 +17,17 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# PARTICIPANT_COORD_CHART_NULL_ERROR #======================#
-    "WalkNullException",
+    "FootstepNullException",
 ]
 
 # ======================# PARTICIPANT_COORD_CHART_NULL_ERROR #======================#
-class WalkNullException(ChartNullException):
+class FootstepNullException(ChartNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an ParticipantWalk is null.
+        1.  Indicating an ParticipantFootstep is null.
 
     Attributes:
             msg: Optional[str]
@@ -44,7 +44,7 @@ class WalkNullException(ChartNullException):
     Super Class:
         ChartNullException
     """
-    MSG = "ParticipantWalk cannot be null."
+    MSG = "ParticipantFootstep cannot be null."
     ERR_CODE = "PARTICIPANT_COORD_CHART_NULL_ERROR"
     
     def __init__(

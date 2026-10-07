@@ -1,16 +1,16 @@
-# src/err/assurance/validator/struct/chart/walk/__init__.py
+# src/err/assurance/validator/struct/chart/footstep/__init__.py
 
 """
-Module: err.assurance.validator.struct.chart.walk.__init__
+Module: err.assurance.validator.struct.chart.footstep.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.ASSURANCE.VALIDATOR.STRUCT.CHART.WALK PACKAGE ===========#
+# ============ ERR.ASSURANCE.VALIDATOR.STRUCT.CHART.FOOTSTEP PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .exception import WalkValidatorException
+from .exception import FootstepValidatorException

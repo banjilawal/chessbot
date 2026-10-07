@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional
 
 from domain import (
-    Bishop, CombatantToken, Formation, HomeSquare, Knight, Pawn, Persona, PromotionState, Queen, Rank, Rook, Team, Walk
+    Bishop, CombatantToken, Formation, HomeSquare, Knight, Pawn, Persona, PromotionState, Queen, Rank, Rook, Team, Footstep
 )
 
 
@@ -51,7 +51,7 @@ class PawnToken(CombatantToken):
             team: Team,
             formation: Formation,
             home_square: HomeSquare,
-            walk: Optional[Walk] | None = None,
+            footstep: Optional[Footstep] | None = None,
     ):
         """
         Args:
@@ -59,12 +59,12 @@ class PawnToken(CombatantToken):
             team: Team
             formation: Formation
             home_square: OpeningSquare
-            walk: Optional[Walk]
+            footstep: Optional[Footstep]
         """
         super().__init__(
             id=id,
             team=team,
-            walk=walk,
+            footstep=footstep,
             formation=formation,
             home_square=home_square,
         )
@@ -95,7 +95,7 @@ class PawnToken(CombatantToken):
         
     @property
     def is_promotable(self) -> bool:
-        position = self.walk.position
+        position = self.footstep.position
         
         if position is None:
             return False
@@ -103,7 +103,7 @@ class PawnToken(CombatantToken):
             return False
         if self.is_promoted:
             return False
-        if self.walk.size < 2:
+        if self.footstep.size < 2:
             return False
         if position.row != self.team.archetype.enemy_archetype.pawn_row:
             return False

@@ -1,15 +1,15 @@
-# src/exchange/request/validation/struct/chart/walk/__init__.py
+# src/exchange/request/validation/struct/chart/footstep/__init__.py
 
 """
-Module: exchange.request.validation.struct.chart.walk.__init__
+Module: exchange.request.validation.struct.chart.footstep.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== EXCHANGE.REQUEST.VALIDATION.STRUCT.CHART.WALK PACKAGE ===========#
+# =========== EXCHANGE.REQUEST.VALIDATION.STRUCT.CHART.FOOTSTEP PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .request import WalkValidationRequest
+from .request import FootstepValidationRequest
