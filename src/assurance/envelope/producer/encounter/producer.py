@@ -66,7 +66,7 @@ class RootEncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[RootEncounterEnvelope]:
         """
-        Assure a candidate's properties are reference for a Encounter
+        Assure a candidate's properties are reference for an Encounter
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
