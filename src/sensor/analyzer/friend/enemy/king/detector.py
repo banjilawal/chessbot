@@ -105,7 +105,7 @@ class EnemyKingStatusDetector(Analyzer):
                     ),
                 )
             )
-        if king.has_been_deployed or king.is_in_check:
+        if king.has_been_deployed or king.is_safe:
             return Result.success(FriendshipStatus.FREE_ENEMY_KING)
         if king.is_checkmated:
             return Result.success(FriendshipStatus.CHECKMATED_ENEMY_KING)

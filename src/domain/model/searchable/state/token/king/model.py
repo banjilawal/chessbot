@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import Optional
 
 from domain import (
-    EncounterWarning, CheckmateEncounter, TokenDeployment, Formation, HomeSquare, Team,
-    Token, KingReadiness, TokenReadiness
+    EncounterAlertLevel, EncounterWarning, CheckmateEncounter, TokenDeployment, Formation, HomeSquare, Team,
+    Token, KingReadiness, TokenReadiness, Walk
 )
 
 
@@ -29,14 +29,10 @@ class KingToken(Token):
     Attributes:
         id: int
         team: Team
-        rank: Rank
-        designation: str
-        roster_number: int
-        positions: CoordDatabase
-        home_square: str
-        current_position: Optional[Coord]
-        previous_address: Optional[Coord]
-        token_board_state: TokenBoardState
+        walk: Walk
+        formation: Formation
+        home_square: HomeSquare
+        checkmate:
         readiness_state: TokenActivityState
 
 
@@ -45,8 +41,9 @@ class KingToken(Token):
         Token
     """
     _readiness: KingReadiness
+    _alertness_level: EncounterAlertLevel
     _checkmate: Optional[CheckmateEncounter]
-    _check_warning: Optional[EncounterWarning]
+    _encounter_warning: Optional[EncounterWarning]
 
     
 
@@ -56,6 +53,7 @@ class KingToken(Token):
             team: Team,
             formation: Formation,
             home_square: HomeSquare,
+            walk: Optional[Walk] | None = None,
     ):
         """
         Args:
@@ -63,16 +61,19 @@ class KingToken(Token):
             team: Team
             formation: Formation
             home_square: Square
+            walk: Optional[Walk]
         """
         super().__init__(
             id=id,
             team=team,
             formation=formation,
             home_square=home_square,
+            walk=walk,
         )
         self._checkmate = None
-        self._check_warning = None
-        self._readiness = KingReadiness.READY
+        self._encounter_warning = None
+        self._readiness = KingReadiness.NOT_READY
+        self._alertness_level = EncounterAlertLevel.LOW
         
     @property
     def readiness(self) -> KingReadiness:
@@ -81,6 +82,15 @@ class KingToken(Token):
     @readiness.setter
     def readiness(self, other: KingReadiness):
         self._readiness = other
+        
+        
+    @property
+    def alertness_level(self) -> EncounterAlertLevel:
+        return self._alertness_level
+    
+    @alertness_level.setter
+    def alertness_level(self, other: EncounterAlertLevel):
+        self._alertness_level = other
         
     @property
     def checkmate(self) -> Optional[CheckmateEncounter]:
@@ -92,37 +102,48 @@ class KingToken(Token):
             self._checkmate = other
         
     @property
-    def check_warning(self) -> Optional[EncounterWarning]:
-        return self._check_warning
+    def encounter_warning(self) -> Optional[EncounterWarning]:
+        return self._encounter_warning
     
-    @check_warning.setter
-    def check_warning(self, other: EncounterWarning):
-        self._check_warning = other
+    @encounter_warning.setter
+    def encounter_warning(self, other: EncounterWarning):
+        self._encounter_warning = other
         
     @property
     def is_ready(self) -> bool:
         return (
                 self.has_been_deployed and
-                self._checkmate is not None and
-                self._readiness != KingReadiness.CHECKMATED
+                self._checkmate is None and
+                self._readiness == KingReadiness.READY
         )
     
     @property
     def is_not_ready(self) -> bool:
-        return self.is_ready
+        return (
+                self.has_never_been_deployed or
+                self.is_checkmated
+        )
      
     @property
-    def is_in_check(self) -> bool:
+    def is_safe(self) -> bool:
         return (
-                self.has_been_deployed and
-                self.check_warning is not None and
-                self._readiness == KingReadiness.IN_CHECK
+                self.is_ready and
+                self._encounter_warning is None and
+                self._alertness_level == EncounterAlertLevel.LOW
+        )
+    
+    @property
+    def is_in_danger(self) -> bool:
+        return (
+                self.is_ready and
+                self._encounter_warning is not None and
+                self._alertness_level == EncounterAlertLevel.HIGH
         )
     
     @property
     def is_checkmated(self) -> bool:
         return (
-                super().has_been_deployed and
+                self.has_been_deployed and
                 self.checkmate is not None and
                 self._readiness == KingReadiness.CHECKMATED
         )

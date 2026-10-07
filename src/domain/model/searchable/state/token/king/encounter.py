@@ -1,7 +1,7 @@
-# src/domain/model/searchable/state/token/state/readiness.py
+# src/domain/model/searchable/state/token/state/encounter.py
 
 """
-Module: domain.model.searchable.state.token.state.readiness
+Module: domain.model.searchable.state.token.state.encounter
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -10,7 +10,7 @@ version: 0.0.2
 from enum import Enum, auto
 
 
-class KingReadiness(Enum):
+class EncounterAlertLevel(Enum):
     """
     Role:
         - State
@@ -25,6 +25,5 @@ class KingReadiness(Enum):
     Super Class:
         Enum
     """
-    READY = auto(),
-    NOT_READY = auto(),
-    CHECKMATED = auto(),
+    LOW = auto(),
+    HIGH = auto(),

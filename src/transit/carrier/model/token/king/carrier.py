@@ -80,7 +80,7 @@ class KingTokenCarrier(TokenCarrier[KingToken]):
             checkmate=model.checkmate,
             deployment=model.deployment,
             home_square=model.home_square,
-            check_warning=model.check_warning,
+            check_warning=model.encounter_warning,
             previous_position=model.previous_position,
         )
 
