@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional
 
 from domain import (
-    Bishop, CombatantToken, Formation, HomeSquare, Knight, Pawn, PromotionState, Queen, Rank, Rook, Team, Walk
+    Bishop, CombatantToken, Formation, HomeSquare, Knight, Pawn, Persona, PromotionState, Queen, Rank, Rook, Team, Walk
 )
 
 
@@ -36,7 +36,13 @@ class PawnToken(CombatantToken):
     Super Class:
         CombatantToken
     """
+    _PROMOTION_PERSONAS = [
+        Persona.BISHOP, Persona.KNIGHT, Persona.ROOK, Persona.QUEEN
+    ]
+    _PROMOTION_RANKS = (Bishop, Knight, Rook, Queen)
+    
     _rank: Rank
+    _promotion_persona: Persona
     _promotion_state: PromotionState
     
     def __init__(
@@ -63,9 +69,9 @@ class PawnToken(CombatantToken):
             home_square=home_square,
         )
         self._rank = formation.rank
+        self._promotion_persona = formation.rank.persona
         self._promotion_state = PromotionState.NOT_PROMOTED
-        
-        
+    
     @property
     def rank(self) -> Rank:
         return self._rank
@@ -73,6 +79,11 @@ class PawnToken(CombatantToken):
     @rank.setter
     def rank(self, other: Rank):
         self._rank = other
+        self._promotion_persona = other.persona
+        
+    @property
+    def promotion_persona(self) -> Persona:
+        return self._promotion_persona
     
     @property
     def promotion_state(self) -> PromotionState:
@@ -84,13 +95,15 @@ class PawnToken(CombatantToken):
         
     @property
     def is_promotable(self) -> bool:
-        position = self.position
+        position = self.walk.position
         
-        if not self.has_been_deployed:
+        if position is None:
+            return False
+        if self.is_not_ready:
             return False
         if self.is_promoted:
             return False
-        if position is None:
+        if self.walk.size < 2:
             return False
         if position.row != self.team.archetype.enemy_archetype.pawn_row:
             return False
@@ -103,7 +116,8 @@ class PawnToken(CombatantToken):
     @property
     def is_promoted(self) -> bool:
         return (
-                isinstance(self._rank, (Bishop, Knight, Rook, Queen)) and
+                isinstance(self._rank, self._PROMOTION_RANKS) and
+                self._promotion_persona in self._PROMOTION_PERSONAS and
                 self._promotion_state == PromotionState.PROMOTED
         )
     
@@ -111,6 +125,7 @@ class PawnToken(CombatantToken):
     def is_not_promoted(self) -> bool:
         return (
             isinstance(self._rank, Pawn) and
+            self._promotion_persona == Persona.PAWN and
             self._promotion_state == PromotionState.NOT_PROMOTED
         )
        
