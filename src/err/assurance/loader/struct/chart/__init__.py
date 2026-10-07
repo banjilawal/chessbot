@@ -10,8 +10,7 @@ version: 0.0.2
 # ============ ERR.ASSURANCE.LOADER.STRUCT.CHART PACKAGE ===========#
 
 # Packages
-from .coord import *
-from .token import *
+from .participant import *
 
 # Modules
 from .exception import ChartLoaderException

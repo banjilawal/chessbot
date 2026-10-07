@@ -1,7 +1,7 @@
-# src/err/capacity/empty/carrier/struct/chart/footstep/exception.py
+# src/err/capacity/empty/carrier/model/footstep/exception.py
 
 """
-Module: err.capacity.empt.carrier.struct.chart.footstep.exception
+Module: err.capacity.empt.carrier.model.footstep.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -15,11 +15,11 @@ from artifcat import MethodResultType
 from err import EmptyChartCarrierException
 
 __all__ = [
-    # ======================# COORD_CHART_CARRIER_EMPTY_ERROR #======================#
+    # ======================# FOOTSTEP_CARRIER_EMPTY_ERROR #======================#
     "FootstepCarrierEmptyException",
 ]
 
-# ======================# COORD_CHART_CARRIER_EMPTY_ERROR #======================#
+# ======================# FOOTSTEP_CARRIER_EMPTY_ERROR #======================#
 class FootstepCarrierEmptyException(EmptyChartCarrierException):
     """
     Role:
@@ -44,7 +44,7 @@ class FootstepCarrierEmptyException(EmptyChartCarrierException):
         EmptyChartCarrierException
     """
     MSG = "FootstepCarrier cannot be empty."
-    ERR_CODE = "COORD_CHART_CARRIER_EMPTY_ERROR"
+    ERR_CODE = "FOOTSTEP_CARRIER_EMPTY_ERROR"
     
     def __init__(
             self,

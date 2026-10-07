@@ -16,6 +16,7 @@ from .board import *
 from .coord import *
 from .edge import *
 from .encounter import *
+from .footstep import *
 from .game import *
 from .node import *
 from .maneuver import *

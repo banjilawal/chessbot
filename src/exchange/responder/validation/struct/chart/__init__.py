@@ -10,7 +10,6 @@ version: 0.0.2
 # =========== EXCHANGE.RESPONDER.VALIDATION.STRUCT.CHART PACKAGE ===========#
 
 # Packages
-from .footstep import *
 from .participate import *
 
 # Modules

@@ -17,6 +17,7 @@ from .coord import *
 from .game import *
 from .edge import *
 from .encounter import *
+from .footstep import *
 from .maneuver import *
 from .path import *
 from .player import *

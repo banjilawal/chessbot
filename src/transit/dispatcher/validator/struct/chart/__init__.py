@@ -11,7 +11,6 @@ version: 0.0.2
 
 # Packages
 from .participation import *
-from .footstep import *
 
 # Module
 from .dispatcher import ChartValidationDispatcher

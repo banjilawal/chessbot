@@ -17,9 +17,9 @@ from .identity import *
 from .locus import *
 from .maneuver import *
 from .path import *
+from .player import *
 from .state import *
 from .vector import *
-
 
 # Modules
 from .model import SearchableModel

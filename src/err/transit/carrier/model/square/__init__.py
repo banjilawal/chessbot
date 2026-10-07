@@ -10,7 +10,7 @@ version: 0.0.2
 # ============ ERR.DOMAIN.TRANSIT.CARRIER.MODEL.SQUARE PACKAGE ===========#
 
 # Packages
-from .opening import *
+from .home import *
 
 # Modules
 from .exception import SquareCarrierException

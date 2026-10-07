@@ -10,9 +10,7 @@ version: 0.0.2
 # =========== ERR.NULL.TRANSIT.CARRIER.STRUCT.CHART PACKAGE ===========#
 
 # Packages
-from .coord import *
-from .token import *
-
+from .participate import *
 
 # Modules
 from .exception import ChartCarrierNullException

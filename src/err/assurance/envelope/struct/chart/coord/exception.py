@@ -1,7 +1,7 @@
-# src/err/assurance/envelope/struct/chart/footstep/exception.py
+# src/err/assurance/envelope/model/footstep/exception.py
 
 """
-Module: err.assurance.envelope.struct.chart.footstep.exception
+Module: err.assurance.envelope.model.footstep.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,11 +16,11 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# COORD_CHART_ENVELOPE_CONSUMER_FAILURE #======================#
+    # ======================# FOOTSTEP_ENVELOPE_CONSUMER_FAILURE #======================#
     "FootstepEnvelopeConsumerException",
 ]
 
-# ======================# COORD_CHART_ENVELOPE_CONSUMER_FAILURE #======================#
+# ======================# FOOTSTEP_ENVELOPE_CONSUMER_FAILURE #======================#
 class FootstepEnvelopeConsumerException(ChartEnvelopeConsumerException):
     """
     Role:
@@ -45,7 +45,7 @@ class FootstepEnvelopeConsumerException(ChartEnvelopeConsumerException):
         ChartEnvelopeConsumerException
     """
     MSG = "FootstepEnvelopConsumer failure."
-    ERR_CODE = "COORD_CHART_ENVELOPE_CONSUMER_FAILURE"
+    ERR_CODE = "FOOTSTEP_ENVELOPE_CONSUMER_FAILURE"
     
     def __init__(
             self,

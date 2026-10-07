@@ -17,6 +17,7 @@ from .cartesian import *
 from .coord import *
 from .game import *
 from .encounter import *
+from .footsep import *
 from .maneuver import *
 from .path import *
 from .player import *

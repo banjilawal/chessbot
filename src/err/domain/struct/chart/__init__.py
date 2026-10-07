@@ -10,8 +10,7 @@ version: 0.0.2
 # ============ ERR.DOMAIN.STRUCT.CHART PACKAGE ===========#
 
 # Packages
-from .coord import *
-from .token import *
+from .participate import *
 
 # Modules
 from .exception import ChartException

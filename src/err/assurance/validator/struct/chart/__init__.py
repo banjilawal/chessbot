@@ -10,8 +10,7 @@ version: 0.0.2
 # ============ ERR.ASSURANCE.VALIDATOR.STRUCT.CHART PACKAGE ===========#
 
 # Packages
-from .coord import *
-from .token import *
+from .participtate import *
 
 # Modules
 from .exception import ChartValidatorException

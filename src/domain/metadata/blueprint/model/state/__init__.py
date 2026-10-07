@@ -17,7 +17,6 @@ from .edge import *
 from .encouter import *
 from .game import *
 from .node import *
-from .player import *
 from .square import *
 from .team import *
 from .token import *

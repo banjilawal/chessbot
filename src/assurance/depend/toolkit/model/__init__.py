@@ -12,9 +12,10 @@ version: 0.0.2
 # Packages
 from .account import *
 from .arena import *
-from .encounter import *
 from .board import *
 from .coord import *
+from .encounter import *
+from .footstep import *
 from .game import *
 from .maneuver import *
 from .path import *

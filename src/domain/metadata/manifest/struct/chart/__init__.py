@@ -10,8 +10,7 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.MANIFEST.STRUCT.CHART PACKAGE ===========#
 
 # Packages
-from .coord import *
-from .token import *
+from .participate import *
 
 # Modules
 from .manifest import ChartManifest

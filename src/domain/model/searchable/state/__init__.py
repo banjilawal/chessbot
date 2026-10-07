@@ -13,7 +13,6 @@ version: 0.0.2
 from .arena import *
 from .board import *
 from .game import *
-from .player import *
 from .query import *
 from .registry import *
 from .square import *

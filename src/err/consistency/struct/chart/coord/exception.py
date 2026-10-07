@@ -1,7 +1,7 @@
-# src/err/consistency/struct/chart/footstep/exception.py
+# src/err/consistency/model/footstep/exception.py
 
 """
-Module: err.consistency.struct.chart.footstep.exception
+Module: err.consistency.model.footstep.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,11 +16,11 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# COORD_CHART_CONSISTENCY_ERROR #======================#
+    # ======================# FOOTSTEP_CONSISTENCY_ERROR #======================#
     "FootstepConsistencyException",
 ]
 
-# ======================# COORD_CHART_CONSISTENCY_ERROR #======================#
+# ======================# FOOTSTEP_CONSISTENCY_ERROR #======================#
 class FootstepConsistencyException(ChartConsistencyException):
     """
     Role:
@@ -45,7 +45,7 @@ class FootstepConsistencyException(ChartConsistencyException):
         ChartConsistencyException
     """
     MSG = "Footstep consistency check failed."
-    ERR_CODE = "COORD_CHART_CONSISTENCY_ERROR"
+    ERR_CODE = "FOOTSTEP_CONSISTENCY_ERROR"
     
     def __init__(
             self,

@@ -11,7 +11,6 @@ version: 0.0.2
 
 # Packages
 from .participate import *
-from .footstep import *
 
 # Modules
 from .carrier import ChartCarrier

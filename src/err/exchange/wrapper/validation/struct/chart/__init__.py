@@ -11,7 +11,6 @@ version: 1.0.0
 
 # Packages
 from .participate import *
-from .footstep import *
 
 # Modules
 from .exception import ChartValidationResponseWrapperException
