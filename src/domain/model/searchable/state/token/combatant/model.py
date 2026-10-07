@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from domain import CombatantReadiness, Formation, HomeSquare, Team, Token
+from domain import CombatantReadiness, Formation, HomeSquare, Team, Token, Walk
 
 
 class CombatantToken(Token):
@@ -23,24 +23,8 @@ class CombatantToken(Token):
         1.  Capturable Token.
 
     Attributes:
-        id: int
-        team: Team
-        rank: Rank
-        designation: str
-        roster_number: int
-        positions: CoordDatabase
-        home_square: OpeningSquare
-        current_position: Optional[Coord]
-        previous_address: Optional[Coord]
-        token_board_state: TokenBoardState
-        readiness_state: TokenActivityState
-        is_not_deployed: bool
-        is_active(self): bool
-        is_disabled: bool
+
         is_enemy: bool
-        has_entered_hostage_process: bool
-        being_processed_as_hostage: bool
-        recorded_as_hostage: bool
         captor: Optional[Token]
         
     Provides:
@@ -57,6 +41,7 @@ class CombatantToken(Token):
             team: Team,
             formation: Formation,
             home_square: HomeSquare,
+            walk: Optional[Walk] | None = None
     ):
         """
         Args:
@@ -65,10 +50,12 @@ class CombatantToken(Token):
             rank: Rank
             formation: Formation
             home_square: OpeningSquare
+            walk: Optional[Walk]
         """
         super().__init__(
             id=id,
             team=team,
+            walk=walk,
             formation=formation,
             home_square=home_square,
         )

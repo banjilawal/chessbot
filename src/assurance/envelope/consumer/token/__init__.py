@@ -12,7 +12,7 @@ version: 0.0.2
 # Packages
 from .combatant import *
 from .square import *
-from .token import *
+from .pawn import *
 
 # Module
 from .consumer import TokenEnvelopeConsumer

@@ -12,7 +12,6 @@ from __future__ import annotations
 from abc import abstractmethod
 from typing import Optional
 
-from collection import CoordDatabase
 from domain import (
     Coord, Formation, HomeSquare, Rank, StateModel, Team, TokenDeployment, Walk
 )
@@ -59,6 +58,7 @@ class Token(StateModel):
             team: Team,
             formation: Formation,
             home_square: HomeSquare,
+            walk: Optional[Walk] | None = None,
     ):
         """
         Args:
@@ -66,13 +66,14 @@ class Token(StateModel):
             team: Team
             formation: Formation
             home_square: OpeningSquare
+            walk: Optional[Walk]
         """
         super().__init__(id=id)
         self._team = team
         self._formation = formation
         self._home_square = home_square
         self._deployment = TokenDeployment.NOT_DEPLOYED
-        self._walk = Walk()
+        self._walk = walk or Walk()
     
     @property
     def formation(self) -> Formation:

@@ -73,16 +73,15 @@ class PawnTokenCarrier(TokenCarrier[PawnToken]):
         model = cast(PawnToken, self.entity)
         return PawnTokenBlueprint(
             id=model.id,
+            walk=model.walk,
             team=model.team,
             rank=model.rank,
             captor=model.captor,
-            position=model.position,
             readiness=model.readiness,
             formation=model.formation,
             deployment=model.deployment,
             home_square=model.home_square,
             promotion_state=model.promotion_state,
-            previous_position=model.previous_position,
         )
 
 

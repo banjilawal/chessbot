@@ -68,19 +68,18 @@ class CombatantTokenCarrier(TokenCarrier[CombatantToken]):
        
     def extract_blueprint(self) -> Optional[CombatantTokenBlueprint]:
         if self.is_empty: return None
-        if self.has_blueprint: return self._blueprint
+        if self.has_blueprint: return cast(CombatantTokenBlueprint, self.entity)
         
-        model = cast(CombatantToken, self._model)
+        model = cast(CombatantToken, self.entity)
         return CombatantTokenBlueprint(
             id=model.id,
             team=model.team,
+            walk=model.walk,
             captor=model.captor,
-            position=model.position,
             readiness=model.readiness,
             formation=model.formation,
             deployment=model.deployment,
             home_square=model.home_square,
-            previous_position=model.previous_position,
         )
 
 

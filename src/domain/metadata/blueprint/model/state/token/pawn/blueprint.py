@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from domain import (
-    CombatantReadiness, Coord, Formation, HomeSquare, PawnToken, PromotionState, Rank,
-    Team, Token, TokenBlueprint, TokenDeployment
+    Bishop, CombatantReadiness, Coord, Formation, HomeSquare, Knight, Pawn, PawnToken, PromotionState, Queen, Rank,
+    Rook, Team, Token, TokenBlueprint, TokenDeployment, Walk
 )
 from err import PawnTokenNullException
 
@@ -28,15 +28,14 @@ class PawnTokenBlueprint(TokenBlueprint[PawnToken]):
 
      Attributes:
         team: Team
+        walk: Walk
+        rank: Rank
         formation: Formation
+        deployment: TokenDeployment
+        readiness: CombatantReadiness
+        promotion_state: PromotionState
         home_square: Optional[HomeSquare]
-        deployment: Optional[TokenDeployment]
-        readiness: Optional[CombatantReadiness]
-        promotion_state: Optional[PromotionState]
-        previous_position: Optional[Coord]
-        position: Optional[Coord]
         captor: Optional[Token]
-        rank: Optional[Rank]
         id: Optional[int]
         
         domain_class: Optional[Type[CombatantToken]]
@@ -51,19 +50,17 @@ class PawnTokenBlueprint(TokenBlueprint[PawnToken]):
     _rank: Rank
     _readiness: CombatantReadiness
     _promotion_state: PromotionState
-    _position: Optional[Coord]
     _captor: Optional[Token]
     
     def __init__(
             self,
             team: Team,
+            walk: Walk,
             formation: Formation,
             home_square: Optional[HomeSquare] | None = None,
             deployment: Optional[TokenDeployment] | None = None,
             readiness: Optional[CombatantReadiness] | None = None,
             promotion_state: Optional[PromotionState] | None = None,
-            previous_position: Optional[Coord] | None = None,
-            position: Optional[Coord] | None = None,
             captor: Optional[Token] | None = None,
             rank: Optional[Rank] | None = None,
             id: Optional[int] | None = None,
@@ -73,13 +70,12 @@ class PawnTokenBlueprint(TokenBlueprint[PawnToken]):
         """
         Args:
             team: Team
+            walk: Walk
             formation: Formation
             home_square: Optional[HomeSquare]
             deployment: Optional[TokenDeployment]
             readiness: Optional[CombatantReadiness]
             promotion_state: Optional[PromotionState]
-            previous_position: Optional[Coord]
-            position: Optional[Coord]
             captor: Optional[Token]
             rank: Optional[Rank]
             id: Optional[int]
@@ -89,10 +85,9 @@ class PawnTokenBlueprint(TokenBlueprint[PawnToken]):
         super().__init__(
             id=id,
             team=team,
-            position=position,
+            walk=walk,
             formation=formation,
             home_square=home_square,
-            previous_position=previous_position,
             deployment=deployment or TokenDeployment.NOT_DEPLOYED,
             domain_class=domain_class or Type[PawnToken],
             domain_null_exception=domain_null_exception or PawnTokenNullException(),
@@ -120,11 +115,25 @@ class PawnTokenBlueprint(TokenBlueprint[PawnToken]):
     
     @property
     def is_captured(self) -> bool:
-        return self._captor is not None
+        return self._captor is not None and self._readiness == CombatantReadiness.CAPTURED
     
     @property
     def is_not_captured(self) -> bool:
         return not self.is_captured
+    
+    @property
+    def is_promoted(self) -> bool:
+        return (
+                isinstance(self._rank, (Bishop, Knight, Rook, Queen)) and
+                self._promotion_state == PromotionState.PROMOTED
+        )
+    
+    @property
+    def is_not_promoted(self) -> bool:
+        return (
+                isinstance(self._rank, Pawn) and
+                self._promotion_state == PromotionState.NOT_PROMOTED
+        )
     
     @property
     def domain_class(self) -> Type[PawnToken]:

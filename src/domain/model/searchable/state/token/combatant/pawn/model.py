@@ -9,9 +9,10 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from typing import Optional
 
 from domain import (
-    CombatantToken, Formation, HomeSquare, Pawn, PromotionState, Rank, Team
+    Bishop, CombatantToken, Formation, HomeSquare, Knight, Pawn, PromotionState, Queen, Rank, Rook, Team, Walk
 )
 
 
@@ -24,10 +25,6 @@ class PawnToken(CombatantToken):
         1.  Promotable combatant.
 
     Attributes:
-        id: int
-        team: Team
-        rank: Rank
-        formation: Formation
         promotion_state: PromotionState
 
         is_promotable: bool
@@ -48,6 +45,7 @@ class PawnToken(CombatantToken):
             team: Team,
             formation: Formation,
             home_square: HomeSquare,
+            walk: Optional[Walk] | None = None,
     ):
         """
         Args:
@@ -55,10 +53,12 @@ class PawnToken(CombatantToken):
             team: Team
             formation: Formation
             home_square: OpeningSquare
+            walk: Optional[Walk]
         """
         super().__init__(
             id=id,
             team=team,
+            walk=walk,
             formation=formation,
             home_square=home_square,
         )
@@ -103,13 +103,16 @@ class PawnToken(CombatantToken):
     @property
     def is_promoted(self) -> bool:
         return (
-                not isinstance(self._rank, Pawn) and
+                isinstance(self._rank, (Bishop, Knight, Rook, Queen)) and
                 self._promotion_state == PromotionState.PROMOTED
         )
     
     @property
     def is_not_promoted(self) -> bool:
-        return not self.is_promoted
+        return (
+            isinstance(self._rank, Pawn) and
+            self._promotion_state == PromotionState.NOT_PROMOTED
+        )
        
     def __eq__(self, other):
         if super().__eq__(other):

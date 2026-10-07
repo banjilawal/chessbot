@@ -199,13 +199,12 @@ class CombatantTokenEnvelopeConsumer(
             model = CombatantToken(
                 id=safe.id,
                 team=safe.team,
+                walk=safe.walk,
                 formation=safe.formation,
                 home_square=safe.home_square,
             )
             model.captor = captor
             model.readiness = readiness
-            model.position = safe.walk.previous_position
-            model.position = safe.walk.position
             if safe.deployment == TokenDeployment.DEPLOYED_TO_HOME_SQUARE:
                 model.mark_as_deployed()
             carrier = CombatantTokenCarrier(model=model)
@@ -215,11 +214,10 @@ class CombatantTokenEnvelopeConsumer(
             blueprint=CombatantTokenBlueprint(
                 id=safe.id,
                 team=safe.team,
+                walk=safe.walk,
                 formation=safe.formation,
                 home_square=safe.home_square,
                 deployment=safe.deployment,
-                position=safe.walk.position,
-                previous_position=safe.walk.previous_position,
                 captor=captor,
                 readiness=readiness,
             )

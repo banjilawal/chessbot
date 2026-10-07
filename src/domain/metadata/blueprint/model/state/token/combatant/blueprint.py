@@ -13,7 +13,7 @@ from typing import Optional, Type, cast
 
 from domain import (
     CombatantReadiness, CombatantToken, Coord, Formation, HomeSquare, Team,
-    Token, TokenBlueprint, TokenDeployment
+    Token, TokenBlueprint, TokenDeployment, Walk
 )
 from err import CombatantTokenNullException
 
@@ -27,12 +27,8 @@ class CombatantTokenBlueprint(TokenBlueprint[CombatantToken]):
          1.  Provides values for hydrating a CombatantToken object.
 
      Attributes:
-        team: Team,
-        formation: Formation
-        rank: Optional[Rank]
         captor: Optional[Token]
-        positions: Optional[CoordDatabase]
-        id: Optional[int]
+        readiness: CombatantReadiness
 
         domain_class: Type[CombatantToken]
         domain_null_exception: CombatantNullException
@@ -49,11 +45,10 @@ class CombatantTokenBlueprint(TokenBlueprint[CombatantToken]):
     def __init__(
             self,
             team: Team,
+            walk: Walk,
             formation: Formation,
             captor: Optional[Token] | None = None,
-            position: Optional[Coord] | None = None,
             home_square: Optional[HomeSquare] | None = None,
-            previous_position: Optional[Coord] | None = None,
             deployment: Optional[TokenDeployment] | None = None,
             readiness: Optional[CombatantReadiness] | None = None,
             domain_class: Optional[Type[CombatantToken]] | None = None,
@@ -62,12 +57,11 @@ class CombatantTokenBlueprint(TokenBlueprint[CombatantToken]):
     ):
         """
         Args:
-            team: Team,
+            team: Team
+            walk: Walk
             formation: Formation
             captor: Optional[Token]
-            position: Optional[Coord]
             home_square: Optional[HomeSquare]
-            previous_position: Optional[Coord]
             deployment: Optional[TokenDeployment]
             readiness: Optional[CombatantReadiness]
             domain_class: Optional[Type[CombatantToken]]
@@ -77,11 +71,10 @@ class CombatantTokenBlueprint(TokenBlueprint[CombatantToken]):
         super().__init__(
             id=id,
             team=team,
-            position=position,
+            walk=walk,
             formation=formation,
             deployment=deployment,
             home_square=home_square,
-            previous_position=previous_position,
             domain_class=domain_class or Type[CombatantToken],
             domain_null_exception=domain_null_exception or CombatantTokenNullException(),
         )
@@ -98,7 +91,7 @@ class CombatantTokenBlueprint(TokenBlueprint[CombatantToken]):
     
     @property
     def is_captured(self) -> bool:
-        return self._captor is not None
+        return self._captor is not None and self._readiness == CombatantReadiness.CAPTURED
     
     @property
     def is_not_captured(self) -> bool:

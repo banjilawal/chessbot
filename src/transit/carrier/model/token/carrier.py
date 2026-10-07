@@ -31,10 +31,6 @@ class TokenCarrier(ModelCarrier[T], Generic[T]):
     Attributes:
         model: Optional[T]
         blueprint: Optional[TokenBlueprint[T]]
-        
-        is_pawn_token_carrier: bool
-        is_king_token_carrier: bool
-        is_combatant_token_carrier: bool
 
     Provides:
         -   def extract_blueprint() -> Optional[TokenBlueprint]
@@ -83,31 +79,6 @@ class TokenCarrier(ModelCarrier[T], Generic[T]):
         )
     
     def extract_blueprint(self) -> Optional[TokenBlueprint[T]]:
-        pass
-    
-    @property
-    def is_king_token_carrier(self) -> bool:
-        blueprint = self.extract_blueprint()
-        if blueprint is None:
-            return False
-        return isinstance(blueprint, KingTokenBlueprint)
-    
-    @property
-    def is_pawn_token_carrier(self) -> bool:
-        blueprint = self.extract_blueprint()
-        if blueprint is None:
-            return False
-        return isinstance(blueprint, PawnTokenBlueprint)
-    
-    @property
-    def is_combatant_token_carrier(self) -> bool:
-        blueprint = self.extract_blueprint()
-        if blueprint is None:
-            return False
-        return (
-                not isinstance(blueprint, PawnTokenBlueprint) and
-                isinstance(blueprint, CombatantTokenBlueprint)
-                
-        )
-
-
+        if self.is_empty or self.has_model:
+            return None
+        return self._blueprint
