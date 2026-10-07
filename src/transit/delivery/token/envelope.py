@@ -15,7 +15,7 @@ from domain import (
     Walk, Formation, HomeSquare, Team, Token, TokenDeployment,
     TokenPrimeExtract
 )
-from transit import ProductEnvelope
+from transit import CombatantTokenCarrier, KingTokenCarrier, PawnTokenCarrier, ProductEnvelope
 
 
 class RootTokenEnvelope(ProductEnvelope[Token]):
@@ -46,7 +46,6 @@ class RootTokenEnvelope(ProductEnvelope[Token]):
     _formation: Formation
     _home_square: HomeSquare
     _deployment: TokenDeployment
-    
 
     def __init__(
             self,
@@ -103,4 +102,16 @@ class RootTokenEnvelope(ProductEnvelope[Token]):
     @property
     def deployment(self) -> TokenDeployment:
         return self._deployment
+    
+    @property
+    def for_combatant_token_consumer(self) -> bool:
+        return isinstance(self._prime_extract.reference, CombatantTokenCarrier)
+    
+    @property
+    def for_pawn_token_consumer(self) -> bool:
+        return isinstance(self._prime_extract.reference, PawnTokenCarrier)
+    
+    @property
+    def for_king_token_consumer(self) -> bool:
+        return isinstance(self._prime_extract.reference, KingTokenCarrier)
 

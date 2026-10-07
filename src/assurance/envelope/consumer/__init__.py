@@ -12,6 +12,7 @@ version: 0.0.2
 # Packages
 from .encounter import *
 from .square import *
+from .token import *
 
 # Module
 from .consumer import RootEnvelopeConsumer

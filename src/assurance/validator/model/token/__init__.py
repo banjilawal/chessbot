@@ -10,12 +10,9 @@ version: 0.0.2
 # =========== ASSURANCE.VALIDATOR.MODEL.TOKEN PACKAGE ===========#
 
 # Packages
-from .combatant import *
-from .common import *
 from .enemy import *
 from .king import *
 from .pawn import *
-from .position import *
 
 # Modules
 from .validator import TokenValidator
