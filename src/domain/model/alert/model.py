@@ -1,7 +1,7 @@
-# src/domain/model/danger/model.py
+# src/domain/model/alert/model.py
 
 """
-Module: domain.model.danger.model
+Module: domain.model.alert.model
 Author: Banji Lawal
 Created: 2025-09-16
 version: 1.0.0
@@ -14,7 +14,7 @@ from typing import Optional
 from domain import CheckmateEncounter, EncounterWarning, Model
 
 
-class ThreatTable(Model):
+class AlertTable(Model):
     """
      Role:
          - Data Holder
@@ -77,9 +77,9 @@ class ThreatTable(Model):
         return not self.enemy_detected
     
     @property
-    def checkmate_exists(self) -> bool:
+    def have_been_checkmated(self) -> bool:
         return self._checkmate is not None
     
     @property
-    def has_not_been_checkmated(self) -> bool:
-        return not self.checkmate_exists
+    def not_checkmated(self) -> bool:
+        return not self.have_been_checkmated

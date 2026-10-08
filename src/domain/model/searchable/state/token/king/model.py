@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import Optional
 
 from domain import (
-    EncounterAlertLevel, Footstep, Formation, HomeSquare, Square, Team,
-    ThreatTable, Token, KingReadiness
+    AlertTable, ThreatLevel, Footstep, Formation, HomeSquare, Square, Team,
+    Token, KingReadiness
 )
 
 
@@ -26,17 +26,17 @@ class KingToken(Token):
         1. Token that can be checkmated not captured.
 
     Attributes:
-        threats: ThreatTable
+        alert: AlertTable
         readiness: KingReadiness
-        alertness: EncounterAlertLevel
+        threat_level: EncounterAlertLevel
         potential_destination: Optional[Square]
 
     Super Class:
         Token
     """
-    _threats: ThreatTable
+    _alert: AlertTable
     _readiness: KingReadiness
-    _alertness: EncounterAlertLevel
+    _threat_level: ThreatLevel
     _potential_destination: Optional[Square]
 
     def __init__(
@@ -46,7 +46,7 @@ class KingToken(Token):
             formation: Formation,
             home_square: HomeSquare,
             footstep: Optional[Footstep] | None = None,
-            threats: Optional[ThreatTable] | None = None,
+            alert: Optional[AlertTable] | None = None,
     ):
         """
         Args:
@@ -55,7 +55,7 @@ class KingToken(Token):
             home_square: Square
             formation: Formation
             footstep: Optional[Footstep]
-            threats: Optional[ThreatTable]
+            alert: Optional[AlertTable]
         """
         super().__init__(
             id=id,
@@ -64,9 +64,9 @@ class KingToken(Token):
             home_square=home_square,
             footstep=footstep,
         )
-        self._threats = threats or ThreatTable()
+        self._alert = alert or AlertTable()
         self._readiness = KingReadiness.NOT_READY
-        self._alertness = EncounterAlertLevel.LOW
+        self._threat_level = ThreatLevel.LOW
         self._potential_destination = None
         
     @property
@@ -79,12 +79,12 @@ class KingToken(Token):
         
         
     @property
-    def alertness(self) -> EncounterAlertLevel:
-        return self._alertness
+    def threat_level(self) -> ThreatLevel:
+        return self._threat_level
     
-    @alertness.setter
-    def alertness(self, other: EncounterAlertLevel):
-        self._alertness = other
+    @threat_level.setter
+    def threat_level(self, other: ThreatLevel):
+        self._threat_level = other
         
     @property
     def potential_destination(self) -> Optional[Square]:
@@ -95,14 +95,14 @@ class KingToken(Token):
         self._potential_destination = other
         
     @property
-    def threats(self) -> ThreatTable:
-        return self._threats
+    def alert(self) -> AlertTable:
+        return self._alert
         
     @property
     def is_ready(self) -> bool:
         return (
                 self.has_been_deployed and
-                self._threats.has_not_been_checkmated and
+                self._alert.not_checkmated and
                 self._readiness == KingReadiness.READY
         )
     
@@ -110,30 +110,30 @@ class KingToken(Token):
     def is_not_ready(self) -> bool:
         return (
                 self.has_never_been_deployed or
-                self.is_checkmated
+                self.alert.not_checkmated
         )
      
     @property
     def is_safe(self) -> bool:
         return (
                 self.is_ready and
-                self._threats.no_enemy_detected and
-                self._alertness == EncounterAlertLevel.LOW
+                self._alert.no_enemy_detected and
+                self._threat_level == ThreatLevel.LOW
         )
     
     @property
-    def is_in_danger(self) -> bool:
+    def is_not_safe(self) -> bool:
         return (
                 self.is_ready and
-                self._threats.enemy_detected and
-                self._alertness == EncounterAlertLevel.HIGH
+                self._alert.enemy_detected and
+                self._threat_level == ThreatLevel.HIGH
         )
     
     @property
     def is_checkmated(self) -> bool:
         return (
                 self.has_been_deployed and
-                self._threats.checkmate_exists and
+                self._alert.have_been_checkmated and
                 self._readiness == KingReadiness.CHECKMATED
         )
     

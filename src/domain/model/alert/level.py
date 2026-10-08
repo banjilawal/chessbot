@@ -1,7 +1,7 @@
-# src/domain/model/searchable/state/token/state/encounter.py
+# src/domain/model/alert/level.py
 
 """
-Module: domain.model.searchable.state.token.state.encounter
+Module: domain.model.alert.level
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -10,7 +10,7 @@ version: 0.0.2
 from enum import Enum, auto
 
 
-class EncounterAlertLevel(Enum):
+class ThreatLevel(Enum):
     """
     Role:
         - State
