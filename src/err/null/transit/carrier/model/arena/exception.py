@@ -11,7 +11,8 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ModelCarrierNullException
+from artifcat import MethodResultType
+From Err Import ModelCarrierNullException
 
 __all__ = [
     # ======================# ARENA_CARRIER_NULL_ERROR #======================#

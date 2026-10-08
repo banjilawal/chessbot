@@ -95,7 +95,7 @@ class CombatantTokenEnvelopeConsumer(
                 )
             )
         safe = cast(RootTokenEnvelope, priming.payload)
-        
+        # Handle the case that the envelope wrong envelope was delivered.
         if not safe.for_combatant_token_consumer:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -112,9 +112,11 @@ class CombatantTokenEnvelopeConsumer(
                     )
                 )
             )
+        # --- EXTRACT_THE_BLUEPRINT_THE_VALIDATOR_NEEDS ---#
         reference = cast(CombatantTokenCarrier, safe.prime_extract.reference)
         blueprint = reference.extract_blueprint()
         
+        # Handle the case that the blueprint is null.
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -151,6 +153,7 @@ class CombatantTokenEnvelopeConsumer(
                 )
             )
         # --- START_CAPTOR_VALIDATION_PROCESS ---#
+        
         captor = blueprint.captor
         if captor is not None:
             # Handle the case that the not-null captor is flagged
@@ -190,6 +193,7 @@ class CombatantTokenEnvelopeConsumer(
                 )
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
         readiness = cast(CombatantReadiness, readiness_validation.payload)
+        
         # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         # The client wants a safe CombatantToken.
         if safe.prime_extract.reference.has_model:

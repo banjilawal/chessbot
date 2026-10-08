@@ -13,8 +13,8 @@ from typing import Optional, Type, cast
 
 
 from domain import (
-    EncounterWarning, CheckmateEncounter, Coord, KingReadiness, KingToken, Formation, HomeSquare,
-    Team, TokenBlueprint, TokenDeployment
+    AlertTable, Footstep, KingReadiness, KingToken, Formation, HomeSquare,
+    Team, ThreatLevel, TokenBlueprint, TokenDeployment
 )
 from err import KingTokenNullException
 
@@ -28,11 +28,9 @@ class KingTokenBlueprint(TokenBlueprint[KingToken]):
          1.  Provides values for hydrating a KingToken object.
 
      Attributes:
-        team: Team,
-        formation: Formation
-        rank: Optional[Rank]
-        positions: Optional[CoordDatabase]
-        id: Optional[int]
+        alert: AlertTable
+        readiness: KingReadiness
+        threat_level: ThreatLevel
 
         domain_class: Type[KingToken]
         domain_null_exception: KingTokenNullException
@@ -42,36 +40,34 @@ class KingTokenBlueprint(TokenBlueprint[KingToken]):
      Super Class:
         TokenBlueprint
      """
+    _alert: AlertTable
     _readiness: KingReadiness
-    _checkmate: Optional[CheckmateEncounter]
-    _check_warning: Optional[EncounterWarning]
+    _threat_level: ThreatLevel
 
-    
     def __init__(
             self,
             team: Team,
+            footstep: Footstep,
             formation: Formation,
-            position: Optional[Coord] | None = None,
-            previous_position: Optional[Coord] | None = None,
             home_square: Optional[HomeSquare] | None = None,
             deployment: Optional[TokenDeployment] | None = None,
             readiness: Optional[KingReadiness] | None = None,
-            checkmate: Optional[CheckmateEncounter] | None = None,
-            check_warning: Optional[EncounterWarning] | None = None,
+            threat_level: Optional[ThreatLevel] | None = None,
+            alert: Optional[AlertTable] | None = None,
             domain_class: Optional[Type[KingToken]] | None = None,
             domain_null_exception: Optional[KingTokenNullException] | None = None,
             id: Optional[int] | None = None,
     ):
         """
         Args:
-            team: Team,
+            team: Team
+            footstep: Footstep
             formation: Formation
-            position: Optional[Coord]
-            previous_position: Optional[Coord]
-            readiness: Optional[KingReadiness]
+            home_square: Optional[HomeSquare]
             deployment: Optional[TokenDeployment]
-            checkmate: Optional[CheckmateAttack]
-            check_warning: Optional[CheckWarning]
+            readiness: Optional[KingReadiness]
+            threat_level: Optional[ThreatLevel]
+            alert: Optional[AlertTable]
             domain_class: Optional[Type[KingToken]]
             domain_null_exception: Optional[KingTokenNullException]
             id: Optional[int]
@@ -79,29 +75,28 @@ class KingTokenBlueprint(TokenBlueprint[KingToken]):
         super().__init__(
             id=id,
             team=team,
-            position=position,
+            footstep=footstep,
             formation=formation,
             home_square=home_square,
             deployment=deployment,
-            previous_position=previous_position,
             domain_class=domain_class or Type[KingToken],
             domain_null_exception=domain_null_exception or KingTokenNullException(),
         )
-        self._checkmate = checkmate
-        self._check_warning = check_warning
-        self._readiness = readiness or KingReadiness.READY
+        self._alert = alert or AlertTable()
+        self._threat_level = threat_level or ThreatLevel.LOW
+        self._readiness = readiness or KingReadiness.NOT_READY
         
     @property
     def readiness(self) -> KingReadiness:
         return self._readiness
         
     @property
-    def checkmate(self) -> Optional[CheckmateEncounter]:
-        return self._checkmate
+    def alert(self) -> AlertTable:
+        return self._alert
     
     @property
-    def check_warning(self) -> Optional[EncounterWarning]:
-        return self._check_warning
+    def threat_level(self) -> ThreatLevel:
+        return self._threat_level
     
     @property
     def domain_class(self) -> Type[KingToken]:

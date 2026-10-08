@@ -1,7 +1,7 @@
-# src/assurance/envelope/consumer/token/consumer.py
+# src/assurance/envelope/consumer/token/king/consumer.py
 
 """
-Module: assurance.envelope.consumer.token.consumer
+Module: assurance.envelope.consumer.token.king.consumer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -77,8 +77,8 @@ class KingTokenEnvelopeConsumer(
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the property table is null or the wrong type.
-        priming = self._toolkit.priming_validator.execute(
+        # --- INITIATE_THE_VALIDATION_PROCESS ---#
+        priming = self.toolkit.priming_validator.execute(
             candidate=envelope,
             target_model=RootTokenEnvelope,
             null_exception=RootTokenEnvelopeNullException(),
@@ -95,7 +95,7 @@ class KingTokenEnvelopeConsumer(
                 )
             )
         safe = cast(RootTokenEnvelope, priming.payload)
-        
+        # Handle the case that the envelope wrong envelope was delivered.
         if not safe.for_king_token_consumer:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -112,9 +112,11 @@ class KingTokenEnvelopeConsumer(
                     )
                 )
             )
+        # --- EXTRACT_THE_BLUEPRINT_THE_VALIDATOR_NEEDS ---#
         reference = cast(KingTokenCarrier, safe.prime_extract.reference)
         blueprint = reference.extract_blueprint()
         
+        # Handle the case that the blueprint is null.
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -132,7 +134,6 @@ class KingTokenEnvelopeConsumer(
                 )
             )
         # --- START_KING_TOKEN_READINESS_VALIDATION_PROCESS ---#
-        
         # Handle the case that the readiness is flagged.
         readiness_validation = self._toolkit.priming_validator.execute(
             candidate=blueprint.readiness,
@@ -150,8 +151,26 @@ class KingTokenEnvelopeConsumer(
                     ex=readiness_validation.exception,
                 )
             )
-        # --- START_CAPTOR_VALIDATION_PROCESS ---#
-        
+        # --- START_THE_THREAT_LEVEL_VALIDATION_PROCESS ---#
+        # Handle the case that the readiness is flagged.
+        threat_level_validation = self._toolkit.priming_validator.execute(
+            candidate=blueprint.threat_level,
+            target_model=KingReadiness,
+            null_exception=ThreatLevelNullException(),
+        )
+        if threat_level_validation.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                KingTokenEnvelopeConsumerException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=KingTokenEnvelopeConsumerException.MSG,
+                    err_code=KingTokenEnvelopeConsumerException.ERR_CODE,
+                    ex=threat_level_validation.exception,
+                )
+            )
+        # --- START_THE_ALERT_VALIDATION_PROCESS ---#
+        alert_validation =
         captor = blueprint.captor
         if blueprint.captor is not None:
             # Handle the case that the not-null captor is flagged
