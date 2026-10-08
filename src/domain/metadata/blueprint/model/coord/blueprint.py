@@ -33,7 +33,7 @@ class CoordBlueprint(ModelBlueprint[Coord]):
     Provides:
 
      Super Class:
-        CartesianBlueprint
+        ModelBlueprint
      """
     _row: int
     _column: int

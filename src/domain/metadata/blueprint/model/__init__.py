@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.BLUEPRINT.MODEL PACKAGE ===========#
 
 # Packages
+from .alert import *
 from .coord import *
 from .footstep import *
 from .maneuver import *

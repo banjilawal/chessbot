@@ -35,7 +35,7 @@ class VectorBlueprint(ModelBlueprint[Vector]):
     Provides:
 
      Super Class:
-        CartesianBlueprint
+        ModelBlueprint
      """
     _x: int
     _y: int
