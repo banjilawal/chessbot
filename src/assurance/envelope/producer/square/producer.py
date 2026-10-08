@@ -13,13 +13,13 @@ from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import RootEnvelopeProducer, SquareLoader, SquareValidatorToolkit
-from domain import Coord, Square, SquareState, SquarePrimeExtract, Board, Token
+from domain import Board, Coord, Square, SquarePrimeExtract, SquareState, Token
 from err import (
-    RootEncounterValidatorException, RootSquareValidatorException, SquareCarrierEmptyException,
-    SquareConsistencyException, SquareStateNullException
+    SquareCarrierEmptyException, SquareOccupantConsistencyException,
+    SquareEnvelopeProducerException, SquareStateNullException
 )
-from exchange import CoordValidationRequest, BoardValidationRequest, TokenValidationRequest
-from transit import RootSquareEnvelope, CoordCarrier, BoardCarrier, SquareCarrier, TokenCarrier
+from exchange import BoardValidationRequest, CoordValidationRequest, TokenValidationRequest
+from transit import BoardCarrier, CoordCarrier, RootSquareEnvelope, TokenCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -76,7 +76,7 @@ class SquareEnvelopeProducer(RootEnvelopeProducer[Square]):
         Returns:
            ValidationResult[SquareProductEnvelope]
         Raises:
-            RootSquareValidatorException
+            SquareEnvelopeProducerException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -85,11 +85,11 @@ class SquareEnvelopeProducer(RootEnvelopeProducer[Square]):
         if loading.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                RootSquareValidatorException(
+                SquareEnvelopeProducerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=RootSquareValidatorException.MSG,
-                    err_code=RootSquareValidatorException.ERR_CODE,
+                    msg=SquareEnvelopeProducerException.MSG,
+                    err_code=SquareEnvelopeProducerException.ERR_CODE,
                     ex=loading.exception,
                 )
             )
@@ -102,17 +102,34 @@ class SquareEnvelopeProducer(RootEnvelopeProducer[Square]):
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                RootSquareValidatorException(
+                SquareEnvelopeProducerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=RootSquareValidatorException.MSG,
-                    err_code=RootSquareValidatorException.ERR_CODE,
+                    msg=SquareEnvelopeProducerException.MSG,
+                    err_code=SquareEnvelopeProducerException.ERR_CODE,
                     ex=SquareCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
                         msg=SquareCarrierEmptyException.MSG,
                         err_code=SquareCarrierEmptyException.ERR_CODE,
                     ),
+                )
+            )
+        # Handle the case that the Square has an occupation inconsistency.
+        if blueprint.is_not_consistent:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                SquareEnvelopeProducerException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=SquareEnvelopeProducerException.MSG,
+                    err_code=SquareEnvelopeProducerException.ERR_CODE,
+                    ex=SquareOccupantConsistencyException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=SquareOccupantConsistencyException.MSG,
+                        err_code=SquareOccupantConsistencyException.ERR_CODE,
+                    )
                 )
             )
         # --- PROCESS_THE_ID_ATTRIBUTE. ---#
@@ -126,11 +143,11 @@ class SquareEnvelopeProducer(RootEnvelopeProducer[Square]):
         if id_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                RootEncounterValidatorException(
+                SquareEnvelopeProducerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=RootEncounterValidatorException.MSG,
-                    err_code=RootEncounterValidatorException.ERR_CODE,
+                    msg=SquareEnvelopeProducerException.MSG,
+                    err_code=SquareEnvelopeProducerException.ERR_CODE,
                     ex=id_validation.exception,
                 )
             )
@@ -142,11 +159,11 @@ class SquareEnvelopeProducer(RootEnvelopeProducer[Square]):
         if name_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                RootSquareValidatorException(
+                SquareEnvelopeProducerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=RootSquareValidatorException.MSG,
-                    err_code=RootSquareValidatorException.ERR_CODE,
+                    msg=SquareEnvelopeProducerException.MSG,
+                    err_code=SquareEnvelopeProducerException.ERR_CODE,
                     ex=name_validation.exception,
                 )
             )
@@ -160,11 +177,11 @@ class SquareEnvelopeProducer(RootEnvelopeProducer[Square]):
         if state_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                RootSquareValidatorException(
+                SquareEnvelopeProducerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=RootSquareValidatorException.MSG,
-                    err_code=RootSquareValidatorException.ERR_CODE,
+                    msg=SquareEnvelopeProducerException.MSG,
+                    err_code=SquareEnvelopeProducerException.ERR_CODE,
                     ex=state_validation.exception,
                 )
             )
@@ -179,11 +196,11 @@ class SquareEnvelopeProducer(RootEnvelopeProducer[Square]):
         if coord_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                RootSquareValidatorException(
+                SquareEnvelopeProducerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=RootSquareValidatorException.MSG,
-                    err_code=RootSquareValidatorException.ERR_CODE,
+                    msg=SquareEnvelopeProducerException.MSG,
+                    err_code=SquareEnvelopeProducerException.ERR_CODE,
                     ex=coord_validation.exception,
                 )
             )
@@ -198,34 +215,16 @@ class SquareEnvelopeProducer(RootEnvelopeProducer[Square]):
         if board_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                RootSquareValidatorException(
+                SquareEnvelopeProducerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=RootSquareValidatorException.MSG,
-                    err_code=RootSquareValidatorException.ERR_CODE,
+                    msg=SquareEnvelopeProducerException.MSG,
+                    err_code=SquareEnvelopeProducerException.ERR_CODE,
                     ex=board_validation.exception,
                 )
             )
         # --- PROCESS_THE_OCCUPANT_ATTRIBUTE. ---#
         occupant = blueprint.occupant
-        
-        # Handle the case that an inconsistency between occupant and state exists.
-        if blueprint.is_not_consistent:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                RootSquareValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=RootSquareValidatorException.MSG,
-                    err_code=RootSquareValidatorException.ERR_CODE,
-                    ex=SquareConsistencyException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=SquareConsistencyException.MSG,
-                        err_code=SquareConsistencyException.ERR_CODE,
-                    )
-                )
-            )
         if occupant is not None:
             occupant_validation = self.toolkit.wrapper.token.extract_model(
                 request=TokenValidationRequest(
@@ -237,11 +236,11 @@ class SquareEnvelopeProducer(RootEnvelopeProducer[Square]):
             if occupant_validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    RootSquareValidatorException(
+                    SquareEnvelopeProducerException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=RootSquareValidatorException.MSG,
-                        err_code=RootSquareValidatorException.ERR_CODE,
+                        msg=SquareEnvelopeProducerException.MSG,
+                        err_code=SquareEnvelopeProducerException.ERR_CODE,
                         ex=occupant_validation.exception,
                     )
                 )

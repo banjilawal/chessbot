@@ -5,27 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/envelope/producer/encounter/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/err/assurance/envelope/producer/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/envelope/producer/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assurance/envelope/producer/token/producer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assurance/envelope/producer/encounter/producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/envelope/producer/encounter/producer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/assurance/envelope/producer/square/producer.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/envelope/producer/square/producer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/root/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/envelope/producer/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/root/encounter/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/root/encounter/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/root/encounter/participant/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/root/encounter/participant/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/root/encounter/readiness/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/root/encounter/readiness/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/root/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/envelope/producer/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/root/square/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/root/square/coord/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/root/square/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/envelope/producer/encounter/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/root/square/exception.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/root/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/envelope/producer/token/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/root/token/coord/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/root/token/coord/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/envelope/producer/square/exception.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/err/assurance/envelope/root/token/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/assurance/envelope/producer/token/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/consistency/model/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/consistency/model/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/consistency/model/square/exception.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/consistency/model/square/exception.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,59 +54,59 @@
     <decayedCancelled>
       <entry key="MS100" value="1.0" />
       <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.000000026267808" />
-      <entry key="S5" value="1.0013328380351103" />
-      <entry key="S10" value="1.0512067067397837" />
-      <entry key="S30" value="1.6328266943045602" />
-      <entry key="S60" value="2.2989183282498193" />
-      <entry key="M2" value="3.3761135460072675" />
-      <entry key="M5" value="17.599072807016494" />
-      <entry key="M10" value="70.88441283031828" />
-      <entry key="M15" value="133.1979648918852" />
-      <entry key="M30" value="286.45326123307177" />
-      <entry key="H1" value="471.84332958488676" />
-      <entry key="H2" value="691.8652841426957" />
-      <entry key="H4" value="1005.3058306726593" />
-      <entry key="D1" value="4498.468629308917" />
-      <entry key="W1" value="28637.631984872183" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0" />
+      <entry key="S10" value="1.000000000787956" />
+      <entry key="S30" value="1.0022273813563813" />
+      <entry key="S60" value="1.0941106271356236" />
+      <entry key="M2" value="1.6971616275049572" />
+      <entry key="M5" value="7.535807667809874" />
+      <entry key="M10" value="29.293219355079124" />
+      <entry key="M15" value="61.37612177226011" />
+      <entry key="M30" value="181.39789549642236" />
+      <entry key="H1" value="384.8148609888481" />
+      <entry key="H2" value="647.921062279824" />
+      <entry key="H4" value="1000.0708922863522" />
+      <entry key="D1" value="4522.231626050747" />
+      <entry key="W1" value="28669.32333907835" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="2.673335389806804E-304" />
-      <entry key="S5" value="3.722385767933735E-122" />
-      <entry key="S10" value="1.9293485345923764E-61" />
-      <entry key="S30" value="5.77834626644772E-21" />
-      <entry key="S60" value="7.601738124198782E-11" />
-      <entry key="M2" value="8.79207906165349E-6" />
-      <entry key="M5" value="0.01326173030482416" />
-      <entry key="M10" value="0.2792681089875044" />
-      <entry key="M15" value="0.9157154433996273" />
-      <entry key="M30" value="3.8418558170697215" />
-      <entry key="H1" value="12.729642594773866" />
-      <entry key="H2" value="33.226364831256284" />
-      <entry key="H4" value="66.75885524162632" />
-      <entry key="D1" value="347.57541329931547" />
-      <entry key="W1" value="1643.313625557971" />
+      <entry key="S2" value="4.2727030577929543E-137" />
+      <entry key="S5" value="2.8363271471712704E-55" />
+      <entry key="S10" value="5.49893165366404E-28" />
+      <entry key="S30" value="1.0720350855903332E-9" />
+      <entry key="S60" value="4.579748383913315E-5" />
+      <entry key="M2" value="0.01053843110044085" />
+      <entry key="M5" value="0.33581683131945406" />
+      <entry key="M10" value="1.2298600642090702" />
+      <entry key="M15" value="2.062033864147371" />
+      <entry key="M30" value="4.631833198783763" />
+      <entry key="H1" value="12.04214917835294" />
+      <entry key="H2" value="30.98317743877811" />
+      <entry key="H4" value="64.39413692768274" />
+      <entry key="D1" value="346.1062642579579" />
+      <entry key="W1" value="1643.937099009229" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9265880618903709" />
-      <entry key="MS500" value="0.9848664428955506" />
-      <entry key="S2" value="0.9961949743228871" />
-      <entry key="S5" value="0.9998073994047162" />
-      <entry key="S10" value="1.05041160546904" />
-      <entry key="S30" value="1.632438298287001" />
-      <entry key="S60" value="2.2986557426600838" />
-      <entry key="M2" value="3.3754631131366537" />
-      <entry key="M5" value="17.602214314166655" />
-      <entry key="M10" value="71.14130617727602" />
-      <entry key="M15" value="134.08683054301343" />
-      <entry key="M30" value="290.2677180862978" />
-      <entry key="H1" value="484.54938841763993" />
-      <entry key="H2" value="725.0696152189319" />
-      <entry key="H4" value="1072.0408026344464" />
-      <entry key="D1" value="4846.009481481011" />
-      <entry key="W1" value="30280.919421087063" />
+      <entry key="MS100" value="0.9138314502294005" />
+      <entry key="MS500" value="0.9821395952633915" />
+      <entry key="S2" value="0.995504677670617" />
+      <entry key="S5" value="0.9981994402866303" />
+      <entry key="S10" value="0.9990993152412707" />
+      <entry key="S30" value="1.0018411066501325" />
+      <entry key="S60" value="1.0921109609310224" />
+      <entry key="M2" value="1.7003700911906785" />
+      <entry key="M5" value="7.851856681216782" />
+      <entry key="M10" value="30.49662255902226" />
+      <entry key="M15" value="63.410259459569524" />
+      <entry key="M30" value="186.00178308201882" />
+      <entry key="H1" value="396.8318605578091" />
+      <entry key="H2" value="678.8810911886453" />
+      <entry key="H4" value="1064.4407738492796" />
+      <entry key="D1" value="4868.303464703071" />
+      <entry key="W1" value="30313.234246087148" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -155,7 +140,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/assurance/envelope/producer",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/assurance/envelope/producer",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -169,11 +154,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/assurance/envelope/producer" />
       <recent name="$PROJECT_DIR$/src/err/assurance/envelope/producer" />
       <recent name="$PROJECT_DIR$/src/transit/dispatcher/validator/model" />
       <recent name="$PROJECT_DIR$/src/err/assurance/loader/model" />
       <recent name="$PROJECT_DIR$/src/err/null/domain/metadata/blueprint/model" />
-      <recent name="$PROJECT_DIR$/src/err/null/domain/metadata/blueprint/struct/node" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/domain/model/alert" />
@@ -839,7 +824,7 @@
       <workItem from="1790063398459" duration="258692000" />
       <workItem from="1790480915263" duration="119124000" />
       <workItem from="1790671354344" duration="262742000" />
-      <workItem from="1791213294391" duration="124093000" />
+      <workItem from="1791213294391" duration="126252000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -2331,6 +2316,11 @@
           <url>file://$PROJECT_DIR$/src/assurance/depend/wrapper/struct/chart/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="533" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/err/assurance/envelope/consumer/rank/__init__.py</url>
+          <line>12</line>
+          <option name="timeStamp" value="534" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

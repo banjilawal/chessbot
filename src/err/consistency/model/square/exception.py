@@ -17,11 +17,11 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# SQUARE_CONSISTENCY_ERROR #======================#
-    "SquareConsistencyException",
+    "SquareOccupantConsistencyException",
 ]
 
 # ======================# SQUARE_CONSISTENCY_ERROR #======================#
-class SquareConsistencyException(ModelConsistencyException):
+class SquareOccupantConsistencyException(ModelConsistencyException):
     """
     Role:
         - Error Tracing
