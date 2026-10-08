@@ -1,7 +1,7 @@
-# src/assurance/validator/envelope/producer/encounter/generator.py
+# src/assurance/envelope/producer/encounter/producer.py
 
 """
-Module: assurance.envelope.producer.encounter.generator
+Module: assurance.envelope.producer.encounter.producer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -26,7 +26,7 @@ from transit import ManeuverCarrier, RootEncounterEnvelope, TokenCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class RootEncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
+class EncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
     """
     Role
         -   Integrity, Consistency Maintenance
@@ -140,14 +140,13 @@ class RootEncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
                 )
             )
         # --- PROCESS_THE_VICTIM_ATTRIBUTE. ---#
-        
-        # Handle the case that the victim is flagged.
         victim_validation = self.toolkit.wrapper.token.extract_model(
             request=TokenValidationRequest(
                 item=TokenCarrier(model=blueprint.victim),
                 id=IdFactory.next_id(class_name="TokenValidationRequest"),
             )
         )
+        # Handle the case that the victim is unsafe.
         if victim_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -160,13 +159,13 @@ class RootEncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
                 )
             )
         # --- PROCESS_THE_ATTACKER_MANEUVER_ATTRIBUTE. ---#
-        # Handle the case that the token is flagged.
         attacker_maneuver_validation = self.toolkit.wrapper.maneuver.extract_model(
             request=ManeuverValidationRequest(
                 item=ManeuverCarrier(model=blueprint.attacker_maneuver),
                 id=IdFactory.next_id(class_name="TManeuverValidationRequest"),
             )
         )
+        # Handle the case that the token is flagged.
         if attacker_maneuver_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -184,7 +183,7 @@ class RootEncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
             floor=NumericSetting.floor(),
             ceiling=NumericSetting.ceiling(),
         )
-        
+        # Handle the case that attacker_reward is unsafe.
         if attacker_reward.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(

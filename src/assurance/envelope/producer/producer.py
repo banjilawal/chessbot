@@ -1,7 +1,7 @@
-# src/assurance/envelope/producer/validator.py
+# src/assurance/envelope/producer/producer.py
 
 """
-Module: assurance.envelope.producer.validator
+Module: assurance.envelope.producer.producer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

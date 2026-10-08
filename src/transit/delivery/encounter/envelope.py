@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from domain import Encounter, EncounterPrimeExtract, Maneuver, Square, Participation
+from domain import Encounter, EncounterPrimeExtract, Maneuver, Square, Participation, Token
 from transit import (
     CheckmateEncounterCarrier, EncounterWarningCarrier, KillEncounterCarrier, ProductEnvelope,
     StalemateEncounterCarrier
@@ -28,9 +28,9 @@ class RootEncounterEnvelope(ProductEnvelope[Encounter]):
 
     Attributes:
         id: int
+        victim: Token
         location: Square
         attacker_reward: int
-        participants: Participation
         attacker_maneuver: Maneuver
         prime_extract: EncounterPrimeExtract
 
@@ -43,34 +43,35 @@ class RootEncounterEnvelope(ProductEnvelope[Encounter]):
     Super Class:
         ProductEnvelope
     """
+    
     _id: int
+    _victim: Token
     _location: Square
     _attacker_reward: int
-    _participants: Participation
     _attacker_maneuver: Maneuver
     
     def __init__(
             self,
             id: int,
+            victim: Token,
             location: Square,
             attacker_reward: int,
-            participants: Participation,
             attacker_maneuver: Maneuver,
             prime_extract: EncounterPrimeExtract,
     ):
         """
             id: int
+            victim: Token
             location: Square
             attacker_reward: int
-            participants: Participation
             attacker_maneuver: Maneuver
             prime_extract: EncounterPrimeExtract
         """
         super().__init__(prime_extract=prime_extract)
         self._id = id
+        self._victim = victim
         self._location = location
         self._attacker_reward = attacker_reward
-        self._participants = participants
         self._attacker_maneuver =attacker_maneuver
   
     @property
@@ -78,12 +79,12 @@ class RootEncounterEnvelope(ProductEnvelope[Encounter]):
         return self._id
     
     @property
-    def location(self) -> Square:
-        return self._location
+    def victim(self) -> Token:
+        return self._victim
     
     @property
-    def participants(self) -> Participation:
-        return self._participants
+    def location(self) -> Square:
+        return self._location
     
     @property
     def attacker_reward(self) -> int:

@@ -16,7 +16,7 @@ from assurance import (
     RootEncounterEnvelope, RootEncounterEnvelopeGenerator, ModelValidator,
     EncounterPositionTableGenerator,
     EncounterValidationRouter,
-    EncounterValidatorToolkit, RootEncounterEnvelopeProducer
+    EncounterValidatorToolkit, EncounterEnvelopeProducer
 )
 from domain import Coord, Formation, HomeSquare, Encounter, EncounterBlueprint, EncounterDeployment, EncounterPrimeExtract
 from err import FormationNullException, EncounterDeploymentNullException, EncounterValidatorException
@@ -45,11 +45,11 @@ class EncounterValidator(ModelValidator[Encounter]):
         ModelValidator
     """
     _validation_router: EncounterValidationRouter
-    _root_validator: RootEncounterEnvelopeProducer
+    _root_validator: EncounterEnvelopeProducer
     
     def __init__(
             self,
-            root_validator: Optional[RootEncounterEnvelopeProducer] | None = None,
+            root_validator: Optional[EncounterEnvelopeProducer] | None = None,
             loader: Optional[EncounterValidatorToolkit] | None = None,
             validation_router: Optional[EncounterValidationRouter] | None = None,
             property_table_generator: Optional[RootEncounterEnvelopeGenerator]
