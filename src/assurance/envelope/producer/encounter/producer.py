@@ -18,10 +18,12 @@ from domain import (
     Encounter, EncounterPrimeExtract, Maneuver, Square, Token
 )
 from err import (
-    EncounterCarrierEmptyException, FriendlyFireAttackException,
-    RootEncounterValidatorException, TokenAttackingItselfException
+    EncounterCarrierEmptyException, EncounterEnvelopeProducerException,
+    FriendlyFireAttackException, TokenAttackingItselfException
 )
-from exchange import ManeuverValidationRequest, SquareValidationRequest, TokenValidationRequest
+from exchange import (
+    ManeuverValidationRequest, SquareValidationRequest, TokenValidationRequest
+)
 from transit import ManeuverCarrier, RootEncounterEnvelope, SquareCarrier, TokenCarrier
 from util import IdFactory, LoggingLevelRouter
 
@@ -89,11 +91,11 @@ class EncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
         if loading.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                RootEncounterValidatorException(
+                EncounterEnvelopeProducerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=RootEncounterValidatorException.MSG,
-                    err_code=RootEncounterValidatorException.ERR_CODE,
+                    msg=EncounterEnvelopeProducerException.MSG,
+                    err_code=EncounterEnvelopeProducerException.ERR_CODE,
                     ex=loading.exception,
                 )
             )
@@ -106,11 +108,11 @@ class EncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                RootEncounterValidatorException(
+                EncounterEnvelopeProducerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=RootEncounterValidatorException.MSG,
-                    err_code=RootEncounterValidatorException.ERR_CODE,
+                    msg=EncounterEnvelopeProducerException.MSG,
+                    err_code=EncounterEnvelopeProducerException.ERR_CODE,
                     ex=EncounterCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -130,11 +132,11 @@ class EncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
         if id_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                RootEncounterValidatorException(
+                EncounterEnvelopeProducerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=RootEncounterValidatorException.MSG,
-                    err_code=RootEncounterValidatorException.ERR_CODE,
+                    msg=EncounterEnvelopeProducerException.MSG,
+                    err_code=EncounterEnvelopeProducerException.ERR_CODE,
                     ex=id_validation.exception,
                 )
             )
@@ -149,11 +151,11 @@ class EncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
         if location_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                RootEncounterValidatorException(
+                EncounterEnvelopeProducerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=RootEncounterValidatorException.MSG,
-                    err_code=RootEncounterValidatorException.ERR_CODE,
+                    msg=EncounterEnvelopeProducerException.MSG,
+                    err_code=EncounterEnvelopeProducerException.ERR_CODE,
                     ex=location_validation.exception,
                 )
             )
@@ -168,11 +170,11 @@ class EncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
         if victim_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                RootEncounterValidatorException(
+                EncounterEnvelopeProducerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=RootEncounterValidatorException.MSG,
-                    err_code=RootEncounterValidatorException.ERR_CODE,
+                    msg=EncounterEnvelopeProducerException.MSG,
+                    err_code=EncounterEnvelopeProducerException.ERR_CODE,
                     ex=victim_validation.exception,
                 )
             )
@@ -187,11 +189,11 @@ class EncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
         if attacker_maneuver_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                RootEncounterValidatorException(
+                EncounterEnvelopeProducerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=RootEncounterValidatorException.MSG,
-                    err_code=RootEncounterValidatorException.ERR_CODE,
+                    msg=EncounterEnvelopeProducerException.MSG,
+                    err_code=EncounterEnvelopeProducerException.ERR_CODE,
                     ex=attacker_maneuver_validation.exception,
                 )
             )
@@ -205,11 +207,11 @@ class EncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
         if attacker_reward.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                RootEncounterValidatorException(
+                EncounterEnvelopeProducerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=RootEncounterValidatorException.MSG,
-                    err_code=RootEncounterValidatorException.ERR_CODE,
+                    msg=EncounterEnvelopeProducerException.MSG,
+                    err_code=EncounterEnvelopeProducerException.ERR_CODE,
                     ex=attacker_reward.exception,
                 )
             )
@@ -225,11 +227,11 @@ class EncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
         if victim == attacker:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                RootEncounterValidatorException(
+                EncounterEnvelopeProducerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=RootEncounterValidatorException.MSG,
-                    err_code=RootEncounterValidatorException.ERR_CODE,
+                    msg=EncounterEnvelopeProducerException.MSG,
+                    err_code=EncounterEnvelopeProducerException.ERR_CODE,
                     ex=TokenAttackingItselfException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -242,11 +244,11 @@ class EncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
         if victim.is_friend(attacker):
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                RootEncounterValidatorException(
+                EncounterEnvelopeProducerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=RootEncounterValidatorException.MSG,
-                    err_code=RootEncounterValidatorException.ERR_CODE,
+                    msg=EncounterEnvelopeProducerException.MSG,
+                    err_code=EncounterEnvelopeProducerException.ERR_CODE,
                     ex=FriendlyFireAttackException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,

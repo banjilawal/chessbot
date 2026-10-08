@@ -15,7 +15,7 @@ from artifcat import ValidationResult
 from assurance import RootEnvelopeProducer, SquareLoader, SquareValidatorToolkit
 from domain import Coord, Square, SquareState, SquarePrimeExtract, Board, Token
 from err import (
-    RootSquareValidatorException, SquareCarrierEmptyException,
+    RootEncounterValidatorException, RootSquareValidatorException, SquareCarrierEmptyException,
     SquareConsistencyException, SquareStateNullException
 )
 from exchange import CoordValidationRequest, BoardValidationRequest, TokenValidationRequest
@@ -116,22 +116,21 @@ class SquareEnvelopeProducer(RootEnvelopeProducer[Square]):
                 )
             )
         # --- PROCESS_THE_ID_ATTRIBUTE. ---#
-        
-        # Handle the case that any id in the blueprint is flagged.
         id_validation = self.toolkit.blueprint_id_extractor.execute(
             candidate=blueprint,
             blueprint_owner_name=blueprint.domain_class_name,
             blueprint_type=self.toolkit.types.blueprint,
             blueprint_null_exception=self.toolkit.nulls.blueprint,
         )
+        # Handle the case that any id in the blueprint is flagged.
         if id_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                RootSquareValidatorException(
+                RootEncounterValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=RootSquareValidatorException.MSG,
-                    err_code=RootSquareValidatorException.ERR_CODE,
+                    msg=RootEncounterValidatorException.MSG,
+                    err_code=RootEncounterValidatorException.ERR_CODE,
                     ex=id_validation.exception,
                 )
             )
