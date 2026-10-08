@@ -12,8 +12,8 @@ from __future__ import annotations
 from typing import Optional
 
 from domain import (
-    EncounterAlertLevel, Formation, HomeSquare, Team,
-    Token, KingReadiness
+    EncounterAlertLevel, Footstep, Formation, HomeSquare, Square, Team,
+    ThreatTable, Token, KingReadiness
 )
 
 
@@ -29,6 +29,7 @@ class KingToken(Token):
         threats: ThreatTable
         readiness: KingReadiness
         alertness: EncounterAlertLevel
+        potential_destination: Optional[Square]
 
     Super Class:
         Token
@@ -36,6 +37,7 @@ class KingToken(Token):
     _threats: ThreatTable
     _readiness: KingReadiness
     _alertness: EncounterAlertLevel
+    _potential_destination: Optional[Square]
 
     def __init__(
             self,
@@ -65,6 +67,7 @@ class KingToken(Token):
         self._threats = threats or ThreatTable()
         self._readiness = KingReadiness.NOT_READY
         self._alertness = EncounterAlertLevel.LOW
+        self._potential_destination = None
         
     @property
     def readiness(self) -> KingReadiness:
@@ -82,6 +85,14 @@ class KingToken(Token):
     @alertness.setter
     def alertness(self, other: EncounterAlertLevel):
         self._alertness = other
+        
+    @property
+    def potential_destination(self) -> Optional[Square]:
+        return self._potential_destination
+    
+    @potential_destination.setter
+    def potential_destination(self, other: Square):
+        self._potential_destination = other
         
     @property
     def threats(self) -> ThreatTable:
