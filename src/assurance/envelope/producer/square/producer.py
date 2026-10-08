@@ -39,7 +39,7 @@ class SquareEnvelopeProducer(RootEnvelopeProducer[Square]):
         -   def execute(candidate: Any) -> ValidationResult[RootSquareEnvelope]
 
     Super Class:
-        RootValidator
+        RootEnvelopeProducer
     """
     
     def __init__(

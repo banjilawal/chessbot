@@ -15,14 +15,14 @@ from artifcat import ValidationResult
 from assurance import EncounterLoader, EncounterValidatorToolkit, RootEnvelopeProducer
 from config import NumericSetting
 from domain import (
-    Encounter, EncounterPrimeExtract, Maneuver, Participation, Token
+    Encounter, EncounterPrimeExtract, Maneuver, Square, Token
 )
 from err import (
     EncounterCarrierEmptyException, FriendlyFireAttackException,
     RootEncounterValidatorException, TokenAttackingItselfException
 )
-from exchange import ManeuverValidationRequest,  TokenValidationRequest
-from transit import ManeuverCarrier, RootEncounterEnvelope, TokenCarrier
+from exchange import ManeuverValidationRequest, SquareValidationRequest, TokenValidationRequest
+from transit import ManeuverCarrier, RootEncounterEnvelope, SquareCarrier, TokenCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -42,7 +42,7 @@ class EncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
         -   def execute(candidate: Any) -> ValidationResult[RootEncounterEnvelope]
 
     Super Class:
-        RootValidator
+        RootEnvelopeProducer
     """
     
     def __init__(
@@ -120,14 +120,13 @@ class EncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
                 )
             )
         # --- PROCESS_THE_ID_ATTRIBUTE. ---#
-        
-        # Handle the case that any id in the blueprint is flagged.
         id_validation = self.toolkit.blueprint_id_extractor.execute(
             candidate=blueprint,
             blueprint_owner_name=blueprint.domain_class_name,
             blueprint_type=self.toolkit.types.blueprint,
             blueprint_null_exception=self.toolkit.nulls.blueprint,
         )
+        # Handle the case that any id in the blueprint is flagged.
         if id_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -137,6 +136,25 @@ class EncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
                     msg=RootEncounterValidatorException.MSG,
                     err_code=RootEncounterValidatorException.ERR_CODE,
                     ex=id_validation.exception,
+                )
+            )
+        # --- PROCESS_THE_LOCATION_ATTRIBUTE. ---#
+        location_validation = self.toolkit.wrapper.square.extract_model(
+            request=SquareValidationRequest(
+                item=SquareCarrier(model=blueprint.location),
+                id=IdFactory.next_id(class_name="SquareValidationRequest"),
+            )
+        )
+        # Handle the case that the location is flagged.
+        if location_validation.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                RootEncounterValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=RootEncounterValidatorException.MSG,
+                    err_code=RootEncounterValidatorException.ERR_CODE,
+                    ex=location_validation.exception,
                 )
             )
         # --- PROCESS_THE_VICTIM_ATTRIBUTE. ---#
@@ -165,7 +183,7 @@ class EncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
                 id=IdFactory.next_id(class_name="TManeuverValidationRequest"),
             )
         )
-        # Handle the case that the token is flagged.
+        # Handle the case that the maneuver is flagged.
         if attacker_maneuver_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -198,6 +216,7 @@ class EncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
         id = cast(int, id_validation.payload)
         victim = cast(Token, victim_validation.payload)
+        location = cast(Square, location_validation.payload)
         attacker_reward = cast(int, attacker_reward.payload)
         attacker_maneuver = cast(Maneuver, attacker_maneuver_validation.payload)
         attacker = attacker_maneuver.traveler
@@ -236,11 +255,11 @@ class EncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
                     )
                 )
             )
-        participants = Participation(victim=victim, attacker=attacker)
         # --- SEND_THE_WORK_PRODUCT. ---#
         envelope = RootEncounterEnvelope(
             id=id,
-            participants=participants,
+            victim=victim,
+            location=location,
             attacker_reward=attacker_reward,
             attacker_maneuver=attacker_maneuver,
             prime_extract=prime_extract,
