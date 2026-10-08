@@ -13,13 +13,20 @@ from typing import Optional, cast
 
 from artifcat import ValidationResult
 from assurance import CombatantTokenEnvelopeConsumer, TokenEnvelopeConsumer
-from domain import PawnToken, PawnTokenBlueprint, PromotionState, Rank, TokenDeployment
+from domain import (
+    Bishop, Knight, Pawn, PawnToken, PawnTokenBlueprint, Persona,
+    PromotionState, Queen, Rank, Rook, TokenDeployment
+)
 from err import (
-    PawnTokenEnvelopeConsumerException, PromotionStateNullException, RootTokenEnvelopeNullException,
+    PawnTokenEnvelopeConsumerException, PawnTokenPromotionConsistencyException,
+    PersonaNullException, PromotionStateNullException, RootTokenEnvelopeNullException,
     TokenCarrierEmptyException
 )
 from exchange import RankValidationRequest
-from transit import CombatantTokenCarrier, PawnTokenCarrier, RankCarrier, RootTokenEnvelope
+from transit import (
+    CombatantTokenCarrier, CombatantTokenEnvelope, PawnTokenCarrier,
+    RankCarrier, RootTokenEnvelope
+)
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -85,6 +92,7 @@ class PawnTokenEnvelopeConsumer(
         """
         method = f"{self.__class__.__name__}.execute"
         
+        # --- PREPROCESS_THE_ENVELOPE ---#
         priming = self._toolkit.priming_validator.execute(
             candidate=envelope,
             target_model=RootTokenEnvelope,
@@ -101,10 +109,12 @@ class PawnTokenEnvelopeConsumer(
                     ex=priming.exception
                 )
             )
-        safe = cast(RootTokenEnvelope, priming.payload)
+        # --- RUN_THE_COMBATANT_TOKEN_VALIDATION_PROCESS. ---#
+        original = cast(RootTokenEnvelope, priming.payload)
+        consumption_result = self._combatant_consumer.execute(envelope=original)
         
-        result = self._combatant_consumer.execute(envelope=safe)
-        if result.is_failure:
+        # Handle the case that envelope cannot be consumed.
+        if consumption_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 PawnTokenEnvelopeConsumerException(
@@ -112,10 +122,10 @@ class PawnTokenEnvelopeConsumer(
                     cls_name=self.__class__.__name__,
                     msg=PawnTokenEnvelopeConsumerException.MSG,
                     err_code=PawnTokenEnvelopeConsumerException.ERR_CODE,
-                    ex=result.exception
+                    ex=consumption_result.exception
                 )
             )
-        reference = cast(CombatantTokenCarrier, result.payload)
+        reference = cast(CombatantTokenCarrier, consumption_result.payload)
         if not isinstance(reference, PawnTokenCarrier):
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -125,12 +135,14 @@ class PawnTokenEnvelopeConsumer(
                     msg=PawnTokenEnvelopeConsumerException.MSG,
                     err_code=PawnTokenEnvelopeConsumerException.ERR_CODE,
                     ex=TypeError(
-                        f"Expected PawnTokenCarrier received CombatantTokenCarrier instead."
+                        f"Expected PawnTokenCarrier received "
+                        f"CombatantTokenCarrier instead."
                     )
                 )
             )
         carrier = cast(PawnTokenCarrier, reference)
         blueprint = carrier.extract_blueprint()
+        # Handle the case that the blueprint is null.
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -147,6 +159,18 @@ class PawnTokenEnvelopeConsumer(
                     )
                 )
             )
+        safe = CombatantTokenEnvelope(
+            id=original.id,
+            team=original.team,
+            footstep=original.footstep,
+            formation=original.formation,
+            deployment=original.deployment,
+            home_square=original.home_square,
+            prime_extract=original.prime_extract,
+            readiness=blueprint.readiness,
+            captor=blueprint.captor,
+        )
+        # --- START_PROMOTION_STATE_VALIDATION_PROCESS ---#
         promotion_state_validation = self.toolkit.priming_validator.execute(
             candidate=blueprint.promotion_state,
             target_model=PromotionState,
@@ -163,12 +187,31 @@ class PawnTokenEnvelopeConsumer(
                     ex=promotion_state_validation.exception,
                 )
             )
+        # --- START_THE_PROMOTION_PERSONA_VALIDATION_PROCESS ---#
+        promotion_persona_validation = self.toolkit.priming_validator.execute(
+            candidate=blueprint.promotion_persona,
+            target_model=Persona,
+            null_exception=PersonaNullException(),
+        )
+        if promotion_persona_validation.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                PawnTokenEnvelopeConsumerException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=PawnTokenEnvelopeConsumerException.MSG,
+                    err_code=PawnTokenEnvelopeConsumerException.ERR_CODE,
+                    ex=promotion_persona_validation.exception,
+                )
+            )
+        # --- START_THE_RANK_VALIDATION_PROCESS ---#
         rank_validation = self.toolkit.wrapper.rank.extract_model(
             request=RankValidationRequest(
                 item=RankCarrier(model=blueprint.rank),
                 id=IdFactory.next_id(class_name="RankValidationRequest")
             )
         )
+        # Handle the case that the rank is not safe.
         if rank_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -180,10 +223,31 @@ class PawnTokenEnvelopeConsumer(
                     ex=rank_validation.exception,
                 )
             )
-        
-        rank = cast(Rank, rank_validation.payload)
+        # --- RUN_THE_PROMOTION_INCONSISTENCY_CHECK. ---#
+        # Handle the case that a promotion inconsistency occurs.
+        if blueprint.promotion_is_not_consistent:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                PawnTokenEnvelopeConsumerException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=PawnTokenEnvelopeConsumerException.MSG,
+                    err_code=PawnTokenEnvelopeConsumerException.ERR_CODE,
+                    ex=PawnTokenPromotionConsistencyException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=PawnTokenPromotionConsistencyException.MSG,
+                        err_code=PawnTokenPromotionConsistencyException.ERR_CODE,
+                    ),
+                )
+            )
+        # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
+        promotion_persona = cast(Persona, promotion_persona_validation.payload)
         promotion_state = cast(PromotionState, promotion_state_validation.payload)
-        # --- Forward the appropriate work product to the caller. ---#
+        rank = self._make_rank(promotion_persona)
+        
+        # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
+
         # The client wants a safe PawnToken.
         if safe.prime_extract.reference.has_model:
             model = PawnToken(
@@ -193,9 +257,10 @@ class PawnTokenEnvelopeConsumer(
                 formation=safe.formation,
                 home_square=safe.home_square,
             )
-            model.captor = blueprint.captor
-            model.readiness = blueprint.readiness
+            # Update the mutatable fields.
             model.rank = rank
+            model.captor = safe.captor
+            model.readiness = safe.readiness
             model.promotion_state = promotion_state
             if safe.deployment == TokenDeployment.DEPLOYED_TO_HOME_SQUARE:
                 model.mark_as_deployed()
@@ -206,16 +271,27 @@ class PawnTokenEnvelopeConsumer(
             blueprint=PawnTokenBlueprint(
                 id=safe.id,
                 team=safe.team,
+                captor=safe.captor,
                 footstep=safe.footstep,
-                rank=rank,
-                promotion_state=promotion_state,
+                readiness=safe.readiness,
                 formation=safe.formation,
-                home_square=safe.home_square,
                 deployment=safe.deployment,
-                captor=blueprint.captor,
-                readiness=blueprint.readiness,
+                home_square=safe.home_square,
+                promotion_state=promotion_state,
+                promotion_persona=promotion_persona,
+                rank=rank,
             )
         )
         return ValidationResult.success(carrier)
     
-    
+    @LoggingLevelRouter.monitor
+    def _make_rank(self, persona: Persona) -> Rank:
+        if persona == Persona.BISHOP:
+            return Bishop()
+        if persona == Persona.KNIGHT:
+            return Knight()
+        if persona == Persona.ROOK:
+            return Rook()
+        if persona == Persona.QUEEN:
+            return Queen()
+        return Pawn()

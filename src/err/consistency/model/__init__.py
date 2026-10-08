@@ -20,6 +20,7 @@ from .encounter import *
 from .maneuver import *
 from .path import *
 from .player import *
+from .promotion import *
 from .rank import *
 from .scalar import *
 from .square import *

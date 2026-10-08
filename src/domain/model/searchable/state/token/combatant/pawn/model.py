@@ -25,21 +25,22 @@ class PawnToken(CombatantToken):
         1.  Promotable combatant.
 
     Attributes:
+        rank: Rank
+        promotion_persona: Persona
         promotion_state: PromotionState
 
-        is_promotable: bool
-        is_promoted: bool
-        is_not_promoted: bool
-        
     Provides:
+        is_promoted: bool
+        is_promotable: bool
+        is_not_promoted: bool
         
     Super Class:
         CombatantToken
     """
-    _PROMOTION_PERSONAS = [
+    PROMOTION_PERSONAS = [
         Persona.BISHOP, Persona.KNIGHT, Persona.ROOK, Persona.QUEEN
     ]
-    _PROMOTION_RANKS = (Bishop, Knight, Rook, Queen)
+    PROMOTION_RANKS = (Bishop, Knight, Rook, Queen)
     
     _rank: Rank
     _promotion_persona: Persona
@@ -116,8 +117,8 @@ class PawnToken(CombatantToken):
     @property
     def is_promoted(self) -> bool:
         return (
-                isinstance(self._rank, self._PROMOTION_RANKS) and
-                self._promotion_persona in self._PROMOTION_PERSONAS and
+                isinstance(self._rank, self.PROMOTION_RANKS) and
+                self._promotion_persona in self.PROMOTION_PERSONAS and
                 self._promotion_state == PromotionState.PROMOTED
         )
     
@@ -128,6 +129,46 @@ class PawnToken(CombatantToken):
             self._promotion_persona == Persona.PAWN and
             self._promotion_state == PromotionState.NOT_PROMOTED
         )
+    
+    @property
+    def promotion_consistency_exists(self) -> bool:
+        if (
+            self._promotion_persona != self._rank.persona
+        ):
+            return False
+        if (
+            isinstance(self._rank, Pawn) and
+            self._promotion_state == PromotionState.PROMOTED
+        ):
+            return False
+        if (
+            isinstance(self._rank, self.PROMOTION_RANKS) and
+            self._promotion_state == PromotionState.NOT_PROMOTED
+        ):
+            return False
+        if (
+            self._promotion_persona == Persona.PAWN and
+            self._promotion_state == PromotionState.PROMOTED
+        ):
+            return False
+        if (
+            self._promotion_persona in self.PROMOTION_PERSONAS and
+            self._promotion_state == PromotionState.NOT_PROMOTED
+        ):
+            return False
+        return True
+    
+    @property
+    def promotion_is_not_consistent(self) -> bool:
+        return (
+                self._rank is None or
+                self._promotion_state is None or
+                self._promotion_persona is None or
+                not self.promotion_consistency_exists
+        )
+        
+
+        
        
     def __eq__(self, other):
         if super().__eq__(other):

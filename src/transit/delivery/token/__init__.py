@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== TRANSIT.DELIVERY.TOKEN PACKAGE ===========#
 
 # Packages
+from .combatant import *
 
 # Modules
 from .envelope import RootTokenEnvelope

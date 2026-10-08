@@ -110,7 +110,7 @@ class CheckmateEncounterEnvelopeConsumer(
                 )
             )
         # Handle the case that the victim is not a CombatantToken   
-        if safe.participants.victim_is_combatant:
+        if safe.victim_is_combatant:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 CheckmateEncounterEnvelopeConsumerException(
@@ -131,7 +131,7 @@ class CheckmateEncounterEnvelopeConsumer(
         location = safe.location
         attacker_reward = safe.attacker_reward
         attacker_maneuver = safe.attacker_maneuver
-        victim = cast(KingToken, safe.participants.victim)
+        victim = cast(KingToken, safe.victim)
         
         # --- Forward the appropriate work product to the caller. ---#
         if safe.prime_extract.recipient_wants_model:

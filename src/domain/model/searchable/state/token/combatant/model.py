@@ -93,10 +93,25 @@ class CombatantToken(Token):
     @property
     def is_captured(self) -> bool:
         return (
-                self.is_deployed and
+                self.has_been_deployed and
                 self._captor is not None and
                 self._readiness == CombatantReadiness.CAPTURED
         )
+    
+    @property
+    def has_capture_inconsistency(self) -> bool:
+        if (
+            self._captor is None and
+            self._readiness == CombatantReadiness.CAPTURED
+        ):
+            return True
+        if (
+            self._captor is not None and
+            self._readiness == CombatantReadiness.READY
+        ):
+            return  True
+        return False
+        
     
    
     def __eq__(self, other):

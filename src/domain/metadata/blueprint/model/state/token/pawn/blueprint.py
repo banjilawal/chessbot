@@ -12,7 +12,8 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from domain import (
-    Bishop, CombatantReadiness, Coord, Formation, HomeSquare, Knight, Pawn, PawnToken, PromotionState, Queen, Rank,
+    Bishop, CombatantReadiness, Coord, Formation, HomeSquare, Knight, Pawn, PawnToken, Persona, PromotionState, Queen,
+    Rank,
     Rook, Team, Token, TokenBlueprint, TokenDeployment, Footstep
 )
 from err import PawnTokenNullException
@@ -27,16 +28,9 @@ class PawnTokenBlueprint(TokenBlueprint[PawnToken]):
          1.  Provides values for hydrating a PawnToken object.
 
      Attributes:
-        team: Team
-        footstep: Footstep
         rank: Rank
-        formation: Formation
-        deployment: TokenDeployment
-        readiness: CombatantReadiness
         promotion_state: PromotionState
-        home_square: Optional[HomeSquare]
-        captor: Optional[Token]
-        id: Optional[int]
+
         
         domain_class: Optional[Type[CombatantToken]]
         domain_null_exception: Optional[CombatantNullException]
@@ -48,6 +42,7 @@ class PawnTokenBlueprint(TokenBlueprint[PawnToken]):
      """
     
     _rank: Rank
+    _promotion_persona: Persona
     _readiness: CombatantReadiness
     _promotion_state: PromotionState
     _captor: Optional[Token]
@@ -61,6 +56,7 @@ class PawnTokenBlueprint(TokenBlueprint[PawnToken]):
             deployment: Optional[TokenDeployment] | None = None,
             readiness: Optional[CombatantReadiness] | None = None,
             promotion_state: Optional[PromotionState] | None = None,
+            promotion_persona: Optional[Persona] | None = None,
             captor: Optional[Token] | None = None,
             rank: Optional[Rank] | None = None,
             id: Optional[int] | None = None,
@@ -76,6 +72,7 @@ class PawnTokenBlueprint(TokenBlueprint[PawnToken]):
             deployment: Optional[TokenDeployment]
             readiness: Optional[CombatantReadiness]
             promotion_state: Optional[PromotionState]
+            promotion_persona: Optional[Persona]
             captor: Optional[Token]
             rank: Optional[Rank]
             id: Optional[int]
@@ -96,6 +93,7 @@ class PawnTokenBlueprint(TokenBlueprint[PawnToken]):
         self._rank = rank or formation.rank
         self._readiness = readiness or CombatantReadiness.OFF_BOARD
         self._promotion_state = promotion_state or PromotionState.NOT_PROMOTED
+        self._promotion_persona = promotion_persona or Persona.PAWN
     
     @property
     def rank(self) -> Rank:
@@ -114,8 +112,15 @@ class PawnTokenBlueprint(TokenBlueprint[PawnToken]):
         return self._captor
     
     @property
+    def promotion_persona(self) -> Persona:
+        return self._promotion_persona
+    
+    @property
     def is_captured(self) -> bool:
-        return self._captor is not None and self._readiness == CombatantReadiness.CAPTURED
+        return (
+                self._captor is not None and
+                self._readiness == CombatantReadiness.CAPTURED
+        )
     
     @property
     def is_not_captured(self) -> bool:
@@ -124,7 +129,7 @@ class PawnTokenBlueprint(TokenBlueprint[PawnToken]):
     @property
     def is_promoted(self) -> bool:
         return (
-                isinstance(self._rank, (Bishop, Knight, Rook, Queen)) and
+                isinstance(self._rank, PawnToken.PROMOTION_RANKS) and
                 self._promotion_state == PromotionState.PROMOTED
         )
     
@@ -133,6 +138,43 @@ class PawnTokenBlueprint(TokenBlueprint[PawnToken]):
         return (
                 isinstance(self._rank, Pawn) and
                 self._promotion_state == PromotionState.NOT_PROMOTED
+        )
+    
+    @property
+    def promotion_consistency_exists(self) -> bool:
+        if (
+                self._promotion_persona != self._rank.persona
+        ):
+            return False
+        if (
+                isinstance(self._rank, Pawn) and
+                self._promotion_state == PromotionState.PROMOTED
+        ):
+            return False
+        if (
+                isinstance(self._rank, PawnToken.PROMOTION_RANKS) and
+                self._promotion_state == PromotionState.NOT_PROMOTED
+        ):
+            return False
+        if (
+                self._promotion_persona == Persona.PAWN and
+                self._promotion_state == PromotionState.PROMOTED
+        ):
+            return False
+        if (
+                self._promotion_persona in PawnToken.PROMOTION_PERSONAS and
+                self._promotion_state == PromotionState.NOT_PROMOTED
+        ):
+            return False
+        return True
+    
+    @property
+    def promotion_is_not_consistent(self) -> bool:
+        return (
+                self._rank is None or
+                self._promotion_state is None or
+                self._promotion_persona is None or
+                not self.promotion_consistency_exists
         )
     
     @property

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from domain import Encounter, EncounterPrimeExtract, Maneuver, Square, Participation, Token
+from domain import CombatantToken, Encounter, EncounterPrimeExtract, KingToken, Maneuver, Square, Participation, Token
 from transit import (
     CheckmateEncounterCarrier, EncounterWarningCarrier, KillEncounterCarrier, ProductEnvelope,
     StalemateEncounterCarrier
@@ -97,6 +97,20 @@ class RootEncounterEnvelope(ProductEnvelope[Encounter]):
     @property
     def prime_extract(self) -> EncounterPrimeExtract:
         return cast(EncounterPrimeExtract, super().prime_extract)
+    
+    @property
+    def victim_is_combatant(self) -> bool:
+        return (
+                self._victim is not None and
+                isinstance(self._victim, CombatantToken)
+        )
+    
+    @property
+    def victim_is_king(self) -> bool:
+        return (
+                self._victim is not None and
+                isinstance(self._victim, KingToken)
+        )
     
     @property
     def for_kill_encounter_consumer(self) -> bool:

@@ -1,7 +1,7 @@
-# src/assurance/envelope/consumer/token/consumer.py
+# src/assurance/envelope/consumer/token/combatant/consumer.py
 
 """
-Module: assurance.envelope.consumer.token.consumer
+Module: assurance.envelope.consumer.token.combatant.consumer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -77,8 +77,8 @@ class CombatantTokenEnvelopeConsumer(
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the property table is null or the wrong type.
-        priming = self._toolkit.priming_validator.execute(
+        # --- INITIATE_THE_VALIDATION_PROCESS ---#
+        priming = self.toolkit.priming_validator.execute(
             candidate=envelope,
             target_model=RootTokenEnvelope,
             null_exception=RootTokenEnvelopeNullException(),
@@ -151,9 +151,8 @@ class CombatantTokenEnvelopeConsumer(
                 )
             )
         # --- START_CAPTOR_VALIDATION_PROCESS ---#
-        
         captor = blueprint.captor
-        if blueprint.captor is not None:
+        if captor is not None:
             # Handle the case that the not-null captor is flagged
             captor_validation = self.toolkit.priming_validator.execute(
                 candidate=captor,
@@ -189,11 +188,9 @@ class CombatantTokenEnvelopeConsumer(
                         ),
                     )
                 )
-
-        # --- Extract validation payloads. ---#
+        # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
         readiness = cast(CombatantReadiness, readiness_validation.payload)
-        
-        # --- Forward the appropriate work product to the caller. ---#
+        # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         # The client wants a safe CombatantToken.
         if safe.prime_extract.reference.has_model:
             model = CombatantToken(
@@ -203,6 +200,7 @@ class CombatantTokenEnvelopeConsumer(
                 formation=safe.formation,
                 home_square=safe.home_square,
             )
+            # Update the mutatable fields.
             model.captor = captor
             model.readiness = readiness
             if safe.deployment == TokenDeployment.DEPLOYED_TO_HOME_SQUARE:

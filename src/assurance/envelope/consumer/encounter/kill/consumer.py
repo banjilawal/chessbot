@@ -108,7 +108,7 @@ class KillEncounterEnvelopeConsumer(
                 )
             )
         # Handle the case that the victim is not a CombatantToken   
-        if safe.participants.victim_is_king:
+        if safe.victim_is_king:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 KillEncounterEnvelopeConsumerException(
@@ -146,7 +146,7 @@ class KillEncounterEnvelopeConsumer(
         location = safe.location
         attacker_reward = safe.attacker_reward
         attacker_maneuver = safe.attacker_maneuver
-        victim = cast(CombatantToken, safe.participants.victim)
+        victim = cast(CombatantToken, safe.victim)
         
         # --- Forward the appropriate work product to the caller. ---#
         if safe.prime_extract.recipient_wants_model:
@@ -160,7 +160,6 @@ class KillEncounterEnvelopeConsumer(
                 )
             )
             return ValidationResult.success(carrier)
-        
         # Otherwise, the client is a KillEncounterBuilder that needs a Blueprint.
         carrier = KillEncounterCarrier(
             blueprint=KillEncounterBlueprint(
