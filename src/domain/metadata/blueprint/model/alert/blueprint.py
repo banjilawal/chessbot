@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import AlertTable, CheckmateEncounter, ModelBlueprint
+from domain import AlertTable, CheckmateEncounter, EncounterWarning, ModelBlueprint
 from err import AlertTableNullException
 
 
@@ -24,7 +24,7 @@ class AlertTableBlueprint(ModelBlueprint[AlertTable]):
         1.  Provides values for hydrating an AlertTable object.
 
     Attributes:
-        threat: Optional[EncodingWarning]
+        threat: Optional[EncounterWarning]
         checkmate: Optional[CheckmateEncounter]
         domain_class: Type[AlertTable]
         domain_null_exception: AlertTableNullException
@@ -34,19 +34,19 @@ class AlertTableBlueprint(ModelBlueprint[AlertTable]):
      Super Class:
         ModelBlueprint
      """
-    _threat: Optional[EncodingWarning]
+    _threat: Optional[EncounterWarning]
     _checkmate: Optional[CheckmateEncounter]
     
     def __init__(
             self,
-            threat: Optional[EncodingWarning] | None = None,
+            threat: Optional[EncounterWarning] | None = None,
             checkmate: Optional[CheckmateEncounter] | None = None,
             domain_class: Optional[Type[AlertTable]] | None = None,
             domain_null_exception: Optional[AlertTableNullException]| None = None,
     ):
         """
         Args:
-            threat: Optional[EncodingWarning]
+            threat: Optional[EncounterWarning]
             checkmate: Optional[CheckmateEncounter]
             domain_class: Optional[Type[AlertTable]]
             domain_null_exception: Optional[AlertTableNullException]
@@ -59,11 +59,11 @@ class AlertTableBlueprint(ModelBlueprint[AlertTable]):
         self._checkmate = checkmate
     
     @property
-    def threat(self) -> int:
+    def threat(self) -> Optional[EncounterWarning]:
         return self._threat
     
     @property
-    def checkmate(self) -> int:
+    def checkmate(self) -> Optional[CheckmateEncounter]:
         return self._checkmate
 
     @property

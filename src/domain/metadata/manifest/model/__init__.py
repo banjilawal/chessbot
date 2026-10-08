@@ -11,6 +11,7 @@ version: 0.0.2
 
 # Packages
 from .account import *
+from .alert import *
 from .arena import *
 from .board import *
 from .cartesian import *
