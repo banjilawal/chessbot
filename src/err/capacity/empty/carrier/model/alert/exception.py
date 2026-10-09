@@ -1,7 +1,7 @@
-# src/err/capacity/empty/carrier/model/player/human/exception.py
+# src/err/capacity/empty/carrier/model/alert/exception.py
 
 """
-Module: err.capacity.empt.carrier.model.player.human.exception
+Module: err.capacity.empt.carrier.model.alert.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PlayerCarrierEmptyException
+from err import ModelCarrierEmptyException
 
 __all__ = [
-    # ======================# HUMAN_CARRIER_EMPTY_ERROR #======================#
-    "EmptyHumanCarrierException",
+    # ======================# ALERT_CARRIER_EMPTY_ERROR #======================#
+    "AlertCarrierEmptyException",
 ]
 
-# ======================# HUMAN_CARRIER_EMPTY_ERROR #======================#
-class EmptyHumanCarrierException(PlayerCarrierEmptyException):
+# ======================# ALERT_CARRIER_EMPTY_ERROR #======================#
+class AlertCarrierEmptyException(ModelCarrierEmptyException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a HumanCarrier is empty.
+        1.  Indicating a AlertCarrier is empty.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class EmptyHumanCarrierException(PlayerCarrierEmptyException):
     Provides:
 
     Super Class:
-        PlayerCarrierEmptyException
+        EmptyModelCarrierException
     """
-    MSG = "HumanCarrier cannot be empty."
-    ERR_CODE = "HUMAN_CARRIER_EMPTY_ERROR"
+    MSG = "AlertCarrier cannot be empty."
+    ERR_CODE = "ALERT_CARRIER_EMPTY_ERROR"
     
     def __init__(
             self,

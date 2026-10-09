@@ -11,20 +11,20 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import AlertTable, AlertTableNullGroup, AlertTableTypeUnion, ModelManifest
+from domain import Alert, AlertNullGroup, AlertTypeUnion, ModelManifest
 
 
-class AlertTableManifest(ModelManifest[AlertTable]):
+class AlertManifest(ModelManifest[Alert]):
     """
      Role:
         1.  Metadata
 
      Responsibilities:
-         1.  Aggregates NullExceptions and TypeUnions for the AlertTable security lifecycle.
+         1.  Aggregates NullExceptions and TypeUnions for the Alert security lifecycle.
 
      Attributes:
-        types: AlertTableTypeUnion
-        nulls: AlertTableNullGroup
+        types: AlertTypeUnion
+        nulls: AlertNullGroup
 
      Provides:
 
@@ -34,23 +34,23 @@ class AlertTableManifest(ModelManifest[AlertTable]):
     
     def __init__(
             self,
-            types: Optional[AlertTableTypeUnion] | None = None,
-            nulls: Optional[AlertTableNullGroup] | None = None,
+            types: Optional[AlertTypeUnion] | None = None,
+            nulls: Optional[AlertNullGroup] | None = None,
     ):
         """
         Args:
-            types: Optional[AlertTableTypeUnion]
-            nulls: Optional[AlertTableNullGroup]
+            types: Optional[AlertTypeUnion]
+            nulls: Optional[AlertNullGroup]
         """
         super().__init__(
-            types=types or AlertTableTypeUnion(),
-            nulls=nulls or AlertTableNullGroup(),
+            types=types or AlertTypeUnion(),
+            nulls=nulls or AlertNullGroup(),
         )
         
     @property
-    def types(self) -> AlertTableTypeUnion:
-        return cast(AlertTableTypeUnion, super().types)
+    def types(self) -> AlertTypeUnion:
+        return cast(AlertTypeUnion, super().types)
     
     @property
-    def nulls(self) -> AlertTableNullGroup:
-        return cast(AlertTableNullGroup, super().nulls)
+    def nulls(self) -> AlertNullGroup:
+        return cast(AlertNullGroup, super().nulls)

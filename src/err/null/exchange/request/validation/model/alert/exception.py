@@ -1,7 +1,7 @@
-# src/err/capacity/empty/carrier/model/attack/exception.py
+# src/err/null/exchange/request/validation/model/alert/exception.py
 
 """
-Module: err.capacity.empt.carrier.model.attack.exception
+Module: err.null.exchange.request.validation.model.alert.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,40 +11,41 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
+
 from artifcat import MethodResultType
-from err import ModelCarrierEmptyException
+from err import ModelValidationRequestNullException
 
 __all__ = [
-    # ======================# ATTACK_CARRIER_EMPTY_ERROR #======================#
-    "EncounterCarrierEmptyException",
+    # ======================# ALERT_VALIDATION_REQUEST_NULL_ERROR #======================#
+    "AlertValidationRequestNullException",
 ]
 
-# ======================# ATTACK_CARRIER_EMPTY_ERROR #======================#
-class EncounterCarrierEmptyException(ModelCarrierEmptyException):
+# ======================# ALERT_VALIDATION_REQUEST_NULL_ERROR #======================#
+class AlertValidationRequestNullException(ModelValidationRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a AttackCarrier is empty.
+        1.  Indicating that an AlertValidationRequest is null.
 
     Attributes:
-        msg: Optional[str]
-        var: Optional[str]
-        val: Optional[Any]
-        ex: Optional[Exception]
-        cls_name: Optional[str]
-        cls_mthd: Optional[str]
-        err_code: Optional[str]
-        mthd_rslt_type: Optional[MethodResultType]
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
+            ex: Optional[Exception]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
             
     Provides:
 
     Super Class:
-        EmptyModelCarrierException
+        ModelValidationRequestNullException
     """
-    MSG = "AttackCarrier cannot be empty."
-    ERR_CODE = "ATTACK_CARRIER_EMPTY_ERROR"
+    MSG = "AlertValidationRequest cannot be null."
+    ERR_CODE = "ALERT_VALIDATION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

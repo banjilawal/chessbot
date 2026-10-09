@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .carrier import AlertTableCarrier
+from .carrier import AlertCarrier

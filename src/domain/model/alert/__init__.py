@@ -12,5 +12,5 @@ version: 0.0.2
 # Packages
 
 # Modules
-from .model import AlertTable
+from .model import Alert
 from .level import ThreatLevel

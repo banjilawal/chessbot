@@ -16,17 +16,17 @@ from err import ModelCarrierNullException
 
 __all__ = [
     # ======================# ALERT_TABLE_CARRIER_NULL_ERROR #======================#
-    "AlertTableCarrierNullException",
+    "AlertCarrierNullException",
 ]
 
 # ======================# ALERT_TABLE_CARRIER_NULL_ERROR #======================#
-class AlertTableCarrierNullException(ModelCarrierNullException):
+class AlertCarrierNullException(ModelCarrierNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an AlertTableCarrier is null.
+        1.  Indicating an AlertCarrier is null.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class AlertTableCarrierNullException(ModelCarrierNullException):
     Super Class:
         ModelCarrierException
     """
-    MSG = "AlertTableCarrier cannot be null."
+    MSG = "AlertCarrier cannot be null."
     ERR_CODE = "ALERT_TABLE_CARRIER_NULL_ERROR"
     
     def __init__(

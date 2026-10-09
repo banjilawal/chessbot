@@ -15,7 +15,7 @@ from artifcat import ValidationResult
 from assurance import ModelLoader, ArenaValidatorToolkit
 from domain import Arena, ArenaPrimeExtract
 from err import (
-    EmptyArenaCarrierException, ArenaLoaderException, ArenaValidationRequestNullException
+    ArenaCarrierEmptyException, ArenaLoaderException, ArenaValidationRequestNullException
 )
 from exchange import ArenaValidationRequest
 from transit import ArenaCarrier
@@ -135,11 +135,11 @@ class ArenaLoader(ModelLoader[Arena]):
                     cls_name=self.__class__.__name__,
                     msg=ArenaLoaderException.MSG,
                     err_code=ArenaLoaderException.ERR_CODE,
-                    ex=EmptyArenaCarrierException(
+                    ex=ArenaCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyArenaCarrierException.MSG,
-                        err_code=EmptyArenaCarrierException.ERR_CODE,
+                        msg=ArenaCarrierEmptyException.MSG,
+                        err_code=ArenaCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

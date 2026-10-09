@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import AlertTable, CheckmateEncounter, EncounterWarning, ModelBlueprint
-from err import AlertTableNullException
+from domain import Alert, CheckmateEncounter, EncounterWarning, ModelBlueprint
+from err import AlertNullException
 
 
-class AlertTableBlueprint(ModelBlueprint[AlertTable]):
+class AlertBlueprint(ModelBlueprint[Alert]):
     """
      Role:
         1.  Metadata
 
     Responsibilities:
-        1.  Provides values for hydrating an AlertTable object.
+        1.  Provides values for hydrating an Alert object.
 
     Attributes:
         threat: Optional[EncounterWarning]
         checkmate: Optional[CheckmateEncounter]
-        domain_class: Type[AlertTable]
-        domain_null_exception: AlertTableNullException
+        domain_class: Type[Alert]
+        domain_null_exception: AlertNullException
         
     Provides:
 
@@ -41,19 +41,19 @@ class AlertTableBlueprint(ModelBlueprint[AlertTable]):
             self,
             threat: Optional[EncounterWarning] | None = None,
             checkmate: Optional[CheckmateEncounter] | None = None,
-            domain_class: Optional[Type[AlertTable]] | None = None,
-            domain_null_exception: Optional[AlertTableNullException]| None = None,
+            domain_class: Optional[Type[Alert]] | None = None,
+            domain_null_exception: Optional[AlertNullException]| None = None,
     ):
         """
         Args:
             threat: Optional[EncounterWarning]
             checkmate: Optional[CheckmateEncounter]
-            domain_class: Optional[Type[AlertTable]]
-            domain_null_exception: Optional[AlertTableNullException]
+            domain_class: Optional[Type[Alert]]
+            domain_null_exception: Optional[AlertNullException]
         """
         super().__init__(
-            domain_class=domain_class or Type[AlertTable],
-            domain_null_exception=domain_null_exception or AlertTableNullException(),
+            domain_class=domain_class or Type[Alert],
+            domain_null_exception=domain_null_exception or AlertNullException(),
         )
         self._threat = threat
         self._checkmate = checkmate
@@ -67,9 +67,9 @@ class AlertTableBlueprint(ModelBlueprint[AlertTable]):
         return self._checkmate
 
     @property
-    def domain_class(self) -> Type[AlertTable]:
-        return cast(Type[AlertTable], super().domain_class)
+    def domain_class(self) -> Type[Alert]:
+        return cast(Type[Alert], super().domain_class)
     
     @property
-    def domain_null_exception(self) -> AlertTableNullException:
-        return cast(AlertTableNullException, super().domain_null_exception)
+    def domain_null_exception(self) -> AlertNullException:
+        return cast(AlertNullException, super().domain_null_exception)

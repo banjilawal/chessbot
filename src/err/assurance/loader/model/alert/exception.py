@@ -17,17 +17,17 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# ALERT_TABLE_LOADER_FAILURE #======================#
-    "AlertTableLoaderException",
+    "AlertLoaderException",
 ]
 
 # ======================# ALERT_TABLE_LOADER_FAILURE #======================#
-class AlertTableLoaderException(ModelLoaderException):
+class AlertLoaderException(ModelLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an AlertTableLoader failed.
+        1.  Indicating an AlertLoader failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class AlertTableLoaderException(ModelLoaderException):
     Super Class:
         ModelLoaderException
     """
-    MSG = "AlertTableLoader failed."
+    MSG = "AlertLoader failed."
     ERR_CODE = "ALERT_TABLE_LOADER_FAILURE"
     
     def __init__(

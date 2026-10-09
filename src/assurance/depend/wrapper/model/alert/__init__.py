@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Module
-from .depend import AlertTableWrapperDependency
+from .depend import AlertWrapperDependency

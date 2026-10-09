@@ -17,17 +17,17 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# ALERT_TABLE_NULL_ERROR #======================#
-    "AlertTableNullException",
+    "AlertNullException",
 ]
 
 # ======================# ALERT_TABLE_NULL_ERROR #======================#
-class AlertTableNullException(ModelNullException):
+class AlertNullException(ModelNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required AlertTable is null.
+        1.  Indicating a required Alert is null.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class AlertTableNullException(ModelNullException):
     Super Class:
         ModelNullException
     """
-    MSG = "AlertTable cannot be null."
+    MSG = "Alert cannot be null."
     ERR_CODE = "ALERT_TABLE_NULL_ERROR"
     
     def __init__(

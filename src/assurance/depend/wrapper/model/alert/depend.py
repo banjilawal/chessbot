@@ -13,17 +13,17 @@ from __future__ import annotations
 from typing import Optional
 
 from assurance import ModelWrapperDependency
-from domain import AlertTable
+from domain import Alert
 from exchange import EncounterValidationResponseWrapper, PlayerValidationResponseWrapper
 
 
-class AlertTableWrapperDependency(ModelWrapperDependency[AlertTable]):
+class AlertWrapperDependency(ModelWrapperDependency[Alert]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Satisfy AlertTableValidator's ResponseWrapper dependencies.
+        1.  Satisfy AlertValidator's ResponseWrapper dependencies.
 
     Attributes:
         encounter: EncounterValidationResponseWrapper

@@ -16,11 +16,11 @@ from err import ModelValidationRequestException
 
 __all__ = [
     # ======================# ALERT_TABLE_VALIDATION_REQUEST_FAILURE #======================#
-    "AlertTableValidationRequestException",
+    "AlertValidationRequestException",
 ]
 
 # ======================# ALERT_TABLE_VALIDATION_REQUEST_FAILURE #======================#
-class AlertTableValidationRequestException(
+class AlertValidationRequestException(
     ModelValidationRequestException
 ):
     """
@@ -28,7 +28,7 @@ class AlertTableValidationRequestException(
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an AlertTableValidationRequest encountered and error.
+        1.  Indicating an AlertValidationRequest encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -45,7 +45,7 @@ class AlertTableValidationRequestException(
     Super Class:
         ModelValidationRequestException
     """
-    MSG = "AlertTableValidationRequest error."
+    MSG = "AlertValidationRequest error."
     ERR_CODE = "ALERT_TABLE_VALIDATION_REQUEST_FAILURE"
     
     def __init__(

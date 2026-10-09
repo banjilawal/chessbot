@@ -12,22 +12,22 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import AlertTable, ModelTypeUnion
-from transit import AlertTableCarrier
+from domain import Alert, ModelTypeUnion
+from transit import AlertCarrier
 
 
-class AlertTableTypeUnion(ModelTypeUnion[AlertTable]):
+class AlertTypeUnion(ModelTypeUnion[Alert]):
     """
     Role:
         - Metadata
 
     Responsibilities:
-        1. Catalog of types associated with building and validating an AlertTable.
+        1. Catalog of types associated with building and validating an Alert.
 
     Attributes:
-        model: Type[AlertTable]
-        carrier: Type[AlertTableCarrier]
-        blueprint: Type[AlertTableBlueprint]
+        model: Type[Alert]
+        carrier: Type[AlertCarrier]
+        blueprint: Type[AlertBlueprint]
 
     Provides:
 
@@ -37,30 +37,30 @@ class AlertTableTypeUnion(ModelTypeUnion[AlertTable]):
     
     def __init__(
             self, 
-            model: Optional[Type[AlertTable]] | None = None,
-            carrier: Optional[Type[AlertTableCarrier]] | None = None, 
-            blueprint: Optional[Type[AlertTableBlueprint]] | None = None,
+            model: Optional[Type[Alert]] | None = None,
+            carrier: Optional[Type[AlertCarrier]] | None = None, 
+            blueprint: Optional[Type[AlertBlueprint]] | None = None,
     ):
         """
         Args:
-            model: Optional[Type[AlertTable]]
-            carrier: Optional[Type[AlertTableCarrier]
-            blueprint: Optional[Type[AlertTableBlueprint] 
+            model: Optional[Type[Alert]]
+            carrier: Optional[Type[AlertCarrier]
+            blueprint: Optional[Type[AlertBlueprint] 
         """
         super().__init__(
-            model=model or AlertTable, 
-            carrier=carrier or AlertTableCarrier, 
-            blueprint=blueprint or AlertTableBlueprint
+            model=model or Alert,
+            carrier=carrier or AlertCarrier, 
+            blueprint=blueprint or AlertBlueprint
         )
     
     @property
-    def model(self) -> Type[AlertTable]:
-        return cast(Type[AlertTable], super().model)
+    def model(self) -> Type[Alert]:
+        return cast(Type[Alert], super().model)
     
     @property
-    def carrier(self) -> Type[AlertTableCarrier]:
-        return cast(Type[AlertTableCarrier], super().carrier)
+    def carrier(self) -> Type[AlertCarrier]:
+        return cast(Type[AlertCarrier], super().carrier)
     
     @property
-    def blueprint(self) -> Type[AlertTableBlueprint]:
-        return cast(Type[AlertTableBlueprint], super().blueprint)
+    def blueprint(self) -> Type[AlertBlueprint]:
+        return cast(Type[AlertBlueprint], super().blueprint)

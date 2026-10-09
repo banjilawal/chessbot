@@ -16,11 +16,11 @@ from err import ModelValidationResponseWrapperException
 
 __all__ = [
     # ======================# ALERT_TABLE_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-    "AlertTableValidationResponseWrapperException",
+    "AlertValidationResponseWrapperException",
 ]
 
 # ======================# ALERT_TABLE_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-class AlertTableValidationResponseWrapperException(
+class AlertValidationResponseWrapperException(
     ModelValidationResponseWrapperException
 ):
     """
@@ -28,7 +28,7 @@ class AlertTableValidationResponseWrapperException(
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an AlertTableValidationResponseWrapper encountered
+        1.  Indicating an AlertValidationResponseWrapper encountered
             and error.
 
     Attributes:
@@ -46,7 +46,7 @@ class AlertTableValidationResponseWrapperException(
     Super Class:
         ModelValidationResponseWrapperException
     """
-    MSG = "AlertTableValidationResponseWrapper error."
+    MSG = "AlertValidationResponseWrapper error."
     ERR_CODE = "ALERT_TABLE_VALIDATION_RESPONSE_WRAPPER_FAILURE"
     
     def __init__(

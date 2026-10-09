@@ -1,7 +1,7 @@
-# src/err/capacity/empty/carrier/model/player/machine/exception.py
+# src/err/capacity/empty/carrier/model/encounter/mate/exception.py
 
 """
-Module: err.capacity.empt.carrier.model.player.machine.exception
+Module: err.capacity.empt.carrier.model.encounter.mate.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PlayerCarrierEmptyException
+from err import EncounterCarrierEmptyException
 
 __all__ = [
-    # ======================# MACHINE_CARRIER_EMPTY_ERROR #======================#
-    "EmptyMachineCarrierException",
+    # ======================# CHECKMATE_ENCOUNTER_CARRIER_EMPTY_ERROR #======================#
+    "EmptyCheckmateEncounterCarrierException",
 ]
 
-# ======================# MACHINE_CARRIER_EMPTY_ERROR #======================#
-class EmptyMachineCarrierException(PlayerCarrierEmptyException):
+# ======================# CHECKMATE_ENCOUNTER_CARRIER_EMPTY_ERROR #======================#
+class EmptyCheckmateEncounterCarrierException(EncounterCarrierEmptyException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a MachineCarrier is empty.
+        1.  Indicating a CheckmateEncounterCarrier is empty.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class EmptyMachineCarrierException(PlayerCarrierEmptyException):
     Provides:
 
     Super Class:
-        PlayerCarrierEmptyException
+        EncounterCarrierEmptyException
     """
-    MSG = "MachineCarrier cannot be empty."
-    ERR_CODE = "MACHINE_CARRIER_EMPTY_ERROR"
+    MSG = "CheckmateEncounterCarrier cannot be empty."
+    ERR_CODE = "CHECKMATE_ENCOUNTER_CARRIER_EMPTY_ERROR"
     
     def __init__(
             self,

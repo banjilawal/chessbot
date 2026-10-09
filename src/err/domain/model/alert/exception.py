@@ -17,17 +17,17 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# ALERT_TABLE_ERROR #======================#
-    "AlertTableException",
+    "AlertException",
 ]
 
 # ======================# ALERT_TABLE_ERROR #======================#
-class AlertTableException(ModelException):
+class AlertException(ModelException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an AlertTable encountered an error.
+        1.  Indicating an Alert encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class AlertTableException(ModelException):
     Super Class:
         ModelException
     """
-    MSG = "AlertTable error."
+    MSG = "Alert error."
     ERR_CODE = "ALERT_TABLE_ERROR"
     
     def __init__(

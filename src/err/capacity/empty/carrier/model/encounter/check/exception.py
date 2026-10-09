@@ -1,7 +1,7 @@
-# src/err/capacity/empty/carrier/model/attack/mate/exception.py
+# src/err/capacity/empty/carrier/model/encounter/check/exception.py
 
 """
-Module: err.capacity.empt.carrier.model.attack.mate.exception
+Module: err.capacity.empt.carrier.model.encounter.check.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import EncounterCarrierEmptyException
 
 __all__ = [
-    # ======================# CHECKMATE_ATTACK_CARRIER_EMPTY_ERROR #======================#
-    "EmptyCheckmateAttackCarrierException",
+    # ======================# CHECK_ENCOUNTER_CARRIER_EMPTY_ERROR #======================#
+    "EmptyCheckEncounterCarrierException",
 ]
 
-# ======================# CHECKMATE_ATTACK_CARRIER_EMPTY_ERROR #======================#
-class EmptyCheckmateAttackCarrierException(EncounterCarrierEmptyException):
+# ======================# CHECK_ENCOUNTER_CARRIER_EMPTY_ERROR #======================#
+class EmptyCheckEncounterCarrierException(EncounterCarrierEmptyException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a CheckmateAttackCarrier is empty.
+        1.  Indicating a CheckEncounterCarrier is empty.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class EmptyCheckmateAttackCarrierException(EncounterCarrierEmptyException):
     Provides:
 
     Super Class:
-        AttackCarrierEmptyException
+        EncounterCarrierEmptyException
     """
-    MSG = "CheckmateAttackCarrier cannot be empty."
-    ERR_CODE = "CHECKMATE_ATTACK_CARRIER_EMPTY_ERROR"
+    MSG = "CheckEncounterCarrier cannot be empty."
+    ERR_CODE = "CHECK_ENCOUNTER_CARRIER_EMPTY_ERROR"
     
     def __init__(
             self,

@@ -16,11 +16,11 @@ from err import ModelValidationDispatcherException
 
 __all__ = [
     # ======================# ALERT_VALIDATION_DISPATCHER_FAILURE #======================#
-    "AlertTableValidationDispatcherException",
+    "AlertValidationDispatcherException",
 ]
 
 # ======================# ALERT_VALIDATION_DISPATCHER_FAILURE #======================#
-class AlertTableValidationDispatcherException(
+class AlertValidationDispatcherException(
     ModelValidationDispatcherException
 ):
     """
@@ -28,7 +28,7 @@ class AlertTableValidationDispatcherException(
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an AlertTableValidationDispatcher encountered
+        1.  Indicating an AlertValidationDispatcher encountered
             an error.
 
     Attributes:
@@ -46,7 +46,7 @@ class AlertTableValidationDispatcherException(
     Super Class:
         ValidationDispatcherException
     """
-    MSG = "AlertTableValidationDispatcher failure."
+    MSG = "AlertValidationDispatcher failure."
     ERR_CODE = "ALERT_VALIDATION_DISPATCHER_FAILURE"
     
     def __init__(

@@ -13,4 +13,4 @@ version: 0.0.2
 from .level import *
 
 # Modules
-from .exception import AlertTableNullException
+from .exception import AlertNullException

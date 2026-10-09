@@ -11,11 +11,11 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import AlertTable
+from domain import Alert
 from transit import ModelCarrier
 
 
-class AlertTableCarrier(ModelCarrier[AlertTable]):
+class AlertCarrier(ModelCarrier[Alert]):
     """
     Role:
         - Boundary Carrier Interface
@@ -26,34 +26,34 @@ class AlertTableCarrier(ModelCarrier[AlertTable]):
     Attributes:
         has_model: bool
         has_blueprint: bool
-        entity: [AlertTable | AlterTableBlueprint]
+        entity: [Alert | AlterTableBlueprint]
 
     Provides:
-        -   def extract_blueprint() -> Optional[AlertTableBlueprint]
+        -   def extract_blueprint() -> Optional[AlertBlueprint]
 
     Super Class:
         ModelCarrier
     """
     
-    _model: Optional[AlertTable]
-    _blueprint: Optional[AlertTableBlueprint]
+    _model: Optional[Alert]
+    _blueprint: Optional[AlertBlueprint]
     
     def __init__(
             self,
-            model: Optional[AlertTable] | None = None,
-            blueprint: Optional[AlertTableBlueprint] | None = None,
+            model: Optional[Alert] | None = None,
+            blueprint: Optional[AlertBlueprint] | None = None,
     ):
         """
         Args:
-            model: Optional[AlertTable]
-            blueprint: Optional[AlertTableBlueprint]
+            model: Optional[Alert]
+            blueprint: Optional[AlertBlueprint]
         """
         super().__init__()
         self._model = model
         self._blueprint = blueprint
     
     @property
-    def entity(self) -> Optional[AlertTable | AlterTableBlueprint]:
+    def entity(self) -> Optional[Alert | AlterTableBlueprint]:
         if self.is_empty:
             return None
         if self.has_model:
@@ -65,7 +65,7 @@ class AlertTableCarrier(ModelCarrier[AlertTable]):
         return (
                 self._model is not None and
                 self._blueprint is None and
-                isinstance(self._model, AlertTable)
+                isinstance(self._model, Alert)
         )
     
     @property
@@ -75,11 +75,11 @@ class AlertTableCarrier(ModelCarrier[AlertTable]):
                 isinstance(self._blueprint, AlterTableBlueprint)
         )
     
-    def extract_blueprint(self) -> Optional[AlertTableBlueprint]:
+    def extract_blueprint(self) -> Optional[AlertBlueprint]:
         if self.is_empty: return None
         if self.has_blueprint: return self._blueprint
         
-        model = cast(AlertTable, self._model)
+        model = cast(Alert, self._model)
         return AlterTableBlueprint(
             id=model.id,
             game=model.game,

@@ -17,17 +17,17 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# ALERT_TABLE_VALIDATOR_FAILURE #======================#
-    "AlertTableValidatorException",
+    "AlertValidatorException",
 ]
 
 # ======================# ALERT_TABLE_VALIDATOR_FAILURE #======================#
-class AlertTableValidatorException(ModelValidatorException):
+class AlertValidatorException(ModelValidatorException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an AlertTableValidator failed.
+        1.  Indicating an AlertValidator failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class AlertTableValidatorException(ModelValidatorException):
     Super Class:
         ModelValidatorException
     """
-    MSG = "AlertTableValidator failed."
+    MSG = "AlertValidator failed."
     ERR_CODE = "ALERT_TABLE_VALIDATOR_FAILURE"
     
     def __init__(

@@ -11,20 +11,20 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import ModelValidatorToolkit, AlertTableWrapperDependency
-from domain import AlertTable, AlertTableManifest, AlertTableNullGroup, AlertTableTypeUnion
+from assurance import ModelValidatorToolkit, AlertWrapperDependency
+from domain import Alert, AlertManifest, AlertNullGroup, AlertTypeUnion
 
-class AlertTableValidatorToolkit(ModelValidatorToolkit[AlertTable]):
+class AlertValidatorToolkit(ModelValidatorToolkit[Alert]):
     """
     Role:
         - Toolkit
 
     Responsibilities:
-        1.  Single source of truth for AlertTable attribute validators and type metadata.
+        1.  Single source of truth for Alert attribute validators and type metadata.
 
     Attributes:
-        helper: AlertTableManifest
-        metadata: AlertTableWrapperDependency
+        helper: AlertManifest
+        metadata: AlertWrapperDependency
 
     Provides:
 
@@ -34,31 +34,31 @@ class AlertTableValidatorToolkit(ModelValidatorToolkit[AlertTable]):
     
     def __init__(
             self,
-            metadata: Optional[AlertTableManifest] | None = None,
-            wrapper: Optional[AlertTableWrapperDependency] | None = None,
+            metadata: Optional[AlertManifest] | None = None,
+            wrapper: Optional[AlertWrapperDependency] | None = None,
     ):
         """
         Args:
-            wrapper: Optional[AlertTableManifest]
-            metadata: Optional[AlertTableWrapperDependency]
+            wrapper: Optional[AlertManifest]
+            metadata: Optional[AlertWrapperDependency]
         """
         super().__init__(
-            wrapper=wrapper or AlertTableWrapperDependency(),
-            metadata=metadata or AlertTableManifest(),
+            wrapper=wrapper or AlertWrapperDependency(),
+            metadata=metadata or AlertManifest(),
         )
     
     @property
-    def wrapper(self) -> AlertTableWrapperDependency:
-        return cast(AlertTableWrapperDependency, super().wrapper)
+    def wrapper(self) -> AlertWrapperDependency:
+        return cast(AlertWrapperDependency, super().wrapper)
     
     @property
-    def metadata(self) -> AlertTableManifest:
-        return cast(AlertTableManifest, super().metadata)
+    def metadata(self) -> AlertManifest:
+        return cast(AlertManifest, super().metadata)
     
     @property
-    def nulls(self) -> AlertTableNullGroup:
+    def nulls(self) -> AlertNullGroup:
         return self.metadata.nulls
     
     @property
-    def types(self) -> AlertTableTypeUnion:
+    def types(self) -> AlertTypeUnion:
         return self.metadata.types

@@ -14,7 +14,7 @@ from typing import Optional
 from domain import CheckmateEncounter, EncounterWarning, Model
 
 
-class AlertTable(Model):
+class Alert(Model):
     """
      Role:
          - Data Holder

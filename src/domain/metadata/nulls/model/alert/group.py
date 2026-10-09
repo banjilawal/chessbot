@@ -11,24 +11,24 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import AlertTable, ModelNullGroup
+from domain import Alert, ModelNullGroup
 from err import (
-    AlertTableBlueprintNullException, AlertTableCarrierNullException, AlertTableNullException
+    AlertBlueprintNullException, AlertCarrierNullException, AlertNullException
 )
 
 
-class AlertTableNullGroup(ModelNullGroup[AlertTable]):
+class AlertNullGroup(ModelNullGroup[Alert]):
     """
     Role:
         - Metadata
 
     Responsibilities:
-        1. Catalog of NullExceptions associated with an AlertTable's integrity cycle.
+        1. Catalog of NullExceptions associated with an Alert's integrity cycle.
 
     Attributes:
-        model: AlertTableNullException
-        carrier: AlertTableCarrierNullException
-        blueprint: AlertTableBlueprintNullException
+        model: AlertNullException
+        carrier: AlertCarrierNullException
+        blueprint: AlertBlueprintNullException
 
     Provides:
 
@@ -38,30 +38,30 @@ class AlertTableNullGroup(ModelNullGroup[AlertTable]):
     
     def __init__(
             self,
-            model: Optional[AlertTableNullException] | None = None,
-            carrier: Optional[AlertTableCarrierNullException] | None = None,
-            blueprint: Optional[AlertTableBlueprintNullException] | None = None,
+            model: Optional[AlertNullException] | None = None,
+            carrier: Optional[AlertCarrierNullException] | None = None,
+            blueprint: Optional[AlertBlueprintNullException] | None = None,
     ):
         """
         Args:
-            model: Optional[AlertTableNullException]
-            carrier: Optional[AlertTableCarrierNullException]
-            blueprint: Optional[AlertTableBlueprintNullException]
+            model: Optional[AlertNullException]
+            carrier: Optional[AlertCarrierNullException]
+            blueprint: Optional[AlertBlueprintNullException]
         """
         super().__init__(
-            model = model or AlertTableNullException(),
-            carrier = carrier or AlertTableCarrierNullException(),
-            blueprint = blueprint or AlertTableBlueprintNullException(),
+            model = model or AlertNullException(),
+            carrier = carrier or AlertCarrierNullException(),
+            blueprint = blueprint or AlertBlueprintNullException(),
         )
         
     @property
-    def model(self) -> AlertTableNullException:
-        return cast(AlertTableNullException, super().model)
+    def model(self) -> AlertNullException:
+        return cast(AlertNullException, super().model)
     
     @property
-    def carrier(self) -> AlertTableCarrierNullException:
-        return cast(AlertTableCarrierNullException, super().carrier)
+    def carrier(self) -> AlertCarrierNullException:
+        return cast(AlertCarrierNullException, super().carrier)
     
     @property
-    def blueprint(self) -> AlertTableBlueprintNullException:
-        return cast(AlertTableBlueprintNullException, super().blueprint)
+    def blueprint(self) -> AlertBlueprintNullException:
+        return cast(AlertBlueprintNullException, super().blueprint)

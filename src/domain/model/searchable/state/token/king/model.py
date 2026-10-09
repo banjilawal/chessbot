@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional
 
 from domain import (
-    AlertTable, ThreatLevel, Footstep, Formation, HomeSquare, Square, Team,
+    Alert, ThreatLevel, Footstep, Formation, HomeSquare, Square, Team,
     Token, KingReadiness
 )
 
@@ -26,7 +26,7 @@ class KingToken(Token):
         1. Token that can be checkmated not captured.
 
     Attributes:
-        alert: AlertTable
+        alert: Alert
         readiness: KingReadiness
         threat_level: EncounterAlertLevel
         potential_destination: Optional[Square]
@@ -34,7 +34,7 @@ class KingToken(Token):
     Super Class:
         Token
     """
-    _alert: AlertTable
+    _alert: Alert
     _readiness: KingReadiness
     _threat_level: ThreatLevel
     _potential_destination: Optional[Square]
@@ -46,7 +46,7 @@ class KingToken(Token):
             formation: Formation,
             home_square: HomeSquare,
             footstep: Optional[Footstep] | None = None,
-            alert: Optional[AlertTable] | None = None,
+            alert: Optional[Alert] | None = None,
     ):
         """
         Args:
@@ -55,7 +55,7 @@ class KingToken(Token):
             home_square: Square
             formation: Formation
             footstep: Optional[Footstep]
-            alert: Optional[AlertTable]
+            alert: Optional[Alert]
         """
         super().__init__(
             id=id,
@@ -64,7 +64,7 @@ class KingToken(Token):
             home_square=home_square,
             footstep=footstep,
         )
-        self._alert = alert or AlertTable()
+        self._alert = alert or Alert()
         self._readiness = KingReadiness.NOT_READY
         self._threat_level = ThreatLevel.LOW
         self._potential_destination = None
@@ -95,7 +95,7 @@ class KingToken(Token):
         self._potential_destination = other
         
     @property
-    def alert(self) -> AlertTable:
+    def alert(self) -> Alert:
         return self._alert
         
     @property

@@ -17,17 +17,17 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# ALERT_TABLE_BLUEPRINT_NULL_ERROR #======================#
-    "AlertTableBlueprintNullException",
+    "AlertBlueprintNullException",
 ]
 
 # ======================# ALERT_TABLE_BLUEPRINT_NULL_ERROR #======================#
-class AlertTableBlueprintNullException(ModelBlueprintNullException):
+class AlertBlueprintNullException(ModelBlueprintNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required AlertTableBlueprint is null.
+        1.  Indicating a required AlertBlueprint is null.
 
     Cannot Be Null.s:
             msg: Optional[str]
@@ -44,7 +44,7 @@ class AlertTableBlueprintNullException(ModelBlueprintNullException):
     Super Class:
         BlueprintNullException
     """
-    MSG = "AlertTableBlueprint cannot be null."
+    MSG = "AlertBlueprint cannot be null."
     ERR_CODE = "ALERT_TABLE_BLUEPRINT_NULL_ERROR"
     
     def __init__(

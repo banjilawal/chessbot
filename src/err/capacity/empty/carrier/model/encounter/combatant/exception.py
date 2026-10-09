@@ -1,7 +1,7 @@
-# src/err/capacity/empty/carrier/model/attack/combatant/exception.py
+# src/err/capacity/empty/carrier/model/encounter/combatant/exception.py
 
 """
-Module: err.capacity.empt.carrier.model.attack.combatant.exception
+Module: err.capacity.empt.carrier.model.encounter.combatant.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import EncounterCarrierEmptyException
 
 __all__ = [
-    # ======================# COMBATANT_ATTACK_CARRIER_EMPTY_ERROR #======================#
-    "EmptyCombatantAttackCarrierException",
+    # ======================# COMBATANT_ENCOUNTER_CARRIER_EMPTY_ERROR #======================#
+    "EmptyCombatantEncounterCarrierException",
 ]
 
-# ======================# COMBATANT_ATTACK_CARRIER_EMPTY_ERROR #======================#
-class EmptyCombatantAttackCarrierException(EncounterCarrierEmptyException):
+# ======================# COMBATANT_ENCOUNTER_CARRIER_EMPTY_ERROR #======================#
+class EmptyCombatantEncounterCarrierException(EncounterCarrierEmptyException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a CombatantAttackCarrier is empty.
+        1.  Indicating a CombatantEncounterCarrier is empty.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class EmptyCombatantAttackCarrierException(EncounterCarrierEmptyException):
     Provides:
 
     Super Class:
-        AttackCarrierEmptyException
+        EncounterCarrierEmptyException
     """
-    MSG = "CombatantAttackCarrier cannot be empty."
-    ERR_CODE = "COMBATANT_ATTACK_CARRIER_EMPTY_ERROR"
+    MSG = "CombatantEncounterCarrier cannot be empty."
+    ERR_CODE = "COMBATANT_ENCOUNTER_CARRIER_EMPTY_ERROR"
     
     def __init__(
             self,

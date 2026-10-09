@@ -13,7 +13,7 @@ from typing import Optional, Type, cast
 
 
 from domain import (
-    AlertTable, Footstep, KingReadiness, KingToken, Formation, HomeSquare,
+    Alert, Footstep, KingReadiness, KingToken, Formation, HomeSquare,
     Team, ThreatLevel, TokenBlueprint, TokenDeployment
 )
 from err import KingTokenNullException
@@ -28,7 +28,7 @@ class KingTokenBlueprint(TokenBlueprint[KingToken]):
          1.  Provides values for hydrating a KingToken object.
 
      Attributes:
-        alert: AlertTable
+        alert: Alert
         readiness: KingReadiness
         threat_level: ThreatLevel
 
@@ -40,7 +40,7 @@ class KingTokenBlueprint(TokenBlueprint[KingToken]):
      Super Class:
         TokenBlueprint
      """
-    _alert: AlertTable
+    _alert: Alert
     _readiness: KingReadiness
     _threat_level: ThreatLevel
 
@@ -53,7 +53,7 @@ class KingTokenBlueprint(TokenBlueprint[KingToken]):
             deployment: Optional[TokenDeployment] | None = None,
             readiness: Optional[KingReadiness] | None = None,
             threat_level: Optional[ThreatLevel] | None = None,
-            alert: Optional[AlertTable] | None = None,
+            alert: Optional[Alert] | None = None,
             domain_class: Optional[Type[KingToken]] | None = None,
             domain_null_exception: Optional[KingTokenNullException] | None = None,
             id: Optional[int] | None = None,
@@ -67,7 +67,7 @@ class KingTokenBlueprint(TokenBlueprint[KingToken]):
             deployment: Optional[TokenDeployment]
             readiness: Optional[KingReadiness]
             threat_level: Optional[ThreatLevel]
-            alert: Optional[AlertTable]
+            alert: Optional[Alert]
             domain_class: Optional[Type[KingToken]]
             domain_null_exception: Optional[KingTokenNullException]
             id: Optional[int]
@@ -82,7 +82,7 @@ class KingTokenBlueprint(TokenBlueprint[KingToken]):
             domain_class=domain_class or Type[KingToken],
             domain_null_exception=domain_null_exception or KingTokenNullException(),
         )
-        self._alert = alert or AlertTable()
+        self._alert = alert or Alert()
         self._threat_level = threat_level or ThreatLevel.LOW
         self._readiness = readiness or KingReadiness.NOT_READY
         
@@ -91,7 +91,7 @@ class KingTokenBlueprint(TokenBlueprint[KingToken]):
         return self._readiness
         
     @property
-    def alert(self) -> AlertTable:
+    def alert(self) -> Alert:
         return self._alert
     
     @property
