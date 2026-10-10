@@ -1,7 +1,7 @@
-# src/validator/model/path/validator.py
+# src/assurance/validator/model/path/validator.py
 
 """
-Module: validator.model.path.validator
+Module: assurance.validator.model.path.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,13 +12,12 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidator, PathValidatorToolkit
-from domain import Path, PathBlueprint, PathValidationRequest, SquareRegister, SquareRegisterValidationRequest
-from err import (
-    PathCarrierEmptyException, EmptySquareRegisterCarrierException, PathValidationRequestNullException,
-    PathValidatorException
-)
+from assurance import PathLoader, PathValidatorToolkit, ModelValidator
+from domain import Path, PathBlueprint, PathPrimeExtract, SquareRegister
+from err import PathCarrierEmptyException, PathValidatorException
+from exchange import SquareRegisterValidationRequest
 from transit import PathCarrier, SquareRegisterCarrier
+
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -28,34 +27,40 @@ class PathValidator(ModelValidator[Path]):
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a Path instance is certified safe, reliable, and consistent before use.
+        1.  Ensure a PathCarrier and its contents are safe to use.
 
     Attributes:
-        loader: PathValidatorToolkit
-        
+        loader: PathLoader
+
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult[PathCarrier]
+        -   def execute(candidate: Ant) -> ValidationResult[PathCarrier]:
 
     Super Class:
         ModelValidator
     """
     
-    def __init__(self, loader: Optional[PathValidatorToolkit] | None = None):
+    def __init__(
+            self,
+            loader: Optional[PathLoader] | None = None,
+    ):
         """
         Args:
-            loader: Optional[PathValidatorToolkit]
+            loader: Optional[PathLoader]
         """
-        super().__init__(toolkit=toolkit or PathValidatorToolkit())
+        super().__init__(loader=loader or PathLoader())
         
     @property
+    def loader(self) -> PathLoader:
+        return cast(PathLoader, super().loader)
+    
+    @property
     def toolkit(self) -> PathValidatorToolkit:
-        return cast(PathValidatorToolkit, super().toolkit)
+        return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[PathCarrier]:
         """
-        Certify a PathCarrier's payload is either a Path or a Blueprint 
-        that is safe to use.
+        Assure a candidate is a safe PathCarrier.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
@@ -65,7 +70,7 @@ class PathValidator(ModelValidator[Path]):
                             null
                             not a PathCarrier
                             an empty PathCarrier.
-                    -   Either the id, board, or owner attributes are flagged unsafe.
+                    -   Either the endpoints, row, or column attributes are flagged unsafe.
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
@@ -74,17 +79,12 @@ class PathValidator(ModelValidator[Path]):
             ValidationResult[PathCarrier]
         Raises:
             PathValidatorException
-            BoardCarrierEmptyException
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the candidate is null or the rong type.
-        priming_result = self.toolkit.wrapper.priming_validator.execute(
-            candidate=candidate,
-            target_model=PathValidationRequest,
-            null_exception=PathValidationRequestNullException(),
-        )
-        if priming_result.is_failure:
+        # Handle the case that the blueprint cannot be extracted.
+        loading = self.loader.execute(candidate)
+        if loading.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 PathValidatorException(
@@ -92,35 +92,14 @@ class PathValidator(ModelValidator[Path]):
                     cls_name=self.__class__.__name__,
                     msg=PathValidatorException.MSG,
                     err_code=PathValidatorException.ERR_CODE,
-                    ex=priming_result.exception,
+                    ex=loading.exception,
                 )
             )
-        # --- Cast priming_result into a request for additional tests. ---#
-        request = cast(PathValidationRequest, priming_result.payload)
-        
-        # Handle the case that request.item is the wrong carrier type.
-        carrier_validation = self.toolkit.wrapper.priming_validator.execute(
-            candidate=request.item,
-            target_model=self.toolkit.metadata.types.carrier,
-            null_exception=self.toolkit.metadata.nulls.carrier,
-        )
-        if carrier_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                PathValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=PathValidatorException.MSG,
-                    err_code=PathValidatorException.ERR_CODE,
-                    ex=carrier_validation.exception,
-                )
-            )
-        # --- Cast the carrier_validation payload for additional tests. ---#
-        carrier = cast(PathCarrier, carrier_validation.payload,)
-        # --- Extract the blueprint to verify the attributes. ---#
+        # --- Get the PrimeExtract and Blueprint for additional processing. ---#
+        prime_extract = cast(PathPrimeExtract, loading.payload)
+        carrier = prime_extract.reference
         blueprint = carrier.extract_blueprint()
-        
-        # Handle the case that there is no blueprint.
+        # Handle the case that the blueprint is null.
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -137,13 +116,11 @@ class PathValidator(ModelValidator[Path]):
                     ),
                 )
             )
-        # Handle the case that any label in the blueprint is flagged.
-        blueprint_label = blueprint.label
-        candidate_label = blueprint_label
-        if blueprint_label is not None:
-            label_validation = self.toolkit.wrapper.number_validator.execute(
-                candidate=blueprint_label
-            )
+        # --- PROCESS_THE_LABEL_ATTRIBUTE. ---#
+        label = blueprint.label
+        if label is not None:
+            label_validation = self.toolkit.number_validator.execute(label)
+            # Handle the case that the endpoints are flagged.
             if label_validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
@@ -155,15 +132,17 @@ class PathValidator(ModelValidator[Path]):
                         ex=label_validation.exception,
                     )
                 )
-            candidate_label = cast(int, label_validation.payload)
-        # Handle the case that the squareRegister does not pass a validation check.
-        endpoint_validation = self.toolkit.wrapper.endpoint_validator.execute(
-            candidate=SquareRegisterValidationRequest(
-                item=blueprint.endpoints,
+            label = cast(int, label_validation.payload)
+        # --- PROCESS_THE_ENDPOINTS_ATTRIBUTE. ---#
+        endpoints_validation = self.toolkit.wrapper.square_register.extract_model(
+            request=SquareRegisterValidationRequest(
+                item=SquareRegisterCarrier(model=blueprint.endpoints),
                 id=IdFactory.next_id(class_name="SquareRegisterValidationRequest"),
-            ),
+
+            )
         )
-        if endpoint_validation.is_failure:
+        # Handle the case that the endpoints are flagged.
+        if endpoints_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 PathValidatorException(
@@ -171,45 +150,26 @@ class PathValidator(ModelValidator[Path]):
                     cls_name=self.__class__.__name__,
                     msg=PathValidatorException.MSG,
                     err_code=PathValidatorException.ERR_CODE,
-                    ex=endpoint_validation.exception,
+                    ex=endpoints_validation.exception,
                 )
             )
-        # --- Extract the endpoints validation payload. ---#
-        endpoint_carrier = cast(
-            SquareRegisterCarrier,
-            endpoint_validation.payload
-        )
-        # Handle the case that the endpoint_carrier does not contain a model.
-        if not endpoint_carrier.has_model:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                PathValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=PathValidatorException.MSG,
-                    err_code=PathValidatorException.ERR_CODE,
-                    ex=EmptySquareRegisterCarrierException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=EmptySquareRegisterCarrierException.MSG,
-                        err_code=EmptySquareRegisterCarrierException.ERR_CODE,
-                    ),
-                )
-            )
-        # --- Extract validation payloads. ---#
-        label = candidate_label
-        endpoints = cast(SquareRegister, endpoint_carrier.entity)
-        # --- Forward the appropriate work product to the caller. ---#
-        # The model case
-        if carrier.has_model:
-            payload = Path(label=label, endpoints=endpoints,)
-            return ValidationResult.success(
-                PathCarrier(model=payload)
-            )
-        # The blueprint case
-        payload = PathBlueprint(label=label, endpoints=endpoints,)
-        return ValidationResult.success(
-            PathCarrier(blueprint=payload)
-        )
+        # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
+        endpoints = cast(SquareRegister, endpoints_validation.payload)
+        # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         
-        
+        # The client wants a safe Path.
+        if prime_extract.recipient_wants_model:
+            model = Path(label=label, endpoints=endpoints)
+            payload = PathCarrier(model=model)
+            return ValidationResult.success(payload)
+        # Otherwise, the client is a PathBuilder that needs a Blueprint.
+        payload = PathCarrier(
+            blueprint=PathBlueprint(
+                label=label,
+                endpoints=endpoints,
+            )
+        )
+        return ValidationResult.success(payload)
+
+
+

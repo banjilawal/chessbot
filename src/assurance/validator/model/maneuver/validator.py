@@ -53,7 +53,7 @@ class ManeuverValidator(ModelValidator[Maneuver]):
         Args:
             loader: Optional[ManeuverValidatorToolkit]
         """
-        super().__init__(toolkit=toolkit or ManeuverValidatorToolkit())
+        super().__init__(loader=loader or ManeuverValidatorToolkit())
     
     @property
     def toolkit(self) -> ManeuverValidatorToolkit:

@@ -47,7 +47,7 @@ class PlayerValidator(ModelValidator[Player]):
         Args:
             loader: Optional[PlayerValidatorToolkit]
         """
-        super().__init__(toolkit=toolkit or PlayerValidatorToolkit())
+        super().__init__(loader=loader or PlayerValidatorToolkit())
     
     @property
     def toolkit(self) -> PlayerValidatorToolkit:

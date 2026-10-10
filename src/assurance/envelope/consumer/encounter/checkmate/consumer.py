@@ -145,7 +145,7 @@ class CheckmateEncounterEnvelopeConsumer(
                 )
             )
             return ValidationResult.success(carrier)
-        
+
         # Otherwise, the client is a CheckmateEncounterBuilder that needs a Blueprint.
         carrier = CheckmateEncounterCarrier(
             blueprint=CheckmateEncounterBlueprint(

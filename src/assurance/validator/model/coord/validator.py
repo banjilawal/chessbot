@@ -98,7 +98,7 @@ class CoordValidator(ModelValidator[Coord]):
         prime_extract = cast(CoordPrimeExtract, loading.payload)
         carrier = prime_extract.reference
         blueprint = carrier.extract_blueprint()
-        
+        # Handle the case that the blueprint is null.
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -139,7 +139,7 @@ class CoordValidator(ModelValidator[Coord]):
         components: List[int] = []
         for number in [blueprint.row, blueprint.column]:
             # Handle the case that any coord component in the blueprint is flagged.
-            validation = self.toolkit.wrapper.number_validator.execute(number)
+            validation = self.toolkit.number_validator.execute(number)
             if validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(

@@ -51,7 +51,7 @@ class GameValidator(ModelValidator[Game]):
         Args:
             loader: Optional[GameValidatorToolkit]
         """
-        super().__init__(toolkit=toolkit or GameValidatorToolkit())
+        super().__init__(loader=loader or GameValidatorToolkit())
     
     @property
     def toolkit(self) -> GameValidatorToolkit:

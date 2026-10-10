@@ -47,7 +47,7 @@ class BoardValidator(ModelValidator[Board]):
         Args:
             loader: Optional[BoardValidatorToolkit]
         """
-        super().__init__(toolkit=toolkit or BoardValidatorToolkit())
+        super().__init__(loader=loader or BoardValidatorToolkit())
     
     @property
     def toolkit(self) -> BoardValidatorToolkit:

@@ -49,7 +49,7 @@ class RankValidator(ModelValidator[Rank]):
         Args:
             loader: Optional[RankValidatorToolkit]
         """
-        super().__init__(toolkit=toolkit or RankValidatorToolkit())
+        super().__init__(loader=loader or RankValidatorToolkit())
     
     @property
     def toolkit(self) -> RankValidatorToolkit:
