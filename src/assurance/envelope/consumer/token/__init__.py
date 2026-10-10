@@ -11,7 +11,7 @@ version: 0.0.2
 
 # Packages
 from .combatant import *
-from .square import *
+from .king import *
 from .pawn import *
 
 # Module

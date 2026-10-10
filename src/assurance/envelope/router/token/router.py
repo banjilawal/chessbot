@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import ValidationResult
 from assurance import (
     EnvelopeRouter, CombatantTokenEnvelopeConsumer,
-    PawnTokenEnvelopeConsumer, TokenValidatorToolkit
+    KingTokenEnvelopeConsumer, PawnTokenEnvelopeConsumer, TokenValidatorToolkit
 )
 from domain import Token
 from err import RootTokenEnvelopeNullException, TokenEnvelopeRouterException
@@ -33,9 +33,9 @@ class TokenEnvelopeRouter(EnvelopeRouter[Token]):
 
     Attributes:
         toolkit: TokenValidatorToolkit
-        combatant_consumer: CombatantTokenEnvelopeConsumer
         pawn_consumer: PawnTokenEnvelopeConsumer
-        token_warning_consumer: TokenWarningEnvelopeConsumer
+        king_consumer: KingTokenEnvelopeConsumer
+        combatant_consumer: CombatantTokenEnvelopeConsumer
 
     Provides:
         -   def execute(envelope: RootTokenEnvelope) -> ValidationResult[TokenCarrier]
@@ -43,24 +43,29 @@ class TokenEnvelopeRouter(EnvelopeRouter[Token]):
     Super Class:
         EnvelopeRouter
     """
-    _combatant_consumer: CombatantTokenEnvelopeConsumer
     _pawn_consumer: PawnTokenEnvelopeConsumer
+    _king_consumer: KingTokenEnvelopeConsumer
+    _combatant_consumer: CombatantTokenEnvelopeConsumer
     
     def __init__(
             self,
-            toolkit: Optional[TokenValidatorToolkit] | None = None,
-            combatant_consumer: Optional[CombatantTokenEnvelopeConsumer] | None = None,
             pawn_consumer: Optional[PawnTokenEnvelopeConsumer] | None = None,
+            king_consumer: Optional[KingTokenEnvelopeConsumer] | None = None,
+            combatant_consumer: Optional[CombatantTokenEnvelopeConsumer] | None = None,
+            toolkit: Optional[TokenValidatorToolkit] | None = None,
     ):
         """
         Args:
-            toolkit: Optional[TokenValidatorToolkit]
-            combatant_consumer: Optional[CombatantTokenEnvelopeConsumer]
             pawn_consumer: Optional[PawnTokenEnvelopeConsumer]
+            king_consumer: Optional[KingTokenEnvelopeConsumer]
+            combatant_consumer: Optional[CombatantTokenEnvelopeConsumer]
+            toolkit: Optional[TokenValidatorToolkit]
         """
         super().__init__(toolkit=toolkit or TokenValidatorToolkit())
-        self._combatant_consumer = combatant_consumer or CombatantTokenEnvelopeConsumer()
         self._pawn_consumer = pawn_consumer or PawnTokenEnvelopeConsumer()
+        self._king_consumer = king_consumer or KingTokenEnvelopeConsumer()
+        self._combatant_consumer = combatant_consumer or CombatantTokenEnvelopeConsumer()
+
     
     @property
     def toolkit(self) -> TokenValidatorToolkit:
@@ -116,6 +121,9 @@ class TokenEnvelopeRouter(EnvelopeRouter[Token]):
         # Route to pawn_token_validation consumers.
         if safe.for_pawn_token_consumer:
             result = self._pawn_consumer.execute(envelope=safe)
+        # Route to the king_token_validation consumers
+        if safe.for_king_token_consumer:
+            result = self._king_consumer.execute(envelope=safe)
             
         # Handle the case that the envelope is not consumed.
         if result.is_failure:
