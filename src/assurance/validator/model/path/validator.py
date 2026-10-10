@@ -67,10 +67,8 @@ class PathValidator(ModelValidator[Path]):
                 occur
                     -   The request is either null or not a PathValidatorRequest.
                     -   The request's payload is either,
-                            null
-                            not a PathCarrier
-                            an empty PathCarrier.
-                    -   Either the endpoints, row, or column attributes are flagged unsafe.
+                            null, an empty PathCarrier, or the wrong type.
+                    -   The endpoints or label are flagged unsafe.
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:

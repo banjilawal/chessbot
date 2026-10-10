@@ -1,7 +1,7 @@
-# src/validator/model/maneuver/validator.py
+# src/assurance/validator/model/maneuver/validator.py
 
 """
-Module: validator.model.maneuver.validator
+Module: assurance.validator.model.maneuver.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,19 +11,12 @@ from __future__ import annotations
 
 from typing import Any, Optional, cast
 
-from assurance import ManeuverValidatorToolkit, ModelValidator
-from config import NumericSetting
-from domain import (
-    Maneuver, ManeuverBlueprint, ManeuverValidationRequest, Path, PathValidationRequest,
-    Token, TokenValidationRequest
-)
-from err import (
-    ManeuverCarrierEmptyException, PathCarrierEmptyException, TokenCarrierEmptyException,
-    ManeuverValidationRequestNullException, ManeuverValidatorException
-)
-
 from artifcat import ValidationResult
-from transit import ManeuverCarrier, PathCarrier, TokenCarrier
+from assurance import ManeuverLoader, ManeuverValidatorToolkit, ModelValidator
+from domain import Path, Token, Maneuver, ManeuverBlueprint, ManeuverPrimeExtract
+from err import ManeuverCarrierEmptyException, ManeuverValidatorException
+from exchange import PathValidationRequest, TokenValidationRequest
+from transit import PathCarrier, TokenCarrier, ManeuverCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -33,13 +26,13 @@ class ManeuverValidator(ModelValidator[Maneuver]):
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a ManeuverCarrier is safe to use.
+        1.  Ensure a ManeuverCarrier and its contents are safe to use.
 
     Attributes:
-        loader: ManeuverValidatorToolkit
+        loader: ManeuverLoader
 
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult[ManeuverCarrier]:
+        -   def execute(candidate: Ant) -> ValidationResult[ManeuverCarrier]:
 
     Super Class:
         ModelValidator
@@ -47,23 +40,26 @@ class ManeuverValidator(ModelValidator[Maneuver]):
     
     def __init__(
             self,
-            loader: Optional[ManeuverValidatorToolkit] | None = None,
+            loader: Optional[ManeuverLoader] | None = None,
     ):
         """
         Args:
-            loader: Optional[ManeuverValidatorToolkit]
+            loader: Optional[ManeuverLoader]
         """
-        super().__init__(loader=loader or ManeuverValidatorToolkit())
+        super().__init__(loader=loader or ManeuverLoader())
+        
+    @property
+    def loader(self) -> ManeuverLoader:
+        return cast(ManeuverLoader, super().loader)
     
     @property
     def toolkit(self) -> ManeuverValidatorToolkit:
-        return cast(ManeuverValidatorToolkit, super().toolkit)
+        return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[ManeuverCarrier]:
         """
-        Certify a ManeuverCarrier's payload is either a Maneuver or a Blueprint 
-        that is safe to use.
+        Assure a candidate is a safe ManeuverCarrier.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
@@ -73,7 +69,7 @@ class ManeuverValidator(ModelValidator[Maneuver]):
                             null
                             not a ManeuverCarrier
                             an empty ManeuverCarrier.
-                    -   Either the id, token, or owner attributes are flagged unsafe.
+                    -   Either the token, row, or column attributes are flagged unsafe.
             2.  Otherwise, Send a Carrier with the correct type of payload in the success
                 result.
         Args:
@@ -85,13 +81,9 @@ class ManeuverValidator(ModelValidator[Maneuver]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the candidate is null or the rong type.
-        priming_result = self.toolkit.wrapper.priming_validator.execute(
-            candidate=candidate,
-            target_model=ManeuverValidationRequest,
-            null_exception=ManeuverValidationRequestNullException(),
-        )
-        if priming_result.is_failure:
+        # Handle the case that the blueprint cannot be extracted.
+        loading = self.loader.execute(candidate)
+        if loading.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ManeuverValidatorException(
@@ -99,31 +91,12 @@ class ManeuverValidator(ModelValidator[Maneuver]):
                     cls_name=self.__class__.__name__,
                     msg=ManeuverValidatorException.MSG,
                     err_code=ManeuverValidatorException.ERR_CODE,
-                    ex=priming_result.exception,
+                    ex=loading.exception,
                 )
             )
-        # --- Cast priming_result into a request for additional tests. ---#
-        request = cast(ManeuverValidationRequest, priming_result.payload)
-        
-        # Handle the case that request.item is the wrong carrier type.
-        carrier_validation = self.toolkit.wrapper.priming_validator.execute(
-            candidate=request.item,
-            target_model=self.toolkit.metadata.types.carrier,
-            null_exception=self.toolkit.metadata.nulls.carrier,
-        )
-        if carrier_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                ManeuverValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=ManeuverValidatorException.MSG,
-                    err_code=ManeuverValidatorException.ERR_CODE,
-                    ex=carrier_validation.exception,
-                )
-            )
-        # --- Cast carrier_validation payload to into carrier to extract the blueprint. ---#
-        carrier = cast(ManeuverCarrier, carrier_validation.payload)
+        # --- Get the PrimeExtract and Blueprint for additional processing. ---#
+        prime_extract = cast(ManeuverPrimeExtract, loading.payload)
+        carrier = prime_extract.reference
         blueprint = carrier.extract_blueprint()
         # Handle the case that the blueprint is null.
         if blueprint is None:
@@ -142,30 +115,15 @@ class ManeuverValidator(ModelValidator[Maneuver]):
                     ),
                 )
             )
-        # Handle the case that any id in the blueprint is flagged.
-        benefit_validation = self.toolkit.wrapper.number_validator.execute(
-            candidate=blueprint.benefit,
-            floor=NumericSetting().negative_infinity,
-            ceiling=NumericSetting().infinity,
-        )
-        if benefit_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                ManeuverValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=ManeuverValidatorException.MSG,
-                    err_code=ManeuverValidatorException.ERR_CODE,
-                    ex=benefit_validation.exception,
-                )
-            )
-        # Handle the case that the traveler does not pass a validation check.
-        traveler_validation = self.toolkit.wrapper.path_validator.execute(
-            candidate=TokenValidationRequest(
+        # --- PROCESS_THE_TRAVELER_ATTRIBUTE. ---#
+        traveler_validation = self.toolkit.wrapper.token.extract_model(
+            request=TokenValidationRequest(
                 item=TokenCarrier(model=blueprint.traveler),
                 id=IdFactory.next_id(class_name="TokenValidationRequest"),
-            ),
+
+            )
         )
+        # Handle the case that the traveler is flagged.
         if traveler_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -177,33 +135,11 @@ class ManeuverValidator(ModelValidator[Maneuver]):
                     ex=traveler_validation.exception,
                 )
             )
-        # --- Extract the traveler validation payload. ---#
-        traveler_carrier = cast(TokenCarrier, traveler_validation.payload)
-        traveler_blueprint = traveler_carrier.extract_blueprint()
-        # Handle the case that the traveler_blueprint is null.
-        if traveler_blueprint is None:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                ManeuverValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=ManeuverValidatorException.MSG,
-                    err_code=ManeuverValidatorException.ERR_CODE,
-                    ex=TokenCarrierEmptyException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=TokenCarrierEmptyException.MSG,
-                        err_code=TokenCarrierEmptyException.ERR_CODE,
-                    ),
-                )
-            )
-        # Handle the case that the traveler_blueprint does not contain a model.
-        # --- Run the path validation checks. ---#
-        path_validation = self.toolkit.wrapper.path_validator.execute(
-            candidate=PathValidationRequest(
+        # --- PROCESS_THE_PATH_ATTRIBUTE. ---#
+        path_validation = self.toolkit.wrapper.path.extract_model(
+            request=PathValidationRequest(
                 item=PathCarrier(model=blueprint.path),
                 id=IdFactory.next_id(class_name="PathValidationRequest"),
-
             )
         )
         # Handle the case that the path is flagged.
@@ -218,11 +154,9 @@ class ManeuverValidator(ModelValidator[Maneuver]):
                     ex=path_validation.exception,
                 )
             )
-        # --- Extract the path validation payload. ---#
-        path_carrier = cast(PathCarrier, path_validation.payload)
-        path_blueprint = path_carrier.extract_blueprint()
-        # Handle the case that the traveler_blueprint is null.
-        if path_blueprint is None:
+        # --- PROCESS_THE_BENEFIT_ATTRIBUTE. ---#
+        benefit_validation = self.toolkit.number_validator.execute(blueprint.benefit)
+        if benefit_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ManeuverValidatorException(
@@ -230,25 +164,29 @@ class ManeuverValidator(ModelValidator[Maneuver]):
                     cls_name=self.__class__.__name__,
                     msg=ManeuverValidatorException.MSG,
                     err_code=ManeuverValidatorException.ERR_CODE,
-                    ex=PathCarrierEmptyException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=PathCarrierEmptyException.MSG,
-                        err_code=PathCarrierEmptyException.ERR_CODE,
-                    ),
+                    ex=benefit_validation.exception,
                 )
             )
-        # --- Extract validation payloads. ---#
+        # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
+        path = cast(Path, path_validation.payload)
         benefit = cast(int, benefit_validation.payload)
-        traveler = cast(Token, traveler_carrier.entity)
-        path = cast(Path, path_carrier.entity)
-        # --- Forward the appropriate work product to the caller. ---#
-        # The model case
-        if carrier.has_model:
-            payload = Maneuver(benefit=benefit, traveler=traveler, path=path)
-            return ValidationResult.success(ManeuverCarrier(model=payload))
-        # The blueprint case
-        payload = ManeuverBlueprint(benefit=benefit, traveler=traveler, path=path)
-        return ValidationResult.success(ManeuverCarrier(blueprint=payload))
+        traveler = cast(Token, traveler_validation.payload)
+        # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         
-        
+        # The client wants a safe Maneuver.
+        if prime_extract.recipient_wants_model:
+            model = Maneuver(path=path, benefit=benefit, traveler=traveler)
+            payload = ManeuverCarrier(model=model)
+            return ValidationResult.success(payload)
+        # Otherwise, the client is a ManeuverBuilder that needs a Blueprint.
+        payload = ManeuverCarrier(
+            blueprint=ManeuverBlueprint(
+                path=path,
+                benefit=benefit,
+                traveler=traveler,
+            )
+        )
+        return ValidationResult.success(payload)
+
+
+
