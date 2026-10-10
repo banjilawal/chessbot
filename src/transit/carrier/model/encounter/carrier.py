@@ -79,9 +79,11 @@ class EncounterCarrier(ModelCarrier[T], Generic[T]):
                 self._blueprint is not None
         )
     
-    @abstractmethod
     def extract_blueprint(self) -> Optional[EncounterBlueprint[T]]:
-        pass
+        if self.is_empty or self.has_model:
+            return None
+        if isinstance(self._blueprint, EncounterWarningBlueprint)
+            return
     
     @property
     def is_checkmate_encounter_carrier(self) -> bool:

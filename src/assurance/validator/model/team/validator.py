@@ -73,7 +73,7 @@ class TeamValidator(ModelValidator[Team]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the blueprint cannot be extracted.
+        # Handle the case that loader fails.
         loading = self.loader.execute(candidate)
         if loading.is_failure:
             # Send the exception chain on failure.
