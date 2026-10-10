@@ -14,16 +14,16 @@ from typing import cast
 from artifcat import ValidationResult
 from assurance import TokenEnvelopeConsumer
 from domain import (
-    KingReadiness, KingToken, KingTokenBlueprint,
-    Token, TokenDeployment
+    Alert, KingReadiness, KingToken, KingTokenBlueprint, Square, ThreatLevel
 )
 from err import (
     KingReadinessNullException, KingTokenEnvelopeConsumerException,
-    RootTokenEnvelopeNullException, TokenCarrierEmptyException,
-    TokenConsistencyException, TokenEnvelopeRouterException, TokenNullException
+    RootTokenEnvelopeNullException, ThreatLevelNullException, TokenCarrierEmptyException,
+    TokenEnvelopeRouterException
 )
-from transit import KingTokenCarrier, RootTokenEnvelope
-from util import LoggingLevelRouter
+from exchange import AlertValidationRequest, SquareValidationRequest
+from transit import AlertCarrier, KingTokenCarrier, RootTokenEnvelope, SquareCarrier
+from util import IdFactory, LoggingLevelRouter
 
 
 class KingTokenEnvelopeConsumer(
@@ -133,31 +133,13 @@ class KingTokenEnvelopeConsumer(
                     ),
                 )
             )
-        # --- START_KING_TOKEN_READINESS_VALIDATION_PROCESS ---#
-        # Handle the case that the readiness is flagged.
-        readiness_validation = self._toolkit.priming_validator.execute(
-            candidate=blueprint.readiness,
-            target_model=KingReadiness,
-            null_exception=KingReadinessNullException(),
-        )
-        if readiness_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                KingTokenEnvelopeConsumerException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=KingTokenEnvelopeConsumerException.MSG,
-                    err_code=KingTokenEnvelopeConsumerException.ERR_CODE,
-                    ex=readiness_validation.exception,
-                )
-            )
         # --- START_THE_THREAT_LEVEL_VALIDATION_PROCESS ---#
-        # Handle the case that the readiness is flagged.
         threat_level_validation = self._toolkit.priming_validator.execute(
             candidate=blueprint.threat_level,
-            target_model=KingReadiness,
+            target_model=ThreatLevel,
             null_exception=ThreatLevelNullException(),
         )
+        # Handle the case that the threat_level is flagged.
         if threat_level_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
@@ -169,17 +151,54 @@ class KingTokenEnvelopeConsumer(
                     ex=threat_level_validation.exception,
                 )
             )
-        # --- START_THE_ALERT_VALIDATION_PROCESS ---#
-        alert_validation =
-        captor = blueprint.captor
-        if blueprint.captor is not None:
-            # Handle the case that the not-null captor is flagged
-            captor_validation = self.toolkit.priming_validator.execute(
-                candidate=captor,
-                target_model=Token,
-                null_exception=TokenNullException(),
+        # --- START_KING_TOKEN_READINESS_VALIDATION_PROCESS ---#
+        readiness_validation = self._toolkit.priming_validator.execute(
+            candidate=blueprint.readiness,
+            target_model=KingReadiness,
+            null_exception=KingReadinessNullException(),
+        )
+        # Handle the case that the readiness is flagged.
+        if readiness_validation.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                KingTokenEnvelopeConsumerException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=KingTokenEnvelopeConsumerException.MSG,
+                    err_code=KingTokenEnvelopeConsumerException.ERR_CODE,
+                    ex=readiness_validation.exception,
+                )
             )
-            if captor_validation.is_failure:
+        # --- START_THE_ALERT_VALIDATION_PROCESS ---#
+        alert_validation = self.toolkit.wrapper.alert.extract_model(
+            request=AlertValidationRequest(
+                item=AlertCarrier(model=blueprint.alert),
+                id=IdFactory.next_id(class_name="AlertValidationRequest")
+            )
+        )
+        # Handle the case that the readiness is flagged.
+        if alert_validation.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                KingTokenEnvelopeConsumerException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=KingTokenEnvelopeConsumerException.MSG,
+                    err_code=KingTokenEnvelopeConsumerException.ERR_CODE,
+                    ex=alert_validation.exception,
+                )
+            )
+        # --- START_THE_POTENTAIL_DESTINATION_VALIDATION_PROCESS ---#
+        potential_destination = blueprint.potential_destination
+        if potential_destination is not None:
+            potential_destination_validation = self.toolkit.wrapper.square.extract_model(
+                request=SquareValidationRequest(
+                    item=SquareCarrier(model=blueprint.potential_destination),
+                    id=IdFactory.next_id(class_name="SquareValidationRequest")
+                )
+            )
+            # Handle the case that the readiness is flagged.
+            if potential_destination_validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
                     KingTokenEnvelopeConsumerException(
@@ -187,30 +206,14 @@ class KingTokenEnvelopeConsumer(
                         cls_name=self.__class__.__name__,
                         msg=KingTokenEnvelopeConsumerException.MSG,
                         err_code=KingTokenEnvelopeConsumerException.ERR_CODE,
-                        ex=captor_validation.exception,
+                        ex=potential_destination_validation.exception,
                     )
                 )
-            # Otherwise update captor_placeholder
-            captor = cast(Token, captor_validation.payload)
-            if safe.team == captor.team:
-                # Send the exception chain on failure.
-                return ValidationResult.failure(
-                    KingTokenEnvelopeConsumerException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=KingTokenEnvelopeConsumerException.MSG,
-                        err_code=KingTokenEnvelopeConsumerException.ERR_CODE,
-                        ex=TokenConsistencyException(
-                            cls_mthd=method,
-                            cls_name=self.__class__.__name__,
-                            msg=TokenConsistencyException.MSG,
-                            err_code=TokenConsistencyException.ERR_CODE,
-                        ),
-                    )
-                )
-
+            potential_destination = cast(Square, potential_destination_validation.payload)
         # --- Extract validation payloads. ---#
+        alert = cast(Alert, alert_validation.payload)
         readiness = cast(KingReadiness, readiness_validation.payload)
+        threat_level = cast(ThreatLevel, threat_level_validation.payload)
         
         # --- Forward the appropriate work product to the caller. ---#
         # The client wants a safe KingToken.
@@ -221,11 +224,12 @@ class KingTokenEnvelopeConsumer(
                 footstep=safe.footstep,
                 formation=safe.formation,
                 home_square=safe.home_square,
+                alert=alert,
             )
-            model.captor = captor
             model.readiness = readiness
-            if safe.deployment == TokenDeployment.DEPLOYED_TO_HOME_SQUARE:
-                model.mark_as_deployed()
+            model.threat_level = threat_level
+            model.deployment = safe.deployment
+            model.potential_destination = potential_destination
             carrier = KingTokenCarrier(model=model)
             return ValidationResult.success(carrier)        
         # Otherwise, the client is a VectorBuilder that needs a Blueprint.
@@ -237,8 +241,10 @@ class KingTokenEnvelopeConsumer(
                 formation=safe.formation,
                 home_square=safe.home_square,
                 deployment=safe.deployment,
-                captor=captor,
+                potential_destination=potential_destination,
+                threat_level=threat_level,
                 readiness=readiness,
+                alert=alert,
             )
         )
         return ValidationResult.success(carrier)

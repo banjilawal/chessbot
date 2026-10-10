@@ -28,7 +28,7 @@ class HomeSquareClaimReport(Report):
         
     Attributes:
         claimant: Token
-        home_square: OpeningSquare
+        home_square: HomeSquare
         
         token_has_claimed_square: bool
         square_claimed_by_other_token

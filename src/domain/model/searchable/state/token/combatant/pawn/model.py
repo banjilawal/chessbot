@@ -59,7 +59,7 @@ class PawnToken(CombatantToken):
             id: int
             team: Team
             formation: Formation
-            home_square: OpeningSquare
+            home_square: HomeSquare
             footstep: Optional[Footstep]
         """
         super().__init__(

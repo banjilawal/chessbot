@@ -16,4 +16,4 @@ version: 1.0.0
 from .board import SquareVisitorBoardException
 from .disabled import SquareVisitorDisabledException
 from .occupied import SquareOccupiedException
-from .opening import WrongOpeningSquareException
+from .opening import WrongHomeSquareException

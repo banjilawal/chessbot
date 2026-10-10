@@ -19,7 +19,8 @@ from domain import (
 )
 from err import (
     FormationNullException, TokenCarrierEmptyException,
-    TokenDeploymentNullException, TokenEnvelopeProducerException
+    TokenConsistencyException, TokenDeploymentConsistencyException, TokenDeploymentNullException,
+    TokenEnvelopeProducerException
 )
 from exchange import FootstepValidationRequest, TeamValidationRequest
 from transit import FootstepCarrier, RootTokenEnvelope, TeamCarrier
@@ -192,6 +193,23 @@ class TokenEnvelopeProducer(RootEnvelopeProducer[Token]):
                     msg=TokenEnvelopeProducerException.MSG,
                     err_code=TokenEnvelopeProducerException.ERR_CODE,
                     ex=deployment_validation.exception,
+                )
+            )
+        # Handle the case that there is a deployment inconsistency.
+        if blueprint.has_deployment_inconsistency:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenEnvelopeProducerException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenEnvelopeProducerException.MSG,
+                    err_code=TokenEnvelopeProducerException.ERR_CODE,
+                    ex=TokenDeploymentConsistencyException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=TokenDeploymentConsistencyException.MSG,
+                        err_code=TokenDeploymentConsistencyException.ERR_CODE,
+                    ),
                 )
             )
         # --- PROCESS_THE_FORMATION_ATTRIBUTE ---#

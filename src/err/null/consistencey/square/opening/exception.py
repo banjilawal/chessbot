@@ -16,17 +16,17 @@ from err import SquareException
 
 __all__ = [
     # ======================# OPENING_CONSISTENCY_CHECKER_NULL_ERROR #======================#
-    "OpeningSquareConsistencyCheckerNullException",
+    "HomeSquareConsistencyCheckerNullException",
 ]
 
 # ======================# OPENING_CONSISTENCY_CHECKER_NULL_ERROR #======================#
-class OpeningSquareConsistencyCheckerNullException(SquareException):
+class HomeSquareConsistencyCheckerNullException(SquareException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an OpeningSquareConsistencyChecker is null.
+        1.  Indicating an HomeSquareConsistencyChecker is null.
 
     Attributes:
         msg: Optional[str]

@@ -17,11 +17,11 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# HOME_SQUARE_COLLISION_ERROR #======================#
-    "OpeningSquareCollisionException",
+    "HomeSquareCollisionException",
 ]
 
 # ======================# HOME_SQUARE_COLLISION_ERROR #======================#
-class OpeningSquareCollisionException(TokenCollisionException):
+class HomeSquareCollisionException(TokenCollisionException):
     """
     Role:
         - Error Tracing

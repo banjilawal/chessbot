@@ -207,8 +207,7 @@ class CombatantTokenEnvelopeConsumer(
             # Update the mutatable fields.
             model.captor = captor
             model.readiness = readiness
-            if safe.deployment == TokenDeployment.DEPLOYED_TO_HOME_SQUARE:
-                model.mark_as_deployed()
+            model.deployment = safe.Deployment
             carrier = CombatantTokenCarrier(model=model)
             return ValidationResult.success(carrier)        
         # Otherwise, the client is a VectorBuilder that needs a Blueprint.

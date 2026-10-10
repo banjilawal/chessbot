@@ -14,5 +14,5 @@ version: 1.0.0
 
 # Modules
 from .id import TokenIdCollisionException
-from .square import TokenOpeningSquareCollisionException
+from .square import TokenHomeSquareCollisionException
 from .designation import TokenDesignationCollisionException

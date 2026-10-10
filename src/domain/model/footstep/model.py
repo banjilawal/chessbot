@@ -62,8 +62,12 @@ class Footstep(Model):
         return len([self._position, self._previous_position])
     
     @property
-    def is_full(self) -> bool:
+    def is_completed(self) -> bool:
         return self.size == 2
+    
+    @property
+    def is_not_completed(self) -> bool:
+        return not self.is_completed
     
     @property
     def is_not_consistent(self) -> bool:

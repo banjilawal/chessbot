@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .report import  OpeningSquareAvailabilityReport
+from .report import  HomeSquareAvailabilityReport

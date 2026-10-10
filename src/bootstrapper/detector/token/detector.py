@@ -77,7 +77,7 @@ class TokenCollisionDetectorBootstrapper(Detector[Token]):
         Raises:
             TokenIdCollisionException
             TokenDesignationCollisionException
-            TokenOpeningSquareCollisionException
+            TokenHomeSquareCollisionException
             TokenCollisionDetectionException
         """
         method = f"{self.__class__.__name__}.execute"

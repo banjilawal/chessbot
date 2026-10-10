@@ -28,11 +28,10 @@ class Token(StateModel):
     Attributes:
         id: int
         team: Team
+        footstep: Footstep
         formation: Formation
+        home_square: HomeSquare
         deployment: TokenDeployment
-        home_square: OpeningSquare
-        position: Optional[Coord]
-        previous_position: Optional[Coord]
         
         is_ready: bool
         is_not_ready: bool
@@ -47,10 +46,11 @@ class Token(StateModel):
     """
     _id: int
     _team: Team
+    _footstep: Footstep
     _formation: Formation
     _home_square: HomeSquare
     _deployment: TokenDeployment
-    _footstep: Footstep
+
 
     def __init__(
             self,
@@ -65,7 +65,7 @@ class Token(StateModel):
             id: int
             team: Team
             formation: Formation
-            home_square: OpeningSquare
+            home_square: HomeSquare
             footstep: Optional[Footstep]
         """
         super().__init__(id=id)
@@ -103,8 +103,9 @@ class Token(StateModel):
     def deployment(self) -> TokenDeployment:
         return self._deployment
     
-    def mark_as_deployed(self):
-        self._deployment = TokenDeployment.DEPLOYED_TO_HOME_SQUARE
+    @deployment.setter
+    def deployment(self, other: TokenDeployment):
+        self._deployment = other
         
     @property
     def footstep(self) -> Footstep:
@@ -140,6 +141,26 @@ class Token(StateModel):
     
     def is_enemy(self, token: Token) -> bool:
         return not self.is_friend(token)
+    
+    @property
+    def deployment_consistency_exists(self) -> bool:
+        if self._footstep.is_not_consistent:
+            return False
+        if (
+                self._footstep.position_does_not_exist and
+                self._deployment == TokenDeployment.DEPLOYED_TO_HOME_SQUARE
+        ):
+            return False
+        if (
+            self._footstep.position_exists and
+            self._deployment == TokenDeployment.NOT_DEPLOYED
+        ):
+            return False
+        return True
+    
+    @property
+    def has_deployment_inconsistency(self) -> bool:
+        return not self.deployment_consistency_exists
     
     @property
     @abstractmethod

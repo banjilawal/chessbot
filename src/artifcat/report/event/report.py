@@ -28,7 +28,7 @@ class EventTransitionReport(Report):
         
     Attributes:
         eventant: Token
-        home_square: OpeningSquare
+        home_square: HomeSquare
         
         token_has_evented_square: bool
         square_evented_by_other_token

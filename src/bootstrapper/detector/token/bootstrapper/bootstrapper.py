@@ -77,7 +77,7 @@ class TokenCollisionBootstrapper:
         Raises:
             TokenIdCollisionException
             TokenDesignationCollisionException
-            TokenOpeningSquareCollisionException
+            TokenHomeSquareCollisionException
             TokenCollisionDetectionException
         """
         method = f"{cls.__class__.__name__}.execute"

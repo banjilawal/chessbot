@@ -13,7 +13,7 @@ from typing import Optional
 
 from domain.metadata.blueprint import TokenBlueprint
 from err import (
-    OpeningSquareCollisionException,TokenIdCollisionException, TokenNameCollisionException
+    HomeSquareCollisionException,TokenIdCollisionException, TokenNameCollisionException
 )
 from artifcat.report import CollisionReport
 from artifcat import AnalysisResult
@@ -70,7 +70,7 @@ class TokenCollider:
         Raises:
             TokenIdCollisionException
             TokenDesignationCollisionException
-            TokenOpeningSquareCollisionException
+            TokenHomeSquareCollisionException
             TokenCollisionDetectionException
         """
         method = f"{self.__class__.__name__}.execute"
@@ -120,11 +120,11 @@ class TokenCollider:
                         target_set=target,
                         colliding_variable="home_square",
                         collision_value=item.home_square,
-                        exception=OpeningSquareCollisionException(
+                        exception=HomeSquareCollisionException(
                             cls_mthd=method,
                             cls_name=cls.__name__,
-                            msg=OpeningSquareCollisionException.MSG,
-                            err_code=OpeningSquareCollisionException.ERR_CODE,
+                            msg=HomeSquareCollisionException.MSG,
+                            err_code=HomeSquareCollisionException.ERR_CODE,
                         )
                     )
                 )

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from logic.square.database.kernel.operation.execute import ExecutementSquareDiscoveryException
 
-from logic.square.database.kernel.operation.formation.discovery.exception.work import OpeningSquareDiscoveryException
+from logic.square.database.kernel.operation.formation.discovery.exception.work import HomeSquareDiscoveryException
 from system import InsertionResult, LoggingLevelRouter, SearchResult, ValidationResult
 from logic.square import (
     SquareContext, SquareStackCapacityFullException, Square, SquareStackExecuteException, SquareStackService, SquareStackState
@@ -19,7 +19,7 @@ from logic.square import (
 from domain.model.searchable.state import Token, TokenService
 
 
-class OpeningSquareLocator(Worker):
+class HomeSquareLocator(Worker):
     """
     Role:
         - Transaction Worker
@@ -76,24 +76,24 @@ class OpeningSquareLocator(Worker):
         if token_validation_result.is_failure:
             # Return the exception chain on failure
             return SearchResult.failure(
-                OpeningSquareDiscoveryException(
+                HomeSquareDiscoveryException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    op=OpeningSquareDiscoveryException.OP,
-                    msg=OpeningSquareDiscoveryException.MSG,
-                    err_code=OpeningSquareDiscoveryException.ERR_CODE,
-                    mthd_rslt_type=OpeningSquareDiscoveryException.MTHD_RSLT,
+                    op=HomeSquareDiscoveryException.OP,
+                    msg=HomeSquareDiscoveryException.MSG,
+                    err_code=HomeSquareDiscoveryException.ERR_CODE,
+                    mthd_rslt_type=HomeSquareDiscoveryException.MTHD_RSLT,
                     ex=token_validation_result.exception)
             )
         # Handle the case that the token has been deployed.
         if token.is_deployed:
-            OpeningSquareDiscoveryException(
+            HomeSquareDiscoveryException(
                 cls_mthd=method,
                 cls_name=cls.__name__,
-                op=OpeningSquareDiscoveryException.OP,
-                msg=OpeningSquareDiscoveryException.MSG,
-                err_code=OpeningSquareDiscoveryException.ERR_CODE,
-                mthd_rslt_type=OpeningSquareDiscoveryException.MTHD_RSLT,
+                op=HomeSquareDiscoveryException.OP,
+                msg=HomeSquareDiscoveryException.MSG,
+                err_code=HomeSquareDiscoveryException.ERR_CODE,
+                mthd_rslt_type=HomeSquareDiscoveryException.MTHD_RSLT,
                 ex=token_validation_result.exception
             )
         )

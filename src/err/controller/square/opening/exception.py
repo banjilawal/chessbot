@@ -16,17 +16,17 @@ from err import SquareException
 
 __all__ = [
     # ======================# OPENING_ERROR #======================#
-    "OpeningSquareException",
+    "HomeSquareException",
 ]
 
 # ======================# OPENING_ERROR #======================#
-class OpeningSquareException(SquareException):
+class HomeSquareException(SquareException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an OpeningSquare encountered an error.
+        1.  Indicating an HomeSquare encountered an error.
 
     Attributes:
         msg: Optional[str]

@@ -12,7 +12,7 @@ from __future__ import annotations
 from sensor.analyzer import Rank
 
 
-class OpeningSquareAvailabilityReport:
+class HomeSquareAvailabilityReport:
     """
      Role:
          - Data Report

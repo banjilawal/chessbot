@@ -14,7 +14,7 @@ from typing import Optional, Type, cast
 
 from domain import (
     Alert, Footstep, KingReadiness, KingToken, Formation, HomeSquare,
-    Team, ThreatLevel, TokenBlueprint, TokenDeployment
+    Square, Team, ThreatLevel, TokenBlueprint, TokenDeployment
 )
 from err import KingTokenNullException
 
@@ -31,6 +31,7 @@ class KingTokenBlueprint(TokenBlueprint[KingToken]):
         alert: Alert
         readiness: KingReadiness
         threat_level: ThreatLevel
+        potential_destination: Optional[Square]
 
         domain_class: Type[KingToken]
         domain_null_exception: KingTokenNullException
@@ -43,6 +44,7 @@ class KingTokenBlueprint(TokenBlueprint[KingToken]):
     _alert: Alert
     _readiness: KingReadiness
     _threat_level: ThreatLevel
+    _potential_destination: Optional[Square]
 
     def __init__(
             self,
@@ -53,6 +55,7 @@ class KingTokenBlueprint(TokenBlueprint[KingToken]):
             deployment: Optional[TokenDeployment] | None = None,
             readiness: Optional[KingReadiness] | None = None,
             threat_level: Optional[ThreatLevel] | None = None,
+            potential_destination: Optional[Square] | None = None,
             alert: Optional[Alert] | None = None,
             domain_class: Optional[Type[KingToken]] | None = None,
             domain_null_exception: Optional[KingTokenNullException] | None = None,
@@ -67,6 +70,7 @@ class KingTokenBlueprint(TokenBlueprint[KingToken]):
             deployment: Optional[TokenDeployment]
             readiness: Optional[KingReadiness]
             threat_level: Optional[ThreatLevel]
+            potential_destination: Optional[Square]
             alert: Optional[Alert]
             domain_class: Optional[Type[KingToken]]
             domain_null_exception: Optional[KingTokenNullException]
@@ -83,6 +87,7 @@ class KingTokenBlueprint(TokenBlueprint[KingToken]):
             domain_null_exception=domain_null_exception or KingTokenNullException(),
         )
         self._alert = alert or Alert()
+        self._potential_destination = potential_destination
         self._threat_level = threat_level or ThreatLevel.LOW
         self._readiness = readiness or KingReadiness.NOT_READY
         
@@ -97,6 +102,10 @@ class KingTokenBlueprint(TokenBlueprint[KingToken]):
     @property
     def threat_level(self) -> ThreatLevel:
         return self._threat_level
+    
+    @property
+    def potential_destination(self) -> Optional[Square]:
+        return self._potential_destination
     
     @property
     def domain_class(self) -> Type[KingToken]:

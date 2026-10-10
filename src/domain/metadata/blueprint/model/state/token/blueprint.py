@@ -106,16 +106,24 @@ class TokenBlueprint(StateModelBlueprint[T], Generic[T]):
         return self._footstep
     
     @property
-    def is_pawn_token_blueprint(self) -> bool:
-        return isinstance(self, PawnTokenBlueprint)
+    def deployment_consistency_exists(self) -> bool:
+        if self._footstep.is_not_consistent:
+            return False
+        if (
+                self._footstep.position_does_not_exist and
+                self._deployment == TokenDeployment.DEPLOYED_TO_HOME_SQUARE
+        ):
+            return False
+        if (
+                self._footstep.position_exists and
+                self._deployment == TokenDeployment.NOT_DEPLOYED
+        ):
+            return False
+        return True
     
     @property
-    def is_combatant_token_blueprint(self) -> bool:
-        return isinstance(self, CombatantTokenBlueprint)
-    
-    @property
-    def is_king_token_blueprint(self) -> bool:
-        return isinstance(self, KingTokenBlueprint)
+    def has_deployment_inconsistency(self) -> bool:
+        return not self.deployment_consistency_exists
     
     @property
     def domain_class(self) -> Type[T]:

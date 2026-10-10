@@ -13,7 +13,7 @@ from copy import deepcopy
 
 from logic.square import (
     Square, SquareEntryException, SquareOccupiedException, SquareState, SquareValidator, SquareVisitorBoardException,
-    SquareVisitorDisabledException, WrongOpeningSquareException
+    SquareVisitorDisabledException, WrongHomeSquareException
 )
 from util import LoggingLevelRouter, UpdateResult
 from exchange.model.state.token import Token, DeploymentState, TokenFreedomAnalyzer
@@ -331,7 +331,7 @@ class SquareEntry:
             ValidationResult[Square]
         Raises:
             SquareEntryException
-            WrongOpeningSquareException
+            WrongHomeSquareException
         """
         method = f"{cls.__name__}_run_deployment_tests"
         
@@ -350,9 +350,9 @@ class SquareEntry:
                     msg=SquareEntryException.MSG,
                     err_code=SquareEntryException.ERR_CODE,
                     mthd_rslt_type=SquareEntryException.MTHD_RSLT,
-                    ex=WrongOpeningSquareException(
-                        msg=WrongOpeningSquareException.MSG,
-                        err_code=WrongOpeningSquareException.ERR_CODE
+                    ex=WrongHomeSquareException(
+                        msg=WrongHomeSquareException.MSG,
+                        err_code=WrongHomeSquareException.ERR_CODE
                     )
                 )
             )

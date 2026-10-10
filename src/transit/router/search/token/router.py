@@ -193,7 +193,7 @@ class TokenSearchRouter(SearchRouter[Token]):
         Search the schema by a opening square's schema'
 
         Args:
-            home_square: OpeningSquare
+            home_square: HomeSquare
             items: List[Token]
         Returns:
             SearchResult[List[Token]]

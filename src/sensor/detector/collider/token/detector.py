@@ -65,7 +65,7 @@ class TokenCollider(Collider[TokenCarrier]):
         Raises:
             TokenIdCollisionException
             TokenDesignationCollisionException
-            TokenOpeningSquareCollisionException
+            TokenHomeSquareCollisionException
             TokenCollisionDetectionException
         """
         method = f"{self.__class__.__name__}.execute"
@@ -110,11 +110,11 @@ class TokenCollider(Collider[TokenCarrier]):
                     target_set=attractor,
                     colliding_variable="home_square",
                     collision_value=item.home_square,
-                    exception=OpeningSquareCollisionException(
+                    exception=HomeSquareCollisionException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=OpeningSquareCollisionException.MSG,
-                        err_code=OpeningSquareCollisionException.ERR_CODE,
+                        msg=HomeSquareCollisionException.MSG,
+                        err_code=HomeSquareCollisionException.ERR_CODE,
                     )
                 )
         # --- Send the no collisions detected report. ---#

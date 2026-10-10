@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from artifcat.report.square.report import OpeningSquareAvailabilityReport
+from artifcat.report.square.report import HomeSquareAvailabilityReport
 from system import ComputationResult, LoggingLevelRouter
 from logic.square import SquareStackService
 
@@ -37,7 +37,7 @@ class SquareStackCapacityAnalyst:
  
     @classmethod
     @LoggingLevelRouter.monitor
-    def execute(cls,  square_stack: SquareStackService, ) -> OpeningSquareAvailabilityReport:
+    def execute(cls,  square_stack: SquareStackService, ) -> HomeSquareAvailabilityReport:
         """
         Create a SquareStackCapacityReport.
         
@@ -86,7 +86,7 @@ class SquareStackCapacityAnalyst:
             )
         # --- Send the work product. ---#
         return ComputationResult.success(
-            OpeningSquareAvailabilityReport(
+            HomeSquareAvailabilityReport(
                 rank=rank,
                 number_of_openings=rank.magnitude.quota - len(rank_search_result.payload),
             )

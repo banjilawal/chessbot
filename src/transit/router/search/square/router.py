@@ -220,7 +220,7 @@ class SquareSearchRouter(SearchRouter[Square]):
                 formation: Formation
         ) -> SearchResult[List[HomeSquare]]:
             """
-            Find OpeningSquare instances which match the formation. There should only be one.
+            Find HomeSquare instances which match the formation. There should only be one.
             """
             matches = [
                 square for square in dataset if (

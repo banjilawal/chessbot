@@ -13,14 +13,14 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# WRONG_HOME_SQUARE_EXCEPTION #======================#
-    "WrongOpeningSquareException",
+    "WrongHomeSquareException",
 ]
 
 from logic.square import SquareDebugException
 
 
 # ======================# WRONG_HOME_SQUARE_EXCEPTION #======================#
-class WrongOpeningSquareException(SquareDebugException):
+class WrongHomeSquareException(SquareDebugException):
     """
     Role:
         - Error Variable Identifier

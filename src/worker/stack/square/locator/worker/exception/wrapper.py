@@ -20,7 +20,7 @@ from system import SearchException
 
 
 # ======================# HOME_SQUARE_DISCOVERY_EXCEPTION #======================#
-class OpeningSquareDiscoveryException(SearchException):
+class HomeSquareDiscoveryException(SearchException):
     """
      Role:
         - Worker Method Identification
@@ -47,7 +47,7 @@ class OpeningSquareDiscoveryException(SearchException):
     OP = "Search"
     MTHD_RSLT = "SearchResult"
     ERR_CODE = "HOME_SQUARE_DISCOVERY_EXCEPTION"
-    MSG = "OpeningSquareSearch failure"
+    MSG = "HomeSquareSearch failure"
     
     def __init__(
             self,
