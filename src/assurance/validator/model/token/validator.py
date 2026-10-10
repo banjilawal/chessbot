@@ -9,19 +9,17 @@ version: 1.0.2
 
 from __future__ import annotations
 
-from typing import Any, Dict, Optional, cast
+from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    TokenProductEnvelope, RootTokenEnvelopeProducer, ModelValidator, FootstepValidator,
-    TokenValidationRouter,
-    TokenValidatorToolkit
+    TokenEnvelopeProducer, TokenEnvelopeRouter, TokenLoader,
+    TokenValidatorToolkit, ModelValidator
 )
-from domain import Coord, Formation, HomeSquare, Token, TokenBlueprint, TokenDeployment, TokenPrimeExtract
-from err import FormationNullException, TokenDeploymentNullException, TokenValidatorException
-from exchange import TeamValidationRequest
-from transit import TeamCarrier, TokenCarrier
-from util import IdFactory, LoggingLevelRouter
+from domain import Token
+from err import TokenValidatorException
+from transit import TokenCarrier, RootTokenEnvelope
+from util import LoggingLevelRouter
 
 
 class TokenValidator(ModelValidator[Token]):
@@ -34,8 +32,8 @@ class TokenValidator(ModelValidator[Token]):
 
     Attributes:
         loader: TokenValidatorToolkit
-        validation_router: TokenValidationRouter
-        property_table_generator: TokenProductEnvelopeGenerator
+        envelope_producer: TokenEnvelopeRouter
+        property_table_generator: RootTokenEnvelopeGenerator
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[TokenCarrier]:
@@ -43,32 +41,32 @@ class TokenValidator(ModelValidator[Token]):
     Super Class:
         ModelValidator
     """
-    _validation_router: TokenValidationRouter
-    _property_table_generator: RootTokenEnvelopeProducer
+    _envelope_validator: TokenEnvelopeRouter
+    _envelope_producer: TokenEnvelopeProducer
     
     def __init__(
             self,
-            loader: Optional[TokenValidatorToolkit] | None = None,
-            validation_router: Optional[TokenValidationRouter] | None = None,
-            property_table_generator: Optional[RootTokenEnvelopeProducer]
-                                      | None = None,
+            loader: Optional[TokenLoader] | None = None,
+            envelope_producer: Optional[TokenEnvelopeProducer] | None = None,
+            envelope_validator: Optional[TokenEnvelopeRouter] | None = None,
     ):
         """
         Args:
-            loader: Optional[TokenValidatorToolkit]
-            validation_router: Optional[TokenValidationRouter]
-            property_table_generator: Optional[TokenProductEnvelopeGenerator]
+            loader: Optional[TokenLoader]
+            envelope_producer: Optional[TokenEnvelopeProducer]
+            envelope_validator: Optional[TokenEnvelopeRouter] 
         """
-        super().__init__(toolkit=toolkit or TokenValidatorToolkit())
-        self._validation_router = validation_router or TokenValidationRouter()
-        self._property_table_generator = (
-                property_table_generator or
-                RootTokenEnvelopeProducer()
-        )
+        super().__init__(loader=loader or TokenLoader())
+        self._envelope_producer = envelope_producer or TokenEnvelopeProducer()
+        self._envelope_validator = envelope_validator or TokenEnvelopeRouter()
+    
+    @property
+    def loader(self) -> TokenLoader:
+        return cast(TokenLoader, super().loader)
     
     @property
     def toolkit(self) -> TokenValidatorToolkit:
-        return cast(TokenValidatorToolkit, super().toolkit)
+        return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
     def execute(
@@ -82,8 +80,8 @@ class TokenValidator(ModelValidator[Token]):
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
                     -   The Loader fails.
-                    -   Team, Formation, Deployment, id, or HomeSquare are flagged.
-                    -   The validation_router does not return a product
+                    -   Team, Formation, Deployment, id, or HomeToken are flagged.
+                    -   The envelope_producer does not return a product
             2.  Otherwise, send a TokenCarrier in the success result.
         Args:
             candidate: Any
@@ -94,95 +92,30 @@ class TokenValidator(ModelValidator[Token]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the blueprint cannot be extracted.
-        table_generation_result = self._property_table_generator.execute(candidate=candidate)
-        if table_generation_result.is_failure:
-            # Send the exception chain on failure.
+        product = self._envelope_producer.execute(candidate=candidate)
+        if product.is_failure:
             return ValidationResult.failure(
                 TokenValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=TokenValidatorException.MSG,
                     err_code=TokenValidatorException.ERR_CODE,
-                    ex=table_generation_result.exception,
+                    ex=product.exception,
                 )
             )
-        common_property_table = cast(
-            TokenProductEnvelope,
-            table_generation_result.payload,
-        )
-        router_result = self._validation_router.execute()
+        envelope = cast(RootTokenEnvelope, product.payload)
         
-        # --- Extract common Token validation payloads. ---#
-        id = cast(int, id_validation.payload)
-        team = cast(Team, team_validation.payload)
-        home_square = cast(HomeSquare, home_detection.payload)
-        formation = cast(Formation, formation_validation.payload)
-        deployment = cast(TokenDeployment, deployment_validation.payload)
-        position = position_log["position".upper()]
-        
-        # Handle the case that the router did not send a safe Token.
-        router_result = self._validation_router.execute(
-            id=id,
-            team=team,
-            formation=formation,
-            deployment=deployment,
-            home_square=home_square,
-            position=position,
-            previous_position,
-            prime_extract=prime_extract,
-        )
-        if router_result.is_failure:
-            # Send the exception chain on failure.
+        validation = self._envelope_validator.execute(envelope=envelope)
+        if validation.is_failure:
             return ValidationResult.failure(
                 TokenValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=TokenValidatorException.MSG,
                     err_code=TokenValidatorException.ERR_CODE,
-                    ex=router_result.exception,
+                    ex=validation.exception,
                 )
             )
-        # --- Send the work product. ---#
-        safe_carrier = cast(TokenCarrier, router_result.payload)
-        return ValidationResult.success(safe_carrier)
-    
-    @LoggingLevelRouter.monitor
-    def _position_validator(self, position_candidate: Any) -> ValidationResult[Coord]:
-        """
-        Assure a not-null position is a safe Coord.
-
-        Action:
-            1.  Send an exception chain in the ValidationResult if the
-                candidate is flagged.
-            2.  Otherwise, send a Coord in the success result.
-        Args:
-            position_candidate: Any
-        Returns:
-            ValidationResult[Coord]
-        Raises:
-            TokenValidatorException
-        """
-        method = f"{self.__class__.__name__}._position_validator"
-        
-        result = self.toolkit.wrapper.coord.extract_model(
-            request=CoordValidationRequest(
-                item=CoordCarrier(model=position_candidate),
-                id=IdFactory.next_id(class_name="CoordValidationRequest"),
-            )
-        )
-        if result.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                TokenValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=TokenValidatorException.MSG,
-                    err_code=TokenValidatorException.ERR_CODE,
-                    ex=result.exception,
-                )
-            )
-        # --- Send the work product. ---#
-        coord = cast(Coord, result.payload)
-        return ValidationResult.success(coord)
+        carrier = cast(TokenCarrier, validation.payload)
+        return ValidationResult.success(carrier)
     
