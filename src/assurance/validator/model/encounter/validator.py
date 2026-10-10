@@ -9,20 +9,17 @@ version: 1.0.2
 
 from __future__ import annotations
 
-from typing import Any, Dict, Optional, cast
+from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    RootEncounterEnvelope, RootEncounterEnvelopeGenerator, ModelValidator,
-    EncounterPositionTableGenerator,
-    EncounterValidationRouter,
-    EncounterValidatorToolkit, EncounterEnvelopeProducer
+    EncounterEnvelopeProducer, EncounterEnvelopeRouter, EncounterLoader,
+    EncounterValidatorToolkit, ModelValidator
 )
-from domain import Coord, Formation, HomeSquare, Encounter, EncounterBlueprint, EncounterDeployment, EncounterPrimeExtract
-from err import FormationNullException, EncounterDeploymentNullException, EncounterValidatorException
-from exchange import TeamValidationRequest
-from transit import RootEncounterEnvelope, TeamCarrier, EncounterCarrier
-from util import IdFactory, LoggingLevelRouter
+from domain import Encounter
+from err import EncounterValidatorException
+from transit import EncounterCarrier, RootEncounterEnvelope
+from util import LoggingLevelRouter
 
 
 class EncounterValidator(ModelValidator[Encounter]):
@@ -35,7 +32,7 @@ class EncounterValidator(ModelValidator[Encounter]):
 
     Attributes:
         loader: EncounterValidatorToolkit
-        validation_router: EncounterValidationRouter
+        envelope_producer: EncounterEnvelopeRouter
         property_table_generator: RootEncounterEnvelopeGenerator
 
     Provides:
@@ -44,34 +41,32 @@ class EncounterValidator(ModelValidator[Encounter]):
     Super Class:
         ModelValidator
     """
-    _validation_router: EncounterValidationRouter
-    _root_validator: EncounterEnvelopeProducer
+    _envelope_validator: EncounterEnvelopeRouter
+    _envelope_producer: EncounterEnvelopeProducer
     
     def __init__(
             self,
-            root_validator: Optional[EncounterEnvelopeProducer] | None = None,
-            loader: Optional[EncounterValidatorToolkit] | None = None,
-            validation_router: Optional[EncounterValidationRouter] | None = None,
-            property_table_generator: Optional[RootEncounterEnvelopeGenerator]
-                                      | None = None,
+            loader: Optional[EncounterLoader] | None = None,
+            envelope_producer: Optional[EncounterEnvelopeProducer] | None = None,
+            envelope_validator: Optional[EncounterEnvelopeRouter] | None = None,
     ):
         """
         Args:
-            loader: Optional[EncounterValidatorToolkit]
-            validation_router: Optional[EncounterValidationRouter]
-            property_table_generator: Optional[RootEncounterEnvelopeGenerator]
+            loader: Optional[EncounterLoader]
+            envelope_producer: Optional[EncounterEnvelopeProducer]
+            envelope_validator: Optional[EncounterEnvelopeRouter] 
         """
-        super().__init__(toolkit=toolkit or EncounterValidatorToolkit())
-        self._validation_router = validation_router or EncounterValidationRouter()
-        self._property_table_generator = (
-                property_table_generator or
-                RootEncounterEnvelopeGenerator()
-        )
-        self._root_validator = root_validator
+        super().__init__(loader=loader or EncounterLoader())
+        self._envelope_producer = envelope_producer or EncounterEnvelopeProducer()
+        self._envelope_validator = envelope_validator or EncounterEnvelopeRouter()
+    
+    @property
+    def loader(self) -> EncounterLoader:
+        return cast(EncounterLoader, super().loader)
     
     @property
     def toolkit(self) -> EncounterValidatorToolkit:
-        return cast(EncounterValidatorToolkit, super().toolkit)
+        return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
     def execute(
@@ -85,8 +80,8 @@ class EncounterValidator(ModelValidator[Encounter]):
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
                     -   The Loader fails.
-                    -   Team, Formation, Deployment, id, or HomeSquare are flagged.
-                    -   The validation_router does not return a product
+                    -   Team, Formation, Deployment, id, or HomeEncounter are flagged.
+                    -   The envelope_producer does not return a product
             2.  Otherwise, send a EncounterCarrier in the success result.
         Args:
             candidate: Any
@@ -97,109 +92,30 @@ class EncounterValidator(ModelValidator[Encounter]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        root_validation = self._root_validator.execute(candidate=candidate)
-        if root_validation.is_failure:
-            # Send the exception chain on failure.
+        product = self._envelope_producer.execute(candidate=candidate)
+        if product.is_failure:
             return ValidationResult.failure(
                 EncounterValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=EncounterValidatorException.MSG,
                     err_code=EncounterValidatorException.ERR_CODE,
-                    ex=root_validation.exception,
+                    ex=product.exception,
                 )
             )
-        envelope = cast(RootEncounterEnvelope, root_validation.payload)
-        routing_result = self._validation_router.execute(enveloper=envelope)
-        # Handle the case that the blueprint cannot be extracted.
-        table_generation_result = self._property_table_generator.execute(candidate=candidate)
-        if table_generation_result.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                EncounterValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=EncounterValidatorException.MSG,
-                    err_code=EncounterValidatorException.ERR_CODE,
-                    ex=table_generation_result.exception,
-                )
-            )
-        common_property_table = cast(
-            RootEncounterEnvelope,
-            table_generation_result.payload,
-        )
-        router_result = self._validation_router.execute()
+        envelope = cast(RootEncounterEnvelope, product.payload)
         
-        # --- Extract common Encounter validation payloads. ---#
-        id = cast(int, id_validation.payload)
-        team = cast(Team, team_validation.payload)
-        home_square = cast(HomeSquare, home_detection.payload)
-        formation = cast(Formation, formation_validation.payload)
-        deployment = cast(EncounterDeployment, deployment_validation.payload)
-        position = position_log["position".upper()]
-        
-        # Handle the case that the router did not send a safe Encounter.
-        router_result = self._validation_router.execute(
-            id=id,
-            team=team,
-            formation=formation,
-            deployment=deployment,
-            home_square=home_square,
-            position=position,
-            previous_position,
-            prime_extract=prime_extract,
-        )
-        if router_result.is_failure:
-            # Send the exception chain on failure.
+        validation = self._envelope_validator.execute(envelope=envelope)
+        if validation.is_failure:
             return ValidationResult.failure(
                 EncounterValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=EncounterValidatorException.MSG,
                     err_code=EncounterValidatorException.ERR_CODE,
-                    ex=router_result.exception,
+                    ex=validation.exception,
                 )
             )
-        # --- Send the work product. ---#
-        safe_carrier = cast(EncounterCarrier, router_result.payload)
-        return ValidationResult.success(safe_carrier)
-    
-    @LoggingLevelRouter.monitor
-    def _position_validator(self, position_candidate: Any) -> ValidationResult[Coord]:
-        """
-        Assure a not-null position is a safe Coord.
-
-        Action:
-            1.  Send an exception chain in the ValidationResult if the
-                candidate is flagged.
-            2.  Otherwise, send a Coord in the success result.
-        Args:
-            position_candidate: Any
-        Returns:
-            ValidationResult[Coord]
-        Raises:
-            EncounterValidatorException
-        """
-        method = f"{self.__class__.__name__}._position_validator"
-        
-        result = self.toolkit.wrapper.coord.extract_model(
-            request=CoordValidationRequest(
-                item=CoordCarrier(model=position_candidate),
-                id=IdFactory.next_id(class_name="CoordValidationRequest"),
-            )
-        )
-        if result.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                EncounterValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=EncounterValidatorException.MSG,
-                    err_code=EncounterValidatorException.ERR_CODE,
-                    ex=result.exception,
-                )
-            )
-        # --- Send the work product. ---#
-        coord = cast(Coord, result.payload)
-        return ValidationResult.success(coord)
+        carrier = cast(EncounterCarrier, validation.payload)
+        return ValidationResult.success(carrier)
     
