@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import EmptyRegisterCarrierException
+from err import RegisterCarrierEmptyException
 
 __all__ = [
     # ======================# COORD_REGISTER_CARRIER_EMPTY_ERROR #======================#
-    "EmptyCoordRegisterCarrierException",
+    "CoordRegisterCarrierEmptyException",
 ]
 
 # ======================# COORD_REGISTER_CARRIER_EMPTY_ERROR #======================#
-class EmptyCoordRegisterCarrierException(EmptyRegisterCarrierException):
+class CoordRegisterCarrierEmptyException(RegisterCarrierEmptyException):
     """
     Role:
         - Error Tracing

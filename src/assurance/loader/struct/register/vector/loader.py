@@ -15,7 +15,7 @@ from artifcat import ValidationResult
 from assurance import RegisterLoader, VectorRegisterValidatorToolkit
 from domain import VectorRegister, VectorRegisterPrimeExtract
 from err import (
-    EmptyVectorRegisterCarrierException, VectorRegisterLoaderException,
+    VectorRegisterCarrierEmptyException, VectorRegisterLoaderException,
     VectorRegisterValidationRequestNullException
 )
 from exchange import VectorRegisterValidationRequest
@@ -136,11 +136,11 @@ class VectorRegisterLoader(RegisterLoader[VectorRegister]):
                     cls_name=self.__class__.__name__,
                     msg=VectorRegisterLoaderException.MSG,
                     err_code=VectorRegisterLoaderException.ERR_CODE,
-                    ex=EmptyVectorRegisterCarrierException(
+                    ex=VectorRegisterCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyVectorRegisterCarrierException.MSG,
-                        err_code=EmptyVectorRegisterCarrierException.ERR_CODE,
+                        msg=VectorRegisterCarrierEmptyException.MSG,
+                        err_code=VectorRegisterCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

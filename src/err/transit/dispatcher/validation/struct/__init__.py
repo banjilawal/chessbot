@@ -10,6 +10,7 @@ version: 1.0.0
 # =========== ERR.TRANSIT.DISPATCHER.VALIDATION.STRUCT PACKAGE ===========#
 
 # Packages
+from .binder import *
 from .chart import *
 from .register import *
 

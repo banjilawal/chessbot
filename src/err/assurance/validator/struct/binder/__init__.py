@@ -10,8 +10,8 @@ version: 0.0.2
 # ============ ERR.ASSURANCE.VALIDATOR.STRUCT.BINDER PACKAGE ===========#
 
 # Packages
-from .arena import *
-from .board import *
+from .player import *
+from .team import *
 
 # Modules
 from .exception import BinderValidatorException

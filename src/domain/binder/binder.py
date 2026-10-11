@@ -1,7 +1,7 @@
-# src/domain/binder/binder.py
+# src/domain/struct/binder/binder.py
 
 """
-Module: domain.binder.binder
+Module: domain.struct.binder.binder
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -17,7 +17,7 @@ from domain import Archetype, Model
 
 T = TypeVar("T", bound="Model")
 
-class ColorBinder(ABC, Generic[T]):
+class ArchetypeBinder(ABC, Generic[T]):
     """
     Role:
         - Mapper
@@ -42,12 +42,12 @@ class ColorBinder(ABC, Generic[T]):
 
     @property
     @abstractmethod
-    def same_items(self) -> bool:
+    def consistency_exists(self) -> bool:
         pass
     
     @property
     @abstractmethod
-    def items_are_different(self) -> bool:
+    def is_not_consistent(self) -> bool:
         pass
     
     @property
@@ -59,16 +59,12 @@ class ColorBinder(ABC, Generic[T]):
         return self.size == 0
     
     @property
-    def is_correct_size(self) -> bool:
-        return self.size == self._MAX_CAPACITY
-    
-    @property
-    def is_not_consistent(self) -> bool:
-        return self.size > self._MAX_CAPACITY
+    def is_full(self) -> bool:
+        return self.size == 2
     
     @property
     @abstractmethod
-    def to_dict(self) -> Dict[GameColor, Dict[Archetype, T]]:
+    def to_dict(self) -> Dict[str, T]:
         pass
 
         

@@ -16,11 +16,11 @@ from err import StructCarrierEmptyException
 
 __all__ = [
     # ======================# REGISTER_CARRIER_EMPTY_ERROR #======================#
-    "EmptyRegisterCarrierException",
+    "RegisterCarrierEmptyException",
 ]
 
 # ======================# REGISTER_CARRIER_EMPTY_ERROR #======================#
-class EmptyRegisterCarrierException(StructCarrierEmptyException):
+class RegisterCarrierEmptyException(StructCarrierEmptyException):
     """
     Role:
         - Error Tracing

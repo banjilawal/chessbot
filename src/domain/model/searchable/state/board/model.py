@@ -13,7 +13,7 @@ from typing import Optional
 
 from collection import AttackDatabase, ManeuverDatabase, SquareDatabase, TokenDatabase
 from config import BoardSetting
-from domain import Arena, BoardState, TeamColorBinder, StateModel
+from domain import Arena, BoardState, TeamArchetypeBinder, StateModel
 from microservice import BoardService
 
 
@@ -43,7 +43,7 @@ class Board(StateModel):
     _maneuver_log: ManeuverDatabase
     _attack_records: AttackDatabase
     _captured_tokens: TokenDatabase
-    _team_binder: TeamColorBinder
+    _team_binder: TeamArchetypeBinder
     _deployment_counter: int
     _move_counter: int
 
@@ -51,7 +51,7 @@ class Board(StateModel):
             self,
             id: int,
             arena: Arena,
-            team_binder: TeamColorBinder,
+            team_binder: TeamArchetypeBinder,
             squares: Optional[SquareDatabase] | None = None,
             maneuver_log: Optional[ManeuverDatabase] | None = None,
             attack_records: Optional[AttackDatabase] | None = None,
@@ -99,7 +99,7 @@ class Board(StateModel):
         return self._squares
     
     @property
-    def team_binder(self) -> TeamColorBinder:
+    def team_binder(self) -> TeamArchetypeBinder:
         return self._team_binder
     
     @property

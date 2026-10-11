@@ -14,20 +14,19 @@ from typing import Any, Optional
 from artifcat import MethodResultType
 from err import NullException
 
-
 __all__ = [
-    # ======================# PRIME_EXTRACT_PRIME_EXTRACT_NULL_ERROR #======================#
+    # ======================# PRIME_EXTRACT_NULL_ERROR #======================#
     "PrimeExtractNullException",
 ]
 
-# ======================# PRIME_EXTRACT_PRIME_EXTRACT_NULL_ERROR #======================#
+# ======================# PRIME_EXTRACT_NULL_ERROR #======================#
 class PrimeExtractNullException(NullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required PrimeExtractPrimeExtract is null.
+        1.  Indicating a required PrimeExtract is null.
 
     Attributes:
             msg: Optional[str]
@@ -44,8 +43,8 @@ class PrimeExtractNullException(NullException):
     Super Class:
         NullException
     """
-    MSG = "PrimeExtractPrimeExtract cannot be null"
-    ERR_CODE = "PRIME_EXTRACT_PRIME_EXTRACT_NULL_ERROR"
+    MSG = "PrimeExtract cannot be null"
+    ERR_CODE = "PRIME_EXTRACT_NULL_ERROR"
     
     def __init__(
             self,

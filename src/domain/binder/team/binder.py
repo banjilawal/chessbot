@@ -1,7 +1,7 @@
-# src/domain/binder/team/binder.py
+# src/domain/struct/binder/team/binder.py
 
 """
-Module: domain.binder.team.binder
+Module: domain.struct.binder.team.binder
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Dict, List
 
 from config import GameColor
-from domain import Archetype, ColorBinder, Team
+from domain import Archetype, ArchetypeBinder, Team
 
 
-class TeamColorBinder(ColorBinder[Team]):
+class TeamArchetypeBinder(ArchetypeBinder[Team]):
     """
     Role:
         - Mapper

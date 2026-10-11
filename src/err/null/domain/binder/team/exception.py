@@ -16,18 +16,18 @@ from err import ArchetypeBinderNullException
 
 
 __all__ = [
-    # ======================# TEAM_TEAM_ARCHETYPE_BINER_NULL_ERROR #======================#
-    "TeamArchetypeBinderNullException",
+    # ======================# TEAM_BINDER_NULL_ERROR #======================#
+    "TeamBinderNullException",
 ]
 
-# ======================# TEAM_TEAM_ARCHETYPE_BINER_NULL_ERROR #======================#
-class TeamArchetypeBinderNullException(ArchetypeBinderNullException):
+# ======================# TEAM_BINDER_NULL_ERROR #======================#
+class TeamBinderNullException(ArchetypeBinderNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required TeamTeamArchetypeBinder failed.
+        1.  Indicating a required TeamBinder is null.
 
     Cannot Be Null.s:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class TeamArchetypeBinderNullException(ArchetypeBinderNullException):
     Super Class:
         ArchetypeBinderNullException
     """
-    MSG = "TeamTeamArchetypeBinder cannot be null."
-    ERR_CODE = "TEAM_TEAM_ARCHETYPE_BINER_NULL_ERROR"
+    MSG = "TeamBinder cannot be null."
+    ERR_CODE = "TEAM_BINDER_NULL_ERROR"
     
     def __init__(
             self,

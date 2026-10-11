@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ChessException
+from err import StructCarrierException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# STRUCT_CARRIER_ERROR #======================#
-class StructCarrierException(ChessException):
+class StructCarrierException(StructCarrierException):
     """
     Role:
         - Error Tracing
@@ -42,7 +42,7 @@ class StructCarrierException(ChessException):
     Provides:
 
     Super Class:
-        ChessException
+        StructCarrierException
     """
     MSG = "StructCarrier error."
     ERR_CODE = "STRUCT_CARRIER_ERROR"

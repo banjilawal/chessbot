@@ -15,7 +15,7 @@ from artifcat import ValidationResult
 from assurance import RegisterLoader, CoordRegisterValidatorToolkit
 from domain import CoordRegister, CoordRegisterPrimeExtract
 from err import (
-    EmptyCoordRegisterCarrierException, CoordRegisterLoaderException,
+    CoordRegisterCarrierEmptyException, CoordRegisterLoaderException,
     CoordRegisterValidationRequestNullException
 )
 from exchange import CoordRegisterValidationRequest
@@ -136,11 +136,11 @@ class CoordRegisterLoader(RegisterLoader[CoordRegister]):
                     cls_name=self.__class__.__name__,
                     msg=CoordRegisterLoaderException.MSG,
                     err_code=CoordRegisterLoaderException.ERR_CODE,
-                    ex=EmptyCoordRegisterCarrierException(
+                    ex=CoordRegisterCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptyCoordRegisterCarrierException.MSG,
-                        err_code=EmptyCoordRegisterCarrierException.ERR_CODE,
+                        msg=CoordRegisterCarrierEmptyException.MSG,
+                        err_code=CoordRegisterCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

@@ -18,7 +18,7 @@ from domain import (
     SquareValidationRequest
 )
 from err import (
-    DuplicateSquareException, SquareCarrierEmptyException, EmptySquareRegisterCarrierException,
+    DuplicateSquareException, SquareCarrierEmptyException, SquareRegisterCarrierEmptyException,
     SquareRegisterValidationRequestNullException, SquareRegisterValidatorException
 )
 from transit import SquareCarrier, SquareRegisterCarrier
@@ -140,11 +140,11 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
                     cls_name=self.__class__.__name__,
                     msg=SquareRegisterValidatorException.MSG,
                     err_code=SquareRegisterValidatorException.ERR_CODE,
-                    ex=EmptySquareRegisterCarrierException(
+                    ex=SquareRegisterCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptySquareRegisterCarrierException.MSG,
-                        err_code=EmptySquareRegisterCarrierException.ERR_CODE,
+                        msg=SquareRegisterCarrierEmptyException.MSG,
+                        err_code=SquareRegisterCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

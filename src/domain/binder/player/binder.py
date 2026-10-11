@@ -1,7 +1,7 @@
-# src/domain/binder/player/binder.py
+# src/domain/struct/binder/player/binder.py
 
 """
-Module: domain.binder.player.binder
+Module: domain.struct.binder.player.binder
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Dict, List
 
 from config import GameColor
-from domain import Archetype, ColorBinder, Player
+from domain import Archetype, ArchetypeBinder, Player
 
 
-class PlayerArchetypeBinder(ColorBinder[Player]):
+class PlayerArchetypeBinder(ArchetypeBinder[Player]):
     """
     Role:
         - Mapper
@@ -66,23 +66,34 @@ class PlayerArchetypeBinder(ColorBinder[Player]):
         return [self.white_player, self.black_player]
     
     @property
-    def players_are_same(self) -> bool:
-        return self.white_player == self.black_player
+    def players_are_not_unique(self) -> bool:
+        return not self.players_are_unique
     
     @property
-    def players_differ(self) -> bool:
-        return not self.players_are_same
+    def players_are_unique(self) -> bool:
+        return self.white_player != self.black_player
     
     @property
-    def items_are_different(self) -> bool:
-        return self.players_differ
+    def consistency_exists(self) -> bool:
+        if self.players_are_not_unique:
+            return False
+        if (
+                self.white_player.archetype != Archetype.WHITE or
+                self.black_player.archetype != Archetype.BLACK
+        ):
+            return False
+        if self.is_empty:
+            return True
+        return True
     
     @property
-    def same_items(self) -> bool:
-        return self.players_are_same
+    def is_not_consistent(self) -> bool:
+        return not self.consistency_exists
     
     @property
-    def to_dict(self) -> Dict[GameColor, Dict[Archetype, Player]]:
-        return self._entry
-        
+    def to_dict(self) -> Dict[str, Player]:
+        return {
+            "white": self.white_player,
+            "black": self.black_player,
+        }
     

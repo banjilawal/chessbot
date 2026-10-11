@@ -1,13 +1,13 @@
-# src/domain/binder/player/__init__.py
+# src/domain/struct/binder/player/__init__.py
 
 """
-Module: domain.binder.player.__init__
+Module: domain.struct.binder.player.__init__
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
 """
 
-# =========== DOMAIN.BINDER.PLAYER PACKAGE ===========#
+# =========== DOMAIN.STRUCT.BINDER.PLAYER PACKAGE ===========#
 
 # Packages
 

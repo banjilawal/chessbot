@@ -77,13 +77,17 @@ class BoardBlueprint(StateModelBlueprint[Board]):
         super().__init__(
             id=id,
             domain_class=domain_class or Type[Board],
-            search_context_class=search_context_class or Type[BoardContext],
             domain_null_exception=domain_null_exception or BoardNullException(),
         )
+        self._arena = arena
         self._squares = squares or SquareDatabase()
         self._maneuver_log = maneuver_log or ManeuverDatabase()
         self._attack_records = attack_records or AttackDatabase()
         self._captured_tokens = captured_tokens or TokenDatabase()
+        
+    @property
+    def arena(self) -> Arena:
+        return self._arena
     
     @property
     def squares(self) -> SquareDatabase:

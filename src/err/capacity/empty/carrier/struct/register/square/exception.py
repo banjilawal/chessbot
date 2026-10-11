@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import EmptyRegisterCarrierException
+from err import RegisterCarrierEmptyException
 
 __all__ = [
     # ======================# SQUARE_REGISTER_CARRIER_EMPTY_ERROR #======================#
-    "EmptySquareRegisterCarrierException",
+    "SquareRegisterCarrierEmptyException",
 ]
 
 # ======================# SQUARE_REGISTER_CARRIER_EMPTY_ERROR #======================#
-class EmptySquareRegisterCarrierException(EmptyRegisterCarrierException):
+class SquareRegisterCarrierEmptyException(RegisterCarrierEmptyException):
     """
     Role:
         - Error Tracing

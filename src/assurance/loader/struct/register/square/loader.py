@@ -15,7 +15,7 @@ from artifcat import ValidationResult
 from assurance import RegisterLoader, SquareRegisterValidatorToolkit
 from domain import SquareRegister, SquareRegisterPrimeExtract
 from err import (
-    EmptySquareRegisterCarrierException, SquareRegisterLoaderException,
+    SquareRegisterCarrierEmptyException, SquareRegisterLoaderException,
     SquareRegisterValidationRequestNullException
 )
 from exchange import SquareRegisterValidationRequest
@@ -136,11 +136,11 @@ class SquareRegisterLoader(RegisterLoader[SquareRegister]):
                     cls_name=self.__class__.__name__,
                     msg=SquareRegisterLoaderException.MSG,
                     err_code=SquareRegisterLoaderException.ERR_CODE,
-                    ex=EmptySquareRegisterCarrierException(
+                    ex=SquareRegisterCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EmptySquareRegisterCarrierException.MSG,
-                        err_code=EmptySquareRegisterCarrierException.ERR_CODE,
+                        msg=SquareRegisterCarrierEmptyException.MSG,
+                        err_code=SquareRegisterCarrierEmptyException.ERR_CODE,
                     ),
                 )
             )

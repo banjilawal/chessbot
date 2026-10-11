@@ -16,11 +16,11 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# VECTOR_COORD_REGISTER_BLUEPRINT_NULL_ERROR #======================#
+    # ======================# COORD_REGISTER_BLUEPRINT_NULL_ERROR #======================#
     "CoordRegisterBlueprintNullException",
 ]
 
-# ======================# VECTOR_COORD_REGISTER_BLUEPRINT_NULL_ERROR #======================#
+# ======================# COORD_REGISTER_BLUEPRINT_NULL_ERROR #======================#
 class CoordRegisterBlueprintNullException(RegisterBlueprintNullException):
     """
     Role:

@@ -16,18 +16,18 @@ from err import ArchetypeBinderNullException
 
 
 __all__ = [
-    # ======================# PLAYER_PLAYER_ARCHETYPE_BINER_NULL_ERROR #======================#
-    "PlayerArchetypeBinderNullException",
+    # ======================# PLAYER_BINDER_NULL_ERROR #======================#
+    "PlayerBinderNullException",
 ]
 
-# ======================# PLAYER_PLAYER_ARCHETYPE_BINER_NULL_ERROR #======================#
-class PlayerArchetypeBinderNullException(ArchetypeBinderNullException):
+# ======================# PLAYER_BINDER_NULL_ERROR #======================#
+class PlayerBinderNullException(ArchetypeBinderNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required PlayerPlayerArchetypeBinder failed.
+        1.  Indicating a required PlayerBinder is null.
 
     Cannot Be Null.s:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class PlayerArchetypeBinderNullException(ArchetypeBinderNullException):
     Super Class:
         ArchetypeBinderNullException
     """
-    MSG = "PlayerPlayerArchetypeBinder cannot be null."
-    ERR_CODE = "PLAYER_PLAYER_ARCHETYPE_BINER_NULL_ERROR"
+    MSG = "PlayerBinder cannot be null."
+    ERR_CODE = "PLAYER_BINDER_NULL_ERROR"
     
     def __init__(
             self,

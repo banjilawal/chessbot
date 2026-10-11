@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ChessException
+from err import StructCarrierException
 from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# REGISTER_REGISTER_CARRIER_ERROR #======================#
+    # ======================# REGISTER_CARRIER_ERROR #======================#
     "RegisterCarrierException",
 ]
 
-# ======================# REGISTER_REGISTER_CARRIER_ERROR #======================#
-class RegisterCarrierException(ChessException):
+# ======================# REGISTER_CARRIER_ERROR #======================#
+class RegisterCarrierException(StructCarrierException):
     """
     Role:
         - Error Tracing
@@ -42,10 +42,10 @@ class RegisterCarrierException(ChessException):
     Provides:
 
     Super Class:
-        ChessException
+        StructCarrierException
     """
     MSG = "RegisterCarrier error."
-    ERR_CODE = "REGISTER_REGISTER_CARRIER_ERROR"
+    ERR_CODE = "REGISTER_CARRIER_ERROR"
     
     def __init__(
             self,
