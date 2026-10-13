@@ -16,31 +16,31 @@ from artifcat import ValidationResult
 from assurance import GameValidator, PlayerValidator, PrimingValidator
 from config import GameColor
 from domain import (
-    Game, PlayerArchetypeBinder, GameValidationRequest, Player, PlayerValidationRequest
+    Game, PlayerBinder, GameValidationRequest, Player, PlayerValidationRequest
 )
 from err import (
     DuplicatePlayerException, GameCarrierEmptyException, EmptyItemException,
     PlayerCarrierEmptyException, GameColorNullException,
-    GamePlayerArchetypeBinderNullException, GamePlayerColorBinderOverCapacityException,
-    GamePlayerColorBinderValidatorException
+    GamePlayerArchetypeBinderNullException, GamePlayerArchetypeBinderOverCapacityException,
+    GamePlayerArchetypeBinderValidatorException
 )
 from microservice import IdentityService
 from transit import GameCarrier, PlayerCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class GamePlayerColorBinderValidator:
+class GamePlayerArchetypeBinderValidator:
     """
     Role
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a GamePlayerColorBinder is safe to use.
+        1.  Ensure a GamePlayerArchetypeBinder is safe to use.
 
     Attributes:
 
     Provides:
-        -   def execute(self, candidate) -> ValidationResult[GamePlayerColorBinder]
+        -   def execute(self, candidate) -> ValidationResult[GamePlayerArchetypeBinder]
 
     Super Class:
     """
@@ -70,7 +70,7 @@ class GamePlayerColorBinderValidator:
 
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate) -> ValidationResult[PlayerArchetypeBinder]:
+    def execute(self, candidate) -> ValidationResult[PlayerBinder]:
         """
         Make sure a GamePlayerBinder is safe before use.
 
@@ -81,40 +81,40 @@ class GamePlayerColorBinderValidator:
         Args:
             candidate: Any
         Returns:
-            ValidationResult[GamePlayerColorBinder]
+            ValidationResult[GamePlayerArchetypeBinder]
         Raises:
-            GamePlayerColorBinderValidatorException
+            GamePlayerArchetypeBinderValidatorException
         """
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the validator is not primed.
         priming_result = self._priming_validator.execute(
             candidate=candidate,
-            target_model=PlayerArchetypeBinder,
+            target_model=PlayerBinder,
             null_exception=GamePlayerArchetypeBinderNullException(),
         )
         if priming_result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                GamePlayerColorBinderValidatorException(
+                GamePlayerArchetypeBinderValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=GamePlayerColorBinderValidatorException.MSG,
-                    err_code=GamePlayerColorBinderValidatorException.ERR_CODE,
+                    msg=GamePlayerArchetypeBinderValidatorException.MSG,
+                    err_code=GamePlayerArchetypeBinderValidatorException.ERR_CODE,
                     ex=priming_result.exception,
                 )
             )
-        target = cast(PlayerArchetypeBinder, priming_result.payload)
+        target = cast(PlayerBinder, priming_result.payload)
         
         id_validation = self._identity_service.validate_id(candidate=target.id)
         if id_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                GamePlayerColorBinderValidatorException(
+                GamePlayerArchetypeBinderValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=GamePlayerColorBinderValidatorException.MSG,
-                    err_code=GamePlayerColorBinderValidatorException.ERR_CODE,
+                    msg=GamePlayerArchetypeBinderValidatorException.MSG,
+                    err_code=GamePlayerArchetypeBinderValidatorException.ERR_CODE,
                     ex=id_validation.exception,
                 )
             )
@@ -127,11 +127,11 @@ class GamePlayerColorBinderValidator:
         if game_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                GamePlayerColorBinderValidatorException(
+                GamePlayerArchetypeBinderValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=GamePlayerColorBinderValidatorException.MSG,
-                    err_code=GamePlayerColorBinderValidatorException.ERR_CODE,
+                    msg=GamePlayerArchetypeBinderValidatorException.MSG,
+                    err_code=GamePlayerArchetypeBinderValidatorException.ERR_CODE,
                     ex=game_validation.exception,
                 )
             )
@@ -139,11 +139,11 @@ class GamePlayerColorBinderValidator:
         if not game_carrier.has_model:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                GamePlayerColorBinderValidatorException(
+                GamePlayerArchetypeBinderValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=GamePlayerColorBinderValidatorException.MSG,
-                    err_code=GamePlayerColorBinderValidatorException.ERR_CODE,
+                    msg=GamePlayerArchetypeBinderValidatorException.MSG,
+                    err_code=GamePlayerArchetypeBinderValidatorException.ERR_CODE,
                     ex=GameCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -155,27 +155,27 @@ class GamePlayerColorBinderValidator:
         if target.is_empty:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                GamePlayerColorBinderValidatorException(
+                GamePlayerArchetypeBinderValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=GamePlayerColorBinderValidatorException.MSG,
-                    err_code=GamePlayerColorBinderValidatorException.ERR_CODE,
+                    msg=GamePlayerArchetypeBinderValidatorException.MSG,
+                    err_code=GamePlayerArchetypeBinderValidatorException.ERR_CODE,
                     ex=EmptyItemException(),
                 )
             )
         if target.is_not_consistent:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                GamePlayerColorBinderValidatorException(
+                GamePlayerArchetypeBinderValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=GamePlayerColorBinderValidatorException.MSG,
-                    err_code=GamePlayerColorBinderValidatorException.ERR_CODE,
-                    ex=GamePlayerColorBinderOverCapacityException(
+                    msg=GamePlayerArchetypeBinderValidatorException.MSG,
+                    err_code=GamePlayerArchetypeBinderValidatorException.ERR_CODE,
+                    ex=GamePlayerArchetypeBinderOverCapacityException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=GamePlayerColorBinderOverCapacityException.MSG,
-                        err_code=GamePlayerColorBinderOverCapacityException.ERR_CODE,
+                        msg=GamePlayerArchetypeBinderOverCapacityException.MSG,
+                        err_code=GamePlayerArchetypeBinderOverCapacityException.ERR_CODE,
                     ),
                 )
             )
@@ -194,16 +194,16 @@ class GamePlayerColorBinderValidator:
             else:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    GamePlayerColorBinderValidatorException(
+                    GamePlayerArchetypeBinderValidatorException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=GamePlayerColorBinderValidatorException.MSG,
-                        err_code=GamePlayerColorBinderValidatorException.ERR_CODE,
-                        ex=GamePlayerColorBinderOverCapacityException(
+                        msg=GamePlayerArchetypeBinderValidatorException.MSG,
+                        err_code=GamePlayerArchetypeBinderValidatorException.ERR_CODE,
+                        ex=GamePlayerArchetypeBinderOverCapacityException(
                             cls_mthd=method,
                             cls_name=self.__class__.__name__,
-                            msg=GamePlayerColorBinderOverCapacityException.MSG,
-                            err_code=GamePlayerColorBinderOverCapacityException.ERR_CODE,
+                            msg=GamePlayerArchetypeBinderOverCapacityException.MSG,
+                            err_code=GamePlayerArchetypeBinderOverCapacityException.ERR_CODE,
                         ),
                     )
                 )
@@ -219,11 +219,11 @@ class GamePlayerColorBinderValidator:
             if player_validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    GamePlayerColorBinderValidatorException(
+                    GamePlayerArchetypeBinderValidatorException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=GamePlayerColorBinderValidatorException.MSG,
-                        err_code=GamePlayerColorBinderValidatorException.ERR_CODE,
+                        msg=GamePlayerArchetypeBinderValidatorException.MSG,
+                        err_code=GamePlayerArchetypeBinderValidatorException.ERR_CODE,
                         ex=player_validation.exception,
                     )
                 )
@@ -231,11 +231,11 @@ class GamePlayerColorBinderValidator:
             if not player_carrier.has_model:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
-                    GamePlayerColorBinderValidatorException(
+                    GamePlayerArchetypeBinderValidatorException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=GamePlayerColorBinderValidatorException.MSG,
-                        err_code=GamePlayerColorBinderValidatorException.ERR_CODE,
+                        msg=GamePlayerArchetypeBinderValidatorException.MSG,
+                        err_code=GamePlayerArchetypeBinderValidatorException.ERR_CODE,
                         ex=PlayerCarrierEmptyException(
                             cls_mthd=method,
                             cls_name=self.__class__.__name__,
@@ -251,17 +251,17 @@ class GamePlayerColorBinderValidator:
         if player_dict["white"] == player_dict["black"]:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                GamePlayerColorBinderValidatorException(
+                GamePlayerArchetypeBinderValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=GamePlayerColorBinderValidatorException.MSG,
-                    err_code=GamePlayerColorBinderValidatorException.ERR_CODE,
+                    msg=GamePlayerArchetypeBinderValidatorException.MSG,
+                    err_code=GamePlayerArchetypeBinderValidatorException.ERR_CODE,
                     ex=DuplicatePlayerException(),
                 )
             )
         id = cast(int, id_validation.payload)
         game = cast(Game, game_carrier.entity)
-        binder = PlayerArchetypeBinder(
+        binder = PlayerBinder(
             id=id,
             primary=game,
             white_player=player_dict["white"],

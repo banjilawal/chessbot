@@ -16,17 +16,17 @@ from err import ValidatorException
 
 __all__ = [
     # ======================# ARENA_PLAYER_COLOR_BINDER_VALIDATOR_FAILURE #======================#
-    "ArenaPlayerColorBinderValidatorException",
+    "ArenaPlayerArchetypeBinderValidatorException",
 ]
 
 # ======================# ARENA_PLAYER_COLOR_BINDER_VALIDATOR_FAILURE #======================#
-class ArenaPlayerColorBinderValidatorException(ValidatorException):
+class ArenaPlayerArchetypeBinderValidatorException(ValidatorException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a ArenaPlayerColorBinderValidator
+        1.  Indicating assurance by a ArenaPlayerArchetypeBinderValidator
             failed.
 
     Attributes:
@@ -44,7 +44,7 @@ class ArenaPlayerColorBinderValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "ArenaPlayerColorBinderValidator failed."
+    MSG = "ArenaPlayerArchetypeBinderValidator failed."
     ERR_CODE = "ARENA_PLAYER_COLOR_BINDER_VALIDATOR_FAILURE"
     
     def __init__(

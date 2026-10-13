@@ -15,4 +15,4 @@ from .board import *
 from .game import *
 
 # Modules
-from .exception import ColorBinderOverCapacityException
+from .exception import ArchetypeBinderOverCapacityException

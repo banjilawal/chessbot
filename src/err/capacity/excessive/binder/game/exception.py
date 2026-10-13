@@ -11,22 +11,22 @@ from __future__ import annotations
 
 from typing import Optional
 
-from err import ColorBinderOverCapacityException
+from err import ArchetypeBinderOverCapacityException
 
 _all_ = [
     # ======================# GAME_PLAYER_COLOR_BINDER_OVER_CAPACITY #======================#
     "GamePlayerBinderOverCapacityException",
 ]
 # ======================# GAME_PLAYER_COLOR_BINDER_OVER_CAPACITY #======================#
-class GamePlayerColorBinderOverCapacityException(
-    ColorBinderOverCapacityException
+class GamePlayerArchetypeBinderOverCapacityException(
+    ArchetypeBinderOverCapacityException
 ):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required GamePlayerColorBinder is over its capacity.
+        1.  Indicating a required GamePlayerArchetypeBinder is over its capacity.
 
     Attributes:
             msg: Optional[str]
@@ -43,7 +43,7 @@ class GamePlayerColorBinderOverCapacityException(
     Super Class:
         BinderOverCapacityException
     """
-    MSG = "GamePlayerColorBinder is over its capacity."
+    MSG = "GamePlayerArchetypeBinder is over its capacity."
     ERR_CODE = "GAME_PLAYER_COLOR_BINDER_OVER_CAPACITY"
     
     def _init_(

@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
+from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from domain import SearchableModel
@@ -31,4 +31,19 @@ class Struct(ABC, Generic[T]):
 
     Super Class:
     """
-    pass
+    
+    @property
+    @abstractmethod
+    def size(self) -> int:
+        pass
+    
+    @property
+    @abstractmethod
+    def is_empty(self) -> bool:
+        pass
+    
+    @property
+    def not_empty(self) -> bool:
+        return not self.is_empty
+
+    

@@ -13,7 +13,7 @@ from typing import cast
 
 from domain import VectorNode
 from exchange import NodeValidationRequest
-from transit import VectorNodeCarrier
+from transit import VectorNode
 
 
 class VectorNodeValidationRequest(NodeValidationRequest[VectorNode]):
@@ -35,7 +35,7 @@ class VectorNodeValidationRequest(NodeValidationRequest[VectorNode]):
         NodeValidationRequest
      """
     
-    def __init__(self, id: int, item: VectorNodeCarrier):
+    def __init__(self, id: int, item: VectorNode):
         """
         Args:
             id: int
@@ -44,8 +44,8 @@ class VectorNodeValidationRequest(NodeValidationRequest[VectorNode]):
         super().__init__(id=id, item=item)
     
     @property
-    def item(self) -> VectorNodeCarrier:
-        return cast(VectorNodeCarrier, super().item)
+    def item(self) -> VectorNode:
+        return cast(VectorNode, super().item)
     
     def __eq__(self, other):
         if other is self: return True

@@ -14,7 +14,7 @@ from typing import Generic, TypeVar, cast
 
 from domain import Chart
 from exchange import StructValidationRequest
-from transit import ChartCarrier
+from transit import Chart
 
 T = TypeVar("T", bound="Chart")
 
@@ -37,17 +37,17 @@ class ChartValidationRequest(StructValidationRequest[T], ABC, Generic[T]):
         ValidationRequest
      """
     
-    def __init__(self, id: int, item: ChartCarrier[T]):
+    def __init__(self, id: int, item: Chart[T]):
         """
         Args:
             id: int
-            item: ChartCarrier[T]
+            item: Chart[T]
         """
         super().__init__(id=id, item=item)
     
     @property
-    def item(self) -> ChartCarrier[T]:
-        return cast(ChartCarrier[T], super().item)
+    def item(self) -> Chart[T]:
+        return cast(Chart[T], super().item)
     
     def __eq__(self, other):
         if other is self: return True

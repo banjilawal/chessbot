@@ -14,7 +14,6 @@ from typing import Generic, TypeVar
 
 from artifcat import ValidationResult
 from exchange import Request
-from transit import EntityCarrier
 
 T = TypeVar("T")
 
@@ -51,7 +50,7 @@ class ValidationRequest(Request[ValidationResult], ABC, Generic[T]):
         self._item = item
         
     @property
-    def item(self) -> EntityCarrier[T]:
+    def item(self) -> T:
         return self._item
         
     

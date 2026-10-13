@@ -53,5 +53,5 @@ class CartesianToggleRegisterBuilder(
         """
         method = f"{self.__class__.__name__}.validate"
         return BuildResult.success(
-            CartesianToggleRegister(u=blueprint.u, v=blueprint.v, )
+            CartesianToggleRegister(u=blueprint.white_team, v=blueprint.black_team, )
         )

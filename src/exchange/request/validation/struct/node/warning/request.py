@@ -13,7 +13,7 @@ from typing import cast
 
 from domain import WarningNode
 from exchange import NodeValidationRequest
-from transit import WarningNodeCarrier
+from transit import WarningNode
 
 
 class EncounterWarningNodeValidationRequest(NodeValidationRequest[WarningNode]):
@@ -35,7 +35,7 @@ class EncounterWarningNodeValidationRequest(NodeValidationRequest[WarningNode]):
         NodeValidationRequest
      """
     
-    def __init__(self, id: int, item: WarningNodeCarrier):
+    def __init__(self, id: int, item: WarningNode):
         """
         Args:
             id: int
@@ -44,8 +44,8 @@ class EncounterWarningNodeValidationRequest(NodeValidationRequest[WarningNode]):
         super().__init__(id=id, item=item)
     
     @property
-    def item(self) -> WarningNodeCarrier:
-        return cast(WarningNodeCarrier, super().item)
+    def item(self) -> WarningNode:
+        return cast(WarningNode, super().item)
     
     def __eq__(self, other):
         if other is self: return True

@@ -13,7 +13,7 @@ from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
 from assurance import ChartLoader, ParticipationValidatorToolkit
-from domain import Participation, ParticipationPrimeExtract
+from domain import Participation, Participation
 from err import (
     ParticipationCarrierEmptyException, ParticipationLoaderException,
     ParticipationValidationRequestNullException
@@ -41,7 +41,7 @@ class ParticipationLoader(ChartLoader[Participation]):
     Provides:
         -   def execute(
                     candidate: Any
-            ) -> ValidationResult[ParticipationPrimeExtract[T]
+            ) -> ValidationResult[Participation[T]
 
     Super Class:
         ChartLoader
@@ -62,9 +62,9 @@ class ParticipationLoader(ChartLoader[Participation]):
         return cast(ParticipationValidatorToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[ParticipationPrimeExtract]:
+    def execute(self, candidate: Any) -> ValidationResult[Participation]:
         """
-        Extract the ParticipationBlueprint to validate the candidate.
+        Model the ParticipationBlueprint to validate the candidate.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
@@ -74,13 +74,13 @@ class ParticipationLoader(ChartLoader[Participation]):
                         -   Null
                         -   Not a ParticipationCarrier
                         -   An empty ParticipationCarrier.
-                -   A blueprint cannot be extracted from the carrier.
-            2.  Otherwise, pack the original carrier and the blueprint in a ParticipationPrimeExtract
+                -   A blueprint cannot be modeled from the carrier.
+            2.  Otherwise, pack the original carrier and the blueprint in a Participation
                 for the success result.
         Args:
             candidate: Any
         Returns:
-            ValidationResult[ParticipationPrimeExtract]
+            ValidationResult[Participation]
         Raises:
             ParticipationLoaderException
         """
@@ -107,12 +107,12 @@ class ParticipationLoader(ChartLoader[Participation]):
         request = cast(Type[FootstepValidationRequest], priming.payload)
         
         # Handle the case that request.item is the wrong carrier type.
-        carrier_validation = self.toolkit.priming_validator.execute(
+        model_validation = self.toolkit.priming_validator.execute(
             candidate=request.item,
-            target_model=self.toolkit.types.carrier,
-            null_exception=self.toolkit.nulls.carrier,
+            target_model=self.toolkit.types.model,
+            null_exception=self.toolkit.nulls.model,
         )
-        if carrier_validation.is_failure:
+        if model_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 ParticipationLoaderException(
@@ -120,12 +120,12 @@ class ParticipationLoader(ChartLoader[Participation]):
                     cls_name=self.__class__.__name__,
                     msg=ParticipationLoaderException.MSG,
                     err_code=ParticipationLoaderException.ERR_CODE,
-                    ex=carrier_validation.exception,
+                    ex=model_validation.exception,
                 )
             )
-        # --- Cast carrier_validation payload to carrier then extract blueprint. ---#
-        carrier = cast(ParticipationCarrier, carrier_validation.payload)
-        blueprint = carrier.extract_blueprint()
+        # --- Cast model_validation payload to carrier then model blueprint. ---#
+        carrier = cast(ParticipationCarrier, model_validation.payload)
+        blueprint = carrier.model_blueprint()
         
         # Handle the case that the blueprint is null.
         if blueprint is None:
@@ -145,8 +145,8 @@ class ParticipationLoader(ChartLoader[Participation]):
                 )
             )
         # --- Send the work product. ---#
-        extract = ParticipationPrimeExtract(
+        model = Participation(
             reference=carrier,
             blueprint=blueprint,
         )
-        return ValidationResult.success(extract)
+        return ValidationResult.success(model)

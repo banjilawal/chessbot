@@ -101,7 +101,7 @@ class AddVector(Computation[CartesianToggle]):
         
         register_build_result =
         for operand in [u, v]:
-            validation = self._vector_toggle_utility.v
+            validation = self._vector_toggle_utility.black_team
         
         if register_validator is None:
             register_validator = VectorRegisterValidator()

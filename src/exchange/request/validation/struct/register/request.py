@@ -14,7 +14,7 @@ from typing import Generic, TypeVar, cast
 
 from domain import Register
 from exchange import StructValidationRequest
-from transit import RegisterCarrier
+from transit import Register
 
 T = TypeVar("T", bound="Register")
 
@@ -37,17 +37,17 @@ class RegisterValidationRequest(StructValidationRequest[T], ABC, Generic[T]):
         ValidationRequest
      """
     
-    def __init__(self, id: int, item: RegisterCarrier[T]):
+    def __init__(self, id: int, item: T):
         """
         Args:
             id: int
-            item: RegisterCarrier[T]
+            item: T
         """
         super().__init__(id=id, item=item)
     
     @property
-    def item(self) -> RegisterCarrier[T]:
-        return cast(RegisterCarrier[T], super().item)
+    def item(self) -> T:
+        return cast(T, super().item)
     
     def __eq__(self, other):
         if other is self: return True

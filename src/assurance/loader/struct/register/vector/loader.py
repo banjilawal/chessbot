@@ -13,13 +13,12 @@ from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
 from assurance import RegisterLoader, VectorRegisterValidatorToolkit
-from domain import VectorRegister, VectorRegisterPrimeExtract
+from domain import VectorRegister
 from err import (
-    VectorRegisterCarrierEmptyException, VectorRegisterLoaderException,
+    VectorRegisterConsistencyException, VectorRegisterEmptyException, VectorRegisterLoaderException,
     VectorRegisterValidationRequestNullException
 )
 from exchange import VectorRegisterValidationRequest
-from transit import VectorRegisterCarrier
 
 from util import LoggingLevelRouter
 
@@ -32,7 +31,7 @@ class VectorRegisterLoader(RegisterLoader[VectorRegister]):
     Responsibilities:
         1.  Run type safety checks on a Candidate for:
             -   VectorRegisterValidationRequest
-            -   VectorRegisterCarrier
+            -   VectorRegister
             -   VectorRegisterBlueprint
 
     Attributes:
@@ -41,7 +40,7 @@ class VectorRegisterLoader(RegisterLoader[VectorRegister]):
     Provides:
         -   def execute(
                     candidate: Any
-            ) -> ValidationResult[VectorRegisterPrimeExtract[T]
+            ) -> ValidationResult[VectorRegister[T]
 
     Super Class:
         RegisterLoader
@@ -62,9 +61,9 @@ class VectorRegisterLoader(RegisterLoader[VectorRegister]):
         return cast(VectorRegisterValidatorToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[VectorRegisterPrimeExtract]:
+    def execute(self, candidate: Any) -> ValidationResult[VectorRegister]:
         """
-        Extract the VectorRegisterBlueprint to validate the candidate.
+        Model the VectorRegisterBlueprint to validate the candidate.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
@@ -72,15 +71,15 @@ class VectorRegisterLoader(RegisterLoader[VectorRegister]):
                 -   The candidate is null or not a VectorRegisterValidatorRequest.
                 -   The request payload is either:
                         -   Null
-                        -   Not a VectorRegisterCarrier
-                        -   An empty VectorRegisterCarrier.
-                -   A blueprint cannot be extracted from the carrier.
-            2.  Otherwise, pack the original carrier and the blueprint in a VectorRegisterPrimeExtract
+                        -   Not a VectorRegister
+                        -   An empty VectorRegister.
+                -   A blueprint cannot be modeled from the carrier.
+            2.  Otherwise, pack the original carrier and the blueprint in a VectorRegister
                 for the success result.
         Args:
             candidate: Any
         Returns:
-            ValidationResult[VectorRegisterPrimeExtract]
+            ValidationResult[VectorRegister]
         Raises:
             VectorRegisterLoaderException
         """
@@ -107,12 +106,12 @@ class VectorRegisterLoader(RegisterLoader[VectorRegister]):
         request = cast(Type[VectorRegisterValidationRequest], priming.payload)
         
         # Handle the case that request.item is the wrong carrier type.
-        carrier_validation = self.toolkit.priming_validator.execute(
+        model_validation = self.toolkit.priming_validator.execute(
             candidate=request.item,
-            target_model=self.toolkit.types.carrier,
-            null_exception=self.toolkit.nulls.carrier,
+            target_model=self.toolkit.types.model,
+            null_exception=self.toolkit.nulls.model,
         )
-        if carrier_validation.is_failure:
+        if model_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorRegisterLoaderException(
@@ -120,30 +119,10 @@ class VectorRegisterLoader(RegisterLoader[VectorRegister]):
                     cls_name=self.__class__.__name__,
                     msg=VectorRegisterLoaderException.MSG,
                     err_code=VectorRegisterLoaderException.ERR_CODE,
-                    ex=carrier_validation.exception,
+                    ex=model_validation.exception,
                 )
             )
-        # --- Cast carrier_validation payload to carrier then extract blueprint. ---#
-        carrier = cast(VectorRegisterCarrier, carrier_validation.payload)
-        blueprint = carrier.extract_blueprint()
-        
-        # Handle the case that the blueprint is null.
-        if blueprint is None:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                VectorRegisterLoaderException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=VectorRegisterLoaderException.MSG,
-                    err_code=VectorRegisterLoaderException.ERR_CODE,
-                    ex=VectorRegisterCarrierEmptyException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=VectorRegisterCarrierEmptyException.MSG,
-                        err_code=VectorRegisterCarrierEmptyException.ERR_CODE,
-                    ),
-                )
-            )
+        # --- Cast model_validation payload to carrier then model blueprint. ---#
+        model = cast(VectorRegister, model_validation.payload)
         # --- Send the work product. ---#
-        extract = VectorRegisterPrimeExtract(reference=carrier, blueprint=blueprint)
-        return ValidationResult.success(extract)
+        return ValidationResult.success(model)

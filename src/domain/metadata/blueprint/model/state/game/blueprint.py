@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from domain import (
-    Arena, CheckmateEncounter, Game, StateModelBlueprint, PlayerArchetypeBinder,
+    Arena, CheckmateEncounter, Game, StateModelBlueprint, PlayerBinder,
     StalemateEncounter
 )
 from err import GameNullException
@@ -45,7 +45,7 @@ class GameBlueprint(StateModelBlueprint[Game]):
         StateModelBlueprint
      """
     _arena: Arena
-    _binder: PlayerArchetypeBinder
+    _binder: PlayerBinder
     _turn_service: TurnManagementService
     _checkmate: Optional[CheckmateEncounter]
     _stalemate: Optional[StalemateEncounter]
@@ -53,7 +53,7 @@ class GameBlueprint(StateModelBlueprint[Game]):
     def __init__(
             self,
             arena: Arena,
-            binder: PlayerArchetypeBinder,
+            binder: PlayerBinder,
             checkmate: Optional[CheckmateEncounter] | None = None,
             stalemate: Optional[StalemateEncounter] | None = None,
             turn_service: Optional[TurnManagementService] | None = None,
@@ -88,7 +88,7 @@ class GameBlueprint(StateModelBlueprint[Game]):
         return self._arena
     
     @property
-    def binder(self) -> PlayerArchetypeBinder:
+    def binder(self) -> PlayerBinder:
         return self._binder
     
     @property

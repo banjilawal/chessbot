@@ -16,17 +16,17 @@ from err import ValidatorException
 
 __all__ = [
     # ======================# BOARD_TEAM_COLOR_BINDER_VALIDATOR_FAILURE #======================#
-    "BoardTeamColorBinderValidatorException",
+    "BoardTeamArchetypeBinderValidatorException",
 ]
 
 # ======================# BOARD_TEAM_COLOR_BINDER_VALIDATOR_FAILURE #======================#
-class BoardTeamColorBinderValidatorException(ValidatorException):
+class BoardTeamArchetypeBinderValidatorException(ValidatorException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a BoardTeamColorBinderValidator
+        1.  Indicating assurance by a BoardTeamArchetypeBinderValidator
             failed.
 
     Attributes:
@@ -44,7 +44,7 @@ class BoardTeamColorBinderValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "BoardTeamColorBinderValidator failed."
+    MSG = "BoardTeamArchetypeBinderValidator failed."
     ERR_CODE = "BOARD_TEAM_COLOR_BINDER_VALIDATOR_FAILURE"
     
     def __init__(

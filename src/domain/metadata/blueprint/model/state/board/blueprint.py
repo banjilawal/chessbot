@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from collection import AttackDatabase, ManeuverDatabase, SquareDatabase, TokenDatabase
-from domain import Arena, Board, BoardContext, BoardTeamColorBinder, StateModelBlueprint
+from domain import Arena, Board, BoardContext, BoardTeamArchetypeBinder, StateModelBlueprint
 from err import BoardNullException
 
 
@@ -30,7 +30,7 @@ class BoardBlueprint(StateModelBlueprint[Board]):
         maneuver_log: ManeuverDatabase
         attack_records: AttackDatabase
         captured_tokens: TokenDatabase
-        team_binder: BoardTeamColorBinder
+        team_binder: BoardTeamArchetypeBinder
         
         domain_class: Type[Board]
         search_context_class: Type[BoardContext]
@@ -46,13 +46,13 @@ class BoardBlueprint(StateModelBlueprint[Board]):
     _maneuver_log: ManeuverDatabase
     _attack_records: AttackDatabase
     _captured_tokens: TokenDatabase
-    _team_binder: BoardTeamColorBinder
+    _team_binder: BoardTeamArchetypeBinder
     
     def __init__(
             self,
             arena: Arena,
             squares: SquareDatabase,
-            team_binder: BoardTeamColorBinder,
+            team_binder: BoardTeamArchetypeBinder,
             domain_class: Optional[Type[Board]] | None = None,
             search_context_class: Optional[Type[BoardContext]] | None = None,
             domain_null_exception: Optional[BoardNullException] | None = None,
@@ -64,7 +64,7 @@ class BoardBlueprint(StateModelBlueprint[Board]):
         """
         Args:
             squares: SquareDatabase
-            team_binder: BoardTeamColorBinder
+            team_binder: BoardTeamArchetypeBinder
             domain_class: Optional[Type[Board]]
             search_context_class: Optional[Type[BoardContext]]
             domain_null_exception: Optional[BoardNullException]
@@ -106,7 +106,7 @@ class BoardBlueprint(StateModelBlueprint[Board]):
         return self._captured_tokens
     
     @property
-    def team_binder(self) -> BoardTeamColorBinder:
+    def team_binder(self) -> BoardTeamArchetypeBinder:
         return self._team_binder
     
     @property

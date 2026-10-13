@@ -41,13 +41,29 @@ class ArchetypeBinder(ABC, Generic[T]):
     _MAX_CAPACITY = 2
 
     @property
-    @abstractmethod
     def consistency_exists(self) -> bool:
+        if self is None:
+            return False
+        if self.is_half_full:
+            return False
+        if self.entries_are_not_unique:
+            return False
+        if self.is_full and self.entries_are_unique:
+            return True
+        return False
+    
+    @property
+    def is_not_consistent(self) -> bool:
+        return not self.consistency_exists
+    
+    @property
+    @abstractmethod
+    def entries_are_unique(self) -> bool:
         pass
     
     @property
     @abstractmethod
-    def is_not_consistent(self) -> bool:
+    def entries_are_not_unique(self) -> bool:
         pass
     
     @property
@@ -61,6 +77,10 @@ class ArchetypeBinder(ABC, Generic[T]):
     @property
     def is_full(self) -> bool:
         return self.size == 2
+    
+    @property
+    def is_half_full(self) -> bool:
+        return self.size == 1
     
     @property
     @abstractmethod

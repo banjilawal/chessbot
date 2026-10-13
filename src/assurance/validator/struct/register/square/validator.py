@@ -9,19 +9,14 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, List, Optional, cast
+from typing import Any, Dict, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import RegisterValidator, SquareRegisterValidatorToolkit
-from domain import (
-    Square, SquareRegister, SquareRegisterBlueprint, SquareRegisterValidationRequest,
-    SquareValidationRequest
-)
-from err import (
-    DuplicateSquareException, SquareCarrierEmptyException, SquareRegisterCarrierEmptyException,
-    SquareRegisterValidationRequestNullException, SquareRegisterValidatorException
-)
-from transit import SquareCarrier, SquareRegisterCarrier
+from assurance import RegisterValidator, SquareRegisterLoader, SquareRegisterValidatorToolkit
+from domain import Square, SquareRegister
+from err import SquareRegisterConsistencyException, SquareRegisterValidatorException
+from exchange import SquareValidationRequest
+from transit import SquareCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -31,14 +26,14 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
         - Integrity Assurance Worker
 
     Responsibilities:
-        1.  Check that a candidate is the right type of not-null EntityCarrier.
-        2.  Run safety checks on structs and blueprints inside an EntityCarrier's payload.
+        1.  Check that a candidate is the right type of not-null Entity.
+        2.  Run safety checks on structs and blueprints inside an Entity's payload.
 
     Attributes:
-        loader: SquareRegisterValidatorToolkit
+        loader: SquareRegisterLoader
 
     Provides:
-        -   def execute(candidate: Any) -> ValidationResult[SquareRegisterCarrier]:
+        -   def execute(candidate: Any) -> ValidationResult[SquareRegister]:
 
     Super Class:
         RegisterValidator
@@ -46,24 +41,26 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
     
     def __init__(
             self,
-            loader: Optional[SquareRegisterValidatorToolkit] | None = None,
+            loader: Optional[SquareRegisterLoader] | None = None,
     ):
         """
         Args:
-            loader: Optional[SquareRegisterValidatorToolkit]
+            loader: Optional[SquareRegisterLoader]
         """
-        super().__init__(
-            toolkit=toolkit or SquareRegisterValidatorToolkit()
-        )
+        super().__init__(loader=loader or SquareRegisterLoader())
+        
+    @property
+    def loader(self) -> SquareRegisterLoader:
+        return cast(SquareRegisterLoader, super().loader)
     
     @property
     def toolkit(self) -> SquareRegisterValidatorToolkit:
-        return cast(SquareRegisterValidatorToolkit, super().toolkit)
+        return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[SquareRegisterCarrier]:
+    def execute(self, candidate: Any) -> ValidationResult[SquareRegister]:
         """
-        Certify a SquareRegisterCarrier's payload is either a SquareRegister or a Blueprint 
+        Certify a SquareRegister's payload is either a SquareRegister or a Blueprint 
         that is safe to use.
 
         Action:
@@ -72,27 +69,23 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
                     -   The request is either null or not a SquareRegisterValidatorRequest.
                     -   The request's payload is either,
                             null
-                            not a SquareRegisterCarrier
-                            an empty SquareRegisterCarrier.
+                            not a SquareRegister
+                            an empty SquareRegister.
                     -   Either the square, row, or column attributes are flagged unsafe.
-            2.  Otherwise, Send a Carrier with the correct type of payload in the success
+            2.  Otherwise, Send a  with the correct type of payload in the success
                 result.
         Args:
             candidate: Any
         Returns:
-            ValidationResult[SquareRegisterCarrier]
+            ValidationResult[SquareRegister]
         Raises:
             SquareRegisterValidatorException
         """
         method = f"{self.__class__.__name__}.execute"
-        
-        # Handle the case that the candidate is null or the rong type.
-        priming_result = self.toolkit.wrapper.priming_validator.execute(
-            candidate=candidate,
-            target_model=SquareRegisterValidationRequest,
-            null_exception=SquareRegisterValidationRequestNullException(),
-        )
-        if priming_result.is_failure:
+                
+        # Handle the case that loader fails.
+        load = self.loader.execute(candidate)
+        if load.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareRegisterValidatorException(
@@ -100,19 +93,13 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
                     cls_name=self.__class__.__name__,
                     msg=SquareRegisterValidatorException.MSG,
                     err_code=SquareRegisterValidatorException.ERR_CODE,
-                    ex=priming_result.exception,
+                    ex=load.exception,
                 )
             )
         # --- Cast priming_result into a request for additional tests. ---#
-        request = cast(SquareRegisterValidationRequest, priming_result.payload)
+        struct = cast(SquareRegister, load.payload)
         
-        # Handle the case that request.item is the wrong carrier type.
-        carrier_validation = self.toolkit.wrapper.priming_validator.execute(
-            candidate=request.item,
-            target_model=self.toolkit.metadata.types.carrier,
-            null_exception=self.toolkit.metadata.nulls.carrier,
-        )
-        if carrier_validation.is_failure:
+        if struct.is_not_consistent:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareRegisterValidatorException(
@@ -120,44 +107,24 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
                     cls_name=self.__class__.__name__,
                     msg=SquareRegisterValidatorException.MSG,
                     err_code=SquareRegisterValidatorException.ERR_CODE,
-                    ex=carrier_validation.exception,
-                )
-            )
-        # --- Cast the carrier_validation payload for additional tests. ---#
-        carrier = cast(
-            SquareRegisterCarrier,
-            carrier_validation.payload,
-        )
-        # --- Extract the blueprint to verify the attributes. ---#
-        blueprint = carrier.extract_blueprint()
-        
-        # Handle the case that there is no blueprint.
-        if blueprint is None:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                SquareRegisterValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=SquareRegisterValidatorException.MSG,
-                    err_code=SquareRegisterValidatorException.ERR_CODE,
-                    ex=SquareRegisterCarrierEmptyException(
+                    ex=SquareRegisterConsistencyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=SquareRegisterCarrierEmptyException.MSG,
-                        err_code=SquareRegisterCarrierEmptyException.ERR_CODE,
-                    ),
+                        msg=SquareRegisterConsistencyException.MSG,
+                        err_code=SquareRegisterConsistencyException.ERR_CODE,
+                    )
                 )
             )
-        # --- Run the square validation checks. ---#
-        endpoints: List[Square] = []
-        for square in [blueprint.origin, blueprint.destination]:
-            square_validation = self.toolkit.wrapper.square_validator.execute(
-            candidate=SquareValidationRequest(
-                    id=IdFactory.next_id(class_name="SquareValidationRequest"),
-                    item=SquareCarrier(model=square),
+        
+        entry = struct.to_dict
+        endpoints: Dict[str, Square] = {}
+        for key in struct.to_dict:
+            square_validation = self.toolkit.wrapper.square.extract_model(
+                request=SquareValidationRequest(
+                    item=SquareCarrier(model=entry[key]),
+                    id=IdFactory.next_id(class_name="SquareRegisterRequest")
                 )
             )
-            # Handle the case that the square is flagged.
             if square_validation.is_failure:
                 # Send the exception chain on failure.
                 return ValidationResult.failure(
@@ -166,59 +133,19 @@ class SquareRegisterValidator(RegisterValidator[SquareRegister]):
                         cls_name=self.__class__.__name__,
                         msg=SquareRegisterValidatorException.MSG,
                         err_code=SquareRegisterValidatorException.ERR_CODE,
-                        ex=square_validation.exception,
+                        ex=square_validation.exception
                     )
                 )
-            # Otherwise, extract the square from the carrier
-            square_carrier = cast(SquareCarrier, square_validation.payload)
-            # Handle the case that the carrier does not have a validated Square for the register.
-            if not square_carrier.has_model:
-                # Send the exception chain on failure.
-                return ValidationResult.failure(
-                    SquareRegisterValidatorException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=SquareRegisterValidatorException.MSG,
-                        err_code=SquareRegisterValidatorException.ERR_CODE,
-                        ex=SquareCarrierEmptyException(
-                            cls_mthd=method,
-                            cls_name=self.__class__.__name__,
-                            msg=SquareCarrierEmptyException.MSG,
-                            err_code=SquareCarrierEmptyException.ERR_CODE,
-                        ),
-                    )
-                )
-            # Put the register's good Square in the endpoints array.
-            endpoint = cast(Square, square_carrier.entity)
-            # Handle the case that the origin and destination are the same.
-            if endpoint in endpoints:
-                # Send the exception chain on failure.
-                return ValidationResult.failure(
-                    SquareRegisterValidatorException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=SquareRegisterValidatorException.MSG,
-                        err_code=SquareRegisterValidatorException.ERR_CODE,
-                        ex=DuplicateSquareException(
-                            cls_mthd=method,
-                            cls_name=self.__class__.__name__,
-                            msg=DuplicateSquareException.MSG,
-                            err_code=DuplicateSquareException.ERR_CODE,
-                        ),
-                    )
-                )
-            endpoints.append(endpoint)
-        # --- Forward the appropriate work product to the caller. ---#  
-        # The model case
-        if carrier.has_model:
-            model = SquareRegister(origin=endpoints[0], destination=endpoints[1])
-            return ValidationResult.success(
-                SquareRegisterCarrier(model=model)
-            )
-        # The blueprint case
-        blueprint = SquareRegisterBlueprint(origin=endpoints[0], destination=endpoints[1])
+            square = cast(Square, square_validation.payload)
+            endpoints[key] = square
+            
+        # --- Forward the appropriate work product to the caller. ---#
         return ValidationResult.success(
-            SquareRegisterCarrier(blueprint=blueprint)
+            SquareRegister(
+                origin=endpoints["origin"],
+                destination=endpoints["destination"],
+            )
         )
+
     
     

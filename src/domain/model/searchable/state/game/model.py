@@ -10,7 +10,7 @@ version: 1.0.0
 from typing import Optional
 
 from domain import (
-    Arena, CheckmateEncounter, GameState, PlayerArchetypeBinder, StalemateEncounter,
+    Arena, CheckmateEncounter, GameState, PlayerBinder, StalemateEncounter,
     StateModel
 )
 from sync import TurnManagementService
@@ -40,7 +40,7 @@ class Game(StateModel):
     _id: int
     _arena: Arena
     _state: GameState
-    _binder: PlayerArchetypeBinder
+    _binder: PlayerBinder
     _turn_service: TurnManagementService
     _checkmate: Optional[CheckmateEncounter]
     _stalemate: Optional[StalemateEncounter]
@@ -49,7 +49,7 @@ class Game(StateModel):
             self,
             id: int,
             arena: Arena,
-            binder: PlayerArchetypeBinder,
+            binder: PlayerBinder,
             turn_service: Optional[TurnManagementService] | None = None,
     ):
         """
@@ -71,7 +71,7 @@ class Game(StateModel):
         return self._arena
     
     @property
-    def binder(self) -> PlayerArchetypeBinder:
+    def binder(self) -> PlayerBinder:
         return self._binder
     
     @property

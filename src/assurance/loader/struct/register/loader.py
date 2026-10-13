@@ -14,7 +14,7 @@ from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
 from assurance import RegisterValidatorToolkit, StructLoader
-from domain import Register, RegisterPrimeExtract
+from domain import Register, Register
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Register")
@@ -27,7 +27,7 @@ class RegisterLoader(StructLoader[T], ABC, Generic[T]):
     Responsibilities:
         1.  Run type safety checks on a Candidate for:
             -   RegisterValidationRequest[T]
-            -   RegisterCarrier[T]
+            -   Register[T]
             -   RegisterBlueprint[T]
 
     Attributes:
@@ -35,7 +35,7 @@ class RegisterLoader(StructLoader[T], ABC, Generic[T]):
     Provides:
         -   def execute(
                     candidate: Any
-            ) -> ValidationResult[RegisterPrimeExtract[T]
+            ) -> ValidationResult[T
 
     Super Class:
         Loader
@@ -54,14 +54,14 @@ class RegisterLoader(StructLoader[T], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[RegisterPrimeExtract[T]]:
+    def execute(self, candidate: Any) -> ValidationResult[T]:
         """
-        Extract a safe RegisterBlueprint from the candidate.
+        Model a safe RegisterBlueprint from the candidate.
         Args:
             candidate: Any
         Returns:
             ValidationResult[RegisterBlueprint[T]]
         Raises:
-            RegisterExtractorException
+            RegisterValidatorException
         """
         pass

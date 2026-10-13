@@ -14,7 +14,7 @@ from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
 from assurance import StructLoader, StructValidatorToolkit, Validator
-from domain import Struct, StructValidationRequest
+from domain import Struct
 from transit import StructCarrier
 from util import LoggingLevelRouter
 

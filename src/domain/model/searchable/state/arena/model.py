@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from domain import ArenaState, PlayerArchetypeBinder, Board, Game, StateModel
+from domain import ArenaState, PlayerBinder, Board, Game, StateModel
 
 
 class Arena(StateModel):
@@ -22,7 +22,7 @@ class Arena(StateModel):
     Attributes:
         id: int
         board: Board
-        player_binder: PlayerColorBinder
+        player_binder: PlayerArchetypeBinder
 
     Super Class:
         StateModel
@@ -30,7 +30,7 @@ class Arena(StateModel):
     _id: int
     _game: Game
     _board: Board
-    _player_binder: PlayerArchetypeBinder
+    _player_binder: PlayerBinder
     _state: ArenaState
     
     def __init__(
@@ -38,14 +38,14 @@ class Arena(StateModel):
             id: int,
             game: Game,
             board: Board,
-            player_binder: PlayerArchetypeBinder,
+            player_binder: PlayerBinder,
     ):
         """
         Args:
             id: int
             game: Game
             board: Board
-            player_binder: PlayerColorBinder
+            player_binder: PlayerArchetypeBinder
         """
         super().__init__(id=id)
         self._game = game
@@ -66,7 +66,7 @@ class Arena(StateModel):
         return self._board
     
     @property
-    def player_binder(self) ->PlayerArchetypeBinder:
+    def player_binder(self) ->PlayerBinder:
         return self._player_binder
     
     @property

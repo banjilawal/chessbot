@@ -16,11 +16,11 @@ from err import RegisterCarrierEmptyException
 
 __all__ = [
     # ======================# VECTOR_REGISTER_CARRIER_EMPTY_ERROR #======================#
-    "VectorRegisterCarrierEmptyException",
+    "VectorRegisterEmptyException",
 ]
 
 # ======================# VECTOR_REGISTER_CARRIER_EMPTY_ERROR #======================#
-class VectorRegisterCarrierEmptyException(RegisterCarrierEmptyException):
+class VectorRegisterEmptyException(RegisterCarrierEmptyException):
     """
     Role:
         - Error Tracing

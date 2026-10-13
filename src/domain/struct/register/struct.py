@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
+from abc import ABC, abstractmethod
 from typing import Dict, Generic, List, Optional, TypeVar
 
 from domain import SearchableModel, Struct
@@ -56,7 +56,6 @@ class Register(Struct, ABC, Generic[T]):
         """
         self._a = a
         self._b = b
-        self._id = id
     
     @property
     def a(self) -> T:
@@ -67,20 +66,12 @@ class Register(Struct, ABC, Generic[T]):
         return self._b
     
     @property
-    def id(self) -> Optional[int]:
-        return self._id
-    
-    @property
-    def to_list(self) -> List[T]:
-        return [self._a, self._b]
-    
-    @property
     def to_dict(self) -> Dict[str, T]:
         return {"a": self._a, "b": self._b}
     
     @property
     def size(self) -> int:
-        return len(self.to_list)
+        return len(self.to_dict)
     
     @property
     def is_empty(self) -> bool:
@@ -91,8 +82,16 @@ class Register(Struct, ABC, Generic[T]):
         return self.size == 2
     
     @property
+    def consistency_exists(self) -> bool:
+        if self is None or self.is_half_full:
+            return False
+        return True
+    
+    @property
+    def is_not_consistent(self) -> bool:
+        return not self.consistency_exists
+    
+    @property
     def is_half_full(self) -> bool:
-        return not (
-                self.is_empty and self.is_full
-        )
+        return self.size == 1
     

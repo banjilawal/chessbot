@@ -9,13 +9,12 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from typing import Dict, List
+from typing import Dict
 
-from config import GameColor
 from domain import Archetype, ArchetypeBinder, Player
 
 
-class PlayerArchetypeBinder(ArchetypeBinder[Player]):
+class PlayerBinder(ArchetypeBinder[Player]):
     """
     Role:
         - Mapper
@@ -26,16 +25,14 @@ class PlayerArchetypeBinder(ArchetypeBinder[Player]):
     Attributes:
         white_player: Player
         black_player: Player
+        to_dict: Dict[str, Player]
         
     Provides:
-        players_are_same: bool
-        players_differ: bool
-        to_dict: Dict[GameColor, Dict[Archetype, Player]]
         
     Super Class:
-       ColorBinder
+       ArchetypeBinder
     """
-    _entry: Dict[GameColor, Dict[Archetype, Player]]
+    _entry: Dict[Archetype, Player]
     
     def __init__(
             self,
@@ -49,41 +46,36 @@ class PlayerArchetypeBinder(ArchetypeBinder[Player]):
         """
         super().__init__()
         self._entry = {
-            GameColor.WHITE: {Archetype.WHITE: white_player},
-            GameColor.BLACK: {Archetype.BLACK: black_player},
+            white_player.archetype: white_player,
+            black_player.archetype: black_player,
         }
     
     @property
     def white_player(self) -> Player:
-        return self._entry[GameColor.WHITE][Archetype.WHITE]
+        return self._entry[Archetype.WHITE]
     
     @property
     def black_player(self) -> Player:
-        return self._entry[GameColor.BLACK][Archetype.BLACK]
+        return self._entry[Archetype.BLACK]
     
     @property
-    def players(self) -> List[Player]:
-        return [self.white_player, self.black_player]
+    def entries_are_unique(self) -> bool:
+        return self.is_full and self.white_player != self.black_player
     
     @property
-    def players_are_not_unique(self) -> bool:
-        return not self.players_are_unique
-    
-    @property
-    def players_are_unique(self) -> bool:
-        return self.white_player != self.black_player
+    def entries_are_not_unique(self) -> bool:
+        return self.is_full and self.white_player == self.black_player
     
     @property
     def consistency_exists(self) -> bool:
-        if self.players_are_not_unique:
+        if super().is_not_consistent:
             return False
-        if (
-                self.white_player.archetype != Archetype.WHITE or
-                self.black_player.archetype != Archetype.BLACK
-        ):
+        if self.entries_are_not_unique:
             return False
-        if self.is_empty:
-            return True
+        if self.white_player.archetype == Archetype.BLACK:
+            return False
+        if self.black_player.archetype == Archetype.WHITE:
+            return False
         return True
     
     @property

@@ -13,7 +13,7 @@ from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
 from assurance import NodeLoader, VectorNodeValidatorToolkit
-from domain import VectorNode, VectorNodePrimeExtract
+from domain import VectorNode, VectorNode
 from err import (
     EmptyVectorNodeCarrierException, VectorNodeLoaderException,
     VectorNodeValidationRequestNullException
@@ -41,7 +41,7 @@ class VectorNodeLoader(NodeLoader[VectorNode]):
     Provides:
         -   def execute(
                     candidate: Any
-            ) -> ValidationResult[VectorNodePrimeExtract[T]
+            ) -> ValidationResult[VectorNode[T]
 
     Super Class:
         NodeLoader
@@ -62,9 +62,9 @@ class VectorNodeLoader(NodeLoader[VectorNode]):
         return cast(VectorNodeValidatorToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[VectorNodePrimeExtract]:
+    def execute(self, candidate: Any) -> ValidationResult[VectorNode]:
         """
-        Extract the VectorNodeBlueprint to validate the candidate.
+        Model the VectorNodeBlueprint to validate the candidate.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
@@ -74,13 +74,13 @@ class VectorNodeLoader(NodeLoader[VectorNode]):
                         -   Null
                         -   Not a VectorNodeCarrier
                         -   An empty VectorNodeCarrier.
-                -   A blueprint cannot be extracted from the carrier.
-            2.  Otherwise, pack the original carrier and the blueprint in a VectorNodePrimeExtract
+                -   A blueprint cannot be modeled from the carrier.
+            2.  Otherwise, pack the original carrier and the blueprint in a VectorNode
                 for the success result.
         Args:
             candidate: Any
         Returns:
-            ValidationResult[VectorNodePrimeExtract]
+            ValidationResult[VectorNode]
         Raises:
             VectorNodeLoaderException
         """
@@ -107,12 +107,12 @@ class VectorNodeLoader(NodeLoader[VectorNode]):
         request = cast(Type[VectorNodeValidationRequest], priming.payload)
         
         # Handle the case that request.item is the wrong carrier type.
-        carrier_validation = self.toolkit.priming_validator.execute(
+        model_validation = self.toolkit.priming_validator.execute(
             candidate=request.item,
-            target_model=self.toolkit.types.carrier,
-            null_exception=self.toolkit.nulls.carrier,
+            target_model=self.toolkit.types.model,
+            null_exception=self.toolkit.nulls.model,
         )
-        if carrier_validation.is_failure:
+        if model_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 VectorNodeLoaderException(
@@ -120,12 +120,12 @@ class VectorNodeLoader(NodeLoader[VectorNode]):
                     cls_name=self.__class__.__name__,
                     msg=VectorNodeLoaderException.MSG,
                     err_code=VectorNodeLoaderException.ERR_CODE,
-                    ex=carrier_validation.exception,
+                    ex=model_validation.exception,
                 )
             )
-        # --- Cast carrier_validation payload to carrier then extract blueprint. ---#
-        carrier = cast(VectorNodeCarrier, carrier_validation.payload)
-        blueprint = carrier.extract_blueprint()
+        # --- Cast model_validation payload to carrier then model blueprint. ---#
+        carrier = cast(VectorNodeCarrier, model_validation.payload)
+        blueprint = carrier.model_blueprint()
         
         # Handle the case that the blueprint is null.
         if blueprint is None:
@@ -145,5 +145,5 @@ class VectorNodeLoader(NodeLoader[VectorNode]):
                 )
             )
         # --- Send the work product. ---#
-        extract = VectorNodePrimeExtract(reference=carrier, blueprint=blueprint)
-        return ValidationResult.success(extract)
+        model = VectorNode(reference=carrier, blueprint=blueprint)
+        return ValidationResult.success(model)

@@ -14,7 +14,7 @@ from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
 from assurance import NodeValidatorToolkit, StructLoader
-from domain import Node, NodePrimeExtract
+from domain import Node, Node
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Node")
@@ -35,7 +35,7 @@ class NodeLoader(StructLoader[T], ABC, Generic[T]):
     Provides:
         -   def execute(
                     candidate: Any
-            ) -> ValidationResult[NodePrimeExtract[T]
+            ) -> ValidationResult[Node[T]
 
     Super Class:
         Loader
@@ -54,14 +54,14 @@ class NodeLoader(StructLoader[T], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[NodePrimeExtract[T]]:
+    def execute(self, candidate: Any) -> ValidationResult[Node[T]]:
         """
-        Extract a safe NodeBlueprint from the candidate.
+        Model a safe NodeBlueprint from the candidate.
         Args:
             candidate: Any
         Returns:
             ValidationResult[NodeBlueprint[T]]
         Raises:
-            NodeExtractorException
+            NodeValidatorException
         """
         pass

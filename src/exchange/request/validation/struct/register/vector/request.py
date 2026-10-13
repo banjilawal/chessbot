@@ -13,7 +13,6 @@ from typing import cast
 
 from domain import VectorRegister
 from exchange import RegisterValidationRequest
-from transit import VectorRegisterCarrier
 
 
 class VectorRegisterValidationRequest(
@@ -37,7 +36,7 @@ class VectorRegisterValidationRequest(
         RegisterValidationRequest
      """
     
-    def __init__(self, id: int, item: VectorRegisterCarrier):
+    def __init__(self, id: int, item: VectorRegister):
         """
         Args:
             id: int
@@ -46,8 +45,8 @@ class VectorRegisterValidationRequest(
         super().__init__(id=id, item=item)
     
     @property
-    def item(self) -> VectorRegisterCarrier:
-        return cast(VectorRegisterCarrier, super().item)
+    def item(self) -> VectorRegister:
+        return cast(VectorRegister, super().item)
     
     def __eq__(self, other):
         if other is self: return True

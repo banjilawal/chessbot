@@ -13,7 +13,7 @@ from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
 from assurance import NodeLoader, EncounterWarningNodeValidatorToolkit
-from domain import EncounterWarningNode, EncounterWarningNodePrimeExtract
+from domain import EncounterWarningNode, EncounterWarningNode
 from err import (
     EncounterWarningNodeCarrierEmptyException, EncounterWarningNodeLoaderException,
     EncounterWarningNodeValidationRequestNullException
@@ -41,7 +41,7 @@ class EncounterWarningNodeLoader(NodeLoader[EncounterWarningNode]):
     Provides:
         -   def execute(
                     candidate: Any
-            ) -> ValidationResult[EncounterWarningNodePrimeExtract[T]
+            ) -> ValidationResult[EncounterWarningNode[T]
 
     Super Class:
         NodeLoader
@@ -62,9 +62,9 @@ class EncounterWarningNodeLoader(NodeLoader[EncounterWarningNode]):
         return cast(EncounterWarningNodeValidatorToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[EncounterWarningNodePrimeExtract]:
+    def execute(self, candidate: Any) -> ValidationResult[EncounterWarningNode]:
         """
-        Extract the EncounterWarningNodeBlueprint to validate the candidate.
+        Model the EncounterWarningNodeBlueprint to validate the candidate.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
@@ -74,13 +74,13 @@ class EncounterWarningNodeLoader(NodeLoader[EncounterWarningNode]):
                         -   Null
                         -   Not a EncounterWarningNodeCarrier
                         -   An empty EncounterWarningNodeCarrier.
-                -   A blueprint cannot be extracted from the carrier.
-            2.  Otherwise, pack the original carrier and the blueprint in a EncounterWarningNodePrimeExtract
+                -   A blueprint cannot be modeled from the carrier.
+            2.  Otherwise, pack the original carrier and the blueprint in a EncounterWarningNode
                 for the success result.
         Args:
             candidate: Any
         Returns:
-            ValidationResult[EncounterWarningNodePrimeExtract]
+            ValidationResult[EncounterWarningNode]
         Raises:
             EncounterWarningNodeLoaderException
         """
@@ -107,12 +107,12 @@ class EncounterWarningNodeLoader(NodeLoader[EncounterWarningNode]):
         request = cast(Type[EncounterWarningNodeValidationRequest], priming.payload)
         
         # Handle the case that request.item is the wrong carrier type.
-        carrier_validation = self.toolkit.priming_validator.execute(
+        model_validation = self.toolkit.priming_validator.execute(
             candidate=request.item,
-            target_model=self.toolkit.types.carrier,
-            null_exception=self.toolkit.nulls.carrier,
+            target_model=self.toolkit.types.model,
+            null_exception=self.toolkit.nulls.model,
         )
-        if carrier_validation.is_failure:
+        if model_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 EncounterWarningNodeLoaderException(
@@ -120,12 +120,12 @@ class EncounterWarningNodeLoader(NodeLoader[EncounterWarningNode]):
                     cls_name=self.__class__.__name__,
                     msg=EncounterWarningNodeLoaderException.MSG,
                     err_code=EncounterWarningNodeLoaderException.ERR_CODE,
-                    ex=carrier_validation.exception,
+                    ex=model_validation.exception,
                 )
             )
-        # --- Cast carrier_validation payload to carrier then extract blueprint. ---#
-        carrier = cast(EncounterWarningNodeCarrier, carrier_validation.payload)
-        blueprint = carrier.extract_blueprint()
+        # --- Cast model_validation payload to carrier then model blueprint. ---#
+        carrier = cast(EncounterWarningNodeCarrier, model_validation.payload)
+        blueprint = carrier.model_blueprint()
         
         # Handle the case that the blueprint is null.
         if blueprint is None:
@@ -145,5 +145,5 @@ class EncounterWarningNodeLoader(NodeLoader[EncounterWarningNode]):
                 )
             )
         # --- Send the work product. ---#
-        extract = EncounterWarningNodePrimeExtract(reference=carrier, blueprint=blueprint)
-        return ValidationResult.success(extract)
+        model = EncounterWarningNode(reference=carrier, blueprint=blueprint)
+        return ValidationResult.success(model)

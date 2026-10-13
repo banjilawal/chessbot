@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from artifcat import TurnResult
-from domain import PlayerArchetypeBinder
+from domain import PlayerBinder
 from util import LoggingLevelRouter
 
 
@@ -22,7 +22,7 @@ class TurnReferee:
         """
     
     @LoggingLevelRouter.monitor
-    def execute(self, players: PlayerArchetypeBinder) -> TurnResult:
+    def execute(self, players: PlayerBinder) -> TurnResult:
         pass
         
     

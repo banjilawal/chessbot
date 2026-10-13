@@ -14,7 +14,7 @@ from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
 from assurance import ChartValidatorToolkit, StructLoader
-from domain import Chart, ChartPrimeExtract
+from domain import Chart, Chart
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Chart")
@@ -35,7 +35,7 @@ class ChartLoader(StructLoader[T], ABC, Generic[T]):
     Provides:
         -   def execute(
                     candidate: Any
-            ) -> ValidationResult[ChartPrimeExtract[T]
+            ) -> ValidationResult[Chart[T]
 
     Super Class:
         Loader
@@ -54,14 +54,14 @@ class ChartLoader(StructLoader[T], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[ChartPrimeExtract[T]]:
+    def execute(self, candidate: Any) -> ValidationResult[Chart[T]]:
         """
-        Extract a safe ChartBlueprint from the candidate.
+        Model a safe ChartBlueprint from the candidate.
         Args:
             candidate: Any
         Returns:
             ValidationResult[ChartBlueprint[T]]
         Raises:
-            ChartExtractorException
+            ChartValidatorException
         """
         pass

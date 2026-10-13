@@ -16,17 +16,17 @@ from err import ValidatorException
 
 __all__ = [
     # ======================# GAME_PLAYER_COLOR_BINDER_VALIDATOR_FAILURE #======================#
-    "GamePlayerColorBinderValidatorException",
+    "GamePlayerArchetypeBinderValidatorException",
 ]
 
 # ======================# GAME_PLAYER_COLOR_BINDER_VALIDATOR_FAILURE #======================#
-class GamePlayerColorBinderValidatorException(ValidatorException):
+class GamePlayerArchetypeBinderValidatorException(ValidatorException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating assurance by a GamePlayerColorBinderValidator
+        1.  Indicating assurance by a GamePlayerArchetypeBinderValidator
             failed.
 
     Attributes:
@@ -44,7 +44,7 @@ class GamePlayerColorBinderValidatorException(ValidatorException):
     Super Class:
         ValidatorException
     """
-    MSG = "GamePlayerColorBinderValidator failed."
+    MSG = "GamePlayerArchetypeBinderValidator failed."
     ERR_CODE = "GAME_PLAYER_COLOR_BINDER_VALIDATOR_FAILURE"
     
     def __init__(

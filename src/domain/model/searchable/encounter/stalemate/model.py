@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from domain import KingToken, Encounter, Maneuver, PlayerArchetypeBinder, Square, Token
+from domain import KingToken, Encounter, Maneuver, PlayerBinder, Square, Token
 
 
 class StalemateEncounter(Encounter):
@@ -61,7 +61,7 @@ class StalemateEncounter(Encounter):
         )
         
     @property
-    def enemies(self) -> PlayerArchetypeBinder:
+    def enemies(self) -> PlayerBinder:
         return self.attacker_maneuver.traveler.team.board.arena.player_binder
 
     def __eq__(self, other) -> bool:

@@ -11,22 +11,22 @@ from __future__ import annotations
 
 from typing import Optional
 
-from err import ColorBinderOverCapacityException
+from err import ArchetypeBinderOverCapacityException
 
 _all_ = [
     # ======================# BOARD_TEAM_COLOR_BINDER_OVER_CAPACITY #======================#
     "BoardTeamBinderOverCapacityException",
 ]
 # ======================# BOARD_TEAM_COLOR_BINDER_OVER_CAPACITY #======================#
-class BoardTeamColorBinderOverCapacityException(
-    ColorBinderOverCapacityException
+class BoardTeamArchetypeBinderOverCapacityException(
+    ArchetypeBinderOverCapacityException
 ):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required BoardTeamColorBinder is over its capacity.
+        1.  Indicating a required BoardTeamArchetypeBinder is over its capacity.
 
     Attributes:
             msg: Optional[str]
@@ -43,7 +43,7 @@ class BoardTeamColorBinderOverCapacityException(
     Super Class:
         BinderOverCapacityException
     """
-    MSG = "BoardTeamColorBinder is over its capacity."
+    MSG = "BoardTeamArchetypeBinder is over its capacity."
     ERR_CODE = "BOARD_TEAM_COLOR_BINDER_OVER_CAPACITY"
     
     def _init_(

@@ -20,7 +20,7 @@ _all_ = [
 ]
 
 # ======================# BINDER_OVER_CAPACITY #======================#
-class ColorBinderOverCapacityException(ExcessiveCapacityException):
+class ArchetypeBinderOverCapacityException(ExcessiveCapacityException):
     """
     Role:
         - Error Tracing

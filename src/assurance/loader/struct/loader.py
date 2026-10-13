@@ -14,7 +14,7 @@ from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
 from assurance import Loader, StructValidatorToolkit
-from domain import Struct, StructPrimeExtract
+from domain import Struct, Struct
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Struct")
@@ -28,14 +28,14 @@ class StructLoader(Loader[T], ABC, Generic[T]):
         1.  Run type safety checks on a Candidate for:
             -   StructValidationRequest[T]
             -   StructCarrier[T]
-            -   StructBlueprint[T]
+            -   T
 
     Attributes:
 
     Provides:
         -   def execute(
                     candidate: Any
-            ) -> ValidationResult[StructPrimeExtract[T]
+            ) -> ValidationResult[T]
 
     Super Class:
         Loader
@@ -54,14 +54,14 @@ class StructLoader(Loader[T], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[StructPrimeExtract[T]]:
+    def execute(self, candidate: Any) -> ValidationResult[T]:
         """
-        Extract a safe StructBlueprint from the candidate.
+        Model a safe StructBlueprint from the candidate.
         Args:
             candidate: Any
         Returns:
-            ValidationResult[StructBlueprint[T]]
+            ValidationResult[T]
         Raises:
-            StructExtractorException
+            StructValidatorException
         """
         pass

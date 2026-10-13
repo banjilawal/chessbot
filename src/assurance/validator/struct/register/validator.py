@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import RegisterValidatorToolkit, StructValidator
+from assurance import RegisterLoader, RegisterValidatorToolkit, StructValidator
 from domain import Register
 from transit import RegisterCarrier
 from util import LoggingLevelRouter
@@ -31,7 +31,7 @@ class RegisterValidator(StructValidator[T], ABC, Generic[T]):
         2.  Run safety checks on structs and blueprints inside an EntityCarrier's payload.
 
     Attributes:
-        loader: RegisterValidatorToolkit[T]
+        loader: RegisterLoader[T]
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[StructCarrier[T]]:
@@ -40,12 +40,12 @@ class RegisterValidator(StructValidator[T], ABC, Generic[T]):
         StructValidator
     """
     
-    def __init__(self, loader: RegisterValidatorToolkit[T]):
+    def __init__(self, loader: RegisterLoader[T]):
         """
         Args:
             loader: RegisterValidatorToolkit[T]
         """
-        super().__init__(toolkit=toolkit)
+        super().__init__(loader=loader)
     
     @property
     def toolkit(self) -> RegisterValidatorToolkit[T]:

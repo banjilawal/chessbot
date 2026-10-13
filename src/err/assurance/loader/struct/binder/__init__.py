@@ -13,6 +13,5 @@ version: 0.0.2
 from .team import *
 from .player import *
 
-
 # Modules
 from .exception import BinderLoaderException

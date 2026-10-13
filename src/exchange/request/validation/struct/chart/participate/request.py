@@ -13,7 +13,7 @@ from typing import cast
 
 from domain import Participation
 from exchange import ChartValidationRequest
-from transit import ParticipationCarrier
+from transit import Participation
 
 
 class ParticipationValidationRequest(ChartValidationRequest[Participation]):
@@ -35,7 +35,7 @@ class ParticipationValidationRequest(ChartValidationRequest[Participation]):
         ChartValidationRequest
      """
     
-    def __init__(self, id: int, item: ParticipationCarrier):
+    def __init__(self, id: int, item: Participation):
         """
         Args:
             id: int
@@ -44,8 +44,8 @@ class ParticipationValidationRequest(ChartValidationRequest[Participation]):
         super().__init__(id=id, item=item)
     
     @property
-    def item(self) -> ParticipationCarrier:
-        return cast(ParticipationCarrier, super().item)
+    def item(self) -> Participation:
+        return cast(Participation, super().item)
     
     def __eq__(self, other):
         if other is self: return True

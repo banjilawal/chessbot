@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import NullException
+from err import StructNullException
 
 __all__ = [
     # ======================# ARCHETYPE_BINDER_NULL_ERROR #======================#
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# ARCHETYPE_BINDER_NULL_ERROR #======================#
-class ArchetypeBinderNullException(NullException):
+class ArchetypeBinderNullException(StructNullException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class ArchetypeBinderNullException(NullException):
     Provides:
 
     Super Class:
-        NullException
+        StructNullException
     """
     MSG = "ArchetypeBinder cannot be null."
     ERR_CODE = "ARCHETYPE_BINDER_NULL_ERROR"

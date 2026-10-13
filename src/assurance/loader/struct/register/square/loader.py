@@ -13,13 +13,12 @@ from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
 from assurance import RegisterLoader, SquareRegisterValidatorToolkit
-from domain import SquareRegister, SquareRegisterPrimeExtract
+from domain import SquareRegister
 from err import (
-    SquareRegisterCarrierEmptyException, SquareRegisterLoaderException,
+    SquareRegisterConsistencyException, SquareRegisterEmptyException, SquareRegisterLoaderException,
     SquareRegisterValidationRequestNullException
 )
 from exchange import SquareRegisterValidationRequest
-from transit import SquareRegisterCarrier
 
 from util import LoggingLevelRouter
 
@@ -32,7 +31,7 @@ class SquareRegisterLoader(RegisterLoader[SquareRegister]):
     Responsibilities:
         1.  Run type safety checks on a Candidate for:
             -   SquareRegisterValidationRequest
-            -   SquareRegisterCarrier
+            -   SquareRegister
             -   SquareRegisterBlueprint
 
     Attributes:
@@ -41,7 +40,7 @@ class SquareRegisterLoader(RegisterLoader[SquareRegister]):
     Provides:
         -   def execute(
                     candidate: Any
-            ) -> ValidationResult[SquareRegisterPrimeExtract[T]
+            ) -> ValidationResult[SquareRegister[T]
 
     Super Class:
         RegisterLoader
@@ -62,9 +61,9 @@ class SquareRegisterLoader(RegisterLoader[SquareRegister]):
         return cast(SquareRegisterValidatorToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[SquareRegisterPrimeExtract]:
+    def execute(self, candidate: Any) -> ValidationResult[SquareRegister]:
         """
-        Extract the SquareRegisterBlueprint to validate the candidate.
+        Model the SquareRegisterBlueprint to validate the candidate.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
@@ -72,15 +71,15 @@ class SquareRegisterLoader(RegisterLoader[SquareRegister]):
                 -   The candidate is null or not a SquareRegisterValidatorRequest.
                 -   The request payload is either:
                         -   Null
-                        -   Not a SquareRegisterCarrier
-                        -   An empty SquareRegisterCarrier.
-                -   A blueprint cannot be extracted from the carrier.
-            2.  Otherwise, pack the original carrier and the blueprint in a SquareRegisterPrimeExtract
+                        -   Not a SquareRegister
+                        -   An empty SquareRegister.
+                -   A blueprint cannot be modeled from the carrier.
+            2.  Otherwise, pack the original carrier and the blueprint in a SquareRegister
                 for the success result.
         Args:
             candidate: Any
         Returns:
-            ValidationResult[SquareRegisterPrimeExtract]
+            ValidationResult[SquareRegister]
         Raises:
             SquareRegisterLoaderException
         """
@@ -107,12 +106,12 @@ class SquareRegisterLoader(RegisterLoader[SquareRegister]):
         request = cast(Type[SquareRegisterValidationRequest], priming.payload)
         
         # Handle the case that request.item is the wrong carrier type.
-        carrier_validation = self.toolkit.priming_validator.execute(
+        model_validation = self.toolkit.priming_validator.execute(
             candidate=request.item,
-            target_model=self.toolkit.types.carrier,
-            null_exception=self.toolkit.nulls.carrier,
+            target_model=self.toolkit.types.model,
+            null_exception=self.toolkit.nulls.model,
         )
-        if carrier_validation.is_failure:
+        if model_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 SquareRegisterLoaderException(
@@ -120,30 +119,10 @@ class SquareRegisterLoader(RegisterLoader[SquareRegister]):
                     cls_name=self.__class__.__name__,
                     msg=SquareRegisterLoaderException.MSG,
                     err_code=SquareRegisterLoaderException.ERR_CODE,
-                    ex=carrier_validation.exception,
+                    ex=model_validation.exception,
                 )
             )
-        # --- Cast carrier_validation payload to carrier then extract blueprint. ---#
-        carrier = cast(SquareRegisterCarrier, carrier_validation.payload)
-        blueprint = carrier.extract_blueprint()
-        
-        # Handle the case that the blueprint is null.
-        if blueprint is None:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                SquareRegisterLoaderException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=SquareRegisterLoaderException.MSG,
-                    err_code=SquareRegisterLoaderException.ERR_CODE,
-                    ex=SquareRegisterCarrierEmptyException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=SquareRegisterCarrierEmptyException.MSG,
-                        err_code=SquareRegisterCarrierEmptyException.ERR_CODE,
-                    ),
-                )
-            )
+        # --- Cast model_validation payload to carrier then model blueprint. ---#
+        model = cast(SquareRegister, model_validation.payload)
         # --- Send the work product. ---#
-        extract = SquareRegisterPrimeExtract(reference=carrier, blueprint=blueprint)
-        return ValidationResult.success(extract)
+        return ValidationResult.success(model)
