@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== ASSURANCE.VALIDATOR.STRUCT PACKAGE ===========#
 
 # Packages
+from .binder import *
 from .chart import *
 from .register import *
 
