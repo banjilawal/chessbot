@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, Type, cast
+from typing import Dict, Optional, Type, cast
 
 from domain import RegisterBlueprint, Vector, VectorRegister
 from err import VectorRegisterNullException
@@ -50,8 +50,8 @@ class VectorRegisterBlueprint(RegisterBlueprint[VectorRegister, Vector]):
             domain_null_exception: Optional[VectorRegisterNullException]
         """
         super().__init__(
-            a = u,
-            b = v,
+            a=u,
+            b=v,
             domain_class=domain_class or VectorRegister,
             domain_null_exception=domain_null_exception or VectorRegisterNullException(),
         )
@@ -73,11 +73,30 @@ class VectorRegisterBlueprint(RegisterBlueprint[VectorRegister, Vector]):
         return self.v
     
     @property
+    def u_is_v(self) -> bool:
+        return self.u == self.v
+    
+    @property
+    def u_is_not_v(self) -> bool:
+        return not self.u_is_v
+    
+    @property
+    def a_is_b(self) -> bool:
+        return self.u_is_v
+    
+    @property
+    def to_dict(self) -> Dict[str, Vector]:
+        return {
+            "u": self.u,
+            "v": self.v,
+        }
+    
+    @property
     def domain_class(self) -> Type[VectorRegister]:
         return cast(Type[VectorRegister], super().domain_class)
     
     @property
     def domain_null_exception(self) -> VectorRegisterNullException:
         return cast(VectorRegisterNullException, super().domain_null_exception)
-    
+
     

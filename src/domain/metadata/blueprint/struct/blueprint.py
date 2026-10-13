@@ -1,9 +1,9 @@
-# src/domain/metadata/blueprint/struct/blueprint.py
+# src/domain/struct/blueprint.py
 
 """
-Module: domain.metadata.blueprint.struct.blueprint
+Module: domain.struct.blueprint
 Author: Banji Lawal
-Created: 2026-04-03
+Created: 2026-03-30
 version: 0.0.2
 """
 
@@ -12,12 +12,12 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Dict, Generic, Type, TypeVar, cast
 
-from domain import Blueprint, Model, Struct
+from domain import Blueprint, Struct
 from err import StructNullException
 
-
 S = TypeVar("S", bound="Struct")
-M = TypeVar("M", bound="Model")
+M = TypeVar("M")
+
 
 class StructBlueprint(Blueprint[S], ABC, Generic[S, M]):
     """
@@ -39,7 +39,7 @@ class StructBlueprint(Blueprint[S], ABC, Generic[S, M]):
     
     def __init__(
             self,
-            domain_class: Type[Struct],
+            domain_class: Type[S],
             domain_null_exception: StructNullException,
     ):
         """
@@ -66,16 +66,6 @@ class StructBlueprint(Blueprint[S], ABC, Generic[S, M]):
     
     @property
     @abstractmethod
-    def is_balanced(self) -> bool:
-        pass
-    
-    @property
-    @abstractmethod
-    def is_not_balanced(self) -> bool:
-        pass
-    
-    @property
-    @abstractmethod
     def to_dict(self) -> Dict[str, M]:
         pass
     
@@ -86,5 +76,5 @@ class StructBlueprint(Blueprint[S], ABC, Generic[S, M]):
     @property
     def domain_null_exception(self) -> StructNullException:
         return cast(StructNullException, super().domain_null_exception)
-    
+
     

@@ -1,7 +1,7 @@
-# src/domain/metadata/blueprint/struct/register/blueprint.py
+# src/domain/struct/register/blueprint.py
 
 """
-Module: domain.metadata.blueprint.struct.register.blueprint
+Module: domain.struct.register.blueprint
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,15 +9,15 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
+from abc import ABC, abstractmethod
 from typing import Dict, Generic, Type, TypeVar, cast
 
 from domain import Model, Register, StructBlueprint
 from err import RegisterNullException
 
-
 S = TypeVar("S", bound="Register")
 M = TypeVar("M", bound="Model")
+
 
 class RegisterBlueprint(StructBlueprint[S, M], ABC, Generic[S, M]):
     """
@@ -28,13 +28,15 @@ class RegisterBlueprint(StructBlueprint[S, M], ABC, Generic[S, M]):
          1.  Provide attributes for hydrating a Register.
 
      Attributes:
-         domain_class: Type[S]
-         domain_null_exception: RegisterNullException
+        a: M
+        b: M
+        domain_class: Type[S]
+        domain_null_exception: RegisterNullException
 
      Provides:
 
      Super Class:
-        Blueprint
+        StructBlueprint
      """
     _a: M
     _b: M
@@ -59,7 +61,7 @@ class RegisterBlueprint(StructBlueprint[S, M], ABC, Generic[S, M]):
         )
         self._a = a
         self._b = b
-        
+    
     @property
     def a(self) -> M:
         return self._a
@@ -69,8 +71,13 @@ class RegisterBlueprint(StructBlueprint[S, M], ABC, Generic[S, M]):
         return self._b
     
     @property
-    def to_dict(self) -> Dict[str, T]:
-        return {"a": self._a, "b": self._b}
+    @abstractmethod
+    def a_is_b(self) -> bool:
+        pass
+    
+    @property
+    def a_is_not_b(self) -> bool:
+        return not self.a_is_b
     
     @property
     def size(self) -> int:
@@ -79,6 +86,10 @@ class RegisterBlueprint(StructBlueprint[S, M], ABC, Generic[S, M]):
     @property
     def is_empty(self) -> bool:
         return self.size == 0
+    
+    @property
+    def not_empty(self) -> bool:
+        return not self.is_empty
     
     @property
     def is_balanced(self) -> bool:
@@ -103,11 +114,15 @@ class RegisterBlueprint(StructBlueprint[S, M], ABC, Generic[S, M]):
         return not self.consistency_exists
     
     @property
+    def to_dict(self) -> Dict[str, M]:
+        return {"a": self._a, "b": self._b}
+    
+    @property
     def domain_class(self) -> Type[S]:
         return cast(Type[S], super().domain_class)
     
     @property
     def domain_null_exception(self) -> RegisterNullException:
         return cast(RegisterNullException, super().domain_null_exception)
-    
+
     

@@ -72,6 +72,10 @@ class VectorRegister(Register[Vector]):
         return not self.u_is_v
     
     @property
+    def a_is_b(self) -> bool:
+        return self.u_is_v
+    
+    @property
     def to_list(self) -> List[Vector]:
         return [self.u, self.v]
     
@@ -91,4 +95,5 @@ class VectorRegister(Register[Vector]):
                     self.v == other.v
             )
         return False
+
     

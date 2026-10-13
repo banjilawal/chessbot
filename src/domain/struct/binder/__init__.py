@@ -14,4 +14,4 @@ from .team import *
 from .player import *
 
 # Modules
-from .binder import ArchetypeBinder
+from .struct import ArchetypeBinder

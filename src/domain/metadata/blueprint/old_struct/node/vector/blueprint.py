@@ -74,12 +74,6 @@ class VectorNodeBlueprint(NodeBlueprint[VectorNode]):
     def previous(self) -> Optional[Vector]:
         return self._previous
     
-    @property
-    def domain_class(self) -> Type[VectorNode]:
-        return cast(Type[VectorNode], super().domain_class)
-    
-    @property
-    def domain_null_exception(self) -> VectorNodeNullException:
-        return cast(VectorNodeNullException, super().domain_null_exception)
+
     
     

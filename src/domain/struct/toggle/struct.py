@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import abstractmethod
-from typing import Any, Dict, Generic, TypeVar
+from typing import Any, Dict, Generic, Optional, TypeVar
 
 from domain import SearchableModel, Struct
 
@@ -19,8 +19,8 @@ T = TypeVar("T", bound="SearchableModel")
 class Toggle(Struct, Generic[T]):
     _max_enabled_toggles: int
     
-    def __init(self, max_enabled_toggles: int | None = 1):
-        self._max_enabled_toggles = max_enabled_toggles
+    def __init(self, max_enabled_toggles: Optional[int] | None = None):
+        self._max_enabled_toggles = max_enabled_toggles or 1
         
     @property
     def max_enabled_toggles(self) -> int:
@@ -37,11 +37,24 @@ class Toggle(Struct, Generic[T]):
     @property
     def active_toggles(self) -> int:
         return len(self.to_dict)
-        
+    
+    @property
+    def size(self) -> int:
+        return len(self.to_dict)
+    
+    @property
+    def is_empty(self) -> bool:
+        return self.size == 0
+    
+    @property
+    def not_empty(self) -> bool:
+        return not self.is_empty
+    
     @property
     @abstractmethod
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> Dict[str, T]:
         pass
+
     
         
         

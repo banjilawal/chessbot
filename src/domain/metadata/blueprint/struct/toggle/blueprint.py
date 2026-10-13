@@ -1,24 +1,25 @@
-# src/domain/metadata/blueprint/struct/toggle/blueprint.py
+# src/domain/struct/toggle/struct.py
 
 """
-Module: domain.metadata.blueprint.struct.toggle.blueprint
+Module: domain.struct.toggle.struct
 Author: Banji Lawal
-Created: 2026-04-03
+Created: 2026-03-30
 version: 0.0.2
 """
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import Generic, Type, TypeVar, cast
+from abc import ABC, abstractmethod
+from typing import Dict, Generic, Optional, Type, TypeVar, cast
 
-from domain import Toggle, StructBlueprint
+from domain import StructBlueprint, Toggle
 from err import ToggleNullException
 
+S = TypeVar("S", bound="Toggle")
+M = TypeVar("M")
 
-T = TypeVar("T", bound="Toggle")
 
-class ToggleBlueprint(StructBlueprint[S], ABC, Generic[S]):
+class ToggleBlueprint(StructBlueprint[S, M], ABC, Generic[S, M]):
     """
      Role:
         1.  Metadata
@@ -35,21 +36,25 @@ class ToggleBlueprint(StructBlueprint[S], ABC, Generic[S]):
      Super Class:
         Blueprint
      """
+    _max_enabled_toggles: int
     
     def __init__(
             self,
             domain_class: Type[S],
-            domain_null_exception: ToggleNullException,
+            max_enabled_toggles: Optional[int] | None = None,
+            domain_null_exception: Optional[ToggleNullException] | None= None,
     ):
         """
         Args:
             domain_class: Type[S]
+            max_enabled_toggles: Optional[int]
             domain_null_exception: ToggleNullException
         """
         super().__init__(
             domain_class=domain_class,
-            domain_null_exception=domain_null_exception
+            domain_null_exception=domain_null_exception or ToggleNullException()
         )
+        self._max_enabled_toggles = max_enabled_toggles or 1
     
     @property
     def domain_class(self) -> Type[S]:
@@ -58,5 +63,40 @@ class ToggleBlueprint(StructBlueprint[S], ABC, Generic[S]):
     @property
     def domain_null_exception(self) -> ToggleNullException:
         return cast(ToggleNullException, super().domain_null_exception)
+        
+    @property
+    def max_enabled_toggles(self) -> int:
+        return self._max_enabled_toggles
+        
+    @property
+    def no_active_toggles(self) -> bool:
+        return self.active_toggles == 0
     
+    @property
+    def excess_active_toggles(self) -> bool:
+        return self.active_toggles > self._max_enabled_toggles
     
+    @property
+    def active_toggles(self) -> int:
+        return len(self.to_dict)
+    
+    @property
+    def size(self) -> int:
+        return len(self.to_dict)
+    
+    @property
+    def is_empty(self) -> bool:
+        return self.size == 0
+    
+    @property
+    def not_empty(self) -> bool:
+        return not self.is_empty
+    
+    @property
+    @abstractmethod
+    def to_dict(self) -> Dict[str, M]:
+        pass
+
+    
+        
+        

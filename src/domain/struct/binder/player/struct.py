@@ -20,7 +20,8 @@ class PlayerBinder(ArchetypeBinder[Player]):
         - Mapper
 
     Responsibility:
-        1.  Use GameColor to map Player to Archetype.
+        1.  Immutable data structure insuring uniqueness and consistency
+            between a Game's players.
         
     Attributes:
         white_player: Player

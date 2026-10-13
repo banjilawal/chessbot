@@ -1,16 +1,15 @@
-# src/domain/metadata/blueprint/struct/chart/participate/__init__.py
+# src/domain/struct/chart/participate/__init__.py
 
 """
-Module: domain.metadata.blueprint.struct.chart.participate.__init__
+Module: domain.struct.chart.participate.__init__
 Author: Banji Lawal
-Created: 2026-04-03
+Created: 2026-03-30
 version: 0.0.2
 """
 
-# =========== DOMAIN.METADATA.BLUEPRINT.STRUCT.CHART.PARTICIPATE PACKAGE ===========#
+# =========== DOMAIN.STRUCT.CHART PACKAGE ===========#
 
 # Packages
 
-
 # Modules
-from .blueprint import ParticipationBlueprint
+from .struct import Participation

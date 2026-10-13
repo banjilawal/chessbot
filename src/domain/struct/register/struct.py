@@ -34,9 +34,6 @@ class Register(Struct, ABC, Generic[T]):
     Attributes:
         a: T
         b: T
-        id: Optional[int]
-        to_list: List[T]
-        to_dict: Dict[str, T]
         
     Provides:
     
@@ -46,12 +43,11 @@ class Register(Struct, ABC, Generic[T]):
     _a: T
     _b: T
     
-    def __init__(self, a: T, b: T, id: Optional[int] | None = None):
+    def __init__(self, a: T, b: T):
         """
         Args:
             a: T
             b: T
-            id: Optional[int]
         """
         self._a = a
         self._b = b
@@ -65,8 +61,13 @@ class Register(Struct, ABC, Generic[T]):
         return self._b
     
     @property
-    def to_dict(self) -> Dict[str, T]:
-        return {"a": self._a, "b": self._b}
+    @abstractmethod
+    def a_is_b(self) -> bool:
+        pass
+    
+    @property
+    def a_is_not_b(self) -> bool:
+        return not self.a_is_b
     
     @property
     def is_balanced(self) -> bool:
@@ -89,6 +90,22 @@ class Register(Struct, ABC, Generic[T]):
     @property
     def is_not_consistent(self) -> bool:
         return not self.consistency_exists
+    
+    @property
+    def size(self) -> int:
+        return len(self.to_dict)
+    
+    @property
+    def is_empty(self) -> bool:
+        return self.size == 0
+    
+    @property
+    def not_empty(self) -> bool:
+        return not self.is_empty
+    
+    @property
+    def to_dict(self) -> Dict[str, T]:
+        return {"a": self._a, "b": self._b}
     
 
     

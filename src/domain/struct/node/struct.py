@@ -9,8 +9,8 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import Generic, Optional, TypeVar
+from abc import ABC, abstractmethod
+from typing import Dict, Generic, Optional, TypeVar
 
 from domain import Struct
 from domain import SearchableModel
@@ -78,31 +78,40 @@ class Node(Struct[T], ABC, Generic[T]):
         self._previous = other
         
     @property
-    def is_blank(self) -> bool:
+    def is_empty(self) -> bool:
         return (
                 self._payload is None and
                 self.does_not_have_orphan_pointers
         )
     
     @property
-    def is_not_blank(self):
-        return not self.is_blank
+    def is_not_empty(self):
+        return not self.is_empty
     
     @property
     def is_consistent(self) -> bool:
         return self.does_not_have_orphan_pointers
     
     @property
-    def is_not_consistent(self) -> bool:
-        return not self.is_consistent
+    def size(self) -> int:
+        return len([self._payload]) + self.number_of_pointers
+    
+    @property
+    def number_of_pointers(self) -> int:
+        return len([self._next, self._previous])
+    
+    @property
+    @abstractmethod
+    def to_dict(self) -> Dict[str, T]:
+        pass
     
     @property
     def has_orphan_pointers(self) -> bool:
-        return self._payload is None and self.has_neighbors 
+        return self._payload is None and self.has_neighbors
     
     @property
     def does_not_have_orphan_pointers(self) -> bool:
-        return self._payload is not None and self.has_orphan_pointers 
+        return not self.has_orphan_pointers
     
     @property
     def has_neighbors(self) -> bool:
@@ -111,10 +120,7 @@ class Node(Struct[T], ABC, Generic[T]):
     @property
     def does_not_have_neighbors(self) -> bool:
         return not self.has_neighbors
-    
-    @property
-    def number_of_pointers(self) -> int:
-        return len([self._next, self._previous])
+
     
     
         

@@ -12,9 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Dict, Generic, TypeVar
 
-from domain import SearchableModel
-
-T = TypeVar("T", bound="SearchableModel")
+T = TypeVar("T")
 
 
 class Struct(ABC, Generic[T]):
@@ -23,7 +21,7 @@ class Struct(ABC, Generic[T]):
         - Structural
 
     Responsibility:
-        1.  Provides struct and additional capabilities to a pure data object.
+        1.  Provides structure, consistency, and capabilities to pure date objects.
 
     Attributes:
 
@@ -43,16 +41,6 @@ class Struct(ABC, Generic[T]):
     @property
     def not_empty(self) -> bool:
         return not self.is_empty
-    
-    @property
-    @abstractmethod
-    def is_balanced(self) -> bool:
-        pass
-    
-    @property
-    @abstractmethod
-    def is_not_balanced(self) -> bool:
-        pass
     
     @property
     @abstractmethod

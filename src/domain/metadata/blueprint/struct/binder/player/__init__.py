@@ -1,16 +1,15 @@
-# src/domain/metadata/blueprint/struct/binder/player/__init__.py
+# src/domain/struct/binder/player/__init__.py
 
 """
-Module: domain.metadata.blueprint.struct.binder.player.__init__
+Module: domain.struct.binder.player.__init__
 Author: Banji Lawal
-Created: 2026-04-03
-version: 0.0.2
+Created: 2025-02-08
+version: 1.0.0
 """
 
-# =========== DOMAIN.METADATA.BLUEPRINT.STRUCT.BINDER.PLAYER PACKAGE ===========#
+# =========== DOMAIN.STRUCT.BINDER.PLAYER PACKAGE ===========#
 
 # Packages
 
-
 # Modules
-from .blueprint import PlayerBinderBlueprint
+from .struct import PlayerBinder

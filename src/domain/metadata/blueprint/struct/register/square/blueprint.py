@@ -24,9 +24,9 @@ class SquareRegisterBlueprint(RegisterBlueprint[SquareRegister, Square]):
          1.  Provide attributes for hydrating a SquareRegister.
 
      Attributes:
-        origin: Square
-        destination: Square
-        Optional[Type[SquareRegister]]
+        u: Square
+        v: Square
+        domain_class: Optional[Type[SquareRegister]]
         domain_null_exception: Optional[SquareRegisterNullException]
 
      Provides:
@@ -37,77 +37,59 @@ class SquareRegisterBlueprint(RegisterBlueprint[SquareRegister, Square]):
     
     def __init__(
             self,
-            origin: Square,
-            destination: Square,
+            u: Square,
+            v: Square,
             domain_class: Optional[Type[SquareRegister]] | None = None,
             domain_null_exception: Optional[SquareRegisterNullException] | None = None,
     ):
         """
         Args:
-            origin: Square
-            destination: Square
-            Optional[Type[SquareRegister]]
+            u: Square
+            v: Square
+            domain_class: Optional[Type[SquareRegister]]
             domain_null_exception: Optional[SquareRegisterNullException]
         """
         super().__init__(
-            a = origin,
-            b = destination,
+            a=u,
+            b=v,
             domain_class=domain_class or SquareRegister,
             domain_null_exception=domain_null_exception or SquareRegisterNullException(),
         )
     
     @property
-    def origin(self) -> Square:
+    def u(self) -> Square:
         return cast(Square, super().a)
     
     @property
     def a(self) -> Square:
-        return self.origin
+        return self.u
     
     @property
-    def destination(self) -> Square:
+    def v(self) -> Square:
         return cast(Square, super().b)
     
     @property
     def b(self) -> Square:
-        return self.destination
+        return self.v
     
     @property
-    def origin_is_destination(self) -> bool:
-        return self.origin == self.destination
+    def u_is_v(self) -> bool:
+        return self.u == self.v
     
     @property
-    def origin_is_not_destination(self) -> bool:
-        return not self.origin_is_destination
+    def u_is_not_v(self) -> bool:
+        return not self.u_is_v
+    
+    @property
+    def a_is_b(self) -> bool:
+        return self.u_is_v
     
     @property
     def to_dict(self) -> Dict[str, Square]:
         return {
-            "origin": self.origin,
-            "destination": self.destination,
+            "u": self.u,
+            "v": self.v,
         }
-    
-    @property
-    def is_balanced(self) -> bool:
-        return (
-                super().is_balanced and
-                self.origin_is_not_destination
-        )
-    
-    @property
-    def is_not_balanced(self) -> bool:
-        return not self.is_balanced
-    
-    @property
-    def consistency_exists(self) -> bool:
-        return (
-                super().consistency_exists and
-                self.is_balanced
-        )
-    
-    @property
-    def is_not_consistent(self) -> bool:
-        return not self.consistency_exists
     
     @property
     def domain_class(self) -> Type[SquareRegister]:
@@ -116,5 +98,5 @@ class SquareRegisterBlueprint(RegisterBlueprint[SquareRegister, Square]):
     @property
     def domain_null_exception(self) -> SquareRegisterNullException:
         return cast(SquareRegisterNullException, super().domain_null_exception)
-    
+
     

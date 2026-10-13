@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Dict, Optional, Type, cast
 
-from domain import Coord, RegisterBlueprint, CoordRegister
+from domain import RegisterBlueprint, Coord, CoordRegister
 from err import CoordRegisterNullException
 
 
@@ -24,9 +24,9 @@ class CoordRegisterBlueprint(RegisterBlueprint[CoordRegister, Coord]):
          1.  Provide attributes for hydrating a CoordRegister.
 
      Attributes:
-        origin: Coord
-        destination: Coord
-        Optional[Type[CoordRegister]]
+        u: Coord
+        v: Coord
+        domain_class: Optional[Type[CoordRegister]]
         domain_null_exception: Optional[CoordRegisterNullException]
 
      Provides:
@@ -37,54 +37,58 @@ class CoordRegisterBlueprint(RegisterBlueprint[CoordRegister, Coord]):
     
     def __init__(
             self,
-            origin: Coord,
-            destination: Coord,
+            u: Coord,
+            v: Coord,
             domain_class: Optional[Type[CoordRegister]] | None = None,
             domain_null_exception: Optional[CoordRegisterNullException] | None = None,
     ):
         """
         Args:
-            origin: Coord
-            destination: Coord
-            Optional[Type[CoordRegister]]
+            u: Coord
+            v: Coord
+            domain_class: Optional[Type[CoordRegister]]
             domain_null_exception: Optional[CoordRegisterNullException]
         """
         super().__init__(
-            a=origin,
-            b=destination,
+            a=u,
+            b=v,
             domain_class=domain_class or CoordRegister,
             domain_null_exception=domain_null_exception or CoordRegisterNullException(),
         )
     
     @property
-    def origin(self) -> Coord:
+    def u(self) -> Coord:
         return cast(Coord, super().a)
     
     @property
     def a(self) -> Coord:
-        return self.origin
+        return self.u
     
     @property
-    def destination(self) -> Coord:
+    def v(self) -> Coord:
         return cast(Coord, super().b)
     
     @property
     def b(self) -> Coord:
-        return self.destination
+        return self.v
     
     @property
-    def origin_is_destination(self) -> bool:
-        return self.origin == self.destination
+    def u_is_v(self) -> bool:
+        return self.u == self.v
     
     @property
-    def origin_is_not_destination(self) -> bool:
-        return not self.origin_is_destination
+    def u_is_not_v(self) -> bool:
+        return not self.u_is_v
+    
+    @property
+    def a_is_b(self) -> bool:
+        return self.u_is_v
     
     @property
     def to_dict(self) -> Dict[str, Coord]:
         return {
-            "origin": self.origin,
-            "destination": self.destination,
+            "u": self.u,
+            "v": self.v,
         }
     
     @property
@@ -94,5 +98,5 @@ class CoordRegisterBlueprint(RegisterBlueprint[CoordRegister, Coord]):
     @property
     def domain_null_exception(self) -> CoordRegisterNullException:
         return cast(CoordRegisterNullException, super().domain_null_exception)
-    
+
     

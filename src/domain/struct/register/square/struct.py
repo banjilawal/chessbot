@@ -26,8 +26,6 @@ class SquareRegister(Register[Square]):
     Attributes:
         origin: Square
         destination: Square
-        origin_is_destination: bool
-        origin_is_not_destination: bool
             
     Provides:
 
@@ -68,15 +66,8 @@ class SquareRegister(Register[Square]):
         return not self.origin_is_destination
     
     @property
-    def to_list(self) -> List[Square]:
-        return [self.origin, self.destination]
-    
-    @property
-    def to_dict(self) -> Dict[str, Square]:
-        return {
-            "origin": self.origin,
-            "destination": self.destination,
-        }
+    def a_is_b(self) -> bool:
+        return self.origin_is_destination
     
     @property
     def is_balanced(self) -> bool:
@@ -99,6 +90,17 @@ class SquareRegister(Register[Square]):
     @property
     def is_not_consistent(self) -> bool:
         return not self.consistency_exists
+    
+    @property
+    def to_list(self) -> List[Square]:
+        return [self.origin, self.destination]
+    
+    @property
+    def to_dict(self) -> Dict[str, Square]:
+        return {
+            "origin": self.origin,
+            "destination": self.destination,
+        }
     
     def __eq__(self, other):
         if other is self: return True
