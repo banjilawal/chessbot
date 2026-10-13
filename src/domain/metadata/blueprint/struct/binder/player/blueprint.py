@@ -15,7 +15,7 @@ from domain import BinderBlueprint, Player, PlayerBinder
 from err import PlayerBinderNullException
 
 
-class PlayerBinderBlueprint(BinderBlueprint[PlayerBinder]):
+class PlayerBinderBlueprint(BinderBlueprint[PlayerBinder, Playe]):
     """
      Role:
         1.  Metadata

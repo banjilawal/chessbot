@@ -38,7 +38,7 @@ class NorthAxis(Axis):
         """
         super().__init__(
             origin=origin,
-            terminus=Vector(x=origin.x, y=0)
+            destination=Vector(x=origin.x, y=0)
         )
     
     def __eq__(self, other):

@@ -35,7 +35,7 @@ class SquareRegister(Register[Square]):
         Register
     """
     
-    def __init__(self, origin: Square,destination: Square,):
+    def __init__(self, origin: Square, destination: Square):
         """
         Args:
             origin: Square
@@ -78,6 +78,28 @@ class SquareRegister(Register[Square]):
             "destination": self.destination,
         }
     
+    @property
+    def is_balanced(self) -> bool:
+        return (
+                super().is_balanced and
+                self.origin_is_not_destination
+        )
+    
+    @property
+    def is_not_balanced(self) -> bool:
+        return not self.is_balanced
+    
+    @property
+    def consistency_exists(self) -> bool:
+        return (
+                super().consistency_exists and
+                self.is_balanced
+        )
+    
+    @property
+    def is_not_consistent(self) -> bool:
+        return not self.consistency_exists
+    
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
@@ -86,4 +108,5 @@ class SquareRegister(Register[Square]):
                     self.origin == other.origin and
                     self.destination == other.destination
             )
+        return False
     

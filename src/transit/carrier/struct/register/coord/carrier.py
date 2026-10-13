@@ -79,7 +79,7 @@ class CoordRegisterCarrier(RegisterCarrier[CoordRegister]):
         model = cast(CoordRegister, self.entity)
         return CoordRegisterBlueprint(
             origin=model.origin,
-            terminus=model.terminus,
+            destination=model.destination,
         )
 
 

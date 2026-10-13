@@ -39,14 +39,13 @@ class VectorRegister(Register[Vector]):
             self,
             u: Vector,
             v: Vector,
-            id: Optional[int] | None = None,
     ):
         """
         Args:
             u: Vector
             v: Vector
         """
-        super().__init__(a=u, b=v, id=id)
+        super().__init__(a=u, b=v)
         
     @property
     def u(self) -> Vector:

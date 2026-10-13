@@ -96,7 +96,7 @@ class VectorSequenceGenerator:
         sequence: List[Vector] = []
         cursor = recur.space.origin
         
-        while cursor != recur.space.terminus:
+        while cursor != recur.space.destination:
             sequence.append(cursor)
             
             # Request that the update for the cursor.

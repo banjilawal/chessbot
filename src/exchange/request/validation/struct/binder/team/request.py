@@ -13,6 +13,7 @@ from typing import cast
 
 from domain import TeamBinder
 from exchange import BinderValidationRequest
+from transit import TeamBinderCarrier
 
 
 class TeamBinderValidationRequest(
@@ -28,7 +29,7 @@ class TeamBinderValidationRequest(
 
      Attributes:
          id: int
-         item: Any
+         item: BinderCarrier[T]
 
      Provides:
      
@@ -36,17 +37,17 @@ class TeamBinderValidationRequest(
         BinderValidationRequest
      """
     
-    def __init__(self, id: int, item: TeamBinder):
+    def __init__(self, id: int, item: TeamBinderCarrier):
         """
         Args:
             id: int
-            item: TeamBinder
+            item: TeamBinderCarrier
         """
         super().__init__(id=id, item=item)
     
     @property
-    def item(self) -> TeamBinder:
-        return cast(TeamBinder, super().item)
+    def item(self) -> TeamBinderCarrier:
+        return cast(TeamBinderCarrier, super().item)
     
     def __eq__(self, other):
         if other is self: return True

@@ -18,7 +18,7 @@ from err import ToggleNullException
 
 T = TypeVar("T", bound="Toggle")
 
-class ToggleBlueprint(StructBlueprint[T], ABC, Generic[T]):
+class ToggleBlueprint(StructBlueprint[S], ABC, Generic[S]):
     """
      Role:
         1.  Metadata
@@ -27,7 +27,7 @@ class ToggleBlueprint(StructBlueprint[T], ABC, Generic[T]):
          1.  Provide attributes for hydrating a Toggle.
 
      Attributes:
-         domain_class: Type[T]
+         domain_class: Type[S]
          domain_null_exception: ToggleNullException
 
      Provides:
@@ -38,12 +38,12 @@ class ToggleBlueprint(StructBlueprint[T], ABC, Generic[T]):
     
     def __init__(
             self,
-            domain_class: Type[T],
+            domain_class: Type[S],
             domain_null_exception: ToggleNullException,
     ):
         """
         Args:
-            domain_class: Type[T]
+            domain_class: Type[S]
             domain_null_exception: ToggleNullException
         """
         super().__init__(
@@ -52,8 +52,8 @@ class ToggleBlueprint(StructBlueprint[T], ABC, Generic[T]):
         )
     
     @property
-    def domain_class(self) -> Type[T]:
-        return cast(Type[T], super().domain_class)
+    def domain_class(self) -> Type[S]:
+        return cast(Type[S], super().domain_class)
     
     @property
     def domain_null_exception(self) -> ToggleNullException:

@@ -14,6 +14,7 @@ from typing import Generic, TypeVar
 
 from artifcat import ValidationResult
 from exchange import Request
+from transit import EntityCarrier
 
 T = TypeVar("T")
 

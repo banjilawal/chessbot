@@ -9,13 +9,13 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, Type, cast
+from typing import Dict, Optional, Type, cast
 
 from domain import Coord, RegisterBlueprint, CoordRegister
 from err import CoordRegisterNullException
 
 
-class CoordRegisterBlueprint(RegisterBlueprint[CoordRegister]):
+class CoordRegisterBlueprint(RegisterBlueprint[CoordRegister, Coord]):
     """
      Role:
         1.  Metadata
@@ -25,7 +25,7 @@ class CoordRegisterBlueprint(RegisterBlueprint[CoordRegister]):
 
      Attributes:
         origin: Coord
-        terminus: Coord
+        destination: Coord
         Optional[Type[CoordRegister]]
         domain_null_exception: Optional[CoordRegisterNullException]
 
@@ -34,37 +34,58 @@ class CoordRegisterBlueprint(RegisterBlueprint[CoordRegister]):
      Super Class:
         RegisterBlueprint
      """
-    _origin: Coord
-    _terminus: Coord
     
     def __init__(
             self,
             origin: Coord,
-            terminus: Coord,
+            destination: Coord,
             domain_class: Optional[Type[CoordRegister]] | None = None,
             domain_null_exception: Optional[CoordRegisterNullException] | None = None,
     ):
         """
         Args:
             origin: Coord
-            terminus: Coord
+            destination: Coord
             Optional[Type[CoordRegister]]
             domain_null_exception: Optional[CoordRegisterNullException]
         """
         super().__init__(
+            a=origin,
+            b=destination,
             domain_class=domain_class or CoordRegister,
             domain_null_exception=domain_null_exception or CoordRegisterNullException(),
         )
-        self._origin = origin
-        self._terminus = terminus
-        
-    @property
-    def origin(self) -> Coord:
-        return self._origin
     
     @property
-    def terminus(self) -> Coord:
-        return self._terminus
+    def origin(self) -> Coord:
+        return cast(Coord, super().a)
+    
+    @property
+    def a(self) -> Coord:
+        return self.origin
+    
+    @property
+    def destination(self) -> Coord:
+        return cast(Coord, super().b)
+    
+    @property
+    def b(self) -> Coord:
+        return self.destination
+    
+    @property
+    def origin_is_destination(self) -> bool:
+        return self.origin == self.destination
+    
+    @property
+    def origin_is_not_destination(self) -> bool:
+        return not self.origin_is_destination
+    
+    @property
+    def to_dict(self) -> Dict[str, Coord]:
+        return {
+            "origin": self.origin,
+            "destination": self.destination,
+        }
     
     @property
     def domain_class(self) -> Type[CoordRegister]:

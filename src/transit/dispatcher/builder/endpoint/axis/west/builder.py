@@ -15,7 +15,7 @@ from transit.dispatcher.builder.endpoint.axis.builder import AxisEndpointBuilder
 from domain.model import Vector
 from domain.struct.register import VectorRegister
 from artifcat import BuildResult, ComputationResult
-from domain.schema import AxisTerminus
+from domain.schema import AxisDestination
 from surface.space import WestTraversalPattern
 from operation.toolkit import MathToolkit
 from util import LoggingLevelRouter
@@ -56,11 +56,11 @@ class WestAxisEndpointBuilder(AxisEndpointBuilder[WestTraversalPattern]):
         self._math_toolkit = math_toolkit
         self._vector_validator = vector_validator
         self._delta = Vector(
-            x=origin.x + AxisTerminus.WEST.vector.x,
+            x=origin.x + AxisDestination.WEST.vector.x,
             y=0,
         )
-        self._terminus =  Vector(
-            x=AxisTerminus.WEST.vector.x,
+        self._destination =  Vector(
+            x=AxisDestination.WEST.vector.x,
             y=origin.y
         )
 
@@ -95,27 +95,27 @@ class WestAxisEndpointBuilder(AxisEndpointBuilder[WestTraversalPattern]):
                 )
             )
         delta = Vector(
-            x=origin.x + AxisTerminus.WEST.vector.x,
+            x=origin.x + AxisDestination.WEST.vector.x,
             y=0,
         )
-        terminus_request = self._math_toolkit.vector.builder.execute(
+        destination_request = self._math_toolkit.vector.builder.execute(
             x=origin.x + delta.x,
             y=origin.y + delta.y,
         )
-        if terminus_request.is_failure:
+        if destination_request.is_failure:
             return BuildResult.failure(
                 WestAxisEndPointBuilderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=WestAxisEndPointBuilderException.MSG,
                     err_code=WestAxisEndPointBuilderException.ERR_CODE,
-                    ex=terminus_request.exception,
+                    ex=destination_request.exception,
                 )
             )
         # Create the endpoint register.
         vector_register = VectorRegisterBuilder.execute(
             u=cast(Vector, validation.payload),
-            v=self._terminus,
+            v=self._destination,
         )
         # --- Forward the work product to the caller. ---#
         return BuildResult.success(vector_register)

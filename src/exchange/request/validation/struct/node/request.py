@@ -28,7 +28,7 @@ class NodeValidationRequest(StructValidationRequest[T], ABC, Generic[T]):
 
      Attributes:
          id: int
-         item: T
+         item: StructCarrier[T]
 
      Provides:
      

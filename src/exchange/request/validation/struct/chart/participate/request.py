@@ -27,7 +27,7 @@ class ParticipationValidationRequest(ChartValidationRequest[Participation]):
 
      Attributes:
          id: int
-         item: Any
+         item: StructCarrier[T]
 
      Provides:
      

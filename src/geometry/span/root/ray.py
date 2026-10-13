@@ -19,7 +19,7 @@ class Ray(ABC, Generic[T]):
     Role:Data-Holder
     
     Responsibilities:
-    1.  Stores members that define a ray from an origin to a terminus
+    1.  Stores members that define a ray from an origin to a destination
 
     Super Class:
     None

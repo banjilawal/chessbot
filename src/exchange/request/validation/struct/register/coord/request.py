@@ -13,6 +13,8 @@ from typing import cast
 
 from domain import CoordRegister
 from exchange import RegisterValidationRequest
+from transit import CoordRegisterCarrier
+
 
 class CoordRegisterValidationRequest(
     RegisterValidationRequest[CoordRegister]
@@ -27,7 +29,7 @@ class CoordRegisterValidationRequest(
 
      Attributes:
          id: int
-         item: Any
+         item: CoordRegisterCarrier
 
      Provides:
      
@@ -35,7 +37,7 @@ class CoordRegisterValidationRequest(
         RegisterValidationRequest
      """
     
-    def __init__(self, id: int, item: CoordRegister):
+    def __init__(self, id: int, item: CoordRegisterCarrier):
         """
         Args:
             id: int
@@ -44,8 +46,8 @@ class CoordRegisterValidationRequest(
         super().__init__(id=id, item=item)
     
     @property
-    def item(self) -> CoordRegister:
-        return cast(CoordRegister, super().item)
+    def item(self) -> CoordRegisterCarrier:
+        return cast(CoordRegisterCarrier, super().item)
     
     def __eq__(self, other):
         if other is self: return True

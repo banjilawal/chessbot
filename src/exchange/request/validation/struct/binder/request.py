@@ -14,6 +14,7 @@ from typing import Generic, TypeVar, cast
 
 from domain import ArchetypeBinder
 from exchange import StructValidationRequest
+from transit import BinderCarrier
 
 T = TypeVar("T", bound="ArchetypeBinder")
 
@@ -28,7 +29,7 @@ class BinderValidationRequest(StructValidationRequest[T], ABC, Generic[T]):
 
      Attributes:
          id: int
-         item: T
+         item: BinderCarrier[T]
 
      Provides:
      
@@ -36,17 +37,17 @@ class BinderValidationRequest(StructValidationRequest[T], ABC, Generic[T]):
         ValidationRequest
      """
     
-    def __init__(self, id: int, item: T):
+    def __init__(self, id: int, item: BinderCarrier[T]):
         """
         Args:
             id: int
-            item: T
+            item: BinderCarrier[T]
         """
         super().__init__(id=id, item=item)
     
     @property
-    def item(self) -> T:
-        return cast(T, super().item)
+    def item(self) -> BinderCarrier[T]:
+        return cast(BinderCarrier[T], super().item)
     
     def __eq__(self, other):
         if other is self: return True

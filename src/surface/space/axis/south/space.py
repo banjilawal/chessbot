@@ -11,7 +11,7 @@ from __future__ import annotations
 
 
 from domain.model import Vector
-from domain.schema import AxisTerminus
+from domain.schema import AxisDestination
 from surface.space.axis.south.space import Axis
 
 
@@ -39,9 +39,9 @@ class SouthAxis(Axis):
         """
         super().__init__(
             origin=origin,
-            terminus=Vector(
+            destination=Vector(
                 x=0,
-                y=AxisTerminus.SOUTH.vector.y
+                y=AxisDestination.SOUTH.vector.y
             )
         )
     

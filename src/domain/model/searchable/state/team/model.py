@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Optional
 
 from collection import CheckChain, TokenDatabase
-from domain import Archetype, Board, Player, StateModel, TeamState
+from domain import Archetype, Archetyped, Board, Player, StateModel, TeamState
 
 
-class Team(StateModel):
+class Team(StateModel, Archetyped):
     """
     Role:
         - Model

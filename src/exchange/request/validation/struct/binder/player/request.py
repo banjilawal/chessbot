@@ -13,6 +13,7 @@ from typing import cast
 
 from domain import PlayerBinder
 from exchange import BinderValidationRequest
+from transit import PlayerBinderCarrier
 
 
 class PlayerBinderValidationRequest(
@@ -28,7 +29,7 @@ class PlayerBinderValidationRequest(
 
      Attributes:
          id: int
-         item: Any
+         item: BinderCarrier[T]
 
      Provides:
      
@@ -36,17 +37,17 @@ class PlayerBinderValidationRequest(
         BinderValidationRequest
      """
     
-    def __init__(self, id: int, item: PlayerBinder):
+    def __init__(self, id: int, item: PlayerBinderCarrier):
         """
         Args:
             id: int
-            item: PlayerBinder
+            item: PlayerBinderCarrier
         """
         super().__init__(id=id, item=item)
     
     @property
-    def item(self) -> PlayerBinder:
-        return cast(PlayerBinder, super().item)
+    def item(self) -> PlayerBinderCarrier:
+        return cast(PlayerBinderCarrier, super().item)
     
     def __eq__(self, other):
         if other is self: return True

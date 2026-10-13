@@ -108,7 +108,7 @@ class SoutheastQuadrantRootChecker(QuadrantRootChecker[SoutheastQuadrantBlueprin
         
         # Handle the case that any id in the blueprint is flagged.
         vectors: List[Vector] = []
-        for vector in [blueprint.origin, blueprint.terminus]:
+        for vector in [blueprint.origin, blueprint.destination]:
             vector_validation = self.toolkit.math.vector.validator.execute(
                 job=vector,
             )
@@ -126,9 +126,9 @@ class SoutheastQuadrantRootChecker(QuadrantRootChecker[SoutheastQuadrantBlueprin
             vectors.append(cast(Vector, vector_validation.payload))
         # --- Extract and cast payloads of the validation results. ---#
         origin = vectors[0]
-        terminus = None
+        destination = None
         if len(vectors) == 2:
-            terminus = vectors[1]
+            destination = vectors[1]
 
         if carrier.has_model:
             return ValidationResult.success(

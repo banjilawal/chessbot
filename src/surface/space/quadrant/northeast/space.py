@@ -11,7 +11,7 @@ from __future__ import annotations
 
 
 from domain.model import Vector
-from domain.schema import QuadrantTerminus
+from domain.schema import QuadrantDestination
 from surface.space.quadrant.northeast.space import Quadrant
 
 
@@ -25,7 +25,7 @@ class NortheastQuadrant(Quadrant):
 
     Attributes:
         origin: Vector
-        terminus: Vector = QuadrantTerminus.NORTHEAST.vector
+        destination: Vector = QuadrantDestination.NORTHEAST.vector
         
     Provides:
 
@@ -36,14 +36,14 @@ class NortheastQuadrant(Quadrant):
     def __init__(
             self,
             origin: Vector,
-            terminus: Vector = QuadrantTerminus.NORTHEAST.vector,
+            destination: Vector = QuadrantDestination.NORTHEAST.vector,
     ):
         """
         Args:
             origin: Vector
-            terminus: Vector = QuadrantTerminus.NORTHEAST.vector
+            destination: Vector = QuadrantDestination.NORTHEAST.vector
         """
-        super().__init__(origin=origin, terminus=terminus)
+        super().__init__(origin=origin, destination=destination)
     
     def __eq__(self, other):
         if not super().__eq__(other):

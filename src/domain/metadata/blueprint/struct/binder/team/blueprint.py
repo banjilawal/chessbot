@@ -15,7 +15,7 @@ from domain import Archetype, BinderBlueprint, Team, TeamBinder
 from err import TeamBinderNullException
 
 
-class TeamBinderBlueprint(BinderBlueprint[TeamBinder]):
+class TeamBinderBlueprint(BinderBlueprint[TeamBinder, Team]):
     """
      Role:
         1.  Metadata

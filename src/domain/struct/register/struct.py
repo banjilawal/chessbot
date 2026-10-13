@@ -45,7 +45,6 @@ class Register(Struct, ABC, Generic[T]):
     """
     _a: T
     _b: T
-    _id: Optional[int]
     
     def __init__(self, a: T, b: T, id: Optional[int] | None = None):
         """
@@ -70,20 +69,20 @@ class Register(Struct, ABC, Generic[T]):
         return {"a": self._a, "b": self._b}
     
     @property
-    def size(self) -> int:
-        return len(self.to_dict)
-    
-    @property
-    def is_empty(self) -> bool:
-        return self.size == 0
-    
-    @property
-    def is_full(self) -> bool:
+    def is_balanced(self) -> bool:
         return self.size == 2
     
     @property
+    def is_not_balanced(self) -> bool:
+        return self.size == 1
+    
+    @property
     def consistency_exists(self) -> bool:
-        if self is None or self.is_half_full:
+        if (
+                self is None or
+                self.is_empty or
+                self.is_not_balanced
+        ):
             return False
         return True
     
@@ -91,7 +90,5 @@ class Register(Struct, ABC, Generic[T]):
     def is_not_consistent(self) -> bool:
         return not self.consistency_exists
     
-    @property
-    def is_half_full(self) -> bool:
-        return self.size == 1
+
     

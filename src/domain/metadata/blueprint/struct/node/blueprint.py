@@ -18,7 +18,7 @@ from err import NodeNullException
 
 T = TypeVar("T", bound="Node")
 
-class NodeBlueprint(StructBlueprint[T], ABC, Generic[T]):
+class NodeBlueprint(StructBlueprint[S], ABC, Generic[S]):
     """
      Role:
         1.  Metadata
@@ -27,7 +27,7 @@ class NodeBlueprint(StructBlueprint[T], ABC, Generic[T]):
          1.  Provide attributes for hydrating a Node.
 
      Attributes:
-         domain_class: Type[T]
+         domain_class: Type[S]
          domain_null_exception: NodeNullException
 
      Provides:
@@ -38,12 +38,12 @@ class NodeBlueprint(StructBlueprint[T], ABC, Generic[T]):
     
     def __init__(
             self,
-            domain_class: Type[T],
+            domain_class: Type[S],
             domain_null_exception: NodeNullException,
     ):
         """
         Args:
-            domain_class: Type[T]
+            domain_class: Type[S]
             domain_null_exception: NodeNullException
         """
         super().__init__(
@@ -52,8 +52,8 @@ class NodeBlueprint(StructBlueprint[T], ABC, Generic[T]):
         )
     
     @property
-    def domain_class(self) -> Type[T]:
-        return cast(Type[T], super().domain_class)
+    def domain_class(self) -> Type[S]:
+        return cast(Type[S], super().domain_class)
     
     @property
     def domain_null_exception(self) -> NodeNullException:

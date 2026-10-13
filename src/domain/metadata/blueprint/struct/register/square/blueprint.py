@@ -9,13 +9,13 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, Type, cast
+from typing import Dict, Optional, Type, cast
 
 from domain import RegisterBlueprint, Square, SquareRegister
 from err import SquareRegisterNullException
 
 
-class SquareRegisterBlueprint(RegisterBlueprint[SquareRegister]):
+class SquareRegisterBlueprint(RegisterBlueprint[SquareRegister, Square]):
     """
      Role:
         1.  Metadata
@@ -34,8 +34,6 @@ class SquareRegisterBlueprint(RegisterBlueprint[SquareRegister]):
      Super Class:
         RegisterBlueprint
      """
-    _origin: Square
-    _destination: Square
     
     def __init__(
             self,
@@ -52,19 +50,64 @@ class SquareRegisterBlueprint(RegisterBlueprint[SquareRegister]):
             domain_null_exception: Optional[SquareRegisterNullException]
         """
         super().__init__(
+            a = origin,
+            b = destination,
             domain_class=domain_class or SquareRegister,
             domain_null_exception=domain_null_exception or SquareRegisterNullException(),
         )
-        self._origin = origin
-        self._destination = destination
-        
+    
     @property
     def origin(self) -> Square:
-        return self._origin
+        return cast(Square, super().a)
+    
+    @property
+    def a(self) -> Square:
+        return self.origin
     
     @property
     def destination(self) -> Square:
-        return self._destination
+        return cast(Square, super().b)
+    
+    @property
+    def b(self) -> Square:
+        return self.destination
+    
+    @property
+    def origin_is_destination(self) -> bool:
+        return self.origin == self.destination
+    
+    @property
+    def origin_is_not_destination(self) -> bool:
+        return not self.origin_is_destination
+    
+    @property
+    def to_dict(self) -> Dict[str, Square]:
+        return {
+            "origin": self.origin,
+            "destination": self.destination,
+        }
+    
+    @property
+    def is_balanced(self) -> bool:
+        return (
+                super().is_balanced and
+                self.origin_is_not_destination
+        )
+    
+    @property
+    def is_not_balanced(self) -> bool:
+        return not self.is_balanced
+    
+    @property
+    def consistency_exists(self) -> bool:
+        return (
+                super().consistency_exists and
+                self.is_balanced
+        )
+    
+    @property
+    def is_not_consistent(self) -> bool:
+        return not self.consistency_exists
     
     @property
     def domain_class(self) -> Type[SquareRegister]:

@@ -25,9 +25,9 @@ class CoordRegister(Register[Coord]):
 
     Attributes:
         origin: Coord
-        terminus: Coord
-        origin_same_as_terminus: bool
-        origin_differs_from_terminus: bool
+        destination: Coord
+        origin_same_as_destination: bool
+        origin_differs_from_destination: bool
             
     Provides:
 
@@ -35,13 +35,13 @@ class CoordRegister(Register[Coord]):
         Register
     """
     
-    def __init__(self, origin: Coord, terminus: Coord,):
+    def __init__(self, origin: Coord, destination: Coord,):
         """
         Args:
             origin: Coord
-            terminus: Coord
+            destination: Coord
         """
-        super().__init__(a=origin, b=terminus)
+        super().__init__(a=origin, b=destination)
         
     @property
     def origin(self) -> Coord:
@@ -52,30 +52,30 @@ class CoordRegister(Register[Coord]):
         return self.origin
     
     @property
-    def terminus(self) -> Coord:
+    def destination(self) -> Coord:
         return cast(Coord, super().b)
     
     @property
     def b(self) -> Coord:
-        return self.terminus
+        return self.destination
 
     @property
-    def origin_same_as_terminus(self) -> bool:
-        return self.origin == self.terminus
+    def origin_is_destination(self) -> bool:
+        return self.origin == self.destination
     
     @property
-    def origin_differs_from_terminus(self) -> bool:
-        return not self.origin_same_as_terminus
+    def origin_is_not_destination(self) -> bool:
+        return not self.origin_is_destination
     
     @property
     def to_list(self) -> List[Coord]:
-        return [self.origin, self.terminus]
+        return [self.origin, self.destination]
     
     @property
     def to_dict(self) -> Dict[str, Coord]:
         return {
             "origin": self.origin,
-            "terminus": self.terminus,
+            "destination": self.destination,
         }
     
     def __eq__(self, other):
@@ -84,6 +84,7 @@ class CoordRegister(Register[Coord]):
         if isinstance(other, CoordRegister):
             return (
                     self._origin == other.origin and
-                    self._terminus == other.terminus
+                    self._destination == other.destination
             )
+        return False
     

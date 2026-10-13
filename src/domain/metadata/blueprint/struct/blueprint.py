@@ -9,16 +9,17 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import Generic, Type, TypeVar, cast
+from abc import ABC, abstractmethod
+from typing import Dict, Generic, Type, TypeVar, cast
 
-from domain import Blueprint, Struct
+from domain import Blueprint, Model, Struct
 from err import StructNullException
 
 
-T = TypeVar("T", bound="Struct")
+S = TypeVar("S", bound="Struct")
+M = TypeVar("M", bound="Model")
 
-class StructBlueprint(Blueprint[T], ABC, Generic[T]):
+class StructBlueprint(Blueprint[S], ABC, Generic[S, M]):
     """
      Role:
         1.  Metadata
@@ -27,7 +28,7 @@ class StructBlueprint(Blueprint[T], ABC, Generic[T]):
          1.  Provide attributes for hydrating a Struct.
 
      Attributes:
-         domain_class: Type[T]
+         domain_class: Type[S]
          domain_null_exception: StructNullException
 
      Provides:
@@ -43,7 +44,7 @@ class StructBlueprint(Blueprint[T], ABC, Generic[T]):
     ):
         """
         Args:
-            domain_class: Type[T]
+            domain_class: Type[S]
             domain_null_exception: StructNullException
         """
         super().__init__(
@@ -52,8 +53,35 @@ class StructBlueprint(Blueprint[T], ABC, Generic[T]):
         )
     
     @property
-    def domain_class(self) -> Type[T]:
-        return cast(Type[T], super().domain_class)
+    def size(self) -> int:
+        return len(self.to_dict)
+    
+    @property
+    def is_empty(self) -> bool:
+        return self.size == 0
+    
+    @property
+    def not_empty(self) -> bool:
+        return not self.is_empty
+    
+    @property
+    @abstractmethod
+    def is_balanced(self) -> bool:
+        pass
+    
+    @property
+    @abstractmethod
+    def is_not_balanced(self) -> bool:
+        pass
+    
+    @property
+    @abstractmethod
+    def to_dict(self) -> Dict[str, M]:
+        pass
+    
+    @property
+    def domain_class(self) -> Type[S]:
+        return cast(Type[S], super().domain_class)
     
     @property
     def domain_null_exception(self) -> StructNullException:

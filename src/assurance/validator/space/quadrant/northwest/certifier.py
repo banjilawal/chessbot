@@ -109,7 +109,7 @@ class NorthwestQuadrantRootChecker(QuadrantRootChecker[NorthwestQuadrantBlueprin
         
         # Handle the case that any id in the blueprint is flagged.
         vectors: List[Vector] = []
-        for vector in [blueprint.origin, blueprint.terminus]:
+        for vector in [blueprint.origin, blueprint.destination]:
             vector_validation = self.toolkit.math.vector.validator.execute(
                 job=vector,
             )

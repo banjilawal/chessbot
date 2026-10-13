@@ -16,7 +16,7 @@ from err import SouthAxisEndPointBuilderException
 from domain.model import Vector
 from domain.struct.register import VectorRegister
 from artifcat import BuildResult
-from domain.schema.terminus.axis import AxisTerminus
+from domain.schema.destination.axis import AxisDestination
 from util import LoggingLevelRouter
 
 
@@ -41,7 +41,7 @@ class SouthAxisEndpointBuilder:
     """
     _delta: Vector
     _origin: Vector
-    _terminus: Vector
+    _destination: Vector
     _vector_validator: VectorValidator
     
     def __init__(
@@ -57,12 +57,12 @@ class SouthAxisEndpointBuilder:
         self._origin = origin
         self._vector_validator = vector_validator
         self._delta = Vector(
-            x=origin.x + AxisTerminus.SOUTH.vector.x,
-            y=origin.y + AxisTerminus.SOUTH.vector.y,
+            x=origin.x + AxisDestination.SOUTH.vector.x,
+            y=origin.y + AxisDestination.SOUTH.vector.y,
         )
-        self._terminus = Vector(
+        self._destination = Vector(
             x=self._origin.x,
-            y=AxisTerminus.SOUTH.vector.y
+            y=AxisDestination.SOUTH.vector.y
         )
         
     @property
@@ -74,8 +74,8 @@ class SouthAxisEndpointBuilder:
         return self._delta
     
     @property
-    def terminus(self) -> Vector:
-        return self._terminus
+    def destination(self) -> Vector:
+        return self._destination
     
     @LoggingLevelRouter.monitor
     def execute(self) -> BuildResult[VectorRegister]:
@@ -110,7 +110,7 @@ class SouthAxisEndpointBuilder:
         # Create the endpoint register.
         vector_register = VectorRegister(
             u=cast(Vector, validation.payload),
-            v=self._terminus,
+            v=self._destination,
         )
         # --- Forward the work product to the caller. ---#
         return BuildResult.success(vector_register)

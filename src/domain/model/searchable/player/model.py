@@ -12,11 +12,11 @@ from __future__ import annotations
 
 from typing import Optional
 
-from domain import Account, Archetype, Game, Model
+from domain import Account, Archetype, Archetyped, Game, Model
 
 
 
-class Player(Model):
+class Player(Model, Archetyped):
     """
      Role:
          - Data Holder

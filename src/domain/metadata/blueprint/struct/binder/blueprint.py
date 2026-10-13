@@ -12,13 +12,14 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Dict, Generic, Type, TypeVar, cast
 
-from domain import ArchetypeBinder
+from domain import ArchetypeBinder, Model
 from domain import StructBlueprint
 from err import ArchetypeBinderNullException
 
-T = TypeVar("T", bound="ArchetypeBinder")
+S = TypeVar("S", bound="ArchetypeBinder")
+M = TypeVar("M", bound="Model")
 
-class BinderBlueprint(StructBlueprint[T], ABC, Generic[T]):
+class BinderBlueprint(StructBlueprint[S], ABC, Generic[S, M]):
     """
      Role:
         1.  Metadata
@@ -27,7 +28,7 @@ class BinderBlueprint(StructBlueprint[T], ABC, Generic[T]):
          1.  Provide attributes for hydrating a Binder.
 
      Attributes:
-         domain_class: Type[T]
+         domain_class: Type[S]
          domain_null_exception: ArchetypeBinderNullException
 
      Provides:
@@ -38,12 +39,12 @@ class BinderBlueprint(StructBlueprint[T], ABC, Generic[T]):
     
     def __init__(
             self,
-            domain_class: Type[T],
+            domain_class: Type[S],
             domain_null_exception: ArchetypeBinderNullException,
     ):
         """
         Args:
-            domain_class: Type[T]
+            domain_class: Type[S]
             domain_null_exception: ArchetypeBinderNullException
         """
         super().__init__(
@@ -99,8 +100,8 @@ class BinderBlueprint(StructBlueprint[T], ABC, Generic[T]):
         pass
     
     @property
-    def domain_class(self) -> Type[T]:
-        return cast(Type[T], super().domain_class)
+    def domain_class(self) -> Type[S]:
+        return cast(Type[S], super().domain_class)
     
     @property
     def domain_null_exception(self) -> ArchetypeBinderNullException:

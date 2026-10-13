@@ -30,7 +30,7 @@ class AxisRootChecker(SpaceChecker, Generic[T]):
 
     Attributes:
         origin: Vector
-        terminus: Vector
+        destination: Vector
         
     Provides:
 

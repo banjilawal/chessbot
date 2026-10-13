@@ -14,7 +14,7 @@ from typing import Any, Generic, TypeVar, cast
 
 from domain import Struct
 from exchange import ValidationRequest
-from transit import Struct
+from transit import StructCarrier
 
 T = TypeVar("T", bound="Struct")
 
@@ -28,7 +28,7 @@ class StructValidationRequest(ValidationRequest[T], ABC, Generic[T]):
 
      Attributes:
          id: int
-         item: Any
+         item: StructCarrier[T]
 
      Provides:
      
@@ -36,18 +36,17 @@ class StructValidationRequest(ValidationRequest[T], ABC, Generic[T]):
         ValidationRequest
      """
     
-    def __init__(self, id: int, item: T):
+    def __init__(self, id: int, item: StructCarrier[T]):
         """
         Args:
             id: int
-            item: T
+            item: StructCarrier[T]
         """
-        super().__init__(id=id)
-        self._item = item
+        super().__init__(id=id, item=item)
     
     @property
-    def item(self) -> T:
-        return cast(T, super().item)
+    def item(self) -> StructCarrier[T]:
+        return cast(StructCarrier[T], super().item)
     
     def __eq__(self, other):
         if other is self: return True

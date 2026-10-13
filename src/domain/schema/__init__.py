@@ -18,6 +18,6 @@ from .orientation import *
 from .persona import *
 from .ruleset import *
 from .stepper import *
-from .terminus import *
+from .destination import *
 
 # Modules

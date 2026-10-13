@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# TERMINUS_ERROR #======================#
-    "TerminusException",
+    # ======================# DESTINATION_ERROR #======================#
+    "DestinationException",
 ]
 
-# ======================# TERMINUS_ERROR #======================#
-class TerminusException(SchemaException):
+# ======================# DESTINATION_ERROR #======================#
+class DestinationException(SchemaException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Terminus encountered an error.
+        1.  Indicating a Destination encountered an error.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class TerminusException(SchemaException):
     Super Class:
         ExchangeException
     """
-    MSG = "Terminus error."
-    ERR_CODE = "TERMINUS_ERROR"
+    MSG = "Destination error."
+    ERR_CODE = "DESTINATION_ERROR"
     
     def __init__(
             self,

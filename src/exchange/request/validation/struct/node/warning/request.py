@@ -27,7 +27,7 @@ class EncounterWarningNodeValidationRequest(NodeValidationRequest[WarningNode]):
 
      Attributes:
          id: int
-         item: Any
+         item: StructCarrier[T]
 
      Provides:
      

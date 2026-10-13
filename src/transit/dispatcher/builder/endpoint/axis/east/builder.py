@@ -14,7 +14,7 @@ from typing import cast
 from domain.model import Vector
 from domain.struct.register import VectorRegister
 from artifcat import BuildResult
-from domain.schema.terminus.axis import AxisTerminus
+from domain.schema.destination.axis import AxisDestination
 from util import LoggingLevelRouter
 
 
@@ -36,7 +36,7 @@ class EastAxisEndpointBuilder:
     Super Class:
     """
     _origin: Vector
-    _terminus: Vector
+    _destination: Vector
     
     def __init__(self, origin: Vector,):
         """
@@ -44,15 +44,15 @@ class EastAxisEndpointBuilder:
             origin: Vector
         """
         self._origin = origin
-        self._terminus = AxisTerminus.EAST.vector
+        self._destination = AxisDestination.EAST.vector
         
     @property
     def origin(self) -> Vector:
         return self._origin
     
     @property
-    def terminus(self) -> Vector:
-        return self._terminus
+    def destination(self) -> Vector:
+        return self._destination
     
     @LoggingLevelRouter.monitor
     def execute(self) -> BuildResult[VectorRegister]:
@@ -87,7 +87,7 @@ class EastAxisEndpointBuilder:
         # Create the endpoint register.
         vector_register = VectorRegister(
             u=cast(Vector, validation.payload),
-            v=self._terminus,
+            v=self._destination,
         )
         # --- Forward the work product to the caller. ---#
         return BuildResult.success(vector_register)

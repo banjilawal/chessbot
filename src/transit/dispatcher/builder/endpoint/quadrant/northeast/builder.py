@@ -14,7 +14,7 @@ from typing import Optional, cast
 from domain.model import Vector
 from domain.struct.register import VectorRegister
 from artifcat import BuildResult
-from domain.schema.terminus.quadrant import QuadrantTerminus
+from domain.schema.destination.quadrant import QuadrantDestination
 from util import LoggingLevelRouter
 from transit.dispatcher.validator import VectorValidator
 
@@ -30,7 +30,7 @@ class NortheastQuadrantEndpointBuilder:
 
     Attributes:
         origin: Vector
-        terminus: Vector
+        destination: Vector
         vector_validator: Optional[VectorValidator]
         
     Provides:
@@ -39,7 +39,7 @@ class NortheastQuadrantEndpointBuilder:
     Super Class:
     """
     _origin: Vector
-    _terminus: Vector
+    _destination: Vector
     _vector_validator: VectorValidator
     
     def __init__(
@@ -54,15 +54,15 @@ class NortheastQuadrantEndpointBuilder:
         """
         self._origin = origin
         self._vector_validator = vector_validator
-        self._terminus = QuadrantTerminus.NORTHEAST.vector
+        self._destination = QuadrantDestination.NORTHEAST.vector
         
     @property
     def origin(self) -> Vector:
         return self._origin
     
     @property
-    def terminus(self) -> Vector:
-        return self._terminus
+    def destination(self) -> Vector:
+        return self._destination
     
     @LoggingLevelRouter.monitor
     def execute(self) -> BuildResult[VectorRegister]:
@@ -97,7 +97,7 @@ class NortheastQuadrantEndpointBuilder:
         # Create the endpoint register.
         vector_register = VectorRegister(
             u=cast(Vector, validation.payload),
-            v=self._terminus,
+            v=self._destination,
         )
         # --- Forward the work product to the caller. ---#
         return BuildResult.success(vector_register)

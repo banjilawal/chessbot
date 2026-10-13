@@ -15,7 +15,7 @@ from transit.dispatcher.builder import VectorValidator
 from domain.model import Vector
 from domain.struct.register import VectorRegister
 from artifcat import BuildResult
-from domain.schema import AxisTerminus
+from domain.schema import AxisDestination
 from util import LoggingLevelRouter
 
 
@@ -39,7 +39,7 @@ class NorthAxisEndpointBuilder:
     Super Class:
     """
     _origin: Vector
-    _terminus: Vector
+    _destination: Vector
     _vector_validator: VectorValidator
     
     def __init__(
@@ -56,11 +56,11 @@ class NorthAxisEndpointBuilder:
         self._vector_validator = vector_validator
         self._delta = Vector(
             x=origin.x + 0,
-            y=origin.y + AxisTerminus.NORTH.vector.y,
+            y=origin.y + AxisDestination.NORTH.vector.y,
         )
-        self._terminus = Vector(
+        self._destination = Vector(
             x=self._origin.x,
-            y=AxisTerminus.NORTH.vector.y
+            y=AxisDestination.NORTH.vector.y
         )
         
     @property
@@ -68,8 +68,8 @@ class NorthAxisEndpointBuilder:
         return self._origin
     
     @property
-    def terminus(self) -> Vector:
-        return self._terminus
+    def destination(self) -> Vector:
+        return self._destination
     
     @LoggingLevelRouter.monitor
     def execute(self) -> BuildResult[VectorRegister]:
@@ -104,7 +104,7 @@ class NorthAxisEndpointBuilder:
         # Create the endpoint register.
         vector_register = VectorRegister(
             u=cast(Vector, validation.payload),
-            v=self._terminus,
+            v=self._destination,
         )
         # --- Forward the work product to the caller. ---#
         return BuildResult.success(vector_register)

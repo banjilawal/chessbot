@@ -19,3 +19,4 @@ from .searchable import *
 
 # Modules
 from .model import Model
+from .interface import Archetyped

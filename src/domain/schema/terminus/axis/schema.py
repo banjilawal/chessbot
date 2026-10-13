@@ -1,7 +1,7 @@
-# src/domain/schema/terminus/axis/schema.py
+# src/domain/schema/destination/axis/schema.py
 
 """
-Module: domain.schema.terminus.axis.schema
+Module: domain.schema.destination.axis.schema
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -14,7 +14,7 @@ from enum import Enum
 from domain.model import Vector
 
 
-class AxisTerminus(Enum):
+class AxisDestination(Enum):
     """
     Role:
         - Configuration Table
@@ -22,11 +22,11 @@ class AxisTerminus(Enum):
 
 
     Responsibilities:
-        1.  Terminus of each axis
+        1.  Destination of each axis
 
     Attributes:
         orientation: str
-        terminus: Vector
+        destination: Vector
 
     Super Class:
         Enum

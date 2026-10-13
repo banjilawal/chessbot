@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
+from typing import Dict, Generic, TypeVar
 
 from domain import SearchableModel
 
@@ -33,17 +33,30 @@ class Struct(ABC, Generic[T]):
     """
     
     @property
-    @abstractmethod
     def size(self) -> int:
-        pass
+        return len(self.to_dict)
     
     @property
-    @abstractmethod
     def is_empty(self) -> bool:
-        pass
+        return self.size == 0
     
     @property
     def not_empty(self) -> bool:
         return not self.is_empty
+    
+    @property
+    @abstractmethod
+    def is_balanced(self) -> bool:
+        pass
+    
+    @property
+    @abstractmethod
+    def is_not_balanced(self) -> bool:
+        pass
+    
+    @property
+    @abstractmethod
+    def to_dict(self) -> Dict[str, T]:
+        pass
 
     

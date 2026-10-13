@@ -20,11 +20,11 @@ class Space(ABC):
         - Data Holder
 
     Responsibilities:
-        1.  Define a 2D space bounded an origin and terminus.
+        1.  Define a 2D space bounded an origin and destination.
 
     Attributes:
         origin: Vector
-        terminus: Vector
+        destination: Vector
 
 
     Provides:
@@ -32,12 +32,12 @@ class Space(ABC):
     Super Class:
     """
     _origin: Vector
-    _terminus: Vector
+    _destination: Vector
     
     
-    def __init__(self, origin: Vector, terminus: Vector):
+    def __init__(self, origin: Vector, destination: Vector):
         self._origin = origin
-        self._terminus = terminus
+        self._destination = destination
         
     
     @property
@@ -45,8 +45,8 @@ class Space(ABC):
         return self._origin
     
     @property
-    def terminus(self) -> Vector:
-        return self._terminus
+    def destination(self) -> Vector:
+        return self._destination
     
     def __eq__(self, other):
         if other is self:
@@ -55,5 +55,5 @@ class Space(ABC):
             return False
         if isinstance(other, Space):
             space = cast(Space, other)
-            return self._origin = space.origin and self._terminus = space.terminus
+            return self._origin = space.origin and self._destination = space.destination
         return False

@@ -15,7 +15,7 @@ from domain import RegisterBlueprint, Vector, VectorRegister
 from err import VectorRegisterNullException
 
 
-class VectorRegisterBlueprint(RegisterBlueprint[VectorRegister]):
+class VectorRegisterBlueprint(RegisterBlueprint[VectorRegister, Vector]):
     """
      Role:
         1.  Metadata
@@ -34,8 +34,6 @@ class VectorRegisterBlueprint(RegisterBlueprint[VectorRegister]):
      Super Class:
         RegisterBlueprint
      """
-    _u: Vector
-    _v: Vector
     
     def __init__(
             self,
@@ -52,19 +50,27 @@ class VectorRegisterBlueprint(RegisterBlueprint[VectorRegister]):
             domain_null_exception: Optional[VectorRegisterNullException]
         """
         super().__init__(
+            a = u,
+            b = v,
             domain_class=domain_class or VectorRegister,
             domain_null_exception=domain_null_exception or VectorRegisterNullException(),
         )
-        self._u = u
-        self._v = v
-        
+    
     @property
     def u(self) -> Vector:
-        return self._u
+        return cast(Vector, super().a)
+    
+    @property
+    def a(self) -> Vector:
+        return self.u
     
     @property
     def v(self) -> Vector:
-        return self._v
+        return cast(Vector, super().b)
+    
+    @property
+    def b(self) -> Vector:
+        return self.v
     
     @property
     def domain_class(self) -> Type[VectorRegister]:

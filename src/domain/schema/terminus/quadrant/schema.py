@@ -1,7 +1,7 @@
-# src/domain/schema/terminus/quadrant/schema.py
+# src/domain/schema/destination/quadrant/schema.py
 
 """
-Module: domain.schema.terminus.quadrant.schema
+Module: domain.schema.destination.quadrant.schema
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -14,7 +14,7 @@ from enum import Enum
 from domain.model import Vector
 
 
-class QuadrantTerminus(Enum):
+class QuadrantDestination(Enum):
     """
     Role:
         - Configuration Table
@@ -22,7 +22,7 @@ class QuadrantTerminus(Enum):
 
 
     Responsibilities:
-        1.  Terminus of each quadrant
+        1.  Destination of each quadrant
 
     Attributes:
         orientation: str

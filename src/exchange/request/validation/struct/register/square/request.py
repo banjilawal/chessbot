@@ -13,6 +13,8 @@ from typing import cast
 
 from domain import SquareRegister
 from exchange import RegisterValidationRequest
+from transit import SquareRegisterCarrier
+
 
 class SquareRegisterValidationRequest(
     RegisterValidationRequest[SquareRegister]
@@ -27,7 +29,7 @@ class SquareRegisterValidationRequest(
 
      Attributes:
          id: int
-         item: Any
+         item: SquareRegisterCarrier
 
      Provides:
      
@@ -35,7 +37,7 @@ class SquareRegisterValidationRequest(
         RegisterValidationRequest
      """
     
-    def __init__(self, id: int, item: SquareRegister):
+    def __init__(self, id: int, item: SquareRegisterCarrier):
         """
         Args:
             id: int
@@ -44,8 +46,8 @@ class SquareRegisterValidationRequest(
         super().__init__(id=id, item=item)
     
     @property
-    def item(self) -> SquareRegister:
-        return cast(SquareRegister, super().item)
+    def item(self) -> SquareRegisterCarrier:
+        return cast(SquareRegisterCarrier, super().item)
     
     def __eq__(self, other):
         if other is self: return True

@@ -10,15 +10,16 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC
-from typing import Generic, Type, TypeVar, cast
+from typing import Dict, Generic, Type, TypeVar, cast
 
-from domain import Register, StructBlueprint
+from domain import Model, Register, StructBlueprint
 from err import RegisterNullException
 
 
-T = TypeVar("T", bound="Register")
+S = TypeVar("S", bound="Register")
+M = TypeVar("M", bound="Model")
 
-class RegisterBlueprint(StructBlueprint[T], ABC, Generic[T]):
+class RegisterBlueprint(StructBlueprint[S, M], ABC, Generic[S, M]):
     """
      Role:
         1.  Metadata
@@ -27,7 +28,7 @@ class RegisterBlueprint(StructBlueprint[T], ABC, Generic[T]):
          1.  Provide attributes for hydrating a Register.
 
      Attributes:
-         domain_class: Type[T]
+         domain_class: Type[S]
          domain_null_exception: RegisterNullException
 
      Provides:
@@ -35,25 +36,75 @@ class RegisterBlueprint(StructBlueprint[T], ABC, Generic[T]):
      Super Class:
         Blueprint
      """
+    _a: M
+    _b: M
     
     def __init__(
             self,
-            domain_class: Type[T],
+            a: M,
+            b: M,
+            domain_class: Type[S],
             domain_null_exception: RegisterNullException,
     ):
         """
         Args:
-            domain_class: Type[T]
+            a: M
+            b: M
+            domain_class: Type[S]
             domain_null_exception: RegisterNullException
         """
         super().__init__(
             domain_class=domain_class,
             domain_null_exception=domain_null_exception
         )
+        self._a = a
+        self._b = b
+        
+    @property
+    def a(self) -> M:
+        return self._a
     
     @property
-    def domain_class(self) -> Type[T]:
-        return cast(Type[T], super().domain_class)
+    def b(self) -> M:
+        return self._b
+    
+    @property
+    def to_dict(self) -> Dict[str, T]:
+        return {"a": self._a, "b": self._b}
+    
+    @property
+    def size(self) -> int:
+        return len(self.to_dict)
+    
+    @property
+    def is_empty(self) -> bool:
+        return self.size == 0
+    
+    @property
+    def is_balanced(self) -> bool:
+        return self.size == 2
+    
+    @property
+    def is_not_balanced(self) -> bool:
+        return self.size == 1
+    
+    @property
+    def consistency_exists(self) -> bool:
+        if (
+                self is None or
+                self.is_empty or
+                self.is_not_balanced
+        ):
+            return False
+        return True
+    
+    @property
+    def is_not_consistent(self) -> bool:
+        return not self.consistency_exists
+    
+    @property
+    def domain_class(self) -> Type[S]:
+        return cast(Type[S], super().domain_class)
     
     @property
     def domain_null_exception(self) -> RegisterNullException:

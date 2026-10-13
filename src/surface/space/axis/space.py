@@ -23,7 +23,7 @@ class Axis(Space):
 
     Attributes:
         origin: Vector
-        terminus: Vector
+        destination: Vector
         
     Provides:
 
@@ -31,13 +31,13 @@ class Axis(Space):
         Space
     """
 
-    def __init__(self, origin: Vector, terminus: Vector):
+    def __init__(self, origin: Vector, destination: Vector):
         """
         Args:
             origin: Vector
-            terminus: Vector
+            destination: Vector
         """
-        super().__init__(origin=origin, terminus=terminus)
+        super().__init__(origin=origin, destination=destination)
     
     def __eq__(self, other):
         if not super().__eq__(other):

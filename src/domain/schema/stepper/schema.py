@@ -1,7 +1,7 @@
-# src/domain/schema/terminus/schema.py
+# src/domain/schema/destination/schema.py
 
 """
-Module: domain.schema.terminus.schema
+Module: domain.schema.destination.schema
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -20,7 +20,7 @@ class QuadrantStepFunction(Enum):
 
 
     Responsibilities:
-        1.  Terminus of each quadrant
+        1.  Destination of each quadrant
 
     Attributes:
         orientation: str

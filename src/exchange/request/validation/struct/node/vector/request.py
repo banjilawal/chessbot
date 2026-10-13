@@ -27,7 +27,7 @@ class VectorNodeValidationRequest(NodeValidationRequest[VectorNode]):
 
      Attributes:
          id: int
-         item: Any
+         item: StructCarrier[T]
 
      Provides:
      

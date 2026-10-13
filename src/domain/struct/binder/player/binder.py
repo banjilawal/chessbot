@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from typing import Dict
+from typing import Dict, cast
 
 from domain import Archetype, ArchetypeBinder, Player
 
@@ -44,48 +44,93 @@ class PlayerBinder(ArchetypeBinder[Player]):
             white_player: Player
             black_player: Player
         """
-        super().__init__()
+        super().__init__(white_entry=white_player, black_entry=black_player)
         self._entry = {
             white_player.archetype: white_player,
             black_player.archetype: black_player,
         }
-    
+        
     @property
     def white_player(self) -> Player:
-        return self._entry[Archetype.WHITE]
+        return cast(Player, super().white_entry)
     
     @property
     def black_player(self) -> Player:
-        return self._entry[Archetype.BLACK]
+        return cast(Player, super().black_entry)
     
     @property
-    def entries_are_unique(self) -> bool:
-        return self.is_full and self.white_player != self.black_player
+    def white_entry(self) -> Player:
+        return self.white_entry
     
     @property
-    def entries_are_not_unique(self) -> bool:
-        return self.is_full and self.white_player == self.black_player
+    def black_entry(self) -> Player:
+        return self.black_entry
+    
+    @property
+    def size(self) -> int:
+        return len(self.bindings)
+    
+    @property
+    def is_empty(self) -> bool:
+        return self.size == 0
+    
+    @property
+    def not_empty(self) -> bool:
+        return not self.is_empty
+    
+    @property
+    def archetypes_are_the_same(self) -> bool:
+        return self.white_entry.archetype == self.black_entry.archetype
+    
+    @property
+    def archetypes_differ(self) -> bool:
+        return not self.archetypes_are_the_same
+    
+    @property
+    def is_balanced(self) -> bool:
+        return (
+                self is not None and
+                super().is_balanced and
+                self.entries_are_unique and
+                self.archetypes_differ
+        )
+    
+    @property
+    def is_not_balanced(self) -> bool:
+        return not self.is_balanced
     
     @property
     def consistency_exists(self) -> bool:
-        if super().is_not_consistent:
-            return False
-        if self.entries_are_not_unique:
-            return False
-        if self.white_player.archetype == Archetype.BLACK:
-            return False
-        if self.black_player.archetype == Archetype.WHITE:
-            return False
-        return True
+        return (
+                self.is_balanced and
+                self.entries_are_unique and
+                self._white_entry.archetype == Archetype.WHITE and
+                self._black_entry.archetype == Archetype.BLACK
+        )
     
     @property
     def is_not_consistent(self) -> bool:
         return not self.consistency_exists
     
     @property
+    def entries_are_unique(self) -> bool:
+        return (
+                self.archetypes_differ and
+                self.white_player != self.black_player
+        )
+    
+    @property
+    def entries_are_not_unique(self) -> bool:
+        return not self.entries_are_unique
+    
+    @property
+    def bindings(self) -> Dict[Archetype, Player]:
+        return self._entry
+    
+    @property
     def to_dict(self) -> Dict[str, Player]:
         return {
-            "white": self.white_player,
-            "black": self.black_player,
+            "white": self.white_entry,
+            "black": self.black_entry
         }
     
