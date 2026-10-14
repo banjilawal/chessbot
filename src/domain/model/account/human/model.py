@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from domain import Account
-from software import Subscriber
+from software import Firstname
 
 
 class HumanAccount(Account):
@@ -26,30 +26,39 @@ class HumanAccount(Account):
 
      Attributes:
          id: int
-         name: str
-         adviser: Optional[GameAdviser]
+        firstname: str
+        lastname: str
 
      Provides:
 
      Super Class:
         Account
      """
-    _subscriber: Subscriber
+    _firstname: str
+    _lastname: str
     
     def account(
             self,
-            subscriber: Subscriber,
+            id: int,
+            firstname: str,
+            lastname: str,
     ):
         """
         Args:
-            subscriber: Subscriber
+            firstname: str
+            lastname: str
         """
-        super().__init__(id=subscriber.id)
-        self._subscriber = subscriber
+        super().__init__(id=id)
+        self._firstname = firstname
+        self._lastname = lastname
         
     @property
-    def subscriber(self) -> Subscriber:
-        return self._subscriber
+    def firstname(self) -> str:
+        return self._firstname
+    
+    @property
+    def lastname(self) -> str:
+        return self._lastname
     
     def __eq__(self, other):
         if other is self: return True
