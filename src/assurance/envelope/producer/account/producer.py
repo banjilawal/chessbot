@@ -13,18 +13,12 @@ from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import RootEnvelopeProducer, AccountLoader, AccountValidatorToolkit
-from domain import (
-    Footstep, Formation, HomeSquare, Team, Account, AccountDeployment,
-    AccountPrimeExtract
-)
-from err import (
-    FormationNullException, AccountCarrierEmptyException,
-    AccountConsistencyException, AccountDeploymentConsistencyException, AccountDeploymentNullException,
-    AccountEnvelopeProducerException
-)
-from exchange import FootstepValidationRequest, TeamValidationRequest
-from transit import FootstepCarrier, RootAccountEnvelope, TeamCarrier
-from util import IdFactory, LoggingLevelRouter
+from domain import Account, AccountPrimeExtract
+from err import AccountCarrierEmptyException, AccountEnvelopeProducerException
+
+
+from transit import RootAccountEnvelope
+from util import LoggingLevelRouter
 
 
 class AccountEnvelopeProducer(RootEnvelopeProducer[Account]):
@@ -139,129 +133,12 @@ class AccountEnvelopeProducer(RootEnvelopeProducer[Account]):
                     ex=id_validation.exception,
                 )
             )
-        # --- PROCESS_THE_TEAM_ATTRIBUTE. ---#
-        team_validation = self.toolkit.wrapper.team.extract_model(
-            request=TeamValidationRequest(
-                item=TeamCarrier(model=blueprint.team),
-                id=IdFactory.next_id(class_name="TeamValidationRequest"),
-            )
-        )
-        # Handle the case that the team is flagged.
-        if team_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                AccountEnvelopeProducerException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=AccountEnvelopeProducerException.MSG,
-                    err_code=AccountEnvelopeProducerException.ERR_CODE,
-                    ex=team_validation.exception,
-                )
-            )
-        # --- PROCESS_THE_FOOTSTEP_ATTRIBUTE. ---#
-        footstep_validation = self.toolkit.wrapper.footstep.extract_model(
-            request=FootstepValidationRequest(
-                item=FootstepCarrier(model=blueprint.footstep),
-                id=IdFactory.next_id(class_name="FootstepValidationRequest"),
-            )
-        )
-        # Handle the case that the footstep is unsafe.
-        if footstep_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                AccountEnvelopeProducerException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=AccountEnvelopeProducerException.MSG,
-                    err_code=AccountEnvelopeProducerException.ERR_CODE,
-                    ex=footstep_validation.exception,
-                )
-            )
-        # --- PROCESS_THE_DEPLOYMENT_ATTRIBUTE ---#
-        deployment_validation = self.toolkit.priming_validator.execute(
-            candidate=blueprint.deployment,
-            target_model=AccountDeployment,
-            null_exception=AccountDeploymentNullException(),
-        )
-        # Handle the case that the deployment is flagged.
-        if deployment_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                AccountEnvelopeProducerException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=AccountEnvelopeProducerException.MSG,
-                    err_code=AccountEnvelopeProducerException.ERR_CODE,
-                    ex=deployment_validation.exception,
-                )
-            )
-        # Handle the case that there is a deployment inconsistency.
-        if blueprint.has_deployment_inconsistency:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                AccountEnvelopeProducerException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=AccountEnvelopeProducerException.MSG,
-                    err_code=AccountEnvelopeProducerException.ERR_CODE,
-                    ex=AccountDeploymentConsistencyException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=AccountDeploymentConsistencyException.MSG,
-                        err_code=AccountDeploymentConsistencyException.ERR_CODE,
-                    ),
-                )
-            )
-        # --- PROCESS_THE_FORMATION_ATTRIBUTE ---#
-        formation_validation = self.toolkit.priming_validator.execute(
-            candidate=blueprint.formation,
-            target_model=Formation,
-            null_exception=FormationNullException(),
-        )
-        # Handle the case that the deployment is flagged.
-        if formation_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                AccountEnvelopeProducerException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=AccountEnvelopeProducerException.MSG,
-                    err_code=AccountEnvelopeProducerException.ERR_CODE,
-                    ex=formation_validation.exception,
-                )
-            )
-        # --- START_HOME_SQUARE_DETECTION_PROCESS ---#
-        home_detection = self.toolkit.home_square_extractor.execute(
-            blueprint=blueprint,
-        )
-        # Handle the case that the home_square gets flagged.
-        if home_detection.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                AccountEnvelopeProducerException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=AccountEnvelopeProducerException.MSG,
-                    err_code=AccountEnvelopeProducerException.ERR_CODE,
-                    ex=home_detection.exception,
-                )
-            )
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
         id = cast(int, id_validation.payload)
-        team = cast(Team, team_validation.payload)
-        home_square = cast(HomeSquare, home_detection.payload)
-        footstep = cast(Footstep, footstep_validation.payload)
-        formation = cast(Formation, formation_validation.payload)
-        deployment = cast(AccountDeployment, deployment_validation.payload)
         
         # --- SEND_THE_WORK_PRODUCT. ---#
         envelope = RootAccountEnvelope(
             id=id,
-            team=team,
-            footstep=footstep,
-            formation=formation,
-            deployment=deployment,
-            home_square=home_square,
             prime_extract=prime_extract,
         )
         return ValidationResult.success(envelope)
