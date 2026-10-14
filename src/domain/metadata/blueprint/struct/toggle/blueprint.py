@@ -15,39 +15,39 @@ from typing import Dict, Generic, Optional, Type, TypeVar, cast
 from domain import StructBlueprint, Toggle
 from err import ToggleNullException
 
-S = TypeVar("S", bound="Toggle")
+T = TypeVar("T", bound="Toggle")
 M = TypeVar("M")
 
 
-class ToggleBlueprint(StructBlueprint[S, M], ABC, Generic[S, M]):
+class ToggleBlueprint(StructBlueprint[T], ABC, Generic[T]):
     """
      Role:
         1.  Metadata
 
-     Responsibilities:
+     ResponsibilitieT:
          1.  Provide attributes for hydrating a Toggle.
 
-     Attributes:
-         domain_class: Type[S]
+     AttributeT:
+         domain_class: Type[T]
          domain_null_exception: ToggleNullException
 
-     Provides:
+     ProvideT:
 
-     Super Class:
+     Super class:
         Blueprint
      """
-    _max_enabled_toggles: int
+    _max_enabled_toggleT: int
     
     def __init__(
             self,
-            domain_class: Type[S],
-            max_enabled_toggles: Optional[int] | None = None,
+            domain_class: Type[T],
+            max_enabled_toggleT: Optional[int] | None = None,
             domain_null_exception: Optional[ToggleNullException] | None= None,
     ):
         """
-        Args:
-            domain_class: Type[S]
-            max_enabled_toggles: Optional[int]
+        ArgT:
+            domain_class: Type[T]
+            max_enabled_toggleT: Optional[int]
             domain_null_exception: ToggleNullException
         """
         super().__init__(
@@ -57,8 +57,8 @@ class ToggleBlueprint(StructBlueprint[S, M], ABC, Generic[S, M]):
         self._max_enabled_toggles = max_enabled_toggles or 1
     
     @property
-    def domain_class(self) -> Type[S]:
-        return cast(Type[S], super().domain_class)
+    def domain_class(self) -> Type[T]:
+        return cast(Type[T], super().domain_class)
     
     @property
     def domain_null_exception(self) -> ToggleNullException:
@@ -94,7 +94,7 @@ class ToggleBlueprint(StructBlueprint[S, M], ABC, Generic[S, M]):
     
     @property
     @abstractmethod
-    def to_dict(self) -> Dict[str, M]:
+    def to_dict(self) -> Dict[str, Any]:
         pass
 
     

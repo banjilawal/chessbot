@@ -15,23 +15,23 @@ from domain import Archetype, BinderBlueprint, Player, PlayerBinder
 from err import PlayerBinderNullException
 
 
-class PlayerBinderBlueprint(BinderBlueprint[PlayerBinder, Player]):
+class PlayerBinderBlueprint(BinderBlueprint[PlayerBinder]):
     """
      Role:
         1.  Metadata
 
-     Responsibilities:
+     ResponsibilitieT:
          1.  Provide attributes for hydrating a PlayerBinder.
 
-     Attributes:
+     AttributeT:
         white_player: Player
         black_player: Player
         domain_class: Optional[Type[PlayerBinder]]
         domain_null_exception: Optional[PlayerBinderNullException]
 
-     Provides:
+     ProvideT:
 
-     Super Class:
+     Super class:
         BinderBlueprint
      """
     
@@ -43,7 +43,7 @@ class PlayerBinderBlueprint(BinderBlueprint[PlayerBinder, Player]):
             domain_null_exception: Optional[PlayerBinderNullException] | None = None,
     ):
         """
-        Args:
+        ArgT:
             white_player: Player
             black_player: Player
             domain_class: Optional[Type[PlayerBinder]]
@@ -83,6 +83,10 @@ class PlayerBinderBlueprint(BinderBlueprint[PlayerBinder, Player]):
     @property
     def entries_are_unique(self) -> bool:
         return self.players_are_unique
+    
+    @property
+    def entries_are_not_unique(self) -> bool:
+        return not self.entries_are_unique
     
     @property
     def is_balanced(self) -> bool:

@@ -10,6 +10,7 @@ version: 0.0.2
 # ============ ERR.NULL.TRANSIT.CARRIER.STRUCT PACKAGE ===========#
 
 # Packages
+from .binder import *
 from .chart import *
 from .node import *
 from .register import *

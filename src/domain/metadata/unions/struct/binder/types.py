@@ -41,7 +41,7 @@ class BinderTypeUnion(StructTypeUnion[T], ABC, Generic[T]):
             self,
             model: Type[T],
             carrier: Type[BinderCarrier[T]],
-            blueprint: Type[BinderBlueprint[T, M]],
+            blueprint: Type[BinderBlueprint[T]],
     ):
         """
         Args:
@@ -57,8 +57,8 @@ class BinderTypeUnion(StructTypeUnion[T], ABC, Generic[T]):
     
     @property
     def carrier(self) -> Type[BinderCarrier[T]]:
-        return cast(BinderCarrier[T], super().carrier)
+        return cast(Type[BinderCarrier[T]], super().carrier)
     
     @property
-    def blueprint(self) -> Type[BinderBlueprint[T, M]]:
-        return cast(Type[BinderBlueprint[T, M]], super().model)
+    def blueprint(self) -> Type[BinderBlueprint[T]]:
+        return cast(Type[BinderBlueprint[T]], super().model)

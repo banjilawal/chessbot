@@ -47,7 +47,6 @@ class PlayerBinderManifest(BinderManifest[PlayerBinder]):
             types=types or PlayerBinderTypeUnion(),
             nulls=nulls or PlayerBinderNullGroup(),
         )
-
         
     @property
     def types(self) -> PlayerBinderTypeUnion:

@@ -1,7 +1,7 @@
-# src/assurance/depend/toolkit/struct/binder/player/toolkit.py
+# src/assurance/depend/toolkit/struct/binder/team/toolkit.py
 
 """
-Module: assurance.depend.toolkit.struct.binder.player.toolkit
+Module: assurance.depend.toolkit.struct.binder.team.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,14 +11,14 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import BinderValidatorToolkit, PlayerBinderDependency
+from assurance import BinderValidatorToolkit, TeamBinderDependency
 from domain import (
-    PlayerBinder, PlayerBinderManifest, PlayerBinderNullGroup,
-    PlayerBinderTypeUnion
+    TeamBinder, TeamBinderManifest, TeamBinderNullGroup,
+    TeamBinderTypeUnion
 )
 
 
-class PlayerBinderValidatorToolkit(BinderValidatorToolkit[PlayerBinder]):
+class TeamBinderValidatorToolkit(BinderValidatorToolkit[TeamBinder]):
     """
     Role:
         - Toolkit
@@ -27,8 +27,8 @@ class PlayerBinderValidatorToolkit(BinderValidatorToolkit[PlayerBinder]):
         1.  Single source of truth for attribute validators and type metadata.
 
     Attributes:
-            wrapper: PlayerBinderDependency
-            metadata: PlayerBinderManifest
+            wrapper: TeamBinderDependency
+            metadata: TeamBinderManifest
 
     Provides:
 
@@ -38,30 +38,30 @@ class PlayerBinderValidatorToolkit(BinderValidatorToolkit[PlayerBinder]):
     
     def __init__(
             self,
-            wrapper: Optional[PlayerBinderDependency] | None = None,
-            metadata: Optional[PlayerBinderManifest] | None = None,
+            wrapper: Optional[TeamBinderDependency] | None = None,
+            metadata: Optional[TeamBinderManifest] | None = None,
     ):
         """
-            wrapper: Optional[PlayerBinderDependency]
-            metadata: Optional[PlayerBinderManifest]
+            wrapper: Optional[TeamBinderDependency]
+            metadata: Optional[TeamBinderManifest]
         """
         super().__init__(
-            wrapper=wrapper or PlayerBinderDependency(),
-            metadata=metadata or PlayerBinderManifest(),
+            wrapper=wrapper or TeamBinderDependency(),
+            metadata=metadata or TeamBinderManifest(),
         )
     
     @property
-    def wrapper(self) -> PlayerBinderDependency:
-        return cast(PlayerBinderDependency, super().wrapper)
+    def wrapper(self) -> TeamBinderDependency:
+        return cast(TeamBinderDependency, super().wrapper)
     
     @property
-    def metadata(self) -> PlayerBinderManifest:
-        return cast(PlayerBinderManifest, super().metadata)
+    def metadata(self) -> TeamBinderManifest:
+        return cast(TeamBinderManifest, super().metadata)
     
     @property
-    def nulls(self) -> PlayerBinderNullGroup:
+    def nulls(self) -> TeamBinderNullGroup:
         return self.metadata.nulls
     
     @property
-    def types(self) -> PlayerBinderTypeUnion:
+    def types(self) -> TeamBinderTypeUnion:
         return self.metadata.types

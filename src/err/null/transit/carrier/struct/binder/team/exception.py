@@ -1,7 +1,7 @@
-# src/err/null/transit/carrier/struct/binder/square/exception.py
+# src/err/null/transit/carrier/struct/binder/team/exception.py
 
 """
-Module: err.null.transit.carrier.struct.binder.square.exception
+Module: err.null.transit.carrier.struct.binder.team.exception
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# SQUARE_BINDER_CARRIER_NULL_ERROR #======================#
-    "SquareBinderCarrierNullException",
+    # ======================# TEAM_BINDER_CARRIER_NULL_ERROR #======================#
+    "TeamBinderCarrierNullException",
 ]
 
-# ======================# SQUARE_BINDER_CARRIER_NULL_ERROR #======================#
-class SquareBinderCarrierNullException(BinderCarrierNullException):
+# ======================# TEAM_BINDER_CARRIER_NULL_ERROR #======================#
+class TeamBinderCarrierNullException(BinderCarrierNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required SquareBinderCarrier is null.
+        1.  Indicating a required TeamBinderCarrier is null.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class SquareBinderCarrierNullException(BinderCarrierNullException):
     Super Class:
         BinderCarrierNullException
     """
-    MSG = "SquareBinderCarrier cannot be null."
-    ERR_CODE= "SQUARE_BINDER_CARRIER_NULL_ERROR"
+    MSG = "TeamBinderCarrier cannot be null."
+    ERR_CODE= "TEAM_BINDER_CARRIER_NULL_ERROR"
     
     def __init__(
             self,

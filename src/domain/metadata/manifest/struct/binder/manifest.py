@@ -1,7 +1,7 @@
-# src/domain/metadata/manifest/strcture/register/manifest.py
+# src/domain/metadata/manifest/strcture/binder/manifest.py
 
 """
-Module: domain.metadata.manifest.struct.register.manifest
+Module: domain.metadata.manifest.struct.binder.manifest
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from domain import Register, StructManifest, RegisterNullGroup, RegisterTypeUnion
+from domain import ArchetypeBinder, BinderNullGroup, StructManifest, BinderTypeUnion
 
-T = TypeVar("T", bound="Register")
+T = TypeVar("T", bound="ArchetypeBinder")
 
-class RegisterManifest(StructManifest[T], ABC, Generic[T]):
+class BinderManifest(StructManifest[T], ABC, Generic[T]):
     """
      Role:
         1.  Metadata
 
      Responsibilities:
-         1.  Aggregates NullExceptions and TypeUnions for the Register security lifecycle.
+         1.  Aggregates NullExceptions and TypeUnions for the Binder security lifecycle.
 
      Attributes:
-        types: RegisterTypeUnion[T]
-        nulls: RegisterNullGroup[T]
+        types: BinderTypeUnion[T]
+        nulls: BinderNullGroup[T]
 
      Provides:
 
@@ -36,21 +36,21 @@ class RegisterManifest(StructManifest[T], ABC, Generic[T]):
     
     def __init__(
             self,
-            types: RegisterTypeUnion[T],
-            nulls: RegisterNullGroup[T],
+            types: BinderTypeUnion[T],
+            nulls: BinderNullGroup[T],
     ):
         """
         Args:
-            types: RegisterTypeUnion[T]
-            nulls: RegisterNullGroup[T]
+            types: BinderTypeUnion[T]
+            nulls: BinderNullGroup[T]
         """
         super().__init__(types=types, nulls=nulls,)
 
         
     @property
-    def types(self) -> RegisterTypeUnion[T]:
-        return cast(RegisterTypeUnion[T], super().types)
+    def types(self) -> BinderTypeUnion[T]:
+        return cast(BinderTypeUnion[T], super().types)
     
     @property
-    def nulls(self) -> RegisterNullGroup:
-        return cast(RegisterNullGroup, super().nulls)
+    def nulls(self) -> BinderNullGroup:
+        return cast(BinderNullGroup, super().nulls)

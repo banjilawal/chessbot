@@ -10,41 +10,41 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Dict, Generic, Type, TypeVar, cast
+from typing import Any, Dict, Generic, Type, TypeVar, cast
 
 from domain import Blueprint, Struct
 from err import StructNullException
 
-S = TypeVar("S", bound="Struct")
+T = TypeVar("T", bound="Struct")
 M = TypeVar("M")
 
 
-class StructBlueprint(Blueprint[S], ABC, Generic[S, M]):
+class StructBlueprint(Blueprint[T], ABC, Generic[T]):
     """
      Role:
         1.  Metadata
 
-     Responsibilities:
+     ResponsibilitieT:
          1.  Provide attributes for hydrating a Struct.
 
-     Attributes:
-         domain_class: Type[S]
+     AttributeT:
+         domain_class: Type[T]
          domain_null_exception: StructNullException
 
-     Provides:
+     ProvideT:
 
-     Super Class:
+     Super class:
         Blueprint
      """
     
     def __init__(
             self,
-            domain_class: Type[S],
+            domain_class: Type[T],
             domain_null_exception: StructNullException,
     ):
         """
-        Args:
-            domain_class: Type[S]
+        ArgT:
+            domain_class: Type[T]
             domain_null_exception: StructNullException
         """
         super().__init__(
@@ -66,12 +66,12 @@ class StructBlueprint(Blueprint[S], ABC, Generic[S, M]):
     
     @property
     @abstractmethod
-    def to_dict(self) -> Dict[str, M]:
+    def to_dict(self) -> Dict[str, Any]:
         pass
     
     @property
-    def domain_class(self) -> Type[S]:
-        return cast(Type[S], super().domain_class)
+    def domain_class(self) -> Type[T]:
+        return cast(Type[T], super().domain_class)
     
     @property
     def domain_null_exception(self) -> StructNullException:

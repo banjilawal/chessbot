@@ -20,18 +20,18 @@ class VectorRegisterBlueprint(RegisterBlueprint[VectorRegister, Vector]):
      Role:
         1.  Metadata
 
-     Responsibilities:
+     ResponsibilitieT:
          1.  Provide attributes for hydrating a VectorRegister.
 
-     Attributes:
+     AttributeT:
         u: Vector
         v: Vector
         domain_class: Optional[Type[VectorRegister]]
         domain_null_exception: Optional[VectorRegisterNullException]
 
-     Provides:
+     ProvideT:
 
-     Super Class:
+     Super class:
         RegisterBlueprint
      """
     
@@ -43,7 +43,7 @@ class VectorRegisterBlueprint(RegisterBlueprint[VectorRegister, Vector]):
             domain_null_exception: Optional[VectorRegisterNullException] | None = None,
     ):
         """
-        Args:
+        ArgT:
             u: Vector
             v: Vector
             domain_class: Optional[Type[VectorRegister]]

@@ -1,7 +1,7 @@
-# src/assurance/depend/toolkit/struct/register/vector/toolkit.py
+# src/assurance/depend/toolkit/struct/binder/player/toolkit.py
 
 """
-Module: assurance.depend.toolkit.struct.register.vector.toolkit
+Module: assurance.depend.toolkit.struct.binder.player.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,14 +11,14 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from assurance import RegisterValidatorToolkit, VectorRegisterDependency
+from assurance import BinderValidatorToolkit, PlayerBinderDependency
 from domain import (
-    VectorRegister, VectorRegisterManifest, VectorRegisterNullGroup,
-    VectorRegisterTypeUnion
+    PlayerBinder, PlayerBinderManifest, PlayerBinderNullGroup,
+    PlayerBinderTypeUnion
 )
 
 
-class VectorRegisterValidatorToolkit(RegisterValidatorToolkit[VectorRegister]):
+class PlayerBinderValidatorToolkit(BinderValidatorToolkit[PlayerBinder]):
     """
     Role:
         - Toolkit
@@ -27,41 +27,41 @@ class VectorRegisterValidatorToolkit(RegisterValidatorToolkit[VectorRegister]):
         1.  Single source of truth for attribute validators and type metadata.
 
     Attributes:
-            wrapper: VectorRegisterDependency
-            metadata: VectorRegisterManifest
+            wrapper: PlayerBinderDependency
+            metadata: PlayerBinderManifest
 
     Provides:
 
     Super Class:
-       RegisterValidatorToolkit
+       BinderValidatorToolkit
     """
     
     def __init__(
             self,
-            wrapper: Optional[VectorRegisterDependency] | None = None,
-            metadata: Optional[VectorRegisterManifest] | None = None,
+            wrapper: Optional[PlayerBinderDependency] | None = None,
+            metadata: Optional[PlayerBinderManifest] | None = None,
     ):
         """
-            wrapper: Optional[VectorRegisterDependency]
-            metadata: Optional[VectorRegisterManifest]
+            wrapper: Optional[PlayerBinderDependency]
+            metadata: Optional[PlayerBinderManifest]
         """
         super().__init__(
-            wrapper=wrapper or VectorRegisterDependency(),
-            metadata=metadata or VectorRegisterManifest(),
+            wrapper=wrapper or PlayerBinderDependency(),
+            metadata=metadata or PlayerBinderManifest(),
         )
     
     @property
-    def wrapper(self) -> VectorRegisterDependency:
-        return cast(VectorRegisterDependency, super().wrapper)
+    def wrapper(self) -> PlayerBinderDependency:
+        return cast(PlayerBinderDependency, super().wrapper)
     
     @property
-    def metadata(self) -> VectorRegisterManifest:
-        return cast(VectorRegisterManifest, super().metadata)
+    def metadata(self) -> PlayerBinderManifest:
+        return cast(PlayerBinderManifest, super().metadata)
     
     @property
-    def nulls(self) -> VectorRegisterNullGroup:
+    def nulls(self) -> PlayerBinderNullGroup:
         return self.metadata.nulls
     
     @property
-    def types(self) -> VectorRegisterTypeUnion:
+    def types(self) -> PlayerBinderTypeUnion:
         return self.metadata.types

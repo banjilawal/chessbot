@@ -1,19 +1,18 @@
-# src/err/null/transit/carrier/struct/register/__init__.py
+# src/err/null/transit/carrier/struct/binder/__init__.py
 
 """
-Module: err.null.transit.carrier.struct.register.__init__
+Module: err.null.transit.carrier.struct.binder.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ERR.NULL.TRANSIT.CARRIER.STRUCT.REGISTER PACKAGE ===========#
+# =========== ERR.NULL.TRANSIT.CARRIER.STRUCT.BINDER PACKAGE ===========#
 
 # Packages
-from .coord import *
-from .square import *
-from .vector import *
+from .team import *
+from .player import *
 
 
 # Modules
-from .exception import RegisterCarrierNullException
+from .exception import BinderCarrierNullException

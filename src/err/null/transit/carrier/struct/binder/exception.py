@@ -1,7 +1,7 @@
-# src/err/null/transit/carrier/struct/register/exception.py
+# src/err/null/transit/carrier/struct/binder/exception.py
 
 """
-Module: err.null.transit.carrier.struct.register.exception
+Module: err.null.transit.carrier.struct.binder.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# REGISTER_CARRIER_NULL_ERROR #======================#
-    "RegisterCarrierNullException",
+    # ======================# BINDER_CARRIER_NULL_ERROR #======================#
+    "BinderCarrierNullException",
 ]
 
-# ======================# REGISTER_CARRIER_NULL_ERROR #======================#
-class RegisterCarrierNullException(StructCarrierNullException):
+# ======================# BINDER_CARRIER_NULL_ERROR #======================#
+class BinderCarrierNullException(StructCarrierNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required RegisterCarrier is null.
+        1.  Indicating a required BinderCarrier is null.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class RegisterCarrierNullException(StructCarrierNullException):
     Super Class:
         CarrierNullException
     """
-    MSG = "RegisterCarrier cannot be null."
-    ERR_CODE= "REGISTER_CARRIER_NULL_ERROR"
+    MSG = "BinderCarrier cannot be null."
+    ERR_CODE= "BINDER_CARRIER_NULL_ERROR"
     
     def __init__(
             self,

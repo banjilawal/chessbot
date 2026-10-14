@@ -20,18 +20,18 @@ class CoordRegisterBlueprint(RegisterBlueprint[CoordRegister, Coord]):
      Role:
         1.  Metadata
 
-     Responsibilities:
+     ResponsibilitieT:
          1.  Provide attributes for hydrating a CoordRegister.
 
-     Attributes:
+     AttributeT:
         u: Coord
         v: Coord
         domain_class: Optional[Type[CoordRegister]]
         domain_null_exception: Optional[CoordRegisterNullException]
 
-     Provides:
+     ProvideT:
 
-     Super Class:
+     Super class:
         RegisterBlueprint
      """
     
@@ -43,7 +43,7 @@ class CoordRegisterBlueprint(RegisterBlueprint[CoordRegister, Coord]):
             domain_null_exception: Optional[CoordRegisterNullException] | None = None,
     ):
         """
-        Args:
+        ArgT:
             u: Coord
             v: Coord
             domain_class: Optional[Type[CoordRegister]]

@@ -47,7 +47,7 @@ class RegisterTypeUnion(StructTypeUnion[T], ABC, Generic[T]):
         Args:
             model: Type[T]
             carrier: Type[StructCarrier[T]]
-            blueprint: Type[RegisterBlueprint[T, M]]
+            blueprint: Type[RegisterBlueprint[T]]
         """
         super().__init__(model=model, blueprint=blueprint, carrier=carrier)
         
@@ -57,8 +57,8 @@ class RegisterTypeUnion(StructTypeUnion[T], ABC, Generic[T]):
     
     @property
     def carrier(self) -> Type[StructCarrier[T]]:
-        return self._carrier
+        return cast(Type[StructCarrier[T]], super().carrier)
     
     @property
-    def blueprint(self) -> Type[RegisterBlueprint[T, M]]:
-        return cast(Type[RegisterBlueprint[T, M]], super().model)
+    def blueprint(self) -> Type[RegisterBlueprint[T]]:
+        return cast(Type[RegisterBlueprint[T]], super().model)

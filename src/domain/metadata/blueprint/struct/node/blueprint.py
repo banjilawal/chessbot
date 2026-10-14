@@ -15,44 +15,44 @@ from typing import Dict, Generic, Optional, Type, TypeVar, cast
 from domain import Model, Node, StructBlueprint
 from err import NodeNullException
 
-S = TypeVar("S", bound="Node")
+T = TypeVar("T", bound="Node")
 M = TypeVar("M", bound="Model")
 
-class NodeBlueprint(StructBlueprint[S, M], ABC, Generic[S, M]):
+class NodeBlueprint(StructBlueprint[T], ABC, Generic[T]):
     """
      Role:
         1.  Metadata
 
-     Responsibilities:
+     ResponsibilitieT:
          1.  Provide attributes for hydrating a Node.
 
-     Attributes:
-         domain_class: Type[S]
+     AttributeT:
+         domain_class: Type[T]
          domain_null_exception: NodeNullException
 
-     Provides:
+     ProvideT:
 
-     Super Class:
+     Super class:
         StructBlueprint
      """
-    _payload: Optional[M]
-    _next: Optional[Node[M]]
-    _previous: Optional[Node[M]]
+    _payload: Optional[Any]
+    _next: Optional[Node[Any]]
+    _previouT: Optional[Node[Any]]
     
     def __init__(
             self,
-            domain_class: Type[S],
-            payload: Optional[M] | None = None,
-            next: Optional[Node[M]] | None = None,
-            previous: Optional[Node[M]] | None = None,
+            domain_class: Type[T],
+            payload: Optional[Any] | None = None,
+            next: Optional[Node[Any]] | None = None,
+            previouT: Optional[Node[Any]] | None = None,
             domain_null_exception: Optional[NodeNullException] | None = None,
     ):
         """
-        Args:
-            domain_class: Type[S]
-            payload: Optional[[M]]
-            next: Optional[Node[M]]
-            previous: Optional[Node[M]]
+        ArgT:
+            domain_class: Type[T]
+            payload: Optional[[Any]]
+            next: Optional[Node[Any]]
+            previouT: Optional[Node[Any]]
             domain_null_exception: Optional[NodeNullException]
         """
         super().__init__(
@@ -64,15 +64,15 @@ class NodeBlueprint(StructBlueprint[S, M], ABC, Generic[S, M]):
         self._previous = previous
     
     @property
-    def payload(self) -> Optional[M]:
+    def payload(self) -> Optional[Any]:
         return self._payload
     
     @property
-    def next(self) -> Optional[Node[M]]:
+    def next(self) -> Optional[Node[Any]]:
         return self._next
     
     @property
-    def previous(self) -> Optional[Node[M]]:
+    def previous(self) -> Optional[Node[Any]]:
         return self._previous
     
     @property
@@ -116,12 +116,12 @@ class NodeBlueprint(StructBlueprint[S, M], ABC, Generic[S, M]):
     
     @property
     @abstractmethod
-    def to_dict(self) -> Dict[str, M]:
+    def to_dict(self) -> Dict[str, Any]:
         pass
     
     @property
-    def domain_class(self) -> Type[S]:
-        return cast(Type[S], super().domain_class)
+    def domain_class(self) -> Type[T]:
+        return cast(Type[T], super().domain_class)
     
     @property
     def domain_null_exception(self) -> NodeNullException:
@@ -133,23 +133,23 @@ class NodeBlueprint(StructBlueprint[S, M], ABC, Generic[S, M]):
 
     ):
         """
-        Args:
-            payload: Optional[M],
-            next: Optional[Node[M]]
-            previous: Optional[Node[M]]
+        ArgT:
+            payload: Optional[Any],
+            next: Optional[Node[Any]]
+            previouT: Optional[Node[Any]]
         """
 
     
 
     
     @next.setter
-    def next(self, other: Node[M]):
+    def next(self, other: Node[Any]):
         self._next = other
     
 
     
     @previous.setter
-    def previous(self, other: Node[M]):
+    def previous(self, other: Node[Any]):
         self._previous = other
         
 

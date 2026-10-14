@@ -48,8 +48,8 @@ class PlayerBinderTypeUnion(BinderTypeUnion[PlayerBinder]):
         """
         super().__init__(
             model=model or PlayerBinder,
-            blueprint=blueprint or PlayerBinderBlueprint(),
-            carrier=carrier,
+            blueprint=blueprint or Type[PlayerBinderBlueprint],
+            carrier=carrier or Type[PlayerBinderCarrier],
         )
         
     @property
@@ -57,8 +57,8 @@ class PlayerBinderTypeUnion(BinderTypeUnion[PlayerBinder]):
         return cast(Type[PlayerBinder], super().model)
     
     @property
-    def carrier(self) -> Type[StructCarrier[PlayerBinder]]:
-        return cast(Type[StructCarrier[PlayerBinder]], super().carrier)
+    def carrier(self) -> Type[PlayerBinder]:
+        return cast(Type[PlayerBinder], super().carrier)
     
     @property
     def blueprint(self) -> Type[PlayerBinderBlueprint]:

@@ -20,19 +20,19 @@ class VectorNodeBlueprint(NodeBlueprint[VectorNode, Vector]):
     Role:
         - Structural Wrapper
 
-    Responsibilities:
+    ResponsibilitieT:
         1.  Encapsulate a Vector payload with pointer references (next/previous) to
             enable doubly-linked traversal.
         2.  Provide type-safe accessors for payload inspection and node chaining.
 
-    Attributes:
+    AttributeT:
         payload: Optional[Vector]
         next: Optional[VectorNode]
-        previous: Optional[VectorNode]
+        previouT: Optional[VectorNode]
         
-    Provides:
+    ProvideT:
 
-    Super Class:
+    Super class:
         Node
     """
     
@@ -40,15 +40,15 @@ class VectorNodeBlueprint(NodeBlueprint[VectorNode, Vector]):
             self,
             payload: Optional[Vector] | None = None,
             next: Optional[VectorNode] | None = None,
-            previous: Optional[VectorNode] | None = None,
+            previouT: Optional[VectorNode] | None = None,
             domain_class: Optional[Type[VectorNode]] | None = None,
             domain_null_exception: Optional[VectorNodeNullException] | None = None,
     ):
         """
-        Args:
+        ArgT:
             payload: Optional[Vector]
             next: Optional[Vector]
-            previous: Optional[Vector]
+            previouT: Optional[Vector]
             Optional[Type[VectorNode]]
             domain_null_exception: Optional[VectorNodeNullException]
         """

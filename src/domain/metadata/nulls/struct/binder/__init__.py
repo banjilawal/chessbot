@@ -1,18 +1,16 @@
-# src/domain/metadata/nulls/struct/register/__init__.py
+# src/domain/metadata/nulls/struct/binder/__init__.py
 
 """
-Module: domain.metadata.nulls.struct.register.__init__
+Module: domain.metadata.nulls.struct.binder.__init__
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
 """
 
-# =========== DOMAIN.METADATA.NULLS.STRUCT.REGISTER PACKAGE ===========#
+# =========== DOMAIN.METADATA.NULLS.STRUCT.BINDER PACKAGE ===========#
 
 # Packages
-from .coord import *
-from .square import *
-from .vector import *
+from .player import *
 
 # Modules
-from .group import RegisterNullGroup
+from .group import BinderNullGroup

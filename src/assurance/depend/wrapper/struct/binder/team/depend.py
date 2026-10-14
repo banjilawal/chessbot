@@ -13,11 +13,11 @@ from __future__ import annotations
 from typing import Optional
 
 from assurance import BinderDependency
-from domain import PlayerBinder
-from exchange import PlayerValidationResponseWrapper
+from domain import TeamBinder
+from exchange import TeamValidationResponseWrapper
 
 
-class PlayerBinderDependency(BinderDependency[PlayerBinder]):
+class TeamBinderDependency(BinderDependency[TeamBinder]):
     """
     Role:
         - Toolkit
@@ -27,26 +27,26 @@ class PlayerBinderDependency(BinderDependency[PlayerBinder]):
             upstream relational partners attributes.
 
     Attributes:
-        player: PlayerValidationResponseWrapper
+        team: TeamValidationResponseWrapper
 
     Provides:
 
     Super Class:
         BinderDependency
     """
-    _player: PlayerValidationResponseWrapper
+    _team: TeamValidationResponseWrapper
     
     def __init__(
             self,
-            player: Optional[PlayerValidationResponseWrapper] | None = None,
+            team: Optional[TeamValidationResponseWrapper] | None = None,
     ):
         """
         Args:
-            player: Optional[PlayerValidationResponseWrapper]
+            team: Optional[TeamValidationResponseWrapper]
         """
         super().__init__()
-        self._player = player or PlayerValidationResponseWrapper()
+        self._team = team or TeamValidationResponseWrapper()
         
     @property
-    def player(self) -> PlayerValidationResponseWrapper:
-        return self._player
+    def team(self) -> TeamValidationResponseWrapper:
+        return self._team

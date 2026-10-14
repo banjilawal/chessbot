@@ -10,67 +10,67 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Dict, Generic, Optional, Type, TypeVar, cast
+from typing import Any, Dict, Generic, Optional, Type, TypeVar, cast
 
 from domain import Archetype, ArchetypeBinder, Archetyped
 from domain import StructBlueprint
 from err import ArchetypeBinderNullException
 
-S = TypeVar("S", bound="ArchetypeBinder")
+T = TypeVar("T", bound="ArchetypeBinder")
 M = TypeVar("M", bound="Archetyped")
 
 
-class BinderBlueprint(StructBlueprint[S, M], ABC, Generic[S, M]):
+class BinderBlueprint(StructBlueprint[T], ABC, Generic[T]):
     """
      Role:
         1.  Metadata
 
-     Responsibilities:
+     ResponsibilitieT:
          1.  Provide attributes for hydrating a Binder.
 
-     Attributes:
-        white_entry: M
-        black_entry: M
-        domain_class: Type[S]
+     AttributeT:
+        white_entry: Any
+        black_entry: Any
+        domain_class: Type[T]
         domain_null_exception: ArchetypeBinderNullException
 
-     Provides:
+     ProvideT:
 
-     Super Class:
+     Super class:
         StructBlueprint
      """
-    _white_entry: M
-    _black_entry: M
+    # _white_entry: Any
+    # _black_entry: Any
     
     def __init__(
             self,
-            white_entry: M, 
-            black_entry: M,
-            domain_class: Type[S],
+            # white_entry: Any,
+            # black_entry: Any,
+            domain_class: Type[T],
             domain_null_exception: Optional[ArchetypeBinderNullException] | None = None,
     ):
         """
-        Args:
-            white_entry: M
-            black_entry: M
-            domain_class: Type[S]
+        ArgT:
+            white_entry: Any
+            black_entry: Any
+            domain_class: Type[T]
             Optional[ArchetypeBinderNullException]
         """
         super().__init__(
             domain_class=domain_class,
             domain_null_exception=domain_null_exception or ArchetypeBinderNullException()
         )
-        self._white_entry = white_entry
-        self._black_entry = black_entry
-        
-    @property
-    def white_entry(self) -> S:
-        return self._white_entry
-    
-    @property
-    def black_entry(self) -> S:
-        return self._black_entry
-    
+    #     self._white_entry = white_entry
+    #     self._black_entry = black_entry
+    #
+    # @property
+    # def white_entry(self) -> Any:
+    #     return self._white_entry
+    #
+    # @property
+    # def black_entry(self) -> Any:
+    #     return self._black_entry
+    #
     @property
     def size(self) -> int:
         return len(self.bindings)
@@ -127,19 +127,19 @@ class BinderBlueprint(StructBlueprint[S, M], ABC, Generic[S, M]):
     
     @property
     @abstractmethod
-    def bindings(self) -> Dict[Archetype, M]:
+    def bindings(self) -> Dict[Archetype, Any]:
         pass
         
     @property
-    def to_dict(self) -> Dict[str, M]:
+    def to_dict(self) -> Dict[str, Any]:
         return {
             "white": self._white_entry,
             "black": self._black_entry
         }
     
     @property
-    def domain_class(self) -> Type[S]:
-        return cast(Type[S], super().domain_class)
+    def domain_class(self) -> Type[T]:
+        return cast(Type[T], super().domain_class)
     
     @property
     def domain_null_exception(self) -> ArchetypeBinderNullException:

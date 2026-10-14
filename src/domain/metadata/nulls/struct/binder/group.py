@@ -1,7 +1,7 @@
-# src/domain/metadata/nulls/struct/register/group.py
+# src/domain/metadata/nulls/struct/binder/group.py
 
 """
-Module: domain.metadata.nulls.struct.register.group
+Module: domain.metadata.nulls.struct.binder.group
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -12,25 +12,25 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from domain import Register, StructNullGroup
+from domain import ArchetypeBinder, StructNullGroup
 from err import (
-    RegisterBlueprintNullException, RegisterCarrierNullException, RegisterNullException
+    BinderBlueprintNullException, ArchetypeBinderNullException, BinderCarrierNullException
 )
 
-T = TypeVar("T", bound="Register")
+T = TypeVar("T", bound="ArchetypeBinder")
 
-class RegisterNullGroup(StructNullGroup[T], ABC, Generic[T]):
+class BinderNullGroup(StructNullGroup[T], ABC, Generic[T]):
     """
     Role:
         - Metadata
 
     Responsibilities:
-        1. Catalog of NullExceptions associated with a Register's integrity cycle.
+        1. Catalog of NullExceptions associated with a Binder's integrity cycle.
 
     Attributes:
-        model: RegisterNullException
-        carrier: RegisterCarrierNullException
-        blueprint: RegisterBlueprintNullException
+        model: ArchetypeBinderNullException
+        carrier: BinderCarrierNullException
+        blueprint: BinderBlueprintNullException
 
     Provides:
 
@@ -41,30 +41,30 @@ class RegisterNullGroup(StructNullGroup[T], ABC, Generic[T]):
     
     def __init__(
             self,
-            model: RegisterNullException,
-            carrier: RegisterCarrierNullException,
-            blueprint: RegisterBlueprintNullException,
+            model: ArchetypeBinderNullException,
+            carrier: BinderCarrierNullException,
+            blueprint: BinderBlueprintNullException,
     ):
         """
         Args:
-            model: RegisterNullException
-            carrier: RegisterCarrierNullException
-            blueprint: RegisterBlueprintNullException
+            model: ArchetypeBinderNullException
+            carrier: BinderCarrierNullException
+            blueprint: BinderBlueprintNullException
         """
         super().__init__(model=model, carrier=carrier, blueprint=blueprint)
         
     @property
-    def struct(self) -> RegisterNullException:
-        return cast(RegisterNullException, super().model)
+    def struct(self) -> ArchetypeBinderNullException:
+        return cast(ArchetypeBinderNullException, super().model)
     
     @property
-    def model(self) -> RegisterNullException:
+    def model(self) -> ArchetypeBinderNullException:
         return self.struct
     
     @property
-    def carrier(self) -> RegisterCarrierNullException:
-        return cast(RegisterCarrierNullException, super().carrier)
+    def carrier(self) -> BinderCarrierNullException:
+        return cast(BinderCarrierNullException, super().carrier)
     
     @property
-    def blueprint(self) -> RegisterBlueprintNullException:
-        return cast(RegisterBlueprintNullException, super().blueprint)
+    def blueprint(self) -> BinderBlueprintNullException:
+        return cast(BinderBlueprintNullException, super().blueprint)

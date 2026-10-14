@@ -1,7 +1,7 @@
-# src/assurance/depend/toolkit/struct/register.toolkit.py
+# src/assurance/depend/toolkit/struct/binder.toolkit.py
 
 """
-Module: assurance.depend.toolkit.struct.register.toolkit
+Module: assurance.depend.toolkit.struct.binder.toolkit
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,13 +12,13 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from assurance import RegisterDependency, StructValidatorToolkit
-from domain import Register, RegisterManifest, RegisterNullGroup, RegisterTypeUnion
+from assurance import BinderDependency, StructValidatorToolkit
+from domain import Binder, BinderManifest, BinderNullGroup, BinderTypeUnion
 
-T = TypeVar("T", bound="Register")
+T = TypeVar("T", bound="Binder")
 
 
-class RegisterValidatorToolkit(StructValidatorToolkit[T], ABC, Generic[T]):
+class BinderValidatorToolkit(StructValidatorToolkit[T], ABC, Generic[T]):
     """
     Role:
         - Toolkit
@@ -27,8 +27,8 @@ class RegisterValidatorToolkit(StructValidatorToolkit[T], ABC, Generic[T]):
         1.  Single source of truth for attribute validators and type metadata.
 
     Attributes:
-            wrapper: RegisterWrapperDependency[T]
-            metadata: RegisterManifest[T]
+            wrapper: BinderWrapperDependency[T]
+            metadata: BinderManifest[T]
 
     Provides:
 
@@ -38,28 +38,28 @@ class RegisterValidatorToolkit(StructValidatorToolkit[T], ABC, Generic[T]):
     
     def __init__(
             self,
-            wrapper: RegisterDependency[T],
-            metadata: RegisterManifest[T],
+            wrapper: BinderDependency[T],
+            metadata: BinderManifest[T],
     ):
         """
-            wrapper: RegisterWrapperDependency[T]
-            metadata: RegisterManifest[T]
+            wrapper: BinderWrapperDependency[T]
+            metadata: BinderManifest[T]
         """
         super().__init__(wrapper=wrapper, metadata=metadata)
     
     
     @property
-    def wrapper(self) -> RegisterDependency[T]:
-        return cast(RegisterDependency, super().wrapper)
+    def wrapper(self) -> BinderDependency[T]:
+        return cast(BinderDependency, super().wrapper)
     
     @property
-    def metadata(self) -> RegisterManifest[T]:
-        return cast(RegisterManifest, super().metadata)
+    def metadata(self) -> BinderManifest[T]:
+        return cast(BinderManifest, super().metadata)
     
     @property
-    def nulls(self) -> RegisterNullGroup[T]:
+    def nulls(self) -> BinderNullGroup[T]:
         return self.metadata.nulls
     
     @property
-    def types(self) -> RegisterTypeUnion[T]:
+    def types(self) -> BinderTypeUnion[T]:
         return self.metadata.types

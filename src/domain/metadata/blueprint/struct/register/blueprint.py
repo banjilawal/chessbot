@@ -10,49 +10,49 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Dict, Generic, Type, TypeVar, cast
+from typing import Any, Dict, Generic, Type, TypeVar, cast
 
 from domain import Model, Register, StructBlueprint
 from err import RegisterNullException
 
-S = TypeVar("S", bound="Register")
+T = TypeVar("T", bound="Register")
 M = TypeVar("M", bound="Model")
 
 
-class RegisterBlueprint(StructBlueprint[S, M], ABC, Generic[S, M]):
+class RegisterBlueprint(StructBlueprint[T], ABC, Generic[T]):
     """
      Role:
         1.  Metadata
 
-     Responsibilities:
+     ResponsibilitieT:
          1.  Provide attributes for hydrating a Register.
 
-     Attributes:
-        a: M
-        b: M
-        domain_class: Type[S]
+     AttributeT:
+        a: Any
+        b: Any
+        domain_class: Type[T]
         domain_null_exception: RegisterNullException
 
-     Provides:
+     ProvideT:
 
-     Super Class:
+     Super class:
         StructBlueprint
      """
-    _a: M
-    _b: M
+    _a: Any
+    _b: Any
     
     def __init__(
             self,
-            a: M,
-            b: M,
-            domain_class: Type[S],
+            a: Any,
+            b: Any,
+            domain_class: Type[T],
             domain_null_exception: RegisterNullException,
     ):
         """
-        Args:
-            a: M
-            b: M
-            domain_class: Type[S]
+        ArgT:
+            a: Any
+            b: Any
+            domain_class: Type[T]
             domain_null_exception: RegisterNullException
         """
         super().__init__(
@@ -114,12 +114,12 @@ class RegisterBlueprint(StructBlueprint[S, M], ABC, Generic[S, M]):
         return not self.consistency_exists
     
     @property
-    def to_dict(self) -> Dict[str, M]:
+    def to_dict(self) -> Dict[str, Any]:
         return {"a": self._a, "b": self._b}
     
     @property
-    def domain_class(self) -> Type[S]:
-        return cast(Type[S], super().domain_class)
+    def domain_class(self) -> Type[T]:
+        return cast(Type[T], super().domain_class)
     
     @property
     def domain_null_exception(self) -> RegisterNullException:

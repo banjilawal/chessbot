@@ -1,18 +1,17 @@
-# src/assurance/depend/toolkit/struct/register/__init__.py
+# src/assurance/depend/toolkit/struct/binder/__init__.py
 
 """
-Module: assurance.depend.toolkit.struct.register.__init__
+Module: assurance.depend.toolkit.struct.binder.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ASSURANCE.DEPEND.TOOLKIT.STRUCT.REGISTER PACKAGE ===========#
+# =========== ASSURANCE.DEPEND.TOOLKIT.STRUCT.BINDER PACKAGE ===========#
 
 # Packages
-from .coord import *
-from .square import *
-from .vector import *
+from .player import *
+from .team import *
 
 # Module
-from .toolkit import RegisterValidatorToolkit
+from .toolkit import BinderValidatorToolkit

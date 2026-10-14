@@ -1,16 +1,15 @@
-# src/assurance/depend/toolkit/struct/register/vector/__init__.py
+# src/assurance/depend/toolkit/struct/binder/player/__init__.py
 
 """
-Module: assurance.depend.toolkit.struct.register.vector.__init__
+Module: assurance.depend.toolkit.struct.binder.player.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== ASSURANCE.DEPEND.TOOLKIT.STRUCT.REGISTER.VECTOR PACKAGE ===========#
+# =========== ASSURANCE.DEPEND.TOOLKIT.STRUCT.BINDER.PLAYER PACKAGE ===========#
 
 # Packages
 
-
 # Module
-from .toolkit import VectorRegisterValidatorToolkit
+from .toolkit import PlayerBinderValidatorToolkit
