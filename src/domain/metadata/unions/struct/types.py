@@ -16,6 +16,7 @@ from domain import Struct, StructBlueprint, TypeUnion
 from transit import StructCarrier
 
 T = TypeVar("T", bound="Struct")
+M = TypeVar("M")
 
 
 class StructTypeUnion(TypeUnion[T], ABC, Generic[T]):
@@ -37,19 +38,19 @@ class StructTypeUnion(TypeUnion[T], ABC, Generic[T]):
     """
     _model: Type[T]
     _carrier: Type[StructCarrier[T]]
-    _blueprint: Type[StructBlueprint[T]]
+    _blueprint: Type[StructBlueprint[T, M]]
     
     def __init__(
             self,
             model: Type[T],
             carrier: Type[StructCarrier[T]],
-            blueprint: Type[StructBlueprint[T]],
+            blueprint: Type[StructBlueprint[T, M]],
     ):
         """
         Args:
             model: Type[T]
             carrier: Type[StructCarrier[T]]
-            blueprint: Type[StructBlueprint[T]]
+            blueprint: Type[StructBlueprint[T, M]]
         """
         super().__init__(model=model, carrier=carrier, blueprint=blueprint)
         
@@ -62,5 +63,5 @@ class StructTypeUnion(TypeUnion[T], ABC, Generic[T]):
         return cast(Type[StructCarrier[T]], super().carrier)
     
     @property
-    def blueprint(self) -> Type[StructBlueprint[T]]:
-        return cast(Type[StructBlueprint[T]], super().blueprint)
+    def blueprint(self) -> Type[StructBlueprint[T, M]]:
+        return cast(Type[StructBlueprint[T, M]], super().blueprint)

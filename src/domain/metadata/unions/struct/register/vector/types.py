@@ -13,7 +13,7 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from domain import RegisterTypeUnion, VectorRegister, VectorRegisterBlueprint
-from transit import EntityCarrier
+from transit import StructCarrier
 
 class VectorRegisterTypeUnion(RegisterTypeUnion[VectorRegister]):
     """
@@ -25,7 +25,7 @@ class VectorRegisterTypeUnion(RegisterTypeUnion[VectorRegister]):
 
     Attributes:
         model: Type[VectorRegister]
-        carrier: Type[EntityCarrier[VectorRegister]]
+        carrier: Type[StructCarrier[VectorRegister]]
         blueprint: Type[VectorRegisterBlueprint]
         
     Provides:
@@ -36,14 +36,14 @@ class VectorRegisterTypeUnion(RegisterTypeUnion[VectorRegister]):
     
     def __init__(
             self,
-            carrier: Type[EntityCarrier[VectorRegister]],
+            carrier: Type[StructCarrier[VectorRegister]],
             model: Optional[Type[VectorRegister]] | None = None,
             blueprint: Optional[Type[VectorRegisterBlueprint]] | None = None,
     ):
         """
         Args:
             model: Type[VectorRegister]
-            carrier: Type[EntityCarrier[VectorRegister]]
+            carrier: Type[StructCarrier[VectorRegister]]
             blueprint: Type[VectorRegisterBlueprint]
         """
         super().__init__(
@@ -57,8 +57,8 @@ class VectorRegisterTypeUnion(RegisterTypeUnion[VectorRegister]):
         return cast(Type[VectorRegister], super().model)
     
     @property
-    def carrier(self) -> Type[EntityCarrier[VectorRegister]]:
-        return cast(Type[EntityCarrier[VectorRegister]], super().carrier)
+    def carrier(self) -> Type[StructCarrier[VectorRegister]]:
+        return cast(Type[StructCarrier[VectorRegister]], super().carrier)
     
     @property
     def blueprint(self) -> Type[VectorRegisterBlueprint]:

@@ -28,7 +28,7 @@ class ChartTypeUnion(StructTypeUnion[T], ABC, Generic[T]):
 
     Attributes:
         model: Type[T]
-        carrier: Type[EntityCarrier[T]]
+        carrier: Type[StructCarrier[T]]
         blueprint: Type[ChartBlueprint[T]]
         
     Provides:
@@ -46,7 +46,7 @@ class ChartTypeUnion(StructTypeUnion[T], ABC, Generic[T]):
         """
         Args:
             model: Type[T]
-            carrier: Type[EntityCarrier[T]]
+            carrier: Type[StructCarrier[T]]
             blueprint: Type[ChartBlueprint[T]]
         """
         super().__init__(model=model, blueprint=blueprint, carrier=carrier)

@@ -13,7 +13,7 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from domain import RegisterTypeUnion, IdentityRegister, IdentityRegisterBlueprint
-from transit import EntityCarrier
+from transit import StructCarrier
 
 class IdentityRegisterTypeUnion(RegisterTypeUnion[IdentityRegister]):
     """
@@ -25,7 +25,7 @@ class IdentityRegisterTypeUnion(RegisterTypeUnion[IdentityRegister]):
 
     Attributes:
         model: Type[IdentityRegister]
-        carrier: Type[EntityCarrier[IdentityRegister]]
+        carrier: Type[StructCarrier[IdentityRegister]]
         blueprint: Type[IdentityRegisterBlueprint]
         
     Provides:
@@ -36,14 +36,14 @@ class IdentityRegisterTypeUnion(RegisterTypeUnion[IdentityRegister]):
     
     def __init__(
             self,
-            carrier: Type[EntityCarrier[IdentityRegister]],
+            carrier: Type[StructCarrier[IdentityRegister]],
             model: Optional[Type[IdentityRegister]] | None = None,
             blueprint: Optional[Type[IdentityRegisterBlueprint]] | None = None,
     ):
         """
         Args:
             model: Type[IdentityRegister]
-            carrier: Type[EntityCarrier[IdentityRegister]]
+            carrier: Type[StructCarrier[IdentityRegister]]
             blueprint: Type[IdentityRegisterBlueprint]
         """
         super().__init__(
@@ -57,8 +57,8 @@ class IdentityRegisterTypeUnion(RegisterTypeUnion[IdentityRegister]):
         return cast(Type[IdentityRegister], super().model)
     
     @property
-    def carrier(self) -> Type[EntityCarrier[IdentityRegister]]:
-        return cast(Type[EntityCarrier[IdentityRegister]], super().carrier)
+    def carrier(self) -> Type[StructCarrier[IdentityRegister]]:
+        return cast(Type[StructCarrier[IdentityRegister]], super().carrier)
     
     @property
     def blueprint(self) -> Type[IdentityRegisterBlueprint]:

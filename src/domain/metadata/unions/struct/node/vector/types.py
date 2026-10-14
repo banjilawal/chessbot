@@ -13,7 +13,7 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from domain import NodeTypeUnion, VectorNode, VectorNodeBlueprint
-from transit import EntityCarrier
+from transit import StructCarrier
 
 class VectorNodeTypeUnion(NodeTypeUnion[VectorNode]):
     """
@@ -25,7 +25,7 @@ class VectorNodeTypeUnion(NodeTypeUnion[VectorNode]):
 
     Attributes:
         model: Type[VectorNode]
-        carrier: Type[EntityCarrier[VectorNode]]
+        carrier: Type[StructCarrier[VectorNode]]
         blueprint: Type[VectorNodeBlueprint]
         
     Provides:
@@ -36,14 +36,14 @@ class VectorNodeTypeUnion(NodeTypeUnion[VectorNode]):
     
     def __init__(
             self,
-            carrier: Type[EntityCarrier[VectorNode]],
+            carrier: Type[StructCarrier[VectorNode]],
             model: Optional[Type[VectorNode]] | None = None,
             blueprint: Optional[Type[VectorNodeBlueprint]] | None = None,
     ):
         """
         Args:
             model: Type[VectorNode]
-            carrier: Type[EntityCarrier[VectorNode]]
+            carrier: Type[StructCarrier[VectorNode]]
             blueprint: Type[VectorNodeBlueprint]
         """
         super().__init__(
@@ -57,8 +57,8 @@ class VectorNodeTypeUnion(NodeTypeUnion[VectorNode]):
         return cast(Type[VectorNode], super().model)
     
     @property
-    def carrier(self) -> Type[EntityCarrier[VectorNode]]:
-        return cast(Type[EntityCarrier[VectorNode]], super().carrier)
+    def carrier(self) -> Type[StructCarrier[VectorNode]]:
+        return cast(Type[StructCarrier[VectorNode]], super().carrier)
     
     @property
     def blueprint(self) -> Type[VectorNodeBlueprint]:

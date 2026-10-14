@@ -28,7 +28,7 @@ class NodeTypeUnion(StructTypeUnion[T], ABC, Generic[T]):
 
     Attributes:
         model: Type[T]
-        carrier: Type[EntityCarrier[T]]
+        carrier: Type[StructCarrier[T]]
         blueprint: Type[NodeBlueprint[T]]
         
     Provides:
@@ -46,7 +46,7 @@ class NodeTypeUnion(StructTypeUnion[T], ABC, Generic[T]):
         """
         Args:
             model: Type[T]
-            carrier: Type[EntityCarrier[T]]
+            carrier: Type[StructCarrier[T]]
             blueprint: Type[NodeBlueprint[T]]
         """
         super().__init__(model=model, blueprint=blueprint, carrier=carrier)

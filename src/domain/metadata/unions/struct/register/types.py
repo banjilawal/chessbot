@@ -12,11 +12,11 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, Type, TypeVar, cast
 
-from domain import Register, RegisterBlueprint, StructTypeUnion
-from transit import EntityCarrier
+from domain import Model, Register, RegisterBlueprint, StructTypeUnion
+from transit import StructCarrier
 
 T = TypeVar("T", bound="Register")
-
+M = TypeVar("M", bound="Model")
 
 class RegisterTypeUnion(StructTypeUnion[T], ABC, Generic[T]):
     """
@@ -28,7 +28,7 @@ class RegisterTypeUnion(StructTypeUnion[T], ABC, Generic[T]):
 
     Attributes:
         model: Type[T]
-        carrier: Type[EntityCarrier[T]]
+        carrier: Type[StructCarrier[T]]
         blueprint: Type[RegisterBlueprint[T]]
         
     Provides:
@@ -40,14 +40,14 @@ class RegisterTypeUnion(StructTypeUnion[T], ABC, Generic[T]):
     def __init__(
             self,
             model: Type[T],
-            carrier: Type[EntityCarrier[T]],
+            carrier: Type[StructCarrier[T]],
             blueprint: Type[RegisterBlueprint[T]],
     ):
         """
         Args:
             model: Type[T]
-            carrier: Type[EntityCarrier[T]]
-            blueprint: Type[RegisterBlueprint[T]]
+            carrier: Type[StructCarrier[T]]
+            blueprint: Type[RegisterBlueprint[T, M]]
         """
         super().__init__(model=model, blueprint=blueprint, carrier=carrier)
         
@@ -56,9 +56,9 @@ class RegisterTypeUnion(StructTypeUnion[T], ABC, Generic[T]):
         return cast(Type[T], super().model)
     
     @property
-    def carrier(self) -> Type[EntityCarrier[T]]:
+    def carrier(self) -> Type[StructCarrier[T]]:
         return self._carrier
     
     @property
-    def blueprint(self) -> Type[RegisterBlueprint[T]]:
-        return cast(Type[RegisterBlueprint[T]], super().model)
+    def blueprint(self) -> Type[RegisterBlueprint[T, M]]:
+        return cast(Type[RegisterBlueprint[T, M]], super().model)

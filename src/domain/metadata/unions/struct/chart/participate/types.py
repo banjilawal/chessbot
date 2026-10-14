@@ -13,7 +13,7 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from domain import ChartTypeUnion, Participation, ParticipationBlueprint
-from transit import EntityCarrier
+from transit import StructCarrier
 
 class ParticipationTypeUnion(ChartTypeUnion[Participation]):
     """
@@ -25,7 +25,7 @@ class ParticipationTypeUnion(ChartTypeUnion[Participation]):
 
     Attributes:
         model: Type[Participation]
-        carrier: Type[EntityCarrier[Participation]]
+        carrier: Type[StructCarrier[Participation]]
         blueprint: Type[ParticipationBlueprint]
         
     Provides:
@@ -36,14 +36,14 @@ class ParticipationTypeUnion(ChartTypeUnion[Participation]):
     
     def __init__(
             self,
-            carrier: Type[EntityCarrier[Participation]],
+            carrier: Type[StructCarrier[Participation]],
             model: Optional[Type[Participation]] | None = None,
             blueprint: Optional[Type[ParticipationBlueprint]] | None = None,
     ):
         """
         Args:
             model: Type[Participation]
-            carrier: Type[EntityCarrier[Participation]]
+            carrier: Type[StructCarrier[Participation]]
             blueprint: Type[ParticipationBlueprint]
         """
         super().__init__(
@@ -57,8 +57,8 @@ class ParticipationTypeUnion(ChartTypeUnion[Participation]):
         return cast(Type[Participation], super().model)
     
     @property
-    def carrier(self) -> Type[EntityCarrier[Participation]]:
-        return cast(Type[EntityCarrier[Participation]], super().carrier)
+    def carrier(self) -> Type[StructCarrier[Participation]]:
+        return cast(Type[StructCarrier[Participation]], super().carrier)
     
     @property
     def blueprint(self) -> Type[ParticipationBlueprint]:

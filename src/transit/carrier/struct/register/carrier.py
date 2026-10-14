@@ -54,14 +54,7 @@ class RegisterCarrier(StructCarrier[T], ABC, Generic[T]):
     @property
     @abstractmethod
     def entity(self) -> Optional[T | RegisterBlueprint[T]]:
-        if (
-                self.is_empty or
-                self.is_not_consistent
-        ):
-            return None
-        if self.has_model:
-            return cast(T, super().entity)
-        return cast(RegisterBlueprint[T], super().entity)
+        pass
     
     @abstractmethod
     def extract_blueprint(self) -> Optional[RegisterBlueprint[T]]:

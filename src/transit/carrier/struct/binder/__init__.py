@@ -11,7 +11,6 @@ version: 0.0.2
 
 # Packages
 from .player import *
-from .team import *
 
 # Modules
 from .carrier import BinderCarrier

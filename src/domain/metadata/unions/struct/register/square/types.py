@@ -13,7 +13,7 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from domain import RegisterTypeUnion, SquareRegister, SquareRegisterBlueprint
-from transit import EntityCarrier
+from transit import StructCarrier
 
 class SquareRegisterTypeUnion(RegisterTypeUnion[SquareRegister]):
     """
@@ -41,7 +41,7 @@ class SquareRegisterTypeUnion(RegisterTypeUnion[SquareRegister]):
         """
         Args:
             model: Type[SquareRegister]
-            carrier: Type[EntityCarrier[SquareRegister]]
+            carrier: Type[StructCarrier[SquareRegister]]
             blueprint: Type[SquareRegisterBlueprint]
         """
         super().__init__(

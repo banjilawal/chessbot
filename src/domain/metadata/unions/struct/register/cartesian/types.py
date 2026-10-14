@@ -13,7 +13,7 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from domain import RegisterTypeUnion
-from transit import EntityCarrier
+from transit import StructCarrier
 
 class CartesianToggleRegisterTypeUnion(RegisterTypeUnion[CartesianToggleRegister]):
     """
@@ -25,7 +25,7 @@ class CartesianToggleRegisterTypeUnion(RegisterTypeUnion[CartesianToggleRegister
 
     Attributes:
         model: Type[CartesianRegister]
-        carrier: Type[EntityCarrier[CartesianRegister]]
+        carrier: Type[StructCarrier[CartesianRegister]]
         blueprint: Type[CartesianRegisterBlueprint]
         
     Provides:
@@ -36,14 +36,14 @@ class CartesianToggleRegisterTypeUnion(RegisterTypeUnion[CartesianToggleRegister
     
     def __init__(
             self,
-            carrier: Type[EntityCarrier[CartesianRegister]],
+            carrier: Type[StructCarrier[CartesianRegister]],
             model: Optional[Type[CartesianRegister]] | None = None,
             blueprint: Optional[Type[CartesianRegisterBlueprint]] | None = None,
     ):
         """
         Args:
             model: Type[CartesianRegister]
-            carrier: Type[EntityCarrier[CartesianRegister]]
+            carrier: Type[StructCarrier[CartesianRegister]]
             blueprint: Type[CartesianRegisterBlueprint]
         """
         super().__init__(
@@ -57,8 +57,8 @@ class CartesianToggleRegisterTypeUnion(RegisterTypeUnion[CartesianToggleRegister
         return cast(Type[CartesianRegister], super().model)
     
     @property
-    def carrier(self) -> Type[EntityCarrier[CartesianRegister]]:
-        return cast(Type[EntityCarrier[CartesianRegister]], super().carrier)
+    def carrier(self) -> Type[StructCarrier[CartesianRegister]]:
+        return cast(Type[StructCarrier[CartesianRegister]], super().carrier)
     
     @property
     def blueprint(self) -> Type[CartesianRegisterBlueprint]:

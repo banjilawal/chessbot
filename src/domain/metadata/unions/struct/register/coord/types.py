@@ -13,7 +13,7 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from domain import RegisterTypeUnion, CoordRegister, CoordRegisterBlueprint
-from transit import EntityCarrier
+from transit import StructCarrier
 
 class CoordRegisterTypeUnion(RegisterTypeUnion[CoordRegister]):
     """
@@ -25,7 +25,7 @@ class CoordRegisterTypeUnion(RegisterTypeUnion[CoordRegister]):
 
     Attributes:
         model: Type[CoordRegister]
-        carrier: Type[EntityCarrier[CoordRegister]]
+        carrier: Type[StructCarrier[CoordRegister]]
         blueprint: Type[CoordRegisterBlueprint]
         
     Provides:
@@ -36,14 +36,14 @@ class CoordRegisterTypeUnion(RegisterTypeUnion[CoordRegister]):
     
     def __init__(
             self,
-            carrier: Type[EntityCarrier[CoordRegister]],
+            carrier: Type[StructCarrier[CoordRegister]],
             model: Optional[Type[CoordRegister]] | None = None,
             blueprint: Optional[Type[CoordRegisterBlueprint]] | None = None,
     ):
         """
         Args:
             model: Type[CoordRegister]
-            carrier: Type[EntityCarrier[CoordRegister]]
+            carrier: Type[StructCarrier[CoordRegister]]
             blueprint: Type[CoordRegisterBlueprint]
         """
         super().__init__(
@@ -57,8 +57,8 @@ class CoordRegisterTypeUnion(RegisterTypeUnion[CoordRegister]):
         return cast(Type[CoordRegister], super().model)
     
     @property
-    def carrier(self) -> Type[EntityCarrier[CoordRegister]]:
-        return cast(Type[EntityCarrier[CoordRegister]], super().carrier)
+    def carrier(self) -> Type[StructCarrier[CoordRegister]]:
+        return cast(Type[StructCarrier[CoordRegister]], super().carrier)
     
     @property
     def blueprint(self) -> Type[CoordRegisterBlueprint]:
