@@ -1,17 +1,16 @@
-# src/domain/struct/binder/__init__.py
+# src/domain/metadata/blueprint/struct/binder/__init__.py
 
 """
-Module: domain.struct.binder.__init__
+Module: domain.metadata.blueprint.struct.binder.__init__
 Author: Banji Lawal
 Created: 2025-02-08
 version: 1.0.0
 """
 
-# =========== DOMAIN.STRUCT.BINDER PACKAGE ===========#
+# =========== DOMAIN.METADATA.BLUEPRINT.STRUCT.BINDER PACKAGE ===========#
 
 # Packages
-from .team import *
 from .player import *
 
 # Modules
-from .struct import ArchetypeBinder
+from .blueprint import BinderBlueprint

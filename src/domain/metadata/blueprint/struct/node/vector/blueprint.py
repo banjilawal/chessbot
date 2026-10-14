@@ -1,7 +1,7 @@
-# src/domain/struct/node/vector/struct.py
+# src/domain/metadata/blueprint/struct/node/vector/struct.py
 
 """
-Module: domain.struct.node.vector.struct
+Module: domain.metadata.blueprint.struct.node.vector.struct
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

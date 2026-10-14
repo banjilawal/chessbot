@@ -1,7 +1,7 @@
-# src/domain/struct/toggle/struct.py
+# src/domain/metadata/blueprint/struct/toggle/struct.py
 
 """
-Module: domain.struct.toggle.struct
+Module: domain.metadata.blueprint.struct.toggle.struct
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

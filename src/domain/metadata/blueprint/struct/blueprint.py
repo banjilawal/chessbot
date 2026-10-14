@@ -1,7 +1,7 @@
-# src/domain/struct/blueprint.py
+# src/domain/metadata/blueprint/struct/blueprint.py
 
 """
-Module: domain.struct.blueprint
+Module: domain.metadata.blueprint.struct.blueprint
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
