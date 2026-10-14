@@ -13,10 +13,10 @@ from typing import Any, Dict, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import BinderValidator, PlayerBinderLoader, PlayerBinderValidatorToolkit
-from domain import Player, PlayerBinder
-from err import PlayerBinderConsistencyException, PlayerBinderValidatorException
+from domain import Archetype, Player, PlayerBinder, PlayerBinderBlueprint, PlayerBinderPrimeExtract
+from err import PlayerBinderCarrierEmptyException, PlayerBinderValidatorException
 from exchange import PlayerValidationRequest
-from transit import PlayerCarrier
+from transit import PlayerBinderCarrier, PlayerCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -58,7 +58,7 @@ class PlayerBinderValidator(BinderValidator[PlayerBinder]):
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[PlayerBinder]:
+    def execute(self, candidate: Any) -> ValidationResult[PlayerBinderCarrier]:
         """
         Certify a PlayerBinder's payload is either a PlayerBinder or a Blueprint 
         that is safe to use.
@@ -84,8 +84,8 @@ class PlayerBinderValidator(BinderValidator[PlayerBinder]):
         method = f"{self.__class__.__name__}.execute"
                 
         # Handle the case that loader fails.
-        load = self.loader.execute(candidate)
-        if load.is_failure:
+        loader = self.loader.execute(candidate)
+        if loader.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 PlayerBinderValidatorException(
@@ -93,13 +93,16 @@ class PlayerBinderValidator(BinderValidator[PlayerBinder]):
                     cls_name=self.__class__.__name__,
                     msg=PlayerBinderValidatorException.MSG,
                     err_code=PlayerBinderValidatorException.ERR_CODE,
-                    ex=load.exception,
+                    ex=loader.exception,
                 )
             )
-        # --- Cast priming_result into a request for additional tests. ---#
-        struct = cast(PlayerBinder, load.payload)
+        # --- Get the PrimeExtract and Blueprint for additional processing. ---#
+        prime_extract = cast(PlayerBinderPrimeExtract, loader.payload)
+        carrier = prime_extract.reference
+        blueprint = carrier.extract_blueprint()
         
-        if struct.is_not_consistent:
+        # Handle the case that the blueprint is null.
+        if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 PlayerBinderValidatorException(
@@ -107,18 +110,17 @@ class PlayerBinderValidator(BinderValidator[PlayerBinder]):
                     cls_name=self.__class__.__name__,
                     msg=PlayerBinderValidatorException.MSG,
                     err_code=PlayerBinderValidatorException.ERR_CODE,
-                    ex=PlayerBinderConsistencyException(
+                    ex=PlayerBinderCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=PlayerBinderConsistencyException.MSG,
-                        err_code=PlayerBinderConsistencyException.ERR_CODE,
+                        msg=PlayerBinderCarrierEmptyException.MSG,
+                        err_code=PlayerBinderCarrierEmptyException.ERR_CODE,
                     )
                 )
             )
-        
-        entry = struct.to_dict
-        endpoints: Dict[str, Player] = {}
-        for key in struct.to_dict:
+        # --- Cast priming_result into a request for additional tests. ---#
+        entry: Dict[Archetype, Player] = {}
+        for key in blueprint.bindings:
             player_validation = self.toolkit.wrapper.player.extract_model(
                 request=PlayerValidationRequest(
                     item=PlayerCarrier(model=entry[key]),
@@ -137,15 +139,26 @@ class PlayerBinderValidator(BinderValidator[PlayerBinder]):
                     )
                 )
             player = cast(Player, player_validation.payload)
-            endpoints[key] = player
-            
-        # --- Forward the appropriate work product to the caller. ---#
-        return ValidationResult.success(
-            PlayerBinder(
-                origin=endpoints["origin"],
-                destination=endpoints["destination"],
+            entry[key] = player
+        
+        # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
+        
+        # The client wants a safe PlayerBinder.
+        if prime_extract.recipient_wants_model:
+            model = PlayerBinder(
+                white_player=entry[Archetype.WHITE],
+                black_player=entry[Archetype.BLACK],
+            )
+            payload = PlayerBinderCarrier(model=model)
+            return ValidationResult.success(payload)
+        # Otherwise, the client is a PlayerBinderBuilder that needs a Blueprint.
+        payload = PlayerBinderCarrier(
+            blueprint=PlayerBinderBlueprint(
+                white_player=entry[Archetype.WHITE],
+                black_player=entry[Archetype.BLACK],
             )
         )
+        return ValidationResult.success(payload)
 
     
     

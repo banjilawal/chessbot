@@ -16,11 +16,11 @@ from err import BinderValidatorException
 
 __all__ = [
     # ======================# PLAYER_BINDER_VALIDATOR_FAILURE #======================#
-    "PlayerBinderValidationException",
+    "PlayerBinderValidatorException",
 ]
 
 # ======================# PLAYER_BINDER_VALIDATOR_FAILURE #======================#
-class PlayerBinderValidationException(BinderValidatorException):
+class PlayerBinderValidatorException(BinderValidatorException):
     """
     Role:
         - Error Tracing

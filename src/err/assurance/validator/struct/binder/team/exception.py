@@ -16,11 +16,11 @@ from err import BinderValidatorException
 
 __all__ = [
     # ======================# TEAM_BINDER_VALIDATOR_FAILURE #======================#
-    "TeamBinderValidationException",
+    "TeamBinderValidatorException",
 ]
 
 # ======================# TEAM_BINDER_VALIDATOR_FAILURE #======================#
-class TeamBinderValidationException(BinderValidatorException):
+class TeamBinderValidatorException(BinderValidatorException):
     """
     Role:
         - Error Tracing

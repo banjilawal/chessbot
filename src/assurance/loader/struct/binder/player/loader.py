@@ -15,7 +15,7 @@ from artifcat import ValidationResult
 from assurance import BinderLoader, PlayerBinderValidatorToolkit
 from domain import PlayerBinder, PlayerBinderPrimeExtract
 from err import (
-    PlayerBinderCarrierEmptyException, PlayerBinderLoaderException,
+    PlayerBinderCarrierEmptyException, PlayerBinderConsistencyException, PlayerBinderLoaderException,
     PlayerBinderValidationRequestNullException
 )
 from exchange import PlayerBinderValidationRequest
@@ -141,6 +141,23 @@ class PlayerBinderLoader(BinderLoader[PlayerBinder]):
                         cls_name=self.__class__.__name__,
                         msg=PlayerBinderCarrierEmptyException.MSG,
                         err_code=PlayerBinderCarrierEmptyException.ERR_CODE,
+                    ),
+                )
+            )
+        # Handle the case that the blueprint has an inconsistency.
+        if blueprint.is_not_consistent:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                PlayerBinderLoaderException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=PlayerBinderLoaderException.MSG,
+                    err_code=PlayerBinderLoaderException.ERR_CODE,
+                    ex=PlayerBinderConsistencyException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=PlayerBinderConsistencyException.MSG,
+                        err_code=PlayerBinderConsistencyException.ERR_CODE,
                     ),
                 )
             )
