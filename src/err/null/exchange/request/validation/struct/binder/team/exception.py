@@ -1,7 +1,7 @@
-# src/err/capacity/empty/binder/arena/exception.py
+# src/err/null/exchange/request/validation/struct/binder/team/exception.py
 
 """
-Module: err.capacity.empty.binder.arena.exception
+Module: err.null.exchange.request.validation.struct.binder.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -9,20 +9,24 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from err import BinderEmptyException
+from typing import Any, Optional
+
+from artifcat import MethodResultType
+from err import BinderValidationRequestNullException
 
 __all__ = [
-    # ======================# ARENA_PLAYER_BINDER_EMPTY_ERROR #======================#
-    "ArenaPlayerBinderEmptyException",
+    # ======================# TEAM_BINDER_VALIDATION_REQUEST_NULL_ERROR #======================#
+    "TeamBinderValidationRequestNullException",
 ]
-# ======================# ARENA_PLAYER_BINDER_EMPTY_ERROR #======================#
-class ArenaPlayerBinderEmptyException(BinderEmptyException):
+
+# ======================# TEAM_BINDER_VALIDATION_REQUEST_NULL_ERROR #======================#
+class TeamBinderValidationRequestNullException(BinderValidationRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required ArenaPlayerBinder is empty.
+        1.  Indicating that a TeamBinderValidationRequest is null.
 
     Attributes:
             msg: Optional[str]
@@ -37,10 +41,10 @@ class ArenaPlayerBinderEmptyException(BinderEmptyException):
     Provides:
 
     Super Class:
-        BinderEmptyException
+        BinderValidationRequestNullException
     """
-    MSG = "ArenaPlayerBinder cannot be empty."
-    ERR_CODE = "ARENA_PLAYER_BINDER_EMPTY_ERROR"
+    MSG = "TeamBinderValidationRequest cannot be null."
+    ERR_CODE = "TEAM_BINDER_VALIDATION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

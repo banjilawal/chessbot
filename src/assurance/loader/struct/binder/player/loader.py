@@ -13,12 +13,13 @@ from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
 from assurance import BinderLoader, PlayerBinderValidatorToolkit
-from domain import PlayerBinder
+from domain import PlayerBinder, PlayerBinderPrimeExtract
 from err import (
-    PlayerBinderConsistencyException, PlayerBinderEmptyException, PlayerBinderLoaderException,
+    PlayerBinderCarrierEmptyException, PlayerBinderLoaderException,
     PlayerBinderValidationRequestNullException
 )
 from exchange import PlayerBinderValidationRequest
+from transit import PlayerBinderCarrier
 
 from util import LoggingLevelRouter
 
@@ -61,9 +62,9 @@ class PlayerBinderLoader(BinderLoader[PlayerBinder]):
         return cast(PlayerBinderValidatorToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[PlayerBinder]:
+    def execute(self, candidate: Any) -> ValidationResult[PlayerBinderPrimeExtract]:
         """
-        Model the PlayerBinderBlueprint to validate the candidate.
+        Extract the PlayerBinderBlueprint to validate the candidate.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
@@ -71,15 +72,15 @@ class PlayerBinderLoader(BinderLoader[PlayerBinder]):
                 -   The candidate is null or not a PlayerBinderValidatorRequest.
                 -   The request payload is either:
                         -   Null
-                        -   Not a PlayerBinder
-                        -   An empty PlayerBinder.
-                -   A blueprint cannot be modeled from the carrier.
-            2.  Otherwise, pack the original carrier and the blueprint in a PlayerBinder
+                        -   Not a PlayerBinderCarrier
+                        -   An empty PlayerBinderCarrier.
+                -   A blueprint cannot be extracted from the carrier.
+            2.  Otherwise, pack the original carrier and the blueprint in a PlayerBinderPrimeExtract
                 for the success result.
         Args:
             candidate: Any
         Returns:
-            ValidationResult[PlayerBinder]
+            ValidationResult[PlayerBinderPrimeExtract]
         Raises:
             PlayerBinderLoaderException
         """
@@ -106,12 +107,12 @@ class PlayerBinderLoader(BinderLoader[PlayerBinder]):
         request = cast(Type[PlayerBinderValidationRequest], priming.payload)
         
         # Handle the case that request.item is the wrong carrier type.
-        model_validation = self.toolkit.priming_validator.execute(
+        carrier_validation = self.toolkit.priming_validator.execute(
             candidate=request.item,
-            target_model=self.toolkit.types.model,
-            null_exception=self.toolkit.nulls.model,
+            target_model=self.toolkit.types.carrier,
+            null_exception=self.toolkit.nulls.carrier,
         )
-        if model_validation.is_failure:
+        if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 PlayerBinderLoaderException(
@@ -119,10 +120,30 @@ class PlayerBinderLoader(BinderLoader[PlayerBinder]):
                     cls_name=self.__class__.__name__,
                     msg=PlayerBinderLoaderException.MSG,
                     err_code=PlayerBinderLoaderException.ERR_CODE,
-                    ex=model_validation.exception,
+                    ex=carrier_validation.exception,
                 )
             )
-        # --- Cast model_validation payload to carrier then model blueprint. ---#
-        model = cast(PlayerBinder, model_validation.payload)
+        # --- Cast carrier_validation payload to carrier then extract blueprint. ---#
+        carrier = cast(PlayerBinderCarrier, carrier_validation.payload)
+        blueprint = carrier.extract_blueprint()
+        
+        # Handle the case that the blueprint is null.
+        if blueprint is None:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                PlayerBinderLoaderException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=PlayerBinderLoaderException.MSG,
+                    err_code=PlayerBinderLoaderException.ERR_CODE,
+                    ex=PlayerBinderCarrierEmptyException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=PlayerBinderCarrierEmptyException.MSG,
+                        err_code=PlayerBinderCarrierEmptyException.ERR_CODE,
+                    ),
+                )
+            )
         # --- Send the work product. ---#
-        return ValidationResult.success(model)
+        extract = PlayerBinderPrimeExtract(reference=carrier, blueprint=blueprint)
+        return ValidationResult.success(extract)

@@ -1,7 +1,7 @@
-# src/err/capacity/empty/carrier/struct/binder/team/exception.py
+# src/err/capacity/empty/carrier/struct/binder/player/exception.py
 
 """
-Module: err.capacity.empt.carrier.struct.binder.team.exception
+Module: err.capacity.empt.carrier.struct.binder.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import BinderCarrierEmptyException
 
 __all__ = [
-    # ======================# TEAM_BINDER_CARRIER_EMPTY_ERROR #======================#
-    "TeamBinderCarrierEmptyException",
+    # ======================# PLAYER_BINDER_CARRIER_EMPTY_ERROR #======================#
+    "PlayerBinderCarrierEmptyException",
 ]
 
-# ======================# TEAM_BINDER_CARRIER_EMPTY_ERROR #======================#
-class TeamBinderCarrierEmptyException(BinderCarrierEmptyException):
+# ======================# PLAYER_BINDER_CARRIER_EMPTY_ERROR #======================#
+class PlayerBinderCarrierEmptyException(BinderCarrierEmptyException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a TeamBinderCarrier is empty.
+        1.  Indicating a PlayerBinderCarrier is empty.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class TeamBinderCarrierEmptyException(BinderCarrierEmptyException):
     Super Class:
         EmptyBinderCarrierException
     """
-    MSG = "TeamBinderCarrier cannot be empty."
-    ERR_CODE = "TEAM_BINDER_CARRIER_EMPTY_ERROR"
+    MSG = "PlayerBinderCarrier cannot be empty."
+    ERR_CODE = "PLAYER_BINDER_CARRIER_EMPTY_ERROR"
     
     def __init__(
             self,

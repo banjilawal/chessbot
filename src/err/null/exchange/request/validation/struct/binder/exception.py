@@ -1,7 +1,7 @@
-# src/err/capacity/empty/binder/exception.py
+# src/err/null/exchange/request/validation/struct/binder/exception.py
 
 """
-Module: err.capacity.empty.binder.exception
+Module: err.null.exchange.request.validation.struct.binder.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import EmptyItemException
+from err import StructValidationRequestNullException
 
 __all__ = [
-    # ======================# BINDER_EMPTY_ERROR #======================#
-    "BinderEmptyException",
+    # ======================# BINDER_VALIDATION_REQUEST_NULL_ERROR #======================#
+    "BinderValidationRequestNullException",
 ]
 
-# ======================# BINDER_EMPTY_ERROR #======================#
-class BinderEmptyException(EmptyItemException):
+# ======================# BINDER_VALIDATION_REQUEST_NULL_ERROR #======================#
+class BinderValidationRequestNullException(StructValidationRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required Binder wass.
+        1.  Indicating that an BinderValidationRequest is null.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class BinderEmptyException(EmptyItemException):
     Provides:
 
     Super Class:
-        EmptyException
+        StructValidationRequestNullException
     """
-    MSG = "Binder cannot be empty"
-    ERR_CODE = "BINDER_EMPTY_ERROR"
+    MSG = "BinderValidationRequest cannot be null."
+    ERR_CODE = "BINDER_VALIDATION_REQUEST_NULL_ERROR"
     
     def __init__(
             self,
