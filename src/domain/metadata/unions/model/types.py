@@ -1,7 +1,7 @@
-# src/domain/metadata/unions/model/strcture/manifest.py
+# src/domain/metadata/unions/model/struct/types.py
 
 """
-Module: domain.metadata.unions.model.manifest
+Module: domain.metadata.unions.model.types
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

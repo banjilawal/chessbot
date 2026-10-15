@@ -1,4 +1,4 @@
-# src/domain/metadata/unions/strcture/types.py
+# src/domain/metadata/unions/struct/types.py
 
 """
 Module: domain.metadata.unions.struct.types

@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Any, Dict, Generic, Optional, Type, TypeVar, cast
+from typing import Any, Dict, Generic, List, Optional, Type, TypeVar, cast
 
 from domain import Archetype, ArchetypeBinder, Archetyped
 from domain import StructBlueprint
@@ -25,10 +25,10 @@ class BinderBlueprint(StructBlueprint[T], ABC, Generic[T]):
      Role:
         1.  Metadata
 
-     ResponsibilitieT:
+     Responsibilities:
          1.  Provide attributes for hydrating a Binder.
 
-     AttributeT:
+     Attributes:
         white_entry: Any
         black_entry: Any
         domain_class: Type[T]
@@ -39,13 +39,9 @@ class BinderBlueprint(StructBlueprint[T], ABC, Generic[T]):
      Super class:
         StructBlueprint
      """
-    # _white_entry: Any
-    # _black_entry: Any
     
     def __init__(
             self,
-            # white_entry: Any,
-            # black_entry: Any,
             domain_class: Type[T],
             domain_null_exception: Optional[ArchetypeBinderNullException] | None = None,
     ):
@@ -60,17 +56,7 @@ class BinderBlueprint(StructBlueprint[T], ABC, Generic[T]):
             domain_class=domain_class,
             domain_null_exception=domain_null_exception or ArchetypeBinderNullException()
         )
-    #     self._white_entry = white_entry
-    #     self._black_entry = black_entry
-    #
-    # @property
-    # def white_entry(self) -> Any:
-    #     return self._white_entry
-    #
-    # @property
-    # def black_entry(self) -> Any:
-    #     return self._black_entry
-    #
+        
     @property
     def size(self) -> int:
         return len(self.bindings)
@@ -84,8 +70,9 @@ class BinderBlueprint(StructBlueprint[T], ABC, Generic[T]):
         return not self.is_empty
     
     @property
+    @abstractmethod
     def archetypes_are_the_same(self) -> bool:
-        return self._white_entry.archetype == self._black_entry.archetype
+        pass
     
     @property
     def archetypes_differ(self) -> bool:
@@ -104,12 +91,9 @@ class BinderBlueprint(StructBlueprint[T], ABC, Generic[T]):
         return not self.is_balanced
 
     @property
+    @abstractmethod
     def consistency_exists(self) -> bool:
-        return (
-                self.is_balanced and
-                self._white_entry.archetype == Archetype.WHITE and
-                self._black_entry.archetype == Archetype.BLACK
-        )
+        pass
     
     @property
     def is_not_consistent(self) -> bool:
@@ -129,13 +113,16 @@ class BinderBlueprint(StructBlueprint[T], ABC, Generic[T]):
     @abstractmethod
     def bindings(self) -> Dict[Archetype, Any]:
         pass
+    
+    @property
+    @abstractmethod
+    def to_list(self) -> List[Any]:
+        pass
         
     @property
+    @abstractmethod
     def to_dict(self) -> Dict[str, Any]:
-        return {
-            "white": self._white_entry,
-            "black": self._black_entry
-        }
+        pass
     
     @property
     def domain_class(self) -> Type[T]:

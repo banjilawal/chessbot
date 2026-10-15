@@ -1,7 +1,7 @@
-# src/domain/metadata/unions/strcture/binder/manifest.py
+# src/domain/metadata/unions/struct/binder/types.py
 
 """
-Module: domain.metadata.unions.struct.binder.manifest
+Module: domain.metadata.unions.struct.binder.types
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

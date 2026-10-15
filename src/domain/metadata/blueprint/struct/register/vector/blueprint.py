@@ -20,10 +20,10 @@ class VectorRegisterBlueprint(RegisterBlueprint[VectorRegister, Vector]):
      Role:
         1.  Metadata
 
-     ResponsibilitieT:
+     Responsibilities:
          1.  Provide attributes for hydrating a VectorRegister.
 
-     AttributeT:
+     Attributes:
         u: Vector
         v: Vector
         domain_class: Optional[Type[VectorRegister]]

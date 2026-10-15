@@ -23,10 +23,10 @@ class NodeBlueprint(StructBlueprint[T], ABC, Generic[T]):
      Role:
         1.  Metadata
 
-     ResponsibilitieT:
+     Responsibilities:
          1.  Provide attributes for hydrating a Node.
 
-     AttributeT:
+     Attributes:
          domain_class: Type[T]
          domain_null_exception: NodeNullException
 

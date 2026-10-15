@@ -1,7 +1,7 @@
-# src/domain/metadata/unions/strcture/register/square/manifest.py
+# src/domain/metadata/unions/struct/register/square/types.py
 
 """
-Module: domain.metadata.unions.struct.register.square.manifest
+Module: domain.metadata.unions.struct.register.square.types
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

@@ -1,4 +1,4 @@
-# src/domain/metadata/manifest/strcture/node/manifest.py
+# src/domain/metadata/manifest/struct/node/manifest.py
 
 """
 Module: domain.metadata.manifest.struct.node.manifest

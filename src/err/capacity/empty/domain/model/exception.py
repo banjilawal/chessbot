@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import Empty.DomainException
+from err import EmptyItemException
 
 __all__ = [
     # ======================# EMPTY_MODEL_ERROR #======================#
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# EMPTY_MODEL_ERROR #======================#
-class EmptyModelException(Empty.DomainException):
+class EmptyModelException(EmptyItemException):
     """
     Role:
         - Error Tracing
@@ -41,7 +41,7 @@ class EmptyModelException(Empty.DomainException):
     Provides:
 
     Super Class:
-       Empty.DomainException
+       EmptyItemException
     """
     MSG = "Model cannot be empty. Its length cannot be zero"
     ERR_CODE = "EMPTY_MODEL_ERROR"

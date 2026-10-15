@@ -10,7 +10,7 @@ version: 1.0.0
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Dict, Generic, TypeVar
+from typing import Dict, Generic, List, TypeVar
 
 from domain import Archetype, Archetyped, Struct
 
@@ -108,6 +108,11 @@ class ArchetypeBinder(Struct, ABC, Generic[T]):
     @property
     @abstractmethod
     def entries_are_not_unique(self) -> bool:
+        pass
+    
+    @property
+    @abstractmethod
+    def to_list(self) -> List[T]:
         pass
     
     @property

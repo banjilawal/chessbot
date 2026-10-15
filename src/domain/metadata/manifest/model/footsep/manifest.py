@@ -1,4 +1,4 @@
-# src/domain/metadata/manifest/strcture/model/footstep/manifest.py
+# src/domain/metadata/manifest/struct/model/footstep/manifest.py
 
 """
 Module: domain.metadata.manifest.model.footstep.manifest

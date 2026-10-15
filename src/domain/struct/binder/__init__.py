@@ -10,8 +10,8 @@ version: 1.0.0
 # =========== DOMAIN.STRUCT.BINDER PACKAGE ===========#
 
 # Packages
-from .team import *
 from .player import *
+from .team import *
 
 # Modules
 from .struct import ArchetypeBinder

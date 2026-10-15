@@ -11,6 +11,7 @@ version: 1.0.0
 
 # Packages
 from .player import *
+from .team import *
 
 # Modules
 from .blueprint import BinderBlueprint

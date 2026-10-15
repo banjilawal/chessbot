@@ -10,11 +10,8 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.UNIONS.STRUCT.BINDER PACKAGE ===========#
 
 # Packages
-from .cartesian import *
-from .coord import *
-from .identity import *
-from .square import *
 from .player import *
+from .team import *
 
 # Modules
 from .types import BinderTypeUnion

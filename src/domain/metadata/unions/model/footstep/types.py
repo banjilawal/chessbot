@@ -1,7 +1,7 @@
-# src/domain/metadata/unions/strcture/model/footstep/manifest.py
+# src/domain/metadata/unions/struct/model/footstep/types.py
 
 """
-Module: domain.metadata.unions.model.footstep.manifest
+Module: domain.metadata.unions.model.footstep.types
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

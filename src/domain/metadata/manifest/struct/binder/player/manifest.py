@@ -1,4 +1,4 @@
-# src/domain/metadata/manifest/strcture/binder/player/manifest.py
+# src/domain/metadata/manifest/struct/binder/player/manifest.py
 
 """
 Module: domain.metadata.manifest.struct.binder.player.manifest

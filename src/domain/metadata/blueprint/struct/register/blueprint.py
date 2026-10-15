@@ -24,10 +24,10 @@ class RegisterBlueprint(StructBlueprint[T], ABC, Generic[T]):
      Role:
         1.  Metadata
 
-     ResponsibilitieT:
+     Responsibilities:
          1.  Provide attributes for hydrating a Register.
 
-     AttributeT:
+     Attributes:
         a: Any
         b: Any
         domain_class: Type[T]

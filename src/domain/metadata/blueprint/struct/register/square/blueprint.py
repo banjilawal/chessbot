@@ -20,10 +20,10 @@ class SquareRegisterBlueprint(RegisterBlueprint[SquareRegister, Square]):
      Role:
         1.  Metadata
 
-     ResponsibilitieT:
+     Responsibilities:
          1.  Provide attributes for hydrating a SquareRegister.
 
-     AttributeT:
+     Attributes:
         u: Square
         v: Square
         domain_class: Optional[Type[SquareRegister]]

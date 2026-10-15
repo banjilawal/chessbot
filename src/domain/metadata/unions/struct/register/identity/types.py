@@ -1,7 +1,7 @@
-# src/domain/metadata/unions/strcture/register/identity/manifest.py
+# src/domain/metadata/unions/struct/register/identity/types.py
 
 """
-Module: domain.metadata.unions.struct.register.identity.manifest
+Module: domain.metadata.unions.struct.register.identity.types
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

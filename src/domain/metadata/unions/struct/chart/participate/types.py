@@ -1,7 +1,7 @@
-# src/domain/metadata/unions/strcture/chart/participate/manifest.py
+# src/domain/metadata/unions/struct/chart/participate/types.py
 
 """
-Module: domain.metadata.unions.struct.chart.participate.manifest
+Module: domain.metadata.unions.struct.chart.participate.types
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

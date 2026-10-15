@@ -20,10 +20,10 @@ class CoordRegisterBlueprint(RegisterBlueprint[CoordRegister, Coord]):
      Role:
         1.  Metadata
 
-     ResponsibilitieT:
+     Responsibilities:
          1.  Provide attributes for hydrating a CoordRegister.
 
-     AttributeT:
+     Attributes:
         u: Coord
         v: Coord
         domain_class: Optional[Type[CoordRegister]]

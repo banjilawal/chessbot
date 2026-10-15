@@ -10,9 +10,8 @@ version: 0.0.2
 # =========== DOMAIN.METADATA.MANIFEST.STRUCT.BINDER PACKAGE ===========#
 
 # Packages
-from .coord import *
-from .square import *
 from .player import *
+from .team import *
 
 # Modules
 from .manifest import BinderManifest

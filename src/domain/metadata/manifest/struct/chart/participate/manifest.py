@@ -1,4 +1,4 @@
-# src/domain/metadata/manifest/strcture/chart/participate/manifest.py
+# src/domain/metadata/manifest/struct/chart/participate/manifest.py
 
 """
 Module: domain.metadata.manifest.struct.chart.participate.manifest

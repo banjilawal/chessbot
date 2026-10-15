@@ -1,7 +1,7 @@
-# src/domain/metadata/unions/strcture/chart/manifest.py
+# src/domain/metadata/unions/struct/chart/types.py
 
 """
-Module: domain.metadata.unions.struct.chart.manifest
+Module: domain.metadata.unions.struct.chart.types
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

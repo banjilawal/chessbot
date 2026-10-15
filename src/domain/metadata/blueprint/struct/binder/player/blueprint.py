@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Dict, Optional, Type, cast
+from typing import Dict, List, Optional, Type
 
 from domain import Archetype, BinderBlueprint, Player, PlayerBinder
 from err import PlayerBinderNullException
@@ -20,10 +20,10 @@ class PlayerBinderBlueprint(BinderBlueprint[PlayerBinder]):
      Role:
         1.  Metadata
 
-     ResponsibilitieT:
+     Responsibilities:
          1.  Provide attributes for hydrating a PlayerBinder.
 
-     AttributeT:
+     Attributes:
         white_player: Player
         black_player: Player
         domain_class: Optional[Type[PlayerBinder]]
@@ -34,6 +34,9 @@ class PlayerBinderBlueprint(BinderBlueprint[PlayerBinder]):
      Super class:
         BinderBlueprint
      """
+    
+    _white_player: Player
+    _black_player: Player
     
     def __init__(
             self,
@@ -50,31 +53,23 @@ class PlayerBinderBlueprint(BinderBlueprint[PlayerBinder]):
             domain_null_exception: Optional[PlayerBinderNullException]
         """
         super().__init__(
-            white_entry=white_player,
-            black_entry=black_player,
             domain_class=domain_class or PlayerBinder,
             domain_null_exception=domain_null_exception or PlayerBinderNullException(),
         )
+        self._white_player = white_player
+        self._black_player = black_player
         
     @property
     def white_player(self) -> Player:
-        return cast(Player, super().white_entry)
+        return self._white_player
     
     @property
     def black_player(self) -> Player:
-        return cast(Player, super().black_entry)
-    
-    @property
-    def white_entry(self) -> Player:
-        return self.white_player
-    
-    @property
-    def black_entry(self) -> Player:
-        return self.black_player
+        return self._black_player
     
     @property
     def players_are_unique(self) -> bool:
-        return self.white_player != self.black_player
+        return self._white_player != self._black_player
     
     @property
     def players_are_not_unique(self) -> bool:
@@ -87,6 +82,10 @@ class PlayerBinderBlueprint(BinderBlueprint[PlayerBinder]):
     @property
     def entries_are_not_unique(self) -> bool:
         return not self.entries_are_unique
+    
+    @property
+    def archetypes_are_the_same(self) -> bool:
+        return self._white_player.archetype == self._black_player.archetype
     
     @property
     def is_balanced(self) -> bool:
@@ -106,8 +105,8 @@ class PlayerBinderBlueprint(BinderBlueprint[PlayerBinder]):
         return (
                 self.is_balanced and
                 self.entries_are_unique and
-                self._white_entry.archetype == Archetype.WHITE and
-                self._black_entry.archetype == Archetype.BLACK
+                self._white_player.archetype == Archetype.WHITE and
+                self._black_player.archetype == Archetype.BLACK
         )
     
     @property
@@ -117,14 +116,18 @@ class PlayerBinderBlueprint(BinderBlueprint[PlayerBinder]):
     @property
     def bindings(self) -> Dict[Archetype, Player]:
         return {
-            self.white_player.archetype: self.white_player,
-            self.black_player.archetype: self.black_player,
+            self._white_player.archetype: self._white_player,
+            self._black_player.archetype: self._black_player,
         }
+    
+    @property
+    def to_list(self) -> List[Player]:
+        return [self._white_player, self._black_player]
     
     @property
     def to_dict(self) -> Dict[str, Player]:
         return {
-            "white": self.white_player,
-            "black": self.black_player,
+            "white": self._white_player,
+            "black": self._black_player,
         }
     

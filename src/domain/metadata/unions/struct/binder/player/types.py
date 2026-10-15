@@ -1,7 +1,7 @@
-# src/domain/metadata/unions/strcture/binder/player/manifest.py
+# src/domain/metadata/unions/struct/binder/player/types.py
 
 """
-Module: domain.metadata.unions.struct.binder.player.manifest
+Module: domain.metadata.unions.struct.binder.player.types
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -13,7 +13,7 @@ from __future__ import annotations
 from typing import Optional, Type, cast
 
 from domain import BinderTypeUnion, PlayerBinder, PlayerBinderBlueprint
-from transit import PlayerBinderCarrier, StructCarrier
+from transit import PlayerBinderCarrier
 
 class PlayerBinderTypeUnion(BinderTypeUnion[PlayerBinder]):
     """
@@ -57,8 +57,8 @@ class PlayerBinderTypeUnion(BinderTypeUnion[PlayerBinder]):
         return cast(Type[PlayerBinder], super().model)
     
     @property
-    def carrier(self) -> Type[PlayerBinder]:
-        return cast(Type[PlayerBinder], super().carrier)
+    def carrier(self) -> Type[PlayerBinderCarrier]:
+        return cast(Type[PlayerBinderCarrier], super().carrier)
     
     @property
     def blueprint(self) -> Type[PlayerBinderBlueprint]:
