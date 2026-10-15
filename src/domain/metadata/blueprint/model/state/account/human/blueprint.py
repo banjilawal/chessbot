@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Optional, Type, cast
+from typing import Dict, List, Optional, Type, cast
 
 from domain import HumanAccount, AccountBlueprint
 from err import HumanAccountNullException
@@ -25,8 +25,8 @@ class HumanAccountBlueprint(AccountBlueprint[HumanAccount]):
         1.  Provides values for hydrating a HumanAccount object.
     
     Attributes:
-        subscriber: Subscriber
-        
+        firstname: str
+        lastname: str
         domain_class: Type[HumanAccount]
         domain_null_exception: HumanAccountNullException
     
@@ -35,16 +35,20 @@ class HumanAccountBlueprint(AccountBlueprint[HumanAccount]):
     Super Class:
         AccountBlueprint
     """
+    _firstname: str
+    _lastname: str
     
     def __init__(self,
-            subscriber: Subscriber,
+            firstname: str,
+            lastname: str,
             domain_class: Optional[Type[HumanAccount]] | None = None,
             domain_null_exception: Optional[HumanAccountNullException] | None = None,
             id: Optional[int] | None = None,
         ):
         """
         Args:
-            subscriber: Subscriber
+            firstname: str
+            lastname: str
             domain_class: Optional[Type[HumanAccount]]
             domain_null_exception: Optional[HumanAccountNullException]
             id: Optional[int]
@@ -54,11 +58,20 @@ class HumanAccountBlueprint(AccountBlueprint[HumanAccount]):
             domain_class=domain_class or HumanAccount,
             domain_null_exception=domain_null_exception or HumanAccountNullException(),
         )
-        self._subscriber = subscriber
+        self._firstname = firstname
+        self._lastname = lastname
         
     @property
-    def subscriber(self) -> Subscriber:
-        return self._subscriber
+    def firstname(self) -> str:
+        return self._firstname
+    
+    @property
+    def lastname(self) -> str:
+        return self._lastname
+    
+    @property
+    def names_dict(self) -> Dict[str, str]:
+        return {"firstname": self._firstname, "lastname": self._lastname}
 
     @property
     def domain_class(self) -> Type[HumanAccount]:

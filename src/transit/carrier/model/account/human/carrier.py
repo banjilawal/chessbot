@@ -81,7 +81,9 @@ class HumanAccountCarrier(AccountCarrier):
         
         model = cast(HumanAccount, self._model)
         return HumanAccountBlueprint(
-            subscriber=model.subscriber,
+            id=model.id,
+            firstname=model.firstname,
+            lastname=model.lastname,
         )
     
     

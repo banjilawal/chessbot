@@ -10,7 +10,6 @@ version: 0.0.2
 from __future__ import annotations
 
 from domain import Account
-from software import Firstname
 
 
 class HumanAccount(Account):
@@ -25,7 +24,7 @@ class HumanAccount(Account):
         4.  Can look up their previous games.
 
      Attributes:
-         id: int
+        id: int
         firstname: str
         lastname: str
 
@@ -37,7 +36,7 @@ class HumanAccount(Account):
     _firstname: str
     _lastname: str
     
-    def account(
+    def __init__(
             self,
             id: int,
             firstname: str,
