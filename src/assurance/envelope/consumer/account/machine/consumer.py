@@ -1,7 +1,7 @@
-# src/assurance/envelope/consumer/account/kill/account.py
+# src/assurance/envelope/consumer/account/machine/account.py
 
 """
-Module: assurance.envelope.consumer.account.kill.account
+Module: assurance.envelope.consumer.account.machine.account
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,35 +9,37 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import cast
+from typing import Dict, cast
 
 from artifcat import ValidationResult
 from assurance import AccountEnvelopeConsumer
-from domain import CombatantToken, KillAccount, KillAccountBlueprint
+from domain import MachineAccount, MachineAccountBlueprint
 from err import (
-    AccountEnvelopeRouterException, AccountLocationMismatchException,
-    KillAccountEnvelopeConsumerException, KillKingException,
+    AccountCarrierEmptyException, AccountEnvelopeRouterException, MachineAccountEnvelopeConsumerException,
     RootAccountEnvelopeNullException
 )
-from transit import KillAccountCarrier, RootAccountEnvelope
+
+from transit import MachineAccountCarrier, RootAccountEnvelope
 from util import LoggingLevelRouter
 
 
-class KillAccountEnvelopeConsumer(
-    AccountEnvelopeConsumer[KillAccount]
+class MachineAccountEnvelopeConsumer(
+    AccountEnvelopeConsumer[MachineAccount]
 ):
     """
     Role
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Assure a KillAccount covered by a RootSquareAccountEnvelope is safe.
+        1.  Assure a MachineAccount covered by a RootSquareAccountEnvelope is safe.
 
     Attributes:
         toolkit: AccountValidatorToolkit
 
     Provides:
-        -   def execute(envelope: RootAccountEnvelope) -> ValidationResult[AccountCarrier]
+        -   def execute(
+                    envelope: RootAccountEnvelope
+            ) -> ValidationResult[MachineAccountCarrier]
 
     Super Class:
         RootEnvelopeConsumer
@@ -50,9 +52,9 @@ class KillAccountEnvelopeConsumer(
     def execute(
             self,
             envelope: RootAccountEnvelope
-    ) -> ValidationResult[KillAccountCarrier]:
+    ) -> ValidationResult[MachineAccountCarrier]:
         """
-        Assure the properties can assemble a safe KillAccountCarrier.
+        Assure the properties can assemble a safe MachineAccountCarrier.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the
@@ -66,9 +68,9 @@ class KillAccountEnvelopeConsumer(
         Args:
              envelope: RootAccountEnvelope
         Returns:
-            ValidationResult[KillAccountCarrier]
+            ValidationResult[MachineAccountCarrier]
         Raises:
-            KillAccountEnvelopeConsumerException
+            MachineAccountEnvelopeConsumerException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -81,24 +83,23 @@ class KillAccountEnvelopeConsumer(
         if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                KillAccountEnvelopeConsumerException(
+                MachineAccountEnvelopeConsumerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=KillAccountEnvelopeConsumerException.MSG,
-                    err_code=KillAccountEnvelopeConsumerException.ERR_CODE,
+                    msg=MachineAccountEnvelopeConsumerException.MSG,
+                    err_code=MachineAccountEnvelopeConsumerException.ERR_CODE,
                     ex=priming.exception
                 )
             )
         safe = cast(RootAccountEnvelope, priming.payload)
-        
-        if not safe.for_kill_account_consumer:
+        if not safe.for_machine_account_consumer:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                KillAccountEnvelopeConsumerException(
+                MachineAccountEnvelopeConsumerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=KillAccountEnvelopeConsumerException.MSG,
-                    err_code=KillAccountEnvelopeConsumerException.ERR_CODE,
+                    msg=MachineAccountEnvelopeConsumerException.MSG,
+                    err_code=MachineAccountEnvelopeConsumerException.ERR_CODE,
                     ex=AccountEnvelopeRouterException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
@@ -107,68 +108,50 @@ class KillAccountEnvelopeConsumer(
                     )
                 )
             )
-        # Handle the case that the victim is not a CombatantToken   
-        if safe.victim_is_king:
+        prime_extract = safe.prime_extract
+        reference = cast(MachineAccountCarrier, prime_extract.reference)
+        if reference.extract_blueprint() is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                KillAccountEnvelopeConsumerException(
+                MachineAccountEnvelopeConsumerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=KillAccountEnvelopeConsumerException.MSG,
-                    err_code=KillAccountEnvelopeConsumerException.ERR_CODE,
-                    ex=KillKingException(
+                    msg=MachineAccountEnvelopeConsumerException.MSG,
+                    err_code=MachineAccountEnvelopeConsumerException.ERR_CODE,
+                    ex=AccountCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=KillKingException.MSG,
-                        err_code=KillKingException.ERR_CODE,
+                        msg=AccountCarrierEmptyException.MSG,
+                        err_code=AccountCarrierEmptyException.ERR_CODE,
                     )
                 )
             )
-        # Handle the case that the kill_location and maneuver.destination are mismatched.
-        if safe.location != safe.attacker_maneuver.destination:
+        fingerprint = cast(MachineAccountBlueprint, reference.extract_blueprint())
+        name_validation = self.toolkit.identity_service.validate_name(
+            candidate=fingerprint.name
+        )
+        if name_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                KillAccountEnvelopeConsumerException(
+                MachineAccountEnvelopeConsumerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=KillAccountEnvelopeConsumerException.MSG,
-                    err_code=KillAccountEnvelopeConsumerException.ERR_CODE,
-                    ex=AccountLocationMismatchException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=AccountLocationMismatchException.MSG,
-                        err_code=AccountLocationMismatchException.ERR_CODE,
-                    )
+                    msg=MachineAccountEnvelopeConsumerException.MSG,
+                    err_code=MachineAccountEnvelopeConsumerException.ERR_CODE,
+                    ex=name_validation.exception,
                 )
             )
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
         id = safe.id
-        location = safe.location
-        attacker_reward = safe.attacker_reward
-        attacker_maneuver = safe.attacker_maneuver
-        victim = cast(CombatantToken, safe.victim)
+        name = cast(str, name_validation.payload)
         
         # --- Forward the appropriate work product to the caller. ---#
         if safe.prime_extract.recipient_wants_model:
-            carrier = KillAccountCarrier(
-                model=KillAccount(
-                    id=id,
-                    victim=victim,
-                    location=location,
-                    attacker_reward=attacker_reward,
-                    attacker_maneuver=attacker_maneuver,
-                )
-            )
+            model = MachineAccount(id=id, name=name)
+            carrier = MachineAccountCarrier(model=model)
             return ValidationResult.success(carrier)
-        # Otherwise, the client is a KillAccountBuilder that needs a Blueprint.
-        carrier = KillAccountCarrier(
-            blueprint=KillAccountBlueprint(
-                id=id,
-                victim=victim,
-                location=location,
-                attacker_reward=attacker_reward,
-                attacker_maneuver=attacker_maneuver,
-            )
-        )
+        # Otherwise, the client is a MachineAccountBuilder that needs a Blueprint.
+        blueprint = MachineAccountBlueprint(id=id, name=name)
+        carrier = MachineAccountCarrier(blueprint=blueprint)
         return ValidationResult.success(carrier)
     
