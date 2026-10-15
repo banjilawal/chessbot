@@ -18,7 +18,7 @@ _all_ = [
     "BoardTeamBinderOverCapacityException",
 ]
 # ======================# BOARD_TEAM_COLOR_BINDER_OVER_CAPACITY #======================#
-class BoardTeamArchetypeBinderOverCapacityException(
+class TeamBinderOverCapacityException(
     ArchetypeBinderOverCapacityException
 ):
     """
@@ -26,7 +26,7 @@ class BoardTeamArchetypeBinderOverCapacityException(
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a required BoardTeamArchetypeBinder is over its capacity.
+        1.  Indicating a required TeamBinder is over its capacity.
 
     Attributes:
             msg: Optional[str]
@@ -43,7 +43,7 @@ class BoardTeamArchetypeBinderOverCapacityException(
     Super Class:
         BinderOverCapacityException
     """
-    MSG = "BoardTeamArchetypeBinder is over its capacity."
+    MSG = "TeamBinder is over its capacity."
     ERR_CODE = "BOARD_TEAM_COLOR_BINDER_OVER_CAPACITY"
     
     def _init_(

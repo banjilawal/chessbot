@@ -43,7 +43,7 @@ class Board(StateModel):
     _maneuver_log: ManeuverDatabase
     _attack_records: AttackDatabase
     _captured_tokens: TokenDatabase
-    _team_binder: TeamBinder
+    _binder: TeamBinder
     _deployment_counter: int
     _move_counter: int
 
@@ -51,7 +51,7 @@ class Board(StateModel):
             self,
             id: int,
             arena: Arena,
-            team_binder: TeamBinder,
+            binder: TeamBinder,
             squares: Optional[SquareDatabase] | None = None,
             maneuver_log: Optional[ManeuverDatabase] | None = None,
             attack_records: Optional[AttackDatabase] | None = None,
@@ -61,7 +61,7 @@ class Board(StateModel):
         Args:
             id: int
             arena: Arena
-            team_binder: TeamArchetypeBinder
+            binder: TeamArchetypeBinder
             squares: Optional[SquareDatabase]
             maneuver_log: Optional[ManeuverDatabase]
             attack_records: Optional[AttackDatabase]
@@ -69,7 +69,7 @@ class Board(StateModel):
         """
         super().__init__(id=id)
         self._arena = arena
-        self._team_binder = team_binder
+        self._binder = binder
         self._squares = squares or SquareDatabase()
         self._maneuver_log = maneuver_log or ManeuverDatabase()
         self._attack_records = attack_records or AttackDatabase()
@@ -100,7 +100,7 @@ class Board(StateModel):
     
     @property
     def team_binder(self) -> TeamBinder:
-        return self._team_binder
+        return self._binder
     
     @property
     def maneuver_log(self) -> ManeuverDatabase:

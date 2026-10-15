@@ -10,7 +10,7 @@ version: 0.0.2
 # ============ ERR.NULL.DOMAIN.MODEL.BOARD PACKAGE ===========#
 
 # Packages
-
+from .state import *
 
 # Modules
 from .exception import BoardNullException

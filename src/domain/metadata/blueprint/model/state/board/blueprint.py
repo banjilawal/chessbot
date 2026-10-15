@@ -11,8 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from collection import AttackDatabase, ManeuverDatabase, SquareDatabase, TokenDatabase
-from domain import Arena, Board, BoardContext, BoardTeamArchetypeBinder, StateModelBlueprint
+from domain import Arena, Board, BoardState, StateModelBlueprint, TeamBinder
 from err import BoardNullException
 
 
@@ -25,16 +24,14 @@ class BoardBlueprint(StateModelBlueprint[Board]):
          1.  Provides values for hydrating a Board object.
 
      Attributes:
-        id: Optional[int]
-        squares: SquareDatabase
-        maneuver_log: ManeuverDatabase
-        attack_records: AttackDatabase
-        captured_tokens: TokenDatabase
-        team_binder: BoardTeamArchetypeBinder
+        arena: Arena
+        state: BoardState
+        binder: TeamBinder
         
         domain_class: Type[Board]
         search_context_class: Type[BoardContext]
         domain_null_exception: BoardNullException
+        id: Optional[int]
 
      Provides:
 
@@ -42,36 +39,25 @@ class BoardBlueprint(StateModelBlueprint[Board]):
         StateModelBlueprint
      """
     _arena: Arena
-    _squares: SquareDatabase
-    _maneuver_log: ManeuverDatabase
-    _attack_records: AttackDatabase
-    _captured_tokens: TokenDatabase
-    _team_binder: BoardTeamArchetypeBinder
+    _state: BoardState
+    _binder: TeamBinder
     
     def __init__(
             self,
             arena: Arena,
-            squares: SquareDatabase,
-            team_binder: BoardTeamArchetypeBinder,
+            binder: TeamBinder,
+            state: Optional[BoardState] | None = None,
             domain_class: Optional[Type[Board]] | None = None,
-            search_context_class: Optional[Type[BoardContext]] | None = None,
             domain_null_exception: Optional[BoardNullException] | None = None,
-            maneuver_log: Optional[ManeuverDatabase] | None = None,
-            attack_records: Optional[AttackDatabase] | None = None,
-            captured_tokens: Optional[TokenDatabase] | None = None,
             id: Optional[int] | None = None,
     ):
         """
         Args:
-            squares: SquareDatabase
-            team_binder: BoardTeamArchetypeBinder
+            arena: Arena
+            binder: TeamBinder
+            state: Optional[BoardState]
             domain_class: Optional[Type[Board]]
-            search_context_class: Optional[Type[BoardContext]]
             domain_null_exception: Optional[BoardNullException]
-            
-            maneuver_log: Optional[ManeuverDatabase]
-            attack_records: Optional[AttackDatabase]
-            captured_tokens: Optional[TokenDatabase]
             id: Optional[int]
         """
         super().__init__(
@@ -80,42 +66,24 @@ class BoardBlueprint(StateModelBlueprint[Board]):
             domain_null_exception=domain_null_exception or BoardNullException(),
         )
         self._arena = arena
-        self._squares = squares or SquareDatabase()
-        self._maneuver_log = maneuver_log or ManeuverDatabase()
-        self._attack_records = attack_records or AttackDatabase()
-        self._captured_tokens = captured_tokens or TokenDatabase()
+        self._binder = binder
+        self._state = state or BoardState.IS_EMPTY
         
     @property
     def arena(self) -> Arena:
         return self._arena
     
     @property
-    def squares(self) -> SquareDatabase:
-        return self._squares
+    def binder(self) -> TeamBinder:
+        return self._binder
     
     @property
-    def maneuver_log(self) -> ManeuverDatabase:
-        return self._maneuver_log
-    
-    @property
-    def attack_records(self) -> AttackDatabase:
-        return self._attack_records
-    
-    @property
-    def captured_tokens(self) -> TokenDatabase:
-        return self._captured_tokens
-    
-    @property
-    def team_binder(self) -> BoardTeamArchetypeBinder:
-        return self._team_binder
+    def state(self) -> BoardState:
+        return self._state
     
     @property
     def domain_class(self) -> Type[Board]:
         return cast(Type[Board], super().domain_class)
-    
-    @property
-    def search_context_class(self) -> Type[BoardContext]:
-        return cast(Type[BoardContext], super().search_context_class)
     
     @property
     def domain_null_exception(self) -> BoardNullException:
