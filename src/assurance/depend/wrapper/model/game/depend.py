@@ -14,7 +14,10 @@ from typing import Optional
 
 from assurance import ModelWrapperDependency
 from domain import Game
-from exchange import PlayerValidationResponseWrapper
+from exchange import (
+    ArenaValidationResponseWrapper, PlayerBinderValidationResponseWrapper,
+    PlayerValidationResponseWrapper
+)
 
 
 class GameWrapperDependency(ModelWrapperDependency[Game]):
@@ -26,12 +29,30 @@ class GameWrapperDependency(ModelWrapperDependency[Game]):
         1.  Satisfy GameValidator's ResponseWrapper dependencies.
 
     Attributes:
-
+        arena: ArenaValidationResponseWrapper
+        binder: PlayerBinderValidationResponseWrapper
+        
     Provides:
 
     Super Class:
         ModelWrapperDependency
     """
+    _arena: ArenaValidationResponseWrapper
+    _binder: PlayerBinderValidationResponseWrapper
     
-    def __init__(self):
+    def __init__(
+            self,
+            arena: Optional[ArenaValidationResponseWrapper] | None = None,
+            binder: Optional[PlayerBinderValidationResponseWrapper] | None = None,
+    ):
         super().__init__()
+        self._arena = arena or ArenaValidationResponseWrapper()
+        self._binder = binder or PlayerBinderValidationResponseWrapper()
+        
+    @property
+    def arena(self) -> ArenaValidationResponseWrapper:
+        return self._arena
+    
+    @property
+    def binder(self) -> PlayerBinderValidationResponseWrapper:
+        return self._binder

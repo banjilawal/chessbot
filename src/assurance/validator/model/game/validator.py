@@ -1,7 +1,7 @@
-# src/validator/model/game/validator.py
+# src/assurance/validator/model/game/validator.py
 
 """
-Module: validator.model.game.validator
+Module: assurance.validator.model.game.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,19 +9,16 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import Any, Optional, Type, cast
-
-from assurance import GameValidatorToolkit, ModelValidator
-from domain import (
-    Game, GameBlueprint, GameValidationRequest
-)
-from err import (
-    GameCarrierEmptyException, GameValidationRequestNullException,
-    GameValidatorException
-)
+from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from transit import GameCarrier, PathCarrier, TokenCarrier
+from assurance import ModelValidator, GameLoader, GameValidatorToolkit
+from domain import Arena, Game, GameBlueprint, GamePrimeExtract, PlayerBinder
+from err import GameCarrierEmptyException, GameValidatorException
+from exchange import (
+    ArenaValidationRequest, PlayerBinderValidationRequest
+)
+from transit import ArenaCarrier, PlayerBinderCarrier, GameCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -31,10 +28,10 @@ class GameValidator(ModelValidator[Game]):
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a GameCarrier is safe to use.
+        1.  Ensure a GameCarrier and its contents are safe to use.
 
     Attributes:
-        loader: GameValidatorToolkit
+        loader: GameLoader
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[GameCarrier]:
@@ -43,37 +40,32 @@ class GameValidator(ModelValidator[Game]):
         ModelValidator
     """
     
-    def __init__(
-            self,
-            loader: Optional[GameValidatorToolkit] | None = None,
-    ):
+    def __init__(self, loader: Optional[GameLoader] | None = None):
         """
         Args:
-            loader: Optional[GameValidatorToolkit]
+            loader: Optional[GameLoader]
         """
-        super().__init__(loader=loader or GameValidatorToolkit())
+        super().__init__(loader=loader or GameLoader())
+    
+    @property
+    def loader(self) -> GameLoader:
+        return cast(GameLoader, super().loader)
     
     @property
     def toolkit(self) -> GameValidatorToolkit:
-        return cast(GameValidatorToolkit, super().toolkit)
+        return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> ValidationResult[GameCarrier]:
         """
-        Certify a GameCarrier's payload is either a Game or a Blueprint 
-        that is safe to use.
+        Assure a candidate is a safe TokenCarrier.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The request is either null or not a GameValidatorRequest.
-                    -   The request's payload is either,
-                            null
-                            not a GameCarrier
-                            an empty GameCarrier.
-                    -   Either the id, token, or owner attributes are flagged unsafe.
-            2.  Otherwise, Send a Carrier with the correct type of payload in the success
-                result.
+                    -   The Loader fails.
+                    -   Either the id, binder, or arena are flagged unsafe.
+            2.  Otherwise, send a GameCarrier in the success result.
         Args:
             candidate: Any
         Returns:
@@ -83,13 +75,9 @@ class GameValidator(ModelValidator[Game]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the candidate is null or the rong type.
-        priming_result = self.toolkit.wrapper.priming_validator.execute(
-            candidate=candidate,
-            target_model=GameValidationRequest,
-            null_exception=GameValidationRequestNullException(),
-        )
-        if priming_result.is_failure:
+        # Handle the case that loader fails.
+        loading = self.loader.execute(candidate)
+        if loading.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 GameValidatorException(
@@ -97,34 +85,16 @@ class GameValidator(ModelValidator[Game]):
                     cls_name=self.__class__.__name__,
                     msg=GameValidatorException.MSG,
                     err_code=GameValidatorException.ERR_CODE,
-                    ex=priming_result.exception,
+                    ex=loading.exception,
                 )
             )
-        # --- Cast priming_result into a request for additional tests. ---#
-        request = cast(GameValidationRequest, priming_result.payload)
+        # --- Get the PrimeExtract and Blueprint for additional processing. ---#
+        prime_extract = cast(GamePrimeExtract, loading.payload)
+        carrier = prime_extract.reference
+        fingerprint = carrier.extract_blueprint()
         
-        # Handle the case that request.item is the wrong carrier type.
-        carrier_validation = self.toolkit.wrapper.priming_validator.execute(
-            candidate=request.item,
-            target_model=self.toolkit.metadata.types.carrier,
-            null_exception=self.toolkit.metadata.nulls.carrier,
-        )
-        if carrier_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                GameValidatorException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=GameValidatorException.MSG,
-                    err_code=GameValidatorException.ERR_CODE,
-                    ex=carrier_validation.exception,
-                )
-            )
-        # --- Cast carrier_validation payload to into carrier to extract the blueprint. ---#
-        carrier = cast(GameCarrier, carrier_validation.payload)
-        blueprint = carrier.extract_blueprint()
         # Handle the case that the blueprint is null.
-        if blueprint is None:
+        if fingerprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 GameValidatorException(
@@ -137,12 +107,15 @@ class GameValidator(ModelValidator[Game]):
                         cls_name=self.__class__.__name__,
                         msg=GameCarrierEmptyException.MSG,
                         err_code=GameCarrierEmptyException.ERR_CODE,
-                    ),
+                    )
                 )
             )
         # Handle the case that any id in the blueprint is flagged.
-        id_validation = self.toolkit.wrapper.identity_service.validate_blueprint_id(
-            owner_blueprint=Type[self.toolkit.metadata.types.blueprint]
+        id_validation = self.toolkit.blueprint_id_extractor.execute(
+            candidate=fingerprint,
+            blueprint_owner_name=fingerprint.domain_class_name,
+            blueprint_type=self.toolkit.metadata.types.blueprint,
+            blueprint_null_exception=self.toolkit.metadata.nulls.blueprint,
         )
         if id_validation.is_failure:
             # Send the exception chain on failure.
@@ -155,32 +128,68 @@ class GameValidator(ModelValidator[Game]):
                     ex=id_validation.exception,
                 )
             )
-        # --- Extract validation payloads. ---#
+        # --- Handle the case that the binder is not safe. ---#
+        binder_validation = self.toolkit.wrapper.binder.extract_model(
+            request=PlayerBinderValidationRequest(
+                item=PlayerBinderCarrier(model=fingerprint.binder),
+                id=IdFactory.next_id(class_name="PlayerBinderValidationRequest"),
+            )
+        )
+        if binder_validation.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                GameValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=GameValidatorException.MSG,
+                    err_code=GameValidatorException.ERR_CODE,
+                    ex=binder_validation.exception,
+                )
+            )
+        # --- Handle the case that the arena is not safe. ---#
+        arena_validation = self.toolkit.wrapper.arena.extract_model(
+            request=ArenaValidationRequest(
+                item=ArenaCarrier(model=fingerprint.arena),
+                id=IdFactory.next_id(class_name="ArenaValidationRequest"),
+            )
+        )
+        # Handle the case that the arena is flagged.
+        if arena_validation.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                GameValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=GameValidatorException.MSG,
+                    err_code=GameValidatorException.ERR_CODE,
+                    ex=arena_validation.exception,
+                )
+            )
+        # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
         id = cast(int, id_validation.payload)
-        arena = blueprint.arena
-        white_player = blueprint.white_player
-        black_player = blueprint.black_player
-        binder_id = blueprint.binder_id
+        arena = cast(Arena, arena_validation.payload)
+        binder = cast(PlayerBinder, binder_validation.payload)
+
+        # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         
-        # --- Forward the appropriate work product to the caller. ---#
-        # The model case
-        if carrier.has_model:
+        # The client wants a safe Game.
+        if prime_extract.recipient_wants_model:
             payload = Game(
                 id=id,
+                binder=binder,
                 arena=arena,
-                white_player=white_player,
-                black_player=black_player,
-                binder_id=binder_id,
             )
-            return ValidationResult.success(GameCarrier(model=payload))
-        # The blueprint case
+            return ValidationResult.success(
+                GameCarrier(model=payload)
+            )
+        # Otherwise, the client is a GameBuilder that needs a Blueprint.
         payload = GameBlueprint(
             id=id,
+            binder=binder,
             arena=arena,
-            white_player=white_player,
-            black_player=black_player,
-            binder_id=binder_id,
         )
-        return ValidationResult.success(GameCarrier(blueprint=payload))
-        
-        
+        return ValidationResult.success(
+            GameCarrier(blueprint=payload)
+        )
+
+
