@@ -1,18 +1,16 @@
-# src/logic/system/transit/route/transit/router.py
+# src/transit/route/router.py
 
 """
-Module: logic.system.route.router
+Module: transit.route.route
 Author: Banji Lawal
-Created: 2026-03-30
-Version: 1.0.0
+Created: 2026-04-03
+version: 0.0.2
 """
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
-from typing import Any, Generic, TypeVar
-
-from system import LoggingLevelRouter
+from abc import ABC
+from typing import Generic, TypeVar
 
 T = TypeVar("T")
 
@@ -33,7 +31,3 @@ class Router(ABC, Generic[T]):
     super Class:
     """
     
-    @abstractmethod
-    @LoggingLevelRouter.monitor
-    def route(self, *args, **kwargs) -> Any:
-        pass

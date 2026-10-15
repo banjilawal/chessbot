@@ -1,7 +1,7 @@
-# src/transit/carrier/model/account/carrier.py
+# src/transit/carrier/model/Account/carrier.py
 
 """
-Module: transit.carrier.model.account.carrier
+Module: transit.carrier.model.Account.carrier
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,19 +9,15 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
-
-
 from typing import Generic, Optional, TypeVar
 
-from domain import (
-    HumanAccountBlueprint, MachineAccountBlueprint, Account, AccountBlueprint
-)
+from domain import Account, AccountBlueprint
 from transit import ModelCarrier
 
 T = TypeVar("T", bound="Account")
 
-class AccountCarrier(ModelCarrier[T], ABC, Generic[T]):
+
+class AccountCarrier(ModelCarrier[T], Generic[T]):
     """
     Role:
         - Boundary Carrier Interface
@@ -30,9 +26,8 @@ class AccountCarrier(ModelCarrier[T], ABC, Generic[T]):
         1.  Transport a hydrated Account or its Blueprint.
 
     Attributes:
-        entity: [Account | AccountBlueprint]
-        is_human_account_carrier: bool
-        is_machine_account_carrier: bool
+        model: Optional[T]
+        blueprint: Optional[AccountBlueprint[T]]
 
     Provides:
         -   def extract_blueprint() -> Optional[AccountBlueprint]
@@ -40,6 +35,7 @@ class AccountCarrier(ModelCarrier[T], ABC, Generic[T]):
     Super Class:
         ModelCarrier
     """
+    
     _model: Optional[T]
     _blueprint: Optional[AccountBlueprint[T]]
     
@@ -79,20 +75,7 @@ class AccountCarrier(ModelCarrier[T], ABC, Generic[T]):
                 self._blueprint is not None
         )
     
-    @abstractmethod
     def extract_blueprint(self) -> Optional[AccountBlueprint[T]]:
-        pass
-
-    @property
-    def is_human_account_carrier(self) -> bool:
-        blueprint = self.extract_blueprint()
-        if blueprint is None:
-            return False
-        return  isinstance(blueprint, HumanAccountBlueprint)
-    
-    @property
-    def is_machine_account_carrier(self) -> bool:
-        blueprint = self.extract_blueprint()
-        if blueprint is None:
-            return False
-        return isinstance(blueprint, MachineAccountBlueprint)
+        if self.is_empty or self.has_model:
+            return None
+        return self._blueprint

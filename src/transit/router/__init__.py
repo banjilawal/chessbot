@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== TRANSIT.ROUTE PACKAGE ===========#
 
 # Packages
+from .carrier import *
 from .search import *
 
 # Modules

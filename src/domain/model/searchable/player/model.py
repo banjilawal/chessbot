@@ -50,7 +50,6 @@ class Player(Model, Archetyped):
     ):
         """
         Args:
-            id: int
             game: Game
             account: Account,
             archetype: Archetype,

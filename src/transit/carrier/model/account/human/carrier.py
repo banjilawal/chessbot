@@ -15,7 +15,7 @@ from domain import HumanAccount, HumanAccountBlueprint
 from transit import AccountCarrier
 
 
-class HumanAccountCarrier(AccountCarrier):
+class HumanAccountCarrier(AccountCarrier[HumanAccount]):
     """
     Role:
         - Boundary Carrier Interface
@@ -83,7 +83,7 @@ class HumanAccountCarrier(AccountCarrier):
         return HumanAccountBlueprint(
             id=model.id,
             firstname=model.firstname,
-            lastname=model.lastname,
+            lastname=model.lastname
         )
     
     

@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Dict, cast
 
-from domain import Archetype, ArchetypeBinder, Player
+from domain import Account, Archetype, ArchetypeBinder, Game, Player
 
 
 class PlayerBinder(ArchetypeBinder[Player]):
@@ -127,6 +127,15 @@ class PlayerBinder(ArchetypeBinder[Player]):
     @property
     def bindings(self) -> Dict[Archetype, Player]:
         return self._entry
+    
+    def player_found(self, game: Game, account: Account) -> bool:
+        for player in [self.white_player, self.black_player]:
+            if (
+                player.game == game and
+                player.account == account
+            ):
+                return True
+            return False
     
     @property
     def to_dict(self) -> Dict[str, Player]:
