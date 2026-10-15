@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== ASSURANCE.ENVELOPE.ROUTER PACKAGE ===========#
 
 # Packages
+from .account import *
 from .encounter import *
 from .square import *
 from .token import *
