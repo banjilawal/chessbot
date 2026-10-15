@@ -42,6 +42,7 @@ from .recurrence import *
 from .resource import *
 from .rollback import *
 from .execution import *
+from .search import *
 from .service import *
 from .space import *
 from .tester import *

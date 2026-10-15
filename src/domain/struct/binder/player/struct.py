@@ -9,7 +9,7 @@ version: 1.0.0
 
 from __future__ import annotations
 
-from typing import Dict, cast
+from typing import Dict, List, cast
 
 from domain import Account, Archetype, ArchetypeBinder, Game, Player
 
@@ -125,17 +125,12 @@ class PlayerBinder(ArchetypeBinder[Player]):
         return not self.entries_are_unique
     
     @property
+    def to_list(self) -> List[Player]:
+        return [self.white_player, self.black_player]
+    
+    @property
     def bindings(self) -> Dict[Archetype, Player]:
         return self._entry
-    
-    def player_found(self, game: Game, account: Account) -> bool:
-        for player in [self.white_player, self.black_player]:
-            if (
-                player.game == game and
-                player.account == account
-            ):
-                return True
-            return False
     
     @property
     def to_dict(self) -> Dict[str, Player]:

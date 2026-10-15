@@ -15,8 +15,8 @@ from artifcat import ValidationResult
 from assurance import ModelValidator, PlayerLoader, PlayerValidatorToolkit
 from domain import Archetype, Account, Game, Player, PlayerBlueprint, PlayerPrimeExtract
 from err import (
-    ArchetypeNullException, GameNullException, PlayerBinderConsistencyException, PlayerCarrierEmptyException,
-    PlayerValidatorException
+    ArchetypeNullException, GameNullException, PlayerCarrierEmptyException,
+    PlayerNotFoundException, PlayerValidatorException
 )
 from exchange import AccountValidationRequest
 from transit import AccountCarrier, PlayerCarrier
@@ -167,7 +167,12 @@ class PlayerValidator(ModelValidator[Player]):
         account = cast(Account, account_validation.payload)
         archetype = cast(Archetype, archetype_validation.payload)
         
-        if not game.binder.player_found(game, account):
+        model = Player(
+            game=game,
+            account=account,
+            archetype=archetype,
+        )
+        if model not in game.binder.to_list:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 PlayerValidatorException(
@@ -175,11 +180,11 @@ class PlayerValidator(ModelValidator[Player]):
                     cls_name=self.__class__.__name__,
                     msg=PlayerValidatorException.MSG,
                     err_code=PlayerValidatorException.ERR_CODE,
-                    ex=PlayerBinderConsistencyException(
+                    ex=PlayerNotFoundException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=PlayerBinderConsistencyException.MSG,
-                        err_code=PlayerBinderConsistencyException.ERR_CODE,
+                        msg=PlayerNotFoundException.MSG,
+                        err_code=PlayerNotFoundException.ERR_CODE,
                     )
                 )
             )
@@ -187,11 +192,7 @@ class PlayerValidator(ModelValidator[Player]):
         
         # The client wants a safe Player.
         if prime_extract.recipient_wants_model:
-            model = Player(
-                game=game,
-                account=account,
-                archetype=archetype,
-            )
+
             payload = PlayerCarrier(model=model)
             return ValidationResult.success(payload)
         # Otherwise, the client is a PlayerBuilder that needs a Blueprint.
