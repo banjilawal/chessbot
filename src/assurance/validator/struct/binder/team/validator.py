@@ -13,10 +13,13 @@ from typing import Any, Dict, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import BinderValidator, TeamBinderLoader, TeamBinderValidatorToolkit
-from domain import Archetype, Team, TeamBinder
-from err import TeamBinderConsistencyException, TeamBinderValidatorException
-from exchange import TeamBinderValidationRequest, TeamValidationRequest
-from transit import TeamCarrier
+from domain import (
+    Archetype, Team, TeamBinder, TeamBinderBlueprint,
+    TeamBinderPrimeExtract
+)
+from err import TeamBinderCarrierEmptyException, TeamBinderValidatorException
+from exchange import TeamValidationRequest
+from transit import TeamBinderCarrier, TeamCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -58,7 +61,7 @@ class TeamBinderValidator(BinderValidator[TeamBinder]):
         return self.loader.toolkit
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[TeamBinder]:
+    def execute(self, candidate: Any) -> ValidationResult[TeamBinderCarrier]:
         """
         Certify a TeamBinder's payload is either a TeamBinder or a Blueprint 
         that is safe to use.
@@ -84,8 +87,8 @@ class TeamBinderValidator(BinderValidator[TeamBinder]):
         method = f"{self.__class__.__name__}.execute"
                 
         # Handle the case that loader fails.
-        load = self.loader.execute(candidate)
-        if load.is_failure:
+        loader = self.loader.execute(candidate)
+        if loader.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TeamBinderValidatorException(
@@ -93,13 +96,16 @@ class TeamBinderValidator(BinderValidator[TeamBinder]):
                     cls_name=self.__class__.__name__,
                     msg=TeamBinderValidatorException.MSG,
                     err_code=TeamBinderValidatorException.ERR_CODE,
-                    ex=load.exception,
+                    ex=loader.exception,
                 )
             )
-        # --- Cast priming_result into a request for additional tests. ---#
-        struct = cast(TeamBinder, load.payload)
+        # --- Get the PrimeExtract and Blueprint for additional processing. ---#
+        prime_extract = cast(TeamBinderPrimeExtract, loader.payload)
+        carrier = prime_extract.reference
+        blueprint = carrier.extract_blueprint()
         
-        if struct.is_not_consistent:
+        # Handle the case that the blueprint is null.
+        if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TeamBinderValidatorException(
@@ -107,22 +113,21 @@ class TeamBinderValidator(BinderValidator[TeamBinder]):
                     cls_name=self.__class__.__name__,
                     msg=TeamBinderValidatorException.MSG,
                     err_code=TeamBinderValidatorException.ERR_CODE,
-                    ex=TeamBinderConsistencyException(
+                    ex=TeamBinderCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TeamBinderConsistencyException.MSG,
-                        err_code=TeamBinderConsistencyException.ERR_CODE,
+                        msg=TeamBinderCarrierEmptyException.MSG,
+                        err_code=TeamBinderCarrierEmptyException.ERR_CODE,
                     )
                 )
             )
-        
-        entry = struct.to_dict
-        bindings: Dict[str, Team] = {}
-        for key in struct.to_dict:
+        # --- Cast priming_result into a request for additional tests. ---#
+        entry: Dict[Archetype, Team] = {}
+        for key in blueprint.bindings:
             team_validation = self.toolkit.wrapper.team.extract_model(
                 request=TeamValidationRequest(
                     item=TeamCarrier(model=entry[key]),
-                    id=IdFactory.next_id(class_name="TeamValidationRequest")
+                    id=IdFactory.next_id(class_name="TeamBinderRequest")
                 )
             )
             if team_validation.is_failure:
@@ -137,15 +142,26 @@ class TeamBinderValidator(BinderValidator[TeamBinder]):
                     )
                 )
             team = cast(Team, team_validation.payload)
-            bindings[key] = team
-            
-        # --- Forward the appropriate work product to the caller. ---#
-        return ValidationResult.success(
-            TeamBinder(
-                white_team=bindings[Archetype.WHITE],
-                black_team=bindings[Archetype.BLACK],
+            entry[key] = team
+        
+        # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
+        
+        # The client wants a safe TeamBinder.
+        if prime_extract.recipient_wants_model:
+            model = TeamBinder(
+                white_team=entry[Archetype.WHITE],
+                black_team=entry[Archetype.BLACK],
+            )
+            payload = TeamBinderCarrier(model=model)
+            return ValidationResult.success(payload)
+        # Otherwise, the client is a TeamBinderBuilder that needs a Blueprint.
+        payload = TeamBinderCarrier(
+            blueprint=TeamBinderBlueprint(
+                white_team=entry[Archetype.WHITE],
+                black_team=entry[Archetype.BLACK],
             )
         )
+        return ValidationResult.success(payload)
 
     
     

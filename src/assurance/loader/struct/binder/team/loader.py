@@ -13,12 +13,13 @@ from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
 from assurance import BinderLoader, TeamBinderValidatorToolkit
-from domain import TeamBinder
+from domain import TeamBinder, TeamBinderPrimeExtract
 from err import (
-    TeamBinderConsistencyException, TeamBinderEmptyException, TeamBinderLoaderException,
-    TeamBinderValidationRequestNullException
+    TeamBinderCarrierEmptyException, TeamBinderConsistencyException,
+    TeamBinderLoaderException, TeamBinderValidationRequestNullException
 )
 from exchange import TeamBinderValidationRequest
+from transit import TeamBinderCarrier
 
 from util import LoggingLevelRouter
 
@@ -61,9 +62,9 @@ class TeamBinderLoader(BinderLoader[TeamBinder]):
         return cast(TeamBinderValidatorToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[TeamBinder]:
+    def execute(self, candidate: Any) -> ValidationResult[TeamBinderPrimeExtract]:
         """
-        Model the TeamBinderBlueprint to validate the candidate.
+        Extract the TeamBinderBlueprint to validate the candidate.
 
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
@@ -71,15 +72,15 @@ class TeamBinderLoader(BinderLoader[TeamBinder]):
                 -   The candidate is null or not a TeamBinderValidatorRequest.
                 -   The request payload is either:
                         -   Null
-                        -   Not a TeamBinder
-                        -   An empty TeamBinder.
-                -   A blueprint cannot be modeled from the carrier.
-            2.  Otherwise, pack the original carrier and the blueprint in a TeamBinder
-                for the success result.
+                        -   Not a TeamBinderCarrier
+                        -   An empty TeamBinderCarrier.
+                -   A blueprint cannot be extracted from the carrier.
+            2.  Otherwise, pack the original carrier and the blueprint in a
+                TeamBinderPrimeExtract for the success result.
         Args:
             candidate: Any
         Returns:
-            ValidationResult[TeamBinder]
+            ValidationResult[TeamBinderPrimeExtract]
         Raises:
             TeamBinderLoaderException
         """
@@ -106,12 +107,12 @@ class TeamBinderLoader(BinderLoader[TeamBinder]):
         request = cast(Type[TeamBinderValidationRequest], priming.payload)
         
         # Handle the case that request.item is the wrong carrier type.
-        model_validation = self.toolkit.priming_validator.execute(
+        carrier_validation = self.toolkit.priming_validator.execute(
             candidate=request.item,
-            target_model=self.toolkit.types.model,
-            null_exception=self.toolkit.nulls.model,
+            target_model=self.toolkit.types.carrier,
+            null_exception=self.toolkit.nulls.carrier,
         )
-        if model_validation.is_failure:
+        if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 TeamBinderLoaderException(
@@ -119,10 +120,47 @@ class TeamBinderLoader(BinderLoader[TeamBinder]):
                     cls_name=self.__class__.__name__,
                     msg=TeamBinderLoaderException.MSG,
                     err_code=TeamBinderLoaderException.ERR_CODE,
-                    ex=model_validation.exception,
+                    ex=carrier_validation.exception,
                 )
             )
-        # --- Cast model_validation payload to carrier then model blueprint. ---#
-        model = cast(TeamBinder, model_validation.payload)
+        # --- Cast carrier_validation payload to carrier then extract blueprint. ---#
+        carrier = cast(TeamBinderCarrier, carrier_validation.payload)
+        blueprint = carrier.extract_blueprint()
+        
+        # Handle the case that the blueprint is null.
+        if blueprint is None:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TeamBinderLoaderException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TeamBinderLoaderException.MSG,
+                    err_code=TeamBinderLoaderException.ERR_CODE,
+                    ex=TeamBinderCarrierEmptyException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=TeamBinderCarrierEmptyException.MSG,
+                        err_code=TeamBinderCarrierEmptyException.ERR_CODE,
+                    ),
+                )
+            )
+        # Handle the case that the blueprint has an inconsistency.
+        if blueprint.is_not_consistent:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TeamBinderLoaderException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TeamBinderLoaderException.MSG,
+                    err_code=TeamBinderLoaderException.ERR_CODE,
+                    ex=TeamBinderConsistencyException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=TeamBinderConsistencyException.MSG,
+                        err_code=TeamBinderConsistencyException.ERR_CODE,
+                    ),
+                )
+            )
         # --- Send the work product. ---#
-        return ValidationResult.success(model)
+        extract = TeamBinderPrimeExtract(reference=carrier, blueprint=blueprint)
+        return ValidationResult.success(extract)

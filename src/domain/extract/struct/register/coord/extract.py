@@ -1,4 +1,4 @@
-# src/domain/extract/struct/register/coord.extract.py
+# src/domain/extract/struct/register/coord/extract.py
 
 """
 Module: domain.extract.struct.register.coord.extract

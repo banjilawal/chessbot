@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== ARTIFACT.RESPONSE.VALIDATION.STRUCT PACKAGE ===========#
 
 # Packages
+from .binder import *
 from .chart import *
 from .register import *
 

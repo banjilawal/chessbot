@@ -1,4 +1,4 @@
-# src/domain/extract/struct/register/vector.extract.py
+# src/domain/extract/struct/register/vector/extract.py
 
 """
 Module: domain.extract.struct.register.vector.extract

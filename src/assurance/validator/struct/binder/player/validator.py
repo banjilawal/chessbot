@@ -13,7 +13,10 @@ from typing import Any, Dict, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import BinderValidator, PlayerBinderLoader, PlayerBinderValidatorToolkit
-from domain import Archetype, Player, PlayerBinder, PlayerBinderBlueprint, PlayerBinderPrimeExtract
+from domain import (
+    Archetype, Player, PlayerBinder, PlayerBinderBlueprint,
+    PlayerBinderPrimeExtract
+)
 from err import PlayerBinderCarrierEmptyException, PlayerBinderValidatorException
 from exchange import PlayerValidationRequest
 from transit import PlayerBinderCarrier, PlayerCarrier

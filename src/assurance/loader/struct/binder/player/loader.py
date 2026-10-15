@@ -15,8 +15,8 @@ from artifcat import ValidationResult
 from assurance import BinderLoader, PlayerBinderValidatorToolkit
 from domain import PlayerBinder, PlayerBinderPrimeExtract
 from err import (
-    PlayerBinderCarrierEmptyException, PlayerBinderConsistencyException, PlayerBinderLoaderException,
-    PlayerBinderValidationRequestNullException
+    PlayerBinderCarrierEmptyException, PlayerBinderConsistencyException,
+    PlayerBinderLoaderException, PlayerBinderValidationRequestNullException
 )
 from exchange import PlayerBinderValidationRequest
 from transit import PlayerBinderCarrier
@@ -75,8 +75,8 @@ class PlayerBinderLoader(BinderLoader[PlayerBinder]):
                         -   Not a PlayerBinderCarrier
                         -   An empty PlayerBinderCarrier.
                 -   A blueprint cannot be extracted from the carrier.
-            2.  Otherwise, pack the original carrier and the blueprint in a PlayerBinderPrimeExtract
-                for the success result.
+            2.  Otherwise, pack the original carrier and the blueprint in a
+                PlayerBinderPrimeExtract for the success result.
         Args:
             candidate: Any
         Returns:

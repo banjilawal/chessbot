@@ -1,4 +1,4 @@
-# src/domain/extract/struct/register/square.extract.py
+# src/domain/extract/struct/register/square/extract.py
 
 """
 Module: domain.extract.struct.register.square.extract

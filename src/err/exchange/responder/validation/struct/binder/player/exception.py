@@ -1,7 +1,7 @@
-# src/err/exchange/responder/validation/struct/binder/team/exception.py
+# src/err/exchange/responder/validation/struct/binder/player/exception.py
 
 """
-Module: err.exchange.responder.validation.struct.binder.team.exception
+Module: err.exchange.responder.validation.struct.binder.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -15,12 +15,12 @@ from artifcat import MethodResultType
 from err import BinderValidationResponderException
 
 __all__ = [
-    # ======================# TEAM_BINDER_VALIDATION_RESPONDER_FAILURE #======================#
-    "TeamBinderValidationResponderException",
+    # ======================# PLAYER_BINDER_VALIDATION_RESPONDER_FAILURE #======================#
+    "PlayerBinderValidationResponderException",
 ]
 
-# ======================# TEAM_BINDER_VALIDATION_RESPONDER_FAILURE #======================#
-class TeamBinderValidationResponderException(
+# ======================# PLAYER_BINDER_VALIDATION_RESPONDER_FAILURE #======================#
+class PlayerBinderValidationResponderException(
     BinderValidationResponderException
 ):
     """
@@ -28,7 +28,7 @@ class TeamBinderValidationResponderException(
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a TeamBinderValidationResponder encountered and error.
+        1.  Indicating a PlayerBinderValidationResponder encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -45,8 +45,8 @@ class TeamBinderValidationResponderException(
     Super Class:
         BinderValidationResponderException
     """
-    MSG = "TeamBinderValidationResponder error."
-    ERR_CODE = "TEAM_BINDER_VALIDATION_RESPONDER_FAILURE"
+    MSG = "PlayerBinderValidationResponder error."
+    ERR_CODE = "PLAYER_BINDER_VALIDATION_RESPONDER_FAILURE"
     
     def __init__(
             self,

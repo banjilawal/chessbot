@@ -1,4 +1,4 @@
-# src/domain/extract/struct/binder/team.extract.py
+# src/domain/extract/struct/binder/team/extract.py
 
 """
 Module: domain.extract.struct.binder.team.extract

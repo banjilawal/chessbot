@@ -1,4 +1,4 @@
-# src/domain/extract/struct/binder/player.extract.py
+# src/domain/extract/struct/binder/player/extract.py
 
 """
 Module: domain.extract.struct.binder.player.extract
