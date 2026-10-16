@@ -15,7 +15,7 @@ from typing import Optional
 from assurance import ModelWrapperDependency
 from domain import Team
 from exchange import (
-    BoardValidationResponseWrapper, PlayerValidationResponseWrapper
+    BoardValidationServer, PlayerValidationServer
 )
 
 
@@ -36,13 +36,13 @@ class TeamWrapperDependency(ModelWrapperDependency[Team]):
     Super Class:
         ModelWrapperDependency
     """
-    _board: BoardValidationResponseWrapper
-    _owner: PlayerValidationResponseWrapper
+    _board: BoardValidationServer
+    _owner: PlayerValidationServer
     
     def __init__(
             self,
-            board: Optional[BoardValidationResponseWrapper] | None = None,
-            owner: Optional[PlayerValidationResponseWrapper] | None = None,
+            board: Optional[BoardValidationServer] | None = None,
+            owner: Optional[PlayerValidationServer] | None = None,
     ):
         """
         Args:
@@ -50,13 +50,13 @@ class TeamWrapperDependency(ModelWrapperDependency[Team]):
             owner: Optional[PlayerValidatorResponseWrapper]
         """
         super().__init__()
-        self._board = board or BoardValidationResponseWrapper()
-        self._owner = owner or PlayerValidationResponseWrapper()
+        self._board = board or BoardValidationServer()
+        self._owner = owner or PlayerValidationServer()
     
     @property
-    def board(self) -> BoardValidationResponseWrapper:
+    def board(self) -> BoardValidationServer:
         return self._board
     
     @property
-    def owner(self) -> PlayerValidationResponseWrapper:
+    def owner(self) -> PlayerValidationServer:
         return self._owner

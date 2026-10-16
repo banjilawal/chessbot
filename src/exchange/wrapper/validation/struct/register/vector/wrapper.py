@@ -13,15 +13,15 @@ from typing import Optional, cast
 
 from artifcat import VectorRegisterValidationResponse, ValidationResult
 from domain import Vector, VectorBlueprint, VectorRegister, VectorRegisterBlueprint
-from err import VectorRegisterValidationResponderException, VectorRegisterValidationResponseWrapperException, VectorCarrierEmptyException
+from err import VectorRegisterValidationResponderException, VectorRegisterValidationServerException, VectorCarrierEmptyException
 from exchange import (
-    VectorRegisterValidationResponder, RegisterValidationResponseWrapper, VectorRegisterValidationRequest
+    VectorRegisterValidationResponder, RegisterValidationServer, VectorRegisterValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class VectorRegisterValidationResponseWrapper(
-    RegisterValidationResponseWrapper[VectorRegister]
+class VectorRegisterValidationServer(
+    RegisterValidationServer[VectorRegister]
 ):
     """
     Role
@@ -46,7 +46,7 @@ class VectorRegisterValidationResponseWrapper(
             ) -> ValidationResult[VectorBlueprint]
 
     Super Class:
-        ValidationResponseWrapper
+        ValidationServer
     """
     
     def __init__(
@@ -82,7 +82,7 @@ class VectorRegisterValidationResponseWrapper(
         Result:
             ValidationResult[Vector]
         Raises:
-            VectorRegisterValidationResponseWrapperException
+            VectorRegisterValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -91,11 +91,11 @@ class VectorRegisterValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorRegisterValidationResponseWrapperException(
+                VectorRegisterValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorRegisterValidationResponseWrapperException.MSG,
-                    err_code=VectorRegisterValidationResponseWrapperException.ERR_CODE,
+                    msg=VectorRegisterValidationServerException.MSG,
+                    err_code=VectorRegisterValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )
@@ -138,7 +138,7 @@ class VectorRegisterValidationResponseWrapper(
         Result:
             ValidationResult[VectorBlueprint]
         Raises:
-            VectorRegisterValidationResponseWrapperException
+            VectorRegisterValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -147,11 +147,11 @@ class VectorRegisterValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorRegisterValidationResponseWrapperException(
+                VectorRegisterValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorRegisterValidationResponseWrapperException.MSG,
-                    err_code=VectorRegisterValidationResponseWrapperException.ERR_CODE,
+                    msg=VectorRegisterValidationServerException.MSG,
+                    err_code=VectorRegisterValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )

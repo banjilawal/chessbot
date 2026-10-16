@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidationResponseWrapperException
+from err import ModelValidationServerException
 
 __all__ = [
     # ======================# SQUARE_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-    "SquareValidationResponseWrapperException",
+    "SquareValidationServerException",
 ]
 
 # ======================# SQUARE_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-class SquareValidationResponseWrapperException(ModelValidationResponseWrapperException):
+class SquareValidationServerException(ModelValidationServerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a SquareValidationResponseWrapper encountered and error.
+        1.  Indicating a SquareValidationServer encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -41,9 +41,9 @@ class SquareValidationResponseWrapperException(ModelValidationResponseWrapperExc
     Provides:
 
     Super Class:
-        ModelValidationResponseWrapperException
+        ModelValidationServerException
     """
-    MSG = "SquareValidationResponseWrapper error."
+    MSG = "SquareValidationServer error."
     ERR_CODE = "SQUARE_VALIDATION_RESPONSE_WRAPPER_FAILURE"
     
     def __init__(

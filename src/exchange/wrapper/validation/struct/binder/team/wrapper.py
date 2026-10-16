@@ -13,15 +13,15 @@ from typing import Optional, cast
 
 from artifcat import TeamBinderValidationResponse, ValidationResult
 from domain import Team, TeamBlueprint, TeamBinder, TeamBinderBlueprint
-from err import TeamBinderValidationResponderException, TeamBinderValidationResponseWrapperException, TeamCarrierEmptyException
+from err import TeamBinderValidationResponderException, TeamBinderValidationServerException, TeamCarrierEmptyException
 from exchange import (
-    TeamBinderValidationResponder, BinderValidationResponseWrapper, TeamBinderValidationRequest
+    TeamBinderValidationResponder, BinderValidationServer, TeamBinderValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class TeamBinderValidationResponseWrapper(
-    BinderValidationResponseWrapper[TeamBinder]
+class TeamBinderValidationServer(
+    BinderValidationServer[TeamBinder]
 ):
     """
     Role
@@ -46,7 +46,7 @@ class TeamBinderValidationResponseWrapper(
             ) -> ValidationResult[TeamBlueprint]
 
     Super Class:
-        ValidationResponseWrapper
+        ValidationServer
     """
     
     def __init__(
@@ -82,7 +82,7 @@ class TeamBinderValidationResponseWrapper(
         Result:
             ValidationResult[Team]
         Raises:
-            TeamBinderValidationResponseWrapperException
+            TeamBinderValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -91,11 +91,11 @@ class TeamBinderValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamBinderValidationResponseWrapperException(
+                TeamBinderValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamBinderValidationResponseWrapperException.MSG,
-                    err_code=TeamBinderValidationResponseWrapperException.ERR_CODE,
+                    msg=TeamBinderValidationServerException.MSG,
+                    err_code=TeamBinderValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )
@@ -138,7 +138,7 @@ class TeamBinderValidationResponseWrapper(
         Result:
             ValidationResult[TeamBlueprint]
         Raises:
-            TeamBinderValidationResponseWrapperException
+            TeamBinderValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -147,11 +147,11 @@ class TeamBinderValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamBinderValidationResponseWrapperException(
+                TeamBinderValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamBinderValidationResponseWrapperException.MSG,
-                    err_code=TeamBinderValidationResponseWrapperException.ERR_CODE,
+                    msg=TeamBinderValidationServerException.MSG,
+                    err_code=TeamBinderValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )

@@ -12,23 +12,23 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import BinderValidationResponseWrapperException
+from err import BinderValidationServerException
 
 __all__ = [
     # ======================# TEAM_BINDER_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-    "TeamBinderValidationResponseWrapperException",
+    "TeamBinderValidationServerException",
 ]
 
 # ======================# TEAM_BINDER_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-class TeamBinderValidationResponseWrapperException(
-    BinderValidationResponseWrapperException
+class TeamBinderValidationServerException(
+    BinderValidationServerException
 ):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a TeamBinderValidationResponseWrapper encountered and error.
+        1.  Indicating a TeamBinderValidationServer encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -43,9 +43,9 @@ class TeamBinderValidationResponseWrapperException(
     Provides:
 
     Super Class:
-        BinderValidationResponseWrapperException
+        BinderValidationServerException
     """
-    MSG = "TeamBinderValidationResponseWrapper error."
+    MSG = "TeamBinderValidationServer error."
     ERR_CODE = "TEAM_BINDER_VALIDATION_RESPONSE_WRAPPER_FAILURE"
     
     def __init__(

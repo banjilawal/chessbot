@@ -13,15 +13,15 @@ from typing import Optional, cast
 
 from artifcat import GameValidationResponse, ValidationResult
 from domain import Game, GameBlueprint
-from err import GameValidationResponderException, GameValidationResponseWrapperException, GameCarrierEmptyException
+from err import GameValidationResponderException, GameValidationServerException, GameCarrierEmptyException
 from exchange import (
-    GameValidationResponder, ModelValidationResponseWrapper, GameValidationRequest
+    GameValidationResponder, ModelValidationServer, GameValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class GameValidationResponseWrapper(
-    ModelValidationResponseWrapper[Game]
+class GameValidationServer(
+    ModelValidationServer[Game]
 ):
     """
     Role
@@ -46,7 +46,7 @@ class GameValidationResponseWrapper(
             ) -> ValidationResult[GameBlueprint]
 
     Super Class:
-        ValidationResponseWrapper
+        ValidationServer
     """
     
     def __init__(
@@ -82,7 +82,7 @@ class GameValidationResponseWrapper(
         Result:
             ValidationResult[Game]
         Raises:
-            GameValidationResponseWrapperException
+            GameValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -91,11 +91,11 @@ class GameValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                GameValidationResponseWrapperException(
+                GameValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=GameValidationResponseWrapperException.MSG,
-                    err_code=GameValidationResponseWrapperException.ERR_CODE,
+                    msg=GameValidationServerException.MSG,
+                    err_code=GameValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )
@@ -138,7 +138,7 @@ class GameValidationResponseWrapper(
         Result:
             ValidationResult[GameBlueprint]
         Raises:
-            GameValidationResponseWrapperException
+            GameValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -147,11 +147,11 @@ class GameValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                GameValidationResponseWrapperException(
+                GameValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=GameValidationResponseWrapperException.MSG,
-                    err_code=GameValidationResponseWrapperException.ERR_CODE,
+                    msg=GameValidationServerException.MSG,
+                    err_code=GameValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )

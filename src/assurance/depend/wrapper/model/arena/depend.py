@@ -14,7 +14,7 @@ from typing import Optional
 
 from assurance import ModelWrapperDependency
 from domain import Arena
-from exchange import GameValidationResponseWrapper, PlayerValidationResponseWrapper
+from exchange import GameValidationServer, PlayerValidationServer
 
 
 class ArenaWrapperDependency(ModelWrapperDependency[Arena]):
@@ -26,8 +26,8 @@ class ArenaWrapperDependency(ModelWrapperDependency[Arena]):
         1.  Satisfy ArenaValidator's ResponseWrapper dependencies.
 
     Attributes:
-        game: GameValidationResponseWrapper
-        player: PlayerValidationResponseWrapper
+        game: GameValidationServer
+        player: PlayerValidationServer
 
     Provides:
 
@@ -35,13 +35,13 @@ class ArenaWrapperDependency(ModelWrapperDependency[Arena]):
         ModelWrapperDependency
     """
     
-    _game: GameValidationResponseWrapper
-    _player: PlayerValidationResponseWrapper
+    _game: GameValidationServer
+    _player: PlayerValidationServer
     
     def __init__(
             self,
-            game: Optional[GameValidationResponseWrapper] | None = None,
-            player: Optional[PlayerValidationResponseWrapper] | None = None,
+            game: Optional[GameValidationServer] | None = None,
+            player: Optional[PlayerValidationServer] | None = None,
     ):
         """
         Args:
@@ -49,13 +49,13 @@ class ArenaWrapperDependency(ModelWrapperDependency[Arena]):
             player: Optional[PlayerValidatorClient]
         """
         super().__init__()
-        self._game = game or GameValidationResponseWrapper()
-        self._player = player or PlayerValidationResponseWrapper()
+        self._game = game or GameValidationServer()
+        self._player = player or PlayerValidationServer()
         
     @property
-    def game(self) -> GameValidationResponseWrapper:
+    def game(self) -> GameValidationServer:
         return self._game
     
     @property
-    def player(self) -> PlayerValidationResponseWrapper:
+    def player(self) -> PlayerValidationServer:
         return self._player

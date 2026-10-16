@@ -12,23 +12,23 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ChartValidationResponseWrapperException
+from err import ChartValidationServerException
 
 __all__ = [
     # ======================# TOKEN_CHART_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-    "ParticipationValidationResponseWrapperException",
+    "ParticipationValidationServerException",
 ]
 
 # ======================# TOKEN_CHART_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-class ParticipationValidationResponseWrapperException(
-    ChartValidationResponseWrapperException
+class ParticipationValidationServerException(
+    ChartValidationServerException
 ):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a ParticipationValidationResponseWrapper encountered and error.
+        1.  Indicating a ParticipationValidationServer encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -43,9 +43,9 @@ class ParticipationValidationResponseWrapperException(
     Provides:
 
     Super Class:
-        ChartValidationResponseWrapperException
+        ChartValidationServerException
     """
-    MSG = "ParticipationValidationResponseWrapper error."
+    MSG = "ParticipationValidationServer error."
     ERR_CODE = "TOKEN_CHART_VALIDATION_RESPONSE_WRAPPER_FAILURE"
     
     def __init__(

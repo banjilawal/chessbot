@@ -13,15 +13,15 @@ from typing import Optional, cast
 
 from artifcat import WarningNodeValidationResponse, ValidationResult
 from domain import Warning, WarningBlueprint, EncounterWarningNode, EncounterWarningNodeBlueprint
-from err import WarningNodeValidationResponderException, WarningNodeValidationResponseWrapperException, EmptyWarningCarrierException
+from err import WarningNodeValidationResponderException, WarningNodeValidationServerException, EmptyWarningCarrierException
 from exchange import (
-    WarningNodeValidationResponder, NodeValidationResponseWrapper, EncounterWarningNodeValidationRequest
+    WarningNodeValidationResponder, NodeValidationServer, EncounterWarningNodeValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class EncounterWarningNodeValidationResponseWrapper(
-    NodeValidationResponseWrapper[EncounterWarningNode]
+class EncounterWarningNodeValidationServer(
+    NodeValidationServer[EncounterWarningNode]
 ):
     """
     Role
@@ -46,7 +46,7 @@ class EncounterWarningNodeValidationResponseWrapper(
             ) -> ValidationResult[WarningBlueprint]
 
     Super Class:
-        ValidationResponseWrapper
+        ValidationServer
     """
     
     def __init__(
@@ -82,7 +82,7 @@ class EncounterWarningNodeValidationResponseWrapper(
         Result:
             ValidationResult[Warning]
         Raises:
-            WarningNodeValidationResponseWrapperException
+            WarningNodeValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -91,11 +91,11 @@ class EncounterWarningNodeValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                WarningNodeValidationResponseWrapperException(
+                WarningNodeValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=WarningNodeValidationResponseWrapperException.MSG,
-                    err_code=WarningNodeValidationResponseWrapperException.ERR_CODE,
+                    msg=WarningNodeValidationServerException.MSG,
+                    err_code=WarningNodeValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )
@@ -138,7 +138,7 @@ class EncounterWarningNodeValidationResponseWrapper(
         Result:
             ValidationResult[WarningBlueprint]
         Raises:
-            WarningNodeValidationResponseWrapperException
+            WarningNodeValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -147,11 +147,11 @@ class EncounterWarningNodeValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                WarningNodeValidationResponseWrapperException(
+                WarningNodeValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=WarningNodeValidationResponseWrapperException.MSG,
-                    err_code=WarningNodeValidationResponseWrapperException.ERR_CODE,
+                    msg=WarningNodeValidationServerException.MSG,
+                    err_code=WarningNodeValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )

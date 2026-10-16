@@ -14,7 +14,7 @@ from typing import Optional
 
 from assurance import ModelWrapperDependency
 from domain import Coord
-from exchange import BoardValidationResponseWrapper
+from exchange import BoardValidationServer
 
 
 class CoordWrapperDependency(ModelWrapperDependency[Coord]):
@@ -26,7 +26,7 @@ class CoordWrapperDependency(ModelWrapperDependency[Coord]):
         1.  Satisfy CoordValidator's ResponseWrapper dependencies.
 
     Attributes:
-        board: BoardValidationResponseWrapper
+        board: BoardValidationServer
 
     Provides:
 
@@ -34,20 +34,20 @@ class CoordWrapperDependency(ModelWrapperDependency[Coord]):
         ModelWrapperDependency
     """
     
-    _board: BoardValidationResponseWrapper
+    _board: BoardValidationServer
     
     def __init__(
             self,
-            board: Optional[BoardValidationResponseWrapper] | None = None,
+            board: Optional[BoardValidationServer] | None = None,
     ):
         """
         Args:
             board: Optional[BoardValidatorClient]
         """
         super().__init__()
-        self._board = board or BoardValidationResponseWrapper()
+        self._board = board or BoardValidationServer()
     
     @property
-    def board(self) -> BoardValidationResponseWrapper:
+    def board(self) -> BoardValidationServer:
         return self._board
     

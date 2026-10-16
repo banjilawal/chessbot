@@ -14,17 +14,17 @@ from typing import Optional, cast
 from artifcat import FootstepValidationResponse, ValidationResult
 from domain import Footstep, FootstepBlueprint
 from err import (
-    FootstepValidationResponderException, FootstepValidationResponseWrapperException, 
+    FootstepValidationResponderException, FootstepValidationServerException, 
     FootstepCarrierEmptyException
 )
 from exchange import (
-    FootstepValidationResponder, ModelValidationResponseWrapper, FootstepValidationRequest
+    FootstepValidationResponder, ModelValidationServer, FootstepValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class FootstepValidationResponseWrapper(
-    ModelValidationResponseWrapper[Footstep]
+class FootstepValidationServer(
+    ModelValidationServer[Footstep]
 ):
     """
     Role
@@ -49,7 +49,7 @@ class FootstepValidationResponseWrapper(
             ) -> ValidationResult[FootstepBlueprint]
 
     Super Class:
-        ValidationResponseWrapper
+        ValidationServer
     """
     
     def __init__(
@@ -85,7 +85,7 @@ class FootstepValidationResponseWrapper(
         Result:
             ValidationResult[Footstep]
         Raises:
-            FootstepValidationResponseWrapperException
+            FootstepValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -94,11 +94,11 @@ class FootstepValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                FootstepValidationResponseWrapperException(
+                FootstepValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=FootstepValidationResponseWrapperException.MSG,
-                    err_code=FootstepValidationResponseWrapperException.ERR_CODE,
+                    msg=FootstepValidationServerException.MSG,
+                    err_code=FootstepValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )
@@ -141,7 +141,7 @@ class FootstepValidationResponseWrapper(
         Result:
             ValidationResult[FootstepBlueprint]
         Raises:
-            FootstepValidationResponseWrapperException
+            FootstepValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -150,11 +150,11 @@ class FootstepValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                FootstepValidationResponseWrapperException(
+                FootstepValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=FootstepValidationResponseWrapperException.MSG,
-                    err_code=FootstepValidationResponseWrapperException.ERR_CODE,
+                    msg=FootstepValidationServerException.MSG,
+                    err_code=FootstepValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )

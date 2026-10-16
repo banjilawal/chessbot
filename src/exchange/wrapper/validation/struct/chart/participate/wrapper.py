@@ -13,13 +13,13 @@ from typing import Optional, cast
 
 from artifcat import ValidationResult
 from domain import Participation, ParticipationBlueprint
-from err import ParticipationValidationResponseWrapperException
-from exchange import ChartValidationResponseWrapper, ParticipationValidationRequest, ParticipationValidationResponder
+from err import ParticipationValidationServerException
+from exchange import ChartValidationServer, ParticipationValidationRequest, ParticipationValidationResponder
 from util import LoggingLevelRouter
 
 
-class ParticipationValidationResponseWrapper(
-    ChartValidationResponseWrapper[Participation]
+class ParticipationValidationServer(
+    ChartValidationServer[Participation]
 ):
     """
     Role
@@ -44,7 +44,7 @@ class ParticipationValidationResponseWrapper(
             ) -> ValidationResult[TokenBlueprint]
 
     Super Class:
-        ValidationResponseWrapper
+        ValidationServer
     """
     
     def __init__(
@@ -80,7 +80,7 @@ class ParticipationValidationResponseWrapper(
         Result:
             ValidationResult[Token]
         Raises:
-            ParticipationValidationResponseWrapperException
+            ParticipationValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -89,11 +89,11 @@ class ParticipationValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ParticipationValidationResponseWrapperException(
+                ParticipationValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ParticipationValidationResponseWrapperException.MSG,
-                    err_code=ParticipationValidationResponseWrapperException.ERR_CODE,
+                    msg=ParticipationValidationServerException.MSG,
+                    err_code=ParticipationValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )
@@ -136,7 +136,7 @@ class ParticipationValidationResponseWrapper(
         Result:
             ValidationResult[TokenBlueprint]
         Raises:
-            ParticipationValidationResponseWrapperException
+            ParticipationValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -145,11 +145,11 @@ class ParticipationValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ParticipationValidationResponseWrapperException(
+                ParticipationValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ParticipationValidationResponseWrapperException.MSG,
-                    err_code=ParticipationValidationResponseWrapperException.ERR_CODE,
+                    msg=ParticipationValidationServerException.MSG,
+                    err_code=ParticipationValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )

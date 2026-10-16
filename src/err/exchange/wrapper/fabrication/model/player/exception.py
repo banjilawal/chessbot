@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidationResponseWrapperException
+from err import ModelValidationServerException
 
 __all__ = [
     # ======================# PLAYER_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-    "PlayerValidationResponseWrapperException",
+    "PlayerValidationServerException",
 ]
 
 # ======================# PLAYER_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-class PlayerValidationResponseWrapperException(ModelValidationResponseWrapperException):
+class PlayerValidationServerException(ModelValidationServerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a PlayerValidationResponseWrapper encountered and error.
+        1.  Indicating a PlayerValidationServer encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -41,9 +41,9 @@ class PlayerValidationResponseWrapperException(ModelValidationResponseWrapperExc
     Provides:
 
     Super Class:
-        ModelValidationResponseWrapperException
+        ModelValidationServerException
     """
-    MSG = "PlayerValidationResponseWrapper error."
+    MSG = "PlayerValidationServer error."
     ERR_CODE = "PLAYER_VALIDATION_RESPONSE_WRAPPER_FAILURE"
     
     def __init__(

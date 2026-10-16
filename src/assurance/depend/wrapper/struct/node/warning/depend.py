@@ -14,7 +14,7 @@ from typing import Optional
 
 from assurance import NodeDependency
 from domain import EncounterWarningNode
-from exchange import EncounterValidationResponseWrapper
+from exchange import EncounterValidationServer
 
 
 class EncounterWarningNodeDependency(NodeDependency[EncounterWarningNode]):
@@ -27,26 +27,26 @@ class EncounterWarningNodeDependency(NodeDependency[EncounterWarningNode]):
             upstream relational partners attributes.
 
     Attributes:
-        encounter: EncounterValidationResponseWrapper
+        encounter: EncounterValidationServer
 
     Provides:
 
     Super Class:
         NodeDependency
     """
-    _encounter: EncounterValidationResponseWrapper
+    _encounter: EncounterValidationServer
     
     def __init__(
             self,
-            encounter: Optional[EncounterValidationResponseWrapper] | None = None,
+            encounter: Optional[EncounterValidationServer] | None = None,
     ):
         """
         Args:
-            encounter: Optional[EncounterValidationResponseWrapper]
+            encounter: Optional[EncounterValidationServer]
         """
         super().__init__()
-        self._encounter = encounter or EncounterValidationResponseWrapper()
+        self._encounter = encounter or EncounterValidationServer()
         
     @property
-    def encounter(self) -> EncounterValidationResponseWrapper:
+    def encounter(self) -> EncounterValidationServer:
         return self._encounter

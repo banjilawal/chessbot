@@ -13,15 +13,15 @@ from typing import Optional, cast
 
 from artifcat import SquareValidationResponse, ValidationResult
 from domain import Square, SquareBlueprint
-from err import SquareValidationResponderException, SquareValidationResponseWrapperException, SquareCarrierEmptyException
+from err import SquareValidationResponderException, SquareValidationServerException, SquareCarrierEmptyException
 from exchange import (
-    SquareValidationResponder, ModelValidationResponseWrapper, SquareValidationRequest
+    SquareValidationResponder, ModelValidationServer, SquareValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class SquareValidationResponseWrapper(
-    ModelValidationResponseWrapper[Square]
+class SquareValidationServer(
+    ModelValidationServer[Square]
 ):
     """
     Role
@@ -46,7 +46,7 @@ class SquareValidationResponseWrapper(
             ) -> ValidationResult[SquareBlueprint]
 
     Super Class:
-        ValidationResponseWrapper
+        ValidationServer
     """
     
     def __init__(
@@ -82,7 +82,7 @@ class SquareValidationResponseWrapper(
         Result:
             ValidationResult[Square]
         Raises:
-            SquareValidationResponseWrapperException
+            SquareValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -91,11 +91,11 @@ class SquareValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareValidationResponseWrapperException(
+                SquareValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SquareValidationResponseWrapperException.MSG,
-                    err_code=SquareValidationResponseWrapperException.ERR_CODE,
+                    msg=SquareValidationServerException.MSG,
+                    err_code=SquareValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )
@@ -138,7 +138,7 @@ class SquareValidationResponseWrapper(
         Result:
             ValidationResult[SquareBlueprint]
         Raises:
-            SquareValidationResponseWrapperException
+            SquareValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -147,11 +147,11 @@ class SquareValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareValidationResponseWrapperException(
+                SquareValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SquareValidationResponseWrapperException.MSG,
-                    err_code=SquareValidationResponseWrapperException.ERR_CODE,
+                    msg=SquareValidationServerException.MSG,
+                    err_code=SquareValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )

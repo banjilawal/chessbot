@@ -13,15 +13,15 @@ from typing import Optional, cast
 
 from artifcat import AccountValidationResponse, ValidationResult
 from domain import Account, AccountBlueprint
-from err import AccountValidationResponderException, AccountValidationResponseWrapperException, EmptyAccountCarrierException
+from err import AccountValidationResponderException, AccountValidationServerException, EmptyAccountCarrierException
 from exchange import (
-    AccountValidationResponder, ModelValidationResponseWrapper, AccountValidationRequest
+    AccountValidationResponder, ModelValidationServer, AccountValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class AccountValidationResponseWrapper(
-    ModelValidationResponseWrapper[Account]
+class AccountValidationServer(
+    ModelValidationServer[Account]
 ):
     """
     Role
@@ -46,7 +46,7 @@ class AccountValidationResponseWrapper(
             ) -> ValidationResult[AccountBlueprint]
 
     Super Class:
-        ValidationResponseWrapper
+        ValidationServer
     """
     
     def __init__(
@@ -82,7 +82,7 @@ class AccountValidationResponseWrapper(
         Result:
             ValidationResult[Account]
         Raises:
-            AccountValidationResponseWrapperException
+            AccountValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -91,11 +91,11 @@ class AccountValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                AccountValidationResponseWrapperException(
+                AccountValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountValidationResponseWrapperException.MSG,
-                    err_code=AccountValidationResponseWrapperException.ERR_CODE,
+                    msg=AccountValidationServerException.MSG,
+                    err_code=AccountValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )
@@ -138,7 +138,7 @@ class AccountValidationResponseWrapper(
         Result:
             ValidationResult[AccountBlueprint]
         Raises:
-            AccountValidationResponseWrapperException
+            AccountValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -147,11 +147,11 @@ class AccountValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                AccountValidationResponseWrapperException(
+                AccountValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountValidationResponseWrapperException.MSG,
-                    err_code=AccountValidationResponseWrapperException.ERR_CODE,
+                    msg=AccountValidationServerException.MSG,
+                    err_code=AccountValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )

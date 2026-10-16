@@ -12,23 +12,23 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import BinderValidationResponseWrapperException
+from err import BinderValidationServerException
 
 __all__ = [
     # ======================# PLAYER_BINDER_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-    "PlayerBinderValidationResponseWrapperException",
+    "PlayerBinderValidationServerException",
 ]
 
 # ======================# PLAYER_BINDER_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-class PlayerBinderValidationResponseWrapperException(
-    BinderValidationResponseWrapperException
+class PlayerBinderValidationServerException(
+    BinderValidationServerException
 ):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a PlayerBinderValidationResponseWrapper encountered and error.
+        1.  Indicating a PlayerBinderValidationServer encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -43,9 +43,9 @@ class PlayerBinderValidationResponseWrapperException(
     Provides:
 
     Super Class:
-        BinderValidationResponseWrapperException
+        BinderValidationServerException
     """
-    MSG = "PlayerBinderValidationResponseWrapper error."
+    MSG = "PlayerBinderValidationServer error."
     ERR_CODE = "PLAYER_BINDER_VALIDATION_RESPONSE_WRAPPER_FAILURE"
     
     def __init__(

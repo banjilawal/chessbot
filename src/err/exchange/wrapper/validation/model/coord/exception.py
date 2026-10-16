@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidationResponseWrapperException
+from err import ModelValidationServerException
 
 __all__ = [
     # ======================# COORD_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-    "CoordValidationResponseWrapperException",
+    "CoordValidationServerException",
 ]
 
 # ======================# COORD_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-class CoordValidationResponseWrapperException(ModelValidationResponseWrapperException):
+class CoordValidationServerException(ModelValidationServerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a CoordValidationResponseWrapper encountered and error.
+        1.  Indicating a CoordValidationServer encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -41,9 +41,9 @@ class CoordValidationResponseWrapperException(ModelValidationResponseWrapperExce
     Provides:
 
     Super Class:
-        ModelValidationResponseWrapperException
+        ModelValidationServerException
     """
-    MSG = "CoordValidationResponseWrapper error."
+    MSG = "CoordValidationServer error."
     ERR_CODE = "COORD_VALIDATION_RESPONSE_WRAPPER_FAILURE"
     
     def __init__(

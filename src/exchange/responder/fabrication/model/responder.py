@@ -19,11 +19,7 @@ from util import LoggingLevelRouter
 
 T = TypeVar("T",)
 
-class ModelBuildResponder(
-    BuildResponder[T],
-    ABC,
-    Generic[T],
-):
+class ModelBuildResponder(BuildResponder[T], ABC, Generic[T]):
     """
     Role
         - Mediator

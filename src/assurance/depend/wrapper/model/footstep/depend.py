@@ -14,7 +14,7 @@ from typing import Optional
 
 from assurance import ModelDependency
 from domain import Footstep
-from exchange import CoordValidationResponseWrapper
+from exchange import CoordValidationServer
 
 
 class FootstepDependency(ModelDependency[Footstep]):
@@ -27,26 +27,26 @@ class FootstepDependency(ModelDependency[Footstep]):
             upstream relational partners attributes.
 
     Attributes:
-        coord: CoordValidationResponseWrapper
+        coord: CoordValidationServer
 
     Provides:
 
     Super Class:
         ModelDependency
     """
-    _coord: CoordValidationResponseWrapper
+    _coord: CoordValidationServer
     
     def __init__(
             self,
-            coord: Optional[CoordValidationResponseWrapper] | None = None,
+            coord: Optional[CoordValidationServer] | None = None,
     ):
         """
         Args:
-            coord: Optional[CoordValidationResponseWrapper]
+            coord: Optional[CoordValidationServer]
         """
         super().__init__()
-        self._coord = coord or CoordValidationResponseWrapper()
+        self._coord = coord or CoordValidationServer()
         
     @property
-    def coord(self) -> CoordValidationResponseWrapper:
+    def coord(self) -> CoordValidationServer:
         return self._coord

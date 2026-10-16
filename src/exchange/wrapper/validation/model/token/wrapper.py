@@ -13,15 +13,15 @@ from typing import Optional, cast
 
 from artifcat import TokenValidationResponse, ValidationResult
 from domain import Token, TokenBlueprint
-from err import TokenValidationResponderException, TokenValidationResponseWrapperException, TokenCarrierEmptyException
+from err import TokenValidationResponderException, TokenValidationServerException, TokenCarrierEmptyException
 from exchange import (
-    TokenValidationResponder, ModelValidationResponseWrapper, TokenValidationRequest
+    TokenValidationResponder, ModelValidationServer, TokenValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class TokenValidationResponseWrapper(
-    ModelValidationResponseWrapper[Token]
+class TokenValidationServer(
+    ModelValidationServer[Token]
 ):
     """
     Role
@@ -46,7 +46,7 @@ class TokenValidationResponseWrapper(
             ) -> ValidationResult[TokenBlueprint]
 
     Super Class:
-        ValidationResponseWrapper
+        ValidationServer
     """
     
     def __init__(
@@ -82,7 +82,7 @@ class TokenValidationResponseWrapper(
         Result:
             ValidationResult[Token]
         Raises:
-            TokenValidationResponseWrapperException
+            TokenValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -91,11 +91,11 @@ class TokenValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationResponseWrapperException(
+                TokenValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenValidationResponseWrapperException.MSG,
-                    err_code=TokenValidationResponseWrapperException.ERR_CODE,
+                    msg=TokenValidationServerException.MSG,
+                    err_code=TokenValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )
@@ -138,7 +138,7 @@ class TokenValidationResponseWrapper(
         Result:
             ValidationResult[TokenBlueprint]
         Raises:
-            TokenValidationResponseWrapperException
+            TokenValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -147,11 +147,11 @@ class TokenValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenValidationResponseWrapperException(
+                TokenValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenValidationResponseWrapperException.MSG,
-                    err_code=TokenValidationResponseWrapperException.ERR_CODE,
+                    msg=TokenValidationServerException.MSG,
+                    err_code=TokenValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )

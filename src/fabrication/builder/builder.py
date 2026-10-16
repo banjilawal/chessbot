@@ -15,7 +15,7 @@ from typing import Generic, TypeVar
 
 from artifcat import BuildResult
 from domain import Blueprint
-from fabrication import BuilderToolkit
+from fabrication import BuildLoader
 from util import LoggingLevelRouter
 
 
@@ -37,14 +37,14 @@ class Builder(ABC, Generic[T]):
 
     Super Class:
     """
-    _toolkit: BuilderToolkit
+    _toolkit: BuildLoader
     
-    def __init__(self, toolkit: BuilderToolkit[T]):
+    def __init__(self, toolkit: BuildLoader[T]):
         self._toolkit = toolkit
         
     
     @property
-    def toolkit(self) -> BuilderToolkit[T]:
+    def toolkit(self) -> BuildLoader[T]:
         return self._toolkit
     
     

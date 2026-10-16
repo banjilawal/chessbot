@@ -14,7 +14,7 @@ from typing import Optional
 
 from assurance import BinderDependency
 from domain import PlayerBinder
-from exchange import PlayerValidationResponseWrapper
+from exchange import PlayerValidationServer
 
 
 class PlayerBinderDependency(BinderDependency[PlayerBinder]):
@@ -27,26 +27,26 @@ class PlayerBinderDependency(BinderDependency[PlayerBinder]):
             upstream relational partners attributes.
 
     Attributes:
-        player: PlayerValidationResponseWrapper
+        player: PlayerValidationServer
 
     Provides:
 
     Super Class:
         BinderDependency
     """
-    _player: PlayerValidationResponseWrapper
+    _player: PlayerValidationServer
     
     def __init__(
             self,
-            player: Optional[PlayerValidationResponseWrapper] | None = None,
+            player: Optional[PlayerValidationServer] | None = None,
     ):
         """
         Args:
-            player: Optional[PlayerValidationResponseWrapper]
+            player: Optional[PlayerValidationServer]
         """
         super().__init__()
-        self._player = player or PlayerValidationResponseWrapper()
+        self._player = player or PlayerValidationServer()
         
     @property
-    def player(self) -> PlayerValidationResponseWrapper:
+    def player(self) -> PlayerValidationServer:
         return self._player

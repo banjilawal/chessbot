@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidationResponseWrapperException
+from err import ModelValidationServerException
 
 __all__ = [
     # ======================# SCALAR_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-    "ScalarValidationResponseWrapperException",
+    "ScalarValidationServerException",
 ]
 
 # ======================# SCALAR_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-class ScalarValidationResponseWrapperException(ModelValidationResponseWrapperException):
+class ScalarValidationServerException(ModelValidationServerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a ScalarValidationResponseWrapper encountered and error.
+        1.  Indicating a ScalarValidationServer encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -41,9 +41,9 @@ class ScalarValidationResponseWrapperException(ModelValidationResponseWrapperExc
     Provides:
 
     Super Class:
-        ModelValidationResponseWrapperException
+        ModelValidationServerException
     """
-    MSG = "ScalarValidationResponseWrapper error."
+    MSG = "ScalarValidationServer error."
     ERR_CODE = "SCALAR_VALIDATION_RESPONSE_WRAPPER_FAILURE"
     
     def __init__(

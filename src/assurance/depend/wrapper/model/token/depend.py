@@ -15,8 +15,8 @@ from typing import Optional
 from assurance import ModelWrapperDependency
 from domain import Token
 from exchange import (
-    AlertValidationResponseWrapper, RankValidationResponseWrapper,
-    SquareValidationResponseWrapper, TeamValidationResponseWrapper, FootstepValidationResponseWrapper
+    AlertValidationServer, RankValidationServer,
+    SquareValidationServer, TeamValidationServer, FootstepValidationServer
 )
 
 
@@ -29,62 +29,62 @@ class TokenWrapperDependency(ModelWrapperDependency[Token]):
         1.  Satisfy TokenValidator's ResponseWrapper dependencies.
 
     Attributes:
-        team: TeamValidationResponseWrapper
-        rank: RankValidationResponseWrapper
-        alert: AlertValidationResponseWrapper
-        square: SquareValidationResponseWrapper
-        footstep: FootstepValidationResponseWrapper
+        team: TeamValidationServer
+        rank: RankValidationServer
+        alert: AlertValidationServer
+        square: SquareValidationServer
+        footstep: FootstepValidationServer
         
     Provides:
 
     Super Class:
         ModelWrapperDependency
     """
-    _team: TeamValidationResponseWrapper
-    _rank: RankValidationResponseWrapper
-    _alert: AlertValidationResponseWrapper
-    _square: SquareValidationResponseWrapper
-    _footstep: FootstepValidationResponseWrapper
+    _team: TeamValidationServer
+    _rank: RankValidationServer
+    _alert: AlertValidationServer
+    _square: SquareValidationServer
+    _footstep: FootstepValidationServer
     
     def __init__(
             self,
-            team: Optional[TeamValidationResponseWrapper] | None = None,
-            rank: Optional[RankValidationResponseWrapper] | None = None,
-            alert: Optional[AlertValidationResponseWrapper] | None = None,
-            square: Optional[SquareValidationResponseWrapper] | None = None,
-            footstep: Optional[FootstepValidationResponseWrapper] | None = None,
+            team: Optional[TeamValidationServer] | None = None,
+            rank: Optional[RankValidationServer] | None = None,
+            alert: Optional[AlertValidationServer] | None = None,
+            square: Optional[SquareValidationServer] | None = None,
+            footstep: Optional[FootstepValidationServer] | None = None,
     ):
         """
         Args:
             team: Optional[TeamValidatorClient]
             rank: Optional[RankValidatorClient]
-            alert: Optional[AlertValidationResponseWrapper]
-            square: Optional[SquareValidationResponseWrapper]
-            footstep: Optional[FootstepValidationResponseWrapper]
+            alert: Optional[AlertValidationServer]
+            square: Optional[SquareValidationServer]
+            footstep: Optional[FootstepValidationServer]
         """
         super().__init__()
-        self._team = team or TeamValidationResponseWrapper()
-        self._rank = rank or RankValidationResponseWrapper()
-        self._alert = alert or AlertValidationResponseWrapper()
-        self._square = square or SquareValidationResponseWrapper()
-        self._footstep = footstep or FootstepValidationResponseWrapper()
+        self._team = team or TeamValidationServer()
+        self._rank = rank or RankValidationServer()
+        self._alert = alert or AlertValidationServer()
+        self._square = square or SquareValidationServer()
+        self._footstep = footstep or FootstepValidationServer()
     
     @property
-    def team(self) -> TeamValidationResponseWrapper:
+    def team(self) -> TeamValidationServer:
         return self._team
     
     @property
-    def rank(self) -> RankValidationResponseWrapper:
+    def rank(self) -> RankValidationServer:
         return self._rank
     
     @property
-    def alert(self) -> AlertValidationResponseWrapper:
+    def alert(self) -> AlertValidationServer:
         return self._alert
     
     @property
-    def square(self) -> SquareValidationResponseWrapper:
+    def square(self) -> SquareValidationServer:
         return self._square
     
     @property
-    def footstep(self) -> FootstepValidationResponseWrapper:
+    def footstep(self) -> FootstepValidationServer:
         return self._footstep

@@ -15,14 +15,14 @@ from typing import Generic, TypeVar, cast
 from artifcat import ValidationResult
 from domain import Chart, ChartBlueprint
 from exchange import (
-    ChartValidationRequest, ChartValidationResponder, StructValidationResponseWrapper,
+    ChartValidationRequest, ChartValidationResponder, StructValidationServer,
 )
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Chart")
 
-class ChartValidationResponseWrapper(
-    StructValidationResponseWrapper[T],
+class ChartValidationServer(
+    StructValidationServer[T],
     ABC,
     Generic[T]
 ):
@@ -51,7 +51,7 @@ class ChartValidationResponseWrapper(
             ) -> ValidationResult[Blueprint[T]]
 
     Super Class:
-        ValidationResponseWrapper
+        ValidationServer
     """
     
     def __init__(self, responder: ChartValidationResponder[T]):

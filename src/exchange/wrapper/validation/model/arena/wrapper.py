@@ -13,15 +13,15 @@ from typing import Optional, cast
 
 from artifcat import ArenaValidationResponse, ValidationResult
 from domain import Arena, ArenaBlueprint
-from err import ArenaValidationResponderException, ArenaValidationResponseWrapperException, EmptyArenaCarrierException
+from err import ArenaValidationResponderException, ArenaValidationServerException, EmptyArenaCarrierException
 from exchange import (
-    ArenaValidationResponder, ModelValidationResponseWrapper, ArenaValidationRequest
+    ArenaValidationResponder, ModelValidationServer, ArenaValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class ArenaValidationResponseWrapper(
-    ModelValidationResponseWrapper[Arena]
+class ArenaValidationServer(
+    ModelValidationServer[Arena]
 ):
     """
     Role
@@ -46,7 +46,7 @@ class ArenaValidationResponseWrapper(
             ) -> ValidationResult[ArenaBlueprint]
 
     Super Class:
-        ValidationResponseWrapper
+        ValidationServer
     """
     
     def __init__(
@@ -82,7 +82,7 @@ class ArenaValidationResponseWrapper(
         Result:
             ValidationResult[Arena]
         Raises:
-            ArenaValidationResponseWrapperException
+            ArenaValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -91,11 +91,11 @@ class ArenaValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ArenaValidationResponseWrapperException(
+                ArenaValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ArenaValidationResponseWrapperException.MSG,
-                    err_code=ArenaValidationResponseWrapperException.ERR_CODE,
+                    msg=ArenaValidationServerException.MSG,
+                    err_code=ArenaValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )
@@ -138,7 +138,7 @@ class ArenaValidationResponseWrapper(
         Result:
             ValidationResult[ArenaBlueprint]
         Raises:
-            ArenaValidationResponseWrapperException
+            ArenaValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -147,11 +147,11 @@ class ArenaValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ArenaValidationResponseWrapperException(
+                ArenaValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ArenaValidationResponseWrapperException.MSG,
-                    err_code=ArenaValidationResponseWrapperException.ERR_CODE,
+                    msg=ArenaValidationServerException.MSG,
+                    err_code=ArenaValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )

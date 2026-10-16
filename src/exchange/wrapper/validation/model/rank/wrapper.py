@@ -13,15 +13,15 @@ from typing import Optional, cast
 
 from artifcat import RankValidationResponse, ValidationResult
 from domain import Rank, RankBlueprint
-from err import RankValidationResponderException, RankValidationResponseWrapperException, RankCarrierEmptyException
+from err import RankValidationResponderException, RankValidationServerException, RankCarrierEmptyException
 from exchange import (
-    RankValidationResponder, ModelValidationResponseWrapper, RankValidationRequest
+    RankValidationResponder, ModelValidationServer, RankValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class RankValidationResponseWrapper(
-    ModelValidationResponseWrapper[Rank]
+class RankValidationServer(
+    ModelValidationServer[Rank]
 ):
     """
     Role
@@ -46,7 +46,7 @@ class RankValidationResponseWrapper(
             ) -> ValidationResult[RankBlueprint]
 
     Super Class:
-        ValidationResponseWrapper
+        ValidationServer
     """
     
     def __init__(
@@ -82,7 +82,7 @@ class RankValidationResponseWrapper(
         Result:
             ValidationResult[Rank]
         Raises:
-            RankValidationResponseWrapperException
+            RankValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -91,11 +91,11 @@ class RankValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                RankValidationResponseWrapperException(
+                RankValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=RankValidationResponseWrapperException.MSG,
-                    err_code=RankValidationResponseWrapperException.ERR_CODE,
+                    msg=RankValidationServerException.MSG,
+                    err_code=RankValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )
@@ -138,7 +138,7 @@ class RankValidationResponseWrapper(
         Result:
             ValidationResult[RankBlueprint]
         Raises:
-            RankValidationResponseWrapperException
+            RankValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -147,11 +147,11 @@ class RankValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                RankValidationResponseWrapperException(
+                RankValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=RankValidationResponseWrapperException.MSG,
-                    err_code=RankValidationResponseWrapperException.ERR_CODE,
+                    msg=RankValidationServerException.MSG,
+                    err_code=RankValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )

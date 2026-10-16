@@ -14,7 +14,7 @@ from typing import Optional
 
 from assurance import ModelWrapperDependency
 from domain import Maneuver
-from exchange import PathValidationResponseWrapper, TokenValidationResponseWrapper
+from exchange import PathValidationServer, TokenValidationServer
 
 
 class ManeuverWrapperDependency(ModelWrapperDependency[Maneuver]):
@@ -26,21 +26,21 @@ class ManeuverWrapperDependency(ModelWrapperDependency[Maneuver]):
         1.  Satisfy ManeuverValidator's ResponseWrapper dependencies.
 
     Attributes:
-        path: PathValidationResponseWrapper
-        token: TokenValidationResponseWrapper
+        path: PathValidationServer
+        token: TokenValidationServer
 
     Provides:
 
     Super Class:
         ModelWrapperDependency
     """
-    _path: PathValidationResponseWrapper
-    _token: TokenValidationResponseWrapper
+    _path: PathValidationServer
+    _token: TokenValidationServer
     
     def __init__(
             self,
-            path: Optional[PathValidationResponseWrapper] | None = None,
-            token: Optional[TokenValidationResponseWrapper] | None = None,
+            path: Optional[PathValidationServer] | None = None,
+            token: Optional[TokenValidationServer] | None = None,
     ):
         """
         Args:
@@ -48,13 +48,13 @@ class ManeuverWrapperDependency(ModelWrapperDependency[Maneuver]):
             token: Optional[TokenValidatorClient]
         """
         super().__init__()
-        self._path = path or PathValidationResponseWrapper()
-        self._token = token or TokenValidationResponseWrapper()
+        self._path = path or PathValidationServer()
+        self._token = token or TokenValidationServer()
         
     @property
-    def path(self) -> PathValidationResponseWrapper:
+    def path(self) -> PathValidationServer:
         return self._path
     
     @property
-    def token(self) -> TokenValidationResponseWrapper:
+    def token(self) -> TokenValidationServer:
         return self._token

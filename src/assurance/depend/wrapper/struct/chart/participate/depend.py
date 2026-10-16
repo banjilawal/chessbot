@@ -14,7 +14,7 @@ from typing import Optional
 
 from assurance import ChartDependency
 from domain import Participation
-from exchange import TokenValidationResponseWrapper
+from exchange import TokenValidationServer
 
 
 class ParticipationDependency(ChartDependency[Participation]):
@@ -27,26 +27,26 @@ class ParticipationDependency(ChartDependency[Participation]):
             upstream relational partners attributes.
 
     Attributes:
-        token: TokenValidationResponseWrapper
+        token: TokenValidationServer
 
     Provides:
 
     Super Class:
         ChartDependency
     """
-    _token: TokenValidationResponseWrapper
+    _token: TokenValidationServer
     
     def __init__(
             self,
-            token: Optional[TokenValidationResponseWrapper] | None = None,
+            token: Optional[TokenValidationServer] | None = None,
     ):
         """
         Args:
-            token: Optional[TokenValidationResponseWrapper]
+            token: Optional[TokenValidationServer]
         """
         super().__init__()
-        self._token = token or TokenValidationResponseWrapper()
+        self._token = token or TokenValidationServer()
         
     @property
-    def token(self) -> TokenValidationResponseWrapper:
+    def token(self) -> TokenValidationServer:
         return self._token

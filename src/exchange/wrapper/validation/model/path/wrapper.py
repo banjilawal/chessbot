@@ -13,15 +13,15 @@ from typing import Optional, cast
 
 from artifcat import PathValidationResponse, ValidationResult
 from domain import Path, PathBlueprint
-from err import PathValidationResponderException, PathValidationResponseWrapperException, PathCarrierEmptyException
+from err import PathValidationResponderException, PathValidationServerException, PathCarrierEmptyException
 from exchange import (
-    PathValidationResponder, ModelValidationResponseWrapper, PathValidationRequest
+    PathValidationResponder, ModelValidationServer, PathValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class PathValidationResponseWrapper(
-    ModelValidationResponseWrapper[Path]
+class PathValidationServer(
+    ModelValidationServer[Path]
 ):
     """
     Role
@@ -46,7 +46,7 @@ class PathValidationResponseWrapper(
             ) -> ValidationResult[PathBlueprint]
 
     Super Class:
-        ValidationResponseWrapper
+        ValidationServer
     """
     
     def __init__(
@@ -82,7 +82,7 @@ class PathValidationResponseWrapper(
         Result:
             ValidationResult[Path]
         Raises:
-            PathValidationResponseWrapperException
+            PathValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -91,11 +91,11 @@ class PathValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PathValidationResponseWrapperException(
+                PathValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PathValidationResponseWrapperException.MSG,
-                    err_code=PathValidationResponseWrapperException.ERR_CODE,
+                    msg=PathValidationServerException.MSG,
+                    err_code=PathValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )
@@ -138,7 +138,7 @@ class PathValidationResponseWrapper(
         Result:
             ValidationResult[PathBlueprint]
         Raises:
-            PathValidationResponseWrapperException
+            PathValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -147,11 +147,11 @@ class PathValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PathValidationResponseWrapperException(
+                PathValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PathValidationResponseWrapperException.MSG,
-                    err_code=PathValidationResponseWrapperException.ERR_CODE,
+                    msg=PathValidationServerException.MSG,
+                    err_code=PathValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )

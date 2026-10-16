@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidationResponseWrapperException
+from err import ModelValidationServerException
 
 __all__ = [
     # ======================# TEAM_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-    "TeamValidationResponseWrapperException",
+    "TeamValidationServerException",
 ]
 
 # ======================# TEAM_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-class TeamValidationResponseWrapperException(ModelValidationResponseWrapperException):
+class TeamValidationServerException(ModelValidationServerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a TeamValidationResponseWrapper encountered and error.
+        1.  Indicating a TeamValidationServer encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -41,9 +41,9 @@ class TeamValidationResponseWrapperException(ModelValidationResponseWrapperExcep
     Provides:
 
     Super Class:
-        ModelValidationResponseWrapperException
+        ModelValidationServerException
     """
-    MSG = "TeamValidationResponseWrapper error."
+    MSG = "TeamValidationServer error."
     ERR_CODE = "TEAM_VALIDATION_RESPONSE_WRAPPER_FAILURE"
     
     def __init__(

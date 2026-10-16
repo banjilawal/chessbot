@@ -13,15 +13,15 @@ from typing import Optional, cast
 
 from artifcat import AlertValidationResponse, ValidationResult
 from domain import Alert, AlertBlueprint
-from err import AlertValidationResponderException, AlertValidationResponseWrapperException, EmptyAlertCarrierException
+from err import AlertValidationResponderException, AlertValidationServerException, EmptyAlertCarrierException
 from exchange import (
-    AlertValidationResponder, ModelValidationResponseWrapper, AlertValidationRequest
+    AlertValidationResponder, ModelValidationServer, AlertValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class AlertValidationResponseWrapper(
-    ModelValidationResponseWrapper[Alert]
+class AlertValidationServer(
+    ModelValidationServer[Alert]
 ):
     """
     Role
@@ -46,7 +46,7 @@ class AlertValidationResponseWrapper(
             ) -> ValidationResult[AlertBlueprint]
 
     Super Class:
-        ValidationResponseWrapper
+        ValidationServer
     """
     
     def __init__(
@@ -82,7 +82,7 @@ class AlertValidationResponseWrapper(
         Result:
             ValidationResult[Alert]
         Raises:
-            AlertValidationResponseWrapperException
+            AlertValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -91,11 +91,11 @@ class AlertValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                AlertValidationResponseWrapperException(
+                AlertValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AlertValidationResponseWrapperException.MSG,
-                    err_code=AlertValidationResponseWrapperException.ERR_CODE,
+                    msg=AlertValidationServerException.MSG,
+                    err_code=AlertValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )
@@ -138,7 +138,7 @@ class AlertValidationResponseWrapper(
         Result:
             ValidationResult[AlertBlueprint]
         Raises:
-            AlertValidationResponseWrapperException
+            AlertValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -147,11 +147,11 @@ class AlertValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                AlertValidationResponseWrapperException(
+                AlertValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AlertValidationResponseWrapperException.MSG,
-                    err_code=AlertValidationResponseWrapperException.ERR_CODE,
+                    msg=AlertValidationServerException.MSG,
+                    err_code=AlertValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )

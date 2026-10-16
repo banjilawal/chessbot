@@ -15,14 +15,14 @@ from typing import Generic, TypeVar, cast
 from artifcat import ValidationResult
 from domain import Node, NodeBlueprint
 from exchange import (
-    NodeValidationRequest, NodeValidationResponder, StructValidationResponseWrapper,
+    NodeValidationRequest, NodeValidationResponder, StructValidationServer,
 )
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Node")
 
-class NodeValidationResponseWrapper(
-    StructValidationResponseWrapper[T],
+class NodeValidationServer(
+    StructValidationServer[T],
     ABC,
     Generic[T]
 ):
@@ -51,7 +51,7 @@ class NodeValidationResponseWrapper(
             ) -> ValidationResult[Blueprint[T]]
 
     Super Class:
-        ValidationResponseWrapper
+        ValidationServer
     """
     
     def __init__(self, responder: NodeValidationResponder[T]):

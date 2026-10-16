@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== EXCHANGE.RESPONDER PACKAGE ===========#
 
 # Packages
+from .fabrication import *
 from .validation import *
 
 # Modules

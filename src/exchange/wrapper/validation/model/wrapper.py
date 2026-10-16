@@ -15,14 +15,14 @@ from typing import Generic, TypeVar, cast
 from artifcat import ValidationResult
 from domain import Model, ModelBlueprint
 from exchange import (
-    ModelValidationRequest, ModelValidationResponder, ValidationResponseWrapper
+    ModelValidationRequest, ModelValidationResponder, ValidationServer
 )
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Model")
 
-class ModelValidationResponseWrapper(
-    ValidationResponseWrapper[T],
+class ModelValidationServer(
+    ValidationServer[T],
     ABC,
     Generic[T]
 ):
@@ -51,7 +51,7 @@ class ModelValidationResponseWrapper(
             ) -> ValidationResult[Blueprint[T]]
 
     Super Class:
-        ValidationResponseWrapper
+        ValidationServer
     """
     
     def __init__(self, responder: ModelValidationResponder[T]):

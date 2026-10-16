@@ -14,17 +14,17 @@ from typing import Optional, cast
 from artifcat import BoardValidationResponse, ValidationResult
 from domain import Board, BoardBlueprint
 from err import (
-    BoardValidationResponderException, BoardValidationResponseWrapperException,
+    BoardValidationResponderException, BoardValidationServerException,
     BoardCarrierEmptyException
 )
 from exchange import (
-    BoardValidationResponder, ModelValidationResponseWrapper, BoardValidationRequest
+    BoardValidationResponder, ModelValidationServer, BoardValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class BoardValidationResponseWrapper(
-    ModelValidationResponseWrapper[Board]
+class BoardValidationServer(
+    ModelValidationServer[Board]
 ):
     """
     Role
@@ -49,7 +49,7 @@ class BoardValidationResponseWrapper(
             ) -> ValidationResult[BoardBlueprint]
 
     Super Class:
-        ValidationResponseWrapper
+        ValidationServer
     """
     
     def __init__(
@@ -85,7 +85,7 @@ class BoardValidationResponseWrapper(
         Result:
             ValidationResult[Board]
         Raises:
-            BoardValidationResponseWrapperException
+            BoardValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -94,11 +94,11 @@ class BoardValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                BoardValidationResponseWrapperException(
+                BoardValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=BoardValidationResponseWrapperException.MSG,
-                    err_code=BoardValidationResponseWrapperException.ERR_CODE,
+                    msg=BoardValidationServerException.MSG,
+                    err_code=BoardValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )
@@ -141,7 +141,7 @@ class BoardValidationResponseWrapper(
         Result:
             ValidationResult[BoardBlueprint]
         Raises:
-            BoardValidationResponseWrapperException
+            BoardValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -150,11 +150,11 @@ class BoardValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                BoardValidationResponseWrapperException(
+                BoardValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=BoardValidationResponseWrapperException.MSG,
-                    err_code=BoardValidationResponseWrapperException.ERR_CODE,
+                    msg=BoardValidationServerException.MSG,
+                    err_code=BoardValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )

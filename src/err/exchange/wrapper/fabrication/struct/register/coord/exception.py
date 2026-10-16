@@ -12,23 +12,23 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import RegisterValidationResponseWrapperException
+from err import RegisterValidationServerException
 
 __all__ = [
     # ======================# COORD_REGISTER_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-    "CoordRegisterValidationResponseWrapperException",
+    "CoordRegisterValidationServerException",
 ]
 
 # ======================# COORD_REGISTER_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-class CoordRegisterValidationResponseWrapperException(
-    RegisterValidationResponseWrapperException
+class CoordRegisterValidationServerException(
+    RegisterValidationServerException
 ):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a CoordRegisterValidationResponseWrapper encountered and error.
+        1.  Indicating a CoordRegisterValidationServer encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -43,9 +43,9 @@ class CoordRegisterValidationResponseWrapperException(
     Provides:
 
     Super Class:
-        RegisterValidationResponseWrapperException
+        RegisterValidationServerException
     """
-    MSG = "CoordRegisterValidationResponseWrapper error."
+    MSG = "CoordRegisterValidationServer error."
     ERR_CODE = "COORD_REGISTER_VALIDATION_RESPONSE_WRAPPER_FAILURE"
     
     def __init__(

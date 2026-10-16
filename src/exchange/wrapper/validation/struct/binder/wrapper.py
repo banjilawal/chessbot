@@ -15,14 +15,14 @@ from typing import Generic, TypeVar, cast
 from artifcat import ValidationResult
 from domain import Binder, BinderBlueprint
 from exchange import (
-    BinderValidationRequest, BinderValidationResponder, StructValidationResponseWrapper,
+    BinderValidationRequest, BinderValidationResponder, StructValidationServer,
 )
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Binder")
 
-class BinderValidationResponseWrapper(
-    StructValidationResponseWrapper[T],
+class BinderValidationServer(
+    StructValidationServer[T],
     ABC,
     Generic[T]
 ):
@@ -51,7 +51,7 @@ class BinderValidationResponseWrapper(
             ) -> ValidationResult[Blueprint[T]]
 
     Super Class:
-        ValidationResponseWrapper
+        ValidationServer
     """
     
     def __init__(self, responder: BinderValidationResponder[T]):

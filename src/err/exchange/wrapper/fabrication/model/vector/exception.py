@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidationResponseWrapperException
+from err import ModelValidationServerException
 
 __all__ = [
     # ======================# VECTOR_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-    "VectorValidationResponseWrapperException",
+    "VectorValidationServerException",
 ]
 
 # ======================# VECTOR_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-class VectorValidationResponseWrapperException(ModelValidationResponseWrapperException):
+class VectorValidationServerException(ModelValidationServerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a VectorValidationResponseWrapper encountered and error.
+        1.  Indicating a VectorValidationServer encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -41,9 +41,9 @@ class VectorValidationResponseWrapperException(ModelValidationResponseWrapperExc
     Provides:
 
     Super Class:
-        ModelValidationResponseWrapperException
+        ModelValidationServerException
     """
-    MSG = "VectorValidationResponseWrapper error."
+    MSG = "VectorValidationServer error."
     ERR_CODE = "VECTOR_VALIDATION_RESPONSE_WRAPPER_FAILURE"
     
     def __init__(

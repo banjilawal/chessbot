@@ -14,4 +14,4 @@ from .vector import *
 from .warning import *
 
 # Modules
-from .wrapper import NodeValidationResponseWrapper
+from .wrapper import NodeValidationServer

@@ -13,15 +13,15 @@ from typing import Optional, cast
 
 from artifcat import CoordRegisterValidationResponse, ValidationResult
 from domain import Coord, CoordBlueprint, CoordRegister, CoordRegisterBlueprint
-from err import CoordRegisterValidationResponderException, CoordRegisterValidationResponseWrapperException, CoordCarrierEmptyException
+from err import CoordRegisterValidationResponderException, CoordRegisterValidationServerException, CoordCarrierEmptyException
 from exchange import (
-    CoordRegisterValidationResponder, RegisterValidationResponseWrapper, CoordRegisterValidationRequest
+    CoordRegisterValidationResponder, RegisterValidationServer, CoordRegisterValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class CoordRegisterValidationResponseWrapper(
-    RegisterValidationResponseWrapper[CoordRegister]
+class CoordRegisterValidationServer(
+    RegisterValidationServer[CoordRegister]
 ):
     """
     Role
@@ -46,7 +46,7 @@ class CoordRegisterValidationResponseWrapper(
             ) -> ValidationResult[CoordBlueprint]
 
     Super Class:
-        ValidationResponseWrapper
+        ValidationServer
     """
     
     def __init__(
@@ -82,7 +82,7 @@ class CoordRegisterValidationResponseWrapper(
         Result:
             ValidationResult[Coord]
         Raises:
-            CoordRegisterValidationResponseWrapperException
+            CoordRegisterValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -91,11 +91,11 @@ class CoordRegisterValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CoordRegisterValidationResponseWrapperException(
+                CoordRegisterValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CoordRegisterValidationResponseWrapperException.MSG,
-                    err_code=CoordRegisterValidationResponseWrapperException.ERR_CODE,
+                    msg=CoordRegisterValidationServerException.MSG,
+                    err_code=CoordRegisterValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )
@@ -138,7 +138,7 @@ class CoordRegisterValidationResponseWrapper(
         Result:
             ValidationResult[CoordBlueprint]
         Raises:
-            CoordRegisterValidationResponseWrapperException
+            CoordRegisterValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -147,11 +147,11 @@ class CoordRegisterValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CoordRegisterValidationResponseWrapperException(
+                CoordRegisterValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CoordRegisterValidationResponseWrapperException.MSG,
-                    err_code=CoordRegisterValidationResponseWrapperException.ERR_CODE,
+                    msg=CoordRegisterValidationServerException.MSG,
+                    err_code=CoordRegisterValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )

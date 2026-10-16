@@ -13,4 +13,4 @@ version: 0.0.2
 from .participate import *
 
 # Modules
-from .wrapper import ChartValidationResponseWrapper
+from .wrapper import ChartValidationServer

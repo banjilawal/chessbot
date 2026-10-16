@@ -14,7 +14,7 @@ from typing import Optional
 
 from assurance import ModelWrapperDependency
 from domain import Player
-from exchange import AccountValidationResponseWrapper, GameValidationResponseWrapper
+from exchange import AccountValidationServer, GameValidationServer
 
 
 class PlayerWrapperDependency(ModelWrapperDependency[Player]):
@@ -26,35 +26,35 @@ class PlayerWrapperDependency(ModelWrapperDependency[Player]):
         1.  Satisfy PlayerValidator's ResponseWrapper dependencies.
 
     Attributes:
-        game: GameValidationResponseWrapper
-        account: AccountValidationResponseWrapper
+        game: GameValidationServer
+        account: AccountValidationServer
     
     Provides:
 
     Super Class:
         ModelWrapperDependency
     """
-    _game: GameValidationResponseWrapper
-    _account: AccountValidationResponseWrapper
+    _game: GameValidationServer
+    _account: AccountValidationServer
     
     def __init__(
             self,
-            game: Optional[GameValidationResponseWrapper] | None = None,
-            account: Optional[AccountValidationResponseWrapper] | None = None,
+            game: Optional[GameValidationServer] | None = None,
+            account: Optional[AccountValidationServer] | None = None,
     ):
         """
         Args:
-            game: Optional[GameValidationResponseWrapper]
-            account: Optional[AccountValidationResponseWrapper]
+            game: Optional[GameValidationServer]
+            account: Optional[AccountValidationServer]
         """
         super().__init__()
-        self._game = game or GameValidationResponseWrapper()
-        self._account = account or AccountValidationResponseWrapper()
+        self._game = game or GameValidationServer()
+        self._account = account or AccountValidationServer()
         
     @property
-    def game(self) -> GameValidationResponseWrapper:
+    def game(self) -> GameValidationServer:
         return self._game
     
     @property
-    def account(self) -> AccountValidationResponseWrapper:
+    def account(self) -> AccountValidationServer:
         return self._account

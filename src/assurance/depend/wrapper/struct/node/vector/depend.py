@@ -14,7 +14,7 @@ from typing import Optional
 
 from assurance import NodeDependency
 from domain import VectorNode
-from exchange import VectorValidationResponseWrapper
+from exchange import VectorValidationServer
 
 
 class VectorNodeDependency(NodeDependency[VectorNode]):
@@ -27,26 +27,26 @@ class VectorNodeDependency(NodeDependency[VectorNode]):
             upstream relational partners attributes.
 
     Attributes:
-        vector: VectorValidationResponseWrapper
+        vector: VectorValidationServer
 
     Provides:
 
     Super Class:
         NodeDependency
     """
-    _vector: VectorValidationResponseWrapper
+    _vector: VectorValidationServer
     
     def __init__(
             self,
-            vector: Optional[VectorValidationResponseWrapper] | None = None,
+            vector: Optional[VectorValidationServer] | None = None,
     ):
         """
         Args:
-            vector: Optional[VectorValidationResponseWrapper]
+            vector: Optional[VectorValidationServer]
         """
         super().__init__()
-        self._vector = vector or VectorValidationResponseWrapper()
+        self._vector = vector or VectorValidationServer()
         
     @property
-    def vector(self) -> VectorValidationResponseWrapper:
+    def vector(self) -> VectorValidationServer:
         return self._vector

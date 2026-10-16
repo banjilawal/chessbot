@@ -12,24 +12,24 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import StructValidationResponseWrapperException
+from err import StructValidationServerException
 
 
 __all__ = [
     # ======================# BINDER_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-    "BinderValidationResponseWrapperException",
+    "BinderValidationServerException",
 ]
 
 # ======================# BINDER_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-class BinderValidationResponseWrapperException(
-    StructValidationResponseWrapperException
+class BinderValidationServerException(
+    StructValidationServerException
 ):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a BinderValidationResponseWrapper encountered and error.
+        1.  Indicating a BinderValidationServer encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -44,9 +44,9 @@ class BinderValidationResponseWrapperException(
     Provides:
 
     Super Class:
-        StructValidationResponseWrapperException
+        StructValidationServerException
     """
-    MSG = "BinderValidationResponseWrapper error."
+    MSG = "BinderValidationServer error."
     ERR_CODE = "BINDER_VALIDATION_RESPONSE_WRAPPER_FAILURE"
     
     def __init__(

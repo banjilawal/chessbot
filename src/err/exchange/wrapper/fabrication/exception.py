@@ -17,17 +17,17 @@ from err import ResponseWrapperException
 
 __all__ = [
     # ======================# VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-    "ValidationResponseWrapperException",
+    "ValidationServerException",
 ]
 
 # ======================# VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-class ValidationResponseWrapperException(ResponseWrapperException):
+class ValidationServerException(ResponseWrapperException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a ValidationResponseWrapper encountered and error.
+        1.  Indicating a ValidationServer encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class ValidationResponseWrapperException(ResponseWrapperException):
     Super Class:
         ResponseWrapperException
     """
-    MSG = "ValidationResponseWrapper error."
+    MSG = "ValidationServer error."
     ERR_CODE = "VALIDATION_RESPONSE_WRAPPER_FAILURE"
     
     def __init__(

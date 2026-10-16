@@ -14,7 +14,7 @@ from typing import Optional
 
 from assurance import BinderDependency
 from domain import TeamBinder
-from exchange import TeamValidationResponseWrapper
+from exchange import TeamValidationServer
 
 
 class TeamBinderDependency(BinderDependency[TeamBinder]):
@@ -27,26 +27,26 @@ class TeamBinderDependency(BinderDependency[TeamBinder]):
             upstream relational partners attributes.
 
     Attributes:
-        team: TeamValidationResponseWrapper
+        team: TeamValidationServer
 
     Provides:
 
     Super Class:
         BinderDependency
     """
-    _team: TeamValidationResponseWrapper
+    _team: TeamValidationServer
     
     def __init__(
             self,
-            team: Optional[TeamValidationResponseWrapper] | None = None,
+            team: Optional[TeamValidationServer] | None = None,
     ):
         """
         Args:
-            team: Optional[TeamValidationResponseWrapper]
+            team: Optional[TeamValidationServer]
         """
         super().__init__()
-        self._team = team or TeamValidationResponseWrapper()
+        self._team = team or TeamValidationServer()
         
     @property
-    def team(self) -> TeamValidationResponseWrapper:
+    def team(self) -> TeamValidationServer:
         return self._team

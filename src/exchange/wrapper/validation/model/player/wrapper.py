@@ -13,15 +13,15 @@ from typing import Optional, cast
 
 from artifcat import PlayerValidationResponse, ValidationResult
 from domain import Player, PlayerBlueprint
-from err import PlayerValidationResponderException, PlayerValidationResponseWrapperException, PlayerCarrierEmptyException
+from err import PlayerValidationResponderException, PlayerValidationServerException, PlayerCarrierEmptyException
 from exchange import (
-    PlayerValidationResponder, ModelValidationResponseWrapper, PlayerValidationRequest
+    PlayerValidationResponder, ModelValidationServer, PlayerValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class PlayerValidationResponseWrapper(
-    ModelValidationResponseWrapper[Player]
+class PlayerValidationServer(
+    ModelValidationServer[Player]
 ):
     """
     Role
@@ -46,7 +46,7 @@ class PlayerValidationResponseWrapper(
             ) -> ValidationResult[PlayerBlueprint]
 
     Super Class:
-        ValidationResponseWrapper
+        ValidationServer
     """
     
     def __init__(
@@ -82,7 +82,7 @@ class PlayerValidationResponseWrapper(
         Result:
             ValidationResult[Player]
         Raises:
-            PlayerValidationResponseWrapperException
+            PlayerValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -91,11 +91,11 @@ class PlayerValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PlayerValidationResponseWrapperException(
+                PlayerValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PlayerValidationResponseWrapperException.MSG,
-                    err_code=PlayerValidationResponseWrapperException.ERR_CODE,
+                    msg=PlayerValidationServerException.MSG,
+                    err_code=PlayerValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )
@@ -138,7 +138,7 @@ class PlayerValidationResponseWrapper(
         Result:
             ValidationResult[PlayerBlueprint]
         Raises:
-            PlayerValidationResponseWrapperException
+            PlayerValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -147,11 +147,11 @@ class PlayerValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PlayerValidationResponseWrapperException(
+                PlayerValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PlayerValidationResponseWrapperException.MSG,
-                    err_code=PlayerValidationResponseWrapperException.ERR_CODE,
+                    msg=PlayerValidationServerException.MSG,
+                    err_code=PlayerValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )

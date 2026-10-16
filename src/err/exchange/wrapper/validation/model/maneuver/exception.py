@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidationResponseWrapperException
+from err import ModelValidationServerException
 
 __all__ = [
     # ======================# MANEUVER_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-    "ManeuverValidationResponseWrapperException",
+    "ManeuverValidationServerException",
 ]
 
 # ======================# MANEUVER_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-class ManeuverValidationResponseWrapperException(ModelValidationResponseWrapperException):
+class ManeuverValidationServerException(ModelValidationServerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a ManeuverValidationResponseWrapper encountered and error.
+        1.  Indicating a ManeuverValidationServer encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -41,9 +41,9 @@ class ManeuverValidationResponseWrapperException(ModelValidationResponseWrapperE
     Provides:
 
     Super Class:
-        ModelValidationResponseWrapperException
+        ModelValidationServerException
     """
-    MSG = "ManeuverValidationResponseWrapper error."
+    MSG = "ManeuverValidationServer error."
     ERR_CODE = "MANEUVER_VALIDATION_RESPONSE_WRAPPER_FAILURE"
     
     def __init__(

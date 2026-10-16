@@ -12,24 +12,24 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ValidationResponseWrapperException
+from err import ValidationServerException
 
 
 __all__ = [
     # ======================# STRUCT_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-    "StructValidationResponseWrapperException",
+    "StructValidationServerException",
 ]
 
 # ======================# STRUCT_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-class StructValidationResponseWrapperException(
-    ValidationResponseWrapperException
+class StructValidationServerException(
+    ValidationServerException
 ):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a StructValidationResponseWrapper encountered and error.
+        1.  Indicating a StructValidationServer encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -44,9 +44,9 @@ class StructValidationResponseWrapperException(
     Provides:
 
     Super Class:
-        ValidationResponseWrapperException
+        ValidationServerException
     """
-    MSG = "StructValidationResponseWrapper error."
+    MSG = "StructValidationServer error."
     ERR_CODE = "STRUCT_VALIDATION_RESPONSE_WRAPPER_FAILURE"
     
     def __init__(

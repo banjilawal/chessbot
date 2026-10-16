@@ -12,23 +12,23 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidationResponseWrapperException
+from err import ModelValidationServerException
 
 __all__ = [
     # ======================# ALERT_TABLE_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-    "AlertValidationResponseWrapperException",
+    "AlertValidationServerException",
 ]
 
 # ======================# ALERT_TABLE_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-class AlertValidationResponseWrapperException(
-    ModelValidationResponseWrapperException
+class AlertValidationServerException(
+    ModelValidationServerException
 ):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an AlertValidationResponseWrapper encountered
+        1.  Indicating an AlertValidationServer encountered
             and error.
 
     Attributes:
@@ -44,9 +44,9 @@ class AlertValidationResponseWrapperException(
     Provides:
 
     Super Class:
-        ModelValidationResponseWrapperException
+        ModelValidationServerException
     """
-    MSG = "AlertValidationResponseWrapper error."
+    MSG = "AlertValidationServer error."
     ERR_CODE = "ALERT_TABLE_VALIDATION_RESPONSE_WRAPPER_FAILURE"
     
     def __init__(

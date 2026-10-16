@@ -13,15 +13,15 @@ from typing import Optional, cast
 
 from artifcat import ManeuverValidationResponse, ValidationResult
 from domain import Maneuver, ManeuverBlueprint
-from err import ManeuverValidationResponderException, ManeuverValidationResponseWrapperException, ManeuverCarrierEmptyException
+from err import ManeuverValidationResponderException, ManeuverValidationServerException, ManeuverCarrierEmptyException
 from exchange import (
-    ManeuverValidationResponder, ModelValidationResponseWrapper, ManeuverValidationRequest
+    ManeuverValidationResponder, ModelValidationServer, ManeuverValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class ManeuverValidationResponseWrapper(
-    ModelValidationResponseWrapper[Maneuver]
+class ManeuverValidationServer(
+    ModelValidationServer[Maneuver]
 ):
     """
     Role
@@ -46,7 +46,7 @@ class ManeuverValidationResponseWrapper(
             ) -> ValidationResult[ManeuverBlueprint]
 
     Super Class:
-        ValidationResponseWrapper
+        ValidationServer
     """
     
     def __init__(
@@ -82,7 +82,7 @@ class ManeuverValidationResponseWrapper(
         Result:
             ValidationResult[Maneuver]
         Raises:
-            ManeuverValidationResponseWrapperException
+            ManeuverValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -91,11 +91,11 @@ class ManeuverValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ManeuverValidationResponseWrapperException(
+                ManeuverValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ManeuverValidationResponseWrapperException.MSG,
-                    err_code=ManeuverValidationResponseWrapperException.ERR_CODE,
+                    msg=ManeuverValidationServerException.MSG,
+                    err_code=ManeuverValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )
@@ -138,7 +138,7 @@ class ManeuverValidationResponseWrapper(
         Result:
             ValidationResult[ManeuverBlueprint]
         Raises:
-            ManeuverValidationResponseWrapperException
+            ManeuverValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -147,11 +147,11 @@ class ManeuverValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ManeuverValidationResponseWrapperException(
+                ManeuverValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ManeuverValidationResponseWrapperException.MSG,
-                    err_code=ManeuverValidationResponseWrapperException.ERR_CODE,
+                    msg=ManeuverValidationServerException.MSG,
+                    err_code=ManeuverValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )

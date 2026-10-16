@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidationResponseWrapperException
+from err import ModelValidationServerException
 
 __all__ = [
     # ======================# GAME_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-    "GameValidationResponseWrapperException",
+    "GameValidationServerException",
 ]
 
 # ======================# GAME_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-class GameValidationResponseWrapperException(ModelValidationResponseWrapperException):
+class GameValidationServerException(ModelValidationServerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a GameValidationResponseWrapper encountered and error.
+        1.  Indicating a GameValidationServer encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -41,9 +41,9 @@ class GameValidationResponseWrapperException(ModelValidationResponseWrapperExcep
     Provides:
 
     Super Class:
-        ModelValidationResponseWrapperException
+        ModelValidationServerException
     """
-    MSG = "GameValidationResponseWrapper error."
+    MSG = "GameValidationServer error."
     ERR_CODE = "GAME_VALIDATION_RESPONSE_WRAPPER_FAILURE"
     
     def __init__(

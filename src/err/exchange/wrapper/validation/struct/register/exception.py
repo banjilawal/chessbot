@@ -12,24 +12,24 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import StructValidationResponseWrapperException
+from err import StructValidationServerException
 
 
 __all__ = [
     # ======================# REGISTER_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-    "RegisterValidationResponseWrapperException",
+    "RegisterValidationServerException",
 ]
 
 # ======================# REGISTER_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-class RegisterValidationResponseWrapperException(
-    StructValidationResponseWrapperException
+class RegisterValidationServerException(
+    StructValidationServerException
 ):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a RegisterValidationResponseWrapper encountered and error.
+        1.  Indicating a RegisterValidationServer encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -44,9 +44,9 @@ class RegisterValidationResponseWrapperException(
     Provides:
 
     Super Class:
-        StructValidationResponseWrapperException
+        StructValidationServerException
     """
-    MSG = "RegisterValidationResponseWrapper error."
+    MSG = "RegisterValidationServer error."
     ERR_CODE = "REGISTER_VALIDATION_RESPONSE_WRAPPER_FAILURE"
     
     def __init__(

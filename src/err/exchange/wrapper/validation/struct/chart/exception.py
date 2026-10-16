@@ -12,24 +12,24 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import StructValidationResponseWrapperException
+from err import StructValidationServerException
 
 
 __all__ = [
     # ======================# CHART_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-    "ChartValidationResponseWrapperException",
+    "ChartValidationServerException",
 ]
 
 # ======================# CHART_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-class ChartValidationResponseWrapperException(
-    StructValidationResponseWrapperException
+class ChartValidationServerException(
+    StructValidationServerException
 ):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a ChartValidationResponseWrapper encountered and error.
+        1.  Indicating a ChartValidationServer encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -44,9 +44,9 @@ class ChartValidationResponseWrapperException(
     Provides:
 
     Super Class:
-        StructValidationResponseWrapperException
+        StructValidationServerException
     """
-    MSG = "ChartValidationResponseWrapper error."
+    MSG = "ChartValidationServer error."
     ERR_CODE = "CHART_VALIDATION_RESPONSE_WRAPPER_FAILURE"
     
     def __init__(

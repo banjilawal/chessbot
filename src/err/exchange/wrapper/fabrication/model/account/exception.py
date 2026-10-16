@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidationResponseWrapperException
+from err import ModelValidationServerException
 
 __all__ = [
     # ======================# ACCOUNT_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-    "AccountValidationResponseWrapperException",
+    "AccountValidationServerException",
 ]
 
 # ======================# ACCOUNT_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-class AccountValidationResponseWrapperException(ModelValidationResponseWrapperException):
+class AccountValidationServerException(ModelValidationServerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a AccountValidationResponseWrapper encountered and error.
+        1.  Indicating a AccountValidationServer encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -41,9 +41,9 @@ class AccountValidationResponseWrapperException(ModelValidationResponseWrapperEx
     Provides:
 
     Super Class:
-        ModelValidationResponseWrapperException
+        ModelValidationServerException
     """
-    MSG = "AccountValidationResponseWrapper error."
+    MSG = "AccountValidationServer error."
     ERR_CODE = "ACCOUNT_VALIDATION_RESPONSE_WRAPPER_FAILURE"
     
     def __init__(

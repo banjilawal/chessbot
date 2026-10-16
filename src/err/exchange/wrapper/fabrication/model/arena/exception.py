@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidationResponseWrapperException
+from err import ModelValidationServerException
 
 __all__ = [
     # ======================# ARENA_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-    "ArenaValidationResponseWrapperException",
+    "ArenaValidationServerException",
 ]
 
 # ======================# ARENA_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-class ArenaValidationResponseWrapperException(ModelValidationResponseWrapperException):
+class ArenaValidationServerException(ModelValidationServerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a ArenaValidationResponseWrapper encountered and error.
+        1.  Indicating a ArenaValidationServer encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -41,9 +41,9 @@ class ArenaValidationResponseWrapperException(ModelValidationResponseWrapperExce
     Provides:
 
     Super Class:
-        ModelValidationResponseWrapperException
+        ModelValidationServerException
     """
-    MSG = "ArenaValidationResponseWrapper error."
+    MSG = "ArenaValidationServer error."
     ERR_CODE = "ARENA_VALIDATION_RESPONSE_WRAPPER_FAILURE"
     
     def __init__(

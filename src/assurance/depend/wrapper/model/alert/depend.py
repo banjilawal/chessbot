@@ -14,7 +14,7 @@ from typing import Optional
 
 from assurance import ModelWrapperDependency
 from domain import Alert
-from exchange import EncounterValidationResponseWrapper, PlayerValidationResponseWrapper
+from exchange import EncounterValidationServer, PlayerValidationServer
 
 
 class AlertWrapperDependency(ModelWrapperDependency[Alert]):
@@ -26,7 +26,7 @@ class AlertWrapperDependency(ModelWrapperDependency[Alert]):
         1.  Satisfy AlertValidator's ResponseWrapper dependencies.
 
     Attributes:
-        encounter: EncounterValidationResponseWrapper
+        encounter: EncounterValidationServer
 
     Provides:
 
@@ -34,19 +34,19 @@ class AlertWrapperDependency(ModelWrapperDependency[Alert]):
         ModelWrapperDependency
     """
     
-    _encounter: EncounterValidationResponseWrapper
+    _encounter: EncounterValidationServer
     
     def __init__(
             self,
-            encounter: Optional[EncounterValidationResponseWrapper] | None = None,
+            encounter: Optional[EncounterValidationServer] | None = None,
     ):
         """
         Args:
             encounter: Optional[EncounterValidatorClient]
         """
         super().__init__()
-        self._encounter = encounter or EncounterValidationResponseWrapper()
+        self._encounter = encounter or EncounterValidationServer()
         
     @property
-    def encounter(self) -> EncounterValidationResponseWrapper:
+    def encounter(self) -> EncounterValidationServer:
         return self._encounter

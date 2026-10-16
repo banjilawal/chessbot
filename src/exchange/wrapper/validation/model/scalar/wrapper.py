@@ -13,15 +13,15 @@ from typing import Optional, cast
 
 from artifcat import ScalarValidationResponse, ValidationResult
 from domain import Scalar, ScalarBlueprint
-from err import ScalarValidationResponderException, ScalarValidationResponseWrapperException, ScalarCarrierEmptyException
+from err import ScalarValidationResponderException, ScalarValidationServerException, ScalarCarrierEmptyException
 from exchange import (
-    ScalarValidationResponder, ModelValidationResponseWrapper, ScalarValidationRequest
+    ScalarValidationResponder, ModelValidationServer, ScalarValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class ScalarValidationResponseWrapper(
-    ModelValidationResponseWrapper[Scalar]
+class ScalarValidationServer(
+    ModelValidationServer[Scalar]
 ):
     """
     Role
@@ -46,7 +46,7 @@ class ScalarValidationResponseWrapper(
             ) -> ValidationResult[ScalarBlueprint]
 
     Super Class:
-        ValidationResponseWrapper
+        ValidationServer
     """
     
     def __init__(
@@ -82,7 +82,7 @@ class ScalarValidationResponseWrapper(
         Result:
             ValidationResult[Scalar]
         Raises:
-            ScalarValidationResponseWrapperException
+            ScalarValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -91,11 +91,11 @@ class ScalarValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ScalarValidationResponseWrapperException(
+                ScalarValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ScalarValidationResponseWrapperException.MSG,
-                    err_code=ScalarValidationResponseWrapperException.ERR_CODE,
+                    msg=ScalarValidationServerException.MSG,
+                    err_code=ScalarValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )
@@ -138,7 +138,7 @@ class ScalarValidationResponseWrapper(
         Result:
             ValidationResult[ScalarBlueprint]
         Raises:
-            ScalarValidationResponseWrapperException
+            ScalarValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -147,11 +147,11 @@ class ScalarValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ScalarValidationResponseWrapperException(
+                ScalarValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ScalarValidationResponseWrapperException.MSG,
-                    err_code=ScalarValidationResponseWrapperException.ERR_CODE,
+                    msg=ScalarValidationServerException.MSG,
+                    err_code=ScalarValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )

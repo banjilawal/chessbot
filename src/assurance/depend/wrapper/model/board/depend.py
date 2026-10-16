@@ -14,7 +14,7 @@ from typing import Optional
 
 from assurance import ModelWrapperDependency
 from domain import Board
-from exchange import TeamBinderValidationResponseWrapper
+from exchange import TeamBinderValidationServer
 
 
 class BoardWrapperDependency(ModelWrapperDependency[Board]):
@@ -26,7 +26,7 @@ class BoardWrapperDependency(ModelWrapperDependency[Board]):
         1.  Satisfy BoardValidator's ResponseWrapper dependencies.
 
     Attributes:
-        binder: TeamBinderValidationResponseWrapper
+        binder: TeamBinderValidationServer
 
     Provides:
 
@@ -34,19 +34,19 @@ class BoardWrapperDependency(ModelWrapperDependency[Board]):
         ModelWrapperDependency
     """
     
-    _binder: TeamBinderValidationResponseWrapper
+    _binder: TeamBinderValidationServer
     
     def __init__(
             self,
-            binder: Optional[TeamBinderValidationResponseWrapper] | None = None,
+            binder: Optional[TeamBinderValidationServer] | None = None,
     ):
         """
         Args:
-            binder: Optional[TeamBinderValidationResponseWrapper]
+            binder: Optional[TeamBinderValidationServer]
         """
         super().__init__()
-        self._binder = binder or TeamBinderValidationResponseWrapper()
+        self._binder = binder or TeamBinderValidationServer()
     
     @property
-    def binder(self) -> TeamBinderValidationResponseWrapper:
+    def binder(self) -> TeamBinderValidationServer:
         return self._binder

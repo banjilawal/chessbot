@@ -26,7 +26,7 @@ class WrapperDependency(ABC, Generic[T]):
         - Toolkit
 
     Responsibilities:
-        1.  Provide ValidationResponseWrapper dependencies.
+        1.  Provide ValidationServer dependencies.
 
     Attributes:
 

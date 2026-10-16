@@ -1,0 +1,84 @@
+# src/err/fabrication/loader/exception.py
+
+"""
+Module: err.fabrication.loader.exception
+Author: Banji Lawal
+Created: 2026-04-04
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from typing import Any, Optional
+
+from err import FabricationException
+from artifcat import MethodResultType
+
+__all__ = [
+    # ======================# BLUEPRINT_BUILD_LOADER_FAILURE #======================#
+    "BuildLoaderException",
+]
+
+# ======================# BUILD_LOADER_FAILURE #======================#
+class BuildLoaderException(FabricationException):
+    """
+    Role:
+        - Failure Tracing
+
+    Responsibilities:
+        1.  Indicating fabrication by a BuildLoader failed.
+
+    Attributes:
+        msg: str
+        err_code: str
+        var: Optional[str]
+        val: Optional[Any]
+        cls_name: Optional[str]
+        cls_mthd: Optional[str]
+        ex: Optional[Exception]
+        mthd_rslt_type: Optional[MethodResultType]
+            
+    Provides:
+
+    Super Class:
+        FabricationException
+    """
+    MSG = "BuildLoader failed."
+    ERR_CODE = "BUILD_LOADER_FAILURE"
+    MTHD_RSLT_TYPE = MethodResultType.BUILD_RESULT
+    
+    def __init__(
+            self,
+            msg: str = MSG,
+            err_code: str = ERR_CODE,
+            var: Optional[str] | None = None,
+            val: Optional[Any] | None = None,
+            cls_name: Optional[str] | None = None,
+            cls_mthd: Optional[str] | None = None,
+            ex: Optional[Exception] | None = None,
+            mthd_rslt_type: Optional[MethodResultType] | None = None,
+    ):
+        """
+            Args:
+            msg: str
+            err_code: str
+            var: Optional[str]
+            val: Optional[Any]
+            cls_name: Optional[str]
+            cls_mthd: Optional[str]
+            ex: Optional[Exception]
+            mthd_rslt_type: Optional[MethodResultType]
+        """
+        msg = msg or self.MSG
+        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
+        err_code = err_code or self.ERR_CODE
+        super().__init__(
+            ex=ex,
+            msg=msg,
+            var=var,
+            val=val,
+            err_code=err_code,
+            cls_name=cls_name,
+            cls_mthd=cls_mthd,
+            mthd_rslt_type=mthd_rslt_type,
+        )

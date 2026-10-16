@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidationResponseWrapperException
+from err import ModelValidationServerException
 
 __all__ = [
     # ======================# BOARD_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-    "BoardValidationResponseWrapperException",
+    "BoardValidationServerException",
 ]
 
 # ======================# BOARD_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-class BoardValidationResponseWrapperException(ModelValidationResponseWrapperException):
+class BoardValidationServerException(ModelValidationServerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a BoardValidationResponseWrapper encountered and error.
+        1.  Indicating a BoardValidationServer encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -41,9 +41,9 @@ class BoardValidationResponseWrapperException(ModelValidationResponseWrapperExce
     Provides:
 
     Super Class:
-        ModelValidationResponseWrapperException
+        ModelValidationServerException
     """
-    MSG = "BoardValidationResponseWrapper error."
+    MSG = "BoardValidationServer error."
     ERR_CODE = "BOARD_VALIDATION_RESPONSE_WRAPPER_FAILURE"
     
     def __init__(

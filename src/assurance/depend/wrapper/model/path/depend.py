@@ -14,7 +14,7 @@ from typing import Optional
 
 from assurance import ModelWrapperDependency
 from domain import Path
-from exchange import SquareRegisterValidationResponseWrapper
+from exchange import SquareRegisterValidationServer
 
 
 class PathWrapperDependency(ModelWrapperDependency[Path]):
@@ -26,7 +26,7 @@ class PathWrapperDependency(ModelWrapperDependency[Path]):
         1.  Satisfy PathValidator's ResponseWrapper dependencies.
 
     Attributes:
-        square_register: SquareRegisterValidationResponseWrapper
+        square_register: SquareRegisterValidationServer
         
     Provides:
 
@@ -34,19 +34,19 @@ class PathWrapperDependency(ModelWrapperDependency[Path]):
         ModelWrapperDependency
     """
     
-    _square_register: SquareRegisterValidationResponseWrapper
+    _square_register: SquareRegisterValidationServer
     
     def __init__(
             self,
-            square_register: Optional[SquareRegisterValidationResponseWrapper] | None = None,
+            square_register: Optional[SquareRegisterValidationServer] | None = None,
     ):
         """
         Args:
-            square_register: Optional[SquareRegisterValidationResponseWrapper]
+            square_register: Optional[SquareRegisterValidationServer]
         """
         super().__init__()
-        self._square_register = square_register or SquareRegisterValidationResponseWrapper()
+        self._square_register = square_register or SquareRegisterValidationServer()
         
     @property
-    def square_register(self) -> SquareRegisterValidationResponseWrapper:
+    def square_register(self) -> SquareRegisterValidationServer:
         return self._square_register

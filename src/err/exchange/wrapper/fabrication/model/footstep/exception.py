@@ -12,23 +12,23 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidationResponseWrapperException
+from err import ModelValidationServerException
 
 __all__ = [
     # ======================# FOOTSTEP_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-    "FootstepValidationResponseWrapperException",
+    "FootstepValidationServerException",
 ]
 
 # ======================# FOOTSTEP_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-class FootstepValidationResponseWrapperException(
-    ModelValidationResponseWrapperException
+class FootstepValidationServerException(
+    ModelValidationServerException
 ):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a FootstepValidationResponseWrapper encountered and error.
+        1.  Indicating a FootstepValidationServer encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -43,9 +43,9 @@ class FootstepValidationResponseWrapperException(
     Provides:
 
     Super Class:
-        ModelValidationResponseWrapperException
+        ModelValidationServerException
     """
-    MSG = "FootstepValidationResponseWrapper error."
+    MSG = "FootstepValidationServer error."
     ERR_CODE = "FOOTSTEP_VALIDATION_RESPONSE_WRAPPER_FAILURE"
     
     def __init__(

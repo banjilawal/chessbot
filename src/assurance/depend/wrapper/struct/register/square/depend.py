@@ -14,7 +14,7 @@ from typing import Optional
 
 from assurance import RegisterDependency
 from domain import SquareRegister
-from exchange import SquareValidationResponseWrapper
+from exchange import SquareValidationServer
 
 
 class SquareRegisterDependency(RegisterDependency[SquareRegister]):
@@ -27,26 +27,26 @@ class SquareRegisterDependency(RegisterDependency[SquareRegister]):
             upstream relational partners attributes.
 
     Attributes:
-        square: SquareValidationResponseWrapper
+        square: SquareValidationServer
 
     Provides:
 
     Super Class:
         RegisterDependency
     """
-    _square: SquareValidationResponseWrapper
+    _square: SquareValidationServer
     
     def __init__(
             self,
-            square: Optional[SquareValidationResponseWrapper] | None = None,
+            square: Optional[SquareValidationServer] | None = None,
     ):
         """
         Args:
-            square: Optional[SquareValidationResponseWrapper]
+            square: Optional[SquareValidationServer]
         """
         super().__init__()
-        self._square = square or SquareValidationResponseWrapper()
+        self._square = square or SquareValidationServer()
         
     @property
-    def square(self) -> SquareValidationResponseWrapper:
+    def square(self) -> SquareValidationServer:
         return self._square

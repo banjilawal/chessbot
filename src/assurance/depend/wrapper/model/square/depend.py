@@ -15,7 +15,7 @@ from typing import Optional
 from assurance import ModelWrapperDependency
 from domain import Square
 from exchange import (
-    BoardValidationResponseWrapper, CoordValidationResponseWrapper, TokenValidationResponseWrapper
+    BoardValidationServer, CoordValidationServer, TokenValidationServer
 )
 
 
@@ -28,24 +28,24 @@ class SquareWrapperDependency(ModelWrapperDependency[Square]):
         1.  Satisfy SqaureValidator's ResponseWrapper dependencies.
 
     Attributes:
-        board: BoardValidationResponseWrapper
-        coord: CoordValidationResponseWrapper
-        token: TokenValidationResponseWrapper
+        board: BoardValidationServer
+        coord: CoordValidationServer
+        token: TokenValidationServer
 
     Provides:
 
     Super Class:
         ModelWrapperDependency
     """
-    _board: BoardValidationResponseWrapper
-    _coord: CoordValidationResponseWrapper
-    _token: TokenValidationResponseWrapper
+    _board: BoardValidationServer
+    _coord: CoordValidationServer
+    _token: TokenValidationServer
     
     def __init__(
             self,
-            board: Optional[BoardValidationResponseWrapper] | None = None,
-            coord: Optional[CoordValidationResponseWrapper] | None = None,
-            token: Optional[TokenValidationResponseWrapper] | None = None,
+            board: Optional[BoardValidationServer] | None = None,
+            coord: Optional[CoordValidationServer] | None = None,
+            token: Optional[TokenValidationServer] | None = None,
     ):
         """
         Args:
@@ -53,18 +53,18 @@ class SquareWrapperDependency(ModelWrapperDependency[Square]):
             coord: Optional[CoordValidatorClient]
         """
         super().__init__()
-        self._board = board or BoardValidationResponseWrapper()
-        self._coord = coord or CoordValidationResponseWrapper()
-        self._token = token or TokenValidationResponseWrapper()
+        self._board = board or BoardValidationServer()
+        self._coord = coord or CoordValidationServer()
+        self._token = token or TokenValidationServer()
         
     @property
-    def board(self) -> BoardValidationResponseWrapper:
+    def board(self) -> BoardValidationServer:
         return self._board
     
     @property
-    def coord(self) -> CoordValidationResponseWrapper:
+    def coord(self) -> CoordValidationServer:
         return self._coord
     
     @property
-    def token(self) -> TokenValidationResponseWrapper:
+    def token(self) -> TokenValidationServer:
         return self._token

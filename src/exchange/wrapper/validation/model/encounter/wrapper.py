@@ -13,15 +13,15 @@ from typing import Optional, cast
 
 from artifcat import AttackValidationResponse, ValidationResult
 from domain import Encounter, AttackBlueprint
-from err import AttackValidationResponderException, AttackValidationResponseWrapperException, EncounterCarrierEmptyException
+from err import AttackValidationResponderException, AttackValidationServerException, EncounterCarrierEmptyException
 from exchange import (
-    AttackValidationResponder, ModelValidationResponseWrapper, AttackValidationRequest
+    AttackValidationResponder, ModelValidationServer, AttackValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class EncounterValidationResponseWrapper(
-    ModelValidationResponseWrapper[Encounter]
+class EncounterValidationServer(
+    ModelValidationServer[Encounter]
 ):
     """
     Role
@@ -46,7 +46,7 @@ class EncounterValidationResponseWrapper(
             ) -> ValidationResult[AttackBlueprint]
 
     Super Class:
-        ValidationResponseWrapper
+        ValidationServer
     """
     
     def __init__(
@@ -82,7 +82,7 @@ class EncounterValidationResponseWrapper(
         Result:
             ValidationResult[Attack]
         Raises:
-            AttackValidationResponseWrapperException
+            AttackValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -91,11 +91,11 @@ class EncounterValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                AttackValidationResponseWrapperException(
+                AttackValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AttackValidationResponseWrapperException.MSG,
-                    err_code=AttackValidationResponseWrapperException.ERR_CODE,
+                    msg=AttackValidationServerException.MSG,
+                    err_code=AttackValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )
@@ -138,7 +138,7 @@ class EncounterValidationResponseWrapper(
         Result:
             ValidationResult[AttackBlueprint]
         Raises:
-            AttackValidationResponseWrapperException
+            AttackValidationServerException
         """
         method = f"{self.__class__.__name__}.extract_model"
         
@@ -147,11 +147,11 @@ class EncounterValidationResponseWrapper(
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                AttackValidationResponseWrapperException(
+                AttackValidationServerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AttackValidationResponseWrapperException.MSG,
-                    err_code=AttackValidationResponseWrapperException.ERR_CODE,
+                    msg=AttackValidationServerException.MSG,
+                    err_code=AttackValidationServerException.ERR_CODE,
                     ex=result.exception,
                 )
             )

@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ModelValidationResponseWrapperException
+from err import ModelValidationServerException
 
 __all__ = [
     # ======================# TOKEN_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-    "TokenValidationResponseWrapperException",
+    "TokenValidationServerException",
 ]
 
 # ======================# TOKEN_VALIDATION_RESPONSE_WRAPPER_FAILURE #======================#
-class TokenValidationResponseWrapperException(ModelValidationResponseWrapperException):
+class TokenValidationServerException(ModelValidationServerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a TokenValidationResponseWrapper encountered and error.
+        1.  Indicating a TokenValidationServer encountered and error.
 
     Attributes:
         msg: Optional[str]
@@ -41,9 +41,9 @@ class TokenValidationResponseWrapperException(ModelValidationResponseWrapperExce
     Provides:
 
     Super Class:
-        ModelValidationResponseWrapperException
+        ModelValidationServerException
     """
-    MSG = "TokenValidationResponseWrapper error."
+    MSG = "TokenValidationServer error."
     ERR_CODE = "TOKEN_VALIDATION_RESPONSE_WRAPPER_FAILURE"
     
     def __init__(
