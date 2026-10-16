@@ -1,7 +1,7 @@
-# src/err/builder/edge/exception.py
+# src/err/fabrication/builder/edge/exception.py
 
 """
-Module: err.build.edge.exception
+Module: err.fabrication.builder.edge.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
+from artifcat import MethodResultType
 from err import BuilderException
 
 

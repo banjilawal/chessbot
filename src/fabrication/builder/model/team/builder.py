@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import BuildResult
 from domain import Team, TeamBlueprint
-from err import TeamBuilderException
+from err import TeamBlueprintIdEmptyException, TeamBuilderException
 from exchange import TeamBuildRequest
 from fabrication import ModelBuilder, TeamBuildLoader
 from util import IdFactory, LoggingLevelRouter
@@ -84,12 +84,9 @@ class TeamBuilder(ModelBuilder[Team]):
             )
         # --- Cast result payload for the product assembly. ---#
         blueprint = cast(TeamBlueprint, result.payload)
-        # Acquire the id
-        id = blueprint.id
-        if id is None:
+        id = blueprint.id or IdFactory.next_id(class_name="Team")
         
-        
-        # --- Send the work product. ---#
+        # --- Assemble and send the work product. ---#
         product = Team(
             id=id,
             board=blueprint.board,

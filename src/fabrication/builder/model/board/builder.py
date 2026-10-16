@@ -16,7 +16,7 @@ from domain import Board, BoardBlueprint
 from err import BoardBuilderException
 from exchange import BoardBuildRequest
 from fabrication import ModelBuilder, BoardBuildLoader
-from util import LoggingLevelRouter
+from util import IdFactory, LoggingLevelRouter
 
 
 class BoardBuilder(ModelBuilder[Board]):
@@ -84,10 +84,12 @@ class BoardBuilder(ModelBuilder[Board]):
             )
         # --- Cast result payload for the product assembly. ---#
         blueprint = cast(BoardBlueprint, result.payload)
+        id = blueprint.id or IdFactory.next_id(class_name="Board")
         
         # --- Send the work product. ---#
         product = Board(
-            x=blueprint.x,
-            y=blueprint.y,
+            id=id,
+            arena=blueprint.arena,
+            binder=blueprint.binder,
         )
         return BuildResult.success(product)

@@ -87,7 +87,7 @@ class PathBuilder(ModelBuilder[Path]):
         
         # --- Send the work product. ---#
         product = Path(
-            x=blueprint.x,
-            y=blueprint.y,
+            label=blueprint.label,
+            endpoints=blueprint.endpoints,
         )
         return BuildResult.success(product)

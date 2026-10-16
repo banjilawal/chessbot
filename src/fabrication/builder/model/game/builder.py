@@ -16,7 +16,7 @@ from domain import Game, GameBlueprint
 from err import GameBuilderException
 from exchange import GameBuildRequest
 from fabrication import ModelBuilder, GameBuildLoader
-from util import LoggingLevelRouter
+from util import IdFactory, LoggingLevelRouter
 
 
 class GameBuilder(ModelBuilder[Game]):
@@ -84,10 +84,12 @@ class GameBuilder(ModelBuilder[Game]):
             )
         # --- Cast result payload for the product assembly. ---#
         blueprint = cast(GameBlueprint, result.payload)
+        id = blueprint.id or IdFactory.next_id(class_name="Game")
         
         # --- Send the work product. ---#
         product = Game(
-            x=blueprint.x,
-            y=blueprint.y,
+            id=id,
+            arena=blueprint.arena,
+            binder=blueprint.binder,
         )
         return BuildResult.success(product)
