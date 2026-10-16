@@ -87,7 +87,7 @@ class FootstepBuilder(ModelBuilder[Footstep]):
         
         # --- Send the work product. ---#
         product = Footstep(
-            x=blueprint.x,
-            y=blueprint.y,
+            position=blueprint.position,
+            previous_position=blueprint.previous_position,
         )
         return BuildResult.success(product)
