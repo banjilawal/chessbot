@@ -1,0 +1,155 @@
+# src/transit/dispatcher/fabrication/query/token/validator.py
+
+"""
+Module: transit.dispatcher.fabrication.query.token.validator
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from typing import Any, cast
+
+from err import (
+    TokenQueryNullException, TokenQueryStackEmptyException, TokenQueryValidatorException,
+    TokenStackNullException
+)
+from domain.model import TokenQuery
+from artifcat import MethodResultType, BuildResult
+from collection.stack import TokenStackService
+from util import LoggingLevelRouter
+from transit.dispatcher.fabrication import TokenContextValidator, PrimingValidator, BuildDispatcher
+
+
+class TokenQueryBuildDispatcher(BuildDispatcher[TokenQuery]):
+    """
+    Role
+        - Transaction Worker
+        - Integrity Maintenance
+        - Process Runner
+
+    Responsibilities:
+        1.  Ensure a TokenQuery instance is certified safe, reliable, and consistent before use.
+
+    Attributes:
+
+    Provides:
+        - validate(
+                    rank: Any
+                    context_validator: TokenContextValidator,
+            ) -> BuildResult[int]
+
+    Super Class:
+    """
+    
+    @classmethod
+    @LoggingLevelRouter.monitor
+    def execute(
+            cls,
+            job: Any,
+            priming_validator: PrimingValidator | None = None,
+            context_validator: TokenContextValidator | None = None,
+    ) -> BuildResult[TokenQuery]:
+        """
+        Certify a rank is a TokenQuery that is safe to use.
+
+        Action:
+            1.  Send an exception chain in the BuildResult if any of the following
+                conditions occur:
+                    - The rank is null
+                    - The rank is not a TokenQuery
+                    - The context fails a safety check.
+                    - The schema is null.
+                    - The schema's type is not ist[Token]
+            2.  Otherwise, send the success result.
+        Args:
+            job: Any
+            context_validator: TokenContextValidator
+        Returns:
+            BuildResult[int]
+        Raises:
+            TypeError
+            TokenStackNullException
+            TokenQueryValidatorException
+            TokenQueryStackEmptyException
+        """
+        method = f"{self.__class__.__name__}._validate"
+        
+        if priming_validator is None:
+            priming_validator = PrimingValidator()
+        if context_validator is None:
+            context_validator = TokenContextValidator()
+        
+        validator_priming_result = priming_validator.execute(
+            candidate=job,
+            target_model=TokenQuery,
+            null_exception=TokenQueryNullException(),
+        )
+        # Handle the nonexistence case.
+        if validator_priming_result.failure:
+            # Send the exception chain on failure.
+            return BuildResult.failure(
+                TokenQueryValidatorException(
+                    cls_mthd=method,
+                    cls_name=method.__class__.__name__,
+                    msg=TokenQueryValidatorException.MSG,
+                    err_code=TokenQueryValidatorException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
+                    ex=validator_priming_result.exception,
+                )
+            )
+        # --- Cast the candidate into TokenQuery for additional tests. ---#
+        query = cast(TokenQuery, job)
+        
+        # Handle the case that the context is not safe to use.
+        context_build_result = context_validator.execute(query.context)
+        if context_build_result.is_failure:
+            # Send the exception chain on failure.
+            return BuildResult.failure(
+                TokenQueryValidatorException(
+                    cls_mthd=method,
+                    cls_name=method.__class__.__name__,
+                    msg=TokenQueryValidatorException.MSG,
+                    err_code=TokenQueryValidatorException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
+                    ex=context_build_result.exception
+                )
+            )
+        stack_build_result = validator_priming_result = priming_validator.execute(
+            candidate=query.stack,
+            target_model=TokenStackService,
+            null_exception=TokenStackNullException(),
+        )
+        if stack_build_result.is_failure:
+            # Send the exception chain on failure.
+            return BuildResult.failure(
+                TokenQueryValidatorException(
+                    cls_mthd=method,
+                    cls_name=method.__class__.__name__,
+                    msg=TokenQueryValidatorException.MSG,
+                    err_code=TokenQueryValidatorException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
+                    ex=stack_build_result.exception,
+                )
+            )
+        # Handle the case that list is empty.
+        if query.stack.is_empty:
+            # Send the exception chain on failure.
+            return BuildResult.failure(
+                TokenQueryValidatorException(
+                    cls_mthd=method,
+                    cls_name=method.__class__.__name__,
+                    msg=TokenQueryValidatorException.MSG,
+                    err_code=TokenQueryValidatorException.ERR_CODE,
+                    mthd_rslt_type=MethodResultType.BUILD_RESULT,
+                    ex=TokenQueryStackEmptyException(
+                        msg=TokenQueryStackEmptyException.MSG,
+                        err_code=TokenQueryStackEmptyException.ERR_CODE,
+                    )
+                )
+            )
+        # --- Forward the work product to the client. ---#
+        return BuildResult.success(query)
+        
+    

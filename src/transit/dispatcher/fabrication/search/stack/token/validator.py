@@ -1,0 +1,88 @@
+# src/transit/dispatcher/fabrication/search/stack/token/validator.py
+
+"""
+Module: transit.dispatcher.fabrication.search.stack.token.validator
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from typing import Any, cast
+
+from artifcat import BuildResult
+from assurance import StackContextValidator, TokenContextValidator
+from domain import TokenSearchContext
+from err import TokenContextValidatorException
+from util import LoggingLevelRouter
+
+
+class TokenContextValidator(StackContextValidator[TokenSearchContext]):
+    """
+    Role
+        - Integrity, Consistency Maintenance
+
+    Responsibilities:
+        1.  Ensure a TokenContext instance is safe before use.
+
+    Attributes:
+        validator: TokenContextChecker
+
+    Provides:
+        -   def execute(self, candidate: Any) -> BuildResult[TokenContext]
+
+    Super Class:
+        ContextValidator
+    """
+    
+    def __init__(self, validator: TokenContextValidator):
+        """
+        Args:
+            validator: TokenContextChecker
+        """
+        super().__init__(validator=validator)
+    
+    
+    @property
+    def validator(self) -> TokenContextValidator:
+        return cast(TokenContextValidator, super().validator)
+    
+    
+    @LoggingLevelRouter.monitor
+    def execute(self, candidate: Any) -> BuildResult[TokenSearchContext]:
+        """
+        Certify a candidate is a TokenContext that is safe to use.
+
+        Action:
+            1.  Send an exception chain in the BuildResult if validator
+                returns a failure.
+            2.  Otherwise, send the success result.
+        Args:
+            candidate: Any
+        Returns:
+            BuildResult[TokenContext]
+        Raises:
+            TokenContextValidatorException
+        """
+        method = f"{self.__class__.__name__}.execute"
+        
+        # Handle the case that validator flags the candidate.
+        build = self.validator.execute(candidate=candidate)
+        if build.is_failure:
+            # Send the exception chain on failure.
+            return BuildResult.failure(
+                TokenContextValidatorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenContextValidatorException.MSG,
+                    err_code=TokenContextValidatorException.ERR_CODE,
+                    ex=build.exception
+                )
+            )
+        # --- Otherwise, cast and forward the work product to the caller. ---#
+        context = cast(TokenSearchContext, build.payload)
+        return BuildResult.success(context)
+
+        
+    

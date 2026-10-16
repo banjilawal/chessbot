@@ -12,6 +12,7 @@ version: 0.0.2
 # Packages
 from .authorization import *
 from .builder import *
+from .fabrication import *
 from .statement import *
 from .validator import *
 
