@@ -14,7 +14,7 @@ from typing import Generic, TypeVar, cast
 
 from artifcat import BuildResult
 from domain import Model, ModelBlueprint
-from exchange import BuildRequest, ModelValidationServer
+from exchange import BuildRequest, ModelBuildRequest, ModelValidationServer
 from fabrication import BuildLoader
 from util import LoggingLevelRouter
 
@@ -55,5 +55,15 @@ class ModelBuildLoader(BuildLoader[T], ABC, Generic[T]):
         
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: BuildRequest[T]) -> BuildResult[ModelBlueprint[T]]:
+    def execute(self, request: ModelBuildRequest[T]) -> BuildResult[ModelBlueprint[T]]:
+        """
+        Prepare a ModelBlueprint which is used to build a safe product.
+
+        Args:
+            request: ModelBuildRequest[T]
+        Returns:
+            BuildResult[ModelBlueprint[T]]
+        Raises:
+            ModelBuildLoaderException
+        """
         pass
