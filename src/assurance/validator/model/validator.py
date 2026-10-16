@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import ModelLoader, ModelValidatorToolkit, Validator
+from assurance import ModelValidationLoader, ModelValidatorToolkit, Validator
 from domain import Model
 from transit import ModelCarrier
 from util import LoggingLevelRouter
@@ -40,7 +40,7 @@ class ModelValidator(Validator[T], ABC, Generic[T]):
         Validator
     """
     
-    def __init__(self, loader: ModelLoader[T]):
+    def __init__(self, loader: ModelValidationLoader[T]):
         """
         Args:
             loader: ModelLoader[T]
@@ -48,8 +48,8 @@ class ModelValidator(Validator[T], ABC, Generic[T]):
         super().__init__(loader=loader)
     
     @property
-    def loader(self) -> ModelLoader[T]:
-        return cast(ModelLoader[T], super().loader)
+    def loader(self) -> ModelValidationLoader[T]:
+        return cast(ModelValidationLoader[T], super().loader)
     
     @property
     def toolkit(self) -> ModelValidatorToolkit[T]:

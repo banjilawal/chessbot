@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StructLoaderException
+from err import StructValidationLoaderException
 from artifcat import MethodResultType
 
 
 __all__ = [
     # ======================# NODE_LOADER_FAILURE #======================#
-    "NodeLoaderException",
+    "NodeValidationLoaderException",
 ]
 
 # ======================# NODE_LOADER_FAILURE #======================#
-class NodeLoaderException(StructLoaderException):
+class NodeValidationLoaderException(StructValidationLoaderException):
     """
     Role:
         - Error Tracing

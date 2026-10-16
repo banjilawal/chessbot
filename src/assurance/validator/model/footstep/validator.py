@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Dict, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidator, FootstepLoader, FootstepValidatorToolkit
+from assurance import ModelValidator, FootstepValidationLoader, FootstepValidatorToolkit
 from domain import Coord, FootstepBlueprint, FootstepPrimeExtract, Footstep
 from err import FootstepConsistencyException, FootstepValidatorException
 from exchange import CoordValidationRequest
@@ -38,16 +38,16 @@ class FootstepValidator(ModelValidator[Footstep]):
         ModelValidator
     """
     
-    def __init__(self, loader: Optional[FootstepLoader] | None = None):
+    def __init__(self, loader: Optional[FootstepValidationLoader] | None = None):
         """
         Args:
             loader: Optional[FootstepLoader]
         """
-        super().__init__(loader=loader or FootstepLoader())
+        super().__init__(loader=loader or FootstepValidationLoader())
         
     @property
-    def loader(self) -> FootstepLoader:
-        return cast(FootstepLoader, super().loader)
+    def loader(self) -> FootstepValidationLoader:
+        return cast(FootstepValidationLoader, super().loader)
     
     @property
     def toolkit(self) -> FootstepValidatorToolkit:

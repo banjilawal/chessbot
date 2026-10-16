@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import GraphContextLoaderException
+from err import GraphContextValidationLoaderException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# EDGE_CONTEXT_LOADER_FAILURE #======================#
-class EdgeContextLoaderException(GraphContextLoaderException):
+class EdgeContextLoaderException(GraphContextValidationLoaderException):
     """
     Role:
         - Error Tracing

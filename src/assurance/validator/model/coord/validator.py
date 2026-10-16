@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, List, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import CoordLoader, CoordValidatorToolkit, ModelValidator
+from assurance import CoordValidationLoader, CoordValidatorToolkit, ModelValidator
 from domain import Board, Coord, CoordBlueprint, CoordPrimeExtract
 from err import CoordCarrierEmptyException, CoordValidatorException
 from exchange import BoardValidationRequest
@@ -40,17 +40,17 @@ class CoordValidator(ModelValidator[Coord]):
     
     def __init__(
             self,
-            loader: Optional[CoordLoader] | None = None,
+            loader: Optional[CoordValidationLoader] | None = None,
     ):
         """
         Args:
             loader: Optional[CoordLoader]
         """
-        super().__init__(loader=loader or CoordLoader())
+        super().__init__(loader=loader or CoordValidationLoader())
         
     @property
-    def loader(self) -> CoordLoader:
-        return cast(CoordLoader, super().loader)
+    def loader(self) -> CoordValidationLoader:
+        return cast(CoordValidationLoader, super().loader)
     
     @property
     def toolkit(self) -> CoordValidatorToolkit:

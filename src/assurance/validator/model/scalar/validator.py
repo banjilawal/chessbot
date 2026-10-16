@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidator, ScalarLoader, ScalarValidatorToolkit
+from assurance import ModelValidator, ScalarValidationLoader, ScalarValidatorToolkit
 from config import BoardSetting
 from domain import Scalar, ScalarBlueprint, ScalarPrimeExtract
 from err import ScalarCarrierEmptyException, ScalarValidatorException
@@ -38,17 +38,17 @@ class ScalarValidator(ModelValidator[Scalar]):
         ModelValidator
     """
     
-    def __init__(self, loader: Optional[ScalarLoader] | None = None,
+    def __init__(self, loader: Optional[ScalarValidationLoader] | None = None,
     ):
         """
         Args:
             loader: Optional[ScalarLoader]
         """
-        super().__init__(loader=loader or ScalarLoader())
+        super().__init__(loader=loader or ScalarValidationLoader())
         
     @property
-    def loader(self) -> ScalarLoader:
-        return cast(ScalarLoader, super().loader)
+    def loader(self) -> ScalarValidationLoader:
+        return cast(ScalarValidationLoader, super().loader)
     
     @property
     def toolkit(self) -> ScalarValidatorToolkit:

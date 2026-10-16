@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ContextLoaderException
+from err import ContextValidationLoaderException
 from artifcat import MethodResultType
 
 
 __all__ = [
     # ======================# TOKEN_CONTEXT_LOADER_FAILURE #======================#
-    "TokenContextLoaderException",
+    "TokenContextValidationLoaderException",
 ]
 
 # ======================# TOKEN_CONTEXT_LOADER_FAILURE #======================#
-class TokenContextLoaderException(ContextLoaderException):
+class TokenContextValidationLoaderException(ContextValidationLoaderException):
     """
     Role:
         - Error Tracing

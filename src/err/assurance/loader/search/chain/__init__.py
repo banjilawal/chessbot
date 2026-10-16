@@ -14,4 +14,4 @@ from .dossier import *
 from .vector import *
 
 # Modules
-from .exception import ChainContextLoaderException
+from .exception import ChainContextValidationLoaderException

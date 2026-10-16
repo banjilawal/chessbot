@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, Optional, TypeVar
 
 from assurance import (
-    WrapperDependency, Loader, CommonValidatorToolkit,
+    WrapperDependency, ValidationLoader, CommonValidatorToolkit,
     NumberValidator, PrimingValidator
 )
 from authorization import BlueprintIdExtractor

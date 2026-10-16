@@ -14,15 +14,15 @@ from typing import Any, Optional
 
 __all__ = [
     # ======================# SEARCH_CONTEXT_LOADER_FAILURE #======================#
-    "ContextLoaderException",
+    "ContextValidationLoaderException",
 ]
 
-from err import LoaderException
+from err import ValidationLoaderException
 from artifcat import MethodResultType
 
 
 # ======================# SEARCH_CONTEXT_LOADER_FAILURE #======================#
-class ContextLoaderException(LoaderException):
+class ContextValidationLoaderException(ValidationLoaderException):
     """
     Role:
         - Error Tracing

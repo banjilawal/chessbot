@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelLoader, SquareValidatorToolkit
+from assurance import ModelValidationLoader, SquareValidatorToolkit
 from domain import Square, SquarePrimeExtract
 from err import (
-    SquareCarrierEmptyException, SquareLoaderException, SquareValidationRequestNullException
+    SquareCarrierEmptyException, SquareValidationLoaderException, SquareValidationRequestNullException
 )
 from exchange import SquareValidationRequest
 from transit import SquareCarrier
@@ -23,7 +23,7 @@ from transit import SquareCarrier
 from util import LoggingLevelRouter
 
 
-class SquareLoader(ModelLoader[Square]):
+class SquareValidationLoader(ModelValidationLoader[Square]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -94,11 +94,11 @@ class SquareLoader(ModelLoader[Square]):
         if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareLoaderException(
+                SquareValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SquareLoaderException.MSG,
-                    err_code=SquareLoaderException.ERR_CODE,
+                    msg=SquareValidationLoaderException.MSG,
+                    err_code=SquareValidationLoaderException.ERR_CODE,
                     ex=priming.exception,
                 )
             )
@@ -114,11 +114,11 @@ class SquareLoader(ModelLoader[Square]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareLoaderException(
+                SquareValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SquareLoaderException.MSG,
-                    err_code=SquareLoaderException.ERR_CODE,
+                    msg=SquareValidationLoaderException.MSG,
+                    err_code=SquareValidationLoaderException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -130,11 +130,11 @@ class SquareLoader(ModelLoader[Square]):
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareLoaderException(
+                SquareValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SquareLoaderException.MSG,
-                    err_code=SquareLoaderException.ERR_CODE,
+                    msg=SquareValidationLoaderException.MSG,
+                    err_code=SquareValidationLoaderException.ERR_CODE,
                     ex=SquareCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,

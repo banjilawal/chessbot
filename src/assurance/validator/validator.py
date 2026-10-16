@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
 from artifcat import ValidationResult
-from assurance import Loader, ValidatorToolkit
+from assurance import ValidationLoader, ValidatorToolkit
 from util import LoggingLevelRouter
 
 T = TypeVar("T",)
@@ -39,9 +39,9 @@ class Validator(ABC, Generic[T]):
 
     Super Class:
     """
-    _loader: Loader[T]
+    _loader: ValidationLoader[T]
     
-    def __init__(self, loader: Loader[T]):
+    def __init__(self, loader: ValidationLoader[T]):
         """
         Args:
             loader: Loader[T]
@@ -50,7 +50,7 @@ class Validator(ABC, Generic[T]):
         self._loader = loader
      
     @property
-    def loader(self) -> Loader[T]:
+    def loader(self) -> ValidationLoader[T]:
         return self._loader
         
     @property

@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StructLoaderException
+from err import StructValidationLoaderException
 from artifcat import MethodResultType
 
 
 __all__ = [
     # ======================# REGISTER_LOADER_FAILURE #======================#
-    "RegisterLoaderException",
+    "RegisterValidationLoaderException",
 ]
 
 # ======================# REGISTER_LOADER_FAILURE #======================#
-class RegisterLoaderException(StructLoaderException):
+class RegisterValidationLoaderException(StructValidationLoaderException):
     """
     Role:
         - Error Tracing

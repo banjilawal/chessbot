@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import PathLoaderException
+from err import PathValidationLoaderException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# BLOCKED_PATH_LOADER_FAILURE #======================#
-class BlockedPathLoaderException(PathLoaderException):
+class BlockedPathLoaderException(PathValidationLoaderException):
     """
     Role:
         - Error Tracing

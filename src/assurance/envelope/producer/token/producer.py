@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import RootEnvelopeProducer, TokenLoader, TokenValidatorToolkit
+from assurance import RootEnvelopeProducer, TokenValidationLoader, TokenValidatorToolkit
 from domain import (
     Footstep, Formation, HomeSquare, Team, Token, TokenDeployment,
     TokenPrimeExtract
@@ -48,17 +48,17 @@ class TokenEnvelopeProducer(RootEnvelopeProducer[Token]):
     
     def __init__(
             self,
-            loader: Optional[TokenLoader] | None = None
+            loader: Optional[TokenValidationLoader] | None = None
     ):
         """
         Args:
             loader: Optional[TokenLoader]
         """
-        super().__init__(loader=loader or TokenLoader())
+        super().__init__(loader=loader or TokenValidationLoader())
     
     @property
-    def loader(self) -> TokenLoader:
-        return cast(TokenLoader, super().loader)
+    def loader(self) -> TokenValidationLoader:
+        return cast(TokenValidationLoader, super().loader)
     
     @property
     def toolkit(self) -> TokenValidatorToolkit:

@@ -13,7 +13,7 @@ from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    TokenEnvelopeProducer, TokenEnvelopeRouter, TokenLoader,
+    TokenEnvelopeProducer, TokenEnvelopeRouter, TokenValidationLoader,
     TokenValidatorToolkit, ModelValidator
 )
 from domain import Token
@@ -46,7 +46,7 @@ class TokenValidator(ModelValidator[Token]):
     
     def __init__(
             self,
-            loader: Optional[TokenLoader] | None = None,
+            loader: Optional[TokenValidationLoader] | None = None,
             envelope_producer: Optional[TokenEnvelopeProducer] | None = None,
             envelope_validator: Optional[TokenEnvelopeRouter] | None = None,
     ):
@@ -56,13 +56,13 @@ class TokenValidator(ModelValidator[Token]):
             envelope_producer: Optional[TokenEnvelopeProducer]
             envelope_validator: Optional[TokenEnvelopeRouter] 
         """
-        super().__init__(loader=loader or TokenLoader())
+        super().__init__(loader=loader or TokenValidationLoader())
         self._envelope_producer = envelope_producer or TokenEnvelopeProducer()
         self._envelope_validator = envelope_validator or TokenEnvelopeRouter()
     
     @property
-    def loader(self) -> TokenLoader:
-        return cast(TokenLoader, super().loader)
+    def loader(self) -> TokenValidationLoader:
+        return cast(TokenValidationLoader, super().loader)
     
     @property
     def toolkit(self) -> TokenValidatorToolkit:

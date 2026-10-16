@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ManeuverLoader, ManeuverValidatorToolkit, ModelValidator
+from assurance import ManeuverValidationLoader, ManeuverValidatorToolkit, ModelValidator
 from domain import Path, Token, Maneuver, ManeuverBlueprint, ManeuverPrimeExtract
 from err import ManeuverCarrierEmptyException, ManeuverValidatorException
 from exchange import PathValidationRequest, TokenValidationRequest
@@ -40,17 +40,17 @@ class ManeuverValidator(ModelValidator[Maneuver]):
     
     def __init__(
             self,
-            loader: Optional[ManeuverLoader] | None = None,
+            loader: Optional[ManeuverValidationLoader] | None = None,
     ):
         """
         Args:
             loader: Optional[ManeuverLoader]
         """
-        super().__init__(loader=loader or ManeuverLoader())
+        super().__init__(loader=loader or ManeuverValidationLoader())
         
     @property
-    def loader(self) -> ManeuverLoader:
-        return cast(ManeuverLoader, super().loader)
+    def loader(self) -> ManeuverValidationLoader:
+        return cast(ManeuverValidationLoader, super().loader)
     
     @property
     def toolkit(self) -> ManeuverValidatorToolkit:

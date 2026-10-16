@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import RankLoaderException
+from err import RankValidationLoaderException
 
 __all__ = [
     # ======================# WRONG_PERSONA_ERROR #======================#
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# WRONG_PERSONA_ERROR #======================#
-class WrongPersonaException(RankLoaderException):
+class WrongPersonaException(RankValidationLoaderException):
     """
     Role:
         - Error Tracing

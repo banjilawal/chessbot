@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import StructLoader, StructValidatorToolkit, Validator
+from assurance import StructValidationLoader, StructValidatorToolkit, Validator
 from domain import Struct
 from transit import StructCarrier
 from util import LoggingLevelRouter
@@ -40,7 +40,7 @@ class StructValidator(Validator[T], ABC, Generic[T]):
         Validator
     """
     
-    def __init__(self, loader: StructLoader[T]):
+    def __init__(self, loader: StructValidationLoader[T]):
         """
         Args:
             loader: StructValidatorToolkit[T]
@@ -48,8 +48,8 @@ class StructValidator(Validator[T], ABC, Generic[T]):
         super().__init__(loader=loader)
     
     @property
-    def loader(self) -> StructLoader[T]:
-        return cast(StructLoader[T], super().loader)
+    def loader(self) -> StructValidationLoader[T]:
+        return cast(StructValidationLoader[T], super().loader)
     
     @property
     def toolkit(self) -> StructValidatorToolkit[T]:

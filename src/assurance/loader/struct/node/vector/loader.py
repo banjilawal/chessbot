@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import NodeLoader, VectorNodeValidatorToolkit
+from assurance import NodeValidationLoader, VectorNodeValidatorToolkit
 from domain import VectorNode, VectorNode
 from err import (
     EmptyVectorNodeCarrierException, VectorNodeLoaderException,
@@ -24,7 +24,7 @@ from transit import VectorNodeCarrier
 from util import LoggingLevelRouter
 
 
-class VectorNodeLoader(NodeLoader[VectorNode]):
+class VectorNodeLoader(NodeValidationLoader[VectorNode]):
     """
     Role
         - Integrity, Consistency Maintenance

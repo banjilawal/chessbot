@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import PlayerLoaderException
+from err import PlayerValidationLoaderException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# HUMAN_PLAYER_LOADER_FAILURE #======================#
-class HumanPlayerLoaderException(PlayerLoaderException):
+class HumanPlayerLoaderException(PlayerValidationLoaderException):
     """
     Role:
         - Error Tracing

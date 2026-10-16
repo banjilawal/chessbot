@@ -13,7 +13,7 @@ from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    ModelValidator, SquareEnvelopeProducer, SquareEnvelopeRouter, SquareLoader,
+    ModelValidator, SquareEnvelopeProducer, SquareEnvelopeRouter, SquareValidationLoader,
     SquareValidatorToolkit
 )
 from domain import Square
@@ -48,7 +48,7 @@ class SquareValidator(ModelValidator[Square]):
     
     def __init__(
             self,
-            loader: Optional[SquareLoader] | None = None,
+            loader: Optional[SquareValidationLoader] | None = None,
             envelope_router: Optional[SquareEnvelopeRouter] | None = None,
             envelope_producer: Optional[SquareEnvelopeProducer] | None = None,
     ):
@@ -58,13 +58,13 @@ class SquareValidator(ModelValidator[Square]):
             envelope_router: Optional[SquareEnvelopeRouter]
             envelope_producer: Optional[SquareEnvelopeProducer]
         """
-        super().__init__(loader=loader or SquareLoader())
+        super().__init__(loader=loader or SquareValidationLoader())
         self._envelope_router = envelope_router or SquareEnvelopeRouter()
         self._envelope_producer = envelope_producer or SquareEnvelopeProducer()
         
     @property
-    def loader(self) -> SquareLoader:
-        return cast(SquareLoader, super().loader)
+    def loader(self) -> SquareValidationLoader:
+        return cast(SquareValidationLoader, super().loader)
     
     @property
     def toolkit(self) -> SquareValidatorToolkit:

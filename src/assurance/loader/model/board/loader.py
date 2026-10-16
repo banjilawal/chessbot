@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelLoader, BoardValidatorToolkit
+from assurance import ModelValidationLoader, BoardValidatorToolkit
 from domain import Board, BoardPrimeExtract
 from err import (
-    BoardCarrierEmptyException, BoardLoaderException, BoardValidationRequestNullException
+    BoardCarrierEmptyException, BoardValidationLoaderException, BoardValidationRequestNullException
 )
 from exchange import BoardValidationRequest
 from transit import BoardCarrier
@@ -23,7 +23,7 @@ from transit import BoardCarrier
 from util import LoggingLevelRouter
 
 
-class BoardLoader(ModelLoader[Board]):
+class BoardValidationLoader(ModelValidationLoader[Board]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -94,11 +94,11 @@ class BoardLoader(ModelLoader[Board]):
         if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                BoardLoaderException(
+                BoardValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=BoardLoaderException.MSG,
-                    err_code=BoardLoaderException.ERR_CODE,
+                    msg=BoardValidationLoaderException.MSG,
+                    err_code=BoardValidationLoaderException.ERR_CODE,
                     ex=priming.exception,
                 )
             )
@@ -114,11 +114,11 @@ class BoardLoader(ModelLoader[Board]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                BoardLoaderException(
+                BoardValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=BoardLoaderException.MSG,
-                    err_code=BoardLoaderException.ERR_CODE,
+                    msg=BoardValidationLoaderException.MSG,
+                    err_code=BoardValidationLoaderException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -130,11 +130,11 @@ class BoardLoader(ModelLoader[Board]):
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                BoardLoaderException(
+                BoardValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=BoardLoaderException.MSG,
-                    err_code=BoardLoaderException.ERR_CODE,
+                    msg=BoardValidationLoaderException.MSG,
+                    err_code=BoardValidationLoaderException.ERR_CODE,
                     ex=BoardCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,

@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelLoader, GameValidatorToolkit
+from assurance import ModelValidationLoader, GameValidatorToolkit
 from domain import Game, GamePrimeExtract
 from err import (
-    GameCarrierEmptyException, GameLoaderException, GameValidationRequestNullException
+    GameCarrierEmptyException, GameValidationLoaderException, GameValidationRequestNullException
 )
 from exchange import GameValidationRequest
 from transit import GameCarrier
@@ -23,7 +23,7 @@ from transit import GameCarrier
 from util import LoggingLevelRouter
 
 
-class GameLoader(ModelLoader[Game]):
+class GameValidationLoader(ModelValidationLoader[Game]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -94,11 +94,11 @@ class GameLoader(ModelLoader[Game]):
         if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                GameLoaderException(
+                GameValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=GameLoaderException.MSG,
-                    err_code=GameLoaderException.ERR_CODE,
+                    msg=GameValidationLoaderException.MSG,
+                    err_code=GameValidationLoaderException.ERR_CODE,
                     ex=priming.exception,
                 )
             )
@@ -114,11 +114,11 @@ class GameLoader(ModelLoader[Game]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                GameLoaderException(
+                GameValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=GameLoaderException.MSG,
-                    err_code=GameLoaderException.ERR_CODE,
+                    msg=GameValidationLoaderException.MSG,
+                    err_code=GameValidationLoaderException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -130,11 +130,11 @@ class GameLoader(ModelLoader[Game]):
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                GameLoaderException(
+                GameValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=GameLoaderException.MSG,
-                    err_code=GameLoaderException.ERR_CODE,
+                    msg=GameValidationLoaderException.MSG,
+                    err_code=GameValidationLoaderException.ERR_CODE,
                     ex=GameCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,

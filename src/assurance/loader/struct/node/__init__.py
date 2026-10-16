@@ -14,4 +14,4 @@ from .vector import *
 from .warning import *
 
 # Module
-from .loader import NodeLoader
+from .loader import NodeValidationLoader

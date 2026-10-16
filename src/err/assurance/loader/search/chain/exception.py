@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ContextLoaderException
+from err import ContextValidationLoaderException
 from artifcat import MethodResultType
 
 
 __all__ = [
     # ======================# CHAIN_CONTEXT_LOADER_FAILURE #======================#
-    "ChainContextLoaderException",
+    "ChainContextValidationLoaderException",
 ]
 
 # ======================# CHAIN_CONTEXT_LOADER_FAILURE #======================#
-class ChainContextLoaderException(ContextLoaderException):
+class ChainContextValidationLoaderException(ContextValidationLoaderException):
     """
     Role:
         - Error Tracing

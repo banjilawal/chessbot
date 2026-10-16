@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ContextLoaderException
+from err import ContextValidationLoaderException
 from artifcat import MethodResultType
 
 
 __all__ = [
     # ======================# SNAPSHOT_CONTEXT_LOADER_FAILURE #======================#
-    "SnapshotContextLoaderException",
+    "SnapshotContextValidationLoaderException",
 ]
 
 # ======================# SNAPSHOT_CONTEXT_LOADER_FAILURE #======================#
-class SnapshotContextLoaderException(ContextLoaderException):
+class SnapshotContextValidationLoaderException(ContextValidationLoaderException):
     """
     Role:
         - Error Tracing

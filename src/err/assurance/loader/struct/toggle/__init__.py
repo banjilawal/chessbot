@@ -13,4 +13,4 @@ version: 0.0.2
 from .cartesian import *
 
 # Modules
-from .exception import ToggleLoaderException
+from .exception import ToggleValidationLoaderException

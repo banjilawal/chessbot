@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ContextLoaderException
+from err import ContextValidationLoaderException
 from artifcat import MethodResultType
 
 
 __all__ = [
     # ======================# SQUARE_CONTEXT_LOADER_FAILURE #======================#
-    "SquareContextLoaderException",
+    "SquareContextValidationLoaderException",
 ]
 
 # ======================# SQUARE_CONTEXT_LOADER_FAILURE #======================#
-class SquareContextLoaderException(ContextLoaderException):
+class SquareContextValidationLoaderException(ContextValidationLoaderException):
     """
     Role:
         - Error Tracing

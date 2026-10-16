@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import BinderLoader, BinderValidatorToolkit, StructValidator
+from assurance import BinderValidationLoader, BinderValidatorToolkit, StructValidator
 from domain import ArchetypeBinder
 from transit import BinderCarrier
 from util import LoggingLevelRouter
@@ -40,7 +40,7 @@ class BinderValidator(StructValidator[T], ABC, Generic[T]):
         StructValidator
     """
     
-    def __init__(self, loader: BinderLoader[T]):
+    def __init__(self, loader: BinderValidationLoader[T]):
         """
         Args:
             loader: BinderValidatorToolkit[T]

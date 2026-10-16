@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelLoader, ArenaValidatorToolkit
+from assurance import ModelValidationLoader, ArenaValidatorToolkit
 from domain import Arena, ArenaPrimeExtract
 from err import (
-    ArenaCarrierEmptyException, ArenaLoaderException, ArenaValidationRequestNullException
+    ArenaCarrierEmptyException, ArenaValidationLoaderException, ArenaValidationRequestNullException
 )
 from exchange import ArenaValidationRequest
 from transit import ArenaCarrier
@@ -23,7 +23,7 @@ from transit import ArenaCarrier
 from util import LoggingLevelRouter
 
 
-class ArenaLoader(ModelLoader[Arena]):
+class ArenaValidationLoader(ModelValidationLoader[Arena]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -94,11 +94,11 @@ class ArenaLoader(ModelLoader[Arena]):
         if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ArenaLoaderException(
+                ArenaValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ArenaLoaderException.MSG,
-                    err_code=ArenaLoaderException.ERR_CODE,
+                    msg=ArenaValidationLoaderException.MSG,
+                    err_code=ArenaValidationLoaderException.ERR_CODE,
                     ex=priming.exception,
                 )
             )
@@ -114,11 +114,11 @@ class ArenaLoader(ModelLoader[Arena]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ArenaLoaderException(
+                ArenaValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ArenaLoaderException.MSG,
-                    err_code=ArenaLoaderException.ERR_CODE,
+                    msg=ArenaValidationLoaderException.MSG,
+                    err_code=ArenaValidationLoaderException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -130,11 +130,11 @@ class ArenaLoader(ModelLoader[Arena]):
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ArenaLoaderException(
+                ArenaValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ArenaLoaderException.MSG,
-                    err_code=ArenaLoaderException.ERR_CODE,
+                    msg=ArenaValidationLoaderException.MSG,
+                    err_code=ArenaValidationLoaderException.ERR_CODE,
                     ex=ArenaCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,

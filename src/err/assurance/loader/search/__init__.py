@@ -15,4 +15,4 @@ from .graph import *
 from .stack import *
 
 # Modules
-from .exception import ContextLoaderException
+from .exception import ContextValidationLoaderException

@@ -16,4 +16,4 @@ from .node import *
 from .register import *
 
 # Module
-from .loader import StructLoader
+from .loader import StructValidationLoader

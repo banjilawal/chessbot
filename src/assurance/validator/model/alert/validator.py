@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, List, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import AlertLoader, AlertValidatorToolkit, ModelValidator
+from assurance import AlertValidationLoader, AlertValidatorToolkit, ModelValidator
 from domain import CheckmateEncounter, Encounter, Alert, AlertBlueprint, AlertPrimeExtract, EncounterWarning
 from err import AlertCarrierEmptyException, AlertValidatorException
 from exchange import EncounterValidationRequest
@@ -40,17 +40,17 @@ class AlertValidator(ModelValidator[Alert]):
     
     def __init__(
             self,
-            loader: Optional[AlertLoader] | None = None,
+            loader: Optional[AlertValidationLoader] | None = None,
     ):
         """
         Args:
             loader: Optional[AlertLoader]
         """
-        super().__init__(loader=loader or AlertLoader())
+        super().__init__(loader=loader or AlertValidationLoader())
         
     @property
-    def loader(self) -> AlertLoader:
-        return cast(AlertLoader, super().loader)
+    def loader(self) -> AlertValidationLoader:
+        return cast(AlertValidationLoader, super().loader)
     
     @property
     def toolkit(self) -> AlertValidatorToolkit:

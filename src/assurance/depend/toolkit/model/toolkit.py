@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar, cast
 
-from assurance import ModelLoader, ModelWrapperDependency, ValidatorToolkit
+from assurance import ModelValidationLoader, ModelWrapperDependency, ValidatorToolkit
 from domain import Model, ModelManifest, ModelNullGroup, ModelTypeUnion
 
 T = TypeVar("T", bound="Model")

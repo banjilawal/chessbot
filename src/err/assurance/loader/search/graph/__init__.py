@@ -14,4 +14,4 @@ from .edge import *
 from .station import *
 
 # Modules
-from .exception import GraphContextLoaderException
+from .exception import GraphContextValidationLoaderException

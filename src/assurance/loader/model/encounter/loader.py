@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelLoader, EncounterValidatorToolkit
+from assurance import ModelValidationLoader, EncounterValidatorToolkit
 from domain import Encounter, EncounterPrimeExtract
 from err import (
-    EncounterCarrierEmptyException, EncounterLoaderException,
+    EncounterCarrierEmptyException, EncounterValidationLoaderException,
     EncounterValidationRequestNullException
 )
 from exchange import EncounterValidationRequest
@@ -24,7 +24,7 @@ from transit import EncounterCarrier
 from util import LoggingLevelRouter
 
 
-class EncounterLoader(ModelLoader[Encounter]):
+class EncounterValidationLoader(ModelValidationLoader[Encounter]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -95,11 +95,11 @@ class EncounterLoader(ModelLoader[Encounter]):
         if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                EncounterLoaderException(
+                EncounterValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=EncounterLoaderException.MSG,
-                    err_code=EncounterLoaderException.ERR_CODE,
+                    msg=EncounterValidationLoaderException.MSG,
+                    err_code=EncounterValidationLoaderException.ERR_CODE,
                     ex=priming.exception,
                 )
             )
@@ -115,11 +115,11 @@ class EncounterLoader(ModelLoader[Encounter]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                EncounterLoaderException(
+                EncounterValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=EncounterLoaderException.MSG,
-                    err_code=EncounterLoaderException.ERR_CODE,
+                    msg=EncounterValidationLoaderException.MSG,
+                    err_code=EncounterValidationLoaderException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -131,11 +131,11 @@ class EncounterLoader(ModelLoader[Encounter]):
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                EncounterLoaderException(
+                EncounterValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=EncounterLoaderException.MSG,
-                    err_code=EncounterLoaderException.ERR_CODE,
+                    msg=EncounterValidationLoaderException.MSG,
+                    err_code=EncounterValidationLoaderException.ERR_CODE,
                     ex=EncounterCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,

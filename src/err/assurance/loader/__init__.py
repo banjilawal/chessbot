@@ -15,4 +15,4 @@ from .search import *
 from .struct import *
 
 # Modules
-from .exception import LoaderException
+from .exception import ValidationLoaderException

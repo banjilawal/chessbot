@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import RegisterLoader, SquareRegisterValidatorToolkit
+from assurance import RegisterValidationLoader, SquareRegisterValidatorToolkit
 from domain import SquareRegister
 from err import (
     SquareRegisterConsistencyException, SquareRegisterEmptyException, SquareRegisterLoaderException,
@@ -23,7 +23,7 @@ from exchange import SquareRegisterValidationRequest
 from util import LoggingLevelRouter
 
 
-class SquareRegisterLoader(RegisterLoader[SquareRegister]):
+class SquareRegisterLoader(RegisterValidationLoader[SquareRegister]):
     """
     Role
         - Integrity, Consistency Maintenance

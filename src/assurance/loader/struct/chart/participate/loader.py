@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ChartLoader, ParticipationValidatorToolkit
+from assurance import ChartValidationLoader, ParticipationValidatorToolkit
 from domain import Participation, Participation
 from err import (
     ParticipationCarrierEmptyException, ParticipationLoaderException,
@@ -24,7 +24,7 @@ from transit import ParticipationCarrier
 from util import LoggingLevelRouter
 
 
-class ParticipationLoader(ChartLoader[Participation]):
+class ParticipationLoader(ChartValidationLoader[Participation]):
     """
     Role
         - Integrity, Consistency Maintenance

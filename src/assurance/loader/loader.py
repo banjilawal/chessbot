@@ -19,7 +19,7 @@ from util import LoggingLevelRouter
 
 T = TypeVar("T")
 
-class Loader(ABC, Generic[T]):
+class ValidationLoader(ABC, Generic[T]):
     """
     Role
         - Integrity, Consistency Maintenance

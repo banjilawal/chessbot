@@ -13,7 +13,7 @@ from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    EncounterEnvelopeProducer, EncounterEnvelopeRouter, EncounterLoader,
+    EncounterEnvelopeProducer, EncounterEnvelopeRouter, EncounterValidationLoader,
     EncounterValidatorToolkit, ModelValidator
 )
 from domain import Encounter
@@ -46,7 +46,7 @@ class EncounterValidator(ModelValidator[Encounter]):
     
     def __init__(
             self,
-            loader: Optional[EncounterLoader] | None = None,
+            loader: Optional[EncounterValidationLoader] | None = None,
             envelope_producer: Optional[EncounterEnvelopeProducer] | None = None,
             envelope_validator: Optional[EncounterEnvelopeRouter] | None = None,
     ):
@@ -56,13 +56,13 @@ class EncounterValidator(ModelValidator[Encounter]):
             envelope_producer: Optional[EncounterEnvelopeProducer]
             envelope_validator: Optional[EncounterEnvelopeRouter] 
         """
-        super().__init__(loader=loader or EncounterLoader())
+        super().__init__(loader=loader or EncounterValidationLoader())
         self._envelope_producer = envelope_producer or EncounterEnvelopeProducer()
         self._envelope_validator = envelope_validator or EncounterEnvelopeRouter()
     
     @property
-    def loader(self) -> EncounterLoader:
-        return cast(EncounterLoader, super().loader)
+    def loader(self) -> EncounterValidationLoader:
+        return cast(EncounterValidationLoader, super().loader)
     
     @property
     def toolkit(self) -> EncounterValidatorToolkit:

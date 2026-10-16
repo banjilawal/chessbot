@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelLoader, ManeuverValidatorToolkit
+from assurance import ModelValidationLoader, ManeuverValidatorToolkit
 from domain import Maneuver, ManeuverPrimeExtract
 from err import (
-    ManeuverCarrierEmptyException, ManeuverLoaderException, ManeuverValidationRequestNullException
+    ManeuverCarrierEmptyException, ManeuverValidationLoaderException, ManeuverValidationRequestNullException
 )
 from exchange import ManeuverValidationRequest
 from transit import ManeuverCarrier
@@ -23,7 +23,7 @@ from transit import ManeuverCarrier
 from util import LoggingLevelRouter
 
 
-class ManeuverLoader(ModelLoader[Maneuver]):
+class ManeuverValidationLoader(ModelValidationLoader[Maneuver]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -94,11 +94,11 @@ class ManeuverLoader(ModelLoader[Maneuver]):
         if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ManeuverLoaderException(
+                ManeuverValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ManeuverLoaderException.MSG,
-                    err_code=ManeuverLoaderException.ERR_CODE,
+                    msg=ManeuverValidationLoaderException.MSG,
+                    err_code=ManeuverValidationLoaderException.ERR_CODE,
                     ex=priming.exception,
                 )
             )
@@ -114,11 +114,11 @@ class ManeuverLoader(ModelLoader[Maneuver]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ManeuverLoaderException(
+                ManeuverValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ManeuverLoaderException.MSG,
-                    err_code=ManeuverLoaderException.ERR_CODE,
+                    msg=ManeuverValidationLoaderException.MSG,
+                    err_code=ManeuverValidationLoaderException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -130,11 +130,11 @@ class ManeuverLoader(ModelLoader[Maneuver]):
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ManeuverLoaderException(
+                ManeuverValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ManeuverLoaderException.MSG,
-                    err_code=ManeuverLoaderException.ERR_CODE,
+                    msg=ManeuverValidationLoaderException.MSG,
+                    err_code=ManeuverValidationLoaderException.ERR_CODE,
                     ex=ManeuverCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,

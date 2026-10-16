@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelLoader, CoordValidatorToolkit
+from assurance import ModelValidationLoader, CoordValidatorToolkit
 from domain import Coord, CoordPrimeExtract
 from err import (
-    CoordCarrierEmptyException, CoordLoaderException, CoordValidationRequestNullException
+    CoordCarrierEmptyException, CoordValidationLoaderException, CoordValidationRequestNullException
 )
 from exchange import CoordValidationRequest
 from transit import CoordCarrier
@@ -23,7 +23,7 @@ from transit import CoordCarrier
 from util import LoggingLevelRouter
 
 
-class CoordLoader(ModelLoader[Coord]):
+class CoordValidationLoader(ModelValidationLoader[Coord]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -94,11 +94,11 @@ class CoordLoader(ModelLoader[Coord]):
         if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CoordLoaderException(
+                CoordValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CoordLoaderException.MSG,
-                    err_code=CoordLoaderException.ERR_CODE,
+                    msg=CoordValidationLoaderException.MSG,
+                    err_code=CoordValidationLoaderException.ERR_CODE,
                     ex=priming.exception,
                 )
             )
@@ -114,11 +114,11 @@ class CoordLoader(ModelLoader[Coord]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CoordLoaderException(
+                CoordValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CoordLoaderException.MSG,
-                    err_code=CoordLoaderException.ERR_CODE,
+                    msg=CoordValidationLoaderException.MSG,
+                    err_code=CoordValidationLoaderException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -130,11 +130,11 @@ class CoordLoader(ModelLoader[Coord]):
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                CoordLoaderException(
+                CoordValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CoordLoaderException.MSG,
-                    err_code=CoordLoaderException.ERR_CODE,
+                    msg=CoordValidationLoaderException.MSG,
+                    err_code=CoordValidationLoaderException.ERR_CODE,
                     ex=CoordCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,

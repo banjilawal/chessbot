@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ModelLoaderException
+from err import ModelValidationLoaderException
 from artifcat import MethodResultType
 
 
 __all__ = [
     # ======================# RANK_LOADER_FAILURE #======================#
-    "RankLoaderException",
+    "RankValidationLoaderException",
 ]
 
 # ======================# RANK_LOADER_FAILURE #======================#
-class RankLoaderException(ModelLoaderException):
+class RankValidationLoaderException(ModelValidationLoaderException):
     """
     Role:
         - Error Tracing

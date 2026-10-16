@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import RootEnvelopeProducer, AccountLoader, AccountValidatorToolkit
+from assurance import RootEnvelopeProducer, AccountValidationLoader, AccountValidatorToolkit
 from domain import Account, AccountPrimeExtract
 from err import AccountCarrierEmptyException, AccountEnvelopeProducerException
 
@@ -42,17 +42,17 @@ class AccountEnvelopeProducer(RootEnvelopeProducer[Account]):
     
     def __init__(
             self,
-            loader: Optional[AccountLoader] | None = None
+            loader: Optional[AccountValidationLoader] | None = None
     ):
         """
         Args:
             loader: Optional[AccountLoader]
         """
-        super().__init__(loader=loader or AccountLoader())
+        super().__init__(loader=loader or AccountValidationLoader())
     
     @property
-    def loader(self) -> AccountLoader:
-        return cast(AccountLoader, super().loader)
+    def loader(self) -> AccountValidationLoader:
+        return cast(AccountValidationLoader, super().loader)
     
     @property
     def toolkit(self) -> AccountValidatorToolkit:

@@ -16,4 +16,4 @@ from .vector import *
 
 
 # Modules
-from .exception import RegisterLoaderException
+from .exception import RegisterValidationLoaderException

@@ -14,4 +14,4 @@ from .player import *
 from .team import *
 
 # Module
-from .loader import BinderLoader
+from .loader import BinderValidationLoader

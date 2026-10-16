@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import NodeLoaderException
+from err import NodeValidationLoaderException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# VECTOR_NODE_LOADER_FAILURE #======================#
-class VectorNodeLoaderException(NodeLoaderException):
+class VectorNodeLoaderException(NodeValidationLoaderException):
     """
     Role:
         - Error Tracing

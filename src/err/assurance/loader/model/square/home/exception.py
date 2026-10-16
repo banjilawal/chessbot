@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SquareLoaderException
+from err import SquareValidationLoaderException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# HOME_SQUARE_LOADER_FAILURE #======================#
-class HomeSquareLoaderException(SquareLoaderException):
+class HomeSquareLoaderException(SquareValidationLoaderException):
     """
     Role:
         - Error Tracing

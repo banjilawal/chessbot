@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ModelLoaderException
+from err import ModelValidationLoaderException
 from artifcat import MethodResultType
 
 
 __all__ = [
     # ======================# FOOTSTEP_LOADER_FAILURE #======================#
-    "FootstepLoaderException",
+    "FootstepValidationLoaderException",
 ]
 
 # ======================# FOOTSTEP_LOADER_FAILURE #======================#
-class FootstepLoaderException(ModelLoaderException):
+class FootstepValidationLoaderException(ModelValidationLoaderException):
     """
     Role:
         - Error Tracing

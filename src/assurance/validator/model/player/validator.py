@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidator, PlayerLoader, PlayerValidatorToolkit
+from assurance import ModelValidator, PlayerValidationLoader, PlayerValidatorToolkit
 from domain import Archetype, Account, Game, Player, PlayerBlueprint, PlayerPrimeExtract
 from err import (
     ArchetypeNullException, GameNullException, PlayerCarrierEmptyException,
@@ -41,16 +41,16 @@ class PlayerValidator(ModelValidator[Player]):
         ModelValidator
     """
     
-    def __init__(self, loader: Optional[PlayerLoader] | None = None):
+    def __init__(self, loader: Optional[PlayerValidationLoader] | None = None):
         """
         Args:
             loader: Optional[PlayerLoader]
         """
-        super().__init__(loader=loader or PlayerLoader())
+        super().__init__(loader=loader or PlayerValidationLoader())
     
     @property
-    def loader(self) -> PlayerLoader:
-        return cast(PlayerLoader, super().loader)
+    def loader(self) -> PlayerValidationLoader:
+        return cast(PlayerValidationLoader, super().loader)
     
     @property
     def toolkit(self) -> PlayerValidatorToolkit:

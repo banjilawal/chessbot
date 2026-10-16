@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidator, TeamLoader, TeamValidatorToolkit
+from assurance import ModelValidator, TeamValidationLoader, TeamValidatorToolkit
 from domain import Archetype, Board, Player, Team, TeamBlueprint, TeamPrimeExtract
 from err import ArchetypeNullException, TeamCarrierEmptyException, TeamValidatorException
 from exchange import BoardValidationRequest, PlayerValidationRequest
@@ -38,16 +38,16 @@ class TeamValidator(ModelValidator[Team]):
         ModelValidator
     """
     
-    def __init__(self, loader: Optional[TeamLoader] | None = None):
+    def __init__(self, loader: Optional[TeamValidationLoader] | None = None):
         """
         Args:
             loader: Optional[TeamLoader]
         """
-        super().__init__(loader=loader or TeamLoader())
+        super().__init__(loader=loader or TeamValidationLoader())
     
     @property
-    def loader(self) -> TeamLoader:
-        return cast(TeamLoader, super().loader)
+    def loader(self) -> TeamValidationLoader:
+        return cast(TeamValidationLoader, super().loader)
     
     @property
     def toolkit(self) -> TeamValidatorToolkit:

@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelLoader, TeamValidatorToolkit
+from assurance import ModelValidationLoader, TeamValidatorToolkit
 from domain import Team, TeamPrimeExtract
 from err import (
-    TeamCarrierEmptyException, TeamLoaderException, TeamValidationRequestNullException
+    TeamCarrierEmptyException, TeamValidationLoaderException, TeamValidationRequestNullException
 )
 from exchange import TeamValidationRequest
 from transit import TeamCarrier
@@ -23,7 +23,7 @@ from transit import TeamCarrier
 from util import LoggingLevelRouter
 
 
-class TeamLoader(ModelLoader[Team]):
+class TeamValidationLoader(ModelValidationLoader[Team]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -94,11 +94,11 @@ class TeamLoader(ModelLoader[Team]):
         if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamLoaderException(
+                TeamValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamLoaderException.MSG,
-                    err_code=TeamLoaderException.ERR_CODE,
+                    msg=TeamValidationLoaderException.MSG,
+                    err_code=TeamValidationLoaderException.ERR_CODE,
                     ex=priming.exception,
                 )
             )
@@ -114,11 +114,11 @@ class TeamLoader(ModelLoader[Team]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamLoaderException(
+                TeamValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamLoaderException.MSG,
-                    err_code=TeamLoaderException.ERR_CODE,
+                    msg=TeamValidationLoaderException.MSG,
+                    err_code=TeamValidationLoaderException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -130,11 +130,11 @@ class TeamLoader(ModelLoader[Team]):
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TeamLoaderException(
+                TeamValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamLoaderException.MSG,
-                    err_code=TeamLoaderException.ERR_CODE,
+                    msg=TeamValidationLoaderException.MSG,
+                    err_code=TeamValidationLoaderException.ERR_CODE,
                     ex=TeamCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,

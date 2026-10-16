@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import RegisterLoaderException
+from err import RegisterValidationLoaderException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# VECTOR_REGISTER_LOADER_FAILURE #======================#
-class VectorRegisterLoaderException(RegisterLoaderException):
+class VectorRegisterLoaderException(RegisterValidationLoaderException):
     """
     Role:
         - Error Tracing

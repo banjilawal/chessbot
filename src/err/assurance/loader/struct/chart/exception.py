@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import StructLoaderException
+from err import StructValidationLoaderException
 from artifcat import MethodResultType
 
 
 __all__ = [
     # ======================# CHART_LOADER_FAILURE #======================#
-    "ChartLoaderException",
+    "ChartValidationLoaderException",
 ]
 
 # ======================# CHART_LOADER_FAILURE #======================#
-class ChartLoaderException(StructLoaderException):
+class ChartValidationLoaderException(StructValidationLoaderException):
     """
     Role:
         - Error Tracing

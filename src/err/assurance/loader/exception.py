@@ -16,11 +16,11 @@ from artifcat import MethodResultType
 
 __all__ = [
     # ======================# BLUEPRINT_LOADER_FAILURE #======================#
-    "LoaderException",
+    "ValidationLoaderException",
 ]
 
 # ======================# BLUEPRINT_LOADER_FAILURE #======================#
-class LoaderException(AssuranceException):
+class ValidationLoaderException(AssuranceException):
     """
     Role:
         - Failure Tracing

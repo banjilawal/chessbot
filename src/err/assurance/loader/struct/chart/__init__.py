@@ -13,4 +13,4 @@ version: 0.0.2
 from .participant import *
 
 # Modules
-from .exception import ChartLoaderException
+from .exception import ChartValidationLoaderException

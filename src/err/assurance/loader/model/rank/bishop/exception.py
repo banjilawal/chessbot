@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import RankLoaderException
+from err import RankValidationLoaderException
 
 __all__ = [
     # ======================# BISHOP_LOADER_FAILURE #======================#
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# BISHOP_LOADER_FAILURE #======================#
-class BishopLoaderException(RankLoaderException):
+class BishopLoaderException(RankValidationLoaderException):
     """
     Role:
         - Error Tracing

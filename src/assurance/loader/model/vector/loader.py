@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelLoader, VectorValidatorToolkit
+from assurance import ModelValidationLoader, VectorValidatorToolkit
 from domain import Vector, VectorPrimeExtract
 from err import (
-    VectorCarrierEmptyException, VectorLoaderException, VectorValidationRequestNullException
+    VectorCarrierEmptyException, VectorValidationLoaderException, VectorValidationRequestNullException
 )
 from exchange import VectorValidationRequest
 from transit import VectorCarrier
@@ -23,7 +23,7 @@ from transit import VectorCarrier
 from util import LoggingLevelRouter
 
 
-class VectorLoader(ModelLoader[Vector]):
+class VectorValidationLoader(ModelValidationLoader[Vector]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -94,11 +94,11 @@ class VectorLoader(ModelLoader[Vector]):
         if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorLoaderException(
+                VectorValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorLoaderException.MSG,
-                    err_code=VectorLoaderException.ERR_CODE,
+                    msg=VectorValidationLoaderException.MSG,
+                    err_code=VectorValidationLoaderException.ERR_CODE,
                     ex=priming.exception,
                 )
             )
@@ -114,11 +114,11 @@ class VectorLoader(ModelLoader[Vector]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorLoaderException(
+                VectorValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorLoaderException.MSG,
-                    err_code=VectorLoaderException.ERR_CODE,
+                    msg=VectorValidationLoaderException.MSG,
+                    err_code=VectorValidationLoaderException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -130,11 +130,11 @@ class VectorLoader(ModelLoader[Vector]):
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                VectorLoaderException(
+                VectorValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorLoaderException.MSG,
-                    err_code=VectorLoaderException.ERR_CODE,
+                    msg=VectorValidationLoaderException.MSG,
+                    err_code=VectorValidationLoaderException.ERR_CODE,
                     ex=VectorCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import PathLoader, PathValidatorToolkit, ModelValidator
+from assurance import PathValidationLoader, PathValidatorToolkit, ModelValidator
 from domain import Path, PathBlueprint, PathPrimeExtract, SquareRegister
 from err import PathCarrierEmptyException, PathValidatorException
 from exchange import SquareRegisterValidationRequest
@@ -41,17 +41,17 @@ class PathValidator(ModelValidator[Path]):
     
     def __init__(
             self,
-            loader: Optional[PathLoader] | None = None,
+            loader: Optional[PathValidationLoader] | None = None,
     ):
         """
         Args:
             loader: Optional[PathLoader]
         """
-        super().__init__(loader=loader or PathLoader())
+        super().__init__(loader=loader or PathValidationLoader())
         
     @property
-    def loader(self) -> PathLoader:
-        return cast(PathLoader, super().loader)
+    def loader(self) -> PathValidationLoader:
+        return cast(PathValidationLoader, super().loader)
     
     @property
     def toolkit(self) -> PathValidatorToolkit:

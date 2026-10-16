@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelLoader, AccountValidatorToolkit
+from assurance import ModelValidationLoader, AccountValidatorToolkit
 from domain import Account, AccountPrimeExtract
 from err import (
-    AccountCarrierEmptyException, AccountLoaderException, AccountValidationRequestNullException
+    AccountCarrierEmptyException, AccountValidationLoaderException, AccountValidationRequestNullException
 )
 from exchange import AccountValidationRequest
 from transit import AccountCarrier
@@ -23,7 +23,7 @@ from transit import AccountCarrier
 from util import LoggingLevelRouter
 
 
-class AccountLoader(ModelLoader[Account]):
+class AccountValidationLoader(ModelValidationLoader[Account]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -94,11 +94,11 @@ class AccountLoader(ModelLoader[Account]):
         if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                AccountLoaderException(
+                AccountValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountLoaderException.MSG,
-                    err_code=AccountLoaderException.ERR_CODE,
+                    msg=AccountValidationLoaderException.MSG,
+                    err_code=AccountValidationLoaderException.ERR_CODE,
                     ex=priming.exception,
                 )
             )
@@ -114,11 +114,11 @@ class AccountLoader(ModelLoader[Account]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                AccountLoaderException(
+                AccountValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountLoaderException.MSG,
-                    err_code=AccountLoaderException.ERR_CODE,
+                    msg=AccountValidationLoaderException.MSG,
+                    err_code=AccountValidationLoaderException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -130,11 +130,11 @@ class AccountLoader(ModelLoader[Account]):
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                AccountLoaderException(
+                AccountValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountLoaderException.MSG,
-                    err_code=AccountLoaderException.ERR_CODE,
+                    msg=AccountValidationLoaderException.MSG,
+                    err_code=AccountValidationLoaderException.ERR_CODE,
                     ex=AccountCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,

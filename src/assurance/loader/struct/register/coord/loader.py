@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import RegisterLoader, CoordRegisterValidatorToolkit
+from assurance import RegisterValidationLoader, CoordRegisterValidatorToolkit
 from domain import CoordRegister
 from err import (
     CoordRegisterConsistencyException, CoordRegisterEmptyException, CoordRegisterLoaderException,
@@ -23,7 +23,7 @@ from exchange import CoordRegisterValidationRequest
 from util import LoggingLevelRouter
 
 
-class CoordRegisterLoader(RegisterLoader[CoordRegister]):
+class CoordRegisterLoader(RegisterValidationLoader[CoordRegister]):
     """
     Role
         - Integrity, Consistency Maintenance

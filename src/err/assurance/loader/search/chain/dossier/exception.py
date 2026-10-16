@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ChainContextLoaderException
+from err import ChainContextValidationLoaderException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# DOSSIER_NODE_CONTEXT_LOADER_FAILURE #======================#
-class DossierNodeContextLoaderException(ChainContextLoaderException):
+class DossierNodeContextLoaderException(ChainContextValidationLoaderException):
     """
     Role:
         - Error Tracing

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidator, VectorLoader, VectorValidatorToolkit
+from assurance import ModelValidator, VectorValidationLoader, VectorValidatorToolkit
 from domain import Vector, VectorBlueprint, VectorPrimeExtract
 from err import VectorCarrierEmptyException, VectorValidatorException
 from transit import VectorCarrier
@@ -39,17 +39,17 @@ class VectorValidator(ModelValidator[Vector]):
     
     def __init__(
             self,
-            loader: Optional[VectorLoader] | None = None,
+            loader: Optional[VectorValidationLoader] | None = None,
     ):
         """
         Args:
             loader: Optional[VectorLoader]
         """
-        super().__init__(loader=loader or VectorLoader())
+        super().__init__(loader=loader or VectorValidationLoader())
     
     @property
-    def loader(self) -> VectorLoader:
-        return cast(VectorLoader, super().loader)
+    def loader(self) -> VectorValidationLoader:
+        return cast(VectorValidationLoader, super().loader)
     
     @property
     def toolkit(self) -> VectorValidatorToolkit:

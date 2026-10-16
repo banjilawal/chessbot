@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ChartLoaderException
+from err import ChartValidationLoaderException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# ENCOUNTER_TOKEN_CHART_LOADER_FAILURE #======================#
-class ParticipationLoaderException(ChartLoaderException):
+class ParticipationLoaderException(ChartValidationLoaderException):
     """
     Role:
         - Error Tracing

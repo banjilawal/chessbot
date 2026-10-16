@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ModelLoaderException
+from err import ModelValidationLoaderException
 from artifcat import MethodResultType
 
 
 __all__ = [
     # ======================# VECTOR_LOADER_FAILURE #======================#
-    "VectorLoaderException",
+    "VectorValidationLoaderException",
 ]
 
 # ======================# VECTOR_LOADER_FAILURE #======================#
-class VectorLoaderException(ModelLoaderException):
+class VectorValidationLoaderException(ModelValidationLoaderException):
     """
     Role:
         - Error Tracing

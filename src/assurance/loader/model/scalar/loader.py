@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelLoader, ScalarValidatorToolkit
+from assurance import ModelValidationLoader, ScalarValidatorToolkit
 from domain import Scalar, ScalarPrimeExtract
 from err import (
-    ScalarCarrierEmptyException, ScalarLoaderException, ScalarValidationRequestNullException
+    ScalarCarrierEmptyException, ScalarValidationLoaderException, ScalarValidationRequestNullException
 )
 from exchange import ScalarValidationRequest
 from transit import ScalarCarrier
@@ -23,7 +23,7 @@ from transit import ScalarCarrier
 from util import LoggingLevelRouter
 
 
-class ScalarLoader(ModelLoader[Scalar]):
+class ScalarValidationLoader(ModelValidationLoader[Scalar]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -94,11 +94,11 @@ class ScalarLoader(ModelLoader[Scalar]):
         if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ScalarLoaderException(
+                ScalarValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ScalarLoaderException.MSG,
-                    err_code=ScalarLoaderException.ERR_CODE,
+                    msg=ScalarValidationLoaderException.MSG,
+                    err_code=ScalarValidationLoaderException.ERR_CODE,
                     ex=priming.exception,
                 )
             )
@@ -114,11 +114,11 @@ class ScalarLoader(ModelLoader[Scalar]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ScalarLoaderException(
+                ScalarValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ScalarLoaderException.MSG,
-                    err_code=ScalarLoaderException.ERR_CODE,
+                    msg=ScalarValidationLoaderException.MSG,
+                    err_code=ScalarValidationLoaderException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -130,11 +130,11 @@ class ScalarLoader(ModelLoader[Scalar]):
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                ScalarLoaderException(
+                ScalarValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ScalarLoaderException.MSG,
-                    err_code=ScalarLoaderException.ERR_CODE,
+                    msg=ScalarValidationLoaderException.MSG,
+                    err_code=ScalarValidationLoaderException.ERR_CODE,
                     ex=ScalarCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,

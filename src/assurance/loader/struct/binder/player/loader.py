@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import BinderLoader, PlayerBinderValidatorToolkit
+from assurance import BinderValidationLoader, PlayerBinderValidatorToolkit
 from domain import PlayerBinder, PlayerBinderPrimeExtract
 from err import (
     PlayerBinderCarrierEmptyException, PlayerBinderConsistencyException,
@@ -24,7 +24,7 @@ from transit import PlayerBinderCarrier
 from util import LoggingLevelRouter
 
 
-class PlayerBinderLoader(BinderLoader[PlayerBinder]):
+class PlayerBinderLoader(BinderValidationLoader[PlayerBinder]):
     """
     Role
         - Integrity, Consistency Maintenance

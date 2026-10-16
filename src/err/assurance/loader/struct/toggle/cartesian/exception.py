@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 
-from err import ToggleLoaderException
+from err import ToggleValidationLoaderException
 from artifcat import MethodResultType
 
 
@@ -22,7 +22,7 @@ __all__ = [
 ]
 
 # ======================# CARTESIAN_TOGGLE_LOADER_FAILURE #======================#
-class CartesianToggleLoaderException(ToggleLoaderException):
+class CartesianToggleLoaderException(ToggleValidationLoaderException):
     """
     Role:
         - Error Tracing

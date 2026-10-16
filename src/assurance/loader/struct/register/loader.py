@@ -13,13 +13,13 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import RegisterValidatorToolkit, StructLoader
+from assurance import RegisterValidatorToolkit, StructValidationLoader
 from domain import Register, Register
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Register")
 
-class RegisterLoader(StructLoader[T], ABC, Generic[T]):
+class RegisterValidationLoader(StructValidationLoader[T], ABC, Generic[T]):
     """
     Role
         - Integrity, Consistency Maintenance

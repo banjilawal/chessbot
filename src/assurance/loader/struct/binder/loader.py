@@ -13,13 +13,13 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import BinderValidatorToolkit, StructLoader
+from assurance import BinderValidatorToolkit, StructValidationLoader
 from domain import ArchetypeBinder
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="ArchetypeBinder")
 
-class BinderLoader(StructLoader[T], ABC, Generic[T]):
+class BinderValidationLoader(StructValidationLoader[T], ABC, Generic[T]):
     """
     Role
         - Integrity, Consistency Maintenance

@@ -30,4 +30,4 @@ from .token import *
 from .vector import *
 
 # Module
-from .loader import ModelLoader
+from .loader import ModelValidationLoader

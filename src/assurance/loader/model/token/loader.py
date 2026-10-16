@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelLoader, TokenValidatorToolkit
+from assurance import ModelValidationLoader, TokenValidatorToolkit
 from domain import Token, TokenBlueprint, TokenPrimeExtract
 from err import (
-    TokenCarrierEmptyException, TokenLoaderException, TokenValidationRequestNullException
+    TokenCarrierEmptyException, TokenValidationLoaderException, TokenValidationRequestNullException
 )
 from exchange import TokenValidationRequest
 from transit import TokenCarrier
@@ -23,7 +23,7 @@ from transit import TokenCarrier
 from util import LoggingLevelRouter
 
 
-class TokenLoader(ModelLoader[Token]):
+class TokenValidationLoader(ModelValidationLoader[Token]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -94,11 +94,11 @@ class TokenLoader(ModelLoader[Token]):
         if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenLoaderException(
+                TokenValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenLoaderException.MSG,
-                    err_code=TokenLoaderException.ERR_CODE,
+                    msg=TokenValidationLoaderException.MSG,
+                    err_code=TokenValidationLoaderException.ERR_CODE,
                     ex=priming.exception,
                 )
             )
@@ -114,11 +114,11 @@ class TokenLoader(ModelLoader[Token]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenLoaderException(
+                TokenValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenLoaderException.MSG,
-                    err_code=TokenLoaderException.ERR_CODE,
+                    msg=TokenValidationLoaderException.MSG,
+                    err_code=TokenValidationLoaderException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -130,11 +130,11 @@ class TokenLoader(ModelLoader[Token]):
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenLoaderException(
+                TokenValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenLoaderException.MSG,
-                    err_code=TokenLoaderException.ERR_CODE,
+                    msg=TokenValidationLoaderException.MSG,
+                    err_code=TokenValidationLoaderException.ERR_CODE,
                     ex=TokenCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,

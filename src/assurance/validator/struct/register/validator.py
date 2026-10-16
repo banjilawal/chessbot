@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import RegisterLoader, RegisterValidatorToolkit, StructValidator
+from assurance import RegisterValidationLoader, RegisterValidatorToolkit, StructValidator
 from domain import Register
 from transit import RegisterCarrier
 from util import LoggingLevelRouter
@@ -40,7 +40,7 @@ class RegisterValidator(StructValidator[T], ABC, Generic[T]):
         StructValidator
     """
     
-    def __init__(self, loader: RegisterLoader[T]):
+    def __init__(self, loader: RegisterValidationLoader[T]):
         """
         Args:
             loader: RegisterValidatorToolkit[T]

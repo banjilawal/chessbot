@@ -12,17 +12,17 @@ from __future__ import annotations
 from typing import Any, Optional
 
 
-from err import StructLoaderException
+from err import StructValidationLoaderException
 from artifcat import MethodResultType
 
 
 __all__ = [
     # ======================# TOGGLE_LOADER_FAILURE #======================#
-    "ToggleLoaderException",
+    "ToggleValidationLoaderException",
 ]
 
 # ======================# TOGGLE_LOADER_FAILURE #======================#
-class ToggleLoaderException(StructLoaderException):
+class ToggleValidationLoaderException(StructValidationLoaderException):
     """
     Role:
         - Error Tracing

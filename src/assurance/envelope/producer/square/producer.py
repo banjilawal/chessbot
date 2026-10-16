@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import RootEnvelopeProducer, SquareLoader, SquareValidatorToolkit
+from assurance import RootEnvelopeProducer, SquareValidationLoader, SquareValidatorToolkit
 from domain import Board, Coord, Square, SquarePrimeExtract, SquareState, Token
 from err import (
     SquareCarrierEmptyException, SquareOccupantConsistencyException,
@@ -44,17 +44,17 @@ class SquareEnvelopeProducer(RootEnvelopeProducer[Square]):
     
     def __init__(
             self,
-            loader: Optional[SquareLoader] | None = None
+            loader: Optional[SquareValidationLoader] | None = None
     ):
         """
         Args:
             loader: Optional[SquareLoader]
         """
-        super().__init__(loader=loader or SquareLoader())
+        super().__init__(loader=loader or SquareValidationLoader())
         
     @property
-    def loader(self) -> SquareLoader:
-        return cast(SquareLoader, super().loader)
+    def loader(self) -> SquareValidationLoader:
+        return cast(SquareValidationLoader, super().loader)
     
     @property
     def toolkit(self) -> SquareValidatorToolkit:

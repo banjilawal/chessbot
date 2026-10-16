@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ModelLoaderException
+from err import ModelValidationLoaderException
 from artifcat import MethodResultType
 
 
 __all__ = [
     # ======================# ACCOUNT_LOADER_FAILURE #======================#
-    "AccountLoaderException",
+    "AccountValidationLoaderException",
 ]
 
 # ======================# ACCOUNT_LOADER_FAILURE #======================#
-class AccountLoaderException(ModelLoaderException):
+class AccountValidationLoaderException(ModelValidationLoaderException):
     """
     Role:
         - Error Tracing

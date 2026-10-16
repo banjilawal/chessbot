@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ContextLoaderException
+from err import ContextValidationLoaderException
 from artifcat import MethodResultType
 
 
 __all__ = [
     # ======================# BOARD_CONTEXT_LOADER_FAILURE #======================#
-    "BoardContextLoaderException",
+    "BoardContextValidationLoaderException",
 ]
 
 # ======================# BOARD_CONTEXT_LOADER_FAILURE #======================#
-class BoardContextLoaderException(ContextLoaderException):
+class BoardContextValidationLoaderException(ContextValidationLoaderException):
     """
     Role:
         - Error Tracing

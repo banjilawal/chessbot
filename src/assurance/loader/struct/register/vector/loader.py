@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import RegisterLoader, VectorRegisterValidatorToolkit
+from assurance import RegisterValidationLoader, VectorRegisterValidatorToolkit
 from domain import VectorRegister
 from err import (
     VectorRegisterConsistencyException, VectorRegisterEmptyException, VectorRegisterLoaderException,
@@ -23,7 +23,7 @@ from exchange import VectorRegisterValidationRequest
 from util import LoggingLevelRouter
 
 
-class VectorRegisterLoader(RegisterLoader[VectorRegister]):
+class VectorRegisterLoader(RegisterValidationLoader[VectorRegister]):
     """
     Role
         - Integrity, Consistency Maintenance

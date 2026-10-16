@@ -17,4 +17,4 @@ from .register import *
 from .toggle import *
 
 # Modules
-from .exception import StructLoaderException
+from .exception import StructValidationLoaderException

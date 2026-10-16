@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import NodeLoader, EncounterWarningNodeValidatorToolkit
+from assurance import NodeValidationLoader, EncounterWarningNodeValidatorToolkit
 from domain import EncounterWarningNode, EncounterWarningNode
 from err import (
     EncounterWarningNodeCarrierEmptyException, EncounterWarningNodeLoaderException,
@@ -24,7 +24,7 @@ from transit import EncounterWarningNodeCarrier
 from util import LoggingLevelRouter
 
 
-class EncounterWarningNodeLoader(NodeLoader[EncounterWarningNode]):
+class EncounterWarningNodeLoader(NodeValidationLoader[EncounterWarningNode]):
     """
     Role
         - Integrity, Consistency Maintenance

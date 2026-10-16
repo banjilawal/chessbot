@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelLoader, PlayerValidatorToolkit
+from assurance import ModelValidationLoader, PlayerValidatorToolkit
 from domain import Player, PlayerPrimeExtract
 from err import (
-    PlayerCarrierEmptyException, PlayerLoaderException, PlayerValidationRequestNullException
+    PlayerCarrierEmptyException, PlayerValidationLoaderException, PlayerValidationRequestNullException
 )
 from exchange import PlayerValidationRequest
 from transit import PlayerCarrier
@@ -23,7 +23,7 @@ from transit import PlayerCarrier
 from util import LoggingLevelRouter
 
 
-class PlayerLoader(ModelLoader[Player]):
+class PlayerValidationLoader(ModelValidationLoader[Player]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -94,11 +94,11 @@ class PlayerLoader(ModelLoader[Player]):
         if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PlayerLoaderException(
+                PlayerValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PlayerLoaderException.MSG,
-                    err_code=PlayerLoaderException.ERR_CODE,
+                    msg=PlayerValidationLoaderException.MSG,
+                    err_code=PlayerValidationLoaderException.ERR_CODE,
                     ex=priming.exception,
                 )
             )
@@ -114,11 +114,11 @@ class PlayerLoader(ModelLoader[Player]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PlayerLoaderException(
+                PlayerValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PlayerLoaderException.MSG,
-                    err_code=PlayerLoaderException.ERR_CODE,
+                    msg=PlayerValidationLoaderException.MSG,
+                    err_code=PlayerValidationLoaderException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -130,11 +130,11 @@ class PlayerLoader(ModelLoader[Player]):
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PlayerLoaderException(
+                PlayerValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PlayerLoaderException.MSG,
-                    err_code=PlayerLoaderException.ERR_CODE,
+                    msg=PlayerValidationLoaderException.MSG,
+                    err_code=PlayerValidationLoaderException.ERR_CODE,
                     ex=PlayerCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,

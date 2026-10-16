@@ -14,4 +14,4 @@ from .model import *
 from .struct import *
 
 # Module
-from .loader import Loader
+from .loader import ValidationLoader

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import EncounterLoader, EncounterValidatorToolkit, RootEnvelopeProducer
+from assurance import EncounterValidationLoader, EncounterValidatorToolkit, RootEnvelopeProducer
 from config import NumericSetting
 from domain import (
     Encounter, EncounterPrimeExtract, Maneuver, Square, Token
@@ -49,17 +49,17 @@ class EncounterEnvelopeProducer(RootEnvelopeProducer[Encounter]):
     
     def __init__(
             self,
-            loader: Optional[EncounterLoader] | None = None
+            loader: Optional[EncounterValidationLoader] | None = None
     ):
         """
         Args:
             loader: Optional[EncounterLoader]
         """
-        super().__init__(loader=loader or EncounterLoader())
+        super().__init__(loader=loader or EncounterValidationLoader())
     
     @property
-    def loader(self) -> EncounterLoader:
-        return cast(EncounterLoader, super().loader)
+    def loader(self) -> EncounterValidationLoader:
+        return cast(EncounterValidationLoader, super().loader)
     
     @property
     def toolkit(self) -> EncounterValidatorToolkit:

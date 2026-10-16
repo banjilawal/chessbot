@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
 from artifcat import ValidationResult
-from assurance import Loader, ValidatorToolkit
+from assurance import ValidationLoader, ValidatorToolkit
 from domain import Model
 from transit import ProductEnvelope
 from util import LoggingLevelRouter
@@ -38,9 +38,9 @@ class RootEnvelopeProducer(ABC, Generic[T]):
 
     Super Class:
     """
-    _loader: Loader[T]
+    _loader: ValidationLoader[T]
     
-    def __init__(self, loader: Loader[T]):
+    def __init__(self, loader: ValidationLoader[T]):
         """
         Args:
             loader: Loader[T]
@@ -48,7 +48,7 @@ class RootEnvelopeProducer(ABC, Generic[T]):
         self._loader = loader
         
     @property
-    def loader(self) -> Loader[T]:
+    def loader(self) -> ValidationLoader[T]:
         return self._loader
         
     @property

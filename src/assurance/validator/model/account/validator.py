@@ -13,7 +13,7 @@ from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    AccountEnvelopeProducer, AccountEnvelopeRouter, AccountLoader,
+    AccountEnvelopeProducer, AccountEnvelopeRouter, AccountValidationLoader,
     AccountValidatorToolkit, ModelValidator
 )
 from domain import Account
@@ -46,7 +46,7 @@ class AccountValidator(ModelValidator[Account]):
     
     def __init__(
             self,
-            loader: Optional[AccountLoader] | None = None,
+            loader: Optional[AccountValidationLoader] | None = None,
             envelope_producer: Optional[AccountEnvelopeProducer] | None = None,
             envelope_validator: Optional[AccountEnvelopeRouter] | None = None,
     ):
@@ -56,13 +56,13 @@ class AccountValidator(ModelValidator[Account]):
             envelope_producer: Optional[AccountEnvelopeProducer]
             envelope_validator: Optional[AccountEnvelopeRouter] 
         """
-        super().__init__(loader=loader or AccountLoader())
+        super().__init__(loader=loader or AccountValidationLoader())
         self._envelope_producer = envelope_producer or AccountEnvelopeProducer()
         self._envelope_validator = envelope_validator or AccountEnvelopeRouter()
     
     @property
-    def loader(self) -> AccountLoader:
-        return cast(AccountLoader, super().loader)
+    def loader(self) -> AccountValidationLoader:
+        return cast(AccountValidationLoader, super().loader)
     
     @property
     def toolkit(self) -> AccountValidatorToolkit:

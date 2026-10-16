@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import BinderLoader, TeamBinderValidatorToolkit
+from assurance import BinderValidationLoader, TeamBinderValidatorToolkit
 from domain import TeamBinder, TeamBinderPrimeExtract
 from err import (
     TeamBinderCarrierEmptyException, TeamBinderConsistencyException,
@@ -24,7 +24,7 @@ from transit import TeamBinderCarrier
 from util import LoggingLevelRouter
 
 
-class TeamBinderLoader(BinderLoader[TeamBinder]):
+class TeamBinderLoader(BinderValidationLoader[TeamBinder]):
     """
     Role
         - Integrity, Consistency Maintenance

@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ContextLoaderException
+from err import ContextValidationLoaderException
 from artifcat import MethodResultType
 
 
 __all__ = [
     # ======================# COORD_CONTEXT_LOADER_FAILURE #======================#
-    "CoordContextLoaderException",
+    "CoordContextValidationLoaderException",
 ]
 
 # ======================# COORD_CONTEXT_LOADER_FAILURE #======================#
-class CoordContextLoaderException(ContextLoaderException):
+class CoordContextValidationLoaderException(ContextValidationLoaderException):
     """
     Role:
         - Error Tracing

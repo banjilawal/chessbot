@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import BinderLoaderException
+from err import BinderValidationLoaderException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# TEAM_BINDER_LOADER_FAILURE #======================#
-class TeamBinderLoaderException(BinderLoaderException):
+class TeamBinderLoaderException(BinderValidationLoaderException):
     """
     Role:
         - Error Tracing

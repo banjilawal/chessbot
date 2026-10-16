@@ -12,4 +12,4 @@ version: 0.0.2
 # Packages
 
 # Module
-from .loader import TeamLoader
+from .loader import TeamValidationLoader

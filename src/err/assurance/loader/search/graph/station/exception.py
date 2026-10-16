@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import GraphContextLoaderException
+from err import GraphContextValidationLoaderException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# STATION_CONTEXT_LOADER_FAILURE #======================#
-class StationContextLoaderException(GraphContextLoaderException):
+class StationContextLoaderException(GraphContextValidationLoaderException):
     """
     Role:
         - Error Tracing

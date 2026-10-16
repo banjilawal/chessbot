@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import LoaderException
+from err import ValidationLoaderException
 from artifcat import MethodResultType
 
 
 __all__ = [
     # ======================# MODEL_LOADER_FAILURE #======================#
-    "ModelLoaderException",
+    "ModelValidationLoaderException",
 ]
 
 # ======================# MODEL_LOADER_FAILURE #======================#
-class ModelLoaderException(LoaderException):
+class ModelValidationLoaderException(ValidationLoaderException):
     """
     Role:
         - Error Tracing

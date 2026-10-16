@@ -13,4 +13,4 @@ version: 0.0.2
 from .participate import *
 
 # Module
-from .loader import ChartLoader
+from .loader import ChartValidationLoader

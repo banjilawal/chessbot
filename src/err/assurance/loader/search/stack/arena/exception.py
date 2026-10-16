@@ -11,17 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ContextLoaderException
+from err import ContextValidationLoaderException
 from artifcat import MethodResultType
 
 
 __all__ = [
     # ======================# ARENA_CONTEXT_LOADER_FAILURE #======================#
-    "ArenaContextLoaderException",
+    "ArenaContextValidationLoaderException",
 ]
 
 # ======================# ARENA_CONTEXT_LOADER_FAILURE #======================#
-class ArenaContextLoaderException(ContextLoaderException):
+class ArenaContextValidationLoaderException(ContextValidationLoaderException):
     """
     Role:
         - Error Tracing

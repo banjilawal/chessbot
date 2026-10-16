@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import BoardLoader, BoardValidatorToolkit, ModelValidator
+from assurance import BoardValidationLoader, BoardValidatorToolkit, ModelValidator
 from domain import Arena, Board, BoardBlueprint, BoardPrimeExtract, BoardState, TeamBinder
 from err import (
     ArenaConsistencyException, ArenaNullException, BoardCarrierEmptyException,
@@ -43,17 +43,17 @@ class BoardValidator(ModelValidator[Board]):
     
     def __init__(
             self,
-            loader: Optional[BoardLoader] | None = None,
+            loader: Optional[BoardValidationLoader] | None = None,
     ):
         """
         Args:
             loader: Optional[BoardLoader]
         """
-        super().__init__(loader=loader or BoardLoader())
+        super().__init__(loader=loader or BoardValidationLoader())
         
     @property
-    def loader(self) -> BoardLoader:
-        return cast(BoardLoader, super().loader)
+    def loader(self) -> BoardValidationLoader:
+        return cast(BoardValidationLoader, super().loader)
     
     @property
     def toolkit(self) -> BoardValidatorToolkit:

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import ModelValidator, GameLoader, GameValidatorToolkit
+from assurance import ModelValidator, GameValidationLoader, GameValidatorToolkit
 from domain import Arena, Game, GameBlueprint, GamePrimeExtract, PlayerBinder
 from err import GameCarrierEmptyException, GameValidatorException
 from exchange import (
@@ -40,16 +40,16 @@ class GameValidator(ModelValidator[Game]):
         ModelValidator
     """
     
-    def __init__(self, loader: Optional[GameLoader] | None = None):
+    def __init__(self, loader: Optional[GameValidationLoader] | None = None):
         """
         Args:
             loader: Optional[GameLoader]
         """
-        super().__init__(loader=loader or GameLoader())
+        super().__init__(loader=loader or GameValidationLoader())
     
     @property
-    def loader(self) -> GameLoader:
-        return cast(GameLoader, super().loader)
+    def loader(self) -> GameValidationLoader:
+        return cast(GameValidationLoader, super().loader)
     
     @property
     def toolkit(self) -> GameValidatorToolkit:

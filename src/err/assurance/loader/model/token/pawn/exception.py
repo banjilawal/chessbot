@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import TokenLoaderException
+from err import TokenValidationLoaderException
 from artifcat import MethodResultType
 
 
@@ -21,7 +21,7 @@ __all__ = [
 ]
 
 # ======================# PAWN_TOKEN_LOADER_FAILURE #======================#
-class PawnTokenLoaderException(TokenLoaderException):
+class PawnTokenLoaderException(TokenValidationLoaderException):
     """
     Role:
         - Error Tracing

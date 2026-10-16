@@ -12,4 +12,4 @@ version: 0.0.2
 # Packages
 
 # Module
-from .loader import EncounterLoader
+from .loader import EncounterValidationLoader

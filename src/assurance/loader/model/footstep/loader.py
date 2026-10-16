@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelLoader, FootstepValidatorToolkit
+from assurance import ModelValidationLoader, FootstepValidatorToolkit
 from domain import Footstep, FootstepPrimeExtract
 from err import (
-    FootstepCarrierEmptyException, FootstepLoaderException,
+    FootstepCarrierEmptyException, FootstepValidationLoaderException,
     FootstepValidationRequestNullException
 )
 from exchange import FootstepValidationRequest
@@ -24,7 +24,7 @@ from transit import FootstepCarrier
 from util import LoggingLevelRouter
 
 
-class FootstepLoader(ModelLoader[Footstep]):
+class FootstepValidationLoader(ModelValidationLoader[Footstep]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -95,11 +95,11 @@ class FootstepLoader(ModelLoader[Footstep]):
         if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                FootstepLoaderException(
+                FootstepValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=FootstepLoaderException.MSG,
-                    err_code=FootstepLoaderException.ERR_CODE,
+                    msg=FootstepValidationLoaderException.MSG,
+                    err_code=FootstepValidationLoaderException.ERR_CODE,
                     ex=priming.exception,
                 )
             )
@@ -115,11 +115,11 @@ class FootstepLoader(ModelLoader[Footstep]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                FootstepLoaderException(
+                FootstepValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=FootstepLoaderException.MSG,
-                    err_code=FootstepLoaderException.ERR_CODE,
+                    msg=FootstepValidationLoaderException.MSG,
+                    err_code=FootstepValidationLoaderException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -131,11 +131,11 @@ class FootstepLoader(ModelLoader[Footstep]):
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                FootstepLoaderException(
+                FootstepValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=FootstepLoaderException.MSG,
-                    err_code=FootstepLoaderException.ERR_CODE,
+                    msg=FootstepValidationLoaderException.MSG,
+                    err_code=FootstepValidationLoaderException.ERR_CODE,
                     ex=FootstepCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,

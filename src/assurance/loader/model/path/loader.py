@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelLoader, PathValidatorToolkit
+from assurance import ModelValidationLoader, PathValidatorToolkit
 from domain import Path, PathPrimeExtract
 from err import (
-    PathCarrierEmptyException, PathLoaderException, PathValidationRequestNullException
+    PathCarrierEmptyException, PathValidationLoaderException, PathValidationRequestNullException
 )
 from exchange import PathValidationRequest
 from transit import PathCarrier
@@ -23,7 +23,7 @@ from transit import PathCarrier
 from util import LoggingLevelRouter
 
 
-class PathLoader(ModelLoader[Path]):
+class PathValidationLoader(ModelValidationLoader[Path]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -94,11 +94,11 @@ class PathLoader(ModelLoader[Path]):
         if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PathLoaderException(
+                PathValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PathLoaderException.MSG,
-                    err_code=PathLoaderException.ERR_CODE,
+                    msg=PathValidationLoaderException.MSG,
+                    err_code=PathValidationLoaderException.ERR_CODE,
                     ex=priming.exception,
                 )
             )
@@ -114,11 +114,11 @@ class PathLoader(ModelLoader[Path]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PathLoaderException(
+                PathValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PathLoaderException.MSG,
-                    err_code=PathLoaderException.ERR_CODE,
+                    msg=PathValidationLoaderException.MSG,
+                    err_code=PathValidationLoaderException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -130,11 +130,11 @@ class PathLoader(ModelLoader[Path]):
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                PathLoaderException(
+                PathValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PathLoaderException.MSG,
-                    err_code=PathLoaderException.ERR_CODE,
+                    msg=PathValidationLoaderException.MSG,
+                    err_code=PathValidationLoaderException.ERR_CODE,
                     ex=PathCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,

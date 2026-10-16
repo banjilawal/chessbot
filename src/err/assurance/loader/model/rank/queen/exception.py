@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import RankLoaderException
+from err import RankValidationLoaderException
 
 __all__ = [
     # ======================# QUEEN_LOADER_FAILURE #======================#
@@ -20,7 +20,7 @@ __all__ = [
 ]
 
 # ======================# QUEEN_LOADER_FAILURE #======================#
-class QueenLoaderException(RankLoaderException):
+class QueenLoaderException(RankValidationLoaderException):
     """
     Role:
         - Error Tracing

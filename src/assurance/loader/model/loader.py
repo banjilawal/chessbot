@@ -13,13 +13,13 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import ValidationResult
-from assurance import Loader, ModelValidatorToolkit
+from assurance import ValidationLoader, ModelValidatorToolkit
 from domain import Model, ModelPrimeExtract
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Model")
 
-class ModelLoader(Loader[T], ABC, Generic[T]):
+class ModelValidationLoader(ValidationLoader[T], ABC, Generic[T]):
     """
     Role
         - Integrity, Consistency Maintenance

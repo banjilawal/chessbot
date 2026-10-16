@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import ValidationResult
-from assurance import ModelLoader, RankValidatorToolkit
+from assurance import ModelValidationLoader, RankValidatorToolkit
 from domain import Rank, RankPrimeExtract
 from err import (
-    RankCarrierEmptyException, RankLoaderException, RankValidationRequestNullException
+    RankCarrierEmptyException, RankValidationLoaderException, RankValidationRequestNullException
 )
 from exchange import RankValidationRequest
 from transit import RankCarrier
@@ -23,7 +23,7 @@ from transit import RankCarrier
 from util import LoggingLevelRouter
 
 
-class RankLoader(ModelLoader[Rank]):
+class RankValidationLoader(ModelValidationLoader[Rank]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -94,11 +94,11 @@ class RankLoader(ModelLoader[Rank]):
         if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                RankLoaderException(
+                RankValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=RankLoaderException.MSG,
-                    err_code=RankLoaderException.ERR_CODE,
+                    msg=RankValidationLoaderException.MSG,
+                    err_code=RankValidationLoaderException.ERR_CODE,
                     ex=priming.exception,
                 )
             )
@@ -114,11 +114,11 @@ class RankLoader(ModelLoader[Rank]):
         if carrier_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                RankLoaderException(
+                RankValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=RankLoaderException.MSG,
-                    err_code=RankLoaderException.ERR_CODE,
+                    msg=RankValidationLoaderException.MSG,
+                    err_code=RankValidationLoaderException.ERR_CODE,
                     ex=carrier_validation.exception,
                 )
             )
@@ -130,11 +130,11 @@ class RankLoader(ModelLoader[Rank]):
         if blueprint is None:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                RankLoaderException(
+                RankValidationLoaderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=RankLoaderException.MSG,
-                    err_code=RankLoaderException.ERR_CODE,
+                    msg=RankValidationLoaderException.MSG,
+                    err_code=RankValidationLoaderException.ERR_CODE,
                     ex=RankCarrierEmptyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
