@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, Type, cast
 
-from domain import Arena, ArenaPlayerArchetypeBinder, ArenaContext, Board, Game, StateModelBlueprint
+from domain import Arena, PlayerBinder, ArenaContext, Board, Game, StateModelBlueprint
 from err import ArenaNullException
 
 
@@ -26,7 +26,7 @@ class ArenaBlueprint(StateModelBlueprint[Arena]):
      Attributes:
         id: Optional[int]
         board: Board
-        player_binder: ArenaPlayerArchetypeBinder
+        binder: PlayerBinder
         
         domain_class: Type[Arena]
         search_context_class: Type[ArenaContext]
@@ -39,13 +39,13 @@ class ArenaBlueprint(StateModelBlueprint[Arena]):
      """
     _game: Game
     _board: Board
-    _player_binder: ArenaPlayerArchetypeBinder
+    _binder: PlayerBinder
     
     def __init__(
             self,
             game: Game,
             board: Board,
-            player_binder: ArenaPlayerArchetypeBinder,
+            binder: PlayerBinder,
             domain_class: Optional[Type[Arena]] | None = None,
             domain_null_exception: Optional[ArenaNullException] | None = None,
             id: Optional[int] | None = None,
@@ -54,7 +54,7 @@ class ArenaBlueprint(StateModelBlueprint[Arena]):
         Args:
             game: Game
             board: Board
-            player_binder: ArenaPlayerArchetypeBinder
+            binder: PlayerBinder
             domain_class: Optional[Type[Arena]]
             domain_null_exception: Optional[ArenaNullException]
             id: Optional[int]
@@ -67,7 +67,7 @@ class ArenaBlueprint(StateModelBlueprint[Arena]):
         )
         self._game = game
         self._board = board
-        self._player_binder = player_binder
+        self._binder = binder
     
     @property
     def game(self) -> Game:
@@ -78,8 +78,8 @@ class ArenaBlueprint(StateModelBlueprint[Arena]):
         return self._board
     
     @property
-    def player_binder(self) -> ArenaPlayerArchetypeBinder:
-        return self._player_binder
+    def binder(self) -> PlayerBinder:
+        return self._binder
     
     @property
     def domain_class(self) -> Type[Arena]:

@@ -13,10 +13,10 @@ from typing import Optional, cast
 
 from artifcat import BuildResult
 from domain import Arena, ArenaBlueprint
-from err import ArenaBuilderException
+from err import ArenaBuilderException, ArenaConsistencyException
 from exchange import ArenaBuildRequest
 from fabrication import ModelBuilder, ArenaBuildLoader
-from util import LoggingLevelRouter
+from util import IdFactory, LoggingLevelRouter
 
 
 class ArenaBuilder(ModelBuilder[Arena]):
@@ -84,10 +84,29 @@ class ArenaBuilder(ModelBuilder[Arena]):
             )
         # --- Cast result payload for the product assembly. ---#
         blueprint = cast(ArenaBlueprint, result.payload)
+        id = blueprint.id or IdFactory.next_id(class_name="Arena")
         
         # --- Send the work product. ---#
         product = Arena(
-            x=blueprint.x,
-            y=blueprint.y,
+            id=id,
+            game=blueprint.game,
+            board=blueprint.board,
+            binder=blueprint.binder,
         )
+        if product.game != blueprint.game.arena:
+            # Send the exception chain on failure.
+            return BuildResult.failure(
+                ArenaBuilderException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=ArenaBuilderException.MSG,
+                    err_code=ArenaBuilderException.ERR_CODE,
+                    ex=ArenaConsistencyException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg="Game is already assigned to a different Arena instance.",
+                        err_code="ARENA_GAME_CONSISTENCY_ERROR"
+                    ),
+                )
+            )
         return BuildResult.success(product)

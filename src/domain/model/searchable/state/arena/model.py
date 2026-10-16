@@ -22,7 +22,7 @@ class Arena(StateModel):
     Attributes:
         id: int
         board: Board
-        player_binder: PlayerArchetypeBinder
+        binder: PlayerArchetypeBinder
 
     Super Class:
         StateModel
@@ -30,7 +30,7 @@ class Arena(StateModel):
     _id: int
     _game: Game
     _board: Board
-    _player_binder: PlayerBinder
+    _binder: PlayerBinder
     _state: ArenaState
     
     def __init__(
@@ -38,19 +38,19 @@ class Arena(StateModel):
             id: int,
             game: Game,
             board: Board,
-            player_binder: PlayerBinder,
+            binder: PlayerBinder,
     ):
         """
         Args:
             id: int
             game: Game
             board: Board
-            player_binder: PlayerArchetypeBinder
+            binder: PlayerArchetypeBinder
         """
         super().__init__(id=id)
         self._game = game
         self._board = board
-        self._player_binder = player_binder
+        self._binder = binder
         self._arena_state = ArenaState.NO_TOKEN_OPENED
     
     @property
@@ -66,12 +66,12 @@ class Arena(StateModel):
         return self._board
     
     @property
-    def player_binder(self) ->PlayerBinder:
-        return self._player_binder
+    def binder(self) ->PlayerBinder:
+        return self._binder
     
     @property
     def arena_is_empty(self) -> bool:
-        return self._board is None and self._player_binder is None
+        return self._board is None and self._binder is None
     
     @property
     def no_token_has_opened(self) -> bool:
