@@ -51,7 +51,7 @@ class ModelBuildDispatcher(Builder[T], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, blueprint: ModelBlueprint[T]) -> BuildResult[T]:
+    def execute(self, request: ModelBlueprint[T]) -> BuildResult[T]:
         pass
         
         

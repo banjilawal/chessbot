@@ -36,19 +36,19 @@ class BoardBuilder(ModelBuilder[Board]):
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, blueprint: BoardBlueprint,) -> BuildResult[Board]:
+    def execute(self, request: BoardBlueprint, ) -> BuildResult[Board]:
         """
         Assemble a Board from the Blueprint's contents.
 
         Args:
-            blueprint: BoardBlueprint
+            request: BoardBlueprint
         Returns:
             BuildResult[Board]
         Raises:
         """
         method = f"{self.__class__.__name__}.execute"
         
-        return BuildResult.success(Board(id=blueprint.id, arena=blueprint.arena,))
+        return BuildResult.success(Board(id=request.id, arena=request.arena, ))
 
     
         

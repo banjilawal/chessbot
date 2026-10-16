@@ -93,7 +93,7 @@ class NodeBuilder(ModelBuilder[Node]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.builder_toolkit.assembler.execute(
-            blueprint=cast(
+            request=cast(
                 NodeBlueprint,
                 blueprint_validation.payload
             )

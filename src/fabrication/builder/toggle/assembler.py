@@ -41,5 +41,5 @@ class ToggleBuilder(Builder, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, blueprint: ToggleBlueprint[T],) -> BuildResult[T]:
+    def execute(self, request: ToggleBlueprint[T], ) -> BuildResult[T]:
         pass

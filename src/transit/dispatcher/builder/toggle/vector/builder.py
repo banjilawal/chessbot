@@ -91,7 +91,7 @@ class CartesianToggleBuilder(ToggleBuildDispatcher[CartesianToggle]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.builder_toolkit.assembler.execute(
-            blueprint=cast(CartesianToggleBlueprint, blueprint_validation.payload)
+            request=cast(CartesianToggleBlueprint, blueprint_validation.payload)
         )
         if assembly.is_failure:
             # Send the exception chain on failure.

@@ -20,12 +20,12 @@ class ItineraryBuilder(Builder[Itinerary]):
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, blueprint: ItineraryBlueprint,) -> BuildResult[Itinerary]:
+    def execute(self, request: ItineraryBlueprint, ) -> BuildResult[Itinerary]:
         """
         Assemble the appropriate Itinerary.
 
         Args:
-            blueprint: ItineraryBlueprint
+            request: ItineraryBlueprint
         Returns:
             BuildResult[Itinerary]
         Raises:
@@ -33,10 +33,10 @@ class ItineraryBuilder(Builder[Itinerary]):
         method = f"{self.__class__.__name__}.execute"
         return BuildResult.success(
             Itinerary(
-                id=blueprint.id,
-                source=blueprint.source,
-                token=blueprint.traveler,
-                destination=blueprint.destination,
+                id=request.id,
+                source=request.source,
+                token=request.traveler,
+                destination=request.destination,
             )
         )
     

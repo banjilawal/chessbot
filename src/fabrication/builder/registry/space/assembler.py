@@ -42,5 +42,5 @@ class SpaceReservoirBuilder(Builder, ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, blueprint: [SpaceReservoirBlueprint[T]],) -> BuildResult[T]:
+    def execute(self, request: [SpaceReservoirBlueprint[T]], ) -> BuildResult[T]:
         pass

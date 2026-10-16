@@ -35,16 +35,16 @@ class ScalarBuilder(ModelBuilder[Scalar]):
     """
     
     @LoggingLevelRouter.monitor
-    def execute(self, blueprint: ScalarBlueprint,) -> BuildResult[Scalar]:
+    def execute(self, request: ScalarBlueprint, ) -> BuildResult[Scalar]:
         """
         Assemble a Scalar from the Blueprint's contents.
 
         Args:
-            blueprint: ScalarBlueprint
+            request: ScalarBlueprint
         Returns:
             BuildResult[Scalar]
         Raises:
         """
         method = f"{self.__class__.__name__}.execute"
-        return BuildResult.success(Scalar(magnitude=blueprint.magnitude))
+        return BuildResult.success(Scalar(magnitude=request.magnitude))
 

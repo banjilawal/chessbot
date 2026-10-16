@@ -35,42 +35,42 @@ class TokenBuilder(ModelBuilder[Token]):
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, blueprint: TokenBlueprint,) -> BuildResult[Token]:
+    def execute(self, request: TokenBlueprint, ) -> BuildResult[Token]:
         """
         Assemble a Token from the Blueprint's contents.
 
         Args:
-            blueprint: TokenBlueprint
+            request: TokenBlueprint
         Returns:
             BuildResult[Token]
         Raises:
         """
         method = f"{self.__class__.__name__}.execute"
         
-        if isinstance(blueprint.rank, Pawn):
+        if isinstance(request.rank, Pawn):
             return BuildResult.success(
                 PawnToken(
-                    id=blueprint.id,
-                    team=blueprint.team,
-                    formation=blueprint.formation,
-                    home_square=blueprint.home_square,
+                    id=request.id,
+                    team=request.team,
+                    formation=request.formation,
+                    home_square=request.home_square,
                 )
             )
-        if isinstance(blueprint.rank, King):
+        if isinstance(request.rank, King):
             return BuildResult.success(
                 KingToken(
-                    id=blueprint.id,
-                    team=blueprint.team,
-                    formation=blueprint.formation,
-                    home_square=blueprint.home_square
+                    id=request.id,
+                    team=request.team,
+                    formation=request.formation,
+                    home_square=request.home_square
                 )
             )
         return BuildResult.success(
             CombatantToken(
-                id=blueprint.id,
-                team=blueprint.team,
-                formation=blueprint.formation,
-                home_square=blueprint.home_square,
-                rank=blueprint.rank
+                id=request.id,
+                team=request.team,
+                formation=request.formation,
+                home_square=request.home_square,
+                rank=request.rank
             )
         )

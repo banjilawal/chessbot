@@ -37,12 +37,12 @@ class RankBuilder(ModelBuilder[Rank]):
     
     
     @LoggingLevelRouter.monitor()
-    def execute(self, blueprint: RankBlueprint,) -> BuildResult[Rank]:
+    def execute(self, request: RankBlueprint, ) -> BuildResult[Rank]:
         """
         Assemble a Rank from the Blueprint's contents.
 
         Args:
-            blueprint: RankBlueprint
+            request: RankBlueprint
         Returns:
             BuildResult[Rank]
         Raises:
@@ -52,33 +52,33 @@ class RankBuilder(ModelBuilder[Rank]):
         # --- Route to the appropriate concrete integrity.build. ---#
         
         # Entry point into building a King instance.
-        if blueprint.persona == Persona.KING:
+        if request.persona == Persona.KING:
             return BuildResult.success(
-                King(persona=blueprint.persona)
+                King(persona=request.persona)
             )
         # Entry point into building a Pawn instance.
-        if blueprint.persona == Persona.PAWN:
+        if request.persona == Persona.PAWN:
             return BuildResult.success(
-                Pawn(persona=blueprint.persona)
+                Pawn(persona=request.persona)
             )
         # Entry point into building a Knight instance.
-        if blueprint.persona == Persona.KNIGHT:
+        if request.persona == Persona.KNIGHT:
             return BuildResult.success(
-                Knight(persona=blueprint.persona)
+                Knight(persona=request.persona)
             )
         # Entry point into building a Bishop instance.
-        if blueprint.persona == Persona.BISHOP:
+        if request.persona == Persona.BISHOP:
             return BuildResult.success(
-                Bishop(persona=blueprint.persona)
+                Bishop(persona=request.persona)
             )
         # Entry point into building a Rook instance.
-        if blueprint.persona == Persona.ROOK:
+        if request.persona == Persona.ROOK:
             return BuildResult.success(
-                Rook(persona=blueprint.persona)
+                Rook(persona=request.persona)
             )
         # Entry point into building a Queen instance.
-        if blueprint.persona == Persona.QUEEN:
+        if request.persona == Persona.QUEEN:
             return BuildResult.success(
-                Queen(persona=blueprint.persona)
+                Queen(persona=request.persona)
             )
         

@@ -37,10 +37,10 @@ class NodeTreeBuilder(Builder[SquareNode]):
     
 
     @LoggingLevelRouter.monitor
-    def execute(self, blueprint: NodeBlueprint) -> BuildResult[SquareNode]:
+    def execute(self, request: NodeBlueprint) -> BuildResult[SquareNode]:
         method = f"{self.__class__.__name__}.execute"
         
-        tree = blueprint.tree
+        tree = request.tree
         for branch in tree.branches:
             cursor = branch[0]
             next = cursor

@@ -20,12 +20,12 @@ class TeamBuilder(ModelBuilder[Team]):
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, blueprint: TeamBlueprint,) -> BuildResult[Team]:
+    def execute(self, request: TeamBlueprint, ) -> BuildResult[Team]:
         """
         Assemble a Team from the Blueprint's contents.
 
         Args:
-            blueprint: TeamBlueprint
+            request: TeamBlueprint
         Returns:
             BuildResult[Team]
         Raises:
@@ -33,10 +33,10 @@ class TeamBuilder(ModelBuilder[Team]):
         method = f"{self.__class__.__name__}.execute"
         return BuildResult.success(
             Team(
-                id=blueprint.id,
-                board=blueprint.board,
-                owner=blueprint.owner,
-                archetype=blueprint.archetype,
+                id=request.id,
+                board=request.board,
+                owner=request.owner,
+                archetype=request.archetype,
             )
         )
 

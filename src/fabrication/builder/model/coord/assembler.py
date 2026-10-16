@@ -33,19 +33,19 @@ class CoordBuilder(ModelBuilder[Coord]):
     """
 
     @LoggingLevelRouter.monitor
-    def execute(self, blueprint: CoordBlueprint,) -> BuildResult[Coord]:
+    def execute(self, request: CoordBlueprint, ) -> BuildResult[Coord]:
         """
         Assemble a Coord from the Blueprint's contents.
 
         Args:
-            blueprint: CoordBlueprint
+            request: CoordBlueprint
         Returns:
             BuildResult[Coord]
         Raises:
         """
         method = f"{self.__class__.__name__}.execute"
         return BuildResult.success(
-            Coord(row=blueprint.row, column=blueprint.column,)
+            Coord(row=request.row, column=request.column, )
         )
         
         

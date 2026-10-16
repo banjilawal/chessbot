@@ -89,7 +89,7 @@ class VectorRegisterBuilder(RegisterBuildDispatcher[VectorRegister]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.builder_toolkit.assembler.execute(
-            blueprint=cast(VectorRegisterBlueprint, blueprint_validation.payload)
+            request=cast(VectorRegisterBlueprint, blueprint_validation.payload)
         )
         if assembly.is_failure:
             # Send the exception chain on failure.

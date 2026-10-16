@@ -93,7 +93,7 @@ class SnapshotBuilder(ModelBuilder[Snapshot]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.builder_toolkit.assembler.execute(
-            blueprint=cast(
+            request=cast(
                 SnapshotBlueprint,
                 blueprint_validation.payload
             )

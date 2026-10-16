@@ -39,5 +39,5 @@ class RegisterBuilder(Builder, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, blueprint: RegisterBlueprint[T],) -> BuildResult[T]:
+    def execute(self, request: RegisterBlueprint[T], ) -> BuildResult[T]:
         pass

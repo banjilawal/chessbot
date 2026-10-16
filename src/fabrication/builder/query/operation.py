@@ -19,12 +19,12 @@ class QueryBuilder(Builder[Query]):
     
     
     @LoggingLevelRouter.monitor
-    def execute(self, blueprint: QueryBlueprint,) -> BuildResult[Query]:
+    def execute(self, request: QueryBlueprint, ) -> BuildResult[Query]:
         """
         Assemble the appropriate Query.
 
         Args:
-            blueprint: QueryBlueprint
+            request: QueryBlueprint
         Returns:
             BuildResult[Query]
         Raises:
@@ -32,8 +32,8 @@ class QueryBuilder(Builder[Query]):
         method = f"{self.__class__.__name__}.execute"
         return BuildResult.success(
             Query(
-                x=blueprint.x,
-                y=blueprint.y,
+                x=request.x,
+                y=request.y,
             )
         )
         

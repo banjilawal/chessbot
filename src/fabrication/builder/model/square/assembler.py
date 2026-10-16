@@ -35,12 +35,12 @@ class SquareBuilder(ModelBuilder[Square]):
     
 
     @LoggingLevelRouter.monitor()
-    def execute(self, blueprint: SquareBlueprint,) -> BuildResult[Square]:
+    def execute(self, request: SquareBlueprint, ) -> BuildResult[Square]:
         """
         Action:
             1.  Assemble the square from the Blueprint.
         Args:
-            blueprint: SquareBlueprint
+            request: SquareBlueprint
         Returns:
             BuildResult[Square]
         Raises:
@@ -48,22 +48,22 @@ class SquareBuilder(ModelBuilder[Square]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the blueprint is for a HomeSquare.
-        if blueprint.formation is not None:
+        if request.formation is not None:
             return BuildResult.success(
                 HomeSquare(
-                    id=blueprint.id,
-                    name=blueprint.name,
-                    coord=blueprint.coord,
-                    board=blueprint.board,
-                    formation=blueprint.formation,
+                    id=request.id,
+                    name=request.name,
+                    coord=request.coord,
+                    board=request.board,
+                    formation=request.formation,
                 )
             )
         # For the alternative return a plain old Square,
         return BuildResult.success(
             Square(
-                id=blueprint.id,
-                name=blueprint.name,
-                coord=blueprint.coord,
-                board=blueprint.board,
+                id=request.id,
+                name=request.name,
+                coord=request.coord,
+                board=request.board,
             )
         )

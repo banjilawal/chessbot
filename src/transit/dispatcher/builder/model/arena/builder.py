@@ -93,7 +93,7 @@ class ArenaBuilder(ModelBuilder[Arena]):
             )
         # --- Handoff the validated blueprint to the assembler. ---#
         assembly = self.builder_toolkit.assembler.execute(
-            blueprint=cast(
+            request=cast(
                 ArenaBlueprint,
                 blueprint_validation.payload
             )
