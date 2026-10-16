@@ -36,6 +36,7 @@ class ModelBuilder(Builder[T], ABC, Generic[T]):
         -   def execute(request: ModelBuildRequest[T]) -> BuildResult[T]
 
     Super Class:
+        Builder
     """
     _loader: ModelBuildLoader[T]
     

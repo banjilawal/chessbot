@@ -13,13 +13,9 @@ from typing import Optional, cast
 
 from artifcat import BuildResult
 from domain import Vector, VectorBlueprint
-from err import (
-    VectorBuildLoaderException, VectorBuildRequestNullException, VectorCarrierEmptyException,
-    VectorCarrierNullException
-)
+from err import VectorBuildLoaderException, VectorBuildRequestNullException
 from exchange import VectorBuildRequest, VectorValidationRequest, VectorValidationServer
 from fabrication import ModelBuildLoader
-from transit import VectorCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -30,7 +26,8 @@ class VectorBuildLoader(ModelBuildLoader[Vector]):
         -   Bootstrapper
         
     Responsibilities:
-        1.  Prepare a VectorBlueprint if BuildRequest is correct.
+        1.  Initialize the Vector build process by preparing a VectorBlueprint
+            if the BuildRequest is correct.
 
     Attributes:
         validator: VectorValidationServer
@@ -75,14 +72,15 @@ class VectorBuildLoader(ModelBuildLoader[Vector]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that
+        # --- Verify the request is safe. ---#
         priming = self.priming_validator.execute(
             candidate=request,
             target_model=VectorBuildRequest,
             null_exception=VectorBuildRequestNullException(),
         )
-        # Send the exception chain on failure.
+        # Handle the case that the request is flagged.
         if priming.is_failure:
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 VectorBuildLoaderException(
                     cls_mthd=method,

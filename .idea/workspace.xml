@@ -5,10 +5,81 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/assembler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/model/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/vector/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/model/vector/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/vector/assembler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/model/vector/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/builder/model/account/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/builder/model/account/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/builder/model/alert/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/builder/model/alert/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/builder/model/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/builder/model/arena/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/builder/model/board/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/builder/model/coord/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/builder/model/encounter/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/builder/model/encounter/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/builder/model/footstep/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/builder/model/footstep/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/builder/model/game/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/builder/model/game/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/builder/model/maneuver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/builder/model/maneuver/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/builder/model/path/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/builder/model/path/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/builder/model/scalar/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/builder/model/square/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/builder/model/team/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/builder/model/token/builder.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/account/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/account/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/alert/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/alert/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/arena/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/board/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/coord/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/encounter/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/encounter/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/footstep/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/footstep/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/game/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/game/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/maneuver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/maneuver/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/path/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/path/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/player/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/player/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/rank/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/rank/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/scalar/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/scalar/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/square/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/team/loader.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/fabrication/loader/model/token/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assurance/validator/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/assurance/validator/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/board/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/model/board/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/board/assembler.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/model/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/coord/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/model/coord/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/coord/assembler.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/rank/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/rank/assembler.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/scalar/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/model/scalar/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/scalar/assembler.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/model/square/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/square/assembler.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/team/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/model/team/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/team/assembler.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/token/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/model/token/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/token/assembler.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/vector/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/model/vector/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/loader/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/loader/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/loader/model/vector/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/loader/model/vector/loader.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,61 +121,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0000000000003006" />
-      <entry key="S5" value="1.0000098035142104" />
-      <entry key="S10" value="1.0032889747474196" />
-      <entry key="S30" value="1.4456711048762565" />
-      <entry key="S60" value="4.107063949826852" />
-      <entry key="M2" value="16.29325445418467" />
-      <entry key="M5" value="73.24825331871013" />
-      <entry key="M10" value="148.468166348787" />
-      <entry key="M15" value="198.26070796015998" />
-      <entry key="M30" value="288.34175273228266" />
-      <entry key="H1" value="416.7228037286939" />
-      <entry key="H2" value="616.1776711000199" />
-      <entry key="H4" value="863.6269034351861" />
-      <entry key="D1" value="2586.772477757027" />
-      <entry key="W1" value="19436.970071601165" />
+      <entry key="MS100" value="1.0002523503126663" />
+      <entry key="MS500" value="1.4274704955059776" />
+      <entry key="S2" value="3.076957305882728" />
+      <entry key="S5" value="4.033034737204389" />
+      <entry key="S10" value="4.493534934905085" />
+      <entry key="S30" value="5.5955305857518365" />
+      <entry key="S60" value="8.345686871807104" />
+      <entry key="M2" value="14.05983709542534" />
+      <entry key="M5" value="22.56590076598954" />
+      <entry key="M10" value="27.870036447231307" />
+      <entry key="M15" value="33.01580901393522" />
+      <entry key="M30" value="64.14894874723228" />
+      <entry key="H1" value="179.5331150661263" />
+      <entry key="H2" value="434.4534282695599" />
+      <entry key="H4" value="801.3371088862539" />
+      <entry key="D1" value="2735.4565442021094" />
+      <entry key="W1" value="19580.288576699695" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="0.0" />
-      <entry key="S10" value="7.075452121104838E-238" />
-      <entry key="S30" value="1.9970744702362823E-79" />
-      <entry key="S60" value="9.978099967836586E-40" />
-      <entry key="M2" value="8.853535078925392E-20" />
-      <entry key="M5" value="1.0883263829513668E-7" />
-      <entry key="M10" value="0.001623768885932931" />
-      <entry key="M15" value="0.047174564134925046" />
-      <entry key="M30" value="1.6252858016964515" />
-      <entry key="H1" value="10.639425243566933" />
-      <entry key="H2" value="28.699061035860833" />
-      <entry key="H4" value="49.40569999617035" />
-      <entry key="D1" value="171.81793196765548" />
-      <entry key="W1" value="1207.3183154953947" />
+      <entry key="MS500" value="2.375627556734363E-101" />
+      <entry key="S2" value="8.2475993511582E-26" />
+      <entry key="S5" value="1.3038061323349368E-10" />
+      <entry key="S10" value="1.5922549032001297E-5" />
+      <entry key="S30" value="0.039807388899765504" />
+      <entry key="S60" value="0.28204704920973855" />
+      <entry key="M2" value="0.7509861523929463" />
+      <entry key="M5" value="1.3523453193386423" />
+      <entry key="M10" value="1.6820832806452761" />
+      <entry key="M15" value="1.9047744381322442" />
+      <entry key="M30" value="2.661759111167778" />
+      <entry key="H1" value="5.6798728445137465" />
+      <entry key="H2" value="17.024196591919978" />
+      <entry key="H4" value="38.22520997161136" />
+      <entry key="D1" value="168.15507104154062" />
+      <entry key="W1" value="1203.5352293659978" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9460576467255959" />
-      <entry key="MS500" value="0.9889709163809315" />
-      <entry key="S2" value="0.9972312513523687" />
-      <entry key="S5" value="0.9989013628517716" />
-      <entry key="S10" value="1.002711993702599" />
-      <entry key="S30" value="1.4352234284015428" />
-      <entry key="S60" value="4.069896159350959" />
-      <entry key="M2" value="16.236034007207625" />
-      <entry key="M5" value="73.19713424742856" />
-      <entry key="M10" value="148.43456270238795" />
-      <entry key="M15" value="198.2804231035741" />
-      <entry key="M30" value="289.937495051596" />
-      <entry key="H1" value="427.3128772321803" />
-      <entry key="H2" value="644.8219658233476" />
-      <entry key="H4" value="912.9891047782111" />
-      <entry key="D1" value="2758.566948836045" />
-      <entry key="W1" value="20644.267745504792" />
+      <entry key="MS100" value="0.00616966426708106" />
+      <entry key="MS500" value="0.7198941888365256" />
+      <entry key="S2" value="2.7284481328085226" />
+      <entry key="S5" value="3.853729585576937" />
+      <entry key="S10" value="4.394297275768598" />
+      <entry key="S30" value="5.589158684377924" />
+      <entry key="S60" value="8.556488797413449" />
+      <entry key="M2" value="14.711920512479274" />
+      <entry key="M5" value="23.83825073288951" />
+      <entry key="M10" value="29.500908717037746" />
+      <entry key="M15" value="34.88303482115921" />
+      <entry key="M30" value="66.78609623549666" />
+      <entry key="H1" value="185.1861575222602" />
+      <entry key="H2" value="451.4411075405422" />
+      <entry key="H4" value="839.5250321727511" />
+      <entry key="D1" value="2903.5877044373806" />
+      <entry key="W1" value="20783.803061404928" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -118,45 +189,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.__init__.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.checker.executor&quot;: &quot;Run&quot;,
-    &quot;Python.node.executor&quot;: &quot;Run&quot;,
-    &quot;Python.notifier.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.ray.executor&quot;: &quot;Coverage&quot;,
-    &quot;Python.responder.executor&quot;: &quot;Run&quot;,
-    &quot;Python.roster.executor&quot;: &quot;Run&quot;,
-    &quot;Python.stack.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.table.executor&quot;: &quot;Debug&quot;,
-    &quot;Python.validator (1).executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/griot/PycharmProjects/chessbot/src/err/fabrication&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.__init__.executor": "Debug",
+    "Python.checker.executor": "Run",
+    "Python.node.executor": "Run",
+    "Python.notifier.executor": "Debug",
+    "Python.ray.executor": "Coverage",
+    "Python.responder.executor": "Run",
+    "Python.roster.executor": "Run",
+    "Python.stack.executor": "Debug",
+    "Python.table.executor": "Debug",
+    "Python.validator (1).executor": "Run",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/fabrication/builder/model",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/fabrication/builder/model" />
+      <recent name="$PROJECT_DIR$/src/fabrication/loader/model" />
       <recent name="$PROJECT_DIR$/src/err/fabrication" />
       <recent name="$PROJECT_DIR$/src/fabrication/loader/model/vector" />
-      <recent name="$PROJECT_DIR$/src/fabrication/loader/model" />
       <recent name="$PROJECT_DIR$/src/err/null/exchange/request" />
-      <recent name="$PROJECT_DIR$/src/err/exchange/wrapper" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/transit/router/carrier/account" />
@@ -824,7 +895,7 @@
       <workItem from="1790671354344" duration="262742000" />
       <workItem from="1791213294391" duration="277057000" />
       <workItem from="1791925309191" duration="12463000" />
-      <workItem from="1791980656972" duration="78910000" />
+      <workItem from="1791980656972" duration="86379000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />

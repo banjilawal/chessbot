@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from artifcat import BuildResult, ValidationResult
+from artifcat import BuildResult
 from domain import Vector, VectorBlueprint
 from err import VectorBuilderException
 from exchange import VectorBuildRequest
@@ -34,6 +34,7 @@ class VectorBuilder(ModelBuilder[Vector]):
         -   def execute(blueprint: VectorBlueprint) -> BuildResult[Vector]
 
     Super Class:
+        ModelBuilder
     """
     
     def __init__(
@@ -67,18 +68,24 @@ class VectorBuilder(ModelBuilder[Vector]):
         """
         method = f"{self.__class__.__name__}"
         
-        loading_result = self.loader.execute(request=request)
+        # --- Handoff the request to loader for blueprint prepartion. ---#
+        result = self.loader.execute(request=request)
+        # Handle the case that the loader aborts.
         if result.is_failure:
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 VectorBuilderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=VectorBuilderException.MSG,
                     err_code=VectorBuilderException.ERR_CODE,
-                    ex=loading_result.exception,
+                    ex=result.exception,
                 )
             )
-        blueprint = cast(VectorBlueprint, loading_result.payload)
+        # --- Cast result payload for the product assembly. ---#
+        blueprint = cast(VectorBlueprint, result.payload)
+        
+        # --- Send the work product. ---#
         product = Vector(
             x=blueprint.x,
             y=blueprint.y,
