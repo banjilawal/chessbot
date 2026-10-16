@@ -1,7 +1,7 @@
-# src/assurance/envelope/router/tokenr.py
+# src/transit/route/validation/token.py
 
 """
-Module: assurance.envelope.router.tokenr
+Module: transit.route.validation.token
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.2
@@ -13,16 +13,16 @@ from typing import Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    EnvelopeRouter, CombatantTokenEnvelopeConsumer,
-    KingTokenEnvelopeConsumer, PawnTokenEnvelopeConsumer, TokenValidatorToolkit
+    CombatantTokenEnvelopeConsumer, KingTokenEnvelopeConsumer, PawnTokenEnvelopeConsumer,
+    TokenValidatorToolkit
 )
 from domain import Token
-from err import RootTokenEnvelopeNullException, TokenEnvelopeRouterException
-from transit import RootTokenEnvelope, TokenCarrier
+from err import RootTokenEnvelopeNullException, TokenValidationRouterException
+from transit import RootTokenEnvelope, TokenCarrier, ValidationRouter
 from util import LoggingLevelRouter
 
 
-class TokenEnvelopeRouter(EnvelopeRouter[Token]):
+class TokenValidationRouter(ValidationRouter[Token]):
     """
     Role
         - Router
@@ -41,7 +41,7 @@ class TokenEnvelopeRouter(EnvelopeRouter[Token]):
         -   def execute(envelope: RootTokenEnvelope) -> ValidationResult[TokenCarrier]
 
     Super Class:
-        EnvelopeRouter
+        ValidationRouter
     """
     _pawn_consumer: PawnTokenEnvelopeConsumer
     _king_consumer: KingTokenEnvelopeConsumer
@@ -88,7 +88,7 @@ class TokenEnvelopeRouter(EnvelopeRouter[Token]):
         Returns:
             ValidationResult[TokenCarrier]
         Raises:
-           TokenEnvelopeRouterException
+           TokenValidationRouterException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -101,11 +101,11 @@ class TokenEnvelopeRouter(EnvelopeRouter[Token]):
         if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenEnvelopeRouterException(
+                TokenValidationRouterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenEnvelopeRouterException.MSG,
-                    err_code=TokenEnvelopeRouterException.ERR_CODE,
+                    msg=TokenValidationRouterException.MSG,
+                    err_code=TokenValidationRouterException.ERR_CODE,
                     ex=priming.exception,
                 )
             )
@@ -113,7 +113,7 @@ class TokenEnvelopeRouter(EnvelopeRouter[Token]):
         safe = cast(RootTokenEnvelope, priming.payload)
         
         # --- Route to the appropriate consumer. ---#
-        result = ValidationResult.failure(TokenEnvelopeRouterException())
+        result = ValidationResult.failure(TokenValidationRouterException())
         
         # Route to combatant_token_validation consumers.
         if safe.for_combatant_token_consumer:
@@ -129,11 +129,11 @@ class TokenEnvelopeRouter(EnvelopeRouter[Token]):
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                TokenEnvelopeRouterException(
+                TokenValidationRouterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenEnvelopeRouterException.MSG,
-                    err_code=TokenEnvelopeRouterException.ERR_CODE,
+                    msg=TokenValidationRouterException.MSG,
+                    err_code=TokenValidationRouterException.ERR_CODE,
                     ex=result.exception,
                 )
             )

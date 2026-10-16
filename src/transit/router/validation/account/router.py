@@ -1,7 +1,7 @@
-# src/assurance/envelope/router/accountr.py
+# src/transit/route/validation/account.py
 
 """
-Module: assurance.envelope.router.accountr
+Module: transit.route.validation.account
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.2
@@ -13,16 +13,15 @@ from typing import Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    EnvelopeRouter, MachineAccountEnvelopeConsumer,
-    HumanAccountEnvelopeConsumer, AccountValidatorToolkit
+    MachineAccountEnvelopeConsumer, HumanAccountEnvelopeConsumer, AccountValidatorToolkit
 )
 from domain import Account
-from err import RootAccountEnvelopeNullException, AccountEnvelopeRouterException
-from transit import RootAccountEnvelope, AccountCarrier
+from err import RootAccountEnvelopeNullException, AccountValidationRouterException
+from transit import RootAccountEnvelope, AccountCarrier, ValidationRouter
 from util import LoggingLevelRouter
 
 
-class AccountEnvelopeRouter(EnvelopeRouter[Account]):
+class AccountValidationRouter(ValidationRouter[Account]):
     """
     Role
         - Router
@@ -41,7 +40,7 @@ class AccountEnvelopeRouter(EnvelopeRouter[Account]):
         -   def execute(envelope: RootAccountEnvelope) -> ValidationResult[AccountCarrier]
 
     Super Class:
-        EnvelopeRouter
+        ValidationRouter
     """
     _human_consumer: HumanAccountEnvelopeConsumer
     _machine_consumer: MachineAccountEnvelopeConsumer
@@ -84,7 +83,7 @@ class AccountEnvelopeRouter(EnvelopeRouter[Account]):
         Returns:
             ValidationResult[AccountCarrier]
         Raises:
-           AccountEnvelopeRouterException
+           AccountValidationRouterException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -97,11 +96,11 @@ class AccountEnvelopeRouter(EnvelopeRouter[Account]):
         if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                AccountEnvelopeRouterException(
+                AccountValidationRouterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountEnvelopeRouterException.MSG,
-                    err_code=AccountEnvelopeRouterException.ERR_CODE,
+                    msg=AccountValidationRouterException.MSG,
+                    err_code=AccountValidationRouterException.ERR_CODE,
                     ex=priming.exception,
                 )
             )
@@ -109,7 +108,7 @@ class AccountEnvelopeRouter(EnvelopeRouter[Account]):
         safe = cast(RootAccountEnvelope, priming.payload)
         
         # --- Route to the appropriate consumer. ---#
-        result = ValidationResult.failure(AccountEnvelopeRouterException())
+        result = ValidationResult.failure(AccountValidationRouterException())
         
         # Route to combatant_account_validation consumers.
         # Route to human_account_validation consumers.
@@ -123,11 +122,11 @@ class AccountEnvelopeRouter(EnvelopeRouter[Account]):
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                AccountEnvelopeRouterException(
+                AccountValidationRouterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=AccountEnvelopeRouterException.MSG,
-                    err_code=AccountEnvelopeRouterException.ERR_CODE,
+                    msg=AccountValidationRouterException.MSG,
+                    err_code=AccountValidationRouterException.ERR_CODE,
                     ex=result.exception,
                 )
             )

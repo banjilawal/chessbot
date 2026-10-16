@@ -15,7 +15,7 @@ from artifcat import ValidationResult
 from assurance import EncounterEnvelopeConsumer
 from domain import CombatantToken, KillEncounter, KillEncounterBlueprint
 from err import (
-    EncounterEnvelopeRouterException, EncounterLocationMismatchException,
+    EncounterValidationRouterException, EncounterLocationMismatchException,
     KillEncounterEnvelopeConsumerException, KillKingException,
     RootEncounterEnvelopeNullException
 )
@@ -99,11 +99,11 @@ class KillEncounterEnvelopeConsumer(
                     cls_name=self.__class__.__name__,
                     msg=KillEncounterEnvelopeConsumerException.MSG,
                     err_code=KillEncounterEnvelopeConsumerException.ERR_CODE,
-                    ex=EncounterEnvelopeRouterException(
+                    ex=EncounterValidationRouterException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EncounterEnvelopeRouterException.MSG,
-                        err_code=EncounterEnvelopeRouterException.ERR_CODE,
+                        msg=EncounterValidationRouterException.MSG,
+                        err_code=EncounterValidationRouterException.ERR_CODE,
                     )
                 )
             )

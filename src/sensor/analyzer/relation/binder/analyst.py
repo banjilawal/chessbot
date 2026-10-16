@@ -113,18 +113,18 @@ class BoardTeamBinderRelationAnalyzer(RelationAnalyzer[Board, BoardBinder]):
         team_binder = cast(BoardBinder, team_binder_validation_result.payload)
         
         # Handle the case that the binder belongs to a different board.
-        if board.team_binder != team_binder and team_binder.primary != board :
+        if board.binder != team_binder and team_binder.primary != board :
             return AnalysisResult.success(RelationReport.no_relation())
         
         # Handle the case that the board has a stale link to team_binder.
-        if board.team_binder == SENSOR.team_binder and team_binder.primary != board:
+        if board.binder == SENSOR.binder and team_binder.primary != board:
             return AnalysisResult.success(
                 RelationReport.stale_link(
                     primary=board
                 )
             )
         # Handle the case that the binder has not registered with its board.
-        if board.team_binder != team_binder and team_binder.primary == SENSOR.board:
+        if board.binder != team_binder and team_binder.primary == SENSOR.board:
             return AnalysisResult.success(
                 RelationReport.registration_missing(
                     satellite=team_binder

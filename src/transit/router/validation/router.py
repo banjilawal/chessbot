@@ -1,7 +1,7 @@
-# src/assurance/envelope/router/envelope/router.py
+# src/transit/route/validation/envelope/router.py
 
 """
-Module: assurance.envelope.router.router
+Module: transit.route.validation.router
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -20,7 +20,7 @@ from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Model")
 
-class EnvelopeRouter(ABC, Generic[T]):
+class ValidationRouter(ABC, Generic[T]):
     """
     Role
         -   Router
@@ -56,6 +56,6 @@ class EnvelopeRouter(ABC, Generic[T]):
         Returns:
             ValidationResult[ModelCarrier[T]]
         Raises:
-            ValidationEnvelopeRouterException
+            ValidationValidationRouterException
         """
         pass

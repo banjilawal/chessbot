@@ -1,7 +1,7 @@
-# src/assurance/envelope/router/squarer.py
+# src/transit/route/validation/square.py
 
 """
-Module: assurance.envelope.router.squarer
+Module: transit.route.validation.square
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.2
@@ -13,16 +13,15 @@ from typing import Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    EnvelopeRouter, HomeSquareEnvelopeConsumer, PublicSquareEnvelopeConsumer,
-    SquareValidatorToolkit
+    HomeSquareEnvelopeConsumer, PublicSquareEnvelopeConsumer, SquareValidatorToolkit
 )
 from domain import Square
-from err import RootSquareEnvelopeNullException, SquareEnvelopeRouterException
-from transit import RootSquareEnvelope, SquareCarrier
+from err import RootSquareEnvelopeNullException, SquareValidationRouterException
+from transit import RootSquareEnvelope, SquareCarrier, ValidationRouter
 from util import LoggingLevelRouter
 
 
-class SquareEnvelopeRouter(EnvelopeRouter[Square]):
+class SquareValidationRouter(ValidationRouter[Square]):
     """
     Role
         - Router
@@ -40,7 +39,7 @@ class SquareEnvelopeRouter(EnvelopeRouter[Square]):
         -   def execute(envelope: RootSquareEnvelope) -> ValidationResult[SquareCarrier]
 
     Super Class:
-        EnvelopeRouter
+        ValidationRouter
     """
     _home_consumer: HomeSquareEnvelopeConsumer
     _public_consumer: PublicSquareEnvelopeConsumer
@@ -82,7 +81,7 @@ class SquareEnvelopeRouter(EnvelopeRouter[Square]):
         Returns:
             ValidationResult[SquareCarrier]
         Raises:
-           SquareEnvelopeRouterException
+           SquareValidationRouterException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -95,11 +94,11 @@ class SquareEnvelopeRouter(EnvelopeRouter[Square]):
         if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareEnvelopeRouterException(
+                SquareValidationRouterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SquareEnvelopeRouterException.MSG,
-                    err_code=SquareEnvelopeRouterException.ERR_CODE,
+                    msg=SquareValidationRouterException.MSG,
+                    err_code=SquareValidationRouterException.ERR_CODE,
                     ex=priming.exception,
                 )
             )
@@ -107,7 +106,7 @@ class SquareEnvelopeRouter(EnvelopeRouter[Square]):
         safe = cast(RootSquareEnvelope, priming.payload)
         
         # --- Route to the appropriate consumer. ---#
-        result = ValidationResult.failure(SquareEnvelopeRouterException())
+        result = ValidationResult.failure(SquareValidationRouterException())
         
         # Route to home_square_validation consumers.
         if safe.for_home_square_consumer:
@@ -120,11 +119,11 @@ class SquareEnvelopeRouter(EnvelopeRouter[Square]):
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                SquareEnvelopeRouterException(
+                SquareValidationRouterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SquareEnvelopeRouterException.MSG,
-                    err_code=SquareEnvelopeRouterException.ERR_CODE,
+                    msg=SquareValidationRouterException.MSG,
+                    err_code=SquareValidationRouterException.ERR_CODE,
                     ex=result.exception,
                 )
             )

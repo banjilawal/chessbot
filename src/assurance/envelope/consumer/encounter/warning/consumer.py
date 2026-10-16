@@ -16,7 +16,7 @@ from assurance import EncounterEnvelopeConsumer
 from domain import EncounterWarning, EncounterWarningBlueprint, KingToken, Square
 from err import (
     CheckmateCombatantException, EncounterCarrierEmptyException,
-    EncounterEnvelopeRouterException, RootEncounterEnvelopeNullException,
+    EncounterValidationRouterException, RootEncounterEnvelopeNullException,
     EncounterWarningEnvelopeConsumerException
 )
 from exchange import SquareValidationRequest
@@ -103,11 +103,11 @@ class EncounterWarningEnvelopeConsumer(
                     cls_name=self.__class__.__name__,
                     msg=EncounterWarningEnvelopeConsumerException.MSG,
                     err_code=EncounterWarningEnvelopeConsumerException.ERR_CODE,
-                    ex=EncounterEnvelopeRouterException(
+                    ex=EncounterValidationRouterException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EncounterEnvelopeRouterException.MSG,
-                        err_code=EncounterEnvelopeRouterException.ERR_CODE,
+                        msg=EncounterValidationRouterException.MSG,
+                        err_code=EncounterValidationRouterException.ERR_CODE,
                     )
                 )
             )

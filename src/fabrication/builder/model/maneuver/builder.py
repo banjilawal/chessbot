@@ -87,7 +87,8 @@ class ManeuverBuilder(ModelBuilder[Maneuver]):
         
         # --- Send the work product. ---#
         product = Maneuver(
-            x=blueprint.x,
-            y=blueprint.y,
+            path=blueprint.path,
+            benefit=blueprint.benefit,
+            traveler=blueprint.traveler,
         )
         return BuildResult.success(product)

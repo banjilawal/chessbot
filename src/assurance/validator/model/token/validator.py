@@ -13,7 +13,7 @@ from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    TokenEnvelopeProducer, TokenEnvelopeRouter, TokenValidationLoader,
+    TokenEnvelopeProducer, TokenValidationRouter, TokenValidationLoader,
     TokenValidatorToolkit, ModelValidator
 )
 from domain import Token
@@ -32,7 +32,7 @@ class TokenValidator(ModelValidator[Token]):
 
     Attributes:
         loader: TokenValidatorToolkit
-        envelope_producer: TokenEnvelopeRouter
+        envelope_producer: TokenValidationRouter
         property_table_generator: RootTokenEnvelopeGenerator
 
     Provides:
@@ -41,24 +41,24 @@ class TokenValidator(ModelValidator[Token]):
     Super Class:
         ModelValidator
     """
-    _envelope_validator: TokenEnvelopeRouter
+    _envelope_validator: TokenValidationRouter
     _envelope_producer: TokenEnvelopeProducer
     
     def __init__(
             self,
             loader: Optional[TokenValidationLoader] | None = None,
             envelope_producer: Optional[TokenEnvelopeProducer] | None = None,
-            envelope_validator: Optional[TokenEnvelopeRouter] | None = None,
+            envelope_validator: Optional[TokenValidationRouter] | None = None,
     ):
         """
         Args:
             loader: Optional[TokenLoader]
             envelope_producer: Optional[TokenEnvelopeProducer]
-            envelope_validator: Optional[TokenEnvelopeRouter] 
+            envelope_validator: Optional[TokenValidationRouter]
         """
         super().__init__(loader=loader or TokenValidationLoader())
         self._envelope_producer = envelope_producer or TokenEnvelopeProducer()
-        self._envelope_validator = envelope_validator or TokenEnvelopeRouter()
+        self._envelope_validator = envelope_validator or TokenValidationRouter()
     
     @property
     def loader(self) -> TokenValidationLoader:

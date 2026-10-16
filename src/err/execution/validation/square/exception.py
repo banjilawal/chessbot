@@ -16,11 +16,11 @@ from err import ValidationRouteException
 
 __all__ = [
     # ======================# SQUARE_VALIDATION_ROUTE #======================#
-    "SquareEnvelopeRouterException",
+    "SquareValidationRouterException",
 ]
 
 # ======================# SQUARE_VALIDATION_ROUTE #======================#
-class SquareEnvelopeRouterException(ValidationRouteException):
+class SquareValidationRouterException(ValidationRouteException):
     """
     Role:
         - Error Tracing

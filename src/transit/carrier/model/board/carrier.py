@@ -97,6 +97,6 @@ class BoardCarrier(ModelCarrier[Board]):
             arena=model.arena,
             squares=model.squares,
             maneuver_log=model.maneuver_log,
-            team_binder=model.team_binder,
+            team_binder=model.binder,
         )
 

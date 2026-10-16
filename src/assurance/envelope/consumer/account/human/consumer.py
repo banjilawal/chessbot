@@ -15,7 +15,7 @@ from artifcat import ValidationResult
 from assurance import AccountEnvelopeConsumer
 from domain import HumanAccount, HumanAccountBlueprint
 from err import (
-    AccountCarrierEmptyException, AccountEnvelopeRouterException, HumanAccountEnvelopeConsumerException,
+    AccountCarrierEmptyException, AccountValidationRouterException, HumanAccountEnvelopeConsumerException,
     RootAccountEnvelopeNullException
 )
 
@@ -100,11 +100,11 @@ class HumanAccountEnvelopeConsumer(
                     cls_name=self.__class__.__name__,
                     msg=HumanAccountEnvelopeConsumerException.MSG,
                     err_code=HumanAccountEnvelopeConsumerException.ERR_CODE,
-                    ex=AccountEnvelopeRouterException(
+                    ex=AccountValidationRouterException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=AccountEnvelopeRouterException.MSG,
-                        err_code=AccountEnvelopeRouterException.ERR_CODE,
+                        msg=AccountValidationRouterException.MSG,
+                        err_code=AccountValidationRouterException.ERR_CODE,
                     )
                 )
             )

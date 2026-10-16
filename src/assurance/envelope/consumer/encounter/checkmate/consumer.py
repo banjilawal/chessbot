@@ -15,7 +15,7 @@ from artifcat import ValidationResult
 from assurance import EncounterEnvelopeConsumer
 from domain import CheckmateEncounter, CheckmateEncounterBlueprint, KingToken
 from err import (
-    CheckmateCombatantException, EncounterEnvelopeRouterException,
+    CheckmateCombatantException, EncounterValidationRouterException,
     CheckmateEncounterEnvelopeConsumerException,
     RootEncounterEnvelopeNullException
 )
@@ -101,11 +101,11 @@ class CheckmateEncounterEnvelopeConsumer(
                     cls_name=self.__class__.__name__,
                     msg=CheckmateEncounterEnvelopeConsumerException.MSG,
                     err_code=CheckmateEncounterEnvelopeConsumerException.ERR_CODE,
-                    ex=EncounterEnvelopeRouterException(
+                    ex=EncounterValidationRouterException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=EncounterEnvelopeRouterException.MSG,
-                        err_code=EncounterEnvelopeRouterException.ERR_CODE,
+                        msg=EncounterValidationRouterException.MSG,
+                        err_code=EncounterValidationRouterException.ERR_CODE,
                     )
                 )
             )

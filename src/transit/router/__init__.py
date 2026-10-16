@@ -12,6 +12,7 @@ version: 0.0.2
 # Packages
 from .carrier import *
 from .search import *
+from .validation import *
 
 # Modules
 from .router import Router

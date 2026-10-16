@@ -102,6 +102,6 @@ class BoardContextCarrier(ContextCarrier[BoardContext]):
             maneuver_log=context.maneuver_log,
             attack_records=context.attack_records,
             captured_tokens=context.captured_tokens,
-            team_binder=context.team_binder,
+            team_binder=context.binder,
         )
 

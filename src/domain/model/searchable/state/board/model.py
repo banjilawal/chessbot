@@ -14,7 +14,6 @@ from typing import Optional
 from collection import AttackDatabase, ManeuverDatabase, SquareDatabase, TokenDatabase
 from config import BoardSetting
 from domain import Arena, BoardState, TeamBinder, StateModel
-from microservice import BoardService
 
 
 class Board(StateModel):
@@ -99,7 +98,7 @@ class Board(StateModel):
         return self._squares
     
     @property
-    def team_binder(self) -> TeamBinder:
+    def binder(self) -> TeamBinder:
         return self._binder
     
     @property

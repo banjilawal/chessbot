@@ -20,7 +20,7 @@ from domain import (
 from err import (
     CombatantReadinessNullException, CombatantTokenEnvelopeConsumerException,
     RootTokenEnvelopeNullException, TokenCarrierEmptyException,
-    TokenConsistencyException, TokenEnvelopeRouterException, TokenNullException
+    TokenConsistencyException, TokenValidationRouterException, TokenNullException
 )
 from transit import CombatantTokenCarrier, RootTokenEnvelope
 from util import LoggingLevelRouter
@@ -104,11 +104,11 @@ class CombatantTokenEnvelopeConsumer(
                     cls_name=self.__class__.__name__,
                     msg=CombatantTokenEnvelopeConsumerException.MSG,
                     err_code=CombatantTokenEnvelopeConsumerException.ERR_CODE,
-                    ex=TokenEnvelopeRouterException(
+                    ex=TokenValidationRouterException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TokenEnvelopeRouterException.MSG,
-                        err_code=TokenEnvelopeRouterException.ERR_CODE,
+                        msg=TokenValidationRouterException.MSG,
+                        err_code=TokenValidationRouterException.ERR_CODE,
                     )
                 )
             )

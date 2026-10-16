@@ -16,11 +16,11 @@ from err import ValidationRouteException
 
 __all__ = [
     # ======================# RANK_VALIDATION_ROUTE #======================#
-    "RankEnvelopeRouterException",
+    "RankValidationRouterException",
 ]
 
 # ======================# RANK_VALIDATION_ROUTE #======================#
-class RankEnvelopeRouterException(ValidationRouteException):
+class RankValidationRouterException(ValidationRouteException):
     """
     Role:
         - Error Tracing

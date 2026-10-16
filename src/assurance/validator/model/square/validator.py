@@ -13,7 +13,7 @@ from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    ModelValidator, SquareEnvelopeProducer, SquareEnvelopeRouter, SquareValidationLoader,
+    ModelValidator, SquareEnvelopeProducer, SquareValidationRouter, SquareValidationLoader,
     SquareValidatorToolkit
 )
 from domain import Square
@@ -32,7 +32,7 @@ class SquareValidator(ModelValidator[Square]):
 
     Attributes:
         loader: SquareLoader
-        envelope_router: SquareEnvelopeRouter
+        envelope_router: SquareValidationRouter
         envelope_producer: SquareEnvelopeProducer
 
     Provides:
@@ -41,7 +41,7 @@ class SquareValidator(ModelValidator[Square]):
     Super Class:
         ModelValidator
     """
-    _envelope_router: SquareEnvelopeRouter
+    _envelope_router: SquareValidationRouter
     _envelope_producer: SquareEnvelopeProducer
 
     
@@ -49,17 +49,17 @@ class SquareValidator(ModelValidator[Square]):
     def __init__(
             self,
             loader: Optional[SquareValidationLoader] | None = None,
-            envelope_router: Optional[SquareEnvelopeRouter] | None = None,
+            envelope_router: Optional[SquareValidationRouter] | None = None,
             envelope_producer: Optional[SquareEnvelopeProducer] | None = None,
     ):
         """
         Args:
             loader: Optional[SquareLoader]
-            envelope_router: Optional[SquareEnvelopeRouter]
+            envelope_router: Optional[SquareValidationRouter]
             envelope_producer: Optional[SquareEnvelopeProducer]
         """
         super().__init__(loader=loader or SquareValidationLoader())
-        self._envelope_router = envelope_router or SquareEnvelopeRouter()
+        self._envelope_router = envelope_router or SquareValidationRouter()
         self._envelope_producer = envelope_producer or SquareEnvelopeProducer()
         
     @property

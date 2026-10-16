@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import BuildResult
 from domain import Team, TeamBlueprint
-from err import TeamBlueprintIdEmptyException, TeamBuilderException
+from err import TeamBlueprintIdEmptyException, TeamBuilderException, TeamConsistencyException
 from exchange import TeamBuildRequest
 from fabrication import ModelBuilder, TeamBuildLoader
 from util import IdFactory, LoggingLevelRouter
@@ -93,4 +93,20 @@ class TeamBuilder(ModelBuilder[Team]):
             owner=blueprint.owner,
             archetype=blueprint.archetype,
         )
+        if product not in blueprint.board.binder.to_list:
+            # Send the exception chain on failure.
+            return BuildResult.failure(
+                TeamBuilderException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TeamBuilderException.MSG,
+                    err_code=TeamBuilderException.ERR_CODE,
+                    ex=TeamConsistencyException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg="Board is already assigned to a different Team instance.",
+                        err_code="TEAM_BOARD_CONSISTENCY_ERROR"
+                    ),
+                )
+            )
         return BuildResult.success(product)

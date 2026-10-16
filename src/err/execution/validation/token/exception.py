@@ -16,11 +16,11 @@ from err import ValidationRouteException
 
 __all__ = [
     # ======================# TOKEN_VALIDATION_ROUTE #======================#
-    "TokenEnvelopeRouterException",
+    "TokenValidationRouterException",
 ]
 
 # ======================# TOKEN_VALIDATION_ROUTE #======================#
-class TokenEnvelopeRouterException(ValidationRouteException):
+class TokenValidationRouterException(ValidationRouteException):
     """
     Role:
         - Error Tracing

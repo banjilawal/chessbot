@@ -19,7 +19,7 @@ from domain import (
 from err import (
     KingReadinessNullException, KingTokenEnvelopeConsumerException,
     RootTokenEnvelopeNullException, ThreatLevelNullException, TokenCarrierEmptyException,
-    TokenEnvelopeRouterException
+    TokenValidationRouterException
 )
 from exchange import AlertValidationRequest, SquareValidationRequest
 from transit import AlertCarrier, KingTokenCarrier, RootTokenEnvelope, SquareCarrier
@@ -104,11 +104,11 @@ class KingTokenEnvelopeConsumer(
                     cls_name=self.__class__.__name__,
                     msg=KingTokenEnvelopeConsumerException.MSG,
                     err_code=KingTokenEnvelopeConsumerException.ERR_CODE,
-                    ex=TokenEnvelopeRouterException(
+                    ex=TokenValidationRouterException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TokenEnvelopeRouterException.MSG,
-                        err_code=TokenEnvelopeRouterException.ERR_CODE,
+                        msg=TokenValidationRouterException.MSG,
+                        err_code=TokenValidationRouterException.ERR_CODE,
                     )
                 )
             )

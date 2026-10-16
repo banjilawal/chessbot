@@ -13,7 +13,7 @@ from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    EncounterEnvelopeProducer, EncounterEnvelopeRouter, EncounterValidationLoader,
+    EncounterEnvelopeProducer, EncounterValidationRouter, EncounterValidationLoader,
     EncounterValidatorToolkit, ModelValidator
 )
 from domain import Encounter
@@ -32,7 +32,7 @@ class EncounterValidator(ModelValidator[Encounter]):
 
     Attributes:
         loader: EncounterValidatorToolkit
-        envelope_producer: EncounterEnvelopeRouter
+        envelope_producer: EncounterValidationRouter
         property_table_generator: RootEncounterEnvelopeGenerator
 
     Provides:
@@ -41,24 +41,24 @@ class EncounterValidator(ModelValidator[Encounter]):
     Super Class:
         ModelValidator
     """
-    _envelope_validator: EncounterEnvelopeRouter
+    _envelope_validator: EncounterValidationRouter
     _envelope_producer: EncounterEnvelopeProducer
     
     def __init__(
             self,
             loader: Optional[EncounterValidationLoader] | None = None,
             envelope_producer: Optional[EncounterEnvelopeProducer] | None = None,
-            envelope_validator: Optional[EncounterEnvelopeRouter] | None = None,
+            envelope_validator: Optional[EncounterValidationRouter] | None = None,
     ):
         """
         Args:
             loader: Optional[EncounterLoader]
             envelope_producer: Optional[EncounterEnvelopeProducer]
-            envelope_validator: Optional[EncounterEnvelopeRouter] 
+            envelope_validator: Optional[EncounterValidationRouter]
         """
         super().__init__(loader=loader or EncounterValidationLoader())
         self._envelope_producer = envelope_producer or EncounterEnvelopeProducer()
-        self._envelope_validator = envelope_validator or EncounterEnvelopeRouter()
+        self._envelope_validator = envelope_validator or EncounterValidationRouter()
     
     @property
     def loader(self) -> EncounterValidationLoader:

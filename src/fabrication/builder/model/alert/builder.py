@@ -87,7 +87,7 @@ class AlertBuilder(ModelBuilder[Alert]):
         
         # --- Send the work product. ---#
         product = Alert(
-            x=blueprint.x,
-            y=blueprint.y,
+            threat=blueprint.threat,
+            checkmate=blueprint.checkmate,
         )
         return BuildResult.success(product)

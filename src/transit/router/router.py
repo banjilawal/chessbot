@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-T = TypeVar("T")
+T = TypeVar("T", bound="Result")
 
 class Router(ABC, Generic[T]):
     """

@@ -14,7 +14,6 @@ from .depend import *
 from assurance.envelope import *
 from .loader import *
 from .primitive import *
-from assurance.envelope.router import *
 from .validator import *
 
 # Modules

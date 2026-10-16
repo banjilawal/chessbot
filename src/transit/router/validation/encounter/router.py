@@ -1,7 +1,7 @@
-# src/assurance/envelope/router/encounterr.py
+# src/transit/route/validation/encounter.py
 
 """
-Module: assurance.envelope.router.encounterr
+Module: transit.route.validation.encounter
 Author: Banji Lawal
 Created: 2026-04-03
 version: 1.0.2
@@ -13,16 +13,16 @@ from typing import Optional, cast
 
 from artifcat import ValidationResult
 from assurance import (
-    EncounterWarningEnvelopeConsumer, EnvelopeRouter, KillEncounterEnvelopeConsumer, CheckmateEncounterEnvelopeConsumer,
-    EncounterValidatorToolkit
+    EncounterWarningEnvelopeConsumer, KillEncounterEnvelopeConsumer,
+    CheckmateEncounterEnvelopeConsumer, EncounterValidatorToolkit
 )
 from domain import Encounter
-from err import RootEncounterEnvelopeNullException, EncounterEnvelopeRouterException
-from transit import RootEncounterEnvelope, EncounterCarrier
+from err import RootEncounterEnvelopeNullException, EncounterValidationRouterException
+from transit import RootEncounterEnvelope, EncounterCarrier, ValidationRouter
 from util import LoggingLevelRouter
 
 
-class EncounterEnvelopeRouter(EnvelopeRouter[Encounter]):
+class EncounterValidationRouter(ValidationRouter[Encounter]):
     """
     Role
         - Router
@@ -41,7 +41,7 @@ class EncounterEnvelopeRouter(EnvelopeRouter[Encounter]):
         -   def execute(envelope: RootEncounterEnvelope) -> ValidationResult[EncounterCarrier]
 
     Super Class:
-        EnvelopeRouter
+        ValidationRouter
     """
     _kill_consumer: KillEncounterEnvelopeConsumer
     _checkmate_consumer: CheckmateEncounterEnvelopeConsumer
@@ -97,7 +97,7 @@ class EncounterEnvelopeRouter(EnvelopeRouter[Encounter]):
         Returns:
             ValidationResult[EncounterCarrier]
         Raises:
-           EncounterEnvelopeRouterException
+           EncounterValidationRouterException
         """
         method = f"{self.__class__.__name__}.execute"
         
@@ -110,11 +110,11 @@ class EncounterEnvelopeRouter(EnvelopeRouter[Encounter]):
         if priming.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                EncounterEnvelopeRouterException(
+                EncounterValidationRouterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=EncounterEnvelopeRouterException.MSG,
-                    err_code=EncounterEnvelopeRouterException.ERR_CODE,
+                    msg=EncounterValidationRouterException.MSG,
+                    err_code=EncounterValidationRouterException.ERR_CODE,
                     ex=priming.exception,
                 )
             )
@@ -122,7 +122,7 @@ class EncounterEnvelopeRouter(EnvelopeRouter[Encounter]):
         safe = cast(RootEncounterEnvelope, priming.payload)
         
         # --- Route to the appropriate consumer. ---#
-        result = ValidationResult.failure(EncounterEnvelopeRouterException())
+        result = ValidationResult.failure(EncounterValidationRouterException())
         
         # Route to kill_encounter_validation consumers.
         if safe.for_kill_encounter_consumer:
@@ -138,11 +138,11 @@ class EncounterEnvelopeRouter(EnvelopeRouter[Encounter]):
         if result.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
-                EncounterEnvelopeRouterException(
+                EncounterValidationRouterException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=EncounterEnvelopeRouterException.MSG,
-                    err_code=EncounterEnvelopeRouterException.ERR_CODE,
+                    msg=EncounterValidationRouterException.MSG,
+                    err_code=EncounterValidationRouterException.ERR_CODE,
                     ex=result.exception,
                 )
             )
