@@ -1,0 +1,54 @@
+# src/exchange/request/fabrication/model/arena/request.py
+
+"""
+Module: exchange.request.fabrication.model.arena.request
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from typing import cast
+
+from exchange import ModelBuildRequest
+from domain import Arena
+from transit import ArenaCarrier
+
+
+class ArenaBuildRequest(ModelBuildRequest[Arena]):
+    """
+     Role:
+         -  Messaging
+
+     Responsibilities:
+        1. Provide details about a Arena a build job.
+
+     Attributes:
+         id: int
+         item: ArenaCarrier
+
+     Provides:
+     
+     Super Class:
+        ModelBuildRequest
+     """
+    
+    def __init__(self, id: int, item: ArenaCarrier):
+        """
+        Args:
+            id: int
+            item: ArenaCarrier
+        """
+        super().__init__(id=id, item=item)
+
+    @property
+    def item(self) -> ArenaCarrier:
+        return cast(ArenaCarrier, super().item)
+    
+    def __eq__(self, other):
+        if other is self: return True
+        if other is None: return False
+        if isinstance(other, ArenaBuildRequest):
+            return self.id == other.id
+        return False

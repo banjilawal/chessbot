@@ -1,0 +1,53 @@
+# src/exchange/request/fabrication/model/path/request.py
+
+"""
+Module: exchange.request.fabrication.model.path.request
+Author: Banji Lawal
+Created: 2026-04-03
+version: 0.0.2
+"""
+
+from __future__ import annotations
+
+from typing import cast
+
+from exchange import ModelBuildRequest, Path
+from transit import PathCarrier
+
+
+class PathBuildRequest(ModelBuildRequest[Path]):
+    """
+     Role:
+         -  Messaging
+
+     Responsibilities:
+        1. Provide details about a Path a build job.
+
+     Attributes:
+         id: int
+         item: PathCarrier
+
+     Provides:
+     
+     Super Class:
+        ModelBuildRequest
+     """
+    
+    def __init__(self, id: int, item: PathCarrier):
+        """
+        Args:
+            id: int
+            item: PathCarrier
+        """
+        super().__init__(id=id, item=item)
+
+    @property
+    def item(self) -> PathCarrier:
+        return cast(PathCarrier, super().item)
+    
+    def __eq__(self, other):
+        if other is self: return True
+        if other is None: return False
+        if isinstance(other, PathBuildRequest):
+            return self.id == other.id
+        return False
