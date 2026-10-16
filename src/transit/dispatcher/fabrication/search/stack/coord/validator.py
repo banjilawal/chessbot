@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/search/stack/coord/validator.py
+# src/transit/dispatcher/fabrication/search/stack/coord/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.search.stack.coord.validator
+Module: transit.dispatcher.fabrication.search.stack.coord.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,13 +12,13 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import BuildResult
-from assurance import StackContextValidator, CoordContextValidator
+from fabrication import StackContextBuilder, CoordContextBuilder
 from domain import CoordSearchContext
-from err import CoordContextValidatorException
+from err import CoordContextBuilderException
 from util import LoggingLevelRouter
 
 
-class CoordContextValidator(StackContextValidator[CoordSearchContext]):
+class CoordContextBuilder(StackContextBuilder[CoordSearchContext]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -27,26 +27,26 @@ class CoordContextValidator(StackContextValidator[CoordSearchContext]):
         1.  Ensure a CoordContext instance is safe before use.
 
     Attributes:
-        validator: CoordContextChecker
+        builder: CoordContextChecker
 
     Provides:
         -   def execute(self, candidate: Any) -> BuildResult[CoordContext]
 
     Super Class:
-        ContextValidator
+        ContextBuilder
     """
     
-    def __init__(self, validator: Optional[CoordContextValidator] | None = None):
+    def __init__(self, builder: Optional[CoordContextBuilder] | None = None):
         """
         Args:
-            validator: Optional[CoordContextChecker]
+            builder: Optional[CoordContextChecker]
         """
-        super().__init__(validator=validator or CoordContextValidator)
+        super().__init__(builder=builder or CoordContextBuilder)
     
     
     @property
-    def validator(self) -> CoordContextValidator:
-        return cast(CoordContextValidator, super().validator)
+    def builder(self) -> CoordContextBuilder:
+        return cast(CoordContextBuilder, super().builder)
     
     
     @LoggingLevelRouter.monitor
@@ -55,7 +55,7 @@ class CoordContextValidator(StackContextValidator[CoordSearchContext]):
         Certify a candidate is a CoordContext that is safe to use.
 
         Action:
-            1.  Send an exception chain in the BuildResult if validator
+            1.  Send an exception chain in the BuildResult if builder
                 returns a failure.
             2.  Otherwise, send the success result.
         Args:
@@ -63,20 +63,20 @@ class CoordContextValidator(StackContextValidator[CoordSearchContext]):
         Returns:
             BuildResult[CoordContext]
         Raises:
-            CoordContextValidatorException
+            CoordContextBuilderException
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that validator flags the candidate.
-        build = self.validator.execute(candidate=candidate)
+        # Handle the case that builder flags the candidate.
+        build = self.builder.execute(candidate=candidate)
         if build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                CoordContextValidatorException(
+                CoordContextBuilderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=CoordContextValidatorException.MSG,
-                    err_code=CoordContextValidatorException.ERR_CODE,
+                    msg=CoordContextBuilderException.MSG,
+                    err_code=CoordContextBuilderException.ERR_CODE,
                     ex=build.exception
                 )
             )

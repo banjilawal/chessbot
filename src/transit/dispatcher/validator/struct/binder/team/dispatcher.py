@@ -1,7 +1,7 @@
-# src/transit/dispatcher/validator/struct/binder/team/validator.py
+# src/transit/dispatcher/validator/struct/binder/team/dispatcher.py
 
 """
-Module: transit.dispatcher.validator.binder.team.validator
+Module: transit.dispatcher.validator.binder.team.dispatcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

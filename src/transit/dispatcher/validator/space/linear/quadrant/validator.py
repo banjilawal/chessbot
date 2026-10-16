@@ -1,4 +1,4 @@
-# src/transit/dispatcher/validator/space/linear/quadrant/validator.py
+# src/transit/dispatcher/validator/space/linear/quadrant/dispatcher.py
 
 """
 Module: transit.dispatcher.validator.space.linear.quadrant.validator

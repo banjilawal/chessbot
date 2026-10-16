@@ -1,7 +1,7 @@
 # src/err/transit/dispatcher/fabrication/movement/offset/pawn/maneuver/opening/exception.py
 
 """
-Module: err.validator.movement.offset.pawn.maneuver.opening.exception
+Module: err.builder.movement.offset.pawn.maneuver.opening.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ManeuverOffsetPatternValidatorException
+from err import ManeuverOffsetPatternBuilderException
 from artifcat import MethodResultType
 
 __all__ = [
-    # ======================# OPENING_MANEUVER_OFFSET_PATTERN_VALIDATOR_FAILURE #======================#
-    "OpeningManeuverOffsetPatternValidatorException",
+    # ======================# OPENING_MANEUVER_OFFSET_PATTERN_BUILDER_FAILURE #======================#
+    "OpeningManeuverOffsetPatternBuilderException",
 ]
 
 
-# ======================# OPENING_MANEUVER_OFFSET_PATTERN_VALIDATOR_FAILURE #======================#
-class OpeningManeuverOffsetPatternValidatorException(ManeuverOffsetPatternValidatorException):
+# ======================# OPENING_MANEUVER_OFFSET_PATTERN_BUILDER_FAILURE #======================#
+class OpeningManeuverOffsetPatternBuilderException(ManeuverOffsetPatternBuilderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicate an error occurred in an OpeningManeuverOffsetPatternValidator failed.
+        1.  Indicate an error occurred in an OpeningManeuverOffsetPatternBuilder failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class OpeningManeuverOffsetPatternValidatorException(ManeuverOffsetPatternValida
     Provides:
 
     Super Class:
-        ManeuverOffsetPatternValidatorException
+        ManeuverOffsetPatternBuilderException
     """
-    MSG = "OpeningManeuverOffsetPatternValidator error."
-    ERR_CODE = "OPENING_MANEUVER_OFFSET_PATTERN_VALIDATOR_FAILURE"
+    MSG = "OpeningManeuverOffsetPatternBuilder error."
+    ERR_CODE = "OPENING_MANEUVER_OFFSET_PATTERN_BUILDER_FAILURE"
     
     def __init__(
             self,

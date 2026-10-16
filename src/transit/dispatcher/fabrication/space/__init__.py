@@ -14,4 +14,4 @@ from .linear import *
 from .span import *
 
 # Modules
-from .validator import SpaceBuildDispatcher
+from .builder import SpaceBuildDispatcher

@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/struct/chart/participate/validator.py
+# src/transit/dispatcher/fabrication/struct/chart/participate/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.chart.participate.validator
+Module: transit.dispatcher.fabrication.chart.participate.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 from artifcat import BuildResult
-from assurance import ParticipationValidator
+from fabrication import ParticipationBuilder
 from domain import Participation
 from err import ParticipationBuildDispatcherException
 from transit import ChartBuildDispatcher, ParticipationCarrier
@@ -28,24 +28,24 @@ class ParticipationBuildDispatcher(ChartBuildDispatcher[Participation]):
         1.  Ensure a Participation instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        validator: ParticipationValidator
+        builder: ParticipationBuilder
 
     Provides:
         -   def execute(candidate: Any) -> BuildResult{Participation]
 
     Super Class:
-        ChartValidator
+        ChartBuilder
     """
     
     def __init__(
             self,
-            validator: ParticipationValidator | None = None,
+            builder: ParticipationBuilder | None = None,
     ):
-        super().__init__(validator=validator or ParticipationValidator())
+        super().__init__(builder=builder or ParticipationBuilder())
         
     @property
-    def validator(self) -> ParticipationValidator:
-        return cast(ParticipationValidator, super().validator)
+    def builder(self) -> ParticipationBuilder:
+        return cast(ParticipationBuilder, super().builder)
     
 
     @LoggingLevelRouter.monitor
@@ -55,7 +55,7 @@ class ParticipationBuildDispatcher(ChartBuildDispatcher[Participation]):
 
         Action:
             1.  Send an exception chain in the BuildResult if the candidate fails a
-                validator test..
+                builder test..
             2.  Otherwise, cast the payload into a Participation and send in the success result.
                 success result.
         Args:
@@ -68,7 +68,7 @@ class ParticipationBuildDispatcher(ChartBuildDispatcher[Participation]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        build = self.validator.execute(job)
+        build = self.builder.execute(job)
         if build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

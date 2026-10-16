@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/struct/register/coord/validator.py
+# src/transit/dispatcher/fabrication/struct/register/coord/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.register.coord.validator
+Module: transit.dispatcher.fabrication.register.coord.dispatcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from assurance import CoordRegisterValidator
+from fabrication import CoordRegisterBuilder
 from err import CoordRegisterBuildDispatcherException
 from domain.struct.register import CoordRegister
 from artifcat import BuildResult
@@ -29,24 +29,24 @@ class CoordRegisterBuildDispatcher(RegisterBuildDispatcher[CoordRegister]):
         1.  Ensure a CoordRegister instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        validator: CoordRegisterValidator
+        builder: CoordRegisterBuilder
 
     Provides:
         -   def execute(candidate: Any) -> BuildResult{CoordRegister]
 
     Super Class:
-        RegisterValidator
+        RegisterBuilder
     """
     
     def __init__(
             self,
-            validator: CoordRegisterValidator | None = CoordRegisterValidator(),
+            builder: CoordRegisterBuilder | None = CoordRegisterBuilder(),
     ):
-        super().__init__(validator=validator or CoordRegisterValidator())
+        super().__init__(builder=builder or CoordRegisterBuilder())
         
     @property
-    def validator(self) -> CoordRegisterValidator:
-        return cast(CoordRegisterValidator, super().validator)
+    def builder(self) -> CoordRegisterBuilder:
+        return cast(CoordRegisterBuilder, super().builder)
     
 
     @LoggingLevelRouter.monitor
@@ -56,7 +56,7 @@ class CoordRegisterBuildDispatcher(RegisterBuildDispatcher[CoordRegister]):
 
         Action:
             1.  Send an exception chain in the BuildResult if the candidate fails a
-                validator test..
+                builder test..
             2.  Otherwise, cast the payload into a CoordRegister and send in the success result.
                 success result.
         Args:
@@ -69,7 +69,7 @@ class CoordRegisterBuildDispatcher(RegisterBuildDispatcher[CoordRegister]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        build = self.validator.execute(job)
+        build = self.builder.execute(job)
         if build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

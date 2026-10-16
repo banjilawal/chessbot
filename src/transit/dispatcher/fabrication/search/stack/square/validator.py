@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/search/stack/square/validator.py
+# src/transit/dispatcher/fabrication/search/stack/square/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.search.stack.square.validator
+Module: transit.dispatcher.fabrication.search.stack.square.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,13 +12,13 @@ from __future__ import annotations
 from typing import Any, cast
 
 from artifcat import BuildResult
-from assurance import StackContextValidator, SquareContextValidator
+from fabrication import StackContextBuilder, SquareContextBuilder
 from domain import SquareSearchContext
-from err import SquareContextValidatorException
+from err import SquareContextBuilderException
 from util import LoggingLevelRouter
 
 
-class SquareContextValidator(StackContextValidator[SquareSearchContext]):
+class SquareContextBuilder(StackContextBuilder[SquareSearchContext]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -27,26 +27,26 @@ class SquareContextValidator(StackContextValidator[SquareSearchContext]):
         1.  Ensure a SquareContext instance is safe before use.
 
     Attributes:
-        validator: SquareContextChecker
+        builder: SquareContextChecker
 
     Provides:
         -   def execute(self, candidate: Any) -> BuildResult[SquareContext]
 
     Super Class:
-        ContextValidator
+        ContextBuilder
     """
     
-    def __init__(self, validator: SquareContextValidator):
+    def __init__(self, builder: SquareContextBuilder):
         """
         Args:
-            validator: SquareContextChecker
+            builder: SquareContextChecker
         """
-        super().__init__(validator=validator)
+        super().__init__(builder=builder)
     
     
     @property
-    def validator(self) -> SquareContextValidator:
-        return cast(SquareContextValidator, super().validator)
+    def builder(self) -> SquareContextBuilder:
+        return cast(SquareContextBuilder, super().builder)
     
     
     @LoggingLevelRouter.monitor
@@ -55,7 +55,7 @@ class SquareContextValidator(StackContextValidator[SquareSearchContext]):
         Certify a candidate is a SquareContext that is safe to use.
 
         Action:
-            1.  Send an exception chain in the BuildResult if validator
+            1.  Send an exception chain in the BuildResult if builder
                 returns a failure.
             2.  Otherwise, send the success result.
         Args:
@@ -63,20 +63,20 @@ class SquareContextValidator(StackContextValidator[SquareSearchContext]):
         Returns:
             BuildResult[SquareContext]
         Raises:
-            SquareContextValidatorException
+            SquareContextBuilderException
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that validator flags the candidate.
-        build = self.validator.execute(candidate=candidate)
+        # Handle the case that builder flags the candidate.
+        build = self.builder.execute(candidate=candidate)
         if build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                SquareContextValidatorException(
+                SquareContextBuilderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SquareContextValidatorException.MSG,
-                    err_code=SquareContextValidatorException.ERR_CODE,
+                    msg=SquareContextBuilderException.MSG,
+                    err_code=SquareContextBuilderException.ERR_CODE,
                     ex=build.exception
                 )
             )

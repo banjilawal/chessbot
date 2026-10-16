@@ -1,4 +1,4 @@
-# src/transit/dispatcher/validator/space/linear/axis/validator.py
+# src/transit/dispatcher/validator/space/linear/axis/dispatcher.py
 
 """
 Module: transit.dispatcher.validator.space.linear.axis.validator

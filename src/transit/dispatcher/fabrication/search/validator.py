@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/context/validator.py
+# src/transit/dispatcher/fabrication/context/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.context.validator
+Module: transit.dispatcher.fabrication.context.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import BuildResult
-from assurance import ContextValidator, Validator
+from fabrication import ContextBuilder, Builder
 from domain import Context
 from util import LoggingLevelRouter
 
@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="Context")
 
 
-class ContextValidator(Validator[T], ABC, Generic[T]):
+class ContextBuilder(Builder[T], ABC, Generic[T]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -30,26 +30,26 @@ class ContextValidator(Validator[T], ABC, Generic[T]):
         1.  Ensure a Context instance is safe before use.
 
     Attributes:
-        validator: ContextChecker[T]
+        builder: ContextChecker[T]
         
     Provides:
         -   def execute(self, candidate: Any) -> BuildResult[T]
 
     Super Class:
-        Validator
+        Builder
     """
     
-    def __init__(self, validator: ContextValidator[T]):
+    def __init__(self, builder: ContextBuilder[T]):
         """
         Args:
-            validator: ContextChecker
+            builder: ContextChecker
         """
-        super().__init__(validator=validator)
+        super().__init__(builder=builder)
     
     
     @property
-    def validator(self) -> ContextValidator[T]:
-        return cast(ContextValidator[T], super().validator)
+    def builder(self) -> ContextBuilder[T]:
+        return cast(ContextBuilder[T], super().builder)
    
     
     @abstractmethod
@@ -62,7 +62,7 @@ class ContextValidator(Validator[T], ABC, Generic[T]):
         Returns:
             BuildResult[T]
         Raises:
-            SearchContexValidatorException
+            SearchContexBuilderException
         """
         pass
     

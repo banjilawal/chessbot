@@ -1,7 +1,7 @@
 # src/err/transit/dispatcher/fabrication/movement/offset/king/exception.py
 
 """
-Module: err.validator.movement.offset.king.exception
+Module: err.builder.movement.offset.king.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import OffsetPatternValidatorException
+from err import OffsetPatternBuilderException
 from artifcat import MethodResultType
 
 __all__ = [
-    # ======================# KING_OFFSET_PATTERN_VALIDATOR_FAILURE #======================#
-    "KingOffsetPatternValidatorException",
+    # ======================# KING_OFFSET_PATTERN_BUILDER_FAILURE #======================#
+    "KingOffsetPatternBuilderException",
 ]
 
 
-# ======================# KING_OFFSET_PATTERN_VALIDATOR_FAILURE #======================#
-class KingOffsetPatternValidatorException(OffsetPatternValidatorException):
+# ======================# KING_OFFSET_PATTERN_BUILDER_FAILURE #======================#
+class KingOffsetPatternBuilderException(OffsetPatternBuilderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicate a required KingOffsetPatternValidator failed.
+        1.  Indicate a required KingOffsetPatternBuilder failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class KingOffsetPatternValidatorException(OffsetPatternValidatorException):
     Provides:
 
     Super Class:
-        OffsetPatternValidatorException
+        OffsetPatternBuilderException
     """
-    MSG = "KingOffsetPatternValidator error."
-    ERR_CODE = "KING_OFFSET_PATTERN_VALIDATOR_FAILURE"
+    MSG = "KingOffsetPatternBuilder error."
+    ERR_CODE = "KING_OFFSET_PATTERN_BUILDER_FAILURE"
     
     def __init__(
             self,

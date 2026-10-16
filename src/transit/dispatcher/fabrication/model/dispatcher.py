@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/model/validator.py
+# src/transit/dispatcher/fabrication/model/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.model.validator
+Module: transit.dispatcher.fabrication.model.dispatcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -14,7 +14,7 @@ from typing import Any, Generic, TypeVar, cast
 
 
 from artifcat import BuildResult
-from assurance import ModelValidator
+from fabrication import ModelBuilder
 from domain import Model
 from transit import ModelCarrier, BuildDispatcher
 from util import LoggingLevelRouter
@@ -30,7 +30,7 @@ class ModelBuildDispatcher(BuildDispatcher[T], ABC, Generic[T]):
         1.  Direct the ModelBuild workflow.
 
     Attributes:
-        validator: ModelValidator[T]
+        builder: ModelBuilder[T]
         
     Provides:
         -   def execute(self, candidate: Any) -> BuildResult[ModelCarrier]
@@ -39,17 +39,17 @@ class ModelBuildDispatcher(BuildDispatcher[T], ABC, Generic[T]):
         BuildDispatcher
     """
     
-    def __init__(self, validator: ModelValidator[T]):
+    def __init__(self, builder: ModelBuilder[T]):
         """
         Args:
-            validator: ModelValidator
+            builder: ModelBuilder
         """
-        super().__init__(validator=validator)
+        super().__init__(builder=builder)
 
 
     @property
-    def validator(self) -> ModelValidator[T]:
-        return cast(ModelValidator[T], super().validator)
+    def builder(self) -> ModelBuilder[T]:
+        return cast(ModelBuilder[T], super().builder)
     
     
     @abstractmethod

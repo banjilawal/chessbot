@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/struct/register/square/validator.py
+# src/transit/dispatcher/fabrication/struct/register/square/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.register.square.validator
+Module: transit.dispatcher.fabrication.register.square.dispatcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from assurance import SquareRegisterValidator
+from fabrication import SquareRegisterBuilder
 from err import SquareRegisterBuildDispatcherException
 from domain.struct.register import SquareRegister
 from artifcat import BuildResult
@@ -29,24 +29,24 @@ class SquareRegisterBuildDispatcher(RegisterBuildDispatcher[SquareRegister]):
         1.  Ensure a SquareRegister instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        validator: SquareRegisterValidator
+        builder: SquareRegisterBuilder
 
     Provides:
         -   def execute(candidate: Any) -> BuildResult{SquareRegister]
 
     Super Class:
-        RegisterValidator
+        RegisterBuilder
     """
     
     def __init__(
             self,
-            validator: SquareRegisterValidator | None = SquareRegisterValidator(),
+            builder: SquareRegisterBuilder | None = SquareRegisterBuilder(),
     ):
-        super().__init__(validator=validator or SquareRegisterValidator())
+        super().__init__(builder=builder or SquareRegisterBuilder())
         
     @property
-    def validator(self) -> SquareRegisterValidator:
-        return cast(SquareRegisterValidator, super().validator)
+    def builder(self) -> SquareRegisterBuilder:
+        return cast(SquareRegisterBuilder, super().builder)
     
 
     @LoggingLevelRouter.monitor
@@ -56,7 +56,7 @@ class SquareRegisterBuildDispatcher(RegisterBuildDispatcher[SquareRegister]):
 
         Action:
             1.  Send an exception chain in the BuildResult if the candidate fails a
-                validator test..
+                builder test..
             2.  Otherwise, cast the payload into a SquareRegister and send in the success result.
                 success result.
         Args:
@@ -69,7 +69,7 @@ class SquareRegisterBuildDispatcher(RegisterBuildDispatcher[SquareRegister]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        build = self.validator.execute(job)
+        build = self.builder.execute(job)
         if build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

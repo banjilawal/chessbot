@@ -1,7 +1,7 @@
-# src/transit/dispatcher/validator/struct/register/coord/validator.py
+# src/transit/dispatcher/validator/struct/register/coord/dispatcher.py
 
 """
-Module: transit.dispatcher.validator.register.coord.validator
+Module: transit.dispatcher.validator.register.coord.dispatcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

@@ -1,7 +1,7 @@
-# src/transit/dispatcher/validator/model/scalar/validator.py
+# src/transit/dispatcher/validator/model/scalar/dispatcher.py
 
 """
-Module: transit.dispatcher.validator.model.scalar.validator
+Module: transit.dispatcher.validator.model.scalar.dispatcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

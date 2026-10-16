@@ -1,4 +1,4 @@
-# src/transit/dispatcher/validator/space/span/validator.py
+# src/transit/dispatcher/validator/space/span/dispatcher.py
 
 """
 Module: transit.dispatcher.validator.space.span.validator

@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/model/struct/register/operand/validator.py
+# src/transit/dispatcher/fabrication/model/struct/register/operand/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.model.register.operand.validator
+Module: transit.dispatcher.fabrication.model.register.operand.dispatcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -29,7 +29,7 @@ class OrientationSelectorBuildDispatcher(ModelBuildDispatcher[OrientationToggle]
             before use.
 
     Attributes:
-        carrier_validator: CartesianToggleRegisterValidator
+        carrier_builder: CartesianToggleRegisterBuilder
 
     Properties:
         -   def validate(
@@ -38,18 +38,18 @@ class OrientationSelectorBuildDispatcher(ModelBuildDispatcher[OrientationToggle]
             ) -> BuildResult[OrientationOperand]:
 
     Super Class:
-        ModelValidator
+        ModelBuilder
     """
     
     def __init__(
             self,
-            validator: CartesianToggleRegisterValidator | None = CartesianToggleRegisterValidator(),
+            builder: CartesianToggleRegisterBuilder | None = CartesianToggleRegisterBuilder(),
     ):
-        super().__init__(validator=validator)
+        super().__init__(builder=builder)
         
     @property
-    def validator(self) -> CartesianToggleRegisterValidator:
-        return cast(CartesianToggleRegisterValidator, super().validator)
+    def builder(self) -> CartesianToggleRegisterBuilder:
+        return cast(CartesianToggleRegisterBuilder, super().builder)
     
     @LoggingLevelRouter.monitor
     def execute(self, job: Any) -> BuildResult:
@@ -68,40 +68,40 @@ class OrientationSelectorBuildDispatcher(ModelBuildDispatcher[OrientationToggle]
         Returns:
             BuildResult
         Raises:
-            OrientationOperandValidatorException
+            OrientationOperandBuilderException
         """
         method = f"{self.__class__.__name__}.execute"
         
         
-        # Handle the case that the validator is not primed.
-        validator_priming_result = self.validator.bundle.priming_validator.execute(
+        # Handle the case that the builder is not primed.
+        builder_priming_result = self.builder.bundle.priming_builder.execute(
             job=job,
-            target_model=self.validator.bundle.model,
-            context_null_exception=self.validator.bundle.request_null_exception,
+            target_model=self.builder.bundle.model,
+            context_null_exception=self.builder.bundle.request_null_exception,
         )
-        if validator_priming_result.is_failure:
+        if builder_priming_result.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                OrientationOperandValidatorException(
+                OrientationOperandBuilderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=OrientationOperandValidatorException.MSG,
-                    err_code=OrientationOperandValidatorException.ERR_CODE,
-                    ex=validator_priming_result.exception
+                    msg=OrientationOperandBuilderException.MSG,
+                    err_code=OrientationOperandBuilderException.ERR_CODE,
+                    ex=builder_priming_result.exception
                 )
             )
         # --- Cast candidate to a OrientationOperand for additional tests. ---#
         register = cast(OrientationOperandEntityRegister, job)
         
-        root_build = self.validator.execute(register)
+        root_build = self.builder.execute(register)
         if root_build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                OrientationOperandValidatorException(
+                OrientationOperandBuilderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=OrientationOperandValidatorException.MSG,
-                    err_code=OrientationOperandValidatorException.ERR_CODE,
+                    msg=OrientationOperandBuilderException.MSG,
+                    err_code=OrientationOperandBuilderException.ERR_CODE,
                     ex=root_build.exception
                 )
             )

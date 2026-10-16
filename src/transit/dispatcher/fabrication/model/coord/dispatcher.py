@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/model/coord/validator.py
+# src/transit/dispatcher/fabrication/model/coord/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.model.coord.validator
+Module: transit.dispatcher.fabrication.model.coord.dispatcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 
-from assurance import CoordValidator
+from fabrication import CoordBuilder
 from artifcat import BuildResult
 from domain import Coord
 from err import CoordBuildDispatcherException
@@ -29,10 +29,10 @@ class CoordBuildDispatcher(ModelBuildDispatcher[Coord]):
         1.  Direct the CoordBuild workflow.
 
     Attributes:
-        validator: CoordValidator
+        builder: CoordBuilder
 
     Provides:
-        -   def execute(self, candidate: Any) -> BuildResult[validatorCarrier]
+        -   def execute(self, candidate: Any) -> BuildResult[builderCarrier]
 
     Super Class:
         ModelBuildDispatcher
@@ -40,22 +40,22 @@ class CoordBuildDispatcher(ModelBuildDispatcher[Coord]):
 
     def __init__(
             self,
-            validator: CoordValidator | None = None,
+            builder: CoordBuilder | None = None,
     ):
-        super().__init__(validator=validator or CoordValidator())
+        super().__init__(builder=builder or CoordBuilder())
         
     @property
-    def validator(self) -> CoordValidator:
-        return cast(CoordValidator, super().validator)
+    def builder(self) -> CoordBuilder:
+        return cast(CoordBuilder, super().builder)
     
 
     @LoggingLevelRouter.monitor
     def execute(self, job: Any) -> BuildResult[CoordCarrier]:
         """
-        Forward a job to a CoordValidator then deliver the result.
+        Forward a job to a CoordBuilder then deliver the result.
 
         Action:
-            1.  Send an exception chain in the BuildResult if the validator cannot
+            1.  Send an exception chain in the BuildResult if the builder cannot
                 certify the job's content.
             2.  Otherwise, cast the job payload into a CoordCarrier and send in
                 the success result.
@@ -69,7 +69,7 @@ class CoordBuildDispatcher(ModelBuildDispatcher[Coord]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        build = self.validator.execute(job)
+        build = self.builder.execute(job)
         if build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

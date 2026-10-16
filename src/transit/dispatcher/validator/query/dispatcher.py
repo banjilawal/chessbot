@@ -1,4 +1,4 @@
-# src/transit/dispatcher/validator/query/token/validator.py
+# src/transit/dispatcher/validator/query/token/dispatcher.py
 
 """
 Module: transit.dispatcher.validator.query.token.validator

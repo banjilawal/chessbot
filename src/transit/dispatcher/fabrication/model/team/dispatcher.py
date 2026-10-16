@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/model/team/validator.py
+# src/transit/dispatcher/fabrication/model/team/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.model.team.validator
+Module: transit.dispatcher.fabrication.model.team.dispatcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 
-from assurance import TeamValidator
+from fabrication import TeamBuilder
 from artifcat import BuildResult
 from domain import Team
 from err import TeamBuildDispatcherException
@@ -29,10 +29,10 @@ class TeamBuildDispatcher(ModelBuildDispatcher[Team]):
         1.  Direct the TeamBuild workflow.
 
     Attributes:
-        validator: TeamValidator
+        builder: TeamBuilder
 
     Provides:
-        -   def execute(self, candidate: Any) -> BuildResult[validatorCarrier]
+        -   def execute(self, candidate: Any) -> BuildResult[builderCarrier]
 
     Super Class:
         ModelBuildDispatcher
@@ -40,22 +40,22 @@ class TeamBuildDispatcher(ModelBuildDispatcher[Team]):
 
     def __init__(
             self,
-            validator: TeamValidator | None = None,
+            builder: TeamBuilder | None = None,
     ):
-        super().__init__(validator=validator or TeamValidator())
+        super().__init__(builder=builder or TeamBuilder())
         
     @property
-    def validator(self) -> TeamValidator:
-        return cast(TeamValidator, super().validator)
+    def builder(self) -> TeamBuilder:
+        return cast(TeamBuilder, super().builder)
     
 
     @LoggingLevelRouter.monitor
     def execute(self, job: Any) -> BuildResult[TeamCarrier]:
         """
-        Forward a job to a TeamValidator then deliver the result.
+        Forward a job to a TeamBuilder then deliver the result.
 
         Action:
-            1.  Send an exception chain in the BuildResult if the validator cannot
+            1.  Send an exception chain in the BuildResult if the builder cannot
                 certify the job's content.
             2.  Otherwise, cast the job payload into a TeamCarrier and send in
                 the success result.
@@ -69,7 +69,7 @@ class TeamBuildDispatcher(ModelBuildDispatcher[Team]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        build = self.validator.execute(job)
+        build = self.builder.execute(job)
         if build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

@@ -1,4 +1,4 @@
-# src/transit/dispatcher/validator/search/stack/arena/validator.py
+# src/transit/dispatcher/validator/search/stack/arena/dispatcher.py
 
 """
 Module: transit.dispatcher.validator.search.stack.arena.validator

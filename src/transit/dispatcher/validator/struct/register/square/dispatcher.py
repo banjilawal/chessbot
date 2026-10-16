@@ -1,7 +1,7 @@
-# src/transit/dispatcher/validator/struct/register/square/validator.py
+# src/transit/dispatcher/validator/struct/register/square/dispatcher.py
 
 """
-Module: transit.dispatcher.validator.register.square.validator
+Module: transit.dispatcher.validator.register.square.dispatcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/model/footstep/validator.py
+# src/transit/dispatcher/fabrication/model/footstep/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.model.footstep.validator
+Module: transit.dispatcher.fabrication.model.footstep.dispatcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Any, cast
 
-from assurance import FootstepValidator
+from fabrication import FootstepBuilder
 from artifcat import BuildResult
 from domain import Footstep
 from err import FootstepBuildDispatcherException
@@ -28,24 +28,24 @@ class FootstepBuildDispatcher(ModelBuildDispatcher[Footstep]):
         1.  Ensure a Footstep instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        validator: FootstepValidator
+        builder: FootstepBuilder
 
     Provides:
         -   def execute(candidate: Any) -> BuildResult{Footstep]
 
     Super Class:
-        ModelValidator
+        ModelBuilder
     """
     
     def __init__(
             self,
-            validator: FootstepValidator | None = FootstepValidator(),
+            builder: FootstepBuilder | None = FootstepBuilder(),
     ):
-        super().__init__(validator=validator or FootstepValidator())
+        super().__init__(builder=builder or FootstepBuilder())
         
     @property
-    def validator(self) -> FootstepValidator:
-        return cast(FootstepValidator, super().validator)
+    def builder(self) -> FootstepBuilder:
+        return cast(FootstepBuilder, super().builder)
     
 
     @LoggingLevelRouter.monitor
@@ -55,7 +55,7 @@ class FootstepBuildDispatcher(ModelBuildDispatcher[Footstep]):
 
         Action:
             1.  Send an exception chain in the BuildResult if the candidate fails a
-                validator test..
+                builder test..
             2.  Otherwise, cast the payload into a Footstep and send in the success result.
                 success result.
         Args:
@@ -68,7 +68,7 @@ class FootstepBuildDispatcher(ModelBuildDispatcher[Footstep]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        build = self.validator.execute(job)
+        build = self.builder.execute(job)
         if build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

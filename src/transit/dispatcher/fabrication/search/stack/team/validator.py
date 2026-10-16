@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/search/stack/team/validator.py
+# src/transit/dispatcher/fabrication/search/stack/team/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.search.stack.team.validator
+Module: transit.dispatcher.fabrication.search.stack.team.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,13 +12,13 @@ from __future__ import annotations
 from typing import Any, cast
 
 from artifcat import BuildResult
-from assurance import StackContextValidator, TeamContextValidator
+from fabrication import StackContextBuilder, TeamContextBuilder
 from domain import TeamSearchContext
-from err import TeamContextValidatorException
+from err import TeamContextBuilderException
 from util import LoggingLevelRouter
 
 
-class TeamContextValidator(StackContextValidator[TeamSearchContext]):
+class TeamContextBuilder(StackContextBuilder[TeamSearchContext]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -27,25 +27,25 @@ class TeamContextValidator(StackContextValidator[TeamSearchContext]):
         1.  Ensure a TeamContext instance is safe before use.
 
     Attributes:
-        validator: TeamContextChecker
+        builder: TeamContextChecker
 
     Provides:
         -   def execute(self, candidate: Any) -> BuildResult[TeamContext]
 
     Super Class:
-        ContextValidator
+        ContextBuilder
     """
     
-    def __init__(self, validator: TeamContextValidator):
+    def __init__(self, builder: TeamContextBuilder):
         """
         Args:
-            validator: TeamContextChecker
+            builder: TeamContextChecker
         """
-        super().__init__(validator=validator)
+        super().__init__(builder=builder)
     
     @property
-    def validator(self) -> TeamContextValidator:
-        return cast(TeamContextValidator, super().validator)
+    def builder(self) -> TeamContextBuilder:
+        return cast(TeamContextBuilder, super().builder)
     
     @LoggingLevelRouter.monitor
     def execute(self, candidate: Any) -> BuildResult[TeamSearchContext]:
@@ -53,7 +53,7 @@ class TeamContextValidator(StackContextValidator[TeamSearchContext]):
         Certify a candidate is a TeamContext that is safe to use.
 
         Action:
-            1.  Send an exception chain in the BuildResult if validator
+            1.  Send an exception chain in the BuildResult if builder
                 returns a failure.
             2.  Otherwise, send the success result.
         Args:
@@ -61,20 +61,20 @@ class TeamContextValidator(StackContextValidator[TeamSearchContext]):
         Returns:
             BuildResult[TeamContext]
         Raises:
-            TeamContextValidatorException
+            TeamContextBuilderException
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that validator flags the candidate.
-        build = self.validator.execute(candidate=candidate)
+        # Handle the case that builder flags the candidate.
+        build = self.builder.execute(candidate=candidate)
         if build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                TeamContextValidatorException(
+                TeamContextBuilderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TeamContextValidatorException.MSG,
-                    err_code=TeamContextValidatorException.ERR_CODE,
+                    msg=TeamContextBuilderException.MSG,
+                    err_code=TeamContextBuilderException.ERR_CODE,
                     ex=build.exception
                 )
             )

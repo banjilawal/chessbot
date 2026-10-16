@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/model/arena/validator.py
+# src/transit/dispatcher/fabrication/model/arena/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.model.arena.validator
+Module: transit.dispatcher.fabrication.model.arena.dispatcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 
-from assurance import ArenaValidator
+from fabrication import ArenaBuilder
 from artifcat import BuildResult
 from domain import Arena
 from err import ArenaBuildDispatcherException
@@ -29,10 +29,10 @@ class ArenaBuildDispatcher(ModelBuildDispatcher[Arena]):
         1.  Direct the ArenaBuild workflow.
 
     Attributes:
-        validator: ArenaValidator
+        builder: ArenaBuilder
 
     Provides:
-        -   def execute(self, candidate: Any) -> BuildResult[validatorCarrier]
+        -   def execute(self, candidate: Any) -> BuildResult[builderCarrier]
 
     Super Class:
         ModelBuildDispatcher
@@ -40,22 +40,22 @@ class ArenaBuildDispatcher(ModelBuildDispatcher[Arena]):
 
     def __init__(
             self,
-            validator: ArenaValidator | None = None,
+            builder: ArenaBuilder | None = None,
     ):
-        super().__init__(validator=validator or ArenaValidator())
+        super().__init__(builder=builder or ArenaBuilder())
         
     @property
-    def validator(self) -> ArenaValidator:
-        return cast(ArenaValidator, super().validator)
+    def builder(self) -> ArenaBuilder:
+        return cast(ArenaBuilder, super().builder)
     
 
     @LoggingLevelRouter.monitor
     def execute(self, job: Any) -> BuildResult[ArenaCarrier]:
         """
-        Forward a job to a ArenaValidator then deliver the result.
+        Forward a job to a ArenaBuilder then deliver the result.
 
         Action:
-            1.  Send an exception chain in the BuildResult if the validator cannot
+            1.  Send an exception chain in the BuildResult if the builder cannot
                 certify the job's content.
             2.  Otherwise, cast the job payload into a ArenaCarrier and send in
                 the success result.
@@ -69,7 +69,7 @@ class ArenaBuildDispatcher(ModelBuildDispatcher[Arena]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        build = self.validator.execute(job)
+        build = self.builder.execute(job)
         if build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

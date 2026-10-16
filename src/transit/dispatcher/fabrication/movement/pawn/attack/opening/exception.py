@@ -1,7 +1,7 @@
 # src/err/transit/dispatcher/fabrication/movement/offset/pawn/attack/opening/exception.py
 
 """
-Module: err.validator.movement.offset.pawn.attack.opening.exception
+Module: err.builder.movement.offset.pawn.attack.opening.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import AttackOffsetPatternValidatorException
+from err import AttackOffsetPatternBuilderException
 from artifcat import MethodResultType
 
 __all__ = [
-    # ======================# OPENING_ATTACK_OFFSET_PATTERN_VALIDATOR_FAILURE #======================#
-    "OpeningAttackOffsetPatternValidatorException",
+    # ======================# OPENING_ATTACK_OFFSET_PATTERN_BUILDER_FAILURE #======================#
+    "OpeningAttackOffsetPatternBuilderException",
 ]
 
 
-# ======================# OPENING_ATTACK_OFFSET_PATTERN_VALIDATOR_FAILURE #======================#
-class OpeningAttackOffsetPatternValidatorException(AttackOffsetPatternValidatorException):
+# ======================# OPENING_ATTACK_OFFSET_PATTERN_BUILDER_FAILURE #======================#
+class OpeningAttackOffsetPatternBuilderException(AttackOffsetPatternBuilderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicate an error occurred in an OpeningAttackOffsetPatternValidator failed.
+        1.  Indicate an error occurred in an OpeningAttackOffsetPatternBuilder failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class OpeningAttackOffsetPatternValidatorException(AttackOffsetPatternValidatorE
     Provides:
 
     Super Class:
-        AttackOffsetPatternValidatorException
+        AttackOffsetPatternBuilderException
     """
-    MSG = "OpeningAttackOffsetPatternValidator error."
-    ERR_CODE = "OPENING_ATTACK_OFFSET_PATTERN_VALIDATOR_FAILURE"
+    MSG = "OpeningAttackOffsetPatternBuilder error."
+    ERR_CODE = "OPENING_ATTACK_OFFSET_PATTERN_BUILDER_FAILURE"
     
     def __init__(
             self,

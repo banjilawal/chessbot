@@ -1,7 +1,7 @@
 # src/err/transit/dispatcher/fabrication/movement/traversal/rook/exception.py
 
 """
-Module: err.validator.movement.traversal.rook.exception
+Module: err.builder.movement.traversal.rook.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import TraversalPatternValidatorException
+from err import TraversalPatternBuilderException
 from artifcat import MethodResultType
 
 __all__ = [
-    # ======================# ROOK_TRAVERSAL_PATTERN_VALIDATOR_FAILURE #======================#
-    "RookTraversalPatternValidatorException",
+    # ======================# ROOK_TRAVERSAL_PATTERN_BUILDER_FAILURE #======================#
+    "RookTraversalPatternBuilderException",
 ]
 
 
-# ======================# ROOK_TRAVERSAL_PATTERN_VALIDATOR_FAILURE #======================#
-class RookTraversalPatternValidatorException(TraversalPatternValidatorException):
+# ======================# ROOK_TRAVERSAL_PATTERN_BUILDER_FAILURE #======================#
+class RookTraversalPatternBuilderException(TraversalPatternBuilderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicate a required RookTraversalPatternValidator failed.
+        1.  Indicate a required RookTraversalPatternBuilder failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class RookTraversalPatternValidatorException(TraversalPatternValidatorException)
     Provides:
 
     Super Class:
-        TraversalPatternValidatorException
+        TraversalPatternBuilderException
     """
-    MSG = "RookTraversalPatternValidator error."
-    ERR_CODE = "ROOK_TRAVERSAL_PATTERN_VALIDATOR_FAILURE"
+    MSG = "RookTraversalPatternBuilder error."
+    ERR_CODE = "ROOK_TRAVERSAL_PATTERN_BUILDER_FAILURE"
     
     def __init__(
             self,

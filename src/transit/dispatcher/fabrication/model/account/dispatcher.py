@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/model/account/validator.py
+# src/transit/dispatcher/fabrication/model/account/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.model.account.validator
+Module: transit.dispatcher.fabrication.model.account.dispatcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 
-from assurance import AccountValidator
+from fabrication import AccountBuilder
 from artifcat import BuildResult
 from domain import Account
 from err import AccountBuildDispatcherException
@@ -29,10 +29,10 @@ class AccountBuildDispatcher(ModelBuildDispatcher[Account]):
         1.  Direct the AccountBuild workflow.
 
     Attributes:
-        validator: AccountValidator
+        builder: AccountBuilder
 
     Provides:
-        -   def execute(self, candidate: Any) -> BuildResult[validatorCarrier]
+        -   def execute(self, candidate: Any) -> BuildResult[builderCarrier]
 
     Super Class:
         ModelBuildDispatcher
@@ -40,22 +40,22 @@ class AccountBuildDispatcher(ModelBuildDispatcher[Account]):
 
     def __init__(
             self,
-            validator: AccountValidator | None = None,
+            builder: AccountBuilder | None = None,
     ):
-        super().__init__(validator=validator or AccountValidator())
+        super().__init__(builder=builder or AccountBuilder())
         
     @property
-    def validator(self) -> AccountValidator:
-        return cast(AccountValidator, super().validator)
+    def builder(self) -> AccountBuilder:
+        return cast(AccountBuilder, super().builder)
     
 
     @LoggingLevelRouter.monitor
     def execute(self, job: Any) -> BuildResult[AccountCarrier]:
         """
-        Forward a job to a AccountValidator then deliver the result.
+        Forward a job to a AccountBuilder then deliver the result.
 
         Action:
-            1.  Send an exception chain in the BuildResult if the validator cannot
+            1.  Send an exception chain in the BuildResult if the builder cannot
                 certify the job's content.
             2.  Otherwise, cast the job payload into a AccountCarrier and send in
                 the success result.
@@ -69,7 +69,7 @@ class AccountBuildDispatcher(ModelBuildDispatcher[Account]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        build = self.validator.execute(job)
+        build = self.builder.execute(job)
         if build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

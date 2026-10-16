@@ -1,7 +1,7 @@
 # src/err/transit/dispatcher/fabrication/movement/offset/pawn/attack/developed/exception.py
 
 """
-Module: err.validator.movement.offset.pawn.attack.developed.exception
+Module: err.builder.movement.offset.pawn.attack.developed.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import AttackOffsetPatternValidatorException
+from err import AttackOffsetPatternBuilderException
 from artifcat import MethodResultType
 
 __all__ = [
-    # ======================# DEVELOPED_ATTACK_OFFSET_PATTERN_VALIDATOR_FAILURE #======================#
-    "DevelopedAttackOffsetPatternValidatorException",
+    # ======================# DEVELOPED_ATTACK_OFFSET_PATTERN_BUILDER_FAILURE #======================#
+    "DevelopedAttackOffsetPatternBuilderException",
 ]
 
 
-# ======================# DEVELOPED_ATTACK_OFFSET_PATTERN_VALIDATOR_FAILURE #======================#
-class DevelopedAttackOffsetPatternValidatorException(AttackOffsetPatternValidatorException):
+# ======================# DEVELOPED_ATTACK_OFFSET_PATTERN_BUILDER_FAILURE #======================#
+class DevelopedAttackOffsetPatternBuilderException(AttackOffsetPatternBuilderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicate an error occurred in an DevelopedAttackOffsetPatternValidator failed.
+        1.  Indicate an error occurred in an DevelopedAttackOffsetPatternBuilder failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class DevelopedAttackOffsetPatternValidatorException(AttackOffsetPatternValidato
     Provides:
 
     Super Class:
-        AttackOffsetPatternValidatorException
+        AttackOffsetPatternBuilderException
     """
-    MSG = "DevelopedAttackOffsetPatternValidator error."
-    ERR_CODE = "DEVELOPED_ATTACK_OFFSET_PATTERN_VALIDATOR_FAILURE"
+    MSG = "DevelopedAttackOffsetPatternBuilder error."
+    ERR_CODE = "DEVELOPED_ATTACK_OFFSET_PATTERN_BUILDER_FAILURE"
     
     def __init__(
             self,

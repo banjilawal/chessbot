@@ -1,7 +1,7 @@
 # src/err/transit/dispatcher/fabrication/movement/offset/pawn/exception.py
 
 """
-Module: err.validator.movement.offset.pawn.exception
+Module: err.builder.movement.offset.pawn.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import OffsetPatternValidatorException
+from err import OffsetPatternBuilderException
 from artifcat import MethodResultType
 
 __all__ = [
-    # ======================# PAWN_OFFSET_PATTERN_VALIDATOR_FAILURE #======================#
-    "PawnOffsetPatternValidatorException",
+    # ======================# PAWN_OFFSET_PATTERN_BUILDER_FAILURE #======================#
+    "PawnOffsetPatternBuilderException",
 ]
 
 
-# ======================# PAWN_OFFSET_PATTERN_VALIDATOR_FAILURE #======================#
-class PawnOffsetPatternValidatorException(OffsetPatternValidatorException):
+# ======================# PAWN_OFFSET_PATTERN_BUILDER_FAILURE #======================#
+class PawnOffsetPatternBuilderException(OffsetPatternBuilderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicate a required PawnOffsetPatternValidator failed.
+        1.  Indicate a required PawnOffsetPatternBuilder failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class PawnOffsetPatternValidatorException(OffsetPatternValidatorException):
     Provides:
 
     Super Class:
-        OffsetPatternValidatorException
+        OffsetPatternBuilderException
     """
-    MSG = "PawnOffsetPatternValidator error."
-    ERR_CODE = "PAWN_OFFSET_PATTERN_VALIDATOR_FAILURE"
+    MSG = "PawnOffsetPatternBuilder error."
+    ERR_CODE = "PAWN_OFFSET_PATTERN_BUILDER_FAILURE"
     
     def __init__(
             self,

@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/model/vector/validator.py
+# src/transit/dispatcher/fabrication/model/vector/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.model.vector.validator
+Module: transit.dispatcher.fabrication.model.vector.dispatcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 
-from assurance import VectorValidator
+from fabrication import VectorBuilder
 from artifcat import BuildResult
 from domain import Vector
 from err import VectorBuildDispatcherException
@@ -29,10 +29,10 @@ class VectorBuildDispatcher(ModelBuildDispatcher[Vector]):
         1.  Direct the VectorBuild workflow.
 
     Attributes:
-        validator: VectorValidator
+        builder: VectorBuilder
 
     Provides:
-        -   def execute(self, candidate: Any) -> BuildResult[validatorCarrier]
+        -   def execute(self, candidate: Any) -> BuildResult[builderCarrier]
 
     Super Class:
         ModelBuildDispatcher
@@ -40,22 +40,22 @@ class VectorBuildDispatcher(ModelBuildDispatcher[Vector]):
 
     def __init__(
             self,
-            validator: VectorValidator | None = None,
+            builder: VectorBuilder | None = None,
     ):
-        super().__init__(validator=validator or VectorValidator())
+        super().__init__(builder=builder or VectorBuilder())
         
     @property
-    def validator(self) -> VectorValidator:
-        return cast(VectorValidator, super().validator)
+    def builder(self) -> VectorBuilder:
+        return cast(VectorBuilder, super().builder)
     
 
     @LoggingLevelRouter.monitor
     def execute(self, job: Any) -> BuildResult[VectorCarrier]:
         """
-        Forward a job to a VectorValidator then deliver the result.
+        Forward a job to a VectorBuilder then deliver the result.
 
         Action:
-            1.  Send an exception chain in the BuildResult if the validator cannot
+            1.  Send an exception chain in the BuildResult if the builder cannot
                 certify the job's content.
             2.  Otherwise, cast the job payload into a VectorCarrier and send in
                 the success result.
@@ -69,7 +69,7 @@ class VectorBuildDispatcher(ModelBuildDispatcher[Vector]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        build = self.validator.execute(job)
+        build = self.builder.execute(job)
         if build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

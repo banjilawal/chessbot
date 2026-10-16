@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/model/encounter/validator.py
+# src/transit/dispatcher/fabrication/model/encounter/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.model.encounter.validator
+Module: transit.dispatcher.fabrication.model.encounter.dispatcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 
-from assurance import EncounterValidator
+from fabrication import EncounterBuilder
 from artifcat import BuildResult
 from domain import Encounter
 from err import EncounterBuildDispatcherException
@@ -29,10 +29,10 @@ class EncounterBuildDispatcher(ModelBuildDispatcher[Encounter]):
         1.  Direct the EncounterBuild workflow.
 
     Attributes:
-        validator: EncounterValidator
+        builder: EncounterBuilder
 
     Provides:
-        -   def execute(self, candidate: Any) -> BuildResult[validatorCarrier]
+        -   def execute(self, candidate: Any) -> BuildResult[builderCarrier]
 
     Super Class:
         ModelBuildDispatcher
@@ -40,22 +40,22 @@ class EncounterBuildDispatcher(ModelBuildDispatcher[Encounter]):
 
     def __init__(
             self,
-            validator: EncounterValidator | None = None,
+            builder: EncounterBuilder | None = None,
     ):
-        super().__init__(validator=validator or EncounterValidator())
+        super().__init__(builder=builder or EncounterBuilder())
         
     @property
-    def validator(self) -> EncounterValidator:
-        return cast(EncounterValidator, super().validator)
+    def builder(self) -> EncounterBuilder:
+        return cast(EncounterBuilder, super().builder)
     
 
     @LoggingLevelRouter.monitor
     def execute(self, job: Any) -> BuildResult[EncounterCarrier]:
         """
-        Forward a job to a EncounterValidator then deliver the result.
+        Forward a job to a EncounterBuilder then deliver the result.
 
         Action:
-            1.  Send an exception chain in the BuildResult if the validator cannot
+            1.  Send an exception chain in the BuildResult if the builder cannot
                 certify the job's content.
             2.  Otherwise, cast the job payload into a EncounterCarrier and send in
                 the success result.
@@ -69,7 +69,7 @@ class EncounterBuildDispatcher(ModelBuildDispatcher[Encounter]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        build = self.validator.execute(job)
+        build = self.builder.execute(job)
         if build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

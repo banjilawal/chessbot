@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/search/stack/player/validator.py
+# src/transit/dispatcher/fabrication/search/stack/player/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.search.stack.player.validator
+Module: transit.dispatcher.fabrication.search.stack.player.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 
-class PlayerContextValidator(ContextValidator[Player]):
+class PlayerContextBuilder(ContextBuilder[Player]):
     """
      Role:Build, Data Integrity Guarantor, Security.
 
@@ -19,7 +19,7 @@ class PlayerContextValidator(ContextValidator[Player]):
     2.  If a rank fails a safety test, the build sends an exception in a BuildResult.
     
     Super Class:
-        *   Validator
+        *   Builder
 
     Provides:
 
@@ -64,7 +64,7 @@ class PlayerContextValidator(ContextValidator[Player]):
             *   ArenaPlayerContextFlagsException
             *   InvalidPlayerContextException
         """
-        method = "PlayerContextValidator.execute"
+        method = "PlayerContextBuilder.execute"
         try:
             # Handle the nonexistence case.
             if candidate is None:
@@ -96,29 +96,29 @@ class PlayerContextValidator(ContextValidator[Player]):
             
             # Using the tuple's attribute as an address, route to appropriate build subflow.
             
-            # Which ever attribute value is not null should be certified safe by the appropriate validator.
+            # Which ever attribute value is not null should be certified safe by the appropriate builder.
             if context.id is not None:
                 build = identity_service.validate_id(candidate=context.id)
                 if build.is_failure:
-                    return BuildResult.failure(validator.exception)
+                    return BuildResult.failure(builder.exception)
                 return BuildResult.success(context)
             
             if context.name is not None:
                 build = identity_service.validate_name(candidate=context.name)
                 if build.is_failure:
-                    return BuildResult.failure(validator.exception)
+                    return BuildResult.failure(builder.exception)
                 return BuildResult.success(context)
             
             if context.victim is not None:
                 build = team_service.execute.execute(job=context.victim)
                 if build.is_failure:
-                    return BuildResult.failure(validator.exception)
+                    return BuildResult.failure(builder.exception)
                 return BuildResult.success(context)
             
             if context.game is not None:
                 build = game_service.execute.execute(job=context.game)
                 if build.is_failure:
-                    return BuildResult.failure(validator.exception)
+                    return BuildResult.failure(builder.exception)
                 return BuildResult.success(context)
             
             if context.variety is not None:

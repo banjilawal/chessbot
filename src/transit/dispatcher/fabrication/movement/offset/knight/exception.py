@@ -1,7 +1,7 @@
 # src/err/transit/dispatcher/fabrication/movement/offset/knight/exception.py
 
 """
-Module: err.validator.movement.offset.knight.exception
+Module: err.builder.movement.offset.knight.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import OffsetPatternValidatorException
+from err import OffsetPatternBuilderException
 from artifcat import MethodResultType
 
 __all__ = [
-    # ======================# KNIGHT_OFFSET_PATTERN_VALIDATOR_FAILURE #======================#
-    "KnightOffsetPatternValidatorException",
+    # ======================# KNIGHT_OFFSET_PATTERN_BUILDER_FAILURE #======================#
+    "KnightOffsetPatternBuilderException",
 ]
 
 
-# ======================# KNIGHT_OFFSET_PATTERN_VALIDATOR_FAILURE #======================#
-class KnightOffsetPatternValidatorException(OffsetPatternValidatorException):
+# ======================# KNIGHT_OFFSET_PATTERN_BUILDER_FAILURE #======================#
+class KnightOffsetPatternBuilderException(OffsetPatternBuilderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicate a required KnightOffsetPatternValidator failed.
+        1.  Indicate a required KnightOffsetPatternBuilder failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class KnightOffsetPatternValidatorException(OffsetPatternValidatorException):
     Provides:
 
     Super Class:
-        OffsetPatternValidatorException
+        OffsetPatternBuilderException
     """
     MSG = "KnightOffsetPattern pattern."
-    ERR_CODE = "KNIGHT_OFFSET_PATTERN_VALIDATOR_FAILURE"
+    ERR_CODE = "KNIGHT_OFFSET_PATTERN_BUILDER_FAILURE"
     
     def __init__(
             self,

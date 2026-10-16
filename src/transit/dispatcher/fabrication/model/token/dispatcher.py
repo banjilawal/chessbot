@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/model/token/validator.py
+# src/transit/dispatcher/fabrication/model/token/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.model.token.validator
+Module: transit.dispatcher.fabrication.model.token.dispatcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 
-from assurance import TokenValidator
+from fabrication import TokenBuilder
 from artifcat import BuildResult
 from domain import Token
 from err import TokenBuildDispatcherException
@@ -29,10 +29,10 @@ class TokenBuildDispatcher(ModelBuildDispatcher[Token]):
         1.  Direct the TokenBuild workflow.
 
     Attributes:
-        validator: TokenValidator
+        builder: TokenBuilder
 
     Provides:
-        -   def execute(self, candidate: Any) -> BuildResult[validatorCarrier]
+        -   def execute(self, candidate: Any) -> BuildResult[builderCarrier]
 
     Super Class:
         ModelBuildDispatcher
@@ -40,22 +40,22 @@ class TokenBuildDispatcher(ModelBuildDispatcher[Token]):
 
     def __init__(
             self,
-            validator: TokenValidator | None = None,
+            builder: TokenBuilder | None = None,
     ):
-        super().__init__(validator=validator or TokenValidator())
+        super().__init__(builder=builder or TokenBuilder())
         
     @property
-    def validator(self) -> TokenValidator:
-        return cast(TokenValidator, super().validator)
+    def builder(self) -> TokenBuilder:
+        return cast(TokenBuilder, super().builder)
     
 
     @LoggingLevelRouter.monitor
     def execute(self, job: Any) -> BuildResult[TokenCarrier]:
         """
-        Forward a job to a TokenValidator then deliver the result.
+        Forward a job to a TokenBuilder then deliver the result.
 
         Action:
-            1.  Send an exception chain in the BuildResult if the validator cannot
+            1.  Send an exception chain in the BuildResult if the builder cannot
                 certify the job's content.
             2.  Otherwise, cast the job payload into a TokenCarrier and send in
                 the success result.
@@ -69,7 +69,7 @@ class TokenBuildDispatcher(ModelBuildDispatcher[Token]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        build = self.validator.execute(job)
+        build = self.builder.execute(job)
         if build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/model/square/validator.py
+# src/transit/dispatcher/fabrication/model/square/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.model.square.validator
+Module: transit.dispatcher.fabrication.model.square.dispatcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 
-from assurance import SquareValidator
+from fabrication import SquareBuilder
 from artifcat import BuildResult
 from domain import Square
 from err import SquareBuildDispatcherException
@@ -29,10 +29,10 @@ class SquareBuildDispatcher(ModelBuildDispatcher[Square]):
         1.  Direct the SquareBuild workflow.
 
     Attributes:
-        validator: SquareValidator
+        builder: SquareBuilder
 
     Provides:
-        -   def execute(self, candidate: Any) -> BuildResult[validatorCarrier]
+        -   def execute(self, candidate: Any) -> BuildResult[builderCarrier]
 
     Super Class:
         ModelBuildDispatcher
@@ -40,22 +40,22 @@ class SquareBuildDispatcher(ModelBuildDispatcher[Square]):
 
     def __init__(
             self,
-            validator: SquareValidator | None = None,
+            builder: SquareBuilder | None = None,
     ):
-        super().__init__(validator=validator or SquareValidator())
+        super().__init__(builder=builder or SquareBuilder())
         
     @property
-    def validator(self) -> SquareValidator:
-        return cast(SquareValidator, super().validator)
+    def builder(self) -> SquareBuilder:
+        return cast(SquareBuilder, super().builder)
     
 
     @LoggingLevelRouter.monitor
     def execute(self, job: Any) -> BuildResult[SquareCarrier]:
         """
-        Forward a job to a SquareValidator then deliver the result.
+        Forward a job to a SquareBuilder then deliver the result.
 
         Action:
-            1.  Send an exception chain in the BuildResult if the validator cannot
+            1.  Send an exception chain in the BuildResult if the builder cannot
                 certify the job's content.
             2.  Otherwise, cast the job payload into a SquareCarrier and send in
                 the success result.
@@ -69,7 +69,7 @@ class SquareBuildDispatcher(ModelBuildDispatcher[Square]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        build = self.validator.execute(job)
+        build = self.builder.execute(job)
         if build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

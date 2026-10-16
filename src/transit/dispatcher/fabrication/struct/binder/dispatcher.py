@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/struct/binder/validator.py
+# src/transit/dispatcher/fabrication/struct/binder/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.binder.validator
+Module: transit.dispatcher.fabrication.binder.dispatcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
-from assurance import BinderValidator
+from fabrication import BinderBuilder
 from artifcat import BuildResult
 from domain import Binder
 from transit import BinderCarrier, StructBuildDispatcher
@@ -32,21 +32,21 @@ class BinderBuildDispatcher(StructBuildDispatcher[T], ABC, Generic[T]):
         1.  Ensure a Model instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        validator: BinderValidator[T]
+        builder: BinderBuilder[T]
         
     Provides:
         -   def execute(self, candidate: Any) -> BuildResult
 
     Super Class:
-        Validator
+        Builder
     """
     
-    def __init__(self, validator: BinderValidator[T]):
-        super().__init__(validator=validator)
+    def __init__(self, builder: BinderBuilder[T]):
+        super().__init__(builder=builder)
     
     @property
-    def validator(self) -> BinderValidator:
-        return cast(BinderValidator[T], super().validator)
+    def builder(self) -> BinderBuilder:
+        return cast(BinderBuilder[T], super().builder)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

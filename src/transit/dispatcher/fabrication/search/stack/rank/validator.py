@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/search/stack/rank/validator.py
+# src/transit/dispatcher/fabrication/search/stack/rank/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.search.stack.rank.validator
+Module: transit.dispatcher.fabrication.search.stack.rank.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -10,5 +10,5 @@ version: 0.0.2
 from __future__ import annotations
 
 
-class RankValidator:
+class RankBuilder:
     pass

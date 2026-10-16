@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/validator.py
+# src/transit/dispatcher/fabrication/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.validator
+Module: transit.dispatcher.fabrication.dispatcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
-from assurance import Validator
+from fabrication import Builder
 from artifcat import BuildResult
 from transit import Dispatcher
 from util import LoggingLevelRouter
@@ -30,7 +30,7 @@ class BuildDispatcher(Dispatcher[BuildResult], ABC, Generic[T]):
         1.  Direct the Build workflow.
 
     Attributes:
-        validator: Validator[T]
+        builder: Builder[T]
 
     Provides:
         -   def execute(self, candidate: Any) -> BuildResult[T]
@@ -38,18 +38,18 @@ class BuildDispatcher(Dispatcher[BuildResult], ABC, Generic[T]):
     Super Class:
         Dispatcher
     """
-    _validator: Validator[T]
+    _builder: Builder[T]
     
-    def __init__(self, validator: Validator[T]):
+    def __init__(self, builder: Builder[T]):
         """
         Args:
-            validator: Validator[T]
+            builder: Builder[T]
         """
-        self._validator = validator
+        self._builder = builder
         
     @property
-    def validator(self) -> Validator[T]:
-        return self._validator
+    def builder(self) -> Builder[T]:
+        return self._builder
 
     @abstractmethod
     @LoggingLevelRouter.monitor

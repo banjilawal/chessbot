@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/model/maneuver/validator.py
+# src/transit/dispatcher/fabrication/model/maneuver/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.model.maneuver.validator
+Module: transit.dispatcher.fabrication.model.maneuver.dispatcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 
-from assurance import ManeuverValidator
+from fabrication import ManeuverBuilder
 from artifcat import BuildResult
 from domain import Maneuver
 from err import ManeuverBuildDispatcherException
@@ -29,10 +29,10 @@ class ManeuverBuildDispatcher(ModelBuildDispatcher[Maneuver]):
         1.  Direct the ManeuverBuild workflow.
 
     Attributes:
-        validator: ManeuverValidator
+        builder: ManeuverBuilder
 
     Provides:
-        -   def execute(self, candidate: Any) -> BuildResult[validatorCarrier]
+        -   def execute(self, candidate: Any) -> BuildResult[builderCarrier]
 
     Super Class:
         ModelBuildDispatcher
@@ -40,22 +40,22 @@ class ManeuverBuildDispatcher(ModelBuildDispatcher[Maneuver]):
 
     def __init__(
             self,
-            validator: ManeuverValidator | None = None,
+            builder: ManeuverBuilder | None = None,
     ):
-        super().__init__(validator=validator or ManeuverValidator())
+        super().__init__(builder=builder or ManeuverBuilder())
         
     @property
-    def validator(self) -> ManeuverValidator:
-        return cast(ManeuverValidator, super().validator)
+    def builder(self) -> ManeuverBuilder:
+        return cast(ManeuverBuilder, super().builder)
     
 
     @LoggingLevelRouter.monitor
     def execute(self, job: Any) -> BuildResult[ManeuverCarrier]:
         """
-        Forward a job to a ManeuverValidator then deliver the result.
+        Forward a job to a ManeuverBuilder then deliver the result.
 
         Action:
-            1.  Send an exception chain in the BuildResult if the validator cannot
+            1.  Send an exception chain in the BuildResult if the builder cannot
                 certify the job's content.
             2.  Otherwise, cast the job payload into a ManeuverCarrier and send in
                 the success result.
@@ -69,7 +69,7 @@ class ManeuverBuildDispatcher(ModelBuildDispatcher[Maneuver]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        build = self.validator.execute(job)
+        build = self.builder.execute(job)
         if build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

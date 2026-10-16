@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/search/stack/token/validator.py
+# src/transit/dispatcher/fabrication/search/stack/token/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.search.stack.token.validator
+Module: transit.dispatcher.fabrication.search.stack.token.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,13 +12,13 @@ from __future__ import annotations
 from typing import Any, cast
 
 from artifcat import BuildResult
-from assurance import StackContextValidator, TokenContextValidator
+from fabrication import StackContextBuilder, TokenContextBuilder
 from domain import TokenSearchContext
-from err import TokenContextValidatorException
+from err import TokenContextBuilderException
 from util import LoggingLevelRouter
 
 
-class TokenContextValidator(StackContextValidator[TokenSearchContext]):
+class TokenContextBuilder(StackContextBuilder[TokenSearchContext]):
     """
     Role
         - Integrity, Consistency Maintenance
@@ -27,26 +27,26 @@ class TokenContextValidator(StackContextValidator[TokenSearchContext]):
         1.  Ensure a TokenContext instance is safe before use.
 
     Attributes:
-        validator: TokenContextChecker
+        builder: TokenContextChecker
 
     Provides:
         -   def execute(self, candidate: Any) -> BuildResult[TokenContext]
 
     Super Class:
-        ContextValidator
+        ContextBuilder
     """
     
-    def __init__(self, validator: TokenContextValidator):
+    def __init__(self, builder: TokenContextBuilder):
         """
         Args:
-            validator: TokenContextChecker
+            builder: TokenContextChecker
         """
-        super().__init__(validator=validator)
+        super().__init__(builder=builder)
     
     
     @property
-    def validator(self) -> TokenContextValidator:
-        return cast(TokenContextValidator, super().validator)
+    def builder(self) -> TokenContextBuilder:
+        return cast(TokenContextBuilder, super().builder)
     
     
     @LoggingLevelRouter.monitor
@@ -55,7 +55,7 @@ class TokenContextValidator(StackContextValidator[TokenSearchContext]):
         Certify a candidate is a TokenContext that is safe to use.
 
         Action:
-            1.  Send an exception chain in the BuildResult if validator
+            1.  Send an exception chain in the BuildResult if builder
                 returns a failure.
             2.  Otherwise, send the success result.
         Args:
@@ -63,20 +63,20 @@ class TokenContextValidator(StackContextValidator[TokenSearchContext]):
         Returns:
             BuildResult[TokenContext]
         Raises:
-            TokenContextValidatorException
+            TokenContextBuilderException
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that validator flags the candidate.
-        build = self.validator.execute(candidate=candidate)
+        # Handle the case that builder flags the candidate.
+        build = self.builder.execute(candidate=candidate)
         if build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                TokenContextValidatorException(
+                TokenContextBuilderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenContextValidatorException.MSG,
-                    err_code=TokenContextValidatorException.ERR_CODE,
+                    msg=TokenContextBuilderException.MSG,
+                    err_code=TokenContextBuilderException.ERR_CODE,
                     ex=build.exception
                 )
             )

@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/model/alert/validator.py
+# src/transit/dispatcher/fabrication/model/alert/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.model.alert.validator
+Module: transit.dispatcher.fabrication.model.alert.dispatcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, cast
 
 
-from assurance import AlertValidator
+from fabrication import AlertBuilder
 from artifcat import BuildResult
 from domain import Alert
 from err import AlertBuildDispatcherException
@@ -31,10 +31,10 @@ class AlertBuildDispatcher(
         1.  Direct the AlertBuild workflow.
 
     Attributes:
-        validator: AlertValidator
+        builder: AlertBuilder
 
     Provides:
-        -   def execute(self, candidate: Any) -> BuildResult[validatorCarrier]
+        -   def execute(self, candidate: Any) -> BuildResult[builderCarrier]
 
     Super Class:
         ModelBuildDispatcher
@@ -42,22 +42,22 @@ class AlertBuildDispatcher(
 
     def __init__(
             self,
-            validator: AlertValidator | None = None,
+            builder: AlertBuilder | None = None,
     ):
-        super().__init__(validator=validator or AlertValidator())
+        super().__init__(builder=builder or AlertBuilder())
         
     @property
-    def validator(self) -> AlertValidator:
-        return cast(AlertValidator, super().validator)
+    def builder(self) -> AlertBuilder:
+        return cast(AlertBuilder, super().builder)
     
 
     @LoggingLevelRouter.monitor
     def execute(self, job: Any) -> BuildResult[AlertCarrier]:
         """
-        Forward a job to a AlertValidator then deliver the result.
+        Forward a job to a AlertBuilder then deliver the result.
 
         Action:
-            1.  Send an exception chain in the BuildResult if the validator cannot
+            1.  Send an exception chain in the BuildResult if the builder cannot
                 certify the job's content.
             2.  Otherwise, cast the job payload into a AlertCarrier and send in
                 the success result.
@@ -71,7 +71,7 @@ class AlertBuildDispatcher(
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is not safe.
-        build = self.validator.execute(job)
+        build = self.builder.execute(job)
         if build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(

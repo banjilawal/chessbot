@@ -1,7 +1,7 @@
 # src/err/transit/dispatcher/fabrication/movement/offset/exception.py
 
 """
-Module: err.validator.movement.offset.exception
+Module: err.builder.movement.offset.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import MovementPatternValidatorException
+from err import MovementPatternBuilderException
 from artifcat import MethodResultType
 
 __all__ = [
-    # ======================# OFFSET_PATTERN_VALIDATOR_FAILURE #======================#
-    "OffsetPatternValidatorException",
+    # ======================# OFFSET_PATTERN_BUILDER_FAILURE #======================#
+    "OffsetPatternBuilderException",
 ]
 
 
-# ======================# OFFSET_PATTERN_VALIDATOR_FAILURE #======================#
-class OffsetPatternValidatorException(MovementPatternValidatorException):
+# ======================# OFFSET_PATTERN_BUILDER_FAILURE #======================#
+class OffsetPatternBuilderException(MovementPatternBuilderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicate a required OffsetPatternValidator failed.
+        1.  Indicate a required OffsetPatternBuilder failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class OffsetPatternValidatorException(MovementPatternValidatorException):
     Provides:
 
     Super Class:
-        MovementPatternValidatorException
+        MovementPatternBuilderException
     """
-    MSG = "OffsetPatternValidator error."
-    ERR_CODE = "OFFSET_PATTERN_VALIDATOR_FAILURE"
+    MSG = "OffsetPatternBuilder error."
+    ERR_CODE = "OFFSET_PATTERN_BUILDER_FAILURE"
     
     def __init__(
             self,

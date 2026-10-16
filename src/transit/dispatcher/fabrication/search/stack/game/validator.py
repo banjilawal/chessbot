@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/search/stack/game/validator.py
+# src/transit/dispatcher/fabrication/search/stack/game/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.search.stack.game.validator
+Module: transit.dispatcher.fabrication.search.stack.game.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 
-class GameContextValidator(ContextValidator[Game]):
+class GameContextBuilder(ContextBuilder[Game]):
     """
      Role:Build, Data Integrity Guarantor, Security.
 
@@ -19,10 +19,10 @@ class GameContextValidator(ContextValidator[Game]):
     2.  If verification fails indicate the reason in an exception, returned to the caller.
 
     Super Class:
-        *   Validator
+        *   Builder
 
     # PROVIDES:
-        * GameContextValidator
+        * GameContextBuilder
 
     
     # INHERITED ATTRIBUTES:
@@ -40,7 +40,7 @@ class GameContextValidator(ContextValidator[Game]):
         """
         # ACTION:
             1.  Confirm that only one in the (id, owner) tuple is not null.
-            2.  Certify the not-null attribute is safe using the appropriate entity_service and validator.
+            2.  Certify the not-null attribute is safe using the appropriate entity_service and builder.
             3.  If any check fais return a BuildResult containing the exception raised by the failure.
             4.  On success send the verified GameContext in a BuildResult.
 
@@ -65,7 +65,7 @@ class GameContextValidator(ContextValidator[Game]):
             *   ArenaGameContextFlagsException
             *   InvalidGameContextException
         """
-        method = "GameContextValidator.execute"
+        method = "GameContextBuilder.execute"
         try:
             # Handle the case that the rank does not exist.
             if candidate is None:
@@ -109,7 +109,7 @@ class GameContextValidator(ContextValidator[Game]):
             if context.id is not None:
                 build = identity_service.validate_id(candidate=context.id)
                 if build.is_failure:
-                    return BuildResult.failure(validator.exception)
+                    return BuildResult.failure(builder.exception)
                 # On build success return the id_game_context in a BuildResult.
                 return BuildResult.success(context)
             
@@ -117,7 +117,7 @@ class GameContextValidator(ContextValidator[Game]):
             if context.agent is not None:
                 build = agent_service.execute.search_service(job=context.agent)
                 if build.is_failure:
-                    return BuildResult.failure(validator.exception)
+                    return BuildResult.failure(builder.exception)
                 # On build success return the agent_game_context in a BuildResult.
                 return BuildResult.success(context)
             

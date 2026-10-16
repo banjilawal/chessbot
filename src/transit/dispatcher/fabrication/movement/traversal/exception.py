@@ -1,7 +1,7 @@
 # src/err/transit/dispatcher/fabrication/movement/traversal/exception.py
 
 """
-Module: err.validator.movement.traversal.exception
+Module: err.builder.movement.traversal.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import MovementPatternValidatorException
+from err import MovementPatternBuilderException
 from artifcat import MethodResultType
 
 __all__ = [
-    # ======================# TRAVERSAL_PATTERN_VALIDATOR_FAILURE #======================#
-    "TraversalPatternValidatorException",
+    # ======================# TRAVERSAL_PATTERN_BUILDER_FAILURE #======================#
+    "TraversalPatternBuilderException",
 ]
 
 
-# ======================# TRAVERSAL_PATTERN_VALIDATOR_FAILURE #======================#
-class TraversalPatternValidatorException(MovementPatternValidatorException):
+# ======================# TRAVERSAL_PATTERN_BUILDER_FAILURE #======================#
+class TraversalPatternBuilderException(MovementPatternBuilderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicate a required TraversalPatternValidator failed.
+        1.  Indicate a required TraversalPatternBuilder failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class TraversalPatternValidatorException(MovementPatternValidatorException):
     Provides:
 
     Super Class:
-        MovementPatternValidatorException
+        MovementPatternBuilderException
     """
-    MSG = "TraversalPatternValidator error."
-    ERR_CODE = "TRAVERSAL_PATTERN_VALIDATOR_FAILURE"
+    MSG = "TraversalPatternBuilder error."
+    ERR_CODE = "TRAVERSAL_PATTERN_BUILDER_FAILURE"
     
     def __init__(
             self,

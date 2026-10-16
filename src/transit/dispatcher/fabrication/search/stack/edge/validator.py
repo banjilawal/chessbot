@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/search/stack/edge/validator.py
+# src/transit/dispatcher/fabrication/search/stack/edge/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.search.stack.edge.validator
+Module: transit.dispatcher.fabrication.search.stack.edge.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 
-class EdgeContextValidator(ContextValidator[Edge]):
+class EdgeContextBuilder(ContextBuilder[Edge]):
     """
      Role:Build, Data Integrity Guarantor, Security.
 
@@ -19,7 +19,7 @@ class EdgeContextValidator(ContextValidator[Edge]):
     2.  If verification fails indicate the reason in an exception returned to the caller.
 
     Super Class:
-        *   Validator
+        *   Builder
 
     Provides:
 
@@ -61,16 +61,16 @@ class EdgeContextValidator(ContextValidator[Edge]):
             *   ZeroEdgeContextFlagsException
             *   ArenaEdgeContextFlagsException
             *   EdgeContextBuildRouteException
-            *   EdgeContextValidatorException
+            *   EdgeContextBuilderException
         """
-        method = "EdgeContextValidator.execute"
+        method = "EdgeContextBuilder.execute"
         
         # Handle the nonexistence case.
         if candidate is None:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                EdgeContextValidatorException(
-                    msg=f"{method}: {EdgeContextValidatorException.MSG}",
+                EdgeContextBuilderException(
+                    msg=f"{method}: {EdgeContextBuilderException.MSG}",
                     ex=NullEdgeContextException(f"{method}: {NullEdgeContextException.MSG}")
                 )
             )
@@ -78,8 +78,8 @@ class EdgeContextValidator(ContextValidator[Edge]):
         if not isinstance(candidate, EdgeContext):
             # Send the exception chain on failure.
             return BuildResult.failure(
-                EdgeContextValidatorException(
-                    msg=f"{method}: {EdgeContextValidatorException.MSG}",
+                EdgeContextBuilderException(
+                    msg=f"{method}: {EdgeContextBuilderException.MSG}",
                     ex=TypeError(
                         f"{method}: Was expecting a EdgeContext, got {type(candidate).__name__} instead."
                     )
@@ -93,8 +93,8 @@ class EdgeContextValidator(ContextValidator[Edge]):
         if flag_count == 0:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                EdgeContextValidatorException(
-                    msg=f"{method}: {EdgeContextValidatorException.MSG}",
+                EdgeContextBuilderException(
+                    msg=f"{method}: {EdgeContextBuilderException.MSG}",
                     ex=ZeroEdgeContextFlagsException(f"{method}: {ZeroEdgeContextFlagsException.MSG}")
                 )
             )
@@ -102,8 +102,8 @@ class EdgeContextValidator(ContextValidator[Edge]):
         if flag_count > 1:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                EdgeContextValidatorException(
-                    msg=f"{method}: {EdgeContextValidatorException.MSG}",
+                EdgeContextBuilderException(
+                    msg=f"{method}: {EdgeContextBuilderException.MSG}",
                     ex=ArenaEdgeContextFlagsException(
                         f"{method}: {ArenaEdgeContextFlagsException.MSG}"
                     )
@@ -117,9 +117,9 @@ class EdgeContextValidator(ContextValidator[Edge]):
             if build.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    EdgeContextValidatorException(
-                        msg=f"{method}: {EdgeContextValidatorException.MSG}",
-                        ex=validator.exception
+                    EdgeContextBuilderException(
+                        msg=f"{method}: {EdgeContextBuilderException.MSG}",
+                        ex=builder.exception
                     )
                 )
             # On build success return the id_EdgeContext in the BuildResult.
@@ -131,9 +131,9 @@ class EdgeContextValidator(ContextValidator[Edge]):
             if build.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    EdgeContextValidatorException(
-                        msg=f"{method}: {EdgeContextValidatorException.MSG}",
-                        ex=validator.exception
+                    EdgeContextBuilderException(
+                        msg=f"{method}: {EdgeContextBuilderException.MSG}",
+                        ex=builder.exception
                     )
                 )
             # On build success return the name_EdgeContext in the BuildResult.
@@ -145,9 +145,9 @@ class EdgeContextValidator(ContextValidator[Edge]):
             if build.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    EdgeContextValidatorException(
-                        msg=f"{method}: {EdgeContextValidatorException.MSG}",
-                        ex=validator.exception
+                    EdgeContextBuilderException(
+                        msg=f"{method}: {EdgeContextBuilderException.MSG}",
+                        ex=builder.exception
                     )
                 )
             # On build success return the coord_EdgeContext in the BuildResult.
@@ -159,9 +159,9 @@ class EdgeContextValidator(ContextValidator[Edge]):
             if build.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    EdgeContextValidatorException(
-                        msg=f"{method}: {EdgeContextValidatorException.MSG}",
-                        ex=validator.exception
+                    EdgeContextBuilderException(
+                        msg=f"{method}: {EdgeContextBuilderException.MSG}",
+                        ex=builder.exception
                     )
                 )
             # On build success return the board_EdgeContext in the BuildResult.
@@ -173,9 +173,9 @@ class EdgeContextValidator(ContextValidator[Edge]):
             if build.is_failure:
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    EdgeContextValidatorException(
-                        msg=f"{method}: {EdgeContextValidatorException.MSG}",
-                        ex=validator.exception
+                    EdgeContextBuilderException(
+                        msg=f"{method}: {EdgeContextBuilderException.MSG}",
+                        ex=builder.exception
                     )
                 )
             # On build success return the board_EdgeContext in the BuildResult.
@@ -186,8 +186,8 @@ class EdgeContextValidator(ContextValidator[Edge]):
             if not isinstance(context.state, EdgeState):
                 # Send the exception chain on failure.
                 return BuildResult.failure(
-                    EdgeContextValidatorException(
-                        msg=f"{method}: {EdgeContextValidatorException.MSG}",
+                    EdgeContextBuilderException(
+                        msg=f"{method}: {EdgeContextBuilderException.MSG}",
                         ex=TypeError(
                             f"{method}: Was expecting a EdgeState, got {type(candidate).__name__} instead."
                         )
@@ -198,8 +198,8 @@ class EdgeContextValidator(ContextValidator[Edge]):
         
         # Return the exception chain if there is no build route for the context.
         return BuildResult.failure(
-            EdgeContextValidatorException(
-                msg=f"{method}: {EdgeContextValidatorException.MSG}",
+            EdgeContextBuilderException(
+                msg=f"{method}: {EdgeContextBuilderException.MSG}",
                 ex=EdgeContextBuildRouteException(
                     f"{method}: {EdgeContextBuildRouteException.MSG}"
                 )

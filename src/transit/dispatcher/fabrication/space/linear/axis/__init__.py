@@ -13,4 +13,4 @@ version: 0.0.2
 
 
 # Modules
-from .validator import AxisValidator
+from .builder import AxisBuilder

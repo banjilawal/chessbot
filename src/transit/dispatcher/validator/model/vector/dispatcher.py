@@ -1,7 +1,7 @@
-# src/transit/dispatcher/validator/model/vector/validator.py
+# src/transit/dispatcher/validator/model/vector/dispatcher.py
 
 """
-Module: transit.dispatcher.validator.model.vector.validator
+Module: transit.dispatcher.validator.model.vector.dispatcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

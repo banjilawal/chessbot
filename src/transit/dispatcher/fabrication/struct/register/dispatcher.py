@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/struct/register/validator.py
+# src/transit/dispatcher/fabrication/struct/register/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.register.validator
+Module: transit.dispatcher.fabrication.register.dispatcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
-from assurance import RegisterValidator
+from fabrication import RegisterBuilder
 from artifcat import BuildResult
 from domain import Register
 from transit import RegisterCarrier, StructBuildDispatcher
@@ -32,21 +32,21 @@ class RegisterBuildDispatcher(StructBuildDispatcher[T], ABC, Generic[T]):
         1.  Ensure a Model instance is certified safe, reliable, and consistent before use.
 
     Attributes:
-        validator: RegisterValidator[T]
+        builder: RegisterBuilder[T]
         
     Provides:
         -   def execute(self, candidate: Any) -> BuildResult
 
     Super Class:
-        Validator
+        Builder
     """
     
-    def __init__(self, validator: RegisterValidator[T]):
-        super().__init__(validator=validator)
+    def __init__(self, builder: RegisterBuilder[T]):
+        super().__init__(builder=builder)
     
     @property
-    def validator(self) -> RegisterValidator:
-        return cast(RegisterValidator[T], super().validator)
+    def builder(self) -> RegisterBuilder:
+        return cast(RegisterBuilder[T], super().builder)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

@@ -14,4 +14,4 @@ from .axis import *
 from .quadrant import *
 
 # Modules
-from .validator import LinearSpaceValidator
+from .builder import LinearSpaceBuilder

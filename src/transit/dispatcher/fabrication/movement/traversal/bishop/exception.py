@@ -1,7 +1,7 @@
 # src/err/transit/dispatcher/fabrication/movement/traversal/bishop/exception.py
 
 """
-Module: err.validator.movement.traversal.bishop.exception
+Module: err.builder.movement.traversal.bishop.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import TraversalPatternValidatorException
+from err import TraversalPatternBuilderException
 from artifcat import MethodResultType
 
 __all__ = [
-    # ======================# BISHOP_TRAVERSAL_PATTERN_VALIDATOR_FAILURE #======================#
-    "BishopTraversalPatternValidatorException",
+    # ======================# BISHOP_TRAVERSAL_PATTERN_BUILDER_FAILURE #======================#
+    "BishopTraversalPatternBuilderException",
 ]
 
 
-# ======================# BISHOP_TRAVERSAL_PATTERN_VALIDATOR_FAILURE #======================#
-class BishopTraversalPatternValidatorException(TraversalPatternValidatorException):
+# ======================# BISHOP_TRAVERSAL_PATTERN_BUILDER_FAILURE #======================#
+class BishopTraversalPatternBuilderException(TraversalPatternBuilderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicate a required BishopTraversalPatternValidator failed.
+        1.  Indicate a required BishopTraversalPatternBuilder failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class BishopTraversalPatternValidatorException(TraversalPatternValidatorExceptio
     Provides:
 
     Super Class:
-        TraversalPatternValidatorException
+        TraversalPatternBuilderException
     """
-    MSG = "BishopTraversalPatternValidator error."
-    ERR_CODE = "BISHOP_TRAVERSAL_PATTERN_VALIDATOR_FAILURE"
+    MSG = "BishopTraversalPatternBuilder error."
+    ERR_CODE = "BISHOP_TRAVERSAL_PATTERN_BUILDER_FAILURE"
     
     def __init__(
             self,

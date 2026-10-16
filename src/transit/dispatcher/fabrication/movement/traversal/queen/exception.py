@@ -1,7 +1,7 @@
 # src/err/transit/dispatcher/fabrication/movement/traversal/queen/exception.py
 
 """
-Module: err.validator.movement.traversal.queen.exception
+Module: err.builder.movement.traversal.queen.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import TraversalPatternValidatorException
+from err import TraversalPatternBuilderException
 from artifcat import MethodResultType
 
 __all__ = [
-    # ======================# QUEEN_TRAVERSAL_PATTERN_VALIDATOR_FAILURE #======================#
-    "QueenTraversalPatternValidatorException",
+    # ======================# QUEEN_TRAVERSAL_PATTERN_BUILDER_FAILURE #======================#
+    "QueenTraversalPatternBuilderException",
 ]
 
 
-# ======================# QUEEN_TRAVERSAL_PATTERN_VALIDATOR_FAILURE #======================#
-class QueenTraversalPatternValidatorException(TraversalPatternValidatorException):
+# ======================# QUEEN_TRAVERSAL_PATTERN_BUILDER_FAILURE #======================#
+class QueenTraversalPatternBuilderException(TraversalPatternBuilderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicate a required QueenTraversalPatternValidator failed.
+        1.  Indicate a required QueenTraversalPatternBuilder failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class QueenTraversalPatternValidatorException(TraversalPatternValidatorException
     Provides:
 
     Super Class:
-        TraversalPatternValidatorException
+        TraversalPatternBuilderException
     """
-    MSG = "QueenTraversalPattern.Validator error."
-    ERR_CODE = "QUEEN_TRAVERSAL_PATTERN_VALIDATOR_FAILURE"
+    MSG = "QueenTraversalPattern.Builder error."
+    ERR_CODE = "QUEEN_TRAVERSAL_PATTERN_BUILDER_FAILURE"
     
     def __init__(
             self,

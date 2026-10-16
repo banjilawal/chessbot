@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/space/validator.py
+# src/transit/dispatcher/fabrication/space/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.space.validator
+Module: transit.dispatcher.fabrication.space.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

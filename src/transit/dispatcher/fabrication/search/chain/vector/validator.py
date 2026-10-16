@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/search/chain/vector/validator.py
+# src/transit/dispatcher/fabrication/search/chain/vector/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.search.chain.vector.validator
+Module: transit.dispatcher.fabrication.search.chain.vector.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, cast
 
 from artifcat import BuildResult
-from assurance import ChainContextValidator, VectorNodeContextValidator
+from fabrication import ChainContextBuilder, VectorNodeContextBuilder
 from domain import VectorNodeContext
-from err import VectorNodeContextValidatorException
+from err import VectorNodeContextBuilderException
 
 from util import LoggingLevelRouter
 
 
-class VectorNodeContextValidator(
-    ChainContextValidator[VectorNodeContext]
+class VectorNodeContextBuilder(
+    ChainContextBuilder[VectorNodeContext]
 ):
     """
     Role
@@ -30,26 +30,26 @@ class VectorNodeContextValidator(
         1.  Ensure a VectorNodeContext instance is safe before use.
 
     Attributes:
-        validator: VectorNodeContextChecker
+        builder: VectorNodeContextChecker
 
     Provides:
         -   def execute(self, candidate: Any) -> BuildResult[VectorNodeContext]
 
     Super Class:
-        ContextValidator
+        ContextBuilder
     """
     
-    def __init__(self, validator: VectorNodeContextValidator):
+    def __init__(self, builder: VectorNodeContextBuilder):
         """
         Args:
-            validator: VectorNodeContextChecker
+            builder: VectorNodeContextChecker
         """
-        super().__init__(validator=validator)
+        super().__init__(builder=builder)
     
     
     @property
-    def validator(self) -> VectorNodeContextValidator:
-        return cast(VectorNodeContextValidator, super().validator)
+    def builder(self) -> VectorNodeContextBuilder:
+        return cast(VectorNodeContextBuilder, super().builder)
     
     
     @LoggingLevelRouter.monitor
@@ -58,7 +58,7 @@ class VectorNodeContextValidator(
         Certify a candidate is a VectorNodeContext that is safe to use.
 
         Action:
-            1.  Send an exception chain in the BuildResult if validator
+            1.  Send an exception chain in the BuildResult if builder
                 returns a failure.
             2.  Otherwise, send the success result.
         Args:
@@ -66,20 +66,20 @@ class VectorNodeContextValidator(
         Returns:
             BuildResult[VectorNodeContext]
         Raises:
-            VectorNodeContextValidatorException
+            VectorNodeContextBuilderException
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that validator flags the candidate.
-        build = self.validator.execute(candidate=candidate)
+        # Handle the case that builder flags the candidate.
+        build = self.builder.execute(candidate=candidate)
         if build.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
-                VectorNodeContextValidatorException(
+                VectorNodeContextBuilderException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=VectorNodeContextValidatorException.MSG,
-                    err_code=VectorNodeContextValidatorException.ERR_CODE,
+                    msg=VectorNodeContextBuilderException.MSG,
+                    err_code=VectorNodeContextBuilderException.ERR_CODE,
                     ex=build.exception
                 )
             )

@@ -1,7 +1,7 @@
-# src/transit/dispatcher/validator/model/maneuver/validator.py
+# src/transit/dispatcher/validator/model/maneuver/dispatcher.py
 
 """
-Module: transit.dispatcher.validator.model.maneuver.validator
+Module: transit.dispatcher.validator.model.maneuver.dispatcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

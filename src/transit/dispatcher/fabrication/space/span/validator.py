@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/space/span/validator.py
+# src/transit/dispatcher/fabrication/space/span/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.space.span.validator
+Module: transit.dispatcher.fabrication.space.span.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -17,7 +17,7 @@ from transit.dispatcher.fabrication import SpaceBuildDispatcher
 
 T = TypeVar("T", bound="Span")
 
-class SpanValidator(SpaceBuildDispatcher, Generic[T]):
+class SpanBuilder(SpaceBuildDispatcher, Generic[T]):
     
        @abstractmethod
     @LoggingLevelRouter.monitor

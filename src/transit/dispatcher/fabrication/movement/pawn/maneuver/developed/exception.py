@@ -1,7 +1,7 @@
 # src/err/transit/dispatcher/fabrication/movement/offset/pawn/maneuver/developed/exception.py
 
 """
-Module: err.validator.movement.offset.pawn.maneuver.developed.exception
+Module: err.builder.movement.offset.pawn.maneuver.developed.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ManeuverOffsetPatternValidatorException
+from err import ManeuverOffsetPatternBuilderException
 from artifcat import MethodResultType
 
 __all__ = [
-    # ======================# DEVELOPED_MANEUVER_OFFSET_PATTERN_VALIDATOR_FAILURE #======================#
-    "DevelopedManeuverOffsetPatternValidatorException",
+    # ======================# DEVELOPED_MANEUVER_OFFSET_PATTERN_BUILDER_FAILURE #======================#
+    "DevelopedManeuverOffsetPatternBuilderException",
 ]
 
 
-# ======================# DEVELOPED_MANEUVER_OFFSET_PATTERN_VALIDATOR_FAILURE #======================#
-class DevelopedManeuverOffsetPatternValidatorException(ManeuverOffsetPatternValidatorException):
+# ======================# DEVELOPED_MANEUVER_OFFSET_PATTERN_BUILDER_FAILURE #======================#
+class DevelopedManeuverOffsetPatternBuilderException(ManeuverOffsetPatternBuilderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicate an error occurred in an DevelopedManeuverOffsetPatternValidator failed.
+        1.  Indicate an error occurred in an DevelopedManeuverOffsetPatternBuilder failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class DevelopedManeuverOffsetPatternValidatorException(ManeuverOffsetPatternVali
     Provides:
 
     Super Class:
-        ManeuverOffsetPatternValidatorException
+        ManeuverOffsetPatternBuilderException
     """
-    MSG = "DevelopedManeuverOffsetPatternValidator error."
-    ERR_CODE = "DEVELOPED_MANEUVER_OFFSET_PATTERN_VALIDATOR_FAILURE"
+    MSG = "DevelopedManeuverOffsetPatternBuilder error."
+    ERR_CODE = "DEVELOPED_MANEUVER_OFFSET_PATTERN_BUILDER_FAILURE"
     
     def __init__(
             self,

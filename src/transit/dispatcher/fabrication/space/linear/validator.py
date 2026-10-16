@@ -1,7 +1,7 @@
-# src/transit/dispatcher/fabrication/space/linear/validator.py
+# src/transit/dispatcher/fabrication/space/linear/dispatcher.py
 
 """
-Module: transit.dispatcher.fabrication.space.linear.validator
+Module: transit.dispatcher.fabrication.space.linear.builder
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -18,7 +18,7 @@ from transit.dispatcher.fabrication import SpaceBuildDispatcher
 
 T = TypeVar("T", bound="LinearSpace")
 
-class LinearSpaceValidator(SpaceBuildDispatcher, Generic[T]):
+class LinearSpaceBuilder(SpaceBuildDispatcher, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor

@@ -1,7 +1,7 @@
 # src/err/transit/dispatcher/fabrication/movement/exception.py
 
 """
-Module: err.validator.movement.exception
+Module: err.builder.movement.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,23 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ValidatorException
+from err import BuilderException
 from artifcat import MethodResultType
 
 __all__ = [
-    # ======================# MOVEMENT_PATTERN_VALIDATOR_FAILURE #======================#
-    "MovementPatternValidatorException",
+    # ======================# MOVEMENT_PATTERN_BUILDER_FAILURE #======================#
+    "MovementPatternBuilderException",
 ]
 
 
-# ======================# MOVEMENT_PATTERN_VALIDATOR_FAILURE #======================#
-class MovementPatternValidatorException(ValidatorException):
+# ======================# MOVEMENT_PATTERN_BUILDER_FAILURE #======================#
+class MovementPatternBuilderException(BuilderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicate a required MovementPatternValidator failed.
+        1.  Indicate a required MovementPatternBuilder failed.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class MovementPatternValidatorException(ValidatorException):
     Provides:
 
     Super Class:
-        ValidatorException
+        BuilderException
     """
-    MSG = "MovementPatternValidator error."
-    ERR_CODE = "MOVEMENT_PATTERN_VALIDATOR_FAILURE"
+    MSG = "MovementPatternBuilder error."
+    ERR_CODE = "MOVEMENT_PATTERN_BUILDER_FAILURE"
     
     def __init__(
             self,

@@ -13,4 +13,4 @@ version: 0.0.2
 from .basis import *
 
 # Modules
-from .validator import SpanValidator
+from .builder import SpanBuilder

@@ -1,7 +1,7 @@
-# src/transit/dispatcher/validator/model/footstep/validator.py
+# src/transit/dispatcher/validator/model/footstep/dispatcher.py
 
 """
-Module: transit.dispatcher.validator.model.footstep.validator
+Module: transit.dispatcher.validator.model.footstep.dispatcher
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
