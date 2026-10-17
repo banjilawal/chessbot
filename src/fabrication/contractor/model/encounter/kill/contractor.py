@@ -13,7 +13,7 @@ from typing import cast
 
 from artifcat import BuildResult
 from domain import KillEncounter, KillEncounterBlueprint
-from err import KillEncounterSubcontractorException, HomeSquareNullException, EncounterBlueprintNullException
+from err import KillEncounterSubcontractorException, EncounterBlueprintNullException
 from fabrication import EncounterSubcontractor
 from util import IdFactory, LoggingLevelRouter
 
