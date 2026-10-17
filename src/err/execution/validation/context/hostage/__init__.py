@@ -1,16 +1,16 @@
-# src/err/route/validation/context/hostage/__init__.py
+# src/err/transit/router/validation/context/hostage/__init__.py
 
 """
-Module: err.route.validation.hostage.__init__
+Module: err.transit.router.validation.hostage.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# =========== ERR.ROUTE.VALIDATION.HOSTAGE PACKAGE ===========#
+# =========== ERR.TRANSIT.ROUTER.VALIDATION.HOSTAGE PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .exception import HostageContextValidationRouteException
+from .exception import HostageContextValidationRouteMissingException

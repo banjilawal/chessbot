@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchRouteException
+from artifcat import MethodResultType
+from err import SearchRouteMissingException
 
 
 __all__ = [
-    # ======================# TEAM_CONTEXT_SEARCH_ROUTE #======================#
-    "TeamContextSearchRouteException",
+    # ======================# MISSING_TEAM_CONTEXT_SEARCH_ROUTE #======================#
+    "TeamContextSearchRouteMissingException",
 ]
 
-from err import ContextSearchRouteException
+from err import ContextSearchRouteMissingException
 
 
-# ======================# TEAM_CONTEXT_SEARCH_ROUTE #======================#
-class TeamContextSearchRouteException(ContextSearchRouteException):
+# ======================# MISSING_TEAM_CONTEXT_SEARCH_ROUTE #======================#
+class TeamContextSearchRouteMissingException(ContextSearchRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of TeamContext search routes is missing.
+        1.  Indicating that one of the TeamContext search routes is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class TeamContextSearchRouteException(ContextSearchRouteException):
     Provides:
 
     Super Class:
-        ContextSearchRouteException
+        ContextSearchRouteMissingException
     """
     MSG = "A TeamContext attribute missing a search path."
-    ERR_CODE = "TEAM_CONTEXT_SEARCH_ROUTE"
+    ERR_CODE = "MISSING_TEAM_CONTEXT_SEARCH_ROUTE"
     
     def __init__(
             self,

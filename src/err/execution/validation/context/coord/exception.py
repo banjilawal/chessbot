@@ -1,7 +1,7 @@
-# src/err/route/validation/context/coord/exception.py
+# src/err/transit/router/validation/context/coord/exception.py
 
 """
-Module: err.route.validation.coord.exception
+Module: err.transit.router.validation.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ValidationRouteException
+from artifcat import MethodResultType
+from err import ValidationRouteMissingException
 
 
 __all__ = [
-    # ======================# COORD_CONTEXT_VALIDATION_ROUTE #======================#
-    "CoordContextValidationRouteException",
+    # ======================# MISSING_COORD_CONTEXT_VALIDATION_ROUTER #======================#
+    "CoordContextValidationRouteMissingException",
 ]
 
-from err import ContextValidationRouteException
+from err import ContextValidationRouteMissingException
 
 
-# ======================# COORD_CONTEXT_VALIDATION_ROUTE #======================#
-class CoordContextValidationRouteException(ContextValidationRouteException):
+# ======================# MISSING_COORD_CONTEXT_VALIDATION_ROUTER #======================#
+class CoordContextValidationRouteMissingException(ContextValidationRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of CoordContext validation routes is missing.
+        1.  Indicating that one of the CoordContext validation routers is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class CoordContextValidationRouteException(ContextValidationRouteException):
     Provides:
 
     Super Class:
-        ContextValidationRouteException
+        ContextValidationRouteMissingException
     """
     MSG = "A CoordContext attribute missing a validation path."
-    ERR_CODE = "COORD_CONTEXT_VALIDATION_ROUTE"
+    ERR_CODE = "MISSING_COORD_CONTEXT_VALIDATION_ROUTER"
     
     def __init__(
             self,

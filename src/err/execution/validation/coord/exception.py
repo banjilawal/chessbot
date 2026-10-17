@@ -1,7 +1,7 @@
-# src/err/route/validation/coord/exception.py
+# src/err/transit/router/validation/coord/exception.py
 
 """
-Module: err.route.validation.coord.exception
+Module: err.transit.router.validation.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,22 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ValidationRouteException
+from artifcat import MethodResultType
+from err import ValidationRouteMissingException
 
 
 __all__ = [
-    # ======================# COORD_VALIDATION_ROUTE #======================#
-    "CoordValidationRouteException",
+    # ======================# MISSING_COORD_VALIDATION_ROUTER #======================#
+    "CoordValidationRouteMissingException",
 ]
 
-# ======================# COORD_VALIDATION_ROUTE #======================#
-class CoordValidationRouteException(ValidationRouteException):
+# ======================# MISSING_COORD_VALIDATION_ROUTER #======================#
+class CoordValidationRouteMissingException(ValidationRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of Coord validation routes is missing.
+        1.  Indicating that one of the Coord validation routers is missing.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +42,10 @@ class CoordValidationRouteException(ValidationRouteException):
     Provides:
 
     Super Class:
-        ValidationRouteException
+        ValidationRouteMissingException
     """
     MSG = "One of Coord validation paths is missing."
-    ERR_CODE = "COORD_VALIDATION_ROUTE"
+    ERR_CODE = "MISSING_COORD_VALIDATION_ROUTER"
     
     def __init__(
             self,

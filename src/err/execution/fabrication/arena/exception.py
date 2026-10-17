@@ -1,7 +1,7 @@
-# src/err/route/build/arena/exception.py
+# src/err/route/fabricationarena/exception.py
 
 """
-Module: err.route.build.arena.exception
+Module: err.route.fabrication.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,21 +11,22 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import BuildRouteException
+from artifcat import MethodResultType
+from err import BuildRouteMissingException
 
 __all__ = [
-    # ======================# ARENA_BUILD_ROUTE #======================#
-    "ArenaBuildRouteException",
+    # ======================# MISSING_ARENA_VALIDATION_ROUTE #======================#
+    "ArenaBuildRouteMissingException",
 ]
 
-# ======================# ARENA_BUILD_ROUTE #======================#
-class ArenaBuildRouteException(BuildRouteException):
+# ======================# MISSING_ARENA_VALIDATION_ROUTE #======================#
+class ArenaBuildRouteMissingException(BuildRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of Arena build routes is missing.
+        1.  Indicating that one of the Arena validation routes is missing.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +41,10 @@ class ArenaBuildRouteException(BuildRouteException):
     Provides:
 
     Super Class:
-        BuildRouteException
+        BuildRouteMissingException
     """
-    MSG = "One of Arena build paths is missing."
-    ERR_CODE = "ARENA_BUILD_ROUTE"
+    MSG = "One of Arena validation paths is missing."
+    ERR_CODE = "MISSING_ARENA_VALIDATION_ROUTE"
     
     def __init__(
             self,

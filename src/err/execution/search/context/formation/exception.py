@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchRouteException
+from artifcat import MethodResultType
+from err import SearchRouteMissingException
 
 
 __all__ = [
-    # ======================# FORMATION_CONTEXT_SEARCH_ROUTE #======================#
-    "FormationContextSearchRouteException",
+    # ======================# MISSING_FORMATION_CONTEXT_SEARCH_ROUTE #======================#
+    "FormationContextSearchRouteMissingException",
 ]
 
-from err import ContextSearchRouteException
+from err import ContextSearchRouteMissingException
 
 
-# ======================# FORMATION_CONTEXT_SEARCH_ROUTE #======================#
-class FormationContextSearchRouteException(ContextSearchRouteException):
+# ======================# MISSING_FORMATION_CONTEXT_SEARCH_ROUTE #======================#
+class FormationContextSearchRouteMissingException(ContextSearchRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of FormationContext search routes is missing.
+        1.  Indicating that one of the FormationContext search routes is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class FormationContextSearchRouteException(ContextSearchRouteException):
     Provides:
 
     Super Class:
-        ContextSearchRouteException
+        ContextSearchRouteMissingException
     """
     MSG = "A FormationContext attribute missing a search path."
-    ERR_CODE = "FORMATION_CONTEXT_SEARCH_ROUTE"
+    ERR_CODE = "MISSING_FORMATION_CONTEXT_SEARCH_ROUTE"
     
     def __init__(
             self,

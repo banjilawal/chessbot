@@ -1,7 +1,7 @@
-# src/err/route/build/board/exception.py
+# src/err/route/fabricationboard/exception.py
 
 """
-Module: err.route.build.board.exception
+Module: err.route.fabrication.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,22 +12,22 @@ from __future__ import annotations
 from typing import Any, Optional
 
 
-from err import BuildRouteException
+from err import BuildRouteMissingException
 
 
 __all__ = [
-    # ======================# BOARD_BUILD_ROUTE #======================#
-    "BoardBuildRouteException",
+    # ======================# MISSING_BOARD_VALIDATOR_ROUTE #======================#
+    "BoardBuildRouteMissingException",
 ]
 
-# ======================# BOARD_BUILD_ROUTE #======================#
-class BoardBuildRouteException(BuildRouteException):
+# ======================# MISSING_BOARD_VALIDATOR_ROUTE #======================#
+class BoardBuildRouteMissingException(BuildRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of Board build routes is missing.
+        1.  Indicating that one of the Board validation routes is missing.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class BoardBuildRouteException(BuildRouteException):
     Provides:
 
     Super Class:
-        BuildRouteException
+        BuildRouteMissingException
     """
-    MSG = "One of Board build paths is missing."
-    ERR_CODE = "BOARD_BUILD_ROUTE"
+    MSG = "One of Board validation paths is missing."
+    ERR_CODE = "MISSING_BOARD_VALIDATOR_ROUTE"
     
     def __init__(
             self,

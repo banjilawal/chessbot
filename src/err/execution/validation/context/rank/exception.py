@@ -1,7 +1,7 @@
-# src/err/route/validation/context/rank/exception.py
+# src/err/transit/router/validation/context/rank/exception.py
 
 """
-Module: err.route.validation.rank.exception
+Module: err.transit.router.validation.rank.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ValidationRouteException
+from artifcat import MethodResultType
+from err import ValidationRouteMissingException
 
 
 __all__ = [
-    # ======================# RANK_CONTEXT_VALIDATION_ROUTE #======================#
-    "RankContextValidationRouteException",
+    # ======================# MISSING_RANK_CONTEXT_VALIDATION_ROUTER #======================#
+    "RankContextValidationRouteMissingException",
 ]
 
-from err import ContextValidationRouteException
+from err import ContextValidationRouteMissingException
 
 
-# ======================# RANK_CONTEXT_VALIDATION_ROUTE #======================#
-class RankContextValidationRouteException(ContextValidationRouteException):
+# ======================# MISSING_RANK_CONTEXT_VALIDATION_ROUTER #======================#
+class RankContextValidationRouteMissingException(ContextValidationRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of RankContext validation routes is missing.
+        1.  Indicating that one of the RankContext validation routers is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class RankContextValidationRouteException(ContextValidationRouteException):
     Provides:
 
     Super Class:
-        ContextValidationRouteException
+        ContextValidationRouteMissingException
     """
     MSG = "A RankContext attribute missing a validation path."
-    ERR_CODE = "RANK_CONTEXT_VALIDATION_ROUTE"
+    ERR_CODE = "MISSING_RANK_CONTEXT_VALIDATION_ROUTER"
     
     def __init__(
             self,

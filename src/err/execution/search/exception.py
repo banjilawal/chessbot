@@ -11,21 +11,21 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ExecutionRouteException
+from err import ExecutionRouteMissingException
 
 __all__ = [
-    # ======================# SEARCH_ROUTE #======================#
-    "SearchRouteException",
+    # ======================# MISSING_SEARCH_ROUTE #======================#
+    "SearchRouteMissingException",
 ]
 
-# ======================# SEARCH_ROUTE #======================#
-class SearchRouteException(ExecutionRouteException):
+# ======================# MISSING_SEARCH_ROUTE #======================#
+class SearchRouteMissingException(ExecutionRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of  search routes is missing.
+        1.  Indicating that one of the  search routes is missing.
 
     Attributes:
         msg: Optional[str]
@@ -40,11 +40,11 @@ class SearchRouteException(ExecutionRouteException):
     Provides:
 
     Super Class:
-        ExecutionRouteException
+        ExecutionRouteMissingException
     """
     OP = "Search"
     MSG = "One of  search routes is missing."
-    ERR_CODE = "SEARCH_ROUTE"
+    ERR_CODE = "MISSING_SEARCH_ROUTE"
     MTHD_RSLT_TYPE = "SearchResult"
     _mthd_rslt_type = Optional[str]
     

@@ -1,7 +1,7 @@
-# src/err/route/build/context/schema/exception.py
+# src/err/route/fabricationcontext/schema/exception.py
 
 """
-Module: err.route.build.context.schema.exception
+Module: err.route.fabrication.schema.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import BuildRouteException
+from artifcat import MethodResultType
+from err import BuildRouteMissingException
 
 
 __all__ = [
-    # ======================# SCHEMA_CONTEXT_BUILD_ROUTE #======================#
-    "SchemaContextBuildRouteException",
+    # ======================# MISSING_SCHEMA_CONTEXT_VALIDATION_ROUTE #======================#
+    "SchemaContextBuildRouteMissingException",
 ]
 
-from err import ContextBuildRouteException
+from err import ContextBuildRouteMissingException
 
 
-# ======================# SCHEMA_CONTEXT_BUILD_ROUTE #======================#
-class SchemaContextBuildRouteException(ContextBuildRouteException):
+# ======================# MISSING_SCHEMA_CONTEXT_VALIDATION_ROUTE #======================#
+class SchemaContextBuildRouteMissingException(ContextBuildRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of SchemaContext build routes is missing.
+        1.  Indicating that one of the SchemaContext validation routes is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class SchemaContextBuildRouteException(ContextBuildRouteException):
     Provides:
 
     Super Class:
-        ContextBuildRouteException
+        ContextBuildRouteMissingException
     """
-    MSG = "A SchemaContext attribute missing a build path."
-    ERR_CODE = "SCHEMA_CONTEXT_BUILD_ROUTE"
+    MSG = "A SchemaContext attribute missing a validation path."
+    ERR_CODE = "MISSING_SCHEMA_CONTEXT_VALIDATION_ROUTE"
     
     def __init__(
             self,

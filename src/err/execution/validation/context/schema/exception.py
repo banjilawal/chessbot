@@ -1,7 +1,7 @@
-# src/err/route/validation/context/schema/exception.py
+# src/err/transit/router/validation/context/schema/exception.py
 
 """
-Module: err.route.validation.schema.exception
+Module: err.transit.router.validation.schema.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ValidationRouteException
+from artifcat import MethodResultType
+from err import ValidationRouteMissingException
 
 
 __all__ = [
-    # ======================# SCHEMA_CONTEXT_VALIDATION_ROUTE #======================#
-    "SchemaContextValidationRouteException",
+    # ======================# MISSING_SCHEMA_CONTEXT_VALIDATION_ROUTER #======================#
+    "SchemaContextValidationRouteMissingException",
 ]
 
-from err import ContextValidationRouteException
+from err import ContextValidationRouteMissingException
 
 
-# ======================# SCHEMA_CONTEXT_VALIDATION_ROUTE #======================#
-class SchemaContextValidationRouteException(ContextValidationRouteException):
+# ======================# MISSING_SCHEMA_CONTEXT_VALIDATION_ROUTER #======================#
+class SchemaContextValidationRouteMissingException(ContextValidationRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of SchemaContext validation routes is missing.
+        1.  Indicating that one of the SchemaContext validation routers is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class SchemaContextValidationRouteException(ContextValidationRouteException):
     Provides:
 
     Super Class:
-        ContextValidationRouteException
+        ContextValidationRouteMissingException
     """
     MSG = "A SchemaContext attribute missing a validation path."
-    ERR_CODE = "SCHEMA_CONTEXT_VALIDATION_ROUTE"
+    ERR_CODE = "MISSING_SCHEMA_CONTEXT_VALIDATION_ROUTER"
     
     def __init__(
             self,

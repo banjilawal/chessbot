@@ -11,22 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchRouteException
+from artifcat import MethodResultType
+from err import SearchRouteMissingException
 
 
 __all__ = [
-    # ======================# RANK_SEARCH_ROUTE #======================#
-    "RankSearchRouteException",
+    # ======================# MISSING_RANK_SEARCH_ROUTE #======================#
+    "RankSearchRouteMissingException",
 ]
 
-# ======================# RANK_SEARCH_ROUTE #======================#
-class RankSearchRouteException(SearchRouteException):
+# ======================# MISSING_RANK_SEARCH_ROUTE #======================#
+class RankSearchRouteMissingException(SearchRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of Rank search routes is missing.
+        1.  Indicating that one of the Rank search routes is missing.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +42,10 @@ class RankSearchRouteException(SearchRouteException):
     Provides:
 
     Super Class:
-        SearchRouteException
+        SearchRouteMissingException
     """
     MSG = "One of Rank search paths is missing."
-    ERR_CODE = "RANK_SEARCH_ROUTE"
+    ERR_CODE = "MISSING_RANK_SEARCH_ROUTE"
     
     def __init__(
             self,

@@ -1,7 +1,7 @@
-# src/err/route/build/context/algebra/exception.py
+# src/err/route/fabricationcontext/algebra/exception.py
 
 """
-Module: err.route.build.context.algebra.exception
+Module: err.route.fabrication.algebra.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import BuildRouteException
+from artifcat import MethodResultType
+from err import BuildRouteMissingException
 
 
 __all__ = [
-    # ======================# ALGEBRA_CONTEXT_BUILD_ROUTE #======================#
-    "AlgebraContextBuildRouteException",
+    # ======================# MISSING_ALGEBRA_CONTEXT_VALIDATION_ROUTE #======================#
+    "AlgebraContextBuildRouteMissingException",
 ]
 
-from err import ContextBuildRouteException
+from err import ContextBuildRouteMissingException
 
 
-# ======================# ALGEBRA_CONTEXT_BUILD_ROUTE #======================#
-class AlgebraContextBuildRouteException(ContextBuildRouteException):
+# ======================# MISSING_ALGEBRA_CONTEXT_VALIDATION_ROUTE #======================#
+class AlgebraContextBuildRouteMissingException(ContextBuildRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of AlgebraContext build routes is missing.
+        1.  Indicating that one of the AlgebraContext validation routes is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class AlgebraContextBuildRouteException(ContextBuildRouteException):
     Provides:
 
     Super Class:
-        ContextBuildRouteException
+        ContextBuildRouteMissingException
     """
-    MSG = "An AlgebraContext attribute missing a build path."
-    ERR_CODE = "ALGEBRA_CONTEXT_BUILD_ROUTE"
+    MSG = "An AlgebraContext attribute missing a validation path."
+    ERR_CODE = "MISSING_ALGEBRA_CONTEXT_VALIDATION_ROUTE"
     
     def __init__(
             self,

@@ -1,7 +1,7 @@
-# src/err/route/build/node/exception.py
+# src/err/route/fabricationno/exception.py
 
 """
-Module: err.route.build.node.exception
+Module: err.route.fabrication.no.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -10,22 +10,22 @@ version: 0.0.2
 from __future__ import annotations
 
 from typing import Any, Optional
-from err import BuildRouteException
+from err import BuildRouteMissingException
 
 
 __all__ = [
-    # ======================# NODE_BUILD_ROUTE #======================#
-    "NodeBuildRouteException",
+    # ======================# MISSING_NO_VALIDATION_ROUTE #======================#
+    "NodeBuildRouteMissingException",
 ]
 
-# ======================# NODE_BUILD_ROUTE #======================#
-class NodeBuildRouteException(BuildRouteException):
+# ======================# MISSING_NO_VALIDATION_ROUTE #======================#
+class NodeBuildRouteMissingException(BuildRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of Node build routes is missing.
+        1.  Indicating that one of the No validation routes is missing.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class NodeBuildRouteException(BuildRouteException):
     Provides:
 
     Super Class:
-        BuildRouteException
+        BuildRouteMissingException
     """
-    MSG = "One of Node build paths is missing."
-    ERR_CODE = "NODE_BUILD_ROUTE"
+    MSG = "One of No validation paths is missing."
+    ERR_CODE = "MISSING_NO_VALIDATION_ROUTE"
     
     def __init__(
             self,

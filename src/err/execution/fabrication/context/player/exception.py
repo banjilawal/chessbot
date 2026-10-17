@@ -1,7 +1,7 @@
-# src/err/route/build/context/player/exception.py
+# src/err/route/fabricationcontext/player/exception.py
 
 """
-Module: err.route.build.context.player.exception
+Module: err.route.fabrication.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import BuildRouteException
+from artifcat import MethodResultType
+from err import BuildRouteMissingException
 
 
 __all__ = [
-    # ======================# PLAYER_CONTEXT_BUILD_ROUTE #======================#
-    "PlayerContextBuildRouteException",
+    # ======================# MISSING_PLAYER_CONTEXT_VALIDATION_ROUTE #======================#
+    "PlayerContextBuildRouteMissingException",
 ]
 
-from err import ContextBuildRouteException
+from err import ContextBuildRouteMissingException
 
 
-# ======================# PLAYER_CONTEXT_BUILD_ROUTE #======================#
-class PlayerContextBuildRouteException(ContextBuildRouteException):
+# ======================# MISSING_PLAYER_CONTEXT_VALIDATION_ROUTE #======================#
+class PlayerContextBuildRouteMissingException(ContextBuildRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of PlayerContext build routes is missing.
+        1.  Indicating that one of the PlayerContext validation routes is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class PlayerContextBuildRouteException(ContextBuildRouteException):
     Provides:
 
     Super Class:
-        ContextBuildRouteException
+        ContextBuildRouteMissingException
     """
-    MSG = "A PlayerContext attribute missing a build path."
-    ERR_CODE = "PLAYER_CONTEXT_BUILD_ROUTE"
+    MSG = "A PlayerContext attribute missing a validation path."
+    ERR_CODE = "MISSING_PLAYER_CONTEXT_VALIDATION_ROUTE"
     
     def __init__(
             self,

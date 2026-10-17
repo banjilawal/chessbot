@@ -1,7 +1,7 @@
-# src/err/route/build/context/edge/exception.py
+# src/err/route/fabricationcontext/edge/exception.py
 
 """
-Module: err.route.build.context.edge.exception
+Module: err.route.fabrication.edge.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import BuildRouteException
+from artifcat import MethodResultType
+from err import BuildRouteMissingException
 
 
 __all__ = [
-    # ======================# EDGE_CONTEXT_BUILD_ROUTE #======================#
-    "EdgeContextBuildRouteException",
+    # ======================# MISSING_EDGE_CONTEXT_VALIDATION_ROUTE #======================#
+    "EdgeContextBuildRouteMissingException",
 ]
 
-from err import ContextBuildRouteException
+from err import ContextBuildRouteMissingException
 
 
-# ======================# EDGE_CONTEXT_BUILD_ROUTE #======================#
-class EdgeContextBuildRouteException(ContextBuildRouteException):
+# ======================# MISSING_EDGE_CONTEXT_VALIDATION_ROUTE #======================#
+class EdgeContextBuildRouteMissingException(ContextBuildRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of EdgeContext build routes is missing.
+        1.  Indicating that one of the EdgeContext validation routes is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class EdgeContextBuildRouteException(ContextBuildRouteException):
     Provides:
 
     Super Class:
-        ContextBuildRouteException
+        ContextBuildRouteMissingException
     """
-    MSG = "An EdgeContext attribute missing a build path."
-    ERR_CODE = "EDGE_CONTEXT_BUILD_ROUTE"
+    MSG = "An EdgeContext attribute missing a validation path."
+    ERR_CODE = "MISSING_EDGE_CONTEXT_VALIDATION_ROUTE"
     
     def __init__(
             self,

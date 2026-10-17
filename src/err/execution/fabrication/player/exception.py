@@ -1,7 +1,7 @@
-# src/err/route/build/player/exception.py
+# src/err/route/fabricationplayer/exception.py
 
 """
-Module: err.route.build.player.exception
+Module: err.route.fabrication.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,22 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import BuildRouteException
+from artifcat import MethodResultType
+from err import BuildRouteMissingException
 
 
 __all__ = [
-    # ======================# PLAYER_BUILD_ROUTE #======================#
-    "PlayerBuildRouteException",
+    # ======================# MISSING_PLAYER_VALIDATION_ROUTE #======================#
+    "PlayerBuildRouteMissingException",
 ]
 
-# ======================# PLAYER_BUILD_ROUTE #======================#
-class PlayerBuildRouteException(BuildRouteException):
+# ======================# MISSING_PLAYER_VALIDATION_ROUTE #======================#
+class PlayerBuildRouteMissingException(BuildRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of Player build routes is missing.
+        1.  Indicating that one of the Player validation routes is missing.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +42,10 @@ class PlayerBuildRouteException(BuildRouteException):
     Provides:
 
     Super Class:
-        BuildRouteException
+        BuildRouteMissingException
     """
-    MSG = "One of Player build paths is missing."
-    ERR_CODE = "PLAYER_BUILD_ROUTE"
+    MSG = "One of Player validation paths is missing."
+    ERR_CODE = "MISSING_PLAYER_VALIDATION_ROUTE"
     
     def __init__(
             self,

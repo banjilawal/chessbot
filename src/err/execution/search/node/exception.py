@@ -10,22 +10,22 @@ version: 0.0.2
 from __future__ import annotations
 
 from typing import Any, Optional
-from err import SearchRouteException
+from err import SearchRouteMissingException
 
 
 __all__ = [
-    # ======================# NODE_SEARCH_ROUTE #======================#
-    "NodeSearchRouteException",
+    # ======================# MISSING_NODE_SEARCH_ROUTE #======================#
+    "NodeSearchRouteMissingException",
 ]
 
-# ======================# NODE_SEARCH_ROUTE #======================#
-class NodeSearchRouteException(SearchRouteException):
+# ======================# MISSING_NODE_SEARCH_ROUTE #======================#
+class NodeSearchRouteMissingException(SearchRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of Node search routes is missing.
+        1.  Indicating that one of the Node search routes is missing.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class NodeSearchRouteException(SearchRouteException):
     Provides:
 
     Super Class:
-        SearchRouteException
+        SearchRouteMissingException
     """
     MSG = "One of Node search paths is missing."
-    ERR_CODE = "NODE_SEARCH_ROUTE"
+    ERR_CODE = "MISSING_NODE_SEARCH_ROUTE"
     
     def __init__(
             self,

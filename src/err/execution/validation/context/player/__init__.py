@@ -1,16 +1,16 @@
-# src/err/route/validation/context/player/__init__.py
+# src/err/transit/router/validation/context/player/__init__.py
 
 """
-Module: err.route.validation.player.__init__
+Module: err.transit.router.validation.player.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# =========== ERR.ROUTE.VALIDATION.PLAYER PACKAGE ===========#
+# =========== ERR.TRANSIT.ROUTER.VALIDATION.PLAYER PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .exception import PlayerContextValidationRouteException
+from .exception import PlayerContextValidationRouteMissingException

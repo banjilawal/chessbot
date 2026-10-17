@@ -1,7 +1,7 @@
-# src/err/route/validation/context/arena/exception.py
+# src/err/transit/router/validation/context/arena/exception.py
 
 """
-Module: err.route.validation.arena.exception
+Module: err.transit.router.validation.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ValidationRouteException
+from artifcat import MethodResultType
+from err import ValidationRouteMissingException
 
 
 __all__ = [
-    # ======================# ARENA_CONTEXT_VALIDATION_ROUTE #======================#
-    "ArenaContextValidationRouteException",
+    # ======================# MISSING_ARENA_CONTEXT_VALIDATION_ROUTER #======================#
+    "ArenaContextValidationRouteMissingException",
 ]
 
-from err import ContextValidationRouteException
+from err import ContextValidationRouteMissingException
 
 
-# ======================# ARENA_CONTEXT_VALIDATION_ROUTE #======================#
-class ArenaContextValidationRouteException(ContextValidationRouteException):
+# ======================# MISSING_ARENA_CONTEXT_VALIDATION_ROUTER #======================#
+class ArenaContextValidationRouteMissingException(ContextValidationRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of ArenaContext validation routes is missing.
+        1.  Indicating that one of the ArenaContext validation routers is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class ArenaContextValidationRouteException(ContextValidationRouteException):
     Provides:
 
     Super Class:
-        ContextValidationRouteException
+        ContextValidationRouteMissingException
     """
     MSG = "A ArenaContext attribute missing a validation path."
-    ERR_CODE = "ARENA_CONTEXT_VALIDATION_ROUTE"
+    ERR_CODE = "MISSING_ARENA_CONTEXT_VALIDATION_ROUTER"
     
     def __init__(
             self,

@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchRouteException
+from artifcat import MethodResultType
+from err import SearchRouteMissingException
 
 
 __all__ = [
-    # ======================# EDGE_CONTEXT_SEARCH_ROUTE #======================#
-    "EdgeContextSearchRouteException",
+    # ======================# MISSING_EDGE_CONTEXT_SEARCH_ROUTE #======================#
+    "EdgeContextSearchRouteMissingException",
 ]
 
-from err import ContextSearchRouteException
+from err import ContextSearchRouteMissingException
 
 
-# ======================# EDGE_CONTEXT_SEARCH_ROUTE #======================#
-class EdgeContextSearchRouteException(ContextSearchRouteException):
+# ======================# MISSING_EDGE_CONTEXT_SEARCH_ROUTE #======================#
+class EdgeContextSearchRouteMissingException(ContextSearchRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of EdgeContext search routes is missing.
+        1.  Indicating that one of the EdgeContext search routes is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class EdgeContextSearchRouteException(ContextSearchRouteException):
     Provides:
 
     Super Class:
-        ContextSearchRouteException
+        ContextSearchRouteMissingException
     """
     MSG = "An EdgeContext attribute missing a search path."
-    ERR_CODE = "EDGE_CONTEXT_SEARCH_ROUTE"
+    ERR_CODE = "MISSING_EDGE_CONTEXT_SEARCH_ROUTE"
     
     def __init__(
             self,

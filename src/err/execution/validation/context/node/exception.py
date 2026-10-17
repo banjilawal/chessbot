@@ -1,7 +1,7 @@
-# src/err/route/validation/context/node/exception.py
+# src/err/transit/router/validation/context/node/exception.py
 
 """
-Module: err.route.validation.node.exception
+Module: err.transit.router.validation.node.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ValidationRouteException
+from artifcat import MethodResultType
+from err import ValidationRouteMissingException
 
 
 __all__ = [
-    # ======================# NODE_CONTEXT_VALIDATION_ROUTE #======================#
-    "NodeContextValidationRouteException",
+    # ======================# MISSING_NODE_CONTEXT_VALIDATION_ROUTER #======================#
+    "NodeContextValidationRouteMissingException",
 ]
 
-from err import ContextValidationRouteException
+from err import ContextValidationRouteMissingException
 
 
-# ======================# NODE_CONTEXT_VALIDATION_ROUTE #======================#
-class NodeContextValidationRouteException(ContextValidationRouteException):
+# ======================# MISSING_NODE_CONTEXT_VALIDATION_ROUTER #======================#
+class NodeContextValidationRouteMissingException(ContextValidationRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of NodeContext validation routes is missing.
+        1.  Indicating that one of the NodeContext validation routers is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class NodeContextValidationRouteException(ContextValidationRouteException):
     Provides:
 
     Super Class:
-        ContextValidationRouteException
+        ContextValidationRouteMissingException
     """
     MSG = "A NodeContext attribute missing a validation path."
-    ERR_CODE = "NODE_CONTEXT_VALIDATION_ROUTE"
+    ERR_CODE = "MISSING_NODE_CONTEXT_VALIDATION_ROUTER"
     
     def __init__(
             self,

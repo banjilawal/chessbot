@@ -1,16 +1,16 @@
-# src/err/route/validation/account/__init__.py
+# src/err/transit/router/validation/account/__init__.py
 
 """
-Module: err.route.validation.account.__init__
+Module: err.transit.router.validation.account.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.ROUTE.VALIDATION.ACCOUNT PACKAGE ===========#
+# ============ ERR.TRANSIT.ROUTER.VALIDATION.ACCOUNT PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .exception import AccountValidationRouterException
+from .exception import AccountValidationRouteMissingException

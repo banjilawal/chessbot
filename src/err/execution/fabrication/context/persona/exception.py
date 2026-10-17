@@ -1,7 +1,7 @@
-# src/err/route/build/context/persona/exception.py
+# src/err/route/fabricationcontext/persona/exception.py
 
 """
-Module: err.route.build.context.persona.exception
+Module: err.route.fabrication.persona.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import BuildRouteException
+from artifcat import MethodResultType
+from err import BuildRouteMissingException
 
 
 __all__ = [
-    # ======================# PERSONA_CONTEXT_BUILD_ROUTE #======================#
-    "PersonaContextBuildRouteException",
+    # ======================# MISSING_PERSONA_CONTEXT_VALIDATION_ROUTE #======================#
+    "PersonaContextBuildRouteMissingException",
 ]
 
-from err import ContextBuildRouteException
+from err import ContextBuildRouteMissingException
 
 
-# ======================# PERSONA_CONTEXT_BUILD_ROUTE #======================#
-class PersonaContextBuildRouteException(ContextBuildRouteException):
+# ======================# MISSING_PERSONA_CONTEXT_VALIDATION_ROUTE #======================#
+class PersonaContextBuildRouteMissingException(ContextBuildRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of PersonaContext build routes is missing.
+        1.  Indicating that one of the PersonaContext validation routes is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class PersonaContextBuildRouteException(ContextBuildRouteException):
     Provides:
 
     Super Class:
-        ContextBuildRouteException
+        ContextBuildRouteMissingException
     """
-    MSG = "A PersonaContext attribute missing a build path."
-    ERR_CODE = "PERSONA_CONTEXT_BUILD_ROUTE"
+    MSG = "A PersonaContext attribute missing a validation path."
+    ERR_CODE = "MISSING_PERSONA_CONTEXT_VALIDATION_ROUTE"
     
     def __init__(
             self,

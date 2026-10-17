@@ -1,7 +1,7 @@
-# src/err/route/validation/context/persona/exception.py
+# src/err/transit/router/validation/context/persona/exception.py
 
 """
-Module: err.route.validation.persona.exception
+Module: err.transit.router.validation.persona.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ValidationRouteException
+from artifcat import MethodResultType
+from err import ValidationRouteMissingException
 
 
 __all__ = [
-    # ======================# PERSONA_CONTEXT_VALIDATION_ROUTE #======================#
-    "PersonaContextValidationRouteException",
+    # ======================# MISSING_PERSONA_CONTEXT_VALIDATION_ROUTER #======================#
+    "PersonaContextValidationRouteMissingException",
 ]
 
-from err import ContextValidationRouteException
+from err import ContextValidationRouteMissingException
 
 
-# ======================# PERSONA_CONTEXT_VALIDATION_ROUTE #======================#
-class PersonaContextValidationRouteException(ContextValidationRouteException):
+# ======================# MISSING_PERSONA_CONTEXT_VALIDATION_ROUTER #======================#
+class PersonaContextValidationRouteMissingException(ContextValidationRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of PersonaContext validation routes is missing.
+        1.  Indicating that one of the PersonaContext validation routers is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class PersonaContextValidationRouteException(ContextValidationRouteException):
     Provides:
 
     Super Class:
-        ContextValidationRouteException
+        ContextValidationRouteMissingException
     """
     MSG = "A PersonaContext attribute missing a validation path."
-    ERR_CODE = "PERSONA_CONTEXT_VALIDATION_ROUTE"
+    ERR_CODE = "MISSING_PERSONA_CONTEXT_VALIDATION_ROUTER"
     
     def __init__(
             self,

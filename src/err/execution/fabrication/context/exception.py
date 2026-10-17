@@ -1,7 +1,7 @@
-# src/err/route/build/context/exception.py
+# src/err/route/fabricationcontext/exception.py
 
 """
-Module: err.route.build.context.exception
+Module: err.route.fabrication.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,22 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import BuildRouteException
+from artifcat import MethodResultType
+from err import BuildRouteMissingException
 
 
 __all__ = [
-    # ======================# CONTEXT_BUILD_ROUTE #======================#
-    "ContextBuildRouteException",
+    # ======================# MISSING_CONTEXT_VALIDATION_ROUTE #======================#
+    "ContextBuildRouteMissingException",
 ]
 
-# ======================# CONTEXT_BUILD_ROUTE #======================#
-class ContextBuildRouteException(BuildRouteException):
+# ======================# MISSING_CONTEXT_VALIDATION_ROUTE #======================#
+class ContextBuildRouteMissingException(BuildRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of ContextBuild failed.
+        1.  Indicating that one of the ContextValidation failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +42,10 @@ class ContextBuildRouteException(BuildRouteException):
     Provides:
 
     Super Class:
-        BuildRouteException
+        BuildRouteMissingException
     """
     MSG = "A context's attribute"
-    ERR_CODE = "CONTEXT_BUILD_ROUTE"
+    ERR_CODE = "MISSING_CONTEXT_VALIDATION_ROUTE"
     
     def __init__(
             self,

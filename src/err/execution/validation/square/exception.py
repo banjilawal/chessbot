@@ -1,7 +1,7 @@
-# src/err/route/validation/square/exception.py
+# src/err/transit/router/validation/square/exception.py
 
 """
-Module: err.route.validation.square.exception
+Module: err.transit.router.validation.square.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,22 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ValidationRouteException
+from artifcat import MethodResultType
+from err import ValidationRouteMissingException
 
 
 __all__ = [
-    # ======================# SQUARE_VALIDATION_ROUTE #======================#
-    "SquareValidationRouterException",
+    # ======================# MISSING_SQUARE_VALIDATION_ROUTER #======================#
+    "SquareValidationRouteMissingException",
 ]
 
-# ======================# SQUARE_VALIDATION_ROUTE #======================#
-class SquareValidationRouterException(ValidationRouteException):
+# ======================# MISSING_SQUARE_VALIDATION_ROUTER #======================#
+class SquareValidationRouteMissingException(ValidationRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of Square validation routes is missing.
+        1.  Indicating that one of the Square validation routers is missing.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +42,10 @@ class SquareValidationRouterException(ValidationRouteException):
     Provides:
 
     Super Class:
-        ValidationRouteException
+        ValidationRouteMissingException
     """
     MSG = "One of Square validation paths is missing."
-    ERR_CODE = "SQUARE_VALIDATION_ROUTE"
+    ERR_CODE = "MISSING_SQUARE_VALIDATION_ROUTER"
     
     def __init__(
             self,

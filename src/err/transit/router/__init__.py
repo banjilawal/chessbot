@@ -11,6 +11,9 @@ version: 1.0.0
 
 # Packages
 from .authorization import *
+from .fabrication import *
+from .search import *
+from .validation import *
 
 # Modules
 from .exception import RouterException

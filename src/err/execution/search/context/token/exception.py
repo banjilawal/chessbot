@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchRouteException
+from artifcat import MethodResultType
+from err import SearchRouteMissingException
 
 
 __all__ = [
-    # ======================# TOKEN_CONTEXT_SEARCH_ROUTE #======================#
-    "TokenContextSearchRouteException",
+    # ======================# MISSING_TOKEN_CONTEXT_SEARCH_ROUTE #======================#
+    "TokenContextSearchRouteMissingException",
 ]
 
-from err import ContextSearchRouteException
+from err import ContextSearchRouteMissingException
 
 
-# ======================# TOKEN_CONTEXT_SEARCH_ROUTE #======================#
-class TokenContextSearchRouteException(ContextSearchRouteException):
+# ======================# MISSING_TOKEN_CONTEXT_SEARCH_ROUTE #======================#
+class TokenContextSearchRouteMissingException(ContextSearchRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of TokenContext search routes is missing.
+        1.  Indicating that one of the TokenContext search routes is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class TokenContextSearchRouteException(ContextSearchRouteException):
     Provides:
 
     Super Class:
-        ContextSearchRouteException
+        ContextSearchRouteMissingException
     """
     MSG = "A TokenContext attribute missing a search path."
-    ERR_CODE = "TOKEN_CONTEXT_SEARCH_ROUTE"
+    ERR_CODE = "MISSING_TOKEN_CONTEXT_SEARCH_ROUTE"
     
     def __init__(
             self,

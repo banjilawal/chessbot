@@ -11,22 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchRouteException
+from artifcat import MethodResultType
+from err import SearchRouteMissingException
 
 
 __all__ = [
-    # ======================# PLAYER_SEARCH_ROUTE #======================#
-    "PlayerSearchRouteException",
+    # ======================# MISSING_PLAYER_SEARCH_ROUTE #======================#
+    "PlayerSearchRouteMissingException",
 ]
 
-# ======================# PLAYER_SEARCH_ROUTE #======================#
-class PlayerSearchRouteException(SearchRouteException):
+# ======================# MISSING_PLAYER_SEARCH_ROUTE #======================#
+class PlayerSearchRouteMissingException(SearchRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of Player search routes is missing.
+        1.  Indicating that one of the Player search routes is missing.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +42,10 @@ class PlayerSearchRouteException(SearchRouteException):
     Provides:
 
     Super Class:
-        SearchRouteException
+        SearchRouteMissingException
     """
     MSG = "One of Player search paths is missing."
-    ERR_CODE = "PLAYER_SEARCH_ROUTE"
+    ERR_CODE = "MISSING_PLAYER_SEARCH_ROUTE"
     
     def __init__(
             self,

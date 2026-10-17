@@ -1,7 +1,7 @@
-# src/err/route/validation/context/algebra/exception.py
+# src/err/transit/router/validation/context/algebra/exception.py
 
 """
-Module: err.route.validation.algebra.exception
+Module: err.transit.router.validation.algebra.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ValidationRouteException
+from artifcat import MethodResultType
+from err import ValidationRouteMissingException
 
 
 __all__ = [
-    # ======================# ALGEBRA_CONTEXT_VALIDATION_ROUTE #======================#
-    "AlgebraContextValidationRouteException",
+    # ======================# MISSING_ALGEBRA_CONTEXT_VALIDATION_ROUTER #======================#
+    "AlgebraContextValidationRouteMissingException",
 ]
 
-from err import ContextValidationRouteException
+from err import ContextValidationRouteMissingException
 
 
-# ======================# ALGEBRA_CONTEXT_VALIDATION_ROUTE #======================#
-class AlgebraContextValidationRouteException(ContextValidationRouteException):
+# ======================# MISSING_ALGEBRA_CONTEXT_VALIDATION_ROUTER #======================#
+class AlgebraContextValidationRouteMissingException(ContextValidationRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of AlgebraContext validation routes is missing.
+        1.  Indicating that one of the AlgebraContext validation routers is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class AlgebraContextValidationRouteException(ContextValidationRouteException):
     Provides:
 
     Super Class:
-        ContextValidationRouteException
+        ContextValidationRouteMissingException
     """
     MSG = "An AlgebraContext attribute missing a validation path."
-    ERR_CODE = "ALGEBRA_CONTEXT_VALIDATION_ROUTE"
+    ERR_CODE = "MISSING_ALGEBRA_CONTEXT_VALIDATION_ROUTER"
     
     def __init__(
             self,

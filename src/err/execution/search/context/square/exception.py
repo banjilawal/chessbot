@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchRouteException
+from artifcat import MethodResultType
+from err import SearchRouteMissingException
 
 
 __all__ = [
-    # ======================# SQUARE_CONTEXT_SEARCH_ROUTE #======================#
-    "SquareContextSearchRouteException",
+    # ======================# MISSING_SQUARE_CONTEXT_SEARCH_ROUTE #======================#
+    "SquareContextSearchRouteMissingException",
 ]
 
-from err import ContextSearchRouteException
+from err import ContextSearchRouteMissingException
 
 
-# ======================# SQUARE_CONTEXT_SEARCH_ROUTE #======================#
-class SquareContextSearchRouteException(ContextSearchRouteException):
+# ======================# MISSING_SQUARE_CONTEXT_SEARCH_ROUTE #======================#
+class SquareContextSearchRouteMissingException(ContextSearchRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of SquareContext search routes is missing.
+        1.  Indicating that one of the SquareContext search routes is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class SquareContextSearchRouteException(ContextSearchRouteException):
     Provides:
 
     Super Class:
-        ContextSearchRouteException
+        ContextSearchRouteMissingException
     """
     MSG = "A SquareContext attribute missing a search path."
-    ERR_CODE = "SQUARE_CONTEXT_SEARCH_ROUTE"
+    ERR_CODE = "MISSING_SQUARE_CONTEXT_SEARCH_ROUTE"
     
     def __init__(
             self,

@@ -1,7 +1,7 @@
-# src/err/route/build/context/formation/exception.py
+# src/err/route/fabricationcontext/formation/exception.py
 
 """
-Module: err.route.build.context.formation.exception
+Module: err.route.fabrication.formation.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import BuildRouteException
+from artifcat import MethodResultType
+from err import BuildRouteMissingException
 
 
 __all__ = [
-    # ======================# FORMATION_CONTEXT_BUILD_ROUTE #======================#
-    "FormationContextBuildRouteException",
+    # ======================# MISSING_FORMATION_CONTEXT_VALIDATION_ROUTE #======================#
+    "FormationContextBuildRouteMissingException",
 ]
 
-from err import ContextBuildRouteException
+from err import ContextBuildRouteMissingException
 
 
-# ======================# FORMATION_CONTEXT_BUILD_ROUTE #======================#
-class FormationContextBuildRouteException(ContextBuildRouteException):
+# ======================# MISSING_FORMATION_CONTEXT_VALIDATION_ROUTE #======================#
+class FormationContextBuildRouteMissingException(ContextBuildRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of FormationContext build routes is missing.
+        1.  Indicating that one of the FormationContext validation routes is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class FormationContextBuildRouteException(ContextBuildRouteException):
     Provides:
 
     Super Class:
-        ContextBuildRouteException
+        ContextBuildRouteMissingException
     """
-    MSG = "A FormationContext attribute missing a build path."
-    ERR_CODE = "FORMATION_CONTEXT_BUILD_ROUTE"
+    MSG = "A FormationContext attribute missing a validation path."
+    ERR_CODE = "MISSING_FORMATION_CONTEXT_VALIDATION_ROUTE"
     
     def __init__(
             self,

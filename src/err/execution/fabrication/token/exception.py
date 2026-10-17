@@ -1,7 +1,7 @@
-# src/err/route/build/token/exception.py
+# src/err/route/fabricationtoken/exception.py
 
 """
-Module: err.route.build.token.exception
+Module: err.route.fabrication.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,22 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import BuildRouteException
+from artifcat import MethodResultType
+from err import BuildRouteMissingException
 
 
 __all__ = [
-    # ======================# TOKEN_BUILD_ROUTE #======================#
-    "TokenBuildRouteException",
+    # ======================# MISSING_TOKEN_VALIDATION_ROUTE #======================#
+    "TokenBuildRouteMissingException",
 ]
 
-# ======================# TOKEN_BUILD_ROUTE #======================#
-class TokenBuildRouteException(BuildRouteException):
+# ======================# MISSING_TOKEN_VALIDATION_ROUTE #======================#
+class TokenBuildRouteMissingException(BuildRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Token build routes is missing.
+        1.  Indicating that one of the Token validation routes is missing.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +42,10 @@ class TokenBuildRouteException(BuildRouteException):
     Provides:
 
     Super Class:
-        BuildRouteException
+        BuildRouteMissingException
     """
-    MSG = "One of Token build routes is missing."
-    ERR_CODE = "TOKEN_BUILD_ROUTE"
+    MSG = "One of Token validation paths is missing."
+    ERR_CODE = "MISSING_TOKEN_VALIDATION_ROUTE"
     
     def __init__(
             self,
@@ -58,18 +59,18 @@ class TokenBuildRouteException(BuildRouteException):
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-        Args:
-            msg: Optional[str]
-            var: Optional[str]
-            val: Optional[Any]
+        args:
+            Msg: Optional[str]
+            Var: Optional[str]
+            val: Optional[any]
             ex: Optional[Exception]
-            cls_name: Optional[str]
+            cls_name: Optional[Str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
+            mthd_rslt_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
         err_code = err_code or self.ERR_CODE
-        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,

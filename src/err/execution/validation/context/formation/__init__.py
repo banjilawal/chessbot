@@ -1,16 +1,16 @@
-# src/err/route/validation/context/formation/__init__.py
+# src/err/transit/router/validation/context/formation/__init__.py
 
 """
-Module: err.route.validation.formation.__init__
+Module: err.transit.router.validation.formation.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# =========== ERR.ROUTE.VALIDATION.FORMATION PACKAGE ===========#
+# =========== ERR.TRANSIT.ROUTER.VALIDATION.FORMATION PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .exception import FormationContextValidationRouteException
+from .exception import FormationContextValidationRouteMissingException

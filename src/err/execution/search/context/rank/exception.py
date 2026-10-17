@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchRouteException
+from artifcat import MethodResultType
+from err import SearchRouteMissingException
 
 
 __all__ = [
-    # ======================# RANK_CONTEXT_SEARCH_ROUTE #======================#
-    "RankContextSearchRouteException",
+    # ======================# MISSING_RANK_CONTEXT_SEARCH_ROUTE #======================#
+    "RankContextSearchRouteMissingException",
 ]
 
-from err import ContextSearchRouteException
+from err import ContextSearchRouteMissingException
 
 
-# ======================# RANK_CONTEXT_SEARCH_ROUTE #======================#
-class RankContextSearchRouteException(ContextSearchRouteException):
+# ======================# MISSING_RANK_CONTEXT_SEARCH_ROUTE #======================#
+class RankContextSearchRouteMissingException(ContextSearchRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of RankContext search routes is missing.
+        1.  Indicating that one of the RankContext search routes is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class RankContextSearchRouteException(ContextSearchRouteException):
     Provides:
 
     Super Class:
-        ContextSearchRouteException
+        ContextSearchRouteMissingException
     """
     MSG = "A RankContext attribute missing a search path."
-    ERR_CODE = "RANK_CONTEXT_SEARCH_ROUTE"
+    ERR_CODE = "MISSING_RANK_CONTEXT_SEARCH_ROUTE"
     
     def __init__(
             self,

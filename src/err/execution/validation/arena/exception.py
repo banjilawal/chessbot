@@ -1,7 +1,7 @@
-# src/err/route/validation/arena/exception.py
+# src/err/transit/router/validation/arena/exception.py
 
 """
-Module: err.route.validation.arena.exception
+Module: err.transit.router.validation.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,21 +11,22 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ValidationRouteException
+from artifcat import MethodResultType
+from err import ValidationRouteMissingException
 
 __all__ = [
-    # ======================# ARENA_VALIDATION_ROUTE #======================#
-    "ArenaValidationRouteException",
+    # ======================# MISSING_ARENA_VALIDATION_ROUTER #======================#
+    "ArenaValidationRouteMissingException",
 ]
 
-# ======================# ARENA_VALIDATION_ROUTE #======================#
-class ArenaValidationRouteException(ValidationRouteException):
+# ======================# MISSING_ARENA_VALIDATION_ROUTER #======================#
+class ArenaValidationRouteMissingException(ValidationRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of Arena validation routes is missing.
+        1.  Indicating that one of the Arena validation routers is missing.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +41,10 @@ class ArenaValidationRouteException(ValidationRouteException):
     Provides:
 
     Super Class:
-        ValidationRouteException
+        ValidationRouteMissingException
     """
     MSG = "One of Arena validation paths is missing."
-    ERR_CODE = "ARENA_VALIDATION_ROUTE"
+    ERR_CODE = "MISSING_ARENA_VALIDATION_ROUTER"
     
     def __init__(
             self,

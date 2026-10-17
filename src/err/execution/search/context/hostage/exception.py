@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchRouteException
+from artifcat import MethodResultType
+from err import SearchRouteMissingException
 
 
 __all__ = [
-    # ======================# HOSTAGE_CONTEXT_SEARCH_ROUTE #======================#
-    "HostageContextSearchRouteException",
+    # ======================# MISSING_HOSTAGE_CONTEXT_SEARCH_ROUTE #======================#
+    "HostageContextSearchRouteMissingException",
 ]
 
-from err import ContextSearchRouteException
+from err import ContextSearchRouteMissingException
 
 
-# ======================# HOSTAGE_CONTEXT_SEARCH_ROUTE #======================#
-class HostageContextSearchRouteException(ContextSearchRouteException):
+# ======================# MISSING_HOSTAGE_CONTEXT_SEARCH_ROUTE #======================#
+class HostageContextSearchRouteMissingException(ContextSearchRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of HostageContext search routes is missing.
+        1.  Indicating that one of the HostageContext search routes is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class HostageContextSearchRouteException(ContextSearchRouteException):
     Provides:
 
     Super Class:
-        ContextSearchRouteException
+        ContextSearchRouteMissingException
     """
     MSG = "A HostageContext attribute missing a search path."
-    ERR_CODE = "HOSTAGE_CONTEXT_SEARCH_ROUTE"
+    ERR_CODE = "MISSING_HOSTAGE_CONTEXT_SEARCH_ROUTE"
     
     def __init__(
             self,

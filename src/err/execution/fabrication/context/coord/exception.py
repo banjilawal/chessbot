@@ -1,7 +1,7 @@
-# src/err/route/build/context/coord/exception.py
+# src/err/route/fabricationcontext/coord/exception.py
 
 """
-Module: err.route.build.context.coord.exception
+Module: err.route.fabrication.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import BuildRouteException
+from artifcat import MethodResultType
+from err import BuildRouteMissingException
 
 
 __all__ = [
-    # ======================# COORD_CONTEXT_BUILD_ROUTE #======================#
-    "CoordContextBuildRouteException",
+    # ======================# MISSING_COORD_CONTEXT_VALIDATION_ROUTE #======================#
+    "CoordContextBuildRouteMissingException",
 ]
 
-from err import ContextBuildRouteException
+from err import ContextBuildRouteMissingException
 
 
-# ======================# COORD_CONTEXT_BUILD_ROUTE #======================#
-class CoordContextBuildRouteException(ContextBuildRouteException):
+# ======================# MISSING_COORD_CONTEXT_VALIDATION_ROUTE #======================#
+class CoordContextBuildRouteMissingException(ContextBuildRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of CoordContext build routes is missing.
+        1.  Indicating that one of the CoordContext validation routes is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class CoordContextBuildRouteException(ContextBuildRouteException):
     Provides:
 
     Super Class:
-        ContextBuildRouteException
+        ContextBuildRouteMissingException
     """
-    MSG = "A CoordContext attribute missing a build path."
-    ERR_CODE = "COORD_CONTEXT_BUILD_ROUTE"
+    MSG = "A CoordContext attribute missing a validation path."
+    ERR_CODE = "MISSING_COORD_CONTEXT_VALIDATION_ROUTE"
     
     def __init__(
             self,

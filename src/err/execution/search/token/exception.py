@@ -11,16 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchRouteException
+from artifcat import MethodResultType
+from err import SearchRouteMissingException
 
 
 __all__ = [
-    # ======================# TOKEN_SEARCH_ROUTE #======================#
-    "TokenSearchRouteException",
+    # ======================# MISSING_TOKEN_SEARCH_ROUTE #======================#
+    "TokenSearchRouteMissingException",
 ]
 
-# ======================# TOKEN_SEARCH_ROUTE #======================#
-class TokenSearchRouteException(SearchRouteException):
+# ======================# MISSING_TOKEN_SEARCH_ROUTE #======================#
+class TokenSearchRouteMissingException(SearchRouteMissingException):
     """
     Role:
         - Error Tracing
@@ -41,10 +42,10 @@ class TokenSearchRouteException(SearchRouteException):
     Provides:
 
     Super Class:
-        SearchRouteException
+        SearchRouteMissingException
     """
     MSG = "One of Token search routes is missing."
-    ERR_CODE = "TOKEN_SEARCH_ROUTE"
+    ERR_CODE = "MISSING_TOKEN_SEARCH_ROUTE"
     
     def __init__(
             self,

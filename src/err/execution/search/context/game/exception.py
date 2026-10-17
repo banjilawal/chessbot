@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchRouteException
+from artifcat import MethodResultType
+from err import SearchRouteMissingException
 
 
 __all__ = [
-    # ======================# GAME_CONTEXT_SEARCH_ROUTE #======================#
-    "GameContextSearchRouteException",
+    # ======================# MISSING_GAME_CONTEXT_SEARCH_ROUTE #======================#
+    "GameContextSearchRouteMissingException",
 ]
 
-from err import ContextSearchRouteException
+from err import ContextSearchRouteMissingException
 
 
-# ======================# GAME_CONTEXT_SEARCH_ROUTE #======================#
-class GameContextSearchRouteException(ContextSearchRouteException):
+# ======================# MISSING_GAME_CONTEXT_SEARCH_ROUTE #======================#
+class GameContextSearchRouteMissingException(ContextSearchRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of GameContext search routes is missing.
+        1.  Indicating that one of the GameContext search routes is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class GameContextSearchRouteException(ContextSearchRouteException):
     Provides:
 
     Super Class:
-        ContextSearchRouteException
+        ContextSearchRouteMissingException
     """
     MSG = "A GameContext attribute missing a search path."
-    ERR_CODE = "GAME_CONTEXT_SEARCH_ROUTE"
+    ERR_CODE = "MISSING_GAME_CONTEXT_SEARCH_ROUTE"
     
     def __init__(
             self,

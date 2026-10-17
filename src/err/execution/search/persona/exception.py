@@ -11,16 +11,17 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchRouteException
+from artifcat import MethodResultType
+from err import SearchRouteMissingException
 
 
 __all__ = [
-    # ======================# PERSONA_SEARCH_ROUTE #======================#
-    "PersonaSearchRouteException",
+    # ======================# MISSING_PERSONA_SEARCH_ROUTE #======================#
+    "PersonaSearchRouteMissingException",
 ]
 
-# ======================# PERSONA_SEARCH_ROUTE #======================#
-class PersonaSearchRouteException(SearchRouteException):
+# ======================# MISSING_PERSONA_SEARCH_ROUTE #======================#
+class PersonaSearchRouteMissingException(SearchRouteMissingException):
     """
     Role:
         - Error Tracing
@@ -41,10 +42,10 @@ class PersonaSearchRouteException(SearchRouteException):
     Provides:
 
     Super Class:
-        SearchRouteException
+        SearchRouteMissingException
     """
     MSG = "One of Persona search paths is missing."
-    ERR_CODE = "PERSONA_SEARCH_ROUTE"
+    ERR_CODE = "MISSING_PERSONA_SEARCH_ROUTE"
     
     def __init__(
             self,

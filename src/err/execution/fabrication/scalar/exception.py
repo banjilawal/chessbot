@@ -1,7 +1,7 @@
-# src/err/route/build/scalar/exception.py
+# src/err/route/fabricationscalar/exception.py
 
 """
-Module: err.route.build.scalar.exception
+Module: err.route.fabrication.scalar.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,22 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import BuildRouteException
+from artifcat import MethodResultType
+from err import BuildRouteMissingException
 
 
 __all__ = [
-    # ======================# SCALAR_BUILD_ROUTE #======================#
-    "ScalarBuildRouteException",
+    # ======================# MISSING_SCALAR_VALIDATION_ROUTE #======================#
+    "ScalarBuildRouteMissingException",
 ]
 
-# ======================# SCALAR_BUILD_ROUTE #======================#
-class ScalarBuildRouteException(BuildRouteException):
+# ======================# MISSING_SCALAR_VALIDATION_ROUTE #======================#
+class ScalarBuildRouteMissingException(BuildRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of Scalar build routes is missing.
+        1.  Indicating that one of the Scalar validation routes is missing.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +42,10 @@ class ScalarBuildRouteException(BuildRouteException):
     Provides:
 
     Super Class:
-        BuildRouteException
+        BuildRouteMissingException
     """
-    MSG = "One of Scalar build paths is missing."
-    ERR_CODE = "SCALAR_BUILD_ROUTE"
+    MSG = "One of Scalar validation paths is missing."
+    ERR_CODE = "MISSING_SCALAR_VALIDATION_ROUTE"
     
     def __init__(
             self,

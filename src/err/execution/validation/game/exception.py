@@ -1,7 +1,7 @@
-# src/err/route/validation/game/exception.py
+# src/err/transit/router/validation/game/exception.py
 
 """
-Module: err.route.validation.game.exception
+Module: err.transit.router.validation.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,22 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ValidationRouteException
+from artifcat import MethodResultType
+from err import ValidationRouteMissingException
 
 
 __all__ = [
-    # ======================# GAME_VALIDATION_ROUTE #======================#
-    "GameValidationRouteException",
+    # ======================# MISSING_GAME_VALIDATION_ROUTER #======================#
+    "GameValidationRouteMissingException",
 ]
 
-# ======================# GAME_VALIDATION_ROUTE #======================#
-class GameValidationRouteException(ValidationRouteException):
+# ======================# MISSING_GAME_VALIDATION_ROUTER #======================#
+class GameValidationRouteMissingException(ValidationRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of Game validation routes is missing.
+        1.  Indicating that one of the Game validation routers is missing.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +42,10 @@ class GameValidationRouteException(ValidationRouteException):
     Provides:
 
     Super Class:
-        ValidationRouteException
+        ValidationRouteMissingException
     """
     MSG = "One of Game validation paths is missing."
-    ERR_CODE = "GAME_VALIDATION_ROUTE"
+    ERR_CODE = "MISSING_GAME_VALIDATION_ROUTER"
     
     def __init__(
             self,

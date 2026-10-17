@@ -1,7 +1,7 @@
-# src/err/route/build/rank/exception.py
+# src/err/route/fabricationrank/exception.py
 
 """
-Module: err.route.build.rank.exception
+Module: err.route.fabrication.rank.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,22 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import BuildRouteException
+from artifcat import MethodResultType
+from err import BuildRouteMissingException
 
 
 __all__ = [
-    # ======================# RANK_BUILD_ROUTE #======================#
-    "RankBuildRouteException",
+    # ======================# MISSING_RANK_VALIDATION_ROUTE #======================#
+    "RankBuildRouteMissingException",
 ]
 
-# ======================# RANK_BUILD_ROUTE #======================#
-class RankBuildRouteException(BuildRouteException):
+# ======================# MISSING_RANK_VALIDATION_ROUTE #======================#
+class RankBuildRouteMissingException(BuildRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of Rank build routes is missing.
+        1.  Indicating that one of the Rank validation routes is missing.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +42,10 @@ class RankBuildRouteException(BuildRouteException):
     Provides:
 
     Super Class:
-        BuildRouteException
+        BuildRouteMissingException
     """
-    MSG = "One of Rank build paths is missing."
-    ERR_CODE = "RANK_BUILD_ROUTE"
+    MSG = "One of Rank validation paths is missing."
+    ERR_CODE = "MISSING_RANK_VALIDATION_ROUTE"
     
     def __init__(
             self,

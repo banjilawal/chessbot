@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchRouteException
+from artifcat import MethodResultType
+from err import SearchRouteMissingException
 
 
 __all__ = [
-    # ======================# ARENA_CONTEXT_SEARCH_ROUTE #======================#
-    "ArenaContextSearchRouteException",
+    # ======================# MISSING_ARENA_CONTEXT_SEARCH_ROUTE #======================#
+    "ArenaContextSearchRouteMissingException",
 ]
 
-from err import ContextSearchRouteException
+from err import ContextSearchRouteMissingException
 
 
-# ======================# ARENA_CONTEXT_SEARCH_ROUTE #======================#
-class ArenaContextSearchRouteException(ContextSearchRouteException):
+# ======================# MISSING_ARENA_CONTEXT_SEARCH_ROUTE #======================#
+class ArenaContextSearchRouteMissingException(ContextSearchRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of ArenaContext search routes is missing.
+        1.  Indicating that one of the ArenaContext search routes is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class ArenaContextSearchRouteException(ContextSearchRouteException):
     Provides:
 
     Super Class:
-        ContextSearchRouteException
+        ContextSearchRouteMissingException
     """
     MSG = "A ArenaContext attribute missing a search path."
-    ERR_CODE = "ARENA_CONTEXT_SEARCH_ROUTE"
+    ERR_CODE = "MISSING_ARENA_CONTEXT_SEARCH_ROUTE"
     
     def __init__(
             self,

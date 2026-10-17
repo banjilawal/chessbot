@@ -1,7 +1,7 @@
-# src/err/route/validation/context/hostage/exception.py
+# src/err/transit/router/validation/context/hostage/exception.py
 
 """
-Module: err.route.validation.hostage.exception
+Module: err.transit.router.validation.hostage.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ValidationRouteException
+from artifcat import MethodResultType
+from err import ValidationRouteMissingException
 
 
 __all__ = [
-    # ======================# HOSTAGE_CONTEXT_VALIDATION_ROUTE #======================#
-    "HostageContextValidationRouteException",
+    # ======================# MISSING_HOSTAGE_CONTEXT_VALIDATION_ROUTER #======================#
+    "HostageContextValidationRouteMissingException",
 ]
 
-from err import ContextValidationRouteException
+from err import ContextValidationRouteMissingException
 
 
-# ======================# HOSTAGE_CONTEXT_VALIDATION_ROUTE #======================#
-class HostageContextValidationRouteException(ContextValidationRouteException):
+# ======================# MISSING_HOSTAGE_CONTEXT_VALIDATION_ROUTER #======================#
+class HostageContextValidationRouteMissingException(ContextValidationRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of HostageContext validation routes is missing.
+        1.  Indicating that one of the HostageContext validation routers is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class HostageContextValidationRouteException(ContextValidationRouteException):
     Provides:
 
     Super Class:
-        ContextValidationRouteException
+        ContextValidationRouteMissingException
     """
     MSG = "A HostageContext attribute missing a validation path."
-    ERR_CODE = "HOSTAGE_CONTEXT_VALIDATION_ROUTE"
+    ERR_CODE = "MISSING_HOSTAGE_CONTEXT_VALIDATION_ROUTER"
     
     def __init__(
             self,

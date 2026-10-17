@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchRouteException
+from artifcat import MethodResultType
+from err import SearchRouteMissingException
 
 
 __all__ = [
-    # ======================# BOARD_CONTEXT_SEARCH_ROUTE #======================#
-    "BoardContextSearchRouteException",
+    # ======================# MISSING_BOARD_CONTEXT_SEARCH_ROUTE #======================#
+    "BoardContextSearchRouteMissingException",
 ]
 
-from err import ContextSearchRouteException
+from err import ContextSearchRouteMissingException
 
 
-# ======================# BOARD_CONTEXT_SEARCH_ROUTE #======================#
-class BoardContextSearchRouteException(ContextSearchRouteException):
+# ======================# MISSING_BOARD_CONTEXT_SEARCH_ROUTE #======================#
+class BoardContextSearchRouteMissingException(ContextSearchRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of BoardContext search routes is missing.
+        1.  Indicating that one of the BoardContext search routes is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class BoardContextSearchRouteException(ContextSearchRouteException):
     Provides:
 
     Super Class:
-        ContextSearchRouteException
+        ContextSearchRouteMissingException
     """
     MSG = "A BoardContext attribute missing a search path."
-    ERR_CODE = "BOARD_CONTEXT_SEARCH_ROUTE"
+    ERR_CODE = "MISSING_BOARD_CONTEXT_SEARCH_ROUTE"
     
     def __init__(
             self,

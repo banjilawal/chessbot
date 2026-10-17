@@ -1,7 +1,7 @@
-# src/err/route/validation/team/exception.py
+# src/err/transit/router/validation/team/exception.py
 
 """
-Module: err.route.validation.team.exception
+Module: err.transit.router.validation.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,22 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ValidationRouteException
+from artifcat import MethodResultType
+from err import ValidationRouteMissingException
 
 
 __all__ = [
-    # ======================# TEAM_VALIDATION_ROUTE #======================#
-    "TeamValidationRouteException",
+    # ======================# MISSING_TEAM_VALIDATION_ROUTER #======================#
+    "TeamValidationRouteMissingException",
 ]
 
-# ======================# TEAM_VALIDATION_ROUTE #======================#
-class TeamValidationRouteException(ValidationRouteException):
+# ======================# MISSING_TEAM_VALIDATION_ROUTER #======================#
+class TeamValidationRouteMissingException(ValidationRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of Team validation routes is missing.
+        1.  Indicating that one of the Team validation routers is missing.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +42,10 @@ class TeamValidationRouteException(ValidationRouteException):
     Provides:
 
     Super Class:
-        ValidationRouteException
+        ValidationRouteMissingException
     """
     MSG = "One of Team validation paths is missing."
-    ERR_CODE = "TEAM_VALIDATION_ROUTE"
+    ERR_CODE = "MISSING_TEAM_VALIDATION_ROUTER"
     
     def __init__(
             self,

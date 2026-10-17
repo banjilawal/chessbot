@@ -1,16 +1,16 @@
-# src/err/route/validation/vector/__init__.py
+# src/err/transit/router/validation/vector/__init__.py
 
 """
-Module: err.route.validation.vector.__init__
+Module: err.transit.router.validation.vector.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.ROUTE.VALIDATION.VECTOR PACKAGE ===========#
+# ============ ERR.TRANSIT.ROUTER.VALIDATION.VECTOR PACKAGE ===========#
 
 # Packages
 
 
 # Modules
-from .exception import VectorValidationRouteException
+from .exception import VectorValidationRouteMissingException

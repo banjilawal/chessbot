@@ -1,7 +1,7 @@
-# src/err/route/validation/encounter/exception.py
+# src/err/transit/router/validation/encounter/exception.py
 
 """
-Module: err.route.validation.encounter.exception
+Module: err.transit.router.validation.encounter.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,22 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ValidationRouteException
+from artifcat import MethodResultType
+from err import ValidationRouteMissingException
 
 
 __all__ = [
-    # ======================# ENCOUNTER_VALIDATION_ROUTE #======================#
-    "EncounterValidationRouterException",
+    # ======================# MISSING_ENCOUNTER_VALIDATION_ROUTER #======================#
+    "EncounterValidationRouteMissingException",
 ]
 
-# ======================# ENCOUNTER_VALIDATION_ROUTE #======================#
-class EncounterValidationRouterException(ValidationRouteException):
+# ======================# MISSING_ENCOUNTER_VALIDATION_ROUTER #======================#
+class EncounterValidationRouteMissingException(ValidationRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of Encounter validation routes is missing.
+        1.  Indicating that one of the Encounter validation routers is missing.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +42,10 @@ class EncounterValidationRouterException(ValidationRouteException):
     Provides:
 
     Super Class:
-        ValidationRouteException
+        ValidationRouteMissingException
     """
     MSG = "One of Encounter validation paths is missing."
-    ERR_CODE = "ENCOUNTER_VALIDATION_ROUTE"
+    ERR_CODE = "MISSING_ENCOUNTER_VALIDATION_ROUTER"
     
     def __init__(
             self,

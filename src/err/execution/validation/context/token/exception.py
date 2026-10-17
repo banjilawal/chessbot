@@ -1,7 +1,7 @@
-# src/err/route/validation/context/token/exception.py
+# src/err/transit/router/validation/context/token/exception.py
 
 """
-Module: err.route.validation.token.exception
+Module: err.transit.router.validation.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ValidationRouteException
+from artifcat import MethodResultType
+from err import ValidationRouteMissingException
 
 
 __all__ = [
-    # ======================# TOKEN_CONTEXT_VALIDATION_ROUTE #======================#
-    "TokenContextValidationRouteException",
+    # ======================# MISSING_TOKEN_CONTEXT_VALIDATION_ROUTER #======================#
+    "TokenContextValidationRouteMissingException",
 ]
 
-from err import ContextValidationRouteException
+from err import ContextValidationRouteMissingException
 
 
-# ======================# TOKEN_CONTEXT_VALIDATION_ROUTE #======================#
-class TokenContextValidationRouteException(ContextValidationRouteException):
+# ======================# MISSING_TOKEN_CONTEXT_VALIDATION_ROUTER #======================#
+class TokenContextValidationRouteMissingException(ContextValidationRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of TokenContext validation routes is missing.
+        1.  Indicating that one of the TokenContext validation routers is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class TokenContextValidationRouteException(ContextValidationRouteException):
     Provides:
 
     Super Class:
-        ContextValidationRouteException
+        ContextValidationRouteMissingException
     """
     MSG = "A TokenContext attribute missing a validation path."
-    ERR_CODE = "TOKEN_CONTEXT_VALIDATION_ROUTE"
+    ERR_CODE = "MISSING_TOKEN_CONTEXT_VALIDATION_ROUTER"
     
     def __init__(
             self,

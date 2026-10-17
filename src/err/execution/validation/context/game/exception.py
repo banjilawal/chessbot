@@ -1,7 +1,7 @@
-# src/err/route/validation/context/game/exception.py
+# src/err/transit/router/validation/context/game/exception.py
 
 """
-Module: err.route.validation.game.exception
+Module: err.transit.router.validation.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ValidationRouteException
+from artifcat import MethodResultType
+from err import ValidationRouteMissingException
 
 
 __all__ = [
-    # ======================# GAME_CONTEXT_VALIDATION_ROUTE #======================#
-    "GameContextValidationRouteException",
+    # ======================# MISSING_GAME_CONTEXT_VALIDATION_ROUTER #======================#
+    "GameContextValidationRouteMissingException",
 ]
 
-from err import ContextValidationRouteException
+from err import ContextValidationRouteMissingException
 
 
-# ======================# GAME_CONTEXT_VALIDATION_ROUTE #======================#
-class GameContextValidationRouteException(ContextValidationRouteException):
+# ======================# MISSING_GAME_CONTEXT_VALIDATION_ROUTER #======================#
+class GameContextValidationRouteMissingException(ContextValidationRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of GameContext validation routes is missing.
+        1.  Indicating that one of the GameContext validation routers is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class GameContextValidationRouteException(ContextValidationRouteException):
     Provides:
 
     Super Class:
-        ContextValidationRouteException
+        ContextValidationRouteMissingException
     """
     MSG = "A GameContext attribute missing a validation path."
-    ERR_CODE = "GAME_CONTEXT_VALIDATION_ROUTE"
+    ERR_CODE = "MISSING_GAME_CONTEXT_VALIDATION_ROUTER"
     
     def __init__(
             self,

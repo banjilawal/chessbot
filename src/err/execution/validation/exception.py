@@ -1,7 +1,7 @@
-# src/err/route/validation/exception.py
+# src/err/transit/router/validation/exception.py
 
 """
-Module: err.route.validation.exception
+Module: err.transit.router.validation.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ExecutionRouteException
+from err import ExecutionRouteMissingException
 
 __all__ = [
-    # ======================# MISSING_VALIDATION_ROUTE #======================#
-    "ValidationRouteException",
+    # ======================# MISSING_MISSING_VALIDATION_ROUTER #======================#
+    "ValidationRouteMissingException",
 ]
 
-# ======================# MISSING_VALIDATION_ROUTE #======================#
-class ValidationRouteException(ExecutionRouteException):
+# ======================# MISSING_MISSING_VALIDATION_ROUTER #======================#
+class ValidationRouteMissingException(ExecutionRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a validation route is missing from the logic.
+        1.  Indicating a validation router is missing from the logic.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +41,10 @@ class ValidationRouteException(ExecutionRouteException):
     Provides:
 
     Super Class:
-        ExecutionRouteException
+        ExecutionRouteMissingException
     """
-    MSG = "A validation route is missing."
-    ERR_CODE = "MISSING_VALIDATION_ROUTE"
+    MSG = "A validation router is missing."
+    ERR_CODE = "MISSING_MISSING_VALIDATION_ROUTER"
     MTHD_RSLT_TYPE = MethodResultType.VALIDATION_RESULT
 
     

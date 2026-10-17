@@ -1,7 +1,7 @@
-# src/err/route/build/vector/exception.py
+# src/err/route/fabricationvector/exception.py
 
 """
-Module: err.route.build.vector.exception
+Module: err.route.fabrication.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,22 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import BuildRouteException
+from artifcat import MethodResultType
+from err import BuildRouteMissingException
 
 
 __all__ = [
-    # ======================# VECTOR_BUILD_ROUTE #======================#
-    "VectorBuildRouteException",
+    # ======================# MISSING_VECTOR_VALIDATION_ROUTE #======================#
+    "VectorBuildRouteMissingException",
 ]
 
-# ======================# VECTOR_BUILD_ROUTE #======================#
-class VectorBuildRouteException(BuildRouteException):
+# ======================# MISSING_VECTOR_VALIDATION_ROUTE #======================#
+class VectorBuildRouteMissingException(BuildRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Vector build routes is missing.
+        1.  Indicating a Vector validation routes is missing.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +42,10 @@ class VectorBuildRouteException(BuildRouteException):
     Provides:
 
     Super Class:
-        BuildRouteException
+        BuildRouteMissingException
     """
-    MSG = "One of Vector build paths is missing."
-    ERR_CODE = "VECTOR_BUILD_ROUTE"
+    MSG = "One of Vector validation paths is missing."
+    ERR_CODE = "MISSING_VECTOR_VALIDATION_ROUTE"
     
     def __init__(
             self,

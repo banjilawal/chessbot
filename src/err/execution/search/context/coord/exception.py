@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchRouteException
+from artifcat import MethodResultType
+from err import SearchRouteMissingException
 
 
 __all__ = [
-    # ======================# COORD_CONTEXT_SEARCH_ROUTE #======================#
-    "CoordContextSearchRouteException",
+    # ======================# MISSING_COORD_CONTEXT_SEARCH_ROUTE #======================#
+    "CoordContextSearchRouteMissingException",
 ]
 
-from err import ContextSearchRouteException
+from err import ContextSearchRouteMissingException
 
 
-# ======================# COORD_CONTEXT_SEARCH_ROUTE #======================#
-class CoordContextSearchRouteException(ContextSearchRouteException):
+# ======================# MISSING_COORD_CONTEXT_SEARCH_ROUTE #======================#
+class CoordContextSearchRouteMissingException(ContextSearchRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of CoordContext search routes is missing.
+        1.  Indicating that one of the CoordContext search routes is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class CoordContextSearchRouteException(ContextSearchRouteException):
     Provides:
 
     Super Class:
-        ContextSearchRouteException
+        ContextSearchRouteMissingException
     """
     MSG = "A CoordContext attribute missing a search path."
-    ERR_CODE = "COORD_CONTEXT_SEARCH_ROUTE"
+    ERR_CODE = "MISSING_COORD_CONTEXT_SEARCH_ROUTE"
     
     def __init__(
             self,

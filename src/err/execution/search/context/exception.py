@@ -11,22 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchRouteException
+from artifcat import MethodResultType
+from err import SearchRouteMissingException
 
 
 __all__ = [
-    # ======================# CONTEXT_SEARCH_ROUTE #======================#
-    "ContextSearchRouteException",
+    # ======================# MISSING_CONTEXT_SEARCH_ROUTE #======================#
+    "ContextSearchRouteMissingException",
 ]
 
-# ======================# CONTEXT_SEARCH_ROUTE #======================#
-class ContextSearchRouteException(SearchRouteException):
+# ======================# MISSING_CONTEXT_SEARCH_ROUTE #======================#
+class ContextSearchRouteMissingException(SearchRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of ContextSearch failed.
+        1.  Indicating that one of the ContextSearch failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +42,10 @@ class ContextSearchRouteException(SearchRouteException):
     Provides:
 
     Super Class:
-        SearchRouteException
+        SearchRouteMissingException
     """
     MSG = "A context's attribute"
-    ERR_CODE = "CONTEXT_SEARCH_ROUTE"
+    ERR_CODE = "MISSING_CONTEXT_SEARCH_ROUTE"
     
     def __init__(
             self,

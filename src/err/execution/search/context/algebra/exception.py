@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchRouteException
+from artifcat import MethodResultType
+from err import SearchRouteMissingException
 
 
 __all__ = [
-    # ======================# ALGEBRA_CONTEXT_SEARCH_ROUTE #======================#
-    "AlgebraContextSearchRouteException",
+    # ======================# MISSING_ALGEBRA_CONTEXT_SEARCH_ROUTE #======================#
+    "AlgebraContextSearchRouteMissingException",
 ]
 
-from err import ContextSearchRouteException
+from err import ContextSearchRouteMissingException
 
 
-# ======================# ALGEBRA_CONTEXT_SEARCH_ROUTE #======================#
-class AlgebraContextSearchRouteException(ContextSearchRouteException):
+# ======================# MISSING_ALGEBRA_CONTEXT_SEARCH_ROUTE #======================#
+class AlgebraContextSearchRouteMissingException(ContextSearchRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of AlgebraContext search routes is missing.
+        1.  Indicating that one of the AlgebraContext search routes is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class AlgebraContextSearchRouteException(ContextSearchRouteException):
     Provides:
 
     Super Class:
-        ContextSearchRouteException
+        ContextSearchRouteMissingException
     """
     MSG = "An AlgebraContext attribute missing a search path."
-    ERR_CODE = "ALGEBRA_CONTEXT_SEARCH_ROUTE"
+    ERR_CODE = "MISSING_ALGEBRA_CONTEXT_SEARCH_ROUTE"
     
     def __init__(
             self,

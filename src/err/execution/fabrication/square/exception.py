@@ -1,7 +1,7 @@
-# src/err/route/build/square/exception.py
+# src/err/route/fabricationsquare/exception.py
 
 """
-Module: err.route.build.square.exception
+Module: err.route.fabrication.square.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,22 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import BuildRouteException
+from artifcat import MethodResultType
+from err import BuildRouteMissingException
 
 
 __all__ = [
-    # ======================# SQUARE_BUILD_ROUTE #======================#
-    "SquareBuildRouteException",
+    # ======================# MISSING_SQUARE_VALIDATION_ROUTE #======================#
+    "SquareBuildRouteMissingException",
 ]
 
-# ======================# SQUARE_BUILD_ROUTE #======================#
-class SquareBuildRouteException(BuildRouteException):
+# ======================# MISSING_SQUARE_VALIDATION_ROUTE #======================#
+class SquareBuildRouteMissingException(BuildRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of Square build routes is missing.
+        1.  Indicating that one of the Square validation routes is missing.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +42,10 @@ class SquareBuildRouteException(BuildRouteException):
     Provides:
 
     Super Class:
-        BuildRouteException
+        BuildRouteMissingException
     """
-    MSG = "One of Square build paths is missing."
-    ERR_CODE = "SQUARE_BUILD_ROUTE"
+    MSG = "One of Square validation paths is missing."
+    ERR_CODE = "MISSING_SQUARE_VALIDATION_ROUTE"
     
     def __init__(
             self,

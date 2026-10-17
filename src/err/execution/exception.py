@@ -14,15 +14,15 @@ from typing import Any, Optional
 from err import ChessException
 
 __all__ = [
-    # ======================# EXECUTION_ROUTE_ERROR #======================#
-    "ExecutionRouteException",
+    # ======================# MISSING_EXECUTION_ROUTE_ERROR #======================#
+    "ExecutionRouteMissingException",
 ]
 
 from artifcat import MethodResultType
 
 
-# ======================# EXECUTION_ROUTE_ERROR #======================#
-class ExecutionRouteException(ChessException):
+# ======================# MISSING_EXECUTION_ROUTE_ERROR #======================#
+class ExecutionRouteMissingException(ChessException):
     """
     Role:
         - Error Tracing
@@ -48,7 +48,7 @@ class ExecutionRouteException(ChessException):
         ChessException
     """
     MSG = "Missing execution route."
-    ERR_CODE = "EXECUTION_ROUTE_ERROR"
+    ERR_CODE = "MISSING_EXECUTION_ROUTE_ERROR"
     
     def __init__(
             self,

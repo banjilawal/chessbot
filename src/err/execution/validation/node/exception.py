@@ -1,7 +1,7 @@
-# src/err/route/validation/no/exception.py
+# src/err/transit/router/validation/no/exception.py
 
 """
-Module: err.route.validation.no.exception
+Module: err.transit.router.validation.no.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -10,22 +10,22 @@ version: 0.0.2
 from __future__ import annotations
 
 from typing import Any, Optional
-from err import ValidationRouteException
+from err import ValidationRouteMissingException
 
 
 __all__ = [
-    # ======================# NO_VALIDATION_ROUTE #======================#
-    "NodeValidationRouteException",
+    # ======================# MISSING_NO_VALIDATION_ROUTER #======================#
+    "NodeValidationRouteMissingException",
 ]
 
-# ======================# NO_VALIDATION_ROUTE #======================#
-class NodeValidationRouteException(ValidationRouteException):
+# ======================# MISSING_NO_VALIDATION_ROUTER #======================#
+class NodeValidationRouteMissingException(ValidationRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of No validation routes is missing.
+        1.  Indicating that one of the No validation routers is missing.
 
     Attributes:
         msg: Optional[str]
@@ -40,10 +40,10 @@ class NodeValidationRouteException(ValidationRouteException):
     Provides:
 
     Super Class:
-        ValidationRouteException
+        ValidationRouteMissingException
     """
     MSG = "One of No validation paths is missing."
-    ERR_CODE = "NO_VALIDATION_ROUTE"
+    ERR_CODE = "MISSING_NO_VALIDATION_ROUTER"
     
     def __init__(
             self,

@@ -1,7 +1,7 @@
-# src/err/route/validation/token/exception.py
+# src/err/transit/router/validation/token/exception.py
 
 """
-Module: err.route.validation.token.exception
+Module: err.transit.router.validation.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,22 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ValidationRouteException
+from artifcat import MethodResultType
+from err import ValidationRouteMissingException
 
 
 __all__ = [
-    # ======================# TOKEN_VALIDATION_ROUTE #======================#
-    "TokenValidationRouterException",
+    # ======================# MISSING_TOKEN_VALIDATION_ROUTER #======================#
+    "TokenValidationRouteMissingException",
 ]
 
-# ======================# TOKEN_VALIDATION_ROUTE #======================#
-class TokenValidationRouterException(ValidationRouteException):
+# ======================# MISSING_TOKEN_VALIDATION_ROUTER #======================#
+class TokenValidationRouteMissingException(ValidationRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of Token validation routes is missing.
+        1.  Indicating that one of the Token validation routers is missing.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +42,10 @@ class TokenValidationRouterException(ValidationRouteException):
     Provides:
 
     Super Class:
-        ValidationRouteException
+        ValidationRouteMissingException
     """
     MSG = "One of Token validation paths is missing."
-    ERR_CODE = "TOKEN_VALIDATION_ROUTE"
+    ERR_CODE = "MISSING_TOKEN_VALIDATION_ROUTER"
     
     def __init__(
             self,

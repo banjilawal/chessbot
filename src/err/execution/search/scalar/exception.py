@@ -11,22 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchRouteException
+from artifcat import MethodResultType
+from err import SearchRouteMissingException
 
 
 __all__ = [
-    # ======================# SCALAR_SEARCH_ROUTE #======================#
-    "ScalarSearchRouteException",
+    # ======================# MISSING_SCALAR_SEARCH_ROUTE #======================#
+    "ScalarSearchRouteMissingException",
 ]
 
-# ======================# SCALAR_SEARCH_ROUTE #======================#
-class ScalarSearchRouteException(SearchRouteException):
+# ======================# MISSING_SCALAR_SEARCH_ROUTE #======================#
+class ScalarSearchRouteMissingException(SearchRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of Scalar search routes is missing.
+        1.  Indicating that one of the Scalar search routes is missing.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +42,10 @@ class ScalarSearchRouteException(SearchRouteException):
     Provides:
 
     Super Class:
-        SearchRouteException
+        SearchRouteMissingException
     """
     MSG = "One of Scalar search paths is missing."
-    ERR_CODE = "SCALAR_SEARCH_ROUTE"
+    ERR_CODE = "MISSING_SCALAR_SEARCH_ROUTE"
     
     def __init__(
             self,

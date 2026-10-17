@@ -1,7 +1,7 @@
-# src/err/route/validation/board/exception.py
+# src/err/transit/router/validation/board/exception.py
 
 """
-Module: err.route.validation.board.exception
+Module: err.transit.router.validation.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,22 +12,22 @@ from __future__ import annotations
 from typing import Any, Optional
 
 
-from err import ValidationRouteException
+from err import ValidationRouteMissingException
 
 
 __all__ = [
-    # ======================# BOARD_VALIDATOR_ROUTE #======================#
-    "BoardValidationRouteException",
+    # ======================# MISSING_BOARD_VALIDATOR_ROUTER #======================#
+    "BoardValidationRouteMissingException",
 ]
 
-# ======================# BOARD_VALIDATOR_ROUTE #======================#
-class BoardValidationRouteException(ValidationRouteException):
+# ======================# MISSING_BOARD_VALIDATOR_ROUTER #======================#
+class BoardValidationRouteMissingException(ValidationRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of Board validation routes is missing.
+        1.  Indicating that one of the Board validation routers is missing.
 
     Attributes:
         msg: Optional[str]
@@ -42,10 +42,10 @@ class BoardValidationRouteException(ValidationRouteException):
     Provides:
 
     Super Class:
-        ValidationRouteException
+        ValidationRouteMissingException
     """
     MSG = "One of Board validation paths is missing."
-    ERR_CODE = "BOARD_VALIDATOR_ROUTE"
+    ERR_CODE = "MISSING_BOARD_VALIDATOR_ROUTER"
     
     def __init__(
             self,

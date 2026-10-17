@@ -1,7 +1,7 @@
-# src/err/route/validation/context/player/exception.py
+# src/err/transit/router/validation/context/player/exception.py
 
 """
-Module: err.route.validation.player.exception
+Module: err.transit.router.validation.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ValidationRouteException
+from artifcat import MethodResultType
+from err import ValidationRouteMissingException
 
 
 __all__ = [
-    # ======================# PLAYER_CONTEXT_VALIDATION_ROUTE #======================#
-    "PlayerContextValidationRouteException",
+    # ======================# MISSING_PLAYER_CONTEXT_VALIDATION_ROUTER #======================#
+    "PlayerContextValidationRouteMissingException",
 ]
 
-from err import ContextValidationRouteException
+from err import ContextValidationRouteMissingException
 
 
-# ======================# PLAYER_CONTEXT_VALIDATION_ROUTE #======================#
-class PlayerContextValidationRouteException(ContextValidationRouteException):
+# ======================# MISSING_PLAYER_CONTEXT_VALIDATION_ROUTER #======================#
+class PlayerContextValidationRouteMissingException(ContextValidationRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of PlayerContext validation routes is missing.
+        1.  Indicating that one of the PlayerContext validation routers is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class PlayerContextValidationRouteException(ContextValidationRouteException):
     Provides:
 
     Super Class:
-        ContextValidationRouteException
+        ContextValidationRouteMissingException
     """
     MSG = "A PlayerContext attribute missing a validation path."
-    ERR_CODE = "PLAYER_CONTEXT_VALIDATION_ROUTE"
+    ERR_CODE = "MISSING_PLAYER_CONTEXT_VALIDATION_ROUTER"
     
     def __init__(
             self,

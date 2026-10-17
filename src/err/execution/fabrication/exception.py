@@ -1,7 +1,7 @@
-# src/err/route/build/__init__.py
+# src/err/route/fabricationexception.py
 
 """
-Module: err.route.build.__init__
+Module: err.route.fabrication.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,21 +11,22 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ExecutionRouteException
+from artifcat import MethodResultType
+from err import ExecutionRouteMissingException
 
 __all__ = [
-    # ======================# BUILD_ROUTE #======================#
-    "BuildRouteException",
+    # ======================# MISSING_MISSING_VALIDATION_ROUTE #======================#
+    "BuildRouteMissingException",
 ]
 
-# ======================# BUILD_ROUTE #======================#
-class BuildRouteException(ExecutionRouteException):
+# ======================# MISSING_MISSING_VALIDATION_ROUTE #======================#
+class BuildRouteMissingException(ExecutionRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of  build routes is missing.
+        1.  Indicating a validation routes is missing from the logic.
 
     Attributes:
         msg: Optional[str]
@@ -40,13 +41,12 @@ class BuildRouteException(ExecutionRouteException):
     Provides:
 
     Super Class:
-        ExecutionRouteException
+        ExecutionRouteMissingException
     """
-    OP = "Build"
-    MSG = "One of  build routes is missing."
-    ERR_CODE = "BUILD_ROUTE"
-    MTHD_RSLT_TYPE = "BuildResult"
-    _mthd_rslt_type = Optional[str]
+    MSG = "A validation routes is missing."
+    ERR_CODE = "MISSING_MISSING_VALIDATION_ROUTE"
+    MTHD_RSLT_TYPE = MethodResultType.VALIDATION_RESULT
+
     
     def __init__(
             self,
@@ -60,19 +60,19 @@ class BuildRouteException(ExecutionRouteException):
             mthd_rslt_type: Optional[MethodResultType] | None = None,
     ):
         """
-        args:
-            Msg: Optional[str]
-            Var: Optional[str]
-            val: Optional[any]
+        Args:
+            msg: Optional[str]
+            var: Optional[str]
+            val: Optional[Any]
             ex: Optional[Exception]
-            cls_name: Optional[Str]
+            cls_name: Optional[str]
             cls_mthd: Optional[str]
             err_code: Optional[str]
-            mthd_rslt_type: Optional[MethodResultType]
+            mthd_result_type: Optional[MethodResultType]
         """
         msg = msg or self.MSG
-        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         err_code = err_code or self.ERR_CODE
+        mthd_rslt_type = mthd_rslt_type or self.MTHD_RSLT_TYPE
         super().__init__(
             ex=ex,
             msg=msg,
@@ -83,11 +83,3 @@ class BuildRouteException(ExecutionRouteException):
             cls_mthd=cls_mthd,
             mthd_rslt_type=mthd_rslt_type,
         )
-        self._mthd_rslt_type = mthd_rslt
-    
-    @property
-    def mthd_rslt(self) -> Optional[str]:
-        return self._mthd_rslt
-    
-    def __str__(self):
-        return f"{super().__str__()},  mthd_rslt_type:{self._mthd_rslt}"

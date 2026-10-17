@@ -1,7 +1,7 @@
-# src/err/route/build/edge/exception.py
+# src/err/route/fabricationedge/exception.py
 
 """
-Module: err.route.build.edge.exception
+Module: err.route.fabrication.edge.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,22 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import BuildRouteException
+from artifcat import MethodResultType
+from err import BuildRouteMissingException
 
 
 __all__ = [
-    # ======================# EDGE_BUILD_ROUTE #======================#
-    "EdgeBuildRouteException",
+    # ======================# MISSING_EDGE_VALIDATION_ROUTE #======================#
+    "EdgeBuildRouteMissingException",
 ]
 
-# ======================# EDGE_BUILD_ROUTE #======================#
-class EdgeBuildRouteException(BuildRouteException):
+# ======================# MISSING_EDGE_VALIDATION_ROUTE #======================#
+class EdgeBuildRouteMissingException(BuildRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of Edge build routes is missing.
+        1.  Indicating that one of the Edge validation routes is missing.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +42,10 @@ class EdgeBuildRouteException(BuildRouteException):
     Provides:
 
     Super Class:
-        BuildRouteException
+        BuildRouteMissingException
     """
-    MSG = "One of Edge build paths is missing."
-    ERR_CODE = "EDGE_BUILD_ROUTE"
+    MSG = "One of Edge validation paths is missing."
+    ERR_CODE = "MISSING_EDGE_VALIDATION_ROUTE"
     
     def __init__(
             self,

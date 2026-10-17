@@ -1,7 +1,7 @@
-# src/err/route/build/game/exception.py
+# src/err/route/fabricationgame/exception.py
 
 """
-Module: err.route.build.game.exception
+Module: err.route.fabrication.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,22 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import BuildRouteException
+from artifcat import MethodResultType
+from err import BuildRouteMissingException
 
 
 __all__ = [
-    # ======================# GAME_BUILD_ROUTE #======================#
-    "GameBuildRouteException",
+    # ======================# MISSING_GAME_VALIDATION_ROUTE #======================#
+    "GameBuildRouteMissingException",
 ]
 
-# ======================# GAME_BUILD_ROUTE #======================#
-class GameBuildRouteException(BuildRouteException):
+# ======================# MISSING_GAME_VALIDATION_ROUTE #======================#
+class GameBuildRouteMissingException(BuildRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of Game build routes is missing.
+        1.  Indicating that one of the Game validation routes is missing.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +42,10 @@ class GameBuildRouteException(BuildRouteException):
     Provides:
 
     Super Class:
-        BuildRouteException
+        BuildRouteMissingException
     """
-    MSG = "One of Game build paths is missing."
-    ERR_CODE = "GAME_BUILD_ROUTE"
+    MSG = "One of Game validation paths is missing."
+    ERR_CODE = "MISSING_GAME_VALIDATION_ROUTE"
     
     def __init__(
             self,

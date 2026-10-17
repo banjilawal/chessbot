@@ -1,7 +1,7 @@
-# src/err/route/validation/account/exception.py
+# src/err/transit/router/validation/account/exception.py
 
 """
-Module: err.route.validation.account.exception
+Module: err.transit.router.validation.account.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,22 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ValidationRouteException
+from artifcat import MethodResultType
+from err import ValidationRouteMissingException
 
 
 __all__ = [
-    # ======================# ACCOUNT_VALIDATION_ROUTE #======================#
-    "AccountValidationRouterException",
+    # ======================# MISSING_ACCOUNT_VALIDATION_ROUTER #======================#
+    "AccountValidationRouteMissingException",
 ]
 
-# ======================# ACCOUNT_VALIDATION_ROUTE #======================#
-class AccountValidationRouterException(ValidationRouteException):
+# ======================# MISSING_ACCOUNT_VALIDATION_ROUTER #======================#
+class AccountValidationRouteMissingException(ValidationRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of Account validation routes is missing.
+        1.  Indicating that one of the Account validation routers is missing.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +42,10 @@ class AccountValidationRouterException(ValidationRouteException):
     Provides:
 
     Super Class:
-        ValidationRouteException
+        ValidationRouteMissingException
     """
     MSG = "One of Account validation paths is missing."
-    ERR_CODE = "ACCOUNT_VALIDATION_ROUTE"
+    ERR_CODE = "MISSING_ACCOUNT_VALIDATION_ROUTER"
     
     def __init__(
             self,

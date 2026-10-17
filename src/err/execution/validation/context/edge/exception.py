@@ -1,7 +1,7 @@
-# src/err/route/validation/context/edge/exception.py
+# src/err/transit/router/validation/context/edge/exception.py
 
 """
-Module: err.route.validation.edge.exception
+Module: err.transit.router.validation.edge.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ValidationRouteException
+from artifcat import MethodResultType
+from err import ValidationRouteMissingException
 
 
 __all__ = [
-    # ======================# EDGE_CONTEXT_VALIDATION_ROUTE #======================#
-    "EdgeContextValidationRouteException",
+    # ======================# MISSING_EDGE_CONTEXT_VALIDATION_ROUTER #======================#
+    "EdgeContextValidationRouteMissingException",
 ]
 
-from err import ContextValidationRouteException
+from err import ContextValidationRouteMissingException
 
 
-# ======================# EDGE_CONTEXT_VALIDATION_ROUTE #======================#
-class EdgeContextValidationRouteException(ContextValidationRouteException):
+# ======================# MISSING_EDGE_CONTEXT_VALIDATION_ROUTER #======================#
+class EdgeContextValidationRouteMissingException(ContextValidationRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of EdgeContext validation routes is missing.
+        1.  Indicating that one of the EdgeContext validation routers is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class EdgeContextValidationRouteException(ContextValidationRouteException):
     Provides:
 
     Super Class:
-        ContextValidationRouteException
+        ContextValidationRouteMissingException
     """
     MSG = "An EdgeContext attribute missing a validation path."
-    ERR_CODE = "EDGE_CONTEXT_VALIDATION_ROUTE"
+    ERR_CODE = "MISSING_EDGE_CONTEXT_VALIDATION_ROUTER"
     
     def __init__(
             self,

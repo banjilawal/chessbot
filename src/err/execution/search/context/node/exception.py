@@ -11,25 +11,26 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import SearchRouteException
+from artifcat import MethodResultType
+from err import SearchRouteMissingException
 
 
 __all__ = [
-    # ======================# NODE_CONTEXT_SEARCH_ROUTE #======================#
-    "NodeContextSearchRouteException",
+    # ======================# MISSING_NODE_CONTEXT_SEARCH_ROUTE #======================#
+    "NodeContextSearchRouteMissingException",
 ]
 
-from err import ContextSearchRouteException
+from err import ContextSearchRouteMissingException
 
 
-# ======================# NODE_CONTEXT_SEARCH_ROUTE #======================#
-class NodeContextSearchRouteException(ContextSearchRouteException):
+# ======================# MISSING_NODE_CONTEXT_SEARCH_ROUTE #======================#
+class NodeContextSearchRouteMissingException(ContextSearchRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of NodeContext search routes is missing.
+        1.  Indicating that one of the NodeContext search routes is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,10 +45,10 @@ class NodeContextSearchRouteException(ContextSearchRouteException):
     Provides:
 
     Super Class:
-        ContextSearchRouteException
+        ContextSearchRouteMissingException
     """
     MSG = "A NodeContext attribute missing a search path."
-    ERR_CODE = "NODE_CONTEXT_SEARCH_ROUTE"
+    ERR_CODE = "MISSING_NODE_CONTEXT_SEARCH_ROUTE"
     
     def __init__(
             self,

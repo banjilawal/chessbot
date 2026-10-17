@@ -1,7 +1,7 @@
-# src/err/route/build/coord/exception.py
+# src/err/route/fabricationcoord/exception.py
 
 """
-Module: err.route.build.coord.exception
+Module: err.route.fabrication.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,22 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import BuildRouteException
+from artifcat import MethodResultType
+from err import BuildRouteMissingException
 
 
 __all__ = [
-    # ======================# COORD_BUILD_ROUTE #======================#
-    "CoordBuildRouteException",
+    # ======================# MISSING_COORD_VALIDATION_ROUTE #======================#
+    "CoordBuildRouteMissingException",
 ]
 
-# ======================# COORD_BUILD_ROUTE #======================#
-class CoordBuildRouteException(BuildRouteException):
+# ======================# MISSING_COORD_VALIDATION_ROUTE #======================#
+class CoordBuildRouteMissingException(BuildRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of Coord build routes is missing.
+        1.  Indicating that one of the Coord validation routes is missing.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +42,10 @@ class CoordBuildRouteException(BuildRouteException):
     Provides:
 
     Super Class:
-        BuildRouteException
+        BuildRouteMissingException
     """
-    MSG = "One of Coord build paths is missing."
-    ERR_CODE = "COORD_BUILD_ROUTE"
+    MSG = "One of Coord validation paths is missing."
+    ERR_CODE = "MISSING_COORD_VALIDATION_ROUTE"
     
     def __init__(
             self,

@@ -1,7 +1,7 @@
-# src/err/route/validation/rank/exception.py
+# src/err/transit/router/validation/rank/exception.py
 
 """
-Module: err.route.validation.rank.exception
+Module: err.transit.router.validation.rank.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -11,22 +11,23 @@ from __future__ import annotations
 
 from typing import Any, Optional
 
-from err import ValidationRouteException
+from artifcat import MethodResultType
+from err import ValidationRouteMissingException
 
 
 __all__ = [
-    # ======================# RANK_VALIDATION_ROUTE #======================#
-    "RankValidationRouterException",
+    # ======================# MISSING_RANK_VALIDATION_ROUTER #======================#
+    "RankValidationRouteMissingException",
 ]
 
-# ======================# RANK_VALIDATION_ROUTE #======================#
-class RankValidationRouterException(ValidationRouteException):
+# ======================# MISSING_RANK_VALIDATION_ROUTER #======================#
+class RankValidationRouteMissingException(ValidationRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of Rank validation routes is missing.
+        1.  Indicating that one of the Rank validation routers is missing.
 
     Attributes:
         msg: Optional[str]
@@ -41,10 +42,10 @@ class RankValidationRouterException(ValidationRouteException):
     Provides:
 
     Super Class:
-        ValidationRouteException
+        ValidationRouteMissingException
     """
     MSG = "One of Rank validation paths is missing."
-    ERR_CODE = "RANK_VALIDATION_ROUTE"
+    ERR_CODE = "MISSING_RANK_VALIDATION_ROUTER"
     
     def __init__(
             self,
