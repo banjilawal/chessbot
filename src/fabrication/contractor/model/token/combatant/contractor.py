@@ -9,11 +9,13 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from artifcat import BuildResult
+from typing import cast
+
+from artifcat import BuildResult, ValidationResult
 from domain import CombatantToken, CombatantTokenBlueprint
-from err import TokenBlueprintNullException
+from err import CombatantTokenSubcontractorException, HomeSquareNullException, TokenBlueprintNullException
 from fabrication import TokenSubcontractor
-from util import LoggingLevelRouter
+from util import IdFactory, LoggingLevelRouter
 
 class CombatantTokenSubcontractor(TokenSubcontractor[CombatantToken]):
     """
@@ -58,8 +60,40 @@ class CombatantTokenSubcontractor(TokenSubcontractor[CombatantToken]):
             null_exception=TokenBlueprintNullException(),
         )
         if validation.is_failure:
-            return ValidationResult.failure(
+            return BuildResult.failure(
                 CombatantTokenSubcontractorException(
-                
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=CombatantTokenSubcontractorException.MSG,
+                    err_code=CombatantTokenSubcontractorException.ERR_CODE,
+                    ex=validation.exception,
                 )
             )
+        fingerprint = cast(CombatantTokenBlueprint, validation.payload)
+        id = fingerprint.id or IdFactory.next_id(class_name="CombatantToken")
+        
+        home_square = fingerprint.home_square
+        if home_square is None:
+            return BuildResult.failure(
+                CombatantTokenSubcontractorException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=CombatantTokenSubcontractorException.MSG,
+                    err_code=CombatantTokenSubcontractorException.ERR_CODE,
+                    ex=HomeSquareNullException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=HomeSquareNullException.MSG,
+                        err_code=HomeSquareNullException.ERR_CODE,
+                    ),
+                )
+            )
+        
+        model = CombatantToken(
+            id=id,
+            team=fingerprint.team,
+            home_square=home_square,
+            footstep=fingerprint.footstep,
+            formation=fingerprint.formation,
+        )
+        return BuildResult.success(model)
