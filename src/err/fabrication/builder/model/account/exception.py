@@ -27,7 +27,7 @@ class AccountBuilderException(ModelBuilderException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Account build failed.
+        1.  Indicating a AccountBuilder failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class AccountBuilderException(ModelBuilderException):
     Super Class:
         ModelBuilderException
     """
-    MSG = "Account build failed."
+    MSG = "AccountBuilder failed."
     ERR_CODE = "ACCOUNT_BUILDER_FAILURE"
     
     def __init__(

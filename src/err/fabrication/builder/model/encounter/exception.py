@@ -27,7 +27,7 @@ class EncounterBuilderException(ModelBuilderException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Encounter build failed.
+        1.  Indicating a EncounterBuilder failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class EncounterBuilderException(ModelBuilderException):
     Super Class:
         ModelBuilderException
     """
-    MSG = "Encounter build failed."
+    MSG = "EncounterBuilder failed."
     ERR_CODE = "ENCOUNTER_BUILDER_FAILURE"
     
     def __init__(

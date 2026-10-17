@@ -26,7 +26,7 @@ class ModelBuilderException(BuilderException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Model build failed.
+        1.  Indicating a ModelBuilder failed.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class ModelBuilderException(BuilderException):
     Super Class:
         BuilderException
     """
-    MSG = "Model build failed."
+    MSG = "ModelBuilder failed."
     ERR_CODE = "MODEL_BUILDER_FAILURE"
     
     def __init__(

@@ -27,7 +27,7 @@ class ScalarBuilderException(ModelBuilderException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Scalar build failed.
+        1.  Indicating a ScalarBuilder failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class ScalarBuilderException(ModelBuilderException):
     Super Class:
         ModelBuilderException
     """
-    MSG = "Scalar build failed."
+    MSG = "ScalarBuilder failed."
     ERR_CODE = "SCALAR_BUILDER_FAILURE"
     
     def __init__(

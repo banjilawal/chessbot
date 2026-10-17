@@ -27,7 +27,7 @@ class ArenaBuilderException(ModelBuilderException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an Arena build failed.
+        1.  Indicating an ArenaBuilder failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class ArenaBuilderException(ModelBuilderException):
     Super Class:
         ModelBuilderExceptionn
     """
-    MSG = "Arena build failed."
+    MSG = "ArenaBuilder failed."
     ERR_CODE = "ARENA_BUILDER_FAILURE"
     
     def __init__(

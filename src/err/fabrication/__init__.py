@@ -11,6 +11,7 @@ version: 0.0.2
 
 # Packages
 from .builder import *
+from .contractor import *
 from .loader import *
 
 # Modules

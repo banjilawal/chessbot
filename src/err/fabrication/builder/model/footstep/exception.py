@@ -27,7 +27,7 @@ class FootstepBuilderException(ModelBuilderException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Footstep build failed.
+        1.  Indicating a FootstepBuilder failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class FootstepBuilderException(ModelBuilderException):
     Super Class:
         ModelBuilderException
     """
-    MSG = "Footstep build failed."
+    MSG = "FootstepBuilder failed."
     ERR_CODE = "FOOTSTEP_BUILDER_FAILURE"
     
     def __init__(

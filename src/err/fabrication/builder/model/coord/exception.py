@@ -27,7 +27,7 @@ class CoordBuilderException(ModelBuilderException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Coord build failed.
+        1.  Indicating a CoordBuilder failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class CoordBuilderException(ModelBuilderException):
     Super Class:
         ModelBuilderException
     """
-    MSG = "Coord build failed."
+    MSG = "CoordBuilder failed."
     ERR_CODE = "COORD_BUILDER_FAILURE"
     
     def __init__(

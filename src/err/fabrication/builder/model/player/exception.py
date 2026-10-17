@@ -27,7 +27,7 @@ class PlayerBuilderException(ModelBuilderException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Player build failed.
+        1.  Indicating a PlayerBuilder failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class PlayerBuilderException(ModelBuilderException):
     Super Class:
         ModelBuilderException
     """
-    MSG = "Player build failed."
+    MSG = "PlayerBuilder failed."
     ERR_CODE = "PLAYER_BUILDER_FAILURE"
     
     def __init__(

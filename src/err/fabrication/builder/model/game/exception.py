@@ -27,7 +27,7 @@ class GameBuilderException(ModelBuilderException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Game build failed.
+        1.  Indicating a GameBuilder failed.
 
     Attributes:
             msg: Optional[str]
@@ -44,7 +44,7 @@ class GameBuilderException(ModelBuilderException):
     Super Class:
         ModelBuilderException
     """
-    MSG = "Game build failed."
+    MSG = "GameBuilder failed."
     ERR_CODE = "GAME_BUILDER_FAILURE"
     
     def __init__(

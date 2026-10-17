@@ -27,7 +27,7 @@ class TokenBuilderException(ModelBuilderException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Token build failed.
+        1.  Indicating a TokenBuilder failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class TokenBuilderException(ModelBuilderException):
     Super Class:
         ModelBuilderException
     """
-    MSG = "Token build failed."
+    MSG = "TokenBuilder failed."
     ERR_CODE = "TOKEN_BUILDER_FAILURE"
     
     def __init__(

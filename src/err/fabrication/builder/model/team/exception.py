@@ -27,7 +27,7 @@ class TeamBuilderException(ModelBuilderException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Team build failed.
+        1.  Indicating a TeamBuilder failed.
 
     Attributes:
             msg: Optional[str]
@@ -44,7 +44,7 @@ class TeamBuilderException(ModelBuilderException):
     Super Class:
         ModelBuilderException
     """
-    MSG = "Team build failed."
+    MSG = "TeamBuilder failed."
     ERR_CODE = "TEAM_BUILDER_FAILURE"
     
     def __init__(

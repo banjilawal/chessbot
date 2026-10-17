@@ -27,7 +27,7 @@ class PathBuilderException(ModelBuilderException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Path build failed.
+        1.  Indicating a PathBuilder failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class PathBuilderException(ModelBuilderException):
     Super Class:
         ModelBuilderException
     """
-    MSG = "Path build failed."
+    MSG = "PathBuilder failed."
     ERR_CODE = "PATH_BUILDER_FAILURE"
     
     def __init__(

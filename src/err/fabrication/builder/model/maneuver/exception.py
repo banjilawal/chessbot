@@ -27,7 +27,7 @@ class ManeuverBuilderException(ModelBuilderException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Maneuver build failed.
+        1.  Indicating a ManeuverBuilder failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class ManeuverBuilderException(ModelBuilderException):
     Super Class:
         ModelBuilderException
     """
-    MSG = "Maneuver build failed."
+    MSG = "ManeuverBuilder failed."
     ERR_CODE = "MANEUVER_BUILDER_FAILURE"
     
     def __init__(

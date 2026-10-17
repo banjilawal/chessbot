@@ -27,7 +27,7 @@ class SquareBuilderException(ModelBuilderException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Square build failed.
+        1.  Indicating a SquareBuilder failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class SquareBuilderException(ModelBuilderException):
     Super Class:
         ModelBuilderException
     """
-    MSG = "Square build failed."
+    MSG = "SquareBuilder failed."
     ERR_CODE = "SQUARE_BUILDER_FAILURE"
     
     def __init__(

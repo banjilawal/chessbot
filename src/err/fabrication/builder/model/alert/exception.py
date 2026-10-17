@@ -27,7 +27,7 @@ class AlertBuilderException(ModelBuilderException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Alert build failed.
+        1.  Indicating a AlertBuilder failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class AlertBuilderException(ModelBuilderException):
     Super Class:
         ModelBuilderException
     """
-    MSG = "Alert build failed."
+    MSG = "AlertBuilder failed."
     ERR_CODE = "ALERT_BUILDER_FAILURE"
     
     def __init__(
