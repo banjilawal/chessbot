@@ -30,7 +30,7 @@ class ArenaContextBuildRouteMissingException(ContextBuildRouteMissingException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the ArenaContext validation routes is missing.
+        1.  Indicating that a ArenaContext validation route is missing.
 
     Attributes:
             msg: Optional[str]

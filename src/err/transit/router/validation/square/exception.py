@@ -16,11 +16,11 @@ from err import ValidationRouterException
 
 
 __all__ = [
-    # ======================# SQUARE_VALIDATION_ROUTER_Failure #======================#
+    # ======================# SQUARE_VALIDATION_ROUTER_FAILURE #======================#
     "SquareValidationRouterException",
 ]
 
-# ======================# SQUARE_VALIDATION_ROUTER_Failure #======================#
+# ======================# SQUARE_VALIDATION_ROUTER_FAILURE #======================#
 class SquareValidationRouterException(ValidationRouterException):
     """
     Role:
@@ -45,7 +45,7 @@ class SquareValidationRouterException(ValidationRouterException):
         ValidationRouterException
     """
     MSG = "SquareValidationRouter failed."
-    ERR_CODE = "SQUARE_VALIDATION_ROUTER_Failure"
+    ERR_CODE = "SQUARE_VALIDATION_ROUTER_FAILURE"
     
     def __init__(
             self,

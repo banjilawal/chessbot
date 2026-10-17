@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchRouteMissingException
+from err import MissingSearchRouteException
 
 
 __all__ = [
@@ -21,13 +21,13 @@ __all__ = [
 ]
 
 # ======================# MISSING_GAME_SEARCH_ROUTE #======================#
-class GameSearchRouteMissingException(SearchRouteMissingException):
+class GameSearchRouteMissingException(MissingSearchRouteException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the Game search routes is missing.
+        1.  Indicating that a Game search route is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,7 +44,7 @@ class GameSearchRouteMissingException(SearchRouteMissingException):
     Super Class:
         SearchRouteMissingException
     """
-    MSG = "One of Game search paths is missing."
+    MSG = "A Game search path is missing."
     ERR_CODE = "MISSING_GAME_SEARCH_ROUTE"
     
     def __init__(

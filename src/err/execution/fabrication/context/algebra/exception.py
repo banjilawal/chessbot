@@ -30,7 +30,7 @@ class AlgebraContextBuildRouteMissingException(ContextBuildRouteMissingException
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the AlgebraContext validation routes is missing.
+        1.  Indicating that a AlgebraContext validation route is missing.
 
     Attributes:
             msg: Optional[str]

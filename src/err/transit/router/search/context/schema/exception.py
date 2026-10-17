@@ -16,14 +16,14 @@ from err import searchRouterException
 
 
 __all__ = [
-    # ======================# SCHEMA_CONTEXT_search_ROUTER_Failure #======================#
+    # ======================# SCHEMA_CONTEXT_search_ROUTER_FAILURE #======================#
     "SchemaContextsearchRouterException",
 ]
 
 from err import ContextsearchRouterException
 
 
-# ======================# SCHEMA_CONTEXT_search_ROUTER_Failure #======================#
+# ======================# SCHEMA_CONTEXT_search_ROUTER_FAILURE #======================#
 class SchemaContextsearchRouterException(ContextsearchRouterException):
     """
     Role:
@@ -48,7 +48,7 @@ class SchemaContextsearchRouterException(ContextsearchRouterException):
         ContextsearchRouterException
     """
     MSG = "A SchemaContext attribute missing a search path."
-    ERR_CODE = "SCHEMA_CONTEXT_search_ROUTER_Failure"
+    ERR_CODE = "SCHEMA_CONTEXT_search_ROUTER_FAILURE"
     
     def __init__(
             self,

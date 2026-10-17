@@ -27,7 +27,7 @@ class CoordBuildRouteMissingException(BuildRouteMissingException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the Coord validation routes is missing.
+        1.  Indicating that a Coord validation route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class CoordBuildRouteMissingException(BuildRouteMissingException):
     Super Class:
         BuildRouteMissingException
     """
-    MSG = "One of Coord validation paths is missing."
+    MSG = "A Coord validation path is missing."
     ERR_CODE = "MISSING_COORD_VALIDATION_ROUTE"
     
     def __init__(

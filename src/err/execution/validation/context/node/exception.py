@@ -12,25 +12,25 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ValidationRouteMissingException
+from err import MissingValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_NODE_CONTEXT_VALIDATION_ROUTER #======================#
+    # ======================# MISSING_NODE_CONTEXT_VALIDATION_ROUTE #======================#
     "NodeContextValidationRouteMissingException",
 ]
 
 from err import ContextValidationRouteMissingException
 
 
-# ======================# MISSING_NODE_CONTEXT_VALIDATION_ROUTER #======================#
+# ======================# MISSING_NODE_CONTEXT_VALIDATION_ROUTE #======================#
 class NodeContextValidationRouteMissingException(ContextValidationRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the NodeContext validation routers is missing.
+        1.  Indicating that a NodeContext validation route is missing.
 
     Attributes:
             msg: Optional[str]
@@ -48,7 +48,7 @@ class NodeContextValidationRouteMissingException(ContextValidationRouteMissingEx
         ContextValidationRouteMissingException
     """
     MSG = "A NodeContext attribute missing a validation path."
-    ERR_CODE = "MISSING_NODE_CONTEXT_VALIDATION_ROUTER"
+    ERR_CODE = "MISSING_NODE_CONTEXT_VALIDATION_ROUTE"
     
     def __init__(
             self,

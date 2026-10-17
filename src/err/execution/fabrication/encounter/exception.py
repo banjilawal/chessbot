@@ -27,7 +27,7 @@ class EncounterBuildRouteMissingException(BuildRouteMissingException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the Encounter validation routes is missing.
+        1.  Indicating that a Encounter validation route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class EncounterBuildRouteMissingException(BuildRouteMissingException):
     Super Class:
         BuildRouteMissingException
     """
-    MSG = "One of Encounter validation paths is missing."
+    MSG = "A Encounter validation path is missing."
     ERR_CODE = "MISSING_ENCOUNTER_VALIDATION_ROUTE"
     
     def __init__(

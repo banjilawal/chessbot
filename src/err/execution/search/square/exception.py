@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchRouteMissingException
+from err import MissingSearchRouteException
 
 
 __all__ = [
@@ -21,13 +21,13 @@ __all__ = [
 ]
 
 # ======================# MISSING_SQUARE_SEARCH_ROUTE #======================#
-class SquareSearchRouteMissingException(SearchRouteMissingException):
+class SquareSearchRouteMissingException(MissingSearchRouteException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the Square search routes is missing.
+        1.  Indicating that a Square search route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class SquareSearchRouteMissingException(SearchRouteMissingException):
     Super Class:
         SearchRouteMissingException
     """
-    MSG = "One of Square search paths is missing."
+    MSG = "A Square search path is missing."
     ERR_CODE = "MISSING_SQUARE_SEARCH_ROUTE"
     
     def __init__(

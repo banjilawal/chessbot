@@ -16,14 +16,14 @@ from err import searchRouterException
 
 
 __all__ = [
-    # ======================# PERSONA_CONTEXT_search_ROUTER_Failure #======================#
+    # ======================# PERSONA_CONTEXT_search_ROUTER_FAILURE #======================#
     "PersonaContextsearchRouterException",
 ]
 
 from err import ContextsearchRouterException
 
 
-# ======================# PERSONA_CONTEXT_search_ROUTER_Failure #======================#
+# ======================# PERSONA_CONTEXT_search_ROUTER_FAILURE #======================#
 class PersonaContextsearchRouterException(ContextsearchRouterException):
     """
     Role:
@@ -48,7 +48,7 @@ class PersonaContextsearchRouterException(ContextsearchRouterException):
         ContextsearchRouterException
     """
     MSG = "A PersonaContext attribute missing a search path."
-    ERR_CODE = "PERSONA_CONTEXT_search_ROUTER_Failure"
+    ERR_CODE = "PERSONA_CONTEXT_search_ROUTER_FAILURE"
     
     def __init__(
             self,

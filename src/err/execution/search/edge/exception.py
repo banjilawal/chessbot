@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchRouteMissingException
+from err import MissingSearchRouteException
 
 
 __all__ = [
@@ -21,13 +21,13 @@ __all__ = [
 ]
 
 # ======================# MISSING_EDGE_SEARCH_ROUTE #======================#
-class EdgeSearchRouteMissingException(SearchRouteMissingException):
+class EdgeSearchRouteMissingException(MissingSearchRouteException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the Edge search routes is missing.
+        1.  Indicating that a Edge search route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class EdgeSearchRouteMissingException(SearchRouteMissingException):
     Super Class:
         SearchRouteMissingException
     """
-    MSG = "One of Edge search paths is missing."
+    MSG = "A Edge search path is missing."
     ERR_CODE = "MISSING_EDGE_SEARCH_ROUTE"
     
     def __init__(

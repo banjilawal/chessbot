@@ -12,25 +12,25 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ValidationRouteMissingException
+from err import MissingValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_FORMATION_CONTEXT_VALIDATION_ROUTER #======================#
+    # ======================# MISSING_FORMATION_CONTEXT_VALIDATION_ROUTE #======================#
     "FormationContextValidationRouteMissingException",
 ]
 
 from err import ContextValidationRouteMissingException
 
 
-# ======================# MISSING_FORMATION_CONTEXT_VALIDATION_ROUTER #======================#
+# ======================# MISSING_FORMATION_CONTEXT_VALIDATION_ROUTE #======================#
 class FormationContextValidationRouteMissingException(ContextValidationRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the FormationContext validation routers is missing.
+        1.  Indicating that a FormationContext validation route is missing.
 
     Attributes:
             msg: Optional[str]
@@ -48,7 +48,7 @@ class FormationContextValidationRouteMissingException(ContextValidationRouteMiss
         ContextValidationRouteMissingException
     """
     MSG = "A FormationContext attribute missing a validation path."
-    ERR_CODE = "MISSING_FORMATION_CONTEXT_VALIDATION_ROUTER"
+    ERR_CODE = "MISSING_FORMATION_CONTEXT_VALIDATION_ROUTE"
     
     def __init__(
             self,

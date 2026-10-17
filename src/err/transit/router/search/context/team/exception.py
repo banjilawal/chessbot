@@ -16,14 +16,14 @@ from err import searchRouterException
 
 
 __all__ = [
-    # ======================# TEAM_CONTEXT_search_ROUTER_Failure #======================#
+    # ======================# TEAM_CONTEXT_search_ROUTER_FAILURE #======================#
     "TeamContextsearchRouterException",
 ]
 
 from err import ContextsearchRouterException
 
 
-# ======================# TEAM_CONTEXT_search_ROUTER_Failure #======================#
+# ======================# TEAM_CONTEXT_search_ROUTER_FAILURE #======================#
 class TeamContextsearchRouterException(ContextsearchRouterException):
     """
     Role:
@@ -48,7 +48,7 @@ class TeamContextsearchRouterException(ContextsearchRouterException):
         ContextsearchRouterException
     """
     MSG = "A TeamContext attribute missing a search path."
-    ERR_CODE = "TEAM_CONTEXT_search_ROUTER_Failure"
+    ERR_CODE = "TEAM_CONTEXT_search_ROUTER_FAILURE"
     
     def __init__(
             self,

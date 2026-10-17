@@ -16,11 +16,11 @@ from err import searchRouterException
 
 
 __all__ = [
-    # ======================# TOKEN_search_ROUTER_Failure #======================#
+    # ======================# TOKEN_search_ROUTER_FAILURE #======================#
     "TokensearchRouterException",
 ]
 
-# ======================# TOKEN_search_ROUTER_Failure #======================#
+# ======================# TOKEN_search_ROUTER_FAILURE #======================#
 class TokensearchRouterException(searchRouterException):
     """
     Role:
@@ -45,7 +45,7 @@ class TokensearchRouterException(searchRouterException):
         searchRouterException
     """
     MSG = "TokensearchRouter failed."
-    ERR_CODE = "TOKEN_search_ROUTER_Failure"
+    ERR_CODE = "TOKEN_search_ROUTER_FAILURE"
     
     def __init__(
             self,

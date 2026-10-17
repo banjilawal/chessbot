@@ -12,22 +12,22 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ValidationRouteMissingException
+from err import MissingValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_SCALAR_VALIDATION_ROUTER #======================#
+    # ======================# MISSING_SCALAR_VALIDATION_ROUTE #======================#
     "ScalarValidationRouteMissingException",
 ]
 
-# ======================# MISSING_SCALAR_VALIDATION_ROUTER #======================#
-class ScalarValidationRouteMissingException(ValidationRouteMissingException):
+# ======================# MISSING_SCALAR_VALIDATION_ROUTE #======================#
+class ScalarValidationRouteMissingException(MissingValidationRouteException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the Scalar validation routers is missing.
+        1.  Indicating that a Scalar validation route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class ScalarValidationRouteMissingException(ValidationRouteMissingException):
     Super Class:
         ValidationRouteMissingException
     """
-    MSG = "One of Scalar validation paths is missing."
-    ERR_CODE = "MISSING_SCALAR_VALIDATION_ROUTER"
+    MSG = "A Scalar validation path is missing."
+    ERR_CODE = "MISSING_SCALAR_VALIDATION_ROUTE"
     
     def __init__(
             self,

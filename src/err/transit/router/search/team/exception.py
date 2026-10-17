@@ -16,11 +16,11 @@ from err import searchRouterException
 
 
 __all__ = [
-    # ======================# TEAM_search_ROUTER_Failure #======================#
+    # ======================# TEAM_search_ROUTER_FAILURE #======================#
     "TeamsearchRouterException",
 ]
 
-# ======================# TEAM_search_ROUTER_Failure #======================#
+# ======================# TEAM_search_ROUTER_FAILURE #======================#
 class TeamsearchRouterException(searchRouterException):
     """
     Role:
@@ -45,7 +45,7 @@ class TeamsearchRouterException(searchRouterException):
         searchRouterException
     """
     MSG = "TeamsearchRouter failed."
-    ERR_CODE = "TEAM_search_ROUTER_Failure"
+    ERR_CODE = "TEAM_search_ROUTER_FAILURE"
     
     def __init__(
             self,

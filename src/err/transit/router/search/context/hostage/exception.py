@@ -16,14 +16,14 @@ from err import searchRouterException
 
 
 __all__ = [
-    # ======================# HOSTAGE_CONTEXT_search_ROUTER_Failure #======================#
+    # ======================# HOSTAGE_CONTEXT_search_ROUTER_FAILURE #======================#
     "HostageContextsearchRouterException",
 ]
 
 from err import ContextsearchRouterException
 
 
-# ======================# HOSTAGE_CONTEXT_search_ROUTER_Failure #======================#
+# ======================# HOSTAGE_CONTEXT_search_ROUTER_FAILURE #======================#
 class HostageContextsearchRouterException(ContextsearchRouterException):
     """
     Role:
@@ -48,7 +48,7 @@ class HostageContextsearchRouterException(ContextsearchRouterException):
         ContextsearchRouterException
     """
     MSG = "A HostageContext attribute missing a search path."
-    ERR_CODE = "HOSTAGE_CONTEXT_search_ROUTER_Failure"
+    ERR_CODE = "HOSTAGE_CONTEXT_search_ROUTER_FAILURE"
     
     def __init__(
             self,

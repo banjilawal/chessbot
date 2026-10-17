@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchRouteMissingException
+from err import MissingSearchRouteException
 
 
 __all__ = [
@@ -21,13 +21,13 @@ __all__ = [
 ]
 
 # ======================# MISSING_SCHEMA_SEARCH_ROUTE #======================#
-class SchemaSearchRouteMissingException(SearchRouteMissingException):
+class SchemaSearchRouteMissingException(MissingSearchRouteException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the Schema search routes is missing.
+        1.  Indicating that a Schema search route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class SchemaSearchRouteMissingException(SearchRouteMissingException):
     Super Class:
         SearchRouteMissingException
     """
-    MSG = "One of Schema search paths is missing."
+    MSG = "A Schema search path is missing."
     ERR_CODE = "MISSING_SCHEMA_SEARCH_ROUTE"
     
     def __init__(

@@ -16,11 +16,11 @@ from err import searchRouterException
 
 
 __all__ = [
-    # ======================# ACCOUNT_search_ROUTER_Failure #======================#
+    # ======================# ACCOUNT_search_ROUTER_FAILURE #======================#
     "AccountsearchRouterException",
 ]
 
-# ======================# ACCOUNT_search_ROUTER_Failure #======================#
+# ======================# ACCOUNT_search_ROUTER_FAILURE #======================#
 class AccountsearchRouterException(searchRouterException):
     """
     Role:
@@ -45,7 +45,7 @@ class AccountsearchRouterException(searchRouterException):
         searchRouterException
     """
     MSG = "AccountsearchRouter failed."
-    ERR_CODE = "ACCOUNT_search_ROUTER_Failure"
+    ERR_CODE = "ACCOUNT_search_ROUTER_FAILURE"
     
     def __init__(
             self,

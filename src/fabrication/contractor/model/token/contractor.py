@@ -30,7 +30,7 @@ class TokenSubcontractor(ModelBuildSubcontractor[T], ABC, Generic[T]):
     Attributes:
 
     Provides:
-            -   def execute(blueprint: TokenBlueprint) -> BuildResult[T]
+            -   def execute(blueprint: TokenBlueprint[T]) -> BuildResult[T]
 
     Super Class:
         ModelBuildContractor
@@ -43,12 +43,12 @@ class TokenSubcontractor(ModelBuildSubcontractor[T], ABC, Generic[T]):
         super().__init__()
     
     @LoggingLevelRouter.monitor
-    def execute(self, blueprint: TokenBlueprint) -> BuildResult[T]:
+    def execute(self, blueprint: TokenBlueprint[T]) -> BuildResult[T]:
         """
         Routes a TokenBlueprint subclass to its corresponding SubBuilder.
 
         Args:
-             blueprint: Blueprint[T]
+             blueprint: TokenBlueprint[T]
         Returns:
             BuildResult[T]
         Raises:

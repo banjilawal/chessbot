@@ -12,25 +12,25 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ValidationRouteMissingException
+from err import MissingValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_HOSTAGE_CONTEXT_VALIDATION_ROUTER #======================#
+    # ======================# MISSING_HOSTAGE_CONTEXT_VALIDATION_ROUTE #======================#
     "HostageContextValidationRouteMissingException",
 ]
 
 from err import ContextValidationRouteMissingException
 
 
-# ======================# MISSING_HOSTAGE_CONTEXT_VALIDATION_ROUTER #======================#
+# ======================# MISSING_HOSTAGE_CONTEXT_VALIDATION_ROUTE #======================#
 class HostageContextValidationRouteMissingException(ContextValidationRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the HostageContext validation routers is missing.
+        1.  Indicating that a HostageContext validation route is missing.
 
     Attributes:
             msg: Optional[str]
@@ -48,7 +48,7 @@ class HostageContextValidationRouteMissingException(ContextValidationRouteMissin
         ContextValidationRouteMissingException
     """
     MSG = "A HostageContext attribute missing a validation path."
-    ERR_CODE = "MISSING_HOSTAGE_CONTEXT_VALIDATION_ROUTER"
+    ERR_CODE = "MISSING_HOSTAGE_CONTEXT_VALIDATION_ROUTE"
     
     def __init__(
             self,

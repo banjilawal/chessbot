@@ -74,7 +74,7 @@ class HumanAccountEnvelopeConsumer(
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the property table is null or the wrong type.
+        # Handle the envelope cannot be primed.
         priming = self._toolkit.priming_validator.execute(
             candidate=envelope,
             target_model=RootAccountEnvelope,

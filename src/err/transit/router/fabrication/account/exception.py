@@ -16,11 +16,11 @@ from err import BuildRouterException
 
 
 __all__ = [
-    # ======================# ACCOUNT_BUILD_ROUTER_Failure #======================#
+    # ======================# ACCOUNT_BUILD_ROUTER_FAILURE #======================#
     "AccountBuildRouterException",
 ]
 
-# ======================# ACCOUNT_BUILD_ROUTER_Failure #======================#
+# ======================# ACCOUNT_BUILD_ROUTER_FAILURE #======================#
 class AccountBuildRouterException(BuildRouterException):
     """
     Role:
@@ -45,7 +45,7 @@ class AccountBuildRouterException(BuildRouterException):
         BuildRouterException
     """
     MSG = "AccountBuildRouter failed."
-    ERR_CODE = "ACCOUNT_BUILD_ROUTER_Failure"
+    ERR_CODE = "ACCOUNT_BUILD_ROUTER_FAILURE"
     
     def __init__(
             self,

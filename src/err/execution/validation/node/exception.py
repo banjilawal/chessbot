@@ -10,22 +10,22 @@ version: 0.0.2
 from __future__ import annotations
 
 from typing import Any, Optional
-from err import ValidationRouteMissingException
+from err import MissingValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_NO_VALIDATION_ROUTER #======================#
+    # ======================# MISSING_NO_VALIDATION_ROUTE #======================#
     "NodeValidationRouteMissingException",
 ]
 
-# ======================# MISSING_NO_VALIDATION_ROUTER #======================#
-class NodeValidationRouteMissingException(ValidationRouteMissingException):
+# ======================# MISSING_NO_VALIDATION_ROUTE #======================#
+class NodeValidationRouteMissingException(MissingValidationRouteException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the No validation routers is missing.
+        1.  Indicating that a No validation route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -42,8 +42,8 @@ class NodeValidationRouteMissingException(ValidationRouteMissingException):
     Super Class:
         ValidationRouteMissingException
     """
-    MSG = "One of No validation paths is missing."
-    ERR_CODE = "MISSING_NO_VALIDATION_ROUTER"
+    MSG = "A No validation path is missing."
+    ERR_CODE = "MISSING_NO_VALIDATION_ROUTE"
     
     def __init__(
             self,

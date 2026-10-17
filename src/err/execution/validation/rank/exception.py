@@ -12,22 +12,22 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ValidationRouteMissingException
+from err import MissingValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_RANK_VALIDATION_ROUTER #======================#
+    # ======================# MISSING_RANK_VALIDATION_ROUTE #======================#
     "RankValidationRouteMissingException",
 ]
 
-# ======================# MISSING_RANK_VALIDATION_ROUTER #======================#
-class RankValidationRouteMissingException(ValidationRouteMissingException):
+# ======================# MISSING_RANK_VALIDATION_ROUTE #======================#
+class RankValidationRouteMissingException(MissingValidationRouteException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the Rank validation routers is missing.
+        1.  Indicating that a Rank validation route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class RankValidationRouteMissingException(ValidationRouteMissingException):
     Super Class:
         ValidationRouteMissingException
     """
-    MSG = "One of Rank validation paths is missing."
-    ERR_CODE = "MISSING_RANK_VALIDATION_ROUTER"
+    MSG = "A Rank validation path is missing."
+    ERR_CODE = "MISSING_RANK_VALIDATION_ROUTE"
     
     def __init__(
             self,

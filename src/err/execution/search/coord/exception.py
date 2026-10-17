@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchRouteMissingException
+from err import MissingSearchRouteException
 
 
 __all__ = [
@@ -21,13 +21,13 @@ __all__ = [
 ]
 
 # ======================# MISSING_COORD_SEARCH_ROUTE #======================#
-class CoordSearchRouteMissingException(SearchRouteMissingException):
+class CoordSearchRouteMissingException(MissingSearchRouteException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the Coord search routes is missing.
+        1.  Indicating that a Coord search route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class CoordSearchRouteMissingException(SearchRouteMissingException):
     Super Class:
         SearchRouteMissingException
     """
-    MSG = "One of Coord search paths is missing."
+    MSG = "A Coord search path is missing."
     ERR_CODE = "MISSING_COORD_SEARCH_ROUTE"
     
     def __init__(

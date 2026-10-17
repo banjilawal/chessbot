@@ -16,11 +16,11 @@ from err import searchRouterException
 
 
 __all__ = [
-    # ======================# COORD_search_ROUTER_Failure #======================#
+    # ======================# COORD_search_ROUTER_FAILURE #======================#
     "CoordsearchRouterException",
 ]
 
-# ======================# COORD_search_ROUTER_Failure #======================#
+# ======================# COORD_search_ROUTER_FAILURE #======================#
 class CoordsearchRouterException(searchRouterException):
     """
     Role:
@@ -45,7 +45,7 @@ class CoordsearchRouterException(searchRouterException):
         searchRouterException
     """
     MSG = "CoordsearchRouter failed."
-    ERR_CODE = "COORD_search_ROUTER_Failure"
+    ERR_CODE = "COORD_search_ROUTER_FAILURE"
     
     def __init__(
             self,

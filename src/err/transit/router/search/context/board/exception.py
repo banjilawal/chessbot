@@ -16,14 +16,14 @@ from err import searchRouterException
 
 
 __all__ = [
-    # ======================# BOARD_CONTEXT_search_ROUTER_Failure #======================#
+    # ======================# BOARD_CONTEXT_search_ROUTER_FAILURE #======================#
     "BoardContextsearchRouterException",
 ]
 
 from err import ContextsearchRouterException
 
 
-# ======================# BOARD_CONTEXT_search_ROUTER_Failure #======================#
+# ======================# BOARD_CONTEXT_search_ROUTER_FAILURE #======================#
 class BoardContextsearchRouterException(ContextsearchRouterException):
     """
     Role:
@@ -48,7 +48,7 @@ class BoardContextsearchRouterException(ContextsearchRouterException):
         ContextsearchRouterException
     """
     MSG = "A BoardContext attribute missing a search path."
-    ERR_CODE = "BOARD_CONTEXT_search_ROUTER_Failure"
+    ERR_CODE = "BOARD_CONTEXT_search_ROUTER_FAILURE"
     
     def __init__(
             self,

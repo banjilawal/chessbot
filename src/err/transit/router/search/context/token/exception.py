@@ -16,14 +16,14 @@ from err import searchRouterException
 
 
 __all__ = [
-    # ======================# TOKEN_CONTEXT_search_ROUTER_Failure #======================#
+    # ======================# TOKEN_CONTEXT_search_ROUTER_FAILURE #======================#
     "TokenContextsearchRouterException",
 ]
 
 from err import ContextsearchRouterException
 
 
-# ======================# TOKEN_CONTEXT_search_ROUTER_Failure #======================#
+# ======================# TOKEN_CONTEXT_search_ROUTER_FAILURE #======================#
 class TokenContextsearchRouterException(ContextsearchRouterException):
     """
     Role:
@@ -48,7 +48,7 @@ class TokenContextsearchRouterException(ContextsearchRouterException):
         ContextsearchRouterException
     """
     MSG = "A TokenContext attribute missing a search path."
-    ERR_CODE = "TOKEN_CONTEXT_search_ROUTER_Failure"
+    ERR_CODE = "TOKEN_CONTEXT_search_ROUTER_FAILURE"
     
     def __init__(
             self,

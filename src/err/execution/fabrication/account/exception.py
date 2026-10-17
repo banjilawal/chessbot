@@ -27,7 +27,7 @@ class AccountBuildRouteMissingException(BuildRouteMissingException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the Account validation routes is missing.
+        1.  Indicating that a Account validation route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class AccountBuildRouteMissingException(BuildRouteMissingException):
     Super Class:
         BuildRouteMissingException
     """
-    MSG = "One of Account validation paths is missing."
+    MSG = "A Account validation path is missing."
     ERR_CODE = "MISSING_ACCOUNT_VALIDATION_ROUTE"
     
     def __init__(

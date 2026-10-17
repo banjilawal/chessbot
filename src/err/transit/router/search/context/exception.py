@@ -16,11 +16,11 @@ from err import searchRouterException
 
 
 __all__ = [
-    # ======================# CONTEXT_search_ROUTER_Failure #======================#
+    # ======================# CONTEXT_search_ROUTER_FAILURE #======================#
     "ContextsearchRouterException",
 ]
 
-# ======================# CONTEXT_search_ROUTER_Failure #======================#
+# ======================# CONTEXT_search_ROUTER_FAILURE #======================#
 class ContextsearchRouterException(searchRouterException):
     """
     Role:
@@ -45,7 +45,7 @@ class ContextsearchRouterException(searchRouterException):
         searchRouterException
     """
     MSG = "A context's attribute"
-    ERR_CODE = "CONTEXT_search_ROUTER_Failure"
+    ERR_CODE = "CONTEXT_search_ROUTER_FAILURE"
     
     def __init__(
             self,

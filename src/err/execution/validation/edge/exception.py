@@ -12,22 +12,22 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ValidationRouteMissingException
+from err import MissingValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_EDGE_VALIDATION_ROUTER #======================#
+    # ======================# MISSING_EDGE_VALIDATION_ROUTE #======================#
     "EdgeValidationRouteMissingException",
 ]
 
-# ======================# MISSING_EDGE_VALIDATION_ROUTER #======================#
-class EdgeValidationRouteMissingException(ValidationRouteMissingException):
+# ======================# MISSING_EDGE_VALIDATION_ROUTE #======================#
+class EdgeValidationRouteMissingException(MissingValidationRouteException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the Edge validation routers is missing.
+        1.  Indicating that a Edge validation route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class EdgeValidationRouteMissingException(ValidationRouteMissingException):
     Super Class:
         ValidationRouteMissingException
     """
-    MSG = "One of Edge validation paths is missing."
-    ERR_CODE = "MISSING_EDGE_VALIDATION_ROUTER"
+    MSG = "A Edge validation path is missing."
+    ERR_CODE = "MISSING_EDGE_VALIDATION_ROUTE"
     
     def __init__(
             self,

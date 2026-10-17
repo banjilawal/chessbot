@@ -30,7 +30,7 @@ class CoordContextBuildRouteMissingException(ContextBuildRouteMissingException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the CoordContext validation routes is missing.
+        1.  Indicating that a CoordContext validation route is missing.
 
     Attributes:
             msg: Optional[str]

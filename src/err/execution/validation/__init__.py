@@ -28,4 +28,4 @@ from .token import *
 from .vector import *
 
 # Modules
-from .exception import ValidationRouteMissingException
+from .exception import MissingValidationRouteException

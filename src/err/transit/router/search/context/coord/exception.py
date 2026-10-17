@@ -16,14 +16,14 @@ from err import searchRouterException
 
 
 __all__ = [
-    # ======================# COORD_CONTEXT_search_ROUTER_Failure #======================#
+    # ======================# COORD_CONTEXT_search_ROUTER_FAILURE #======================#
     "CoordContextsearchRouterException",
 ]
 
 from err import ContextsearchRouterException
 
 
-# ======================# COORD_CONTEXT_search_ROUTER_Failure #======================#
+# ======================# COORD_CONTEXT_search_ROUTER_FAILURE #======================#
 class CoordContextsearchRouterException(ContextsearchRouterException):
     """
     Role:
@@ -48,7 +48,7 @@ class CoordContextsearchRouterException(ContextsearchRouterException):
         ContextsearchRouterException
     """
     MSG = "A CoordContext attribute missing a search path."
-    ERR_CODE = "COORD_CONTEXT_search_ROUTER_Failure"
+    ERR_CODE = "COORD_CONTEXT_search_ROUTER_FAILURE"
     
     def __init__(
             self,

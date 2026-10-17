@@ -16,14 +16,14 @@ from err import searchRouterException
 
 
 __all__ = [
-    # ======================# SQUARE_CONTEXT_search_ROUTER_Failure #======================#
+    # ======================# SQUARE_CONTEXT_search_ROUTER_FAILURE #======================#
     "SquareContextsearchRouterException",
 ]
 
 from err import ContextsearchRouterException
 
 
-# ======================# SQUARE_CONTEXT_search_ROUTER_Failure #======================#
+# ======================# SQUARE_CONTEXT_search_ROUTER_FAILURE #======================#
 class SquareContextsearchRouterException(ContextsearchRouterException):
     """
     Role:
@@ -48,7 +48,7 @@ class SquareContextsearchRouterException(ContextsearchRouterException):
         ContextsearchRouterException
     """
     MSG = "A SquareContext attribute missing a search path."
-    ERR_CODE = "SQUARE_CONTEXT_search_ROUTER_Failure"
+    ERR_CODE = "SQUARE_CONTEXT_search_ROUTER_FAILURE"
     
     def __init__(
             self,

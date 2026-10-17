@@ -27,7 +27,7 @@ class GameBuildRouteMissingException(BuildRouteMissingException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the Game validation routes is missing.
+        1.  Indicating that a Game validation route is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,7 +44,7 @@ class GameBuildRouteMissingException(BuildRouteMissingException):
     Super Class:
         BuildRouteMissingException
     """
-    MSG = "One of Game validation paths is missing."
+    MSG = "A Game validation path is missing."
     ERR_CODE = "MISSING_GAME_VALIDATION_ROUTE"
     
     def __init__(

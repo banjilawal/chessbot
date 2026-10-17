@@ -12,22 +12,22 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ValidationRouteMissingException
+from err import MissingValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_ACCOUNT_VALIDATION_ROUTER #======================#
+    # ======================# MISSING_ACCOUNT_VALIDATION_ROUTE #======================#
     "AccountValidationRouteMissingException",
 ]
 
-# ======================# MISSING_ACCOUNT_VALIDATION_ROUTER #======================#
-class AccountValidationRouteMissingException(ValidationRouteMissingException):
+# ======================# MISSING_ACCOUNT_VALIDATION_ROUTE #======================#
+class AccountValidationRouteMissingException(MissingValidationRouteException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the Account validation routers is missing.
+        1.  Indicating that an Account validation route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class AccountValidationRouteMissingException(ValidationRouteMissingException):
     Super Class:
         ValidationRouteMissingException
     """
-    MSG = "One of Account validation paths is missing."
-    ERR_CODE = "MISSING_ACCOUNT_VALIDATION_ROUTER"
+    MSG = "An Account validation path is missing."
+    ERR_CODE = "MISSING_ACCOUNT_VALIDATION_ROUTE"
     
     def __init__(
             self,

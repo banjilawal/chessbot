@@ -27,7 +27,7 @@ class ContextBuildRouteMissingException(BuildRouteMissingException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the ContextValidation failed.
+        1.  Indicating that a ContextValidation failed.
 
     Attributes:
             msg: Optional[str]

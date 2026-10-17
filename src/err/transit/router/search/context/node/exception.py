@@ -16,14 +16,14 @@ from err import searchRouterException
 
 
 __all__ = [
-    # ======================# NODE_CONTEXT_search_ROUTER_Failure #======================#
+    # ======================# NODE_CONTEXT_search_ROUTER_FAILURE #======================#
     "NodeContextsearchRouterException",
 ]
 
 from err import ContextsearchRouterException
 
 
-# ======================# NODE_CONTEXT_search_ROUTER_Failure #======================#
+# ======================# NODE_CONTEXT_search_ROUTER_FAILURE #======================#
 class NodeContextsearchRouterException(ContextsearchRouterException):
     """
     Role:
@@ -48,7 +48,7 @@ class NodeContextsearchRouterException(ContextsearchRouterException):
         ContextsearchRouterException
     """
     MSG = "A NodeContext attribute missing a search path."
-    ERR_CODE = "NODE_CONTEXT_search_ROUTER_Failure"
+    ERR_CODE = "NODE_CONTEXT_search_ROUTER_FAILURE"
     
     def __init__(
             self,

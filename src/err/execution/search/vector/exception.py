@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchRouteMissingException
+from err import MissingSearchRouteException
 
 
 __all__ = [
@@ -21,13 +21,13 @@ __all__ = [
 ]
 
 # ======================# MISSING_VECTOR_SEARCH_ROUTE #======================#
-class VectorSearchRouteMissingException(SearchRouteMissingException):
+class VectorSearchRouteMissingException(MissingSearchRouteException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Vector search routes is missing.
+        1.  Indicating a Vector search route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class VectorSearchRouteMissingException(SearchRouteMissingException):
     Super Class:
         SearchRouteMissingException
     """
-    MSG = "One of Vector search paths is missing."
+    MSG = "A Vector search path is missing."
     ERR_CODE = "MISSING_VECTOR_SEARCH_ROUTE"
     
     def __init__(

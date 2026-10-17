@@ -26,7 +26,7 @@ class ArenaBuildRouteMissingException(BuildRouteMissingException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the Arena validation routes is missing.
+        1.  Indicating that a Arena validation route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class ArenaBuildRouteMissingException(BuildRouteMissingException):
     Super Class:
         BuildRouteMissingException
     """
-    MSG = "One of Arena validation paths is missing."
+    MSG = "A Arena validation path is missing."
     ERR_CODE = "MISSING_ARENA_VALIDATION_ROUTE"
     
     def __init__(

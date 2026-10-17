@@ -16,11 +16,11 @@ from err import BuildRouterException
 
 
 __all__ = [
-    # ======================# SQUARE_BUILD_ROUTER_Failure #======================#
+    # ======================# SQUARE_BUILD_ROUTER_FAILURE #======================#
     "SquareBuildRouterException",
 ]
 
-# ======================# SQUARE_BUILD_ROUTER_Failure #======================#
+# ======================# SQUARE_BUILD_ROUTER_FAILURE #======================#
 class SquareBuildRouterException(BuildRouterException):
     """
     Role:
@@ -45,7 +45,7 @@ class SquareBuildRouterException(BuildRouterException):
         BuildRouterException
     """
     MSG = "SquareBuildRouter failed."
-    ERR_CODE = "SQUARE_BUILD_ROUTER_Failure"
+    ERR_CODE = "SQUARE_BUILD_ROUTER_FAILURE"
     
     def __init__(
             self,

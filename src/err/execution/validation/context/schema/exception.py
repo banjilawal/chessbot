@@ -12,25 +12,25 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ValidationRouteMissingException
+from err import MissingValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_SCHEMA_CONTEXT_VALIDATION_ROUTER #======================#
+    # ======================# MISSING_SCHEMA_CONTEXT_VALIDATION_ROUTE #======================#
     "SchemaContextValidationRouteMissingException",
 ]
 
 from err import ContextValidationRouteMissingException
 
 
-# ======================# MISSING_SCHEMA_CONTEXT_VALIDATION_ROUTER #======================#
+# ======================# MISSING_SCHEMA_CONTEXT_VALIDATION_ROUTE #======================#
 class SchemaContextValidationRouteMissingException(ContextValidationRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the SchemaContext validation routers is missing.
+        1.  Indicating that a SchemaContext validation route is missing.
 
     Attributes:
             msg: Optional[str]
@@ -48,7 +48,7 @@ class SchemaContextValidationRouteMissingException(ContextValidationRouteMissing
         ContextValidationRouteMissingException
     """
     MSG = "A SchemaContext attribute missing a validation path."
-    ERR_CODE = "MISSING_SCHEMA_CONTEXT_VALIDATION_ROUTER"
+    ERR_CODE = "MISSING_SCHEMA_CONTEXT_VALIDATION_ROUTE"
     
     def __init__(
             self,

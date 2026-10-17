@@ -1,4 +1,4 @@
-# src/fabrication/contractor/model/token/combatant.contractor.py
+# src/fabrication/contractor/model/token/combatant/contractor.py
 
 """
 Module: fabrication.contractor.model.token.combatant.contractor
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from artifcat import BuildResult, ValidationResult
+from artifcat import BuildResult
 from domain import CombatantToken, CombatantTokenBlueprint
 from err import CombatantTokenSubcontractorException, HomeSquareNullException, TokenBlueprintNullException
 from fabrication import TokenSubcontractor
@@ -54,11 +54,13 @@ class CombatantTokenSubcontractor(TokenSubcontractor[CombatantToken]):
         """
         method = f"{self.__class__.__name__}"
         
+        # Handle the blueprint is null or the wrong type cannot be primed.
         validation = self.priming_validator.execute(
             candidate=blueprint,
             target_model=CombatantTokenBlueprint,
             null_exception=TokenBlueprintNullException(),
         )
+        # Send the exception chain on failure.
         if validation.is_failure:
             return BuildResult.failure(
                 CombatantTokenSubcontractorException(
@@ -70,10 +72,13 @@ class CombatantTokenSubcontractor(TokenSubcontractor[CombatantToken]):
                 )
             )
         fingerprint = cast(CombatantTokenBlueprint, validation.payload)
+        # Ensure an id exists.
         id = fingerprint.id or IdFactory.next_id(class_name="CombatantToken")
         
+        # Handle the case that the fingerprint does not contain a home_square.
         home_square = fingerprint.home_square
         if home_square is None:
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 CombatantTokenSubcontractorException(
                     cls_mthd=method,
@@ -88,7 +93,7 @@ class CombatantTokenSubcontractor(TokenSubcontractor[CombatantToken]):
                     ),
                 )
             )
-        
+        # --- Send the work product to the caller. ---#
         model = CombatantToken(
             id=id,
             team=fingerprint.team,

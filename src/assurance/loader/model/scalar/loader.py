@@ -85,7 +85,7 @@ class ScalarValidationLoader(ModelValidationLoader[Scalar]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        # Handle the case that the candidate is null or the rong type.
+        # Handle the case that the candidate is null or the wrong type.
         priming = self.toolkit.priming_validator.execute(
             candidate=candidate,
             target_model=ScalarValidationRequest,

@@ -16,11 +16,11 @@ from err import searchRouterException
 
 
 __all__ = [
-    # ======================# SQUARE_search_ROUTER_Failure #======================#
+    # ======================# SQUARE_search_ROUTER_FAILURE #======================#
     "SquaresearchRouterException",
 ]
 
-# ======================# SQUARE_search_ROUTER_Failure #======================#
+# ======================# SQUARE_search_ROUTER_FAILURE #======================#
 class SquaresearchRouterException(searchRouterException):
     """
     Role:
@@ -45,7 +45,7 @@ class SquaresearchRouterException(searchRouterException):
         searchRouterException
     """
     MSG = "SquaresearchRouter failed."
-    ERR_CODE = "SQUARE_search_ROUTER_Failure"
+    ERR_CODE = "SQUARE_search_ROUTER_FAILURE"
     
     def __init__(
             self,

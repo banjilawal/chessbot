@@ -12,25 +12,25 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ValidationRouteMissingException
+from err import MissingValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_EDGE_CONTEXT_VALIDATION_ROUTER #======================#
+    # ======================# MISSING_EDGE_CONTEXT_VALIDATION_ROUTE #======================#
     "EdgeContextValidationRouteMissingException",
 ]
 
 from err import ContextValidationRouteMissingException
 
 
-# ======================# MISSING_EDGE_CONTEXT_VALIDATION_ROUTER #======================#
+# ======================# MISSING_EDGE_CONTEXT_VALIDATION_ROUTE #======================#
 class EdgeContextValidationRouteMissingException(ContextValidationRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the EdgeContext validation routers is missing.
+        1.  Indicating that a EdgeContext validation route is missing.
 
     Attributes:
             msg: Optional[str]
@@ -48,7 +48,7 @@ class EdgeContextValidationRouteMissingException(ContextValidationRouteMissingEx
         ContextValidationRouteMissingException
     """
     MSG = "An EdgeContext attribute missing a validation path."
-    ERR_CODE = "MISSING_EDGE_CONTEXT_VALIDATION_ROUTER"
+    ERR_CODE = "MISSING_EDGE_CONTEXT_VALIDATION_ROUTE"
     
     def __init__(
             self,

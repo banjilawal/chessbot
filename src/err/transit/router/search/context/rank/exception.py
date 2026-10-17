@@ -16,14 +16,14 @@ from err import searchRouterException
 
 
 __all__ = [
-    # ======================# RANK_CONTEXT_search_ROUTER_Failure #======================#
+    # ======================# RANK_CONTEXT_search_ROUTER_FAILURE #======================#
     "RankContextsearchRouterException",
 ]
 
 from err import ContextsearchRouterException
 
 
-# ======================# RANK_CONTEXT_search_ROUTER_Failure #======================#
+# ======================# RANK_CONTEXT_search_ROUTER_FAILURE #======================#
 class RankContextsearchRouterException(ContextsearchRouterException):
     """
     Role:
@@ -48,7 +48,7 @@ class RankContextsearchRouterException(ContextsearchRouterException):
         ContextsearchRouterException
     """
     MSG = "A RankContext attribute missing a search path."
-    ERR_CODE = "RANK_CONTEXT_search_ROUTER_Failure"
+    ERR_CODE = "RANK_CONTEXT_search_ROUTER_FAILURE"
     
     def __init__(
             self,

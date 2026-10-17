@@ -17,7 +17,7 @@ from assurance import (
     TokenValidatorToolkit
 )
 from domain import Token
-from err import RootTokenEnvelopeNullException, TokenValidationRouterException
+from err import RootTokenEnvelopeNullException, TokenValidationRouteMissingException, TokenValidationRouterException
 from transit import RootTokenEnvelope, TokenCarrier, ValidationRouter
 from util import LoggingLevelRouter
 
@@ -113,7 +113,11 @@ class TokenValidationRouter(ValidationRouter[Token]):
         safe = cast(RootTokenEnvelope, priming.payload)
         
         # --- Route to the appropriate consumer. ---#
-        result = ValidationResult.failure(TokenValidationRouterException())
+        result = ValidationResult.failure(
+            TokenValidationRouterException(
+                ex=TokenValidationRouteMissingException()
+            )
+        )
         
         # Route to combatant_token_validation consumers.
         if safe.for_combatant_token_consumer:

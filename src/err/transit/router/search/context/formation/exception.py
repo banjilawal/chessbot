@@ -16,14 +16,14 @@ from err import searchRouterException
 
 
 __all__ = [
-    # ======================# FORMATION_CONTEXT_search_ROUTER_Failure #======================#
+    # ======================# FORMATION_CONTEXT_search_ROUTER_FAILURE #======================#
     "FormationContextsearchRouterException",
 ]
 
 from err import ContextsearchRouterException
 
 
-# ======================# FORMATION_CONTEXT_search_ROUTER_Failure #======================#
+# ======================# FORMATION_CONTEXT_search_ROUTER_FAILURE #======================#
 class FormationContextsearchRouterException(ContextsearchRouterException):
     """
     Role:
@@ -48,7 +48,7 @@ class FormationContextsearchRouterException(ContextsearchRouterException):
         ContextsearchRouterException
     """
     MSG = "A FormationContext attribute missing a search path."
-    ERR_CODE = "FORMATION_CONTEXT_search_ROUTER_Failure"
+    ERR_CODE = "FORMATION_CONTEXT_search_ROUTER_FAILURE"
     
     def __init__(
             self,

@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchRouteMissingException
+from err import MissingSearchRouteException
 
 __all__ = [
     # ======================# MISSING_ARENA_SEARCH_ROUTE #======================#
@@ -20,13 +20,13 @@ __all__ = [
 ]
 
 # ======================# MISSING_ARENA_SEARCH_ROUTE #======================#
-class ArenaSearchRouteMissingException(SearchRouteMissingException):
+class ArenaSearchRouteMissingException(MissingSearchRouteException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the Arena search routes is missing.
+        1.  Indicating that a Arena search route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class ArenaSearchRouteMissingException(SearchRouteMissingException):
     Super Class:
         SearchRouteMissingException
     """
-    MSG = "One of Arena search paths is missing."
+    MSG = "A Arena search path is missing."
     ERR_CODE = "MISSING_ARENA_SEARCH_ROUTE"
     
     def __init__(

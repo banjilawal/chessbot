@@ -12,22 +12,22 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ValidationRouteMissingException
+from err import MissingValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_ENCOUNTER_VALIDATION_ROUTER #======================#
+    # ======================# MISSING_ENCOUNTER_VALIDATION_ROUTE #======================#
     "EncounterValidationRouteMissingException",
 ]
 
-# ======================# MISSING_ENCOUNTER_VALIDATION_ROUTER #======================#
-class EncounterValidationRouteMissingException(ValidationRouteMissingException):
+# ======================# MISSING_ENCOUNTER_VALIDATION_ROUTE #======================#
+class EncounterValidationRouteMissingException(MissingValidationRouteException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the Encounter validation routers is missing.
+        1.  Indicating that a Encounter validation route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class EncounterValidationRouteMissingException(ValidationRouteMissingException):
     Super Class:
         ValidationRouteMissingException
     """
-    MSG = "One of Encounter validation paths is missing."
-    ERR_CODE = "MISSING_ENCOUNTER_VALIDATION_ROUTER"
+    MSG = "A Encounter validation path is missing."
+    ERR_CODE = "MISSING_ENCOUNTER_VALIDATION_ROUTE"
     
     def __init__(
             self,

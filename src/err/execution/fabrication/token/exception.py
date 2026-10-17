@@ -17,17 +17,17 @@ from err import BuildRouteMissingException
 
 __all__ = [
     # ======================# MISSING_TOKEN_VALIDATION_ROUTE #======================#
-    "TokenBuildRouteMissingException",
+    "MissingTokenBuildRouteException",
 ]
 
 # ======================# MISSING_TOKEN_VALIDATION_ROUTE #======================#
-class TokenBuildRouteMissingException(BuildRouteMissingException):
+class MissingTokenBuildRouteException(BuildRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the Token validation routes is missing.
+        1.  Indicating that a Token validation route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class TokenBuildRouteMissingException(BuildRouteMissingException):
     Super Class:
         BuildRouteMissingException
     """
-    MSG = "One of Token validation paths is missing."
+    MSG = "A Token validation path is missing."
     ERR_CODE = "MISSING_TOKEN_VALIDATION_ROUTE"
     
     def __init__(

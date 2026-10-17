@@ -27,7 +27,7 @@ class SquareBuildRouteMissingException(BuildRouteMissingException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the Square validation routes is missing.
+        1.  Indicating that a Square validation route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class SquareBuildRouteMissingException(BuildRouteMissingException):
     Super Class:
         BuildRouteMissingException
     """
-    MSG = "One of Square validation paths is missing."
+    MSG = "A Square validation path is missing."
     ERR_CODE = "MISSING_SQUARE_VALIDATION_ROUTE"
     
     def __init__(

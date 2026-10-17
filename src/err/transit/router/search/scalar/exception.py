@@ -16,11 +16,11 @@ from err import searchRouterException
 
 
 __all__ = [
-    # ======================# SCALAR_search_ROUTER_Failure #======================#
+    # ======================# SCALAR_search_ROUTER_FAILURE #======================#
     "ScalarsearchRouterException",
 ]
 
-# ======================# SCALAR_search_ROUTER_Failure #======================#
+# ======================# SCALAR_search_ROUTER_FAILURE #======================#
 class ScalarsearchRouterException(searchRouterException):
     """
     Role:
@@ -45,7 +45,7 @@ class ScalarsearchRouterException(searchRouterException):
         searchRouterException
     """
     MSG = "ScalarsearchRouter failed."
-    ERR_CODE = "SCALAR_search_ROUTER_Failure"
+    ERR_CODE = "SCALAR_search_ROUTER_FAILURE"
     
     def __init__(
             self,

@@ -27,7 +27,7 @@ class RankBuildRouteMissingException(BuildRouteMissingException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the Rank validation routes is missing.
+        1.  Indicating that a Rank validation route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class RankBuildRouteMissingException(BuildRouteMissingException):
     Super Class:
         BuildRouteMissingException
     """
-    MSG = "One of Rank validation paths is missing."
+    MSG = "A Rank validation path is missing."
     ERR_CODE = "MISSING_RANK_VALIDATION_ROUTE"
     
     def __init__(

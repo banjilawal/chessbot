@@ -30,7 +30,7 @@ class PlayerContextBuildRouteMissingException(ContextBuildRouteMissingException)
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the PlayerContext validation routes is missing.
+        1.  Indicating that a PlayerContext validation route is missing.
 
     Attributes:
             msg: Optional[str]

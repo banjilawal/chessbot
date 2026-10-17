@@ -13,7 +13,7 @@ from typing import Optional, cast
 
 from artifcat import BuildResult
 from domain import CombatantTokenBlueprint, KingTokenBlueprint, PawnTokenBlueprint, Token, TokenBlueprint
-from err import TokenBlueprintNullException
+from err import TokenBlueprintNullException, MissingTokenBuildRouteException, TokenBuildRouterException
 from fabrication import (
     CombatantTokenSubcontractor, KingTokenSubcontractor, 
     ModelBuildRouter, PawnTokenSubcontractor
@@ -74,12 +74,14 @@ class TokenBuildRouter(ModelBuildRouter[Token]):
         """
         method = f"{self.__class__.__name__}"
         
+        # Handle the case that the router cannot be primed.
         validation = self.priming_validator.execute(
             candidate=blueprint,
             target_model=TokenBlueprint,
             null_exception=TokenBlueprintNullException(),
         )
         if validation.is_failure:
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 TokenBuildRouterException(
                     cls_mthd=method,
@@ -89,23 +91,32 @@ class TokenBuildRouter(ModelBuildRouter[Token]):
                     ex=validation.exception,
                 )
             )
+        # Otherwise get the payload.
         fingerprint = cast(TokenBlueprint, validation.payload)
         
+        # --- Route to the appropriate token_build subcontractor. ---#
         if isinstance(fingerprint, PawnTokenBlueprint):
             return self._pawn_subcontractor.execute(fingerprint)
         if isinstance(fingerprint, KingTokenBlueprint):
             return self._king_subcontractor.execute( fingerprint)
         if isinstance(fingerprint, CombatantTokenBlueprint):
             return self._combatant_subcontractor.execute(fingerprint)
-
+        
+        # Handle the case that no route exists for the fingerprint.
         return BuildResult.failure(
             TokenBuildRouterException(
                 cls_mthd=method,
                 cls_name=self.__class__.__name__,
                 msg=TokenBuildRouterException.MSG,
                 err_code=TokenBuildRouterException.ERR_CODE,
-                ex=validation.exception,
+                ex=MissingTokenBuildRouteException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=MissingTokenBuildRouteException.MSG,
+                    err_code=MissingTokenBuildRouteException.ERR_CODE,
+                )
             )
         )
+        
         
         

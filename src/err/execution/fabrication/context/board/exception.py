@@ -30,7 +30,7 @@ class BoardContextBuildRouteMissingException(ContextBuildRouteMissingException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the BoardContext validation routes is missing.
+        1.  Indicating that a BoardContext validation route is missing.
 
     Attributes:
             msg: Optional[str]

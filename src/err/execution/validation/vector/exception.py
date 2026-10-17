@@ -12,22 +12,22 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ValidationRouteMissingException
+from err import MissingValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_VECTOR_VALIDATION_ROUTER #======================#
+    # ======================# MISSING_VECTOR_VALIDATION_ROUTE #======================#
     "VectorValidationRouteMissingException",
 ]
 
-# ======================# MISSING_VECTOR_VALIDATION_ROUTER #======================#
-class VectorValidationRouteMissingException(ValidationRouteMissingException):
+# ======================# MISSING_VECTOR_VALIDATION_ROUTE #======================#
+class VectorValidationRouteMissingException(MissingValidationRouteException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Vector validation routers is missing.
+        1.  Indicating a Vector validation route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class VectorValidationRouteMissingException(ValidationRouteMissingException):
     Super Class:
         ValidationRouteMissingException
     """
-    MSG = "One of Vector validation paths is missing."
-    ERR_CODE = "MISSING_VECTOR_VALIDATION_ROUTER"
+    MSG = "A Vector validation path is missing."
+    ERR_CODE = "MISSING_VECTOR_VALIDATION_ROUTE"
     
     def __init__(
             self,

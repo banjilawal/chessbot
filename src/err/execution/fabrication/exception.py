@@ -26,7 +26,7 @@ class BuildRouteMissingException(ExecutionRouteMissingException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a validation routes is missing from the logic.
+        1.  Indicating a validation route is missing from the logic.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class BuildRouteMissingException(ExecutionRouteMissingException):
     Super Class:
         ExecutionRouteMissingException
     """
-    MSG = "A validation routes is missing."
+    MSG = "A validation route is missing."
     ERR_CODE = "MISSING_MISSING_VALIDATION_ROUTE"
     MTHD_RSLT_TYPE = MethodResultType.VALIDATION_RESULT
 

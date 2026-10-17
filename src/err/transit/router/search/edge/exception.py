@@ -16,11 +16,11 @@ from err import searchRouterException
 
 
 __all__ = [
-    # ======================# EDGE_search_ROUTER_Failure #======================#
+    # ======================# EDGE_search_ROUTER_FAILURE #======================#
     "EdgesearchRouterException",
 ]
 
-# ======================# EDGE_search_ROUTER_Failure #======================#
+# ======================# EDGE_search_ROUTER_FAILURE #======================#
 class EdgesearchRouterException(searchRouterException):
     """
     Role:
@@ -45,7 +45,7 @@ class EdgesearchRouterException(searchRouterException):
         searchRouterException
     """
     MSG = "EdgesearchRouter failed."
-    ERR_CODE = "EDGE_search_ROUTER_Failure"
+    ERR_CODE = "EDGE_search_ROUTER_FAILURE"
     
     def __init__(
             self,

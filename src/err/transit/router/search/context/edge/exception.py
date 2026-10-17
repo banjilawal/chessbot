@@ -16,14 +16,14 @@ from err import searchRouterException
 
 
 __all__ = [
-    # ======================# EDGE_CONTEXT_search_ROUTER_Failure #======================#
+    # ======================# EDGE_CONTEXT_search_ROUTER_FAILURE #======================#
     "EdgeContextsearchRouterException",
 ]
 
 from err import ContextsearchRouterException
 
 
-# ======================# EDGE_CONTEXT_search_ROUTER_Failure #======================#
+# ======================# EDGE_CONTEXT_search_ROUTER_FAILURE #======================#
 class EdgeContextsearchRouterException(ContextsearchRouterException):
     """
     Role:
@@ -48,7 +48,7 @@ class EdgeContextsearchRouterException(ContextsearchRouterException):
         ContextsearchRouterException
     """
     MSG = "An EdgeContext attribute missing a search path."
-    ERR_CODE = "EDGE_CONTEXT_search_ROUTER_Failure"
+    ERR_CODE = "EDGE_CONTEXT_search_ROUTER_FAILURE"
     
     def __init__(
             self,

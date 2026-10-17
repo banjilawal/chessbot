@@ -16,11 +16,11 @@ from err import ValidationRouterException
 
 
 __all__ = [
-    # ======================# ACCOUNT_VALIDATION_ROUTER_Failure #======================#
+    # ======================# ACCOUNT_VALIDATION_ROUTER_FAILURE #======================#
     "AccountValidationRouterException",
 ]
 
-# ======================# ACCOUNT_VALIDATION_ROUTER_Failure #======================#
+# ======================# ACCOUNT_VALIDATION_ROUTER_FAILURE #======================#
 class AccountValidationRouterException(ValidationRouterException):
     """
     Role:
@@ -45,7 +45,7 @@ class AccountValidationRouterException(ValidationRouterException):
         ValidationRouterException
     """
     MSG = "AccountValidationRouter failed."
-    ERR_CODE = "ACCOUNT_VALIDATION_ROUTER_Failure"
+    ERR_CODE = "ACCOUNT_VALIDATION_ROUTER_FAILURE"
     
     def __init__(
             self,

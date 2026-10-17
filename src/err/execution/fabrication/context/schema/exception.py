@@ -30,7 +30,7 @@ class SchemaContextBuildRouteMissingException(ContextBuildRouteMissingException)
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the SchemaContext validation routes is missing.
+        1.  Indicating that a SchemaContext validation route is missing.
 
     Attributes:
             msg: Optional[str]

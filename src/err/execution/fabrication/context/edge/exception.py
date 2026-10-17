@@ -30,7 +30,7 @@ class EdgeContextBuildRouteMissingException(ContextBuildRouteMissingException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the EdgeContext validation routes is missing.
+        1.  Indicating that a EdgeContext validation route is missing.
 
     Attributes:
             msg: Optional[str]

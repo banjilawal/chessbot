@@ -12,22 +12,22 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ValidationRouteMissingException
+from err import MissingValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_COORD_VALIDATION_ROUTER #======================#
+    # ======================# MISSING_COORD_VALIDATION_ROUTE #======================#
     "CoordValidationRouteMissingException",
 ]
 
-# ======================# MISSING_COORD_VALIDATION_ROUTER #======================#
-class CoordValidationRouteMissingException(ValidationRouteMissingException):
+# ======================# MISSING_COORD_VALIDATION_ROUTE #======================#
+class CoordValidationRouteMissingException(MissingValidationRouteException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the Coord validation routers is missing.
+        1.  Indicating that a Coord validation route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class CoordValidationRouteMissingException(ValidationRouteMissingException):
     Super Class:
         ValidationRouteMissingException
     """
-    MSG = "One of Coord validation paths is missing."
-    ERR_CODE = "MISSING_COORD_VALIDATION_ROUTER"
+    MSG = "A Coord validation path is missing."
+    ERR_CODE = "MISSING_COORD_VALIDATION_ROUTE"
     
     def __init__(
             self,

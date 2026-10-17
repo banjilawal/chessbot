@@ -16,14 +16,14 @@ from err import searchRouterException
 
 
 __all__ = [
-    # ======================# ALGEBRA_CONTEXT_search_ROUTER_Failure #======================#
+    # ======================# ALGEBRA_CONTEXT_search_ROUTER_FAILURE #======================#
     "AlgebraContextsearchRouterException",
 ]
 
 from err import ContextsearchRouterException
 
 
-# ======================# ALGEBRA_CONTEXT_search_ROUTER_Failure #======================#
+# ======================# ALGEBRA_CONTEXT_search_ROUTER_FAILURE #======================#
 class AlgebraContextsearchRouterException(ContextsearchRouterException):
     """
     Role:
@@ -48,7 +48,7 @@ class AlgebraContextsearchRouterException(ContextsearchRouterException):
         ContextsearchRouterException
     """
     MSG = "An AlgebraContext attribute missing a search path."
-    ERR_CODE = "ALGEBRA_CONTEXT_search_ROUTER_Failure"
+    ERR_CODE = "ALGEBRA_CONTEXT_search_ROUTER_FAILURE"
     
     def __init__(
             self,

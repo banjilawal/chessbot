@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchRouteMissingException
+from err import MissingSearchRouteException
 
 
 __all__ = [
@@ -21,13 +21,13 @@ __all__ = [
 ]
 
 # ======================# MISSING_CONTEXT_SEARCH_ROUTE #======================#
-class ContextSearchRouteMissingException(SearchRouteMissingException):
+class ContextSearchRouteMissingException(MissingSearchRouteException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the ContextSearch failed.
+        1.  Indicating that a ContextSearch failed.
 
     Attributes:
             msg: Optional[str]

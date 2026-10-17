@@ -15,11 +15,11 @@ from artifcat import MethodResultType
 from err import searchRouterException
 
 __all__ = [
-    # ======================# ARENA_search_ROUTER_Failure #======================#
+    # ======================# ARENA_search_ROUTER_FAILURE #======================#
     "ArenasearchRouterException",
 ]
 
-# ======================# ARENA_search_ROUTER_Failure #======================#
+# ======================# ARENA_search_ROUTER_FAILURE #======================#
 class ArenasearchRouterException(searchRouterException):
     """
     Role:
@@ -44,7 +44,7 @@ class ArenasearchRouterException(searchRouterException):
         searchRouterException
     """
     MSG = "ArenasearchRouter failed."
-    ERR_CODE = "ARENA_search_ROUTER_Failure"
+    ERR_CODE = "ARENA_search_ROUTER_FAILURE"
     
     def __init__(
             self,

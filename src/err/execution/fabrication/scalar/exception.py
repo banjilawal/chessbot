@@ -27,7 +27,7 @@ class ScalarBuildRouteMissingException(BuildRouteMissingException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the Scalar validation routes is missing.
+        1.  Indicating that a Scalar validation route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class ScalarBuildRouteMissingException(BuildRouteMissingException):
     Super Class:
         BuildRouteMissingException
     """
-    MSG = "One of Scalar validation paths is missing."
+    MSG = "A Scalar validation path is missing."
     ERR_CODE = "MISSING_SCALAR_VALIDATION_ROUTE"
     
     def __init__(

@@ -12,22 +12,22 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ValidationRouteMissingException
+from err import MissingValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_CONTEXT_VALIDATION_ROUTER #======================#
+    # ======================# MISSING_CONTEXT_VALIDATION_ROUTE #======================#
     "ContextValidationRouteMissingException",
 ]
 
-# ======================# MISSING_CONTEXT_VALIDATION_ROUTER #======================#
-class ContextValidationRouteMissingException(ValidationRouteMissingException):
+# ======================# MISSING_CONTEXT_VALIDATION_ROUTE #======================#
+class ContextValidationRouteMissingException(MissingValidationRouteException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the ContextValidation failed.
+        1.  Indicating that a ContextValidation failed.
 
     Attributes:
             msg: Optional[str]
@@ -45,7 +45,7 @@ class ContextValidationRouteMissingException(ValidationRouteMissingException):
         ValidationRouteMissingException
     """
     MSG = "A context's attribute"
-    ERR_CODE = "MISSING_CONTEXT_VALIDATION_ROUTER"
+    ERR_CODE = "MISSING_CONTEXT_VALIDATION_ROUTE"
     
     def __init__(
             self,

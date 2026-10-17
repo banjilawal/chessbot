@@ -15,11 +15,11 @@ from artifcat import MethodResultType
 from err import ExecutionRouterException
 
 __all__ = [
-    # ======================# MISSING_search_ROUTER_Failure #======================#
+    # ======================# MISSING_search_ROUTER_FAILURE #======================#
     "searchRouterException",
 ]
 
-# ======================# MISSING_search_ROUTER_Failure #======================#
+# ======================# MISSING_search_ROUTER_FAILURE #======================#
 class searchRouterException(ExecutionRouterException):
     """
     Role:
@@ -44,7 +44,7 @@ class searchRouterException(ExecutionRouterException):
         ExecutionRouterException
     """
     MSG = "A search router is missing."
-    ERR_CODE = "MISSING_search_ROUTER_Failure"
+    ERR_CODE = "MISSING_search_ROUTER_FAILURE"
     MTHD_RSLT_TYPE = MethodResultType.search_RESULT
 
     

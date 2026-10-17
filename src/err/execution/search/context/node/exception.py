@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchRouteMissingException
+from err import MissingSearchRouteException
 
 
 __all__ = [
@@ -30,7 +30,7 @@ class NodeContextSearchRouteMissingException(ContextSearchRouteMissingException)
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the NodeContext search routes is missing.
+        1.  Indicating that a NodeContext search route is missing.
 
     Attributes:
             msg: Optional[str]

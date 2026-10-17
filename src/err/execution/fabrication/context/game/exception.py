@@ -30,7 +30,7 @@ class GameContextBuildRouteMissingException(ContextBuildRouteMissingException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the GameContext validation routes is missing.
+        1.  Indicating that a GameContext validation route is missing.
 
     Attributes:
             msg: Optional[str]

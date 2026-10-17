@@ -30,7 +30,7 @@ class FormationContextBuildRouteMissingException(ContextBuildRouteMissingExcepti
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the FormationContext validation routes is missing.
+        1.  Indicating that a FormationContext validation route is missing.
 
     Attributes:
             msg: Optional[str]

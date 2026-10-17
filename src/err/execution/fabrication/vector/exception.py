@@ -27,7 +27,7 @@ class VectorBuildRouteMissingException(BuildRouteMissingException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Vector validation routes is missing.
+        1.  Indicating a Vector validation route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class VectorBuildRouteMissingException(BuildRouteMissingException):
     Super Class:
         BuildRouteMissingException
     """
-    MSG = "One of Vector validation paths is missing."
+    MSG = "A Vector validation path is missing."
     ERR_CODE = "MISSING_VECTOR_VALIDATION_ROUTE"
     
     def __init__(

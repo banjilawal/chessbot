@@ -15,17 +15,17 @@ from err import ExecutionRouteMissingException
 
 __all__ = [
     # ======================# MISSING_SEARCH_ROUTE #======================#
-    "SearchRouteMissingException",
+    "MissingSearchRouteException",
 ]
 
 # ======================# MISSING_SEARCH_ROUTE #======================#
-class SearchRouteMissingException(ExecutionRouteMissingException):
+class MissingSearchRouteException(ExecutionRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the  search routes is missing.
+        1.  Indicating that a  search route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class SearchRouteMissingException(ExecutionRouteMissingException):
         ExecutionRouteMissingException
     """
     OP = "Search"
-    MSG = "One of  search routes is missing."
+    MSG = "A  search route is missing."
     ERR_CODE = "MISSING_SEARCH_ROUTE"
     MTHD_RSLT_TYPE = "SearchResult"
     _mthd_rslt_type = Optional[str]

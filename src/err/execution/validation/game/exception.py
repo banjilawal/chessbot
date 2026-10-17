@@ -12,22 +12,22 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ValidationRouteMissingException
+from err import MissingValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_GAME_VALIDATION_ROUTER #======================#
+    # ======================# MISSING_GAME_VALIDATION_ROUTE #======================#
     "GameValidationRouteMissingException",
 ]
 
-# ======================# MISSING_GAME_VALIDATION_ROUTER #======================#
-class GameValidationRouteMissingException(ValidationRouteMissingException):
+# ======================# MISSING_GAME_VALIDATION_ROUTE #======================#
+class GameValidationRouteMissingException(MissingValidationRouteException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the Game validation routers is missing.
+        1.  Indicating that a Game validation route is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class GameValidationRouteMissingException(ValidationRouteMissingException):
     Super Class:
         ValidationRouteMissingException
     """
-    MSG = "One of Game validation paths is missing."
-    ERR_CODE = "MISSING_GAME_VALIDATION_ROUTER"
+    MSG = "A Game validation path is missing."
+    ERR_CODE = "MISSING_GAME_VALIDATION_ROUTE"
     
     def __init__(
             self,

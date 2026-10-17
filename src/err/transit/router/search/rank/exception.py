@@ -16,11 +16,11 @@ from err import searchRouterException
 
 
 __all__ = [
-    # ======================# RANK_search_ROUTER_Failure #======================#
+    # ======================# RANK_search_ROUTER_FAILURE #======================#
     "RanksearchRouterException",
 ]
 
-# ======================# RANK_search_ROUTER_Failure #======================#
+# ======================# RANK_search_ROUTER_FAILURE #======================#
 class RanksearchRouterException(searchRouterException):
     """
     Role:
@@ -45,7 +45,7 @@ class RanksearchRouterException(searchRouterException):
         searchRouterException
     """
     MSG = "RanksearchRouter failed."
-    ERR_CODE = "RANK_search_ROUTER_Failure"
+    ERR_CODE = "RANK_search_ROUTER_FAILURE"
     
     def __init__(
             self,

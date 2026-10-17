@@ -16,7 +16,10 @@ from assurance import (
     MachineAccountEnvelopeConsumer, HumanAccountEnvelopeConsumer, AccountValidatorToolkit
 )
 from domain import Account
-from err import RootAccountEnvelopeNullException, AccountValidationRouterException
+from err import (
+    AccountValidationRouteMissingException, RootAccountEnvelopeNullException,
+    AccountValidationRouterException
+)
 from transit import RootAccountEnvelope, AccountCarrier, ValidationRouter
 from util import LoggingLevelRouter
 
@@ -108,7 +111,11 @@ class AccountValidationRouter(ValidationRouter[Account]):
         safe = cast(RootAccountEnvelope, priming.payload)
         
         # --- Route to the appropriate consumer. ---#
-        result = ValidationResult.failure(AccountValidationRouterException())
+        result = ValidationResult.failure(
+            AccountValidationRouterException(
+                ex=AccountValidationRouteMissingException()
+            )
+        )
         
         # Route to combatant_account_validation consumers.
         # Route to human_account_validation consumers.

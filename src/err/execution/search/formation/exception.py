@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchRouteMissingException
+from err import MissingSearchRouteException
 
 
 __all__ = [
@@ -21,13 +21,13 @@ __all__ = [
 ]
 
 # ======================# MISSING_FORMATION_SEARCH_ROUTE #======================#
-class FormationSearchRouteMissingException(SearchRouteMissingException):
+class FormationSearchRouteMissingException(MissingSearchRouteException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the Formation search routes is missing.
+        1.  Indicating that a Formation search route is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,7 +44,7 @@ class FormationSearchRouteMissingException(SearchRouteMissingException):
     Super Class:
         SearchRouteMissingException
     """
-    MSG = "One of Formation search paths is missing."
+    MSG = "A Formation search path is missing."
     ERR_CODE = "MISSING_FORMATION_SEARCH_ROUTE"
     
     def __init__(

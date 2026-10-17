@@ -15,11 +15,11 @@ from artifcat import MethodResultType
 from err import ExecutionRouterException
 
 __all__ = [
-    # ======================# MISSING_BUILD_ROUTER_Failure #======================#
+    # ======================# MISSING_BUILD_ROUTER_FAILURE #======================#
     "BuildRouterException",
 ]
 
-# ======================# MISSING_BUILD_ROUTER_Failure #======================#
+# ======================# MISSING_BUILD_ROUTER_FAILURE #======================#
 class BuildRouterException(ExecutionRouterException):
     """
     Role:
@@ -44,7 +44,7 @@ class BuildRouterException(ExecutionRouterException):
         ExecutionRouterException
     """
     MSG = "A fabrication router is missing."
-    ERR_CODE = "MISSING_BUILD_ROUTER_Failure"
+    ERR_CODE = "MISSING_BUILD_ROUTER_FAILURE"
     MTHD_RSLT_TYPE = MethodResultType.BUILD_RESULT
 
     

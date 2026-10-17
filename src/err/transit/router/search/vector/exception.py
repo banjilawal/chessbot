@@ -16,11 +16,11 @@ from err import searchRouterException
 
 
 __all__ = [
-    # ======================# VECTOR_search_ROUTER_Failure #======================#
+    # ======================# VECTOR_search_ROUTER_FAILURE #======================#
     "VectorsearchRouterException",
 ]
 
-# ======================# VECTOR_search_ROUTER_Failure #======================#
+# ======================# VECTOR_search_ROUTER_FAILURE #======================#
 class VectorsearchRouterException(searchRouterException):
     """
     Role:
@@ -45,7 +45,7 @@ class VectorsearchRouterException(searchRouterException):
         searchRouterException
     """
     MSG = "VectorsearchRouter failed."
-    ERR_CODE = "VECTOR_search_ROUTER_Failure"
+    ERR_CODE = "VECTOR_search_ROUTER_FAILURE"
     
     def __init__(
             self,

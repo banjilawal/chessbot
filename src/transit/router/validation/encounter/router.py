@@ -17,7 +17,10 @@ from assurance import (
     CheckmateEncounterEnvelopeConsumer, EncounterValidatorToolkit
 )
 from domain import Encounter
-from err import RootEncounterEnvelopeNullException, EncounterValidationRouterException
+from err import (
+    EncounterValidationRouteMissingException, RootEncounterEnvelopeNullException,
+    EncounterValidationRouterException
+)
 from transit import RootEncounterEnvelope, EncounterCarrier, ValidationRouter
 from util import LoggingLevelRouter
 
@@ -122,7 +125,11 @@ class EncounterValidationRouter(ValidationRouter[Encounter]):
         safe = cast(RootEncounterEnvelope, priming.payload)
         
         # --- Route to the appropriate consumer. ---#
-        result = ValidationResult.failure(EncounterValidationRouterException())
+        result = ValidationResult.failure(
+            EncounterValidationRouterException(
+                ex=EncounterValidationRouteMissingException()
+            )
+        )
         
         # Route to kill_encounter_validation consumers.
         if safe.for_kill_encounter_consumer:

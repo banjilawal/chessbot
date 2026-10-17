@@ -27,7 +27,7 @@ class BoardBuildRouteMissingException(BuildRouteMissingException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the Board validation routes is missing.
+        1.  Indicating that a Board validation route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class BoardBuildRouteMissingException(BuildRouteMissingException):
     Super Class:
         BuildRouteMissingException
     """
-    MSG = "One of Board validation paths is missing."
+    MSG = "A Board validation path is missing."
     ERR_CODE = "MISSING_BOARD_VALIDATOR_ROUTE"
     
     def __init__(

@@ -16,7 +16,7 @@ from assurance import (
     HomeSquareEnvelopeConsumer, PublicSquareEnvelopeConsumer, SquareValidatorToolkit
 )
 from domain import Square
-from err import RootSquareEnvelopeNullException, SquareValidationRouterException
+from err import RootSquareEnvelopeNullException, SquareValidationRouteMissingException, SquareValidationRouterException
 from transit import RootSquareEnvelope, SquareCarrier, ValidationRouter
 from util import LoggingLevelRouter
 
@@ -106,7 +106,11 @@ class SquareValidationRouter(ValidationRouter[Square]):
         safe = cast(RootSquareEnvelope, priming.payload)
         
         # --- Route to the appropriate consumer. ---#
-        result = ValidationResult.failure(SquareValidationRouterException())
+        result = ValidationResult.failure(
+            SquareValidationRouterException(
+                        ex=SquareValidationRouteMissingException()
+            )
+        )
         
         # Route to home_square_validation consumers.
         if safe.for_home_square_consumer:

@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== FABRICATION.CONTRACTOR.MODEL PACKAGE ===========#
 
 # Packages
+from .encounter import *
 from .token import *
 
 # Modules

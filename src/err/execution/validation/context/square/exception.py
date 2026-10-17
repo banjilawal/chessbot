@@ -12,25 +12,25 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ValidationRouteMissingException
+from err import MissingValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_SQUARE_CONTEXT_VALIDATION_ROUTER #======================#
+    # ======================# MISSING_SQUARE_CONTEXT_VALIDATION_ROUTE #======================#
     "SquareContextValidationRouteMissingException",
 ]
 
 from err import ContextValidationRouteMissingException
 
 
-# ======================# MISSING_SQUARE_CONTEXT_VALIDATION_ROUTER #======================#
+# ======================# MISSING_SQUARE_CONTEXT_VALIDATION_ROUTE #======================#
 class SquareContextValidationRouteMissingException(ContextValidationRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the SquareContext validation routers is missing.
+        1.  Indicating that a SquareContext validation route is missing.
 
     Attributes:
             msg: Optional[str]
@@ -48,7 +48,7 @@ class SquareContextValidationRouteMissingException(ContextValidationRouteMissing
         ContextValidationRouteMissingException
     """
     MSG = "A SquareContext attribute missing a validation path."
-    ERR_CODE = "MISSING_SQUARE_CONTEXT_VALIDATION_ROUTER"
+    ERR_CODE = "MISSING_SQUARE_CONTEXT_VALIDATION_ROUTE"
     
     def __init__(
             self,

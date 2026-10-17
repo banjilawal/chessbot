@@ -16,14 +16,14 @@ from err import searchRouterException
 
 
 __all__ = [
-    # ======================# GAME_CONTEXT_search_ROUTER_Failure #======================#
+    # ======================# GAME_CONTEXT_search_ROUTER_FAILURE #======================#
     "GameContextsearchRouterException",
 ]
 
 from err import ContextsearchRouterException
 
 
-# ======================# GAME_CONTEXT_search_ROUTER_Failure #======================#
+# ======================# GAME_CONTEXT_search_ROUTER_FAILURE #======================#
 class GameContextsearchRouterException(ContextsearchRouterException):
     """
     Role:
@@ -48,7 +48,7 @@ class GameContextsearchRouterException(ContextsearchRouterException):
         ContextsearchRouterException
     """
     MSG = "A GameContext attribute missing a search path."
-    ERR_CODE = "GAME_CONTEXT_search_ROUTER_Failure"
+    ERR_CODE = "GAME_CONTEXT_search_ROUTER_FAILURE"
     
     def __init__(
             self,

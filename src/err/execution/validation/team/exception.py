@@ -12,22 +12,22 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ValidationRouteMissingException
+from err import MissingValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_TEAM_VALIDATION_ROUTER #======================#
+    # ======================# MISSING_TEAM_VALIDATION_ROUTE #======================#
     "TeamValidationRouteMissingException",
 ]
 
-# ======================# MISSING_TEAM_VALIDATION_ROUTER #======================#
-class TeamValidationRouteMissingException(ValidationRouteMissingException):
+# ======================# MISSING_TEAM_VALIDATION_ROUTE #======================#
+class TeamValidationRouteMissingException(MissingValidationRouteException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the Team validation routers is missing.
+        1.  Indicating that a Team validation route is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,8 +44,8 @@ class TeamValidationRouteMissingException(ValidationRouteMissingException):
     Super Class:
         ValidationRouteMissingException
     """
-    MSG = "One of Team validation paths is missing."
-    ERR_CODE = "MISSING_TEAM_VALIDATION_ROUTER"
+    MSG = "A Team validation path is missing."
+    ERR_CODE = "MISSING_TEAM_VALIDATION_ROUTE"
     
     def __init__(
             self,

@@ -30,7 +30,7 @@ class TeamContextBuildRouteMissingException(ContextBuildRouteMissingException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the TeamContext validation routes is missing.
+        1.  Indicating that a TeamContext validation route is missing.
 
     Attributes:
             msg: Optional[str]

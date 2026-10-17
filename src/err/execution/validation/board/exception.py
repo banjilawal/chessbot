@@ -12,22 +12,22 @@ from __future__ import annotations
 from typing import Any, Optional
 
 
-from err import ValidationRouteMissingException
+from err import MissingValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_BOARD_VALIDATOR_ROUTER #======================#
+    # ======================# MISSING_BOARD_VALIDATOR_ROUTE #======================#
     "BoardValidationRouteMissingException",
 ]
 
-# ======================# MISSING_BOARD_VALIDATOR_ROUTER #======================#
-class BoardValidationRouteMissingException(ValidationRouteMissingException):
+# ======================# MISSING_BOARD_VALIDATOR_ROUTE #======================#
+class BoardValidationRouteMissingException(MissingValidationRouteException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the Board validation routers is missing.
+        1.  Indicating that a Board validation route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class BoardValidationRouteMissingException(ValidationRouteMissingException):
     Super Class:
         ValidationRouteMissingException
     """
-    MSG = "One of Board validation paths is missing."
-    ERR_CODE = "MISSING_BOARD_VALIDATOR_ROUTER"
+    MSG = "A Board validation path is missing."
+    ERR_CODE = "MISSING_BOARD_VALIDATOR_ROUTE"
     
     def __init__(
             self,

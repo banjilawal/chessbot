@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ValidationRouteMissingException
+from err import MissingValidationRouteException
 
 __all__ = [
-    # ======================# MISSING_ARENA_VALIDATION_ROUTER #======================#
+    # ======================# MISSING_ARENA_VALIDATION_ROUTE #======================#
     "ArenaValidationRouteMissingException",
 ]
 
-# ======================# MISSING_ARENA_VALIDATION_ROUTER #======================#
-class ArenaValidationRouteMissingException(ValidationRouteMissingException):
+# ======================# MISSING_ARENA_VALIDATION_ROUTE #======================#
+class ArenaValidationRouteMissingException(MissingValidationRouteException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the Arena validation routers is missing.
+        1.  Indicating that a Arena validation route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class ArenaValidationRouteMissingException(ValidationRouteMissingException):
     Super Class:
         ValidationRouteMissingException
     """
-    MSG = "One of Arena validation paths is missing."
-    ERR_CODE = "MISSING_ARENA_VALIDATION_ROUTER"
+    MSG = "A Arena validation path is missing."
+    ERR_CODE = "MISSING_ARENA_VALIDATION_ROUTE"
     
     def __init__(
             self,

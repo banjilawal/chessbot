@@ -27,7 +27,7 @@ class EdgeBuildRouteMissingException(BuildRouteMissingException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the Edge validation routes is missing.
+        1.  Indicating that a Edge validation route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class EdgeBuildRouteMissingException(BuildRouteMissingException):
     Super Class:
         BuildRouteMissingException
     """
-    MSG = "One of Edge validation paths is missing."
+    MSG = "A Edge validation path is missing."
     ERR_CODE = "MISSING_EDGE_VALIDATION_ROUTE"
     
     def __init__(

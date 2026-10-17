@@ -1,4 +1,4 @@
-# src/fabrication/contractor/model/token/king.contractor.py
+# src/fabrication/contractor/model/token/king/contractor.py
 
 """
 Module: fabrication.contractor.model.token.king.contractor
@@ -54,11 +54,13 @@ class KingTokenSubcontractor(TokenSubcontractor[KingToken]):
         """
         method = f"{self.__class__.__name__}"
         
+        # Handle the blueprint is null or the wrong type cannot be primed.
         validation = self.priming_validator.execute(
             candidate=blueprint,
             target_model=KingTokenBlueprint,
             null_exception=TokenBlueprintNullException(),
         )
+        # Send the exception chain on failure.
         if validation.is_failure:
             return BuildResult.failure(
                 KingTokenSubcontractorException(
@@ -70,10 +72,13 @@ class KingTokenSubcontractor(TokenSubcontractor[KingToken]):
                 )
             )
         fingerprint = cast(KingTokenBlueprint, validation.payload)
+        # Ensure an id exists.
         id = fingerprint.id or IdFactory.next_id(class_name="KingToken")
         
+        # Handle the case that the fingerprint does not contain a home_square.
         home_square = fingerprint.home_square
         if home_square is None:
+            # Send the exception chain on failure.
             return BuildResult.failure(
                 KingTokenSubcontractorException(
                     cls_mthd=method,
@@ -88,7 +93,7 @@ class KingTokenSubcontractor(TokenSubcontractor[KingToken]):
                     ),
                 )
             )
-        
+        # --- Send the work product to the caller. ---#
         model = KingToken(
             id=id,
             team=fingerprint.team,

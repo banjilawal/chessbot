@@ -30,7 +30,7 @@ class PersonaContextBuildRouteMissingException(ContextBuildRouteMissingException
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the PersonaContext validation routes is missing.
+        1.  Indicating that a PersonaContext validation route is missing.
 
     Attributes:
             msg: Optional[str]

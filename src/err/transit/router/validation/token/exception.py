@@ -16,11 +16,11 @@ from err import ValidationRouterException
 
 
 __all__ = [
-    # ======================# TOKEN_VALIDATION_ROUTER_Failure #======================#
+    # ======================# TOKEN_VALIDATION_ROUTER_FAILURE #======================#
     "TokenValidationRouterException",
 ]
 
-# ======================# TOKEN_VALIDATION_ROUTER_Failure #======================#
+# ======================# TOKEN_VALIDATION_ROUTER_FAILURE #======================#
 class TokenValidationRouterException(ValidationRouterException):
     """
     Role:
@@ -45,7 +45,7 @@ class TokenValidationRouterException(ValidationRouterException):
         ValidationRouterException
     """
     MSG = "TokenValidationRouter failed."
-    ERR_CODE = "TOKEN_VALIDATION_ROUTER_Failure"
+    ERR_CODE = "TOKEN_VALIDATION_ROUTER_FAILURE"
     
     def __init__(
             self,

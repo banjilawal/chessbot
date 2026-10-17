@@ -16,11 +16,11 @@ from err import BuildRouterException
 
 
 __all__ = [
-    # ======================# TOKEN_BUILD_ROUTER_Failure #======================#
+    # ======================# TOKEN_BUILD_ROUTER_FAILURE #======================#
     "TokenBuildRouterException",
 ]
 
-# ======================# TOKEN_BUILD_ROUTER_Failure #======================#
+# ======================# TOKEN_BUILD_ROUTER_FAILURE #======================#
 class TokenBuildRouterException(BuildRouterException):
     """
     Role:
@@ -45,7 +45,7 @@ class TokenBuildRouterException(BuildRouterException):
         BuildRouterException
     """
     MSG = "TokenBuildRouter failed."
-    ERR_CODE = "TOKEN_BUILD_ROUTER_Failure"
+    ERR_CODE = "TOKEN_BUILD_ROUTER_FAILURE"
     
     def __init__(
             self,

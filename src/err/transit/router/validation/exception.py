@@ -15,11 +15,11 @@ from artifcat import MethodResultType
 from err import ExecutionRouterException
 
 __all__ = [
-    # ======================# MISSING_VALIDATION_ROUTER_Failure #======================#
+    # ======================# MISSING_VALIDATION_ROUTER_FAILURE #======================#
     "ValidationRouterException",
 ]
 
-# ======================# MISSING_VALIDATION_ROUTER_Failure #======================#
+# ======================# MISSING_VALIDATION_ROUTER_FAILURE #======================#
 class ValidationRouterException(ExecutionRouterException):
     """
     Role:
@@ -44,7 +44,7 @@ class ValidationRouterException(ExecutionRouterException):
         ExecutionRouterException
     """
     MSG = "A validation router is missing."
-    ERR_CODE = "MISSING_VALIDATION_ROUTER_Failure"
+    ERR_CODE = "MISSING_VALIDATION_ROUTER_FAILURE"
     MTHD_RSLT_TYPE = MethodResultType.VALIDATION_RESULT
 
     

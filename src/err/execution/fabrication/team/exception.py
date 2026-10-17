@@ -27,7 +27,7 @@ class TeamBuildRouteMissingException(BuildRouteMissingException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the Team validation routes is missing.
+        1.  Indicating that a Team validation route is missing.
 
     Attributes:
             msg: Optional[str]
@@ -44,7 +44,7 @@ class TeamBuildRouteMissingException(BuildRouteMissingException):
     Super Class:
         BuildRouteMissingException
     """
-    MSG = "One of Team validation paths is missing."
+    MSG = "A Team validation path is missing."
     ERR_CODE = "MISSING_TEAM_VALIDATION_ROUTE"
     
     def __init__(

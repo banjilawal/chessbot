@@ -12,22 +12,22 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchRouteMissingException
+from err import MissingSearchRouteException
 
 
 __all__ = [
     # ======================# MISSING_BOARD_SEARCH_ROUTE #======================#
-    "BoardSearchRouteMissingException",
+    "MissingBoardSearchRouteException",
 ]
 
 # ======================# MISSING_BOARD_SEARCH_ROUTE #======================#
-class BoardSearchRouteMissingException(SearchRouteMissingException):
+class MissingBoardSearchRouteException(MissingSearchRouteException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the Board search routes is missing.
+        1.  Indicating that a Board search route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class BoardSearchRouteMissingException(SearchRouteMissingException):
     Super Class:
         SearchRouteMissingException
     """
-    MSG = "One of Board search paths is missing."
+    MSG = "A Board search path is missing."
     ERR_CODE = "MISSING_BOARD_SEARCH_ROUTE"
     
     def __init__(

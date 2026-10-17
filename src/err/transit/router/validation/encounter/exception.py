@@ -16,11 +16,11 @@ from err import ValidationRouterException
 
 
 __all__ = [
-    # ======================# ENCOUNTER_VALIDATION_ROUTER_Failure #======================#
+    # ======================# ENCOUNTER_VALIDATION_ROUTER_FAILURE #======================#
     "EncounterValidationRouterException",
 ]
 
-# ======================# ENCOUNTER_VALIDATION_ROUTER_Failure #======================#
+# ======================# ENCOUNTER_VALIDATION_ROUTER_FAILURE #======================#
 class EncounterValidationRouterException(ValidationRouterException):
     """
     Role:
@@ -45,7 +45,7 @@ class EncounterValidationRouterException(ValidationRouterException):
         ValidationRouterException
     """
     MSG = "EncounterValidationRouter failed."
-    ERR_CODE = "ENCOUNTER_VALIDATION_ROUTER_Failure"
+    ERR_CODE = "ENCOUNTER_VALIDATION_ROUTER_FAILURE"
     
     def __init__(
             self,

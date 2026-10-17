@@ -12,25 +12,25 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import ValidationRouteMissingException
+from err import MissingValidationRouteException
 
 
 __all__ = [
-    # ======================# MISSING_PLAYER_CONTEXT_VALIDATION_ROUTER #======================#
+    # ======================# MISSING_PLAYER_CONTEXT_VALIDATION_ROUTE #======================#
     "PlayerContextValidationRouteMissingException",
 ]
 
 from err import ContextValidationRouteMissingException
 
 
-# ======================# MISSING_PLAYER_CONTEXT_VALIDATION_ROUTER #======================#
+# ======================# MISSING_PLAYER_CONTEXT_VALIDATION_ROUTE #======================#
 class PlayerContextValidationRouteMissingException(ContextValidationRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the PlayerContext validation routers is missing.
+        1.  Indicating that a PlayerContext validation route is missing.
 
     Attributes:
             msg: Optional[str]
@@ -48,7 +48,7 @@ class PlayerContextValidationRouteMissingException(ContextValidationRouteMissing
         ContextValidationRouteMissingException
     """
     MSG = "A PlayerContext attribute missing a validation path."
-    ERR_CODE = "MISSING_PLAYER_CONTEXT_VALIDATION_ROUTER"
+    ERR_CODE = "MISSING_PLAYER_CONTEXT_VALIDATION_ROUTE"
     
     def __init__(
             self,

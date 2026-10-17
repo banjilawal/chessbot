@@ -30,7 +30,7 @@ class HostageContextBuildRouteMissingException(ContextBuildRouteMissingException
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the HostageContext validation routes is missing.
+        1.  Indicating that a HostageContext validation route is missing.
 
     Attributes:
             msg: Optional[str]

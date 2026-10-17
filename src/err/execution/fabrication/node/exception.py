@@ -25,7 +25,7 @@ class NodeBuildRouteMissingException(BuildRouteMissingException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that one of the No validation routes is missing.
+        1.  Indicating that a No validation route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -42,7 +42,7 @@ class NodeBuildRouteMissingException(BuildRouteMissingException):
     Super Class:
         BuildRouteMissingException
     """
-    MSG = "One of No validation paths is missing."
+    MSG = "A No validation path is missing."
     ERR_CODE = "MISSING_NO_VALIDATION_ROUTE"
     
     def __init__(
