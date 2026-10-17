@@ -10,9 +10,10 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
+from typing import Generic, Optional, TypeVar
 
 from artifcat import BuildResult
+from assurance import PrimingValidator
 from domain import Blueprint
 from transit import Router
 from util import LoggingLevelRouter
@@ -37,10 +38,21 @@ class BuildRouter(Router[BuildResult], ABC, Generic[T]):
         Router
     """
     
-    def __init__(self):
+    _priming_validator: PrimingValidator
+    
+    def __init__(
+            self,
+            priming_validator: Optional[PrimingValidator] | None = None,
+    ):
         """
         Args:
+            priming_validator: Optional[PrimingValidator]
         """
+        self._priming_validator = priming_validator
+        
+    @property
+    def priming_validator(self) -> PrimingValidator:
+        return self._priming_validator
     
     @abstractmethod
     @LoggingLevelRouter.monitor

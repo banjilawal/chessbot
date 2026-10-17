@@ -91,9 +91,9 @@ class KingTokenSubcontractor(TokenSubcontractor[KingToken]):
         
         model = KingToken(
             id=id,
-            alert=formation.alert,
             team=fingerprint.team,
             home_square=home_square,
+            alert=fingerprint.alert,
             footstep=fingerprint.footstep,
             formation=fingerprint.formation,
         )

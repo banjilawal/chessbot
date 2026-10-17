@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
+from typing import Generic, Optional, TypeVar
 
 from artifcat import BuildResult
 from domain import Model, ModelBlueprint
@@ -30,6 +30,7 @@ class ModelBuildRouter(BuildRouter[T], ABC, Generic[T]):
             product assembler.
 
     Attributes:
+        priming_validator: PrimingValidator
 
     Provides:
             -   def execute(blueprint: ModelBlueprint[T]) -> BuildResult[T]
@@ -38,9 +39,13 @@ class ModelBuildRouter(BuildRouter[T], ABC, Generic[T]):
         BuildRouter
     """
     
-    def __init__(self):
+    def __init__(
+            self,
+            priming_validator: Optional[PrimingValidator] | None = None,
+    ):
         """
         Args:
+            priming_validator: Optional[PrimingValidator]
         """
         super().__init__()
     

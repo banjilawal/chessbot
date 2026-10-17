@@ -9,9 +9,15 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from typing import Optional, cast
+
 from artifcat import BuildResult
-from domain import Token, TokenBlueprint
-from fabrication import ModelBuildRouter
+from domain import CombatantTokenBlueprint, KingTokenBlueprint, PawnTokenBlueprint, Token, TokenBlueprint
+from err import TokenBlueprintNullException
+from fabrication import (
+    CombatantTokenSubcontractor, KingTokenSubcontractor, 
+    ModelBuildRouter, PawnTokenSubcontractor
+)
 from util import LoggingLevelRouter
 
 
@@ -24,7 +30,10 @@ class TokenBuildRouter(ModelBuildRouter[Token]):
         1.  Routes TokenBlueprint subclasses to the appropriate assembler.
 
     Attributes:
-
+        king_subcontractor: KingTokenSubcontractor
+        pawn_subcontractor: PawnTokenSubcontractor
+        combatant_subcontractor: CombatantTokenSubcontractor
+        
     Provides:
             -   def execute(blueprint: TokenBlueprint) -> BuildResult[Token]
 
@@ -32,11 +41,24 @@ class TokenBuildRouter(ModelBuildRouter[Token]):
         ModelBuildRouter
     """
     
-    def __init__(self):
+    _king_subcontractor: KingTokenSubcontractor
+    _pawn_subcontractor: PawnTokenSubcontractor
+    _combatant_subcontractor: CombatantTokenSubcontractor
+
+    
+    def __init__(
+            self,
+            king_subcontractor: Optional[KingTokenSubcontractor] | None = None,
+            pawn_subcontractor: Optional[PawnTokenSubcontractor] | None = None,
+            combatant_subcontractor: Optional[CombatantTokenSubcontractor] | None = None,
+    ):
         """
         Args:
         """
         super().__init__()
+        self._king_subcontractor = king_subcontractor or KingTokenSubcontractor()
+        self._pawn_subcontractor = pawn_subcontractor or PawnTokenSubcontractor()
+        self._combatant_subcontractor = combatant_subcontractor or CombatantTokenSubcontractor()
     
     @LoggingLevelRouter.monitor
     def execute(self, blueprint: TokenBlueprint) -> BuildResult[Token]:
@@ -51,4 +73,39 @@ class TokenBuildRouter(ModelBuildRouter[Token]):
             TokenBuildRouterException
         """
         method = f"{self.__class__.__name__}"
-        pass
+        
+        validation = self.priming_validator.execute(
+            candidate=blueprint,
+            target_model=TokenBlueprint,
+            null_exception=TokenBlueprintNullException(),
+        )
+        if validation.is_failure:
+            return BuildResult.failure(
+                TokenBuildRouterException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenBuildRouterException.MSG,
+                    err_code=TokenBuildRouterException.ERR_CODE,
+                    ex=validation.exception,
+                )
+            )
+        fingerprint = cast(TokenBlueprint, validation.payload)
+        
+        if isinstance(fingerprint, PawnTokenBlueprint):
+            return self._pawn_subcontractor.execute(fingerprint)
+        if isinstance(fingerprint, KingTokenBlueprint):
+            return self._king_subcontractor.execute( fingerprint)
+        if isinstance(fingerprint, CombatantTokenBlueprint):
+            return self._combatant_subcontractor.execute(fingerprint)
+
+        return BuildResult.failure(
+            TokenBuildRouterException(
+                cls_mthd=method,
+                cls_name=self.__class__.__name__,
+                msg=TokenBuildRouterException.MSG,
+                err_code=TokenBuildRouterException.ERR_CODE,
+                ex=validation.exception,
+            )
+        )
+        
+        
