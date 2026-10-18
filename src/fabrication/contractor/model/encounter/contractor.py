@@ -22,10 +22,10 @@ T = TypeVar("T", bound="Encounter")
 class EncounterSubcontractor(ModelBuildSubcontractor[T], ABC, Generic[T]):
     """
     Role
-        -   Execution Routing
+        -   Builder
         
     Responsibilities:
-        1.  Instantiate a concrete Encounter.
+        1.  Instantiate an EncounterWarning.
 
     Attributes:
 

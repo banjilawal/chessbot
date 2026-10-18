@@ -20,7 +20,7 @@ from util import IdFactory, LoggingLevelRouter
 class EncounterWarningSubcontractor(EncounterSubcontractor[EncounterWarning]):
     """
     Role
-        -   Execution Routing
+        -   Builder
         
     Responsibilities:
         1.  Instantiate a concrete Encounter.

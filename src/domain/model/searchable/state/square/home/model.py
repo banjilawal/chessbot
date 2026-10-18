@@ -21,7 +21,7 @@ class HomeSquare(Square):
         - Stateful Data Holder
 
     Responsibilities:
-        1.  Square Which a token claims before it can make its home move.
+        1.  Square which a token claims before it can make its home move.
 
     Attributes:
         id: int
@@ -48,18 +48,16 @@ class HomeSquare(Square):
             id: int,
             name: str,
             coord: Coord,
-            board: Board,
             formation: Formation,
     ):
         """
         Args:
             id: int
             name: str
-            board: Board
             coord: Coord
             formation: Formation
         """
-        super().__init__(id=id, name=name, coord=coord, board=board)
+        super().__init__(id=id, name=name, coord=coord)
         self._formation = formation
         self._token_claim_state = TokenHomeClaimState.UNCLAIMED
     

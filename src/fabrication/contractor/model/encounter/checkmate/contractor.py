@@ -20,10 +20,10 @@ from util import IdFactory, LoggingLevelRouter
 class CheckmateEncounterSubcontractor(EncounterSubcontractor[CheckmateEncounter]):
     """
     Role
-        -   Execution Routing
+        -   Builder
         
     Responsibilities:
-        1.  Instantiate a concrete Encounter.
+        1.  Instantiate a CheckmateEncounter.
 
     Attributes:
 

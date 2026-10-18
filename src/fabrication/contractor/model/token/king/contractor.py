@@ -20,10 +20,10 @@ from util import IdFactory, LoggingLevelRouter
 class KingTokenSubcontractor(TokenSubcontractor[KingToken]):
     """
     Role
-        -   Execution Routing
+        -   Builder
         
     Responsibilities:
-        1.  Instantiate a concrete Token.
+        1.  Instantiate a KingToken.
 
     Attributes:
 

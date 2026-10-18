@@ -16,18 +16,18 @@ from err import BuildRouteMissingException
 
 
 __all__ = [
-    # ======================# MISSING_ENCOUNTER_VALIDATION_ROUTE #======================#
-    "EncounterBuildRouteMissingException",
+    # ======================# MISSING_ENCOUNTER_BUILD_ROUTE #======================#
+    "MissingEncounterBuildRouteException",
 ]
 
-# ======================# MISSING_ENCOUNTER_VALIDATION_ROUTE #======================#
-class EncounterBuildRouteMissingException(BuildRouteMissingException):
+# ======================# MISSING_ENCOUNTER_BUILD_ROUTE #======================#
+class MissingEncounterBuildRouteException(BuildRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a Encounter validation route is missing.
+        1.  Indicating that a Encounter build route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class EncounterBuildRouteMissingException(BuildRouteMissingException):
     Super Class:
         BuildRouteMissingException
     """
-    MSG = "A Encounter validation path is missing."
-    ERR_CODE = "MISSING_ENCOUNTER_VALIDATION_ROUTE"
+    MSG = "A Encounter build path is missing."
+    ERR_CODE = "MISSING_ENCOUNTER_BUILD_ROUTE"
     
     def __init__(
             self,

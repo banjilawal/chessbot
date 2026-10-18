@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import ExecutionRouteMissingException
 
 __all__ = [
-    # ======================# MISSING_MISSING_VALIDATION_ROUTE #======================#
+    # ======================# MISSING_MISSING_BUILD_ROUTE #======================#
     "BuildRouteMissingException",
 ]
 
-# ======================# MISSING_MISSING_VALIDATION_ROUTE #======================#
+# ======================# MISSING_MISSING_BUILD_ROUTE #======================#
 class BuildRouteMissingException(ExecutionRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a validation route is missing from the logic.
+        1.  Indicating a build route is missing from the logic.
 
     Attributes:
         msg: Optional[str]
@@ -43,9 +43,9 @@ class BuildRouteMissingException(ExecutionRouteMissingException):
     Super Class:
         ExecutionRouteMissingException
     """
-    MSG = "A validation route is missing."
-    ERR_CODE = "MISSING_MISSING_VALIDATION_ROUTE"
-    MTHD_RSLT_TYPE = MethodResultType.VALIDATION_RESULT
+    MSG = "A build route is missing."
+    ERR_CODE = "MISSING_MISSING_BUILD_ROUTE"
+    MTHD_RSLT_TYPE = MethodResultType.BUILD_RESULT
 
     
     def __init__(

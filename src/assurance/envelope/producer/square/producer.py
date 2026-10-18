@@ -204,25 +204,6 @@ class SquareEnvelopeProducer(RootEnvelopeProducer[Square]):
                     ex=coord_validation.exception,
                 )
             )
-        # --- PROCESS_THE_BOARD_ATTRIBUTE. ---#
-        board_validation = self.toolkit.wrapper.board.extract_model(
-            request=BoardValidationRequest(
-                item=BoardCarrier(model=blueprint.board),
-                id=IdFactory.next_id(class_name="BoardValidationRequest"),
-            )
-        )
-        # Handle the case that the board is unsafe.
-        if board_validation.is_failure:
-            # Send the exception chain on failure.
-            return ValidationResult.failure(
-                SquareEnvelopeProducerException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=SquareEnvelopeProducerException.MSG,
-                    err_code=SquareEnvelopeProducerException.ERR_CODE,
-                    ex=board_validation.exception,
-                )
-            )
         # --- PROCESS_THE_OCCUPANT_ATTRIBUTE. ---#
         occupant = blueprint.occupant
         if occupant is not None:
@@ -249,7 +230,6 @@ class SquareEnvelopeProducer(RootEnvelopeProducer[Square]):
         
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
         id = cast(int, id_validation.payload)
-        board = cast(Board, board_validation.payload)
         coord = cast(Coord, coord_validation.payload)
         name = cast(str, name_validation.payload)
         state = cast(SquareState, state_validation.payload)
@@ -258,7 +238,6 @@ class SquareEnvelopeProducer(RootEnvelopeProducer[Square]):
         envelope = RootSquareEnvelope(
             id=id,
             coord=coord,
-            board=board,
             name=name,
             state=state,
             occupant=occupant,

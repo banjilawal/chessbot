@@ -16,18 +16,18 @@ from err import BuildRouteMissingException
 
 
 __all__ = [
-    # ======================# MISSING_SQUARE_VALIDATION_ROUTE #======================#
-    "SquareBuildRouteMissingException",
+    # ======================# MISSING_SQUARE_BUILD_ROUTE #======================#
+    "MissingSquareBuildRouteException",
 ]
 
-# ======================# MISSING_SQUARE_VALIDATION_ROUTE #======================#
-class SquareBuildRouteMissingException(BuildRouteMissingException):
+# ======================# MISSING_SQUARE_BUILD_ROUTE #======================#
+class MissingSquareBuildRouteException(BuildRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a Square validation route is missing.
+        1.  Indicating that a Square build route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class SquareBuildRouteMissingException(BuildRouteMissingException):
     Super Class:
         BuildRouteMissingException
     """
-    MSG = "A Square validation path is missing."
-    ERR_CODE = "MISSING_SQUARE_VALIDATION_ROUTE"
+    MSG = "A Square build path is missing."
+    ERR_CODE = "MISSING_SQUARE_BUILD_ROUTE"
     
     def __init__(
             self,

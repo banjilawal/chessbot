@@ -29,7 +29,6 @@ class Square(StateModel):
     Attributes:
         id: int
         name: str
-        board: Board
         coord: Coord
         state: SquareState
         occupant: Optional[Token]
@@ -43,24 +42,20 @@ class Square(StateModel):
     """
     _id: int
     _name: str
-    _board: Board
     _coord: Coord
     _state: SquareState
     _occupant: Optional[Token]
     
-    def __init__(self, id: int, name: str, coord: Coord, board: Board):
+    def __init__(self, id: int, name: str, coord: Coord):
         """
         Args:
             id: int
             name: str
-            board: Board
             coord: Coord
         """
-        super().__init__()
-        self._id = id
+        super().__init__(id=id)
         self._name = name
         self._coord = coord
-        self._board = board
         self._occupant = None
         self._state = SquareState.EMPTY
     
@@ -74,7 +69,7 @@ class Square(StateModel):
     
     @property
     def board(self) -> Board:
-        return self._board
+        return self._coord.board
     
     @property
     def coord(self) -> Coord:

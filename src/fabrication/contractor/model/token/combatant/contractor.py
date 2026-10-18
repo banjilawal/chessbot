@@ -20,10 +20,10 @@ from util import IdFactory, LoggingLevelRouter
 class CombatantTokenSubcontractor(TokenSubcontractor[CombatantToken]):
     """
     Role
-        -   Execution Routing
+        -   Builder
         
     Responsibilities:
-        1.  Instantiate a concrete Token.
+        1.  Instantiate a CombatantToken.
 
     Attributes:
 

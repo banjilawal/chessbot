@@ -10,9 +10,10 @@ version: 0.0.2
 # =========== FABRICATION.CONTRACTOR.MODEL.ENCOUNTER PACKAGE ===========#
 
 # Packages
-from .combatant import *
-from .king import *
+from .checkmate import *
 from .kill import *
+from .stalemate import *
+from .warning import *
 
 # Modules
 from .contractor import EncounterSubcontractor

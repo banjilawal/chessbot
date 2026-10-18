@@ -15,6 +15,5 @@ from .contractor import *
 from .factory import *
 from .finalizer import *
 from .loader import *
-from .router import *
 
 # Modules

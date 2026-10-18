@@ -40,7 +40,6 @@ class RootSquareEnvelope(ProductEnvelope[Square]):
     """
     _id: int
     _name: str
-    _board: Board
     _coord: Coord
     _state: SquareState
     _occupant: Optional[Token]
@@ -49,7 +48,6 @@ class RootSquareEnvelope(ProductEnvelope[Square]):
             self,
             id: int,
             name: str,
-            board: Board,
             coord: Coord,
             state: SquareState,
             prime_extract: SquarePrimeExtract,
@@ -60,7 +58,6 @@ class RootSquareEnvelope(ProductEnvelope[Square]):
         Args:
             id: int
             name: str
-            board: Board
             coord: Coord
             state: SquareState
             occupant: Optional[Token]
@@ -69,7 +66,6 @@ class RootSquareEnvelope(ProductEnvelope[Square]):
         super().__init__(prime_extract=prime_extract)
         self._id = id
         self._name = name
-        self._board = board
         self._coord = coord
         self._state = state
         self._occupant = occupant
@@ -85,10 +81,6 @@ class RootSquareEnvelope(ProductEnvelope[Square]):
     @property
     def name(self) -> str:
         return self._name
-    
-    @property
-    def board(self) -> Board:
-        return self._board
     
     @property
     def coord(self) -> Coord:

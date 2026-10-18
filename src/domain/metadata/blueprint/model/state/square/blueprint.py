@@ -26,7 +26,6 @@ class SquareBlueprint(StateModelBlueprint[Square]):
      Attributes:
         id: Optional[int]
         name: str
-        board: Board
         coord: Coord
         occupant: Optional[Token]
 
@@ -39,7 +38,6 @@ class SquareBlueprint(StateModelBlueprint[Square]):
         StateModelBlueprint
      """
     _name: str
-    _board: Board
     _coord: Coord
     _state: SquareState
     _occupant: Optional[Token]
@@ -47,7 +45,6 @@ class SquareBlueprint(StateModelBlueprint[Square]):
     def __init__(
             self,
             name: str,
-            board: Board,
             coord: Coord,
             occupant: Optional[Token] | None = None,
             state: Optional[SquareState] | None = None,
@@ -58,7 +55,6 @@ class SquareBlueprint(StateModelBlueprint[Square]):
         """
         Args:
             name: str
-            board: Board
             coord: Coord
             occupant: Optional[Token]
             state: Optional[SquareState]
@@ -72,7 +68,6 @@ class SquareBlueprint(StateModelBlueprint[Square]):
             domain_null_exception=domain_null_exception or SquareNullException(),
         )
         self._name = name
-        self._board = board
         self._coord = coord
         self._occupant = occupant
         self._state = state or SquareState.EMPTY
@@ -80,10 +75,6 @@ class SquareBlueprint(StateModelBlueprint[Square]):
     @property
     def name(self) -> str:
         return self._name
-    
-    @property
-    def board(self) -> Board:
-        return self._board
     
     @property
     def coord(self) -> Coord:

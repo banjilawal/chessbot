@@ -16,18 +16,18 @@ from err import BuildRouteMissingException
 
 
 __all__ = [
-    # ======================# MISSING_ACCOUNT_VALIDATION_ROUTE #======================#
-    "AccountBuildRouteMissingException",
+    # ======================# MISSING_ACCOUNT_BUILD_ROUTE #======================#
+    "MissingAccountBuildRouteException",
 ]
 
-# ======================# MISSING_ACCOUNT_VALIDATION_ROUTE #======================#
-class AccountBuildRouteMissingException(BuildRouteMissingException):
+# ======================# MISSING_ACCOUNT_BUILD_ROUTE #======================#
+class MissingAccountBuildRouteException(BuildRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a Account validation route is missing.
+        1.  Indicating that an Account build route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class AccountBuildRouteMissingException(BuildRouteMissingException):
     Super Class:
         BuildRouteMissingException
     """
-    MSG = "A Account validation path is missing."
-    ERR_CODE = "MISSING_ACCOUNT_VALIDATION_ROUTE"
+    MSG = "A Account build path is missing."
+    ERR_CODE = "MISSING_ACCOUNT_BUILD_ROUTE"
     
     def __init__(
             self,

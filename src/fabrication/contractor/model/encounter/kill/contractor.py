@@ -20,10 +20,10 @@ from util import IdFactory, LoggingLevelRouter
 class KillEncounterSubcontractor(EncounterSubcontractor[KillEncounter]):
     """
     Role
-        -   Execution Routing
+        -   Builder
         
     Responsibilities:
-        1.  Instantiate a concrete Encounter.
+        1.  Instantiate a KillEncounter.
 
     Attributes:
 

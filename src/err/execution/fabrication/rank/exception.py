@@ -16,18 +16,18 @@ from err import BuildRouteMissingException
 
 
 __all__ = [
-    # ======================# MISSING_RANK_VALIDATION_ROUTE #======================#
+    # ======================# MISSING_RANK_BUILD_ROUTE #======================#
     "RankBuildRouteMissingException",
 ]
 
-# ======================# MISSING_RANK_VALIDATION_ROUTE #======================#
+# ======================# MISSING_RANK_BUILD_ROUTE #======================#
 class RankBuildRouteMissingException(BuildRouteMissingException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a Rank validation route is missing.
+        1.  Indicating that a Rank build route is missing.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class RankBuildRouteMissingException(BuildRouteMissingException):
     Super Class:
         BuildRouteMissingException
     """
-    MSG = "A Rank validation path is missing."
-    ERR_CODE = "MISSING_RANK_VALIDATION_ROUTE"
+    MSG = "A Rank build path is missing."
+    ERR_CODE = "MISSING_RANK_BUILD_ROUTE"
     
     def __init__(
             self,
