@@ -15,11 +15,11 @@ from artifcat import BuildResult
 from domain import Token, TokenBlueprint
 from err import TokenBuilderException
 from exchange import TokenBuildRequest
-from fabrication import ModelBuilder, TokenBuildLoader
+from fabrication import BuildFactory, TokenBuildLoader
 from util import LoggingLevelRouter
 
 
-class TokenBuilder(ModelBuilder[Token]):
+class TokenBuilder(BuildFactory[Token]):
     """
     Role
         - Builder
@@ -34,7 +34,7 @@ class TokenBuilder(ModelBuilder[Token]):
         -   def execute(blueprint: TokenBlueprint) -> BuildResult[Token]
 
     Super Class:
-        ModelBuilder
+        BuildFactory
     """
     
     def __init__(

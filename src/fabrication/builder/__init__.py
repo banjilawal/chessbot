@@ -19,3 +19,4 @@ from .toggle import *
 
 # Modules
 from .builder import Builder
+from .factory import BuildFactory

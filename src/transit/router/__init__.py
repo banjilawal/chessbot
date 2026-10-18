@@ -15,4 +15,4 @@ from .search import *
 from .validation import *
 
 # Modules
-from .fabrication import Router
+from .router import Router

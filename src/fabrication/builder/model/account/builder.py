@@ -29,6 +29,7 @@ class AccountBuilder(ModelBuilder[Account]):
 
     Attributes:
        loader: AccountBuildLoader
+       _router
 
     Provides:
         -   def execute(blueprint: AccountBlueprint) -> BuildResult[Account]
