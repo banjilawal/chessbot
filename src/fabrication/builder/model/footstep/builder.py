@@ -58,7 +58,7 @@ class FootstepBuilder(ModelBuilder[Footstep]):
         Action:
             1.  Send an exception chain in the BuildResult if the loader does not produce
                 a blueprint.
-            2.  Otherwise, use the blueprint to assemble a Footstep for the success result.
+            2.  Otherwise, use the blueprint to assemble a Footstep for the success loading.
         Args:
             request: FootstepBuildRequest
         Returns:
@@ -69,9 +69,9 @@ class FootstepBuilder(ModelBuilder[Footstep]):
         method = f"{self.__class__.__name__}"
         
         # --- Handoff the request to loader for blueprint prepartion. ---#
-        result = self.loader.execute(request=request)
+        loading = self.loader.execute(request=request)
         # Handle the case that the loader aborts.
-        if result.is_failure:
+        if loading.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
                 FootstepBuilderException(
@@ -79,11 +79,11 @@ class FootstepBuilder(ModelBuilder[Footstep]):
                     cls_name=self.__class__.__name__,
                     msg=FootstepBuilderException.MSG,
                     err_code=FootstepBuilderException.ERR_CODE,
-                    ex=result.exception,
+                    ex=loading.exception,
                 )
             )
         # --- Cast result payload for the product assembly. ---#
-        blueprint = cast(FootstepBlueprint, result.payload)
+        blueprint = cast(FootstepBlueprint, loading.payload)
         
         # --- Send the work product. ---#
         product = Footstep(

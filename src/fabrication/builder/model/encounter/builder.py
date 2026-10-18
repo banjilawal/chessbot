@@ -58,7 +58,7 @@ class EncounterBuilder(ModelBuilder[Encounter]):
         Action:
             1.  Send an exception chain in the BuildResult if the loader does not produce
                 a blueprint.
-            2.  Otherwise, use the blueprint to assemble a Encounter for the success result.
+            2.  Otherwise, use the blueprint to assemble a Encounter for the success loading.
         Args:
             request: EncounterBuildRequest
         Returns:
@@ -69,9 +69,9 @@ class EncounterBuilder(ModelBuilder[Encounter]):
         method = f"{self.__class__.__name__}"
         
         # --- Handoff the request to loader for blueprint prepartion. ---#
-        result = self.loader.execute(request=request)
+        loading = self.loader.execute(request=request)
         # Handle the case that the loader aborts.
-        if result.is_failure:
+        if loading.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
                 EncounterBuilderException(
@@ -79,11 +79,11 @@ class EncounterBuilder(ModelBuilder[Encounter]):
                     cls_name=self.__class__.__name__,
                     msg=EncounterBuilderException.MSG,
                     err_code=EncounterBuilderException.ERR_CODE,
-                    ex=result.exception,
+                    ex=loading.exception,
                 )
             )
         # --- Cast result payload for the product assembly. ---#
-        blueprint = cast(EncounterBlueprint, result.payload)
+        blueprint = cast(EncounterBlueprint, loading.payload)
         
         # --- Send the work product. ---#
         product = Encounter(

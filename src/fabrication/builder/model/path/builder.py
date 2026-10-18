@@ -58,7 +58,7 @@ class PathBuilder(ModelBuilder[Path]):
         Action:
             1.  Send an exception chain in the BuildResult if the loader does not produce
                 a blueprint.
-            2.  Otherwise, use the blueprint to assemble a Path for the success result.
+            2.  Otherwise, use the blueprint to assemble a Path for the success loading.
         Args:
             request: PathBuildRequest
         Returns:
@@ -69,9 +69,9 @@ class PathBuilder(ModelBuilder[Path]):
         method = f"{self.__class__.__name__}"
         
         # --- Handoff the request to loader for blueprint prepartion. ---#
-        result = self.loader.execute(request=request)
+        loading = self.loader.execute(request=request)
         # Handle the case that the loader aborts.
-        if result.is_failure:
+        if loading.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
                 PathBuilderException(
@@ -79,11 +79,11 @@ class PathBuilder(ModelBuilder[Path]):
                     cls_name=self.__class__.__name__,
                     msg=PathBuilderException.MSG,
                     err_code=PathBuilderException.ERR_CODE,
-                    ex=result.exception,
+                    ex=loading.exception,
                 )
             )
         # --- Cast result payload for the product assembly. ---#
-        blueprint = cast(PathBlueprint, result.payload)
+        blueprint = cast(PathBlueprint, loading.payload)
         
         # --- Send the work product. ---#
         product = Path(

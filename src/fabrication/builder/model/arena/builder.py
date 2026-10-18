@@ -58,7 +58,7 @@ class ArenaBuilder(ModelBuilder[Arena]):
         Action:
             1.  Send an exception chain in the BuildResult if the loader does not produce
                 a blueprint.
-            2.  Otherwise, use the blueprint to assemble a Arena for the success result.
+            2.  Otherwise, use the blueprint to assemble a Arena for the success loading.
         Args:
             request: ArenaBuildRequest
         Returns:
@@ -69,9 +69,9 @@ class ArenaBuilder(ModelBuilder[Arena]):
         method = f"{self.__class__.__name__}"
         
         # --- Handoff the request to loader for blueprint prepartion. ---#
-        result = self.loader.execute(request=request)
+        loading = self.loader.execute(request=request)
         # Handle the case that the loader aborts.
-        if result.is_failure:
+        if loading.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
                 ArenaBuilderException(
@@ -79,11 +79,11 @@ class ArenaBuilder(ModelBuilder[Arena]):
                     cls_name=self.__class__.__name__,
                     msg=ArenaBuilderException.MSG,
                     err_code=ArenaBuilderException.ERR_CODE,
-                    ex=result.exception,
+                    ex=loading.exception,
                 )
             )
         # --- Cast result payload for the product assembly. ---#
-        blueprint = cast(ArenaBlueprint, result.payload)
+        blueprint = cast(ArenaBlueprint, loading.payload)
         id = blueprint.id or IdFactory.next_id(class_name="Arena")
         
         # --- Send the work product. ---#

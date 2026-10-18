@@ -58,7 +58,7 @@ class AlertBuilder(ModelBuilder[Alert]):
         Action:
             1.  Send an exception chain in the BuildResult if the loader does not produce
                 a blueprint.
-            2.  Otherwise, use the blueprint to assemble a Alert for the success result.
+            2.  Otherwise, use the blueprint to assemble a Alert for the success loading.
         Args:
             request: AlertBuildRequest
         Returns:
@@ -69,9 +69,9 @@ class AlertBuilder(ModelBuilder[Alert]):
         method = f"{self.__class__.__name__}"
         
         # --- Handoff the request to loader for blueprint prepartion. ---#
-        result = self.loader.execute(request=request)
+        loading = self.loader.execute(request=request)
         # Handle the case that the loader aborts.
-        if result.is_failure:
+        if loading.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
                 AlertBuilderException(
@@ -79,11 +79,11 @@ class AlertBuilder(ModelBuilder[Alert]):
                     cls_name=self.__class__.__name__,
                     msg=AlertBuilderException.MSG,
                     err_code=AlertBuilderException.ERR_CODE,
-                    ex=result.exception,
+                    ex=loading.exception,
                 )
             )
         # --- Cast result payload for the product assembly. ---#
-        blueprint = cast(AlertBlueprint, result.payload)
+        blueprint = cast(AlertBlueprint, loading.payload)
         
         # --- Send the work product. ---#
         product = Alert(

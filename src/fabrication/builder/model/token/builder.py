@@ -16,6 +16,7 @@ from domain import Token, TokenBlueprint
 from err import TokenBuilderException
 from exchange import TokenBuildRequest
 from fabrication import BuildFactory, TokenBuildLoader
+from transit import TokenBuildRouter
 from util import LoggingLevelRouter
 
 
@@ -29,6 +30,7 @@ class TokenBuilder(BuildFactory[Token]):
 
     Attributes:
        loader: TokenBuildLoader
+       router: TokenBuildRouter
 
     Provides:
         -   def execute(blueprint: TokenBlueprint) -> BuildResult[Token]
@@ -40,25 +42,35 @@ class TokenBuilder(BuildFactory[Token]):
     def __init__(
             self,
             loader: Optional[TokenBuildLoader] | None = None,
+            router: Optional[TokenBuildRouter] | None = None,
     ):
         """
         Args:
             loader: Optional[TokenBuildLoader]
+            router: Optional[TokenBuildRouter]
         """
-        super().__init__(loader=loader or TokenBuildLoader())
+        super().__init__(
+            loader=loader or TokenBuildLoader(),
+            router=router or TokenBuildRouter(),
+        )
     
     @property
     def loader(self) -> TokenBuildLoader:
         return cast(TokenBuildLoader, super().loader)
+    
+    @property
+    def router(self) -> TokenBuildRouter:
+        return cast(TokenBuildRouter, super().router)
     
     @LoggingLevelRouter.monitor
     def execute(self, request: TokenBuildRequest) -> BuildResult[Token]:
         """
         Assemble a Token from the Blueprint's contents.
         Action:
-            1.  Send an exception chain in the BuildResult if the loader does not produce
-                a blueprint.
-            2.  Otherwise, use the blueprint to assemble a Token for the success result.
+            1.  Send an exception chain in the BuildResult if either:
+                -   the loader does not produce a blueprint.
+                -   the router does not return a product from the blueprint.
+            2.  Otherwise, cast the product as a Token then send in the success result.
         Args:
             request: TokenBuildRequest
         Returns:
@@ -69,8 +81,24 @@ class TokenBuilder(BuildFactory[Token]):
         method = f"{self.__class__.__name__}"
         
         # --- Handoff the request to loader for blueprint prepartion. ---#
-        result = self.loader.execute(request=request)
+        loading = self.loader.execute(request=request)
         # Handle the case that the loader aborts.
+        if loading.is_failure:
+            # Send the exception chain on failure.
+            return BuildResult.failure(
+                TokenBuilderException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenBuilderException.MSG,
+                    err_code=TokenBuilderException.ERR_CODE,
+                    ex=loading.exception,
+                )
+            )
+        # --- Cast result payload for the product assembly. ---#
+        blueprint = cast(TokenBlueprint, loading.payload)
+        result = self.router.execute(blueprint)
+        
+        # Handle the case that a product is not routed back.
         if result.is_failure:
             # Send the exception chain on failure.
             return BuildResult.failure(
@@ -79,15 +107,8 @@ class TokenBuilder(BuildFactory[Token]):
                     cls_name=self.__class__.__name__,
                     msg=TokenBuilderException.MSG,
                     err_code=TokenBuilderException.ERR_CODE,
-                    ex=result.exception,
+                    ex=loading.exception,
                 )
             )
-        # --- Cast result payload for the product assembly. ---#
-        blueprint = cast(TokenBlueprint, result.payload)
-        
         # --- Send the work product. ---#
-        product = Token(
-            x=blueprint.x,
-            y=blueprint.y,
-        )
-        return BuildResult.success(product)
+        return BuildResult.success(cast(Token, result.payload))
