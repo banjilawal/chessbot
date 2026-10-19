@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Any, Optional, Type, cast
 
 from artifcat import BuildResult
-from authorization import AuthorizationLoader
+from authorization import AuthorizationLoader, PromotionAuthorizationForm
 from domain import PawnToken, Token
-from err import ChessException, PawnTokenPromotionConsistencyException, PromotionRequestNullException
-from exchange import PromotionAuthorizationForm, PromotionRequest, TokenValidationRequest, TokenValidationService
+from err import ChessException, PromotionRequestNullException
+from exchange import PromotionRequest, TokenValidationRequest, TokenValidationService
 from transit import PawnTokenCarrier
 from util import IdFactory, LoggingLevelRouter
 
@@ -101,7 +101,7 @@ class PromotionAuthorizationLoader(AuthorizationLoader[PromotionRequest]):
             )
         token_validation = self.validation_service.extract_model(
             request=TokenValidationRequest(
-                item=PawnTokenCarrier(model=operation.pawn),
+                item=PawnTokenCarrier(model=operation.candidate_pawn),
                 id=IdFactory.next_id(class_name="TokenValidationRequest")
             )
         )
@@ -133,7 +133,7 @@ class PromotionAuthorizationLoader(AuthorizationLoader[PromotionRequest]):
             id=form_id,
             operation=PromotionRequest(
                 id=operation_id,
-                pawn=pawn,
+                candidate_pawn=pawn,
                 
             )
         )

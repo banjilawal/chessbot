@@ -14,12 +14,12 @@ from typing import Any, Generic, Optional, TypeVar
 
 from artifcat import BuildResult
 from assurance import PrimingValidator
-from collection.database.coord.database import identity_service
-from exchange import AuthorizationForm, Request, ValidationService
+from authorization import AuthorizationForm
+from exchange import PermissionRequest, ValidationService
 from microservice import IdentityService
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Request")
+T = TypeVar("T", bound="PermissionRequest")
 
 class AuthorizationLoader(ABC, Generic[T]):
     _priming_validator: PrimingValidator
@@ -54,7 +54,6 @@ class AuthorizationLoader(ABC, Generic[T]):
     @property
     def priming_validator(self) -> PrimingValidator:
         return self._priming_validator
-    
     
     @abstractmethod
     @LoggingLevelRouter.monitor

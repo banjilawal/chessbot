@@ -18,7 +18,8 @@ from .insertion import *
 from .maneuver import *
 from .microservice import *
 from .operation import *
-from .promotion import *
+from .permission import *
+from exchange.request.permission.promotion import *
 from .validation import *
 from .operation import *
 

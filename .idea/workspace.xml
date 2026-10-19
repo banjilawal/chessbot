@@ -5,45 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/exchange/request/permission/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/exchange/request/permission/request.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/permission.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/permission.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/promotion/decision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/promotion/decision.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/loader/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/loader/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/loader/promotion/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/loader/promotion/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/operation/collection/deletion/stack/token/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/operation/collection/deletion/stack/token/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/operation/collection/insertion/stack/token/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/operation/collection/insertion/stack/token/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/permitter/permitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/permitter/permitter.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/exchange/request/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/authorization/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/form/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/authorization/promotion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/form/promotion/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/authorization/promotion/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/form/promotion/form.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/authorization/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/form/form.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/insertion/chain/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/insertion/chain/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/insertion/chain/vector/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/insertion/chain/vector/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/insertion/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/insertion/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/microservice/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/microservice/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/collection/deletion/chain/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/collection/deletion/chain/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/collection/deletion/chain/vector/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/collection/deletion/chain/vector/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/collection/deletion/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/collection/deletion/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/collection/deletion/stack/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/collection/deletion/stack/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/collection/deletion/stack/token/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/collection/deletion/stack/token/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/collection/insertion/chain/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/collection/insertion/chain/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/collection/insertion/chain/vector/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/collection/insertion/chain/vector/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/collection/insertion/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/collection/insertion/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/collection/insertion/stack/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/collection/insertion/stack/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/collection/insertion/stack/token/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/collection/insertion/stack/token/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/collection/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/collection/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/collection/search/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/collection/search/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/computation/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/computation/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/computation/vector/addition/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/computation/vector/addition/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/computation/vector/distance/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/computation/vector/distance/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/computation/vector/product/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/computation/vector/product/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/computation/vector/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/computation/vector/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/computation/vector/transform/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/computation/vector/transform/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/microservice/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/microservice/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/operation/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/operation/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/delete/stack/token/operation.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/delete/stack/token/operation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/operation/crud/insert/stack/token/operator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/operation/crud/insert/stack/token/operator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/promotion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/permission/promotion/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/exchange/request/promotion/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/permission/promotion/request.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,61 +52,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0000000819886814" />
-      <entry key="S2" value="1.0169215248856849" />
-      <entry key="S5" value="1.1967370654670746" />
-      <entry key="S10" value="1.481538560303377" />
-      <entry key="S30" value="2.292978901549339" />
-      <entry key="S60" value="3.1477617577871633" />
-      <entry key="M2" value="4.742695334223679" />
-      <entry key="M5" value="12.730793823279418" />
-      <entry key="M10" value="31.243408505448418" />
-      <entry key="M15" value="50.072659871497365" />
-      <entry key="M30" value="102.25075403723785" />
-      <entry key="H1" value="224.6646507408614" />
-      <entry key="H2" value="509.6855999004012" />
-      <entry key="H4" value="1017.6613554337912" />
-      <entry key="D1" value="3538.333885808772" />
-      <entry key="W1" value="20269.20808954632" />
+      <entry key="MS100" value="1.2896622867474993E-14" />
+      <entry key="MS500" value="0.0016676439587496995" />
+      <entry key="S2" value="0.2276193194672707" />
+      <entry key="S5" value="1.0120246182623376" />
+      <entry key="S10" value="2.333200312294309" />
+      <entry key="S30" value="5.586262091957941" />
+      <entry key="S60" value="8.708507174088735" />
+      <entry key="M2" value="14.060962121175184" />
+      <entry key="M5" value="44.63159876775965" />
+      <entry key="M10" value="114.49205856572067" />
+      <entry key="M15" value="170.82870385415382" />
+      <entry key="M30" value="282.31565397714274" />
+      <entry key="H1" value="438.84877731188055" />
+      <entry key="H2" value="735.5902683651314" />
+      <entry key="H4" value="1255.7093285815045" />
+      <entry key="D1" value="3831.999872122036" />
+      <entry key="W1" value="20576.446412810623" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="1.6805769882074419E-91" />
-      <entry key="S5" value="4.900546792558363E-37" />
-      <entry key="S10" value="7.149873742229493E-19" />
-      <entry key="S30" value="1.5917748120671164E-6" />
-      <entry key="S60" value="0.0030179165952615825" />
-      <entry key="M2" value="0.1589619811468549" />
-      <entry key="M5" value="2.428647249025982" />
-      <entry key="M10" value="8.336596108537737" />
-      <entry key="M15" value="14.076079193630159" />
-      <entry key="M30" value="27.2326258664431" />
-      <entry key="H1" value="45.583419522027306" />
-      <entry key="H2" value="71.65540551984816" />
-      <entry key="H4" value="104.32188162619487" />
-      <entry key="D1" value="219.22344437491455" />
-      <entry key="W1" value="1182.696160223124" />
+      <entry key="MS100" value="1.0000000369461686" />
+      <entry key="MS500" value="1.0326222477319287" />
+      <entry key="S2" value="1.4249897642772595" />
+      <entry key="S5" value="1.7101521204361443" />
+      <entry key="S10" value="1.8427052393548673" />
+      <entry key="S30" value="1.944550606797287" />
+      <entry key="S60" value="1.9718803929313857" />
+      <entry key="M2" value="1.987530964748055" />
+      <entry key="M5" value="2.274797447105737" />
+      <entry key="M10" value="4.156859959204473" />
+      <entry key="M15" value="7.28531896895614" />
+      <entry key="M30" value="18.555249453016373" />
+      <entry key="H1" value="38.434943405353835" />
+      <entry key="H2" value="67.65288213965677" />
+      <entry key="H4" value="104.13179848462343" />
+      <entry key="D1" value="226.25517463575707" />
+      <entry key="W1" value="1190.6856889863107" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9395227492140118" />
-      <entry key="MS500" value="0.9876009419697029" />
-      <entry key="S2" value="1.0137311544760017" />
-      <entry key="S5" value="1.1951290660544887" />
-      <entry key="S10" value="1.4798252413942246" />
-      <entry key="S30" value="2.2855161145756973" />
-      <entry key="S60" value="3.141860492958918" />
-      <entry key="M2" value="4.886029547679838" />
-      <entry key="M5" value="15.094346842500563" />
-      <entry key="M10" value="39.4578753803846" />
-      <entry key="M15" value="64.00157506300414" />
-      <entry key="M30" value="129.32801678133129" />
-      <entry key="H1" value="270.1140274304256" />
-      <entry key="H2" value="581.2376774913461" />
-      <entry key="H4" value="1121.9113364628795" />
-      <entry key="D1" value="3757.532199069103" />
-      <entry key="W1" value="21451.88398987602" />
+      <entry key="MS100" value="0.002859542375057218" />
+      <entry key="MS500" value="0.31352823347065856" />
+      <entry key="S2" value="1.1646939985117204" />
+      <entry key="S5" value="2.3794145509647286" />
+      <entry key="S10" value="3.942671928818214" />
+      <entry key="S30" value="7.416403176851202" />
+      <entry key="S60" value="10.586733557683061" />
+      <entry key="M2" value="15.966345540838647" />
+      <entry key="M5" value="46.84155639698402" />
+      <entry key="M10" value="118.57697981517217" />
+      <entry key="M15" value="178.02837739178838" />
+      <entry key="M30" value="300.7601538935577" />
+      <entry key="H1" value="477.1682162305902" />
+      <entry key="H2" value="803.1438930805607" />
+      <entry key="H4" value="1359.7681202503036" />
+      <entry key="D1" value="4058.228889551603" />
+      <entry key="W1" value="21767.1116816033" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -173,7 +140,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/artifcat/decision/promotion",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/exchange/request/permission",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -187,18 +154,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/exchange/request/permission" />
       <recent name="$PROJECT_DIR$/src/artifcat/decision/promotion" />
       <recent name="$PROJECT_DIR$/src/authorization/loader/promotion" />
       <recent name="$PROJECT_DIR$/src/exchange/request/authorization/promotion" />
       <recent name="$PROJECT_DIR$/src/exchange/request/authorization" />
-      <recent name="$PROJECT_DIR$/src/artifcat/response" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/exchange/request/permission" />
       <recent name="$PROJECT_DIR$/src/authorization" />
       <recent name="$PROJECT_DIR$/src/transit/router/fabrication" />
       <recent name="$PROJECT_DIR$/src/transit/router" />
       <recent name="$PROJECT_DIR$/src/fabrication/contractor" />
-      <recent name="$PROJECT_DIR$/src/assurance/validator" />
     </key>
   </component>
   <component name="RunManager" selected="Python.generator">
@@ -860,7 +827,7 @@
       <workItem from="1791213294391" duration="277057000" />
       <workItem from="1791925309191" duration="12463000" />
       <workItem from="1791980656972" duration="171851000" />
-      <workItem from="1792402033304" duration="8430000" />
+      <workItem from="1792402033304" duration="10623000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
