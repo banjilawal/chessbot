@@ -14,7 +14,7 @@ from typing import Optional, cast
 
 from assurance import PrimingValidator
 from authorization import ComputationRequest
-from artifcat.report import AuthorizationDecision
+from artifcat.report import Decision
 from util import LoggingLevelRouter
 
 
@@ -65,5 +65,5 @@ class AddVectorPermitter(ComputationPermitter[CartesianToggle]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: AddVectorRequest) -> AuthorizationDecision:
+    def execute(self, request: AddVectorRequest) -> Decision:
         pass

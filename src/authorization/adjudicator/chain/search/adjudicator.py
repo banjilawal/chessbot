@@ -26,7 +26,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, Optional, TypeVar
 
-from artifcat.report import AuthorizationDecision
+from artifcat.report import Decision
 from util import LoggingLevelRouter
 
 N = TypeVar("N", bound="Node")
@@ -80,7 +80,7 @@ class ChainSearchRequestAdjudicator(ChainRequestAdjudicator, Generic[N, R]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> AuthorizationDecision:
+    def execute(self, candidate: Any) -> Decision:
         pass
 
 

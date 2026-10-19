@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, TypeVar
 
 from assurance import PrimingValidator
-from artifcat.report import AuthorizationDecision
+from artifcat.report import Decision
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="ChainSearchRequest")
@@ -58,7 +58,7 @@ class VectorNodeSearchRequestAdjudicator(ChainSearchRequestAdjudicator[VectorNod
         
 
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> AuthorizationDecision:
+    def execute(self, candidate: Any) -> Decision:
         method = f"{self.__class__.__name__}.execute"
         
         bootstrap = self.priming_validator.execute(
@@ -67,7 +67,7 @@ class VectorNodeSearchRequestAdjudicator(ChainSearchRequestAdjudicator[VectorNod
             null_exception=VectorNodeSearchRequestNullException,
         )
         if bootstrap.is_failure:
-            return AuthorizationDecision.is_denied(
+            return Decision.is_denied(
                 exception=VectorNodeSearchRequestException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -80,7 +80,7 @@ class VectorNodeSearchRequestAdjudicator(ChainSearchRequestAdjudicator[VectorNod
         
         node_validation = self.node_validator.execute(request.target)
         if node_validation.is_failure:
-            return AuthorizationDecision.is_denied(
+            return Decision.is_denied(
                 exception=VectorNodeSearchRequestException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,

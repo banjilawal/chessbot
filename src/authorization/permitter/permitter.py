@@ -55,5 +55,5 @@ class OperationPermitter(ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> AuthorizationDecision[T]:
+    def execute(self, request: T) -> Decision[T]:
         pass

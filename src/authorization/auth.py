@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
-from artifcat import AuthorizationDecision
+from artifcat import Decision
 from authorization import PermissionUtility
 from domain import Request
 from util import LoggingLevelRouter
@@ -32,7 +32,7 @@ class RequestAuthorizer(ABC, Generic[T]):
         utility: PermissionUtility[T]
 
     Provides:
-        - execute(self, request: T) -> AuthorizationDecision
+        - execute(self, request: T) -> Decision
 
     Super Class:
     """
@@ -51,13 +51,13 @@ class RequestAuthorizer(ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> AuthorizationDecision:
+    def execute(self, request: T) -> Decision:
         """
         Decide if Request satisfies permission requirements.
         Args:
             request: T
         Returns:
-            AuthorizationDecision
+            Decision
         Raises:
             RequestAuthorizerException
         """

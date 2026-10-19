@@ -15,7 +15,7 @@ from sensor.detector.token import TokenCollisionDetector
 from err import TokenPushPermitterException
 from domain.model import Token
 from authorization.permitter.stack import StackPushPermitter, RankSlotPermitter
-from artifcat.report import PushApprovalReport, AuthorizationDecision
+from artifcat.report import PushApprovalReport, Decision
 from client.exchange import TokenStackPushRequest, RankSlotRequest
 from collection.stack import TokenStackService
 from authorization.adjudicator import TokenPushRequestAdjudicator
@@ -66,7 +66,7 @@ class TokenStackPushPermitter(StackPushPermitter[Token]):
         
         
     @LoggingLevelRouter.monitor
-    def execute(self, request: TokenStackPushRequest, ) -> AuthorizationDecision:
+    def execute(self, request: TokenStackPushRequest, ) -> Decision:
         """
         Action:
             1.  Return a failure result containing an exception chain if either:

@@ -13,3 +13,4 @@ from enum import Enum, auto
 class Permission(Enum):
     GRANTED = auto(),
     DENIED = auto(),
+    TIMED_OUT = auto(),

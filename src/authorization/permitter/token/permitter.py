@@ -14,7 +14,7 @@ from typing import Generic, Optional, TypeVar, cast
 
 from assurance import PrimingValidator
 from authorization import OperationPermitter, Request, TokenRequestAdjudicator
-from artifcat.report import AuthorizationDecision
+from artifcat.report import Decision
 from util import LoggingLevelRouter
 
 
@@ -66,5 +66,5 @@ class TokenOperationPermitter(OperationPermitter, ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> AuthorizationDecision:
+    def execute(self, request: T) -> Decision:
         pass

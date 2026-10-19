@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from authorization import RequestAuthorizer
-from artifcat.report import AuthorizationDecision
+from artifcat.report import Decision
 from client.exchange import Request
 from artifcat import Result
 from util import LoggingLevelRouter
@@ -38,5 +38,5 @@ class AuthorizationDispatcher(ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: Request[T]) -> AuthorizationDecision:
+    def execute(self, request: Request[T]) -> Decision:
         pass

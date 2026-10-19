@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
-from artifcat import AuthorizationDecision
+from artifcat import Decision
 from authorization import CrudPermissionUtility, RequestAuthorizer
 from domain import CrudRequest
 from util import LoggingLevelRouter
@@ -33,7 +33,7 @@ class CrudAuthorizer(RequestAuthorizer[T], ABC, Generic[T]):
         utility: CrudPermissionUtility[T]
 
     Provides:
-        - execute(self, request: T) -> AuthorizationDecision
+        - execute(self, request: T) -> Decision
 
     Super Class:
     """
@@ -51,13 +51,13 @@ class CrudAuthorizer(RequestAuthorizer[T], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> AuthorizationDecision:
+    def execute(self, request: T) -> Decision:
         """
         Decide if CrudRequest satisfies permission requirements.
         Args:
             request: T
         Returns:
-            AuthorizationDecision
+            Decision
         Raises:
             CrudAuthorizerException
         """

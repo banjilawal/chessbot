@@ -15,7 +15,7 @@ from typing import Generic, TypeVar, cast
 from authorization import InsertionRequestAuthorizer
 from collection import DomainObjectCollection
 from transit.dispatcher import AuthorizationDispatcher
-from artifcat.report import AuthorizationDecision
+from artifcat.report import Decision
 from client.exchange import InsertionRequest
 from artifcat import InsertionResult
 from util import LoggingLevelRouter
@@ -38,5 +38,5 @@ class InsertionDispatcher(AuthorizationDispatcher[InsertionResult], ABC, Generic
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: InsertionRequest[T]) -> AuthorizationDecision:
+    def execute(self, request: InsertionRequest[T]) -> Decision:
         pass

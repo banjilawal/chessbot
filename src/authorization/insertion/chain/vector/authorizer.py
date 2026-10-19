@@ -14,7 +14,7 @@ from typing import Optional, cast
 from authorization import AddNodeRequestAuthorizer
 from collection import VectorChain
 from domain.struct.node import VectorNode
-from artifcat.report import AuthorizationDecision
+from artifcat.report import Decision
 from client.exchange import AddVectorNodeRequest
 from operation.utility import AddVectorNodePermissionUtility
 from util import LoggingLevelRouter
@@ -40,7 +40,7 @@ class AddVectorNodeRequestAuthorizer(AddNodeRequestAuthorizer[VectorNode]):
 
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: AddVectorNodeRequest) -> AuthorizationDecision:
+    def execute(self, candidate: AddVectorNodeRequest) -> Decision:
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that the candidate is null or the wrong type
@@ -51,7 +51,7 @@ class AddVectorNodeRequestAuthorizer(AddNodeRequestAuthorizer[VectorNode]):
         )
         if bootstrap.is_failure:
             # Send an exception chain in the authorization denial.
-            return AuthorizationDecision.deny(
+            return Decision.deny(
                 AddVectorNodeRequestAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -70,7 +70,7 @@ class AddVectorNodeRequestAuthorizer(AddNodeRequestAuthorizer[VectorNode]):
         )
         if chain_validation.is_failure:
             # Send an exception chain in the authorization denial.
-            return AuthorizationDecision.deny(
+            return Decision.deny(
                 AddVectorNodeRequestAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -89,7 +89,7 @@ class AddVectorNodeRequestAuthorizer(AddNodeRequestAuthorizer[VectorNode]):
         )
         if node_validation.is_failure:
             # Send an exception chain in the authorization denial.
-            return AuthorizationDecision.deny(
+            return Decision.deny(
                 AddVectorNodeRequestAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
@@ -102,9 +102,9 @@ class AddVectorNodeRequestAuthorizer(AddNodeRequestAuthorizer[VectorNode]):
         node = cast(VectorNode, node_validation.payload)
         vector_validation = self.utility.vector_validator.execute(node.payload)
         if vector_validation.is_failure:
-            return AuthorizationDecision.deny(vector_validation.exception)
+            return Decision.deny(vector_validation.exception)
         
-        return AuthorizationDecision.grant(request)
+        return Decision.grant(request)
         
         
         

@@ -18,5 +18,5 @@ class ManeuverAdviser:
     
     
     @LoggingLevelRouter.monitor
-    def advice(self, graph: Graph) -> AuthorizationDecision:
+    def advice(self, graph: Graph) -> Decision:
         pass

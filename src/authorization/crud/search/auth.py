@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
-from artifcat import AuthorizationDecision
+from artifcat import Decision
 from authorization import CrudAuthorizer, SearchPermissionUtility
 from domain import SearchRequest
 from util import LoggingLevelRouter
@@ -33,7 +33,7 @@ class SearchAuthorizer(CrudAuthorizer[T], ABC, Generic[T]):
          utility: SearchPermissionUtility[T]
 
     Provides:
-        - execute(self, request: T) -> AuthorizationDecision
+        - execute(self, request: T) -> Decision
 
     Super Class:
         CrudAuthorizer
@@ -52,13 +52,13 @@ class SearchAuthorizer(CrudAuthorizer[T], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> AuthorizationDecision:
+    def execute(self, request: T) -> Decision:
         """
         Decide if a SearchRequest satisfies permission requirements.
         Args:
             request: T
         Returns:
-            AuthorizationDecision
+            Decision
         Raises:
             SearchAuthorizerException
         """

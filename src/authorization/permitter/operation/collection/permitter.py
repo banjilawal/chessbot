@@ -14,7 +14,7 @@ from typing import Generic, Optional, TypeVar
 
 from assurance import PrimingValidator
 from authorization import CollectionRequest, OperationPermitter
-from artifcat.report import AuthorizationDecision
+from artifcat.report import Decision
 from util import LoggingLevelRouter
 
 
@@ -63,5 +63,5 @@ class CollectionPermitter(OperationPermitter, ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: CollectionRequest[T]) -> AuthorizationDecision:
+    def execute(self, request: CollectionRequest[T]) -> Decision:
         pass

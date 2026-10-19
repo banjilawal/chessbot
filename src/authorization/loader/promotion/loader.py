@@ -28,5 +28,5 @@ class PromotionAuthorizationLoader(AuthorizationLoader[PromotionRequest]):
         self._validator = validator or TokenValidationService()
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> AuthorizationDecision[Promotion]:
+    def execute(self, candidate: Any) -> Decision[Promotion]:
         pass

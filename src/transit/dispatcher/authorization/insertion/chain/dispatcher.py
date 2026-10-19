@@ -17,7 +17,7 @@ from collection import Chain
 from transit.dispatcher import InsertionDispatcher
 from domain.struct.node import Node
 
-from artifcat.report import AuthorizationDecision
+from artifcat.report import Decision
 from client.exchange import AddNodeRequest
 
 from util import LoggingLevelRouter
@@ -42,5 +42,5 @@ class AddNodeDispatcher(InsertionDispatcher[Chain], ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: AddNodeRequest[T]) -> AuthorizationDecision:
+    def execute(self, request: AddNodeRequest[T]) -> Decision:
         pass

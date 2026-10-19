@@ -14,7 +14,7 @@ from typing import Generic, Optional, TypeVar
 
 from assurance import PrimingValidator
 from authorization import MicroserviceRequest, OperationPermitter
-from artifcat.report import AuthorizationDecision
+from artifcat.report import Decision
 from util import LoggingLevelRouter
 
 
@@ -64,5 +64,5 @@ class MicroservicePermitter(OperationPermitter, ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: MicroserviceRequest[T]) -> AuthorizationDecision:
+    def execute(self, request: MicroserviceRequest[T]) -> Decision:
         pass

@@ -13,8 +13,9 @@ from abc import ABC
 from typing import Generic, Optional, TypeVar
 
 from artifcat import Permission
+from exchange import Request
 
-T = TypeVar("T", bound="Result")
+T = TypeVar("T", bound="Request")
 
 class Decision(ABC, Generic[T]):
     """
@@ -25,30 +26,41 @@ class Decision(ABC, Generic[T]):
         1.  Report if an action is permitted.
         
     Attributes:
+        request: T
         permission: Permission
         exception: Optional[Exception]
+        
+        is_granted: bool
         is_denied: bool
-        is_granted
         
     Provides:
         -   def deny(exception: Exception) -> Exception
 
     Super Class:
     """
+    _request: T
     _permission: Permission
     _exception: Optional[Exception]
   
-    def __init__(self,
+    def __init__(
+            self,
+            request: T,
             permission: Permission,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
+            request: T
             permission: Permission
             exception: Optional[Exception]
         """
+        self._request = request
         self._exception = exception
         self._permission = permission
+    
+    @property
+    def request(self) -> T:
+        return self._request
         
     @property
     def permission(self) -> Permission:
@@ -67,6 +79,32 @@ class Decision(ABC, Generic[T]):
     
     @property
     def is_denied(self) -> bool:
-        return not self.is_granted
+        return (
+            self._exception is not None and
+            (
+                    self._permission == Permission.DENIED or
+                    self._permission == Permission.TIMED_OUT
+            )
+        )
+    
+    @classmethod
+    def grant(cls, request: T) -> Decision:
+        return cls(request=request, permission=Permission.GRANTED)
+    
+    @classmethod
+    def deny(cls, request: T, exception: Exception) -> Decision:
+        return cls(
+            request=request,
+            exception=exception,
+            permission=Permission.DENIED,
+        )
+    
+    @classmethod
+    def timed_out(cls, request: T, exception: Exception) -> Decision:
+        return cls(
+            request=request,
+            exception=exception,
+            permission=Permission.TIMED_OUT,
+        )
     
     

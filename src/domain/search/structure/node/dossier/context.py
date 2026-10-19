@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Dict, Optional
 
 from domain import StructContext, Dossier, Square, Token
-from artifcat.report import AuthorizationDecision
+from artifcat.report import Decision
 
 
 class DossierNodeContext(StructContext[Dossier]):
@@ -28,7 +28,7 @@ class DossierNodeContext(StructContext[Dossier]):
         token: Optional[Token]
         source: Optional[Square]
         destination: Optional[Square]
-        decision: Optional[AuthorizationDecision]
+        decision: Optional[Decision]
 
     Provides:
         - to_dict() -> Dict[str, Any]
@@ -39,7 +39,7 @@ class DossierNodeContext(StructContext[Dossier]):
     _token: Optional[Token]
     _source: Optional[Square]
     _destination: Optional[Square]
-    _decision: Optional[AuthorizationDecision]
+    _decision: Optional[Decision]
     
     def __init__(
             self,
@@ -47,7 +47,7 @@ class DossierNodeContext(StructContext[Dossier]):
             token: Optional[Token] | None = None,
             source: Optional[Square] | None = None,
             destination: Optional[Square] | None = None,
-            decision: Optional[AuthorizationDecision] | None = None,
+            decision: Optional[Decision] | None = None,
     ):
         """
         Args:
@@ -55,7 +55,7 @@ class DossierNodeContext(StructContext[Dossier]):
             token: Optional[Token]
             source: Optional[Square]
             destination: Optional[Square]
-            decision: Optional[AuthorizationDecision]
+            decision: Optional[Decision]
         """
         super().__init__(offset=offset)
         self._token = token
@@ -76,7 +76,7 @@ class DossierNodeContext(StructContext[Dossier]):
         return self._destination
     
     @property
-    def decision(self) -> Optional[AuthorizationDecision]:
+    def decision(self) -> Optional[Decision]:
         return self._decision
     
     @property

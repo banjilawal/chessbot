@@ -14,7 +14,7 @@ from typing import Generic, TypeVar, cast
 
 from authorization import InsertionRequestAuthorizer
 from domain.struct.node import Node
-from artifcat.report import AuthorizationDecision
+from artifcat.report import Decision
 from client.exchange import AddNodeRequest
 from operation.utility import AddNodePermissionUtility
 from util import LoggingLevelRouter
@@ -32,7 +32,7 @@ class AddNodeRequestAuthorizer(InsertionRequestAuthorizer, ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: AddNodeRequest[T]) -> AuthorizationDecision:
+    def execute(self, request: AddNodeRequest[T]) -> Decision:
         pass
     
     
