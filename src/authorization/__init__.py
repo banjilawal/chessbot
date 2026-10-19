@@ -13,6 +13,7 @@ version: 0.0.2
 from .adjudicator import *
 from .crud import *
 from .insertion import *
+from .loader import *
 from .permitter import *
 from .utility import *
 

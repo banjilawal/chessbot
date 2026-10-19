@@ -10,15 +10,13 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, Optional, TypeVar
+from typing import Generic, TypeVar
 
-from assurance import PrimingValidator
-from authorization import Request, RequestAdjudicator
-from artifcat.report import AuthorizationDecision
+from authorization import AuthorizationLoader
 from util import LoggingLevelRouter
 
 
-T = TypeVar("T", bound="Result")
+T = TypeVar("T", bound="AuthorizationRequest")
 
 
 class OperationPermitter(ABC, Generic[T]):
@@ -35,38 +33,27 @@ class OperationPermitter(ABC, Generic[T]):
         4.  Cast to the approrpate Request type before forwarding Adjudicator approvals to the client
 
     Attributes:
-        priming_validator: PrimingValidator
+        loader: AuthorizationLoader[T]
         
     Provides:
         -  def execute(self, request: Request) -> RequestDecision
 
     Super Class:
     """
-    _adjudicator: RequestAdjudicator
-    _priming_validator: PrimingValidator
+    _loader: AuthorizationLoader[T]
     
-    def __init__(
-            self,
-            adjudicator: RequestAdjudicator,
-            priming_validator: Optional[PrimingValidator] |  None = None,
-    ):
+    def __init__(self, loader: AuthorizationLoader[T]):
         """
         Args:
-            adjudicator: Adjudicator,
-            priming_validator: Optional[PrimingValidator]
+            loader: AuthorizationLoader[T]
         """
-        self._adjudicator = adjudicator
-        self._priming_validator = priming_validator or PrimingValidator()
-
-    @property
-    def adjudicator(self) -> RequestAdjudicator:
-        return self._adjudicator
+        self._loader = loader
         
     @property
-    def priming_validator(self) -> PrimingValidator:
-        return self._priming_validator
+    def loader(self) -> AuthorizationLoader[T]:
+        return self._loader
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: Request) -> AuthorizationDecision:
+    def execute(self, request: T) -> AuthorizationDecision[T]:
         pass
