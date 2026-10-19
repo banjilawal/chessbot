@@ -10,9 +10,12 @@ version: 0.0.2
 # =========== ASSURANCE.ENVELOPE.CONSUMER.RANK PACKAGE ===========#
 
 # Packages
-from .combatant import *
+from .bishop import *
 from .king import *
+from .knight import *
 from .pawn import *
+from .queen import *
+from .rook import *
 
 # Module
 from .consumer import RankEnvelopeConsumer

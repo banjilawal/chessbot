@@ -10,9 +10,6 @@ version: 0.0.2
 # =========== ASSURANCE.VALIDATOR.MODEL.ACCOUNT PACKAGE ===========#
 
 # Packages
-from .enemy import *
-from .king import *
-from .pawn import *
 
 # Modules
 from .validator import AccountValidator

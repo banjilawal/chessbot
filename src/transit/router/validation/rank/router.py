@@ -12,6 +12,10 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ValidationResult
+from assurance import (
+    BishopEnvelopeConsumer, KingEnvelopeConsumer, KnightEnvelopeConsumer, PawnEnvelopeConsumer,
+    QueenEnvelopeConsumer, RookEnvelopeConsumer
+)
 from domain import Rank
 from err import (
     RankValidationRouteMissingException, RankValidationRouterException, RootRankEnvelopeNullException
@@ -70,12 +74,12 @@ class RankValidationRouter(ValidationRouter[Rank]):
             rook_consumer: Optional[RookEnvelopeConsumer]
         """
         super().__init__()
-        self._bishop_consumer = king_consumer or BishopEnvelopeConsumer()
+        self._bishop_consumer = bishop_consumer or BishopEnvelopeConsumer()
         self._king_consumer = king_consumer or KingEnvelopeConsumer()
         self._knight_consumer = knight_consumer or KnightEnvelopeConsumer()
         self._pawn_consumer = pawn_consumer or PawnEnvelopeConsumer()
-        self._queen_consumer = king_consumer or QueenEnvelopeConsumer()
-        self._rook_consumer = pawn_consumer or RookEnvelopeConsumer()
+        self._queen_consumer = queen_consumer or QueenEnvelopeConsumer()
+        self._rook_consumer = rook_consumer or RookEnvelopeConsumer()
     
     @LoggingLevelRouter.monitor
     def execute(self, envelope: RootRankEnvelope) -> ValidationResult[RankCarrier]:
@@ -132,16 +136,16 @@ class RankValidationRouter(ValidationRouter[Rank]):
         # Route to the king_rank_validation consumers
         if safe.for_king_consumer:
             result = self._king_consumer.execute(envelope=safe)
-        # Route to the king_rank_validation consumers
+        # Route to the knight_rank_validation consumers
         if safe.for_knight_consumer:
             result = self._knight_consumer.execute(envelope=safe)
         # Route to pawn_rank_validation consumers.
         if safe.for_pawn_consumer:
             result = self._pawn_consumer.execute(envelope=safe)
-        # Route to the king_rank_validation consumers
+        # Route to the queen_rank_validation consumers
         if safe.for_queen_consumer:
             result = self._queen_consumer.execute(envelope=safe)
-        # Route to pawn_rank_validation consumers.
+        # Route to rook_rank_validation consumers.
         if safe.for_rook_consumer:
             result = self._rook_consumer.execute(envelope=safe)
 
