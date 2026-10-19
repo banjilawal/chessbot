@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/authorization/loader/promotion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/authorization/loader/promotion/loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/loader/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/loader/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/decision/decision.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/decision/decision.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,60 +48,60 @@
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
       <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0000152376505447" />
-      <entry key="S2" value="1.0625059050485486" />
-      <entry key="S5" value="1.349414190445849" />
-      <entry key="S10" value="1.793710843844869" />
-      <entry key="S30" value="3.665539453868346" />
-      <entry key="S60" value="6.798068119653361" />
-      <entry key="M2" value="14.300812402208386" />
-      <entry key="M5" value="44.36035258860669" />
-      <entry key="M10" value="104.925917466679" />
-      <entry key="M15" value="163.258073445985" />
-      <entry key="M30" value="292.5140984522248" />
-      <entry key="H1" value="452.8977605859101" />
-      <entry key="H2" value="725.8310382154401" />
-      <entry key="H4" value="1155.631187176706" />
-      <entry key="D1" value="3376.2545360965864" />
-      <entry key="W1" value="20049.61401370397" />
+      <entry key="MS500" value="1.00005233343692" />
+      <entry key="S2" value="1.1273935322661937" />
+      <entry key="S5" value="1.656790905463101" />
+      <entry key="S10" value="2.1459577282659543" />
+      <entry key="S30" value="4.450884519201696" />
+      <entry key="S60" value="13.047409460181457" />
+      <entry key="M2" value="28.334914885376737" />
+      <entry key="M5" value="53.981745036561975" />
+      <entry key="M10" value="95.21293937955932" />
+      <entry key="M15" value="143.1549242151954" />
+      <entry key="M30" value="272.85839586821" />
+      <entry key="H1" value="450.89922752798" />
+      <entry key="H2" value="738.378596213897" />
+      <entry key="H4" value="1181.4289459660963" />
+      <entry key="D1" value="3430.1554006009046" />
+      <entry key="W1" value="20107.66208420557" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="2.8802089951024583E-191" />
-      <entry key="S2" value="3.18349056965251E-48" />
-      <entry key="S5" value="1.6052468500166848E-19" />
-      <entry key="S10" value="6.917807290403226E-10" />
-      <entry key="S30" value="0.002651372590897293" />
-      <entry key="S60" value="0.1468928847253847" />
-      <entry key="M2" value="1.2289094463951102" />
-      <entry key="M5" value="5.269427107396533" />
-      <entry key="M10" value="10.295405078774401" />
-      <entry key="M15" value="14.08702082506174" />
-      <entry key="M30" value="21.93842657512267" />
-      <entry key="H1" value="31.37503533366034" />
-      <entry key="H2" value="44.953436071084624" />
-      <entry key="H4" value="63.191955144432555" />
-      <entry key="D1" value="151.87105854583342" />
-      <entry key="W1" value="1114.0556978678253" />
+      <entry key="MS500" value="6.74076938900009E-182" />
+      <entry key="S2" value="5.095389260601947E-46" />
+      <entry key="S5" value="7.636088392568527E-19" />
+      <entry key="S10" value="8.738565621246035E-10" />
+      <entry key="S30" value="9.893139595329927E-4" />
+      <entry key="S60" value="0.039070757659003814" />
+      <entry key="M2" value="0.3073224463902394" />
+      <entry key="M5" value="1.688921799159035" />
+      <entry key="M10" value="5.108683437233583" />
+      <entry key="M15" value="8.708338932576732" />
+      <entry key="M30" value="17.491373567761233" />
+      <entry key="H1" value="28.656436472550563" />
+      <entry key="H2" value="43.71563115712256" />
+      <entry key="H4" value="63.167172055365654" />
+      <entry key="D1" value="153.6494405902586" />
+      <entry key="W1" value="1115.78024631915" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9592641193252643" />
-      <entry key="MS500" value="0.9917318003315159" />
-      <entry key="S2" value="1.06025558441271" />
-      <entry key="S5" value="1.347938220558926" />
-      <entry key="S10" value="1.7839029052800666" />
-      <entry key="S30" value="3.609800280818182" />
-      <entry key="S60" value="6.862063426043918" />
-      <entry key="M2" value="15.414329571379884" />
-      <entry key="M5" value="49.48750359436829" />
-      <entry key="M10" value="115.0853441993048" />
-      <entry key="M15" value="177.2190618688736" />
-      <entry key="M30" value="314.3507725791057" />
-      <entry key="H1" value="484.19964839407146" />
-      <entry key="H2" value="770.7341930117735" />
-      <entry key="H4" value="1218.789264843918" />
-      <entry key="D1" value="3528.1094918953377" />
-      <entry key="W1" value="21163.650743622155" />
+      <entry key="MS100" value="0.8179020585577811" />
+      <entry key="MS500" value="0.9605999023205863" />
+      <entry key="S2" value="1.0676896225916896" />
+      <entry key="S5" value="1.5402844039204966" />
+      <entry key="S10" value="2.043171234737096" />
+      <entry key="S30" value="4.4002325514267735" />
+      <entry key="S60" value="13.045962062736088" />
+      <entry key="M2" value="28.584723603706887" />
+      <entry key="M5" value="55.584842865094004" />
+      <entry key="M10" value="100.22002022767722" />
+      <entry key="M15" value="151.7579965883965" />
+      <entry key="M30" value="290.2522114029579" />
+      <entry key="H1" value="479.47971905676883" />
+      <entry key="H2" value="782.0403629139628" />
+      <entry key="H4" value="1244.5596309639677" />
+      <entry key="D1" value="3583.7881522411344" />
+      <entry key="W1" value="21223.423281803407" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -117,38 +115,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.__init__.executor": "Debug",
-    "Python.checker.executor": "Run",
-    "Python.node.executor": "Run",
-    "Python.notifier.executor": "Debug",
-    "Python.ray.executor": "Coverage",
-    "Python.responder.executor": "Run",
-    "Python.roster.executor": "Run",
-    "Python.stack.executor": "Debug",
-    "Python.table.executor": "Debug",
-    "Python.validator (1).executor": "Run",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/authorization/loader/promotion",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.jshint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.jshint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.__init__.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.checker.executor&quot;: &quot;Run&quot;,
+    &quot;Python.node.executor&quot;: &quot;Run&quot;,
+    &quot;Python.notifier.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.ray.executor&quot;: &quot;Coverage&quot;,
+    &quot;Python.responder.executor&quot;: &quot;Run&quot;,
+    &quot;Python.roster.executor&quot;: &quot;Run&quot;,
+    &quot;Python.stack.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.table.executor&quot;: &quot;Debug&quot;,
+    &quot;Python.validator (1).executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/griot/PycharmProjects/chessbot/src/authorization/loader/promotion&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/authorization/loader/promotion" />
@@ -823,7 +821,7 @@
       <workItem from="1790671354344" duration="262742000" />
       <workItem from="1791213294391" duration="277057000" />
       <workItem from="1791925309191" duration="12463000" />
-      <workItem from="1791980656972" duration="170815000" />
+      <workItem from="1791980656972" duration="171851000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -2465,11 +2463,6 @@
           <url>file://$PROJECT_DIR$/src/assurance/envelope/consumer/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="566" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/authorization/loader/promotion/loader.py</url>
-          <line>11</line>
-          <option name="timeStamp" value="568" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

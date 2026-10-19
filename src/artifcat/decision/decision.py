@@ -14,7 +14,7 @@ from typing import Generic, Optional, TypeVar
 
 from artifcat import Permission
 
-T = TypeVar("T")
+T = TypeVar("T", bound="Result")
 
 class Decision(ABC, Generic[T]):
     """
