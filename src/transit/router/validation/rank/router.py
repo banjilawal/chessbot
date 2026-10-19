@@ -13,6 +13,7 @@ from typing import Optional, cast
 
 from artifcat import ValidationResult
 from domain import Rank
+from err import RankValidationRouteMissingException, RankValidationRouterException
 from transit import RootRankEnvelope, RankCarrier, ValidationRouter
 from util import LoggingLevelRouter
 
@@ -56,7 +57,6 @@ class RankValidationRouter(ValidationRouter[Rank]):
             pawn_consumer: Optional[PawnEnvelopeConsumer] | None = None,
             queen_consumer: Optional[QueenEnvelopeConsumer] | None = None,
             rook_consumer: Optional[RookEnvelopeConsumer] | None = None,
-            toolkit: Optional[RankValidatorToolkit] | None = None,
     ):
         """
         Args:
@@ -66,19 +66,14 @@ class RankValidationRouter(ValidationRouter[Rank]):
             pawn_consumer: Optional[PawnEnvelopeConsumer]
             queen_consumer: Optional[QueenEnvelopeConsumer]
             rook_consumer: Optional[RookEnvelopeConsumer]
-            toolkit: Optional[RankValidatorToolkit]
         """
-        super().__init__(toolkit=toolkit or RankValidatorToolkit())
+        super().__init__()
         self._bishop_consumer = king_consumer or BishopEnvelopeConsumer()
         self._king_consumer = king_consumer or KingEnvelopeConsumer()
         self._knight_consumer = knight_consumer or KnightEnvelopeConsumer()
         self._pawn_consumer = pawn_consumer or PawnEnvelopeConsumer()
         self._queen_consumer = king_consumer or QueenEnvelopeConsumer()
         self._rook_consumer = pawn_consumer or RookEnvelopeConsumer()
-    
-    @property
-    def toolkit(self) -> RankValidatorToolkit:
-        return cast(RankValidatorToolkit, super().toolkit)
     
     @LoggingLevelRouter.monitor
     def execute(self, envelope: RootRankEnvelope) -> ValidationResult[RankCarrier]:
@@ -105,7 +100,7 @@ class RankValidationRouter(ValidationRouter[Rank]):
         priming = self.toolkit.priming_validator.execute(
             candidate=envelope,
             target_model=RootRankEnvelope,
-            null_exception=RootRankEnvelopeNullException(),
+            null_exception=RankEnvelopeNullException(),
         )
         if priming.is_failure:
             # Send the exception chain on failure.
@@ -136,8 +131,8 @@ class RankValidationRouter(ValidationRouter[Rank]):
         if safe.for_king_consumer:
             result = self._king_consumer.execute(envelope=safe)
         # Route to the king_rank_validation consumers
-        if safe.for_king_consumer:
-            result = self._king_consumer.execute(envelope=safe)
+        if safe.for_knight_consumer:
+            result = self._knight_consumer.execute(envelope=safe)
         # Route to pawn_rank_validation consumers.
         if safe.for_pawn_consumer:
             result = self._pawn_consumer.execute(envelope=safe)

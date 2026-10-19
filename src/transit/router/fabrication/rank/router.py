@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import BuildResult
 from domain import Bishop, King, Knight, Pawn, Queen, Rank, RankBlueprint, Rook
 from err import RankBlueprintNullException, RankBuildRouteMissingException, RankBuildRouterException
-from transit import Rank, BuildRouter
+from transit import BuildRouter
 from util import LoggingLevelRouter
 
 

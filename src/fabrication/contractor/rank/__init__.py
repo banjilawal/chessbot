@@ -14,8 +14,8 @@ from .bishop import *
 from .king import *
 from .knight import *
 from .pawn import *
-from .rook import *
 from .queen import *
+from .rook import *
 
 # Modules
 from .contractor import RankSubcontractor
