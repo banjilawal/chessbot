@@ -1,7 +1,7 @@
-# src/exchange/request/request.py
+# src/exchange/request/authorization/request.py
 
 """
-Module: exchange.request.request
+Module: exchange.request.authorization.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2

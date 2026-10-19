@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== EXCHANGE.REQUEST.AUTHORIZATION PACKAGE ===========#
 
 # Packages
+from .promotion import *
 
 # Modules
 from .request import AuthorizationRequest
