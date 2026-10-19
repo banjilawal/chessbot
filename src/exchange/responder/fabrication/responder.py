@@ -33,8 +33,9 @@ class BuildResponder(Responder[BuildResult], ABC, Generic[T]):
     Provides:
         -   def submit(request: BuildRequest[T]) -> BuildResponse[T]
 
+
     Super Class:
-        Exchange
+        Responder
     """
     
     def __init__(self, dispatcher: BuildDispatcher[T]):

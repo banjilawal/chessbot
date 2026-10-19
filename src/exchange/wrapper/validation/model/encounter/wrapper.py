@@ -100,7 +100,7 @@ class EncounterValidationServer(
                 )
             )
         response = cast(AttackValidationResponse, result)
-        if not response.valid_model:
+        if not response.promoted_pawn:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 AttackValidationResponderException(
@@ -117,7 +117,7 @@ class EncounterValidationServer(
                 )
             )
         # --- Send the work product. ---#
-        model = cast(Encounter, response.valid_model)
+        model = cast(Encounter, response.promoted_pawn)
         return ValidationResult.success(model)
     
     @LoggingLevelRouter.monitor

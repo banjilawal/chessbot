@@ -33,8 +33,9 @@ class ValidationResponder(Responder[ValidationResult], ABC, Generic[T]):
     Provides:
         -   def submit(request: ValidationRequest[T]) -> ValidationResponse[T]
 
+
     Super Class:
-        Exchange
+        Responder
     """
     
     def __init__(self, dispatcher: ValidationDispatcher[T]):
