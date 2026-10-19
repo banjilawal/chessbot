@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import ValidationResult
 from assurance import RankValidatorToolkit
 from domain import Pawn, PawnBlueprint, Persona
-from err import PawnCarrierEmptyException, PawnValidatorException, PersonaNullException, WrongPersonaException
+from err import PawnCarrierEmptyException, PawnValidatorException, PersonaNullException, WrongPersonaExceptionPersona
 from transit import PawnCarrier
 from util import LoggingLevelRouter
 
@@ -118,11 +118,11 @@ class PawnValidator:
                     cls_name=self.__class__.__name__,
                     msg=PawnValidatorException.MSG,
                     err_code=PawnValidatorException.ERR_CODE,
-                    ex=WrongPersonaException(
+                    ex=WrongPersonaExceptionPersona(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=WrongPersonaException.MSG,
-                        err_code=WrongPersonaException.ERR_CODE,
+                        msg=WrongPersonaExceptionPersona.MSG,
+                        err_code=WrongPersonaExceptionPersona.ERR_CODE,
                     ),
                 )
             )

@@ -12,15 +12,15 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import RankConsistencyException
+from err import RankPersonaConsistencyException
 
 __all__ = [
     # ======================# WRONG_PERSONA_ERROR #======================#
-    "WrongPersonaException",
+    "WrongPersonaExceptionPersona",
 ]
 
 # ======================# WRONG_PERSONA_ERROR #======================#
-class WrongPersonaException(RankConsistencyException):
+class WrongPersonaExceptionPersona(RankPersonaConsistencyException):
     """
     Role:
         - Error Tracing
@@ -43,7 +43,7 @@ class WrongPersonaException(RankConsistencyException):
     Super Class:
         RankConsistencyException
     """
-    MSG = "Persona  consistency check failed."
+    MSG = "Persona .persona consistency check failed."
     ERR_CODE = "WRONG_PERSONA_ERROR"
     
     def __init__(

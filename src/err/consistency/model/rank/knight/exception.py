@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import RankConsistencyException
+from err import RankPersonaConsistencyException
 
 __all__ = [
-    # ======================# KNIGHT_CONSISTENCY_ERROR #======================#
-    "KnightConsistencyException",
+    # ======================# KNIGHT_PERSONA_CONSISTENCY_ERROR #======================#
+    "KnightPersonaConsistencyException",
 ]
 
-# ======================# KNIGHT_CONSISTENCY_ERROR #======================#
-class KnightConsistencyException(RankConsistencyException):
+# ======================# KNIGHT_PERSONA_CONSISTENCY_ERROR #======================#
+class KnightPersonaConsistencyException(RankPersonaConsistencyException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Knight  consistency check failed.
+        1.  Indicating a Knight .persona consistency check failed.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class KnightConsistencyException(RankConsistencyException):
     Super Class:
         RankConsistencyException
     """
-    MSG = "Knight  consistency check failed."
-    ERR_CODE = "KNIGHT_CONSISTENCY_ERROR"
+    MSG = "Knight .persona consistency check failed."
+    ERR_CODE = "KNIGHT_PERSONA_CONSISTENCY_ERROR"
     
     def __init__(
             self,

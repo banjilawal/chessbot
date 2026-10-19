@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import RankConsistencyException
+from err import RankPersonaConsistencyException
 
 __all__ = [
-    # ======================# PAWN_CONSISTENCY_ERROR #======================#
-    "PawnConsistencyException",
+    # ======================# PAWN_PERSONA_CONSISTENCY_ERROR #======================#
+    "PawnPersonaConsistencyException",
 ]
 
-# ======================# PAWN_CONSISTENCY_ERROR #======================#
-class PawnConsistencyException(RankConsistencyException):
+# ======================# PAWN_PERSONA_CONSISTENCY_ERROR #======================#
+class PawnPersonaConsistencyException(RankPersonaConsistencyException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Pawn  consistency check failed.
+        1.  Indicating a Pawn .persona consistency check failed.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class PawnConsistencyException(RankConsistencyException):
     Super Class:
         RankConsistencyException
     """
-    MSG = "Pawn  consistency check failed."
-    ERR_CODE = "PAWN_CONSISTENCY_ERROR"
+    MSG = "Pawn .persona consistency check failed."
+    ERR_CODE = "PAWN_PERSONA_CONSISTENCY_ERROR"
     
     def __init__(
             self,

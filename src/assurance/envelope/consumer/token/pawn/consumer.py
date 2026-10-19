@@ -262,7 +262,7 @@ class PawnTokenEnvelopeConsumer(
             model.captor = safe.captor
             model.readiness = safe.readiness
             model.promotion_state = promotion_state
-            model.deployment = safe.Deployment
+            model.deployment = safe.deployment
             carrier = PawnTokenCarrier(model=model)
             return ValidationResult.success(carrier)        
         # Otherwise, the client is a VectorBuilder that needs a Blueprint.

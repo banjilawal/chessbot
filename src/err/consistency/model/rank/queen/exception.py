@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import RankConsistencyException
+from err import RankPersonaConsistencyException
 
 __all__ = [
-    # ======================# QUEEN_CONSISTENCY_ERROR #======================#
-    "QueenConsistencyException",
+    # ======================# QUEEN_PERSONA_CONSISTENCY_ERROR #======================#
+    "QueenPersonaConsistencyException",
 ]
 
-# ======================# QUEEN_CONSISTENCY_ERROR #======================#
-class QueenConsistencyException(RankConsistencyException):
+# ======================# QUEEN_PERSONA_CONSISTENCY_ERROR #======================#
+class QueenPersonaConsistencyException(RankPersonaConsistencyException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Queen  consistency check failed.
+        1.  Indicating a Queen .persona consistency check failed.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class QueenConsistencyException(RankConsistencyException):
     Super Class:
         RankConsistencyException
     """
-    MSG = "Queen  consistency check failed."
-    ERR_CODE = "QUEEN_CONSISTENCY_ERROR"
+    MSG = "Queen .persona consistency check failed."
+    ERR_CODE = "QUEEN_PERSONA_CONSISTENCY_ERROR"
     
     def __init__(
             self,

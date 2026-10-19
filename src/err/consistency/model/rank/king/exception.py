@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import RankConsistencyException
+from err import RankPersonaConsistencyException
 
 __all__ = [
-    # ======================# KING_CONSISTENCY_ERROR #======================#
-    "KingConsistencyException",
+    # ======================# KING_PERSONA_CONSISTENCY_ERROR #======================#
+    "KingPersonaConsistencyException",
 ]
 
-# ======================# KING_CONSISTENCY_ERROR #======================#
-class KingConsistencyException(RankConsistencyException):
+# ======================# KING_PERSONA_CONSISTENCY_ERROR #======================#
+class KingPersonaConsistencyException(RankPersonaConsistencyException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a King  consistency check failed.
+        1.  Indicating a King .persona consistency check failed.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class KingConsistencyException(RankConsistencyException):
     Super Class:
         RankConsistencyException
     """
-    MSG = "King  consistency check failed."
-    ERR_CODE = "KING_CONSISTENCY_ERROR"
+    MSG = "King .persona consistency check failed."
+    ERR_CODE = "KING_PERSONA_CONSISTENCY_ERROR"
     
     def __init__(
             self,

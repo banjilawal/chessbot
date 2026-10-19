@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import ValidationResult
 from assurance import RankValidatorToolkit
 from domain import Bishop, BishopBlueprint, Persona
-from err import BishopCarrierEmptyException, BishopValidatorException, PersonaNullException, WrongPersonaException
+from err import BishopCarrierEmptyException, BishopValidatorException, PersonaNullException, WrongPersonaExceptionPersona
 from transit import BishopCarrier
 from util import LoggingLevelRouter
 
@@ -118,11 +118,11 @@ class BishopValidator:
                     cls_name=self.__class__.__name__,
                     msg=BishopValidatorException.MSG,
                     err_code=BishopValidatorException.ERR_CODE,
-                    ex=WrongPersonaException(
+                    ex=WrongPersonaExceptionPersona(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=WrongPersonaException.MSG,
-                        err_code=WrongPersonaException.ERR_CODE,
+                        msg=WrongPersonaExceptionPersona.MSG,
+                        err_code=WrongPersonaExceptionPersona.ERR_CODE,
                     ),
                 )
             )

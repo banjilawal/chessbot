@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import RankConsistencyException
+from err import RankPersonaConsistencyException
 
 __all__ = [
-    # ======================# BISHOP_CONSISTENCY_ERROR #======================#
-    "BishopConsistencyException",
+    # ======================# BISHOP_PERSONA_CONSISTENCY_ERROR #======================#
+    "BishopPersonaConsistencyException",
 ]
 
-# ======================# BISHOP_CONSISTENCY_ERROR #======================#
-class BishopConsistencyException(RankConsistencyException):
+# ======================# BISHOP_PERSONA_CONSISTENCY_ERROR #======================#
+class BishopPersonaConsistencyException(RankPersonaConsistencyException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Bishop  consistency check failed.
+        1.  Indicating a Bishop .persona consistency check failed.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class BishopConsistencyException(RankConsistencyException):
     Super Class:
         RankConsistencyException
     """
-    MSG = "Bishop  consistency check failed."
-    ERR_CODE = "BISHOP_CONSISTENCY_ERROR"
+    MSG = "Bishop .persona consistency check failed."
+    ERR_CODE = "BISHOP_PERSONA_CONSISTENCY_ERROR"
     
     def __init__(
             self,

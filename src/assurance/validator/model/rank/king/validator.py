@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import ValidationResult
 from assurance import RankValidatorToolkit
 from domain import King, KingBlueprint, Persona
-from err import KingCarrierEmptyException, KingValidatorException, PersonaNullException, WrongPersonaException
+from err import KingCarrierEmptyException, KingValidatorException, PersonaNullException, WrongPersonaExceptionPersona
 from transit import KingCarrier
 from util import LoggingLevelRouter
 
@@ -118,11 +118,11 @@ class KingValidator:
                     cls_name=self.__class__.__name__,
                     msg=KingValidatorException.MSG,
                     err_code=KingValidatorException.ERR_CODE,
-                    ex=WrongPersonaException(
+                    ex=WrongPersonaExceptionPersona(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=WrongPersonaException.MSG,
-                        err_code=WrongPersonaException.ERR_CODE,
+                        msg=WrongPersonaExceptionPersona.MSG,
+                        err_code=WrongPersonaExceptionPersona.ERR_CODE,
                     ),
                 )
             )

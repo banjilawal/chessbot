@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import ValidationResult
 from assurance import RankValidatorToolkit
 from domain import Knight, KnightBlueprint, Persona
-from err import KnightCarrierEmptyException, KnightValidatorException, PersonaNullException, WrongPersonaException
+from err import KnightCarrierEmptyException, KnightValidatorException, PersonaNullException, WrongPersonaExceptionPersona
 from transit import KnightCarrier
 from util import LoggingLevelRouter
 
@@ -118,11 +118,11 @@ class KnightValidator:
                     cls_name=self.__class__.__name__,
                     msg=KnightValidatorException.MSG,
                     err_code=KnightValidatorException.ERR_CODE,
-                    ex=WrongPersonaException(
+                    ex=WrongPersonaExceptionPersona(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=WrongPersonaException.MSG,
-                        err_code=WrongPersonaException.ERR_CODE,
+                        msg=WrongPersonaExceptionPersona.MSG,
+                        err_code=WrongPersonaExceptionPersona.ERR_CODE,
                     ),
                 )
             )

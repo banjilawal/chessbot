@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import ValidationResult
 from assurance import RankValidatorToolkit
 from domain import Rook, RookBlueprint, Persona
-from err import RookCarrierEmptyException, RookValidatorException, PersonaNullException, WrongPersonaException
+from err import RookCarrierEmptyException, RookValidatorException, PersonaNullException, WrongPersonaExceptionPersona
 from transit import RookCarrier
 from util import LoggingLevelRouter
 
@@ -118,11 +118,11 @@ class RookValidator:
                     cls_name=self.__class__.__name__,
                     msg=RookValidatorException.MSG,
                     err_code=RookValidatorException.ERR_CODE,
-                    ex=WrongPersonaException(
+                    ex=WrongPersonaExceptionPersona(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=WrongPersonaException.MSG,
-                        err_code=WrongPersonaException.ERR_CODE,
+                        msg=WrongPersonaExceptionPersona.MSG,
+                        err_code=WrongPersonaExceptionPersona.ERR_CODE,
                     ),
                 )
             )

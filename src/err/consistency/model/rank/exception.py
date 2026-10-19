@@ -16,18 +16,18 @@ from artifcat import MethodResultType
 
 
 __all__ = [
-    # ======================# RANK_CONSISTENCY_ERROR #======================#
-    "RankConsistencyException",
+    # ======================# RANK_PERSONA_CONSISTENCY_ERROR #======================#
+    "RankPersonaConsistencyException",
 ]
 
-# ======================# RANK_CONSISTENCY_ERROR #======================#
-class RankConsistencyException(ModelConsistencyException):
+# ======================# RANK_PERSONA_CONSISTENCY_ERROR #======================#
+class RankPersonaConsistencyException(ModelConsistencyException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Rank consistency check failed.
+        1.  Indicating a Rank.persona consistency check failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,8 +44,8 @@ class RankConsistencyException(ModelConsistencyException):
     Super Class:
         ModelConsistencyException
     """
-    MSG = "Rank consistency check failed."
-    ERR_CODE = "RANK_CONSISTENCY_ERROR"
+    MSG = "Rank.persona consistency check failed."
+    ERR_CODE = "RANK_PERSONA_CONSISTENCY_ERROR"
     
     def __init__(
             self,

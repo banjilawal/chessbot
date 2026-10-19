@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import RankConsistencyException
+from err import RankPersonaConsistencyException
 
 __all__ = [
-    # ======================# ROOK_CONSISTENCY_ERROR #======================#
-    "RookConsistencyException",
+    # ======================# ROOK_PERSONA_CONSISTENCY_ERROR #======================#
+    "RookPersonaConsistencyException",
 ]
 
-# ======================# ROOK_CONSISTENCY_ERROR #======================#
-class RookConsistencyException(RankConsistencyException):
+# ======================# ROOK_PERSONA_CONSISTENCY_ERROR #======================#
+class RookPersonaConsistencyException(RankPersonaConsistencyException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a Rook  consistency check failed.
+        1.  Indicating a Rook .persona consistency check failed.
 
     Attributes:
         msg: Optional[str]
@@ -43,8 +43,8 @@ class RookConsistencyException(RankConsistencyException):
     Super Class:
         RankConsistencyException
     """
-    MSG = "Rook  consistency check failed."
-    ERR_CODE = "ROOK_CONSISTENCY_ERROR"
+    MSG = "Rook .persona consistency check failed."
+    ERR_CODE = "ROOK_PERSONA_CONSISTENCY_ERROR"
     
     def __init__(
             self,
