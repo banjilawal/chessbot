@@ -9,7 +9,6 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
 from typing import Generic, TypeVar
 
 from artifcat import BuildResult
@@ -19,7 +18,7 @@ from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Rank")
 
-class RankSubcontractor(BuildSubcontractor[T], ABC, Generic[T]):
+class RankSubcontractor(BuildSubcontractor[T], Generic[T]):
     """
     Role
         -   Builder

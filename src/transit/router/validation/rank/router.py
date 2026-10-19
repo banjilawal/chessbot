@@ -13,7 +13,9 @@ from typing import Optional, cast
 
 from artifcat import ValidationResult
 from domain import Rank
-from err import RankValidationRouteMissingException, RankValidationRouterException
+from err import (
+    RankValidationRouteMissingException, RankValidationRouterException, RootRankEnvelopeNullException
+)
 from transit import RootRankEnvelope, RankCarrier, ValidationRouter
 from util import LoggingLevelRouter
 
@@ -100,7 +102,7 @@ class RankValidationRouter(ValidationRouter[Rank]):
         priming = self.toolkit.priming_validator.execute(
             candidate=envelope,
             target_model=RootRankEnvelope,
-            null_exception=RankEnvelopeNullException(),
+            null_exception=RootRankEnvelopeNullException(),
         )
         if priming.is_failure:
             # Send the exception chain on failure.

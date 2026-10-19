@@ -10,7 +10,11 @@ version: 0.0.2
 # =========== FABRICATION.CONTRACTOR PACKAGE ===========#
 
 # Packages
-from .model import *
+from .account import *
+from .encounter import *
+from .rank import *
+from .square import *
+from .token import *
 
 # Modules
 from .contractor import BuildSubcontractor
