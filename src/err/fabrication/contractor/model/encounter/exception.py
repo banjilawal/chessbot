@@ -27,7 +27,7 @@ class EncounterSubcontractorException(ModelSubcontractorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a EncounterContractor failed.
+        1.  Indicating a EncounterSubcontractor failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class EncounterSubcontractorException(ModelSubcontractorException):
     Super Class:
         ModelSubcontractorException
     """
-    MSG = "EncounterContractor failed."
+    MSG = "EncounterSubcontractor failed."
     ERR_CODE = "ENCOUNTER_SUBCONTRACTOR_FAILURE"
     
     def __init__(

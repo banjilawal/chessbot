@@ -11,7 +11,6 @@ version: 0.0.2
 
 # Packages
 
-
 # Modules
 from .setting import DefaultFontSizeSetting
 from .property import TextFunctionProperty

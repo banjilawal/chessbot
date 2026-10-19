@@ -30,9 +30,9 @@ class GameContextSubcontractorException(ContextSubcontractorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a GameContextContractor failed.
+        1.  Indicating a GameContextSubcontractor failed.
 
-   Contractor failed.s:
+   Subcontractor failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -46,7 +46,7 @@ class GameContextSubcontractorException(ContextSubcontractorException):
     Super Class:
         ContextSubcontractorException
     """
-    MSG = "GameContextContractor failed."
+    MSG = "GameContextSubcontractor failed."
     ERR_CODE = "GAME_CONTEXT_SUBCONTRACTOR_FAILURE"
     
     def __init__(

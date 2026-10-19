@@ -30,9 +30,9 @@ class SquareArchetypeBinderSubcontractorException(ArchetypeBinderSubcontractorEx
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a SquareBinderContractor failed.
+        1.  Indicating a SquareBinderSubcontractor failed.
 
-   Contractor failed.s:
+   Subcontractor failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -46,7 +46,7 @@ class SquareArchetypeBinderSubcontractorException(ArchetypeBinderSubcontractorEx
     Super Class:
         BinderSubcontractorException
     """
-    MSG = "SquareBinderContractor failed."
+    MSG = "SquareBinderSubcontractor failed."
     ERR_CODE = "SQUARE_BINDER_SUBCONTRACTOR_FAILURE"
     
     def __init__(

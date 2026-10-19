@@ -10,6 +10,5 @@ version: 0.0.2
 # =========== OPERATION.CRUD.SEARCH.ORIGIN PACKAGE ===========#
 # Packages
 
-
 # Modules
 from .searcher import TokenOriginSearcher

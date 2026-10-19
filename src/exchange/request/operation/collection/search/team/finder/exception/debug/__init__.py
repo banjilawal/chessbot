@@ -10,7 +10,6 @@ version: 1.0.0
 
 # Packages
 
-
 # Modules
 from .route import TeamSearchRouteException
 from .id import TeamSearchIdCollisionException

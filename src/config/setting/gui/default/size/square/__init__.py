@@ -11,7 +11,6 @@ version: 0.0.2
 
 # Packages
 
-
 # Modules
 from .setting import DefaultSquareSizeSetting
 from .property import SquareProperty

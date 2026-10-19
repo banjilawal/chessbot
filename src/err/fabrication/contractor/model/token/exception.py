@@ -27,7 +27,7 @@ class TokenSubcontractorException(ModelSubcontractorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a TokenContractor failed.
+        1.  Indicating a TokenSubcontractor failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class TokenSubcontractorException(ModelSubcontractorException):
     Super Class:
         ModelSubcontractorException
     """
-    MSG = "TokenContractor failed."
+    MSG = "TokenSubcontractor failed."
     ERR_CODE = "TOKEN_SUBCONTRACTOR_FAILURE"
     
     def __init__(

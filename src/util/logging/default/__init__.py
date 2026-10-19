@@ -15,7 +15,6 @@ from util import LogLevelMode
 
 # Packages
 
-
 # Modules
 
 # Set default log level and logger name

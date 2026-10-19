@@ -44,7 +44,7 @@ class KingTokenSubcontractorException(TokenSubcontractorException):
     Super Class:
         TokenSubcontractorException
     """
-    MSG = "KingTokenContractor failed."
+    MSG = "KingTokenSubcontractor failed."
     ERR_CODE = "KING_TOKEN_SUBCONTRACTOR_FAILURE"
     
     def __init__(

@@ -44,7 +44,7 @@ class HumanAccountSubcontractorException(AccountSubcontractorException):
     Super Class:
         AccountSubcontractorException
     """
-    MSG = "HumanAccountContractor failed."
+    MSG = "HumanAccountSubcontractor failed."
     ERR_CODE = "HUMAN_ACCOUNT_SUBCONTRACTOR_FAILURE"
     
     def __init__(

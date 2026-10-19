@@ -30,9 +30,9 @@ class CoordContextSubcontractorException(ContextSubcontractorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a CoordContextContractor failed.
+        1.  Indicating a CoordContextSubcontractor failed.
 
-   Contractor failed.s:
+   Subcontractor failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -46,7 +46,7 @@ class CoordContextSubcontractorException(ContextSubcontractorException):
     Super Class:
         ContextSubcontractorException
     """
-    MSG = "CoordContextContractor failed."
+    MSG = "CoordContextSubcontractor failed."
     ERR_CODE = "COORD_CONTEXT_SUBCONTRACTOR_FAILURE"
     
     def __init__(

@@ -11,7 +11,6 @@ version: 1.0.0
 
 # Packages
 
-
 # Modules
 from .span import SquareSpanNullException
 from .ray import SquareSpanRaysNullException

@@ -25,9 +25,9 @@ class VectorContextSubcontractorException(ContextSubcontractorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a VectorContextContractor failed.
+        1.  Indicating a VectorContextSubcontractor failed.
 
-   Contractor failed.s:
+   Subcontractor failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -41,7 +41,7 @@ class VectorContextSubcontractorException(ContextSubcontractorException):
     Super Class:
         ContextSubcontractorException
     """
-    MSG = "VectorContextContractor failed."
+    MSG = "VectorContextSubcontractor failed."
     ERR_CODE = "VECTOR_CONTEXT_SUBCONTRACTOR_FAILURE"
     
     def __init__(

@@ -11,7 +11,6 @@ version: 0.0.2
 
 # Packages
 
-
 # Modules
 from .result import ParseResult
 from .state import ParseState

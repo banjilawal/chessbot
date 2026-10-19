@@ -27,7 +27,7 @@ class AccountSubcontractorException(ModelSubcontractorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a AccountContractor failed.
+        1.  Indicating a AccountSubcontractor failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class AccountSubcontractorException(ModelSubcontractorException):
     Super Class:
         ModelSubcontractorException
     """
-    MSG = "AccountContractor failed."
+    MSG = "AccountSubcontractor failed."
     ERR_CODE = "ACCOUNT_SUBCONTRACTOR_FAILURE"
     
     def __init__(

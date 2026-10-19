@@ -30,9 +30,9 @@ class PersonaContextSubcontractorException(ContextSubcontractorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a PersonaContextContractor failed.
+        1.  Indicating a PersonaContextSubcontractor failed.
 
-   Contractor failed.s:
+   Subcontractor failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -46,7 +46,7 @@ class PersonaContextSubcontractorException(ContextSubcontractorException):
     Super Class:
         ContextSubcontractorException
     """
-    MSG = "PersonaContextContractor failed."
+    MSG = "PersonaContextSubcontractor failed."
     ERR_CODE = "PERSONA_CONTEXT_SUBCONTRACTOR_FAILURE"
     
     def __init__(

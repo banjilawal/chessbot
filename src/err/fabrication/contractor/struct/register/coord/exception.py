@@ -27,9 +27,9 @@ class CoordRegisterSubcontractorException(RegisterSubcontractorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a CoordRegisterContractor failed.
+        1.  Indicating a CoordRegisterSubcontractor failed.
 
-   Contractor failed.s:
+   Subcontractor failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -43,7 +43,7 @@ class CoordRegisterSubcontractorException(RegisterSubcontractorException):
     Super Class:
         RegisterSubcontractorException
     """
-    MSG = "CoordRegisterContractor failed."
+    MSG = "CoordRegisterSubcontractor failed."
     ERR_CODE = "COORD_REGISTER_SUBCONTRACTOR_FAILURE"
     
     def __init__(

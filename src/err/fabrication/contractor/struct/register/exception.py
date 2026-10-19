@@ -27,9 +27,9 @@ class RegisterSubcontractorException(StructSubcontractorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a RegisterContractor failed.
+        1.  Indicating a RegisterSubcontractor failed.
 
-   Contractor failed.s:
+   Subcontractor failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -43,7 +43,7 @@ class RegisterSubcontractorException(StructSubcontractorException):
     Super Class:
         StructSubcontractorException
     """
-    MSG = "RegisterContractor failed."
+    MSG = "RegisterSubcontractor failed."
     ERR_CODE = "REGISTER_SUBCONTRACTOR_FAILURE"
     
     def __init__(

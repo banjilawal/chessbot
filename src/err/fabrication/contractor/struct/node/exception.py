@@ -27,9 +27,9 @@ class NodeSubcontractorException(StructSubcontractorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a NodeContractor failed.
+        1.  Indicating a NodeSubcontractor failed.
 
-   Contractor failed.s:
+   Subcontractor failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -43,7 +43,7 @@ class NodeSubcontractorException(StructSubcontractorException):
     Super Class:
         StructSubcontractorException
     """
-    MSG = "NodeContractor failed."
+    MSG = "NodeSubcontractor failed."
     ERR_CODE = "NODE_SUBCONTRACTOR_FAILURE"
     
     def __init__(

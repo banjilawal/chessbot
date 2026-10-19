@@ -44,7 +44,7 @@ class KillEncounterSubcontractorException(EncounterSubcontractorException):
     Super Class:
         EncounterSubcontractorException
     """
-    MSG = "KillEncounterContractor failed."
+    MSG = "KillEncounterSubcontractor failed."
     ERR_CODE = "KILL_ENCOUNTER_SUBCONTRACTOR_FAILURE"
     
     def __init__(

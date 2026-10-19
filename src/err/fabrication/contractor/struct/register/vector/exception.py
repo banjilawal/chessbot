@@ -27,9 +27,9 @@ class VectorRegisterSubcontractorException(RegisterSubcontractorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a VectorRegisterContractor failed.
+        1.  Indicating a VectorRegisterSubcontractor failed.
 
-   Contractor failed.s:
+   Subcontractor failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -43,7 +43,7 @@ class VectorRegisterSubcontractorException(RegisterSubcontractorException):
     Super Class:
         RegisterSubcontractorException
     """
-    MSG = "VectorRegisterContractor failed."
+    MSG = "VectorRegisterSubcontractor failed."
     ERR_CODE = "VECTOR_REGISTER_SUBCONTRACTOR_FAILURE"
     
     def __init__(

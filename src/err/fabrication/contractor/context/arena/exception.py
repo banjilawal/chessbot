@@ -30,9 +30,9 @@ class ArenaContextSubcontractorException(ContextSubcontractorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a ArenaContextContractor failed.
+        1.  Indicating a ArenaContextSubcontractor failed.
 
-   Contractor failed.s:
+   Subcontractor failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -46,7 +46,7 @@ class ArenaContextSubcontractorException(ContextSubcontractorException):
     Super Class:
         ContextSubcontractorException
     """
-    MSG = "ArenaContextContractor failed."
+    MSG = "ArenaContextSubcontractor failed."
     ERR_CODE = "ARENA_CONTEXT_SUBCONTRACTOR_FAILURE"
     
     def __init__(

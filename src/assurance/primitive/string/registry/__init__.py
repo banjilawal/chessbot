@@ -13,6 +13,5 @@ version: 0.0.2
 
 # Packages
 
-
 # Modules
 from .validator import RegistryEntryNameValidator

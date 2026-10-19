@@ -10,7 +10,6 @@ version: 1.0.0
 
 # Packages
 
-
 # Modules
 from .route import SquareSearchRouteException
 from .exist import SquareNotFoundException

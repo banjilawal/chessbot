@@ -10,6 +10,5 @@ version: 1.0.0
 
 # Packages
 
-
 # Modules
 from .missing import MissingSchemaSearchRouteException

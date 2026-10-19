@@ -44,7 +44,7 @@ class MachineAccountSubcontractorException(AccountSubcontractorException):
     Super Class:
         AccountSubcontractorException
     """
-    MSG = "MachineAccountContractor failed."
+    MSG = "MachineAccountSubcontractor failed."
     ERR_CODE = "MACHINE_ACCOUNT_SUBCONTRACTOR_FAILURE"
     
     def __init__(

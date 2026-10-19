@@ -11,7 +11,6 @@ version: 1.0.0
 
 # Packages
 
-
 # Modules
 from .king import AttackingEnemyKingException
 from .disabled import AttackingDisabledEnemyException

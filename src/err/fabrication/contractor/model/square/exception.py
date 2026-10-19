@@ -27,7 +27,7 @@ class SquareSubcontractorException(ModelSubcontractorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a SquareContractor failed.
+        1.  Indicating a SquareSubcontractor failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class SquareSubcontractorException(ModelSubcontractorException):
     Super Class:
         ModelSubcontractorException
     """
-    MSG = "SquareContractor failed."
+    MSG = "SquareSubcontractor failed."
     ERR_CODE = "SQUARE_SUBCONTRACTOR_FAILURE"
     
     def __init__(

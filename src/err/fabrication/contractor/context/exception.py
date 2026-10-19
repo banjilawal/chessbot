@@ -29,7 +29,7 @@ class ContextSubcontractorException(SubcontractorException):
     Responsibilities:
         1.  Indicating a ContextBuild failed.
 
-   Contractor failed.s:
+   Subcontractor failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -43,7 +43,7 @@ class ContextSubcontractorException(SubcontractorException):
     Super Class:
         SubcontractorException
     """
-    MSG = "context'sContractor failed."
+    MSG = "context'sSubcontractor failed."
     ERR_CODE = "CONTEXT_SUBCONTRACTOR_FAILURE"
     
     def __init__(

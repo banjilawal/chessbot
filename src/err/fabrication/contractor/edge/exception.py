@@ -27,7 +27,7 @@ class EdgeSubcontractorException(SubcontractorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an EdgeContractor failed.
+        1.  Indicating an EdgeSubcontractor failed.
 
     Attributes:
         msg: Optional[str]
@@ -44,7 +44,7 @@ class EdgeSubcontractorException(SubcontractorException):
     Super Class:
         SubcontractorException
     """
-    MSG = "EdgeContractor failed."
+    MSG = "EdgeSubcontractor failed."
     ERR_CODE = "EDGE_SUBCONTRACTOR_FAILURE"
     
     def __init__(

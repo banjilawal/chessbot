@@ -30,9 +30,9 @@ class TeamArchetypeBinderSubcontractorException(ArchetypeBinderSubcontractorExce
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a TeamBinderContractor failed.
+        1.  Indicating a TeamBinderSubcontractor failed.
 
-   Contractor failed.s:
+   Subcontractor failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -46,7 +46,7 @@ class TeamArchetypeBinderSubcontractorException(ArchetypeBinderSubcontractorExce
     Super Class:
         BinderSubcontractorException
     """
-    MSG = "TeamBinderContractor failed."
+    MSG = "TeamBinderSubcontractor failed."
     ERR_CODE = "TEAM_BINDER_SUBCONTRACTOR_FAILURE"
     
     def __init__(

@@ -26,7 +26,7 @@ class StructSubcontractorException(SubcontractorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a StructContractor failed.
+        1.  Indicating a StructSubcontractor failed.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class StructSubcontractorException(SubcontractorException):
     Super Class:
         SubcontractorException
     """
-    MSG = "StructContractor failed."
+    MSG = "StructSubcontractor failed."
     ERR_CODE = "STRUCT_SUBCONTRACTOR_FAILURE"
     
     def __init__(

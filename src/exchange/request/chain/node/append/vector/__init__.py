@@ -11,6 +11,5 @@ version: 0.0.2
 
 # Packages
 
-
 # Modules
 from exchange.request.chain.node.append.vector.request import AppendVectorNodeRequest

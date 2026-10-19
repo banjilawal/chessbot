@@ -44,7 +44,7 @@ class StalemateEncounterSubcontractorException(EncounterSubcontractorException):
     Super Class:
         EncounterSubcontractorException
     """
-    MSG = "StalemateEncounterContractor failed."
+    MSG = "StalemateEncounterSubcontractor failed."
     ERR_CODE = "STALEMATE_ENCOUNTER_SUBCONTRACTOR_FAILURE"
     
     def __init__(

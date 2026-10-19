@@ -30,9 +30,9 @@ class RankContextSubcontractorException(ContextSubcontractorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a RankContextContractor failed.
+        1.  Indicating a RankContextSubcontractor failed.
 
-   Contractor failed.s:
+   Subcontractor failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -46,7 +46,7 @@ class RankContextSubcontractorException(ContextSubcontractorException):
     Super Class:
         ContextSubcontractorException
     """
-    MSG = "RankContextContractor failed."
+    MSG = "RankContextSubcontractor failed."
     ERR_CODE = "RANK_CONTEXT_SUBCONTRACTOR_FAILURE"
     
     def __init__(

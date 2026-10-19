@@ -30,9 +30,9 @@ class HostageContextSubcontractorException(ContextSubcontractorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a HostageContextContractor failed.
+        1.  Indicating a HostageContextSubcontractor failed.
 
-   Contractor failed.s:
+   Subcontractor failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -46,7 +46,7 @@ class HostageContextSubcontractorException(ContextSubcontractorException):
     Super Class:
         ContextSubcontractorException
     """
-    MSG = "HostageContextContractor failed."
+    MSG = "HostageContextSubcontractor failed."
     ERR_CODE = "HOSTAGE_CONTEXT_SUBCONTRACTOR_FAILURE"
     
     def __init__(

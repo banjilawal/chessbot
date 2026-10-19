@@ -11,7 +11,6 @@ version: 0.0.2
 
 # Packages
 
-
 # Modules
 from .config import StringPropertyTable
 from .property import StringProperty

@@ -11,7 +11,6 @@ version: 1.0.0
 
 # Packages
 
-
 # Modules
 from .name import SchemaNameBoundsException
 from .color import SchemaColorBoundsException

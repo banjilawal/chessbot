@@ -30,9 +30,9 @@ class SchemaContextSubcontractorException(ContextSubcontractorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a SchemaContextContractor failed.
+        1.  Indicating a SchemaContextSubcontractor failed.
 
-   Contractor failed.s:
+   Subcontractor failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -46,7 +46,7 @@ class SchemaContextSubcontractorException(ContextSubcontractorException):
     Super Class:
         ContextSubcontractorException
     """
-    MSG = "SchemaContextContractor failed."
+    MSG = "SchemaContextSubcontractor failed."
     ERR_CODE = "SCHEMA_CONTEXT_SUBCONTRACTOR_FAILURE"
     
     def __init__(

@@ -44,7 +44,7 @@ class EncounterWarningSubcontractorException(EncounterSubcontractorException):
     Super Class:
         EncounterSubcontractorException
     """
-    MSG = "EncounterWarningContractor failed."
+    MSG = "EncounterWarningSubcontractor failed."
     ERR_CODE = "WARNING_ENCOUNTER_SUBCONTRACTOR_FAILURE"
     
     def __init__(

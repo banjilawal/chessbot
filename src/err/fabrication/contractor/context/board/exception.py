@@ -30,9 +30,9 @@ class BoardContextSubcontractorException(ContextSubcontractorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a BoardContextContractor failed.
+        1.  Indicating a BoardContextSubcontractor failed.
 
-   Contractor failed.s:
+   Subcontractor failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -46,7 +46,7 @@ class BoardContextSubcontractorException(ContextSubcontractorException):
     Super Class:
         ContextSubcontractorException
     """
-    MSG = "BoardContextContractor failed."
+    MSG = "BoardContextSubcontractor failed."
     ERR_CODE = "BOARD_CONTEXT_SUBCONTRACTOR_FAILURE"
     
     def __init__(

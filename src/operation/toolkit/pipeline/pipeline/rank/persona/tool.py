@@ -15,7 +15,6 @@ from system import LoggingLevelRouter
 
 # Packages
 
-
 # Modules
 
 from __future__ import annotations

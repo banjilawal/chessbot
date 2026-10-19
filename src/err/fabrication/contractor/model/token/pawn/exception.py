@@ -44,7 +44,7 @@ class PawnTokenSubcontractorException(TokenSubcontractorException):
     Super Class:
         TokenSubcontractorException
     """
-    MSG = "PawnTokenContractor failed."
+    MSG = "PawnTokenSubcontractor failed."
     ERR_CODE = "PAWN_TOKEN_SUBCONTRACTOR_FAILURE"
     
     def __init__(

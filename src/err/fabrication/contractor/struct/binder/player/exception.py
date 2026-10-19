@@ -30,9 +30,9 @@ class PlayerArchetypeBinderSubcontractorException(ArchetypeBinderSubcontractorEx
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a PlayerBinderContractor failed.
+        1.  Indicating a PlayerBinderSubcontractor failed.
 
-   Contractor failed.s:
+   Subcontractor failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -46,7 +46,7 @@ class PlayerArchetypeBinderSubcontractorException(ArchetypeBinderSubcontractorEx
     Super Class:
         BinderSubcontractorException
     """
-    MSG = "PlayerBinderContractor failed."
+    MSG = "PlayerBinderSubcontractor failed."
     ERR_CODE = "PLAYER_BINDER_SUBCONTRACTOR_FAILURE"
     
     def __init__(

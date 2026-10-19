@@ -44,7 +44,7 @@ class HomeSquareSubcontractorException(SquareSubcontractorException):
     Super Class:
         SquareSubcontractorException
     """
-    MSG = "HomeSquareContractor failed."
+    MSG = "HomeSquareSubcontractor failed."
     ERR_CODE = "HOME_SQUARE_SUBCONTRACTOR_FAILURE"
     
     def __init__(

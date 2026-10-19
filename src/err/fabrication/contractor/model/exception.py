@@ -1,4 +1,4 @@
-# src/err/fabrication/contractor/model/model/exception.py
+# src/err/fabrication/contractor/model/exception.py
 
 """
 Module: err.fabrication.contractor.model.exception
@@ -26,7 +26,7 @@ class ModelSubcontractorException(SubcontractorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a ModelContractor failed.
+        1.  Indicating a ModelSubcontractor failed.
 
     Attributes:
         msg: Optional[str]
@@ -43,7 +43,7 @@ class ModelSubcontractorException(SubcontractorException):
     Super Class:
         SubcontractorException
     """
-    MSG = "ModelContractor failed."
+    MSG = "ModelSubcontractor failed."
     ERR_CODE = "MODEL_SUBCONTRACTOR_FAILURE"
     
     def __init__(

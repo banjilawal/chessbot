@@ -30,9 +30,9 @@ class EdgeContextSubcontractorException(ContextSubcontractorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a EdgeContextContractor failed.
+        1.  Indicating a EdgeContextSubcontractor failed.
 
-   Contractor failed.s:
+   Subcontractor failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -46,7 +46,7 @@ class EdgeContextSubcontractorException(ContextSubcontractorException):
     Super Class:
         ContextSubcontractorException
     """
-    MSG = "EdgeContextContractor failed."
+    MSG = "EdgeContextSubcontractor failed."
     ERR_CODE = "EDGE_CONTEXT_SUBCONTRACTOR_FAILURE"
     
     def __init__(

@@ -27,9 +27,9 @@ class SquareRegisterSubcontractorException(RegisterSubcontractorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a SquareRegisterContractor failed.
+        1.  Indicating a SquareRegisterSubcontractor failed.
 
-   Contractor failed.s:
+   Subcontractor failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -43,7 +43,7 @@ class SquareRegisterSubcontractorException(RegisterSubcontractorException):
     Super Class:
         RegisterSubcontractorException
     """
-    MSG = "SquareRegisterContractor failed."
+    MSG = "SquareRegisterSubcontractor failed."
     ERR_CODE = "SQUARE_REGISTER_SUBCONTRACTOR_FAILURE"
     
     def __init__(

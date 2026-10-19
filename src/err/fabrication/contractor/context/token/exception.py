@@ -30,9 +30,9 @@ class TokenContextSubcontractorException(ContextSubcontractorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a TokenContextContractor failed.
+        1.  Indicating a TokenContextSubcontractor failed.
 
-   Contractor failed.s:
+   Subcontractor failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -46,7 +46,7 @@ class TokenContextSubcontractorException(ContextSubcontractorException):
     Super Class:
         ContextSubcontractorException
     """
-    MSG = "TokenContextContractor failed."
+    MSG = "TokenContextSubcontractor failed."
     ERR_CODE = "TOKEN_CONTEXT_SUBCONTRACTOR_FAILURE"
     
     def __init__(

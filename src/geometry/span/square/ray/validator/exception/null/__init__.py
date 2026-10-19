@@ -11,7 +11,6 @@ version: 1.0.0
 
 # Packages
 
-
 # Modules
 from .ray import SquareRayNullException
 from .members import SquareRayMembersNullException

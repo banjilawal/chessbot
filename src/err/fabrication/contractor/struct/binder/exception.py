@@ -27,9 +27,9 @@ class ArchetypeBinderSubcontractorException(StructSubcontractorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating an ArchetypeBinderContractor failed.
+        1.  Indicating an ArchetypeBinderSubcontractor failed.
 
-   Contractor failed.s:
+   Subcontractor failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -43,7 +43,7 @@ class ArchetypeBinderSubcontractorException(StructSubcontractorException):
     Super Class:
         StructSubcontractorException
     """
-    MSG = "ArchetypeBinderContractor failed."
+    MSG = "ArchetypeBinderSubcontractor failed."
     ERR_CODE = "BINDER_SUBCONTRACTOR_FAILURE"
     
     def __init__(

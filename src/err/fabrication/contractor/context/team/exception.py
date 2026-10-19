@@ -30,9 +30,9 @@ class TeamContextSubcontractorException(ContextSubcontractorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a TeamContextContractor failed.
+        1.  Indicating a TeamContextSubcontractor failed.
 
-   Contractor failed.s:
+   Subcontractor failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -46,7 +46,7 @@ class TeamContextSubcontractorException(ContextSubcontractorException):
     Super Class:
         ContextSubcontractorException
     """
-    MSG = "TeamContextContractor failed."
+    MSG = "TeamContextSubcontractor failed."
     ERR_CODE = "TEAM_CONTEXT_SUBCONTRACTOR_FAILURE"
     
     def __init__(

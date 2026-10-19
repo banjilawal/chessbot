@@ -30,9 +30,9 @@ class SquareContextSubcontractorException(ContextSubcontractorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a SquareContextContractor failed.
+        1.  Indicating a SquareContextSubcontractor failed.
 
-   Contractor failed.s:
+   Subcontractor failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -46,7 +46,7 @@ class SquareContextSubcontractorException(ContextSubcontractorException):
     Super Class:
         ContextSubcontractorException
     """
-    MSG = "SquareContextContractor failed."
+    MSG = "SquareContextSubcontractor failed."
     ERR_CODE = "SQUARE_CONTEXT_SUBCONTRACTOR_FAILURE"
     
     def __init__(

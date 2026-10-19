@@ -11,7 +11,6 @@ version: 1.0.0
 
 # Packages
 
-
 # Modules
 from .spanner import KingSpanner
 from .anchor import KingSpannerException

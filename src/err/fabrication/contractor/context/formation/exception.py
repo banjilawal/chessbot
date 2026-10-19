@@ -30,9 +30,9 @@ class FormationContextSubcontractorException(ContextSubcontractorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a FormationContextContractor failed.
+        1.  Indicating a FormationContextSubcontractor failed.
 
-   Contractor failed.s:
+   Subcontractor failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -46,7 +46,7 @@ class FormationContextSubcontractorException(ContextSubcontractorException):
     Super Class:
         ContextSubcontractorException
     """
-    MSG = "FormationContextContractor failed."
+    MSG = "FormationContextSubcontractor failed."
     ERR_CODE = "FORMATION_CONTEXT_SUBCONTRACTOR_FAILURE"
     
     def __init__(

@@ -11,7 +11,6 @@ version: 1.0.0
 
 # Packages
 
-
 # Modules
 from .work import HostageInsertionException
 from .direct import AppendingHostageDirectlyIntoItemsFailedException

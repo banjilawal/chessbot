@@ -30,9 +30,9 @@ class CoordArchetypeBinderSubcontractorException(ArchetypeBinderSubcontractorExc
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a CoordBinderContractor failed.
+        1.  Indicating a CoordBinderSubcontractor failed.
 
-   Contractor failed.s:
+   Subcontractor failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -46,7 +46,7 @@ class CoordArchetypeBinderSubcontractorException(ArchetypeBinderSubcontractorExc
     Super Class:
         BinderSubcontractorException
     """
-    MSG = "CoordBinderContractor failed."
+    MSG = "CoordBinderSubcontractor failed."
     ERR_CODE = "COORD_BINDER_SUBCONTRACTOR_FAILURE"
     
     def __init__(

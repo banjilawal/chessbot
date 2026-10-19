@@ -44,7 +44,7 @@ class CombatantTokenSubcontractorException(TokenSubcontractorException):
     Super Class:
         TokenSubcontractorException
     """
-    MSG = "CombatantTokenContractor failed."
+    MSG = "CombatantTokenSubcontractor failed."
     ERR_CODE = "COMBATANT_TOKEN_SUBCONTRACTOR_FAILURE"
     
     def __init__(

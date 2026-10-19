@@ -30,9 +30,9 @@ class NodeContextSubcontractorException(ContextSubcontractorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a NodeContextContractor failed.
+        1.  Indicating a NodeContextSubcontractor failed.
 
-   Contractor failed.s:
+   Subcontractor failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -46,7 +46,7 @@ class NodeContextSubcontractorException(ContextSubcontractorException):
     Super Class:
         ContextSubcontractorException
     """
-    MSG = "NodeContextContractor failed."
+    MSG = "NodeContextSubcontractor failed."
     ERR_CODE = "NODE_CONTEXT_SUBCONTRACTOR_FAILURE"
     
     def __init__(

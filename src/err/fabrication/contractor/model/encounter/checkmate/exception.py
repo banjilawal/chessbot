@@ -44,7 +44,7 @@ class CheckmateEncounterSubcontractorException(EncounterSubcontractorException):
     Super Class:
         EncounterSubcontractorException
     """
-    MSG = "CheckmateEncounterContractor failed."
+    MSG = "CheckmateEncounterSubcontractor failed."
     ERR_CODE = "CHECKMATE_ENCOUNTER_SUBCONTRACTOR_FAILURE"
     
     def __init__(

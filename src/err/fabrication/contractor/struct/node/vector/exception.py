@@ -27,9 +27,9 @@ class VectorNodeSubcontractorException(NodeSubcontractorException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating a VectorNodeContractor failed.
+        1.  Indicating a VectorNodeSubcontractor failed.
 
-   Contractor failed.s:
+   Subcontractor failed.s:
             msg: Optional[str]
             var: Optional[str]
             val: Optional[Any]
@@ -43,7 +43,7 @@ class VectorNodeSubcontractorException(NodeSubcontractorException):
     Super Class:
         NodeSubcontractorException
     """
-    MSG = "VectorNodeContractor failed."
+    MSG = "VectorNodeSubcontractor failed."
     ERR_CODE = "VECTOR_NODE_SUBCONTRACTOR_FAILURE"
     
     def __init__(

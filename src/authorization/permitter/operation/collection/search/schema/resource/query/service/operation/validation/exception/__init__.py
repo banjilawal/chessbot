@@ -11,7 +11,6 @@ version: 1.0.0
 
 # Packages
 
-
 # Modules
 from .stack import SchemaStackNullException
 from .candidate import SchemaQueryNullException

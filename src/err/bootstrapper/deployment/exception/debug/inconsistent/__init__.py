@@ -11,7 +11,6 @@ version: 1.0.0
 
 # Packages
 
-
 # Modules
 from .coord import InconsistentTokenCoordException
 from .occupant import InconsistentTokenSquareException
