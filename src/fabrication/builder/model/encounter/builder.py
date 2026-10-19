@@ -15,50 +15,62 @@ from artifcat import BuildResult
 from domain import Encounter, EncounterBlueprint
 from err import EncounterBuilderException
 from exchange import EncounterBuildRequest
-from fabrication import ModelBuilder, EncounterBuildLoader
+from fabrication import BuildFactory, EncounterBuildLoader
+from transit import EncounterBuildRouter
 from util import LoggingLevelRouter
 
 
-class EncounterBuilder(ModelBuilder[Encounter]):
+class EncounterBuilder(BuildFactory[Encounter]):
     """
     Role
         - Builder
 
     Responsibilities:
-        1.  Create a Encounter from a blueprint.
+        1.  Create different Encounter products from the different types of blueprints.
 
     Attributes:
        loader: EncounterBuildLoader
+       router: EncounterBuildRouter
 
     Provides:
         -   def execute(blueprint: EncounterBlueprint) -> BuildResult[Encounter]
 
     Super Class:
-        ModelBuilder
+        BuildFactory
     """
     
     def __init__(
             self,
             loader: Optional[EncounterBuildLoader] | None = None,
+            router: Optional[EncounterBuildRouter] | None = None,
     ):
         """
         Args:
             loader: Optional[EncounterBuildLoader]
+            router: Optional[EncounterBuildRouter]
         """
-        super().__init__(loader=loader or EncounterBuildLoader())
+        super().__init__(
+            loader=loader or EncounterBuildLoader(),
+            router=router or EncounterBuildRouter(),
+        )
     
     @property
     def loader(self) -> EncounterBuildLoader:
         return cast(EncounterBuildLoader, super().loader)
+    
+    @property
+    def router(self) -> EncounterBuildRouter:
+        return cast(EncounterBuildRouter, super().router)
     
     @LoggingLevelRouter.monitor
     def execute(self, request: EncounterBuildRequest) -> BuildResult[Encounter]:
         """
         Assemble a Encounter from the Blueprint's contents.
         Action:
-            1.  Send an exception chain in the BuildResult if the loader does not produce
-                a blueprint.
-            2.  Otherwise, use the blueprint to assemble a Encounter for the success loading.
+            1.  Send an exception chain in the BuildResult if either:
+                -   the loader does not produce a blueprint.
+                -   the router does not return a product from the blueprint.
+            2.  Otherwise, cast the product as a Encounter then send in the success result.
         Args:
             request: EncounterBuildRequest
         Returns:
@@ -68,7 +80,7 @@ class EncounterBuilder(ModelBuilder[Encounter]):
         """
         method = f"{self.__class__.__name__}"
         
-        # --- Handoff the request to loader for blueprint prepartion. ---#
+        # --- Handoff the request to loader for blueprint preparation. ---#
         loading = self.loader.execute(request=request)
         # Handle the case that the loader aborts.
         if loading.is_failure:
@@ -84,10 +96,19 @@ class EncounterBuilder(ModelBuilder[Encounter]):
             )
         # --- Cast result payload for the product assembly. ---#
         blueprint = cast(EncounterBlueprint, loading.payload)
+        result = self.router.execute(blueprint)
         
+        # Handle the case that a product is not routed back.
+        if result.is_failure:
+            # Send the exception chain on failure.
+            return BuildResult.failure(
+                EncounterBuilderException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=EncounterBuilderException.MSG,
+                    err_code=EncounterBuilderException.ERR_CODE,
+                    ex=loading.exception,
+                )
+            )
         # --- Send the work product. ---#
-        product = Encounter(
-            x=blueprint.x,
-            y=blueprint.y,
-        )
-        return BuildResult.success(product)
+        return BuildResult.success(cast(Encounter, result.payload))

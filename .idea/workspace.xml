@@ -6,21 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/account/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/model/account/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/account/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/model/account/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/alert/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/model/alert/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/arena/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/model/arena/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/board/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/model/board/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/coord/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/model/coord/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/encounter/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/model/encounter/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/encounter/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/model/encounter/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/footstep/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/model/footstep/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/game/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/model/game/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/maneuver/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/model/maneuver/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/path/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/model/path/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/scalar/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/model/scalar/builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/square/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/model/square/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/square/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/model/square/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/team/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/model/team/builder.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/token/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/model/token/builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/fabrication/builder/model/vector/builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/fabrication/builder/model/vector/builder.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,61 +54,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0323520298962725" />
-      <entry key="MS500" value="1.5203424264124097" />
-      <entry key="S2" value="2.6624858455399725" />
-      <entry key="S5" value="4.987898635421374" />
-      <entry key="S10" value="7.8108138173673405" />
-      <entry key="S30" value="14.131248428364952" />
-      <entry key="S60" value="18.391345182116904" />
-      <entry key="M2" value="21.837436882225305" />
-      <entry key="M5" value="24.661404679921556" />
-      <entry key="M10" value="26.217738514186713" />
-      <entry key="M15" value="30.31050785295045" />
-      <entry key="M30" value="68.97243530114413" />
-      <entry key="H1" value="172.760626083473" />
-      <entry key="H2" value="307.2739657422188" />
-      <entry key="H4" value="439.17999800970637" />
-      <entry key="D1" value="2301.821897430425" />
-      <entry key="W1" value="19145.011392621134" />
+      <entry key="MS100" value="1.0000164817182622" />
+      <entry key="MS500" value="1.1429514523488398" />
+      <entry key="S2" value="2.4884015345917536" />
+      <entry key="S5" value="4.0343910276534825" />
+      <entry key="S10" value="5.6403828203346595" />
+      <entry key="S30" value="9.26433281415489" />
+      <entry key="S60" value="11.20574362850415" />
+      <entry key="M2" value="12.473639247158252" />
+      <entry key="M5" value="13.354961855430982" />
+      <entry key="M10" value="13.671413690986034" />
+      <entry key="M15" value="13.779569513186077" />
+      <entry key="M30" value="13.889404498846813" />
+      <entry key="H1" value="14.30989275740366" />
+      <entry key="H2" value="28.906663218827575" />
+      <entry key="H4" value="117.95602822750449" />
+      <entry key="D1" value="1841.1113257155844" />
+      <entry key="W1" value="18519.22031647522" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
       <entry key="S2" value="0.0" />
-      <entry key="S5" value="1.960923884927177E-309" />
-      <entry key="S10" value="5.023251732012383E-155" />
-      <entry key="S30" value="6.550686797464465E-52" />
-      <entry key="S60" value="5.096698325811997E-26" />
-      <entry key="M2" value="5.120859893546641E-13" />
-      <entry key="M5" value="4.1455684312872944E-5" />
-      <entry key="M10" value="0.02274299821018" />
-      <entry key="M15" value="0.20088373282563746" />
-      <entry key="M30" value="1.9315493725320907" />
-      <entry key="H1" value="6.448735680636251" />
-      <entry key="H2" value="12.259425824369355" />
-      <entry key="H4" value="17.7073755803229" />
-      <entry key="D1" value="97.17977220324858" />
-      <entry key="W1" value="1088.7882331921296" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="0.0" />
+      <entry key="S60" value="8.066146271231956E-201" />
+      <entry key="M2" value="2.037189720680597E-100" />
+      <entry key="M5" value="4.544221806705846E-40" />
+      <entry key="M10" value="7.529834548856537E-20" />
+      <entry key="M15" value="4.462414562326328E-13" />
+      <entry key="M30" value="2.878845684004126E-6" />
+      <entry key="H1" value="0.007872829798821899" />
+      <entry key="H2" value="0.4283495089033919" />
+      <entry key="H4" value="3.3099258940310823" />
+      <entry key="D1" value="73.48294533015218" />
+      <entry key="W1" value="1046.1695785187599" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9834577710036785" />
-      <entry key="MS500" value="1.5055490452478257" />
-      <entry key="S2" value="2.655273501278367" />
-      <entry key="S5" value="4.982281955254726" />
-      <entry key="S10" value="7.80420123517393" />
-      <entry key="S30" value="14.089741356780658" />
-      <entry key="S60" value="18.332780167005133" />
-      <entry key="M2" value="21.786461895512126" />
-      <entry key="M5" value="24.63264252769817" />
-      <entry key="M10" value="26.223928867689484" />
-      <entry key="M15" value="30.49816594763131" />
-      <entry key="M30" value="70.8885311189221" />
-      <entry key="H1" value="179.18935753650132" />
-      <entry key="H2" value="319.5148704485594" />
-      <entry key="H4" value="456.87388446722696" />
-      <entry key="D1" value="2398.988045298344" />
-      <entry key="W1" value="20233.780539165215" />
+      <entry key="MS100" value="0.9202032430977566" />
+      <entry key="MS500" value="1.1246243290338074" />
+      <entry key="S2" value="2.4768526008339493" />
+      <entry key="S5" value="4.026146521711532" />
+      <entry key="S10" value="5.634517842087076" />
+      <entry key="S30" value="9.261125262776366" />
+      <entry key="S60" value="11.20380395851591" />
+      <entry key="M2" value="12.472559285580244" />
+      <entry key="M5" value="13.354499166992943" />
+      <entry key="M10" value="13.671176826219869" />
+      <entry key="M15" value="13.779410344826257" />
+      <entry key="M30" value="13.889327131589159" />
+      <entry key="H1" value="14.317700336375005" />
+      <entry key="H2" value="29.334337851233705" />
+      <entry key="H4" value="121.26340288204085" />
+      <entry key="D1" value="1914.583954259021" />
+      <entry key="W1" value="19565.371552867367" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -150,7 +142,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/fabrication/builder",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/fabrication/builder/model",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -164,11 +156,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/fabrication/builder/model" />
       <recent name="$PROJECT_DIR$/src/fabrication/builder" />
       <recent name="$PROJECT_DIR$/src/fabrication/router/model" />
       <recent name="$PROJECT_DIR$/src/fabrication/contractor/model" />
       <recent name="$PROJECT_DIR$/src/fabrication/contractor/model/encounter" />
-      <recent name="$PROJECT_DIR$/src/err/transit/router" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/fabrication/builder" />
@@ -836,7 +828,7 @@
       <workItem from="1790671354344" duration="262742000" />
       <workItem from="1791213294391" duration="277057000" />
       <workItem from="1791925309191" duration="12463000" />
-      <workItem from="1791980656972" duration="147258000" />
+      <workItem from="1791980656972" duration="150028000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -2463,6 +2455,11 @@
           <url>file://$PROJECT_DIR$/src/fabrication/contractor/model/encounter/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="563" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/fabrication/builder/model/token/builder.py</url>
+          <line>113</line>
+          <option name="timeStamp" value="564" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

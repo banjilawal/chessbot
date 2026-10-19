@@ -26,7 +26,7 @@ class TokenBuilder(BuildFactory[Token]):
         - Builder
 
     Responsibilities:
-        1.  Create a Token from a blueprint.
+        1.  Create different Token products from the different types of blueprints.
 
     Attributes:
        loader: TokenBuildLoader
@@ -80,7 +80,7 @@ class TokenBuilder(BuildFactory[Token]):
         """
         method = f"{self.__class__.__name__}"
         
-        # --- Handoff the request to loader for blueprint prepartion. ---#
+        # --- Handoff the request to loader for blueprint preparation. ---#
         loading = self.loader.execute(request=request)
         # Handle the case that the loader aborts.
         if loading.is_failure:

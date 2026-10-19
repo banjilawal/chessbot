@@ -15,50 +15,62 @@ from artifcat import BuildResult
 from domain import Square, SquareBlueprint
 from err import SquareBuilderException
 from exchange import SquareBuildRequest
-from fabrication import ModelBuilder, SquareBuildLoader
+from fabrication import BuildFactory, SquareBuildLoader
+from transit import SquareBuildRouter
 from util import LoggingLevelRouter
 
 
-class SquareBuilder(ModelBuilder[Square]):
+class SquareBuilder(BuildFactory[Square]):
     """
     Role
         - Builder
 
     Responsibilities:
-        1.  Create a Square from a blueprint.
+        1.  Create different Square products from the different types of blueprints.
 
     Attributes:
        loader: SquareBuildLoader
+       router: SquareBuildRouter
 
     Provides:
         -   def execute(blueprint: SquareBlueprint) -> BuildResult[Square]
 
     Super Class:
-        ModelBuilder
+        BuildFactory
     """
     
     def __init__(
             self,
             loader: Optional[SquareBuildLoader] | None = None,
+            router: Optional[SquareBuildRouter] | None = None,
     ):
         """
         Args:
             loader: Optional[SquareBuildLoader]
+            router: Optional[SquareBuildRouter]
         """
-        super().__init__(loader=loader or SquareBuildLoader())
+        super().__init__(
+            loader=loader or SquareBuildLoader(),
+            router=router or SquareBuildRouter(),
+        )
     
     @property
     def loader(self) -> SquareBuildLoader:
         return cast(SquareBuildLoader, super().loader)
+    
+    @property
+    def router(self) -> SquareBuildRouter:
+        return cast(SquareBuildRouter, super().router)
     
     @LoggingLevelRouter.monitor
     def execute(self, request: SquareBuildRequest) -> BuildResult[Square]:
         """
         Assemble a Square from the Blueprint's contents.
         Action:
-            1.  Send an exception chain in the BuildResult if the loader does not produce
-                a blueprint.
-            2.  Otherwise, use the blueprint to assemble a Square for the success loading.
+            1.  Send an exception chain in the BuildResult if either:
+                -   the loader does not produce a blueprint.
+                -   the router does not return a product from the blueprint.
+            2.  Otherwise, cast the product as a Square then send in the success result.
         Args:
             request: SquareBuildRequest
         Returns:
@@ -68,7 +80,7 @@ class SquareBuilder(ModelBuilder[Square]):
         """
         method = f"{self.__class__.__name__}"
         
-        # --- Handoff the request to loader for blueprint prepartion. ---#
+        # --- Handoff the request to loader for blueprint preparation. ---#
         loading = self.loader.execute(request=request)
         # Handle the case that the loader aborts.
         if loading.is_failure:
@@ -84,10 +96,19 @@ class SquareBuilder(ModelBuilder[Square]):
             )
         # --- Cast result payload for the product assembly. ---#
         blueprint = cast(SquareBlueprint, loading.payload)
+        result = self.router.execute(blueprint)
         
+        # Handle the case that a product is not routed back.
+        if result.is_failure:
+            # Send the exception chain on failure.
+            return BuildResult.failure(
+                SquareBuilderException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=SquareBuilderException.MSG,
+                    err_code=SquareBuilderException.ERR_CODE,
+                    ex=loading.exception,
+                )
+            )
         # --- Send the work product. ---#
-        product = Square(
-            x=blueprint.x,
-            y=blueprint.y,
-        )
-        return BuildResult.success(product)
+        return BuildResult.success(cast(Square, result.payload))

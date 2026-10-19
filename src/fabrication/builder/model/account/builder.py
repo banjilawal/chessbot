@@ -15,51 +15,62 @@ from artifcat import BuildResult
 from domain import Account, AccountBlueprint
 from err import AccountBuilderException
 from exchange import AccountBuildRequest
-from fabrication import ModelBuilder, AccountBuildLoader
+from fabrication import BuildFactory, AccountBuildLoader
+from transit import AccountBuildRouter
 from util import LoggingLevelRouter
 
 
-class AccountBuilder(ModelBuilder[Account]):
+class AccountBuilder(BuildFactory[Account]):
     """
     Role
         - Builder
 
     Responsibilities:
-        1.  Create a Account from a blueprint.
+        1.  Create different Account products from the different types of blueprints.
 
     Attributes:
        loader: AccountBuildLoader
-       _router
+       router: AccountBuildRouter
 
     Provides:
         -   def execute(blueprint: AccountBlueprint) -> BuildResult[Account]
 
     Super Class:
-        ModelBuilder
+        BuildFactory
     """
     
     def __init__(
             self,
             loader: Optional[AccountBuildLoader] | None = None,
+            router: Optional[AccountBuildRouter] | None = None,
     ):
         """
         Args:
             loader: Optional[AccountBuildLoader]
+            router: Optional[AccountBuildRouter]
         """
-        super().__init__(loader=loader or AccountBuildLoader())
+        super().__init__(
+            loader=loader or AccountBuildLoader(),
+            router=router or AccountBuildRouter(),
+        )
     
     @property
     def loader(self) -> AccountBuildLoader:
         return cast(AccountBuildLoader, super().loader)
+    
+    @property
+    def router(self) -> AccountBuildRouter:
+        return cast(AccountBuildRouter, super().router)
     
     @LoggingLevelRouter.monitor
     def execute(self, request: AccountBuildRequest) -> BuildResult[Account]:
         """
         Assemble a Account from the Blueprint's contents.
         Action:
-            1.  Send an exception chain in the BuildResult if the loader does not produce
-                a blueprint.
-            2.  Otherwise, use the blueprint to assemble a Account for the success loading.
+            1.  Send an exception chain in the BuildResult if either:
+                -   the loader does not produce a blueprint.
+                -   the router does not return a product from the blueprint.
+            2.  Otherwise, cast the product as a Account then send in the success result.
         Args:
             request: AccountBuildRequest
         Returns:
@@ -69,7 +80,7 @@ class AccountBuilder(ModelBuilder[Account]):
         """
         method = f"{self.__class__.__name__}"
         
-        # --- Handoff the request to loader for blueprint prepartion. ---#
+        # --- Handoff the request to loader for blueprint preparation. ---#
         loading = self.loader.execute(request=request)
         # Handle the case that the loader aborts.
         if loading.is_failure:
@@ -85,10 +96,19 @@ class AccountBuilder(ModelBuilder[Account]):
             )
         # --- Cast result payload for the product assembly. ---#
         blueprint = cast(AccountBlueprint, loading.payload)
+        result = self.router.execute(blueprint)
         
+        # Handle the case that a product is not routed back.
+        if result.is_failure:
+            # Send the exception chain on failure.
+            return BuildResult.failure(
+                AccountBuilderException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=AccountBuilderException.MSG,
+                    err_code=AccountBuilderException.ERR_CODE,
+                    ex=loading.exception,
+                )
+            )
         # --- Send the work product. ---#
-        product = Account(
-            x=blueprint.x,
-            y=blueprint.y,
-        )
-        return BuildResult.success(product)
+        return BuildResult.success(cast(Account, result.payload))
