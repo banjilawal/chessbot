@@ -11,6 +11,7 @@ version: 0.0.2
 # =========== EXCHANGE.REQUEST PACKAGE ===========#
 
 # Packages
+from .authorization import *
 from .crud import *
 from .chain import *
 from .fabrication import *
