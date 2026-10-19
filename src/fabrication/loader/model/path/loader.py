@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import BuildResult
 from domain import Path, PathBlueprint
 from err import PathBuildLoaderException, PathBuildRequestNullException
-from exchange import PathBuildRequest, PathValidationRequest, PathValidationServer
+from exchange import PathBuildRequest, PathValidationRequest, PathValidationService
 from fabrication import ModelBuildLoader
 from util import IdFactory, LoggingLevelRouter
 
@@ -41,17 +41,17 @@ class PathBuildLoader(ModelBuildLoader[Path]):
     
     def __init__(
             self,
-            validator: Optional[PathValidationServer] | None = None,
+            validator: Optional[PathValidationService] | None = None,
     ):
         """
         Args:
             validator: Optional[PathValidationServer]
         """
-        super().__init__(validator=validator or PathValidationServer())
+        super().__init__(validator=validator or PathValidationService())
     
     @property
-    def validator(self) -> PathValidationServer:
-        return cast(PathValidationServer, super().validator)
+    def validator(self) -> PathValidationService:
+        return cast(PathValidationService, super().validator)
         
     @LoggingLevelRouter.monitor
     def execute(self, request: PathBuildRequest) -> BuildResult[PathBlueprint]:

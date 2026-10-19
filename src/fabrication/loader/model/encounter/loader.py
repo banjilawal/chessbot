@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import BuildResult
 from domain import Encounter, EncounterBlueprint
 from err import EncounterBuildLoaderException, EncounterBuildRequestNullException
-from exchange import EncounterBuildRequest, EncounterValidationRequest, EncounterValidationServer
+from exchange import EncounterBuildRequest, EncounterValidationRequest, EncounterValidationService
 from fabrication import ModelBuildLoader
 from util import IdFactory, LoggingLevelRouter
 
@@ -41,17 +41,17 @@ class EncounterBuildLoader(ModelBuildLoader[Encounter]):
     
     def __init__(
             self,
-            validator: Optional[EncounterValidationServer] | None = None,
+            validator: Optional[EncounterValidationService] | None = None,
     ):
         """
         Args:
             validator: Optional[EncounterValidationServer]
         """
-        super().__init__(validator=validator or EncounterValidationServer())
+        super().__init__(validator=validator or EncounterValidationService())
     
     @property
-    def validator(self) -> EncounterValidationServer:
-        return cast(EncounterValidationServer, super().validator)
+    def validator(self) -> EncounterValidationService:
+        return cast(EncounterValidationService, super().validator)
         
     @LoggingLevelRouter.monitor
     def execute(self, request: EncounterBuildRequest) -> BuildResult[EncounterBlueprint]:

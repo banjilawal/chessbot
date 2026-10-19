@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import BuildResult
 from domain import Game, GameBlueprint
 from err import GameBuildLoaderException, GameBuildRequestNullException
-from exchange import GameBuildRequest, GameValidationRequest, GameValidationServer
+from exchange import GameBuildRequest, GameValidationRequest, GameValidationService
 from fabrication import ModelBuildLoader
 from util import IdFactory, LoggingLevelRouter
 
@@ -41,17 +41,17 @@ class GameBuildLoader(ModelBuildLoader[Game]):
     
     def __init__(
             self,
-            validator: Optional[GameValidationServer] | None = None,
+            validator: Optional[GameValidationService] | None = None,
     ):
         """
         Args:
             validator: Optional[GameValidationServer]
         """
-        super().__init__(validator=validator or GameValidationServer())
+        super().__init__(validator=validator or GameValidationService())
     
     @property
-    def validator(self) -> GameValidationServer:
-        return cast(GameValidationServer, super().validator)
+    def validator(self) -> GameValidationService:
+        return cast(GameValidationService, super().validator)
         
     @LoggingLevelRouter.monitor
     def execute(self, request: GameBuildRequest) -> BuildResult[GameBlueprint]:

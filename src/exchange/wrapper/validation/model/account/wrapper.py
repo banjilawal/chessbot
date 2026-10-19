@@ -15,13 +15,13 @@ from artifcat import AccountValidationResponse, ValidationResult
 from domain import Account, AccountBlueprint
 from err import AccountValidationResponderException, AccountValidationServerException, EmptyAccountCarrierException
 from exchange import (
-    AccountValidationResponder, ModelValidationServer, AccountValidationRequest
+    AccountValidationResponder, ModelValidationService, AccountValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class AccountValidationServer(
-    ModelValidationServer[Account]
+class AccountValidationService(
+    ModelValidationService[Account]
 ):
     """
     Role

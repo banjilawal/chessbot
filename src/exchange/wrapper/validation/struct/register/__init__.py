@@ -15,4 +15,4 @@ from .square import *
 from .vector import *
 
 # Modules
-from .wrapper import RegisterValidationServer
+from .wrapper import RegisterValidationService

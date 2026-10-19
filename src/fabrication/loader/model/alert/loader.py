@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import BuildResult
 from domain import Alert, AlertBlueprint
 from err import AlertBuildLoaderException, AlertBuildRequestNullException
-from exchange import AlertBuildRequest, AlertValidationRequest, AlertValidationServer
+from exchange import AlertBuildRequest, AlertValidationRequest, AlertValidationService
 from fabrication import ModelBuildLoader
 from util import IdFactory, LoggingLevelRouter
 
@@ -41,17 +41,17 @@ class AlertBuildLoader(ModelBuildLoader[Alert]):
     
     def __init__(
             self,
-            validator: Optional[AlertValidationServer] | None = None,
+            validator: Optional[AlertValidationService] | None = None,
     ):
         """
         Args:
             validator: Optional[AlertValidationServer]
         """
-        super().__init__(validator=validator or AlertValidationServer())
+        super().__init__(validator=validator or AlertValidationService())
     
     @property
-    def validator(self) -> AlertValidationServer:
-        return cast(AlertValidationServer, super().validator)
+    def validator(self) -> AlertValidationService:
+        return cast(AlertValidationService, super().validator)
         
     @LoggingLevelRouter.monitor
     def execute(self, request: AlertBuildRequest) -> BuildResult[AlertBlueprint]:

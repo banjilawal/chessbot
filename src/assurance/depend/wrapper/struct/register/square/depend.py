@@ -14,7 +14,7 @@ from typing import Optional
 
 from assurance import RegisterDependency
 from domain import SquareRegister
-from exchange import SquareValidationServer
+from exchange import SquareValidationService
 
 
 class SquareRegisterDependency(RegisterDependency[SquareRegister]):
@@ -34,19 +34,19 @@ class SquareRegisterDependency(RegisterDependency[SquareRegister]):
     Super Class:
         RegisterDependency
     """
-    _square: SquareValidationServer
+    _square: SquareValidationService
     
     def __init__(
             self,
-            square: Optional[SquareValidationServer] | None = None,
+            square: Optional[SquareValidationService] | None = None,
     ):
         """
         Args:
             square: Optional[SquareValidationServer]
         """
         super().__init__()
-        self._square = square or SquareValidationServer()
+        self._square = square or SquareValidationService()
         
     @property
-    def square(self) -> SquareValidationServer:
+    def square(self) -> SquareValidationService:
         return self._square

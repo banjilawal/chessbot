@@ -14,7 +14,7 @@ from typing import Optional
 
 from assurance import BinderDependency
 from domain import PlayerBinder
-from exchange import PlayerValidationServer
+from exchange import PlayerValidationService
 
 
 class PlayerBinderDependency(BinderDependency[PlayerBinder]):
@@ -34,19 +34,19 @@ class PlayerBinderDependency(BinderDependency[PlayerBinder]):
     Super Class:
         BinderDependency
     """
-    _player: PlayerValidationServer
+    _player: PlayerValidationService
     
     def __init__(
             self,
-            player: Optional[PlayerValidationServer] | None = None,
+            player: Optional[PlayerValidationService] | None = None,
     ):
         """
         Args:
             player: Optional[PlayerValidationServer]
         """
         super().__init__()
-        self._player = player or PlayerValidationServer()
+        self._player = player or PlayerValidationService()
         
     @property
-    def player(self) -> PlayerValidationServer:
+    def player(self) -> PlayerValidationService:
         return self._player

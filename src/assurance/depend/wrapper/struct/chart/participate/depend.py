@@ -14,7 +14,7 @@ from typing import Optional
 
 from assurance import ChartDependency
 from domain import Participation
-from exchange import TokenValidationServer
+from exchange import TokenValidationService
 
 
 class ParticipationDependency(ChartDependency[Participation]):
@@ -34,19 +34,19 @@ class ParticipationDependency(ChartDependency[Participation]):
     Super Class:
         ChartDependency
     """
-    _token: TokenValidationServer
+    _token: TokenValidationService
     
     def __init__(
             self,
-            token: Optional[TokenValidationServer] | None = None,
+            token: Optional[TokenValidationService] | None = None,
     ):
         """
         Args:
             token: Optional[TokenValidationServer]
         """
         super().__init__()
-        self._token = token or TokenValidationServer()
+        self._token = token or TokenValidationService()
         
     @property
-    def token(self) -> TokenValidationServer:
+    def token(self) -> TokenValidationService:
         return self._token

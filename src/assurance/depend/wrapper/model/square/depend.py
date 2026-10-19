@@ -15,7 +15,7 @@ from typing import Optional
 from assurance import ModelWrapperDependency
 from domain import Square
 from exchange import (
-    BoardValidationServer, CoordValidationServer, TokenValidationServer
+    BoardValidationService, CoordValidationService, TokenValidationService
 )
 
 
@@ -37,15 +37,15 @@ class SquareWrapperDependency(ModelWrapperDependency[Square]):
     Super Class:
         ModelWrapperDependency
     """
-    _board: BoardValidationServer
-    _coord: CoordValidationServer
-    _token: TokenValidationServer
+    _board: BoardValidationService
+    _coord: CoordValidationService
+    _token: TokenValidationService
     
     def __init__(
             self,
-            board: Optional[BoardValidationServer] | None = None,
-            coord: Optional[CoordValidationServer] | None = None,
-            token: Optional[TokenValidationServer] | None = None,
+            board: Optional[BoardValidationService] | None = None,
+            coord: Optional[CoordValidationService] | None = None,
+            token: Optional[TokenValidationService] | None = None,
     ):
         """
         Args:
@@ -53,18 +53,18 @@ class SquareWrapperDependency(ModelWrapperDependency[Square]):
             coord: Optional[CoordValidatorClient]
         """
         super().__init__()
-        self._board = board or BoardValidationServer()
-        self._coord = coord or CoordValidationServer()
-        self._token = token or TokenValidationServer()
+        self._board = board or BoardValidationService()
+        self._coord = coord or CoordValidationService()
+        self._token = token or TokenValidationService()
         
     @property
-    def board(self) -> BoardValidationServer:
+    def board(self) -> BoardValidationService:
         return self._board
     
     @property
-    def coord(self) -> CoordValidationServer:
+    def coord(self) -> CoordValidationService:
         return self._coord
     
     @property
-    def token(self) -> TokenValidationServer:
+    def token(self) -> TokenValidationService:
         return self._token

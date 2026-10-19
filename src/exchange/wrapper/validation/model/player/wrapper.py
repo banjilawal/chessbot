@@ -15,13 +15,13 @@ from artifcat import PlayerValidationResponse, ValidationResult
 from domain import Player, PlayerBlueprint
 from err import PlayerValidationResponderException, PlayerValidationServerException, PlayerCarrierEmptyException
 from exchange import (
-    PlayerValidationResponder, ModelValidationServer, PlayerValidationRequest
+    PlayerValidationResponder, ModelValidationService, PlayerValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class PlayerValidationServer(
-    ModelValidationServer[Player]
+class PlayerValidationService(
+    ModelValidationService[Player]
 ):
     """
     Role

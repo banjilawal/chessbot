@@ -15,8 +15,8 @@ from typing import Optional
 from assurance import ModelWrapperDependency
 from domain import Encounter
 from exchange import (
-    ManeuverValidationServer, ParticipationValidationServer,
-    SquareValidationServer, TokenValidationServer
+    ManeuverValidationService, ParticipationValidationServer,
+    SquareValidationService, TokenValidationService
 )
 
 
@@ -39,16 +39,16 @@ class EncounterWrapperDependency(ModelWrapperDependency[Encounter]):
     Super Class:
         ModelWrapperDependency
     """
-    _token: TokenValidationServer
-    _square: SquareValidationServer
-    _maneuver: ManeuverValidationServer
+    _token: TokenValidationService
+    _square: SquareValidationService
+    _maneuver: ManeuverValidationService
     _participation: ParticipationValidationServer
     
     def __init__(
             self,
-            token: Optional[TokenValidationServer] | None = None,
-            square: Optional[SquareValidationServer] | None = None,
-            maneuver: Optional[ManeuverValidationServer] | None = None,
+            token: Optional[TokenValidationService] | None = None,
+            square: Optional[SquareValidationService] | None = None,
+            maneuver: Optional[ManeuverValidationService] | None = None,
             participation: Optional[ParticipationValidationServer]
                            | None = None,
     ):
@@ -60,21 +60,21 @@ class EncounterWrapperDependency(ModelWrapperDependency[Encounter]):
             participation: Optional[ParticipationValidationServer]
         """
         super().__init__()
-        self._token = token or TokenValidationServer()
-        self._square = square or SquareValidationServer()
-        self._maneuver = maneuver or ManeuverValidationServer()
+        self._token = token or TokenValidationService()
+        self._square = square or SquareValidationService()
+        self._maneuver = maneuver or ManeuverValidationService()
         self._participation = participation or ParticipationValidationServer()
         
     @property
-    def token(self) -> TokenValidationServer:
+    def token(self) -> TokenValidationService:
         return self._token
     
     @property
-    def square(self) -> SquareValidationServer:
+    def square(self) -> SquareValidationService:
         return self._square
     
     @property
-    def maneuver(self) -> ManeuverValidationServer:
+    def maneuver(self) -> ManeuverValidationService:
         return self._maneuver
     
     @property

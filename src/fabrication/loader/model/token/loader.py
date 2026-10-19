@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import BuildResult
 from domain import Token, TokenBlueprint
 from err import TokenBuildLoaderException, TokenBuildRequestNullException
-from exchange import TokenBuildRequest, TokenValidationRequest, TokenValidationServer
+from exchange import TokenBuildRequest, TokenValidationRequest, TokenValidationService
 from fabrication import ModelBuildLoader
 from util import IdFactory, LoggingLevelRouter
 
@@ -41,17 +41,17 @@ class TokenBuildLoader(ModelBuildLoader[Token]):
     
     def __init__(
             self,
-            validator: Optional[TokenValidationServer] | None = None,
+            validator: Optional[TokenValidationService] | None = None,
     ):
         """
         Args:
             validator: Optional[TokenValidationServer]
         """
-        super().__init__(validator=validator or TokenValidationServer())
+        super().__init__(validator=validator or TokenValidationService())
     
     @property
-    def validator(self) -> TokenValidationServer:
-        return cast(TokenValidationServer, super().validator)
+    def validator(self) -> TokenValidationService:
+        return cast(TokenValidationService, super().validator)
         
     @LoggingLevelRouter.monitor
     def execute(self, request: TokenBuildRequest) -> BuildResult[TokenBlueprint]:

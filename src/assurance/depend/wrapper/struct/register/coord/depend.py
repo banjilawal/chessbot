@@ -14,7 +14,7 @@ from typing import Optional
 
 from assurance import RegisterDependency
 from domain import CoordRegister
-from exchange import CoordValidationServer
+from exchange import CoordValidationService
 
 
 class CoordRegisterDependency(RegisterDependency[CoordRegister]):
@@ -34,19 +34,19 @@ class CoordRegisterDependency(RegisterDependency[CoordRegister]):
     Super Class:
         RegisterDependency
     """
-    _coord: CoordValidationServer
+    _coord: CoordValidationService
     
     def __init__(
             self,
-            coord: Optional[CoordValidationServer] | None = None,
+            coord: Optional[CoordValidationService] | None = None,
     ):
         """
         Args:
             coord: Optional[CoordValidationServer]
         """
         super().__init__()
-        self._coord = coord or CoordValidationServer()
+        self._coord = coord or CoordValidationService()
         
     @property
-    def coord(self) -> CoordValidationServer:
+    def coord(self) -> CoordValidationService:
         return self._coord

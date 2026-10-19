@@ -16,4 +16,4 @@ from .node import *
 from .register import *
 
 # Modules
-from .wrapper import StructValidationServer
+from .wrapper import StructValidationService

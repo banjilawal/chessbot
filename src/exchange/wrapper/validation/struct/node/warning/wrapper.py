@@ -15,13 +15,13 @@ from artifcat import WarningNodeValidationResponse, ValidationResult
 from domain import Warning, WarningBlueprint, EncounterWarningNode, EncounterWarningNodeBlueprint
 from err import WarningNodeValidationResponderException, WarningNodeValidationServerException, EmptyWarningCarrierException
 from exchange import (
-    WarningNodeValidationResponder, NodeValidationServer, EncounterWarningNodeValidationRequest
+    WarningNodeValidationResponder, NodeValidationService, EncounterWarningNodeValidationRequest
 )
 from util import LoggingLevelRouter
 
 
 class EncounterWarningNodeValidationServer(
-    NodeValidationServer[EncounterWarningNode]
+    NodeValidationService[EncounterWarningNode]
 ):
     """
     Role

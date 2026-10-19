@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import BuildResult
 from domain import Team, TeamBlueprint
 from err import TeamBuildLoaderException, TeamBuildRequestNullException
-from exchange import TeamBuildRequest, TeamValidationRequest, TeamValidationServer
+from exchange import TeamBuildRequest, TeamValidationRequest, TeamValidationService
 from fabrication import ModelBuildLoader
 from util import IdFactory, LoggingLevelRouter
 
@@ -41,17 +41,17 @@ class TeamBuildLoader(ModelBuildLoader[Team]):
     
     def __init__(
             self,
-            validator: Optional[TeamValidationServer] | None = None,
+            validator: Optional[TeamValidationService] | None = None,
     ):
         """
         Args:
             validator: Optional[TeamValidationServer]
         """
-        super().__init__(validator=validator or TeamValidationServer())
+        super().__init__(validator=validator or TeamValidationService())
     
     @property
-    def validator(self) -> TeamValidationServer:
-        return cast(TeamValidationServer, super().validator)
+    def validator(self) -> TeamValidationService:
+        return cast(TeamValidationService, super().validator)
         
     @LoggingLevelRouter.monitor
     def execute(self, request: TeamBuildRequest) -> BuildResult[TeamBlueprint]:

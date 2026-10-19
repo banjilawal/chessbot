@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import BuildResult
 from domain import Board, BoardBlueprint
 from err import BoardBuildLoaderException, BoardBuildRequestNullException
-from exchange import BoardBuildRequest, BoardValidationRequest, BoardValidationServer
+from exchange import BoardBuildRequest, BoardValidationRequest, BoardValidationService
 from fabrication import ModelBuildLoader
 from util import IdFactory, LoggingLevelRouter
 
@@ -41,17 +41,17 @@ class BoardBuildLoader(ModelBuildLoader[Board]):
     
     def __init__(
             self,
-            validator: Optional[BoardValidationServer] | None = None,
+            validator: Optional[BoardValidationService] | None = None,
     ):
         """
         Args:
             validator: Optional[BoardValidationServer]
         """
-        super().__init__(validator=validator or BoardValidationServer())
+        super().__init__(validator=validator or BoardValidationService())
     
     @property
-    def validator(self) -> BoardValidationServer:
-        return cast(BoardValidationServer, super().validator)
+    def validator(self) -> BoardValidationService:
+        return cast(BoardValidationService, super().validator)
         
     @LoggingLevelRouter.monitor
     def execute(self, request: BoardBuildRequest) -> BuildResult[BoardBlueprint]:

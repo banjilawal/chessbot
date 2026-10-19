@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import BuildResult
 from domain import Vector, VectorBlueprint
 from err import VectorBuildLoaderException, VectorBuildRequestNullException
-from exchange import VectorBuildRequest, VectorValidationRequest, VectorValidationServer
+from exchange import VectorBuildRequest, VectorValidationRequest, VectorValidationService
 from fabrication import ModelBuildLoader
 from util import IdFactory, LoggingLevelRouter
 
@@ -41,17 +41,17 @@ class VectorBuildLoader(ModelBuildLoader[Vector]):
     
     def __init__(
             self,
-            validator: Optional[VectorValidationServer] | None = None,
+            validator: Optional[VectorValidationService] | None = None,
     ):
         """
         Args:
             validator: Optional[VectorValidationServer]
         """
-        super().__init__(validator=validator or VectorValidationServer())
+        super().__init__(validator=validator or VectorValidationService())
     
     @property
-    def validator(self) -> VectorValidationServer:
-        return cast(VectorValidationServer, super().validator)
+    def validator(self) -> VectorValidationService:
+        return cast(VectorValidationService, super().validator)
         
     @LoggingLevelRouter.monitor
     def execute(self, request: VectorBuildRequest) -> BuildResult[VectorBlueprint]:

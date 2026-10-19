@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import BuildResult
 from domain import Arena, ArenaBlueprint
 from err import ArenaBuildLoaderException, ArenaBuildRequestNullException
-from exchange import ArenaBuildRequest, ArenaValidationRequest, ArenaValidationServer
+from exchange import ArenaBuildRequest, ArenaValidationRequest, ArenaValidationService
 from fabrication import ModelBuildLoader
 from util import IdFactory, LoggingLevelRouter
 
@@ -41,17 +41,17 @@ class ArenaBuildLoader(ModelBuildLoader[Arena]):
     
     def __init__(
             self,
-            validator: Optional[ArenaValidationServer] | None = None,
+            validator: Optional[ArenaValidationService] | None = None,
     ):
         """
         Args:
             validator: Optional[ArenaValidationServer]
         """
-        super().__init__(validator=validator or ArenaValidationServer())
+        super().__init__(validator=validator or ArenaValidationService())
     
     @property
-    def validator(self) -> ArenaValidationServer:
-        return cast(ArenaValidationServer, super().validator)
+    def validator(self) -> ArenaValidationService:
+        return cast(ArenaValidationService, super().validator)
         
     @LoggingLevelRouter.monitor
     def execute(self, request: ArenaBuildRequest) -> BuildResult[ArenaBlueprint]:

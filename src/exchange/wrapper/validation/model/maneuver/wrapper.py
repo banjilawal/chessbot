@@ -15,13 +15,13 @@ from artifcat import ManeuverValidationResponse, ValidationResult
 from domain import Maneuver, ManeuverBlueprint
 from err import ManeuverValidationResponderException, ManeuverValidationServerException, ManeuverCarrierEmptyException
 from exchange import (
-    ManeuverValidationResponder, ModelValidationServer, ManeuverValidationRequest
+    ManeuverValidationResponder, ModelValidationService, ManeuverValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class ManeuverValidationServer(
-    ModelValidationServer[Maneuver]
+class ManeuverValidationService(
+    ModelValidationService[Maneuver]
 ):
     """
     Role

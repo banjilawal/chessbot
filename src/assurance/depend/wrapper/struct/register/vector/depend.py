@@ -14,7 +14,7 @@ from typing import Optional
 
 from assurance import RegisterDependency
 from domain import VectorRegister
-from exchange import VectorValidationServer
+from exchange import VectorValidationService
 
 
 class VectorRegisterDependency(RegisterDependency[VectorRegister]):
@@ -34,19 +34,19 @@ class VectorRegisterDependency(RegisterDependency[VectorRegister]):
     Super Class:
         RegisterDependency
     """
-    _vector: VectorValidationServer
+    _vector: VectorValidationService
     
     def __init__(
             self,
-            vector: Optional[VectorValidationServer] | None = None,
+            vector: Optional[VectorValidationService] | None = None,
     ):
         """
         Args:
             vector: Optional[VectorValidationServer]
         """
         super().__init__()
-        self._vector = vector or VectorValidationServer()
+        self._vector = vector or VectorValidationService()
         
     @property
-    def vector(self) -> VectorValidationServer:
+    def vector(self) -> VectorValidationService:
         return self._vector

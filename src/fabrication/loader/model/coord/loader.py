@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import BuildResult
 from domain import Coord, CoordBlueprint
 from err import CoordBuildLoaderException, CoordBuildRequestNullException
-from exchange import CoordBuildRequest, CoordValidationRequest, CoordValidationServer
+from exchange import CoordBuildRequest, CoordValidationRequest, CoordValidationService
 from fabrication import ModelBuildLoader
 from util import IdFactory, LoggingLevelRouter
 
@@ -41,17 +41,17 @@ class CoordBuildLoader(ModelBuildLoader[Coord]):
     
     def __init__(
             self,
-            validator: Optional[CoordValidationServer] | None = None,
+            validator: Optional[CoordValidationService] | None = None,
     ):
         """
         Args:
             validator: Optional[CoordValidationServer]
         """
-        super().__init__(validator=validator or CoordValidationServer())
+        super().__init__(validator=validator or CoordValidationService())
     
     @property
-    def validator(self) -> CoordValidationServer:
-        return cast(CoordValidationServer, super().validator)
+    def validator(self) -> CoordValidationService:
+        return cast(CoordValidationService, super().validator)
         
     @LoggingLevelRouter.monitor
     def execute(self, request: CoordBuildRequest) -> BuildResult[CoordBlueprint]:

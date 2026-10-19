@@ -15,13 +15,13 @@ from artifcat import PlayerBinderValidationResponse, ValidationResult
 from domain import Player, PlayerBlueprint, PlayerBinder, PlayerBinderBlueprint
 from err import PlayerBinderValidationResponderException, PlayerBinderValidationServerException, PlayerCarrierEmptyException
 from exchange import (
-    PlayerBinderValidationResponder, BinderValidationServer, PlayerBinderValidationRequest
+    PlayerBinderValidationResponder, BinderValidationService, PlayerBinderValidationRequest
 )
 from util import LoggingLevelRouter
 
 
 class PlayerBinderValidationServer(
-    BinderValidationServer[PlayerBinder]
+    BinderValidationService[PlayerBinder]
 ):
     """
     Role

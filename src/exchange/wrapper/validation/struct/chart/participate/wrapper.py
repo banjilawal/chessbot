@@ -14,12 +14,12 @@ from typing import Optional, cast
 from artifcat import ValidationResult
 from domain import Participation, ParticipationBlueprint
 from err import ParticipationValidationServerException
-from exchange import ChartValidationServer, ParticipationValidationRequest, ParticipationValidationResponder
+from exchange import ChartValidationService, ParticipationValidationRequest, ParticipationValidationResponder
 from util import LoggingLevelRouter
 
 
 class ParticipationValidationServer(
-    ChartValidationServer[Participation]
+    ChartValidationService[Participation]
 ):
     """
     Role

@@ -15,8 +15,8 @@ from typing import Optional
 from assurance import ModelWrapperDependency
 from domain import Token
 from exchange import (
-    AlertValidationServer, RankValidationServer,
-    SquareValidationServer, TeamValidationServer, FootstepValidationServer
+    AlertValidationService, RankValidationService,
+    SquareValidationService, TeamValidationService, FootstepValidationService
 )
 
 
@@ -40,19 +40,19 @@ class TokenWrapperDependency(ModelWrapperDependency[Token]):
     Super Class:
         ModelWrapperDependency
     """
-    _team: TeamValidationServer
-    _rank: RankValidationServer
-    _alert: AlertValidationServer
-    _square: SquareValidationServer
-    _footstep: FootstepValidationServer
+    _team: TeamValidationService
+    _rank: RankValidationService
+    _alert: AlertValidationService
+    _square: SquareValidationService
+    _footstep: FootstepValidationService
     
     def __init__(
             self,
-            team: Optional[TeamValidationServer] | None = None,
-            rank: Optional[RankValidationServer] | None = None,
-            alert: Optional[AlertValidationServer] | None = None,
-            square: Optional[SquareValidationServer] | None = None,
-            footstep: Optional[FootstepValidationServer] | None = None,
+            team: Optional[TeamValidationService] | None = None,
+            rank: Optional[RankValidationService] | None = None,
+            alert: Optional[AlertValidationService] | None = None,
+            square: Optional[SquareValidationService] | None = None,
+            footstep: Optional[FootstepValidationService] | None = None,
     ):
         """
         Args:
@@ -63,28 +63,28 @@ class TokenWrapperDependency(ModelWrapperDependency[Token]):
             footstep: Optional[FootstepValidationServer]
         """
         super().__init__()
-        self._team = team or TeamValidationServer()
-        self._rank = rank or RankValidationServer()
-        self._alert = alert or AlertValidationServer()
-        self._square = square or SquareValidationServer()
-        self._footstep = footstep or FootstepValidationServer()
+        self._team = team or TeamValidationService()
+        self._rank = rank or RankValidationService()
+        self._alert = alert or AlertValidationService()
+        self._square = square or SquareValidationService()
+        self._footstep = footstep or FootstepValidationService()
     
     @property
-    def team(self) -> TeamValidationServer:
+    def team(self) -> TeamValidationService:
         return self._team
     
     @property
-    def rank(self) -> RankValidationServer:
+    def rank(self) -> RankValidationService:
         return self._rank
     
     @property
-    def alert(self) -> AlertValidationServer:
+    def alert(self) -> AlertValidationService:
         return self._alert
     
     @property
-    def square(self) -> SquareValidationServer:
+    def square(self) -> SquareValidationService:
         return self._square
     
     @property
-    def footstep(self) -> FootstepValidationServer:
+    def footstep(self) -> FootstepValidationService:
         return self._footstep

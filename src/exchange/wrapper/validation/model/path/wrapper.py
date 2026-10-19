@@ -15,13 +15,13 @@ from artifcat import PathValidationResponse, ValidationResult
 from domain import Path, PathBlueprint
 from err import PathValidationResponderException, PathValidationServerException, PathCarrierEmptyException
 from exchange import (
-    PathValidationResponder, ModelValidationServer, PathValidationRequest
+    PathValidationResponder, ModelValidationService, PathValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class PathValidationServer(
-    ModelValidationServer[Path]
+class PathValidationService(
+    ModelValidationService[Path]
 ):
     """
     Role

@@ -15,13 +15,13 @@ from artifcat import TokenValidationResponse, ValidationResult
 from domain import Token, TokenBlueprint
 from err import TokenValidationResponderException, TokenValidationServerException, TokenCarrierEmptyException
 from exchange import (
-    TokenValidationResponder, ModelValidationServer, TokenValidationRequest
+    TokenValidationResponder, ModelValidationService, TokenValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class TokenValidationServer(
-    ModelValidationServer[Token]
+class TokenValidationService(
+    ModelValidationService[Token]
 ):
     """
     Role

@@ -14,4 +14,4 @@ from .model import *
 from .struct import *
 
 # Modules
-from .wrapper import ValidationServer
+from .wrapper import ValidationService

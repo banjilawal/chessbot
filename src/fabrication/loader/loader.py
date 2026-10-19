@@ -15,7 +15,7 @@ from typing import Generic, Optional, TypeVar
 from artifcat import BuildResult
 from assurance import PrimingValidator
 from domain import Blueprint
-from exchange import BuildRequest, ValidationServer
+from exchange import BuildRequest, ValidationService
 from microservice import IdentityService
 from util import LoggingLevelRouter
 
@@ -42,14 +42,14 @@ class BuildLoader(ABC, Generic[T]):
 
     Super Class:
     """
-    _validator: ValidationServer[T]
+    _validator: ValidationService[T]
     _identity_service: IdentityService
     _priming_validator: PrimingValidator
 
     
     def __init__(
             self,
-            validator: ValidationServer[T],
+            validator: ValidationService[T],
             identity_service: Optional[IdentityService] | None = None,
             priming_validator: Optional[PrimingValidator] | None = None,
     ):
@@ -64,7 +64,7 @@ class BuildLoader(ABC, Generic[T]):
         self._priming_validator = priming_validator
     
     @property
-    def validator(self) -> ValidationServer[T]:
+    def validator(self) -> ValidationService[T]:
         return self._validator
     
     @property

@@ -15,13 +15,13 @@ from artifcat import VectorRegisterValidationResponse, ValidationResult
 from domain import Vector, VectorBlueprint, VectorRegister, VectorRegisterBlueprint
 from err import VectorRegisterValidationResponderException, VectorRegisterValidationServerException, VectorCarrierEmptyException
 from exchange import (
-    VectorRegisterValidationResponder, RegisterValidationServer, VectorRegisterValidationRequest
+    VectorRegisterValidationResponder, RegisterValidationService, VectorRegisterValidationRequest
 )
 from util import LoggingLevelRouter
 
 
 class VectorRegisterValidationServer(
-    RegisterValidationServer[VectorRegister]
+    RegisterValidationService[VectorRegister]
 ):
     """
     Role

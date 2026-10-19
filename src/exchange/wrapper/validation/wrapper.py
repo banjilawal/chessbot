@@ -19,7 +19,7 @@ from util import LoggingLevelRouter
 
 T = TypeVar("T")
 
-class ValidationServer(
+class ValidationService(
     ResponseWrapper[ValidationResult],
     ABC,
     Generic[T],

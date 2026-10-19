@@ -15,8 +15,8 @@ from typing import Optional
 from assurance import ModelWrapperDependency
 from domain import Game
 from exchange import (
-    ArenaValidationServer, PlayerBinderValidationServer,
-    PlayerValidationServer
+    ArenaValidationService, PlayerBinderValidationServer,
+    PlayerValidationService
 )
 
 
@@ -37,20 +37,20 @@ class GameWrapperDependency(ModelWrapperDependency[Game]):
     Super Class:
         ModelWrapperDependency
     """
-    _arena: ArenaValidationServer
+    _arena: ArenaValidationService
     _binder: PlayerBinderValidationServer
     
     def __init__(
             self,
-            arena: Optional[ArenaValidationServer] | None = None,
+            arena: Optional[ArenaValidationService] | None = None,
             binder: Optional[PlayerBinderValidationServer] | None = None,
     ):
         super().__init__()
-        self._arena = arena or ArenaValidationServer()
+        self._arena = arena or ArenaValidationService()
         self._binder = binder or PlayerBinderValidationServer()
         
     @property
-    def arena(self) -> ArenaValidationServer:
+    def arena(self) -> ArenaValidationService:
         return self._arena
     
     @property

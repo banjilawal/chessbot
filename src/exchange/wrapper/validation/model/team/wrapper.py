@@ -15,13 +15,13 @@ from artifcat import TeamValidationResponse, ValidationResult
 from domain import Team, TeamBlueprint
 from err import TeamValidationResponderException, TeamValidationServerException, TeamCarrierEmptyException
 from exchange import (
-    TeamValidationResponder, ModelValidationServer, TeamValidationRequest
+    TeamValidationResponder, ModelValidationService, TeamValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class TeamValidationServer(
-    ModelValidationServer[Team]
+class TeamValidationService(
+    ModelValidationService[Team]
 ):
     """
     Role

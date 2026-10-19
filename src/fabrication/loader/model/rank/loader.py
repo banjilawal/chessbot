@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import BuildResult
 from domain import Rank, RankBlueprint
 from err import RankBuildLoaderException, RankBuildRequestNullException
-from exchange import RankBuildRequest, RankValidationRequest, RankValidationServer
+from exchange import RankBuildRequest, RankValidationRequest, RankValidationService
 from fabrication import ModelBuildLoader
 from util import IdFactory, LoggingLevelRouter
 
@@ -41,17 +41,17 @@ class RankBuildLoader(ModelBuildLoader[Rank]):
     
     def __init__(
             self,
-            validator: Optional[RankValidationServer] | None = None,
+            validator: Optional[RankValidationService] | None = None,
     ):
         """
         Args:
             validator: Optional[RankValidationServer]
         """
-        super().__init__(validator=validator or RankValidationServer())
+        super().__init__(validator=validator or RankValidationService())
     
     @property
-    def validator(self) -> RankValidationServer:
-        return cast(RankValidationServer, super().validator)
+    def validator(self) -> RankValidationService:
+        return cast(RankValidationService, super().validator)
         
     @LoggingLevelRouter.monitor
     def execute(self, request: RankBuildRequest) -> BuildResult[RankBlueprint]:

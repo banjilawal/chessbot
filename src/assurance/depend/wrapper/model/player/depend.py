@@ -14,7 +14,7 @@ from typing import Optional
 
 from assurance import ModelWrapperDependency
 from domain import Player
-from exchange import AccountValidationServer, GameValidationServer
+from exchange import AccountValidationService, GameValidationService
 
 
 class PlayerWrapperDependency(ModelWrapperDependency[Player]):
@@ -34,13 +34,13 @@ class PlayerWrapperDependency(ModelWrapperDependency[Player]):
     Super Class:
         ModelWrapperDependency
     """
-    _game: GameValidationServer
-    _account: AccountValidationServer
+    _game: GameValidationService
+    _account: AccountValidationService
     
     def __init__(
             self,
-            game: Optional[GameValidationServer] | None = None,
-            account: Optional[AccountValidationServer] | None = None,
+            game: Optional[GameValidationService] | None = None,
+            account: Optional[AccountValidationService] | None = None,
     ):
         """
         Args:
@@ -48,13 +48,13 @@ class PlayerWrapperDependency(ModelWrapperDependency[Player]):
             account: Optional[AccountValidationServer]
         """
         super().__init__()
-        self._game = game or GameValidationServer()
-        self._account = account or AccountValidationServer()
+        self._game = game or GameValidationService()
+        self._account = account or AccountValidationService()
         
     @property
-    def game(self) -> GameValidationServer:
+    def game(self) -> GameValidationService:
         return self._game
     
     @property
-    def account(self) -> AccountValidationServer:
+    def account(self) -> AccountValidationService:
         return self._account

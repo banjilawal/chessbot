@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import BuildResult
 from domain import Square, SquareBlueprint
 from err import SquareBuildLoaderException, SquareBuildRequestNullException
-from exchange import SquareBuildRequest, SquareValidationRequest, SquareValidationServer
+from exchange import SquareBuildRequest, SquareValidationRequest, SquareValidationService
 from fabrication import ModelBuildLoader
 from util import IdFactory, LoggingLevelRouter
 
@@ -41,17 +41,17 @@ class SquareBuildLoader(ModelBuildLoader[Square]):
     
     def __init__(
             self,
-            validator: Optional[SquareValidationServer] | None = None,
+            validator: Optional[SquareValidationService] | None = None,
     ):
         """
         Args:
             validator: Optional[SquareValidationServer]
         """
-        super().__init__(validator=validator or SquareValidationServer())
+        super().__init__(validator=validator or SquareValidationService())
     
     @property
-    def validator(self) -> SquareValidationServer:
-        return cast(SquareValidationServer, super().validator)
+    def validator(self) -> SquareValidationService:
+        return cast(SquareValidationService, super().validator)
         
     @LoggingLevelRouter.monitor
     def execute(self, request: SquareBuildRequest) -> BuildResult[SquareBlueprint]:

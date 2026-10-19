@@ -14,7 +14,7 @@ from typing import Optional
 
 from assurance import ModelWrapperDependency
 from domain import Alert
-from exchange import EncounterValidationServer, PlayerValidationServer
+from exchange import EncounterValidationService, PlayerValidationService
 
 
 class AlertWrapperDependency(ModelWrapperDependency[Alert]):
@@ -34,19 +34,19 @@ class AlertWrapperDependency(ModelWrapperDependency[Alert]):
         ModelWrapperDependency
     """
     
-    _encounter: EncounterValidationServer
+    _encounter: EncounterValidationService
     
     def __init__(
             self,
-            encounter: Optional[EncounterValidationServer] | None = None,
+            encounter: Optional[EncounterValidationService] | None = None,
     ):
         """
         Args:
             encounter: Optional[EncounterValidatorClient]
         """
         super().__init__()
-        self._encounter = encounter or EncounterValidationServer()
+        self._encounter = encounter or EncounterValidationService()
         
     @property
-    def encounter(self) -> EncounterValidationServer:
+    def encounter(self) -> EncounterValidationService:
         return self._encounter

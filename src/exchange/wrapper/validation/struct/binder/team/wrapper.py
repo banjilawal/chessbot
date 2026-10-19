@@ -15,13 +15,13 @@ from artifcat import TeamBinderValidationResponse, ValidationResult
 from domain import Team, TeamBlueprint, TeamBinder, TeamBinderBlueprint
 from err import TeamBinderValidationResponderException, TeamBinderValidationServerException, TeamCarrierEmptyException
 from exchange import (
-    TeamBinderValidationResponder, BinderValidationServer, TeamBinderValidationRequest
+    TeamBinderValidationResponder, BinderValidationService, TeamBinderValidationRequest
 )
 from util import LoggingLevelRouter
 
 
 class TeamBinderValidationServer(
-    BinderValidationServer[TeamBinder]
+    BinderValidationService[TeamBinder]
 ):
     """
     Role

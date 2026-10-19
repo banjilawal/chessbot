@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import BuildResult
 from domain import Account, AccountBlueprint
 from err import AccountBuildLoaderException, AccountBuildRequestNullException
-from exchange import AccountBuildRequest, AccountValidationRequest, AccountValidationServer
+from exchange import AccountBuildRequest, AccountValidationRequest, AccountValidationService
 from fabrication import ModelBuildLoader
 from util import IdFactory, LoggingLevelRouter
 
@@ -41,17 +41,17 @@ class AccountBuildLoader(ModelBuildLoader[Account]):
     
     def __init__(
             self,
-            validator: Optional[AccountValidationServer] | None = None,
+            validator: Optional[AccountValidationService] | None = None,
     ):
         """
         Args:
             validator: Optional[AccountValidationServer]
         """
-        super().__init__(validator=validator or AccountValidationServer())
+        super().__init__(validator=validator or AccountValidationService())
     
     @property
-    def validator(self) -> AccountValidationServer:
-        return cast(AccountValidationServer, super().validator)
+    def validator(self) -> AccountValidationService:
+        return cast(AccountValidationService, super().validator)
         
     @LoggingLevelRouter.monitor
     def execute(self, request: AccountBuildRequest) -> BuildResult[AccountBlueprint]:

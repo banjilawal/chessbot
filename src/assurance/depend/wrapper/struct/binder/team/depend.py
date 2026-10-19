@@ -14,7 +14,7 @@ from typing import Optional
 
 from assurance import BinderDependency
 from domain import TeamBinder
-from exchange import TeamValidationServer
+from exchange import TeamValidationService
 
 
 class TeamBinderDependency(BinderDependency[TeamBinder]):
@@ -34,19 +34,19 @@ class TeamBinderDependency(BinderDependency[TeamBinder]):
     Super Class:
         BinderDependency
     """
-    _team: TeamValidationServer
+    _team: TeamValidationService
     
     def __init__(
             self,
-            team: Optional[TeamValidationServer] | None = None,
+            team: Optional[TeamValidationService] | None = None,
     ):
         """
         Args:
             team: Optional[TeamValidationServer]
         """
         super().__init__()
-        self._team = team or TeamValidationServer()
+        self._team = team or TeamValidationService()
         
     @property
-    def team(self) -> TeamValidationServer:
+    def team(self) -> TeamValidationService:
         return self._team

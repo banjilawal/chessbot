@@ -15,17 +15,13 @@ from typing import Generic, TypeVar, cast
 from artifcat import ValidationResult
 from domain import Struct, StructBlueprint
 from exchange import (
-    StructValidationRequest, StructValidationResponder, ValidationServer
+    StructValidationRequest, StructValidationResponder, ValidationService
 )
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Struct")
 
-class StructValidationServer(
-    ValidationServer[T],
-    ABC,
-    Generic[T]
-):
+class StructValidationService(ValidationService[T], ABC, Generic[T]):
     """
     Role
         -   Wrapper

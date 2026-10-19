@@ -14,7 +14,7 @@ from typing import Optional
 
 from assurance import ModelWrapperDependency
 from domain import Maneuver
-from exchange import PathValidationServer, TokenValidationServer
+from exchange import PathValidationService, TokenValidationService
 
 
 class ManeuverWrapperDependency(ModelWrapperDependency[Maneuver]):
@@ -34,13 +34,13 @@ class ManeuverWrapperDependency(ModelWrapperDependency[Maneuver]):
     Super Class:
         ModelWrapperDependency
     """
-    _path: PathValidationServer
-    _token: TokenValidationServer
+    _path: PathValidationService
+    _token: TokenValidationService
     
     def __init__(
             self,
-            path: Optional[PathValidationServer] | None = None,
-            token: Optional[TokenValidationServer] | None = None,
+            path: Optional[PathValidationService] | None = None,
+            token: Optional[TokenValidationService] | None = None,
     ):
         """
         Args:
@@ -48,13 +48,13 @@ class ManeuverWrapperDependency(ModelWrapperDependency[Maneuver]):
             token: Optional[TokenValidatorClient]
         """
         super().__init__()
-        self._path = path or PathValidationServer()
-        self._token = token or TokenValidationServer()
+        self._path = path or PathValidationService()
+        self._token = token or TokenValidationService()
         
     @property
-    def path(self) -> PathValidationServer:
+    def path(self) -> PathValidationService:
         return self._path
     
     @property
-    def token(self) -> TokenValidationServer:
+    def token(self) -> TokenValidationService:
         return self._token

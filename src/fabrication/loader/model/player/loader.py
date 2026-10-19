@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import BuildResult
 from domain import Player, PlayerBlueprint
 from err import PlayerBuildLoaderException, PlayerBuildRequestNullException
-from exchange import PlayerBuildRequest, PlayerValidationRequest, PlayerValidationServer
+from exchange import PlayerBuildRequest, PlayerValidationRequest, PlayerValidationService
 from fabrication import ModelBuildLoader
 from util import IdFactory, LoggingLevelRouter
 
@@ -41,17 +41,17 @@ class PlayerBuildLoader(ModelBuildLoader[Player]):
     
     def __init__(
             self,
-            validator: Optional[PlayerValidationServer] | None = None,
+            validator: Optional[PlayerValidationService] | None = None,
     ):
         """
         Args:
             validator: Optional[PlayerValidationServer]
         """
-        super().__init__(validator=validator or PlayerValidationServer())
+        super().__init__(validator=validator or PlayerValidationService())
     
     @property
-    def validator(self) -> PlayerValidationServer:
-        return cast(PlayerValidationServer, super().validator)
+    def validator(self) -> PlayerValidationService:
+        return cast(PlayerValidationService, super().validator)
         
     @LoggingLevelRouter.monitor
     def execute(self, request: PlayerBuildRequest) -> BuildResult[PlayerBlueprint]:

@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import BuildResult
 from domain import Footstep, FootstepBlueprint
 from err import FootstepBuildLoaderException, FootstepBuildRequestNullException
-from exchange import FootstepBuildRequest, FootstepValidationRequest, FootstepValidationServer
+from exchange import FootstepBuildRequest, FootstepValidationRequest, FootstepValidationService
 from fabrication import ModelBuildLoader
 from util import IdFactory, LoggingLevelRouter
 
@@ -41,17 +41,17 @@ class FootstepBuildLoader(ModelBuildLoader[Footstep]):
     
     def __init__(
             self,
-            validator: Optional[FootstepValidationServer] | None = None,
+            validator: Optional[FootstepValidationService] | None = None,
     ):
         """
         Args:
             validator: Optional[FootstepValidationServer]
         """
-        super().__init__(validator=validator or FootstepValidationServer())
+        super().__init__(validator=validator or FootstepValidationService())
     
     @property
-    def validator(self) -> FootstepValidationServer:
-        return cast(FootstepValidationServer, super().validator)
+    def validator(self) -> FootstepValidationService:
+        return cast(FootstepValidationService, super().validator)
         
     @LoggingLevelRouter.monitor
     def execute(self, request: FootstepBuildRequest) -> BuildResult[FootstepBlueprint]:

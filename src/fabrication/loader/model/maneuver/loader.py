@@ -14,7 +14,7 @@ from typing import Optional, cast
 from artifcat import BuildResult
 from domain import Maneuver, ManeuverBlueprint
 from err import ManeuverBuildLoaderException, ManeuverBuildRequestNullException
-from exchange import ManeuverBuildRequest, ManeuverValidationRequest, ManeuverValidationServer
+from exchange import ManeuverBuildRequest, ManeuverValidationRequest, ManeuverValidationService
 from fabrication import ModelBuildLoader
 from util import IdFactory, LoggingLevelRouter
 
@@ -41,17 +41,17 @@ class ManeuverBuildLoader(ModelBuildLoader[Maneuver]):
     
     def __init__(
             self,
-            validator: Optional[ManeuverValidationServer] | None = None,
+            validator: Optional[ManeuverValidationService] | None = None,
     ):
         """
         Args:
             validator: Optional[ManeuverValidationServer]
         """
-        super().__init__(validator=validator or ManeuverValidationServer())
+        super().__init__(validator=validator or ManeuverValidationService())
     
     @property
-    def validator(self) -> ManeuverValidationServer:
-        return cast(ManeuverValidationServer, super().validator)
+    def validator(self) -> ManeuverValidationService:
+        return cast(ManeuverValidationService, super().validator)
         
     @LoggingLevelRouter.monitor
     def execute(self, request: ManeuverBuildRequest) -> BuildResult[ManeuverBlueprint]:

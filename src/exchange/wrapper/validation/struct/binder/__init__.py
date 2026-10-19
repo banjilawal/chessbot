@@ -14,4 +14,4 @@ from .player import *
 from .team import *
 
 # Modules
-from .wrapper import BinderValidationServer
+from .wrapper import BinderValidationService

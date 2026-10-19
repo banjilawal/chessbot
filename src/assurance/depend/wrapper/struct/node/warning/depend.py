@@ -14,7 +14,7 @@ from typing import Optional
 
 from assurance import NodeDependency
 from domain import EncounterWarningNode
-from exchange import EncounterValidationServer
+from exchange import EncounterValidationService
 
 
 class EncounterWarningNodeDependency(NodeDependency[EncounterWarningNode]):
@@ -34,19 +34,19 @@ class EncounterWarningNodeDependency(NodeDependency[EncounterWarningNode]):
     Super Class:
         NodeDependency
     """
-    _encounter: EncounterValidationServer
+    _encounter: EncounterValidationService
     
     def __init__(
             self,
-            encounter: Optional[EncounterValidationServer] | None = None,
+            encounter: Optional[EncounterValidationService] | None = None,
     ):
         """
         Args:
             encounter: Optional[EncounterValidationServer]
         """
         super().__init__()
-        self._encounter = encounter or EncounterValidationServer()
+        self._encounter = encounter or EncounterValidationService()
         
     @property
-    def encounter(self) -> EncounterValidationServer:
+    def encounter(self) -> EncounterValidationService:
         return self._encounter

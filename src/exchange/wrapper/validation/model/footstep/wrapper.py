@@ -18,13 +18,13 @@ from err import (
     FootstepCarrierEmptyException
 )
 from exchange import (
-    FootstepValidationResponder, ModelValidationServer, FootstepValidationRequest
+    FootstepValidationResponder, ModelValidationService, FootstepValidationRequest
 )
 from util import LoggingLevelRouter
 
 
-class FootstepValidationServer(
-    ModelValidationServer[Footstep]
+class FootstepValidationService(
+    ModelValidationService[Footstep]
 ):
     """
     Role
