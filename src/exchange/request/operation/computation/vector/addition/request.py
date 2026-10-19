@@ -44,5 +44,5 @@ class VectorAdditionRequest(VectorComputationRequest):
         if other is None: return False
         if isinstance(other, VectorAdditionRequest):
             request = cast(VectorAdditionRequest, other)
-            return self.id == exchange.request.id
+            return self.id == exchange.operation.id
         return False

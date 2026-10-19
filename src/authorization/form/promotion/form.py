@@ -1,7 +1,7 @@
-# src/exchange/request/authorization/promotion/request.py
+# src/authorization/form/promotion/form.py
 
 """
-Module: exchange.request.authorization.promotion.request
+Module: authorization.form.promotion.form
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,10 +11,11 @@ from __future__ import annotations
 
 from typing import cast
 
-from exchange import AuthorizationRequest, PromotionRequest
+from authorization.form import AuthorizationForm
+from exchange import PromotionRequest
 
 
-class PromotionAuthorizationRequest(AuthorizationRequest[PromotionRequest]):
+class PromotionAuthorizationForm(AuthorizationForm[PromotionRequest]):
     """
      Role:
          -  Messaging
@@ -25,29 +26,29 @@ class PromotionAuthorizationRequest(AuthorizationRequest[PromotionRequest]):
 
      Attributes:
          id: int
-         request: PromotionRequest
+         operation: PromotionRequest
 
      Provides:
      
      Super Class:
-        AuthorizationRequest
+        AuthorizationForm
      """
     
-    def __init__(self, id: int, request: PromotionRequest):
+    def __init__(self, id: int, operation: PromotionRequest):
         """
         Args:
             id: int
-            request: PromotionRequest
+            operation: PromotionRequest
         """
-        super().__init__(id=id, request=request)
+        super().__init__(id=id, operation=operation)
     
     @property
-    def request(self) -> PromotionRequest:
-        return cast(PromotionRequest, super().request)
+    def operation(self) -> PromotionRequest:
+        return cast(PromotionRequest, super().operation)
     
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, PromotionAuthorizationRequest):
+        if isinstance(other, PromotionAuthorizationForm):
             return self.id == other.id
         return False

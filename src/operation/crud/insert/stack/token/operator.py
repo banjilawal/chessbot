@@ -80,7 +80,7 @@ class TokenPusher(StackPop[Token]):
                     ex=decision.exception
                 )
             )
-        req = cast(TokenStackPushRequest, decision.request)
+        req = cast(TokenStackPushRequest, decision.operation)
         # Otherwise, complete the push steps.
         req.stack.items.append(req.item)
         # Maintain state.

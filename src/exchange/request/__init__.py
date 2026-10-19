@@ -11,7 +11,6 @@ version: 0.0.2
 # =========== EXCHANGE.REQUEST PACKAGE ===========#
 
 # Packages
-from .authorization import *
 from .crud import *
 from .chain import *
 from .fabrication import *
@@ -21,7 +20,6 @@ from .microservice import *
 from .operation import *
 from .promotion import *
 from .validation import *
-
 from .operation import *
 
 # Modules

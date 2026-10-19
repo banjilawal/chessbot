@@ -59,5 +59,5 @@ class InsertionRequest(Request[InsertionResult], ABC, Generic[T]):
         if other is None: return False
         if isinstance(other, InsertionRequest):
             request = cast(InsertionRequest, other)
-            return self._id == exchange.request.id
+            return self._id == exchange.operation.id
         return False

@@ -57,5 +57,5 @@ class TokenStackPopRequest(StackPopRequest[Token]):
         if other is None: return False
         if isinstance(other, TokenStackPopRequest):
             request = cast(TokenStackPopRequest, other)
-            return self.id == exchange.request.id
+            return self.id == exchange.operation.id
         return False

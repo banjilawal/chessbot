@@ -57,5 +57,5 @@ class VectorAddNodeRequest(AddNodeRequest[VectorNode]):
         if other is None: return False
         if isinstance(other, VectorAddNodeRequest):
             request = cast(VectorAddNodeRequest, other)
-            return self.id == exchange.request.id
+            return self.id == exchange.operation.id
         return False

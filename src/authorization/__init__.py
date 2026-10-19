@@ -12,6 +12,7 @@ version: 0.0.2
 # Packages
 from .adjudicator import *
 from .crud import *
+from .form import *
 from .insertion import *
 from .loader import *
 from .permitter import *

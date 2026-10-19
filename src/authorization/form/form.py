@@ -1,7 +1,7 @@
-# src/exchange/request/authorization/request.py
+# src/authorization/form/form.py
 
 """
-Module: exchange.request.authorization.request
+Module: authorization.form.form
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -17,7 +17,7 @@ from exchange import Request
 T = TypeVar("T", bound="Request")
 
 
-class AuthorizationRequest(ABC, Generic[T]):
+class AuthorizationForm(ABC, Generic[T]):
     """
      Role:
          -  Messaging
@@ -34,28 +34,28 @@ class AuthorizationRequest(ABC, Generic[T]):
      Super Class:
      """
     _id: int
-    _request: T
+    _operation: T
     
-    def __init__(self, id: int, request: T):
+    def __init__(self, id: int, operation: T):
         """
         Args:
             id: int
-            request: T
+            operation: T
         """
         self._id = id
-        self._request = request
+        self._operation = operation
         
     @property
     def id(self) -> int:
         return self.id
     
     @property
-    def request(self) -> T:
-        self._request
+    def operation(self) -> T:
+        return self._operation
     
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, AuthorizationRequest):
+        if isinstance(other, AuthorizationForm):
             return self._id == other.id
         return False

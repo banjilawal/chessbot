@@ -16,7 +16,7 @@ from authorization import AuthorizationLoader
 from util import LoggingLevelRouter
 
 
-T = TypeVar("T", bound="AuthorizationRequest")
+T = TypeVar("T", bound="AuthorizationForm")
 
 
 class OperationPermitter(ABC, Generic[T]):

@@ -80,8 +80,8 @@ class TokenStackPop(StackPop[Token]):
                     ex=decision.exception
                 )
             )
-        stack = cast(TokenStackPopRequest, decision.request).stack
-        item = cast(TokenStackPopRequest, decision.request).item
+        stack = cast(TokenStackPopRequest, decision.operation).stack
+        item = cast(TokenStackPopRequest, decision.operation).item
         
         # Otherwise, complete the pop steps.
         product = stack.items.remove(item)

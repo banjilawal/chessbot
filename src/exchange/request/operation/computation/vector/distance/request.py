@@ -44,5 +44,5 @@ class VectorDistanceRequest(VectorComputationRequest):
         if other is None: return False
         if isinstance(other, VectorDistanceRequest):
             request = cast(VectorDistanceRequest, other)
-            return self.id == exchange.request.id
+            return self.id == exchange.operation.id
         return False

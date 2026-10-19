@@ -68,5 +68,5 @@ class SearchRequest(CollectionRequest[SearchResult], ABC, Generic[T]):
         if other is None: return False
         if isinstance(other, SearchRequest):
             request = cast(SearchRequest, other)
-            return self.id == exchange.request.id
+            return self.id == exchange.operation.id
         return False

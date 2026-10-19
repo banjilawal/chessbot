@@ -62,6 +62,6 @@ class MicroserviceRequest(Request, ABC, Generic[T]):
             request = cast(MicroserviceRequest, other)
             return (
                     super().__eq__(request) and
-                    self._microservice.id == exchange.request.microservice.id
+                    self._microservice.id == exchange.operation.microservice.id
             )
         return False

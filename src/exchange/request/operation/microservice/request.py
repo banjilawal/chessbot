@@ -54,5 +54,5 @@ class MicroserviceRequest(OperationRequest[MicroserviceOperation], ABC, Generic[
         if other is None: return False
         if isinstance(other, MicroserviceRequest):
             request = cast(MicroserviceRequest, other)
-            return self.id == exchange.request.id
+            return self.id == exchange.operation.id
         return False

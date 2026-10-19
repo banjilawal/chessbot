@@ -61,5 +61,5 @@ class AddNodeRequest(InsertionRequest[Chain], ABC, Generic[T]):
         if other is None: return False
         if isinstance(other, AddNodeRequest):
             request = cast(AddNodeRequest, other)
-            return self.id == exchange.request.id
+            return self.id == exchange.operation.id
         return False

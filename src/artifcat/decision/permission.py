@@ -1,11 +1,13 @@
-# src/artifact/decision/state/_state.py
+# src/artifact/decision/permission.py
 
 """
-Module: artfifact.decision.state._state
+Module: artfifact.decision.permission
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
+
+from __future__ import annotations
 
 from enum import Enum, auto
 

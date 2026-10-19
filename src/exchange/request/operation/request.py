@@ -45,5 +45,5 @@ class OldRequest(Request, ABC, Generic[T]):
         if other is None: return False
         if isinstance(other, OperationRequest):
             request = cast(OperationRequest, other)
-            return self.id == exchange.request.id
+            return self.id == exchange.operation.id
         return False

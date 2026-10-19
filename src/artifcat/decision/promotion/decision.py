@@ -32,22 +32,24 @@ class PromotionDecision(Decision[PromotionRequest]):
         is_denied: bool
         
     Provides:
-        -   def deny(exception: Exception) -> Exception
+        -   def grant(request: PromotionRequest) -> PromotionDecision
+        -   def deny(request: PromotionRequest, exception: Exception) -> PromotionDecision
 
     Super Class:
+        Decision
     """
 
   
     def __init__(
             self,
-            request: PromotionRequest,
             permission: Permission,
+            request: PromotionRequest,
             exception: Optional[Exception] | None = None,
     ):
         """
         Args:
-            request: PromotionRequest
             permission: Permission
+            request: PromotionRequest
             exception: Optional[Exception]
         """
         super().__init__(request=request, permission=permission, exception=exception)
@@ -66,11 +68,11 @@ class PromotionDecision(Decision[PromotionRequest]):
         return not self.is_granted
     
     @classmethod
-    def grant(cls, request: PromotionRequest) -> Decision:
+    def grant(cls, request: PromotionRequest) -> PromotionDecision:
         return cls(request=request, permission=Permission.GRANTED)
     
     @classmethod
-    def deny(cls, request: PromotionRequest, exception: Exception) -> Decision:
+    def deny(cls, request: PromotionRequest, exception: Exception) -> PromotionDecision:
         return cls(
             request=request,
             exception=exception,
@@ -78,7 +80,7 @@ class PromotionDecision(Decision[PromotionRequest]):
         )
     
     @classmethod
-    def timed_out(cls, request: PromotionRequest, exception: Exception) -> Decision:
+    def timed_out(cls, request: PromotionRequest, exception: Exception) -> PromotionDecision:
         return cls(
             request=request,
             exception=exception,

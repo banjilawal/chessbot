@@ -61,5 +61,5 @@ class StackPopRequest(CollectionDeletionRequest[StackService], ABC, Generic[T]):
         if other is None: return False
         if isinstance(other, StackPopRequest):
             request = cast(StackPopRequest, other)
-            return self.id == exchange.request.id
+            return self.id == exchange.operation.id
         return False

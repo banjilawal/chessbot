@@ -44,5 +44,5 @@ class VectorTransformRequest(VectorComputationRequest):
         if other is None: return False
         if isinstance(other, VectorTransformRequest):
             request = cast(VectorTransformRequest, other)
-            return self.id == exchange.request.id
+            return self.id == exchange.operation.id
         return False
