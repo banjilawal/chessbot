@@ -31,7 +31,7 @@ class RootEnvelopeProducer(ABC, Generic[T]):
             and the prime_extract for its client validators.
 
     Attributes:
-        loader: Loader[T]
+        loader: ValidationLoader[T]
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[ProductEnvelope]:
@@ -43,7 +43,7 @@ class RootEnvelopeProducer(ABC, Generic[T]):
     def __init__(self, loader: ValidationLoader[T]):
         """
         Args:
-            loader: Loader[T]
+            loader: ValidationLoader[T]
         """
         self._loader = loader
         

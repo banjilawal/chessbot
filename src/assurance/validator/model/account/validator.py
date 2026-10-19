@@ -12,28 +12,24 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import (
-    AccountEnvelopeProducer, AccountValidationRouter, AccountValidationLoader,
-    AccountValidatorToolkit, ModelValidator
-)
+from assurance import AccountEnvelopeProducer, ValidationFactory
 from domain import Account
 from err import AccountValidatorException
-from transit import AccountCarrier, RootAccountEnvelope
+from transit import AccountCarrier, AccountValidationRouter, RootAccountEnvelope
 from util import LoggingLevelRouter
 
 
-class AccountValidator(ModelValidator[Account]):
+class AccountValidator(ValidationFactory[Account]):
     """
     Role
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a AccountCarrier is safe to use.
+        1.  Ensure an AccountCarrier is safe to use.
 
     Attributes:
-        loader: Optional[AccountLoader]
-        envelope_producer: Optional[AccountEnvelopeProducer]
-        envelope_validator: Optional[AccountValidationRouter]
+        router: Optional[AccountValidationRouter]
+        producer: Optional[AccountEnvelopeProducer]
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[AccountCarrier]:
@@ -41,32 +37,29 @@ class AccountValidator(ModelValidator[Account]):
     Super Class:
         ModelValidator
     """
-    _envelope_validator: AccountValidationRouter
-    _envelope_producer: AccountEnvelopeProducer
     
     def __init__(
             self,
-            loader: Optional[AccountValidationLoader] | None = None,
-            envelope_producer: Optional[AccountEnvelopeProducer] | None = None,
-            envelope_validator: Optional[AccountValidationRouter] | None = None,
+            router: Optional[AccountValidationRouter] | None = None,
+            producer: Optional[AccountEnvelopeProducer] | None = None,
     ):
         """
         Args:
-            loader: Optional[AccountLoader]
-            envelope_producer: Optional[AccountEnvelopeProducer]
-            envelope_validator: Optional[AccountValidationRouter]
+            router: Optional[AccountValidationRouter]
+            producer: Optional[AccountEnvelopeProducer]
         """
-        super().__init__(loader=loader or AccountValidationLoader())
-        self._envelope_producer = envelope_producer or AccountEnvelopeProducer()
-        self._envelope_validator = envelope_validator or AccountValidationRouter()
+        super().__init__(
+            router=router or AccountValidationRouter(),
+            producer=producer or AccountEnvelopeProducer(),
+        )
     
     @property
-    def loader(self) -> AccountValidationLoader:
-        return cast(AccountValidationLoader, super().loader)
+    def router(self) -> AccountValidationRouter:
+        return cast(AccountValidationRouter, super().router)
     
     @property
-    def toolkit(self) -> AccountValidatorToolkit:
-        return self.loader.toolkit
+    def producer(self) -> AccountEnvelopeProducer:
+        return cast(AccountEnvelopeProducer, super().producer)
     
     @LoggingLevelRouter.monitor
     def execute(
@@ -79,10 +72,10 @@ class AccountValidator(ModelValidator[Account]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The Loader fails.
+                    -   The Router fails.
                     -   Team, Formation, Deployment, id, or HomeAccount are flagged.
-                    -   The envelope_producer does not return a product
-            2.  Otherwise, send a AccountCarrier in the success result.
+                    -   The producer does not return a product
+            2.  Otherwise, send an AccountCarrier in the success result.
         Args:
             candidate: Any
         Returns:
@@ -92,7 +85,7 @@ class AccountValidator(ModelValidator[Account]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        product = self._envelope_producer.execute(candidate=candidate)
+        product = self.producer.execute(candidate=candidate)
         if product.is_failure:
             return ValidationResult.failure(
                 AccountValidatorException(
@@ -105,7 +98,7 @@ class AccountValidator(ModelValidator[Account]):
             )
         envelope = cast(RootAccountEnvelope, product.payload)
         
-        validation = self._envelope_validator.execute(envelope=envelope)
+        validation = self.router.execute(envelope=envelope)
         if validation.is_failure:
             return ValidationResult.failure(
                 AccountValidatorException(

@@ -15,4 +15,5 @@ from .space import *
 from .struct import *
 
 # Module
+from .factory import  ValidationFactory
 from .validator import Validator

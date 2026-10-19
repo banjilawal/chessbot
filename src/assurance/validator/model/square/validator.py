@@ -1,10 +1,10 @@
-# src/assurance/validator/model/square/assurance/validator/model.py
+# src/assurance/validator/model/square/validator.py
 
 """
 Module: assurance.validator.model.square.validator
 Author: Banji Lawal
 Created: 2026-04-03
-version: 0.0.2
+version: 1.0.2
 """
 
 from __future__ import annotations
@@ -12,75 +12,70 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import (
-    ModelValidator, SquareEnvelopeProducer, SquareValidationRouter, SquareValidationLoader,
-    SquareValidatorToolkit
-)
+from assurance import SquareEnvelopeProducer, ValidationFactory
 from domain import Square
 from err import SquareValidatorException
-from transit import RootSquareEnvelope, SquareCarrier
+from transit import SquareCarrier, SquareValidationRouter, RootSquareEnvelope
 from util import LoggingLevelRouter
 
 
-class SquareValidator(ModelValidator[Square]):
+class SquareValidator(ValidationFactory[Square]):
     """
     Role
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a SquareCarrier is safe to use.
+        1.  Ensure an SquareCarrier is safe to use.
 
     Attributes:
-        loader: SquareLoader
-        envelope_router: SquareValidationRouter
-        envelope_producer: SquareEnvelopeProducer
+        router: Optional[SquareValidationRouter]
+        producer: Optional[SquareEnvelopeProducer]
 
     Provides:
-        -   def execute(candidate: SquareValidationRequest) -> ValidationResult[SquareCarrier]:
+        -   def execute(candidate: Any) -> ValidationResult[SquareCarrier]:
 
     Super Class:
         ModelValidator
     """
-    _envelope_router: SquareValidationRouter
-    _envelope_producer: SquareEnvelopeProducer
-
-    
     
     def __init__(
             self,
-            loader: Optional[SquareValidationLoader] | None = None,
-            envelope_router: Optional[SquareValidationRouter] | None = None,
-            envelope_producer: Optional[SquareEnvelopeProducer] | None = None,
+            router: Optional[SquareValidationRouter] | None = None,
+            producer: Optional[SquareEnvelopeProducer] | None = None,
     ):
         """
         Args:
-            loader: Optional[SquareLoader]
-            envelope_router: Optional[SquareValidationRouter]
-            envelope_producer: Optional[SquareEnvelopeProducer]
+            router: Optional[SquareValidationRouter]
+            producer: Optional[SquareEnvelopeProducer]
         """
-        super().__init__(loader=loader or SquareValidationLoader())
-        self._envelope_router = envelope_router or SquareValidationRouter()
-        self._envelope_producer = envelope_producer or SquareEnvelopeProducer()
-        
-    @property
-    def loader(self) -> SquareValidationLoader:
-        return cast(SquareValidationLoader, super().loader)
+        super().__init__(
+            router=router or SquareValidationRouter(),
+            producer=producer or SquareEnvelopeProducer(),
+        )
     
     @property
-    def toolkit(self) -> SquareValidatorToolkit:
-        return self.loader.toolkit
+    def router(self) -> SquareValidationRouter:
+        return cast(SquareValidationRouter, super().router)
+    
+    @property
+    def producer(self) -> SquareEnvelopeProducer:
+        return cast(SquareEnvelopeProducer, super().producer)
     
     @LoggingLevelRouter.monitor
-    def execute(self, candidate: Any) -> ValidationResult[SquareCarrier]:
+    def execute(
+            self,
+            candidate: Any,
+    ) -> ValidationResult[SquareCarrier]:
         """
-        Certify a SquareCarrier's payload is either a Square or a Blueprint 
-        that is safe to use.
+        Assure a candidate is a safe SquareCarrier.
 
         Action:
-            1.  Send an exception chain in the ValidationResult if either:
-                    -   The Producer cannot generate a RootSquareEnvelope
-                    -   A SquareCarrier could not be routed.
-            2.  Otherwise, send the success result.
+            1.  Send an exception chain in the ValidationResult if any of the following
+                occur
+                    -   The Router fails.
+                    -   Team, Formation, Deployment, id, or HomeSquare are flagged.
+                    -   The producer does not return a product
+            2.  Otherwise, send an SquareCarrier in the success result.
         Args:
             candidate: Any
         Returns:
@@ -90,7 +85,7 @@ class SquareValidator(ModelValidator[Square]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        product = self._envelope_producer.execute(candidate=candidate)
+        product = self.producer.execute(candidate=candidate)
         if product.is_failure:
             return ValidationResult.failure(
                 SquareValidatorException(
@@ -103,16 +98,17 @@ class SquareValidator(ModelValidator[Square]):
             )
         envelope = cast(RootSquareEnvelope, product.payload)
         
-        routing = self._envelope_router.execute(envelope=envelope)
-        if routing.is_failure:
+        validation = self.router.execute(envelope=envelope)
+        if validation.is_failure:
             return ValidationResult.failure(
                 SquareValidatorException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
                     msg=SquareValidatorException.MSG,
                     err_code=SquareValidatorException.ERR_CODE,
-                    ex=routing.exception,
+                    ex=validation.exception,
                 )
             )
-        carrier = cast(SquareCarrier, routing.payload)
+        carrier = cast(SquareCarrier, validation.payload)
         return ValidationResult.success(carrier)
+    

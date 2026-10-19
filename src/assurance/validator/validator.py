@@ -1,7 +1,7 @@
-# src/assurance/validator/checker.py
+# src/assurance/validator/validator.py
 
 """
-Module: assurance.validator.checker
+Module: assurance.validator.validator
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -31,8 +31,8 @@ class Validator(ABC, Generic[T]):
         3.  Pluggable validation module.
 
     Attributes:
-        loader: Loader[T]
-        loader: ValidatorToolkit[T]
+        loader: ValidationLoader[T]
+        toolkit: ValidatorToolkit[T]
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[Blueprint[T]|T]:
@@ -44,8 +44,8 @@ class Validator(ABC, Generic[T]):
     def __init__(self, loader: ValidationLoader[T]):
         """
         Args:
-            loader: Loader[T]
-            loader: ValidatorToolkit[T]
+            loader: ValidationLoader[T]
+            toolkit: ValidatorToolkit[T]
         """
         self._loader = loader
      

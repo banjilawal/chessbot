@@ -12,28 +12,24 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import (
-    TokenEnvelopeProducer, TokenValidationRouter, TokenValidationLoader,
-    TokenValidatorToolkit, ModelValidator
-)
+from assurance import TokenEnvelopeProducer, ValidationFactory
 from domain import Token
 from err import TokenValidatorException
-from transit import TokenCarrier, RootTokenEnvelope
+from transit import TokenCarrier, TokenValidationRouter, RootTokenEnvelope
 from util import LoggingLevelRouter
 
 
-class TokenValidator(ModelValidator[Token]):
+class TokenValidator(ValidationFactory[Token]):
     """
     Role
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a TokenCarrier is safe to use.
+        1.  Ensure an TokenCarrier is safe to use.
 
     Attributes:
-        loader: TokenValidatorToolkit
-        envelope_producer: TokenValidationRouter
-        property_table_generator: RootTokenEnvelopeGenerator
+        router: Optional[TokenValidationRouter]
+        producer: Optional[TokenEnvelopeProducer]
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[TokenCarrier]:
@@ -41,32 +37,29 @@ class TokenValidator(ModelValidator[Token]):
     Super Class:
         ModelValidator
     """
-    _envelope_validator: TokenValidationRouter
-    _envelope_producer: TokenEnvelopeProducer
     
     def __init__(
             self,
-            loader: Optional[TokenValidationLoader] | None = None,
-            envelope_producer: Optional[TokenEnvelopeProducer] | None = None,
-            envelope_validator: Optional[TokenValidationRouter] | None = None,
+            router: Optional[TokenValidationRouter] | None = None,
+            producer: Optional[TokenEnvelopeProducer] | None = None,
     ):
         """
         Args:
-            loader: Optional[TokenLoader]
-            envelope_producer: Optional[TokenEnvelopeProducer]
-            envelope_validator: Optional[TokenValidationRouter]
+            router: Optional[TokenValidationRouter]
+            producer: Optional[TokenEnvelopeProducer]
         """
-        super().__init__(loader=loader or TokenValidationLoader())
-        self._envelope_producer = envelope_producer or TokenEnvelopeProducer()
-        self._envelope_validator = envelope_validator or TokenValidationRouter()
+        super().__init__(
+            router=router or TokenValidationRouter(),
+            producer=producer or TokenEnvelopeProducer(),
+        )
     
     @property
-    def loader(self) -> TokenValidationLoader:
-        return cast(TokenValidationLoader, super().loader)
+    def router(self) -> TokenValidationRouter:
+        return cast(TokenValidationRouter, super().router)
     
     @property
-    def toolkit(self) -> TokenValidatorToolkit:
-        return self.loader.toolkit
+    def producer(self) -> TokenEnvelopeProducer:
+        return cast(TokenEnvelopeProducer, super().producer)
     
     @LoggingLevelRouter.monitor
     def execute(
@@ -79,10 +72,10 @@ class TokenValidator(ModelValidator[Token]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The Loader fails.
+                    -   The Router fails.
                     -   Team, Formation, Deployment, id, or HomeToken are flagged.
-                    -   The envelope_producer does not return a product
-            2.  Otherwise, send a TokenCarrier in the success result.
+                    -   The producer does not return a product
+            2.  Otherwise, send an TokenCarrier in the success result.
         Args:
             candidate: Any
         Returns:
@@ -92,7 +85,7 @@ class TokenValidator(ModelValidator[Token]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        product = self._envelope_producer.execute(candidate=candidate)
+        product = self.producer.execute(candidate=candidate)
         if product.is_failure:
             return ValidationResult.failure(
                 TokenValidatorException(
@@ -105,7 +98,7 @@ class TokenValidator(ModelValidator[Token]):
             )
         envelope = cast(RootTokenEnvelope, product.payload)
         
-        validation = self._envelope_validator.execute(envelope=envelope)
+        validation = self.router.execute(envelope=envelope)
         if validation.is_failure:
             return ValidationResult.failure(
                 TokenValidatorException(

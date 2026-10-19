@@ -12,28 +12,24 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
-from assurance import (
-    EncounterEnvelopeProducer, EncounterValidationRouter, EncounterValidationLoader,
-    EncounterValidatorToolkit, ModelValidator
-)
+from assurance import EncounterEnvelopeProducer, ValidationFactory
 from domain import Encounter
 from err import EncounterValidatorException
-from transit import EncounterCarrier, RootEncounterEnvelope
+from transit import EncounterCarrier, EncounterValidationRouter, RootEncounterEnvelope
 from util import LoggingLevelRouter
 
 
-class EncounterValidator(ModelValidator[Encounter]):
+class EncounterValidator(ValidationFactory[Encounter]):
     """
     Role
         - Integrity, Consistency Maintenance
 
     Responsibilities:
-        1.  Ensure a EncounterCarrier is safe to use.
+        1.  Ensure an EncounterCarrier is safe to use.
 
     Attributes:
-        loader: EncounterValidatorToolkit
-        envelope_producer: EncounterValidationRouter
-        property_table_generator: RootEncounterEnvelopeGenerator
+        router: Optional[EncounterValidationRouter]
+        producer: Optional[EncounterEnvelopeProducer]
 
     Provides:
         -   def execute(candidate: Any) -> ValidationResult[EncounterCarrier]:
@@ -41,32 +37,29 @@ class EncounterValidator(ModelValidator[Encounter]):
     Super Class:
         ModelValidator
     """
-    _envelope_validator: EncounterValidationRouter
-    _envelope_producer: EncounterEnvelopeProducer
     
     def __init__(
             self,
-            loader: Optional[EncounterValidationLoader] | None = None,
-            envelope_producer: Optional[EncounterEnvelopeProducer] | None = None,
-            envelope_validator: Optional[EncounterValidationRouter] | None = None,
+            router: Optional[EncounterValidationRouter] | None = None,
+            producer: Optional[EncounterEnvelopeProducer] | None = None,
     ):
         """
         Args:
-            loader: Optional[EncounterLoader]
-            envelope_producer: Optional[EncounterEnvelopeProducer]
-            envelope_validator: Optional[EncounterValidationRouter]
+            router: Optional[EncounterValidationRouter]
+            producer: Optional[EncounterEnvelopeProducer]
         """
-        super().__init__(loader=loader or EncounterValidationLoader())
-        self._envelope_producer = envelope_producer or EncounterEnvelopeProducer()
-        self._envelope_validator = envelope_validator or EncounterValidationRouter()
+        super().__init__(
+            router=router or EncounterValidationRouter(),
+            producer=producer or EncounterEnvelopeProducer(),
+        )
     
     @property
-    def loader(self) -> EncounterValidationLoader:
-        return cast(EncounterValidationLoader, super().loader)
+    def router(self) -> EncounterValidationRouter:
+        return cast(EncounterValidationRouter, super().router)
     
     @property
-    def toolkit(self) -> EncounterValidatorToolkit:
-        return self.loader.toolkit
+    def producer(self) -> EncounterEnvelopeProducer:
+        return cast(EncounterEnvelopeProducer, super().producer)
     
     @LoggingLevelRouter.monitor
     def execute(
@@ -79,10 +72,10 @@ class EncounterValidator(ModelValidator[Encounter]):
         Action:
             1.  Send an exception chain in the ValidationResult if any of the following
                 occur
-                    -   The Loader fails.
+                    -   The Router fails.
                     -   Team, Formation, Deployment, id, or HomeEncounter are flagged.
-                    -   The envelope_producer does not return a product
-            2.  Otherwise, send a EncounterCarrier in the success result.
+                    -   The producer does not return a product
+            2.  Otherwise, send an EncounterCarrier in the success result.
         Args:
             candidate: Any
         Returns:
@@ -92,7 +85,7 @@ class EncounterValidator(ModelValidator[Encounter]):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        product = self._envelope_producer.execute(candidate=candidate)
+        product = self.producer.execute(candidate=candidate)
         if product.is_failure:
             return ValidationResult.failure(
                 EncounterValidatorException(
@@ -105,7 +98,7 @@ class EncounterValidator(ModelValidator[Encounter]):
             )
         envelope = cast(RootEncounterEnvelope, product.payload)
         
-        validation = self._envelope_validator.execute(envelope=envelope)
+        validation = self.router.execute(envelope=envelope)
         if validation.is_failure:
             return ValidationResult.failure(
                 EncounterValidatorException(

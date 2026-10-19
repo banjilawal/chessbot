@@ -10,7 +10,9 @@ version: 0.0.2
 # =========== ASSURANCE.VALIDATOR.MODEL.SQUARE PACKAGE ===========#
 
 # Packages
-from .public import *
+from .enemy import *
+from .king import *
+from .pawn import *
 
 # Modules
 from .validator import SquareValidator
