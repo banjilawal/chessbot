@@ -10,6 +10,6 @@ version: 0.0.2
 from enum import Enum, auto
 
 
-class PromotionDecision(Enum):
+class Permission(Enum):
     GRANTED = auto(),
     DENIED = auto(),

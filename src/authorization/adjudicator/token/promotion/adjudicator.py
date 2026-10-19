@@ -120,7 +120,7 @@ class PromotionRequestAdjudicator(RequestAdjudicator[PromotionRequest]):
                 )
             )
         # Handle the case that the subject is not a pawn.
-        pawn_test = self._pawn_adjudicator.execute(candidate=request.candidate_pawn)
+        pawn_test = self._pawn_adjudicator.execute(candidate=request.applicant)
         if pawn_test.is_failure:
             # Send the exception chain in the result.
             return PromotionRequestDecision.deny(

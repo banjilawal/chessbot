@@ -32,6 +32,7 @@ class PermissionRequest(Request[T], ABC, Generic[T]):
      Provides:
      
      Super Class:
+        Request
      """
     
     def __init__(self, id: int):
@@ -40,12 +41,10 @@ class PermissionRequest(Request[T], ABC, Generic[T]):
             id: int
         """
         super().__init__(id=id)
-        
-
     
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
         if isinstance(other, PermissionRequest):
-            return self._id == other.id
+            return self.id == other.id
         return False

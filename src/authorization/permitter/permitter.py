@@ -10,34 +10,32 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
+from typing import Any, Generic, TypeVar
 
+from artifcat import Decision
 from authorization import AuthorizationLoader
+from exchange import PermissionRequest
 from util import LoggingLevelRouter
 
 
-T = TypeVar("T", bound="AuthorizationForm")
+T = TypeVar("T", bound="PermissionRequest")
 
 
 class OperationPermitter(ABC, Generic[T]):
     """
     Role:
-        - Permission Authorization
-        - Integrity Maintenance
-        _   Consistency Assurance
+        -   Permission Authorization
+        -   Consistency and Integrity Management
 
     Responsibilities:
-        1.  Handoff service requests to the adjudicator to run through its authorization checklist.
-        2.  Supply adjudicator dependencies.
-        3.  Wrap any exceptions adjudicator exceptions for debuggung the exception chain.
-        4.  Cast to the approrpate Request type before forwarding Adjudicator approvals to the client
+        1.  Check if a candidate satisfies the criteria to perform an operation.
 
     Attributes:
         loader: AuthorizationLoader[T]
         
     Provides:
-        -  def execute(self, request: Request) -> RequestDecision
-
+        -  def process(self, form: T) -> Decision[T]:
+        
     Super Class:
     """
     _loader: AuthorizationLoader[T]
@@ -55,5 +53,5 @@ class OperationPermitter(ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> Decision[T]:
+    def execute(self, form: Any) -> Decision[T]:
         pass

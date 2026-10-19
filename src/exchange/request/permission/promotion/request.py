@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import TypeVar
 
 from artifcat import PromotionResult
-from domain import PawnToken
+from domain import PawnToken, Rank
 from exchange import PermissionRequest
 
 T = TypeVar("T")
@@ -27,27 +27,39 @@ class PromotionRequest(PermissionRequest[PromotionResult]):
 
      Attributes:
          id: int
-         candidate_pawn: PawnToken
+        applicant: PawnToken
 
      Provides:
      
      Super Class:
         PermissionRequest
      """
-    candidate_pawn: PawnToken
+    _applicant: PawnToken
+    _rank_elevation: Rank
     
-    def __init__(self, id: int, candidate_pawn: PawnToken):
+    def __init__(
+            self,
+            id: int,
+            applicant: PawnToken,
+            rank_elevation: Rank,
+    ):
         """
         Args:
             id: int
-            candidate_pawn: PawnToken
+            applicant: PawnToken
+            rank_elevation: Rank
         """
         super().__init__(id=id)
-        self._candidate_pawn = candidate_pawn
+        self._applicant = applicant
+        self._rank_elevation = rank_elevation
         
     @property
-    def candidate_pawn(self) -> PawnToken:
-        return self._candidate_pawn
+    def applicant(self) -> PawnToken:
+        return self._applicant
+    
+    @property
+    def rank_elevation(self) -> Rank:
+        return self._rank_elevation
         
     
     def __eq__(self, other):

@@ -72,7 +72,11 @@ class PromotionDecision(Decision[PromotionRequest]):
         return cls(request=request, permission=Permission.GRANTED)
     
     @classmethod
-    def deny(cls, request: PromotionRequest, exception: Exception) -> PromotionDecision:
+    def deny(
+            cls,
+            request: PromotionRequest,
+            exception: Exception,
+    ) -> PromotionDecision:
         return cls(
             request=request,
             exception=exception,
@@ -80,7 +84,11 @@ class PromotionDecision(Decision[PromotionRequest]):
         )
     
     @classmethod
-    def timed_out(cls, request: PromotionRequest, exception: Exception) -> PromotionDecision:
+    def timed_out(
+            cls,
+            request: PromotionRequest,
+            exception: Exception,
+    ) -> PromotionDecision:
         return cls(
             request=request,
             exception=exception,

@@ -13,9 +13,9 @@ from abc import ABC
 from typing import Generic, Optional, TypeVar
 
 from artifcat import Permission
-from exchange import Request
+from exchange import PermissionRequest
 
-T = TypeVar("T", bound="Request")
+T = TypeVar("T", bound="PermissionRequest")
 
 class Decision(ABC, Generic[T]):
     """
@@ -88,11 +88,15 @@ class Decision(ABC, Generic[T]):
         )
     
     @classmethod
-    def grant(cls, request: T) -> Decision:
+    def grant(cls, request: T) -> Decision[T]:
         return cls(request=request, permission=Permission.GRANTED)
     
     @classmethod
-    def deny(cls, request: T, exception: Exception) -> Decision:
+    def deny(
+            cls,
+            request: T,
+            exception: Exception
+    ) -> Decision[T]:
         return cls(
             request=request,
             exception=exception,

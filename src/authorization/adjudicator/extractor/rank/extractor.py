@@ -115,7 +115,7 @@ class BlueprintRankExtractor(Extractor):
             return ValidationResult.success(build_result.payload)
         
         # --- For the default case, validate the rank which already exists in the TokenBlueprint. ---#
-        validation_result = self._rank_service.validator.execute(rank=blueprint.rank,)
+        validation_result = self._rank_service.validator.execute(rank=blueprint.rank, )
         if validation_result.is_failure:
             # Handle the case that the _validate_rank raised an error.
             return ValidationResult.failure(
