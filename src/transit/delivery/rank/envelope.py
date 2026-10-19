@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from domain import Persona, Rank, RankPrimeExtract
-from transit import ProductEnvelope
+from transit import BishopCarrier, KingCarrier, KnightCarrier, PawnCarrier, ProductEnvelope, QueenCarrier, RankCarrier
 
 
 class RootRankEnvelope(ProductEnvelope[Rank]):
@@ -24,14 +24,16 @@ class RootRankEnvelope(ProductEnvelope[Rank]):
         1.  Data from a RootRankValidator forwarded to client validators.
 
     Attributes:
-        personaL Persona
+        persona: Persona
         prime_extract: RankPrimeExtract
 
     Provides:
-        for_kill_rank_consumer: bool
-        for_checkmate_rank_consumer: bool
-        for_rank_warning_consumer: bool
-        for_stalemate_rank_consumer: bool
+        for_bishop_consumer: bool
+        for_king_consumer: bool
+        for_knight_consumer: bool
+        for_pawn_consumer: bool
+        for_queen_consumer: bool
+        for_rook_consumer: bool
 
     Super Class:
         ProductEnvelope
@@ -81,7 +83,7 @@ class RootRankEnvelope(ProductEnvelope[Rank]):
     
     @property
     def for_rook_consumer(self) -> bool:
-        return isinstance(self._prime_extract.reference, RootCarrier)
+        return isinstance(self._prime_extract.reference, RankCarrier)
     
 
     
