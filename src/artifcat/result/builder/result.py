@@ -41,7 +41,6 @@ class BuildResult(Result[T], Generic[T]):
     Super Class:
         Result
     """
-    _state: ResultState
     
     def __init__(
             self,
