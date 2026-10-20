@@ -5,20 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/artifcat/result/authorizable/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/artifcat/result/authorizable/result.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/authorization/applicant/promotion/approver.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/authorization/applicant/promotion/approver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/interface/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/interface/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/interface/applicant/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/interface/actor/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/interface/applicant/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/interface/actor/interface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/interface/archetyped/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/interface/archetyped/interface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/interface/permittable/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/interface/actionable/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/interface/permittable/elevation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/interface/actionable/elevateable/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/interface/permittable/elevation/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/interface/actionable/elevateable/interface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/interface/permittable/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/interface/actionable/interface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/interface/searchable/interface.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/interface/searchable/interface.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/player/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/player/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/model/searchable/state/token/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/model/searchable/state/token/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/authorization/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/authorization/request.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/attack/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/authorizable/encounter/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/attack/checkmate/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/authorizable/encounter/checkmate/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/attack/checkmate/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/authorizable/encounter/checkmate/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/attack/kill/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/authorizable/encounter/kill/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/attack/kill/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/authorizable/encounter/kill/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/attack/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/authorizable/encounter/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/attack/stalemate/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/authorizable/encounter/stalemate/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/attack/stalemate/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/authorizable/encounter/stalemate/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/attack/warning/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/authorizable/encounter/warning/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/attack/warning/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/authorizable/encounter/warning/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/crud/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/authorizable/crud/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/crud/deletion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/authorizable/crud/deletion/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/crud/deletion/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/authorizable/crud/deletion/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/crud/deletion/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/authorizable/crud/deletion/state.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/crud/insertion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/authorizable/crud/insertion/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/crud/insertion/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/authorizable/crud/insertion/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/crud/insertion/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/authorizable/crud/insertion/state.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/crud/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/authorizable/crud/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/crud/search/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/authorizable/crud/search/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/crud/search/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/authorizable/crud/search/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/crud/search/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/authorizable/crud/search/state.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/crud/update/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/authorizable/crud/update/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/crud/update/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/authorizable/crud/update/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/crud/update/state.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/authorizable/crud/update/state.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/promotion/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/authorizable/promotion/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/artifcat/result/promotion/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/artifcat/result/authorizable/promotion/result.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,61 +76,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0020080348176876" />
-      <entry key="MS500" value="1.2891012737957999" />
-      <entry key="S2" value="1.8683527857491071" />
-      <entry key="S5" value="2.426656599878994" />
-      <entry key="S10" value="3.334591155821975" />
-      <entry key="S30" value="6.705565564401057" />
-      <entry key="S60" value="10.726402756970986" />
-      <entry key="M2" value="18.66850760343528" />
-      <entry key="M5" value="46.88325637951418" />
-      <entry key="M10" value="88.44703104760772" />
-      <entry key="M15" value="124.36508333625127" />
-      <entry key="M30" value="248.87450947361108" />
-      <entry key="H1" value="548.0814828918777" />
-      <entry key="H2" value="1030.9237810068882" />
-      <entry key="H4" value="1550.283420314855" />
-      <entry key="D1" value="4242.395932666282" />
-      <entry key="W1" value="21343.64760543965" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0000000000443006" />
+      <entry key="S10" value="1.0000091508897522" />
+      <entry key="S30" value="1.0355274859220787" />
+      <entry key="S60" value="1.373551363136801" />
+      <entry key="M2" value="2.6905582568135875" />
+      <entry key="M5" value="9.659107897664168" />
+      <entry key="M10" value="37.1355561870976" />
+      <entry key="M15" value="79.93354281290603" />
+      <entry key="M30" value="228.99706827597035" />
+      <entry key="H1" value="538.8079167266566" />
+      <entry key="H2" value="1065.5513406618504" />
+      <entry key="H4" value="1683.66828204671" />
+      <entry key="D1" value="4542.28809347945" />
+      <entry key="W1" value="21683.820814179406" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="8.826065546528627E-88" />
-      <entry key="S5" value="2.2571986660055157E-35" />
-      <entry key="S10" value="6.704824749706946E-18" />
-      <entry key="S30" value="2.991889708921021E-6" />
-      <entry key="S60" value="0.0024460330474221316" />
-      <entry key="M2" value="0.06994228080966666" />
-      <entry key="M5" value="0.5230837893358316" />
-      <entry key="M10" value="1.0510198938617576" />
-      <entry key="M15" value="1.512793752121466" />
-      <entry key="M30" value="4.045573790703269" />
-      <entry key="H1" value="12.500669980995596" />
-      <entry key="H2" value="29.10240488337139" />
-      <entry key="H4" value="50.60839714384863" />
-      <entry key="D1" value="209.69550886646513" />
-      <entry key="W1" value="1205.5826209048034" />
+      <entry key="S2" value="1.8480432462019134E-153" />
+      <entry key="S5" value="8.066494684978605E-62" />
+      <entry key="S10" value="2.8401575105931356E-31" />
+      <entry key="S30" value="6.573259967850478E-11" />
+      <entry key="S60" value="8.107565023251355E-6" />
+      <entry key="M2" value="0.002849405714402821" />
+      <entry key="M5" value="0.11676638400941367" />
+      <entry key="M10" value="0.8280973555533493" />
+      <entry key="M15" value="2.026482339640656" />
+      <entry key="M30" value="6.052514546494418" />
+      <entry key="H1" value="14.60951479882187" />
+      <entry key="H2" value="31.396900791340027" />
+      <entry key="H4" value="54.87113845871758" />
+      <entry key="D1" value="217.4455089138943" />
+      <entry key="W1" value="1214.5931939532338" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.9220612133579321" />
-      <entry key="MS500" value="1.2686241082923675" />
-      <entry key="S2" value="1.8612919136406967" />
-      <entry key="S5" value="2.423169198976738" />
-      <entry key="S10" value="3.332287296256137" />
-      <entry key="S30" value="6.7040188200569775" />
-      <entry key="S60" value="10.727524155517747" />
-      <entry key="M2" value="18.736566871057686" />
-      <entry key="M5" value="47.40301948345162" />
-      <entry key="M10" value="89.49440100443876" />
-      <entry key="M15" value="125.87248771481757" />
-      <entry key="M30" value="252.90360293448776" />
-      <entry key="H1" value="560.5482022543221" />
-      <entry key="H2" value="1059.9814474060142" />
-      <entry key="H4" value="1600.8488554172181" />
-      <entry key="D1" value="4452.061981685268" />
-      <entry key="W1" value="22549.208590001752" />
+      <entry key="MS100" value="0.8888426811665702" />
+      <entry key="MS500" value="0.9767085289622274" />
+      <entry key="S2" value="0.9941255712940557" />
+      <entry key="S5" value="0.9976460744684854" />
+      <entry key="S10" value="0.9988314859422336" />
+      <entry key="S30" value="1.035123283379166" />
+      <entry key="S60" value="1.3732028543486297" />
+      <entry key="M2" value="2.69095522008942" />
+      <entry key="M5" value="9.759639278398444" />
+      <entry key="M10" value="37.93595148797983" />
+      <entry key="M15" value="81.92977440631982" />
+      <entry key="M30" value="235.01955105243925" />
+      <entry key="H1" value="553.3828406430283" />
+      <entry key="H2" value="1096.906236928468" />
+      <entry key="H4" value="1738.4976575193823" />
+      <entry key="D1" value="4759.703974082" />
+      <entry key="W1" value="22898.39231533952" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -148,7 +164,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/authorization/applicant/promotion/token",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/artifcat/result/authorizable",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -162,18 +178,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/artifcat/result/authorizable" />
+      <recent name="$PROJECT_DIR$/src/artifcat/result/interface/authorizable" />
+      <recent name="$PROJECT_DIR$/src/artifcat/result" />
       <recent name="$PROJECT_DIR$/src/authorization/applicant/promotion/token" />
       <recent name="$PROJECT_DIR$/src/authorization/applicant/promotion" />
-      <recent name="$PROJECT_DIR$/src/authorization" />
-      <recent name="$PROJECT_DIR$/src/domain/interface/permittable/elevation" />
-      <recent name="$PROJECT_DIR$/src/domain/interface" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/artifcat/result/authorizable" />
       <recent name="$PROJECT_DIR$/src/authorization/applicant" />
       <recent name="$PROJECT_DIR$/src/domain/interface/archetyped" />
       <recent name="$PROJECT_DIR$/src/authorization/reviewer/applicant" />
       <recent name="$PROJECT_DIR$/src/exchange/request/permission" />
-      <recent name="$PROJECT_DIR$/src/authorization" />
     </key>
   </component>
   <component name="RunManager" selected="Python.generator">
@@ -835,7 +851,7 @@
       <workItem from="1791213294391" duration="277057000" />
       <workItem from="1791925309191" duration="12463000" />
       <workItem from="1791980656972" duration="171851000" />
-      <workItem from="1792402033304" duration="52321000" />
+      <workItem from="1792402033304" duration="55886000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1783,7 +1799,7 @@
           <option name="timeStamp" value="383" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/artifcat/result/crud/search/result.py</url>
+          <url>file://$PROJECT_DIR$/src/artifcat/result/authorizable/crud/search/result.py</url>
           <line>9</line>
           <option name="timeStamp" value="384" />
         </line-breakpoint>
@@ -2179,7 +2195,7 @@
           <option name="timeStamp" value="492" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/artifcat/result/attack/checkmate/result.py</url>
+          <url>file://$PROJECT_DIR$/src/artifcat/result/authorizable/encounter/checkmate/result.py</url>
           <line>11</line>
           <option name="timeStamp" value="493" />
         </line-breakpoint>

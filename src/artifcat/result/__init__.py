@@ -11,13 +11,11 @@ version: 0.0.2
 
 # Packages
 from .analysis import *
-from .attack import *
+from .authorizable import *
 from .builder import *
 from .computation import *
-from .crud import *
 from .event import *
 from .interface import *
-from .promotion import *
 from .shell import *
 from .turn import *
 from .validation import*
