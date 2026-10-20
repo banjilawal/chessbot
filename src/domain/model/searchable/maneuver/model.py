@@ -12,10 +12,10 @@ from __future__ import annotations
 from typing import Optional
 
 from config import NumericSetting
-from domain import Path, SearchableModel, Square, Token
+from domain import Path, Permittable, SearchableModel, Square, Token
 
 
-class Maneuver(SearchableModel):
+class Maneuver(SearchableModel, Permittable):
     """
     Role:
         - Model
