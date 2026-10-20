@@ -11,12 +11,12 @@ from __future__ import annotations
 
 from abc import ABC
 
-
+from domain import Permittable
 from domain.model import Rank
 from domain.schema import Persona
 
 
-class TraversalRank(Rank, ABC):
+class TraversalRank(Rank, Permittable, ABC):
     """
     Role:Computation
     

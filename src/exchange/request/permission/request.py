@@ -13,7 +13,9 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from artifcat import Result
+from domain import Applicant
 from exchange import Request
+from software import Application
 
 T = TypeVar("T", bound="Result")
 
@@ -27,18 +29,23 @@ class PermissionRequest(Request[T], ABC, Generic[T]):
          1. Provide details about a job.
 
      Attributes:
-         id: int
+        applicant: Applicant
+        permit: Permittable
 
      Provides:
      
      Super Class:
         Request
      """
+    _applicant: Applicant
+    _permit: Permittable
     
-    def __init__(self, id: int):
+    def __init__(self, id: int, applicant: Applicant, permit: Permittable):
         """
         Args:
             id: int
+            applicant: Applicant
+            permit: Permittable
         """
         super().__init__(id=id)
     

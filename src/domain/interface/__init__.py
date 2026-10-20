@@ -12,7 +12,7 @@ version: 0.0.2
 # Packages
 from .applicant import *
 from .archetyped import *
-from .role import *
+from .permittable import *
 from .searchable import *
 
 # Modules

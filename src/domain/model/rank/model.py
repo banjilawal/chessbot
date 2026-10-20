@@ -9,12 +9,12 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from domain import Model, Persona, Role
+from domain import Model, Persona
 from microservice import CoordService, VectorService
 
 
 
-class Rank(Model, Role):
+class Rank(Model):
     """
     Role:Computation
     

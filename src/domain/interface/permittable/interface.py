@@ -14,7 +14,7 @@ from abc import ABC, abstractmethod
 from domain import Archetype
 
 
-class Role(ABC):
+class Permittable(ABC):
     """
     Role:
         - Interface

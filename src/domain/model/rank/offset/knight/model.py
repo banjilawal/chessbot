@@ -17,7 +17,7 @@ from artifcat import ComputationResult
 from util import LoggingLevelRouter
 
 
-class Knight(OffsetRank):
+class Knight(OffsetRank, Permittable):
     """
     Role:Computation, Metadata
 
