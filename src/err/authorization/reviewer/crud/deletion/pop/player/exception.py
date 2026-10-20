@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopRequestNullException
+from err import PopReviewerException
 
 __all__ = [
     # ======================# PLAYER_POP_REQUEST_NULL_ERROR #======================#
-    "PlayerPopRequestNullException",
+    "PlayerPopReviewerException",
 ]
 
 # ======================# PLAYER_POP_REQUEST_NULL_ERROR #======================#
-class PlayerPopRequestNullException(PopRequestNullException):
+class PlayerPopReviewerException(PopReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PlayerPopRequest is null.
+        1.  Indicating that a PlayerPopReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class PlayerPopRequestNullException(PopRequestNullException):
     Provides:
 
     Super Class:
-        PopRequestNullException
+        PopReviewerException
     """
-    MSG = "PlayerPopRequest cannot be null."
+    MSG = "PlayerPopReviewer failed."
     ERR_CODE = "PLAYER_POP_REQUEST_NULL_ERROR"
     
     def __init__(

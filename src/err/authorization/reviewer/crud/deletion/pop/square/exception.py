@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopRequestNullException
+from err import PopReviewerException
 
 __all__ = [
     # ======================# SQUARE_POP_REQUEST_NULL_ERROR #======================#
-    "SquarePopRequestNullException",
+    "SquarePopReviewerException",
 ]
 
 # ======================# SQUARE_POP_REQUEST_NULL_ERROR #======================#
-class SquarePopRequestNullException(PopRequestNullException):
+class SquarePopReviewerException(PopReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a SquarePopRequest is null.
+        1.  Indicating that a SquarePopReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class SquarePopRequestNullException(PopRequestNullException):
     Provides:
 
     Super Class:
-        PopRequestNullException
+        PopReviewerException
     """
-    MSG = "SquarePopRequest cannot be null."
+    MSG = "SquarePopReviewer failed."
     ERR_CODE = "SQUARE_POP_REQUEST_NULL_ERROR"
     
     def __init__(

@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/crud/search/maneuver/exception.py
+# src/err/authorization/loader/crud/search/maneuver/exception.py
 
 """
-Module: err.authorization.reviewer.crud.search.maneuver.exception
+Module: err.authorization.loader.crud.search.maneuver.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchReviewerException
+from err import SearchLoaderException
 
 __all__ = [
     # ======================# MANEUVER_PUSH_REQUEST_NULL_ERROR #======================#
-    "ManeuverSearchReviewerException",
+    "ManeuverSearchLoaderException",
 ]
 
 # ======================# MANEUVER_PUSH_REQUEST_NULL_ERROR #======================#
-class ManeuverSearchReviewerException(SearchReviewerException):
+class ManeuverSearchLoaderException(SearchLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ManeuverSearchReviewer failed.
+        1.  Indicating that a ManeuverSearchLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class ManeuverSearchReviewerException(SearchReviewerException):
     Provides:
 
     Super Class:
-        SearchReviewerException
+        SearchLoaderException
     """
-    MSG = "ManeuverSearchReviewer failed."
+    MSG = "ManeuverSearchLoader failed."
     ERR_CODE = "MANEUVER_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

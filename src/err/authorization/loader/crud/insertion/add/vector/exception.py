@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/crud/insertion/add/vector/exception.py
+# src/err/authorization/loader/crud/insertion/add/vector/exception.py
 
 """
-Module: err.authorization.reviewer.crud.insertion.add.vector.exception
+Module: err.authorization.loader.crud.insertion.add.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import AddNodeReviewerException
+from err import AddNodeLoaderException
 
 __all__ = [
     # ======================# ADD_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-    "AddVectorNodeReviewerException",
+    "AddVectorNodeLoaderException",
 ]
 
 # ======================# ADD_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-class AddVectorNodeReviewerException(AddNodeReviewerException):
+class AddVectorNodeLoaderException(AddNodeLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an AddVectorNodeReviewer failed.
+        1.  Indicating that an AddVectorNodeLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class AddVectorNodeReviewerException(AddNodeReviewerException):
     Provides:
 
     Super Class:
-        AddNodeReviewerException
+        AddNodeLoaderException
     """
-    MSG = "AddVectorNodeReviewer failed."
+    MSG = "AddVectorNodeLoader failed."
     ERR_CODE = "ADD_VECTOR_NODE_REQUEST_NULL_ERROR"
     
     def __init__(

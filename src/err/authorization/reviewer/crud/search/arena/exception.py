@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchRequestNullException
+from err import SearchReviewerException
 
 __all__ = [
     # ======================# ARENA_PUSH_REQUEST_NULL_ERROR #======================#
-    "ArenaSearchRequestNullException",
+    "ArenaSearchReviewerException",
 ]
 
 # ======================# ARENA_PUSH_REQUEST_NULL_ERROR #======================#
-class ArenaSearchRequestNullException(SearchRequestNullException):
+class ArenaSearchReviewerException(SearchReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ArenaSearchRequest is null.
+        1.  Indicating that a ArenaSearchReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class ArenaSearchRequestNullException(SearchRequestNullException):
     Provides:
 
     Super Class:
-        SearchRequestNullException
+        SearchReviewerException
     """
-    MSG = "ArenaSearchRequest cannot be null."
+    MSG = "ArenaSearchReviewer failed."
     ERR_CODE = "ARENA_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

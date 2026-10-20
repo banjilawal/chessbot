@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/crud/search/board/exception.py
+# src/err/authorization/authorizer/crud/search/board/exception.py
 
 """
-Module: err.authorization.reviewer.crud.search.board.exception
+Module: err.authorization.authorizer.crud.search.board.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchReviewerException
+from err import SearchAuthorizerException
 
 __all__ = [
     # ======================# BOARD_PUSH_REQUEST_NULL_ERROR #======================#
-    "BoardSearchReviewerException",
+    "BoardSearchAuthorizerException",
 ]
 
 # ======================# BOARD_PUSH_REQUEST_NULL_ERROR #======================#
-class BoardSearchReviewerException(SearchReviewerException):
+class BoardSearchAuthorizerException(SearchAuthorizerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a BoardSearchReviewer failed.
+        1.  Indicating that a BoardSearchAuthorizer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class BoardSearchReviewerException(SearchReviewerException):
     Provides:
 
     Super Class:
-        SearchReviewerException
+        SearchAuthorizerException
     """
-    MSG = "BoardSearchReviewer failed."
+    MSG = "BoardSearchAuthorizer failed."
     ERR_CODE = "BOARD_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

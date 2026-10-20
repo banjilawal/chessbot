@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchRequestNullException
+from err import SearchReviewerException
 
 __all__ = [
     # ======================# TEAM_PUSH_REQUEST_NULL_ERROR #======================#
-    "TeamSearchRequestNullException",
+    "TeamSearchReviewerException",
 ]
 
 # ======================# TEAM_PUSH_REQUEST_NULL_ERROR #======================#
-class TeamSearchRequestNullException(SearchRequestNullException):
+class TeamSearchReviewerException(SearchReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a TeamSearchRequest is null.
+        1.  Indicating that a TeamSearchReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class TeamSearchRequestNullException(SearchRequestNullException):
     Provides:
 
     Super Class:
-        SearchRequestNullException
+        SearchReviewerException
     """
-    MSG = "TeamSearchRequest cannot be null."
+    MSG = "TeamSearchReviewer failed."
     ERR_CODE = "TEAM_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/crud/deletion/pop/coord/exception.py
+# src/err/authorization/loader/crud/deletion/pop/coord/exception.py
 
 """
-Module: err.authorization.reviewer.crud.deletion.pop.coord.exception
+Module: err.authorization.loader.crud.deletion.pop.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopReviewerException
+from err import PopLoaderException
 
 __all__ = [
     # ======================# COORD_POP_REQUEST_NULL_ERROR #======================#
-    "CoordPopReviewerException",
+    "CoordPopLoaderException",
 ]
 
 # ======================# COORD_POP_REQUEST_NULL_ERROR #======================#
-class CoordPopReviewerException(PopReviewerException):
+class CoordPopLoaderException(PopLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a CoordPopReviewer failed.
+        1.  Indicating that a CoordPopLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class CoordPopReviewerException(PopReviewerException):
     Provides:
 
     Super Class:
-        PopReviewerException
+        PopLoaderException
     """
-    MSG = "CoordPopReviewer failed."
+    MSG = "CoordPopLoader failed."
     ERR_CODE = "COORD_POP_REQUEST_NULL_ERROR"
     
     def __init__(

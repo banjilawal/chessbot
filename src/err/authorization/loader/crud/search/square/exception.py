@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/crud/search/square/exception.py
+# src/err/authorization/loader/crud/search/square/exception.py
 
 """
-Module: err.authorization.reviewer.crud.search.square.exception
+Module: err.authorization.loader.crud.search.square.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchReviewerException
+from err import SearchLoaderException
 
 __all__ = [
     # ======================# SQUARE_PUSH_REQUEST_NULL_ERROR #======================#
-    "SquareSearchReviewerException",
+    "SquareSearchLoaderException",
 ]
 
 # ======================# SQUARE_PUSH_REQUEST_NULL_ERROR #======================#
-class SquareSearchReviewerException(SearchReviewerException):
+class SquareSearchLoaderException(SearchLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a SquareSearchReviewer failed.
+        1.  Indicating that a SquareSearchLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class SquareSearchReviewerException(SearchReviewerException):
     Provides:
 
     Super Class:
-        SearchReviewerException
+        SearchLoaderException
     """
-    MSG = "SquareSearchReviewer failed."
+    MSG = "SquareSearchLoader failed."
     ERR_CODE = "SQUARE_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

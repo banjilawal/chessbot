@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/crud/exception.py
+# src/err/authorization/loader/crud/exception.py
 
 """
-Module: err.authorization.reviewer.crud.exception
+Module: err.authorization.loader.crud.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import DeletionReviewerException
+from err import DeletionLoaderException
 
 __all__ = [
     # ======================# REMOVE_REQUEST_NULL_ERROR #======================#
-    "RemoveNodeReviewerException",
+    "RemoveNodeLoaderException",
 ]
 
 # ======================# REMOVE_REQUEST_NULL_ERROR #======================#
-class RemoveNodeReviewerException(DeletionReviewerException):
+class RemoveNodeLoaderException(DeletionLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an RemoveNodeReviewer failed.
+        1.  Indicating that an RemoveNodeLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,9 +42,9 @@ class RemoveNodeReviewerException(DeletionReviewerException):
     Provides:
 
     Super Class:
-        DeletionReviewerException
+        DeletionLoaderException
     """
-    MSG = "RemoveNodeReviewer failed."
+    MSG = "RemoveNodeLoader failed."
     ERR_CODE = "REMOVE_REQUEST_NULL_ERROR"
     
     def __init__(

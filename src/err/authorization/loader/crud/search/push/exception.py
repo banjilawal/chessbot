@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/crud/exception.py
+# src/err/authorization/loader/crud/exception.py
 
 """
-Module: err.authorization.reviewer.crud.exception
+Module: err.authorization.loader.crud.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import SearchReviewerException
+from err import SearchLoaderException
 
 __all__ = [
     # ======================# PUSH_REQUEST_NULL_ERROR #======================#
-    "SearchReviewerException",
+    "SearchLoaderException",
 ]
 
 # ======================# PUSH_REQUEST_NULL_ERROR #======================#
-class SearchReviewerException(SearchReviewerException):
+class SearchLoaderException(SearchLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a SearchReviewer failed.
+        1.  Indicating that a SearchLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,9 +42,9 @@ class SearchReviewerException(SearchReviewerException):
     Provides:
 
     Super Class:
-        SearchReviewerException
+        SearchLoaderException
     """
-    MSG = "SearchReviewer failed."
+    MSG = "SearchLoader failed."
     ERR_CODE = "PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

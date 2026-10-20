@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopRequestNullException
+from err import PopReviewerException
 
 __all__ = [
     # ======================# MANEUVER_POP_REQUEST_NULL_ERROR #======================#
-    "ManeuverPopRequestNullException",
+    "ManeuverPopReviewerException",
 ]
 
 # ======================# MANEUVER_POP_REQUEST_NULL_ERROR #======================#
-class ManeuverPopRequestNullException(PopRequestNullException):
+class ManeuverPopReviewerException(PopReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ManeuverPopRequest is null.
+        1.  Indicating that a ManeuverPopReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class ManeuverPopRequestNullException(PopRequestNullException):
     Provides:
 
     Super Class:
-        PopRequestNullException
+        PopReviewerException
     """
-    MSG = "ManeuverPopRequest cannot be null."
+    MSG = "ManeuverPopReviewer failed."
     ERR_CODE = "MANEUVER_POP_REQUEST_NULL_ERROR"
     
     def __init__(

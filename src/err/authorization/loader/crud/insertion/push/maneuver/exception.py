@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/crud/insertion/push/maneuver/exception.py
+# src/err/authorization/loader/crud/insertion/push/maneuver/exception.py
 
 """
-Module: err.authorization.reviewer.crud.insertion.push.maneuver.exception
+Module: err.authorization.loader.crud.insertion.push.maneuver.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushReviewerException
+from err import PushLoaderException
 
 __all__ = [
     # ======================# MANEUVER_PUSH_REQUEST_NULL_ERROR #======================#
-    "ManeuverPushReviewerException",
+    "ManeuverPushLoaderException",
 ]
 
 # ======================# MANEUVER_PUSH_REQUEST_NULL_ERROR #======================#
-class ManeuverPushReviewerException(PushReviewerException):
+class ManeuverPushLoaderException(PushLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ManeuverPushReviewer failed.
+        1.  Indicating that a ManeuverPushLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class ManeuverPushReviewerException(PushReviewerException):
     Provides:
 
     Super Class:
-        PushReviewerException
+        PushLoaderException
     """
-    MSG = "ManeuverPushReviewer failed."
+    MSG = "ManeuverPushLoader failed."
     ERR_CODE = "MANEUVER_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

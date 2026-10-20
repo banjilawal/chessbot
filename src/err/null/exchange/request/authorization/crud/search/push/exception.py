@@ -17,17 +17,17 @@ from err import SearchRequestNullException
 
 __all__ = [
     # ======================# PUSH_REQUEST_NULL_ERROR #======================#
-    "PushRequestNullException",
+    "SearchRequestNullException",
 ]
 
 # ======================# PUSH_REQUEST_NULL_ERROR #======================#
-class PushRequestNullException(SearchRequestNullException):
+class SearchRequestNullException(SearchRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PushRequest is null.
+        1.  Indicating that a SearchRequest is null.
 
     Attributes:
             msg: Optional[str]
@@ -44,7 +44,7 @@ class PushRequestNullException(SearchRequestNullException):
     Super Class:
         SearchRequestNullException
     """
-    MSG = "PushRequest cannot be null."
+    MSG = "SearchRequest cannot be null."
     ERR_CODE = "PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

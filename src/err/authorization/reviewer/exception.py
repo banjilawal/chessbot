@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import RequestNullException
+from err import AuthorizationException
 
 __all__ = [
-    # ======================# AUTHORIZATION_REQUEST_NULL_ERROR #======================#
-    "AuthorizationRequestNullException",
+    # ======================# REVIEWER_FAILURE #======================#
+    "AuthorizationReviewerException",
 ]
 
-# ======================# AUTHORIZATION_REQUEST_NULL_ERROR #======================#
-class AuthorizationRequestNullException(RequestNullException):
+# ======================# REVIEWER_FAILURE #======================#
+class AuthorizationReviewerException(AuthorizationException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an AuthorizationRequest is null.
+        1.  Indicating that a Reviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,10 +41,10 @@ class AuthorizationRequestNullException(RequestNullException):
     Provides:
 
     Super Class:
-        RequestNullException
+        AuthorizationException
     """
-    MSG = "AuthorizationRequest cannot be null."
-    ERR_CODE = "AUTHORIZATION_REQUEST_NULL_ERROR"
+    MSG = "Reviewer failed."
+    ERR_CODE = "REVIEWER_FAILURE"
     
     def __init__(
             self,

@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/crud/search/team/exception.py
+# src/err/authorization/loader/crud/search/team/exception.py
 
 """
-Module: err.authorization.reviewer.crud.search.team.exception
+Module: err.authorization.loader.crud.search.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchReviewerException
+from err import SearchLoaderException
 
 __all__ = [
     # ======================# TEAM_PUSH_REQUEST_NULL_ERROR #======================#
-    "TeamSearchReviewerException",
+    "TeamSearchLoaderException",
 ]
 
 # ======================# TEAM_PUSH_REQUEST_NULL_ERROR #======================#
-class TeamSearchReviewerException(SearchReviewerException):
+class TeamSearchLoaderException(SearchLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a TeamSearchReviewer failed.
+        1.  Indicating that a TeamSearchLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class TeamSearchReviewerException(SearchReviewerException):
     Provides:
 
     Super Class:
-        SearchReviewerException
+        SearchLoaderException
     """
-    MSG = "TeamSearchReviewer failed."
+    MSG = "TeamSearchLoader failed."
     ERR_CODE = "TEAM_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

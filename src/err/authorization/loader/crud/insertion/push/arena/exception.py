@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/crud/insertion/push/arena/exception.py
+# src/err/authorization/loader/crud/insertion/push/arena/exception.py
 
 """
-Module: err.authorization.reviewer.crud.insertion.push.arena.exception
+Module: err.authorization.loader.crud.insertion.push.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushReviewerException
+from err import PushLoaderException
 
 __all__ = [
     # ======================# ARENA_PUSH_REQUEST_NULL_ERROR #======================#
-    "ArenaPushReviewerException",
+    "ArenaPushLoaderException",
 ]
 
 # ======================# ARENA_PUSH_REQUEST_NULL_ERROR #======================#
-class ArenaPushReviewerException(PushReviewerException):
+class ArenaPushLoaderException(PushLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ArenaPushReviewer failed.
+        1.  Indicating that a ArenaPushLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class ArenaPushReviewerException(PushReviewerException):
     Provides:
 
     Super Class:
-        PushReviewerException
+        PushLoaderException
     """
-    MSG = "ArenaPushReviewer failed."
+    MSG = "ArenaPushLoader failed."
     ERR_CODE = "ARENA_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

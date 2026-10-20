@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchRequestNullException
+from err import SearchReviewerException
 
 __all__ = [
     # ======================# ACCOUNT_PUSH_REQUEST_NULL_ERROR #======================#
-    "AccountSearchRequestNullException",
+    "AccountSearchReviewerException",
 ]
 
 # ======================# ACCOUNT_PUSH_REQUEST_NULL_ERROR #======================#
-class AccountSearchRequestNullException(SearchRequestNullException):
+class AccountSearchReviewerException(SearchReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a AccountSearchRequest is null.
+        1.  Indicating that a AccountSearchReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class AccountSearchRequestNullException(SearchRequestNullException):
     Provides:
 
     Super Class:
-        SearchRequestNullException
+        SearchReviewerException
     """
-    MSG = "AccountSearchRequest cannot be null."
+    MSG = "AccountSearchReviewer failed."
     ERR_CODE = "ACCOUNT_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushRequestNullException
+from err import PushReviewerException
 
 __all__ = [
     # ======================# SQUARE_PUSH_REQUEST_NULL_ERROR #======================#
-    "SquarePushRequestNullException",
+    "SquarePushReviewerException",
 ]
 
 # ======================# SQUARE_PUSH_REQUEST_NULL_ERROR #======================#
-class SquarePushRequestNullException(PushRequestNullException):
+class SquarePushReviewerException(PushReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a SquarePushRequest is null.
+        1.  Indicating that a SquarePushReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class SquarePushRequestNullException(PushRequestNullException):
     Provides:
 
     Super Class:
-        PushRequestNullException
+        PushReviewerException
     """
-    MSG = "SquarePushRequest cannot be null."
+    MSG = "SquarePushReviewer failed."
     ERR_CODE = "SQUARE_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import AuthorizationRequestNullException
+from err import AuthorizationReviewerException
 
 __all__ = [
-    # ======================# ATTACK_AUTHORIZATION_REQUEST_NULL_ERROR #======================#
-    "AttackRequestNullException",
+    # ======================# ATTACK_REVIEWER_FAILURE #======================#
+    "AttackReviewerException",
 ]
 
-# ======================# ATTACK_AUTHORIZATION_REQUEST_NULL_ERROR #======================#
-class AttackRequestNullException(AuthorizationRequestNullException):
+# ======================# ATTACK_REVIEWER_FAILURE #======================#
+class AttackReviewerException(AuthorizationReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a AttackRequest is null.
+        1.  Indicating that a AttackReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class AttackRequestNullException(AuthorizationRequestNullException):
     Provides:
 
     Super Class:
-        AuthorizationRequestNullException
+        ReviewerException
     """
-    MSG = "AttackRequest cannot be null."
-    ERR_CODE = "ATTACK_AUTHORIZATION_REQUEST_NULL_ERROR"
+    MSG = "AttackReviewer failed."
+    ERR_CODE = "ATTACK_REVIEWER_FAILURE"
     
     def __init__(
             self,

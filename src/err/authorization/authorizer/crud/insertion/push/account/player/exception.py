@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/crud/insertion/push/account/exception.py
+# src/err/authorization/authorizer/crud/insertion/push/account/exception.py
 
 """
-Module: err.authorization.reviewer.crud.insertion.push.account.exception
+Module: err.authorization.authorizer.crud.insertion.push.account.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushReviewerException
+from err import PushAuthorizerException
 
 __all__ = [
     # ======================# ACCOUNT_PUSH_REQUEST_NULL_ERROR #======================#
-    "AccountPushReviewerException",
+    "AccountPushAuthorizerException",
 ]
 
 # ======================# ACCOUNT_PUSH_REQUEST_NULL_ERROR #======================#
-class AccountPushReviewerException(PushReviewerException):
+class AccountPushAuthorizerException(PushAuthorizerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a AccountPushReviewer failed.
+        1.  Indicating that a AccountPushAuthorizer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class AccountPushReviewerException(PushReviewerException):
     Provides:
 
     Super Class:
-        PushReviewerException
+        PushAuthorizerException
     """
-    MSG = "AccountPushReviewer failed."
+    MSG = "AccountPushAuthorizer failed."
     ERR_CODE = "ACCOUNT_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

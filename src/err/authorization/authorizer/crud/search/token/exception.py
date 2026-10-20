@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/crud/search/token/exception.py
+# src/err/authorization/authorizer/crud/search/token/exception.py
 
 """
-Module: err.authorization.reviewer.crud.search.token.exception
+Module: err.authorization.authorizer.crud.search.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchReviewerException
+from err import SearchAuthorizerException
 
 __all__ = [
     # ======================# TOKEN_PUSH_REQUEST_NULL_ERROR #======================#
-    "TokenSearchReviewerException",
+    "TokenSearchAuthorizerException",
 ]
 
 # ======================# TOKEN_PUSH_REQUEST_NULL_ERROR #======================#
-class TokenSearchReviewerException(SearchReviewerException):
+class TokenSearchAuthorizerException(SearchAuthorizerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a TokenSearchReviewer failed.
+        1.  Indicating that a TokenSearchAuthorizer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class TokenSearchReviewerException(SearchReviewerException):
     Provides:
 
     Super Class:
-        SearchReviewerException
+        SearchAuthorizerException
     """
-    MSG = "TokenSearchReviewer failed."
+    MSG = "TokenSearchAuthorizer failed."
     ERR_CODE = "TOKEN_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

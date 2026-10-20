@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopRequestNullException
+from err import PopReviewerException
 
 __all__ = [
     # ======================# BOARD_POP_REQUEST_NULL_ERROR #======================#
-    "BoardPopRequestNullException",
+    "BoardPopReviewerException",
 ]
 
 # ======================# BOARD_POP_REQUEST_NULL_ERROR #======================#
-class BoardPopRequestNullException(PopRequestNullException):
+class BoardPopReviewerException(PopReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a BoardPopRequest is null.
+        1.  Indicating that a BoardPopReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class BoardPopRequestNullException(PopRequestNullException):
     Provides:
 
     Super Class:
-        PopRequestNullException
+        PopReviewerException
     """
-    MSG = "BoardPopRequest cannot be null."
+    MSG = "BoardPopReviewer failed."
     ERR_CODE = "BOARD_POP_REQUEST_NULL_ERROR"
     
     def __init__(

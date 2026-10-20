@@ -10,7 +10,9 @@ version: 0.0.2
 # ============ ERR.AUTHORIZATION PACKAGE ===========#
 
 # Packages
-from .permitter import *
+from .authorizer import *
+from .loader import *
+from .reviewer import *
 
 # Modules
-from .exception import RequestAuthorizerException
+from .exception import AuthorizationException

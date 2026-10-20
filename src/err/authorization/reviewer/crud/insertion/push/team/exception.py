@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushRequestNullException
+from err import PushReviewerException
 
 __all__ = [
     # ======================# TEAM_PUSH_REQUEST_NULL_ERROR #======================#
-    "TeamPushRequestNullException",
+    "TeamPushReviewerException",
 ]
 
 # ======================# TEAM_PUSH_REQUEST_NULL_ERROR #======================#
-class TeamPushRequestNullException(PushRequestNullException):
+class TeamPushReviewerException(PushReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a TeamPushRequest is null.
+        1.  Indicating that a TeamPushReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class TeamPushRequestNullException(PushRequestNullException):
     Provides:
 
     Super Class:
-        PushRequestNullException
+        PushReviewerException
     """
-    MSG = "TeamPushRequest cannot be null."
+    MSG = "TeamPushReviewer failed."
     ERR_CODE = "TEAM_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

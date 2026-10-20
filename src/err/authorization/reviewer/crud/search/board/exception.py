@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchRequestNullException
+from err import SearchReviewerException
 
 __all__ = [
     # ======================# BOARD_PUSH_REQUEST_NULL_ERROR #======================#
-    "BoardSearchRequestNullException",
+    "BoardSearchReviewerException",
 ]
 
 # ======================# BOARD_PUSH_REQUEST_NULL_ERROR #======================#
-class BoardSearchRequestNullException(SearchRequestNullException):
+class BoardSearchReviewerException(SearchReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a BoardSearchRequest is null.
+        1.  Indicating that a BoardSearchReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class BoardSearchRequestNullException(SearchRequestNullException):
     Provides:
 
     Super Class:
-        SearchRequestNullException
+        SearchReviewerException
     """
-    MSG = "BoardSearchRequest cannot be null."
+    MSG = "BoardSearchReviewer failed."
     ERR_CODE = "BOARD_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

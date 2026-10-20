@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushRequestNullException
+from err import PushReviewerException
 
 __all__ = [
     # ======================# ARENA_PUSH_REQUEST_NULL_ERROR #======================#
-    "ArenaPushRequestNullException",
+    "ArenaPushReviewerException",
 ]
 
 # ======================# ARENA_PUSH_REQUEST_NULL_ERROR #======================#
-class ArenaPushRequestNullException(PushRequestNullException):
+class ArenaPushReviewerException(PushReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ArenaPushRequest is null.
+        1.  Indicating that a ArenaPushReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class ArenaPushRequestNullException(PushRequestNullException):
     Provides:
 
     Super Class:
-        PushRequestNullException
+        PushReviewerException
     """
-    MSG = "ArenaPushRequest cannot be null."
+    MSG = "ArenaPushReviewer failed."
     ERR_CODE = "ARENA_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

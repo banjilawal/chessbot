@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import AuthorizationRequestNullException
+from err import AuthorizationReviewerException
 
 __all__ = [
-    # ======================# CRUD_AUTHORIZATION_REQUEST_NULL_ERROR #======================#
-    "CrudRequestNullException",
+    # ======================# CRUD_REVIEWER_FAILURE #======================#
+    "CrudReviewerException",
 ]
 
-# ======================# CRUD_AUTHORIZATION_REQUEST_NULL_ERROR #======================#
-class CrudRequestNullException(AuthorizationRequestNullException):
+# ======================# CRUD_REVIEWER_FAILURE #======================#
+class CrudReviewerException(AuthorizationReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a CrudRequest is null.
+        1.  Indicating that a CrudReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class CrudRequestNullException(AuthorizationRequestNullException):
     Provides:
 
     Super Class:
-        AuthorizationRequestNullException
+        ReviewerException
     """
-    MSG = "CrudRequest cannot be null."
-    ERR_CODE = "CRUD_AUTHORIZATION_REQUEST_NULL_ERROR"
+    MSG = "CrudReviewer failed."
+    ERR_CODE = "CRUD_REVIEWER_FAILURE"
     
     def __init__(
             self,

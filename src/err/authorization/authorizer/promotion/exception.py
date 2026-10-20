@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/promotion/exception.py
+# src/err/authorization/authorizer/promotion/exception.py
 
 """
-Module: err.authorization.reviewer.promotion.exception
+Module: err.authorization.authorizer.promotion.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import AuthorizationReviewerException
+from err import AuthorizerException
 
 __all__ = [
-    # ======================# PROMOTION_REVIEWER_FAILURE #======================#
-    "PromotionReviewerException",
+    # ======================# PROMOTION_AUTHORIZER_FAILURE #======================#
+    "PromotionAuthorizerException",
 ]
 
-# ======================# PROMOTION_REVIEWER_FAILURE #======================#
-class PromotionReviewerException(AuthorizationReviewerException):
+# ======================# PROMOTION_AUTHORIZER_FAILURE #======================#
+class PromotionAuthorizerException(AuthorizerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PromotionReviewer failed.
+        1.  Indicating that a PromotionAuthorizer failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class PromotionReviewerException(AuthorizationReviewerException):
     Provides:
 
     Super Class:
-        ReviewerException
+        AuthorizerException
     """
-    MSG = "PromotionReviewer failed."
-    ERR_CODE = "PROMOTION_REVIEWER_FAILURE"
+    MSG = "PromotionAuthorizer failed."
+    ERR_CODE = "PROMOTION_AUTHORIZER_FAILURE"
     
     def __init__(
             self,

@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchRequestNullException
+from err import SearchReviewerException
 
 __all__ = [
     # ======================# PLAYER_PUSH_REQUEST_NULL_ERROR #======================#
-    "PlayerSearchRequestNullException",
+    "PlayerSearchReviewerException",
 ]
 
 # ======================# PLAYER_PUSH_REQUEST_NULL_ERROR #======================#
-class PlayerSearchRequestNullException(SearchRequestNullException):
+class PlayerSearchReviewerException(SearchReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PlayerSearchRequest is null.
+        1.  Indicating that a PlayerSearchReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class PlayerSearchRequestNullException(SearchRequestNullException):
     Provides:
 
     Super Class:
-        SearchRequestNullException
+        SearchReviewerException
     """
-    MSG = "PlayerSearchRequest cannot be null."
+    MSG = "PlayerSearchReviewer failed."
     ERR_CODE = "PLAYER_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

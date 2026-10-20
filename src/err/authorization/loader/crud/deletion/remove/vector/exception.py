@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/crud/deletion/remove/vector/exception.py
+# src/err/authorization/loader/crud/deletion/remove/vector/exception.py
 
 """
-Module: err.authorization.reviewer.crud.deletion.remove.vector.exception
+Module: err.authorization.loader.crud.deletion.remove.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import RemoveNodeReviewerException
+from err import RemoveNodeLoaderException
 
 __all__ = [
     # ======================# REMOVE_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-    "RemoveVectorNodeReviewerException",
+    "RemoveVectorNodeLoaderException",
 ]
 
 # ======================# REMOVE_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-class RemoveVectorNodeReviewerException(RemoveNodeReviewerException):
+class RemoveVectorNodeLoaderException(RemoveNodeLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an RemoveVectorNodeReviewer failed.
+        1.  Indicating that an RemoveVectorNodeLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class RemoveVectorNodeReviewerException(RemoveNodeReviewerException):
     Provides:
 
     Super Class:
-        RemoveNodeReviewerException
+        RemoveNodeLoaderException
     """
-    MSG = "RemoveVectorNodeReviewer failed."
+    MSG = "RemoveVectorNodeLoader failed."
     ERR_CODE = "REMOVE_VECTOR_NODE_REQUEST_NULL_ERROR"
     
     def __init__(

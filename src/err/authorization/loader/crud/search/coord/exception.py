@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/crud/search/coord/exception.py
+# src/err/authorization/loader/crud/search/coord/exception.py
 
 """
-Module: err.authorization.reviewer.crud.search.coord.exception
+Module: err.authorization.loader.crud.search.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchReviewerException
+from err import SearchLoaderException
 
 __all__ = [
     # ======================# COORD_PUSH_REQUEST_NULL_ERROR #======================#
-    "CoordSearchReviewerException",
+    "CoordSearchLoaderException",
 ]
 
 # ======================# COORD_PUSH_REQUEST_NULL_ERROR #======================#
-class CoordSearchReviewerException(SearchReviewerException):
+class CoordSearchLoaderException(SearchLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a CoordSearchReviewer failed.
+        1.  Indicating that a CoordSearchLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class CoordSearchReviewerException(SearchReviewerException):
     Provides:
 
     Super Class:
-        SearchReviewerException
+        SearchLoaderException
     """
-    MSG = "CoordSearchReviewer failed."
+    MSG = "CoordSearchLoader failed."
     ERR_CODE = "COORD_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

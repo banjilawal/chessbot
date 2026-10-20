@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import CrudRequestNullException
+from err import CrudReviewerException
 
 __all__ = [
     # ======================# SEARCH_REQUEST_NULL_ERROR #======================#
-    "SearchRequestNullException",
+    "SearchReviewerException",
 ]
 
 # ======================# SEARCH_REQUEST_NULL_ERROR #======================#
-class SearchRequestNullException(CrudRequestNullException):
+class SearchReviewerException(CrudReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an SearchRequest is null.
+        1.  Indicating that an SearchReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class SearchRequestNullException(CrudRequestNullException):
     Provides:
 
     Super Class:
-        CrudRequestNullException
+        CrudReviewerException
     """
-    MSG = "SearchRequest cannot be null."
+    MSG = "SearchReviewer failed."
     ERR_CODE = "SEARCH_REQUEST_NULL_ERROR"
     
     def __init__(

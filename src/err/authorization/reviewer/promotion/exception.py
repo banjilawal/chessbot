@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import AuthorizationRequestNullException
+from err import AuthorizationReviewerException
 
 __all__ = [
-    # ======================# PROMOTION_AUTHORIZATION_REQUEST_NULL_ERROR #======================#
-    "PromotionRequestNullException",
+    # ======================# PROMOTION_REVIEWER_FAILURE #======================#
+    "PromotionReviewerException",
 ]
 
-# ======================# PROMOTION_AUTHORIZATION_REQUEST_NULL_ERROR #======================#
-class PromotionRequestNullException(AuthorizationRequestNullException):
+# ======================# PROMOTION_REVIEWER_FAILURE #======================#
+class PromotionReviewerException(AuthorizationReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PromotionRequest is null.
+        1.  Indicating that a PromotionReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class PromotionRequestNullException(AuthorizationRequestNullException):
     Provides:
 
     Super Class:
-        AuthorizationRequestNullException
+        ReviewerException
     """
-    MSG = "PromotionRequest cannot be null."
-    ERR_CODE = "PROMOTION_AUTHORIZATION_REQUEST_NULL_ERROR"
+    MSG = "PromotionReviewer failed."
+    ERR_CODE = "PROMOTION_REVIEWER_FAILURE"
     
     def __init__(
             self,

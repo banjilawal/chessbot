@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/crud/search/player/exception.py
+# src/err/authorization/loader/crud/search/player/exception.py
 
 """
-Module: err.authorization.reviewer.crud.search.player.exception
+Module: err.authorization.loader.crud.search.player.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchReviewerException
+from err import SearchLoaderException
 
 __all__ = [
     # ======================# PLAYER_PUSH_REQUEST_NULL_ERROR #======================#
-    "PlayerSearchReviewerException",
+    "PlayerSearchLoaderException",
 ]
 
 # ======================# PLAYER_PUSH_REQUEST_NULL_ERROR #======================#
-class PlayerSearchReviewerException(SearchReviewerException):
+class PlayerSearchLoaderException(SearchLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PlayerSearchReviewer failed.
+        1.  Indicating that a PlayerSearchLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class PlayerSearchReviewerException(SearchReviewerException):
     Provides:
 
     Super Class:
-        SearchReviewerException
+        SearchLoaderException
     """
-    MSG = "PlayerSearchReviewer failed."
+    MSG = "PlayerSearchLoader failed."
     ERR_CODE = "PLAYER_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

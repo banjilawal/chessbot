@@ -1,13 +1,13 @@
-# src/err/authorization/reviewer/crud/deletion/pop/__init__.py
+# src/err/authorization/authorizer/crud/deletion/pop/__init__.py
 
 """
-Module: err.authorization.reviewer.crud.deletion.pop__init__
+Module: err.authorization.authorizer.crud.deletion.pop__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.AUTHORIZATION.REVIEWER.CRUD.DELETION.POP PACKAGE ===========#
+# ============ ERR.AUTHORIZATION.AUTHORIZER.CRUD.DELETION.POP PACKAGE ===========#
 
 # Packages
 from .account import *
@@ -21,4 +21,4 @@ from .team import *
 from .token import *
 
 # Modules
-from .exception import PopReviewerException
+from .exception import PopAuthorizerException

@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import SearchRequestNullException
+from err import SearchReviewerException
 
 __all__ = [
     # ======================# PUSH_REQUEST_NULL_ERROR #======================#
-    "SearchRequestNullException",
+    "SearchReviewerException",
 ]
 
 # ======================# PUSH_REQUEST_NULL_ERROR #======================#
-class SearchRequestNullException(SearchRequestNullException):
+class SearchReviewerException(SearchReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a SearchRequest is null.
+        1.  Indicating that a SearchReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,9 +42,9 @@ class SearchRequestNullException(SearchRequestNullException):
     Provides:
 
     Super Class:
-        SearchRequestNullException
+        SearchReviewerException
     """
-    MSG = "SearchRequest cannot be null."
+    MSG = "SearchReviewer failed."
     ERR_CODE = "PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

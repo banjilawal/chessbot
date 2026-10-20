@@ -12,4 +12,4 @@ version: 0.0.2
 # Packages
 
 # Modules
-from .exception import RemoveVectorNodeRequestNullException
+from .exception import RemoveVectorNodeReviewerException

@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchRequestNullException
+from err import SearchReviewerException
 
 __all__ = [
     # ======================# TOKEN_PUSH_REQUEST_NULL_ERROR #======================#
-    "TokenSearchRequestNullException",
+    "TokenSearchReviewerException",
 ]
 
 # ======================# TOKEN_PUSH_REQUEST_NULL_ERROR #======================#
-class TokenSearchRequestNullException(SearchRequestNullException):
+class TokenSearchReviewerException(SearchReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a TokenSearchRequest is null.
+        1.  Indicating that a TokenSearchReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class TokenSearchRequestNullException(SearchRequestNullException):
     Provides:
 
     Super Class:
-        SearchRequestNullException
+        SearchReviewerException
     """
-    MSG = "TokenSearchRequest cannot be null."
+    MSG = "TokenSearchReviewer failed."
     ERR_CODE = "TOKEN_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

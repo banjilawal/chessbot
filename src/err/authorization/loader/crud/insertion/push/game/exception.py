@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/crud/insertion/push/game/exception.py
+# src/err/authorization/loader/crud/insertion/push/game/exception.py
 
 """
-Module: err.authorization.reviewer.crud.insertion.push.game.exception
+Module: err.authorization.loader.crud.insertion.push.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushReviewerException
+from err import PushLoaderException
 
 __all__ = [
     # ======================# GAME_PUSH_REQUEST_NULL_ERROR #======================#
-    "GamePushReviewerException",
+    "GamePushLoaderException",
 ]
 
 # ======================# GAME_PUSH_REQUEST_NULL_ERROR #======================#
-class GamePushReviewerException(PushReviewerException):
+class GamePushLoaderException(PushLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a GamePushReviewer failed.
+        1.  Indicating that a GamePushLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class GamePushReviewerException(PushReviewerException):
     Provides:
 
     Super Class:
-        PushReviewerException
+        PushLoaderException
     """
-    MSG = "GamePushReviewer failed."
+    MSG = "GamePushLoader failed."
     ERR_CODE = "GAME_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

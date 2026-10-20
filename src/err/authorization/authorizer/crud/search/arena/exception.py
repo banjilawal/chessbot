@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/crud/search/arena/exception.py
+# src/err/authorization/authorizer/crud/search/arena/exception.py
 
 """
-Module: err.authorization.reviewer.crud.search.arena.exception
+Module: err.authorization.authorizer.crud.search.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchReviewerException
+from err import SearchAuthorizerException
 
 __all__ = [
     # ======================# ARENA_PUSH_REQUEST_NULL_ERROR #======================#
-    "ArenaSearchReviewerException",
+    "ArenaSearchAuthorizerException",
 ]
 
 # ======================# ARENA_PUSH_REQUEST_NULL_ERROR #======================#
-class ArenaSearchReviewerException(SearchReviewerException):
+class ArenaSearchAuthorizerException(SearchAuthorizerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ArenaSearchReviewer failed.
+        1.  Indicating that a ArenaSearchAuthorizer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class ArenaSearchReviewerException(SearchReviewerException):
     Provides:
 
     Super Class:
-        SearchReviewerException
+        SearchAuthorizerException
     """
-    MSG = "ArenaSearchReviewer failed."
+    MSG = "ArenaSearchAuthorizer failed."
     ERR_CODE = "ARENA_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

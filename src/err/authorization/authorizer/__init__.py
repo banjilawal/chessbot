@@ -1,13 +1,13 @@
-# src/err/authorization/reviewer/__init__.py
+# src/err/authorization/authorizer/__init__.py
 
 """
-Module: err.authorization.reviewer.__init__
+Module: err.authorization.authorizer.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.AUTHORIZATION.REVIEWER PACKAGE ===========#
+# ============ ERR.AUTHORIZATION.AUTHORIZER PACKAGE ===========#
 
 # Packages
 from .crud import *
@@ -16,4 +16,4 @@ from .maneuver import *
 from .promotion import *
 
 # Modules
-from .exception import AuthorizationReviewerException
+from .exception import AuthorizerException

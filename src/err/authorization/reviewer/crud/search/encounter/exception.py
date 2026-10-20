@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchRequestNullException
+from err import SearchReviewerException
 
 __all__ = [
     # ======================# ENCOUNTER_PUSH_REQUEST_NULL_ERROR #======================#
-    "EncounterSearchRequestNullException",
+    "EncounterSearchReviewerException",
 ]
 
 # ======================# ENCOUNTER_PUSH_REQUEST_NULL_ERROR #======================#
-class EncounterSearchRequestNullException(SearchRequestNullException):
+class EncounterSearchReviewerException(SearchReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a EncounterSearchRequest is null.
+        1.  Indicating that a EncounterSearchReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class EncounterSearchRequestNullException(SearchRequestNullException):
     Provides:
 
     Super Class:
-        SearchRequestNullException
+        SearchReviewerException
     """
-    MSG = "EncounterSearchRequest cannot be null."
+    MSG = "EncounterSearchReviewer failed."
     ERR_CODE = "ENCOUNTER_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

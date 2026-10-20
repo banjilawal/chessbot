@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushRequestNullException
+from err import PushReviewerException
 
 __all__ = [
     # ======================# PLAYER_PUSH_REQUEST_NULL_ERROR #======================#
-    "PlayerPushRequestNullException",
+    "PlayerPushReviewerException",
 ]
 
 # ======================# PLAYER_PUSH_REQUEST_NULL_ERROR #======================#
-class PlayerPushRequestNullException(PushRequestNullException):
+class PlayerPushReviewerException(PushReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PlayerPushRequest is null.
+        1.  Indicating that a PlayerPushReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class PlayerPushRequestNullException(PushRequestNullException):
     Provides:
 
     Super Class:
-        PushRequestNullException
+        PushReviewerException
     """
-    MSG = "PlayerPushRequest cannot be null."
+    MSG = "PlayerPushReviewer failed."
     ERR_CODE = "PLAYER_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

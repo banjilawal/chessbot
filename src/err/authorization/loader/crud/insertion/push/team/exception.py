@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/crud/insertion/push/team/exception.py
+# src/err/authorization/loader/crud/insertion/push/team/exception.py
 
 """
-Module: err.authorization.reviewer.crud.insertion.push.team.exception
+Module: err.authorization.loader.crud.insertion.push.team.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushReviewerException
+from err import PushLoaderException
 
 __all__ = [
     # ======================# TEAM_PUSH_REQUEST_NULL_ERROR #======================#
-    "TeamPushReviewerException",
+    "TeamPushLoaderException",
 ]
 
 # ======================# TEAM_PUSH_REQUEST_NULL_ERROR #======================#
-class TeamPushReviewerException(PushReviewerException):
+class TeamPushLoaderException(PushLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a TeamPushReviewer failed.
+        1.  Indicating that a TeamPushLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class TeamPushReviewerException(PushReviewerException):
     Provides:
 
     Super Class:
-        PushReviewerException
+        PushLoaderException
     """
-    MSG = "TeamPushReviewer failed."
+    MSG = "TeamPushLoader failed."
     ERR_CODE = "TEAM_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

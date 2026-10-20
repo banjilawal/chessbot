@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/crud/deletion/exception.py
+# src/err/authorization/loader/crud/deletion/exception.py
 
 """
-Module: err.authorization.reviewer.crud.deletion.exception
+Module: err.authorization.loader.crud.deletion.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import CrudReviewerException
+from err import CrudLoaderException
 
 __all__ = [
     # ======================# DELETION_REQUEST_NULL_ERROR #======================#
-    "DeletionReviewerException",
+    "DeletionLoaderException",
 ]
 
 # ======================# DELETION_REQUEST_NULL_ERROR #======================#
-class DeletionReviewerException(CrudReviewerException):
+class DeletionLoaderException(CrudLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an DeletionReviewer failed.
+        1.  Indicating that an DeletionLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class DeletionReviewerException(CrudReviewerException):
     Provides:
 
     Super Class:
-        CrudReviewerException
+        CrudLoaderException
     """
-    MSG = "DeletionReviewer failed."
+    MSG = "DeletionLoader failed."
     ERR_CODE = "DELETION_REQUEST_NULL_ERROR"
     
     def __init__(

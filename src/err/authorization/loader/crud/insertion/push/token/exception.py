@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/crud/insertion/push/token/exception.py
+# src/err/authorization/loader/crud/insertion/push/token/exception.py
 
 """
-Module: err.authorization.reviewer.crud.insertion.push.token.exception
+Module: err.authorization.loader.crud.insertion.push.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushReviewerException
+from err import PushLoaderException
 
 __all__ = [
     # ======================# TOKEN_PUSH_REQUEST_NULL_ERROR #======================#
-    "TokenPushReviewerException",
+    "TokenPushLoaderException",
 ]
 
 # ======================# TOKEN_PUSH_REQUEST_NULL_ERROR #======================#
-class TokenPushReviewerException(PushReviewerException):
+class TokenPushLoaderException(PushLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a TokenPushReviewer failed.
+        1.  Indicating that a TokenPushLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class TokenPushReviewerException(PushReviewerException):
     Provides:
 
     Super Class:
-        PushReviewerException
+        PushLoaderException
     """
-    MSG = "TokenPushReviewer failed."
+    MSG = "TokenPushLoader failed."
     ERR_CODE = "TOKEN_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

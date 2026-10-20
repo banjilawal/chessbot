@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/crud/deletion/pop/game/exception.py
+# src/err/authorization/loader/crud/deletion/pop/game/exception.py
 
 """
-Module: err.authorization.reviewer.crud.deletion.pop.game.exception
+Module: err.authorization.loader.crud.deletion.pop.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopReviewerException
+from err import PopLoaderException
 
 __all__ = [
     # ======================# GAME_POP_REQUEST_NULL_ERROR #======================#
-    "GamePopReviewerException",
+    "GamePopLoaderException",
 ]
 
 # ======================# GAME_POP_REQUEST_NULL_ERROR #======================#
-class GamePopReviewerException(PopReviewerException):
+class GamePopLoaderException(PopLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a GamePopReviewer failed.
+        1.  Indicating that a GamePopLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class GamePopReviewerException(PopReviewerException):
     Provides:
 
     Super Class:
-        PopReviewerException
+        PopLoaderException
     """
-    MSG = "GamePopReviewer failed."
+    MSG = "GamePopLoader failed."
     ERR_CODE = "GAME_POP_REQUEST_NULL_ERROR"
     
     def __init__(

@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/crud/insertion/push/coord/exception.py
+# src/err/authorization/authorizer/crud/insertion/push/coord/exception.py
 
 """
-Module: err.authorization.reviewer.crud.insertion.push.coord.exception
+Module: err.authorization.authorizer.crud.insertion.push.coord.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushReviewerException
+from err import PushAuthorizerException
 
 __all__ = [
     # ======================# COORD_PUSH_REQUEST_NULL_ERROR #======================#
-    "CoordPushReviewerException",
+    "CoordPushAuthorizerException",
 ]
 
 # ======================# COORD_PUSH_REQUEST_NULL_ERROR #======================#
-class CoordPushReviewerException(PushReviewerException):
+class CoordPushAuthorizerException(PushAuthorizerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a CoordPushReviewer failed.
+        1.  Indicating that a CoordPushAuthorizer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class CoordPushReviewerException(PushReviewerException):
     Provides:
 
     Super Class:
-        PushReviewerException
+        PushAuthorizerException
     """
-    MSG = "CoordPushReviewer failed."
+    MSG = "CoordPushAuthorizer failed."
     ERR_CODE = "COORD_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

@@ -14,4 +14,4 @@ from .remove import *
 from .pop import *
 
 # Modules
-from .exception import DeletionRequestNullException
+from .exception import DeletionReviewerException

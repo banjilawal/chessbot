@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/crud/insertion/push/encounter/exception.py
+# src/err/authorization/loader/crud/insertion/push/encounter/exception.py
 
 """
-Module: err.authorization.reviewer.crud.insertion.push.encounter.exception
+Module: err.authorization.loader.crud.insertion.push.encounter.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PushReviewerException
+from err import PushLoaderException
 
 __all__ = [
     # ======================# ENCOUNTER_PUSH_REQUEST_NULL_ERROR #======================#
-    "EncounterPushReviewerException",
+    "EncounterPushLoaderException",
 ]
 
 # ======================# ENCOUNTER_PUSH_REQUEST_NULL_ERROR #======================#
-class EncounterPushReviewerException(PushReviewerException):
+class EncounterPushLoaderException(PushLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a EncounterPushReviewer failed.
+        1.  Indicating that a EncounterPushLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class EncounterPushReviewerException(PushReviewerException):
     Provides:
 
     Super Class:
-        PushReviewerException
+        PushLoaderException
     """
-    MSG = "EncounterPushReviewer failed."
+    MSG = "EncounterPushLoader failed."
     ERR_CODE = "ENCOUNTER_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

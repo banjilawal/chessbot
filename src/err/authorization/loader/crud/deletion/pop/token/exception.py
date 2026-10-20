@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/crud/deletion/pop/token/exception.py
+# src/err/authorization/loader/crud/deletion/pop/token/exception.py
 
 """
-Module: err.authorization.reviewer.crud.deletion.pop.token.exception
+Module: err.authorization.loader.crud.deletion.pop.token.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopReviewerException
+from err import PopLoaderException
 
 __all__ = [
     # ======================# TOKEN_POP_REQUEST_NULL_ERROR #======================#
-    "TokenPopReviewerException",
+    "TokenPopLoaderException",
 ]
 
 # ======================# TOKEN_POP_REQUEST_NULL_ERROR #======================#
-class TokenPopReviewerException(PopReviewerException):
+class TokenPopLoaderException(PopLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a TokenPopReviewer failed.
+        1.  Indicating that a TokenPopLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class TokenPopReviewerException(PopReviewerException):
     Provides:
 
     Super Class:
-        PopReviewerException
+        PopLoaderException
     """
-    MSG = "TokenPopReviewer failed."
+    MSG = "TokenPopLoader failed."
     ERR_CODE = "TOKEN_POP_REQUEST_NULL_ERROR"
     
     def __init__(

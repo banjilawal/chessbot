@@ -1,13 +1,13 @@
-# src/err/authorization/reviewer/crud/insertion/push/__init__.py
+# src/err/authorization/loader/crud/insertion/push/__init__.py
 
 """
-Module: err.authorization.reviewer.crud.insertion.push__init__
+Module: err.authorization.loader.crud.insertion.push__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.AUTHORIZATION.REVIEWER.CRUD.INSERTION.PUSH PACKAGE ===========#
+# ============ ERR.AUTHORIZATION.LOADER.CRUD.INSERTION.PUSH PACKAGE ===========#
 
 # Packages
 from .account import *
@@ -21,4 +21,4 @@ from .team import *
 from .token import *
 
 # Modules
-from .exception import PushReviewerException
+from .exception import PushLoaderException

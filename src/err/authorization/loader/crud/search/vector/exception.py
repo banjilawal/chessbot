@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/crud/search/vector/exception.py
+# src/err/authorization/loader/crud/search/vector/exception.py
 
 """
-Module: err.authorization.reviewer.crud.search.vector.exception
+Module: err.authorization.loader.crud.search.vector.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchReviewerException
+from err import SearchLoaderException
 
 __all__ = [
     # ======================# SEARCH_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-    "VectorSearchReviewerException",
+    "VectorSearchLoaderException",
 ]
 
 # ======================# SEARCH_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-class VectorSearchReviewerException(SearchReviewerException):
+class VectorSearchLoaderException(SearchLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a VectorSearchReviewer failed.
+        1.  Indicating that a VectorSearchLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class VectorSearchReviewerException(SearchReviewerException):
     Provides:
 
     Super Class:
-        SearchReviewerException
+        SearchLoaderException
     """
-    MSG = "VectorSearchReviewer failed."
+    MSG = "VectorSearchLoader failed."
     ERR_CODE = "SEARCH_VECTOR_NODE_REQUEST_NULL_ERROR"
     
     def __init__(

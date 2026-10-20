@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/attack/exception.py
+# src/err/authorization/authorizer/attack/exception.py
 
 """
-Module: err.authorization.reviewer.attack.exception
+Module: err.authorization.authorizer.attack.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import AuthorizationReviewerException
+from err import AuthorizerException
 
 __all__ = [
-    # ======================# ATTACK_REVIEWER_FAILURE #======================#
-    "AttackReviewerException",
+    # ======================# ATTACK_AUTHORIZER_FAILURE #======================#
+    "AttackAuthorizerException",
 ]
 
-# ======================# ATTACK_REVIEWER_FAILURE #======================#
-class AttackReviewerException(AuthorizationReviewerException):
+# ======================# ATTACK_AUTHORIZER_FAILURE #======================#
+class AttackAuthorizerException(AuthorizerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a AttackReviewer failed.
+        1.  Indicating that a AttackAuthorizer failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class AttackReviewerException(AuthorizationReviewerException):
     Provides:
 
     Super Class:
-        ReviewerException
+        AuthorizerException
     """
-    MSG = "AttackReviewer failed."
-    ERR_CODE = "ATTACK_REVIEWER_FAILURE"
+    MSG = "AttackAuthorizer failed."
+    ERR_CODE = "ATTACK_AUTHORIZER_FAILURE"
     
     def __init__(
             self,

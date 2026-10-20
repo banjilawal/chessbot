@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/maneuver/exception.py
+# src/err/authorization/authorizer/maneuver/exception.py
 
 """
-Module: err.authorization.reviewer.maneuver.exception
+Module: err.authorization.authorizer.maneuver.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import AuthorizationReviewerException
+from err import AuthorizerException
 
 __all__ = [
-    # ======================# MANEUVER_REVIEWER_FAILURE #======================#
-    "ManeuverReviewerException",
+    # ======================# MANEUVER_AUTHORIZER_FAILURE #======================#
+    "ManeuverAuthorizerException",
 ]
 
-# ======================# MANEUVER_REVIEWER_FAILURE #======================#
-class ManeuverReviewerException(AuthorizationReviewerException):
+# ======================# MANEUVER_AUTHORIZER_FAILURE #======================#
+class ManeuverAuthorizerException(AuthorizerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ManeuverReviewer failed.
+        1.  Indicating that a ManeuverAuthorizer failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class ManeuverReviewerException(AuthorizationReviewerException):
     Provides:
 
     Super Class:
-        ReviewerException
+        AuthorizerException
     """
-    MSG = "ManeuverReviewer failed."
-    ERR_CODE = "MANEUVER_REVIEWER_FAILURE"
+    MSG = "ManeuverAuthorizer failed."
+    ERR_CODE = "MANEUVER_AUTHORIZER_FAILURE"
     
     def __init__(
             self,

@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/crud/search/game/exception.py
+# src/err/authorization/loader/crud/search/game/exception.py
 
 """
-Module: err.authorization.reviewer.crud.search.game.exception
+Module: err.authorization.loader.crud.search.game.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import SearchReviewerException
+from err import SearchLoaderException
 
 __all__ = [
     # ======================# GAME_PUSH_REQUEST_NULL_ERROR #======================#
-    "GameSearchReviewerException",
+    "GameSearchLoaderException",
 ]
 
 # ======================# GAME_PUSH_REQUEST_NULL_ERROR #======================#
-class GameSearchReviewerException(SearchReviewerException):
+class GameSearchLoaderException(SearchLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a GameSearchReviewer failed.
+        1.  Indicating that a GameSearchLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class GameSearchReviewerException(SearchReviewerException):
     Provides:
 
     Super Class:
-        SearchReviewerException
+        SearchLoaderException
     """
-    MSG = "GameSearchReviewer failed."
+    MSG = "GameSearchLoader failed."
     ERR_CODE = "GAME_PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

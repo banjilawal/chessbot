@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/crud/exception.py
+# src/err/authorization/authorizer/crud/exception.py
 
 """
-Module: err.authorization.reviewer.crud.exception
+Module: err.authorization.authorizer.crud.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import DeletionReviewerException
+from err import DeletionAuthorizerException
 
 __all__ = [
     # ======================# POP_REQUEST_NULL_ERROR #======================#
-    "PopReviewerException",
+    "PopAuthorizerException",
 ]
 
 # ======================# POP_REQUEST_NULL_ERROR #======================#
-class PopReviewerException(DeletionReviewerException):
+class PopAuthorizerException(DeletionAuthorizerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PopReviewer failed.
+        1.  Indicating that a PopAuthorizer failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,9 +42,9 @@ class PopReviewerException(DeletionReviewerException):
     Provides:
 
     Super Class:
-        DeletionReviewerException
+        DeletionAuthorizerException
     """
-    MSG = "PopReviewer failed."
+    MSG = "PopAuthorizer failed."
     ERR_CODE = "POP_REQUEST_NULL_ERROR"
     
     def __init__(

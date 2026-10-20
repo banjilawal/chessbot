@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import InsertionRequestNullException
+from err import InsertionReviewerException
 
 __all__ = [
     # ======================# ADD_REQUEST_NULL_ERROR #======================#
-    "AddNodeRequestNullException",
+    "AddNodeReviewerException",
 ]
 
 # ======================# ADD_REQUEST_NULL_ERROR #======================#
-class AddNodeRequestNullException(InsertionRequestNullException):
+class AddNodeReviewerException(InsertionReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an AddNodeRequest is null.
+        1.  Indicating that an AddNodeReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,9 +42,9 @@ class AddNodeRequestNullException(InsertionRequestNullException):
     Provides:
 
     Super Class:
-        InsertionRequestNullException
+        InsertionReviewerException
     """
-    MSG = "AddNodeRequest cannot be null."
+    MSG = "AddNodeReviewer failed."
     ERR_CODE = "ADD_REQUEST_NULL_ERROR"
     
     def __init__(

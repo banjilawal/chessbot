@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/crud/exception.py
+# src/err/authorization/loader/crud/exception.py
 
 """
-Module: err.authorization.reviewer.crud.exception
+Module: err.authorization.loader.crud.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import AuthorizationReviewerException
+from err import AuthorizationLoaderException
 
 __all__ = [
-    # ======================# CRUD_REVIEWER_FAILURE #======================#
-    "CrudReviewerException",
+    # ======================# CRUD_LOADER_FAILURE #======================#
+    "CrudLoaderException",
 ]
 
-# ======================# CRUD_REVIEWER_FAILURE #======================#
-class CrudReviewerException(AuthorizationReviewerException):
+# ======================# CRUD_LOADER_FAILURE #======================#
+class CrudLoaderException(AuthorizationLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a CrudReviewer failed.
+        1.  Indicating that a CrudLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class CrudReviewerException(AuthorizationReviewerException):
     Provides:
 
     Super Class:
-        ReviewerException
+        LoaderException
     """
-    MSG = "CrudReviewer failed."
-    ERR_CODE = "CRUD_REVIEWER_FAILURE"
+    MSG = "CrudLoader failed."
+    ERR_CODE = "CRUD_LOADER_FAILURE"
     
     def __init__(
             self,

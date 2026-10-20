@@ -1,15 +1,15 @@
-# src/err/authorization/reviewer/maneuver/__init__.py
+# src/err/authorization/authorizer/maneuver/__init__.py
 
 """
-Module: err.authorization.reviewer.maneuver.__init__
+Module: err.authorization.authorizer.maneuver.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.AUTHORIZATION.REVIEWER.MANEUVER PACKAGE ===========#
+# ============ ERR.AUTHORIZATION.AUTHORIZER.MANEUVER PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .exception import ManeuverReviewerException
+from .exception import ManeuverAuthorizerException

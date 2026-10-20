@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import AuthorizationRequestNullException
+from err import AuthorizationReviewerException
 
 __all__ = [
-    # ======================# MANEUVER_AUTHORIZATION_REQUEST_NULL_ERROR #======================#
-    "ManeuverRequestNullException",
+    # ======================# MANEUVER_REVIEWER_FAILURE #======================#
+    "ManeuverReviewerException",
 ]
 
-# ======================# MANEUVER_AUTHORIZATION_REQUEST_NULL_ERROR #======================#
-class ManeuverRequestNullException(AuthorizationRequestNullException):
+# ======================# MANEUVER_REVIEWER_FAILURE #======================#
+class ManeuverReviewerException(AuthorizationReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ManeuverRequest is null.
+        1.  Indicating that a ManeuverReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,10 +42,10 @@ class ManeuverRequestNullException(AuthorizationRequestNullException):
     Provides:
 
     Super Class:
-        AuthorizationRequestNullException
+        ReviewerException
     """
-    MSG = "ManeuverRequest cannot be null."
-    ERR_CODE = "MANEUVER_AUTHORIZATION_REQUEST_NULL_ERROR"
+    MSG = "ManeuverReviewer failed."
+    ERR_CODE = "MANEUVER_REVIEWER_FAILURE"
     
     def __init__(
             self,

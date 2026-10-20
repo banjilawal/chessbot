@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/crud/deletion/pop/account/exception.py
+# src/err/authorization/loader/crud/deletion/pop/account/exception.py
 
 """
-Module: err.authorization.reviewer.crud.deletion.pop.account.exception
+Module: err.authorization.loader.crud.deletion.pop.account.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopReviewerException
+from err import PopLoaderException
 
 __all__ = [
     # ======================# ACCOUNT_POP_REQUEST_NULL_ERROR #======================#
-    "AccountPopReviewerException",
+    "AccountPopLoaderException",
 ]
 
 # ======================# ACCOUNT_POP_REQUEST_NULL_ERROR #======================#
-class AccountPopReviewerException(PopReviewerException):
+class AccountPopLoaderException(PopLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a AccountPopReviewer failed.
+        1.  Indicating that a AccountPopLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class AccountPopReviewerException(PopReviewerException):
     Provides:
 
     Super Class:
-        PopReviewerException
+        PopLoaderException
     """
-    MSG = "AccountPopReviewer failed."
+    MSG = "AccountPopLoader failed."
     ERR_CODE = "ACCOUNT_POP_REQUEST_NULL_ERROR"
     
     def __init__(

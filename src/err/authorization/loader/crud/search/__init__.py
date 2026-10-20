@@ -1,13 +1,13 @@
-# src/err/authorization/reviewer/crud/search/__init__.py
+# src/err/authorization/loader/crud/search/__init__.py
 
 """
-Module: err.authorization.reviewer.crud.search.__init__
+Module: err.authorization.loader.crud.search.__init__
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
 """
 
-# ============ ERR.AUTHORIZATION.REVIEWER.CRUD.SEARCH PACKAGE ===========#
+# ============ ERR.AUTHORIZATION.LOADER.CRUD.SEARCH PACKAGE ===========#
 
 # Packages
 from .account import *
@@ -23,4 +23,4 @@ from .token import *
 from .vector import *
 
 # Modules
-from .exception import SearchReviewerException
+from .exception import SearchLoaderException

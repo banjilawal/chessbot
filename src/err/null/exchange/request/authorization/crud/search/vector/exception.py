@@ -15,18 +15,18 @@ from artifcat import MethodResultType
 from err import SearchRequestNullException
 
 __all__ = [
-    # ======================# ADD_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-    "AddVectorNodeRequestNullException",
+    # ======================# SEARCH_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
+    "VectorSearchRequestNullException",
 ]
 
-# ======================# ADD_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
-class AddVectorNodeRequestNullException(SearchRequestNullException):
+# ======================# SEARCH_VECTOR_NODE_REQUEST_NULL_ERROR #======================#
+class VectorSearchRequestNullException(SearchRequestNullException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that an AddVectorNodeRequest is null.
+        1.  Indicating that a VectorSearchRequest is null.
 
     Attributes:
             msg: Optional[str]
@@ -43,8 +43,8 @@ class AddVectorNodeRequestNullException(SearchRequestNullException):
     Super Class:
         SearchRequestNullException
     """
-    MSG = "AddVectorNodeRequest cannot be null."
-    ERR_CODE = "ADD_VECTOR_NODE_REQUEST_NULL_ERROR"
+    MSG = "VectorSearchRequest cannot be null."
+    ERR_CODE = "SEARCH_VECTOR_NODE_REQUEST_NULL_ERROR"
     
     def __init__(
             self,

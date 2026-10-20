@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/crud/deletion/pop/arena/exception.py
+# src/err/authorization/authorizer/crud/deletion/pop/arena/exception.py
 
 """
-Module: err.authorization.reviewer.crud.deletion.pop.arena.exception
+Module: err.authorization.authorizer.crud.deletion.pop.arena.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -12,21 +12,21 @@ from __future__ import annotations
 from typing import Any, Optional
 
 from artifcat import MethodResultType
-from err import PopReviewerException
+from err import PopAuthorizerException
 
 __all__ = [
     # ======================# ARENA_POP_REQUEST_NULL_ERROR #======================#
-    "ArenaPopReviewerException",
+    "ArenaPopAuthorizerException",
 ]
 
 # ======================# ARENA_POP_REQUEST_NULL_ERROR #======================#
-class ArenaPopReviewerException(PopReviewerException):
+class ArenaPopAuthorizerException(PopAuthorizerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ArenaPopReviewer failed.
+        1.  Indicating that a ArenaPopAuthorizer failed.
 
     Attributes:
             msg: Optional[str]
@@ -41,9 +41,9 @@ class ArenaPopReviewerException(PopReviewerException):
     Provides:
 
     Super Class:
-        PopReviewerException
+        PopAuthorizerException
     """
-    MSG = "ArenaPopReviewer failed."
+    MSG = "ArenaPopAuthorizer failed."
     ERR_CODE = "ARENA_POP_REQUEST_NULL_ERROR"
     
     def __init__(

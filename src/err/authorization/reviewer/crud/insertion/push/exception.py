@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import InsertionRequestNullException
+from err import InsertionReviewerException
 
 __all__ = [
     # ======================# PUSH_REQUEST_NULL_ERROR #======================#
-    "PushRequestNullException",
+    "PushReviewerException",
 ]
 
 # ======================# PUSH_REQUEST_NULL_ERROR #======================#
-class PushRequestNullException(InsertionRequestNullException):
+class PushReviewerException(InsertionReviewerException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PushRequest is null.
+        1.  Indicating that a PushReviewer failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,9 +42,9 @@ class PushRequestNullException(InsertionRequestNullException):
     Provides:
 
     Super Class:
-        InsertionRequestNullException
+        InsertionReviewerException
     """
-    MSG = "PushRequest cannot be null."
+    MSG = "PushReviewer failed."
     ERR_CODE = "PUSH_REQUEST_NULL_ERROR"
     
     def __init__(

@@ -1,7 +1,7 @@
-# src/err/authorization/reviewer/crud/exception.py
+# src/err/authorization/loader/crud/exception.py
 
 """
-Module: err.authorization.reviewer.crud.exception
+Module: err.authorization.loader.crud.exception
 Author: Banji Lawal
 Created: 2026-04-04
 version: 0.0.2
@@ -13,21 +13,21 @@ from typing import Any, Optional
 
 
 from artifcat import MethodResultType
-from err import InsertionReviewerException
+from err import InsertionLoaderException
 
 __all__ = [
     # ======================# PUSH_REQUEST_NULL_ERROR #======================#
-    "PushReviewerException",
+    "PushLoaderException",
 ]
 
 # ======================# PUSH_REQUEST_NULL_ERROR #======================#
-class PushReviewerException(InsertionReviewerException):
+class PushLoaderException(InsertionLoaderException):
     """
     Role:
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a PushReviewer failed.
+        1.  Indicating that a PushLoader failed.
 
     Attributes:
             msg: Optional[str]
@@ -42,9 +42,9 @@ class PushReviewerException(InsertionReviewerException):
     Provides:
 
     Super Class:
-        InsertionReviewerException
+        InsertionLoaderException
     """
-    MSG = "PushReviewer failed."
+    MSG = "PushLoader failed."
     ERR_CODE = "PUSH_REQUEST_NULL_ERROR"
     
     def __init__(
