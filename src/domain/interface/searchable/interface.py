@@ -24,6 +24,6 @@ class Searchable(ABC):
     Provides:
 
     Super Class:
-        Interface
+        DomainInterface
     """
     pass

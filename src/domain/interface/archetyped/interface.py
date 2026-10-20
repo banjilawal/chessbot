@@ -29,7 +29,7 @@ class Archetyped(ABC):
         def archetype(self) -> Archetype
 
     Super Class:
-        Interface
+        DomainInterface
     """
     
     @property

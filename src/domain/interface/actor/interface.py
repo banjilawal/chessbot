@@ -25,6 +25,6 @@ class Actor(ABC):
     Provides:
 
     Super Class:
-        Interface
+        DomainInterface
     """
     pass

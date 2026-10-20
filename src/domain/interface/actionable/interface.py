@@ -25,5 +25,5 @@ class Actionable(ABC):
     Provides:
 
     Super Class:
-        Interface
+        DomainInterface
     """

@@ -12,10 +12,11 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import ResultState, Result
+from artifcat.result.interface.interface import Authorizable
 from domain import PawnToken
 
 
-class PromotionResult(Result[PawnToken]):
+class PromotionResult(Result[PawnToken], Authorizable):
     """
     Role:
         - Data Transport
