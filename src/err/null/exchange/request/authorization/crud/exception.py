@@ -27,7 +27,7 @@ class CrudRequestNullException(AuthorizationRequestNullException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a CrudRequestNullException is null.
+        1.  Indicating that a CrudRequest is null.
 
     Attributes:
             msg: Optional[str]

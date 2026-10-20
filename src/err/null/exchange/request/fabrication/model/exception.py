@@ -27,7 +27,7 @@ class ModelBuildRequestNullException(BuildRequestNullException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ModelBuildRequestNullException is null.
+        1.  Indicating that a ModelBuildRequest is null.
 
     Attributes:
             msg: Optional[str]

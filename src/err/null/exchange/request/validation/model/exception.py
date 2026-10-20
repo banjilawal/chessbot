@@ -27,7 +27,7 @@ class ModelValidationRequestNullException(ValidationRequestNullException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a ModelValidationRequestNullException is null.
+        1.  Indicating that a ModelValidationRequest is null.
 
     Attributes:
             msg: Optional[str]

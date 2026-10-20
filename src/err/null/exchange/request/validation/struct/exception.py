@@ -27,7 +27,7 @@ class StructValidationRequestNullException(ValidationRequestNullException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a StructValidationRequestNullException is null.
+        1.  Indicating that a StructValidationRequest is null.
 
     Attributes:
             msg: Optional[str]

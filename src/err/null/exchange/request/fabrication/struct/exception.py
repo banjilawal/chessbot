@@ -27,7 +27,7 @@ class StructBuildRequestNullException(BuildRequestNullException):
         - Error Tracing
 
     Responsibilities:
-        1.  Indicating that a StructBuildRequestNullException is null.
+        1.  Indicating that a StructBuildRequest is null.
 
     Attributes:
             msg: Optional[str]
