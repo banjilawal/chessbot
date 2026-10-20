@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from artifcat import PromotionResult
-from domain import Elevatable, PawnToken
+from domain import Actionable, Elevatable, PawnToken
 from exchange import AuthorizationRequest
 
 
@@ -41,7 +41,7 @@ class PromotionRequest(AuthorizationRequest[PromotionResult]):
             actor: PawnToken
             activity: Elevatable
         """
-        super().__init__(id=id, actor=actor, activity=Elevatable)
+        super().__init__(id=id, actor=actor, activity=activity)
         self._actor = actor
         self._activity = activity
     

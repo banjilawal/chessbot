@@ -27,3 +27,4 @@ class Actionable(ABC):
     Super Class:
         DomainInterface
     """
+    pass

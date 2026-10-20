@@ -29,3 +29,4 @@ class Attackable(Actionable, ABC):
     Super Class:
         Actionable
     """
+    pass

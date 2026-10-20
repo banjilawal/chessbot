@@ -29,3 +29,4 @@ class Maneuverable(Actionable, ABC):
     Super Class:
         Actionable
     """
+    pass
