@@ -60,7 +60,6 @@ class PromotionRequest(PermissionRequest[PromotionResult]):
     @property
     def rank_elevation(self) -> Rank:
         return self._rank_elevation
-        
     
     def __eq__(self, other):
         if other is self: return True

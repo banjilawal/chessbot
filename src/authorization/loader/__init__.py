@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== AUTHORIZATION.LOADER PACKAGE ===========#
 
 # Packages
+from .promotion import *
 
 # Modules
 from .loader import AuthorizationLoader

@@ -12,65 +12,53 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import BuildResult
-from domain import Rank, RankBlueprint
+from domain import Bishop, King, Knight, Pawn, Persona, Queen, Rank, RankBlueprint, Rook
 from err import RankBuilderException
 from exchange import RankBuildRequest
-from fabrication import BuildFactory, RankBuildLoader
-from transit import RankBuildRouter
+from fabrication import ModelBuilder, RankBuildLoader
 from util import LoggingLevelRouter
 
 
-class RankBuilder(BuildFactory[Rank]):
+class RankBuilder(ModelBuilder[Rank]):
     """
     Role
         - Builder
 
     Responsibilities:
-        1.  Create different Rank products from the different types of blueprints.
+        1.  Create a Rank from a blueprint.
 
     Attributes:
        loader: RankBuildLoader
-       router: RankBuildRouter
 
     Provides:
         -   def execute(blueprint: RankBlueprint) -> BuildResult[Rank]
 
     Super Class:
-        BuildFactory
+        ModelBuilder
     """
     
     def __init__(
             self,
             loader: Optional[RankBuildLoader] | None = None,
-            router: Optional[RankBuildRouter] | None = None,
     ):
         """
         Args:
             loader: Optional[RankBuildLoader]
-            router: Optional[RankBuildRouter]
         """
-        super().__init__(
-            loader=loader or RankBuildLoader(),
-            router=router or RankBuildRouter(),
-        )
+        super().__init__(loader=loader or RankBuildLoader())
     
     @property
     def loader(self) -> RankBuildLoader:
         return cast(RankBuildLoader, super().loader)
-    
-    @property
-    def router(self) -> RankBuildRouter:
-        return cast(RankBuildRouter, super().router)
     
     @LoggingLevelRouter.monitor
     def execute(self, request: RankBuildRequest) -> BuildResult[Rank]:
         """
         Assemble a Rank from the Blueprint's contents.
         Action:
-            1.  Send an exception chain in the BuildResult if either:
-                -   the loader does not produce a blueprint.
-                -   the router does not return a product from the blueprint.
-            2.  Otherwise, cast the product as a Rank then send in the success result.
+            1.  Send an exception chain in the BuildResult if the loader does not produce
+                a blueprint.
+            2.  Otherwise, use the blueprint to assemble a Rank for the success loading.
         Args:
             request: RankBuildRequest
         Returns:
@@ -80,7 +68,7 @@ class RankBuilder(BuildFactory[Rank]):
         """
         method = f"{self.__class__.__name__}"
         
-        # --- Handoff the request to loader for blueprint preparation. ---#
+        # --- Handoff the request to loader for blueprint prepartion. ---#
         loading = self.loader.execute(request=request)
         # Handle the case that the loader aborts.
         if loading.is_failure:
@@ -96,19 +84,17 @@ class RankBuilder(BuildFactory[Rank]):
             )
         # --- Cast result payload for the product assembly. ---#
         blueprint = cast(RankBlueprint, loading.payload)
-        result = self.router.execute(blueprint)
+        persona = blueprint.persona
         
-        # Handle the case that a product is not routed back.
-        if result.is_failure:
-            # Send the exception chain on failure.
-            return BuildResult.failure(
-                RankBuilderException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=RankBuilderException.MSG,
-                    err_code=RankBuilderException.ERR_CODE,
-                    ex=loading.exception,
-                )
-            )
         # --- Send the work product. ---#
-        return BuildResult.success(cast(Rank, result.payload))
+        if persona == Persona.BISHOP:
+            return BuildResult.success(Bishop())
+        if persona == Persona.KING:
+            return BuildResult.success(King())
+        if persona == Persona.KNIGHT:
+            return BuildResult.success(Knight())
+        if persona == Persona.PAWN:
+            return BuildResult.success(Pawn())
+        if persona == Persona.QUEEN:
+            return BuildResult.success(Queen())
+        return BuildResult.success(Rook())

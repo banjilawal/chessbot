@@ -13,12 +13,15 @@ from typing import Any, Optional, cast
 
 from artifcat import ValidationResult
 from assurance import ModelValidator, GameValidationLoader, GameValidatorToolkit
-from domain import Arena, Game, GameBlueprint, GamePrimeExtract, PlayerBinder
+from domain import (
+    Arena, Bishop, Game, GameBlueprint, GamePrimeExtract, King, Knight, Pawn, Persona, PlayerBinder,
+    Queen, Rank, RankBlueprint, Rook
+)
 from err import GameCarrierEmptyException, GameValidatorException
 from exchange import (
     ArenaValidationRequest, PlayerBinderValidationRequest
 )
-from transit import ArenaCarrier, PlayerBinderCarrier, GameCarrier
+from transit import ArenaCarrier, PlayerBinderCarrier, GameCarrier, RankCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
@@ -111,13 +114,12 @@ class GameValidator(ModelValidator[Game]):
                 )
             )
         # Handle the case that any id in the blueprint is flagged.
-        id_validation = self.toolkit.blueprint_id_extractor.execute(
-            candidate=fingerprint,
-            blueprint_owner_name=fingerprint.domain_class_name,
-            blueprint_type=self.toolkit.metadata.types.blueprint,
-            blueprint_null_exception=self.toolkit.metadata.nulls.blueprint,
+        persona_validation = self.toolkit.priming_validator.execute(
+            candidate=fingerprint.persona,
+            target_model=Persona,
+            null_exception=PersonaNullException(),
         )
-        if id_validation.is_failure:
+        if persona_validation.is_failure:
             # Send the exception chain on failure.
             return ValidationResult.failure(
                 GameValidatorException(
@@ -125,7 +127,7 @@ class GameValidator(ModelValidator[Game]):
                     cls_name=self.__class__.__name__,
                     msg=GameValidatorException.MSG,
                     err_code=GameValidatorException.ERR_CODE,
-                    ex=id_validation.exception,
+                    ex=persona_validation.exception,
                 )
             )
         # --- Handle the case that the binder is not safe. ---#
@@ -166,30 +168,27 @@ class GameValidator(ModelValidator[Game]):
                 )
             )
         # --- EXTRACT_THE_VALIDATION_PAYLOADS. ---#
-        id = cast(int, id_validation.payload)
-        arena = cast(Arena, arena_validation.payload)
-        binder = cast(PlayerBinder, binder_validation.payload)
-
+        persona = cast(int, persona_validation.payload)
+        model = Rank(persona)
         # --- FORWARD_THE_APPROPRIATE_WORK_PRODUCT_TO_THE_CALLER. ---#
         
         # The client wants a safe Game.
+
+        if persona == Persona.BISHOP:
+            model = Bishop()
+        if persona == Persona.KING:
+            model = King()
+        if persona == Persona.KNIGHT:
+            model = Knight()
+        if persona == Persona.PAWN:
+            model = Pawn()
+        if persona == Persona.QUEEN:
+            model = Queen()
+        else:
+            model = Rook()
+
         if prime_extract.recipient_wants_model:
-            payload = Game(
-                id=id,
-                binder=binder,
-                arena=arena,
-            )
-            return ValidationResult.success(
-                GameCarrier(model=payload)
-            )
-        # Otherwise, the client is a GameBuilder that needs a Blueprint.
-        payload = GameBlueprint(
-            id=id,
-            binder=binder,
-            arena=arena,
-        )
-        return ValidationResult.success(
-            GameCarrier(blueprint=payload)
-        )
+           return ValidationResult.success(RankCarrier(model=model))
+        return ValidationResult.success(RankCarrier(blueprint=RankBlueprint(persona)))
 
 

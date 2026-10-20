@@ -17,7 +17,7 @@ from err import RankNullException
 
 T = TypeVar("T", bound="Rank")
 
-class RankBlueprint(ModelBlueprint[T], ABC, Generic[T]):
+class RankBlueprint(ModelBlueprint[Rank]):
     """
      Role:
         1.  Metadata

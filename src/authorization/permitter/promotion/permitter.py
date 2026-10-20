@@ -14,12 +14,13 @@ from typing import Any, Optional, cast
 from artifcat import PromotionDecision
 from authorization import OperationPermitter, PromotionAuthorizationForm
 from authorization.loader.promotion import PromotionAuthorizationLoader
-from domain import PawnToken, Rank, Token
+from domain import Bishop, King, Knight, Pawn, PawnToken, Persona, Queen, Rank, RankBlueprint, Rook, Token
 from err import ChessException, PawnPromoterException, PromoteInactivePawnException
 from exchange import (
-    PromotionRequest, RankValidationRequest, RankValidationService, TokenValidationRequest,
+    PromotionRequest, RankBuildRequest, RankValidationRequest, RankValidationService, TokenValidationRequest,
     TokenValidationService
 )
+from fabrication import RankBuilder
 from logic.promotion.promotion.exception import DoublePromotionException
 from transit import PawnTokenCarrier, RankCarrier
 from util import IdFactory, LoggingLevelRouter
@@ -47,15 +48,18 @@ class PromotionPermitter(OperationPermitter[PromotionDecision]):
     """
     _rank_validation_service: RankValidationService
     _token_validation_service: TokenValidationService
+    _rank_builder: RankBuilder
     
     def __init__(
             self,
+            rank_builder: Optional[RankBuilder] | None = None,
             loader: Optional[PromotionAuthorizationLoader] | None = None,
             rank_validation_service: Optional[RankValidationService] | None = None,
             token_validation_service: Optional[TokenValidationService] | None = None,
     ):
         """
         Args:
+            rank_builder: Optional[RankBuilder]
             loader: Optional[PromotionAuthorizationLoader]
             rank_validation_service: Optional[RankValidationService]
             token_validation_service: Optional[TokenValidationService
@@ -63,6 +67,7 @@ class PromotionPermitter(OperationPermitter[PromotionDecision]):
         super().__init__(loader=loader or PromotionAuthorizationLoader())
         self._rank_validation_service = rank_validation_service or RankValidationService()
         self._token_validation_service = token_validation_service or TokenValidationService()
+        self._rank_builder = rank_builder or RankBuilder()
     
     @property
     def rank_validation_service(self) -> RankValidationService:
@@ -117,8 +122,8 @@ class PromotionPermitter(OperationPermitter[PromotionDecision]):
                     ex=token_validation.exception,
                 )
             )
-        applicant = cast(Token, token_validation.payload)
-        if not isinstance(applicant, PawnToken):
+        token = cast(Token, token_validation.payload)
+        if not isinstance(token, PawnToken):
             return PromotionDecision.deny(
                 request=request,
                 exception=ChessException(
@@ -126,11 +131,11 @@ class PromotionPermitter(OperationPermitter[PromotionDecision]):
                     cls_name=self.__class__.__name__,
                     msg=ChessException.MSG,
                     err_code=ChessException.ERR_CODE,
-                    ex=TypeError(f"Cannot promote a {type(applicant.__class__.__name__)}.")
+                    ex=TypeError(f"Cannot promote a {type(token.__class__.__name__)}.")
                 )
             )
-        pawn = cast(PawnToken, applicant)
-        if pawn.is_promoted:
+        applicant = cast(PawnToken, token)
+        if applicant.is_promoted:
             return PromotionDecision.deny(
                 request=request,
                 exception=PawnPromoterException(
@@ -146,8 +151,8 @@ class PromotionPermitter(OperationPermitter[PromotionDecision]):
                     )
                 )
             )
-        promotion_row = pawn.team.enemy_rank_row
-        if pawn.position.row != promotion_row:
+        promotion_row = applicant.team.enemy_rank_row
+        if applicant.position.row != promotion_row:
             return PromotionDecision.deny(
                 request=request,
                 exception=PawnPromoterException(
@@ -163,7 +168,7 @@ class PromotionPermitter(OperationPermitter[PromotionDecision]):
                     )
                 )
             )
-        if pawn.is_not_ready:
+        if applicant.is_not_ready:
             return PromotionDecision.deny(
                 request=request,
                 exception=PawnPromoterException(
@@ -202,10 +207,27 @@ class PromotionPermitter(OperationPermitter[PromotionDecision]):
                     )
                 )
             )
+        id = cast(int, id_validation.payload)
+        persona = rank.persona
+        elevated_rank = rank
+        if persona == Persona.BISHOP:
+            elevated_rank = Bishop()
+        elif persona == Persona.KING:
+            elevated_rank = King()
+        elif persona == Persona.KNIGHT:
+           elevated_rank = Knight()
+        elif persona == Persona.PAWN:
+            elevated_rank = Pawn()
+        elif persona == Persona.QUEEN:
+            elevated_rank = Queen()
+        else:
+            elevated_rank = Rook()
+        approved_request
+
         approved_request = PromotionRequest(
             id=cast(int, id_validation.payload),
-            applicant=pawn,
-            elevated_rank=rank,
+            applicant=applicant,
+            elevated_rank=elevated_rank,
         )
         return PromotionDecision.grant(
             request=approved_request
