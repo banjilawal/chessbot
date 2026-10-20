@@ -10,6 +10,7 @@ version: 0.0.2
 # ============ ERR.NULL.EXCHANGE.REQUEST PACKAGE ===========#
 
 # Packages
+from .authorization import  *
 from .deletion import *
 from .fabrication import *
 from .insertion import *

@@ -5,9 +5,72 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="db270e31-deab-481e-8586-71ce55eab4c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/exchange/request/authorization/maneuver/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exchange/request/authorization/maneuver/request.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/exchange/request/authorization/promotion/request.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/exchange/request/authorization/promotion/request.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/account/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/account/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/alert/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/alert/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/arena/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/arena/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/board/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/board/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/coord/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/coord/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/footstep/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/footstep/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/game/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/game/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/path/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/path/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/player/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/player/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/player/human/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/player/human/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/player/machine/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/player/machine/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/rank/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/rank/bishop/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/rank/bishop/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/rank/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/rank/king/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/rank/king/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/rank/knight/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/rank/knight/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/rank/pawn/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/rank/pawn/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/rank/queen/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/rank/queen/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/rank/rook/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/rank/rook/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/scalar/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/scalar/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/square/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/square/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/square/home/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/square/home/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/team/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/team/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/token/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/token/combatant/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/token/combatant/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/token/combatant/pawn/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/token/combatant/pawn/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/token/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/token/king/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/token/king/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/vector/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/vector/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/encounter/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/encounter/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/maneuver/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/maneuver/exception.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/promotion/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/err/null/exchange/request/authorization/promotion/exception.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/err/null/exchange/request/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/err/null/exchange/request/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,61 +112,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0523421153625205" />
-      <entry key="MS500" value="2.9805305120073458" />
-      <entry key="S2" value="9.674424689435114" />
-      <entry key="S5" value="20.617897688950293" />
-      <entry key="S10" value="33.338697995244324" />
-      <entry key="S30" value="53.9693540559681" />
-      <entry key="S60" value="63.800373247133464" />
-      <entry key="M2" value="73.2181925600241" />
-      <entry key="M5" value="106.68560669892815" />
-      <entry key="M10" value="176.01625647594676" />
-      <entry key="M15" value="246.034508889162" />
-      <entry key="M30" value="440.5855309486245" />
-      <entry key="H1" value="788.1216579960806" />
-      <entry key="H2" value="1375.9527015636809" />
-      <entry key="H4" value="2123.179987477952" />
-      <entry key="D1" value="5237.0804264825065" />
-      <entry key="W1" value="22446.04540087236" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0000000000001656" />
+      <entry key="S5" value="1.000007736844845" />
+      <entry key="S10" value="1.0029089091114658" />
+      <entry key="S30" value="1.1913011884727494" />
+      <entry key="S60" value="1.6028959379697074" />
+      <entry key="M2" value="2.4729341393702446" />
+      <entry key="M5" value="14.913046052495593" />
+      <entry key="M10" value="60.58953467358209" />
+      <entry key="M15" value="118.78952771710192" />
+      <entry key="M30" value="305.6006363348481" />
+      <entry key="H1" value="659.8907160192658" />
+      <entry key="H2" value="1266.7277469962662" />
+      <entry key="H4" value="2054.3354289515573" />
+      <entry key="D1" value="5256.0937602254535" />
+      <entry key="W1" value="22489.565506128867" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="9.533102033868722E-244" />
-      <entry key="S5" value="8.618993685198116E-98" />
-      <entry key="S10" value="4.083495524556971E-49" />
-      <entry key="S30" value="1.1732143779617385E-16" />
-      <entry key="S60" value="1.5310779082522274E-8" />
-      <entry key="M2" value="1.7541521471026918E-4" />
-      <entry key="M5" value="0.053980288178455724" />
-      <entry key="M10" value="0.47520110441726626" />
-      <entry key="M15" value="1.1197709768461153" />
-      <entry key="M30" value="3.559799700265045" />
-      <entry key="H1" value="10.002681913294492" />
-      <entry key="H2" value="25.169188332717493" />
-      <entry key="H4" value="49.674572055306655" />
-      <entry key="D1" value="216.0582667414896" />
-      <entry key="W1" value="1214.889154767901" />
+      <entry key="S2" value="2.264329272320037E-124" />
+      <entry key="S5" value="3.483179320177416E-50" />
+      <entry key="S10" value="1.8664832201973377E-25" />
+      <entry key="S30" value="6.330597392314537E-9" />
+      <entry key="S60" value="1.2509399960031355E-4" />
+      <entry key="M2" value="0.022755970663414445" />
+      <entry key="M5" value="0.5688060390744983" />
+      <entry key="M10" value="1.7635682881708363" />
+      <entry key="M15" value="2.7684514084979837" />
+      <entry key="M30" value="5.475848093325169" />
+      <entry key="H1" value="11.6694889215412" />
+      <entry key="H2" value="26.362376399437288" />
+      <entry key="H4" value="51.00547897627997" />
+      <entry key="D1" value="218.44671057201924" />
+      <entry key="W1" value="1217.8056811520335" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.8255978395726747" />
-      <entry key="MS500" value="2.833556785992205" />
-      <entry key="S2" value="9.560007077041105" />
-      <entry key="S5" value="20.526548939004066" />
-      <entry key="S10" value="33.26665494392098" />
-      <entry key="S30" value="53.92236794317809" />
-      <entry key="S60" value="63.75628742773039" />
-      <entry key="M2" value="73.1776495628139" />
-      <entry key="M5" value="106.7097515192214" />
-      <entry key="M10" value="176.46388346956905" />
-      <entry key="M15" value="247.1258481094797" />
-      <entry key="M30" value="444.11551894520096" />
-      <entry key="H1" value="798.0923436700673" />
-      <entry key="H2" value="1401.0841799950078" />
-      <entry key="H4" value="2172.815137368282" />
-      <entry key="D1" value="5453.109034250552" />
-      <entry key="W1" value="23660.912814754334" />
+      <entry key="MS100" value="0.9395227492140118" />
+      <entry key="MS500" value="0.9876008614453725" />
+      <entry key="S2" value="0.9968856972205411" />
+      <entry key="S5" value="0.9987608434974696" />
+      <entry key="S10" value="1.0022840616622188" />
+      <entry key="S30" value="1.191066753196507" />
+      <entry key="S60" value="1.6028701377313979" />
+      <entry key="M2" value="2.4951638563357132" />
+      <entry key="M5" value="15.47610500777641" />
+      <entry key="M10" value="62.34045099985966" />
+      <entry key="M15" value="121.54127976854419" />
+      <entry key="M30" value="311.05394126071525" />
+      <entry key="H1" value="671.5326667063518" />
+      <entry key="H2" value="1293.0555038299347" />
+      <entry key="H4" value="2105.303188825074" />
+      <entry key="D1" value="5474.510985602919" />
+      <entry key="W1" value="23707.349457747136" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -137,7 +200,7 @@
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/exchange/request/authorization",
+    "last_opened_file_path": "/home/griot/PycharmProjects/chessbot/src/err/null/exchange/request/authrization",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.jshint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -151,18 +214,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/null/exchange/request/authrization" />
+      <recent name="$PROJECT_DIR$/src/err/null/exchange/request" />
       <recent name="$PROJECT_DIR$/src/exchange/request/authorization" />
       <recent name="$PROJECT_DIR$/src/domain/interface/actionable" />
       <recent name="$PROJECT_DIR$/src/domain/interface" />
-      <recent name="$PROJECT_DIR$/src/artifcat/result/authorizable" />
-      <recent name="$PROJECT_DIR$/src/artifcat/result/interface/authorizable" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/err/null/exchange/request/authrization" />
       <recent name="$PROJECT_DIR$/src/artifcat/result/authorizable" />
       <recent name="$PROJECT_DIR$/src/authorization/applicant" />
       <recent name="$PROJECT_DIR$/src/domain/interface/archetyped" />
       <recent name="$PROJECT_DIR$/src/authorization/reviewer/applicant" />
-      <recent name="$PROJECT_DIR$/src/exchange/request/permission" />
     </key>
   </component>
   <component name="RunManager" selected="Python.generator">
@@ -824,7 +887,7 @@
       <workItem from="1791213294391" duration="277057000" />
       <workItem from="1791925309191" duration="12463000" />
       <workItem from="1791980656972" duration="171851000" />
-      <workItem from="1792402033304" duration="60717000" />
+      <workItem from="1792402033304" duration="62175000" />
     </task>
     <task id="LOCAL-00001" summary="1) Wrote PlayerService.add_team.2) Created InsertionFailed, CalculationFailed and DeletionFailed exceptions in chess.system.data.exception.3) Updated responsibility section of BuildFailed and ValidationFailed excpetions.4) Created chess.team.service.data.exception.deletion package.5) TeamDeletionFailedException.6) Created chess.team.service.data.unique.exception.TeamInsertionException.7) Renamed exceptions and their modules.">
       <option name="closed" value="true" />
@@ -1998,7 +2061,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/err/null/exchange/request/__init__.py</url>
-          <line>12</line>
+          <line>13</line>
           <option name="timeStamp" value="445" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -2491,6 +2554,16 @@
           <url>file://$PROJECT_DIR$/src/authorization/authorizer/__init__.py</url>
           <line>12</line>
           <option name="timeStamp" value="572" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/exchange/request/authorization/__init__.py</url>
+          <line>14</line>
+          <option name="timeStamp" value="575" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/err/null/exchange/request/authorization/crud/square/exception.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="576" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
