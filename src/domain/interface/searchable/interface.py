@@ -1,7 +1,7 @@
-# src/domain/interface.py
+# src/domain/interface/searchable/__init__.py
 
 """
-Module: domain.interface
+Module: domain.interface.searchable.__init__
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -14,14 +14,13 @@ from abc import ABC, abstractmethod
 from domain import Archetype
 
 
-class Archetyped(ABC):
+class Searchable(ABC):
     """
     Role:
         - Interface
 
     Responsibility:
-        1.  Tags an object that has a set of attributes that can identify a unique instance
-            in a collection.
+        1.  Requests permission to perform a Role or Action
 
     Attributes:
 
@@ -29,8 +28,4 @@ class Archetyped(ABC):
 
     Super Class:
     """
-    
-    @property
-    @abstractmethod
-    def archetype(self) -> Archetype:
-        pass
+    pass

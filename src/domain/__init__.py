@@ -12,6 +12,7 @@ version: 0.0.2
 # Packages
 from .extract import *
 from .graph import *
+from .interface import *
 from .metadata import *
 from .model import *
 from .schema import *
@@ -20,4 +21,3 @@ from .struct import *
 
 # Modules
 from .domain import DomainDataObject
-from .interface import Searchable
