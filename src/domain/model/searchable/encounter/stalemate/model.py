@@ -1,4 +1,4 @@
-# src/domain/model/searchable/encounter/stalemate/model.py.py
+# src/domain/model/searchable/encounter/stalemate/model.py
 
 """
 Module: domain.model.searchable.encounter.stalemate.model

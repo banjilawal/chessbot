@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== AUTHORIZATION PACKAGE ===========#
 
 # Packages
+from .authorizer import *
 from .adjudicator import *
 from .crud import *
 from .form import *

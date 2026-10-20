@@ -1,4 +1,4 @@
-# src/domain/model/rank/king/model.py.py
+# src/domain/model/rank/king/model.py
 
 """
 Module: domain.model.rank.king.model
@@ -9,82 +9,34 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from domain.schema import Persona
-from err import KingException
-from geometry import KingSpanner
-from domain.model import Coord, OffsetRank
-from artifcat import ComputationResult
-from util import LoggingLevelRouter
+from __future__ import annotations
+
+from typing import Optional
+
+from domain import OffsetRank, Persona
 
 
 class King(OffsetRank):
     """
-    Role:Computation, Metadata
+    Role:
+        -   Data Holder
 
     Responsibilities:
-    1.  Produces a list of Coords reachable from a King's updated position.
-    2.  Metadata about the King rank useful for optimizing the GameGraph.
-    
-    Super Class:
-        Rank
+        1.  Maps to how a KingToken moves on the Board.
+        2.  What Encounters a Token can engage.
+
+    Attributes:
+        persona: Persona.KING
 
     Provides:
 
-    
-    INHERITED ATTRIBUTES:
-        *   See Rank class for inherited attributes
+    Super Class:
+        OffsetRank
     """
-    _spanner: KingSpanner
-
-    def __init__(
-            self,
-            persona: Persona | None = Persona.KING,
-            spanner: KingSpanner | None = KingSpanner(),
-    ):
-        """
-        Args:
-                        persona: Persona
-            spanner: KingSpanner
-        """
-        super().__init__(
-            id=id,
-            persona=persona,
-        )
-        self._spanner = spanner
     
-    @LoggingLevelRouter.monitor
-    def span_dict(self, origin: Coord) -> ComputationResult:
+    def __init__(self, persona: Optional[Persona] | None = None):
         """
-        Produce a dictionary of the coords a King can reach from its current position.
-
         Args:
-            origin: Coord
-
-        Raises:
-            KingException
-
-        Returns:
-            ComputationResult[Dict[str, CoordSpan]]
+            persona: Optional[Persona]
         """
-        method = f"{self.__class__.__name__}.span_dict"
-        
-        span_result = self._spanner.compute(
-            origin=origin,
-            vectors=self.persona.vectors,
-            coord_service=self.coord_service,
-            vector_service=self._vector_service,
-        )
-        # Handle the case that the span is not produced.
-        if span_result.is_failure:
-            # Send the exception chain on failure.
-            return ComputationResult.failure(
-                KingException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    err_code=KingException.ERR_CODE,
-                    msg=KingException.MSG,
-                    ex=span_result.exception
-                )
-            )
-        # --- Send the success resul to the client. ---#
-        return span_result
+        super().__init__(persona=persona or Persona.KING)

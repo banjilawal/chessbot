@@ -1,7 +1,7 @@
-# src/exchange/request/permission/promotion/request.py
+# src/exchange/request/authorization/promotion/request.py
 
 """
-Module: exchange.request.permission.promotion.request
+Module: exchange.request.authorization.promotion.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,11 +13,11 @@ from typing import TypeVar
 
 from artifcat import PromotionResult
 from domain import PawnToken, Rank
-from exchange import PermissionRequest
+from exchange import AuthorizationRequest
 
 T = TypeVar("T")
 
-class PromotionRequest(PermissionRequest[PromotionResult]):
+class PromotionRequest(AuthorizationRequest[PromotionResult]):
     """
      Role:
          -  Messaging
@@ -32,17 +32,10 @@ class PromotionRequest(PermissionRequest[PromotionResult]):
      Provides:
      
      Super Class:
-        PermissionRequest
+        AuthorizationRequest
      """
-    _applicant: PawnToken
-    _rank_elevation: Rank
     
-    def __init__(
-            self,
-            id: int,
-            applicant: PawnToken,
-            rank_elevation: Rank,
-    ):
+    def __init__(self, id: int, applicant: PawnToken, permit: Rank):
         """
         Args:
             id: int

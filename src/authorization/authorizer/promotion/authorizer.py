@@ -26,7 +26,7 @@ from transit import PawnTokenCarrier, RankCarrier
 from util import IdFactory, LoggingLevelRouter
 
 
-class PromotionPermitter(OperationPermitter[PromotionDecision]):
+class PromotionPermitter(Authorizer[PromotionDecision]):
     """
     Role:
         -   Permission Authorization

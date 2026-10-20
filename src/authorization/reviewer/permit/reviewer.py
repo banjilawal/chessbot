@@ -1,7 +1,7 @@
-# src/authorization/reviewer/reviewer.py
+# src/authorization/reviewer/permit.reviewer.py
 
 """
-Module: authorization.reviewer.reviewer
+Module: authorization.reviewer.permit.reviewer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -17,9 +17,9 @@ from authorization import Reviewer
 from exchange import PermissionRequest
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Model")
+T = TypeVar("T", bound="Permittable")
 
-class RoleReviewer(Reviewer[T], ABC, Generic[T]):
+class PermitReviewer(Reviewer[T], ABC, Generic[T]):
     """
     Role:
         - Permission Authorization

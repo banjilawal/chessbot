@@ -1,4 +1,4 @@
-# src/domain/model/searchable/encounter/checkmate/model.py.py
+# src/domain/model/searchable/encounter/checkmate/model.py
 
 """
 Module: domain.model.searchable.encounter.checkmate.model

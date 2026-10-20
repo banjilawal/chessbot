@@ -34,7 +34,7 @@ class AuthorizationForm(ABC, Generic[T]):
      Super Class:
      """
     _id: int
-    _operation: T
+    _applicant: T
     
     def __init__(self, id: int, operation: T):
         """

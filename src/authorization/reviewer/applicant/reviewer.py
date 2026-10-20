@@ -38,6 +38,7 @@ class ApplicantReviewer(Reviewer[T], ABC, Generic[T]):
     Super Class:
         Reviewer
     """
+    validation_service: ValidationService[T]
     
     def __init__(self):
         super().__init__()

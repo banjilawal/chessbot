@@ -18,4 +18,4 @@ from .token import *
 from .operation import *
 
 # Modules
-from .permitter import OperationPermitter
+from .authorizer import Authorizer

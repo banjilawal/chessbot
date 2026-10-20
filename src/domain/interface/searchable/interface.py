@@ -9,10 +9,7 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
-
-from domain import Archetype
-
+from abc import ABC
 
 class Searchable(ABC):
     """

@@ -27,6 +27,5 @@ class Model(DomainDataObject, ABC):
     Provides:
 
     Super Class:
-        Domain
     """
     pass

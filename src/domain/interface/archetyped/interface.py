@@ -1,7 +1,7 @@
-# src/domain/interface/archetyped/__init__.py
+# src/domain/interface/archetyped/interface.py
 
 """
-Module: domain.interface.archetyped.__init__
+Module: domain.interface.archetyped.interface
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2

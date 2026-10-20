@@ -1,4 +1,4 @@
-# src/domain/model/identity/model.py.py
+# src/domain/model/identity/model.py
 
 """
 Module: domain.model.identity.model

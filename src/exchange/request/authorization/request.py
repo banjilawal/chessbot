@@ -1,7 +1,7 @@
-# src/exchange/request/permission/request.py
+# src/exchange/request/authorization/request.py
 
 """
-Module: exchange.request.permission.request
+Module: exchange.request.authorization.request
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,14 +13,13 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from artifcat import Result
-from domain import Applicant
+from domain import Applicant, Permittable
 from exchange import Request
-from software import Application
 
 T = TypeVar("T", bound="Result")
 
 
-class PermissionRequest(Request[T], ABC, Generic[T]):
+class AuthorizationRequest(Request[T], ABC, Generic[T]):
     """
      Role:
          -  Messaging
@@ -48,10 +47,20 @@ class PermissionRequest(Request[T], ABC, Generic[T]):
             permit: Permittable
         """
         super().__init__(id=id)
+        self._applicant = applicant
+        self._permit = permit
+        
+    @property
+    def applicant(self) -> Applicant:
+        return self._applicant
+    
+    @property
+    def permit(self) -> Permittable:
+        return self._permit
     
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, PermissionRequest):
+        if isinstance(other, AuthorizationRequest):
             return self.id == other.id
         return False

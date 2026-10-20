@@ -13,4 +13,4 @@ version: 0.0.2
 from .promotion import *
 
 # Modules
-from .reviewer import RoleReviewer
+from .reviewer import PermitReviewer

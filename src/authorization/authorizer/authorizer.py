@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar
 
 from artifcat import Decision
-from authorization import AuthorizationLoader
+from authorization import ApplicantReviewer, AuthorizationLoader
 from exchange import PermissionRequest
 from util import LoggingLevelRouter
 
@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="PermissionRequest")
 
 
-class OperationPermitter(ABC, Generic[T]):
+class Authorizer(ABC, Generic[T]):
     """
     Role:
         -   Permission Authorization
@@ -39,6 +39,8 @@ class OperationPermitter(ABC, Generic[T]):
     Super Class:
     """
     _loader: AuthorizationLoader[T]
+    _applicant_reviewer: ApplicantReviewer[T]
+    _permit_reviewer: PermitRevier[T]
     
     def __init__(self, loader: AuthorizationLoader[T]):
         """
