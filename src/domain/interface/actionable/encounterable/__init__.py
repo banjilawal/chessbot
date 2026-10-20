@@ -12,4 +12,4 @@ version: 0.0.2
 # Packages
 
 # Modules
-from .interface import ElevatableRank
+from .interface import Encounterable

@@ -11,10 +11,10 @@ from __future__ import annotations
 
 from abc import ABC
 
-from domain import ElevatableRank, Persona, Rank
+from domain import Elevatable, Persona, Rank
 
 
-class TraversalRank(Rank, ElevatableRank, ABC):
+class TraversalRank(Rank, Elevatable, ABC):
     """
     Role:
         -   Data Holder

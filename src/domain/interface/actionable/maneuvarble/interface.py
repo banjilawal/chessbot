@@ -12,7 +12,7 @@ from __future__ import annotations
 from domain import Actionable
 
 
-class ElevatableRank(Actionable):
+class Elevatable(Actionable):
     """
     Role:
         - Interface

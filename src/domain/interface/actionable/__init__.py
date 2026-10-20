@@ -10,7 +10,9 @@ version: 0.0.2
 # =========== DOMAIN.INTERFACE.ACTIONABLE PACKAGE ===========#
 
 # Packages
-from .elevateable import *
+from .encounterable import *
+from .maneuvarble import *
+from .promotable import *
 
 # Modules
 from .interface import Actionable

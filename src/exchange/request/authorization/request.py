@@ -12,11 +12,11 @@ from __future__ import annotations
 from abc import ABC
 from typing import Generic, TypeVar
 
-from artifcat import Result
-from domain import Actor, Permittable
+from artifcat import AuthorizableResult
+from domain import Actionable, Actor
 from exchange import Request
 
-T = TypeVar("T", bound="Result")
+T = TypeVar("T", bound="AuthorizableResult")
 
 
 class AuthorizationRequest(Request[T], ABC, Generic[T]):
@@ -25,38 +25,38 @@ class AuthorizationRequest(Request[T], ABC, Generic[T]):
          -  Messaging
 
      Responsibilities:
-         1. Provide details about a job.
+        1.  Provides information an Authorizer needs to execute a client's job.
 
      Attributes:
-        applicant: Applicant
-        permit: Permittable
+        actor: Actor
+        activity: Actionable
 
      Provides:
      
      Super Class:
         Request
      """
-    _applicant: Actor
-    _permit: Permittable
+    _actor: Actor
+    _activity: Actionable
     
-    def __init__(self, id: int, applicant: Actor, permit: Permittable):
+    def __init__(self, id: int, actor: Actor, activity: Actionable):
         """
         Args:
             id: int
-            applicant: Applicant
-            permit: Permittable
+            actor: Actor
+            activity: Actionable
         """
         super().__init__(id=id)
-        self._applicant = applicant
-        self._permit = permit
+        self._actor = actor
+        self._activity = activity
         
     @property
-    def applicant(self) -> Actor:
-        return self._applicant
+    def actor(self) -> Actor:
+        return self._actor
     
     @property
-    def permit(self) -> Permittable:
-        return self._permit
+    def activity(self) -> Actionable:
+        return self._activity
     
     def __eq__(self, other):
         if other is self: return True
