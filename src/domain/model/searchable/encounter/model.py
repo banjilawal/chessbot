@@ -12,10 +12,10 @@ from __future__ import annotations
 from abc import ABC
 from typing import Dict, Optional
 
-from domain import Account, Actionable, Archetype, Maneuver, SearchableModel, Square, Token
+from domain import Account, Archetype, Encounterable, Maneuver, SearchableModel, Square, Token
 
 
-class Encounter(SearchableModel, Actionable, ABC):
+class Encounter(SearchableModel, Encounterable, ABC):
     """
     Role:
         - Model
