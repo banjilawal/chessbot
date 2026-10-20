@@ -10,6 +10,8 @@ version: 0.0.2
 # =========== EXCHANGE.REQUEST.AUTHORIZATION PACKAGE ===========#
 
 # Packages
+from .attack import *
+from .maneuver import *
 from .promotion import *
 
 # Modules
