@@ -9,6 +9,8 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from typing import cast
+
 from artifcat import PromotionResult
 from domain import Elevatable, PawnToken
 from exchange import AuthorizationRequest
@@ -37,19 +39,19 @@ class PromotionRequest(AuthorizationRequest[PromotionResult]):
         Args:
             id: int
             actor: PawnToken
-            activity: ElevatableRank
+            activity: Elevatable
         """
         super().__init__(id=id, actor=actor, activity=Elevatable)
         self._actor = actor
         self._activity = activity
     
     @property
-    def actor(self) -> Actor:
-        return self._actor
+    def actor(self) -> PawnToken:
+        return cast(PawnToken, super().actor)
     
     @property
-    def activity(self) -> Actionable:
-        return self._activity
+    def activity(self) -> Elevatable:
+        return cast(Elevatable, super().activity)
     
     def __eq__(self, other):
         if other is self: return True

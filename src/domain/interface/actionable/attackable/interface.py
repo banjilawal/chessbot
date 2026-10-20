@@ -9,16 +9,18 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from abc import ABC
+
 from domain import Actionable
 
 
-class Encounterable(Actionable):
+class Attackable(Actionable, ABC):
     """
     Role:
         - Interface
 
     Responsibility:
-        1.  A Rank that a Token can be raised to.
+        1.  Makes a model usable for launching an attack on an Actor.
 
     Attributes:
 
