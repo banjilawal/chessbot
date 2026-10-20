@@ -26,8 +26,10 @@ class Archetyped(ABC):
     Attributes:
 
     Provides:
+        def archetype(self) -> Archetype
 
     Super Class:
+        Interface
     """
     
     @property

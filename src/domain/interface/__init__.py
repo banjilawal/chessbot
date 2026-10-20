@@ -10,9 +10,9 @@ version: 0.0.2
 # =========== DOMAIN.INTERFACE PACKAGE ===========#
 
 # Packages
-from .applicant import *
+from .actor import *
+from .actionable import *
 from .archetyped import *
-from .permittable import *
 from .searchable import *
 
 # Modules

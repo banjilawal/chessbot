@@ -1,7 +1,7 @@
-# src/domain/interface/applicant/interface.py
+# src/domain/interface/actionable/interface.py
 
 """
-Module: domain.interface.applicant.interface
+Module: domain.interface.actionable.interface
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -12,18 +12,18 @@ from __future__ import annotations
 from abc import ABC
 
 
-class Applicant(ABC):
+class Actionable(ABC):
     """
     Role:
         - Interface
 
     Responsibility:
-        1.  Requests permission to perform a Role or Action
+        1.  A stateless Model an Actor can manipulate to change the Actor's state.
 
     Attributes:
 
     Provides:
 
     Super Class:
+        Interface
     """
-    pass

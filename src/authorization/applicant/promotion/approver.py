@@ -14,11 +14,11 @@ from typing import Generic, TypeVar
 
 from artifcat import PromotionDecision
 from authorization import ApplicantApprover
-from domain import Applicant
+from domain import Actor
 from exchange import PromotionRequest, ValidationService
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Applicant")
+T = TypeVar("T", bound="Actor")
 
 class PromotionApplicantApprover(ApplicantApprover[PromotionRequest], ABC, Generic[T]):
     """

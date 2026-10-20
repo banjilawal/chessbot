@@ -13,11 +13,11 @@ from abc import abstractmethod
 from typing import Optional
 
 from domain import (
-    Applicant, Coord, Formation, HomeSquare, Rank, StateModel, Team, TokenDeployment, Footstep
+    Actor, Coord, Formation, HomeSquare, Rank, StateModel, Team, TokenDeployment, Footstep
 )
 
 
-class Token(StateModel, Applicant):
+class Token(StateModel, Actor):
     """
     Role:
         - Stateful Data Holder

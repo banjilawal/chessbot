@@ -17,12 +17,13 @@ class Searchable(ABC):
         - Interface
 
     Responsibility:
-        1.  Requests permission to perform a Role or Action
+        1.  A Model with attributes usable in a search.
 
     Attributes:
 
     Provides:
 
     Super Class:
+        Interface
     """
     pass

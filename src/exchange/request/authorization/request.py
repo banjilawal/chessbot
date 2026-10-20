@@ -13,7 +13,7 @@ from abc import ABC
 from typing import Generic, TypeVar
 
 from artifcat import Result
-from domain import Applicant, Permittable
+from domain import Actor, Permittable
 from exchange import Request
 
 T = TypeVar("T", bound="Result")
@@ -36,10 +36,10 @@ class AuthorizationRequest(Request[T], ABC, Generic[T]):
      Super Class:
         Request
      """
-    _applicant: Applicant
+    _applicant: Actor
     _permit: Permittable
     
-    def __init__(self, id: int, applicant: Applicant, permit: Permittable):
+    def __init__(self, id: int, applicant: Actor, permit: Permittable):
         """
         Args:
             id: int
@@ -51,7 +51,7 @@ class AuthorizationRequest(Request[T], ABC, Generic[T]):
         self._permit = permit
         
     @property
-    def applicant(self) -> Applicant:
+    def applicant(self) -> Actor:
         return self._applicant
     
     @property
