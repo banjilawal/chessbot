@@ -1,7 +1,7 @@
-# src/authorization/reviewer/reviewer.py
+# src/authorization/approver/approver.py
 
 """
-Module: authorization.reviewer.reviewer
+Module: authorization.approver.approver
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,15 +9,10 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
-from typing import Generic, Optional, TypeVar
 
-from artifcat import Decision, ValidationResult
-from assurance import PrimingValidator
-from exchange import ValidationService
 from util import LoggingLevelRouter
 
-T = TypeVar("T")
+T = TypeVar("T", model="AuthorizationRequest")
 
 class Reviewer(ABC, Generic[T]):
     """
@@ -32,7 +27,8 @@ class Reviewer(ABC, Generic[T]):
 
     Attributes:
         priming_validator: PrimingValidator
-        validation_service: ValidationService[T]
+        permit_approver: PermitApprover[T]
+        applicant_approver: ApplicantApprover[T]
 
     Provides:
 
@@ -40,11 +36,14 @@ class Reviewer(ABC, Generic[T]):
     """
     
     _priming_validator: PrimingValidator
-    _validation_service: ValidationService[T]
+    _permit_approver: PermitApprover[T]
+    _applicant_approver: ApplicantApprover[T]
+
     
     def __init__(
             self,
-            validation_service: ValidationService[T],
+            permit_approver: PermitApprover[T],
+            applicant_approver: ApplicantApprover[T],
             priming_validator: Optional[PrimingValidator] | None = None,
     ):
         """
@@ -52,7 +51,6 @@ class Reviewer(ABC, Generic[T]):
             priming_validator: PrimingValidator
             validation_service: ValidationService[T]
         """
-        self._validation_service = validation_service
         self._priming_validator = priming_validator or PrimingValidator()
         
     @property
