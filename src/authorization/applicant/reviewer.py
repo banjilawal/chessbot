@@ -9,12 +9,14 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
-from typing import Generic, Optional, TypeVar
+from abc import ABC, abstractmethod
+from typing import Any, Generic, Optional, TypeVar
 
+from artifcat import ValidationResult
 from assurance import PrimingValidator
 from domain import Actor
 from exchange import ValidationService
+from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Actor")
 
@@ -38,8 +40,6 @@ class ApplicantApprover(ABC, Generic[T]):
     """
     _priming_validator: PrimingValidator
     _validation_service: ValidationService[T]
-
-
     
     def __init__(
             self,
@@ -61,4 +61,23 @@ class ApplicantApprover(ABC, Generic[T]):
     @property
     def priming_validator(self) -> PrimingValidator:
         return self._priming_validator
+    
+    @abstractmethod
+    @LoggingLevelRouter.monitor
+    def run_validation_check(self, applicant: Any) -> ValidationResult[T]:
+        """
+        Checks if an applicant meets basic safety requirements.
+
+        Action:
+            1.  Send an exception chain in the ValidationResult if the candidate gets
+                flagged.
+            2.  Otherwise, send the success result.
+        Args:
+            applicant: Any
+        Returns:
+           ValidationResult[T]
+        Raises:
+            ApplicantApproverException
+        """
+        pass
         

@@ -22,7 +22,7 @@ from util import IdFactory, LoggingLevelRouter
 
 T = TypeVar("T", bound="AuthorizationRequest")
 
-class ValidTokenChecker(ValidationChecker[Token]):
+class TokenApprover(ApplicantApprover[Token], ABC, Generic[T]):
     """
     Role:
         -   Authorization
@@ -57,52 +57,30 @@ class ValidTokenChecker(ValidationChecker[Token]):
             validation_service: TokenValidationService
         """
         super().__init__(validation_service=validation_service)
+        self._loader = loader
+        
+    @property
+    def loader(self) -> AuthorizationLoader[T]:
+        return self._loader
         
     @property
     def validation_service(self) -> TokenValidationService:
         return cast(TokenValidationService, super().validation_service)
     
+    @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: AuthorizationRequest) -> Decision:
+    def execute(self, request: T) -> Decision[T]:
         """
         Checks if a Token meets the requirements to perform an activity.
 
         Args:
-            request: AuthorizationRequest
+            request: AuthorizationRequest[T]
         Returns:
-           Decision
+           Decision[T]
         Raises:
             TokenApproverException
         """
-        method = f"{self.__class__.__name__}.execute"
-        
-        # Handle the case that the candidate gets flagged.
-        validation = self.validation_service.extract_model(
-            request=TokenValidationRequest(
-                item=TokenCarrier(model=request.applicant),
-                id=IdFactory.next_id(class_name="TokenValidationRequest")
-            )
-        )
-        if validation.is_failure:
-            # Send the exception chain on failure.
-            return Decision.denial(
-                request=request,
-                exception=TokenApproverException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=TokenApproverException.MSG,
-                    err_code=TokenApproverException.ERR_CODE,
-                    ex=validation.exception,
-                )
-            )
-        applicant = cast(Token, validation.payload)
-        approval = AuthorizationRequest(
-            id=request.id,
-            activity=request.activity,
-            applicant=applicant,
-        )
-        # --- Forward the work product. ---#
-        return Decision.grant(approval)
+        pass
     
     @abstractmethod
     @LoggingLevelRouter.monitor
@@ -122,4 +100,48 @@ class ValidTokenChecker(ValidationChecker[Token]):
             TokenApproverException
         """
         pass
- 
+    
+    @LoggingLevelRouter.monitor
+    def run_validation_check(self, applicant: Any) -> ValidationResult[Token]:
+        """
+        Checks if an applicant Token is safe.
+
+        Action:
+            1.  Send an exception chain in the ValidationResult if the candidate gets
+                flagged.
+            2.  Otherwise, send the success result.
+        Args:
+            applicant: Any
+        Returns:
+           ValidationResult[Token]
+        Raises:
+            TokenApproverException
+        """
+        method = f"{self.__class__.__name__}.validation_check"
+        
+        # Handle the case that the candidate gets flagged.
+        validation = self.validation_service.extract_model(
+            request=TokenValidationRequest(
+                item=TokenCarrier(model=applicant),
+                id=IdFactory.next_id(class_name="TokenValidationRequest")
+            )
+        )
+        if validation.is_failure:
+            # Send the exception chain on failure.
+            return ValidationResult.failure(
+                TokenApproverException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=TokenApproverException.MSG,
+                    err_code=TokenApproverException.ERR_CODE,
+                )
+            )
+        # --- Forward the work product. ---#
+        token = cast(Token, validation.payload)
+        return ValidationResult.success(token)
+
+    @abstractmethod
+    @LoggingLevelRouter.monitor
+    def run_applicant_readiness_check(self, applicant: T) -> Decision[T]:
+        pass
+        

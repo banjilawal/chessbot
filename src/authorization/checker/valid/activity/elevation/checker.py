@@ -1,7 +1,7 @@
-# src/authorization/applicant/token/approver.py
+# src/authorization/checker/valid/activity/token/checker.py
 
 """
-Module: authorization.applicant.token.approver
+Module: authorization.checker.valid.activity.token.checker
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -9,54 +9,46 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
-from typing import Any, Generic, TypeVar, cast
+from typing import Optional, cast
 
-from artifcat import Decision, ValidationResult
-from authorization import ApplicantApprover, AuthorizationLoader
+from artifcat import Decision
+from authorization import ValidActivityChecker
 from domain import Token
 from err import TokenApproverException
 from exchange import AuthorizationRequest, TokenValidationRequest, TokenValidationService
 from transit import TokenCarrier
 from util import IdFactory, LoggingLevelRouter
 
-T = TypeVar("T", bound="AuthorizationRequest")
-
-class ValidTokenChecker(ValidationChecker[Token]):
+class ValidTokenChecker(ValidActivityChecker[Token]):
     """
     Role:
         -   Authorization
 
     Responsibilities:
-        1.  Checks if a Token satisfies the requirements for an activity.
+        1.  Verifies a Token meets minimum safety requirements before it
+            can be approved for an activity.
 
     Attributes:
-        loader: AuthorizationLoader[T]
         validation_service: TokenValidationService
 
     Provides:
-        -   def execute(request: T) -> Decision[T]
-        -   def validation_check(applicant: Any) -> ValidationResult[Token]
-        -   def load_check(request: Any, loader: AuthorizationLoader[T]) -> Decision[T]
-
+        -   def execute(request: AuthorizationRequest) -> Decision
 
     Super Class:
-        ApplicantApprover
+        ValidActivityChecker
     """
-    _loader: AuthorizationLoader[T]
-
     
     def __init__(
             self,
-            loader: AuthorizationLoader[T],
-            validation_service: TokenValidationService
+            validation_service: Optional[TokenValidationService] | None = None,
     ):
         """
         Args:
-            loader: AuthorizationLoader[T]
-            validation_service: TokenValidationService
+            validation_service: Optional[TokenValidationService]
         """
-        super().__init__(validation_service=validation_service)
+        super().__init__(
+            validation_service=validation_service or TokenValidationService()
+        )
         
     @property
     def validation_service(self) -> TokenValidationService:
@@ -79,7 +71,7 @@ class ValidTokenChecker(ValidationChecker[Token]):
         # Handle the case that the candidate gets flagged.
         validation = self.validation_service.extract_model(
             request=TokenValidationRequest(
-                item=TokenCarrier(model=request.applicant),
+                item=TokenCarrier(model=request.activity),
                 id=IdFactory.next_id(class_name="TokenValidationRequest")
             )
         )
@@ -95,31 +87,12 @@ class ValidTokenChecker(ValidationChecker[Token]):
                     ex=validation.exception,
                 )
             )
-        applicant = cast(Token, validation.payload)
+        activity = cast(Token, validation.payload)
         approval = AuthorizationRequest(
             id=request.id,
             activity=request.activity,
-            applicant=applicant,
+            activity=activity,
         )
         # --- Forward the work product. ---#
         return Decision.grant(approval)
-    
-    @abstractmethod
-    @LoggingLevelRouter.monitor
-    def load_request(self, request: Any, loader: AuthorizationLoader[T], ) -> Decision[T]:
-        """
-        Loads the request into the TokenApprover
-
-        Action:
-            1.  Send a denial if the loader fails.
-            2.  Otherwise, send an Approval.
-        Args:
-            request: Any
-            loader: AuthorizationLoader[T]
-        Returns:
-           Decision[T]
-        Raises:
-            TokenApproverException
-        """
-        pass
  
