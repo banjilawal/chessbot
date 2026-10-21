@@ -1,7 +1,7 @@
-# src/authorization/checker/valid/applicant.checker.py
+# src/authorization/checker/valid/activity.checker.py
 
 """
-Module: authorization.checker.valid.applicant.checker
+Module: authorization.checker.valid.activity.checker
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -14,19 +14,19 @@ from typing import TypeVar, cast
 
 from artifcat import Decision
 from authorization import ValidItemChecker
-from domain import Actor
+from domain import Actionable
 from exchange import AuthorizationRequest, ValidationService
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Actor")
+T = TypeVar("T", bound="Actionable")
 
-class ValidApplicantChecker(ValidItemChecker[T], ABC):
+class ValidActionableChecker(ValidItemChecker[T], ABC):
     """
     Role:
         -   Authorization
 
     Responsibilities:
-        1.  Verifies an Actor meets minimum safety requirements.
+        1.  Verifies an Actionable meets minimum safety requirements.
 
     Attributes:
         validation_service: ValidationService[T]
@@ -38,7 +38,6 @@ class ValidApplicantChecker(ValidItemChecker[T], ABC):
     Super Class:
         ValidItemChecker
     """
-
     
     def __init__(self, validation_service: ValidationService[T]):
         """

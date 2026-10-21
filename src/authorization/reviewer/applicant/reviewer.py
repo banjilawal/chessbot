@@ -1,7 +1,7 @@
-# src/authorization/reviewer/promotion/reviewer.py
+# src/authorization/reviewer/reviewer.py
 
 """
-Module: authorization.reviewer.promotion.reviewer
+Module: authorization.reviewer.reviewer
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -10,17 +10,16 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, TypeVar
+from typing import Any, Generic, List, TypeVar
 
-from artifcat import PromotionDecision
-from authorization import Reviewer, ValidItemChecker
-from exchange import PromotionRequest
-
+from artifcat import Decision
+from authorization import PropertyChecker, ValidItemChecker
+from exchange import AuthorizationRequest
 from util import LoggingLevelRouter
 
-T = TypeVar("T")
+T = TypeVar("T", bound="AuthorizationRequest")
 
-class PromotionReviewer(Reviewer[PromotionRequest], ABC, Generic[T]):
+class Reviewer(ABC, Generic[T]):
     """
     Role:
         -   Authorization
@@ -33,10 +32,9 @@ class PromotionReviewer(Reviewer[PromotionRequest], ABC, Generic[T]):
         valid_item_checker: ValidItemChecker[T]
 
     Provides:
-        -   def execute(request: PromotionRequest) -> PromotionDecision
+        -   def execute(request: T) -> Decision[T]
 
     Super Class:
-        Reviewer
     """
     _valid_item_checker: ValidItemChecker[T]
     
@@ -45,15 +43,19 @@ class PromotionReviewer(Reviewer[PromotionRequest], ABC, Generic[T]):
         Args:
             valid_item_checker: ValidItemChecker
         """
-        super().__init__()
         self._valid_item_checker = valid_item_checker
         
     @property
-    def valid_item_checker(self) -> ValidItemChecker[T]:
+    def valid_item_checker(self) -> ValidItemChecker:
         return self._valid_item_checker
+    
+    @property
+    @abstractmethod
+    def checkers(self) -> List[PropertyChecker[T]]:
+        pass
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: PromotionRequest) -> PromotionDecision:
+    def execute(self, request: T) -> Decision[T]:
         pass
         
