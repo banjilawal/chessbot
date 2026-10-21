@@ -12,15 +12,13 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Any, Generic, Optional, TypeVar
 
-from artifcat import ValidationResult
-from assurance import PrimingValidator
-from domain import Actor
-from exchange import ValidationService
+from artifcat import Decision
+from exchange import AuthorizationRequest
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Actor")
+T = TypeVar("T", bound="AuthorizationRequest")
 
-class ApplicantApprover(ABC, Generic[T]):
+class PromotionReviewer(Reviewer[PromotionRequest]):
     """
     Role:
         -   Authorization
@@ -38,12 +36,10 @@ class ApplicantApprover(ABC, Generic[T]):
 
     Super Class:
     """
-    _priming_validator: PrimingValidator
-    _validation_service: ValidationService[T]
     
     def __init__(
             self,
-            validation_service: ValidationService[T],
+            _validation_checker: ValidationChecker[T],
             priming_validator: Optional[PrimingValidator] | None = None,
     ):
         """
@@ -61,6 +57,11 @@ class ApplicantApprover(ABC, Generic[T]):
     @property
     def priming_validator(self) -> PrimingValidator:
         return self._priming_validator
+    
+    @abstractmethod
+    @LoggingLevelRouter.monitor
+    def execute(self, request: T) -> Decision[T]:
+        pass
     
     @abstractmethod
     @LoggingLevelRouter.monitor

@@ -15,7 +15,7 @@ from wsgiref.validate import check_exc_info
 from artifcat import PromotionDecision
 from authorization import (
     CombatantReadinessChecker, DoublePromotionChecker, PromotionAuthorizationLoader,
-    PromotionLoadChecker, RankElevatableChecker, TokenApprover
+    PromotionLoadChecker, RankElevatableChecker, ApplicantTokenReviewer
 )
 from domain import PawnToken, Token
 from err import DisabledPawnPromotionException, TokenPromotionApproverException
@@ -24,7 +24,7 @@ from logic.promotion.promotion.exception import DoublePromotionException
 from util import LoggingLevelRouter
 
 
-class TokenPromotionApprover(TokenApprover[PromotionRequest]):
+class PromotionApplicantReviewer(ApplicantTokenReviewer[PromotionRequest]):
     """
     Role:
         -   Authorization

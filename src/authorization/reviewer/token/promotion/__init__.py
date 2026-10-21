@@ -10,6 +10,9 @@ version: 0.0.2
 # =========== AUTHORIZATION.APPLICANT.TOKEN.PROMOTION PACKAGE ===========#
 
 # Packages
+from .bootstrap import *
+from .double import *
+from .row import *
 
 # Modules
-from .approver import TokenPromotionApprover
+from .reviewer import PromotionApplicantReviewer

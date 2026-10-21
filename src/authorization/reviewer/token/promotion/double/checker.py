@@ -10,12 +10,12 @@ version: 0.0.2
 from __future__ import annotations
 
 from artifcat import PromotionDecision
-from authorization import Checker
+from authorization import PropertyChecker
 from exchange import PromotionRequest
 from util import LoggingLevelRouter
 
 
-class DoublePromotionChecker(Checker[PromotionRequest]):
+class DoublePromotionChecker(PropertyChecker[PromotionRequest]):
     """
     Role:
         -   Authorization

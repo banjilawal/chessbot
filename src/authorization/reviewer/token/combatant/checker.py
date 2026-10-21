@@ -1,7 +1,7 @@
-# src/authorization/applicant/token/approver.py
+# src/authorization/applicant/token/combatant/checker.py
 
 """
-Module: authorization.applicant.token.promotion.approver
+Module: authorization.applicant.token.combatant.checker
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -9,14 +9,14 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from artifcat import PromotionDecision
-from authorization import Checker
+from artifcat import Decision, PromotionDecision
+from authorization import PropertyChecker
 from err import DisabledTokenException
-from exchange import PromotionRequest
+from exchange import AuthorizationRequest, PromotionRequest
 from util import LoggingLevelRouter
 
 
-class DisabledCombatantTokenChecker(Checker[PromotionRequest]):
+class CombatantReadinessChecker(PropertyChecker[PromotionRequest]):
     """
     Role:
         -   Authorization
@@ -35,7 +35,7 @@ class DisabledCombatantTokenChecker(Checker[PromotionRequest]):
     
 
     @LoggingLevelRouter.monitor
-    def execute(self, request: PromotionRequest) -> PromotionDecision:
+    def execute(self, request: AuthorizationRequest) -> Decision:
         """
         Deny the request if requestor has already been promoted. Otherwise,
         forward an approval.
@@ -51,7 +51,7 @@ class DisabledCombatantTokenChecker(Checker[PromotionRequest]):
 
         if request.applicant.is_not_ready:
             # Send an exception chain in the denial.
-            return PromotionDecision.denial(
+            return Decision.denial(
                 request=request,
                 exception=DisabledTokenException(
                     cls_mthd=method,
@@ -60,11 +60,6 @@ class DisabledCombatantTokenChecker(Checker[PromotionRequest]):
                     err_code=DisabledTokenException.ERR_CODE,
                 ),
             )
-        approval = PromotionRequest(
-            id=request.id,
-            activity=request.activity,
-            applicant=request.applicant,
-        )
-        return PromotionDecision.grant(approval)
+        return PromotionDecision.grant(request)
 
         

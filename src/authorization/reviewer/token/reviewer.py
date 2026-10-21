@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Any, Generic, TypeVar, cast
 
 from artifcat import Decision, ValidationResult
-from authorization import ApplicantApprover, AuthorizationLoader
+from authorization import ApplicantReviewer, AuthorizationLoader
 from domain import Token
 from err import TokenApproverException
 from exchange import AuthorizationRequest, TokenValidationRequest, TokenValidationService
@@ -22,7 +22,7 @@ from util import IdFactory, LoggingLevelRouter
 
 T = TypeVar("T", bound="AuthorizationRequest")
 
-class TokenApprover(ApplicantApprover[Token], ABC, Generic[T]):
+class ApplicantTokenReviewer(ApplicantReviewer[Token], ABC, Generic[T]):
     """
     Role:
         -   Authorization
@@ -49,7 +49,7 @@ class TokenApprover(ApplicantApprover[Token], ABC, Generic[T]):
     def __init__(
             self,
             loader: AuthorizationLoader[T],
-            validation_service: TokenValidationService
+            validation_checker: Optional[ValidTokenChecker] | None = None,
     ):
         """
         Args:
@@ -66,6 +66,11 @@ class TokenApprover(ApplicantApprover[Token], ABC, Generic[T]):
     @property
     def validation_service(self) -> TokenValidationService:
         return cast(TokenValidationService, super().validation_service)
+    
+    @property
+    @abstractmethod
+    def disability_checker(self) -> Decision[T]:
+        pass
     
     @abstractmethod
     @LoggingLevelRouter.monitor

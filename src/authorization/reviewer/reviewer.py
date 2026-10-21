@@ -1,68 +1,82 @@
-# src/authorization/approver/approver.py
+# src/authorization/applicant/approver.py
 
 """
-Module: authorization.approver.approver
+Module: authorization.applicant.approver
 Author: Banji Lawal
-Created: 2026-04-03
+Created: 2026-03-30
 version: 0.0.2
 """
 
 from __future__ import annotations
 
+from abc import ABC, abstractmethod
+from typing import Any, Generic, Optional, TypeVar
 
+from artifcat import ValidationResult
+from assurance import PrimingValidator
+from domain import Actor
+from exchange import ValidationService
 from util import LoggingLevelRouter
 
-T = TypeVar("T", model="AuthorizationRequest")
+T = TypeVar("T", bound="Actor")
 
-class Reviewer(ABC, Generic[T]):
+class ApplicantReviewer(ABC, Generic[T]):
     """
     Role:
-        - Permission Authorization
-        - Checklist Runner
-        - Integrity Maintenance
-        _   Consistency Assurance
+        -   Authorization
 
     Responsibilities:
-        1.  Run safety checks on a .
+        1.  Checks if an Actor satisfies the requirements to perform an
+            activity.
 
     Attributes:
         priming_validator: PrimingValidator
-        permit_approver: PermitApprover[T]
-        applicant_approver: ApplicantApprover[T]
+        validation_service: ValidationService[T]
 
     Provides:
+        -   def execute(request: T) -> Decision[T]
 
     Super Class:
     """
-    
-    _priming_validator: PrimingValidator
-    _permit_approver: PermitApprover[T]
-    _applicant_approver: ApplicantApprover[T]
-
+    _validation_checker: ValidationChecker[T]
     
     def __init__(
             self,
-            permit_approver: PermitApprover[T],
-            applicant_approver: ApplicantApprover[T],
+            _validation_checker: ValidationChecker[T],
             priming_validator: Optional[PrimingValidator] | None = None,
     ):
         """
         Args:
-            priming_validator: PrimingValidator
             validation_service: ValidationService[T]
+            priming_validator: Optional[PrimingValidator]
         """
+        self._validation_service = validation_service
         self._priming_validator = priming_validator or PrimingValidator()
+        
+    @property
+    def validation_service(self) -> ValidationService[T]:
+        return self._validation_service
         
     @property
     def priming_validator(self) -> PrimingValidator:
         return self._priming_validator
     
-    @property
-    def validation_service(self) -> ValidationService[T]:
-        return self._validation_service
-    
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: AuthorizationRequest) -> ValidationResult[T]:
+    def run_validation_check(self, applicant: Any) -> ValidationResult[T]:
+        """
+        Checks if an applicant meets basic safety requirements.
+
+        Action:
+            1.  Send an exception chain in the ValidationResult if the candidate gets
+                flagged.
+            2.  Otherwise, send the success result.
+        Args:
+            applicant: Any
+        Returns:
+           ValidationResult[T]
+        Raises:
+            ApplicantApproverException
+        """
         pass
         
