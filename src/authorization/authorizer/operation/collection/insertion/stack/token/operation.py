@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional, cast
 
-from authorization import TokenStackPushPermitter, TokenStackPushRequest
+from authorization import TokenStackPushAuthorizer, TokenStackPushRequest
 from collection import TokenStackState
 from err import TokenStackPushException
 from domain.model import Token
@@ -29,25 +29,25 @@ class TokenStackPush(StackPop[Token]):
         1.  Add an item to the TokenStackService
 
     Attributes:
-        permitter: TokenStackPushPermitter
+        authorizer: TokenStackPushAuthorizer
         
     Provides:
-        -   def execute(request: TokenStackPushPermitter) -> InsertionResult
+        -   def execute(request: TokenStackPushAuthorizer) -> InsertionResult
 
     Super Class:
         StackPush
     """
     
-    def __init__(self, permitter: Optional[TokenStackPushPermitter] | None = None):
+    def __init__(self, authorizer: Optional[TokenStackPushAuthorizer] | None = None):
         """
         Args:
-            permitter: Optional[TokenStackPushPermitter]
+            authorizer: Optional[TokenStackPushAuthorizer]
         """
-        super().__init__(permitter=permitter or TokenStackPushPermitter())
+        super().__init__(authorizer=authorizer or TokenStackPushAuthorizer())
     
     @property
-    def permitter(self) -> TokenStackPushPermitter:
-        return cast(TokenStackPushPermitter, super().permitter)
+    def authorizer(self) -> TokenStackPushAuthorizer:
+        return cast(TokenStackPushAuthorizer, super().authorizer)
     
     
     @LoggingLevelRouter.monitor
@@ -67,7 +67,7 @@ class TokenStackPush(StackPop[Token]):
         method = f"{self.__class__.__name__}.execute"
         
         # Handle the case that push rights are not granted.
-        decision = self._permitter.execute(job=request)
+        decision = self._authorizer.execute(job=request)
         if decision.is_denied:
             # Return the exception chain on failure
             return InsertionResult.failure(

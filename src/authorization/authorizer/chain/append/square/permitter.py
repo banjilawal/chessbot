@@ -1,7 +1,7 @@
-# src/authorization/permitter/chain/append/square/permitter.py
+# src/authorization/authorizer/chain/append/square/authorizer.py
 
 """
-Module: authorization.permitter.chain.append.square.permitter
+Module: authorization.authorizer.chain.append.square.authorizer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,9 +12,9 @@ from __future__ import annotations
 from typing import cast
 
 from sensor.detector import SquareCollider
-from err import SquareAppendPermitterException
+from err import SquareAppendAuthorizerException
 from domain.model import Square
-from authorization.permitter.chain import AppendPermitter
+from authorization.authorizer.chain import AppendAuthorizer
 from artifcat.report import AppendApprovalReport
 from client.exchange import AppendRequest
 from chain import SquareChainService
@@ -22,7 +22,7 @@ from authorization.adjudicator import SquareAppendRequestAdjudicator
 from util import LoggingLevelRouter
 
 
-class SquareAppendPermitter(AppendPermitter[Square]):
+class SquareAppendAuthorizer(AppendAuthorizer[Square]):
     """
     Role:
         - Transaction Worker
@@ -34,14 +34,14 @@ class SquareAppendPermitter(AppendPermitter[Square]):
 
     Attributes:
         collision_detector: SquareCollisionDetector
-        rank_slot_permitter: RankSlotPermitter
+        rank_slot_authorizer: RankSlotAuthorizer
         request_adjudicator: SquareAppendRequestAdjudicator
 
     Provides:
         - execute(request: AppendRequest) -> AppendApprovalReport
 
     Super Class:
-        AppendPermitter
+        AppendAuthorizer
     """
     _collision_detector: SquareCollider
     _request_adjudicator: SquareAppendRequestAdjudicator
@@ -79,7 +79,7 @@ class SquareAppendPermitter(AppendPermitter[Square]):
         Returns:
             AnalysisResult
         Raises:
-            SquareAppendPermitterException
+            SquareAppendAuthorizerException
             SquareChainFullException
         """
         method =  f"{self.__class__.__name__}.execute"
@@ -89,11 +89,11 @@ class SquareAppendPermitter(AppendPermitter[Square]):
         if bootstrap.is_failure:
             # Send an exception chain in the permission denial.
             return AppendApprovalReport.deny(
-                SquareAppendPermitterException(
+                SquareAppendAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SquareAppendPermitterException.MSG,
-                    err_code=SquareAppendPermitterException.ERR_CODE,
+                    msg=SquareAppendAuthorizerException.MSG,
+                    err_code=SquareAppendAuthorizerException.ERR_CODE,
                     ex=bootstrap.exception,
                 )
             )
@@ -105,11 +105,11 @@ class SquareAppendPermitter(AppendPermitter[Square]):
         report = self._collision_detector.execute(attractor=square, stream=chain)
         if report.collision_exists:
             AppendApprovalReport.deny(
-                exception=SquareAppendPermitterException(
+                exception=SquareAppendAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SquareAppendPermitterException.MSG,
-                    err_code=SquareAppendPermitterException.ERR_CODE,
+                    msg=SquareAppendAuthorizerException.MSG,
+                    err_code=SquareAppendAuthorizerException.ERR_CODE,
                     ex=report.exception,
                 )
             )

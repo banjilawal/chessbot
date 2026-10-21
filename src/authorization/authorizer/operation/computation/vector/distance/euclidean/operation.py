@@ -30,7 +30,7 @@ class EuclideanDistance(Computation[Scalar]):
         1.  Compute the Euclidean distance between the register's contents.
 
     Attributes:
-            permitter: Optional[EuclideanDistancePermitter]
+            authorizer: Optional[EuclideanDistanceAuthorizer]
             
     Provides:
         -   def execute(self, request: EuclideanDistanceRequest) -> ComputationResult[Scalar]
@@ -39,16 +39,16 @@ class EuclideanDistance(Computation[Scalar]):
         Computation
     """
     
-    def __init__(self, permitter: Optional[EuclideanDistancePermitter] | None = None):
+    def __init__(self, authorizer: Optional[EuclideanDistanceAuthorizer] | None = None):
         """
         Args:
-            permitter: Optional[EuclideanDistancePermitter]
+            authorizer: Optional[EuclideanDistanceAuthorizer]
         """
-        super().__init__(permitter=permitter or EuclideanDistancePermitter())
+        super().__init__(authorizer=authorizer or EuclideanDistanceAuthorizer())
     
     @property
-    def permitter(self) -> EuclideanDistancePermitter:
-        return cast(EuclideanDistancePermitter, super().permitter)
+    def authorizer(self) -> EuclideanDistanceAuthorizer:
+        return cast(EuclideanDistanceAuthorizer, super().authorizer)
     
     @LoggingLevelRouter.monitor
     def execute(self, request: EuclideanDistanceRequest) -> ComputationResult[Scalar]:

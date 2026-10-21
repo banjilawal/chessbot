@@ -3,21 +3,20 @@
 """
 Module: authorization.applicant.approver
 Author: Banji Lawal
-Created: 2026-04-03
+Created: 2026-03-30
 version: 0.0.2
 """
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
+from abc import ABC
 from typing import Generic, Optional, TypeVar
 
-from artifcat import Decision
 from assurance import PrimingValidator
-from exchange import AuthorizationRequest
-from util import LoggingLevelRouter
+from domain import Actor
+from exchange import ValidationService
 
-T = TypeVar("T", bound="AuthorizationRequest")
+T = TypeVar("T", bound="Actor")
 
 class ApplicantApprover(ABC, Generic[T]):
     """
@@ -25,10 +24,12 @@ class ApplicantApprover(ABC, Generic[T]):
         -   Authorization
 
     Responsibilities:
-        1.  Checks if an Applicant satisfies the condition for a Permit.
+        1.  Checks if an Actor satisfies the requirements to perform an
+            activity.
 
     Attributes:
         priming_validator: PrimingValidator
+        validation_service: ValidationService[T]
 
     Provides:
         -   def execute(request: T) -> Decision[T]
@@ -36,17 +37,28 @@ class ApplicantApprover(ABC, Generic[T]):
     Super Class:
     """
     _priming_validator: PrimingValidator
+    _validation_service: ValidationService[T]
+
 
     
-    def __init__(self, priming_validator: Optional[PrimingValidator] | None = None,):
+    def __init__(
+            self,
+            validation_service: ValidationService[T],
+            priming_validator: Optional[PrimingValidator] | None = None,
+    ):
+        """
+        Args:
+            validation_service: ValidationService[T]
+            priming_validator: Optional[PrimingValidator]
+        """
+        self._validation_service = validation_service
         self._priming_validator = priming_validator or PrimingValidator()
+        
+    @property
+    def validation_service(self) -> ValidationService[T]:
+        return self._validation_service
         
     @property
     def priming_validator(self) -> PrimingValidator:
         return self._priming_validator
-    
-    @abstractmethod
-    @LoggingLevelRouter.monitor
-    def execute(self, request: T) -> Decision[T]:
-        pass
         

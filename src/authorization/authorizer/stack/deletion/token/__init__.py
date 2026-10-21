@@ -1,15 +1,15 @@
-# src/authorization/permitter/stack/deletion/token/__init__.py
+# src/authorization/authorizer/stack/deletion/token/__init__.py
 
 """
-Module: authorization.permitter.stack.deletion.token.__init__
+Module: authorization.authorizer.stack.deletion.token.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== AUTHORIZATION.PERMITTER.STACK.DELETION.TOKEN PACKAGE ===========#
+# =========== AUTHORIZATION.AUTHORIZER.STACK.DELETION.TOKEN PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .permitter import TokenDeletionPermitter
+from .authorizer import TokenDeletionAuthorizer

@@ -1,7 +1,7 @@
-# src/authorization/permitter/token/permitter.py
+# src/authorization/authorizer/token/authorizer.py
 
 """
-Module: authorization.permitter.token.permitter
+Module: authorization.authorizer.token.authorizer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar, cast
 
 from assurance import PrimingValidator
-from authorization import OperationPermitter, Request, TokenRequestAdjudicator
+from authorization import OperationAuthorizer, Request, TokenRequestAdjudicator
 from artifcat.report import Decision
 from util import LoggingLevelRouter
 
@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="TokenRequest")
 
 
-class TokenOperationPermitter(OperationPermitter, ABC, Generic[T]):
+class TokenOperationAuthorizer(OperationAuthorizer, ABC, Generic[T]):
     """
     Role:
         - Permission Authorization
@@ -42,7 +42,7 @@ class TokenOperationPermitter(OperationPermitter, ABC, Generic[T]):
         -  def execute(self, request: T) -> RequestDecision
 
     Super Class:
-        OperationPermitter
+        OperationAuthorizer
     """
     _adjudicator: TokenRequestAdjudicator[T]
     _priming_validator: PrimingValidator

@@ -27,7 +27,7 @@ class TokenPromotionApplicantApprover(PromotionApplicantApprover[Token]):
         1.  Reports if a Token can apply for a Promotion.
 
     Attributes:
-        validation_service: VaTokenValidationService
+        validation_service: TokenValidationService
 
     Provides:
         -   def execute(self, request: PromotionRequest) -> PromotionDecision

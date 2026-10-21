@@ -1,17 +1,17 @@
-# src/authorization/permitter/stack/push/__init__.py
+# src/authorization/authorizer/stack/push/__init__.py
 
 """
-Module: authorization.permitter.stack.push.__init__
+Module: authorization.authorizer.stack.push.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== AUTHORIZATION.PERMITTER.STACK.PUSH PACKAGE ===========#
+# =========== AUTHORIZATION.AUTHORIZER.STACK.PUSH PACKAGE ===========#
 
 # Packages
 from .square import *
 from .token import *
 
 # Modules
-from .permitter import StackPushPermitter
+from .authorizer import StackPushAuthorizer

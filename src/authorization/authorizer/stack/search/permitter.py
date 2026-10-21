@@ -1,7 +1,7 @@
-# src/authorization/permitter/stack/search/permitter.py
+# src/authorization/authorizer/stack/search/authorizer.py
 
 """
-Module: authorization.permitter.stack.search.permitter
+Module: authorization.authorizer.stack.search.authorizer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,13 +9,13 @@ version: 0.0.2
 
 from abc import abstractmethod
 
-from authorization.permitter.stack import OperationPermitter
+from authorization.authorizer.stack import OperationAuthorizer
 from artifcat.report import SearchApprovalReport
 from client.exchange import SearchRequest
 from util import LoggingLevelRouter
 
 
-class SearchPermitter(OperationPermitter):
+class SearchAuthorizer(OperationAuthorizer):
     """
     Role:
         - Analysis Worker
@@ -30,7 +30,7 @@ class SearchPermitter(OperationPermitter):
         -   def execute(cls, requestor: T, *args, **kwargs) -> AnalysisResult
 
     Super Class:
-        Permitter
+        Authorizer
     """
     def __init__(self):
         super().__init__()

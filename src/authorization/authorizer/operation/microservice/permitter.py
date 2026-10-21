@@ -1,7 +1,7 @@
-# src/authorization/permitter/permitter.py
+# src/authorization/authorizer/authorizer.py
 
 """
-Module: authorization.permitter.permitter
+Module: authorization.authorizer.authorizer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar
 
 from assurance import PrimingValidator
-from authorization import MicroserviceRequest, OperationPermitter
+from authorization import MicroserviceRequest, OperationAuthorizer
 from artifcat.report import Decision
 from util import LoggingLevelRouter
 
@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="Result")
 
 
-class MicroservicePermitter(OperationPermitter, ABC, Generic[T]):
+class MicroserviceAuthorizer(OperationAuthorizer, ABC, Generic[T]):
     """
     Role:
         - Permission Authorization

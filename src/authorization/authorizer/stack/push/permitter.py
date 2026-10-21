@@ -1,7 +1,7 @@
-# src/authorization/permitter/stack/push/permitter.py
+# src/authorization/authorizer/stack/push/authorizer.py
 
 """
-Module: authorization.permitter.stack.push.permitter
+Module: authorization.authorizer.stack.push.authorizer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,13 +9,13 @@ version: 0.0.2
 
 from abc import abstractmethod
 
-from authorization.permitter.stack import OperationPermitter
+from authorization.authorizer.stack import OperationAuthorizer
 from artifcat.report import PushApprovalReport
 from client.exchange import TokenStackPushRequest
 from util import LoggingLevelRouter
 
 
-class StackPushPermitter(OperationPermitter):
+class StackPushAuthorizer(OperationAuthorizer):
     """
     Role:
         - Analysis Worker
@@ -30,7 +30,7 @@ class StackPushPermitter(OperationPermitter):
         -   def execute(cls, requestor: T, *args, **kwargs) -> AnalysisResult
 
     Super Class:
-        Permitter
+        Authorizer
     """
     def __init__(self):
         super().__init__()

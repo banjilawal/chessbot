@@ -11,16 +11,16 @@ from __future__ import annotations
 
 from typing import Type
 
-from err import PoppingEmptyTokenStackException, TokenPopPermitterException, TokenStackNullException
+from err import PoppingEmptyTokenStackException, TokenPopAuthorizerException, TokenStackNullException
 from domain.model import Token
-from authorization.permitter.stack import PopPermitter
+from authorization.authorizer.stack import PopAuthorizer
 from artifcat.report import PopApprovalReport
 from client.exchange import PopRequest
 from collection.stack import TokenStackService
 from util import LoggingLevelRouter
 
 
-class TokenPopPermitter(PopPermitter[Token]):
+class TokenPopAuthorizer(PopAuthorizer[Token]):
     """
     Role:
         - Request Analyzer
@@ -37,7 +37,7 @@ class TokenPopPermitter(PopPermitter[Token]):
         - run(self, request: PopRequest,) -> PopApprovalReport:
 
     Super Class:
-        PopPermitter
+        PopAuthorizer
     """
 
     @LoggingLevelRouter.monitor
@@ -56,7 +56,7 @@ class TokenPopPermitter(PopPermitter[Token]):
         Returns:
             PopApprovalReport
         Raises:
-            TokenPopperPermitterException
+            TokenPopperAuthorizerException
             PoppingEmptyTokenStackException
         """
         method =  f"{self.__class__.__name__}.run"
@@ -66,11 +66,11 @@ class TokenPopPermitter(PopPermitter[Token]):
         if bootstrap_result.is_failure:
             # Send an exception chain in the permission denial.
             return PopApprovalReport.deny(
-                TokenPopPermitterException(
+                TokenPopAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenPopPermitterException.MSG,
-                    err_code=TokenPopPermitterException.ERR_CODE,
+                    msg=TokenPopAuthorizerException.MSG,
+                    err_code=TokenPopAuthorizerException.ERR_CODE,
                     ex=bootstrap_result.exception,
                 )
             )
@@ -83,11 +83,11 @@ class TokenPopPermitter(PopPermitter[Token]):
         if stack_validation_result.is_failure:
             # Send an exception chain in the permission denial.
             return PopApprovalReport.deny(
-                TokenPopPermitterException(
+                TokenPopAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenPopPermitterException.MSG,
-                    err_code=TokenPopPermitterException.ERR_CODE,
+                    msg=TokenPopAuthorizerException.MSG,
+                    err_code=TokenPopAuthorizerException.ERR_CODE,
                     ex=stack_validation_result.exception,
                 )
             )
@@ -95,11 +95,11 @@ class TokenPopPermitter(PopPermitter[Token]):
         if request.stack.is_blank:
             # Send an exception chain in the permission denial.
             return PopApprovalReport.deny(
-                TokenPopPermitterException(
+                TokenPopAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenPopPermitterException.MSG,
-                    err_code=TokenPopPermitterException.ERR_CODE,
+                    msg=TokenPopAuthorizerException.MSG,
+                    err_code=TokenPopAuthorizerException.ERR_CODE,
                     ex=PoppingEmptyTokenStackException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,

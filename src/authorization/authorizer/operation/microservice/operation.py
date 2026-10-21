@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
-from authorization import MicroserviceRequest, OperationPermitter
+from authorization import MicroserviceRequest, OperationAuthorizer
 from operation import Operator
 from util import LoggingLevelRouter
 
@@ -29,7 +29,7 @@ class MicroserviceOperation(Operator, ABC, Generic[T]):
             or Search Result.
 
     Attributes:
-        permitter: MicroservicePermitter[T]
+        authorizer: MicroserviceAuthorizer[T]
 
     Provides:
         -   def execute(request: MicroserviceRequest[T]) -> T
@@ -38,16 +38,16 @@ class MicroserviceOperation(Operator, ABC, Generic[T]):
         Operation
     """
     
-    def __init__(self, id: int, permitter: MicroservicePermitter[T]):
+    def __init__(self, id: int, authorizer: MicroserviceAuthorizer[T]):
         """
         Args:
-            permitter: MicroservicePermitter[T]
+            authorizer: MicroserviceAuthorizer[T]
         """
-        super().__init__(id=id, permitter=permitter)
+        super().__init__(id=id, authorizer=authorizer)
     
     @property
-    def permitter(self) -> OperationPermitter[T]:
-        return cast(MicroservicePermitter[T], super().permitter)
+    def authorizer(self) -> OperationAuthorizer[T]:
+        return cast(MicroserviceAuthorizer[T], super().authorizer)
     
     
     @abstractmethod

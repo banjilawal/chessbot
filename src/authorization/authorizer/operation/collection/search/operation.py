@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
-from authorization import SearchPermitter, SearchRequest
+from authorization import SearchAuthorizer, SearchRequest
 from operation import CrudOperator
 from artifcat import SearchResult
 from util import LoggingLevelRouter
@@ -30,7 +30,7 @@ class CollectionSearch(CrudOperator[SearchResult], ABC, Generic[T]):
         1.  Execute a task on a Collection that produces a SearchResult.
 
     Attributes:
-        permitter: SearchPermitter[T]
+        authorizer: SearchAuthorizer[T]
         
     Provides:
         -   def execute(request: SearchRequest[T]) -> SearchResult
@@ -39,16 +39,16 @@ class CollectionSearch(CrudOperator[SearchResult], ABC, Generic[T]):
         CollectionOperation
     """
     
-    def __init__(self, permitter: SearchPermitter[T]):
+    def __init__(self, authorizer: SearchAuthorizer[T]):
         """
         Args:
-            permitter: SearchPermitter[T]
+            authorizer: SearchAuthorizer[T]
         """
-        super().__init__(permitter=permitter)
+        super().__init__(authorizer=authorizer)
         
     @property
-    def permitter(self) -> SearchPermitter[T]:
-        return cast(SearchPermitter[T], super().permitter)
+    def authorizer(self) -> SearchAuthorizer[T]:
+        return cast(SearchAuthorizer[T], super().authorizer)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

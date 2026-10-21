@@ -1,7 +1,7 @@
-# src/authorization/permitter/chain/remove/permitter.py
+# src/authorization/authorizer/chain/remove/authorizer.py
 
 """
-Module: authorization.permitter.chain.remove.permitter
+Module: authorization.authorizer.chain.remove.authorizer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -10,15 +10,15 @@ version: 0.0.2
 from abc import abstractmethod
 from typing import Type
 
-from err import RemoveRequestNullException, RemoveperPermitterException
-from authorization.permitter.chain import ChainOperationPermitter
+from err import RemoveRequestNullException, RemoveperAuthorizerException
+from authorization.authorizer.chain import ChainOperationAuthorizer
 from artifcat.report import RemoveApprovalReport
 from client.exchange import RemoveRequest
 from artifcat import ValidationResult
 from util import LoggingLevelRouter
 
 
-class RemovePermitter(ChainOperationPermitter):
+class RemoveAuthorizer(ChainOperationAuthorizer):
     """
     Role:
         - Request Analyzer
@@ -35,7 +35,7 @@ class RemovePermitter(ChainOperationPermitter):
         - run(self, request: RemoveRequest,) -> RemoveApprovalReport:
 
     Super Class:
-        Permitter
+        Authorizer
     """
     
     @abstractmethod
@@ -58,7 +58,7 @@ class RemovePermitter(ChainOperationPermitter):
         Returns:
             ValidationResult
         Raises:
-            RemoveperPermitterException
+            RemoveperAuthorizerException
         """
         method = f"{self.__class__.__name__}.bootstrap_request"
         
@@ -71,11 +71,11 @@ class RemovePermitter(ChainOperationPermitter):
         if validation_result.is_failure:
             # Send the exception chain in the ValidationResult.
             return ValidationResult.failure(
-                RemoveperPermitterException(
+                RemoveperAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=RemoveperPermitterException.MSG,
-                    err_code=RemoveperPermitterException.ERR_CODE,
+                    msg=RemoveperAuthorizerException.MSG,
+                    err_code=RemoveperAuthorizerException.ERR_CODE,
                     ex=validation_result.exception,
                 )
             )

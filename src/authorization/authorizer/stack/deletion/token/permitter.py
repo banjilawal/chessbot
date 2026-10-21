@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import cast
 
-from err import PoppingEmptyTokenStackException, TokenDeletePermitterException
+from err import PoppingEmptyTokenStackException, TokenDeleteAuthorizerException
 from artifcat.report import DeletionApprovalReport
 from client.exchange import CollectionDeletionRequest
 from collection.stack import TokenStackService
@@ -19,7 +19,7 @@ from authorization.adjudicator import TokenDeletionRequestAdjudicator
 from util import LoggingLevelRouter
 
 
-class TokenDeletionPermitter:
+class TokenDeletionAuthorizer:
     """
     Role:
         - Transaction Worker
@@ -36,7 +36,7 @@ class TokenDeletionPermitter:
         - run(item_id: int, stack: TokenStackService) -> DeletionApprovalReport:
 
     Super Class:
-        DeletionPermitter
+        DeletionAuthorizer
     """
     _request_adjudicator: TokenDeletionRequestAdjudicator
     
@@ -62,7 +62,7 @@ class TokenDeletionPermitter:
         Returns:
             DeletionApprovalReport
         Raises:
-            TokenDeletePermitterException
+            TokenDeleteAuthorizerException
             PoppingEmptyTokenStackException
         """
         method = f"{self.__class__.__name__}.run"
@@ -72,11 +72,11 @@ class TokenDeletionPermitter:
         if bootstrap.is_failure:
             # Send an exception chain in the permission denial.
             return DeletionApprovalReport.deny(
-                TokenDeletePermitterException(
+                TokenDeleteAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenDeletePermitterException.MSG,
-                    err_code=TokenDeletePermitterException.ERR_CODE,
+                    msg=TokenDeleteAuthorizerException.MSG,
+                    err_code=TokenDeleteAuthorizerException.ERR_CODE,
                     ex=bootstrap.exception,
                 )
             )
@@ -85,11 +85,11 @@ class TokenDeletionPermitter:
         if stack.is_empty:
             # Return the exception chain on failure
             return DeletionApprovalReport.deny(
-                exception=TokenDeletePermitterException(
+                exception=TokenDeleteAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenDeletePermitterException.MSG,
-                    err_code=TokenDeletePermitterException.ERR_CODE,
+                    msg=TokenDeleteAuthorizerException.MSG,
+                    err_code=TokenDeleteAuthorizerException.ERR_CODE,
                     ex=PoppingEmptyTokenStackException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,

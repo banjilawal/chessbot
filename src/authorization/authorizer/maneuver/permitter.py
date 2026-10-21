@@ -1,7 +1,7 @@
-# src/authorization/permitter/maneuver/destination/__init__.py
+# src/authorization/authorizer/maneuver/destination/__init__.py
 
 """
-Module: authorization.permitter.maneuver.destination.__init__
+Module: authorization.authorizer.maneuver.destination.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from err import ManeuverPermitterException
+from err import ManeuverAuthorizerException
 
 from artifcat.report import ManeuverRequestDecision
 from client.exchange import ManeuverRequest
@@ -20,7 +20,7 @@ from authorization.adjudicator import ManeuverRequestAdjudicator
 from util import LoggingLevelRouter
 
 
-class TokenManeuverPermitter:
+class TokenManeuverAuthorizer:
     """
     Role:
         - Transaction Worker
@@ -37,7 +37,7 @@ class TokenManeuverPermitter:
         -   def execute(request: ManeuverRequest) -> ManeuverApprovalReport
 
     Super Class:
-        Permitter
+        Authorizer
     """
     _adjudicator: Optional[ManeuverRequestAdjudicator]
     
@@ -60,7 +60,7 @@ class TokenManeuverPermitter:
         Returns:
             ManeuverApprovalReport
         Raises:
-            ManeuverPermitterException
+            ManeuverAuthorizerException
         """
         method =  f"{self.__class__.__name__}.execute"
         
@@ -71,11 +71,11 @@ class TokenManeuverPermitter:
         if approval.is_denied:
             # Return the exception chain on failure
             return ManeuverRequestDecision.deny(
-                ManeuverPermitterException(
+                ManeuverAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ManeuverPermitterException.MSG,
-                    err_code=ManeuverPermitterException.ERR_CODE,
+                    msg=ManeuverAuthorizerException.MSG,
+                    err_code=ManeuverAuthorizerException.ERR_CODE,
                     mthd_rslt_type=MethodResultType.ANALYSIS_RESULT,
                     ex=approval.exception,
                 )

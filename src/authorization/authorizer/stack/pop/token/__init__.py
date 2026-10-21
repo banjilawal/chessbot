@@ -1,15 +1,15 @@
-# src/authorization/permitter/stack/pop/token/__init__.py
+# src/authorization/authorizer/stack/pop/token/__init__.py
 
 """
-Module: authorization.permitter.stack.pop.token.__init__
+Module: authorization.authorizer.stack.pop.token.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== AUTHORIZATION.PERMITTER.STACK.POP.TOKEN PACKAGE ===========#
+# =========== AUTHORIZATION.AUTHORIZER.STACK.POP.TOKEN PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .permitter import TokenPopPermitter
+from .authorizer import TokenPopAuthorizer

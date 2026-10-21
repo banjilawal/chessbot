@@ -1,7 +1,7 @@
-# src/authorization/permitter/promotion/permitter.py
+# src/authorization/authorizer/promotion/authorizer.py
 
 """
-Module: authorization.permitter.promotion.permitter
+Module: authorization.authorizer.promotion.authorizer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Any, Optional, cast
 
 from artifcat import PromotionDecision
-from authorization import OperationPermitter, PromotionAuthorizationForm
+from authorization import OperationAuthorizer, PromotionAuthorizationForm
 from authorization.loader.promotion import PromotionAuthorizationLoader
 from domain import Bishop, King, Knight, Pawn, PawnToken, Persona, Queen, Rank, RankBlueprint, Rook, Token
 from err import ChessException, PawnPromoterException, PromoteInactivePawnException
@@ -44,7 +44,7 @@ class ElevationLevelReviewer[PromotionDecision]):
         -  def process(form: PromotionAuthorizationForm) -> PromotionDecision
 
     Super Class:
-        OperationPermitter
+        OperationAuthorizer
     """
     _rank_validation_service: RankValidationService
     _token_validation_service: TokenValidationService

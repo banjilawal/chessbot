@@ -1,7 +1,7 @@
-# src/authorization/permitter/token/promotion/permitter.py
+# src/authorization/authorizer/token/promotion/authorizer.py
 
 """
-Module: authorization.permitter.token.promotion.permitter
+Module: authorization.authorizer.token.promotion.authorizer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -10,15 +10,15 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from err import PromotionPermitterException
-from authorization.permitter.token import OperationPermitter
+from err import PromotionAuthorizerException
+from authorization.authorizer.token import OperationAuthorizer
 from artifcat.report import PromotionRequestDecision
 from client.exchange.request.microservice import PromotionRequest
 from authorization.adjudicator import PromotionRequestAdjudicator
 from util import LoggingLevelRouter
 
 
-class PromotionPermitter(OperationPermitter):
+class PromotionAuthorizer(OperationAuthorizer):
     """
     Role:
         - Request Analyzer
@@ -35,7 +35,7 @@ class PromotionPermitter(OperationPermitter):
         - run(self, request: PromotionRequest) -> PromotionApprovalReport
         
     Super Class:
-        Permitter
+        Authorizer
     """
     _bootstrapper: PromotionRequestAdjudicator
     
@@ -62,7 +62,7 @@ class PromotionPermitter(OperationPermitter):
         Returns:
             PromotionApprovalReport
         Raises:
-            PromotionPermitterException
+            PromotionAuthorizerException
         """
         method = f"{self.__class__.__name__}.run"
         
@@ -70,11 +70,11 @@ class PromotionPermitter(OperationPermitter):
         bootstrap = self._bootstrapper.execute(request)
         if bootstrap.is_failure:
             PromotionRequestDecision.deny(
-                PromotionPermitterException(
+                PromotionAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=PromotionPermitterException.MSG,
-                    err_code=PromotionPermitterException.ERR_CODE,
+                    msg=PromotionAuthorizerException.MSG,
+                    err_code=PromotionAuthorizerException.ERR_CODE,
                     ex=bootstrap.exception,
                 )
             )

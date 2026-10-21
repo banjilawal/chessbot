@@ -10,7 +10,7 @@ version: 0.0.2
 from __future__ import annotations
 
 from err import TokenSearcherException
-from authorization.permitter import TokenSearchPermitter
+from authorization.authorizer import TokenSearchAuthorizer
 from client.exchange import SearchRequest
 from artifcat import SearchResult
 from transit.router import TokenSearchRouter
@@ -18,15 +18,15 @@ from util import LoggingLevelRouter
 
 
 class TokenSearcher:
-    _permitter: TokenSearchPermitter
+    _authorizer: TokenSearchAuthorizer
     _router: TokenSearchRouter
     
     def __init__(
             self,
-            permitter: TokenSearchPermitter | None = TokenSearchPermitter(),
+            authorizer: TokenSearchAuthorizer | None = TokenSearchAuthorizer(),
             router: TokenSearchRouter | None = TokenSearchRouter(),
     ):
-        self._permitter = permitter
+        self._authorizer = authorizer
         self._router = router
         
     @LoggingLevelRouter.monitor
@@ -34,7 +34,7 @@ class TokenSearcher:
         method = f"{self.__class__.__name__}.execute"
 
 
-        permission = self._permitter.execute(request=request)
+        permission = self._authorizer.execute(request=request)
         if permission.is_denied:
             return SearchResult.failure(
                 TokenSearcherException(

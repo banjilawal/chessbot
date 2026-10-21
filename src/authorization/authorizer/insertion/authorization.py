@@ -17,6 +17,6 @@ from client.exchange import InsertionRequest
 
 T = TypeVar("T", bound="Collection")
 
-class InsertionPermitter(RequestAuthorizer[InsertionRequest], ABC, Generic[T]):
+class InsertionAuthorizer(RequestAuthorizer[InsertionRequest], ABC, Generic[T]):
     
     _adjudicator: RequestAdjudicator[T]

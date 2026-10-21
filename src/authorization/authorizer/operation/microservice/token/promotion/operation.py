@@ -14,7 +14,7 @@ from typing import cast
 
 from err import PawnPromoterException
 from domain.model import PawnToken, PromotionState, Rank
-from authorization.permitter import PromotionPermitter
+from authorization.authorizer import PromotionAuthorizer
 from artifcat.report import PromotionRequestDecision
 from artifcat import MethodResultType, UpdateResult
 from util import LoggingLevelRouter
@@ -39,7 +39,7 @@ class PawnPromoter:
         - execute(
                     rank: Rank,
                     pawn: PawnToken,
-                    permitter: PromotionPermitter,
+                    authorizer: PromotionAuthorizer,
             ) -> UpdateResult[PawnToken]
             
     Super Class:
@@ -51,7 +51,7 @@ class PawnPromoter:
             cls,
             rank: Rank,
             pawn: PawnToken,
-            permitter: PromotionPermitter | None = None,
+            authorizer: PromotionAuthorizer | None = None,
     ) -> UpdateResult[PawnToken]:
         """
         Executes the promotion transaction.
@@ -68,7 +68,7 @@ class PawnPromoter:
         Args:
             rank: Rank
             pawn: PawnToken
-            permitter: PromotionPermitter
+            authorizer: PromotionAuthorizer
         Returns:
             UpdateResult[PawnToken]
         Raises:
@@ -77,10 +77,10 @@ class PawnPromoter:
         method = f"{cls.__class__.__name__}.promote"
         
         # --- Supply any missing dependencies. ---#
-        if permitter is None:
-            permitter = PromotionPermitter()
+        if authorizer is None:
+            authorizer = PromotionAuthorizer()
             
-        permission_analysis_result = permitter.execute(
+        permission_analysis_result = authorizer.execute(
             pawn=pawn,
             rank=rank,
         )

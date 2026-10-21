@@ -13,5 +13,5 @@ version: 0.0.2
 from .vector import *
 
 # Modules
-from .permitter import ComputationPermitter
+from .authorizer import ComputationAuthorizer
 

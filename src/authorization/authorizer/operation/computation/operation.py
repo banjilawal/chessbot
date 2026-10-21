@@ -30,7 +30,7 @@ class Computation(Operator[ComputationResult], ABC, Generic[T]):
         1.  Execute a task that produces a ComputationResult on success.
 
     Attributes:
-        permitter: ComputationPermitter
+        authorizer: ComputationAuthorizer
 
     Provides:
         - execute(request: ComputationRequest) -> ComputationResult
@@ -39,16 +39,16 @@ class Computation(Operator[ComputationResult], ABC, Generic[T]):
         Operation
     """
     
-    def __init__(self, permitter: ComputationPermitter):
+    def __init__(self, authorizer: ComputationAuthorizer):
         """
         Args:
-            permitter: ComputationPermitter
+            authorizer: ComputationAuthorizer
         """
-        super().__init__(permitter=permitter)
+        super().__init__(authorizer=authorizer)
     
     @property
-    def permitter(self) -> ComputaionPermitter:
-        return cast(ComputationPermitter, super().permitter)
+    def authorizer(self) -> ComputaionAuthorizer:
+        return cast(ComputationAuthorizer, super().authorizer)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

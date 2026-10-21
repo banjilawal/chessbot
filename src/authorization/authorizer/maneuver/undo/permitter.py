@@ -1,7 +1,7 @@
-# src/authorization/permitter/token/maneuver/undo/permitter.py
+# src/authorization/authorizer/token/maneuver/undo/authorizer.py
 
 """
-Module: authorization.permitter.token.maneuver.undo.permitter
+Module: authorization.authorizer.token.maneuver.undo.authorizer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,17 +13,17 @@ from typing import cast
 
 from sensor.analyzer import TokenReadinessAnalyzer
 from err import (
-    DisabledTokenUndoMoveException, MaxMoveUndoException, TokenUndoMovePermitterException
+    DisabledTokenUndoMoveException, MaxMoveUndoException, TokenUndoMoveAuthorizerException
 )
 from domain.model import Token
-from authorization.permitter import TokenManeuverPermitter
+from authorization.authorizer import TokenManeuverAuthorizer
 from artifcat.report import PopApprovalReport, TokenReadinessReport
 from artifcat import AnalysisResult
 from util import LoggingLevelRouter
 from transit.dispatcher.validator import TokenValidationDispatcher
 
 
-class TokenUndoMovePermitter(TokenManeuverPermitter):
+class TokenUndoMoveAuthorizer(TokenManeuverAuthorizer):
     """
     Role:
         - Permission Granter
@@ -42,7 +42,7 @@ class TokenUndoMovePermitter(TokenManeuverPermitter):
                     readiness_analyzer: TokenReadinessAnalyzer | None = None,
             ) -> AnalysisResult[Coord]
     Super Class:
-        TokenManeuverPermitter
+        TokenManeuverAuthorizer
     """
     
     @classmethod
@@ -70,7 +70,7 @@ class TokenUndoMovePermitter(TokenManeuverPermitter):
         Returns:
             AnalysisResult[PopApproval]
         Raises:
-            TokenUndoMovePermitterException
+            TokenUndoMoveAuthorizerException
             DisabledTokenUndoMoveException
             MaxMoveUndoException
         """
@@ -90,11 +90,11 @@ class TokenUndoMovePermitter(TokenManeuverPermitter):
         if readiness_analysis_result.is_failure:
             # Send the exception chain on failure.
             return AnalysisResult.aborted(
-                    TokenUndoMovePermitterException(
+                    TokenUndoMoveAuthorizerException(
                     cls_mthd=method,
                     cls_name=cls.__name__,
-                    msg=TokenUndoMovePermitterException.MSG,
-                    err_code=TokenUndoMovePermitterException.ERR_CODE,
+                    msg=TokenUndoMoveAuthorizerException.MSG,
+                    err_code=TokenUndoMoveAuthorizerException.ERR_CODE,
                     ex=readiness_analysis_result.exception
                 )
             )
@@ -104,11 +104,11 @@ class TokenUndoMovePermitter(TokenManeuverPermitter):
             # Send the exception chain on failure.
             return AnalysisResult.completed(
                 PopApprovalReport.deny(
-                    exception=TokenUndoMovePermitterException(
+                    exception=TokenUndoMoveAuthorizerException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=TokenUndoMovePermitterException.MSG,
-                        err_code=TokenUndoMovePermitterException.ERR_CODE,
+                        msg=TokenUndoMoveAuthorizerException.MSG,
+                        err_code=TokenUndoMoveAuthorizerException.ERR_CODE,
                         ex=DisabledTokenUndoMoveException(
                             cls_mthd=method,
                             cls_name=cls.__name__,
@@ -123,11 +123,11 @@ class TokenUndoMovePermitter(TokenManeuverPermitter):
             # Send the exception chain on failure.
             return AnalysisResult.completed(
                 PopApprovalReport.deny(
-                    exception=TokenUndoMovePermitterException(
+                    exception=TokenUndoMoveAuthorizerException(
                         cls_mthd=method,
                         cls_name=cls.__name__,
-                        msg=TokenUndoMovePermitterException.MSG,
-                        err_code=TokenUndoMovePermitterException.ERR_CODE,
+                        msg=TokenUndoMoveAuthorizerException.MSG,
+                        err_code=TokenUndoMoveAuthorizerException.ERR_CODE,
                         ex=MaxMoveUndoException(
                             cls_mthd=method,
                             cls_name=cls.__name__,

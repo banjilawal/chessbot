@@ -11,16 +11,16 @@ from __future__ import annotations
 
 from typing import Type
 
-from err import RemovepingEmptyTokenChainException, TokenRemovePermitterException, TokenChainNullException
+from err import RemovepingEmptyTokenChainException, TokenRemoveAuthorizerException, TokenChainNullException
 from domain.model import Token
-from authorization.permitter.chain import RemovePermitter
+from authorization.authorizer.chain import RemoveAuthorizer
 from artifcat.report import RemoveApprovalReport
 from client.exchange import RemoveRequest
 from chain import TokenChainService
 from util import LoggingLevelRouter
 
 
-class TokenRemovePermitter(RemovePermitter[Token]):
+class TokenRemoveAuthorizer(RemoveAuthorizer[Token]):
     """
     Role:
         - Request Analyzer
@@ -37,7 +37,7 @@ class TokenRemovePermitter(RemovePermitter[Token]):
         - run(self, request: RemoveRequest,) -> RemoveApprovalReport:
 
     Super Class:
-        RemovePermitter
+        RemoveAuthorizer
     """
 
     @LoggingLevelRouter.monitor
@@ -56,7 +56,7 @@ class TokenRemovePermitter(RemovePermitter[Token]):
         Returns:
             RemoveApprovalReport
         Raises:
-            TokenRemoveperPermitterException
+            TokenRemoveperAuthorizerException
             RemovepingEmptyTokenChainException
         """
         method =  f"{self.__class__.__name__}.run"
@@ -66,11 +66,11 @@ class TokenRemovePermitter(RemovePermitter[Token]):
         if bootstrap_result.is_failure:
             # Send an exception chain in the permission denial.
             return RemoveApprovalReport.deny(
-                TokenRemovePermitterException(
+                TokenRemoveAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenRemovePermitterException.MSG,
-                    err_code=TokenRemovePermitterException.ERR_CODE,
+                    msg=TokenRemoveAuthorizerException.MSG,
+                    err_code=TokenRemoveAuthorizerException.ERR_CODE,
                     ex=bootstrap_result.exception,
                 )
             )
@@ -83,11 +83,11 @@ class TokenRemovePermitter(RemovePermitter[Token]):
         if chain_validation_result.is_failure:
             # Send an exception chain in the permission denial.
             return RemoveApprovalReport.deny(
-                TokenRemovePermitterException(
+                TokenRemoveAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenRemovePermitterException.MSG,
-                    err_code=TokenRemovePermitterException.ERR_CODE,
+                    msg=TokenRemoveAuthorizerException.MSG,
+                    err_code=TokenRemoveAuthorizerException.ERR_CODE,
                     ex=chain_validation_result.exception,
                 )
             )
@@ -95,11 +95,11 @@ class TokenRemovePermitter(RemovePermitter[Token]):
         if request.chain.is_blank:
             # Send an exception chain in the permission denial.
             return RemoveApprovalReport.deny(
-                TokenRemovePermitterException(
+                TokenRemoveAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenRemovePermitterException.MSG,
-                    err_code=TokenRemovePermitterException.ERR_CODE,
+                    msg=TokenRemoveAuthorizerException.MSG,
+                    err_code=TokenRemoveAuthorizerException.ERR_CODE,
                     ex=RemovepingEmptyTokenChainException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,

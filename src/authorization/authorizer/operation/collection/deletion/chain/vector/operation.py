@@ -27,7 +27,7 @@ class RemoveVectorNode(RemoveNode[VectorNode]):
         1.  Add an item to a VectorNodeChain.
         
     Attributes:
-        permitter: RemoveVectorNodePermitter
+        authorizer: RemoveVectorNodeAuthorizer
 
     Provides:
         -   def execute(request: RemoveVectorNodeRequest) -> DeletionResult
@@ -36,16 +36,16 @@ class RemoveVectorNode(RemoveNode[VectorNode]):
         RemoveNode
     """
     
-    def __init__(self, permitter: Optional[RemoveVectorNodePermitter] | None = None):
+    def __init__(self, authorizer: Optional[RemoveVectorNodeAuthorizer] | None = None):
         """
         Args:
-            permitter: Optional[RemoveVectorNodePermitter]
+            authorizer: Optional[RemoveVectorNodeAuthorizer]
         """
-        super().__init__(permitter=permitter or RemoveVectorNodePermitter())
+        super().__init__(authorizer=authorizer or RemoveVectorNodeAuthorizer())
     
     @property
-    def permitter(self) -> RemoveVectorNodePermitter:
-        return cast(RemoveVectorNodePermitter, super().permitter)
+    def authorizer(self) -> RemoveVectorNodeAuthorizer:
+        return cast(RemoveVectorNodeAuthorizer, super().authorizer)
     
 
     @LoggingLevelRouter.monitor

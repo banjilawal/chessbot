@@ -1,7 +1,7 @@
-# src/authorization/permitter/chain/append/token/permitter.py
+# src/authorization/authorizer/chain/append/token/authorizer.py
 
 """
-Module: authorization.permitter.chain.append.token.permitter
+Module: authorization.authorizer.chain.append.token.authorizer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,9 +12,9 @@ from __future__ import annotations
 from typing import cast
 
 from sensor.detector.token import TokenCollisionDetector
-from err import TokenAppendPermitterException
+from err import TokenAppendAuthorizerException
 from domain.model import Token
-from authorization.permitter.chain import AppendPermitter, RankSlotPermitter
+from authorization.authorizer.chain import AppendAuthorizer, RankSlotAuthorizer
 from artifcat.report import AppendApprovalReport
 from client.exchange import AppendRequest, RankSlotRequest
 from chain import TokenChainService
@@ -22,7 +22,7 @@ from authorization.adjudicator import TokenAppendRequestAdjudicator
 from util import IdFactory, LoggingLevelRouter
 
 
-class TokenAppendPermitter(AppendPermitter[Token]):
+class TokenAppendAuthorizer(AppendAuthorizer[Token]):
     """
     Role:
         - Transaction Worker
@@ -34,34 +34,34 @@ class TokenAppendPermitter(AppendPermitter[Token]):
 
     Attributes:
         collision_detector: TokenCollisionDetector
-        rank_slot_permitter: RankSlotPermitter
+        rank_slot_authorizer: RankSlotAuthorizer
         request_adjudicator: TokenAppendRequestAdjudicator
 
     Provides:
         - execute(request: AppendRequest) -> AppendApprovalReport
 
     Super Class:
-        AppendPermitter
+        AppendAuthorizer
     """
-    _rank_slot_permitter: RankSlotPermitter
+    _rank_slot_authorizer: RankSlotAuthorizer
     _collision_detector: TokenCollisionDetector
     _request_adjudicator: TokenAppendRequestAdjudicator
     
     def __init__(
             self,
-            rank_slot_permitter: RankSlotPermitter = RankSlotPermitter(),
+            rank_slot_authorizer: RankSlotAuthorizer = RankSlotAuthorizer(),
             collision_detector: TokenCollisionDetector | None = TokenCollisionDetector(),
             request_adjudicator: TokenAppendRequestAdjudicator | None = TokenAppendRequestAdjudicator()
     ):
         """
         Args:
             collision_detector: TokenCollisionDetector
-            rank_slot_permitter: RankSlotPermitter
+            rank_slot_authorizer: RankSlotAuthorizer
             request_adjudicator: TokenAppendRequestAdjudicator
         """
         super().__init__()
         self._collision_detector = collision_detector
-        self._rank_slot_permitter = rank_slot_permitter
+        self._rank_slot_authorizer = rank_slot_authorizer
         self._request_adjudicator = request_adjudicator
         
         
@@ -83,7 +83,7 @@ class TokenAppendPermitter(AppendPermitter[Token]):
         Returns:
             AnalysisResult
         Raises:
-            TokenAppendPermitterException
+            TokenAppendAuthorizerException
             TokenChainFullException
         """
         method =  f"{self.__class__.__name__}.execute"
@@ -93,11 +93,11 @@ class TokenAppendPermitter(AppendPermitter[Token]):
         if bootstrap.is_failure:
             # Send an exception chain in the permission denial.
             return AppendApprovalReport.deny(
-                TokenAppendPermitterException(
+                TokenAppendAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenAppendPermitterException.MSG,
-                    err_code=TokenAppendPermitterException.ERR_CODE,
+                    msg=TokenAppendAuthorizerException.MSG,
+                    err_code=TokenAppendAuthorizerException.ERR_CODE,
                     ex=bootstrap.exception,
                 )
             )
@@ -106,7 +106,7 @@ class TokenAppendPermitter(AppendPermitter[Token]):
         chain = cast(TokenChainService, request.chain)
         
         # Handle the case that there is no opening for the token's rank.
-        rank_opening = self._rank_slot_permitter.execute(
+        rank_opening = self._rank_slot_authorizer.execute(
             RankSlotRequest(
                 id=IdFactory.next_id(class_name="RankSLotRequest"),
                 token_chain=chain,
@@ -116,11 +116,11 @@ class TokenAppendPermitter(AppendPermitter[Token]):
         if rank_opening.is_denied:
             # Send an exception chain in the permission denial.
             return AppendApprovalReport.deny(
-                TokenAppendPermitterException(
+                TokenAppendAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenAppendPermitterException.MSG,
-                    err_code=TokenAppendPermitterException.ERR_CODE,
+                    msg=TokenAppendAuthorizerException.MSG,
+                    err_code=TokenAppendAuthorizerException.ERR_CODE,
                     ex=rank_opening.exception,
                 )
             )
@@ -128,11 +128,11 @@ class TokenAppendPermitter(AppendPermitter[Token]):
         report = self._collision_detector.execute(attractor=token, stream=chain)
         if report.collision_exists:
             AppendApprovalReport.deny(
-                exception=TokenAppendPermitterException(
+                exception=TokenAppendAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenAppendPermitterException.MSG,
-                    err_code=TokenAppendPermitterException.ERR_CODE,
+                    msg=TokenAppendAuthorizerException.MSG,
+                    err_code=TokenAppendAuthorizerException.ERR_CODE,
                     ex=report.exception,
                 )
             )

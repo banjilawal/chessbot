@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
-from authorization import CollectionRequest, OperationPermitter
+from authorization import CollectionRequest, OperationAuthorizer
 from operation import Operator
 from util import LoggingLevelRouter
 
@@ -30,7 +30,7 @@ class CollectionOperation(Operator, ABC, Generic[T]):
             or Search Result.
 
     Attributes:
-        permitter: CollectionOperationPermitter[T]
+        authorizer: CollectionOperationAuthorizer[T]
         
     Provides:
         -   def execute(request: CollectionRequest[T]) -> T
@@ -39,16 +39,16 @@ class CollectionOperation(Operator, ABC, Generic[T]):
         Operation
     """
     
-    def __init__(self, id: int, permitter: CollectionOperationPermitter[T]):
+    def __init__(self, id: int, authorizer: CollectionOperationAuthorizer[T]):
         """
         Args:
-            permitter: CollectionOperationPermitter[T]
+            authorizer: CollectionOperationAuthorizer[T]
         """
-        super().__init__(id=id, permitter=permitter)
+        super().__init__(id=id, authorizer=authorizer)
         
     @property
-    def permitter(self) -> OperationPermitter[T]:
-        return cast(CollectionOperationPermitter, super().permitter)
+    def authorizer(self) -> OperationAuthorizer[T]:
+        return cast(CollectionOperationAuthorizer, super().authorizer)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

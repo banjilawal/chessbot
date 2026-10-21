@@ -30,7 +30,7 @@ class CollectionDeletion(CrudOperator[DeletionResult], ABC, Generic[T]):
         1.  Execute a task on a Collection that produces an DeletionResult.
 
     Attributes:
-        permitter: DeletionPermitter[T]
+        authorizer: DeletionAuthorizer[T]
         
     Provides:
         -   def execute(request: DeletionRequest[T]) -> DeletionResult
@@ -39,16 +39,16 @@ class CollectionDeletion(CrudOperator[DeletionResult], ABC, Generic[T]):
         CollectionOperation
     """
     
-    def __init__(self, permitter: CollectionDeletionPermitter[T]):
+    def __init__(self, authorizer: CollectionDeletionAuthorizer[T]):
         """
         Args:
-            permitter: DeletionPermitter[T]
+            authorizer: DeletionAuthorizer[T]
         """
-        super().__init__(permitter=permitter)
+        super().__init__(authorizer=authorizer)
         
     @property
-    def permitter(self) -> CollectionDeletionPermitter[T]:
-        return cast(CollectionDeletionPermitter[T], super().permitter)
+    def authorizer(self) -> CollectionDeletionAuthorizer[T]:
+        return cast(CollectionDeletionAuthorizer[T], super().authorizer)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

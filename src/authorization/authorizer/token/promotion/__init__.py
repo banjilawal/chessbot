@@ -1,15 +1,15 @@
-# src/authorization/permitter/token/promotion/__init__.py
+# src/authorization/authorizer/token/promotion/__init__.py
 
 """
-Module: authorization.permitter.token.promotion.__init__
+Module: authorization.authorizer.token.promotion.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== AUTHORIZATION.PERMITTER.TOKEN.PROMOTION PACKAGE ===========#
+# =========== AUTHORIZATION.AUTHORIZER.TOKEN.PROMOTION PACKAGE ===========#
 
 # Packages
 
 # Modules
-from .permitter import PromotionPermitter
+from .authorizer import PromotionAuthorizer

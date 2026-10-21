@@ -1,7 +1,7 @@
-# src/authorization/permitter/stack/push/token/permitter.py
+# src/authorization/authorizer/stack/push/token/authorizer.py
 
 """
-Module: authorization.permitter.stack.push.token.permitter
+Module: authorization.authorizer.stack.push.token.authorizer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,9 +12,9 @@ from __future__ import annotations
 from typing import cast
 
 from sensor.detector.token import TokenCollisionDetector
-from err import TokenPushPermitterException
+from err import TokenPushAuthorizerException
 from domain.model import Token
-from authorization.permitter.stack import StackPushPermitter, RankSlotPermitter
+from authorization.authorizer.stack import StackPushAuthorizer, RankSlotAuthorizer
 from artifcat.report import PushApprovalReport, Decision
 from client.exchange import TokenStackPushRequest, RankSlotRequest
 from collection.stack import TokenStackService
@@ -22,7 +22,7 @@ from authorization.adjudicator import TokenPushRequestAdjudicator
 from util import IdFactory, LoggingLevelRouter
 
 
-class TokenStackPushPermitter(StackPushPermitter[Token]):
+class TokenStackPushAuthorizer(StackPushAuthorizer[Token]):
     """
     Role:
         - Transaction Worker
@@ -34,34 +34,34 @@ class TokenStackPushPermitter(StackPushPermitter[Token]):
 
     Attributes:
         collision_detector: TokenCollisionDetector
-        rank_slot_permitter: RankSlotPermitter
+        rank_slot_authorizer: RankSlotAuthorizer
         request_adjudicator: TokenPushRequestAdjudicator
 
     Provides:
         - execute(request: PushRequest) -> PushApprovalReport
 
     Super Class:
-        PushPermitter
+        PushAuthorizer
     """
-    _rank_slot_permitter: RankSlotPermitter
+    _rank_slot_authorizer: RankSlotAuthorizer
     _collision_detector: TokenCollisionDetector
     _request_adjudicator: TokenPushRequestAdjudicator
     
     def __init__(
             self,
-            rank_slot_permitter: RankSlotPermitter = RankSlotPermitter(),
+            rank_slot_authorizer: RankSlotAuthorizer = RankSlotAuthorizer(),
             collision_detector: TokenCollisionDetector | None = TokenCollisionDetector(),
             request_adjudicator: TokenPushRequestAdjudicator | None = TokenPushRequestAdjudicator()
     ):
         """
         Args:
             collision_detector: TokenCollisionDetector
-            rank_slot_permitter: RankSlotPermitter
+            rank_slot_authorizer: RankSlotAuthorizer
             request_adjudicator: TokenPushRequestAdjudicator
         """
         super().__init__()
         self._collision_detector = collision_detector
-        self._rank_slot_permitter = rank_slot_permitter
+        self._rank_slot_authorizer = rank_slot_authorizer
         self._request_adjudicator = request_adjudicator
         
         
@@ -83,7 +83,7 @@ class TokenStackPushPermitter(StackPushPermitter[Token]):
         Returns:
             AnalysisResult
         Raises:
-            TokenPushPermitterException
+            TokenPushAuthorizerException
             TokenStackFullException
         """
         method =  f"{self.__class__.__name__}.execute"
@@ -93,11 +93,11 @@ class TokenStackPushPermitter(StackPushPermitter[Token]):
         if bootstrap.is_failure:
             # Send an exception chain in the permission denial.
             return PushApprovalReport.deny(
-                TokenPushPermitterException(
+                TokenPushAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenPushPermitterException.MSG,
-                    err_code=TokenPushPermitterException.ERR_CODE,
+                    msg=TokenPushAuthorizerException.MSG,
+                    err_code=TokenPushAuthorizerException.ERR_CODE,
                     ex=bootstrap.exception,
                 )
             )
@@ -106,7 +106,7 @@ class TokenStackPushPermitter(StackPushPermitter[Token]):
         stack = cast(TokenStackService, request.stack)
         
         # Handle the case that there is no opening for the token's rank.
-        rank_opening = self._rank_slot_permitter.execute(
+        rank_opening = self._rank_slot_authorizer.execute(
             RankSlotRequest(
                 id=IdFactory.next_id(class_name="RankSLotRequest"),
                 token_stack=stack,
@@ -116,11 +116,11 @@ class TokenStackPushPermitter(StackPushPermitter[Token]):
         if rank_opening.is_denied:
             # Send an exception chain in the permission denial.
             return PushApprovalReport.deny(
-                TokenPushPermitterException(
+                TokenPushAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenPushPermitterException.MSG,
-                    err_code=TokenPushPermitterException.ERR_CODE,
+                    msg=TokenPushAuthorizerException.MSG,
+                    err_code=TokenPushAuthorizerException.ERR_CODE,
                     ex=rank_opening.exception,
                 )
             )
@@ -128,11 +128,11 @@ class TokenStackPushPermitter(StackPushPermitter[Token]):
         report = self._collision_detector.execute(attractor=token, stream=stack)
         if report.collision_exists:
             PushApprovalReport.deny(
-                exception=TokenPushPermitterException(
+                exception=TokenPushAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenPushPermitterException.MSG,
-                    err_code=TokenPushPermitterException.ERR_CODE,
+                    msg=TokenPushAuthorizerException.MSG,
+                    err_code=TokenPushAuthorizerException.ERR_CODE,
                     ex=report.exception,
                 )
             )

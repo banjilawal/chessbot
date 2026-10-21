@@ -1,7 +1,7 @@
-# src/authorization/permitter/chain/append/permitter.py
+# src/authorization/authorizer/chain/append/authorizer.py
 
 """
-Module: authorization.permitter.chain.append.permitter
+Module: authorization.authorizer.chain.append.authorizer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -9,13 +9,13 @@ version: 0.0.2
 
 from abc import abstractmethod
 
-from authorization.permitter.chain import ChainOperationPermitter
+from authorization.authorizer.chain import ChainOperationAuthorizer
 from artifcat.report import AppendApprovalReport
 from client.exchange import AppendRequest
 from util import LoggingLevelRouter
 
 
-class AppendPermitter(ChainOperationPermitter):
+class AppendAuthorizer(ChainOperationAuthorizer):
     """
     Role:
         - Analysis Worker
@@ -30,7 +30,7 @@ class AppendPermitter(ChainOperationPermitter):
         -   def execute(cls, requestor: T, *args, **kwargs) -> AnalysisResult
 
     Super Class:
-        Permitter
+        Authorizer
     """
     def __init__(self):
         super().__init__()

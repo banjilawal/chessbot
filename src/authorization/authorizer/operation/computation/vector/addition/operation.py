@@ -29,7 +29,7 @@ class AddVector(Computation[CartesianToggle]):
         1.  Compute the contents of a VectorRegister to each other producing either a new Vector or a Coord.
 
     Attributes:
-            permitter: Optional[AddVectorPermitter]
+            authorizer: Optional[AddVectorAuthorizer]
             
     Provides:
         -   def execute(self, request: AddVectorRequest) -> ComputationResult[CartesianToggle]
@@ -38,16 +38,16 @@ class AddVector(Computation[CartesianToggle]):
         Computation
     """
     
-    def __init__(self, permitter: Optional[AddVectorPermitter] | None = None):
+    def __init__(self, authorizer: Optional[AddVectorAuthorizer] | None = None):
         """
         Args:
-            permitter: Optional[AddVectorPermitter]
+            authorizer: Optional[AddVectorAuthorizer]
         """
-        super().__init__(permitter=permitter or AddVectorPermitter())
+        super().__init__(authorizer=authorizer or AddVectorAuthorizer())
         
     @property
-    def permitter(self) -> AddVectorPermitter:
-        return cast(AddVectorPermitter, super().permitter)
+    def authorizer(self) -> AddVectorAuthorizer:
+        return cast(AddVectorAuthorizer, super().authorizer)
     
     @LoggingLevelRouter.monitor
     def execute(self, request: AddVectorRequest) -> ComputationResult[CartesianToggle]:

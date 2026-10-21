@@ -1,7 +1,7 @@
-# src/authorization/permitter/stack/push/square/permitter.py
+# src/authorization/authorizer/stack/push/square/authorizer.py
 
 """
-Module: authorization.permitter.stack.push.square.permitter
+Module: authorization.authorizer.stack.push.square.authorizer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,9 +12,9 @@ from __future__ import annotations
 from typing import cast
 
 from sensor.detector import SquareCollider
-from err import SquarePushPermitterException
+from err import SquarePushAuthorizerException
 from domain.model import Square
-from authorization.permitter.stack import StackPushPermitter
+from authorization.authorizer.stack import StackPushAuthorizer
 from artifcat.report import PushApprovalReport
 from client.exchange import TokenStackPushRequest
 from collection.stack import SquareStackService
@@ -22,7 +22,7 @@ from authorization.adjudicator import SquarePushRequestAdjudicator
 from util import LoggingLevelRouter
 
 
-class SquareStackPushPermitter(StackPushPermitter[Square]):
+class SquareStackPushAuthorizer(StackPushAuthorizer[Square]):
     """
     Role:
         - Transaction Worker
@@ -34,14 +34,14 @@ class SquareStackPushPermitter(StackPushPermitter[Square]):
 
     Attributes:
         collision_detector: SquareCollisionDetector
-        rank_slot_permitter: RankSlotPermitter
+        rank_slot_authorizer: RankSlotAuthorizer
         request_adjudicator: SquarePushRequestAdjudicator
 
     Provides:
         - execute(request: PushRequest) -> PushApprovalReport
 
     Super Class:
-        PushPermitter
+        PushAuthorizer
     """
     _collision_detector: SquareCollider
     _request_adjudicator: SquarePushRequestAdjudicator
@@ -79,7 +79,7 @@ class SquareStackPushPermitter(StackPushPermitter[Square]):
         Returns:
             AnalysisResult
         Raises:
-            SquarePushPermitterException
+            SquarePushAuthorizerException
             SquareStackFullException
         """
         method =  f"{self.__class__.__name__}.execute"
@@ -89,11 +89,11 @@ class SquareStackPushPermitter(StackPushPermitter[Square]):
         if bootstrap.is_failure:
             # Send an exception chain in the permission denial.
             return PushApprovalReport.deny(
-                SquarePushPermitterException(
+                SquarePushAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SquarePushPermitterException.MSG,
-                    err_code=SquarePushPermitterException.ERR_CODE,
+                    msg=SquarePushAuthorizerException.MSG,
+                    err_code=SquarePushAuthorizerException.ERR_CODE,
                     ex=bootstrap.exception,
                 )
             )
@@ -105,11 +105,11 @@ class SquareStackPushPermitter(StackPushPermitter[Square]):
         report = self._collision_detector.execute(attractor=square, stream=stack)
         if report.collision_exists:
             PushApprovalReport.deny(
-                exception=SquarePushPermitterException(
+                exception=SquarePushAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=SquarePushPermitterException.MSG,
-                    err_code=SquarePushPermitterException.ERR_CODE,
+                    msg=SquarePushAuthorizerException.MSG,
+                    err_code=SquarePushAuthorizerException.ERR_CODE,
                     ex=report.exception,
                 )
             )

@@ -1,16 +1,16 @@
-# src/authorization/permitter/token/maneuver/__init__.py
+# src/authorization/authorizer/token/maneuver/__init__.py
 
 """
-Module: authorization.permitter.token.maneuver.__init__
+Module: authorization.authorizer.token.maneuver.__init__
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
 """
 
-# =========== AUTHORIZATION.PERMITTER.TOKEN.MANEUVER PACKAGE ===========#
+# =========== AUTHORIZATION.AUTHORIZER.TOKEN.MANEUVER PACKAGE ===========#
 
 # Packages
 from .undo import *
 
 # Modules
-from .permitter import TokenManeuverPermitter
+from .authorizer import TokenManeuverAuthorizer

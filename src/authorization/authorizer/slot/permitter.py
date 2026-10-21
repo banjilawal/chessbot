@@ -1,7 +1,7 @@
-# src/authorization/permitter/slot/permitter.py
+# src/authorization/authorizer/slot/authorizer.py
 
 """
-Module: authorization.permitter.slot.permitter
+Module: authorization.authorizer.slot.authorizer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,15 +13,15 @@ from typing import Type, cast
 
 from sensor.analyzer import RankQuotaAnalyzer
 from bootstrapper import PrimingValidator
-from err import RankQuotaFullException, RankSlotPermitterException, RankSlotRequestNullException
-from authorization.permitter import OperationPermitter
+from err import RankQuotaFullException, RankSlotAuthorizerException, RankSlotRequestNullException
+from authorization.authorizer import OperationAuthorizer
 from artifcat.report import RankQuotaReport, RankSlotApprovalReport
 from client.exchange import RankSlotRequest
 from util import LoggingLevelRouter
 from transit.dispatcher.validator import RankValidationDispatcher
 
 
-class RankSlotPermitter(OperationPermitter):
+class RankSlotAuthorizer(OperationAuthorizer):
     """
     Role:
         - Transaction Worker
@@ -80,7 +80,7 @@ class RankSlotPermitter(OperationPermitter):
         Returns:
             AnalysisResult
         Raises:
-            RankSlotPermitterException
+            RankSlotAuthorizerException
             RankStackFullException
         """
         method =  f"{self.__class__.__name__}.execute"
@@ -94,11 +94,11 @@ class RankSlotPermitter(OperationPermitter):
         # Send the exception chain in the permission denial.
         if request_type_validation_result.is_failure:
             RankSlotApprovalReport.deny(
-                exception=RankSlotPermitterException(
+                exception=RankSlotAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=RankSlotPermitterException.MSG,
-                    err_code=RankSlotPermitterException.ERR_CODE,
+                    msg=RankSlotAuthorizerException.MSG,
+                    err_code=RankSlotAuthorizerException.ERR_CODE,
                     ex=request_type_validation_result.exception,
                 )
             )
@@ -109,11 +109,11 @@ class RankSlotPermitter(OperationPermitter):
         # Send a permission denial if the analyzer aborts.
         if quota_analysis_result.is_failure:
             RankSlotApprovalReport.deny(
-                exception=RankSlotPermitterException(
+                exception=RankSlotAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=RankSlotPermitterException.MSG,
-                    err_code=RankSlotPermitterException.ERR_CODE,
+                    msg=RankSlotAuthorizerException.MSG,
+                    err_code=RankSlotAuthorizerException.ERR_CODE,
                     ex=quota_analysis_result.exception,
                 )
             )
@@ -121,11 +121,11 @@ class RankSlotPermitter(OperationPermitter):
         # Send a permission denial if there ar no openings for the rank.
         if not quota.openings_exist:
             RankSlotApprovalReport.deny(
-                exception=RankSlotPermitterException(
+                exception=RankSlotAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=RankSlotPermitterException.MSG,
-                    err_code=RankSlotPermitterException.ERR_CODE,
+                    msg=RankSlotAuthorizerException.MSG,
+                    err_code=RankSlotAuthorizerException.ERR_CODE,
                     ex=RankQuotaFullException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,

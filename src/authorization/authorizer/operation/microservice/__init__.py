@@ -13,4 +13,4 @@ version: 0.0.2
 from .fabrication import *
 
 # Modules
-from .permitter import MicroservicePermitter
+from .authorizer import MicroserviceAuthorizer

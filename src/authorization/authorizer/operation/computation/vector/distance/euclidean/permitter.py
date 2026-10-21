@@ -1,7 +1,7 @@
-# src/authorization/permitter/permitter.py
+# src/authorization/authorizer/authorizer.py
 
 """
-Module: authorization.permitter.permitter
+Module: authorization.authorizer.authorizer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -20,7 +20,7 @@ from util import LoggingLevelRouter
 
 
 
-class EuclideanDistancePermitter(ComputationPermitter[CartesianToggle]):
+class EuclideanDistanceAuthorizer(ComputationAuthorizer[CartesianToggle]):
     """
     Role:
         - Permission Authorization
@@ -41,7 +41,7 @@ class EuclideanDistancePermitter(ComputationPermitter[CartesianToggle]):
         -  def execute(self, EuclideanDistanceRequest) -> RequestDecision
 
     Super Class:
-        ComputationPermitter
+        ComputationAuthorizer
     """
     
     def __init__(

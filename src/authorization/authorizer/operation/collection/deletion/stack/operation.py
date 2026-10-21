@@ -33,7 +33,7 @@ class StackPop(CollectionDeletion[StackService], ABC, Generic[T]):
         1.  Remove a T instance out of the StackService[T].
 
     Attributes:
-        permitter: PopStackPermitter[T]
+        authorizer: PopStackAuthorizer[T]
         
     Provides:
         -   def execute(request: PopStackRequest[T]) -> DeletionResult[T]
@@ -42,16 +42,16 @@ class StackPop(CollectionDeletion[StackService], ABC, Generic[T]):
         CollectionDeletion
     """
     
-    def __init__(self, permitter: PopStackPermitter[T]):
+    def __init__(self, authorizer: PopStackAuthorizer[T]):
         """
         Args:
-            permitter: PopStackPermitter[T]
+            authorizer: PopStackAuthorizer[T]
         """
-        super().__init__(permitter=permitter)
+        super().__init__(authorizer=authorizer)
     
     @property
-    def permitter(self) -> PopStackPermitter[T]:
-        return cast(PopStackPermitter[T], super().permitter)
+    def authorizer(self) -> PopStackAuthorizer[T]:
+        return cast(PopStackAuthorizer[T], super().authorizer)
     
     @abstractmethod
     @LoggingLevelRouter.monitor

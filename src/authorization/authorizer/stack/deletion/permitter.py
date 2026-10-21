@@ -1,7 +1,7 @@
-# src/authorization/permitter/stack/deletion/permitter.py
+# src/authorization/authorizer/stack/deletion/authorizer.py
 
 """
-Module: authorization.permitter.stack.deletion.permitter
+Module: authorization.authorizer.stack.deletion.authorizer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -10,15 +10,15 @@ version: 0.0.2
 from abc import abstractmethod
 from typing import Type
 
-from err import DeletionRequestNullException, DeletePermitterException
-from authorization.permitter.stack import OperationPermitter
+from err import DeletionRequestNullException, DeleteAuthorizerException
+from authorization.authorizer.stack import OperationAuthorizer
 from artifcat.report import DeletionApprovalReport
 from client.exchange import CollectionDeletionRequest
 from artifcat import ValidationResult
 from util import LoggingLevelRouter
 
 
-class DeleterPermitter(OperationPermitter):
+class DeleterAuthorizer(OperationAuthorizer):
     """
     Role:
         - Request Analyzer
@@ -34,7 +34,7 @@ class DeleterPermitter(OperationPermitter):
         - run(self, request: DeletionRequest,) -> DeletionApprovalReport:
 
     Super Class:
-        Permitter
+        Authorizer
     """
     
     @abstractmethod
@@ -57,7 +57,7 @@ class DeleterPermitter(OperationPermitter):
         Returns:
             ValidationResult
         Raises:
-            DeleterPermitterException
+            DeleterAuthorizerException
         """
         method = f"{self.__class__.__name__}.bootstrap_request"
         
@@ -70,11 +70,11 @@ class DeleterPermitter(OperationPermitter):
         if validation_result.is_failure:
             # Send the exception chain in the ValidationResult.
             return ValidationResult.failure(
-                DeletePermitterException(
+                DeleteAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=DeletePermitterException.MSG,
-                    err_code=DeletePermitterException.ERR_CODE,
+                    msg=DeleteAuthorizerException.MSG,
+                    err_code=DeleteAuthorizerException.ERR_CODE,
                     ex=validation_result.exception,
                 )
             )

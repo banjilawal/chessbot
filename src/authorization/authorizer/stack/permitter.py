@@ -1,7 +1,7 @@
-# src/authorization/permitter/stack/permitter.py
+# src/authorization/authorizer/stack/authorizer.py
 
 """
-Module: authorization.permitter.stack.permitter
+Module: authorization.authorizer.stack.authorizer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, Optional, TypeVar, cast
 
 from assurance import PrimingValidator
-from authorization import OperationPermitter, Request, StackRequestAdjudicator
+from authorization import OperationAuthorizer, Request, StackRequestAdjudicator
 from artifcat.report import Decision
 from util import LoggingLevelRouter
 
@@ -21,7 +21,7 @@ from util import LoggingLevelRouter
 T = TypeVar("T", bound="StackRequest")
 
 
-class StackOperationPermitter(OperationPermitter, ABC, Generic[T]):
+class StackOperationAuthorizer(OperationAuthorizer, ABC, Generic[T]):
     """
     Role:
         - Permission Authorization
@@ -42,7 +42,7 @@ class StackOperationPermitter(OperationPermitter, ABC, Generic[T]):
         -  def execute(self, request: T) -> RequestDecision
 
     Super Class:
-        OperationPermitter
+        OperationAuthorizer
     """
     _adjudicator: StackRequestAdjudicator[T]
     _priming_validator: PrimingValidator

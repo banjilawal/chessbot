@@ -1,7 +1,7 @@
-# src/authorization/permitter/chain/search/token/permitter.py
+# src/authorization/authorizer/chain/search/token/authorizer.py
 
 """
-Module: authorization.permitter.chain.search.token.permitter
+Module: authorization.authorizer.chain.search.token.authorizer
 Author: Banji Lawal
 Created: 2026-04-03
 version: 0.0.2
@@ -12,9 +12,9 @@ from __future__ import annotations
 from typing import cast
 
 from domain.search.context import TokenContext
-from err import TokenSearchPermitterException
+from err import TokenSearchAuthorizerException
 from domain.model import Token
-from authorization.permitter.chain import SearchPermitter
+from authorization.authorizer.chain import SearchAuthorizer
 from artifcat.report import SearchApprovalReport
 from client.exchange import SearchRequest
 from chain import TokenChainService
@@ -22,7 +22,7 @@ from authorization.adjudicator import TokenSearchRequestAdjudicator
 from util import LoggingLevelRouter
 
 
-class TokenSearchPermitter(SearchPermitter[Token]):
+class TokenSearchAuthorizer(SearchAuthorizer[Token]):
     """
     Role:
         - Transaction Worker
@@ -39,7 +39,7 @@ class TokenSearchPermitter(SearchPermitter[Token]):
         - execute(request: SearchRequest) -> SearchApprovalReport
 
     Super Class:
-        SearchPermitter
+        SearchAuthorizer
     """
     _request_adjudicator: TokenSearchRequestAdjudicator
     
@@ -73,7 +73,7 @@ class TokenSearchPermitter(SearchPermitter[Token]):
         Returns:
             AnalysisResult
         Raises:
-            TokenSearchPermitterException
+            TokenSearchAuthorizerException
             TokenChainFullException
         """
         method =  f"{self.__class__.__name__}.execute"
@@ -83,11 +83,11 @@ class TokenSearchPermitter(SearchPermitter[Token]):
         if bootstrap.is_failure:
             # Send an exception chain in the permission denial.
             return SearchApprovalReport.deny(
-                TokenSearchPermitterException(
+                TokenSearchAuthorizerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=TokenSearchPermitterException.MSG,
-                    err_code=TokenSearchPermitterException.ERR_CODE,
+                    msg=TokenSearchAuthorizerException.MSG,
+                    err_code=TokenSearchAuthorizerException.ERR_CODE,
                     ex=bootstrap.exception,
                 )
             )

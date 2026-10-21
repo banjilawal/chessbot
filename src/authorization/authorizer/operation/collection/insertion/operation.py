@@ -12,7 +12,7 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 from typing import Generic, TypeVar, cast
 
-from authorization import CollectionInsertionRequest, OperationPermitter
+from authorization import CollectionInsertionRequest, OperationAuthorizer
 from operation import CrudOperator
 from artifcat import InsertionResult
 from util import LoggingLevelRouter
@@ -30,7 +30,7 @@ class CollectionInsertion(CrudOperator[InsertionResult], ABC, Generic[T]):
         1.  Execute a task on a Collection that produces an InsertionResult.
 
     Attributes:
-        permitter: CollectionInsertionPermitter[T]
+        authorizer: CollectionInsertionAuthorizer[T]
         
     Provides:
         -   def execute(request: InsertionRequest[T]) -> InsertionResult
@@ -39,16 +39,16 @@ class CollectionInsertion(CrudOperator[InsertionResult], ABC, Generic[T]):
         CollectionOperation
     """
     
-    def __init__(self, permitter: CollectionInsertionPermitter[T]):
+    def __init__(self, authorizer: CollectionInsertionAuthorizer[T]):
         """
         Args:
-            permitter: CollectionInsertionPermitter[T]
+            authorizer: CollectionInsertionAuthorizer[T]
         """
-        super().__init__(permitter=permitter)
+        super().__init__(authorizer=authorizer)
         
     @property
-    def permitter(self) -> OperationPermitter[T]:
-        return cast(CollectionInsertionPermitter[T], super().permitter)
+    def authorizer(self) -> OperationAuthorizer[T]:
+        return cast(CollectionInsertionAuthorizer[T], super().authorizer)
     
     @abstractmethod
     @LoggingLevelRouter.monitor
