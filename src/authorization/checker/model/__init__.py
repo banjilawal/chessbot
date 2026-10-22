@@ -10,10 +10,7 @@ version: 0.0.2
 # =========== AUTHORIZATION.CHECKER.MODEL PACKAGE ===========#
 
 # Packages
-from .applicant import *
-from .model import *
-from .request import *
-from .role import *
+from .token import *
 
 # Modules
 from .checker import ModelChecker

@@ -12,14 +12,14 @@ from __future__ import annotations
 from typing import Optional, cast
 
 from artifcat import Decision
-from authorization import ValidApplicantChecker
+from authorization import ModelChecker
 from domain import Token
 from err import TokenApproverException
 from exchange import AuthorizationRequest, TokenValidationRequest, TokenValidationService
 from transit import TokenCarrier
 from util import IdFactory, LoggingLevelRouter
 
-class ValidTokenChecker(ValidApplicantChecker[Token]):
+class ValidTokenChecker(ModelChecker[Token]):
     """
     Role:
         -   Authorization
@@ -35,7 +35,7 @@ class ValidTokenChecker(ValidApplicantChecker[Token]):
         -   def execute(request: AuthorizationRequest) -> Decision
 
     Super Class:
-        ValidApplicantChecker
+        ModelChecker
     """
     
     def __init__(
