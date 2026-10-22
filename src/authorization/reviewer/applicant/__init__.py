@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== AUTHORIZATION.REVIEWER.APPLICANT PACKAGE ===========#
 
 # Packages
+from .maneuver import *
 from .promotion import *
 
 # Modules

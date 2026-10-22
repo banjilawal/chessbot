@@ -1,7 +1,7 @@
-# src/authorization/reviewer/promotion/applicant/reviewer.py
+# src/authorization/reviewer/applicant/promotion/reviewer.py
 
 """
-Module: authorization.reviewer.promotion.applicant.reviewer
+Module: authorization.reviewer.applicant.promotion.reviewer
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -13,8 +13,8 @@ from typing import List, Optional, Type, cast
 
 from artifcat import PromotionDecision
 from authorization import (
-    ApplicantChecker, ApplicantReadinessChecker, ApplicantReviewer, DoublePromotionChecker, PromotionPawnTokenChecker,
-    PromotionRowChecker, Checker, ValidTokenChecker
+    ApplicantChecker, ApplicantReadinessChecker, ApplicantReviewer,
+    DoublePromotionChecker, PromotionPawnTokenChecker, PromotionRowChecker,
 )
 from err import ApplicantApproverException
 from exchange import PromotionRequest
