@@ -14,6 +14,7 @@ from typing import Generic, TypeVar
 
 from artifcat import Decision
 from authorization import Chainable
+from exchange import AuthorizationRequest
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="AuthorizationRequest")

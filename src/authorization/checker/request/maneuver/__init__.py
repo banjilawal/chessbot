@@ -14,4 +14,4 @@ from .applicant import *
 from .role import *
 
 # Modules
-from .checker import ManeuverTokenChecker
+from .checker import ManeuverChecker

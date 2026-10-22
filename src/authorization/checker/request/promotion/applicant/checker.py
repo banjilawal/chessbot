@@ -13,14 +13,14 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from artifcat import PromotionDecision
-from authorization import PromotionChecker
+from authorization import ActorChainable, PromotionChecker
 from domain import Actor
 from exchange import PromotionRequest
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Actor")
 
-class PromotionApplicantChecker(PromotionChecker[T], ABC, Generic[T]):
+class PromotionApplicantChecker(PromotionChecker[T], ActorChainable, ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor

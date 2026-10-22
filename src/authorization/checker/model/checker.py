@@ -13,13 +13,13 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from artifcat import Decision
-from authorization import Chainable
+from authorization import ActorChainable
 from exchange import AuthorizationRequest, ValidationService
 from util import LoggingLevelRouter
 
 T = TypeVar("T")
 
-class ModelChecker(Chainable, ABC, Generic[T]):
+class ModelChecker(ActorChainable, ABC, Generic[T]):
     """
     Role:
         -   Authorization

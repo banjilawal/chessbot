@@ -13,14 +13,14 @@ from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
 from artifcat import ManeuverDecision
-from authorization import ManeuverChecker
+from authorization import ActorChainable, ManeuverChecker
 from domain import Actor
 from exchange import ManeuverRequest
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Actor")
 
-class ManeuverApplicantChecker(ManeuverChecker[T], ABC, Generic[T]):
+class ManeuverApplicantChecker(ManeuverChecker[T], ActorChainable, ABC, Generic[T]):
     
     @abstractmethod
     @LoggingLevelRouter.monitor
