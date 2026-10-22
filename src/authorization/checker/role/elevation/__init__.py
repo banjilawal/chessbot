@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== AUTHORIZATION.CHECKER.ROLE.ELEVATION PACKAGE ===========#
 
 # Packages
+from .rank import *
 
 # Modules
-from .checker import ElevationChecker
+from .checker import PromotionRoleChecker

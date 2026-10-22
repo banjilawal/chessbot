@@ -11,6 +11,7 @@ version: 0.0.2
 
 # Packages
 from .applicant import *
+from .role import *
 from .valid import *
 
 # Modules

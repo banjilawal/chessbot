@@ -7,7 +7,7 @@ Created: 2026-03-30
 version: 0.0.2
 """
 
-# =========== AUTHORIZATION.CHECKER.APPLICANT.PROMOTION.PAWN PACKAGE ===========#
+# =========== AUTHORIZATION.CHECKER.APPLICANT.TOKEN.PROMOTION.PAWN PACKAGE ===========#
 
 # Packages
 

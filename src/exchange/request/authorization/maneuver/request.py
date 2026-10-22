@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import cast
 
 from artifcat import ManeuverResult
-from domain import Maneuverable, Token
+from domain import Maneuverable, Path, Token
 from exchange import AuthorizationRequest
 
 
@@ -50,6 +50,10 @@ class ManeuverRequest(AuthorizationRequest[ManeuverResult]):
     @property
     def activity(self) -> Maneuverable:
         return cast(Maneuverable, super().activity)
+    
+    @property
+    def activity_to_path(self) -> Path:
+        return cast(Path, self.activity)
     
     def __eq__(self, other):
         if other is self: return True

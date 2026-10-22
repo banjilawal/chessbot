@@ -119,7 +119,7 @@ class Square(StateModel):
         return True
     
     @property
-    def is_no_consistent(self) -> bool:
+    def is_not_consistent(self) -> bool:
         return not self.consistency_exists
     
     def __eq__(self, other: object) -> bool:

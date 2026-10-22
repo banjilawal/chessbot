@@ -11,6 +11,7 @@ version: 0.0.2
 
 # Packages
 from .elevation import *
+from .maneuver import *
 
 # Modules
 from .checker import RoleChecker

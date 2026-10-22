@@ -12,9 +12,7 @@ from __future__ import annotations
 
 from typing import Optional
 
-from domain import Maneuverable, SearchableModel, SquareRegister
-
-
+from domain import Maneuverable, SearchableModel, Square, SquareRegister
 
 class Path(SearchableModel, Maneuverable):
     """
@@ -56,6 +54,22 @@ class Path(SearchableModel, Maneuverable):
     @property
     def endpoints(self) -> SquareRegister:
         return self._endpoints
+    
+    @property
+    def origin(self) -> Square:
+        return self._endpoints.origin
+    
+    @property
+    def destination(self) -> Square:
+        return self._endpoints.destination
+    
+    @property
+    def is_consistent(self) -> bool:
+        return self._endpoints.consistency_exists
+    
+    @property
+    def not_consistent(self) -> bool:
+        return not self.is_consistent
     
     @property
     def label(self) -> Optional[int]:

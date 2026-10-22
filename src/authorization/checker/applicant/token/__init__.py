@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== AUTHORIZATION.CHECKER.APPLICANT.TOKEN PACKAGE ===========#
 
 # Packages
+from .maneuver import *
 from .promotion import *
 from .readiness import *
 

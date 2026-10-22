@@ -9,10 +9,11 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from abc import ABC
 from typing import cast
 
 from artifcat import PromotionResult
-from domain import Elevatable, PawnToken
+from domain import Elevatable, PawnToken, Rank
 from exchange import AuthorizationRequest
 
 
@@ -50,6 +51,10 @@ class PromotionRequest(AuthorizationRequest[PromotionResult]):
     @property
     def activity(self) -> Elevatable:
         return cast(Elevatable, super().activity)
+    
+    @property
+    def activity_to_rank(self) -> Rank:
+        return cast(Rank, cast(ABC, self.activity))
     
     def __eq__(self, other):
         if other is self: return True

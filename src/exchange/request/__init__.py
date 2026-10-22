@@ -16,7 +16,6 @@ from .chain import *
 from .authorization import *
 from .fabrication import *
 from .insertion import *
-from .maneuver import *
 from .microservice import *
 from .operation import *
 from .validation import *

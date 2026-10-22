@@ -9,7 +9,7 @@ version: 0.0.2
 
 from __future__ import  annotations
 
-from typing import Dict, Optional
+from typing import Dict, List, Optional
 
 from domain import Coord, Model
 
@@ -96,6 +96,14 @@ class Footstep(Model):
     @property
     def consistency_exists(self) -> bool:
         return not self.is_not_consistent
+    
+    @property
+    def to_list(self) -> List[Coord]:
+        coords: List[Coord] = []
+        table = self.to_dict
+        for key in table.keys():
+            coords.append(table[key])
+        return coords
     
     @property
     def to_dict(self) -> Dict:

@@ -12,11 +12,11 @@ from __future__ import annotations
 from typing import cast
 
 from artifcat import EncounterResult
-from domain import Attackable, Token
+from domain import Attackable, Maneuver, Token
 from exchange import AuthorizationRequest
 
 
-class EncounterRequest(AuthorizationRequest[EncounterResult]):
+class AttackRequest(AuthorizationRequest[EncounterResult]):
     """
      Role:
          -  Messaging
@@ -51,9 +51,13 @@ class EncounterRequest(AuthorizationRequest[EncounterResult]):
     def activity(self) -> Attackable:
         return cast(Attackable, super().activity)
     
+    @property
+    def activity_to_maneuver(self) -> Maneuver:
+        return cast(Maneuver, self.activity)
+    
     def __eq__(self, other):
         if other is self: return True
         if other is None: return False
-        if isinstance(other, EncounterRequest):
+        if isinstance(other, AttackRequest):
             return self.id == other.id
         return False

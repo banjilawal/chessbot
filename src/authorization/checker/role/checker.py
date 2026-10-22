@@ -10,17 +10,16 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import TypeVar, cast
+from typing import Generic, TypeVar
 
 from artifcat import Decision
 from authorization import Checker
-from domain import Actionable
 from exchange import AuthorizationRequest, ValidationService
 from util import LoggingLevelRouter
 
-T = TypeVar("T", bound="Actionable")
+T = TypeVar("T", bound="AuthorizationRequest")
 
-class RoleChecker(Checker[T], ABC):
+class RoleChecker(Checker[T], ABC, Generic[T]):
     """
     Role:
         -   Authorization
@@ -29,28 +28,29 @@ class RoleChecker(Checker[T], ABC):
         1.  Verifies an Actionable meets minimum safety requirements.
 
     Attributes:
-        validation_service: ValidationService[T]
         
     Provides:
-        -   def execute(request: AuthorizationRequest) -> Decision
-
+        -   def execute(request: T) -> Decision[T]
 
     Super Class:
-        PropertyChecker
+        Checker
     """
     
-    def __init__(self, validation_service: ValidationService[T]):
+    _validation_service: ValidationService
+    
+    def __init__(self, validation_service: ValidationService):
         """
         Args:
-            validation_service: ValidationService[T]
+            validation_service: Optional[ValidationService]
         """
-        super().__init__(validation_service=validation_service)
-        
+        super().__init__()
+        self._validation_service = validation_service
+    
     @property
-    def validation_service(self) -> ValidationService[T]:
-        return cast(ValidationService[T], super().validation_service)
+    def validation_service(self) -> ValidationService:
+        return self._validation_service
     
     @abstractmethod
     @LoggingLevelRouter.monitor
-    def execute(self, request: AuthorizationRequest) -> Decision:
+    def execute(self, request: T) -> Decision[T]:
         pass
