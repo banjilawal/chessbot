@@ -11,6 +11,7 @@ version: 0.0.2
 
 # Packages
 from .actor import *
+from .role import *
 
 # Modules
 from .interface import Chainable

@@ -12,8 +12,8 @@ version: 0.0.2
 # Packages
 from .authorizer import *
 from .adjudicator import *
+from .chain import *
 from .reviewer import *
-from .checker import *
 from .interface import *
 from .loader import *
 from .reviewer import *
