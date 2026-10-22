@@ -29,28 +29,30 @@ class ApplicantReviewer(Reviewer[T], ABC, Generic[T]):
             activity.
 
     Attributes:
-        valid_item_checker: ValidApplicantChecker[T]
+        valid_applicant_checker: ValidApplicantChecker[T]
 
     Provides:
         -   def execute(request: T) -> Decision[T]
 
     Super Class:
     """
+    _valid_applicant_checker: ValidApplicantChecker[T]
     
-    def __init__(self, valid_item_checker: ValidApplicantChecker[T]):
+    def __init__(self, valid_applicant_checker: ValidApplicantChecker[T]):
         """
         Args:
-            valid_item_checker: ValidApplicantChecker[T]
+            valid_applicant_checker: ValidApplicantChecker[T]
         """
-        super().__init__(valid_item_checker=valid_item_checker)
+        super().__init__()
+        self._valid_applicant_checker =valid_applicant_checker
         
     @property
-    def valid_item_checker(self) -> ValidApplicantChecker[T]:
-        return cast(Type[ValidApplicantChecker[T]], super().valid_item_checker)
+    def valid_applicant_checker(self) -> ValidApplicantChecker[T]:
+        return self._.valid_applicant_checker
     
     @property
     @abstractmethod
-    def checkers(self) -> List[Checker]:
+    def checkers(self) -> List[ApplicantChecker]:
         pass
     
     @abstractmethod

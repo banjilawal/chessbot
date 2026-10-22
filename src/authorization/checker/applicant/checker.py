@@ -9,11 +9,15 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from abc import ABC
+from abc import ABC, abstractmethod
 from typing import Generic, TypeVar
 
+from artifcat import Decision
 from authorization import Checker
+from config.logging_setup import LOGGING_CONFIG
 from domain import Actor
+from exchange import AuthorizationRequest
+from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Actor")
 
@@ -34,3 +38,8 @@ class ApplicantChecker(Checker[T], ABC, Generic[T]):
         Checker
     """
     pass
+    
+    @abstractmethod
+    @LoggingLevelRouter.monitor
+    def execute(self, request: AuthorizationRequest) -> Decision:
+        pass

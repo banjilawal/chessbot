@@ -13,14 +13,14 @@ from abc import ABC, abstractmethod
 from typing import TypeVar
 
 from artifcat import Decision
-from authorization import Attributable, Checker
+from authorization import ApplicantChecker, Attributable, Checker
 from domain import Actor
 from exchange import AuthorizationRequest, ValidationService
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="Actor")
 
-class ValidApplicantChecker(Checker[T], Attributable, ABC):
+class ValidApplicantChecker(ApplicantChecker[T], ABC):
     """
     Role:
         -   Authorization
