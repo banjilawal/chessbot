@@ -15,7 +15,7 @@ from typing import Optional, cast
 from artifcat import ManeuverDecision
 from authorization import ManeuverRoleChecker
 from domain import Maneuver, Maneuverable, Path
-from err import AuthorizationException
+from err import AuthorizationException, PathConsistencyException
 from exchange import ManeuverRequest, PathValidationRequest, PathValidationService
 from transit import PathCarrier
 from util import IdFactory, LoggingLevelRouter
@@ -90,9 +90,27 @@ class ManeuverPathChecker(ManeuverRoleChecker[Maneuverable]):
                 )
             )
         path = cast(Path, validation.payload)
+        if path.not_consistent:
+            # Send the exception chain on failure.
+            return ManeuverDecision.denial(
+                request=request,
+                exception=AuthorizationException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=AuthorizationException.MSG,
+                    err_code=AuthorizationException.ERR_CODE,
+                    ex=PathConsistencyException(
+                        cls_mthd=method,
+                        cls_name=self.__class__.__name__,
+                        msg=PathConsistencyException.MSG,
+                        err_code=PathConsistencyException.ERR_CODE,
+                    ),
+                )
+            )
+        activity = cast(Maneuverable)
         approval = ManeuverRequest(
             id=request.id,
-            activity=path,
+            activity=activity,
             applicant=request.applicant,
         )
         # --- Forward the work product. ---#
