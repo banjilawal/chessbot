@@ -10,10 +10,10 @@ version: 0.0.2
 from __future__ import annotations
 
 from abc import ABC, abstractmethod
-from typing import Generic, List, Type, TypeVar, cast
+from typing import Generic, List, TypeVar
 
 from artifcat import Decision
-from authorization import ApplicantChecker, Attributable, Checkable, Checker, Reviewer, ValidApplicantChecker
+from authorization import ApplicantChecker, Reviewer, ValidApplicantChecker
 from exchange import AuthorizationRequest
 from util import LoggingLevelRouter
 
@@ -36,9 +36,9 @@ class ApplicantReviewer(Reviewer[T], ABC, Generic[T]):
 
     Super Class:
     """
-    _valid_applicant_checker: ValidApplicantChecker[T]
+    _valid_applicant_checker: ValidApplicantChecker
     
-    def __init__(self, valid_applicant_checker: ValidApplicantChecker[T]):
+    def __init__(self, valid_applicant_checker: ValidApplicantChecker):
         """
         Args:
             valid_applicant_checker: ValidApplicantChecker[T]
@@ -47,7 +47,7 @@ class ApplicantReviewer(Reviewer[T], ABC, Generic[T]):
         self._valid_applicant_checker =valid_applicant_checker
         
     @property
-    def valid_applicant_checker(self) -> ValidApplicantChecker[T]:
+    def valid_applicant_checker(self) -> ValidApplicantChecker:
         return self._.valid_applicant_checker
     
     @property

@@ -13,8 +13,8 @@ from typing import List, Optional, Type, cast
 
 from artifcat import ManeuverDecision
 from authorization import (
-    ApplicantChecker, ApplicantReadinessChecker, ApplicantReviewer, ApplicantDestinationChecker, ManeuverPawnTokenChecker,
-    ApplicantOriginChecker, Checker, ValidTokenChecker
+    ApplicantChecker, ApplicantDestinationChecker, ApplicantOriginChecker,
+    ApplicantReadinessChecker, ApplicantReviewer, ValidTokenChecker,
 )
 from err import ApplicantApproverException
 from exchange import ManeuverRequest
@@ -41,10 +41,9 @@ class ManeuverApplicantReviewer(ApplicantReviewer[ManeuverRequest]):
         -   def execute(request: ManeuverRequest) -> ManeuverDecision
 
     Super Class:
-        ApplicantReview
+        ApplicantReviewer
     """
 
-    _pawn_checker: ManeuverPawnTokenChecker
     _origin_checker: ApplicantOriginChecker
     _readiness_checker: ApplicantReadinessChecker
     _destination_checker: ApplicantDestinationChecker
@@ -53,7 +52,6 @@ class ManeuverApplicantReviewer(ApplicantReviewer[ManeuverRequest]):
     def __init__(
             self,
             valid_applicant_checker: Optional[ValidTokenChecker] | None = None,
-            pawn_checker: Optional[ManeuverPawnTokenChecker] | None = None,
             origin_checker: Optional[ApplicantOriginChecker] | None = None,
             readiness_checker: Optional[ApplicantReadinessChecker] | None = None,
             destination_checker: Optional[ApplicantDestinationChecker] | None = None,
@@ -61,26 +59,23 @@ class ManeuverApplicantReviewer(ApplicantReviewer[ManeuverRequest]):
         """
         Args:
             valid_applicant_checker: Optional[ValidTokenChecker]
-            pawn_checker: Optional[ManeuverPawnTokenChecker]
             origin_checker: Optional[ApplicantOriginChecker]
             readiness_checker: Optional[ApplicantReadinessChecker]
             destination_checker: Optional[ApplicantDestinationChecker]
         """
         super().__init__(valid_applicant_checker=valid_applicant_checker or ValidTokenChecker())
-        self._pawn_checker = pawn_checker or ManeuverPawnTokenChecker()
         self._readiness_checker = readiness_checker or ApplicantReadinessChecker()
         self._origin_checker = origin_checker or ApplicantOriginChecker()
         self._destination_checker = destination_checker or ApplicantDestinationChecker()
         
     @property
     def valid_applicant_checker(self) -> ValidTokenChecker:
-        return cast(Type[ValidTokenChecker], super().valid_applicant_checker)
+        return cast(ValidTokenChecker, super().valid_applicant_checker)
     
     @property
     def checkers(self) -> List[ApplicantChecker]:
         return [
             self._valid_applicant_checker,
-            self._pawn_checker,
             self._readiness_checker,
             self._origin_checker,
             self._destination_checker,

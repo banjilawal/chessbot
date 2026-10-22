@@ -1,7 +1,7 @@
-# src/authorization/checker/applicant/token/promotion/double/checker.py
+# src/authorization/checker/applicant/promotion/double/checker.py
 
 """
-Module: authorization.checker.applicant.token.promotion.double.checker
+Module: authorization.checker.applicant.promotion.double.checker
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -11,12 +11,12 @@ from __future__ import annotations
 
 
 from artifcat import PromotionDecision
-from authorization import PromotionApplicantChecker
+from authorization import PromotionTokenChecker
 from exchange import PromotionRequest
 from util import LoggingLevelRouter
 
 
-class DoublePromotionChecker(PromotionApplicantChecker):
+class DoublePromotionChecker(PromotionTokenChecker):
     """
     Role:
         -   Authorization
@@ -30,7 +30,7 @@ class DoublePromotionChecker(PromotionApplicantChecker):
         -   def execute(self, request: PromotionRequest) -> PromotionDecision
 
     Super Class:
-        PromotionApplicantChecker
+        PromotionTokenChecker
     """
     
     @LoggingLevelRouter.monitor

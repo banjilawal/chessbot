@@ -1,7 +1,7 @@
-# src/authorization/checker/applicant/token/promotion/row/checker.py
+# src/authorization/checker/applicant/promotion/pawn/checker.py
 
 """
-Module: authorization.checker.applicant.token.promotion.row.checker
+Module: authorization.checker.applicant.promotion.pawn.checker
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -9,20 +9,22 @@ version: 0.0.2
 
 from __future__ import annotations
 
+from typing import cast
 
 from artifcat import PromotionDecision
-from authorization import PromotionApplicantChecker
+from authorization import PromotionTokenChecker
+from domain import PawnToken
 from exchange import PromotionRequest
 from util import LoggingLevelRouter
 
 
-class PromotionRowChecker(PromotionApplicantChecker):
+class PromotionPawnTokenChecker(PromotionTokenChecker):
     """
     Role:
         -   Authorization
 
     Responsibilities:
-        1.  Verifies a Promotion applicant is on its enemy's rank row.
+        1.  Verifies a Promotion applicant is a PawnToken.
 
     Attributes:
 
@@ -30,7 +32,7 @@ class PromotionRowChecker(PromotionApplicantChecker):
         -   def execute(self, request: PromotionRequest) -> PromotionDecision
 
     Super Class:
-        PromotionApplicantChecker
+        PromotionTokenChecker
     """
     
     @LoggingLevelRouter.monitor
@@ -47,23 +49,19 @@ class PromotionRowChecker(PromotionApplicantChecker):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        promotion_row = request.applicant.team.enemy_rank_row
-        current_row = request.applicant.footstep.position.row
-        
-        if current_row is None or current_row != promotion_row:
+        if not isinstance(request.applicant, PawnToken):
             return PromotionDecision.denial(
                 request=request,
-                exception=PromotionRowException(
-                    cls_mthd=method,
-                    cls_name=self.__class__.__name__,
-                    msg=PromotionRowException.MSG,
-                    err_code=PromotionRowException.ERR_CODE,
+                exception=TypeError(
+                    f"Expected PawnToken received, "
+                    f"{type(request.applicant).__class__.__name__} instead."
                 )
             )
-        # --- Forward the work product. ---
+        # --- Forward the work product. ---#
+        applicant = cast(PawnToken, request.applicant)
         approval = PromotionRequest(
             id=request.id,
-            applicant=request.applicant,
+            applicant=applicant,
             activity=request.activity,
         )
         return PromotionDecision.grant(approval)

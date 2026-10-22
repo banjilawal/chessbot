@@ -1,7 +1,7 @@
-# src/authorization/checker/applicant/token/maneuver/checker.py
+# src/authorization/checker/applicant/maneuver/checker.py
 
 """
-Module: authorization.checker.applicant.token.maneuver.checker
+Module: authorization.checker.applicant.maneuver.checker
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -12,12 +12,13 @@ from __future__ import annotations
 from abc import ABC, abstractmethod
 
 from artifcat import ManeuverDecision
-from authorization import TokenApplicantChecker
+from authorization import ManeuverApplicantChecker
+from domain import Token
 from exchange import ManeuverRequest
 from util import LoggingLevelRouter
 
 
-class ManeuverApplicantChecker(TokenApplicantChecker[ManeuverRequest], ABC):
+class ManeuverTokenChecker(ManeuverApplicantChecker[Token], ABC):
     """
     Role:
         -   Authorization
@@ -31,7 +32,7 @@ class ManeuverApplicantChecker(TokenApplicantChecker[ManeuverRequest], ABC):
         -   def execute(self, request: ManeuverRequest) -> ManeuverDecision
 
     Super Class:
-        TokenApplicantChecker
+        ManeuverApplicantChecker
     """
     
     @abstractmethod

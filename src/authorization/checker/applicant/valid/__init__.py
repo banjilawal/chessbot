@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== AUTHORIZATION.CHECKER.VALID.APPLICANT PACKAGE ===========#
 
 # Packages
+from .token import *
 
 # Modules
 from .checker import ValidApplicantChecker

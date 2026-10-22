@@ -1,7 +1,7 @@
-# src/authorization/checker/applicant/token/maneuver/destination/checker.py
+# src/authorization/checker/applicant/maneuver/origin/checker.py
 
 """
-Module: authorization.checker.applicant.token.maneuver.destination.checker
+Module: authorization.checker.applicant.maneuver.origin.checker
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -9,20 +9,18 @@ version: 0.0.2
 
 from __future__ import annotations
 
-
 from artifcat import ManeuverDecision
-from authorization import ManeuverApplicantChecker
-from domain import Maneuver
+from authorization import ManeuverTokenChecker
 from exchange import ManeuverRequest
 from util import LoggingLevelRouter
 
-class ApplicantDestinationChecker(ManeuverApplicantChecker):
+class ApplicantOriginChecker(ManeuverTokenChecker):
     """
     Role:
         -   Authorization
 
     Responsibilities:
-        1.  Verifies a Maneuver applicant is on its enemy's rank destination.
+        1.  Verifies a Maneuver applicant is on its enemy's rank origin.
 
     Attributes:
 
@@ -30,7 +28,7 @@ class ApplicantDestinationChecker(ManeuverApplicantChecker):
         -   def execute(self, request: ManeuverRequest) -> ManeuverDecision
 
     Super Class:
-        ManeuverApplicantChecker
+        ManeuverTokenChecker
     """
     
     @LoggingLevelRouter.monitor
@@ -43,46 +41,39 @@ class ApplicantDestinationChecker(ManeuverApplicantChecker):
         Returns:
            ManeuverDecision
         Raises:
-            ApplicantDestinationCheckerException
+            ManeuverTokenChecker
         """
         method = f"{self.__class__.__name__}.execute"
         
         applicant = request.applicant
-        destination_occupant = request.activity_to_path.destination.occupant
-        
-        if destination_occupant == applicant:
+        origin = request.activity_to_path.origin
+        if origin.is_not_consistent:
             return ManeuverDecision.denial(
                 request=request,
-                exception=ApplicantDestinationCheckerException(
+                exception=ApplicantOriginCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ApplicantDestinationCheckerException.MSG,
-                    err_code=ApplicantDestinationCheckerException.ERR_CODE,
-                    ex=TravelerAtDestintionException(
+                    msg=ApplicantOriginCheckerException.MSG,
+                    err_code=ApplicantOriginCheckerException.ERR_CODE,
+                    ex=SquareConsistencyException(
                         cls_mthd=method,
                         cls_name=self.__class__.__name__,
-                        msg=TravelerAtDestintionException.MSG,
-                        err_code=TravelerAtDestintionException.ERR_CODE,
+                        msg=SquareConsistencyException.MSG,
+                        err_code=SquareConsistencyException.ERR_CODE,
                     )
                 )
             )
         if (
-                destination_occupant is not None and
-                applicant.is_friend(destination_occupant)
+                origin.occupant != applicant or
+                origin.coord != applicant.footstep.position
         ):
             return ManeuverDecision.denial(
                 request=request,
-                exception=ApplicantDestinationCheckerException(
+                exception=ApplicantOriginCheckerException(
                     cls_mthd=method,
                     cls_name=self.__class__.__name__,
-                    msg=ApplicantDestinationCheckerException.MSG,
-                    err_code=ApplicantDestinationCheckerException.ERR_CODE,
-                    ex=BlockedDestintionException(
-                        cls_mthd=method,
-                        cls_name=self.__class__.__name__,
-                        msg=BlockedDestintionException.MSG,
-                        err_code=BlockedDestintionException.ERR_CODE,
-                    )
+                    msg=ApplicantOriginCheckerException.MSG,
+                    err_code=ApplicantOriginCheckerException.ERR_CODE,
                 )
             )
         # --- Forward the work product. ---

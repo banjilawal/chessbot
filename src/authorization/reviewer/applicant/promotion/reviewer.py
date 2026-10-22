@@ -14,7 +14,7 @@ from typing import List, Optional, Type, cast
 from artifcat import PromotionDecision
 from authorization import (
     ApplicantChecker, ApplicantReadinessChecker, ApplicantReviewer,
-    DoublePromotionChecker, PromotionPawnTokenChecker, PromotionRowChecker,
+    DoublePromotionChecker, PromotionPawnTokenChecker, PromotionRowChecker, ValidTokenChecker,
 )
 from err import ApplicantApproverException
 from exchange import PromotionRequest
@@ -42,7 +42,7 @@ class PromotionApplicantReviewer(ApplicantReviewer[PromotionRequest]):
         -   def execute(request: PromotionRequest) -> PromotionDecision
 
     Super Class:
-        RPromotionReviewer
+        ApplicantReviewer
     """
 
     _pawn_checker: PromotionPawnTokenChecker
@@ -75,7 +75,7 @@ class PromotionApplicantReviewer(ApplicantReviewer[PromotionRequest]):
         
     @property
     def valid_applicant_checker(self) -> ValidTokenChecker:
-        return cast(Type[ValidTokenChecker], super().valid_applicant_checker)
+        return cast(ValidTokenChecker, super().valid_applicant_checker)
     
     @property
     def checkers(self) -> List[ApplicantChecker]:

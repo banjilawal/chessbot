@@ -1,7 +1,7 @@
-# src/authorization/checker/applicant/token/promotion/pawn/checker.py
+# src/authorization/checker/applicant/promotion/row/checker.py
 
 """
-Module: authorization.checker.applicant.token.promotion.pawn.checker
+Module: authorization.checker.applicant.promotion.row.checker
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
@@ -9,22 +9,20 @@ version: 0.0.2
 
 from __future__ import annotations
 
-from typing import cast
 
 from artifcat import PromotionDecision
-from authorization import PromotionApplicantChecker
-from domain import PawnToken
+from authorization import PromotionTokenChecker
 from exchange import PromotionRequest
 from util import LoggingLevelRouter
 
 
-class PromotionPawnTokenChecker(PromotionApplicantChecker):
+class PromotionRowChecker(PromotionTokenChecker):
     """
     Role:
         -   Authorization
 
     Responsibilities:
-        1.  Verifies a Promotion applicant is a PawnToken.
+        1.  Verifies a Promotion applicant is on its enemy's rank row.
 
     Attributes:
 
@@ -32,7 +30,7 @@ class PromotionPawnTokenChecker(PromotionApplicantChecker):
         -   def execute(self, request: PromotionRequest) -> PromotionDecision
 
     Super Class:
-        PromotionApplicantChecker
+        PromotionTokenChecker
     """
     
     @LoggingLevelRouter.monitor
@@ -49,19 +47,23 @@ class PromotionPawnTokenChecker(PromotionApplicantChecker):
         """
         method = f"{self.__class__.__name__}.execute"
         
-        if not isinstance(request.applicant, PawnToken):
+        promotion_row = request.applicant.team.enemy_rank_row
+        current_row = request.applicant.footstep.position.row
+        
+        if current_row is None or current_row != promotion_row:
             return PromotionDecision.denial(
                 request=request,
-                exception=TypeError(
-                    f"Expected PawnToken received, "
-                    f"{type(request.applicant).__class__.__name__} instead."
+                exception=PromotionRowException(
+                    cls_mthd=method,
+                    cls_name=self.__class__.__name__,
+                    msg=PromotionRowException.MSG,
+                    err_code=PromotionRowException.ERR_CODE,
                 )
             )
-        # --- Forward the work product. ---#
-        applicant = cast(PawnToken, request.applicant)
+        # --- Forward the work product. ---
         approval = PromotionRequest(
             id=request.id,
-            applicant=applicant,
+            applicant=request.applicant,
             activity=request.activity,
         )
         return PromotionDecision.grant(approval)
