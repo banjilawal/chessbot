@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, List, TypeVar
 
 from artifcat import Decision
-from authorization import ApplicantChecker, Reviewer, ValidApplicantChecker
+from authorization import Chainable, Reviewer
 from exchange import AuthorizationRequest
 from util import LoggingLevelRouter
 
@@ -29,30 +29,21 @@ class ApplicantReviewer(Reviewer[T], ABC, Generic[T]):
             activity.
 
     Attributes:
-        valid_applicant_checker: ValidApplicantChecker[T]
 
     Provides:
         -   def execute(request: T) -> Decision[T]
 
     Super Class:
+        Reviewer
     """
-    _valid_applicant_checker: ValidApplicantChecker
     
-    def __init__(self, valid_applicant_checker: ValidApplicantChecker):
-        """
-        Args:
-            valid_applicant_checker: ValidApplicantChecker[T]
-        """
+    def __init__(self,):
+        """"""
         super().__init__()
-        self._valid_applicant_checker =valid_applicant_checker
-        
-    @property
-    def valid_applicant_checker(self) -> ValidApplicantChecker:
-        return self._.valid_applicant_checker
     
     @property
     @abstractmethod
-    def checkers(self) -> List[ApplicantChecker]:
+    def checkers(self) -> List[Chainable]:
         pass
     
     @abstractmethod

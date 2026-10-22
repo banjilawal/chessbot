@@ -13,7 +13,7 @@ from abc import ABC, abstractmethod
 from typing import Generic, List, TypeVar
 
 from artifcat import Decision
-from authorization import Checker
+from exchange import AuthorizationRequest
 from util import LoggingLevelRouter
 
 T = TypeVar("T", bound="AuthorizationRequest")
@@ -40,11 +40,9 @@ class Reviewer(ABC, Generic[T]):
         
     @property
     @abstractmethod
-    def checkers(self) -> List[Checker]:
+    def checkers(self) -> List[Checkable]:
         pass
         
-        
-    
     @abstractmethod
     @LoggingLevelRouter.monitor
     def execute(self, request: T) -> Decision[T]:

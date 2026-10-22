@@ -1,7 +1,7 @@
-# src/authorization/checker/valid/applicant/token/checker.py
+# src/authorization/checker/model/token/checker.py
 
 """
-Module: authorization.checker.valid.applicant.token.checker
+Module: authorization.checker.model.token.checker
 Author: Banji Lawal
 Created: 2026-03-30
 version: 0.0.2
