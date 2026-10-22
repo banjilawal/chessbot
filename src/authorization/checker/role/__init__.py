@@ -10,6 +10,7 @@ version: 0.0.2
 # =========== AUTHORIZATION.CHECKER.ROLE PACKAGE ===========#
 
 # Packages
+from .attack import *
 from .elevation import *
 from .maneuver import *
 
